@@ -1,0 +1,71 @@
+/*
+ * Copyright (C) 2009 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Definition of protocol buffer for representing international telephone numbers.
+// @author Shaopeng Jia
+
+syntax = "proto2";
+
+option java_package = "com.google.i18n.phonenumbers";
+package i18n.phonenumbers;
+
+message PhoneNumber {
+  required int32 country_code = 1;
+
+// National (significant) Number is defined in International Telecommunication Union Recommendation
+// E.164. It is a language/country-neutral representation of a phone number at a country level. For
+// countries which have the concept of Area Code, the National (significant) Number contains the
+// area code. It contains a maximum number of digits which equal to 15 - n, where n is the number of
+// digits of the country code. Take note that National (significant) Number does not contain
+// National(trunk) prefix. Obviously, as a uint64, it will never contain any formatting (hypens,
+// spaces, parentheses), nor any alphanumeric spellings.
+  required uint64 national_number = 2;
+
+// Extension is not standardized in ITU recommendations, except for being defined as a series of
+// numbers with a maximum length of 40 digits. It is defined as a string here to accommodate for the
+// possible use of a leading zero in the extension (organizations have complete freedom to do so,
+// as there is no standard defined). However, only ASCII digits should be stored here.
+  optional string extension = 3;
+
+// The leading zero in the national (significant) number of an Italian phone number has a special
+// meaning. Unlike the rest of the world, it indicates the number is a fixed-line number. There have
+// been plans to migrate fixed-line numbers to start with the digit two since December 2000, but it
+// has not happened yet. See http://en.wikipedia.org/wiki/%2B39 for more details.
+//
+// This field can be safely ignored (no need to set it) if you are not dealing with Italian
+// phone numbers. For an Italian phone number, if its national (significant) number starts
+// with the digit zero, set this flag to true.
+  optional bool italian_leading_zero = 4;
+}
+
+// Examples
+//
+// Google MTV, +1 650-253-0000, (650) 253-0000
+// country_code: 1
+// national_number: 6502530000
+//
+// Google Paris, +33 (0)1 42 68 53 00, 01 42 68 53 00
+// country_code: 33
+// national_number: 142685300
+//
+// Google Beijing, +86-10-62503000, (010) 62503000
+// country_code: 86
+// national_number: 1062503000
+//
+// Google Italy, +39 02-36618 300, 02-36618 300
+// country_code: 39
+// national_number: 236618300
+// italian_leading_zero: true

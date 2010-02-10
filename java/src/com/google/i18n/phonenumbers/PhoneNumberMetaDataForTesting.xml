@@ -1,0 +1,381 @@
+<!-- Copyright (C) 2009 Google Inc.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+     @author: Shaopeng Jia
+
+     MetaData on Phone Number Plan and formatting rules. This file is used
+     solely for the purpose of unittesting, so data in this file is not
+     necessarily consistent with that of PhoneNumberMetaData.xml
+-->
+
+<phoneNumberMetadata>
+  <territories>
+    <!-- Andorra -->
+    <territory id="AD" countryCode="376" internationalPrefix="00">
+    </territory>
+
+    <!-- Argentina -->
+    <territory id="AR" countryCode="54" internationalPrefix="00"
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
+               nationalPrefixForParsing="0(?:(11|343|3715)15)?"
+               nationalPrefixTransformRule="9$1">
+      <!-- Note in nationalPrefixForParsing, the areacode (such as 11, 343, etc.), when present in
+           front of carrier selection code 15, is captured to replace $1 in
+           nationalPrefixTransformRule -->
+      <availableFormats>
+        <numberFormat leadingDigits="11" pattern="(\d{2})(\d{4})(\d{4})">$1 $2-$3</numberFormat>
+        <numberFormat leadingDigits="1[02-9]|[23]" pattern="(\d{4})(\d{2})(\d{4})">$1 $2-$3</numberFormat>
+        <numberFormat leadingDigits="911" pattern="9(11)(\d{4})(\d{4})">$1 15 $2-$3</numberFormat>
+        <numberFormat leadingDigits="9(?:1[02-9]|[23])" pattern="9(\d{4})(\d{2})(\d{4})">$1 15 $2-$3</numberFormat>
+        <numberFormat leadingDigits="[68]" pattern="(\d{3})(\d{3})(\d{4})">$1-$2-$3</numberFormat>
+        <intlNumberFormat leadingDigits="11" pattern="(\d{2})(\d{4})(\d{4})">$1 $2-$3</intlNumberFormat>
+        <intlNumberFormat leadingDigits="1[02-9]|[23]" pattern="(\d{4})(\d{2})(\d{4})">$1 $2-$3</intlNumberFormat>
+        <intlNumberFormat leadingDigits="911" pattern="(9)(11)(\d{4})(\d{4})">$1 $2 $3 $4</intlNumberFormat>
+        <intlNumberFormat leadingDigits="9(?:1[02-9]|[23])" pattern="(9)(\d{4})(\d{2})(\d{4})">$1 $2 $3 $4</intlNumberFormat>
+        <intlNumberFormat leadingDigits="[68]" pattern="(\d{3})(\d{3})(\d{4})">$1-$2-$3</intlNumberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[1-3689]\d{9,10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,11}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+         <nationalNumberPattern>[1-3]\d{9}</nationalNumberPattern>
+         <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>9\d{10}|[1-3]\d{9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>80\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>6(0\d|10)\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- Australia -->
+    <territory id="AU" countryCode="61" internationalPrefix="001[12]"
+               nationalPrefix="0" preferredInternationalPrefix="0011"
+               nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <numberFormat nationalPrefixFormattingRule="$FG" leadingDigits="1" pattern="(\d{4})(\d{3})(\d{3})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="[2-478]" pattern="(\d{1})(\d{4})(\d{4})">$1 $2 $3</numberFormat>
+      </availableFormats>
+      <generalDesc >
+        <nationalNumberPattern>[1-578]\d{4,14}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,15}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[2378]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>4\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>1800\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>190[0126]\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- Bahamas -->
+    <territory id="BS" countryCode="1" internationalPrefix="011">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>(242|8(00|66|77|88)|900)\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>242(?:3(?:02|[236][1-9]|4[0-24-9]|5[0-68]|7[3-57]|9[2-5])|4(?:2[237]|51|64|77)|502|636|702)\d{4}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>242(357|359|457|557)\d{4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>8(00|66|77|88)\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>900\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- Germany -->
+    <territory id="DE" countryCode="49" internationalPrefix="00"
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <numberFormat leadingDigits="2|3[3-9]|906|[4-9][1-9]1" pattern="(\d{3})(\d{3,8})">$1 $2</numberFormat>
+        <numberFormat leadingDigits="[34]0|[68]9" pattern="(\d{2})(\d{4,9})">$1 $2</numberFormat>
+        <numberFormat leadingDigits="[4-9]" pattern="([4-9]\d{3})(\d{2,7})">$1 $2</numberFormat>
+        <numberFormat leadingDigits="800" pattern="(\d{3})(\d{1})(\d{6})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="900[135]" pattern="(\d{3})(\d{3})(d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="9009" pattern="(\d{3})(\d{4})(\d{4})">$1 $2 $3</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>\d{4,14}</nationalNumberPattern>
+        <possibleNumberPattern>\d{2,14}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>(?:[24-6]\d{2}|3[03-9]\d|[789](?:[1-9]\d|0[2-9]))\d{3,8}</nationalNumberPattern>
+        <exampleNumber>30123456</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>1(5\d{9}|7\d{8}|6[02]\d{8}|63\d{7})</nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>800\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>900([135]\d{6}|9\d{7})</nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- United Kingdom -->
+    <territory id="GB" countryCode="44" internationalPrefix="00"
+               nationalPrefix="0" nationalPrefixFormattingRule="($NP$FG)">
+      <availableFormats>
+        <numberFormat leadingDigits="[1-59]|[78]0"
+                      pattern="(\d{2})(\d{4})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="6"
+                      pattern="(\d)(\d{3})(\d{3})(\d{3})">$1 $2 $3 $4</numberFormat>
+        <numberFormat leadingDigits="7[1-57-9]"
+                      pattern="(\d{4})(\d{3})(\d{3})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="8[47]"
+                      pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>\d{10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[1-6]\d{9}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>7[1-57-9]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>80\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>9[018]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </premiumRate>
+      <sharedCost>
+        <nationalNumberPattern>8(?:4[3-5]|7[0-2])\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </sharedCost>
+      <voip>
+        <nationalNumberPattern>56\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </voip>
+      <personalNumber>
+        <nationalNumberPattern>70\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </personalNumber>
+    </territory>
+
+    <!-- Italy -->
+    <!-- http://en.wikipedia.org/wiki/%2B39 -->
+    <territory id="IT" countryCode="39" internationalPrefix="00">
+      <availableFormats>
+        <numberFormat leadingDigits="0[26]" pattern="(\d{2})(\d{4})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="0[13-57-9]" pattern="(\d{3})(\d{4})(\d{3,4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="3" pattern="(\d{3})(\d{3})(\d{3,4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="8" pattern="(\d{3})(\d{3,6})">$1 $2</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[0389]\d{5,10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,11}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>0\d{9,10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>3\d{8,9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>80(?:0\d{6}|3\d{3})</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>89(?:2\d{3}|9\d{6})</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- Mexico -->
+    <territory id="MX" countryCode="52" internationalPrefix="00"
+               nationalPrefix="01" nationalPrefixForParsing="01|04[45](\d{10})"
+               nationalPrefixTransformRule="1$1">
+      <availableFormats>
+        <numberFormat leadingDigits="[89]00" pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="33|55|81" pattern="(\d{2})(\d{4})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]" pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="1(?:33|55|81)" pattern="1(\d{2})(\d{4})(\d{4})">045 $1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])" pattern="1(\d{3})(\d{3})(\d{4})">045 $1 $2 $3</numberFormat>
+        <intlNumberFormat leadingDigits="[89]00" pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</intlNumberFormat>
+        <intlNumberFormat leadingDigits="33|55|81" pattern="(\d{2})(\d{4})(\d{4})">$1 $2 $3</intlNumberFormat>
+        <intlNumberFormat leadingDigits="[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]" pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</intlNumberFormat>
+        <intlNumberFormat leadingDigits="1(?:33|55|81)" pattern="(1)(\d{2})(\d{4})(\d{4})">$1 $2 $3 $4</intlNumberFormat>
+        <intlNumberFormat leadingDigits="1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])" pattern="(1)(\d{3})(\d{3})(\d{4})">$1 $2 $3 $4</intlNumberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[1-9]\d{9,10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,11}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[2-9]\d{9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>1\d{10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{11}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>800\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>900\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- New Zealand -->
+    <territory id="NZ" countryCode="64" internationalPrefix="00"
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <numberFormat leadingDigits="24|[34679]" pattern="(\d)(\d{3})(\d{4})">$1-$2 $3</numberFormat>
+        <numberFormat leadingDigits="2[179]" pattern="(\d)(\d{3})(\d{3,5})">$1-$2 $3</numberFormat>
+        <numberFormat leadingDigits="[89]" pattern="(\d{3})(\d{3})(\d{3,4})">$1 $2 $3</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[2-9]\d{7,9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>24099\d{3}|(?:3[2-79]|[479][2-689]|6[235-9])\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>2(?:[027]\d{7}|9\d{6,7}|1(?:0\d{5,7}|[12]\d{5,6}|[3-9]\d{5})|4[1-9]\d{6}|8\d{7,8})</nationalNumberPattern>
+        <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>800\d{6,7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>900\d{6,7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- Poland -->
+    <!-- http://en.wikipedia.org/wiki/%2B48 -->
+    <territory id="PL" countryCode="48" internationalPrefix="0~0"
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">$1 $2 $3 $4</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[1-9]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <mobile>
+        <nationalNumberPattern>(?:5[01]|6[069]|7[289]|88)\d{7}</nationalNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>800\d{6}</nationalNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>70\d{7}</nationalNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- Singapore -->
+    <!-- http://www.ida.gov.sg/policies%20and%20regulation/20060508120124.aspx -->
+    <territory id="SG" countryCode="65" internationalPrefix="0[0-3][0-9]">
+      <availableFormats>
+        <numberFormat leadingDigits="[369]|8[1-9]" pattern="(\d{4})(\d{4})">$1 $2</numberFormat>
+        <numberFormat leadingDigits="1[89]" pattern="(\d{4})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat leadingDigits="800" pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[13689]\d{7,10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8,11}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[36]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>[89]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>1?800\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>1900\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{11}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+
+    <!-- United States -->
+    <!-- http://www.nanpa.com/reports/reports_npa.html -->
+    <!-- For testing purposes, numbers starting with 24 are not considered US
+    numbers.-->
+    <territory id="US" countryCode="1" internationalPrefix="011"
+               preferredExtnPrefix=" extn. ">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
+        <numberFormat pattern="(\d{3})(\d{4})">$1 $2</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[13-9]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <exampleNumber>1234567890</exampleNumber>
+      </generalDesc>
+      <tollFree>
+        <nationalNumberPattern>8(00|66|77|88)\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>900\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </premiumRate>
+    </territory>
+  </territories>
+</phoneNumberMetadata>
