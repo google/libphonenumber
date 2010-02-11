@@ -19,9 +19,13 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.protobuf.MessageLite;
 import junit.framework.TestCase;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -58,7 +62,11 @@ public class PhoneNumberUtilTest extends TestCase {
     super.tearDown();
   }
 
-  public void testGetInstanceLoadUSMetadata() {
+  private Boolean assertEquals(MessageLite message1, MessageLite message2) {
+    return PhoneNumberUtil.areSameMessages(message1, message2);
+  }
+
+  public void testGetInstanceLoadUSMetadata() throws IOException {
     PhoneMetadata metadata = phoneUtil.getPhoneMetadata("US");
     assertEquals("US", metadata.getId());
     assertEquals(1, metadata.getCountryCode());
@@ -114,7 +122,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).getFormat());
   }
 
-  public void testGetExampleNumber() {
+  public void testGetExampleNumber() throws IOException {
     PhoneNumber deNumber =
         PhoneNumber.newBuilder().setCountryCode(49).setNationalNumber(30123456).build();
     assertEquals(deNumber, phoneUtil.getExampleNumber("DE"));
@@ -1339,6 +1347,10 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testIsNumberMatchMatches() throws Exception {
     // Test simple matches where formatting is different, or leading zeroes, or country code has
     // been specified.
+    PhoneNumber num1 = phoneUtil.parse("+64 3 331 6005", "NZ");
+    PhoneNumber num2 = phoneUtil.parse("+64 03 331 6005", "NZ");
+    assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch(num1, num2));
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331 6005", "+64 03 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,

@@ -6,10 +6,10 @@ package com.google.i18n.phonenumbers;
 public final class Phonenumber {
   private Phonenumber() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
   public static final class PhoneNumber extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessageLite {
     // Use PhoneNumber.newBuilder() to construct.
     private PhoneNumber() {
       initFields();
@@ -23,16 +23,6 @@ public final class Phonenumber {
     
     public PhoneNumber getDefaultInstanceForType() {
       return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.google.i18n.phonenumbers.Phonenumber.internal_static_i18n_phonenumbers_PhoneNumber_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.google.i18n.phonenumbers.Phonenumber.internal_static_i18n_phonenumbers_PhoneNumber_fieldAccessorTable;
     }
     
     // required int32 country_code = 1;
@@ -86,7 +76,6 @@ public final class Phonenumber {
       if (hasItalianLeadingZero()) {
         output.writeBool(4, getItalianLeadingZero());
       }
-      getUnknownFields().writeTo(output);
     }
     
     private int memoizedSerializedSize = -1;
@@ -111,7 +100,6 @@ public final class Phonenumber {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(4, getItalianLeadingZero());
       }
-      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
@@ -191,7 +179,8 @@ public final class Phonenumber {
     public Builder toBuilder() { return newBuilder(this); }
     
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.google.i18n.phonenumbers.Phonenumber.PhoneNumber, Builder> {
       private com.google.i18n.phonenumbers.Phonenumber.PhoneNumber result;
       
       // Construct using com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.newBuilder()
@@ -218,11 +207,6 @@ public final class Phonenumber {
       
       public Builder clone() {
         return create().mergeFrom(result);
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.getDescriptor();
       }
       
       public com.google.i18n.phonenumbers.Phonenumber.PhoneNumber getDefaultInstanceForType() {
@@ -258,15 +242,6 @@ public final class Phonenumber {
         return returnMe;
       }
       
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.google.i18n.phonenumbers.Phonenumber.PhoneNumber) {
-          return mergeFrom((com.google.i18n.phonenumbers.Phonenumber.PhoneNumber)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
       public Builder mergeFrom(com.google.i18n.phonenumbers.Phonenumber.PhoneNumber other) {
         if (other == com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.getDefaultInstance()) return this;
         if (other.hasCountryCode()) {
@@ -281,7 +256,6 @@ public final class Phonenumber {
         if (other.hasItalianLeadingZero()) {
           setItalianLeadingZero(other.getItalianLeadingZero());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
@@ -289,19 +263,13 @@ public final class Phonenumber {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
         while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
               return this;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
+              if (!parseUnknownField(input, extensionRegistry, tag)) {
                 return this;
               }
               break;
@@ -414,46 +382,8 @@ public final class Phonenumber {
     // @@protoc_insertion_point(class_scope:i18n.phonenumbers.PhoneNumber)
   }
   
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_i18n_phonenumbers_PhoneNumber_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_i18n_phonenumbers_PhoneNumber_fieldAccessorTable;
   
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\021phonenumber.proto\022\021i18n.phonenumbers\"m" +
-      "\n\013PhoneNumber\022\024\n\014country_code\030\001 \002(\005\022\027\n\017n" +
-      "ational_number\030\002 \002(\004\022\021\n\textension\030\003 \001(\t\022" +
-      "\034\n\024italian_leading_zero\030\004 \001(\010B\036\n\034com.goo" +
-      "gle.i18n.phonenumbers"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_i18n_phonenumbers_PhoneNumber_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_i18n_phonenumbers_PhoneNumber_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_i18n_phonenumbers_PhoneNumber_descriptor,
-              new java.lang.String[] { "CountryCode", "NationalNumber", "Extension", "ItalianLeadingZero", },
-              com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.class,
-              com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.Builder.class);
-          return null;
-        }
-      };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
   }
   
   public static void internalForceInit() {}

@@ -23,9 +23,12 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.protobuf.MessageLite;
 
 import java.io.InputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -1457,6 +1460,31 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * As no equals method is implemented for MessageLite, we implement our own equals method here
+   * to compare the serialized data.
+   */ 
+  @VisibleForTesting
+  static Boolean areSameMessages(MessageLite message1, MessageLite message2) {
+    if (message1 == null && message2 == null) {
+      return true;
+    }
+    if (message1 == null || message2 == null) {
+      return false;
+    }
+    OutputStream output1 = new ByteArrayOutputStream();
+    OutputStream output2 = new ByteArrayOutputStream();
+    try {
+      message1.writeTo(output1);
+      message2.writeTo(output2);
+    } catch (IOException e) {
+      LOGGER.log(Level.WARNING, e.toString());
+    }
+
+    return output1.toString().equals(output2.toString());
+  }
+
+
+  /**
    * Parses a string and returns it in proto buffer format. This method is the same as the public
    * parse() method, with the exception that it  allows the default country to be null, for use by
    * isNumberMatch().
@@ -1581,7 +1609,7 @@ public class PhoneNumberUtil {
     int secondNumberCountryCode = number2.getCountryCode();
     // Both had country code specified.
     if (firstNumberCountryCode != 0 && secondNumberCountryCode != 0) {
-      if (number1.equals(number2)) {
+      if (areSameMessages(number1, number2)) {
         return MatchType.EXACT_MATCH;
       } else if (firstNumberCountryCode == secondNumberCountryCode) {
         // A SHORT_NSN_MATCH occurs if there is a difference because of the presence or absence of
@@ -1603,7 +1631,7 @@ public class PhoneNumberUtil {
     PhoneNumber newNumber =
         PhoneNumber.newBuilder(number1).setCountryCode(secondNumberCountryCode).build();
     // If all else was the same, then this is an NSN_MATCH.
-    if (newNumber.equals(number2)) {
+    if (areSameMessages(newNumber, number2)) {
       return MatchType.NSN_MATCH;
     }
     String firstNumberNationalNumber = String.valueOf(newNumber.getNationalNumber());

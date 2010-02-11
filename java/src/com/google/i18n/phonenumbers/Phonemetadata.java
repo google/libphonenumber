@@ -6,10 +6,10 @@ package com.google.i18n.phonenumbers;
 public final class Phonemetadata {
   private Phonemetadata() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
   public static final class NumberFormat extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessageLite {
     // Use NumberFormat.newBuilder() to construct.
     private NumberFormat() {
       initFields();
@@ -23,16 +23,6 @@ public final class Phonemetadata {
     
     public NumberFormat getDefaultInstanceForType() {
       return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_NumberFormat_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_NumberFormat_fieldAccessorTable;
     }
     
     // required string pattern = 1;
@@ -86,7 +76,6 @@ public final class Phonemetadata {
       if (hasNationalPrefixFormattingRule()) {
         output.writeString(4, getNationalPrefixFormattingRule());
       }
-      getUnknownFields().writeTo(output);
     }
     
     private int memoizedSerializedSize = -1;
@@ -111,7 +100,6 @@ public final class Phonemetadata {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(4, getNationalPrefixFormattingRule());
       }
-      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
@@ -191,7 +179,8 @@ public final class Phonemetadata {
     public Builder toBuilder() { return newBuilder(this); }
     
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.google.i18n.phonenumbers.Phonemetadata.NumberFormat, Builder> {
       private com.google.i18n.phonenumbers.Phonemetadata.NumberFormat result;
       
       // Construct using com.google.i18n.phonenumbers.Phonemetadata.NumberFormat.newBuilder()
@@ -218,11 +207,6 @@ public final class Phonemetadata {
       
       public Builder clone() {
         return create().mergeFrom(result);
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.google.i18n.phonenumbers.Phonemetadata.NumberFormat.getDescriptor();
       }
       
       public com.google.i18n.phonenumbers.Phonemetadata.NumberFormat getDefaultInstanceForType() {
@@ -258,15 +242,6 @@ public final class Phonemetadata {
         return returnMe;
       }
       
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.google.i18n.phonenumbers.Phonemetadata.NumberFormat) {
-          return mergeFrom((com.google.i18n.phonenumbers.Phonemetadata.NumberFormat)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
       public Builder mergeFrom(com.google.i18n.phonenumbers.Phonemetadata.NumberFormat other) {
         if (other == com.google.i18n.phonenumbers.Phonemetadata.NumberFormat.getDefaultInstance()) return this;
         if (other.hasPattern()) {
@@ -281,7 +256,6 @@ public final class Phonemetadata {
         if (other.hasNationalPrefixFormattingRule()) {
           setNationalPrefixFormattingRule(other.getNationalPrefixFormattingRule());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
@@ -289,19 +263,13 @@ public final class Phonemetadata {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
         while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
               return this;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
+              if (!parseUnknownField(input, extensionRegistry, tag)) {
                 return this;
               }
               break;
@@ -424,7 +392,7 @@ public final class Phonemetadata {
   }
   
   public static final class PhoneNumberDesc extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessageLite {
     // Use PhoneNumberDesc.newBuilder() to construct.
     private PhoneNumberDesc() {
       initFields();
@@ -438,16 +406,6 @@ public final class Phonemetadata {
     
     public PhoneNumberDesc getDefaultInstanceForType() {
       return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_PhoneNumberDesc_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_PhoneNumberDesc_fieldAccessorTable;
     }
     
     // optional string national_number_pattern = 2;
@@ -489,7 +447,6 @@ public final class Phonemetadata {
       if (hasExampleNumber()) {
         output.writeString(6, getExampleNumber());
       }
-      getUnknownFields().writeTo(output);
     }
     
     private int memoizedSerializedSize = -1;
@@ -510,7 +467,6 @@ public final class Phonemetadata {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(6, getExampleNumber());
       }
-      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
@@ -590,7 +546,8 @@ public final class Phonemetadata {
     public Builder toBuilder() { return newBuilder(this); }
     
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc, Builder> {
       private com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc result;
       
       // Construct using com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc.newBuilder()
@@ -617,11 +574,6 @@ public final class Phonemetadata {
       
       public Builder clone() {
         return create().mergeFrom(result);
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc.getDescriptor();
       }
       
       public com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc getDefaultInstanceForType() {
@@ -657,15 +609,6 @@ public final class Phonemetadata {
         return returnMe;
       }
       
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc) {
-          return mergeFrom((com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
       public Builder mergeFrom(com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc other) {
         if (other == com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc.getDefaultInstance()) return this;
         if (other.hasNationalNumberPattern()) {
@@ -677,7 +620,6 @@ public final class Phonemetadata {
         if (other.hasExampleNumber()) {
           setExampleNumber(other.getExampleNumber());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
@@ -685,19 +627,13 @@ public final class Phonemetadata {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
         while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
               return this;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
+              if (!parseUnknownField(input, extensionRegistry, tag)) {
                 return this;
               }
               break;
@@ -795,7 +731,7 @@ public final class Phonemetadata {
   }
   
   public static final class PhoneMetadata extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessageLite {
     // Use PhoneMetadata.newBuilder() to construct.
     private PhoneMetadata() {
       initFields();
@@ -809,16 +745,6 @@ public final class Phonemetadata {
     
     public PhoneMetadata getDefaultInstanceForType() {
       return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_PhoneMetadata_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_PhoneMetadata_fieldAccessorTable;
     }
     
     // required .i18n.phonenumbers.PhoneNumberDesc general_desc = 1;
@@ -1065,7 +991,6 @@ public final class Phonemetadata {
       if (hasNationalPrefixFormattingRule()) {
         output.writeString(21, getNationalPrefixFormattingRule());
       }
-      getUnknownFields().writeTo(output);
     }
     
     private int memoizedSerializedSize = -1;
@@ -1154,7 +1079,6 @@ public final class Phonemetadata {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(21, getNationalPrefixFormattingRule());
       }
-      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
@@ -1234,7 +1158,8 @@ public final class Phonemetadata {
     public Builder toBuilder() { return newBuilder(this); }
     
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata, Builder> {
       private com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata result;
       
       // Construct using com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata.newBuilder()
@@ -1261,11 +1186,6 @@ public final class Phonemetadata {
       
       public Builder clone() {
         return create().mergeFrom(result);
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata.getDescriptor();
       }
       
       public com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata getDefaultInstanceForType() {
@@ -1307,15 +1227,6 @@ public final class Phonemetadata {
         com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata returnMe = result;
         result = null;
         return returnMe;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata) {
-          return mergeFrom((com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
       }
       
       public Builder mergeFrom(com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata other) {
@@ -1386,7 +1297,6 @@ public final class Phonemetadata {
         if (other.hasNationalPrefixFormattingRule()) {
           setNationalPrefixFormattingRule(other.getNationalPrefixFormattingRule());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
@@ -1394,19 +1304,13 @@ public final class Phonemetadata {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
         while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
               return this;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
+              if (!parseUnknownField(input, extensionRegistry, tag)) {
                 return this;
               }
               break;
@@ -2155,7 +2059,7 @@ public final class Phonemetadata {
   }
   
   public static final class PhoneMetadataCollection extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessageLite {
     // Use PhoneMetadataCollection.newBuilder() to construct.
     private PhoneMetadataCollection() {
       initFields();
@@ -2169,16 +2073,6 @@ public final class Phonemetadata {
     
     public PhoneMetadataCollection getDefaultInstanceForType() {
       return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_PhoneMetadataCollection_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.google.i18n.phonenumbers.Phonemetadata.internal_static_i18n_phonenumbers_PhoneMetadataCollection_fieldAccessorTable;
     }
     
     // repeated .i18n.phonenumbers.PhoneMetadata metadata = 1;
@@ -2208,7 +2102,6 @@ public final class Phonemetadata {
       for (com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata element : getMetadataList()) {
         output.writeMessage(1, element);
       }
-      getUnknownFields().writeTo(output);
     }
     
     private int memoizedSerializedSize = -1;
@@ -2221,7 +2114,6 @@ public final class Phonemetadata {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, element);
       }
-      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
@@ -2301,7 +2193,8 @@ public final class Phonemetadata {
     public Builder toBuilder() { return newBuilder(this); }
     
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection, Builder> {
       private com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection result;
       
       // Construct using com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection.newBuilder()
@@ -2328,11 +2221,6 @@ public final class Phonemetadata {
       
       public Builder clone() {
         return create().mergeFrom(result);
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection.getDescriptor();
       }
       
       public com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection getDefaultInstanceForType() {
@@ -2372,15 +2260,6 @@ public final class Phonemetadata {
         return returnMe;
       }
       
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection) {
-          return mergeFrom((com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
       public Builder mergeFrom(com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection other) {
         if (other == com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection.getDefaultInstance()) return this;
         if (!other.metadata_.isEmpty()) {
@@ -2389,7 +2268,6 @@ public final class Phonemetadata {
           }
           result.metadata_.addAll(other.metadata_);
         }
-        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
@@ -2397,19 +2275,13 @@ public final class Phonemetadata {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
         while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
               return this;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
+              if (!parseUnknownField(input, extensionRegistry, tag)) {
                 return this;
               }
               break;
@@ -2488,113 +2360,8 @@ public final class Phonemetadata {
     // @@protoc_insertion_point(class_scope:i18n.phonenumbers.PhoneMetadataCollection)
   }
   
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_i18n_phonenumbers_NumberFormat_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_i18n_phonenumbers_NumberFormat_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_i18n_phonenumbers_PhoneNumberDesc_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_i18n_phonenumbers_PhoneNumberDesc_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_i18n_phonenumbers_PhoneMetadata_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_i18n_phonenumbers_PhoneMetadata_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_i18n_phonenumbers_PhoneMetadataCollection_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_i18n_phonenumbers_PhoneMetadataCollection_fieldAccessorTable;
   
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\023phonemetadata.proto\022\021i18n.phonenumbers" +
-      "\"p\n\014NumberFormat\022\017\n\007pattern\030\001 \002(\t\022\016\n\006for" +
-      "mat\030\002 \002(\t\022\026\n\016leading_digits\030\003 \001(\t\022\'\n\037nat" +
-      "ional_prefix_formatting_rule\030\004 \001(\t\"k\n\017Ph" +
-      "oneNumberDesc\022\037\n\027national_number_pattern" +
-      "\030\002 \001(\t\022\037\n\027possible_number_pattern\030\003 \001(\t\022" +
-      "\026\n\016example_number\030\006 \001(\t\"\214\007\n\rPhoneMetadat" +
-      "a\0228\n\014general_desc\030\001 \002(\0132\".i18n.phonenumb" +
-      "ers.PhoneNumberDesc\0226\n\nfixed_line\030\002 \002(\0132" +
-      "\".i18n.phonenumbers.PhoneNumberDesc\0222\n\006m",
-      "obile\030\003 \002(\0132\".i18n.phonenumbers.PhoneNum" +
-      "berDesc\0225\n\ttoll_free\030\004 \002(\0132\".i18n.phonen" +
-      "umbers.PhoneNumberDesc\0228\n\014premium_rate\030\005" +
-      " \002(\0132\".i18n.phonenumbers.PhoneNumberDesc" +
-      "\0227\n\013shared_cost\030\006 \002(\0132\".i18n.phonenumber" +
-      "s.PhoneNumberDesc\022;\n\017personal_number\030\007 \002" +
-      "(\0132\".i18n.phonenumbers.PhoneNumberDesc\0220" +
-      "\n\004voip\030\010 \002(\0132\".i18n.phonenumbers.PhoneNu" +
-      "mberDesc\022\n\n\002id\030\t \002(\t\022\024\n\014country_code\030\n \002" +
-      "(\005\022\034\n\024international_prefix\030\013 \002(\t\022&\n\036pref",
-      "erred_international_prefix\030\021 \001(\t\022\027\n\017nati" +
-      "onal_prefix\030\014 \001(\t\022\035\n\025preferred_extn_pref" +
-      "ix\030\r \001(\t\022#\n\033national_prefix_for_parsing\030" +
-      "\017 \001(\t\022&\n\036national_prefix_transform_rule\030" +
-      "\020 \001(\t\0221\n\"same_mobile_and_fixed_line_patt" +
-      "ern\030\022 \001(\010:\005false\0226\n\rnumber_format\030\023 \003(\0132" +
-      "\037.i18n.phonenumbers.NumberFormat\022;\n\022intl" +
-      "_number_format\030\024 \003(\0132\037.i18n.phonenumbers" +
-      ".NumberFormat\022\'\n\037national_prefix_formatt" +
-      "ing_rule\030\025 \001(\t\"M\n\027PhoneMetadataCollectio",
-      "n\0222\n\010metadata\030\001 \003(\0132 .i18n.phonenumbers." +
-      "PhoneMetadataB\036\n\034com.google.i18n.phonenu" +
-      "mbers"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_i18n_phonenumbers_NumberFormat_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_i18n_phonenumbers_NumberFormat_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_i18n_phonenumbers_NumberFormat_descriptor,
-              new java.lang.String[] { "Pattern", "Format", "LeadingDigits", "NationalPrefixFormattingRule", },
-              com.google.i18n.phonenumbers.Phonemetadata.NumberFormat.class,
-              com.google.i18n.phonenumbers.Phonemetadata.NumberFormat.Builder.class);
-          internal_static_i18n_phonenumbers_PhoneNumberDesc_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_i18n_phonenumbers_PhoneNumberDesc_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_i18n_phonenumbers_PhoneNumberDesc_descriptor,
-              new java.lang.String[] { "NationalNumberPattern", "PossibleNumberPattern", "ExampleNumber", },
-              com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc.class,
-              com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc.Builder.class);
-          internal_static_i18n_phonenumbers_PhoneMetadata_descriptor =
-            getDescriptor().getMessageTypes().get(2);
-          internal_static_i18n_phonenumbers_PhoneMetadata_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_i18n_phonenumbers_PhoneMetadata_descriptor,
-              new java.lang.String[] { "GeneralDesc", "FixedLine", "Mobile", "TollFree", "PremiumRate", "SharedCost", "PersonalNumber", "Voip", "Id", "CountryCode", "InternationalPrefix", "PreferredInternationalPrefix", "NationalPrefix", "PreferredExtnPrefix", "NationalPrefixForParsing", "NationalPrefixTransformRule", "SameMobileAndFixedLinePattern", "NumberFormat", "IntlNumberFormat", "NationalPrefixFormattingRule", },
-              com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata.class,
-              com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata.Builder.class);
-          internal_static_i18n_phonenumbers_PhoneMetadataCollection_descriptor =
-            getDescriptor().getMessageTypes().get(3);
-          internal_static_i18n_phonenumbers_PhoneMetadataCollection_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_i18n_phonenumbers_PhoneMetadataCollection_descriptor,
-              new java.lang.String[] { "Metadata", },
-              com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection.class,
-              com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection.Builder.class);
-          return null;
-        }
-      };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
   }
   
   public static void internalForceInit() {}
