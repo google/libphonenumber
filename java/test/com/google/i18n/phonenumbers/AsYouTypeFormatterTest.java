@@ -32,10 +32,10 @@ import java.io.InputStream;
 public class AsYouTypeFormatterTest extends TestCase {
   private PhoneNumberUtil phoneUtil;
   private static final String TEST_META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/PhoneNumberMetadataProtoForTesting";
+      "/com/google/i18n/phonenumbers/test/generated_files/PhoneNumberMetadataProtoForTesting";
 
   public AsYouTypeFormatterTest() {
-   PhoneNumberUtil.resetInstance();
+    PhoneNumberUtil.resetInstance();
     InputStream in = PhoneNumberUtilTest.class.getResourceAsStream(TEST_META_DATA_FILE);
     phoneUtil = PhoneNumberUtil.getInstance(in);
   }

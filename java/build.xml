@@ -4,6 +4,7 @@
   <property name="src.dir" value="src"/>
   <property name="test.dir" value="test"/>
   <property name="build.dir" value="build"/>
+  <property name="resources.dir" value="resources"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
   <property name="lib.dir" value="lib"/>
@@ -34,7 +35,7 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
       </fileset>
-      <fileset dir="${src.dir}">
+      <fileset dir="${resources.dir}">
         <include name="**/PhoneNumberMetadataProto"/>
       </fileset>
     </jar>
@@ -47,7 +48,8 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
       </fileset>
-      <fileset dir="${test.dir}">
+      <fileset dir="${resources.dir}">
+        <include name="**/PhoneNumberMetadataProto"/>  
         <include name="**/PhoneNumberMetadataProtoForTesting"/>
       </fileset>
     </jar>

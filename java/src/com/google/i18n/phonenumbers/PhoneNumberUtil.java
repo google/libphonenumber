@@ -54,7 +54,7 @@ public class PhoneNumberUtil {
   private static final int MAX_LENGTH_FOR_NSN = 15;
   private static final int MIN_LENGTH_FOR_NSN = 3;
   private static final String META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/PhoneNumberMetadataProto";
+      "/com/google/i18n/phonenumbers/src/generated_files/PhoneNumberMetadataProto";
   private static final Logger LOGGER = Logger.getLogger(PhoneNumberUtil.class.getName());
 
   // A mapping from a country code to a region code which denotes the country/region
@@ -251,7 +251,7 @@ public class PhoneNumberUtil {
 
   /**
    * INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
-   * E. 123. For example, the number of the Google Zürich office will be written as
+   * E. 123. For example, the number of the Google Zurich office will be written as
    * "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format.
    * E164 format is as per INTERNATIONAL format but with no formatting applied, e.g. +41446681800.
    *
@@ -578,7 +578,7 @@ public class PhoneNumberUtil {
     }
     // Note here that all NANPA formatting rules are contained by US, so we use that to format NANPA
     // numbers. The same applies to Russian Fed countries - rules are contained by Russia. French
-    // Indian Ocean country rules are contained by Réunion.
+    // Indian Ocean country rules are contained by Reunion.
     String regionCode = getRegionCodeForCountryCode(countryCode);
     if (!isValidRegionCode(regionCode, countryCode, nationalSignificantNumber)) {
       return nationalSignificantNumber;
@@ -671,7 +671,7 @@ public class PhoneNumberUtil {
     if (countryCode == FRENCH_INDIAN_OCEAN_COUNTRY_CODE &&
         frenchIndianOceanTerritories.contains(countryCallingFrom)) {
       // For dialling between FRENCH_INDIAN_OCEAN countries, the 10 digit number is all we need.
-      // Technically this is the case for dialling from la Réunion to other overseas departments of
+      // Technically this is the case for dialling from la Reunion to other overseas departments of
       // France (French Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover this
       // edge case for now and for those cases return the version including country code.
       // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
