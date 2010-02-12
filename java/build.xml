@@ -2,6 +2,7 @@
 
 <project name="libphonenumber" default="compile"> 
   <property name="src.dir" value="src"/>
+  <property name="test.dir" value="test"/>
   <property name="build.dir" value="build"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
@@ -23,6 +24,7 @@
   <target name="compile" description="Compile Java source.">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath"/>
   </target>
 
   <target name="jar" depends="compile">
@@ -45,7 +47,7 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
       </fileset>
-      <fileset dir="${src.dir}">
+      <fileset dir="${test.dir}">
         <include name="**/PhoneNumberMetadataProtoForTesting"/>
       </fileset>
     </jar>
@@ -57,7 +59,7 @@
       <classpath refid="test.classpath"/>
       <formatter type="xml"/>      
       <batchtest fork="no" todir="${report.dir}">
-        <fileset dir="${src.dir}" includes="**/*Test.java"/>
+        <fileset dir="${test.dir}" includes="**/*Test.java"/>
       </batchtest>
     </junit>
   </target>
