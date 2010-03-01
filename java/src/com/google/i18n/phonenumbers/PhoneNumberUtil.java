@@ -25,7 +25,6 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.protobuf.MessageLite;
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.IOException;
@@ -74,7 +73,7 @@ public class PhoneNumberUtil {
 
   // The set of countries that share country code 262.
   private final Set<String> frenchIndianOceanTerritories = new HashSet<String>(6);
-      
+
   private static final int FRENCH_INDIAN_OCEAN_COUNTRY_CODE = 262;
 
   // The PLUS_SIGN signifies the international prefix.
@@ -223,7 +222,7 @@ public class PhoneNumberUtil {
   // version. There are two regular expressions here: the more generic one starts with optional
   // white space and ends with an optional full stop (.), followed by zero or more spaces/tabs and
   // then the numbers themselves. The other one covers the special case of American numbers where
-  // the extension is written with a hash at the end, such as "- 503#". 
+  // the extension is written with a hash at the end, such as "- 503#".
   // Note that the only capturing groups should be around the digits that you want to capture as
   // part of the extension, or else parsing will fail!
   private static final String KNOWN_EXTN_PATTERNS = "[ \\u00A0\\t,]*(?:ext(?:ensio)?n?|" +
@@ -319,7 +318,7 @@ public class PhoneNumberUtil {
 
   private void init(InputStream source) {
     // Read in metadata for each country.
-    try {    
+    try {
       PhoneMetadataCollection metadataCollection = PhoneMetadataCollection.parseFrom(source);
       for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
         String regionCode = metadata.getId();
@@ -1167,7 +1166,7 @@ public class PhoneNumberUtil {
    * isValidNumber. See isPossibleNumber(PhoneNumber number) for details.
    *
    * This method first parses the number, then invokes isPossibleNumber(PhoneNumber number) with the
-   * resultant PhoneNumber object. 
+   * resultant PhoneNumber object.
    *
    * @param number  the number that needs to be checked, in the form of a string
    * @param countryDialingFrom  the ISO 3166-1 two-letter country code that denotes
@@ -1463,7 +1462,7 @@ public class PhoneNumberUtil {
   /**
    * As no equals method is implemented for MessageLite, we implement our own equals method here
    * to compare the serialized data.
-   */ 
+   */
   @VisibleForTesting
   static Boolean areSameMessages(MessageLite message1, MessageLite message2) {
     if (message1 == null && message2 == null) {
@@ -1560,7 +1559,7 @@ public class PhoneNumberUtil {
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));
     return phoneNumber.build();
   }
-  
+
   /**
    * Takes two phone numbers and compares them for equality.
    *

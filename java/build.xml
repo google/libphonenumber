@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
-<project name="libphonenumber" default="compile"> 
+<project name="libphonenumber" default="compile">
   <property name="src.dir" value="src"/>
   <property name="test.dir" value="test"/>
   <property name="build.dir" value="build"/>
@@ -49,7 +49,7 @@
         <exclude name="**/*Test*"/>
       </fileset>
       <fileset dir="${resources.dir}">
-        <include name="**/PhoneNumberMetadataProto"/>  
+        <include name="**/PhoneNumberMetadataProto"/>
         <include name="**/PhoneNumberMetadataProtoForTesting"/>
       </fileset>
     </jar>
@@ -59,7 +59,7 @@
     <mkdir dir="${report.dir}"/>
     <junit printsummary="yes">
       <classpath refid="test.classpath"/>
-      <formatter type="xml"/>      
+      <formatter type="xml"/>
       <batchtest fork="no" todir="${report.dir}">
         <fileset dir="${test.dir}" includes="**/*Test.java"/>
       </batchtest>

@@ -761,7 +761,6 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneNumber number3 =
         PhoneNumber.newBuilder().setCountryCode(44).setNationalNumber(2070313000L).build();
     assertTrue(phoneUtil.isPossibleNumber(number3));
-       
     assertTrue(phoneUtil.isPossibleNumber("+1 650 253 0000", "US"));
     assertTrue(phoneUtil.isPossibleNumber("+1 650 GOO OGLE", "US"));
     assertTrue(phoneUtil.isPossibleNumber("(650) 253-0000", "US"));
@@ -772,7 +771,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertTrue(phoneUtil.isPossibleNumber("7031 3000", "GB"));
     assertTrue(phoneUtil.isPossibleNumber("3331 6005", "NZ"));
   }
-
 
   public void testIsPossibleNumberWithReason() {
     // FYI, national numbers for country code +1 that are within 7 to 10 digits are possible.
@@ -1072,7 +1070,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(usNumber, phoneUtil.parse("0~01-650-333-6000", "PL"));
     // Check it doesn't use the '1' as a country code when parsing if the phone number was already
     // possible.
-    
     PhoneNumber usNumber2 =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(1234567890L).build();
     assertEquals(usNumber2, phoneUtil.parse("123-456-7890", "US"));

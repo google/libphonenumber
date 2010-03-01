@@ -43,12 +43,12 @@ import javax.xml.parsers.ParserConfigurationException;
  * ./BuildMetadataProtoFromXml PhoneNumberMetadata.xml PhoneNumberMetadataProto true
  *
  * When liteBuild flag is set to true, the outputFile generated omits certain metadata which is not
- * needed for clients using liteBuild. At this moment, example numbers information is omitted. 
+ * needed for clients using liteBuild. At this moment, example numbers information is omitted.
  *
  * @author Shaopeng Jia
  */
 public class BuildMetadataProtoFromXml {
-  private BuildMetadataProtoFromXml() { 
+  private BuildMetadataProtoFromXml() {
   }
   private static final Logger LOGGER = Logger.getLogger(BuildMetadataProtoFromXml.class.getName());
   private static Boolean liteBuild;
@@ -56,7 +56,7 @@ public class BuildMetadataProtoFromXml {
   public static void main(String[] args) {
     String inputFile = args[0];
     String outputFile = args[1];
-    liteBuild = args.length > 2 && Boolean.getBoolean(args[2]); 
+    liteBuild = args.length > 2 && Boolean.getBoolean(args[2]);
     File xmlFile = new File(inputFile);
     try {
       FileOutputStream output = new FileOutputStream(outputFile);
