@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +42,11 @@ public class AsYouTypeFormatter {
   private String formattingTemplate;
   private StringBuffer accruedInput;
   private StringBuffer accruedInputWithoutFormatting;
-  private boolean ableToFormat;
+  private boolean ableToFormat = true;
+  private boolean isInternationalFormatting = false;
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   private String defaultCountry;
-  private PhoneMetadata defaultMetaData;
+  private Phonemetadata.PhoneMetadata defaultMetaData;
   private PhoneMetadata currentMetaData;
 
   // The digits that have not been entered yet will be represented by a \u2008, the punctuation
@@ -69,7 +70,6 @@ public class AsYouTypeFormatter {
     accruedInputWithoutFormatting = new StringBuffer();
     currentOutput = new StringBuffer();
     prefixBeforeNationalNumber = new StringBuffer();
-    ableToFormat = true;
     nationalNumber = new StringBuffer();
     defaultCountry = regionCode;
     initializeCountrySpecificInfo(defaultCountry);
@@ -101,7 +101,10 @@ public class AsYouTypeFormatter {
 
   private List<NumberFormat> getAvailableFormats(String leadingFourDigits) {
     List<NumberFormat> matchedList = new ArrayList<NumberFormat>();
-    List<NumberFormat> formatList = currentMetaData.getNumberFormatList();
+    List<NumberFormat> formatList =
+        (isInternationalFormatting && currentMetaData.getIntlNumberFormatCount() > 0)
+        ? currentMetaData.getIntlNumberFormatList()
+        : currentMetaData.getNumberFormatList();
     for (NumberFormat format : formatList) {
       if (format.hasLeadingDigits()) {
         Pattern leadingDigitsPattern = Pattern.compile(format.getLeadingDigits());
@@ -164,6 +167,7 @@ public class AsYouTypeFormatter {
     prefixBeforeNationalNumber = new StringBuffer();
     nationalNumber = new StringBuffer();
     ableToFormat = true;
+    isInternationalFormatting = false;
     if (!currentMetaData.equals(defaultMetaData)) {
       initializeCountrySpecificInfo(defaultCountry);
     }
@@ -269,6 +273,7 @@ public class AsYouTypeFormatter {
     nationalNumber = new StringBuffer();
     Matcher iddMatcher = internationalPrefix.matcher(accruedInputWithoutFormatting);
     if (iddMatcher.lookingAt()) {
+      isInternationalFormatting = true;
       int startOfCountryCode = iddMatcher.end();
       StringBuffer numberIncludeCountryCode =
           new StringBuffer(accruedInputWithoutFormatting.substring(startOfCountryCode));

@@ -53,6 +53,13 @@ public final class Phonenumber {
     public boolean hasItalianLeadingZero() { return hasItalianLeadingZero; }
     public boolean getItalianLeadingZero() { return italianLeadingZero_; }
     
+    // optional string raw_input = 5;
+    public static final int RAW_INPUT_FIELD_NUMBER = 5;
+    private boolean hasRawInput;
+    private java.lang.String rawInput_ = "";
+    public boolean hasRawInput() { return hasRawInput; }
+    public java.lang.String getRawInput() { return rawInput_; }
+    
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -75,6 +82,9 @@ public final class Phonenumber {
       }
       if (hasItalianLeadingZero()) {
         output.writeBool(4, getItalianLeadingZero());
+      }
+      if (hasRawInput()) {
+        output.writeString(5, getRawInput());
       }
     }
     
@@ -99,6 +109,10 @@ public final class Phonenumber {
       if (hasItalianLeadingZero()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(4, getItalianLeadingZero());
+      }
+      if (hasRawInput()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(5, getRawInput());
       }
       memoizedSerializedSize = size;
       return size;
@@ -256,6 +270,9 @@ public final class Phonenumber {
         if (other.hasItalianLeadingZero()) {
           setItalianLeadingZero(other.getItalianLeadingZero());
         }
+        if (other.hasRawInput()) {
+          setRawInput(other.getRawInput());
+        }
         return this;
       }
       
@@ -288,6 +305,10 @@ public final class Phonenumber {
             }
             case 32: {
               setItalianLeadingZero(input.readBool());
+              break;
+            }
+            case 42: {
+              setRawInput(input.readString());
               break;
             }
           }
@@ -367,6 +388,27 @@ public final class Phonenumber {
       public Builder clearItalianLeadingZero() {
         result.hasItalianLeadingZero = false;
         result.italianLeadingZero_ = false;
+        return this;
+      }
+      
+      // optional string raw_input = 5;
+      public boolean hasRawInput() {
+        return result.hasRawInput();
+      }
+      public java.lang.String getRawInput() {
+        return result.getRawInput();
+      }
+      public Builder setRawInput(java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  result.hasRawInput = true;
+        result.rawInput_ = value;
+        return this;
+      }
+      public Builder clearRawInput() {
+        result.hasRawInput = false;
+        result.rawInput_ = getDefaultInstance().getRawInput();
         return this;
       }
       

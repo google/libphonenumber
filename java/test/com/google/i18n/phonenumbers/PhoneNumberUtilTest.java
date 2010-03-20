@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -65,7 +64,7 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testGetInstanceLoadUSMetadata() throws IOException {
-    PhoneMetadata metadata = phoneUtil.getPhoneMetadata("US");
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion("US");
     assertEquals("US", metadata.getId());
     assertEquals(1, metadata.getCountryCode());
     assertEquals("011", metadata.getInternationalPrefix());
@@ -86,7 +85,7 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testGetInstanceLoadDEMetadata() {
-    PhoneMetadata metadata = phoneUtil.getPhoneMetadata("DE");
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion("DE");
     assertEquals("DE", metadata.getId());
     assertEquals(49, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
@@ -105,7 +104,7 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testGetInstanceLoadARMetadata() {
-    PhoneMetadata metadata = phoneUtil.getPhoneMetadata("AR");
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion("AR");
     assertEquals("AR", metadata.getId());
     assertEquals(54, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
@@ -740,13 +739,15 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testGetCountryCodeForRegion() {
     assertEquals(1, phoneUtil.getCountryCodeForRegion("US"));
     assertEquals(64, phoneUtil.getCountryCodeForRegion("NZ"));
+    assertEquals(0, phoneUtil.getCountryCodeForRegion(null));
+    assertEquals(0, phoneUtil.getCountryCodeForRegion("ZZ"));
+    // CS is already deprecated so the library doesn't support it.
+    assertEquals(0, phoneUtil.getCountryCodeForRegion("CS"));
   }
 
-  public void testGetNANPACountries() {
-    Set nanpaCountries = phoneUtil.getNANPACountries();
-    assertEquals(2, nanpaCountries.size());
-    assertTrue(nanpaCountries.contains("US"));
-    assertTrue(nanpaCountries.contains("BS"));
+  public void testIsNANPACountry() {
+    assertTrue(phoneUtil.isNANPACountry("US"));
+    assertTrue(phoneUtil.isNANPACountry("BS"));
   }
 
   public void testIsPossibleNumber() {
@@ -857,6 +858,12 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("", PhoneNumberUtil.extractPossibleNumber("Num-...."));
     // Leading brackets are stripped - these are not used when parsing.
     assertEquals("650) 253-0000", PhoneNumberUtil.extractPossibleNumber("(650) 253-0000"));
+
+    // Trailing non-alpha-numeric characters should be removed.
+    assertEquals("650) 253-0000", PhoneNumberUtil.extractPossibleNumber("(650) 253-0000..- .."));
+    assertEquals("650) 253-0000", PhoneNumberUtil.extractPossibleNumber("(650) 253-0000."));
+    // This case has a trailing RTL char.
+    assertEquals("650) 253-0000", PhoneNumberUtil.extractPossibleNumber("(650) 253-0000\u200F"));
   }
 
   public void testMaybeStripNationalPrefix() {
@@ -938,7 +945,7 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testMaybeExtractCountryCode() {
-    PhoneMetadata metadata = phoneUtil.getPhoneMetadata("US");
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion("US");
     // Note that for the US, the IDD is 011.
     try {
       String phoneNumber = "011112-3456789";
@@ -1310,6 +1317,14 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.parse("(800) 901-3355 ,extension 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 , 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 ext: 7246433", "US"));
+  }
+
+  public void testParseAndKeepRaw() throws Exception {
+    PhoneNumber alphaNumericNumber =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(180074935247L)
+            .setRawInput("1800 six-flags").build();
+    assertEquals(alphaNumericNumber,
+                 phoneUtil.parseAndKeepRawInput("1800 six-flags", "US"));
   }
 
   public void testCountryWithNoNumberDesc() {

@@ -50,6 +50,11 @@ message PhoneNumber {
 // phone numbers. For an Italian phone number, if its national (significant) number starts
 // with the digit zero, set this flag to true.
   optional bool italian_leading_zero = 4;
+
+// This field is used to store the raw input string containing phone numbers before it was
+// canonicalized by the library. For example, it could be used to store alphanumerical numbers
+// such as "1-800-GOOG-411".
+  optional string raw_input = 5;
 }
 
 // Examples

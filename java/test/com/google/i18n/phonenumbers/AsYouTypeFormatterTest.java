@@ -113,6 +113,25 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011 44 6 123 123 123", formatter.inputDigit('3'));
 
     formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("01", formatter.inputDigit('1'));
+    assertEquals("011", formatter.inputDigit('1'));
+    assertEquals("0115", formatter.inputDigit('5'));
+    assertEquals("01154", formatter.inputDigit('4'));
+    assertEquals("011 54 9", formatter.inputDigit('9'));
+    assertEquals("011 54 91", formatter.inputDigit('1'));
+    assertEquals("011 54 911", formatter.inputDigit('1'));
+    assertEquals("011 54 9 11 2\u2008\u2008\u2008 \u2008\u2008\u2008\u2008",
+                 formatter.inputDigit('2'));
+    assertEquals("011 54 9 11 23\u2008\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
+    assertEquals("011 54 9 11 231\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
+    assertEquals("011 54 9 11 2312 \u2008\u2008\u2008\u2008", formatter.inputDigit('2'));
+    assertEquals("011 54 9 11 2312 1\u2008\u2008\u2008", formatter.inputDigit('1'));
+    assertEquals("011 54 9 11 2312 12\u2008\u2008", formatter.inputDigit('2'));
+    assertEquals("011 54 9 11 2312 123\u2008", formatter.inputDigit('3'));
+    assertEquals("011 54 9 11 2312 1234", formatter.inputDigit('4'));    
+
+    formatter.clear();
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+1", formatter.inputDigit('1'));
     assertEquals("+16", formatter.inputDigit('6'));
@@ -228,5 +247,39 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("03012", formatter.inputDigit('2'));
     assertEquals("030123", formatter.inputDigit('3'));
     assertEquals("0301234", formatter.inputDigit('4'));
+  }
+
+  public void testAsYouTypeFormatterAR() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("AR");
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("01", formatter.inputDigit('1'));
+    assertEquals("011", formatter.inputDigit('1'));
+    assertEquals("0117", formatter.inputDigit('7'));
+    assertEquals("01170", formatter.inputDigit('0'));
+    assertEquals("011 703\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
+    assertEquals("011 7031-\u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
+    assertEquals("011 7031-3\u2008\u2008\u2008", formatter.inputDigit('3'));
+    assertEquals("011 7031-30\u2008\u2008", formatter.inputDigit('0'));
+    assertEquals("011 7031-300\u2008", formatter.inputDigit('0'));
+    assertEquals("011 7031-3000", formatter.inputDigit('0'));
+  }
+
+  public void testAsYouTypeFormatterARMobile() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("AR");
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+54", formatter.inputDigit('4'));
+    assertEquals("+549", formatter.inputDigit('9'));
+    assertEquals("+5491", formatter.inputDigit('1'));
+    assertEquals("+54 911", formatter.inputDigit('1'));
+    assertEquals("+54 9 11 2\u2008\u2008\u2008 \u2008\u2008\u2008\u2008",
+                 formatter.inputDigit('2'));
+    assertEquals("+54 9 11 23\u2008\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
+    assertEquals("+54 9 11 231\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
+    assertEquals("+54 9 11 2312 \u2008\u2008\u2008\u2008", formatter.inputDigit('2'));
+    assertEquals("+54 9 11 2312 1\u2008\u2008\u2008", formatter.inputDigit('1'));
+    assertEquals("+54 9 11 2312 12\u2008\u2008", formatter.inputDigit('2'));
+    assertEquals("+54 9 11 2312 123\u2008", formatter.inputDigit('3'));
+    assertEquals("+54 9 11 2312 1234", formatter.inputDigit('4'));
   }
 }
