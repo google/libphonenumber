@@ -164,7 +164,7 @@ public class PhoneNumberUtil {
       .add(228)  // Togo
       .add(240)  // Equatorial Guinea
       .add(241)  // Gabon
-      .build();  
+      .build();
 
   // Pattern that makes it easy to distinguish whether a country has a unique international dialing
   // prefix or not. If a country has a unique international prefix (e.g. 011 in USA), it will be
@@ -220,7 +220,7 @@ public class PhoneNumberUtil {
   // We use this pattern to check if the phone number has at least three letters in it - if so, then
   // we treat it as a number where some phone-number digits are represented by letters.
   private static final Pattern VALID_ALPHA_PHONE_PATTERN = Pattern.compile("(?:.*?[A-Za-z]){3}.*");
-  
+
   // Regular expression of viable phone numbers. This is location independent. Checks we have at
   // least three leading digits, and only valid punctuation, alpha characters and
   // digits in the phone number. Does not include extension data.
@@ -1106,7 +1106,7 @@ public class PhoneNumberUtil {
     if (metadata == null) {
       LOGGER.log(Level.SEVERE, "Unsupported country code provided.");
       return 0;
-    }    
+    }
     return metadata.getCountryCode();
   }
 

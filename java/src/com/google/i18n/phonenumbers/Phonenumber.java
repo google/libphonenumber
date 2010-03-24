@@ -59,7 +59,7 @@ public final class Phonenumber {
     private java.lang.String rawInput_ = "";
     public boolean hasRawInput() { return hasRawInput; }
     public java.lang.String getRawInput() { return rawInput_; }
-    
+
     private void initFields() {
     }
     public final boolean isInitialized() {
@@ -411,7 +411,7 @@ public final class Phonenumber {
         result.rawInput_ = getDefaultInstance().getRawInput();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:i18n.phonenumbers.PhoneNumber)
     }
     

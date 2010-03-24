@@ -129,7 +129,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011 54 9 11 2312 1\u2008\u2008\u2008", formatter.inputDigit('1'));
     assertEquals("011 54 9 11 2312 12\u2008\u2008", formatter.inputDigit('2'));
     assertEquals("011 54 9 11 2312 123\u2008", formatter.inputDigit('3'));
-    assertEquals("011 54 9 11 2312 1234", formatter.inputDigit('4'));    
+    assertEquals("011 54 9 11 2312 1234", formatter.inputDigit('4'));
 
     formatter.clear();
     assertEquals("+", formatter.inputDigit('+'));
