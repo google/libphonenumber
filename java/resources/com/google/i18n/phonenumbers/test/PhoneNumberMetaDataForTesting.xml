@@ -16,7 +16,8 @@
 
      MetaData on Phone Number Plan and formatting rules. This file is used
      solely for the purpose of unittesting, so data in this file is not
-     necessarily consistent with that of PhoneNumberMetaData.xml
+     necessarily consistent with that of
+     ../src/PhoneNumberMetaData.xml
 -->
 
 <phoneNumberMetadata>
@@ -231,6 +232,52 @@
         <nationalNumberPattern>89(?:2\d{3}|9\d{6})</nationalNumberPattern>
         <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
       </premiumRate>
+    </territory>
+
+    <!-- Korea (Rep. of) -->
+    <!-- http://www.itu.int/oth/T0202000072/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B82 -->
+    <!-- http://www.kcc.go.kr/user.do?mode=view&page=P02030300&dc=K02030300&boardId=1074&boardSeq=2349 -->
+    <!-- http://www.kcc.go.kr/user.do?mode=view&page=P02030300&dc=K02030300&boardId=1074&boardSeq=2240 -->
+    <!-- http://www.telecentro.co.kr/sub/index.php?job=detail&ebcf_id=faq&page=1&mid=0503&eb_seq=36 -->
+    <!-- Exceptions :
+        internationalPrefix
+            0031, 0033, 0071, 0073 - Special services of KT and DACOM, ignorable
+        nationalPrefix
+            1[4-6]XX-YYYY - Country-wide common number services, display as it is without hyphens -->
+    <territory id="KR" countryCode="82" internationalPrefix="00(?:[124-68]|[37]\d{2})"
+               nationalPrefix="0" nationalPrefixForParsing="0(?:8[1-46-8]|85\d{2})?"
+               nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <numberFormat leadingDigits="1(?:0|1[19]|[69]9|5(?:44|59|8))|[57]0"
+                      pattern="(\d{2})(\d{4})(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-9][1-9][2-9]"
+                      pattern="(\d{2})(\d{3})(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="1312"
+                      pattern="(\d{3})(\d)(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="131[13-9]"
+                      pattern="(\d{3})(\d{2})(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="13[2-9]"
+                      pattern="(\d{3})(\d{3})(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="30"
+                      pattern="(\d{2})(\d{2})(\d{3})(\d{4})">$1-$2-$3-$4</numberFormat>
+        <numberFormat leadingDigits="2(?:[26]|3(?:01|1[45]|2[17-9]|39|4|6[67]|7[078]))"
+                      pattern="(\d)(\d{4})(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="2(?:3(?:0[02-9]|1[0-36-9]|2[02-6]|3[0-8]|6[0-589]|7[1-69]|[589])|[457-9])"
+                      pattern="(\d)(\d{3})(\d{4})">$1-$2-$3</numberFormat>
+        <numberFormat leadingDigits="21(?:[0-247-9]|3[124]|6[1269])"
+                      pattern="(\d)(\d{3})">$1-$2</numberFormat>
+        <numberFormat leadingDigits="21(?:3[035-9]|6[03-578])"
+                      pattern="(\d)(\d{4})">$1-$2</numberFormat>
+        <numberFormat leadingDigits="[3-9][1-9]1(?:[0-247-9]|3[124]|6[1269])"
+                      pattern="(\d{2})(\d{3})">$1-$2</numberFormat>
+        <numberFormat leadingDigits="[3-9][1-9]1(?:3[035-9]|6[03-578])"
+                      pattern="(\d{2})(\d{4})">$1-$2</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[1-79]\d{3,9}|8\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
+      </generalDesc>
     </territory>
 
     <!-- Mexico -->

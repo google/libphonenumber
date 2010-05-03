@@ -123,6 +123,7 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneNumber deNumber =
         PhoneNumber.newBuilder().setCountryCode(49).setNationalNumber(30123456).build();
     assertEquals(deNumber, phoneUtil.getExampleNumber("DE"));
+    assertEquals(deNumber, phoneUtil.getExampleNumber("de"));
 
     assertEquals(deNumber,
                  phoneUtil.getExampleNumberForType("DE",
@@ -415,6 +416,8 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.formatOutOfCountryCallingNumber(arNumber2, "AU"));
     assertEquals("011 15 8765-4321 ext. 1234",
                  phoneUtil.formatOutOfCountryCallingNumber(arNumber2, "AR"));
+    assertEquals("011 15 8765-4321 ext. 1234",
+                 phoneUtil.formatOutOfCountryCallingNumber(arNumber2, "ar"));
   }
 
   public void testFormatOutOfCountryWithPreferredIntlPrefix() {
@@ -687,6 +690,7 @@ public class PhoneNumberUtilTest extends TestCase {
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(2423232345L).build();
     assertTrue(phoneUtil.isValidNumber(bsNumber1));
     assertTrue(phoneUtil.isValidNumberForRegion(bsNumber1, "BS"));
+    assertTrue(phoneUtil.isValidNumberForRegion(bsNumber1, "bs"));
     assertFalse(phoneUtil.isValidNumberForRegion(bsNumber1, "US"));
     PhoneNumber bsNumber2 =
         PhoneNumber.newBuilder(bsNumber1).setNationalNumber(2421232345L).build();
@@ -739,6 +743,7 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testGetCountryCodeForRegion() {
     assertEquals(1, phoneUtil.getCountryCodeForRegion("US"));
     assertEquals(64, phoneUtil.getCountryCodeForRegion("NZ"));
+    assertEquals(64, phoneUtil.getCountryCodeForRegion("nz"));
     assertEquals(0, phoneUtil.getCountryCodeForRegion(null));
     assertEquals(0, phoneUtil.getCountryCodeForRegion("ZZ"));
     // CS is already deprecated so the library doesn't support it.
@@ -748,6 +753,7 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testIsNANPACountry() {
     assertTrue(phoneUtil.isNANPACountry("US"));
     assertTrue(phoneUtil.isNANPACountry("BS"));
+    assertTrue(phoneUtil.isNANPACountry("bs"));
   }
 
   public void testIsPossibleNumber() {
@@ -771,6 +777,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertTrue(phoneUtil.isPossibleNumber("(020) 7031 3000", "GB"));
     assertTrue(phoneUtil.isPossibleNumber("7031 3000", "GB"));
     assertTrue(phoneUtil.isPossibleNumber("3331 6005", "NZ"));
+    assertTrue(phoneUtil.isPossibleNumber("3331 6005", "nz"));
   }
 
   public void testIsPossibleNumberWithReason() {
@@ -1032,10 +1039,37 @@ public class PhoneNumberUtilTest extends TestCase {
 
     // National prefix attached.
     assertEquals(nzNumber, phoneUtil.parse("033316005", "NZ"));
+    assertEquals(nzNumber, phoneUtil.parse("033316005", "nz"));
     assertEquals(nzNumber, phoneUtil.parse("33316005", "NZ"));
     // National prefix attached and some formatting present.
     assertEquals(nzNumber, phoneUtil.parse("03-331 6005", "NZ"));
     assertEquals(nzNumber, phoneUtil.parse("03 331 6005", "NZ"));
+
+    // Testing international prefixes.
+    // Should strip country code.
+    assertEquals(nzNumber, phoneUtil.parse("0064 3 331 6005", "NZ"));
+    // Try again, but this time we have an international number with Region Code US. It should
+    // recognise the country code and parse accordingly.
+    assertEquals(nzNumber, phoneUtil.parse("01164 3 331 6005", "US"));
+    assertEquals(nzNumber, phoneUtil.parse("+64 3 331 6005", "US"));
+
+    PhoneNumber nzNumber2 =
+        PhoneNumber.newBuilder().setCountryCode(64).setNationalNumber(64123456L).build();
+    assertEquals(nzNumber2, phoneUtil.parse("64(0)64123456", "NZ"));
+    // Check that using a "/" is fine in a phone number.
+    PhoneNumber deNumber =
+        PhoneNumber.newBuilder().setCountryCode(49).setNationalNumber(12345678L).build();
+    assertEquals(deNumber, phoneUtil.parse("123/45678", "DE"));
+
+    // Check it doesn't use the '1' as a country code when parsing if the phone number was already
+    // possible.
+    PhoneNumber usNumber =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(1234567890L).build();
+    assertEquals(usNumber, phoneUtil.parse("123-456-7890", "US"));    
+
+  }
+
+   public void testParseNumberWithAlphaCharacters() throws Exception {
     // Test case with alpha characters.
     PhoneNumber tollfreeNumber =
         PhoneNumber.newBuilder().setCountryCode(64).setNationalNumber(800332005L).build();
@@ -1048,20 +1082,9 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(premiumNumber, phoneUtil.parse("0900 332 600a5", "NZ"));
     assertEquals(premiumNumber, phoneUtil.parse("0900 332 600A5", "NZ"));
     assertEquals(premiumNumber, phoneUtil.parse("0900 a332 600A5", "NZ"));
+  }
 
-    // Testing international prefixes.
-    // Should strip country code.
-    assertEquals(nzNumber, phoneUtil.parse("0064 3 331 6005", "NZ"));
-    // Try again, but this time we have an international number with Region Code US. It should
-    // recognise the country code and parse accordingly.
-    assertEquals(nzNumber, phoneUtil.parse("01164 3 331 6005", "US"));
-    assertEquals(nzNumber, phoneUtil.parse("+64 3 331 6005", "US"));
-
-    // Test for http://b/issue?id=2247493
-    PhoneNumber nzNumber2 =
-        PhoneNumber.newBuilder().setCountryCode(64).setNationalNumber(64123456L).build();
-    assertEquals(nzNumber2, phoneUtil.parse("64(0)64123456", "NZ"));
-
+  public void testParseWithInternationalPrefixes() throws Exception {
     PhoneNumber usNumber =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6503336000L).build();
     assertEquals(usNumber, phoneUtil.parse("+1 (650) 333-6000", "NZ"));
@@ -1075,12 +1098,9 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(usNumber, phoneUtil.parse("0191-650-333-6000", "SG"));
     // Calling the US number from Poland
     assertEquals(usNumber, phoneUtil.parse("0~01-650-333-6000", "PL"));
-    // Check it doesn't use the '1' as a country code when parsing if the phone number was already
-    // possible.
-    PhoneNumber usNumber2 =
-        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(1234567890L).build();
-    assertEquals(usNumber2, phoneUtil.parse("123-456-7890", "US"));
+  }
 
+  public void testParseWithLeadingZero() throws Exception {
     PhoneNumber itNumber =
         PhoneNumber.newBuilder().setCountryCode(39).setNationalNumber(236618300L)
             .setItalianLeadingZero(true).build();
@@ -1090,12 +1110,9 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneNumber itNumber2 =
         PhoneNumber.newBuilder().setCountryCode(39).setNationalNumber(312345678L).build();
     assertEquals(itNumber2, phoneUtil.parse("312 345 678", "IT"));
+  }
 
-    // Check that using a "/" is fine in a phone number.
-    PhoneNumber deNumber =
-        PhoneNumber.newBuilder().setCountryCode(49).setNationalNumber(12345678L).build();
-    assertEquals(deNumber, phoneUtil.parse("123/45678", "DE"));
-
+  public void testParseNationalNumberArgentina() throws Exception {
     // Test parsing mobile numbers of Argentina.
     PhoneNumber arNumber =
         PhoneNumber.newBuilder().setCountryCode(54).setNationalNumber(93435551212L).build();
@@ -1122,7 +1139,9 @@ public class PhoneNumberUtilTest extends TestCase {
         PhoneNumber.newBuilder().setCountryCode(54).setNationalNumber(2312340000L).build();
     assertEquals(arNumber5, phoneUtil.parse("+54 23 1234 0000", "AR"));
     assertEquals(arNumber5, phoneUtil.parse("023 1234 0000", "AR"));
+  }
 
+  public void testParseWithXInNumber() throws Exception {
     // Test that having an 'x' in the phone number at the start is ok and that it just gets removed.
     PhoneNumber arNumber6 =
         PhoneNumber.newBuilder().setCountryCode(54).setNationalNumber(123456789L).build();
@@ -1137,7 +1156,9 @@ public class PhoneNumberUtilTest extends TestCase {
     // to 7 digits. This assumption is okay for now as all the countries where a carrier selection
     // code is written in the form of xx have a national significant number of length larger than 7.
     assertEquals(arFromUs, phoneUtil.parse("011xx5481429712", "US"));
+  }
 
+  public void testParseNumbersMexico() throws Exception {
     // Test parsing fixed-line numbers of Mexico.
     PhoneNumber mxNumber =
         PhoneNumber.newBuilder().setCountryCode(52).setNationalNumber(4499780001L).build();
@@ -1151,24 +1172,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(mxNumber2, phoneUtil.parse("+52 1 33 1234-5678", "MX"));
     assertEquals(mxNumber2, phoneUtil.parse("044 (33) 1234-5678", "MX"));
     assertEquals(mxNumber2, phoneUtil.parse("045 33 1234-5678", "MX"));
-
-    // Test that if a number has two extensions specified, we ignore the second.
-    PhoneNumber usWithTwoExtensionsNumber =
-        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(2121231234L)
-            .setExtension("508").build();
-    assertEquals(usWithTwoExtensionsNumber, phoneUtil.parse("(212)123-1234 x508/x1234",
-                                                            "US"));
-    assertEquals(usWithTwoExtensionsNumber, phoneUtil.parse("(212)123-1234 x508/ x1234",
-                                                            "US"));
-    assertEquals(usWithTwoExtensionsNumber, phoneUtil.parse("(212)123-1234 x508\\x1234",
-                                                            "US"));
-
-    // Test parsing numbers in the form (645) 123-1234-910# works, where the last 3 digits before
-    // the # are an extension.
-    PhoneNumber usWithExtension =
-        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6451231234L)
-            .setExtension("910").build();
-    assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234-910#", "US"));
   }
 
   public void testFailedParseOnInvalidNumbers() {
@@ -1317,6 +1320,24 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.parse("(800) 901-3355 ,extension 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 , 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 ext: 7246433", "US"));
+
+    // Test that if a number has two extensions specified, we ignore the second.
+    PhoneNumber usWithTwoExtensionsNumber =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(2121231234L)
+            .setExtension("508").build();
+    assertEquals(usWithTwoExtensionsNumber, phoneUtil.parse("(212)123-1234 x508/x1234",
+                                                            "US"));
+    assertEquals(usWithTwoExtensionsNumber, phoneUtil.parse("(212)123-1234 x508/ x1234",
+                                                            "US"));
+    assertEquals(usWithTwoExtensionsNumber, phoneUtil.parse("(212)123-1234 x508\\x1234",
+                                                            "US"));
+
+    // Test parsing numbers in the form (645) 123-1234-910# works, where the last 3 digits before
+    // the # are an extension.
+    PhoneNumber usWithExtension2 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6451231234L)
+            .setExtension("910").build();
+    assertEquals(usWithExtension2, phoneUtil.parse("+1 (645) 123 1234-910#", "US"));
   }
 
   public void testParseAndKeepRaw() throws Exception {
@@ -1334,7 +1355,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("+376 12345", phoneUtil.format(adNumber,
                                                 PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
     assertEquals("+37612345", phoneUtil.format(adNumber,
-                                                PhoneNumberUtil.PhoneNumberFormat.E164));
+                                               PhoneNumberUtil.PhoneNumberFormat.E164));
     assertEquals("12345", phoneUtil.format(adNumber,
                                            PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
     assertEquals(PhoneNumberUtil.PhoneNumberType.UNKNOWN,

@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -84,24 +85,32 @@ public class BuildMetadataProtoFromXml {
     }
   }
 
+  private static String validateRE(String regex) {
+    Pattern regexPattern = Pattern.compile(regex);
+    // return regex itself if it is of correct regex syntax
+    return regex;
+  }
+
   private static PhoneMetadata loadCountryMetadata(String regionCode, Element element) {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     metadata.setId(regionCode);
     metadata.setCountryCode(Integer.parseInt(element.getAttribute("countryCode")));
-    metadata.setInternationalPrefix(element.getAttribute("internationalPrefix"));
+    metadata.setInternationalPrefix(validateRE(element.getAttribute("internationalPrefix")));
     if (element.hasAttribute("preferredInternationalPrefix")) {
       String preferredInternationalPrefix = element.getAttribute("preferredInternationalPrefix");
       metadata.setPreferredInternationalPrefix(preferredInternationalPrefix);
     }
     String nationalPrefix = "";
+    String nationalPrefixFormattingRule = "";
     if (element.hasAttribute("nationalPrefix")) {
       nationalPrefix = element.getAttribute("nationalPrefix");
       metadata.setNationalPrefix(nationalPrefix);
-      metadata.setNationalPrefixFormattingRule(
-          getNationalPrefixFormattingRuleFromElement(element, nationalPrefix));
+       nationalPrefixFormattingRule =
+          validateRE(getNationalPrefixFormattingRuleFromElement(element, nationalPrefix));
 
       if (element.hasAttribute("nationalPrefixForParsing")) {
-        metadata.setNationalPrefixForParsing(element.getAttribute("nationalPrefixForParsing"));
+        metadata.setNationalPrefixForParsing(
+            validateRE(element.getAttribute("nationalPrefixForParsing")));
         if (element.hasAttribute("nationalPrefixTransformRule")) {
           metadata.setNationalPrefixTransformRule(
               element.getAttribute("nationalPrefixTransformRule"));
@@ -122,17 +131,16 @@ public class BuildMetadataProtoFromXml {
         Element numberFormatElement = (Element) numberFormatElements.item(i);
         NumberFormat.Builder format = NumberFormat.newBuilder();
         if (numberFormatElement.hasAttribute("nationalPrefixFormattingRule")) {
-          format.setNationalPrefixFormattingRule(
-              getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix));
+          format.setNationalPrefixFormattingRule(validateRE(
+              getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix)));
         } else {
-          format.setNationalPrefixFormattingRule(metadata.getNationalPrefixFormattingRule());
+          format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
         }
         if (numberFormatElement.hasAttribute("leadingDigits")) {
-          format.setLeadingDigits(numberFormatElement.getAttribute("leadingDigits"));
+          format.setLeadingDigits(validateRE(numberFormatElement.getAttribute("leadingDigits")));
         }
-        format.setPattern(numberFormatElement.getAttribute("pattern"));
-        String formatValue = numberFormatElement.getFirstChild().getNodeValue();
-        format.setFormat(formatValue);
+        format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
+        format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
         metadata.addNumberFormat(format.build());
       }
     }
@@ -144,10 +152,10 @@ public class BuildMetadataProtoFromXml {
         Element numberFormatElement = (Element) intlNumberFormatElements.item(i);
         NumberFormat.Builder format = NumberFormat.newBuilder();
         if (numberFormatElement.hasAttribute("leadingDigits")) {
-          format.setLeadingDigits(numberFormatElement.getAttribute("leadingDigits"));
+          format.setLeadingDigits(validateRE(numberFormatElement.getAttribute("leadingDigits")));
         }
-        format.setPattern(numberFormatElement.getAttribute("pattern"));
-        format.setFormat(numberFormatElement.getFirstChild().getNodeValue());
+        format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
+        format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
         metadata.addIntlNumberFormat(format.build());
       }
     }
@@ -215,14 +223,14 @@ public class BuildMetadataProtoFromXml {
       Element element = (Element) phoneNumberDescList.item(0);
       NodeList possiblePattern = element.getElementsByTagName("possibleNumberPattern");
       if (possiblePattern.getLength() > 0) {
-        numberDesc.setPossibleNumberPattern(possiblePattern.
-            item(0).getFirstChild().getNodeValue());
+        numberDesc.setPossibleNumberPattern(
+            validateRE(possiblePattern.item(0).getFirstChild().getNodeValue()));
       }
 
       NodeList validPattern = element.getElementsByTagName("nationalNumberPattern");
       if (validPattern.getLength() > 0) {
-        numberDesc.setNationalNumberPattern(validPattern.
-            item(0).getFirstChild().getNodeValue());
+        numberDesc.setNationalNumberPattern(
+            validateRE(validPattern.item(0).getFirstChild().getNodeValue()));
       }
 
       if (!liteBuild) {

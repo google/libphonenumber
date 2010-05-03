@@ -20,8 +20,11 @@
 
 syntax = "proto2";
 
+option cc_api_version = 1;
+option java_api_version = 1;
+option py_api_version = 1;
+
 option java_package = "com.google.i18n.phonenumbers";
-option optimize_for = LITE_RUNTIME;
 package i18n.phonenumbers;
 
 message NumberFormat {
@@ -51,9 +54,18 @@ message NumberFormat {
   // This field specifies how the national prefix ($NP) together with the first
   // group ($FG) in the national significant number should be formatted in
   // the NATIONAL format when a national prefix exists for a certain country.
-  // When present, it overrides the national_prefix_formatting_rule specified
-  // in PhoneNumberDesc. See the comment in PhoneNumberDesc for more information
-  // on how this rule is specified.
+  // For example, when this field contains "($NP$FG)", a number from Beijing,
+  // China (whose $NP = 0), which would by default be formatted without
+  // national prefix as 10 1234 5678 in NATIONAL format, will instead be
+  // formatted as (010) 1234 5678; to format it as (0)10 1234 5678, the field
+  // would contain "($NP)$FG". Note $FG should always be present in this field,
+  // but $NP can be omitted. For example, having "$FG" could indicate the
+  // number should be formatted in NATIONAL format without the national prefix.
+  // This is commonly used to override the rule from generalDesc.
+  //
+  // When this field is missing, a number will be formatted without national
+  // prefix in NATIONAL format. This field does not affect how a number
+  // is formatted in other formats, such as INTERNATIONAL.
   optional string national_prefix_formatting_rule = 4;
 }
 
@@ -184,24 +196,7 @@ message PhoneMetadata {
   // 15 (inserted after the area code of 343) is used.
   repeated NumberFormat intl_number_format = 20;
 
-  // This field specifies how the national prefix ($NP) together with the first
-  // group ($FG) in the national significant number should be formatted in
-  // the NATIONAL format when a national prefix exists for a certain country.
-  // For example, when this field contains "($NP$FG)", a number from Beijing,
-  // China (whose $NP = 0), which would by default be formatted without
-  // national prefix as 10 1234 5678 in NATIONAL format, will instead be
-  // formatted as (010) 1234 5678; to format it as (0)10 1234 5678, the field
-  // would contain "($NP)$FG". Note $FG should always be present in this field,
-  // but $NP can be omitted. For example, having "$FG" could indicate the
-  // number should be formatted in NATIONAL format without the national prefix.
-  // This is commonly used to override the rule from generalDesc.
-  //
-  // When this field is missing, a number will be formatted without national
-  // prefix in NATIONAL format. This field does not affect how a number
-  // is formatted in other formats, such as INTERNATIONAL.
-  //
-  // This field applies to all numberFormats unless overridden by the
-  // national_prefix_formatting_rule in a specific numberFormat.
+  // Deprecated.
   optional string national_prefix_formatting_rule = 21;
 }
 

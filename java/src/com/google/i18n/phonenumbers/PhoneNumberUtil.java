@@ -161,6 +161,7 @@ public class PhoneNumberUtil {
       new ImmutableSet.Builder<Integer>()
       .add(39)  // Italy
       .add(225)  // C™te d'Ivoire
+      .add(227)  // Niger
       .add(228)  // Togo
       .add(240)  // Equatorial Guinea
       .add(241)  // Gabon
@@ -562,7 +563,7 @@ public class PhoneNumberUtil {
    * supplied is used only for the resultant log message.
    */
   private boolean isValidRegionCode(String regionCode, int countryCode, String number) {
-    if (regionCode == null || regionCode.equals("ZZ")) {
+    if (regionCode == null || regionCode.equalsIgnoreCase("ZZ")) {
       LOGGER.log(Level.WARNING,
                  "Number " + number + "has invalid or missing country code (" + countryCode + ")");
       return false;
@@ -674,11 +675,12 @@ public class PhoneNumberUtil {
    */
   public String formatOutOfCountryCallingNumber(PhoneNumber number,
                                                 String countryCallingFrom) {
-    if (countryCallingFrom == null || countryCallingFrom.equals("ZZ")) {
+    if (countryCallingFrom == null || countryCallingFrom.equalsIgnoreCase("ZZ")) {
       LOGGER.log(Level.WARNING,
                  "Trying to format number from invalid region. International formatting applied.");
       return format(number, PhoneNumberFormat.INTERNATIONAL);
     }
+    countryCallingFrom = countryCallingFrom.toUpperCase();
     int countryCode = number.getCountryCode();
     if (countryCode == NANPA_COUNTRY_CODE && isNANPACountry(countryCallingFrom)) {
       // For NANPA countries, return the national format for these countries but prefix it with the
@@ -837,6 +839,7 @@ public class PhoneNumberUtil {
    *    does not contain such information.
    */
   public PhoneNumber getExampleNumber(String regionCode) {
+    regionCode = regionCode.toUpperCase();
     return getExampleNumberForType(regionCode, PhoneNumberType.FIXED_LINE);
   }
 
@@ -850,6 +853,7 @@ public class PhoneNumberUtil {
    *     does not contain such information.
    */
   public PhoneNumber getExampleNumberForType(String regionCode, PhoneNumberType type) {
+    regionCode = regionCode.toUpperCase();
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode), type);
     try {
       if (desc.hasExampleNumber()) {
@@ -1021,6 +1025,7 @@ public class PhoneNumberUtil {
    * @return  a boolean that indicates whether the number is of a valid pattern
    */
   public boolean isValidNumberForRegion(PhoneNumber number, String regionCode) {
+    regionCode = regionCode.toUpperCase();
     if (number.getCountryCode() != getCountryCodeForRegion(regionCode)) {
       return false;
     }
@@ -1098,11 +1103,11 @@ public class PhoneNumberUtil {
    * @return  the country calling code for the country/region denoted by regionCode
    */
   public int getCountryCodeForRegion(String regionCode) {
-    if (regionCode == null || regionCode.equals("ZZ")) {
+    if (regionCode == null || regionCode.equalsIgnoreCase("ZZ")) {
       LOGGER.log(Level.SEVERE, "Invalid or missing country code provided.");
       return 0;
     }
-    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    PhoneMetadata metadata = getMetadataForRegion(regionCode.toUpperCase());
     if (metadata == null) {
       LOGGER.log(Level.SEVERE, "Unsupported country code provided.");
       return 0;
@@ -1117,6 +1122,7 @@ public class PhoneNumberUtil {
    * @return  true if regionCode is one of the countries under NANPA
    */
   public boolean isNANPACountry(String regionCode) {
+    regionCode = regionCode.toUpperCase();
     return nanpaCountries.contains(regionCode);
   }
 
@@ -1202,6 +1208,7 @@ public class PhoneNumberUtil {
    * @return  true if the number is possible
    */
   public boolean isPossibleNumber(String number, String countryDialingFrom) {
+    countryDialingFrom = countryDialingFrom.toUpperCase();
     try {
       return isPossibleNumber(parse(number, countryDialingFrom));
     } catch (NumberParseException e) {
@@ -1225,6 +1232,7 @@ public class PhoneNumberUtil {
    *     specific country "as you type"
    */
   public AsYouTypeFormatter getAsYouTypeFormatter(String regionCode) {
+    regionCode = regionCode.toUpperCase();
     return new AsYouTypeFormatter(regionCode);
   }
 
@@ -1472,11 +1480,11 @@ public class PhoneNumberUtil {
    */
   public PhoneNumber parse(String numberToParse, String defaultCountry)
       throws NumberParseException {
-    if (defaultCountry == null || defaultCountry.equals("ZZ")) {
+    if (defaultCountry == null || defaultCountry.equalsIgnoreCase("ZZ")) {
       throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                                      "No default country was supplied.");
     }
-    return parseHelper(numberToParse, defaultCountry, false);
+    return parseHelper(numberToParse, defaultCountry.toUpperCase(), false);
   }
 
   /**
@@ -1496,11 +1504,11 @@ public class PhoneNumberUtil {
    */
   public PhoneNumber parseAndKeepRawInput(String numberToParse, String defaultCountry)
       throws NumberParseException {
-    if (defaultCountry == null || defaultCountry.equals("ZZ")) {
+    if (defaultCountry == null || defaultCountry.equalsIgnoreCase("ZZ")) {
       throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                                      "No default country was supplied.");
     }
-    return parseHelper(numberToParse, defaultCountry, true);
+    return parseHelper(numberToParse, defaultCountry.toUpperCase(), true);
   }
 
   /**
@@ -1588,11 +1596,6 @@ public class PhoneNumberUtil {
                                countryMetadata.getNationalPrefixTransformRule(),
                                validNumberPattern);
     }
-    phoneNumber.setCountryCode(countryCode);
-    if (isLeadingZeroCountry(countryCode) &&
-        normalizedNationalNumber.charAt(0) == '0') {
-      phoneNumber.setItalianLeadingZero(true);
-    }
     int lengthOfNationalNumber = normalizedNationalNumber.length();
     if (lengthOfNationalNumber < MIN_LENGTH_FOR_NSN) {
       throw new NumberParseException(NumberParseException.ErrorType.TOO_SHORT_NSN,
@@ -1603,6 +1606,11 @@ public class PhoneNumberUtil {
       throw new NumberParseException(NumberParseException.ErrorType.TOO_LONG,
                                      "The string supplied is too long to be a "
                                      + "phone number.");
+    }
+    phoneNumber.setCountryCode(countryCode);
+    if (isLeadingZeroCountry(countryCode) &&
+        normalizedNationalNumber.charAt(0) == '0') {
+      phoneNumber.setItalianLeadingZero(true);
     }
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));
     return phoneNumber.build();

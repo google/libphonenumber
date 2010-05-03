@@ -196,7 +196,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAsYouTypeFormatterGBTollFree() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("GB");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("gb");
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("08", formatter.inputDigit('8'));
     assertEquals("080", formatter.inputDigit('0'));
@@ -281,5 +281,95 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+54 9 11 2312 12\u2008\u2008", formatter.inputDigit('2'));
     assertEquals("+54 9 11 2312 123\u2008", formatter.inputDigit('3'));
     assertEquals("+54 9 11 2312 1234", formatter.inputDigit('4'));
+  }
+
+  public void testAsYouTypeFormatterKR() {
+    // +82 51 234 5678
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("KR");
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+82", formatter.inputDigit('2'));
+    assertEquals("+825", formatter.inputDigit('5'));
+    assertEquals("+8251", formatter.inputDigit('1'));
+    assertEquals("+82 512", formatter.inputDigit('2'));
+    assertEquals("+82 51-23\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
+    assertEquals("+82 51-234-\u2008\u2008\u2008\u2008", formatter.inputDigit('4'));
+    assertEquals("+82 51-234-5\u2008\u2008\u2008", formatter.inputDigit('5'));
+    assertEquals("+82 51-234-56\u2008\u2008", formatter.inputDigit('6'));
+    assertEquals("+82 51-234-567\u2008", formatter.inputDigit('7'));
+    assertEquals("+82 51-234-5678", formatter.inputDigit('8'));
+
+    // +82 2 531 5678
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+82", formatter.inputDigit('2'));
+    assertEquals("+822", formatter.inputDigit('2'));
+    assertEquals("+8225", formatter.inputDigit('5'));
+    assertEquals("+82 253", formatter.inputDigit('3'));
+    assertEquals("+82 2-531-\u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
+    assertEquals("+82 2-531-5\u2008\u2008\u2008", formatter.inputDigit('5'));
+    assertEquals("+82 2-531-56\u2008\u2008", formatter.inputDigit('6'));
+    assertEquals("+82 2-531-567\u2008", formatter.inputDigit('7'));
+    assertEquals("+82 2-531-5678", formatter.inputDigit('8'));
+
+    // +82 2 3665 5678
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+82", formatter.inputDigit('2'));
+    assertEquals("+822", formatter.inputDigit('2'));
+    assertEquals("+8223", formatter.inputDigit('3'));
+    assertEquals("+82 236", formatter.inputDigit('6'));
+    assertEquals("+82 2-366\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('6'));
+    assertEquals("+82 2-3665-\u2008\u2008\u2008\u2008", formatter.inputDigit('5'));
+    assertEquals("+82 2-3665-5\u2008\u2008\u2008", formatter.inputDigit('5'));
+    assertEquals("+82 2-3665-56\u2008\u2008", formatter.inputDigit('6'));
+    assertEquals("+82 2-3665-567\u2008", formatter.inputDigit('7'));
+    assertEquals("+82 2-3665-5678", formatter.inputDigit('8'));
+
+    // 02-114 : This is too short to format. Checking that there are no side-effects.
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("02", formatter.inputDigit('2'));
+    assertEquals("021", formatter.inputDigit('1'));
+    assertEquals("0211", formatter.inputDigit('1'));
+    assertEquals("02114", formatter.inputDigit('4'));
+
+    // 02-1300
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("02", formatter.inputDigit('2'));
+    assertEquals("021", formatter.inputDigit('1'));
+    assertEquals("0213", formatter.inputDigit('3'));
+    assertEquals("02130", formatter.inputDigit('0'));
+    assertEquals("02-1300", formatter.inputDigit('0'));
+
+    // 011-456-7890
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("01", formatter.inputDigit('1'));
+    assertEquals("011", formatter.inputDigit('1'));
+    assertEquals("0114", formatter.inputDigit('4'));
+    assertEquals("01145", formatter.inputDigit('5'));
+    assertEquals("011-456-\u2008\u2008\u2008\u2008", formatter.inputDigit('6'));
+    assertEquals("011-456-7\u2008\u2008\u2008", formatter.inputDigit('7'));
+    assertEquals("011-456-78\u2008\u2008", formatter.inputDigit('8'));
+    assertEquals("011-456-789\u2008", formatter.inputDigit('9'));
+    assertEquals("011-456-7890", formatter.inputDigit('0'));
+
+    // 011-9876-7890
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("01", formatter.inputDigit('1'));
+    assertEquals("011", formatter.inputDigit('1'));
+    assertEquals("0119", formatter.inputDigit('9'));
+    assertEquals("01198", formatter.inputDigit('8'));
+    assertEquals("011-987\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('7'));
+    assertEquals("011-9876-\u2008\u2008\u2008\u2008", formatter.inputDigit('6'));
+    assertEquals("011-9876-7\u2008\u2008\u2008", formatter.inputDigit('7'));
+    assertEquals("011-9876-78\u2008\u2008", formatter.inputDigit('8'));
+    assertEquals("011-9876-789\u2008", formatter.inputDigit('9'));
+    assertEquals("011-9876-7890", formatter.inputDigit('0'));
   }
 }
