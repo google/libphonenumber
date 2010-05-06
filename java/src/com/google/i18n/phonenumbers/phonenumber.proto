@@ -55,6 +55,31 @@ message PhoneNumber {
 // canonicalized by the library. For example, it could be used to store alphanumerical numbers
 // such as "1-800-GOOG-411".
   optional string raw_input = 5;
+
+// The source from which the country_code is derived. This is not set in the general parsing method,
+// but in the method that parses and keeps raw_input. New fields could be added upon request.
+  enum CountryCodeSource {
+    // The country_code is derived based on a phone number with a leading "+", e.g. the French
+    // number "+33 (0)1 42 68 53 00".
+    FROM_NUMBER_WITH_PLUS_SIGN = 1;
+
+    // The country_code is derived based on a phone number with a leading IDD, e.g. the French
+    // number "011 33 (0)1 42 68 53 00", as it is dialled from US.
+    FROM_NUMBER_WITH_IDD = 5;
+
+    // The country_code is derived based on a phone number without a leading "+", e.g. the French
+    // number "33 (0)1 42 68 53 00" when defaultCountry is supplied as France.
+    FROM_NUMBER_WITHOUT_PLUS_SIGN = 10;
+
+    // The country_code is derived NOT based on the phone number itself, but from the defaultCountry
+    // parameter provided in the parsing function by the clients. This happens mostly for numbers
+    // written in the national format (without country code). For example, this would be set when
+    // parsing the French number "(0)1 42 68 53 00", when defaultCountry is supplied as France.
+    FROM_DEFAULT_COUNTRY = 20;
+  }
+
+// The source from which the country_code is derived.
+  optional CountryCodeSource country_code_source = 6;
 }
 
 // Examples

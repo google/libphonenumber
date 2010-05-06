@@ -19,6 +19,7 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import com.google.protobuf.MessageLite;
 import junit.framework.TestCase;
 
@@ -103,6 +104,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("900([135]\\d{6}|9\\d{7})", metadata.getPremiumRate().getNationalNumberPattern());
   }
 
+  
+
   public void testGetInstanceLoadARMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion("AR");
     assertEquals("AR", metadata.getId());
@@ -117,6 +120,64 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
                  metadata.getIntlNumberFormat(3).getPattern());
     assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).getFormat());
+  }
+
+    public void testGetLengthOfGeographicalAreaCode() {
+    // Google MTV, which has area code "650".
+    PhoneNumber usNumber1 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6502530000L).build();
+    assertEquals(3, phoneUtil.getLengthOfGeographicalAreaCode(usNumber1));
+
+    // A North America toll-free number, which has no area code.
+    PhoneNumber usNumber2 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(8002530000L).build();
+    assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(usNumber2));
+
+    // An invalid US number (1 digit shorter), which has no area code.
+    PhoneNumber usNumber3 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(650253000L).build();
+    assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(usNumber3));
+
+    // Google London, which has area code "20".
+    PhoneNumber ukNumber1 =
+        PhoneNumber.newBuilder().setCountryCode(44).setNationalNumber(2070313000L).build();
+    assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(ukNumber1));
+
+    // A UK mobile phone, which has no area code.
+    PhoneNumber ukNumber2 =
+        PhoneNumber.newBuilder().setCountryCode(44).setNationalNumber(7123456789L).build();
+    assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(ukNumber2));
+
+    // Google Buenos Aires, which has area code "11".
+    PhoneNumber arNumber =
+        PhoneNumber.newBuilder().setCountryCode(54).setNationalNumber(1155303000L).build();
+    assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(arNumber));
+
+    // Google Sydney, which has area code "2".
+    PhoneNumber auNumber =
+        PhoneNumber.newBuilder().setCountryCode(61).setNationalNumber(293744000L).build();
+    assertEquals(1, phoneUtil.getLengthOfGeographicalAreaCode(auNumber));
+
+    // Google Singapore. Singapore has no area code and no national prefix.
+    PhoneNumber sgNumber =
+        PhoneNumber.newBuilder().setCountryCode(65).setNationalNumber(65218000L).build();
+    assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(sgNumber));
+  }
+
+  public void testGetNationalSignificantNumber() {
+    PhoneNumber usNumber =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6502530000L).build();
+    assertEquals("6502530000", PhoneNumberUtil.getNationalSignificantNumber(usNumber));
+
+    // An Italian mobile number.
+    PhoneNumber itNumber1 =
+        PhoneNumber.newBuilder().setCountryCode(39).setNationalNumber(312345678L).build();
+    assertEquals("312345678", PhoneNumberUtil.getNationalSignificantNumber(itNumber1));
+
+    // An Italian fixed line number.
+    PhoneNumber itNumber2 =
+        PhoneNumber.newBuilder().setCountryCode(39).setNationalNumber(236618300L).setItalianLeadingZero(true).build();
+    assertEquals("0236618300", PhoneNumberUtil.getNationalSignificantNumber(itNumber2));
   }
 
   public void testGetExampleNumber() throws IOException {
@@ -902,56 +963,67 @@ public class PhoneNumberUtilTest extends TestCase {
                  strippedNumber, numberToStrip.toString());
   }
 
-  public void testMaybeStripInternationalPrefix() {
+    public void testMaybeStripInternationalPrefix() {
     String internationalPrefix = "00[39]";
     StringBuffer numberToStrip = new StringBuffer("0034567700-3898003");
     // Note the dash is removed as part of the normalization.
     StringBuffer strippedNumber = new StringBuffer("45677003898003");
-    assertEquals(true, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                           internationalPrefix));
+    assertEquals(CountryCodeSource.FROM_NUMBER_WITH_IDD,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
     assertEquals("The number supplied was not stripped of its international prefix.",
                  strippedNumber.toString(), numberToStrip.toString());
-    // Now the number no longer starts with an IDD prefix, so it should now report false.
-    assertEquals(false, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                            internationalPrefix));
+    // Now the number no longer starts with an IDD prefix, so it should now report
+    // FROM_DEFAULT_COUNTRY.
+    assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
 
     numberToStrip = new StringBuffer("00945677003898003");
-    assertEquals(true, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                           internationalPrefix));
+    assertEquals(CountryCodeSource.FROM_NUMBER_WITH_IDD,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
     assertEquals("The number supplied was not stripped of its international prefix.",
                  strippedNumber.toString(), numberToStrip.toString());
     // Test it works when the international prefix is broken up by spaces.
     numberToStrip = new StringBuffer("00 9 45677003898003");
-    assertEquals(true, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                           internationalPrefix));
+    assertEquals(CountryCodeSource.FROM_NUMBER_WITH_IDD,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
     assertEquals("The number supplied was not stripped of its international prefix.",
                  strippedNumber.toString(), numberToStrip.toString());
-    // Now the number no longer starts with an IDD prefix, so it should now report false.
-    assertEquals(false, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                            internationalPrefix));
+    // Now the number no longer starts with an IDD prefix, so it should now report
+    // FROM_DEFAULT_COUNTRY.
+    assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
 
     // Test the + symbol is also recognised and stripped.
     numberToStrip = new StringBuffer("+45677003898003");
     strippedNumber = new StringBuffer("45677003898003");
-    assertEquals(true, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                           internationalPrefix));
+    assertEquals(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
     assertEquals("The number supplied was not stripped of the plus symbol.",
                  strippedNumber.toString(), numberToStrip.toString());
 
     // If the number afterwards is a zero, we should not strip this - no country code begins with 0.
     numberToStrip = new StringBuffer("0090112-3123");
     strippedNumber = new StringBuffer("00901123123");
-    assertEquals(false, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                            internationalPrefix));
+    assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
     assertEquals("The number supplied had a 0 after the match so shouldn't be stripped.",
                  strippedNumber.toString(), numberToStrip.toString());
     // Here the 0 is separated by a space from the IDD.
     numberToStrip = new StringBuffer("009 0-112-3123");
-    assertEquals(false, phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                                            internationalPrefix));
+    assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
+                 phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
+                                                                     internationalPrefix));
   }
 
   public void testMaybeExtractCountryCode() {
+    PhoneNumber.Builder number = PhoneNumber.newBuilder();
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion("US");
     // Note that for the US, the IDD is 011.
     try {
@@ -961,7 +1033,10 @@ public class PhoneNumberUtilTest extends TestCase {
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Did not extract country code " + countryCode + " correctly.",
                    countryCode,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill));
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
+                                                     number));
+      assertEquals("Did not figure out CountryCodeSource correctly",
+                   CountryCodeSource.FROM_NUMBER_WITH_IDD, number.getCountryCodeSource());
       // Should strip and normalize national significant number.
       assertEquals("Did not strip off the country code correctly.",
                    strippedNumber,
@@ -969,30 +1044,38 @@ public class PhoneNumberUtilTest extends TestCase {
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
+    number.clear();
     try {
       String phoneNumber = "+6423456789";
       int countryCode = 64;
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Did not extract country code " + countryCode + " correctly.",
                    countryCode,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill));
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
+                                                     number));
+      assertEquals("Did not figure out CountryCodeSource correctly",
+                   CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN, number.getCountryCodeSource());      
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
+    number.clear();
     try {
       String phoneNumber = "2345-6789";
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Should not have extracted a country code - no international prefix present.",
                    0,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill));
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
+                                                     number));
+    assertEquals("Did not figure out CountryCodeSource correctly",
+                   CountryCodeSource.FROM_DEFAULT_COUNTRY, number.getCountryCodeSource());
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
+    number.clear();
     try {
       String phoneNumber = "0119991123456789";
       StringBuffer numberToFill = new StringBuffer();
-      phoneUtil.maybeExtractCountryCode(phoneNumber, metadata,
-                                        numberToFill);
+      phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true, number);
       fail("Should have thrown an exception, no valid country code present.");
     } catch (NumberParseException e) {
       // Expected.
@@ -1000,34 +1083,58 @@ public class PhoneNumberUtilTest extends TestCase {
                    NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                    e.getErrorType());
     }
+    number.clear();
     try {
       String phoneNumber = "(1 610) 619 4466";
       int countryCode = 1;
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Should have extracted the country code of the region passed in",
                    countryCode,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill));
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
+                                                     number));
+      assertEquals("Did not figure out CountryCodeSource correctly",
+                   CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN,
+                   number.getCountryCodeSource());
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
+    number.clear();
+    try {
+      String phoneNumber = "(1 610) 619 4466";
+      int countryCode = 1;
+      StringBuffer numberToFill = new StringBuffer();
+      assertEquals("Should have extracted the country code of the region passed in",
+                   countryCode,
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false,
+                                                     number));
+      assertFalse("Should not contain CountryCodeSource.", number.hasCountryCodeSource());
+    } catch (NumberParseException e) {
+      fail("Should not have thrown an exception: " + e.toString());
+    }
+    number.clear();
     try {
       String phoneNumber = "(1 610) 619 446";
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Should not have extracted a country code - invalid number after extraction " +
                    "of uncertain country code.",
                    0,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill));
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false,
+                                                     number));
+      assertFalse("Should not contain CountryCodeSource.", number.hasCountryCodeSource());
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
+    number.clear();
     try {
       String phoneNumber = "(1 610) 619 43 446";
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Should not have extracted a country code - invalid number both before and " +
                    "after extraction of uncertain country code.",
                    0,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata,
-                                                     numberToFill));
+                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
+                                                     number));
+      assertEquals("Did not figure out CountryCodeSource correctly",
+                   CountryCodeSource.FROM_DEFAULT_COUNTRY, number.getCountryCodeSource());
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
@@ -1341,15 +1448,37 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testParseAndKeepRaw() throws Exception {
-    PhoneNumber alphaNumericNumber =
+    PhoneNumber alphaNumericNumber1 =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(180074935247L)
-            .setRawInput("1800 six-flags").build();
-    assertEquals(alphaNumericNumber,
+            .setRawInput("1800 six-flags")
+            .setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY).build();
+    assertEquals(alphaNumericNumber1,
                  phoneUtil.parseAndKeepRawInput("1800 six-flags", "US"));
+
+    PhoneNumber alphaNumericNumber2 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(8007493524L)
+            .setRawInput("1800 six-flag")
+            .setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN).build();
+    assertEquals(alphaNumericNumber2,
+                 phoneUtil.parseAndKeepRawInput("1800 six-flag", "US"));
+
+    PhoneNumber alphaNumericNumber3 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(8007493524L)
+            .setRawInput("+1800 six-flag")
+            .setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN).build();
+    assertEquals(alphaNumericNumber3,
+                 phoneUtil.parseAndKeepRawInput("+1800 six-flag", "CN"));
+
+    PhoneNumber alphaNumericNumber4 =
+        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(18007493524L)
+            .setRawInput("1800 six-flag")
+            .setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_IDD).build();
+    assertEquals(alphaNumericNumber4,
+                 phoneUtil.parseAndKeepRawInput("001800 six-flag", "NZ"));
   }
 
   public void testCountryWithNoNumberDesc() {
-    // Andorra is a country where we don't have PhoneNumberDesc info in the meta data.
+    // Andorra is a country where we don't have PhoneNumberDesc info in the metadata.
     PhoneNumber adNumber =
         PhoneNumber.newBuilder().setCountryCode(376).setNationalNumber(12345L).build();
     assertEquals("+376 12345", phoneUtil.format(adNumber,

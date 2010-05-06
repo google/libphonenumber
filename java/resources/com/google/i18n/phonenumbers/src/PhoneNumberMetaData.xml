@@ -3626,7 +3626,7 @@
     <!-- Lithuania -->
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <territory id="LT" countryCode="370" internationalPrefix="00"
-               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+               nationalPrefix="8" nationalPrefixFormattingRule="$NP $FG">
       <availableFormats>
         <!-- Two-digit area codes -->
         <numberFormat leadingDigits="37|4(?:1|5[45]|6[2-4])"

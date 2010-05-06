@@ -25,6 +25,49 @@ public final class Phonenumber {
       return defaultInstance;
     }
     
+    public enum CountryCodeSource
+        implements com.google.protobuf.Internal.EnumLite {
+      FROM_NUMBER_WITH_PLUS_SIGN(0, 1),
+      FROM_NUMBER_WITH_IDD(1, 5),
+      FROM_NUMBER_WITHOUT_PLUS_SIGN(2, 10),
+      FROM_DEFAULT_COUNTRY(3, 20),
+      ;
+      
+      
+      public final int getNumber() { return value; }
+      
+      public static CountryCodeSource valueOf(int value) {
+        switch (value) {
+          case 1: return FROM_NUMBER_WITH_PLUS_SIGN;
+          case 5: return FROM_NUMBER_WITH_IDD;
+          case 10: return FROM_NUMBER_WITHOUT_PLUS_SIGN;
+          case 20: return FROM_DEFAULT_COUNTRY;
+          default: return null;
+        }
+      }
+      
+      public static com.google.protobuf.Internal.EnumLiteMap<CountryCodeSource>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<CountryCodeSource>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<CountryCodeSource>() {
+              public CountryCodeSource findValueByNumber(int number) {
+                return CountryCodeSource.valueOf(number)
+      ;        }
+            };
+      
+      private final int index;
+      private final int value;
+      private CountryCodeSource(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+      
+      // @@protoc_insertion_point(enum_scope:i18n.phonenumbers.PhoneNumber.CountryCodeSource)
+    }
+    
     // required int32 country_code = 1;
     public static final int COUNTRY_CODE_FIELD_NUMBER = 1;
     private boolean hasCountryCode;
@@ -59,8 +102,16 @@ public final class Phonenumber {
     private java.lang.String rawInput_ = "";
     public boolean hasRawInput() { return hasRawInput; }
     public java.lang.String getRawInput() { return rawInput_; }
-
+    
+    // optional .i18n.phonenumbers.PhoneNumber.CountryCodeSource country_code_source = 6;
+    public static final int COUNTRY_CODE_SOURCE_FIELD_NUMBER = 6;
+    private boolean hasCountryCodeSource;
+    private com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource countryCodeSource_;
+    public boolean hasCountryCodeSource() { return hasCountryCodeSource; }
+    public com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource getCountryCodeSource() { return countryCodeSource_; }
+    
     private void initFields() {
+      countryCodeSource_ = com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN;
     }
     public final boolean isInitialized() {
       if (!hasCountryCode) return false;
@@ -85,6 +136,9 @@ public final class Phonenumber {
       }
       if (hasRawInput()) {
         output.writeString(5, getRawInput());
+      }
+      if (hasCountryCodeSource()) {
+        output.writeEnum(6, getCountryCodeSource().getNumber());
       }
     }
     
@@ -113,6 +167,10 @@ public final class Phonenumber {
       if (hasRawInput()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(5, getRawInput());
+      }
+      if (hasCountryCodeSource()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, getCountryCodeSource().getNumber());
       }
       memoizedSerializedSize = size;
       return size;
@@ -273,6 +331,9 @@ public final class Phonenumber {
         if (other.hasRawInput()) {
           setRawInput(other.getRawInput());
         }
+        if (other.hasCountryCodeSource()) {
+          setCountryCodeSource(other.getCountryCodeSource());
+        }
         return this;
       }
       
@@ -309,6 +370,14 @@ public final class Phonenumber {
             }
             case 42: {
               setRawInput(input.readString());
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+              com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource value = com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource.valueOf(rawValue);
+              if (value != null) {
+                setCountryCodeSource(value);
+              }
               break;
             }
           }
@@ -411,7 +480,28 @@ public final class Phonenumber {
         result.rawInput_ = getDefaultInstance().getRawInput();
         return this;
       }
-
+      
+      // optional .i18n.phonenumbers.PhoneNumber.CountryCodeSource country_code_source = 6;
+      public boolean hasCountryCodeSource() {
+        return result.hasCountryCodeSource();
+      }
+      public com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource getCountryCodeSource() {
+        return result.getCountryCodeSource();
+      }
+      public Builder setCountryCodeSource(com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        result.hasCountryCodeSource = true;
+        result.countryCodeSource_ = value;
+        return this;
+      }
+      public Builder clearCountryCodeSource() {
+        result.hasCountryCodeSource = false;
+        result.countryCodeSource_ = com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN;
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:i18n.phonenumbers.PhoneNumber)
     }
     
