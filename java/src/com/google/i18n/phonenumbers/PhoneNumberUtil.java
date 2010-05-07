@@ -161,7 +161,7 @@ public class PhoneNumberUtil {
   private static final Set<Integer> LEADING_ZERO_COUNTRIES =
       new ImmutableSet.Builder<Integer>()
       .add(39)  // Italy
-      .add(225)  // C™te d'Ivoire
+      .add(225)  // Cote d'Ivoire
       .add(227)  // Niger
       .add(228)  // Togo
       .add(240)  // Equatorial Guinea
