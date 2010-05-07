@@ -104,8 +104,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("900([135]\\d{6}|9\\d{7})", metadata.getPremiumRate().getNationalNumberPattern());
   }
 
-  
-
   public void testGetInstanceLoadARMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion("AR");
     assertEquals("AR", metadata.getId());
@@ -122,7 +120,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).getFormat());
   }
 
-    public void testGetLengthOfGeographicalAreaCode() {
+  public void testGetLengthOfGeographicalAreaCode() {
     // Google MTV, which has area code "650".
     PhoneNumber usNumber1 =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6502530000L).build();
@@ -176,7 +174,8 @@ public class PhoneNumberUtilTest extends TestCase {
 
     // An Italian fixed line number.
     PhoneNumber itNumber2 =
-        PhoneNumber.newBuilder().setCountryCode(39).setNationalNumber(236618300L).setItalianLeadingZero(true).build();
+        PhoneNumber.newBuilder().setCountryCode(39).setNationalNumber(236618300L)
+            .setItalianLeadingZero(true).build();
     assertEquals("0236618300", PhoneNumberUtil.getNationalSignificantNumber(itNumber2));
   }
 
@@ -1054,7 +1053,7 @@ public class PhoneNumberUtilTest extends TestCase {
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
                                                      number));
       assertEquals("Did not figure out CountryCodeSource correctly",
-                   CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN, number.getCountryCodeSource());      
+                   CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN, number.getCountryCodeSource());
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
     }
@@ -1172,8 +1171,7 @@ public class PhoneNumberUtilTest extends TestCase {
     // possible.
     PhoneNumber usNumber =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(1234567890L).build();
-    assertEquals(usNumber, phoneUtil.parse("123-456-7890", "US"));    
-
+    assertEquals(usNumber, phoneUtil.parse("123-456-7890", "US"));
   }
 
    public void testParseNumberWithAlphaCharacters() throws Exception {

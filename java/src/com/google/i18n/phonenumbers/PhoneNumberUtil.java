@@ -1381,14 +1381,14 @@ public class PhoneNumberUtil {
       throws NumberParseException {
     if (number.length() == 0) {
       return 0;
-    }    
+    }
     StringBuffer fullNumber = new StringBuffer(number);
     // Set the default prefix to be something that will never match.
     String possibleCountryIddPrefix = "NonMatch";
     if (defaultRegionMetadata != null) {
       possibleCountryIddPrefix = defaultRegionMetadata.getInternationalPrefix();
     }
-    
+
     CountryCodeSource countryCodeSource =
         maybeStripInternationalPrefixAndNormalize(fullNumber, possibleCountryIddPrefix);
     if (storeCountryCodeSource) {
