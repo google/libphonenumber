@@ -835,6 +835,35 @@ public class PhoneNumberUtil {
                                formattedExtension);
   }
 
+  /**
+   * Formats a phone number using the original phone number format that the number is parsed from.
+   * The original format is embedded in the country_code_source field of the PhoneNumber object
+   * passed in. If such information is missing, the number will be formatted into the NATIONAL
+   * format by default.
+   *
+   * @param number  The PhoneNumber that needs to be formatted in its original number format
+   * @param defaultCountry  the country whose IDD needs to be appended if the original number has
+   *                        one
+   * @return  The formatted phone number in its original number format
+   */
+  public String formatUsingOriginalNumberFormat(PhoneNumber number, String defaultCountry) {
+    if (!number.hasRawInput()) {
+      return format(number, PhoneNumberFormat.NATIONAL);
+    }
+    switch (number.getCountryCodeSource()) {
+      case FROM_DEFAULT_COUNTRY:
+        return format(number, PhoneNumberFormat.NATIONAL);
+      case FROM_NUMBER_WITH_PLUS_SIGN:
+        return format(number, PhoneNumberFormat.INTERNATIONAL);
+      case FROM_NUMBER_WITH_IDD:
+        return formatOutOfCountryCallingNumber(number, defaultCountry);
+      case FROM_NUMBER_WITHOUT_PLUS_SIGN:
+        return format(number, PhoneNumberFormat.INTERNATIONAL).substring(1);
+      default:
+        return number.getRawInput();
+    }
+  }
+
   
   /**
    * Gets the national significant number of the a phone number. Note a national significant number

@@ -586,6 +586,23 @@ public class PhoneNumberUtilTest extends TestCase {
                                   PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
   }
 
+  public void testFormatUsingOriginalNumberFormat() throws Exception {
+    PhoneNumber number1 = phoneUtil.parseAndKeepRawInput("+442087654321", "GB");
+    assertEquals("+44 20 8765 4321", phoneUtil.formatUsingOriginalNumberFormat(number1, "GB"));
+
+    PhoneNumber number2 = phoneUtil.parseAndKeepRawInput("02087654321", "GB");
+    assertEquals("(020) 8765 4321", phoneUtil.formatUsingOriginalNumberFormat(number2, "GB"));
+
+    PhoneNumber number3 = phoneUtil.parseAndKeepRawInput("011442087654321", "US");
+    assertEquals("011 44 20 8765 4321", phoneUtil.formatUsingOriginalNumberFormat(number3, "US"));
+
+    PhoneNumber number4 = phoneUtil.parseAndKeepRawInput("442087654321", "GB");
+    assertEquals("44 20 8765 4321", phoneUtil.formatUsingOriginalNumberFormat(number4, "GB"));
+
+    PhoneNumber number5 = phoneUtil.parse("+442087654321", "GB");
+    assertEquals("(020) 8765 4321", phoneUtil.formatUsingOriginalNumberFormat(number5, "GB"));
+  }
+
   public void testIsPremiumRate() {
     PhoneNumber premiumRateNumber1 =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(9004433030L).build();
