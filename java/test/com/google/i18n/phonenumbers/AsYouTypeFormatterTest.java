@@ -47,10 +47,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650", formatter.inputDigit('0'));
     assertEquals("6502", formatter.inputDigit('2'));
     assertEquals("65025", formatter.inputDigit('5'));
-    assertEquals("650 253 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("650 253 2\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("650 253 22\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("650 253 222\u2008", formatter.inputDigit('2'));
+    assertEquals("650 253", formatter.inputDigit('3'));
+    assertEquals("650 253 2", formatter.inputDigit('2'));
+    assertEquals("650 253 22", formatter.inputDigit('2'));
+    assertEquals("650 253 222", formatter.inputDigit('2'));
     assertEquals("650 253 2222", formatter.inputDigit('2'));
 
     formatter.clear();
@@ -59,10 +59,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650", formatter.inputDigit('0'));
     assertEquals("6502", formatter.inputDigit('2'));
     assertEquals("65025", formatter.inputDigit('5'));
-    assertEquals("650 253 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("650 253 2\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("650 253 22\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("650 253 222\u2008", formatter.inputDigit('2'));
+    assertEquals("650 253", formatter.inputDigit('3'));
+    assertEquals("650 253 2", formatter.inputDigit('2'));
+    assertEquals("650 253 22", formatter.inputDigit('2'));
+    assertEquals("650 253 222", formatter.inputDigit('2'));
     assertEquals("650 253 2222", formatter.inputDigit('2'));
 
     formatter.clear();
@@ -72,11 +72,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650-", formatter.inputDigit('-'));
     assertEquals("650-2", formatter.inputDigit('2'));
     assertEquals("650-25", formatter.inputDigit('5'));
-    assertEquals("650 253 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("650 253 \u2008\u2008\u2008\u2008", formatter.inputDigit('-'));
-    assertEquals("650 253 2\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("650 253 22\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("650 253 222\u2008", formatter.inputDigit('2'));
+    assertEquals("650 253", formatter.inputDigit('3'));
+    assertEquals("650 253", formatter.inputDigit('-'));
+    assertEquals("650 253 2", formatter.inputDigit('2'));
+    assertEquals("650 253 22", formatter.inputDigit('2'));
+    assertEquals("650 253 222", formatter.inputDigit('2'));
     assertEquals("650 253 2222", formatter.inputDigit('2'));
 
     formatter.clear();
@@ -88,11 +88,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011 48 8", formatter.inputDigit('8'));
     assertEquals("011 48 88", formatter.inputDigit('8'));
     assertEquals("011 48 881", formatter.inputDigit('1'));
-    assertEquals("011 48 88 12\u2008 \u2008\u2008 \u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("011 48 88 123 \u2008\u2008 \u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("011 48 88 123 1\u2008 \u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("011 48 88 123 12 \u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("011 48 88 123 12 1\u2008", formatter.inputDigit('1'));
+    assertEquals("011 48 88 12", formatter.inputDigit('2'));
+    assertEquals("011 48 88 123", formatter.inputDigit('3'));
+    assertEquals("011 48 88 123 1", formatter.inputDigit('1'));
+    assertEquals("011 48 88 123 12", formatter.inputDigit('2'));
+    assertEquals("011 48 88 123 12 1", formatter.inputDigit('1'));
     assertEquals("011 48 88 123 12 12", formatter.inputDigit('2'));
 
     formatter.clear();
@@ -104,12 +104,12 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011 44 6", formatter.inputDigit('6'));
     assertEquals("011 44 61", formatter.inputDigit('1'));
     assertEquals("011 44 612", formatter.inputDigit('2'));
-    assertEquals("011 44 6 123 \u2008\u2008\u2008 \u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("011 44 6 123 1\u2008\u2008 \u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("011 44 6 123 12\u2008 \u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("011 44 6 123 123 \u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("011 44 6 123 123 1\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("011 44 6 123 123 12\u2008", formatter.inputDigit('2'));
+    assertEquals("011 44 6 123", formatter.inputDigit('3'));
+    assertEquals("011 44 6 123 1", formatter.inputDigit('1'));
+    assertEquals("011 44 6 123 12", formatter.inputDigit('2'));
+    assertEquals("011 44 6 123 123", formatter.inputDigit('3'));
+    assertEquals("011 44 6 123 123 1", formatter.inputDigit('1'));
+    assertEquals("011 44 6 123 123 12", formatter.inputDigit('2'));
     assertEquals("011 44 6 123 123 123", formatter.inputDigit('3'));
 
     formatter.clear();
@@ -121,14 +121,13 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011 54 9", formatter.inputDigit('9'));
     assertEquals("011 54 91", formatter.inputDigit('1'));
     assertEquals("011 54 911", formatter.inputDigit('1'));
-    assertEquals("011 54 9 11 2\u2008\u2008\u2008 \u2008\u2008\u2008\u2008",
-                 formatter.inputDigit('2'));
-    assertEquals("011 54 9 11 23\u2008\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("011 54 9 11 231\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("011 54 9 11 2312 \u2008\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("011 54 9 11 2312 1\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("011 54 9 11 2312 12\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("011 54 9 11 2312 123\u2008", formatter.inputDigit('3'));
+    assertEquals("011 54 9 11 2", formatter.inputDigit('2'));
+    assertEquals("011 54 9 11 23", formatter.inputDigit('3'));
+    assertEquals("011 54 9 11 231", formatter.inputDigit('1'));
+    assertEquals("011 54 9 11 2312", formatter.inputDigit('2'));
+    assertEquals("011 54 9 11 2312 1", formatter.inputDigit('1'));
+    assertEquals("011 54 9 11 2312 12", formatter.inputDigit('2'));
+    assertEquals("011 54 9 11 2312 123", formatter.inputDigit('3'));
     assertEquals("011 54 9 11 2312 1234", formatter.inputDigit('4'));
 
     formatter.clear();
@@ -137,12 +136,12 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+16", formatter.inputDigit('6'));
     assertEquals("+165", formatter.inputDigit('5'));
     assertEquals("+1650", formatter.inputDigit('0'));
-    assertEquals("+1 650 2\u2008\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+1 650 25\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('5'));
-    assertEquals("+1 650 253 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("+1 650 253 2\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+1 650 253 22\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+1 650 253 222\u2008", formatter.inputDigit('2'));
+    assertEquals("+1 650 2", formatter.inputDigit('2'));
+    assertEquals("+1 650 25", formatter.inputDigit('5'));
+    assertEquals("+1 650 253", formatter.inputDigit('3'));
+    assertEquals("+1 650 253 2", formatter.inputDigit('2'));
+    assertEquals("+1 650 253 22", formatter.inputDigit('2'));
+    assertEquals("+1 650 253 222", formatter.inputDigit('2'));
 
     formatter.clear();
     assertEquals("+", formatter.inputDigit('+'));
@@ -151,11 +150,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+488", formatter.inputDigit('8'));
     assertEquals("+4888", formatter.inputDigit('8'));
     assertEquals("+48 881", formatter.inputDigit('1'));
-    assertEquals("+48 88 12\u2008 \u2008\u2008 \u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+48 88 123 \u2008\u2008 \u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("+48 88 123 1\u2008 \u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("+48 88 123 12 \u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+48 88 123 12 1\u2008", formatter.inputDigit('1'));
+    assertEquals("+48 88 12", formatter.inputDigit('2'));
+    assertEquals("+48 88 123", formatter.inputDigit('3'));
+    assertEquals("+48 88 123 1", formatter.inputDigit('1'));
+    assertEquals("+48 88 123 12", formatter.inputDigit('2'));
+    assertEquals("+48 88 123 12 1", formatter.inputDigit('1'));
     assertEquals("+48 88 123 12 12", formatter.inputDigit('2'));
 
     // Test US number with full-width characters.
@@ -165,10 +164,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("\uFF16\uFF15\uFF10", formatter.inputDigit('\uFF10'));
     assertEquals("\uFF16\uFF15\uFF10\uFF12", formatter.inputDigit('\uFF12'));
     assertEquals("\uFF16\uFF15\uFF10\uFF12\uFF15", formatter.inputDigit('\uFF15'));
-    assertEquals("650 253 \u2008\u2008\u2008\u2008", formatter.inputDigit('\uFF13'));
-    assertEquals("650 253 2\u2008\u2008\u2008", formatter.inputDigit('\uFF12'));
-    assertEquals("650 253 22\u2008\u2008", formatter.inputDigit('\uFF12'));
-    assertEquals("650 253 222\u2008", formatter.inputDigit('\uFF12'));
+    assertEquals("650 253", formatter.inputDigit('\uFF13'));
+    assertEquals("650 253 2", formatter.inputDigit('\uFF12'));
+    assertEquals("650 253 22", formatter.inputDigit('\uFF12'));
+    assertEquals("650 253 222", formatter.inputDigit('\uFF12'));
     assertEquals("650 253 2222", formatter.inputDigit('\uFF12'));
 
     // Mobile short code.
@@ -187,11 +186,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("020", formatter.inputDigit('0'));
     assertEquals("0207", formatter.inputDigit('7'));
     assertEquals("02070", formatter.inputDigit('0'));
-    assertEquals("020 703\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("020 7031 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("020 7031 3\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("020 7031 30\u2008\u2008", formatter.inputDigit('0'));
-    assertEquals("020 7031 300\u2008", formatter.inputDigit('0'));
+    assertEquals("020 703", formatter.inputDigit('3'));
+    assertEquals("020 7031", formatter.inputDigit('1'));
+    assertEquals("020 7031 3", formatter.inputDigit('3'));
+    assertEquals("020 7031 30", formatter.inputDigit('0'));
+    assertEquals("020 7031 300", formatter.inputDigit('0'));
     assertEquals("020 7031 3000", formatter.inputDigit('0'));
   }
 
@@ -202,11 +201,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("080", formatter.inputDigit('0'));
     assertEquals("0807", formatter.inputDigit('7'));
     assertEquals("08070", formatter.inputDigit('0'));
-    assertEquals("080 703\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("080 7031 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("080 7031 3\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("080 7031 30\u2008\u2008", formatter.inputDigit('0'));
-    assertEquals("080 7031 300\u2008", formatter.inputDigit('0'));
+    assertEquals("080 703", formatter.inputDigit('3'));
+    assertEquals("080 7031", formatter.inputDigit('1'));
+    assertEquals("080 7031 3", formatter.inputDigit('3'));
+    assertEquals("080 7031 30", formatter.inputDigit('0'));
+    assertEquals("080 7031 300", formatter.inputDigit('0'));
     assertEquals("080 7031 3000", formatter.inputDigit('0'));
   }
 
@@ -217,11 +216,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("090", formatter.inputDigit('0'));
     assertEquals("0907", formatter.inputDigit('7'));
     assertEquals("09070", formatter.inputDigit('0'));
-    assertEquals("090 703\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("090 7031 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("090 7031 3\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("090 7031 30\u2008\u2008", formatter.inputDigit('0'));
-    assertEquals("090 7031 300\u2008", formatter.inputDigit('0'));
+    assertEquals("090 703", formatter.inputDigit('3'));
+    assertEquals("090 7031", formatter.inputDigit('1'));
+    assertEquals("090 7031 3", formatter.inputDigit('3'));
+    assertEquals("090 7031 30", formatter.inputDigit('0'));
+    assertEquals("090 7031 300", formatter.inputDigit('0'));
     assertEquals("090 7031 3000", formatter.inputDigit('0'));
   }
 
@@ -256,11 +255,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011", formatter.inputDigit('1'));
     assertEquals("0117", formatter.inputDigit('7'));
     assertEquals("01170", formatter.inputDigit('0'));
-    assertEquals("011 703\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("011 7031-\u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("011 7031-3\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("011 7031-30\u2008\u2008", formatter.inputDigit('0'));
-    assertEquals("011 7031-300\u2008", formatter.inputDigit('0'));
+    assertEquals("011 703", formatter.inputDigit('3'));
+    assertEquals("011 7031", formatter.inputDigit('1'));
+    assertEquals("011 7031-3", formatter.inputDigit('3'));
+    assertEquals("011 7031-30", formatter.inputDigit('0'));
+    assertEquals("011 7031-300", formatter.inputDigit('0'));
     assertEquals("011 7031-3000", formatter.inputDigit('0'));
   }
 
@@ -272,14 +271,13 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+549", formatter.inputDigit('9'));
     assertEquals("+5491", formatter.inputDigit('1'));
     assertEquals("+54 911", formatter.inputDigit('1'));
-    assertEquals("+54 9 11 2\u2008\u2008\u2008 \u2008\u2008\u2008\u2008",
-                 formatter.inputDigit('2'));
-    assertEquals("+54 9 11 23\u2008\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("+54 9 11 231\u2008 \u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("+54 9 11 2312 \u2008\u2008\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+54 9 11 2312 1\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("+54 9 11 2312 12\u2008\u2008", formatter.inputDigit('2'));
-    assertEquals("+54 9 11 2312 123\u2008", formatter.inputDigit('3'));
+    assertEquals("+54 9 11 2", formatter.inputDigit('2'));
+    assertEquals("+54 9 11 23", formatter.inputDigit('3'));
+    assertEquals("+54 9 11 231", formatter.inputDigit('1'));
+    assertEquals("+54 9 11 2312", formatter.inputDigit('2'));
+    assertEquals("+54 9 11 2312 1", formatter.inputDigit('1'));
+    assertEquals("+54 9 11 2312 12", formatter.inputDigit('2'));
+    assertEquals("+54 9 11 2312 123", formatter.inputDigit('3'));
     assertEquals("+54 9 11 2312 1234", formatter.inputDigit('4'));
   }
 
@@ -292,11 +290,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+825", formatter.inputDigit('5'));
     assertEquals("+8251", formatter.inputDigit('1'));
     assertEquals("+82 512", formatter.inputDigit('2'));
-    assertEquals("+82 51-23\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('3'));
-    assertEquals("+82 51-234-\u2008\u2008\u2008\u2008", formatter.inputDigit('4'));
-    assertEquals("+82 51-234-5\u2008\u2008\u2008", formatter.inputDigit('5'));
-    assertEquals("+82 51-234-56\u2008\u2008", formatter.inputDigit('6'));
-    assertEquals("+82 51-234-567\u2008", formatter.inputDigit('7'));
+    assertEquals("+82 51-23", formatter.inputDigit('3'));
+    assertEquals("+82 51-234", formatter.inputDigit('4'));
+    assertEquals("+82 51-234-5", formatter.inputDigit('5'));
+    assertEquals("+82 51-234-56", formatter.inputDigit('6'));
+    assertEquals("+82 51-234-567", formatter.inputDigit('7'));
     assertEquals("+82 51-234-5678", formatter.inputDigit('8'));
 
     // +82 2 531 5678
@@ -307,10 +305,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+822", formatter.inputDigit('2'));
     assertEquals("+8225", formatter.inputDigit('5'));
     assertEquals("+82 253", formatter.inputDigit('3'));
-    assertEquals("+82 2-531-\u2008\u2008\u2008\u2008", formatter.inputDigit('1'));
-    assertEquals("+82 2-531-5\u2008\u2008\u2008", formatter.inputDigit('5'));
-    assertEquals("+82 2-531-56\u2008\u2008", formatter.inputDigit('6'));
-    assertEquals("+82 2-531-567\u2008", formatter.inputDigit('7'));
+    assertEquals("+82 2-531", formatter.inputDigit('1'));
+    assertEquals("+82 2-531-5", formatter.inputDigit('5'));
+    assertEquals("+82 2-531-56", formatter.inputDigit('6'));
+    assertEquals("+82 2-531-567", formatter.inputDigit('7'));
     assertEquals("+82 2-531-5678", formatter.inputDigit('8'));
 
     // +82 2 3665 5678
@@ -321,11 +319,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+822", formatter.inputDigit('2'));
     assertEquals("+8223", formatter.inputDigit('3'));
     assertEquals("+82 236", formatter.inputDigit('6'));
-    assertEquals("+82 2-366\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('6'));
-    assertEquals("+82 2-3665-\u2008\u2008\u2008\u2008", formatter.inputDigit('5'));
-    assertEquals("+82 2-3665-5\u2008\u2008\u2008", formatter.inputDigit('5'));
-    assertEquals("+82 2-3665-56\u2008\u2008", formatter.inputDigit('6'));
-    assertEquals("+82 2-3665-567\u2008", formatter.inputDigit('7'));
+    assertEquals("+82 2-366", formatter.inputDigit('6'));
+    assertEquals("+82 2-3665", formatter.inputDigit('5'));
+    assertEquals("+82 2-3665-5", formatter.inputDigit('5'));
+    assertEquals("+82 2-3665-56", formatter.inputDigit('6'));
+    assertEquals("+82 2-3665-567", formatter.inputDigit('7'));
     assertEquals("+82 2-3665-5678", formatter.inputDigit('8'));
 
     // 02-114 : This is too short to format. Checking that there are no side-effects.
@@ -352,10 +350,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011", formatter.inputDigit('1'));
     assertEquals("0114", formatter.inputDigit('4'));
     assertEquals("01145", formatter.inputDigit('5'));
-    assertEquals("011-456-\u2008\u2008\u2008\u2008", formatter.inputDigit('6'));
-    assertEquals("011-456-7\u2008\u2008\u2008", formatter.inputDigit('7'));
-    assertEquals("011-456-78\u2008\u2008", formatter.inputDigit('8'));
-    assertEquals("011-456-789\u2008", formatter.inputDigit('9'));
+    assertEquals("011-456", formatter.inputDigit('6'));
+    assertEquals("011-456-7", formatter.inputDigit('7'));
+    assertEquals("011-456-78", formatter.inputDigit('8'));
+    assertEquals("011-456-789", formatter.inputDigit('9'));
     assertEquals("011-456-7890", formatter.inputDigit('0'));
 
     // 011-9876-7890
@@ -365,11 +363,11 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011", formatter.inputDigit('1'));
     assertEquals("0119", formatter.inputDigit('9'));
     assertEquals("01198", formatter.inputDigit('8'));
-    assertEquals("011-987\u2008-\u2008\u2008\u2008\u2008", formatter.inputDigit('7'));
-    assertEquals("011-9876-\u2008\u2008\u2008\u2008", formatter.inputDigit('6'));
-    assertEquals("011-9876-7\u2008\u2008\u2008", formatter.inputDigit('7'));
-    assertEquals("011-9876-78\u2008\u2008", formatter.inputDigit('8'));
-    assertEquals("011-9876-789\u2008", formatter.inputDigit('9'));
+    assertEquals("011-987", formatter.inputDigit('7'));
+    assertEquals("011-9876", formatter.inputDigit('6'));
+    assertEquals("011-9876-7", formatter.inputDigit('7'));
+    assertEquals("011-9876-78", formatter.inputDigit('8'));
+    assertEquals("011-9876-789", formatter.inputDigit('9'));
     assertEquals("011-9876-7890", formatter.inputDigit('0'));
   }
 }

@@ -324,10 +324,11 @@ public class AsYouTypeFormatter {
     if (digitMatcher.find(lastMatchPosition)) {
       currentOutput = new StringBuffer(digitMatcher.replaceFirst(Character.toString(nextChar)));
       lastMatchPosition = digitMatcher.start();
+      return currentOutput.substring(0, lastMatchPosition + 1);
     } else {  // More digits are entered than we could handle.
       currentOutput.append(nextChar);
       ableToFormat = false;
+      return currentOutput.toString();
     }
-    return currentOutput.toString();
   }
 }
