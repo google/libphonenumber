@@ -58,6 +58,7 @@ public class AsYouTypeFormatter {
   private Pattern internationalPrefix;
   private StringBuffer prefixBeforeNationalNumber;
   private StringBuffer nationalNumber;
+  private static Pattern UNSUPPORTED_SYNTAX_PATTERN = Pattern.compile("\\|");
 
   /**
    * Constructs a light-weight formatter which does no formatting, but outputs exactly what is
@@ -123,9 +124,9 @@ public class AsYouTypeFormatter {
     String numberFormat = format.getFormat();
     String numberPattern = format.getPattern();
 
-    // The formatter doesn't format numbers when numberPattern contains "|" or ",", e.g.
+    // The formatter doesn't format numbers when numberPattern contains "|", e.g.
     // (20|3)\d{4,5}. In those cases we quickly return.
-    Matcher unsupportedSyntax = Pattern.compile("\\||,").matcher(numberPattern);
+    Matcher unsupportedSyntax = UNSUPPORTED_SYNTAX_PATTERN.matcher(numberPattern);
     if (unsupportedSyntax.find()) {
       return false;
     }
@@ -134,7 +135,7 @@ public class AsYouTypeFormatter {
     numberPattern = numberPattern.replaceAll("\\[([^\\[\\]])*\\]","\\\\d");
 
     // Replace any standalone digit (not the one in d{}) with \d
-    numberPattern = numberPattern.replaceAll("\\d(?=[^}])", "\\\\d");
+    numberPattern = numberPattern.replaceAll("\\d(?=[^,}])", "\\\\d");
 
     formattingTemplate = getFormattingTemplate(numberPattern, numberFormat);
     return true;
@@ -179,14 +180,12 @@ public class AsYouTypeFormatter {
    * @param nextChar  the most recently entered digit of a phone number. Formatting characters are
    *     allowed, but they are removed from the result. Full width digits and Arabic-indic digits
    *     are allowed, and will be shown as they are.
-   * @return  the partially formatted phone number, with the remaining digits each denoted by
-   *    \u2008. Clients could display the result as it is, as \u2008 will be displayed as a normal
-   *    white space.
+   * @return  the partially formatted phone number.
    */
   public String inputDigit(char nextChar) {
     accruedInput.append(nextChar);
     // * and # are normally used in mobile codes, which we do not format.
-    if (nextChar == '*' || nextChar == '#') {
+    if (nextChar == '*' || nextChar == '#' || Character.isLetter(nextChar)) {
       ableToFormat = false;
     }
     if (!ableToFormat) {
