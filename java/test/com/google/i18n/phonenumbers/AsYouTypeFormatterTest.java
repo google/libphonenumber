@@ -63,7 +63,9 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650 253 2", formatter.inputDigit('2'));
     assertEquals("650 253 22", formatter.inputDigit('2'));
     assertEquals("650 253 222", formatter.inputDigit('2'));
-    assertEquals("650 253 2222", formatter.inputDigit('2'));
+    // No more formatting when semicolon is entered.
+    assertEquals("650253222;", formatter.inputDigit(';'));
+    assertEquals("650253222;2", formatter.inputDigit('2'));
 
     formatter.clear();
     assertEquals("6", formatter.inputDigit('6'));
@@ -191,7 +193,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("800 MY AP", formatter.inputDigit('P'));
     assertEquals("800 MY APP", formatter.inputDigit('P'));
     assertEquals("800 MY APPL", formatter.inputDigit('L'));
-    assertEquals("800 MY APPLE", formatter.inputDigit('E'));    
+    assertEquals("800 MY APPLE", formatter.inputDigit('E'));
   }
 
   public void testAsYouTypeFormatterGBFixedLine() {
@@ -260,7 +262,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("0301", formatter.inputDigit('1'));
     assertEquals("03012", formatter.inputDigit('2'));
     assertEquals("030 123", formatter.inputDigit('3'));
-    assertEquals("030 1234", formatter.inputDigit('4'));
+    assertEquals("030 1234", formatter.inputDigit('4'));    
   }
 
   public void testAsYouTypeFormatterAR() {
