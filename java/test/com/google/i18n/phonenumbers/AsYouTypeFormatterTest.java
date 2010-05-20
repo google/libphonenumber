@@ -54,6 +54,19 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650 253 2222", formatter.inputDigit('2'));
 
     formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("16", formatter.inputDigit('6'));
+    assertEquals("165", formatter.inputDigit('5'));
+    assertEquals("1650", formatter.inputDigit('0'));
+    assertEquals("16502", formatter.inputDigit('2'));
+    assertEquals("1 650 25", formatter.inputDigit('5'));
+    assertEquals("1 650 253", formatter.inputDigit('3'));
+    assertEquals("1 650 253 2", formatter.inputDigit('2'));
+    assertEquals("1 650 253 22", formatter.inputDigit('2'));
+    assertEquals("1 650 253 222", formatter.inputDigit('2'));
+    assertEquals("1 650 253 2222", formatter.inputDigit('2'));    
+    
+    formatter.clear();
     assertEquals("6", formatter.inputDigit('6'));
     assertEquals("65", formatter.inputDigit('5'));
     assertEquals("650", formatter.inputDigit('0'));
@@ -262,7 +275,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("0301", formatter.inputDigit('1'));
     assertEquals("03012", formatter.inputDigit('2'));
     assertEquals("030 123", formatter.inputDigit('3'));
-    assertEquals("030 1234", formatter.inputDigit('4'));    
+    assertEquals("030 1234", formatter.inputDigit('4'));
   }
 
   public void testAsYouTypeFormatterAR() {

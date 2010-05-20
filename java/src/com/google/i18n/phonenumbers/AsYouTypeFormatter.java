@@ -251,7 +251,10 @@ public class AsYouTypeFormatter {
 
   private void removeNationalPrefixFromNationalNumber() {
     int startOfNationalNumber = 0;
-    if (currentMetaData.hasNationalPrefix()) {
+    if (currentMetaData.getCountryCode() == 1 && nationalNumber.charAt(0) == '1') {
+      startOfNationalNumber = 1;
+      prefixBeforeNationalNumber.append("1 ");
+    } else if (currentMetaData.hasNationalPrefix()) {
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       if (m.lookingAt()) {
         startOfNationalNumber = m.end();
