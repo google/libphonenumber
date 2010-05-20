@@ -64,8 +64,8 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("1 650 253 2", formatter.inputDigit('2'));
     assertEquals("1 650 253 22", formatter.inputDigit('2'));
     assertEquals("1 650 253 222", formatter.inputDigit('2'));
-    assertEquals("1 650 253 2222", formatter.inputDigit('2'));    
-    
+    assertEquals("1 650 253 2222", formatter.inputDigit('2'));
+
     formatter.clear();
     assertEquals("6", formatter.inputDigit('6'));
     assertEquals("65", formatter.inputDigit('5'));

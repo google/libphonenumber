@@ -1339,7 +1339,7 @@ public class PhoneNumberUtilTest extends TestCase {
     }
     try {
       String someNumber = "123 456 7890";
-      phoneUtil.parse(someNumber, "ZZ");
+      phoneUtil.parse(someNumber, "YY");
       fail("'Unknown' country code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
@@ -1482,7 +1482,7 @@ public class PhoneNumberUtilTest extends TestCase {
             .setRawInput("+1800 six-flag")
             .setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN).build();
     assertEquals(alphaNumericNumber3,
-                 phoneUtil.parseAndKeepRawInput("+1800 six-flag", "CN"));
+                 phoneUtil.parseAndKeepRawInput("+1800 six-flag", "NZ"));
 
     PhoneNumber alphaNumericNumber4 =
         PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(18007493524L)
