@@ -282,7 +282,7 @@ public class PhoneNumberUtil {
 
   // A cache for frequently used regular expressions.
   private RegexCache regexCache = new RegexCache(50);
-  
+
   /**
    * INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
    * E. 123. For example, the number of the Google Zurich office will be written as
@@ -706,7 +706,7 @@ public Set<String> getSupportedCountries() {
     formattedNumber.append(formatNationalNumber(nationalSignificantNumber,
                                                 regionCode, numberFormat));
     maybeGetFormattedExtension(number, regionCode, formattedNumber);
-    formatNumberByFormat(countryCode, numberFormat, formattedNumber);   
+    formatNumberByFormat(countryCode, numberFormat, formattedNumber);
   }
 
   /**
@@ -851,7 +851,7 @@ public Set<String> getSupportedCountries() {
                            PhoneNumberFormat.INTERNATIONAL,
                            formattedNumber);
     }
-    return formattedNumber.toString();     
+    return formattedNumber.toString();
   }
 
   /**
