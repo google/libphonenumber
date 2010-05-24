@@ -59,11 +59,14 @@ public class PhoneNumberUtil {
   // represented by that country code. Note countries under NANPA share the country code 1,
   // Russia and Kazakhstan share the country code 7, and many French territories in the Indian
   // Ocean share the country code 262. Under this map, 1 is mapped to US, 7 is mapped to RU,
-  // and 262 is mapped to RE.
-  private final HashMap<Integer, String> countryCodeToRegionCodeMap = new HashMap<Integer, String>(200);
+  // and 262 is mapped to RE. The initial capacity is set to 300 as there are roughly 200 different
+  // country codes, and this offers a load factor of roughly 0.75.
+  private final HashMap<Integer, String> countryCodeToRegionCodeMap =
+      new HashMap<Integer, String>(310);
 
-  // The set of countries that share country code 1.
-  private final HashSet<String> nanpaCountries = new HashSet<String>(30);
+  // The set of countries that share country code 1. There are roughly 26 countries of them and we
+  // set the initial capacity of the HashSet to 35 to offer a load factor of roughly 0.75.
+  private final HashSet<String> nanpaCountries = new HashSet<String>(35);
   private static final int NANPA_COUNTRY_CODE = 1;
 
   // The set of countries that share country code 7.
@@ -280,7 +283,9 @@ public class PhoneNumberUtil {
   private HashMap<String, PhoneMetadata> countryToMetadataMap =
       new HashMap<String, PhoneMetadata>();
 
-  // A cache for frequently used regular expressions.
+  // A cache for frequently used regular expressions. As most people use phone numbers primarily
+  // from one country, and there are roughly 30 regular expressions needed, the initial capacity of
+  // 50 offers a rough load factor of 0.75.
   private RegexCache regexCache = new RegexCache(50);
 
   /**

@@ -34,20 +34,21 @@ public class RegexCache {
   }
 
   public Pattern getPatternForRegex(String regex) {
-    if (containsRegex(regex)) {
-      return cache.get(regex);
-    } else {
-      Pattern pattern = Pattern.compile(regex);
+    Pattern pattern = cache.get(regex);
+    if (pattern == null) {
+      pattern = Pattern.compile(regex);
       cache.put(regex, pattern);
-      return pattern;
     }
+    return pattern;
   }
 
+  // This method is used for testing.
   boolean containsRegex(String regex) {
     return cache.containsKey(regex);
   }
 
   private class LRUCache<K, V> {
+    // LinkedHashMap offers a straightforward implementation of LRU cache.
     private LinkedHashMap<K, V> map;
     private int size;
 
