@@ -200,10 +200,7 @@ public class AsYouTypeFormatter {
         positionRemembered = originalPosition;
         currentOutput.setLength(0);
       }
-      if (rememberPosition) {
-        positionRemembered = accruedInput.length();
-        originalPosition = positionRemembered;
-      }
+      rememberPosition();
       return accruedInput.toString();
     }
 
@@ -218,18 +215,12 @@ public class AsYouTypeFormatter {
       case 3:
       case 4:
       case 5:
-        if (rememberPosition) {
-          positionRemembered = accruedInput.length();
-          originalPosition = positionRemembered;
-        }
+        rememberPosition();
         return accruedInput.toString();
       case 6:
         if (!extractIddAndValidCountryCode()) {
           ableToFormat = false;
-          if (rememberPosition) {
-            positionRemembered = accruedInput.length();
-            originalPosition = positionRemembered;
-          }
+          rememberPosition();
           return accruedInput.toString();
         }
         removeNationalPrefixFromNationalNumber();
@@ -243,10 +234,17 @@ public class AsYouTypeFormatter {
     }
   }
 
+  private void rememberPosition() {
+    if (rememberPosition) {
+      positionRemembered = accruedInput.length();
+      originalPosition = positionRemembered;
+    }
+  }
+
   /**
-   * Same as inputDigit, but remember the position where nextChar is inserted, so that it could be
-   * retrieved later using getRememberedPosition(). The remembered position will be automatically
-   * adjusted if additional formatting characters are later inserted/removed in front of it.
+   * Same as inputDigit, but remembers the position where nextChar is inserted, so that it could be
+   * retrieved later by using getRememberedPosition(). The remembered position will be automatically
+   * adjusted if additional formatting characters are later inserted/removed in front of nextChar.
    */
   public String inputDigitAndRememberPosition(char nextChar) {
     rememberPosition = true;
@@ -257,7 +255,7 @@ public class AsYouTypeFormatter {
 
   /**
    * Returns the current position in the partially formatted phone number of the character which was
-   * previously passed in as the parameter of inputDigitAndRememberPosition.
+   * previously passed in as the parameter of inputDigitAndRememberPosition().
    */
   public int getRememberedPosition() {
     return positionRemembered;
@@ -352,7 +350,7 @@ public class AsYouTypeFormatter {
         String countryCodeString = Integer.toString(countryCode);
         if (positionRemembered > prefixBeforeNationalNumber.length() + countryCodeString.length()) {
           // Since a space will be inserted after the country code in this case, we increase the
-          // remembered position by 1.  
+          // remembered position by 1.
           positionRemembered++;
         }
         prefixBeforeNationalNumber.append(countryCodeString).append(" ");
