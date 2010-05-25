@@ -283,10 +283,14 @@ public class AsYouTypeFormatter {
   private String inputAccruedNationalNumber() {
     int lengthOfNationalNumber = nationalNumber.length();
     if (lengthOfNationalNumber > 0) {
+      // The positionRemembered should be only adjusted once in the loop that follows.
+      Boolean positionAlreadyAdjusted = false;
       for (int i = 0; i < lengthOfNationalNumber - 1; i++) {
         String temp = inputDigitHelper(nationalNumber.charAt(i));
-        if (positionRemembered == i + 1) {
-          positionRemembered = temp.length();
+        if (!positionAlreadyAdjusted &&
+            positionRemembered - prefixBeforeNationalNumber.length() == i + 1) {
+          positionRemembered = prefixBeforeNationalNumber.length() + temp.length();
+          positionAlreadyAdjusted = true;
         }
       }
       String temp = inputDigitHelper(nationalNumber.charAt(lengthOfNationalNumber - 1));
@@ -305,7 +309,13 @@ public class AsYouTypeFormatter {
     int startOfNationalNumber = 0;
     if (currentMetaData.getCountryCode() == 1 && nationalNumber.charAt(0) == '1') {
       startOfNationalNumber = 1;
-      prefixBeforeNationalNumber.append("1 ");
+      prefixBeforeNationalNumber.append("1");
+      // Since a space will be inserted after the national prefix in this case, we increase the
+      // remembered position by 1 for anything that is after the national prefix.
+      if (positionRemembered > prefixBeforeNationalNumber.length()) {
+        positionRemembered++;
+      }
+      prefixBeforeNationalNumber.append(" ");
     } else if (currentMetaData.hasNationalPrefix()) {
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       if (m.lookingAt()) {

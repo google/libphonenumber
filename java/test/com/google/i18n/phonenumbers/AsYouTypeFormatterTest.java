@@ -91,6 +91,46 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals(10, formatter.getRememberedPosition());
 
     formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("16", formatter.inputDigit('6'));
+    assertEquals("165", formatter.inputDigit('5'));
+    assertEquals("1650", formatter.inputDigitAndRememberPosition('0'));
+    assertEquals(4, formatter.getRememberedPosition());
+    assertEquals("16502", formatter.inputDigit('2'));
+    assertEquals("1 650 25", formatter.inputDigit('5'));
+    assertEquals(5, formatter.getRememberedPosition());
+    assertEquals("1 650 253", formatter.inputDigit('3'));
+    assertEquals("1 650 253 2", formatter.inputDigit('2'));
+    assertEquals("1 650 253 22", formatter.inputDigit('2'));
+    assertEquals(5, formatter.getRememberedPosition());
+    assertEquals("1 650 253 222", formatter.inputDigit('2'));
+    assertEquals("1 650 253 2222", formatter.inputDigit('2'));
+    assertEquals("165025322222", formatter.inputDigit('2'));
+    assertEquals(4, formatter.getRememberedPosition());
+    assertEquals("1650253222222", formatter.inputDigit('2'));
+    assertEquals(4, formatter.getRememberedPosition());    
+
+    formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("16", formatter.inputDigit('6'));
+    assertEquals("165", formatter.inputDigitAndRememberPosition('5'));
+    assertEquals("1650", formatter.inputDigit('0'));
+    assertEquals(3, formatter.getRememberedPosition());
+    assertEquals("16502", formatter.inputDigit('2'));
+    assertEquals("1 650 25", formatter.inputDigit('5'));
+    assertEquals(4, formatter.getRememberedPosition());
+    assertEquals("1 650 253", formatter.inputDigit('3'));
+    assertEquals("1 650 253 2", formatter.inputDigit('2'));
+    assertEquals("1 650 253 22", formatter.inputDigit('2'));
+    assertEquals(4, formatter.getRememberedPosition());
+    assertEquals("1 650 253 222", formatter.inputDigit('2'));
+    assertEquals("1 650 253 2222", formatter.inputDigit('2'));
+    assertEquals("165025322222", formatter.inputDigit('2'));
+    assertEquals(3, formatter.getRememberedPosition());
+    assertEquals("1650253222222", formatter.inputDigit('2'));
+    assertEquals(3, formatter.getRememberedPosition());
+
+    formatter.clear();
     assertEquals("6", formatter.inputDigit('6'));
     assertEquals("65", formatter.inputDigit('5'));
     assertEquals("650", formatter.inputDigit('0'));
