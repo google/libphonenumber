@@ -192,6 +192,7 @@ public class AsYouTypeFormatter {
    */
   public String inputDigit(char nextChar) {
     accruedInput.append(nextChar);
+    rememberPosition();
     if (UNSUPPORTED_SYNTAX.matcher(Character.toString(nextChar)).matches()) {
       ableToFormat = false;
     }
@@ -200,7 +201,6 @@ public class AsYouTypeFormatter {
         positionRemembered = originalPosition;
         currentOutput.setLength(0);
       }
-      rememberPosition();
       return accruedInput.toString();
     }
 
@@ -215,19 +215,20 @@ public class AsYouTypeFormatter {
       case 3:
       case 4:
       case 5:
-        rememberPosition();
         return accruedInput.toString();
       case 6:
         if (!extractIddAndValidCountryCode()) {
           ableToFormat = false;
-          rememberPosition();
           return accruedInput.toString();
         }
         removeNationalPrefixFromNationalNumber();
         return attemptToChooseFormattingPattern();
       default:
         if (nationalNumber.length() > 4) {  // The formatting pattern is already chosen.
-          return prefixBeforeNationalNumber + inputDigitHelper(nextChar);
+          String temp = inputDigitHelper(nextChar);
+          return ableToFormat
+              ? prefixBeforeNationalNumber + temp
+              : temp;
         } else {
           return attemptToChooseFormattingPattern();
         }
@@ -288,8 +289,10 @@ public class AsYouTypeFormatter {
           positionRemembered = temp.length();
         }
       }
-      return prefixBeforeNationalNumber +
-          inputDigitHelper(nationalNumber.charAt(lengthOfNationalNumber - 1));
+      String temp = inputDigitHelper(nationalNumber.charAt(lengthOfNationalNumber - 1));
+      return ableToFormat
+          ? prefixBeforeNationalNumber + temp
+          : temp;
     } else {
       if (rememberPosition) {
         positionRemembered = prefixBeforeNationalNumber.length();
@@ -395,10 +398,11 @@ public class AsYouTypeFormatter {
     } else {  // More digits are entered than we could handle.
       currentOutput.append(nextChar);
       ableToFormat = false;
-      if (rememberPosition) {
-        positionRemembered = prefixBeforeNationalNumber.length() + currentOutput.length();
+      if (positionRemembered > 0) {
+        positionRemembered = originalPosition;
+        currentOutput.setLength(0);
       }
-      return currentOutput.toString();
+      return accruedInput.toString();
     }
   }
 }

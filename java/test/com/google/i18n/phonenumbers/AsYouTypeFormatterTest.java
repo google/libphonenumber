@@ -85,6 +85,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals(13, formatter.getRememberedPosition());
     assertEquals("1 650 253 2222", formatter.inputDigit('2'));
     assertEquals(13, formatter.getRememberedPosition());
+    assertEquals("165025322222", formatter.inputDigit('2'));
+    assertEquals(10, formatter.getRememberedPosition());
+    assertEquals("1650253222222", formatter.inputDigit('2'));
+    assertEquals(10, formatter.getRememberedPosition());
 
     formatter.clear();
     assertEquals("6", formatter.inputDigit('6'));
