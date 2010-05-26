@@ -562,10 +562,9 @@ public class PhoneNumberUtil {
     if (number.hasExtension()) {
       // We don't want to alter the proto given to us, but we don't want to include the extension
       // when we format it, so we copy it and clear the extension here.
-      PhoneNumber.Builder protoBuilder = PhoneNumber.newBuilder();
-      protoBuilder.mergeFrom(number);
-      protoBuilder.clearExtension();
-      copiedProto = protoBuilder.build();
+      copiedProto = new PhoneNumber();
+      copiedProto.mergeFrom(number);
+      copiedProto.clearExtension();
     } else {
       copiedProto = number;
     }
@@ -680,13 +679,13 @@ public Set<String> getSupportedCountries() {
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
     StringBuffer formattedNumber = new StringBuffer(20);
-    format(number.toBuilder(), numberFormat, formattedNumber);
+    format(number, numberFormat, formattedNumber);
     return formattedNumber.toString();
   }
 
-  // Same as format(PhoneNumber, PhoneNumberFormat), but accepts mutable PhoneNumber.Builder and
-  // StringBuffer as parameters to decrease object creation when invoked many times.
-  public void format(PhoneNumber.Builder number, PhoneNumberFormat numberFormat,
+  // Same as format(PhoneNumber, PhoneNumberFormat), but accepts mutable StringBuffer as parameters
+  // to decrease object creation when invoked many times.
+  public void format(PhoneNumber number, PhoneNumberFormat numberFormat,
                      StringBuffer formattedNumber) {
     // Clear the StringBuffer first.
     formattedNumber.setLength(0);
@@ -897,12 +896,6 @@ public Set<String> getSupportedCountries() {
    * @return  the national significant number of the PhoneNumber object passed in
    */
   public static String getNationalSignificantNumber(PhoneNumber number) {
-    return getNationalSignificantNumber(number.toBuilder());
-  }
-
-  // Same as getNationalSignificantNumber(PhoneNumber), but accepts mutable PhoneNumber.Builder as
-  // a parameter to decrease object creation when invoked many times.
-  public static String getNationalSignificantNumber(PhoneNumber.Builder number) {
     // The leading zero in the national (significant) number of an Italian phone number has a
     // special meaning. Unlike the rest of the world, it indicates the number is a landline
     // number. There have been plans to migrate landline numbers to start with the digit two since
@@ -1019,11 +1012,6 @@ public Set<String> getSupportedCountries() {
    * an extension specified.
    */
   private void maybeGetFormattedExtension(PhoneNumber number, String regionCode,
-                                          StringBuffer formattedNumber) {
-    maybeGetFormattedExtension(number.toBuilder(), regionCode, formattedNumber);
-  }
-
-  private void maybeGetFormattedExtension(PhoneNumber.Builder number, String regionCode,
                                           StringBuffer formattedNumber) {
     if (number.hasExtension()) {
       // Formats the extension part of the phone number by prefixing it with the appropriate
@@ -1420,14 +1408,14 @@ public Set<String> getSupportedCountries() {
    *     country code was extracted, this will be left unchanged.
    * @param storeCountryCodeSource  true if the country_code_source field of phoneNumber should be
    *     populated.
-   * @param phoneNumber  the PhoneNumber.Builder object that needs to be populated with country code
+   * @param phoneNumber  the PhoneNumber object that needs to be populated with country code
    *     and country code source. Note the country code is always populated, whereas country code
    *     source is only populated when keepCountryCodeSource is true.
    * @return  the country code extracted or 0 if none could be extracted
    */
   int maybeExtractCountryCode(String number, PhoneMetadata defaultRegionMetadata,
                               StringBuffer nationalNumber, boolean storeCountryCodeSource,
-                              PhoneNumber.Builder phoneNumber)
+                              PhoneNumber phoneNumber)
       throws NumberParseException {
     if (number.length() == 0) {
       return 0;
@@ -1649,15 +1637,14 @@ public Set<String> getSupportedCountries() {
    */
   public PhoneNumber parse(String numberToParse, String defaultCountry)
       throws NumberParseException {
-    PhoneNumber.Builder phoneNumber = PhoneNumber.newBuilder();
+    PhoneNumber phoneNumber = new PhoneNumber();
     parse(numberToParse, defaultCountry, phoneNumber);
-    return phoneNumber.build();
+    return phoneNumber;
   }
 
-  // Same as parse(String, String), but accepts mutable PhoneNumber.Builder as a parameter to
+  // Same as parse(String, String), but accepts mutable PhoneNumber as a parameter to
   // decrease object creation when invoked many times.
-  public void parse(String numberToParse, String defaultCountry,
-                    PhoneNumber.Builder phoneNumber)
+  public void parse(String numberToParse, String defaultCountry, PhoneNumber phoneNumber)
       throws NumberParseException {
     if (!isValidRegionCode(defaultCountry)) {
       throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
@@ -1684,15 +1671,15 @@ public Set<String> getSupportedCountries() {
    */
   public PhoneNumber parseAndKeepRawInput(String numberToParse, String defaultCountry)
       throws NumberParseException {
-    PhoneNumber.Builder phoneNumber = PhoneNumber.newBuilder();
+    PhoneNumber phoneNumber = new PhoneNumber();
     parseAndKeepRawInput(numberToParse, defaultCountry, phoneNumber);
-    return phoneNumber.build();
+    return phoneNumber;
   }
 
-  // Same as parseAndKeepRawInput(String, String), but accepts mutable PhoneNumber.Builder as a
-  // parameter to decrease object creation when invoked many times.
+  // Same as parseAndKeepRawInput(String, String), but accepts mutable PhoneNumber as a parameter to
+  // decrease object creation when invoked many times.
   public void parseAndKeepRawInput(String numberToParse, String defaultCountry,
-                                   PhoneNumber.Builder phoneNumber)
+                                   PhoneNumber phoneNumber)
       throws NumberParseException {
     if (!isValidRegionCode(defaultCountry)) {
       throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
@@ -1731,7 +1718,7 @@ public Set<String> getSupportedCountries() {
    * isNumberMatch().
    */
   private void parseHelper(String numberToParse, String defaultCountry,
-                           Boolean keepRawInput, PhoneNumber.Builder phoneNumber)
+                           Boolean keepRawInput, PhoneNumber phoneNumber)
       throws NumberParseException {
     // Extract a possible number from the string passed in (this strips leading characters that
     // could not be the start of a phone number.)
@@ -1827,12 +1814,12 @@ public Set<String> getSupportedCountries() {
    */
   public MatchType isNumberMatch(PhoneNumber firstNumberIn, PhoneNumber secondNumberIn) {
     // Make copies of the phone number so that the numbers passed in are not edited.
-    PhoneNumber.Builder firstNumber = PhoneNumber.newBuilder();
+    PhoneNumber firstNumber = new PhoneNumber();
     firstNumber.mergeFrom(firstNumberIn);
-    PhoneNumber.Builder secondNumber = PhoneNumber.newBuilder();
+    PhoneNumber secondNumber = new PhoneNumber();
     secondNumber.mergeFrom(secondNumberIn);
     // First clear raw_input and country_code_source field and any empty-string extensions so that
-    // we can use the proto-buffer equality method.
+    // we can use the PhoneNumber.exactlySameAs() method.
     firstNumber.clearRawInput();
     firstNumber.clearCountryCodeSource();
     secondNumber.clearRawInput();
@@ -1846,22 +1833,19 @@ public Set<String> getSupportedCountries() {
         secondNumber.clearExtension();
     }
 
-    PhoneNumber number1 = firstNumber.build();
-    PhoneNumber number2 = secondNumber.build();
-
     // Early exit if both had extensions and these are different.
-    if (number1.hasExtension() && number2.hasExtension() &&
-        !number1.getExtension().equals(number2.getExtension())) {
+    if (firstNumber.hasExtension() && secondNumber.hasExtension() &&
+        !firstNumber.getExtension().equals(secondNumber.getExtension())) {
       return MatchType.NO_MATCH;
     }
-    int firstNumberCountryCode = number1.getCountryCode();
-    int secondNumberCountryCode = number2.getCountryCode();
+    int firstNumberCountryCode = firstNumber.getCountryCode();
+    int secondNumberCountryCode = secondNumber.getCountryCode();
     // Both had country code specified.
     if (firstNumberCountryCode != 0 && secondNumberCountryCode != 0) {
-      if (areSameMessages(number1, number2)) {
+      if (firstNumber.exactlySameAs(secondNumber)) {
         return MatchType.EXACT_MATCH;
       } else if (firstNumberCountryCode == secondNumberCountryCode &&
-                 isNationalNumberSuffixOfTheOther(number1, number2)) {
+                 isNationalNumberSuffixOfTheOther(firstNumber, secondNumber)) {
         // A SHORT_NSN_MATCH occurs if there is a difference because of the presence or absence of
         // an 'Italian leading zero', the presence or absence of an extension, or one NSN being a
         // shorter variant of the other.
@@ -1872,13 +1856,12 @@ public Set<String> getSupportedCountries() {
     }
     // Checks cases where one or both country codes were not specified. To make equality checks
     // easier, we first set the country codes to be equal.
-    PhoneNumber newNumber =
-        PhoneNumber.newBuilder(number1).setCountryCode(secondNumberCountryCode).build();
+    firstNumber.setCountryCode(secondNumberCountryCode);
     // If all else was the same, then this is an NSN_MATCH.
-    if (areSameMessages(newNumber, number2)) {
+    if (firstNumber.exactlySameAs(secondNumber)) {
       return MatchType.NSN_MATCH;
     }
-    if (isNationalNumberSuffixOfTheOther(newNumber, number2)) {
+    if (isNationalNumberSuffixOfTheOther(firstNumber, secondNumber)) {
       return MatchType.SHORT_NSN_MATCH;
     }
     return MatchType.NO_MATCH;
@@ -1910,11 +1893,11 @@ public Set<String> getSupportedCountries() {
    */
   public MatchType isNumberMatch(String firstNumber, String secondNumber)
       throws NumberParseException {
-    PhoneNumber.Builder number1 = PhoneNumber.newBuilder();
+    PhoneNumber number1 = new PhoneNumber();
     parseHelper(firstNumber, null, false, number1);
-    PhoneNumber.Builder number2 = PhoneNumber.newBuilder();
+    PhoneNumber number2 = new PhoneNumber();
     parseHelper(secondNumber, null, false, number2);
-    return isNumberMatch(number1.build(), number2.build());
+    return isNumberMatch(number1, number2);
   }
 
   /**
@@ -1931,8 +1914,8 @@ public Set<String> getSupportedCountries() {
    */
   public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber)
       throws NumberParseException {
-    PhoneNumber.Builder number2 = PhoneNumber.newBuilder();
+    PhoneNumber number2 = new PhoneNumber();
     parseHelper(secondNumber, null, false, number2);
-    return isNumberMatch(firstNumber, number2.build());
+    return isNumberMatch(firstNumber, number2);
   }
 }
