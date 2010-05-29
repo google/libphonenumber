@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 public class PhoneNumberUtilTest extends TestCase {
   private PhoneNumberUtil phoneUtil;
   private static final String TEST_META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/test/generated_files/PhoneNumberMetadataProtoForTesting";
+      "/com/google/i18n/phonenumbers/PhoneNumberMetadataProtoForTesting";
 
   public PhoneNumberUtilTest() {
     PhoneNumberUtil.resetInstance();

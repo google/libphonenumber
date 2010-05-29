@@ -50,7 +50,7 @@ public class PhoneNumberUtil {
   private static final int MIN_LENGTH_FOR_NSN = 3;
   private static final int MAX_LENGTH_FOR_NSN = 15;
   private static final String META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/src/generated_files/PhoneNumberMetadataProto";
+      "/com/google/i18n/phonenumbers/PhoneNumberMetadataProto";
   private static final Logger LOGGER = Logger.getLogger(PhoneNumberUtil.class.getName());
 
   // A mapping from a country code to a region code which denotes the country/region

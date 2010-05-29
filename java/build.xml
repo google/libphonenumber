@@ -26,6 +26,7 @@
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
     <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    <javac srcdir="${resources.dir}" destdir="${classes.dir}" classpathref="classpath"/>
   </target>
 
   <target name="jar" depends="compile">
@@ -35,7 +36,7 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
       </fileset>
-      <fileset dir="${resources.dir}">
+      <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto"/>
       </fileset>
     </jar>
@@ -48,8 +49,10 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
       </fileset>
-      <fileset dir="${resources.dir}">
+      <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto"/>
+      </fileset>
+      <fileset dir="${test.dir}">
         <include name="**/PhoneNumberMetadataProtoForTesting"/>
       </fileset>
     </jar>
