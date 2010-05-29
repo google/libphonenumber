@@ -16,7 +16,7 @@
 
 /**
  * Definition of the class representing metadata for international telephone numbers. This class is
- * hand created based on the class file compiled from phonenumber.proto. Please refer to that file
+ * hand created based on the class file compiled from phonemetadata.proto. Please refer to that file
  * for detailed descriptions of the meaning of each field.
  */
 
