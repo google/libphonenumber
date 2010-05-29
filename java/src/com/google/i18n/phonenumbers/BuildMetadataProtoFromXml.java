@@ -28,6 +28,7 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -67,7 +68,7 @@ public class BuildMetadataProtoFromXml {
       document.getDocumentElement().normalize();
       Element rootElement = document.getDocumentElement();
       NodeList territory = rootElement.getElementsByTagName("territory");
-      PhoneMetadataCollection.Builder metadataCollection = PhoneMetadataCollection.newBuilder();
+      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
       int numOfTerritories = territory.getLength();
       for (int i = 0; i < numOfTerritories; i++) {
         Element territoryElement = (Element) territory.item(i);
@@ -75,7 +76,9 @@ public class BuildMetadataProtoFromXml {
         PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
         metadataCollection.addMetadata(metadata);
       }
-      metadataCollection.build().writeTo(output);
+      ObjectOutputStream out = new ObjectOutputStream(output);
+      out.writeObject(metadataCollection);
+      out.close();
     } catch (IOException e) {
       LOGGER.log(Level.SEVERE, e.toString());
     } catch (SAXException e) {
@@ -92,7 +95,7 @@ public class BuildMetadataProtoFromXml {
   }
 
   private static PhoneMetadata loadCountryMetadata(String regionCode, Element element) {
-    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    PhoneMetadata metadata = new PhoneMetadata();
     metadata.setId(regionCode);
     metadata.setCountryCode(Integer.parseInt(element.getAttribute("countryCode")));
     metadata.setInternationalPrefix(validateRE(element.getAttribute("internationalPrefix")));
@@ -129,7 +132,7 @@ public class BuildMetadataProtoFromXml {
     if (numOfFormatElements > 0) {
       for (int i = 0; i < numOfFormatElements; i++) {
         Element numberFormatElement = (Element) numberFormatElements.item(i);
-        NumberFormat.Builder format = NumberFormat.newBuilder();
+        NumberFormat format = new NumberFormat();
         if (numberFormatElement.hasAttribute("nationalPrefixFormattingRule")) {
           format.setNationalPrefixFormattingRule(validateRE(
               getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix)));
@@ -141,7 +144,7 @@ public class BuildMetadataProtoFromXml {
         }
         format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
         format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
-        metadata.addNumberFormat(format.build());
+        metadata.addNumberFormat(format);
       }
     }
 
@@ -150,19 +153,18 @@ public class BuildMetadataProtoFromXml {
     if (numOfIntlFormatElements > 0) {
       for (int i = 0; i < numOfIntlFormatElements; i++) {
         Element numberFormatElement = (Element) intlNumberFormatElements.item(i);
-        NumberFormat.Builder format = NumberFormat.newBuilder();
+        NumberFormat format = new NumberFormat();
         if (numberFormatElement.hasAttribute("leadingDigits")) {
           format.setLeadingDigits(validateRE(numberFormatElement.getAttribute("leadingDigits")));
         }
         format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
         format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
-        metadata.addIntlNumberFormat(format.build());
+        metadata.addIntlNumberFormat(format);
       }
     }
 
     PhoneNumberDesc generalDesc =
-        processPhoneNumberDescElement(PhoneNumberDesc.newBuilder().build(),
-                                      element, "generalDesc");
+        processPhoneNumberDescElement(new PhoneNumberDesc(), element, "generalDesc");
     metadata.setGeneralDesc(generalDesc);
     metadata.setFixedLine(processPhoneNumberDescElement(generalDesc, element, "fixedLine"));
     metadata.setMobile(processPhoneNumberDescElement(generalDesc, element, "mobile"));
@@ -177,7 +179,7 @@ public class BuildMetadataProtoFromXml {
         metadata.getFixedLine().getNationalNumberPattern())) {
       metadata.setSameMobileAndFixedLinePattern(true);
     }
-    return metadata.build();
+    return metadata;
   }
 
   private static String getNationalPrefixFormattingRuleFromElement(Element element,
@@ -210,13 +212,13 @@ public class BuildMetadataProtoFromXml {
                                                                Element countryElement,
                                                                String numberType) {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
-    PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
+    PhoneNumberDesc numberDesc = new PhoneNumberDesc();
     if (phoneNumberDescList.getLength() == 0 &&
         (!numberType.equals("fixedLine") && !numberType.equals("mobile") &&
          !numberType.equals("generalDesc"))) {
       numberDesc.setNationalNumberPattern("NA");
       numberDesc.setPossibleNumberPattern("NA");
-      return numberDesc.build();
+      return numberDesc;
     }
     numberDesc.mergeFrom(generalDesc);
     if (phoneNumberDescList.getLength() > 0) {
@@ -240,6 +242,6 @@ public class BuildMetadataProtoFromXml {
         }
       }
     }
-    return numberDesc.build();
+    return numberDesc;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 Google Inc.
+ * Copyright (C) 2010 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@
  * Definition of the class representing international telephone numbers. This class is hand created
  * based on the class file compiled from phonenumber.proto. Please refer to that file for detailed
  * descriptions of the meaning of each field.
- *
- * @author Shaopeng Jia
  */
 
 package com.google.i18n.phonenumbers;
@@ -27,9 +25,9 @@ package com.google.i18n.phonenumbers;
 import java.io.Serializable;
 
 public final class Phonenumber {
-
   private Phonenumber() {}
   public static final class PhoneNumber implements Serializable {
+    private static final long serialVersionUID = 1;
     public enum CountryCodeSource {
       FROM_NUMBER_WITH_PLUS_SIGN,
       FROM_NUMBER_WITH_IDD,

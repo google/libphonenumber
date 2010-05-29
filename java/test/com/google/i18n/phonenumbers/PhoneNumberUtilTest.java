@@ -20,7 +20,6 @@ import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.protobuf.MessageLite;
 import junit.framework.TestCase;
 
 import java.io.IOException;
@@ -70,10 +69,6 @@ public class PhoneNumberUtilTest extends TestCase {
     return number1.exactlySameAs(number2);
   }
 
-  private boolean assertEquals(MessageLite message1, MessageLite message2) {
-    return PhoneNumberUtil.areSameMessages(message1, message2);
-  }
-
   public void testGetInstanceLoadUSMetadata() throws IOException {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion("US");
     assertEquals("US", metadata.getId());
@@ -87,7 +82,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("[13-9]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
     assertEquals("\\d{7,10}", metadata.getGeneralDesc().getPossibleNumberPattern());
-    assertEquals(metadata.getGeneralDesc(), metadata.getFixedLine());
+    assertTrue(metadata.getGeneralDesc().exactlySameAs(metadata.getFixedLine()));
     assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
     assertEquals("900\\d{7}", metadata.getPremiumRate().getNationalNumberPattern());
     // No shared-cost data is available, so it should be initialised to "NA".
@@ -487,11 +482,11 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testFormatByPattern() {
     PhoneNumber usNumber = new PhoneNumber();
     usNumber.setCountryCode(1).setNationalNumber(6502530000L);
-    NumberFormat newNumFormat1 =
-        NumberFormat.newBuilder().setPattern("(\\d{3})(\\d{3})(\\d{4})")
-            .setFormat("($1) $2-$3").build();
+    NumberFormat newNumFormat = new NumberFormat();
+    newNumFormat.setPattern("(\\d{3})(\\d{3})(\\d{4})");
+    newNumFormat.setFormat("($1) $2-$3");
     List<NumberFormat> newNumberFormats = new ArrayList<NumberFormat>();
-    newNumberFormats.add(newNumFormat1);
+    newNumberFormats.add(newNumFormat);
 
     assertEquals("(650) 253-0000",
                  phoneUtil.formatByPattern(usNumber,
@@ -505,10 +500,9 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneNumber itNumber = new PhoneNumber();
     itNumber.setCountryCode(39).setNationalNumber(236618300L).setItalianLeadingZero(true);
 
-    NumberFormat newNumFormat2 =
-        NumberFormat.newBuilder().setPattern("(\\d{2})(\\d{5})(\\d{3})")
-            .setFormat("$1-$2 $3").build();
-    newNumberFormats.set(0, newNumFormat2);
+    newNumFormat.setPattern("(\\d{2})(\\d{5})(\\d{3})");
+    newNumFormat.setFormat("$1-$2 $3");
+    newNumberFormats.set(0, newNumFormat);
 
     assertEquals("02-36618 300",
                  phoneUtil.formatByPattern(itNumber,
@@ -519,36 +513,34 @@ public class PhoneNumberUtilTest extends TestCase {
                                            PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL,
                                            newNumberFormats));
 
-   PhoneNumber gbNumber = new PhoneNumber();
-   gbNumber.setCountryCode(44).setNationalNumber(2012345678L);
+    PhoneNumber gbNumber = new PhoneNumber();
+    gbNumber.setCountryCode(44).setNationalNumber(2012345678L);
 
-    NumberFormat newNumFormat3 =
-        NumberFormat.newBuilder().setNationalPrefixFormattingRule("$NP$FG")
-            .setPattern("(\\d{2})(\\d{4})(\\d{4})").setFormat("$1 $2 $3").build();
-    newNumberFormats.set(0, newNumFormat3);
+    newNumFormat.setNationalPrefixFormattingRule("$NP$FG");
+    newNumFormat.setPattern("(\\d{2})(\\d{4})(\\d{4})");
+    newNumFormat.setFormat("$1 $2 $3");
+    newNumberFormats.set(0, newNumFormat);
     assertEquals("020 1234 5678",
                  phoneUtil.formatByPattern(gbNumber,
                                            PhoneNumberUtil.PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
 
-    NumberFormat newNumFormat4 =
-        NumberFormat.newBuilder(newNumFormat3).setNationalPrefixFormattingRule("($NP$FG)").build();
-    newNumberFormats.set(0, newNumFormat4);
+    newNumFormat.setNationalPrefixFormattingRule("($NP$FG)");
+    newNumberFormats.set(0, newNumFormat);
     assertEquals("(020) 1234 5678",
                  phoneUtil.formatByPattern(gbNumber,
                                            PhoneNumberUtil.PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
-    NumberFormat newNumFormat5 =
-        NumberFormat.newBuilder(newNumFormat4).setNationalPrefixFormattingRule("").build();
-    newNumberFormats.set(0, newNumFormat5);
+
+    newNumFormat.setNationalPrefixFormattingRule("");
+    newNumberFormats.set(0, newNumFormat);
     assertEquals("20 1234 5678",
                  phoneUtil.formatByPattern(gbNumber,
                                            PhoneNumberUtil.PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
 
-    NumberFormat newNumFormat6 =
-        NumberFormat.newBuilder(newNumFormat5).setNationalPrefixFormattingRule("").build();
-    newNumberFormats.set(0, newNumFormat6);
+    newNumFormat.setNationalPrefixFormattingRule("");
+    newNumberFormats.set(0, newNumFormat);
     assertEquals("+44 20 1234 5678",
                  phoneUtil.formatByPattern(gbNumber,
                                            PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL,
@@ -881,7 +873,7 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     number.setCountryCode(1).setNationalNumber(65025300000L);
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_LONG,
-                 phoneUtil.isPossibleNumberWithReason(number));  
+                 phoneUtil.isPossibleNumberWithReason(number));
   }
 
   public void testIsNotPossibleNumber() {

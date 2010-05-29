@@ -22,12 +22,10 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.protobuf.MessageLite;
 
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.ObjectInputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -359,7 +357,8 @@ public class PhoneNumberUtil {
   private void init(InputStream source) {
     // Read in metadata for each country.
     try {
-      PhoneMetadataCollection metadataCollection = PhoneMetadataCollection.parseFrom(source);
+      ObjectInputStream in = new ObjectInputStream(source);
+      PhoneMetadataCollection metadataCollection = (PhoneMetadataCollection) in.readObject();
       for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
         String regionCode = metadata.getId();
         countryToMetadataMap.put(regionCode, metadata);
@@ -390,6 +389,8 @@ public class PhoneNumberUtil {
       countryCodeToRegionCodeMap.put(RUSSIAN_FED_COUNTRY_CODE, "RU");
       countryCodeToRegionCodeMap.put(FRENCH_INDIAN_OCEAN_COUNTRY_CODE, "RE");
     } catch (IOException e) {
+      LOGGER.log(Level.WARNING, e.toString());
+    } catch (ClassNotFoundException e) {
       LOGGER.log(Level.WARNING, e.toString());
     }
   }
@@ -747,8 +748,7 @@ public Set<String> getSupportedCountries() {
             NP_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst(nationalPrefix);
         nationalPrefixFormattingRule =
             FG_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst("\\$1");
-        userDefinedFormats.set(i, NumberFormat.newBuilder(numFormat)
-            .setNationalPrefixFormattingRule(nationalPrefixFormattingRule).build());
+        numFormat.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
       }
     }
 
@@ -1688,28 +1688,7 @@ public Set<String> getSupportedCountries() {
     parseHelper(numberToParse, defaultCountry, true, phoneNumber);
   }
 
-  /**
-   * As no equals method is implemented for MessageLite, we implement our own equals method here
-   * to compare the serialized data.
-   */
-  static Boolean areSameMessages(MessageLite message1, MessageLite message2) {
-    if (message1 == null && message2 == null) {
-      return true;
-    }
-    if (message1 == null || message2 == null) {
-      return false;
-    }
-    OutputStream output1 = new ByteArrayOutputStream();
-    OutputStream output2 = new ByteArrayOutputStream();
-    try {
-      message1.writeTo(output1);
-      message2.writeTo(output2);
-    } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
-    }
 
-    return output1.toString().equals(output2.toString());
-  }
 
 
   /**
