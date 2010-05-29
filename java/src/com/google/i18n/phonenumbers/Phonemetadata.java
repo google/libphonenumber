@@ -612,7 +612,7 @@ public final class Phonemetadata {
   public static final class PhoneMetadataCollection implements Serializable {
     private static final long serialVersionUID = 1;
     public PhoneMetadataCollection() {}
-    
+
     // repeated PhoneMetadata metadata = 1;
     private java.util.List<PhoneMetadata> metadata_ =
       java.util.Collections.emptyList();
