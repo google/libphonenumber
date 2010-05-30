@@ -68,8 +68,12 @@ public class PhoneNumberUtil {
   private static final int NANPA_COUNTRY_CODE = 1;
 
   // The set of countries that share country code 7.
-  private final HashSet<String> russiaFederationCountries = new HashSet<String>(2);
+  private final HashSet<String> russiaFederationCountries = new HashSet<String>(3);
   private static final int RUSSIAN_FED_COUNTRY_CODE = 7;
+
+  // The set of countries that share country code 44.
+  private final HashSet<String> greatBritainAndDependencies = new HashSet<String>(7);
+  private static final int GREAT_BRITAIN_COUNTRY_CODE = 44;
 
   // The set of countries that share country code 262.
   private final HashSet<String> frenchIndianOceanTerritories = new HashSet<String>(6);
@@ -165,11 +169,13 @@ public class PhoneNumberUtil {
   static {
     HashSet<Integer> aSet = new HashSet<Integer>(10);
     aSet.add(39);  // Italy
+    aSet.add(47);  // Norway
     aSet.add(225);  // Cote d'Ivoire
     aSet.add(227);  // Niger
     aSet.add(228);  // Togo
     aSet.add(240);  // Equatorial Guinea
     aSet.add(241);  // Gabon
+    aSet.add(379);  // Vatican City
     LEADING_ZERO_COUNTRIES = Collections.unmodifiableSet(aSet);
   }
 
@@ -377,17 +383,21 @@ public class PhoneNumberUtil {
             frenchIndianOceanTerritories.add(regionCode);
             frenchIndianOceanTerritories.add(regionCode.toLowerCase());
             break;
+          case GREAT_BRITAIN_COUNTRY_CODE:
+            greatBritainAndDependencies.add(regionCode);
+            break;
           default:
             countryCodeToRegionCodeMap.put(countryCode, regionCode);
             break;
         }
       }
 
-      // Override the value, so that 1 is always mapped to US, 7 is always mapped to RU, and 262 to
-      // RE.
+      // Override the value, so that 1 is always mapped to US, 7 is always mapped to RU, 44 to GB
+      // and 262 to RE.
       countryCodeToRegionCodeMap.put(NANPA_COUNTRY_CODE, "US");
       countryCodeToRegionCodeMap.put(RUSSIAN_FED_COUNTRY_CODE, "RU");
       countryCodeToRegionCodeMap.put(FRENCH_INDIAN_OCEAN_COUNTRY_CODE, "RE");
+      countryCodeToRegionCodeMap.put(GREAT_BRITAIN_COUNTRY_CODE, "GB");
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
     } catch (ClassNotFoundException e) {
@@ -799,6 +809,12 @@ public Set<String> getSupportedCountries() {
       // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
       return format(number, PhoneNumberFormat.NATIONAL);
     }
+    if (countryCode == GREAT_BRITAIN_COUNTRY_CODE &&
+        greatBritainAndDependencies.contains(countryCallingFrom)) {
+      // It seems that numbers can be dialled in national format between Great Britain and the crown
+      // dependencies with the same country code.
+      return format(number, PhoneNumberFormat.NATIONAL);
+    }
     // If the country code is the Russian Fed country code, we check the number itself to determine
     // which region code it is for. We don't do this for NANPA countries because of performance
     // reasons, and instead use US rules for all NANPA numbers. Also, NANPA countries share the
@@ -1178,8 +1194,7 @@ public Set<String> getSupportedCountries() {
       int numberLength = nationalSignificantNumber.length();
       return numberLength > MIN_LENGTH_FOR_NSN && numberLength <= MAX_LENGTH_FOR_NSN;
     }
-    return isNumberMatchingDesc(nationalSignificantNumber, generalNumDesc)
-           && getNumberTypeHelper(nationalSignificantNumber, metadata) != PhoneNumberType.UNKNOWN;
+    return getNumberTypeHelper(nationalSignificantNumber, metadata) != PhoneNumberType.UNKNOWN;
   }
 
   /**
@@ -1207,6 +1222,8 @@ public Set<String> getSupportedCountries() {
         return getRegionCodeForNumberFromRegionList(number, russiaFederationCountries);
       case FRENCH_INDIAN_OCEAN_COUNTRY_CODE:
         return getRegionCodeForNumberFromRegionList(number, frenchIndianOceanTerritories);
+      case GREAT_BRITAIN_COUNTRY_CODE:
+        return getRegionCodeForNumberFromRegionList(number, greatBritainAndDependencies);
       default:
         return getRegionCodeForCountryCode(countryCode);
     }
