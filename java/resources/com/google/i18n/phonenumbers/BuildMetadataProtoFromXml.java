@@ -77,7 +77,7 @@ public class BuildMetadataProtoFromXml {
         metadataCollection.addMetadata(metadata);
       }
       ObjectOutputStream out = new ObjectOutputStream(output);
-      out.writeObject(metadataCollection);
+      metadataCollection.writeExternal(out);
       out.close();
     } catch (IOException e) {
       LOGGER.log(Level.SEVERE, e.toString());

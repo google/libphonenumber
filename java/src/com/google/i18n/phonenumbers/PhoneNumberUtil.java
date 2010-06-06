@@ -364,7 +364,8 @@ public class PhoneNumberUtil {
     // Read in metadata for each country.
     try {
       ObjectInputStream in = new ObjectInputStream(source);
-      PhoneMetadataCollection metadataCollection = (PhoneMetadataCollection) in.readObject();
+      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
+      metadataCollection.readExternal(in);
       for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
         String regionCode = metadata.getId();
         countryToMetadataMap.put(regionCode, metadata);
