@@ -22,12 +22,9 @@
 
 package com.google.i18n.phonenumbers;
 
-import java.io.Serializable;
-
 public final class Phonenumber {
   private Phonenumber() {}
-  public static final class PhoneNumber implements Serializable {
-    private static final long serialVersionUID = 1;
+  public static class PhoneNumber {
     public enum CountryCodeSource {
       FROM_NUMBER_WITH_PLUS_SIGN,
       FROM_NUMBER_WITH_IDD,

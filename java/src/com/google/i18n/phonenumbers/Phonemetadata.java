@@ -172,7 +172,7 @@ public final class Phonemetadata {
       objectOutput.writeBoolean(hasExampleNumber);
       if (hasExampleNumber) {
         objectOutput.writeUTF(exampleNumber_);
-      } 
+      }
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
@@ -503,7 +503,7 @@ public final class Phonemetadata {
       if (hasNationalPrefixTransformRule) {
         objectOutput.writeUTF(nationalPrefixTransformRule_);
       }
-      
+
       objectOutput.writeBoolean(sameMobileAndFixedLinePattern_);
 
       int numberFormatSize = getNumberFormatCount();
