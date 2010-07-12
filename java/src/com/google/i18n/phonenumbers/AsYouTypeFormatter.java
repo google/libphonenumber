@@ -49,23 +49,31 @@ public class AsYouTypeFormatter {
   private Phonemetadata.PhoneMetadata defaultMetaData;
   private PhoneMetadata currentMetaData;
 
+  // A pattern that is used to match character classes in regular expressions. An example of a
+  // character class is [1-4].
+  private final Pattern CHARACTER_CLASS_PATTERN = Pattern.compile("\\[([^\\[\\]])*\\]");
+  // Any digit in a regular expression that actually denotes a digit. For example, in the regular
+  // expression 80[0-2]\d{6,10}, the first 2 digits (8 and 0) are standalone digits, but the rest
+  // are not.
+  // Two look-aheads are needed because the number following \\d could be a two-digit number, since
+  // the phone number can be as long as 15 digits.
+  private static final Pattern STANDALONE_DIGIT_PATTERN = Pattern.compile("\\d(?=[^,}][^,}])");
+
   // The digits that have not been entered yet will be represented by a \u2008, the punctuation
   // space.
   private String digitPlaceholder = "\u2008";
   private Pattern digitPattern = Pattern.compile(digitPlaceholder);
   private int lastMatchPosition = 0;
-  private boolean rememberPosition = false;
+  // The position of a digit upon which inputDigitAndRememberPosition is most recently invoked, as
+  // found in the current output.
   private int positionRemembered = 0;
+  // The position of a digit upon which inputDigitAndRememberPosition is most recently invoked, as
+  // found in the original sequence of characters the user entered.
   private int originalPosition = 0;
   private Pattern nationalPrefixForParsing;
   private Pattern internationalPrefix;
   private StringBuffer prefixBeforeNationalNumber;
   private StringBuffer nationalNumber;
-  // No formatting will be applied when any of the character in the following character class is
-  // entered by users.
-  private final Pattern UNSUPPORTED_SYNTAX = Pattern.compile("[- *#;,.()/a-zA-Z]");
-  private final Pattern CHARACTER_CLASS_PATTERN = Pattern.compile("\\[([^\\[\\]])*\\]");
-  private final Pattern STANDALONE_DIGIT_PATTERN = Pattern.compile("\\d(?=[^,}][^,}])");
 
   /**
    * Constructs a light-weight formatter which does no formatting, but outputs exactly what is
@@ -182,25 +190,32 @@ public class AsYouTypeFormatter {
     }
   }
 
-  /**
-   * Formats a phone number on-the-fly as each digit is entered.
-   *
-   * @param nextChar  the most recently entered digit of a phone number. Formatting characters are
-   *     allowed, but they are removed from the result. Full width digits and Arabic-indic digits
-   *     are allowed, and will be shown as they are.
-   * @return  the partially formatted phone number.
-   */
   public String inputDigit(char nextChar) {
+    return inputDigitWithOptionToRememberPosition(nextChar, false);
+  }
+
+  /**
+   * Same as inputDigit, but remembers the position where nextChar is inserted, so that it could be
+   * retrieved later by using getRememberedPosition(). The remembered position will be automatically
+   * adjusted if additional formatting characters are later inserted/removed in front of nextChar.
+   */
+  public String inputDigitAndRememberPosition(char nextChar) {
+    return inputDigitWithOptionToRememberPosition(nextChar, true);
+  }
+
+  private String inputDigitWithOptionToRememberPosition(char nextChar, boolean rememberPosition) {
     accruedInput.append(nextChar);
-    rememberPosition();
-    if (UNSUPPORTED_SYNTAX.matcher(Character.toString(nextChar)).matches()) {
+    if (rememberPosition) {
+      positionRemembered = accruedInput.length();
+      originalPosition = positionRemembered;
+    }
+    // We do formatting on-the-fly only when each character entered is either a plus sign or a
+    // digit.
+    if (!PhoneNumberUtil.VALID_START_CHAR_PATTERN.matcher(Character.toString(nextChar)).matches()) {
       ableToFormat = false;
     }
     if (!ableToFormat) {
-      if (positionRemembered > 0 && currentOutput.length() > 0) {
-        positionRemembered = originalPosition;
-        currentOutput.setLength(0);
-      }
+      resetPositionOnFailureToFormat();
       return accruedInput.toString();
     }
 
@@ -222,36 +237,24 @@ public class AsYouTypeFormatter {
           return accruedInput.toString();
         }
         removeNationalPrefixFromNationalNumber();
-        return attemptToChooseFormattingPattern();
+        return attemptToChooseFormattingPattern(rememberPosition);
       default:
         if (nationalNumber.length() > 4) {  // The formatting pattern is already chosen.
-          String temp = inputDigitHelper(nextChar);
+          String temp = inputDigitHelper(nextChar, rememberPosition);
           return ableToFormat
               ? prefixBeforeNationalNumber + temp
               : temp;
         } else {
-          return attemptToChooseFormattingPattern();
+          return attemptToChooseFormattingPattern(rememberPosition);
         }
     }
   }
 
-  private void rememberPosition() {
-    if (rememberPosition) {
-      positionRemembered = accruedInput.length();
-      originalPosition = positionRemembered;
+  private void resetPositionOnFailureToFormat() {
+    if (positionRemembered > 0) {
+      positionRemembered = originalPosition;
+      currentOutput.setLength(0);
     }
-  }
-
-  /**
-   * Same as inputDigit, but remembers the position where nextChar is inserted, so that it could be
-   * retrieved later by using getRememberedPosition(). The remembered position will be automatically
-   * adjusted if additional formatting characters are later inserted/removed in front of nextChar.
-   */
-  public String inputDigitAndRememberPosition(char nextChar) {
-    rememberPosition = true;
-    String result = inputDigit(nextChar);
-    rememberPosition = false;
-    return result;
   }
 
   /**
@@ -264,12 +267,12 @@ public class AsYouTypeFormatter {
 
   // Attempts to set the formatting template and returns a string which contains the formatted
   // version of the digits entered so far.
-  private String attemptToChooseFormattingPattern() {
+  private String attemptToChooseFormattingPattern(boolean rememberPosition) {
     // We start to attempt to format only when as least 4 digits of national number (excluding
     // national prefix) have been entered.
     if (nationalNumber.length() >= 4) {
       chooseFormatAndCreateTemplate(nationalNumber.substring(0, 4));
-      return inputAccruedNationalNumber();
+      return inputAccruedNationalNumber(rememberPosition);
     } else {
       if (rememberPosition) {
         positionRemembered = prefixBeforeNationalNumber.length() + nationalNumber.length();
@@ -280,23 +283,23 @@ public class AsYouTypeFormatter {
 
   // Invokes inputDigitHelper on each digit of the national number accrued, and returns a formatted
   // string in the end.
-  private String inputAccruedNationalNumber() {
+  private String inputAccruedNationalNumber(boolean rememberPosition) {
     int lengthOfNationalNumber = nationalNumber.length();
     if (lengthOfNationalNumber > 0) {
       // The positionRemembered should be only adjusted once in the loop that follows.
-      Boolean positionAlreadyAdjusted = false;
-      for (int i = 0; i < lengthOfNationalNumber - 1; i++) {
-        String temp = inputDigitHelper(nationalNumber.charAt(i));
+      boolean positionAlreadyAdjusted = false;
+      String tempNationalNumber = "";
+      for (int i = 0; i < lengthOfNationalNumber; i++) {
+        tempNationalNumber = inputDigitHelper(nationalNumber.charAt(i), rememberPosition);
         if (!positionAlreadyAdjusted &&
             positionRemembered - prefixBeforeNationalNumber.length() == i + 1) {
-          positionRemembered = prefixBeforeNationalNumber.length() + temp.length();
+          positionRemembered = prefixBeforeNationalNumber.length() + tempNationalNumber.length();
           positionAlreadyAdjusted = true;
         }
       }
-      String temp = inputDigitHelper(nationalNumber.charAt(lengthOfNationalNumber - 1));
       return ableToFormat
-          ? prefixBeforeNationalNumber + temp
-          : temp;
+          ? prefixBeforeNationalNumber + tempNationalNumber
+          : tempNationalNumber;
     } else {
       if (rememberPosition) {
         positionRemembered = prefixBeforeNationalNumber.length();
@@ -309,13 +312,12 @@ public class AsYouTypeFormatter {
     int startOfNationalNumber = 0;
     if (currentMetaData.getCountryCode() == 1 && nationalNumber.charAt(0) == '1') {
       startOfNationalNumber = 1;
-      prefixBeforeNationalNumber.append("1");
-      // Since a space will be inserted after the national prefix in this case, we increase the
+      prefixBeforeNationalNumber.append("1 ");
+      // Since a space is inserted after the national prefix in this case, we increase the
       // remembered position by 1 for anything that is after the national prefix.
-      if (positionRemembered > prefixBeforeNationalNumber.length()) {
+      if (positionRemembered > prefixBeforeNationalNumber.length() - 1) {
         positionRemembered++;
       }
-      prefixBeforeNationalNumber.append(" ");
     } else if (currentMetaData.hasNationalPrefix()) {
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       if (m.lookingAt()) {
@@ -392,7 +394,7 @@ public class AsYouTypeFormatter {
     return nextChar;
   }
 
-  private String inputDigitHelper(char nextChar) {
+  private String inputDigitHelper(char nextChar, boolean rememberPosition) {
     if (!PhoneNumberUtil.DIGIT_MAPPINGS.containsKey(nextChar)) {
       return currentOutput.toString();
     }
@@ -408,10 +410,7 @@ public class AsYouTypeFormatter {
     } else {  // More digits are entered than we could handle.
       currentOutput.append(nextChar);
       ableToFormat = false;
-      if (positionRemembered > 0) {
-        positionRemembered = originalPosition;
-        currentOutput.setLength(0);
-      }
+      resetPositionOnFailureToFormat();
       return accruedInput.toString();
     }
   }

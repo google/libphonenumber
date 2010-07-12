@@ -26,6 +26,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -53,32 +54,18 @@ public class PhoneNumberUtil {
       "/com/google/i18n/phonenumbers/PhoneNumberMetadataProto";
   private static final Logger LOGGER = Logger.getLogger(PhoneNumberUtil.class.getName());
 
-  // A mapping from a country code to a region code which denotes the country/region
-  // represented by that country code. Note countries under NANPA share the country code 1,
-  // Russia and Kazakhstan share the country code 7, and many French territories in the Indian
-  // Ocean share the country code 262. Under this map, 1 is mapped to US, 7 is mapped to RU,
-  // and 262 is mapped to RE. The initial capacity is set to 300 as there are roughly 200 different
+  // A mapping from a country code to the region codes which denote the country/region
+  // represented by that country code. In the case of multiple countries sharing a calling code,
+  // such as the NANPA countries, the one indicated with "isMainCountryForCode" in the metadata
+  // should be first. The initial capacity is set to 300 as there are roughly 200 different
   // country codes, and this offers a load factor of roughly 0.75.
-  private final HashMap<Integer, String> countryCodeToRegionCodeMap =
-      new HashMap<Integer, String>(310);
+  private final Map<Integer, List<String> > countryCodeToRegionCodeMap =
+      new HashMap<Integer, List<String> >(310);
 
   // The set of countries that share country code 1. There are roughly 26 countries of them and we
   // set the initial capacity of the HashSet to 35 to offer a load factor of roughly 0.75.
   private final HashSet<String> nanpaCountries = new HashSet<String>(35);
   private static final int NANPA_COUNTRY_CODE = 1;
-
-  // The set of countries that share country code 7.
-  private final HashSet<String> russiaFederationCountries = new HashSet<String>(3);
-  private static final int RUSSIAN_FED_COUNTRY_CODE = 7;
-
-  // The set of countries that share country code 44.
-  private final HashSet<String> greatBritainAndDependencies = new HashSet<String>(7);
-  private static final int GREAT_BRITAIN_COUNTRY_CODE = 44;
-
-  // The set of countries that share country code 262.
-  private final HashSet<String> frenchIndianOceanTerritories = new HashSet<String>(6);
-
-  private static final int FRENCH_INDIAN_OCEAN_COUNTRY_CODE = 262;
 
   // The PLUS_SIGN signifies the international prefix.
   static final char PLUS_SIGN = '+';
@@ -173,7 +160,6 @@ public class PhoneNumberUtil {
     aSet.add(225);  // Cote d'Ivoire
     aSet.add(227);  // Niger
     aSet.add(228);  // Togo
-    aSet.add(240);  // Equatorial Guinea
     aSet.add(241);  // Gabon
     aSet.add(379);  // Vatican City
     LEADING_ZERO_COUNTRIES = Collections.unmodifiableSet(aSet);
@@ -214,7 +200,7 @@ public class PhoneNumberUtil {
   // not include other punctuation, as this will be stripped later during parsing and is of no
   // information value when parsing a number.
   private static final String VALID_START_CHAR = "[" + PLUS_CHARS + VALID_DIGITS + "]";
-  private static final Pattern VALID_START_CHAR_PATTERN = Pattern.compile(VALID_START_CHAR);
+  static final Pattern VALID_START_CHAR_PATTERN = Pattern.compile(VALID_START_CHAR);
 
   // Regular expression of characters typically used to start a second phone number for the purposes
   // of parsing. This allows us to strip off parts of the number that are actually the start of
@@ -260,8 +246,8 @@ public class PhoneNumberUtil {
   // Note that the only capturing groups should be around the digits that you want to capture as
   // part of the extension, or else parsing will fail!
   private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*(?:ext(?:ensio)?n?|" +
-      "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|\uFF49\uFF4E\uFF54)" +
-      "[:\\.\uFF0E]?[ \u00A0\\t,]*([" + VALID_DIGITS + "]{1,7})|[- ]+([" + VALID_DIGITS +
+      "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
+      "[:\\.\uFF0E]?[ \u00A0\\t,-]*([" + VALID_DIGITS + "]{1,7})|[- ]+([" + VALID_DIGITS +
       "]{1,5})#";
 
   // Regexp of all known extension prefixes used by different countries followed by 1 or more valid
@@ -276,10 +262,12 @@ public class PhoneNumberUtil {
       Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?",
                       Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
 
-  private static final Pattern NON_DIGIT_PATTERN = Pattern.compile("(\\D+)");
+  private static final Pattern NON_DIGITS_PATTERN = Pattern.compile("(\\D+)");
   private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$1)");
   private static final Pattern NP_PATTERN = Pattern.compile("\\$NP");
   private static final Pattern FG_PATTERN = Pattern.compile("\\$FG");
+  private static final Pattern CC_PATTERN = Pattern.compile("\\$CC");
+  private static final Pattern NON_DIGIT_PATTERN = Pattern.compile("\\D");
 
   private static PhoneNumberUtil instance = null;
 
@@ -287,10 +275,10 @@ public class PhoneNumberUtil {
   private HashMap<String, PhoneMetadata> countryToMetadataMap =
       new HashMap<String, PhoneMetadata>();
 
-  // A cache for frequently used regular expressions. As most people use phone numbers primarily
-  // from one country, and there are roughly 30 regular expressions needed, the initial capacity of
-  // 50 offers a rough load factor of 0.75.
-  private RegexCache regexCache = new RegexCache(50);
+  // A cache for frequently used country-specific regular expressions. As most people use phone
+  // numbers primarily from one to two countries, and there are roughly 60 regular expressions
+  // needed, the initial capacity of 100 offers a rough load factor of 0.75.
+  private RegexCache regexCache = new RegexCache(100);
 
   /**
    * INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
@@ -371,34 +359,23 @@ public class PhoneNumberUtil {
         countryToMetadataMap.put(regionCode, metadata);
         countryToMetadataMap.put(regionCode.toLowerCase(), metadata);
         int countryCode = metadata.getCountryCode();
-        switch (countryCode) {
-          case NANPA_COUNTRY_CODE:
-            nanpaCountries.add(regionCode);
-            nanpaCountries.add(regionCode.toLowerCase());
-            break;
-          case RUSSIAN_FED_COUNTRY_CODE:
-            russiaFederationCountries.add(regionCode);
-            russiaFederationCountries.add(regionCode.toLowerCase());
-            break;
-          case FRENCH_INDIAN_OCEAN_COUNTRY_CODE:
-            frenchIndianOceanTerritories.add(regionCode);
-            frenchIndianOceanTerritories.add(regionCode.toLowerCase());
-            break;
-          case GREAT_BRITAIN_COUNTRY_CODE:
-            greatBritainAndDependencies.add(regionCode);
-            break;
-          default:
-            countryCodeToRegionCodeMap.put(countryCode, regionCode);
-            break;
+        if (countryCodeToRegionCodeMap.containsKey(countryCode)) {
+          if (metadata.getMainCountryForCode()) {
+            countryCodeToRegionCodeMap.get(countryCode).add(0, regionCode);
+          } else {
+            countryCodeToRegionCodeMap.get(countryCode).add(regionCode);
+          }
+        } else {
+          // For most countries, there will be only one region code for the country dialing code.
+          List<String> listWithRegionCode = new ArrayList<String>(1);
+          listWithRegionCode.add(regionCode);
+          countryCodeToRegionCodeMap.put(countryCode, listWithRegionCode);
+        }
+        if (countryCode == NANPA_COUNTRY_CODE) {
+          nanpaCountries.add(regionCode);
+          nanpaCountries.add(regionCode.toLowerCase());
         }
       }
-
-      // Override the value, so that 1 is always mapped to US, 7 is always mapped to RU, 44 to GB
-      // and 262 to RE.
-      countryCodeToRegionCodeMap.put(NANPA_COUNTRY_CODE, "US");
-      countryCodeToRegionCodeMap.put(RUSSIAN_FED_COUNTRY_CODE, "RU");
-      countryCodeToRegionCodeMap.put(FRENCH_INDIAN_OCEAN_COUNTRY_CODE, "RE");
-      countryCodeToRegionCodeMap.put(GREAT_BRITAIN_COUNTRY_CODE, "GB");
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
     } catch (ClassNotFoundException e) {
@@ -422,14 +399,14 @@ public class PhoneNumberUtil {
    *                found in the number
    */
   static String extractPossibleNumber(String number) {
-    // Remove trailing non-alpha non-numerical characters.
-    Matcher trailingCharsMatcher = UNWANTED_END_CHAR_PATTERN.matcher(number);
-    if (trailingCharsMatcher.find()) {
-      number = number.substring(0, trailingCharsMatcher.start());
-    }
     Matcher m = VALID_START_CHAR_PATTERN.matcher(number);
     if (m.find()) {
       number = number.substring(m.start());
+      // Remove trailing non-alpha non-numerical characters.
+      Matcher trailingCharsMatcher = UNWANTED_END_CHAR_PATTERN.matcher(number);
+      if (trailingCharsMatcher.find()) {
+        number = number.substring(0, trailingCharsMatcher.start());
+      }
       // Check for extra numbers at the end.
       Matcher secondNumber = SECOND_NUMBER_START_PATTERN.matcher(number);
       if (secondNumber.find()) {
@@ -710,9 +687,9 @@ public Set<String> getSupportedCountries() {
       formatNumberByFormat(countryCode, PhoneNumberFormat.E164, formattedNumber);
       return;
     }
-    // Note here that all NANPA formatting rules are contained by US, so we use that to format NANPA
-    // numbers. The same applies to Russian Fed countries - rules are contained by Russia. French
-    // Indian Ocean country rules are contained by Reunion.
+    // Note getRegionCodeForCountryCode() is used because formatting information for countries which
+    // share a country code is contained by only one country for performance reasons. For example,
+    // for NANPA countries it will be contained in the metadata for US.
     String regionCode = getRegionCodeForCountryCode(countryCode);
     if (!isValidRegionCode(regionCode)) {
       formattedNumber.append(nationalSignificantNumber);
@@ -740,11 +717,11 @@ public Set<String> getSupportedCountries() {
                                 PhoneNumberFormat numberFormat,
                                 List<NumberFormat> userDefinedFormats) {
     int countryCode = number.getCountryCode();
+    String nationalSignificantNumber = getNationalSignificantNumber(number);
     // Note getRegionCodeForCountryCode() is used because formatting information for countries which
     // share a country code is contained by only one country for performance reasons. For example,
     // for NANPA countries it will be contained in the metadata for US.
     String regionCode = getRegionCodeForCountryCode(countryCode);
-    String nationalSignificantNumber = getNationalSignificantNumber(number);
     if (!isValidRegionCode(regionCode)) {
       return nationalSignificantNumber;
     }
@@ -772,6 +749,27 @@ public Set<String> getSupportedCountries() {
     return formattedNumber.toString();
   }
 
+  public String formatNationalNumberWithCarrierCode(PhoneNumber number, String carrierCode) {
+    int countryCode = number.getCountryCode();
+    String nationalSignificantNumber = getNationalSignificantNumber(number);
+    // Note getRegionCodeForCountryCode() is used because formatting information for countries which
+    // share a country code is contained by only one country for performance reasons. For example,
+    // for NANPA countries it will be contained in the metadata for US.
+    String regionCode = getRegionCodeForCountryCode(countryCode);
+    if (!isValidRegionCode(regionCode)) {
+      return nationalSignificantNumber;
+    }
+
+    StringBuffer formattedNumber = new StringBuffer(20);
+    formattedNumber.append(formatNationalNumber(nationalSignificantNumber,
+                                                regionCode,
+                                                PhoneNumberFormat.NATIONAL,
+                                                carrierCode));
+    maybeGetFormattedExtension(number, regionCode, formattedNumber);
+    formatNumberByFormat(countryCode, PhoneNumberFormat.NATIONAL, formattedNumber);
+    return formattedNumber.toString();
+  }
+
   /**
    * Formats a phone number for out-of-country dialing purpose. If no countryCallingFrom
    * is supplied, we format the number in its INTERNATIONAL format. If the countryCallingFrom is
@@ -796,55 +794,24 @@ public Set<String> getSupportedCountries() {
       return format(number, PhoneNumberFormat.INTERNATIONAL);
     }
     int countryCode = number.getCountryCode();
-    if (countryCode == NANPA_COUNTRY_CODE && isNANPACountry(countryCallingFrom)) {
-      // For NANPA countries, return the national format for these countries but prefix it with the
-      // country code.
-      return countryCode + " " + format(number, PhoneNumberFormat.NATIONAL);
-    }
-    if (countryCode == FRENCH_INDIAN_OCEAN_COUNTRY_CODE &&
-        frenchIndianOceanTerritories.contains(countryCallingFrom)) {
-      // For dialling between FRENCH_INDIAN_OCEAN countries, the 10 digit number is all we need.
-      // Technically this is the case for dialling from la Reunion to other overseas departments of
-      // France (French Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover this
-      // edge case for now and for those cases return the version including country code.
-      // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
-      return format(number, PhoneNumberFormat.NATIONAL);
-    }
-    if (countryCode == GREAT_BRITAIN_COUNTRY_CODE &&
-        greatBritainAndDependencies.contains(countryCallingFrom)) {
-      // It seems that numbers can be dialled in national format between Great Britain and the crown
-      // dependencies with the same country code.
-      return format(number, PhoneNumberFormat.NATIONAL);
-    }
-    // If the country code is the Russian Fed country code, we check the number itself to determine
-    // which region code it is for. We don't do this for NANPA countries because of performance
-    // reasons, and instead use US rules for all NANPA numbers. Also, NANPA countries share the
-    // same national and international prefixes, which is not the case for Russian Fed countries.
-    // There is also a special case for toll-free and premium rate numbers dialled within Russian
-    // Fed countries.
-    String regionCode;
-    if (countryCode == RUSSIAN_FED_COUNTRY_CODE) {
-      if (russiaFederationCountries.contains(countryCallingFrom)) {
-        // For toll-free numbers and premium rate numbers dialled from within Russian Fed countries,
-        // we should format them as if they are local numbers.
-        // A toll-free number would be dialled from KZ as 8-800-080-7777 but from Russia as
-        // 0-800-080-7777. (Confirmation on government websites such as e.gov.kz).
-        PhoneNumberType numberType = getNumberType(number);
-        if (numberType == PhoneNumberType.TOLL_FREE || numberType == PhoneNumberType.PREMIUM_RATE) {
-          return format(number, PhoneNumberFormat.NATIONAL);
-        }
-      }
-      // Otherwise, we should find out what region the number really belongs to before continuing,
-      // since they have different formatting rules.
-      regionCode = getRegionCodeForNumber(number);
-    } else {
-      regionCode = getRegionCodeForCountryCode(countryCode);
-    }
+    String regionCode = getRegionCodeForCountryCode(countryCode);
     String nationalSignificantNumber = getNationalSignificantNumber(number);
     if (!isValidRegionCode(regionCode)) {
       return nationalSignificantNumber;
     }
-    if (regionCode.equalsIgnoreCase(countryCallingFrom)) {
+    if (countryCode == NANPA_COUNTRY_CODE) {
+      if (isNANPACountry(countryCallingFrom)) {
+        // For NANPA countries, return the national format for these countries but prefix it with
+        // the country code.
+        return countryCode + " " + format(number, PhoneNumberFormat.NATIONAL);
+      }
+    } else if (countryCode == getCountryCodeForRegion(countryCallingFrom)) {
+    // For countries that share a country calling code, the country code need not be dialled. This
+    // also applies when dialling within a country, so this if clause covers both these cases.
+    // Technically this is the case for dialling from la RŽunion to other overseas departments of
+    // France (French Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover this
+    // edge case for now and for those cases return the version including country code.
+    // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
       return format(number, PhoneNumberFormat.NATIONAL);
     }
     String formattedNationalNumber =
@@ -881,26 +848,25 @@ public Set<String> getSupportedCountries() {
    * passed in. If such information is missing, the number will be formatted into the NATIONAL
    * format by default.
    *
-   * @param number  The PhoneNumber that needs to be formatted in its original number format
-   * @param defaultCountry  the country whose IDD needs to be appended if the original number has
-   *                        one
-   * @return  The formatted phone number in its original number format
+   * @param number  the PhoneNumber that needs to be formatted in its original number format
+   * @param countryCallingFrom  the country whose IDD needs to be prefixed if the original number
+   *     has one
+   * @return  the formatted phone number in its original number format
    */
-  public String formatUsingOriginalNumberFormat(PhoneNumber number, String defaultCountry) {
-    if (!number.hasRawInput()) {
+  public String formatInOriginalFormat(PhoneNumber number, String countryCallingFrom) {
+    if (!number.hasCountryCodeSource()) {
       return format(number, PhoneNumberFormat.NATIONAL);
     }
     switch (number.getCountryCodeSource()) {
-      case FROM_DEFAULT_COUNTRY:
-        return format(number, PhoneNumberFormat.NATIONAL);
       case FROM_NUMBER_WITH_PLUS_SIGN:
         return format(number, PhoneNumberFormat.INTERNATIONAL);
       case FROM_NUMBER_WITH_IDD:
-        return formatOutOfCountryCallingNumber(number, defaultCountry);
+        return formatOutOfCountryCallingNumber(number, countryCallingFrom);
       case FROM_NUMBER_WITHOUT_PLUS_SIGN:
         return format(number, PhoneNumberFormat.INTERNATIONAL).substring(1);
+      case FROM_DEFAULT_COUNTRY:
       default:
-        return number.getRawInput();
+        return format(number, PhoneNumberFormat.NATIONAL);      
     }
   }
 
@@ -947,12 +913,21 @@ public Set<String> getSupportedCountries() {
     }
   }
 
-  // Note in some countries, the national number can be written in two completely different ways
-  // depending on whether it forms part of the NATIONAL format or INTERNATIONAL format. The
-  // numberFormat parameter here is used to specify which format to use for those cases.
+  // Simple wrapper of formatNationalNumber for the common case of no carrier code.
   private String formatNationalNumber(String number,
                                       String regionCode,
                                       PhoneNumberFormat numberFormat) {
+    return formatNationalNumber(number, regionCode, numberFormat, null);
+  }  
+
+  // Note in some countries, the national number can be written in two completely different ways
+  // depending on whether it forms part of the NATIONAL format or INTERNATIONAL format. The
+  // numberFormat parameter here is used to specify which format to use for those cases. If a
+  // carrierCode is specified, this will be inserted into the formatted string to replace $CC.
+  private String formatNationalNumber(String number,
+                                      String regionCode,
+                                      PhoneNumberFormat numberFormat,
+                                      String carrierCode) {
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
     List<NumberFormat> intlNumberFormats = metadata.getIntlNumberFormatList();
     // When the intlNumberFormats exists, we use that to format national number for the
@@ -961,27 +936,48 @@ public Set<String> getSupportedCountries() {
         (intlNumberFormats.size() == 0 || numberFormat == PhoneNumberFormat.NATIONAL)
         ? metadata.getNumberFormatList()
         : metadata.getIntlNumberFormatList();
-    return formatAccordingToFormats(number, availableFormats, numberFormat);
+    return formatAccordingToFormats(number, availableFormats, numberFormat, carrierCode);
   }
 
+  // Simple wrapper of formatAccordingToFormats for the common case of no carrier code.
   private String formatAccordingToFormats(String nationalNumber,
                                           List<NumberFormat> availableFormats,
                                           PhoneNumberFormat numberFormat) {
+    return formatAccordingToFormats(nationalNumber, availableFormats, numberFormat, null);
+  }
+
+  // Note that carrierCode is optional - if NULL or an empty string, no carrier code replacement
+  // will take place. Carrier code replacement occurs before national prefix replacement.
+  private String formatAccordingToFormats(String nationalNumber,
+                                          List<NumberFormat> availableFormats,
+                                          PhoneNumberFormat numberFormat,
+                                          String carrierCode) {
     for (NumberFormat numFormat : availableFormats) {
       if (!numFormat.hasLeadingDigits() ||
           regexCache.getPatternForRegex(numFormat.getLeadingDigits()).matcher(nationalNumber)
               .lookingAt()) {
-        Pattern patternToMatch = regexCache.getPatternForRegex(numFormat.getPattern());
-        Matcher m = patternToMatch.matcher(nationalNumber);
+        Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
+        String numberFormatRule = numFormat.getFormat();
         if (m.matches()) {
+          if (carrierCode != null && carrierCode.length() > 0 &&
+              numFormat.getDomesticCarrierCodeFormattingRule().length() > 0) {
+            // Replace the $CC in the formatting rule with the desired carrier code.
+            String carrierCodeFormattingRule = numFormat.getDomesticCarrierCodeFormattingRule();
+            carrierCodeFormattingRule =
+                CC_PATTERN.matcher(carrierCodeFormattingRule).replaceFirst(carrierCode);
+            // Now replace the $FG in the formatting rule with the first group and the carrier code
+            // combined in the appropriate way.
+            numberFormatRule = FIRST_GROUP_PATTERN.matcher(numberFormatRule)
+                .replaceFirst(carrierCodeFormattingRule);
+          }
           String nationalPrefixFormattingRule = numFormat.getNationalPrefixFormattingRule();
-          if (nationalPrefixFormattingRule != null && nationalPrefixFormattingRule.length() > 0 &&
-              numberFormat == PhoneNumberFormat.NATIONAL) {
-              Matcher firstGroupMatcher =
-                  FIRST_GROUP_PATTERN.matcher(numFormat.getFormat());
+          if (numberFormat == PhoneNumberFormat.NATIONAL &&
+              nationalPrefixFormattingRule != null &&
+              nationalPrefixFormattingRule.length() > 0) {
+            Matcher firstGroupMatcher = FIRST_GROUP_PATTERN.matcher(numberFormatRule);
             return m.replaceAll(firstGroupMatcher.replaceFirst(nationalPrefixFormattingRule));
           } else {
-            return m.replaceAll(numFormat.getFormat());
+            return m.replaceAll(numberFormatRule);
           }
         }
       }
@@ -1150,7 +1146,6 @@ public Set<String> getSupportedCountries() {
     Matcher nationalNumberPatternMatcher =
         regexCache.getPatternForRegex(numberDesc.getNationalNumberPattern())
             .matcher(nationalNumber);
-
     return possibleNumberPatternMatcher.matches() && nationalNumberPatternMatcher.matches();
   }
 
@@ -1203,39 +1198,34 @@ public Set<String> getSupportedCountries() {
    * the country/region level.
    *
    * @param number  the phone number whose origin we want to know
-   * @return  the country/region where the phone number is from
+   * @return  the country/region where the phone number is from, or null if no country matches this
+   *     calling code.
    */
   public String getRegionCodeForNumber(PhoneNumber number) {
     int countryCode = number.getCountryCode();
-    switch (countryCode) {
-      case NANPA_COUNTRY_CODE:
-        // Override this and try the US case first, since it is more likely than other countries,
-        // for performance reasons.
-        String nationalNumber = getNationalSignificantNumber(number);
-        if (getNumberTypeHelper(nationalNumber,
-                                getMetadataForRegion("US")) != PhoneNumberType.UNKNOWN) {
-          return "US";
-        }
-        HashSet<String> nanpaExceptUS = new HashSet<String>(nanpaCountries);
-        nanpaExceptUS.remove("US");
-        return getRegionCodeForNumberFromRegionList(number, nanpaExceptUS);
-      case RUSSIAN_FED_COUNTRY_CODE:
-        return getRegionCodeForNumberFromRegionList(number, russiaFederationCountries);
-      case FRENCH_INDIAN_OCEAN_COUNTRY_CODE:
-        return getRegionCodeForNumberFromRegionList(number, frenchIndianOceanTerritories);
-      case GREAT_BRITAIN_COUNTRY_CODE:
-        return getRegionCodeForNumberFromRegionList(number, greatBritainAndDependencies);
-      default:
-        return getRegionCodeForCountryCode(countryCode);
+    List<String> regions = countryCodeToRegionCodeMap.get(countryCode);
+    if (regions == null) {
+      return null;
+    }
+    if (regions.size() == 1) {
+      return regions.get(0);
+    } else {
+      return getRegionCodeForNumberFromRegionList(number, regions);
     }
   }
 
   private String getRegionCodeForNumberFromRegionList(PhoneNumber number,
-                                                      HashSet<String> regionCodes) {
+                                                      List<String> regionCodes) {
     String nationalNumber = String.valueOf(number.getNationalNumber());
     for (String regionCode : regionCodes) {
-      if (getNumberTypeHelper(nationalNumber, getMetadataForRegion(regionCode)) !=
-          PhoneNumberType.UNKNOWN) {
+      // If leadingDigits is present, use this. Otherwise, do full validation.
+      PhoneMetadata metadata = getMetadataForRegion(regionCode);
+      if (metadata.hasLeadingDigits()) {
+        if (regexCache.getPatternForRegex(metadata.getLeadingDigits())
+                .matcher(nationalNumber).lookingAt()) {
+          return regionCode;
+        }
+      } else if (getNumberTypeHelper(nationalNumber, metadata) != PhoneNumberType.UNKNOWN) {
         return regionCode;
       }
     }
@@ -1244,11 +1234,12 @@ public Set<String> getSupportedCountries() {
 
   /**
    * Returns the region code that matches the specific country code. In the case of no region code
-   * being found, ZZ will be returned.
+   * being found, ZZ will be returned. In the case of multiple regions, the one designated in the
+   * metadata as the "main" country for this calling code will be returned.
    */
-  String getRegionCodeForCountryCode(int countryCode) {
-    String regionCode = countryCodeToRegionCodeMap.get(countryCode);
-    return regionCode == null ? "ZZ" : regionCode;
+  public String getRegionCodeForCountryCode(int countryCode) {
+    List<String> regionCodes = countryCodeToRegionCodeMap.get(countryCode);
+    return regionCodes == null ? "ZZ" : regionCodes.get(0);
   }
 
   /**
@@ -1330,6 +1321,18 @@ public Set<String> getSupportedCountries() {
     }
     String nationalNumber = getNationalSignificantNumber(number);
     PhoneNumberDesc generalNumDesc = getMetadataForRegion(regionCode).getGeneralDesc();
+    // Handling case of numbers with no metadata.
+    if (!generalNumDesc.hasNationalNumberPattern()) {
+      LOGGER.log(Level.FINER, "Checking if number is possible with incomplete metadata.");
+      int numberLength = nationalNumber.length();
+      if (numberLength < MIN_LENGTH_FOR_NSN) {
+        return ValidationResult.TOO_SHORT;
+      } else if (numberLength > MAX_LENGTH_FOR_NSN) {
+        return ValidationResult.TOO_LONG;
+      } else {
+        return ValidationResult.IS_POSSIBLE;
+      }
+    }
     String possibleNumberPattern = generalNumDesc.getPossibleNumberPattern();
     Matcher m = regexCache.getPatternForRegex(possibleNumberPattern).matcher(nationalNumber);
     if (m.lookingAt()) {
@@ -1622,8 +1625,7 @@ public Set<String> getSupportedCountries() {
     // it is an extension.
     if (m.find() && isViablePhoneNumber(number.substring(0, m.start()))) {
       // The numbers are captured into groups in the regular expression.
-      int length = m.groupCount();
-      for (int i = 1; i <= length; i++) {
+      for (int i = 1, length = m.groupCount(); i <= length; i++) {
         if (m.group(i) != null) {
           // We go through the capturing groups until we find one that captured some digits. If none
           // did, then we will return the empty string.
@@ -1665,8 +1667,10 @@ public Set<String> getSupportedCountries() {
   public void parse(String numberToParse, String defaultCountry, PhoneNumber phoneNumber)
       throws NumberParseException {
     if (!isValidRegionCode(defaultCountry)) {
-      throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
-                                     "No default country was supplied.");
+      if (numberToParse.charAt(0) != PLUS_SIGN) {
+        throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
+                                       "Missing or invalid default country.");
+      }
     }
     parseHelper(numberToParse, defaultCountry, false, phoneNumber);
   }
@@ -1700,8 +1704,10 @@ public Set<String> getSupportedCountries() {
                                    PhoneNumber phoneNumber)
       throws NumberParseException {
     if (!isValidRegionCode(defaultCountry)) {
-      throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
-                                     "No default country was supplied.");
+      if (numberToParse.charAt(0) != PLUS_SIGN) {
+        throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
+                                       "Missing or invalid default country.");
+      }
     }
     parseHelper(numberToParse, defaultCountry, true, phoneNumber);
   }

@@ -98,6 +98,9 @@ public class BuildMetadataProtoFromXml {
     PhoneMetadata metadata = new PhoneMetadata();
     metadata.setId(regionCode);
     metadata.setCountryCode(Integer.parseInt(element.getAttribute("countryCode")));
+    if (element.hasAttribute("leadingDigits")) {
+      metadata.setLeadingDigits(validateRE(element.getAttribute("leadingDigits")));
+    }
     metadata.setInternationalPrefix(validateRE(element.getAttribute("internationalPrefix")));
     if (element.hasAttribute("preferredInternationalPrefix")) {
       String preferredInternationalPrefix = element.getAttribute("preferredInternationalPrefix");
@@ -105,6 +108,7 @@ public class BuildMetadataProtoFromXml {
     }
     String nationalPrefix = "";
     String nationalPrefixFormattingRule = "";
+    String carrierCodeFormattingRule = "";
     if (element.hasAttribute("nationalPrefix")) {
       nationalPrefix = element.getAttribute("nationalPrefix");
       metadata.setNationalPrefix(nationalPrefix);
@@ -126,6 +130,10 @@ public class BuildMetadataProtoFromXml {
       metadata.setPreferredExtnPrefix(element.getAttribute("preferredExtnPrefix"));
     }
 
+    if (element.hasAttribute("mainCountryForCode")) {
+      metadata.setMainCountryForCode(true);
+    }
+
     // Extract availableFormats
     NodeList numberFormatElements = element.getElementsByTagName("numberFormat");
     int numOfFormatElements = numberFormatElements.getLength();
@@ -138,6 +146,13 @@ public class BuildMetadataProtoFromXml {
               getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix)));
         } else {
           format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
+        }
+        if (numberFormatElement.hasAttribute("carrierCodeFormattingRule")) {
+          format.setDomesticCarrierCodeFormattingRule(validateRE(
+              getDomesticCarrierCodeFormattingRuleFromElement(numberFormatElement,
+                                                              nationalPrefix)));
+        } else {
+          format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
         }
         if (numberFormatElement.hasAttribute("leadingDigits")) {
           format.setLeadingDigits(validateRE(numberFormatElement.getAttribute("leadingDigits")));
@@ -159,6 +174,13 @@ public class BuildMetadataProtoFromXml {
         }
         format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
         format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
+        if (numberFormatElement.hasAttribute("carrierCodeFormattingRule")) {
+          format.setDomesticCarrierCodeFormattingRule(validateRE(
+              getDomesticCarrierCodeFormattingRuleFromElement(numberFormatElement,
+                                                              nationalPrefix)));
+        } else {
+          format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
+        }
         metadata.addIntlNumberFormat(format);
       }
     }
@@ -190,6 +212,15 @@ public class BuildMetadataProtoFromXml {
         nationalPrefixFormattingRule.replaceFirst("\\$NP", nationalPrefix)
             .replaceFirst("\\$FG", "\\$1");
     return nationalPrefixFormattingRule;
+  }
+
+  private static String getDomesticCarrierCodeFormattingRuleFromElement(Element element,
+                                                                        String nationalPrefix) {
+    String carrierCodeFormattingRule = element.getAttribute("carrierCodeFormattingRule");
+    // Replace $FG with the first group ($1) and $NP with the national prefix.
+    carrierCodeFormattingRule = carrierCodeFormattingRule.replaceFirst("\\$FG", "\\$1")
+        .replaceFirst("\\$NP", nationalPrefix);
+    return carrierCodeFormattingRule;
   }
 
   /**

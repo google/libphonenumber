@@ -77,6 +77,19 @@ public final class Phonemetadata {
       return this;
     }
 
+    // optional string domestic_carrier_code_formatting_rule = 5;
+    private boolean hasDomesticCarrierCodeFormattingRule;
+    private String domesticCarrierCodeFormattingRule_ = "";
+    public boolean hasDomesticCarrierCodeFormattingRule() {
+      return hasDomesticCarrierCodeFormattingRule; }
+    public String getDomesticCarrierCodeFormattingRule() {
+      return domesticCarrierCodeFormattingRule_; }
+    public NumberFormat setDomesticCarrierCodeFormattingRule(String value) {
+      hasDomesticCarrierCodeFormattingRule = true;
+      domesticCarrierCodeFormattingRule_ = value;
+      return this;
+    }
+
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeUTF(pattern_);
       objectOutput.writeUTF(format_);
@@ -88,6 +101,10 @@ public final class Phonemetadata {
       if (hasNationalPrefixFormattingRule) {
         objectOutput.writeUTF(nationalPrefixFormattingRule_);
       }
+      objectOutput.writeBoolean(hasDomesticCarrierCodeFormattingRule);
+      if (hasDomesticCarrierCodeFormattingRule) {
+        objectOutput.writeUTF(domesticCarrierCodeFormattingRule_);
+      }
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
@@ -98,6 +115,9 @@ public final class Phonemetadata {
       }
       if (objectInput.readBoolean()) {
         setNationalPrefixFormattingRule(objectInput.readUTF());
+      }
+      if (objectInput.readBoolean()) {
+        setDomesticCarrierCodeFormattingRule(objectInput.readUTF());
       }
     }
   }
@@ -441,6 +461,28 @@ public final class Phonemetadata {
       return this;
     }
 
+    // optional bool main_country_for_code = 22 [default = false];
+    private boolean hasMainCountryForCode;
+    private boolean mainCountryForCode_ = false;
+    public boolean hasMainCountryForCode() { return hasMainCountryForCode; }
+    public boolean getMainCountryForCode() { return mainCountryForCode_; }
+    public PhoneMetadata setMainCountryForCode(boolean value) {
+      hasMainCountryForCode = true;
+      mainCountryForCode_ = value;
+      return this;
+    }
+
+    // optional string leading_digits = 23;
+    private boolean hasLeadingDigits;
+    private String leadingDigits_ = "";
+    public boolean hasLeadingDigits() { return hasLeadingDigits; }
+    public String getLeadingDigits() { return leadingDigits_; }
+    public PhoneMetadata setLeadingDigits(String value) {
+      hasLeadingDigits = true;
+      leadingDigits_ = value;
+      return this;
+    }    
+
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeBoolean(hasGeneralDesc);
       if (hasGeneralDesc) {
@@ -516,6 +558,13 @@ public final class Phonemetadata {
       objectOutput.writeInt(intlNumberFormatSize);
       for (int i = 0; i < intlNumberFormatSize; i++) {
         intlNumberFormat_.get(i).writeExternal(objectOutput);
+      }
+
+      objectOutput.writeBoolean(mainCountryForCode_);
+
+      objectOutput.writeBoolean(hasLeadingDigits);
+      if (hasLeadingDigits) {
+        objectOutput.writeUTF(leadingDigits_);
       }
     }
 
@@ -612,6 +661,13 @@ public final class Phonemetadata {
         NumberFormat numFormat = new NumberFormat();
         numFormat.readExternal(objectInput);
         intlNumberFormat_.add(numFormat);
+      }
+
+      setMainCountryForCode(objectInput.readBoolean());
+
+      hasString = objectInput.readBoolean();
+      if (hasString) {
+        setLeadingDigits(objectInput.readUTF());
       }
     }
   }

@@ -38,7 +38,7 @@
         <numberFormat leadingDigits="11" pattern="(\d{2})(\d{4})(\d{4})">$1 $2-$3</numberFormat>
         <numberFormat leadingDigits="1[02-9]|[23]" pattern="(\d{4})(\d{2})(\d{4})">$1 $2-$3</numberFormat>
         <numberFormat leadingDigits="911" pattern="9(11)(\d{4})(\d{4})">$1 15 $2-$3</numberFormat>
-        <numberFormat leadingDigits="9(?:1[02-9]|[23])" pattern="9(\d{4})(\d{2})(\d{4})">$1 15 $2-$3</numberFormat>
+        <numberFormat leadingDigits="9(?:1[02-9]|[23])" pattern="9(\d{4})(\d{2})(\d{4})" carrierCodeFormattingRule="$FG $CC">$1 $2-$3</numberFormat>
         <numberFormat leadingDigits="[68]" pattern="(\d{3})(\d{3})(\d{4})">$1-$2-$3</numberFormat>
         <intlNumberFormat leadingDigits="11" pattern="(\d{2})(\d{4})(\d{4})">$1 $2-$3</intlNumberFormat>
         <intlNumberFormat leadingDigits="1[02-9]|[23]" pattern="(\d{4})(\d{2})(\d{4})">$1 $2-$3</intlNumberFormat>
@@ -370,6 +370,41 @@
       </premiumRate>
     </territory>
 
+    <!-- Réunion (French Departments and Territories in the Indian Ocean) -->
+    <!-- Note this shares the same country code as La Mayotte and French
+    Southern Territories, and the formatting patterns here are used by all of
+    them. This is present to test leadingDigits. -->
+    <territory id="RE" countryCode="262" leadingDigits="262|6(?:9[23]|47)|8"
+               internationalPrefix="00" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <numberFormat pattern="([268]\d{2})(\d{2})(\d{2})(\d{2})">$1 $2 $3 $4</numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[268]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <!-- 0876 numbers are mentioned in the plan, but none in use can be
+        found. -->
+        <nationalNumberPattern>262\d{6}</nationalNumberPattern>
+        <exampleNumber>262161234</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>6(?:9[23]|47)\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>692123456</exampleNumber>
+      </mobile>
+      <!-- 08* Numbers in Réunion are the same as those valid in France. -->
+      <tollFree>
+        <nationalNumberPattern>80\d{7}</nationalNumberPattern>
+        <exampleNumber>801234567</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>8(?:1[01]|2[0156]|84|9[0-37-9])\d{6}</nationalNumberPattern>
+        <exampleNumber>810123456</exampleNumber>
+      </premiumRate>
+    </territory>
+
     <!-- Singapore -->
     <!-- http://www.ida.gov.sg/policies%20and%20regulation/20060508120124.aspx -->
     <territory id="SG" countryCode="65" internationalPrefix="0[0-3][0-9]">
@@ -405,7 +440,8 @@
     <!-- For testing purposes, numbers starting with 24 are not considered US
     numbers.-->
     <territory id="US" countryCode="1" internationalPrefix="011"
-               preferredExtnPrefix=" extn. ">
+               preferredExtnPrefix=" extn. "
+               mainCountryForCode="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">$1 $2 $3</numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})">$1 $2</numberFormat>
@@ -423,6 +459,29 @@
         <nationalNumberPattern>900\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
       </premiumRate>
+    </territory>
+
+    <!-- Mayotte -->
+    <territory id="YT" countryCode="262" leadingDigits="269|639"
+               internationalPrefix="00" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <!-- Formatting as per La Réunion. -->
+      <generalDesc>
+        <nationalNumberPattern>[268]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>2696[0-4]\d{4}</nationalNumberPattern>
+        <exampleNumber>269601234</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>639\d{6}</nationalNumberPattern>
+        <exampleNumber>639123456</exampleNumber>
+      </mobile>
+      <!-- Same as in France. -->
+      <tollFree>
+        <nationalNumberPattern>80\d{7}</nationalNumberPattern>
+        <exampleNumber>801234567</exampleNumber>
+      </tollFree>
     </territory>
   </territories>
 </phoneNumberMetadata>

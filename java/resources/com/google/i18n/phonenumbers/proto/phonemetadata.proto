@@ -64,6 +64,12 @@ message NumberFormat {
   // prefix in NATIONAL format. This field does not affect how a number
   // is formatted in other formats, such as INTERNATIONAL.
   optional string national_prefix_formatting_rule = 4;
+
+  // This field specifies how any carrier code ($CC) together with the first
+  // group ($FG) in the national significant number should be formatted
+  // when formatWithCarrierCode is called, if carrier codes are used for a
+  // certain country.
+  optional string domestic_carrier_code_formatting_rule = 5;
 }
 
 message PhoneNumberDesc {
@@ -193,8 +199,21 @@ message PhoneMetadata {
   // 15 (inserted after the area code of 343) is used.
   repeated NumberFormat intl_number_format = 20;
 
-  // Deprecated.
-  optional string national_prefix_formatting_rule = 21;
+  // This field is set when this country is considered to be the main country
+  // for a calling code. It may not be set by more than one country with the
+  // same calling code, and it should not be set by countries with a unique
+  // calling code. This can be used to indicate that "GB" is the main country
+  // for the calling code "44" for example, rather than Jersey or the Isle of
+  // Man.
+  optional bool main_country_for_code = 22 [default=false];
+
+  // This field is populated only for countries or regions that share a country
+  // calling code. If a number matches this pattern, it could belong to this
+  // region. This is not intended as a replacement for IsValidForRegion, and
+  // does not mean the number must come from this region (for example, 800
+  // numbers are valid for all NANPA countries.) This field should be a regular
+  // expression of the expected prefix match.
+  optional string leading_digits = 23;
 }
 
 message PhoneMetadataCollection {
