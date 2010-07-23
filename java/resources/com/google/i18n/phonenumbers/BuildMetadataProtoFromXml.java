@@ -23,11 +23,9 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +33,6 @@ import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Tool to convert phone number metadata from the XML format to protocol buffer format. It is
@@ -55,37 +52,30 @@ public class BuildMetadataProtoFromXml {
   private static final Logger LOGGER = Logger.getLogger(BuildMetadataProtoFromXml.class.getName());
   private static Boolean liteBuild;
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     String inputFile = args[0];
     String outputFile = args[1];
     liteBuild = args.length > 2 && Boolean.getBoolean(args[2]);
     File xmlFile = new File(inputFile);
-    try {
-      FileOutputStream output = new FileOutputStream(outputFile);
-      DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-      DocumentBuilder builder = builderFactory.newDocumentBuilder();
-      Document document = builder.parse(xmlFile);
-      document.getDocumentElement().normalize();
-      Element rootElement = document.getDocumentElement();
-      NodeList territory = rootElement.getElementsByTagName("territory");
-      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-      int numOfTerritories = territory.getLength();
-      for (int i = 0; i < numOfTerritories; i++) {
-        Element territoryElement = (Element) territory.item(i);
-        String regionCode = territoryElement.getAttribute("id");
-        PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
-        metadataCollection.addMetadata(metadata);
-      }
-      ObjectOutputStream out = new ObjectOutputStream(output);
-      metadataCollection.writeExternal(out);
-      out.close();
-    } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, e.toString());
-    } catch (SAXException e) {
-      LOGGER.log(Level.SEVERE, e.toString());
-    } catch (ParserConfigurationException e) {
-      LOGGER.log(Level.SEVERE, e.toString());
+
+    FileOutputStream output = new FileOutputStream(outputFile);
+    DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = builderFactory.newDocumentBuilder();
+    Document document = builder.parse(xmlFile);
+    document.getDocumentElement().normalize();
+    Element rootElement = document.getDocumentElement();
+    NodeList territory = rootElement.getElementsByTagName("territory");
+    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
+    int numOfTerritories = territory.getLength();
+    for (int i = 0; i < numOfTerritories; i++) {
+      Element territoryElement = (Element) territory.item(i);
+      String regionCode = territoryElement.getAttribute("id");
+      PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
+      metadataCollection.addMetadata(metadata);
     }
+    ObjectOutputStream out = new ObjectOutputStream(output);
+    metadataCollection.writeExternal(out);
+    out.close();
   }
 
   private static String validateRE(String regex) {
@@ -154,11 +144,16 @@ public class BuildMetadataProtoFromXml {
         } else {
           format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
         }
-        if (numberFormatElement.hasAttribute("leadingDigits")) {
-          format.setLeadingDigits(validateRE(numberFormatElement.getAttribute("leadingDigits")));
-        }
+        setLeadingDigitsPatterns(numberFormatElement, format);
         format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
-        format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
+        NodeList formatPattern = numberFormatElement.getElementsByTagName("format");
+        if (formatPattern.getLength() != 1) {
+          LOGGER.log(Level.SEVERE,
+                     "Only one format pattern for a numberFormat element should be defined.");
+          throw new RuntimeException("Invalid number of format patterns for country: " +
+                                     regionCode.toString());
+        }
+        format.setFormat(validateRE(formatPattern.item(0).getFirstChild().getNodeValue()));
         metadata.addNumberFormat(format);
       }
     }
@@ -169,11 +164,16 @@ public class BuildMetadataProtoFromXml {
       for (int i = 0; i < numOfIntlFormatElements; i++) {
         Element numberFormatElement = (Element) intlNumberFormatElements.item(i);
         NumberFormat format = new NumberFormat();
-        if (numberFormatElement.hasAttribute("leadingDigits")) {
-          format.setLeadingDigits(validateRE(numberFormatElement.getAttribute("leadingDigits")));
-        }
+      setLeadingDigitsPatterns(numberFormatElement, format);
         format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
-        format.setFormat(validateRE(numberFormatElement.getFirstChild().getNodeValue()));
+        NodeList formatPattern = numberFormatElement.getElementsByTagName("format");
+        if (formatPattern.getLength() != 1) {
+          LOGGER.log(Level.SEVERE,
+                     "Only one format pattern for a numberFormat element should be defined.");
+          throw new RuntimeException("Invalid number of format patterns for country: " +
+                                     regionCode.toString());
+        }
+        format.setFormat(validateRE(formatPattern.item(0).getFirstChild().getNodeValue()));
         if (numberFormatElement.hasAttribute("carrierCodeFormattingRule")) {
           format.setDomesticCarrierCodeFormattingRule(validateRE(
               getDomesticCarrierCodeFormattingRuleFromElement(numberFormatElement,
@@ -202,6 +202,17 @@ public class BuildMetadataProtoFromXml {
       metadata.setSameMobileAndFixedLinePattern(true);
     }
     return metadata;
+  }
+
+  private static void setLeadingDigitsPatterns(Element numberFormatElement, NumberFormat format) {
+    NodeList leadingDigitsPatternNodes = numberFormatElement.getElementsByTagName("leadingDigits");
+    int numOfLeadingDigitsPatterns = leadingDigitsPatternNodes.getLength();
+    if (numOfLeadingDigitsPatterns > 0) {
+      for (int i = 0; i < numOfLeadingDigitsPatterns; i++) {
+        format.addLeadingDigitsPattern(
+            validateRE((leadingDigitsPatternNodes.item(i)).getFirstChild().getNodeValue()));
+      }
+    }
   }
 
   private static String getNationalPrefixFormattingRuleFromElement(Element element,

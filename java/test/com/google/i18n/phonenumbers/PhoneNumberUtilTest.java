@@ -76,7 +76,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("US", metadata.getId());
     assertEquals(1, metadata.getCountryCode());
     assertEquals("011", metadata.getInternationalPrefix());
-    assertFalse(metadata.hasNationalPrefix());
+    assertTrue(metadata.hasNationalPrefix());
     assertEquals(2, metadata.getNumberFormatCount());
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
                  metadata.getNumberFormat(0).getPattern());
@@ -98,11 +98,12 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(49, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
     assertEquals("0", metadata.getNationalPrefix());
-    assertEquals(6, metadata.getNumberFormatCount());
-    assertEquals("9009", metadata.getNumberFormat(5).getLeadingDigits());
-    assertEquals("(\\d{3})(\\d{4})(\\d{4})",
-                 metadata.getNumberFormat(5).getPattern());
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(5).getFormat());
+    assertEquals(5, metadata.getNumberFormatCount());
+    assertEquals(1, metadata.getNumberFormat(4).getLeadingDigitsPatternCount());
+    assertEquals("900", metadata.getNumberFormat(4).getLeadingDigitsPattern(0));
+    assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
+                 metadata.getNumberFormat(4).getPattern());
+    assertEquals("$1 $2 $3", metadata.getNumberFormat(4).getFormat());
     assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{3,8}",
                  metadata.getFixedLine().getNationalNumberPattern());
     assertEquals("\\d{2,14}", metadata.getFixedLine().getPossibleNumberPattern());
@@ -331,6 +332,13 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.format(deNumber,
                                   PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
     deNumber.clear();
+    deNumber.setCountryCode(49).setNationalNumber(80212345L);
+    assertEquals("08021 2345", phoneUtil.format(deNumber,
+                                               PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
+    assertEquals("+49 8021 2345",
+                 phoneUtil.format(deNumber,
+                                  PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
+    deNumber.clear();    
     deNumber.setCountryCode(49).setNationalNumber(1234L);
     // Note this number is correctly formatted without national prefix. Most of the numbers that
     // are treated as invalid numbers by the library are short numbers, and they are usually not
@@ -515,6 +523,21 @@ public class PhoneNumberUtilTest extends TestCase {
                                            newNumberFormats));
     assertEquals("+1 (650) 253-0000",
                  phoneUtil.formatByPattern(usNumber,
+                                           PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL,
+                                           newNumberFormats));
+
+    // $NP is set to '1' for the US. Here we check that for other NANPA countries the US rules are
+    // followed.
+    newNumFormat.setNationalPrefixFormattingRule("$NP ($FG)");
+    newNumFormat.setFormat("$1 $2-$3");
+    PhoneNumber bsNumber = new PhoneNumber();
+    bsNumber.setCountryCode(1).setNationalNumber(4168819999L);
+    assertEquals("1 (416) 881-9999",
+                 phoneUtil.formatByPattern(bsNumber,
+                                           PhoneNumberUtil.PhoneNumberFormat.NATIONAL,
+                                           newNumberFormats));
+    assertEquals("+1 416 881-9999",
+                 phoneUtil.formatByPattern(bsNumber,
                                            PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL,
                                            newNumberFormats));
 
@@ -952,6 +975,58 @@ public class PhoneNumberUtilTest extends TestCase {
     assertFalse(phoneUtil.isPossibleNumber("+44 300", "GB"));
   }
 
+  public void testTruncateTooLongNumber() {
+    // US number 650-253-0000, but entered with one additional digit at the end.
+    PhoneNumber tooLongNumber = new PhoneNumber();
+    tooLongNumber.setCountryCode(1).setNationalNumber(65025300001L);
+    PhoneNumber validNumber = new PhoneNumber();
+    validNumber.setCountryCode(1).setNationalNumber(6502530000L);
+    assertTrue(phoneUtil.truncateTooLongNumber(tooLongNumber));
+    assertEquals(validNumber, tooLongNumber);
+
+    // GB number 080 1234 5678, but entered with 4 extra digits at the end.
+    tooLongNumber.clear();
+    tooLongNumber.setCountryCode(44).setNationalNumber(80123456780123L);
+    validNumber.clear();
+    validNumber.setCountryCode(44).setNationalNumber(8012345678L);
+    assertTrue(phoneUtil.truncateTooLongNumber(tooLongNumber));
+    assertEquals(validNumber, tooLongNumber);
+
+    // IT number 022 3456 7890, but entered with 3 extra digits at the end.
+    tooLongNumber.clear();
+    tooLongNumber.setCountryCode(39).setNationalNumber(2234567890123L).setItalianLeadingZero(true);
+    validNumber.clear();
+    validNumber.setCountryCode(39).setNationalNumber(2234567890L).setItalianLeadingZero(true);
+    assertTrue(phoneUtil.truncateTooLongNumber(tooLongNumber));
+    assertEquals(validNumber, tooLongNumber);
+
+    // Tests what happens when a valid number is passed in.
+    PhoneNumber validNumberCopy = new PhoneNumber();
+    validNumberCopy.mergeFrom(validNumber);
+    assertTrue(phoneUtil.truncateTooLongNumber(validNumber));
+    // Tests the number is not modified.
+    assertEquals(validNumberCopy, validNumber);
+
+    // Tests what happens when a number with invalid prefix is passed in.
+    PhoneNumber numberWithInvalidPrefix = new PhoneNumber();
+    // The test metadata says US numbers cannot have prefix 240.
+    numberWithInvalidPrefix.setCountryCode(1).setNationalNumber(2401234567L);
+    PhoneNumber invalidNumberCopy = new PhoneNumber();
+    invalidNumberCopy.mergeFrom(numberWithInvalidPrefix);
+    assertFalse(phoneUtil.truncateTooLongNumber(numberWithInvalidPrefix));
+    // Tests the number is not modified.
+    assertEquals(invalidNumberCopy, numberWithInvalidPrefix);
+
+    // Tests what happens when a too short number is passed in.
+    PhoneNumber tooShortNumber = new PhoneNumber();
+    tooShortNumber.setCountryCode(1).setNationalNumber(1234L);
+    PhoneNumber tooShortNumberCopy = new PhoneNumber();
+    tooShortNumberCopy.mergeFrom(tooShortNumber);
+    assertFalse(phoneUtil.truncateTooLongNumber(tooShortNumber));
+    // Tests the number is not modified.
+    assertEquals(tooShortNumberCopy, tooShortNumber);
+  }
+
   public void testIsViablePhoneNumber() {
     // Only one or two digits before strange non-possible punctuation.
     assertFalse(PhoneNumberUtil.isViablePhoneNumber("12. March"));
@@ -1188,7 +1263,7 @@ public class PhoneNumberUtilTest extends TestCase {
     }
     number.clear();
     try {
-      String phoneNumber = "(1 610) 619 43 446";
+      String phoneNumber = "(1 610) 619 43";
       StringBuffer numberToFill = new StringBuffer();
       assertEquals("Should not have extracted a country code - invalid number both before and " +
                    "after extraction of uncertain country code.",
@@ -1487,15 +1562,15 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(nzNumber, phoneUtil.parse("03 3316005 #3456", "NZ"));
     // Test the following do not extract extensions:
     PhoneNumber nonExtnNumber = new PhoneNumber();
-    nonExtnNumber.setCountryCode(1).setNationalNumber(180074935247L);
+    nonExtnNumber.setCountryCode(1).setNationalNumber(80074935247L);
     assertEquals(nonExtnNumber, phoneUtil.parse("1800 six-flags", "US"));
     assertEquals(nonExtnNumber, phoneUtil.parse("1800 SIX FLAGS", "US"));
-    assertEquals(nonExtnNumber, phoneUtil.parse("0~01 1800 7493 5247", "PL"));
+    assertEquals(nonExtnNumber, phoneUtil.parse("0~0 1800 7493 5247", "PL"));
     assertEquals(nonExtnNumber, phoneUtil.parse("(1800) 7493.5247", "US"));
     // Check that the last instance of an extension token is matched.
     PhoneNumber extnNumber = new PhoneNumber();
-    extnNumber.setCountryCode(1).setNationalNumber(180074935247L).setExtension("1234");
-    assertEquals(extnNumber, phoneUtil.parse("0~01 1800 7493 5247 ~1234", "PL"));
+    extnNumber.setCountryCode(1).setNationalNumber(80074935247L).setExtension("1234");
+    assertEquals(extnNumber, phoneUtil.parse("0~0 1800 7493 5247 ~1234", "PL"));
     // Verifying bug-fix where the last digit of a number was previously omitted if it was a 0 when
     // extracting the extension. Also verifying a few different cases of extensions.
     PhoneNumber ukNumber = new PhoneNumber();
@@ -1539,10 +1614,10 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testParseAndKeepRaw() throws Exception {
     PhoneNumber alphaNumericNumber = new PhoneNumber();
     alphaNumericNumber.
-        setCountryCode(1).setNationalNumber(180074935247L).setRawInput("1800 six-flags").
+        setCountryCode(1).setNationalNumber(80074935247L).setRawInput("800 six-flags").
         setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY);
     assertEquals(alphaNumericNumber,
-                 phoneUtil.parseAndKeepRawInput("1800 six-flags", "US"));
+                 phoneUtil.parseAndKeepRawInput("800 six-flags", "US"));
 
     alphaNumericNumber.
         setCountryCode(1).setNationalNumber(8007493524L).setRawInput("1800 six-flag").

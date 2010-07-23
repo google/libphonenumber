@@ -55,14 +55,20 @@ public final class Phonemetadata {
       return this;
     }
 
-    // optional string leading_digits = 3;
-    private boolean hasLeadingDigits;
-    private String leadingDigits_ = "";
-    public boolean hasLeadingDigits() { return hasLeadingDigits; }
-    public String getLeadingDigits() { return leadingDigits_; }
-    public NumberFormat setLeadingDigits(String value) {
-      hasLeadingDigits = true;
-      leadingDigits_ = value;
+    // repeated string leading_digits_pattern = 3;
+    private java.util.List<String> leadingDigitsPattern_ = new java.util.ArrayList<String>();
+    public java.util.List<String> getLeadingDigitsPatternList() {
+      return leadingDigitsPattern_;
+    }
+    public int getLeadingDigitsPatternCount() { return leadingDigitsPattern_.size(); }
+    public String getLeadingDigitsPattern(int index) {
+      return leadingDigitsPattern_.get(index);
+    }
+    public NumberFormat addLeadingDigitsPattern(String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      leadingDigitsPattern_.add(value);
       return this;
     }
 
@@ -76,6 +82,11 @@ public final class Phonemetadata {
       nationalPrefixFormattingRule_ = value;
       return this;
     }
+    public NumberFormat clearNationalPrefixFormattingRule() {
+      hasNationalPrefixFormattingRule = false;
+      nationalPrefixFormattingRule_ = "";
+      return this;
+    }    
 
     // optional string domestic_carrier_code_formatting_rule = 5;
     private boolean hasDomesticCarrierCodeFormattingRule;
@@ -90,13 +101,35 @@ public final class Phonemetadata {
       return this;
     }
 
+    public NumberFormat mergeFrom(NumberFormat other) {
+      if (other.hasPattern()) {
+        setPattern(other.getPattern());
+      }
+      if (other.hasFormat()) {
+        setFormat(other.getFormat());
+      }
+      int leadingDigitsPatternSize = other.getLeadingDigitsPatternCount();
+      for (int i = 0; i < leadingDigitsPatternSize; i++) {
+        addLeadingDigitsPattern(other.getLeadingDigitsPattern(i));
+      }
+      if (other.hasNationalPrefixFormattingRule()) {
+        setNationalPrefixFormattingRule(other.getNationalPrefixFormattingRule());
+      }
+      if (other.hasDomesticCarrierCodeFormattingRule()) {
+        setDomesticCarrierCodeFormattingRule(other.getDomesticCarrierCodeFormattingRule());
+      }
+      return this;
+    }
+
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeUTF(pattern_);
       objectOutput.writeUTF(format_);
-      objectOutput.writeBoolean(hasLeadingDigits);
-      if (hasLeadingDigits) {
-        objectOutput.writeUTF(leadingDigits_);
+      int leadingDigitsPatternSize = getLeadingDigitsPatternCount();
+      objectOutput.writeInt(leadingDigitsPatternSize);
+      for (int i = 0; i < leadingDigitsPatternSize; i++) {
+        objectOutput.writeUTF(leadingDigitsPattern_.get(i));
       }
+
       objectOutput.writeBoolean(hasNationalPrefixFormattingRule);
       if (hasNationalPrefixFormattingRule) {
         objectOutput.writeUTF(nationalPrefixFormattingRule_);
@@ -110,8 +143,9 @@ public final class Phonemetadata {
     public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
       setPattern(objectInput.readUTF());
       setFormat(objectInput.readUTF());
-      if (objectInput.readBoolean()) {
-        setLeadingDigits(objectInput.readUTF());
+      int leadingDigitsPatternSize = objectInput.readInt();
+      for (int i = 0; i < leadingDigitsPatternSize; i++) {
+        leadingDigitsPattern_.add(objectInput.readUTF());
       }
       if (objectInput.readBoolean()) {
         setNationalPrefixFormattingRule(objectInput.readUTF());

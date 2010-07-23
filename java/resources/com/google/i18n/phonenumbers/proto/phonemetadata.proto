@@ -40,13 +40,21 @@ message NumberFormat {
   // regex specified by pattern.
   required string format = 2;
 
-  // leadingDigits is a regex that is used to match up to the first four digits
-  // of the national (significant) number. When the match is successful, the
-  // accompanying pattern and format should be used to format this number. For
-  // example, if leading_digits="[1-3]|44", then all the national numbers
-  // starting with 1, 2, 3 or 44 should be formatted using the accompanying
-  // pattern and format.
-  optional string leading_digits = 3;
+  // This field is a regex that is used to match a certain number of digits
+  // at the beginning of the national (significant) number. When the match is
+  // successful, the accompanying pattern and format should be used to format
+  // this number. For example, if leading_digits="[1-3]|44", then all the
+  // national numbers starting with 1, 2, 3 or 44 should be formatted using the
+  // accompanying pattern and format.
+  //
+  // The first leadingDigitsPattern matches up to the first three digits of the
+  // national (significant) number; the next one matches the first four digits,
+  // then the first five and so on, until the leadingDigitsPattern can uniquely
+  // identify one pattern and format to be used to format the number.
+  //
+  // In the case when only one formatting pattern exists, no
+  // leading_digits_pattern is needed.
+  repeated string leading_digits_pattern = 3;
 
   // This field specifies how the national prefix ($NP) together with the first
   // group ($FG) in the national significant number should be formatted in
@@ -178,15 +186,6 @@ message PhoneMetadata {
   // - just the ideal way we would like to format it for them. When this element
   // is absent, the national significant number will be formatted as a whole
   // without any formatting applied.
-  //
-  // When formatting, the library goes through the list of formats from the
-  // beginning and the first successful match is used to do the formatting.
-  // A match is successful if the phone number being formatted starts with
-  // digits matching the leadingDigits and the number itself matches the
-  // corresponding pattern. However, AsYouTypeFormatter goes through the whole
-  // list and selects formats whose leadingDigits match what has been typed
-  // so far. Therefore, having more specific leadingDigits improves the
-  // performance of AsYouTypeFormatter in terms of speed.
   repeated NumberFormat number_format = 19;
 
   // This field is populated only when the national significant number is

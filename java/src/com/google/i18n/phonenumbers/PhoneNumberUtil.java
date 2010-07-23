@@ -498,7 +498,7 @@ public class PhoneNumberUtil {
    * subscriber number should be diallable, at least on some devices. An example of how this could
    * be used:
    *
-   * PhoneNumberUtil phoneUtil.PhoneNumberUtil.getInstance();
+   * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
    * PhoneNumber number = phoneUtil.parse("16502530000", RegionCode.US);
    * String nationalSignificantNumber = PhoneNumberUtil.getNationalSignificantNumber(number);
    * String areaCode;
@@ -540,7 +540,7 @@ public class PhoneNumberUtil {
       return 0;
     }
 
-    PhoneNumberType type = getNumberTypeHelper(String.valueOf(number.getNationalNumber()),
+    PhoneNumberType type = getNumberTypeHelper(getNationalSignificantNumber(number),
                                                metadata);
     // Most numbers other than the two types below have to be dialled in full.
     if (type != PhoneNumberType.FIXED_LINE && type != PhoneNumberType.FIXED_LINE_OR_MOBILE) {
@@ -567,9 +567,6 @@ public class PhoneNumberUtil {
     if (numberGroups.length <= 3) {
       return 0;
     }
-    // Note all countries that use leading zero in national number don't use national prefix, so
-    // they won't have an area code, which means clients don't need to worry about appending the
-    // leading zero to the geographical area code they derive from the length we return here.
     return numberGroups[2].length();
   }
 
@@ -725,24 +722,40 @@ public Set<String> getSupportedCountries() {
     if (!isValidRegionCode(regionCode)) {
       return nationalSignificantNumber;
     }
+    List<NumberFormat> userDefinedFormatsCopy =
+        new ArrayList<NumberFormat>(userDefinedFormats.size());
     int size = userDefinedFormats.size();
     for (int i = 0; i < size; i++) {
       NumberFormat numFormat = userDefinedFormats.get(i);
       String nationalPrefixFormattingRule = numFormat.getNationalPrefixFormattingRule();
       if (nationalPrefixFormattingRule.length() > 0) {
+        // Before we do a replacement of the national prefix pattern $NP with the national prefix,
+        // we need to copy the rule so that subsequent replacements for different numbers have the
+        // appropriate national prefix.
+        NumberFormat numFormatCopy = new NumberFormat();
+        numFormatCopy.mergeFrom(numFormat);
         String nationalPrefix = getMetadataForRegion(regionCode).getNationalPrefix();
-        // Replace $NP with national prefix and $FG with the first group ($1).
-        nationalPrefixFormattingRule =
-            NP_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst(nationalPrefix);
-        nationalPrefixFormattingRule =
-            FG_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst("\\$1");
-        numFormat.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
+      if (nationalPrefix.length() > 0) {
+          // Replace $NP with national prefix and $FG with the first group ($1).
+          nationalPrefixFormattingRule =
+              NP_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst(nationalPrefix);
+          nationalPrefixFormattingRule =
+              FG_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst("\\$1");
+          numFormatCopy.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
+        } else {
+          // We don't want to have a rule for how to format the national prefix if there isn't one.
+          numFormatCopy.clearNationalPrefixFormattingRule();
+        }
+        userDefinedFormatsCopy.add(numFormatCopy);
+      } else {
+        // Otherwise, we just add the original rule to the modified list of formats.
+        userDefinedFormatsCopy.add(numFormat);
       }
     }
 
     StringBuffer formattedNumber =
         new StringBuffer(formatAccordingToFormats(nationalSignificantNumber,
-                                                  userDefinedFormats,
+                                                  userDefinedFormatsCopy,
                                                   numberFormat));
     maybeGetFormattedExtension(number, regionCode, formattedNumber);
     formatNumberByFormat(countryCode, numberFormat, formattedNumber);
@@ -953,9 +966,10 @@ public Set<String> getSupportedCountries() {
                                           PhoneNumberFormat numberFormat,
                                           String carrierCode) {
     for (NumberFormat numFormat : availableFormats) {
-      if (!numFormat.hasLeadingDigits() ||
-          regexCache.getPatternForRegex(numFormat.getLeadingDigits()).matcher(nationalNumber)
-              .lookingAt()) {
+      int size = numFormat.getLeadingDigitsPatternCount();
+      if (size == 0 || regexCache.getPatternForRegex(
+              // We always use the last leading_digits_pattern, as it is the most detailed.
+              numFormat.getLeadingDigitsPattern(size - 1)).matcher(nationalNumber).lookingAt()) {
         Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
         String numberFormatRule = numFormat.getFormat();
         if (m.matches()) {
@@ -1373,6 +1387,32 @@ public Set<String> getSupportedCountries() {
   }
 
   /**
+   * Attempts to extract a valid number from a phone number that is too long to be valid, and resets
+   * the PhoneNumber object passed in to that valid version. If no valid number could be extracted,
+   * the PhoneNumber object passed in will not be modified.
+   * @param number a PhoneNumber object which contains a number that is too long to be valid.
+   * @return  true if a valid phone number can be successfully extracted.
+   */
+  public boolean truncateTooLongNumber(PhoneNumber number) {
+    if (isValidNumber(number)) {
+      return true;
+    }
+    PhoneNumber numberCopy = new PhoneNumber();
+    numberCopy.mergeFrom(number);
+    long nationalNumber = number.getNationalNumber();
+    do {
+      nationalNumber /= 10;
+      numberCopy.setNationalNumber(nationalNumber);
+      if (isPossibleNumberWithReason(numberCopy) == ValidationResult.TOO_SHORT ||
+          nationalNumber == 0) {
+        return false;
+      }
+    } while (!isValidNumber(numberCopy));
+    number.setNationalNumber(nationalNumber);
+    return true;
+  }
+
+  /**
    * Gets an AsYouTypeFormatter for the specific country. Note this function doesn't attempt to
    * figure out the types of phone number being entered on the fly due to performance reasons.
    * Instead, it tries to apply a standard format to all types of phone numbers. For countries
@@ -1396,7 +1436,8 @@ public Set<String> getSupportedCountries() {
   // 0 if fullNumber doesn't start with a valid country code, and leaves nationalNumber unmodified.
   int extractCountryCode(StringBuffer fullNumber, StringBuffer nationalNumber) {
     int potentialCountryCode;
-    for (int i = 1; i <= 3; i++) {
+    int numberLength = fullNumber.length();
+    for (int i = 1; i <= 3 && i <= numberLength; i++) {
       potentialCountryCode = Integer.parseInt(fullNumber.substring(0, i));
       if (countryCodeToRegionCodeMap.containsKey(potentialCountryCode)) {
         nationalNumber.append(fullNumber.substring(i));
@@ -1472,9 +1513,9 @@ public Set<String> getSupportedCountries() {
     } else if (defaultRegionMetadata != null) {
       // Check to see if the number is valid for the default region already. If not, we check to
       // see if the country code for the default region is present at the start of the number.
+      PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
       Pattern validNumberPattern =
-          regexCache.getPatternForRegex(defaultRegionMetadata.getGeneralDesc()
-              .getNationalNumberPattern());
+          regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
       if (!validNumberPattern.matcher(fullNumber).matches()) {
         int defaultCountryCode = defaultRegionMetadata.getCountryCode();
         String defaultCountryCodeString = String.valueOf(defaultCountryCode);
@@ -1488,7 +1529,14 @@ public Set<String> getSupportedCountries() {
               defaultRegionMetadata.getNationalPrefixForParsing(),
               defaultRegionMetadata.getNationalPrefixTransformRule(),
               validNumberPattern);
-          if (validNumberPattern.matcher(potentialNationalNumber).matches()) {
+          Matcher possibleNumberMatcher =
+              regexCache.getPatternForRegex(generalDesc.getPossibleNumberPattern()).matcher(
+                  potentialNationalNumber);
+          // If the resultant number is either valid, or still too long even with the country code
+          // stripped, we consider this a better result and keep the potential national number.
+          if (validNumberPattern.matcher(potentialNationalNumber).matches() ||
+              (possibleNumberMatcher.lookingAt() &&
+               possibleNumberMatcher.end() != potentialNationalNumber.length())) {
             nationalNumber.append(potentialNationalNumber);
             if (storeCountryCodeSource) {
               phoneNumber.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
