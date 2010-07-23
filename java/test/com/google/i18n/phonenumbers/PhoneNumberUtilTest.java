@@ -338,7 +338,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("+49 8021 2345",
                  phoneUtil.format(deNumber,
                                   PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
-    deNumber.clear();    
+    deNumber.clear();
     deNumber.setCountryCode(49).setNationalNumber(1234L);
     // Note this number is correctly formatted without national prefix. Most of the numbers that
     // are treated as invalid numbers by the library are short numbers, and they are usually not

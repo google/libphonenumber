@@ -204,7 +204,7 @@ public class AsYouTypeFormatter {
     nationalNumber.setLength(0);
     ableToFormat = true;
     positionToRemember = 0;
-    originalPosition = 0;    
+    originalPosition = 0;
     isInternationalFormatting = false;
     isExpectingCountryCode = false;
     possibleFormats.clear();

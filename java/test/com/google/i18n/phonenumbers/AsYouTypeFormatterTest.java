@@ -35,7 +35,7 @@ public class AsYouTypeFormatterTest extends TestCase {
       "/com/google/i18n/phonenumbers/PhoneNumberMetadataProtoForTesting";
 
   public AsYouTypeFormatterTest() {
-   PhoneNumberUtil.resetInstance();
+    PhoneNumberUtil.resetInstance();
     InputStream in = PhoneNumberUtilTest.class.getResourceAsStream(TEST_META_DATA_FILE);
     phoneUtil = PhoneNumberUtil.getInstance(in);
   }
@@ -174,7 +174,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFAndRememberPositionUS() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");    
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
     assertEquals("1", formatter.inputDigitAndRememberPosition('1'));
     assertEquals(1, formatter.getRememberedPosition());
     assertEquals("16", formatter.inputDigit('6'));

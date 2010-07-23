@@ -86,7 +86,7 @@ public final class Phonemetadata {
       hasNationalPrefixFormattingRule = false;
       nationalPrefixFormattingRule_ = "";
       return this;
-    }    
+    }
 
     // optional string domestic_carrier_code_formatting_rule = 5;
     private boolean hasDomesticCarrierCodeFormattingRule;
