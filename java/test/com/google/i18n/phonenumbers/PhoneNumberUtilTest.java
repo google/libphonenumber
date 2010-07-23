@@ -59,14 +59,16 @@ public class PhoneNumberUtilTest extends TestCase {
     super.tearDown();
   }
 
-  private boolean assertEquals(PhoneNumber number1, PhoneNumber number2) {
+  private void assertEquals(PhoneNumber number1, PhoneNumber number2) {
+    boolean equal = false;
     if (number1 == null && number2 == null) {
-      return true;
+      equal = true;
+    } else if (number1 != null && number2 != null) {
+      equal = number1.exactlySameAs(number2);
     }
-    if (number1 == null || number2 == null) {
-      return false;
+    if (!equal) {
+      fail("The phone numbers do not match");
     }
-    return number1.exactlySameAs(number2);
   }
 
   public void testGetInstanceLoadUSMetadata() throws IOException {
@@ -496,7 +498,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("424 123 1234", phoneUtil.format(usNumber,
                                                   PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
     assertEquals("424 123 1234", phoneUtil.formatNationalNumberWithCarrierCode(usNumber, "15"));
-  }  
+  }
 
   public void testFormatByPattern() {
     PhoneNumber usNumber = new PhoneNumber();
@@ -783,7 +785,7 @@ public class PhoneNumberUtilTest extends TestCase {
     // This number is no longer valid.
     assertFalse(phoneUtil.isValidNumber(bsNumber));
 
-    // La Mayotte and RŽunion use 'leadingDigits' to differentiate them.
+    // La Mayotte and Reunion use 'leadingDigits' to differentiate them.
     PhoneNumber reNumber = new PhoneNumber();
     reNumber.setCountryCode(262).setNationalNumber(262123456L);
     assertTrue(phoneUtil.isValidNumber(reNumber));
@@ -793,7 +795,7 @@ public class PhoneNumberUtilTest extends TestCase {
     reNumber.setNationalNumber(269601234L);
     assertTrue(phoneUtil.isValidNumberForRegion(reNumber, "YT"));
     assertFalse(phoneUtil.isValidNumberForRegion(reNumber, "RE"));
-    // This number is no longer valid for La RŽunion.
+    // This number is no longer valid for La Reunion.
     reNumber.setNationalNumber(269123456L);
     assertFalse(phoneUtil.isValidNumberForRegion(reNumber, "YT"));
     assertFalse(phoneUtil.isValidNumberForRegion(reNumber, "RE"));
@@ -1475,7 +1477,7 @@ public class PhoneNumberUtilTest extends TestCase {
     // Null is also allowed for the region code in these cases.
     assertEquals(nzNumber, phoneUtil.parseAndKeepRawInput("+64 3 331 6005", null));
   }
-  
+
   public void testParseExtensions() throws Exception {
     PhoneNumber nzNumber = new PhoneNumber();
     nzNumber.setCountryCode(64).setNationalNumber(33316005L).setExtension("3456");

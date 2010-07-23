@@ -4759,12 +4759,10 @@
     <!-- http://www.itu.int/oth/T020200009B/en -->
     <territory id="NE" countryCode="227" internationalPrefix="00">
       <availableFormats>
-        <numberFormat>
-          <numberFormat leadingDigits="[29]|09"
-                        pattern="([029]\d)(\d{2})(\d{2})(\d{2})">$1 $2 $3 $4</numberFormat>
-          <numberFormat leadingDigits="08"
-                        pattern="(08)(\d{3})(\d{3})">$1 $2 $3</numberFormat>
-        </numberFormat>
+        <numberFormat leadingDigits="[29]|09"
+                      pattern="([029]\d)(\d{2})(\d{2})(\d{2})">$1 $2 $3 $4</numberFormat>
+        <numberFormat leadingDigits="08"
+                      pattern="(08)(\d{3})(\d{3})">$1 $2 $3</numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[029]\d{7}</nationalNumberPattern>

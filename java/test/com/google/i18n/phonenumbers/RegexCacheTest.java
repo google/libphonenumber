@@ -18,8 +18,6 @@ package com.google.i18n.phonenumbers;
 
 import junit.framework.TestCase;
 
-import java.util.regex.Pattern;
-
 /**
  * Unittests for LRU Cache for compiled regular expressions used by the libphonenumbers libary.
  *

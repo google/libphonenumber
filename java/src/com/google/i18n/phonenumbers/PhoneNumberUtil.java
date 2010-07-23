@@ -571,7 +571,7 @@ public class PhoneNumberUtil {
     // they won't have an area code, which means clients don't need to worry about appending the
     // leading zero to the geographical area code they derive from the length we return here.
     return numberGroups[2].length();
-  }  
+  }
 
   /**
    * Normalizes a string of characters representing a phone number by replacing all characters found
@@ -808,7 +808,7 @@ public Set<String> getSupportedCountries() {
     } else if (countryCode == getCountryCodeForRegion(countryCallingFrom)) {
     // For countries that share a country calling code, the country code need not be dialled. This
     // also applies when dialling within a country, so this if clause covers both these cases.
-    // Technically this is the case for dialling from la RŽunion to other overseas departments of
+    // Technically this is the case for dialling from la Reunion to other overseas departments of
     // France (French Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover this
     // edge case for now and for those cases return the version including country code.
     // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
@@ -866,11 +866,11 @@ public Set<String> getSupportedCountries() {
         return format(number, PhoneNumberFormat.INTERNATIONAL).substring(1);
       case FROM_DEFAULT_COUNTRY:
       default:
-        return format(number, PhoneNumberFormat.NATIONAL);      
+        return format(number, PhoneNumberFormat.NATIONAL);
     }
   }
 
-  
+
   /**
    * Gets the national significant number of the a phone number. Note a national significant number
    * doesn't contain a national prefix or any formatting.
@@ -918,7 +918,7 @@ public Set<String> getSupportedCountries() {
                                       String regionCode,
                                       PhoneNumberFormat numberFormat) {
     return formatNationalNumber(number, regionCode, numberFormat, null);
-  }  
+  }
 
   // Note in some countries, the national number can be written in two completely different ways
   // depending on whether it forms part of the NATIONAL format or INTERNATIONAL format. The

@@ -481,7 +481,7 @@ public final class Phonemetadata {
       hasLeadingDigits = true;
       leadingDigits_ = value;
       return this;
-    }    
+    }
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeBoolean(hasGeneralDesc);
