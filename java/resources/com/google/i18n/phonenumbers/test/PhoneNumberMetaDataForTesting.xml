@@ -127,7 +127,9 @@
                nationalPrefix="0" preferredInternationalPrefix="0011"
                nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
-        <numberFormat nationalPrefixFormattingRule="$FG" leadingDigits="1" pattern="(\d{4})(\d{3})(\d{3})">
+        <numberFormat nationalPrefixFormattingRule="$FG"
+          pattern="(\d{4})(\d{3})(\d{3})" >
+          <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{1})(\d{4})(\d{4})">

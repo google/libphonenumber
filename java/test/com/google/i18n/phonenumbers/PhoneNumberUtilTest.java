@@ -1609,6 +1609,8 @@ public class PhoneNumberUtilTest extends TestCase {
     usWithExtension.clear();
     usWithExtension.setCountryCode(1).setNationalNumber(6451231234L).setExtension("910");
     assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234-910#", "US"));
+    // Retry with the same number in a slightly different format.
+    assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234 ext. 910#", "US"));
   }
 
   public void testParseAndKeepRaw() throws Exception {

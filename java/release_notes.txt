@@ -1,0 +1,9 @@
+July 30th, 2010
+
+* Metadata change:
+  - new country: TL
+  - update to existing country: AZ, CN, FR, GH, JO, LA, PG, PK, QA, SZ, UA, VN
+
+* Code improvement
+  - China local number formatting for AsYouTypeFormatter
+  - improve extension parsing to handle number in the form of +1 (645) 123 1234 ext. 910# 

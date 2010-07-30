@@ -247,7 +247,7 @@ public class PhoneNumberUtil {
   // part of the extension, or else parsing will fail!
   private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*(?:ext(?:ensio)?n?|" +
       "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
-      "[:\\.\uFF0E]?[ \u00A0\\t,-]*([" + VALID_DIGITS + "]{1,7})|[- ]+([" + VALID_DIGITS +
+      "[:\\.\uFF0E]?[ \u00A0\\t,-]*([" + VALID_DIGITS + "]{1,7})#?|[- ]+([" + VALID_DIGITS +
       "]{1,5})#";
 
   // Regexp of all known extension prefixes used by different countries followed by 1 or more valid
