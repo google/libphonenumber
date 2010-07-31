@@ -23,7 +23,9 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -47,11 +49,14 @@ import java.util.regex.Pattern;
  * @author Lara Rennie
  */
 public class PhoneNumberUtil {
+  public static final String COUNTRY_CODE_TO_REGION_CODE_MAP_FILE_SUFFIX = "_Mapping";
+
   // The minimum and maximum length of the national significant number.
   private static final int MIN_LENGTH_FOR_NSN = 3;
   private static final int MAX_LENGTH_FOR_NSN = 15;
-  private static final String META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/PhoneNumberMetadataProto";
+  private static final String META_DATA_FILE_PREFIX =
+      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
+  private String currentFilePrefix = META_DATA_FILE_PREFIX;
   private static final Logger LOGGER = Logger.getLogger(PhoneNumberUtil.class.getName());
 
   // A mapping from a country code to the region codes which denote the country/region
@@ -59,8 +64,12 @@ public class PhoneNumberUtil {
   // such as the NANPA countries, the one indicated with "isMainCountryForCode" in the metadata
   // should be first. The initial capacity is set to 300 as there are roughly 200 different
   // country codes, and this offers a load factor of roughly 0.75.
-  private final Map<Integer, List<String> > countryCodeToRegionCodeMap =
-      new HashMap<Integer, List<String> >(310);
+  private final HashMap<Integer, List<String> > countryCodeToRegionCodeMap =
+      new HashMap<Integer, List<String> >(300);
+
+  // The set of countries the library support. There are roughly 220 countries of them and we
+  // set the initial capacity of the HashSet to 300 to offer a load factor of roughly 0.75.
+  private final HashSet<String> supportedCountries = new HashSet<String>(300);
 
   // The set of countries that share country code 1. There are roughly 26 countries of them and we
   // set the initial capacity of the HashSet to 35 to offer a load factor of roughly 0.75.
@@ -348,33 +357,49 @@ public class PhoneNumberUtil {
   private PhoneNumberUtil() {
   }
 
-  private void init(InputStream source) {
-    // Read in metadata for each country.
+  private void init(String filePrefix) {
+    currentFilePrefix = filePrefix;
+    InputStream mapping =
+        PhoneNumberUtil.class.getResourceAsStream(currentFilePrefix +
+                                                  COUNTRY_CODE_TO_REGION_CODE_MAP_FILE_SUFFIX);
+    // Read in the mapping from country calling codes to region codes.
     try {
-      ObjectInputStream in = new ObjectInputStream(source);
+      BufferedReader in_reader = new BufferedReader(new InputStreamReader(mapping));
+      String line = null;
+      while ((line = in_reader.readLine()) != null) {
+        int countryCode = Integer.parseInt(line);
+        // This won't be null, as the line after country code will be two-letter region codes
+        // separated by a white space. The line will start with a white space.
+        line = in_reader.readLine();
+        int numberOfRegionCode = line.length() / 3;
+        // For most countries, there will be only one region code for the country dialing code.
+        ArrayList<String> listWithRegionCode = new ArrayList<String>(1);
+        for (int i = 0; i < numberOfRegionCode; i++) {
+          String twoLetterRegionCode = line.substring(i * 3 + 1, i * 3 + 3);
+          listWithRegionCode.add(twoLetterRegionCode);
+          supportedCountries.add(twoLetterRegionCode);
+        }
+        countryCodeToRegionCodeMap.put(countryCode, listWithRegionCode);
+      }
+      nanpaCountries.addAll(countryCodeToRegionCodeMap.get(NANPA_COUNTRY_CODE));
+      in_reader.close();
+      // Only preload US metadata at startup. Other metadata will be loaded later when needed.
+      loadMetadataForRegionFromFile(currentFilePrefix, "US");
+    } catch (IOException e) {
+      LOGGER.log(Level.WARNING, e.toString());
+    }
+  }
+
+  private void loadMetadataForRegionFromFile(String filePrefix, String regionCode) {
+    InputStream source =
+        PhoneNumberUtil.class.getResourceAsStream(filePrefix + "_" + regionCode);
+    ObjectInputStream in = null;
+    try {
+      in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
       metadataCollection.readExternal(in);
       for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
-        String regionCode = metadata.getId();
         countryToMetadataMap.put(regionCode, metadata);
-        countryToMetadataMap.put(regionCode.toLowerCase(), metadata);
-        int countryCode = metadata.getCountryCode();
-        if (countryCodeToRegionCodeMap.containsKey(countryCode)) {
-          if (metadata.getMainCountryForCode()) {
-            countryCodeToRegionCodeMap.get(countryCode).add(0, regionCode);
-          } else {
-            countryCodeToRegionCodeMap.get(countryCode).add(regionCode);
-          }
-        } else {
-          // For most countries, there will be only one region code for the country dialing code.
-          List<String> listWithRegionCode = new ArrayList<String>(1);
-          listWithRegionCode.add(regionCode);
-          countryCodeToRegionCodeMap.put(countryCode, listWithRegionCode);
-        }
-        if (countryCode == NANPA_COUNTRY_CODE) {
-          nanpaCountries.add(regionCode);
-          nanpaCountries.add(regionCode.toLowerCase());
-        }
       }
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
@@ -601,10 +626,10 @@ public class PhoneNumberUtil {
     return normalizedNumber.toString();
   }
 
-  static synchronized PhoneNumberUtil getInstance(InputStream source) {
+  static synchronized PhoneNumberUtil getInstance(String baseFileLocation) {
     if (instance == null) {
       instance = new PhoneNumberUtil();
-      instance.init(source);
+      instance.init(baseFileLocation);
     }
     return instance;
   }
@@ -620,8 +645,8 @@ public class PhoneNumberUtil {
    * Convenience method to enable tests to get a list of what countries the library has metadata
    * for.
    */
-public Set<String> getSupportedCountries() {
-    return countryToMetadataMap.keySet();
+  public Set<String> getSupportedCountries() {
+    return supportedCountries;
   }
 
   /**
@@ -637,8 +662,7 @@ public Set<String> getSupportedCountries() {
   public static synchronized PhoneNumberUtil getInstance() {
     if (instance == null) {
       instance = new PhoneNumberUtil();
-      InputStream in = PhoneNumberUtil.class.getResourceAsStream(META_DATA_FILE);
-      instance.init(in);
+      instance.init(META_DATA_FILE_PREFIX);
     }
     return instance;
   }
@@ -647,7 +671,7 @@ public Set<String> getSupportedCountries() {
    * Helper function to check region code is not unknown or null.
    */
   private boolean isValidRegionCode(String regionCode) {
-    return countryToMetadataMap.containsKey(regionCode);
+    return regionCode != null && supportedCountries.contains(regionCode.toUpperCase());
   }
 
   /**
@@ -1147,8 +1171,12 @@ public Set<String> getSupportedCountries() {
   }
 
   PhoneMetadata getMetadataForRegion(String regionCode) {
-    if (regionCode == null) {
+    if (!isValidRegionCode(regionCode)) {
       return null;
+    }
+    regionCode = regionCode.toUpperCase();
+    if (!countryToMetadataMap.containsKey(regionCode)) {
+      loadMetadataForRegionFromFile(currentFilePrefix, regionCode);
     }
     return countryToMetadataMap.get(regionCode);
   }
@@ -1282,7 +1310,7 @@ public Set<String> getSupportedCountries() {
    * @return  true if regionCode is one of the countries under NANPA
    */
   public boolean isNANPACountry(String regionCode) {
-    return nanpaCountries.contains(regionCode);
+    return regionCode != null && nanpaCountries.contains(regionCode.toUpperCase());
   }
 
   /**
@@ -1759,9 +1787,6 @@ public Set<String> getSupportedCountries() {
     }
     parseHelper(numberToParse, defaultCountry, true, phoneNumber);
   }
-
-
-
 
   /**
    * Parses a string and fills up the phoneNumber. This method is the same as the public

@@ -37,7 +37,7 @@
         <exclude name="**/*Test*"/>
       </fileset>
       <fileset dir="${src.dir}">
-        <include name="**/PhoneNumberMetadataProto"/>
+        <include name="**/PhoneNumberMetadataProto*"/>
       </fileset>
     </jar>
   </target>
@@ -50,10 +50,10 @@
         <exclude name="**/*Test*"/>
       </fileset>
       <fileset dir="${src.dir}">
-        <include name="**/PhoneNumberMetadataProto"/>
+        <include name="**/PhoneNumberMetadataProto*"/>
       </fileset>
       <fileset dir="${test.dir}">
-        <include name="**/PhoneNumberMetadataProtoForTesting"/>
+        <include name="**/PhoneNumberMetadataProtoForTesting*"/>
       </fileset>
     </jar>
   </target>

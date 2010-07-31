@@ -18,26 +18,23 @@ package com.google.i18n.phonenumbers;
 
 import junit.framework.TestCase;
 
-import java.io.InputStream;
-
 /**
  * Unit tests for PhoneNumberUtil.java
  *
- * Note that these tests use the metadata contained in the file specified by TEST_META_DATA_FILE,
- * not the normal metadata file, so should not be used for regression test purposes - these tests
+ * Note that these tests use the metadata contained in the files with TEST_META_DATA_FILE_PREFIX,
+ * not the normal metadata files, so should not be used for regression test purposes - these tests
  * are illustrative only and test functionality.
  *
  * @author Shaopeng Jia
  */
 public class AsYouTypeFormatterTest extends TestCase {
   private PhoneNumberUtil phoneUtil;
-  private static final String TEST_META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/PhoneNumberMetadataProtoForTesting";
+  private static final String TEST_META_DATA_FILE_PREFIX =
+      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
   public AsYouTypeFormatterTest() {
     PhoneNumberUtil.resetInstance();
-    InputStream in = PhoneNumberUtilTest.class.getResourceAsStream(TEST_META_DATA_FILE);
-    phoneUtil = PhoneNumberUtil.getInstance(in);
+    phoneUtil = PhoneNumberUtil.getInstance(TEST_META_DATA_FILE_PREFIX);
   }
 
   public void testAYTFUS() {

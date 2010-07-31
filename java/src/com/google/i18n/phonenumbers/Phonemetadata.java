@@ -742,5 +742,10 @@ public final class Phonemetadata {
         metadata_.add(metadata);
       }
     }
+
+    public PhoneMetadataCollection clear() {
+      metadata_.clear();
+      return this;
+    }
   }
 }

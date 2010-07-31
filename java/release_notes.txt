@@ -1,3 +1,12 @@
+July 31th, 2010
+
+* Improve startup performance
+  - Separate generated metadata binary file to one file per region
+  - Preload US at start up, and load other region at the time when needed
+  - Create a file containing mapping from country calling code to region code,
+    and load it at startup
+  - Same change also applied to unittests
+
 July 30th, 2010
 
 * Metadata change:
