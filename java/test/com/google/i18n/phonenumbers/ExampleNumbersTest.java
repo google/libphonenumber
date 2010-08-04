@@ -18,6 +18,7 @@ package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
@@ -75,8 +76,9 @@ public class ExampleNumbersTest extends TestCase {
           PhoneNumberType exampleNumberType = phoneNumberUtil.getNumberType(exampleNumber);
           if (!possibleExpectedTypes.contains(exampleNumberType)) {
             wrongTypeCases.add(exampleNumber);
-            LOGGER.log(Level.SEVERE,
-                       "Wrong type for " + exampleNumber.toString() + ": got " + exampleNumberType);
+            LOGGER.log(Level.SEVERE, "Wrong type for " +
+                       exampleNumber.toString() +
+                       ": got " + exampleNumberType);
             LOGGER.log(Level.WARNING, "Expected types: ");
             for (PhoneNumberType type : possibleExpectedTypes) {
               LOGGER.log(Level.WARNING, type.toString());

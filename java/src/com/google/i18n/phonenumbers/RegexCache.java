@@ -25,7 +25,6 @@ import java.util.regex.Pattern;
  *
  * @author Shaopeng Jia
  */
-
 public class RegexCache {
   private LRUCache<String, Pattern> cache;
 
@@ -52,9 +51,11 @@ public class RegexCache {
     private LinkedHashMap<K, V> map;
     private int size;
 
+    @SuppressWarnings("serial")
     public LRUCache(int size) {
       this.size = size;
-      map = new LinkedHashMap<K, V>(size*4/3+1, 0.75f, true) {
+      map = new LinkedHashMap<K, V>(size * 4 / 3 + 1, 0.75f, true) {
+        @Override
         protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
           return size() > LRUCache.this.size;
         }

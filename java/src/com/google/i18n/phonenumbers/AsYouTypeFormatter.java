@@ -414,23 +414,23 @@ public class AsYouTypeFormatter {
    * @return  true when a valid country code can be found.
    */
   private boolean attemptToExtractCountryCode() {
-      if (nationalNumber.length() == 0) {
-        return false;
+    if (nationalNumber.length() == 0) {
+      return false;
+    }
+    StringBuffer numberWithoutCountryCode = new StringBuffer();
+    int countryCode = phoneUtil.extractCountryCode(nationalNumber, numberWithoutCountryCode);
+    if (countryCode == 0) {
+      return false;
+    } else {
+      nationalNumber.setLength(0);
+      nationalNumber.append(numberWithoutCountryCode);
+      String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
+      if (!newRegionCode.equals(defaultCountry)) {
+        initializeCountrySpecificInfo(newRegionCode);
       }
-      StringBuffer numberWithoutCountryCode = new StringBuffer();
-      int countryCode = phoneUtil.extractCountryCode(nationalNumber, numberWithoutCountryCode);
-      if (countryCode == 0) {
-        return false;
-      } else {
-        nationalNumber.setLength(0);
-        nationalNumber.append(numberWithoutCountryCode);
-        String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
-        if (!newRegionCode.equals(defaultCountry)) {
-          initializeCountrySpecificInfo(newRegionCode);
-        }
-        String countryCodeString = Integer.toString(countryCode);
-        prefixBeforeNationalNumber.append(countryCodeString).append(" ");
-      }
+      String countryCodeString = Integer.toString(countryCode);
+      prefixBeforeNationalNumber.append(countryCodeString).append(" ");
+    }
     return true;
   }
 

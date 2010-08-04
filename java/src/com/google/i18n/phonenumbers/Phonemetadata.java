@@ -140,7 +140,7 @@ public final class Phonemetadata {
       }
     }
 
-    public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+    public void readExternal(ObjectInput objectInput) throws IOException {
       setPattern(objectInput.readUTF());
       setFormat(objectInput.readUTF());
       int leadingDigitsPatternSize = objectInput.readInt();
@@ -229,7 +229,7 @@ public final class Phonemetadata {
       }
     }
 
-    public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+    public void readExternal(ObjectInput objectInput) throws IOException {
       if (objectInput.readBoolean()) {
         setNationalNumberPattern(objectInput.readUTF());
       }
@@ -602,7 +602,7 @@ public final class Phonemetadata {
       }
     }
 
-    public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+    public void readExternal(ObjectInput objectInput) throws IOException {
       boolean hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
@@ -734,7 +734,7 @@ public final class Phonemetadata {
       }
     }
 
-    public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+    public void readExternal(ObjectInput objectInput) throws IOException {
       int size = objectInput.readInt();
       for (int i = 0; i < size; i++) {
         PhoneMetadata metadata = new PhoneMetadata();

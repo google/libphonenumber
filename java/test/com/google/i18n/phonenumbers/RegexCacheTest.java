@@ -41,6 +41,7 @@ public class RegexCacheTest extends TestCase {
 
     regexCache.getPatternForRegex(regex2);
     assertTrue(regexCache.containsRegex(regex2));
+    assertTrue(regexCache.containsRegex(regex1));
 
     regexCache.getPatternForRegex(regex1);
     assertTrue(regexCache.containsRegex(regex1));

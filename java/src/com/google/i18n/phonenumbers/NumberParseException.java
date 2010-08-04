@@ -20,6 +20,7 @@ package com.google.i18n.phonenumbers;
  * Generic exception class for errors encountered when parsing phone numbers.
  * @author Lara Rennie
  */
+@SuppressWarnings("serial")
 public class NumberParseException extends Exception {
 
   public enum ErrorType {
@@ -37,7 +38,7 @@ public class NumberParseException extends Exception {
     TOO_SHORT_NSN,
     // This indicates the string had more digits than any valid phone number could have.
     TOO_LONG,
-  };
+  }
 
   private ErrorType errorType;
   private String message;
@@ -55,6 +56,7 @@ public class NumberParseException extends Exception {
     return errorType;
   }
 
+  @Override
   public String toString() {
     return "Error type: " + errorType + ". " + message;
   }
