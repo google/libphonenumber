@@ -1,3 +1,10 @@
+August 4th, 2010
+
+* Further improve startup performance
+  - Preload no country specific metadata at startup.
+  - Stop creating the file containing mapping from country calling code to region code
+    and loading it at startup; instead, do the initialization in PhoneNumberUtil.
+
 July 31th, 2010
 
 * Improve startup performance
@@ -15,4 +22,4 @@ July 30th, 2010
 
 * Code improvement
   - China local number formatting for AsYouTypeFormatter
-  - improve extension parsing to handle number in the form of +1 (645) 123 1234 ext. 910# 
+  - improve extension parsing to handle number in the form of +1 (645) 123 1234 ext. 910#

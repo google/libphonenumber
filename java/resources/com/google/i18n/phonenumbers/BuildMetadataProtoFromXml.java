@@ -24,15 +24,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -58,19 +52,9 @@ public class BuildMetadataProtoFromXml {
   private static final Logger LOGGER = Logger.getLogger(BuildMetadataProtoFromXml.class.getName());
   private static Boolean liteBuild;
 
-  // A mapping from a country code to the region codes which denote the country/region
-  // represented by that country code. In the case of multiple countries sharing a calling code,
-  // such as the NANPA countries, the one indicated with "isMainCountryForCode" in the metadata
-  // should be first. The initial capacity is set to 300 as there are roughly 200 different
-  // country codes, and this offers a load factor of roughly 0.75.
-  private static final HashMap<Integer, List<String> > COUNTRY_CODE_TO_REGION_CODE_MAP =
-      new HashMap<Integer, List<String> >(310);
-
   public static void main(String[] args) throws Exception {
     String inputFile = args[0];
     String filePrefix = args[1];
-    String outputMappingFile = filePrefix +
-        PhoneNumberUtil.COUNTRY_CODE_TO_REGION_CODE_MAP_FILE_SUFFIX;
     liteBuild = args.length > 2 && Boolean.getBoolean(args[2]);
     File xmlFile = new File(inputFile);
 
@@ -86,46 +70,12 @@ public class BuildMetadataProtoFromXml {
       Element territoryElement = (Element) territory.item(i);
       String regionCode = territoryElement.getAttribute("id");
       PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
-      fillCountryCodeToRegionCodeMap(metadata, regionCode);
       metadataCollection.addMetadata(metadata);
       FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
       ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
       metadataCollection.writeExternal(out);
       out.close();
       metadataCollection.clear();
-    }
-    writeCountryCallingCodeMappingToFile(outputMappingFile);
-  }
-
-  private static void writeCountryCallingCodeMappingToFile(String file) throws IOException {
-    BufferedWriter writer =
-        new BufferedWriter(new FileWriter(file));
-    for (Integer countryCallingCode : COUNTRY_CODE_TO_REGION_CODE_MAP.keySet()) {
-      writer.write(countryCallingCode.toString());
-      writer.newLine();
-      for (String regionCode : COUNTRY_CODE_TO_REGION_CODE_MAP.get(countryCallingCode)) {
-        writer.write(' ');
-        writer.write(regionCode);
-      }
-      writer.newLine();
-    }
-    writer.flush();
-    writer.close();
-  }
-
-  static void fillCountryCodeToRegionCodeMap(PhoneMetadata metadata, String regionCode) {
-    int countryCode = metadata.getCountryCode();
-    if (COUNTRY_CODE_TO_REGION_CODE_MAP.containsKey(countryCode)) {
-      if (metadata.getMainCountryForCode()) {
-        COUNTRY_CODE_TO_REGION_CODE_MAP.get(countryCode).add(0, regionCode);
-      } else {
-        COUNTRY_CODE_TO_REGION_CODE_MAP.get(countryCode).add(regionCode);
-      }
-    } else {
-      // For most countries, there will be only one region code for the country dialing code.
-      List<String> listWithRegionCode = new ArrayList<String>(1);
-      listWithRegionCode.add(regionCode);
-      COUNTRY_CODE_TO_REGION_CODE_MAP.put(countryCode, listWithRegionCode);
     }
   }
 

@@ -29,12 +29,9 @@ import junit.framework.TestCase;
  */
 public class AsYouTypeFormatterTest extends TestCase {
   private PhoneNumberUtil phoneUtil;
-  private static final String TEST_META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
   public AsYouTypeFormatterTest() {
-    PhoneNumberUtil.resetInstance();
-    phoneUtil = PhoneNumberUtil.getInstance(TEST_META_DATA_FILE_PREFIX);
+    phoneUtil = (new PhoneNumberUtilTest()).initilizePhoneUtilForTesting();
   }
 
   public void testAYTFUS() {
