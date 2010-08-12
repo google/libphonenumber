@@ -21,16 +21,17 @@
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.AsYouTypeFormatter');
 
-function testAsYouTypeFormatterUS() {
+function testAYTFUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
   assertEquals('6', f.inputDigit('6'));
   assertEquals('65', f.inputDigit('5'));
   assertEquals('650', f.inputDigit('0'));
-  assertEquals('6502', f.inputDigit('2'));
-  assertEquals('65025', f.inputDigit('5'));
+  assertEquals('650 2', f.inputDigit('2'));
+  assertEquals('650 25', f.inputDigit('5'));
   assertEquals('650 253', f.inputDigit('3'));
-  assertEquals('650 253 2', f.inputDigit('2'));
+  // Note this is how a US local number (without area code) should be formatted.
+  assertEquals('650 2532', f.inputDigit('2'));
   assertEquals('650 253 22', f.inputDigit('2'));
   assertEquals('650 253 222', f.inputDigit('2'));
   assertEquals('650 253 2222', f.inputDigit('2'));
@@ -38,9 +39,9 @@ function testAsYouTypeFormatterUS() {
   f.clear();
   assertEquals('1', f.inputDigit('1'));
   assertEquals('16', f.inputDigit('6'));
-  assertEquals('165', f.inputDigit('5'));
-  assertEquals('1650', f.inputDigit('0'));
-  assertEquals('16502', f.inputDigit('2'));
+  assertEquals('1 65', f.inputDigit('5'));
+  assertEquals('1 650', f.inputDigit('0'));
+  assertEquals('1 650 2', f.inputDigit('2'));
   assertEquals('1 650 25', f.inputDigit('5'));
   assertEquals('1 650 253', f.inputDigit('3'));
   assertEquals('1 650 253 2', f.inputDigit('2'));
@@ -51,12 +52,12 @@ function testAsYouTypeFormatterUS() {
   f.clear();
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
-  assertEquals('011', f.inputDigit('1'));
-  assertEquals('0114', f.inputDigit('4'));
-  assertEquals('01144', f.inputDigit('4'));
+  assertEquals('011 ', f.inputDigit('1'));
+  assertEquals('011 4', f.inputDigit('4'));
+  assertEquals('011 44 ', f.inputDigit('4'));
   assertEquals('011 44 6', f.inputDigit('6'));
   assertEquals('011 44 61', f.inputDigit('1'));
-  assertEquals('011 44 612', f.inputDigit('2'));
+  assertEquals('011 44 6 12', f.inputDigit('2'));
   assertEquals('011 44 6 123', f.inputDigit('3'));
   assertEquals('011 44 6 123 1', f.inputDigit('1'));
   assertEquals('011 44 6 123 12', f.inputDigit('2'));
@@ -68,12 +69,12 @@ function testAsYouTypeFormatterUS() {
   f.clear();
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
-  assertEquals('011', f.inputDigit('1'));
-  assertEquals('0115', f.inputDigit('5'));
-  assertEquals('01154', f.inputDigit('4'));
+  assertEquals('011 ', f.inputDigit('1'));
+  assertEquals('011 5', f.inputDigit('5'));
+  assertEquals('011 54 ', f.inputDigit('4'));
   assertEquals('011 54 9', f.inputDigit('9'));
   assertEquals('011 54 91', f.inputDigit('1'));
-  assertEquals('011 54 911', f.inputDigit('1'));
+  assertEquals('011 54 9 11', f.inputDigit('1'));
   assertEquals('011 54 9 11 2', f.inputDigit('2'));
   assertEquals('011 54 9 11 23', f.inputDigit('3'));
   assertEquals('011 54 9 11 231', f.inputDigit('1'));
@@ -84,12 +85,29 @@ function testAsYouTypeFormatterUS() {
   assertEquals('011 54 9 11 2312 1234', f.inputDigit('4'));
 
   f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('01', f.inputDigit('1'));
+  assertEquals('011 ', f.inputDigit('1'));
+  assertEquals('011 2', f.inputDigit('2'));
+  assertEquals('011 24', f.inputDigit('4'));
+  assertEquals('011 244 ', f.inputDigit('4'));
+  assertEquals('011 244 2', f.inputDigit('2'));
+  assertEquals('011 244 28', f.inputDigit('8'));
+  assertEquals('011 244 280', f.inputDigit('0'));
+  assertEquals('011 244 280 0', f.inputDigit('0'));
+  assertEquals('011 244 280 00', f.inputDigit('0'));
+  assertEquals('011 244 280 000', f.inputDigit('0'));
+  assertEquals('011 244 280 000 0', f.inputDigit('0'));
+  assertEquals('011 244 280 000 00', f.inputDigit('0'));
+  assertEquals('011 244 280 000 000', f.inputDigit('0'));
+
+  f.clear();
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+4', f.inputDigit('4'));
-  assertEquals('+48', f.inputDigit('8'));
-  assertEquals('+488', f.inputDigit('8'));
-  assertEquals('+4888', f.inputDigit('8'));
-  assertEquals('+48 881', f.inputDigit('1'));
+  assertEquals('+48 ', f.inputDigit('8'));
+  assertEquals('+48 8', f.inputDigit('8'));
+  assertEquals('+48 88', f.inputDigit('8'));
+  assertEquals('+48 88 1', f.inputDigit('1'));
   assertEquals('+48 88 12', f.inputDigit('2'));
   assertEquals('+48 88 123', f.inputDigit('3'));
   assertEquals('+48 88 123 1', f.inputDigit('1'));
@@ -98,22 +116,22 @@ function testAsYouTypeFormatterUS() {
   assertEquals('+48 88 123 12 12', f.inputDigit('2'));
 }
 
-function testAsYouTypeFormatterUSFullWidthCharacters() {
+function testAYTFUSFullWidthCharacters() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
   assertEquals('\uFF16', f.inputDigit('\uFF16'));
   assertEquals('\uFF16\uFF15', f.inputDigit('\uFF15'));
-  assertEquals('\uFF16\uFF15\uFF10', f.inputDigit('\uFF10'));
-  assertEquals('\uFF16\uFF15\uFF10\uFF12', f.inputDigit('\uFF12'));
-  assertEquals('\uFF16\uFF15\uFF10\uFF12\uFF15', f.inputDigit('\uFF15'));
+  assertEquals('650', f.inputDigit('\uFF10'));
+  assertEquals('650 2', f.inputDigit('\uFF12'));
+  assertEquals('650 25', f.inputDigit('\uFF15'));
   assertEquals('650 253', f.inputDigit('\uFF13'));
-  assertEquals('650 253 2', f.inputDigit('\uFF12'));
+  assertEquals('650 2532', f.inputDigit('\uFF12'));
   assertEquals('650 253 22', f.inputDigit('\uFF12'));
   assertEquals('650 253 222', f.inputDigit('\uFF12'));
   assertEquals('650 253 2222', f.inputDigit('\uFF12'));
 }
 
-function testAsYouTypeFormatterUSMobileShortCode() {
+function testAYTFUSMobileShortCode() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
   assertEquals('*', f.inputDigit('*'));
@@ -123,7 +141,7 @@ function testAsYouTypeFormatterUSMobileShortCode() {
   assertEquals('*121#', f.inputDigit('#'));
 }
 
-function testAsYouTypeFormatterUSVanityNumber() {
+function testAYTFUSVanityNumber() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
   assertEquals('8', f.inputDigit('8'));
@@ -140,17 +158,17 @@ function testAsYouTypeFormatterUSVanityNumber() {
   assertEquals('800 MY APPLE', f.inputDigit('E'));
 }
 
-function testAsYouTypeFormatterAndRememberPositionUS() {
+function testAYTFAndRememberPositionUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
   assertEquals('1', f.inputDigitAndRememberPosition('1'));
   assertEquals(1, f.getRememberedPosition());
   assertEquals('16', f.inputDigit('6'));
-  assertEquals('165', f.inputDigit('5'));
+  assertEquals('1 65', f.inputDigit('5'));
   assertEquals(1, f.getRememberedPosition());
-  assertEquals('1650', f.inputDigitAndRememberPosition('0'));
-  assertEquals(4, f.getRememberedPosition());
-  assertEquals('16502', f.inputDigit('2'));
+  assertEquals('1 650', f.inputDigitAndRememberPosition('0'));
+  assertEquals(5, f.getRememberedPosition());
+  assertEquals('1 650 2', f.inputDigit('2'));
   assertEquals('1 650 25', f.inputDigit('5'));
   // Note the remembered position for digit '0' changes from 4 to 5, because a
   // space is now inserted in the front.
@@ -170,39 +188,40 @@ function testAsYouTypeFormatterAndRememberPositionUS() {
 
   f.clear();
   assertEquals('1', f.inputDigit('1'));
-  assertEquals('16', f.inputDigit('6'));
-  assertEquals('165', f.inputDigitAndRememberPosition('5'));
-  assertEquals('1650', f.inputDigit('0'));
+  assertEquals('16', f.inputDigitAndRememberPosition('6'));
+  assertEquals(2, f.getRememberedPosition());
+  assertEquals('1 65', f.inputDigit('5'));
+  assertEquals('1 650', f.inputDigit('0'));
   assertEquals(3, f.getRememberedPosition());
-  assertEquals('16502', f.inputDigit('2'));
+  assertEquals('1 650 2', f.inputDigit('2'));
   assertEquals('1 650 25', f.inputDigit('5'));
-  assertEquals(4, f.getRememberedPosition());
+  assertEquals(3, f.getRememberedPosition());
   assertEquals('1 650 253', f.inputDigit('3'));
   assertEquals('1 650 253 2', f.inputDigit('2'));
   assertEquals('1 650 253 22', f.inputDigit('2'));
-  assertEquals(4, f.getRememberedPosition());
+  assertEquals(3, f.getRememberedPosition());
   assertEquals('1 650 253 222', f.inputDigit('2'));
   assertEquals('1 650 253 2222', f.inputDigit('2'));
   assertEquals('165025322222', f.inputDigit('2'));
-  assertEquals(3, f.getRememberedPosition());
+  assertEquals(2, f.getRememberedPosition());
   assertEquals('1650253222222', f.inputDigit('2'));
-  assertEquals(3, f.getRememberedPosition());
+  assertEquals(2, f.getRememberedPosition());
 
   f.clear();
   assertEquals('6', f.inputDigit('6'));
   assertEquals('65', f.inputDigit('5'));
   assertEquals('650', f.inputDigit('0'));
-  assertEquals('6502', f.inputDigit('2'));
-  assertEquals('65025', f.inputDigitAndRememberPosition('5'));
-  assertEquals(5, f.getRememberedPosition());
+  assertEquals('650 2', f.inputDigit('2'));
+  assertEquals('650 25', f.inputDigit('5'));
   assertEquals('650 253', f.inputDigit('3'));
-  assertEquals(6, f.getRememberedPosition());
-  assertEquals('650 253 2', f.inputDigit('2'));
+  assertEquals('650 2532', f.inputDigitAndRememberPosition('2'));
+  assertEquals(8, f.getRememberedPosition());
   assertEquals('650 253 22', f.inputDigit('2'));
+  assertEquals(9, f.getRememberedPosition());
   assertEquals('650 253 222', f.inputDigit('2'));
   // No more formatting when semicolon is entered.
   assertEquals('650253222;', f.inputDigit(';'));
-  assertEquals(5, f.getRememberedPosition());
+  assertEquals(7, f.getRememberedPosition());
   assertEquals('650253222;2', f.inputDigit('2'));
 
   f.clear();
@@ -226,14 +245,14 @@ function testAsYouTypeFormatterAndRememberPositionUS() {
   f.clear();
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
-  assertEquals('011', f.inputDigit('1'));
-  assertEquals('0114', f.inputDigitAndRememberPosition('4'));
-  assertEquals('01148', f.inputDigit('8'));
-  assertEquals(4, f.getRememberedPosition());
+  assertEquals('011 ', f.inputDigit('1'));
+  assertEquals('011 4', f.inputDigitAndRememberPosition('4'));
+  assertEquals('011 48 ', f.inputDigit('8'));
+  assertEquals(5, f.getRememberedPosition());
   assertEquals('011 48 8', f.inputDigit('8'));
   assertEquals(5, f.getRememberedPosition());
   assertEquals('011 48 88', f.inputDigit('8'));
-  assertEquals('011 48 881', f.inputDigit('1'));
+  assertEquals('011 48 88 1', f.inputDigit('1'));
   assertEquals('011 48 88 12', f.inputDigit('2'));
   assertEquals(5, f.getRememberedPosition());
   assertEquals('011 48 88 123', f.inputDigit('3'));
@@ -245,10 +264,10 @@ function testAsYouTypeFormatterAndRememberPositionUS() {
   f.clear();
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+1', f.inputDigit('1'));
-  assertEquals('+16', f.inputDigitAndRememberPosition('6'));
-  assertEquals('+165', f.inputDigit('5'));
-  assertEquals('+1650', f.inputDigit('0'));
-  assertEquals(3, f.getRememberedPosition());
+  assertEquals('+1 6', f.inputDigitAndRememberPosition('6'));
+  assertEquals('+1 65', f.inputDigit('5'));
+  assertEquals('+1 650', f.inputDigit('0'));
+  assertEquals(4, f.getRememberedPosition());
   assertEquals('+1 650 2', f.inputDigit('2'));
   assertEquals(4, f.getRememberedPosition());
   assertEquals('+1 650 25', f.inputDigit('5'));
@@ -261,10 +280,10 @@ function testAsYouTypeFormatterAndRememberPositionUS() {
   f.clear();
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+1', f.inputDigit('1'));
-  assertEquals('+16', f.inputDigitAndRememberPosition('6'));
-  assertEquals('+165', f.inputDigit('5'));
-  assertEquals('+1650', f.inputDigit('0'));
-  assertEquals(3, f.getRememberedPosition());
+  assertEquals('+1 6', f.inputDigitAndRememberPosition('6'));
+  assertEquals('+1 65', f.inputDigit('5'));
+  assertEquals('+1 650', f.inputDigit('0'));
+  assertEquals(4, f.getRememberedPosition());
   assertEquals('+1 650 2', f.inputDigit('2'));
   assertEquals(4, f.getRememberedPosition());
   assertEquals('+1 650 25', f.inputDigit('5'));
@@ -276,15 +295,15 @@ function testAsYouTypeFormatterAndRememberPositionUS() {
   assertEquals(3, f.getRememberedPosition());
 }
 
-function testAsYouTypeFormatterGBFixedLine() {
+function testAYTFGBFixedLine() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('GB');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('02', f.inputDigit('2'));
   assertEquals('020', f.inputDigit('0'));
-  assertEquals('0207', f.inputDigitAndRememberPosition('7'));
-  assertEquals(4, f.getRememberedPosition());
-  assertEquals('02070', f.inputDigit('0'));
+  assertEquals('020 7', f.inputDigitAndRememberPosition('7'));
+  assertEquals(5, f.getRememberedPosition());
+  assertEquals('020 70', f.inputDigit('0'));
   assertEquals('020 703', f.inputDigit('3'));
   assertEquals(5, f.getRememberedPosition());
   assertEquals('020 7031', f.inputDigit('1'));
@@ -294,14 +313,14 @@ function testAsYouTypeFormatterGBFixedLine() {
   assertEquals('020 7031 3000', f.inputDigit('0'));
 }
 
-function testAsYouTypeFormatterGBTollFree() {
-  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+function testAYTFGBTollFree() {
+   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('gb');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('08', f.inputDigit('8'));
   assertEquals('080', f.inputDigit('0'));
-  assertEquals('0807', f.inputDigit('7'));
-  assertEquals('08070', f.inputDigit('0'));
+  assertEquals('080 7', f.inputDigit('7'));
+  assertEquals('080 70', f.inputDigit('0'));
   assertEquals('080 703', f.inputDigit('3'));
   assertEquals('080 7031', f.inputDigit('1'));
   assertEquals('080 7031 3', f.inputDigit('3'));
@@ -310,14 +329,14 @@ function testAsYouTypeFormatterGBTollFree() {
   assertEquals('080 7031 3000', f.inputDigit('0'));
 }
 
-function testAsYouTypeFormatterGBPremiumRate() {
+function testAYTFGBPremiumRate() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('GB');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('09', f.inputDigit('9'));
   assertEquals('090', f.inputDigit('0'));
-  assertEquals('0907', f.inputDigit('7'));
-  assertEquals('09070', f.inputDigit('0'));
+  assertEquals('090 7', f.inputDigit('7'));
+  assertEquals('090 70', f.inputDigit('0'));
   assertEquals('090 703', f.inputDigit('3'));
   assertEquals('090 7031', f.inputDigit('1'));
   assertEquals('090 7031 3', f.inputDigit('3'));
@@ -326,14 +345,14 @@ function testAsYouTypeFormatterGBPremiumRate() {
   assertEquals('090 7031 3000', f.inputDigit('0'));
 }
 
-function testAsYouTypeFormatterNZMobile() {
+function testAYTFNZMobile() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('NZ');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('02', f.inputDigit('2'));
   assertEquals('021', f.inputDigit('1'));
-  assertEquals('0211', f.inputDigit('1'));
-  assertEquals('02112', f.inputDigit('2'));
+  assertEquals('02-11', f.inputDigit('1'));
+  assertEquals('02-112', f.inputDigit('2'));
   // Note the unittest is using fake metadata which might produce non-ideal
   // results.
   assertEquals('02-112 3', f.inputDigit('3'));
@@ -342,26 +361,54 @@ function testAsYouTypeFormatterNZMobile() {
   assertEquals('02-112 3456', f.inputDigit('6'));
 }
 
-function testAsYouTypeFormatterDE() {
+function testAYTFDE() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('DE');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('03', f.inputDigit('3'));
   assertEquals('030', f.inputDigit('0'));
-  assertEquals('0301', f.inputDigit('1'));
-  assertEquals('03012', f.inputDigit('2'));
+  assertEquals('030 1', f.inputDigit('1'));
+  assertEquals('030 12', f.inputDigit('2'));
   assertEquals('030 123', f.inputDigit('3'));
   assertEquals('030 1234', f.inputDigit('4'));
+
+  // 08021 2345
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('08', f.inputDigit('8'));
+  assertEquals('080', f.inputDigit('0'));
+  assertEquals('0802', f.inputDigit('2'));
+  assertEquals('08021', f.inputDigit('1'));
+  assertEquals('08021 2', f.inputDigit('2'));
+  assertEquals('08021 23', f.inputDigit('3'));
+  assertEquals('08021 234', f.inputDigit('4'));
+  assertEquals('08021 2345', f.inputDigit('5'));
+
+  // 00 1 650 253 2250
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('00', f.inputDigit('0'));
+  assertEquals('00 1 ', f.inputDigit('1'));
+  assertEquals('00 1 6', f.inputDigit('6'));
+  assertEquals('00 1 65', f.inputDigit('5'));
+  assertEquals('00 1 650', f.inputDigit('0'));
+  assertEquals('00 1 650 2', f.inputDigit('2'));
+  assertEquals('00 1 650 25', f.inputDigit('5'));
+  assertEquals('00 1 650 253', f.inputDigit('3'));
+  assertEquals('00 1 650 253 2', f.inputDigit('2'));
+  assertEquals('00 1 650 253 22', f.inputDigit('2'));
+  assertEquals('00 1 650 253 222', f.inputDigit('2'));
+  assertEquals('00 1 650 253 2222', f.inputDigit('2'));
 }
 
-function testAsYouTypeFormatterAR() {
+function testAYTFAR() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('AR');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
   assertEquals('011', f.inputDigit('1'));
-  assertEquals('0117', f.inputDigit('7'));
-  assertEquals('01170', f.inputDigit('0'));
+  assertEquals('011 7', f.inputDigit('7'));
+  assertEquals('011 70', f.inputDigit('0'));
   assertEquals('011 703', f.inputDigit('3'));
   assertEquals('011 7031', f.inputDigit('1'));
   assertEquals('011 7031-3', f.inputDigit('3'));
@@ -370,15 +417,15 @@ function testAsYouTypeFormatterAR() {
   assertEquals('011 7031-3000', f.inputDigit('0'));
 }
 
-function testAsYouTypeFormatterARMobile() {
+function testAYTFARMobile() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('AR');
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+5', f.inputDigit('5'));
-  assertEquals('+54', f.inputDigit('4'));
-  assertEquals('+549', f.inputDigit('9'));
-  assertEquals('+5491', f.inputDigit('1'));
-  assertEquals('+54 911', f.inputDigit('1'));
+  assertEquals('+54 ', f.inputDigit('4'));
+  assertEquals('+54 9', f.inputDigit('9'));
+  assertEquals('+54 91', f.inputDigit('1'));
+  assertEquals('+54 9 11', f.inputDigit('1'));
   assertEquals('+54 9 11 2', f.inputDigit('2'));
   assertEquals('+54 9 11 23', f.inputDigit('3'));
   assertEquals('+54 9 11 231', f.inputDigit('1'));
@@ -389,16 +436,16 @@ function testAsYouTypeFormatterARMobile() {
   assertEquals('+54 9 11 2312 1234', f.inputDigit('4'));
 }
 
-function testAsYouTypeFormatterKR() {
+function testAYTFKR() {
   // +82 51 234 5678
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('KR');
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+8', f.inputDigit('8'));
-  assertEquals('+82', f.inputDigit('2'));
-  assertEquals('+825', f.inputDigit('5'));
-  assertEquals('+8251', f.inputDigit('1'));
-  assertEquals('+82 512', f.inputDigit('2'));
+  assertEquals('+82 ', f.inputDigit('2'));
+  assertEquals('+82 5', f.inputDigit('5'));
+  assertEquals('+82 51', f.inputDigit('1'));
+  assertEquals('+82 51-2', f.inputDigit('2'));
   assertEquals('+82 51-23', f.inputDigit('3'));
   assertEquals('+82 51-234', f.inputDigit('4'));
   assertEquals('+82 51-234-5', f.inputDigit('5'));
@@ -410,10 +457,10 @@ function testAsYouTypeFormatterKR() {
   f.clear();
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+8', f.inputDigit('8'));
-  assertEquals('+82', f.inputDigit('2'));
-  assertEquals('+822', f.inputDigit('2'));
-  assertEquals('+8225', f.inputDigit('5'));
-  assertEquals('+82 253', f.inputDigit('3'));
+  assertEquals('+82 ', f.inputDigit('2'));
+  assertEquals('+82 2', f.inputDigit('2'));
+  assertEquals('+82 25', f.inputDigit('5'));
+  assertEquals('+82 2-53', f.inputDigit('3'));
   assertEquals('+82 2-531', f.inputDigit('1'));
   assertEquals('+82 2-531-5', f.inputDigit('5'));
   assertEquals('+82 2-531-56', f.inputDigit('6'));
@@ -424,10 +471,10 @@ function testAsYouTypeFormatterKR() {
   f.clear();
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+8', f.inputDigit('8'));
-  assertEquals('+82', f.inputDigit('2'));
-  assertEquals('+822', f.inputDigit('2'));
-  assertEquals('+8223', f.inputDigit('3'));
-  assertEquals('+82 236', f.inputDigit('6'));
+  assertEquals('+82 ', f.inputDigit('2'));
+  assertEquals('+82 2', f.inputDigit('2'));
+  assertEquals('+82 23', f.inputDigit('3'));
+  assertEquals('+82 2-36', f.inputDigit('6'));
   assertEquals('+82 2-366', f.inputDigit('6'));
   assertEquals('+82 2-3665', f.inputDigit('5'));
   assertEquals('+82 2-3665-5', f.inputDigit('5'));
@@ -435,22 +482,21 @@ function testAsYouTypeFormatterKR() {
   assertEquals('+82 2-3665-567', f.inputDigit('7'));
   assertEquals('+82 2-3665-5678', f.inputDigit('8'));
 
-  // 02-114 : This is too short to format. Checking that there are no
-  // side-effects.
+  // 02-114
   f.clear();
   assertEquals('0', f.inputDigit('0'));
   assertEquals('02', f.inputDigit('2'));
   assertEquals('021', f.inputDigit('1'));
-  assertEquals('0211', f.inputDigit('1'));
-  assertEquals('02114', f.inputDigit('4'));
+  assertEquals('02-11', f.inputDigit('1'));
+  assertEquals('02-114', f.inputDigit('4'));
 
   // 02-1300
   f.clear();
   assertEquals('0', f.inputDigit('0'));
   assertEquals('02', f.inputDigit('2'));
   assertEquals('021', f.inputDigit('1'));
-  assertEquals('0213', f.inputDigit('3'));
-  assertEquals('02130', f.inputDigit('0'));
+  assertEquals('02-13', f.inputDigit('3'));
+  assertEquals('02-130', f.inputDigit('0'));
   assertEquals('02-1300', f.inputDigit('0'));
 
   // 011-456-7890
@@ -458,8 +504,8 @@ function testAsYouTypeFormatterKR() {
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
   assertEquals('011', f.inputDigit('1'));
-  assertEquals('0114', f.inputDigit('4'));
-  assertEquals('01145', f.inputDigit('5'));
+  assertEquals('011-4', f.inputDigit('4'));
+  assertEquals('011-45', f.inputDigit('5'));
   assertEquals('011-456', f.inputDigit('6'));
   assertEquals('011-456-7', f.inputDigit('7'));
   assertEquals('011-456-78', f.inputDigit('8'));
@@ -471,12 +517,61 @@ function testAsYouTypeFormatterKR() {
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
   assertEquals('011', f.inputDigit('1'));
-  assertEquals('0119', f.inputDigit('9'));
-  assertEquals('01198', f.inputDigit('8'));
+  assertEquals('011-9', f.inputDigit('9'));
+  assertEquals('011-98', f.inputDigit('8'));
   assertEquals('011-987', f.inputDigit('7'));
   assertEquals('011-9876', f.inputDigit('6'));
   assertEquals('011-9876-7', f.inputDigit('7'));
   assertEquals('011-9876-78', f.inputDigit('8'));
   assertEquals('011-9876-789', f.inputDigit('9'));
   assertEquals('011-9876-7890', f.inputDigit('0'));
+}
+
+function testAYTFMultipleLeadingDigitPatterns() {
+  // +81 50 2345 6789
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('JP');
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+8', f.inputDigit('8'));
+  assertEquals('+81 ', f.inputDigit('1'));
+  assertEquals('+81 5', f.inputDigit('5'));
+  assertEquals('+81 50', f.inputDigit('0'));
+  assertEquals('+81 50 2', f.inputDigit('2'));
+  assertEquals('+81 50 23', f.inputDigit('3'));
+  assertEquals('+81 50 234', f.inputDigit('4'));
+  assertEquals('+81 50 2345', f.inputDigit('5'));
+  assertEquals('+81 50 2345 6', f.inputDigit('6'));
+  assertEquals('+81 50 2345 67', f.inputDigit('7'));
+  assertEquals('+81 50 2345 678', f.inputDigit('8'));
+  assertEquals('+81 50 2345 6789', f.inputDigit('9'));
+
+  // +81 222 12 5678
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+8', f.inputDigit('8'));
+  assertEquals('+81 ', f.inputDigit('1'));
+  assertEquals('+81 2', f.inputDigit('2'));
+  assertEquals('+81 22', f.inputDigit('2'));
+  assertEquals('+81 22 2', f.inputDigit('2'));
+  assertEquals('+81 22 21', f.inputDigit('1'));
+  assertEquals('+81 2221 2', f.inputDigit('2'));
+  assertEquals('+81 222 12 5', f.inputDigit('5'));
+  assertEquals('+81 222 12 56', f.inputDigit('6'));
+  assertEquals('+81 222 12 567', f.inputDigit('7'));
+  assertEquals('+81 222 12 5678', f.inputDigit('8'));
+
+  // +81 3332 2 5678
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+8', f.inputDigit('8'));
+  assertEquals('+81 ', f.inputDigit('1'));
+  assertEquals('+81 3', f.inputDigit('3'));
+  assertEquals('+81 33', f.inputDigit('3'));
+  assertEquals('+81 33 3', f.inputDigit('3'));
+  assertEquals('+81 3332', f.inputDigit('2'));
+  assertEquals('+81 3332 2', f.inputDigit('2'));
+  assertEquals('+81 3332 2 5', f.inputDigit('5'));
+  assertEquals('+81 3332 2 56', f.inputDigit('6'));
+  assertEquals('+81 3332 2 567', f.inputDigit('7'));
+  assertEquals('+81 3332 2 5678', f.inputDigit('8'));
 }

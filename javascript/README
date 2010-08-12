@@ -25,7 +25,7 @@ pages with your web browser:
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 39).
+The JavaScript library is ported from the Java implementation (revision 46).
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
@@ -37,7 +37,7 @@ project:
         i18n.phonenumbers.PhoneNumberDesc.prototype.exactlySameAs(other)
         i18n.phonenumbers.PhoneNumber.prototype.exactlySameAs(other)
   c.  Manually update the toJsArray() Java methods in
-        /java/resources/com/google/i18n/phonenumbers/BuildMetadataJSON.java
+      /java/resources/com/google/i18n/phonenumbers/BuildMetadataJsonFromXml.java
 
 2.  If the phone number metadata in the XML format has changed
     (java/resources/com/google/i18n/phonenumbers/src/PhoneNumberMetaData.xml)
@@ -46,13 +46,17 @@ project:
 
     ant -f java/build.xml
     java -cp java/build/classes \
-      com.google.i18n.phonenumbers.BuildMetadataProtoFromXml \
+      com.google.i18n.phonenumbers.BuildMetadataJsonFromXml \
       java/resources/com/google/i18n/phonenumbers/src/PhoneNumberMetaData.xml \
-      javascript/i18n/phonenumbers/metadata.js false json
+      javascript/i18n/phonenumbers/metadata.js false
     java -cp java/build/classes \
-      com.google.i18n.phonenumbers.BuildMetadataProtoFromXml \
+      com.google.i18n.phonenumbers.BuildMetadataJsonFromXml \
+      java/resources/com/google/i18n/phonenumbers/src/PhoneNumberMetaData.xml \
+      javascript/i18n/phonenumbers/metadatalite.js true
+    java -cp java/build/classes \
+      com.google.i18n.phonenumbers.BuildMetadataJsonFromXml \
       java/resources/com/google/i18n/phonenumbers/test/PhoneNumberMetaDataForTesting.xml \
-      javascript/i18n/phonenumbers/metadatafortesting.js false json
+      javascript/i18n/phonenumbers/metadatafortesting.js false
 
 3.  Manually port any changes of the Java code to the JavaScript code:
       PhoneNumberUtil.java => phonenumberutil.js

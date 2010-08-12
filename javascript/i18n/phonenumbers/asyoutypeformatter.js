@@ -51,55 +51,9 @@ goog.require('i18n.phonenumbers.metadata');
  */
 i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
   /**
-   * @type {boolean}
-   * @private
-   */
-  this.ableToFormat_ = true;
-  /**
-   * @type {boolean}
-   * @private
-   */
-  this.isInternationalFormatting_ = false;
-  /**
-   * @type {i18n.phonenumbers.PhoneNumberUtil}
-   * @private
-   */
-  this.phoneUtil_ = i18n.phonenumbers.PhoneNumberUtil.getInstance();
-  // The digits that have not been entered yet will be represented by a \u2008,
-  // the punctuation space.
-  /**
-   * @type {string}
-   * @private
-   */
-  this.digitPlaceholder_ = '\u2008';
-  /**
-   * @type {RegExp}
-   * @private
-   */
-  this.digitPattern_ = new RegExp(this.digitPlaceholder_);
-  /**
-   * @type {number}
-   * @private
-   */
-  this.lastMatchPosition_ = 0;
-  /**
-   * The position of a digit upon which inputDigitAndRememberPosition is most
-   * recently invoked, as found in the current output.
-   * @type {number}
-   * @private
-   */
-  this.positionRemembered_ = 0;
-  /**
-   * The position of a digit upon which inputDigitAndRememberPosition is most
-   * recently invoked, as found in the original sequence of characters the user
-   * entered.
-   * @type {number}
-   * @private
-   */
-  this.originalPosition_ = 0;
-  /**
    * A pattern that is used to match character classes in regular expressions.
    * An example of a character class is [1-4].
+   * @const
    * @type {RegExp}
    * @private
    */
@@ -110,10 +64,52 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    * (8 and 0) are standalone digits, but the rest are not.
    * Two look-aheads are needed because the number following \\d could be a
    * two-digit number, since the phone number can be as long as 15 digits.
+   * @const
    * @type {RegExp}
    * @private
    */
   this.STANDALONE_DIGIT_PATTERN_ = /\d(?=[^,}][^,}])/g;
+  /**
+   * This is the minimum length of national number accrued that is required to
+   * trigger the formatter. The first element of the leadingDigitsPattern of
+   * each numberFormat contains a regular expression that matches up to this
+   * number of digits.
+   * @const
+   * @type {number}
+   * @private
+   */
+  this.MIN_LEADING_DIGITS_LENGTH_ = 3;
+  /**
+   * The digits that have not been entered yet will be represented by a \u2008,
+   * the punctuation space.
+   * @const
+   * @type {string}
+   * @private
+   */
+  this.digitPlaceholder_ = '\u2008';
+  /**
+   * @type {RegExp}
+   * @private
+   */
+  this.digitPattern_ = new RegExp(this.digitPlaceholder_);
+
+  /**
+   * @type {string}
+   * @private
+   */
+  this.currentOutput_ = '';
+  /**
+   * @type {!goog.string.StringBuffer}
+   * @private
+   */
+  this.formattingTemplate_ = new goog.string.StringBuffer();
+  /**
+   * The pattern from numberFormat that is currently used to create
+   * formattingTemplate.
+   * @type {string}
+   * @private
+   */
+  this.currentFormattingPattern_ = '';
   /**
    * @type {!goog.string.StringBuffer}
    * @private
@@ -125,10 +121,46 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    */
   this.accruedInputWithoutFormatting_ = new goog.string.StringBuffer();
   /**
-   * @type {!goog.string.StringBuffer}
+   * @type {boolean}
    * @private
    */
-  this.currentOutput_ = new goog.string.StringBuffer();
+  this.ableToFormat_ = true;
+  /**
+   * @type {boolean}
+   * @private
+   */
+  this.isInternationalFormatting_ = false;
+  /**
+   * @type {boolean}
+   * @private
+   */
+  this.isExpectingCountryCode_ = false;
+  /**
+   * @type {i18n.phonenumbers.PhoneNumberUtil}
+   * @private
+   */
+  this.phoneUtil_ = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+  /**
+   * @type {number}
+   * @private
+   */
+  this.lastMatchPosition_ = 0;
+  /**
+   * The position of a digit upon which inputDigitAndRememberPosition is most
+   * recently invoked, as found in the original sequence of characters the user
+   * entered.
+   * @type {number}
+   * @private
+   */
+  this.originalPosition_ = 0;
+  /**
+   * The position of a digit upon which inputDigitAndRememberPosition is most
+   * recently invoked, as found in accruedInputWithoutFormatting.
+   * entered.
+   * @type {number}
+   * @private
+   */
+  this.positionToRemember_ = 0;
   /**
    * @type {!goog.string.StringBuffer}
    * @private
@@ -139,6 +171,12 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    * @private
    */
   this.nationalNumber_ = new goog.string.StringBuffer();
+  /**
+   * @type {Array.<i18n.phonenumbers.NumberFormat>}
+   * @private
+   */
+  this.possibleFormats_ = [];
+
   /**
    *  @type {string}
    * @private
@@ -170,61 +208,82 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.initializeCountrySpecificInfo_ =
 };
 
 /**
- * @param {string} leadingFourDigitsOfNationalNumber
+ * @return {boolean} true if a new template is created as opposed to reusing the
+ *     existing template.
  * @private
  */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.chooseFormatAndCreateTemplate_ =
-  function(leadingFourDigitsOfNationalNumber) {
+i18n.phonenumbers.AsYouTypeFormatter.prototype.maybeCreateNewTemplate_ =
+  function() {
 
-  /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
-  var formatList = this.getAvailableFormats_(leadingFourDigitsOfNationalNumber);
-  if (formatList.length < 1) {
-    this.ableToFormat_ = false;
-  } else {
-    // When there are multiple available formats, the formatter uses the first
-    // format.
+  // When there are multiple available formats, the formatter uses the first
+  // format where a formatting template could be created.
+  /** @type {number} */
+  var possibleFormatsLength = this.possibleFormats_.length;
+  for (var i = 0; i < possibleFormatsLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
-    var format = formatList[0];
-    if (!this.createFormattingTemplate_(format)) {
-      this.ableToFormat_ = false;
-    } else {
-      this.currentOutput_ =
-          new goog.string.StringBuffer(this.formattingTemplate_);
+    var numberFormat = this.possibleFormats_[i];
+    /** @type {string} */
+    var pattern = numberFormat.getPatternOrDefault();
+    if (this.currentFormattingPattern_ == pattern) {
+      return false;
+    }
+    if (this.createFormattingTemplate_(numberFormat)) {
+      this.currentFormattingPattern_ = pattern;
+      return true;
     }
   }
+  this.ableToFormat_ = false;
+  return false;
 };
 
 /**
- * @param {string} leadingFourDigits
- * @return {Array.<i18n.phonenumbers.NumberFormat>}
+ * @param {string} leadingThreeDigits
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
-  function(leadingFourDigits) {
+  function(leadingThreeDigits) {
 
-  /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
-  var matchedList = [];
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var formatList = (this.isInternationalFormatting_ && this.currentMetaData_
       .intlNumberFormatCount() > 0) ? this.currentMetaData_
       .intlNumberFormatArray() : this.currentMetaData_.numberFormatArray();
+  this.possibleFormats_ = formatList;
+  this.narrowDownPossibleFormats_(leadingThreeDigits);
+};
+
+/**
+ * @param {string} leadingDigits
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.narrowDownPossibleFormats_ =
+  function(leadingDigits) {
+
+  /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
+  var possibleFormats = [];
   /** @type {number} */
-  var formatListLength = formatList.length;
-  for (var i = 0; i < formatListLength; ++i) {
+  var lengthOfLeadingDigits = leadingDigits.length;
+  /** @type {number} */
+  var indexOfLeadingDigitsPattern =
+      lengthOfLeadingDigits - this.MIN_LEADING_DIGITS_LENGTH_;
+  /** @type {number} */
+  var possibleFormatsLength = this.possibleFormats_.length;
+  for (var i = 0; i < possibleFormatsLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
-    var format = formatList[i];
-    if (format.hasLeadingDigits()) {
+    var format = this.possibleFormats_[i];
+    if (format.leadingDigitsPatternCount() > indexOfLeadingDigitsPattern) {
       /** @type {RegExp} */
-      var leadingDigitsPattern =
-          new RegExp('^(' + format.getLeadingDigits() + ')');
-      if (leadingDigitsPattern.test(leadingFourDigits)) {
-        matchedList.push(format);
+      var leadingDigitsPattern = new RegExp('^(' +
+          format.getLeadingDigitsPattern(indexOfLeadingDigitsPattern) + ')');
+      if (leadingDigitsPattern.test(leadingDigits)) {
+        possibleFormats.push(this.possibleFormats_[i]);
       }
     } else {
-      matchedList.push(format);
+      // else the particular format has no more specific leadingDigitsPattern,
+      // and it should be retained.
+      possibleFormats.push(this.possibleFormats_[i]);
     }
   }
-  return matchedList;
+  this.possibleFormats_ = possibleFormats;
 };
 
 /**
@@ -251,9 +310,9 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
 
   // Replace any standalone digit (not the one in d{}) with \d
   numberPattern = numberPattern.replace(this.STANDALONE_DIGIT_PATTERN_, '\\d');
-
-  this.formattingTemplate_ = this.getFormattingTemplate_(numberPattern,
-      numberFormat);
+  this.formattingTemplate_.clear();
+  this.formattingTemplate_.append(this.getFormattingTemplate_(numberPattern,
+      numberFormat));
   return true;
 };
 
@@ -291,16 +350,20 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getFormattingTemplate_ =
  * Clears the internal state of the formatter, so it could be reused.
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
+  this.currentOutput_ = '';
   this.accruedInput_.clear();
   this.accruedInputWithoutFormatting_.clear();
-  this.currentOutput_.clear();
+  this.formattingTemplate_.clear();
   this.lastMatchPosition_ = 0;
+  this.currentFormattingPattern_ = '';
   this.prefixBeforeNationalNumber_.clear();
   this.nationalNumber_.clear();
   this.ableToFormat_ = true;
-  this.positionRemembered_ = 0;
+  this.positionToRemember_ = 0;
   this.originalPosition_ = 0;
   this.isInternationalFormatting_ = false;
+  this.isExpectingCountryCode_ = false;
+  this.possibleFormats_ = [];
   if (this.currentMetaData_ != this.defaultMetaData_) {
     this.initializeCountrySpecificInfo_(this.defaultCountry_);
   }
@@ -314,7 +377,9 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
  * @return {string} the partially formatted phone number.
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigit = function(nextChar) {
-  return this.inputDigitWithOptionToRememberPosition_(nextChar, false);
+  this.currentOutput_ =
+      this.inputDigitWithOptionToRememberPosition_(nextChar, false);
+  return this.currentOutput_;
 };
 
 /**
@@ -329,13 +394,16 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigit = function(nextChar) {
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigitAndRememberPosition =
   function(nextChar) {
 
-  return this.inputDigitWithOptionToRememberPosition_(nextChar, true);
+  this.currentOutput_ =
+      this.inputDigitWithOptionToRememberPosition_(nextChar, true);
+  return this.currentOutput_;
 };
 
 /**
  * @param {string} nextChar
  * @param {boolean} rememberPosition
  * @return {string}
+ * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.
     inputDigitWithOptionToRememberPosition_ = function(nextChar,
@@ -343,8 +411,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 
   this.accruedInput_.append(nextChar);
   if (rememberPosition) {
-    this.positionRemembered_ = this.accruedInput_.getLength();
-    this.originalPosition_ = this.positionRemembered_;
+    this.originalPosition_ = this.accruedInput_.getLength();
   }
   // We do formatting on-the-fly only when each character entered is either a
   // plus sign or a digit.
@@ -353,53 +420,97 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     this.ableToFormat_ = false;
   }
   if (!this.ableToFormat_) {
-    this.resetPositionOnFailureToFormat_();
     return this.accruedInput_.toString();
   }
 
-  nextChar = this.normalizeAndAccrueDigitsAndPlusSign_(nextChar);
+  nextChar = this.normalizeAndAccrueDigitsAndPlusSign_(nextChar,
+                                                       rememberPosition);
 
-  // We start to attempt to format only when at least 6 digits (the plus sign is
-  // counted as a digit as well for this purpose) have been entered.
+  // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH
+  // digits (the plus sign is counted as a digit as well for this purpose) have
+  // been entered.
   switch (this.accruedInputWithoutFormatting_.getLength()) {
   case 0: // this is the case where the first few inputs are neither digits nor
           // the plus sign.
   case 1:
   case 2:
+    return this.accruedInput_.toString();
   case 3:
+    if (this.attemptToExtractIdd_()) {
+      this.isExpectingCountryCode_ = true;
+    } else {
+      // No IDD or plus sign is found, must be entering in national format.
+      this.removeNationalPrefixFromNationalNumber_();
+      return this.attemptToChooseFormattingPattern_();
+    }
   case 4:
   case 5:
-    return this.accruedInput_.toString();
+    if (this.isExpectingCountryCode_) {
+      if (this.attemptToExtractCountryCode_()) {
+        this.isExpectingCountryCode_ = false;
+      }
+      return this.prefixBeforeNationalNumber_.toString() +
+          this.nationalNumber_.toString();
+    }
+  // We make a last attempt to extract a country code at the 6th digit because
+  // the maximum length of IDD and country code are both 3.
   case 6:
-    if (!this.extractIddAndValidCountryCode_()) {
+    if (this.isExpectingCountryCode_ && !this.attemptToExtractCountryCode_()) {
       this.ableToFormat_ = false;
       return this.accruedInput_.toString();
     }
-    this.removeNationalPrefixFromNationalNumber_();
-    return this.attemptToChooseFormattingPattern_(rememberPosition);
   default:
-    if (this.nationalNumber_.getLength() > 4) {
+    if (this.possibleFormats_.length > 0) {
       // The formatting pattern is already chosen.
       /** @type {string} */
-      var temp = this.inputDigitHelper_(nextChar, rememberPosition);
+      var tempNationalNumber = this.inputDigitHelper_(nextChar);
+      // See if the accrued digits can be formatted properly already. If not,
+      // use the results from inputDigitHelper, which does formatting based on
+      // the formatting pattern chosen.
+      /** @type {string} */
+      var formattedNumber = this.attemptToFormatAccruedDigits_();
+      if (formattedNumber.length > 0) {
+        return formattedNumber;
+      }
+      this.narrowDownPossibleFormats_(this.nationalNumber_.toString());
+      if (this.maybeCreateNewTemplate_()) {
+        return this.inputAccruedNationalNumber_();
+      }
       return this.ableToFormat_ ?
-          this.prefixBeforeNationalNumber_.toString() + temp : temp;
+          this.prefixBeforeNationalNumber_.toString() + tempNationalNumber :
+          tempNationalNumber;
     } else {
-      return this.attemptToChooseFormattingPattern_(rememberPosition);
+      return this.attemptToChooseFormattingPattern_();
     }
   }
 };
 
 /**
+ * @return {string}
  * @private
  */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.resetPositionOnFailureToFormat_ =
+i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
   function() {
 
-  if (this.positionRemembered_ > 0) {
-    this.positionRemembered_ = this.originalPosition_;
-    this.currentOutput_.clear();
+  /** @type {string} */
+  var nationalNumber = this.nationalNumber_.toString();
+  /** @type {number} */
+  var possibleFormatsLength = this.possibleFormats_.length;
+  for (var i = 0; i < possibleFormatsLength; ++i) {
+    /** @type {i18n.phonenumbers.NumberFormat} */
+    var numFormat = this.possibleFormats_[i];
+    /** @type {string} */
+    var pattern = numFormat.getPatternOrDefault();
+    /** @type {RegExp} */
+    var patternRegExp = new RegExp('^(' + pattern + ')$');
+    if (patternRegExp.test(nationalNumber)) {
+      /** @type {string} */
+      var formattedNumber = nationalNumber.replace(new RegExp(pattern, 'g'),
+                                                   numFormat.getFormat());
+      return this.prefixBeforeNationalNumber_.toString() + formattedNumber;
+    }
   }
+  return '';
 };
 
 /**
@@ -412,36 +523,51 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.resetPositionOnFailureToFormat_ =
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getRememberedPosition =
   function() {
 
-  return this.positionRemembered_;
+  if (!this.ableToFormat_) {
+    return this.originalPosition_;
+  }
+  /** @type {number} */
+  var accruedInputIndex = 0;
+  /** @type {number} */
+  var currentOutputIndex = 0;
+  /** @type {string} */
+  var accruedInputWithoutFormatting =
+      this.accruedInputWithoutFormatting_.toString();
+  /** @type {string} */
+  var currentOutput = this.currentOutput_.toString();
+  while (accruedInputIndex < this.positionToRemember_) {
+    if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
+        currentOutput.charAt(currentOutputIndex)) {
+      accruedInputIndex++;
+      currentOutputIndex++;
+    } else {
+      currentOutputIndex++;
+    }
+  }
+  return currentOutputIndex;
 };
 
 /**
  * Attempts to set the formatting template and returns a string which contains
  * the formatted version of the digits entered so far.
  *
- * @param {boolean} rememberPosition
  * @return {string}
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.
-    attemptToChooseFormattingPattern_ = function(rememberPosition) {
+    attemptToChooseFormattingPattern_ = function() {
 
   /** @type {string} */
   var nationalNumber = this.nationalNumber_.toString();
-  /** @type {number} */
-  var nationalNumberLength = nationalNumber.length;
-  // We start to attempt to format only when as least 4 digits of national
-  // number (excluding national prefix) have been entered.
-  if (nationalNumberLength >= 4) {
-    this.chooseFormatAndCreateTemplate_(nationalNumber.substring(0, 4));
-    return this.inputAccruedNationalNumber_(rememberPosition);
+  // We start to attempt to format only when as least MIN_LEADING_DIGITS_LENGTH
+  // digits of national number (excluding national prefix) have been entered.
+  if (nationalNumber.length >= this.MIN_LEADING_DIGITS_LENGTH_) {
+    this.getAvailableFormats_(
+        nationalNumber.substring(0, this.MIN_LEADING_DIGITS_LENGTH_));
+    this.maybeCreateNewTemplate_();
+    return this.inputAccruedNationalNumber_();
   } else {
-    if (rememberPosition) {
-      this.positionRemembered_ =
-          this.prefixBeforeNationalNumber_.length() + nationalNumberLength;
-    }
-    return this.prefixBeforeNationalNumber_.toString() +
-        this.nationalNumber_.toString();
+    return this.prefixBeforeNationalNumber_.toString() + nationalNumber;
   }
 };
 
@@ -449,42 +575,27 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
  * Invokes inputDigitHelper on each digit of the national number accrued, and
  * returns a formatted string in the end.
  *
- * @param {boolean} rememberPosition
  * @return {string}
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputAccruedNationalNumber_ =
-  function(rememberPosition) {
+  function() {
 
+  /** @type {string} */
+  var nationalNumber = this.nationalNumber_.toString();
   /** @type {number} */
-  var lengthOfNationalNumber = this.nationalNumber_.getLength();
+  var lengthOfNationalNumber = nationalNumber.length;
   if (lengthOfNationalNumber > 0) {
-    // The positionRemembered should be only adjusted once in the loop that
-    // follows.
-    /** @type {boolean} */
-    var positionAlreadyAdjusted = false;
     /** @type {string} */
     var tempNationalNumber = '';
     for (var i = 0; i < lengthOfNationalNumber; i++) {
       tempNationalNumber =
-          this.inputDigitHelper_(this.nationalNumber_.toString().charAt(i),
-                                 rememberPosition);
-      if (!positionAlreadyAdjusted &&
-          this.positionRemembered_ -
-              this.prefixBeforeNationalNumber_.getLength() == i + 1) {
-        this.positionRemembered_ =
-            this.prefixBeforeNationalNumber_.getLength() +
-            tempNationalNumber.length;
-        positionAlreadyAdjusted = true;
-      }
+          this.inputDigitHelper_(nationalNumber.charAt(i));
     }
     return this.ableToFormat_ ?
         this.prefixBeforeNationalNumber_.toString() + tempNationalNumber :
         tempNationalNumber;
   } else {
-    if (rememberPosition) {
-      this.positionRemembered_ = this.prefixBeforeNationalNumber_.length();
-    }
     return this.prefixBeforeNationalNumber_.toString();
   }
 };
@@ -503,13 +614,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
       nationalNumber.charAt(0) == '1') {
     startOfNationalNumber = 1;
     this.prefixBeforeNationalNumber_.append('1 ');
-    // Since a space is inserted after the national prefix in this case, we
-    // increase the remembered position by 1 for anything that is after the
-    // national prefix.
-    if (this.positionRemembered_ >
-        this.prefixBeforeNationalNumber_.getLength() - 1) {
-      this.positionRemembered_++;
-    }
+    this.isInternationalFormatting_ = true;
   } else if (this.currentMetaData_.hasNationalPrefix()) {
     /** @type {Array.<string>} */
     var m = nationalNumber.match(this.nationalPrefixForParsing_);
@@ -524,70 +629,73 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 };
 
 /**
- * Extracts IDD, plus sign and country code to prefixBeforeNationalNumber when
- * they are available, and places the remaining input into nationalNumber.
+ * Extracts IDD and plus sign to prefixBeforeNationalNumber when they are
+ * available, and places the remaining input into nationalNumber.
  *
- * @return {boolean} false when accruedInputWithoutFormatting begins with the
- *     plus sign or valid IDD for defaultCountry, but the sequence of digits
- *     after that does not form a valid country code. It returns true for all
- *     other cases.
+ * @return {boolean} true when accruedInputWithoutFormatting begins with the
+ *     plus sign or valid IDD for defaultCountry.
  * @private
  */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.extractIddAndValidCountryCode_ =
+i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractIdd_ =
   function() {
 
   /** @type {string} */
   var accruedInputWithoutFormatting =
       this.accruedInputWithoutFormatting_.toString();
-  this.nationalNumber_.clear();
   /** @type {Array.<string>} */
   var m = accruedInputWithoutFormatting.match(this.internationalPrefix_);
   if (m != null && m[0] != null && m[0].length > 0) {
     this.isInternationalFormatting_ = true;
     /** @type {number} */
     var startOfCountryCode = m[0].length;
-    /** @type {!goog.string.StringBuffer} */
-    var numberIncludeCountryCode = new goog.string.StringBuffer(
+    this.nationalNumber_.clear();
+    this.nationalNumber_.append(
         accruedInputWithoutFormatting.substring(startOfCountryCode));
+    this.prefixBeforeNationalNumber_.append(
+        accruedInputWithoutFormatting.substring(0, startOfCountryCode));
+    if (accruedInputWithoutFormatting.charAt(0) !=
+        i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+      this.prefixBeforeNationalNumber_.append(' ');
+    }
+    return true;
+  }
+  return false;
+};
+
+/**
+ * Extracts country code from the beginning of nationalNumber to
+ * prefixBeforeNationalNumber when they are available, and places the remaining
+ * input into nationalNumber.
+ *
+ * @return {boolean} true when a valid country code can be found.
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractCountryCode_ =
+  function() {
+
+    if (this.nationalNumber_.getLength() == 0) {
+      return false;
+    }
+    /** @type {!goog.string.StringBuffer} */
+    var numberWithoutCountryCode = new goog.string.StringBuffer();
     /** @type {number} */
     var countryCode = this.phoneUtil_.extractCountryCode(
-        numberIncludeCountryCode, this.nationalNumber_);
+        this.nationalNumber_, numberWithoutCountryCode);
     if (countryCode == 0) {
       return false;
     } else {
+      this.nationalNumber_.clear();
+      this.nationalNumber_.append(numberWithoutCountryCode.toString());
       /** @type {string} */
       var newRegionCode =
           this.phoneUtil_.getRegionCodeForCountryCode(countryCode);
       if (newRegionCode != this.defaultCountry_) {
         this.initializeCountrySpecificInfo_(newRegionCode);
       }
-      this.prefixBeforeNationalNumber_.append(accruedInputWithoutFormatting
-          .substring(0, startOfCountryCode));
-      if (accruedInputWithoutFormatting.charAt(0) !=
-          i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
-        if (this.positionRemembered_ >
-            this.prefixBeforeNationalNumber_.getLength()) {
-          // Since a space will be inserted in front of the country code in this
-          // case, we increase the remembered position by 1.
-          this.positionRemembered_++;
-        }
-        this.prefixBeforeNationalNumber_.append(' ');
-      }
       /** @type {string} */
       var countryCodeString = '' + countryCode;
-      if (this.positionRemembered_ >
-          this.prefixBeforeNationalNumber_.getLength() +
-              countryCodeString.length) {
-        // Since a space will be inserted after the country code in this case,
-        // we increase the remembered position by 1.
-        this.positionRemembered_++;
-      }
       this.prefixBeforeNationalNumber_.append(countryCodeString).append(' ');
     }
-  } else {
-    this.nationalNumber_.clear();
-    this.nationalNumber_.append(accruedInputWithoutFormatting);
-  }
   return true;
 };
 
@@ -599,59 +707,51 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.extractIddAndValidCountryCode_ =
  * in non-ASCII format.
  *
  * @param {string} nextChar
+ * @param {boolean} rememberPosition
  * @return {string}
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.
-    normalizeAndAccrueDigitsAndPlusSign_ = function(nextChar) {
+    normalizeAndAccrueDigitsAndPlusSign_ = function(nextChar,
+                                                    rememberPosition) {
 
   if (nextChar == i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
     this.accruedInputWithoutFormatting_.append(nextChar);
   }
-
   if (nextChar in i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS) {
     nextChar = i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS[nextChar];
     this.accruedInputWithoutFormatting_.append(nextChar);
     this.nationalNumber_.append(nextChar);
+  }
+  if (rememberPosition) {
+    this.positionToRemember_ = this.accruedInputWithoutFormatting_.getLength();
   }
   return nextChar;
 };
 
 /**
  * @param {string} nextChar
- * @param {boolean} rememberPosition
  * @return {string}
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigitHelper_ =
-  function(nextChar, rememberPosition) {
-
-  if (!(nextChar in i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS)) {
-    return this.currentOutput_.toString();
-  }
+  function(nextChar) {
 
   /** @type {string} */
-  var currentOutput = this.currentOutput_.toString();
-  /** @type {string} */
-  var currentOutput2 = currentOutput.substring(this.lastMatchPosition_);
-  /** @type {number} */
-  var digitPatternStart = currentOutput2.search(this.digitPattern_);
-  if (digitPatternStart >= 0) {
-    this.currentOutput_ = new goog.string.StringBuffer(
-        currentOutput.substring(0, this.lastMatchPosition_) +
-        currentOutput2.replace(this.digitPattern_, nextChar));
-    this.lastMatchPosition_ += digitPatternStart;
-    if (rememberPosition) {
-      this.positionRemembered_ = this.prefixBeforeNationalNumber_.getLength() +
-          this.lastMatchPosition_ + 1;
-    }
-    return this.currentOutput_.toString()
-        .substring(0, this.lastMatchPosition_ + 1);
+  var formattingTemplate = this.formattingTemplate_.toString();
+  if (formattingTemplate.substring(this.lastMatchPosition_)
+      .search(this.digitPattern_) >= 0) {
+    /** @type {number} */
+    var digitPatternStart = formattingTemplate.search(this.digitPattern_);
+    /** @type {string} */
+    var tempTemplate = formattingTemplate.replace(this.digitPattern_, nextChar);
+    this.formattingTemplate_.clear();
+    this.formattingTemplate_.append(tempTemplate);
+    this.lastMatchPosition_ = digitPatternStart;
+    return tempTemplate.substring(0, this.lastMatchPosition_ + 1);
   } else {
     // More digits are entered than we could handle.
-    this.currentOutput_.append(nextChar);
     this.ableToFormat_ = false;
-    this.resetPositionOnFailureToFormat_();
     return this.accruedInput_.toString();
   }
 };

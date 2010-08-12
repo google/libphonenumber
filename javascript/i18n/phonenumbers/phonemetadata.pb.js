@@ -142,54 +142,65 @@ i18n.phonenumbers.NumberFormat.prototype.clearFormat = function() {
 
 
 /**
- * Gets the value of the leading_digits field.
+ * Gets the value of the leading_digits_pattern field at the index given.
+ * @param {number} index The index to lookup.
  * @return {?string} The value.
  */
-i18n.phonenumbers.NumberFormat.prototype.getLeadingDigits = function() {
-  return /** @type {?string} */ (this.get$Value(3));
+i18n.phonenumbers.NumberFormat.prototype.getLeadingDigitsPattern = function(index) {
+  return /** @type {?string} */ (this.get$Value(3, index));
 };
 
 
 /**
- * Gets the value of the leading_digits field or the default value if not set.
+ * Gets the value of the leading_digits_pattern field at the index given or the default value if not set.
+ * @param {number} index The index to lookup.
  * @return {string} The value.
  */
-i18n.phonenumbers.NumberFormat.prototype.getLeadingDigitsOrDefault = function() {
-  return /** @type {string} */ (this.get$ValueOrDefault(3));
+i18n.phonenumbers.NumberFormat.prototype.getLeadingDigitsPatternOrDefault = function(index) {
+  return /** @type {string} */ (this.get$ValueOrDefault(3, index));
 };
 
 
 /**
- * Sets the value of the leading_digits field.
- * @param {string} value The value.
+ * Adds a value to the leading_digits_pattern field.
+ * @param {string} value The value to add.
  */
-i18n.phonenumbers.NumberFormat.prototype.setLeadingDigits = function(value) {
-  this.set$Value(3, /** @type {Object} */ (value));
+i18n.phonenumbers.NumberFormat.prototype.addLeadingDigitsPattern = function(value) {
+  this.add$Value(3, /** @type {Object} */ (value));
 };
 
 
 /**
- * Returns whether the leading_digits field has a value.
+ * Returns the array of values in the leading_digits_pattern field.
+ * @return {Array.<string>} The values in the field.
+ */
+i18n.phonenumbers.NumberFormat.prototype.leadingDigitsPatternArray = function() {
+  return /** @type {Array.<string>} */ (this.array$Values(3));
+};
+
+
+/**
+ * Returns whether the leading_digits_pattern field has a value.
  * @return {boolean} true if the field has a value.
  */
-i18n.phonenumbers.NumberFormat.prototype.hasLeadingDigits = function() {
+i18n.phonenumbers.NumberFormat.prototype.hasLeadingDigitsPattern = function() {
   return this.has$Value(3);
 };
 
 
 /**
- * Gets the number of values in the leading_digits field.
+ * Gets the number of values in the leading_digits_pattern field.
  * @return {number}
  */
-i18n.phonenumbers.NumberFormat.prototype.leadingDigitsCount = function() {
+i18n.phonenumbers.NumberFormat.prototype.leadingDigitsPatternCount = function() {
   return this.count$Values(3);
 };
 
 
 /**
- * Clears the values in the leading_digits field.
+ * Clears the values in the leading_digits_pattern field.
  */
-i18n.phonenumbers.NumberFormat.prototype.clearLeadingDigits = function() {
+i18n.phonenumbers.NumberFormat.prototype.clearLeadingDigitsPattern = function() {
   this.clear$Field(3);
 };
 
@@ -1714,7 +1725,8 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.NumberFormat, {
     type: String
   },
   '3' : {
-    name: 'leading_digits',
+    name: 'leading_digits_pattern',
+    repeated: true,
     fieldType: goog.proto2.Message.FieldType.STRING,
     type: String
   },

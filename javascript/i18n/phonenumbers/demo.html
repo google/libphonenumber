@@ -31,6 +31,7 @@ limitations under the License.
 <script src="phonenumber.pb.js"></script>
 <script src="metadata.js"></script>
 <script src="phonenumberutil.js"></script>
+<script src="asyoutypeformatter.js"></script>
 </head>
 <body>
 
@@ -39,10 +40,11 @@ function phoneNumberParser() {
   var $ = goog.dom.getElement;
   var phoneNumber = $('phoneNumber').value;
   var regionCode = $('defaultCountry').value;
+  var carrierCode = $('carrierCode').value;
   var output = new goog.string.StringBuffer();
   try {
     var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
-    var number = phoneUtil.parse(phoneNumber, regionCode);
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
     output.append('****Parsing Result:****\n');
     output.append(goog.json.serialize(new goog.proto2.ObjectSerializer(
         goog.proto2.ObjectSerializer.KeyOption.NAME).serialize(number)));
@@ -86,6 +88,8 @@ function phoneNumberParser() {
     }
     var PNF = i18n.phonenumbers.PhoneNumberFormat;
     output.append('\n\n****Formatting Results:**** ');
+    output.append('\nOriginal format: ');
+    output.append(phoneUtil.formatInOriginalFormat(number, regionCode));
     output.append('\nE164 format: ');
     output.append(phoneUtil.format(number, PNF.E164));
     output.append('\nInternational format: ');
@@ -94,6 +98,21 @@ function phoneNumberParser() {
     output.append(phoneUtil.format(number, PNF.NATIONAL));
     output.append('\nOut-of-country format from US: ');
     output.append(phoneUtil.formatOutOfCountryCallingNumber(number, 'US'));
+    if (carrierCode.length > 0) {
+      output.append('\nNational format with carrier code: ');
+      output.append(phoneUtil.formatNationalNumberWithCarrierCode(number,
+                                                                  carrierCode));
+    }
+    output.append('\n\n****AsYouTypeFormatter Results****');
+    var formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+    var phoneNumberLength = phoneNumber.length;
+    for (var i = 0; i < phoneNumberLength; ++i) {
+      var inputChar = phoneNumber.charAt(i);
+      output.append('\nChar entered: ');
+      output.append(inputChar);
+      output.append(' Output: ');
+      output.append(formatter.inputDigit(inputChar));
+    }
   } catch (e) {
     output.append('\n' + e);
   }
@@ -114,10 +133,15 @@ function phoneNumberParser() {
   <input type="text" name="defaultCountry" id="defaultCountry" size="2" />
   (ISO 3166-1 two-letter country code)
   </p>
+  <p>
+  Specify a Carrier Code:
+  <input type="text" name="carrierCode" id="carrierCode" size="2" />
+  (optional, only valid for some countries)
+  </p>
   <input type="submit" value="Submit" onclick="return phoneNumberParser();" />
   <input type="reset" value="Reset" />
   <p>
-  <textarea id="output" rows="15" cols="60"></textarea>
+  <textarea id="output" rows="30" cols="80"></textarea>
   </p>
 </form>
 

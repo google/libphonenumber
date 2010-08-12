@@ -30,7 +30,7 @@ function testGetInstanceLoadUSMetadata() {
   assertEquals('US', metadata.getId());
   assertEquals(1, metadata.getCountryCode());
   assertEquals('011', metadata.getInternationalPrefix());
-  assertFalse(metadata.hasNationalPrefix());
+  assertTrue(metadata.hasNationalPrefix());
   assertEquals(2, metadata.numberFormatCount());
   assertEquals('(\\d{3})(\\d{3})(\\d{4})',
                metadata.getNumberFormat(0).getPattern());
@@ -56,11 +56,12 @@ function testGetInstanceLoadDEMetadata() {
   assertEquals(49, metadata.getCountryCode());
   assertEquals('00', metadata.getInternationalPrefix());
   assertEquals('0', metadata.getNationalPrefix());
-  assertEquals(6, metadata.numberFormatCount());
-  assertEquals('9009', metadata.getNumberFormat(5).getLeadingDigits());
-  assertEquals('(\\d{3})(\\d{4})(\\d{4})',
-               metadata.getNumberFormat(5).getPattern());
-  assertEquals('$1 $2 $3', metadata.getNumberFormat(5).getFormat());
+  assertEquals(5, metadata.numberFormatCount());
+  assertEquals(1, metadata.getNumberFormat(4).leadingDigitsPatternCount());
+  assertEquals('900', metadata.getNumberFormat(4).getLeadingDigitsPattern(0));
+  assertEquals('(\\d{3})(\\d{3,4})(\\d{4})',
+               metadata.getNumberFormat(4).getPattern());
+  assertEquals('$1 $2 $3', metadata.getNumberFormat(4).getFormat());
   assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{3,8}',
                metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{2,14}', metadata.getFixedLine().getPossibleNumberPattern());
@@ -325,6 +326,14 @@ function testFormatDENumber() {
 
   deNumber = new i18n.phonenumbers.PhoneNumber();
   deNumber.setCountryCode(49);
+  deNumber.setNationalNumber(80212345);
+  assertEquals('08021 2345',
+               phoneUtil.format(deNumber, PNF.NATIONAL));
+  assertEquals('+49 8021 2345',
+               phoneUtil.format(deNumber, PNF.INTERNATIONAL));
+
+  deNumber = new i18n.phonenumbers.PhoneNumber();
+  deNumber.setCountryCode(49);
   deNumber.setNationalNumber(1234);
   // Note this number is correctly formatted without national prefix.
   // Most of the numbers that are treated as invalid numbers by the library are
@@ -495,29 +504,27 @@ function testFormatOutOfCountryWithPreferredIntlPrefix() {
 }
 
 function testFormatWithCarrierCode() {
+  var PNF = i18n.phonenumbers.PhoneNumberFormat;
   // We only support this for AR in our test metadata.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var arNumber = new i18n.phonenumbers.PhoneNumber();
   arNumber.setCountryCode(54);
   arNumber.setNationalNumber(91234125678);
   assertEquals('01234 12-5678',
-               phoneUtil.format(arNumber,
-                                i18n.phonenumbers.PhoneNumberFormat.NATIONAL));
+               phoneUtil.format(arNumber, PNF.NATIONAL));
   // Test formatting with a carrier code.
   assertEquals('01234 15 12-5678',
                phoneUtil.formatNationalNumberWithCarrierCode(arNumber, '15'));
   // Here the international rule is used, so no carrier code should be present.
   assertEquals('+5491234125678',
-               phoneUtil.format(arNumber,
-                                i18n.phonenumbers.PhoneNumberFormat.E164));
+               phoneUtil.format(arNumber, PNF.E164));
   // We don't support this for the US so there should be no change.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var usNumber = new i18n.phonenumbers.PhoneNumber();
   usNumber.setCountryCode(1);
   usNumber.setNationalNumber(4241231234);
   assertEquals('424 123 1234',
-               phoneUtil.format(usNumber,
-                                i18n.phonenumbers.PhoneNumberFormat.NATIONAL));
+               phoneUtil.format(usNumber, PNF.NATIONAL));
   assertEquals('424 123 1234',
                phoneUtil.formatNationalNumberWithCarrierCode(usNumber, '15'));
 }
@@ -542,6 +549,23 @@ function testFormatByPattern() {
                                          newNumberFormats));
   assertEquals('+1 (650) 253-0000',
                phoneUtil.formatByPattern(usNumber,
+                                         PNF.INTERNATIONAL,
+                                         newNumberFormats));
+
+  // $NP is set to '1' for the US. Here we check that for other NANPA countries
+  // the US rules are followed.
+  newNumFormat.setNationalPrefixFormattingRule('$NP ($FG)');
+  newNumFormat.setFormat('$1 $2-$3');
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var bsNumber = new i18n.phonenumbers.PhoneNumber();
+  bsNumber.setCountryCode(1);
+  bsNumber.setNationalNumber(4168819999);
+  assertEquals('1 (416) 881-9999',
+               phoneUtil.formatByPattern(bsNumber,
+                                         PNF.NATIONAL,
+                                         newNumberFormats));
+  assertEquals('+1 416 881-9999',
+               phoneUtil.formatByPattern(bsNumber,
                                          PNF.INTERNATIONAL,
                                          newNumberFormats));
 
@@ -1076,6 +1100,75 @@ function testIsNotPossibleNumber() {
   assertFalse(phoneUtil.isPossibleNumberString('+44 300', 'GB'));
 }
 
+function testTruncateTooLongNumber() {
+  // US number 650-253-0000, but entered with one additional digit at the end.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var tooLongNumber = new i18n.phonenumbers.PhoneNumber();
+  tooLongNumber.setCountryCode(1);
+  tooLongNumber.setNationalNumber(65025300001);
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var validNumber = new i18n.phonenumbers.PhoneNumber();
+  validNumber.setCountryCode(1);
+  validNumber.setNationalNumber(6502530000);
+  assertTrue(phoneUtil.truncateTooLongNumber(tooLongNumber));
+  assertTrue(validNumber.exactlySameAs(tooLongNumber));
+
+  // GB number 080 1234 5678, but entered with 4 extra digits at the end.
+  tooLongNumber = new i18n.phonenumbers.PhoneNumber();
+  tooLongNumber.setCountryCode(44);
+  tooLongNumber.setNationalNumber(80123456780123);
+  validNumber = new i18n.phonenumbers.PhoneNumber();
+  validNumber.setCountryCode(44);
+  validNumber.setNationalNumber(8012345678);
+  assertTrue(phoneUtil.truncateTooLongNumber(tooLongNumber));
+  assertTrue(validNumber.exactlySameAs(tooLongNumber));
+
+  // IT number 022 3456 7890, but entered with 3 extra digits at the end.
+  tooLongNumber = new i18n.phonenumbers.PhoneNumber();
+  tooLongNumber.setCountryCode(39);
+  tooLongNumber.setNationalNumber(2234567890123);
+  tooLongNumber.setItalianLeadingZero(true);
+  validNumber = new i18n.phonenumbers.PhoneNumber();
+  validNumber.setCountryCode(39);
+  validNumber.setNationalNumber(2234567890);
+  validNumber.setItalianLeadingZero(true);
+  assertTrue(phoneUtil.truncateTooLongNumber(tooLongNumber));
+  assertTrue(validNumber.exactlySameAs(tooLongNumber));
+
+  // Tests what happens when a valid number is passed in.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var validNumberCopy = new i18n.phonenumbers.PhoneNumber();
+  validNumberCopy.mergeFrom(validNumber);
+  assertTrue(phoneUtil.truncateTooLongNumber(validNumber));
+  // Tests the number is not modified.
+  assertTrue(validNumber.exactlySameAs(validNumberCopy));
+
+  // Tests what happens when a number with invalid prefix is passed in.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var numberWithInvalidPrefix = new i18n.phonenumbers.PhoneNumber();
+  // The test metadata says US numbers cannot have prefix 240.
+  numberWithInvalidPrefix.setCountryCode(1);
+  numberWithInvalidPrefix.setNationalNumber(2401234567);
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var invalidNumberCopy = new i18n.phonenumbers.PhoneNumber();
+  invalidNumberCopy.mergeFrom(numberWithInvalidPrefix);
+  assertFalse(phoneUtil.truncateTooLongNumber(numberWithInvalidPrefix));
+  // Tests the number is not modified.
+  assertTrue(numberWithInvalidPrefix.exactlySameAs(invalidNumberCopy));
+
+  // Tests what happens when a too short number is passed in.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var tooShortNumber = new i18n.phonenumbers.PhoneNumber();
+  tooShortNumber.setCountryCode(1);
+  tooShortNumber.setNationalNumber(1234);
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var tooShortNumberCopy = new i18n.phonenumbers.PhoneNumber();
+  tooShortNumberCopy.mergeFrom(tooShortNumber);
+  assertFalse(phoneUtil.truncateTooLongNumber(tooShortNumber));
+  // Tests the number is not modified.
+  assertTrue(tooShortNumber.exactlySameAs(tooShortNumberCopy));
+}
+
 function testIsViablePhoneNumber() {
   var isViable = i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber;
   // Only one or two digits before strange non-possible punctuation.
@@ -1349,7 +1442,7 @@ function testMaybeExtractCountryCode() {
   }
   number = new i18n.phonenumbers.PhoneNumber();
   try {
-    phoneNumber = '(1 610) 619 43 446';
+    phoneNumber = '(1 610) 619 43';
     numberToFill = new goog.string.StringBuffer();
     assertEquals('Should not have extracted a country code - invalid number ' +
                  'both before and after extraction of uncertain country code.',
@@ -1412,6 +1505,8 @@ function testParseNationalNumber() {
   var tollfreeNumber = new i18n.phonenumbers.PhoneNumber();
   tollfreeNumber.setCountryCode(64);
   tollfreeNumber.setNationalNumber(800332005);
+  assertTrue(tollfreeNumber.exactlySameAs(
+      phoneUtil.parse('0800 DDA 005', 'NZ')));
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var premiumNumber = new i18n.phonenumbers.PhoneNumber();
   premiumNumber.setCountryCode(64);
@@ -1726,13 +1821,13 @@ function testParseExtensions() {
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nonExtnNumber = new i18n.phonenumbers.PhoneNumber();
   nonExtnNumber.setCountryCode(1);
-  nonExtnNumber.setNationalNumber(180074935247);
+  nonExtnNumber.setNationalNumber(80074935247);
   assertTrue(nonExtnNumber.exactlySameAs(
       phoneUtil.parse('1800 six-flags', 'US')));
   assertTrue(nonExtnNumber.exactlySameAs(
       phoneUtil.parse('1800 SIX FLAGS', 'US')));
   assertTrue(nonExtnNumber.exactlySameAs(
-      phoneUtil.parse('0~01 1800 7493 5247', 'PL')));
+      phoneUtil.parse('0~0 1800 7493 5247', 'PL')));
   assertTrue(nonExtnNumber.exactlySameAs(
       phoneUtil.parse('(1800) 7493.5247', 'US')));
 
@@ -1740,10 +1835,10 @@ function testParseExtensions() {
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var extnNumber = new i18n.phonenumbers.PhoneNumber();
   extnNumber.setCountryCode(1);
-  extnNumber.setNationalNumber(180074935247);
+  extnNumber.setNationalNumber(80074935247);
   extnNumber.setExtension('1234');
   assertTrue(extnNumber.exactlySameAs(
-      phoneUtil.parse('0~01 1800 7493 5247 ~1234', 'PL')));
+      phoneUtil.parse('0~0 1800 7493 5247 ~1234', 'PL')));
 
   // Verifying bug-fix where the last digit of a number was previously omitted
   // if it was a 0 when extracting the extension. Also verifying a few different
@@ -1807,6 +1902,9 @@ function testParseExtensions() {
   usWithExtension.setExtension('910');
   assertTrue(usWithExtension.exactlySameAs(
       phoneUtil.parse('+1 (645) 123 1234-910#', 'US')));
+  // Retry with the same number in a slightly different format.
+  assertTrue(usWithExtension.exactlySameAs(
+      phoneUtil.parse('+1 (645) 123 1234 ext. 910#', 'US')));
 }
 
 function testParseAndKeepRaw() {
@@ -1814,11 +1912,11 @@ function testParseAndKeepRaw() {
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var alphaNumericNumber = new i18n.phonenumbers.PhoneNumber();
   alphaNumericNumber.setCountryCode(1);
-  alphaNumericNumber.setNationalNumber(180074935247);
-  alphaNumericNumber.setRawInput('1800 six-flags');
+  alphaNumericNumber.setNationalNumber(80074935247);
+  alphaNumericNumber.setRawInput('800 six-flags');
   alphaNumericNumber.setCountryCodeSource(CCS.FROM_DEFAULT_COUNTRY);
   assertTrue(alphaNumericNumber.exactlySameAs(
-      phoneUtil.parseAndKeepRawInput('1800 six-flags', 'US')));
+      phoneUtil.parseAndKeepRawInput('800 six-flags', 'US')));
 
   alphaNumericNumber.setCountryCode(1);
   alphaNumericNumber.setNationalNumber(8007493524);
