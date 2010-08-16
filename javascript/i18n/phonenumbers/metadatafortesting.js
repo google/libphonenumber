@@ -1,16 +1,19 @@
-// Copyright (C) 2010 Google Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/*
+ * @license
+ * Copyright (C) 2010 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 /**
  * @fileoverview Generated metadata for file
@@ -24,25 +27,25 @@ goog.provide('i18n.phonenumbers.metadata');
  * A mapping from a country code to the region codes which denote the
  * country/region represented by that country code. In the case of multiple
  * countries sharing a calling code, such as the NANPA countries, the one
- * indicated with 'isMainCountryForCode' in the metadata should be first.
+ * indicated with "isMainCountryForCode" in the metadata should be first.
  * @type {Object.<number, Array.<string>>}
  */
 i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
-  1: ['US','BS'],
-  39: ['IT'],
-  44: ['GB'],
-  48: ['PL'],
-  49: ['DE'],
-  52: ['MX'],
-  54: ['AR'],
-  61: ['AU'],
-  64: ['NZ'],
-  65: ['SG'],
-  81: ['JP'],
-  82: ['KR'],
-  244: ['AO'],
-  262: ['RE','YT'],
-  376: ['AD']
+1:["US","BS"]
+,39:["IT"]
+,44:["GB"]
+,48:["PL"]
+,49:["DE"]
+,52:["MX"]
+,54:["AR"]
+,61:["AU"]
+,64:["NZ"]
+,65:["SG"]
+,81:["JP"]
+,82:["KR"]
+,244:["AO"]
+,262:["RE","YT"]
+,376:["AD"]
 };
 
 /**
@@ -50,7 +53,7 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
  * @type {Object.<string, Array>}
  */
 i18n.phonenumbers.metadata.countryToMetadata = {
-  "AD": [,[]
+"AD":[,[]
 ,[]
 ,[]
 ,[,,"NA","NA"]
@@ -59,8 +62,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,[,,"NA","NA"]
 ,[,,"NA","NA"]
 ,"AD",376,"00",,,,,,,1]
-,
-  "AO": [,[,,"[29]\\d{8}","\\d{9}"]
+,"AO":[,[,,"[29]\\d{8}","\\d{9}"]
 ,[,,"2\\d(?:[26-9]\\d|\\d[26-9])\\d{5}","\\d{9}",,,"222123456"]
 ,[,,"9[1-3]\\d{7}","\\d{9}",,,"923123456"]
 ,[,,"NA","NA"]
@@ -71,8 +73,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"AO",244,"00",,,,,,,,[[,"(\\d{3})(\\d{3})(\\d{3})","$1 $2 $3",,"",""]
 ]
 ]
-,
-  "AR": [,[,,"[1-3689]\\d{9,10}","\\d{6,11}"]
+,"AR":[,[,,"[1-3689]\\d{9,10}","\\d{6,11}"]
 ,[,,"[1-3]\\d{9}","\\d{6,10}"]
 ,[,,"9\\d{10}|[1-3]\\d{9}","\\d{10,11}"]
 ,[,,"80\\d{8}","\\d{10}"]
@@ -103,8 +104,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,""]
 ]
 ]
-,
-  "AU": [,[,,"[1-578]\\d{4,14}","\\d{5,15}"]
+,"AU":[,[,,"[1-578]\\d{4,14}","\\d{5,15}"]
 ,[,,"[2378]\\d{8}","\\d{9}"]
 ,[,,"4\\d{8}","\\d{9}"]
 ,[,,"1800\\d{6}","\\d{10}"]
@@ -118,8 +118,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"0$1",""]
 ]
 ]
-,
-  "BS": [,[,,"(242|8(00|66|77|88)|900)\\d{7}","\\d{7,10}"]
+,"BS":[,[,,"(242|8(00|66|77|88)|900)\\d{7}","\\d{7,10}"]
 ,[,,"242(?:3(?:02|[236][1-9]|4[0-24-9]|5[0-68]|7[3-57]|9[2-5])|4(?:2[237]|51|64|77)|502|636|702)\\d{4}","\\d{7,10}"]
 ,[,,"242(357|359|457|557)\\d{4}","\\d{10}"]
 ,[,,"8(00|66|77|88)\\d{7}","\\d{10}"]
@@ -128,8 +127,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,[,,"NA","NA"]
 ,[,,"NA","NA"]
 ,"BS",1,"011"]
-,
-  "DE": [,[,,"\\d{4,14}","\\d{2,14}"]
+,"DE":[,[,,"\\d{4,14}","\\d{2,14}"]
 ,[,,"(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{3,8}","\\d{2,14}",,,"30123456"]
 ,[,,"1(5\\d{9}|7\\d{8}|6[02]\\d{8}|63\\d{7})","\\d{10,11}"]
 ,[,,"800\\d{7}","\\d{10}"]
@@ -149,8 +147,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"0$1",""]
 ]
 ]
-,
-  "GB": [,[,,"\\d{10}","\\d{6,10}"]
+,"GB":[,[,,"\\d{10}","\\d{6,10}"]
 ,[,,"[1-6]\\d{9}","\\d{6,10}"]
 ,[,,"7[1-57-9]\\d{8}","\\d{10}"]
 ,[,,"80\\d{8}","\\d{10}"]
@@ -168,8 +165,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"(0$1)",""]
 ]
 ]
-,
-  "IT": [,[,,"[0389]\\d{5,10}","\\d{6,11}"]
+,"IT":[,[,,"[0389]\\d{5,10}","\\d{6,11}"]
 ,[,,"0\\d{9,10}","\\d{10,11}"]
 ,[,,"3\\d{8,9}","\\d{9,10}"]
 ,[,,"80(?:0\\d{6}|3\\d{3})","\\d{6,9}"]
@@ -187,8 +183,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"",""]
 ]
 ]
-,
-  "JP": [,[]
+,"JP":[,[]
 ,[]
 ,[]
 ,[,,"NA","NA"]
@@ -206,8 +201,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"0$1",""]
 ]
 ]
-,
-  "KR": [,[,,"[1-79]\\d{3,9}|8\\d{8}","\\d{4,10}"]
+,"KR":[,[,,"[1-79]\\d{3,9}|8\\d{8}","\\d{4,10}"]
 ,[,,"(?:2|[34][1-3]|5[1-5]|6[1-4])(?:1\\d{2,3}|[2-9]\\d{6,7})","\\d{4,10}",,,"22123456"]
 ,[,,"1[0-25-9]\\d{7,8}","\\d{9,10}",,,"1023456789"]
 ,[,,"80\\d{7}","\\d{9}",,,"801234567"]
@@ -241,8 +235,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"0$1",""]
 ]
 ]
-,
-  "MX": [,[,,"[1-9]\\d{9,10}","\\d{7,11}"]
+,"MX":[,[,,"[1-9]\\d{9,10}","\\d{7,11}"]
 ,[,,"[2-9]\\d{9}","\\d{7,10}"]
 ,[,,"1\\d{10}","\\d{11}"]
 ,[,,"800\\d{7}","\\d{10}"]
@@ -273,8 +266,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,""]
 ]
 ]
-,
-  "NZ": [,[,,"[2-9]\\d{7,9}","\\d{7,10}"]
+,"NZ":[,[,,"[2-9]\\d{7,9}","\\d{7,10}"]
 ,[,,"24099\\d{3}|(?:3[2-79]|[479][2-689]|6[235-9])\\d{6}","\\d{7,8}"]
 ,[,,"2(?:[027]\\d{7}|9\\d{6,7}|1(?:0\\d{5,7}|[12]\\d{5,6}|[3-9]\\d{5})|4[1-9]\\d{6}|8\\d{7,8})","\\d{8,10}"]
 ,[,,"800\\d{6,7}","\\d{9,10}"]
@@ -290,8 +282,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"0$1",""]
 ]
 ]
-,
-  "PL": [,[,,"[1-9]\\d{8}","\\d{9}"]
+,"PL":[,[,,"[1-9]\\d{8}","\\d{9}"]
 ,[,,"[1-9]\\d{8}","\\d{9}"]
 ,[,,"(?:5[01]|6[069]|7[289]|88)\\d{7}","\\d{9}"]
 ,[,,"800\\d{6}","\\d{9}"]
@@ -302,8 +293,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"PL",48,"0~0","0",,,"0",,,,[[,"(\\d{2})(\\d{3})(\\d{2})(\\d{2})","$1 $2 $3 $4",,"0$1",""]
 ]
 ]
-,
-  "RE": [,[,,"[268]\\d{8}","\\d{9}"]
+,"RE":[,[,,"[268]\\d{8}","\\d{9}"]
 ,[,,"262\\d{6}","\\d{9}",,,"262161234"]
 ,[,,"6(?:9[23]|47)\\d{6}","\\d{9}",,,"692123456"]
 ,[,,"80\\d{7}","\\d{9}",,,"801234567"]
@@ -314,8 +304,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"RE",262,"00","0",,,"0",,,,[[,"([268]\\d{2})(\\d{2})(\\d{2})(\\d{2})","$1 $2 $3 $4",,"0$1",""]
 ]
 ,,,,"262|6(?:9[23]|47)|8"]
-,
-  "SG": [,[,,"[13689]\\d{7,10}","\\d{8,11}"]
+,"SG":[,[,,"[13689]\\d{7,10}","\\d{8,11}"]
 ,[,,"[36]\\d{7}","\\d{8}"]
 ,[,,"[89]\\d{7}","\\d{8}"]
 ,[,,"1?800\\d{7}","\\d{10,11}"]
@@ -331,8 +320,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,"",""]
 ]
 ]
-,
-  "US": [,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
+,"US":[,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
 ,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
 ,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
 ,[,,"8(00|66|77|88)\\d{7}","\\d{10}",,,"1234567890"]
@@ -346,8 +334,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,[[,"(\\d{3})(\\d{3})(\\d{4})","$1 $2 $3",,,""]
 ]
 ,,1]
-,
-  "YT": [,[,,"[268]\\d{8}","\\d{9}"]
+,"YT":[,[,,"[268]\\d{8}","\\d{9}"]
 ,[,,"2696[0-4]\\d{4}","\\d{9}",,,"269601234"]
 ,[,,"639\\d{6}","\\d{9}",,,"639123456"]
 ,[,,"80\\d{7}","\\d{9}",,,"801234567"]
