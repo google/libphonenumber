@@ -2115,6 +2115,44 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Returns the national dialling prefix for a specific region. For example, this would be 1 for
+   * the United States, and 0 for New Zealand. Set stripNonDigits to true to strip symbols like "~"
+   * (which indicates a wait for a dialling tone) from the prefix returned. If no national prefix is
+   * present, we return null.
+   *
+   * Warning: Do not use this method for do-your-own formatting - for some countries, the national
+   * dialling prefix is used only for certain types of numbers. Use the library's formatting
+   * functions to prefix the national prefix when required.
+   *
+   * @param regionCode  the ISO 3166-1 two-letter country code that denotes
+   *                    the country/region that we want to get the dialling prefix for
+   * @param stripNonDigits  true to strip non-digits from the national dialling prefix
+   * @return  the dialling prefix for the country/region denoted by regionCode
+   */
+  public String getNddPrefixForRegion(String regionCode, boolean stripNonDigits) {
+    if (!isValidRegionCode(regionCode)) {
+      LOGGER.log(Level.SEVERE, "Invalid or missing country code provided.");
+      return null;
+    }
+    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    if (metadata == null) {
+      LOGGER.log(Level.SEVERE, "Unsupported country code provided.");
+      return null;
+    }
+    String nationalPrefix = metadata.getNationalPrefix();
+    // If no national prefix was found, we return null.
+    if (nationalPrefix.length() == 0) {
+      return null;
+    }
+    if (stripNonDigits) {
+      // Note: if any other non-numeric symbols are ever used in national prefixes, these would have
+      // to be removed here as well.
+      nationalPrefix = nationalPrefix.replace("~", "");
+    }
+    return nationalPrefix;
+  }
+
+  /**
    * Check if a country is one of the countries under the North American Numbering Plan
    * Administration (NANPA).
    *
@@ -2674,7 +2712,8 @@ public class PhoneNumberUtil {
       throw new NumberParseException(NumberParseException.ErrorType.TOO_LONG,
                                      "The string supplied is too long to be a phone number.");
     }
-    if (normalizedNationalNumber.charAt(0) == '0' && isLeadingZeroCountry(countryCode)) {
+    if (normalizedNationalNumber.charAt(0) == '0' &&
+        isLeadingZeroCountry(countryCode)) {
       phoneNumber.setItalianLeadingZero(true);
     }
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));

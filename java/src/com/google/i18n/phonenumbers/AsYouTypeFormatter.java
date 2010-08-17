@@ -376,6 +376,10 @@ public class AsYouTypeFormatter {
     } else if (currentMetaData.hasNationalPrefix()) {
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       if (m.lookingAt()) {
+        // When the national prefix is detected, we use international formatting rules instead of
+        // national ones, because national formatting rules could contain local formatting rules
+        // for numbers entered without area code.
+        isInternationalFormatting = true;
         startOfNationalNumber = m.end();
         prefixBeforeNationalNumber.append(nationalNumber.substring(0, startOfNationalNumber));
       }

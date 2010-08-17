@@ -1,3 +1,12 @@
+August 16th, 2010
+* Bug fixes
+  - AsYouTypeFormatter for formatting Chinese geographical numbers entered in national format.
+  - AsYouTypeFormatter for formatting Chinese 400/800 numbers entered in national format.
+* Metadata change:
+  - new countries: AM, AN, BH, GL, IS
+  - adding national prefix 1 to all NANPA countries.
+  - update to existing countries: BF, FR, UK, PK, RE
+
 August 4th, 2010
 
 * Further improve startup performance

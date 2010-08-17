@@ -27,8 +27,10 @@
     </territory>
 
     <!-- Angola -->
-    <!-- http://www.itu.int/oth/T0202000006/en -->
-    <territory id="AO" countryCode="244" internationalPrefix="00">
+    <!-- This country has been coopted to test the case of a national prefix
+    with a non-numeric symbol in it. -->
+      
+    <territory id="AO" countryCode="244" internationalPrefix="00" nationalPrefix="0~0">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <format>$1 $2 $3</format>
@@ -160,7 +162,8 @@
     </territory>
 
     <!-- Bahamas -->
-    <territory id="BS" countryCode="1" internationalPrefix="011">
+    <territory id="BS" countryCode="1" internationalPrefix="011"
+               nationalPrefix="1">
       <generalDesc>
         <nationalNumberPattern>(242|8(00|66|77|88)|900)\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
