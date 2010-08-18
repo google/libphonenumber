@@ -1,3 +1,11 @@
+August 17th, 2010
+* Code improvement:
+  - Refactored BuildMetadataProtoFromXml.java into BuildMetadataFromXml.java and
+    BuildMetadataProtoFromXml.java
+  - Added BuildMetadataProtoFromXml.java and JSArrayBuilder.java
+  - Refactored CountryCodeToRegionCodeMap and CountryCodeToRegionCodeMapForTesting into separate
+    files.
+
 August 16th, 2010
 * Bug fixes
   - AsYouTypeFormatter for formatting Chinese geographical numbers entered in national format.

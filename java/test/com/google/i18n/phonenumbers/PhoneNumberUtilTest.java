@@ -24,9 +24,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -41,10 +39,10 @@ import java.util.regex.Pattern;
  */
 public class PhoneNumberUtilTest extends TestCase {
   private PhoneNumberUtil phoneUtil;
-  private static final String TEST_META_DATA_FILE_PREFIX =
+  static final String TEST_META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
-  private static final Map<Integer, List<String> > COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING =
-      new HashMap<Integer, List<String> >();
+  static final String TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
+      "CountryCodeToRegionCodeMapForTesting";
 
   public PhoneNumberUtilTest() {
     phoneUtil = initilizePhoneUtilForTesting();
@@ -53,72 +51,7 @@ public class PhoneNumberUtilTest extends TestCase {
   PhoneNumberUtil initilizePhoneUtilForTesting() {
     PhoneNumberUtil.resetInstance();
     return PhoneNumberUtil.getInstance(TEST_META_DATA_FILE_PREFIX,
-        COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING);
-  }
-
-  static {
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.clear();
-    ArrayList<String> listWithRegionCode = new ArrayList<String>(2);
-    listWithRegionCode.add("US");
-    listWithRegionCode.add("BS");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(1, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("IT");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(39, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("GB");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(44, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("DE");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(49, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("PL");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(48, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("AR");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(54, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("MX");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(52, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("AU");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(61, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("NZ");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(64, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("SG");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(65, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("JP");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(81, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("KR");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(82, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("AO");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(244, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(2);
-    listWithRegionCode.add("RE");
-    listWithRegionCode.add("YT");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(262, listWithRegionCode);
-
-    listWithRegionCode = new ArrayList<String>(1);
-    listWithRegionCode.add("AD");
-    COUNTRY_CODE_TO_REGION_CODE_MAP_FOR_TESTING.put(376, listWithRegionCode);
+        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
   }
 
   @Override
