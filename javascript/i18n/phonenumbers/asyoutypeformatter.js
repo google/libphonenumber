@@ -622,6 +622,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     /** @type {Array.<string>} */
     var m = nationalNumber.match(this.nationalPrefixForParsing_);
     if (m != null && m[0] != null && m[0].length > 0) {
+      // When the national prefix is detected, we use international formatting
+      // rules instead of national ones, because national formatting rules could
+      // contain local formatting rules for numbers entered without area code.
+      this.isInternationalFormatting_ = true;
       startOfNationalNumber = m[0].length;
       this.prefixBeforeNationalNumber_.append(nationalNumber.substring(0,
           startOfNationalNumber));

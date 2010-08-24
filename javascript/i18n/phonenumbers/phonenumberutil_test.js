@@ -991,6 +991,21 @@ function testGetCountryCodeForRegion() {
   assertEquals(0, phoneUtil.getCountryCodeForRegion('CS'));
 }
 
+function testGetNationalDiallingPrefixForRegion() {
+  assertEquals('1', phoneUtil.getNddPrefixForRegion('US', false));
+  // Test non-main country to see it gets the national dialling prefix for the
+  // main country with that country calling code.
+  assertEquals('1', phoneUtil.getNddPrefixForRegion('BS', false));
+  assertEquals('0', phoneUtil.getNddPrefixForRegion('NZ', false));
+  // Test case with non digit in the national prefix.
+  assertEquals('0~0', phoneUtil.getNddPrefixForRegion('AO', false));
+  assertEquals('00', phoneUtil.getNddPrefixForRegion('AO', true));
+  // Test case with invalid region.
+  assertEquals(null, phoneUtil.getNddPrefixForRegion('ZZ', false));
+  // CS is already deprecated so the library doesn't support it.
+  assertEquals(null, phoneUtil.getNddPrefixForRegion('CS', false));
+}
+
 function testIsNANPACountry() {
   assertTrue(phoneUtil.isNANPACountry('US'));
   assertTrue(phoneUtil.isNANPACountry('BS'));

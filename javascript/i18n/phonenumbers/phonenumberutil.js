@@ -1728,6 +1728,49 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForRegion =
 };
 
 /**
+ * Returns the national dialling prefix for a specific region. For example, this
+ * would be 1 for the United States, and 0 for New Zealand. Set stripNonDigits
+ * to true to strip symbols like "~" (which indicates a wait for a dialling
+ * tone) from the prefix returned. If no national prefix is present, we return
+ * null.
+ *
+ * Warning: Do not use this method for do-your-own formatting - for some
+ * countries, the national dialling prefix is used only for certain types of
+ * numbers. Use the library's formatting functions to prefix the national prefix
+ * when required.
+ *
+ * @param {string} regionCode the ISO 3166-1 two-letter country code that
+ *     denotes the country/region that we want to get the dialling prefix for.
+ * @param {boolean} stripNonDigits true to strip non-digits from the national
+ *     dialling prefix.
+ * @return {?string} the dialling prefix for the country/region denoted by
+ *     regionCode.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
+    regionCode, stripNonDigits) {
+  if (!this.isValidRegionCode_(regionCode)) {
+    return null;
+  }
+  /** @type {i18n.phonenumbers.PhoneMetadata} */
+  var metadata = this.getMetadataForRegion(regionCode);
+  if (metadata == null) {
+    return null;
+  }
+  /** @type {string} */
+  var nationalPrefix = metadata.getNationalPrefixOrDefault();
+  // If no national prefix was found, we return null.
+  if (nationalPrefix.length == 0) {
+    return null;
+  }
+  if (stripNonDigits) {
+    // Note: if any other non-numeric symbols are ever used in national
+    // prefixes, these would have to be removed here as well.
+    nationalPrefix = nationalPrefix.replace('~', '');
+  }
+  return nationalPrefix;
+};
+
+/**
  * Check if a country is one of the countries under the North American Numbering
  * Plan Administration (NANPA).
  *
