@@ -1,3 +1,6 @@
+September 1st, 2010
+* Bug fix on KZ metadata.
+
 August 17th, 2010
 * Code improvement:
   - Refactored BuildMetadataProtoFromXml.java into BuildMetadataFromXml.java and

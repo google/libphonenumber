@@ -4539,7 +4539,7 @@
       <mobile>
         <!-- Wikipedia says that 6xx is used for mobile phone numbers. Other
         metadata comes from ITU document. -->
-        <nationalNumberPattern>7(?:(?:(?:1[2-578]|2[13-7])9[01]|2758)\d{5}|(?:0[0-257]|6[02-4]|7[57])\d{7})|6\{9}</nationalNumberPattern>
+        <nationalNumberPattern>7(?:(?:(?:1[2-578]|2[13-7])9[01]|2758)\d{5}|(?:0[0-257]|6[02-4]|7[57])\d{7})|6\d{9}</nationalNumberPattern>
         <exampleNumber>7129012345</exampleNumber>
       </mobile>
       <tollFree>
