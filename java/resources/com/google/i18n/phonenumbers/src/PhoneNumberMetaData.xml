@@ -35,7 +35,7 @@
     <!ELEMENT phoneNumberMetadata (territories)>
     <!ELEMENT territories (territory+)>
     <!ELEMENT territory (availableFormats?, generalDesc?, fixedLine?, mobile?, tollFree?,
-        premiumRate?, sharedCost?, personalNumber?, voip?)>
+        premiumRate?, sharedCost?, personalNumber?, voip?, pager?)>
     <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern, exampleNumber?)>
     <!ELEMENT fixedLine (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT mobile (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
@@ -44,6 +44,7 @@
     <!ELEMENT sharedCost (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT personalNumber (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT voip (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
+    <!ELEMENT pager (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT availableFormats (numberFormat+, intlNumberFormat*)>
     <!ELEMENT nationalNumberPattern (#PCDATA)>
     <!ELEMENT possibleNumberPattern (#PCDATA)>
@@ -2659,13 +2660,16 @@
           <format>$1 $2</format>
         </numberFormat>
         <!-- UK child line -->
-        <numberFormat pattern="(800)(1111)">
+        <numberFormat pattern="(800)(\d{4})">
           <leadingDigits>800</leadingDigits>
           <leadingDigits>8001</leadingDigits>
+          <leadingDigits>80011</leadingDigits>
+          <leadingDigits>800111</leadingDigits>
+          <leadingDigits>8001111</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(8\d{2})(\d{3})(\d{3,4})">
-          <leadingDigits>8(?:0|4[3-5]|7[01])</leadingDigits>
+          <leadingDigits>8(?:0|4[3-5]|7[0-3])</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -2818,7 +2822,7 @@
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>1481\d{6}</nationalNumberPattern>
-        <exampleNumber>1481123456</exampleNumber>
+        <exampleNumber>1481223456</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>7(?:781|839|911)\d{6}</nationalNumberPattern>
@@ -2829,7 +2833,7 @@
       <tollFree>
         <nationalNumberPattern>80(?:01111|\d{7,8})|500\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
-        <exampleNumber>8012345678</exampleNumber>
+        <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
         <nationalNumberPattern>(?:9[018]\d|87[1-3])\d{7}</nationalNumberPattern>
@@ -3585,7 +3589,7 @@
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>1624\d{6}</nationalNumberPattern>
-        <exampleNumber>1624123456</exampleNumber>
+        <exampleNumber>1624223456</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>7[69]24\d{6}</nationalNumberPattern>
@@ -3595,7 +3599,7 @@
       <tollFree>
         <nationalNumberPattern>80(?:01111|\d{7,8})|500\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
-        <exampleNumber>8012345678</exampleNumber>
+        <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
         <nationalNumberPattern>(?:9[018]\d|87[1-3])\d{7}</nationalNumberPattern>
@@ -3941,7 +3945,7 @@
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>1534\d{6}</nationalNumberPattern>
-        <exampleNumber>1534123456</exampleNumber>
+        <exampleNumber>1534223456</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>7(?:7(?:00|97)|829|937)\d{6}</nationalNumberPattern>
@@ -3952,7 +3956,7 @@
       <tollFree>
         <nationalNumberPattern>80(?:01111|\d{7,8})|500\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
-        <exampleNumber>8012345678</exampleNumber>
+        <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
         <nationalNumberPattern>(?:9[018]\d|87[1-3])\d{7}</nationalNumberPattern>
@@ -6575,7 +6579,7 @@
           <leadingDigits>6</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="([89]0\d)(\d{3,6})">
+        <numberFormat pattern="([89]\d{2})(\d{3,6})">
           <leadingDigits>[89]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -6617,11 +6621,11 @@
         as http://www.minjust.ru/ru/structure/contact/. Contains formatting
         instructions for Kazakhstan as well. -->
         <numberFormat pattern="([34689]\d{2})(\d{3})(\d{2})(\d{2})">
-          <leadingDigits>[34689]</leadingDigits>
+          <leadingDigits>[3489]</leadingDigits>
           <format>$1 $2-$3-$4</format>
         </numberFormat>
-        <numberFormat pattern="([7]\d{2})(\d{3})(\d{4})">
-          <leadingDigits>7</leadingDigits>
+        <numberFormat pattern="([67]\d{2})(\d{3})(\d{4})">
+          <leadingDigits>[67]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>

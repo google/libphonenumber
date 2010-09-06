@@ -213,6 +213,7 @@ public class BuildMetadataFromXml {
     metadata.setVoip(processPhoneNumberDescElement(generalDesc, element, "voip"));
     metadata.setPersonalNumber(processPhoneNumberDescElement(generalDesc, element,
                                                              "personalNumber"));
+    metadata.setPager(processPhoneNumberDescElement(generalDesc, element, "pager"));
 
     if (metadata.getMobile().getNationalNumberPattern().equals(
         metadata.getFixedLine().getNationalNumberPattern())) {

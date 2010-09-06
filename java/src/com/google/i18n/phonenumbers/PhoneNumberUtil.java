@@ -324,6 +324,7 @@ public class PhoneNumberUtil {
     // MOBILE or FIXED_LINE number. Some more information can be found here:
     // http://en.wikipedia.org/wiki/Personal_Numbers
     PERSONAL_NUMBER,
+    PAGER,
     // A phone number is of type UNKNOWN when it does not fit any of the known patterns for a
     // specific country.
     UNKNOWN
@@ -495,7 +496,7 @@ public class PhoneNumberUtil {
    * be used:
    *
    * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-   * PhoneNumber number = phoneUtil.parse("16502530000", RegionCode.US);
+   * PhoneNumber number = phoneUtil.parse("16502530000", "US");
    * String nationalSignificantNumber = PhoneNumberUtil.getNationalSignificantNumber(number);
    * String areaCode;
    * String subscriberNumber;
@@ -1066,6 +1067,8 @@ public class PhoneNumberUtil {
         return metadata.getVoip();
       case PERSONAL_NUMBER:
         return metadata.getPersonalNumber();
+      case PAGER:
+        return metadata.getPager();
       default:
         return metadata.getGeneralDesc();
     }
@@ -1107,6 +1110,9 @@ public class PhoneNumberUtil {
     }
     if (isNumberMatchingDesc(nationalNumber, metadata.getPersonalNumber())) {
       return PhoneNumberType.PERSONAL_NUMBER;
+    }
+    if (isNumberMatchingDesc(nationalNumber, metadata.getPager())) {
+      return PhoneNumberType.PAGER;
     }
 
     boolean isFixedLine = isNumberMatchingDesc(nationalNumber, metadata.getFixedLine());

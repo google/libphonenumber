@@ -324,7 +324,9 @@ public class AsYouTypeFormatter {
       return originalPosition;
     }
     int accruedInputIndex = 0, currentOutputIndex = 0;
-    while (accruedInputIndex < positionToRemember) {
+    int currentOutputLength = currentOutput.length();
+    
+    while (accruedInputIndex < positionToRemember && currentOutputIndex < currentOutputLength) {
       if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
           currentOutput.charAt(currentOutputIndex)) {
         accruedInputIndex++;

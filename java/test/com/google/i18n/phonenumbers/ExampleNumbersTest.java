@@ -126,6 +126,13 @@ public class ExampleNumbersTest extends TestCase {
     assertEquals(0, wrongTypeCases.size());
   }
 
+  public void testPager() throws Exception {
+    Set<PhoneNumberType> voipTypes = EnumSet.of(PhoneNumberType.PAGER);
+    checkNumbersValidAndCorrectType(PhoneNumberType.PAGER, voipTypes);
+    assertEquals(0, invalidCases.size());
+    assertEquals(0, wrongTypeCases.size());
+  }
+
   public void testSharedCost() throws Exception {
     Set<PhoneNumberType> sharedCostTypes = EnumSet.of(PhoneNumberType.SHARED_COST);
     checkNumbersValidAndCorrectType(PhoneNumberType.SHARED_COST, sharedCostTypes);

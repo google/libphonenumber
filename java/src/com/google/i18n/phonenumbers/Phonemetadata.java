@@ -360,6 +360,20 @@ public final class Phonemetadata {
       return this;
     }
 
+    // required PhoneNumberDesc pager = 21;
+    private boolean hasPager;
+    private PhoneNumberDesc pager_ = null;
+    public boolean hasPager() { return hasPager; }
+    public PhoneNumberDesc getPager() { return pager_; }
+    public PhoneMetadata setPager(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasPager = true;
+      pager_ = value;
+      return this;
+    }
+
     // required string id = 9;
     private boolean hasId;
     private String id_ = "";
@@ -550,6 +564,10 @@ public final class Phonemetadata {
       if (hasVoip) {
         voip_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasPager);
+      if (hasPager) {
+        pager_.writeExternal(objectOutput);
+      }
 
       objectOutput.writeUTF(id_);
       objectOutput.writeInt(countryCode_);
@@ -650,6 +668,12 @@ public final class Phonemetadata {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
         setVoip(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setPager(desc);
       }
 
       setId(objectInput.readUTF());

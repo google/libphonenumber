@@ -1,3 +1,12 @@
+September 4th, 2010
+* Code improvement:
+  - Added new phone number type: pager
+* Metadata change:
+  - update to existing country: GG, IM, JE, RS, RU
+* Bug fixes:
+  - ArrayOutOfBoundException in AsYouTypeFormatter.getRememberedPosition()
+  - AsYouTypeFormatter for UK childline number
+
 September 1st, 2010
 * Bug fix on KZ metadata.
 
@@ -19,7 +28,6 @@ August 16th, 2010
   - update to existing countries: BF, FR, UK, PK, RE
 
 August 4th, 2010
-
 * Further improve startup performance
   - Preload no country specific metadata at startup.
   - Stop creating the file containing mapping from country calling code to region code
@@ -35,7 +43,6 @@ July 31th, 2010
   - Same change also applied to unittests
 
 July 30th, 2010
-
 * Metadata change:
   - new country: TL
   - update to existing country: AZ, CN, FR, GH, JO, LA, PG, PK, QA, SZ, UA, VN
