@@ -96,6 +96,15 @@ public class BuildMetadataFromXml {
   }
 
   private static String validateRE(String regex) {
+    return validateRE(regex, false);
+  }
+
+  private static String validateRE(String regex, boolean removeWhitespace) {
+    // Removes all the whitespace and newline from the regexp. Not using pattern compile options to
+    // make it work across programming languages.
+    if (removeWhitespace) {
+      regex = regex.replaceAll("\\s", "");
+    }
     Pattern.compile(regex);
     // return regex itself if it is of correct regex syntax
     // i.e. compile did not fail with a PatternSyntaxException.
@@ -286,13 +295,13 @@ public class BuildMetadataFromXml {
       NodeList possiblePattern = element.getElementsByTagName("possibleNumberPattern");
       if (possiblePattern.getLength() > 0) {
         numberDesc.setPossibleNumberPattern(
-            validateRE(possiblePattern.item(0).getFirstChild().getNodeValue()));
+            validateRE(possiblePattern.item(0).getFirstChild().getNodeValue(), true));
       }
 
       NodeList validPattern = element.getElementsByTagName("nationalNumberPattern");
       if (validPattern.getLength() > 0) {
         numberDesc.setNationalNumberPattern(
-            validateRE(validPattern.item(0).getFirstChild().getNodeValue()));
+            validateRE(validPattern.item(0).getFirstChild().getNodeValue(), true));
       }
 
       if (!liteBuild) {

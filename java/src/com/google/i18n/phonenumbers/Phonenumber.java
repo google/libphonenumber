@@ -178,5 +178,22 @@ public final class Phonenumber {
           extension_.equals(other.extension_) && italianLeadingZero_ == other.italianLeadingZero_ &&
           rawInput_.equals(other.rawInput_) && countryCodeSource_ == other.countryCodeSource_);
     }
+
+    @Override
+    public String toString() {
+      StringBuffer outputString = new StringBuffer();
+      outputString.append("Country Code: ").append(countryCode_);
+      outputString.append(" National Number: ").append(nationalNumber_);
+      if (hasItalianLeadingZero() && getItalianLeadingZero()) {
+        outputString.append(" Leading Zero: true");
+      }
+      if (hasExtension()) {
+        outputString.append(" Extension: ").append(extension_);
+      }
+      if (hasCountryCodeSource()) {
+        outputString.append(" Country Code Source: ").append(countryCodeSource_);
+      }
+      return outputString.toString();
+    }
   }
 }

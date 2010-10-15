@@ -1,3 +1,14 @@
+October 15th, 2010
+* Code improvements:
+  - Allowed parsing of numbers that start with "++" or a full-width "+" symbol
+  - Allowed reg-exs for national and possible number patterns to have white space in them in the source XML file
+  - Added a more useful toString method for the phone number proto class
+* Metadata changes:
+  - Updates to existing countries: AF, BF, BO, ES, GB, GG, IM, IS, JE, JE, JP, KR, PE, PT, RU, SE,
+    TT, ZW
+* Bug fixes:
+  - Parsing empty strings with invalid region codes no longer throws a null pointer exception
+
 September 4th, 2010
 * Code improvement:
   - Added new phone number type: pager

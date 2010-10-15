@@ -198,6 +198,7 @@ public class PhoneNumberUtil {
       Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll(", ", "") +
       Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).toLowerCase().replaceAll(", ", "");
   private static final String PLUS_CHARS = "+\uFF0B";
+  private static final Pattern PLUS_CHARS_PATTERN = Pattern.compile("[" + PLUS_CHARS + "]+");
   private static final Pattern CAPTURING_DIGIT_PATTERN =
       Pattern.compile("([" + VALID_DIGITS + "])");
 
@@ -232,11 +233,12 @@ public class PhoneNumberUtil {
   // least three leading digits, and only valid punctuation, alpha characters and
   // digits in the phone number. Does not include extension data.
   // The symbol 'x' is allowed here as valid punctuation since it is often used as a placeholder for
-  // carrier codes, for example in Brazilian phone numbers.
+  // carrier codes, for example in Brazilian phone numbers. We also allow multiple "+" characters at
+  // the start.
   // Corresponds to the following:
-  // plus_sign?([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
+  // plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
   private static final String VALID_PHONE_NUMBER =
-      "[" + PLUS_CHARS + "]?(?:[" + VALID_PUNCTUATION + "]*[" + VALID_DIGITS + "]){3,}[" +
+      "[" + PLUS_CHARS + "]*(?:[" + VALID_PUNCTUATION + "]*[" + VALID_DIGITS + "]){3,}[" +
       VALID_ALPHA + VALID_PUNCTUATION + VALID_DIGITS + "]*";
 
   // Default extension prefix to use when formatting. This will be put in front of any extension
@@ -1442,17 +1444,11 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Gets an AsYouTypeFormatter for the specific country. Note this function doesn't attempt to
-   * figure out the types of phone number being entered on the fly due to performance reasons.
-   * Instead, it tries to apply a standard format to all types of phone numbers. For countries
-   * where different types of phone numbers follow different formats, the formatter returned
-   * will do no formatting but output exactly what is fed into the inputDigit method.
+   * Gets an AsYouTypeFormatter for the specific country.
    *
-   * If the type of the phone number being entered is known beforehand, use
-   * getAsYouTypeFormatterByType instead.
+   * @param regionCode  the ISO 3166-1 two-letter country code that denotes the
+   *     country/region where the phone number is being entered
    *
-   * @param regionCode  the ISO 3166-1 two-letter country code that denotes
-   *                    the country/region where the phone number is being entered
    * @return  an AsYouTypeFormatter object, which could be used to format phone numbers in the
    *     specific country "as you type"
    */
@@ -1622,8 +1618,10 @@ public class PhoneNumberUtil {
     if (number.length() == 0) {
       return CountryCodeSource.FROM_DEFAULT_COUNTRY;
     }
-    if (number.charAt(0) == PLUS_SIGN) {
-      number.deleteCharAt(0);
+    // Check to see if the number begins with one or more plus signs.
+    Matcher m = PLUS_CHARS_PATTERN.matcher(number);
+    if (m.lookingAt()) {
+      number.delete(0, m.end());
       // Can now normalize the rest of the number since we've consumed the "+" sign at the start.
       normalize(number);
       return CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN;
@@ -1747,7 +1745,7 @@ public class PhoneNumberUtil {
   public void parse(String numberToParse, String defaultCountry, PhoneNumber phoneNumber)
       throws NumberParseException {
     if (!isValidRegionCode(defaultCountry)) {
-      if (numberToParse.charAt(0) != PLUS_SIGN) {
+      if (numberToParse.length() > 0 && numberToParse.charAt(0) != PLUS_SIGN) {
         throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                                        "Missing or invalid default country.");
       }
@@ -1784,7 +1782,7 @@ public class PhoneNumberUtil {
                                    PhoneNumber phoneNumber)
       throws NumberParseException {
     if (!isValidRegionCode(defaultCountry)) {
-      if (numberToParse.charAt(0) != PLUS_SIGN) {
+      if (numberToParse.length() > 0 && numberToParse.charAt(0) != PLUS_SIGN) {
         throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                                        "Missing or invalid default country.");
       }
@@ -1798,7 +1796,7 @@ public class PhoneNumberUtil {
    * isNumberMatch().
    */
   private void parseHelper(String numberToParse, String defaultCountry,
-                           Boolean keepRawInput, PhoneNumber phoneNumber)
+                           boolean keepRawInput, PhoneNumber phoneNumber)
       throws NumberParseException {
     // Extract a possible number from the string passed in (this strips leading characters that
     // could not be the start of a phone number.)
