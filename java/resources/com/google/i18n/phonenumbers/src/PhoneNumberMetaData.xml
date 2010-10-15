@@ -39,12 +39,12 @@
     <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern)>
     <!ELEMENT fixedLine (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT mobile (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
+    <!ELEMENT pager (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT tollFree (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT premiumRate (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT sharedCost (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT personalNumber (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT voip (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
-    <!ELEMENT pager (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT availableFormats (numberFormat+, intlNumberFormat*)>
     <!ELEMENT nationalNumberPattern (#PCDATA)>
     <!ELEMENT possibleNumberPattern (#PCDATA)>
@@ -2681,8 +2681,6 @@
 
     <!-- United Kingdom -->
     <!-- http://stakeholders.ofcom.org.uk/telecoms/numbering/ -->
-    <!-- Document with differences between the official documents and what is
-         correct: http://80.68.88.13/stuff/infotemp/ -->
     <!-- Note that this excludes Isle of Man, Jersey and Guernsey prefixes for
     the purposes of validation, although the formatting rules are shared. -->
     <territory id="GB" countryCode="44" internationalPrefix="00"
