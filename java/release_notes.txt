@@ -1,3 +1,7 @@
+October 22nd, 2010
+* Metadata changes:
+  - Updates to existing countries: AE, GB, GG, IM, JE
+
 October 15th, 2010
 * Code improvements:
   - Allowed parsing of numbers that start with "++" or a full-width "+" symbol

@@ -34,8 +34,8 @@
 <!DOCTYPE phoneNumberMetadata [
     <!ELEMENT phoneNumberMetadata (territories)>
     <!ELEMENT territories (territory+)>
-    <!ELEMENT territory (availableFormats?, generalDesc?, fixedLine?, mobile?, tollFree?,
-        premiumRate?, sharedCost?, personalNumber?, voip?, pager?)>
+    <!ELEMENT territory (availableFormats?, generalDesc?, fixedLine?, mobile?, pager?, tollFree?,
+        premiumRate?, sharedCost?, personalNumber?, voip?)>
     <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern)>
     <!ELEMENT fixedLine (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
     <!ELEMENT mobile (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
@@ -133,13 +133,15 @@
           <leadingDigits>5</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="([4679]00)(\d)(\d{5})">
+        <numberFormat pattern="([4679]00)(\d)(\d{5})"
+          nationalPrefixFormattingRule="$FG">
           <leadingDigits>[4679]0</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(800)(\d{2})(\d{0,7})">
+        <numberFormat pattern="(800)(\d{2,9})"
+          nationalPrefixFormattingRule="$FG">
           <leadingDigits>8</leadingDigits>
-          <format>$1 $2 $3</format>
+          <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
@@ -2800,7 +2802,7 @@
       <tollFree>
         <!-- 800 1111 with 7 digits, 800 with 9 or 10 digits, 808 with 10 digits, 500 with 9 digits. -->
         <nationalNumberPattern>80(?:0(?:1111|\d{6,7})|8\d{7})|500\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{2,3})?</possibleNumberPattern>
         <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -2815,7 +2817,7 @@
              number prefixes in the United Kingdom
              845 46 47 with 7 digits, 842-845, 870 with 10 digits -->
         <nationalNumberPattern>8(?:4(?:5464\d|[2-5]\d{7})|70\d{7})</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <exampleNumber>8431234567</exampleNumber>
       </sharedCost>
       <personalNumber>
@@ -2944,7 +2946,7 @@
       </pager>
       <tollFree>
         <nationalNumberPattern>80(?:0(?:1111|\d{6,7})|8\d{7})|500\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{2,3})?</possibleNumberPattern>
         <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -2953,8 +2955,8 @@
         <exampleNumber>9012345678</exampleNumber>
       </premiumRate>
       <sharedCost>
-        <nationalNumberPattern>8(?:4[3-5]|70)\d{7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <nationalNumberPattern>8(?:4(?:5464\d|[2-5]\d{7})|70\d{7})</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <exampleNumber>8431234567</exampleNumber>
       </sharedCost>
       <personalNumber>
@@ -3716,7 +3718,7 @@
       <!-- Other numbers as per GB. -->
       <tollFree>
         <nationalNumberPattern>80(?:0(?:1111|\d{6,7})|8\d{7})|500\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{2,3})?</possibleNumberPattern>
         <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -3726,7 +3728,7 @@
       </premiumRate>
       <sharedCost>
         <nationalNumberPattern>8(?:4(?:5464\d|[2-5]\d{7})|70\d{7})</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <exampleNumber>8431234567</exampleNumber>
       </sharedCost>
       <personalNumber>
@@ -4087,7 +4089,7 @@
       </pager>
       <tollFree>
         <nationalNumberPattern>80(?:0(?:1111|\d{6,7})|8\d{7})|500\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{2,3})?</possibleNumberPattern>
         <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -4097,7 +4099,7 @@
       </premiumRate>
       <sharedCost>
         <nationalNumberPattern>8(?:4(?:5464\d|[2-5]\d{7})|70\d{7})</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <exampleNumber>8431234567</exampleNumber>
       </sharedCost>
       <!-- Specific to JE. -->
