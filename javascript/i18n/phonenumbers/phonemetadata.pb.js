@@ -923,6 +923,59 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearVoip = function() {
 
 
 /**
+ * Gets the value of the pager field.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getPager = function() {
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(21));
+};
+
+
+/**
+ * Gets the value of the pager field or the default value if not set.
+ * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getPagerOrDefault = function() {
+  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$ValueOrDefault(21));
+};
+
+
+/**
+ * Sets the value of the pager field.
+ * @param {i18n.phonenumbers.PhoneNumberDesc} value The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.setPager = function(value) {
+  this.set$Value(21, /** @type {Object} */ (value));
+};
+
+
+/**
+ * Returns whether the pager field has a value.
+ * @return {boolean} true if the field has a value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.hasPager = function() {
+  return this.has$Value(21);
+};
+
+
+/**
+ * Gets the number of values in the pager field.
+ * @return {number}
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.pagerCount = function() {
+  return this.count$Values(21);
+};
+
+
+/**
+ * Clears the values in the pager field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.clearPager = function() {
+  this.clear$Field(21);
+};
+
+
+/**
  * Gets the value of the id field.
  * @return {?string} The value.
  */
@@ -1879,6 +1932,12 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadata, {
     repeated: true,
     fieldType: goog.proto2.Message.FieldType.MESSAGE,
     type: i18n.phonenumbers.NumberFormat
+  },
+  '21' : {
+    name: 'pager',
+    required: true,
+    fieldType: goog.proto2.Message.FieldType.MESSAGE,
+    type: i18n.phonenumbers.PhoneNumberDesc
   },
   '22' : {
     name: 'main_country_for_code',

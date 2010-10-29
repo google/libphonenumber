@@ -327,6 +327,14 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ = '+\uFF0B';
  * @type {RegExp}
  * @private
  */
+i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_ =
+    new RegExp('^[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']+');
+
+/**
+ * @const
+ * @type {RegExp}
+ * @private
+ */
 i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_ =
     new RegExp('([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + '])');
 
@@ -392,15 +400,16 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_PHONE_PATTERN_ =
  * alpha characters and digits in the phone number. Does not include extension
  * data. The symbol 'x' is allowed here as valid punctuation since it is often
  * used as a placeholder for carrier codes, for example in Brazilian phone
- * numbers. Corresponds to the following:
- * plus_sign?([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
+ * numbers. We also allow multiple '+' characters at the start.
+ * Corresponds to the following:
+ * plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
  *
  * @const
  * @type {string}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
-    '[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']?(?:[' +
+    '[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']*(?:[' +
     i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ + ']*[' +
     i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']){3,}[' +
     i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ +
@@ -537,9 +546,10 @@ i18n.phonenumbers.PhoneNumberType = {
   // to either a MOBILE or FIXED_LINE number. Some more information can be found
   // here: http://en.wikipedia.org/wiki/Personal_Numbers
   PERSONAL_NUMBER: 7,
+  PAGER: 8,
   // A phone number is of type UNKNOWN when it does not fit any of the known
   // patterns for a specific country.
-  UNKNOWN: 8
+  UNKNOWN: 9
 };
 
 /**
@@ -1435,6 +1445,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberDescByType_ =
     return metadata.getVoip();
   case i18n.phonenumbers.PhoneNumberType.PERSONAL_NUMBER:
     return metadata.getPersonalNumber();
+  case i18n.phonenumbers.PhoneNumberType.PAGER:
+    return metadata.getPager();
   default:
     return metadata.getGeneralDesc();
   }
@@ -1493,6 +1505,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberTypeHelper_ =
   if (this.isNumberMatchingDesc_(nationalNumber,
                                  metadata.getPersonalNumber())) {
     return i18n.phonenumbers.PhoneNumberType.PERSONAL_NUMBER;
+  }
+  if (this.isNumberMatchingDesc_(nationalNumber,
+                                 metadata.getPager())) {
+    return i18n.phonenumbers.PhoneNumberType.PAGER;
   }
 
   /** @type {boolean} */
@@ -2182,12 +2198,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   if (numberStr.length == 0) {
     return i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY;
   }
-  if (numberStr.charAt(0) == i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+  // Check to see if the number begins with one or more plus signs.
+  if (i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_.test(numberStr)) {
+    numberStr = numberStr.replace(
+        i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_, '');
     // Can now normalize the rest of the number since we've consumed the "+"
     // sign at the start.
     number.clear();
-    number.append(
-        i18n.phonenumbers.PhoneNumberUtil.normalize(numberStr.substring(1)));
+    number.append(i18n.phonenumbers.PhoneNumberUtil.normalize(numberStr));
     return i18n.phonenumbers.PhoneNumber.CountryCodeSource
         .FROM_NUMBER_WITH_PLUS_SIGN;
   }
@@ -2324,7 +2342,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeStripExtension =
 i18n.phonenumbers.PhoneNumberUtil.prototype.parse = function(numberToParse,
                                                              defaultCountry) {
   if (!this.isValidRegionCode_(defaultCountry)) {
-    if (numberToParse.charAt(0) !=
+    if (numberToParse.length > 0 && numberToParse.charAt(0) !=
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
       throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
     }
@@ -2355,7 +2373,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
   function(numberToParse, defaultCountry) {
 
   if (!this.isValidRegionCode_(defaultCountry)) {
-    if (numberToParse.charAt(0) !=
+    if (numberToParse.length > 0 && numberToParse.charAt(0) !=
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
       throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
     }

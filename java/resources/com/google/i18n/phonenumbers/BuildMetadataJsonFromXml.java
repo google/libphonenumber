@@ -296,7 +296,6 @@ public class BuildMetadataJsonFromXml {
     } else {
       jsArrayBuilder.append(null);
     }
-
     // required string id = 9;
     jsArrayBuilder.append(metadata.getId());
     // required int32 country_code = 10;
@@ -364,8 +363,12 @@ public class BuildMetadataJsonFromXml {
     } else {
       jsArrayBuilder.append(null);
     }
-    // missing 21
-    jsArrayBuilder.append(null);
+    // required PhoneNumberDesc pager = 21;
+    if (metadata.hasPager()) {
+      toJsArray(metadata.getPager(), jsArrayBuilder);
+    } else {
+      jsArrayBuilder.append(null);
+    }
     // optional bool main_country_for_code = 22 [default=false];
     if (metadata.getMainCountryForCode()) {
       jsArrayBuilder.append(1);

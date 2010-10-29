@@ -1565,6 +1565,18 @@ function testParseWithInternationalPrefixes() {
   // Calling the US number from Poland
   assertTrue(usNumber.exactlySameAs(
       phoneUtil.parse('0~01-650-333-6000', 'PL')));
+  // Using '++' at the start.
+  assertTrue(usNumber.exactlySameAs(
+      phoneUtil.parse('++1 (650) 333-6000', 'PL')));
+  // Using a full-width plus sign.
+  assertTrue(usNumber.exactlySameAs(
+      phoneUtil.parse('\uFF0B1 (650) 333-6000', 'SG')));
+  // The whole number, including punctuation, is here represented in full-width
+  // form.
+  assertTrue(usNumber.exactlySameAs(
+      phoneUtil.parse('\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09' +
+                      '\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10',
+                      'SG')));
 }
 
 function testParseWithLeadingZero() {
@@ -1797,6 +1809,18 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
+                 e);
+  }
+  try {
+    /** @type {string} */
+    var emptyNumber = '';
+    // Invalid region.
+    phoneUtil.parse(emptyNumber, 'ZZ');
+    fail('Empty string - should fail.');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
                  e);
   }
 }

@@ -538,7 +538,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getRememberedPosition =
       this.accruedInputWithoutFormatting_.toString();
   /** @type {string} */
   var currentOutput = this.currentOutput_.toString();
-  while (accruedInputIndex < this.positionToRemember_) {
+  /** @type {number} */
+  var currentOutputLength = currentOutput.length;
+  while (accruedInputIndex < this.positionToRemember_ &&
+         currentOutputIndex < currentOutputLength) {
     if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
         currentOutput.charAt(currentOutputIndex)) {
       accruedInputIndex++;

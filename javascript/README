@@ -25,7 +25,7 @@ pages with your web browser:
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 53).
+The JavaScript library is ported from the Java implementation (revision 60).
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
