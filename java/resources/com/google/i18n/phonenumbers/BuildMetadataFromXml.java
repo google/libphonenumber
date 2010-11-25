@@ -237,7 +237,7 @@ public class BuildMetadataFromXml {
     if (numOfLeadingDigitsPatterns > 0) {
       for (int i = 0; i < numOfLeadingDigitsPatterns; i++) {
         format.addLeadingDigitsPattern(
-            validateRE((leadingDigitsPatternNodes.item(i)).getFirstChild().getNodeValue()));
+            validateRE((leadingDigitsPatternNodes.item(i)).getFirstChild().getNodeValue(), true));
       }
     }
   }

@@ -483,8 +483,8 @@ public class PhoneNumberUtil {
 
   /**
    * Converts all alpha characters in a number to their respective digits on a keypad, but retains
-   * existing formatting. Also converts wide-ascii digits to normal ascii digits, and converts
-   * Arabic-Indic numerals to European numerals.
+   * existing formatting. This Java implementation of this function also converts wide-ascii digits
+   * to normal ascii digits, and converts Arabic-Indic numerals to European numerals.
    */
   public static String convertAlphaCharactersInNumber(String number) {
     return normalizeHelper(number, ALL_NORMALIZATION_MAPPINGS, false);
@@ -1398,15 +1398,14 @@ public class PhoneNumberUtil {
    *
    * @param number  the number that needs to be checked, in the form of a string
    * @param countryDialingFrom  the ISO 3166-1 two-letter country code that denotes
-   *            the country that we are expecting the number to be dialed from.
-   *            Note this is different from the country where the number belongs.
-   *            For example, the number +1 650 253 0000 is a number that belongs to US.
-   *            When written in this form, it could be dialed from any country.
-   *            When it is written as 00 1 650 253 0000, it could be dialed from
-   *            any country which has international prefix 00. When it is written as
-   *            650 253 0000, it could only be dialed from US, and when written as
-   *            253 0000, it could only be dialed from US (Mountain View, CA, to be
-   *            more specific).
+   *     the country that we are expecting the number to be dialed from.
+   *     Note this is different from the country where the number belongs. For example, the number
+   *     +1 650 253 0000 is a number that belongs to US. When written in this form, it could be
+   *     dialed from any country. When it is written as 00 1 650 253 0000, it could be dialed from
+   *     any country which uses an international dialling prefix of 00. When it is written as 650
+   *     253 0000, it could only be dialed from within the US, and when written as 253 0000, it
+   *     could only be dialed from within a smaller area in the US (Mountain View, CA, to be more
+   *     specific).
    * @return  true if the number is possible
    */
   public boolean isPossibleNumber(String number, String countryDialingFrom) {

@@ -121,15 +121,15 @@ public class JSArrayBuilder implements CharSequence {
     }
   }
 
-  @Override public char charAt(int index) {
+  public char charAt(int index) {
     return data.charAt(index);
   }
 
-  @Override public int length() {
+  public int length() {
     return data.length();
   }
 
-  @Override public CharSequence subSequence(int start, int end) {
+  public CharSequence subSequence(int start, int end) {
     return data.subSequence(start, end);
   }
 }

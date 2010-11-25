@@ -1,3 +1,10 @@
+November 25th, 2010
+* Metadata changes:
+  - Updates to existing countries: AD, AG, AI, AN, AS, BB, BG, BM, BS, BW, CA, DM, DO, GD, GH, GM,
+    GU, IN, JM, KN, KY, KZ, LB, LC, MP, MS, PR, SY, TC, TT, TZ, US, VC, VG, VI.
+  - Reorganize reg-exes for better readability.
+  - Updated comments.
+
 October 22nd, 2010
 * Metadata changes:
   - Updates to existing countries: AE, GB, GG, IM, JE
@@ -5,7 +12,8 @@ October 22nd, 2010
 October 15th, 2010
 * Code improvements:
   - Allowed parsing of numbers that start with "++" or a full-width "+" symbol
-  - Allowed reg-exs for national and possible number patterns to have white space in them in the source XML file
+  - Allowed reg-exes for national and possible number patterns to have white space in them in the
+    source XML file
   - Added a more useful toString method for the phone number proto class
 * Metadata changes:
   - Updates to existing countries: AF, BF, BO, ES, GB, GG, IM, IS, JE, JE, JP, KR, PE, PT, RU, SE,
