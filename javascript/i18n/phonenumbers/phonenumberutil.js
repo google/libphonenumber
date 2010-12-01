@@ -1919,14 +1919,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  *     string.
  * @param {string} countryDialingFrom the ISO 3166-1 two-letter country code
  *     that denotes the country that we are expecting the number to be dialed
- *     from. Note this is different from the country where the number brlongs.
+ *     from. Note this is different from the country where the number belongs.
  *     For example, the number +1 650 253 0000 is a number that belongs to US.
  *     When written in this form, it could be dialed from any country. When it
  *     is written as 00 1 650 253 0000, it could be dialed from any country
- *     which has international prefix 00. When it is written as
- *     650 253 0000, it could only be dialed from US, and when written as
- *     253 0000, it could only be dialed from US (Mountain View, CA, to be more
- *     specific).
+ *     which uses an international dialling prefix of 00. When it is written as
+ *     650 253 0000, it could only be dialed from within the US, and when
+ *     written as 253 0000, it could only be dialed from within a smaller area
+ *     in the US (Mountain View, CA, to be more specific).
  * @return {boolean} true if the number is possible.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberString =
