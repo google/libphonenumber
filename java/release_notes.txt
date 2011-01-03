@@ -1,3 +1,8 @@
+Jan 3rd, 2011
+* Metadata changes:
+  - Updates to JE
+  - Updated comments for GB/GG/IM/JE
+
 November 25th, 2010
 * Metadata changes:
   - Updates to existing countries: AD, AG, AI, AN, AS, BB, BG, BM, BS, BW, CA, DM, DO, GD, GH, GM,
