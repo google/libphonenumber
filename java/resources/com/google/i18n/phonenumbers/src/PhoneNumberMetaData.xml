@@ -4818,13 +4818,15 @@
 
     <!-- United Kingdom -->
     <!-- http://stakeholders.ofcom.org.uk/telecoms/numbering/ -->
+    <!-- http://en.wikipedia.org/wiki/List_of_United_Kingdom_dialling_codes -->
+    <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=GB -->
     <!-- Note that this excludes Isle of Man, Jersey and Guernsey prefixes for the purposes of
          validation, although the formatting rules are shared. -->
     <territory id="GB" countryCode="44" internationalPrefix="00"
                nationalPrefix="0" preferredExtnPrefix=" x" nationalPrefixFormattingRule="$NP$FG"
                mainCountryForCode="true">
       <availableFormats>
-        <!-- 2d, 55, 56, 70, 76 with 10 digits -->
+        <!-- 2d, 55, 56, 70, 76 with 10 digits. -->
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>
             2|
@@ -4833,7 +4835,7 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 11d, 1d1, 3dd, 9dd with 10 digits -->
+        <!-- 11d, 1d1, 3dd, 9dd with 10 digits. -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>
             1(?:
@@ -4849,7 +4851,7 @@
              These area codes are very rare in GB, and are only available in the following places:
              13873(Langholm), 15242(Hornby), 15394(Hawkshead), 15395(Grange-Over-Sands),
              15396(Sedbergh), 16973(Wigton), 16974(Raughton Head), 16977(Brampton),
-             17683(Appleby), 17684(Pooley Bridge), 17687(Keswick), 19467(Gosforth) -->
+             17683(Appleby), 17684(Pooley Bridge), 17687(Keswick), 19467(Gosforth). -->
         <numberFormat pattern="(\d{5})(\d{4,5})">
           <leadingDigits>
             1(?:
@@ -4886,17 +4888,17 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- 1ddd with 9 or 10 digits -->
+        <!-- 1ddd with 9 or 10 digits. -->
         <numberFormat pattern="(1\d{3})(\d{5,6})">
           <leadingDigits>1</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- 7ddd (not 70, 76) with 10 digits -->
+        <!-- 7ddd (not 70, 76) with 10 digits. -->
         <numberFormat pattern="(7\d{3})(\d{6})">
           <leadingDigits>7[1-5789]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- 800 1111 : UK ChildLine -->
+        <!-- 800 1111 : UK ChildLine. -->
         <numberFormat pattern="(800)(\d{4})">
           <leadingDigits>800</leadingDigits>
           <leadingDigits>8001</leadingDigits>
@@ -4905,7 +4907,7 @@
           <leadingDigits>8001111</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- 845 46 47 : UK NHS Direct -->
+        <!-- 845 46 47 : UK NHS Direct. -->
         <numberFormat pattern="(845)(46)(4\d)">
           <leadingDigits>845</leadingDigits>
           <leadingDigits>8454</leadingDigits>
@@ -4913,7 +4915,7 @@
           <leadingDigits>845464</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 84d, 87d with 10 digits -->
+        <!-- 84d, 87d with 10 digits. -->
         <numberFormat pattern="(8\d{2})(\d{3})(\d{4})">
           <leadingDigits>
             8(?:
@@ -4923,12 +4925,12 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 80d (including 800) with 10 digits -->
+        <!-- 80d (including 800) with 10 digits. -->
         <numberFormat pattern="(80\d)(\d{3})(\d{4})">
           <leadingDigits>80</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 500, 800 with 9 digits -->
+        <!-- 500, 800 with 9 digits. -->
         <numberFormat pattern="([58]00)(\d{6})">
           <leadingDigits>[58]00</leadingDigits>
           <format>$1 $2</format>
@@ -4941,7 +4943,7 @@
       <fixedLine>
         <!-- http://en.wikipedia.org/wiki/List_of_United_Kingdom_dialling_codes -->
         <!-- Pattern matches all area codes with NSN=10, and all area code and local number initial
-             digits with NSN=9; excluding ranges used in GG, IM, JE -->
+             digits with NSN=9; excluding ranges used in GG, IM, JE. -->
         <nationalNumberPattern>1(?:1[3-8]|[2-69]1)\d{7}|
           1(?:2(?:0[024-9]|2[3-9]|3[3-79]|4[1-689]|[58][02-9]|6[0-4789]|7[013-9]|9\d)|
               3(?:0\d|[25][02-9]|3[02-579]|[468][0-46-9]|7[1235679]|9[24578])|
@@ -4967,7 +4969,7 @@
       </fixedLine>
       <mobile>
         <!-- http://stakeholders.ofcom.org.uk/telecoms/numbering/telephone-no-availability/numbers-administered/
-             7100-7599 and 7700-7999 with 10 digits; excluding ranges used in GG, IM, JE -->
+             7100-7599, 7700-7999 with 10 digits; excluding ranges used in GG, IM, JE. -->
         <nationalNumberPattern>
           7(?:
             [1-4]\d\d|
@@ -4998,7 +5000,7 @@
         <exampleNumber>7400123456</exampleNumber>
       </mobile>
       <pager>
-        <!-- 76 with 10 digits; excluding ranges used in IM -->
+        <!-- 76 with 10 digits; excluding ranges used in IM. -->
         <nationalNumberPattern>
           76(?:
             0[012]|
@@ -5015,7 +5017,7 @@
         <exampleNumber>7640123456</exampleNumber>
       </pager>
       <!-- Source for non geographic numbers:
-      http://en.wikipedia.org/wiki/Non-geographical_telephone_numbers_in_the_UK -->
+           http://en.wikipedia.org/wiki/Non-geographical_telephone_numbers_in_the_UK -->
       <tollFree>
         <!-- 800 1111 with 7 digits, 800 with 9 or 10 digits, 808 with 10 digits, 500 with 9 digits. -->
         <nationalNumberPattern>
@@ -5032,8 +5034,8 @@
         <exampleNumber>8001234567</exampleNumber>
       </tollFree>
       <premiumRate>
-        <!-- 871, 872 and 873 are now Controlled Premium Rate Services,
-             so are listed here as well as 900-909, 910-919, 980-983 -->
+        <!-- 871, 872, 873 with 10 digits are now Controlled Premium Rate Services, so are listed
+             here as well as 900-909, 910-919, 980-983 with 10 digits. -->
         <nationalNumberPattern>
           (?:
             87[123]|
@@ -5048,7 +5050,7 @@
       </premiumRate>
       <sharedCost>
         <!-- Using shared cost to deal with the various revenue sharing number prefixes in the
-             United Kingdom 845 46 47 with 7 digits, 842-845, 870 with 10 digits -->
+             United Kingdom: 845 46 47 with 7 digits, 842-845, 870 with 10 digits. -->
         <nationalNumberPattern>
           8(?:
             4(?:
@@ -5062,11 +5064,13 @@
         <exampleNumber>8431234567</exampleNumber>
       </sharedCost>
       <personalNumber>
+        <!-- 70 with 10 digits. -->
         <nationalNumberPattern>70\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>7012345678</exampleNumber>
       </personalNumber>
       <voip>
+        <!-- 56 with 10 digits. -->
         <nationalNumberPattern>56\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5612345678</exampleNumber>
@@ -5248,10 +5252,12 @@
       </generalDesc>
       <!-- Specific to GG. -->
       <fixedLine>
+        <!-- 1481 with 10 digits. -->
         <nationalNumberPattern>1481\d{6}</nationalNumberPattern>
         <exampleNumber>1481456789</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- 7781, 7839, 7911 with 10 digits. -->
         <nationalNumberPattern>
           7(?:
             781|
@@ -6512,15 +6518,18 @@
       </generalDesc>
       <!-- Specific to IM. -->
       <fixedLine>
+        <!-- 1624 with 10 digits. -->
         <nationalNumberPattern>1624\d{6}</nationalNumberPattern>
         <exampleNumber>1624456789</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- 7524, 7624, 7924 with 10 digits. -->
         <nationalNumberPattern>7[569]24\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>7924123456</exampleNumber>
       </mobile>
       <pager>
+        <!-- 76 24 with 10 digits. Overlaps mobile pattern. -->
         <nationalNumberPattern>7624\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>7624123456</exampleNumber>
@@ -7353,6 +7362,7 @@
     <!-- Jersey -->
     <!-- Inherits formatting rules from the UK. -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
+    <!-- http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&childID=1036 -->
     <territory id="JE" countryCode="44" internationalPrefix="00"
                nationalPrefix="0" preferredExtnPrefix=" x" nationalPrefixFormattingRule="$NP$FG">
       <generalDesc>
@@ -7361,10 +7371,12 @@
       </generalDesc>
       <!-- Specific to JE. -->
       <fixedLine>
+        <!-- 1534 with 10 digits. -->
         <nationalNumberPattern>1534\d{6}</nationalNumberPattern>
         <exampleNumber>1534456789</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- 7509, 7700, 7797, 7829, 7937 with 10 digits. -->
         <nationalNumberPattern>
           7(?:
             509|
@@ -7379,8 +7391,8 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>7797123456</exampleNumber>
       </mobile>
-      <!-- Other numbers as per GB. -->
       <pager>
+        <!-- Pager numbers as per GB. -->
         <nationalNumberPattern>
           76(?:
             0[012]|
@@ -7396,54 +7408,71 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>7640123456</exampleNumber>
       </pager>
+      <!-- Specific to JE. -->
       <tollFree>
+        <!-- 800 735, 800 781, 808 901 with 10 digits. -->
         <nationalNumberPattern>
           80(?:
-            0(?:
-              1111|
-              \d{6,7}
+            07(?:
+              35|
+              81
             )|
-            8\d{7}
-          )|
-          500\d{6}
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{7}(?:\d{2,3})?</possibleNumberPattern>
-        <exampleNumber>8001234567</exampleNumber>
-      </tollFree>
-      <premiumRate>
-        <nationalNumberPattern>
-          (?:
-            87[123]|
-            9(?:
-              [01]\d|
-              8[0-3]
-            )
-          )\d{7}
+            8901
+          )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
-        <exampleNumber>9012345678</exampleNumber>
+        <exampleNumber>8007354567</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <!-- 871 206, 900 665, 900 669, 901 810, 907 107, 907 155 with 10 digits. -->
+        <nationalNumberPattern>
+          (?:
+            871206|
+            90(?:
+              066[59]|
+              1810|
+              71(?:
+                07|
+                55
+              )
+            )
+          )\d{4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <exampleNumber>9018105678</exampleNumber>
       </premiumRate>
       <sharedCost>
+        <!-- 844 405, 844 442, 844 469, 844 703, 845 041, 845 800, 870 002 with 10 digits. -->
         <nationalNumberPattern>
           8(?:
             4(?:
-              5464\d|
-              [2-5]\d{7}
+              4(?:
+                4(?:
+                  05|
+                  42|
+                  69
+                )|
+                703
+              )|
+              5(?:
+                041|
+                800
+              )
             )|
-            70\d{7}
-          )
+            70002
+          )\d{4}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
-        <exampleNumber>8431234567</exampleNumber>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <exampleNumber>8447034567</exampleNumber>
       </sharedCost>
-      <!-- Specific to JE. -->
       <personalNumber>
+        <!-- 70 1511 with 10 digits. -->
         <nationalNumberPattern>701511\d{4}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>7015115678</exampleNumber>
       </personalNumber>
-      <!-- Other numbers as per GB. -->
       <voip>
+        <!-- VoIP numbers as per GB. -->
         <nationalNumberPattern>56\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5612345678</exampleNumber>
