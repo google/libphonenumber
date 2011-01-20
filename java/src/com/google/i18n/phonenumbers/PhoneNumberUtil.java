@@ -169,7 +169,10 @@ public class PhoneNumberUtil {
     aSet.add(227);  // Niger
     aSet.add(228);  // Togo
     aSet.add(241);  // Gabon
+    aSet.add(242);  // Congo (Rep. of the)
+    aSet.add(268);  // Swaziland
     aSet.add(379);  // Vatican City
+    aSet.add(501);  // Belize
     LEADING_ZERO_COUNTRIES = Collections.unmodifiableSet(aSet);
   }
 
@@ -187,7 +190,7 @@ public class PhoneNumberUtil {
   // This consists of dash characters, white space characters, full stops, slashes,
   // square brackets, parentheses and tildes. It also includes the letter 'x' as that is found as a
   // placeholder for carrier information in some phone numbers.
-  private static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\uFF0D-\uFF0F " +
+  private static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F " +
       "\u00A0\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
 
   // Digits accepted in phone numbers
@@ -255,7 +258,7 @@ public class PhoneNumberUtil {
   // the extension is written with a hash at the end, such as "- 503#".
   // Note that the only capturing groups should be around the digits that you want to capture as
   // part of the extension, or else parsing will fail!
-  private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*(?:ext(?:ensio)?n?|" +
+  private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*(?:ext(?:ensi[o\u00F3])?n?|" +
       "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
       "[:\\.\uFF0E]?[ \u00A0\\t,-]*([" + VALID_DIGITS + "]{1,7})#?|[- ]+([" + VALID_DIGITS +
       "]{1,5})#";
@@ -264,13 +267,13 @@ public class PhoneNumberUtil {
   // digits, for use when parsing.
   private static final Pattern EXTN_PATTERN =
       Pattern.compile("(?:" + KNOWN_EXTN_PATTERNS + ")$",
-                      Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+                      Pattern.CANON_EQ | Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
 
   // We append optionally the extension pattern to the end here, as a valid phone number may
   // have an extension prefix appended, followed by 1 or more digits.
   private static final Pattern VALID_PHONE_NUMBER_PATTERN =
       Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?",
-                      Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+                      Pattern.CANON_EQ | Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
 
   private static final Pattern NON_DIGITS_PATTERN = Pattern.compile("(\\D+)");
   private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$1)");
@@ -533,9 +536,7 @@ public class PhoneNumberUtil {
       return 0;
     }
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
-    // For NANPA countries, national prefix is the same as country code, but it is not stored in
-    // the metadata.
-    if (!metadata.hasNationalPrefix() && !isNANPACountry(regionCode)) {
+    if (!metadata.hasNationalPrefix()) {
       return 0;
     }
 
@@ -546,6 +547,39 @@ public class PhoneNumberUtil {
       return 0;
     }
 
+    return getLengthOfNationalDestinationCode(number);
+  }
+
+  /**
+   * Gets the length of the national destination code (NDC) from the PhoneNumber object passed in,
+   * so that clients could use it to split a national significant number into NDC and subscriber
+   * number. The NDC of a phone number is normally the first group of digit(s) right after the
+   * country code when the number is formatted in the international format, if there is a subscriber
+   * number part that follows. An example of how this could be used:
+   *
+   * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+   * PhoneNumber number = phoneUtil.parse("18002530000", "US");
+   * String nationalSignificantNumber = PhoneNumberUtil.getNationalSignificantNumber(number);
+   * String nationalDestinationCode;
+   * String subscriberNumber;
+   *
+   * int nationalDestinationCodeLength = phoneUtil.getLengthOfNationalDestinationCode(number);
+   * if (nationalDestinationCodeLength > 0) {
+   *   nationalDestinationCode = nationalSignificantNumber.substring(0,
+   *       nationalDestinationCodeLength);
+   *   subscriberNumber = nationalSignificantNumber.substring(nationalDestinationCodeLength);
+   * } else {
+   *   nationalDestinationCode = "";
+   *   subscriberNumber = nationalSignificantNumber;
+   * }
+   *
+   * Refer to the unittests to see the difference between this function and
+   * getLengthOfGeographicalAreaCode().
+   *
+   * @param number  the PhoneNumber object for which clients want to know the length of the NDC.
+   * @return  the length of NDC of the PhoneNumber object passed in.
+   */
+  public int getLengthOfNationalDestinationCode(PhoneNumber number) {
     PhoneNumber copiedProto;
     if (number.hasExtension()) {
       // We don't want to alter the proto given to us, but we don't want to include the extension
@@ -565,6 +599,17 @@ public class PhoneNumberUtil {
     // will be area code if it is not the last group.
     if (numberGroups.length <= 3) {
       return 0;
+    }
+
+    if (getRegionCodeForNumber(number).equals("AR") &&
+        getNumberType(number) == PhoneNumberType.MOBILE) {
+      // Argentinian mobile numbers, when formatted in the international format, are in the form of
+      // +54 9 NDC XXXX.... As a result, we take the length of the third group (NDC) and add 1 for
+      // the digit 9, which also forms part of the national significant number.
+      //
+      // TODO: Investigate the possibility of better modeling the metadata to make it
+      // easier to obtain the NDC.
+      return numberGroups[3].length() + 1;
     }
     return numberGroups[2].length();
   }
@@ -1165,8 +1210,7 @@ public class PhoneNumberUtil {
    */
   public boolean isValidNumber(PhoneNumber number) {
     String regionCode = getRegionCodeForNumber(number);
-    return isValidRegionCode(regionCode)
-           && isValidNumberForRegion(number, regionCode);
+    return (isValidRegionCode(regionCode) && isValidNumberForRegion(number, regionCode));
   }
 
   /**
@@ -1604,12 +1648,12 @@ public class PhoneNumberUtil {
    * the resulting number, and indicates if an international prefix was present.
    *
    * @param number  the non-normalized telephone number that we wish to strip any international
-   *     dialing prefix from
+   *     dialing prefix from.
    * @param possibleIddPrefix  the international direct dialing prefix from the country we
    *     think this number may be dialed in
    * @return  the corresponding CountryCodeSource if an international dialing prefix could be
    *          removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the
-   *          number did not seem to be in international format
+   *          number did not seem to be in international format.
    */
   CountryCodeSource maybeStripInternationalPrefixAndNormalize(
       StringBuffer number,
@@ -1713,6 +1757,21 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Checks to see that the region code used is valid, or if it is not valid, that the number to
+   * parse starts with a + symbol so that we can attempt to infer the country from the number.
+   * Returns false if it cannot use the region provided and the region cannot be inferred.
+   */
+  private boolean checkRegionForParsing(String numberToParse, String defaultCountry) {
+    if (!isValidRegionCode(defaultCountry)) {
+      if (numberToParse != null && !numberToParse.isEmpty() &&
+          !PLUS_CHARS_PATTERN.matcher(numberToParse).lookingAt()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
    * Parses a string and returns it in proto buffer format. This method will throw a
    * NumberParseException exception if the number is not considered to be a possible number. Note
    * that validation of whether the number is actually a valid number for a particular
@@ -1743,13 +1802,7 @@ public class PhoneNumberUtil {
   // decrease object creation when invoked many times.
   public void parse(String numberToParse, String defaultCountry, PhoneNumber phoneNumber)
       throws NumberParseException {
-    if (!isValidRegionCode(defaultCountry)) {
-      if (numberToParse.length() > 0 && numberToParse.charAt(0) != PLUS_SIGN) {
-        throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
-                                       "Missing or invalid default country.");
-      }
-    }
-    parseHelper(numberToParse, defaultCountry, false, phoneNumber);
+    parseHelper(numberToParse, defaultCountry, false, true, phoneNumber);
   }
 
   /**
@@ -1780,29 +1833,35 @@ public class PhoneNumberUtil {
   public void parseAndKeepRawInput(String numberToParse, String defaultCountry,
                                    PhoneNumber phoneNumber)
       throws NumberParseException {
-    if (!isValidRegionCode(defaultCountry)) {
-      if (numberToParse.length() > 0 && numberToParse.charAt(0) != PLUS_SIGN) {
-        throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
-                                       "Missing or invalid default country.");
-      }
-    }
-    parseHelper(numberToParse, defaultCountry, true, phoneNumber);
+    parseHelper(numberToParse, defaultCountry, true, true, phoneNumber);
   }
 
   /**
    * Parses a string and fills up the phoneNumber. This method is the same as the public
    * parse() method, with the exception that it allows the default country to be null, for use by
-   * isNumberMatch().
+   * isNumberMatch(). checkRegion should be set to false if it is permitted for the default country
+   * to be null or unknown ("ZZ").
    */
-  private void parseHelper(String numberToParse, String defaultCountry,
-                           boolean keepRawInput, PhoneNumber phoneNumber)
+  private void parseHelper(String numberToParse, String defaultCountry, boolean keepRawInput,
+                           boolean checkRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
+    if (numberToParse == null) {
+      throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
+                                     "The phone number supplied was null.");
+    }
     // Extract a possible number from the string passed in (this strips leading characters that
     // could not be the start of a phone number.)
     String number = extractPossibleNumber(numberToParse);
     if (!isViablePhoneNumber(number)) {
       throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
                                      "The string supplied did not seem to be a phone number.");
+    }
+
+    // Check the country supplied is valid, or that the extracted number starts with some sort of +
+    // sign so the number's region can be determined.
+    if (checkRegion && !checkRegionForParsing(number, defaultCountry)) {
+      throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
+                                     "Missing or invalid default country.");
     }
 
     if (keepRawInput) {
@@ -1969,9 +2028,9 @@ public class PhoneNumberUtil {
   public MatchType isNumberMatch(String firstNumber, String secondNumber)
       throws NumberParseException {
     PhoneNumber number1 = new PhoneNumber();
-    parseHelper(firstNumber, null, false, number1);
+    parseHelper(firstNumber, null, false, false, number1);
     PhoneNumber number2 = new PhoneNumber();
-    parseHelper(secondNumber, null, false, number2);
+    parseHelper(secondNumber, null, false, false, number2);
     return isNumberMatch(number1, number2);
   }
 
@@ -1990,7 +2049,7 @@ public class PhoneNumberUtil {
   public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber)
       throws NumberParseException {
     PhoneNumber number2 = new PhoneNumber();
-    parseHelper(secondNumber, null, false, number2);
+    parseHelper(secondNumber, null, false, false, number2);
     return isNumberMatch(firstNumber, number2);
   }
 }

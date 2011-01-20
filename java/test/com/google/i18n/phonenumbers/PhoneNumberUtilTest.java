@@ -169,6 +169,49 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(number));
   }
 
+  public void testGetLengthOfNationalDestinationCode() {
+    PhoneNumber number = new PhoneNumber();
+    // Google MTV, which has national destination code (NDC) "650".
+    number.setCountryCode(1).setNationalNumber(6502530000L);
+    assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // A North America toll-free number, which has NDC "800".
+    number.setCountryCode(1).setNationalNumber(8002530000L);
+    assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // Google London, which has NDC "20".
+    number.setCountryCode(44).setNationalNumber(2070313000L);
+    assertEquals(2, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // A UK mobile phone, which has NDC "7123".
+    number.setCountryCode(44).setNationalNumber(7123456789L);
+    assertEquals(4, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // Google Buenos Aires, which has NDC "11".
+    number.setCountryCode(54).setNationalNumber(1155303000L);
+    assertEquals(2, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // An Argentinian mobile which has NDC "911".
+    number.setCountryCode(54).setNationalNumber(91155303001L);
+    assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // Google Sydney, which has NDC "2".
+    number.setCountryCode(61).setNationalNumber(293744000L);
+    assertEquals(1, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // Google Singapore, which has NDC "6521".
+    number.setCountryCode(65).setNationalNumber(65218000L);
+    assertEquals(4, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // An invalid US number (1 digit shorter), which has no NDC.
+    number.setCountryCode(1).setNationalNumber(650253000L);
+    assertEquals(0, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+    // A number containing an invalid country code, which shouldn't have any NDC.
+    number.setCountryCode(123).setNationalNumber(6502530000L);
+    assertEquals(0, phoneUtil.getLengthOfNationalDestinationCode(number));
+  }
+
   public void testGetNationalSignificantNumber() {
     PhoneNumber number = new PhoneNumber();
     number.setCountryCode(1).setNationalNumber(6502530000L);
@@ -1273,6 +1316,10 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(usNumber, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
                                            "\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10",
                                            "SG"));
+    // Using U+30FC dash instead.
+    assertEquals(usNumber, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
+                                           "\u3000\uFF13\uFF13\uFF13\u30FC\uFF16\uFF10\uFF10\uFF10",
+                                           "SG"));
   }
 
   public void testParseWithLeadingZero() throws Exception {
@@ -1481,6 +1528,31 @@ public class PhoneNumberUtilTest extends TestCase {
                    NumberParseException.ErrorType.NOT_A_NUMBER,
                    e.getErrorType());
     }
+    try {
+      String nullNumber = null;
+      // Invalid region.
+      phoneUtil.parse(nullNumber, "ZZ");
+      fail("Null string - should fail.");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    } catch (NullPointerException e) {
+      fail("Null string - but should not throw a null pointer exception.");
+    }
+    try {
+      String nullNumber = null;
+      phoneUtil.parse(nullNumber, "US");
+      fail("Null string - should fail.");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    } catch (NullPointerException e) {
+      fail("Null string - but should not throw a null pointer exception.");
+    }
   }
 
   public void testParseNumbersWithPlusWithNoRegion() throws Exception {
@@ -1489,6 +1561,10 @@ public class PhoneNumberUtilTest extends TestCase {
     // "ZZ" is allowed only if the number starts with a '+' - then the country code can be
     // calculated.
     assertEquals(nzNumber, phoneUtil.parse("+64 3 331 6005", "ZZ"));
+    // Test with full-width plus.
+    assertEquals(nzNumber, phoneUtil.parse("\uFF0B64 3 331 6005", "ZZ"));
+    // Test with normal plus but leading characters that need to be stripped.
+    assertEquals(nzNumber, phoneUtil.parse("Tel: +64 3 331 6005", "ZZ"));
     assertEquals(nzNumber, phoneUtil.parse("+64 3 331 6005", null));
     nzNumber.setRawInput("+64 3 331 6005").
         setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
@@ -1532,6 +1608,11 @@ public class PhoneNumberUtilTest extends TestCase {
     usWithExtension.setCountryCode(1).setNationalNumber(8009013355L).setExtension("7246433");
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 x 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 , ext 7246433", "US"));
+    assertEquals(usWithExtension,
+                 phoneUtil.parse("(800) 901-3355 ,extension 7246433", "US"));
+    assertEquals(usWithExtension,
+                 phoneUtil.parse("(800) 901-3355 ,extensi\u00F3n 7246433", "US"));
+    // Repeat with the small letter o with acute accent created by combining characters.
     assertEquals(usWithExtension,
                  phoneUtil.parse("(800) 901-3355 ,extension 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 , 7246433", "US"));

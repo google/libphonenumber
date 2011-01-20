@@ -1,3 +1,23 @@
+Jan 20th, 2011
+* Code improvements:
+  - Handle null phone-numbers when parsing by throwing a NumberParseException.
+  - Handle extension written with an accented "o", as per Spanish, when parsing.
+  - Handle U+30FC dashes as phone-number punctuation.
+  - Allow "ZZ" or null regions to be specified for numbers starting with a full-width "+" symbol, or
+    with other characters (such as whitespace) before the leading +.
+  - new getLengthOfNationalDestinationCode function
+* Metadata changes:
+  - New types of numbers introduced: UAN (universal or "company" numbers) and short codes. Note that
+    "generalDesc" patterns do not encompass short-codes.  No code-support for these has been
+    introduced as of yet. We are also now enabling the collection of data for information such as
+    area-code-optional, and no-international-dialling ranges.
+  - Data updates as per ITU notifications/bug fixes for the following countries: AM, BH, CD, CG, CR,
+    DE, DJ, EE, GB, GN, HU, IE, JO, JP, LB, LR, MA, MK, MN, MR, NA, PG, SC, SG, SO, SZ, VN, ZA, ZW
+  - Data added for the following countries: BZ, CU, EC, FO, GI, HN, HT, LK, MT, MV, NU, PS, SD
+  - Indentation fixes in reg-exes for the following countries: BG, GB
+  - Allow nationalPrefixForParsing to be specified for countries with no national prefix, to handle
+    possible carrier prefixes
+
 Jan 3rd, 2011
 * Metadata changes:
   - Updates to JE
