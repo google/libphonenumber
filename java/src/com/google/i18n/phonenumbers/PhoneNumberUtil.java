@@ -258,7 +258,11 @@ public class PhoneNumberUtil {
   // the extension is written with a hash at the end, such as "- 503#".
   // Note that the only capturing groups should be around the digits that you want to capture as
   // part of the extension, or else parsing will fail!
-  private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*(?:ext(?:ensi[o\u00F3])?n?|" +
+  // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
+  // for representing the accented o - the character itself, and one in the unicode decomposed form
+  // with the combining acute accent.
+  private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*" +
+      "(?:ext(?:ensi(?:o\u0301?|\u00F3))?n?|" +
       "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
       "[:\\.\uFF0E]?[ \u00A0\\t,-]*([" + VALID_DIGITS + "]{1,7})#?|[- ]+([" + VALID_DIGITS +
       "]{1,5})#";
@@ -267,13 +271,13 @@ public class PhoneNumberUtil {
   // digits, for use when parsing.
   private static final Pattern EXTN_PATTERN =
       Pattern.compile("(?:" + KNOWN_EXTN_PATTERNS + ")$",
-                      Pattern.CANON_EQ | Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+                      Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
 
   // We append optionally the extension pattern to the end here, as a valid phone number may
   // have an extension prefix appended, followed by 1 or more digits.
   private static final Pattern VALID_PHONE_NUMBER_PATTERN =
       Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?",
-                      Pattern.CANON_EQ | Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+                      Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
 
   private static final Pattern NON_DIGITS_PATTERN = Pattern.compile("(\\D+)");
   private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$1)");
@@ -1763,7 +1767,8 @@ public class PhoneNumberUtil {
    */
   private boolean checkRegionForParsing(String numberToParse, String defaultCountry) {
     if (!isValidRegionCode(defaultCountry)) {
-      if (numberToParse != null && !numberToParse.isEmpty() &&
+      // If the number is null or empty, we can't guess the country code.
+      if (numberToParse == null || numberToParse.length() == 0 ||
           !PLUS_CHARS_PATTERN.matcher(numberToParse).lookingAt()) {
         return false;
       }

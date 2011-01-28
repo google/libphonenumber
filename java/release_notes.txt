@@ -1,3 +1,8 @@
+Jan 28th, 2011
+* Code changes:
+  - Fixing critical bug with non-Android-compatible code. isEmpty() was being used and CANON_EQ in
+    reg-ex matches.
+
 Jan 20th, 2011
 * Code improvements:
   - Handle null phone-numbers when parsing by throwing a NumberParseException.
