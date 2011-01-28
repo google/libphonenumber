@@ -2659,6 +2659,7 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.exactlySameAs = function(other) {
 /**
  * @param {i18n.phonenumbers.PhoneNumber} other
  * @return {i18n.phonenumbers.PhoneNumber}
+ * @suppress {accessControls}
  */
 i18n.phonenumbers.PhoneNumber.prototype.mergeFrom = function(other) {
   if (other) {
@@ -2670,6 +2671,7 @@ i18n.phonenumbers.PhoneNumber.prototype.mergeFrom = function(other) {
 /**
  * @param {i18n.phonenumbers.NumberFormat} other
  * @return {i18n.phonenumbers.NumberFormat}
+ * @suppress {accessControls}
  */
 i18n.phonenumbers.NumberFormat.prototype.mergeFrom = function(other) {
   if (other) {
