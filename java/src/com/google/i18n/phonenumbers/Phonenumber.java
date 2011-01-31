@@ -174,9 +174,36 @@ public final class Phonenumber {
     }
 
     public boolean exactlySameAs(PhoneNumber other) {
+      if (other == null) {
+        return false;
+      }
+      if (this == other) {
+        return true;
+      }
       return (countryCode_ == other.countryCode_ && nationalNumber_ == other.nationalNumber_ &&
           extension_.equals(other.extension_) && italianLeadingZero_ == other.italianLeadingZero_ &&
           rawInput_.equals(other.rawInput_) && countryCodeSource_ == other.countryCodeSource_);
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      return (that instanceof PhoneNumber) && exactlySameAs((PhoneNumber) that);
+    }
+
+    @Override
+    public int hashCode() {
+      // Simplified rendition of the hashCode function automatically generated from the proto
+      // compiler with java_generate_equals_and_hash set to true. We are happy with unset values to
+      // be considered equal to their explicitly-set equivalents, so don't check if any value is
+      // unknown.
+      int hash = 41;
+      hash = (53 * hash) + getCountryCode();
+      hash = (53 * hash) + Long.valueOf(getNationalNumber()).hashCode();
+      hash = (53 * hash) + getExtension().hashCode();
+      hash = (53 * hash) + (getItalianLeadingZero() ? 1231 : 1237);
+      hash = (53 * hash) + getRawInput().hashCode();
+      hash = (53 * hash) + getCountryCodeSource().hashCode();
+      return hash;
     }
 
     @Override

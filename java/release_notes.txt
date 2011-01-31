@@ -1,3 +1,6 @@
+Jan 31st, 2011
+  - Introducing equals() and hashCode() methods for the Phonenumber.PhoneNumber class
+
 Jan 28th, 2011
 * Code changes:
   - Fixing critical bug with non-Android-compatible code. isEmpty() was being used and CANON_EQ in

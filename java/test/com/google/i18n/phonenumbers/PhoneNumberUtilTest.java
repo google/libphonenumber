@@ -65,18 +65,6 @@ public class PhoneNumberUtilTest extends TestCase {
     super.tearDown();
   }
 
-  private void assertEquals(PhoneNumber number1, PhoneNumber number2) {
-    boolean equal = false;
-    if (number1 == null && number2 == null) {
-      equal = true;
-    } else if (number1 != null && number2 != null) {
-      equal = number1.exactlySameAs(number2);
-    }
-    if (!equal) {
-      fail("The phone numbers do not match");
-    }
-  }
-
   public void testGetInstanceLoadUSMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion("US");
     assertEquals("US", metadata.getId());
@@ -833,7 +821,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(0, phoneUtil.getCountryCodeForRegion("CS"));
   }
 
-  @SuppressWarnings("deprecation")
   public void testGetNationalDiallingPrefixForRegion() {
     assertEquals("1", phoneUtil.getNddPrefixForRegion("US", false));
     // Test non-main country to see it gets the national dialling prefix for the main country with
@@ -1614,7 +1601,7 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.parse("(800) 901-3355 ,extensi\u00F3n 7246433", "US"));
     // Repeat with the small letter o with acute accent created by combining characters.
     assertEquals(usWithExtension,
-                 phoneUtil.parse("(800) 901-3355 ,extension 7246433", "US"));
+                 phoneUtil.parse("(800) 901-3355 ,extensio\u0301n 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 , 7246433", "US"));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 ext: 7246433", "US"));
 
