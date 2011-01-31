@@ -1,4 +1,5 @@
 Jan 31st, 2011
+* Code changes:
   - Introducing equals() and hashCode() methods for the Phonenumber.PhoneNumber class
 
 Jan 28th, 2011
