@@ -317,7 +317,7 @@ function testAYTFGBFixedLine() {
 }
 
 function testAYTFGBTollFree() {
-   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('gb');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('08', f.inputDigit('8'));

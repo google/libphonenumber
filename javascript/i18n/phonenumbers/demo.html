@@ -58,7 +58,7 @@ function phoneNumberParser() {
         .append(phoneUtil.isPossibleNumber(number));
     output.append('\nResult from getNumberType(): ');
     var PNT = i18n.phonenumbers.PhoneNumberType;
-    switch(phoneUtil.getNumberType(number)) {
+    switch (phoneUtil.getNumberType(number)) {
       case PNT.FIXED_LINE:
         output.append('FIXED_LINE');
         break;

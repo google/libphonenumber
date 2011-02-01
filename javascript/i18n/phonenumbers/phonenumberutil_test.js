@@ -24,6 +24,7 @@
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 
+
 /** @type {i18n.phonenumbers.PhoneNumberUtil} */
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 
@@ -133,6 +134,61 @@ function testGetLengthOfGeographicalAreaCode() {
   number.setCountryCode(65);
   number.setNationalNumber(65218000);
   assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(number));
+}
+
+function testGetLengthOfNationalDestinationCode() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+
+  // Google MTV, which has national destination code (NDC) "650".
+  number.setCountryCode(1);
+  number.setNationalNumber(6502530000);
+  assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // A North America toll-free number, which has NDC "800".
+  number.setCountryCode(1);
+  number.setNationalNumber(8002530000);
+  assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // Google London, which has NDC "20".
+  number.setCountryCode(44);
+  number.setNationalNumber(2070313000);
+  assertEquals(2, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // A UK mobile phone, which has NDC "7123".
+  number.setCountryCode(44);
+  number.setNationalNumber(7123456789);
+  assertEquals(4, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // Google Buenos Aires, which has NDC "11".
+  number.setCountryCode(54);
+  number.setNationalNumber(1155303000);
+  assertEquals(2, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // An Argentinian mobile which has NDC "911".
+  number.setCountryCode(54);
+  number.setNationalNumber(91155303001);
+  assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // Google Sydney, which has NDC "2".
+  number.setCountryCode(61);
+  number.setNationalNumber(293744000);
+  assertEquals(1, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // Google Singapore, which has NDC "6521".
+  number.setCountryCode(65);
+  number.setNationalNumber(65218000);
+  assertEquals(4, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // An invalid US number (1 digit shorter), which has no NDC.
+  number.setCountryCode(1);
+  number.setNationalNumber(650253000);
+  assertEquals(0, phoneUtil.getLengthOfNationalDestinationCode(number));
+
+  // A number containing an invalid country code, which shouldn't have any NDC.
+  number.setCountryCode(123);
+  number.setNationalNumber(6502530000);
+  assertEquals(0, phoneUtil.getLengthOfNationalDestinationCode(number));
 }
 
 function testGetNationalSignificantNumber() {
@@ -1326,10 +1382,10 @@ function testMaybeStripInternationalPrefix() {
   numberToStrip = new goog.string.StringBuffer('0090112-3123');
   strippedNumber = new goog.string.StringBuffer('00901123123');
   assertEquals(CCS.FROM_DEFAULT_COUNTRY,
-      phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
-                                                          internationalPrefix));
+      phoneUtil.maybeStripInternationalPrefixAndNormalize(
+          numberToStrip, internationalPrefix));
   assertEquals('The number supplied had a 0 after the match so should not be ' +
-              'stripped.',
+               'stripped.',
                strippedNumber.toString(), numberToStrip.toString());
   // Here the 0 is separated by a space from the IDD.
   numberToStrip = new goog.string.StringBuffer('009 0-112-3123');
@@ -1392,9 +1448,9 @@ function testMaybeExtractCountryCode() {
                  0,
                  phoneUtil.maybeExtractCountryCode(phoneNumber, metadata,
                                                    numberToFill, true, number));
-  assertEquals('Did not figure out CountryCodeSource correctly',
-               CCS.FROM_DEFAULT_COUNTRY,
-               number.getCountryCodeSource());
+    assertEquals('Did not figure out CountryCodeSource correctly',
+                 CCS.FROM_DEFAULT_COUNTRY,
+                 number.getCountryCodeSource());
   } catch (e) {
     fail('Should not have thrown an exception: ' + e.toString());
   }
@@ -1517,7 +1573,7 @@ function testParseNationalNumber() {
   assertTrue(usNumber.exactlySameAs(phoneUtil.parse('123-456-7890', 'US')));
 }
 
- function testParseNumberWithAlphaCharacters() {
+function testParseNumberWithAlphaCharacters() {
   // Test case with alpha characters.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var tollfreeNumber = new i18n.phonenumbers.PhoneNumber();
@@ -1576,6 +1632,11 @@ function testParseWithInternationalPrefixes() {
   assertTrue(usNumber.exactlySameAs(
       phoneUtil.parse('\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09' +
                       '\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10',
+                      'SG')));
+  // Using U+30FC dash instead.
+  assertTrue(usNumber.exactlySameAs(
+      phoneUtil.parse('\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09' +
+                      '\u3000\uFF13\uFF13\uFF13\u30FC\uFF16\uFF10\uFF10\uFF10',
                       'SG')));
 }
 
@@ -1823,6 +1884,25 @@ function testFailedParseOnInvalidNumbers() {
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
                  e);
   }
+  try {
+    // Invalid region.
+    phoneUtil.parse(null, 'ZZ');
+    fail('Null string - should fail.');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
+    phoneUtil.parse(null, 'US');
+    fail('Null string - should fail.');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
 }
 
 function testParseNumbersWithPlusWithNoRegion() {
@@ -1833,6 +1913,12 @@ function testParseNumbersWithPlusWithNoRegion() {
   // 'ZZ' is allowed only if the number starts with a '+' - then the country
   // code can be calculated.
   assertTrue(nzNumber.exactlySameAs(phoneUtil.parse('+64 3 331 6005', 'ZZ')));
+  // Test with full-width plus.
+  assertTrue(nzNumber.exactlySameAs(
+      phoneUtil.parse('\uFF0B64 3 331 6005', 'ZZ')));
+  // Test with normal plus but leading characters that need to be stripped.
+  assertTrue(nzNumber.exactlySameAs(
+      phoneUtil.parse('Tel: +64 3 331 6005', 'ZZ')));
   assertTrue(nzNumber.exactlySameAs(phoneUtil.parse('+64 3 331 6005', null)));
   nzNumber.setRawInput('+64 3 331 6005');
   nzNumber.setCountryCodeSource(i18n.phonenumbers.PhoneNumber
@@ -1918,6 +2004,12 @@ function testParseExtensions() {
       phoneUtil.parse('(800) 901-3355 , ext 7246433', 'US')));
   assertTrue(usWithExtension.exactlySameAs(
       phoneUtil.parse('(800) 901-3355 ,extension 7246433', 'US')));
+  assertTrue(usWithExtension.exactlySameAs(
+      phoneUtil.parse('(800) 901-3355 ,extensi\u00F3n 7246433', 'US')));
+  // Repeat with the small letter o with acute accent created by combining
+  // characters.
+  assertTrue(usWithExtension.exactlySameAs(
+      phoneUtil.parse('(800) 901-3355 ,extensio\u0301n 7246433', 'US')));
   assertTrue(usWithExtension.exactlySameAs(
       phoneUtil.parse('(800) 901-3355 , 7246433', 'US')));
   assertTrue(usWithExtension.exactlySameAs(
