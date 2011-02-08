@@ -35,6 +35,7 @@
       <fileset dir="${classes.dir}">
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
+        <exclude name="**/*Build*"/>
       </fileset>
       <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
@@ -48,6 +49,7 @@
       <fileset dir="${classes.dir}">
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
+        <exclude name="**/*Build*"/>
       </fileset>
       <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
