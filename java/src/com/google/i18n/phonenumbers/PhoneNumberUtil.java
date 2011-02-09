@@ -47,9 +47,13 @@ import java.util.regex.Pattern;
  * @author Lara Rennie
  */
 public class PhoneNumberUtil {
+  /** Flags to use when compiling regular expressions for phone numbers. */
+  static final int REGEX_FLAGS = Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE;
   // The minimum and maximum length of the national significant number.
   private static final int MIN_LENGTH_FOR_NSN = 3;
-  private static final int MAX_LENGTH_FOR_NSN = 15;
+  static final int MAX_LENGTH_FOR_NSN = 15;
+  // The maximum length of the country code.
+  static final int MAX_LENGTH_COUNTRY_CODE = 3;
   static final String META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
   static final String COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
@@ -68,6 +72,8 @@ public class PhoneNumberUtil {
   // load factor of roughly 0.75.
   private final Set<String> supportedCountries = new HashSet<String>(300);
 
+  // Region-code for the unknown region.
+  private static final String UNKNOWN_REGION = "ZZ";
 
   // The set of countries that share country code 1.
   // There are roughly 26 countries of them and we set the initial capacity of the HashSet to 35
@@ -94,33 +100,43 @@ public class PhoneNumberUtil {
     digitMap.put('0', '0');
     digitMap.put('\uFF10', '0');  // Fullwidth digit 0
     digitMap.put('\u0660', '0');  // Arabic-indic digit 0
+    digitMap.put('\u06F0', '0');  // Eastern-Arabic digit 0
     digitMap.put('1', '1');
     digitMap.put('\uFF11', '1');  // Fullwidth digit 1
     digitMap.put('\u0661', '1');  // Arabic-indic digit 1
+    digitMap.put('\u06F1', '1');  // Eastern-Arabic digit 1
     digitMap.put('2', '2');
     digitMap.put('\uFF12', '2');  // Fullwidth digit 2
     digitMap.put('\u0662', '2');  // Arabic-indic digit 2
+    digitMap.put('\u06F2', '2');  // Eastern-Arabic digit 2
     digitMap.put('3', '3');
     digitMap.put('\uFF13', '3');  // Fullwidth digit 3
     digitMap.put('\u0663', '3');  // Arabic-indic digit 3
+    digitMap.put('\u06F3', '3');  // Eastern-Arabic digit 3
     digitMap.put('4', '4');
     digitMap.put('\uFF14', '4');  // Fullwidth digit 4
     digitMap.put('\u0664', '4');  // Arabic-indic digit 4
+    digitMap.put('\u06F4', '4');  // Eastern-Arabic digit 4
     digitMap.put('5', '5');
     digitMap.put('\uFF15', '5');  // Fullwidth digit 5
     digitMap.put('\u0665', '5');  // Arabic-indic digit 5
+    digitMap.put('\u06F5', '5');  // Eastern-Arabic digit 5
     digitMap.put('6', '6');
     digitMap.put('\uFF16', '6');  // Fullwidth digit 6
     digitMap.put('\u0666', '6');  // Arabic-indic digit 6
+    digitMap.put('\u06F6', '6');  // Eastern-Arabic digit 6
     digitMap.put('7', '7');
     digitMap.put('\uFF17', '7');  // Fullwidth digit 7
     digitMap.put('\u0667', '7');  // Arabic-indic digit 7
+    digitMap.put('\u06F7', '7');  // Eastern-Arabic digit 7
     digitMap.put('8', '8');
     digitMap.put('\uFF18', '8');  // Fullwidth digit 8
     digitMap.put('\u0668', '8');  // Arabic-indic digit 8
+    digitMap.put('\u06F8', '8');  // Eastern-Arabic digit 8
     digitMap.put('9', '9');
     digitMap.put('\uFF19', '9');  // Fullwidth digit 9
     digitMap.put('\u0669', '9');  // Arabic-indic digit 9
+    digitMap.put('\u06F9', '9');  // Eastern-Arabic digit 9
     DIGIT_MAPPINGS = Collections.unmodifiableMap(digitMap);
 
     HashMap<Character, Character> alphaMap = new HashMap<Character, Character>(40);
@@ -171,6 +187,7 @@ public class PhoneNumberUtil {
     aSet.add(241);  // Gabon
     aSet.add(242);  // Congo (Rep. of the)
     aSet.add(268);  // Swaziland
+    aSet.add(378);  // San Marino
     aSet.add(379);  // Vatican City
     aSet.add(501);  // Belize
     LEADING_ZERO_COUNTRIES = Collections.unmodifiableSet(aSet);
@@ -190,17 +207,17 @@ public class PhoneNumberUtil {
   // This consists of dash characters, white space characters, full stops, slashes,
   // square brackets, parentheses and tildes. It also includes the letter 'x' as that is found as a
   // placeholder for carrier information in some phone numbers.
-  private static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F " +
+  static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F " +
       "\u00A0\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
 
-  // Digits accepted in phone numbers
+  // Digits accepted in phone numbers that we understand.
   private static final String VALID_DIGITS =
-      Arrays.toString(DIGIT_MAPPINGS.keySet().toArray()).replaceAll(", ", "");
+      Arrays.toString(DIGIT_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "");
   // We accept alpha characters in phone numbers, ASCII only, upper and lower case.
   private static final String VALID_ALPHA =
-      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll(", ", "") +
-      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).toLowerCase().replaceAll(", ", "");
-  private static final String PLUS_CHARS = "+\uFF0B";
+      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "") +
+      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).toLowerCase().replaceAll("[, \\[\\]]", "");
+  static final String PLUS_CHARS = "+\uFF0B";
   private static final Pattern PLUS_CHARS_PATTERN = Pattern.compile("[" + PLUS_CHARS + "]+");
   private static final Pattern CAPTURING_DIGIT_PATTERN =
       Pattern.compile("([" + VALID_DIGITS + "])");
@@ -220,7 +237,7 @@ public class PhoneNumberUtil {
   // actually two phone numbers, (530) 583-6985 x302 and (530) 583-6985 x2303. We remove the second
   // extension so that the first number is parsed correctly.
   private static final String SECOND_NUMBER_START = "[\\\\/] *x";
-  private static final Pattern SECOND_NUMBER_START_PATTERN = Pattern.compile(SECOND_NUMBER_START);
+  static final Pattern SECOND_NUMBER_START_PATTERN = Pattern.compile(SECOND_NUMBER_START);
 
   // Regular expression of trailing characters that we want to remove. We remove all characters that
   // are not alpha or numerical characters. The hash character is retained here, as it may signify
@@ -240,9 +257,10 @@ public class PhoneNumberUtil {
   // the start.
   // Corresponds to the following:
   // plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
+  // Note VALID_PUNCTUATION starts with a -, so must be the first in the range.
   private static final String VALID_PHONE_NUMBER =
       "[" + PLUS_CHARS + "]*(?:[" + VALID_PUNCTUATION + "]*[" + VALID_DIGITS + "]){3,}[" +
-      VALID_ALPHA + VALID_PUNCTUATION + VALID_DIGITS + "]*";
+      VALID_PUNCTUATION + VALID_ALPHA + VALID_DIGITS + "]*";
 
   // Default extension prefix to use when formatting. This will be put in front of any extension
   // component of the number, after the main national number is formatted. For example, if you wish
@@ -261,7 +279,7 @@ public class PhoneNumberUtil {
   // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
   // for representing the accented o - the character itself, and one in the unicode decomposed form
   // with the combining acute accent.
-  private static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*" +
+  static final String KNOWN_EXTN_PATTERNS = "[ \u00A0\\t,]*" +
       "(?:ext(?:ensi(?:o\u0301?|\u00F3))?n?|" +
       "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
       "[:\\.\uFF0E]?[ \u00A0\\t,-]*([" + VALID_DIGITS + "]{1,7})#?|[- ]+([" + VALID_DIGITS +
@@ -270,14 +288,12 @@ public class PhoneNumberUtil {
   // Regexp of all known extension prefixes used by different countries followed by 1 or more valid
   // digits, for use when parsing.
   private static final Pattern EXTN_PATTERN =
-      Pattern.compile("(?:" + KNOWN_EXTN_PATTERNS + ")$",
-                      Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+      Pattern.compile("(?:" + KNOWN_EXTN_PATTERNS + ")$", REGEX_FLAGS);
 
   // We append optionally the extension pattern to the end here, as a valid phone number may
   // have an extension prefix appended, followed by 1 or more digits.
   private static final Pattern VALID_PHONE_NUMBER_PATTERN =
-      Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?",
-                      Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+      Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?", REGEX_FLAGS);
 
   private static final Pattern NON_DIGITS_PATTERN = Pattern.compile("(\\D+)");
   private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$1)");
@@ -334,6 +350,9 @@ public class PhoneNumberUtil {
     // http://en.wikipedia.org/wiki/Personal_Numbers
     PERSONAL_NUMBER,
     PAGER,
+    // Used for "Universal Access Numbers" or "Company Numbers". They may be further routed to
+    // specific offices, but allow one number to be used for a company.
+    UAN,
     // A phone number is of type UNKNOWN when it does not fit any of the known patterns for a
     // specific country.
     UNKNOWN
@@ -343,6 +362,7 @@ public class PhoneNumberUtil {
    * Types of phone number matches. See detailed description beside the isNumberMatch() method.
    */
   public enum MatchType {
+    NOT_A_NUMBER,
     NO_MATCH,
     SHORT_NSN_MATCH,
     NSN_MATCH,
@@ -1120,6 +1140,8 @@ public class PhoneNumberUtil {
         return metadata.getPersonalNumber();
       case PAGER:
         return metadata.getPager();
+      case UAN:
+        return metadata.getUan();
       default:
         return metadata.getGeneralDesc();
     }
@@ -1164,6 +1186,9 @@ public class PhoneNumberUtil {
     }
     if (isNumberMatchingDesc(nationalNumber, metadata.getPager())) {
       return PhoneNumberType.PAGER;
+    }
+    if (isNumberMatchingDesc(nationalNumber, metadata.getUan())) {
+      return PhoneNumberType.UAN;
     }
 
     boolean isFixedLine = isNumberMatchingDesc(nationalNumber, metadata.getFixedLine());
@@ -1294,7 +1319,7 @@ public class PhoneNumberUtil {
    */
   public String getRegionCodeForCountryCode(int countryCode) {
     List<String> regionCodes = countryCodeToRegionCodeMap.get(countryCode);
-    return regionCodes == null ? "ZZ" : regionCodes.get(0);
+    return regionCodes == null ? UNKNOWN_REGION : regionCodes.get(0);
   }
 
   /**
@@ -1509,7 +1534,7 @@ public class PhoneNumberUtil {
   int extractCountryCode(StringBuffer fullNumber, StringBuffer nationalNumber) {
     int potentialCountryCode;
     int numberLength = fullNumber.length();
-    for (int i = 1; i <= 3 && i <= numberLength; i++) {
+    for (int i = 1; i <= MAX_LENGTH_COUNTRY_CODE && i <= numberLength; i++) {
       potentialCountryCode = Integer.parseInt(fullNumber.substring(0, i));
       if (countryCodeToRegionCodeMap.containsKey(potentialCountryCode)) {
         nationalNumber.append(fullNumber.substring(i));
@@ -2025,18 +2050,35 @@ public class PhoneNumberUtil {
    *     specified with + at the start.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     code specified with + at the start.
-   * @return  NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See isNumberMatch(PhoneNumber
-   *     firstNumber, PhoneNumber secondNumber) for more details.
-   * @throws NumberParseException  if either number is not considered to be a viable phone
-   *     number
+   * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
+   *     isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber) for more details.
    */
-  public MatchType isNumberMatch(String firstNumber, String secondNumber)
-      throws NumberParseException {
-    PhoneNumber number1 = new PhoneNumber();
-    parseHelper(firstNumber, null, false, false, number1);
-    PhoneNumber number2 = new PhoneNumber();
-    parseHelper(secondNumber, null, false, false, number2);
-    return isNumberMatch(number1, number2);
+  public MatchType isNumberMatch(String firstNumber, String secondNumber) {
+    try {
+      PhoneNumber firstNumberAsProto = parse(firstNumber, UNKNOWN_REGION);
+      return isNumberMatch(firstNumberAsProto, secondNumber);
+    } catch (NumberParseException e) {
+      if (e.getErrorType() == NumberParseException.ErrorType.INVALID_COUNTRY_CODE) {
+        try {
+          PhoneNumber secondNumberAsProto = parse(secondNumber, UNKNOWN_REGION);
+          return isNumberMatch(secondNumberAsProto, firstNumber);
+        } catch (NumberParseException e2) {
+          if (e2.getErrorType() == NumberParseException.ErrorType.INVALID_COUNTRY_CODE) {
+            try {
+              PhoneNumber firstNumberProto = new PhoneNumber();
+              PhoneNumber secondNumberProto = new PhoneNumber();
+              parseHelper(firstNumber, null, false, false, firstNumberProto);
+              parseHelper(secondNumber, null, false, false, secondNumberProto);
+              return isNumberMatch(firstNumberProto, secondNumberProto);
+            } catch (NumberParseException e3) {
+              // Fall through and return MatchType.NOT_A_NUMBER.
+            }
+          }
+        }
+      }
+    }
+    // One or more of the phone numbers we are trying to match is not a viable phone number.
+    return MatchType.NOT_A_NUMBER;
   }
 
   /**
@@ -2046,15 +2088,61 @@ public class PhoneNumberUtil {
    * @param firstNumber  first number to compare in proto buffer format.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     code specified with + at the start.
-   * @return  NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See isNumberMatch(PhoneNumber
-   *     firstNumber, PhoneNumber secondNumber) for more details.
-   * @throws NumberParseException  if the second number is not considered to be a viable phone
-   *     number
+   * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
+   *     isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber) for more details.
    */
-  public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber)
-      throws NumberParseException {
-    PhoneNumber number2 = new PhoneNumber();
-    parseHelper(secondNumber, null, false, false, number2);
-    return isNumberMatch(firstNumber, number2);
+  public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber) {
+    // First see if the second number has an implicit country code, by attempting to parse it.
+    try {
+      PhoneNumber secondNumberAsProto = parse(secondNumber, UNKNOWN_REGION);
+      return isNumberMatch(firstNumber, secondNumberAsProto);
+    } catch (NumberParseException e) {
+      if (e.getErrorType() == NumberParseException.ErrorType.INVALID_COUNTRY_CODE) {
+        // The second number has no country code. EXACT_MATCH is no longer possible.
+        // We parse it as if the region was the same as that for the first number, and if
+        // EXACT_MATCH is returned, we replace this with NSN_MATCH.
+        String firstNumberRegion = getRegionCodeForCountryCode(firstNumber.getCountryCode());
+        try {
+          if (!firstNumberRegion.equals(UNKNOWN_REGION)) {
+            PhoneNumber secondNumberWithFirstNumberRegion = parse(secondNumber, firstNumberRegion);
+            MatchType match = isNumberMatch(firstNumber, secondNumberWithFirstNumberRegion);
+            if (match == MatchType.EXACT_MATCH) {
+              return MatchType.NSN_MATCH;
+            }
+            return match;
+          } else {
+            // If the first number didn't have a valid country code, then we parse the second number
+            // without one as well.
+            PhoneNumber secondNumberProto = new PhoneNumber();
+            parseHelper(secondNumber, null, false, false, secondNumberProto);
+            return isNumberMatch(firstNumber, secondNumberProto);
+          }
+        } catch (NumberParseException e2) {
+          // Fall-through to return NOT_A_NUMBER.
+        }
+      }
+    }
+    // One or more of the phone numbers we are trying to match is not a viable phone number.
+    return MatchType.NOT_A_NUMBER;
+  }
+
+  /**
+   * Returns true if the number can only be dialled from within the country. If unknown, or the
+   * number can be dialled from outside the country as well, returns false. Does not check the
+   * number is a valid number.
+   * TODO: Make this method public when we have enough metadata to make it worthwhile. Currently
+   * visible for testing purposes only.
+   *
+   * @param number  the phone-number for which we want to know whether it is only diallable from
+   *     within the country
+   */
+  boolean canBeInternationallyDialled(PhoneNumber number) {
+    String regionCode = getRegionCodeForNumber(number);
+    String nationalSignificantNumber = getNationalSignificantNumber(number);
+    if (!isValidRegionCode(regionCode)) {
+      return true;
+    }
+    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    return !isNumberMatchingDesc(nationalSignificantNumber, metadata.getNoInternationalDialling());
   }
 }

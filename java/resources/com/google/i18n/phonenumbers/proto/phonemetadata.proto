@@ -118,6 +118,10 @@ message PhoneMetadata {
   required PhoneNumberDesc personal_number = 7;
   required PhoneNumberDesc voip = 8;
   required PhoneNumberDesc pager = 21;
+  required PhoneNumberDesc uan = 25;
+  // The rules here distinguish the numbers that are only able to be dialled
+  // nationally.
+  required PhoneNumberDesc no_international_dialling = 24;
 
   // The ISO 3166-1 alpha-2 representation of a country/region
   required string id = 9;

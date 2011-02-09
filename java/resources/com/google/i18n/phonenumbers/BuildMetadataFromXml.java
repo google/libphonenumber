@@ -138,7 +138,7 @@ public class BuildMetadataFromXml {
       nationalPrefix = element.getAttribute("nationalPrefix");
       metadata.setNationalPrefix(nationalPrefix);
       nationalPrefixFormattingRule =
-          validateRE(getNationalPrefixFormattingRuleFromElement(element, nationalPrefix));
+          getNationalPrefixFormattingRuleFromElement(element, nationalPrefix);
 
       if (!metadata.hasNationalPrefixForParsing()) {
         metadata.setNationalPrefixForParsing(nationalPrefix);
@@ -159,8 +159,8 @@ public class BuildMetadataFromXml {
         Element numberFormatElement = (Element) numberFormatElements.item(i);
         NumberFormat format = new NumberFormat();
         if (numberFormatElement.hasAttribute("nationalPrefixFormattingRule")) {
-          format.setNationalPrefixFormattingRule(validateRE(
-              getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix)));
+          format.setNationalPrefixFormattingRule(
+              getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix));
         } else {
           format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
         }
@@ -180,7 +180,7 @@ public class BuildMetadataFromXml {
           throw new RuntimeException("Invalid number of format patterns for country: " +
                                      regionCode);
         }
-        format.setFormat(validateRE(formatPattern.item(0).getFirstChild().getNodeValue()));
+        format.setFormat(formatPattern.item(0).getFirstChild().getNodeValue());
         metadata.addNumberFormat(format);
       }
     }
@@ -224,6 +224,9 @@ public class BuildMetadataFromXml {
     metadata.setPersonalNumber(processPhoneNumberDescElement(generalDesc, element,
                                                              "personalNumber"));
     metadata.setPager(processPhoneNumberDescElement(generalDesc, element, "pager"));
+    metadata.setUan(processPhoneNumberDescElement(generalDesc, element, "uan"));
+    metadata.setNoInternationalDialling(processPhoneNumberDescElement(generalDesc, element,
+                                                                      "noInternationalDialling"));
 
     if (metadata.getMobile().getNationalNumberPattern().equals(
         metadata.getFixedLine().getNationalNumberPattern())) {

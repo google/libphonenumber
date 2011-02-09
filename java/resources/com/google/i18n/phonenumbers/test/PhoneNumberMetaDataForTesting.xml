@@ -558,7 +558,10 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-9]\d{7,9}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [289]\d{7,9}|
+          [3-7]\d{7}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -702,8 +705,13 @@
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
         <exampleNumber>1234567890</exampleNumber>
       </generalDesc>
+      <noInternationalDialling>
+        <!-- This range is added for testing purposes only. -->
+        <nationalNumberPattern>800\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </noInternationalDialling>
       <tollFree>
-        <nationalNumberPattern>8(00|66|77|88)\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>8(?:00|66|77|88)\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
       </tollFree>
       <premiumRate>

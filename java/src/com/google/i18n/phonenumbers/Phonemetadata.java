@@ -374,6 +374,34 @@ public final class Phonemetadata {
       return this;
     }
 
+    // required PhoneNumberDesc uan = 25;
+    private boolean hasUan;
+    private PhoneNumberDesc uan_ = null;
+    public boolean hasUan() { return hasUan; }
+    public PhoneNumberDesc getUan() { return uan_; }
+    public PhoneMetadata setUan(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasUan = true;
+      uan_ = value;
+      return this;
+    }
+
+    // required PhoneNumberDesc noInternationalDialling = 24;
+    private boolean hasNoInternationalDialling;
+    private PhoneNumberDesc noInternationalDialling_ = null;
+    public boolean hasNoInternationalDialling() { return hasNoInternationalDialling; }
+    public PhoneNumberDesc getNoInternationalDialling() { return noInternationalDialling_; }
+    public PhoneMetadata setNoInternationalDialling(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasNoInternationalDialling = true;
+      noInternationalDialling_ = value;
+      return this;
+    }
+
     // required string id = 9;
     private boolean hasId;
     private String id_ = "";
@@ -568,6 +596,14 @@ public final class Phonemetadata {
       if (hasPager) {
         pager_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasUan);
+      if (hasUan) {
+        uan_.writeExternal(objectOutput);
+      }
+      objectOutput.writeBoolean(hasNoInternationalDialling);
+      if (hasNoInternationalDialling) {
+        noInternationalDialling_.writeExternal(objectOutput);
+      }
 
       objectOutput.writeUTF(id_);
       objectOutput.writeInt(countryCode_);
@@ -674,6 +710,18 @@ public final class Phonemetadata {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
         setPager(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setUan(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setNoInternationalDialling(desc);
       }
 
       setId(objectInput.readUTF());

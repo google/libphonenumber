@@ -1,3 +1,18 @@
+Feb 9th, 2011
+* Code changes:
+  - Better isNumberMatch method. This will now recognise numbers starting with a national prefix as
+    an NSN_MATCH, instead of SHORT_NSN_MATCH.
+    == Note Non-backwards-compatible API change here! ==
+      This will no longer throw a NumberParseException - instead we will return NOT_A_NUMBER if one
+      or other of the numbers provided do not match.
+  - New number-type UAN now supported in the code. This represents Company Numbers or Universally
+    Accessible Numbers.
+* Metadata changes:
+  - Bug-fixes and updates for the following countries: AG, AZ, BA, BE, CA, CU, ES, FI, GB, GD, GG,
+    IE, IL, IM, IN, IR, IT, JE, JP, KR, KW, NG, NZ, PK, PS, PT, RU, SE, SG, SY, US
+  - New countries: CO, LU, LY, MC, SM
+  - Addition of "Personal Number" ranges to all NANPA countries
+
 Jan 31st, 2011
 * Code changes:
   - Introducing equals() and hashCode() methods for the Phonenumber.PhoneNumber class

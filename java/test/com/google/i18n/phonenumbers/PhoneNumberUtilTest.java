@@ -256,6 +256,12 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("Conversion did not correctly replace non-latin digits",
                  expectedOutput,
                  PhoneNumberUtil.normalize(inputNumber));
+    // Eastern-Arabic digits.
+    inputNumber = "\u06F52\u06F0";
+    expectedOutput = "520";
+    assertEquals("Conversion did not correctly replace non-latin digits",
+                 expectedOutput,
+                 PhoneNumberUtil.normalize(inputNumber));
   }
 
   public void testNormaliseStripAlphaCharacters() {
@@ -442,8 +448,6 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.formatOutOfCountryCallingNumber(arNumber, "AU"));
     assertEquals("011 15 8765-4321 ext. 1234",
                  phoneUtil.formatOutOfCountryCallingNumber(arNumber, "AR"));
-    assertEquals("011 15 8765-4321 ext. 1234",
-                 phoneUtil.formatOutOfCountryCallingNumber(arNumber, "ar"));
   }
 
   public void testFormatOutOfCountryWithPreferredIntlPrefix() {
@@ -1740,6 +1744,17 @@ public class PhoneNumberUtilTest extends TestCase {
     // NSN matches, but extension is different - not the same number.
     assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005 ext.1235", "3 331 6005#1234"));
+
+    // Invalid numbers that can't be parsed.
+    assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
+                 phoneUtil.isNumberMatch("43", "3 331 6043"));
+    // Invalid numbers that can't be parsed.
+    assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
+                 phoneUtil.isNumberMatch("+43", "+64 3 331 6005"));
+    assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
+                 phoneUtil.isNumberMatch("+43", "64 3 331 6005"));
+    assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
+                 phoneUtil.isNumberMatch("Dog", "64 3 331 6005"));
   }
 
   public void testIsNumberMatchNsnMatches() throws Exception {
@@ -1752,10 +1767,35 @@ public class PhoneNumberUtilTest extends TestCase {
     nzNumber.setCountryCode(64).setNationalNumber(33316005L).setExtension("");
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch(nzNumber, "03 331 6005"));
+    // Here the second number possibly starts with the country code for New Zealand, although we are
+    // unsure.
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch(nzNumber, "(64-3) 331 6005"));
     PhoneNumber unchangedNzNumber = new PhoneNumber();
     unchangedNzNumber.setCountryCode(64).setNationalNumber(33316005L).setExtension("");
     // Check the phone number proto was not edited during the method call.
     assertEquals(unchangedNzNumber, nzNumber);
+
+    // Here, the 1 might be a national prefix, if we compare it to the US number, so the resultant
+    // match is an NSN match.
+    PhoneNumber usNumber = new PhoneNumber();
+    usNumber.setCountryCode(1).setNationalNumber(2345678901L).setExtension("");
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch(usNumber, "1-234-567-8901"));
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch(usNumber, "2345678901"));
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch("+1 234-567 8901", "1 234 567 8901"));
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch("1 234-567 8901", "1 234 567 8901"));
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch("1 234-567 8901", "+1 234 567 8901"));
+    // For this case, the match will be a short NSN match, because we cannot assume that the 1 might
+    // be a national prefix, so don't remove it when parsing.
+    PhoneNumber randomNumber = new PhoneNumber();
+    randomNumber.setCountryCode(41).setNationalNumber(2345678901L).setExtension("");
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch(randomNumber, "1-234-567-8901"));
   }
 
   public void testIsNumberMatchShortNsnMatches() throws Exception {
@@ -1788,5 +1828,26 @@ public class PhoneNumberUtilTest extends TestCase {
     italianNumberTwo.setExtension("");
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch(italianNumberOne, italianNumberTwo));
+  }
+
+  public void testCanBeInternationallyDialled() throws Exception {
+    // We have no-international-dialling rules for the US in our test metadata.
+    PhoneNumber usNumber = new PhoneNumber();
+    usNumber.setCountryCode(1).setNationalNumber(8001231234L);
+    assertFalse(phoneUtil.canBeInternationallyDialled(usNumber));
+
+    PhoneNumber usInternationalNumber = new PhoneNumber();
+    usInternationalNumber.setCountryCode(1).setNationalNumber(2311231234L);
+    assertTrue(phoneUtil.canBeInternationallyDialled(usInternationalNumber));
+
+    PhoneNumber usInvalidNumber = new PhoneNumber();
+    // Invalid number.
+    usInvalidNumber.setCountryCode(1).setNationalNumber(13112312L);
+    assertTrue(phoneUtil.canBeInternationallyDialled(usInvalidNumber));
+
+    // We have no data for NZ - should return true.
+    PhoneNumber nzNumber = new PhoneNumber();
+    nzNumber.setCountryCode(64).setNationalNumber(33316005L);
+    assertTrue(phoneUtil.canBeInternationallyDialled(nzNumber));
   }
 }

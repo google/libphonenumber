@@ -17,6 +17,7 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import junit.framework.TestCase;
@@ -127,8 +128,15 @@ public class ExampleNumbersTest extends TestCase {
   }
 
   public void testPager() throws Exception {
-    Set<PhoneNumberType> voipTypes = EnumSet.of(PhoneNumberType.PAGER);
-    checkNumbersValidAndCorrectType(PhoneNumberType.PAGER, voipTypes);
+    Set<PhoneNumberType> pagerTypes = EnumSet.of(PhoneNumberType.PAGER);
+    checkNumbersValidAndCorrectType(PhoneNumberType.PAGER, pagerTypes);
+    assertEquals(0, invalidCases.size());
+    assertEquals(0, wrongTypeCases.size());
+  }
+
+  public void testUan() throws Exception {
+    Set<PhoneNumberType> uanTypes = EnumSet.of(PhoneNumberType.UAN);
+    checkNumbersValidAndCorrectType(PhoneNumberType.UAN, uanTypes);
     assertEquals(0, invalidCases.size());
     assertEquals(0, wrongTypeCases.size());
   }
@@ -137,6 +145,25 @@ public class ExampleNumbersTest extends TestCase {
     Set<PhoneNumberType> sharedCostTypes = EnumSet.of(PhoneNumberType.SHARED_COST);
     checkNumbersValidAndCorrectType(PhoneNumberType.SHARED_COST, sharedCostTypes);
     assertEquals(0, invalidCases.size());
+    assertEquals(0, wrongTypeCases.size());
+  }
+
+  public void testCanBeInternationallyDialled() throws Exception {
+    for (String regionCode : phoneNumberUtil.getSupportedCountries()) {
+      PhoneNumber exampleNumber = null;
+      PhoneNumberDesc desc =
+          phoneNumberUtil.getMetadataForRegion(regionCode).getNoInternationalDialling();
+      try {
+        if (desc.hasExampleNumber()) {
+          exampleNumber = phoneNumberUtil.parse(desc.getExampleNumber(), regionCode);
+        }
+      } catch (NumberParseException e) {
+        LOGGER.log(Level.SEVERE, e.toString());
+      }
+      if (exampleNumber != null && phoneNumberUtil.canBeInternationallyDialled(exampleNumber)) {
+        wrongTypeCases.add(exampleNumber);
+      }
+    }
     assertEquals(0, wrongTypeCases.size());
   }
 }
