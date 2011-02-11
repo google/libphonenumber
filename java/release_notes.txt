@@ -1,3 +1,7 @@
+Feb 11th, 2011
+* Metadata changes:
+ - Update UAN number ranges for IM and JE.
+
 Feb 9th, 2011
 * Code changes:
   - Better isNumberMatch method. This will now recognise numbers starting with a national prefix as

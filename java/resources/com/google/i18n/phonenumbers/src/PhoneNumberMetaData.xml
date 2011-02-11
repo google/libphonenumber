@@ -7751,11 +7751,21 @@
         <exampleNumber>5612345678</exampleNumber>
       </voip>
       <uan>
+        <!-- 308 162, 33d, 344 040 6, 344 090 6, 345 624, 370 624, 372 299, 55 with 10 digits. -->
         <nationalNumberPattern>
-          (?:
-            3[0347]|
-            55
-          )\d{8}
+          3(?:
+            08162\d|
+            3\d{5}|
+            4(?:
+              40[49]06|
+              5624\d
+            )|
+            7(?:
+              0624\d|
+              2299\d
+            )
+          )\d{3}|
+          55\d{8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5512345678</exampleNumber>
@@ -8767,12 +8777,38 @@
         <exampleNumber>5612345678</exampleNumber>
       </voip>
       <uan>
-        <!-- UAN numbers as per GB. -->
+        <!-- 300 735, 300 781, 308 901, 33d, 344 405, 344 442, 344 469, 344 703, 345 041, 345 800,
+             370 002, 371 206, 55 with 10 digits. -->
         <nationalNumberPattern>
-          (?:
-            3[0347]|
-            55
-          )\d{8}
+          3(?:
+            0(?:
+              07(?:
+                35|
+                81
+              )|
+              8901
+            )|
+            3\d{4}|
+            4(?:
+              4(?:
+                4(?:
+                  05|
+                  42|
+                  69
+                )|
+                703
+              )|
+              5(?:
+                041|
+                800
+              )
+            )|
+            7(?:
+              0002|
+              1206
+            )
+          )\d{4}|
+          55\d{8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5512345678</exampleNumber>
