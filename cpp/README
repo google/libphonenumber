@@ -1,0 +1,45 @@
+
+C++ version of the libphonenumber project.
+Work in progress.
+
+This is a port of the Java version.
+
+This project uses some third-party code:
+  - src/base/ sources come from Chromium browser.
+  - src/utf/ sources come from lib9 which is also used in Go.
+
+Requirements:
+  - CMake build system
+    http://www.cmake.org
+
+    You can install it very easily on a Debian-based GNU/Linux distribution:
+    $ sudo apt-get install cmake
+
+  - RE2
+    http://code.google.com/p/re2/
+
+    You can install it very easily on Ubuntu Maverick and later:
+    $ sudo apt-get install libre2-dev
+
+    Otherwise if you use a Debian-based distribution you can fetch the Ubuntu
+    package which should work:
+    http://packages.ubuntu.com/maverick/libre2-dev
+
+    If you want to install it manually:
+    You need Mercurial to checkout its source code:
+    $ sudo apt-get install mercurial
+
+    Then checkout, build and install it:
+    $ hg clone https://re2.googlecode.com/hg re2
+    $ cd re2
+    $ make test
+    $ make install
+    $ make testinstall
+
+
+How to build libphonenumber C++:
+  $ cd libphonenumber
+  $ mkdir build
+  $ cd build
+  $ cmake ..
+  $ make
