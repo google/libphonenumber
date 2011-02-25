@@ -88,7 +88,7 @@ class LazyInstanceHelper {
     STATE_CREATED  = 2
   };
 
-  explicit LazyInstanceHelper(LinkerInitialized /* x */) { /* state_ is 0 */ }
+  explicit LazyInstanceHelper(LinkerInitialized /*unused*/) {/* state_ is 0 */}
   // Declaring a destructor (even if it's empty) will cause MSVC to register a
   // static initializer to register the empty destructor with atexit().
 
@@ -127,7 +127,7 @@ class LazyInstance : public LazyInstanceHelper {
         NeedsInstance()) {
       // Create the instance in the space provided by |buf_|.
       instance_ = Traits::New(buf_);
-      // Traits::Delete will be null for LeakyLazyInstannceTraits
+      // Traits::Delete will be null for LeakyLazyInstanceTraits
       void (*dtor)(void*) = Traits::Delete;
       CompleteInstance(this, (dtor == NULL) ? NULL : OnExit);
     }
@@ -139,6 +139,19 @@ class LazyInstance : public LazyInstanceHelper {
     // See the corresponding HAPPENS_BEFORE in CompleteInstance(...).
     ANNOTATE_HAPPENS_AFTER(&state_);
     return instance_;
+  }
+
+  bool operator==(Type* p) {
+    switch (base::subtle::NoBarrier_Load(&state_)) {
+      case STATE_EMPTY:
+        return p == NULL;
+      case STATE_CREATING:
+        return static_cast<int8*>(static_cast<void*>(p)) == buf_;
+      case STATE_CREATED:
+        return p == instance_;
+      default:
+        return false;
+    }
   }
 
  private:

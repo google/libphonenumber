@@ -189,7 +189,7 @@ void PlatformThread::SetName(const char* name) {
 // Mac is implemented in platform_thread_mac.mm.
 #else
 // static
-void PlatformThread::SetName(const char* /* name */) {
+void PlatformThread::SetName(const char* /*name*/) {
   // Leave it unimplemented.
 
   // (This should be relatively simple to implement for the BSDs; I
