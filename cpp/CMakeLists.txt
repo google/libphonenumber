@@ -98,6 +98,7 @@ set (
   "src/base/synchronization/lock.cc"
   "src/base/threading/thread_restrictions.cc"
   "src/phonenumberutil.cc"
+  "src/re2_cache.cc"
   "src/stringutil.cc"
   "src/utf/rune.c"
 )
@@ -150,6 +151,7 @@ target_link_libraries (phonenumber re2)
 
 set (TEST_SOURCES
   "src/phonenumberutil_test.cc"
+  "src/re2_cache_test.cc"
   "src/run_tests.cc"
   "src/stringutil_test.cc"
 )
