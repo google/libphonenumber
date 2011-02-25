@@ -13,6 +13,7 @@
 // limitations under the License.
 
 // Author: Shaopeng Jia
+// Author: Lara Rennie
 // Open-sourced by: Philippe Liard
 
 #include <gtest/gtest.h>
