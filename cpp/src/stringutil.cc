@@ -35,7 +35,8 @@ string operator+(const string& s, int n) {
   return result;
 }
 
-string SimpleItoa(int n) {
+template <typename T>
+string GenericSimpleItoa(const T& n) {
   stringstream ss;
 
   ss << n;
@@ -44,6 +45,15 @@ string SimpleItoa(int n) {
 
   return result;
 }
+
+string SimpleItoa(int n) {
+  return GenericSimpleItoa(n);
+}
+
+string SimpleItoa(uint64 n) {
+  return GenericSimpleItoa(n);
+}
+
 
 bool TryStripPrefixString(const string& in, const string& prefix, string* out) {
   assert(out);

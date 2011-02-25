@@ -20,6 +20,8 @@
 #include <cstddef>
 #include <string>
 
+#include <base/basictypes.h>
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -28,7 +30,8 @@ using std::string;
 // Support string("hello") + 10
 string operator+(const string& s, int n);
 
-// Convert integer into string
+// Convert integer to string.
+string SimpleItoa(uint64 n);
 string SimpleItoa(int n);
 
 // Return true if 'in' starts with 'prefix' and write into 'out'
