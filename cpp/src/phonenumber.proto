@@ -54,6 +54,10 @@ message PhoneNumber {
 // necessary automatically.
   optional bool italian_leading_zero = 4;
 
+// The next few fields are non-essential fields for a phone number. They retain extra information
+// about the form the phone number was in when it was provided to us to parse. They can be safely
+// ignored by most clients.
+
 // This field is used to store the raw input string containing phone numbers before it was
 // canonicalized by the library. For example, it could be used to store alphanumerical numbers
 // such as "1-800-GOOG-411".
@@ -83,6 +87,14 @@ message PhoneNumber {
 
 // The source from which the country_code is derived.
   optional CountryCodeSource country_code_source = 6;
+
+// The carrier selection code that is preferred when calling this phone number domestically. This
+// also includes codes that need to be dialed in some countries when calling from landlines to
+// mobiles or vice versa. For example, in Columbia, a "3" needs to be dialed before the phone number
+// itself when calling from a mobile phone to a domestic landline phone and vice versa.
+//
+// Note this is the "preferred" code, which means other codes may work as well.
+  optional string preferred_domestic_carrier_code = 7;
 }
 
 // Examples

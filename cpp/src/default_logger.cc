@@ -30,31 +30,31 @@ DefaultLogger::DefaultLogger(LogLevel level) : level_(level) {}
 DefaultLogger::~DefaultLogger() {}
 
 void DefaultLogger::Fatal(const string& msg) const {
-  if (level_ >= FATAL) {
+  if (level_ >= LOG_FATAL) {
     cerr << "FATAL libphonenumber " << msg << endl;
   }
 }
 
 void DefaultLogger::Error(const string& msg) const {
-  if (level_ >= ERROR) {
+  if (level_ >= LOG_ERROR) {
     cerr << "ERROR libphonenumber " << msg << endl;
   }
 }
 
 void DefaultLogger::Warning(const string& msg) const {
-  if (level_ >= WARNING) {
+  if (level_ >= LOG_WARNING) {
     cerr << "WARNING libphonenumber " << msg << endl;
   }
 }
 
 void DefaultLogger::Info(const string& msg) const {
-  if (level_ >= INFO) {
+  if (level_ >= LOG_INFO) {
     cout << "INFO libphonenumber " << msg << endl;
   }
 }
 
 void DefaultLogger::Debug(const string& msg) const {
-  if (level_ >= DEBUG) {
+  if (level_ >= LOG_DEBUG) {
     cout << "DEBUG libphonenumber " << msg << endl;
   }
 }

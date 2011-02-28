@@ -23,18 +23,18 @@ namespace i18n {
 namespace phonenumbers {
 
 enum LogLevel {
-  FATAL,
-  ERROR,
-  WARNING,
-  INFO,
-  DEBUG,
+  LOG_FATAL,
+  LOG_ERROR,
+  LOG_WARNING,
+  LOG_INFO,
+  LOG_DEBUG,
 };
 
 class DefaultLogger : public LoggerAdapter {
  public:
   virtual ~DefaultLogger();
 
-  DefaultLogger(LogLevel level = WARNING);
+  DefaultLogger(LogLevel level = LOG_WARNING);
 
   virtual void Fatal(const string& msg) const;
 
