@@ -249,53 +249,21 @@ public class BuildMetadataJsonFromXml {
     // missing 0
     jsArrayBuilder.append(null);
     // required PhoneNumberDesc general_desc = 1;
-    if (metadata.hasGeneralDesc()) {
-      toJsArray(metadata.getGeneralDesc(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getGeneralDesc(), jsArrayBuilder);
     // required PhoneNumberDesc fixed_line = 2;
-    if (metadata.hasFixedLine()) {
-      toJsArray(metadata.getFixedLine(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getFixedLine(), jsArrayBuilder);
     // required PhoneNumberDesc mobile = 3;
-    if (metadata.hasMobile()) {
-      toJsArray(metadata.getMobile(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getMobile(), jsArrayBuilder);
     // required PhoneNumberDesc toll_free = 4;
-    if (metadata.hasTollFree()) {
-      toJsArray(metadata.getTollFree(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getTollFree(), jsArrayBuilder);
     // required PhoneNumberDesc premium_rate = 5;
-    if (metadata.hasPremiumRate()) {
-      toJsArray(metadata.getPremiumRate(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getPremiumRate(), jsArrayBuilder);
     // required PhoneNumberDesc shared_cost = 6;
-    if (metadata.hasSharedCost()) {
-      toJsArray(metadata.getSharedCost(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getSharedCost(), jsArrayBuilder);
     // required PhoneNumberDesc personal_number = 7;
-    if (metadata.hasPersonalNumber()) {
-      toJsArray(metadata.getPersonalNumber(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getPersonalNumber(), jsArrayBuilder);
     // required PhoneNumberDesc voip = 8;
-    if (metadata.hasVoip()) {
-      toJsArray(metadata.getVoip(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getVoip(), jsArrayBuilder);
     // required string id = 9;
     jsArrayBuilder.append(metadata.getId());
     // required int32 country_code = 10;
@@ -364,11 +332,7 @@ public class BuildMetadataJsonFromXml {
       jsArrayBuilder.append(null);
     }
     // required PhoneNumberDesc pager = 21;
-    if (metadata.hasPager()) {
-      toJsArray(metadata.getPager(), jsArrayBuilder);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    toJsArray(metadata.getPager(), jsArrayBuilder);
     // optional bool main_country_for_code = 22 [default=false];
     if (metadata.getMainCountryForCode()) {
       jsArrayBuilder.append(1);
@@ -381,6 +345,10 @@ public class BuildMetadataJsonFromXml {
     } else {
       jsArrayBuilder.append(null);
     }
+    // required PhoneNumberDesc no_international_dialling = 24;
+    toJsArray(metadata.getNoInternationalDialling(), jsArrayBuilder);
+    // required PhoneNumberDesc uan = 25;
+    toJsArray(metadata.getUan(), jsArrayBuilder);
 
     jsArrayBuilder.endArray();
   }

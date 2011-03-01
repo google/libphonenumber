@@ -1,7 +1,7 @@
 /*
  * @license
- * Protocol Buffer 2 Copyright 2008 Google Inc
- * All other code copyright its respective owners(s).
+ * Protocol Buffer 2 Copyright 2008 Google Inc.
+ * All other code copyright its respective owners.
  * Copyright (C) 2010 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,6 +27,8 @@ goog.provide('i18n.phonenumbers.PhoneNumber.CountryCodeSource');
 
 goog.require('goog.proto2.Message');
 
+
+
 /**
  * Message PhoneNumber.
  * @constructor
@@ -36,6 +38,15 @@ i18n.phonenumbers.PhoneNumber = function() {
   goog.proto2.Message.apply(this);
 };
 goog.inherits(i18n.phonenumbers.PhoneNumber, goog.proto2.Message);
+
+
+/**
+ * Overrides {@link goog.proto2.Message#clone} to specify its exact return type.
+ * @return {!i18n.phonenumbers.PhoneNumber} The cloned message.
+ * @override
+ */
+i18n.phonenumbers.PhoneNumber.prototype.clone;
+
 
 /**
  * Gets the value of the country_code field.
@@ -60,13 +71,12 @@ i18n.phonenumbers.PhoneNumber.prototype.getCountryCodeOrDefault = function() {
  * @param {number} value The value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.setCountryCode = function(value) {
-  this.set$Value(1, /** @type {Object} */ (value));
+  this.set$Value(1, value);
 };
 
 
 /**
- * Returns whether the country_code field has a value.
- * @return {boolean} true if the field has a value.
+ * @return {boolean} Whether the country_code field has a value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.hasCountryCode = function() {
   return this.has$Value(1);
@@ -74,8 +84,7 @@ i18n.phonenumbers.PhoneNumber.prototype.hasCountryCode = function() {
 
 
 /**
- * Gets the number of values in the country_code field.
- * @return {number}
+ * @return {number} The number of values in the country_code field.
  */
 i18n.phonenumbers.PhoneNumber.prototype.countryCodeCount = function() {
   return this.count$Values(1);
@@ -113,13 +122,12 @@ i18n.phonenumbers.PhoneNumber.prototype.getNationalNumberOrDefault = function() 
  * @param {number} value The value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.setNationalNumber = function(value) {
-  this.set$Value(2, /** @type {Object} */ (value));
+  this.set$Value(2, value);
 };
 
 
 /**
- * Returns whether the national_number field has a value.
- * @return {boolean} true if the field has a value.
+ * @return {boolean} Whether the national_number field has a value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.hasNationalNumber = function() {
   return this.has$Value(2);
@@ -127,8 +135,7 @@ i18n.phonenumbers.PhoneNumber.prototype.hasNationalNumber = function() {
 
 
 /**
- * Gets the number of values in the national_number field.
- * @return {number}
+ * @return {number} The number of values in the national_number field.
  */
 i18n.phonenumbers.PhoneNumber.prototype.nationalNumberCount = function() {
   return this.count$Values(2);
@@ -166,13 +173,12 @@ i18n.phonenumbers.PhoneNumber.prototype.getExtensionOrDefault = function() {
  * @param {string} value The value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.setExtension = function(value) {
-  this.set$Value(3, /** @type {Object} */ (value));
+  this.set$Value(3, value);
 };
 
 
 /**
- * Returns whether the extension field has a value.
- * @return {boolean} true if the field has a value.
+ * @return {boolean} Whether the extension field has a value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.hasExtension = function() {
   return this.has$Value(3);
@@ -180,8 +186,7 @@ i18n.phonenumbers.PhoneNumber.prototype.hasExtension = function() {
 
 
 /**
- * Gets the number of values in the extension field.
- * @return {number}
+ * @return {number} The number of values in the extension field.
  */
 i18n.phonenumbers.PhoneNumber.prototype.extensionCount = function() {
   return this.count$Values(3);
@@ -219,13 +224,12 @@ i18n.phonenumbers.PhoneNumber.prototype.getItalianLeadingZeroOrDefault = functio
  * @param {boolean} value The value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.setItalianLeadingZero = function(value) {
-  this.set$Value(4, /** @type {Object} */ (value));
+  this.set$Value(4, value);
 };
 
 
 /**
- * Returns whether the italian_leading_zero field has a value.
- * @return {boolean} true if the field has a value.
+ * @return {boolean} Whether the italian_leading_zero field has a value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.hasItalianLeadingZero = function() {
   return this.has$Value(4);
@@ -233,8 +237,7 @@ i18n.phonenumbers.PhoneNumber.prototype.hasItalianLeadingZero = function() {
 
 
 /**
- * Gets the number of values in the italian_leading_zero field.
- * @return {number}
+ * @return {number} The number of values in the italian_leading_zero field.
  */
 i18n.phonenumbers.PhoneNumber.prototype.italianLeadingZeroCount = function() {
   return this.count$Values(4);
@@ -272,13 +275,12 @@ i18n.phonenumbers.PhoneNumber.prototype.getRawInputOrDefault = function() {
  * @param {string} value The value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.setRawInput = function(value) {
-  this.set$Value(5, /** @type {Object} */ (value));
+  this.set$Value(5, value);
 };
 
 
 /**
- * Returns whether the raw_input field has a value.
- * @return {boolean} true if the field has a value.
+ * @return {boolean} Whether the raw_input field has a value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.hasRawInput = function() {
   return this.has$Value(5);
@@ -286,8 +288,7 @@ i18n.phonenumbers.PhoneNumber.prototype.hasRawInput = function() {
 
 
 /**
- * Gets the number of values in the raw_input field.
- * @return {number}
+ * @return {number} The number of values in the raw_input field.
  */
 i18n.phonenumbers.PhoneNumber.prototype.rawInputCount = function() {
   return this.count$Values(5);
@@ -325,13 +326,12 @@ i18n.phonenumbers.PhoneNumber.prototype.getCountryCodeSourceOrDefault = function
  * @param {i18n.phonenumbers.PhoneNumber.CountryCodeSource} value The value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.setCountryCodeSource = function(value) {
-  this.set$Value(6, /** @type {Object} */ (value));
+  this.set$Value(6, value);
 };
 
 
 /**
- * Returns whether the country_code_source field has a value.
- * @return {boolean} true if the field has a value.
+ * @return {boolean} Whether the country_code_source field has a value.
  */
 i18n.phonenumbers.PhoneNumber.prototype.hasCountryCodeSource = function() {
   return this.has$Value(6);
@@ -339,8 +339,7 @@ i18n.phonenumbers.PhoneNumber.prototype.hasCountryCodeSource = function() {
 
 
 /**
- * Gets the number of values in the country_code_source field.
- * @return {number}
+ * @return {number} The number of values in the country_code_source field.
  */
 i18n.phonenumbers.PhoneNumber.prototype.countryCodeSourceCount = function() {
   return this.count$Values(6);
@@ -360,50 +359,49 @@ i18n.phonenumbers.PhoneNumber.prototype.clearCountryCodeSource = function() {
  * @enum {number}
  */
 i18n.phonenumbers.PhoneNumber.CountryCodeSource = {
-  FROM_NUMBER_WITH_PLUS_SIGN : 1,
-  FROM_NUMBER_WITH_IDD : 5,
-  FROM_NUMBER_WITHOUT_PLUS_SIGN : 10,
-  FROM_DEFAULT_COUNTRY : 20
+  FROM_NUMBER_WITH_PLUS_SIGN: 1,
+  FROM_NUMBER_WITH_IDD: 5,
+  FROM_NUMBER_WITHOUT_PLUS_SIGN: 10,
+  FROM_DEFAULT_COUNTRY: 20
 };
 
 
-
 goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneNumber, {
-  0 : {
+  0: {
     name: 'PhoneNumber',
     fullName: 'i18n.phonenumbers.PhoneNumber'
   },
-  '1' : {
+  1: {
     name: 'country_code',
     required: true,
     fieldType: goog.proto2.Message.FieldType.INT32,
     type: Number
   },
-  '2' : {
+  2: {
     name: 'national_number',
     required: true,
     fieldType: goog.proto2.Message.FieldType.UINT64,
     type: Number
   },
-  '3' : {
+  3: {
     name: 'extension',
     fieldType: goog.proto2.Message.FieldType.STRING,
     type: String
   },
-  '4' : {
+  4: {
     name: 'italian_leading_zero',
     fieldType: goog.proto2.Message.FieldType.BOOL,
     type: Boolean
   },
-  '5' : {
+  5: {
     name: 'raw_input',
     fieldType: goog.proto2.Message.FieldType.STRING,
     type: String
   },
-  '6' : {
+  6: {
     name: 'country_code_source',
     fieldType: goog.proto2.Message.FieldType.ENUM,
     defaultValue: i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN,
     type: i18n.phonenumbers.PhoneNumber.CountryCodeSource
-  }});
-
+  }
+});

@@ -107,6 +107,26 @@ i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 15;
 
 
 /**
+ * The maximum length of the country code.
+ *
+ * @const
+ * @type {number}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE_ = 3;
+
+
+/**
+ * Region-code for the unknown region.
+ *
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ = 'ZZ';
+
+
+/**
  * The PLUS_SIGN signifies the international prefix.
  *
  * @const
@@ -152,7 +172,17 @@ i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS = {
   '\u0666': '6', // Arabic-indic digit 6
   '\u0667': '7', // Arabic-indic digit 7
   '\u0668': '8', // Arabic-indic digit 8
-  '\u0669': '9'  // Arabic-indic digit 9
+  '\u0669': '9', // Arabic-indic digit 9
+  '\u06F0': '0', // Eastern-Arabic digit 0
+  '\u06F1': '1', // Eastern-Arabic digit 1
+  '\u06F2': '2', // Eastern-Arabic digit 2
+  '\u06F3': '3', // Eastern-Arabic digit 3
+  '\u06F4': '4', // Eastern-Arabic digit 4
+  '\u06F5': '5', // Eastern-Arabic digit 5
+  '\u06F6': '6', // Eastern-Arabic digit 6
+  '\u06F7': '7', // Eastern-Arabic digit 7
+  '\u06F8': '8', // Eastern-Arabic digit 8
+  '\u06F9': '9'  // Eastern-Arabic digit 9
 };
 
 
@@ -229,6 +259,16 @@ i18n.phonenumbers.PhoneNumberUtil.ALL_NORMALIZATION_MAPPINGS_ = {
   '\u0667': '7', // Arabic-indic digit 7
   '\u0668': '8', // Arabic-indic digit 8
   '\u0669': '9', // Arabic-indic digit 9
+  '\u06F0': '0', // Eastern-Arabic digit 0
+  '\u06F1': '1', // Eastern-Arabic digit 1
+  '\u06F2': '2', // Eastern-Arabic digit 2
+  '\u06F3': '3', // Eastern-Arabic digit 3
+  '\u06F4': '4', // Eastern-Arabic digit 4
+  '\u06F5': '5', // Eastern-Arabic digit 5
+  '\u06F6': '6', // Eastern-Arabic digit 6
+  '\u06F7': '7', // Eastern-Arabic digit 7
+  '\u06F8': '8', // Eastern-Arabic digit 8
+  '\u06F9': '9', // Eastern-Arabic digit 9
   'A': '2',
   'B': '2',
   'C': '2',
@@ -274,6 +314,7 @@ i18n.phonenumbers.PhoneNumberUtil.LEADING_ZERO_COUNTRIES_ = {
   241: 1,  // Gabon
   242: 1,  // Congo (Rep. of the)
   268: 1,  // Swaziland
+  378: 1,  // San Marino
   379: 1,  // Vatican City
   501: 1   // Belize
 };
@@ -313,14 +354,15 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ =
 
 
 /**
- * Digits accepted in phone numbers (ascii, fullwidth, and arabic-indic digits).
+ * Digits accepted in phone numbers (ascii, fullwidth, arabic-indic, and eastern
+ * arabic digits).
  *
  * @const
  * @type {string}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ =
-    '0-9\uFF10-\uFF19\u0660-\u0669';
+    '0-9\uFF10-\uFF19\u0660-\u0669\u06F0-\u06F9';
 
 
 /**
@@ -429,6 +471,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_PHONE_PATTERN_ =
  * numbers. We also allow multiple '+' characters at the start.
  * Corresponds to the following:
  * plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
+ * Note VALID_PUNCTUATION starts with a -, so must be the first in the range.
  *
  * @const
  * @type {string}
@@ -438,8 +481,8 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
     '[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']*(?:[' +
     i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ + ']*[' +
     i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']){3,}[' +
-    i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ +
     i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ +
+    i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ +
     i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']*';
 
 
@@ -591,9 +634,13 @@ i18n.phonenumbers.PhoneNumberType = {
   // here: http://en.wikipedia.org/wiki/Personal_Numbers
   PERSONAL_NUMBER: 7,
   PAGER: 8,
+  // Used for "Universal Access Numbers" or "Company Numbers". They may be
+  // further routed to specific offices, but allow one number to be used for a
+  // company.
+  UAN: 9,
   // A phone number is of type UNKNOWN when it does not fit any of the known
   // patterns for a specific country.
-  UNKNOWN: 9
+  UNKNOWN: 10
 };
 
 
@@ -604,10 +651,11 @@ i18n.phonenumbers.PhoneNumberType = {
  * @enum {number}
  */
 i18n.phonenumbers.PhoneNumberUtil.MatchType = {
-  NO_MATCH: 0,
-  SHORT_NSN_MATCH: 1,
-  NSN_MATCH: 2,
-  EXACT_MATCH: 3
+  NOT_A_NUMBER: 0,
+  NO_MATCH: 1,
+  SHORT_NSN_MATCH: 2,
+  NSN_MATCH: 3,
+  EXACT_MATCH: 4
 };
 
 
@@ -810,8 +858,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
   if (number == null) {
     return 0;
   }
-  /** @type {string} */
-  var regionCode = /** @type {string} */ (this.getRegionCodeForNumber(number));
+  /** @type {?string} */
+  var regionCode = this.getRegionCodeForNumber(number);
   if (!this.isValidRegionCode_(regionCode)) {
     return 0;
   }
@@ -1567,6 +1615,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberDescByType_ =
       return metadata.getPersonalNumber();
     case i18n.phonenumbers.PhoneNumberType.PAGER:
       return metadata.getPager();
+    case i18n.phonenumbers.PhoneNumberType.UAN:
+      return metadata.getUan();
     default:
       return metadata.getGeneralDesc();
   }
@@ -1583,8 +1633,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberDescByType_ =
 i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberType =
     function(number) {
 
-  /** @type {string} */
-  var regionCode = /** @type {string} */ (this.getRegionCodeForNumber(number));
+  /** @type {?string} */
+  var regionCode = this.getRegionCodeForNumber(number);
   if (!this.isValidRegionCode_(regionCode)) {
     return i18n.phonenumbers.PhoneNumberType.UNKNOWN;
   }
@@ -1628,9 +1678,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberTypeHelper_ =
                                  metadata.getPersonalNumber())) {
     return i18n.phonenumbers.PhoneNumberType.PERSONAL_NUMBER;
   }
-  if (this.isNumberMatchingDesc_(nationalNumber,
-                                 metadata.getPager())) {
+  if (this.isNumberMatchingDesc_(nationalNumber, metadata.getPager())) {
     return i18n.phonenumbers.PhoneNumberType.PAGER;
+  }
+  if (this.isNumberMatchingDesc_(nationalNumber, metadata.getUan())) {
+    return i18n.phonenumbers.PhoneNumberType.UAN;
   }
 
   /** @type {boolean} */
@@ -1713,10 +1765,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
  *     pattern.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumber = function(number) {
-  /** @type {string} */
-  var regionCode = /** @type {string} */ (this.getRegionCodeForNumber(number));
+  /** @type {?string} */
+  var regionCode = this.getRegionCodeForNumber(number);
   return this.isValidRegionCode_(regionCode) &&
-      this.isValidNumberForRegion(number, regionCode);
+      this.isValidNumberForRegion(number, /** @type {string} */ (regionCode));
 };
 
 
@@ -1846,7 +1898,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForCountryCode =
   /** @type {Array.<string>} */
   var regionCodes =
       i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCode];
-  return regionCodes == null ? 'ZZ' : regionCodes[0];
+  return regionCodes == null ?
+      i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ : regionCodes[0];
 };
 
 
@@ -2129,7 +2182,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
   var potentialCountryCode;
   /** @type {number} */
   var numberLength = fullNumberStr.length;
-  for (var i = 1; i <= 3 && i <= numberLength; ++i) {
+  for (var i = 1;
+      i <= i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE_ &&
+      i <= numberLength; ++i) {
     potentialCountryCode = parseInt(fullNumberStr.substring(0, i), 10);
     if (potentialCountryCode in
         i18n.phonenumbers.metadata.countryCodeToRegionCodeMap) {
@@ -2474,6 +2529,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeStripExtension =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
     numberToParse, defaultCountry) {
+  // If the number is null or empty, we can't guess the country code.
   return this.isValidRegionCode_(defaultCountry) ||
       (numberToParse != null && numberToParse.length > 0 &&
           i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_.test(
@@ -2681,30 +2737,77 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
  * @param {i18n.phonenumbers.PhoneNumber|string} secondNumberIn second number to
  *     compare. If it is a string it can contain formatting, and can have
  *     country code specified with + at the start.
- * @return {i18n.phonenumbers.PhoneNumberUtil.MatchType} NO_MATCH,
+ * @return {i18n.phonenumbers.PhoneNumberUtil.MatchType} NOT_A_NUMBER, NO_MATCH,
  *     SHORT_NSN_MATCH, NSN_MATCH or EXACT_MATCH depending on the level of
  *     equality of the two numbers, described in the method definition.
- * @throws {i18n.phonenumbers.Error} if either number is not considered to be
- *     a viable phone number.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
     function(firstNumberIn, secondNumberIn) {
 
+  // If the input arguements are strings parse them to a proto buffer format.
+  // Else make copies of the phone numbers so that the numbers passed in are not
+  // edited.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var firstNumber;
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var secondNumber;
-  // If the input arguements are strings parse them to a proto buffer format.
-  // Else make copies of the phone numbers so that the numbers passed in are not
-  // edited.
   if (typeof firstNumberIn == 'string') {
-    firstNumber = this.parseHelper_(firstNumberIn, null, false, false);
+    // First see if the first number has an implicit country code, by attempting
+    // to parse it.
+    try {
+      firstNumber = this.parse(
+          firstNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
+    } catch (e) {
+      if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
+        return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
+      }
+      // The first number has no country code. EXACT_MATCH is no longer
+      // possible. We parse it as if the region was the same as that for the
+      // second number, and if EXACT_MATCH is returned, we replace this with
+      // NSN_MATCH.
+      if (typeof secondNumberIn != 'string') {
+        /** @type {string} */
+        var secondNumberRegion = this.getRegionCodeForCountryCode(
+            secondNumberIn.getCountryCodeOrDefault());
+        if (secondNumberRegion !=
+            i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_) {
+          try {
+            firstNumber = this.parse(firstNumberIn, secondNumberRegion);
+          } catch (e2) {
+            return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
+          }
+          /** @type {i18n.phonenumbers.PhoneNumberUtil.MatchType} */
+          var match = this.isNumberMatch(firstNumber, secondNumberIn);
+          if (match ==
+              i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH) {
+            return i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH;
+          }
+          return match;
+        }
+      }
+      // If the second number is a string or doesn't have a valid country code,
+      // we parse the first number without country code.
+      try {
+        firstNumber = this.parseHelper_(firstNumberIn, null, false, false);
+      } catch (e2) {
+        return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
+      }
+    }
   } else {
     firstNumber = new i18n.phonenumbers.PhoneNumber();
     firstNumber.mergeFrom(firstNumberIn);
   }
   if (typeof secondNumberIn == 'string') {
-    secondNumber = this.parseHelper_(secondNumberIn, null, false, false);
+    try {
+      secondNumber = this.parse(
+          secondNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
+      return this.isNumberMatch(firstNumberIn, secondNumber);
+    } catch (e) {
+      if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
+        return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
+      }
+      return this.isNumberMatch(secondNumberIn, firstNumber);
+    }
   } else {
     secondNumber = new i18n.phonenumbers.PhoneNumber();
     secondNumber.mergeFrom(secondNumberIn);
@@ -2785,6 +2888,35 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNationalNumberSuffixOfTheOther_ =
                               secondNumberNationalNumber) ||
          goog.string.endsWith(secondNumberNationalNumber,
                               firstNumberNationalNumber);
+};
+
+
+/**
+ * Returns true if the number can only be dialled from within the country. If
+ * unknown, or the number can be dialled from outside the country as well,
+ * returns false. Does not check the number is a valid number.
+ * TODO: Make this method public when we have enough metadata to make it
+ * worthwhile. Currently visible for testing purposes only.
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone-number for which we
+ *     want to know whether it is only diallable from within the country.
+ * @return {boolean} true if the number can only be dialled from within the
+ *     country.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
+    function(number) {
+  /** @type {?string} */
+  var regionCode = this.getRegionCodeForNumber(number);
+  /** @type {string} */
+  var nationalSignificantNumber =
+      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  if (!this.isValidRegionCode_(regionCode)) {
+    return true;
+  }
+  /** @type {i18n.phonenumbers.PhoneMetadata} */
+  var metadata = this.getMetadataForRegion(regionCode);
+  return !this.isNumberMatchingDesc_(nationalSignificantNumber,
+                                     metadata.getNoInternationalDialling());
 };
 
 
