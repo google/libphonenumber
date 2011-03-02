@@ -143,12 +143,12 @@ if (UNIX)
 
     if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86.*")
       add_definitions ("-DARCH_CPU_X86_FAMILY")
-
       # Add GCC specific sources
       list (APPEND SOURCES "src/base/atomicops_internals_x86_gcc.cc")
-    endif ()
 
-    # TODO: add support for ARCM arch
+    elseif (${CMAKE_SYSTEM_PROCESSOR} MATCHES ".*arm.*")
+      add_definitions ("-DARCH_CPU_ARM_FAMILY")
+    endif ()
   endif ()
 
   # Add POSIX specific sources
