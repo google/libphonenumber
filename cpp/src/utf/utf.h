@@ -16,7 +16,10 @@
 #ifndef _UTFH_
 #define _UTFH_ 1
 
-#include <stdint.h>
+// stdint.h content doesn't seem to be used in this file and doesn't exist on
+// Windows, therefore we comment it out here so that the code could be compiled
+// on Windows.
+//#include <stdint.h>
 
 typedef signed int Rune;	/* Code-point values in Unicode 4.0 are 21 bits wide.*/
 
