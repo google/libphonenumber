@@ -1,4 +1,3 @@
-
 C++ version of the libphonenumber project.
 Work in progress.
 
@@ -35,6 +34,12 @@ Requirements:
     $ make test
     $ make install
     $ make testinstall
+
+  - ICU
+    http://userguide.icu-project.org/
+
+    You can install it very easily on a Debian-based distribution:
+    $ sudo apt-get install libicu-dev
 
 
 How to build libphonenumber C++:
