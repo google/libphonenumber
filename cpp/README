@@ -14,6 +14,18 @@ Requirements:
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install cmake
 
+  - Protocol Buffers
+    http://code.google.com/p/protobuf/
+
+    You can install it very easily on a Debian-based GNU/Linux distribution:
+    $ sudo apt-get install libprotobuf-dev
+
+  - Google Test
+    http://code.google.com/p/googletest/
+
+    You can install it very easily on a Debian-based GNU/Linux distribution:
+    $ sudo apt-get install libgtest-dev
+
   - RE2
     http://code.google.com/p/re2/
 
@@ -46,5 +58,5 @@ How to build libphonenumber C++:
   $ cd libphonenumber
   $ mkdir build
   $ cd build
-  $ cmake ..
+  $ cmake ../cpp/
   $ make

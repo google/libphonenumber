@@ -64,6 +64,22 @@ if (PROTOC STREQUAL "PROTOC-NOTFOUND")
       "Please read README.")
 endif ()
 
+# Find Protocol Buffers library
+find_path (PROTOBUF_INCLUDE_DIR google/protobuf/message_lite.h)
+
+if (PROTOBUF_INCLUDE_DIR STREQUAL "PROTOBUF_INCLUDE_DIR-NOTFOUND")
+  message (FATAL_ERROR
+    "Can't find Google Protocol headers. Please read README.")
+endif ()
+
+include_directories (${PROTOBUF_INCLUDE_DIR})
+
+find_library (PROTOBUF_LIB protobuf)
+
+if (PROTOBUF_LIB STREQUAL "PROTOBUF_LIB-NOTFOUND")
+  message (FATAL_ERROR
+    "Can't find Google Protocol Buffers library. Please read README.")
+endif ()
 
 # Find ICU
 find_path (ICU_INCLUDE_DIR unicode/unistr.h unicode/normlzr.h)
@@ -176,7 +192,7 @@ include_directories (".")
 add_library (phonenumber STATIC ${SOURCES})
 add_dependencies (phonenumber generate-sources)
 
-target_link_libraries (phonenumber re2 protobuf icui18n)
+target_link_libraries (phonenumber ${RE2_LIB} ${PROTOBUF_LIB} ${ICU_LIB})
 
 # Tests
 
@@ -190,4 +206,4 @@ set (TEST_SOURCES
 
 add_executable (libphonenumber_test ${TEST_SOURCES})
 
-target_link_libraries (libphonenumber_test phonenumber gtest pthread)
+target_link_libraries (libphonenumber_test phonenumber ${GTEST_LIB} pthread)
