@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.googlecode.libphonenumber</groupId>
+  <artifactId>libphonenumber</artifactId>
+  <version>2.6-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>libphonenumber</name>
+  <url>http://code.google.com/p/libphonenumber/</url>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>6</version>
+  </parent>
+
+  <description>
+    Google's common Java library for parsing, formatting, storing and validating international phone numbers.
+    Optimized for running on smartphones.
+  </description>
+
+  <organization>
+    <name>Google</name>
+    <url>http://www.google.com/</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>http://code.google.com/p/libphonenumber/source/browse/</url>
+    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/</connection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>jia.shao.peng</id>
+      <name>Shaopeng Jia</name>
+      <email>jia.shao.peng@gmail.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>owner</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>lararennie</id>
+      <name>Lara Rennie</name>
+      <email>lararennie@google.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <contributors>
+    <contributor>
+      <name>tronikos</name>
+      <email>tronikos@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>g1smd.email</name>
+      <email>g1smd.email@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>Philippe Liard</name>
+      <email>philip.liard@gmail.com</email>
+    </contributor>
+  </contributors>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/com/google/i18n/phonenumbers/data</directory>
+        <targetPath>com/google/i18n/phonenumbers/data</targetPath>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>test/com/google/i18n/phonenumbers/data</directory>
+        <targetPath>com/google/i18n/phonenumbers/data</targetPath>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.1</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>
