@@ -83,6 +83,31 @@
 
 <phoneNumberMetadata>
   <territories>
+    <!-- Ascension Island -->
+    <!-- www.itu.int/oth/T02020000AF -->
+    <territory id="AC" countryCode="247" internationalPrefix="00">
+      <!-- Formatted as a block. -->
+      <generalDesc>
+        <nationalNumberPattern>[2-46]\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>
+          (?:
+            3[0-5]|
+            4[4-6]|
+            [26]\d
+          )\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>6889</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </mobile>
+    </territory>
+
     <!-- Andorra -->
     <!-- http://www.itu.int/oth/T0202000005/en -->
     <territory id="AD" countryCode="376" internationalPrefix="00">

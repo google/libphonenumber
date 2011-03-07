@@ -108,6 +108,7 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
 ,244:["AO"]
 ,245:["GW"]
 ,246:["IO"]
+,247:["AC"]
 ,248:["SC"]
 ,249:["SD"]
 ,250:["RW"]
@@ -242,7 +243,19 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
  * @type {Object.<string, Array>}
  */
 i18n.phonenumbers.metadata.countryToMetadata = {
-"AD":[,[,,"(?:[346-9]|180)\\d{5}","\\d{6,8}"]
+"AC":[,[,,"[2-46]\\d{3}","\\d{4}"]
+,[,,"(?:3[0-5]|4[4-6]|[26]\\d)\\d{2}","\\d{4}"]
+,[,,"NA","NA"]
+,[,,"NA","NA"]
+,[,,"NA","NA"]
+,[,,"NA","NA"]
+,[,,"NA","NA"]
+,[,,"NA","NA"]
+,"AC",247,"00",,,,,,,,,,[,,"NA","NA"]
+,,,[,,"NA","NA"]
+,[,,"NA","NA"]
+]
+,"AD":[,[,,"(?:[346-9]|180)\\d{5}","\\d{6,8}"]
 ,[,,"[78]\\d{5}","\\d{6}"]
 ,[,,"[346]\\d{5}","\\d{6}"]
 ,[,,"180[02]\\d{4}","\\d{8}"]
