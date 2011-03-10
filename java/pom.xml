@@ -32,8 +32,9 @@
   </licenses>
 
   <scm>
-    <url>http://code.google.com/p/libphonenumber/source/browse/tags/libphonenumber-3.0</url>
-    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/tags/libphonenumber-3.0</connection>
+    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/</connection>
+    <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/trunk/</developerConnection>
+    <url>http://libphonenumber.googlecode.com/svn/trunk/</url>
   </scm>
 
   <developers>
