@@ -1,3 +1,7 @@
+Mar 10th, 2011
+* Code changes:
+  - releasing the code to run the demo on localhost or appengine.
+
 Mar 3rd, 2011
 * Metadata changes:
  - Adding support for AC
