@@ -35,6 +35,10 @@ import java.util.Map;
  */
 public class BuildMetadataProtoFromXml {
   private static final String PACKAGE_NAME = PhoneNumberUtil.class.getPackage().getName();
+  private static final String TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
+      "CountryCodeToRegionCodeMapForTesting";
+  private static final String COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
+      "CountryCodeToRegionCodeMap";
 
   private static final String HELP_MESSAGE =
       "Usage:\n" +
@@ -54,7 +58,7 @@ public class BuildMetadataProtoFromXml {
       "  <outputDir>" + PhoneNumberUtil.META_DATA_FILE_PREFIX + "_*\n" +
       "Mapping file will be stored in:\n" +
       "  <outputDir>/" + PACKAGE_NAME.replaceAll("\\.", "/") + "/" +
-          PhoneNumberUtil.COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME + ".java\n" +
+          COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME + ".java\n" +
       "\n" +
       "Example command line invocation:\n" +
       "BuildMetadataProtoFromXml PhoneNumberMetadata.xml src false false\n";
@@ -134,9 +138,9 @@ public class BuildMetadataProtoFromXml {
       String outputDir, boolean forTesting) throws IOException {
     String mappingClassName;
     if (forTesting) {
-      mappingClassName = PhoneNumberUtilTest.TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
+      mappingClassName = TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
     } else {
-      mappingClassName = PhoneNumberUtil.COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
+      mappingClassName = COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
     }
     String mappingFile =
         outputDir + "/" + PACKAGE_NAME.replaceAll("\\.", "/") + "/" + mappingClassName + ".java";

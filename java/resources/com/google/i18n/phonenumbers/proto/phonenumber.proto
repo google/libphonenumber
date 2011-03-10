@@ -24,6 +24,8 @@ option optimize_for = LITE_RUNTIME;
 package i18n.phonenumbers;
 
 message PhoneNumber {
+// The country calling code for this number, as defined by the International Telecommunication Union
+// (ITU). Fox example, this would be 1 for NANPA countries, and 33 for France.
   required int32 country_code = 1;
 
 // National (significant) Number is defined in International Telecommunication Union Recommendation
@@ -41,15 +43,23 @@ message PhoneNumber {
 // as there is no standard defined). However, only ASCII digits should be stored here.
   optional string extension = 3;
 
-// The leading zero in the national (significant) number of an Italian phone number has a special
-// meaning. Unlike the rest of the world, it indicates the number is a fixed-line number. There have
-// been plans to migrate fixed-line numbers to start with the digit two since December 2000, but it
-// has not happened yet. See http://en.wikipedia.org/wiki/%2B39 for more details.
+// In some countries, the national (significant) number starts with a "0" without this being a
+// national prefix or trunk code of some kind. For example, the leading zero in the national
+// (significant) number of an Italian phone number indicates the number is a fixed-line number.
+// There have been plans to migrate fixed-line numbers to start with the digit two since December
+// 2000, but it has not happened yet. See http://en.wikipedia.org/wiki/%2B39 for more details.
 //
-// This field can be safely ignored (no need to set it) if you are not dealing with Italian
-// phone numbers. For an Italian phone number, if its national (significant) number starts
-// with the digit zero, set this flag to true.
+// This field can be safely ignored (there is no need to set it) for most countries. Some limited
+// amount of countries behave like Italy - for these cases, if the leading zero of a number would be
+// retained even when dialling internationally, set this flag to true.
+//
+// Clients who use the parsing functionality of the i18n phone number libraries
+// will have this field set if necessary automatically.
   optional bool italian_leading_zero = 4;
+
+// The next few fields are non-essential fields for a phone number. They retain extra information
+// about the form the phone number was in when it was provided to us to parse. They can be safely
+// ignored by most clients.
 
 // This field is used to store the raw input string containing phone numbers before it was
 // canonicalized by the library. For example, it could be used to store alphanumerical numbers
@@ -80,6 +90,14 @@ message PhoneNumber {
 
 // The source from which the country_code is derived.
   optional CountryCodeSource country_code_source = 6;
+
+// The carrier selection code that is preferred when calling this phone number domestically. This
+// also includes codes that need to be dialed in some countries when calling from landlines to
+// mobiles or vice versa. For example, in Columbia, a "3" needs to be dialed before the phone number
+// itself when calling from a mobile phone to a domestic landline phone and vice versa.
+//
+// Note this is the "preferred" code, which means other codes may work as well.
+  optional string preferred_domestic_carrier_code = 7;
 }
 
 // Examples

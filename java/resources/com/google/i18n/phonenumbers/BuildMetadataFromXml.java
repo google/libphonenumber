@@ -123,9 +123,6 @@ public class BuildMetadataFromXml {
       String preferredInternationalPrefix = element.getAttribute("preferredInternationalPrefix");
       metadata.setPreferredInternationalPrefix(preferredInternationalPrefix);
     }
-    String nationalPrefix = "";
-    String nationalPrefixFormattingRule = "";
-    String carrierCodeFormattingRule = "";
     if (element.hasAttribute("nationalPrefixForParsing")) {
       metadata.setNationalPrefixForParsing(
           validateRE(element.getAttribute("nationalPrefixForParsing")));
@@ -134,6 +131,8 @@ public class BuildMetadataFromXml {
             validateRE(element.getAttribute("nationalPrefixTransformRule")));
       }
     }
+    String nationalPrefix = "";
+    String nationalPrefixFormattingRule = "";
     if (element.hasAttribute("nationalPrefix")) {
       nationalPrefix = element.getAttribute("nationalPrefix");
       metadata.setNationalPrefix(nationalPrefix);
@@ -143,6 +142,11 @@ public class BuildMetadataFromXml {
       if (!metadata.hasNationalPrefixForParsing()) {
         metadata.setNationalPrefixForParsing(nationalPrefix);
       }
+    }
+    String carrierCodeFormattingRule = "";
+    if (element.hasAttribute("carrierCodeFormattingRule")) {
+      carrierCodeFormattingRule = validateRE(
+          getDomesticCarrierCodeFormattingRuleFromElement(element, nationalPrefix));
     }
     if (element.hasAttribute("preferredExtnPrefix")) {
       metadata.setPreferredExtnPrefix(element.getAttribute("preferredExtnPrefix"));

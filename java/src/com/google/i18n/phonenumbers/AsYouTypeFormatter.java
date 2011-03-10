@@ -55,7 +55,7 @@ public class AsYouTypeFormatter {
 
   // A pattern that is used to match character classes in regular expressions. An example of a
   // character class is [1-4].
-  private final Pattern CHARACTER_CLASS_PATTERN = Pattern.compile("\\[([^\\[\\]])*\\]");
+  private static final Pattern CHARACTER_CLASS_PATTERN = Pattern.compile("\\[([^\\[\\]])*\\]");
   // Any digit in a regular expression that actually denotes a digit. For example, in the regular
   // expression 80[0-2]\d{6,10}, the first 2 digits (8 and 0) are standalone digits, but the rest
   // are not.
@@ -89,8 +89,8 @@ public class AsYouTypeFormatter {
   private RegexCache regexCache = new RegexCache(64);
 
   /**
-   * Constructs a light-weight formatter which does no formatting, but outputs exactly what is
-   * fed into the inputDigit method.
+   * Constructs an as-you-type formatter. Should be obtained from {@link
+   * PhoneNumberUtil#getAsYouTypeFormatter}.
    *
    * @param regionCode  the country/region where the phone number is being entered
    */
@@ -102,6 +102,11 @@ public class AsYouTypeFormatter {
 
   private void initializeCountrySpecificInfo(String regionCode) {
     currentMetaData = phoneUtil.getMetadataForRegion(regionCode);
+    if (currentMetaData == null) {
+      // Set to a default instance of the metadata. This allows us to function with an incorrect
+      // region code, even if formatting only works for numbers specified with "+".
+      currentMetaData = new PhoneMetadata().setInternationalPrefix("NA");
+    }
     nationalPrefixForParsing =
         regexCache.getPatternForRegex(currentMetaData.getNationalPrefixForParsing());
     internationalPrefix =
@@ -170,8 +175,12 @@ public class AsYouTypeFormatter {
     // Replace any standalone digit (not the one in d{}) with \d
     numberPattern = STANDALONE_DIGIT_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
     formattingTemplate.setLength(0);
-    formattingTemplate.append(getFormattingTemplate(numberPattern, numberFormat));
-    return true;
+    String tempTemplate = getFormattingTemplate(numberPattern, numberFormat);
+    if (tempTemplate.length() > nationalNumber.length()) {
+      formattingTemplate.append(tempTemplate);
+      return true;
+    }
+    return false;
   }
 
   // Gets a formatting template which could be used to efficiently format a partial number where
@@ -236,7 +245,7 @@ public class AsYouTypeFormatter {
     return currentOutput;
   }
 
-  @SuppressWarnings(value = "fallthrough")
+  @SuppressWarnings("fallthrough")
   private String inputDigitWithOptionToRememberPosition(char nextChar, boolean rememberPosition) {
     accruedInput.append(nextChar);
     if (rememberPosition) {
@@ -323,8 +332,7 @@ public class AsYouTypeFormatter {
     if (!ableToFormat) {
       return originalPosition;
     }
-    int accruedInputIndex = 0;
-    int currentOutputIndex = 0;
+    int accruedInputIndex = 0, currentOutputIndex = 0;
     int currentOutputLength = currentOutput.length();
     while (accruedInputIndex < positionToRemember && currentOutputIndex < currentOutputLength) {
       if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
@@ -466,8 +474,13 @@ public class AsYouTypeFormatter {
       formattingTemplate.replace(0, tempTemplate.length(), tempTemplate);
       lastMatchPosition = digitMatcher.start();
       return formattingTemplate.substring(0, lastMatchPosition + 1);
-    } else {  // More digits are entered than we could handle.
-      ableToFormat = false;
+    } else {
+      if (possibleFormats.size() == 1) {
+        // More digits are entered than we could handle, and there are no other valid patterns to
+        // try.
+        ableToFormat = false;
+      }  // else, we just reset the formatting pattern.
+      currentFormattingPattern = "";
       return accruedInput.toString();
     }
   }

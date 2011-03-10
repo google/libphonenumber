@@ -15,7 +15,7 @@
  */
 
 /**
- * Definition of the class representing international telephone numbers. This class is hand created
+ * Definition of the class representing international telephone numbers. This class is hand-created
  * based on the class file compiled from phonenumber.proto. Please refer to that file for detailed
  * descriptions of the meaning of each field.
  */
@@ -141,6 +141,25 @@ public final class Phonenumber {
       return this;
     }
 
+    // optional string preferred_domestic_carrier_code = 7;
+    private boolean hasPreferredDomesticCarrierCode;
+    private java.lang.String preferredDomesticCarrierCode_ = "";
+    public boolean hasPreferredDomesticCarrierCode() { return hasPreferredDomesticCarrierCode; }
+    public String getPreferredDomesticCarrierCode() { return preferredDomesticCarrierCode_; }
+    public PhoneNumber setPreferredDomesticCarrierCode(String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasPreferredDomesticCarrierCode = true;
+      preferredDomesticCarrierCode_ = value;
+      return this;
+    }
+    public PhoneNumber clearPreferredDomesticCarrierCode() {
+      hasPreferredDomesticCarrierCode = false;
+      preferredDomesticCarrierCode_ = "";
+      return this;
+    }
+
     public final PhoneNumber clear() {
       clearCountryCode();
       clearNationalNumber();
@@ -148,6 +167,7 @@ public final class Phonenumber {
       clearItalianLeadingZero();
       clearRawInput();
       clearCountryCodeSource();
+      clearPreferredDomesticCarrierCode();
       return this;
     }
 
@@ -170,6 +190,9 @@ public final class Phonenumber {
       if (other.hasCountryCodeSource()) {
         setCountryCodeSource(other.getCountryCodeSource());
       }
+      if (other.hasPreferredDomesticCarrierCode()) {
+        setPreferredDomesticCarrierCode(other.getPreferredDomesticCarrierCode());
+      }
       return this;
     }
 
@@ -182,7 +205,9 @@ public final class Phonenumber {
       }
       return (countryCode_ == other.countryCode_ && nationalNumber_ == other.nationalNumber_ &&
           extension_.equals(other.extension_) && italianLeadingZero_ == other.italianLeadingZero_ &&
-          rawInput_.equals(other.rawInput_) && countryCodeSource_ == other.countryCodeSource_);
+          rawInput_.equals(other.rawInput_) && countryCodeSource_ == other.countryCodeSource_ &&
+          preferredDomesticCarrierCode_.equals(other.preferredDomesticCarrierCode_) &&
+          hasPreferredDomesticCarrierCode() == other.hasPreferredDomesticCarrierCode());
     }
 
     @Override
@@ -195,7 +220,7 @@ public final class Phonenumber {
       // Simplified rendition of the hashCode function automatically generated from the proto
       // compiler with java_generate_equals_and_hash set to true. We are happy with unset values to
       // be considered equal to their explicitly-set equivalents, so don't check if any value is
-      // unknown.
+      // unknown. The only exception to this is the preferred domestic carrier code.
       int hash = 41;
       hash = (53 * hash) + getCountryCode();
       hash = (53 * hash) + Long.valueOf(getNationalNumber()).hashCode();
@@ -203,6 +228,8 @@ public final class Phonenumber {
       hash = (53 * hash) + (getItalianLeadingZero() ? 1231 : 1237);
       hash = (53 * hash) + getRawInput().hashCode();
       hash = (53 * hash) + getCountryCodeSource().hashCode();
+      hash = (53 * hash) + getPreferredDomesticCarrierCode().hashCode();
+      hash = (53 * hash) + (hasPreferredDomesticCarrierCode() ? 1231 : 1237);
       return hash;
     }
 
@@ -219,6 +246,10 @@ public final class Phonenumber {
       }
       if (hasCountryCodeSource()) {
         outputString.append(" Country Code Source: ").append(countryCodeSource_);
+      }
+      if (hasPreferredDomesticCarrierCode()) {
+        outputString.append(" Preferred Domestic Carrier Code: ").
+            append(preferredDomesticCarrierCode_);
       }
       return outputString.toString();
     }

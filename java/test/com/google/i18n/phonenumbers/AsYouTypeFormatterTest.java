@@ -19,7 +19,7 @@ package com.google.i18n.phonenumbers;
 import junit.framework.TestCase;
 
 /**
- * Unit tests for PhoneNumberUtil.java
+ * Unit tests for AsYouTypeFormatter.java
  *
  * Note that these tests use the metadata contained in the files with TEST_META_DATA_FILE_PREFIX,
  * not the normal metadata files, so should not be used for regression test purposes - these tests
@@ -31,7 +31,29 @@ public class AsYouTypeFormatterTest extends TestCase {
   private PhoneNumberUtil phoneUtil;
 
   public AsYouTypeFormatterTest() {
-    phoneUtil = (new PhoneNumberUtilTest()).initilizePhoneUtilForTesting();
+    phoneUtil = PhoneNumberUtilTest.initializePhoneUtilForTesting();
+  }
+
+  public void testInvalidRegion() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("ZZ");
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+4", formatter.inputDigit('4'));
+    assertEquals("+48 ", formatter.inputDigit('8'));
+    assertEquals("+48 8", formatter.inputDigit('8'));
+    assertEquals("+48 88", formatter.inputDigit('8'));
+    assertEquals("+48 88 1", formatter.inputDigit('1'));
+    assertEquals("+48 88 12", formatter.inputDigit('2'));
+    assertEquals("+48 88 123", formatter.inputDigit('3'));
+    assertEquals("+48 88 123 1", formatter.inputDigit('1'));
+    assertEquals("+48 88 123 12", formatter.inputDigit('2'));
+
+    formatter.clear();
+    assertEquals("6", formatter.inputDigit('6'));
+    assertEquals("65", formatter.inputDigit('5'));
+    assertEquals("650", formatter.inputDigit('0'));
+    assertEquals("6502", formatter.inputDigit('2'));
+    assertEquals("65025", formatter.inputDigit('5'));
+    assertEquals("650253", formatter.inputDigit('3'));
   }
 
   public void testAYTFUS() {
@@ -374,13 +396,25 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("030 123", formatter.inputDigit('3'));
     assertEquals("030 1234", formatter.inputDigit('4'));
 
+    // 04134 1234
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("04", formatter.inputDigit('4'));
+    assertEquals("041", formatter.inputDigit('1'));
+    assertEquals("041 3", formatter.inputDigit('3'));
+    assertEquals("041 34", formatter.inputDigit('4'));
+    assertEquals("04134 1", formatter.inputDigit('1'));
+    assertEquals("04134 12", formatter.inputDigit('2'));
+    assertEquals("04134 123", formatter.inputDigit('3'));
+    assertEquals("04134 1234", formatter.inputDigit('4'));
+
     // 08021 2345
     formatter.clear();
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("08", formatter.inputDigit('8'));
     assertEquals("080", formatter.inputDigit('0'));
-    assertEquals("0802", formatter.inputDigit('2'));
-    assertEquals("08021", formatter.inputDigit('1'));
+    assertEquals("080 2", formatter.inputDigit('2'));
+    assertEquals("080 21", formatter.inputDigit('1'));
     assertEquals("08021 2", formatter.inputDigit('2'));
     assertEquals("08021 23", formatter.inputDigit('3'));
     assertEquals("08021 234", formatter.inputDigit('4'));

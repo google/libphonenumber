@@ -28,7 +28,7 @@ import junit.framework.TestCase;
  */
 public class PhonenumberTest extends TestCase {
 
-  public void testEqualsSimpleNumber() throws Exception {
+  public void testEqualSimpleNumber() throws Exception {
     PhoneNumber numberA = new PhoneNumber();
     numberA.setCountryCode(1).setNationalNumber(6502530000L);
 
@@ -39,7 +39,7 @@ public class PhonenumberTest extends TestCase {
     assertEquals(numberA.hashCode(), numberB.hashCode());
   }
 
-  public void testEqualsWithOtherFields() throws Exception {
+  public void testEqualWithItalianLeadingZeroSetToDefault() throws Exception {
     PhoneNumber numberA = new PhoneNumber();
     numberA.setCountryCode(1).setNationalNumber(6502530000L).setItalianLeadingZero(false);
 
@@ -49,16 +49,20 @@ public class PhonenumberTest extends TestCase {
     // These should still be equal, since the default value for this field is false.
     assertEquals(numberA, numberB);
     assertEquals(numberA.hashCode(), numberB.hashCode());
+  }
 
+  public void testEqualWithCountryCodeSourceSet() throws Exception {
+    PhoneNumber numberA = new PhoneNumber();
     numberA.setRawInput("+1 650 253 00 00").
         setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
+    PhoneNumber numberB = new PhoneNumber();
     numberB.setRawInput("+1 650 253 00 00").
         setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
     assertEquals(numberA, numberB);
     assertEquals(numberA.hashCode(), numberB.hashCode());
   }
 
-  public void testNonEqualWithOtherFields() throws Exception {
+  public void testNonEqualWithItalianLeadingZeroSetToTrue() throws Exception {
     PhoneNumber numberA = new PhoneNumber();
     numberA.setCountryCode(1).setNationalNumber(6502530000L).setItalianLeadingZero(true);
 
@@ -69,7 +73,7 @@ public class PhonenumberTest extends TestCase {
     assertFalse(numberA.hashCode() == numberB.hashCode());
   }
 
-  public void testNonEqualWithAllFields() throws Exception {
+  public void testNonEqualWithDifferingRawInput() throws Exception {
     PhoneNumber numberA = new PhoneNumber();
     numberA.setCountryCode(1).setNationalNumber(6502530000L).setRawInput("+1 650 253 00 00").
         setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
@@ -82,5 +86,27 @@ public class PhonenumberTest extends TestCase {
 
     assertFalse(numberA.equals(numberB));
     assertFalse(numberA.hashCode() == numberB.hashCode());
+  }
+
+  public void testNonEqualWithPreferredDomesticCarrierCodeSetToDefault() throws Exception {
+    PhoneNumber numberA = new PhoneNumber();
+    numberA.setCountryCode(1).setNationalNumber(6502530000L).setPreferredDomesticCarrierCode("");
+
+    PhoneNumber numberB = new PhoneNumber();
+    numberB.setCountryCode(1).setNationalNumber(6502530000L);
+
+    assertFalse(numberA.equals(numberB));
+    assertFalse(numberA.hashCode() == numberB.hashCode());
+  }
+
+  public void testEqualWithPreferredDomesticCarrierCodeSetToDefault() throws Exception {
+    PhoneNumber numberA = new PhoneNumber();
+    numberA.setCountryCode(1).setNationalNumber(6502530000L).setPreferredDomesticCarrierCode("");
+
+    PhoneNumber numberB = new PhoneNumber();
+    numberB.setCountryCode(1).setNationalNumber(6502530000L).setPreferredDomesticCarrierCode("");
+
+    assertEquals(numberA, numberB);
+    assertEquals(numberA.hashCode(), numberB.hashCode());
   }
 }

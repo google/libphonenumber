@@ -1,8 +1,28 @@
 Mar 10th, 2011
+* New functionality:
+ - New function to format a number with the preferred domestic carrier code used when parsing,
+   falling back to a default calling code otherwise (formatNationalNumberWithPreferredCarrierCode).
+ - We now store the preferred domestic carrier code used when the user calls parseAndKeepRawInput
+ - New functionality to extract phone-numbers from text (findNumbers). This is just the first
+   version - it does not extract ALPHA numbers such as 0800 CALL ME, or numbers where alternate
+   endings are specified (such as 03-331 6005/6006).
+* Code changes:
+ - Tidying up the test file to use several pre-defined phone number constants
+ - Fixing several lint errors
+ - Added javadoc to formatNationalNumberWithCarrierCode
+ - Fixed bug where a null pointer exception was thrown when getAsYouTypeFormatter was called with an
+   invalid region code
+ - Improved AsYouTypeFormatter to deal with countries with variable-length patterns such as LU
+* Metadata changes:
+ - Bug-fixes and updates for the following countries: BF, BO, BR, CL, CO, CR, DK, FO, GE, KR, KW,
+   LA, LU, MU, SC, SH, TR, VE
+ - New country: SH
+
+Mar 10th, 2011
 * Code changes:
   - releasing the code to run the demo on localhost or appengine.
 
-Mar 3rd, 2011
+Mar 7th, 2011
 * Metadata changes:
  - Adding support for AC
 
