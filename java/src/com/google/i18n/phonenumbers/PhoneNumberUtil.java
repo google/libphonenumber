@@ -1975,7 +1975,6 @@ public class PhoneNumberUtil {
       final long maxTries) {
 
     return new Iterable<PhoneNumberMatch>() {
-      @Override
       public Iterator<PhoneNumberMatch> iterator() {
         return new PhoneNumberMatcher(
             PhoneNumberUtil.this, text, defaultCountry, leniency, maxTries);

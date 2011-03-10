@@ -192,7 +192,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     this.maxTries = maxTries;
   }
 
-  @Override
   public boolean hasNext() {
     if (state == State.NOT_READY) {
       lastMatch = find(searchIndex);
@@ -206,7 +205,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     return state == State.READY;
   }
 
-  @Override
   public PhoneNumberMatch next() {
     // Check the state and find the next match as a side-effect if necessary.
     if (!hasNext()) {
@@ -332,7 +330,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   /**
    * Always throws {@link UnsupportedOperationException} as removal is not supported.
    */
-  @Override
   public void remove() {
     throw new UnsupportedOperationException();
   }
