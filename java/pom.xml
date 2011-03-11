@@ -33,7 +33,7 @@
 
   <scm>
     <connection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</connection>
-    <developerConnection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</developerConnection>
+    <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/trunk/java/</developerConnection>
     <url>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</url>
   </scm>
 
@@ -121,7 +121,7 @@
         <version>2.0-beta-7</version>
         <configuration>
           <tagBase>
-            http://libphonenumber.googlecode.com/svn/tags/
+            https://libphonenumber.googlecode.com/svn/tags/
           </tagBase>
         </configuration>
       </plugin>
