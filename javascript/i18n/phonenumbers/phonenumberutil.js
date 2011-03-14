@@ -848,8 +848,7 @@ i18n.phonenumbers.PhoneNumberUtil.convertAlphaCharactersInNumber =
  *  - some geographical numbers have no area codes.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the PhoneNumber object for
- *     which clients want to know the length of the area code in the
- *     national_number field.
+ *     which clients want to know the length of the area code.
  * @return {number} the length of area code of the PhoneNumber object passed in.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
@@ -926,8 +925,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfNationalDestinationCode =
     // We don't want to alter the proto given to us, but we don't want to
     // include the extension when we format it, so we copy it and clear the
     // extension here.
-    copiedProto = new i18n.phonenumbers.PhoneNumber();
-    copiedProto.mergeFrom(number);
+    copiedProto = number.clone();
     copiedProto.clearExtension();
   } else {
     copiedProto = number;
@@ -1126,8 +1124,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
       // replacements for different numbers have the appropriate national
       // prefix.
       /** type {i18n.phonenumbers.NumberFormat} */
-      var numFormatCopy = new i18n.phonenumbers.NumberFormat();
-      numFormatCopy.mergeFrom(numFormat);
+      var numFormatCopy = numFormat.clone();
       /** @type {string} */
       var nationalPrefix =
           this.getMetadataForRegion(regionCode).getNationalPrefixOrDefault();
@@ -1167,9 +1164,17 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
 
 
 /**
- * @param {i18n.phonenumbers.PhoneNumber} number
- * @param {string} carrierCode
- * @return {string}
+ * Formats a phone number in national format for dialing using the carrier as
+ * specified in the carrierCode. The carrierCode will always be used regardless
+ * of whether the phone number already has a preferred domestic carrier code
+ * stored. If carrierCode contains an empty string, return the number in
+ * national format without any carrier code.
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
+ *     formatted.
+ * @param {string} carrierCode the carrier selection code to be used.
+ * @return {string} the formatted phone number in national format for dialing
+ *     using the carrier as specified in the carrierCode.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     formatNationalNumberWithCarrierCode = function(number, carrierCode) {
@@ -1200,6 +1205,37 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   return this.formatNumberByFormat_(
       countryCode, i18n.phonenumbers.PhoneNumberFormat.NATIONAL,
       formattedNationalNumber, formattedExtension);
+};
+
+
+/**
+ * Formats a phone number in national format for dialing using the carrier as
+ * specified in the preferred_domestic_carrier_code field of the PhoneNumber
+ * object passed in. If that is missing, use the fallbackCarrierCode passed in
+ * instead. If there is no preferred_domestic_carrier_code, and the
+ * fallbackCarrierCode contains an empty string, return the number in national
+ * format without any carrier code.
+ *
+ * Use formatNationalNumberWithCarrierCode instead if the carrier code passed in
+ * should take precedence over the number's preferred_domestic_carrier_code when
+ * formatting.
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
+ *     formatted.
+ * @param {string} fallbackCarrierCode the carrier selection code to be used, if
+ *     none is found in the phone number itself.
+ * @return {string} the formatted phone number in national format for dialing
+ *     using the number's preferred_domestic_carrier_code, or the
+ *     fallbackCarrierCode passed in if none is found.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.
+    formatNationalNumberWithPreferredCarrierCode = function(
+        number, fallbackCarrierCode) {
+  return this.formatNationalNumberWithCarrierCode(
+      number,
+      number.hasPreferredDomesticCarrierCode() ?
+          number.getPreferredDomesticCarrierCodeOrDefault() :
+          fallbackCarrierCode);
 };
 
 
@@ -1425,8 +1461,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNationalNumber_ =
 
 /**
  * Note that carrierCode is optional - if NULL or an empty string, no carrier
- * code replacement will take place. Carrier code replacement occurs before
- * national prefix replacement.
+ * code replacement will take place.
  *
  * @param {string} nationalNumber a string of characters representing a phone
  *     number.
@@ -1456,39 +1491,42 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatAccordingToFormats_ =
             .search(numFormat.getLeadingDigitsPattern(size - 1)) == 0) {
       /** @type {RegExp} */
       var patternToMatch = new RegExp(numFormat.getPattern());
-      /** @type {string} */
-      var numberFormatRule = numFormat.getFormatOrDefault();
       if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(patternToMatch,
                                                              nationalNumber)) {
-        if (opt_carrierCode != null && opt_carrierCode.length > 0) {
-          /** @type {string} */
-          var domesticCarrierCodeFormattingRule =
-              numFormat.getDomesticCarrierCodeFormattingRuleOrDefault();
-          if (domesticCarrierCodeFormattingRule.length > 0) {
-            // Replace the $CC in the formatting rule with the desired carrier
-            // code.
-            /** @type {string} */
-            var carrierCodeFormattingRule = domesticCarrierCodeFormattingRule
-                .replace(i18n.phonenumbers.PhoneNumberUtil.CC_PATTERN_,
-                         opt_carrierCode);
-            // Now replace the $FG in the formatting rule with the first group
-            // and the carrier code combined in the appropriate way.
-            numberFormatRule = numberFormatRule.replace(
-                i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_,
-                carrierCodeFormattingRule);
-          }
-        }
         /** @type {string} */
-        var nationalPrefixFormattingRule =
-            numFormat.getNationalPrefixFormattingRuleOrDefault();
+        var numberFormatRule = numFormat.getFormatOrDefault();
+        /** @type {string} */
+        var domesticCarrierCodeFormattingRule =
+            numFormat.getDomesticCarrierCodeFormattingRuleOrDefault();
         if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.NATIONAL &&
-            nationalPrefixFormattingRule != null &&
-            nationalPrefixFormattingRule.length > 0) {
-          return nationalNumber.replace(patternToMatch, numberFormatRule
-              .replace(i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_,
-                       nationalPrefixFormattingRule));
-        } else {
+            opt_carrierCode != null && opt_carrierCode.length > 0 &&
+            domesticCarrierCodeFormattingRule.length > 0) {
+          // Replace the $CC in the formatting rule with the desired carrier
+          // code.
+          /** @type {string} */
+          var carrierCodeFormattingRule = domesticCarrierCodeFormattingRule
+              .replace(i18n.phonenumbers.PhoneNumberUtil.CC_PATTERN_,
+                       opt_carrierCode);
+          // Now replace the $FG in the formatting rule with the first group
+          // and the carrier code combined in the appropriate way.
+          numberFormatRule = numberFormatRule.replace(
+              i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_,
+              carrierCodeFormattingRule);
           return nationalNumber.replace(patternToMatch, numberFormatRule);
+        } else {
+          // Use the national prefix formatting rule instead.
+          /** @type {string} */
+          var nationalPrefixFormattingRule =
+              numFormat.getNationalPrefixFormattingRuleOrDefault();
+          if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.NATIONAL &&
+              nationalPrefixFormattingRule != null &&
+              nationalPrefixFormattingRule.length > 0) {
+            return nationalNumber.replace(patternToMatch, numberFormatRule
+                .replace(i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_,
+                         nationalPrefixFormattingRule));
+          } else {
+            return nationalNumber.replace(patternToMatch, numberFormatRule);
+          }
         }
       }
     }
@@ -2145,8 +2183,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.truncateTooLongNumber =
     return true;
   }
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var numberCopy = new i18n.phonenumbers.PhoneNumber();
-  numberCopy.mergeFrom(number);
+  var numberCopy = number.clone();
   /** @type {number} */
   var nationalNumber = number.getNationalNumberOrDefault();
   do {
@@ -2223,7 +2260,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
  *     the national significant number in, in the case that a country code was
  *     extracted. The number is appended to any existing contents. If no country
  *     code was extracted, this will be left unchanged.
- * @param {boolean} storeCountryCodeSource true if the country_code_source field
+ * @param {boolean} keepRawInput true if the country_code_source and
+ *     preferred_carrier_code fields of phoneNumber should be populated.
  *     of phoneNumber should be populated.
  * @param {i18n.phonenumbers.PhoneNumber} phoneNumber the PhoneNumber object
  *     that needs to be populated with country code and country code source.
@@ -2234,7 +2272,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
     function(number, defaultRegionMetadata, nationalNumber,
-             storeCountryCodeSource, phoneNumber) {
+             keepRawInput, phoneNumber) {
 
   if (number.length == 0) {
     return 0;
@@ -2254,7 +2292,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
   /** @type {i18n.phonenumbers.PhoneNumber.CountryCodeSource} */
   var countryCodeSource = this.maybeStripInternationalPrefixAndNormalize(
       fullNumber, possibleCountryIddPrefix);
-  if (storeCountryCodeSource) {
+  if (keepRawInput) {
     phoneNumber.setCountryCodeSource(countryCodeSource);
   }
   if (countryCodeSource !=
@@ -2295,10 +2333,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
         /** @type {!goog.string.StringBuffer} */
         var potentialNationalNumber = new goog.string.StringBuffer(
             normalizedNumber.substring(defaultCountryCodeString.length));
-        this.maybeStripNationalPrefix(potentialNationalNumber,
-            defaultRegionMetadata.getNationalPrefixForParsing(),
-            defaultRegionMetadata.getNationalPrefixTransformRule(),
-            validNumberPattern);
+        this.maybeStripNationalPrefixAndCarrierCode(
+            potentialNationalNumber, defaultRegionMetadata);
         /** @type {string} */
         var potentialNationalNumberStr = potentialNationalNumber.toString();
         /** @type {Array.<string> } */
@@ -2315,7 +2351,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
             possibleNumberMatchedLength > 0 &&
             possibleNumberMatchedLength != potentialNationalNumberStr.length) {
           nationalNumber.append(potentialNationalNumberStr);
-          if (storeCountryCodeSource) {
+          if (keepRawInput) {
             phoneNumber.setCountryCodeSource(
                 i18n.phonenumbers.PhoneNumber.CountryCodeSource
                     .FROM_NUMBER_WITHOUT_PLUS_SIGN);
@@ -2427,53 +2463,64 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
  *
  * @param {!goog.string.StringBuffer} number the normalized telephone number
  *     that we wish to strip any national dialing prefix from.
- * @param {?string} possibleNationalPrefix a regex that represents the national
- *     direct dialing prefix from the country we think this number may be dialed
- *     in.
- * @param {?string} transformRule the string that specifies how number should be
- *     transformed according to the regex specified in possibleNationalPrefix.
- * @param {RegExp} nationalNumberRule a regular expression that specifies what a
- *     valid phonenumber from this region should look like after any national
- *     prefix was stripped or transformed.
+ * @param {i18n.phonenumbers.PhoneMetadata} metadata the metadata for the
+ *     country that we think this number is from.
+ * @return {string} the carrier code extracted if it is present, otherwise
+ *     return an empty string.
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.maybeStripNationalPrefix =
-    function(number, possibleNationalPrefix, transformRule,
-             nationalNumberRule) {
+i18n.phonenumbers.PhoneNumberUtil.prototype.
+    maybeStripNationalPrefixAndCarrierCode = function(number, metadata) {
 
+  /** @type {string} */
+  var carrierCode = '';
   /** @type {string} */
   var numberStr = number.toString();
   /** @type {number} */
   var numberLength = numberStr.length;
+  /** @type {?string} */
+  var possibleNationalPrefix = metadata.getNationalPrefixForParsing();
   if (numberLength == 0 || possibleNationalPrefix == null ||
       possibleNationalPrefix.length == 0) {
     // Early return for numbers of zero length.
-    return;
+    return carrierCode;
   }
   // Attempt to parse the first digits as a national prefix.
   /** @type {RegExp} */
-  var re = new RegExp('^' + possibleNationalPrefix);
+  var prefixPattern = new RegExp('^' + possibleNationalPrefix);
   /** @type {Array.<string>} */
-  var m = re.exec(numberStr);
-  if (m) {
+  var prefixMatcher = prefixPattern.exec(numberStr);
+  if (prefixMatcher) {
+    /** @type {RegExp} */
+    var nationalNumberRule = new RegExp(
+        metadata.getGeneralDesc().getNationalNumberPattern());
+    // prefixMatcher[numOfGroups] == null implies nothing was captured by the
+    // capturing groups in possibleNationalPrefix; therefore, no transformation
+    // is necessary, and we just remove the national prefix.
+    /** @type {number} */
+    var numOfGroups = prefixMatcher.length - 1;
+    /** @type {?string} */
+    var transformRule = metadata.getNationalPrefixTransformRule();
     /** @type {string} */
     var transformedNumber;
-    // m[1] == null implies nothing was captured by the capturing groups in
-    // possibleNationalPrefix; therefore, no transformation is necessary, and
-    // we just remove the national prefix.
-    if (transformRule == null || transformRule.length == 0 || m[1] == null ||
-        m[1].length == 0) {
-      transformedNumber = numberStr.substring(m[0].length);
+    if (transformRule == null || transformRule.length == 0 ||
+        prefixMatcher[numOfGroups] == null ||
+        prefixMatcher[numOfGroups].length == 0) {
+      transformedNumber = numberStr.substring(prefixMatcher[0].length);
     } else {
-      transformedNumber = numberStr.replace(re, transformRule);
+      transformedNumber = numberStr.replace(prefixPattern, transformRule);
     }
     // Check that the resultant number is viable. If not, return.
     if (!i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(nationalNumberRule,
         transformedNumber)) {
-      return;
+      return carrierCode;
+    }
+    if (numOfGroups > 0) {
+      carrierCode = prefixMatcher[1];
     }
     number.clear();
     number.append(transformedNumber);
   }
+  return carrierCode;
 };
 
 
@@ -2690,12 +2737,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   }
 
   if (countryMetadata != null) {
-    /** @type {RegExp} */
-    var validNumberPattern =
-        new RegExp(countryMetadata.getGeneralDesc().getNationalNumberPattern());
-    this.maybeStripNationalPrefix(normalizedNationalNumber, countryMetadata
-        .getNationalPrefixForParsing(), countryMetadata
-        .getNationalPrefixTransformRule(), validNumberPattern);
+    /** @type {string} */
+    var carrierCode = this.maybeStripNationalPrefixAndCarrierCode(
+        normalizedNationalNumber, countryMetadata);
+    if (keepRawInput) {
+      phoneNumber.setPreferredDomesticCarrierCode(carrierCode);
+    }
   }
   /** @type {string} */
   var normalizedNationalNumberStr = normalizedNationalNumber.toString();
@@ -2794,8 +2841,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
       }
     }
   } else {
-    firstNumber = new i18n.phonenumbers.PhoneNumber();
-    firstNumber.mergeFrom(firstNumberIn);
+    firstNumber = firstNumberIn.clone();
   }
   if (typeof secondNumberIn == 'string') {
     try {
@@ -2809,16 +2855,17 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
       return this.isNumberMatch(secondNumberIn, firstNumber);
     }
   } else {
-    secondNumber = new i18n.phonenumbers.PhoneNumber();
-    secondNumber.mergeFrom(secondNumberIn);
+    secondNumber = secondNumberIn.clone();
   }
-  // First clear raw_input and country_code_source field and any empty-string
-  // extensions so that
-  // we can use the PhoneNumber.exactlySameAs() method.
+  // First clear raw_input, country_code_source and
+  // preferred_domestic_carrier_code fields and any empty-string extensions so
+  // that we can use the proto-buffer equality method.
   firstNumber.clearRawInput();
   firstNumber.clearCountryCodeSource();
+  firstNumber.clearPreferredDomesticCarrierCode();
   secondNumber.clearRawInput();
   secondNumber.clearCountryCodeSource();
+  secondNumber.clearPreferredDomesticCarrierCode();
   if (firstNumber.hasExtension() && firstNumber.getExtension().length == 0) {
     firstNumber.clearExtension();
   }
@@ -2837,7 +2884,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
   var secondNumberCountryCode = secondNumber.getCountryCodeOrDefault();
   // Both had country code specified.
   if (firstNumberCountryCode != 0 && secondNumberCountryCode != 0) {
-    if (firstNumber.exactlySameAs(secondNumber)) {
+    if (firstNumber.equals(secondNumber)) {
       return i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH;
     } else if (firstNumberCountryCode == secondNumberCountryCode &&
         this.isNationalNumberSuffixOfTheOther_(firstNumber, secondNumber)) {
@@ -2855,7 +2902,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
   firstNumber.setCountryCode(0);
   secondNumber.setCountryCode(0);
   // If all else was the same, then this is an NSN_MATCH.
-  if (firstNumber.exactlySameAs(secondNumber)) {
+  if (firstNumber.equals(secondNumber)) {
     return i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH;
   }
   if (this.isNationalNumberSuffixOfTheOther_(firstNumber, secondNumber)) {
@@ -2936,57 +2983,4 @@ i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_ = function(regex, str) {
     return true;
   }
   return false;
-};
-
-
-/**
- * @param {i18n.phonenumbers.PhoneNumber} other
- * @return {boolean}
- */
-i18n.phonenumbers.PhoneNumber.prototype.exactlySameAs = function(other) {
-  return other != null &&
-      this.getCountryCode() == other.getCountryCode() &&
-      this.getNationalNumber() == other.getNationalNumber() &&
-      this.getExtension() == other.getExtension() &&
-      this.getItalianLeadingZero() == other.getItalianLeadingZero() &&
-      this.getRawInput() == other.getRawInput() &&
-      this.getCountryCodeSource() == other.getCountryCodeSource();
-};
-
-
-/**
- * @param {i18n.phonenumbers.PhoneNumberDesc} other
- * @return {boolean}
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.exactlySameAs = function(other) {
-  return other != null &&
-      this.getNationalNumberPattern() == other.getNationalNumberPattern() &&
-      this.getPossibleNumberPattern() == other.getPossibleNumberPattern() &&
-      this.getExampleNumber() == other.getExampleNumber();
-};
-
-
-/**
- * @param {i18n.phonenumbers.PhoneNumber} other
- * @return {i18n.phonenumbers.PhoneNumber}
- * @suppress {accessControls}
- */
-i18n.phonenumbers.PhoneNumber.prototype.mergeFrom = function(other) {
-  if (other) {
-    this.values_ = goog.cloneObject(other.values_);
-  }
-  return this;
-};
-
-
-/**
- * @param {i18n.phonenumbers.NumberFormat} other
- * @return {i18n.phonenumbers.NumberFormat}
- * @suppress {accessControls}
- */
-i18n.phonenumbers.NumberFormat.prototype.mergeFrom = function(other) {
-  if (other) {
-    this.values_ = goog.cloneObject(other.values_);
-  }
-  return this;
 };

@@ -203,6 +203,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.initializeCountrySpecificInfo_ =
 
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   this.currentMetaData_ = this.phoneUtil_.getMetadataForRegion(regionCode);
+  if (this.currentMetaData_ == null) {
+    // Set to a default instance of the metadata. This allows us to function
+    // with an incorrect region code, even if formatting only works for numbers
+    // specified with '+'.
+    this.currentMetaData_ = new i18n.phonenumbers.PhoneMetadata();
+    this.currentMetaData_.setInternationalPrefix('NA');
+  }
   /** @type {RegExp} */
   this.nationalPrefixForParsing_ = new RegExp('^(' + this.currentMetaData_
       .getNationalPrefixForParsing() + ')');
@@ -319,9 +326,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
   // Replace any standalone digit (not the one in d{}) with \d
   numberPattern = numberPattern.replace(this.STANDALONE_DIGIT_PATTERN_, '\\d');
   this.formattingTemplate_.clear();
-  this.formattingTemplate_.append(this.getFormattingTemplate_(numberPattern,
-      numberFormat));
-  return true;
+  /** @type {string} */
+  var tempTemplate = this.getFormattingTemplate_(numberPattern, numberFormat);
+  if (tempTemplate.length > this.nationalNumber_.getLength()) {
+    this.formattingTemplate_.append(tempTemplate);
+    return true;
+  }
+  return false;
 };
 
 
@@ -779,8 +790,12 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigitHelper_ =
     this.lastMatchPosition_ = digitPatternStart;
     return tempTemplate.substring(0, this.lastMatchPosition_ + 1);
   } else {
-    // More digits are entered than we could handle.
-    this.ableToFormat_ = false;
+    if (this.possibleFormats_.length == 1) {
+      // More digits are entered than we could handle, and there are no other
+      // valid patterns to try.
+      this.ableToFormat_ = false;
+    }  // else, we just reset the formatting pattern.
+    this.currentFormattingPattern_ = '';
     return this.accruedInput_.toString();
   }
 };

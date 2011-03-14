@@ -24,6 +24,29 @@
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.AsYouTypeFormatter');
 
+function testInvalidRegion() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('ZZ');
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+4', f.inputDigit('4'));
+  assertEquals('+48 ', f.inputDigit('8'));
+  assertEquals('+48 8', f.inputDigit('8'));
+  assertEquals('+48 88', f.inputDigit('8'));
+  assertEquals('+48 88 1', f.inputDigit('1'));
+  assertEquals('+48 88 12', f.inputDigit('2'));
+  assertEquals('+48 88 123', f.inputDigit('3'));
+  assertEquals('+48 88 123 1', f.inputDigit('1'));
+  assertEquals('+48 88 123 12', f.inputDigit('2'));
+
+  f.clear();
+  assertEquals('6', f.inputDigit('6'));
+  assertEquals('65', f.inputDigit('5'));
+  assertEquals('650', f.inputDigit('0'));
+  assertEquals('6502', f.inputDigit('2'));
+  assertEquals('65025', f.inputDigit('5'));
+  assertEquals('650253', f.inputDigit('3'));
+}
+
 function testAYTFUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
@@ -375,13 +398,25 @@ function testAYTFDE() {
   assertEquals('030 123', f.inputDigit('3'));
   assertEquals('030 1234', f.inputDigit('4'));
 
+  // 04134 1234
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('04', f.inputDigit('4'));
+  assertEquals('041', f.inputDigit('1'));
+  assertEquals('041 3', f.inputDigit('3'));
+  assertEquals('041 34', f.inputDigit('4'));
+  assertEquals('04134 1', f.inputDigit('1'));
+  assertEquals('04134 12', f.inputDigit('2'));
+  assertEquals('04134 123', f.inputDigit('3'));
+  assertEquals('04134 1234', f.inputDigit('4'));
+
   // 08021 2345
   f.clear();
   assertEquals('0', f.inputDigit('0'));
   assertEquals('08', f.inputDigit('8'));
   assertEquals('080', f.inputDigit('0'));
-  assertEquals('0802', f.inputDigit('2'));
-  assertEquals('08021', f.inputDigit('1'));
+  assertEquals('080 2', f.inputDigit('2'));
+  assertEquals('080 21', f.inputDigit('1'));
   assertEquals('08021 2', f.inputDigit('2'));
   assertEquals('08021 23', f.inputDigit('3'));
   assertEquals('08021 234', f.inputDigit('4'));

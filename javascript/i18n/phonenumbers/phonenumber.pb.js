@@ -355,6 +355,57 @@ i18n.phonenumbers.PhoneNumber.prototype.clearCountryCodeSource = function() {
 
 
 /**
+ * Gets the value of the preferred_domestic_carrier_code field.
+ * @return {?string} The value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.getPreferredDomesticCarrierCode = function() {
+  return /** @type {?string} */ (this.get$Value(7));
+};
+
+
+/**
+ * Gets the value of the preferred_domestic_carrier_code field or the default value if not set.
+ * @return {string} The value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.getPreferredDomesticCarrierCodeOrDefault = function() {
+  return /** @type {string} */ (this.get$ValueOrDefault(7));
+};
+
+
+/**
+ * Sets the value of the preferred_domestic_carrier_code field.
+ * @param {string} value The value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.setPreferredDomesticCarrierCode = function(value) {
+  this.set$Value(7, value);
+};
+
+
+/**
+ * @return {boolean} Whether the preferred_domestic_carrier_code field has a value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.hasPreferredDomesticCarrierCode = function() {
+  return this.has$Value(7);
+};
+
+
+/**
+ * @return {number} The number of values in the preferred_domestic_carrier_code field.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.preferredDomesticCarrierCodeCount = function() {
+  return this.count$Values(7);
+};
+
+
+/**
+ * Clears the values in the preferred_domestic_carrier_code field.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.clearPreferredDomesticCarrierCode = function() {
+  this.clear$Field(7);
+};
+
+
+/**
  * Enumeration CountryCodeSource.
  * @enum {number}
  */
@@ -403,5 +454,10 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneNumber, {
     fieldType: goog.proto2.Message.FieldType.ENUM,
     defaultValue: i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN,
     type: i18n.phonenumbers.PhoneNumber.CountryCodeSource
+  },
+  7: {
+    name: 'preferred_domestic_carrier_code',
+    fieldType: goog.proto2.Message.FieldType.STRING,
+    type: String
   }
 });

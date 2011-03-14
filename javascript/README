@@ -25,18 +25,14 @@ pages with your web browser:
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 76).
+The JavaScript library is ported from the Java implementation (revision 107).
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
 1.  If the protocol buffers (phonemetadata.proto and phonenumber.proto)
     have changed:
   a.  Manually update the .pb.js files with the changes of the .proto files.
-  b.  Manually update the following JavaScript functions in
-      javascript/i18n/phonenumbers/phonenumberutil.js:
-        i18n.phonenumbers.PhoneNumberDesc.prototype.exactlySameAs(other)
-        i18n.phonenumbers.PhoneNumber.prototype.exactlySameAs(other)
-  c.  Manually update the toJsArray() Java methods in
+  b.  Manually update the toJsArray() Java methods in
       /java/resources/com/google/i18n/phonenumbers/BuildMetadataJsonFromXml.java
 
 2.  If the phone number metadata in the XML format has changed
@@ -63,3 +59,8 @@ project:
       AsYouTypeFormatter.java => asyoutypeformatter.js
       PhoneNumberUtilTest.java => phonenumberutil_test.js
       AsYouTypeFormatterTest.java => asyoutypeformatter_test.js
+
+
+TODO:
+=====
+Port functionality to extract phone-numbers from text (findNumbers).
