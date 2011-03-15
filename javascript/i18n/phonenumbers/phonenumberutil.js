@@ -413,7 +413,7 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_ =
  *
  * @const
  * @type {RegExp}
- * @protected
+ * @public
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN =
     new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ +
@@ -1977,7 +1977,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForRegion =
  * numbers. Use the library's formatting functions to prefix the national prefix
  * when required.
  *
- * @param {string} regionCode the ISO 3166-1 two-letter country code that
+ * @param {?string} regionCode the ISO 3166-1 two-letter country code that
  *     denotes the country/region that we want to get the dialling prefix for.
  * @param {boolean} stripNonDigits true to strip non-digits from the national
  *     dialling prefix.
@@ -2591,7 +2591,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
  * for a particular country/region is not performed. This can be done separately
  * with isValidNumber.
  *
- * @param {string} numberToParse number that we are attempting to parse. This
+ * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
  *     extension.
  * @param {?string} defaultCountry the ISO 3166-1 two-letter country code that
@@ -2650,7 +2650,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
  * same as the public parse() method, with the exception that it allows the
  * default country to be null, for use by isNumberMatch().
  *
- * @param {string} numberToParse number that we are attempting to parse. This
+ * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
  *     extension.
  * @param {?string} defaultCountry the ISO 3166-1 two-letter country code that
