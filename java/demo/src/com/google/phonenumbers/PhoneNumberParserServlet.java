@@ -146,6 +146,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       output.append("\nResult from isValidNumber(): ").append(isNumberValid);
       output.append("\nResult from isValidNumberForRegion(): ").append(
           phoneUtil.isValidNumberForRegion(number, defaultCountry));
+      output.append("\nPhone Number region: ").append(phoneUtil.getRegionCodeForNumber(number));
       output.append("\nResult from isPossibleNumber(): ").append(
           phoneUtil.isPossibleNumber(number));
       output.append("\nResult from getNumberType(): ").append(phoneUtil.getNumberType(number));
