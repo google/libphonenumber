@@ -81,6 +81,13 @@ if (PROTOBUF_LIB STREQUAL "PROTOBUF_LIB-NOTFOUND")
     "Can't find Google Protocol Buffers library. Please read README.")
 endif ()
 
+# Check Protocol Buffers version (if pkg-config available)
+find_package (PkgConfig)
+
+if (PKG_CONFIG_EXECUTABLE)
+  pkg_check_modules (PC_PROTOBUF REQUIRED protobuf>=2.4)
+endif (PKG_CONFIG_EXECUTABLE)
+
 # Find ICU
 find_path (ICU_INCLUDE_DIR unicode/unistr.h unicode/normlzr.h)
 
