@@ -1,3 +1,7 @@
+Mar 22nd, 2011
+* Metadata changes:
+ - New mobile-number pattern for AU
+
 Mar 10th, 2011
 * New functionality:
  - New function to format a number with the preferred domestic carrier code used when parsing,

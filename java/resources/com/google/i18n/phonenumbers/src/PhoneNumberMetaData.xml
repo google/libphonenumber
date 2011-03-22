@@ -1227,7 +1227,17 @@
         <exampleNumber>212345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>4[0-68]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          4(?:
+            [0-2]\d|
+            3[0-57-9]|
+            4[47-9]|
+            5[0-37-9]|
+            6[6-9]|
+            7[07-9]|
+            8[7-9]
+          )\d{6}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>412345678</exampleNumber>
       </mobile>
