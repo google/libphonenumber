@@ -737,6 +737,12 @@ PhoneNumberUtil::PhoneNumberUtil(MetadataProvider* provider)
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {
+  for (vector<IntRegionsPair>::const_iterator it =
+           country_code_to_region_code_map_->begin();
+       it != country_code_to_region_code_map_->end();
+       ++it) {
+    delete it->second;
+  }
 }
 
 // Public wrapper function to get a PhoneNumberUtil instance with the default
