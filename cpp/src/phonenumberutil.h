@@ -551,6 +551,9 @@ class PhoneNumberUtil {
   explicit PhoneNumberUtil(MetadataProvider* provider = 0);
   ~PhoneNumberUtil();
 
+  // Gets all the supported regions.
+  void GetSupportedRegions(set<string>* regions) const;
+
   // Helper function to check region code is not unknown or null.
   //
   // The region_code parameter is an ISO 3166-1 two-letter country code string.

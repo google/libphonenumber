@@ -16,13 +16,16 @@
 // Author: Lara Rennie
 // Open-sourced by: Philippe Liard
 
+#include <set>
+#include <string>
+
 #include <gtest/gtest.h>
 #include <re2/re2.h>
 
-#include "phonenumberutil.h"
-#include "test_metadata.h"
 #include "phonemetadata.pb.h"
 #include "phonenumber.pb.h"
+#include "phonenumberutil.h"
+#include "test_metadata.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -47,6 +50,10 @@ class PhoneNumberUtilTest : public testing::Test {
   // Wrapper functions for private functions that we want to test.
   const PhoneMetadata* GetPhoneMetadata(const string& region_code) const {
     return phone_util_.GetMetadataForRegion(region_code);
+  }
+
+  void GetSupportedRegions(set<string>* regions) {
+    phone_util_.GetSupportedRegions(regions);
   }
 
   void ExtractPossibleNumber(const string& number,
@@ -95,6 +102,13 @@ class PhoneNumberUtilTest : public testing::Test {
   TestMetadataProvider provider_;
   PhoneNumberUtil phone_util_;
 };
+
+TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
+  set<string> regions;
+
+  GetSupportedRegions(&regions);
+  EXPECT_GT(regions.size(), 0);
+}
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   const PhoneMetadata* metadata = GetPhoneMetadata("US");

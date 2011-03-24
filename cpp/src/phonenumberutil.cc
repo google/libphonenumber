@@ -752,6 +752,15 @@ PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
   return Singleton<PhoneNumberUtil>::get();
 }
 
+void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
+  DCHECK(regions);
+  for (map<string, PhoneMetadata>::const_iterator it =
+       country_to_metadata_map_->begin(); it != country_to_metadata_map_->end();
+       ++it) {
+    regions->insert(it->first);
+  }
+}
+
 bool PhoneNumberUtil::IsValidRegionCode(const string& region_code) const {
   return (country_to_metadata_map_->find(region_code) !=
          country_to_metadata_map_->end());
