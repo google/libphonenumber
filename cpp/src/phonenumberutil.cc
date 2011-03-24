@@ -466,7 +466,7 @@ void CreateRegularExpressions() {
   // two options for representing the ó - the character itself, and one in the
   // unicode decomposed form with the combining acute accent.
   known_extn_patterns.reset(new string(
-      StrCat("[  \\t,]*(?:ext(?:ensi(?:o\u0301?|ó))?n?|ｅｘｔｎ?|[,xｘ#＃~～]|"
+      StrCat("[  \\t,]*(?:ext(?:ensi(?:ó?|ó))?n?|ｅｘｔｎ?|[,xｘ#＃~～]|"
              "int|ｉｎｔ|anexo)"
              "[:\\.．]?[  \\t,-]*([",
              kValidDigits, "]{1,7})#?|[- ]+([", kValidDigits, "]{1,5})#")));
