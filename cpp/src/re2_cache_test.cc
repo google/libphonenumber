@@ -14,9 +14,6 @@
 
 // Author: Fredrik Roubert <roubert@google.com>
 
-// Test the wrapper of the cache. The cache functionality itself will be tested
-// by the unit test for the cache implementation.
-
 #include <cstddef>
 #include <string>
 
@@ -32,20 +29,26 @@ using std::string;
 
 class RE2CacheTest : public testing::Test {
  protected:
-  static const size_t max_items_ = 2;
+  static const size_t min_items_ = 2;
 
-  RE2CacheTest() : cache_(max_items_) {}
+  RE2CacheTest() : cache_(min_items_) {}
   virtual ~RE2CacheTest() {}
 
   RE2Cache cache_;
 };
 
+TEST_F(RE2CacheTest, CacheConstructor) {
+  ASSERT_TRUE(cache_.cache_impl_ != NULL);
+  EXPECT_TRUE(cache_.cache_impl_->empty());
+}
+
 TEST_F(RE2CacheTest, AccessConstructor) {
   static const string foo("foo");
   RE2Cache::ScopedAccess access(&cache_, foo);
 
-  EXPECT_EQ(foo, access.pattern_);
   EXPECT_TRUE(access.regexp_ != NULL);
+  ASSERT_TRUE(cache_.cache_impl_ != NULL);
+  EXPECT_EQ(1, cache_.cache_impl_->size());
 }
 
 TEST_F(RE2CacheTest, OperatorRE2) {
