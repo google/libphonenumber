@@ -16,9 +16,16 @@ Requirements:
 
   - Protocol Buffers
     http://code.google.com/p/protobuf/
+    Version 2.4 or more recent is required.
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install libprotobuf-dev
+
+    Note: if your GNU/Linux distribution doesn't provide the needed package,
+          please download and install it manually:
+    $ tar xjf protobuf-2.4.tar.bz2
+    $ cd protobuf-2.4
+    $ ./configure && make && sudo make install
 
   - Google Test
     http://code.google.com/p/googletest/
