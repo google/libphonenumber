@@ -286,6 +286,15 @@ class PhoneNumberUtil {
       const string& calling_from,
       string* formatted_number) const;
 
+  // Formats a phone number using the original phone number format that the
+  // number is parsed from. The original format is embedded in the
+  // country_code_source field of the PhoneNumber object passed in. If such
+  // information is missing, the number will be formatted into the NATIONAL
+  // format by default.
+  void FormatInOriginalFormat(const PhoneNumber& number,
+                              const string& region_calling_from,
+                              string* formatted_number) const;
+
   // Formats a phone number for out-of-country dialing purpose.
   // The calling_from parameter is an ISO 3166-1 two-letter country code string.
   //

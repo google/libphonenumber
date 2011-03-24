@@ -999,6 +999,33 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
   }
 }
 
+void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
+                                             const string& region_calling_from,
+                                             string* formatted_number) const {
+  DCHECK(formatted_number);
+
+  if (!number.has_country_code_source()) {
+    Format(number, NATIONAL, formatted_number);
+    return;
+  }
+  switch (number.country_code_source()) {
+    case PhoneNumber::FROM_NUMBER_WITH_PLUS_SIGN:
+      Format(number, INTERNATIONAL, formatted_number);
+      return;
+    case PhoneNumber::FROM_NUMBER_WITH_IDD:
+      FormatOutOfCountryCallingNumber(number, region_calling_from,
+                                      formatted_number);
+      return;
+    case PhoneNumber::FROM_NUMBER_WITHOUT_PLUS_SIGN:
+      Format(number, INTERNATIONAL, formatted_number);
+      formatted_number->erase(formatted_number->begin());
+      return;
+    case PhoneNumber::FROM_DEFAULT_COUNTRY:
+    default:
+      Format(number, NATIONAL, formatted_number);
+  }
+}
+
 void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
     const PhoneNumber& number,
     const string& calling_from,

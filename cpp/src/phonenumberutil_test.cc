@@ -1217,6 +1217,50 @@ TEST_F(PhoneNumberUtilTest, IsLeadingZeroCountry) {
   EXPECT_FALSE(PhoneNumberUtil::IsLeadingZeroCountry(1));  // USA
 }
 
+TEST_F(PhoneNumberUtilTest, FormatUsingOriginalNumberFormat) {
+  PhoneNumber phone_number;
+  string formatted_number;
+
+  EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
+            phone_util_.ParseAndKeepRawInput("+442087654321", "GB",
+                                             &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, "GB",
+                                     &formatted_number);
+  EXPECT_EQ("+44 20 8765 4321", formatted_number);
+
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
+            phone_util_.ParseAndKeepRawInput("02087654321", "GB",
+                                             &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, "GB",
+                                     &formatted_number);
+  EXPECT_EQ("(020) 8765 4321", formatted_number);
+
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
+            phone_util_.ParseAndKeepRawInput("011442087654321", "US",
+                                             &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, "US", &formatted_number);
+  EXPECT_EQ("011 44 20 8765 4321", formatted_number);
+
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
+            phone_util_.ParseAndKeepRawInput("442087654321", "GB",
+                                             &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, "GB", &formatted_number);
+  EXPECT_EQ("44 20 8765 4321", formatted_number);
+
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
+            phone_util_.Parse("+442087654321", "GB", &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, "GB", &formatted_number);
+  EXPECT_EQ("(020) 8765 4321", formatted_number);
+}
+
 TEST_F(PhoneNumberUtilTest, IsPremiumRate) {
   PhoneNumber number;
   number.set_country_code(1);
