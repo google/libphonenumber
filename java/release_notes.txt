@@ -1,3 +1,20 @@
+Mar 31st, 2011
+* New functionality:
+ - Can parse and format numbers in RFC-3966 format.
+ - Added isAlphaNumber to check to see if a number is a "vanity" or "alpha" number
+ - Can format a number made up of alpha-characters in an "out-of-country" format (e.g. 0011 1
+   800-SIX-FLAG to dial an American alpha-number from Australia).
+* Code changes:
+ - Renamed private vars, private methods and fixed comments to try and differentiate between country
+   (calling) codes and region codes.
+ == Non-backwards-compatible API changes: ==
+ - Renamed getSupportedCountries to getSupportedRegions, as this more accurately reflects that the
+   library is based around region codes.
+ - getNationalSignificantNumber is no longer a static method, but is instead an instance method.
+* Metadata changes:
+ - Bug-fixes and updates for AU, AZ, EE, FI, IN, JO, KW, KZ, MV, RU, RR, VA
+ - New country: ME
+
 Mar 22nd, 2011
 * Metadata changes:
  - New mobile-number pattern for AU

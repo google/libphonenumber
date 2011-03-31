@@ -182,7 +182,7 @@ public class BuildMetadataJsonFromXml {
     // required string format = 2;
     jsArrayBuilder.append(format.getFormat());
     // repeated string leading_digits_pattern = 3;
-    int leadingDigitsPatternSize = format.getLeadingDigitsPatternCount();
+    int leadingDigitsPatternSize = format.leadingDigitsPatternSize();
     if (leadingDigitsPatternSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
@@ -310,7 +310,7 @@ public class BuildMetadataJsonFromXml {
       jsArrayBuilder.append(null);
     }
     // repeated NumberFormat number_format = 19;
-    int numberFormatSize = metadata.getNumberFormatCount();
+    int numberFormatSize = metadata.numberFormatSize();
     if (numberFormatSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < numberFormatSize; i++) {
@@ -321,7 +321,7 @@ public class BuildMetadataJsonFromXml {
       jsArrayBuilder.append(null);
     }
     // repeated NumberFormat intl_number_format = 20;
-    int intlNumberFormatSize = metadata.getIntlNumberFormatCount();
+    int intlNumberFormatSize = metadata.intlNumberFormatSize();
     if (intlNumberFormatSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < intlNumberFormatSize; i++) {

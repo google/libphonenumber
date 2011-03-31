@@ -154,6 +154,9 @@ public class BuildMetadataFromXml {
     if (element.hasAttribute("mainCountryForCode")) {
       metadata.setMainCountryForCode(true);
     }
+    if (element.hasAttribute("leadingZeroPossible")) {
+      metadata.setLeadingZeroPossible(true);
+    }
 
     // Extract availableFormats
     NodeList numberFormatElements = element.getElementsByTagName("numberFormat");

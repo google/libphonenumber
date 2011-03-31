@@ -194,7 +194,7 @@
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4,9})">
           <leadingDigits>[34]0|[68]9</leadingDigits>
-          <format>$1 $2</format>
+          <format>$1/$2</format>
         </numberFormat>
         <!-- Extra fictional pattern for shorter numbers with the same prefixes as the following
              pattern, to illustrate the problem the AYTF has with real patterns that share this
@@ -296,7 +296,7 @@
 
     <!-- Italy -->
     <!-- http://en.wikipedia.org/wiki/%2B39 -->
-    <territory id="IT" countryCode="39" internationalPrefix="00">
+    <territory id="IT" countryCode="39" internationalPrefix="00" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>0[26]</leadingDigits>

@@ -57,10 +57,10 @@ public final class Phonemetadata {
 
     // repeated string leading_digits_pattern = 3;
     private java.util.List<String> leadingDigitsPattern_ = new java.util.ArrayList<String>();
-    public java.util.List<String> getLeadingDigitsPatternList() {
+    public java.util.List<String> leadingDigitPatterns() {
       return leadingDigitsPattern_;
     }
-    public int getLeadingDigitsPatternCount() { return leadingDigitsPattern_.size(); }
+    public int leadingDigitsPatternSize() { return leadingDigitsPattern_.size(); }
     public String getLeadingDigitsPattern(int index) {
       return leadingDigitsPattern_.get(index);
     }
@@ -108,7 +108,7 @@ public final class Phonemetadata {
       if (other.hasFormat()) {
         setFormat(other.getFormat());
       }
-      int leadingDigitsPatternSize = other.getLeadingDigitsPatternCount();
+      int leadingDigitsPatternSize = other.leadingDigitsPatternSize();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
         addLeadingDigitsPattern(other.getLeadingDigitsPattern(i));
       }
@@ -124,7 +124,7 @@ public final class Phonemetadata {
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeUTF(pattern_);
       objectOutput.writeUTF(format_);
-      int leadingDigitsPatternSize = getLeadingDigitsPatternCount();
+      int leadingDigitsPatternSize = leadingDigitsPatternSize();
       objectOutput.writeInt(leadingDigitsPatternSize);
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
         objectOutput.writeUTF(leadingDigitsPattern_.get(i));
@@ -503,10 +503,10 @@ public final class Phonemetadata {
 
     // repeated NumberFormat number_format = 19;
     private java.util.List<NumberFormat> numberFormat_ = new java.util.ArrayList<NumberFormat>();
-    public java.util.List<NumberFormat> getNumberFormatList() {
+    public java.util.List<NumberFormat> numberFormats() {
       return numberFormat_;
     }
-    public int getNumberFormatCount() { return numberFormat_.size(); }
+    public int numberFormatSize() { return numberFormat_.size(); }
     public NumberFormat getNumberFormat(int index) {
       return numberFormat_.get(index);
     }
@@ -521,10 +521,10 @@ public final class Phonemetadata {
     // repeated NumberFormat intl_number_format = 20;
     private java.util.List<NumberFormat> intlNumberFormat_ =
         new java.util.ArrayList<NumberFormat>();
-    public java.util.List<NumberFormat> getIntlNumberFormatList() {
+    public java.util.List<NumberFormat> intlNumberFormats() {
       return intlNumberFormat_;
     }
-    public int getIntlNumberFormatCount() { return intlNumberFormat_.size(); }
+    public int intlNumberFormatSize() { return intlNumberFormat_.size(); }
     public NumberFormat getIntlNumberFormat(int index) {
       return intlNumberFormat_.get(index);
     }
@@ -556,6 +556,17 @@ public final class Phonemetadata {
     public PhoneMetadata setLeadingDigits(String value) {
       hasLeadingDigits = true;
       leadingDigits_ = value;
+      return this;
+    }
+
+    // optional bool leading_zero_possible = 26 [default = false];
+    private boolean hasLeadingZeroPossible;
+    private boolean leadingZeroPossible_ = false;
+    public boolean hasLeadingZeroPossible() { return hasLeadingZeroPossible; }
+    public boolean isLeadingZeroPossible() { return leadingZeroPossible_; }
+    public PhoneMetadata setLeadingZeroPossible(boolean value) {
+      hasLeadingZeroPossible = true;
+      leadingZeroPossible_ = value;
       return this;
     }
 
@@ -636,13 +647,13 @@ public final class Phonemetadata {
 
       objectOutput.writeBoolean(sameMobileAndFixedLinePattern_);
 
-      int numberFormatSize = getNumberFormatCount();
+      int numberFormatSize = numberFormatSize();
       objectOutput.writeInt(numberFormatSize);
       for (int i = 0; i < numberFormatSize; i++) {
         numberFormat_.get(i).writeExternal(objectOutput);
       }
 
-      int intlNumberFormatSize = getIntlNumberFormatCount();
+      int intlNumberFormatSize = intlNumberFormatSize();
       objectOutput.writeInt(intlNumberFormatSize);
       for (int i = 0; i < intlNumberFormatSize; i++) {
         intlNumberFormat_.get(i).writeExternal(objectOutput);
@@ -654,6 +665,8 @@ public final class Phonemetadata {
       if (hasLeadingDigits) {
         objectOutput.writeUTF(leadingDigits_);
       }
+
+      objectOutput.writeBoolean(leadingZeroPossible_);
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
@@ -775,6 +788,8 @@ public final class Phonemetadata {
       if (hasString) {
         setLeadingDigits(objectInput.readUTF());
       }
+
+      setLeadingZeroPossible(objectInput.readBoolean());
     }
   }
 

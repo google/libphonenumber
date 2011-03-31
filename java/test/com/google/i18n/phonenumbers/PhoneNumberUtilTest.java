@@ -55,7 +55,7 @@ public class PhoneNumberUtilTest extends TestCase {
       new PhoneNumber().setCountryCode(61).setNationalNumber(236618300L);
   private static final PhoneNumber BS_MOBILE =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423570000L);
-  private static final PhoneNumber BS_NUMBER = 
+  private static final PhoneNumber BS_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
   // Note that this is the same as the example number for DE in the metadata.
   private static final PhoneNumber DE_NUMBER =
@@ -124,13 +124,17 @@ public class PhoneNumberUtilTest extends TestCase {
         CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
   }
 
+  public void testGetSupportedRegions() {
+    assertTrue(phoneUtil.getSupportedRegions().size() > 0);
+  }
+
   public void testGetInstanceLoadUSMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.US);
     assertEquals("US", metadata.getId());
     assertEquals(1, metadata.getCountryCode());
     assertEquals("011", metadata.getInternationalPrefix());
     assertTrue(metadata.hasNationalPrefix());
-    assertEquals(2, metadata.getNumberFormatCount());
+    assertEquals(2, metadata.numberFormatSize());
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
                  metadata.getNumberFormat(0).getPattern());
     assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
@@ -151,8 +155,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(49, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
     assertEquals("0", metadata.getNationalPrefix());
-    assertEquals(6, metadata.getNumberFormatCount());
-    assertEquals(1, metadata.getNumberFormat(5).getLeadingDigitsPatternCount());
+    assertEquals(6, metadata.numberFormatSize());
+    assertEquals(1, metadata.getNumberFormat(5).leadingDigitsPatternSize());
     assertEquals("900", metadata.getNumberFormat(5).getLeadingDigitsPattern(0));
     assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
                  metadata.getNumberFormat(5).getPattern());
@@ -179,6 +183,13 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
                  metadata.getIntlNumberFormat(3).getPattern());
     assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).getFormat());
+  }
+
+  public void testIsLeadingZeroPossible() {
+    assertTrue(phoneUtil.isLeadingZeroPossible(39));  // Italy
+    assertFalse(phoneUtil.isLeadingZeroPossible(1));  // USA
+    assertFalse(phoneUtil.isLeadingZeroPossible(800));  // Not in metadata file, just default to
+                                                        // false.
   }
 
   public void testGetLengthOfGeographicalAreaCode() {
@@ -235,19 +246,19 @@ public class PhoneNumberUtilTest extends TestCase {
     // An invalid US number (1 digit shorter), which has no NDC.
     assertEquals(0, phoneUtil.getLengthOfNationalDestinationCode(US_SHORT_BY_ONE_NUMBER));
 
-    // A number containing an invalid country code, which shouldn't have any NDC.
+    // A number containing an invalid country calling code, which shouldn't have any NDC.
     PhoneNumber number = new PhoneNumber().setCountryCode(123).setNationalNumber(6502530000L);
     assertEquals(0, phoneUtil.getLengthOfNationalDestinationCode(number));
   }
 
   public void testGetNationalSignificantNumber() {
-    assertEquals("6502530000", PhoneNumberUtil.getNationalSignificantNumber(US_NUMBER));
+    assertEquals("6502530000", phoneUtil.getNationalSignificantNumber(US_NUMBER));
 
     // An Italian mobile number.
-    assertEquals("345678901", PhoneNumberUtil.getNationalSignificantNumber(IT_MOBILE));
+    assertEquals("345678901", phoneUtil.getNationalSignificantNumber(IT_MOBILE));
 
     // An Italian fixed line number.
-    assertEquals("0236618300", PhoneNumberUtil.getNationalSignificantNumber(IT_NUMBER));
+    assertEquals("0236618300", phoneUtil.getNationalSignificantNumber(IT_NUMBER));
   }
 
   public void testGetExampleNumber() {
@@ -314,6 +325,7 @@ public class PhoneNumberUtilTest extends TestCase {
 
     assertEquals("900 253 0000", phoneUtil.format(US_PREMIUM, PhoneNumberFormat.NATIONAL));
     assertEquals("+1 900 253 0000", phoneUtil.format(US_PREMIUM, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("+1-900-253-0000", phoneUtil.format(US_PREMIUM, PhoneNumberFormat.RFC3966));
   }
 
   public void testFormatBSNumber() {
@@ -332,8 +344,9 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testFormatDENumber() {
     PhoneNumber deNumber = new PhoneNumber();
     deNumber.setCountryCode(49).setNationalNumber(301234L);
-    assertEquals("030 1234", phoneUtil.format(deNumber, PhoneNumberFormat.NATIONAL));
-    assertEquals("+49 30 1234", phoneUtil.format(deNumber, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("030/1234", phoneUtil.format(deNumber, PhoneNumberFormat.NATIONAL));
+    assertEquals("+49 30/1234", phoneUtil.format(deNumber, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("+49-30-1234", phoneUtil.format(deNumber, PhoneNumberFormat.RFC3966));
 
     deNumber.clear();
     deNumber.setCountryCode(49).setNationalNumber(291123L);
@@ -444,6 +457,79 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
   }
 
+  public void testFormatOutOfCountryKeepingAlphaChars() {
+    PhoneNumber alphaNumericNumber = new PhoneNumber();
+    alphaNumericNumber.setCountryCode(1).setNationalNumber(8007493524L)
+        .setRawInput("1800 six-flag");
+    assertEquals("0011 1 800 SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    alphaNumericNumber.setRawInput("1-800-SIX-flag");
+    assertEquals("0011 1 800-SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    alphaNumericNumber.setRawInput("Call us from UK: 00 1 800 SIX-flag");
+    assertEquals("0011 1 800 SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    alphaNumericNumber.setRawInput("800 SIX-flag");
+    assertEquals("0011 1 800 SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    // Formatting from within the NANPA region.
+    assertEquals("1 800 SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.US));
+
+    assertEquals("1 800 SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.BS));
+
+    // Testing that if the raw input doesn't exist, it is formatted using
+    // formatOutOfCountryCallingNumber.
+    alphaNumericNumber.clearRawInput();
+    assertEquals("00 1 800 749 3524",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.DE));
+
+    // Testing AU alpha number formatted from Australia.
+    alphaNumericNumber.setCountryCode(61).setNationalNumber(827493524L)
+        .setRawInput("+61 82749-FLAG");
+    // This number should have the national prefix fixed.
+    assertEquals("082749-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    alphaNumericNumber.setRawInput("082749-FLAG");
+    assertEquals("082749-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    alphaNumericNumber.setNationalNumber(18007493524L).setRawInput("1-800-SIX-flag");
+    // This number should not have the national prefix prefixed, in accordance with the override for
+    // this specific formatting rule.
+    assertEquals("1-800-SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.AU));
+
+    // The metadata should not be permanently changed, since we copied it before modifying patterns.
+    // Here we check this.
+    alphaNumericNumber.setNationalNumber(1800749352L);
+    assertEquals("1800 749 352",
+                 phoneUtil.formatOutOfCountryCallingNumber(alphaNumericNumber, RegionCode.AU));
+
+    // Testing a region with multiple international prefixes.
+    assertEquals("+61 1-800-SIX-FLAG",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.SG));
+
+    // Testing the case with an invalid country calling code.
+    alphaNumericNumber.setCountryCode(0).setNationalNumber(18007493524L)
+        .setRawInput("1-800-SIX-flag");
+    // Uses the raw input only.
+    assertEquals("1-800-SIX-flag",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.DE));
+
+    // Testing the case of an invalid alpha number.
+    alphaNumericNumber.setCountryCode(1).setNationalNumber(80749L).setRawInput("180-SIX");
+    // No country-code stripping can be done.
+    assertEquals("00 1 180-SIX",
+                 phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.DE));
+  }
+
   public void testFormatWithCarrierCode() {
     // We only support this for AR in our test metadata, and only for mobile numbers starting with
     // certain values.
@@ -487,7 +573,7 @@ public class PhoneNumberUtilTest extends TestCase {
     usNumber.setCountryCode(1).setNationalNumber(4241231234L).setPreferredDomesticCarrierCode("99");
     assertEquals("424 123 1234", phoneUtil.format(usNumber, PhoneNumberFormat.NATIONAL));
     assertEquals("424 123 1234",
-        phoneUtil.formatNationalNumberWithPreferredCarrierCode(usNumber, "15"));    
+        phoneUtil.formatNationalNumberWithPreferredCarrierCode(usNumber, "15"));
   }
 
   public void testFormatByPattern() {
@@ -557,6 +643,8 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneNumber nzNumber = new PhoneNumber().mergeFrom(NZ_NUMBER).setExtension("1234");
     // Uses default extension prefix:
     assertEquals("03-331 6005 ext. 1234", phoneUtil.format(nzNumber, PhoneNumberFormat.NATIONAL));
+    // Uses RFC 3966 syntax.
+    assertEquals("+64-3-331-6005;ext=1234", phoneUtil.format(nzNumber, PhoneNumberFormat.RFC3966));
     // Extension prefix overridden in the territory information for the US:
     PhoneNumber usNumberWithExtension = new PhoneNumber().mergeFrom(US_NUMBER).setExtension("4567");
     assertEquals("650 253 0000 extn. 4567", phoneUtil.format(usNumberWithExtension,
@@ -805,7 +893,7 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testIsPossibleNumberWithReason() {
-    // FYI, national numbers for country code +1 that are within 7 to 10 digits are possible.
+    // National numbers for country calling code +1 that are within 7 to 10 digits are possible.
     assertEquals(PhoneNumberUtil.ValidationResult.IS_POSSIBLE,
                  phoneUtil.isPossibleNumberWithReason(US_NUMBER));
 
@@ -1034,7 +1122,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("The number supplied was not stripped of the plus symbol.",
                  strippedNumber.toString(), numberToStrip.toString());
 
-    // If the number afterwards is a zero, we should not strip this - no country code begins with 0.
+    // If the number afterwards is a zero, we should not strip this - no country calling code begins
+    // with 0.
     numberToStrip = new StringBuffer("0090112-3123");
     strippedNumber = new StringBuffer("00901123123");
     assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
@@ -1056,16 +1145,16 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "011112-3456789";
       String strippedNumber = "123456789";
-      int countryCode = 1;
+      int countryCallingCode = 1;
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Did not extract country code " + countryCode + " correctly.",
-                   countryCode,
+      assertEquals("Did not extract country calling code " + countryCallingCode + " correctly.",
+                   countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
                                                      number));
       assertEquals("Did not figure out CountryCodeSource correctly",
                    CountryCodeSource.FROM_NUMBER_WITH_IDD, number.getCountryCodeSource());
       // Should strip and normalize national significant number.
-      assertEquals("Did not strip off the country code correctly.",
+      assertEquals("Did not strip off the country calling code correctly.",
                    strippedNumber,
                    numberToFill.toString());
     } catch (NumberParseException e) {
@@ -1074,10 +1163,10 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "+6423456789";
-      int countryCode = 64;
+      int countryCallingCode = 64;
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Did not extract country code " + countryCode + " correctly.",
-                   countryCode,
+      assertEquals("Did not extract country calling code " + countryCallingCode + " correctly.",
+                   countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
                                                      number));
       assertEquals("Did not figure out CountryCodeSource correctly",
@@ -1089,10 +1178,10 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "2345-6789";
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Should not have extracted a country code - no international prefix present.",
-                   0,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
-                                                     number));
+      assertEquals(
+          "Should not have extracted a country calling code - no international prefix present.",
+          0,
+          phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true, number));
       assertEquals("Did not figure out CountryCodeSource correctly",
                    CountryCodeSource.FROM_DEFAULT_COUNTRY, number.getCountryCodeSource());
     } catch (NumberParseException e) {
@@ -1103,7 +1192,7 @@ public class PhoneNumberUtilTest extends TestCase {
       String phoneNumber = "0119991123456789";
       StringBuffer numberToFill = new StringBuffer();
       phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true, number);
-      fail("Should have thrown an exception, no valid country code present.");
+      fail("Should have thrown an exception, no valid country calling code present.");
     } catch (NumberParseException e) {
       // Expected.
       assertEquals("Wrong error type stored in exception.",
@@ -1113,10 +1202,10 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "(1 610) 619 4466";
-      int countryCode = 1;
+      int countryCallingCode = 1;
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Should have extracted the country code of the region passed in",
-                   countryCode,
+      assertEquals("Should have extracted the country calling code of the region passed in",
+                   countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
                                                      number));
       assertEquals("Did not figure out CountryCodeSource correctly",
@@ -1128,10 +1217,10 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "(1 610) 619 4466";
-      int countryCode = 1;
+      int countryCallingCode = 1;
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Should have extracted the country code of the region passed in",
-                   countryCode,
+      assertEquals("Should have extracted the country calling code of the region passed in",
+                   countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false,
                                                      number));
       assertFalse("Should not contain CountryCodeSource.", number.hasCountryCodeSource());
@@ -1142,8 +1231,8 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "(1 610) 619 446";
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Should not have extracted a country code - invalid number after extraction " +
-                   "of uncertain country code.",
+      assertEquals("Should not have extracted a country calling code - invalid number after " +
+                   "extraction of uncertain country calling code.",
                    0,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false,
                                                      number));
@@ -1155,8 +1244,8 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "(1 610) 619 43";
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Should not have extracted a country code - invalid number both before and " +
-                   "after extraction of uncertain country code.",
+      assertEquals("Should not have extracted a country calling code - invalid number both " +
+                   "before and after extraction of uncertain country calling code.",
                    0,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
                                                      number));
@@ -1177,10 +1266,10 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(NZ_NUMBER, phoneUtil.parse("03 331 6005", RegionCode.NZ));
 
     // Testing international prefixes.
-    // Should strip country code.
+    // Should strip country calling code.
     assertEquals(NZ_NUMBER, phoneUtil.parse("0064 3 331 6005", RegionCode.NZ));
     // Try again, but this time we have an international number with Region Code US. It should
-    // recognise the country code and parse accordingly.
+    // recognise the country calling code and parse accordingly.
     assertEquals(NZ_NUMBER, phoneUtil.parse("01164 3 331 6005", RegionCode.US));
     assertEquals(NZ_NUMBER, phoneUtil.parse("+64 3 331 6005", RegionCode.US));
 
@@ -1191,8 +1280,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(DE_NUMBER, phoneUtil.parse("301/23456", RegionCode.DE));
 
     PhoneNumber usNumber = new PhoneNumber();
-    // Check it doesn't use the '1' as a country code when parsing if the phone number was already
-    // possible.
+    // Check it doesn't use the '1' as a country calling code when parsing if the phone number was
+    // already possible.
     usNumber.setCountryCode(1).setNationalNumber(1234567890L);
     assertEquals(usNumber, phoneUtil.parse("123-456-7890", RegionCode.US));
   }
@@ -1350,7 +1439,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String invalidCountryCode = "+210 3456 56789";
       phoneUtil.parse(invalidCountryCode, RegionCode.NZ);
-      fail("This is not a recognised country code: should fail: " + invalidCountryCode);
+      fail("This is not a recognised region code: should fail: " + invalidCountryCode);
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1359,8 +1448,8 @@ public class PhoneNumberUtilTest extends TestCase {
     }
     try {
       String someNumber = "123 456 7890";
-      phoneUtil.parse(someNumber, "YY");
-      fail("'Unknown' country code not allowed: should fail.");
+      phoneUtil.parse(someNumber, RegionCode.ZZ);
+      fail("'Unknown' region code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1370,7 +1459,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String someNumber = "123 456 7890";
       phoneUtil.parse(someNumber, RegionCode.CS);
-      fail("Deprecated country code not allowed: should fail.");
+      fail("Deprecated region code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1380,7 +1469,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String someNumber = "123 456 7890";
       phoneUtil.parse(someNumber, null);
-      fail("Null country code not allowed: should fail.");
+      fail("Null region code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1390,7 +1479,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String someNumber = "0044------";
       phoneUtil.parse(someNumber, RegionCode.GB);
-      fail("No number provided, only country code: should fail");
+      fail("No number provided, only region code: should fail");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1400,7 +1489,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String someNumber = "0044";
       phoneUtil.parse(someNumber, RegionCode.GB);
-      fail("No number provided, only country code: should fail");
+      fail("No number provided, only region code: should fail");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1466,8 +1555,8 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testParseNumbersWithPlusWithNoRegion() throws Exception {
-    // "ZZ" is allowed only if the number starts with a '+' - then the country code can be
-    // calculated.
+    // RegionCode.ZZ is allowed only if the number starts with a '+' - then the country calling code
+    // can be calculated.
     assertEquals(NZ_NUMBER, phoneUtil.parse("+64 3 331 6005", RegionCode.ZZ));
     // Test with full-width plus.
     assertEquals(NZ_NUMBER, phoneUtil.parse("\uFF0B64 3 331 6005", RegionCode.ZZ));
@@ -1514,6 +1603,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(ukNumber, phoneUtil.parse("+44 2034567890 X  456", RegionCode.GB));
     assertEquals(ukNumber, phoneUtil.parse("+44 2034567890 x 456  ", RegionCode.GB));
     assertEquals(ukNumber, phoneUtil.parse("+44 2034567890  X 456", RegionCode.GB));
+    assertEquals(ukNumber, phoneUtil.parse("+44-2034567890;ext=456", RegionCode.GB));
 
     PhoneNumber usWithExtension = new PhoneNumber();
     usWithExtension.setCountryCode(1).setNationalNumber(8009013355L).setExtension("7246433");
@@ -1577,7 +1667,7 @@ public class PhoneNumberUtilTest extends TestCase {
     // Invalid region code supplied.
     try {
       phoneUtil.parseAndKeepRawInput("123 456 7890", RegionCode.CS);
-      fail("Deprecated country code not allowed: should fail.");
+      fail("Deprecated region code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -1614,8 +1704,8 @@ public class PhoneNumberUtilTest extends TestCase {
   }
 
   public void testIsNumberMatchMatches() throws Exception {
-    // Test simple matches where formatting is different, or leading zeroes, or country code has
-    // been specified.
+    // Test simple matches where formatting is different, or leading zeroes, or country calling code
+    // has been specified.
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331 6005", "+64 03 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
@@ -1665,10 +1755,10 @@ public class PhoneNumberUtilTest extends TestCase {
     // Non-matches.
     assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
                  phoneUtil.isNumberMatch("03 331 6005", "03 331 6006"));
-    // Different country code, partial number match.
+    // Different country calling code, partial number match.
     assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "+16433316005"));
-    // Different country code, same number.
+    // Different country calling code, same number.
     assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "+6133316005"));
     // Extension different, all else the same.
@@ -1697,8 +1787,8 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.isNumberMatch("3 331-6005", "03 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch(NZ_NUMBER, "03 331 6005"));
-    // Here the second number possibly starts with the country code for New Zealand, although we are
-    // unsure.
+    // Here the second number possibly starts with the country calling code for New Zealand,
+    // although we are unsure.
     PhoneNumber unchangedNzNumber = new PhoneNumber().mergeFrom(NZ_NUMBER);
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch(unchangedNzNumber, "(64-3) 331 6005"));
@@ -1740,7 +1830,7 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.isNumberMatch("1 234 345 6789", "345 6789"));
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("+1 (234) 345 6789", "345 6789"));
-    // NSN matches, country code omitted for one number, extension missing for one.
+    // NSN matches, country calling code omitted for one number, extension missing for one.
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "3 331 6005#1234"));
     // One has Italian leading zero, one does not.
@@ -1770,5 +1860,12 @@ public class PhoneNumberUtilTest extends TestCase {
 
     // We have no data for NZ - should return true.
     assertTrue(phoneUtil.canBeInternationallyDialled(NZ_NUMBER));
+  }
+
+  public void testIsAlphaNumber() throws Exception {
+    assertTrue(phoneUtil.isAlphaNumber("1800 six-flags"));
+    assertTrue(phoneUtil.isAlphaNumber("1800 six-flags ext. 1234"));
+    assertFalse(phoneUtil.isAlphaNumber("1800 123-1234"));
+    assertFalse(phoneUtil.isAlphaNumber("1800 123-1234 extension: 1234"));
   }
 }

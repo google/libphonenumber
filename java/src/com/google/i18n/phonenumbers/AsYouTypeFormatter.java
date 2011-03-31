@@ -133,9 +133,9 @@ public class AsYouTypeFormatter {
 
   private void getAvailableFormats(String leadingThreeDigits) {
     List<NumberFormat> formatList =
-        (isInternationalFormatting && currentMetaData.getIntlNumberFormatCount() > 0)
-        ? currentMetaData.getIntlNumberFormatList()
-        : currentMetaData.getNumberFormatList();
+        (isInternationalFormatting && currentMetaData.intlNumberFormatSize() > 0)
+        ? currentMetaData.intlNumberFormats()
+        : currentMetaData.numberFormats();
     possibleFormats.addAll(formatList);
     narrowDownPossibleFormats(leadingThreeDigits);
   }
@@ -146,7 +146,7 @@ public class AsYouTypeFormatter {
     Iterator<NumberFormat> it = possibleFormats.iterator();
     while (it.hasNext()) {
       NumberFormat format = it.next();
-      if (format.getLeadingDigitsPatternCount() > indexOfLeadingDigitsPattern) {
+      if (format.leadingDigitsPatternSize() > indexOfLeadingDigitsPattern) {
         Pattern leadingDigitsPattern =
             regexCache.getPatternForRegex(
                 format.getLeadingDigitsPattern(indexOfLeadingDigitsPattern));

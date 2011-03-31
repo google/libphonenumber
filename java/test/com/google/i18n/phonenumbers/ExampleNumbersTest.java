@@ -65,7 +65,7 @@ public class ExampleNumbersTest extends TestCase {
    */
   private void checkNumbersValidAndCorrectType(PhoneNumberType exampleNumberRequestedType,
                                                Set<PhoneNumberType> possibleExpectedTypes) {
-    for (String regionCode : phoneNumberUtil.getSupportedCountries()) {
+    for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumber exampleNumber =
           phoneNumberUtil.getExampleNumberForType(regionCode, exampleNumberRequestedType);
       if (exampleNumber != null) {
@@ -149,7 +149,7 @@ public class ExampleNumbersTest extends TestCase {
   }
 
   public void testCanBeInternationallyDialled() throws Exception {
-    for (String regionCode : phoneNumberUtil.getSupportedCountries()) {
+    for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumber exampleNumber = null;
       PhoneNumberDesc desc =
           phoneNumberUtil.getMetadataForRegion(regionCode).getNoInternationalDialling();

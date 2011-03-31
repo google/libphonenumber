@@ -391,10 +391,10 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("03", formatter.inputDigit('3'));
     assertEquals("030", formatter.inputDigit('0'));
-    assertEquals("030 1", formatter.inputDigit('1'));
-    assertEquals("030 12", formatter.inputDigit('2'));
-    assertEquals("030 123", formatter.inputDigit('3'));
-    assertEquals("030 1234", formatter.inputDigit('4'));
+    assertEquals("030/1", formatter.inputDigit('1'));
+    assertEquals("030/12", formatter.inputDigit('2'));
+    assertEquals("030/123", formatter.inputDigit('3'));
+    assertEquals("030/1234", formatter.inputDigit('4'));
 
     // 04134 1234
     formatter.clear();
