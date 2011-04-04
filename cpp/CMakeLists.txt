@@ -14,99 +14,72 @@
 
 # Author: Philippe Liard
 
-
 cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
 
-# Find Google Test library
-find_path (GTEST_INCLUDE_DIR gtest/gtest.h)
+# Helper functions dealing with finding libraries and programs this library
+# depends on.
 
-if (GTEST_INCLUDE_DIR STREQUAL "GTEST_INCLUDE_DIR-NOTFOUND")
+function (print_error DESCRIPTION FILE)
   message (FATAL_ERROR
-    "Can't find Google Test framework headers. Please read README.")
-endif ()
+    "Can't find ${DESCRIPTION}: can't locate ${FILE}. Please read the README.")
+endfunction ()
 
-include_directories (${GTEST_INCLUDE_DIR})
+# Find a library. If it has not been found, stop CMake with a fatal error
+# message.
+function (find_required_library NAME HEADER LIBRARY DESCRIPTION)
+  # Check the header.
+  find_path (${NAME}_INCLUDE_DIR ${HEADER})
+  set (INCLUDE_DIR ${NAME}_INCLUDE_DIR)
 
-find_library (GTEST_LIB gtest)
+  if (${INCLUDE_DIR} STREQUAL "${INCLUDE_DIR}-NOTFOUND")
+    print_error (${DESCRIPTION} ${HEADER})
+  endif ()
+  include_directories (${INCLUDE_DIR})
+  # Check the binary.
+  find_library (${NAME}_LIB ${LIBRARY})
+  set (LIB ${NAME}_LIB)
 
-if (GTEST_LIB STREQUAL "GTEST_LIB-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find Google Test framework library. Please read README.")
-endif ()
+  if (${LIB} STREQUAL "${LIB}-NOTFOUND")
+    print_error (${DESCRIPTION} ${LIBRARY})
+  endif ()
+endfunction (find_required_library)
 
-
-# Find Google RE2 library
-find_path (RE2_INCLUDE_DIR re2/re2.h)
-
-if (RE2_INCLUDE_DIR STREQUAL "RE2_INCLUDE_DIR-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find Google RE2 headers. Please read README.")
-endif ()
-
-include_directories (${RE2_INCLUDE_DIR})
-
-find_library (RE2_LIB re2)
-
-if (RE2_LIB STREQUAL "RE2_LIB-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find Google RE2 library. Please read README.")
-endif ()
-
-
-# Find Protocol Buffers compiler
-find_program (PROTOC NAMES protoc)
-
-if (PROTOC STREQUAL "PROTOC-NOTFOUND")
-  message (FATAL_ERROR
-      "Can't find Google Protocol Buffers compiler (protoc). "
-      "Please read README.")
-endif ()
-
-# Find Protocol Buffers library
-find_path (PROTOBUF_INCLUDE_DIR google/protobuf/message_lite.h)
-
-if (PROTOBUF_INCLUDE_DIR STREQUAL "PROTOBUF_INCLUDE_DIR-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find Google Protocol headers. Please read README.")
-endif ()
-
-include_directories (${PROTOBUF_INCLUDE_DIR})
-
-find_library (PROTOBUF_LIB protobuf)
-
-if (PROTOBUF_LIB STREQUAL "PROTOBUF_LIB-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find Google Protocol Buffers library. Please read README.")
-endif ()
-
-# Check Protocol Buffers version (if pkg-config available)
+# Check the library version (if pkg-config available).
 find_package (PkgConfig)
+function (check_library_version NAME LIBRARY VERSION)
+  if (PKG_CONFIG_EXECUTABLE)
+    pkg_check_modules (NAME REQUIRED ${LIBRARY}>=${VERSION})
+  endif (PKG_CONFIG_EXECUTABLE)
+endfunction ()
 
-if (PKG_CONFIG_EXECUTABLE)
-  pkg_check_modules (PC_PROTOBUF REQUIRED protobuf>=2.4)
-endif (PKG_CONFIG_EXECUTABLE)
+# Find a program. If it has not been found, stop CMake with a fatal error
+# message.
+function (find_required_program NAME FILENAME DESCRIPTION)
+  find_program (${NAME}_BIN NAMES ${FILENAME})
 
-# Find ICU
-find_path (ICU_INCLUDE_DIR unicode/unistr.h unicode/normlzr.h)
+  if (${NAME}_BIN STREQUAL "${${NAME}_BIN}-NOTFOUND")
+    print_error (${DESCRIPTION} ${FILENAME})
+  endif ()
+endfunction (find_required_program)
 
-if (ICU_INCLUDE_DIR STREQUAL "ICU_INCLUDE_DIR-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find ICU headers. Please read README.")
-endif ()
+# Find all the required libraries and programs.
+find_required_library (GTEST gtest/gtest.h gtest "Google Test framework")
 
-include_directories (${ICU_INCLUDE_DIR})
+find_required_library (RE2 re2/re2.h re2 "Google RE2")
 
-find_library (ICU_LIB icui18n)
+find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
+                       "Google Protocol Buffers")
+check_library_version (PC_PROTOBUF protobuf 2.4)
 
-if (ICU_LIB STREQUAL "ICU_LIB-NOTFOUND")
-  message (FATAL_ERROR
-    "Can't find ICU library. Please read README.")
-endif ()
+find_required_library (ICU unicode/unistr.h icui18n "ICU")
+check_library_version (PC_ICU icui18n 4.4)
 
+find_required_program (PROTOC protoc
+                       "Google Protocol Buffers compiler (protoc)")
 
-# Add protoc (Protocol Buffers compiler) target
+# Add protoc (Protocol Buffers compiler) target.
 set (
   PROTOBUF_SOURCES "${CMAKE_SOURCE_DIR}/src/phonemetadata.proto"
                    "${CMAKE_SOURCE_DIR}/src/phonenumber.proto"
@@ -121,7 +94,7 @@ set (
 )
 
 add_custom_command (
-  COMMAND ${PROTOC} --cpp_out=${CMAKE_SOURCE_DIR}
+  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_SOURCE_DIR}
     --proto_path=${CMAKE_SOURCE_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
@@ -135,7 +108,7 @@ add_custom_target (
   COMMENT "Generating Protocol Buffers code"
 )
 
-# Platform independent sources
+# Platform independent sources.
 set (
   SOURCES
   "src/base/at_exit.cc"
@@ -145,9 +118,9 @@ set (
   "src/base/threading/thread_restrictions.cc"
   "src/default_logger.cc"
   "src/logger_adapter.cc"
-  "src/metadata.cc"         # Generated by src/embed_binary_data.sh
-  "src/phonemetadata.pb.cc" # Generated by Protocol Buffers
-  "src/phonenumber.pb.cc"   # Generated by Protocol Buffers
+  "src/metadata.cc"
+  "src/phonemetadata.pb.cc" # Generated by Protocol Buffers.
+  "src/phonenumber.pb.cc"   # Generated by Protocol Buffers.
   "src/phonenumberutil.cc"
   "src/re2_cache.cc"
   "src/stringutil.cc"
@@ -160,13 +133,13 @@ if (UNIX)
   if (CMAKE_COMPILER_IS_GNUCXX)
     add_definitions ("-Wall -Wextra -Werror")
 
-    # The next flags are needed by base/ source files to compile
-    # low level code needed by Singleton
+    # The next flags are needed by base/ source files to compile low level code
+    # needed by Singleton.
     add_definitions ("-DCOMPILER_GCC -DOS_POSIX -DOS_LINUX")
 
     if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86.*")
       add_definitions ("-DARCH_CPU_X86_FAMILY")
-      # Add GCC specific sources
+      # Add GCC specific sources.
       list (APPEND SOURCES "src/base/atomicops_internals_x86_gcc.cc")
 
     elseif (${CMAKE_SYSTEM_PROCESSOR} MATCHES ".*arm.*")
@@ -174,7 +147,7 @@ if (UNIX)
     endif ()
   endif ()
 
-  # Add POSIX specific sources
+  # Add POSIX specific sources.
   list (
     APPEND SOURCES
     "src/base/synchronization/lock_impl_posix.cc"
@@ -182,27 +155,25 @@ if (UNIX)
     "src/base/threading/thread_local_posix.cc"
   )
 else (WIN32)
-  # TODO: add Windows support (define COMPILER_MSVC, OS_WIN)
+  # TODO: add Windows support (define COMPILER_MSVC, OS_WIN).
   list (
     APPEND SOURCES
     "src/base/synchronization/lock_impl_win.cc"
     "src/base/threading/platform_thread_win.cc"
     "src/base/threading/thread_local_win.cc"
   )
-  # TODO: Windows specific flags
+  # TODO: Windows specific flags.
 endif ()
-
 
 include_directories ("src")
 include_directories (".")
-                          
+
 add_library (phonenumber STATIC ${SOURCES})
 add_dependencies (phonenumber generate-sources)
 
 target_link_libraries (phonenumber ${RE2_LIB} ${PROTOBUF_LIB} ${ICU_LIB})
 
-# Tests
-
+# Tests.
 set (TEST_SOURCES
   "src/phonenumberutil_test.cc"
   "src/re2_cache_test.cc"
@@ -212,5 +183,4 @@ set (TEST_SOURCES
 )
 
 add_executable (libphonenumber_test ${TEST_SOURCES})
-
 target_link_libraries (libphonenumber_test phonenumber ${GTEST_LIB} pthread)
