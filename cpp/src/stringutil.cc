@@ -26,22 +26,22 @@ namespace phonenumbers {
 using std::stringstream;
 
 string operator+(const string& s, int n) {
-  stringstream ss;
+  stringstream stream;
 
-  ss << s << n;
+  stream << s << n;
   string result;
-  ss >> result;
+  stream >> result;
 
   return result;
 }
 
 template <typename T>
 string GenericSimpleItoa(const T& n) {
-  stringstream ss;
+  stringstream stream;
 
-  ss << n;
+  stream << n;
   string result;
-  ss >> result;
+  stream >> result;
 
   return result;
 }
@@ -54,6 +54,30 @@ string SimpleItoa(uint64 n) {
   return GenericSimpleItoa(n);
 }
 
+void StripString(string* s, const char* remove, char replacewith) {
+  const char* str_start = s->c_str();
+  const char* str = str_start;
+  for (str = strpbrk(str, remove);
+       str != NULL;
+       str = strpbrk(str + 1, remove)) {
+    (*s)[str - str_start] = replacewith;
+  }
+}
+
+template <typename T>
+void GenericAtoi(const string& s, T* out) {
+  stringstream stream;
+  stream << s;
+  stream >> *out;
+}
+
+void safe_strto32(const string& s, int32 *n) {
+  GenericAtoi(s, n);
+}
+
+void safe_strtou64(const string& s, uint64 *n) {
+  GenericAtoi(s, n);
+}
 
 bool TryStripPrefixString(const string& in, const string& prefix, string* out) {
   assert(out);
@@ -84,11 +108,18 @@ StringHolder::StringHolder(const char* s) :
   len_(std::strlen(s))
 {}
 
+StringHolder::StringHolder(uint64 n) :
+  converted_string_(SimpleItoa(n)),
+  string_(&converted_string_),
+  cstring_(NULL),
+  len_(converted_string_.length())
+{}
+
 StringHolder::~StringHolder() {}
 
 // StrCat
 
-// Implement s += sh; (s: string, sh: StringHolder)
+// Implements s += sh; (s: string, sh: StringHolder)
 string& operator+=(string& lhs, const StringHolder& rhs) {
   const string* const s = rhs.GetString();
   if (s) {
@@ -170,6 +201,24 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
 string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s3, const StringHolder& s4,
               const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7) {
+  string result;
+  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length() + s7.Length() + 1);
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+
+  return result;
+}
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
               const StringHolder& s7, const StringHolder& s8,
               const StringHolder& s9, const StringHolder& s10,
               const StringHolder& s11) {
@@ -190,6 +239,23 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
   result += s11;
 
   return result;
+}
+
+// StrAppend
+
+void StrAppend(string* dest, const StringHolder& s1) {
+  assert(dest);
+
+  dest->reserve(dest->length() + s1.Length() + 1);
+  *dest += s1;
+}
+
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2) {
+  assert(dest);
+
+  dest->reserve(dest->length() + s1.Length() + s2.Length() + 1);
+  *dest += s1;
+  *dest += s2;
 }
 
 }  // namespace phonenumbers

@@ -27,27 +27,38 @@ namespace phonenumbers {
 
 using std::string;
 
-// Support string("hello") + 10
+// Supports string("hello") + 10.
 string operator+(const string& s, int n);
 
-// Convert integer to string.
+// Converts integer to string.
 string SimpleItoa(uint64 n);
 string SimpleItoa(int n);
 
-// Return true if 'in' starts with 'prefix' and write into 'out'
-// 'in' minus 'prefix'
+// Replaces any occurrence of the character 'remove' (or the characters
+// in 'remove') with the character 'replacewith'.
+void StripString(string* s, const char* remove, char replacewith);
+
+// Returns true if 'in' starts with 'prefix' and writes 'in' minus 'prefix' into
+// 'out'.
 bool TryStripPrefixString(const string& in, const string& prefix, string* out);
 
-// Return true if 's' ends with 'suffix'
+// Returns true if 's' ends with 'suffix'.
 bool HasSuffixString(const string& s, const string& suffix);
 
+// Converts string to int32.
+void safe_strto32(const string& s, int32 *n);
 
-// Hold a reference to a std::string or C string.
+// Converts string to uint64.
+void safe_strtou64(const string& s, uint64 *n);
+
+// Holds a reference to a std::string or C string. It can also be constructed
+// from an integer which is converted to a string.
 class StringHolder {
 public:
   // Don't make the constructors explicit to make the StrCat usage convenient.
   StringHolder(const string& s);
   StringHolder(const char* s);
+  StringHolder(uint64 n);
   ~StringHolder();
 
   const string* GetString() const {
@@ -63,16 +74,15 @@ public:
   }
 
 private:
+  const string converted_string_;  // Stores the string converted from integer.
   const string* const string_;
   const char* const cstring_;
   const size_t len_;
 };
 
-
 string& operator+=(string& lhs, const StringHolder& rhs);
 
-
-// Efficient string concatenation
+// Efficient string concatenation.
 
 string StrCat(const StringHolder& s1, const StringHolder& s2);
 
@@ -93,9 +103,18 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
 string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s3, const StringHolder& s4,
               const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
               const StringHolder& s7, const StringHolder& s8,
               const StringHolder& s9, const StringHolder& s10,
               const StringHolder& s11);
+
+void StrAppend(string* dest, const StringHolder& s1);
+
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2);
 
 }  // namespace phonenumbers
 }  // namespace i18n
