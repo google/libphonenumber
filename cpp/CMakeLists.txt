@@ -80,10 +80,11 @@ find_required_program (PROTOC protoc
                        "Google Protocol Buffers compiler (protoc)")
 
 # Add protoc (Protocol Buffers compiler) target.
-set (
-  PROTOBUF_SOURCES "${CMAKE_SOURCE_DIR}/src/phonemetadata.proto"
-                   "${CMAKE_SOURCE_DIR}/src/phonenumber.proto"
+set (RESOURCES_DIR "${CMAKE_SOURCE_DIR}/../resources")
 
+set (
+  PROTOBUF_SOURCES "${RESOURCES_DIR}/phonemetadata.proto"
+                   "${RESOURCES_DIR}/phonenumber.proto"
 )
 
 set (
@@ -94,8 +95,8 @@ set (
 )
 
 add_custom_command (
-  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_SOURCE_DIR}
-    --proto_path=${CMAKE_SOURCE_DIR} ${PROTOBUF_SOURCES}
+  COMMAND ${PROTOC_BIN} --cpp_out="${CMAKE_SOURCE_DIR}/src"
+    --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
   DEPENDS ${PROTOBUF_SOURCES}
