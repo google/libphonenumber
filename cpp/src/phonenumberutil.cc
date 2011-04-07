@@ -46,7 +46,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using std::cerr;
-using std::cout;
 using std::endl;
 using std::ifstream;
 using std::make_pair;
@@ -63,7 +62,6 @@ scoped_ptr<LoggerAdapter> logger;
 scoped_ptr<RE2Cache> re2_cache;
 
 // These objects are created in the function InitializeStaticMapsAndSets.
-scoped_ptr<set<int> > leading_zero_countries;
 
 // These mappings map a character (key) to a specific digit that should replace
 // it for normalization purposes.
@@ -81,11 +79,13 @@ const char kPlusSign[] = "+";
 const char kPlusChars[] = "+＋";
 scoped_ptr<const RE2> plus_chars_pattern;
 
-// Pattern that makes it easy to distinguish whether a country has a unique
-// international dialing prefix or not. If a country has a unique international
+const char kRfc3966ExtnPrefix[] = ";ext=";
+
+// Pattern that makes it easy to distinguish whether a region has a unique
+// international dialing prefix or not. If a region has a unique international
 // prefix (e.g. 011 in USA), it will be represented as a string that contains a
 // sequence of ASCII digits. If there are multiple available international
-// prefixes in a country, they will be represented as a regex string that always
+// prefixes in a region, they will be represented as a regex string that always
 // contains character(s) other than ASCII digits.
 // Note this regex also includes tilde, which signals waiting for the tone.
 scoped_ptr<const RE2> unique_international_prefix;
@@ -159,20 +159,22 @@ scoped_ptr<const string> valid_phone_number;
 // any extension component of the number, after the main national number is
 // formatted. For example, if you wish the default extension formatting to be "
 // extn: 3456", then you should specify " extn: " here as the default extension
-// prefix. This can be overridden by country-specific preferences.
+// prefix. This can be overridden by region-specific preferences.
 const char kDefaultExtnPrefix[] = " ext. ";
 
 // Regexp of all possible ways to write extensions, for use when parsing. This
 // will be run as a case-insensitive regexp match. Wide character versions are
-// also provided after each ascii version. There are two regular expressions
-// here: the more generic one starts with optional white space and ends with an
-// optional full stop (.), followed by zero or more spaces/tabs and then the
-// numbers themselves. The other one covers the special case of American numbers
-// where the extension is written with a hash at the end, such as "- 503#".
+// also provided after each ascii version. There are three regular expressions
+// here. The first covers RFC 3966 format, where the extension is added using
+// ";ext=". The second more generic one starts with optional white space and
+// ends with an optional full stop (.), followed by zero or more spaces/tabs and
+// then the numbers themselves. The third one covers the special case of
+// American numbers where the extension is written with a hash at the end, such
+// as "- 503#".
 // Note that the only capturing groups should be around the digits that you want
 // to capture as part of the extension, or else parsing will fail!
 scoped_ptr<const string> known_extn_patterns;
-// Regexp of all known extension prefixes used by different countries followed
+// Regexp of all known extension prefixes used by different regions followed
 // by 1 or more valid digits, for use when parsing.
 scoped_ptr<const RE2> extn_pattern;
 
@@ -190,13 +192,8 @@ scoped_ptr<const RE2> first_group_capturing_pattern;
 scoped_ptr<const RE2> carrier_code_pattern;
 
 void TransformRegularExpressionToRE2Syntax(string* regex) {
-  DCHECK(regex != NULL);
-  string& r = *regex;
-
-  // Replace '$' with '\\'
-  for (string::iterator it = r.begin(); it != r.end(); ++it)
-    if (*it == '$')
-      *it = '\\';
+  DCHECK(regex);
+  StripString(regex, "$", '\\');
 }
 
 // Returns a pointer to the description inside the metadata of the appropriate
@@ -230,7 +227,7 @@ const PhoneNumberDesc* GetNumberDescByType(
 }
 
 // A helper function that is used by Format and FormatByPattern.
-void FormatNumberByFormat(int country_code,
+void FormatNumberByFormat(int country_calling_code,
                           PhoneNumberUtil::PhoneNumberFormat number_format,
                           const string& formatted_national_number,
                           const string& formatted_extension,
@@ -238,14 +235,21 @@ void FormatNumberByFormat(int country_code,
   switch (number_format) {
     case PhoneNumberUtil::E164:
       formatted_number->assign(StrCat(kPlusSign,
-                                      SimpleItoa(country_code),
+                                      SimpleItoa(country_calling_code),
                                       formatted_national_number,
                                       formatted_extension));
       return;
     case PhoneNumberUtil::INTERNATIONAL:
       formatted_number->assign(StrCat(kPlusSign,
-                                      SimpleItoa(country_code),
+                                      SimpleItoa(country_calling_code),
                                       " ",
+                                      formatted_national_number,
+                                      formatted_extension));
+      return;
+    case PhoneNumberUtil::RFC3966:
+      formatted_number->assign(StrCat(kPlusSign,
+                                      SimpleItoa(country_calling_code),
+                                      "-",
                                       formatted_national_number,
                                       formatted_extension));
       return;
@@ -261,7 +265,7 @@ void FormatNumberByFormat(int country_code,
 // formatting rule, but then we actually apply the formatting pattern to the
 // national_number (which in this case has alpha characters in it).
 //
-// Note that carrierCode is optional - if an empty string, no carrier code
+// Note that carrier_code is optional - if an empty string, no carrier code
 // replacement will take place.
 void FormatAccordingToFormatsWithCarrier(
     const string& number_for_leading_digits_match,
@@ -464,12 +468,16 @@ void CreateRegularExpressions() {
              "]){3,}[", kValidAlpha, kValidPunctuation, kValidDigits, "]*")));
   // Canonical-equivalence doesn't seem to be an option with RE2, so we allow
   // two options for representing the ó - the character itself, and one in the
-  // unicode decomposed form with the combining acute accent.
+  // unicode decomposed form with the combining acute accent. Note that there
+  // are currently three capturing groups for the extension itself - if this
+  // number is changed, MaybeStripExtension needs to be updated.
+  const string capturing_extn_digits = StrCat("([", kValidDigits, "]{1,7})");
   known_extn_patterns.reset(new string(
-      StrCat("[  \\t,]*(?:ext(?:ensi(?:ó?|ó))?n?|ｅｘｔｎ?|[,xｘ#＃~～]|"
+      StrCat(kRfc3966ExtnPrefix, capturing_extn_digits, "|"
+             "[  \\t,]*(?:ext(?:ensi(?:ó?|ó))?n?|ｅｘｔｎ?|[,xｘ#＃~～]|"
              "int|ｉｎｔ|anexo)"
-             "[:\\.．]?[  \\t,-]*([",
-             kValidDigits, "]{1,7})#?|[- ]+([", kValidDigits, "]{1,5})#")));
+             "[:\\.．]?[  \\t,-]*", capturing_extn_digits, "#?|"
+             "[- ]+([", kValidDigits, "]{1,5})#")));
   extn_pattern.reset(new RE2(StrCat("(?i)(?:", *known_extn_patterns, ")$")));
   valid_phone_number_pattern.reset(new RE2(
       StrCat("(?i)", *valid_phone_number, "(?:", *known_extn_patterns, ")?")));
@@ -481,46 +489,40 @@ void CreateRegularExpressions() {
 void InitializeStaticMapsAndSets() {
   // Create global objects.
   re2_cache.reset(new RE2Cache(64));
-  leading_zero_countries.reset(new set<int>);
   all_plus_number_grouping_symbols.reset(new map<char32, char>);
   alpha_mappings.reset(new map<char32, char>);
   all_normalization_mappings.reset(new map<char32, char>);
 
-  leading_zero_countries->insert(39);  // Italy
-  leading_zero_countries->insert(47);  // Norway
-  leading_zero_countries->insert(225);  // Cote d'Ivoire
-  leading_zero_countries->insert(227);  // Niger
-  leading_zero_countries->insert(228);  // Togo
-  leading_zero_countries->insert(241);  // Gabon
-  leading_zero_countries->insert(242);  // Congo (Rep. of the)
-  leading_zero_countries->insert(268);  // Swaziland
-  leading_zero_countries->insert(378);  // San Marino
-  leading_zero_countries->insert(379);  // Vatican City
-  leading_zero_countries->insert(501);  // Belize
   // Punctuation that we wish to respect in alpha numbers, as they show number
   // groupings are mapped here.
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("-"), '-'));
   all_plus_number_grouping_symbols->insert(
+      make_pair(ToUnicodeCodepoint("－"), '-'));
+  all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("‐"), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("-"), '-'));
+      make_pair(ToUnicodeCodepoint("‑"), '-'));
+  all_plus_number_grouping_symbols->insert(
+      make_pair(ToUnicodeCodepoint("‒"), '-'));
+  all_plus_number_grouping_symbols->insert(
+      make_pair(ToUnicodeCodepoint("–"), '-'));
+  all_plus_number_grouping_symbols->insert(
+      make_pair(ToUnicodeCodepoint("—"), '-'));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("―"), '-'));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("−"), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("－"), '-'));
+      make_pair(ToUnicodeCodepoint("/"), '/'));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("／"), '/'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("/"), '/'));
-  all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint(" "), ' '));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("⁠"), ' '));
-  all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("　"), ' '));
+  all_plus_number_grouping_symbols->insert(
+      make_pair(ToUnicodeCodepoint("⁠"), ' '));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("."), '.'));
   all_plus_number_grouping_symbols->insert(
@@ -629,7 +631,7 @@ bool ParsePrefixAsIdd(const RE2& idd_pattern, string* number) {
   // copy so that we can revert to the original string if necessary.
   if (RE2::Consume(&number_copy, idd_pattern)) {
     // Only strip this if the first digit after the match is not a 0, since
-    // country codes cannot begin with 0.
+    // country calling codes cannot begin with 0.
     string extracted_digit;
     if (RE2::PartialMatch(number_copy,
                           *capturing_digit_pattern,
@@ -645,7 +647,20 @@ bool ParsePrefixAsIdd(const RE2& idd_pattern, string* number) {
   return false;
 }
 
-} // namespace
+PhoneNumberUtil::ValidationResult TestNumberLengthAgainstPattern(
+    const RE2& number_pattern, const string& number) {
+  string extracted_number;
+  if (RE2::FullMatch(number, number_pattern, &extracted_number)) {
+    return PhoneNumberUtil::IS_POSSIBLE;
+  }
+  if (RE2::PartialMatch(number, number_pattern, &extracted_number)) {
+    return PhoneNumberUtil::TOO_LONG;
+  } else {
+    return PhoneNumberUtil::TOO_SHORT;
+  }
+}
+
+}  // namespace
 
 // Fetch the metadata which are actually already available in the address space
 // (embedded).
@@ -676,10 +691,11 @@ void PhoneNumberUtil::SetLoggerAdapter(LoggerAdapter* logger_adapter) {
   logger.reset(logger_adapter);
 }
 
+// Private constructor. Also takes care of initialisation.
 PhoneNumberUtil::PhoneNumberUtil(MetadataProvider* provider)
-    : country_code_to_region_code_map_(new vector<IntRegionsPair>()),
-      nanpa_countries_(new set<string>()),
-      country_to_metadata_map_(new map<string, PhoneMetadata>()) {
+    : country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
+      nanpa_regions_(new set<string>()),
+      region_to_metadata_map_(new map<string, PhoneMetadata>()) {
 
   if (logger == NULL) {
     SetLoggerAdapter(new DefaultLogger());
@@ -692,45 +708,44 @@ PhoneNumberUtil::PhoneNumberUtil(MetadataProvider* provider)
     logger->Fatal("Could not load metadata");
     return;
   }
-  // Storing data in a temporary map to make it easier to find other countries
-  // that share a country code when inserting data.
-  map<int, list<string>* > country_code_to_region_map;
+  // Storing data in a temporary map to make it easier to find other regions
+  // that share a country calling code when inserting data.
+  map<int, list<string>* > country_calling_code_to_region_map;
   for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
            metadata_collection.metadata().begin();
        it != metadata_collection.metadata().end();
        ++it) {
     const PhoneMetadata& phone_metadata = *it;
     const string& region_code = phone_metadata.id();
-    country_to_metadata_map_->insert(make_pair(region_code, *it));
-    int country_code = it->country_code();
-    map<int, list<string>*>::iterator country_code_in_map =
-        country_code_to_region_map.find(country_code);
-    if (country_code_in_map != country_code_to_region_map.end()) {
+    region_to_metadata_map_->insert(make_pair(region_code, *it));
+    int country_calling_code = it->country_code();
+    map<int, list<string>*>::iterator calling_code_in_map =
+        country_calling_code_to_region_map.find(country_calling_code);
+    if (calling_code_in_map != country_calling_code_to_region_map.end()) {
       if (it->main_country_for_code()) {
-        country_code_in_map->second->push_front(region_code);
+        calling_code_in_map->second->push_front(region_code);
       } else {
-        country_code_in_map->second->push_back(region_code);
+        calling_code_in_map->second->push_back(region_code);
       }
     } else {
-      // For most countries, there will be only one region code for the country
-      // code.
+      // For most country calling codes, there will be only one region code.
       list<string>* list_with_region_code = new list<string>();
       list_with_region_code->push_back(region_code);
-      country_code_to_region_map.insert(make_pair(country_code,
-                                                  list_with_region_code));
+      country_calling_code_to_region_map.insert(
+          make_pair(country_calling_code, list_with_region_code));
     }
-    if (country_code == kNanpaCountryCode) {
-        nanpa_countries_->insert(region_code);
+    if (country_calling_code == kNanpaCountryCode) {
+        nanpa_regions_->insert(region_code);
     }
   }
 
-  country_code_to_region_code_map_->insert(
-      country_code_to_region_code_map_->begin(),
-      country_code_to_region_map.begin(),
-      country_code_to_region_map.end());
+  country_calling_code_to_region_code_map_->insert(
+      country_calling_code_to_region_code_map_->begin(),
+      country_calling_code_to_region_map.begin(),
+      country_calling_code_to_region_map.end());
   // Sort all the pairs in ascending order according to country calling code.
-  sort(country_code_to_region_code_map_->begin(),
-       country_code_to_region_code_map_->end(),
+  sort(country_calling_code_to_region_code_map_->begin(),
+       country_calling_code_to_region_code_map_->end(),
        CompareFirst());
 
   InitializeStaticMapsAndSets();
@@ -738,8 +753,8 @@ PhoneNumberUtil::PhoneNumberUtil(MetadataProvider* provider)
 
 PhoneNumberUtil::~PhoneNumberUtil() {
   for (vector<IntRegionsPair>::const_iterator it =
-           country_code_to_region_code_map_->begin();
-       it != country_code_to_region_code_map_->end();
+           country_calling_code_to_region_code_map_->begin();
+       it != country_calling_code_to_region_code_map_->end();
        ++it) {
     delete it->second;
   }
@@ -755,15 +770,15 @@ PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
 void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
   DCHECK(regions);
   for (map<string, PhoneMetadata>::const_iterator it =
-       country_to_metadata_map_->begin(); it != country_to_metadata_map_->end();
+       region_to_metadata_map_->begin(); it != region_to_metadata_map_->end();
        ++it) {
     regions->insert(it->first);
   }
 }
 
 bool PhoneNumberUtil::IsValidRegionCode(const string& region_code) const {
-  return (country_to_metadata_map_->find(region_code) !=
-         country_to_metadata_map_->end());
+  return (region_to_metadata_map_->find(region_code) !=
+          region_to_metadata_map_->end());
 }
 
 bool PhoneNumberUtil::HasValidRegionCode(const string& region_code,
@@ -781,8 +796,8 @@ bool PhoneNumberUtil::HasValidRegionCode(const string& region_code,
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
     const string& region_code) const {
   map<string, PhoneMetadata>::const_iterator it =
-      country_to_metadata_map_->find(region_code);
-  if (it != country_to_metadata_map_->end()) {
+      region_to_metadata_map_->find(region_code);
+  if (it != region_to_metadata_map_->end()) {
     return &it->second;
   }
   return NULL;
@@ -792,33 +807,34 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
                              PhoneNumberFormat number_format,
                              string* formatted_number) const {
   DCHECK(formatted_number);
-  int country_code = number.country_code();
+  int country_calling_code = number.country_code();
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
   if (number_format == E164) {
     // Early exit for E164 case since no formatting of the national number needs
     // to be applied. Extensions are not formatted.
-    FormatNumberByFormat(country_code, E164, national_significant_number, "",
-                         formatted_number);
+    FormatNumberByFormat(country_calling_code, E164,
+                         national_significant_number, "", formatted_number);
     return;
   }
   // Note here that all NANPA formatting rules are contained by US, so we use
-  // that to format NANPA numbers. The same applies to Russian Fed countries -
+  // that to format NANPA numbers. The same applies to Russian Fed regions -
   // rules are contained by Russia. French Indian Ocean country rules are
   // contained by Réunion.
   string region_code;
-  GetRegionCodeForCountryCode(country_code, &region_code);
-  if (!HasValidRegionCode(region_code, country_code,
+  GetRegionCodeForCountryCode(country_calling_code, &region_code);
+  if (!HasValidRegionCode(region_code, country_calling_code,
                           national_significant_number)) {
     formatted_number->assign(national_significant_number);
     return;
   }
   string formatted_extension;
-  MaybeGetFormattedExtension(number, region_code, &formatted_extension);
+  MaybeGetFormattedExtension(number, region_code, number_format,
+                             &formatted_extension);
   string formatted_national_number;
   FormatNationalNumber(national_significant_number, region_code, number_format,
                        &formatted_national_number);
-  FormatNumberByFormat(country_code, number_format,
+  FormatNumberByFormat(country_calling_code, number_format,
                        formatted_national_number,
                        formatted_extension, formatted_number);
 }
@@ -831,16 +847,16 @@ void PhoneNumberUtil::FormatByPattern(
   static const RE2 national_prefix_pattern("\\$NP");
   static const RE2 first_group_pattern("\\$FG");
   DCHECK(formatted_number);
-  int country_code = number.country_code();
+  int country_calling_code = number.country_code();
   // Note GetRegionCodeForCountryCode() is used because formatting information
-  // for countries which share a country code is contained by only one country
-  // for performance reasons. For example, for NANPA countries it will be
+  // for regions which share a country calling code is contained by only one
+  // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
   string region_code;
-  GetRegionCodeForCountryCode(country_code, &region_code);
+  GetRegionCodeForCountryCode(country_calling_code, &region_code);
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
-  if (!HasValidRegionCode(region_code, country_code,
+  if (!HasValidRegionCode(region_code, country_calling_code,
                           national_significant_number)) {
     formatted_number->assign(national_significant_number);
     return;
@@ -881,8 +897,9 @@ void PhoneNumberUtil::FormatByPattern(
                            number_format, national_significant_number,
                            &formatted_number_without_extension);
   string formatted_extension;
-  MaybeGetFormattedExtension(number, region_code, &formatted_extension);
-  FormatNumberByFormat(country_code, number_format,
+  MaybeGetFormattedExtension(number, region_code, NATIONAL,
+                             &formatted_extension);
+  FormatNumberByFormat(country_calling_code, number_format,
                        formatted_number_without_extension, formatted_extension,
                        formatted_number);
 }
@@ -891,27 +908,29 @@ void PhoneNumberUtil::FormatNationalNumberWithCarrierCode(
     const PhoneNumber& number,
     const string& carrier_code,
     string* formatted_number) const {
-  int country_code = number.country_code();
+  int country_calling_code = number.country_code();
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
   // Note GetRegionCodeForCountryCode() is used because formatting information
-  // for countries which share a country code is contained by only one country
-  // for performance reasons. For example, for NANPA countries it will be
+  // for regions which share a country calling code is contained by only one
+  // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
   string region_code;
-  GetRegionCodeForCountryCode(country_code, &region_code);
-  if (!HasValidRegionCode(region_code, country_code,
+  GetRegionCodeForCountryCode(country_calling_code, &region_code);
+  if (!HasValidRegionCode(region_code, country_calling_code,
                           national_significant_number)) {
     formatted_number->assign(national_significant_number);
   }
   string formatted_extension;
-  MaybeGetFormattedExtension(number, region_code, &formatted_extension);
+  MaybeGetFormattedExtension(number, region_code, NATIONAL,
+                             &formatted_extension);
   string formatted_national_number;
   FormatNationalNumberWithCarrier(national_significant_number, region_code,
                                   NATIONAL, carrier_code,
                                   &formatted_national_number);
-  FormatNumberByFormat(country_code, NATIONAL, formatted_national_number,
-                       formatted_extension, formatted_number);
+  FormatNumberByFormat(country_calling_code, NATIONAL,
+                       formatted_national_number, formatted_extension,
+                       formatted_number);
 }
 
 void PhoneNumberUtil::FormatNationalNumberWithPreferredCarrierCode(
@@ -950,25 +969,24 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
   }
   if (country_code == kNanpaCountryCode) {
     if (IsNANPACountry(calling_from)) {
-      // For NANPA countries, return the national format for these countries but
-      // prefix it with the country code.
+      // For NANPA regions, return the national format for these regions but
+      // prefix it with the country calling code.
       string national_number;
       Format(number, NATIONAL, &national_number);
-      formatted_number->assign(StrCat(SimpleItoa(country_code), " ",
-            national_number));
+      formatted_number->assign(StrCat(country_code, " ", national_number));
       return;
     }
   } else if (country_code == GetCountryCodeForRegion(calling_from)) {
-    // If neither country is a NANPA country, then we check to see if the
-    // country code of the number and the country code of the country we are
-    // calling from are the same.
-    // For countries that share a country calling code, the country code need
-    // not be dialled. This also applies when dialling within a country, so
-    // this if clause covers both these cases.  Technically this is the case
-    // for dialling from la Réunion to other overseas departments of France
-    // (French Guiana, Martinique, Guadeloupe), but not vice versa - so we
-    // don't cover this edge case for now and for those cases return the
-    // version including country code.
+    // If neither region is a NANPA region, then we check to see if the
+    // country calling code of the number and the country calling code of the
+    // region we are calling from are the same.
+    // For regions that share a country calling code, the country calling code
+    // need not be dialled. This also applies when dialling within a region, so
+    // this if clause covers both these cases.
+    // Technically this is the case for dialling from la Réunion to other
+    // overseas departments of France (French Guiana, Martinique, Guadeloupe),
+    // but not vice versa - so we don't cover this edge case for now and for
+    // those cases return the version including country calling code.
     // Details here:
     // http://www.petitfute.com/voyage/225-info-pratiques-reunion
     Format(number, NATIONAL, formatted_number);
@@ -980,8 +998,9 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
   const PhoneMetadata* metadata = GetMetadataForRegion(calling_from);
   const string& international_prefix = metadata->international_prefix();
   string formatted_extension;
-  MaybeGetFormattedExtension(number, region_code, &formatted_extension);
-  // For countries that have multiple international prefixes, the international
+  MaybeGetFormattedExtension(number, region_code, INTERNATIONAL,
+                             &formatted_extension);
+  // For regions that have multiple international prefixes, the international
   // format of the number is returned, unless there is a preferred international
   // prefix.
   string international_prefix_for_formatting(
@@ -990,9 +1009,8 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
       : metadata->preferred_international_prefix());
   if (!international_prefix_for_formatting.empty()) {
     formatted_number->assign(
-        StrCat(international_prefix_for_formatting, " ",
-          SimpleItoa(country_code), " ", formatted_national_number,
-          formatted_extension));
+        StrCat(international_prefix_for_formatting, " ", country_code, " ",
+               formatted_national_number, formatted_extension));
   } else {
     FormatNumberByFormat(country_code, INTERNATIONAL, formatted_national_number,
                          formatted_extension, formatted_number);
@@ -1043,8 +1061,8 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
     formatted_number->assign(number.raw_input());
     return;
   }
-  // Strip any prefix such as country code, IDD, that was present. We do this by
-  // comparing the number in raw_input with the parsed number.
+  // Strip any prefix such as country calling code, IDD, that was present. We do
+  // this by comparing the number in raw_input with the parsed number.
   string raw_input_copy(number.raw_input());
   // Normalize punctuation. We retain number grouping symbols such as " " only.
   NormalizeHelper(*all_plus_number_grouping_symbols, true, &raw_input_copy);
@@ -1064,7 +1082,7 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
   const PhoneMetadata* metadata = GetMetadataForRegion(calling_from);
   if (number.country_code() == kNanpaCountryCode) {
     if (IsNANPACountry(calling_from)) {
-      formatted_number->assign(StrCat(SimpleItoa(number.country_code()), " ",
+      formatted_number->assign(StrCat(number.country_code(), " ",
                                       raw_input_copy));
       return;
     }
@@ -1094,7 +1112,7 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
   }
 
   const string& international_prefix = metadata->international_prefix();
-  // For countries that have multiple international prefixes, the international
+  // For regions that have multiple international prefixes, the international
   // format of the number is returned, unless there is a preferred international
   // prefix.
   string international_prefix_for_formatting(
@@ -1103,8 +1121,8 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
       : metadata->preferred_international_prefix());
   if (!international_prefix_for_formatting.empty()) {
     formatted_number->assign(
-        StrCat(international_prefix_for_formatting, " ",
-          SimpleItoa(number.country_code()), " ", raw_input_copy));
+        StrCat(international_prefix_for_formatting, " ", number.country_code(),
+               " ", raw_input_copy));
   } else {
     FormatNumberByFormat(number.country_code(), INTERNATIONAL, raw_input_copy,
                          "", formatted_number);
@@ -1121,7 +1139,7 @@ void PhoneNumberUtil::FormatNationalNumber(
                                   formatted_number);
 }
 
-// Note in some countries, the national number can be written in two completely
+// Note in some regions, the national number can be written in two completely
 // different ways depending on whether it forms part of the NATIONAL format or
 // INTERNATIONAL format. The number_format parameter here is used to specify
 // which format to use for those cases. If a carrier_code is specified, this
@@ -1142,24 +1160,35 @@ void PhoneNumberUtil::FormatNationalNumberWithCarrier(
       : metadata->intl_number_format();
   FormatAccordingToFormatsWithCarrier(number, available_formats, number_format,
                                       number, carrier_code, formatted_number);
+  if (number_format == RFC3966) {
+    // Replace all separators with a "-".
+    static const RE2 separator_pattern(StrCat("[", kValidPunctuation, "]+"));
+    RE2::GlobalReplace(formatted_number, separator_pattern, "-");
+  }
 }
 
 // Gets the formatted extension of a phone number, if the phone number had an
 // extension specified. If not, it returns an empty string.
-void PhoneNumberUtil::MaybeGetFormattedExtension(const PhoneNumber& number,
-                                                 const string& region_code,
-                                                 string* extension) const {
+void PhoneNumberUtil::MaybeGetFormattedExtension(
+    const PhoneNumber& number,
+    const string& region_code,
+    PhoneNumberFormat number_format,
+    string* extension) const {
   DCHECK(extension);
-  if (!number.has_extension()) {
+  if (!number.has_extension() || number.extension().length() == 0) {
     extension->assign("");
   } else {
+    if (number_format == RFC3966) {
+      StrAppend(extension, kRfc3966ExtnPrefix, number.extension());
+      return;
+    }
     FormatExtension(number.extension(), region_code, extension);
   }
 }
 
 // Formats the extension part of the phone number by prefixing it with the
 // appropriate extension prefix. This will be the default extension prefix,
-// unless overridden by a preferred extension prefix for this country.
+// unless overridden by a preferred extension prefix for this region.
 void PhoneNumberUtil::FormatExtension(const string& extension_digits,
                                       const string& region_code,
                                       string* extension) const {
@@ -1174,26 +1203,24 @@ void PhoneNumberUtil::FormatExtension(const string& extension_digits,
 }
 
 bool PhoneNumberUtil::IsNANPACountry(const string& region_code) const {
-  return nanpa_countries_->find(region_code) != nanpa_countries_->end();
+  return nanpa_regions_->find(region_code) != nanpa_regions_->end();
 }
 
-// Returns the region codes that matches the specific country code. In the case
-// of no region code being found, region_codes will be left empty.
-void PhoneNumberUtil::GetRegionCodesForCountryCode(
-    int country_code,
+// Returns the region codes that matches the specific country calling code. In
+// the case of no region code being found, region_codes will be left empty.
+void PhoneNumberUtil::GetRegionCodesForCountryCallingCode(
+    int country_calling_code,
     list<string>* region_codes) const {
   DCHECK(region_codes);
   // Create a IntRegionsPair with the country_code passed in, and use it to
   // locate the pair with the same country_code in the sorted vector.
   IntRegionsPair target_pair;
-  target_pair.first = country_code;
-
+  target_pair.first = country_calling_code;
   typedef vector<IntRegionsPair>::const_iterator ConstIterator;
-  pair<ConstIterator, ConstIterator> range =
-    equal_range(country_code_to_region_code_map_->begin(),
-      country_code_to_region_code_map_->end(),
+  pair<ConstIterator, ConstIterator> range = equal_range(
+      country_calling_code_to_region_code_map_->begin(),
+      country_calling_code_to_region_code_map_->end(),
       target_pair, CompareFirst());
-
   if (range.first != range.second) {
     region_codes->insert(region_codes->begin(),
                          range.first->second->begin(),
@@ -1201,28 +1228,29 @@ void PhoneNumberUtil::GetRegionCodesForCountryCode(
   }
 }
 
-// Returns the region code that matches the specific country code. In the case
-// of no region code being found, ZZ will be returned.
-void PhoneNumberUtil::GetRegionCodeForCountryCode(int country_code,
-                                                  string* region_code) const {
+// Returns the region code that matches the specific country calling code. In
+// the case of no region code being found, ZZ will be returned.
+void PhoneNumberUtil::GetRegionCodeForCountryCode(
+    int country_calling_code,
+    string* region_code) const {
   DCHECK(region_code);
   list<string> region_codes;
 
-  GetRegionCodesForCountryCode(country_code, &region_codes);
+  GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
   *region_code = region_codes.size() != 0 ? region_codes.front() : "ZZ";
 }
 
 void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
                                              string* region_code) const {
   DCHECK(region_code);
-  int country_code = number.country_code();
+  int country_calling_code = number.country_code();
   list<string> region_codes;
-  GetRegionCodesForCountryCode(country_code, &region_codes);
+  GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
   if (region_codes.size() == 0) {
     string number_string;
     GetNationalSignificantNumber(number, &number_string);
     logger->Warning(string("Missing/invalid country code (") +
-        SimpleItoa(country_code) + ") for number " + number_string);
+        SimpleItoa(country_calling_code) + ") for number " + number_string);
     *region_code = "ZZ";
     return;
   }
@@ -1300,18 +1328,18 @@ bool PhoneNumberUtil::GetExampleNumberForType(
 }
 
 PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
-                                                  const string& default_country,
+                                                  const string& default_region,
                                                   PhoneNumber* number) const {
   DCHECK(number);
-  return ParseHelper(number_to_parse, default_country, false, true, number);
+  return ParseHelper(number_to_parse, default_region, false, true, number);
 }
 
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseAndKeepRawInput(
     const string& number_to_parse,
-    const string& default_country,
+    const string& default_region,
     PhoneNumber* number) const {
   DCHECK(number);
-  return ParseHelper(number_to_parse, default_country, true, true, number);
+  return ParseHelper(number_to_parse, default_region, true, true, number);
 }
 
 // Checks to see that the region code used is valid, or if it is not valid, that
@@ -1320,9 +1348,8 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseAndKeepRawInput(
 // provided and the region cannot be inferred.
 bool PhoneNumberUtil::CheckRegionForParsing(
     const string& number_to_parse,
-    const string& default_country) const {
-
-  if (!IsValidRegionCode(default_country) && !number_to_parse.empty()) {
+    const string& default_region) const {
+  if (!IsValidRegionCode(default_region) && !number_to_parse.empty()) {
     StringPiece number_as_string_piece(number_to_parse);
     if (!RE2::Consume(&number_as_string_piece, *plus_chars_pattern)) {
       return false;
@@ -1333,7 +1360,7 @@ bool PhoneNumberUtil::CheckRegionForParsing(
 
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     const string& number_to_parse,
-    const string& default_country,
+    const string& default_region,
     bool keep_raw_input,
     bool check_region,
     PhoneNumber* phone_number) const {
@@ -1348,7 +1375,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   }
 
   if (check_region &&
-      !CheckRegionForParsing(national_number, default_country)) {
+      !CheckRegionForParsing(national_number, default_region)) {
     logger->Info("Missing or invalid default country.");
     return INVALID_COUNTRY_CODE_ERROR;
   }
@@ -1363,7 +1390,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   if (!extension.empty()) {
     temp_number.set_extension(extension);
   }
-  const PhoneMetadata* country_metadata = GetMetadataForRegion(default_country);
+  const PhoneMetadata* country_metadata = GetMetadataForRegion(default_region);
   // Check to see if the number is given in international format so we know
   // whether this number is from the default country or not.
   string normalized_national_number(national_number);
@@ -1377,11 +1404,11 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   if (country_code != 0) {
     string phone_number_region;
     GetRegionCodeForCountryCode(country_code, &phone_number_region);
-    if (phone_number_region != default_country) {
+    if (phone_number_region != default_region) {
       country_metadata = GetMetadataForRegion(phone_number_region);
     }
   } else if (country_metadata) {
-    // If no extracted country code, use the region supplied instead.
+    // If no extracted country calling code, use the region supplied instead.
     // Note that the national number was already normalized by
     // MaybeExtractCountryCode.
     country_code = country_metadata->country_code();
@@ -1399,8 +1426,8 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
                                            &normalized_national_number,
                                            carrier_code);
   }
-  unsigned int normalized_national_number_length =
-    normalized_national_number.length();
+  size_t normalized_national_number_length =
+      normalized_national_number.length();
   if (normalized_national_number_length < kMinLengthForNsn) {
     logger->Debug("The string supplied is too short to be a phone number.");
     return TOO_SHORT_NSN;
@@ -1410,14 +1437,13 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     return TOO_LONG_NSN;
   }
   temp_number.set_country_code(country_code);
-  if (IsLeadingZeroCountry(country_code) &&
+  if (country_metadata &&
+      country_metadata->leading_zero_possible() &&
       normalized_national_number[0] == '0') {
     temp_number.set_italian_leading_zero(true);
   }
   uint64 number_as_int;
-  stringstream ss;
-  ss << normalized_national_number;
-  ss >> number_as_int;
+  safe_strtou64(normalized_national_number, &number_as_int);
   temp_number.set_national_number(number_as_int);
   phone_number->MergeFrom(temp_number);
   return NO_ERROR;
@@ -1489,9 +1515,9 @@ bool PhoneNumberUtil::IsPossibleNumber(const PhoneNumber& number) const {
 
 bool PhoneNumberUtil::IsPossibleNumberForString(
     const string& number,
-    const string& country_dialing_from) const {
+    const string& region_dialing_from) const {
   PhoneNumber number_proto;
-  if (Parse(number, country_dialing_from, &number_proto) == NO_ERROR) {
+  if (Parse(number, region_dialing_from, &number_proto) == NO_ERROR) {
     return IsPossibleNumber(number_proto);
   } else {
     return false;
@@ -1507,7 +1533,7 @@ PhoneNumberUtil::ValidationResult PhoneNumberUtil::IsPossibleNumberWithReason(
   // default region (US or Russia) since the GetRegionCodeForNumber will not
   // work if the number is possible but not valid. This would need to be
   // revisited if the possible number pattern ever differed between various
-  // countries within those plans.
+  // regions within those plans.
   string region_code;
   GetRegionCodeForCountryCode(country_code, &region_code);
   if (!HasValidRegionCode(region_code, country_code, national_number)) {
@@ -1517,7 +1543,7 @@ PhoneNumberUtil::ValidationResult PhoneNumberUtil::IsPossibleNumberWithReason(
       GetMetadataForRegion(region_code)->general_desc();
   // Handling case of numbers with no metadata.
   if (!general_num_desc.has_national_number_pattern()) {
-    unsigned int number_length = national_number.length();
+    size_t number_length = national_number.length();
     if (number_length < kMinLengthForNsn) {
       return TOO_SHORT;
     } else if (number_length > kMaxLengthForNsn) {
@@ -1528,16 +1554,8 @@ PhoneNumberUtil::ValidationResult PhoneNumberUtil::IsPossibleNumberWithReason(
   }
   RE2Cache::ScopedAccess possible_number_pattern(re2_cache.get(),
       StrCat("(", general_num_desc.possible_number_pattern(), ")"));
-  string extracted_number;
-  if (RE2::PartialMatch(national_number,
-                        possible_number_pattern,
-                        &extracted_number)) {
-    return (national_number.compare(extracted_number) == 0)
-        ? IS_POSSIBLE
-        : TOO_LONG;
-  } else {
-    return TOO_SHORT;
-  }
+  return TestNumberLengthAgainstPattern(possible_number_pattern,
+                                        national_number);
 }
 
 bool PhoneNumberUtil::TruncateTooLongNumber(PhoneNumber* number) const {
@@ -1588,48 +1606,47 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
   string national_number;
   GetNationalSignificantNumber(number, &national_number);
 
-  // For countries where we don't have metadata for PhoneNumberDesc, we treat
+  // For regions where we don't have metadata for PhoneNumberDesc, we treat
   // any number passed in as a valid number if its national significant number
   // is between the minimum and maximum lengths defined by ITU for a national
   // significant number.
   if (!general_desc.has_national_number_pattern()) {
     logger->Info("Validating number with incomplete metadata.");
-    unsigned int number_length = national_number.length();
+    size_t number_length = national_number.length();
     return number_length > kMinLengthForNsn &&
         number_length <= kMaxLengthForNsn;
   }
   return GetNumberTypeHelper(national_number, *metadata) != UNKNOWN;
 }
 
-bool PhoneNumberUtil::IsLeadingZeroCountry(int country_code) {
-  return leading_zero_countries->find(country_code) !=
-      leading_zero_countries->end();
+bool PhoneNumberUtil::IsLeadingZeroPossible(int country_calling_code) const {
+  string region_code;
+  GetRegionCodeForCountryCode(country_calling_code, &region_code);
+  const PhoneMetadata* main_metadata_for_calling_code =
+      GetMetadataForRegion(region_code);
+  if (!main_metadata_for_calling_code) return false;
+  return main_metadata_for_calling_code->leading_zero_possible();
 }
 
-// static
-void PhoneNumberUtil::GetNationalSignificantNumber(const PhoneNumber& number,
-                                                   string* national_number) {
+void PhoneNumberUtil::GetNationalSignificantNumber(
+    const PhoneNumber& number,
+    string* national_number) const {
   // The leading zero in the national (significant) number of an Italian phone
   // number has a special meaning. Unlike the rest of the world, it indicates
   // the number is a landline number. There have been plans to migrate landline
   // numbers to start with the digit two since December 2000, but it has not yet
   // happened.
   // See http://en.wikipedia.org/wiki/%2B39 for more details.
-  // Other countries such as Cote d'Ivoire and Gabon use this for their mobile
+  // Other regions such as Cote d'Ivoire and Gabon use this for their mobile
   // numbers.
   DCHECK(national_number);
-  *national_number += 
-      (IsLeadingZeroCountry(number.country_code()) &&
+  StrAppend(national_number,
+      (IsLeadingZeroPossible(number.country_code()) &&
        number.has_italian_leading_zero() &&
        number.italian_leading_zero())
       ? "0"
-      : "";
-  stringstream ss;
-  ss << number.national_number();
-  string national_number_string;
-  ss >> national_number_string;
-
-  *national_number += national_number_string;
+      : "");
+  StrAppend(national_number, number.national_number());
 }
 
 int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
@@ -1685,7 +1702,6 @@ int PhoneNumberUtil::GetLengthOfNationalDestinationCode(
   }
   string region_code;
   GetRegionCodeForNumber(number, &region_code);
-
   if (region_code == "AR" &&
       GetNumberType(number) == MOBILE) {
     // Argentinian mobile numbers, when formatted in the international format,
@@ -1791,7 +1807,7 @@ bool PhoneNumberUtil::IsViablePhoneNumber(const string& number) {
 // prefix was present.
 //
 // possible_idd_prefix represents the international direct dialing prefix from
-// the country we think this number may be dialed in.
+// the region we think this number may be dialed in.
 // Returns true if an international dialing prefix could be removed from the
 // number, otherwise false if the number did not seem to be in international
 // format.
@@ -1829,7 +1845,7 @@ PhoneNumberUtil::MaybeStripInternationalPrefixAndNormalize(
 // Strips any national prefix (such as 0, 1) present in the number provided.
 // The number passed in should be the normalized telephone number that we wish
 // to strip any national dialing prefix from. The metadata should be for the
-// country that we think this number is from.
+// region that we think this number is from.
 // static
 void PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
     const PhoneMetadata& metadata,
@@ -1911,12 +1927,14 @@ void PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
 bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension) {
   DCHECK(number);
   DCHECK(extension);
-  // There are two extension capturing groups in the regular expression.
+  // There are three extension capturing groups in the regular expression.
   string possible_extension_one;
   string possible_extension_two;
+  string possible_extension_three;
   string number_copy(*number);
   if (RE2::PartialMatch(number_copy, *extn_pattern,
-                        &possible_extension_one, &possible_extension_two)) {
+                        &possible_extension_one, &possible_extension_two,
+                        &possible_extension_three)) {
     // Replace the extensions in the original string here.
     RE2::Replace(&number_copy, *extn_pattern, "");
     logger->Debug("Found an extension. Possible extension one: "
@@ -1925,32 +1943,34 @@ bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension) {
             + ". Remaining number: " + number_copy);
     // If we find a potential extension, and the number preceding this is a
     // viable number, we assume it is an extension.
-    if ((!possible_extension_one.empty() || !possible_extension_two.empty()) &&
+    if ((!possible_extension_one.empty() || !possible_extension_two.empty() ||
+         !possible_extension_three.empty()) &&
         IsViablePhoneNumber(number_copy)) {
       number->assign(number_copy);
-      extension->assign(possible_extension_one.empty()
-                        ? possible_extension_two
-                        : possible_extension_one);
+      if (!possible_extension_one.empty()) {
+        extension->assign(possible_extension_one);
+      } else if (!possible_extension_two.empty()) {
+        extension->assign(possible_extension_two);
+      } else if (!possible_extension_three.empty()) {
+        extension->assign(possible_extension_three);
+      }
       return true;
     }
   }
   return false;
 }
 
-// Extracts country code from national_number, and returns it. It assumes that
-// the leading plus sign or IDD has already been removed. Returns 0 if
-// national_number doesn't start with a valid country code, and leaves
-// national_number unmodified. Assumes the national_number is at least 3
+// Extracts country calling code from national_number, and returns it. It
+// assumes that the leading plus sign or IDD has already been removed. Returns 0
+// if national_number doesn't start with a valid country calling code, and
+// leaves national_number unmodified. Assumes the national_number is at least 3
 // characters long.
 int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
   int potential_country_code;
   for (int i = 1; i <= 3; ++i) {
-    stringstream ss;
-    ss << national_number->substr(0, i);
-    ss >> potential_country_code;
+    safe_strto32(national_number->substr(0, i), &potential_country_code);
     string region_code;
     GetRegionCodeForCountryCode(potential_country_code, &region_code);
-
     if (region_code != "ZZ") {
       national_number->erase(0, i);
       return potential_country_code;
@@ -1959,24 +1979,26 @@ int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
   return 0;
 }
 
-// Tries to extract a country code from a number. Country codes are extracted
-// in the following ways:
-//   - by stripping the international dialing prefix of the country the person
+// Tries to extract a country calling code from a number. Country calling codes
+// are extracted in the following ways:
+//   - by stripping the international dialing prefix of the region the person
 //   is dialing from, if this is present in the number, and looking at the next
 //   digits
 //   - by stripping the '+' sign if present and then looking at the next digits
-//   - by comparing the start of the number and the country code of the default
-//   region. If the number is not considered possible for the numbering plan of
-//   the default region initially, but starts with the country code of this
-//   region, validation will be reattempted after stripping this country code.
-//   If this number is considered a possible number, then the first digits will
-//   be considered the country code and removed as such.
+//   - by comparing the start of the number and the country calling code of the
+//   default region. If the number is not considered possible for the numbering
+//   plan of the default region initially, but starts with the country calling
+//   code of this region, validation will be reattempted after stripping this
+//   country calling code. If this number is considered a possible number, then
+//   the first digits will be considered the country calling code and removed as
+//   such.
 //
-//   Returns NO_ERROR if a country code was successfully extracted or none was
-//   present, or the appropriate error otherwise, such as if a + was present but
-//   it was not followed by a valid country code. If NO_ERROR is returned, the
-//   national_number without the country code is populated, and the country_code
-//   passed in is set to the country code if found, otherwise to 0.
+//   Returns NO_ERROR if a country calling code was successfully extracted or
+//   none was present, or the appropriate error otherwise, such as if a + was
+//   present but it was not followed by a valid country calling code. If
+//   NO_ERROR is returned, the national_number without the country calling code
+//   is populated, and the country_code passed in is set to the country calling
+//   code if found, otherwise to 0.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
     const PhoneMetadata* default_region_metadata,
     bool keep_raw_input,
@@ -2006,13 +2028,13 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
       phone_number->set_country_code(potential_country_code);
       return NO_ERROR;
     }
-    // If this fails, they must be using a strange country code that we don't
-    // recognize, or that doesn't exist.
+    // If this fails, they must be using a strange country calling code that we
+    // don't recognize, or that doesn't exist.
     return INVALID_COUNTRY_CODE_ERROR;
   } else if (default_region_metadata) {
-    // Check to see if the number starts with the country code for the default
-    // region. If so, we remove the country code, and do some checks on the
-    // validity of the number before and after.
+    // Check to see if the number starts with the country calling code for the
+    // default region. If so, we remove the country calling code, and do some
+    // checks on the validity of the number before and after.
     int default_country_code = default_region_metadata->country_code();
     string default_country_code_string(SimpleItoa(default_country_code));
     logger->Debug("Possible country code: " + default_country_code_string);
@@ -2034,14 +2056,14 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
       RE2Cache::ScopedAccess possible_number_pattern(
           re2_cache.get(),
           StrCat("(", general_num_desc.possible_number_pattern(), ")"));
-      // If the number was invalid before and is valid now, or if it is still
-      // too long even with the country code stripped, we consider this a better
-      // result and keep the potential national number.
-      if ((RE2::FullMatch(potential_national_number, valid_number_pattern) &&
-           !RE2::FullMatch(*national_number, valid_number_pattern)) ||
-          (RE2::PartialMatch(potential_national_number, possible_number_pattern,
-                             &extracted_number) &&
-           potential_national_number.length() > extracted_number.length())) {
+      // If the number was not valid before but is valid now, or if it was too
+      // long before, we consider the number with the country code stripped to
+      // be a better result and keep that instead.
+      if ((!RE2::FullMatch(*national_number, valid_number_pattern) &&
+           RE2::FullMatch(potential_national_number, valid_number_pattern)) ||
+           TestNumberLengthAgainstPattern(possible_number_pattern,
+                                          *national_number)
+                == TOO_LONG) {
         national_number->assign(potential_national_number);
         if (keep_raw_input) {
           phone_number->set_country_code_source(
@@ -2052,7 +2074,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
       }
     }
   }
-  // No country code present. Set the country_code to 0.
+  // No country calling code present. Set the country_code to 0.
   phone_number->set_country_code(0);
   return NO_ERROR;
 }
@@ -2086,7 +2108,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
   }
   int first_number_country_code = first_number.country_code();
   int second_number_country_code = second_number.country_code();
-  // Both had country code specified.
+  // Both had country calling code specified.
   if (first_number_country_code != 0 && second_number_country_code != 0) {
     if (first_number.DebugString() == second_number.DebugString()) {
       return EXACT_MATCH;
@@ -2101,8 +2123,9 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
     // This is not a match.
     return NO_MATCH;
   }
-  // Checks cases where one or both country codes were not specified. To make
-  // equality checks easier, we first set the country codes to be equal.
+  // Checks cases where one or both country calling codes were not specified. To
+  // make equality checks easier, we first set the country_code fields to be
+  // equal.
   first_number.set_country_code(second_number_country_code);
   // If all else was the same, then this is an NSN_MATCH.
   if (first_number.DebugString() == second_number.DebugString()) {
@@ -2150,8 +2173,8 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithTwoStrings(
 PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
     const PhoneNumber& first_number,
     const string& second_number) const {
-  // First see if the second number has an implicit country code, by attempting
-  // to parse it.
+  // First see if the second number has an implicit country calling code, by
+  // attempting to parse it.
   PhoneNumber second_number_as_proto;
   ErrorType error_type =
       Parse(second_number, "ZZ", &second_number_as_proto);
@@ -2159,12 +2182,13 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
     return IsNumberMatch(first_number, second_number_as_proto);
   }
   if (error_type == INVALID_COUNTRY_CODE_ERROR) {
-    // The second number has no country code. EXACT_MATCH is no longer possible.
-    // We parse it as if the region was the same as that for the first number,
-    // and if EXACT_MATCH is returned, we replace this with NSN_MATCH.
+    // The second number has no country calling code. EXACT_MATCH is no longer
+    // possible.  We parse it as if the region was the same as that for the
+    // first number, and if EXACT_MATCH is returned, we replace this with
+    // NSN_MATCH.
     string first_number_region;
     GetRegionCodeForCountryCode(first_number.country_code(),
-        &first_number_region);
+                                &first_number_region);
     if (first_number_region != "ZZ") {
       PhoneNumber second_number_with_first_number_region;
       Parse(second_number, first_number_region,
@@ -2176,8 +2200,8 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
       }
       return match;
     } else {
-      // If the first number didn't have a valid country code, then we parse the
-      // second number without one as well.
+      // If the first number didn't have a valid country calling code, then we
+      // parse the second number without one as well.
       error_type = ParseHelper(second_number, "ZZ", false, false,
                                &second_number_as_proto);
       if (error_type == NO_ERROR) {

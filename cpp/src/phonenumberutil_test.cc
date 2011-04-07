@@ -173,6 +173,10 @@ class PhoneNumberUtilTest : public testing::Test {
     phone_util_.Normalize(number);
   }
 
+  bool IsLeadingZeroPossible(int country_calling_code) const {
+    return phone_util_.IsLeadingZeroPossible(country_calling_code);
+  }
+
   PhoneNumber::CountryCodeSource MaybeStripInternationalPrefixAndNormalize(
       const string& possible_idd_prefix,
       string* number) const {
@@ -226,7 +230,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("$1 $2 $3", metadata->number_format(0).format());
   EXPECT_EQ("[13-9]\\d{9}|2[0-35-9]\\d{8}",
             metadata->general_desc().national_number_pattern());
-  EXPECT_EQ("\\d{7,10}", metadata->general_desc().possible_number_pattern());
+  EXPECT_EQ("\\d{7}(?:\\d{3})?",
+            metadata->general_desc().possible_number_pattern());
   EXPECT_EQ(metadata->general_desc().DebugString(),
             metadata->fixed_line().DebugString());
 
@@ -368,6 +373,8 @@ TEST_F(PhoneNumberUtilTest, FormatUSNumber) {
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
   EXPECT_EQ("+1 900 253 0000", formatted_number);
+  phone_util_.Format(test_number, PhoneNumberUtil::RFC3966, &formatted_number);
+  EXPECT_EQ("+1-900-253-0000", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatBSNumber) {
@@ -421,10 +428,12 @@ TEST_F(PhoneNumberUtilTest, FormatDENumber) {
   test_number.set_country_code(49);
   test_number.set_national_number(301234ULL);
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
-  EXPECT_EQ("030 1234", formatted_number);
+  EXPECT_EQ("030/1234", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
-  EXPECT_EQ("+49 30 1234", formatted_number);
+  EXPECT_EQ("+49 30/1234", formatted_number);
+  phone_util_.Format(test_number, PhoneNumberUtil::RFC3966, &formatted_number);
+  EXPECT_EQ("+49-30-1234", formatted_number);
 
   test_number.set_national_number(291123ULL);
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
@@ -908,6 +917,28 @@ TEST_F(PhoneNumberUtilTest, FormatE164Number) {
   EXPECT_EQ("+49301234", formatted_number);
 }
 
+TEST_F(PhoneNumberUtilTest, FormatNumberWithExtension) {
+  PhoneNumber nz_number;
+  nz_number.set_country_code(64);
+  nz_number.set_national_number(33316005ULL);
+  nz_number.set_extension("1234");
+  string formatted_number;
+  // Uses default extension prefix:
+  phone_util_.Format(nz_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+  EXPECT_EQ("03-331 6005 ext. 1234", formatted_number);
+  // Uses RFC 3966 syntax.
+  phone_util_.Format(nz_number, PhoneNumberUtil::RFC3966, &formatted_number);
+  EXPECT_EQ("+64-3-331-6005;ext=1234", formatted_number);
+  // Extension prefix overridden in the territory information for the US:
+  PhoneNumber us_number_with_extension;
+  us_number_with_extension.set_country_code(1);
+  us_number_with_extension.set_national_number(6502530000ULL);
+  us_number_with_extension.set_extension("4567");
+  phone_util_.Format(us_number_with_extension,
+                     PhoneNumberUtil::NATIONAL, &formatted_number);
+  EXPECT_EQ("650 253 0000 extn. 4567", formatted_number);
+}
+
 TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   PhoneNumber number;
   // Google MTV, which has area code "650".
@@ -1213,6 +1244,11 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumberWithReason) {
   EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
             phone_util_.IsPossibleNumberWithReason(number));
 
+  number.set_country_code(65);
+  number.set_national_number(1234567890ULL);
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+            phone_util_.IsPossibleNumberWithReason(number));
+
   // Try with number that we don't have metadata for.
   PhoneNumber ad_number;
   ad_number.set_country_code(376);
@@ -1314,11 +1350,11 @@ TEST_F(PhoneNumberUtilTest, TruncateTooLongNumber) {
             too_short_number.DebugString());
 }
 
-TEST_F(PhoneNumberUtilTest, IsLeadingZeroCountry) {
-  EXPECT_TRUE(PhoneNumberUtil::IsLeadingZeroCountry(39));  // Italy
-  EXPECT_TRUE(PhoneNumberUtil::IsLeadingZeroCountry(225));  // Cote d'Ivoire
-  EXPECT_TRUE(PhoneNumberUtil::IsLeadingZeroCountry(241));  // Gabon
-  EXPECT_FALSE(PhoneNumberUtil::IsLeadingZeroCountry(1));  // USA
+TEST_F(PhoneNumberUtilTest, IsLeadingZeroPossible) {
+  EXPECT_TRUE(IsLeadingZeroPossible(39));  // Italy
+  EXPECT_FALSE(IsLeadingZeroPossible(1));  // USA
+  EXPECT_FALSE(IsLeadingZeroPossible(800));  // Not in metadata file, should
+                                             // return default value of false.
 }
 
 TEST_F(PhoneNumberUtilTest, FormatUsingOriginalNumberFormat) {
@@ -1797,8 +1833,8 @@ TEST_F(PhoneNumberUtilTest, MaybeExtractCountryCode) {
   EXPECT_EQ(stripped_number, phone_number);
 
   number.Clear();
-  phone_number.assign("(1 610) 619 43");
-  stripped_number.assign("161061943");
+  phone_number.assign("(1 610) 619");
+  stripped_number.assign("1610619");
   expected_country_code = 0;
   // Should not have extracted a country code - invalid number both before and
   // after extraction of uncertain country code.
@@ -2575,7 +2611,7 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   EXPECT_EQ(test_number.DebugString(), uk_number.DebugString());
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
-            phone_util_.Parse("+44 2034567890x456", RegionCode::GB(),
+            phone_util_.Parse("+44 2034567890x456", RegionCode::NZ(),
                               &test_number));
   EXPECT_EQ(test_number.DebugString(), uk_number.DebugString());
   test_number.Clear();
@@ -2606,6 +2642,11 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
             phone_util_.Parse("+44 2034567890  X 456", RegionCode::GB(),
+                              &test_number));
+  EXPECT_EQ(test_number.DebugString(), uk_number.DebugString());
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_ERROR,
+            phone_util_.Parse("+44-2034567890;ext=456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(test_number.DebugString(), uk_number.DebugString());
 

@@ -60,17 +60,21 @@ class PhoneNumberUtil {
   // Zürich office will be written as "+41 44 668 1800" in INTERNATIONAL
   // format, and as "044 668 1800" in NATIONAL format. E164 format is as per
   // INTERNATIONAL format but with no formatting applied e.g. +41446681800.
+  // RFC3966 is as per INTERNATIONAL format, but with all spaces and other
+  // separating symbols replaced with a hyphen, and with any phone number
+  // extension appended with ";ext=".
   enum PhoneNumberFormat {
     E164,
     INTERNATIONAL,
-    NATIONAL
+    NATIONAL,
+    RFC3966
   };
 
   // Type of phone numbers.
   enum PhoneNumberType {
     FIXED_LINE,
     MOBILE,
-    // In some countries (e.g. the USA), it is impossible to distinguish between
+    // In some regions (e.g. the USA), it is impossible to distinguish between
     // fixed-line and mobile numbers by looking at the phone number itself.
     FIXED_LINE_OR_MOBILE,
     // Freephone lines
@@ -92,7 +96,7 @@ class PhoneNumberUtil {
     // company.
     UAN,
     // A phone number is of type UNKNOWN when it does not fit any of the known
-    // patterns for a specific country.
+    // patterns for a specific region.
     UNKNOWN
   };
 
@@ -125,23 +129,18 @@ class PhoneNumberUtil {
 
   // Gets a PhoneNumberUtil instance to carry out international phone number
   // formatting, parsing, or validation. The instance is loaded with phone
-  // number metadata for a number of most commonly used countries/regions,
-  // as specified by DEFAULT_REGIONS_.
+  // number metadata for a number of most commonly used regions, as specified by
+  // DEFAULT_REGIONS_.
   //
   // The PhoneNumberUtil is implemented as a singleton. Therefore, calling
   // getInstance multiple times will only result in one instance being created.
   static PhoneNumberUtil* GetInstance();
 
-  // Check whether country_code represents the country calling code from a
-  // country whose national significant number could contain a leading zero. An
-  // example of such a country is Italy.
-  static bool IsLeadingZeroCountry(int country_code);
-
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will
   // have three or more alpha characters. This does not do region-specific
   // checks - to work out if this number is actually valid for a region, it
-  // should be parsed and methods such as IsPossibleNumberWithRegion or
+  // should be parsed and methods such as IsPossibleNumberWithReason or
   // IsValidNumber should be used.
   bool IsAlphaNumber(const string& number) const;
 
@@ -156,8 +155,8 @@ class PhoneNumberUtil {
 
   // Gets the national significant number of a phone number. Note a national
   // significant number doesn't contain a national prefix or any formatting.
-  static void GetNationalSignificantNumber(const PhoneNumber& number,
-                                           string* national_significant_num);
+  void GetNationalSignificantNumber(const PhoneNumber& number,
+                                    string* national_significant_num) const;
 
   // Gets the length of the geographical area code from the PhoneNumber object
   // passed in, so that clients could use it to split a national significant
@@ -194,7 +193,7 @@ class PhoneNumberUtil {
   //    produces.
   //  - subscriber numbers may not be diallable from all devices (notably mobile
   //    devices, which typically requires the full national_number to be dialled
-  //    in most countries).
+  //    in most regions).
   //  - most non-geographical numbers have no area codes.
   //  - some geographical numbers have no area codes.
   int GetLengthOfGeographicalAreaCode(const PhoneNumber& number) const;
@@ -202,9 +201,10 @@ class PhoneNumberUtil {
   // Gets the length of the national destination code (NDC) from the PhoneNumber
   // object passed in, so that clients could use it to split a national
   // significant number into NDC and subscriber number. The NDC of a phone
-  // number is normally the first group of digit(s) right after the country code
-  // when the number is formatted in the international format, if there is a
-  // subscriber number part that follows. An example of how this could be used:
+  // number is normally the first group of digit(s) right after the country
+  // calling code when the number is formatted in the international format, if
+  // there is a subscriber number part that follows. An example of how this
+  // could be used:
   //
   // const PhoneNumberUtil& phone_util(PhoneNumberUtil::GetInstance());
   // PhoneNumber number;
@@ -273,12 +273,11 @@ class PhoneNumberUtil {
       const string& fallback_carrier_code,
       string* formatted_number) const;
 
-  // Formats a phone number for out-of-country dialing purpose.
-  // The calling_from parameter is an ISO 3166-1 two-letter country code string.
+  // Formats a phone number for out-of-country dialing purposes.
   //
   // Note this function takes care of the case for calling inside of NANPA
-  // and between Russia and Kazakhstan (who share the same country code).
-  // In those cases, no international prefix is used. For countries which
+  // and between Russia and Kazakhstan (who share the same country calling
+  // code). In those cases, no international prefix is used. For regions which
   // have multiple international prefixes, the number in its INTERNATIONAL
   // format will be returned instead.
   void FormatOutOfCountryCallingNumber(
@@ -295,19 +294,18 @@ class PhoneNumberUtil {
                               const string& region_calling_from,
                               string* formatted_number) const;
 
-  // Formats a phone number for out-of-country dialing purpose.
-  // The calling_from parameter is an ISO 3166-1 two-letter country code string.
+  // Formats a phone number for out-of-country dialing purposes.
   //
   // Note that in this version, if the number was entered originally using alpha
   // characters and this version of the number is stored in raw_input, this
   // representation of the number will be used rather than the digit
-  // representation. Grouping information as specified characters such as "-"
-  // and " " will be retained.
+  // representation. Grouping information, as specified by characters such as
+  // "-" and " ", will be retained.
   //
   // Caveats:
-  // 1) This will not produce good results if the country code is both
+  // 1) This will not produce good results if the country calling code is both
   // present in the raw input _and_ is the start of the national number. This
-  // is not a problem in the countries which typically use alpha numbers.
+  // is not a problem in the regions which typically use alpha numbers.
   // 2) This will also not produce good results if the raw input has any
   // grouping information within the first three digits of the national number,
   // and if the function needs to strip preceding digits/words in the raw input
@@ -336,8 +334,9 @@ class PhoneNumberUtil {
   // Tests whether a phone number is valid for a certain region. Note this
   // doesn't verify the number is actually in use, which is impossible to tell
   // by just looking at a number itself. If the country calling code is not the
-  // same as the country code for the region, this immediately exits with false.
-  // After this, the specific number pattern rules for the region are examined.
+  // same as the country calling code for the region, this immediately exits
+  // with false.  After this, the specific number pattern rules for the region
+  // are examined.
   // This is useful for determining for example whether a particular number is
   // valid for Canada, rather than just a valid NANPA number.
   //
@@ -346,9 +345,8 @@ class PhoneNumberUtil {
       const PhoneNumber& number,
       const string& region_code) const;
 
-  // Returns the country/region where a phone number is from. This could be
-  // used for geo-coding in the country/region level.
-  //
+  // Returns the region where a phone number is from. This could be used for
+  // geo-coding at the region level.
   // The country/region is returned as an ISO 3166-1 two-letter country code
   // string.
   void GetRegionCodeForNumber(const PhoneNumber& number,
@@ -369,20 +367,20 @@ class PhoneNumberUtil {
   // string.
   void GetRegionCodeForCountryCode(int country_code, string* region_code) const;
 
-  // Check if a country is one of the countries under the North American
-  // Numbering Plan Administration (NANPA).
+  // Checks if this is a region under the North American Numbering Plan
+  // Administration (NANPA).
   //
   // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool IsNANPACountry(const string& region_code) const;
 
-  // Check whether a phone number is a possible number. It provides a more
+  // Checks whether a phone number is a possible number. It provides a more
   // lenient check than IsValidNumber() in the following sense:
   //   1. It only checks the length of phone numbers. In particular, it doesn't
   //      check starting digits of the number.
   //   2. It doesn't attempt to figure out the type of the number, but uses
   //      general rules which applies to all types of phone numbers in a
-  //      country. Therefore, it is much faster than IsValidNumber().
-  //   3. For fixed line numbers, many countries have the concept of area code,
+  //      region. Therefore, it is much faster than IsValidNumber().
+  //   3. For fixed line numbers, many regions have the concept of area code,
   //      which together with subscriber number constitute the national
   //      significant number. It is sometimes okay to dial the subscriber
   //      number only when dialing in the same area. This function will return
@@ -398,7 +396,7 @@ class PhoneNumberUtil {
   // the reason for failure, this method returns a boolean value.
   bool IsPossibleNumber(const PhoneNumber& number) const;
 
-  // Check whether a phone number is a possible number given a number in the
+  // Checks whether a phone number is a possible number given a number in the
   // form of a string, and the country where the number could be dialed from.
   // It provides a more lenient check than IsValidNumber(). See
   // IsPossibleNumber(const PhoneNumber& number) for details.
@@ -407,11 +405,11 @@ class PhoneNumberUtil {
   // IsPossibleNumber(const PhoneNumber& number) with the resultant PhoneNumber
   // object.
   //
-  // countryDialingFrom represents the country that we are expecting the number
-  // to be dialed from. Note this is different from the country where the number
+  // region_dialing_from represents the region that we are expecting the number
+  // to be dialed from. Note this is different from the region where the number
   // belongs. For example, the number +1 650 253 0000 is a number that belongs
-  // to US. When written in this form, it could be dialed from any country. When
-  // it is written as 00 1 650 253 0000, it could be dialed from any country
+  // to US. When written in this form, it could be dialed from any region. When
+  // it is written as 00 1 650 253 0000, it could be dialed from any region
   // which uses an international dialling prefix of 00. When it is written as
   // 650 253 0000, it could only be dialed from within the US, and when written
   // as 253 0000, it could only be dialed from within a smaller area in the US
@@ -423,15 +421,13 @@ class PhoneNumberUtil {
       const string& number,
       const string& country_dialing_from) const;
 
-  // Gets a valid fixed-line number for the specified country. Returns false if
-  // the country was unknown.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
+  // Gets a valid fixed-line number for the specified region. Returns false if
+  // the region was unknown.
   bool GetExampleNumber(const string& region_code,
                         PhoneNumber* number) const;
 
-  // Gets a valid number of the specified type for the specified country.
-  // Returns false if the country was unknown or if no example number of that
+  // Gets a valid number of the specified type for the specified region.
+  // Returns false if the region was unknown or if no example number of that
   // type could be found.
   //
   // The region_code parameter is an ISO 3166-1 two-letter country code string.
@@ -443,14 +439,14 @@ class PhoneNumberUtil {
   // return an error like INVALID_COUNTRY_CODE if the number is not considered
   // to be a possible number, and NO_ERROR if it parsed correctly. Note that
   // validation of whether the number is actually a valid number for a
-  // particular country/region is not performed.  This can be done separately
-  // with IsValidNumber().
+  // particular region is not performed.  This can be done separately with
+  // IsValidNumber().
   //
-  // default_country represents the country that we are expecting the number to
+  // default_region represents the country that we are expecting the number to
   // be from. This is only used if the number being parsed is not written in
-  // international format. The country code for the number in this case would
-  // be stored as that of the default country supplied. If the number is
-  // guaranteed to start with a '+' followed by the country code, then
+  // international format. The country_code for the number in this case would be
+  // stored as that of the default country supplied. If the number is guaranteed
+  // to start with a '+' followed by the country calling code, then
   // "ZZ" can be supplied.
   //
   // The default_country parameter is an ISO 3166-1 two-letter country code
@@ -471,14 +467,15 @@ class PhoneNumberUtil {
 
   // Takes two phone numbers and compares them for equality.
   //
-  // Returns EXACT_MATCH if the country code, NSN, presence of a leading zero
-  // for Italian numbers and any extension present are the same.
-  // Returns NSN_MATCH if either or both has no country specified, and the NSNs
-  // and extensions are the same.
-  // Returns SHORT_NSN_MATCH if either or both has no country specified, or the
-  // country specified is the same, and one NSN could be a shorter version of
-  // the other number. This includes the case where one has an extension
-  // specified, and the other does not. Returns NO_MATCH otherwise.
+  // Returns EXACT_MATCH if the country calling code, NSN, presence of a leading
+  // zero for Italian numbers and any extension present are the same.
+  // Returns NSN_MATCH if either or both has no country calling code specified,
+  // and the NSNs and extensions are the same.
+  // Returns SHORT_NSN_MATCH if either or both has no country calling code
+  // specified, or the country calling code specified is the same, and one NSN
+  // could be a shorter version of the other number. This includes the case
+  // where one has an extension specified, and the other does not.
+  // Returns NO_MATCH otherwise.
   // For example, the numbers +1 345 657 1234 and 657 1234 are a
   // SHORT_NSN_MATCH. The numbers +1 345 657 1234 and 345 657 are a NO_MATCH.
   MatchType IsNumberMatch(const PhoneNumber& first_number,
@@ -519,22 +516,29 @@ class PhoneNumberUtil {
       PhoneNumber* new_proto);
   friend bool ConvertToTelephoneNumberProto(const PhoneNumber& proto_to_convert,
                                             TelephoneNumber* resulting_proto);
+
+ protected:
+  // Check whether the country_calling_code is from a country whose national
+  // significant number could contain a leading zero. An example of such a
+  // country is Italy.
+  bool IsLeadingZeroPossible(int country_calling_code) const;
+
  private:
   typedef pair<int, list<string>*> IntRegionsPair;
 
   // The minimum and maximum length of the national significant number.
-  static const unsigned int kMinLengthForNsn = 3;
-  static const unsigned int kMaxLengthForNsn = 15;
+  static const size_t kMinLengthForNsn = 3;
+  static const size_t kMaxLengthForNsn = 15;
 
-  // A mapping from a country code to a region code which denotes the
-  // country/region represented by that country code. Note countries under
-  // NANPA share the country code 1 and Russia and Kazakhstan share the country
-  // code 7. Under this map, 1 is mapped to region code "US" and 7 is mapped to
-  // region code "RU". This is implemented as a sorted vector to achieve better
-  // performance.
+  // A mapping from a country calling code to a region code which denotes the
+  // region represented by that country calling code. Note countries under
+  // NANPA share the country calling code 1 and Russia and Kazakhstan share the
+  // country calling code 7. Under this map, 1 is mapped to region code "US" and
+  // 7 is mapped to region code "RU". This is implemented as a sorted vector to
+  // achieve better performance.
   //
   // Region codes are ISO 3166-1 two-letter country code strings.
-  scoped_ptr<vector<IntRegionsPair> > country_code_to_region_code_map_;
+  scoped_ptr<vector<IntRegionsPair> > country_calling_code_to_region_code_map_;
 
   struct CompareFirst {
     bool operator()(const IntRegionsPair& p1,
@@ -543,16 +547,13 @@ class PhoneNumberUtil {
     }
   };
 
-  // The set of countries that share country code 1.
-  scoped_ptr<set<string> > nanpa_countries_;
+  // The set of regions that share country calling code 1.
+  scoped_ptr<set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
-  // A mapping from a region code to a PhoneMetadata for that region. The map
-  // contains PhoneMetadata for the DEFAULT_REGIONS and countries/regions that
-  // have been recently used. This is like a cache for performance reasons.
-  //
+  // A mapping from a region code to a PhoneMetadata for that region.
   // Region codes are ISO 3166-1 two-letter country code strings.
-  scoped_ptr<map<string, PhoneMetadata> > country_to_metadata_map_;
+  scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
 
   bool LoadMetadata(PhoneMetadataCollection* metadata,
                     MetadataProvider& provider);
@@ -568,8 +569,9 @@ class PhoneNumberUtil {
   // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool IsValidRegionCode(const string& region_code) const;
 
-  // Helper function to check region code is not unknown. The country_code and
-  // number supplied is used only for the resultant log message.
+  // Helper function to check region code is not unknown. The
+  // country_calling_code and number supplied is used only for the resultant log
+  // message.
   //
   // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool HasValidRegionCode(const string& region_code,
@@ -580,8 +582,8 @@ class PhoneNumberUtil {
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegion(
       const string& region_code) const;
 
-  void GetRegionCodesForCountryCode(
-      int country_code,
+  void GetRegionCodesForCountryCallingCode(
+      int country_calling_code,
       list<string>* region_codes) const;
 
   // Simple wrapper of FormatNationalNumberWithCarrier for the common case of
@@ -604,6 +606,7 @@ class PhoneNumberUtil {
   void MaybeGetFormattedExtension(
       const PhoneNumber& number,
       const string& region_code,
+      PhoneNumberFormat number_format,
       string* extension) const;
 
   // The region_code parameter is an ISO 3166-1 two-letter country code string.
@@ -640,16 +643,16 @@ class PhoneNumberUtil {
       string* national_number,
       PhoneNumber* phone_number) const;
 
-  // The default_country parameter is an ISO 3166-1 two-letter country code
+  // The default_region parameter is an ISO 3166-1 two-letter country code
   // string.
   bool CheckRegionForParsing(
       const string& number_to_parse,
-      const string& default_country) const;
+      const string& default_region) const;
 
-  // The default_country parameter is an ISO 3166-1 two-letter country code
+  // The default_region parameter is an ISO 3166-1 two-letter country code
   // string.
   ErrorType ParseHelper(const string& number_to_parse,
-                        const string& default_country,
+                        const string& default_region,
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
