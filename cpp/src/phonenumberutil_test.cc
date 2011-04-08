@@ -215,7 +215,7 @@ TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   set<string> regions;
 
   GetSupportedRegions(&regions);
-  EXPECT_GT(regions.size(), 0);
+  EXPECT_GT(regions.size(), 0U);
 }
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
