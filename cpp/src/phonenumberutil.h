@@ -111,7 +111,7 @@ class PhoneNumberUtil {
   };
 
   enum ErrorType {
-    NO_ERROR,
+    NO_PARSING_ERROR,
     INVALID_COUNTRY_CODE_ERROR,  // INVALID_COUNTRY_CODE in the java version.
     NOT_A_NUMBER,
     TOO_SHORT_AFTER_IDD,
@@ -414,7 +414,7 @@ class PhoneNumberUtil {
   // 650 253 0000, it could only be dialed from within the US, and when written
   // as 253 0000, it could only be dialed from within a smaller area in the US
   // (Mountain View, CA, to be more specific).
-  // 
+  //
   // The country_dialing_from parameter is an ISO 3166-1 two-letter country code
   // string.
   bool IsPossibleNumberForString(
@@ -437,9 +437,9 @@ class PhoneNumberUtil {
 
   // Parses a string and returns it in proto buffer format. This method will
   // return an error like INVALID_COUNTRY_CODE if the number is not considered
-  // to be a possible number, and NO_ERROR if it parsed correctly. Note that
-  // validation of whether the number is actually a valid number for a
-  // particular region is not performed.  This can be done separately with
+  // to be a possible number, and NO_PARSING_ERROR if it parsed correctly. Note
+  // that validation of whether the number is actually a valid number for a
+  // particular region is not performed. This can be done separately with
   // IsValidNumber().
   //
   // default_region represents the country that we are expecting the number to

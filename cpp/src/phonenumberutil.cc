@@ -1322,7 +1322,7 @@ bool PhoneNumberUtil::GetExampleNumberForType(
   if (description && description->has_example_number()) {
     return (Parse(description->example_number(),
                   region_code,
-                  number) == NO_ERROR);
+                  number) == NO_PARSING_ERROR);
   }
   return false;
 }
@@ -1398,7 +1398,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
       MaybeExtractCountryCode(country_metadata, keep_raw_input,
                               &normalized_national_number, &temp_number);
   int country_code = temp_number.country_code();
-  if (country_code_error != NO_ERROR) {
+  if (country_code_error != NO_PARSING_ERROR) {
     return country_code_error;
   }
   if (country_code != 0) {
@@ -1446,7 +1446,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   safe_strtou64(normalized_national_number, &number_as_int);
   temp_number.set_national_number(number_as_int);
   phone_number->MergeFrom(temp_number);
-  return NO_ERROR;
+  return NO_PARSING_ERROR;
 }
 
 // Attempts to extract a possible number from the string passed in. This
@@ -1517,7 +1517,7 @@ bool PhoneNumberUtil::IsPossibleNumberForString(
     const string& number,
     const string& region_dialing_from) const {
   PhoneNumber number_proto;
-  if (Parse(number, region_dialing_from, &number_proto) == NO_ERROR) {
+  if (Parse(number, region_dialing_from, &number_proto) == NO_PARSING_ERROR) {
     return IsPossibleNumber(number_proto);
   } else {
     return false;
@@ -1993,12 +1993,12 @@ int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
 //   the first digits will be considered the country calling code and removed as
 //   such.
 //
-//   Returns NO_ERROR if a country calling code was successfully extracted or
-//   none was present, or the appropriate error otherwise, such as if a + was
-//   present but it was not followed by a valid country calling code. If
-//   NO_ERROR is returned, the national_number without the country calling code
-//   is populated, and the country_code passed in is set to the country calling
-//   code if found, otherwise to 0.
+//   Returns NO_PARSING_ERROR if a country calling code was successfully
+//   extracted or none was present, or the appropriate error otherwise, such as
+//   if a + was present but it was not followed by a valid country calling code.
+//   If NO_PARSING_ERROR is returned, the national_number without the country
+//   calling code is populated, and the country_code passed in is set to the
+//   country calling code if found, otherwise to 0.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
     const PhoneMetadata* default_region_metadata,
     bool keep_raw_input,
@@ -2026,7 +2026,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
     int potential_country_code = ExtractCountryCode(national_number);
     if (potential_country_code != 0) {
       phone_number->set_country_code(potential_country_code);
-      return NO_ERROR;
+      return NO_PARSING_ERROR;
     }
     // If this fails, they must be using a strange country calling code that we
     // don't recognize, or that doesn't exist.
@@ -2070,13 +2070,13 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
               PhoneNumber::FROM_NUMBER_WITHOUT_PLUS_SIGN);
         }
         phone_number->set_country_code(default_country_code);
-        return NO_ERROR;
+        return NO_PARSING_ERROR;
       }
     }
   }
   // No country calling code present. Set the country_code to 0.
   phone_number->set_country_code(0);
-  return NO_ERROR;
+  return NO_PARSING_ERROR;
 }
 
 PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
@@ -2143,23 +2143,23 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithTwoStrings(
   PhoneNumber first_number_as_proto;
   ErrorType error_type =
       Parse(first_number, "ZZ", &first_number_as_proto);
-  if (error_type == NO_ERROR) {
+  if (error_type == NO_PARSING_ERROR) {
     return IsNumberMatchWithOneString(first_number_as_proto, second_number);
   }
   if (error_type == INVALID_COUNTRY_CODE_ERROR) {
     PhoneNumber second_number_as_proto;
     ErrorType error_type = Parse(second_number, "ZZ",
                                  &second_number_as_proto);
-    if (error_type == NO_ERROR) {
+    if (error_type == NO_PARSING_ERROR) {
       return IsNumberMatchWithOneString(second_number_as_proto, first_number);
     }
     if (error_type == INVALID_COUNTRY_CODE_ERROR) {
       error_type  = ParseHelper(first_number, "ZZ", false, false,
                                 &first_number_as_proto);
-      if (error_type == NO_ERROR) {
+      if (error_type == NO_PARSING_ERROR) {
         error_type = ParseHelper(second_number, "ZZ", false, false,
                                  &second_number_as_proto);
-        if (error_type == NO_ERROR) {
+        if (error_type == NO_PARSING_ERROR) {
           return IsNumberMatch(first_number_as_proto, second_number_as_proto);
         }
       }
@@ -2178,7 +2178,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
   PhoneNumber second_number_as_proto;
   ErrorType error_type =
       Parse(second_number, "ZZ", &second_number_as_proto);
-  if (error_type == NO_ERROR) {
+  if (error_type == NO_PARSING_ERROR) {
     return IsNumberMatch(first_number, second_number_as_proto);
   }
   if (error_type == INVALID_COUNTRY_CODE_ERROR) {
@@ -2204,7 +2204,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
       // parse the second number without one as well.
       error_type = ParseHelper(second_number, "ZZ", false, false,
                                &second_number_as_proto);
-      if (error_type == NO_ERROR) {
+      if (error_type == NO_PARSING_ERROR) {
         return IsNumberMatch(first_number, second_number_as_proto);
       }
     }
