@@ -132,8 +132,9 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("SE");
     countryCodeToRegionCodeMap.put(46, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("NO");
+    listWithRegionCode.add("SJ");
     countryCodeToRegionCodeMap.put(47, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);

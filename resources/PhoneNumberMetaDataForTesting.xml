@@ -670,7 +670,11 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[13689]\d{7,10}</nationalNumberPattern>
-        <possibleNumberPattern>\d{8,11}</possibleNumberPattern>
+        <!-- This specific pattern with the | is used to unit-test IsPossibleNumberWithReason. -->
+        <possibleNumberPattern>
+          \d{8}|
+          \d{10,11}
+        </possibleNumberPattern>
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>[36]\d{7}</nationalNumberPattern>
@@ -710,7 +714,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[13-9]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <exampleNumber>1234567890</exampleNumber>
       </generalDesc>
       <noInternationalDialling>

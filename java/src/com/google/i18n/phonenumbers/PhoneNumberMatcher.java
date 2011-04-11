@@ -68,6 +68,13 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    */
   private static final Pattern PUB_PAGES = Pattern.compile("\\d{1,5}-+\\d{1,5}\\s{0,4}\\(\\d{1,4}");
 
+  /**
+   * Matches strings that look like dates using "/" as a separator. Examples: 3/10/2011, 31/10/96 or
+   * 08/31/95.
+   */
+  private static final Pattern SLASH_SEPARATED_DATES =
+      Pattern.compile("(?:(?:[0-3]?\\d/[01]?\\d)|(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}");
+
   static {
     /* Builds the PATTERN and INNER regular expression patterns. The building blocks below
      * exist to make the patterns more easily understood. */
@@ -268,8 +275,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * @return  the match found, null if none can be found
    */
   private PhoneNumberMatch extractMatch(CharSequence candidate, int offset) {
-    // Skip a match that is more likely a publication page reference.
-    if (PUB_PAGES.matcher(candidate).find()) {
+    // Skip a match that is more likely a publication page reference or a date.
+    if (PUB_PAGES.matcher(candidate).find() || SLASH_SEPARATED_DATES.matcher(candidate).find()) {
       return null;
     }
 

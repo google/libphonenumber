@@ -140,7 +140,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
     assertEquals("[13-9]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
-    assertEquals("\\d{7,10}", metadata.getGeneralDesc().getPossibleNumberPattern());
+    assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
     assertTrue(metadata.getGeneralDesc().exactlySameAs(metadata.getFixedLine()));
     assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
     assertEquals("900\\d{7}", metadata.getPremiumRate().getNationalNumberPattern());
@@ -913,6 +913,11 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_SHORT,
                  phoneUtil.isPossibleNumberWithReason(number));
 
+    number.setCountryCode(65);
+    number.setNationalNumber(1234567890L);
+    assertEquals(PhoneNumberUtil.ValidationResult.IS_POSSIBLE,
+                 phoneUtil.isPossibleNumberWithReason(number));
+
     // Try with number that we don't have metadata for.
     PhoneNumber adNumber = new PhoneNumber();
     adNumber.setCountryCode(376).setNationalNumber(12345L);
@@ -1242,9 +1247,9 @@ public class PhoneNumberUtilTest extends TestCase {
     }
     number.clear();
     try {
-      String phoneNumber = "(1 610) 619 43";
+      String phoneNumber = "(1 610) 619";
       StringBuffer numberToFill = new StringBuffer();
-      assertEquals("Should not have extracted a country calling code - invalid number both " +
+      assertEquals("Should not have extracted a country calling code - too short number both " +
                    "before and after extraction of uncertain country calling code.",
                    0,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,

@@ -1,3 +1,14 @@
+Apr 11th, 2011
+* Bug fixes:
+ - Adding date exclusion pattern in PhoneNumberMatcher.
+ - Fixing bug with selecting a suitable region for numbers with leading zeros where mutiple regions
+   for that country code are possible.
+* Metadata changes:
+ - Updates: AG, AI, AS, BB, BM, BS, CA, DM, DO, ET, FO, GD, GE, GU, IN, JM, KN, KY, LC, MN, MP, MR,
+   MS, NO, PR, TC, TR, TT, US, VC, VG, VI
+ - New countries: CK, FK, GT, IO, KI, SJ, SV
+* Documentation updates and some small refactoring to AsYouTypeFormatter
+
 Mar 31st, 2011
 * New functionality:
  - Can parse and format numbers in RFC-3966 format.

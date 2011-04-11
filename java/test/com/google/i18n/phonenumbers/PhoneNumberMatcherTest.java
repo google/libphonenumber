@@ -453,7 +453,18 @@ public class PhoneNumberMatcherTest extends TestCase {
         "As quoted by Alfonso 12-15 (2009), you may call me at ", ""));
     contextPairs.add(new NumberContext(
         "As quoted by Alfonso et al. 12-15 (2009), you may call me at ", ""));
-         // with a postfix stripped off as it looks like the start of another number
+    // With dates, written in the American style.
+    contextPairs.add(new NumberContext(
+        "As I said on 03/10/2011, you may call me at ", ""));
+    contextPairs.add(new NumberContext(
+        "As I said on 03/27/2011, you may call me at ", ""));
+    contextPairs.add(new NumberContext(
+        "As I said on 31/8/2011, you may call me at ", ""));
+    contextPairs.add(new NumberContext(
+        "As I said on 1/12/2011, you may call me at ", ""));
+    contextPairs.add(new NumberContext(
+        "I was born on 10/12/82. Please call me at ", ""));
+    // With a postfix stripped off as it looks like the start of another number
     contextPairs.add(new NumberContext("Call ", "/x12 more"));
 
     doTestInContext(number, defaultCountry, contextPairs, Leniency.POSSIBLE);

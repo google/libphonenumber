@@ -1527,7 +1527,7 @@ public class PhoneNumberUtil {
 
   private String getRegionCodeForNumberFromRegionList(PhoneNumber number,
                                                       List<String> regionCodes) {
-    String nationalNumber = String.valueOf(number.getNationalNumber());
+    String nationalNumber = getNationalSignificantNumber(number);
     for (String regionCode : regionCodes) {
       // If leadingDigits is present, use this. Otherwise, do full validation.
       PhoneMetadata metadata = getMetadataForRegion(regionCode);
@@ -1664,6 +1664,24 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Helper method to check a number against a particular pattern and determine whether it matches,
+   * or is too short or too long. Currently, if a number pattern suggests that numbers of length 7
+   * and 10 are possible, and a number in between these possible lengths is entered, such as of
+   * length 8, this will return TOO_LONG.
+   */
+  private ValidationResult testNumberLengthAgainstPattern(Pattern numberPattern, String number) {
+    Matcher numberMatcher = numberPattern.matcher(number);
+    if (numberMatcher.matches()) {
+      return ValidationResult.IS_POSSIBLE;
+    }
+    if (numberMatcher.lookingAt()) {
+      return ValidationResult.TOO_LONG;
+    } else {
+      return ValidationResult.TOO_SHORT;
+    }
+  }
+
+  /**
    * Check whether a phone number is a possible number. It provides a more lenient check than
    * {@link #isValidNumber} in the following sense:
    *<ol>
@@ -1708,14 +1726,9 @@ public class PhoneNumberUtil {
         return ValidationResult.IS_POSSIBLE;
       }
     }
-    String possibleNumberPattern = generalNumDesc.getPossibleNumberPattern();
-    Matcher m = regexCache.getPatternForRegex(possibleNumberPattern).matcher(nationalNumber);
-    if (m.lookingAt()) {
-      return (m.end() == nationalNumber.length()) ? ValidationResult.IS_POSSIBLE
-                                                  : ValidationResult.TOO_LONG;
-    } else {
-      return ValidationResult.TOO_SHORT;
-    }
+    Pattern possibleNumberPattern =
+        regexCache.getPatternForRegex(generalNumDesc.getPossibleNumberPattern());
+    return testNumberLengthAgainstPattern(possibleNumberPattern, nationalNumber);
   }
 
   /**
@@ -1869,37 +1882,34 @@ public class PhoneNumberUtil {
       throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                                      "Country calling code supplied was not recognised.");
     } else if (defaultRegionMetadata != null) {
-      // Check to see if the number is valid for the default region already. If not, we check to
-      // see if the country calling code for the default region is present at the start of the
-      // number.
-      PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
-      Pattern validNumberPattern =
-          regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
-      if (!validNumberPattern.matcher(fullNumber).matches()) {
-        int defaultCountryCode = defaultRegionMetadata.getCountryCode();
-        String defaultCountryCodeString = String.valueOf(defaultCountryCode);
-        String normalizedNumber = fullNumber.toString();
-        if (normalizedNumber.startsWith(defaultCountryCodeString)) {
-          // If so, strip this, and see if the resultant number is valid.
-          StringBuffer potentialNationalNumber =
-              new StringBuffer(normalizedNumber.substring(defaultCountryCodeString.length()));
-          maybeStripNationalPrefixAndCarrierCode(potentialNationalNumber, defaultRegionMetadata);
-          Matcher possibleNumberMatcher =
-              regexCache.getPatternForRegex(generalDesc.getPossibleNumberPattern()).matcher(
-                  potentialNationalNumber);
-          // If the resultant number is either valid, or still too long even with the country
-          // calling code stripped, we consider this a better result and keep the potential national
-          // number.
-          if (validNumberPattern.matcher(potentialNationalNumber).matches() ||
-              (possibleNumberMatcher.lookingAt() &&
-               possibleNumberMatcher.end() != potentialNationalNumber.length())) {
-            nationalNumber.append(potentialNationalNumber);
-            if (keepRawInput) {
-              phoneNumber.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
-            }
-            phoneNumber.setCountryCode(defaultCountryCode);
-            return defaultCountryCode;
+      // Check to see if the number starts with the country calling code for the default region. If
+      // so, we remove the country calling code, and do some checks on the validity of the number
+      // before and after.
+      int defaultCountryCode = defaultRegionMetadata.getCountryCode();
+      String defaultCountryCodeString = String.valueOf(defaultCountryCode);
+      String normalizedNumber = fullNumber.toString();
+      if (normalizedNumber.startsWith(defaultCountryCodeString)) {
+        StringBuffer potentialNationalNumber =
+            new StringBuffer(normalizedNumber.substring(defaultCountryCodeString.length()));
+        PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
+        Pattern validNumberPattern =
+            regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
+        maybeStripNationalPrefixAndCarrierCode(potentialNationalNumber, defaultRegionMetadata);
+        Pattern possibleNumberPattern =
+            regexCache.getPatternForRegex(generalDesc.getPossibleNumberPattern());
+        // If the number was not valid before but is valid now, or if it was too long before, we
+        // consider the number with the country code stripped to be a better result and keep that
+        // instead.
+        if ((!validNumberPattern.matcher(fullNumber).matches() &&
+             validNumberPattern.matcher(potentialNationalNumber).matches()) ||
+             testNumberLengthAgainstPattern(possibleNumberPattern, fullNumber.toString())
+                  == ValidationResult.TOO_LONG) {
+          nationalNumber.append(potentialNationalNumber);
+          if (keepRawInput) {
+            phoneNumber.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
           }
+          phoneNumber.setCountryCode(defaultCountryCode);
+          return defaultCountryCode;
         }
       }
     }
