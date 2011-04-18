@@ -1746,7 +1746,7 @@ void PhoneNumberUtil::NormalizeDigitsOnly(string* number) {
     logger->Error("Error creating ICU Transliterator");
     return;
   }
-  icu::UnicodeString utf16(number->c_str());
+  icu::UnicodeString utf16(icu::UnicodeString::fromUTF8(number->c_str()));
   transliterator->transliterate(utf16);
   number->clear();
   utf16.toUTF8String(*number);
