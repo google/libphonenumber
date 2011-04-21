@@ -1,4 +1,4 @@
-/*
+/**
  * @license
  * Copyright (C) 2010 Google Inc.
  *
@@ -19,15 +19,13 @@
  * @fileoverview  A formatter which formats phone numbers as they are entered.
  * (based on the java implementation).
  *
- * An AsYouTypeFormatter could be created by new AsYouTypeFormatter(). After
- * that digits could be added by invoking the inputDigit method on the formatter
+ * <p>An AsYouTypeFormatter could be created by new AsYouTypeFormatter(). After
+ * that digits could be added by invoking {@link #inputDigit} on the formatter
  * instance, and the partially formatted phone number will be returned each time
- * a digit is added. The clear method should be invoked before a new number
- * needs to be formatted.
+ * a digit is added. {@link #clear} could be invoked before a new number needs
+ * to be formatted.
  *
- * See testAsYouTypeFormatterUS(), testAsYouTestFormatterGB() and
- * testAsYouTypeFormatterDE() in asyoutypeformatter_test.js for more details
- * on how the formatter is to be used.
+ * <p>See the unittests for more details on how the formatter is to be used.
  *
  * @author Nikolaos Trogkanis
  */
@@ -47,43 +45,13 @@ goog.require('i18n.phonenumbers.metadata');
 
 
 /**
- * Constructs a light-weight formatter which does no formatting, but outputs
- * exactly what is fed into the inputDigit method.
+ * Constructs an AsYouTypeFormatter for the specific region.
  *
- * @param {string} regionCode the country/region where the phone number is being
- *     entered.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code that denotes
+ *     the region where the phone number is being entered.
  * @constructor
  */
 i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
-  /**
-   * A pattern that is used to match character classes in regular expressions.
-   * An example of a character class is [1-4].
-   * @const
-   * @type {RegExp}
-   * @private
-   */
-  this.CHARACTER_CLASS_PATTERN_ = /\[([^\[\]])*\]/g;
-  /**
-   * Any digit in a regular expression that actually denotes a digit. For
-   * example, in the regular expression 80[0-2]\d{6,10}, the first 2 digits
-   * (8 and 0) are standalone digits, but the rest are not.
-   * Two look-aheads are needed because the number following \\d could be a
-   * two-digit number, since the phone number can be as long as 15 digits.
-   * @const
-   * @type {RegExp}
-   * @private
-   */
-  this.STANDALONE_DIGIT_PATTERN_ = /\d(?=[^,}][^,}])/g;
-  /**
-   * This is the minimum length of national number accrued that is required to
-   * trigger the formatter. The first element of the leadingDigitsPattern of
-   * each numberFormat contains a regular expression that matches up to this
-   * number of digits.
-   * @const
-   * @type {number}
-   * @private
-   */
-  this.MIN_LEADING_DIGITS_LENGTH_ = 3;
   /**
    * The digits that have not been entered yet will be represented by a \u2008,
    * the punctuation space.
@@ -138,7 +106,7 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    * @type {boolean}
    * @private
    */
-  this.isExpectingCountryCode_ = false;
+  this.isExpectingCountryCallingCode_ = false;
   /**
    * @type {i18n.phonenumbers.PhoneNumberUtil}
    * @private
@@ -185,7 +153,7 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    * @private
    */
   this.defaultCountry_ = regionCode;
-  this.initializeCountrySpecificInfo_(this.defaultCountry_);
+  this.currentMetaData_ = this.getMetadataForRegion_(this.defaultCountry_);
   /**
    * @type {i18n.phonenumbers.PhoneMetadata}
    * @private
@@ -195,27 +163,70 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
 
 
 /**
- * @param {string} regionCode
+ * @const
+ * @type {i18n.phonenumbers.PhoneMetadata}
  * @private
  */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.initializeCountrySpecificInfo_ =
+i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_ =
+    new i18n.phonenumbers.PhoneMetadata();
+i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_
+    .setInternationalPrefix('NA');
+
+
+/**
+ * A pattern that is used to match character classes in regular expressions.
+ * An example of a character class is [1-4].
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.CHARACTER_CLASS_PATTERN_ =
+    /\[([^\[\]])*\]/g;
+
+
+/**
+ * Any digit in a regular expression that actually denotes a digit. For
+ * example, in the regular expression 80[0-2]\d{6,10}, the first 2 digits
+ * (8 and 0) are standalone digits, but the rest are not.
+ * Two look-aheads are needed because the number following \\d could be a
+ * two-digit number, since the phone number can be as long as 15 digits.
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_ =
+    /\d(?=[^,}][^,}])/g;
+
+
+/**
+ * This is the minimum length of national number accrued that is required to
+ * trigger the formatter. The first element of the leadingDigitsPattern of
+ * each numberFormat contains a regular expression that matches up to this
+ * number of digits.
+ * @const
+ * @type {number}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_ = 3;
+
+
+/**
+ * @param {string} regionCode
+ * @return {i18n.phonenumbers.PhoneMetadata}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.getMetadataForRegion_ =
     function(regionCode) {
 
   /** @type {i18n.phonenumbers.PhoneMetadata} */
-  this.currentMetaData_ = this.phoneUtil_.getMetadataForRegion(regionCode);
-  if (this.currentMetaData_ == null) {
-    // Set to a default instance of the metadata. This allows us to function
-    // with an incorrect region code, even if formatting only works for numbers
-    // specified with '+'.
-    this.currentMetaData_ = new i18n.phonenumbers.PhoneMetadata();
-    this.currentMetaData_.setInternationalPrefix('NA');
+  var metadata = this.phoneUtil_.getMetadataForRegion(regionCode);
+  if (metadata != null) {
+    return metadata;
   }
-  /** @type {RegExp} */
-  this.nationalPrefixForParsing_ = new RegExp('^(' + this.currentMetaData_
-      .getNationalPrefixForParsing() + ')');
-  /** @type {RegExp} */
-  this.internationalPrefix_ = new RegExp('^(' + '\\+|' +
-      this.currentMetaData_.getInternationalPrefix() + ')');
+  // Set to a default instance of the metadata. This allows us to function with
+  // an incorrect region code, even if formatting only works for numbers
+  // specified with '+'.
+  return i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_;
 };
 
 
@@ -275,20 +286,19 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.narrowDownPossibleFormats_ =
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var possibleFormats = [];
   /** @type {number} */
-  var lengthOfLeadingDigits = leadingDigits.length;
-  /** @type {number} */
   var indexOfLeadingDigitsPattern =
-      lengthOfLeadingDigits - this.MIN_LEADING_DIGITS_LENGTH_;
+      leadingDigits.length -
+      i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_;
   /** @type {number} */
   var possibleFormatsLength = this.possibleFormats_.length;
   for (var i = 0; i < possibleFormatsLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
     var format = this.possibleFormats_[i];
     if (format.leadingDigitsPatternCount() > indexOfLeadingDigitsPattern) {
-      /** @type {RegExp} */
-      var leadingDigitsPattern = new RegExp('^(' +
-          format.getLeadingDigitsPattern(indexOfLeadingDigitsPattern) + ')');
-      if (leadingDigitsPattern.test(leadingDigits)) {
+      /** @type {string} */
+      var leadingDigitsPattern =
+          format.getLeadingDigitsPatternOrDefault(indexOfLeadingDigitsPattern);
+      if (leadingDigits.search(leadingDigitsPattern) == 0) {
         possibleFormats.push(this.possibleFormats_[i]);
       }
     } else {
@@ -310,8 +320,6 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
     function(format) {
 
   /** @type {string} */
-  var numberFormat = format.getFormatOrDefault();
-  /** @type {string} */
   var numberPattern = format.getPatternOrDefault();
 
   // The formatter doesn't format numbers when numberPattern contains '|', e.g.
@@ -321,13 +329,16 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
   }
 
   // Replace anything in the form of [..] with \d
-  numberPattern = numberPattern.replace(this.CHARACTER_CLASS_PATTERN_, '\\d');
+  numberPattern = numberPattern.replace(
+      i18n.phonenumbers.AsYouTypeFormatter.CHARACTER_CLASS_PATTERN_, '\\d');
 
   // Replace any standalone digit (not the one in d{}) with \d
-  numberPattern = numberPattern.replace(this.STANDALONE_DIGIT_PATTERN_, '\\d');
+  numberPattern = numberPattern.replace(
+      i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_, '\\d');
   this.formattingTemplate_.clear();
   /** @type {string} */
-  var tempTemplate = this.getFormattingTemplate_(numberPattern, numberFormat);
+  var tempTemplate = this.getFormattingTemplate_(numberPattern,
+                                                 format.getFormatOrDefault());
   if (tempTemplate.length > this.nationalNumber_.getLength()) {
     this.formattingTemplate_.append(tempTemplate);
     return true;
@@ -383,10 +394,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
   this.positionToRemember_ = 0;
   this.originalPosition_ = 0;
   this.isInternationalFormatting_ = false;
-  this.isExpectingCountryCode_ = false;
+  this.isExpectingCountryCallingCode_ = false;
   this.possibleFormats_ = [];
   if (this.currentMetaData_ != this.defaultMetaData_) {
-    this.initializeCountrySpecificInfo_(this.defaultCountry_);
+    this.currentMetaData_ = this.getMetadataForRegion_(this.defaultCountry_);
   }
 };
 
@@ -395,7 +406,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
  * Formats a phone number on-the-fly as each digit is entered.
  *
  * @param {string} nextChar the most recently entered digit of a phone number.
- *     Formatting characters are allowed, but they are removed from the result.
+ *     Formatting characters are allowed, but as soon as they are encountered
+ *     this method formats the number as entered and not 'as you type' anymore.
+ *     Full width digits and Arabic-indic digits are allowed, and will be shown
+ *     as they are.
  * @return {string} the partially formatted phone number.
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigit = function(nextChar) {
@@ -406,10 +420,11 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigit = function(nextChar) {
 
 
 /**
- * Same as inputDigit, but remembers the position where nextChar is inserted, so
- * that it could be retrieved later by using getRememberedPosition(). The
- * remembered position will be automatically adjusted if additional formatting
- * characters are later inserted/removed in front of nextChar.
+ * Same as {@link #inputDigit}, but remembers the position where
+ * {@code nextChar} is inserted, so that it could be retrieved later by using
+ * {@link #getRememberedPosition}. The remembered position will be automatically
+ * adjusted if additional formatting characters are later inserted/removed in
+ * front of {@code nextChar}.
  *
  * @param {string} nextChar
  * @return {string}
@@ -454,13 +469,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   // digits (the plus sign is counted as a digit as well for this purpose) have
   // been entered.
   switch (this.accruedInputWithoutFormatting_.getLength()) {
-    case 0: // when the first few inputs are neither digits nor the plus sign.
+    case 0:
     case 1:
     case 2:
       return this.accruedInput_.toString();
     case 3:
       if (this.attemptToExtractIdd_()) {
-        this.isExpectingCountryCode_ = true;
+        this.isExpectingCountryCallingCode_ = true;
       } else {
         // No IDD or plus sign is found, must be entering in national format.
         this.removeNationalPrefixFromNationalNumber_();
@@ -468,18 +483,18 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
       }
     case 4:
     case 5:
-      if (this.isExpectingCountryCode_) {
-        if (this.attemptToExtractCountryCode_()) {
-          this.isExpectingCountryCode_ = false;
+      if (this.isExpectingCountryCallingCode_) {
+        if (this.attemptToExtractCountryCallingCode_()) {
+          this.isExpectingCountryCallingCode_ = false;
         }
         return this.prefixBeforeNationalNumber_.toString() +
             this.nationalNumber_.toString();
       }
-    // We make a last attempt to extract a country code at the 6th digit because
-    // the maximum length of IDD and country code are both 3.
+    // We make a last attempt to extract a country calling code at the 6th digit
+    // because the maximum length of IDD and country calling code are both 3.
     case 6:
-      if (this.isExpectingCountryCode_ &&
-          !this.attemptToExtractCountryCode_()) {
+      if (this.isExpectingCountryCallingCode_ &&
+          !this.attemptToExtractCountryCallingCode_()) {
         this.ableToFormat_ = false;
         return this.accruedInput_.toString();
       }
@@ -527,7 +542,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
     /** @type {string} */
     var pattern = numFormat.getPatternOrDefault();
     /** @type {RegExp} */
-    var patternRegExp = new RegExp('^(' + pattern + ')$');
+    var patternRegExp = new RegExp('^(?:' + pattern + ')$');
     if (patternRegExp.test(nationalNumber)) {
       /** @type {string} */
       var formattedNumber = nationalNumber.replace(new RegExp(pattern, 'g'),
@@ -542,7 +557,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
 /**
  * Returns the current position in the partially formatted phone number of the
  * character which was previously passed in as the parameter of
- * inputDigitAndRememberPosition().
+ * {@link #inputDigitAndRememberPosition}.
  *
  * @return {number}
  */
@@ -561,17 +576,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getRememberedPosition =
       this.accruedInputWithoutFormatting_.toString();
   /** @type {string} */
   var currentOutput = this.currentOutput_.toString();
-  /** @type {number} */
-  var currentOutputLength = currentOutput.length;
   while (accruedInputIndex < this.positionToRemember_ &&
-         currentOutputIndex < currentOutputLength) {
+         currentOutputIndex < currentOutput.length) {
     if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
         currentOutput.charAt(currentOutputIndex)) {
       accruedInputIndex++;
-      currentOutputIndex++;
-    } else {
-      currentOutputIndex++;
     }
+    currentOutputIndex++;
   }
   return currentOutputIndex;
 };
@@ -591,9 +602,11 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   var nationalNumber = this.nationalNumber_.toString();
   // We start to attempt to format only when as least MIN_LEADING_DIGITS_LENGTH
   // digits of national number (excluding national prefix) have been entered.
-  if (nationalNumber.length >= this.MIN_LEADING_DIGITS_LENGTH_) {
+  if (nationalNumber.length >=
+      i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_) {
     this.getAvailableFormats_(
-        nationalNumber.substring(0, this.MIN_LEADING_DIGITS_LENGTH_));
+        nationalNumber.substring(0,
+            i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_));
     this.maybeCreateNewTemplate_();
     return this.inputAccruedNationalNumber_();
   } else {
@@ -648,8 +661,11 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     this.prefixBeforeNationalNumber_.append('1 ');
     this.isInternationalFormatting_ = true;
   } else if (this.currentMetaData_.hasNationalPrefix()) {
+    /** @type {RegExp} */
+    var nationalPrefixForParsing = new RegExp(
+        '^(?:' + this.currentMetaData_.getNationalPrefixForParsing() + ')');
     /** @type {Array.<string>} */
-    var m = nationalNumber.match(this.nationalPrefixForParsing_);
+    var m = nationalNumber.match(nationalPrefixForParsing);
     if (m != null && m[0] != null && m[0].length > 0) {
       // When the national prefix is detected, we use international formatting
       // rules instead of national ones, because national formatting rules could
@@ -679,17 +695,21 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractIdd_ =
   /** @type {string} */
   var accruedInputWithoutFormatting =
       this.accruedInputWithoutFormatting_.toString();
+  /** @type {RegExp} */
+  var internationalPrefix = new RegExp(
+      '^(?:' + '\\' + i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + '|' +
+      this.currentMetaData_.getInternationalPrefix() + ')');
   /** @type {Array.<string>} */
-  var m = accruedInputWithoutFormatting.match(this.internationalPrefix_);
+  var m = accruedInputWithoutFormatting.match(internationalPrefix);
   if (m != null && m[0] != null && m[0].length > 0) {
     this.isInternationalFormatting_ = true;
     /** @type {number} */
-    var startOfCountryCode = m[0].length;
+    var startOfCountryCallingCode = m[0].length;
     this.nationalNumber_.clear();
     this.nationalNumber_.append(
-        accruedInputWithoutFormatting.substring(startOfCountryCode));
+        accruedInputWithoutFormatting.substring(startOfCountryCallingCode));
     this.prefixBeforeNationalNumber_.append(
-        accruedInputWithoutFormatting.substring(0, startOfCountryCode));
+        accruedInputWithoutFormatting.substring(0, startOfCountryCallingCode));
     if (accruedInputWithoutFormatting.charAt(0) !=
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
       this.prefixBeforeNationalNumber_.append(' ');
@@ -701,39 +721,37 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractIdd_ =
 
 
 /**
- * Extracts country code from the beginning of nationalNumber to
+ * Extracts the country calling code from the beginning of nationalNumber to
  * prefixBeforeNationalNumber when they are available, and places the remaining
  * input into nationalNumber.
  *
- * @return {boolean} true when a valid country code can be found.
+ * @return {boolean} true when a valid country calling code can be found.
  * @private
  */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractCountryCode_ =
-    function() {
+i18n.phonenumbers.AsYouTypeFormatter.prototype.
+    attemptToExtractCountryCallingCode_ = function() {
 
   if (this.nationalNumber_.getLength() == 0) {
     return false;
   }
   /** @type {!goog.string.StringBuffer} */
-  var numberWithoutCountryCode = new goog.string.StringBuffer();
+  var numberWithoutCountryCallingCode = new goog.string.StringBuffer();
   /** @type {number} */
   var countryCode = this.phoneUtil_.extractCountryCode(
-      this.nationalNumber_, numberWithoutCountryCode);
+      this.nationalNumber_, numberWithoutCountryCallingCode);
   if (countryCode == 0) {
     return false;
-  } else {
-    this.nationalNumber_.clear();
-    this.nationalNumber_.append(numberWithoutCountryCode.toString());
-    /** @type {string} */
-    var newRegionCode =
-        this.phoneUtil_.getRegionCodeForCountryCode(countryCode);
-    if (newRegionCode != this.defaultCountry_) {
-      this.initializeCountrySpecificInfo_(newRegionCode);
-    }
-    /** @type {string} */
-    var countryCodeString = '' + countryCode;
-    this.prefixBeforeNationalNumber_.append(countryCodeString).append(' ');
   }
+  this.nationalNumber_.clear();
+  this.nationalNumber_.append(numberWithoutCountryCallingCode.toString());
+  /** @type {string} */
+  var newRegionCode = this.phoneUtil_.getRegionCodeForCountryCode(countryCode);
+  if (newRegionCode != this.defaultCountry_) {
+    this.currentMetaData_ = this.getMetadataForRegion_(newRegionCode);
+  }
+  /** @type {string} */
+  var countryCodeString = '' + countryCode;
+  this.prefixBeforeNationalNumber_.append(countryCodeString).append(' ');
   return true;
 };
 
@@ -743,7 +761,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractCountryCode_ =
  * use. If nextChar contains a digit in non-ASCII format (e.g. the full-width
  * version of digits), it is first normalized to the ASCII version. The return
  * value is nextChar itself, or its normalized version, if nextChar is a digit
- * in non-ASCII format.
+ * in non-ASCII format. This method assumes its input is either a digit or the
+ * plus sign.
  *
  * @param {string} nextChar
  * @param {boolean} rememberPosition
@@ -756,8 +775,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 
   if (nextChar == i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
     this.accruedInputWithoutFormatting_.append(nextChar);
-  }
-  if (nextChar in i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS) {
+  } else {
     nextChar = i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS[nextChar];
     this.accruedInputWithoutFormatting_.append(nextChar);
     this.nationalNumber_.append(nextChar);

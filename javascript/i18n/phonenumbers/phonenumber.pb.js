@@ -1,4 +1,4 @@
-/*
+/**
  * @license
  * Protocol Buffer 2 Copyright 2008 Google Inc.
  * All other code copyright its respective owners.

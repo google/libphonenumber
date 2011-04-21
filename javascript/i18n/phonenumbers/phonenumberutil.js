@@ -1,4 +1,4 @@
-/*
+/**
  * @license
  * Copyright (C) 2010 Google Inc.
  *
@@ -48,7 +48,7 @@ i18n.phonenumbers.PhoneNumberUtil = function() {
    * A mapping from a region code to the PhoneMetadata for that region.
    * @type {Object.<string, i18n.phonenumbers.PhoneMetadata>}
    */
-  this.countryToMetadata = {};
+  this.regionToMetadataMap = {};
 };
 goog.addSingletonGetter(i18n.phonenumbers.PhoneNumberUtil);
 
@@ -59,18 +59,17 @@ goog.addSingletonGetter(i18n.phonenumbers.PhoneNumberUtil);
  * @enum {string}
  */
 i18n.phonenumbers.Error = {
-  INVALID_COUNTRY_CODE: 'Invalid country code',
+  INVALID_COUNTRY_CODE: 'Invalid country calling code',
   // This generally indicates the string passed in had less than 3 digits in it.
   // More specifically, the number failed to match the regular expression
   // VALID_PHONE_NUMBER.
   NOT_A_NUMBER: 'The string supplied did not seem to be a phone number',
   // This indicates the string started with an international dialing prefix, but
   // after this was stripped from the number, had less digits than any valid
-  // phone number (including country code) could have.
+  // phone number (including country calling code) could have.
   TOO_SHORT_AFTER_IDD: 'Phone number too short after IDD',
-  // This indicates the string, after any country code has been stripped, had
-  // less digits than any
-  // valid phone number could have.
+  // This indicates the string, after any country calling code has been
+  // stripped, had less digits than any valid phone number could have.
   TOO_SHORT_NSN: 'The string supplied is too short to be a phone number',
   // This indicates the string had more digits than any valid phone number could
   // have.
@@ -107,7 +106,7 @@ i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 15;
 
 
 /**
- * The maximum length of the country code.
+ * The maximum length of the country calling code.
  *
  * @const
  * @type {number}
@@ -136,11 +135,22 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN = '+';
 
 
 /**
+ * The RFC 3966 format for extensions.
+ *
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ = ';ext=';
+
+
+/**
  * These mappings map a character (key) to a specific digit that should replace
  * it for normalization purposes. Non-European digits that may be used in phone
  * numbers are mapped to a European equivalent.
  *
  * @const
+ * @type {!Object.<string, string>}
  */
 i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS = {
   '0': '0',
@@ -190,6 +200,7 @@ i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS = {
  * Only upper-case variants of alpha characters are stored.
  *
  * @const
+ * @type {!Object.<string, string>}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.ALPHA_MAPPINGS_ = {
@@ -226,6 +237,7 @@ i18n.phonenumbers.PhoneNumberUtil.ALPHA_MAPPINGS_ = {
  * For performance reasons, amalgamate both into one map.
  *
  * @const
+ * @type {!Object.<string, string>}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.ALL_NORMALIZATION_MAPPINGS_ = {
@@ -299,38 +311,107 @@ i18n.phonenumbers.PhoneNumberUtil.ALL_NORMALIZATION_MAPPINGS_ = {
 
 
 /**
- * A list of all country codes where national significant numbers (excluding any
- * national prefix) exist that start with a leading zero.
+ * Separate map of all symbols that we wish to retain when formatting alpha
+ * numbers. This includes digits, ASCII letters and number grouping symbols such
+ * as '-' and ' '.
  *
  * @const
+ * @type {!Object.<string, string>}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.LEADING_ZERO_COUNTRIES_ = {
-  39: 1,  // Italy
-  47: 1,  // Norway
-  225: 1,  // Cote d'Ivoire
-  227: 1,  // Niger
-  228: 1,  // Togo
-  241: 1,  // Gabon
-  242: 1,  // Congo (Rep. of the)
-  268: 1,  // Swaziland
-  378: 1,  // San Marino
-  379: 1,  // Vatican City
-  501: 1   // Belize
+i18n.phonenumbers.PhoneNumberUtil.ALL_PLUS_NUMBER_GROUPING_SYMBOLS_ = {
+  '0': '0',
+  '1': '1',
+  '2': '2',
+  '3': '3',
+  '4': '4',
+  '5': '5',
+  '6': '6',
+  '7': '7',
+  '8': '8',
+  '9': '9',
+  'A': 'A',
+  'B': 'B',
+  'C': 'C',
+  'D': 'D',
+  'E': 'E',
+  'F': 'F',
+  'G': 'G',
+  'H': 'H',
+  'I': 'I',
+  'J': 'J',
+  'K': 'K',
+  'L': 'L',
+  'M': 'M',
+  'N': 'N',
+  'O': 'O',
+  'P': 'P',
+  'Q': 'Q',
+  'R': 'R',
+  'S': 'S',
+  'T': 'T',
+  'U': 'U',
+  'V': 'V',
+  'W': 'W',
+  'X': 'X',
+  'Y': 'Y',
+  'Z': 'Z',
+  'a': 'A',
+  'b': 'B',
+  'c': 'C',
+  'd': 'D',
+  'e': 'E',
+  'f': 'F',
+  'g': 'G',
+  'h': 'H',
+  'i': 'I',
+  'j': 'J',
+  'k': 'K',
+  'l': 'L',
+  'm': 'M',
+  'n': 'N',
+  'o': 'O',
+  'p': 'P',
+  'q': 'Q',
+  'r': 'R',
+  's': 'S',
+  't': 'T',
+  'u': 'U',
+  'v': 'V',
+  'w': 'W',
+  'x': 'X',
+  'y': 'Y',
+  'z': 'Z',
+  '-': '-',
+  '\uFF0D': '-',
+  '\u2010': '-',
+  '\u2011': '-',
+  '\u2012': '-',
+  '\u2013': '-',
+  '\u2014': '-',
+  '\u2015': '-',
+  '\u2212': '-',
+  '/': '/',
+  '\uFF0F': '/',
+  ' ': ' ',
+  '\u3000': ' ',
+  '\u2060': ' ',
+  '.': '.',
+  '\uFF0E': '.'
 };
 
 
 /**
- * Pattern that makes it easy to distinguish whether a country has a unique
- * international dialing prefix or not. If a country has a unique international
+ * Pattern that makes it easy to distinguish whether a region has a unique
+ * international dialing prefix or not. If a region has a unique international
  * prefix (e.g. 011 in USA), it will be represented as a string that contains a
  * sequence of ASCII digits. If there are multiple available international
- * prefixes in a country, they will be represented as a regex string that always
+ * prefixes in a region, they will be represented as a regex string that always
  * contains character(s) other than ASCII digits. Note this regex also includes
  * tilde, which signals waiting for the tone.
  *
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_ =
@@ -386,7 +467,7 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ = '+\uFF0B';
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_ =
@@ -395,7 +476,17 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_ =
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.SEPARATOR_PATTERN_ =
+    new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ +
+               ']+', 'g');
+
+
+/**
+ * @const
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_ =
@@ -412,8 +503,7 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_ =
  * is of no information value when parsing a number.
  *
  * @const
- * @type {RegExp}
- * @public
+ * @type {!RegExp}
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN =
     new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ +
@@ -429,7 +519,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN =
  * the second extension so that the first number is parsed correctly.
  *
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.SECOND_NUMBER_START_PATTERN_ = /[\\\/] *x/;
@@ -441,7 +531,7 @@ i18n.phonenumbers.PhoneNumberUtil.SECOND_NUMBER_START_PATTERN_ = /[\\\/] *x/;
  * is retained here, as it may signify the previous block was an extension.
  *
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_ =
@@ -455,7 +545,7 @@ i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_ =
  * are represented by letters.
  *
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_PHONE_PATTERN_ =
@@ -491,7 +581,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
  * any extension component of the number, after the main national number is
  * formatted. For example, if you wish the default extension formatting to be
  * ' extn: 3456', then you should specify ' extn: ' here as the default
- * extension prefix. This can be overridden by country-specific preferences.
+ * extension prefix. This can be overridden by region-specific preferences.
  *
  * @const
  * @type {string}
@@ -501,37 +591,49 @@ i18n.phonenumbers.PhoneNumberUtil.DEFAULT_EXTN_PREFIX_ = ' ext. ';
 
 
 /**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ =
+    '([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,7})';
+
+
+/**
  * Regexp of all possible ways to write extensions, for use when parsing. This
  * will be run as a case-insensitive regexp match. Wide character versions are
- * also provided after each ascii version. There are two regular expressions
- * here: the more generic one starts with optional white space and ends with an
- * optional full stop (.), followed by zero or more spaces/tabs and then the
- * numbers themselves. The other one covers the special case of American numbers
- * where the extension is written with a hash at the end, such as "- 503#". Note
- * that the only capturing groups should be around the digits that you want to
- * capture as part of the extension, or else parsing will fail! We allow two
- * options for representing the accented o - the character itself, and one in
- * the unicode decomposed form with the combining acute accent.
+ * also provided after each ASCII version. There are three regular expressions
+ * here. The first covers RFC 3966 format, where the extension is added using
+ * ';ext='. The second more generic one starts with optional white space and
+ * ends with an optional full stop (.), followed by zero or more spaces/tabs and
+ * then the numbers themselves. The other one covers the special case of
+ * American numbers where the extension is written with a hash at the end, such
+ * as '- 503#'. Note that the only capturing groups should be around the digits
+ * that you want to capture as part of the extension, or else parsing will fail!
+ * We allow two options for representing the accented o - the character itself,
+ * and one in the unicode decomposed form with the combining acute accent.
  *
  * @const
  * @type {string}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.KNOWN_EXTN_PATTERNS_ =
+    i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
+    i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
     '[ \u00A0\\t,]*' +
     '(?:ext(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45\uFF58\uFF54\uFF4E?|' +
     '[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
-    '[:\\.\uFF0E]?[ \u00A0\\t,-]*([' +
-    i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,7})#?|[- ]+([' +
-    i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,5})#';
+    '[:\\.\uFF0E]?[ \u00A0\\t,-]*' +
+    i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
+    '[- ]+([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,5})#';
 
 
 /**
- * Regexp of all known extension prefixes used by different countries followed
- * by 1 or more valid digits, for use when parsing.
+ * Regexp of all known extension prefixes used by different regions followed by
+ * 1 or more valid digits, for use when parsing.
  *
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
@@ -544,7 +646,7 @@ i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
  * number may have an extension prefix appended, followed by 1 or more digits.
  *
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_PATTERN_ =
@@ -555,7 +657,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_PATTERN_ =
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.NON_DIGITS_PATTERN_ = /\D+/;
@@ -563,7 +665,7 @@ i18n.phonenumbers.PhoneNumberUtil.NON_DIGITS_PATTERN_ = /\D+/;
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_ = /(\$1)/;
@@ -571,7 +673,7 @@ i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_ = /(\$1)/;
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.NP_PATTERN_ = /\$NP/;
@@ -579,7 +681,7 @@ i18n.phonenumbers.PhoneNumberUtil.NP_PATTERN_ = /\$NP/;
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.FG_PATTERN_ = /\$FG/;
@@ -587,7 +689,7 @@ i18n.phonenumbers.PhoneNumberUtil.FG_PATTERN_ = /\$FG/;
 
 /**
  * @const
- * @type {RegExp}
+ * @type {!RegExp}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.CC_PATTERN_ = /\$CC/;
@@ -596,16 +698,22 @@ i18n.phonenumbers.PhoneNumberUtil.CC_PATTERN_ = /\$CC/;
 /**
  * INTERNATIONAL and NATIONAL formats are consistent with the definition in
  * ITU-T Recommendation E. 123. For example, the number of the Google Zurich
- * office will be written as "+41 44 668 1800" in INTERNATIONAL format, and as
- * "044 668 1800" in NATIONAL format. E164 format is as per INTERNATIONAL format
- * but with no formatting applied, e.g. +41446681800.
+ * office will be written as '+41 44 668 1800' in INTERNATIONAL format, and as
+ * '044 668 1800' in NATIONAL format. E164 format is as per INTERNATIONAL format
+ * but with no formatting applied, e.g. +41446681800. RFC3966 is as per
+ * INTERNATIONAL format, but with all spaces and other separating symbols
+ * replaced with a hyphen, and with any phone number extension appended with
+ * ';ext='.
  *
+ * Note: If you are considering storing the number in a neutral format, you are
+ * highly advised to use the PhoneNumber class.
  * @enum {number}
  */
 i18n.phonenumbers.PhoneNumberFormat = {
   E164: 0,
   INTERNATIONAL: 1,
-  NATIONAL: 2
+  NATIONAL: 2,
+  RFC3966: 3
 };
 
 
@@ -617,7 +725,7 @@ i18n.phonenumbers.PhoneNumberFormat = {
 i18n.phonenumbers.PhoneNumberType = {
   FIXED_LINE: 0,
   MOBILE: 1,
-  // In some countries (e.g. the USA), it is impossible to distinguish between
+  // In some regions (e.g. the USA), it is impossible to distinguish between
   // fixed-line and mobile numbers by looking at the phone number itself.
   FIXED_LINE_OR_MOBILE: 2,
   // Freephone lines
@@ -634,12 +742,12 @@ i18n.phonenumbers.PhoneNumberType = {
   // here: http://en.wikipedia.org/wiki/Personal_Numbers
   PERSONAL_NUMBER: 7,
   PAGER: 8,
-  // Used for "Universal Access Numbers" or "Company Numbers". They may be
+  // Used for 'Universal Access Numbers' or 'Company Numbers'. They may be
   // further routed to specific offices, but allow one number to be used for a
   // company.
   UAN: 9,
   // A phone number is of type UNKNOWN when it does not fit any of the known
-  // patterns for a specific country.
+  // patterns for a specific region.
   UNKNOWN: 10
 };
 
@@ -812,16 +920,18 @@ i18n.phonenumbers.PhoneNumberUtil.convertAlphaCharactersInNumber =
 
 
 /**
- * Gets the length of the geographical area code from the national_number field
- * of the PhoneNumber object passed in, so that clients could use it to split a
- * national significant number into geographical area code and subscriber
- * number. It works in such a way that the resultant subscriber number should be
- * diallable, at least on some devices. An example of how this could be used:
+ * Gets the length of the geographical area code in the {@code national_number}
+ * field of the PhoneNumber object passed in, so that clients could use it to
+ * split a national significant number into geographical area code and
+ * subscriber number. It works in such a way that the resultant subscriber
+ * number should be diallable, at least on some devices. An example of how this
+ * could be used:
  *
+ * <pre>
  * var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
  * var number = phoneUtil.parse('16502530000', 'US');
  * var nationalSignificantNumber =
- *     i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+ *     phoneUtil.getNationalSignificantNumber(number);
  * var areaCode;
  * var subscriberNumber;
  *
@@ -833,11 +943,12 @@ i18n.phonenumbers.PhoneNumberUtil.convertAlphaCharactersInNumber =
  *   areaCode = '';
  *   subscriberNumber = nationalSignificantNumber;
  * }
+ * </pre>
  *
  * N.B.: area code is a very ambiguous concept, so the I18N team generally
- * recommends against using it for most purposes, but recommends using the more
- * general national_number instead. Read the following carefully before deciding
- * to use this method:
+ * recommends against using it for most purposes. Read the following carefully
+ * before deciding to use this method:
+ *
  *  - geographical area codes change over time, and this method honors those
  * changes; therefore, it doesn't guarantee the stability of the result it
  * produces.
@@ -870,8 +981,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
 
   /** @type {i18n.phonenumbers.PhoneNumberType} */
   var type = this.getNumberTypeHelper_(
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number),
-      metadata);
+      this.getNationalSignificantNumber(number), metadata);
   // Most numbers other than the two types below have to be dialled in full.
   if (type != i18n.phonenumbers.PhoneNumberType.FIXED_LINE &&
       type != i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE) {
@@ -886,14 +996,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
  * Gets the length of the national destination code (NDC) from the PhoneNumber
  * object passed in, so that clients could use it to split a national
  * significant number into NDC and subscriber number. The NDC of a phone number
- * is normally the first group of digit(s) right after the country code when the
- * number is formatted in the international format, if there is a subscriber
- * number part that follows. An example of how this could be used:
+ * is normally the first group of digit(s) right after the country calling code
+ * when the number is formatted in the international format, if there is a
+ * subscriber number part that follows. An example of how this could be used:
  *
+ * <pre>
  * var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
  * var number = phoneUtil.parse('18002530000', 'US');
  * var nationalSignificantNumber =
- *     i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+ *     phoneUtil.getNationalSignificantNumber(number);
  * var nationalDestinationCode;
  * var subscriberNumber;
  *
@@ -908,6 +1019,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
  *   nationalDestinationCode = '';
  *   subscriberNumber = nationalSignificantNumber;
  * }
+ * </pre>
  *
  * Refer to the unittests to see the difference between this function and
  * getLengthOfGeographicalAreaCode().
@@ -939,7 +1051,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfNationalDestinationCode =
       i18n.phonenumbers.PhoneNumberUtil.NON_DIGITS_PATTERN_);
   // The pattern will start with '+COUNTRY_CODE ' so the first group will always
   // be the empty string (before the + symbol) and the second group will be the
-  // country code. The third group will be area code if it's not the last group.
+  // country calling code. The third group will be area code if it is not the
+  // last group.
   // NOTE: On IE the first group that is supposed to be the empty string does
   // not appear in the array of number groups... so make the result on non-IE
   // browsers to be that of IE.
@@ -971,8 +1084,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfNationalDestinationCode =
  * stripping all other characters if removeNonMatches is true.
  *
  * @param {string} number a string of characters representing a phone number.
- * @param {!Object} normalizationReplacements a mapping of characters to what
- *     they should be replaced by in the normalized version of the phone number.
+ * @param {!Object.<string, string>} normalizationReplacements a mapping of
+ *     characters to what they should be replaced by in the normalized version
+ *     of the phone number.
  * @param {boolean} removeNonMatches indicates whether characters that are not
  *     able to be replaced should be stripped from the number. If this is false,
  *     they will be left unchanged in the number.
@@ -1007,8 +1121,7 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_ =
 /**
  * Helper function to check region code is not unknown or null.
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter country code that
- *     denotes the country/region that we want to get the country code for.
+ * @param {?string} regionCode the ISO 3166-1 two-letter region code.
  * @return {boolean} true if region code is valid.
  * @private
  */
@@ -1026,10 +1139,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidRegionCode_ =
  * where they are - although we do format in either 'national' or
  * 'international' format depending on what the client asks for, we do not
  * currently support a more abbreviated format, such as for users in the same
- * "area" who could potentially dial the number without area code. Note that if
- * the phone number has a country code of 0 or an otherwise invalid country
- * code, we cannot work out which formatting rules to apply so we return the
- * national significant number with no formatting applied.
+ * 'area' who could potentially dial the number without area code. Note that if
+ * the phone number has a country calling code of 0 or an otherwise invalid
+ * country calling code, we cannot work out which formatting rules to apply so
+ * we return the national significant number with no formatting applied.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
  *     formatted.
@@ -1043,8 +1156,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.format =
   /** @type {number} */
   var countryCode = number.getCountryCodeOrDefault();
   /** @type {string} */
-  var nationalSignificantNumber = i18n.phonenumbers.PhoneNumberUtil
-      .getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
   if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.E164) {
     // Early exit for E164 case since no formatting of the national number needs
     // to be applied. Extensions are not formatted.
@@ -1053,8 +1165,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.format =
                                       nationalSignificantNumber, '');
   }
   // Note getRegionCodeForCountryCode() is used because formatting information
-  // for countries which share a country code is contained by only one country
-  // for performance reasons. For example, for NANPA countries it will be
+  // for regions which share a country calling code is contained by only one
+  // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
   /** @type {string} */
   var regionCode = this.getRegionCodeForCountryCode(countryCode);
@@ -1063,7 +1175,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.format =
   }
 
   /** @type {string} */
-  var formattedExtension = this.maybeGetFormattedExtension_(number, regionCode);
+  var formattedExtension =
+      this.maybeGetFormattedExtension_(number, regionCode, numberFormat);
   /** @type {string} */
   var formattedNationalNumber =
       this.formatNationalNumber_(nationalSignificantNumber,
@@ -1078,10 +1191,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.format =
 
 /**
  * Formats a phone number in the specified format using client-defined
- * formatting rules. Note that if the phone number has a country code of zero or
- * an otherwise invalid country code, we cannot work out things like whether
- * there should be a national prefix applied, or how to format extensions, so we
- * return the national significant number with no formatting applied.
+ * formatting rules. Note that if the phone number has a country calling code of
+ * zero or an otherwise invalid country calling code, we cannot work out things
+ * like whether there should be a national prefix applied, or how to format
+ * extensions, so we return the national significant number with no formatting
+ * applied.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone  number to be
  *     formatted.
@@ -1095,16 +1209,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
     function(number, numberFormat, userDefinedFormats) {
 
   /** @type {number} */
-  var countryCode = number.getCountryCodeOrDefault();
+  var countryCallingCode = number.getCountryCodeOrDefault();
   /** @type {string} */
-  var nationalSignificantNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
   // Note getRegionCodeForCountryCode() is used because formatting information
-  // for countries which share a country code is contained by only one country
-  // for performance reasons. For example, for NANPA countries it will be
+  // for regions which share a country calling code is contained by only one
+  // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
   /** @type {string} */
-  var regionCode = this.getRegionCodeForCountryCode(countryCode);
+  var regionCode = this.getRegionCodeForCountryCode(countryCallingCode);
   if (!this.isValidRegionCode_(regionCode)) {
     return nationalSignificantNumber;
   }
@@ -1150,13 +1263,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
   }
 
   /** @type {string} */
-  var formattedExtension = this.maybeGetFormattedExtension_(number, regionCode);
+  var formattedExtension =
+      this.maybeGetFormattedExtension_(number, regionCode, numberFormat);
   /** @type {string} */
   var formattedNationalNumber =
       this.formatAccordingToFormats_(nationalSignificantNumber,
                                      userDefinedFormatsCopy,
                                      numberFormat);
-  return this.formatNumberByFormat_(countryCode,
+  return this.formatNumberByFormat_(countryCallingCode,
                                     numberFormat,
                                     formattedNationalNumber,
                                     formattedExtension);
@@ -1165,37 +1279,37 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
 
 /**
  * Formats a phone number in national format for dialing using the carrier as
- * specified in the carrierCode. The carrierCode will always be used regardless
- * of whether the phone number already has a preferred domestic carrier code
- * stored. If carrierCode contains an empty string, return the number in
- * national format without any carrier code.
+ * specified in the {@code carrierCode}. The {@code carrierCode} will always be
+ * used regardless of whether the phone number already has a preferred domestic
+ * carrier code stored. If {@code carrierCode} contains an empty string, returns
+ * the number in national format without any carrier code.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
  *     formatted.
  * @param {string} carrierCode the carrier selection code to be used.
  * @return {string} the formatted phone number in national format for dialing
- *     using the carrier as specified in the carrierCode.
+ *     using the carrier as specified in the {@code carrierCode}.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     formatNationalNumberWithCarrierCode = function(number, carrierCode) {
 
   /** @type {number} */
-  var countryCode = number.getCountryCodeOrDefault();
+  var countryCallingCode = number.getCountryCodeOrDefault();
   /** @type {string} */
-  var nationalSignificantNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
   // Note getRegionCodeForCountryCode() is used because formatting information
-  // for countries which share a country code is contained by only one country
-  // for performance reasons. For example, for NANPA countries it will be
+  // for regions which share a country calling code is contained by only one
+  // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
   /** @type {string} */
-  var regionCode = this.getRegionCodeForCountryCode(countryCode);
+  var regionCode = this.getRegionCodeForCountryCode(countryCallingCode);
   if (!this.isValidRegionCode_(regionCode)) {
     return nationalSignificantNumber;
   }
 
   /** @type {string} */
-  var formattedExtension = this.maybeGetFormattedExtension_(number, regionCode);
+  var formattedExtension = this.maybeGetFormattedExtension_(
+      number, regionCode, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
   /** @type {string} */
   var formattedNationalNumber =
       this.formatNationalNumber_(nationalSignificantNumber,
@@ -1203,7 +1317,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
                                  i18n.phonenumbers.PhoneNumberFormat.NATIONAL,
                                  carrierCode);
   return this.formatNumberByFormat_(
-      countryCode, i18n.phonenumbers.PhoneNumberFormat.NATIONAL,
+      countryCallingCode, i18n.phonenumbers.PhoneNumberFormat.NATIONAL,
       formattedNationalNumber, formattedExtension);
 };
 
@@ -1211,14 +1325,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 /**
  * Formats a phone number in national format for dialing using the carrier as
  * specified in the preferred_domestic_carrier_code field of the PhoneNumber
- * object passed in. If that is missing, use the fallbackCarrierCode passed in
- * instead. If there is no preferred_domestic_carrier_code, and the
- * fallbackCarrierCode contains an empty string, return the number in national
- * format without any carrier code.
+ * object passed in. If that is missing, use the {@code fallbackCarrierCode}
+ * passed in instead. If there is no {@code preferred_domestic_carrier_code},
+ * and the {@code fallbackCarrierCode} contains an empty string, return the
+ * number in national format without any carrier code.
  *
- * Use formatNationalNumberWithCarrierCode instead if the carrier code passed in
- * should take precedence over the number's preferred_domestic_carrier_code when
- * formatting.
+ * <p>Use {@link #formatNationalNumberWithCarrierCode} instead if the carrier
+ * code passed in should take precedence over the number's
+ * {@code preferred_domestic_carrier_code} when formatting.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
  *     formatted.
@@ -1226,7 +1340,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
  *     none is found in the phone number itself.
  * @return {string} the formatted phone number in national format for dialing
  *     using the number's preferred_domestic_carrier_code, or the
- *     fallbackCarrierCode passed in if none is found.
+ *     {@code fallbackCarrierCode} passed in if none is found.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     formatNationalNumberWithPreferredCarrierCode = function(
@@ -1240,58 +1354,60 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 
 
 /**
- * Formats a phone number for out-of-country dialing purpose. If no
- * countryCallingFrom is supplied, we format the number in its INTERNATIONAL
- * format. If the countryCallingFrom is the same as the country where the number
- * is from, then NATIONAL formatting will be applied.
+ * Formats a phone number for out-of-country dialing purposes. If no
+ * regionCallingFrom is supplied, we format the number in its INTERNATIONAL
+ * format. If the regionCallingFrom is the same as the region where the
+ * number is from, then NATIONAL formatting will be applied.
  *
- * If the number itself has a country code of zero or an otherwise invalid
- * country code, then we return the number with no formatting applied.
+ * <p>If the number itself has a country calling code of zero or an otherwise
+ * invalid country calling code, then we return the number with no formatting
+ * applied.
  *
- * Note this function takes care of the case for calling inside of NANPA and
- * between Russia and Kazakhstan (who share the same country code). In those
- * cases, no international prefix is used. For countries which have multiple
+ * <p>Note this function takes care of the case for calling inside of NANPA and
+ * between Russia and Kazakhstan (who share the same country calling code). In
+ * those cases, no international prefix is used. For regions which have multiple
  * international prefixes, the number in its INTERNATIONAL format will be
  * returned instead.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
  *     formatted.
- * @param {string} countryCallingFrom the ISO 3166-1 two-letter country code
- *     that denotes the foreign country where the call is being placed.
+ * @param {string} regionCallingFrom the ISO 3166-1 two-letter region code
+ *     that denotes the region where the call is being placed.
  * @return {string} the formatted phone number.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
-    function(number, countryCallingFrom) {
+    function(number, regionCallingFrom) {
 
-  if (!this.isValidRegionCode_(countryCallingFrom)) {
+  if (!this.isValidRegionCode_(regionCallingFrom)) {
     return this.format(number,
                        i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
   }
   /** @type {number} */
-  var countryCode = number.getCountryCodeOrDefault();
+  var countryCallingCode = number.getCountryCodeOrDefault();
   /** @type {string} */
-  var regionCode = this.getRegionCodeForCountryCode(countryCode);
+  var regionCode = this.getRegionCodeForCountryCode(countryCallingCode);
   /** @type {string} */
-  var nationalSignificantNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
   if (!this.isValidRegionCode_(regionCode)) {
     return nationalSignificantNumber;
   }
-  if (countryCode == i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_) {
-    if (this.isNANPACountry(countryCallingFrom)) {
-      // For NANPA countries, return the national format for these countries but
-      // prefix it with the country code.
-      return countryCode + ' ' +
+  if (countryCallingCode ==
+          i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_) {
+    if (this.isNANPACountry(regionCallingFrom)) {
+      // For NANPA regions, return the national format for these regions but
+      // prefix it with the country calling code.
+      return countryCallingCode + ' ' +
           this.format(number, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
     }
-  } else if (countryCode == this.getCountryCodeForRegion(countryCallingFrom)) {
-    // For countries that share a country calling code, the country code need
-    // not be dialled. This also applies when dialling within a country, so this
-    // if clause covers both these cases. Technically this is the case for
-    // dialling from la Reunion to other overseas departments of France (French
+  } else if (countryCallingCode ==
+                 this.getCountryCodeForRegion(regionCallingFrom)) {
+    // For regions that share a country calling code, the country calling code
+    // need not be dialled. This also applies when dialling within a region, so
+    // this if clause covers both these cases. Technically this is the case for
+    // dialling from La Reunion to other overseas departments of France (French
     // Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover
     // this edge case for now and for those cases return the version including
-    // country code. Details here:
+    // country calling code. Details here:
     // http://www.petitfute.com/voyage/225-info-pratiques-reunion
     return this.format(number,
                        i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
@@ -1301,13 +1417,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
       this.formatNationalNumber_(nationalSignificantNumber, regionCode,
           i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
   /** @type {i18n.phonenumbers.PhoneMetadata} */
-  var metadata = this.getMetadataForRegion(countryCallingFrom);
+  var metadata = this.getMetadataForRegion(regionCallingFrom);
   /** @type {string} */
   var internationalPrefix = metadata.getInternationalPrefixOrDefault();
   /** @type {string} */
-  var formattedExtension = this.maybeGetFormattedExtension_(number, regionCode);
+  var formattedExtension = this.maybeGetFormattedExtension_(
+      number, regionCode, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
 
-  // For countries that have multiple international prefixes, the international
+  // For regions that have multiple international prefixes, the international
   // format of the number is returned, unless there is a preferred international
   // prefix.
   /** @type {string} */
@@ -1321,11 +1438,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
         metadata.getPreferredInternationalPrefixOrDefault();
   }
 
-  return internationalPrefixForFormatting != '' ?
-      internationalPrefixForFormatting + ' ' + countryCode + ' ' +
+  return internationalPrefixForFormatting.length > 0 ?
+      internationalPrefixForFormatting + ' ' + countryCallingCode + ' ' +
           formattedNationalNumber + formattedExtension :
       this.formatNumberByFormat_(
-          countryCode, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL,
+          countryCallingCode, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL,
           formattedNationalNumber, formattedExtension);
 };
 
@@ -1336,14 +1453,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
  * field of the PhoneNumber object passed in. If such information is missing,
  * the number will be formatted into the NATIONAL format by default.
  *
- * @param {i18n.phonenumbers.PhoneNumber} number the PhoneNumber that needs to
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number that needs to
  *     be formatted in its original number format.
- * @param {string} countryCallingFrom the country whose IDD needs to be prefixed
+ * @param {string} regionCallingFrom the region whose IDD needs to be prefixed
  *     if the original number has one.
  * @return {string} the formatted phone number in its original number format.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
-    function(number, countryCallingFrom) {
+    function(number, regionCallingFrom) {
 
   if (!number.hasCountryCodeSource()) {
     return this.format(number, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
@@ -1354,7 +1471,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
       return this.format(number,
           i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
     case i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_IDD:
-      return this.formatOutOfCountryCallingNumber(number, countryCallingFrom);
+      return this.formatOutOfCountryCallingNumber(number, regionCallingFrom);
     case i18n.phonenumbers.PhoneNumber.CountryCodeSource
         .FROM_NUMBER_WITHOUT_PLUS_SIGN:
       return this.format(number,
@@ -1367,6 +1484,124 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
 
 
 /**
+ * Formats a phone number for out-of-country dialing purposes.
+ *
+ * Note that in this version, if the number was entered originally using alpha
+ * characters and this version of the number is stored in raw_input, this
+ * representation of the number will be used rather than the digit
+ * representation. Grouping information, as specified by characters such as '-'
+ * and ' ', will be retained.
+ *
+ * <p><b>Caveats:</b></p>
+ * <ul>
+ * <li>This will not produce good results if the country calling code is both
+ * present in the raw input _and_ is the start of the national number. This is
+ * not a problem in the regions which typically use alpha numbers.
+ * <li>This will also not produce good results if the raw input has any grouping
+ * information within the first three digits of the national number, and if the
+ * function needs to strip preceding digits/words in the raw input before these
+ * digits. Normally people group the first three digits together so this is not
+ * a huge problem - and will be fixed if it proves to be so.
+ * </ul>
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number that needs to
+ *     be formatted.
+ * @param {string} regionCallingFrom the region where the call is being placed.
+ * @return {string} the formatted phone number.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.
+    formatOutOfCountryKeepingAlphaChars = function(number, regionCallingFrom) {
+  /** @type {string} */
+  var rawInput = number.getRawInputOrDefault();
+  // If there is no raw input, then we can't keep alpha characters because there
+  // aren't any. In this case, we return formatOutOfCountryCallingNumber.
+  if (rawInput.length == 0) {
+    return this.formatOutOfCountryCallingNumber(number, regionCallingFrom);
+  }
+  /** @type {number} */
+  var countryCode = number.getCountryCodeOrDefault();
+  /** @type {string} */
+  var regionCode = this.getRegionCodeForCountryCode(countryCode);
+  if (!this.isValidRegionCode_(regionCode)) {
+    return rawInput;
+  }
+  // Strip any prefix such as country calling code, IDD, that was present. We do
+  // this by comparing the number in raw_input with the parsed number. To do
+  // this, first we normalize punctuation. We retain number grouping symbols
+  // such as ' ' only.
+  rawInput = i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(
+      rawInput,
+      i18n.phonenumbers.PhoneNumberUtil.ALL_PLUS_NUMBER_GROUPING_SYMBOLS_,
+      true);
+  // Now we trim everything before the first three digits in the parsed number.
+  // We choose three because all valid alpha numbers have 3 digits at the start
+  // - if it does not, then we don't trim anything at all. Similarly, if the
+  // national number was less than three digits, we don't trim anything at all.
+  /** @type {string} */
+  var nationalNumber = this.getNationalSignificantNumber(number);
+  if (nationalNumber.length > 3) {
+    /** @type {number} */
+    var firstNationalNumberDigit =
+        rawInput.indexOf(nationalNumber.substring(0, 3));
+    if (firstNationalNumberDigit != -1) {
+      rawInput = rawInput.substring(firstNationalNumberDigit);
+    }
+  }
+  /** @type {i18n.phonenumbers.PhoneMetadata} */
+  var metadata = this.getMetadataForRegion(regionCallingFrom);
+  if (countryCode == i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_) {
+    if (this.isNANPACountry(regionCallingFrom)) {
+      return countryCode + ' ' + rawInput;
+    }
+  } else if (countryCode == this.getCountryCodeForRegion(regionCallingFrom)) {
+    // Here we copy the formatting rules so we can modify the pattern we expect
+    // to match against.
+    /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
+    var availableFormats = [];
+    for (var i = 0; i < metadata.numberFormatArray().length; ++i) {
+      /** @type {i18n.phonenumbers.NumberFormat} */
+      var newFormat = metadata.numberFormatArray()[i].clone();
+      // The first group is the first group of digits that the user determined.
+      newFormat.setPattern('(\\d+)(.*)');
+      // Here we just concatenate them back together after the national prefix
+      // has been fixed.
+      newFormat.setFormat('$1$2');
+      availableFormats.push(newFormat);
+    }
+    // Now we format using these patterns instead of the default pattern, but
+    // with the national prefix prefixed if necessary, by choosing the format
+    // rule based on the leading digits present in the unformatted national
+    // number. This will not work in the cases where the pattern (and not the
+    // leading digits) decide whether a national prefix needs to be used, since
+    // we have overridden the pattern to match anything, but that is not the
+    // case in the metadata to date.
+    return this.formatAccordingToFormats_(rawInput, availableFormats,
+        i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
+  }
+  /** @type {string} */
+  var internationalPrefix = metadata.getInternationalPrefixOrDefault();
+  // For countries that have multiple international prefixes, the international
+  // format of the number is returned, unless there is a preferred international
+  // prefix.
+  /** @type {string} */
+  var internationalPrefixForFormatting =
+      i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+          i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_,
+          internationalPrefix) ?
+      internationalPrefix : metadata.getPreferredInternationalPrefixOrDefault();
+  /** @type {string} */
+  var formattedExtension = this.maybeGetFormattedExtension_(
+      number, regionCode, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
+  return internationalPrefixForFormatting.length > 0 ?
+      internationalPrefixForFormatting + ' ' + countryCode + ' ' +
+          rawInput + formattedExtension :
+      this.formatNumberByFormat_(
+          countryCode, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL,
+          rawInput, formattedExtension);
+};
+
+
+/**
  * Gets the national significant number of the a phone number. Note a national
  * significant number doesn't contain a national prefix or any formatting.
  *
@@ -1375,21 +1610,19 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
  * @return {string} the national significant number of the PhoneNumber object
  *     passed in.
  */
-i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber =
+i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
     function(number) {
 
   // The leading zero in the national (significant) number of an Italian phone
   // number has a special meaning. Unlike the rest of the world, it indicates
   // the number is a landline number. There have been plans to migrate landline
   // numbers to start with the digit two since December 2000, but it has not yet
-  // happened. See http://en.wikipedia.org/wiki/%2B39 for more details.
-  // Other countries such as Cote d'Ivoire and Gabon use this for their mobile
-  // numbers.
+  // happened. See http://en.wikipedia.org/wiki/%2B39 for more details. Other
+  // regions such as Cote d'Ivoire and Gabon use this for their mobile numbers.
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
-      i18n.phonenumbers.PhoneNumberUtil.isLeadingZeroCountry(
-          number.getCountryCodeOrDefault())) {
+      this.isLeadingZeroPossible(number.getCountryCodeOrDefault())) {
     return '0' + nationalNumber;
   }
   return nationalNumber;
@@ -1399,7 +1632,7 @@ i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber =
 /**
  * A helper function that is used by format and formatByPattern.
  *
- * @param {number} countryCode the country calling code.
+ * @param {number} countryCallingCode the country calling code.
  * @param {i18n.phonenumbers.PhoneNumberFormat} numberFormat the format the
  *     phone number should be formatted into.
  * @param {string} formattedNationalNumber
@@ -1408,16 +1641,19 @@ i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber =
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberByFormat_ =
-    function(countryCode, numberFormat,
+    function(countryCallingCode, numberFormat,
              formattedNationalNumber, formattedExtension) {
 
   switch (numberFormat) {
     case i18n.phonenumbers.PhoneNumberFormat.E164:
-      return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCode +
+      return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCallingCode +
           formattedNationalNumber + formattedExtension;
     case i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL:
-      return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCode + ' ' +
-          formattedNationalNumber + formattedExtension;
+      return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCallingCode +
+          ' ' + formattedNationalNumber + formattedExtension;
+    case i18n.phonenumbers.PhoneNumberFormat.RFC3966:
+      return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCallingCode +
+          '-' + formattedNationalNumber + formattedExtension;
     case i18n.phonenumbers.PhoneNumberFormat.NATIONAL:
     default:
       return formattedNationalNumber + formattedExtension;
@@ -1426,14 +1662,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberByFormat_ =
 
 
 /**
- * Note in some countries, the national number can be written in two completely
+ * Note in some regions, the national number can be written in two completely
  * different ways depending on whether it forms part of the NATIONAL format or
  * INTERNATIONAL format. The numberFormat parameter here is used to specify
  * which format to use for those cases. If a carrierCode is specified, this will
  * be inserted into the formatted string to replace $CC.
  *
  * @param {string} number a string of characters representing a phone number.
- * @param {string} regionCode the ISO 3166-1 two-letter country code.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code.
  * @param {i18n.phonenumbers.PhoneNumberFormat} numberFormat the format the
  *     phone number should be formatted into.
  * @param {string=} opt_carrierCode
@@ -1454,8 +1690,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNationalNumber_ =
       (intlNumberFormats.length == 0 ||
           numberFormat == i18n.phonenumbers.PhoneNumberFormat.NATIONAL) ?
       metadata.numberFormatArray() : metadata.intlNumberFormatArray();
-  return this.formatAccordingToFormats_(number, availableFormats, numberFormat,
-                                        opt_carrierCode);
+  /** @type {string} */
+  var formattedNationalNumber = this.formatAccordingToFormats_(
+      number, availableFormats, numberFormat, opt_carrierCode);
+  if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.RFC3966) {
+    formattedNationalNumber = formattedNationalNumber.replace(
+        i18n.phonenumbers.PhoneNumberUtil.SEPARATOR_PATTERN_, '-');
+  }
+  return formattedNationalNumber;
 };
 
 
@@ -1489,7 +1731,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatAccordingToFormats_ =
         // detailed.
         nationalNumber
             .search(numFormat.getLeadingDigitsPattern(size - 1)) == 0) {
-      /** @type {RegExp} */
+      /** @type {!RegExp} */
       var patternToMatch = new RegExp(numFormat.getPattern());
       if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(patternToMatch,
                                                              nationalNumber)) {
@@ -1507,8 +1749,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatAccordingToFormats_ =
           var carrierCodeFormattingRule = domesticCarrierCodeFormattingRule
               .replace(i18n.phonenumbers.PhoneNumberUtil.CC_PATTERN_,
                        opt_carrierCode);
-          // Now replace the $FG in the formatting rule with the first group
-          // and the carrier code combined in the appropriate way.
+          // Now replace the $FG in the formatting rule with the first group and
+          // the carrier code combined in the appropriate way.
           numberFormatRule = numberFormatRule.replace(
               i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_,
               carrierCodeFormattingRule);
@@ -1538,12 +1780,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatAccordingToFormats_ =
 
 
 /**
- * Gets a valid number for the specified country.
+ * Gets a valid number for the specified region.
  *
- * @param {string} regionCode the ISO 3166-1 two-letter country code that
- *     denotes the country for which an example number is needed.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code that
+ *     denotes the region for which an example number is needed.
  * @return {i18n.phonenumbers.PhoneNumber} a valid fixed-line number for the
- *     specified country. Returns null when the metadata does not contain such
+ *     specified region. Returns null when the metadata does not contain such
  *     information.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumber =
@@ -1555,14 +1797,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumber =
 
 
 /**
- * Gets a valid number, if any, for the specified country and number type.
+ * Gets a valid number for the specified region and number type.
  *
- * @param {string} regionCode the ISO 3166-1 two-letter country code that
- *     denotes the country for which an example number is needed.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code that
+ *     denotes the region for which an example number is needed.
  * @param {i18n.phonenumbers.PhoneNumberType} type the type of number that is
  *     needed.
  * @return {i18n.phonenumbers.PhoneNumber} a valid number for the specified
- *     country and type. Returns null when the metadata does not contain such
+ *     region and type. Returns null when the metadata does not contain such
  *     information.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForType =
@@ -1587,16 +1829,22 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForType =
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the PhoneNumber that might have
  *     an extension.
- * @param {string} regionCode the ISO 3166-1 two-letter country code.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code.
+ * @param {i18n.phonenumbers.PhoneNumberFormat} numberFormat the format the
+ *     phone number should be formatted into.
  * @return {string} the formatted extension if any.
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.maybeGetFormattedExtension_ =
-    function(number, regionCode) {
+    function(number, regionCode, numberFormat) {
 
-  if (!number.hasExtension()) {
+  if (!number.hasExtension() || number.getExtension().length == 0) {
     return '';
   } else {
+    if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.RFC3966) {
+      return i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
+          number.getExtension();
+    }
     return this.formatExtension_(number.getExtensionOrDefault(), regionCode);
   }
 };
@@ -1605,10 +1853,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeGetFormattedExtension_ =
 /**
  * Formats the extension part of the phone number by prefixing it with the
  * appropriate extension prefix. This will be the default extension prefix,
- * unless overridden by a preferred extension prefix for this country.
+ * unless overridden by a preferred extension prefix for this region.
  *
  * @param {string} extensionDigits the extension digits.
- * @param {string} regionCode the ISO 3166-1 two-letter country code.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code.
  * @return {string} the formatted extension.
  * @private
  */
@@ -1677,8 +1925,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberType =
     return i18n.phonenumbers.PhoneNumberType.UNKNOWN;
   }
   /** @type {string} */
-  var nationalSignificantNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
   return this.getNumberTypeHelper_(nationalSignificantNumber,
       this.getMetadataForRegion(regionCode));
 };
@@ -1757,7 +2004,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getMetadataForRegion =
   }
   regionCode = regionCode.toUpperCase();
   /** @type {i18n.phonenumbers.PhoneMetadata} */
-  var metadata = this.countryToMetadata[regionCode];
+  var metadata = this.regionToMetadataMap[regionCode];
   if (metadata == null) {
     /** @type {goog.proto2.PbLiteSerializer} */
     var serializer = new goog.proto2.PbLiteSerializer();
@@ -1770,7 +2017,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getMetadataForRegion =
     metadata = /** @type {i18n.phonenumbers.PhoneMetadata} */ (
         serializer.deserialize(i18n.phonenumbers.PhoneMetadata.getDescriptor(),
             metadataSerialized));
-    this.countryToMetadata[regionCode] = metadata;
+    this.regionToMetadataMap[regionCode] = metadata;
   }
   return metadata;
 };
@@ -1786,9 +2033,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
     function(nationalNumber, numberDesc) {
 
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-      numberDesc.getPossibleNumberPattern(), nationalNumber) &&
+      numberDesc.getPossibleNumberPatternOrDefault(), nationalNumber) &&
       i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-          numberDesc.getNationalNumberPattern(), nationalNumber);
+          numberDesc.getNationalNumberPatternOrDefault(), nationalNumber);
 };
 
 
@@ -1813,16 +2060,16 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumber = function(number) {
 /**
  * Tests whether a phone number is valid for a certain region. Note this doesn't
  * verify the number is actually in use, which is impossible to tell by just
- * looking at a number itself. If the country code is not the same as the
- * country code for the region, this immediately exits with false. After this,
- * the specific number pattern rules for the region are examined. This is useful
- * for determining for example whether a particular number is valid for Canada,
- * rather than just a valid NANPA number.
+ * looking at a number itself. If the country calling code is not the same as
+ * the country calling code for the region, this immediately exits with false.
+ * After this, the specific number pattern rules for the region are examined.
+ * This is useful for determining for example whether a particular number is
+ * valid for Canada, rather than just a valid NANPA number.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number that we want
  *     to validate.
- * @param {string} regionCode the ISO 3166-1 two-letter country code that
- *     denotes the region/country that we want to validate the phone number for.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code that
+ *     denotes the region that we want to validate the phone number for.
  * @return {boolean} a boolean that indicates whether the number is of a valid
  *     pattern.
  */
@@ -1838,12 +2085,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumberForRegion =
   /** @type {i18n.phonenumbers.PhoneNumberDesc} */
   var generalNumDesc = metadata.getGeneralDesc();
   /** @type {string} */
-  var nationalSignificantNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
 
-  // For countries where we don't have metadata for PhoneNumberDesc, we treat
-  // any number passed in as a valid number if its national significant number
-  // is between the minimum and maximum lengths defined by ITU for a national
+  // For regions where we don't have metadata for PhoneNumberDesc, we treat any
+  // number passed in as a valid number if its national significant number is
+  // between the minimum and maximum lengths defined by ITU for a national
   // significant number.
   if (!generalNumDesc.hasNationalNumberPattern()) {
     /** @type {number} */
@@ -1858,13 +2104,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumberForRegion =
 
 
 /**
- * Returns the country/region where a phone number is from. This could be used
- * for geo-coding in the country/region level.
+ * Returns the region where a phone number is from. This could be used for
+ * geocoding at the region level.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number whose origin
  *     we want to know.
- * @return {?string} the country/region where the phone number is from, or null
- *     if no country matches this calling code.
+ * @return {?string} the region where the phone number is from, or null
+ *     if no region matches this calling code.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForNumber =
     function(number) {
@@ -1898,7 +2144,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     getRegionCodeForNumberFromRegionList_ = function(number, regionCodes) {
 
   /** @type {string} */
-  var nationalNumber = '' + number.getNationalNumber();
+  var nationalNumber = this.getNationalSignificantNumber(number);
   /** @type {string} */
   var regionCode;
   /** @type {number} */
@@ -1922,20 +2168,20 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 
 
 /**
- * Returns the region code that matches the specific country code. In the case
- * of no region code being found, ZZ will be returned. In the case of multiple
- * regions, the one designated in the metadata as the "main" country for this
- * calling code will be returned.
+ * Returns the region code that matches the specific country calling code. In
+ * the case of no region code being found, ZZ will be returned. In the case of
+ * multiple regions, the one designated in the metadata as the 'main' region for
+ * this calling code will be returned.
  *
- * @param {number} countryCode the country calling code.
+ * @param {number} countryCallingCode the country calling code.
  * @return {string}
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForCountryCode =
-    function(countryCode) {
+    function(countryCallingCode) {
 
   /** @type {Array.<string>} */
   var regionCodes =
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCode];
+      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCallingCode];
   return regionCodes == null ?
       i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ : regionCodes[0];
 };
@@ -1945,9 +2191,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForCountryCode =
  * Returns the country calling code for a specific region. For example, this
  * would be 1 for the United States, and 64 for New Zealand.
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter country code that
- *     denotes the country/region that we want to get the country code for.
- * @return {number} the country calling code for the country/region denoted by
+ * @param {?string} regionCode the ISO 3166-1 two-letter region code that
+ *     denotes the region that we want to get the country calling code for.
+ * @return {number} the country calling code for the region denoted by
  *     regionCode.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForRegion =
@@ -1968,20 +2214,20 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForRegion =
 /**
  * Returns the national dialling prefix for a specific region. For example, this
  * would be 1 for the United States, and 0 for New Zealand. Set stripNonDigits
- * to true to strip symbols like "~" (which indicates a wait for a dialling
+ * to true to strip symbols like '~' (which indicates a wait for a dialling
  * tone) from the prefix returned. If no national prefix is present, we return
  * null.
  *
- * Warning: Do not use this method for do-your-own formatting - for some
- * countries, the national dialling prefix is used only for certain types of
+ * <p>Warning: Do not use this method for do-your-own formatting - for some
+ * regions, the national dialling prefix is used only for certain types of
  * numbers. Use the library's formatting functions to prefix the national prefix
  * when required.
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter country code that
- *     denotes the country/region that we want to get the dialling prefix for.
+ * @param {?string} regionCode the ISO 3166-1 two-letter region code that
+ *     denotes the region that we want to get the dialling prefix for.
  * @param {boolean} stripNonDigits true to strip non-digits from the national
  *     dialling prefix.
- * @return {?string} the dialling prefix for the country/region denoted by
+ * @return {?string} the dialling prefix for the region denoted by
  *     regionCode.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
@@ -2010,11 +2256,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
 
 
 /**
- * Check if a country is one of the countries under the North American Numbering
- * Plan Administration (NANPA).
+ * Checks if this is a region under the North American Numbering Plan
+ * Administration (NANPA).
  *
- * @param {string} regionCode the ISO 3166-1 two-letter country code.
- * @return {boolean} true if regionCode is one of the countries under NANPA.
+ * @param {string} regionCode the ISO 3166-1 two-letter region code.
+ * @return {boolean} true if regionCode is one of the regions under NANPA.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
     function(regionCode) {
@@ -2027,22 +2273,52 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
 
 
 /**
- * Check whether countryCode represents the country calling code from a country
+ * Checks whether countryCode represents the country calling code from a region
  * whose national significant number could contain a leading zero. An example of
- * such a country is Italy.
+ * such a region is Italy. Returns false if no metadata for the country is
+ * found.
  *
- * @param {number} countryCode the country calling code.
+ * @param {number} countryCallingCode the country calling code.
  * @return {boolean}
  */
-i18n.phonenumbers.PhoneNumberUtil.isLeadingZeroCountry = function(countryCode) {
-  return countryCode in
-      i18n.phonenumbers.PhoneNumberUtil.LEADING_ZERO_COUNTRIES_;
+i18n.phonenumbers.PhoneNumberUtil.prototype.isLeadingZeroPossible =
+    function(countryCallingCode) {
+  /** @type {i18n.phonenumbers.PhoneMetadata} */
+  var mainMetadataForCallingCode = this.getMetadataForRegion(
+      this.getRegionCodeForCountryCode(countryCallingCode));
+  return mainMetadataForCallingCode != null &&
+      mainMetadataForCallingCode.getLeadingZeroPossibleOrDefault();
 };
 
 
 /**
- * Convenience wrapper around isPossibleNumberWithReason. Instead of returning
- * the reason for failure, this method returns a boolean value.
+ * Checks if the number is a valid vanity (alpha) number such as 800 MICROSOFT.
+ * A valid vanity number will start with at least 3 digits and will have three
+ * or more alpha characters. This does not do region-specific checks - to work
+ * out if this number is actually valid for a region, it should be parsed and
+ * methods such as {@link #isPossibleNumberWithReason} and
+ * {@link #isValidNumber} should be used.
+ *
+ * @param {string} number the number that needs to be checked.
+ * @return {boolean} true if the number is a valid vanity number.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.isAlphaNumber = function(number) {
+  if (!i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber(number)) {
+    // Number is too short, or doesn't match the basic phone number pattern.
+    return false;
+  }
+  /** @type {!goog.string.StringBuffer} */
+  var strippedNumber = new goog.string.StringBuffer(number);
+  this.maybeStripExtension(strippedNumber);
+  return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+      i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_PHONE_PATTERN_,
+      strippedNumber.toString());
+};
+
+
+/**
+ * Convenience wrapper around {@link #isPossibleNumberWithReason}. Instead of
+ * returning the reason for failure, this method returns a boolean value.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked.
@@ -2057,25 +2333,50 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
 
 
 /**
+ * Helper method to check a number against a particular pattern and determine
+ * whether it matches, or is too short or too long. Currently, if a number
+ * pattern suggests that numbers of length 7 and 10 are possible, and a number
+ * in between these possible lengths is entered, such as of length 8, this will
+ * return TOO_LONG.
+ *
+ * @param {string} numberPattern
+ * @param {string} number
+ * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthAgainstPattern_ =
+    function(numberPattern, number) {
+  if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(numberPattern,
+                                                         number)) {
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+  }
+  if (number.search(numberPattern) == 0) {
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
+  } else {
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT;
+  }
+};
+
+
+/**
  * Check whether a phone number is a possible number. It provides a more lenient
- * check than isValidNumber in the following sense:
- *
- * 1. It only checks the length of phone numbers. In particular, it doesn't
+ * check than {@link #isValidNumber} in the following sense:
+ * <ol>
+ * <li>It only checks the length of phone numbers. In particular, it doesn't
  * check starting digits of the number.
- *
- * 2. It doesn't attempt to figure out the type of the number, but uses general
- * rules which applies to all types of phone numbers in a country. Therefore, it
+ * <li>It doesn't attempt to figure out the type of the number, but uses general
+ * rules which applies to all types of phone numbers in a region. Therefore, it
  * is much faster than isValidNumber.
- *
- * 3. For fixed line numbers, many countries have the concept of area code,
- * which together with subscriber number constitute the national significant
- * number. It is sometimes okay to dial the subscriber number only when dialing
- * in the same area. This function will return true if the
- * subscriber-number-only version is passed in. On the other hand, because
- * isValidNumber validates using information on both starting digits (for fixed
- * line numbers, that would most likely be area codes) and length (obviously
- * includes the length of area codes for fixed line numbers), it will return
- * false for the subscriber-number-only version.
+ * <li>For fixed line numbers, many regions have the concept of area code, which
+ * together with subscriber number constitute the national significant number.
+ * It is sometimes okay to dial the subscriber number only when dialing in the
+ * same area. This function will return true if the subscriber-number-only
+ * version is passed in. On the other hand, because isValidNumber validates
+ * using information on both starting digits (for fixed line numbers, that would
+ * most likely be area codes) and length (obviously includes the length of area
+ * codes for fixed line numbers), it will return false for the
+ * subscriber-number-only version.
+ * </ol>
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked.
@@ -2085,22 +2386,21 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
     function(number) {
 
+  /** @type {string} */
+  var nationalNumber = this.getNationalSignificantNumber(number);
   /** @type {number} */
   var countryCode = number.getCountryCodeOrDefault();
   // Note: For Russian Fed and NANPA numbers, we just use the rules from the
   // default region (US or Russia) since the getRegionCodeForNumber will not
   // work if the number is possible but not valid. This would need to be
   // revisited if the possible number pattern ever differed between various
-  // countries within those plans.
+  // regions within those plans.
   /** @type {string} */
   var regionCode = this.getRegionCodeForCountryCode(countryCode);
   if (!this.isValidRegionCode_(regionCode)) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult
         .INVALID_COUNTRY_CODE;
   }
-  /** @type {string} */
-  var nationalNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
   /** @type {i18n.phonenumbers.PhoneNumberDesc} */
   var generalNumDesc = this.getMetadataForRegion(regionCode).getGeneralDesc();
   // Handling case of numbers with no metadata.
@@ -2119,37 +2419,28 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
   /** @type {string} */
   var possibleNumberPattern =
       generalNumDesc.getPossibleNumberPatternOrDefault();
-  /** @type {Array.<string> } */
-  var matchedGroups = nationalNumber.match('^' + possibleNumberPattern);
-  /** @type {string} */
-  var firstGroup = matchedGroups ? matchedGroups[0] : '';
-  if (firstGroup.length > 0) {
-    return (firstGroup.length == nationalNumber.length) ?
-        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
-        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
-  } else {
-    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT;
-  }
+  return this.testNumberLengthAgainstPattern_(possibleNumberPattern,
+                                              nationalNumber);
 };
 
 
 /**
  * Check whether a phone number is a possible number given a number in the form
- * of a string, and the country where the number could be dialed from. It
- * provides a more lenient check than isValidNumber. See
- * isPossibleNumber(number) for details.
+ * of a string, and the region where the number could be dialed from. It
+ * provides a more lenient check than {@link #isValidNumber}. See
+ * {@link #isPossibleNumber} for details.
  *
- * This method first parses the number, then invokes
- * isPossibleNumber(PhoneNumber number) with the resultant PhoneNumber object.
+ * <p>This method first parses the number, then invokes
+ * {@link #isPossibleNumber} with the resultant PhoneNumber object.
  *
  * @param {string} number the number that needs to be checked, in the form of a
  *     string.
- * @param {string} countryDialingFrom the ISO 3166-1 two-letter country code
- *     that denotes the country that we are expecting the number to be dialed
- *     from. Note this is different from the country where the number belongs.
+ * @param {string} regionDialingFrom the ISO 3166-1 two-letter region code that
+ *     denotes the region that we are expecting the number to be dialed from.
+ *     Note this is different from the region where the number belongs.
  *     For example, the number +1 650 253 0000 is a number that belongs to US.
- *     When written in this form, it could be dialed from any country. When it
- *     is written as 00 1 650 253 0000, it could be dialed from any country
+ *     When written in this form, it could be dialed from any region. When it
+ *     is written as 00 1 650 253 0000, it could be dialed from any region
  *     which uses an international dialling prefix of 00. When it is written as
  *     650 253 0000, it could only be dialed from within the US, and when
  *     written as 253 0000, it could only be dialed from within a smaller area
@@ -2157,10 +2448,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  * @return {boolean} true if the number is possible.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberString =
-    function(number, countryDialingFrom) {
+    function(number, regionDialingFrom) {
 
   try {
-    return this.isPossibleNumber(this.parse(number, countryDialingFrom));
+    return this.isPossibleNumber(this.parse(number, regionDialingFrom));
   } catch (e) {
     return false;
   }
@@ -2201,10 +2492,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.truncateTooLongNumber =
 
 
 /**
- * Extracts country code from fullNumber, returns it and places the remaining
- * number in nationalNumber. It assumes that the leading plus sign or IDD has
- * already been removed. Returns 0 if fullNumber doesn't start with a valid
- * country code, and leaves nationalNumber unmodified.
+ * Extracts country calling code from fullNumber, returns it and places the
+ * remaining number in nationalNumber. It assumes that the leading plus sign or
+ * IDD has already been removed. Returns 0 if fullNumber doesn't start with a
+ * valid country calling code, and leaves nationalNumber unmodified.
  *
  * @param {!goog.string.StringBuffer} fullNumber
  * @param {!goog.string.StringBuffer} nationalNumber
@@ -2234,40 +2525,43 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
 
 
 /**
- * Tries to extract a country code from a number. This method will return zero
- * if no country code is considered to be present. Country codes are extracted
- * in the following ways:
- *  - by stripping the international dialing prefix of the country the person is
+ * Tries to extract a country calling code from a number. This method will
+ * return zero if no country calling code is considered to be present. Country
+ * calling codes are extracted in the following ways:
+ * <ul>
+ * <li>by stripping the international dialing prefix of the region the person is
  * dialing from, if this is present in the number, and looking at the next
  * digits
- *  - by stripping the '+' sign if present and then looking at the next digits
- *  - by comparing the start of the number and the country code of the default
- * region. If the number is not considered possible for the numbering plan of
- * the default region initially, but starts with the country code of this
- * region, validation will be reattempted after stripping this country code. If
- * this number is considered a possible number, then the first digits will be
- * considered the country code and removed as such.
+ * <li>by stripping the '+' sign if present and then looking at the next digits
+ * <li>by comparing the start of the number and the country calling code of the
+ * default region. If the number is not considered possible for the numbering
+ * plan of the default region initially, but starts with the country calling
+ * code of this region, validation will be reattempted after stripping this
+ * country calling code. If this number is considered a possible number, then
+ * the first digits will be considered the country calling code and removed as
+ * such.
+ * </ul>
  *
  * It will throw a i18n.phonenumbers.Error if the number starts with a '+' but
- * the country code supplied after this does not match that of any known
- * country.
+ * the country calling code supplied after this does not match that of any known
+ * region.
  *
  * @param {string} number non-normalized telephone number that we wish to
- *     extract a country code from - may begin with '+'.
+ *     extract a country calling code from - may begin with '+'.
  * @param {i18n.phonenumbers.PhoneMetadata} defaultRegionMetadata metadata
  *     about the region this number may be from.
  * @param {!goog.string.StringBuffer} nationalNumber a string buffer to store
- *     the national significant number in, in the case that a country code was
- *     extracted. The number is appended to any existing contents. If no country
- *     code was extracted, this will be left unchanged.
+ *     the national significant number in, in the case that a country calling
+ *     code was extracted. The number is appended to any existing contents. If
+ *     no country calling code was extracted, this will be left unchanged.
  * @param {boolean} keepRawInput true if the country_code_source and
  *     preferred_carrier_code fields of phoneNumber should be populated.
- *     of phoneNumber should be populated.
  * @param {i18n.phonenumbers.PhoneNumber} phoneNumber the PhoneNumber object
- *     that needs to be populated with country code and country code source.
- *     Note the country code is always populated, whereas country code source is
+ *     where the country_code and country_code_source need to be populated.
+ *     Note the country_code is always populated, whereas country_code_source is
  *     only populated when keepCountryCodeSource is true.
- * @return {number} the country code extracted or 0 if none could be extracted.
+ * @return {number} the country calling code extracted or 0 if none could be
+ *     extracted.
  * @throws {i18n.phonenumbers.Error}
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
@@ -2309,60 +2603,57 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
       return potentialCountryCode;
     }
 
-    // If this fails, they must be using a strange country code that we don't
-    // recognize, or that doesn't exist.
+    // If this fails, they must be using a strange country calling code that we
+    // don't recognize, or that doesn't exist.
     throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
   } else if (defaultRegionMetadata != null) {
-    // Check to see if the number is valid for the default region already. If
-    // not, we check to see if the country code for the default region is
-    // present at the start of the number.
-    /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-    var generalDesc = defaultRegionMetadata.getGeneralDesc();
-    /** @type {RegExp} */
-    var validNumberPattern = new RegExp(generalDesc.getNationalNumberPattern());
-    if (!i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-        validNumberPattern, fullNumber.toString())) {
-      /** @type {number} */
-      var defaultCountryCode = defaultRegionMetadata.getCountryCodeOrDefault();
+    // Check to see if the number starts with the country calling code for the
+    // default region. If so, we remove the country calling code, and do some
+    // checks on the validity of the number before and after.
+    /** @type {number} */
+    var defaultCountryCode = defaultRegionMetadata.getCountryCodeOrDefault();
+    /** @type {string} */
+    var defaultCountryCodeString = '' + defaultCountryCode;
+    /** @type {string} */
+    var normalizedNumber = fullNumber.toString();
+    if (goog.string.startsWith(normalizedNumber, defaultCountryCodeString)) {
+      /** @type {!goog.string.StringBuffer} */
+      var potentialNationalNumber = new goog.string.StringBuffer(
+          normalizedNumber.substring(defaultCountryCodeString.length));
+      /** @type {i18n.phonenumbers.PhoneNumberDesc} */
+      var generalDesc = defaultRegionMetadata.getGeneralDesc();
+      /** @type {!RegExp} */
+      var validNumberPattern =
+          new RegExp(generalDesc.getNationalNumberPatternOrDefault());
+      this.maybeStripNationalPrefixAndCarrierCode(
+          potentialNationalNumber, defaultRegionMetadata);
       /** @type {string} */
-      var defaultCountryCodeString = '' + defaultCountryCode;
+      var potentialNationalNumberStr = potentialNationalNumber.toString();
       /** @type {string} */
-      var normalizedNumber = fullNumber.toString();
-      if (goog.string.startsWith(normalizedNumber, defaultCountryCodeString)) {
-        // If so, strip this, and see if the resultant number is valid.
-        /** @type {!goog.string.StringBuffer} */
-        var potentialNationalNumber = new goog.string.StringBuffer(
-            normalizedNumber.substring(defaultCountryCodeString.length));
-        this.maybeStripNationalPrefixAndCarrierCode(
-            potentialNationalNumber, defaultRegionMetadata);
-        /** @type {string} */
-        var potentialNationalNumberStr = potentialNationalNumber.toString();
-        /** @type {Array.<string> } */
-        var matchedGroups = potentialNationalNumberStr.match(
-            '^' + generalDesc.getPossibleNumberPattern());
-        /** @type {number} */
-        var possibleNumberMatchedLength = matchedGroups &&
-            matchedGroups[0] != null && matchedGroups[0].length || 0;
-        // If the resultant number is either valid, or still too long even with
-        // the country code stripped, we consider this a better result and keep
-        // the potential national number.
-        if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-            validNumberPattern, potentialNationalNumberStr) ||
-            possibleNumberMatchedLength > 0 &&
-            possibleNumberMatchedLength != potentialNationalNumberStr.length) {
-          nationalNumber.append(potentialNationalNumberStr);
-          if (keepRawInput) {
-            phoneNumber.setCountryCodeSource(
-                i18n.phonenumbers.PhoneNumber.CountryCodeSource
-                    .FROM_NUMBER_WITHOUT_PLUS_SIGN);
-          }
-          phoneNumber.setCountryCode(defaultCountryCode);
-          return defaultCountryCode;
+      var possibleNumberPattern =
+          generalDesc.getPossibleNumberPatternOrDefault();
+      // If the number was not valid before but is valid now, or if it was too
+      // long before, we consider the number with the country calling code
+      // stripped to be a better result and keep that instead.
+      if ((!i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+              validNumberPattern, fullNumber.toString()) &&
+          i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+              validNumberPattern, potentialNationalNumberStr)) ||
+          this.testNumberLengthAgainstPattern_(possibleNumberPattern,
+                                               fullNumber.toString()) ==
+              i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG) {
+        nationalNumber.append(potentialNationalNumberStr);
+        if (keepRawInput) {
+          phoneNumber.setCountryCodeSource(
+              i18n.phonenumbers.PhoneNumber.CountryCodeSource
+                  .FROM_NUMBER_WITHOUT_PLUS_SIGN);
         }
+        phoneNumber.setCountryCode(defaultCountryCode);
+        return defaultCountryCode;
       }
     }
   }
-  // No country code present.
+  // No country calling code present.
   phoneNumber.setCountryCode(0);
   return 0;
 };
@@ -2372,7 +2663,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
  * Strips the IDD from the start of the number if present. Helper function used
  * by maybeStripInternationalPrefixAndNormalize.
  *
- * @param {RegExp} iddPattern the regular expression for the international
+ * @param {!RegExp} iddPattern the regular expression for the international
  *     prefix.
  * @param {!goog.string.StringBuffer} number the phone number that we wish to
  *     strip any international dialing prefix from.
@@ -2387,7 +2678,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parsePrefixAsIdd_ =
   if (numberStr.search(iddPattern) == 0) {
     /** @type {number} */
     var matchEnd = numberStr.match(iddPattern)[0].length;
-    /** @type {Array.<string> } */
+    /** @type {Array.<string>} */
     var matchedGroups = numberStr.substring(matchEnd).match(
         i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_);
     if (matchedGroups && matchedGroups[1] != null &&
@@ -2416,7 +2707,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parsePrefixAsIdd_ =
  * @param {!goog.string.StringBuffer} number the non-normalized telephone number
  *     that we wish to strip any international dialing prefix from.
  * @param {string} possibleIddPrefix the international direct dialing prefix
- *     from the country we think this number may be dialed in.
+ *     from the region we think this number may be dialed in.
  * @return {i18n.phonenumbers.PhoneNumber.CountryCodeSource} the corresponding
  *     CountryCodeSource if an international dialing prefix could be removed
  *     from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if
@@ -2434,7 +2725,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   if (i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_.test(numberStr)) {
     numberStr = numberStr.replace(
         i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_, '');
-    // Can now normalize the rest of the number since we've consumed the "+"
+    // Can now normalize the rest of the number since we've consumed the '+'
     // sign at the start.
     number.clear();
     number.append(i18n.phonenumbers.PhoneNumberUtil.normalize(numberStr));
@@ -2442,7 +2733,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
         .FROM_NUMBER_WITH_PLUS_SIGN;
   }
   // Attempt to parse the first digits as an international prefix.
-  /** @type {RegExp} */
+  /** @type {!RegExp} */
   var iddPattern = new RegExp(possibleIddPrefix);
   if (this.parsePrefixAsIdd_(iddPattern, number)) {
     i18n.phonenumbers.PhoneNumberUtil.normalizeSB_(number);
@@ -2464,7 +2755,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
  * @param {!goog.string.StringBuffer} number the normalized telephone number
  *     that we wish to strip any national dialing prefix from.
  * @param {i18n.phonenumbers.PhoneMetadata} metadata the metadata for the
- *     country that we think this number is from.
+ *     region that we think this number is from.
  * @return {string} the carrier code extracted if it is present, otherwise
  *     return an empty string.
  */
@@ -2485,14 +2776,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     return carrierCode;
   }
   // Attempt to parse the first digits as a national prefix.
-  /** @type {RegExp} */
-  var prefixPattern = new RegExp('^' + possibleNationalPrefix);
+  /** @type {!RegExp} */
+  var prefixPattern = new RegExp('^(?:' + possibleNationalPrefix + ')');
   /** @type {Array.<string>} */
   var prefixMatcher = prefixPattern.exec(numberStr);
   if (prefixMatcher) {
-    /** @type {RegExp} */
+    /** @type {!RegExp} */
     var nationalNumberRule = new RegExp(
-        metadata.getGeneralDesc().getNationalNumberPattern());
+        metadata.getGeneralDesc().getNationalNumberPatternOrDefault());
     // prefixMatcher[numOfGroups] == null implies nothing was captured by the
     // capturing groups in possibleNationalPrefix; therefore, no transformation
     // is necessary, and we just remove the national prefix.
@@ -2553,6 +2844,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeStripExtension =
     var matchedGroupsLength = matchedGroups.length;
     for (var i = 1; i < matchedGroupsLength; ++i) {
       if (matchedGroups[i] != null && matchedGroups[i].length > 0) {
+        // We go through the capturing groups until we find one that captured
+        // some digits. If none did, then we will return the empty string.
         number.clear();
         number.append(numberStr.substring(0, mStart));
         return matchedGroups[i];
@@ -2566,18 +2859,18 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeStripExtension =
 /**
  * Checks to see that the region code used is valid, or if it is not valid, that
  * the number to parse starts with a + symbol so that we can attempt to infer
- * the country from the number.
+ * the region from the number.
  * @param {string} numberToParse number that we are attempting to parse.
- * @param {?string} defaultCountry the ISO 3166-1 two-letter country code that
- *     denotes the country that we are expecting the number to be from.
+ * @param {?string} defaultRegion the ISO 3166-1 two-letter region code that
+ *     denotes the region that we are expecting the number to be from.
  * @return {boolean} false if it cannot use the region provided and the region
  *     cannot be inferred.
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
-    numberToParse, defaultCountry) {
-  // If the number is null or empty, we can't guess the country code.
-  return this.isValidRegionCode_(defaultCountry) ||
+    numberToParse, defaultRegion) {
+  // If the number is null or empty, we can't infer the region.
+  return this.isValidRegionCode_(defaultRegion) ||
       (numberToParse != null && numberToParse.length > 0 &&
           i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_.test(
               numberToParse));
@@ -2586,89 +2879,88 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
 
 /**
  * Parses a string and returns it in proto buffer format. This method will throw
- * a i18n.phonenumbers.Error if the number is not considered to be a possible
- * number. Note that validation of whether the number is actually a valid number
- * for a particular country/region is not performed. This can be done separately
- * with isValidNumber.
+ * a {@link i18n.phonenumbers.Error} if the number is not considered to be a
+ * possible number. Note that validation of whether the number is actually a
+ * valid number for a particular region is not performed. This can be done
+ * separately with {@link #isValidNumber}.
  *
  * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
  *     extension.
- * @param {?string} defaultCountry the ISO 3166-1 two-letter country code that
- *     denotes the country that we are expecting the number to be from. This is
+ * @param {?string} defaultRegion the ISO 3166-1 two-letter region code that
+ *     denotes the region that we are expecting the number to be from. This is
  *     only used if the number being parsed is not written in international
- *     format. The country code for the number in this case would be stored as
- *     that of the default country supplied.  If the number is guaranteed to
- *     start with a '+' followed by the country code, then 'ZZ' or null can be
+ *     format. The country_code for the number in this case would be stored as
+ *     that of the default region supplied. If the number is guaranteed to start
+ *     with a '+' followed by the country calling code, then 'ZZ' or null can be
  *     supplied.
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {i18n.phonenumbers.Error} if the string is not considered to be a
- *     viable phone number or if no default country was supplied and the number
+ *     viable phone number or if no default region was supplied and the number
  *     is not in international format (does not start with +).
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.parse = function(numberToParse,
-                                                             defaultCountry) {
-  return this.parseHelper_(numberToParse, defaultCountry, false, true);
+                                                             defaultRegion) {
+  return this.parseHelper_(numberToParse, defaultRegion, false, true);
 };
 
 
 /**
  * Parses a string and returns it in proto buffer format. This method differs
- * from parse() in that it always populates the raw_input field of the protocol
- * buffer with numberToParse as well as the country_code_source field.
+ * from {@link #parse} in that it always populates the raw_input field of the
+ * protocol buffer with numberToParse as well as the country_code_source field.
  *
  * @param {string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
  *     extension.
- * @param {?string} defaultCountry the ISO 3166-1 two-letter country code that
- *     denotes the country that we are expecting the number to be from. This is
+ * @param {?string} defaultRegion the ISO 3166-1 two-letter region code that
+ *     denotes the region that we are expecting the number to be from. This is
  *     only used if the number being parsed is not written in international
- *     format. The country code for the number in this case would be stored as
- *     that of the default country supplied.
+ *     format. The country calling code for the number in this case would be
+ *     stored as that of the default region supplied.
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {i18n.phonenumbers.Error} if the string is not considered to be a
- *     viable phone number or if no default country was supplied and the number
- *     is not in international format (does not start with +).
+ *     viable phone number or if no default region was supplied.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
-    function(numberToParse, defaultCountry) {
+    function(numberToParse, defaultRegion) {
 
-  if (!this.isValidRegionCode_(defaultCountry)) {
+  if (!this.isValidRegionCode_(defaultRegion)) {
     if (numberToParse.length > 0 && numberToParse.charAt(0) !=
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
       throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
     }
   }
-  return this.parseHelper_(numberToParse, defaultCountry, true, true);
+  return this.parseHelper_(numberToParse, defaultRegion, true, true);
 };
 
 
 /**
  * Parses a string and returns it in proto buffer format. This method is the
- * same as the public parse() method, with the exception that it allows the
- * default country to be null, for use by isNumberMatch().
+ * same as the public {@link #parse} method, with the exception that it allows
+ * the default region to be null, for use by {@link #isNumberMatch}.
  *
  * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
  *     extension.
- * @param {?string} defaultCountry the ISO 3166-1 two-letter country code that
- *     denotes the country that we are expecting the number to be from. This is
+ * @param {?string} defaultRegion the ISO 3166-1 two-letter region code that
+ *     denotes the region that we are expecting the number to be from. This is
  *     only used if the number being parsed is not written in international
- *     format. The country code for the number in this case would be stored as
- *     that of the default country supplied.
+ *     format. The country calling code for the number in this case would be
+ *     stored as that of the default region supplied.
  * @param {boolean} keepRawInput whether to populate the raw_input field of the
  *     phoneNumber with numberToParse.
  * @param {boolean} checkRegion should be set to false if it is permitted for
- *     the default country to be null or unknown ('ZZ').
+ *     the default coregion to be null or unknown ('ZZ').
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {i18n.phonenumbers.Error}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
-    function(numberToParse, defaultCountry, keepRawInput, checkRegion) {
+    function(numberToParse, defaultRegion, keepRawInput, checkRegion) {
 
   if (numberToParse == null) {
     throw i18n.phonenumbers.Error.NOT_A_NUMBER;
@@ -2682,9 +2974,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     throw i18n.phonenumbers.Error.NOT_A_NUMBER;
   }
 
-  // Check the country supplied is valid, or that the extracted number starts
+  // Check the region supplied is valid, or that the extracted number starts
   // with some sort of + sign so the number's region can be determined.
-  if (checkRegion && !this.checkRegionForParsing_(number, defaultCountry)) {
+  if (checkRegion && !this.checkRegionForParsing_(number, defaultRegion)) {
     throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
   }
 
@@ -2695,8 +2987,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   }
   /** @type {!goog.string.StringBuffer} */
   var nationalNumber = new goog.string.StringBuffer(number);
-  // Attempt to parse extension first, since it doesn't require
-  // country-specific data and we want to have the non-normalised number here.
+  // Attempt to parse extension first, since it doesn't require region-specific
+  // data and we want to have the non-normalised number here.
   /** @type {string} */
   var extension = this.maybeStripExtension(nationalNumber);
   if (extension.length > 0) {
@@ -2704,28 +2996,28 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   }
 
   /** @type {i18n.phonenumbers.PhoneMetadata} */
-  var countryMetadata = this.getMetadataForRegion(defaultCountry);
+  var regionMetadata = this.getMetadataForRegion(defaultRegion);
   // Check to see if the number is given in international format so we know
-  // whether this number is from the default country or not.
+  // whether this number is from the default region or not.
   /** @type {!goog.string.StringBuffer} */
   var normalizedNationalNumber = new goog.string.StringBuffer();
   /** @type {number} */
   var countryCode = this.maybeExtractCountryCode(nationalNumber.toString(),
-      countryMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
+      regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
   if (countryCode != 0) {
     /** @type {string} */
     var phoneNumberRegion = this.getRegionCodeForCountryCode(countryCode);
-    if (phoneNumberRegion != defaultCountry) {
-      countryMetadata = this.getMetadataForRegion(phoneNumberRegion);
+    if (phoneNumberRegion != defaultRegion) {
+      regionMetadata = this.getMetadataForRegion(phoneNumberRegion);
     }
   } else {
-    // If no extracted country code, use the region supplied instead. The
-    // national number is just the normalized version of the number we were
+    // If no extracted country calling code, use the region supplied instead.
+    // The national number is just the normalized version of the number we were
     // given to parse.
     i18n.phonenumbers.PhoneNumberUtil.normalizeSB_(nationalNumber);
     normalizedNationalNumber.append(nationalNumber.toString());
-    if (defaultCountry != null) {
-      countryCode = countryMetadata.getCountryCodeOrDefault();
+    if (defaultRegion != null) {
+      countryCode = regionMetadata.getCountryCodeOrDefault();
       phoneNumber.setCountryCode(countryCode);
     } else if (keepRawInput) {
       phoneNumber.clearCountryCodeSource();
@@ -2736,10 +3028,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     throw i18n.phonenumbers.Error.TOO_SHORT_NSN;
   }
 
-  if (countryMetadata != null) {
+  if (regionMetadata != null) {
     /** @type {string} */
     var carrierCode = this.maybeStripNationalPrefixAndCarrierCode(
-        normalizedNationalNumber, countryMetadata);
+        normalizedNationalNumber, regionMetadata);
     if (keepRawInput) {
       phoneNumber.setPreferredDomesticCarrierCode(carrierCode);
     }
@@ -2757,7 +3049,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     throw i18n.phonenumbers.Error.TOO_LONG;
   }
   if (normalizedNationalNumberStr.charAt(0) == '0' &&
-      i18n.phonenumbers.PhoneNumberUtil.isLeadingZeroCountry(countryCode)) {
+      regionMetadata != null &&
+      regionMetadata.getLeadingZeroPossibleOrDefault()) {
     phoneNumber.setItalianLeadingZero(true);
   }
   phoneNumber.setNationalNumber(parseInt(normalizedNationalNumberStr, 10));
@@ -2768,22 +3061,22 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
 /**
  * Takes two phone numbers and compares them for equality.
  *
- * Returns EXACT_MATCH if the country code, NSN, presence of a leading zero for
- * Italian numbers and any extension present are the same. Returns NSN_MATCH if
- * either or both has no country specified, and the NSNs and extensions are the
- * same. Returns SHORT_NSN_MATCH if either or both has no country specified, or
- * the country specified is the same, and one NSN could be a shorter version of
- * the other number. This includes the case where one has an extension
+ * <p>Returns EXACT_MATCH if the country_code, NSN, presence of a leading zero
+ * for Italian numbers and any extension present are the same. Returns NSN_MATCH
+ * if either or both has no region specified, and the NSNs and extensions are
+ * the same. Returns SHORT_NSN_MATCH if either or both has no region specified,
+ * or the region specified is the same, and one NSN could be a shorter version
+ * of the other number. This includes the case where one has an extension
  * specified, and the other does not. Returns NO_MATCH otherwise. For example,
  * the numbers +1 345 657 1234 and 657 1234 are a SHORT_NSN_MATCH. The numbers
  * +1 345 657 1234 and 345 657 are a NO_MATCH.
  *
  * @param {i18n.phonenumbers.PhoneNumber|string} firstNumberIn first number to
  *     compare. If it is a string it can contain formatting, and can have
- *     country code specified with + at the start.
+ *     country calling code specified with + at the start.
  * @param {i18n.phonenumbers.PhoneNumber|string} secondNumberIn second number to
  *     compare. If it is a string it can contain formatting, and can have
- *     country code specified with + at the start.
+ *     country calling code specified with + at the start.
  * @return {i18n.phonenumbers.PhoneNumberUtil.MatchType} NOT_A_NUMBER, NO_MATCH,
  *     SHORT_NSN_MATCH, NSN_MATCH or EXACT_MATCH depending on the level of
  *     equality of the two numbers, described in the method definition.
@@ -2799,8 +3092,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var secondNumber;
   if (typeof firstNumberIn == 'string') {
-    // First see if the first number has an implicit country code, by attempting
-    // to parse it.
+    // First see if the first number has an implicit country calling code, by
+    // attempting to parse it.
     try {
       firstNumber = this.parse(
           firstNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
@@ -2808,7 +3101,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
       if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
         return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
       }
-      // The first number has no country code. EXACT_MATCH is no longer
+      // The first number has no country calling code. EXACT_MATCH is no longer
       // possible. We parse it as if the region was the same as that for the
       // second number, and if EXACT_MATCH is returned, we replace this with
       // NSN_MATCH.
@@ -2832,8 +3125,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
           return match;
         }
       }
-      // If the second number is a string or doesn't have a valid country code,
-      // we parse the first number without country code.
+      // If the second number is a string or doesn't have a valid country
+      // calling code, we parse the first number without country calling code.
       try {
         firstNumber = this.parseHelper_(firstNumberIn, null, false, false);
       } catch (e2) {
@@ -2882,7 +3175,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
   var firstNumberCountryCode = firstNumber.getCountryCodeOrDefault();
   /** @type {number} */
   var secondNumberCountryCode = secondNumber.getCountryCodeOrDefault();
-  // Both had country code specified.
+  // Both had country_code specified.
   if (firstNumberCountryCode != 0 && secondNumberCountryCode != 0) {
     if (firstNumber.equals(secondNumber)) {
       return i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH;
@@ -2897,8 +3190,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
     // This is not a match.
     return i18n.phonenumbers.PhoneNumberUtil.MatchType.NO_MATCH;
   }
-  // Checks cases where one or both country codes were not specified. To make
-  // equality checks easier, we first set the country codes to be equal.
+  // Checks cases where one or both country_code fields were not specified. To
+  // make equality checks easier, we first set the country_code fields to be
+  // equal.
   firstNumber.setCountryCode(0);
   secondNumber.setCountryCode(0);
   // If all else was the same, then this is an NSN_MATCH.
@@ -2939,14 +3233,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNationalNumberSuffixOfTheOther_ =
 
 
 /**
- * Returns true if the number can only be dialled from within the country. If
- * unknown, or the number can be dialled from outside the country as well,
+ * Returns true if the number can only be dialled from within the region. If
+ * unknown, or the number can be dialled from outside the region as well,
  * returns false. Does not check the number is a valid number.
  * TODO: Make this method public when we have enough metadata to make it
  * worthwhile. Currently visible for testing purposes only.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone-number for which we
- *     want to know whether it is only diallable from within the country.
+ *     want to know whether it is only diallable from within the region.
  * @return {boolean} true if the number can only be dialled from within the
  *     country.
  */
@@ -2955,8 +3249,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
   /** @type {?string} */
   var regionCode = this.getRegionCodeForNumber(number);
   /** @type {string} */
-  var nationalSignificantNumber =
-      i18n.phonenumbers.PhoneNumberUtil.getNationalSignificantNumber(number);
+  var nationalSignificantNumber = this.getNationalSignificantNumber(number);
   if (!this.isValidRegionCode_(regionCode)) {
     return true;
   }
@@ -2971,14 +3264,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
  * Check whether the entire input sequence can be matched against the regular
  * expression.
  *
- * @param {RegExp|string} regex the regular expression to match against.
+ * @param {!RegExp|string} regex the regular expression to match against.
  * @param {string} str the string to test.
  * @return {boolean} true if str can be matched entirely against regex.
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_ = function(regex, str) {
   /** @type {Array.<string>} */
-  var matchedGroups = str.match(regex);
+  var matchedGroups = (typeof regex == 'string') ?
+      str.match('^(?:' + regex + ')$') : str.match(regex);
   if (matchedGroups && matchedGroups[0].length == str.length) {
     return true;
   }

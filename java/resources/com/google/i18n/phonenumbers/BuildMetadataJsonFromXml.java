@@ -51,7 +51,7 @@ public class BuildMetadataJsonFromXml {
       "BuildMetadataJsonFromXml PhoneNumberMetadata.xml metadatalite.js true\n";
 
   static final String COPYRIGHT_NOTICE =
-      "/*\n" +
+      "/**\n" +
       " * @license\n" +
       " * Copyright (C) 2010 Google Inc.\n" +
       " *\n" +
@@ -77,9 +77,9 @@ public class BuildMetadataJsonFromXml {
 
   private static final String COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT =
       "/**\n" +
-      " * A mapping from a country code to the region codes which denote the\n" +
-      " * country/region represented by that country code. In the case of multiple\n" +
-      " * countries sharing a calling code, such as the NANPA countries, the one\n" +
+      " * A mapping from a country calling code to the region codes which denote the\n" +
+      " * region represented by that country calling code. In the case of multiple\n" +
+      " * countries sharing a calling code, such as the NANPA regions, the one\n" +
       " * indicated with \"isMainCountryForCode\" in the metadata should be first.\n" +
       " * @type {Object.<number, Array.<string>>}\n" +
       " */\n";
@@ -114,7 +114,7 @@ public class BuildMetadataJsonFromXml {
 
     writer.write(COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT);
     writer.write(NAMESPACE + ".countryCodeToRegionCodeMap = ");
-    writeCountryCodeCodeToRegionCodeMap(countryCodeToRegionCodeMap, writer);
+    writeCountryCodeToRegionCodeMap(countryCodeToRegionCodeMap, writer);
     writer.write(";\n\n");
 
     writer.write(COUNTRY_TO_METADATA_COMMENT);
@@ -149,7 +149,7 @@ public class BuildMetadataJsonFromXml {
   }
 
   // Writes a Map<Integer, List<String>> in JSON format.
-  private static void writeCountryCodeCodeToRegionCodeMap(
+  private static void writeCountryCodeToRegionCodeMap(
       Map<Integer, List<String>> countryCodeToRegionCodeMap,
       BufferedWriter writer) throws IOException {
     writer.write("{\n");
@@ -349,6 +349,12 @@ public class BuildMetadataJsonFromXml {
     toJsArray(metadata.getNoInternationalDialling(), jsArrayBuilder);
     // required PhoneNumberDesc uan = 25;
     toJsArray(metadata.getUan(), jsArrayBuilder);
+    // optional bool leading_zero_possible = 26 [default=false];
+    if (metadata.isLeadingZeroPossible()) {
+      jsArrayBuilder.append(1);
+    } else {
+      jsArrayBuilder.append(null);
+    }
 
     jsArrayBuilder.endArray();
   }

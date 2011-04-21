@@ -1,4 +1,4 @@
-/*
+/**
  * @license
  * Copyright (C) 2010 Google Inc.
  *
@@ -17,15 +17,15 @@
 
 /**
  * @fileoverview Generated metadata for file
- * java/resources/com/google/i18n/phonenumbers/test/PhoneNumberMetaDataForTesting.xml
+ * resources/PhoneNumberMetaDataForTesting.xml
  * @author Nikolaos Trogkanis
  */
 
 goog.provide('i18n.phonenumbers.metadata');
 
 /**
- * A mapping from a country code to the region codes which denote the
- * country/region represented by that country code. In the case of multiple
+ * A mapping from a country calling code to the region codes which denote the
+ * region represented by that country calling code. In the case of multiple
  * countries sharing a calling code, such as the NANPA countries, the one
  * indicated with "isMainCountryForCode" in the metadata should be first.
  * @type {Object.<number, Array.<string>>}
@@ -152,7 +152,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,[,,"NA","NA"]
 ,"DE",49,"00","0",,,"0",,,,[[,"(\\d{3})(\\d{3,8})","$1 $2",["2|3[3-9]|906|[4-9][1-9]1"]
 ,"0$1",""]
-,[,"(\\d{2})(\\d{4,9})","$1 $2",["[34]0|[68]9"]
+,[,"(\\d{2})(\\d{4,9})","$1/$2",["[34]0|[68]9"]
 ,"0$1",""]
 ,[,"([4-9]\\d)(\\d{2})","$1 $2",["[4-9]","[4-6]|[7-9](?:\\d[1-9]|[1-9]\\d)"]
 ,"0$1",""]
@@ -208,7 +208,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,[,,"NA","NA"]
 ,,,[,,"NA","NA"]
 ,[,,"NA","NA"]
-]
+,1]
 ,"JP":[,[]
 ,[]
 ,[]
@@ -348,7 +348,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,"262|6(?:9[23]|47)|8",[,,"NA","NA"]
 ,[,,"NA","NA"]
 ]
-,"SG":[,[,,"[13689]\\d{7,10}","\\d{8,11}"]
+,"SG":[,[,,"[13689]\\d{7,10}","\\d{8}|\\d{10,11}"]
 ,[,,"[36]\\d{7}","\\d{8}"]
 ,[,,"[89]\\d{7}","\\d{8}"]
 ,[,,"1?800\\d{7}","\\d{10,11}"]
@@ -367,9 +367,9 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,,[,,"NA","NA"]
 ,[,,"NA","NA"]
 ]
-,"US":[,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
-,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
-,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7,10}",,,"1234567890"]
+,"US":[,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7}(?:\\d{3})?",,,"1234567890"]
+,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7}(?:\\d{3})?",,,"1234567890"]
+,[,,"[13-9]\\d{9}|2[0-35-9]\\d{8}","\\d{7}(?:\\d{3})?",,,"1234567890"]
 ,[,,"8(?:00|66|77|88)\\d{7}","\\d{10}",,,"1234567890"]
 ,[,,"900\\d{7}","\\d{10}",,,"1234567890"]
 ,[,,"NA","NA"]

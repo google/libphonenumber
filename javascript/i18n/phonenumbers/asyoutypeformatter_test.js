@@ -1,4 +1,4 @@
-/*
+/**
  * @license
  * Copyright (C) 2010 Google Inc.
  *
@@ -393,10 +393,10 @@ function testAYTFDE() {
   assertEquals('0', f.inputDigit('0'));
   assertEquals('03', f.inputDigit('3'));
   assertEquals('030', f.inputDigit('0'));
-  assertEquals('030 1', f.inputDigit('1'));
-  assertEquals('030 12', f.inputDigit('2'));
-  assertEquals('030 123', f.inputDigit('3'));
-  assertEquals('030 1234', f.inputDigit('4'));
+  assertEquals('030/1', f.inputDigit('1'));
+  assertEquals('030/12', f.inputDigit('2'));
+  assertEquals('030/123', f.inputDigit('3'));
+  assertEquals('030/1234', f.inputDigit('4'));
 
   // 04134 1234
   f.clear();

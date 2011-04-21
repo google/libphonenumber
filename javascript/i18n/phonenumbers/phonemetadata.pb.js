@@ -1,4 +1,4 @@
-/*
+/**
  * @license
  * Protocol Buffer 2 Copyright 2008 Google Inc.
  * All other code copyright its respective owners.
@@ -1755,6 +1755,57 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearLeadingDigits = function() {
 };
 
 
+/**
+ * Gets the value of the leading_zero_possible field.
+ * @return {?boolean} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getLeadingZeroPossible = function() {
+  return /** @type {?boolean} */ (this.get$Value(26));
+};
+
+
+/**
+ * Gets the value of the leading_zero_possible field or the default value if not set.
+ * @return {boolean} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getLeadingZeroPossibleOrDefault = function() {
+  return /** @type {boolean} */ (this.get$ValueOrDefault(26));
+};
+
+
+/**
+ * Sets the value of the leading_zero_possible field.
+ * @param {boolean} value The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.setLeadingZeroPossible = function(value) {
+  this.set$Value(26, value);
+};
+
+
+/**
+ * @return {boolean} Whether the leading_zero_possible field has a value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.hasLeadingZeroPossible = function() {
+  return this.has$Value(26);
+};
+
+
+/**
+ * @return {number} The number of values in the leading_zero_possible field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.leadingZeroPossibleCount = function() {
+  return this.count$Values(26);
+};
+
+
+/**
+ * Clears the values in the leading_zero_possible field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.clearLeadingZeroPossible = function() {
+  this.clear$Field(26);
+};
+
+
 
 /**
  * Message PhoneMetadataCollection.
@@ -2038,6 +2089,12 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadata, {
     name: 'leading_digits',
     fieldType: goog.proto2.Message.FieldType.STRING,
     type: String
+  },
+  26: {
+    name: 'leading_zero_possible',
+    fieldType: goog.proto2.Message.FieldType.BOOL,
+    defaultValue: false,
+    type: Boolean
   }
 });
 
