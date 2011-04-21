@@ -343,7 +343,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFGBTollFree() {
-     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("gb");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("gb");
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("08", formatter.inputDigit('8'));
     assertEquals("080", formatter.inputDigit('0'));

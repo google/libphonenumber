@@ -104,7 +104,8 @@ public class PhoneNumberUtil {
   private static final Map<Character, Character> ALL_PLUS_NUMBER_GROUPING_SYMBOLS;
 
   static {
-    // Simple ASCII digits map used to populate DIGIT_MAPPINGS and ALPHA_MAPPINGS.
+    // Simple ASCII digits map used to populate DIGIT_MAPPINGS and
+    // ALL_PLUS_NUMBER_GROUPING_SYMBOLS.
     HashMap<Character, Character> asciiDigitMappings = new HashMap<Character, Character>();
     asciiDigitMappings.put('0', '0');
     asciiDigitMappings.put('1', '1');
@@ -263,7 +264,7 @@ public class PhoneNumberUtil {
   // are not alpha or numerical characters. The hash character is retained here, as it may signify
   // the previous block was an extension.
   private static final String UNWANTED_END_CHARS = "[[\\P{N}&&\\P{L}]&&[^#]]+$";
-  private static final Pattern UNWANTED_END_CHAR_PATTERN = Pattern.compile(UNWANTED_END_CHARS);
+  static final Pattern UNWANTED_END_CHAR_PATTERN = Pattern.compile(UNWANTED_END_CHARS);
 
   // We use this pattern to check if the phone number has at least three letters in it - if so, then
   // we treat it as a number where some phone-number digits are represented by letters.
@@ -466,13 +467,13 @@ public class PhoneNumberUtil {
 
   /**
    * Attempts to extract a possible number from the string passed in. This currently strips all
-   * leading characters that could not be used to start a phone number. Characters that can be used
-   * to start a phone number are defined in the VALID_START_CHAR_PATTERN. If none of these
-   * characters are found in the number passed in, an empty string is returned. This function also
-   * attempts to strip off any alternative extensions or endings if two or more are present, such as
-   * in the case of: (530) 583-6985 x302/x2303. The second extension here makes this actually two
-   * phone numbers, (530) 583-6985 x302 and (530) 583-6985 x2303. We remove the second extension so
-   * that the first number is parsed correctly.
+   * leading characters that cannot be used to start a phone number. Characters that can be used to
+   * start a phone number are defined in the VALID_START_CHAR_PATTERN. If none of these characters
+   * are found in the number passed in, an empty string is returned. This function also attempts to
+   * strip off any alternative extensions or endings if two or more are present, such as in the case
+   * of: (530) 583-6985 x302/x2303. The second extension here makes this actually two phone numbers,
+   * (530) 583-6985 x302 and (530) 583-6985 x2303. We remove the second extension so that the first
+   * number is parsed correctly.
    *
    * @param number  the string that might contain a phone number
    * @return        the number, stripped of any non-phone-number prefix (such as "Tel:") or an empty
@@ -960,7 +961,7 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Formats a phone number for out-of-country dialing purposes. If no countryCallingFrom is
+   * Formats a phone number for out-of-country dialing purposes. If no regionCallingFrom is
    * supplied, we format the number in its INTERNATIONAL format. If the country calling code is the
    * same as the region where the number is from, then NATIONAL formatting will be applied.
    *
@@ -1624,14 +1625,14 @@ public class PhoneNumberUtil {
    * significant number could contain a leading zero. An example of such a region is Italy. Returns
    * false if no metadata for the country is found.
    */
-   boolean isLeadingZeroPossible(int countryCallingCode) {
-     PhoneMetadata mainMetadataForCallingCode = getMetadataForRegion(
-         getRegionCodeForCountryCode(countryCallingCode));
-     if (mainMetadataForCallingCode == null) {
-       return false;
-     }
-     return mainMetadataForCallingCode.isLeadingZeroPossible();
-   }
+  boolean isLeadingZeroPossible(int countryCallingCode) {
+    PhoneMetadata mainMetadataForCallingCode = getMetadataForRegion(
+        getRegionCodeForCountryCode(countryCallingCode));
+    if (mainMetadataForCallingCode == null) {
+      return false;
+    }
+    return mainMetadataForCallingCode.isLeadingZeroPossible();
+  }
 
   /**
    * Checks if the number is a valid vanity (alpha) number such as 800 MICROSOFT. A valid vanity
@@ -1742,12 +1743,12 @@ public class PhoneNumberUtil {
    * @param number  the number that needs to be checked, in the form of a string
    * @param regionDialingFrom  the ISO 3166-1 two-letter region code that denotes the region that
    *     we are expecting the number to be dialed from.
-   *     Note this is different from the region where the number belongs. For example, the number
-   *     +1 650 253 0000 is a number that belongs to US. When written in this form, it could be
-   *     dialed from any region. When it is written as 00 1 650 253 0000, it could be dialed from
-   *     any region which uses an international dialling prefix of 00. When it is written as 650
-   *     253 0000, it could only be dialed from within the US, and when written as 253 0000, it
-   *     could only be dialed from within a smaller area in the US (Mountain View, CA, to be more
+   *     Note this is different from the region where the number belongs.  For example, the number
+   *     +1 650 253 0000 is a number that belongs to US. When written in this form, it can be
+   *     dialed from any region. When it is written as 00 1 650 253 0000, it can be dialed from any
+   *     region which uses an international dialling prefix of 00. When it is written as
+   *     650 253 0000, it can only be dialed from within the US, and when written as 253 0000, it
+   *     can only be dialed from within a smaller area in the US (Mountain View, CA, to be more
    *     specific).
    * @return  true if the number is possible
    */
@@ -1791,7 +1792,7 @@ public class PhoneNumberUtil {
    * @param regionCode  the ISO 3166-1 two-letter region code that denotes the region where
    *     the phone number is being entered
    *
-   * @return  an {@link com.google.i18n.phonenumbers.AsYouTypeFormatter} object, which could be used
+   * @return  an {@link com.google.i18n.phonenumbers.AsYouTypeFormatter} object, which can be used
    *     to format phone numbers in the specific region "as you type"
    */
   public AsYouTypeFormatter getAsYouTypeFormatter(String regionCode) {
@@ -1898,8 +1899,8 @@ public class PhoneNumberUtil {
         Pattern possibleNumberPattern =
             regexCache.getPatternForRegex(generalDesc.getPossibleNumberPattern());
         // If the number was not valid before but is valid now, or if it was too long before, we
-        // consider the number with the country code stripped to be a better result and keep that
-        // instead.
+        // consider the number with the country calling code stripped to be a better result and
+        // keep that instead.
         if ((!validNumberPattern.matcher(fullNumber).matches() &&
              validNumberPattern.matcher(potentialNationalNumber).matches()) ||
              testNumberLengthAgainstPattern(possibleNumberPattern, fullNumber.toString())
@@ -1950,8 +1951,8 @@ public class PhoneNumberUtil {
    * @param possibleIddPrefix  the international direct dialing prefix from the region we
    *     think this number may be dialed in
    * @return  the corresponding CountryCodeSource if an international dialing prefix could be
-   *          removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the
-   *          number did not seem to be in international format.
+   *     removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the number did
+   *     not seem to be in international format.
    */
   CountryCodeSource maybeStripInternationalPrefixAndNormalize(
       StringBuffer number,
@@ -2371,7 +2372,7 @@ public class PhoneNumberUtil {
    * @param firstNumber  first number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
-   *     code specified with + at the start.
+   *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
    *     isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber) for more details.
    */
@@ -2409,7 +2410,7 @@ public class PhoneNumberUtil {
    *
    * @param firstNumber  first number to compare in proto buffer format.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
-   *     code specified with + at the start.
+   *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
    *     isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber) for more details.
    */

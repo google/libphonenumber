@@ -28,11 +28,11 @@ import java.util.regex.Pattern;
 /**
  * A formatter which formats phone numbers as they are entered.
  *
- * <p>An AsYouTypeFormatter could be created by invoking
- * {@link PhoneNumberUtil#getAsYouTypeFormatter}. After that digits could be added by invoking
+ * <p>An AsYouTypeFormatter can be created by invoking
+ * {@link PhoneNumberUtil#getAsYouTypeFormatter}. After that, digits can be added by invoking
  * {@link #inputDigit} on the formatter instance, and the partially formatted phone number will be
- * returned each time a digit is added. {@link #clear} could be invoked before a new number needs to
- * be formatted.
+ * returned each time a digit is added. {@link #clear} can be invoked before formatting a new
+ * number.
  *
  * <p>See the unittests for more details on how the formatter is to be used.
  *
@@ -65,6 +65,15 @@ public class AsYouTypeFormatter {
   // Two look-aheads are needed because the number following \\d could be a two-digit number, since
   // the phone number can be as long as 15 digits.
   private static final Pattern STANDALONE_DIGIT_PATTERN = Pattern.compile("\\d(?=[^,}][^,}])");
+
+  // A pattern that is used to determine if a numberFormat under availableFormats is eligible to be
+  // used by the AYTF. It is eligible when the format element under numberFormat contains groups of
+  // the dollar sign followed by a single digit, separated by valid phone number punctuation. This
+  // prevents invalid punctuation (such as the star sign in Israeli star numbers) getting into the
+  // output of the AYTF.
+  private static final Pattern ELIGIBLE_FORMAT_PATTERN =
+      Pattern.compile("[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*" +
+          "(\\$\\d" + "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*)+");
 
   // This is the minimum length of national number accrued that is required to trigger the
   // formatter. The first element of the leadingDigitsPattern of each numberFormat contains a
@@ -134,8 +143,16 @@ public class AsYouTypeFormatter {
         (isInternationalFormatting && currentMetaData.intlNumberFormatSize() > 0)
         ? currentMetaData.intlNumberFormats()
         : currentMetaData.numberFormats();
-    possibleFormats.addAll(formatList);
+    for (NumberFormat format : formatList) {
+      if (isFormatEligible(format.getFormat())) {
+        possibleFormats.add(format);
+      }
+    }
     narrowDownPossibleFormats(leadingThreeDigits);
+  }
+
+  private boolean isFormatEligible(String format) {
+    return ELIGIBLE_FORMAT_PATTERN.matcher(format).matches();
   }
 
   private void narrowDownPossibleFormats(String leadingDigits) {
@@ -179,7 +196,7 @@ public class AsYouTypeFormatter {
     return false;
   }
 
-  // Gets a formatting template which could be used to efficiently format a partial number where
+  // Gets a formatting template which can be used to efficiently format a partial number where
   // digits are added one by one.
   private String getFormattingTemplate(String numberPattern, String numberFormat) {
     // Creates a phone number consisting only of the digit 9 that matches the
@@ -196,7 +213,7 @@ public class AsYouTypeFormatter {
   }
 
   /**
-   * Clears the internal state of the formatter, so it could be reused.
+   * Clears the internal state of the formatter, so it can be reused.
    */
   public void clear() {
     currentOutput = "";
@@ -234,7 +251,7 @@ public class AsYouTypeFormatter {
 
   /**
    * Same as {@link #inputDigit}, but remembers the position where {@code nextChar} is inserted, so
-   * that it could be retrieved later by using {@link #getRememberedPosition}. The remembered
+   * that it can be retrieved later by using {@link #getRememberedPosition}. The remembered
    * position will be automatically adjusted if additional formatting characters are later
    * inserted/removed in front of {@code nextChar}.
    */

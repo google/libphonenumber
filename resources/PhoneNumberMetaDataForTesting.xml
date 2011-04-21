@@ -365,6 +365,12 @@
           <leadingDigits>[23]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- The following numberFormat is added to test that the format containing the star sign is
+             not used by the AYTF. -->
+        <numberFormat pattern="(\d{4})">
+          <leadingDigits>[23]</leadingDigits>
+          <format>*$1</format>
+        </numberFormat>
       </availableFormats>
     </territory>
 

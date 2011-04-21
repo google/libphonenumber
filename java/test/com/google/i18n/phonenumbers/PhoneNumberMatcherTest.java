@@ -198,6 +198,30 @@ public class PhoneNumberMatcherTest extends TestCase {
     }
   }
 
+  public void testMatchWithSurroundingZipcodes() throws Exception {
+    String number = "415-666-7777";
+    String zipPreceding = "My address is CA 34215. " + number + " is my number.";
+    PhoneNumber expectedResult = phoneUtil.parse(number, "US");
+
+    Iterator<PhoneNumberMatch> iterator = phoneUtil.findNumbers(zipPreceding, "US").iterator();
+    PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+    assertNotNull("Did not find a number in '" + zipPreceding + "'; expected " + number, match);
+    assertEquals(expectedResult, match.number());
+    assertEquals(number, match.rawString());
+
+    // Now repeat, but this time the phone number has spaces in it. It should still be found.
+    number = "(415) 666 7777";
+
+    String zipFollowing = "My number is " + number + ". 34215 is my zip-code.";
+    iterator = phoneUtil.findNumbers(zipFollowing, "US").iterator();
+
+    PhoneNumberMatch matchWithSpaces = iterator.hasNext() ? iterator.next() : null;
+    assertNotNull("Did not find a number in '" + zipFollowing + "'; expected " + number,
+                  matchWithSpaces);
+    assertEquals(expectedResult, matchWithSpaces.number());
+    assertEquals(number, matchWithSpaces.rawString());
+  }
+
   public void testNoMatchIfRegionIsNull() throws Exception {
     // Fail on non-international prefix if region code is null.
     assertTrue(hasNoMatches(phoneUtil.findNumbers(
@@ -417,7 +441,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   /**
-   * Tests numbers found by {@link PhoneNumberUtil#find(CharSequence, String)} in various
+   * Tests numbers found by {@link PhoneNumberUtil#findNumbers(CharSequence, String)} in various
    * textual contexts.
    *
    * @param number the number to test and the corresponding region code to use

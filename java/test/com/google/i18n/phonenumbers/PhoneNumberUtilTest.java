@@ -372,6 +372,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("1234", phoneUtil.format(DE_SHORT_NUMBER, PhoneNumberFormat.NATIONAL));
     assertEquals("+49 1234", phoneUtil.format(DE_SHORT_NUMBER, PhoneNumberFormat.INTERNATIONAL));
 
+    deNumber.clear();
     deNumber.setCountryCode(49).setNationalNumber(41341234);
     assertEquals("04134 1234", phoneUtil.format(deNumber, PhoneNumberFormat.NATIONAL));
   }
@@ -719,12 +720,11 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(PhoneNumberUtil.PhoneNumberType.MOBILE, phoneUtil.getNumberType(BS_MOBILE));
     assertEquals(PhoneNumberUtil.PhoneNumberType.MOBILE, phoneUtil.getNumberType(GB_MOBILE));
     assertEquals(PhoneNumberUtil.PhoneNumberType.MOBILE, phoneUtil.getNumberType(IT_MOBILE));
+    assertEquals(PhoneNumberUtil.PhoneNumberType.MOBILE, phoneUtil.getNumberType(AR_MOBILE));
 
     PhoneNumber mobileNumber = new PhoneNumber();
     mobileNumber.setCountryCode(49).setNationalNumber(15123456789L);
     assertEquals(PhoneNumberUtil.PhoneNumberType.MOBILE, phoneUtil.getNumberType(mobileNumber));
-
-    assertEquals(PhoneNumberUtil.PhoneNumberType.MOBILE, phoneUtil.getNumberType(AR_MOBILE));
   }
 
   public void testIsFixedLine() {
@@ -913,8 +913,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_SHORT,
                  phoneUtil.isPossibleNumberWithReason(number));
 
-    number.setCountryCode(65);
-    number.setNationalNumber(1234567890L);
+    number.clear();
+    number.setCountryCode(65).setNationalNumber(1234567890L);
     assertEquals(PhoneNumberUtil.ValidationResult.IS_POSSIBLE,
                  phoneUtil.isPossibleNumberWithReason(number));
 

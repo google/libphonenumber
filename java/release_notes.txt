@@ -1,3 +1,13 @@
+Apr 26th, 2011
+* Code changes:
+ - Improved PhoneNumberMatcher for cases with other numbers before or after the phone number.
+ - Improved AsYouTypeFormatter not to use formatting rules containing non-formatting characters
+   (e.g. '*' in Israeli star numbers).
+* Metadata changes:
+ - New countries: FJ, FM, GY, NF, NI, NR, TV.
+ - Updates: AM, AZ, BF, BW, BZ, CI, CR, GB, GP, HK, JM, KH, LB, LY, MV, PE, PK, SZ, TJ, US.
+* Minor documentation updates
+
 Apr 11th, 2011
 * Bug fixes:
  - Adding date exclusion pattern in PhoneNumberMatcher.
