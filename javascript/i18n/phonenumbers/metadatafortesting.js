@@ -26,7 +26,7 @@ goog.provide('i18n.phonenumbers.metadata');
 /**
  * A mapping from a country calling code to the region codes which denote the
  * region represented by that country calling code. In the case of multiple
- * countries sharing a calling code, such as the NANPA countries, the one
+ * countries sharing a calling code, such as the NANPA regions, the one
  * indicated with "isMainCountryForCode" in the metadata should be first.
  * @type {Object.<number, Array.<string>>}
  */
@@ -224,6 +224,8 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,[,"(\\d{4})(\\d)(\\d{4})","$1 $2 $3",["222|333","2221|3332","22212|3332","222120|3332"]
 ,"0$1",""]
 ,[,"(\\d{3})(\\d{2})(\\d{4})","$1 $2 $3",["[23]"]
+,"0$1",""]
+,[,"(\\d{4})","*$1",["[23]"]
 ,"0$1",""]
 ]
 ,,[,,"NA","NA"]

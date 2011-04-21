@@ -427,9 +427,8 @@ i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_ =
  *
  * @const
  * @type {string}
- * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ =
+i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION =
     '-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F \u00A0\u200B\u2060\u3000()' +
     '\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E';
 
@@ -480,7 +479,7 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_ =
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.SEPARATOR_PATTERN_ =
-    new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ +
+    new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION +
                ']+', 'g');
 
 
@@ -569,9 +568,9 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_PHONE_PATTERN_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
     '[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']*(?:[' +
-    i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ + ']*[' +
+    i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*[' +
     i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']){3,}[' +
-    i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION_ +
+    i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION +
     i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ +
     i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']*';
 
@@ -782,9 +781,9 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
 
 /**
  * Attempts to extract a possible number from the string passed in. This
- * currently strips all leading characters that could not be used to start a
- * phone number. Characters that can be used to start a phone number are defined
- * in the VALID_START_CHAR_PATTERN. If none of these characters are found in the
+ * currently strips all leading characters that cannot be used to start a phone
+ * number. Characters that can be used to start a phone number are defined in
+ * the VALID_START_CHAR_PATTERN. If none of these characters are found in the
  * number passed in, an empty string is returned. This function also attempts to
  * strip off any alternative extensions or endings if two or more are present,
  * such as in the case of: (530) 583-6985 x302/x2303. The second extension here
@@ -1356,7 +1355,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 /**
  * Formats a phone number for out-of-country dialing purposes. If no
  * regionCallingFrom is supplied, we format the number in its INTERNATIONAL
- * format. If the regionCallingFrom is the same as the region where the
+ * format. If the country calling code is the same as the region where the
  * number is from, then NATIONAL formatting will be applied.
  *
  * <p>If the number itself has a country calling code of zero or an otherwise
@@ -2439,12 +2438,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  *     denotes the region that we are expecting the number to be dialed from.
  *     Note this is different from the region where the number belongs.
  *     For example, the number +1 650 253 0000 is a number that belongs to US.
- *     When written in this form, it could be dialed from any region. When it
- *     is written as 00 1 650 253 0000, it could be dialed from any region
- *     which uses an international dialling prefix of 00. When it is written as
- *     650 253 0000, it could only be dialed from within the US, and when
- *     written as 253 0000, it could only be dialed from within a smaller area
- *     in the US (Mountain View, CA, to be more specific).
+ *     When written in this form, it can be dialed from any region. When it is
+ *     written as 00 1 650 253 0000, it can be dialed from any region which uses
+ *     an international dialling prefix of 00. When it is written as
+ *     650 253 0000, it can only be dialed from within the US, and when written
+ *     as 253 0000, it can only be dialed from within a smaller area in the US
+ *     (Mountain View, CA, to be more specific).
  * @return {boolean} true if the number is possible.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberString =

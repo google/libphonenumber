@@ -19,11 +19,11 @@
  * @fileoverview  A formatter which formats phone numbers as they are entered.
  * (based on the java implementation).
  *
- * <p>An AsYouTypeFormatter could be created by new AsYouTypeFormatter(). After
- * that digits could be added by invoking {@link #inputDigit} on the formatter
+ * <p>An AsYouTypeFormatter can be created by new AsYouTypeFormatter(). After
+ * that, digits can be added by invoking {@link #inputDigit} on the formatter
  * instance, and the partially formatted phone number will be returned each time
- * a digit is added. {@link #clear} could be invoked before a new number needs
- * to be formatted.
+ * a digit is added. {@link #clear} can be invoked before formatting a new
+ * number.
  *
  * <p>See the unittests for more details on how the formatter is to be used.
  *
@@ -199,6 +199,22 @@ i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_ =
 
 
 /**
+ * A pattern that is used to determine if a numberFormat under availableFormats
+ * is eligible to be used by the AYTF. It is eligible when the format element
+ * under numberFormat contains groups of the dollar sign followed by a single
+ * digit, separated by valid phone number punctuation. This prevents invalid
+ * punctuation (such as the star sign in Israeli star numbers) getting into the
+ * output of the AYTF.
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_ = new RegExp(
+    '^[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*' +
+    '(\\$\\d[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*)+$');
+
+
+/**
  * This is the minimum length of national number accrued that is required to
  * trigger the formatter. The first element of the leadingDigitsPattern of
  * each numberFormat contains a regular expression that matches up to this
@@ -268,11 +284,33 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
     function(leadingThreeDigits) {
 
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
-  var formatList = (this.isInternationalFormatting_ && this.currentMetaData_
-      .intlNumberFormatCount() > 0) ? this.currentMetaData_
-      .intlNumberFormatArray() : this.currentMetaData_.numberFormatArray();
-  this.possibleFormats_ = formatList;
+  var formatList =
+      (this.isInternationalFormatting_ &&
+           this.currentMetaData_.intlNumberFormatCount() > 0) ?
+      this.currentMetaData_.intlNumberFormatArray() :
+      this.currentMetaData_.numberFormatArray();
+  /** @type {number} */
+  var formatListLength = formatList.length;
+  for (var i = 0; i < formatListLength; ++i) {
+    /** @type {i18n.phonenumbers.NumberFormat} */
+    var format = formatList[i];
+    if (this.isFormatEligible_(format.getFormatOrDefault())) {
+      this.possibleFormats_.push(format);
+    }
+  }
   this.narrowDownPossibleFormats_(leadingThreeDigits);
+};
+
+
+/**
+ * @param {string} format
+ * @return {boolean}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.isFormatEligible_ =
+    function(format) {
+  return i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_
+      .test(format);
 };
 
 
@@ -348,7 +386,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
 
 
 /**
- * Gets a formatting template which could be used to efficiently format a
+ * Gets a formatting template which can be used to efficiently format a
  * partial number where digits are added one by one.
  *
  * @param {string} numberPattern
@@ -379,7 +417,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getFormattingTemplate_ =
 
 
 /**
- * Clears the internal state of the formatter, so it could be reused.
+ * Clears the internal state of the formatter, so it can be reused.
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
   this.currentOutput_ = '';
@@ -421,7 +459,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigit = function(nextChar) {
 
 /**
  * Same as {@link #inputDigit}, but remembers the position where
- * {@code nextChar} is inserted, so that it could be retrieved later by using
+ * {@code nextChar} is inserted, so that it can be retrieved later by using
  * {@link #getRememberedPosition}. The remembered position will be automatically
  * adjusted if additional formatting characters are later inserted/removed in
  * front of {@code nextChar}.
