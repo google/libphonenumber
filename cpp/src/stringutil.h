@@ -51,6 +51,9 @@ void safe_strto32(const string& s, int32 *n);
 // Converts string to uint64.
 void safe_strtou64(const string& s, uint64 *n);
 
+// Remove all occurrences of a given set of characters from a string.
+void strrmm(string* s, const string& chars);
+
 // Holds a reference to a std::string or C string. It can also be constructed
 // from an integer which is converted to a string.
 class StringHolder {

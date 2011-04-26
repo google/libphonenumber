@@ -90,6 +90,27 @@ TEST(StringUtilTest, safe_strtou64) {
   EXPECT_EQ(18446744073709551615UL, n);
 }
 
+// Test strrmm.
+TEST(StringUtilTest, strrmm) {
+  string input("hello");
+
+  strrmm(&input, "");
+  EXPECT_EQ(input, input);
+
+  string empty;
+  strrmm(&empty, "");
+  EXPECT_EQ("", empty);
+
+  strrmm(&empty, "aa");
+  EXPECT_EQ("", empty);
+
+  strrmm(&input, "h");
+  EXPECT_EQ("ello", input);
+
+  strrmm(&input, "el");
+  EXPECT_EQ("o", input);
+}
+
 // Test the StringHolder class.
 TEST(StringUtilTest, StringHolder) {
   // Test with C string.

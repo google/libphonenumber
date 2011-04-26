@@ -64,6 +64,21 @@ void StripString(string* s, const char* remove, char replacewith) {
   }
 }
 
+bool TryStripPrefixString(const string& in, const string& prefix, string* out) {
+  assert(out);
+  const bool has_prefix = in.compare(0, prefix.length(), prefix) == 0;
+  out->assign(has_prefix ? in.substr(prefix.length()) : in);
+
+  return has_prefix;
+}
+
+bool HasSuffixString(const string& s, const string& suffix) {
+  if (s.length() < suffix.length()) {
+    return false;
+  }
+  return s.compare(s.length() - suffix.length(), suffix.length(), suffix) == 0;
+}
+
 template <typename T>
 void GenericAtoi(const string& s, T* out) {
   stringstream stream;
@@ -79,19 +94,15 @@ void safe_strtou64(const string& s, uint64 *n) {
   GenericAtoi(s, n);
 }
 
-bool TryStripPrefixString(const string& in, const string& prefix, string* out) {
-  assert(out);
-  const bool has_prefix = in.compare(0, prefix.length(), prefix) == 0;
-  out->assign(has_prefix ? in.substr(prefix.length()) : in);
-
-  return has_prefix;
-}
-
-bool HasSuffixString(const string& s, const string& suffix) {
-  if (s.length() < suffix.length()) {
-    return false;
+void strrmm(string* s, const string& chars) {
+  for (string::iterator it = s->begin(); it != s->end(); ) {
+    const char current_char = *it;
+    if (chars.find(current_char) != string::npos) {
+      it = s->erase(it);
+    } else {
+      ++it;
+    }
   }
-  return s.compare(s.length() - suffix.length(), suffix.length(), suffix) == 0;
 }
 
 // StringHolder class
