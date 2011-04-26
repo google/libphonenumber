@@ -31,7 +31,7 @@ endfunction ()
 function (find_required_library NAME HEADER LIBRARY DESCRIPTION)
   # Check the header.
   find_path (${NAME}_INCLUDE_DIR ${HEADER})
-  set (INCLUDE_DIR ${NAME}_INCLUDE_DIR)
+  set (INCLUDE_DIR ${${NAME}_INCLUDE_DIR})
 
   if (${INCLUDE_DIR} STREQUAL "${INCLUDE_DIR}-NOTFOUND")
     print_error (${DESCRIPTION} ${HEADER})
