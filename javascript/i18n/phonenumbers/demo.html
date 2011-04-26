@@ -50,12 +50,15 @@ function phoneNumberParser() {
     output.append(goog.json.serialize(new goog.proto2.ObjectSerializer(
         goog.proto2.ObjectSerializer.KeyOption.NAME).serialize(number)));
     output.append('\n\n****Validation Results:****');
+    var isNumberValid = phoneUtil.isValidNumber(number);
     output.append('\nResult from isValidNumber(): ');
-    output.append(phoneUtil.isValidNumber(number));
-    output.append('\nResult from isValidNumberForRegion(): ')
-        .append(phoneUtil.isValidNumberForRegion(number, regionCode));
-    output.append('\nResult from isPossibleNumber(): ')
-        .append(phoneUtil.isPossibleNumber(number));
+    output.append(isNumberValid);
+    output.append('\nResult from isValidNumberForRegion(): ');
+    output.append(phoneUtil.isValidNumberForRegion(number, regionCode));
+    output.append('\nPhone Number region: ');
+    output.append(phoneUtil.getRegionCodeForNumber(number));
+    output.append('\nResult from isPossibleNumber(): ');
+    output.append(phoneUtil.isPossibleNumber(number));
     output.append('\nResult from getNumberType(): ');
     var PNT = i18n.phonenumbers.PhoneNumberType;
     switch (phoneUtil.getNumberType(number)) {
@@ -89,16 +92,22 @@ function phoneNumberParser() {
     }
     var PNF = i18n.phonenumbers.PhoneNumberFormat;
     output.append('\n\n****Formatting Results:**** ');
+    output.append('\nE164 format: ');
+    output.append(isNumberValid ?
+                  phoneUtil.format(number, PNF.E164) :
+                  'invalid');
     output.append('\nOriginal format: ');
     output.append(phoneUtil.formatInOriginalFormat(number, regionCode));
-    output.append('\nE164 format: ');
-    output.append(phoneUtil.format(number, PNF.E164));
     output.append('\nInternational format: ');
-    output.append(phoneUtil.format(number, PNF.INTERNATIONAL));
+    output.append(isNumberValid ?
+                  phoneUtil.format(number, PNF.INTERNATIONAL) :
+                  'invalid');
     output.append('\nNational format: ');
     output.append(phoneUtil.format(number, PNF.NATIONAL));
     output.append('\nOut-of-country format from US: ');
-    output.append(phoneUtil.formatOutOfCountryCallingNumber(number, 'US'));
+    output.append(isNumberValid ?
+                  phoneUtil.formatOutOfCountryCallingNumber(number, 'US') :
+                  'invalid');
     if (carrierCode.length > 0) {
       output.append('\nNational format with carrier code: ');
       output.append(phoneUtil.formatNationalNumberWithCarrierCode(number,
