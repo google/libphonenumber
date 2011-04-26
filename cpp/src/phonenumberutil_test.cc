@@ -211,6 +211,14 @@ class PhoneNumberUtilTest : public testing::Test {
                                                phone_number);
   }
 
+  void GetNddPrefixForRegion(const string& region,
+                             bool strip_non_digits,
+                             string* ndd_prefix) const {
+    // For testing purposes, we check this is empty first.
+    ndd_prefix->clear();
+    phone_util_.GetNddPrefixForRegion(region, strip_non_digits, ndd_prefix);
+  }
+
   static bool Equals(const PhoneNumberDesc& expected_number,
                      const PhoneNumberDesc& actual_number) {
     return ExactlySameAs(expected_number, actual_number);
@@ -1579,6 +1587,35 @@ TEST_F(PhoneNumberUtilTest, GetCountryCodeForRegion) {
   EXPECT_EQ(0, phone_util_.GetCountryCodeForRegion(RegionCode::ZZ()));
   // CS is already deprecated so the library doesn't support it.
   EXPECT_EQ(0, phone_util_.GetCountryCodeForRegion(RegionCode::CS()));
+}
+
+TEST_F(PhoneNumberUtilTest, GetNationalDiallingPrefixForRegion) {
+  string ndd_prefix;
+  GetNddPrefixForRegion(RegionCode::US(), false, &ndd_prefix);
+  EXPECT_EQ("1", ndd_prefix);
+
+  // Test non-main country to see it gets the national dialling prefix for the
+  // main country with that country calling code.
+  GetNddPrefixForRegion(RegionCode::BS(), false, &ndd_prefix);
+  EXPECT_EQ("1", ndd_prefix);
+
+  GetNddPrefixForRegion(RegionCode::NZ(), false, &ndd_prefix);
+  EXPECT_EQ("0", ndd_prefix);
+
+  // Test case with non digit in the national prefix.
+  GetNddPrefixForRegion(RegionCode::AO(), false, &ndd_prefix);
+  EXPECT_EQ("0~0", ndd_prefix);
+
+  GetNddPrefixForRegion(RegionCode::AO(), true, &ndd_prefix);
+  EXPECT_EQ("00", ndd_prefix);
+
+  // Test cases with invalid regions.
+  GetNddPrefixForRegion(RegionCode::ZZ(), false, &ndd_prefix);
+  EXPECT_EQ("", ndd_prefix);
+
+  // CS is already deprecated so the library doesn't support it.
+  GetNddPrefixForRegion(RegionCode::CS(), false, &ndd_prefix);
+  EXPECT_EQ("", ndd_prefix);
 }
 
 TEST_F(PhoneNumberUtilTest, IsViablePhoneNumber) {

@@ -777,6 +777,23 @@ void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
   }
 }
 
+void PhoneNumberUtil::GetNddPrefixForRegion(const string& region_code,
+                                            bool strip_non_digits,
+                                            string* national_prefix) const {
+  DCHECK(national_prefix);
+  if (!IsValidRegionCode(region_code)) {
+    logger->Error("Invalid region code provided.");
+    return;
+  }
+  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
+  national_prefix->assign(metadata->national_prefix());
+  if (strip_non_digits) {
+    // Note: if any other non-numeric symbols are ever used in national
+    // prefixes, these would have to be removed here as well.
+    strrmm(national_prefix, "~");
+  }
+}
+
 bool PhoneNumberUtil::IsValidRegionCode(const string& region_code) const {
   return (region_to_metadata_map_->find(region_code) !=
           region_to_metadata_map_->end());
@@ -951,7 +968,6 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
     const string& calling_from,
     string* formatted_number) const {
   DCHECK(formatted_number);
-
   if (!IsValidRegionCode(calling_from)) {
     logger->Info("Trying to format number from invalid region. International"
         " formatting applied.");

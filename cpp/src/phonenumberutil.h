@@ -564,6 +564,18 @@ class PhoneNumberUtil {
   // Gets all the supported regions.
   void GetSupportedRegions(set<string>* regions) const;
 
+  // Returns the national dialling prefix for a specific region. For example,
+  // this would be 1 for the United States, and 0 for New Zealand. Set
+  // stripNonDigits to true to strip symbols like "~" (which indicates a wait
+  // for a dialling tone) from the prefix returned. If no national prefix is
+  // present, we return an empty string.
+  //
+  // Set strip_non_digits to true to strip non-digits from the national
+  // dialling prefix.
+  void GetNddPrefixForRegion(const string& region_code,
+                             bool strip_non_digits,
+                             string* national_prefix) const;
+
   // Helper function to check region code is not unknown or null.
   //
   // The region_code parameter is an ISO 3166-1 two-letter country code string.
