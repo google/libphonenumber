@@ -36,6 +36,7 @@
 #include "logger_adapter.h"
 #include "metadata.h"
 #include "phonemetadata.pb.h"
+#include "phonenumber.h"
 #include "phonenumber.pb.h"
 #include "re2_cache.h"
 #include "stringutil.h"
@@ -2110,7 +2111,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
   int second_number_country_code = second_number.country_code();
   // Both had country calling code specified.
   if (first_number_country_code != 0 && second_number_country_code != 0) {
-    if (first_number.DebugString() == second_number.DebugString()) {
+    if (ExactlySameAs(first_number, second_number)) {
       return EXACT_MATCH;
     } else if (first_number_country_code == second_number_country_code &&
                IsNationalNumberSuffixOfTheOther(first_number, second_number)) {
@@ -2128,7 +2129,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
   // equal.
   first_number.set_country_code(second_number_country_code);
   // If all else was the same, then this is an NSN_MATCH.
-  if (first_number.DebugString() == second_number.DebugString()) {
+  if (ExactlySameAs(first_number, second_number)) {
     return NSN_MATCH;
   }
   if (IsNationalNumberSuffixOfTheOther(first_number, second_number)) {
