@@ -20,6 +20,7 @@
 
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
         <version>2.3.2</version>
@@ -64,6 +65,8 @@
             <configuration>
               <sources>
                 <source>generated/</source>
+                <!-- Also add ../common/src/ which contains BuildMetadataFromXml.java -->
+                <source>../common/src/</source>
               </sources>
             </configuration>
           </execution>
@@ -123,9 +126,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.google.i18n.phonenumbers.tools</groupId>
-      <artifactId>common</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.protobuf</groupId>

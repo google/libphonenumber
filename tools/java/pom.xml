@@ -20,7 +20,7 @@
   </licenses>
 
   <modules>
-    <module>common</module>
+    <module>cpp-build</module>
   </modules>
 
 </project>
