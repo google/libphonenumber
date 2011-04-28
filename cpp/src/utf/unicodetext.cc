@@ -442,22 +442,22 @@ char32 UnicodeText::const_iterator::operator*() const {
   // for speed, we do the calculation ourselves.)
 
   // Convert from UTF-8
-  int byte1 = it_[0];
+  uint8 byte1 = static_cast<uint8>(it_[0]);
   if (byte1 < 0x80)
     return byte1;
 
-  int byte2 = it_[1];
+  uint8 byte2 = static_cast<uint8>(it_[1]);
   if (byte1 < 0xE0)
     return ((byte1 & 0x1F) << 6)
           | (byte2 & 0x3F);
 
-  int byte3 = it_[2];
+  uint8 byte3 = static_cast<uint8>(it_[2]);
   if (byte1 < 0xF0)
     return ((byte1 & 0x0F) << 12)
          | ((byte2 & 0x3F) << 6)
          |  (byte3 & 0x3F);
 
-  int byte4 = it_[3];
+  uint8 byte4 = static_cast<uint8>(it_[3]);
   return ((byte1 & 0x07) << 18)
        | ((byte2 & 0x3F) << 12)
        | ((byte3 & 0x3F) << 6)
