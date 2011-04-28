@@ -73,14 +73,33 @@ find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
                        "Google Protocol Buffers")
 check_library_version (PC_PROTOBUF protobuf 2.4)
 
-find_required_library (ICU unicode/unistr.h icui18n "ICU")
-check_library_version (PC_ICU icui18n 4.4)
+find_required_library (ICU unicode/uchar.h icuuc "ICU")
+check_library_version (PC_ICU icuuc 4.4)
 
 find_required_program (PROTOC protoc
                        "Google Protocol Buffers compiler (protoc)")
 
 find_required_program (JAVA java
                        "Java Runtime Environment")
+
+if (APPLE)
+  FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
+  FIND_LIBRARY (FOUNDATION_LIB Foundation)
+endif ()
+
+INCLUDE (CheckIncludeFileCXX)
+CHECK_INCLUDE_FILE_CXX ("tr1/unordered_map" HAVE_CXX_TR1_UNORDERED_MAP)
+
+if (HAVE_CXX_TR1_UNORDERED_MAP)
+  add_definitions ("-DUSE_TR1_UNORDERED_MAP")
+else ()
+  CHECK_INCLUDE_FILE_CXX (hash_map HAVE_CXX_HASH_MAP)
+  if (HAVE_CXX_HASH_MAP)
+    add_definitions ("-DUSE_HASH_MAP")
+  else ()
+    print_error ("C++ map class" "tr1/unordered_map or hash_map")
+  endif ()
+endif ()
 
 # Add protoc (Protocol Buffers compiler) target.
 set (RESOURCES_DIR "${CMAKE_SOURCE_DIR}/../resources")
@@ -189,9 +208,16 @@ if (UNIX)
 
     # The next flags are needed by base/ source files to compile low level code
     # needed by Singleton.
-    add_definitions ("-DCOMPILER_GCC -DOS_POSIX -DOS_LINUX")
+    add_definitions ("-DCOMPILER_GCC -DOS_POSIX")
 
-    if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86.*")
+    if (APPLE)
+      add_definitions ("-DOS_MACOSX")
+    else ()
+      add_definitions ("-DOS_LINUX")
+    endif ()
+
+    if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86.*" OR
+        ${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
       add_definitions ("-DARCH_CPU_X86_FAMILY")
       # Add GCC specific sources.
       list (APPEND SOURCES "src/base/atomicops_internals_x86_gcc.cc")
@@ -208,6 +234,13 @@ if (UNIX)
     "src/base/threading/platform_thread_posix.cc"
     "src/base/threading/thread_local_posix.cc"
   )
+
+  if (APPLE)
+    list (
+      APPEND SOURCES
+      "src/base/threading/platform_thread_mac.mm"
+    )
+  endif ()
 else (WIN32)
   # TODO: add Windows support (define COMPILER_MSVC, OS_WIN).
   list (
@@ -226,6 +259,10 @@ add_library (phonenumber STATIC ${SOURCES})
 add_dependencies (phonenumber generate-sources)
 
 target_link_libraries (phonenumber ${RE2_LIB} ${PROTOBUF_LIB} ${ICU_LIB})
+
+if (APPLE)
+  target_link_libraries (phonenumber ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
+endif ()
 
 # Tests.
 set (TEST_SOURCES

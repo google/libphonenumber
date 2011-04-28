@@ -470,7 +470,7 @@ UnicodeText::const_iterator& UnicodeText::const_iterator::operator++() {
 }
 
 UnicodeText::const_iterator& UnicodeText::const_iterator::operator--() {
-  while (UniLib::IsTrailByte(*--it_));
+  while (UniLib::IsTrailByte(*--it_)) { }
   return *this;
 }
 

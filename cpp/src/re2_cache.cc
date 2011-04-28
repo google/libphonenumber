@@ -27,6 +27,8 @@
 
 using std::string;
 
+#ifdef USE_HASH_MAP
+
 // A basic text book string hash function implementation, this one taken from
 // The Practice of Programming (Kernighan and Pike 1999). It could be a good
 // idea in the future to evaluate how well it actually performs and possibly
@@ -44,6 +46,8 @@ template<> struct hash<string> {
   }
 };
 }  // namespace __gnu_cxx
+
+#endif
 
 namespace i18n {
 namespace phonenumbers {

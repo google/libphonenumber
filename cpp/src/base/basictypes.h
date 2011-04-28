@@ -17,7 +17,34 @@
 #include <stdint.h>         // For intptr_t.
 #endif
 
-typedef signed char         schar;
+#ifdef INT64_MAX
+
+// INT64_MAX is defined if C99 stdint.h is included; use the
+// native types if available.
+typedef int8_t int8;
+typedef int16_t int16;
+typedef int32_t int32;
+typedef int64_t int64;
+typedef uint8_t uint8;
+typedef uint16_t uint16;
+typedef uint32_t uint32;
+typedef uint64_t uint64;
+
+const uint8  kuint8max  = UINT8_MAX;
+const uint16 kuint16max = UINT16_MAX;
+const uint32 kuint32max = UINT32_MAX;
+const uint64 kuint64max = UINT64_MAX;
+const  int8  kint8min   = INT8_MIN;
+const  int8  kint8max   = INT8_MAX;
+const  int16 kint16min  = INT16_MIN;
+const  int16 kint16max  = INT16_MAX;
+const  int32 kint32min  = INT32_MIN;
+const  int32 kint32max  = INT32_MAX;
+const  int64 kint64min  = INT64_MIN;
+const  int64 kint64max  = INT64_MAX;
+
+#else // !INT64_MAX
+
 typedef signed char         int8;
 typedef short               int16;
 // TODO: Remove these type guards.  These are to avoid conflicts with
@@ -57,12 +84,6 @@ typedef unsigned long uint64;
 typedef unsigned long long uint64;
 #endif
 
-// A type to represent a Unicode code-point value. As of Unicode 4.0,
-// such values require up to 21 bits.
-// (For type-checking on pointers, make this explicitly signed,
-// and it should always be the signed version of whatever int32 is.)
-typedef signed int         char32;
-
 const uint8  kuint8max  = (( uint8) 0xFF);
 const uint16 kuint16max = ((uint16) 0xFFFF);
 const uint32 kuint32max = ((uint32) 0xFFFFFFFF);
@@ -75,6 +96,16 @@ const  int32 kint32min  = (( int32) 0x80000000);
 const  int32 kint32max  = (( int32) 0x7FFFFFFF);
 const  int64 kint64min  = (( int64) GG_LONGLONG(0x8000000000000000));
 const  int64 kint64max  = (( int64) GG_LONGLONG(0x7FFFFFFFFFFFFFFF));
+
+#endif // !INT64_MAX
+
+typedef signed char         schar;
+
+// A type to represent a Unicode code-point value. As of Unicode 4.0,
+// such values require up to 21 bits.
+// (For type-checking on pointers, make this explicitly signed,
+// and it should always be the signed version of whatever int32 is.)
+typedef signed int         char32;
 
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class

@@ -27,8 +27,8 @@
 #include <google/protobuf/message_lite.h>
 #include <re2/re2.h>
 #include <re2/stringpiece.h>
-#include <unicode/errorcode.h>
-#include <unicode/translit.h>
+#include <unicode/uchar.h>
+#include <unicode/utf8.h>
 
 #include "base/logging.h"
 #include "base/singleton.h"
@@ -349,9 +349,9 @@ void FormatAccordingToFormats(
 bool IsNationalNumberSuffixOfTheOther(const PhoneNumber& first_number,
                                       const PhoneNumber& second_number) {
   const string& first_number_national_number =
-      SimpleItoa(first_number.national_number());
+    SimpleItoa(static_cast<uint64>(first_number.national_number()));
   const string& second_number_national_number =
-      SimpleItoa(second_number.national_number());
+    SimpleItoa(static_cast<uint64>(second_number.national_number()));
   // Note that HasSuffixString returns true if the numbers are equal.
   return HasSuffixString(first_number_national_number,
                          second_number_national_number) ||
@@ -1738,35 +1738,24 @@ void PhoneNumberUtil::NormalizeDigitsOnly(string* number) {
   static const StringPiece empty;
   RE2::GlobalReplace(number, invalid_digits_pattern, empty);
   // Normalize all decimal digits to ASCII digits.
-  UParseError error;
-  icu::ErrorCode status;
-
-  scoped_ptr<icu::Transliterator> transliterator(
-    icu::Transliterator::createFromRules(
-      "NormalizeDecimalDigits",
-      "[[:nv=0:]-[0]-[:^nt=de:]]>0;"
-      "[[:nv=1:]-[1]-[:^nt=de:]]>1;"
-      "[[:nv=2:]-[2]-[:^nt=de:]]>2;"
-      "[[:nv=3:]-[3]-[:^nt=de:]]>3;"
-      "[[:nv=4:]-[4]-[:^nt=de:]]>4;"
-      "[[:nv=5:]-[5]-[:^nt=de:]]>5;"
-      "[[:nv=6:]-[6]-[:^nt=de:]]>6;"
-      "[[:nv=7:]-[7]-[:^nt=de:]]>7;"
-      "[[:nv=8:]-[8]-[:^nt=de:]]>8;"
-      "[[:nv=9:]-[9]-[:^nt=de:]]>9;",
-      UTRANS_FORWARD,
-      error,
-      status
-    )
-  );
-  if (!status.isSuccess()) {
-    logger->Error("Error creating ICU Transliterator");
-    return;
+  string normalized;
+  UnicodeText number_as_unicode;
+  number_as_unicode.PointToUTF8(number->data(), number->size());
+  for (UnicodeText::const_iterator it = number_as_unicode.begin();
+       it != number_as_unicode.end();
+       ++it) {
+    int32_t digitValue = u_charDigitValue(*it);
+    if (digitValue == -1) {
+      // Not a decimal digit.
+      char utf8[4];
+      int len = it.get_utf8(utf8);
+      normalized.append(utf8, len);
+    } else {
+      normalized.push_back('0' + digitValue);
+    }
   }
-  icu::UnicodeString utf16(icu::UnicodeString::fromUTF8(number->c_str()));
-  transliterator->transliterate(utf16);
-  number->clear();
-  utf16.toUTF8String(*number);
+
+  *number = normalized;
 }
 
 bool PhoneNumberUtil::IsAlphaNumber(const string& number) const {

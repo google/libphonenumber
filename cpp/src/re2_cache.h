@@ -14,7 +14,7 @@
 
 // Author: Fredrik Roubert <roubert@google.com>
 
-// RE2Cache is a simple wrapper around hash_map<> to store RE2 objects.
+// RE2Cache is a simple wrapper around an STL map to store RE2 objects.
 //
 // To get a cached RE2 object for a regexp pattern string, create a ScopedAccess
 // object with a pointer to the cache object and the pattern string itself as
@@ -30,16 +30,22 @@
 #ifndef I18N_PHONENUMBERS_RE2_CACHE_H_
 #define I18N_PHONENUMBERS_RE2_CACHE_H_
 
-#ifdef __DEPRECATED
-#undef __DEPRECATED  // Don't warn for using <hash_map>.
-#endif
-
 #include <cstddef>
-#include <hash_map>
 #include <string>
 
 #include "base/scoped_ptr.h"
 #include "base/synchronization/lock.h"
+
+#ifdef USE_TR1_UNORDERED_MAP
+#  include <tr1/unordered_map>
+#elif defined(USE_HASH_MAP)
+#  ifndef __DEPRECATED
+#    define __DEPRECATED
+#  endif
+#  include <hash_map>
+#else
+#  error STL map type unsupported on this platform!
+#endif
 
 namespace re2 {
 class RE2;
@@ -50,11 +56,14 @@ namespace phonenumbers {
 
 using re2::RE2;
 using std::string;
-using __gnu_cxx::hash_map;
 
 class RE2Cache {
  private:
-  typedef hash_map<string, const RE2*> CacheImpl;
+#ifdef USE_TR1_UNORDERED_MAP
+  typedef std::tr1::unordered_map<string, const RE2*> CacheImpl;
+#elif defined(USE_HASH_MAP)
+  typedef std::hash_map<string, const RE2*> CacheImpl;
+#endif
 
  public:
   explicit RE2Cache(size_t min_items);
