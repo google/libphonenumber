@@ -40,11 +40,11 @@ import java.util.regex.Pattern;
  */
 public class AsYouTypeFormatter {
   private String currentOutput = "";
-  private StringBuffer formattingTemplate = new StringBuffer();
+  private StringBuilder formattingTemplate = new StringBuilder();
   // The pattern from numberFormat that is currently used to create formattingTemplate.
   private String currentFormattingPattern = "";
-  private StringBuffer accruedInput = new StringBuffer();
-  private StringBuffer accruedInputWithoutFormatting = new StringBuffer();
+  private StringBuilder accruedInput = new StringBuilder();
+  private StringBuilder accruedInputWithoutFormatting = new StringBuilder();
   private boolean ableToFormat = true;
   private boolean isInternationalFormatting = false;
   private boolean isExpectingCountryCallingCode = false;
@@ -91,8 +91,8 @@ public class AsYouTypeFormatter {
   // The position of a digit upon which inputDigitAndRememberPosition is most recently invoked, as
   // found in accruedInputWithoutFormatting.
   private int positionToRemember = 0;
-  private StringBuffer prefixBeforeNationalNumber = new StringBuffer();
-  private StringBuffer nationalNumber = new StringBuffer();
+  private StringBuilder prefixBeforeNationalNumber = new StringBuilder();
+  private StringBuilder nationalNumber = new StringBuilder();
   private List<NumberFormat> possibleFormats = new ArrayList<NumberFormat>();
 
     // A cache for frequently used country-specific regular expressions.
@@ -449,7 +449,7 @@ public class AsYouTypeFormatter {
     if (nationalNumber.length() == 0) {
       return false;
     }
-    StringBuffer numberWithoutCountryCallingCode = new StringBuffer();
+    StringBuilder numberWithoutCountryCallingCode = new StringBuilder();
     int countryCode = phoneUtil.extractCountryCode(nationalNumber, numberWithoutCountryCallingCode);
     if (countryCode == 0) {
       return false;

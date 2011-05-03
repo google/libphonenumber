@@ -77,7 +77,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       e1.printStackTrace();
     }
 
-    StringBuffer output;
+    StringBuilder output;
     if (fileContents.length() == 0) {
       output = getOutputForSingleNumber(phoneNumber, defaultCountry);
       resp.setContentType("text/plain");
@@ -90,8 +90,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
     resp.getWriter().println(output);
   }
 
-  private StringBuffer getOutputForFile(String defaultCountry, String fileContents) {
-    StringBuffer output = new StringBuffer();
+  private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
+    StringBuilder output = new StringBuilder();
     output.append("<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:" 
         + "</TITLE></HEAD><BODY>");
     output.append("<TABLE align=center border=1>");
@@ -129,8 +129,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
     return output;
   }
 
-  private StringBuffer getOutputForSingleNumber(String phoneNumber, String defaultCountry) {
-    StringBuffer output = new StringBuffer();
+  private StringBuilder getOutputForSingleNumber(String phoneNumber, String defaultCountry) {
+    StringBuilder output = new StringBuilder();
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
       output.append("\n\n****Parsing Result:****");

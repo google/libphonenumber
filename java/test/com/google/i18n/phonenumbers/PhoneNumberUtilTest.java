@@ -1042,7 +1042,7 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     metadata.setNationalPrefixForParsing("34");
     metadata.setGeneralDesc(new PhoneNumberDesc().setNationalNumberPattern("\\d{4,8}"));
-    StringBuffer numberToStrip = new StringBuffer("34356778");
+    StringBuilder numberToStrip = new StringBuilder("34356778");
     String strippedNumber = "356778";
     phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
     assertEquals("Should have had national prefix stripped.",
@@ -1059,7 +1059,7 @@ public class PhoneNumberUtilTest extends TestCase {
                  strippedNumber, numberToStrip.toString());
     // If the resultant number doesn't match the national rule, it shouldn't be stripped.
     metadata.setNationalPrefixForParsing("3");
-    numberToStrip = new StringBuffer("3123");
+    numberToStrip = new StringBuilder("3123");
     strippedNumber = "3123";
     phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
     assertEquals("Should have had no change - after stripping, it wouldn't have matched " +
@@ -1067,7 +1067,7 @@ public class PhoneNumberUtilTest extends TestCase {
                  strippedNumber, numberToStrip.toString());
     // Test extracting carrier selection code.
     metadata.setNationalPrefixForParsing("0(81)?");
-    numberToStrip = new StringBuffer("08122123456");
+    numberToStrip = new StringBuilder("08122123456");
     strippedNumber = "22123456";
     assertEquals("81", phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata));
     assertEquals("Should have had national prefix and carrier code stripped.",
@@ -1076,7 +1076,7 @@ public class PhoneNumberUtilTest extends TestCase {
     metadata.setNationalPrefixTransformRule("5$15");
     // Note that a capturing group is present here.
     metadata.setNationalPrefixForParsing("0(\\d{2})");
-    numberToStrip = new StringBuffer("031123");
+    numberToStrip = new StringBuilder("031123");
     String transformedNumber = "5315123";
     phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
     assertEquals("Should transform the 031 to a 5315.",
@@ -1085,9 +1085,9 @@ public class PhoneNumberUtilTest extends TestCase {
 
   public void testMaybeStripInternationalPrefix() {
     String internationalPrefix = "00[39]";
-    StringBuffer numberToStrip = new StringBuffer("0034567700-3898003");
+    StringBuilder numberToStrip = new StringBuilder("0034567700-3898003");
     // Note the dash is removed as part of the normalization.
-    StringBuffer strippedNumber = new StringBuffer("45677003898003");
+    StringBuilder strippedNumber = new StringBuilder("45677003898003");
     assertEquals(CountryCodeSource.FROM_NUMBER_WITH_IDD,
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
@@ -1099,14 +1099,14 @@ public class PhoneNumberUtilTest extends TestCase {
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
 
-    numberToStrip = new StringBuffer("00945677003898003");
+    numberToStrip = new StringBuilder("00945677003898003");
     assertEquals(CountryCodeSource.FROM_NUMBER_WITH_IDD,
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
     assertEquals("The number supplied was not stripped of its international prefix.",
                  strippedNumber.toString(), numberToStrip.toString());
     // Test it works when the international prefix is broken up by spaces.
-    numberToStrip = new StringBuffer("00 9 45677003898003");
+    numberToStrip = new StringBuilder("00 9 45677003898003");
     assertEquals(CountryCodeSource.FROM_NUMBER_WITH_IDD,
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
@@ -1119,8 +1119,8 @@ public class PhoneNumberUtilTest extends TestCase {
                                                                      internationalPrefix));
 
     // Test the + symbol is also recognised and stripped.
-    numberToStrip = new StringBuffer("+45677003898003");
-    strippedNumber = new StringBuffer("45677003898003");
+    numberToStrip = new StringBuilder("+45677003898003");
+    strippedNumber = new StringBuilder("45677003898003");
     assertEquals(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN,
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
@@ -1129,15 +1129,15 @@ public class PhoneNumberUtilTest extends TestCase {
 
     // If the number afterwards is a zero, we should not strip this - no country calling code begins
     // with 0.
-    numberToStrip = new StringBuffer("0090112-3123");
-    strippedNumber = new StringBuffer("00901123123");
+    numberToStrip = new StringBuilder("0090112-3123");
+    strippedNumber = new StringBuilder("00901123123");
     assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
     assertEquals("The number supplied had a 0 after the match so shouldn't be stripped.",
                  strippedNumber.toString(), numberToStrip.toString());
     // Here the 0 is separated by a space from the IDD.
-    numberToStrip = new StringBuffer("009 0-112-3123");
+    numberToStrip = new StringBuilder("009 0-112-3123");
     assertEquals(CountryCodeSource.FROM_DEFAULT_COUNTRY,
                  phoneUtil.maybeStripInternationalPrefixAndNormalize(numberToStrip,
                                                                      internationalPrefix));
@@ -1151,7 +1151,7 @@ public class PhoneNumberUtilTest extends TestCase {
       String phoneNumber = "011112-3456789";
       String strippedNumber = "123456789";
       int countryCallingCode = 1;
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals("Did not extract country calling code " + countryCallingCode + " correctly.",
                    countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
@@ -1169,7 +1169,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "+6423456789";
       int countryCallingCode = 64;
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals("Did not extract country calling code " + countryCallingCode + " correctly.",
                    countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
@@ -1182,7 +1182,7 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "2345-6789";
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals(
           "Should not have extracted a country calling code - no international prefix present.",
           0,
@@ -1195,7 +1195,7 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "0119991123456789";
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true, number);
       fail("Should have thrown an exception, no valid country calling code present.");
     } catch (NumberParseException e) {
@@ -1208,7 +1208,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "(1 610) 619 4466";
       int countryCallingCode = 1;
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals("Should have extracted the country calling code of the region passed in",
                    countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
@@ -1223,7 +1223,7 @@ public class PhoneNumberUtilTest extends TestCase {
     try {
       String phoneNumber = "(1 610) 619 4466";
       int countryCallingCode = 1;
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals("Should have extracted the country calling code of the region passed in",
                    countryCallingCode,
                    phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false,
@@ -1235,7 +1235,7 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "(1 610) 619 446";
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals("Should not have extracted a country calling code - invalid number after " +
                    "extraction of uncertain country calling code.",
                    0,
@@ -1248,7 +1248,7 @@ public class PhoneNumberUtilTest extends TestCase {
     number.clear();
     try {
       String phoneNumber = "(1 610) 619";
-      StringBuffer numberToFill = new StringBuffer();
+      StringBuilder numberToFill = new StringBuilder();
       assertEquals("Should not have extracted a country calling code - too short number both " +
                    "before and after extraction of uncertain country calling code.",
                    0,

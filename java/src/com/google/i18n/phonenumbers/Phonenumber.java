@@ -235,7 +235,7 @@ public final class Phonenumber {
 
     @Override
     public String toString() {
-      StringBuffer outputString = new StringBuffer();
+      StringBuilder outputString = new StringBuilder();
       outputString.append("Country Code: ").append(countryCode_);
       outputString.append(" National Number: ").append(nationalNumber_);
       if (hasItalianLeadingZero() && getItalianLeadingZero()) {

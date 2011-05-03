@@ -543,7 +543,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   private void ensureTermination(String text, String defaultCountry, Leniency leniency) {
     for (int index = 0; index <= text.length(); index++) {
       String sub = text.substring(index);
-      StringBuffer matches = new StringBuffer();
+      StringBuilder matches = new StringBuilder();
       // Iterates over all matches.
       for (PhoneNumberMatch match :
            phoneUtil.findNumbers(sub, defaultCountry, leniency, Long.MAX_VALUE)) {

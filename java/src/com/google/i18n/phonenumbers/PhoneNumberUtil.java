@@ -544,12 +544,12 @@ public class PhoneNumberUtil {
 
   /**
    * Normalizes a string of characters representing a phone number. This is a wrapper for
-   * normalize(String number) but does in-place normalization of the StringBuffer provided.
+   * normalize(String number) but does in-place normalization of the StringBuilder provided.
    *
-   * @param number  a StringBuffer of characters representing a phone number that will be normalized
-   *     in place
+   * @param number  a StringBuilder of characters representing a phone number that will be
+   *     normalized in place
    */
-  static void normalize(StringBuffer number) {
+  static void normalize(StringBuilder number) {
     String normalizedNumber = normalize(number.toString());
     number.replace(0, number.length(), normalizedNumber);
   }
@@ -713,7 +713,7 @@ public class PhoneNumberUtil {
   private static String normalizeHelper(String number,
                                         Map<Character, Character> normalizationReplacements,
                                         boolean removeNonMatches) {
-    StringBuffer normalizedNumber = new StringBuffer(number.length());
+    StringBuilder normalizedNumber = new StringBuilder(number.length());
     char[] numberAsCharArray = number.toCharArray();
     for (char character : numberAsCharArray) {
       Character newDigit = normalizationReplacements.get(Character.toUpperCase(character));
@@ -808,16 +808,16 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
-    StringBuffer formattedNumber = new StringBuffer(20);
+    StringBuilder formattedNumber = new StringBuilder(20);
     format(number, numberFormat, formattedNumber);
     return formattedNumber.toString();
   }
 
-  // Same as format(PhoneNumber, PhoneNumberFormat), but accepts mutable StringBuffer as parameters
+  // Same as format(PhoneNumber, PhoneNumberFormat), but accepts mutable StringBuilder as parameters
   // to decrease object creation when invoked many times.
   public void format(PhoneNumber number, PhoneNumberFormat numberFormat,
-                     StringBuffer formattedNumber) {
-    // Clear the StringBuffer first.
+                     StringBuilder formattedNumber) {
+    // Clear the StringBuilder first.
     formattedNumber.setLength(0);
     int countryCode = number.getCountryCode();
     String nationalSignificantNumber = getNationalSignificantNumber(number);
@@ -895,10 +895,10 @@ public class PhoneNumberUtil {
       }
     }
 
-    StringBuffer formattedNumber =
-        new StringBuffer(formatAccordingToFormats(nationalSignificantNumber,
-                                                  userDefinedFormatsCopy,
-                                                  numberFormat));
+    StringBuilder formattedNumber =
+        new StringBuilder(formatAccordingToFormats(nationalSignificantNumber,
+                                                   userDefinedFormatsCopy,
+                                                   numberFormat));
     maybeGetFormattedExtension(number, regionCode, numberFormat, formattedNumber);
     formatNumberByFormat(countryCallingCode, numberFormat, formattedNumber);
     return formattedNumber.toString();
@@ -926,7 +926,7 @@ public class PhoneNumberUtil {
       return nationalSignificantNumber;
     }
 
-    StringBuffer formattedNumber = new StringBuffer(20);
+    StringBuilder formattedNumber = new StringBuilder(20);
     formattedNumber.append(formatNationalNumber(nationalSignificantNumber,
                                                 regionCode,
                                                 PhoneNumberFormat.NATIONAL,
@@ -1018,7 +1018,7 @@ public class PhoneNumberUtil {
       internationalPrefixForFormatting = metadata.getPreferredInternationalPrefix();
     }
 
-    StringBuffer formattedNumber = new StringBuffer(formattedNationalNumber);
+    StringBuilder formattedNumber = new StringBuilder(formattedNationalNumber);
     maybeGetFormattedExtension(number, regionCode, PhoneNumberFormat.INTERNATIONAL,
                                formattedNumber);
     if (internationalPrefixForFormatting.length() > 0) {
@@ -1145,7 +1145,7 @@ public class PhoneNumberUtil {
         UNIQUE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()
         ? internationalPrefix
         : metadata.getPreferredInternationalPrefix();
-    StringBuffer formattedNumber = new StringBuffer(rawInput);
+    StringBuilder formattedNumber = new StringBuilder(rawInput);
     maybeGetFormattedExtension(number, regionCode, PhoneNumberFormat.INTERNATIONAL,
                                formattedNumber);
     if (internationalPrefixForFormatting.length() > 0) {
@@ -1173,7 +1173,7 @@ public class PhoneNumberUtil {
     // December 2000, but it has not yet happened.
     // See http://en.wikipedia.org/wiki/%2B39 for more details.
     // Other regions such as Cote d'Ivoire and Gabon use this for their mobile numbers.
-    StringBuffer nationalNumber = new StringBuffer(
+    StringBuilder nationalNumber = new StringBuilder(
         (number.hasItalianLeadingZero() &&
          number.getItalianLeadingZero() &&
          isLeadingZeroPossible(number.getCountryCode()))
@@ -1188,7 +1188,7 @@ public class PhoneNumberUtil {
    */
   private void formatNumberByFormat(int countryCallingCode,
                                     PhoneNumberFormat numberFormat,
-                                    StringBuffer formattedNumber) {
+                                    StringBuilder formattedNumber) {
     switch (numberFormat) {
       case E164:
         formattedNumber.insert(0, countryCallingCode).insert(0, PLUS_SIGN);
@@ -1329,7 +1329,7 @@ public class PhoneNumberUtil {
    */
   private void maybeGetFormattedExtension(PhoneNumber number, String regionCode,
                                           PhoneNumberFormat numberFormat,
-                                          StringBuffer formattedNumber) {
+                                          StringBuilder formattedNumber) {
     if (number.hasExtension() && number.getExtension().length() > 0) {
       if (numberFormat == PhoneNumberFormat.RFC3966) {
         formattedNumber.append(RFC3966_EXTN_PREFIX).append(number.getExtension());
@@ -1344,7 +1344,7 @@ public class PhoneNumberUtil {
    * prefix. This will be the default extension prefix, unless overridden by a preferred
    * extension prefix for this region.
    */
-  private void formatExtension(String extensionDigits, String regionCode, StringBuffer extension) {
+  private void formatExtension(String extensionDigits, String regionCode, StringBuilder extension) {
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
     if (metadata.hasPreferredExtnPrefix()) {
       extension.append(metadata.getPreferredExtnPrefix()).append(extensionDigits);
@@ -1649,7 +1649,7 @@ public class PhoneNumberUtil {
       // Number is too short, or doesn't match the basic phone number pattern.
       return false;
     }
-    StringBuffer strippedNumber = new StringBuffer(number);
+    StringBuilder strippedNumber = new StringBuilder(number);
     maybeStripExtension(strippedNumber);
     return VALID_ALPHA_PHONE_PATTERN.matcher(strippedNumber).matches();
   }
@@ -1803,7 +1803,7 @@ public class PhoneNumberUtil {
   // nationalNumber. It assumes that the leading plus sign or IDD has already been removed. Returns
   // 0 if fullNumber doesn't start with a valid country calling code, and leaves nationalNumber
   // unmodified.
-  int extractCountryCode(StringBuffer fullNumber, StringBuffer nationalNumber) {
+  int extractCountryCode(StringBuilder fullNumber, StringBuilder nationalNumber) {
     int potentialCountryCode;
     int numberLength = fullNumber.length();
     for (int i = 1; i <= MAX_LENGTH_COUNTRY_CODE && i <= numberLength; i++) {
@@ -1848,13 +1848,13 @@ public class PhoneNumberUtil {
    * @return  the country calling code extracted or 0 if none could be extracted
    */
   int maybeExtractCountryCode(String number, PhoneMetadata defaultRegionMetadata,
-                              StringBuffer nationalNumber, boolean keepRawInput,
+                              StringBuilder nationalNumber, boolean keepRawInput,
                               PhoneNumber phoneNumber)
       throws NumberParseException {
     if (number.length() == 0) {
       return 0;
     }
-    StringBuffer fullNumber = new StringBuffer(number);
+    StringBuilder fullNumber = new StringBuilder(number);
     // Set the default prefix to be something that will never match.
     String possibleCountryIddPrefix = "NonMatch";
     if (defaultRegionMetadata != null) {
@@ -1890,8 +1890,8 @@ public class PhoneNumberUtil {
       String defaultCountryCodeString = String.valueOf(defaultCountryCode);
       String normalizedNumber = fullNumber.toString();
       if (normalizedNumber.startsWith(defaultCountryCodeString)) {
-        StringBuffer potentialNationalNumber =
-            new StringBuffer(normalizedNumber.substring(defaultCountryCodeString.length()));
+        StringBuilder potentialNationalNumber =
+            new StringBuilder(normalizedNumber.substring(defaultCountryCodeString.length()));
         PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
         Pattern validNumberPattern =
             regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
@@ -1923,7 +1923,7 @@ public class PhoneNumberUtil {
    * Strips the IDD from the start of the number if present. Helper function used by
    * maybeStripInternationalPrefixAndNormalize.
    */
-  private boolean parsePrefixAsIdd(Pattern iddPattern, StringBuffer number) {
+  private boolean parsePrefixAsIdd(Pattern iddPattern, StringBuilder number) {
     Matcher m = iddPattern.matcher(number);
     if (m.lookingAt()) {
       int matchEnd = m.end();
@@ -1955,7 +1955,7 @@ public class PhoneNumberUtil {
    *     not seem to be in international format.
    */
   CountryCodeSource maybeStripInternationalPrefixAndNormalize(
-      StringBuffer number,
+      StringBuilder number,
       String possibleIddPrefix) {
     if (number.length() == 0) {
       return CountryCodeSource.FROM_DEFAULT_COUNTRY;
@@ -1991,7 +1991,7 @@ public class PhoneNumberUtil {
    * @param metadata  the metadata for the region that we think this number is from
    * @return the carrier code extracted if it is present, otherwise return an empty string.
    */
-  String maybeStripNationalPrefixAndCarrierCode(StringBuffer number, PhoneMetadata metadata) {
+  String maybeStripNationalPrefixAndCarrierCode(StringBuilder number, PhoneMetadata metadata) {
     String carrierCode = "";
     int numberLength = number.length();
     String possibleNationalPrefix = metadata.getNationalPrefixForParsing();
@@ -2023,7 +2023,7 @@ public class PhoneNumberUtil {
       } else {
         // Check that the resultant number is viable. If not, return. Check this by copying the
         // string buffer and making the transformation on the copy first.
-        StringBuffer transformedNumber = new StringBuffer(number);
+        StringBuilder transformedNumber = new StringBuilder(number);
         transformedNumber.replace(0, numberLength, prefixMatcher.replaceFirst(transformRule));
         Matcher nationalNumber = nationalNumberRule.matcher(transformedNumber.toString());
         if (!nationalNumber.matches()) {
@@ -2045,7 +2045,7 @@ public class PhoneNumberUtil {
    * @param number  the non-normalized telephone number that we wish to strip the extension from
    * @return        the phone extension
    */
-  String maybeStripExtension(StringBuffer number) {
+  String maybeStripExtension(StringBuilder number) {
     Matcher m = EXTN_PATTERN.matcher(number);
     // If we find a potential extension, and the number preceding this is a viable number, we assume
     // it is an extension.
@@ -2220,7 +2220,7 @@ public class PhoneNumberUtil {
     if (keepRawInput) {
       phoneNumber.setRawInput(numberToParse);
     }
-    StringBuffer nationalNumber = new StringBuffer(number);
+    StringBuilder nationalNumber = new StringBuilder(number);
     // Attempt to parse extension first, since it doesn't require region-specific data and we want
     // to have the non-normalised number here.
     String extension = maybeStripExtension(nationalNumber);
@@ -2231,7 +2231,7 @@ public class PhoneNumberUtil {
     PhoneMetadata regionMetadata = getMetadataForRegion(defaultRegion);
     // Check to see if the number is given in international format so we know whether this number is
     // from the default region or not.
-    StringBuffer normalizedNationalNumber = new StringBuffer();
+    StringBuilder normalizedNationalNumber = new StringBuilder();
     int countryCode = maybeExtractCountryCode(nationalNumber.toString(), regionMetadata,
                                               normalizedNationalNumber, keepRawInput, phoneNumber);
     if (countryCode != 0) {
