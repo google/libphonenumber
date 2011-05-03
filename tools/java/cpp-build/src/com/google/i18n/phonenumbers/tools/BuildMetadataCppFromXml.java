@@ -152,9 +152,9 @@ public class BuildMetadataCppFromXml extends Command {
     pw.write(CopyrightNotice.TEXT);
     pw.println(String.format("#include \"%s.h\"", baseFilename));
     pw.println();
-    pw.print(String.format("static const unsigned char %s_data[] = { ", baseFilename));
+    pw.print(String.format("static const unsigned char %s_data[] = {", baseFilename));
     emitStaticArrayCode(pw);
-    pw.println(" };");
+    pw.println("};");
 
     pw.println();
     pw.println(String.format("int %s_size() {", baseFilename));
@@ -174,9 +174,19 @@ public class BuildMetadataCppFromXml extends Command {
    */
   void emitStaticArrayCode(PrintWriter pw) throws IOException {
     byte[] buf = binaryStream.toByteArray();
+    pw.print("\n  ");
 
     for (int i = 0; i < buf.length; i++) {
-      pw.printf("0x%02X, ", buf[i]);
+      String format = "0x%02X";
+
+      if (i == buf.length - 1) {
+        format += "\n";
+      } else if ((i + 1) % 13 == 0) {  // 13 bytes per line to have lines of 79 characters.
+        format += ",\n  ";
+      } else {
+        format += ", ";
+      }
+      pw.printf(format, buf[i]);
     }
     pw.flush();
     binaryStream.flush();

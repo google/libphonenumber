@@ -49,7 +49,7 @@ public class BuildMetadataCppFromXmlTest {
       buildMetadataCppFromXml.setBinaryStream(stream);
       buildMetadataCppFromXml.emitStaticArrayCode(printWriter);
 
-      assertEquals("0xCA, 0xFE, 0xBA, 0xBE, ", result.toString());
+      assertEquals("\n  0xCA, 0xFE, 0xBA, 0xBE\n", result.toString());
     } catch (IOException e) {
       fail(e.getMessage());
     }
