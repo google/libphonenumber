@@ -71,6 +71,15 @@ public class PhoneNumberUtilTest extends TestCase {
   private static final PhoneNumber IT_NUMBER =
       new PhoneNumber().setCountryCode(39).setNationalNumber(236618300L).
       setItalianLeadingZero(true);
+  // Numbers to test the formatting rules from Mexico.
+  private static final PhoneNumber MX_MOBILE1 =
+      new PhoneNumber().setCountryCode(52).setNationalNumber(12345678900L);
+  private static final PhoneNumber MX_MOBILE2 =
+      new PhoneNumber().setCountryCode(52).setNationalNumber(15512345678L);
+  private static final PhoneNumber MX_NUMBER1 =
+      new PhoneNumber().setCountryCode(52).setNationalNumber(3312345678L);
+  private static final PhoneNumber MX_NUMBER2 =
+      new PhoneNumber().setCountryCode(52).setNationalNumber(8211234567L);
   private static final PhoneNumber NZ_NUMBER =
       new PhoneNumber().setCountryCode(64).setNationalNumber(33316005L);
   private static final PhoneNumber SG_NUMBER =
@@ -177,8 +186,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("0", metadata.getNationalPrefix());
     assertEquals("0(?:(11|343|3715)15)?", metadata.getNationalPrefixForParsing());
     assertEquals("9$1", metadata.getNationalPrefixTransformRule());
-    assertEquals("$1 15 $2-$3", metadata.getNumberFormat(2).getFormat());
-    assertEquals("9(\\d{4})(\\d{2})(\\d{4})",
+    assertEquals("$2 15 $3-$4", metadata.getNumberFormat(2).getFormat());
+    assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
                  metadata.getNumberFormat(3).getPattern());
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
                  metadata.getIntlNumberFormat(3).getPattern());
@@ -276,6 +285,9 @@ public class PhoneNumberUtilTest extends TestCase {
                                                     PhoneNumberUtil.PhoneNumberType.FIXED_LINE));
     assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US,
                                                     PhoneNumberUtil.PhoneNumberType.MOBILE));
+    // CS is an invalid region, so we have no data for it.
+    assertNull(phoneUtil.getExampleNumberForType(RegionCode.CS,
+                                                 PhoneNumberUtil.PhoneNumberType.MOBILE));
   }
 
   public void testNormaliseRemovePunctuation() {
@@ -407,6 +419,26 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("+54 9 11 8765 4321", phoneUtil.format(AR_MOBILE,
                                                         PhoneNumberFormat.INTERNATIONAL));
     assertEquals("+5491187654321", phoneUtil.format(AR_MOBILE, PhoneNumberFormat.E164));
+  }
+
+  public void testFormatMXNumber() {
+    assertEquals("045 234 567 8900", phoneUtil.format(MX_MOBILE1, PhoneNumberFormat.NATIONAL));
+    assertEquals("+52 1 234 567 8900", phoneUtil.format(
+        MX_MOBILE1, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("+5212345678900", phoneUtil.format(MX_MOBILE1, PhoneNumberFormat.E164));
+
+    assertEquals("045 55 1234 5678", phoneUtil.format(MX_MOBILE2, PhoneNumberFormat.NATIONAL));
+    assertEquals("+52 1 55 1234 5678", phoneUtil.format(
+        MX_MOBILE2, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("+5215512345678", phoneUtil.format(MX_MOBILE2, PhoneNumberFormat.E164));
+
+    assertEquals("01 33 1234 5678", phoneUtil.format(MX_NUMBER1, PhoneNumberFormat.NATIONAL));
+    assertEquals("+52 33 1234 5678", phoneUtil.format(MX_NUMBER1, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("+523312345678", phoneUtil.format(MX_NUMBER1, PhoneNumberFormat.E164));
+
+    assertEquals("01 821 123 4567", phoneUtil.format(MX_NUMBER2, PhoneNumberFormat.NATIONAL));
+    assertEquals("+52 821 123 4567", phoneUtil.format(MX_NUMBER2, PhoneNumberFormat.INTERNATIONAL));
+    assertEquals("+528211234567", phoneUtil.format(MX_NUMBER2, PhoneNumberFormat.E164));
   }
 
   public void testFormatOutOfCountryCallingNumber() {

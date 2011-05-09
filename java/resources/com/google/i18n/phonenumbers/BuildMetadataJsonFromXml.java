@@ -334,7 +334,7 @@ public class BuildMetadataJsonFromXml {
     // required PhoneNumberDesc pager = 21;
     toJsArray(metadata.getPager(), jsArrayBuilder);
     // optional bool main_country_for_code = 22 [default=false];
-    if (metadata.getMainCountryForCode()) {
+    if (metadata.isMainCountryForCode()) {
       jsArrayBuilder.append(1);
     } else {
       jsArrayBuilder.append(null);

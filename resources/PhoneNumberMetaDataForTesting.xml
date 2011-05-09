@@ -17,7 +17,7 @@
      MetaData on Phone Number Plan and formatting rules. This file is used
      solely for the purpose of unittesting, so data in this file is not
      necessarily consistent with that of
-     ../src/PhoneNumberMetaData.xml
+     ../resources/PhoneNumberMetaData.xml
 -->
 
 <phoneNumberMetadata>
@@ -67,39 +67,21 @@
           <leadingDigits>1[02-9]|[23]</leadingDigits>
           <format>$1 $2-$3</format>
         </numberFormat>
-        <numberFormat pattern="9(11)(\d{4})(\d{4})">
+        <numberFormat pattern="(9)(11)(\d{4})(\d{4})">
           <leadingDigits>911</leadingDigits>
-          <format>$1 15 $2-$3</format>
+          <format>$2 15 $3-$4</format>
+          <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <numberFormat pattern="9(\d{4})(\d{2})(\d{4})"
+        <numberFormat pattern="(9)(\d{4})(\d{2})(\d{4})"
           carrierCodeFormattingRule="$NP$FG $CC">
           <leadingDigits>9(?:1[02-9]|[23])</leadingDigits>
-          <format>$1 $2-$3</format>
+          <format>$2 $3-$4</format>
+          <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>[68]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
-        <intlNumberFormat pattern="(\d{2})(\d{4})(\d{4})">
-          <leadingDigits>11</leadingDigits>
-          <format>$1 $2-$3</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(\d{4})(\d{2})(\d{4})">
-          <leadingDigits>1[02-9]|[23]</leadingDigits>
-          <format>$1 $2-$3</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(9)(11)(\d{4})(\d{4})">
-          <leadingDigits>911</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(9)(\d{4})(\d{2})(\d{4})">
-          <leadingDigits>9(?:1[02-9]|[23])</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(\d{3})(\d{3})(\d{4})">
-          <leadingDigits>[68]</leadingDigits>
-          <format>$1-$2-$3</format>
-        </intlNumberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[1-3689]\d{9,10}</nationalNumberPattern>
@@ -489,7 +471,7 @@
     <!-- Mexico -->
     <territory id="MX" countryCode="52" internationalPrefix="00"
                nationalPrefix="01" nationalPrefixForParsing="01|04[45](\d{10})"
-               nationalPrefixTransformRule="1$1">
+               nationalPrefixTransformRule="1$1" nationalPrefixFormattingRule="$NP $FG">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>[89]00</leadingDigits>
@@ -503,34 +485,16 @@
           <leadingDigits>[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="1(\d{2})(\d{4})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(1)(\d{2})(\d{4})(\d{4})">
           <leadingDigits>1(?:33|55|81)</leadingDigits>
-          <format>045 $1 $2 $3</format>
+          <format>045 $2 $3 $4</format>
+          <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <numberFormat pattern="1(\d{3})(\d{3})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(1)(\d{3})(\d{3})(\d{4})">
           <leadingDigits>1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])</leadingDigits>
-          <format>045 $1 $2 $3</format>
+          <format>045 $2 $3 $4</format>
+          <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <intlNumberFormat pattern="(\d{3})(\d{3})(\d{4})">
-          <leadingDigits>[89]00</leadingDigits>
-          <format>$1 $2 $3</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(\d{2})(\d{4})(\d{4})">
-          <leadingDigits>33|55|81</leadingDigits>
-          <format>$1 $2 $3</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(\d{3})(\d{3})(\d{4})">
-          <leadingDigits>[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]</leadingDigits>
-          <format>$1 $2 $3</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(1)(\d{2})(\d{4})(\d{4})">
-          <leadingDigits>1(?:33|55|81)</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </intlNumberFormat>
-        <intlNumberFormat pattern="(1)(\d{3})(\d{3})(\d{4})">
-          <leadingDigits>1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </intlNumberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{9,10}</nationalNumberPattern>
@@ -713,10 +677,8 @@
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
-        </numberFormat>
-        <intlNumberFormat pattern="(\d{3})(\d{3})(\d{4})">
-          <format>$1 $2 $3</format>
-        </intlNumberFormat>
+          <intlFormat>NA</intlFormat>
+       </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[13-9]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>

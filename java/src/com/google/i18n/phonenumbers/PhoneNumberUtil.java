@@ -320,7 +320,12 @@ public class PhoneNumberUtil {
       Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?", REGEX_FLAGS);
 
   private static final Pattern NON_DIGITS_PATTERN = Pattern.compile("(\\D+)");
-  private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$1)");
+
+  // The FIRST_GROUP_PATTERN was originally set to $1 but there are some countries for which the
+  // first group is not used in the national pattern (e.g. Argentina) so the $1 group does not match
+  // correctly.  Therefore, we use \d, so that the first group actually used in the pattern will be
+  // matched.
+  private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$\\d)");
   private static final Pattern NP_PATTERN = Pattern.compile("\\$NP");
   private static final Pattern FG_PATTERN = Pattern.compile("\\$FG");
   private static final Pattern CC_PATTERN = Pattern.compile("\\$CC");
@@ -639,6 +644,7 @@ public class PhoneNumberUtil {
    * country calling code when the number is formatted in the international format, if there is a
    * subscriber number part that follows. An example of how this could be used:
    *
+   * <pre>
    * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
    * PhoneNumber number = phoneUtil.parse("18002530000", "US");
    * String nationalSignificantNumber = phoneUtil.getNationalSignificantNumber(number);
@@ -657,7 +663,7 @@ public class PhoneNumberUtil {
    * </pre>
    *
    * Refer to the unittests to see the difference between this function and
-   * {@link getLengthOfGeographicalAreaCode()}.
+   * {@link #getLengthOfGeographicalAreaCode()}.
    *
    * @param number  the PhoneNumber object for which clients want to know the length of the NDC.
    * @return  the length of NDC of the PhoneNumber object passed in.
@@ -1312,6 +1318,11 @@ public class PhoneNumberUtil {
    *     does not contain such information.
    */
   public PhoneNumber getExampleNumberForType(String regionCode, PhoneNumberType type) {
+    // Check the region code is valid.
+    if (!isValidRegionCode(regionCode)) {
+      LOGGER.log(Level.WARNING, "Invalid or unknown region code provided.");
+      return null;
+    }
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode), type);
     try {
       if (desc.hasExampleNumber()) {
@@ -1567,9 +1578,6 @@ public class PhoneNumberUtil {
       return 0;
     }
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
-    if (metadata == null) {
-      return 0;
-    }
     return metadata.getCountryCode();
   }
 
@@ -1594,10 +1602,6 @@ public class PhoneNumberUtil {
       return null;
     }
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
-    if (metadata == null) {
-      LOGGER.log(Level.SEVERE, "Unsupported region code provided.");
-      return null;
-    }
     String nationalPrefix = metadata.getNationalPrefix();
     // If no national prefix was found, we return null.
     if (nationalPrefix.length() == 0) {

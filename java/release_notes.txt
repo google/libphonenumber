@@ -1,3 +1,13 @@
+May 9th, 2011
+* Code changes:
+ - Fixed potential for a null-ptr exception in getExampleNumber
+ - Potential speed improvement with replacement of StringBuffer with StringBuilder
+* Metadata changes
+ - Changed way that international formats are specified to make it easier to do so
+ - New countries: AX, CC, CX, WF
+ - Updates: AM, AR, AU, AW, CN, CO, CR, DM, EC, ET, FI, FJ, GH, IN, JP, KE, KM,
+   KN, LR, MD, MQ, MX, NP, PH, SC, SE, SM, SN, SY, UG, US, VC, VI, ZM
+
 Apr 26th, 2011
 * Code changes:
  - Improved PhoneNumberMatcher for cases with other numbers before or after the phone number.

@@ -28,7 +28,6 @@ import java.util.NoSuchElementException;
 
 /**
  * Tests for {@link PhoneNumberMatcher}. This only tests basic functionality based on test metadata.
- * See {@link PhoneNumberMatcherRegressionTest} for regression tests.
  *
  * @author Tom Hofmann
  * @see PhoneNumberUtilTest {@link PhoneNumberUtilTest} for the origin of the test data

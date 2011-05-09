@@ -460,8 +460,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+54 9", formatter.inputDigit('9'));
     assertEquals("+54 91", formatter.inputDigit('1'));
     assertEquals("+54 9 11", formatter.inputDigit('1'));
-    assertEquals("+54 9 11 2",
-                 formatter.inputDigit('2'));
+    assertEquals("+54 9 11 2", formatter.inputDigit('2'));
     assertEquals("+54 9 11 23", formatter.inputDigit('3'));
     assertEquals("+54 9 11 231", formatter.inputDigit('1'));
     assertEquals("+54 9 11 2312", formatter.inputDigit('2'));
@@ -559,6 +558,91 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("011-9876-78", formatter.inputDigit('8'));
     assertEquals("011-9876-789", formatter.inputDigit('9'));
     assertEquals("011-9876-7890", formatter.inputDigit('0'));
+  }
+
+  public void testAYTF_MX() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("MX");
+
+    // +52 800 123 4567
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+52 ", formatter.inputDigit('2'));
+    assertEquals("+52 8", formatter.inputDigit('8'));
+    assertEquals("+52 80", formatter.inputDigit('0'));
+    assertEquals("+52 800", formatter.inputDigit('0'));
+    assertEquals("+52 800 1", formatter.inputDigit('1'));
+    assertEquals("+52 800 12", formatter.inputDigit('2'));
+    assertEquals("+52 800 123", formatter.inputDigit('3'));
+    assertEquals("+52 800 123 4", formatter.inputDigit('4'));
+    assertEquals("+52 800 123 45", formatter.inputDigit('5'));
+    assertEquals("+52 800 123 456", formatter.inputDigit('6'));
+    assertEquals("+52 800 123 4567", formatter.inputDigit('7'));
+
+    // +52 55 1234 5678
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+52 ", formatter.inputDigit('2'));
+    assertEquals("+52 5", formatter.inputDigit('5'));
+    assertEquals("+52 55", formatter.inputDigit('5'));
+    assertEquals("+52 55 1", formatter.inputDigit('1'));
+    assertEquals("+52 55 12", formatter.inputDigit('2'));
+    assertEquals("+52 55 123", formatter.inputDigit('3'));
+    assertEquals("+52 55 1234", formatter.inputDigit('4'));
+    assertEquals("+52 55 1234 5", formatter.inputDigit('5'));
+    assertEquals("+52 55 1234 56", formatter.inputDigit('6'));
+    assertEquals("+52 55 1234 567", formatter.inputDigit('7'));
+    assertEquals("+52 55 1234 5678", formatter.inputDigit('8'));
+
+    // +52 212 345 6789
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+52 ", formatter.inputDigit('2'));
+    assertEquals("+52 2", formatter.inputDigit('2'));
+    assertEquals("+52 21", formatter.inputDigit('1'));
+    assertEquals("+52 212", formatter.inputDigit('2'));
+    assertEquals("+52 212 3", formatter.inputDigit('3'));
+    assertEquals("+52 212 34", formatter.inputDigit('4'));
+    assertEquals("+52 212 345", formatter.inputDigit('5'));
+    assertEquals("+52 212 345 6", formatter.inputDigit('6'));
+    assertEquals("+52 212 345 67", formatter.inputDigit('7'));
+    assertEquals("+52 212 345 678", formatter.inputDigit('8'));
+    assertEquals("+52 212 345 6789", formatter.inputDigit('9'));
+
+    // +52 1 55 1234 5678
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+52 ", formatter.inputDigit('2'));
+    assertEquals("+52 1", formatter.inputDigit('1'));
+    assertEquals("+52 15", formatter.inputDigit('5'));
+    assertEquals("+52 1 55", formatter.inputDigit('5'));
+    assertEquals("+52 1 55 1", formatter.inputDigit('1'));
+    assertEquals("+52 1 55 12", formatter.inputDigit('2'));
+    assertEquals("+52 1 55 123", formatter.inputDigit('3'));
+    assertEquals("+52 1 55 1234", formatter.inputDigit('4'));
+    assertEquals("+52 1 55 1234 5", formatter.inputDigit('5'));
+    assertEquals("+52 1 55 1234 56", formatter.inputDigit('6'));
+    assertEquals("+52 1 55 1234 567", formatter.inputDigit('7'));
+    assertEquals("+52 1 55 1234 5678", formatter.inputDigit('8'));
+
+    // +52 1 541 234 5678
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+52 ", formatter.inputDigit('2'));
+    assertEquals("+52 1", formatter.inputDigit('1'));
+    assertEquals("+52 15", formatter.inputDigit('5'));
+    assertEquals("+52 1 54", formatter.inputDigit('4'));
+    assertEquals("+52 1 541", formatter.inputDigit('1'));
+    assertEquals("+52 1 541 2", formatter.inputDigit('2'));
+    assertEquals("+52 1 541 23", formatter.inputDigit('3'));
+    assertEquals("+52 1 541 234", formatter.inputDigit('4'));
+    assertEquals("+52 1 541 234 5", formatter.inputDigit('5'));
+    assertEquals("+52 1 541 234 56", formatter.inputDigit('6'));
+    assertEquals("+52 1 541 234 567", formatter.inputDigit('7'));
+    assertEquals("+52 1 541 234 5678", formatter.inputDigit('8'));
   }
 
   public void testAYTFMultipleLeadingDigitPatterns() {

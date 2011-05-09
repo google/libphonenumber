@@ -578,12 +578,16 @@ public final class Phonemetadata {
       intlNumberFormat_.add(value);
       return this;
     }
+    public PhoneMetadata clearIntlNumberFormat() {
+      intlNumberFormat_.clear();
+      return this;
+    }
 
     // optional bool main_country_for_code = 22 [default = false];
     private boolean hasMainCountryForCode;
     private boolean mainCountryForCode_ = false;
     public boolean hasMainCountryForCode() { return hasMainCountryForCode; }
-    public boolean getMainCountryForCode() { return mainCountryForCode_; }
+    public boolean isMainCountryForCode() { return mainCountryForCode_; }
     public PhoneMetadata setMainCountryForCode(boolean value) {
       hasMainCountryForCode = true;
       mainCountryForCode_ = value;
