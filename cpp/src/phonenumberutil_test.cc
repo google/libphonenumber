@@ -27,7 +27,6 @@
 #include "phonenumber.h"
 #include "phonenumber.pb.h"
 #include "phonenumberutil.h"
-#include "test_metadata.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -142,19 +141,8 @@ class RegionCode {
 
 }  // namespace
 
-class TestMetadataProvider : public PhoneNumberUtil::MetadataProvider {
- public:
-  virtual ~TestMetadataProvider() {}
-
-  pair<const void*, unsigned> operator()() {
-    return make_pair(test_metadata_get(), test_metadata_size());
-  }
-};
-
 class PhoneNumberUtilTest : public testing::Test {
  protected:
-  PhoneNumberUtilTest() : phone_util_(&provider_) {}
-
   // Wrapper functions for private functions that we want to test.
   const PhoneMetadata* GetPhoneMetadata(const string& region_code) const {
     return phone_util_.GetMetadataForRegion(region_code);
@@ -224,7 +212,6 @@ class PhoneNumberUtilTest : public testing::Test {
     return ExactlySameAs(expected_number, actual_number);
   }
 
-  TestMetadataProvider provider_;
   PhoneNumberUtil phone_util_;
 };
 

@@ -67,3 +67,10 @@ How to build libphonenumber C++:
   $ cd build
   $ cmake ../cpp/
   $ make
+
+Supported build parameters:
+  Build parameters can be specified invoking CMake with '-DKEY=VALUE' or using a
+  CMake user interface (ccmake or cmake-gui).
+
+  USE_LITE_METADATA = ON | OFF [OFF] -- Generates smaller metadata that doesn't
+                                        include example numbers.

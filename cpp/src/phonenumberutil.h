@@ -497,16 +497,6 @@ class PhoneNumberUtil {
   MatchType IsNumberMatchWithOneString(const PhoneNumber& first_number,
                                        const string& second_number) const;
 
-  // Implement this 'interface' to override the way metadatas are fetched.
-  // Useful for testing injecting stable metadatas.
-  class MetadataProvider {
-   public:
-     virtual ~MetadataProvider() {}
-
-     // Returns a pair containing a pointer to the data and its size
-     virtual pair<const void*, unsigned> operator()() = 0;
-  };
-
   // Override the default logging system. The provided adapter destruction is
   // handled by this class (don't delete it).
   static void SetLoggerAdapter(LoggerAdapter* logger_adapter);
@@ -555,10 +545,9 @@ class PhoneNumberUtil {
   // Region codes are ISO 3166-1 two-letter country code strings.
   scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
 
-  bool LoadMetadata(PhoneMetadataCollection* metadata,
-                    MetadataProvider& provider);
+  bool LoadMetadata(PhoneMetadataCollection* metadata);
 
-  explicit PhoneNumberUtil(MetadataProvider* provider = 0);
+  PhoneNumberUtil();
   ~PhoneNumberUtil();
 
   // Gets all the supported regions.

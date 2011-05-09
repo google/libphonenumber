@@ -21,6 +21,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * This class generates the C++ code representation of the provided XML metadata file. It lets us
@@ -34,10 +37,11 @@ public class BuildMetadataCppFromXml extends Command {
   private String inputFilePath;
   // Output directory where the generated files will be saved.
   private String outputDir;
-  // Either test_metadata or metadata.{cc,hh} depending on the value of the 'forTesting' command
-  // line parameter.
+  // 'metadata', 'test_metadata' or 'lite_metadata' depending on the value of the last command line
+  // parameter.
   private String baseFilename;
-
+  // Whether to generate "lite" metadata or not.
+  private boolean liteMetadata;
   // The binary translation of the XML file is directly written to a byte array output stream
   // instead of creating an unnecessary file on the filesystem.
   private ByteArrayOutputStream binaryStream = new ByteArrayOutputStream();
@@ -45,6 +49,9 @@ public class BuildMetadataCppFromXml extends Command {
   // Header (.h) file and implementation (.cc) file output streams.
   private FileOutputStream headerFileOutputStream;
   private FileOutputStream implFileOutputStream;
+
+  private static final Set<String> METADATA_TYPES =
+      new HashSet<String>(Arrays.asList("metadata", "test_metadata", "lite_metadata"));
 
   /**
    * Package private setter used to inject the binary stream for testing purpose.
@@ -86,7 +93,7 @@ public class BuildMetadataCppFromXml extends Command {
 
   private void generateBinaryFromXml() throws Exception {
     PhoneMetadataCollection collection =
-        BuildMetadataFromXml.buildPhoneMetadataCollection(inputFilePath, false);
+        BuildMetadataFromXml.buildPhoneMetadataCollection(inputFilePath, liteMetadata);
     collection.writeTo(binaryStream);
   }
 
@@ -95,30 +102,44 @@ public class BuildMetadataCppFromXml extends Command {
    * implementation code.
    */
   private void openFiles() throws IOException {
-    headerFileOutputStream = new FileOutputStream(
-        String.format("%s/%s.h", outputDir, baseFilename));
+    headerFileOutputStream = new FileOutputStream(String.format("%s/metadata.h", outputDir));
     implFileOutputStream = new FileOutputStream(String.format("%s/%s.cc", outputDir, baseFilename));
   }
 
+  private void emitNamespacesBeginning(PrintWriter pw) {
+    pw.println("namespace i18n {");
+    pw.println("namespace phonenumbers {");
+  }
+
+  private void emitNamespacesEnd(PrintWriter pw) {
+    pw.println("}  // namespace phonenumbers");
+    pw.println("}  // namespace i18n");
+  }
+
   /**
-   * Generates the header file containing the two function prototypes:
+   * Generates the header file containing the two function prototypes in namespace
+   * i18n::phonenumbers.
    * <pre>
-   *   int X_size();
-   *   const void* X_get();
+   *   int metadata_size();
+   *   const void* metadata_get();
    * </pre>
-   *
-   * with X: 'metadata' or 'test_metadata'.
    */
   private void emitHeader() {
     final PrintWriter pw = new PrintWriter(headerFileOutputStream);
     pw.write(CopyrightNotice.TEXT);
-    final String guardName = String.format("EMBEDDED_DATA_%s_H_", baseFilename.toUpperCase());
+    final String guardName = "I18N_PHONENUMBERS_METADATA_H_";
     pw.println("#ifndef " + guardName);
     pw.println("#define " + guardName);
 
     pw.println();
-    pw.println(String.format("int %s_size();", baseFilename));
-    pw.println(String.format("const void* %s_get();", baseFilename));
+    emitNamespacesBeginning(pw);
+    pw.println();
+
+    pw.println("int metadata_size();");
+    pw.println("const void* metadata_get();");
+    pw.println();
+
+    emitNamespacesEnd(pw);
     pw.println();
 
     pw.println("#endif  // " + guardName);
@@ -132,15 +153,24 @@ public class BuildMetadataCppFromXml extends Command {
    * <pre>
    * #include "X.h"
    *
-   * static const unsigned char[] X_data = { .... };
+   * namespace i18n {
+   * namespace phonenumbers {
    *
-   * const void* X_get() {
-   *   return X_data;
+   * namespace {
+   *   const unsigned char[] data = { .... };
+   * }  // namespace
+   *
+   * const void* metadata_get() {
+   *   return data;
    * }
    *
-   * unsigned int X_size() {
-   *   return sizeof(X_data) / sizeof(X_data[0]);
+   * int metadata_size() {
+   *   return sizeof(data) / sizeof(data[0]);
    * }
+   *
+   * }  // namespace phonenumbers
+   * }  // namespace i18n
+   *
    * </pre>
    */
 
@@ -150,22 +180,31 @@ public class BuildMetadataCppFromXml extends Command {
   private void emitImplementation() throws IOException {
     final PrintWriter pw = new PrintWriter(implFileOutputStream);
     pw.write(CopyrightNotice.TEXT);
-    pw.println(String.format("#include \"%s.h\"", baseFilename));
+    pw.println("#include \"metadata.h\"");
     pw.println();
-    pw.print(String.format("static const unsigned char %s_data[] = {", baseFilename));
+
+    emitNamespacesBeginning(pw);
+    pw.println();
+
+    pw.println("namespace {");
+    pw.print("static const unsigned char data[] = {");
     emitStaticArrayCode(pw);
     pw.println("};");
+    pw.println("}  // namespace");
 
     pw.println();
-    pw.println(String.format("int %s_size() {", baseFilename));
-    pw.println(String.format("  return sizeof(%s_data) / sizeof(%s_data[0]);",
-                             baseFilename, baseFilename));
+    pw.println("int metadata_size() {");
+    pw.println("  return sizeof(data) / sizeof(data[0]);");
     pw.println("}");
 
     pw.println();
-    pw.println(String.format("const void* %s_get() {", baseFilename));
-    pw.println(String.format("  return %s_data;", baseFilename));
+    pw.println("const void* metadata_get() {");
+    pw.println("  return data;");
     pw.println("}");
+
+    pw.println();
+    emitNamespacesEnd(pw);
+
     pw.close();
   }
 
@@ -196,15 +235,17 @@ public class BuildMetadataCppFromXml extends Command {
   private boolean parseCommandLine() {
     final String[] args = getArgs();
 
-    if (args.length != 4) {
-      System.err.println(String.format("Usage: %s <inputXmlFile> <outputDir> <forTesting>",
-                                       getCommandName()));
+    if (args.length != 4 || !METADATA_TYPES.contains(args[3])) {
+      System.err.println(String.format(
+          "Usage: %s <inputXmlFile> <outputDir> ( metadata | test_metadata | lite_metadata )",
+          getCommandName()));
       return false;
     }
     // args[0] is the name of the command.
     inputFilePath = args[1];
     outputDir = args[2];
-    baseFilename = Boolean.parseBoolean(args[3]) ? "test_metadata" : "metadata";
+    baseFilename = args[3];
+    liteMetadata = baseFilename.equals("lite_metadata");
 
     return true;
   }

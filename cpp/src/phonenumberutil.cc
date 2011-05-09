@@ -663,25 +663,8 @@ PhoneNumberUtil::ValidationResult TestNumberLengthAgainstPattern(
 
 }  // namespace
 
-// Fetch the metadata which are actually already available in the address space
-// (embedded).
-class DefaultMetadataProvider : public PhoneNumberUtil::MetadataProvider {
- public:
-  virtual ~DefaultMetadataProvider() {}
-
-  virtual pair<const void*, unsigned> operator()() {
-    return make_pair(metadata_get(), metadata_size());
-  }
-};
-
-bool PhoneNumberUtil::LoadMetadata(PhoneMetadataCollection* metadata,
-    MetadataProvider& provider) {
-
-  pair<const void*, unsigned> p = provider();
-  const void* metadata_start = p.first;
-  unsigned size = p.second;
-
-  if (!metadata->ParseFromArray(metadata_start, size)) {
+bool PhoneNumberUtil::LoadMetadata(PhoneMetadataCollection* metadata) {
+  if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
     cerr << "Could not parse binary data." << endl;
     return false;
   }
@@ -693,19 +676,15 @@ void PhoneNumberUtil::SetLoggerAdapter(LoggerAdapter* logger_adapter) {
 }
 
 // Private constructor. Also takes care of initialisation.
-PhoneNumberUtil::PhoneNumberUtil(MetadataProvider* provider)
+PhoneNumberUtil::PhoneNumberUtil()
     : country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
       nanpa_regions_(new set<string>()),
       region_to_metadata_map_(new map<string, PhoneMetadata>()) {
-
   if (logger == NULL) {
     SetLoggerAdapter(new DefaultLogger());
   }
   PhoneMetadataCollection metadata_collection;
-  DefaultMetadataProvider default_provider;
-
-  if (!LoadMetadata(&metadata_collection, provider ? *provider
-                                                   : default_provider)) {
+  if (!LoadMetadata(&metadata_collection)) {
     logger->Fatal("Could not load metadata");
     return;
   }

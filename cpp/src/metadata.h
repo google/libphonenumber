@@ -13,10 +13,16 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#ifndef EMBEDDED_DATA_METADATA_H_
-#define EMBEDDED_DATA_METADATA_H_
+#ifndef I18N_PHONENUMBERS_METADATA_H_
+#define I18N_PHONENUMBERS_METADATA_H_
+
+namespace i18n {
+namespace phonenumbers {
 
 int metadata_size();
 const void* metadata_get();
 
-#endif  // EMBEDDED_DATA_METADATA_H_
+}  // namespace phonenumbers
+}  // namespace i18n
+
+#endif  // I18N_PHONENUMBERS_METADATA_H_
