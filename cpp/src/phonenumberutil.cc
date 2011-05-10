@@ -453,7 +453,13 @@ char32 ToUnicodeCodepoint(const char* unicode_char) {
 // defined order.
 void CreateRegularExpressions() {
   unique_international_prefix.reset(new RE2("[\\d]+(?:[~⁓∼～][\\d]+)?"));
-  first_group_capturing_pattern.reset(new RE2("(\\$1)"));
+
+  // The first_group_capturing_pattern was originally set to $1 but there are
+  // some countries for which the first group is not used in the national
+  // pattern (e.g. Argentina) so the $1 group does not match correctly.
+  // Therefore, we use \d, so that the first group actually used in the pattern
+  // will be matched.
+  first_group_capturing_pattern.reset(new RE2("(\\$\\d)"));
   carrier_code_pattern.reset(new RE2("\\$CC"));
   capturing_digit_pattern.reset(new RE2(StrCat("([", kValidDigits, "])")));
   capturing_ascii_digits_pattern.reset(new RE2("(\\d+)"));
@@ -1284,14 +1290,10 @@ void PhoneNumberUtil::GetRegionCodeForNumberFromRegionList(
 
 int PhoneNumberUtil::GetCountryCodeForRegion(const string& region_code) const {
   if (!IsValidRegionCode(region_code)) {
-    logger->Info("Invalid or unknown country code provided.");
+    logger->Error("Invalid or unknown country code provided.");
     return 0;
   }
   const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
-  if (!metadata) {
-    logger->Error("Unsupported country code provided.");
-    return 0;
-  }
   return metadata->country_code();
 }
 
@@ -1312,6 +1314,10 @@ bool PhoneNumberUtil::GetExampleNumberForType(
     PhoneNumberUtil::PhoneNumberType type,
     PhoneNumber* number) const {
   DCHECK(number);
+  if (!IsValidRegionCode(region_code)) {
+    logger->Warning("Invalid or unknown region code provided.");
+    return false;
+  }
   const PhoneMetadata* region_metadata = GetMetadataForRegion(region_code);
   const PhoneNumberDesc* description =
       GetNumberDescByType(*region_metadata, type);

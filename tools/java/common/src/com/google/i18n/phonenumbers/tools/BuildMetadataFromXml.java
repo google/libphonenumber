@@ -160,11 +160,14 @@ public class BuildMetadataFromXml {
 
     // Extract availableFormats
     NodeList numberFormatElements = element.getElementsByTagName("numberFormat");
+    boolean hasExplicitIntlFormatDefined = false;
+
     int numOfFormatElements = numberFormatElements.getLength();
     if (numOfFormatElements > 0) {
       for (int i = 0; i < numOfFormatElements; i++) {
         Element numberFormatElement = (Element) numberFormatElements.item(i);
         NumberFormat.Builder format = NumberFormat.newBuilder();
+
         if (numberFormatElement.hasAttribute("nationalPrefixFormattingRule")) {
           format.setNationalPrefixFormattingRule(
               getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix));
@@ -178,28 +181,11 @@ public class BuildMetadataFromXml {
         } else {
           format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
         }
-        setLeadingDigitsPatterns(numberFormatElement, format);
-        format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
-        NodeList formatPattern = numberFormatElement.getElementsByTagName("format");
-        if (formatPattern.getLength() != 1) {
-          LOGGER.log(Level.SEVERE,
-                     "Only one format pattern for a numberFormat element should be defined.");
-          throw new RuntimeException("Invalid number of format patterns for country: " +
-                                     regionCode);
-        }
-        format.setFormat(formatPattern.item(0).getFirstChild().getNodeValue());
-        metadata.addNumberFormat(format);
-      }
-    }
 
-    NodeList intlNumberFormatElements = element.getElementsByTagName("intlNumberFormat");
-    int numOfIntlFormatElements = intlNumberFormatElements.getLength();
-    if (numOfIntlFormatElements > 0) {
-      for (int i = 0; i < numOfIntlFormatElements; i++) {
-        Element numberFormatElement = (Element) intlNumberFormatElements.item(i);
-        NumberFormat.Builder format = NumberFormat.newBuilder();
+        // Extract the pattern for the national format.
         setLeadingDigitsPatterns(numberFormatElement, format);
         format.setPattern(validateRE(numberFormatElement.getAttribute("pattern")));
+
         NodeList formatPattern = numberFormatElement.getElementsByTagName("format");
         if (formatPattern.getLength() != 1) {
           LOGGER.log(Level.SEVERE,
@@ -207,15 +193,46 @@ public class BuildMetadataFromXml {
           throw new RuntimeException("Invalid number of format patterns for country: " +
                                      regionCode);
         }
-        format.setFormat(validateRE(formatPattern.item(0).getFirstChild().getNodeValue()));
-        if (numberFormatElement.hasAttribute("carrierCodeFormattingRule")) {
-          format.setDomesticCarrierCodeFormattingRule(validateRE(
-              getDomesticCarrierCodeFormattingRuleFromElement(numberFormatElement,
-                                                              nationalPrefix)));
+        String nationalFormat = formatPattern.item(0).getFirstChild().getNodeValue();
+        format.setFormat(nationalFormat);
+        metadata.addNumberFormat(format);
+
+        // Extract the pattern for international format. If there is no intlFormat, default to
+        // using the national format. If the intlFormat is set to "NA" the intlFormat should be
+        // ignored.
+        NumberFormat.Builder intlFormat = NumberFormat.newBuilder();
+        setLeadingDigitsPatterns(numberFormatElement, intlFormat);
+        intlFormat.setPattern(numberFormatElement.getAttribute("pattern"));
+        NodeList intlFormatPattern = numberFormatElement.getElementsByTagName("intlFormat");
+
+        if (intlFormatPattern.getLength() > 1) {
+          LOGGER.log(Level.SEVERE,
+                     "A maximum of one intlFormat pattern for a numberFormat element should be " +
+                     "defined.");
+          throw new RuntimeException("Invalid number of intlFormat patterns for country: " +
+                                     regionCode);
+        } else if (intlFormatPattern.getLength() == 0) {
+          // Default to use the same as the national pattern if none is defined.
+          intlFormat.setFormat(nationalFormat);
         } else {
-          format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
+           String intlFormatPatternValue =
+               intlFormatPattern.item(0).getFirstChild().getNodeValue();
+           if (!intlFormatPatternValue.equals("NA")) {
+             intlFormat.setFormat(intlFormatPatternValue);
+           }
+           hasExplicitIntlFormatDefined = true;
         }
-        metadata.addIntlNumberFormat(format);
+
+        if (intlFormat.hasFormat()) {
+          metadata.addIntlNumberFormat(intlFormat);
+        }
+      }
+      // Only a small number of regions need to specify the intlFormats in the xml. For the majority
+      // of countries the intlNumberFormat metadata is an exact copy of the national NumberFormat
+      // metadata. To minimize the size of the metadata file, we only keep intlNumberFormats that
+      // actually differ in some way to the national formats.
+      if (!hasExplicitIntlFormatDefined) {
+        metadata.clearIntlNumberFormat();
       }
     }
 
