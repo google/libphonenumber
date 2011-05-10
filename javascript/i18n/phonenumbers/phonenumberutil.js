@@ -23,6 +23,9 @@
  * @author Nikolaos Trogkanis
  */
 
+goog.provide('i18n.phonenumbers.Error');
+goog.provide('i18n.phonenumbers.PhoneNumberFormat');
+goog.provide('i18n.phonenumbers.PhoneNumberType');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil');
 
 goog.require('goog.array');
@@ -663,11 +666,15 @@ i18n.phonenumbers.PhoneNumberUtil.NON_DIGITS_PATTERN_ = /\D+/;
 
 
 /**
+ * This was originally set to $1 but there are some countries for which the
+ * first group is not used in the national pattern (e.g. Argentina) so the $1
+ * group does not match correctly.  Therefore, we use \d, so that the first
+ * group actually used in the pattern will be matched.
  * @const
  * @type {!RegExp}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_ = /(\$1)/;
+i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_PATTERN_ = /(\$\d)/;
 
 
 /**
@@ -1021,7 +1028,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
  * </pre>
  *
  * Refer to the unittests to see the difference between this function and
- * getLengthOfGeographicalAreaCode().
+ * {@link #getLengthOfGeographicalAreaCode}.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the PhoneNumber object for
  *     which clients want to know the length of the NDC.
@@ -1809,6 +1816,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumber =
 i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForType =
     function(regionCode, type) {
 
+  // Check the region code is valid.
+  if (!this.isValidRegionCode_(regionCode)) {
+    return null;
+  }
   /** @type {i18n.phonenumbers.PhoneNumberDesc} */
   var desc = this.getNumberDescByType_(
       this.getMetadataForRegion(regionCode), type);
@@ -2203,9 +2214,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForRegion =
   }
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = this.getMetadataForRegion(regionCode);
-  if (metadata == null) {
-    return 0;
-  }
   return metadata.getCountryCodeOrDefault();
 };
 
@@ -2236,9 +2244,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
   }
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = this.getMetadataForRegion(regionCode);
-  if (metadata == null) {
-    return null;
-  }
   /** @type {string} */
   var nationalPrefix = metadata.getNationalPrefixOrDefault();
   // If no national prefix was found, we return null.
@@ -2792,9 +2797,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     var transformRule = metadata.getNationalPrefixTransformRule();
     /** @type {string} */
     var transformedNumber;
-    if (transformRule == null || transformRule.length == 0 ||
-        prefixMatcher[numOfGroups] == null ||
-        prefixMatcher[numOfGroups].length == 0) {
+    /** @type {boolean} */
+    var noTransform = transformRule == null || transformRule.length == 0 ||
+                      prefixMatcher[numOfGroups] == null ||
+                      prefixMatcher[numOfGroups].length == 0;
+    if (noTransform) {
       transformedNumber = numberStr.substring(prefixMatcher[0].length);
     } else {
       transformedNumber = numberStr.replace(prefixPattern, transformRule);
@@ -2804,7 +2811,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
         transformedNumber)) {
       return carrierCode;
     }
-    if (numOfGroups > 0) {
+    if ((noTransform && numOfGroups > 0 && prefixMatcher[1] != null) ||
+        (!noTransform && numOfGroups > 1)) {
       carrierCode = prefixMatcher[1];
     }
     number.clear();

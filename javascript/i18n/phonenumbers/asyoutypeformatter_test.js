@@ -565,6 +565,92 @@ function testAYTFKR() {
   assertEquals('011-9876-7890', f.inputDigit('0'));
 }
 
+function testAYTF_MX() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('MX');
+
+  // +52 800 123 4567
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+5', f.inputDigit('5'));
+  assertEquals('+52 ', f.inputDigit('2'));
+  assertEquals('+52 8', f.inputDigit('8'));
+  assertEquals('+52 80', f.inputDigit('0'));
+  assertEquals('+52 800', f.inputDigit('0'));
+  assertEquals('+52 800 1', f.inputDigit('1'));
+  assertEquals('+52 800 12', f.inputDigit('2'));
+  assertEquals('+52 800 123', f.inputDigit('3'));
+  assertEquals('+52 800 123 4', f.inputDigit('4'));
+  assertEquals('+52 800 123 45', f.inputDigit('5'));
+  assertEquals('+52 800 123 456', f.inputDigit('6'));
+  assertEquals('+52 800 123 4567', f.inputDigit('7'));
+
+  // +52 55 1234 5678
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+5', f.inputDigit('5'));
+  assertEquals('+52 ', f.inputDigit('2'));
+  assertEquals('+52 5', f.inputDigit('5'));
+  assertEquals('+52 55', f.inputDigit('5'));
+  assertEquals('+52 55 1', f.inputDigit('1'));
+  assertEquals('+52 55 12', f.inputDigit('2'));
+  assertEquals('+52 55 123', f.inputDigit('3'));
+  assertEquals('+52 55 1234', f.inputDigit('4'));
+  assertEquals('+52 55 1234 5', f.inputDigit('5'));
+  assertEquals('+52 55 1234 56', f.inputDigit('6'));
+  assertEquals('+52 55 1234 567', f.inputDigit('7'));
+  assertEquals('+52 55 1234 5678', f.inputDigit('8'));
+
+  // +52 212 345 6789
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+5', f.inputDigit('5'));
+  assertEquals('+52 ', f.inputDigit('2'));
+  assertEquals('+52 2', f.inputDigit('2'));
+  assertEquals('+52 21', f.inputDigit('1'));
+  assertEquals('+52 212', f.inputDigit('2'));
+  assertEquals('+52 212 3', f.inputDigit('3'));
+  assertEquals('+52 212 34', f.inputDigit('4'));
+  assertEquals('+52 212 345', f.inputDigit('5'));
+  assertEquals('+52 212 345 6', f.inputDigit('6'));
+  assertEquals('+52 212 345 67', f.inputDigit('7'));
+  assertEquals('+52 212 345 678', f.inputDigit('8'));
+  assertEquals('+52 212 345 6789', f.inputDigit('9'));
+
+  // +52 1 55 1234 5678
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+5', f.inputDigit('5'));
+  assertEquals('+52 ', f.inputDigit('2'));
+  assertEquals('+52 1', f.inputDigit('1'));
+  assertEquals('+52 15', f.inputDigit('5'));
+  assertEquals('+52 1 55', f.inputDigit('5'));
+  assertEquals('+52 1 55 1', f.inputDigit('1'));
+  assertEquals('+52 1 55 12', f.inputDigit('2'));
+  assertEquals('+52 1 55 123', f.inputDigit('3'));
+  assertEquals('+52 1 55 1234', f.inputDigit('4'));
+  assertEquals('+52 1 55 1234 5', f.inputDigit('5'));
+  assertEquals('+52 1 55 1234 56', f.inputDigit('6'));
+  assertEquals('+52 1 55 1234 567', f.inputDigit('7'));
+  assertEquals('+52 1 55 1234 5678', f.inputDigit('8'));
+
+  // +52 1 541 234 5678
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+5', f.inputDigit('5'));
+  assertEquals('+52 ', f.inputDigit('2'));
+  assertEquals('+52 1', f.inputDigit('1'));
+  assertEquals('+52 15', f.inputDigit('5'));
+  assertEquals('+52 1 54', f.inputDigit('4'));
+  assertEquals('+52 1 541', f.inputDigit('1'));
+  assertEquals('+52 1 541 2', f.inputDigit('2'));
+  assertEquals('+52 1 541 23', f.inputDigit('3'));
+  assertEquals('+52 1 541 234', f.inputDigit('4'));
+  assertEquals('+52 1 541 234 5', f.inputDigit('5'));
+  assertEquals('+52 1 541 234 56', f.inputDigit('6'));
+  assertEquals('+52 1 541 234 567', f.inputDigit('7'));
+  assertEquals('+52 1 541 234 5678', f.inputDigit('8'));
+}
+
 function testAYTFMultipleLeadingDigitPatterns() {
   // +81 50 2345 6789
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
