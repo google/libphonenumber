@@ -120,7 +120,7 @@ set (
 )
 
 add_custom_command (
-  COMMAND ${PROTOC_BIN} --cpp_out="${CMAKE_SOURCE_DIR}/src"
+  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_SOURCE_DIR}/src
     --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
