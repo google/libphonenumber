@@ -54,6 +54,11 @@ void safe_strtou64(const string& s, uint64 *n);
 // Remove all occurrences of a given set of characters from a string.
 void strrmm(string* s, const string& chars);
 
+// Replaces all instances of 'substring' in 's' with 'replacement'. Returns the
+// number of instances replaced. Replacements are not subject to re-matching.
+int GlobalReplaceSubstring(const string& substring, const string& replacement,
+                           string* s);
+
 // Holds a reference to a std::string or C string. It can also be constructed
 // from an integer which is converted to a string.
 class StringHolder {

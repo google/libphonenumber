@@ -105,6 +105,31 @@ void strrmm(string* s, const string& chars) {
   }
 }
 
+int GlobalReplaceSubstring(const string& substring,
+                           const string& replacement,
+                           string* s) {
+  assert(s != NULL);
+  if (s->empty() || substring.empty())
+    return 0;
+  string tmp;
+  int num_replacements = 0;
+  int pos = 0;
+  for (size_t match_pos = s->find(substring.data(), pos, substring.length());
+       match_pos != string::npos;
+       pos = match_pos + substring.length(),
+          match_pos = s->find(substring.data(), pos, substring.length())) {
+    ++num_replacements;
+    // Append the original content before the match.
+    tmp.append(*s, pos, match_pos - pos);
+    // Append the replacement for the match.
+    tmp.append(replacement.begin(), replacement.end());
+  }
+  // Append the content after the last match.
+  tmp.append(*s, pos, s->length() - pos);
+  s->swap(tmp);
+  return num_replacements;
+}
+
 // StringHolder class
 
 StringHolder::StringHolder(const string& s) :

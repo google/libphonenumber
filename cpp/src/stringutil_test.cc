@@ -111,6 +111,29 @@ TEST(StringUtilTest, strrmm) {
   EXPECT_EQ("o", input);
 }
 
+// Test GlobalReplaceSubstring.
+TEST(StringUtilTest, GlobalReplaceSubstring) {
+  string input("hello");
+
+  EXPECT_EQ(0, GlobalReplaceSubstring("aaa", "", &input));
+  EXPECT_EQ("hello", input);
+
+  EXPECT_EQ(0, GlobalReplaceSubstring("", "aaa", &input));
+  EXPECT_EQ("hello", input);
+
+  EXPECT_EQ(0, GlobalReplaceSubstring("", "", &input));
+  EXPECT_EQ("hello", input);
+
+  EXPECT_EQ(0, GlobalReplaceSubstring("aaa", "bbb", &input));
+  EXPECT_EQ("hello", input);
+
+  EXPECT_EQ(1, GlobalReplaceSubstring("o", "o world", &input));
+  ASSERT_EQ("hello world", input);
+
+  EXPECT_EQ(2, GlobalReplaceSubstring("o", "O", &input));
+  EXPECT_EQ("hellO wOrld", input);
+}
+
 // Test the StringHolder class.
 TEST(StringUtilTest, StringHolder) {
   // Test with C string.
