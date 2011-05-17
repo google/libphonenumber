@@ -288,7 +288,7 @@ if (APPLE)
   list (APPEND LIBRARY_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
 endif ()
 
-target_link_libraries (phonenumber $LIBRARY_DEPS)
+target_link_libraries (phonenumber ${LIBRARY_DEPS})
 
 # Build a specific library for testing purposes.
 add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
