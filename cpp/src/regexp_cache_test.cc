@@ -18,45 +18,39 @@
 #include <string>
 
 #include <gtest/gtest.h>
-#include <re2/re2.h>
 
-#include "re2_cache.h"
+#include "regexp_adapter.h"
+#include "regexp_cache.h"
 
 namespace i18n {
 namespace phonenumbers {
 
 using std::string;
 
-class RE2CacheTest : public testing::Test {
+class RegExpCacheTest : public testing::Test {
  protected:
   static const size_t min_items_ = 2;
 
-  RE2CacheTest() : cache_(min_items_) {}
-  virtual ~RE2CacheTest() {}
+  RegExpCacheTest() : cache_(min_items_) {}
+  virtual ~RegExpCacheTest() {}
 
-  RE2Cache cache_;
+  RegExpCache cache_;
 };
 
-TEST_F(RE2CacheTest, CacheConstructor) {
+TEST_F(RegExpCacheTest, CacheConstructor) {
   ASSERT_TRUE(cache_.cache_impl_ != NULL);
   EXPECT_TRUE(cache_.cache_impl_->empty());
 }
 
-TEST_F(RE2CacheTest, AccessConstructor) {
-  static const string foo("foo");
-  RE2Cache::ScopedAccess access(&cache_, foo);
+TEST_F(RegExpCacheTest, GetRegExp) {
+  static const string pattern1("foo");
+  static const string pattern2("foo");
 
-  EXPECT_TRUE(access.regexp_ != NULL);
-  ASSERT_TRUE(cache_.cache_impl_ != NULL);
-  EXPECT_EQ(1, cache_.cache_impl_->size());
-}
+  const RegExp& regexp1 = cache_.GetRegExp(pattern1);
+  // "foo" has been cached therefore we must get the same object.
+  const RegExp& regexp2 = cache_.GetRegExp(pattern2);
 
-TEST_F(RE2CacheTest, OperatorRE2) {
-  static const string foo("foo");
-  RE2Cache::ScopedAccess access(&cache_, foo);
-
-  const RE2& regexp = access;
-  EXPECT_EQ(foo, regexp.pattern());
+  EXPECT_TRUE(&regexp1 == &regexp2);
 }
 
 }  // namespace phonenumbers

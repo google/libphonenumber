@@ -14,16 +14,15 @@
 
 // Author: Fredrik Roubert <roubert@google.com>
 
-#include "re2_cache.h"
+#include "regexp_cache.h"
 
 #include <cstddef>
 #include <string>
 #include <utility>
 
-#include <re2/re2.h>
-
 #include "base/logging.h"
 #include "base/synchronization/lock.h"
+#include "regexp_adapter.h"
 
 using std::string;
 
@@ -52,27 +51,27 @@ template<> struct hash<string> {
 namespace i18n {
 namespace phonenumbers {
 
-RE2Cache::RE2Cache(size_t min_items) : cache_impl_(new CacheImpl(min_items)) {}
-RE2Cache::~RE2Cache() {
-  base::AutoLock l(lock_);
-  LOG(2) << "Cache entries upon destruction: " << cache_impl_->size();
+using base::AutoLock;
+
+RegExpCache::RegExpCache(size_t min_items)
+    : cache_impl_(new CacheImpl(min_items)) {}
+
+RegExpCache::~RegExpCache() {
+  AutoLock l(lock_);
   for (CacheImpl::const_iterator
        it = cache_impl_->begin(); it != cache_impl_->end(); ++it) {
     delete it->second;
   }
 }
 
-RE2Cache::ScopedAccess::ScopedAccess(RE2Cache* cache, const string& pattern) {
-  DCHECK(cache);
-  base::AutoLock l(cache->lock_);
-  CacheImpl* const cache_impl = cache->cache_impl_.get();
-  CacheImpl::const_iterator it = cache_impl->find(pattern);
-  if (it != cache_impl->end()) {
-    regexp_ = it->second;
-  } else {
-    regexp_ = new RE2(pattern);
-    cache_impl->insert(make_pair(pattern, regexp_));
-  }
+const RegExp& RegExpCache::GetRegExp(const string& pattern) {
+  AutoLock l(lock_);
+  CacheImpl::const_iterator it = cache_impl_->find(pattern);
+  if (it != cache_impl_->end()) return *it->second;
+
+  const RegExp* regexp = RegExp::Create(pattern);
+  cache_impl_->insert(make_pair(pattern, regexp));
+  return *regexp;
 }
 
 }  // namespace phonenumbers

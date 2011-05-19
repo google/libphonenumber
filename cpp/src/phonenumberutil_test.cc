@@ -21,7 +21,6 @@
 #include <string>
 
 #include <gtest/gtest.h>
-#include <re2/re2.h>
 
 #include "phonemetadata.pb.h"
 #include "phonenumber.h"
