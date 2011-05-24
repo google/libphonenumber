@@ -1,3 +1,13 @@
+May 24th, 2011
+* Code changes:
+ - Phonenumber now implements Serializable.
+ - findNumbers doesn't accept numbers with mis-matched brackets as phone-numbers
+ - An offline phone number geocoder has been added. The current implementation just returns the
+   region name for the phone number; more detailed geocoding will be added later.
+* Metadata changes:
+ - New countries: GF, KP, NC, PA, PF, PW, PY, SB, SR, TO, UY, VU
+ - Updates: CY, CZ, ES, GB, GQ, JM, MQ, TN, VI
+
 May 9th, 2011
 * Code changes:
  - Fixed potential for a null-ptr exception in getExampleNumber

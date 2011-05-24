@@ -221,6 +221,25 @@ public class PhoneNumberMatcherTest extends TestCase {
     assertEquals(number, matchWithSpaces.rawString());
   }
 
+  public void testNonMatchingBracketsAreInvalid() throws Exception {
+    // The digits up to the ", " form a valid US number, but it shouldn't be matched as one since
+    // there was a non-matching bracket present.
+    assertTrue(hasNoMatches(phoneUtil.findNumbers(
+        "80.585 [79.964, 81.191]", "US")));
+
+    // The trailing "]" is thrown away before parsing, so the resultant number, while a valid US
+    // number, does not have matching brackets.
+    assertTrue(hasNoMatches(phoneUtil.findNumbers(
+        "80.585 [79.964]", "US")));
+
+    assertTrue(hasNoMatches(phoneUtil.findNumbers(
+        "80.585 ((79.964)", "US")));
+
+    // This case has too many sets of brackets to be valid.
+    assertTrue(hasNoMatches(phoneUtil.findNumbers(
+        "(80).(585) (79).(9)64", "US")));
+  }
+
   public void testNoMatchIfRegionIsNull() throws Exception {
     // Fail on non-international prefix if region code is null.
     assertTrue(hasNoMatches(phoneUtil.findNumbers(

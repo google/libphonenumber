@@ -70,14 +70,38 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       Pattern.compile("(?:(?:[0-3]?\\d/[01]?\\d)|(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}");
 
   /**
+   * Pattern to check that brackets match. Opening brackets should be closed within a phone number.
+   * This also checks that there is something inside the brackets. Having no brackets at all is also
+   * fine.
+   */
+  private static final Pattern MATCHING_BRACKETS;
+
+  /**
    * Matches white-space, which may indicate the end of a phone number and the start of something
    * else (such as a neighbouring zip-code).
    */
   private static final Pattern GROUP_SEPARATOR = Pattern.compile("\\p{Z}+");
 
   static {
-    /* Builds the PATTERN regular expression. The building blocks below exist to make the pattern
-     * more easily understood. */
+    /* Builds the MATCHING_BRACKETS and PATTERN regular expressions. The building blocks below exist
+     * to make the pattern more easily understood. */
+
+    String openingParens = "(\\[\uFF08\uFF3B";
+    String closingParens = ")\\]\uFF09\uFF3D";
+    String nonParens = "[^" + openingParens + closingParens + "]";
+
+    /* Limit on the number of pairs of brackets in a phone number. */
+    String bracketPairLimit = limit(0, 3);
+    /*
+     * An opening bracket at the beginning may not be closed, but subsequent ones should be.  It's
+     * also possible that the leading bracket was dropped, so we shouldn't be surprised if we see a
+     * closing bracket first. We limit the sets of brackets in a phone number to four.
+     */
+    MATCHING_BRACKETS = Pattern.compile(
+        "(?:[" + openingParens + "])?" + "(?:" + nonParens + "+" + "[" + closingParens + "])?" +
+        nonParens + "+" +
+        "(?:[" + openingParens + "]" + nonParens + "+[" + closingParens + "])" + bracketPairLimit +
+        nonParens + "*");
 
     /* Limit on the number of leading (plus) characters. */
     String leadLimit = limit(0, 2);
@@ -97,7 +121,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     /* A digits block without punctuation. */
     String digitSequence = "\\p{Nd}" + limit(1, digitBlockLimit);
     /* Punctuation that may be at the start of a phone number - brackets and plus signs. */
-    String leadClass = "[(\\[" + PhoneNumberUtil.PLUS_CHARS + "]";
+    String leadClass = "[" + openingParens + PhoneNumberUtil.PLUS_CHARS + "]";
 
     /* Phone number pattern allowing optional punctuation. */
     PATTERN = Pattern.compile(
@@ -321,6 +345,11 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    */
   private PhoneNumberMatch parseAndVerify(String candidate, int offset) {
     try {
+      // Check the candidate doesn't contain any formatting which would indicate that it really
+      // isn't a phone number.
+      if (!MATCHING_BRACKETS.matcher(candidate).matches()) {
+        return null;
+      }
       PhoneNumber number = util.parse(candidate, preferredRegion);
       if (leniency.verify(number, util)) {
         return new PhoneNumberMatch(offset, candidate, number);
