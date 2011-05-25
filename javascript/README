@@ -25,7 +25,7 @@ pages with your web browser:
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 192).
+The JavaScript library is ported from the Java implementation (revision 206).
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
@@ -64,3 +64,4 @@ project:
 TODO:
 =====
 Port functionality to extract phone-numbers from text (findNumbers).
+Port offline phone number geocoder.
