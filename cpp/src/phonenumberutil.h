@@ -545,8 +545,6 @@ class PhoneNumberUtil {
   // Region codes are ISO 3166-1 two-letter country code strings.
   scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
 
-  bool LoadMetadata(PhoneMetadataCollection* metadata);
-
   PhoneNumberUtil();
   ~PhoneNumberUtil();
 

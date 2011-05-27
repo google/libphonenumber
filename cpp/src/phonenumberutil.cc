@@ -190,6 +190,14 @@ scoped_ptr<const RegExp> first_group_capturing_pattern;
 
 scoped_ptr<const RegExp> carrier_code_pattern;
 
+bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
+  if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
+    cerr << "Could not parse binary data." << endl;
+    return false;
+  }
+  return true;
+}
+
 // Returns a pointer to the description inside the metadata of the appropriate
 // type.
 const PhoneNumberDesc* GetNumberDescByType(
@@ -654,14 +662,6 @@ PhoneNumberUtil::ValidationResult TestNumberLengthAgainstPattern(
 
 }  // namespace
 
-bool PhoneNumberUtil::LoadMetadata(PhoneMetadataCollection* metadata) {
-  if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
-    cerr << "Could not parse binary data." << endl;
-    return false;
-  }
-  return true;
-}
-
 void PhoneNumberUtil::SetLoggerAdapter(LoggerAdapter* logger_adapter) {
   logger.reset(logger_adapter);
 }
@@ -675,8 +675,8 @@ PhoneNumberUtil::PhoneNumberUtil()
     SetLoggerAdapter(new DefaultLogger());
   }
   PhoneMetadataCollection metadata_collection;
-  if (!LoadMetadata(&metadata_collection)) {
-    logger->Fatal("Could not load metadata");
+  if (!LoadCompiledInMetadata(&metadata_collection)) {
+    logger->Fatal("Could not parse compiled-in metadata");
     return;
   }
   // Storing data in a temporary map to make it easier to find other regions
