@@ -31,6 +31,7 @@
 #include "base/logging.h"
 #include "base/singleton.h"
 #include "default_logger.h"
+#include "encoding_utils.h"
 #include "logger_adapter.h"
 #include "metadata.h"
 #include "phonemetadata.pb.h"
@@ -427,18 +428,9 @@ PhoneNumberUtil::PhoneNumberType GetNumberTypeHelper(
   return PhoneNumberUtil::UNKNOWN;
 }
 
-int DecodeUTF8Char(const char* in, char32* out) {
-  Rune r;
-  int len = chartorune(&r, in);
-  *out = r;
-
-  return len;
-}
-
 char32 ToUnicodeCodepoint(const char* unicode_char) {
   char32 codepoint;
-  DecodeUTF8Char(unicode_char, &codepoint);
-
+  EncodingUtils::DecodeUTF8Char(unicode_char, &codepoint);
   return codepoint;
 }
 

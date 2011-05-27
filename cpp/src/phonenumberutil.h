@@ -51,6 +51,11 @@ class PhoneMetadata;
 class PhoneMetadataCollection;
 class PhoneNumber;
 
+// NOTE: A lot of methods in this class require Region Code strings. These must
+// be provided using ISO 3166-1 two-letter country-code format. The list of the
+// codes can be found here:
+// http://www.iso.org/iso/english_country_names_and_code_elements
+
 class PhoneNumberUtil {
   friend struct DefaultSingletonTraits<PhoneNumberUtil>;
   friend class PhoneNumberUtilTest;
@@ -339,38 +344,27 @@ class PhoneNumberUtil {
   // are examined.
   // This is useful for determining for example whether a particular number is
   // valid for Canada, rather than just a valid NANPA number.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool IsValidNumberForRegion(
       const PhoneNumber& number,
       const string& region_code) const;
 
   // Returns the region where a phone number is from. This could be used for
   // geo-coding at the region level.
-  // The country/region is returned as an ISO 3166-1 two-letter country code
-  // string.
   void GetRegionCodeForNumber(const PhoneNumber& number,
                               string* region_code) const;
 
   // Returns the country calling code for a specific region. For example,
   // this would be 1 for the United States, and 64 for New Zealand.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   int GetCountryCodeForRegion(const string& region_code) const;
 
   // Returns the region code that matches the specific country code. Note that
   // it is possible that several regions share the same country code (e.g. US
   // and Canada), and in that case, only one of the regions (normally the one
   // with the largest population) is returned.
-  //
-  // The region code is returned as an ISO 3166-1 two-letter country code
-  // string.
   void GetRegionCodeForCountryCode(int country_code, string* region_code) const;
 
   // Checks if this is a region under the North American Numbering Plan
   // Administration (NANPA).
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool IsNANPACountry(const string& region_code) const;
 
   // Checks whether a phone number is a possible number. It provides a more
@@ -414,12 +408,9 @@ class PhoneNumberUtil {
   // 650 253 0000, it could only be dialed from within the US, and when written
   // as 253 0000, it could only be dialed from within a smaller area in the US
   // (Mountain View, CA, to be more specific).
-  //
-  // The country_dialing_from parameter is an ISO 3166-1 two-letter country code
-  // string.
   bool IsPossibleNumberForString(
       const string& number,
-      const string& country_dialing_from) const;
+      const string& region_dialing_from) const;
 
   // Gets a valid fixed-line number for the specified region. Returns false if
   // the region was unknown.
@@ -429,8 +420,6 @@ class PhoneNumberUtil {
   // Gets a valid number of the specified type for the specified region.
   // Returns false if the region was unknown or if no example number of that
   // type could be found.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool GetExampleNumberForType(const string& region_code,
                                PhoneNumberType type,
                                PhoneNumber* number) const;
@@ -448,21 +437,15 @@ class PhoneNumberUtil {
   // stored as that of the default country supplied. If the number is guaranteed
   // to start with a '+' followed by the country calling code, then
   // "ZZ" can be supplied.
-  //
-  // The default_country parameter is an ISO 3166-1 two-letter country code
-  // string.
   ErrorType Parse(const string& number_to_parse,
-                  const string& default_country,
+                  const string& default_region,
                   PhoneNumber* number) const;
   // Parses a string and returns it in proto buffer format. This method differs
   // from Parse() in that it always populates the raw_input field of the
   // protocol buffer with number_to_parse as well as the country_code_source
   // field.
-  //
-  // The default_country parameter is an ISO 3166-1 two-letter country code
-  // string.
   ErrorType ParseAndKeepRawInput(const string& number_to_parse,
-                                 const string& default_country,
+                                 const string& default_region,
                                  PhoneNumber* number) const;
 
   // Takes two phone numbers and compares them for equality.
@@ -526,8 +509,6 @@ class PhoneNumberUtil {
   // country calling code 7. Under this map, 1 is mapped to region code "US" and
   // 7 is mapped to region code "RU". This is implemented as a sorted vector to
   // achieve better performance.
-  //
-  // Region codes are ISO 3166-1 two-letter country code strings.
   scoped_ptr<vector<IntRegionsPair> > country_calling_code_to_region_code_map_;
 
   struct CompareFirst {
@@ -542,7 +523,6 @@ class PhoneNumberUtil {
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  // Region codes are ISO 3166-1 two-letter country code strings.
   scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
 
   PhoneNumberUtil();
@@ -564,20 +544,15 @@ class PhoneNumberUtil {
                              string* national_prefix) const;
 
   // Helper function to check region code is not unknown or null.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool IsValidRegionCode(const string& region_code) const;
 
   // Helper function to check region code is not unknown. The
   // country_calling_code and number supplied is used only for the resultant log
   // message.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   bool HasValidRegionCode(const string& region_code,
                           int country_code,
                           const string& number) const;
 
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegion(
       const string& region_code) const;
 
@@ -587,28 +562,22 @@ class PhoneNumberUtil {
 
   // Simple wrapper of FormatNationalNumberWithCarrier for the common case of
   // no carrier code.
-  //
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   void FormatNationalNumber(const string& number,
                             const string& region_code,
                             PhoneNumberFormat number_format,
                             string* formatted_number) const;
 
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   void FormatNationalNumberWithCarrier(const string& number,
                                        const string& region_code,
                                        PhoneNumberFormat number_format,
                                        const string& carrier_code,
                                        string* formatted_number) const;
-
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   void MaybeGetFormattedExtension(
       const PhoneNumber& number,
       const string& region_code,
       PhoneNumberFormat number_format,
       string* extension) const;
 
-  // The region_code parameter is an ISO 3166-1 two-letter country code string.
   void FormatExtension(const string& extension_digits,
                        const string& region_code,
                        string* extension) const;
@@ -642,14 +611,10 @@ class PhoneNumberUtil {
       string* national_number,
       PhoneNumber* phone_number) const;
 
-  // The default_region parameter is an ISO 3166-1 two-letter country code
-  // string.
   bool CheckRegionForParsing(
       const string& number_to_parse,
       const string& default_region) const;
 
-  // The default_region parameter is an ISO 3166-1 two-letter country code
-  // string.
   ErrorType ParseHelper(const string& number_to_parse,
                         const string& default_region,
                         bool keep_raw_input,
