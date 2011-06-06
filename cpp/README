@@ -55,9 +55,17 @@ Requirements:
     $ make testinstall
 
   - ICU
-    http://userguide.icu-project.org/
+    Version 4.6 or more recent is required.
+    It can be built from sources. You need to download the source tarball at
+    this location:
+    http://site.icu-project.org/download/46#ICU4C-Download
+    Then you can extract, build and install it this way:
+    $ tar xzf icu4c-4_6_1-src.tgz
+    $ cd icu/source
+    $ ./configure && make && sudo make install
 
-    You can install it very easily on a Debian-based distribution:
+    If you have a Debian-based distribution provinding an up-to-date version of
+    ICU, you can install it using apt-get:
     $ sudo apt-get install libicu-dev
 
 
