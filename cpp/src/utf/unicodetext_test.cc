@@ -24,7 +24,7 @@ namespace unicodetext {
 TEST(UnicodeTextTest, Iterator) {
   struct value {
     const char* utf8;
-    unsigned int code_point;
+    char32 code_point;
   } values[] = {
     { "\x31", 0x31 }, // U+0031 DIGIT ONE
     { "\xC2\xBD", 0x00BD }, // U+00BD VULGAR FRACTION ONE HALF

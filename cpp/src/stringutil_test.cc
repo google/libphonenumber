@@ -73,7 +73,7 @@ TEST(StringUtilTest, safe_strto32) {
   EXPECT_EQ(2147483647, n);
 
   safe_strto32("-2147483648", &n);
-  EXPECT_EQ(-2147483648, n);
+  EXPECT_EQ(-2147483648LL, n);
 }
 
 // Test safe_strtou64.
@@ -81,13 +81,13 @@ TEST(StringUtilTest, safe_strtou64) {
   uint64 n;
 
   safe_strtou64("0", &n);
-  EXPECT_EQ(0, n);
+  EXPECT_EQ(0U, n);
 
   safe_strtou64("16", &n);
-  EXPECT_EQ(16, n);
+  EXPECT_EQ(16U, n);
 
   safe_strtou64("18446744073709551615UL", &n);
-  EXPECT_EQ(18446744073709551615UL, n);
+  EXPECT_EQ(18446744073709551615ULL, n);
 }
 
 // Test strrmm.
@@ -151,12 +151,12 @@ TEST(StringUtilTest, StringHolder) {
   // Test GetLength().
   string s2 = "hello";
   StringHolder sh3(s2);
-  EXPECT_EQ(5, sh3.Length());
+  EXPECT_EQ(5U, sh3.Length());
 
   // Test with uint64.
   StringHolder sh4(42);
   EXPECT_TRUE(sh4.GetCString() == NULL);
-  EXPECT_EQ(2, sh4.Length());
+  EXPECT_EQ(2U, sh4.Length());
   EXPECT_EQ("42", *sh4.GetString());
 }
 

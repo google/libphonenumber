@@ -241,7 +241,7 @@ set (PLATFORM_SPECIFIC_SOURCES "")
 
 if (UNIX)
   if (CMAKE_COMPILER_IS_GNUCXX)
-    add_definitions ("-Wall -Wextra -Werror")
+    add_definitions ("-Wall -Werror")
 
     # The next flags are needed by base/ source files to compile low level code
     # needed by Singleton.
@@ -297,8 +297,15 @@ list (APPEND TESTING_LIBRARY_SOURCES ${PLATFORM_SPECIFIC_SOURCES})
 include_directories ("src")
 include_directories (".")
 
+# Build a static library (without -fPIC).
 add_library (phonenumber STATIC ${SOURCES})
 add_dependencies (phonenumber generate-sources ${METADATA_TARGET})
+
+# Build a shared library (with -fPIC).
+add_library (phonenumber-shared SHARED ${SOURCES})
+add_dependencies (phonenumber-shared generate-sources ${METADATA_TARGET})
+set_target_properties (phonenumber-shared PROPERTIES OUTPUT_NAME "phonenumber")
+set_target_properties (phonenumber-shared PROPERTIES PREFIX "lib")
 
 set (LIBRARY_DEPS ${PROTOBUF_LIB} ${ICU_LIB})
 
@@ -311,6 +318,7 @@ if (APPLE)
 endif ()
 
 target_link_libraries (phonenumber ${LIBRARY_DEPS})
+target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
 
 # Build a specific library for testing purposes.
 add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
