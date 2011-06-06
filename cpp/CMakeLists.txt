@@ -48,10 +48,10 @@ endfunction (find_required_library)
 
 # Check the library version (if pkg-config available).
 find_package (PkgConfig)
-function (check_library_version NAME LIBRARY VERSION)
-  if (PKG_CONFIG_EXECUTABLE)
-    pkg_check_modules (NAME REQUIRED ${LIBRARY}>=${VERSION})
-  endif (PKG_CONFIG_EXECUTABLE)
+function (check_library_version VARNAME LIBRARY_WITH_VERSION)
+  if (PKG_CONFIG_FOUND)
+    pkg_check_modules (${VARNAME} REQUIRED ${LIBRARY_WITH_VERSION})
+  endif ()
 endfunction ()
 
 # Find a program. If it has not been found, stop CMake with a fatal error
@@ -77,16 +77,17 @@ endif ()
 
 find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
                        "Google Protocol Buffers")
-check_library_version (PC_PROTOBUF protobuf 2.4)
+check_library_version (PC_PROTOBUF protobuf>=2.4)
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
-check_library_version (PC_ICU_UC icuuc 4.4)
+check_library_version (PC_ICU_UC icu-uc>=4.4)
+
 set (ICU_INCLUDE_DIR ${ICU_UC_INCLUDE_DIR})
 set (ICU_LIB ${ICU_UC_LIB})
 # If ICU regexp engine is used, use icui18n as well.
 if (${USE_RE2} STREQUAL "OFF")
   find_required_library (ICU_I18N unicode/regex.h icui18n "ICU")
-  check_library_version (PC_ICU_I18N icui18n 4.4)
+  check_library_version (PC_ICU_I18N icu-i18n>=4.4)
   list (APPEND ICU_INCLUDE_DIR ${ICU_I18N_INCLUDE_DIR})
   list (APPEND ICU_LIB ${ICU_I18N_LIB})
 endif ()
