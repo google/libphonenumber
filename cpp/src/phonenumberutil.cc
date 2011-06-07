@@ -726,9 +726,11 @@ PhoneNumberUtil::~PhoneNumberUtil() {
 // Public wrapper function to get a PhoneNumberUtil instance with the default
 // metadata file.
 // static
+#ifdef USE_GOOGLE_BASE
 PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
   return Singleton<PhoneNumberUtil>::get();
 }
+#endif
 
 void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
   DCHECK(regions);

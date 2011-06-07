@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Author: Fredrik Roubert <roubert@google.com>
+// Author: Fredrik Roubert
 
 // RegExpCache is a simple wrapper around hash_map<> to store RegExp objects.
 //
@@ -30,6 +30,7 @@
 #include <cstddef>
 #include <string>
 
+#include "base/basictypes.h"
 #include "base/scoped_ptr.h"
 #include "base/synchronization/lock.h"
 

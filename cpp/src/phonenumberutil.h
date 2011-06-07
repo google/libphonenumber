@@ -27,6 +27,7 @@
 #include <utility>
 #include <vector>
 
+#include "base/basictypes.h"
 #include "base/scoped_ptr.h"
 #include "base/singleton.h"
 #include "phonenumber.pb.h"
@@ -56,8 +57,12 @@ class PhoneNumber;
 // codes can be found here:
 // http://www.iso.org/iso/english_country_names_and_code_elements
 
+#ifdef USE_GOOGLE_BASE
 class PhoneNumberUtil {
   friend struct DefaultSingletonTraits<PhoneNumberUtil>;
+#else
+class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
+#endif
   friend class PhoneNumberUtilTest;
  public:
   // INTERNATIONAL and NATIONAL formats are consistent with the definition
@@ -139,7 +144,9 @@ class PhoneNumberUtil {
   //
   // The PhoneNumberUtil is implemented as a singleton. Therefore, calling
   // getInstance multiple times will only result in one instance being created.
+#ifdef USE_GOOGLE_BASE
   static PhoneNumberUtil* GetInstance();
+#endif
 
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will

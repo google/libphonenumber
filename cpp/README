@@ -64,10 +64,17 @@ Requirements:
     $ cd icu/source
     $ ./configure && make && sudo make install
 
-    If you have a Debian-based distribution provinding an up-to-date version of
+    If you have a Debian-based distribution providing an up-to-date version of
     ICU, you can install it using apt-get:
     $ sudo apt-get install libicu-dev
 
+  - Boost
+    Version 1.40 or more recent is required.
+
+    You can install it very easily on a Debian-based GNU/Linux distribution:
+    $ sudo apt-get install libboost1.40-dev libboost-thread1.40-dev
+
+    Note: Boost Thread is the only library needed at link time.
 
 How to build libphonenumber C++:
   $ cd libphonenumber
