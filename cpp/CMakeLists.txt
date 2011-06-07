@@ -303,10 +303,25 @@ add_library (phonenumber STATIC ${SOURCES})
 add_dependencies (phonenumber generate-sources ${METADATA_TARGET})
 
 # Build a shared library (with -fPIC).
-add_library (phonenumber-shared SHARED ${SOURCES})
-add_dependencies (phonenumber-shared generate-sources ${METADATA_TARGET})
-set_target_properties (phonenumber-shared PROPERTIES OUTPUT_NAME "phonenumber")
-set_target_properties (phonenumber-shared PROPERTIES PREFIX "lib")
+set (BUILD_SHARED_LIB true)
+
+if (${USE_RE2} STREQUAL "ON")
+  # RE2 is not always available as a shared library (e.g: package provided by
+  # Ubuntu) therefore disable the shared library build in this case.
+  if (${RE2_LIB} MATCHES ".*\\.a")
+    message (WARNING
+      "RE2 not available as a shared library, shared library build disabled")
+    set (BUILD_SHARED_LIB false)
+  endif ()
+endif ()
+
+if (BUILD_SHARED_LIB)
+  add_library (phonenumber-shared SHARED ${SOURCES})
+  add_dependencies (phonenumber-shared generate-sources ${METADATA_TARGET})
+  set_target_properties (phonenumber-shared
+                         PROPERTIES OUTPUT_NAME "phonenumber")
+  set_target_properties (phonenumber-shared PROPERTIES PREFIX "lib")
+endif ()
 
 set (LIBRARY_DEPS ${PROTOBUF_LIB} ${ICU_LIB})
 
@@ -319,7 +334,10 @@ if (APPLE)
 endif ()
 
 target_link_libraries (phonenumber ${LIBRARY_DEPS})
-target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
+
+if (BUILD_SHARED_LIB)
+  target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
+endif ()
 
 # Build a specific library for testing purposes.
 add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
