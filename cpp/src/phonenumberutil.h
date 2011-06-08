@@ -62,9 +62,12 @@ class PhoneNumberUtil {
   friend struct DefaultSingletonTraits<PhoneNumberUtil>;
 #else
 class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
+  friend class Singleton<PhoneNumberUtil>;
 #endif
   friend class PhoneNumberUtilTest;
  public:
+  ~PhoneNumberUtil();
+
   // INTERNATIONAL and NATIONAL formats are consistent with the definition
   // in ITU-T Recommendation E. 123. For example, the number of the Google
   // Zürich office will be written as "+41 44 668 1800" in INTERNATIONAL
@@ -533,7 +536,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
 
   PhoneNumberUtil();
-  ~PhoneNumberUtil();
 
   // Gets all the supported regions.
   void GetSupportedRegions(set<string>* regions) const;

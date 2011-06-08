@@ -248,6 +248,10 @@ ostream& operator<<(ostream& os, const PhoneNumber& number) {
   return os;
 }
 
+TEST_F(PhoneNumberUtilTest, GetInstance) {
+  EXPECT_FALSE(PhoneNumberUtil::GetInstance() == NULL);
+}
+
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   set<string> regions;
 

@@ -31,7 +31,7 @@ class Singleton : private boost::noncopyable {
 
   static T* GetInstance() {
     boost::call_once(Init, flag);
-    return instance;
+    return instance.get();
   }
 
  private:
@@ -43,7 +43,7 @@ class Singleton : private boost::noncopyable {
   static boost::once_flag flag;
 };
 
-template <class T> boost::scoped_ptr<T> Singleton<T>::instance = NULL;
+template <class T> boost::scoped_ptr<T> Singleton<T>::instance;
 template <class T> boost::once_flag Singleton<T>::flag = BOOST_ONCE_INIT;
 
 }  // namespace phonenumbers
