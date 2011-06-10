@@ -123,7 +123,7 @@ public class PhoneNumberOfflineGeocoder {
    * @param countryCallingCode   specifies the country calling code of phone numbers that are
    *     contained by the file to be loaded
    */
-  public loadDataFile(Locale locale, int countryCallingCode) {
+  public void loadDataFile(Locale locale, int countryCallingCode) {
     instance.getPhonePrefixDescriptions(countryCallingCode, locale.getLanguage(), "",
         locale.getCountry());
   }
