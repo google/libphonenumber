@@ -145,8 +145,8 @@ public class PhoneNumberUtilTest extends TestCase {
     assertTrue(metadata.hasNationalPrefix());
     assertEquals(2, metadata.numberFormatSize());
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
-                 metadata.getNumberFormat(0).getPattern());
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
+                 metadata.getNumberFormat(1).getPattern());
+    assertEquals("$1 $2 $3", metadata.getNumberFormat(1).getFormat());
     assertEquals("[13-9]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
     assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
@@ -288,6 +288,13 @@ public class PhoneNumberUtilTest extends TestCase {
     // CS is an invalid region, so we have no data for it.
     assertNull(phoneUtil.getExampleNumberForType(RegionCode.CS,
                                                  PhoneNumberUtil.PhoneNumberType.MOBILE));
+  }
+
+  public void testConvertAlphaCharactersInNumber() {
+    String input = "1800-ABC-DEF";
+    // Alpha chars are converted to digits; everything else is left untouched.
+    String expectedOutput = "1800-222-333";
+    assertEquals(expectedOutput, PhoneNumberUtil.convertAlphaCharactersInNumber(input));
   }
 
   public void testNormaliseRemovePunctuation() {
@@ -1037,6 +1044,9 @@ public class PhoneNumberUtilTest extends TestCase {
     // Alpha numbers.
     assertTrue(PhoneNumberUtil.isViablePhoneNumber("0800-4-pizza"));
     assertTrue(PhoneNumberUtil.isViablePhoneNumber("0800-4-PIZZA"));
+  }
+
+  public void testIsViablePhoneNumberNonAscii() {
     // Only one or two digits before possible punctuation followed by more digits.
     assertTrue(PhoneNumberUtil.isViablePhoneNumber("1\u300034"));
     assertFalse(PhoneNumberUtil.isViablePhoneNumber("1\u30003+4"));
@@ -1352,6 +1362,9 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(US_NUMBER, phoneUtil.parse("0~01-650-253-0000", RegionCode.PL));
     // Using "++" at the start.
     assertEquals(US_NUMBER, phoneUtil.parse("++1 (650) 253-0000", RegionCode.PL));
+  }
+
+  public void testParseNonAscii() throws Exception {
     // Using a full-width plus sign.
     assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B1 (650) 253-0000", RegionCode.SG));
     // The whole number, including punctuation, is here represented in full-width form.
@@ -1364,6 +1377,11 @@ public class PhoneNumberUtilTest extends TestCase {
                                             "\u3000\uFF12\uFF15\uFF13\u30FC\uFF10\uFF10\uFF10" +
                                             "\uFF10",
                                             RegionCode.SG));
+
+    // Using a very strange decimal digit range (Mongolian digits).
+    assertEquals(US_NUMBER, phoneUtil.parse("\u1811 \u1816\u1815\u1810 " +
+                                            "\u1812\u1815\u1813 \u1810\u1810\u1810\u1810",
+                                            RegionCode.US));
   }
 
   public void testParseWithLeadingZero() throws Exception {

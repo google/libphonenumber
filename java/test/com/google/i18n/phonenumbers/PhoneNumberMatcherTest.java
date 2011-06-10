@@ -221,6 +221,123 @@ public class PhoneNumberMatcherTest extends TestCase {
     assertEquals(number, matchWithSpaces.rawString());
   }
 
+  public void testIsLatinLetter() throws Exception {
+    assertTrue(PhoneNumberMatcher.isLatinLetter('c'));
+    assertTrue(PhoneNumberMatcher.isLatinLetter('C'));
+    assertTrue(PhoneNumberMatcher.isLatinLetter('\u00C9'));
+    assertTrue(PhoneNumberMatcher.isLatinLetter('\u0301'));  // Combining acute accent
+    // Punctuation, digits and white-space are not considered "latin letters".
+    assertFalse(PhoneNumberMatcher.isLatinLetter(':'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('5'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('-'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('.'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter(' '));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('\u6211'));  // Chinese character
+  }
+
+  public void testMatchesWithSurroundingLatinChars() throws Exception {
+    ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>(5);
+    contextPairs.add(new NumberContext("abc", "def"));
+    contextPairs.add(new NumberContext("abc", ""));
+    contextPairs.add(new NumberContext("", "def"));
+    // Latin small letter e with an acute accent.
+    contextPairs.add(new NumberContext("\u00C9", ""));
+    // Same character decomposed (with combining mark).
+    contextPairs.add(new NumberContext("e\u0301", ""));
+
+    // Numbers should not be considered valid, if they are surrounded by Latin characters, but
+    // should be considered possible.
+    findMatchesInContexts(contextPairs, false, true);
+  }
+
+  public void testMatchesWithSurroundingLatinCharsAndLeadingPunctuation() throws Exception {
+    // Contexts with trailing characters. Leading characters are okay here since the numbers we will
+    // insert start with punctuation, but trailing characters are still not allowed.
+    ArrayList<NumberContext> possibleOnlyContexts = new ArrayList<NumberContext>(3);
+    possibleOnlyContexts.add(new NumberContext("abc", "def"));
+    possibleOnlyContexts.add(new NumberContext("", "def"));
+    possibleOnlyContexts.add(new NumberContext("", "\u00C9"));
+
+    // Numbers should not be considered valid, if they have trailing Latin characters, but should be
+    // considered possible.
+    String numberWithPlus = "+14156667777";
+    String numberWithBrackets = "(415)6667777";
+    findMatchesInContexts(possibleOnlyContexts, false, true, "US", numberWithPlus);
+    findMatchesInContexts(possibleOnlyContexts, false, true, "US", numberWithBrackets);
+
+    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>(4);
+    validContexts.add(new NumberContext("abc", ""));
+    validContexts.add(new NumberContext("\u00C9", ""));
+    validContexts.add(new NumberContext("\u00C9", "."));  // Trailing punctuation.
+    validContexts.add(new NumberContext("\u00C9", " def"));  // Trailing white-space.
+
+    // Numbers should be considered valid, since they start with punctuation.
+    findMatchesInContexts(validContexts, true, true, "US", numberWithPlus);
+    findMatchesInContexts(validContexts, true, true, "US", numberWithBrackets);
+  }
+
+  public void testMatchesWithSurroundingChineseChars() throws Exception {
+    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>(3);
+    validContexts.add(new NumberContext("\u6211\u7684\u7535\u8BDD\u53F7\u7801\u662F", ""));
+    validContexts.add(new NumberContext("", "\u662F\u6211\u7684\u7535\u8BDD\u53F7\u7801"));
+    validContexts.add(new NumberContext("\u8BF7\u62E8\u6253", "\u6211\u5728\u660E\u5929"));
+
+    // Numbers should be considered valid, since they are surrounded by Chinese.
+    findMatchesInContexts(validContexts, true, true);
+  }
+
+  public void testMatchesWithSurroundingPunctuation() throws Exception {
+    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>(4);
+    validContexts.add(new NumberContext("My number-", ""));  // At end of text.
+    validContexts.add(new NumberContext("", ".Nice day."));  // At start of text.
+    validContexts.add(new NumberContext("Tel:", "."));  // Punctuation surrounds number.
+    validContexts.add(new NumberContext("Tel: ", " on Saturdays."));  // White-space is also fine.
+
+    // Numbers should be considered valid, since they are surrounded by punctuation.
+    findMatchesInContexts(validContexts, true, true);
+  }
+
+  /**
+   * Helper method which tests the contexts provided and ensures that:
+   * -- if isValid is true, they all find a test number inserted in the middle when leniency of
+   *  matching is set to VALID; else no test number should be extracted at that leniency level
+   * -- if isPossible is true, they all find a test number inserted in the middle when leniency of
+   *  matching is set to POSSIBLE; else no test number should be extracted at that leniency level
+   */
+  private void findMatchesInContexts(List<NumberContext> contexts, boolean isValid,
+                                     boolean isPossible, String region, String number) {
+    if (isValid) {
+      doTestInContext(number, region, contexts, Leniency.VALID);
+    } else {
+      for (NumberContext context : contexts) {
+        String text = context.leadingText + number + context.trailingText;
+        assertTrue("Should not have found a number in " + text,
+                   hasNoMatches(phoneUtil.findNumbers(text, region)));
+      }
+    }
+    if (isPossible) {
+      doTestInContext(number, region, contexts, Leniency.POSSIBLE);
+    } else {
+      for (NumberContext context : contexts) {
+        String text = context.leadingText + number + context.trailingText;
+        assertTrue("Should not have found a number in " + text,
+                   hasNoMatches(phoneUtil.findNumbers(text, region, Leniency.POSSIBLE,
+                                                      Long.MAX_VALUE)));
+      }
+    }
+  }
+
+  /**
+   * Variant of findMatchesInContexts that uses a default number and region.
+   */
+  private void findMatchesInContexts(List<NumberContext> contexts, boolean isValid,
+                                     boolean isPossible) {
+    String region = "US";
+    String number = "415-666-7777";
+
+    findMatchesInContexts(contexts, isValid, isPossible, region, number);
+  }
+
   public void testNonMatchingBracketsAreInvalid() throws Exception {
     // The digits up to the ", " form a valid US number, but it shouldn't be matched as one since
     // there was a non-matching bracket present.
@@ -473,6 +590,9 @@ public class PhoneNumberMatcherTest extends TestCase {
     }
   }
 
+  /**
+   * Tests valid numbers in contexts that should pass for {@link Leniency#POSSIBLE}.
+   */
   private void findPossibleInContext(String number, String defaultCountry) {
     ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>(15);
     contextPairs.add(new NumberContext("", ""));  // no context
@@ -513,7 +633,8 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   /**
-   * Tests valid numbers in contexts that fail for {@link Leniency#POSSIBLE}.
+   * Tests valid numbers in contexts that fail for {@link Leniency#POSSIBLE} but are valid for
+   * {@link Leniency#VALID}.
    */
   private void findValidInContext(String number, String defaultCountry) {
     ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>(5);

@@ -124,7 +124,9 @@ public class AsYouTypeFormatter {
   private boolean maybeCreateNewTemplate() {
     // When there are multiple available formats, the formatter uses the first format where a
     // formatting template could be created.
-    for (NumberFormat numberFormat : possibleFormats) {
+    Iterator<NumberFormat> it = possibleFormats.iterator();
+    while (it.hasNext()) {
+      NumberFormat numberFormat = it.next();
       String pattern = numberFormat.getPattern();
       if (currentFormattingPattern.equals(pattern)) {
         return false;
@@ -132,6 +134,8 @@ public class AsYouTypeFormatter {
       if (createFormattingTemplate(numberFormat)) {
         currentFormattingPattern = pattern;
         return true;
+      } else {  // Remove the current number format from possibleFormats.
+        it.remove();
       }
     }
     ableToFormat = false;
@@ -189,7 +193,7 @@ public class AsYouTypeFormatter {
     numberPattern = STANDALONE_DIGIT_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
     formattingTemplate.setLength(0);
     String tempTemplate = getFormattingTemplate(numberPattern, format.getFormat());
-    if (tempTemplate.length() > nationalNumber.length()) {
+    if (tempTemplate.length() > 0) {
       formattingTemplate.append(tempTemplate);
       return true;
     }
@@ -205,6 +209,11 @@ public class AsYouTypeFormatter {
     Matcher m = regexCache.getPatternForRegex(numberPattern).matcher(longestPhoneNumber);
     m.find();  // this will always succeed
     String aPhoneNumber = m.group();
+    // No formatting template can be created if the number of digits entered so far is longer than
+    // the maximum the current formatting rule can accommodate.
+    if (aPhoneNumber.length() < nationalNumber.length()) {
+      return "";
+    }
     // Formats the number according to numberFormat
     String template = aPhoneNumber.replaceAll(numberPattern, numberFormat);
     // Replaces each digit with character digitPlaceholder
@@ -471,17 +480,20 @@ public class AsYouTypeFormatter {
   // version, if nextChar is a digit in non-ASCII format. This method assumes its input is either a
   // digit or the plus sign.
   private char normalizeAndAccrueDigitsAndPlusSign(char nextChar, boolean rememberPosition) {
+    char normalizedChar;
     if (nextChar == PhoneNumberUtil.PLUS_SIGN) {
+      normalizedChar = nextChar;
       accruedInputWithoutFormatting.append(nextChar);
     } else {
-      nextChar = PhoneNumberUtil.DIGIT_MAPPINGS.get(nextChar);
-      accruedInputWithoutFormatting.append(nextChar);
-      nationalNumber.append(nextChar);
+      int radix = 10;
+      normalizedChar = Character.forDigit(Character.digit(nextChar, radix), radix);
+      accruedInputWithoutFormatting.append(normalizedChar);
+      nationalNumber.append(normalizedChar);
     }
     if (rememberPosition) {
       positionToRemember = accruedInputWithoutFormatting.length();
     }
-    return nextChar;
+    return normalizedChar;
   }
 
   private String inputDigitHelper(char nextChar) {

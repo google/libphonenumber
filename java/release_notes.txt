@@ -1,3 +1,13 @@
+June 10th, 2011
+* Code changes:
+ - Fixes for PhoneNumberMatcher to be more restrictive in valid mode and not match numbers
+   surrounded by Latin characters. This ensures, for example, the string abc123456789acg will not be
+   marked as a phone numbers.
+ - Enable PhoneNumberUtil to handle all digits, rather than a subset
+ - Fix for AYTF issue36 and improvement for US AYTF behaviour.
+* Metadata changes:
+ - Updates: BG, EG, ES, GH, PF, SC, SY, VA
+
 May 24th, 2011
 * Code changes:
  - Phonenumber now implements Serializable.

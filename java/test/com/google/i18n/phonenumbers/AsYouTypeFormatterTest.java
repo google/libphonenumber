@@ -56,6 +56,28 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650253", formatter.inputDigit('3'));
   }
 
+  public void testTooLongNumberMatchingMultipleLeadingDigits() {
+    // See http://code.google.com/p/libphonenumber/issues/detail?id=36
+    // The bug occurred last time for countries which have two formatting rules with exactly the
+    // same leading digits pattern but differ in length.
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("ZZ");
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+81 ", formatter.inputDigit('1'));
+    assertEquals("+81 9", formatter.inputDigit('9'));
+    assertEquals("+81 90", formatter.inputDigit('0'));
+    assertEquals("+81 90 1", formatter.inputDigit('1'));
+    assertEquals("+81 90 12", formatter.inputDigit('2'));
+    assertEquals("+81 90 123", formatter.inputDigit('3'));
+    assertEquals("+81 90 1234", formatter.inputDigit('4'));
+    assertEquals("+81 90 1234 5", formatter.inputDigit('5'));
+    assertEquals("+81 90 1234 56", formatter.inputDigit('6'));
+    assertEquals("+81 90 1234 567", formatter.inputDigit('7'));
+    assertEquals("+81 90 1234 5678", formatter.inputDigit('8'));
+    assertEquals("+81 90 12 345 6789", formatter.inputDigit('9'));
+    assertEquals("+81901234567890", formatter.inputDigit('0'));
+  }
+
   public void testAYTFUS() {
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
     assertEquals("6", formatter.inputDigit('6'));

@@ -57,7 +57,7 @@ public final class PhoneNumberMatch {
   /** The start index into the text. */
   private final int start;
   /** The raw substring matched. */
-  private final String match;
+  private final String rawString;
   /** The matched phone number. */
   private final PhoneNumber number;
 
@@ -65,18 +65,18 @@ public final class PhoneNumberMatch {
    * Creates a new match.
    *
    * @param start  the start index into the target text
-   * @param match  the matched substring of the target text
+   * @param rawString  the matched substring of the target text
    * @param number  the matched phone number
    */
-  PhoneNumberMatch(int start, String match, PhoneNumber number) {
+  PhoneNumberMatch(int start, String rawString, PhoneNumber number) {
     if (start < 0) {
       throw new IllegalArgumentException("Start index must be >= 0.");
     }
-    if (match == null || number == null) {
+    if (rawString == null || number == null) {
       throw new NullPointerException();
     }
     this.start = start;
-    this.match = match;
+    this.rawString = rawString;
     this.number = number;
   }
 
@@ -92,17 +92,17 @@ public final class PhoneNumberMatch {
 
   /** Returns the exclusive end index of the matched phone number within the searched text. */
   public int end() {
-    return start + match.length();
+    return start + rawString.length();
   }
 
   /** Returns the raw string matched as a phone number in the searched text. */
   public String rawString() {
-    return match;
+    return rawString;
   }
 
   @Override
   public int hashCode() {
-    return Arrays.hashCode(new Object[]{start, match, number});
+    return Arrays.hashCode(new Object[]{start, rawString, number});
   }
 
   @Override
@@ -114,11 +114,12 @@ public final class PhoneNumberMatch {
       return false;
     }
     PhoneNumberMatch other = (PhoneNumberMatch) obj;
-    return match.equals(other.match) && (start == other.start) && number.equals(other.number);
+    return rawString.equals(other.rawString) && (start == other.start) &&
+        number.equals(other.number);
   }
 
   @Override
   public String toString() {
-    return "PhoneNumberMatch [" + start() + "," + end() + ") " + match;
+    return "PhoneNumberMatch [" + start() + "," + end() + ") " + rawString;
   }
 }

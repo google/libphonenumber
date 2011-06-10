@@ -330,6 +330,10 @@
           <leadingDigits>[57-9]0</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{3})(\d{4})">
+          <leadingDigits>[57-9]0</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <leadingDigits>222|333</leadingDigits>
           <leadingDigits>(?:222|333)1</leadingDigits>
@@ -672,13 +676,13 @@
                preferredExtnPrefix=" extn. " nationalPrefix="1"
                mainCountryForCode="true" >
       <availableFormats>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
           <intlFormat>NA</intlFormat>
        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
+          <format>$1 $2 $3</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[13-9]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>

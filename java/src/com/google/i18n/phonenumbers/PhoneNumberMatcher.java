@@ -19,6 +19,7 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.Leniency;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
+import java.lang.Character.UnicodeBlock;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
@@ -82,6 +83,11 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    */
   private static final Pattern GROUP_SEPARATOR = Pattern.compile("\\p{Z}+");
 
+  /**
+   * Punctuation that may be at the start of a phone number - brackets and plus signs.
+   */
+  private static final Pattern LEAD_CLASS;
+
   static {
     /* Builds the MATCHING_BRACKETS and PATTERN regular expressions. The building blocks below exist
      * to make the pattern more easily understood. */
@@ -112,7 +118,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
      * country code. */
     int digitBlockLimit =
         PhoneNumberUtil.MAX_LENGTH_FOR_NSN + PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE;
-    /* Limit on the number of blocks separated by punctuation. Use digitBlockLimit since in some
+    /* Limit on the number of blocks separated by punctuation. Uses digitBlockLimit since some
      * formats use spaces to separate each digit. */
     String blockLimit = limit(0, digitBlockLimit);
 
@@ -120,8 +126,9 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     String punctuation = "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]" + punctuationLimit;
     /* A digits block without punctuation. */
     String digitSequence = "\\p{Nd}" + limit(1, digitBlockLimit);
-    /* Punctuation that may be at the start of a phone number - brackets and plus signs. */
+
     String leadClass = "[" + openingParens + PhoneNumberUtil.PLUS_CHARS + "]";
+    LEAD_CLASS = Pattern.compile(leadClass);
 
     /* Phone number pattern allowing optional punctuation. */
     PATTERN = Pattern.compile(
@@ -145,7 +152,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   }
 
   /** The phone number utility. */
-  private final PhoneNumberUtil util;
+  private final PhoneNumberUtil phoneUtil;
   /** The text searched for phone numbers. */
   private final CharSequence text;
   /**
@@ -189,7 +196,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     if (maxTries < 0) {
       throw new IllegalArgumentException();
     }
-    this.util = util;
+    this.phoneUtil = util;
     this.text = (text != null) ? text : "";
     this.preferredRegion = country;
     this.leniency = leniency;
@@ -265,6 +272,25 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   }
 
   /**
+   * Helper method to determine if a character is a Latin-script letter or not. For our purposes,
+   * combining marks should also return true since we assume they have been added to a preceding
+   * Latin character.
+   */
+  static boolean isLatinLetter(char letter) {
+    // Combining marks are a subset of non-spacing-mark.
+    if (!Character.isLetter(letter) && Character.getType(letter) != Character.NON_SPACING_MARK) {
+      return false;
+    }
+    UnicodeBlock block = UnicodeBlock.of(letter);
+    return block.equals(UnicodeBlock.BASIC_LATIN) ||
+        block.equals(UnicodeBlock.LATIN_1_SUPPLEMENT) ||
+        block.equals(UnicodeBlock.LATIN_EXTENDED_A) ||
+        block.equals(UnicodeBlock.LATIN_EXTENDED_ADDITIONAL) ||
+        block.equals(UnicodeBlock.LATIN_EXTENDED_B) ||
+        block.equals(UnicodeBlock.COMBINING_DIACRITICAL_MARKS);
+  }
+
+  /**
    * Attempts to extract a match from a {@code candidate} character sequence.
    *
    * @param candidate  the candidate text that might contain a phone number
@@ -275,6 +301,21 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // Skip a match that is more likely a publication page reference or a date.
     if (PUB_PAGES.matcher(candidate).find() || SLASH_SEPARATED_DATES.matcher(candidate).find()) {
       return null;
+    }
+
+    // If leniency is set to VALID only, we also want to skip numbers that are surrounded by Latin
+    // alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
+    if (leniency == Leniency.VALID) {
+      // If the candidate is not at the start of the text, and does not start with punctuation and
+      // the previous character is not a Latin letter, return null.
+      if (offset > 0 &&
+          (!LEAD_CLASS.matcher(candidate).lookingAt() && isLatinLetter(text.charAt(offset - 1)))) {
+        return null;
+      }
+      int lastCharIndex = offset + candidate.length();
+      if (lastCharIndex < text.length() && isLatinLetter(text.charAt(lastCharIndex))) {
+        return null;
+      }
     }
 
     // Try to come up with a valid match given the entire candidate.
@@ -299,7 +340,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    */
   private PhoneNumberMatch extractInnerMatch(String candidate, int offset) {
     // Try removing either the first or last "group" in the number and see if this gives a result.
-    // We consider white space to be a possible indications of the start or end of the phone number.
+    // We consider white space to be a possible indication of the start or end of the phone number.
     Matcher groupMatcher = GROUP_SEPARATOR.matcher(candidate);
 
     if (groupMatcher.find()) {
@@ -350,8 +391,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       if (!MATCHING_BRACKETS.matcher(candidate).matches()) {
         return null;
       }
-      PhoneNumber number = util.parse(candidate, preferredRegion);
-      if (leniency.verify(number, util)) {
+      PhoneNumber number = phoneUtil.parse(candidate, preferredRegion);
+      if (leniency.verify(number, phoneUtil)) {
         return new PhoneNumberMatch(offset, candidate, number);
       }
     } catch (NumberParseException e) {

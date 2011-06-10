@@ -77,7 +77,7 @@ public class PhoneNumberUtil {
   // Region-code for the unknown region.
   private static final String UNKNOWN_REGION = "ZZ";
 
-  // The set of regions that share country code 1.
+  // The set of regions that share country calling code 1.
   // There are roughly 26 regions and we set the initial capacity of the HashSet to 35 to offer a
   // load factor of roughly 0.75.
   private final Set<String> nanpaRegions = new HashSet<String>(35);
@@ -88,23 +88,18 @@ public class PhoneNumberUtil {
 
   private static final String RFC3966_EXTN_PREFIX = ";ext=";
 
-  // These mappings map a character (key) to a specific digit that should replace it for
-  // normalization purposes. Non-European digits that may be used in phone numbers are mapped to a
-  // European equivalent.
-  static final Map<Character, Character> DIGIT_MAPPINGS;
-
   // Only upper-case variants of alpha characters are stored.
   private static final Map<Character, Character> ALPHA_MAPPINGS;
 
   // For performance reasons, amalgamate both into one map.
-  private static final Map<Character, Character> ALL_NORMALIZATION_MAPPINGS;
+  private static final Map<Character, Character> ALPHA_PHONE_MAPPINGS;
 
   // Separate map of all symbols that we wish to retain when formatting alpha numbers. This
   // includes digits, ASCII letters and number grouping symbols such as "-" and " ".
   private static final Map<Character, Character> ALL_PLUS_NUMBER_GROUPING_SYMBOLS;
 
   static {
-    // Simple ASCII digits map used to populate DIGIT_MAPPINGS and
+    // Simple ASCII digits map used to populate ALPHA_PHONE_MAPPINGS and
     // ALL_PLUS_NUMBER_GROUPING_SYMBOLS.
     HashMap<Character, Character> asciiDigitMappings = new HashMap<Character, Character>();
     asciiDigitMappings.put('0', '0');
@@ -117,40 +112,6 @@ public class PhoneNumberUtil {
     asciiDigitMappings.put('7', '7');
     asciiDigitMappings.put('8', '8');
     asciiDigitMappings.put('9', '9');
-
-    HashMap<Character, Character> digitMap = new HashMap<Character, Character>(50);
-    digitMap.putAll(asciiDigitMappings);
-    digitMap.put('\uFF10', '0');  // Fullwidth digit 0
-    digitMap.put('\u0660', '0');  // Arabic-indic digit 0
-    digitMap.put('\u06F0', '0');  // Eastern-Arabic digit 0
-    digitMap.put('\uFF11', '1');  // Fullwidth digit 1
-    digitMap.put('\u0661', '1');  // Arabic-indic digit 1
-    digitMap.put('\u06F1', '1');  // Eastern-Arabic digit 1
-    digitMap.put('\uFF12', '2');  // Fullwidth digit 2
-    digitMap.put('\u0662', '2');  // Arabic-indic digit 2
-    digitMap.put('\u06F2', '2');  // Eastern-Arabic digit 2
-    digitMap.put('\uFF13', '3');  // Fullwidth digit 3
-    digitMap.put('\u0663', '3');  // Arabic-indic digit 3
-    digitMap.put('\u06F3', '3');  // Eastern-Arabic digit 3
-    digitMap.put('\uFF14', '4');  // Fullwidth digit 4
-    digitMap.put('\u0664', '4');  // Arabic-indic digit 4
-    digitMap.put('\u06F4', '4');  // Eastern-Arabic digit 4
-    digitMap.put('\uFF15', '5');  // Fullwidth digit 5
-    digitMap.put('\u0665', '5');  // Arabic-indic digit 5
-    digitMap.put('\u06F5', '5');  // Eastern-Arabic digit 5
-    digitMap.put('\uFF16', '6');  // Fullwidth digit 6
-    digitMap.put('\u0666', '6');  // Arabic-indic digit 6
-    digitMap.put('\u06F6', '6');  // Eastern-Arabic digit 6
-    digitMap.put('\uFF17', '7');  // Fullwidth digit 7
-    digitMap.put('\u0667', '7');  // Arabic-indic digit 7
-    digitMap.put('\u06F7', '7');  // Eastern-Arabic digit 7
-    digitMap.put('\uFF18', '8');  // Fullwidth digit 8
-    digitMap.put('\u0668', '8');  // Arabic-indic digit 8
-    digitMap.put('\u06F8', '8');  // Eastern-Arabic digit 8
-    digitMap.put('\uFF19', '9');  // Fullwidth digit 9
-    digitMap.put('\u0669', '9');  // Arabic-indic digit 9
-    digitMap.put('\u06F9', '9');  // Eastern-Arabic digit 9
-    DIGIT_MAPPINGS = Collections.unmodifiableMap(digitMap);
 
     HashMap<Character, Character> alphaMap = new HashMap<Character, Character>(40);
     alphaMap.put('A', '2');
@@ -182,9 +143,9 @@ public class PhoneNumberUtil {
     ALPHA_MAPPINGS = Collections.unmodifiableMap(alphaMap);
 
     HashMap<Character, Character> combinedMap = new HashMap<Character, Character>(100);
-    combinedMap.putAll(alphaMap);
-    combinedMap.putAll(digitMap);
-    ALL_NORMALIZATION_MAPPINGS = Collections.unmodifiableMap(combinedMap);
+    combinedMap.putAll(ALPHA_MAPPINGS);
+    combinedMap.putAll(asciiDigitMappings);
+    ALPHA_PHONE_MAPPINGS = Collections.unmodifiableMap(combinedMap);
 
     HashMap<Character, Character> allPlusNumberGroupings = new HashMap<Character, Character>();
     // Put (lower letter -> upper letter) and (upper letter -> upper letter) mappings.
@@ -226,13 +187,12 @@ public class PhoneNumberUtil {
   // found as a leading character only.
   // This consists of dash characters, white space characters, full stops, slashes,
   // square brackets, parentheses and tildes. It also includes the letter 'x' as that is found as a
-  // placeholder for carrier information in some phone numbers.
+  // placeholder for carrier information in some phone numbers. Full-width variants are also
+  // present.
   static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F " +
       "\u00A0\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
 
-  // Digits accepted in phone numbers that we understand.
-  private static final String VALID_DIGITS =
-      Arrays.toString(DIGIT_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "");
+  private static final String DIGITS = "\\p{Nd}";
   // We accept alpha characters in phone numbers, ASCII only, upper and lower case.
   private static final String VALID_ALPHA =
       Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "") +
@@ -240,8 +200,7 @@ public class PhoneNumberUtil {
   static final String PLUS_CHARS = "+\uFF0B";
   private static final Pattern PLUS_CHARS_PATTERN = Pattern.compile("[" + PLUS_CHARS + "]+");
   private static final Pattern SEPARATOR_PATTERN = Pattern.compile("[" + VALID_PUNCTUATION + "]+");
-  private static final Pattern CAPTURING_DIGIT_PATTERN =
-      Pattern.compile("([" + VALID_DIGITS + "])");
+  private static final Pattern CAPTURING_DIGIT_PATTERN = Pattern.compile("(" + DIGITS + ")");
 
   // Regular expression of acceptable characters that may start a phone number for the purposes of
   // parsing. This allows us to strip away meaningless prefixes to phone numbers that may be
@@ -249,7 +208,7 @@ public class PhoneNumberUtil {
   // does not contain alpha characters, although they may be used later in the number. It also does
   // not include other punctuation, as this will be stripped later during parsing and is of no
   // information value when parsing a number.
-  private static final String VALID_START_CHAR = "[" + PLUS_CHARS + VALID_DIGITS + "]";
+  private static final String VALID_START_CHAR = "[" + PLUS_CHARS + DIGITS + "]";
   static final Pattern VALID_START_CHAR_PATTERN = Pattern.compile(VALID_START_CHAR);
 
   // Regular expression of characters typically used to start a second phone number for the purposes
@@ -280,8 +239,8 @@ public class PhoneNumberUtil {
   // plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
   // Note VALID_PUNCTUATION starts with a -, so must be the first in the range.
   private static final String VALID_PHONE_NUMBER =
-      "[" + PLUS_CHARS + "]*(?:[" + VALID_PUNCTUATION + "]*[" + VALID_DIGITS + "]){3,}[" +
-      VALID_PUNCTUATION + VALID_ALPHA + VALID_DIGITS + "]*";
+      "[" + PLUS_CHARS + "]*(?:[" + VALID_PUNCTUATION + "]*" + DIGITS + "){3,}[" +
+      VALID_PUNCTUATION + VALID_ALPHA + DIGITS + "]*";
 
   // Default extension prefix to use when formatting. This will be put in front of any extension
   // component of the number, after the main national number is formatted. For example, if you wish
@@ -301,13 +260,13 @@ public class PhoneNumberUtil {
   // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
   // for representing the accented o - the character itself, and one in the unicode decomposed form
   // with the combining acute accent.
-  private static final String CAPTURING_EXTN_DIGITS = "([" + VALID_DIGITS + "]{1,7})";
+  private static final String CAPTURING_EXTN_DIGITS = "(" + DIGITS + "{1,7})";
   static final String KNOWN_EXTN_PATTERNS =
       RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" +
       "[ \u00A0\\t,]*(?:ext(?:ensi(?:o\u0301?|\u00F3))?n?|" +
       "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
       "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|" +
-      "[- ]+([" + VALID_DIGITS + "]{1,5})#";
+      "[- ]+(" + DIGITS + "{1,5})#";
 
   // Regexp of all known extension prefixes used by different regions followed by 1 or more valid
   // digits, for use when parsing.
@@ -342,7 +301,7 @@ public class PhoneNumberUtil {
 
   /**
    * INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
-   * E. 123. For example, the number of the Google Zurich office will be written as
+   * E123. For example, the number of the Google Switzerland office will be written as
    * "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format.
    * E164 format is as per INTERNATIONAL format but with no formatting applied, e.g. +41446681800.
    * RFC3966 is as per INTERNATIONAL format, but with all spaces and other separating symbols
@@ -527,13 +486,15 @@ public class PhoneNumberUtil {
   /**
    * Normalizes a string of characters representing a phone number. This performs the following
    * conversions:
-   *   Wide-ascii digits are converted to normal ASCII (European) digits.
+   *   Punctuation is stripped.
+   *   For ALPHA/VANITY numbers:
    *   Letters are converted to their numeric representation on a telephone keypad. The keypad
    *       used here is the one defined in ITU Recommendation E.161. This is only done if there are
-   *       3 or more letters in the number, to lessen the risk that such letters are typos -
-   *       otherwise alpha characters are stripped.
-   *   Punctuation is stripped.
+   *       3 or more letters in the number, to lessen the risk that such letters are typos.
+   *   For other numbers:
+   *   Wide-ascii digits are converted to normal ASCII (European) digits.
    *   Arabic-Indic numerals are converted to European numerals.
+   *   Spurious alpha characters are stripped.
    *
    * @param number  a string of characters representing a phone number
    * @return        the normalized string version of the phone number
@@ -541,9 +502,9 @@ public class PhoneNumberUtil {
   static String normalize(String number) {
     Matcher m = VALID_ALPHA_PHONE_PATTERN.matcher(number);
     if (m.matches()) {
-      return normalizeHelper(number, ALL_NORMALIZATION_MAPPINGS, true);
+      return normalizeHelper(number, ALPHA_PHONE_MAPPINGS, true);
     } else {
-      return normalizeHelper(number, DIGIT_MAPPINGS, true);
+      return normalizeDigitsOnly(number);
     }
   }
 
@@ -567,16 +528,23 @@ public class PhoneNumberUtil {
    * @return        the normalized string version of the phone number
    */
   public static String normalizeDigitsOnly(String number) {
-    return normalizeHelper(number, DIGIT_MAPPINGS, true);
+    int numberLength = number.length();
+    StringBuilder normalizedDigits = new StringBuilder(numberLength);
+    for (int i = 0; i < numberLength; i++) {
+      int d = Character.digit(number.charAt(i), 10);
+      if (d != -1) {
+        normalizedDigits.append(d);
+      }
+    }
+    return normalizedDigits.toString();
   }
 
   /**
    * Converts all alpha characters in a number to their respective digits on a keypad, but retains
-   * existing formatting. This Java implementation of this function also converts wide-ascii digits
-   * to normal ascii digits, and converts Arabic-Indic numerals to European numerals.
+   * existing formatting.
    */
   public static String convertAlphaCharactersInNumber(String number) {
-    return normalizeHelper(number, ALL_NORMALIZATION_MAPPINGS, false);
+    return normalizeHelper(number, ALPHA_PHONE_MAPPINGS, false);
   }
 
   /**
@@ -604,15 +572,16 @@ public class PhoneNumberUtil {
    * </pre>
    *
    * N.B.: area code is a very ambiguous concept, so the I18N team generally recommends against
-   * using it for most purposes. Read the following carefully before deciding to use this method:
-   *
-   *  - geographical area codes change over time, and this method honors those changes; therefore,
-   *    it doesn't guarantee the stability of the result it produces.
-   *  - subscriber numbers may not be diallable from all devices (notably mobile devices, which
-   *    typically requires the full national_number to be dialled in most countries).
-   *  - most non-geographical numbers have no area codes.
-   *  - some geographical numbers have no area codes.
-   *
+   * using it for most purposes, but recommends using the more general {@code national_number}
+   * instead. Read the following carefully before deciding to use this method:
+   * <ul>
+   *  <li> geographical area codes change over time, and this method honors those changes;
+   *    therefore, it doesn't guarantee the stability of the result it produces.
+   *  <li> subscriber numbers may not be diallable from all devices (notably mobile devices, which
+   *    typically requires the full national_number to be dialled in most regions).
+   *  <li> most non-geographical numbers have no area codes.
+   *  <li> some geographical numbers have no area codes.
+   * </ul>
    * @param number  the PhoneNumber object for which clients want to know the length of the area
    *     code.
    * @return  the length of area code of the PhoneNumber object passed in.
@@ -663,7 +632,7 @@ public class PhoneNumberUtil {
    * </pre>
    *
    * Refer to the unittests to see the difference between this function and
-   * {@link #getLengthOfGeographicalAreaCode()}.
+   * {@link #getLengthOfGeographicalAreaCode}.
    *
    * @param number  the PhoneNumber object for which clients want to know the length of the NDC.
    * @return  the length of NDC of the PhoneNumber object passed in.
@@ -915,7 +884,7 @@ public class PhoneNumberUtil {
    * {@code carrierCode}. The {@code carrierCode} will always be used regardless of whether the
    * phone number already has a preferred domestic carrier code stored. If {@code carrierCode}
    * contains an empty string, returns the number in national format without any carrier code.
-   * 
+   *
    * @param number  the phone number to be formatted
    * @param carrierCode  the carrier selection code to be used
    * @return  the formatted phone number in national format for dialing using the carrier as
@@ -969,7 +938,7 @@ public class PhoneNumberUtil {
   /**
    * Formats a phone number for out-of-country dialing purposes. If no regionCallingFrom is
    * supplied, we format the number in its INTERNATIONAL format. If the country calling code is the
-   * same as the region where the number is from, then NATIONAL formatting will be applied.
+   * same as that of the region where the number is from, then NATIONAL formatting will be applied.
    *
    * <p>If the number itself has a country calling code of zero or an otherwise invalid country
    * calling code, then we return the number with no formatting applied.
@@ -1935,7 +1904,7 @@ public class PhoneNumberUtil {
       // cannot begin with 0.
       Matcher digitMatcher = CAPTURING_DIGIT_PATTERN.matcher(number.substring(matchEnd));
       if (digitMatcher.find()) {
-        String normalizedGroup = normalizeHelper(digitMatcher.group(1), DIGIT_MAPPINGS, true);
+        String normalizedGroup = normalizeDigitsOnly(digitMatcher.group(1));
         if (normalizedGroup.equals("0")) {
           return false;
         }
