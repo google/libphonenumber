@@ -35,8 +35,9 @@
       <fileset dir="${classes.dir}">
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
-      	<exclude name="**/BuildMetadata*"/>
-      	<exclude name="**/JSArrayBuilder*"/>
+        <exclude name="**/BuildMetadata*"/>
+        <exclude name="**/JSArrayBuilder*"/>
+        <exclude name="**/GenerateAreaCodeData*"/>
       </fileset>
       <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
@@ -50,7 +51,9 @@
       <fileset dir="${classes.dir}">
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
-        <exclude name="**/*Build*"/>
+        <exclude name="**/BuildMetadata*"/>
+        <exclude name="**/JSArrayBuilder*"/>
+        <exclude name="**/GenerateAreaCodeData*"/>
       </fileset>
       <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
