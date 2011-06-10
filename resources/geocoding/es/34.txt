@@ -1,0 +1,100 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Generated from:
+# http://www.mityc.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Presentation_E164_Numbering_Plan_20101118_%20English.pdf
+
+3491|Madrid
+3493|Barcelona
+34810|Madrid
+34820|Ávila
+34822|Tenerife
+34823|Salamanca
+34827|Cáceres
+34842|Cantabria
+34843|Guipúzcoa
+34847|Burgos
+34848|Navarra
+34850|Álmería
+34853|Jaén
+34856|Cádiz
+34859|Huelva
+34860|Valencia
+34868|Murcia
+34869|Cuenca
+34872|Gerona
+34874|Huesca
+34875|Soria
+34876|Zaragoza
+34878|Teruel
+34879|Palencia
+34880|Zamora
+34881|La Coruña
+34884|Asturias
+34888|Orense
+34920|Ávila
+34922|Tenerife
+34923|Salamanca
+34924|Badajoz
+34925|Toledo
+34926|Ciudad Real
+34927|Cáceres
+34928|Las Palmas
+34941|La Rioja
+34942|Cantabria
+34943|Guipúzcoa
+34944|Vizcaya
+34945|Álava
+34946|Vizcaya
+34947|Burgos
+34948|Navarra
+34949|Guadalajara
+34950|Almería
+34951|Málaga
+34952|Málaga
+34953|Jaén
+34954|Sevilla
+34955|Sevilla
+34956|Cádiz
+34957|Córdoba
+34958|Granada
+34959|Huelva
+34960|Valencia
+34961|Valencia
+34962|Valencia
+34963|Valencia
+34964|Castellón
+34965|Alicante
+34966|Alicante
+34967|Albacete
+34968|Murcia
+34969|Cuenca
+34971|Baleares
+34972|Gerona
+34973|Lérida
+34974|Huesca
+34975|Soria
+34976|Zaragoza
+34977|Tarragona
+34978|Teruel
+34979|Palencia
+34980|Zamora
+34981|Coruña
+34982|Lugo
+34983|Valladolid
+34984|Asturias
+34985|Asturias
+34986|Pontevedra
+34987|León
+34988|Orense

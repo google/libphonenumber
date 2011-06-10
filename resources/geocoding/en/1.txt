@@ -1,0 +1,316 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+1201|New Jersey
+1202|District of Columbia
+1203|Connecticut
+1204|Manitoba
+1205|Alabama
+1206|Washington
+1207|Maine
+1208|Idaho
+1209|California
+1210|Texas
+1212|New York
+1213|California
+1214|Texas
+1215|Pennsylvania
+1216|Ohio
+1217|Illinois
+1218|Minnesota
+1219|Indiana
+1224|Illinois
+1225|Louisiana
+1226|Ontario
+1228|Mississippi
+1229|Georgia
+1231|Michigan
+1234|Ohio
+1239|Florida
+1240|Maryland
+1248|Michigan
+1250|British Columbia
+1251|Alabama
+1252|North Carolina
+1253|Washington
+1254|Texas
+1256|Alabama
+1260|Indiana
+1262|Wisconsin
+1267|Pennsylvania
+1269|Michigan
+1270|Kentucky
+1276|Virginia
+1281|Texas
+1289|Ontario
+1301|Maryland
+1302|Delaware
+1303|Colorado
+1304|West Virginia
+1305|Florida
+1306|Saskatchewan
+1307|Wyoming
+1308|Nebraska
+1309|Illinois
+1310|California
+1312|Illinois
+1313|Michigan
+1314|Missouri
+1315|New York
+1316|Kansas
+1317|Indiana
+1318|Louisiana
+1319|Iowa
+1320|Minnesota
+1321|Florida
+1323|California
+1325|Texas
+1330|Ohio
+1331|Illinois
+1334|Alabama
+1336|North Carolina
+1337|Louisiana
+1339|Massachusetts
+1347|New York
+1351|Massachusetts
+1352|Florida
+1360|Washington
+1361|Texas
+1385|Utah
+1386|Florida
+1401|Rhode Island
+1402|Nebraska
+1403|Alberta
+1404|Georgia
+1405|Oklahoma
+1406|Montana
+1407|Florida
+1408|California
+1409|Texas
+1410|Maryland
+1412|Pennsylvania
+1413|Massachusetts
+1414|Wisconsin
+1415|California
+1416|Ontario
+1417|Missouri
+1418|Québec
+1419|Ohio
+1423|Tennessee
+1424|California
+1425|Washington
+1430|Texas
+1432|Texas
+1434|Virginia
+1435|Utah
+1438|Québec
+1440|Ohio
+1443|Maryland
+1450|Québec
+1469|Texas
+1478|Georgia
+1479|Arkansas
+1480|Arizona
+1484|Pennsylvania
+1501|Arkansas
+1502|Kentucky
+1503|Oregon
+1504|Louisiana
+1505|New Mexico
+1506|New Brunswick
+1507|Minnesota
+1508|Massachusetts
+1509|Washington
+1510|California
+1512|Texas
+1513|Ohio
+1514|Québec
+1515|Iowa
+1516|New York
+1517|Michigan
+1518|New York
+1519|Ontario
+1520|Arizona
+1530|California
+1540|Virginia
+1541|Oregon
+1551|New Jersey
+1559|California
+1561|Florida
+1562|California
+1563|Iowa
+1567|Ohio
+1570|Pennsylvania
+1571|Virginia
+1573|Missouri
+1574|Indiana
+1575|New Mexico
+1580|Oklahoma
+1585|New York
+1586|Michigan
+1587|Alberta
+1601|Mississippi
+1602|Arizona
+1603|New Hampshire
+1604|British Columbia
+1605|South Dakota
+1606|Kentucky
+1607|New York
+1608|Wisconsin
+1609|New Jersey
+1610|Pennsylvania
+1612|Minnesota
+1613|Ontario
+1614|Ohio
+1615|Tennessee
+1616|Michigan
+1617|Massachusetts
+1618|Illinois
+1619|California
+1620|Kansas
+1623|Arizona
+1626|California
+1630|Illinois
+1631|New York
+1636|Missouri
+1641|Iowa
+1646|New York
+1647|Ontario
+1650|California
+1651|Minnesota
+1657|California
+1660|Missouri
+1661|California
+1662|Mississippi
+1678|Georgia
+1682|Texas
+1701|North Dakota
+1702|Nevada
+1703|Virginia
+1704|North Carolina
+1705|Ontario
+1706|Georgia
+1707|California
+1708|Illinois
+1709|Newfoundland and Labrador
+1712|Iowa
+1713|Texas
+1714|California
+1715|Wisconsin
+1716|New York
+1717|Pennsylvania
+1718|New York
+1719|Colorado
+1720|Colorado
+1724|Pennsylvania
+1727|Florida
+1731|Tennessee
+1732|New Jersey
+1734|Michigan
+1740|Ohio
+1754|Florida
+1757|Virginia
+1760|California
+1763|Minnesota
+1765|Indiana
+1769|Mississippi
+1770|Georgia
+1772|Florida
+1773|Illinois
+1774|Massachusetts
+1775|Nevada
+1778|British Columbia
+1779|Illinois
+1780|Alberta
+1781|Massachusetts
+1785|Kansas
+1786|Florida
+1801|Utah
+1802|Vermont
+1803|South Carolina
+1804|Virginia
+1805|California
+1806|Texas
+1807|Ontario
+1808|Hawaii
+1810|Michigan
+1812|Indiana
+1813|Florida
+1814|Pennsylvania
+1815|Illinois
+1816|Missouri
+1817|Texas
+1818|California
+1819|Québec
+1828|North Carolina
+1830|Texas
+1831|California
+1832|Texas
+1843|South Carolina
+1845|New York
+1847|Illinois
+1848|New Jersey
+1850|Florida
+1856|New Jersey
+1857|Massachusetts
+1858|California
+1859|Kentucky
+1860|Connecticut
+1862|New Jersey
+1863|Florida
+1864|South Carolina
+1865|Tennessee
+1870|Arkansas
+1878|Pennsylvania
+1901|Tennessee
+1902|Nova Scotia
+1903|Texas
+1904|Florida
+1905|Ontario
+1906|Michigan
+1907|Alaska
+1908|New Jersey
+1909|California
+1910|North Carolina
+1912|Georgia
+1913|Kansas
+1914|New York
+1915|Texas
+1916|California
+1917|New York
+1918|Oklahoma
+1919|North Carolina
+1920|Wisconsin
+1925|California
+1928|Arizona
+1931|Tennessee
+1936|Texas
+1937|Ohio
+1940|Texas
+1941|Florida
+1947|Michigan
+1949|California
+1951|California
+1952|Minnesota
+1954|Florida
+1956|Texas
+1970|Colorado
+1971|Oregon
+1972|Texas
+1973|New Jersey
+1978|Massachusetts
+1979|Texas
+1980|North Carolina
+1985|Louisiana
+1989|Michigan

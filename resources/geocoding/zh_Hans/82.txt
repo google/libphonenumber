@@ -1,0 +1,30 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+822|首尔市
+8231|京畿道
+8232|仁川市
+8233|江原道
+8241|忠淸南道
+8242|大田市
+8243|忠淸北道
+8251|釜山市
+8252|蔚山市
+8253|大邱市
+8254|庆尚北道
+8255|庆尚南道
+8261|全罗南道
+8262|光州市
+8263|全罗北道
+8264|济州道

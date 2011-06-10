@@ -1,0 +1,77 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+5511|São Paulo - SP
+5512|São José dos Campos - SP
+5513|Santos - SP
+5514|Bauru - SP
+5515|Sorocaba - SP
+5516|Ribeirão Preto - SP
+5517|São José do Rio Preto - SP
+5518|Araçatuba - SP
+5519|Campinas - SP
+5521|Rio de Janeiro - RJ
+5522|Campos dos Goytacazes - RJ
+5524|Petrópolis - RJ
+5527|Vitória - ES
+5528|Cachoeiro de Itapemirim - ES
+5531|Belo Horizonte - MG
+5532|Juiz de Fora - MG
+5533|Governador Valadares - MG
+5534|Araguari - MG
+5537|Divinópolis - MG
+5538|Montes Claros - MG
+5541|Curitiba - PR
+5542|Ponta Grossa - PR
+5543|Londrina - PR
+5544|Maringá - PR
+5545|Cascavel - PR
+5546|Pato Branco - PR
+5547|Joinville - SC
+5548|Florianópolis - SC
+5549|Chapecó - SC
+5551|Porto Alegre - RS
+5553|Pelotas - RS
+5554|Caxias do Sul - RS
+5561|Brasília - DF
+5562|Goiânia - GO
+5563|Palmas - TO
+5565|Cuiabá - MT
+5566|Rondonópolis - MT
+5567|Campo Grande - MS
+5568|Rio Branco - AC
+5569|Porto Velho - RO
+5571|Salvador - BA
+5573|Itabuna - BA
+5574|Juazeiro - BA
+5575|Feira de Santana - BA
+5577|Vitória da Conquista - BA
+5579|Aracaju - SE
+5581|Recife - PE
+5582|Maceió - AL
+5583|João Pessoa - PB
+5584|Natal - RN
+5585|Fortaleza - CE
+5586|Teresina - PI
+5587|Petrolina - PE
+5588|Juazeiro do Norte - CE
+5589|Picos - PI
+5591|Belém - PA
+5592|Manaus - AM
+5593|Santarém - PA
+5594|Marabá - PA
+5595|Boa Vista - RR
+5596|Macapá - AP
+5598|São Luís - MA
+5599|Imperatriz - MA

@@ -1,0 +1,225 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+5411|Ciudad Autónoma de Buenos Aires
+54220|Merlo
+54221|La Plata
+54223|Mar del Plata, General Pueyrredón
+54237|Moreno
+54261|Mendoza, Capital
+54264|San Juan, Capital
+54291|Bahía Blanca
+54297|Comodoro Rivadavia, Escalante
+54299|Neuquén, Confluencia
+54341|Rosario
+54342|Santa Fe, La Capital
+54343|Paraná
+54345|Concordia, Entre Ríos
+54351|Córdoba, Capital
+54353|Villa María, General San Martin
+54358|Río Cuarto
+54381|San Miguel de Tucumán, Capital
+54385|Santiago del Estero, Capital
+54387|Salta, Capital
+54388|San Salvador de Jujuy, Doctor Manuel Belgrano
+542221|Verónica, Buenos Aires
+542223|Coronel Brandsen
+542224|Buenos Aires
+542225|San Vicente, Buenos Aires
+542226|Cañuelas
+542227|Lobos
+542229|Buenos Aires
+542241|Buenos Aires
+542243|General Belgrano, Buenos Aires
+542244|Las Flores
+542245|Dolores, Buenos Aires
+542246|Santa Teresita, La Costa
+542252|San Clemente del Tuyú, La Costa
+542254|Pinamar, Buenos Aires
+542255|Villa Gesell, Buenos Aires
+542257|Mar de Ajo, La Costa
+542261|Lobería, Buenos Aires
+542262|Necochea
+542265|Coronel Vidal, Buenos Aires
+542266|Buenos Aires
+542267|General Juan Madariaga
+542268|Maipú, Buenos Aires
+542271|San Miguel del Monte, Buenos Aires
+542272|Navarro, Buenos Aires
+542281|La Matanza
+542283|Buenos Aires
+542284|Olavarría, Buenos Aires
+542285|Laprida, Buenos Aires
+542286|General Lamadrid, Buenos Aires
+542291|Miramar, Buenos Aires
+542292|Buenos Aires
+542293|Tandil
+542296|Ayacucho, Buenos Aires
+542297|Buenos Aires
+542302|General Pico, La Pampa
+542314|Bolívar, Buenos Aires
+542316|Daireaux, Buenos Aires
+542317|9 de Julio, Buenos Aires
+542320|José C. Paz
+542322|Pilar
+542323|Luján
+542324|Mercedes
+542325|San Andrés de Giles
+542326|San Antonio de Areco
+542331|Realicó, La Pampa
+542333|Quemú Quemú
+542334|Eduardo Castex, La Pampa
+542335|Ingeniero Luiggi, La Pampa
+542336|Capital
+542337|Buenos Aires
+542342|Bragado
+542344|Buenos Aires
+542345|General Pueyrredón
+542346|Chivilcoy
+542352|Chacabuco
+542353|General Arenales, Buenos Aires
+542354|Buenos Aires
+542355|Lincoln, Buenos Aires
+542356|General Pinto, Buenos Aires
+542358|Buenos Aires
+542362|Junín, Buenos Aires
+542392|Buenos Aires
+542394|Salliqueló, Buenos Aires
+542395|La Matanza
+542396|Pehuajó, Buenos Aires
+542473|Colón, Buenos Aires
+542474|Buenos Aires
+542475|Rojas, Buenos Aires
+542477|Pergamino
+542478|Arrecifes, Buenos Aires
+542622|Tunuyán, Mendoza
+542623|San Martin
+542625|General Alvear, Mendoza
+542627|San Rafael
+542652|San Luis, La Capital
+542656|Merlo, San Luis
+542657|Villa Mercedes, General Pedernera
+542901|Ushuaia
+542902|El Calafate, Lago Argentino
+542920|Viedma, Adolfo Alsina
+542921|Coronel Dorrego, Buenos Aires
+542922|Coronel Pringles, Buenos Aires
+542923|Pigüé, Buenos Aires
+542924|Darregueira, Buenos Aires
+542926|Coronel Suárez, Buenos Aires
+542927|Buenos Aires
+542928|Pedro Luro, Buenos Aires
+542931|Río Colorado, Río Negro
+542932|Punta Alta, Buenos Aires
+542934|San Antonio Oeste, Río Negro
+542936|Buenos Aires
+542941|Confluencia
+542942|Zapala
+542944|San Carlos de Bariloche, Río Negro
+542945|Esquel, Futaleufú
+542946|Choele-choel, Río Negro
+542948|Chos Malal, Neuquén
+542952|General Acha, La Pampa
+542953|Macachín, La Pampa
+542954|Santa Rosa, La Pampa
+542962|Puerto San Julián, Santa Cruz
+542964|Río Grande
+542965|Trelew, Rawson
+542966|Río Gallegos, Ger Aike
+542983|Tres Arroyos
+543327|López Camelo, Buenos Aires
+543329|Buenos Aires
+543382|Rufino, Santa Fe
+543385|Laboulaye, Córdoba
+543388|General Villegas, Buenos Aires
+543400|Villa Constitución, Santa Fe
+543401|El Trebol, Santa Fe
+543402|Santa Fe
+543404|Rosario
+543405|San Javier, Santa Fe
+543406|San Jorge, Santa Fe
+543407|Ramallo
+543408|San Cristóbal, Santa Fe
+543442|Concepción del Uruguay, Entre Ríos
+543444|Gualeguay, Entre Ríos
+543445|Rosario del Tala, Entre Ríos
+543446|Gualeguaychú
+543447|Colón
+543460|Santa Teresa, Santa Fe
+543461|San Nicolás de Los Arroyos, San Nicolás
+543462|Venado Tuerto, General López
+543463|Canals, Córdoba
+543464|Casilda, Santa Fe
+543465|Firmat, Santa Fe
+543467|San José de La Esquina, Santa Fe
+543469|Acebal, Santa Fe
+543471|Cañada de Gómez, Santa Fe
+543472|Marcos Juárez
+543476|San Lorenzo, Santa Fe
+543482|Reconquista, Santa Fe
+543483|Rosario
+543487|Zárate
+543488|Belén de Escobar, Escobar
+543489|Campana
+543491|Ceres, Santa Fe
+543492|Rafaela, Santa Fe
+543493|Sunchales, Santa Fe
+543496|Esperanza, Santa Fe
+543498|San Justo, Santa Fe
+543521|Capital
+543525|Jesús María, Córdoba
+543541|Villa Carlos Paz, Córdoba
+543543|Córdoba, Capital
+543544|Villa Dolores, Córdoba
+543546|Villa General Belgrano, Córdoba
+543547|Alta Gracia, Córdoba
+543548|La Falda, Córdoba
+543549|Córdoba
+543562|Morteros, Córdoba
+543563|Capital
+543564|Córdoba
+543571|Río Tercero, Córdoba
+543572|Capital
+543573|Villa del Rosario, Córdoba
+543576|Córdoba
+543717|Formosa
+543718|Clorinda, Formosa
+543722|Resistencia, San Fernando
+543725|Chaco
+543731|Charata, Chacabuco
+543732|Presidencia Roque Sáenz Pena, Chaco
+543734|Machagai, Chaco
+543735|Villa Angela, Mayor Luis Fonta
+543743|Puerto Rico, Misiones
+543751|El Dorado, Misiones
+543752|Posadas, Capital
+543754|Leandro N. Alem, Misiones
+543755|Oberá, Misiones
+543756|Santo Tomé, Corrientes
+543757|Puerto Iguazú, Misiones
+543758|Apóstoles, Misiones
+543772|Paso de Los Libres, Corrientes
+543773|Mercedes, Corrientes
+543774|Curuzú Cuatiá, Corrientes
+543775|Monte Caseros, Corrientes
+543777|Goya, Corrientes
+543783|Corrientes, Capital
+543822|La Rioja, Capital
+543825|Chilecito, La Rioja
+543833|San Fernando del Valle de Catamarca, Catamarca
+543835|Andalgalá, Catamarca
+543844|Añatuya, Santiago del Estero
+543863|Monteros, Tucumán
+543865|Concepción, Tucumán
+543868|Cafayate, Salta
