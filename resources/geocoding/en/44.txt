@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Ofcom SABC data [2011-01-25] (with errors). 
+# Based on Ofcom SABC data but with place names corrected.
 
 441130|Leeds 
 441131|Leeds 
@@ -98,8 +98,8 @@
 441226|Barnsley
 441227|Canterbury
 441228|Carlisle
-4412290|Barrow-in-Furness 
-4412291|Barrow-in-Furness 
+4412290|Barrow-in-Furness/Millom 
+4412291|Barrow-in-Furness/Millom 
 4412292|Barrow-in-Furness
 4412293|Millom
 4412294|Barrow-in-Furness
@@ -108,7 +108,7 @@
 4412297|Millom
 4412298|Barrow-in-Furness
 4412299|Millom
-441233|Ashford
+441233|Ashford (Kent)
 441234|Bedford
 441235|Abingdon
 441236|Coatbridge
@@ -198,7 +198,7 @@
 441329|Fareham
 441330|Banchory
 441332|Derby
-441333|Peat Inn
+441333|Peat Inn (Leven (Fife))
 441334|St Andrews
 441335|Ashbourne
 441337|Ladybank
@@ -212,7 +212,7 @@
 4413397|Ballater
 4413398|Aboyne
 4413399|Ballater
-441340|Craigellachie
+441340|Craigellachie (Aberlour)
 441341|Barmouth
 441342|East Grinstead
 441343|Elgin
@@ -264,10 +264,10 @@
 4413879|Dumfries
 4413880|Bishop Auckland/Stanhope 
 4413881|Bishop Auckland/Stanhope 
-4413882|Stanhope
+4413882|Stanhope (Eastgate)
 4413883|Bishop Auckland
 4413884|Bishop Auckland
-4413885|Stanhope
+4413885|Stanhope (Eastgate)
 4413886|Bishop Auckland
 4413887|Bishop Auckland
 4413888|Bishop Auckland
@@ -338,12 +338,12 @@
 4414349|Bellingham
 441435|Heathfield
 441436|Helensburgh
-4414370|Haverfordwest/Clynderwen 
-4414371|Haverfordwest/Clynderwen 
-4414372|Clynderwen
-4414373|Clynderwen
-4414374|Clynderwen
-4414375|Clynderwen
+4414370|Haverfordwest/Clynderwen (Clunderwen) 
+4414371|Haverfordwest/Clynderwen (Clunderwen) 
+4414372|Clynderwen (Clunderwen)
+4414373|Clynderwen (Clunderwen)
+4414374|Clynderwen (Clunderwen)
+4414375|Clynderwen (Clunderwen)
 4414376|Haverfordwest
 4414377|Haverfordwest
 4414378|Haverfordwest
@@ -387,7 +387,7 @@
 441479|Grantown-on-Spey
 441480|Huntingdon
 441481|Guernsey
-441482|Hull
+441482|Kingston-upon-Hull
 441483|Guildford
 441484|Huddersfield
 441485|Hunstanton
@@ -410,10 +410,10 @@
 441506|Bathgate
 4415070|Louth/Alford/Spilsby 
 4415071|Louth/Alford/Spilsby 
-4415072|Spilsby
+4415072|Spilsby (Horncastle)
 4415073|Louth
 4415074|Alford (Lincs)
-4415075|Spilsby
+4415075|Spilsby (Horncastle)
 4415076|Louth
 4415077|Louth
 4415078|Alford (Lincs)
@@ -516,7 +516,7 @@
 441598|Lynton
 441599|Kyle
 441600|Monmouth
-441603|Norwich 
+441603|Norwich
 441604|Northampton
 441606|Northwich
 441608|Chipping Norton
@@ -545,7 +545,7 @@
 441633|Newport
 441634|Medway
 441635|Newbury
-441636|Newark
+441636|Newark-on-Trent
 441637|Newquay
 441638|Newmarket
 441639|Neath
@@ -720,7 +720,7 @@
 441837|Okehampton
 441838|Dalmally
 441840|Camelford
-441841|Newquay
+441841|Newquay (Padstow)
 441842|Thetford
 441843|Thanet
 441844|Thame
@@ -755,7 +755,7 @@
 441859|Harris
 441862|Tain
 441863|Ardgay
-441864|Abington
+441864|Abington (Crawford)
 441865|Oxford
 441866|Kilchrenan
 441869|Bicester
@@ -774,7 +774,7 @@
 441883|Caterham
 441884|Tiverton
 441885|Pencombe
-441886|Bromyard
+441886|Bromyard (Knightwick/Leigh Sinton)
 441887|Aberfeldy
 441888|Turriff
 441889|Rugeley
@@ -820,7 +820,7 @@
 441931|Shap
 441932|Weybridge
 441933|Wellingborough
-441934|Weston-Super-Mare
+441934|Weston-super-Mare
 441935|Yeovil
 441937|Wetherby
 441938|Welshpool
@@ -836,7 +836,7 @@
 4419464|Whitehaven
 4419465|Whitehaven
 4419466|Whitehaven
-4419467|Gosforth (Mixed)
+4419467|Gosforth
 4419468|Whitehaven
 4419469|Whitehaven
 441947|Whitby
@@ -885,7 +885,7 @@
 441981|Wormbridge
 441982|Builth Wells
 441983|Isle of Wight
-441984|Watchet
+441984|Watchet (Williton)
 441985|Warminster
 441986|Bungay
 441987|Ebbsfleet
@@ -901,20 +901,12 @@
 44203|London
 44207|London
 44208|London
-442099|London Emergency Services
-442199|Emergency Services
-442299|Emergency Services
 442310|Portsmouth 
 442311|Southampton 
 44238|Southampton
 44239|Portsmouth
-442399|Portsmouth/Southampton Emergency Services
 44241|Coventry 
 44247|Coventry
-442499|Coventry Emergency Services
-442599|Emergency Services
-442699|Emergency Services
-442799|Emergency Services
 44281|Northern Ireland 
 442820|Ballycastle
 442821|Martinstown
@@ -944,7 +936,7 @@
 442886|Cookstown
 442887|Dungannon
 442889|Fivemiletown
-442890|Belfast City
+442890|Belfast
 442891|Bangor (Co. Down)
 442892|Lisburn
 442893|Ballyclare
@@ -953,7 +945,5 @@
 442896|Belfast
 442897|Saintfield
 442898|Belfast
-442899|Northern Ireland Emergency Services
 44291|Cardiff 
 44292|Cardiff
-442999|Cardiff Emergency Services
