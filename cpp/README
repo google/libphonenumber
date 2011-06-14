@@ -55,12 +55,12 @@ Requirements:
     $ make testinstall
 
   - ICU
-    Version 4.6 or more recent is required.
+    Version 4.4 or more recent is required.
     It can be built from sources. You need to download the source tarball at
     this location:
-    http://site.icu-project.org/download/46#ICU4C-Download
+    http://site.icu-project.org/download
     Then you can extract, build and install it this way:
-    $ tar xzf icu4c-4_6_1-src.tgz
+    $ tar xzf icu4c-4_4_2-src.tgz
     $ cd icu/source
     $ ./configure && make && sudo make install
 
