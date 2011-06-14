@@ -30,10 +30,22 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
   private PhoneNumberOfflineGeocoder geocoder;
   static final String TEST_META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
+  private static final String TEST_MAPPING_DATA_DIRECTORY =
+      "/com/google/i18n/phonenumbers/geocoding_testing_data/";
 
   // Set up some test numbers to re-use.
+  private static final PhoneNumber KO_NUMBER1 =
+      new PhoneNumber().setCountryCode(82).setNationalNumber(22123456L);
+  private static final PhoneNumber KO_NUMBER2 =
+      new PhoneNumber().setCountryCode(82).setNationalNumber(322123456L);
+  private static final PhoneNumber KO_NUMBER3 =
+      new PhoneNumber().setCountryCode(82).setNationalNumber(6421234567L);
   private static final PhoneNumber US_NUMBER1 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(6502530000L);
+  private static final PhoneNumber US_NUMBER2 =
+      new PhoneNumber().setCountryCode(1).setNationalNumber(6509600000L);
+  private static final PhoneNumber US_NUMBER3 =
+      new PhoneNumber().setCountryCode(1).setNationalNumber(2128120000L);
   private static final PhoneNumber BS_NUMBER1 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
   private static final PhoneNumber AU_NUMBER =
@@ -46,19 +58,45 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
     PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance(
         TEST_META_DATA_FILE_PREFIX,
         CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
-    geocoder = new PhoneNumberOfflineGeocoder(phoneUtil);
+    geocoder = new PhoneNumberOfflineGeocoder(TEST_MAPPING_DATA_DIRECTORY, phoneUtil);
   }
 
-  public void testGetCompactDescriptionForNumber() {
-    assertEquals("United States",
-        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.ENGLISH));
+  public void testGetDescriptionForNumberWithNoDataFile() {
+    // No data file containing mappings for US numbers is available in Chinese for the unittests. As
+    // a result, the country name of United States in simplified Chinese is returned.
+    assertEquals("\u7F8E\u56FD",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.SIMPLIFIED_CHINESE));
     assertEquals("Stati Uniti",
         geocoder.getDescriptionForNumber(US_NUMBER1, Locale.ITALIAN));
     assertEquals("Bahamas",
-        geocoder.getDescriptionForNumber(BS_NUMBER1, Locale.ENGLISH));
+        geocoder.getDescriptionForNumber(BS_NUMBER1, new Locale("en", "US")));
     assertEquals("Australia",
-        geocoder.getDescriptionForNumber(AU_NUMBER, Locale.ENGLISH));
+        geocoder.getDescriptionForNumber(AU_NUMBER, new Locale("en", "US")));
     assertEquals("", geocoder.getDescriptionForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
-                                                      Locale.ENGLISH));
+                                                      new Locale("en", "US")));
+  }
+
+  public void testGetDescriptionForNumber_en_US() {
+    assertEquals("CA",
+        geocoder.getDescriptionForNumber(US_NUMBER1, new Locale("en", "US")));
+    assertEquals("Mountain View, CA",
+        geocoder.getDescriptionForNumber(US_NUMBER2, new Locale("en", "US")));
+    assertEquals("New York, NY",
+        geocoder.getDescriptionForNumber(US_NUMBER3, new Locale("en", "US")));
+  }
+
+  public void testGetDescriptionForKoreanNumber() {
+    assertEquals("Seoul",
+        geocoder.getDescriptionForNumber(KO_NUMBER1, Locale.ENGLISH));
+    assertEquals("Incheon",
+        geocoder.getDescriptionForNumber(KO_NUMBER2, Locale.ENGLISH));
+    assertEquals("Jeju",
+        geocoder.getDescriptionForNumber(KO_NUMBER3, Locale.ENGLISH));
+    assertEquals("\uC11C\uC6B8",
+        geocoder.getDescriptionForNumber(KO_NUMBER1, Locale.KOREAN));
+    assertEquals("\uC778\uCC9C",
+        geocoder.getDescriptionForNumber(KO_NUMBER2, Locale.KOREAN));
+    assertEquals("\uC81C\uC8FC",
+        geocoder.getDescriptionForNumber(KO_NUMBER3, Locale.KOREAN));
   }
 }

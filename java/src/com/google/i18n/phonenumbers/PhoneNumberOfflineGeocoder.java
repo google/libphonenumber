@@ -90,7 +90,7 @@ public class PhoneNumberOfflineGeocoder {
     ObjectInputStream in;
     try {
       in = new ObjectInputStream(source);
-      AreaCodeMap map = new AreaCodeMap();
+      AreaCodeMap map = new AreaCodeMap(phoneUtil);
       map.readExternal(in);
       availablePhonePrefixMaps.put(fileName, map);
     } catch (IOException e) {

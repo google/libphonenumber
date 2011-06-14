@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.SortedMap;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
@@ -36,7 +37,7 @@ public class AreaCodeMap implements Externalizable {
   private TreeSet<Integer> possibleLengths = new TreeSet<Integer>();
   private int[] phoneNumberPrefixes;
   private String[] descriptions;
-  private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+  private PhoneNumberUtil phoneUtil;
 
   /**
    * Creates an empty {@link AreaCodeMap}. The default constructor is necessary for implementing
@@ -44,6 +45,12 @@ public class AreaCodeMap implements Externalizable {
    * {@link #readAreaCodeMap(java.util.SortedMap)} or {@link #readExternal(java.io.ObjectInput)}.
    */
   public AreaCodeMap() {
+    phoneUtil = PhoneNumberUtil.getInstance();
+  }
+
+  // @VisibleForTesting
+  AreaCodeMap(PhoneNumberUtil phoneUtil) {
+    this.phoneUtil = phoneUtil;
   }
 
   /**
@@ -115,7 +122,9 @@ public class AreaCodeMap implements Externalizable {
     long phonePrefix =
         Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number));
     int currentIndex = numOfEntries - 1;
-    for (Integer possibleLength : possibleLengths.descendingSet()) {
+    SortedSet<Integer> currentSetOfLengths = possibleLengths;
+    while (currentSetOfLengths.size() > 0) {
+      Integer possibleLength = currentSetOfLengths.last();
       String phonePrefixStr = String.valueOf(phonePrefix);
       if (phonePrefixStr.length() > possibleLength) {
         phonePrefix = Long.parseLong(phonePrefixStr.substring(0, possibleLength));
@@ -127,6 +136,7 @@ public class AreaCodeMap implements Externalizable {
       if (phonePrefix == phoneNumberPrefixes[currentIndex]) {
         return descriptions[currentIndex];
       }
+      currentSetOfLengths = possibleLengths.headSet(possibleLength);
     }
     return "";
   }

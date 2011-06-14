@@ -12,8 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-8620|廣州市
-8623|重慶市
-86311|河北省石家莊市
-86553|安徽省蕪湖市
-86888|雲南省麗江
+822|Seoul
+8231|Gyeonggi
+8232|Incheon
+8233|Gangwon
+8241|Chungnam
+8242|Daejeon
+8243|Chungbuk
+8251|Busan
+8252|Ulsan
+8253|Daegu
+8254|Gyeongbuk
+8255|Gyeongnam
+8261|Jeonnam
+8262|Gwangju
+8263|Jeonbuk
+8264|Jeju

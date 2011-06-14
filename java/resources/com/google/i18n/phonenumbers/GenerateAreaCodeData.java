@@ -183,12 +183,15 @@ public class GenerateAreaCodeData {
     File[] languageDirectories = inputPath.listFiles();
 
     for (File languageDirectory : languageDirectories) {
-      if (!languageDirectory.isDirectory()) {
+      if (!languageDirectory.isDirectory() || languageDirectory.isHidden()) {
         continue;
       }
       File[] countryCodeFiles = languageDirectory.listFiles();
 
       for (File countryCodeFile : countryCodeFiles) {
+        if (countryCodeFile.isHidden()) {
+          continue;
+        }
         String countryCodeFileName = countryCodeFile.getName();
         int indexOfDot = countryCodeFileName.indexOf('.');
         if (indexOfDot == -1) {
