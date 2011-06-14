@@ -35,10 +35,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.jar.Attributes;
-import java.util.jar.JarEntry;
-import java.util.jar.JarOutputStream;
-import java.util.jar.Manifest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,67 +45,37 @@ import java.util.logging.Logger;
  *
  * <p> The text files must be located in sub-directories of the provided input path. For each input
  * file inputPath/lang/countryCallingCode.txt the corresponding binary file is generated as
- * outputPath/countryCallingCode_lang. The binary files are stored into the resulting JAR.
+ * outputPath/countryCallingCode_lang.
  *
  * @author Philippe Liard
  */
 public class GenerateAreaCodeData {
   // The path to the input directory containing the languages directories.
   private final File inputPath;
-  // The path to the output JAR file.
-  private final File outputJarPath;
+  // The path to the output directory.
+  private final File outputPath;
   // Whether the data is generated for testing.
   private final boolean forTesting;
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
-  private JarOutputStream createJar() throws FileNotFoundException, IOException {
-    Manifest manifest = new java.util.jar.Manifest();
-    manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
-    JarOutputStream target = new JarOutputStream(new FileOutputStream(outputJarPath));
-    return target;
-  }
-
-  private void addFileToJar(File file, JarOutputStream jar) throws IOException {
-    JarEntry entry = new JarEntry(
-        GenerateAreaCodeData.class.getPackage().getName().replace('.', '/') +
-        (forTesting ? "/geocoding_testing_data/" : "/geocoding_data/") +
-        file.getPath());
-    entry.setTime(file.lastModified());
-    jar.putNextEntry(entry);
-    BufferedInputStream bufferedInputStream = null;
-
-    try {
-      bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
-      byte[] buffer = new byte[4096];
-
-      for (int read = 0; (read = bufferedInputStream.read(buffer)) > 0; ) {
-        jar.write(buffer, 0, read);
-      }
-    } finally {
-      jar.closeEntry();
-      closeFile(bufferedInputStream);
-    }
-  }
-
-  public GenerateAreaCodeData(File inputPath, File outputJarPath, boolean forTesting)
+  public GenerateAreaCodeData(File inputPath, File outputPath, boolean forTesting)
       throws IOException {
     if (!inputPath.isDirectory()) {
       throw new IOException("The provided input path does not exist: " +
                              inputPath.getAbsolutePath());
     }
-    File parentDirectory = outputJarPath.getParentFile();
-    if (parentDirectory.exists()) {
-      if (!parentDirectory.isDirectory()) {
-        throw new IOException("Expected directory: " + parentDirectory.getAbsolutePath());
+    if (outputPath.exists()) {
+      if (!outputPath.isDirectory()) {
+        throw new IOException("Expected directory: " + outputPath.getAbsolutePath());
       }
     } else {
-      if (!parentDirectory.mkdirs()) {
-        throw new IOException("Could not create directory " + parentDirectory.getAbsolutePath());
+      if (!outputPath.mkdirs()) {
+        throw new IOException("Could not create directory " + outputPath.getAbsolutePath());
       }
     }
     this.inputPath = inputPath;
-    this.outputJarPath = outputJarPath;
+    this.outputPath = outputPath;
     this.forTesting = forTesting;
   }
 
@@ -207,7 +173,8 @@ public class GenerateAreaCodeData {
         }
         mappings.add(new Pair<File, File>(
             countryCodeFile,
-            new File(String.format("%s_%s", countryCode, languageDirectory.getName()))));
+            new File(outputPath,
+                     String.format("%s_%s", countryCode, languageDirectory.getName()))));
       }
     }
     return mappings;
@@ -257,7 +224,6 @@ public class GenerateAreaCodeData {
    * @throws FileNotFoundException
    */
   public void run() throws FileNotFoundException, IOException {
-    JarOutputStream jar = createJar();
     List<Pair<File, File>> inputOutputMappings = createInputOutputFileMappings();
     SortedMap<Integer, Set<String>> availableDataFiles = new TreeMap<Integer, Set<String>>();
 
@@ -272,7 +238,6 @@ public class GenerateAreaCodeData {
         fileOutputStream = new FileOutputStream(binaryFile);
         convertData(fileInputStream, fileOutputStream);
         addConfigurationMapping(availableDataFiles, inputOutputMapping.second);
-        addFileToJar(binaryFile, jar);
       } catch (IOException e) {
         LOGGER.log(Level.SEVERE, e.getMessage());
         continue;
@@ -285,20 +250,18 @@ public class GenerateAreaCodeData {
     FileOutputStream fileOutputStream = null;
 
     try {
-      File configFile = new File("config");
+      File configFile = new File(outputPath, "config");
       fileOutputStream = new FileOutputStream(configFile);
       outputBinaryConfiguration(availableDataFiles, fileOutputStream);
-      addFileToJar(configFile, jar);
     } finally {
       closeFile(fileOutputStream);
-      closeFile(jar);
     }
   }
 
   public static void main(String[] args) {
     if (args.length != 3) {
       LOGGER.log(Level.SEVERE,
-                 "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output.jar" +
+                 "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output/directory" +
                  " forTesting");
       System.exit(1);
     }
