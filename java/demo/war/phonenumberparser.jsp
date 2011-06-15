@@ -18,6 +18,14 @@
       <input type="text" name="defaultCountry" size="2">
           (<a href="http://www.iso.org/iso/english_country_names_and_code_elements">
           ISO 3166-1 two-letter country code</a>)
+      <h2>Step 3</h2>
+      <p>
+      Specify a locale for phone number geocoding (Optional, defaults to en):
+      <p>
+      <input type="text" name="languageCode" size="2">-<input type="text" name="regionCode"
+                                                              size="2">
+          (<a href="http://download.oracle.com/javase/6/docs/api/java/util/Locale.html">A valid ISO
+              Language Code and optionally a region to more precisely define the language.</a>)
       <p></p>
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">

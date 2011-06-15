@@ -20,6 +20,7 @@ package com.google.phonenumbers;
 
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberOfflineGeocoder;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
@@ -33,6 +34,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServlet;
@@ -51,6 +53,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
     String defaultCountry = null;
+    String languageCode = "en";  // Default languageCode to English if nothing is entered.
+    String regionCode = "";
     String fileContents = null;
     ServletFileUpload upload = new ServletFileUpload();
     upload.setSizeMax(50000);
@@ -60,10 +64,15 @@ public class PhoneNumberParserServlet extends HttpServlet {
         FileItemStream item = iterator.next();
         InputStream in = item.openStream();
         if (item.isFormField()) {
-          if (item.getFieldName().equals("phoneNumber")) {
+          String fieldName = item.getFieldName();
+          if (fieldName.equals("phoneNumber")) {
             phoneNumber = Streams.asString(in, "UTF-8");
-          } else if (item.getFieldName().equals("defaultCountry")) {
+          } else if (fieldName.equals("defaultCountry")) {
             defaultCountry = Streams.asString(in);
+          } else if (fieldName.equals("languageCode")) {
+            languageCode = Streams.asString(in);
+          } else if (fieldName.equals("regionCode")) {
+            regionCode = Streams.asString(in);
           }
         } else {
           try {
@@ -79,10 +88,14 @@ public class PhoneNumberParserServlet extends HttpServlet {
 
     StringBuilder output;
     if (fileContents.length() == 0) {
-      output = getOutputForSingleNumber(phoneNumber, defaultCountry);
+      output = getOutputForSingleNumber(phoneNumber, defaultCountry, languageCode, regionCode);
       resp.setContentType("text/plain");
+      resp.setCharacterEncoding("UTF-8");
       resp.getWriter().println("Phone Number entered: " + phoneNumber);
       resp.getWriter().println("defaultCountry entered: " + defaultCountry);
+      resp.getWriter().println(
+          "Language entered: " + languageCode +
+              (regionCode.length() == 0 ? "" : " (" + regionCode + ")"));
     } else {
       output = getOutputForFile(defaultCountry, fileContents);
       resp.setContentType("text/html");
@@ -129,7 +142,13 @@ public class PhoneNumberParserServlet extends HttpServlet {
     return output;
   }
 
-  private StringBuilder getOutputForSingleNumber(String phoneNumber, String defaultCountry) {
+  /**
+   * The defaultCountry here is used for parsing phoneNumber. The languageCode and regionCode are
+   * used to specify the language used for displaying the area descriptions generated from phone
+   * number geocoding.
+   */
+  private StringBuilder getOutputForSingleNumber(
+      String phoneNumber, String defaultCountry, String languageCode, String regionCode) {
     StringBuilder output = new StringBuilder();
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
@@ -172,7 +191,10 @@ public class PhoneNumberParserServlet extends HttpServlet {
         output.append("\nChar entered: ").append(inputChar).append(" Output: ")
             .append(formatter.inputDigit(inputChar));
       }
-      output.append("\n\n");
+      output.append("\n\n****PhoneNumberOfflineGeocoder Results****");
+      output.append("\n" +
+          PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
+              number, new Locale(languageCode, regionCode)));
     } catch (NumberParseException e) {
       output.append(e.toString());
     }
