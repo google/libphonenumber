@@ -716,12 +716,9 @@ PhoneNumberUtil::PhoneNumberUtil()
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {
-  for (vector<IntRegionsPair>::const_iterator it =
-           country_calling_code_to_region_code_map_->begin();
-       it != country_calling_code_to_region_code_map_->end();
-       ++it) {
-    delete it->second;
-  }
+  STLDeleteContainerPairSecondPointers(
+      country_calling_code_to_region_code_map_->begin(),
+      country_calling_code_to_region_code_map_->end());
 }
 
 // Public wrapper function to get a PhoneNumberUtil instance with the default

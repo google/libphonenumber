@@ -26,6 +26,16 @@ struct OrderByFirst {
   }
 };
 
+// Deletes the second attribute (pointer type expected) of the pairs contained
+// in the provided range.
+template <typename ForwardIterator>
+void STLDeleteContainerPairSecondPointers(const ForwardIterator& begin,
+                                          const ForwardIterator& end) {
+  for (ForwardIterator it = begin; it != end; ++it) {
+    delete it->second;
+  }
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
 
