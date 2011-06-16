@@ -151,6 +151,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   static PhoneNumberUtil* GetInstance();
 #endif
 
+  // Initialisation helper function used to populate the regular expressions in
+  // a defined order.
+  void CreateRegularExpressions() const;
+
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will
   // have three or more alpha characters. This does not do region-specific
@@ -512,6 +516,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // The minimum and maximum length of the national significant number.
   static const size_t kMinLengthForNsn = 3;
   static const size_t kMaxLengthForNsn = 15;
+  // The maximum length of the country calling code.
+  static const int kMaxLengthCountryCode = 3;
+
+  static const char kPlusChars[];
+  // Regular expression of acceptable punctuation found in phone numbers. This
+  // excludes punctuation found as a leading character only. This consists of
+  // dash characters, white space characters, full stops, slashes, square
+  // brackets, parentheses and tildes. It also includes the letter 'x' as that
+  // is found as a placeholder for carrier information in some phone numbers.
+  // Full-width variants are also present.
+  static const char kValidPunctuation[];
 
   // A mapping from a country calling code to a region code which denotes the
   // region represented by that country calling code. Note countries under
@@ -529,6 +544,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
 
   PhoneNumberUtil();
+
+  // Returns a regular expression for the possible extensions that may be found
+  // in a number.
+  const string& GetExtnPatterns() const;
+
+  // Trims unwanted end characters from a phone number string.
+  void TrimUnwantedEndChars(string* number) const;
 
   // Gets all the supported regions.
   void GetSupportedRegions(set<string>* regions) const;
@@ -594,17 +616,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& possible_idd_prefix,
       string* number) const;
 
-  static void MaybeStripNationalPrefixAndCarrierCode(
+  void MaybeStripNationalPrefixAndCarrierCode(
       const PhoneMetadata& metadata,
       string* number,
-      string* carrier_code);
+      string* carrier_code) const;
 
-  static void ExtractPossibleNumber(const string& number,
-                                    string* extracted_number);
+  void ExtractPossibleNumber(const string& number,
+                             string* extracted_number) const;
 
-  static bool IsViablePhoneNumber(const string& number);
+  bool IsViablePhoneNumber(const string& number) const;
 
-  static bool MaybeStripExtension(string* number, string* extension);
+  bool MaybeStripExtension(string* number, string* extension) const;
 
   int ExtractCountryCode(string* national_number) const;
   ErrorType MaybeExtractCountryCode(
