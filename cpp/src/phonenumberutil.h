@@ -521,13 +521,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // achieve better performance.
   scoped_ptr<vector<IntRegionsPair> > country_calling_code_to_region_code_map_;
 
-  struct CompareFirst {
-    bool operator()(const IntRegionsPair& p1,
-                    const IntRegionsPair& p2) const {
-      return p1.first < p2.first;
-    }
-  };
-
   // The set of regions that share country calling code 1.
   scoped_ptr<set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;

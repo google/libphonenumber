@@ -39,6 +39,7 @@
 #include "phonenumber.pb.h"
 #include "regexp_adapter.h"
 #include "regexp_cache.h"
+#include "stl_util.h"
 #include "stringutil.h"
 #include "utf/unicodetext.h"
 #include "utf/utf.h"
@@ -709,7 +710,7 @@ PhoneNumberUtil::PhoneNumberUtil()
   // Sort all the pairs in ascending order according to country calling code.
   sort(country_calling_code_to_region_code_map_->begin(),
        country_calling_code_to_region_code_map_->end(),
-       CompareFirst());
+       OrderByFirst());
 
   InitializeStaticMapsAndSets();
 }
@@ -1200,7 +1201,7 @@ void PhoneNumberUtil::GetRegionCodesForCountryCallingCode(
   pair<ConstIterator, ConstIterator> range = equal_range(
       country_calling_code_to_region_code_map_->begin(),
       country_calling_code_to_region_code_map_->end(),
-      target_pair, CompareFirst());
+      target_pair, OrderByFirst());
   if (range.first != range.second) {
     region_codes->insert(region_codes->begin(),
                          range.first->second->begin(),
