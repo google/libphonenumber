@@ -21,6 +21,7 @@
 
   <modules>
     <module>cpp-build</module>
+    <module>java-build</module>
   </modules>
 
 </project>

@@ -70,7 +70,7 @@ public class BuildMetadataFromXml {
 
   // Build a mapping from a country calling code to the region codes which denote the country/region
   // represented by that country code. In the case of multiple countries sharing a calling code,
-  // such as the NANPA countries, the one indicated with "isMainCountryForCode" in the metadata
+  // such as the NANPA countries, the one indicated with "getMainCountryForCode" in the metadata
   // should be first.
   public static Map<Integer, List<String>> buildCountryCodeToRegionCodeMap(
       PhoneMetadataCollection metadataCollection) {

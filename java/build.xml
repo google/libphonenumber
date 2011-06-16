@@ -4,7 +4,6 @@
   <property name="src.dir" value="src"/>
   <property name="test.dir" value="test"/>
   <property name="build.dir" value="build"/>
-  <property name="resources.dir" value="resources"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
   <property name="lib.dir" value="lib"/>
@@ -26,7 +25,6 @@
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
     <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath" debug="on"/>
-    <javac srcdir="${resources.dir}" destdir="${classes.dir}" classpathref="classpath"/>
   </target>
 
   <target name="jar" depends="compile">
@@ -61,9 +59,6 @@
       <fileset dir="${classes.dir}">
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
-        <exclude name="**/BuildMetadata*"/>
-        <exclude name="**/JSArrayBuilder*"/>
-        <exclude name="**/GenerateAreaCodeData*"/>
       </fileset>
       <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.tools;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
@@ -33,8 +33,12 @@ import java.util.Map;
  *
  * @author Shaopeng Jia
  */
-public class BuildMetadataProtoFromXml {
-  private static final String PACKAGE_NAME = PhoneNumberUtil.class.getPackage().getName();
+public class BuildMetadataProtoFromXml extends Command {
+  private static final String PACKAGE_NAME = "com/google/i18n/phonenumbers";
+  private static final String META_DATA_FILE_PREFIX =
+      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
+  private static final String TEST_META_DATA_FILE_PREFIX =
+  "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
   private static final String TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
       "CountryCodeToRegionCodeMapForTesting";
   private static final String COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
@@ -55,69 +59,63 @@ public class BuildMetadataProtoFromXml {
       "               At this moment, example numbers information is omitted.\n" +
       "\n" +
       "Metadata will be stored in:\n" +
-      "  <outputDir>" + PhoneNumberUtil.META_DATA_FILE_PREFIX + "_*\n" +
+      "  <outputDir>" + META_DATA_FILE_PREFIX + "_*\n" +
       "Mapping file will be stored in:\n" +
-      "  <outputDir>/" + PACKAGE_NAME.replaceAll("\\.", "/") + "/" +
+      "  <outputDir>/" + PACKAGE_NAME + "/" +
           COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME + ".java\n" +
       "\n" +
       "Example command line invocation:\n" +
       "BuildMetadataProtoFromXml PhoneNumberMetadata.xml src false false\n";
 
-  public static void main(String[] args) throws Exception {
-    if (args.length != 3 && args.length != 4) {
+  @Override
+  public String getCommandName() {
+    return "BuildMetadataProtoFromXml";
+  }
+
+  @Override
+  public boolean start() {
+    String[] args = getArgs();
+    if (args.length != 4 && args.length != 5) {
       System.err.println(HELP_MESSAGE);
-      System.exit(1);
+      return false;
     }
-    String inputFile = args[0];
-    String outputDir = args[1];
-    boolean forTesting = args[2].equals("true");
-    boolean liteBuild = args.length > 3 && args[3].equals("true");
+    String inputFile = args[1];
+    String outputDir = args[2];
+    boolean forTesting = args[3].equals("true");
+    boolean liteBuild = args.length > 4 && args[4].equals("true");
 
     String filePrefix;
     if (forTesting) {
-      filePrefix = outputDir + PhoneNumberUtilTest.TEST_META_DATA_FILE_PREFIX;
+      filePrefix = outputDir + TEST_META_DATA_FILE_PREFIX;
     } else {
-      filePrefix = outputDir + PhoneNumberUtil.META_DATA_FILE_PREFIX;
+      filePrefix = outputDir + META_DATA_FILE_PREFIX;
     }
 
-    PhoneMetadataCollection metadataCollection =
-        BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+    try {
+      PhoneMetadataCollection metadataCollection =
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
 
-    for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
-      String regionCode = metadata.getId();
-      PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
-      outMetadataCollection.addMetadata(metadata);
-      FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
-      ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
-      outMetadataCollection.writeExternal(out);
-      out.close();
+      for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
+        String regionCode = metadata.getId();
+        PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
+        outMetadataCollection.addMetadata(metadata);
+        FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
+        ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
+        outMetadataCollection.writeExternal(out);
+        out.close();
+      }
+
+      Map<Integer, List<String>> countryCodeToRegionCodeMap =
+          BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
+
+      writeCountryCallingCodeMappingToJavaFile(countryCodeToRegionCodeMap, outputDir, forTesting);
+    } catch (Exception e) {
+      System.err.println(HELP_MESSAGE);
+      return false;
     }
-
-    Map<Integer, List<String>> countryCodeToRegionCodeMap =
-        BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
-
-    writeCountryCallingCodeMappingToJavaFile(countryCodeToRegionCodeMap, outputDir, forTesting);
+    return true;
   }
 
-  static final String COPYRIGHT_NOTICE =
-      "/*\n" +
-      " * Copyright (C) 2010 Google Inc.\n" +
-      " *\n" +
-      " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-      " * you may not use this file except in compliance with the License.\n" +
-      " * You may obtain a copy of the License at\n" +
-      " *\n" +
-      " * http://www.apache.org/licenses/LICENSE-2.0\n" +
-      " *\n" +
-      " * Unless required by applicable law or agreed to in writing, software\n" +
-      " * distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-      " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-      " * See the License for the specific language governing permissions and\n" +
-      " * limitations under the License.\n" +
-      " *\n" +
-      " * This file is automatically generated by BuildMetadataProtoFromXml. Please\n" +
-      " * don't modify directly.\n" +
-      " */\n\n";
   private static final String MAPPING_IMPORTS =
       "import java.util.ArrayList;\n" +
       "import java.util.HashMap;\n" +
@@ -148,7 +146,7 @@ public class BuildMetadataProtoFromXml {
 
     BufferedWriter writer = new BufferedWriter(new FileWriter(mappingFile));
 
-    writer.write(COPYRIGHT_NOTICE);
+    writer.write(CopyrightNotice.TEXT);
     if (PACKAGE_NAME.length() > 0) {
       writer.write("package " + PACKAGE_NAME + ";\n\n");
     }

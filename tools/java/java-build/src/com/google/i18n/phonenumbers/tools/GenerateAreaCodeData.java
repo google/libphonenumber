@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.tools;
+
+import com.google.i18n.phonenumbers.geocoding.AreaCodeMap;
+import com.google.i18n.phonenumbers.geocoding.MappingFileProvider;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -49,7 +52,7 @@ import java.util.logging.Logger;
  *
  * @author Philippe Liard
  */
-public class GenerateAreaCodeData {
+public class GenerateAreaCodeData extends Command {
   // The path to the input directory containing the languages directories.
   private final File inputPath;
   // The path to the output directory.
@@ -58,6 +61,15 @@ public class GenerateAreaCodeData {
   private final boolean forTesting;
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
+
+  /**
+   * Empty constructor used by the EntryPoint class.
+   */
+  public GenerateAreaCodeData() {
+    inputPath = null;
+    outputPath = null;
+    forTesting = false;
+  }
 
   public GenerateAreaCodeData(File inputPath, File outputPath, boolean forTesting)
       throws IOException {
@@ -258,21 +270,30 @@ public class GenerateAreaCodeData {
     }
   }
 
-  public static void main(String[] args) {
-    if (args.length != 3) {
+  @Override
+  public String getCommandName() {
+    return "GenerateAreaCodeData";
+  }
+
+  @Override
+  public boolean start() {
+    String[] args = getArgs();
+
+    if (args.length != 4) {
       LOGGER.log(Level.SEVERE,
                  "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output/directory" +
                  " forTesting");
-      System.exit(1);
+      return false;
     }
     try {
       GenerateAreaCodeData generateAreaCodeData =
-          new GenerateAreaCodeData(new File(args[0]), new File(args[1]),
-                                   Boolean.parseBoolean(args[2]));
+          new GenerateAreaCodeData(new File(args[1]), new File(args[2]),
+                                   Boolean.parseBoolean(args[3]));
       generateAreaCodeData.run();
     } catch (IOException e) {
       LOGGER.log(Level.SEVERE, e.getMessage());
-      System.exit(1);
+      return false;
     }
+    return true;
   }
 }

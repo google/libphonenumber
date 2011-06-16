@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.tools;
 
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
@@ -33,7 +33,7 @@ import java.util.Map;
  *
  * @author Nikolaos Trogkanis
  */
-public class BuildMetadataJsonFromXml {
+public class BuildMetadataJsonFromXml extends Command {
   private static final String NAMESPACE = "i18n.phonenumbers.metadata";
 
   private static final String HELP_MESSAGE =
@@ -49,24 +49,6 @@ public class BuildMetadataJsonFromXml {
       "\n" +
       "Example command line invocation:\n" +
       "BuildMetadataJsonFromXml PhoneNumberMetadata.xml metadatalite.js true\n";
-
-  static final String COPYRIGHT_NOTICE =
-      "/**\n" +
-      " * @license\n" +
-      " * Copyright (C) 2010 Google Inc.\n" +
-      " *\n" +
-      " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-      " * you may not use this file except in compliance with the License.\n" +
-      " * You may obtain a copy of the License at\n" +
-      " *\n" +
-      " * http://www.apache.org/licenses/LICENSE-2.0\n" +
-      " *\n" +
-      " * Unless required by applicable law or agreed to in writing, software\n" +
-      " * distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-      " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-      " * See the License for the specific language governing permissions and\n" +
-      " * limitations under the License.\n" +
-      " */\n\n";
 
   private static final String FILE_OVERVIEW =
       "/**\n" +
@@ -90,40 +72,54 @@ public class BuildMetadataJsonFromXml {
       " * @type {Object.<string, Array>}\n" +
       " */\n";
 
-  public static void main(String[] args) throws Exception {
-    if (args.length != 2 && args.length != 3) {
+  @Override
+  public String getCommandName() {
+    return "BuildMetadataJsonFromXml";
+  }
+
+  @Override
+  public boolean start() {
+    String[] args = getArgs();
+
+    if (args.length != 3 && args.length != 4) {
       System.err.println(HELP_MESSAGE);
-      System.exit(1);
+      return false;
     }
-    String inputFile = args[0];
-    String outputFile = args[1];
-    boolean liteBuild = args.length > 2 && args[2].equals("true");
+    String inputFile = args[1];
+    String outputFile = args[2];
+    boolean liteBuild = args.length > 3 && args[3].equals("true");
 
-    PhoneMetadataCollection metadataCollection =
-        BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
-    Map<Integer, List<String>> countryCodeToRegionCodeMap =
-        BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
+    try {
+      PhoneMetadataCollection metadataCollection =
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+      Map<Integer, List<String>> countryCodeToRegionCodeMap =
+          BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
 
-    BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+      BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 
-    writer.write(COPYRIGHT_NOTICE);
-    Formatter formatter = new Formatter(writer);
-    formatter.format(FILE_OVERVIEW, inputFile);
+      writer.write(CopyrightNotice.TEXT);
+      Formatter formatter = new Formatter(writer);
+      formatter.format(FILE_OVERVIEW, inputFile);
 
-    writer.write("goog.provide('" + NAMESPACE + "');\n\n");
+      writer.write("goog.provide('" + NAMESPACE + "');\n\n");
 
-    writer.write(COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT);
-    writer.write(NAMESPACE + ".countryCodeToRegionCodeMap = ");
-    writeCountryCodeToRegionCodeMap(countryCodeToRegionCodeMap, writer);
-    writer.write(";\n\n");
+      writer.write(COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT);
+      writer.write(NAMESPACE + ".countryCodeToRegionCodeMap = ");
+      writeCountryCodeToRegionCodeMap(countryCodeToRegionCodeMap, writer);
+      writer.write(";\n\n");
 
-    writer.write(COUNTRY_TO_METADATA_COMMENT);
-    writer.write(NAMESPACE + ".countryToMetadata = ");
-    writeCountryToMetadataMap(metadataCollection, writer);
-    writer.write(";\n");
+      writer.write(COUNTRY_TO_METADATA_COMMENT);
+      writer.write(NAMESPACE + ".countryToMetadata = ");
+      writeCountryToMetadataMap(metadataCollection, writer);
+      writer.write(";\n");
 
-    writer.flush();
-    writer.close();
+      writer.flush();
+      writer.close();
+    } catch (Exception e) {
+      System.err.println(HELP_MESSAGE);
+      return false;
+    }
+    return true;
   }
 
   // Writes a PhoneMetadataCollection in JSON format.
