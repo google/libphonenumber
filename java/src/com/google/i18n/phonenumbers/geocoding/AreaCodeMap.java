@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.geocoding;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.io.Externalizable;
@@ -37,21 +38,14 @@ public class AreaCodeMap implements Externalizable {
   private TreeSet<Integer> possibleLengths = new TreeSet<Integer>();
   private int[] phoneNumberPrefixes;
   private String[] descriptions;
-  private PhoneNumberUtil phoneUtil;
+  private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
   /**
    * Creates an empty {@link AreaCodeMap}. The default constructor is necessary for implementing
    * {@link Externalizable}. The empty map could later populated by
    * {@link #readAreaCodeMap(java.util.SortedMap)} or {@link #readExternal(java.io.ObjectInput)}.
    */
-  public AreaCodeMap() {
-    phoneUtil = PhoneNumberUtil.getInstance();
-  }
-
-  // @VisibleForTesting
-  AreaCodeMap(PhoneNumberUtil phoneUtil) {
-    this.phoneUtil = phoneUtil;
-  }
+  public AreaCodeMap() {}
 
   /**
    * Creates an {@link AreaCodeMap} initialized with {@code sortedAreaCodeMap}.

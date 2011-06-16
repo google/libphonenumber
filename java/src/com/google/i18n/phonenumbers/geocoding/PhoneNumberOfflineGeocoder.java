@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.geocoding;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.io.IOException;
@@ -35,10 +36,10 @@ import java.util.logging.Logger;
 public class PhoneNumberOfflineGeocoder {
   private static PhoneNumberOfflineGeocoder instance = null;
   private static final String MAPPING_DATA_DIRECTORY =
-      "/com/google/i18n/phonenumbers/geocoding_data/";
+      "/com/google/i18n/phonenumbers/geocoding/data/";
   private static final Logger LOGGER = Logger.getLogger(PhoneNumberOfflineGeocoder.class.getName());
 
-  private final PhoneNumberUtil phoneUtil;
+  private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   private final String phonePrefixDataDirectory;
 
   // The mappingFileProvider knows for which combination of countryCallingCode and language a phone
@@ -54,8 +55,7 @@ public class PhoneNumberOfflineGeocoder {
    *
    * @VisibleForTesting
    */
-  PhoneNumberOfflineGeocoder(String phonePrefixDataDirectory, PhoneNumberUtil phoneUtil) {
-    this.phoneUtil = phoneUtil;
+  PhoneNumberOfflineGeocoder(String phonePrefixDataDirectory) {
     this.phonePrefixDataDirectory = phonePrefixDataDirectory;
     loadMappingFileProvider();
   }
@@ -90,7 +90,7 @@ public class PhoneNumberOfflineGeocoder {
     ObjectInputStream in;
     try {
       in = new ObjectInputStream(source);
-      AreaCodeMap map = new AreaCodeMap(phoneUtil);
+      AreaCodeMap map = new AreaCodeMap();
       map.readExternal(in);
       availablePhonePrefixMaps.put(fileName, map);
     } catch (IOException e) {
@@ -109,8 +109,7 @@ public class PhoneNumberOfflineGeocoder {
    */
   public static synchronized PhoneNumberOfflineGeocoder getInstance() {
     if (instance == null) {
-      instance =
-          new PhoneNumberOfflineGeocoder(MAPPING_DATA_DIRECTORY, PhoneNumberUtil.getInstance());
+      instance = new PhoneNumberOfflineGeocoder(MAPPING_DATA_DIRECTORY);
     }
     return instance;
   }

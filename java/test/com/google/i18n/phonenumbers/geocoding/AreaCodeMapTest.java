@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.geocoding;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import junit.framework.TestCase;
@@ -35,19 +35,13 @@ import java.util.logging.Logger;
  * @author Shaopeng Jia
  */
 public class AreaCodeMapTest extends TestCase {
-  private final AreaCodeMap areaCodeMap;
+  private final AreaCodeMap areaCodeMap = new AreaCodeMap();
   private PhoneNumber number = new PhoneNumber();
   private static final Logger LOGGER = Logger.getLogger(AreaCodeMapTest.class.getName());
   static final String TEST_META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
   public AreaCodeMapTest() {
-    PhoneNumberUtil.resetInstance();
-    PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance(
-        TEST_META_DATA_FILE_PREFIX,
-        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
-    areaCodeMap = new AreaCodeMap(phoneUtil);
-
     SortedMap<Integer, String> sortedMap = new TreeMap<Integer, String>();
     sortedMap.put(1212, "New York");
     sortedMap.put(1480, "Arizona");

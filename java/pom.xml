@@ -88,8 +88,22 @@
         <directory>test/com/google/i18n/phonenumbers/data</directory>
         <targetPath>com/google/i18n/phonenumbers/data</targetPath>
       </testResource>
+      <testResource>
+        <directory>test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
+        <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data</targetPath>
+      </testResource>
     </testResources>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+          <excludes>
+            <exclude>**/geocoding/</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>

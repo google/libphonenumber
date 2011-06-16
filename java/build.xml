@@ -35,12 +35,9 @@
       <fileset dir="${classes.dir}">
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
-        <exclude name="**/AreaCodeMap*"/>
         <exclude name="**/BuildMetadata*"/>
-        <exclude name="**/GenerateAreaCodeData*"/>
         <exclude name="**/JSArrayBuilder*"/>
-        <exclude name="**/MappingFileProvider*"/>
-        <exclude name="**/PhoneNumberOfflineGeocoder*"/>
+        <exclude name="**/geocoding/*"/>
       </fileset>
       <fileset dir="${src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
@@ -48,19 +45,12 @@
     </jar>
     <jar destfile="${jar.dir}/offline-geocoder.jar">
       <fileset dir="${classes.dir}">
-        <include name="**/*.class"/>
+        <include name="**/geocoding/*.class"/>
         <exclude name="**/*Test*"/>
-        <exclude name="**/AsYouTypeFormatter*"/>
-        <exclude name="**/BuildMetadata*"/>
-        <exclude name="**/GenerateAreaCodeData*"/>
-        <exclude name="**/JSArrayBuilder*"/>
-        <exclude name="**/PhoneNumberMatch*"/>
+        <exclude name="**/geocoding/GenerateAreaCodeData*"/>
       </fileset>
       <fileset dir="${src.dir}">
-        <include name="**/PhoneNumberMetadataProto*"/>
-      </fileset>
-      <fileset dir="${src.dir}">
-        <include name="**/geocoding_data/*"/>
+        <include name="**/geocoding/data/*"/>
       </fileset>
     </jar>
   </target>
@@ -82,7 +72,7 @@
         <include name="**/PhoneNumberMetadataProtoForTesting*"/>
       </fileset>
       <fileset dir="${test.dir}">
-        <include name="**/geocoding_testing_data/*"/>
+        <include name="**/geocoding/testing_data/*"/>
       </fileset>
     </jar>
   </target>

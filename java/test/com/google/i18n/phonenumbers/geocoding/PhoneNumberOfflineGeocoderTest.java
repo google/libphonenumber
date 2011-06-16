@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.geocoding;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import junit.framework.TestCase;
@@ -27,11 +27,12 @@ import java.util.Locale;
  * @author Shaopeng Jia
  */
 public class PhoneNumberOfflineGeocoderTest extends TestCase {
-  private PhoneNumberOfflineGeocoder geocoder;
+  private final PhoneNumberOfflineGeocoder geocoder =
+      new PhoneNumberOfflineGeocoder(TEST_MAPPING_DATA_DIRECTORY);
   static final String TEST_META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
   private static final String TEST_MAPPING_DATA_DIRECTORY =
-      "/com/google/i18n/phonenumbers/geocoding_testing_data/";
+      "/com/google/i18n/phonenumbers/geocoding/testing_data/";
 
   // Set up some test numbers to re-use.
   private static final PhoneNumber KO_NUMBER1 =
@@ -52,14 +53,6 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
       new PhoneNumber().setCountryCode(61).setNationalNumber(236618300L);
   private static final PhoneNumber NUMBER_WITH_INVALID_COUNTRY_CODE =
       new PhoneNumber().setCountryCode(999).setNationalNumber(2423651234L);
-
-  public PhoneNumberOfflineGeocoderTest() {
-    PhoneNumberUtil.resetInstance();
-    PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance(
-        TEST_META_DATA_FILE_PREFIX,
-        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
-    geocoder = new PhoneNumberOfflineGeocoder(TEST_MAPPING_DATA_DIRECTORY, phoneUtil);
-  }
 
   public void testGetDescriptionForNumberWithNoDataFile() {
     // No data file containing mappings for US numbers is available in Chinese for the unittests. As

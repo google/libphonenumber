@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.geocoding;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
