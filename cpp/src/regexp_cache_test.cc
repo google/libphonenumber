@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Author: Fredrik Roubert <roubert@google.com>
+// Author: Fredrik Roubert
 
 #include <cstddef>
 #include <string>

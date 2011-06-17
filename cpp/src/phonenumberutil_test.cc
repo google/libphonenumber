@@ -142,6 +142,9 @@ class RegionCode {
 
 class PhoneNumberUtilTest : public testing::Test {
  protected:
+  PhoneNumberUtilTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
+  }
+
   // Wrapper functions for private functions that we want to test.
   const PhoneMetadata* GetPhoneMetadata(const string& region_code) const {
     return phone_util_.GetMetadataForRegion(region_code);
@@ -211,7 +214,7 @@ class PhoneNumberUtilTest : public testing::Test {
     return ExactlySameAs(expected_number, actual_number);
   }
 
-  PhoneNumberUtil phone_util_;
+  const PhoneNumberUtil& phone_util_;
 };
 
 // Provides PhoneNumber comparison operators to support the use of EXPECT_EQ and
@@ -246,10 +249,6 @@ ostream& operator<<(ostream& os, const PhoneNumber& number) {
         << number.preferred_domestic_carrier_code() << endl;
   }
   return os;
-}
-
-TEST_F(PhoneNumberUtilTest, GetInstance) {
-  EXPECT_FALSE(PhoneNumberUtil::GetInstance() == NULL);
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {

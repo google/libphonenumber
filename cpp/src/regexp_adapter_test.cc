@@ -15,12 +15,13 @@
 // Author: George Yakovlev
 //         Philippe Liard
 
+#include "regexp_adapter.h"
+
 #include <string>
 
 #include <gtest/gtest.h>
 
 #include "base/scoped_ptr.h"
-#include "regexp_adapter.h"
 
 namespace i18n {
 namespace phonenumbers {

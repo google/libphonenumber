@@ -18,10 +18,14 @@
 #include "phonenumberutil.h"
 
 #include <algorithm>
+#include <cctype>
+#include <cstddef>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 #include <map>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 #include <google/protobuf/message_lite.h>
@@ -786,11 +790,13 @@ bool PhoneNumberUtil::IsValidRegionCode(const string& region_code) const {
 }
 
 bool PhoneNumberUtil::HasValidRegionCode(const string& region_code,
-                                         int country_code,
+                                         int country_calling_code,
                                          const string& number) const {
   if (!IsValidRegionCode(region_code)) {
     logger->Info(string("Number ") + number +
-            " has invalid or missing country code (" + country_code + ")");
+            " has invalid or missing country code (" +
+            country_calling_code +
+            ")");
     return false;
   }
   return true;
@@ -1237,7 +1243,7 @@ void PhoneNumberUtil::GetRegionCodeForCountryCode(
   list<string> region_codes;
 
   GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
-  *region_code = region_codes.size() != 0 ? region_codes.front() : "ZZ";
+  *region_code = (region_codes.size() > 0) ? region_codes.front() : "ZZ";
 }
 
 void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,

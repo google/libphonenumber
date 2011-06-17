@@ -14,7 +14,7 @@
 
 // Author: George Yakovlev
 //         Philippe Liard
-
+//
 // Regexp adapter to allow a pluggable regexp engine. It has been introduced
 // during the integration of the open-source version of this library into
 // Chromium to be able to use the ICU Regex engine instead of RE2, which is not
@@ -25,6 +25,7 @@
 #ifndef I18N_PHONENUMBERS_REGEXP_ADAPTER_H_
 #define I18N_PHONENUMBERS_REGEXP_ADAPTER_H_
 
+#include <cstddef>
 #include <string>
 
 namespace i18n {
