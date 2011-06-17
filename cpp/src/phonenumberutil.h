@@ -517,7 +517,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   static const size_t kMinLengthForNsn = 3;
   static const size_t kMaxLengthForNsn = 15;
   // The maximum length of the country calling code.
-  static const int kMaxLengthCountryCode = 3;
+  static const size_t kMaxLengthCountryCode = 3;
 
   static const char kPlusChars[];
   // Regular expression of acceptable punctuation found in phone numbers. This

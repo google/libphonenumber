@@ -1925,7 +1925,7 @@ bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension)
 // characters long.
 int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
   int potential_country_code;
-  for (int i = 1; i <= kMaxLengthCountryCode; ++i) {
+  for (size_t i = 1; i <= kMaxLengthCountryCode; ++i) {
     safe_strto32(national_number->substr(0, i), &potential_country_code);
     string region_code;
     GetRegionCodeForCountryCode(potential_country_code, &region_code);

@@ -70,7 +70,6 @@ class RegExpCache {
   base::Lock lock_;  // protects cache_impl_
   scoped_ptr<CacheImpl> cache_impl_;  // protected by lock_
   friend class RegExpCacheTest_CacheConstructor_Test;
-  friend class RegExpCacheTest_AccessConstructor_Test;
   DISALLOW_COPY_AND_ASSIGN(RegExpCache);
 };
 
