@@ -34,6 +34,7 @@
 #include "encoding_utils.h"
 #include "logger_adapter.h"
 #include "metadata.h"
+#include "normalize_utf8.h"
 #include "phonemetadata.pb.h"
 #include "phonenumber.h"
 #include "phonenumber.pb.h"
@@ -1708,23 +1709,7 @@ void PhoneNumberUtil::NormalizeDigitsOnly(string* number) {
   // Delete everything that isn't valid digits.
   non_digits_pattern->GlobalReplace(number, "");
   // Normalize all decimal digits to ASCII digits.
-  string normalized;
-  UnicodeText number_as_unicode;
-  number_as_unicode.PointToUTF8(number->data(), number->size());
-  for (UnicodeText::const_iterator it = number_as_unicode.begin();
-       it != number_as_unicode.end();
-       ++it) {
-    int32_t digitValue = u_charDigitValue(*it);
-    if (digitValue == -1) {
-      // Not a decimal digit.
-      char utf8[4];
-      int len = it.get_utf8(utf8);
-      normalized.append(utf8, len);
-    } else {
-      normalized.push_back('0' + digitValue);
-    }
-  }
-  *number = normalized;
+  number->assign(NormalizeUTF8::NormalizeDecimalDigits(*number));
 }
 
 bool PhoneNumberUtil::IsAlphaNumber(const string& number) const {
