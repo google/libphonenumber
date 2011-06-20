@@ -536,7 +536,7 @@ public final class Phonemetadata {
     private boolean hasSameMobileAndFixedLinePattern;
     private boolean sameMobileAndFixedLinePattern_ = false;
     public boolean hasSameMobileAndFixedLinePattern() { return hasSameMobileAndFixedLinePattern; }
-    public boolean getSameMobileAndFixedLinePattern() { return sameMobileAndFixedLinePattern_; }
+    public boolean isSameMobileAndFixedLinePattern() { return sameMobileAndFixedLinePattern_; }
     public PhoneMetadata setSameMobileAndFixedLinePattern(boolean value) {
       hasSameMobileAndFixedLinePattern = true;
       sameMobileAndFixedLinePattern_ = value;

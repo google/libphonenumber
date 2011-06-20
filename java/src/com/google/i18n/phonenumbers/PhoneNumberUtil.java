@@ -47,6 +47,10 @@ import java.util.regex.Pattern;
  * <p>If you use this library, and want to be notified about important changes, please sign up to
  * our <a href="http://groups.google.com/group/libphonenumber-discuss/about">mailing list</a>.
  *
+ * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
+ * ISO 3166-1 two-letter country-code format. These should be in upper-case. The list of the codes
+ * can be found here: http://www.iso.org/iso/english_country_names_and_code_elements
+ *
  * @author Shaopeng Jia
  * @author Lara Rennie
  */
@@ -749,7 +753,7 @@ public class PhoneNumberUtil {
    * Helper function to check region code is not unknown or null.
    */
   private boolean isValidRegionCode(String regionCode) {
-    return regionCode != null && supportedRegions.contains(regionCode.toUpperCase());
+    return regionCode != null && supportedRegions.contains(regionCode);
   }
 
   /**
@@ -788,25 +792,27 @@ public class PhoneNumberUtil {
     return formattedNumber.toString();
   }
 
-  // Same as format(PhoneNumber, PhoneNumberFormat), but accepts mutable StringBuilder as parameters
-  // to decrease object creation when invoked many times.
+  /**
+   * Same as {@link #format(PhoneNumber, PhoneNumberFormat)}, but accepts a mutable StringBuilder as
+   * a parameter to decrease object creation when invoked many times.
+   */
   public void format(PhoneNumber number, PhoneNumberFormat numberFormat,
                      StringBuilder formattedNumber) {
     // Clear the StringBuilder first.
     formattedNumber.setLength(0);
-    int countryCode = number.getCountryCode();
+    int countryCallingCode = number.getCountryCode();
     String nationalSignificantNumber = getNationalSignificantNumber(number);
     if (numberFormat == PhoneNumberFormat.E164) {
       // Early exit for E164 case since no formatting of the national number needs to be applied.
       // Extensions are not formatted.
       formattedNumber.append(nationalSignificantNumber);
-      formatNumberByFormat(countryCode, PhoneNumberFormat.E164, formattedNumber);
+      formatNumberByFormat(countryCallingCode, PhoneNumberFormat.E164, formattedNumber);
       return;
     }
     // Note getRegionCodeForCountryCode() is used because formatting information for regions which
     // share a country calling code is contained by only one region for performance reasons. For
     // example, for NANPA regions it will be contained in the metadata for US.
-    String regionCode = getRegionCodeForCountryCode(countryCode);
+    String regionCode = getRegionCodeForCountryCode(countryCallingCode);
     if (!isValidRegionCode(regionCode)) {
       formattedNumber.append(nationalSignificantNumber);
       return;
@@ -815,7 +821,7 @@ public class PhoneNumberUtil {
     formattedNumber.append(formatNationalNumber(nationalSignificantNumber,
                                                 regionCode, numberFormat));
     maybeGetFormattedExtension(number, regionCode, numberFormat, formattedNumber);
-    formatNumberByFormat(countryCode, numberFormat, formattedNumber);
+    formatNumberByFormat(countryCallingCode, numberFormat, formattedNumber);
   }
 
   /**
@@ -949,18 +955,18 @@ public class PhoneNumberUtil {
    * INTERNATIONAL format will be returned instead.
    *
    * @param number               the phone number to be formatted
-   * @param regionCallingFrom    the ISO 3166-1 two-letter region code that denotes the region
-   *                             where the call is being placed
+   * @param regionCallingFrom    the region where the call is being placed
    * @return  the formatted phone number
    */
-  public String formatOutOfCountryCallingNumber(PhoneNumber number, String regionCallingFrom) {
+  public String formatOutOfCountryCallingNumber(PhoneNumber number,
+                                                String regionCallingFrom) {
     if (!isValidRegionCode(regionCallingFrom)) {
       return format(number, PhoneNumberFormat.INTERNATIONAL);
     }
     int countryCallingCode = number.getCountryCode();
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
     String nationalSignificantNumber = getNationalSignificantNumber(number);
-    if (!isValidRegionCode(regionCode)) {
+    if (!hasValidRegionCode(regionCode, countryCallingCode, nationalSignificantNumber)) {
       return nationalSignificantNumber;
     }
     if (countryCallingCode == NANPA_COUNTRY_CODE) {
@@ -1059,7 +1065,8 @@ public class PhoneNumberUtil {
    * @param regionCallingFrom  the region where the call is being placed
    * @return  the formatted phone number
    */
-  public String formatOutOfCountryKeepingAlphaChars(PhoneNumber number, String regionCallingFrom) {
+  public String formatOutOfCountryKeepingAlphaChars(PhoneNumber number,
+                                                    String regionCallingFrom) {
     String rawInput = number.getRawInput();
     // If there is no raw input, then we can't keep alpha characters because there aren't any.
     // In this case, we return formatOutOfCountryCallingNumber.
@@ -1138,7 +1145,7 @@ public class PhoneNumberUtil {
    * Gets the national significant number of the a phone number. Note a national significant number
    * doesn't contain a national prefix or any formatting.
    *
-   * @param number  the PhoneNumber object for which the national significant number is needed
+   * @param number  the phone number for which the national significant number is needed
    * @return  the national significant number of the PhoneNumber object passed in
    */
   public String getNationalSignificantNumber(PhoneNumber number) {
@@ -1150,7 +1157,7 @@ public class PhoneNumberUtil {
     // Other regions such as Cote d'Ivoire and Gabon use this for their mobile numbers.
     StringBuilder nationalNumber = new StringBuilder(
         (number.hasItalianLeadingZero() &&
-         number.getItalianLeadingZero() &&
+         number.isItalianLeadingZero() &&
          isLeadingZeroPossible(number.getCountryCode()))
         ? "0" : ""
     );
@@ -1268,8 +1275,7 @@ public class PhoneNumberUtil {
   /**
    * Gets a valid number for the specified region.
    *
-   * @param regionCode  the ISO 3166-1 two-letter region code that denotes
-   *                    the region for which an example number is needed
+   * @param regionCode  the region for which an example number is needed
    * @return  a valid fixed-line number for the specified region. Returns null when the metadata
    *    does not contain such information.
    */
@@ -1280,11 +1286,10 @@ public class PhoneNumberUtil {
   /**
    * Gets a valid number for the specified region and number type.
    *
-   * @param regionCode  the ISO 3166-1 two-letter region code that denotes
-   *                    the region for which an example number is needed
+   * @param regionCode  the region for which an example number is needed
    * @param type  the type of number that is needed
    * @return  a valid number for the specified region and type. Returns null when the metadata
-   *     does not contain such information.
+   *     does not contain such information or if an invalid region was entered.
    */
   public PhoneNumber getExampleNumberForType(String regionCode, PhoneNumberType type) {
     // Check the region code is valid.
@@ -1324,7 +1329,8 @@ public class PhoneNumberUtil {
    * prefix. This will be the default extension prefix, unless overridden by a preferred
    * extension prefix for this region.
    */
-  private void formatExtension(String extensionDigits, String regionCode, StringBuilder extension) {
+  private void formatExtension(String extensionDigits, String regionCode,
+                               StringBuilder extension) {
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
     if (metadata.hasPreferredExtnPrefix()) {
       extension.append(metadata.getPreferredExtnPrefix()).append(extensionDigits);
@@ -1405,7 +1411,7 @@ public class PhoneNumberUtil {
 
     boolean isFixedLine = isNumberMatchingDesc(nationalNumber, metadata.getFixedLine());
     if (isFixedLine) {
-      if (metadata.getSameMobileAndFixedLinePattern()) {
+      if (metadata.isSameMobileAndFixedLinePattern()) {
         return PhoneNumberType.FIXED_LINE_OR_MOBILE;
       } else if (isNumberMatchingDesc(nationalNumber, metadata.getMobile())) {
         return PhoneNumberType.FIXED_LINE_OR_MOBILE;
@@ -1414,7 +1420,7 @@ public class PhoneNumberUtil {
     }
     // Otherwise, test to see if the number is mobile. Only do this if certain that the patterns for
     // mobile and fixed line aren't the same.
-    if (!metadata.getSameMobileAndFixedLinePattern() &&
+    if (!metadata.isSameMobileAndFixedLinePattern() &&
         isNumberMatchingDesc(nationalNumber, metadata.getMobile())) {
       return PhoneNumberType.MOBILE;
     }
@@ -1425,7 +1431,6 @@ public class PhoneNumberUtil {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    regionCode = regionCode.toUpperCase();
     if (!regionToMetadataMap.containsKey(regionCode)) {
       loadMetadataForRegionFromFile(currentFilePrefix, regionCode);
     }
@@ -1463,8 +1468,7 @@ public class PhoneNumberUtil {
    * Canada, rather than just a valid NANPA number.
    *
    * @param number       the phone number that we want to validate
-   * @param regionCode   the ISO 3166-1 two-letter region code that denotes the region that we want
-   *                     to validate the phone number for
+   * @param regionCode   the region that we want to validate the phone number for
    * @return  a boolean that indicates whether the number is of a valid pattern
    */
   public boolean isValidNumberForRegion(PhoneNumber number, String regionCode) {
@@ -1538,8 +1542,7 @@ public class PhoneNumberUtil {
    * Returns the country calling code for a specific region. For example, this would be 1 for the
    * United States, and 64 for New Zealand.
    *
-   * @param regionCode  the ISO 3166-1 two-letter region code that denotes
-   *                    the region that we want to get the country calling code for
+   * @param regionCode  the region that we want to get the country calling code for
    * @return  the country calling code for the region denoted by regionCode
    */
   public int getCountryCodeForRegion(String regionCode) {
@@ -1560,8 +1563,7 @@ public class PhoneNumberUtil {
    * national dialling prefix is used only for certain types of numbers. Use the library's
    * formatting functions to prefix the national prefix when required.
    *
-   * @param regionCode  the ISO 3166-1 two-letter region code that denotes
-   *                    the region that we want to get the dialling prefix for
+   * @param regionCode  the region that we want to get the dialling prefix for
    * @param stripNonDigits  true to strip non-digits from the national dialling prefix
    * @return  the dialling prefix for the region denoted by regionCode
    */
@@ -1590,7 +1592,7 @@ public class PhoneNumberUtil {
    * @return  true if regionCode is one of the regions under NANPA
    */
   public boolean isNANPACountry(String regionCode) {
-    return regionCode != null && nanpaRegions.contains(regionCode.toUpperCase());
+    return regionCode != null && nanpaRegions.contains(regionCode);
   }
 
   /**
@@ -1714,8 +1716,7 @@ public class PhoneNumberUtil {
    * number)} with the resultant PhoneNumber object.
    *
    * @param number  the number that needs to be checked, in the form of a string
-   * @param regionDialingFrom  the ISO 3166-1 two-letter region code that denotes the region that
-   *     we are expecting the number to be dialed from.
+   * @param regionDialingFrom  the region that we are expecting the number to be dialed from.
    *     Note this is different from the region where the number belongs.  For example, the number
    *     +1 650 253 0000 is a number that belongs to US. When written in this form, it can be
    *     dialed from any region. When it is written as 00 1 650 253 0000, it can be dialed from any
@@ -1762,9 +1763,7 @@ public class PhoneNumberUtil {
   /**
    * Gets an {@link com.google.i18n.phonenumbers.AsYouTypeFormatter} for the specific region.
    *
-   * @param regionCode  the ISO 3166-1 two-letter region code that denotes the region where
-   *     the phone number is being entered
-   *
+   * @param regionCode  the region where the phone number is being entered
    * @return  an {@link com.google.i18n.phonenumbers.AsYouTypeFormatter} object, which can be used
    *     to format phone numbers in the specific region "as you type"
    */
@@ -2061,13 +2060,12 @@ public class PhoneNumberUtil {
    *
    * @param numberToParse     number that we are attempting to parse. This can contain formatting
    *                          such as +, ( and -, as well as a phone number extension.
-   * @param defaultRegion     the ISO 3166-1 two-letter region code that denotes the region that we
-   *                          are expecting the number to be from. This is only used if the number
-   *                          being parsed is not written in international format.
+   * @param defaultRegion     region that we are expecting the number to be from. This is only used
+   *                          if the number being parsed is not written in international format.
    *                          The country_code for the number in this case would be stored as that
    *                          of the default region supplied. If the number is guaranteed to
-   *                          start with a '+' followed by the country calling code, then "ZZ" or
-   *                          null can be supplied.
+   *                          start with a '+' followed by the country calling code, then
+   *                          "ZZ" or null can be supplied.
    * @return                  a phone number proto buffer filled with the parsed number
    * @throws NumberParseException  if the string is not considered to be a viable phone number or if
    *                               no default region was supplied and the number is not in
@@ -2080,8 +2078,10 @@ public class PhoneNumberUtil {
     return phoneNumber;
   }
 
-  // Same as parse(String, String), but accepts mutable PhoneNumber as a parameter to
-  // decrease object creation when invoked many times.
+  /**
+   * Same as {@link #parse(String, String)}, but accepts mutable PhoneNumber as a parameter to
+   * decrease object creation when invoked many times.
+   */
   public void parse(String numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, false, true, phoneNumber);
@@ -2094,11 +2094,10 @@ public class PhoneNumberUtil {
    *
    * @param numberToParse     number that we are attempting to parse. This can contain formatting
    *                          such as +, ( and -, as well as a phone number extension.
-   * @param defaultRegion     the ISO 3166-1 two-letter region code that denotes the region that
-   *                          we are expecting the number to be from. This is only used if the
-   *                          number being parsed is not written in international format. The
-   *                          country calling code for the number in this case would be stored as
-   *                          that of the default region supplied.
+   * @param defaultRegion     region that we are expecting the number to be from. This is only used
+   *                          if the number being parsed is not written in international format.
+   *                          The country calling code for the number in this case would be stored
+   *                          as that of the default region supplied.
    * @return                  a phone number proto buffer filled with the parsed number
    * @throws NumberParseException  if the string is not considered to be a viable phone number or if
    *                               no default region was supplied
@@ -2110,8 +2109,10 @@ public class PhoneNumberUtil {
     return phoneNumber;
   }
 
-  // Same as parseAndKeepRawInput(String, String), but accepts mutable PhoneNumber as a parameter to
-  // decrease object creation when invoked many times.
+  /**
+   * Same as{@link #parseAndKeepRawInput(String, String)}, but accepts a mutable PhoneNumber as
+   * a parameter to decrease object creation when invoked many times.
+   */
   public void parseAndKeepRawInput(String numberToParse, String defaultRegion,
                                    PhoneNumber phoneNumber)
       throws NumberParseException {
@@ -2124,11 +2125,10 @@ public class PhoneNumberUtil {
    * getMatcher(text, defaultRegion, Leniency.VALID, Long.MAX_VALUE)}.
    *
    * @param text              the text to search for phone numbers, null for no text
-   * @param defaultRegion     the ISO 3166-1 two-letter region code that denotes the region that
-   *                          we are expecting the number to be from. This is only used if the
-   *                          number being parsed is not written in international format. The
-   *                          country calling code for the number in this case would be stored as
-   *                          that of the default region supplied. May be null if only international
+   * @param defaultRegion     region that we are expecting the number to be from. This is only used
+   *                          if the number being parsed is not written in international format. The
+   *                          country_code for the number in this case would be stored as that of
+   *                          the default region supplied. May be null if only international
    *                          numbers are expected.
    */
   public Iterable<PhoneNumberMatch> findNumbers(CharSequence text, String defaultRegion) {
@@ -2139,11 +2139,10 @@ public class PhoneNumberUtil {
    * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}.
    *
    * @param text              the text to search for phone numbers, null for no text
-   * @param defaultRegion    the ISO 3166-1 two-letter region code that denotes the region that
-   *                          we are expecting the number to be from. This is only used if the
-   *                          number being parsed is not written in international format. The
-   *                          country calling code for the number in this case would be stored as
-   *                          that of the default region supplied. May be null if only international
+   * @param defaultRegion     region that we are expecting the number to be from. This is only used
+   *                          if the number being parsed is not written in international format. The
+   *                          country_code for the number in this case would be stored as that of
+   *                          the default region supplied. May be null if only international
    *                          numbers are expected.
    * @param leniency          the leniency to use when evaluating candidate phone numbers
    * @param maxTries          the maximum number of invalid numbers to try before giving up on the
@@ -2379,7 +2378,7 @@ public class PhoneNumberUtil {
 
   /**
    * Takes two phone numbers and compares them for equality. This is a convenience wrapper for
-   * isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber). No default region is known.
+   * {@link #isNumberMatch(PhoneNumber, PhoneNumber)}. No default region is known.
    *
    * @param firstNumber  first number to compare in proto buffer format.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
@@ -2436,7 +2435,7 @@ public class PhoneNumberUtil {
   boolean canBeInternationallyDialled(PhoneNumber number) {
     String regionCode = getRegionCodeForNumber(number);
     String nationalSignificantNumber = getNationalSignificantNumber(number);
-    if (!isValidRegionCode(regionCode)) {
+    if (!hasValidRegionCode(regionCode, number.getCountryCode(), nationalSignificantNumber)) {
       return true;
     }
     PhoneMetadata metadata = getMetadataForRegion(regionCode);

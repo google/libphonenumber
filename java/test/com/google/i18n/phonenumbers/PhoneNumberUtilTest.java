@@ -820,7 +820,6 @@ public class PhoneNumberUtilTest extends TestCase {
     // This number is valid for the Bahamas, but is not a valid US number.
     assertTrue(phoneUtil.isValidNumber(BS_NUMBER));
     assertTrue(phoneUtil.isValidNumberForRegion(BS_NUMBER, RegionCode.BS));
-    assertTrue(phoneUtil.isValidNumberForRegion(BS_NUMBER, "bs"));
     assertFalse(phoneUtil.isValidNumberForRegion(BS_NUMBER, RegionCode.US));
     PhoneNumber bsInvalidNumber =
         new PhoneNumber().setCountryCode(1).setNationalNumber(2421232345L);
@@ -885,7 +884,6 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testGetCountryCodeForRegion() {
     assertEquals(1, phoneUtil.getCountryCodeForRegion(RegionCode.US));
     assertEquals(64, phoneUtil.getCountryCodeForRegion(RegionCode.NZ));
-    assertEquals(64, phoneUtil.getCountryCodeForRegion("nz"));
     assertEquals(0, phoneUtil.getCountryCodeForRegion(null));
     assertEquals(0, phoneUtil.getCountryCodeForRegion(RegionCode.ZZ));
     // CS is already deprecated so the library doesn't support it.
@@ -911,7 +909,6 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testIsNANPACountry() {
     assertTrue(phoneUtil.isNANPACountry(RegionCode.US));
     assertTrue(phoneUtil.isNANPACountry(RegionCode.BS));
-    assertTrue(phoneUtil.isNANPACountry("bs"));
   }
 
   public void testIsPossibleNumber() {
@@ -928,7 +925,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertTrue(phoneUtil.isPossibleNumber("(020) 7031 3000", RegionCode.GB));
     assertTrue(phoneUtil.isPossibleNumber("7031 3000", RegionCode.GB));
     assertTrue(phoneUtil.isPossibleNumber("3331 6005", RegionCode.NZ));
-    assertTrue(phoneUtil.isPossibleNumber("3331 6005", "nz"));
   }
 
   public void testIsPossibleNumberWithReason() {
@@ -1306,7 +1302,6 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testParseNationalNumber() throws Exception {
     // National prefix attached.
     assertEquals(NZ_NUMBER, phoneUtil.parse("033316005", RegionCode.NZ));
-    assertEquals(NZ_NUMBER, phoneUtil.parse("033316005", "nz"));
     assertEquals(NZ_NUMBER, phoneUtil.parse("33316005", RegionCode.NZ));
     // National prefix attached and some formatting present.
     assertEquals(NZ_NUMBER, phoneUtil.parse("03-331 6005", RegionCode.NZ));
