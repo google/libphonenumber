@@ -44,6 +44,7 @@
 #include "phonenumber.pb.h"
 #include "regexp_adapter.h"
 #include "regexp_cache.h"
+#include "region_code.h"
 #include "stl_util.h"
 #include "stringutil.h"
 #include "utf/unicodetext.h"
@@ -1243,7 +1244,8 @@ void PhoneNumberUtil::GetRegionCodeForCountryCode(
   list<string> region_codes;
 
   GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
-  *region_code = (region_codes.size() > 0) ? region_codes.front() : "ZZ";
+  *region_code = (region_codes.size() > 0)
+      ? region_codes.front() : RegionCode::GetUnknown();
 }
 
 void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
@@ -1257,7 +1259,7 @@ void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
     GetNationalSignificantNumber(number, &number_string);
     logger->Warning(string("Missing/invalid country code (") +
         SimpleItoa(country_calling_code) + ") for number " + number_string);
-    *region_code = "ZZ";
+    *region_code = RegionCode::GetUnknown();
     return;
   }
   if (region_codes.size() == 1) {
@@ -1289,7 +1291,7 @@ void PhoneNumberUtil::GetRegionCodeForNumberFromRegionList(
       return;
     }
   }
-  *region_code = "ZZ";
+  *region_code = RegionCode::GetUnknown();
 }
 
 int PhoneNumberUtil::GetCountryCodeForRegion(const string& region_code) const {
@@ -1935,7 +1937,7 @@ int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
     safe_strto32(national_number->substr(0, i), &potential_country_code);
     string region_code;
     GetRegionCodeForCountryCode(potential_country_code, &region_code);
-    if (region_code != "ZZ") {
+    if (region_code != RegionCode::GetUnknown()) {
       national_number->erase(0, i);
       return potential_country_code;
     }
@@ -2102,23 +2104,23 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithTwoStrings(
     const string& second_number) const {
   PhoneNumber first_number_as_proto;
   ErrorType error_type =
-      Parse(first_number, "ZZ", &first_number_as_proto);
+      Parse(first_number, RegionCode::GetUnknown(), &first_number_as_proto);
   if (error_type == NO_PARSING_ERROR) {
     return IsNumberMatchWithOneString(first_number_as_proto, second_number);
   }
   if (error_type == INVALID_COUNTRY_CODE_ERROR) {
     PhoneNumber second_number_as_proto;
-    ErrorType error_type = Parse(second_number, "ZZ",
+    ErrorType error_type = Parse(second_number, RegionCode::GetUnknown(),
                                  &second_number_as_proto);
     if (error_type == NO_PARSING_ERROR) {
       return IsNumberMatchWithOneString(second_number_as_proto, first_number);
     }
     if (error_type == INVALID_COUNTRY_CODE_ERROR) {
-      error_type  = ParseHelper(first_number, "ZZ", false, false,
-                                &first_number_as_proto);
+      error_type  = ParseHelper(first_number, RegionCode::GetUnknown(), false,
+                                false, &first_number_as_proto);
       if (error_type == NO_PARSING_ERROR) {
-        error_type = ParseHelper(second_number, "ZZ", false, false,
-                                 &second_number_as_proto);
+        error_type = ParseHelper(second_number, RegionCode::GetUnknown(), false,
+                                 false, &second_number_as_proto);
         if (error_type == NO_PARSING_ERROR) {
           return IsNumberMatch(first_number_as_proto, second_number_as_proto);
         }
@@ -2137,7 +2139,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
   // attempting to parse it.
   PhoneNumber second_number_as_proto;
   ErrorType error_type =
-      Parse(second_number, "ZZ", &second_number_as_proto);
+      Parse(second_number, RegionCode::GetUnknown(), &second_number_as_proto);
   if (error_type == NO_PARSING_ERROR) {
     return IsNumberMatch(first_number, second_number_as_proto);
   }
@@ -2149,7 +2151,7 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
     string first_number_region;
     GetRegionCodeForCountryCode(first_number.country_code(),
                                 &first_number_region);
-    if (first_number_region != "ZZ") {
+    if (first_number_region != RegionCode::GetUnknown()) {
       PhoneNumber second_number_with_first_number_region;
       Parse(second_number, first_number_region,
             &second_number_with_first_number_region);
@@ -2162,8 +2164,8 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
     } else {
       // If the first number didn't have a valid country calling code, then we
       // parse the second number without one as well.
-      error_type = ParseHelper(second_number, "ZZ", false, false,
-                               &second_number_as_proto);
+      error_type = ParseHelper(second_number, RegionCode::GetUnknown(), false,
+                               false, &second_number_as_proto);
       if (error_type == NO_PARSING_ERROR) {
         return IsNumberMatch(first_number, second_number_as_proto);
       }

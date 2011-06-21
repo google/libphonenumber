@@ -38,7 +38,9 @@ using google::protobuf::RepeatedPtrField;
 
 namespace {
 
-// Class containing string constants of region codes for easier testing.
+// Class containing string constants of region codes for easier testing. This is
+// intended to replace region_code.h for testing in this file, with more
+// constants defined.
 class RegionCode {
  public:
   static const string& AD() {
@@ -131,8 +133,8 @@ class RegionCode {
     return s;
   }
 
-  // Official code for the unknown region.
-  static const string& ZZ() {
+  // Returns a region code string representing the "unknown" region.
+  static const string& GetUnknown() {
     static const string s = "ZZ";
     return s;
   }
@@ -1626,7 +1628,7 @@ TEST_F(PhoneNumberUtilTest, IsUnknown) {
 TEST_F(PhoneNumberUtilTest, GetCountryCodeForRegion) {
   EXPECT_EQ(1, phone_util_.GetCountryCodeForRegion(RegionCode::US()));
   EXPECT_EQ(64, phone_util_.GetCountryCodeForRegion(RegionCode::NZ()));
-  EXPECT_EQ(0, phone_util_.GetCountryCodeForRegion(RegionCode::ZZ()));
+  EXPECT_EQ(0, phone_util_.GetCountryCodeForRegion(RegionCode::GetUnknown()));
   // CS is already deprecated so the library doesn't support it.
   EXPECT_EQ(0, phone_util_.GetCountryCodeForRegion(RegionCode::CS()));
 }
@@ -1652,7 +1654,7 @@ TEST_F(PhoneNumberUtilTest, GetNationalDiallingPrefixForRegion) {
   EXPECT_EQ("00", ndd_prefix);
 
   // Test cases with invalid regions.
-  GetNddPrefixForRegion(RegionCode::ZZ(), false, &ndd_prefix);
+  GetNddPrefixForRegion(RegionCode::GetUnknown(), false, &ndd_prefix);
   EXPECT_EQ("", ndd_prefix);
 
   // CS is already deprecated so the library doesn't support it.
@@ -2588,7 +2590,7 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
   EXPECT_EQ(PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR,
-            phone_util_.Parse("123 456 7890", RegionCode::ZZ(),
+            phone_util_.Parse("123 456 7890", RegionCode::GetUnknown(),
                               &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
@@ -2624,19 +2626,19 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   // code can be calculated.
   PhoneNumber result_proto;
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("+64 3 331 6005", RegionCode::ZZ(),
+            phone_util_.Parse("+64 3 331 6005", RegionCode::GetUnknown(),
                               &result_proto));
   EXPECT_EQ(nz_number, result_proto);
 
   // Test with full-width plus.
   result_proto.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("＋64 3 331 6005", RegionCode::ZZ(),
+            phone_util_.Parse("＋64 3 331 6005", RegionCode::GetUnknown(),
                               &result_proto));
   EXPECT_EQ(nz_number, result_proto);
   // Test with normal plus but leading characters that need to be stripped.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("  +64 3 331 6005", RegionCode::ZZ(),
+            phone_util_.Parse("  +64 3 331 6005", RegionCode::GetUnknown(),
                               &result_proto));
   EXPECT_EQ(nz_number, result_proto);
 
@@ -2647,7 +2649,8 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   nz_number.set_preferred_domestic_carrier_code("");
   result_proto.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.ParseAndKeepRawInput("+64 3 331 6005", RegionCode::ZZ(),
+            phone_util_.ParseAndKeepRawInput("+64 3 331 6005",
+                                             RegionCode::GetUnknown(),
                                              &result_proto));
   EXPECT_EQ(nz_number, result_proto);
 }
