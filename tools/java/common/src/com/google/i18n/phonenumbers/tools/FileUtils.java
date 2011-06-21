@@ -18,10 +18,13 @@
 package com.google.i18n.phonenumbers.tools;
 
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Helper class containing methods designed to ease file manipulation.
+ * Helper class containing methods designed to ease file manipulation and generation.
  *
  * @author Philippe Liard
  */
@@ -48,5 +51,37 @@ public class FileUtils {
     for (Closeable closeable : closeables) {
       close(closeable);
     }
+  }
+
+  /**
+   * Returns true if the provided output file/directory is older than the provided input
+   * file/directory. The last modification time of a directory is the maximum last
+   * modification time of its children. It assumes the provided output directory only contains
+   * generated files.
+   */
+  public static boolean isGenerationRequired(File inputFile, File outputDir) {
+    if (!outputDir.exists()) {
+      return true;
+    }
+    return getLastModificationTime(inputFile) > getLastModificationTime(outputDir);
+  }
+
+  /**
+   * Gets the modification time of the most recently modified file contained in a directory.
+   */
+  private static long getLastModificationTime(File file) {
+    if (!file.isDirectory()) {
+      return file.lastModified();
+    }
+    long maxModificationTime = 0;
+
+    for (File child : file.listFiles()) {
+      long modificationTime = getLastModificationTime(child);
+
+      if (modificationTime > maxModificationTime) {
+        maxModificationTime = modificationTime;
+      }
+    }
+    return maxModificationTime;
   }
 }

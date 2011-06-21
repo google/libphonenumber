@@ -236,6 +236,10 @@ public class GenerateAreaCodeData extends Command {
    * @throws FileNotFoundException
    */
   public void run() throws FileNotFoundException, IOException {
+    if (!FileUtils.isGenerationRequired(inputPath, outputPath)) {
+      LOGGER.log(Level.INFO, "Geocoding data up-to-date.");
+      return;
+    }
     List<Pair<File, File>> inputOutputMappings = createInputOutputFileMappings();
     SortedMap<Integer, Set<String>> availableDataFiles = new TreeMap<Integer, Set<String>>();
 
@@ -268,6 +272,7 @@ public class GenerateAreaCodeData extends Command {
     } finally {
       closeFile(fileOutputStream);
     }
+    LOGGER.log(Level.INFO, "Geocoding data successfully generated.");
   }
 
   @Override

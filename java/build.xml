@@ -21,7 +21,54 @@
     </fileset>
   </path>
 
-  <target name="compile" description="Compile Java source.">
+  <target name="build-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="../resources/PhoneNumberMetaData.xml"/>
+      <arg value="src"/>
+      <arg value="false"/> <!-- Not for testing. -->
+      <arg value="false"/> <!-- No lite metadata. -->
+    </exec>
+  </target>
+
+  <target name="build-test-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="../resources/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="test"/>
+      <arg value="true"/> <!-- For testing. -->
+      <arg value="false"/> <!-- No lite metadata. -->
+    </exec>
+  </target>
+
+  <target name="build-geo-data">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="GenerateAreaCodeData"/>
+      <arg value="../resources/geocoding/"/>
+      <arg value="src/com/google/i18n/phonenumbers/geocoding/data"/>
+      <arg value="false"/> <!-- Not for testing. -->
+    </exec>
+  </target>
+
+  <target name="build-geo-test-data">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="GenerateAreaCodeData"/>
+      <arg value="../resources/test/geocoding/"/>
+      <arg value="test/com/google/i18n/phonenumbers/geocoding/testing_data"/>
+      <arg value="false"/> <!-- Not for testing. -->
+    </exec>
+  </target>
+
+  <target name="compile" description="Compile Java source."
+          depends="build-metadata,build-geo-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
     <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath" debug="on"/>
@@ -53,7 +100,8 @@
     </jar>
   </target>
 
-  <target name="test-jar" depends="compile">
+  <target name="test-jar"
+          depends="compile,build-test-metadata,build-geo-test-data">
     <mkdir dir="${jar.dir}"/>
     <jar destfile="${jar.dir}/${ant.project.name}-test.jar">
       <fileset dir="${classes.dir}">

@@ -300,7 +300,7 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional bool same_mobile_and_fixed_line_pattern = 18 [default=false];
-    if (metadata.getSameMobileAndFixedLinePattern()) {
+    if (metadata.isSameMobileAndFixedLinePattern()) {
       jsArrayBuilder.append(1);
     } else {
       jsArrayBuilder.append(null);
