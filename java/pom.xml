@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>3.6</version>
+  <version>3.7-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>libphonenumber</name>
   <url>http://code.google.com/p/libphonenumber/</url>
@@ -32,9 +32,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/tags/libphonenumber-3.6</connection>
-    <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/tags/libphonenumber-3.6</developerConnection>
-    <url>scm:svn:http://libphonenumber.googlecode.com/svn/tags/libphonenumber-3.6</url>
+    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</connection>
+    <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/trunk/java/</developerConnection>
+    <url>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</url>
   </scm>
 
   <properties>
