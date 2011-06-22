@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>3.7-SNAPSHOT</version>
+  <version>3.6-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>libphonenumber</name>
   <url>http://code.google.com/p/libphonenumber/</url>
@@ -36,6 +36,13 @@
     <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/trunk/java/</developerConnection>
     <url>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</url>
   </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Property used by the exec plugin that is also overridden by the release plugin as it
+         changes the working directory. -->
+    <exec-path-prefix>..</exec-path-prefix>
+  </properties>
 
   <developers>
     <developer>
@@ -109,9 +116,9 @@
               <executable>java</executable>
               <arguments>
                 <argument>-jar</argument>
-                <argument>../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
+                <argument>${exec-path-prefix}/tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
                 <argument>BuildMetadataProtoFromXml</argument>
-                <argument>../resources/PhoneNumberMetaData.xml</argument>
+                <argument>${exec-path-prefix}/resources/PhoneNumberMetaData.xml</argument>
                 <argument>src</argument>
                 <argument>false</argument> <!-- Not for testing. -->
                 <argument>false</argument> <!-- No lite metadata. -->
@@ -128,9 +135,9 @@
               <executable>java</executable>
               <arguments>
                 <argument>-jar</argument>
-                <argument>../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
+                <argument>${exec-path-prefix}/tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
                 <argument>BuildMetadataProtoFromXml</argument>
-                <argument>../resources/PhoneNumberMetaDataForTesting.xml</argument>
+                <argument>${exec-path-prefix}/resources/PhoneNumberMetaDataForTesting.xml</argument>
                 <argument>test</argument>
                 <argument>true</argument> <!-- For testing. -->
                 <argument>false</argument> <!-- No lite metadata. -->
@@ -147,9 +154,9 @@
               <executable>java</executable>
               <arguments>
                 <argument>-jar</argument>
-                <argument>../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
+                <argument>${exec-path-prefix}/tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
                 <argument>GenerateAreaCodeData</argument>
-                <argument>../resources/geocoding</argument>
+                <argument>${exec-path-prefix}/resources/geocoding</argument>
                 <argument>src/com/google/i18n/phonenumbers/geocoding/data</argument>
                 <argument>false</argument> <!-- Not for testing. -->
               </arguments>
@@ -165,9 +172,9 @@
               <executable>java</executable>
               <arguments>
                 <argument>-jar</argument>
-                <argument>../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
+                <argument>${exec-path-prefix}/tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar</argument>
                 <argument>GenerateAreaCodeData</argument>
-                <argument>../resources/test/geocoding</argument>
+                <argument>${exec-path-prefix}/resources/test/geocoding</argument>
                 <argument>test/com/google/i18n/phonenumbers/geocoding/testing_data</argument>
                 <argument>true</argument> <!-- For testing. -->
               </arguments>
@@ -260,11 +267,19 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>push-to-central-repository</id>
+      <activation>
+        <property>
+          <name>push</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <properties>
+        <exec-path-prefix>../..</exec-path-prefix>
+      </properties>
+    </profile>
   </profiles>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <dependencies>
     <dependency>
