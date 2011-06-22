@@ -468,11 +468,13 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ = '+\uFF0B';
 
 
 /**
+ * This corresponds to the PLUS_CHARS_PATTERN in Java.
+ *
  * @const
  * @type {!RegExp}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_ =
+i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_ =
     new RegExp('^[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']+');
 
 
@@ -2726,9 +2728,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     return i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY;
   }
   // Check to see if the number begins with one or more plus signs.
-  if (i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_.test(numberStr)) {
+  if (i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
+      .test(numberStr)) {
     numberStr = numberStr.replace(
-        i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_, '');
+        i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_, '');
     // Can now normalize the rest of the number since we've consumed the '+'
     // sign at the start.
     number.clear();
@@ -2879,7 +2882,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
   // If the number is null or empty, we can't infer the region.
   return this.isValidRegionCode_(defaultRegion) ||
       (numberToParse != null && numberToParse.length > 0 &&
-          i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN_.test(
+          i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_.test(
               numberToParse));
 };
 
