@@ -20,10 +20,10 @@ package com.google.phonenumbers;
 
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberOfflineGeocoder;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
@@ -157,7 +157,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       output.append("\nnational_number: ").append(number.getNationalNumber());
       output.append("\nextension:").append(number.getExtension());
       output.append("\ncountry_code_source: ").append(number.getCountryCodeSource());
-      output.append("\nitalian_leading_zero: ").append(number.getItalianLeadingZero());
+      output.append("\nitalian_leading_zero: ").append(number.isItalianLeadingZero());
       output.append("\nraw_input: ").append(number.getRawInput());
 
       output.append("\n\n****Validation Results:****");
