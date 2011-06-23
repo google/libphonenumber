@@ -302,3 +302,23 @@ target_link_libraries (
   libphonenumber_test
   phonenumber_testing ${GTEST_LIB} pthread
 )
+
+# Install rules.
+install (FILES src/phonenumber.pb.h DESTINATION include/phonenumbers/)
+install (FILES src/phonenumberutil.h DESTINATION include/phonenumbers/)
+
+install (FILES
+  src/base/basictypes.h
+  src/base/scoped_ptr.h
+  src/base/singleton.h
+  DESTINATION include/phonenumbers/base/
+)
+install (FILES src/base/synchronization/lock.h
+         DESTINATION include/phonenumbers/base/synchronization)
+
+install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
+
+if (BUILD_SHARED_LIB)
+  install (TARGETS phonenumber-shared LIBRARY DESTINATION lib/ ARCHIVE
+           DESTINATION lib/)
+endif ()
