@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from:
+# Originally generated from:
 # http://stakeholders.ofcom.org.uk/binaries/telecoms/numbering/numplan201210.pdf
-# Raw Ofcom NTNP data [2010-12-20] (with spelling errors).
+# Tidied Ofcom NTNP data (with spelling errors).
 
 44113|Leeds
 44114|Sheffield
@@ -36,7 +36,14 @@
 441226|Barnsley
 441227|Canterbury
 441228|Carlisle
-441229|Barrow-in-Furness(2,4,5,6,8), Millom(3,7,9)
+4412292|Barrow-in-Furness
+4412293|Millom
+4412294|Barrow-in-Furness
+4412295|Barrow-in-Furness
+4412296|Barrow-in-Furness
+4412297|Millom
+4412298|Barrow-in-Furness
+4412299|Millom
 441233|Ashford (Kent)
 441234|Bedford
 441235|Abingdon
@@ -122,7 +129,14 @@
 441334|St Andrews
 441335|Ashbourne
 441337|Ladybank
-441339|Aboyne(2,3,5,8), Ballater(4,6,7,9)
+4413392|Aboyne
+4413393|Aboyne
+4413394|Ballater
+4413395|Aboyne
+4413396|Ballater
+4413397|Ballater
+4413398|Aboyne
+4413399|Ballater
 441340|Craigellachie
 441341|Barmouth
 441342|East Grinstead
@@ -163,9 +177,22 @@
 441383|Dunfermline
 441384|Dudley
 441386|Evesham
-441387|Dumfries
+4413872|Dumfries
 4413873|Langholm
-441388|Bishop Auckland(3,4,6,7,8,9), Stanhope(2,5)
+4413874|Dumfries
+4413875|Dumfries
+4413876|Dumfries
+4413877|Dumfries
+4413878|Dumfries
+4413879|Dumfries
+4413882|Stanhope
+4413883|Bishop Auckland
+4413884|Bishop Auckland
+4413885|Stanhope
+4413886|Bishop Auckland
+4413887|Bishop Auckland
+4413888|Bishop Auckland
+4413889|Bishop Auckland
 441389|Dumbarton
 441392|Exeter
 441394|Felixstowe
@@ -183,20 +210,48 @@
 44141|Glasgow
 441420|Alton
 441422|Halifax
-441423|Boroughbridge(3,4,9), Harrogate(2,5,6,7,8)
+4414232|Harrogate
+4414233|Boroughbridge
+4414234|Boroughbridge
+4414235|Harrogate
+4414236|Harrogate
+4414237|Harrogate
+4414238|Harrogate
+4414239|Boroughbridge
 441424|Hastings
 441425|Ringwood
 441427|Gainsborough
 441428|Haslemere
 441429|Hartlepool
-441430|Market Weighton(6,7,8,9), North Cave(2,3,4,5)
+4414302|North Cave
+4414303|North Cave
+4414304|North Cave
+4414305|North Cave
+4414306|Market Weighton
+4414307|Market Weighton
+4414308|Market Weighton
+4414309|Market Weighton
 441431|Helmsdale
 441432|Hereford
 441433|Hathersage
-441434|Bellingham(2,4,9), Haltwhistle(3,5), Hexham(6,7,8)
+4414342|Bellingham
+4414343|Haltwhistle
+4414344|Bellingham
+4414345|Haltwhistle
+4414346|Hexham
+4414347|Hexham
+4414348|Hexham
+4414349|Bellingham
 441435|Heathfield
 441436|Helensburgh
-441437|Clynderwen(2,3,4,5), Haverfordwest(6,7,8,9)
+4414372|Clynderwen
+4414373|Clynderwen
+4414374|Clynderwen
+4414375|Clynderwen
+4414376|Haverfordwest
+4414377|Haverfordwest
+4414378|Haverfordwest
+4414379|Haverfordwest
 441438|Stevenage
 441439|Helmsley
 441440|Haverhill
@@ -224,15 +279,15 @@
 441466|Huntly
 441467|Inverurie
 441469|Killingholme
-441470|Isle of Skye  Edinbane
-441471|Isle of Skye  Broadford
+441470|Isle of Skye - Edinbane
+441471|Isle of Skye - Broadford
 441472|Grimsby
 441473|Ipswich
 441474|Gravesend
 441475|Greenock
 441476|Grantham
 441477|Holmes Chapel
-441478|Isle of Skye  Portree
+441478|Isle of Skye - Portree
 441479|Grantown-on-Spey
 441480|Huntingdon
 441481|Guernsey
@@ -257,14 +312,27 @@
 441503|Looe
 441505|Johnstone
 441506|Bathgate
-441507|Alford (Lincs)(4,8,9), Louth (3,6,7), Spilsby(2,5)
+4415072|Spilsby
+4415073|Louth
+4415074|Alford (Lincs)
+4415075|Spilsby
+4415076|Louth
+4415077|Louth
+4415078|Alford (Lincs)
+4415079|Alford (Lincs)
 441508|Brooke
 441509|Loughborough
 44151|Liverpool
 441520|Lochcarron
 441522|Lincoln
-441524|Lancaster
 4415242|Hornby
+4415243|Lancaster
+4415244|Lancaster
+4415245|Lancaster
+4415246|Lancaster
+4415247|Lancaster
+4415248|Lancaster
+4415249|Lancaster
 441525|Leighton Buzzard
 441526|Martin
 441527|Redditch
@@ -276,10 +344,14 @@
 441535|Keighley
 441536|Kettering
 441538|Ipstones
-441539|Kendal
+4415392|Kendal
+4415393|Kendal
 4415394|Hawkshead
 4415395|Grange-Over-Sands
 4415396|Sedbergh
+4415397|Kendal
+4415398|Kendal
+4415399|Kendal
 441540|Kingussie
 441542|Keith
 441543|Cannock
@@ -328,7 +400,7 @@
 441592|Kirkcaldy
 441593|Lybster
 441594|Lydney
-441595|Lerwick, Foula(75), Fair Isle(76)
+441595|Lerwick, Foula & Fair Isle
 441597|Llandrindod Wells
 441598|Lynton
 441599|Kyle
@@ -388,23 +460,35 @@
 441676|Meriden
 441677|Bedale
 441678|Bala
-441680|Isle of Mull  Craignure
-441681|Isle of Mull  Fionnphort
+441680|Isle of Mull - Craignure
+441681|Isle of Mull - Fionnphort
 441683|Moffat
 441684|Malvern
 441685|Merthyr Tydfil
-441686|Llanidloes(2,3,4,7), Newtown(5,6,8,9)
+4416862|Llanidloes
+4416863|Llanidloes
+4416864|Llanidloes
+4416865|Newtown
+4416866|Newtown
+4416867|Llanidloes
+4416868|Newtown
+4416869|Newtown
 441687|Mallaig
-441688|Isle of Mull  Tobermory
+441688|Isle of Mull - Tobermory
 441689|Orpington
 441690|Betws-y-Coed
 441691|Oswestry
 441692|North Walsham
 441694|Church Stretton
 441695|Skelmersdale
-441697|Brampton
+4416972|Brampton
 4416973|Wigton
 4416974|Raughton Head
+4416975|Brampton
+4416976|Brampton
+4416977|Brampton
+4416978|Brampton
+4416979|Brampton
 441698|Motherwell
 441700|Rothesay
 441702|Southend-on-Sea
@@ -453,10 +537,14 @@
 441765|Ripon
 441766|Porthmadog
 441767|Sandy
-441768|Penrith
+4417682|Penrith
 4417683|Appleby
 4417684|Pooley Bridge
+4417685|Penrith
+4417686|Penrith
 4417687|Keswick
+4417688|Penrith
+4417689|Penrith
 441769|South Molton
 441770|Isle of Arran
 441771|Maud
@@ -511,9 +599,23 @@
 441843|Thanet
 441844|Thame
 441845|Thirsk
-441847|Thurso(2,3,4,5,8), Tongue(6,7,9)
+4418472|Thurso
+4418473|Thurso
+4418474|Thurso
+4418475|Thurso
+4418476|Tongue
+4418477|Tongue
+4418478|Thurso
+4418479|Tongue
 441848|Thornhill
-441851|Great Bernera(4,6,9), Stornoway(2,3,5,7,8)
+4418512|Stornoway
+4418513|Stornoway
+4418514|Great Bernera
+4418515|Stornoway
+4418516|Great Bernera
+4418517|Stornoway
+4418518|Stornoway
+4418519|Great Bernera
 441852|Kilmelford
 441854|Ullapool
 441855|Ballachulish
@@ -546,7 +648,14 @@
 441887|Aberfeldy
 441888|Turriff
 441889|Rugely
-441890|Ayton(5,6,7,9), Coldstream(2,3,4,8)
+4418902|Coldstream
+4418903|Coldstream
+4418904|Coldstream
+4418905|Ayton
+4418906|Ayton
+4418907|Ayton
+4418908|Coldstream
+4418909|Ayton
 441892|Tunbridge Wells
 441895|Uxbridge
 441896|Galashiels
@@ -558,7 +667,14 @@
 441905|Worcester
 441908|Milton Keynes
 441909|Worksop
-44191|Tyneside(2,4,6,8), Durham(3,9), Sunderland(5,7)
+441912|Tyneside
+441913|Durham
+441914|Tyneside
+441915|Sunderland
+441916|Tyneside
+441917|Sunderland
+441918|Tyneside
+441919|Durham
 441920|Ware
 441922|Walsall
 441923|Watford
@@ -579,8 +695,14 @@
 441943|Guiseley
 441944|West Heslerton
 441945|Wisbech
-441946|Whitehaven
+4419462|Whitehaven
+4419463|Whitehaven
+4419464|Whitehaven
+4419465|Whitehaven
+4419466|Whitehaven
 4419467|Gosforth
+4419468|Whitehaven
+4419469|Whitehaven
 441947|Whitby
 441948|Whitchurch
 441949|Whatton
@@ -594,7 +716,14 @@
 441959|Westerham
 441962|Winchester
 441963|Wincanton
-441964|Hornsea(2,5,8,9), Patrington(3,4,6,7)
+4419642|Hornsea
+4419643|Patrington
+4419644|Patrington
+4419645|Hornsea
+4419646|Patrington
+4419647|Patrington
+4419648|Hornsea
+4419649|Hornsea
 441967|Strontian
 441968|Penicuik
 441969|Leyburn
@@ -602,7 +731,14 @@
 441971|Scourie
 441972|Glenborrodale
 441974|Llanon
-441975|Alford (Aberdeen)(2,4,5,9), Strathdon(3,6,7,8)
+4419752|Alford (Aberdeen)
+4419753|Strathdon
+4419754|Alford (Aberdeen)
+4419755|Alford (Aberdeen)
+4419756|Strathdon
+4419757|Strathdon
+4419758|Strathdon
+4419759|Alford (Aberdeen)
 441977|Pontefract
 441978|Wrexham
 441980|Amesbury
@@ -621,7 +757,42 @@
 441995|Garstang
 441997|Strathpeffer
 4420|London
-4423|Southampton(8X), Portsmouth(9X)
+44238|Southampton
+44239|Portsmouth
 4424|Coventry
-4428|Northern Ireland: Ballycastle(20), Martinstown(21), Ballymena(25), Ballymoney(27), Larne(28), Kilrea(29), Newry(30), Armagh(37), Portadown(38), Banbridge(40), Rostrevor(41), Kircubbin(42), Newcastle(Co. Down)(43), Downpatrick(44), Enniskillen(66), Lisnaskea(67), Kesh(68), Coleraine(70), Londonderry(71), Limavady(77), Magherafelt(79), Carrickmore(80), Newtownstewart(81), Omagh(82), Ballygawley(85), Cookstown(86), Dungannon(87), Fivemiletown(89), Belfast(90&95), Bangor(Co. Down)(91), Lisburn(92), Ballyclare(93), Antrim(94), Saintfield(97)
+442820|Ballycastle
+442821|Martinstown
+442825|Ballymena
+442827|Ballymoney
+442828|Larne
+442829|Kilrea
+442830|Newry
+442837|Armagh
+442838|Portadown
+442840|Banbridge
+442841|Rostrevor
+442842|Kircubbin
+442843|Newcastle (Co. Down)
+442844|Downpatrick
+442866|Enniskillen
+442867|Lisnaskea
+442868|Kesh
+442870|Coleraine
+442871|Londonderry
+442877|Limavady
+442879|Magherafelt
+442880|Carrickmore
+442881|Newtownstewart
+442882|Omagh
+442885|Ballygawley
+442886|Cookstown
+442887|Dungannon
+442889|Fivemiletown
+442890|Belfast
+442891|Bangor (Co. Down)
+442892|Lisburn
+442893|Ballyclare
+442894|Antrim
+442895|Belfast
+442897|Saintfield
 4429|Cardiff
