@@ -18,45 +18,31 @@
 
 #include "default_logger.h"
 
-using std::cerr;
-using std::cout;
-using std::endl;
-
 namespace i18n {
 namespace phonenumbers {
 
-DefaultLogger::DefaultLogger(LogLevel level) : level_(level) {}
+using std::cout;
+using std::string;
 
-DefaultLogger::~DefaultLogger() {}
-
-void DefaultLogger::Fatal(const string& msg) const {
-  if (level_ >= LOG_FATAL) {
-    cerr << "FATAL libphonenumber " << msg << endl;
-  }
+void StdoutLogger::WriteMessage(const string& msg) {
+  cout << " " << msg;
 }
 
-void DefaultLogger::Error(const string& msg) const {
-  if (level_ >= LOG_ERROR) {
-    cerr << "ERROR libphonenumber " << msg << endl;
-  }
-}
+void StdoutLogger::WriteLevel() {
+  LogLevel log_level = level();
+  cout << "[";
 
-void DefaultLogger::Warning(const string& msg) const {
-  if (level_ >= LOG_WARNING) {
-    cerr << "WARNING libphonenumber " << msg << endl;
+  switch (log_level) {
+    case LOG_FATAL:   cout << "FATAL"; break;
+#ifdef ERROR  // In case ERROR is defined by MSVC (i.e not set to LOG_ERROR).
+    case ERROR:
+#endif
+    case LOG_ERROR:   cout << "ERROR"; break;
+    case LOG_WARNING: cout << "WARNING"; break;
+    case LOG_INFO:    cout << "INFO"; break;
+    case LOG_DEBUG:   cout << "DEBUG"; break;
   }
-}
-
-void DefaultLogger::Info(const string& msg) const {
-  if (level_ >= LOG_INFO) {
-    cout << "INFO libphonenumber " << msg << endl;
-  }
-}
-
-void DefaultLogger::Debug(const string& msg) const {
-  if (level_ >= LOG_DEBUG) {
-    cout << "DEBUG libphonenumber " << msg << endl;
-  }
+  cout << "]";
 }
 
 }  // namespace phonenumbers

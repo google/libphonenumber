@@ -46,7 +46,7 @@ using std::vector;
 
 using google::protobuf::RepeatedPtrField;
 
-class LoggerAdapter;
+class Logger;
 class NumberFormat;
 class PhoneMetadata;
 class PhoneMetadataCollection;
@@ -494,9 +494,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   MatchType IsNumberMatchWithOneString(const PhoneNumber& first_number,
                                        const string& second_number) const;
 
-  // Override the default logging system. The provided adapter destruction is
-  // handled by this class (don't delete it).
-  static void SetLoggerAdapter(LoggerAdapter* logger_adapter);
+  // Overrides the default logging system. The provided logger destruction is
+  // handled by this class (i.e don't delete it).
+  static void SetLogger(Logger* logger);
 
   friend bool ConvertFromTelephoneNumberProto(
       const TelephoneNumber& proto_to_convert,

@@ -29,8 +29,5 @@
 # define DCHECK_EQ(X, Y) CHECK_EQ((X), (Y))
 
 # define NOTREACHED() std::cerr
-# define LOG(Level) std::cerr
-
-# define FATAL 1
 
 #endif

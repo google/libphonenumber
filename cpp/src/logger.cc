@@ -14,35 +14,14 @@
 
 // Author: Philippe Liard
 
-#ifndef I18N_PHONENUMBERS_LOGGER_ADAPTER_H_
-#define I18N_PHONENUMBERS_LOGGER_ADAPTER_H_
+#include "logger.h"
 
-#include <string>
-
-using std::string;
+#include <cstddef>
 
 namespace i18n {
 namespace phonenumbers {
 
-// Implement this 'interface' to override the way logging is handled
-// in the library.
-class LoggerAdapter {
- public:
-  virtual ~LoggerAdapter();
-
-  // Logging methods
-  virtual void Fatal(const string& msg) const = 0;
-
-  virtual void Error(const string& msg) const = 0;
-
-  virtual void Warning(const string& msg) const = 0;
-
-  virtual void Info(const string& msg) const = 0;
-
-  virtual void Debug(const string& msg) const = 0;
-};
+Logger* Logger::impl_ = NULL;
 
 }  // namespace phonenumbers
 }  // namespace i18n
-
-#endif  // I18N_PHONENUMBERS_LOGGER_ADAPTER_H_

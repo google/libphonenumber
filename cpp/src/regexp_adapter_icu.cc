@@ -94,7 +94,7 @@ class IcuRegExp : public RegExp {
         UnicodeString::fromUTF8(utf8_regexp), 0, parse_error, status));
     if (U_FAILURE(status)) {
       // The provided regular expressions should compile correctly.
-      logger_.Error("Error compiling regular expression: " + utf8_regexp);
+      LOG(ERROR) << "Error compiling regular expression: " << utf8_regexp;
       utf8_regexp_.reset(NULL);
     }
   }
@@ -192,7 +192,6 @@ class IcuRegExp : public RegExp {
   }
 
  private:
-  DefaultLogger logger_;
   scoped_ptr<RegexPattern> utf8_regexp_;
 
   DISALLOW_COPY_AND_ASSIGN(IcuRegExp);
