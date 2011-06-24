@@ -70,7 +70,10 @@ public class PhoneNumberParserServlet extends HttpServlet {
           } else if (fieldName.equals("defaultCountry")) {
             defaultCountry = Streams.asString(in);
           } else if (fieldName.equals("languageCode")) {
-            languageCode = Streams.asString(in);
+            String languageEntered = Streams.asString(in);
+            if (languageEntered.length() > 0) {
+              languageCode = languageEntered;
+            }
           } else if (fieldName.equals("regionCode")) {
             regionCode = Streams.asString(in);
           }
@@ -105,7 +108,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
 
   private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
     StringBuilder output = new StringBuilder();
-    output.append("<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:" 
+    output.append("<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:"
         + "</TITLE></HEAD><BODY>");
     output.append("<TABLE align=center border=1>");
     output.append("<TH align=center>ID</TH>");
