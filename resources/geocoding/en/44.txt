@@ -14,68 +14,15 @@
 
 # Originally generated from:
 # http://www.ofcom.org.uk/static/numbering/sabc.txt
-# Tidied Ofcom SABC data (with place names corrected).
+# Tidied Ofcom SABC data (with removal of "National Dialling" and "Expansion"
+# wording and reduction of 4411x and 441x1 data to one line per place name).
 
-441130|Leeds National Dialling
-441131|Leeds National Dialling
-441132|Leeds
-441133|Leeds
-441134|Leeds
-441135|Leeds expansion
-441136|Leeds expansion
-441137|Leeds expansion
-441138|Leeds
-441139|Leeds expansion
-441140|Sheffield National Dialling
-441141|Sheffield National Dialling
-441142|Sheffield
-441143|Sheffield
-441144|Sheffield
-441145|Sheffield expansion
-441146|Sheffield expansion
-441147|Sheffield expansion
-441148|Sheffield expansion
-441149|Sheffield expansion
-441150|Nottingham National Dialling
-441151|Nottingham National Dialling
-441152|Nottingham
-441153|Nottingham expansion
-441154|Nottingham expansion
-441155|Nottingham expansion
-441156|Nottingham expansion
-441157|Nottingham
-441158|Nottingham
-441159|Nottingham
-441160|Leicester National Dialling
-441161|Leicester National Dialling
-441162|Leicester
-441163|Leicester
-441164|Leicester
-441165|Leicester expansion
-441166|Leicester expansion
-441167|Leicester expansion
-441168|Leicester expansion
-441169|Leicester expansion
-441170|Bristol National Dialling
-441171|Bristol National Dialling
-441172|Bristol
-441173|Bristol
-441174|Bristol expansion
-441175|Bristol expansion
-441176|Bristol expansion
-441177|Bristol expansion
-441178|Bristol expansion
-441179|Bristol
-441180|Reading National Dialling
-441181|Reading National Dialling
-441182|Reading expansion
-441183|Reading
-441184|Reading
-441185|Reading expansion
-441186|Reading expansion
-441187|Reading expansion
-441188|Reading expansion
-441189|Reading
+44113|Leeds
+44114|Sheffield
+44115|Nottingham
+44116|Leicester
+44117|Bristol
+44118|Reading
 441200|Clitheroe
 441202|Bournemouth
 441204|Bolton
@@ -84,24 +31,15 @@
 441207|Consett
 441208|Bodmin
 441209|Redruth
-441210|Birmingham National Dialling
-441211|Birmingham National Dialling
-441212|Birmingham
-441213|Birmingham
-441214|Birmingham
-441215|Birmingham
-441216|Birmingham
-441217|Birmingham
-441218|Birmingham expansion
-441219|Birmingham expansion
+44121|Birmingham
 441223|Cambridge
 441224|Aberdeen
 441225|Bath
 441226|Barnsley
 441227|Canterbury
 441228|Carlisle
-4412290|Barrow-in-Furness/Millom National Dialling
-4412291|Barrow-in-Furness/Millom National Dialling
+4412290|Barrow-in-Furness/Millom
+4412291|Barrow-in-Furness/Millom
 4412292|Barrow-in-Furness
 4412293|Millom
 4412294|Barrow-in-Furness
@@ -179,16 +117,7 @@
 441307|Forfar
 441308|Bridport
 441309|Forres
-441310|Edinburgh National Dialling
-441311|Edinburgh National Dialling
-441312|Edinburgh
-441313|Edinburgh
-441314|Edinburgh
-441315|Edinburgh
-441316|Edinburgh
-441317|Edinburgh
-441318|Edinburgh
-441319|Edinburgh expansion
+44131|Edinburgh
 441320|Fort Augustus
 441322|Dartford
 441323|Eastbourne
@@ -204,8 +133,8 @@
 441334|St Andrews
 441335|Ashbourne
 441337|Ladybank
-4413390|Aboyne/Ballater National Dialling
-4413391|Aboyne/Ballater National Dialling
+4413390|Aboyne/Ballater
+4413391|Aboyne/Ballater
 4413392|Aboyne
 4413393|Aboyne
 4413394|Ballater
@@ -254,8 +183,8 @@
 441383|Dunfermline
 441384|Dudley
 441386|Evesham
-4413870|Dumfries National Dialling
-4413871|Dumfries National Dialling
+4413870|Dumfries
+4413871|Dumfries
 4413872|Dumfries
 4413873|Langholm
 4413874|Dumfries
@@ -264,8 +193,8 @@
 4413877|Dumfries
 4413878|Dumfries
 4413879|Dumfries
-4413880|Bishop Auckland/Stanhope (Eastgate) National Dialling
-4413881|Bishop Auckland/Stanhope (Eastgate) National Dialling
+4413880|Bishop Auckland/Stanhope (Eastgate)
+4413881|Bishop Auckland/Stanhope (Eastgate)
 4413882|Stanhope (Eastgate)
 4413883|Bishop Auckland
 4413884|Bishop Auckland
@@ -288,20 +217,11 @@
 441407|Holyhead
 441408|Golspie
 441409|Holsworthy
-441410|Glasgow National Dialling
-441411|Glasgow National Dialling
-441412|Glasgow
-441413|Glasgow
-441414|Glasgow
-441415|Glasgow
-441416|Glasgow
-441417|Glasgow
-441418|Glasgow
-441419|Glasgow
+44141|Glasgow
 441420|Alton
 441422|Halifax
-4414230|Harrogate/Boroughbridge National Dialling
-4414231|Harrogate/Boroughbridge National Dialling
+4414230|Harrogate/Boroughbridge
+4414231|Harrogate/Boroughbridge
 4414232|Harrogate
 4414233|Boroughbridge
 4414234|Boroughbridge
@@ -315,8 +235,8 @@
 441427|Gainsborough
 441428|Haslemere
 441429|Hartlepool
-4414300|North Cave/Market Weighton National Dialling
-4414301|North Cave/Market Weighton National Dialling
+4414300|North Cave/Market Weighton
+4414301|North Cave/Market Weighton
 4414302|North Cave
 4414303|North Cave
 4414304|North Cave
@@ -328,8 +248,8 @@
 441431|Helmsdale
 441432|Hereford
 441433|Hathersage
-4414340|Bellingham/Haltwhistle/Hexham National Dialling
-4414341|Bellingham/Haltwhistle/Hexham National Dialling
+4414340|Bellingham/Haltwhistle/Hexham
+4414341|Bellingham/Haltwhistle/Hexham
 4414342|Bellingham
 4414343|Haltwhistle
 4414344|Bellingham
@@ -340,8 +260,8 @@
 4414349|Bellingham
 441435|Heathfield
 441436|Helensburgh
-4414370|Haverfordwest/Clynderwen (Clunderwen) National Dialling
-4414371|Haverfordwest/Clynderwen (Clunderwen) National Dialling
+4414370|Haverfordwest/Clynderwen (Clunderwen)
+4414371|Haverfordwest/Clynderwen (Clunderwen)
 4414372|Clynderwen (Clunderwen)
 4414373|Clynderwen (Clunderwen)
 4414374|Clynderwen (Clunderwen)
@@ -410,8 +330,8 @@
 441503|Looe
 441505|Johnstone
 441506|Bathgate
-4415070|Louth/Alford/Spilsby (Horncastle) National Dialling
-4415071|Louth/Alford/Spilsby (Horncastle) National Dialling
+4415070|Louth/Alford/Spilsby (Horncastle)
+4415071|Louth/Alford/Spilsby (Horncastle)
 4415072|Spilsby (Horncastle)
 4415073|Louth
 4415074|Alford (Lincs)
@@ -422,20 +342,11 @@
 4415079|Alford (Lincs)
 441508|Brooke
 441509|Loughborough
-441510|Liverpool National Dialling
-441511|Liverpool National Dialling
-441512|Liverpool
-441513|Liverpool
-441514|Liverpool
-441515|Liverpool
-441516|Liverpool
-441517|Liverpool
-441518|Liverpool
-441519|Liverpool
+44151|Liverpool
 441520|Lochcarron
 441522|Lincoln
-4415240|Lancaster National Dialling
-4415241|Lancaster National Dialling
+4415240|Lancaster
+4415241|Lancaster
 4415242|Hornby
 4415243|Lancaster
 4415244|Lancaster
@@ -455,8 +366,8 @@
 441535|Keighley
 441536|Kettering
 441538|Ipstones
-4415390|Kendal National Dialling
-4415391|Kendal National Dialling
+4415390|Kendal
+4415391|Kendal
 4415392|Kendal
 4415393|Kendal
 4415394|Hawkshead
@@ -523,16 +434,7 @@
 441606|Northwich
 441608|Chipping Norton
 441609|Northallerton
-441610|Manchester National Dialling
-441611|Manchester National Dialling
-441612|Manchester
-441613|Manchester
-441614|Manchester
-441615|Manchester expansion
-441616|Manchester
-441617|Manchester
-441618|Manchester
-441619|Manchester
+44161|Manchester
 441620|North Berwick
 441621|Maldon
 441622|Maidstone
@@ -587,8 +489,8 @@
 441683|Moffat
 441684|Malvern
 441685|Merthyr Tydfil
-4416860|Newtown/Llanidloes National Dialling
-4416861|Newtown/Llanidloes National Dialling
+4416860|Newtown/Llanidloes
+4416861|Newtown/Llanidloes
 4416862|Llanidloes
 4416863|Llanidloes
 4416864|Llanidloes
@@ -605,8 +507,8 @@
 441692|North Walsham
 441694|Church Stretton
 441695|Skelmersdale
-4416970|Brampton National Dialling
-4416971|Brampton National Dialling
+4416970|Brampton
+4416971|Brampton
 4416972|Brampton
 4416973|Wigton
 4416974|Raughton Head
@@ -663,8 +565,8 @@
 441765|Ripon
 441766|Porthmadog
 441767|Sandy
-4417680|Penrith National Dialling
-4417681|Penrith National Dialling
+4417680|Penrith
+4417681|Penrith
 4417682|Penrith
 4417683|Appleby
 4417684|Pooley Bridge
@@ -727,8 +629,8 @@
 441843|Thanet
 441844|Thame
 441845|Thirsk
-4418470|Thurso/Tongue National Dialling
-4418471|Thurso/Tongue National Dialling
+4418470|Thurso/Tongue
+4418471|Thurso/Tongue
 4418472|Thurso
 4418473|Thurso
 4418474|Thurso
@@ -738,8 +640,8 @@
 4418478|Thurso
 4418479|Tongue
 441848|Thornhill
-4418510|Great Bernera/Stornoway National Dialling
-4418511|Great Bernera/Stornoway National Dialling
+4418510|Great Bernera/Stornoway
+4418511|Great Bernera/Stornoway
 4418512|Stornoway
 4418513|Stornoway
 4418514|Great Bernera
@@ -780,8 +682,8 @@
 441887|Aberfeldy
 441888|Turriff
 441889|Rugeley
-4418900|Coldstream/Ayton National Dialling
-4418901|Coldstream/Ayton National Dialling
+4418900|Coldstream/Ayton
+4418901|Coldstream/Ayton
 4418902|Coldstream
 4418903|Coldstream
 4418904|Coldstream
@@ -801,8 +703,8 @@
 441905|Worcester
 441908|Milton Keynes
 441909|Worksop
-441910|Tyneside/Durham/Sunderland National Dialling
-441911|Tyneside/Durham/Sunderland National Dialling
+441910|Tyneside/Durham/Sunderland
+441911|Tyneside/Durham/Sunderland
 441912|Tyneside
 441913|Durham
 441914|Tyneside
@@ -831,8 +733,8 @@
 441943|Guiseley
 441944|West Heslerton
 441945|Wisbech
-4419460|Whitehaven National Dialling
-4419461|Whitehaven National Dialling
+4419460|Whitehaven
+4419461|Whitehaven
 4419462|Whitehaven
 4419463|Whitehaven
 4419464|Whitehaven
@@ -854,8 +756,8 @@
 441959|Westerham
 441962|Winchester
 441963|Wincanton
-4419640|Hornsea/Patrington National Dialling
-4419641|Hornsea/Patrington National Dialling
+4419640|Hornsea/Patrington
+4419641|Hornsea/Patrington
 4419642|Hornsea
 4419643|Patrington
 4419644|Patrington
@@ -871,8 +773,8 @@
 441971|Scourie
 441972|Glenborrodale
 441974|Llanon
-4419750|Alford (Aberdeen)/Strathdon National Dialling
-4419751|Alford (Aberdeen)/Strathdon National Dialling
+4419750|Alford (Aberdeen)/Strathdon
+4419751|Alford (Aberdeen)/Strathdon
 4419752|Alford (Aberdeen)
 4419753|Strathdon
 4419754|Alford (Aberdeen)
@@ -898,18 +800,18 @@
 441994|St Clears
 441995|Garstang
 441997|Strathpeffer
-44200|London National Dialling
-44201|London National Dialling
+44200|London
+44201|London
 44203|London
 44207|London
 44208|London
-442310|Portsmouth National Dialling
-442311|Southampton National Dialling
+442310|Portsmouth
+442311|Southampton
 44238|Southampton
 44239|Portsmouth
-44241|Coventry National Dialling
+44241|Coventry
 44247|Coventry
-44281|Northern Ireland National Dialling
+44281|Northern Ireland
 442820|Ballycastle
 442821|Martinstown
 442825|Ballymena
@@ -944,8 +846,8 @@
 442893|Ballyclare
 442894|Antrim
 442895|Belfast
-442896|Belfast expansion
+442896|Belfast
 442897|Saintfield
-442898|Belfast expansion
-44291|Cardiff National Dialling
+442898|Belfast
+44291|Cardiff
 44292|Cardiff
