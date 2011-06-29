@@ -1,0 +1,30 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Generated from:
+# http://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan
+
+8862|Taipei
+8863|Taoyuan, Hsinchu, Yilan, Hualien
+8864|Taichung, Changhua
+8865|Chiayi, Yunlin
+8866|Tainan, Penghu
+8867|Kaohsiung
+8868|Pingtung
+88637|Miaoli
+88649|Nantou
+88682|Kinmen
+88689|Taitung
+886826|Wuqiu
+886836|Matsu

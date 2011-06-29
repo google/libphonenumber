@@ -110,8 +110,12 @@ public class AsYouTypeFormatter {
     defaultMetaData = currentMetaData;
   }
 
+  // The metadata needed by this class is the same for all regions sharing the same country calling
+  // code. Therefore, we return the metadata for "main" region for this country calling code.
   private PhoneMetadata getMetadataForRegion(String regionCode) {
-    PhoneMetadata metadata = phoneUtil.getMetadataForRegion(regionCode);
+    int countryCallingCode = phoneUtil.getCountryCodeForRegion(regionCode);
+    String mainCountry = phoneUtil.getRegionCodeForCountryCode(countryCallingCode);
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion(mainCountry);
     if (metadata != null) {
       return metadata;
     }

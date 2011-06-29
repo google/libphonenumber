@@ -29,8 +29,6 @@ import java.util.Locale;
 public class PhoneNumberOfflineGeocoderTest extends TestCase {
   private final PhoneNumberOfflineGeocoder geocoder =
       new PhoneNumberOfflineGeocoder(TEST_MAPPING_DATA_DIRECTORY);
-  static final String TEST_META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
   private static final String TEST_MAPPING_DATA_DIRECTORY =
       "/com/google/i18n/phonenumbers/geocoding/testing_data/";
 

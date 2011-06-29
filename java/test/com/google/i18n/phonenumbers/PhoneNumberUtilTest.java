@@ -909,6 +909,9 @@ public class PhoneNumberUtilTest extends TestCase {
   public void testIsNANPACountry() {
     assertTrue(phoneUtil.isNANPACountry(RegionCode.US));
     assertTrue(phoneUtil.isNANPACountry(RegionCode.BS));
+    assertFalse(phoneUtil.isNANPACountry(RegionCode.DE));
+    assertFalse(phoneUtil.isNANPACountry(RegionCode.ZZ));
+    assertFalse(phoneUtil.isNANPACountry(null));
   }
 
   public void testIsPossibleNumber() {

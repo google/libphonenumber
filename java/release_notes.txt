@@ -1,3 +1,19 @@
+June 29th, 2011
+* Code changes
+ - Fixed issue 38, issue 39, issue 41 and issue 43
+
+* Metadata changes
+ - Added phone number area mapping files for
+   - JP in Japanese
+   - FR in French
+   - TW in English, Simplified and Traditional Chinese
+   - RU in English
+   - IT in English and Italian
+   - PT in Portuguese
+   - TR in English and Turkish
+   - CH in English, German, French and Italian
+ - Updates: CR, GE, IT, JP, KW, MH, MP, MU, PE, PM, RW, TG, TJ, TK
+
 June 14th, 2011
 * Code changes
  - Added PhoneNumberOfflineGeocoder, supporting classes and their unittests.
