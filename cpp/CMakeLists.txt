@@ -67,6 +67,7 @@ endfunction (find_required_program)
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2 instead of ICU" "OFF")
+option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 
 # Find all the required libraries and programs.
 find_package (Boost 1.40.0 COMPONENTS thread)
@@ -109,17 +110,11 @@ if (APPLE)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
 endif ()
 
-INCLUDE (CheckIncludeFileCXX)
-CHECK_INCLUDE_FILE_CXX ("tr1/unordered_map" HAVE_CXX_TR1_UNORDERED_MAP)
-
-if (HAVE_CXX_TR1_UNORDERED_MAP)
-  add_definitions ("-DUSE_TR1_UNORDERED_MAP")
-else ()
-  CHECK_INCLUDE_FILE_CXX (hash_map HAVE_CXX_HASH_MAP)
-  if (HAVE_CXX_HASH_MAP)
-    add_definitions ("-DUSE_HASH_MAP")
-  else ()
-    print_error ("C++ map class" "tr1/unordered_map or hash_map")
+if (${USE_STD_MAP} STREQUAL "OFF")
+  INCLUDE (CheckIncludeFileCXX)
+  CHECK_INCLUDE_FILE_CXX ("tr1/unordered_map" HAVE_CXX_TR1_UNORDERED_MAP)
+  if (HAVE_CXX_TR1_UNORDERED_MAP)
+    add_definitions ("-DUSE_TR1_UNORDERED_MAP")
   endif ()
 endif ()
 

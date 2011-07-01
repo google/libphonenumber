@@ -26,35 +26,18 @@
 
 using std::string;
 
-#ifdef USE_HASH_MAP
-
-// A basic text book string hash function implementation, this one taken from
-// The Practice of Programming (Kernighan and Pike 1999). It could be a good
-// idea in the future to evaluate how well it actually performs and possibly
-// switch to another hash function better suited to this particular use case.
-namespace __gnu_cxx {
-template<> struct hash<string> {
-  enum { MULTIPLIER = 31 };
-  size_t operator()(const string& key) const {
-    size_t h = 0;
-    for (const char* p = key.c_str(); *p != '\0'; ++p) {
-      h *= MULTIPLIER;
-      h += *p;
-    }
-    return h;
-  }
-};
-}  // namespace __gnu_cxx
-
-#endif
-
 namespace i18n {
 namespace phonenumbers {
 
 using base::AutoLock;
 
 RegExpCache::RegExpCache(size_t min_items)
-    : cache_impl_(new CacheImpl(min_items)) {}
+#ifdef USE_TR1_UNORDERED_MAP
+    : cache_impl_(new CacheImpl(min_items))
+#else
+    : cache_impl_(new CacheImpl())
+#endif
+{}
 
 RegExpCache::~RegExpCache() {
   AutoLock l(lock_);

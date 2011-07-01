@@ -36,13 +36,8 @@
 
 #ifdef USE_TR1_UNORDERED_MAP
 #  include <tr1/unordered_map>
-#elif defined(USE_HASH_MAP)
-#  ifndef __DEPRECATED
-#    define __DEPRECATED
-#  endif
-#  include <hash_map>
 #else
-#  error STL map type unsupported on this platform!
+#  include <map>
 #endif
 
 namespace i18n {
@@ -56,8 +51,8 @@ class RegExpCache {
  private:
 #ifdef USE_TR1_UNORDERED_MAP
   typedef std::tr1::unordered_map<string, const RegExp*> CacheImpl;
-#elif defined(USE_HASH_MAP)
-  typedef std::hash_map<string, const RegExp*> CacheImpl;
+#else
+  typedef std::map<string, const RegExp*> CacheImpl;
 #endif
 
  public:
