@@ -19,8 +19,8 @@
 
 #include <gtest/gtest.h>
 
-#include "regexp_adapter.h"
-#include "regexp_cache.h"
+#include "phonenumbers/regexp_adapter.h"
+#include "phonenumbers/regexp_cache.h"
 
 namespace i18n {
 namespace phonenumbers {

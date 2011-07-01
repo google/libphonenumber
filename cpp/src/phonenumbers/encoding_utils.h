@@ -16,7 +16,7 @@
 #define I18N_PHONENUMBERS_ENCODING_UTILS_H_
 
 #include "base/basictypes.h"
-#include "utf/utf.h"
+#include "phonenumbers/utf/utf.h"
 
 namespace i18n {
 namespace phonenumbers {

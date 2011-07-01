@@ -15,7 +15,7 @@
 // Author: George Yakovlev
 //         Philippe Liard
 
-#include "regexp_adapter.h"
+#include "phonenumbers/regexp_adapter.h"
 
 #include <cstddef>
 #include <string>
@@ -25,7 +25,7 @@
 
 #include "base/basictypes.h"
 #include "base/logging.h"
-#include "stringutil.h"
+#include "phonenumbers/stringutil.h"
 
 namespace i18n {
 namespace phonenumbers {

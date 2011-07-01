@@ -14,8 +14,8 @@
 
 // Author: Philippe Liard
 
-#include "phonemetadata.pb.h"
-#include "phonenumber.pb.h"
+#include "phonenumbers/phonemetadata.pb.h"
+#include "phonenumbers/phonenumber.pb.h"
 
 namespace i18n {
 namespace phonenumbers {

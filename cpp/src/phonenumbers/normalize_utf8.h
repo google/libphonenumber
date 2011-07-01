@@ -14,7 +14,7 @@
 
 #include <string>
 
-#include "utf/unicodetext.h"
+#include "phonenumbers/utf/unicodetext.h"
 
 namespace i18n {
 namespace phonenumbers {

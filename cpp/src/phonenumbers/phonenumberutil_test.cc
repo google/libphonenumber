@@ -22,10 +22,10 @@
 
 #include <gtest/gtest.h>
 
-#include "phonemetadata.pb.h"
-#include "phonenumber.h"
-#include "phonenumber.pb.h"
-#include "phonenumberutil.h"
+#include "phonenumbers/phonemetadata.pb.h"
+#include "phonenumbers/phonenumber.h"
+#include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/phonenumberutil.h"
 
 namespace i18n {
 namespace phonenumbers {

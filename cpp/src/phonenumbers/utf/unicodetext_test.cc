@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-#include "unicodetext.h"
+#include "phonenumbers/utf/unicodetext.h"
 
 namespace i18n {
 namespace unicodetext {

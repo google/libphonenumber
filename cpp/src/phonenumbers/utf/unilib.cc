@@ -16,10 +16,10 @@
 
 // Author: Shawn Ligocki
 
-#include "utf/unilib.h"
+#include "phonenumbers/utf/unilib.h"
 
 #include "base/basictypes.h"
-#include "utf/utf.h"
+#include "phonenumbers/utf/utf.h"
 
 namespace UniLib {
 

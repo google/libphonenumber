@@ -15,7 +15,7 @@
 // Author: Shaopeng Jia
 // Open-sourced by: Philippe Liard
 
-#include "phonenumberutil.h"
+#include "phonenumbers/phonenumberutil.h"
 
 #include <algorithm>
 #include <cctype>
@@ -34,20 +34,20 @@
 
 #include "base/logging.h"
 #include "base/singleton.h"
-#include "default_logger.h"
-#include "encoding_utils.h"
-#include "metadata.h"
-#include "normalize_utf8.h"
-#include "phonemetadata.pb.h"
-#include "phonenumber.h"
-#include "phonenumber.pb.h"
-#include "regexp_adapter.h"
-#include "regexp_cache.h"
-#include "region_code.h"
-#include "stl_util.h"
-#include "stringutil.h"
-#include "utf/unicodetext.h"
-#include "utf/utf.h"
+#include "phonenumbers/default_logger.h"
+#include "phonenumbers/encoding_utils.h"
+#include "phonenumbers/metadata.h"
+#include "phonenumbers/normalize_utf8.h"
+#include "phonenumbers/phonemetadata.pb.h"
+#include "phonenumbers/phonenumber.h"
+#include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/regexp_adapter.h"
+#include "phonenumbers/regexp_cache.h"
+#include "phonenumbers/region_code.h"
+#include "phonenumbers/stl_util.h"
+#include "phonenumbers/stringutil.h"
+#include "phonenumbers/utf/unicodetext.h"
+#include "phonenumbers/utf/utf.h"
 
 namespace i18n {
 namespace phonenumbers {

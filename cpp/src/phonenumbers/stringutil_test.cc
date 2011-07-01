@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-#include "stringutil.h"
+#include "phonenumbers/stringutil.h"
 
 namespace i18n {
 namespace phonenumbers {

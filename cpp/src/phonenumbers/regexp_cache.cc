@@ -14,7 +14,7 @@
 
 // Author: Fredrik Roubert
 
-#include "regexp_cache.h"
+#include "phonenumbers/regexp_cache.h"
 
 #include <cstddef>
 #include <string>
@@ -22,7 +22,7 @@
 
 #include "base/logging.h"
 #include "base/synchronization/lock.h"
-#include "regexp_adapter.h"
+#include "phonenumbers/regexp_adapter.h"
 
 using std::string;
 

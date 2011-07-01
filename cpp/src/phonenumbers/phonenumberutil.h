@@ -30,7 +30,7 @@
 #include "base/basictypes.h"
 #include "base/scoped_ptr.h"
 #include "base/singleton.h"
-#include "phonenumber.pb.h"
+#include "phonenumbers/phonenumber.pb.h"
 
 class TelephoneNumber;
 

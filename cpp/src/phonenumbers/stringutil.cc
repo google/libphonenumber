@@ -18,7 +18,7 @@
 #include <cstring>
 #include <sstream>
 
-#include "stringutil.h"
+#include "phonenumbers/stringutil.h"
 
 namespace i18n {
 namespace phonenumbers {

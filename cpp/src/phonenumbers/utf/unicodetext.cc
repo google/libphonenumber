@@ -18,12 +18,12 @@
 #include <sstream>
 #include <cassert>
 
-#include "utf/unicodetext.h"
+#include "phonenumbers/utf/unicodetext.h"
 //#include "base/logging.h"
-#include "utf/stringpiece.h"
+#include "phonenumbers/utf/stringpiece.h"
 //#include "utf/stringprintf.h"
-#include "utf/utf.h"
-#include "utf/unilib.h"
+#include "phonenumbers/utf/utf.h"
+#include "phonenumbers/utf/unilib.h"
 
 using std::stringstream;
 using std::max;
@@ -512,4 +512,3 @@ string UnicodeText::const_iterator::DebugString() const {
 
   return result;
 }
-

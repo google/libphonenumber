@@ -15,7 +15,7 @@
 // Author: George Yakovlev
 //         Philippe Liard
 
-#include "regexp_adapter.h"
+#include "phonenumbers/regexp_adapter.h"
 
 #include <string>
 

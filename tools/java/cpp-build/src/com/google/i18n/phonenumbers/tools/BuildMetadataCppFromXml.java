@@ -180,7 +180,7 @@ public class BuildMetadataCppFromXml extends Command {
   private void emitImplementation() throws IOException {
     final PrintWriter pw = new PrintWriter(implFileOutputStream);
     pw.write(CopyrightNotice.TEXT);
-    pw.println("#include \"metadata.h\"");
+    pw.println("#include \"phonenumbers/metadata.h\"");
     pw.println();
 
     emitNamespacesBeginning(pw);
