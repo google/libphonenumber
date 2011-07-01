@@ -33,7 +33,7 @@
 #include <unicode/utf8.h>
 
 #include "base/logging.h"
-#include "base/singleton.h"
+#include "base/memory/singleton.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
 #include "phonenumbers/metadata.h"
