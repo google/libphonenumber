@@ -62,7 +62,7 @@ using std::stringstream;
 using google::protobuf::RepeatedPtrField;
 
 // static
-const char PhoneNumberUtil::kPlusChars[] = "+＋";
+const char PhoneNumberUtil::kPlusChars[] = "+\xEF\xBC\x8B";  /* "+＋" */
 // To find out the unicode code-point of the characters below in vim, highlight
 // the character and type 'ga'. Note that the - is used to express ranges of
 // full-width punctuation below, as well as being present in the expression
@@ -70,7 +70,10 @@ const char PhoneNumberUtil::kPlusChars[] = "+＋";
 // unicode character.
 // static
 const char PhoneNumberUtil::kValidPunctuation[] =
-    "-x‐-―−ー－-／  ​⁠　()（）［］.\\[\\]/~⁓∼";
+ /* "-x‐-―−ー－-／  <U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
+    "-x\xE2\x80\x90-\xE2\x80\x95\xE2\x88\x92\xE3\x83\xBC\xEF\xBC\x8D-\xEF\xBC"
+    "\x8F \xC2\xA0\xE2\x80\x8B\xE2\x81\xA0\xE3\x80\x80()\xEF\xBC\x88\xEF\xBC"
+    "\x89\xEF\xBC\xBB\xEF\xBC\xBD.\\[\\]/~\xE2\x81\x93\xE2\x88\xBC";
 
 namespace {
 
@@ -450,35 +453,35 @@ void InitializeStaticMapsAndSets() {
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("-"), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("－"), '-'));
+      make_pair(ToUnicodeCodepoint("\xEF\xBC\x8D" /* "－" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("‐"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x80\x90" /* "‐" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("‑"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x80\x91" /* "‑" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("‒"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x80\x92" /* "‒" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("–"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x80\x93" /* "–" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("—"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x80\x94" /* "—" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("―"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x80\x95" /* "―" */), '-'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("−"), '-'));
+      make_pair(ToUnicodeCodepoint("\xE2\x88\x92" /* "−" */), '-'));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("/"), '/'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("／"), '/'));
+      make_pair(ToUnicodeCodepoint("\xEF\xBC\x8F" /* "／" */), '/'));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint(" "), ' '));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("　"), ' '));
+      make_pair(ToUnicodeCodepoint("\xE3\x80\x80" /* "　" */), ' '));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("⁠"), ' '));
+      make_pair(ToUnicodeCodepoint("\xE2\x81\xA0"), ' '));
   all_plus_number_grouping_symbols->insert(
       make_pair(ToUnicodeCodepoint("."), '.'));
   all_plus_number_grouping_symbols->insert(
-      make_pair(ToUnicodeCodepoint("．"), '.'));
+      make_pair(ToUnicodeCodepoint("\xEF\xBC\x8E" /* "．" */), '.'));
   // Only the upper-case letters are added here - the lower-case versions are
   // added programmatically.
   alpha_mappings->insert(make_pair(ToUnicodeCodepoint("A"), '2'));
@@ -692,7 +695,8 @@ PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
 
 void PhoneNumberUtil::CreateRegularExpressions() const {
   unique_international_prefix.reset(RegExp::Create(
-      "[\\d]+(?:[~⁓∼～][\\d]+)?"));
+   /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
+      "[\\d]+(?:[~\xE2\x81\x93\xE2\x88\xBC\xEF\xBD\x9E][\\d]+)?"));
   // The first_group_capturing_pattern was originally set to $1 but there are
   // some countries for which the first group is not used in the national
   // pattern (e.g. Argentina) so the $1 group does not match correctly.
@@ -720,10 +724,16 @@ void PhoneNumberUtil::CreateRegularExpressions() const {
   const string capturing_extn_digits = StrCat("([", kDigits, "]{1,7})");
   known_extn_patterns.reset(new string(
       StrCat(kRfc3966ExtnPrefix, capturing_extn_digits, "|"
-             "[  \\t,]*(?:ext(?:ensi(?:ó?|ó))?n?|ｅｘｔｎ?|[,xｘ#＃~～]|"
+          /* "[  \\t,]*(?:ext(?:ensi(?:ó?|ó))?n?|ｅｘｔｎ?|[,xｘ#＃~～]|"
              "int|ｉｎｔ|anexo)"
-             "[:\\.．]?[  \\t,-]*", capturing_extn_digits, "#?|"
-             "[- ]+([", kDigits, "]{1,5})#")));
+             "[:\\.．]?[  \\t,-]*", capturing_extn_digits, "#?|" */
+             "[ \xC2\xA0\\t,]*(?:ext(?:ensi(?:o\xCC\x81?|\xC3\xB3))?n?|\xEF\xBD"
+             "\x85\xEF\xBD\x98\xEF\xBD\x94\xEF\xBD\x8E?|[,x\xEF\xBD\x98#\xEF"
+             "\xBC\x83~\xEF\xBD\x9E]|"
+             "int|\xEF\xBD\x89\xEF\xBD\x8E\xEF\xBD\x94|anexo)"
+             "[:\\.\xEF\xBC\x8E]?[ \xC2\xA0\\t,-]*", capturing_extn_digits,
+             "#?|[- ]+([", kDigits, "]{1,5})#")));
+
   extn_pattern.reset(RegExp::Create(
       StrCat("(?i)(?:", *known_extn_patterns, ")$")));
   valid_phone_number_pattern.reset(RegExp::Create(

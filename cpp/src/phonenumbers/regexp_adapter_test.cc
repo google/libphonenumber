@@ -186,12 +186,18 @@ TEST_F(RegExpAdapterTest, TestGlobalReplace) {
 }
 
 TEST(RegExpAdapter, TestUtf8) {
-  const scoped_ptr<const RegExp> reg_exp(RegExp::Create("℡⊏([α-ω]*)⊐"));
+  const scoped_ptr<const RegExp> reg_exp(RegExp::Create(
+      "\xE2\x84\xA1\xE2\x8A\x8F([\xCE\xB1-\xCF\x89]*)\xE2\x8A\x90"
+      /* "℡⊏([α-ω]*)⊐" */));
   string matched;
 
-  EXPECT_FALSE(reg_exp->Match("℡⊏123⊐", true, &matched));
-  EXPECT_TRUE(reg_exp->Match("℡⊏αβ⊐", true, &matched));
-  EXPECT_EQ("αβ", matched);
+  EXPECT_FALSE(reg_exp->Match(
+      "\xE2\x84\xA1\xE2\x8A\x8F" "123\xE2\x8A\x90" /* "℡⊏123⊐" */, true,
+      &matched));
+  EXPECT_TRUE(reg_exp->Match(
+      "\xE2\x84\xA1\xE2\x8A\x8F\xCE\xB1\xCE\xB2\xE2\x8A\x90"
+      /* "℡⊏αβ⊐" */, true, &matched));
+  EXPECT_EQ("\xCE\xB1\xCE\xB2" /* "αβ" */, matched);
 }
 
 }  // namespace phonenumbers

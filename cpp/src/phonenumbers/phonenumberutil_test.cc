@@ -1145,11 +1145,15 @@ TEST_F(PhoneNumberUtilTest, ExtractPossibleNumber) {
   ExtractPossibleNumber("Tel:+800-345-600", &extracted_number);
   EXPECT_EQ("+800-345-600", extracted_number);
   // Should recognise wide digits as possible start values.
-  ExtractPossibleNumber("０２３", &extracted_number);
-  EXPECT_EQ("０２３", extracted_number);
+  ExtractPossibleNumber("\xEF\xBC\x90\xEF\xBC\x92\xEF\xBC\x93" /* "０２３" */,
+                        &extracted_number);
+  EXPECT_EQ("\xEF\xBC\x90\xEF\xBC\x92\xEF\xBC\x93" /* "０２３" */,
+            extracted_number);
   // Dashes are not possible start values and should be removed.
-  ExtractPossibleNumber("Num-１２３", &extracted_number);
-  EXPECT_EQ("１２３", extracted_number);
+  ExtractPossibleNumber("Num-\xEF\xBC\x91\xEF\xBC\x92\xEF\xBC\x93"
+                        /* "Num-１２３" */, &extracted_number);
+  EXPECT_EQ("\xEF\xBC\x91\xEF\xBC\x92\xEF\xBC\x93" /* "１２３" */,
+            extracted_number);
   // If not possible number present, return empty string.
   ExtractPossibleNumber("Num-....", &extracted_number);
   EXPECT_EQ("", extracted_number);
@@ -1163,7 +1167,8 @@ TEST_F(PhoneNumberUtilTest, ExtractPossibleNumber) {
   ExtractPossibleNumber("(650) 253-0000.", &extracted_number);
   EXPECT_EQ("650) 253-0000", extracted_number);
   // This case has a trailing RTL char.
-  ExtractPossibleNumber("(650) 253-0000‏", &extracted_number);
+  ExtractPossibleNumber("(650) 253-0000\xE2\x80\x8F"
+                        /* "(650) 253-0000‏" */, &extracted_number);
   EXPECT_EQ("650) 253-0000", extracted_number);
 }
 
@@ -1675,13 +1680,15 @@ TEST_F(PhoneNumberUtilTest, IsViablePhoneNumber) {
   EXPECT_TRUE(IsViablePhoneNumber("0800-4-PIZZA"));
   // Only one or two digits before possible punctuation followed by more digits.
   // The punctuation used here is the unicode character u+3000.
-  EXPECT_TRUE(IsViablePhoneNumber("1　34"));
-  EXPECT_FALSE(IsViablePhoneNumber("1　3+4"));
+  EXPECT_TRUE(IsViablePhoneNumber("1\xE3\x80\x80" "34" /* "1　34" */));
+  EXPECT_FALSE(IsViablePhoneNumber("1\xE3\x80\x80" "3+4" /* "1　3+4" */));
   // Unicode variants of possible starting character and other allowed
   // punctuation/digits.
-  EXPECT_TRUE(IsViablePhoneNumber("（1）　3456789"));
+  EXPECT_TRUE(IsViablePhoneNumber("\xEF\xBC\x88" "1\xEF\xBC\x89\xE3\x80\x80"
+                                  "3456789" /* "（1）　3456789" */ ));
   // Testing a leading + is okay.
-  EXPECT_TRUE(IsViablePhoneNumber("+1）　3456789"));
+  EXPECT_TRUE(IsViablePhoneNumber("+1\xEF\xBC\x89\xE3\x80\x80"
+                                  "3456789" /* "+1）　3456789" */));
 }
 
 TEST_F(PhoneNumberUtilTest, ConvertAlphaCharactersInNumber) {
@@ -1692,8 +1699,10 @@ TEST_F(PhoneNumberUtilTest, ConvertAlphaCharactersInNumber) {
   EXPECT_EQ(kExpectedOutput, input);
 
   // Try with some non-ASCII characters.
-  input.assign("1　（800) ABC-DEF");
-  static const string kExpectedFullwidthOutput = "1　（800) 222-333";
+  input.assign("1\xE3\x80\x80\xEF\xBC\x88" "800) ABC-DEF"
+               /* "1　（800) ABCD-DEF" */);
+  static const string kExpectedFullwidthOutput =
+      "1\xE3\x80\x80\xEF\xBC\x88" "800) 222-333" /* "1　（800) 222-333" */;
   phone_util_.ConvertAlphaCharactersInNumber(&input);
   EXPECT_EQ(kExpectedFullwidthOutput, input);
 }
@@ -1717,13 +1726,13 @@ TEST_F(PhoneNumberUtilTest, NormaliseReplaceAlphaCharacters) {
 TEST_F(PhoneNumberUtilTest, NormaliseOtherDigits) {
   // The first digit is a full-width 2, the last digit is an Arabic-indic digit
   // 5.
-  string input_number("２5٥");
+  string input_number("\xEF\xBC\x92" "5\xD9\xA5" /* "２5٥" */);
   Normalize(&input_number);
   static const string kExpectedOutput("255");
   EXPECT_EQ(kExpectedOutput, input_number)
       << "Conversion did not correctly replace non-latin digits";
   // The first digit is an Eastern-Arabic 5, the latter an Eastern-Arabic 0.
-  string eastern_arabic_input_number("۵2۰");
+  string eastern_arabic_input_number("\xDB\xB5" "2\xDB\xB0" /* "۵2۰" */);
   Normalize(&eastern_arabic_input_number);
   static const string kExpectedOutput2("520");
   EXPECT_EQ(kExpectedOutput2, eastern_arabic_input_number)
@@ -2379,21 +2388,32 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
   // Using a full-width plus sign.
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("＋1 (650) 333-6000",
+            phone_util_.Parse("\xEF\xBC\x8B" "1 (650) 333-6000",
+                              /* "＋1 (650) 333-6000" */
                               RegionCode::SG(), &test_number));
   EXPECT_EQ(us_number, test_number);
   // The whole number, including punctuation, is here represented in full-width
   // form.
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("＋１　（６５０）　３３３－６０００",
+            phone_util_.Parse("\xEF\xBC\x8B\xEF\xBC\x91\xE3\x80\x80\xEF\xBC\x88"
+                              "\xEF\xBC\x96\xEF\xBC\x95\xEF\xBC\x90\xEF\xBC\x89"
+                              "\xE3\x80\x80\xEF\xBC\x93\xEF\xBC\x93\xEF\xBC\x93"
+                              "\xEF\xBC\x8D\xEF\xBC\x96\xEF\xBC\x90\xEF\xBC\x90"
+                              "\xEF\xBC\x90",
+                              /* "＋１　（６５０）　３３３－６０００" */
                               RegionCode::SG(), &test_number));
   EXPECT_EQ(us_number, test_number);
 
   // Using the U+30FC dash.
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("＋１　（６５０）　３３３ー６０００",
+            phone_util_.Parse("\xEF\xBC\x8B\xEF\xBC\x91\xE3\x80\x80\xEF\xBC\x88"
+                              "\xEF\xBC\x96\xEF\xBC\x95\xEF\xBC\x90\xEF\xBC\x89"
+                              "\xE3\x80\x80\xEF\xBC\x93\xEF\xBC\x93\xEF\xBC\x93"
+                              "\xE3\x83\xBC\xEF\xBC\x96\xEF\xBC\x90\xEF\xBC\x90"
+                              "\xEF\xBC\x90",
+                              /* "＋１　（６５０）　３３３ー６０００" */
                               RegionCode::SG(), &test_number));
   EXPECT_EQ(us_number, test_number);
 }
@@ -2633,8 +2653,9 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   // Test with full-width plus.
   result_proto.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("＋64 3 331 6005", RegionCode::GetUnknown(),
-                              &result_proto));
+            phone_util_.Parse("\xEF\xBC\x8B" "64 3 331 6005",
+                              /* "＋64 3 331 6005" */
+                              RegionCode::GetUnknown(), &result_proto));
   EXPECT_EQ(nz_number, result_proto);
   // Test with normal plus but leading characters that need to be stripped.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
@@ -2792,7 +2813,8 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   EXPECT_EQ(us_with_extension, test_number);
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("(800) 901-3355 ,extensión 7246433",
+            phone_util_.Parse("(800) 901-3355 ,extensi\xC3\xB3n 7246433",
+                              /* "(800) 901-3355 ,extensión 7246433" */
                               RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
@@ -2800,7 +2822,8 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   // Repeat with the small letter o with acute accent created by combining
   // characters.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("(800) 901-3355 ,extensión 7246433",
+            phone_util_.Parse("(800) 901-3355 ,extensio\xCC\x81n 7246433",
+                              /* "(800) 901-3355 ,extensión 7246433" */
                               RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
