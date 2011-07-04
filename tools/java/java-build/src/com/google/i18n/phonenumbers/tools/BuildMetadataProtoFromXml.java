@@ -90,12 +90,6 @@ public class BuildMetadataProtoFromXml extends Command {
     boolean forTesting = args[3].equals("true");
     boolean liteBuild = args.length > 4 && args[4].equals("true");
 
-    if (!FileUtils.isGenerationRequired(
-            new File(inputFile),
-            new File(outputDir, new File(META_DATA_FILE_PREFIX).getParent()))) {
-      System.out.println("Metadata code up-to-date.");
-      return true;
-    }
     String filePrefix;
     if (forTesting) {
       filePrefix = outputDir + TEST_META_DATA_FILE_PREFIX;
