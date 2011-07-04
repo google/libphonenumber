@@ -111,31 +111,35 @@ public class GenerateAreaCodeData extends Command {
    *
    * @VisibleForTesting
    */
-  static void convertData(InputStream input, OutputStream output) throws IOException {
+  static void convertData(
+      InputStream input, OutputStream output, int countryCallingCode) throws IOException {
     SortedMap<Integer, String> areaCodeMapTemp = new TreeMap<Integer, String>();
     BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(
             new BufferedInputStream(input), Charset.forName("UTF-8")));
-    for (String line; (line = bufferedReader.readLine()) != null; ) {
+    int lineNumber = 1;
+
+    for (String line; (line = bufferedReader.readLine()) != null; lineNumber++) {
       line = line.trim();
       if (line.length() == 0 || line.startsWith("#")) {
         continue;
       }
       int indexOfPipe = line.indexOf('|');
       if (indexOfPipe == -1) {
-        LOGGER.log(Level.WARNING, "Malformatted data: expected '|'");
-        continue;
+        throw new RuntimeException(String.format("line %d: malformatted data, expected '|'",
+                                                 lineNumber));
       }
       String areaCode = line.substring(0, indexOfPipe);
       if (indexOfPipe == line.length() - 1) {
-        LOGGER.log(Level.WARNING, "Missing location for area code " + areaCode);
-        continue;
+        throw new RuntimeException(String.format("line %d: missing location", lineNumber));
       }
       String location = line.substring(indexOfPipe + 1);
-      areaCodeMapTemp.put(Integer.parseInt(areaCode), location);
+      if (areaCodeMapTemp.put(Integer.parseInt(areaCode), location) != null) {
+        throw new RuntimeException(String.format("line %d: duplicated area code", lineNumber));
+      }
     }
     // Build the corresponding area code map and serialize it to the binary format.
-    AreaCodeMap areaCodeMap = new AreaCodeMap();
+    AreaCodeMap areaCodeMap = new AreaCodeMap(countryCallingCode);
     areaCodeMap.readAreaCodeMap(areaCodeMapTemp);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
     areaCodeMap.writeExternal(objectOutputStream);
@@ -173,15 +177,13 @@ public class GenerateAreaCodeData extends Command {
         String countryCodeFileName = countryCodeFile.getName();
         int indexOfDot = countryCodeFileName.indexOf('.');
         if (indexOfDot == -1) {
-          LOGGER.log(Level.WARNING,
-                     String.format("unexpected file name %s, expected pattern .*\\.txt",
-                                   countryCodeFileName));
-          continue;
+          throw new RuntimeException(
+              String.format("unexpected file name %s, expected pattern .*\\.txt",
+                            countryCodeFileName));
         }
         String countryCode = countryCodeFileName.substring(0, indexOfDot);
         if (!countryCode.matches("\\d+")) {
-          LOGGER.log(Level.WARNING, "ignoring unexpected file " + countryCodeFileName);
-          continue;
+          throw new RuntimeException("ignoring unexpected file " + countryCodeFileName);
         }
         mappings.add(new Pair<File, File>(
             countryCodeFile,
@@ -199,8 +201,8 @@ public class GenerateAreaCodeData extends Command {
    *
    * @VisibleForTesting
    */
-  static void addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
-                                      File outputAreaCodeMappingsFile) {
+  static int addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
+                                     File outputAreaCodeMappingsFile) {
     String outputAreaCodeMappingsFileName = outputAreaCodeMappingsFile.getName();
     int indexOfUnderscore = outputAreaCodeMappingsFileName.indexOf('_');
     int countryCode = Integer.parseInt(
@@ -213,6 +215,7 @@ public class GenerateAreaCodeData extends Command {
       availableDataFiles.put(countryCode, languageSet);
     }
     languageSet.add(language);
+    return countryCode;
   }
 
   /**
@@ -252,8 +255,9 @@ public class GenerateAreaCodeData extends Command {
         File binaryFile = inputOutputMapping.second;
         fileInputStream = new FileInputStream(textFile);
         fileOutputStream = new FileOutputStream(binaryFile);
-        convertData(fileInputStream, fileOutputStream);
-        addConfigurationMapping(availableDataFiles, inputOutputMapping.second);
+        int countryCallingCode =
+            addConfigurationMapping(availableDataFiles, inputOutputMapping.second);
+        convertData(fileInputStream, fileOutputStream, countryCallingCode);
       } catch (IOException e) {
         LOGGER.log(Level.SEVERE, e.getMessage());
         continue;

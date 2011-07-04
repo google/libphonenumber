@@ -19,9 +19,26 @@
     text to binary format.
   </description>
 
+  <properties>
+    <phonenumberutil.resources.dir>
+      ${project.dir}/../../../../java/src/
+    </phonenumberutil.resources.dir>
+  </properties>
+
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
+    <!-- Include the PhoneNumberUtil metadata files. -->
+    <resources>
+      <resource>
+        <directory>${phonenumberutil.resources.dir}</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>${phonenumberutil.resources.dir}</directory>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <version>2.3.2</version>
