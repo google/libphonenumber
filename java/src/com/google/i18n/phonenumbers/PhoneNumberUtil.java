@@ -1596,11 +1596,11 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Checks whether countryCode represents the country calling code from a region whose national
-   * significant number could contain a leading zero. An example of such a region is Italy. Returns
-   * false if no metadata for the country is found.
+   * Checks whether the country calling code is from a region whose national significant number
+   * could contain a leading zero. An example of such a region is Italy. Returns false if no
+   * metadata for the country is found.
    */
-  boolean isLeadingZeroPossible(int countryCallingCode) {
+  public boolean isLeadingZeroPossible(int countryCallingCode) {
     PhoneMetadata mainMetadataForCallingCode = getMetadataForRegion(
         getRegionCodeForCountryCode(countryCallingCode));
     if (mainMetadataForCallingCode == null) {

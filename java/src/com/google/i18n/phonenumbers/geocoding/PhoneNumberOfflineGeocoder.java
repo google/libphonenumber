@@ -79,18 +79,18 @@ public class PhoneNumberOfflineGeocoder {
       return null;
     }
     if (!availablePhonePrefixMaps.containsKey(fileName)) {
-      loadAreaCodeMapFromFile(fileName);
+      loadAreaCodeMapFromFile(fileName, countryCallingCode);
     }
     return availablePhonePrefixMaps.get(fileName);
   }
 
-  private void loadAreaCodeMapFromFile(String fileName) {
+  private void loadAreaCodeMapFromFile(String fileName, int countryCallingCode) {
     InputStream source =
         PhoneNumberOfflineGeocoder.class.getResourceAsStream(phonePrefixDataDirectory + fileName);
     ObjectInputStream in;
     try {
       in = new ObjectInputStream(source);
-      AreaCodeMap map = new AreaCodeMap();
+      AreaCodeMap map = new AreaCodeMap(countryCallingCode);
       map.readExternal(in);
       availablePhonePrefixMaps.put(fileName, map);
     } catch (IOException e) {
@@ -147,6 +147,9 @@ public class PhoneNumberOfflineGeocoder {
    * @return  a text description for the given language code for the given phone number
    */
   public String getDescriptionForNumber(PhoneNumber number, Locale languageCode) {
+    if (!phoneUtil.isValidNumber(number)) {
+      return "";
+    }
     String areaDescription =
         getAreaDescriptionForNumber(
             number, languageCode.getLanguage(), "",  // No script is specified.

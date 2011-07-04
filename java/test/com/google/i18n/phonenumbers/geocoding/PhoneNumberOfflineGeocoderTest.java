@@ -39,12 +39,16 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
       new PhoneNumber().setCountryCode(82).setNationalNumber(322123456L);
   private static final PhoneNumber KO_NUMBER3 =
       new PhoneNumber().setCountryCode(82).setNationalNumber(6421234567L);
+  private static final PhoneNumber KO_INVALID_NUMBER =
+      new PhoneNumber().setCountryCode(82).setNationalNumber(1234L);
   private static final PhoneNumber US_NUMBER1 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(6502530000L);
   private static final PhoneNumber US_NUMBER2 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(6509600000L);
   private static final PhoneNumber US_NUMBER3 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2128120000L);
+  private static final PhoneNumber US_INVALID_NUMBER =
+      new PhoneNumber().setCountryCode(1).setNationalNumber(1234567890L);
   private static final PhoneNumber BS_NUMBER1 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
   private static final PhoneNumber AU_NUMBER =
@@ -89,5 +93,10 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
         geocoder.getDescriptionForNumber(KO_NUMBER2, Locale.KOREAN));
     assertEquals("\uC81C\uC8FC",
         geocoder.getDescriptionForNumber(KO_NUMBER3, Locale.KOREAN));
+  }
+
+  public void testGetDescritionForInvaildNumber() {
+    assertEquals("", geocoder.getDescriptionForNumber(KO_INVALID_NUMBER, Locale.ENGLISH));
+    assertEquals("", geocoder.getDescriptionForNumber(US_INVALID_NUMBER, Locale.ENGLISH));
   }
 }
