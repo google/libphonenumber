@@ -20,6 +20,7 @@
   </licenses>
 
   <modules>
+    <module>common</module>
     <module>cpp-build</module>
     <module>java-build</module>
   </modules>
