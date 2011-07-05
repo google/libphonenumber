@@ -14,6 +14,9 @@
 
 // Author: Philippe Liard
 
+// This file should not be compiled when using Google base/.
+#ifndef USE_GOOGLE_BASE
+
 #include <iostream>
 
 #include "phonenumbers/default_logger.h"
@@ -47,3 +50,5 @@ void StdoutLogger::WriteLevel() {
 
 }  // namespace phonenumbers
 }  // namespace i18n
+
+#endif  // USE_GOOGLE_BASE
