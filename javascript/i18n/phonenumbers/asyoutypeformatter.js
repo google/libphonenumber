@@ -227,6 +227,9 @@ i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_ = 3;
 
 
 /**
+ * The metadata needed by this class is the same for all regions sharing the
+ * same country calling code. Therefore, we return the metadata for "main"
+ * region for this country calling code.
  * @param {string} regionCode
  * @return {i18n.phonenumbers.PhoneMetadata}
  * @private
@@ -234,8 +237,13 @@ i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_ = 3;
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getMetadataForRegion_ =
     function(regionCode) {
 
+  /** @type {number} */
+  var countryCallingCode = this.phoneUtil_.getCountryCodeForRegion(regionCode);
+  /** @type {string} */
+  var mainCountry =
+      this.phoneUtil_.getRegionCodeForCountryCode(countryCallingCode);
   /** @type {i18n.phonenumbers.PhoneMetadata} */
-  var metadata = this.phoneUtil_.getMetadataForRegion(regionCode);
+  var metadata = this.phoneUtil_.getMetadataForRegion(mainCountry);
   if (metadata != null) {
     return metadata;
   }
@@ -377,7 +385,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
   /** @type {string} */
   var tempTemplate = this.getFormattingTemplate_(numberPattern,
                                                  format.getFormatOrDefault());
-  if (tempTemplate.length > this.nationalNumber_.getLength()) {
+  if (tempTemplate.length > 0) {
     this.formattingTemplate_.append(tempTemplate);
     return true;
   }
@@ -406,6 +414,11 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getFormattingTemplate_ =
   // this match will always succeed
   /** @type {string} */
   var aPhoneNumber = m[0];
+  // No formatting template can be created if the number of digits entered so
+  // far is longer than the maximum the current formatting rule can accommodate.
+  if (aPhoneNumber.length < this.nationalNumber_.getLength()) {
+    return '';
+  }
   // Formats the number according to numberFormat
   /** @type {string} */
   var template = aPhoneNumber.replace(new RegExp(numberPattern, 'g'),
@@ -811,17 +824,20 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     normalizeAndAccrueDigitsAndPlusSign_ = function(nextChar,
                                                     rememberPosition) {
 
+  /** @type {string} */
+  var normalizedChar;
   if (nextChar == i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+    normalizedChar = nextChar;
     this.accruedInputWithoutFormatting_.append(nextChar);
   } else {
-    nextChar = i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS[nextChar];
-    this.accruedInputWithoutFormatting_.append(nextChar);
-    this.nationalNumber_.append(nextChar);
+    normalizedChar = i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS[nextChar];
+    this.accruedInputWithoutFormatting_.append(normalizedChar);
+    this.nationalNumber_.append(normalizedChar);
   }
   if (rememberPosition) {
     this.positionToRemember_ = this.accruedInputWithoutFormatting_.getLength();
   }
-  return nextChar;
+  return normalizedChar;
 };
 
 

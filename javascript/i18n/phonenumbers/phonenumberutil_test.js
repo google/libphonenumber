@@ -215,8 +215,8 @@ function testGetInstanceLoadUSMetadata() {
   assertTrue(metadata.hasNationalPrefix());
   assertEquals(2, metadata.numberFormatCount());
   assertEquals('(\\d{3})(\\d{3})(\\d{4})',
-               metadata.getNumberFormat(0).getPattern());
-  assertEquals('$1 $2 $3', metadata.getNumberFormat(0).getFormat());
+               metadata.getNumberFormat(1).getPattern());
+  assertEquals('$1 $2 $3', metadata.getNumberFormat(1).getFormat());
   assertEquals('[13-9]\\d{9}|2[0-35-9]\\d{8}',
                metadata.getGeneralDesc().getNationalNumberPattern());
   assertEquals('\\d{7}(?:\\d{3})?',
@@ -372,6 +372,16 @@ function testGetExampleNumber() {
   assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US, PNT.MOBILE));
   // CS is an invalid region, so we have no data for it.
   assertNull(phoneUtil.getExampleNumberForType(RegionCode.CS, PNT.MOBILE));
+}
+
+function testConvertAlphaCharactersInNumber() {
+  /** @type {string} */
+  var input = '1800-ABC-DEF';
+  // Alpha chars are converted to digits; everything else is left untouched.
+  /** @type {string} */
+  var expectedOutput = '1800-222-333';
+  assertEquals(expectedOutput,
+      i18n.phonenumbers.PhoneNumberUtil.convertAlphaCharactersInNumber(input));
 }
 
 function testNormaliseRemovePunctuation() {
@@ -1073,7 +1083,6 @@ function testIsValidForRegion() {
   // This number is valid for the Bahamas, but is not a valid US number.
   assertTrue(phoneUtil.isValidNumber(BS_NUMBER));
   assertTrue(phoneUtil.isValidNumberForRegion(BS_NUMBER, RegionCode.BS));
-  assertTrue(phoneUtil.isValidNumberForRegion(BS_NUMBER, 'bs'));
   assertFalse(phoneUtil.isValidNumberForRegion(BS_NUMBER, RegionCode.US));
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var bsInvalidNumber = new i18n.phonenumbers.PhoneNumber();
@@ -1149,7 +1158,6 @@ function testGetRegionCodeForNumber() {
 function testGetCountryCodeForRegion() {
   assertEquals(1, phoneUtil.getCountryCodeForRegion(RegionCode.US));
   assertEquals(64, phoneUtil.getCountryCodeForRegion(RegionCode.NZ));
-  assertEquals(64, phoneUtil.getCountryCodeForRegion('nz'));
   assertEquals(0, phoneUtil.getCountryCodeForRegion(null));
   assertEquals(0, phoneUtil.getCountryCodeForRegion(RegionCode.ZZ));
   // CS is already deprecated so the library doesn't support it.
@@ -1175,7 +1183,9 @@ function testGetNationalDiallingPrefixForRegion() {
 function testIsNANPACountry() {
   assertTrue(phoneUtil.isNANPACountry(RegionCode.US));
   assertTrue(phoneUtil.isNANPACountry(RegionCode.BS));
-  assertTrue(phoneUtil.isNANPACountry('bs'));
+  assertFalse(phoneUtil.isNANPACountry(RegionCode.DE));
+  assertFalse(phoneUtil.isNANPACountry(RegionCode.ZZ));
+  assertFalse(phoneUtil.isNANPACountry(null));
 }
 
 function testIsPossibleNumber() {
@@ -1201,8 +1211,6 @@ function testIsPossibleNumber() {
       phoneUtil.isPossibleNumberString('7031 3000', RegionCode.GB));
   assertTrue(
       phoneUtil.isPossibleNumberString('3331 6005', RegionCode.NZ));
-  assertTrue(
-      phoneUtil.isPossibleNumberString('3331 6005', 'nz'));
 }
 
 function testIsPossibleNumberWithReason() {
@@ -1354,6 +1362,10 @@ function testIsViablePhoneNumber() {
   // Alpha numbers.
   assertTrue(isViable('0800-4-pizza'));
   assertTrue(isViable('0800-4-PIZZA'));
+}
+
+function testIsViablePhoneNumberNonAscii() {
+  var isViable = i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber;
   // Only one or two digits before possible punctuation followed by more digits.
   assertTrue(isViable('1\u300034'));
   assertFalse(isViable('1\u30003+4'));
@@ -1655,7 +1667,6 @@ function testMaybeExtractCountryCode() {
 function testParseNationalNumber() {
   // National prefix attached.
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('033316005', RegionCode.NZ)));
-  assertTrue(NZ_NUMBER.equals(phoneUtil.parse('033316005', 'nz')));
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('33316005', RegionCode.NZ)));
   // National prefix attached and some formatting present.
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('03-331 6005', RegionCode.NZ)));
@@ -1736,6 +1747,9 @@ function testParseWithInternationalPrefixes() {
   // Using '++' at the start.
   assertTrue(US_NUMBER.equals(
       phoneUtil.parse('++1 (650) 253-0000', RegionCode.PL)));
+}
+
+function testParseNonAscii() {
   // Using a full-width plus sign.
   assertTrue(US_NUMBER.equals(
       phoneUtil.parse('\uFF0B1 (650) 253-0000', RegionCode.SG)));
@@ -1750,6 +1764,13 @@ function testParseWithInternationalPrefixes() {
       phoneUtil.parse('\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09' +
                       '\u3000\uFF12\uFF15\uFF13\u30FC\uFF10\uFF10\uFF10\uFF10',
                       RegionCode.SG)));
+
+  // Using a very strange decimal digit range (Mongolian digits).
+  // TODO(user): Support Mongolian digits
+  // assertTrue(US_NUMBER.equals(
+  //     phoneUtil.parse('\u1811 \u1816\u1815\u1810 ' +
+  //                     '\u1812\u1815\u1813 \u1810\u1810\u1810\u1810',
+  //                     RegionCode.US)));
 }
 
 function testParseWithLeadingZero() {

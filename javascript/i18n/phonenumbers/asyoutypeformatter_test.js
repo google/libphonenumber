@@ -47,6 +47,29 @@ function testInvalidRegion() {
   assertEquals('650253', f.inputDigit('3'));
 }
 
+function testTooLongNumberMatchingMultipleLeadingDigits() {
+  // See http://code.google.com/p/libphonenumber/issues/detail?id=36
+  // The bug occurred last time for countries which have two formatting rules
+  // with exactly the same leading digits pattern but differ in length.
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('ZZ');
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+8', f.inputDigit('8'));
+  assertEquals('+81 ', f.inputDigit('1'));
+  assertEquals('+81 9', f.inputDigit('9'));
+  assertEquals('+81 90', f.inputDigit('0'));
+  assertEquals('+81 90 1', f.inputDigit('1'));
+  assertEquals('+81 90 12', f.inputDigit('2'));
+  assertEquals('+81 90 123', f.inputDigit('3'));
+  assertEquals('+81 90 1234', f.inputDigit('4'));
+  assertEquals('+81 90 1234 5', f.inputDigit('5'));
+  assertEquals('+81 90 1234 56', f.inputDigit('6'));
+  assertEquals('+81 90 1234 567', f.inputDigit('7'));
+  assertEquals('+81 90 1234 5678', f.inputDigit('8'));
+  assertEquals('+81 90 12 345 6789', f.inputDigit('9'));
+  assertEquals('+81901234567890', f.inputDigit('0'));
+}
+
 function testAYTFUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
@@ -341,7 +364,7 @@ function testAYTFGBFixedLine() {
 
 function testAYTFGBTollFree() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('gb');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('GB');
   assertEquals('0', f.inputDigit('0'));
   assertEquals('08', f.inputDigit('8'));
   assertEquals('080', f.inputDigit('0'));
