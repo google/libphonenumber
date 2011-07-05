@@ -17,6 +17,28 @@
 #ifndef I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
 #define I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
 
+#ifdef USE_GOOGLE_BASE
+
+namespace i18n {
+namespace phonenumbers {
+
+// If Google base/ is used, LOG() and VLOG() from base/logging.h are used
+// therefore the default logger implementation (StdoutLogger) instantiated in
+// phonenumberutil will actually never be used. Thus provide a dummy
+// implementation of this logger.
+class StdoutLogger : public Logger {
+ public:
+  virtual ~StdoutLogger() {}
+
+  virtual void WriteLevel() {}
+  virtual void WriteMessage(const string& /* msg */) {}
+};
+
+}  // namespace phonenumbers
+}  // namespace i18n
+
+#else
+
 #include <string>
 
 #include "phonenumbers/logger.h"
@@ -103,4 +125,5 @@ class StdoutLogger : public Logger {
 }  // namespace phonenumbers
 }  // namespace i18n
 
+#endif  // USE_GOOGLE_BASE
 #endif  // I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
