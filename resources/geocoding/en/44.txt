@@ -14,8 +14,7 @@
 
 # Originally generated from:
 # http://www.ofcom.org.uk/static/numbering/sabc.txt
-# Tidied Ofcom SABC data (with removal of "National Dialling" and "Expansion"
-# wording and reduction of 4411x and 441x1 data to one line per place name).
+# with multiple corrections and fixes applied (see previous commits).
 
 44113|Leeds
 44114|Sheffield
@@ -330,8 +329,8 @@
 441503|Looe
 441505|Johnstone
 441506|Bathgate
-4415070|Louth/Alford/Spilsby (Horncastle)
-4415071|Louth/Alford/Spilsby (Horncastle)
+4415070|Louth/Alford (Lincs)/Spilsby (Horncastle)
+4415071|Louth/Alford (Lincs)/Spilsby (Horncastle)
 4415072|Spilsby (Horncastle)
 4415073|Louth
 4415074|Alford (Lincs)
