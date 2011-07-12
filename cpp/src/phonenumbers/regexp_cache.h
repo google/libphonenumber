@@ -45,6 +45,7 @@ namespace phonenumbers {
 
 using std::string;
 
+class AbstractRegExpFactory;
 class RegExp;
 
 class RegExpCache {
@@ -56,12 +57,14 @@ class RegExpCache {
 #endif
 
  public:
-  explicit RegExpCache(size_t min_items);
+  explicit RegExpCache(const AbstractRegExpFactory& regexp_factory,
+                       size_t min_items);
   ~RegExpCache();
 
   const RegExp& GetRegExp(const string& pattern);
 
  private:
+  const AbstractRegExpFactory& regexp_factory_;
   base::Lock lock_;  // protects cache_impl_
   scoped_ptr<CacheImpl> cache_impl_;  // protected by lock_
   friend class RegExpCacheTest_CacheConstructor_Test;

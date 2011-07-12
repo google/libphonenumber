@@ -19,8 +19,8 @@
 
 #include <gtest/gtest.h>
 
-#include "phonenumbers/regexp_adapter.h"
 #include "phonenumbers/regexp_cache.h"
+#include "phonenumbers/regexp_factory.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -31,9 +31,10 @@ class RegExpCacheTest : public testing::Test {
  protected:
   static const size_t min_items_ = 2;
 
-  RegExpCacheTest() : cache_(min_items_) {}
+  RegExpCacheTest() : cache_(regexp_factory_, min_items_) {}
   virtual ~RegExpCacheTest() {}
 
+  RegExpFactory regexp_factory_;
   RegExpCache cache_;
 };
 

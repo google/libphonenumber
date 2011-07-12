@@ -31,11 +31,13 @@ namespace phonenumbers {
 
 using base::AutoLock;
 
-RegExpCache::RegExpCache(size_t min_items)
+RegExpCache::RegExpCache(const AbstractRegExpFactory& regexp_factory,
+                         size_t min_items)
+    : regexp_factory_(regexp_factory),
 #ifdef USE_TR1_UNORDERED_MAP
-    : cache_impl_(new CacheImpl(min_items))
+      cache_impl_(new CacheImpl(min_items))
 #else
-    : cache_impl_(new CacheImpl())
+      cache_impl_(new CacheImpl())
 #endif
 {}
 
@@ -52,7 +54,7 @@ const RegExp& RegExpCache::GetRegExp(const string& pattern) {
   CacheImpl::const_iterator it = cache_impl_->find(pattern);
   if (it != cache_impl_->end()) return *it->second;
 
-  const RegExp* regexp = RegExp::Create(pattern);
+  const RegExp* regexp = regexp_factory_.CreateRegExp(pattern);
   cache_impl_->insert(make_pair(pattern, regexp));
   return *regexp;
 }

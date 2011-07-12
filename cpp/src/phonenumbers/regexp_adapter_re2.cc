@@ -15,7 +15,7 @@
 // Author: George Yakovlev
 //         Philippe Liard
 
-#include "phonenumbers/regexp_adapter.h"
+#include "phonenumbers/regexp_adapter_re2.h"
 
 #include <cstddef>
 #include <string>
@@ -149,13 +149,11 @@ class RE2RegExp : public RegExp {
   RE2 utf8_regexp_;
 };
 
-// Implementation of the adapter static factory methods.
-// RE2 RegExp engine is the default implementation.
-RegExpInput* RegExpInput::Create(const string& utf8_input) {
+RegExpInput* RE2RegExpFactory::CreateInput(const string& utf8_input) const {
   return new RE2RegExpInput(utf8_input);
 }
 
-RegExp* RegExp::Create(const string& utf8_regexp) {
+RegExp* RE2RegExpFactory::CreateRegExp(const string& utf8_regexp) const {
   return new RE2RegExp(utf8_regexp);
 }
 

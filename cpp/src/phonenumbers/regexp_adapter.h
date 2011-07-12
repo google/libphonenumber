@@ -15,7 +15,7 @@
 // Author: George Yakovlev
 //         Philippe Liard
 //
-// Regexp adapter to allow a pluggable regexp engine. It has been introduced
+// RegExp adapter to allow a pluggable regexp engine. It has been introduced
 // during the integration of the open-source version of this library into
 // Chromium to be able to use the ICU Regex engine instead of RE2, which is not
 // officially supported on Windows.
@@ -40,11 +40,6 @@ class RegExpInput {
  public:
   virtual ~RegExpInput() {}
 
-  // Creates a new instance of the default RegExpInput implementation. The
-  // deletion of the returned instance is under the responsibility of the
-  // caller.
-  static RegExpInput* Create(const string& utf8_input);
-
   // Converts to a C++ string.
   virtual string ToString() const = 0;
 };
@@ -55,10 +50,6 @@ class RegExpInput {
 class RegExp {
  public:
   virtual ~RegExp() {}
-
-  // Creates a new instance of the default RegExp implementation. The deletion
-  // of the returned instance is under the responsibility of the caller.
-  static RegExp* Create(const string& utf8_regexp);
 
   // Matches string to regular expression, returns true if expression was
   // matched, false otherwise, advances position in the match.
@@ -154,6 +145,21 @@ class RegExp {
                             const string& replacement_string) const {
     return Replace(string_to_process, true, replacement_string);
   }
+};
+
+// Abstract factory class that lets its subclasses instantiate the classes
+// implementing RegExp and RegExpInput.
+class AbstractRegExpFactory {
+ public:
+  virtual ~AbstractRegExpFactory() {}
+
+  // Creates a new instance of RegExpInput. The deletion of the returned
+  // instance is under the responsibility of the caller.
+  virtual RegExpInput* CreateInput(const string& utf8_input) const = 0;
+
+  // Creates a new instance of RegExp. The deletion of the returned instance is
+  // under the responsibility of the caller.
+  virtual RegExp* CreateRegExp(const string& utf8_regexp) const = 0;
 };
 
 }  // namespace phonenumbers

@@ -51,6 +51,7 @@ class NumberFormat;
 class PhoneMetadata;
 class PhoneMetadataCollection;
 class PhoneNumber;
+class RegExp;
 
 // NOTE: A lot of methods in this class require Region Code strings. These must
 // be provided using ISO 3166-1 two-letter country-code format. The list of the
@@ -170,7 +171,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Normalizes a string of characters representing a phone number. This
   // converts wide-ascii and arabic-indic numerals to European numerals, and
   // strips punctuation and alpha characters.
-  static void NormalizeDigitsOnly(string* number);
+  void NormalizeDigitsOnly(string* number) const;
 
   // Gets the national significant number of a phone number. Note a national
   // significant number doesn't contain a national prefix or any formatting.
@@ -610,6 +611,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const PhoneNumber& number,
       const list<string>& region_codes,
       string* region_code) const;
+
+  // Strips the IDD from the start of the number if present. Helper function
+  // used by MaybeStripInternationalPrefixAndNormalize.
+  bool ParsePrefixAsIdd(const RegExp& idd_pattern, string* number) const;
 
   void Normalize(string* number) const;
   PhoneNumber::CountryCodeSource MaybeStripInternationalPrefixAndNormalize(

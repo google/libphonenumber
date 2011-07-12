@@ -167,6 +167,9 @@ set (
 
 # Add regexp engine sources. ICU is used by default.
 if (${USE_RE2} STREQUAL "ON")
+  # Add a flag to select the right regexp factory implementation used by
+  # regexp_factory.h and regexp_adapter_test.cc.
+  add_definitions (-DUSE_RE2)
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_re2.cc")
 else ()
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_icu.cc")

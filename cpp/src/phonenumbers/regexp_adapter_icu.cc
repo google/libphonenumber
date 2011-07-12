@@ -15,7 +15,7 @@
 // Author: George Yakovlev
 //         Philippe Liard
 
-#include "phonenumbers/regexp_adapter.h"
+#include "phonenumbers/regexp_adapter_icu.h"
 
 #include <string>
 
@@ -197,11 +197,11 @@ class IcuRegExp : public RegExp {
   DISALLOW_COPY_AND_ASSIGN(IcuRegExp);
 };
 
-RegExpInput* RegExpInput::Create(const string& utf8_input) {
+RegExpInput* ICURegExpFactory::CreateInput(const string& utf8_input) const {
   return new IcuRegExpInput(utf8_input);
 }
 
-RegExp* RegExp::Create(const string& utf8_regexp) {
+RegExp* ICURegExpFactory::CreateRegExp(const string& utf8_regexp) const {
   return new IcuRegExp(utf8_regexp);
 }
 

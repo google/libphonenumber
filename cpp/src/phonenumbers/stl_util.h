@@ -36,6 +36,15 @@ void STLDeleteContainerPairSecondPointers(const ForwardIterator& begin,
   }
 }
 
+// Deletes the pointers contained in the provided container.
+template <typename T>
+void STLDeleteElements(T* container) {
+  for (typename T::iterator it = container->begin(); it != container->end();
+       ++it) {
+    delete *it;
+  }
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
 
