@@ -72,7 +72,7 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Invoke Protocol Buffers compiler to generate PhoneMetadata.java. -->
+      <!-- Invoke Protocol Buffers compiler to generate Phonemetadata.java. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>

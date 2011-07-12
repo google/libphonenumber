@@ -53,6 +53,8 @@ public class BuildMetadataCppFromXml extends Command {
   private static final Set<String> METADATA_TYPES =
       new HashSet<String>(Arrays.asList("metadata", "test_metadata", "lite_metadata"));
 
+  private static final int COPYRIGHT_YEAR = 2011;
+
   /**
    * Package private setter used to inject the binary stream for testing purpose.
    */
@@ -124,9 +126,9 @@ public class BuildMetadataCppFromXml extends Command {
    *   const void* metadata_get();
    * </pre>
    */
-  private void emitHeader() {
+  private void emitHeader() throws IOException {
     final PrintWriter pw = new PrintWriter(headerFileOutputStream);
-    pw.write(CopyrightNotice.TEXT);
+    CopyrightNotice.writeTo(pw, COPYRIGHT_YEAR);
     final String guardName = "I18N_PHONENUMBERS_METADATA_H_";
     pw.println("#ifndef " + guardName);
     pw.println("#define " + guardName);
@@ -179,7 +181,7 @@ public class BuildMetadataCppFromXml extends Command {
    */
   private void emitImplementation() throws IOException {
     final PrintWriter pw = new PrintWriter(implFileOutputStream);
-    pw.write(CopyrightNotice.TEXT);
+    CopyrightNotice.writeTo(pw, COPYRIGHT_YEAR);
     pw.println("#include \"phonenumbers/metadata.h\"");
     pw.println();
 

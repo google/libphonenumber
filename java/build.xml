@@ -52,7 +52,6 @@
       <arg value="GenerateAreaCodeData"/>
       <arg value="../resources/geocoding/"/>
       <arg value="src/com/google/i18n/phonenumbers/geocoding/data"/>
-      <arg value="false"/> <!-- Not for testing. -->
     </exec>
   </target>
 
@@ -63,15 +62,41 @@
       <arg value="GenerateAreaCodeData"/>
       <arg value="../resources/test/geocoding/"/>
       <arg value="test/com/google/i18n/phonenumbers/geocoding/testing_data"/>
-      <arg value="false"/> <!-- Not for testing. -->
+    </exec>
+  </target>
+
+  <target name="build-js-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="BuildMetadataJsonFromXml"/>
+      <arg value="../resources/PhoneNumberMetaData.xml"/>
+      <arg value="../javascript/i18n/phonenumbers/metadata.js"/>
+    </exec>
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="BuildMetadataJsonFromXml"/>
+      <arg value="../resources/PhoneNumberMetaData.xml"/>
+      <arg value="../javascript/i18n/phonenumbers/metadatalite.js"/>
+      <arg value="true"/> <!-- Lite metadata. -->
+    </exec>
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="BuildMetadataJsonFromXml"/>
+      <arg value="../resources/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="../javascript/i18n/phonenumbers/metadatafortesting.js"/>
     </exec>
   </target>
 
   <target name="compile" description="Compile Java source."
           depends="build-metadata,build-geo-data">
     <mkdir dir="${classes.dir}"/>
-    <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
-    <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath" debug="on"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dir}"
+           classpathref="classpath" includeAntRuntime="false"/>
+    <javac srcdir="${test.dir}" destdir="${classes.dir}"
+           classpathref="classpath" debug="on" includeAntRuntime="false"/>
   </target>
 
   <target name="jar" depends="compile">
@@ -81,7 +106,6 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
         <exclude name="**/BuildMetadata*"/>
-        <exclude name="**/JSArrayBuilder*"/>
         <exclude name="**/geocoding/*"/>
       </fileset>
       <fileset dir="${src.dir}">
@@ -125,7 +149,7 @@
     <junit printsummary="yes">
       <classpath refid="test.classpath"/>
       <formatter type="xml"/>
-      <batchtest fork="no" todir="${report.dir}">
+      <batchtest fork="yes" todir="${report.dir}">
         <fileset dir="${test.dir}" includes="**/*Test.java"/>
       </batchtest>
     </junit>

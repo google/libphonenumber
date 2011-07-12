@@ -27,26 +27,8 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!-- Create a directory called 'generated'. -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>create-generated-directory</id>
-            <phase>generate-sources</phase>
-            <configuration>
-              <tasks>
-                <mkdir dir="generated"/>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Add generated/ to the source directories. -->
+      <!-- Add ../../../java/src/ to make Phonemetadata.java available to the source
+           directories. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -60,33 +42,11 @@
             </goals>
             <configuration>
               <sources>
-                <source>generated/</source>
+                <source>../../../java/src/</source>
               </sources>
             </configuration>
           </execution>
         </executions>
-      </plugin>
-      <!-- Invoke Protocol Buffers compiler to generate PhoneMetadata.java. -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2</version>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <executable>protoc</executable>
-          <arguments>
-            <argument>--java_out=generated</argument>
-            <argument>../../../resources/phonemetadata.proto</argument>
-            <argument>--proto_path=../../../resources</argument>
-          </arguments>
-        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -97,11 +57,6 @@
       <artifactId>junit</artifactId>
       <version>4.8.1</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.4.0a</version>
     </dependency>
   </dependencies>
 

@@ -470,7 +470,7 @@ public class AsYouTypeFormatter {
     nationalNumber.setLength(0);
     nationalNumber.append(numberWithoutCountryCallingCode);
     String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
-    if (newRegionCode != defaultCountry) {
+    if (!newRegionCode.equals(defaultCountry)) {
       currentMetaData = getMetadataForRegion(newRegionCode);
     }
     String countryCodeString = Integer.toString(countryCode);

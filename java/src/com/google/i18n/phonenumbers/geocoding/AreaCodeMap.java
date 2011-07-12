@@ -185,7 +185,7 @@ public class AreaCodeMap implements Externalizable {
   private int binarySearch(int start, int end, long value) {
     int current = 0;
     while (start <= end) {
-      current = (start + end) / 2;
+      current = (start + end) >>> 1;
       int currentValue = areaCodeMapStorage.getPrefix(current);
       if (currentValue == value) {
         return current;

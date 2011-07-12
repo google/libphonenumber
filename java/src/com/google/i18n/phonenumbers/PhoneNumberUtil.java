@@ -2346,7 +2346,7 @@ public class PhoneNumberUtil {
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
-   *     isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber) for more details.
+   *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
    */
   public MatchType isNumberMatch(String firstNumber, String secondNumber) {
     try {
@@ -2384,7 +2384,7 @@ public class PhoneNumberUtil {
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
-   *     isNumberMatch(PhoneNumber firstNumber, PhoneNumber secondNumber) for more details.
+   *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
    */
   public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber) {
     // First see if the second number has an implicit country calling code, by attempting to parse

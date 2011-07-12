@@ -702,7 +702,7 @@ public class PhoneNumberMatcherTest extends TestCase {
    * Small class that holds the context of the number we are testing against. The test will
    * insert the phone number to be found between leadingText and trailingText.
    */
-  private class NumberContext {
+  private static class NumberContext {
     final String leadingText;
     final String trailingText;
 

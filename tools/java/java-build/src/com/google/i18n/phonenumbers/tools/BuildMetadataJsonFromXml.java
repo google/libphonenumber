@@ -72,6 +72,8 @@ public class BuildMetadataJsonFromXml extends Command {
       " * @type {Object.<string, Array>}\n" +
       " */\n";
 
+  private static final int COPYRIGHT_YEAR = 2010;
+
   @Override
   public String getCommandName() {
     return "BuildMetadataJsonFromXml";
@@ -97,7 +99,7 @@ public class BuildMetadataJsonFromXml extends Command {
 
       BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 
-      writer.write(CopyrightNotice.TEXT);
+      CopyrightNotice.writeTo(writer, COPYRIGHT_YEAR, true);
       Formatter formatter = new Formatter(writer);
       formatter.format(FILE_OVERVIEW, inputFile);
 
@@ -116,7 +118,7 @@ public class BuildMetadataJsonFromXml extends Command {
       writer.flush();
       writer.close();
     } catch (Exception e) {
-      System.err.println(HELP_MESSAGE);
+      e.printStackTrace();
       return false;
     }
     return true;

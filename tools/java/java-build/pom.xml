@@ -49,7 +49,7 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!-- Add ../../../java/src/ to make PhoneMetadata.java available to the source
+      <!-- Add ../../../java/src/ to make Phonemetadata.java available to the source
            directories. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

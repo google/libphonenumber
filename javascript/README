@@ -33,26 +33,17 @@ project:
     have changed:
   a.  Manually update the .pb.js files with the changes of the .proto files.
   b.  Manually update the toJsArray() Java methods in
-      java/resources/com/google/i18n/phonenumbers/BuildMetadataJsonFromXml.java
+      tools/java/java-build/src/com/google/i18n/phonenumbers/tools/BuildMetadataJsonFromXml.java
+  c.  Build tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar
+      by running:
+      mvn -f tools/java/java-build/pom.xml package
 
 2.  If the phone number metadata in the XML format has changed
     (resources/PhoneNumberMetaData.xml)
     run the following commands to regenerate metadata.js and
     metadatafortesting.js:
 
-    ant -f java/build.xml
-    java -cp java/build/classes \
-      com.google.i18n.phonenumbers.BuildMetadataJsonFromXml \
-      resources/PhoneNumberMetaData.xml \
-      javascript/i18n/phonenumbers/metadata.js false
-    java -cp java/build/classes \
-      com.google.i18n.phonenumbers.BuildMetadataJsonFromXml \
-      resources/PhoneNumberMetaData.xml \
-      javascript/i18n/phonenumbers/metadatalite.js true
-    java -cp java/build/classes \
-      com.google.i18n.phonenumbers.BuildMetadataJsonFromXml \
-      resources/PhoneNumberMetaDataForTesting.xml \
-      javascript/i18n/phonenumbers/metadatafortesting.js false
+    ant -f java/build.xml build-js-metadata
 
 3.  Manually port any changes of the Java code to the JavaScript code:
       PhoneNumberUtil.java => phonenumberutil.js

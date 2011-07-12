@@ -46,7 +46,7 @@ public class RegexCache {
     return cache.containsKey(regex);
   }
 
-  private class LRUCache<K, V> {
+  private static class LRUCache<K, V> {
     // LinkedHashMap offers a straightforward implementation of LRU cache.
     private LinkedHashMap<K, V> map;
     private int size;

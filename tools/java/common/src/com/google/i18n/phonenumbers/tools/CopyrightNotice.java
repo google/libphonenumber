@@ -16,7 +16,9 @@
 
 package com.google.i18n.phonenumbers.tools;
 
-import java.util.Calendar;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Formatter;
 
 /**
  * Class containing the Apache copyright notice used by code generators.
@@ -25,9 +27,15 @@ import java.util.Calendar;
  */
 public class CopyrightNotice {
 
-  public static final String TEXT =
-    "/*\n" +
-    " * Copyright (C) " + Calendar.getInstance().get(Calendar.YEAR) + " Google Inc.\n" +
+  private static final String TEXT_OPENING =
+    "/*\n";
+
+  private static final String TEXT_OPENING_FOR_JAVASCRIPT =
+    "/**\n" +
+    " * @license\n";
+
+  private static final String TEXT =
+    " * Copyright (C) %d Google Inc.\n" +
     " *\n" +
     " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
     " * you may not use this file except in compliance with the License.\n" +
@@ -40,5 +48,19 @@ public class CopyrightNotice {
     " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
     " * See the License for the specific language governing permissions and\n" +
     " * limitations under the License.\n" +
-    " */\n";
+    " */\n\n";
+
+  static final void writeTo(Writer writer, int year) throws IOException {
+    writeTo(writer, year, false);
+  }
+
+  static final void writeTo(Writer writer, int year, boolean isJavascript) throws IOException {
+    if (isJavascript) {
+      writer.write(TEXT_OPENING_FOR_JAVASCRIPT);
+    } else {
+      writer.write(TEXT_OPENING);
+    }
+    Formatter formatter = new Formatter(writer);
+    formatter.format(TEXT, year);
+  }
 }

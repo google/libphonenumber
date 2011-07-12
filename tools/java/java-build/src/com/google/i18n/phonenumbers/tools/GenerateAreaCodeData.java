@@ -57,8 +57,6 @@ public class GenerateAreaCodeData extends Command {
   private final File inputPath;
   // The path to the output directory.
   private final File outputPath;
-  // Whether the data is generated for testing.
-  private final boolean forTesting;
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
@@ -68,10 +66,9 @@ public class GenerateAreaCodeData extends Command {
   public GenerateAreaCodeData() {
     inputPath = null;
     outputPath = null;
-    forTesting = false;
   }
 
-  public GenerateAreaCodeData(File inputPath, File outputPath, boolean forTesting)
+  public GenerateAreaCodeData(File inputPath, File outputPath)
       throws IOException {
     if (!inputPath.isDirectory()) {
       throw new IOException("The provided input path does not exist: " +
@@ -88,7 +85,6 @@ public class GenerateAreaCodeData extends Command {
     }
     this.inputPath = inputPath;
     this.outputPath = outputPath;
-    this.forTesting = forTesting;
   }
 
   /**
@@ -146,7 +142,7 @@ public class GenerateAreaCodeData extends Command {
     objectOutputStream.flush();
   }
 
-  private class Pair<A, B> {
+  private static class Pair<A, B> {
     public final A first;
     public final B second;
 
@@ -284,16 +280,14 @@ public class GenerateAreaCodeData extends Command {
   public boolean start() {
     String[] args = getArgs();
 
-    if (args.length != 4) {
+    if (args.length != 3) {
       LOGGER.log(Level.SEVERE,
-                 "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output/directory" +
-                 " forTesting");
+                 "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output/directory");
       return false;
     }
     try {
       GenerateAreaCodeData generateAreaCodeData =
-          new GenerateAreaCodeData(new File(args[1]), new File(args[2]),
-                                   Boolean.parseBoolean(args[3]));
+          new GenerateAreaCodeData(new File(args[1]), new File(args[2]));
       generateAreaCodeData.run();
     } catch (IOException e) {
       LOGGER.log(Level.SEVERE, e.getMessage());

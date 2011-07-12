@@ -245,7 +245,6 @@
                     <argument>GenerateAreaCodeData</argument>
                     <argument>../resources/geocoding</argument>
                     <argument>src/com/google/i18n/phonenumbers/geocoding/data</argument>
-                    <argument>false</argument> <!-- Not for testing. -->
                   </arguments>
                 </configuration>
               </execution>
@@ -263,7 +262,6 @@
                     <argument>GenerateAreaCodeData</argument>
                     <argument>../resources/test/geocoding</argument>
                     <argument>test/com/google/i18n/phonenumbers/geocoding/testing_data</argument>
-                    <argument>true</argument> <!-- For testing. -->
                   </arguments>
                 </configuration>
               </execution>
