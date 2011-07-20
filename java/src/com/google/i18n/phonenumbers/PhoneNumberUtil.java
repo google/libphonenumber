@@ -1592,7 +1592,7 @@ public class PhoneNumberUtil {
    * @return  true if regionCode is one of the regions under NANPA
    */
   public boolean isNANPACountry(String regionCode) {
-    return regionCode != null && nanpaRegions.contains(regionCode);
+    return nanpaRegions.contains(regionCode);
   }
 
   /**
@@ -1712,8 +1712,8 @@ public class PhoneNumberUtil {
    * the region where the number could be dialed from. It provides a more lenient check than
    * {@link #isValidNumber}. See {@link #isPossibleNumber(PhoneNumber)} for details.
    *
-   * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber
-   * number)} with the resultant PhoneNumber object.
+   * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber)}
+   * with the resultant PhoneNumber object.
    *
    * @param number  the number that needs to be checked, in the form of a string
    * @param regionDialingFrom  the region that we are expecting the number to be dialed from.

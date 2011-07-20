@@ -1,0 +1,79 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from: http://en.wikipedia.org/wiki/+84
+
+8420|Lao Cai province
+84210|Phu Tho province
+84211|Vinh Phuc province
+84218|Hoa Binh province
+84219|Ha Giang province
+8422|Son La province
+84230|Dien Bien province
+84231|Lai Chau province
+84240|Bac Giang province
+84241|Bac Ninh province
+8425|Lang Son province
+8426|Cao Bang province
+8427|Tuyen Quang province
+84280|Thai Nguyen province
+84281|Bac Kan province
+8429|Yen Bai province
+8430|Ninh Binh province
+8431|Hai Phong
+84320|Hai Duong province
+84321|Hung Yen province
+8433|Quang Ninh province
+84350|Nam Dinh province
+84351|Ha Nam province
+8436|Thai Binh province
+8437|Thanh Hoa province
+8438|Nghe An province
+8439|Ha Tinh province
+844|Hanoi
+84500|Dak Lak province
+84501|Dak Nong province
+84510|Quang Nam province
+84511|Da Nang
+8452|Quang Binh province
+8453|Quang Tri province
+8454|Thua Thien-Hue province
+8455|Quang Ngai province
+8456|Binh Dinh province
+8457|Phu Yen province
+8458|Khanh Hoa province
+8459|Gia Lai province
+8460|Kon Tum province
+8461|Dong Nai province
+8462|Binh Thuan province
+8463|Lam Dong province
+8464|Ba Ria-Vung Tau province
+84650|Binh Duong province
+84651|Binh Phuoc province
+8466|Tay Ninh province
+8467|Dong Thap province
+8468|Ninh Thuan province
+8470|Vinh Long province
+84710|Can Tho
+84711|Hau Giang province
+8472|Long An province
+8473|Tien Giang province
+8474|Tra Vinh province
+8475|Ben Tre province
+8476|An Giang province
+8477|Kien Giang province
+84780|Ca Mau province
+84781|Bac Lieu province
+8479|Soc Trang province
+848|Ho Chi Minh City

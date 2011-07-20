@@ -1,0 +1,80 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from: http://en.wikipedia.org/wiki/+355
+
+355211|Koplik
+355212|Pukë
+355213|Bajram Curri
+355214|Krumë
+355215|Lezhë
+355216|Rrëshen
+355217|Burrel
+355218|Peshkopi
+355219|Bulqizë
+35522|Shkodër
+35524|Kukës
+355261|Vau-Dejës
+355271|Fushë-Arrëz
+355284|Rubik
+355287|Klos
+355311|Kuçovë
+355312|Çorovodë
+355313|Ballsh
+35532|Berat
+35533|Vlorë
+35534|Fier
+35535|Lushnje
+355361|Ura Vajgurore
+355368|Poliçan
+355371|Divjakë
+355381|Patos
+355382|Roskovec
+355391|Orikum
+355392|Selenicë
+355393|Himarë
+3554|Tirana
+35547|Kamëz/Vorë
+355511|Kruje
+355512|Peqin
+355513|Gramsh
+355514|Librazhd
+35552|Durrës
+35553|Laç
+35554|Elbasan
+35555|Kavajë
+355561|Mamurras
+355563|Fushë-Krujë
+355571|Shijak
+355572|Manëz
+355573|Sukth
+355577|Rrogozhinë
+355581|Cërrik
+355582|Belsh
+355591|Përrenjas
+355811|Bilisht
+355812|Ersekë
+355813|Përmet
+355814|Tepelenë
+355815|Delvinë
+35582|Korçë
+35583|Pogradec
+35584|Gjirokastër
+35585|Sarandë
+355861|Maliq
+355871|Leskovik
+355875|Këlcyrë
+355881|Libohovë
+355885|Memaliaj
+355891|Konispol

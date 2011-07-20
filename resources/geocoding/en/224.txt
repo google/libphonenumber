@@ -1,0 +1,37 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from: http://en.wikipedia.org/wiki/+224
+
+22424|Fria
+22431|Boké
+22432|Kamsar
+22441|Conakry
+22442|Sangoya
+22443|Conakry
+22445|Conakry
+22446|Boussoura
+22447|Conakry
+22451|Labé
+22453|Pita
+22461|Kindia
+224613|Télimélé
+22468|Mamou
+22469|Dalaba
+22471|Kankan
+22481|Faranah
+22491|N'Zérékoré
+22494|Macenta
+22497|Guéckédou
+22498|Kissidougou

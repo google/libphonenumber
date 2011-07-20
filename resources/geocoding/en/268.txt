@@ -1,0 +1,52 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from: http://en.wikipedia.org/wiki/+268
+
+268207|Nhlangano
+268217|Hlathikulu
+268227|Hluthi
+268237|Mahamba
+268303|Nsoko
+268312|Mhlume
+268313|Mhlume
+268322|Tshaneni
+268323|Tshaneni
+268333|Mpaka
+268343|Siteki
+268344|Siphofaneni
+268363|Big Bend
+268364|Big Bend
+268373|Maphiveni
+268382|Simunye
+268383|Simunye
+268404|Mbabane
+268405|Mbabane
+268406|Mbabane
+268416|Lobamba
+268422|Sidwashini
+268437|Pigg's Peak
+268442|Ngwenya
+268452|Bhunya
+268453|Bhunya
+268467|Mhlambanyatsi
+268472|Mahwalala
+268482|Siphocosini
+268505|Manzini
+268506|Manzini
+268517|Matsapha
+268518|Matsapha
+268528|Malkerns
+268538|Mankayane
+268548|Ludzeludze
