@@ -68,14 +68,14 @@ public class PhoneNumberParserServlet extends HttpServlet {
           if (fieldName.equals("phoneNumber")) {
             phoneNumber = Streams.asString(in, "UTF-8");
           } else if (fieldName.equals("defaultCountry")) {
-            defaultCountry = Streams.asString(in);
+            defaultCountry = Streams.asString(in).toUpperCase();
           } else if (fieldName.equals("languageCode")) {
-            String languageEntered = Streams.asString(in);
+            String languageEntered = Streams.asString(in).toLowerCase();
             if (languageEntered.length() > 0) {
               languageCode = languageEntered;
             }
           } else if (fieldName.equals("regionCode")) {
-            regionCode = Streams.asString(in);
+            regionCode = Streams.asString(in).toUpperCase();
           }
         } else {
           try {
@@ -92,18 +92,24 @@ public class PhoneNumberParserServlet extends HttpServlet {
     StringBuilder output;
     if (fileContents.length() == 0) {
       output = getOutputForSingleNumber(phoneNumber, defaultCountry, languageCode, regionCode);
-      resp.setContentType("text/plain");
+      resp.setContentType("text/html");
       resp.setCharacterEncoding("UTF-8");
-      resp.getWriter().println("Phone Number entered: " + phoneNumber);
-      resp.getWriter().println("defaultCountry entered: " + defaultCountry);
+      resp.getWriter().println("<html><head>");
+      resp.getWriter().println(
+          "<link type=\"text/css\" rel=\"stylesheet\" href=\"/stylesheets/main.css\" />");
+      resp.getWriter().println("</head>");
+      resp.getWriter().println("<body>");
+      resp.getWriter().println("Phone Number entered: " + phoneNumber + "<br>");
+      resp.getWriter().println("defaultCountry entered: " + defaultCountry + "<br>");
       resp.getWriter().println(
           "Language entered: " + languageCode +
-              (regionCode.length() == 0 ? "" : " (" + regionCode + ")"));
+              (regionCode.length() == 0 ? "" : " (" + regionCode + ")" + "<br>"));
     } else {
       output = getOutputForFile(defaultCountry, fileContents);
       resp.setContentType("text/html");
     }
     resp.getWriter().println(output);
+    resp.getWriter().println("</body></html>");
   }
 
   private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
@@ -145,6 +151,13 @@ public class PhoneNumberParserServlet extends HttpServlet {
     return output;
   }
 
+  private void appendLine(String title, String data, StringBuilder output) {
+    output.append("<TR>");
+    output.append("<TH>").append(title).append("</TH>");
+    output.append("<TD>").append(data.length() > 0 ? data : "&nbsp;").append("</TD>");
+    output.append("</TR>");
+  }
+
   /**
    * The defaultCountry here is used for parsing phoneNumber. The languageCode and regionCode are
    * used to specify the language used for displaying the area descriptions generated from phone
@@ -155,49 +168,81 @@ public class PhoneNumberParserServlet extends HttpServlet {
     StringBuilder output = new StringBuilder();
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
-      output.append("\n\n****Parsing Result:****");
-      output.append("\ncountry_code: ").append(number.getCountryCode());
-      output.append("\nnational_number: ").append(number.getNationalNumber());
-      output.append("\nextension:").append(number.getExtension());
-      output.append("\ncountry_code_source: ").append(number.getCountryCodeSource());
-      output.append("\nitalian_leading_zero: ").append(number.isItalianLeadingZero());
-      output.append("\nraw_input: ").append(number.getRawInput());
+      output.append("<DIV>");
+      output.append("<TABLE border=1>");
+      output.append("<TR><TD colspan=2>Parsing Result</TD></TR>");
 
-      output.append("\n\n****Validation Results:****");
+      appendLine("country_code", Integer.toString(number.getCountryCode()), output);
+      appendLine("national_number", Long.toString(number.getNationalNumber()), output);
+      appendLine("extension", number.getExtension(), output);
+      appendLine("country_code_source", number.getCountryCodeSource().toString(), output);
+      appendLine("italian_leading_zero", Boolean.toString(number.isItalianLeadingZero()), output);
+      appendLine("raw_input", number.getRawInput(), output);
+      output.append("</TABLE>");
+      output.append("</DIV>");
+
       boolean isNumberValid = phoneUtil.isValidNumber(number);
-      output.append("\nResult from isValidNumber(): ").append(isNumberValid);
-      output.append("\nResult from isValidNumberForRegion(): ").append(
-          phoneUtil.isValidNumberForRegion(number, defaultCountry));
-      output.append("\nPhone Number region: ").append(phoneUtil.getRegionCodeForNumber(number));
-      output.append("\nResult from isPossibleNumber(): ").append(
-          phoneUtil.isPossibleNumber(number));
-      output.append("\nResult from getNumberType(): ").append(phoneUtil.getNumberType(number));
 
-      output.append("\n\n****Formatting Results:**** ");
-      output.append("\nE164 format: ").append(
-          isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.E164) : "invalid");
-      output.append("\nOriginal format: ").append(
-          phoneUtil.formatInOriginalFormat(number, defaultCountry));
-      output.append("\nInternational format: ").append(
-          isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid");
-      output.append("\nNational format: ").append(
-          phoneUtil.format(number, PhoneNumberFormat.NATIONAL));
-      output.append("\nOut-of-country format from US: ").append(
-          isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "US") : "invalid");
-      output.append("\n\n****AsYouTypeFormatter Results****");
+      output.append("<DIV>");
+      output.append("<TABLE border=1>");
+      output.append("<TR><TD colspan=2>Validation Results</TD></TR>");
+      appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
+      appendLine(
+          "Result from isValidNumberForRegion()", 
+          Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
+          output);
+      appendLine("Phone Number region", phoneUtil.getRegionCodeForNumber(number), output);
+      appendLine("Result from isPossibleNumber()",
+                 Boolean.toString(phoneUtil.isPossibleNumber(number)), output);
+      appendLine("Result from getNumberType()", phoneUtil.getNumberType(number).toString(), output);
+      output.append("</TABLE>");
+      output.append("</DIV>");
+
+      output.append("<DIV>");
+      output.append("<TABLE border=1>");
+      output.append("<TR><TD colspan=2>Formatting Results</TD></TR>");
+      appendLine("E164 format",
+                 isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.E164) : "invalid",
+                 output);
+      appendLine("Original format",
+                 phoneUtil.formatInOriginalFormat(number, defaultCountry), output);
+      appendLine(
+          "International format",
+          isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid",
+          output);
+      appendLine("National format", phoneUtil.format(number, PhoneNumberFormat.NATIONAL), output);
+      appendLine(
+          "Out-of-country format from US",
+          isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "US") : "invalid",
+          output);
+      output.append("</TABLE>");
+      output.append("</DIV>");
+
       AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(defaultCountry);
       int rawNumberLength = phoneNumber.length();
+      output.append("<DIV>");
+      output.append("<TABLE border=1>");
+      output.append("<TR><TD colspan=2>AsYouTypeFormatter Results</TD></TR>");
       for (int i = 0; i < rawNumberLength; i++) {
         // Note this doesn't handle supplementary characters, but it shouldn't be a big deal as
         // there are no dial-pad characters in the supplementary range.
         char inputChar = phoneNumber.charAt(i);
-        output.append("\nChar entered: ").append(inputChar).append(" Output: ")
-            .append(formatter.inputDigit(inputChar));
+        appendLine("Char entered: '" + inputChar + "' Output: ",
+                   formatter.inputDigit(inputChar), output);
       }
-      output.append("\n\n****PhoneNumberOfflineGeocoder Results****");
-      output.append("\n" +
+      output.append("</TABLE>");
+      output.append("</DIV>");
+
+      output.append("<DIV>");
+      output.append("<TABLE border=1>");
+      output.append("<TR><TD colspan=2>PhoneNumberOfflineGeocoder Results</TD></TR>");
+      appendLine(
+          "Location", 
           PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
-              number, new Locale(languageCode, regionCode)));
+              number, new Locale(languageCode, regionCode)),
+          output);
+      output.append("</TABLE>");
+      output.append("</DIV>");
     } catch (NumberParseException e) {
       output.append(e.toString());
     }
