@@ -24,8 +24,8 @@
 
 #include "base/basictypes.h"
 #include "base/scoped_ptr.h"
-#include "stl_util.h"
-#include "stringutil.h"
+#include "phonenumbers/stl_util.h"
+#include "phonenumbers/stringutil.h"
 
 #ifdef USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"

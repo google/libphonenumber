@@ -286,16 +286,17 @@ target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
 add_dependencies (phonenumber_testing generate-sources ${TEST_METADATA_TARGET})
 
 set (TEST_SOURCES
-  "src/phonenumbers/logger_test.cc"
-  "src/phonenumbers/phonenumberutil_test.cc"
-  "src/phonenumbers/regexp_adapter_test.cc"
-  "src/phonenumbers/regexp_cache_test.cc"
-  "src/phonenumbers/run_tests.cc"
-  "src/phonenumbers/stringutil_test.cc"
-  "src/phonenumbers/utf/unicodetext_test.cc"
+  "test/phonenumbers/logger_test.cc"
+  "test/phonenumbers/phonenumberutil_test.cc"
+  "test/phonenumbers/regexp_adapter_test.cc"
+  "test/phonenumbers/regexp_cache_test.cc"
+  "test/phonenumbers/run_tests.cc"
+  "test/phonenumbers/stringutil_test.cc"
+  "test/phonenumbers/utf/unicodetext_test.cc"
 )
 
 # Build the testing binary.
+include_directories ("test")
 add_executable (libphonenumber_test ${TEST_SOURCES})
 target_link_libraries (
   libphonenumber_test
