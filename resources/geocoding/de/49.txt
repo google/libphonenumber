@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000510001PDFE.pdf
+# http://www.itu.int/oth/T0202000051/en [2010-09-16]
 
 4930|Berlin
 4940|Hamburg

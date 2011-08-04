@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+351
-# http://www.anacom.pt/streaming/2_SFT19set01.pdf?contentId=17316&field=ATTACHED_FILE
+# Generated from:
+# http://www.anacom.pt/streaming/2_SFT19set01.pdf?contentId=17316&field=ATTACHED_FILE [2008-08-27]
+# http://en.wikipedia.org/wiki/+351 [416739453]
 
 35121|Lisboa
 35122|Porto

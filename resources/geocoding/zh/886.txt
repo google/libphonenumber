@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://zh.wikipedia.org/zh-cn/中華民國長途電話區號表
+# http://zh.wikipedia.org/zh-cn/中華民國長途電話區號表 [16772295]
 
 8862|台北
 8863|桃园、新竹、花莲、宜兰

@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://it.wikipedia.org/wiki/Elenco_degli_indicativi_geografici_in_Italia
+# http://it.wikipedia.org/wiki/Elenco_degli_indicativi_geografici_in_Italia [41442199]
 
 3902|Milano
 3906|Roma

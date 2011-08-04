@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Generated from:
+# Internal statistical data (2011-06-01) with later refinements.
+
 1201|New Jersey
 1201200|Jersey City, NJ
 1201209|Jersey City, NJ

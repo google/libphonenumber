@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+51
-# and (identical): http://www.itu.int/oth/T02020000A6/en
+# Generated from:
+# http://www.itu.int/oth/T02020000A6/en [2003-01-27]
+# http://en.wikipedia.org/wiki/+51 [428258284] (identical)
 
 511|Lima/Callao
 5141|Amazonas

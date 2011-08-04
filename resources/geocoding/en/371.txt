@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+371
+# Generated from:
+# http://en.wikipedia.org/wiki/+371 [436140555]
 
 371630|Jelgava
 371631|Tukums

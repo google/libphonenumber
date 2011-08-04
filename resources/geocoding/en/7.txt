@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000AD0001MSWE.doc
+# http://www.itu.int/oth/T02020000AD/en [2009-05-25]
 
 7301|Republic of Buryatia
 7302|Chita

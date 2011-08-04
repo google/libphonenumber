@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Generated from: translation of
+# http://www.itu.int/oth/T0202000072/en [2004-03-01]
+# http://en.wikipedia.org/wiki/+82 [390794641]
+
 822|首爾市
 8231|京畿道
 8232|仁川廣

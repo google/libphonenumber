@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://zh.wikipedia.org/wiki/中華民國長途電話區號表
+# http://zh.wikipedia.org/wiki/中華民國長途電話區號表 [16772295]
 
 8862|臺北
 8863|桃園、新竹、花蓮、宜蘭

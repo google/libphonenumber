@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+233
+# Generated from:
+# http://en.wikipedia.org/wiki/+233 [396210576]
 
 233302|Accra
 233303|Tema

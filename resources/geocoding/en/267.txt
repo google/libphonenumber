@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+267
+# Generated from:
+# http://en.wikipedia.org/wiki/+267 [374748013]
 
 26724|Francistown
 26726|Selebi-Phikwe

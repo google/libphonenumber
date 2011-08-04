@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en
+# http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en [2009-11-06]
 
 4121|Lausanne
 4122|Geneva

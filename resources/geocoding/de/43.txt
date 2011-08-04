@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://www.rtr.at/en/tk/E129/Austrian_Numbering_Plan_2011-03-30.pdf
+# http://www.rtr.at/en/tk/E129/Austrian_Numbering_Plan_2011-03-30.pdf [2011-03-30]
 
 431|Wien
 43316|Graz

@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+370
+# Generated from:
+# http://en.wikipedia.org/wiki/+370 [374911910]
 
 370310|Varėna
 370313|Druskininkai

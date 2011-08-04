@@ -11,9 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://www.mityc.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Presentation_E164_Numbering_Plan_20101118_%20English.pdf
+# http://www.mityc.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Presentation_E164_Numbering_Plan_20101118_%20English.pdf [2011-11-18]
 
 3491|Madrid
 3493|Barcelona

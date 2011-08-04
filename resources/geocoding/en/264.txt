@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+264
+# Generated from:
+# http://en.wikipedia.org/wiki/+264 [429639059]
 
 26461|Windhoek
 264621|Okahandja

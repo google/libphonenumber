@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Originally generated from:
-# http://www.ofcom.org.uk/static/numbering/sabc.txt
+# http://www.ofcom.org.uk/static/numbering/sabc.txt [2011-01-22]
 # with multiple corrections and fixes applied (see previous commits).
 
 44113|Leeds

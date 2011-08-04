@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Generated from:
+# Internal statistical data (2011-06-01)
+
 562|Santiago
 5632|Valparaíso
 5633|Quillota

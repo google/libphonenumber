@@ -11,9 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # Generated from:
-# http://en.wikipedia.org/wiki/%2B90 and http://www.itu.int/oth/T02020000D6/en
+# http://www.itu.int/oth/T02020000D6/en [2009-07-07]
+# http://en.wikipedia.org/wiki/+90 [428576481]
 
 90212|Istanbul (Avrupa)
 90213|Istanbul (Avrupa)

@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from: http://en.wikipedia.org/wiki/+48
+# Generated from:
+# http://en.wikipedia.org/wiki/+48 [424864144]
 
 4812|Kraków
 4813|Krosno

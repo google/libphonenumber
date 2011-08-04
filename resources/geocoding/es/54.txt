@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Generated from:
+# Internal statistical data (2011-06-01)
+
 5411|Ciudad Autónoma de Buenos Aires
 54220|Merlo
 54221|La Plata
