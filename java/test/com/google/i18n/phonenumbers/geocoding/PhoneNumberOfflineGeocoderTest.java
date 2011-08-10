@@ -95,7 +95,7 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
         geocoder.getDescriptionForNumber(KO_NUMBER3, Locale.KOREAN));
   }
 
-  public void testGetDescritionForInvaildNumber() {
+  public void testGetDescriptionForInvalidNumber() {
     assertEquals("", geocoder.getDescriptionForNumber(KO_INVALID_NUMBER, Locale.ENGLISH));
     assertEquals("", geocoder.getDescriptionForNumber(US_INVALID_NUMBER, Locale.ENGLISH));
   }

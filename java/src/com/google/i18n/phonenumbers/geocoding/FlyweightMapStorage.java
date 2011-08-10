@@ -22,8 +22,6 @@ import java.io.ObjectOutput;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -32,7 +30,7 @@ import java.util.TreeSet;
 /**
  * Flyweight area code map storage strategy that uses a table to store unique strings and shorts to
  * store the prefix and description indexes when possible. It is particularly space-efficient when
- * the provided area code map contains a lot of description duplicates.
+ * the provided area code map contains a lot of redundant descriptions.
  *
  * @author Philippe Liard
  */
@@ -47,17 +45,13 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
   // description pool containing all the strings.
   private int descIndexSizeInBytes;
 
-  // Byte buffer of stripped phone number prefixes. A stripped phone number prefix is a phone number
-  // prefix omitting the country code.
   private ByteBuffer phoneNumberPrefixes;
   private ByteBuffer descriptionIndexes;
 
   // Sorted string array of unique description strings.
   private String[] descriptionPool;
 
-  public FlyweightMapStorage(int countryCallingCode, boolean isLeadingZeroPossible) {
-    super(countryCallingCode, isLeadingZeroPossible);
-  }
+  public FlyweightMapStorage() {}
 
   @Override
   public boolean isFlyweight() {
@@ -78,7 +72,7 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
    *
    * @param buffer  the byte buffer to which the value is stored
    * @param wordSize  the number of bytes used to store the provided value
-   * @param index  the index in bytes to which the value is stored
+   * @param index  the index to which the value is stored
    * @param value  the value that is stored assuming it does not require more than the specified
    *    number of bytes.
    */
@@ -98,7 +92,7 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
    *
    * @param buffer  the byte buffer from which the value is read
    * @param wordSize  the number of bytes used to store the value
-   * @param index  the index in bytes where the value is read from
+   * @param index  the index where the value is read from
    *
    * @return  the value read from the buffer
    */
@@ -121,20 +115,16 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
   public void readFromSortedMap(SortedMap<Integer, String> sortedAreaCodeMap) {
     SortedSet<String> descriptionsSet = new TreeSet<String>();
     numOfEntries = sortedAreaCodeMap.size();
-    prefixSizeInBytes = getOptimalNumberOfBytesForValue(stripPrefix(sortedAreaCodeMap.lastKey()));
+    prefixSizeInBytes = getOptimalNumberOfBytesForValue(sortedAreaCodeMap.lastKey());
     phoneNumberPrefixes = ByteBuffer.allocate(numOfEntries * prefixSizeInBytes);
-    Map<Integer, Integer> strippedToUnstrippedPrefixes = new HashMap<Integer, Integer>();
 
     // Fill the phone number prefixes byte buffer, the set of possible lengths of prefixes and the
     // description set.
     int index = 0;
     for (Entry<Integer, String> entry : sortedAreaCodeMap.entrySet()) {
       int prefix = entry.getKey();
-      Reference<Integer> lengthOfPrefixRef = new Reference<Integer>();
-      int strippedPrefix = stripPrefix(prefix, lengthOfPrefixRef);
-      strippedToUnstrippedPrefixes.put(strippedPrefix, prefix);
-      storeWordInBuffer(phoneNumberPrefixes, prefixSizeInBytes, index++, strippedPrefix);
-      possibleLengths.add(lengthOfPrefixRef.get());
+      storeWordInBuffer(phoneNumberPrefixes, prefixSizeInBytes, index++, prefix);
+      possibleLengths.add((int) Math.log10(prefix) + 1);
       descriptionsSet.add(entry.getValue());
     }
 
@@ -147,15 +137,14 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
     // Map the phone number prefixes to the descriptions.
     index = 0;
     for (int i = 0; i < numOfEntries; i++) {
-      int strippedPrefix = readWordFromBuffer(phoneNumberPrefixes, prefixSizeInBytes, i);
-      int prefix = strippedToUnstrippedPrefixes.get(strippedPrefix);
+      int prefix = readWordFromBuffer(phoneNumberPrefixes, prefixSizeInBytes, i);
       String description = sortedAreaCodeMap.get(prefix);
-      int positionIndescriptionPool =
+      int positionInDescriptionPool =
           Arrays.binarySearch(descriptionPool, description, new Comparator<String>() {
             public int compare(String o1, String o2) { return o1.compareTo(o2); }
           });
       storeWordInBuffer(descriptionIndexes, descIndexSizeInBytes, index++,
-                        positionIndescriptionPool);
+                        positionInDescriptionPool);
     }
   }
 
@@ -166,7 +155,7 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
    * @param objectInput  the object input stream from which the value is read
    * @param wordSize  the number of bytes used to store the value read from the stream
    * @param outputBuffer  the byte buffer to which the value is stored
-   * @param index  the index in bytes where the value is stored in the buffer
+   * @param index  the index where the value is stored in the buffer
    * @throws IOException  if an error occurred reading from the object input stream
    */
   private static void readExternalWord(ObjectInput objectInput, int wordSize,

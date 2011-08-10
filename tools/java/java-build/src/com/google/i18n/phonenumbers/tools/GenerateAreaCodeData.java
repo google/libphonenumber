@@ -68,8 +68,7 @@ public class GenerateAreaCodeData extends Command {
     outputPath = null;
   }
 
-  public GenerateAreaCodeData(File inputPath, File outputPath)
-      throws IOException {
+  public GenerateAreaCodeData(File inputPath, File outputPath) throws IOException {
     if (!inputPath.isDirectory()) {
       throw new IOException("The provided input path does not exist: " +
                              inputPath.getAbsolutePath());
@@ -104,11 +103,10 @@ public class GenerateAreaCodeData extends Command {
   /**
    * Converts the text data read from the provided input stream to the Java binary serialization
    * format. The resulting data is written to the provided output stream.
-   *
-   * @VisibleForTesting
    */
+  // @VisibleForTesting
   static void convertData(
-      InputStream input, OutputStream output, int countryCallingCode) throws IOException {
+      InputStream input, OutputStream output) throws IOException {
     SortedMap<Integer, String> areaCodeMapTemp = new TreeMap<Integer, String>();
     BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(
@@ -135,7 +133,7 @@ public class GenerateAreaCodeData extends Command {
       }
     }
     // Build the corresponding area code map and serialize it to the binary format.
-    AreaCodeMap areaCodeMap = new AreaCodeMap(countryCallingCode);
+    AreaCodeMap areaCodeMap = new AreaCodeMap();
     areaCodeMap.readAreaCodeMap(areaCodeMapTemp);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
     areaCodeMap.writeExternal(objectOutputStream);
@@ -194,11 +192,10 @@ public class GenerateAreaCodeData extends Command {
    * Adds a country code/language mapping to the provided map. The country code and language are
    * generated from the provided file name previously used to output the area code/location mappings
    * for the given country.
-   *
-   * @VisibleForTesting
    */
-  static int addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
-                                     File outputAreaCodeMappingsFile) {
+   // @VisibleForTesting
+  static void addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
+                                      File outputAreaCodeMappingsFile) {
     String outputAreaCodeMappingsFileName = outputAreaCodeMappingsFile.getName();
     int indexOfUnderscore = outputAreaCodeMappingsFileName.indexOf('_');
     int countryCode = Integer.parseInt(
@@ -211,14 +208,12 @@ public class GenerateAreaCodeData extends Command {
       availableDataFiles.put(countryCode, languageSet);
     }
     languageSet.add(language);
-    return countryCode;
   }
 
   /**
    * Outputs the binary configuration file mapping country codes to language strings.
-   *
-   * @VisibleForTesting
    */
+   // @VisibleForTesting
   static void outputBinaryConfiguration(SortedMap<Integer, Set<String>> availableDataFiles,
                                         OutputStream outputStream) throws IOException {
     MappingFileProvider mappingFileProvider = new MappingFileProvider();
@@ -234,7 +229,7 @@ public class GenerateAreaCodeData extends Command {
    * @throws IOException
    * @throws FileNotFoundException
    */
-  public void run() throws FileNotFoundException, IOException {
+  public void run() throws IOException {
     List<Pair<File, File>> inputOutputMappings = createInputOutputFileMappings();
     SortedMap<Integer, Set<String>> availableDataFiles = new TreeMap<Integer, Set<String>>();
 
@@ -247,12 +242,14 @@ public class GenerateAreaCodeData extends Command {
         File binaryFile = inputOutputMapping.second;
         fileInputStream = new FileInputStream(textFile);
         fileOutputStream = new FileOutputStream(binaryFile);
-        int countryCallingCode =
-            addConfigurationMapping(availableDataFiles, inputOutputMapping.second);
-        convertData(fileInputStream, fileOutputStream, countryCallingCode);
+        convertData(fileInputStream, fileOutputStream);
+        addConfigurationMapping(availableDataFiles, inputOutputMapping.second);
+      } catch (RuntimeException e) {
+        LOGGER.log(Level.SEVERE,
+                   "Error processing file " + inputOutputMapping.first.getAbsolutePath());
+        throw e;
       } catch (IOException e) {
         LOGGER.log(Level.SEVERE, e.getMessage());
-        continue;
       } finally {
         closeFile(fileInputStream);
         closeFile(fileOutputStream);

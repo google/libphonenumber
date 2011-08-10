@@ -15,95 +15,9 @@
 # Generated from:
 # http://www.itu.int/oth/T0202000051/en [2010-09-16]
 
-4930|Berlin
-4940|Hamburg
-4969|Frankfurt am Main
-4989|München
 49201|Essen
 49202|Wuppertal
 49203|Duisburg
-49208|Oberhausen Rheinland
-49209|Gelsenkirchen
-49211|Düsseldorf
-49212|Solingen
-49214|Leverkusen
-49221|Köln
-49228|Bonn
-49231|Dortmund
-49234|Bochum
-49241|Aachen
-49251|Münster
-49261|Koblenz am Rhein
-49271|Siegen
-49281|Wesel
-49291|Meschede
-49331|Potsdam
-49335|Frankfurt (Oder)
-49340|Dessau Anh
-49341|Leipzig
-49345|Halle Saale
-49351|Dresden
-49355|Cottbus
-49361|Erfurt
-49365|Gera
-49371|Chemnitz Sachsen
-49375|Zwickau
-49381|Rostock
-49385|Schwerin
-49391|Magdeburg
-49395|Neubrandenburg
-49421|Bremen
-49431|Kiel
-49441|Oldenburg (Oldb)
-49451|Lübeck
-49461|Flensburg
-49471|Bremerhaven
-49481|Heide Holstein
-49491|Leer Ostfriesland
-49511|Hannover
-49521|Bielefeld
-49531|Braunschweig
-49541|Osnabrück
-49551|Göttingen
-49561|Kassel
-49571|Minden Westfalen
-49581|Uelzen
-49591|Lingen (Ems)
-49611|Wiesbaden
-49621|Mannheim
-49631|Kaiserslautern
-49641|Giessen
-49651|Trier
-49661|Fulda
-49671|Bad Kreuznach
-49681|Saarbrücken
-49711|Stuttgart
-49721|Karlsruhe
-49731|Ulm Donau
-49741|Rottweil
-49751|Ravensburg
-49761|Freiburg im Breisgau
-49771|Donaueschingen
-49781|Offenburg
-49791|Schwäbisch Hall
-49811|Hallbergmoos
-49821|Augsburg
-49831|Kempten Allgäu
-49841|Ingolstadt Donau
-49851|Passau
-49861|Traunstein
-49871|Landshut
-49881|Weilheim in Oberbayern
-49906|Donauwörth
-49911|Nürnberg
-49921|Bayreuth
-49931|Würzburg
-49941|Regensburg
-49951|Bamberg
-49961|Weiden in der Oberpfalz
-49971|Bad Kissingen
-49981|Ansbach
-49991|Deggendorf
 492041|Bottrop
 492043|Gladbeck
 492045|Bottrop-Kirchhellen
@@ -116,14 +30,19 @@
 492064|Dinslaken
 492065|Duisburg-Rheinhausen
 492066|Duisburg-Homberg
+49208|Oberhausen Rheinland
+49209|Gelsenkirchen
 492102|Ratingen
 492103|Hilden
 492104|Mettmann
+49211|Düsseldorf
+49212|Solingen
 492129|Haan Rheinland
 492131|Neuss
 492132|Meerbusch-Büderich
 492133|Dormagen
 492137|Neuss-Norf
+49214|Leverkusen
 492150|Meerbusch-Lank
 492151|Krefeld
 492152|Kempen
@@ -158,6 +77,7 @@
 492206|Overath
 492207|Kürten-Dürscheid
 492208|Niederkassel
+49221|Köln
 492222|Bornheim Rheinland
 492223|Königswinter
 492224|Bad Honnef
@@ -201,6 +121,7 @@
 492273|Kerpen-Horrem
 492274|Elsdorf Rheinland
 492275|Kerpen-Buir
+49228|Bonn
 492291|Waldbröl
 492292|Windeck Sieg
 492293|Nümbrecht
@@ -217,6 +138,7 @@
 492307|Kamen
 492308|Unna-Hemmerde
 492309|Waltrop
+49231|Dortmund
 492323|Herne
 492324|Hattingen Ruhr
 492325|Wanne-Eickel
@@ -231,6 +153,7 @@
 492337|Hagen-Dahl
 492338|Breckerfeld
 492339|Sprockhövel-Haßlinghausen
+49234|Bochum
 492351|Lüdenscheid
 492352|Altena Westfalen
 492353|Halver
@@ -279,6 +202,7 @@
 492407|Herzogenrath-Kohlscheid
 492408|Aachen-Kornelimünster
 492409|Stolberg-Gressenich
+49241|Aachen
 492421|Düren
 492422|Kreuzau
 492423|Langerwehe
@@ -330,6 +254,7 @@
 492507|Havixbeck
 492508|Drensteinfurt
 492509|Nottuln-Appelhülsen
+49251|Münster
 492520|Wadersloh-Diestedde
 492521|Beckum
 492522|Oelde
@@ -400,6 +325,7 @@
 492606|Winningen Mosel
 492607|Kobern-Gondorf
 492608|Welschneudorf
+49261|Koblenz am Rhein
 492620|Neuhäusel Westerwald
 492621|Lahnstein
 492622|Bendorf am Rhein
@@ -464,6 +390,7 @@
 492695|Insul
 492696|Nohn Eifel
 492697|Blankenheim-Ahrhütte
+49271|Siegen
 492721|Lennestadt
 492722|Attendorn
 492723|Kirchhundem
@@ -509,6 +436,7 @@
 492802|Alpen
 492803|Wesel-Büderich
 492804|Xanten-Marienbaum
+49281|Wesel
 492821|Kleve Niederrhein
 492822|Emmerich
 492823|Goch
@@ -555,6 +483,7 @@
 492903|Meschede-Freienohl
 492904|Bestwig
 492905|Bestwig-Ramsbeck
+49291|Meschede
 492921|Soest
 492922|Werl
 492923|Lippetal-Herzfeld
@@ -602,12 +531,14 @@
 492992|Marsberg
 492993|Marsberg-Canstein
 492994|Marsberg-Westheim
+4930|Berlin
 493301|Oranienburg
 493302|Hennigsdorf
 493303|Birkenwerder
 493304|Velten
 493306|Gransee
 493307|Zehdenick
+49331|Potsdam
 493321|Nauen Brandenburg
 493322|Falkensee
 493327|Werder Havel
@@ -623,6 +554,7 @@
 493342|Neuenhagen bei Berlin
 493344|Bad Freienwalde
 493346|Seelow
+49335|Frankfurt (Oder)
 493361|Fürstenwalde Spree
 493362|Erkner
 493364|Eisenhüttenstadt
@@ -640,6 +572,8 @@
 493391|Neuruppin
 493394|Wittstock Dosse
 493395|Pritzwalk
+49340|Dessau Anh
+49341|Leipzig
 493421|Torgau
 493423|Eilenburg
 493425|Wurzen
@@ -652,6 +586,7 @@
 493445|Naumburg Saale
 493447|Altenburg Thüringen
 493448|Meuselwitz Thüringen
+49345|Halle Saale
 493461|Merseburg Saale
 493462|Bad Dürrenberg
 493464|Sangerhausen
@@ -666,6 +601,7 @@
 493496|Köthen Anhalt
 493501|Pirna
 493504|Dippoldiswalde
+49351|Dresden
 493521|Meissen
 493522|Grossenhain Sachsen
 493523|Coswig bei Dresden
@@ -680,6 +616,7 @@
 493542|Lübbenau Spreewald
 493544|Luckau Brandenburg
 493546|Lübben Spreewald
+49355|Cottbus
 493561|Guben
 493562|Forst Lausitz
 493563|Spremberg
@@ -702,6 +639,7 @@
 493603|Bad Langensalza
 493605|Leinefelde
 493606|Heiligenstadt Heilbad
+49361|Erfurt
 493621|Gotha Thüringen
 493622|Waltershausen Thüringen
 493623|Friedrichroda
@@ -717,6 +655,7 @@
 493643|Weimar Thüringen
 493644|Apolda
 493647|Pößneck
+49365|Gera
 493661|Greiz
 493663|Schleiz
 493671|Saalfeld Saale
@@ -732,6 +671,7 @@
 493691|Eisenach Thüringen
 493693|Meiningen
 493695|Bad Salzungen
+49371|Chemnitz Sachsen
 493721|Meinersdorf
 493722|Limbach-Oberfrohna
 493723|Hohenstein-Ernstthal
@@ -746,6 +686,7 @@
 493741|Plauen
 493744|Auerbach Vogtland
 493745|Falkenstein Vogtland
+49375|Zwickau
 493761|Werdau Sachsen
 493762|Crimmitschau
 493763|Glauchau
@@ -755,6 +696,7 @@
 493772|Schneeberg Erzgebirge
 493773|Johanngeorgenstadt
 493774|Schwarzenberg
+49381|Rostock
 493821|Ribnitz-Damgarten
 493831|Stralsund
 493834|Greifswald
@@ -764,6 +706,7 @@
 493843|Güstrow
 493844|Schwaan
 493847|Sternberg
+49385|Schwerin
 493860|Raben Steinfeld
 493861|Plate
 493863|Crivitz
@@ -784,6 +727,7 @@
 493904|Haldensleben
 493907|Gardelegen
 493909|Klötze Altmark
+49391|Magdeburg
 493921|Burg bei Magdeburg
 493923|Zerbst
 493925|Stassfurt
@@ -798,6 +742,7 @@
 493946|Quedlinburg
 493947|Thale
 493949|Oschersleben Bode
+49395|Neubrandenburg
 493961|Altentreptow
 493962|Penzlin bei Waren
 493963|Woldegk
@@ -817,6 +762,7 @@
 493994|Malchin
 493996|Teterow
 493998|Demmin
+4940|Hamburg
 494101|Pinneberg
 494102|Ahrensburg
 494103|Wedel
@@ -902,6 +848,7 @@
 494207|Oyten
 494208|Grasberg
 494209|Schwanewede
+49421|Bremen
 494221|Delmenhorst
 494222|Ganderkesee
 494223|Ganderkesee-Bookholzberg
@@ -972,6 +919,7 @@
 494305|Westensee
 494307|Raisdorf
 494308|Schwedeneck
+49431|Kiel
 494320|Heidmühlen
 494321|Neumünster
 494322|Bordesholm
@@ -1033,6 +981,7 @@
 494407|Wardenburg
 494408|Hude Oldenburg
 494409|Westerstede-Ocholt
+49441|Oldenburg (Oldb)
 494421|Wilhelmshaven
 494422|Sande Kreis Friesl
 494423|Fedderwarden
@@ -1101,6 +1050,7 @@
 494506|Stockelsdorf-Krumbeck
 494508|Krummesse
 494509|Groß Grönau
+49451|Lübeck
 494521|Eutin
 494522|Plön
 494523|Malente
@@ -1147,6 +1097,7 @@
 494607|Janneby
 494608|Handewitt
 494609|Eggebek
+49461|Flensburg
 494621|Schleswig
 494622|Taarstedt
 494623|Böklund
@@ -1193,6 +1144,7 @@
 494706|Schiffdorf
 494707|Langen-Neuenwalde
 494708|Ringstedt
+49471|Bremerhaven
 494721|Cuxhaven
 494722|Cuxhaven-Altenbruch
 494723|Cuxhaven-Altenwalde
@@ -1253,6 +1205,7 @@
 494804|Nordhastedt
 494805|Schafstedt
 494806|Sarzbüttel
+49481|Heide Holstein
 494821|Itzehoe
 494822|Kellinghusen
 494823|Wilster
@@ -1310,6 +1263,7 @@
 494893|Hohenaspe
 494902|Jemgum-Ditzum
 494903|Wymeer
+49491|Leer Ostfriesland
 494920|Wirdum
 494921|Emden Stadt
 494922|Borkum
@@ -1411,6 +1365,7 @@
 495105|Barsinghausen
 495108|Gehrden Han
 495109|Ronnenberg
+49511|Hannover
 495121|Hildesheim
 495123|Schellerten
 495126|Algermissen
@@ -1484,6 +1439,7 @@
 495207|Schloss Holte-Stukenbrock
 495208|Leopoldshöhe
 495209|Gütersloh-Friedrichsdorf
+49521|Bielefeld
 495221|Herford
 495222|Bad Salzuflen
 495223|Bünde
@@ -1549,6 +1505,7 @@
 495307|Braunschweig-Wenden
 495308|Lehre
 495309|Lehre-Wendhausen
+49531|Braunschweig
 495320|Torfhaus
 495321|Goslar
 495322|Bad Harzburg
@@ -1609,6 +1566,7 @@
 495406|Belm
 495407|Wallenhorst
 495409|Hilter am Teutoburger Wald
+49541|Osnabrück
 495421|Dissen am Teutoburger Wald
 495422|Melle
 495423|Versmold
@@ -1675,6 +1633,7 @@
 495507|Ebergötzen
 495508|Gleichen-Rittmarshausen
 495509|Rosdorf Kreis Göttingen
+49551|Göttingen
 495520|Braunlage
 495521|Herzberg am Harz
 495522|Osterode am Harz
@@ -1728,6 +1687,7 @@
 495607|Fuldatal
 495608|Söhrewald
 495609|Ahnatal
+49561|Kassel
 495621|Bad Wildungen
 495622|Fritzlar
 495623|Edertal
@@ -1788,6 +1748,7 @@
 495705|Petershagen-Windheim
 495706|Porta Westfalica
 495707|Petershagen Weser
+49571|Minden Westfalen
 495721|Stadthagen
 495722|Bückeburg
 495723|Bad Nenndorf
@@ -1831,6 +1792,7 @@
 495806|Barum bei Bad Bevensen
 495807|Altenmedingen
 495808|Gerdau
+49581|Uelzen
 495820|Suhlendorf
 495821|Bad Bevensen
 495822|Ebstorf
@@ -1888,6 +1850,7 @@
 495907|Geeste
 495908|Wietmarschen-Lohne
 495909|Wettrup
+49591|Lingen (Ems)
 495921|Nordhorn
 495922|Bad Bentheim
 495923|Schüttorf
@@ -1999,6 +1962,7 @@
 496107|Kelsterbach
 496108|Mühlheim am Main
 496109|Frankfurt-Bergen-Enkheim
+49611|Wiesbaden
 496120|Aarbergen
 496122|Hofheim-Wallau
 496123|Eltville am Rhein
@@ -2062,6 +2026,7 @@
 496206|Lampertheim
 496207|Wald-Michelbach
 496209|Mörlenbach
+49621|Mannheim
 496220|Wilhelmsfeld
 496221|Heidelberg
 496222|Wiesloch
@@ -2133,6 +2098,7 @@
 496306|Trippstadt
 496307|Schopp
 496308|Olsbrücken
+49631|Kaiserslautern
 496321|Neustadt an der Weinstraße
 496322|Bad Dürkheim
 496323|Edenkoben
@@ -2203,6 +2169,7 @@
 496407|Rabenau Hessen
 496408|Buseck
 496409|Biebertal
+49641|Giessen
 496420|Lahntal
 496421|Marburg
 496422|Kirchhain
@@ -2270,6 +2237,7 @@
 496507|Neumagen-Dhron
 496508|Hetzerath Mosel
 496509|Büdlich
+49651|Trier
 496522|Mettendorf
 496523|Holsthum
 496524|Rodershausen
@@ -2330,6 +2298,7 @@
 496596|Üdersdorf
 496597|Jünkerath
 496599|Weidenbach bei Gerolstein
+49661|Fulda
 496620|Philippsthal Werra
 496621|Bad Hersfeld
 496622|Bebra
@@ -2403,6 +2372,7 @@
 496707|Windesheim
 496708|Bad Münster am Stein-Ebernburg
 496709|Fürfeld Kreis Bad Kreuznach
+49671|Bad Kreuznach
 496721|Bingen am Rhein
 496722|Rüdesheim am Rhein
 496723|Oestrich-Winkel
@@ -2460,6 +2430,7 @@
 496805|Kleinblittersdorf
 496806|Heusweiler
 496809|Grossrosseln
+49681|Saarbrücken
 496821|Neunkirchen Saar
 496824|Ottweiler
 496825|Illingen Saar
@@ -2507,6 +2478,7 @@
 496894|St Ingbert
 496897|Sulzbach Saar
 496898|Völklingen
+4969|Frankfurt am Main
 497021|Kirchheim unter Teck
 497022|Nürtingen
 497023|Weilheim an der Teck
@@ -2540,6 +2512,7 @@
 497083|Bad Herrenalb
 497084|Schömberg bei Neuenbürg
 497085|Enzklösterle
+49711|Stuttgart
 497121|Reutlingen
 497122|St Johann Württemberg
 497123|Metzingen Württemberg
@@ -2599,6 +2572,7 @@
 497202|Karlsbad
 497203|Walzbachtal
 497204|Malsch-Völkersbach
+49721|Karlsruhe
 497220|Forbach-Hundsbach
 497221|Baden-Baden
 497222|Rastatt
@@ -2661,6 +2635,7 @@
 497307|Senden Iller
 497308|Nersingen
 497309|Weissenhorn
+49731|Ulm Donau
 497321|Heidenheim an der Brenz
 497322|Giengen an der Brenz
 497323|Gerstetten
@@ -2721,6 +2696,7 @@
 497402|Fluorn-Winzeln
 497403|Dunningen
 497404|Epfendorf
+49741|Rottweil
 497420|Deisslingen
 497422|Schramberg
 497423|Oberndorf am Neckar
@@ -2780,6 +2756,7 @@
 497504|Horgenzell
 497505|Fronreute
 497506|Wangen-Leupolz
+49751|Ravensburg
 497520|Bodnegg
 497522|Wangen im Allgäu
 497524|Bad Waldsee
@@ -2832,6 +2809,7 @@
 497586|Herbertingen
 497587|Hosskirch
 497602|Oberried Breisgau
+49761|Freiburg im Breisgau
 497620|Schopfheim-Gersbach
 497621|Lörrach
 497622|Schopfheim
@@ -2890,6 +2868,7 @@
 497707|Bräunlingen
 497708|Geisingen-Leipferdingen
 497709|Wutach
+49771|Donaueschingen
 497720|Schwenningen am Neckar
 497721|Villingen im Schwarzwald
 497722|Triberg im Schwarzwald
@@ -2937,6 +2916,7 @@
 497806|Bad Peterstal-Griesbach
 497807|Neuried Ortenaukreis
 497808|Hohberg bei Offenburg
+49781|Offenburg
 497821|Lahr Schwarzwald
 497822|Ettenheim
 497823|Seelbach Schutter
@@ -2965,6 +2945,7 @@
 497905|Langenburg
 497906|Braunsbach
 497907|Schwäbisch Hall-Sulzdorf
+49791|Schwäbisch Hall
 497930|Boxberg Baden
 497931|Bad Mergentheim
 497932|Niederstetten Württemberg
@@ -3066,6 +3047,7 @@
 498104|Sauerlach
 498105|Gilching
 498106|Vaterstetten
+49811|Hallbergmoos
 498121|Markt Schwaben
 498122|Erding
 498123|Moosinning
@@ -3113,6 +3095,7 @@
 498206|Egling an der Paar
 498207|Affing
 498208|Eurasburg bei Augsburg
+49821|Augsburg
 498221|Günzburg
 498222|Burgau Schwaben
 498223|Ichenhausen
@@ -3171,6 +3154,7 @@
 498303|Waltenhofen
 498304|Wildpoldsried
 498306|Ronsberg
+49831|Kempten Allgäu
 498320|Missen-Wilhams
 498321|Sonthofen
 498322|Oberstdorf
@@ -3237,6 +3221,7 @@
 498405|Stammham bei Ingolstadt
 498406|Böhmfeld
 498407|Grossmehring
+49841|Ingolstadt Donau
 498421|Eichstätt Bayern
 498422|Dollnstein
 498423|Titting
@@ -3280,6 +3265,7 @@
 498506|Bad Höhenstadt
 498507|Neuburg am Inn
 498509|Ruderting
+49851|Passau
 498531|Pocking
 498532|Griesbach im Rottal
 498533|Rotthalmünster
@@ -3324,6 +3310,7 @@
 498591|Obernzell
 498592|Wegscheid Niederbayern
 498593|Untergriesbach
+49861|Traunstein
 498621|Trostberg
 498622|Tacherting-Peterskirchen
 498623|Kirchweidach
@@ -3377,6 +3364,7 @@
 498707|Adlkofen
 498708|Weihmichl-Unterneuhausen
 498709|Eching Niederbayern
+49871|Landshut
 498721|Eggenfelden
 498722|Gangkofen
 498723|Arnstorf
@@ -3422,6 +3410,7 @@
 498807|Dießen am Ammersee
 498808|Pähl
 498809|Wessobrunn
+49881|Weilheim in Oberbayern
 498821|Garmisch-Partenkirchen
 498822|Oberammergau
 498823|Mittenwald
@@ -3441,6 +3430,8 @@
 498867|Rottenbuch Oberbayern
 498868|Schwabsoien
 498869|Kinsau
+4989|München
+49906|Donauwörth
 499070|Tapfheim
 499071|Dillingen an der Donau
 499072|Lauingen Donau
@@ -3474,6 +3465,7 @@
 499105|Grosshabersdorf
 499106|Markt Erlbach
 499107|Trautskirchen
+49911|Nürnberg
 499120|Leinburg
 499122|Schwabach
 499123|Lauf an der Pegnitz
@@ -3526,3 +3518,11 @@
 499183|Burgthann
 499184|Deining Oberpfalz
 499185|Mühlhausen Oberpfalz
+49921|Bayreuth
+49931|Würzburg
+49941|Regensburg
+49951|Bamberg
+49961|Weiden in der Oberpfalz
+49971|Bad Kissingen
+49981|Ansbach
+49991|Deggendorf

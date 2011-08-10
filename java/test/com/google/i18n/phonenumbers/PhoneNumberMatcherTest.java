@@ -22,6 +22,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -115,6 +116,8 @@ public class PhoneNumberMatcherTest extends TestCase {
   /** See {@link PhoneNumberUtilTest#testParseWithXInNumber()}. */
   public void testFindWithXInNumber() throws Exception {
     doTestFindInContext("(0xx) 123456789", "AR");
+    // A case where x denotes both carrier codes and extension symbol.
+    doTestFindInContext("(0xx) 123456789 x 1234", "AR");
 
     // This test is intentionally constructed such that the number of digit after xx is larger than
     // 7, so that the number won't be mistakenly treated as an extension, as we allow extensions up
@@ -168,7 +171,9 @@ public class PhoneNumberMatcherTest extends TestCase {
     doTestFindInContext("(800) 901-3355 x 7246433", "US");
     doTestFindInContext("(800) 901-3355 , ext 7246433", "US");
     doTestFindInContext("(800) 901-3355 ,extension 7246433", "US");
-    doTestFindInContext("(800) 901-3355 , 7246433", "US");
+    // The next test differs from PhoneNumberUtil -> when matching we don't consider a lone comma to
+    // indicate an extension, although we accept it when parsing.
+    doTestFindInContext("(800) 901-3355 ,x 7246433", "US");
     doTestFindInContext("(800) 901-3355 ext: 7246433", "US");
   }
 
@@ -199,10 +204,11 @@ public class PhoneNumberMatcherTest extends TestCase {
 
   public void testMatchWithSurroundingZipcodes() throws Exception {
     String number = "415-666-7777";
-    String zipPreceding = "My address is CA 34215. " + number + " is my number.";
+    String zipPreceding = "My address is CA 34215 - " + number + " is my number.";
     PhoneNumber expectedResult = phoneUtil.parse(number, "US");
 
-    Iterator<PhoneNumberMatch> iterator = phoneUtil.findNumbers(zipPreceding, "US").iterator();
+    Iterator<PhoneNumberMatch> iterator =
+        phoneUtil.findNumbers(zipPreceding, "US").iterator();
     PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
     assertNotNull("Did not find a number in '" + zipPreceding + "'; expected " + number, match);
     assertEquals(expectedResult, match.number());
@@ -236,24 +242,42 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testMatchesWithSurroundingLatinChars() throws Exception {
-    ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>(5);
-    contextPairs.add(new NumberContext("abc", "def"));
-    contextPairs.add(new NumberContext("abc", ""));
-    contextPairs.add(new NumberContext("", "def"));
-    // Latin small letter e with an acute accent.
-    contextPairs.add(new NumberContext("\u00C9", ""));
-    // Same character decomposed (with combining mark).
-    contextPairs.add(new NumberContext("e\u0301", ""));
+    ArrayList<NumberContext> possibleOnlyContexts = new ArrayList<NumberContext>();
+    possibleOnlyContexts.add(new NumberContext("abc", "def"));
+    possibleOnlyContexts.add(new NumberContext("abc", ""));
+    possibleOnlyContexts.add(new NumberContext("", "def"));
+    // Latin capital letter e with an acute accent.
+    possibleOnlyContexts.add(new NumberContext("\u00C9", ""));
+    // e with an acute accent decomposed (with combining mark).
+    possibleOnlyContexts.add(new NumberContext("e\u0301", ""));
 
     // Numbers should not be considered valid, if they are surrounded by Latin characters, but
     // should be considered possible.
-    findMatchesInContexts(contextPairs, false, true);
+    findMatchesInContexts(possibleOnlyContexts, false, true);
+  }
+
+  public void testMoneyNotSeenAsPhoneNumber() throws Exception {
+    ArrayList<NumberContext> possibleOnlyContexts = new ArrayList<NumberContext>();
+    possibleOnlyContexts.add(new NumberContext("$", ""));
+    possibleOnlyContexts.add(new NumberContext("", "$"));
+    possibleOnlyContexts.add(new NumberContext("\u00A3", ""));  // Pound sign
+    possibleOnlyContexts.add(new NumberContext("\u00A5", ""));  // Yen sign
+    findMatchesInContexts(possibleOnlyContexts, false, true);
+  }
+
+  public void testPhoneNumberWithLeadingOrTrailingMoneyMatches() throws Exception {
+    // Because of the space after the 20 (or before the 100) these dollar amounts should not stop
+    // the actual number from being found.
+    ArrayList<NumberContext> contexts = new ArrayList<NumberContext>();
+    contexts.add(new NumberContext("$20 ", ""));
+    contexts.add(new NumberContext("", " 100$"));
+    findMatchesInContexts(contexts, true, true);
   }
 
   public void testMatchesWithSurroundingLatinCharsAndLeadingPunctuation() throws Exception {
     // Contexts with trailing characters. Leading characters are okay here since the numbers we will
     // insert start with punctuation, but trailing characters are still not allowed.
-    ArrayList<NumberContext> possibleOnlyContexts = new ArrayList<NumberContext>(3);
+    ArrayList<NumberContext> possibleOnlyContexts = new ArrayList<NumberContext>();
     possibleOnlyContexts.add(new NumberContext("abc", "def"));
     possibleOnlyContexts.add(new NumberContext("", "def"));
     possibleOnlyContexts.add(new NumberContext("", "\u00C9"));
@@ -265,7 +289,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     findMatchesInContexts(possibleOnlyContexts, false, true, "US", numberWithPlus);
     findMatchesInContexts(possibleOnlyContexts, false, true, "US", numberWithBrackets);
 
-    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>(4);
+    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>();
     validContexts.add(new NumberContext("abc", ""));
     validContexts.add(new NumberContext("\u00C9", ""));
     validContexts.add(new NumberContext("\u00C9", "."));  // Trailing punctuation.
@@ -277,7 +301,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testMatchesWithSurroundingChineseChars() throws Exception {
-    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>(3);
+    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>();
     validContexts.add(new NumberContext("\u6211\u7684\u7535\u8BDD\u53F7\u7801\u662F", ""));
     validContexts.add(new NumberContext("", "\u662F\u6211\u7684\u7535\u8BDD\u53F7\u7801"));
     validContexts.add(new NumberContext("\u8BF7\u62E8\u6253", "\u6211\u5728\u660E\u5929"));
@@ -287,7 +311,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testMatchesWithSurroundingPunctuation() throws Exception {
-    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>(4);
+    ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>();
     validContexts.add(new NumberContext("My number-", ""));  // At end of text.
     validContexts.add(new NumberContext("", ".Nice day."));  // At start of text.
     validContexts.add(new NumberContext("Tel:", "."));  // Punctuation surrounds number.
@@ -295,6 +319,184 @@ public class PhoneNumberMatcherTest extends TestCase {
 
     // Numbers should be considered valid, since they are surrounded by punctuation.
     findMatchesInContexts(validContexts, true, true);
+  }
+
+  public void testMatchesMultiplePhoneNumbersSeparatedByPhoneNumberPunctuation() throws Exception {
+    String text = "Call 650-253-4561 -- 455-234-3451";
+    String region = "US";
+
+    PhoneNumber number1 = new PhoneNumber();
+    number1.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
+    number1.setNationalNumber(6502534561L);
+    PhoneNumberMatch match1 = new PhoneNumberMatch(5, "650-253-4561", number1);
+
+    PhoneNumber number2 = new PhoneNumber();
+    number2.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
+    number2.setNationalNumber(4552343451L);
+    PhoneNumberMatch match2 = new PhoneNumberMatch(21, "455-234-3451", number2);
+
+    Iterator<PhoneNumberMatch> matches = phoneUtil.findNumbers(text, region).iterator();
+    assertEquals(match1, matches.next());
+    assertEquals(match2, matches.next());
+  }
+
+  public void testDoesNotMatchMultiplePhoneNumbersSeparatedWithNoWhiteSpace() throws Exception {
+    // No white-space found between numbers - neither is found.
+    String text = "Call 650-253-4561--455-234-3451";
+    String region = "US";
+
+    assertTrue(hasNoMatches(phoneUtil.findNumbers(text, region)));
+  }
+
+  /**
+   * Strings with number-like things that shouldn't be found under any level.
+   */
+  private static final NumberTest[] IMPOSSIBLE_CASES = {
+    new NumberTest("12345", "US"),
+    new NumberTest("23456789", "US"),
+    new NumberTest("234567890112", "US"),
+    new NumberTest("650+253+1234", "US"),
+    new NumberTest("3/10/1984", "CA"),
+    new NumberTest("03/27/2011", "US"),
+    new NumberTest("31/8/2011", "US"),
+    new NumberTest("1/12/2011", "US"),
+    new NumberTest("10/12/82", "DE"),
+  };
+
+  /**
+   * Strings with number-like things that should only be found under "possible".
+   */
+  private static final NumberTest[] POSSIBLE_ONLY_CASES = {
+    new NumberTest("abc8002345678", "US"),
+    // US numbers cannot start with 7 in the test metadata to be valid.
+    new NumberTest("7121115678", "US"),
+    // 'X' should not be found in numbers at leniencies stricter than POSSIBLE, unless it represents
+    // a carrier code or extension.
+    new NumberTest("1650 x 253 - 1234", "US"),
+    new NumberTest("650 x 253 - 1234", "US"),
+    new NumberTest("650x2531234", "US"),
+  };
+
+  /**
+   * Strings with number-like things that should only be found up to and including the "valid"
+   * leniency level.
+   */
+  private static final NumberTest[] VALID_CASES = {
+    new NumberTest("65 02 53 00 00.", "US"),
+    new NumberTest("6502 538365", "US"),
+    new NumberTest("650//253-1234", "US"),  // 2 slashes are illegal at higher levels
+    new NumberTest("650/253/1234", "US"),
+    new NumberTest("9002309. 158", "US"),
+    new NumberTest("21 7/8 - 14 12/34 - 5", "US"),
+    new NumberTest("12.1 - 23.71 - 23.45", "US"),
+    new NumberTest("1979-2011 100%", "US"),
+    new NumberTest("800 234 1 111x1111", "US"),
+    new NumberTest("+494949-4-94", "DE"),  // National number in wrong format
+  };
+
+  /**
+   * Strings with number-like things that should only be found up to and including the
+   * "strict_grouping" leniency level.
+   */
+  private static final NumberTest[] STRICT_GROUPING_CASES = {
+    new NumberTest("(415) 6667777", "US"),
+    new NumberTest("415-6667777", "US"),
+    // Should be found by strict grouping but not exact grouping, as the last two groups are
+    // formatted together as a block.
+    new NumberTest("800-2491234", "DE"),
+  };
+
+  /**
+   * Strings with number-like things that should found at all levels.
+   */
+  private static final NumberTest[] EXACT_GROUPING_CASES = {
+    new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF17\uFF17\uFF17\uFF17", "US"),
+    new NumberTest("\uFF14\uFF11\uFF15-\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17\uFF17", "US"),
+    new NumberTest("4156667777", "US"),
+    new NumberTest("4156667777 x 123", "US"),
+    new NumberTest("415-666-7777", "US"),
+    new NumberTest("415/666-7777", "US"),
+    new NumberTest("415-666-7777 ext. 503", "US"),
+    new NumberTest("1 415 666 7777 x 123", "US"),
+    new NumberTest("+1 415-666-7777", "US"),
+    new NumberTest("+494949 49", "DE"),
+    new NumberTest("+49-49-34", "DE"),
+    new NumberTest("+49-4931-49", "DE"),
+    new NumberTest("04931-49", "DE"),  // With National Prefix
+    new NumberTest("+49-494949", "DE"),  // One group with country code
+    new NumberTest("+49-494949 ext. 49", "DE"),
+    new NumberTest("+49494949 ext. 49", "DE"),
+    new NumberTest("0494949", "DE"),
+    new NumberTest("0494949 ext. 49", "DE"),
+  };
+
+  public void testMatchesWithStrictGroupingLeniency() throws Exception {
+    int noMatchFoundCount = 0;
+    int wrongMatchFoundCount = 0;
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(STRICT_GROUPING_CASES));
+    testCases.addAll(Arrays.asList(EXACT_GROUPING_CASES));
+    doTestNumberMatchesForLeniency(testCases, Leniency.STRICT_GROUPING);
+  }
+
+  public void testNonMatchesWithStrictGroupLeniency() throws Exception {
+    int matchFoundCount = 0;
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(POSSIBLE_ONLY_CASES));
+    testCases.addAll(Arrays.asList(VALID_CASES));
+    doTestNumberNonMatchesForLeniency(testCases, Leniency.STRICT_GROUPING);
+  }
+
+  public void testMatchesWithExactGroupingLeniency() throws Exception {
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(EXACT_GROUPING_CASES));
+    doTestNumberMatchesForLeniency(testCases, Leniency.EXACT_GROUPING);
+  }
+
+  public void testNonMatchesExactGroupLeniency() throws Exception {
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(POSSIBLE_ONLY_CASES));
+    testCases.addAll(Arrays.asList(VALID_CASES));
+    testCases.addAll(Arrays.asList(STRICT_GROUPING_CASES));
+    doTestNumberNonMatchesForLeniency(testCases, Leniency.EXACT_GROUPING);
+  }
+
+  private void doTestNumberMatchesForLeniency(List<NumberTest> testCases,
+                                              PhoneNumberUtil.Leniency leniency) {
+    int noMatchFoundCount = 0;
+    int wrongMatchFoundCount = 0;
+    for (NumberTest test : testCases) {
+      Iterator<PhoneNumberMatch> iterator =
+          findNumbersForLeniency(test.rawString, test.region, leniency);
+      PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+      if (match == null) {
+        noMatchFoundCount++;
+        System.err.println("No match found in " + test.toString() + " for leniency: " + leniency);
+      } else {
+        if (!test.rawString.equals(match.rawString())) {
+          wrongMatchFoundCount++;
+          System.err.println("Found wrong match in test " + test.toString() +
+                             ". Found " + match.rawString());
+        }
+      }
+    }
+    assertEquals(0, noMatchFoundCount);
+    assertEquals(0, wrongMatchFoundCount);
+  }
+
+  private void doTestNumberNonMatchesForLeniency(List<NumberTest> testCases,
+                                                 PhoneNumberUtil.Leniency leniency) {
+    int matchFoundCount = 0;
+    for (NumberTest test : testCases) {
+      Iterator<PhoneNumberMatch> iterator =
+          findNumbersForLeniency(test.rawString, test.region, leniency);
+      PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+      if (match != null) {
+        matchFoundCount++;
+        System.err.println("Match found in " + test.toString() + " for leniency: " + leniency);
+      }
+    }
+    assertEquals(0, matchFoundCount);
   }
 
   /**
@@ -445,11 +647,10 @@ public class PhoneNumberMatcherTest extends TestCase {
       numbers.append("My info: 415-666-7777 123 fake street");
     }
 
-    // Only matches the first 5 despite there being 100 numbers due to max matches.
-    // There are two false positives per line as "123" is also tried.
+    // Only matches the first 10 despite there being 100 numbers due to max matches.
     List<PhoneNumber> expected = new ArrayList<PhoneNumber>(100);
     PhoneNumber number = phoneUtil.parse("+14156667777", null);
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
       expected.add(number);
     }
 
@@ -572,7 +773,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     PhoneNumberMatch match = matches.next();
     assertEquals(start - index, match.start());
     assertEquals(end - index, match.end());
-    assertEquals(match.rawString(), sub.subSequence(match.start(), match.end()).toString());
+    assertEquals(sub.subSequence(match.start(), match.end()).toString(), match.rawString());
   }
 
   /**
@@ -594,7 +795,7 @@ public class PhoneNumberMatcherTest extends TestCase {
    * Tests valid numbers in contexts that should pass for {@link Leniency#POSSIBLE}.
    */
   private void findPossibleInContext(String number, String defaultCountry) {
-    ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>(15);
+    ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>();
     contextPairs.add(new NumberContext("", ""));  // no context
     contextPairs.add(new NumberContext("   ", "\t"));  // whitespace only
     contextPairs.add(new NumberContext("Hello ", ""));  // no context at end
@@ -618,15 +819,9 @@ public class PhoneNumberMatcherTest extends TestCase {
     // With dates, written in the American style.
     contextPairs.add(new NumberContext(
         "As I said on 03/10/2011, you may call me at ", ""));
-    contextPairs.add(new NumberContext(
-        "As I said on 03/27/2011, you may call me at ", ""));
-    contextPairs.add(new NumberContext(
-        "As I said on 31/8/2011, you may call me at ", ""));
-    contextPairs.add(new NumberContext(
-        "As I said on 1/12/2011, you may call me at ", ""));
-    contextPairs.add(new NumberContext(
-        "I was born on 10/12/82. Please call me at ", ""));
-    // With a postfix stripped off as it looks like the start of another number
+    // With trailing numbers after a comma. The 45 should not be considered an extension.
+    contextPairs.add(new NumberContext("", ", 45 days a year"));
+     // With a postfix stripped off as it looks like the start of another number.
     contextPairs.add(new NumberContext("Call ", "/x12 more"));
 
     doTestInContext(number, defaultCountry, contextPairs, Leniency.POSSIBLE);
@@ -637,17 +832,18 @@ public class PhoneNumberMatcherTest extends TestCase {
    * {@link Leniency#VALID}.
    */
   private void findValidInContext(String number, String defaultCountry) {
-    ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>(5);
+    ArrayList<NumberContext> contextPairs = new ArrayList<NumberContext>();
     // With other small numbers.
     contextPairs.add(new NumberContext("It's only 9.99! Call ", " to buy"));
     // With a number Day.Month.Year date.
     contextPairs.add(new NumberContext("Call me on 21.6.1984 at ", ""));
     // With a number Month/Day date.
     contextPairs.add(new NumberContext("Call me on 06/21 at ", ""));
-    // With a number Day.Month date
+    // With a number Day.Month date.
     contextPairs.add(new NumberContext("Call me on 21.6. at ", ""));
     // With a number Month/Day/Year date.
     contextPairs.add(new NumberContext("Call me on 06/21/84 at ", ""));
+
     doTestInContext(number, defaultCountry, contextPairs, Leniency.VALID);
   }
 
@@ -659,10 +855,10 @@ public class PhoneNumberMatcherTest extends TestCase {
 
       int start = prefix.length();
       int end = start + number.length();
-      Iterable<PhoneNumberMatch> iterable =
-          phoneUtil.findNumbers(text, defaultCountry, leniency, Long.MAX_VALUE);
+      Iterator<PhoneNumberMatch> iterator =
+          phoneUtil.findNumbers(text, defaultCountry, leniency, Long.MAX_VALUE).iterator();
 
-      PhoneNumberMatch match = iterable.iterator().hasNext() ? iterable.iterator().next() : null;
+      PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
       assertNotNull("Did not find a number in '" + text + "'; expected '" + number + "'", match);
 
       CharSequence extracted = text.subSequence(match.start(), match.end());
@@ -691,9 +887,18 @@ public class PhoneNumberMatcherTest extends TestCase {
     }
   }
 
+  private Iterator<PhoneNumberMatch> findNumbersForLeniency(
+      String text, String defaultCountry, PhoneNumberUtil.Leniency leniency) {
+    return phoneUtil.findNumbers(text, defaultCountry, leniency, Long.MAX_VALUE).iterator();
+  }
+
   /**
    * Returns true if there were no matches found.
    */
+  private boolean hasNoMatches(Iterator<PhoneNumberMatch> iterator) {
+    return !iterator.hasNext();
+  }
+
   private boolean hasNoMatches(Iterable<PhoneNumberMatch> iterable) {
     return !iterable.iterator().hasNext();
   }
@@ -709,6 +914,24 @@ public class PhoneNumberMatcherTest extends TestCase {
     NumberContext(String leadingText, String trailingText) {
       this.leadingText = leadingText;
       this.trailingText = trailingText;
+    }
+  }
+
+  /**
+   * Small class that holds the number we want to test and the region for which it should be valid.
+   */
+  private static class NumberTest {
+    final String rawString;
+    final String region;
+
+    NumberTest(String rawString, String regionCode) {
+      this.rawString = rawString;
+      this.region = regionCode;
+    }
+
+    @Override
+    public String toString() {
+      return rawString + " (" + region.toString() + ")";
     }
   }
 }

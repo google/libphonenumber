@@ -84,15 +84,14 @@ public class GenerateAreaCodeDataTest extends TestCase {
     assertEquals("1|en,en_US,es,\n33|en,fr,\n86|zh_Hans,\n", mappingFileProvider.toString());
   }
 
-  private static String convertData(String input, int countryCallingCode) throws IOException {
+  private static String convertData(String input) throws IOException {
     ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-    GenerateAreaCodeData.convertData(
-        byteArrayInputStream, byteArrayOutputStream, countryCallingCode);
+    GenerateAreaCodeData.convertData(byteArrayInputStream, byteArrayOutputStream);
     // The byte array output stream now contains the corresponding serialized area code map. Try
     // to deserialize it and compare it with the initial input.
-    AreaCodeMap areaCodeMap = new AreaCodeMap(countryCallingCode);
+    AreaCodeMap areaCodeMap = new AreaCodeMap();
     areaCodeMap.readExternal(
         new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
 
@@ -102,16 +101,16 @@ public class GenerateAreaCodeDataTest extends TestCase {
   public void testConvertData() throws IOException {
     String input = "331|Paris\n334|Marseilles\n";
 
-    String dataAfterDeserialization = convertData(input, 33);
+    String dataAfterDeserialization = convertData(input);
     assertEquals(input, dataAfterDeserialization);
     // Make sure convertData() ignores comments.
-    dataAfterDeserialization = convertData("  # Comment.\n" + input, 33);
+    dataAfterDeserialization = convertData("  # Comment.\n" + input);
     assertEquals(input, dataAfterDeserialization);
     // Make sure convertData() ignores blank lines.
-    dataAfterDeserialization = convertData("\n" + input, 33);
+    dataAfterDeserialization = convertData("\n" + input);
     assertEquals(input, dataAfterDeserialization);
     // Make sure convertData() ignores trailing white spaces.
-    dataAfterDeserialization = convertData(" \n" + input, 33);
+    dataAfterDeserialization = convertData(" \n" + input);
     assertEquals(input, dataAfterDeserialization);
   }
 
@@ -119,7 +118,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     String input = "331";
 
     try {
-      convertData(input, 33);
+      convertData(input);
       fail();
     } catch (RuntimeException e) {
       // Expected.
@@ -130,7 +129,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     String input = "331|";
 
     try {
-      convertData(input, 33);
+      convertData(input);
       fail();
     } catch (RuntimeException e) {
       // Expected.
@@ -141,7 +140,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     String input = "331|Paris\n331|Marseilles\n";
 
     try {
-      convertData(input, 33);
+      convertData(input);
       fail();
     } catch (RuntimeException e) {
       // Expected.

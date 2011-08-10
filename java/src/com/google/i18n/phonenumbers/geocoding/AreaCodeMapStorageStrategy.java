@@ -23,29 +23,18 @@ import java.util.SortedMap;
 import java.util.TreeSet;
 
 /**
- * Abstracts the way area code data is stored into memory and serialized to a stream.
+ * Abstracts the way area code data is stored into memory and serialized to a stream. It is used by
+ * {@link AreaCodeMap} to support the most space-efficient storage strategy according to the
+ * provided data.
  *
  * @author Philippe Liard
  */
 // @VisibleForTesting
 abstract class AreaCodeMapStorageStrategy {
-  protected final int countryCallingCode;
-  protected final boolean isLeadingZeroPossible;
   protected int numOfEntries = 0;
   protected final TreeSet<Integer> possibleLengths = new TreeSet<Integer>();
 
-  /**
-   * Constructs a new area code map storage strategy from the provided country calling code and
-   * boolean parameter.
-   *
-   * @param countryCallingCode  the country calling code of the number prefixes contained in the map
-   * @param isLeadingZeroPossible  whether the phone number prefixes belong to a region which
-   *    {@link com.google.i18n.phonenumbers.PhoneNumberUtil#isLeadingZeroPossible}
-   */
-  public AreaCodeMapStorageStrategy(int countryCallingCode, boolean isLeadingZeroPossible) {
-    this.countryCallingCode = countryCallingCode;
-    this.isLeadingZeroPossible = isLeadingZeroPossible;
-  }
+  public AreaCodeMapStorageStrategy() {}
 
   /**
    * Returns whether the underlying implementation of this abstract class is flyweight.
@@ -113,52 +102,17 @@ abstract class AreaCodeMapStorageStrategy {
    */
   public abstract void writeExternal(ObjectOutput objectOutput) throws IOException;
 
-  /**
-   * Utility class used to pass arguments by "reference".
-   */
-  protected static class Reference<T> {
-    private T data;
+  @Override
+  public String toString() {
+    StringBuilder output = new StringBuilder();
+    int numOfEntries = getNumOfEntries();
 
-    T get () {
-      return data;
+    for (int i = 0; i < numOfEntries; i++) {
+      output.append(getPrefix(i));
+      output.append("|");
+      output.append(getDescription(i));
+      output.append("\n");
     }
-
-    void set (T data) {
-      this.data = data;
-    }
-  }
-
-  /**
-   * Removes the country calling code from the provided {@code prefix} if the country can't have any
-   * leading zero; otherwise it is left as it is. Sets the provided {@code lengthOfPrefixRef}
-   * parameter to the length of the resulting prefix.
-   *
-   * @param prefix  a phone number prefix containing a leading country calling code
-   * @param lengthOfPrefixRef  a "reference" to an integer set to the length of the resulting
-   *    prefix. This parameter is ignored when set to null.
-   * @return  the resulting prefix which may have been stripped
-   */
-  protected int stripPrefix(int prefix, Reference<Integer> lengthOfPrefixRef) {
-    int lengthOfCountryCode = (int) Math.log10(countryCallingCode) + 1;
-    int lengthOfPrefix = (int) Math.log10(prefix) + 1;
-    if (!isLeadingZeroPossible) {
-      lengthOfPrefix -= lengthOfCountryCode;
-      prefix -= countryCallingCode * (int) Math.pow(10, lengthOfPrefix);
-    }
-    if (lengthOfPrefixRef != null) {
-      lengthOfPrefixRef.set(lengthOfPrefix);
-    }
-    return prefix;
-  }
-
-  /**
-   * Removes the country calling code from the provided {@code prefix} if the country can't have any
-   * leading zero; otherwise it is left as it is.
-   *
-   * @param prefix  a phone number prefix containing a leading country calling code
-   * @return  the resulting prefix which may have been stripped
-   */
-  protected int stripPrefix(int prefix) {
-    return stripPrefix(prefix, null);
+    return output.toString();
   }
 }

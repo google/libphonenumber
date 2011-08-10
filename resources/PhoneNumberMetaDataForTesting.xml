@@ -205,7 +205,7 @@
         <possibleNumberPattern>\d{2,14}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>(?:[24-6]\d{2}|3[03-9]\d|[789](?:[1-9]\d|0[2-9]))\d{3,8}</nationalNumberPattern>
+        <nationalNumberPattern>(?:[24-6]\d{2}|3[03-9]\d|[789](?:[1-9]\d|0[2-9]))\d{1,8}</nationalNumberPattern>
         <exampleNumber>30123456</exampleNumber>
       </fixedLine>
       <mobile>
@@ -685,7 +685,8 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[13-9]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
+        <!-- Numbers beginning with 7 are excluded for testing purposes only. -->
+        <nationalNumberPattern>[13-689]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <exampleNumber>1234567890</exampleNumber>
       </generalDesc>

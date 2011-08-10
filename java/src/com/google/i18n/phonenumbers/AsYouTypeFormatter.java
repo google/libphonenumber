@@ -279,9 +279,9 @@ public class AsYouTypeFormatter {
     if (rememberPosition) {
       originalPosition = accruedInput.length();
     }
-    // We do formatting on-the-fly only when each character entered is either a plus sign or a
-    // digit.
-    if (!PhoneNumberUtil.VALID_START_CHAR_PATTERN.matcher(Character.toString(nextChar)).matches()) {
+    // We do formatting on-the-fly only when each character entered is either a digit, or a plus
+    // sign (accepted at the start of the number only).
+    if (!isDigitOrLeadingPlusSign(nextChar)) {
       ableToFormat = false;
     }
     if (!ableToFormat) {
@@ -339,6 +339,12 @@ public class AsYouTypeFormatter {
           return attemptToChooseFormattingPattern();
         }
     }
+  }
+
+  private boolean isDigitOrLeadingPlusSign(char nextChar) {
+    return Character.isDigit(nextChar) ||
+        (accruedInput.length() == 1 &&
+         PhoneNumberUtil.PLUS_CHARS_PATTERN.matcher(Character.toString(nextChar)).matches());
   }
 
   String attemptToFormatAccruedDigits() {

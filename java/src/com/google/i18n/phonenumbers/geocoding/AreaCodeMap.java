@@ -36,8 +36,6 @@ import java.util.logging.Logger;
  * @author Shaopeng Jia
  */
 public class AreaCodeMap implements Externalizable {
-  private final int countryCallingCode;
-  private final boolean isLeadingZeroPossible;
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   private static final Logger LOGGER = Logger.getLogger(AreaCodeMap.class.getName());
 
@@ -50,16 +48,10 @@ public class AreaCodeMap implements Externalizable {
 
   /**
    * Creates an empty {@link AreaCodeMap}. The default constructor is necessary for implementing
-   * {@link Externalizable}. The empty map could later populated by
+   * {@link Externalizable}. The empty map could later be populated by
    * {@link #readAreaCodeMap(java.util.SortedMap)} or {@link #readExternal(java.io.ObjectInput)}.
-   *
-   * @param countryCallingCode  the country calling code for the region that the area code map
-   *     belongs to.
    */
-  public AreaCodeMap(int countryCallingCode) {
-    this.countryCallingCode = countryCallingCode;
-    isLeadingZeroPossible = phoneUtil.isLeadingZeroPossible(countryCallingCode);
-  }
+  public AreaCodeMap() {}
 
   /**
    * Gets the size of the provided area code map storage. The map storage passed-in will be filled
@@ -78,11 +70,11 @@ public class AreaCodeMap implements Externalizable {
   }
 
   private AreaCodeMapStorageStrategy createDefaultMapStorage() {
-    return new DefaultMapStorage(countryCallingCode, isLeadingZeroPossible);
+    return new DefaultMapStorage();
   }
 
   private AreaCodeMapStorageStrategy createFlyweightMapStorage() {
-    return new FlyweightMapStorage(countryCallingCode, isLeadingZeroPossible);
+    return new FlyweightMapStorage();
   }
 
   /**
@@ -126,9 +118,9 @@ public class AreaCodeMap implements Externalizable {
     // Read the area code map storage strategy flag.
     boolean useFlyweightMapStorage = objectInput.readBoolean();
     if (useFlyweightMapStorage) {
-      areaCodeMapStorage = new FlyweightMapStorage(countryCallingCode, isLeadingZeroPossible);
+      areaCodeMapStorage = new FlyweightMapStorage();
     } else {
-      areaCodeMapStorage = new DefaultMapStorage(countryCallingCode, isLeadingZeroPossible);
+      areaCodeMapStorage = new DefaultMapStorage();
     }
     areaCodeMapStorage.readExternal(objectInput);
   }
@@ -152,9 +144,8 @@ public class AreaCodeMap implements Externalizable {
     if (numOfEntries == 0) {
       return "";
     }
-    long phonePrefix = isLeadingZeroPossible
-        ? Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number))
-        : Long.parseLong(phoneUtil.getNationalSignificantNumber(number));
+    long phonePrefix =
+        Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number));
     int currentIndex = numOfEntries - 1;
     SortedSet<Integer> currentSetOfLengths = areaCodeMapStorage.getPossibleLengths();
     while (currentSetOfLengths.size() > 0) {
@@ -204,18 +195,6 @@ public class AreaCodeMap implements Externalizable {
    */
   @Override
   public String toString() {
-    StringBuilder output = new StringBuilder();
-    int numOfEntries = areaCodeMapStorage.getNumOfEntries();
-
-    for (int i = 0; i < numOfEntries; i++) {
-      if (!isLeadingZeroPossible) {
-        output.append(countryCallingCode);
-      }
-      output.append(areaCodeMapStorage.getPrefix(i));
-      output.append("|");
-      output.append(areaCodeMapStorage.getDescription(i));
-      output.append("\n");
-    }
-    return output.toString();
+    return areaCodeMapStorage.toString();
   }
 }

@@ -191,7 +191,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
           "Result from isValidNumberForRegion()", 
           Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
           output);
-      appendLine("Phone Number region", phoneUtil.getRegionCodeForNumber(number), output);
+      String region = phoneUtil.getRegionCodeForNumber(number);
+      appendLine("Phone Number region", region == null ? "" : region, output);
       appendLine("Result from isPossibleNumber()",
                  Boolean.toString(phoneUtil.isPossibleNumber(number)), output);
       appendLine("Result from getNumberType()", phoneUtil.getNumberType(number).toString(), output);

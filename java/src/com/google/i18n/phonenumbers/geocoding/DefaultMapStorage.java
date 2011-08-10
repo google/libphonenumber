@@ -30,9 +30,7 @@ import java.util.SortedMap;
  */
 class DefaultMapStorage extends AreaCodeMapStorageStrategy {
 
-  public DefaultMapStorage(int countryCallingCode, boolean isLeadingZeroPossible) {
-    super(countryCallingCode, isLeadingZeroPossible);
-  }
+  public DefaultMapStorage() {}
 
   private int[] phoneNumberPrefixes;
   private String[] descriptions;
@@ -59,10 +57,8 @@ class DefaultMapStorage extends AreaCodeMapStorageStrategy {
     descriptions = new String[numOfEntries];
     int index = 0;
     for (int prefix : sortedAreaCodeMap.keySet()) {
-      Reference<Integer> lengthOfPrefixRef = new Reference<Integer>();
-      int strippedPrefix = stripPrefix(prefix, lengthOfPrefixRef);
-      phoneNumberPrefixes[index++] = strippedPrefix;
-      possibleLengths.add(lengthOfPrefixRef.get());
+      phoneNumberPrefixes[index++] = prefix;
+      possibleLengths.add((int) Math.log10(prefix) + 1);
     }
     sortedAreaCodeMap.values().toArray(descriptions);
   }

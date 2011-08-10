@@ -1,0 +1,55 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# Internal statistical data (2011-08-05).
+
+2710|Johannesburg
+2711|Johannesburg
+2712|Pretoria
+2713|Mbombela
+2714|Rustenburg
+2715|Polokwane
+2716|Vereeniging
+2717|Ermelo
+2718|Klerksdorp
+2721|Cape Town
+2722|Malmesbury
+2723|Worcester
+2724|Cape Town
+2727|Vredendal
+2728|Hermanus
+2731|Durban
+2732|KwaDukuza
+2733|Pietermaritzburg
+2734|Newcastle
+2735|Richards Bay
+2736|Ladysmith
+2739|Port Shepstone
+2740|Bisho
+2741|Port Elizabeth
+2742|Jeffrey's Bay
+2743|East London
+2744|George
+2745|Queenstown
+2746|Grahamstown
+2747|Umtata
+2748|Cradock
+2749|Graaff-Reinet
+2751|Bloemfontein
+2753|Kimberley
+2754|Upington
+2756|Kroonstad
+2757|Welkom
+2758|Bethlehem

@@ -33,8 +33,8 @@ import java.util.TreeMap;
  * @author Shaopeng Jia
  */
 public class AreaCodeMapTest extends TestCase {
-  private final AreaCodeMap areaCodeMapForUS = new AreaCodeMap(1);
-  private final AreaCodeMap areaCodeMapForIT = new AreaCodeMap(39);
+  private final AreaCodeMap areaCodeMapForUS = new AreaCodeMap();
+  private final AreaCodeMap areaCodeMapForIT = new AreaCodeMap();
   private PhoneNumber number = new PhoneNumber();
 
   public AreaCodeMapTest() {
@@ -83,13 +83,13 @@ public class AreaCodeMapTest extends TestCase {
 
   public void testGetSmallerMapStorageChoosesDefaultImpl() {
     AreaCodeMapStorageStrategy mapStorage =
-        new AreaCodeMap(1).getSmallerMapStorage(createDefaultStorageMapCandidate());
+        new AreaCodeMap().getSmallerMapStorage(createDefaultStorageMapCandidate());
     assertFalse(mapStorage.isFlyweight());
   }
 
   public void testGetSmallerMapStorageChoosesFlyweightImpl() {
     AreaCodeMapStorageStrategy mapStorage =
-        new AreaCodeMap(1).getSmallerMapStorage(createFlyweightStorageMapCandidate());
+        new AreaCodeMap().getSmallerMapStorage(createFlyweightStorageMapCandidate());
     assertTrue(mapStorage.isFlyweight());
   }
 
@@ -158,21 +158,20 @@ public class AreaCodeMapTest extends TestCase {
    * this stream. The resulting area code map is expected to be strictly equal to the provided one
    * from which it was generated.
    */
-  private static AreaCodeMap createNewAreaCodeMap(AreaCodeMap areaCodeMap)
-      throws IOException {
+  private static AreaCodeMap createNewAreaCodeMap(AreaCodeMap areaCodeMap) throws IOException {
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
     areaCodeMap.writeExternal(objectOutputStream);
     objectOutputStream.flush();
 
-    AreaCodeMap newAreaCodeMap = new AreaCodeMap(1);
+    AreaCodeMap newAreaCodeMap = new AreaCodeMap();
     newAreaCodeMap.readExternal(
         new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
     return newAreaCodeMap;
   }
 
   public void testReadWriteExternalWithDefaultStrategy() throws IOException {
-    AreaCodeMap localAreaCodeMap = new AreaCodeMap(1);
+    AreaCodeMap localAreaCodeMap = new AreaCodeMap();
     localAreaCodeMap.readAreaCodeMap(createDefaultStorageMapCandidate());
     assertFalse(localAreaCodeMap.getAreaCodeMapStorage().isFlyweight());
 
@@ -182,7 +181,7 @@ public class AreaCodeMapTest extends TestCase {
   }
 
   public void testReadWriteExternalWithFlyweightStrategy() throws IOException {
-    AreaCodeMap localAreaCodeMap = new AreaCodeMap(1);
+    AreaCodeMap localAreaCodeMap = new AreaCodeMap();
     localAreaCodeMap.readAreaCodeMap(createFlyweightStorageMapCandidate());
     assertTrue(localAreaCodeMap.getAreaCodeMapStorage().isFlyweight());
 

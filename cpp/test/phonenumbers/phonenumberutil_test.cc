@@ -270,7 +270,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("(\\d{3})(\\d{3})(\\d{4})",
             metadata->number_format(1).pattern());
   EXPECT_EQ("$1 $2 $3", metadata->number_format(1).format());
-  EXPECT_EQ("[13-9]\\d{9}|2[0-35-9]\\d{8}",
+  EXPECT_EQ("[13-689]\\d{9}|2[0-35-9]\\d{8}",
             metadata->general_desc().national_number_pattern());
   EXPECT_EQ("\\d{7}(?:\\d{3})?",
             metadata->general_desc().possible_number_pattern());
@@ -294,7 +294,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
   EXPECT_EQ("(\\d{3})(\\d{3,4})(\\d{4})",
             metadata->number_format(5).pattern());
   EXPECT_EQ("$1 $2 $3", metadata->number_format(5).format());
-  EXPECT_EQ("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{3,8}",
+  EXPECT_EQ("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}",
             metadata->fixed_line().national_number_pattern());
   EXPECT_EQ("\\d{2,14}", metadata->fixed_line().possible_number_pattern());
   EXPECT_EQ("30123456", metadata->fixed_line().example_number());

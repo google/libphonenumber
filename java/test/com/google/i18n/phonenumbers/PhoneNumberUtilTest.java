@@ -147,7 +147,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
                  metadata.getNumberFormat(1).getPattern());
     assertEquals("$1 $2 $3", metadata.getNumberFormat(1).getFormat());
-    assertEquals("[13-9]\\d{9}|2[0-35-9]\\d{8}",
+    assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
     assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
     assertTrue(metadata.getGeneralDesc().exactlySameAs(metadata.getFixedLine()));
@@ -170,7 +170,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
                  metadata.getNumberFormat(5).getPattern());
     assertEquals("$1 $2 $3", metadata.getNumberFormat(5).getFormat());
-    assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{3,8}",
+    assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}",
                  metadata.getFixedLine().getNationalNumberPattern());
     assertEquals("\\d{2,14}", metadata.getFixedLine().getPossibleNumberPattern());
     assertEquals("30123456", metadata.getFixedLine().getExampleNumber());
@@ -1837,8 +1837,6 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "03 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
-                 phoneUtil.isNumberMatch("3 331-6005", "03 331 6005"));
-    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch(NZ_NUMBER, "03 331 6005"));
     // Here the second number possibly starts with the country calling code for New Zealand,
     // although we are unsure.
@@ -1872,6 +1870,10 @@ public class PhoneNumberUtilTest extends TestCase {
     // Short NSN matches with the country not specified for either one or both numbers.
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "331 6005"));
+    // We did not know that the "0" was a national prefix since neither number has a country code,
+    // so this is considered a SHORT_NSN_MATCH.
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("3 331-6005", "03 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("3 331-6005", "331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,

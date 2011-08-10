@@ -15,31 +15,13 @@
 # Generated from:
 # http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Sv_nrplan_telefoni_enl_TU-T_rek_E.164.pdf [2011-02-25]
 
-468|Stockholm
 4611|Norrköping
-4613|Linköping
-4616|Eskilstuna-Torshälla
-4618|Uppsala
-4619|Örebro-Kumla
-4621|Västerås
-4626|Gävle-Sandviken
-4631|Göteborg
-4633|Borås
-4635|Halmstad
-4636|Jönköping-Huskvarna
-4640|Malmö
-4642|Helsingborg-Höganäs
-4644|Kristianstad
-4646|Lund
-4654|Karlstad
-4660|Sundsval-Timrå
-4663|Östersund
-4690|Umeå
 46120|Åtvidaberg
 46121|Söderköping
 46122|Finspång
 46123|Valdemarsvik
 46125|Vikbolandet
+4613|Linköping
 46140|Tranås
 46141|Motala
 46142|Mjölby-Skänninge-Boxholm
@@ -53,10 +35,14 @@
 46157|Flen-Malmköping
 46158|Gnesta
 46159|Mariefred
+4616|Eskilstuna-Torshälla
 46171|Enköping
 46174|Alunda
 46175|Hallstavik-Rimbo
 46176|Norrtälje
+4618|Uppsala
+4619|Örebro-Kumla
+4621|Västerås
 46220|Hallstahammar-Surahammar
 46221|Köping
 46222|Skinnskatteberg
@@ -73,6 +59,7 @@
 46250|Mora-Orsa
 46251|Älvdalen
 46253|Idre-Särna
+4626|Gävle-Sandviken
 46270|Söderhamn
 46271|Alfta-Edsbyn
 46278|Bollnäs
@@ -88,13 +75,17 @@
 46300|Kungsbacka
 46301|Hindås
 46303|Kungälv
+4631|Göteborg
 46320|Kinna
 46321|Ulricehamn
 46322|Alingsås-Vårgårda
 46325|Svenljunga-Tranemo
+4633|Borås
 46340|Varberg
 46345|Hyltebruk-Torup
 46346|Falkenberg
+4635|Halmstad
+4636|Jönköping-Huskvarna
 46370|Värnamo
 46371|Gislaved-Anderstorp
 46372|Ljungby
@@ -105,6 +96,7 @@
 46390|Gränna
 46392|Mullsjö
 46393|Vaggeryd
+4640|Malmö
 46410|Trelleborg
 46411|Ystad
 46413|Eslöv-Höör
@@ -113,16 +105,19 @@
 46416|Sjöbo
 46417|Tomelilla
 46418|Landskrona-Svalöv
+4642|Helsingborg-Höganäs
 46430|Laholm
 46431|Ängelholm-Båstad
 46433|Markaryd-Strömsnäsbruk
 46435|Klippan-Perstorp
+4644|Kristianstad
 46451|Hässleholm
 46454|Karlshamn-Olofström
 46455|Karlskrona
 46456|Sölvesborg-Bromölla
 46457|Ronneby
 46459|Ryd
+4646|Lund
 46470|Växjö
 46471|Emmaboda
 46472|Alvesta-Rydaholm
@@ -168,6 +163,7 @@
 46532|Åmål
 46533|Säffle
 46534|Ed
+4654|Karlstad
 46550|Kristinehamn
 46551|Gullspång
 46552|Deje
@@ -190,6 +186,7 @@
 46589|Arboga
 46590|Filipstad
 46591|Hällefors-Grythyttan
+4660|Sundsval-Timrå
 46611|Härnösand
 46612|Kramfors
 46613|Ullånger
@@ -198,6 +195,7 @@
 46622|Näsåker
 46623|Ramsele
 46624|Backe
+4663|Östersund
 46640|Krokom
 46642|Lit
 46643|Hallen-Oviken
@@ -225,6 +223,8 @@
 46692|Liden
 46693|Bräcke-Gällö
 46696|Hammarstrand
+468|Stockholm
+4690|Umeå
 46910|Skellefteå
 46911|Piteå
 46912|Byske

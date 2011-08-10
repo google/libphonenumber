@@ -18,24 +18,6 @@
 5411|Ciudad Autónoma de Buenos Aires
 54220|Merlo
 54221|La Plata
-54223|Mar del Plata, General Pueyrredón
-54237|Moreno
-54261|Mendoza, Capital
-54264|San Juan, Capital
-54291|Bahía Blanca
-54297|Comodoro Rivadavia, Escalante
-54299|Neuquén, Confluencia
-54341|Rosario
-54342|Santa Fe, La Capital
-54343|Paraná
-54345|Concordia, Entre Ríos
-54351|Córdoba, Capital
-54353|Villa María, General San Martin
-54358|Río Cuarto
-54381|San Miguel de Tucumán, Capital
-54385|Santiago del Estero, Capital
-54387|Salta, Capital
-54388|San Salvador de Jujuy, Doctor Manuel Belgrano
 542221|Verónica, Buenos Aires
 542223|Coronel Brandsen
 542224|Buenos Aires
@@ -43,6 +25,7 @@
 542226|Cañuelas
 542227|Lobos
 542229|Buenos Aires
+54223|Mar del Plata, General Pueyrredón
 542241|Buenos Aires
 542243|General Belgrano, Buenos Aires
 542244|Las Flores
@@ -97,6 +80,7 @@
 542356|General Pinto, Buenos Aires
 542358|Buenos Aires
 542362|Junín, Buenos Aires
+54237|Moreno
 542392|Buenos Aires
 542394|Salliqueló, Buenos Aires
 542395|La Matanza
@@ -106,15 +90,18 @@
 542475|Rojas, Buenos Aires
 542477|Pergamino
 542478|Arrecifes, Buenos Aires
+54261|Mendoza, Capital
 542622|Tunuyán, Mendoza
 542623|San Martin
 542625|General Alvear, Mendoza
 542627|San Rafael
+54264|San Juan, Capital
 542652|San Luis, La Capital
 542656|Merlo, San Luis
 542657|Villa Mercedes, General Pedernera
 542901|Ushuaia
 542902|El Calafate, Lago Argentino
+54291|Bahía Blanca
 542920|Viedma, Adolfo Alsina
 542921|Coronel Dorrego, Buenos Aires
 542922|Coronel Pringles, Buenos Aires
@@ -140,7 +127,9 @@
 542964|Río Grande
 542965|Trelew, Rawson
 542966|Río Gallegos, Ger Aike
+54297|Comodoro Rivadavia, Escalante
 542983|Tres Arroyos
+54299|Neuquén, Confluencia
 543327|López Camelo, Buenos Aires
 543329|Buenos Aires
 543382|Rufino, Santa Fe
@@ -154,11 +143,15 @@
 543406|San Jorge, Santa Fe
 543407|Ramallo
 543408|San Cristóbal, Santa Fe
+54341|Rosario
+54342|Santa Fe, La Capital
+54343|Paraná
 543442|Concepción del Uruguay, Entre Ríos
 543444|Gualeguay, Entre Ríos
 543445|Rosario del Tala, Entre Ríos
 543446|Gualeguaychú
 543447|Colón
+54345|Concordia, Entre Ríos
 543460|Santa Teresa, Santa Fe
 543461|San Nicolás de Los Arroyos, San Nicolás
 543462|Venado Tuerto, General López
@@ -180,8 +173,10 @@
 543493|Sunchales, Santa Fe
 543496|Esperanza, Santa Fe
 543498|San Justo, Santa Fe
+54351|Córdoba, Capital
 543521|Capital
 543525|Jesús María, Córdoba
+54353|Villa María, General San Martin
 543541|Villa Carlos Paz, Córdoba
 543543|Córdoba, Capital
 543544|Villa Dolores, Córdoba
@@ -196,6 +191,7 @@
 543572|Capital
 543573|Villa del Rosario, Córdoba
 543576|Córdoba
+54358|Río Cuarto
 543717|Formosa
 543718|Clorinda, Formosa
 543722|Resistencia, San Fernando
@@ -218,11 +214,15 @@
 543775|Monte Caseros, Corrientes
 543777|Goya, Corrientes
 543783|Corrientes, Capital
+54381|San Miguel de Tucumán, Capital
 543822|La Rioja, Capital
 543825|Chilecito, La Rioja
 543833|San Fernando del Valle de Catamarca, Catamarca
 543835|Andalgalá, Catamarca
 543844|Añatuya, Santiago del Estero
+54385|Santiago del Estero, Capital
 543863|Monteros, Tucumán
 543865|Concepción, Tucumán
 543868|Cafayate, Salta
+54387|Salta, Capital
+54388|San Salvador de Jujuy, Doctor Manuel Belgrano

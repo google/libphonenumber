@@ -1,0 +1,59 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# Internal statistical data (2011-08-08) and translated with Freebase.
+
+35222|Luxemburg
+35223|Bad Mondorf
+35224|Luxemburg
+35225|Luxemburg
+35226|Luxemburg
+35227|Luxemburg
+35229|Luxemburg
+35230|Kanton Capellen
+35231|Bertrange
+35232|Kanton Mersch
+35233|Walferdingen
+35234|Senningerberg
+35235|Sandweiler
+35236|Hesperingen
+35237|Leudelange
+35239|Steinfort
+3524|Luxemburg
+35250|Bascharage
+35251|Dudelange
+35252|Dudelange
+35253|Esch-sur-Alzette
+35254|Esch-sur-Alzette
+35255|Esch-sur-Alzette
+35256|Rumelange
+35257|Esch-sur-Alzette
+35258|Differdange
+35259|Soleuvre
+35271|Betzdorf
+35272|Echternach
+35274|Wasserbillig
+35275|Distrikt Grevenmacher
+35276|Wormeldange
+35278|Junglinster
+35279|Berdorf
+35280|Kanton Diekirch
+35281|Ettelbrück
+35283|Kanton Vianden
+35287|Larochette
+35292|Kanton Clerf
+35295|Kanton Wiltz
+35297|Huldange
+35299|Troisvierges

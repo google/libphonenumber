@@ -16,11 +16,6 @@
 # http://www.rtr.at/en/tk/E129/Austrian_Numbering_Plan_2011-03-30.pdf [2011-03-30]
 
 431|Wien
-43316|Graz
-43463|Klagenfurt
-43512|Innsbruck
-43662|Salzburg
-43732|Linz
 432142|Gattendorf
 432143|Kittsee
 432144|Deutsch Jahrndorf
@@ -338,6 +333,7 @@
 433157|Kapfenstein
 433158|Sankt Anna am Aigen
 433159|Bad Gleichenberg
+43316|Graz
 433170|Fischbach
 433171|Gasen
 433172|Weiz
@@ -568,6 +564,7 @@
 434357|Sankt Paul im Lavanttal
 434358|Sankt Andrä
 434359|Reichenfels
+43463|Klagenfurt
 434710|Oberdrauburg
 434712|Greifenburg
 434713|Techendorf
@@ -612,6 +609,7 @@
 434876|Kals am Großglockner
 434877|Prägraten am Großvenediger
 434879|Sankt Veit in Defereggen
+43512|Innsbruck
 435212|Seefeld in Tirol
 435213|Scharnitz
 435214|Leutasch
@@ -837,6 +835,7 @@
 436584|Maria Alm am Steinernen Meer
 436588|Lofer
 436589|Unken
+43662|Salzburg
 437211|Reichenau im Mühlkreis
 437212|Zwettl an der Rodl
 437213|Bad Leonfelden
@@ -911,6 +910,7 @@
 437287|Peilstein im Mühlviertel
 437288|Ulrichsberg
 437289|Rohrbach in Oberösterreich
+43732|Linz
 437353|Gaflenz
 437355|Weyer
 437357|Kleinreifling

@@ -202,7 +202,7 @@ public class PhoneNumberUtil {
       Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "") +
       Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).toLowerCase().replaceAll("[, \\[\\]]", "");
   static final String PLUS_CHARS = "+\uFF0B";
-  private static final Pattern PLUS_CHARS_PATTERN = Pattern.compile("[" + PLUS_CHARS + "]+");
+  static final Pattern PLUS_CHARS_PATTERN = Pattern.compile("[" + PLUS_CHARS + "]+");
   private static final Pattern SEPARATOR_PATTERN = Pattern.compile("[" + VALID_PUNCTUATION + "]+");
   private static final Pattern CAPTURING_DIGIT_PATTERN = Pattern.compile("(" + DIGITS + ")");
 
@@ -213,7 +213,7 @@ public class PhoneNumberUtil {
   // not include other punctuation, as this will be stripped later during parsing and is of no
   // information value when parsing a number.
   private static final String VALID_START_CHAR = "[" + PLUS_CHARS + DIGITS + "]";
-  static final Pattern VALID_START_CHAR_PATTERN = Pattern.compile(VALID_START_CHAR);
+  private static final Pattern VALID_START_CHAR_PATTERN = Pattern.compile(VALID_START_CHAR);
 
   // Regular expression of characters typically used to start a second phone number for the purposes
   // of parsing. This allows us to strip off parts of the number that are actually the start of
@@ -252,35 +252,57 @@ public class PhoneNumberUtil {
   // as the default extension prefix. This can be overridden by region-specific preferences.
   private static final String DEFAULT_EXTN_PREFIX = " ext. ";
 
+  // Pattern to capture digits used in an extension. Places a maximum length of "7" for an
+  // extension.
+  private static final String CAPTURING_EXTN_DIGITS = "(" + DIGITS + "{1,7})";
   // Regexp of all possible ways to write extensions, for use when parsing. This will be run as a
   // case-insensitive regexp match. Wide character versions are also provided after each ASCII
-  // version. There are three regular expressions here. The first covers RFC 3966 format, where the
-  // extension is added using ";ext=". The second more generic one starts with optional white space
-  // and ends with an optional full stop (.), followed by zero or more spaces/tabs and then the
-  // numbers themselves. The other one covers the special case of American numbers where the
-  // extension is written with a hash at the end, such as "- 503#".
-  // Note that the only capturing groups should be around the digits that you want to capture as
-  // part of the extension, or else parsing will fail!
-  // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
-  // for representing the accented o - the character itself, and one in the unicode decomposed form
-  // with the combining acute accent.
-  private static final String CAPTURING_EXTN_DIGITS = "(" + DIGITS + "{1,7})";
-  static final String KNOWN_EXTN_PATTERNS =
-      RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" +
-      "[ \u00A0\\t,]*(?:ext(?:ensi(?:o\u0301?|\u00F3))?n?|" +
-      "\uFF45\uFF58\uFF54\uFF4E?|[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)" +
-      "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|" +
-      "[- ]+(" + DIGITS + "{1,5})#";
+  // version.
+  private static final String EXTN_PATTERNS_FOR_PARSING;
+  static final String EXTN_PATTERNS_FOR_MATCHING;
+  static {
+    // One-character symbols that can be used to indicate an extension.
+    String singleExtnSymbolsForMatching = "x\uFF58#\uFF03~\uFF5E";
+    // For parsing, we are slightly more lenient in our interpretation than for matching. Here we
+    // allow a "comma" as a possible extension indicator. When matching, this is hardly ever used to
+    // indicate this.
+    String singleExtnSymbolsForParsing = "," + singleExtnSymbolsForMatching;
+
+    EXTN_PATTERNS_FOR_PARSING = createExtnPattern(singleExtnSymbolsForParsing);
+    EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(singleExtnSymbolsForMatching);
+  }
+
+  /**
+   * Helper initialiser method to create the regular-expression pattern to match extensions,
+   * allowing the one-char extension symbols provided by {@code singleExtnSymbols}.
+   */
+  private static String createExtnPattern(String singleExtnSymbols) {
+    // There are three regular expressions here. The first covers RFC 3966 format, where the
+    // extension is added using ";ext=". The second more generic one starts with optional white
+    // space and ends with an optional full stop (.), followed by zero or more spaces/tabs and then
+    // the numbers themselves. The other one covers the special case of American numbers where the
+    // extension is written with a hash at the end, such as "- 503#".
+    // Note that the only capturing groups should be around the digits that you want to capture as
+    // part of the extension, or else parsing will fail!
+    // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
+    // for representing the accented o - the character itself, and one in the unicode decomposed
+    // form with the combining acute accent.
+    return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*" +
+            "(?:ext(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45\uFF58\uFF54\uFF4E?|" +
+            "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)" +
+            "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|" +
+            "[- ]+(" + DIGITS + "{1,5})#");
+  }
 
   // Regexp of all known extension prefixes used by different regions followed by 1 or more valid
   // digits, for use when parsing.
   private static final Pattern EXTN_PATTERN =
-      Pattern.compile("(?:" + KNOWN_EXTN_PATTERNS + ")$", REGEX_FLAGS);
+      Pattern.compile("(?:" + EXTN_PATTERNS_FOR_PARSING + ")$", REGEX_FLAGS);
 
   // We append optionally the extension pattern to the end here, as a valid phone number may
   // have an extension prefix appended, followed by 1 or more digits.
   private static final Pattern VALID_PHONE_NUMBER_PATTERN =
-      Pattern.compile(VALID_PHONE_NUMBER + "(?:" + KNOWN_EXTN_PATTERNS + ")?", REGEX_FLAGS);
+      Pattern.compile(VALID_PHONE_NUMBER + "(?:" + EXTN_PATTERNS_FOR_PARSING + ")?", REGEX_FLAGS);
 
   private static final Pattern NON_DIGITS_PATTERN = Pattern.compile("(\\D+)");
 
@@ -375,7 +397,7 @@ public class PhoneNumberUtil {
 
   /**
    * Leniency when {@linkplain PhoneNumberUtil#findNumbers finding} potential phone numbers in text
-   * segments.
+   * segments. The levels here are ordered in increasing strictness.
    */
   public enum Leniency {
     /**
@@ -385,7 +407,7 @@ public class PhoneNumberUtil {
      */
     POSSIBLE {
       @Override
-      boolean verify(PhoneNumber number, PhoneNumberUtil util) {
+      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
         return util.isPossibleNumber(number);
       }
     },
@@ -396,13 +418,175 @@ public class PhoneNumberUtil {
      */
     VALID {
       @Override
-      boolean verify(PhoneNumber number, PhoneNumberUtil util) {
-        return util.isValidNumber(number);
+      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
+        if (!util.isValidNumber(number)) {
+          return false;
+        }
+        return containsOnlyValidXChars(number, candidate, util);
+      }
+    },
+    /**
+     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+     * are grouped in a possible way for this locale. For example, a US number written as
+     * "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
+     * "650 253 0000", "650 2530000" or "6502530000" are.
+     * Numbers with more than one '/' symbol are also dropped at this level.
+     * <p>
+     * Warning: This level might result in lower coverage especially for regions outside of country
+     * code "+1". If you are not sure about which level to use, email the discussion group
+     * libphonenumber-discuss@googlegroups.com.
+     */
+    STRICT_GROUPING {
+      @Override
+      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
+        if (!util.isValidNumber(number) ||
+            !containsOnlyValidXChars(number, candidate, util) ||
+            containsMoreThanOneSlash(candidate)) {
+          return false;
+        }
+        // TODO: Evaluate how this works for other locales (testing has been
+        // limited to NANPA regions) and optimise if necessary.
+        String[] formattedNumberGroups = getNationalNumberGroups(util, number);
+        StringBuilder normalizedCandidate = normalizeDigits(candidate,
+                                                            true /* keep strip non-digits */);
+        int fromIndex = 0;
+        // Check each group of consecutive digits are not broken into separate groups in the
+        // {@code candidate} string.
+        for (int i = 0; i < formattedNumberGroups.length; i++) {
+          // Fails if the substring of {@code candidate} starting from {@code fromIndex} doesn't
+          // contain the consecutive digits in formattedNumberGroups[i].
+          fromIndex = normalizedCandidate.indexOf(formattedNumberGroups[i], fromIndex);
+          if (fromIndex < 0) {
+            return false;
+          }
+          // Moves {@code fromIndex} forward.
+          fromIndex += formattedNumberGroups[i].length();
+          if (i == 0 && fromIndex < normalizedCandidate.length()) {
+            // We are at the position right after the NDC.
+            if (Character.isDigit(normalizedCandidate.charAt(fromIndex))) {
+              // This means there is no formatting symbol after the NDC. In this case, we only
+              // accept the number if there is no formatting symbol at all in the number, except
+              // for extensions.
+              String nationalSignificantNumber = util.getNationalSignificantNumber(number);
+              return normalizedCandidate.substring(fromIndex - formattedNumberGroups[i].length())
+                  .startsWith(nationalSignificantNumber);
+            }
+          }
+        }
+        // The check here makes sure that we haven't mistakenly already used the extension to
+        // match the last group of the subscriber number. Note the extension cannot have
+        // formatting in-between digits.
+        return normalizedCandidate.substring(fromIndex).contains(number.getExtension());
+      }
+    },
+    /**
+     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+     * are grouped in the same way that we would have formatted it, or as a single block. For
+     * example, a US number written as "650 2530000" is not accepted at this leniency level, whereas
+     * "650 253 0000" or "6502530000" are.
+     * Numbers with more than one '/' symbol are also dropped at this level.
+     * <p>
+     * Warning: This level might result in lower coverage especially for regions outside of country
+     * code "+1". If you are not sure about which level to use, email the discussion group
+     * libphonenumber-discuss@googlegroups.com.
+     */
+    EXACT_GROUPING {
+      @Override
+      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
+        if (!util.isValidNumber(number) ||
+            !containsOnlyValidXChars(number, candidate, util) ||
+            containsMoreThanOneSlash(candidate)) {
+          return false;
+        }
+        // TODO: Evaluate how this works for other locales (testing has been
+        // limited to NANPA regions) and optimise if necessary.
+        StringBuilder normalizedCandidate = normalizeDigits(candidate,
+                                                            true /* keep strip non-digits */);
+        String[] candidateGroups =
+            NON_DIGITS_PATTERN.split(normalizedCandidate.toString());
+        // Set this to the last group, skipping it if the number has an extension.
+        int candidateNumberGroupIndex =
+            number.hasExtension() ? candidateGroups.length - 2 : candidateGroups.length - 1;
+        // First we check if the national significant number is formatted as a block.
+        // We use contains and not equals, since the national significant number may be present with
+        // a prefix such as a national number prefix, or the country code itself.
+        if (candidateGroups.length == 1 ||
+            candidateGroups[candidateNumberGroupIndex].contains(
+                util.getNationalSignificantNumber(number))) {
+          return true;
+        }
+        String[] formattedNumberGroups = getNationalNumberGroups(util, number);
+        // Starting from the end, go through in reverse, excluding the first group, and check the
+        // candidate and number groups are the same.
+        for (int formattedNumberGroupIndex = (formattedNumberGroups.length - 1);
+             formattedNumberGroupIndex > 0 && candidateNumberGroupIndex >= 0;
+             formattedNumberGroupIndex--, candidateNumberGroupIndex--) {
+          if (!candidateGroups[candidateNumberGroupIndex].equals(
+              formattedNumberGroups[formattedNumberGroupIndex])) {
+            return false;
+          }
+        }
+        // Now check the first group. There may be a national prefix at the start, so we only check
+        // that the candidate group ends with the formatted number group.
+        return (candidateNumberGroupIndex >= 0 &&
+                candidateGroups[candidateNumberGroupIndex].endsWith(formattedNumberGroups[0]));
       }
     };
 
+    /**
+     * Helper method to get the national-number part of a number, formatted without any national
+     * prefix, and return it as a set of digit blocks that would be formatted together.
+     */
+    private static String[] getNationalNumberGroups(PhoneNumberUtil util, PhoneNumber number) {
+      // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
+      String rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
+      // We remove the extension part from the formatted string before splitting it into different
+      // groups.
+      int endIndex = rfc3966Format.indexOf(';');
+      if (endIndex < 0) {
+        endIndex = rfc3966Format.length();
+      }
+      // The country-code will have a '-' following it.
+      int startIndex = rfc3966Format.indexOf('-') + 1;
+      return rfc3966Format.substring(startIndex, endIndex).split("-");
+    }
+
+    private static boolean containsMoreThanOneSlash(String candidate) {
+      int firstSlashIndex = candidate.indexOf('/');
+      return (firstSlashIndex > 0 && candidate.substring(firstSlashIndex + 1).contains("/"));
+    }
+
+    private static boolean containsOnlyValidXChars(
+        PhoneNumber number, String candidate, PhoneNumberUtil util) {
+      // The characters 'x' and 'X' can be (1) a carrier code, in which case they always precede the
+      // national significant number or (2) an extension sign, in which case they always precede the
+      // extension number. We assume a carrier code is more than 1 digit, so the first case has to
+      // have more than 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1
+      // 'x' or 'X'. We ignore the character if it appears as the last character of the string.
+      for (int index = 0; index < candidate.length() - 1; index++) {
+        char charAtIndex = candidate.charAt(index);
+        if (charAtIndex == 'x' || charAtIndex == 'X') {
+          char charAtNextIndex = candidate.charAt(index + 1);
+          if (charAtNextIndex == 'x' || charAtNextIndex == 'X') {
+            // This is the carrier code case, in which the 'X's always precede the national
+            // significant number.
+            index++;
+            if (util.isNumberMatch(number, candidate.substring(index)) != MatchType.NSN_MATCH) {
+              return false;
+            }
+          // This is the extension sign case, in which the 'x' or 'X' should always precede the
+          // extension number.
+          } else if (!PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(index)).equals(
+              number.getExtension())) {
+              return false;
+          }
+        }
+      }
+      return true;
+    }
+
     /** Returns true if {@code number} is a verified number according to this leniency. */
-    abstract boolean verify(PhoneNumber number, PhoneNumberUtil util);
+    abstract boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util);
   }
 
   /**
@@ -534,15 +718,20 @@ public class PhoneNumberUtil {
    * @return        the normalized string version of the phone number
    */
   public static String normalizeDigitsOnly(String number) {
-    int numberLength = number.length();
-    StringBuilder normalizedDigits = new StringBuilder(numberLength);
-    for (int i = 0; i < numberLength; i++) {
-      int d = Character.digit(number.charAt(i), 10);
-      if (d != -1) {
-        normalizedDigits.append(d);
+    return normalizeDigits(number, false /* strip non-digits */).toString();
+  }
+
+  private static StringBuilder normalizeDigits(String number, boolean keepNonDigits) {
+    StringBuilder normalizedDigits = new StringBuilder(number.length());
+    for (char c : number.toCharArray()) {
+      int digit = Character.digit(c, 10);
+      if (digit != -1) {
+        normalizedDigits.append(digit);
+      } else if (keepNonDigits) {
+        normalizedDigits.append(c);
       }
     }
-    return normalizedDigits.toString();
+    return normalizedDigits;
   }
 
   /**
@@ -1603,7 +1792,7 @@ public class PhoneNumberUtil {
    * could contain a leading zero. An example of such a region is Italy. Returns false if no
    * metadata for the country is found.
    */
-  public boolean isLeadingZeroPossible(int countryCallingCode) {
+  boolean isLeadingZeroPossible(int countryCallingCode) {
     PhoneMetadata mainMetadataForCallingCode = getMetadataForRegion(
         getRegionCodeForCountryCode(countryCallingCode));
     if (mainMetadataForCallingCode == null) {
@@ -1972,13 +2161,15 @@ public class PhoneNumberUtil {
     String possibleNationalPrefix = metadata.getNationalPrefixForParsing();
     if (numberLength == 0 || possibleNationalPrefix.length() == 0) {
       // Early return for numbers of zero length.
-      return carrierCode;
+      return "";
     }
     // Attempt to parse the first digits as a national prefix.
     Matcher prefixMatcher = regexCache.getPatternForRegex(possibleNationalPrefix).matcher(number);
     if (prefixMatcher.lookingAt()) {
       Pattern nationalNumberRule =
           regexCache.getPatternForRegex(metadata.getGeneralDesc().getNationalNumberPattern());
+      // Check if the original number is viable.
+      boolean isViableOriginalNumber = nationalNumberRule.matcher(number).matches();
       // prefixMatcher.group(numOfGroups) == null implies nothing was captured by the capturing
       // groups in possibleNationalPrefix; therefore, no transformation is necessary, and we just
       // remove the national prefix.
@@ -1986,23 +2177,23 @@ public class PhoneNumberUtil {
       String transformRule = metadata.getNationalPrefixTransformRule();
       if (transformRule == null || transformRule.length() == 0 ||
           prefixMatcher.group(numOfGroups) == null) {
-        // Check that the resultant number is viable. If not, return.
-        Matcher nationalNumber = nationalNumberRule.matcher(number.substring(prefixMatcher.end()));
-        if (!nationalNumber.matches()) {
-          return carrierCode;
+        // If the original number was viable, and the resultant number is not, we return.
+        if (isViableOriginalNumber &&
+            !nationalNumberRule.matcher(number.substring(prefixMatcher.end())).matches()) {
+          return "";
         }
         if (numOfGroups > 0 && prefixMatcher.group(numOfGroups) != null) {
           carrierCode = prefixMatcher.group(1);
         }
         number.delete(0, prefixMatcher.end());
       } else {
-        // Check that the resultant number is viable. If not, return. Check this by copying the
-        // string buffer and making the transformation on the copy first.
+        // Check that the resultant number is still viable. If not, return. Check this by copying
+        // the string buffer and making the transformation on the copy first.
         StringBuilder transformedNumber = new StringBuilder(number);
         transformedNumber.replace(0, numberLength, prefixMatcher.replaceFirst(transformRule));
-        Matcher nationalNumber = nationalNumberRule.matcher(transformedNumber.toString());
-        if (!nationalNumber.matches()) {
-          return carrierCode;
+        if (isViableOriginalNumber &&
+            !nationalNumberRule.matcher(transformedNumber.toString()).matches()) {
+          return "";
         }
         if (numOfGroups > 1) {
           carrierCode = prefixMatcher.group(1);
@@ -2246,9 +2437,7 @@ public class PhoneNumberUtil {
       throw new NumberParseException(NumberParseException.ErrorType.TOO_LONG,
                                      "The string supplied is too long to be a phone number.");
     }
-    if (normalizedNationalNumber.charAt(0) == '0' &&
-        regionMetadata != null &&
-        regionMetadata.isLeadingZeroPossible()) {
+    if (normalizedNationalNumber.charAt(0) == '0') {
       phoneNumber.setItalianLeadingZero(true);
     }
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));

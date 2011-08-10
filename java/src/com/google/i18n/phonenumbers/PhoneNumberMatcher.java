@@ -79,9 +79,10 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
   /**
    * Matches white-space, which may indicate the end of a phone number and the start of something
-   * else (such as a neighbouring zip-code).
+   * else (such as a neighbouring zip-code). If white-space is found, continues to match all
+   * characters that are not typically used to start a phone number.
    */
-  private static final Pattern GROUP_SEPARATOR = Pattern.compile("\\p{Z}+");
+  private static final Pattern GROUP_SEPARATOR;
 
   /**
    * Punctuation that may be at the start of a phone number - brackets and plus signs.
@@ -127,14 +128,16 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     /* A digits block without punctuation. */
     String digitSequence = "\\p{Nd}" + limit(1, digitBlockLimit);
 
-    String leadClass = "[" + openingParens + PhoneNumberUtil.PLUS_CHARS + "]";
+    String leadClassChars = openingParens + PhoneNumberUtil.PLUS_CHARS;
+    String leadClass = "[" + leadClassChars + "]";
     LEAD_CLASS = Pattern.compile(leadClass);
+    GROUP_SEPARATOR = Pattern.compile("\\p{Z}" + "[^" + leadClassChars  + "\\p{Nd}]*");
 
     /* Phone number pattern allowing optional punctuation. */
     PATTERN = Pattern.compile(
         "(?:" + leadClass + punctuation + ")" + leadLimit +
         digitSequence + "(?:" + punctuation + digitSequence + ")" + blockLimit +
-        "(?:" + PhoneNumberUtil.KNOWN_EXTN_PATTERNS + ")?",
+        "(?:" + PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING + ")?",
         PhoneNumberUtil.REGEX_FLAGS);
   }
 
@@ -178,10 +181,10 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    *
    * @param util      the phone number util to use
    * @param text      the character sequence that we will search, null for no text
-   * @param country   the ISO 3166-1 two-letter country code indicating the country to assume for
-   *                  phone numbers not written in international format (with a leading plus, or
-   *                  with the international dialing prefix of the specified region). May be null or
-   *                  "ZZ" if only numbers with a leading plus should be considered.
+   * @param country   the country to assume for phone numbers not written in international format
+   *                  (with a leading plus, or with the international dialing prefix of the
+   *                  specified region). May be null or "ZZ" if only numbers with a
+   *                  leading plus should be considered.
    * @param leniency  the leniency to use when evaluating candidate phone numbers
    * @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
    *                  This is to cover degenerate cases where the text has a lot of false positives
@@ -290,6 +293,10 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         block.equals(UnicodeBlock.COMBINING_DIACRITICAL_MARKS);
   }
 
+  private static boolean isCurrencySymbol(char character) {
+    return Character.getType(character) == Character.CURRENCY_SYMBOL;
+  }
+
   /**
    * Attempts to extract a match from a {@code candidate} character sequence.
    *
@@ -301,21 +308,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // Skip a match that is more likely a publication page reference or a date.
     if (PUB_PAGES.matcher(candidate).find() || SLASH_SEPARATED_DATES.matcher(candidate).find()) {
       return null;
-    }
-
-    // If leniency is set to VALID only, we also want to skip numbers that are surrounded by Latin
-    // alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
-    if (leniency == Leniency.VALID) {
-      // If the candidate is not at the start of the text, and does not start with punctuation and
-      // the previous character is not a Latin letter, return null.
-      if (offset > 0 &&
-          (!LEAD_CLASS.matcher(candidate).lookingAt() && isLatinLetter(text.charAt(offset - 1)))) {
-        return null;
-      }
-      int lastCharIndex = offset + candidate.length();
-      if (lastCharIndex < text.length() && isLatinLetter(text.charAt(lastCharIndex))) {
-        return null;
-      }
     }
 
     // Try to come up with a valid match given the entire candidate.
@@ -344,20 +336,29 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     Matcher groupMatcher = GROUP_SEPARATOR.matcher(candidate);
 
     if (groupMatcher.find()) {
-      int groupStartIndex = groupMatcher.end();
-      // Remove the first group.
-      CharSequence withoutFirstGroup = candidate.substring(groupStartIndex);
+      // Try the first group by itself.
+      CharSequence firstGroupOnly = candidate.substring(0, groupMatcher.start());
+      firstGroupOnly = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
+                                           firstGroupOnly);
+      PhoneNumberMatch match = parseAndVerify(firstGroupOnly.toString(), offset);
+      if (match != null) {
+        return match;
+      }
+      maxTries--;
+
+      int withoutFirstGroupStart = groupMatcher.end();
+      // Try the rest of the candidate without the first group.
+      CharSequence withoutFirstGroup = candidate.substring(withoutFirstGroupStart);
       withoutFirstGroup = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
                                               withoutFirstGroup);
-      PhoneNumberMatch match = parseAndVerify(withoutFirstGroup.toString(),
-                                              offset + groupStartIndex);
+      match = parseAndVerify(withoutFirstGroup.toString(), offset + withoutFirstGroupStart);
       if (match != null) {
         return match;
       }
       maxTries--;
 
       if (maxTries > 0) {
-        int lastGroupStart = groupStartIndex;
+        int lastGroupStart = withoutFirstGroupStart;
         while (groupMatcher.find()) {
           // Find the last group.
           lastGroupStart = groupMatcher.start();
@@ -365,6 +366,12 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         CharSequence withoutLastGroup = candidate.substring(0, lastGroupStart);
         withoutLastGroup = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
                                                withoutLastGroup);
+        if (withoutLastGroup.equals(firstGroupOnly)) {
+          // If there are only two groups, then the group "without the last group" is the same as
+          // the first group. In these cases, we don't want to re-check the number group, so we exit
+          // already.
+          return null;
+        }
         match = parseAndVerify(withoutLastGroup.toString(), offset);
         if (match != null) {
           return match;
@@ -391,8 +398,30 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       if (!MATCHING_BRACKETS.matcher(candidate).matches()) {
         return null;
       }
+
+      // If leniency is set to VALID or stricter, we also want to skip numbers that are surrounded
+      // by Latin alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
+      if (leniency.compareTo(Leniency.VALID) >= 0) {
+        // If the candidate is not at the start of the text, and does not start with phone-number
+        // punctuation, check the previous character.
+        if (offset > 0 && !LEAD_CLASS.matcher(candidate).lookingAt()) {
+          char previousChar = text.charAt(offset - 1);
+          // We return null if it is a latin letter or a currency symbol.
+          if (isCurrencySymbol(previousChar) || isLatinLetter(previousChar)) {
+            return null;
+          }
+        }
+        int lastCharIndex = offset + candidate.length();
+        if (lastCharIndex < text.length()) {
+          char nextChar = text.charAt(lastCharIndex);
+          if (isCurrencySymbol(nextChar) || isLatinLetter(nextChar)) {
+            return null;
+          }
+        }
+      }
+
       PhoneNumber number = phoneUtil.parse(candidate, preferredRegion);
-      if (leniency.verify(number, phoneUtil)) {
+      if (leniency.verify(number, candidate, phoneUtil)) {
         return new PhoneNumberMatch(offset, candidate, number);
       }
     } catch (NumberParseException e) {

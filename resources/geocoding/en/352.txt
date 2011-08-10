@@ -1,0 +1,59 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# Internal statistical data (2011-08-08) and translated with Freebase.
+
+35222|Luxembourg
+35223|Mondorf-les-Bains
+35224|Luxembourg
+35225|Luxembourg
+35226|Luxembourg
+35227|Luxembourg
+35229|Luxembourg
+35230|Capellen
+35231|Bertrange
+35232|Mersch
+35233|Walferdange
+35234|Senningerberg
+35235|Sandweiler
+35236|Hesperange
+35237|Leudelange
+35239|Steinfort
+3524|Luxembourg
+35250|Bascharage
+35251|Dudelange
+35252|Dudelange
+35253|Esch-sur-Alzette
+35254|Esch-sur-Alzette
+35255|Esch-sur-Alzette
+35256|Rumelange
+35257|Esch-sur-Alzette
+35258|Differdange
+35259|Soleuvre
+35271|Betzdorf
+35272|Echternach
+35274|Wasserbillig
+35275|Grevenmacher
+35276|Wormeldange
+35278|Junglinster
+35279|Berdorf
+35280|Diekirch
+35281|Ettelbruck
+35283|Vianden
+35287|Larochette
+35292|Clervaux
+35295|Wiltz
+35297|Huldange
+35299|Troisvierges

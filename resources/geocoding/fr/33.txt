@@ -15,17 +15,6 @@
 # Generated from:
 # Internal statistical data (2011-06-02)
 
-331402|Paris
-331434|Paris
-331447|Paris
-331458|Paris
-334910|Marseille
-334911|Marseille
-334914|Marseille
-334915|Marseille
-334917|Marseille
-334918|Marseille
-334938|Nice
 3310000|Paris
 3313004|Ecquevilly
 3313005|Coignières
@@ -291,6 +280,7 @@
 3314017|Paris
 3314018|Paris
 3314019|Paris
+331402|Paris
 3314030|Paris
 3314031|Paris
 3314033|Paris
@@ -539,6 +529,7 @@
 3314337|Paris
 3314338|Paris
 3314339|Créteil
+331434|Paris
 3314350|Sceaux
 3314351|Montfermeil
 3314352|Aubervilliers
@@ -632,6 +623,7 @@
 3314467|Paris
 3314468|Paris
 3314469|Paris
+331447|Paris
 3314482|Paris
 3314483|Paris
 3314484|Paris
@@ -721,6 +713,7 @@
 3314577|Paris
 3314578|Paris
 3314579|Paris
+331458|Paris
 3314590|Sucy-en-Brie
 3314591|Aulnay-sous-Bois
 3314592|Noisy-le-Grand
@@ -5027,6 +5020,8 @@
 3349096|Arles
 3349097|Saintes-Mariés-de-la-Mer
 3349098|Arles
+334910|Marseille
+334911|Marseille
 3349121|Marseille
 3349122|Marseille
 3349123|Marseille
@@ -5043,6 +5038,8 @@
 3349135|Marseille
 3349136|Marseille
 3349137|Marseille
+334914|Marseille
+334915|Marseille
 3349160|Marseille
 3349161|Marseille
 3349162|Marseille
@@ -5053,6 +5050,8 @@
 3349167|Marseille
 3349168|Allauch
 3349169|Marseille
+334917|Marseille
+334918|Marseille
 3349190|Marseille
 3349191|Marseille
 3349192|Marseille
@@ -5210,6 +5209,7 @@
 3349377|Roquefort-les-Pins
 3349378|Beausoleil
 3349379|Contes
+334938|Nice
 3349390|Cannes
 3349391|Tourrette-Levens
 3349392|Nice

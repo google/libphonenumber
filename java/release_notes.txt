@@ -1,3 +1,26 @@
+August 10th, 2011: libphonenumber-3.8
+* Code changes
+ - Fix to demo to not throw null-ptr exceptions for invalid NANPA numbers
+ - Fixed AYTF to not accept plus signs in the middle of input
+ - PhoneNumberMatcher improvements - added STRICT_GROUPING and EXACT_GROUPING
+   levels, numbers followed/preceded by a currency symbol will not match,
+   multiple numbers separated by phone-number punctuation will now match. ", "
+   is no longer accepted as an extension symbol when matching, only when
+   parsing. "x" is only accepted as a carrier code or extension marker, not
+   otherwise.
+ - Changes to handling of leading zeroes - these will not be silently ignored
+   anymore, but will be stored as part of the number.
+ - PhoneNumberOfflineGeocoder - new method to get the description of a number that assumes
+   the validity of the number has already been checked and will not re-verify it.
+
+* Metadata changes
+ - Updates: AR, AT, AU, AZ, BE, BF, BH, CA, CN, CO, CR, HT, HU, IT, KG, KH, LB,
+   LI, ME, NC, RS, SE, TT, US, ZA
+ - New geocoding data for: AL, BF, BJ, BW, CI, CZ, DZ, EE, GH, GN, GR, HU, IS,
+   LK, LS, LT, LU, LV, MG, NA, PE, SK, SN, SZ, TN, VN, ZA
+ - Updated geocoding data for: GB, PT, US
+ - Revised sorting of geocoding data
+
 July 5th, 2011
 * Code changes
  - Refactored AreaCodeMap to minimize binary and memory footprint by using 2 different strategies.

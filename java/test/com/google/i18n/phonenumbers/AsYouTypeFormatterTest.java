@@ -56,6 +56,23 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("650253", formatter.inputDigit('3'));
   }
 
+  public void testInvalidPlusSign() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("ZZ");
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+4", formatter.inputDigit('4'));
+    assertEquals("+48 ", formatter.inputDigit('8'));
+    assertEquals("+48 8", formatter.inputDigit('8'));
+    assertEquals("+48 88", formatter.inputDigit('8'));
+    assertEquals("+48 88 1", formatter.inputDigit('1'));
+    assertEquals("+48 88 12", formatter.inputDigit('2'));
+    assertEquals("+48 88 123", formatter.inputDigit('3'));
+    assertEquals("+48 88 123 1", formatter.inputDigit('1'));
+    // A plus sign can only appear at the beginning of the number; otherwise, no formatting is
+    // applied. 
+    assertEquals("+48881231+", formatter.inputDigit('+'));
+    assertEquals("+48881231+2", formatter.inputDigit('2'));    
+  }
+
   public void testTooLongNumberMatchingMultipleLeadingDigits() {
     // See http://code.google.com/p/libphonenumber/issues/detail?id=36
     // The bug occurred last time for countries which have two formatting rules with exactly the
