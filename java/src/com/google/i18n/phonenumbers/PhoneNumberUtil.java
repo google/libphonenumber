@@ -379,8 +379,9 @@ public class PhoneNumberUtil {
    */
   public enum Leniency {
     /**
-     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
-     * possible}, but not necessarily {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}.
+     * Phone numbers accepted are
+     * {@linkplain PhoneNumberUtil#isPossibleNumber(Phonenumber.PhoneNumber) possible}, but not
+     * necessarily {@linkplain PhoneNumberUtil#isValidNumber(Phonenumber.PhoneNumber) valid}.
      */
     POSSIBLE {
       @Override
@@ -389,8 +390,9 @@ public class PhoneNumberUtil {
       }
     },
     /**
-     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
-     * possible} and {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}.
+     * Phone numbers accepted are
+     * {@linkplain PhoneNumberUtil#isPossibleNumber(Phonenumber.PhoneNumber) possible} and
+     * {@linkplain PhoneNumberUtil#isValidNumber(Phonenumber.PhoneNumber) valid}.
      */
     VALID {
       @Override
@@ -793,8 +795,9 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Same as {@link #format(PhoneNumber, PhoneNumberFormat)}, but accepts a mutable StringBuilder as
-   * a parameter to decrease object creation when invoked many times.
+   * Same as {@link #format(Phonenumber.PhoneNumber, PhoneNumberUtil.PhoneNumberFormat)}, but
+   * accepts a mutable StringBuilder as a parameter to decrease object creation when invoked many
+   * times.
    */
   public void format(PhoneNumber number, PhoneNumberFormat numberFormat,
                      StringBuilder formattedNumber) {
@@ -1710,10 +1713,10 @@ public class PhoneNumberUtil {
   /**
    * Check whether a phone number is a possible number given a number in the form of a string, and
    * the region where the number could be dialed from. It provides a more lenient check than
-   * {@link #isValidNumber}. See {@link #isPossibleNumber(PhoneNumber)} for details.
+   * {@link #isValidNumber}. See {@link #isPossibleNumber(Phonenumber.PhoneNumber)} for details.
    *
-   * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber)}
-   * with the resultant PhoneNumber object.
+   * <p>This method first parses the number, then invokes
+   * {@link #isPossibleNumber(Phonenumber.PhoneNumber)} with the resultant PhoneNumber object.
    *
    * @param number  the number that needs to be checked, in the form of a string
    * @param regionDialingFrom  the region that we are expecting the number to be dialed from.
@@ -2339,14 +2342,15 @@ public class PhoneNumberUtil {
 
   /**
    * Takes two phone numbers as strings and compares them for equality. This is a convenience
-   * wrapper for {@link #isNumberMatch(PhoneNumber, PhoneNumber)}. No default region is known.
+   * wrapper for {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)}. No
+   * default region is known.
    *
    * @param firstNumber  first number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
-   *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
+   *     {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)} for more details.
    */
   public MatchType isNumberMatch(String firstNumber, String secondNumber) {
     try {
@@ -2378,13 +2382,14 @@ public class PhoneNumberUtil {
 
   /**
    * Takes two phone numbers and compares them for equality. This is a convenience wrapper for
-   * {@link #isNumberMatch(PhoneNumber, PhoneNumber)}. No default region is known.
+   * {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)}. No default region is
+   * known.
    *
    * @param firstNumber  first number to compare in proto buffer format.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
-   *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
+   *     {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)} for more details.
    */
   public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber) {
     // First see if the second number has an implicit country calling code, by attempting to parse
