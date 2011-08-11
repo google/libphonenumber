@@ -18,6 +18,7 @@ package com.google.i18n.phonenumbers.tools;
 
 import com.google.i18n.phonenumbers.geocoding.AreaCodeMap;
 import com.google.i18n.phonenumbers.geocoding.MappingFileProvider;
+import com.google.i18n.phonenumbers.tools.GenerateAreaCodeData.AreaCodeMappingHandler;
 
 import junit.framework.TestCase;
 
@@ -26,7 +27,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -84,11 +89,88 @@ public class GenerateAreaCodeDataTest extends TestCase {
     assertEquals("1|en,en_US,es,\n33|en,fr,\n86|zh_Hans,\n", mappingFileProvider.toString());
   }
 
-  private static String convertData(String input) throws IOException {
+  private static Map<Integer, String> parseTextFileHelper(String input) throws IOException {
+    final Map<Integer, String> mappings = new HashMap<Integer, String>();
+    GenerateAreaCodeData.parseTextFile(new ByteArrayInputStream(input.getBytes()),
+                                       new AreaCodeMappingHandler() {
+      @Override
+      public void process(int areaCode, String location) {
+        mappings.put(areaCode, location);
+      }
+    });
+    return mappings;
+  }
+
+  public void testParseTextFile() throws IOException {
+    Map<Integer, String> result = parseTextFileHelper("331|Paris\n334|Marseilles\n");
+    assertEquals(2, result.size());
+    assertEquals("Paris", result.get(331));
+    assertEquals("Marseilles", result.get(334));
+  }
+
+  public void testParseTextFileIgnoresComments() throws IOException {
+    Map<Integer, String> result = parseTextFileHelper("# Hello\n331|Paris\n334|Marseilles\n");
+    assertEquals(2, result.size());
+    assertEquals("Paris", result.get(331));
+    assertEquals("Marseilles", result.get(334));
+  }
+
+  public void testParseTextFileIgnoresBlankLines() throws IOException {
+    Map<Integer, String> result = parseTextFileHelper("\n331|Paris\n334|Marseilles\n");
+    assertEquals(2, result.size());
+    assertEquals("Paris", result.get(331));
+    assertEquals("Marseilles", result.get(334));
+  }
+
+  public void testParseTextFileIgnoresTrailingWhitespaces() throws IOException {
+    Map<Integer, String> result = parseTextFileHelper("331|Paris  \n334|Marseilles  \n");
+    assertEquals(2, result.size());
+    assertEquals("Paris", result.get(331));
+    assertEquals("Marseilles", result.get(334));
+  }
+
+  public void testParseTextFileThrowsExceptionWithMalformattedData() throws IOException {
+    try {
+      parseTextFileHelper("331");
+      fail();
+    } catch (RuntimeException e) {
+      // Expected.
+    }
+  }
+
+  public void testParseTextFileThrowsExceptionWithMissingLocation() throws IOException {
+    try {
+      parseTextFileHelper("331|");
+      fail();
+    } catch (RuntimeException e) {
+      // Expected.
+    }
+  }
+
+  public void testSplitMap() {
+    SortedMap<Integer, String> mappings = new TreeMap<Integer, String>();
+    List<File> outputFiles = Arrays.asList(new File("1201_en"), new File("1202_en"));
+    mappings.put(12011, "Location1");
+    mappings.put(12012, "Location2");
+    mappings.put(12021, "Location3");
+    mappings.put(12022, "Location4");
+
+    Map<File, SortedMap<Integer, String>> splitMaps =
+        GenerateAreaCodeData.splitMap(mappings, outputFiles);
+    assertEquals(2, splitMaps.size());
+    assertEquals("Location1", splitMaps.get(new File("1201_en")).get(12011));
+    assertEquals("Location2", splitMaps.get(new File("1201_en")).get(12012));
+    assertEquals("Location3", splitMaps.get(new File("1202_en")).get(12021));
+    assertEquals("Location4", splitMaps.get(new File("1202_en")).get(12022));
+  }
+
+  private static String convertDataHelper(String input) throws IOException {
     ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-    GenerateAreaCodeData.convertData(byteArrayInputStream, byteArrayOutputStream);
+    SortedMap<Integer, String> areaCodeMappings =
+        GenerateAreaCodeData.readMappingsFromTextFile(byteArrayInputStream);
+    GenerateAreaCodeData.writeToBinaryFile(areaCodeMappings, byteArrayOutputStream);
     // The byte array output stream now contains the corresponding serialized area code map. Try
     // to deserialize it and compare it with the initial input.
     AreaCodeMap areaCodeMap = new AreaCodeMap();
@@ -101,46 +183,15 @@ public class GenerateAreaCodeDataTest extends TestCase {
   public void testConvertData() throws IOException {
     String input = "331|Paris\n334|Marseilles\n";
 
-    String dataAfterDeserialization = convertData(input);
+    String dataAfterDeserialization = convertDataHelper(input);
     assertEquals(input, dataAfterDeserialization);
-    // Make sure convertData() ignores comments.
-    dataAfterDeserialization = convertData("  # Comment.\n" + input);
-    assertEquals(input, dataAfterDeserialization);
-    // Make sure convertData() ignores blank lines.
-    dataAfterDeserialization = convertData("\n" + input);
-    assertEquals(input, dataAfterDeserialization);
-    // Make sure convertData() ignores trailing white spaces.
-    dataAfterDeserialization = convertData(" \n" + input);
-    assertEquals(input, dataAfterDeserialization);
-  }
-
-  public void testConvertDataThrowsExceptionWithMalformattedData() throws IOException {
-    String input = "331";
-
-    try {
-      convertData(input);
-      fail();
-    } catch (RuntimeException e) {
-      // Expected.
-    }
-  }
-
-  public void testConvertDataThrowsExceptionWithMissingLocation() throws IOException {
-    String input = "331|";
-
-    try {
-      convertData(input);
-      fail();
-    } catch (RuntimeException e) {
-      // Expected.
-    }
   }
 
   public void testConvertDataThrowsExceptionWithDuplicatedAreaCodes() throws IOException {
     String input = "331|Paris\n331|Marseilles\n";
 
     try {
-      convertData(input);
+      convertDataHelper(input);
       fail();
     } catch (RuntimeException e) {
       // Expected.

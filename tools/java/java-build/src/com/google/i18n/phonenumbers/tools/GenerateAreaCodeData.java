@@ -24,7 +24,6 @@ import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,8 +32,10 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -57,6 +58,7 @@ public class GenerateAreaCodeData extends Command {
   private final File inputPath;
   // The path to the output directory.
   private final File outputPath;
+  private static final int NANPA_COUNTRY_CODE = 1;
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
@@ -101,13 +103,22 @@ public class GenerateAreaCodeData extends Command {
   }
 
   /**
-   * Converts the text data read from the provided input stream to the Java binary serialization
-   * format. The resulting data is written to the provided output stream.
+   * Implement this interface to provide a callback to the parseTextFile() method.
+   */
+  static interface AreaCodeMappingHandler {
+    /**
+     * Method called every time the parser matches a mapping. Note that 'prefix' is the prefix as
+     * it is written in the text file (i.e phone number prefix appended to country code).
+     */
+    void process(int prefix, String location);
+  }
+
+  /**
+   * Reads phone prefix data from the provided input stream and invokes the given handler for each
+   * mapping read.
    */
   // @VisibleForTesting
-  static void convertData(
-      InputStream input, OutputStream output) throws IOException {
-    SortedMap<Integer, String> areaCodeMapTemp = new TreeMap<Integer, String>();
+  static void parseTextFile(InputStream input, AreaCodeMappingHandler handler) throws IOException {
     BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(
             new BufferedInputStream(input), Charset.forName("UTF-8")));
@@ -123,39 +134,113 @@ public class GenerateAreaCodeData extends Command {
         throw new RuntimeException(String.format("line %d: malformatted data, expected '|'",
                                                  lineNumber));
       }
-      String areaCode = line.substring(0, indexOfPipe);
+      String prefix = line.substring(0, indexOfPipe);
       if (indexOfPipe == line.length() - 1) {
         throw new RuntimeException(String.format("line %d: missing location", lineNumber));
       }
       String location = line.substring(indexOfPipe + 1);
-      if (areaCodeMapTemp.put(Integer.parseInt(areaCode), location) != null) {
-        throw new RuntimeException(String.format("line %d: duplicated area code", lineNumber));
-      }
+      handler.process(Integer.parseInt(prefix), location);
     }
+  }
+
+  /**
+   * Writes the provided area code map to the provided output stream.
+   *
+   * @throws IOException
+   */
+  // @VisibleForTesting
+  static void writeToBinaryFile(SortedMap<Integer, String> sortedMap, OutputStream output)
+      throws IOException {
     // Build the corresponding area code map and serialize it to the binary format.
     AreaCodeMap areaCodeMap = new AreaCodeMap();
-    areaCodeMap.readAreaCodeMap(areaCodeMapTemp);
+    areaCodeMap.readAreaCodeMap(sortedMap);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
     areaCodeMap.writeExternal(objectOutputStream);
     objectOutputStream.flush();
   }
 
-  private static class Pair<A, B> {
-    public final A first;
-    public final B second;
+  /**
+   * Reads the mappings contained in the provided input stream pointing to a text file.
+   *
+   * @return  a map containing the mappings that were read.
+   */
+  // @VisibleForTesting
+  static SortedMap<Integer, String> readMappingsFromTextFile(InputStream input)
+      throws IOException {
+    final SortedMap<Integer, String> areaCodeMap = new TreeMap<Integer, String>();
+    parseTextFile(input, new AreaCodeMappingHandler() {
+      @Override
+      public void process(int prefix, String location) {
+        if (areaCodeMap.put(prefix, location) != null) {
+          throw new RuntimeException(String.format("duplicated prefix %d", prefix));
+        }
+      }
+    });
+    return areaCodeMap;
+  }
 
-    public Pair(A first, B second) {
-      this.first = first;
-      this.second = second;
+  private static class PhonePrefixLanguagePair {
+    public final String prefix;
+    public final String language;
+
+    public PhonePrefixLanguagePair(String prefix, String language) {
+      this.prefix = prefix;
+      this.language = language;
     }
   }
 
+  private static String generateBinaryFilename(int prefix, String lang) {
+    return String.format("%d_%s", prefix, lang);
+  }
+
   /**
-   * Creates the input country code text file/output binary file (named countryCode_language)
-   * mappings.
+   * Extracts the phone prefix and the language code contained in the provided file name.
    */
-  private List<Pair<File, File>> createInputOutputFileMappings() {
-    List<Pair<File, File>> mappings = new ArrayList<Pair<File, File>>();
+  private static PhonePrefixLanguagePair getPhonePrefixLanguagePairFromFilename(String filename) {
+    int indexOfUnderscore = filename.indexOf('_');
+    String prefix = filename.substring(0, indexOfUnderscore);
+    String language = filename.substring(indexOfUnderscore + 1);
+    return new PhonePrefixLanguagePair(prefix, language);
+  }
+
+  /**
+   * Method used by {@code #createInputOutputMappings()} to generate the list of output binary files
+   * from the provided input text file. For the data files expected to be large (currently only
+   * NANPA is supported), this method generates a list containing one output file for each area
+   * code. Otherwise, a single file is added to the list.
+   */
+  private List<File> createOutputFiles(File countryCodeFile, int countryCode, String language)
+      throws IOException {
+    List<File> outputFiles = new ArrayList<File>();
+    // For NANPA, split the data into multiple binary files.
+    if (countryCode == NANPA_COUNTRY_CODE) {
+      // Fetch the 4-digit prefixes stored in the file.
+      final Set<Integer> phonePrefixes = new HashSet<Integer>();
+      FileInputStream inputStream = new FileInputStream(countryCodeFile);
+      parseTextFile(inputStream, new AreaCodeMappingHandler() {
+        @Override
+        public void process(int prefix, String location) {
+          phonePrefixes.add(Integer.parseInt(String.valueOf(prefix).substring(0, 4)));
+        }
+      });
+      for (int prefix : phonePrefixes) {
+        outputFiles.add(
+            new File(outputPath, generateBinaryFilename(prefix, language)));
+      }
+    } else {
+      outputFiles.add(
+          new File(outputPath, generateBinaryFilename(countryCode, language)));
+    }
+    return outputFiles;
+  }
+
+  /**
+   * Generates the mappings between the input text files and the output binary files.
+   *
+   * @throws IOException
+   */
+  private Map<File, List<File>> createInputOutputMappings() throws IOException {
+    Map<File, List<File>> mappings = new HashMap<File, List<File>>();
     File[] languageDirectories = inputPath.listFiles();
 
     for (File languageDirectory : languageDirectories) {
@@ -177,19 +262,18 @@ public class GenerateAreaCodeData extends Command {
         }
         String countryCode = countryCodeFileName.substring(0, indexOfDot);
         if (!countryCode.matches("\\d+")) {
-          throw new RuntimeException("ignoring unexpected file " + countryCodeFileName);
+          throw new RuntimeException("unexpected file " + countryCodeFileName);
         }
-        mappings.add(new Pair<File, File>(
-            countryCodeFile,
-            new File(outputPath,
-                     String.format("%s_%s", countryCode, languageDirectory.getName()))));
+        List<File> outputFiles = createOutputFiles(
+            countryCodeFile, Integer.parseInt(countryCode), languageDirectory.getName());
+        mappings.put(countryCodeFile, outputFiles);
       }
     }
     return mappings;
   }
 
   /**
-   * Adds a country code/language mapping to the provided map. The country code and language are
+   * Adds a phone number prefix/language mapping to the provided map. The prefix and language are
    * generated from the provided file name previously used to output the area code/location mappings
    * for the given country.
    */
@@ -197,15 +281,14 @@ public class GenerateAreaCodeData extends Command {
   static void addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
                                       File outputAreaCodeMappingsFile) {
     String outputAreaCodeMappingsFileName = outputAreaCodeMappingsFile.getName();
-    int indexOfUnderscore = outputAreaCodeMappingsFileName.indexOf('_');
-    int countryCode = Integer.parseInt(
-        outputAreaCodeMappingsFileName.substring(0, indexOfUnderscore));
-    String language = outputAreaCodeMappingsFileName.substring(indexOfUnderscore + 1);
-
-    Set<String> languageSet = availableDataFiles.get(countryCode);
+    PhonePrefixLanguagePair areaCodeLanguagePair =
+        getPhonePrefixLanguagePairFromFilename(outputAreaCodeMappingsFileName);
+    int prefix = Integer.parseInt(areaCodeLanguagePair.prefix);
+    String language = areaCodeLanguagePair.language;
+    Set<String> languageSet = availableDataFiles.get(prefix);
     if (languageSet == null) {
       languageSet = new HashSet<String>();
-      availableDataFiles.put(countryCode, languageSet);
+      availableDataFiles.put(prefix, languageSet);
     }
     languageSet.add(language);
   }
@@ -224,29 +307,81 @@ public class GenerateAreaCodeData extends Command {
   }
 
   /**
+   * Splits the provided area code map into multiple maps according to the provided list of output
+   * binary files. A map associating output binary files to area code maps is returned as a result.
+   * <pre>
+   * Example:
+   *   input map: { 12011: Location1, 12021: Location2 }
+   *   outputBinaryFiles: { 1201_en, 1202_en }
+   *   output map: { 1201_en: { 12011: Location1 }, 1202_en: { 12021: Location2 } }
+   * </pre>
+   */
+  // @VisibleForTesting
+  static Map<File, SortedMap<Integer, String>> splitMap(
+      SortedMap<Integer, String> mappings, List<File> outputBinaryFiles) {
+    Map<File, SortedMap<Integer, String>> mappingsForFiles =
+        new HashMap<File, SortedMap<Integer, String>>();
+    for (Map.Entry<Integer, String> mapping : mappings.entrySet()) {
+      String prefix = String.valueOf(mapping.getKey());
+      File targetFile = null;
+      int correspondingAreaCode = -1;
+
+      for (File outputBinaryFile : outputBinaryFiles) {
+        String outputBinaryFilePrefix =
+            getPhonePrefixLanguagePairFromFilename(outputBinaryFile.getName()).prefix;
+        if (prefix.startsWith(outputBinaryFilePrefix)) {
+          targetFile = outputBinaryFile;
+          correspondingAreaCode = Integer.parseInt(outputBinaryFilePrefix);
+          break;
+        }
+      }
+      SortedMap<Integer, String> mappingsForAreaCodeLangPair = mappingsForFiles.get(targetFile);
+      if (mappingsForAreaCodeLangPair == null) {
+        mappingsForAreaCodeLangPair = new TreeMap<Integer, String>();
+        mappingsForFiles.put(targetFile, mappingsForAreaCodeLangPair);
+      }
+      mappingsForAreaCodeLangPair.put(mapping.getKey(), mapping.getValue());
+    }
+    return mappingsForFiles;
+  }
+
+  /**
    * Runs the area code data generator.
    *
    * @throws IOException
    * @throws FileNotFoundException
    */
   public void run() throws IOException {
-    List<Pair<File, File>> inputOutputMappings = createInputOutputFileMappings();
+    Map<File, List<File>> inputOutputMappings = createInputOutputMappings();
     SortedMap<Integer, Set<String>> availableDataFiles = new TreeMap<Integer, Set<String>>();
 
-    for (Pair<File, File> inputOutputMapping : inputOutputMappings) {
+    for (Map.Entry<File, List<File>> inputOutputMapping : inputOutputMappings.entrySet()) {
       FileInputStream fileInputStream = null;
       FileOutputStream fileOutputStream = null;
 
       try {
-        File textFile = inputOutputMapping.first;
-        File binaryFile = inputOutputMapping.second;
+        File textFile = inputOutputMapping.getKey();
+        List<File> outputBinaryFiles = inputOutputMapping.getValue();
         fileInputStream = new FileInputStream(textFile);
-        fileOutputStream = new FileOutputStream(binaryFile);
-        convertData(fileInputStream, fileOutputStream);
-        addConfigurationMapping(availableDataFiles, inputOutputMapping.second);
+        SortedMap<Integer, String> mappings = readMappingsFromTextFile(fileInputStream);
+        Map<File, SortedMap<Integer, String>> mappingsForFiles =
+            splitMap(mappings, outputBinaryFiles);
+
+        for (Map.Entry<File, SortedMap<Integer, String>> mappingsForFile :
+             mappingsForFiles.entrySet()) {
+          File outputBinaryFile = mappingsForFile.getKey();
+          fileOutputStream = null;
+          try {
+            fileOutputStream = new FileOutputStream(outputBinaryFile);
+            writeToBinaryFile(mappingsForFile.getValue(), fileOutputStream);
+            addConfigurationMapping(availableDataFiles, outputBinaryFile);
+          } finally {
+            closeFile(fileOutputStream);
+          }
+        }
       } catch (RuntimeException e) {
         LOGGER.log(Level.SEVERE,
-                   "Error processing file " + inputOutputMapping.first.getAbsolutePath());
+                   "Error processing file " + inputOutputMapping.getKey().getAbsolutePath());
         throw e;
       } catch (IOException e) {
         LOGGER.log(Level.SEVERE, e.getMessage());
@@ -257,7 +392,6 @@ public class GenerateAreaCodeData extends Command {
     }
     // Output the binary configuration file mapping country codes to languages.
     FileOutputStream fileOutputStream = null;
-
     try {
       File configFile = new File(outputPath, "config");
       fileOutputStream = new FileOutputStream(configFile);
