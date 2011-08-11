@@ -15,8 +15,8 @@ August 11th, 2011: libphonenumber-3.8
  - Split geocoding US binary data into multiple files.
 
 * Metadata changes
- - Updates: AR, AT, AU, AZ, BE, BF, BH, CA, CN, CO, CR, HT, HU, IT, KG, KH, LB,
-   LI, ME, NC, RS, SE, TT, US, ZA
+ - Updates: AR, AT, AU, AZ, BE, BF, BH, BY, CA, CN, CO, CR, HT, HU, IT, KG, KH,
+   LB, LI, ME, NC, RS, SE, TT, US, VG, ZA
  - New geocoding data for: AL, AM, AO, BF, BJ, BW, CD, CI, CZ, DZ, EE, GH, GM,
    GN, GR, GW, HU, IS, KE, LK, LS, LT, LU, LV, MD, MG, MR, NA, PE, QN, SD, SK,
    SN, SZ, TN, VE, VN, ZA, ZW

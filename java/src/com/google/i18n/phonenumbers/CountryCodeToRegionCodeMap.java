@@ -432,9 +432,8 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("MG");
     countryCodeToRegionCodeMap.put(261, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(3);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("RE");
-    listWithRegionCode.add("TF");
     listWithRegionCode.add("YT");
     countryCodeToRegionCodeMap.put(262, listWithRegionCode);
 

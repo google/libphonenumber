@@ -2834,18 +2834,38 @@
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP $FG"
           pattern="([89]\d{2})(\d{3})(\d{4})">
-          <leadingDigits>[89]</leadingDigits>
+          <leadingDigits>
+            8[01]|
+            9
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat nationalPrefixFormattingRule="$NP $FG"
+          pattern="(8\d{2})(\d{4})(\d{4})">
+          <leadingDigits>82</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           [12-4]\d{8}|
-          [89]\d{9}
+          [89]\d{9,10}
         </nationalNumberPattern>
         <!-- Numbers are often written without the city code. -->
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7,11}</possibleNumberPattern>
       </generalDesc>
+      <!-- Toll-free and premium rate numbers are not available from abroad. -->
+      <noInternationalDialling>
+        <nationalNumberPattern>
+          8(?:
+            [01]|
+            20
+          )\d{8}|
+          902\d{7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
+        <exampleNumber>82012345678</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <nationalNumberPattern>
           (?:
@@ -2889,7 +2909,7 @@
         <nationalNumberPattern>
           (?:
             2(?:
-              5[679]|
+              5[5679]|
               9[1-9]
             )|
             33\d|
@@ -2902,12 +2922,23 @@
       </mobile>
       <tollFree>
         <!-- Putting Interactive Polling Service (free) here too. -->
-        <nationalNumberPattern>80[13]\d{7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <nationalNumberPattern>
+          8(?:
+            0[13]|
+            20\d
+          )\d{7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
         <exampleNumber>8011234567</exampleNumber>
       </tollFree>
       <premiumRate>
-        <nationalNumberPattern>902\d{7}</nationalNumberPattern>
+        <!-- Putting Interactive Polling Service (paid) here too. -->
+        <nationalNumberPattern>
+          (?:
+            810|
+            902
+          )\d{7}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9021234567</exampleNumber>
       </premiumRate>
@@ -13503,6 +13534,9 @@
         <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <!-- Extra exchange codes 232, 289, 355, 472, 633, 637, 646, 647, 649, 653, 687, 734 and 828
+             were seen in the white and yellow pages, but no numbers with these exchange codes have
+             proved to be diallable so we exclude them for now.. -->
         <nationalNumberPattern>
           670(?:
             2(?:
@@ -16193,6 +16227,11 @@
       </mobile>
     </territory>
 
+    <!-- Pitcairn Island -->
+    <!-- id="PN" -->
+    <!-- This island is not supported since evidence seems to be that the 50 inhabitants use
+         satellite phones. -->
+
     <!-- Puerto Rico -->
     <!-- http://www.itu.int/oth/T02020000AA/en -->
     <territory id="PR" countryCode="1" leadingDigits="787|939"
@@ -16613,8 +16652,8 @@
     </territory>
 
     <!-- Réunion (French Departments and Territories in the Indian Ocean) -->
-    <!-- Note this shares the same country code as La Mayotte and French Southern Territories, and
-         the formatting patterns here are used by all of them. -->
+    <!-- Note this shares the same country code as La Mayotte and the formatting patterns here are
+         used by both of them. -->
     <!-- http://www.itu.int/oth/T020200004B/en -->
     <territory id="RE" countryCode="262" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
@@ -18367,9 +18406,9 @@
     </territory>
 
     <!-- French Southern Territories -->
-    <territory id="TF" countryCode="262" internationalPrefix="00"
-               nationalPrefix="0">
-    </territory>
+    <!-- id="TF" countryCode="262" internationalPrefix="00" nationalPrefix="0" -->
+    <!-- This country is not covered due to lack of information about its numbering plan. It has 140
+         temporary inhabitants. -->
 
     <!-- Togo -->
     <!-- http://www.itu.int/oth/T02020000D1/en -->
@@ -19840,14 +19879,17 @@
         <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <!-- No data on central office codes can be found on the nanpa.com website. The codes 422
+             and 774 have been added from numbers found in the white pages.  -->
         <nationalNumberPattern>
           284(?:
             (?:
               229|
               4(?:
-                46|
+                22|
                 9[45]
               )|
+              774|
               8(?:
                 52|
                 6[459]
@@ -19859,16 +19901,21 @@
         <exampleNumber>2842291234</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- No data on central office codes can be found on the nanpa.com website. The codes
+             34[0-367], 446 and 54[57] have been added from numbers found in the white pages.  -->
         <nationalNumberPattern>
           284(?:
             (?:
-              30[0-3]|
+              3(?:
+                0[0-3]|
+                4[0-367]
+              )|
               4(?:
-                4[0-5]|
+                4[0-6]|
                 68|
                 99
               )|
-              54[0-4]
+              54[0-57]
             )\d{4}|
             496[6-9]\d{3}
           )
