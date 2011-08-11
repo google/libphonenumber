@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# http://en.wikipedia.org/wiki/Telephone_numbers_in_Hungary
+# http://en.wikipedia.org/wiki/+36 [426160815]
 
 361|Budapest
 3622|Székesfehérvár

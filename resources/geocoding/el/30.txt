@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# http://el.wikipedia.org/wiki/Τηλεφωνικοί_κωδικοί_της_Ελλάδας
+# http://el.wikipedia.org/wiki/Τηλεφωνικοί_κωδικοί_της_Ελλάδας [2667046]
 
 3021|Αθήνα/Πειραιάς/Σαλαμίνα
 302221|Χαλκίδα
