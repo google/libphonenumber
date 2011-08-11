@@ -1,0 +1,83 @@
+# Copyright (C) 2011 Google Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# http://en.wikipedia.org/wiki/+263 [410798684]
+
+26313|Victoria Falls
+26314|Rutenga
+26315|Binga
+26316|West Nicholson
+26317|Filabusi
+26318|Dete
+26320|Mutare
+26321|Murambinda
+26322|Wedza
+26324|Chipangayi
+26325|Rusape
+26326|Chimanimani
+26327|Chipinge
+26328|Hauna
+26329|Juliasdale
+26330|Gutu
+26331|Chiredzi
+26332|Mvuma
+26333|Triangle
+26334|Jerera
+26335|Mashava
+26336|Ngundu
+26338|Nyika
+26339|Masvingo (Ft. Victoria)
+2634|Harare
+26350|Shangani
+26351|Zvishavane
+26352|Shurugwi
+26353|Chegutu
+26354|Gweru
+26355|Kwekwe
+26356|Chivhu
+26357|Centenary
+26358|Guruve
+26359|Gokwe
+26360|Mhangura
+26361|Kariba
+26362|Norton
+26363|Makuti
+26364|Karoi
+26365|Beatrice
+26366|Banket
+26367|Chinhoyi
+26368|Kadoma
+26369|Darwendale
+26370|Chitungwiza
+26371|Bindura
+26372|Mutoku
+26373|Ruwa
+26374|Arcturus
+26375|Mazowe
+26376|Mount Darwin
+26377|Mvurwi
+26378|Murewa
+26379|Marondera
+26380|Plumtree
+26381|Hwange
+26382|Kezi
+26383|Figtree
+26384|Gwanda
+26385|Turk Mine
+26386|Beitbridge
+26387|Nyamandhlovu
+26388|Esigodini
+26389|Jotsholo
+2639|Bulawayo
