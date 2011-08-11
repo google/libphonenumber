@@ -111,19 +111,6 @@ public class PhoneNumberOfflineGeocoder {
   }
 
   /**
-   * Preload the data file for the given language and country calling code, so that a future lookup
-   * for this language and country calling code will not incur any file loading.
-   *
-   * @param locale  specifies the language of the data file to load
-   * @param countryCallingCode   specifies the country calling code of phone numbers that are
-   *     contained by the file to be loaded
-   */
-  public void loadDataFile(Locale locale, int countryCallingCode) {
-    instance.getPhonePrefixDescriptions(countryCallingCode, locale.getLanguage(), "",
-        locale.getCountry());
-  }
-
-  /**
    * Returns the customary display name in the given language for the given territory the phone
    * number is from.
    */
@@ -185,8 +172,13 @@ public class PhoneNumberOfflineGeocoder {
    */
   private String getAreaDescriptionForNumber(
       PhoneNumber number, String lang, String script, String region) {
+    int countryCallingCode = number.getCountryCode();
+    // As the NANPA data is split into multiple files covering 3-digit areas, use a phone number
+    // prefix of 4 digits for NANPA instead, e.g. 1650.
+    int phonePrefix = (countryCallingCode != 1) ?
+        countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
     AreaCodeMap phonePrefixDescriptions =
-        getPhonePrefixDescriptions(number.getCountryCode(), lang, script, region);
+        getPhonePrefixDescriptions(phonePrefix, lang, script, region);
     return (phonePrefixDescriptions != null) ? phonePrefixDescriptions.lookup(number) : "";
   }
 }
