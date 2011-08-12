@@ -205,6 +205,10 @@ TEST(StringUtilTest, StrCat) {
   s = StrCat("a", "b", "c", "d", "e", "f", "g");
   EXPECT_EQ("abcdefg", s);
 
+  // Test with 9 arguments.
+  s = StrCat("a", "b", "c", "d", "e", "f", "g", "h", "i");
+  EXPECT_EQ("abcdefghi", s);
+
   // Test with 11 arguments.
   s = StrCat("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k");
   EXPECT_EQ("abcdefghijk", s);

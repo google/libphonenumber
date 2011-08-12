@@ -2125,10 +2125,6 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchNsnMatches) {
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005",
                                                     "03 331 6005"));
 
-  EXPECT_EQ(PhoneNumberUtil::NSN_MATCH,
-            phone_util_.IsNumberMatchWithTwoStrings("3 331-6005",
-                                                    "03 331 6005"));
-
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
   nz_number.set_national_number(33316005ULL);
@@ -2177,6 +2173,12 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchShortNsnMatches) {
   EXPECT_EQ(PhoneNumberUtil::SHORT_NSN_MATCH,
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005",
                                                     "331 6005"));
+
+  // We did not know that the "0" was a national prefix since neither number has
+  // a country code, so this is considered a SHORT_NSN_MATCH.
+  EXPECT_EQ(PhoneNumberUtil::SHORT_NSN_MATCH,
+            phone_util_.IsNumberMatchWithTwoStrings("3 331-6005",
+                                                    "03 331 6005"));
 
   EXPECT_EQ(PhoneNumberUtil::SHORT_NSN_MATCH,
               phone_util_.IsNumberMatchWithTwoStrings("3 331-6005",

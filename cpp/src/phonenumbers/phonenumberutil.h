@@ -373,9 +373,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   int GetCountryCodeForRegion(const string& region_code) const;
 
   // Returns the region code that matches the specific country code. Note that
-  // it is possible that several regions share the same country code (e.g. US
-  // and Canada), and in that case, only one of the regions (normally the one
-  // with the largest population) is returned.
+  // it is possible that several regions share the same country calling code
+  // (e.g. US and Canada), and in that case, only one of the regions (normally
+  // the one with the largest population) is returned.
   void GetRegionCodeForCountryCode(int country_code, string* region_code) const;
 
   // Checks if this is a region under the North American Numbering Plan
@@ -529,8 +529,18 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Full-width variants are also present.
   static const char kValidPunctuation[];
 
-  // A mapping from a country calling code to a region code which denotes the
-  // region represented by that country calling code. Note countries under
+  // Regular expression of characters typically used to start a second phone
+  // number for the purposes of parsing. This allows us to strip off parts of
+  // the number that are actually the start of another number, such as for:
+  // (530) 583-6985 x302/x2303 -> the second extension here makes this actually
+  // two phone numbers, (530) 583-6985 x302 and (530) 583-6985 x2303. We remove
+  // the second extension so that the first number is parsed correctly. The
+  // string preceding this is captured.
+  // This corresponds to SECOND_NUMBER_START in the java version.
+  static const char kCaptureUpToSecondNumberStart[];
+
+  // A mapping from a country calling code to a RegionCode object which denotes
+  // the region represented by that country calling code. Note regions under
   // NANPA share the country calling code 1 and Russia and Kazakhstan share the
   // country calling code 7. Under this map, 1 is mapped to region code "US" and
   // 7 is mapped to region code "RU". This is implemented as a sorted vector to
@@ -547,8 +557,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   PhoneNumberUtil();
 
   // Returns a regular expression for the possible extensions that may be found
-  // in a number.
-  const string& GetExtnPatterns() const;
+  // in a number, for use when matching.
+  const string& GetExtnPatternsForMatching() const;
 
   // Trims unwanted end characters from a phone number string.
   void TrimUnwantedEndChars(string* number) const;

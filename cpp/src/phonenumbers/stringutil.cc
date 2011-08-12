@@ -256,6 +256,28 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s3, const StringHolder& s4,
               const StringHolder& s5, const StringHolder& s6,
               const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9) {
+  string result;
+  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length() + s7.Length() + s8.Length() +
+                 s9.Length() + 1);
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+  result += s8;
+  result += s9;
+
+  return result;
+}
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
               const StringHolder& s9, const StringHolder& s10,
               const StringHolder& s11) {
   string result;
