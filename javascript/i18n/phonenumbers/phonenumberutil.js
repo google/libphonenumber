@@ -475,8 +475,14 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ = '+\uFF0B';
 
 
 /**
- * This corresponds to the PLUS_CHARS_PATTERN in Java.
- *
+ * @const
+ * @type {!RegExp}
+ */
+i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN =
+    new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']+');
+
+
+/**
  * @const
  * @type {!RegExp}
  * @private
@@ -498,9 +504,8 @@ i18n.phonenumbers.PhoneNumberUtil.SEPARATOR_PATTERN_ =
 /**
  * @const
  * @type {!RegExp}
- * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_ =
+i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN =
     new RegExp('([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + '])');
 
 
@@ -515,8 +520,9 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_ =
  *
  * @const
  * @type {!RegExp}
+ * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN =
+i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN_ =
     new RegExp('[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ +
                i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']');
 
@@ -602,6 +608,9 @@ i18n.phonenumbers.PhoneNumberUtil.DEFAULT_EXTN_PREFIX_ = ' ext. ';
 
 
 /**
+ * Pattern to capture digits used in an extension.
+ * Places a maximum length of '7' for an extension.
+ *
  * @const
  * @type {string}
  * @private
@@ -628,7 +637,7 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ =
  * @type {string}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.KNOWN_EXTN_PATTERNS_ =
+i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ =
     i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
     '[ \u00A0\\t,]*' +
@@ -648,7 +657,8 @@ i18n.phonenumbers.PhoneNumberUtil.KNOWN_EXTN_PATTERNS_ =
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
-    new RegExp('(?:' + i18n.phonenumbers.PhoneNumberUtil.KNOWN_EXTN_PATTERNS_ +
+    new RegExp('(?:' +
+               i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ +
                ')$', 'i');
 
 
@@ -662,7 +672,8 @@ i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_PATTERN_ =
     new RegExp('^' + i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ +
-               '(?:' + i18n.phonenumbers.PhoneNumberUtil.KNOWN_EXTN_PATTERNS_ +
+               '(?:' +
+               i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ +
                ')?' + '$', 'i');
 
 
@@ -818,7 +829,7 @@ i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber = function(number) {
 
   /** @type {number} */
   var start = number
-      .search(i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN);
+      .search(i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN_);
   if (start >= 0) {
     possibleNumber = number.substring(start);
     // Remove trailing non-alpha non-numerical characters.
@@ -2694,7 +2705,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parsePrefixAsIdd_ =
     var matchEnd = numberStr.match(iddPattern)[0].length;
     /** @type {Array.<string>} */
     var matchedGroups = numberStr.substring(matchEnd).match(
-        i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN_);
+        i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN);
     if (matchedGroups && matchedGroups[1] != null &&
         matchedGroups[1].length > 0) {
       /** @type {string} */
@@ -2787,7 +2798,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   if (numberLength == 0 || possibleNationalPrefix == null ||
       possibleNationalPrefix.length == 0) {
     // Early return for numbers of zero length.
-    return carrierCode;
+    return '';
   }
   // Attempt to parse the first digits as a national prefix.
   /** @type {!RegExp} */
@@ -2816,10 +2827,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     } else {
       transformedNumber = numberStr.replace(prefixPattern, transformRule);
     }
-    // Check that the resultant number is viable. If not, return.
-    if (!i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(nationalNumberRule,
-        transformedNumber)) {
-      return carrierCode;
+    // If the original number was viable, and the resultant number is not,
+    // we return.
+    if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+            nationalNumberRule, numberStr) &&
+        !i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+            nationalNumberRule, transformedNumber)) {
+      return '';
     }
     if ((noTransform && numOfGroups > 0 && prefixMatcher[1] != null) ||
         (!noTransform && numOfGroups > 1)) {
@@ -3062,9 +3076,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
       i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_) {
     throw i18n.phonenumbers.Error.TOO_LONG;
   }
-  if (normalizedNationalNumberStr.charAt(0) == '0' &&
-      regionMetadata != null &&
-      regionMetadata.getLeadingZeroPossibleOrDefault()) {
+  if (normalizedNationalNumberStr.charAt(0) == '0') {
     phoneNumber.setItalianLeadingZero(true);
   }
   phoneNumber.setNationalNumber(parseInt(normalizedNationalNumberStr, 10));

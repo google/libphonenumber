@@ -47,6 +47,24 @@ function testInvalidRegion() {
   assertEquals('650253', f.inputDigit('3'));
 }
 
+function testInvalidPlusSign() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('ZZ');
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+4', f.inputDigit('4'));
+  assertEquals('+48 ', f.inputDigit('8'));
+  assertEquals('+48 8', f.inputDigit('8'));
+  assertEquals('+48 88', f.inputDigit('8'));
+  assertEquals('+48 88 1', f.inputDigit('1'));
+  assertEquals('+48 88 12', f.inputDigit('2'));
+  assertEquals('+48 88 123', f.inputDigit('3'));
+  assertEquals('+48 88 123 1', f.inputDigit('1'));
+  // A plus sign can only appear at the beginning of the number;
+  // otherwise, no formatting is applied.
+  assertEquals('+48881231+', f.inputDigit('+'));
+  assertEquals('+48881231+2', f.inputDigit('2'));
+}
+
 function testTooLongNumberMatchingMultipleLeadingDigits() {
   // See http://code.google.com/p/libphonenumber/issues/detail?id=36
   // The bug occurred last time for countries which have two formatting rules

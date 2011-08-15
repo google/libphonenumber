@@ -504,9 +504,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     this.originalPosition_ = this.accruedInput_.getLength();
   }
   // We do formatting on-the-fly only when each character entered is either a
-  // plus sign or a digit.
-  if (!i18n.phonenumbers.PhoneNumberUtil.VALID_START_CHAR_PATTERN
-      .test(nextChar)) {
+  // digit, or a plus sign (accepted at the start of the number only).
+  if (!this.isDigitOrLeadingPlusSign_(nextChar)) {
     this.ableToFormat_ = false;
   }
   if (!this.ableToFormat_) {
@@ -573,6 +572,20 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
         return this.attemptToChooseFormattingPattern_();
       }
   }
+};
+
+
+/**
+ * @param {string} nextChar
+ * @return {boolean}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.isDigitOrLeadingPlusSign_ =
+    function(nextChar) {
+  return i18n.phonenumbers.PhoneNumberUtil.CAPTURING_DIGIT_PATTERN
+      .test(nextChar) ||
+      (this.accruedInput_.getLength() == 1 &&
+       i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN.test(nextChar));
 };
 
 
