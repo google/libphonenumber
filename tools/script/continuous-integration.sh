@@ -19,6 +19,9 @@
 # Countinuous integration script that tests the different versions and
 # configurations of libphonenumber.
 
+# Check geocoding resource files encoding.
+(find resources/geocoding -type f | xargs file | egrep -v 'UTF-8|ASCII') && exit 1
+
 # Test the C++ version with the provided CMake parameter.
 test_cpp_version() {
   CMAKE_FLAGS="$1"

@@ -14,11 +14,11 @@
 
 # Generated from:
 # http://www.itu.int/oth/T02020000AF/en [2011-03-17]
-# http://fr.wikipedia.org/wiki/Sainte-Hélène,_Ascension_et_Tristan_da_Cunha [439804774]
+# http://fr.wikipedia.org/wiki/Sainte-HÃ©lÃ¨ne,_Ascension_et_Tristan_da_Cunha [439804774]
 
 2902|Jamestown
-2903|Sainte-Hélène
-2904|Sainte-Hélène
-2906|Sainte-Hélène
-2907|Sainte-Hélène
+2903|Sainte-HÃ©lÃ¨ne
+2904|Sainte-HÃ©lÃ¨ne
+2906|Sainte-HÃ©lÃ¨ne
+2907|Sainte-HÃ©lÃ¨ne
 2908|Tristan da Cunha
