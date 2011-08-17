@@ -48,7 +48,7 @@ test_cpp_version() {
     make && ./libphonenumber_test && make install &&
     $CXX -o $CC_TEST_BINARY $CC_TEST_FILE -I${INSTALL_PREFIX}/include \
         -lboost_thread -L${INSTALL_PREFIX}/lib -lphonenumber &&
-    $CC_TEST_BINARY
+    LD_LIBRARY_PATH=${INSTALL_PREFIX}/lib $CC_TEST_BINARY
   )
   STATUS=$?
   # Remove the temporary files.
