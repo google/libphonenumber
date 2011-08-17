@@ -313,10 +313,12 @@ install (FILES
 
 install (FILES
   "src/base/basictypes.h"
-  "src/base/memory/singleton.h"
   "src/base/scoped_ptr.h"
   DESTINATION include/base/
 )
+install (FILES src/base/memory/singleton.h
+         DESTINATION include/base/memory)
+
 install (FILES src/base/synchronization/lock.h
          DESTINATION include/base/synchronization)
 

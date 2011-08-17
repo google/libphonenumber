@@ -23,12 +23,39 @@
 (find resources/geocoding -type f | xargs file | egrep -v 'UTF-8|ASCII') && exit 1
 
 # Test the C++ version with the provided CMake parameter.
+CXX=g++
+INSTALL_PREFIX=/tmp/libphonenumber
+
 test_cpp_version() {
+  CC_TEST_FILE=`mktemp`.cc
+  CC_TEST_BINARY=`mktemp`
   CMAKE_FLAGS="$1"
+  # Write the program that tests the installation of the library to a temporary
+  # source file.
+  > $CC_TEST_FILE echo '
+    #include <cassert>
+    #include <phonenumbers/phonenumberutil.h>
+    using i18n::phonenumbers::PhoneNumberUtil;
+    int main() {
+      PhoneNumberUtil* const phone_util = PhoneNumberUtil::GetInstance();
+      return phone_util == NULL;
+    }'
+  # Run the build and tests.
   (
-    rm -rf cpp/build && mkdir cpp/build && cd cpp/build && \
-        cmake "${CMAKE_FLAGS}" .. && make && ./libphonenumber_test
-  ) || exit $?
+    rm -rf cpp/build /tmp/libphonenumber &&
+    mkdir cpp/build /tmp/libphonenumber && cd cpp/build &&
+    cmake "${CMAKE_FLAGS}" -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX .. &&
+    make && ./libphonenumber_test && make install &&
+    $CXX -o $CC_TEST_BINARY $CC_TEST_FILE -I${INSTALL_PREFIX}/include \
+        -lboost_thread -L${INSTALL_PREFIX}/lib -lphonenumber &&
+    $CC_TEST_BINARY
+  )
+  STATUS=$?
+  # Remove the temporary files.
+  rm -f $CC_TEST_FILE
+  rm -f $CC_TEST_BINARY
+
+  [ $STATUS -ne 0 ] && exit $STATUS
 }
 test_cpp_version ''
 test_cpp_version '-DUSE_RE2=ON'
