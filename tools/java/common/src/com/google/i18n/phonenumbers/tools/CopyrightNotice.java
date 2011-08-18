@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2011 Google Inc.
+ *  Copyright (C) 2011 The Libphonenumber Authors
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ public class CopyrightNotice {
     " * @license\n";
 
   private static final String TEXT =
-    " * Copyright (C) %d Google Inc.\n" +
+    " * Copyright (C) %d The Libphonenumber Authors\n" +
     " *\n" +
     " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
     " * you may not use this file except in compliance with the License.\n" +
