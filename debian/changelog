@@ -1,0 +1,5 @@
+libphonenumber (3.8) unstable; urgency=low
+
+  * Initial Debian Package.
+
+ -- Fredrik Roubert <roubert@google.com>  Tue, 16 Aug 2011 16:11:46 +0200

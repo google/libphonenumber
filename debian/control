@@ -1,0 +1,50 @@
+Source: libphonenumber
+Priority: optional
+Maintainer: Fredrik Roubert <roubert@google.com>
+Build-Depends: ant,
+               cmake,
+               debhelper (>= 7.0.50~),
+               default-jdk | java-sdk,
+               javahelper (>= 0.34),
+               libboost-dev (>= 1.40),
+               libboost-thread-dev (>= 1.40),
+               libgtest-dev,
+               libicu-dev (>= 4.4),
+               libprotobuf-dev (>= 2.4),
+               libre2-dev,
+               protobuf-compiler
+Standards-Version: 3.9.1
+Section: libs
+Homepage: http://code.google.com/p/libphonenumber/
+Vcs-Browser: http://code.google.com/p/libphonenumber/source/browse/
+Vcs-Svn: http://libphonenumber.googlecode.com/svn/trunk/
+
+Package: libphonenumber-dev
+Section: libdevel
+Architecture: any
+Depends: libphonenumber3 (=${binary:Version}), ${misc:Depends}
+Description: parsing/formatting/validating phone numbers - development
+ Google's common C++ and Java library for parsing, formatting, storing and
+ validating international phone numbers.
+ .
+ This package contains the static libraries and include files.
+
+Package: libphonenumber3
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: parsing/formatting/validating phone numbers - runtime
+ Google's common C++ and Java library for parsing, formatting, storing and
+ validating international phone numbers.
+ .
+ This package contains the runtime libraries.
+
+Package: libphonenumber-java
+Section: java
+Architecture: all
+Depends: ${java:Depends}, ${misc:Depends}
+Description: parsing/formatting/validating phone numbers - java
+ Google's common C++ and Java library for parsing, formatting, storing and
+ validating international phone numbers.
+ .
+ This package contains the JAR files.

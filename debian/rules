@@ -1,0 +1,63 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Copyright (C) 2011 The Libphonenumber Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+ANT ?= ant
+CMAKE ?= cmake
+JAVA_HOME ?= /usr/lib/jvm/default-java
+
+CMAKE_FLAGS := -DCMAKE_INSTALL_PREFIX=/usr
+CPP_BUILD := cpp/build
+JAVA_BUILD := java/build
+
+ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
+  CFLAGS += -O0
+else
+  CFLAGS += -O2
+endif
+ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
+  INSTALL_PROGRAM += -s
+endif
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  MAKEFLAGS += -j$(NUMJOBS)
+endif
+
+%:
+	dh $@ --with javahelper
+
+override_dh_auto_configure:
+	mkdir -p $(CPP_BUILD) && cd $(CPP_BUILD) && $(CMAKE) $(CMAKE_FLAGS) ..
+
+override_dh_auto_build:
+	$(MAKE) -C $(CPP_BUILD) phonenumber phonenumber-shared
+	$(ANT) -f $(JAVA_BUILD).xml jar
+
+override_dh_auto_test:
+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	$(MAKE) -C $(CPP_BUILD) test
+	$(ANT) -f $(JAVA_BUILD).xml junit
+endif
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=$(CPP_BUILD)
+
+override_dh_auto_clean:
+	-test -d $(CPP_BUILD) && $(MAKE) -C $(CPP_BUILD) clean
+	-$(ANT) -f $(JAVA_BUILD).xml clean

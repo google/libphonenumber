@@ -17,6 +17,8 @@
 cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
+set (libphonenumber_VERSION_MAJOR 3)
+set (libphonenumber_VERSION_MINOR 8)
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
@@ -260,8 +262,11 @@ if (BUILD_SHARED_LIB)
   add_library (phonenumber-shared SHARED ${SOURCES})
   add_dependencies (phonenumber-shared generate-sources ${METADATA_TARGET})
   set_target_properties (phonenumber-shared
-                         PROPERTIES OUTPUT_NAME "phonenumber")
-  set_target_properties (phonenumber-shared PROPERTIES PREFIX "lib")
+    PROPERTIES
+      OUTPUT_NAME "phonenumber"
+      PREFIX "lib"
+      SOVERSION ${libphonenumber_VERSION_MAJOR}
+      VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
 endif ()
 
 set (LIBRARY_DEPS ${PROTOBUF_LIB} ${ICU_LIB} ${Boost_LIBRARIES})
@@ -302,6 +307,7 @@ target_link_libraries (
   libphonenumber_test
   phonenumber_testing ${GTEST_LIB} pthread
 )
+add_custom_target(test COMMAND libphonenumber_test DEPENDS libphonenumber_test)
 
 # Install rules.
 install (FILES
@@ -317,10 +323,9 @@ install (FILES
   DESTINATION include/base/
 )
 install (FILES src/base/memory/singleton.h
-         DESTINATION include/base/memory)
-
+         DESTINATION include/base/memory/)
 install (FILES src/base/synchronization/lock.h
-         DESTINATION include/base/synchronization)
+         DESTINATION include/base/synchronization/)
 
 install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
 
