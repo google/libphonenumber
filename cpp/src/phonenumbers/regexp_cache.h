@@ -31,7 +31,7 @@
 #include <string>
 
 #include "base/basictypes.h"
-#include "base/scoped_ptr.h"
+#include "base/memory/scoped_ptr.h"
 #include "base/synchronization/lock.h"
 
 #ifdef USE_TR1_UNORDERED_MAP

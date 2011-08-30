@@ -18,6 +18,7 @@
 
 #include <gtest/gtest.h>
 
+#include "base/memory/scoped_ptr.h"
 #include "phonenumbers/default_logger.h"
 
 namespace i18n {

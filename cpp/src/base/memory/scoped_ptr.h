@@ -14,11 +14,11 @@
 
 // Author: Philippe Liard
 
-#ifndef I18N_PHONENUMBERS_BASE_SCOPED_PTR_H_
-#define I18N_PHONENUMBERS_BASE_SCOPED_PTR_H_
+#ifndef I18N_PHONENUMBERS_BASE_MEMORY_SCOPED_PTR_H_
+#define I18N_PHONENUMBERS_BASE_MEMORY_SCOPED_PTR_H_
 
 #include <boost/scoped_ptr.hpp>
 
 using boost::scoped_ptr;
 
-#endif  // I18N_PHONENUMBERS_BASE_SCOPED_PTR_H_
+#endif  // I18N_PHONENUMBERS_BASE_MEMORY_SCOPED_PTR_H_

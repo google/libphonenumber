@@ -317,13 +317,15 @@ install (FILES
   DESTINATION include/phonenumbers/
 )
 
+install (FILES src/base/basictypes.h
+         DESTINATION include/base/)
+
 install (FILES
-  "src/base/basictypes.h"
-  "src/base/scoped_ptr.h"
-  DESTINATION include/base/
+  "src/base/memory/scoped_ptr.h"
+  "src/base/memory/singleton.h"
+  DESTINATION include/base/memory/
 )
-install (FILES src/base/memory/singleton.h
-         DESTINATION include/base/memory/)
+
 install (FILES src/base/synchronization/lock.h
          DESTINATION include/base/synchronization/)
 
