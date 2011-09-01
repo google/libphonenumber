@@ -13,7 +13,8 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2011-06-01)
+# http://www.cnc.gov.ar/infotecnica/numeracion/indicativosinter.asp (2011-07-11)
+# http://en.wikipedia.org/wiki/+54 [431727225]
 
 5411|Ciudad Autónoma de Buenos Aires
 54220|Merlo
@@ -61,7 +62,7 @@
 542322|Pilar
 542323|Luján
 542324|Mercedes
-542325|San Andrés de Giles
+542325|San Andrés de Giles/Azcuénaga
 542326|San Antonio de Areco
 542331|Realicó, La Pampa
 542333|Quemú Quemú
@@ -81,7 +82,7 @@
 542358|Buenos Aires
 542362|Junín, Buenos Aires
 54237|Moreno
-542392|Buenos Aires
+542392|Buenos Aires/Trenque Lauquen
 542394|Salliqueló, Buenos Aires
 542395|La Matanza
 542396|Pehuajó, Buenos Aires
@@ -96,6 +97,7 @@
 542625|General Alvear, Mendoza
 542627|San Rafael
 54264|San Juan, Capital
+542646|Valle Fértil
 542652|San Luis, La Capital
 542656|Merlo, San Luis
 542657|Villa Mercedes, General Pedernera
@@ -128,6 +130,7 @@
 542965|Trelew, Rawson
 542966|Río Gallegos, Ger Aike
 54297|Comodoro Rivadavia, Escalante
+542972|San Martín de los Andes
 542983|Tres Arroyos
 54299|Neuquén, Confluencia
 543327|López Camelo, Buenos Aires
@@ -208,7 +211,7 @@
 543756|Santo Tomé, Corrientes
 543757|Puerto Iguazú, Misiones
 543758|Apóstoles, Misiones
-543772|Paso de Los Libres, Corrientes
+543772|Paso de Los Libres, Corrientes/Resistencia
 543773|Mercedes, Corrientes
 543774|Curuzú Cuatiá, Corrientes
 543775|Monte Caseros, Corrientes
