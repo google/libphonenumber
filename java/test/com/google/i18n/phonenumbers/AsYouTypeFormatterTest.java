@@ -35,7 +35,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testInvalidRegion() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("ZZ");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+4", formatter.inputDigit('4'));
     assertEquals("+48 ", formatter.inputDigit('8'));
@@ -57,7 +57,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testInvalidPlusSign() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("ZZ");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+4", formatter.inputDigit('4'));
     assertEquals("+48 ", formatter.inputDigit('8'));
@@ -77,7 +77,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     // See http://code.google.com/p/libphonenumber/issues/detail?id=36
     // The bug occurred last time for countries which have two formatting rules with exactly the
     // same leading digits pattern but differ in length.
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("ZZ");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+8", formatter.inputDigit('8'));
     assertEquals("+81 ", formatter.inputDigit('1'));
@@ -96,7 +96,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFUS() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
     assertEquals("6", formatter.inputDigit('6'));
     assertEquals("65", formatter.inputDigit('5'));
     assertEquals("650", formatter.inputDigit('0'));
@@ -190,7 +190,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFUSFullWidthCharacters() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
     assertEquals("\uFF16", formatter.inputDigit('\uFF16'));
     assertEquals("\uFF16\uFF15", formatter.inputDigit('\uFF15'));
     assertEquals("650", formatter.inputDigit('\uFF10'));
@@ -204,7 +204,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFUSMobileShortCode() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
     assertEquals("*", formatter.inputDigit('*'));
     assertEquals("*1", formatter.inputDigit('1'));
     assertEquals("*12", formatter.inputDigit('2'));
@@ -213,7 +213,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFUSVanityNumber() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
     assertEquals("8", formatter.inputDigit('8'));
     assertEquals("80", formatter.inputDigit('0'));
     assertEquals("800", formatter.inputDigit('0'));
@@ -229,7 +229,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFAndRememberPositionUS() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
     assertEquals("1", formatter.inputDigitAndRememberPosition('1'));
     assertEquals(1, formatter.getRememberedPosition());
     assertEquals("16", formatter.inputDigit('6'));
@@ -365,7 +365,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFGBFixedLine() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("GB");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.GB);
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("02", formatter.inputDigit('2'));
     assertEquals("020", formatter.inputDigit('0'));
@@ -382,7 +382,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFGBTollFree() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("GB");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.GB);
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("08", formatter.inputDigit('8'));
     assertEquals("080", formatter.inputDigit('0'));
@@ -397,7 +397,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFGBPremiumRate() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("GB");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.GB);
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("09", formatter.inputDigit('9'));
     assertEquals("090", formatter.inputDigit('0'));
@@ -412,7 +412,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFNZMobile() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("NZ");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.NZ);
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("02", formatter.inputDigit('2'));
     assertEquals("021", formatter.inputDigit('1'));
@@ -426,7 +426,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFDE() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("DE");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.DE);
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("03", formatter.inputDigit('3'));
     assertEquals("030", formatter.inputDigit('0'));
@@ -477,7 +477,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFAR() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("AR");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.AR);
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("01", formatter.inputDigit('1'));
     assertEquals("011", formatter.inputDigit('1'));
@@ -492,7 +492,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTFARMobile() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("AR");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.AR);
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+5", formatter.inputDigit('5'));
     assertEquals("+54 ", formatter.inputDigit('4'));
@@ -511,7 +511,7 @@ public class AsYouTypeFormatterTest extends TestCase {
 
   public void testAYTFKR() {
     // +82 51 234 5678
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("KR");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.KR);
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+8", formatter.inputDigit('8'));
     assertEquals("+82 ", formatter.inputDigit('2'));
@@ -600,7 +600,7 @@ public class AsYouTypeFormatterTest extends TestCase {
   }
 
   public void testAYTF_MX() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("MX");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.MX);
 
     // +52 800 123 4567
     assertEquals("+", formatter.inputDigit('+'));
@@ -686,7 +686,7 @@ public class AsYouTypeFormatterTest extends TestCase {
 
   public void testAYTFMultipleLeadingDigitPatterns() {
     // +81 50 2345 6789
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("JP");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.JP);
     assertEquals("+", formatter.inputDigit('+'));
     assertEquals("+8", formatter.inputDigit('8'));
     assertEquals("+81 ", formatter.inputDigit('1'));

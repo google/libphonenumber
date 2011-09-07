@@ -99,29 +99,6 @@ public class PhoneNumberUtilTest extends TestCase {
   private static final PhoneNumber US_TOLLFREE =
       new PhoneNumber().setCountryCode(1).setNationalNumber(8002530000L);
 
-  // Class containing string constants of region codes for easier testing.
-  private static class RegionCode {
-    static final String AD = "AD";
-    static final String AO = "AO";
-    static final String AR = "AR";
-    static final String AU = "AU";
-    static final String BS = "BS";
-    static final String CS = "CS";
-    static final String DE = "DE";
-    static final String GB = "GB";
-    static final String IT = "IT";
-    static final String KR = "KR";
-    static final String MX = "MX";
-    static final String NZ = "NZ";
-    static final String PL = "PL";
-    static final String RE = "RE";
-    static final String SG = "SG";
-    static final String US = "US";
-    static final String YT = "YT";
-    // Official code for the unknown region.
-    static final String ZZ = "ZZ";
-  }
-
   public PhoneNumberUtilTest() {
     phoneUtil = initializePhoneUtilForTesting();
   }
@@ -139,7 +116,7 @@ public class PhoneNumberUtilTest extends TestCase {
 
   public void testGetInstanceLoadUSMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.US);
-    assertEquals("US", metadata.getId());
+    assertEquals(RegionCode.US, metadata.getId());
     assertEquals(1, metadata.getCountryCode());
     assertEquals("011", metadata.getInternationalPrefix());
     assertTrue(metadata.hasNationalPrefix());
@@ -160,7 +137,7 @@ public class PhoneNumberUtilTest extends TestCase {
 
   public void testGetInstanceLoadDEMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.DE);
-    assertEquals("DE", metadata.getId());
+    assertEquals(RegionCode.DE, metadata.getId());
     assertEquals(49, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
     assertEquals("0", metadata.getNationalPrefix());
@@ -180,7 +157,7 @@ public class PhoneNumberUtilTest extends TestCase {
 
   public void testGetInstanceLoadARMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.AR);
-    assertEquals("AR", metadata.getId());
+    assertEquals(RegionCode.AR, metadata.getId());
     assertEquals(54, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
     assertEquals("0", metadata.getNationalPrefix());

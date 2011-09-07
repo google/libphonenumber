@@ -44,141 +44,141 @@ public class PhoneNumberMatcherTest extends TestCase {
   /** See {@link PhoneNumberUtilTest#testParseNationalNumber()}. */
   public void testFindNationalNumber() throws Exception {
     // same cases as in testParseNationalNumber
-    doTestFindInContext("033316005", "NZ");
-    doTestFindInContext("33316005", "NZ");
+    doTestFindInContext("033316005", RegionCode.NZ);
+    doTestFindInContext("33316005", RegionCode.NZ);
     // National prefix attached and some formatting present.
-    doTestFindInContext("03-331 6005", "NZ");
-    doTestFindInContext("03 331 6005", "NZ");
+    doTestFindInContext("03-331 6005", RegionCode.NZ);
+    doTestFindInContext("03 331 6005", RegionCode.NZ);
     // Testing international prefixes.
     // Should strip country code.
-    doTestFindInContext("0064 3 331 6005", "NZ");
+    doTestFindInContext("0064 3 331 6005", RegionCode.NZ);
     // Try again, but this time we have an international number with Region Code US. It should
     // recognize the country code and parse accordingly.
-    doTestFindInContext("01164 3 331 6005", "US");
-    doTestFindInContext("+64 3 331 6005", "US");
+    doTestFindInContext("01164 3 331 6005", RegionCode.US);
+    doTestFindInContext("+64 3 331 6005", RegionCode.US);
 
-    doTestFindInContext("64(0)64123456", "NZ");
+    doTestFindInContext("64(0)64123456", RegionCode.NZ);
     // Check that using a "/" is fine in a phone number.
-    doTestFindInContext("123/45678", "DE");
-    doTestFindInContext("123-456-7890", "US");
+    doTestFindInContext("123/45678", RegionCode.DE);
+    doTestFindInContext("123-456-7890", RegionCode.US);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseWithInternationalPrefixes()}. */
   public void testFindWithInternationalPrefixes() throws Exception {
-    doTestFindInContext("+1 (650) 333-6000", "NZ");
-    doTestFindInContext("1-650-333-6000", "US");
+    doTestFindInContext("+1 (650) 333-6000", RegionCode.NZ);
+    doTestFindInContext("1-650-333-6000", RegionCode.US);
     // Calling the US number from Singapore by using different service providers
     // 1st test: calling using SingTel IDD service (IDD is 001)
-    doTestFindInContext("0011-650-333-6000", "SG");
+    doTestFindInContext("0011-650-333-6000", RegionCode.SG);
     // 2nd test: calling using StarHub IDD service (IDD is 008)
-    doTestFindInContext("0081-650-333-6000", "SG");
+    doTestFindInContext("0081-650-333-6000", RegionCode.SG);
     // 3rd test: calling using SingTel V019 service (IDD is 019)
-    doTestFindInContext("0191-650-333-6000", "SG");
+    doTestFindInContext("0191-650-333-6000", RegionCode.SG);
     // Calling the US number from Poland
-    doTestFindInContext("0~01-650-333-6000", "PL");
+    doTestFindInContext("0~01-650-333-6000", RegionCode.PL);
     // Using "++" at the start.
-    doTestFindInContext("++1 (650) 333-6000", "PL");
+    doTestFindInContext("++1 (650) 333-6000", RegionCode.PL);
     // Using a full-width plus sign.
-    doTestFindInContext("\uFF0B1 (650) 333-6000", "SG");
+    doTestFindInContext("\uFF0B1 (650) 333-6000", RegionCode.SG);
     // The whole number, including punctuation, is here represented in full-width form.
     doTestFindInContext("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
         "\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10",
-        "SG");
+        RegionCode.SG);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseWithLeadingZero()}. */
   public void testFindWithLeadingZero() throws Exception {
-    doTestFindInContext("+39 02-36618 300", "NZ");
-    doTestFindInContext("02-36618 300", "IT");
-    doTestFindInContext("312 345 678", "IT");
+    doTestFindInContext("+39 02-36618 300", RegionCode.NZ);
+    doTestFindInContext("02-36618 300", RegionCode.IT);
+    doTestFindInContext("312 345 678", RegionCode.IT);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseNationalNumberArgentina()}. */
   public void testFindNationalNumberArgentina() throws Exception {
     // Test parsing mobile numbers of Argentina.
-    doTestFindInContext("+54 9 343 555 1212", "AR");
-    doTestFindInContext("0343 15 555 1212", "AR");
+    doTestFindInContext("+54 9 343 555 1212", RegionCode.AR);
+    doTestFindInContext("0343 15 555 1212", RegionCode.AR);
 
-    doTestFindInContext("+54 9 3715 65 4320", "AR");
-    doTestFindInContext("03715 15 65 4320", "AR");
+    doTestFindInContext("+54 9 3715 65 4320", RegionCode.AR);
+    doTestFindInContext("03715 15 65 4320", RegionCode.AR);
 
     // Test parsing fixed-line numbers of Argentina.
-    doTestFindInContext("+54 11 3797 0000", "AR");
-    doTestFindInContext("011 3797 0000", "AR");
+    doTestFindInContext("+54 11 3797 0000", RegionCode.AR);
+    doTestFindInContext("011 3797 0000", RegionCode.AR);
 
-    doTestFindInContext("+54 3715 65 4321", "AR");
-    doTestFindInContext("03715 65 4321", "AR");
+    doTestFindInContext("+54 3715 65 4321", RegionCode.AR);
+    doTestFindInContext("03715 65 4321", RegionCode.AR);
 
-    doTestFindInContext("+54 23 1234 0000", "AR");
-    doTestFindInContext("023 1234 0000", "AR");
+    doTestFindInContext("+54 23 1234 0000", RegionCode.AR);
+    doTestFindInContext("023 1234 0000", RegionCode.AR);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseWithXInNumber()}. */
   public void testFindWithXInNumber() throws Exception {
-    doTestFindInContext("(0xx) 123456789", "AR");
+    doTestFindInContext("(0xx) 123456789", RegionCode.AR);
     // A case where x denotes both carrier codes and extension symbol.
-    doTestFindInContext("(0xx) 123456789 x 1234", "AR");
+    doTestFindInContext("(0xx) 123456789 x 1234", RegionCode.AR);
 
     // This test is intentionally constructed such that the number of digit after xx is larger than
     // 7, so that the number won't be mistakenly treated as an extension, as we allow extensions up
     // to 7 digits. This assumption is okay for now as all the countries where a carrier selection
     // code is written in the form of xx have a national significant number of length larger than 7.
-    doTestFindInContext("011xx5481429712", "US");
+    doTestFindInContext("011xx5481429712", RegionCode.US);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseNumbersMexico()}. */
   public void testFindNumbersMexico() throws Exception {
     // Test parsing fixed-line numbers of Mexico.
-    doTestFindInContext("+52 (449)978-0001", "MX");
-    doTestFindInContext("01 (449)978-0001", "MX");
-    doTestFindInContext("(449)978-0001", "MX");
+    doTestFindInContext("+52 (449)978-0001", RegionCode.MX);
+    doTestFindInContext("01 (449)978-0001", RegionCode.MX);
+    doTestFindInContext("(449)978-0001", RegionCode.MX);
 
     // Test parsing mobile numbers of Mexico.
-    doTestFindInContext("+52 1 33 1234-5678", "MX");
-    doTestFindInContext("044 (33) 1234-5678", "MX");
-    doTestFindInContext("045 33 1234-5678", "MX");
+    doTestFindInContext("+52 1 33 1234-5678", RegionCode.MX);
+    doTestFindInContext("044 (33) 1234-5678", RegionCode.MX);
+    doTestFindInContext("045 33 1234-5678", RegionCode.MX);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseNumbersWithPlusWithNoRegion()}. */
   public void testFindNumbersWithPlusWithNoRegion() throws Exception {
-    // "ZZ" is allowed only if the number starts with a '+' - then the country code can be
+    // RegionCode.ZZ is allowed only if the number starts with a '+' - then the country code can be
     // calculated.
-    doTestFindInContext("+64 3 331 6005", "ZZ");
+    doTestFindInContext("+64 3 331 6005", RegionCode.ZZ);
     // Null is also allowed for the region code in these cases.
     doTestFindInContext("+64 3 331 6005", null);
   }
 
   /** See {@link PhoneNumberUtilTest#testParseExtensions()}. */
   public void testFindExtensions() throws Exception {
-    doTestFindInContext("03 331 6005 ext 3456", "NZ");
-    doTestFindInContext("03-3316005x3456", "NZ");
-    doTestFindInContext("03-3316005 int.3456", "NZ");
-    doTestFindInContext("03 3316005 #3456", "NZ");
-    doTestFindInContext("0~0 1800 7493 524", "PL");
-    doTestFindInContext("(1800) 7493.524", "US");
+    doTestFindInContext("03 331 6005 ext 3456", RegionCode.NZ);
+    doTestFindInContext("03-3316005x3456", RegionCode.NZ);
+    doTestFindInContext("03-3316005 int.3456", RegionCode.NZ);
+    doTestFindInContext("03 3316005 #3456", RegionCode.NZ);
+    doTestFindInContext("0~0 1800 7493 524", RegionCode.PL);
+    doTestFindInContext("(1800) 7493.524", RegionCode.US);
     // Check that the last instance of an extension token is matched.
-    doTestFindInContext("0~0 1800 7493 524 ~1234", "PL");
+    doTestFindInContext("0~0 1800 7493 524 ~1234", RegionCode.PL);
     // Verifying bug-fix where the last digit of a number was previously omitted if it was a 0 when
     // extracting the extension. Also verifying a few different cases of extensions.
-    doTestFindInContext("+44 2034567890x456", "NZ");
-    doTestFindInContext("+44 2034567890x456", "GB");
-    doTestFindInContext("+44 2034567890 x456", "GB");
-    doTestFindInContext("+44 2034567890 X456", "GB");
-    doTestFindInContext("+44 2034567890 X 456", "GB");
-    doTestFindInContext("+44 2034567890 X  456", "GB");
-    doTestFindInContext("+44 2034567890  X 456", "GB");
+    doTestFindInContext("+44 2034567890x456", RegionCode.NZ);
+    doTestFindInContext("+44 2034567890x456", RegionCode.GB);
+    doTestFindInContext("+44 2034567890 x456", RegionCode.GB);
+    doTestFindInContext("+44 2034567890 X456", RegionCode.GB);
+    doTestFindInContext("+44 2034567890 X 456", RegionCode.GB);
+    doTestFindInContext("+44 2034567890 X  456", RegionCode.GB);
+    doTestFindInContext("+44 2034567890  X 456", RegionCode.GB);
 
-    doTestFindInContext("(800) 901-3355 x 7246433", "US");
-    doTestFindInContext("(800) 901-3355 , ext 7246433", "US");
-    doTestFindInContext("(800) 901-3355 ,extension 7246433", "US");
+    doTestFindInContext("(800) 901-3355 x 7246433", RegionCode.US);
+    doTestFindInContext("(800) 901-3355 , ext 7246433", RegionCode.US);
+    doTestFindInContext("(800) 901-3355 ,extension 7246433", RegionCode.US);
     // The next test differs from PhoneNumberUtil -> when matching we don't consider a lone comma to
     // indicate an extension, although we accept it when parsing.
-    doTestFindInContext("(800) 901-3355 ,x 7246433", "US");
-    doTestFindInContext("(800) 901-3355 ext: 7246433", "US");
+    doTestFindInContext("(800) 901-3355 ,x 7246433", RegionCode.US);
+    doTestFindInContext("(800) 901-3355 ext: 7246433", RegionCode.US);
   }
 
   public void testFindInterspersedWithSpace() throws Exception {
-    doTestFindInContext("0 3   3 3 1   6 0 0 5", "NZ");
+    doTestFindInContext("0 3   3 3 1   6 0 0 5", RegionCode.NZ);
   }
 
   /**
@@ -205,10 +205,10 @@ public class PhoneNumberMatcherTest extends TestCase {
   public void testMatchWithSurroundingZipcodes() throws Exception {
     String number = "415-666-7777";
     String zipPreceding = "My address is CA 34215 - " + number + " is my number.";
-    PhoneNumber expectedResult = phoneUtil.parse(number, "US");
+    PhoneNumber expectedResult = phoneUtil.parse(number, RegionCode.US);
 
     Iterator<PhoneNumberMatch> iterator =
-        phoneUtil.findNumbers(zipPreceding, "US").iterator();
+        phoneUtil.findNumbers(zipPreceding, RegionCode.US).iterator();
     PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
     assertNotNull("Did not find a number in '" + zipPreceding + "'; expected " + number, match);
     assertEquals(expectedResult, match.number());
@@ -218,7 +218,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     number = "(415) 666 7777";
 
     String zipFollowing = "My number is " + number + ". 34215 is my zip-code.";
-    iterator = phoneUtil.findNumbers(zipFollowing, "US").iterator();
+    iterator = phoneUtil.findNumbers(zipFollowing, RegionCode.US).iterator();
 
     PhoneNumberMatch matchWithSpaces = iterator.hasNext() ? iterator.next() : null;
     assertNotNull("Did not find a number in '" + zipFollowing + "'; expected " + number,
@@ -286,8 +286,8 @@ public class PhoneNumberMatcherTest extends TestCase {
     // considered possible.
     String numberWithPlus = "+14156667777";
     String numberWithBrackets = "(415)6667777";
-    findMatchesInContexts(possibleOnlyContexts, false, true, "US", numberWithPlus);
-    findMatchesInContexts(possibleOnlyContexts, false, true, "US", numberWithBrackets);
+    findMatchesInContexts(possibleOnlyContexts, false, true, RegionCode.US, numberWithPlus);
+    findMatchesInContexts(possibleOnlyContexts, false, true, RegionCode.US, numberWithBrackets);
 
     ArrayList<NumberContext> validContexts = new ArrayList<NumberContext>();
     validContexts.add(new NumberContext("abc", ""));
@@ -296,8 +296,8 @@ public class PhoneNumberMatcherTest extends TestCase {
     validContexts.add(new NumberContext("\u00C9", " def"));  // Trailing white-space.
 
     // Numbers should be considered valid, since they start with punctuation.
-    findMatchesInContexts(validContexts, true, true, "US", numberWithPlus);
-    findMatchesInContexts(validContexts, true, true, "US", numberWithBrackets);
+    findMatchesInContexts(validContexts, true, true, RegionCode.US, numberWithPlus);
+    findMatchesInContexts(validContexts, true, true, RegionCode.US, numberWithBrackets);
   }
 
   public void testMatchesWithSurroundingChineseChars() throws Exception {
@@ -323,7 +323,7 @@ public class PhoneNumberMatcherTest extends TestCase {
 
   public void testMatchesMultiplePhoneNumbersSeparatedByPhoneNumberPunctuation() throws Exception {
     String text = "Call 650-253-4561 -- 455-234-3451";
-    String region = "US";
+    String region = RegionCode.US;
 
     PhoneNumber number1 = new PhoneNumber();
     number1.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
@@ -343,7 +343,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   public void testDoesNotMatchMultiplePhoneNumbersSeparatedWithNoWhiteSpace() throws Exception {
     // No white-space found between numbers - neither is found.
     String text = "Call 650-253-4561--455-234-3451";
-    String region = "US";
+    String region = RegionCode.US;
 
     assertTrue(hasNoMatches(phoneUtil.findNumbers(text, region)));
   }
@@ -352,29 +352,29 @@ public class PhoneNumberMatcherTest extends TestCase {
    * Strings with number-like things that shouldn't be found under any level.
    */
   private static final NumberTest[] IMPOSSIBLE_CASES = {
-    new NumberTest("12345", "US"),
-    new NumberTest("23456789", "US"),
-    new NumberTest("234567890112", "US"),
-    new NumberTest("650+253+1234", "US"),
-    new NumberTest("3/10/1984", "CA"),
-    new NumberTest("03/27/2011", "US"),
-    new NumberTest("31/8/2011", "US"),
-    new NumberTest("1/12/2011", "US"),
-    new NumberTest("10/12/82", "DE"),
+    new NumberTest("12345", RegionCode.US),
+    new NumberTest("23456789", RegionCode.US),
+    new NumberTest("234567890112", RegionCode.US),
+    new NumberTest("650+253+1234", RegionCode.US),
+    new NumberTest("3/10/1984", RegionCode.CA),
+    new NumberTest("03/27/2011", RegionCode.US),
+    new NumberTest("31/8/2011", RegionCode.US),
+    new NumberTest("1/12/2011", RegionCode.US),
+    new NumberTest("10/12/82", RegionCode.DE),
   };
 
   /**
    * Strings with number-like things that should only be found under "possible".
    */
   private static final NumberTest[] POSSIBLE_ONLY_CASES = {
-    new NumberTest("abc8002345678", "US"),
+    new NumberTest("abc8002345678", RegionCode.US),
     // US numbers cannot start with 7 in the test metadata to be valid.
-    new NumberTest("7121115678", "US"),
+    new NumberTest("7121115678", RegionCode.US),
     // 'X' should not be found in numbers at leniencies stricter than POSSIBLE, unless it represents
     // a carrier code or extension.
-    new NumberTest("1650 x 253 - 1234", "US"),
-    new NumberTest("650 x 253 - 1234", "US"),
-    new NumberTest("650x2531234", "US"),
+    new NumberTest("1650 x 253 - 1234", RegionCode.US),
+    new NumberTest("650 x 253 - 1234", RegionCode.US),
+    new NumberTest("650x2531234", RegionCode.US),
   };
 
   /**
@@ -382,16 +382,16 @@ public class PhoneNumberMatcherTest extends TestCase {
    * leniency level.
    */
   private static final NumberTest[] VALID_CASES = {
-    new NumberTest("65 02 53 00 00.", "US"),
-    new NumberTest("6502 538365", "US"),
-    new NumberTest("650//253-1234", "US"),  // 2 slashes are illegal at higher levels
-    new NumberTest("650/253/1234", "US"),
-    new NumberTest("9002309. 158", "US"),
-    new NumberTest("21 7/8 - 14 12/34 - 5", "US"),
-    new NumberTest("12.1 - 23.71 - 23.45", "US"),
-    new NumberTest("1979-2011 100%", "US"),
-    new NumberTest("800 234 1 111x1111", "US"),
-    new NumberTest("+494949-4-94", "DE"),  // National number in wrong format
+    new NumberTest("65 02 53 00 00.", RegionCode.US),
+    new NumberTest("6502 538365", RegionCode.US),
+    new NumberTest("650//253-1234", RegionCode.US),  // 2 slashes are illegal at higher levels
+    new NumberTest("650/253/1234", RegionCode.US),
+    new NumberTest("9002309. 158", RegionCode.US),
+    new NumberTest("21 7/8 - 14 12/34 - 5", RegionCode.US),
+    new NumberTest("12.1 - 23.71 - 23.45", RegionCode.US),
+    new NumberTest("1979-2011 100%", RegionCode.US),
+    new NumberTest("800 234 1 111x1111", RegionCode.US),
+    new NumberTest("+494949-4-94", RegionCode.DE),  // National number in wrong format
   };
 
   /**
@@ -399,35 +399,35 @@ public class PhoneNumberMatcherTest extends TestCase {
    * "strict_grouping" leniency level.
    */
   private static final NumberTest[] STRICT_GROUPING_CASES = {
-    new NumberTest("(415) 6667777", "US"),
-    new NumberTest("415-6667777", "US"),
+    new NumberTest("(415) 6667777", RegionCode.US),
+    new NumberTest("415-6667777", RegionCode.US),
     // Should be found by strict grouping but not exact grouping, as the last two groups are
     // formatted together as a block.
-    new NumberTest("800-2491234", "DE"),
+    new NumberTest("800-2491234", RegionCode.DE),
   };
 
   /**
    * Strings with number-like things that should found at all levels.
    */
   private static final NumberTest[] EXACT_GROUPING_CASES = {
-    new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF17\uFF17\uFF17\uFF17", "US"),
-    new NumberTest("\uFF14\uFF11\uFF15-\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17\uFF17", "US"),
-    new NumberTest("4156667777", "US"),
-    new NumberTest("4156667777 x 123", "US"),
-    new NumberTest("415-666-7777", "US"),
-    new NumberTest("415/666-7777", "US"),
-    new NumberTest("415-666-7777 ext. 503", "US"),
-    new NumberTest("1 415 666 7777 x 123", "US"),
-    new NumberTest("+1 415-666-7777", "US"),
-    new NumberTest("+494949 49", "DE"),
-    new NumberTest("+49-49-34", "DE"),
-    new NumberTest("+49-4931-49", "DE"),
-    new NumberTest("04931-49", "DE"),  // With National Prefix
-    new NumberTest("+49-494949", "DE"),  // One group with country code
-    new NumberTest("+49-494949 ext. 49", "DE"),
-    new NumberTest("+49494949 ext. 49", "DE"),
-    new NumberTest("0494949", "DE"),
-    new NumberTest("0494949 ext. 49", "DE"),
+    new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF17\uFF17\uFF17\uFF17", RegionCode.US),
+    new NumberTest("\uFF14\uFF11\uFF15-\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17\uFF17", RegionCode.US),
+    new NumberTest("4156667777", RegionCode.US),
+    new NumberTest("4156667777 x 123", RegionCode.US),
+    new NumberTest("415-666-7777", RegionCode.US),
+    new NumberTest("415/666-7777", RegionCode.US),
+    new NumberTest("415-666-7777 ext. 503", RegionCode.US),
+    new NumberTest("1 415 666 7777 x 123", RegionCode.US),
+    new NumberTest("+1 415-666-7777", RegionCode.US),
+    new NumberTest("+494949 49", RegionCode.DE),
+    new NumberTest("+49-49-34", RegionCode.DE),
+    new NumberTest("+49-4931-49", RegionCode.DE),
+    new NumberTest("04931-49", RegionCode.DE),  // With National Prefix
+    new NumberTest("+49-494949", RegionCode.DE),  // One group with country code
+    new NumberTest("+49-494949 ext. 49", RegionCode.DE),
+    new NumberTest("+49494949 ext. 49", RegionCode.DE),
+    new NumberTest("0494949", RegionCode.DE),
+    new NumberTest("0494949 ext. 49", RegionCode.DE),
   };
 
   public void testMatchesWithStrictGroupingLeniency() throws Exception {
@@ -534,7 +534,7 @@ public class PhoneNumberMatcherTest extends TestCase {
    */
   private void findMatchesInContexts(List<NumberContext> contexts, boolean isValid,
                                      boolean isPossible) {
-    String region = "US";
+    String region = RegionCode.US;
     String number = "415-666-7777";
 
     findMatchesInContexts(contexts, isValid, isPossible, region, number);
@@ -544,19 +544,19 @@ public class PhoneNumberMatcherTest extends TestCase {
     // The digits up to the ", " form a valid US number, but it shouldn't be matched as one since
     // there was a non-matching bracket present.
     assertTrue(hasNoMatches(phoneUtil.findNumbers(
-        "80.585 [79.964, 81.191]", "US")));
+        "80.585 [79.964, 81.191]", RegionCode.US)));
 
     // The trailing "]" is thrown away before parsing, so the resultant number, while a valid US
     // number, does not have matching brackets.
     assertTrue(hasNoMatches(phoneUtil.findNumbers(
-        "80.585 [79.964]", "US")));
+        "80.585 [79.964]", RegionCode.US)));
 
     assertTrue(hasNoMatches(phoneUtil.findNumbers(
-        "80.585 ((79.964)", "US")));
+        "80.585 ((79.964)", RegionCode.US)));
 
     // This case has too many sets of brackets to be valid.
     assertTrue(hasNoMatches(phoneUtil.findNumbers(
-        "(80).(585) (79).(9)64", "US")));
+        "(80).(585) (79).(9)64", RegionCode.US)));
   }
 
   public void testNoMatchIfRegionIsNull() throws Exception {
@@ -566,19 +566,19 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testNoMatchInEmptyString() throws Exception {
-    assertTrue(hasNoMatches(phoneUtil.findNumbers("", "US")));
-    assertTrue(hasNoMatches(phoneUtil.findNumbers("  ", "US")));
+    assertTrue(hasNoMatches(phoneUtil.findNumbers("", RegionCode.US)));
+    assertTrue(hasNoMatches(phoneUtil.findNumbers("  ", RegionCode.US)));
   }
 
   public void testNoMatchIfNoNumber() throws Exception {
     assertTrue(hasNoMatches(phoneUtil.findNumbers(
-        "Random text body - number is foobar, see you there", "US")));
+        "Random text body - number is foobar, see you there", RegionCode.US)));
   }
 
   public void testSequences() throws Exception {
     // Test multiple occurrences.
     String text = "Call 033316005  or 032316005!";
-    String region = "NZ";
+    String region = RegionCode.NZ;
 
     PhoneNumber number1 = new PhoneNumber();
     number1.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
@@ -598,7 +598,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testNullInput() throws Exception {
-    assertTrue(hasNoMatches(phoneUtil.findNumbers(null, "US")));
+    assertTrue(hasNoMatches(phoneUtil.findNumbers(null, RegionCode.US)));
     assertTrue(hasNoMatches(phoneUtil.findNumbers(null, null)));
   }
 
@@ -617,7 +617,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     }
 
     Iterable<PhoneNumberMatch> iterable =
-        phoneUtil.findNumbers(numbers.toString(), "US", Leniency.VALID, 10);
+        phoneUtil.findNumbers(numbers.toString(), RegionCode.US, Leniency.VALID, 10);
     List<PhoneNumber> actual = new ArrayList<PhoneNumber>(100);
     for (PhoneNumberMatch match : iterable) {
       actual.add(match.number());
@@ -636,7 +636,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     }
 
     Iterable<PhoneNumberMatch> iterable =
-        phoneUtil.findNumbers(numbers.toString(), "US", Leniency.VALID, 10);
+        phoneUtil.findNumbers(numbers.toString(), RegionCode.US, Leniency.VALID, 10);
     assertFalse(iterable.iterator().hasNext());
   }
 
@@ -655,7 +655,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     }
 
     Iterable<PhoneNumberMatch> iterable =
-        phoneUtil.findNumbers(numbers.toString(), "US", Leniency.VALID, 10);
+        phoneUtil.findNumbers(numbers.toString(), RegionCode.US, Leniency.VALID, 10);
     List<PhoneNumber> actual = new ArrayList<PhoneNumber>(100);
     for (PhoneNumberMatch match : iterable) {
       actual.add(match.number());
@@ -664,7 +664,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testEmptyIteration() throws Exception {
-    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("", "ZZ");
+    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("", RegionCode.ZZ);
     Iterator<PhoneNumberMatch> iterator = iterable.iterator();
 
     assertFalse(iterator.hasNext());
@@ -677,7 +677,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testSingleIteration() throws Exception {
-    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("+14156667777", "ZZ");
+    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("+14156667777", RegionCode.ZZ);
 
     // With hasNext() -> next().
     Iterator<PhoneNumberMatch> iterator = iterable.iterator();
@@ -703,7 +703,7 @@ public class PhoneNumberMatcherTest extends TestCase {
 
   public void testDoubleIteration() throws Exception {
     Iterable<PhoneNumberMatch> iterable =
-        phoneUtil.findNumbers("+14156667777 foobar +14156667777 ", "ZZ");
+        phoneUtil.findNumbers("+14156667777 foobar +14156667777 ", RegionCode.ZZ);
 
     // With hasNext() -> next().
     Iterator<PhoneNumberMatch> iterator = iterable.iterator();
@@ -736,7 +736,7 @@ public class PhoneNumberMatcherTest extends TestCase {
    * change iteration behavior.
    */
   public void testRemovalNotSupported() throws Exception {
-    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("+14156667777", "ZZ");
+    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("+14156667777", RegionCode.ZZ);
 
     Iterator<PhoneNumberMatch> iterator = iterable.iterator();
     try {
@@ -768,7 +768,7 @@ public class PhoneNumberMatcherTest extends TestCase {
   private void assertEqualRange(CharSequence text, int index, int start, int end) {
     CharSequence sub = text.subSequence(index, text.length());
     Iterator<PhoneNumberMatch> matches =
-      phoneUtil.findNumbers(sub, "NZ", Leniency.POSSIBLE, Long.MAX_VALUE).iterator();
+      phoneUtil.findNumbers(sub, RegionCode.NZ, Leniency.POSSIBLE, Long.MAX_VALUE).iterator();
     assertTrue(matches.hasNext());
     PhoneNumberMatch match = matches.next();
     assertEquals(start - index, match.start());
