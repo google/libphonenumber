@@ -561,7 +561,7 @@
 493366|Beeskow
 493371|Luckenwalde
 493372|Jüterbog
-493375|Königs Wusterhausen<br>Münchehofe Kreis Dahme-
+493375|Königs Wusterhausen
 493377|Zossen Brandenburg
 493378|Ludwigsfelde
 493379|Mahlow
