@@ -98,9 +98,14 @@ public class BuildMetadataFromXml {
     int numOfTerritories = territory.getLength();
     for (int i = 0; i < numOfTerritories; i++) {
       Element territoryElement = (Element) territory.item(i);
-      String regionCode = territoryElement.getAttribute("id");
-      PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
-      metadataCollection.addMetadata(metadata);
+      String id = territoryElement.getAttribute("id");
+      try {
+        PhoneMetadata metadata = loadCountryMetadata(id, territoryElement);
+        metadataCollection.addMetadata(metadata);
+      } catch (IllegalArgumentException e) {
+        LOGGER.log(Level.WARNING, "Found data for region '" + id + "' but no valid region code " +
+                   "can be found to match this. Data will be ignored.");
+      }
     }
     return metadataCollection.build();
   }

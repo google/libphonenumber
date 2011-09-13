@@ -21,7 +21,6 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -34,10 +33,10 @@ import java.util.TreeSet;
  *
  * @author Philippe Liard
  */
-class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
+final class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
   // Size of short and integer types in bytes.
-  private static final int SHORT_SIZE = Short.SIZE / 8;
-  private static final int INT_SIZE = Integer.SIZE / 8;
+  private static final int SHORT_NUM_BYTES = Short.SIZE / 8;
+  private static final int INT_NUM_BYTES = Integer.SIZE / 8;
 
   // The number of bytes used to store a phone number prefix.
   private int prefixSizeInBytes;
@@ -51,101 +50,140 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
   // Sorted string array of unique description strings.
   private String[] descriptionPool;
 
-  public FlyweightMapStorage() {}
-
-  @Override
-  public boolean isFlyweight() {
-    return true;
-  }
-
-  /**
-   * Gets the minimum number of bytes that can be used to store the provided {@code value}.
-   */
-  private static int getOptimalNumberOfBytesForValue(int value) {
-    return value <= Short.MAX_VALUE ? SHORT_SIZE : INT_SIZE;
-  }
-
-  /**
-   * Stores the provided {@code value} to the provided byte {@code buffer} at the specified {@code
-   * index} using the provided {@code wordSize} in bytes. Note that only integer and short sizes are
-   * supported.
-   *
-   * @param buffer  the byte buffer to which the value is stored
-   * @param wordSize  the number of bytes used to store the provided value
-   * @param index  the index to which the value is stored
-   * @param value  the value that is stored assuming it does not require more than the specified
-   *    number of bytes.
-   */
-  private static void storeWordInBuffer(ByteBuffer buffer, int wordSize, int index, int value) {
-    index *= wordSize;
-
-    if (wordSize == SHORT_SIZE) {
-      buffer.putShort(index, (short) value);
-    } else {
-      buffer.putInt(index, value);
-    }
-  }
-
-  /**
-   * Reads the {@code value} at the specified {@code index} from the provided byte {@code buffer}.
-   * Note that only integer and short sizes are supported.
-   *
-   * @param buffer  the byte buffer from which the value is read
-   * @param wordSize  the number of bytes used to store the value
-   * @param index  the index where the value is read from
-   *
-   * @return  the value read from the buffer
-   */
-  private static int readWordFromBuffer(ByteBuffer buffer, int wordSize, int index) {
-    index *= wordSize;
-    return wordSize == SHORT_SIZE ? buffer.getShort(index) : buffer.getInt(index);
-  }
-
   @Override
   public int getPrefix(int index) {
     return readWordFromBuffer(phoneNumberPrefixes, prefixSizeInBytes, index);
   }
 
+  /**
+   * This implementation returns the same string (same identity) when called for multiple indexes
+   * corresponding to prefixes that have the same description.
+   */
   @Override
   public String getDescription(int index) {
-    return descriptionPool[readWordFromBuffer(descriptionIndexes, descIndexSizeInBytes, index)];
+    int indexInDescriptionPool =
+        readWordFromBuffer(descriptionIndexes, descIndexSizeInBytes, index);
+    return descriptionPool[indexInDescriptionPool];
   }
 
   @Override
-  public void readFromSortedMap(SortedMap<Integer, String> sortedAreaCodeMap) {
+  public void readFromSortedMap(SortedMap<Integer, String> areaCodeMap) {
     SortedSet<String> descriptionsSet = new TreeSet<String>();
-    numOfEntries = sortedAreaCodeMap.size();
-    prefixSizeInBytes = getOptimalNumberOfBytesForValue(sortedAreaCodeMap.lastKey());
+    numOfEntries = areaCodeMap.size();
+    prefixSizeInBytes = getOptimalNumberOfBytesForValue(areaCodeMap.lastKey());
     phoneNumberPrefixes = ByteBuffer.allocate(numOfEntries * prefixSizeInBytes);
 
     // Fill the phone number prefixes byte buffer, the set of possible lengths of prefixes and the
     // description set.
     int index = 0;
-    for (Entry<Integer, String> entry : sortedAreaCodeMap.entrySet()) {
+    for (Entry<Integer, String> entry : areaCodeMap.entrySet()) {
       int prefix = entry.getKey();
-      storeWordInBuffer(phoneNumberPrefixes, prefixSizeInBytes, index++, prefix);
+      storeWordInBuffer(phoneNumberPrefixes, prefixSizeInBytes, index, prefix);
       possibleLengths.add((int) Math.log10(prefix) + 1);
       descriptionsSet.add(entry.getValue());
+      ++index;
     }
+    createDescriptionPool(descriptionsSet, areaCodeMap);
+  }
 
-    // Create the description pool.
+  /**
+   * Creates the description pool from the provided set of string descriptions and area code map.
+   */
+  private void createDescriptionPool(SortedSet<String> descriptionsSet,
+      SortedMap<Integer, String> areaCodeMap) {
     descIndexSizeInBytes = getOptimalNumberOfBytesForValue(descriptionsSet.size() - 1);
     descriptionIndexes = ByteBuffer.allocate(numOfEntries * descIndexSizeInBytes);
     descriptionPool = new String[descriptionsSet.size()];
     descriptionsSet.toArray(descriptionPool);
 
     // Map the phone number prefixes to the descriptions.
-    index = 0;
+    int index = 0;
     for (int i = 0; i < numOfEntries; i++) {
       int prefix = readWordFromBuffer(phoneNumberPrefixes, prefixSizeInBytes, i);
-      String description = sortedAreaCodeMap.get(prefix);
-      int positionInDescriptionPool =
-          Arrays.binarySearch(descriptionPool, description, new Comparator<String>() {
-            public int compare(String o1, String o2) { return o1.compareTo(o2); }
-          });
-      storeWordInBuffer(descriptionIndexes, descIndexSizeInBytes, index++,
-                        positionInDescriptionPool);
+      String description = areaCodeMap.get(prefix);
+      int positionInDescriptionPool = Arrays.binarySearch(descriptionPool, description);
+      storeWordInBuffer(descriptionIndexes, descIndexSizeInBytes, index, positionInDescriptionPool);
+      ++index;
     }
+  }
+
+  @Override
+  public void readExternal(ObjectInput objectInput) throws IOException {
+    // Read binary words sizes.
+    prefixSizeInBytes = objectInput.readInt();
+    descIndexSizeInBytes = objectInput.readInt();
+
+    // Read possible lengths.
+    int sizeOfLengths = objectInput.readInt();
+    possibleLengths.clear();
+    for (int i = 0; i < sizeOfLengths; i++) {
+      possibleLengths.add(objectInput.readInt());
+    }
+
+    // Read description pool size.
+    int descriptionPoolSize = objectInput.readInt();
+    // Read description pool.
+    if (descriptionPool == null || descriptionPool.length < descriptionPoolSize) {
+      descriptionPool = new String[descriptionPoolSize];
+    }
+    for (int i = 0; i < descriptionPoolSize; i++) {
+      String description = objectInput.readUTF();
+      descriptionPool[i] = description;
+    }
+    readEntries(objectInput);
+  }
+
+  /**
+   * Reads the area code entries from the provided input stream and stores them to the internal byte
+   * buffers.
+   */
+  private void readEntries(ObjectInput objectInput) throws IOException {
+    numOfEntries = objectInput.readInt();
+    if (phoneNumberPrefixes == null || phoneNumberPrefixes.capacity() < numOfEntries) {
+      phoneNumberPrefixes = ByteBuffer.allocate(numOfEntries * prefixSizeInBytes);
+    }
+    if (descriptionIndexes == null || descriptionIndexes.capacity() < numOfEntries) {
+      descriptionIndexes = ByteBuffer.allocate(numOfEntries * descIndexSizeInBytes);
+    }
+    for (int i = 0; i < numOfEntries; i++) {
+      readExternalWord(objectInput, prefixSizeInBytes, phoneNumberPrefixes, i);
+      readExternalWord(objectInput, descIndexSizeInBytes, descriptionIndexes, i);
+    }
+  }
+
+  @Override
+  public void writeExternal(ObjectOutput objectOutput) throws IOException {
+    // Write binary words sizes.
+    objectOutput.writeInt(prefixSizeInBytes);
+    objectOutput.writeInt(descIndexSizeInBytes);
+
+    // Write possible lengths.
+    int sizeOfLengths = possibleLengths.size();
+    objectOutput.writeInt(sizeOfLengths);
+    for (Integer length : possibleLengths) {
+      objectOutput.writeInt(length);
+    }
+
+    // Write description pool size.
+    objectOutput.writeInt(descriptionPool.length);
+    // Write description pool.
+    for (String description : descriptionPool) {
+      objectOutput.writeUTF(description);
+    }
+
+    // Write entries.
+    objectOutput.writeInt(numOfEntries);
+    for (int i = 0; i < numOfEntries; i++) {
+      writeExternalWord(objectOutput, prefixSizeInBytes, phoneNumberPrefixes, i);
+      writeExternalWord(objectOutput, descIndexSizeInBytes, descriptionIndexes, i);
+    }
+  }
+
+  /**
+   * Gets the minimum number of bytes that can be used to store the provided {@code value}.
+   */
+  private static int getOptimalNumberOfBytesForValue(int value) {
+    return value <= Short.MAX_VALUE ? SHORT_NUM_BYTES : INT_NUM_BYTES;
   }
 
   /**
@@ -159,47 +197,12 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
    * @throws IOException  if an error occurred reading from the object input stream
    */
   private static void readExternalWord(ObjectInput objectInput, int wordSize,
-                                       ByteBuffer outputBuffer, int index) throws IOException {
-    index *= wordSize;
-    if (wordSize == SHORT_SIZE) {
-      outputBuffer.putShort(index, objectInput.readShort());
+      ByteBuffer outputBuffer, int index) throws IOException {
+    int wordIndex = index * wordSize;
+    if (wordSize == SHORT_NUM_BYTES) {
+      outputBuffer.putShort(wordIndex, objectInput.readShort());
     } else {
-      outputBuffer.putInt(index, objectInput.readInt());
-    }
-  }
-
-  @Override
-  public void readExternal(ObjectInput objectInput) throws IOException {
-    // Read binary words sizes.
-    prefixSizeInBytes = objectInput.readInt();
-    descIndexSizeInBytes = objectInput.readInt();
-    // Read possible lengths.
-    int sizeOfLengths = objectInput.readInt();
-    possibleLengths.clear();
-    for (int i = 0; i < sizeOfLengths; i++) {
-      possibleLengths.add(objectInput.readInt());
-    }
-    // Read description pool size.
-    int descriptionPoolSize = objectInput.readInt();
-    // Read description pool.
-    if (descriptionPool == null || descriptionPool.length < descriptionPoolSize) {
-      descriptionPool = new String[descriptionPoolSize];
-    }
-    for (int i = 0; i < descriptionPoolSize; i++) {
-      String description = objectInput.readUTF();
-      descriptionPool[i] = description;
-    }
-    // Read entries.
-    numOfEntries = objectInput.readInt();
-    if (phoneNumberPrefixes == null || phoneNumberPrefixes.capacity() < numOfEntries) {
-        phoneNumberPrefixes = ByteBuffer.allocate(numOfEntries * prefixSizeInBytes);
-    }
-    if (descriptionIndexes == null || descriptionIndexes.capacity() < numOfEntries) {
-      descriptionIndexes = ByteBuffer.allocate(numOfEntries * descIndexSizeInBytes);
-    }
-    for (int i = 0; i < numOfEntries; i++) {
-      readExternalWord(objectInput, prefixSizeInBytes, phoneNumberPrefixes, i);
-      readExternalWord(objectInput, descIndexSizeInBytes, descriptionIndexes, i);
+      outputBuffer.putInt(wordIndex, objectInput.readInt());
     }
   }
 
@@ -214,37 +217,47 @@ class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
    * @throws IOException if an error occurred writing to the provided object output stream
    */
   private static void writeExternalWord(ObjectOutput objectOutput, int wordSize,
-                                        ByteBuffer inputBuffer, int index) throws IOException {
-    index *= wordSize;
-    if (wordSize == SHORT_SIZE) {
-      objectOutput.writeShort(inputBuffer.getShort(index));
+      ByteBuffer inputBuffer, int index) throws IOException {
+    int wordIndex = index * wordSize;
+    if (wordSize == SHORT_NUM_BYTES) {
+      objectOutput.writeShort(inputBuffer.getShort(wordIndex));
     } else {
-      objectOutput.writeInt(inputBuffer.getInt(index));
+      objectOutput.writeInt(inputBuffer.getInt(wordIndex));
     }
   }
 
-  @Override
-  public void writeExternal(ObjectOutput objectOutput) throws IOException {
-    // Write binary words sizes.
-    objectOutput.writeInt(prefixSizeInBytes);
-    objectOutput.writeInt(descIndexSizeInBytes);
-    // Write possible lengths.
-    int sizeOfLengths = possibleLengths.size();
-    objectOutput.writeInt(sizeOfLengths);
-    for (Integer length : possibleLengths) {
-      objectOutput.writeInt(length);
-    }
-    // Write description pool size.
-    objectOutput.writeInt(descriptionPool.length);
-    // Write description pool.
-    for (String description : descriptionPool) {
-      objectOutput.writeUTF(description);
-    }
-    // Write entries.
-    objectOutput.writeInt(numOfEntries);
-    for (int i = 0; i < numOfEntries; i++) {
-      writeExternalWord(objectOutput, prefixSizeInBytes, phoneNumberPrefixes, i);
-      writeExternalWord(objectOutput, descIndexSizeInBytes, descriptionIndexes, i);
+  /**
+   * Reads the {@code value} at the specified {@code index} from the provided byte {@code buffer}.
+   * Note that only integer and short sizes are supported.
+   *
+   * @param buffer  the byte buffer from which the value is read
+   * @param wordSize  the number of bytes used to store the value
+   * @param index  the index where the value is read from
+   *
+   * @return  the value read from the buffer
+   */
+  private static int readWordFromBuffer(ByteBuffer buffer, int wordSize, int index) {
+    int wordIndex = index * wordSize;
+    return wordSize == SHORT_NUM_BYTES ? buffer.getShort(wordIndex) : buffer.getInt(wordIndex);
+  }
+
+  /**
+   * Stores the provided {@code value} to the provided byte {@code buffer} at the specified {@code
+   * index} using the provided {@code wordSize} in bytes. Note that only integer and short sizes are
+   * supported.
+   *
+   * @param buffer  the byte buffer to which the value is stored
+   * @param wordSize  the number of bytes used to store the provided value
+   * @param index  the index to which the value is stored
+   * @param value  the value that is stored assuming it does not require more than the specified
+   *    number of bytes.
+   */
+  private static void storeWordInBuffer(ByteBuffer buffer, int wordSize, int index, int value) {
+    int wordIndex = index * wordSize;
+    if (wordSize == SHORT_NUM_BYTES) {
+      buffer.putShort(wordIndex, (short) value);
+    } else {
+      buffer.putInt(wordIndex, value);
     }
   }
 }

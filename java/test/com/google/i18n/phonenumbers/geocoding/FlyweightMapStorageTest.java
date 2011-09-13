@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collections;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -32,37 +33,48 @@ import java.util.TreeMap;
  * @author Philippe Liard
  */
 public class FlyweightMapStorageTest extends TestCase {
-  private final SortedMap<Integer, String> areaCodeMap = new TreeMap<Integer, String>();
+  private static final SortedMap<Integer, String> areaCodeMap;
+  static {
+    SortedMap<Integer, String> tmpMap = new TreeMap<Integer, String>();
+    tmpMap.put(331402, "Paris");
+    tmpMap.put(331434, "Paris");
+    tmpMap.put(334910, "Marseille");
+    tmpMap.put(334911, "Marseille");
+    tmpMap.put(334912, "");
+    tmpMap.put(334913, "");
+    areaCodeMap = Collections.unmodifiableSortedMap(tmpMap);
+  }
 
-  public FlyweightMapStorageTest() {
-    areaCodeMap.put(331402, "Paris");
-    areaCodeMap.put(331434, "Paris");
-    areaCodeMap.put(334910, "Marseille");
-    areaCodeMap.put(334911, "Marseille");
+  private FlyweightMapStorage mapStorage;
+
+  @Override
+  protected void setUp() throws Exception {
+    mapStorage = new FlyweightMapStorage();
+    mapStorage.readFromSortedMap(areaCodeMap);
   }
 
   public void testReadFromSortedMap() {
-    FlyweightMapStorage mapStorage = new FlyweightMapStorage();
-    mapStorage.readFromSortedMap(areaCodeMap);
-
     assertEquals(331402, mapStorage.getPrefix(0));
     assertEquals(331434, mapStorage.getPrefix(1));
     assertEquals(334910, mapStorage.getPrefix(2));
     assertEquals(334911, mapStorage.getPrefix(3));
 
-    String desc = mapStorage.getDescription(0);
-    assertEquals("Paris", desc);
-    assertTrue(desc == mapStorage.getDescription(1));  // Same identity.
+    assertEquals("Paris", mapStorage.getDescription(0));
+    assertSame(mapStorage.getDescription(0), mapStorage.getDescription(1));
 
-    desc = mapStorage.getDescription(2);
-    assertEquals("Marseille", desc);
-    assertTrue(desc == mapStorage.getDescription(3));  // Same identity.
+    assertEquals("Marseille", mapStorage.getDescription(2));
+    assertSame(mapStorage.getDescription(2), mapStorage.getDescription(3));
+  }
+
+  public void testReadFromSortedMapSupportsEmptyDescription() {
+    assertEquals(334912, mapStorage.getPrefix(4));
+    assertEquals(334913, mapStorage.getPrefix(5));
+
+    assertEquals("", mapStorage.getDescription(4));
+    assertSame(mapStorage.getDescription(4), mapStorage.getDescription(5));
   }
 
   public void testWriteAndReadExternal() throws IOException {
-    FlyweightMapStorage mapStorage = new FlyweightMapStorage();
-    mapStorage.readFromSortedMap(areaCodeMap);
-
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
     mapStorage.writeExternal(objectOutputStream);
@@ -74,7 +86,22 @@ public class FlyweightMapStorageTest extends TestCase {
     newMapStorage.readExternal(objectInputStream);
 
     String expected = mapStorage.toString();
-    assertFalse(expected.length() == 0);
     assertEquals(expected, newMapStorage.toString());
+  }
+
+  public void testReadExternalThrowsIOExceptionWithMalformedData() throws IOException {
+    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+    objectOutputStream.writeUTF("hello");
+    objectOutputStream.flush();
+    ObjectInputStream objectInputStream =
+        new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()));
+    FlyweightMapStorage newMapStorage = new FlyweightMapStorage();
+    try {
+      newMapStorage.readExternal(objectInputStream);
+      fail();
+    } catch (IOException e) {
+      // Exception expected.
+    }
   }
 }

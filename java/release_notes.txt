@@ -1,3 +1,20 @@
+September 13th, 2011: libphonenumber-3.9
+* Code changes
+ - Enable AsYouTypeFormatter to handle long IDD and NDD.
+ - Allow the presence of an IDD following a +.
+ - Fix formatting of phone numbers which contain only 0s in the national number.
+ - Refactored some code in geocoding including AreaCodeMap and the storage
+   strategies.
+
+* Metadata changes
+ - Updates: AM, BE, BH, BJ, BR, BT, BZ, CI, CL, CN, DE, DK, DM, DZ, EC, EG, FJ,
+   GR, HR, HT, IN, IQ, IS, JM, KE, KG, KH, KR, LA, LB, LR, MA, MD, ML, MO, MX,
+   MY, NE, NG, PG, PH, PK, PY, QA, SA, SD, SG, SN, TD, TG, TH, TN, TT, UG, YE,
+   ZA, ZM
+ - New geocoding data for: AC, CG, CU, CV, EG, ET, FI, FI, FI, GL, JP, KM, MA,
+   MA, MU, MU, MU, MZ, RS, SH, SH, SL, SO, ST, TG, TG, TG, UG, ZM
+ - Updated geocoding data for: AR, DE
+
 August 11th, 2011: libphonenumber-3.8
 * Code changes
  - Fix to demo to not throw null-ptr exceptions for invalid NANPA numbers

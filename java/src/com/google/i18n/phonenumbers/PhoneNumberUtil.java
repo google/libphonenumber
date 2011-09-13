@@ -978,6 +978,12 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
+    if (number.getNationalNumber() == 0 && number.hasRawInput()) {
+      String rawInput = number.getRawInput();
+      if (rawInput.length() > 0) {
+        return rawInput;
+      }
+    }
     StringBuilder formattedNumber = new StringBuilder(20);
     format(number, numberFormat, formattedNumber);
     return formattedNumber.toString();
@@ -1486,7 +1492,7 @@ public class PhoneNumberUtil {
   public PhoneNumber getExampleNumberForType(String regionCode, PhoneNumberType type) {
     // Check the region code is valid.
     if (!isValidRegionCode(regionCode)) {
-      LOGGER.log(Level.WARNING, "Invalid or unknown region code provided.");
+      LOGGER.log(Level.SEVERE, "Invalid or unknown region code provided: " + regionCode);
       return null;
     }
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode), type);
@@ -1968,6 +1974,10 @@ public class PhoneNumberUtil {
   // 0 if fullNumber doesn't start with a valid country calling code, and leaves nationalNumber
   // unmodified.
   int extractCountryCode(StringBuilder fullNumber, StringBuilder nationalNumber) {
+    if ((fullNumber.length() == 0) || (fullNumber.charAt(0) == '0')) {
+      // Country codes do not begin with a '0'.
+      return 0;
+    }
     int potentialCountryCode;
     int numberLength = fullNumber.length();
     for (int i = 1; i <= MAX_LENGTH_COUNTRY_CODE && i <= numberLength; i++) {
@@ -2398,8 +2408,29 @@ public class PhoneNumberUtil {
     // Check to see if the number is given in international format so we know whether this number is
     // from the default region or not.
     StringBuilder normalizedNationalNumber = new StringBuilder();
-    int countryCode = maybeExtractCountryCode(nationalNumber.toString(), regionMetadata,
-                                              normalizedNationalNumber, keepRawInput, phoneNumber);
+    int countryCode = 0;
+    try {
+      // TODO: This method should really just take in the string buffer that has already
+      // been created, and just remove the prefix, rather than taking in a string and then
+      // outputting a string buffer.
+      countryCode = maybeExtractCountryCode(nationalNumber.toString(), regionMetadata,
+                                            normalizedNationalNumber, keepRawInput, phoneNumber);
+    } catch (NumberParseException e) {
+      Matcher matcher = PLUS_CHARS_PATTERN.matcher(nationalNumber.toString());
+      if (e.getErrorType() == NumberParseException.ErrorType.INVALID_COUNTRY_CODE &&
+          matcher.lookingAt()) {
+        // Strip the plus-char, and try again.
+        countryCode = maybeExtractCountryCode(nationalNumber.substring(matcher.end()),
+                                              regionMetadata, normalizedNationalNumber,
+                                              keepRawInput, phoneNumber);
+        if (countryCode == 0) {
+          throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
+                                         "Could not interpret numbers after plus-sign.");
+        }
+      } else {
+        throw new NumberParseException(e.getErrorType(), e.getMessage());
+      }
+    }
     if (countryCode != 0) {
       String phoneNumberRegion = getRegionCodeForCountryCode(countryCode);
       if (!phoneNumberRegion.equals(defaultRegion)) {

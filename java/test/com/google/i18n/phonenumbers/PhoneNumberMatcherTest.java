@@ -392,6 +392,8 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("1979-2011 100%", RegionCode.US),
     new NumberTest("800 234 1 111x1111", RegionCode.US),
     new NumberTest("+494949-4-94", RegionCode.DE),  // National number in wrong format
+    new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17\uFF17",
+                   RegionCode.US)
   };
 
   /**
@@ -440,8 +442,8 @@ public class PhoneNumberMatcherTest extends TestCase {
   }
 
   public void testNonMatchesWithStrictGroupLeniency() throws Exception {
-    int matchFoundCount = 0;
     List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(IMPOSSIBLE_CASES));
     testCases.addAll(Arrays.asList(POSSIBLE_ONLY_CASES));
     testCases.addAll(Arrays.asList(VALID_CASES));
     doTestNumberNonMatchesForLeniency(testCases, Leniency.STRICT_GROUPING);
@@ -455,6 +457,7 @@ public class PhoneNumberMatcherTest extends TestCase {
 
   public void testNonMatchesExactGroupLeniency() throws Exception {
     List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(IMPOSSIBLE_CASES));
     testCases.addAll(Arrays.asList(POSSIBLE_ONLY_CASES));
     testCases.addAll(Arrays.asList(VALID_CASES));
     testCases.addAll(Arrays.asList(STRICT_GROUPING_CASES));

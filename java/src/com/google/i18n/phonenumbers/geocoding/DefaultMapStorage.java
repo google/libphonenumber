@@ -36,11 +36,6 @@ class DefaultMapStorage extends AreaCodeMapStorageStrategy {
   private String[] descriptions;
 
   @Override
-  public boolean isFlyweight() {
-    return false;
-  }
-
-  @Override
   public int getPrefix(int index) {
     return phoneNumberPrefixes[index];
   }

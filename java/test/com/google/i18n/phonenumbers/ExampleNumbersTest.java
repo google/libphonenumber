@@ -166,4 +166,11 @@ public class ExampleNumbersTest extends TestCase {
     }
     assertEquals(0, wrongTypeCases.size());
   }
+
+  public void testEveryRegionHasAnExampleNumber() throws Exception {
+    for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
+      PhoneNumber exampleNumber = phoneNumberUtil.getExampleNumber(regionCode);
+      assertNotNull("None found for region " + regionCode, exampleNumber);
+    }
+  }
 }

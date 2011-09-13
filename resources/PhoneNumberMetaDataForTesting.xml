@@ -16,8 +16,7 @@
 
      MetaData on Phone Number Plan and formatting rules. This file is used
      solely for the purpose of unittesting, so data in this file is not
-     necessarily consistent with that of
-     ../resources/PhoneNumberMetaData.xml
+     necessarily consistent with that of PhoneNumberMetaData.xml.
 -->
 
 <phoneNumberMetadata>
@@ -381,8 +380,8 @@
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
-          <leadingDigits>1(?:[169][2-8]|[78]|5[1-4])|[68]0|[3-9][1-9][2-9]</leadingDigits>
-          <leadingDigits>1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-9][1-9][2-9]</leadingDigits>
+          <leadingDigits>1(?:[169][2-8]|[78]|5[1-4])|[68]0|[3-6][1-9][2-9]</leadingDigits>
+          <leadingDigits>1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-6][1-9][2-9]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d)(\d{4})">
@@ -424,20 +423,20 @@
           <format>$1-$2</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})">
-          <leadingDigits>[3-9][1-9]1</leadingDigits>
-          <leadingDigits>[3-9][1-9]1(?:[0-46-9])</leadingDigits>
-          <leadingDigits>[3-9][1-9]1(?:[0-247-9]|3[124]|6[1269])</leadingDigits>
+          <leadingDigits>[3-6][1-9]1</leadingDigits>
+          <leadingDigits>[3-6][1-9]1(?:[0-46-9])</leadingDigits>
+          <leadingDigits>[3-6][1-9]1(?:[0-247-9]|3[124]|6[1269])</leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4})">
-          <leadingDigits>[3-9][1-9]1</leadingDigits>
-          <leadingDigits>[3-9][1-9]1[36]</leadingDigits>
-          <leadingDigits>[3-9][1-9]1(?:3[035-9]|6[03-578])</leadingDigits>
+          <leadingDigits>[3-6][1-9]1</leadingDigits>
+          <leadingDigits>[3-6][1-9]1[36]</leadingDigits>
+          <leadingDigits>[3-6][1-9]1(?:3[035-9]|6[03-578])</leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-79]\d{3,9}|8\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>[1-7]\d{3,9}|8\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -627,7 +626,9 @@
 
     <!-- Singapore -->
     <!-- http://www.ida.gov.sg/policies%20and%20regulation/20060508120124.aspx -->
-    <territory id="SG" countryCode="65" internationalPrefix="0[0-3][0-9]">
+    <!-- For testing the AYTF with long NDDs, "777777" is added as a possible national prefix. -->
+    <territory id="SG" countryCode="65" internationalPrefix="0[0-3][0-9]"
+               nationalPrefixForParsing="777777">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>[369]|8[1-9]</leadingDigits>

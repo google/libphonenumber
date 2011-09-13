@@ -29,34 +29,9 @@ import java.util.TreeSet;
  *
  * @author Philippe Liard
  */
-// @VisibleForTesting
 abstract class AreaCodeMapStorageStrategy {
   protected int numOfEntries = 0;
   protected final TreeSet<Integer> possibleLengths = new TreeSet<Integer>();
-
-  public AreaCodeMapStorageStrategy() {}
-
-  /**
-   * Returns whether the underlying implementation of this abstract class is flyweight.
-   * It is expected to be flyweight if it implements the {@code FlyweightMapStorage} class.
-   *
-   * @return  whether the underlying implementation of this abstract class is flyweight
-   */
-  public abstract boolean isFlyweight();
-
-  /**
-   * @return  the number of entries contained in the area code map
-   */
-  public int getNumOfEntries() {
-    return numOfEntries;
-  }
-
-  /**
-   * @return  the set containing the possible lengths of prefixes
-   */
-  public TreeSet<Integer> getPossibleLengths() {
-    return possibleLengths;
-  }
 
   /**
    * Gets the phone number prefix located at the provided {@code index}.
@@ -68,7 +43,8 @@ abstract class AreaCodeMapStorageStrategy {
 
   /**
    * Gets the description corresponding to the phone number prefix located at the provided {@code
-   * index}.
+   * index}. If the description is not available in the current language an empty string is
+   * returned.
    *
    * @param index  the index of the phone number prefix that needs to be returned
    * @return  the description corresponding to the phone number prefix at the provided index
@@ -102,16 +78,30 @@ abstract class AreaCodeMapStorageStrategy {
    */
   public abstract void writeExternal(ObjectOutput objectOutput) throws IOException;
 
+  /**
+   * @return  the number of entries contained in the area code map
+   */
+  public int getNumOfEntries() {
+    return numOfEntries;
+  }
+
+  /**
+   * @return  the set containing the possible lengths of prefixes
+   */
+  public TreeSet<Integer> getPossibleLengths() {
+    return possibleLengths;
+  }
+
   @Override
   public String toString() {
     StringBuilder output = new StringBuilder();
     int numOfEntries = getNumOfEntries();
 
     for (int i = 0; i < numOfEntries; i++) {
-      output.append(getPrefix(i));
-      output.append("|");
-      output.append(getDescription(i));
-      output.append("\n");
+      output.append(getPrefix(i))
+          .append("|")
+          .append(getDescription(i))
+          .append("\n");
     }
     return output.toString();
   }

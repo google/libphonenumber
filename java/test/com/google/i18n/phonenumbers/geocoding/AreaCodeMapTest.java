@@ -84,13 +84,13 @@ public class AreaCodeMapTest extends TestCase {
   public void testGetSmallerMapStorageChoosesDefaultImpl() {
     AreaCodeMapStorageStrategy mapStorage =
         new AreaCodeMap().getSmallerMapStorage(createDefaultStorageMapCandidate());
-    assertFalse(mapStorage.isFlyweight());
+    assertFalse(mapStorage instanceof FlyweightMapStorage);
   }
 
   public void testGetSmallerMapStorageChoosesFlyweightImpl() {
     AreaCodeMapStorageStrategy mapStorage =
         new AreaCodeMap().getSmallerMapStorage(createFlyweightStorageMapCandidate());
-    assertTrue(mapStorage.isFlyweight());
+    assertTrue(mapStorage instanceof FlyweightMapStorage);
   }
 
   public void testLookupInvalidNumber_US() {
@@ -126,12 +126,12 @@ public class AreaCodeMapTest extends TestCase {
 
   public void testLookupNumberNotFound_TX() {
     number.setCountryCode(1).setNationalNumber(9724811234L);
-    assertEquals("", areaCodeMapForUS.lookup(number));
+    assertNull(areaCodeMapForUS.lookup(number));
   }
 
   public void testLookupNumber_CH() {
     number.setCountryCode(41).setNationalNumber(446681300L);
-    assertEquals("", areaCodeMapForUS.lookup(number));
+    assertNull(areaCodeMapForUS.lookup(number));
   }
 
   public void testLookupNumber_IT() {
@@ -146,7 +146,7 @@ public class AreaCodeMapTest extends TestCase {
 
     // A mobile number
     number.setNationalNumber(321123456L).setItalianLeadingZero(false);
-    assertEquals("", areaCodeMapForIT.lookup(number));
+    assertNull(areaCodeMapForIT.lookup(number));
 
     // An invalid number (too short)
     number.setNationalNumber(321123L).setItalianLeadingZero(true);
@@ -173,7 +173,7 @@ public class AreaCodeMapTest extends TestCase {
   public void testReadWriteExternalWithDefaultStrategy() throws IOException {
     AreaCodeMap localAreaCodeMap = new AreaCodeMap();
     localAreaCodeMap.readAreaCodeMap(createDefaultStorageMapCandidate());
-    assertFalse(localAreaCodeMap.getAreaCodeMapStorage().isFlyweight());
+    assertFalse(localAreaCodeMap.getAreaCodeMapStorage() instanceof FlyweightMapStorage);
 
     AreaCodeMap newAreaCodeMap;
     newAreaCodeMap = createNewAreaCodeMap(localAreaCodeMap);
@@ -183,7 +183,7 @@ public class AreaCodeMapTest extends TestCase {
   public void testReadWriteExternalWithFlyweightStrategy() throws IOException {
     AreaCodeMap localAreaCodeMap = new AreaCodeMap();
     localAreaCodeMap.readAreaCodeMap(createFlyweightStorageMapCandidate());
-    assertTrue(localAreaCodeMap.getAreaCodeMapStorage().isFlyweight());
+    assertTrue(localAreaCodeMap.getAreaCodeMapStorage() instanceof FlyweightMapStorage);
 
     AreaCodeMap newAreaCodeMap;
     newAreaCodeMap = createNewAreaCodeMap(localAreaCodeMap);

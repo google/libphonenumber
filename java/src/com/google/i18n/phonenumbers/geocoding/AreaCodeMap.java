@@ -129,12 +129,15 @@ public class AreaCodeMap implements Externalizable {
    * Supports Java Serialization.
    */
   public void writeExternal(ObjectOutput objectOutput) throws IOException {
-    objectOutput.writeBoolean(areaCodeMapStorage.isFlyweight());
+    objectOutput.writeBoolean(areaCodeMapStorage instanceof FlyweightMapStorage);
     areaCodeMapStorage.writeExternal(objectOutput);
   }
 
   /**
-   * Returns the description of the geographical area the {@code number} corresponds to.
+   * Returns the description of the geographical area the {@code number} corresponds to. This method
+   * distinguishes the case of an invalid prefix and a prefix for which the name is not available in
+   * the current language. If the description is not available in the current language an empty
+   * string is returned. If no description was found for the provided number, null is returned.
    *
    * @param number  the phone number to look up
    * @return  the description of the geographical area
@@ -142,7 +145,7 @@ public class AreaCodeMap implements Externalizable {
   String lookup(PhoneNumber number) {
     int numOfEntries = areaCodeMapStorage.getNumOfEntries();
     if (numOfEntries == 0) {
-      return "";
+      return null;
     }
     long phonePrefix =
         Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number));
@@ -156,7 +159,7 @@ public class AreaCodeMap implements Externalizable {
       }
       currentIndex = binarySearch(0, currentIndex, phonePrefix);
       if (currentIndex < 0) {
-        return "";
+        return null;
       }
       int currentPrefix = areaCodeMapStorage.getPrefix(currentIndex);
       if (phonePrefix == currentPrefix) {
@@ -164,7 +167,7 @@ public class AreaCodeMap implements Externalizable {
       }
       currentSetOfLengths = currentSetOfLengths.headSet(possibleLength);
     }
-    return "";
+    return null;
   }
 
   /**

@@ -68,9 +68,9 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+48 88 123", formatter.inputDigit('3'));
     assertEquals("+48 88 123 1", formatter.inputDigit('1'));
     // A plus sign can only appear at the beginning of the number; otherwise, no formatting is
-    // applied. 
+    // applied.
     assertEquals("+48881231+", formatter.inputDigit('+'));
-    assertEquals("+48881231+2", formatter.inputDigit('2'));    
+    assertEquals("+48881231+2", formatter.inputDigit('2'));
   }
 
   public void testTooLongNumberMatchingMultipleLeadingDigits() {
@@ -730,5 +730,138 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+81 3332 2 56", formatter.inputDigit('6'));
     assertEquals("+81 3332 2 567", formatter.inputDigit('7'));
     assertEquals("+81 3332 2 5678", formatter.inputDigit('8'));
+  }
+
+  public void testAYTFLongIDD_AU() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("AU");
+    // 0011 1 650 253 2250
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("00", formatter.inputDigit('0'));
+    assertEquals("001", formatter.inputDigit('1'));
+    assertEquals("0011", formatter.inputDigit('1'));
+    assertEquals("0011 1 ", formatter.inputDigit('1'));
+    assertEquals("0011 1 6", formatter.inputDigit('6'));
+    assertEquals("0011 1 65", formatter.inputDigit('5'));
+    assertEquals("0011 1 650", formatter.inputDigit('0'));
+    assertEquals("0011 1 650 2", formatter.inputDigit('2'));
+    assertEquals("0011 1 650 25", formatter.inputDigit('5'));
+    assertEquals("0011 1 650 253", formatter.inputDigit('3'));
+    assertEquals("0011 1 650 253 2", formatter.inputDigit('2'));
+    assertEquals("0011 1 650 253 22", formatter.inputDigit('2'));
+    assertEquals("0011 1 650 253 222", formatter.inputDigit('2'));
+    assertEquals("0011 1 650 253 2222", formatter.inputDigit('2'));
+
+    // 0011 81 3332 2 5678
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("00", formatter.inputDigit('0'));
+    assertEquals("001", formatter.inputDigit('1'));
+    assertEquals("0011", formatter.inputDigit('1'));
+    assertEquals("00118", formatter.inputDigit('8'));
+    assertEquals("0011 81 ", formatter.inputDigit('1'));
+    assertEquals("0011 81 3", formatter.inputDigit('3'));
+    assertEquals("0011 81 33", formatter.inputDigit('3'));
+    assertEquals("0011 81 33 3", formatter.inputDigit('3'));
+    assertEquals("0011 81 3332", formatter.inputDigit('2'));
+    assertEquals("0011 81 3332 2", formatter.inputDigit('2'));
+    assertEquals("0011 81 3332 2 5", formatter.inputDigit('5'));
+    assertEquals("0011 81 3332 2 56", formatter.inputDigit('6'));
+    assertEquals("0011 81 3332 2 567", formatter.inputDigit('7'));
+    assertEquals("0011 81 3332 2 5678", formatter.inputDigit('8'));
+
+    // 0011 244 250 253 222
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("00", formatter.inputDigit('0'));
+    assertEquals("001", formatter.inputDigit('1'));
+    assertEquals("0011", formatter.inputDigit('1'));
+    assertEquals("00112", formatter.inputDigit('2'));
+    assertEquals("001124", formatter.inputDigit('4'));
+    assertEquals("0011 244 ", formatter.inputDigit('4'));
+    assertEquals("0011 244 2", formatter.inputDigit('2'));
+    assertEquals("0011 244 25", formatter.inputDigit('5'));
+    assertEquals("0011 244 250", formatter.inputDigit('0'));
+    assertEquals("0011 244 250 2", formatter.inputDigit('2'));
+    assertEquals("0011 244 250 25", formatter.inputDigit('5'));
+    assertEquals("0011 244 250 253", formatter.inputDigit('3'));
+    assertEquals("0011 244 250 253 2", formatter.inputDigit('2'));
+    assertEquals("0011 244 250 253 22", formatter.inputDigit('2'));
+    assertEquals("0011 244 250 253 222", formatter.inputDigit('2'));
+  }
+
+  public void testAYTFLongIDD_KR() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("KR");
+    // 00300 1 650 253 2222
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("00", formatter.inputDigit('0'));
+    assertEquals("003", formatter.inputDigit('3'));
+    assertEquals("0030", formatter.inputDigit('0'));
+    assertEquals("00300", formatter.inputDigit('0'));
+    assertEquals("00300 1 ", formatter.inputDigit('1'));
+    assertEquals("00300 1 6", formatter.inputDigit('6'));
+    assertEquals("00300 1 65", formatter.inputDigit('5'));
+    assertEquals("00300 1 650", formatter.inputDigit('0'));
+    assertEquals("00300 1 650 2", formatter.inputDigit('2'));
+    assertEquals("00300 1 650 25", formatter.inputDigit('5'));
+    assertEquals("00300 1 650 253", formatter.inputDigit('3'));
+    assertEquals("00300 1 650 253 2", formatter.inputDigit('2'));
+    assertEquals("00300 1 650 253 22", formatter.inputDigit('2'));
+    assertEquals("00300 1 650 253 222", formatter.inputDigit('2'));
+    assertEquals("00300 1 650 253 2222", formatter.inputDigit('2'));
+  }
+
+  public void testAYTFLongNDD_KR() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("KR");
+    // 08811-9876-7890
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("08", formatter.inputDigit('8'));
+    assertEquals("088", formatter.inputDigit('8'));
+    assertEquals("0881", formatter.inputDigit('1'));
+    assertEquals("08811", formatter.inputDigit('1'));
+    assertEquals("08811-9", formatter.inputDigit('9'));
+    assertEquals("08811-98", formatter.inputDigit('8'));
+    assertEquals("08811-987", formatter.inputDigit('7'));
+    assertEquals("08811-9876", formatter.inputDigit('6'));
+    assertEquals("08811-9876-7", formatter.inputDigit('7'));
+    assertEquals("08811-9876-78", formatter.inputDigit('8'));
+    assertEquals("08811-9876-789", formatter.inputDigit('9'));
+    assertEquals("08811-9876-7890", formatter.inputDigit('0'));
+
+    // 08500 11-9876-7890
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("08", formatter.inputDigit('8'));
+    assertEquals("085", formatter.inputDigit('5'));
+    assertEquals("0850", formatter.inputDigit('0'));
+    assertEquals("08500 ", formatter.inputDigit('0'));
+    assertEquals("08500 1", formatter.inputDigit('1'));
+    assertEquals("08500 11", formatter.inputDigit('1'));
+    assertEquals("08500 11-9", formatter.inputDigit('9'));
+    assertEquals("08500 11-98", formatter.inputDigit('8'));
+    assertEquals("08500 11-987", formatter.inputDigit('7'));
+    assertEquals("08500 11-9876", formatter.inputDigit('6'));
+    assertEquals("08500 11-9876-7", formatter.inputDigit('7'));
+    assertEquals("08500 11-9876-78", formatter.inputDigit('8'));
+    assertEquals("08500 11-9876-789", formatter.inputDigit('9'));
+    assertEquals("08500 11-9876-7890", formatter.inputDigit('0'));
+  }
+
+  public void testAYTFLongNDD_SG() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("SG");
+    // 777777 9876 7890
+    assertEquals("7", formatter.inputDigit('7'));
+    assertEquals("77", formatter.inputDigit('7'));
+    assertEquals("777", formatter.inputDigit('7'));
+    assertEquals("7777", formatter.inputDigit('7'));
+    assertEquals("77777", formatter.inputDigit('7'));
+    assertEquals("777777 ", formatter.inputDigit('7'));
+    assertEquals("777777 9", formatter.inputDigit('9'));
+    assertEquals("777777 98", formatter.inputDigit('8'));
+    assertEquals("777777 987", formatter.inputDigit('7'));
+    assertEquals("777777 9876", formatter.inputDigit('6'));
+    assertEquals("777777 9876 7", formatter.inputDigit('7'));
+    assertEquals("777777 9876 78", formatter.inputDigit('8'));
+    assertEquals("777777 9876 789", formatter.inputDigit('9'));
+    assertEquals("777777 9876 7890", formatter.inputDigit('0'));
   }
 }

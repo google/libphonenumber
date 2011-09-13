@@ -138,13 +138,8 @@ public class GenerateAreaCodeDataTest extends TestCase {
     }
   }
 
-  public void testParseTextFileThrowsExceptionWithMissingLocation() throws IOException {
-    try {
-      parseTextFileHelper("331|");
-      fail();
-    } catch (RuntimeException e) {
-      // Expected.
-    }
+  public void testParseTextFileAcceptsMissingLocation() throws IOException {
+    parseTextFileHelper("331|");
   }
 
   public void testSplitMap() {
@@ -184,6 +179,14 @@ public class GenerateAreaCodeDataTest extends TestCase {
     String input = "331|Paris\n334|Marseilles\n";
 
     String dataAfterDeserialization = convertDataHelper(input);
+    assertEquals(input, dataAfterDeserialization);
+  }
+
+  public void testConvertDataSupportsEmptyDescription() throws IOException {
+    String input = "331|Paris\n334|Marseilles\n3341|\n";
+
+    String dataAfterDeserialization = convertDataHelper(input);
+    assertEquals(3, dataAfterDeserialization.split("\n").length);
     assertEquals(input, dataAfterDeserialization);
   }
 

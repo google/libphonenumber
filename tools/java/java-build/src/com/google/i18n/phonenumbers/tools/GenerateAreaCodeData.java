@@ -135,9 +135,6 @@ public class GenerateAreaCodeData extends Command {
                                                  lineNumber));
       }
       String prefix = line.substring(0, indexOfPipe);
-      if (indexOfPipe == line.length() - 1) {
-        throw new RuntimeException(String.format("line %d: missing location", lineNumber));
-      }
       String location = line.substring(indexOfPipe + 1);
       handler.process(Integer.parseInt(prefix), location);
     }
@@ -277,7 +274,7 @@ public class GenerateAreaCodeData extends Command {
    * generated from the provided file name previously used to output the area code/location mappings
    * for the given country.
    */
-   // @VisibleForTesting
+  // @VisibleForTesting
   static void addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
                                       File outputAreaCodeMappingsFile) {
     String outputAreaCodeMappingsFileName = outputAreaCodeMappingsFile.getName();
@@ -296,7 +293,7 @@ public class GenerateAreaCodeData extends Command {
   /**
    * Outputs the binary configuration file mapping country codes to language strings.
    */
-   // @VisibleForTesting
+  // @VisibleForTesting
   static void outputBinaryConfiguration(SortedMap<Integer, Set<String>> availableDataFiles,
                                         OutputStream outputStream) throws IOException {
     MappingFileProvider mappingFileProvider = new MappingFileProvider();

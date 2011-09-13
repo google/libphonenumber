@@ -98,6 +98,11 @@ public class PhoneNumberUtilTest extends TestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(650253000L);
   private static final PhoneNumber US_TOLLFREE =
       new PhoneNumber().setCountryCode(1).setNationalNumber(8002530000L);
+  private static final PhoneNumber US_SPOOF =
+      new PhoneNumber().setCountryCode(1).setNationalNumber(0L);
+  private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
+      new PhoneNumber().setCountryCode(1).setNationalNumber(0L)
+          .setRawInput("000-000-0000");
 
   public PhoneNumberUtilTest() {
     phoneUtil = initializePhoneUtilForTesting();
@@ -322,6 +327,11 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("900 253 0000", phoneUtil.format(US_PREMIUM, PhoneNumberFormat.NATIONAL));
     assertEquals("+1 900 253 0000", phoneUtil.format(US_PREMIUM, PhoneNumberFormat.INTERNATIONAL));
     assertEquals("+1-900-253-0000", phoneUtil.format(US_PREMIUM, PhoneNumberFormat.RFC3966));
+    // Numbers with all zeros in the national number part will be formatted by using the raw_input
+    // if that is available no matter which format is specified.
+    assertEquals("000-000-0000",
+                 phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PhoneNumberFormat.NATIONAL));
+    assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
   }
 
   public void testFormatBSNumber() {
@@ -1294,6 +1304,11 @@ public class PhoneNumberUtilTest extends TestCase {
     // recognise the country calling code and parse accordingly.
     assertEquals(NZ_NUMBER, phoneUtil.parse("01164 3 331 6005", RegionCode.US));
     assertEquals(NZ_NUMBER, phoneUtil.parse("+64 3 331 6005", RegionCode.US));
+    // We should ignore the leading plus here, since it is not followed by a valid country code but
+    // instead is followed by the IDD for the US.
+    assertEquals(NZ_NUMBER, phoneUtil.parse("+01164 3 331 6005", RegionCode.US));
+    assertEquals(NZ_NUMBER, phoneUtil.parse("+0064 3 331 6005", RegionCode.NZ));
+    assertEquals(NZ_NUMBER, phoneUtil.parse("+ 00 64 3 331 6005", RegionCode.NZ));
 
     PhoneNumber nzNumber = new PhoneNumber();
     nzNumber.setCountryCode(64).setNationalNumber(64123456L);
@@ -1472,6 +1487,16 @@ public class PhoneNumberUtilTest extends TestCase {
       fail("This is not a recognised region code: should fail: " + invalidCountryCode);
     } catch (NumberParseException e) {
       // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
+                   e.getErrorType());
+    }
+    try {
+      String plusAndIddAndInvalidCountryCode = "+ 00 210 3 331 6005";
+      phoneUtil.parse(plusAndIddAndInvalidCountryCode, RegionCode.NZ);
+      fail("This should not parse without throwing an exception.");
+    } catch (NumberParseException e) {
+      // Expected this exception. 00 is a correct IDD, but 210 is not a valid country code.
       assertEquals("Wrong error type stored in exception.",
                    NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                    e.getErrorType());

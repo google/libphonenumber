@@ -45,7 +45,11 @@ public class AsYouTypeFormatter {
   private String currentFormattingPattern = "";
   private StringBuilder accruedInput = new StringBuilder();
   private StringBuilder accruedInputWithoutFormatting = new StringBuilder();
+  // This indicates whether AsYouTypeFormatter is currently doing the formatting.
   private boolean ableToFormat = true;
+  // Set to true when users enter their own formatting. AsYouTypeFormatter will do no formatting at
+  // all when this is set to true.
+  private boolean inputHasFormatting = false;
   private boolean isInternationalFormatting = false;
   private boolean isExpectingCountryCallingCode = false;
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
@@ -91,7 +95,13 @@ public class AsYouTypeFormatter {
   // The position of a digit upon which inputDigitAndRememberPosition is most recently invoked, as
   // found in accruedInputWithoutFormatting.
   private int positionToRemember = 0;
+  // This contains anything that has been entered so far preceding the national significant number,
+  // and it is formatted (e.g. with space inserted). For example, this can contain IDD, country
+  // code, and/or NDD, etc.
   private StringBuilder prefixBeforeNationalNumber = new StringBuilder();
+  // This contains the national prefix that has been extracted. It contains only digits without
+  // formatting.
+  private String nationalPrefixExtracted = "";
   private StringBuilder nationalNumber = new StringBuilder();
   private List<NumberFormat> possibleFormats = new ArrayList<NumberFormat>();
 
@@ -137,6 +147,9 @@ public class AsYouTypeFormatter {
       }
       if (createFormattingTemplate(numberFormat)) {
         currentFormattingPattern = pattern;
+        // With a new formatting template, the matched position using the old template needs to be
+        // reset.
+        lastMatchPosition = 0;
         return true;
       } else {  // Remove the current number format from possibleFormats.
         it.remove();
@@ -236,8 +249,10 @@ public class AsYouTypeFormatter {
     lastMatchPosition = 0;
     currentFormattingPattern = "";
     prefixBeforeNationalNumber.setLength(0);
+    nationalPrefixExtracted = "";
     nationalNumber.setLength(0);
     ableToFormat = true;
+    inputHasFormatting = false;
     positionToRemember = 0;
     originalPosition = 0;
     isInternationalFormatting = false;
@@ -283,12 +298,28 @@ public class AsYouTypeFormatter {
     // sign (accepted at the start of the number only).
     if (!isDigitOrLeadingPlusSign(nextChar)) {
       ableToFormat = false;
+      inputHasFormatting = true;
+    } else {
+      nextChar = normalizeAndAccrueDigitsAndPlusSign(nextChar, rememberPosition);
     }
     if (!ableToFormat) {
+      // When we are unable to format because of reasons other than that formatting chars have been
+      // entered, it can be due to really long IDDs or NDDs. If that is the case, we might be able
+      // to do formatting again after extracting them.
+      if (inputHasFormatting) {
+        return accruedInput.toString();
+      } else if (attemptToExtractIdd()) {
+        if (attemptToExtractCountryCallingCode()) {
+          return attemptToChoosePatternWithPrefixExtracted();
+        }
+      } else if (ableToExtractLongerNdd()) {
+        // Add an additional space to separate long NDD and national significant number for
+        // readability.
+        prefixBeforeNationalNumber.append(" ");
+        return attemptToChoosePatternWithPrefixExtracted();
+      }
       return accruedInput.toString();
     }
-
-    nextChar = normalizeAndAccrueDigitsAndPlusSign(nextChar, rememberPosition);
 
     // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH digits (the plus
     // sign is counted as a digit as well for this purpose) have been entered.
@@ -300,26 +331,17 @@ public class AsYouTypeFormatter {
       case 3:
         if (attemptToExtractIdd()) {
           isExpectingCountryCallingCode = true;
-        } else {  // No IDD or plus sign is found, must be entering in national format.
-          removeNationalPrefixFromNationalNumber();
+        } else {  // No IDD or plus sign is found, might be entering in national format.
+          nationalPrefixExtracted = removeNationalPrefixFromNationalNumber();
           return attemptToChooseFormattingPattern();
         }
-      case 4:
-      case 5:
+      default:
         if (isExpectingCountryCallingCode) {
           if (attemptToExtractCountryCallingCode()) {
             isExpectingCountryCallingCode = false;
           }
           return prefixBeforeNationalNumber + nationalNumber.toString();
         }
-      // We make a last attempt to extract a country calling code at the 6th digit because the
-      // maximum length of IDD and country calling code are both 3.
-      case 6:
-        if (isExpectingCountryCallingCode && !attemptToExtractCountryCallingCode()) {
-          ableToFormat = false;
-          return accruedInput.toString();
-        }
-      default:
         if (possibleFormats.size() > 0) {  // The formatting pattern is already chosen.
           String tempNationalNumber = inputDigitHelper(nextChar);
           // See if the accrued digits can be formatted properly already. If not, use the results
@@ -339,6 +361,28 @@ public class AsYouTypeFormatter {
           return attemptToChooseFormattingPattern();
         }
     }
+  }
+
+  private String attemptToChoosePatternWithPrefixExtracted() {
+    ableToFormat = true;
+    isExpectingCountryCallingCode = false;
+    possibleFormats.clear();
+    return attemptToChooseFormattingPattern();
+  }
+
+  // Some national prefixes are a substring of others. If extracting the shorter NDD doesn't result
+  // in a number we can format, we try to see if we can extract a longer version here.
+  private boolean ableToExtractLongerNdd() {
+    if (nationalPrefixExtracted.length() > 0) {
+      // Put the extracted NDD back to the national number before attempting to extract a new NDD.
+      nationalNumber.insert(0, nationalPrefixExtracted);
+      // Remove the previously extracted NDD from prefixBeforeNationalNumber. We cannot simply set
+      // it to empty string because people sometimes enter national prefix after country code, e.g
+      // +44 (0)20-1234-5678.
+      int indexOfPreviousNdd = prefixBeforeNationalNumber.lastIndexOf(nationalPrefixExtracted);
+      prefixBeforeNationalNumber.setLength(indexOfPreviousNdd);
+    }
+    return !nationalPrefixExtracted.equals(removeNationalPrefixFromNationalNumber());
   }
 
   private boolean isDigitOrLeadingPlusSign(char nextChar) {
@@ -408,13 +452,14 @@ public class AsYouTypeFormatter {
     }
   }
 
-  private void removeNationalPrefixFromNationalNumber() {
+  // Returns the national prefix extracted, or an empty string if it is not present.
+  private String removeNationalPrefixFromNationalNumber() {
     int startOfNationalNumber = 0;
     if (currentMetaData.getCountryCode() == 1 && nationalNumber.charAt(0) == '1') {
       startOfNationalNumber = 1;
       prefixBeforeNationalNumber.append("1 ");
       isInternationalFormatting = true;
-    } else if (currentMetaData.hasNationalPrefix()) {
+    } else if (currentMetaData.hasNationalPrefixForParsing()) {
       Pattern nationalPrefixForParsing =
         regexCache.getPatternForRegex(currentMetaData.getNationalPrefixForParsing());
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
@@ -427,7 +472,9 @@ public class AsYouTypeFormatter {
         prefixBeforeNationalNumber.append(nationalNumber.substring(0, startOfNationalNumber));
       }
     }
+    String nationalPrefix = nationalNumber.substring(0, startOfNationalNumber);
     nationalNumber.delete(0, startOfNationalNumber);
+    return nationalPrefix;
   }
 
   /**
@@ -447,6 +494,7 @@ public class AsYouTypeFormatter {
       int startOfCountryCallingCode = iddMatcher.end();
       nationalNumber.setLength(0);
       nationalNumber.append(accruedInputWithoutFormatting.substring(startOfCountryCallingCode));
+      prefixBeforeNationalNumber.setLength(0);
       prefixBeforeNationalNumber.append(
           accruedInputWithoutFormatting.substring(0, startOfCountryCallingCode));
       if (accruedInputWithoutFormatting.charAt(0) != PhoneNumberUtil.PLUS_SIGN) {
