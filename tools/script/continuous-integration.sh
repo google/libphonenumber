@@ -33,12 +33,18 @@ test_cpp_version() {
   # Write the program that tests the installation of the library to a temporary
   # source file.
   > $CC_TEST_FILE echo '
-    #include <cassert>
+    #include <base/memory/scoped_ptr.h>
+    #include <phonenumbers/asyoutypeformatter.h>
     #include <phonenumbers/phonenumberutil.h>
+
+    using i18n::phonenumbers::AsYouTypeFormatter;
     using i18n::phonenumbers::PhoneNumberUtil;
+
     int main() {
       PhoneNumberUtil* const phone_util = PhoneNumberUtil::GetInstance();
-      return phone_util == NULL;
+      const scoped_ptr<AsYouTypeFormatter> asytf(
+          phone_util->GetAsYouTypeFormatter("US"));
+      return !(phone_util != NULL && asytf != NULL);
     }'
   # Run the build and tests.
   (

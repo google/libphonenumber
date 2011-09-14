@@ -14,20 +14,21 @@
 
 // Author: Philippe Liard
 
-// This file does not come from Chromium.
-// It provides a minimalist implementation of common macros.
+// This file provides a minimalist implementation of common macros.
 
 #ifndef BASE_LOGGING_H_
-# define BASE_LOGGING_H_
+#define BASE_LOGGING_H_
 
-# include <cassert>
-# include <iostream>
+#include <cassert>
 
-# define CHECK_EQ(X, Y) assert((X) == (Y))
+#define CHECK_EQ(X, Y) assert((X) == (Y))
 
-# define DCHECK(X) assert(X)
-# define DCHECK_EQ(X, Y) CHECK_EQ((X), (Y))
+#define DCHECK(X) assert(X)
+#define DCHECK_EQ(X, Y) CHECK_EQ((X), (Y))
 
-# define NOTREACHED() std::cerr
+template <typename T> T* CHECK_NOTNULL(T* ptr) {
+  assert(ptr);
+  return ptr;
+}
 
-#endif
+#endif  // BASE_LOGGING_H_

@@ -34,6 +34,7 @@
 
 #include "base/logging.h"
 #include "base/memory/singleton.h"
+#include "phonenumbers/asyoutypeformatter.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
 #include "phonenumbers/metadata.h"
@@ -748,6 +749,10 @@ const string& PhoneNumberUtil::GetExtnPatternsForMatching() const {
   return *(extn_patterns_for_matching.get());
 }
 
+bool PhoneNumberUtil::ContainsOnlyValidDigits(const string& s) const {
+  return digits_pattern->FullMatch(s);
+}
+
 void PhoneNumberUtil::TrimUnwantedEndChars(string* number) const {
   DCHECK(number);
   UnicodeText number_as_unicode;
@@ -765,6 +770,20 @@ void PhoneNumberUtil::TrimUnwantedEndChars(string* number) const {
 
   number->assign(UnicodeText::UTF8Substring(number_as_unicode.begin(),
                                             reverse_it.base()));
+}
+
+bool PhoneNumberUtil::IsFormatEligibleForAsYouTypeFormatter(
+    const string& format) const {
+  // A pattern that is used to determine if a numberFormat under
+  // availableFormats is eligible to be used by the AYTF. It is eligible when
+  // the format element under numberFormat contains groups of the dollar sign
+  // followed by a single digit, separated by valid phone number punctuation.
+  // This prevents invalid punctuation (such as the star sign in Israeli star
+  // numbers) getting into the output of the AYTF.
+  const RegExp& eligible_format_pattern = regexp_cache->GetRegExp(
+      StrCat("[", kValidPunctuation, "]*", "(\\$\\d", "[",
+             kValidPunctuation, "]*)+"));
+  return eligible_format_pattern.FullMatch(format);
 }
 
 void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
@@ -2205,6 +2224,11 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
   // One or more of the phone numbers we are trying to match is not a viable
   // phone number.
   return INVALID_NUMBER;
+}
+
+AsYouTypeFormatter* PhoneNumberUtil::GetAsYouTypeFormatter(
+    const string& region_code) const {
+  return new AsYouTypeFormatter(region_code);
 }
 
 }  // namespace phonenumbers

@@ -46,6 +46,7 @@ using std::vector;
 
 using google::protobuf::RepeatedPtrField;
 
+class AsYouTypeFormatter;
 class Logger;
 class NumberFormat;
 class PhoneMetadata;
@@ -65,6 +66,7 @@ class PhoneNumberUtil {
 class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class Singleton<PhoneNumberUtil>;
 #endif
+  friend class AsYouTypeFormatter;
   friend class PhoneNumberUtilTest;
  public:
   ~PhoneNumberUtil();
@@ -499,6 +501,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // handled by this class (i.e don't delete it).
   static void SetLogger(Logger* logger);
 
+  // Gets an AsYouTypeFormatter for the specific region.
+  // Returns an AsYouTypeFormatter object, which could be used to format phone
+  // numbers in the specific region "as you type".
+  // The deletion of the returned instance is under the responsibility of the
+  // caller.
+  AsYouTypeFormatter* GetAsYouTypeFormatter(const string& region_code) const;
+
   friend bool ConvertFromTelephoneNumberProto(
       const TelephoneNumber& proto_to_convert,
       PhoneNumber* new_proto);
@@ -559,6 +568,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Returns a regular expression for the possible extensions that may be found
   // in a number, for use when matching.
   const string& GetExtnPatternsForMatching() const;
+
+  // Checks whether a string contains only valid digits.
+  bool ContainsOnlyValidDigits(const string& s) const;
+
+  // Checks if a format is eligible to be used by the AsYouTypeFormatter.
+  bool IsFormatEligibleForAsYouTypeFormatter(const string& format) const;
 
   // Trims unwanted end characters from a phone number string.
   void TrimUnwantedEndChars(string* number) const;
