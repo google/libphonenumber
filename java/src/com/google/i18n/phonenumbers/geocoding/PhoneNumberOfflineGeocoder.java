@@ -179,6 +179,9 @@ public class PhoneNumberOfflineGeocoder {
         countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
     AreaCodeMap phonePrefixDescriptions =
         getPhonePrefixDescriptions(phonePrefix, lang, script, region);
-    return (phonePrefixDescriptions != null) ? phonePrefixDescriptions.lookup(number) : "";
+    String description = phonePrefixDescriptions != null
+        ? phonePrefixDescriptions.lookup(number)
+        : "";
+    return description == null ? "" : description;
   }
 }
