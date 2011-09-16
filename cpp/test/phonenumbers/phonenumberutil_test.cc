@@ -203,17 +203,17 @@ class PhoneNumberUtilTest : public testing::Test {
                                                phone_number);
   }
 
+  static bool Equals(const PhoneNumberDesc& expected_number,
+                     const PhoneNumberDesc& actual_number) {
+    return ExactlySameAs(expected_number, actual_number);
+  }
+
   void GetNddPrefixForRegion(const string& region,
                              bool strip_non_digits,
                              string* ndd_prefix) const {
     // For testing purposes, we check this is empty first.
     ndd_prefix->clear();
     phone_util_.GetNddPrefixForRegion(region, strip_non_digits, ndd_prefix);
-  }
-
-  static bool Equals(const PhoneNumberDesc& expected_number,
-                     const PhoneNumberDesc& actual_number) {
-    return ExactlySameAs(expected_number, actual_number);
   }
 
   const PhoneNumberUtil& phone_util_;
@@ -420,6 +420,15 @@ TEST_F(PhoneNumberUtilTest, FormatUSNumber) {
   EXPECT_EQ("+1 900 253 0000", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::RFC3966, &formatted_number);
   EXPECT_EQ("+1-900-253-0000", formatted_number);
+  test_number.set_national_number(0ULL);
+  phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+  EXPECT_EQ("0", formatted_number);
+  // Numbers with all zeros in the national number part will be formatted by
+  // using the raw_input if that is available no matter which format is
+  // specified.
+  test_number.set_raw_input("000-000-0000");
+  phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+  EXPECT_EQ("000-000-0000", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatBSNumber) {
@@ -1685,7 +1694,7 @@ TEST_F(PhoneNumberUtilTest, IsViablePhoneNumber) {
   // Unicode variants of possible starting character and other allowed
   // punctuation/digits.
   EXPECT_TRUE(IsViablePhoneNumber("\xEF\xBC\x88" "1\xEF\xBC\x89\xE3\x80\x80"
-                                  "3456789" /* "（1）　3456789" */ ));
+                                  "3456789" /* "（1）　3456789" */));
   // Testing a leading + is okay.
   EXPECT_TRUE(IsViablePhoneNumber("+1\xEF\xBC\x89\xE3\x80\x80"
                                   "3456789" /* "+1）　3456789" */));
@@ -2265,6 +2274,23 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
             phone_util_.Parse("+64 3 331 6005",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(nz_number, test_number);
+  // We should ignore the leading plus here, since it is not followed by a valid
+  // country code but instead is followed by the IDD for the US.
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+01164 3 331 6005",
+                              RegionCode::US(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+0064 3 331 6005",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+ 00 64 3 331 6005",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
 
   // Test for http://b/issue?id=2247493
   nz_number.Clear();
@@ -2611,6 +2637,12 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
                               &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
+  // 00 is a correct IDD, but 210 is not a valid country code.
+  EXPECT_EQ(PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR,
+            phone_util_.Parse("+ 00 210 3 331 6005", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
   EXPECT_EQ(PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR,
             phone_util_.Parse("123 456 7890", RegionCode::GetUnknown(),
                               &test_number));
@@ -2644,8 +2676,8 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
   nz_number.set_national_number(33316005ULL);
-  // "ZZ" is allowed only if the number starts with a '+' - then the country
-  // code can be calculated.
+  // RegionCode::GetUnknown() is allowed only if the number starts with a '+' -
+  // then the country code can be calculated.
   PhoneNumber result_proto;
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+64 3 331 6005", RegionCode::GetUnknown(),

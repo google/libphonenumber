@@ -66,6 +66,23 @@ TEST_F(AsYouTypeFormatterTest, Constructor) {
   EXPECT_TRUE(GetCurrentMetadata() != NULL);
 }
 
+TEST_F(AsYouTypeFormatterTest, InvalidPlusSign) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::GetUnknown()));
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+4", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+48 ", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+48 8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+48 88", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+48 88 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+48 88 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+48 88 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+48 88 123 1", formatter_->InputDigit('1', &result_));
+  // A plus sign can only appear at the beginning of the number; otherwise, no
+  // formatting is applied.
+  EXPECT_EQ("+48881231+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+48881231+2", formatter_->InputDigit('2', &result_));
+}
+
 TEST_F(AsYouTypeFormatterTest, TooLongNumberMatchingMultipleLeadingDigits) {
   // See http://code.google.com/p/libphonenumber/issues/detail?id=36
   // The bug occurred last time for countries which have two formatting rules
@@ -753,6 +770,139 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MultipleLeadingDigitPatterns) {
   EXPECT_EQ("+81 3332 2 56", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+81 3332 2 567", formatter_->InputDigit('7', &result_));
   EXPECT_EQ("+81 3332 2 5678", formatter_->InputDigit('8', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_AU) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter("AU"));
+  // 0011 1 650 253 2250
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("001", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("0011", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("0011 1 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("0011 1 6", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("0011 1 65", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("0011 1 650", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("0011 1 650 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 1 650 25", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("0011 1 650 253", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0011 1 650 253 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 1 650 253 22", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 1 650 253 222", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 1 650 253 2222", formatter_->InputDigit('2', &result_));
+
+  // 0011 81 3332 2 5678
+  formatter_->Clear();
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("001", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("0011", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("00118", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("0011 81 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("0011 81 3", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0011 81 33", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0011 81 33 3", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0011 81 3332", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 81 3332 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 81 3332 2 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("0011 81 3332 2 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("0011 81 3332 2 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("0011 81 3332 2 5678", formatter_->InputDigit('8', &result_));
+
+  // 0011 244 250 253 222
+  formatter_->Clear();
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("001", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("0011", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("00112", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("001124", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("0011 244 ", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("0011 244 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 244 25", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("0011 244 250", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("0011 244 250 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 244 250 25", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("0011 244 250 253", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0011 244 250 253 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 244 250 253 22", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("0011 244 250 253 222", formatter_->InputDigit('2', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_KR) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter("KR"));
+  // 00300 1 650 253 2250
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("003", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0030", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00300", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00300 1 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("00300 1 6", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("00300 1 65", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("00300 1 650", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00300 1 650 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("00300 1 650 25", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("00300 1 650 253", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("00300 1 650 253 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("00300 1 650 253 22", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("00300 1 650 253 222", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("00300 1 650 253 2222", formatter_->InputDigit('2', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_LongNDD_KR) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter("KR"));
+  // 08811-9876-7890
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("08", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("088", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("0881", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("08811", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("08811-9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("08811-98", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("08811-987", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("08811-9876", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("08811-9876-7", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("08811-9876-78", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("08811-9876-789", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("08811-9876-7890", formatter_->InputDigit('0', &result_));
+
+  // 08500 11-9876-7890
+  formatter_->Clear();
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("08", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("085", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("0850", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("08500 ", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("08500 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("08500 11", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("08500 11-9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("08500 11-98", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("08500 11-987", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("08500 11-9876", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("08500 11-9876-7", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("08500 11-9876-78", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("08500 11-9876-789", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("08500 11-9876-7890", formatter_->InputDigit('0', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_LongNDD_SG) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter("SG"));
+  // 777777 9876 7890
+  EXPECT_EQ("7", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("77", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("777", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("7777", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("77777", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("777777 ", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("777777 9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("777777 98", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("777777 987", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("777777 9876", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("777777 9876 7", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("777777 9876 78", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("777777 9876 789", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("777777 9876 7890", formatter_->InputDigit('0', &result_));
 }
 
 }  // namespace phonenumbers

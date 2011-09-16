@@ -108,6 +108,13 @@ class AsYouTypeFormatter {
                                               bool remember_position,
                                               string* phone_number);
 
+  void AttemptToChoosePatternWithPrefixExtracted(string* formatted_number);
+
+  // Some national prefixes are a substring of others. If extracting the
+  // shorter NDD doesn't result in a number we can format, we try to see if we
+  // can extract a longer version here.
+  bool AbleToExtractLongerNdd();
+
   void AttemptToFormatAccruedDigits(string* formatted_number);
 
   // Attempts to set the formatting template and assigns the passed-in string
@@ -118,7 +125,9 @@ class AsYouTypeFormatter {
   // assigns the passed-in string parameter to a formatted string in the end.
   void InputAccruedNationalNumber(string* number);
 
-  void RemoveNationalPrefixFromNationalNumber();
+  // Extracts the national prefix into national_prefix, or sets it to empty
+  // string if a national prefix is not present.
+  void RemoveNationalPrefixFromNationalNumber(string* national_prefix);
 
   // Extracts IDD and plus sign to prefix_before_national_number_ when they are
   // available, and places the remaining input into national_number_.
@@ -155,7 +164,12 @@ class AsYouTypeFormatter {
   UnicodeString accrued_input_;
   UnicodeString accrued_input_without_formatting_;
 
+  // This indicates whether AsYouTypeFormatter is currently doing the
+  // formatting.
   bool able_to_format_;
+  // Set to true when users enter their own formatting. AsYouTypeFormatter will
+  // do no formatting at all when this is set to true.
+  bool input_has_formatting_;
   bool is_international_formatting_;
   bool is_expecting_country_code_;
 
@@ -178,7 +192,13 @@ class AsYouTypeFormatter {
   // recently invoked, as found in AccruedInputWithoutFormatting.
   int position_to_remember_;
 
+  // This contains anything that has been entered so far preceding the national
+  // significant number, and it is formatted (e.g. with space inserted). For
+  // example, this can contain IDD, country code, and/or NDD, etc.
   string prefix_before_national_number_;
+  // This contains the national prefix that has been extracted. It contains only
+  // digits without formatting.
+  string national_prefix_extracted_;
   string national_number_;
 
   list<const NumberFormat*> possible_formats_;

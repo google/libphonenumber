@@ -121,6 +121,7 @@ AsYouTypeFormatter::AsYouTypeFormatter(const string& region_code)
       accrued_input_(),
       accrued_input_without_formatting_(),
       able_to_format_(true),
+      input_has_formatting_(false),
       is_international_formatting_(false),
       is_expecting_country_code_(false),
       phone_util_(*PhoneNumberUtil::GetInstance()),
@@ -132,6 +133,7 @@ AsYouTypeFormatter::AsYouTypeFormatter(const string& region_code)
       original_position_(0),
       position_to_remember_(0),
       prefix_before_national_number_(),
+      national_prefix_extracted_(),
       national_number_(),
       possible_formats_() {
 }
@@ -168,6 +170,9 @@ bool AsYouTypeFormatter::MaybeCreateNewTemplate() {
     }
     if (CreateFormattingTemplate(number_format)) {
       current_formatting_pattern_ = pattern;
+      // With a new formatting template, the matched position using the old
+      // template needs to be reset.
+      last_match_position_ = 0;
       return true;
     }
   }
@@ -280,8 +285,10 @@ void AsYouTypeFormatter::Clear() {
   last_match_position_ = 0;
   current_formatting_pattern_.clear();
   prefix_before_national_number_.clear();
+  national_prefix_extracted_.clear();
   national_number_.clear();
   able_to_format_ = true;
+  input_has_formatting_ = false;
   position_to_remember_ = 0;
   original_position_ = 0;
   is_international_formatting_ = false;
@@ -322,21 +329,44 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
     original_position_ = accrued_input_.length();
   }
   // We do formatting on-the-fly only when each character entered is either a
-  // plus sign or a digit.
+  // plus sign (accepted at the start of the number only).
   string next_char_string;
   UnicodeString(next_char).toUTF8String(next_char_string);
 
-  if (next_char != kPlusSign &&
-      !phone_util_.ContainsOnlyValidDigits(next_char_string)) {
+  char normalized_next_char = '\0';
+  if (!(phone_util_.ContainsOnlyValidDigits(next_char_string) ||
+      (accrued_input_.length() == 1 && next_char == kPlusSign))) {
     able_to_format_ = false;
+    input_has_formatting_ = true;
+  } else {
+    normalized_next_char =
+        NormalizeAndAccrueDigitsAndPlusSign(next_char, remember_position);
   }
   if (!able_to_format_) {
+    // When we are unable to format because of reasons other than that
+    // formatting chars have been entered, it can be due to really long IDDs or
+    // NDDs. If that is the case, we might be able to do formatting again after
+    // extracting them.
+    if (input_has_formatting_) {
+      phone_number->clear();
+      accrued_input_.toUTF8String(*phone_number);
+    } else if (AttemptToExtractIdd()) {
+      if (AttemptToExtractCountryCode()) {
+        AttemptToChoosePatternWithPrefixExtracted(phone_number);
+        return;
+      }
+    } else if (AbleToExtractLongerNdd()) {
+      // Add an additional space to separate long NDD and national significant
+      // number for readability.
+      prefix_before_national_number_.append(" ");
+      AttemptToChoosePatternWithPrefixExtracted(phone_number);
+      return;
+    }
     phone_number->clear();
     accrued_input_.toUTF8String(*phone_number);
     return;
   }
-  char normalized_next_char =
-      NormalizeAndAccrueDigitsAndPlusSign(next_char, remember_position);
+
   // We start to attempt to format only when at least kMinLeadingDigitsLength
   // digits (the plus sign is counted as a digit as well for this purpose) have
   // been entered.
@@ -351,13 +381,12 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
       if (AttemptToExtractIdd()) {
         is_expecting_country_code_ = true;
       } else {
-        // No IDD or plus sign is found, must be entering in national format.
-        RemoveNationalPrefixFromNationalNumber();
+        // No IDD or plus sign is found, might be entering in national format.
+        RemoveNationalPrefixFromNationalNumber(&national_prefix_extracted_);
         AttemptToChooseFormattingPattern(phone_number);
         return;
       }
-    case 4:
-    case 5:
+    default:
       if (is_expecting_country_code_) {
         if (AttemptToExtractCountryCode()) {
           is_expecting_country_code_ = false;
@@ -366,16 +395,6 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
         phone_number->append(national_number_);
         return;
       }
-    // We make a last attempt to extract a country code at the 6th digit because
-    // the maximum length of IDD and country code are both 3.
-    case 6:
-      if (is_expecting_country_code_ && !AttemptToExtractCountryCode()) {
-        able_to_format_ = false;
-        phone_number->clear();
-        accrued_input_.toUTF8String(*phone_number);
-        return;
-      }
-    default:
       if (possible_formats_.size() > 0) {
         // The formatting pattern is already chosen.
         string temp_national_number;
@@ -401,6 +420,31 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
         AttemptToChooseFormattingPattern(phone_number);
       }
   }
+}
+
+void AsYouTypeFormatter::AttemptToChoosePatternWithPrefixExtracted(
+    string* formatted_number) {
+  able_to_format_ = true;
+  is_expecting_country_code_ = false;
+  possible_formats_.clear();
+  AttemptToChooseFormattingPattern(formatted_number);
+}
+
+bool AsYouTypeFormatter::AbleToExtractLongerNdd() {
+  if (national_prefix_extracted_.length() > 0) {
+    // Put the extracted NDD back to the national number before attempting to
+    // extract a new NDD.
+    national_number_.insert(0, national_prefix_extracted_);
+    // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
+    // cannot simply set it to empty string because people sometimes enter
+    // national prefix after country code, e.g +44 (0)20-1234-5678.
+    int index_of_previous_ndd =
+        prefix_before_national_number_.find_last_of(national_prefix_extracted_);
+    prefix_before_national_number_.resize(index_of_previous_ndd);
+  }
+  string new_national_prefix;
+  RemoveNationalPrefixFromNationalNumber(&new_national_prefix);
+  return national_prefix_extracted_ != new_national_prefix;
 }
 
 void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
@@ -484,14 +528,15 @@ void AsYouTypeFormatter::InputAccruedNationalNumber(string* number) {
   }
 }
 
-void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber() {
+void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber(
+    string* national_prefix) {
   int start_of_national_number = 0;
 
   if (current_metadata_->country_code() == 1 && national_number_[0] == '1') {
     start_of_national_number = 1;
     prefix_before_national_number_.append("1 ");
     is_international_formatting_ = true;
-  } else if (current_metadata_->has_national_prefix()) {
+  } else if (current_metadata_->has_national_prefix_for_parsing()) {
     const scoped_ptr<RegExpInput> consumed_input(
         regexp_factory_->CreateInput(national_number_));
     const RegExp& pattern = regexp_cache_.GetRegExp(
@@ -508,6 +553,7 @@ void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber() {
           national_number_.substr(0, start_of_national_number));
     }
   }
+  national_prefix->assign(national_number_, 0, start_of_national_number);
   national_number_.erase(0, start_of_national_number);
 }
 
@@ -534,6 +580,7 @@ bool AsYouTypeFormatter::AttemptToExtractIdd() {
     string before_country_code;
     accrued_input_without_formatting_.tempSubString(0, start_of_country_code)
         .toUTF8String(before_country_code);
+    prefix_before_national_number_.clear();
     prefix_before_national_number_.append(before_country_code);
 
     if (accrued_input_without_formatting_[0] != kPlusSign) {

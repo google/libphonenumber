@@ -72,7 +72,7 @@ const char PhoneNumberUtil::kPlusChars[] = "+\xEF\xBC\x8B";  /* "+＋" */
 // unicode character.
 // static
 const char PhoneNumberUtil::kValidPunctuation[] =
- /* "-x‐-―−ー－-／  <U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
+    /* "-x‐-―−ー－-／  <U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
     "-x\xE2\x80\x90-\xE2\x80\x95\xE2\x88\x92\xE3\x83\xBC\xEF\xBC\x8D-\xEF\xBC"
     "\x8F \xC2\xA0\xE2\x80\x8B\xE2\x81\xA0\xE3\x80\x80()\xEF\xBC\x88\xEF\xBC"
     "\x89\xEF\xBC\xBB\xEF\xBC\xBD.\\[\\]/~\xE2\x81\x93\xE2\x88\xBC";
@@ -698,7 +698,7 @@ PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
 
 void PhoneNumberUtil::CreateRegularExpressions() const {
   unique_international_prefix.reset(regexp_factory->CreateRegExp(
-   /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
+     /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
       "[\\d]+(?:[~\xE2\x81\x93\xE2\x88\xBC\xEF\xBD\x9E][\\d]+)?"));
   // The first_group_capturing_pattern was originally set to $1 but there are
   // some countries for which the first group is not used in the national
@@ -845,6 +845,13 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
                              PhoneNumberFormat number_format,
                              string* formatted_number) const {
   DCHECK(formatted_number);
+  if (number.national_number() == 0) {
+    const string& raw_input = number.raw_input();
+    if (!raw_input.empty()) {
+      formatted_number->assign(raw_input);
+      return;
+    }
+  }
   int country_calling_code = number.country_code();
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
@@ -1435,10 +1442,25 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   ErrorType country_code_error =
       MaybeExtractCountryCode(country_metadata, keep_raw_input,
                               &normalized_national_number, &temp_number);
-  int country_code = temp_number.country_code();
   if (country_code_error != NO_PARSING_ERROR) {
-    return country_code_error;
+     const scoped_ptr<RegExpInput> number_string_piece(
+        regexp_factory->CreateInput(national_number));
+    if ((country_code_error == INVALID_COUNTRY_CODE_ERROR) &&
+        (plus_chars_pattern->Consume(number_string_piece.get()))) {
+      normalized_national_number.assign(number_string_piece->ToString());
+      // Strip the plus-char, and try again.
+      MaybeExtractCountryCode(country_metadata,
+                              keep_raw_input,
+                              &normalized_national_number,
+                              &temp_number);
+      if (temp_number.country_code() == 0) {
+        return INVALID_COUNTRY_CODE_ERROR;
+      }
+    } else {
+      return country_code_error;
+    }
   }
+  int country_code = temp_number.country_code();
   if (country_code != 0) {
     string phone_number_region;
     GetRegionCodeForCountryCode(country_code, &phone_number_region);
@@ -1983,6 +2005,10 @@ bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension)
 // characters long.
 int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
   int potential_country_code;
+  if (national_number->empty() || (national_number->at(0) == '0')) {
+    // Country codes do not begin with a '0'.
+    return 0;
+  }
   for (size_t i = 1; i <= kMaxLengthCountryCode; ++i) {
     safe_strto32(national_number->substr(0, i), &potential_country_code);
     string region_code;
@@ -2013,8 +2039,8 @@ int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
 //   extracted or none was present, or the appropriate error otherwise, such as
 //   if a + was present but it was not followed by a valid country calling code.
 //   If NO_PARSING_ERROR is returned, the national_number without the country
-//   calling code is populated, and the country_code passed in is set to the
-//   country calling code if found, otherwise to 0.
+//   calling code is populated, and the country_code of the phone_number passed
+//   in is set to the country calling code if found, otherwise to 0.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
     const PhoneMetadata* default_region_metadata,
     bool keep_raw_input,
