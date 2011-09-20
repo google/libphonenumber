@@ -1183,6 +1183,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidRegionCode_ =
 i18n.phonenumbers.PhoneNumberUtil.prototype.format =
     function(number, numberFormat) {
 
+  if (number.getNationalNumber() == 0 && number.hasRawInput()) {
+    /** @type {string} */
+    var rawInput = number.getRawInputOrDefault();
+    if (rawInput.length > 0) {
+      return rawInput;
+    }
+  }
   /** @type {number} */
   var countryCallingCode = number.getCountryCodeOrDefault();
   /** @type {string} */
@@ -2531,6 +2538,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
 
   /** @type {string} */
   var fullNumberStr = fullNumber.toString();
+  if ((fullNumberStr.length == 0) || (fullNumberStr.charAt(0) == '0')) {
+    // Country codes do not begin with a '0'.
+    return 0;
+  }
   /** @type {number} */
   var potentialCountryCode;
   /** @type {number} */
@@ -3030,8 +3041,28 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   /** @type {!goog.string.StringBuffer} */
   var normalizedNationalNumber = new goog.string.StringBuffer();
   /** @type {number} */
-  var countryCode = this.maybeExtractCountryCode(nationalNumber.toString(),
-      regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
+  var countryCode = 0;
+  /** @type {string} */
+  var nationalNumberStr = nationalNumber.toString();
+  try {
+    countryCode = this.maybeExtractCountryCode(nationalNumberStr,
+        regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
+  } catch (e) {
+    if (e == i18n.phonenumbers.Error.INVALID_COUNTRY_CODE &&
+        i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
+            .test(nationalNumberStr)) {
+      // Strip the plus-char, and try again.
+      nationalNumberStr = nationalNumberStr.replace(
+          i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_, '');
+      countryCode = this.maybeExtractCountryCode(nationalNumberStr,
+          regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
+      if (countryCode == 0) {
+        throw e;
+      }
+    } else {
+      throw e;
+    }
+  }
   if (countryCode != 0) {
     /** @type {string} */
     var phoneNumberRegion = this.getRegionCodeForCountryCode(countryCode);

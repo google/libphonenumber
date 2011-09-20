@@ -18,15 +18,22 @@
 /**
  * @fileoverview  Unit tests for the AsYouTypeFormatter.
  *
+ * Note that these tests use the metadata contained in metadatafortesting.js,
+ * not the normal metadata files, so should not be used for regression test
+ * purposes - these tests are illustrative only and test functionality.
+ *
  * @author Nikolaos Trogkanis
  */
 
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.AsYouTypeFormatter');
+goog.require('i18n.phonenumbers.RegionCode');
+
+var RegionCode = i18n.phonenumbers.RegionCode;
 
 function testInvalidRegion() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('ZZ');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.ZZ);
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+4', f.inputDigit('4'));
   assertEquals('+48 ', f.inputDigit('8'));
@@ -49,7 +56,7 @@ function testInvalidRegion() {
 
 function testInvalidPlusSign() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('ZZ');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.ZZ);
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+4', f.inputDigit('4'));
   assertEquals('+48 ', f.inputDigit('8'));
@@ -70,7 +77,7 @@ function testTooLongNumberMatchingMultipleLeadingDigits() {
   // The bug occurred last time for countries which have two formatting rules
   // with exactly the same leading digits pattern but differ in length.
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('ZZ');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.ZZ);
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+8', f.inputDigit('8'));
   assertEquals('+81 ', f.inputDigit('1'));
@@ -90,7 +97,7 @@ function testTooLongNumberMatchingMultipleLeadingDigits() {
 
 function testAYTFUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
   assertEquals('6', f.inputDigit('6'));
   assertEquals('65', f.inputDigit('5'));
   assertEquals('650', f.inputDigit('0'));
@@ -185,7 +192,7 @@ function testAYTFUS() {
 
 function testAYTFUSFullWidthCharacters() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
   assertEquals('\uFF16', f.inputDigit('\uFF16'));
   assertEquals('\uFF16\uFF15', f.inputDigit('\uFF15'));
   assertEquals('650', f.inputDigit('\uFF10'));
@@ -200,7 +207,7 @@ function testAYTFUSFullWidthCharacters() {
 
 function testAYTFUSMobileShortCode() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
   assertEquals('*', f.inputDigit('*'));
   assertEquals('*1', f.inputDigit('1'));
   assertEquals('*12', f.inputDigit('2'));
@@ -210,7 +217,7 @@ function testAYTFUSMobileShortCode() {
 
 function testAYTFUSVanityNumber() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
   assertEquals('8', f.inputDigit('8'));
   assertEquals('80', f.inputDigit('0'));
   assertEquals('800', f.inputDigit('0'));
@@ -227,7 +234,7 @@ function testAYTFUSVanityNumber() {
 
 function testAYTFAndRememberPositionUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('US');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
   assertEquals('1', f.inputDigitAndRememberPosition('1'));
   assertEquals(1, f.getRememberedPosition());
   assertEquals('16', f.inputDigit('6'));
@@ -364,7 +371,7 @@ function testAYTFAndRememberPositionUS() {
 
 function testAYTFGBFixedLine() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('GB');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.GB);
   assertEquals('0', f.inputDigit('0'));
   assertEquals('02', f.inputDigit('2'));
   assertEquals('020', f.inputDigit('0'));
@@ -382,7 +389,7 @@ function testAYTFGBFixedLine() {
 
 function testAYTFGBTollFree() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('GB');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.GB);
   assertEquals('0', f.inputDigit('0'));
   assertEquals('08', f.inputDigit('8'));
   assertEquals('080', f.inputDigit('0'));
@@ -398,7 +405,7 @@ function testAYTFGBTollFree() {
 
 function testAYTFGBPremiumRate() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('GB');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.GB);
   assertEquals('0', f.inputDigit('0'));
   assertEquals('09', f.inputDigit('9'));
   assertEquals('090', f.inputDigit('0'));
@@ -414,7 +421,7 @@ function testAYTFGBPremiumRate() {
 
 function testAYTFNZMobile() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('NZ');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.NZ);
   assertEquals('0', f.inputDigit('0'));
   assertEquals('02', f.inputDigit('2'));
   assertEquals('021', f.inputDigit('1'));
@@ -430,7 +437,7 @@ function testAYTFNZMobile() {
 
 function testAYTFDE() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('DE');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.DE);
   assertEquals('0', f.inputDigit('0'));
   assertEquals('03', f.inputDigit('3'));
   assertEquals('030', f.inputDigit('0'));
@@ -482,7 +489,7 @@ function testAYTFDE() {
 
 function testAYTFAR() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('AR');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.AR);
   assertEquals('0', f.inputDigit('0'));
   assertEquals('01', f.inputDigit('1'));
   assertEquals('011', f.inputDigit('1'));
@@ -498,7 +505,7 @@ function testAYTFAR() {
 
 function testAYTFARMobile() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('AR');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.AR);
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+5', f.inputDigit('5'));
   assertEquals('+54 ', f.inputDigit('4'));
@@ -518,7 +525,7 @@ function testAYTFARMobile() {
 function testAYTFKR() {
   // +82 51 234 5678
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('KR');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.KR);
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+8', f.inputDigit('8'));
   assertEquals('+82 ', f.inputDigit('2'));
@@ -608,7 +615,7 @@ function testAYTFKR() {
 
 function testAYTF_MX() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('MX');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.MX);
 
   // +52 800 123 4567
   assertEquals('+', f.inputDigit('+'));
@@ -695,7 +702,7 @@ function testAYTF_MX() {
 function testAYTFMultipleLeadingDigitPatterns() {
   // +81 50 2345 6789
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('JP');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.JP);
   assertEquals('+', f.inputDigit('+'));
   assertEquals('+8', f.inputDigit('8'));
   assertEquals('+81 ', f.inputDigit('1'));
@@ -739,4 +746,141 @@ function testAYTFMultipleLeadingDigitPatterns() {
   assertEquals('+81 3332 2 56', f.inputDigit('6'));
   assertEquals('+81 3332 2 567', f.inputDigit('7'));
   assertEquals('+81 3332 2 5678', f.inputDigit('8'));
+}
+
+function testAYTFLongIDD_AU() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('AU');
+  // 0011 1 650 253 2250
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('00', f.inputDigit('0'));
+  assertEquals('001', f.inputDigit('1'));
+  assertEquals('0011', f.inputDigit('1'));
+  assertEquals('0011 1 ', f.inputDigit('1'));
+  assertEquals('0011 1 6', f.inputDigit('6'));
+  assertEquals('0011 1 65', f.inputDigit('5'));
+  assertEquals('0011 1 650', f.inputDigit('0'));
+  assertEquals('0011 1 650 2', f.inputDigit('2'));
+  assertEquals('0011 1 650 25', f.inputDigit('5'));
+  assertEquals('0011 1 650 253', f.inputDigit('3'));
+  assertEquals('0011 1 650 253 2', f.inputDigit('2'));
+  assertEquals('0011 1 650 253 22', f.inputDigit('2'));
+  assertEquals('0011 1 650 253 222', f.inputDigit('2'));
+  assertEquals('0011 1 650 253 2222', f.inputDigit('2'));
+
+  // 0011 81 3332 2 5678
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('00', f.inputDigit('0'));
+  assertEquals('001', f.inputDigit('1'));
+  assertEquals('0011', f.inputDigit('1'));
+  assertEquals('00118', f.inputDigit('8'));
+  assertEquals('0011 81 ', f.inputDigit('1'));
+  assertEquals('0011 81 3', f.inputDigit('3'));
+  assertEquals('0011 81 33', f.inputDigit('3'));
+  assertEquals('0011 81 33 3', f.inputDigit('3'));
+  assertEquals('0011 81 3332', f.inputDigit('2'));
+  assertEquals('0011 81 3332 2', f.inputDigit('2'));
+  assertEquals('0011 81 3332 2 5', f.inputDigit('5'));
+  assertEquals('0011 81 3332 2 56', f.inputDigit('6'));
+  assertEquals('0011 81 3332 2 567', f.inputDigit('7'));
+  assertEquals('0011 81 3332 2 5678', f.inputDigit('8'));
+
+  // 0011 244 250 253 222
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('00', f.inputDigit('0'));
+  assertEquals('001', f.inputDigit('1'));
+  assertEquals('0011', f.inputDigit('1'));
+  assertEquals('00112', f.inputDigit('2'));
+  assertEquals('001124', f.inputDigit('4'));
+  assertEquals('0011 244 ', f.inputDigit('4'));
+  assertEquals('0011 244 2', f.inputDigit('2'));
+  assertEquals('0011 244 25', f.inputDigit('5'));
+  assertEquals('0011 244 250', f.inputDigit('0'));
+  assertEquals('0011 244 250 2', f.inputDigit('2'));
+  assertEquals('0011 244 250 25', f.inputDigit('5'));
+  assertEquals('0011 244 250 253', f.inputDigit('3'));
+  assertEquals('0011 244 250 253 2', f.inputDigit('2'));
+  assertEquals('0011 244 250 253 22', f.inputDigit('2'));
+  assertEquals('0011 244 250 253 222', f.inputDigit('2'));
+}
+
+function testAYTFLongIDD_KR() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('KR');
+  // 00300 1 650 253 2222
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('00', f.inputDigit('0'));
+  assertEquals('003', f.inputDigit('3'));
+  assertEquals('0030', f.inputDigit('0'));
+  assertEquals('00300', f.inputDigit('0'));
+  assertEquals('00300 1 ', f.inputDigit('1'));
+  assertEquals('00300 1 6', f.inputDigit('6'));
+  assertEquals('00300 1 65', f.inputDigit('5'));
+  assertEquals('00300 1 650', f.inputDigit('0'));
+  assertEquals('00300 1 650 2', f.inputDigit('2'));
+  assertEquals('00300 1 650 25', f.inputDigit('5'));
+  assertEquals('00300 1 650 253', f.inputDigit('3'));
+  assertEquals('00300 1 650 253 2', f.inputDigit('2'));
+  assertEquals('00300 1 650 253 22', f.inputDigit('2'));
+  assertEquals('00300 1 650 253 222', f.inputDigit('2'));
+  assertEquals('00300 1 650 253 2222', f.inputDigit('2'));
+}
+
+function testAYTFLongNDD_KR() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('KR');
+  // 08811-9876-7890
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('08', f.inputDigit('8'));
+  assertEquals('088', f.inputDigit('8'));
+  assertEquals('0881', f.inputDigit('1'));
+  assertEquals('08811', f.inputDigit('1'));
+  assertEquals('08811-9', f.inputDigit('9'));
+  assertEquals('08811-98', f.inputDigit('8'));
+  assertEquals('08811-987', f.inputDigit('7'));
+  assertEquals('08811-9876', f.inputDigit('6'));
+  assertEquals('08811-9876-7', f.inputDigit('7'));
+  assertEquals('08811-9876-78', f.inputDigit('8'));
+  assertEquals('08811-9876-789', f.inputDigit('9'));
+  assertEquals('08811-9876-7890', f.inputDigit('0'));
+
+  // 08500 11-9876-7890
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('08', f.inputDigit('8'));
+  assertEquals('085', f.inputDigit('5'));
+  assertEquals('0850', f.inputDigit('0'));
+  assertEquals('08500 ', f.inputDigit('0'));
+  assertEquals('08500 1', f.inputDigit('1'));
+  assertEquals('08500 11', f.inputDigit('1'));
+  assertEquals('08500 11-9', f.inputDigit('9'));
+  assertEquals('08500 11-98', f.inputDigit('8'));
+  assertEquals('08500 11-987', f.inputDigit('7'));
+  assertEquals('08500 11-9876', f.inputDigit('6'));
+  assertEquals('08500 11-9876-7', f.inputDigit('7'));
+  assertEquals('08500 11-9876-78', f.inputDigit('8'));
+  assertEquals('08500 11-9876-789', f.inputDigit('9'));
+  assertEquals('08500 11-9876-7890', f.inputDigit('0'));
+}
+
+function testAYTFLongNDD_SG() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter('SG');
+  // 777777 9876 7890
+  assertEquals('7', f.inputDigit('7'));
+  assertEquals('77', f.inputDigit('7'));
+  assertEquals('777', f.inputDigit('7'));
+  assertEquals('7777', f.inputDigit('7'));
+  assertEquals('77777', f.inputDigit('7'));
+  assertEquals('777777 ', f.inputDigit('7'));
+  assertEquals('777777 9', f.inputDigit('9'));
+  assertEquals('777777 98', f.inputDigit('8'));
+  assertEquals('777777 987', f.inputDigit('7'));
+  assertEquals('777777 9876', f.inputDigit('6'));
+  assertEquals('777777 9876 7', f.inputDigit('7'));
+  assertEquals('777777 9876 78', f.inputDigit('8'));
+  assertEquals('777777 9876 789', f.inputDigit('9'));
+  assertEquals('777777 9876 7890', f.inputDigit('0'));
 }

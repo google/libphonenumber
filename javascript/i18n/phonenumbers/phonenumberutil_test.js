@@ -18,11 +18,16 @@
 /**
  * @fileoverview  Unit tests for the PhoneNumberUtil.
  *
+ * Note that these tests use the metadata contained in metadatafortesting.js,
+ * not the normal metadata files, so should not be used for regression test
+ * purposes - these tests are illustrative only and test functionality.
+ *
  * @author Nikolaos Trogkanis
  */
 
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
+goog.require('i18n.phonenumbers.RegionCode');
 
 
 /** @type {i18n.phonenumbers.PhoneNumberUtil} */
@@ -179,37 +184,24 @@ US_TOLLFREE.setCountryCode(1);
 US_TOLLFREE.setNationalNumber(8002530000);
 
 
-/**
- * Enum containing string constants of region codes for easier testing.
- *
- * @enum {string}
- */
-var RegionCode = {
-  AD: 'AD',
-  AO: 'AO',
-  AR: 'AR',
-  AU: 'AU',
-  BS: 'BS',
-  CS: 'CS',
-  DE: 'DE',
-  GB: 'GB',
-  IT: 'IT',
-  KR: 'KR',
-  MX: 'MX',
-  NZ: 'NZ',
-  PL: 'PL',
-  RE: 'RE',
-  SG: 'SG',
-  US: 'US',
-  YT: 'YT',
-  // Official code for the unknown region.
-  ZZ: 'ZZ'
-};
+/** @type {i18n.phonenumbers.PhoneNumber} */
+var US_SPOOF = new i18n.phonenumbers.PhoneNumber();
+US_SPOOF.setCountryCode(1);
+US_SPOOF.setNationalNumber(0);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
+var US_SPOOF_WITH_RAW_INPUT = new i18n.phonenumbers.PhoneNumber();
+US_SPOOF_WITH_RAW_INPUT.setCountryCode(1);
+US_SPOOF_WITH_RAW_INPUT.setNationalNumber(0);
+US_SPOOF_WITH_RAW_INPUT.setRawInput('000-000-0000');
+
+var RegionCode = i18n.phonenumbers.RegionCode;
 
 function testGetInstanceLoadUSMetadata() {
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = phoneUtil.getMetadataForRegion(RegionCode.US);
-  assertEquals('US', metadata.getId());
+  assertEquals(RegionCode.US, metadata.getId());
   assertEquals(1, metadata.getCountryCode());
   assertEquals('011', metadata.getInternationalPrefix());
   assertTrue(metadata.hasNationalPrefix());
@@ -234,7 +226,7 @@ function testGetInstanceLoadUSMetadata() {
 function testGetInstanceLoadDEMetadata() {
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = phoneUtil.getMetadataForRegion(RegionCode.DE);
-  assertEquals('DE', metadata.getId());
+  assertEquals(RegionCode.DE, metadata.getId());
   assertEquals(49, metadata.getCountryCode());
   assertEquals('00', metadata.getInternationalPrefix());
   assertEquals('0', metadata.getNationalPrefix());
@@ -256,7 +248,7 @@ function testGetInstanceLoadDEMetadata() {
 function testGetInstanceLoadARMetadata() {
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = phoneUtil.getMetadataForRegion(RegionCode.AR);
-  assertEquals('AR', metadata.getId());
+  assertEquals(RegionCode.AR, metadata.getId());
   assertEquals(54, metadata.getCountryCode());
   assertEquals('00', metadata.getInternationalPrefix());
   assertEquals('0', metadata.getNationalPrefix());
@@ -448,6 +440,12 @@ function testFormatUSNumber() {
                phoneUtil.format(US_PREMIUM, PNF.INTERNATIONAL));
   assertEquals('+1-900-253-0000',
                phoneUtil.format(US_PREMIUM, PNF.RFC3966));
+  // Numbers with all zeros in the national number part will be formatted by
+  // using the raw_input if that is available no matter which format is
+  // specified.
+  assertEquals('000-000-0000',
+               phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PNF.NATIONAL));
+  assertEquals('0', phoneUtil.format(US_SPOOF, PNF.NATIONAL));
 }
 
 function testFormatBSNumber() {
@@ -1682,6 +1680,14 @@ function testParseNationalNumber() {
       NZ_NUMBER.equals(phoneUtil.parse('01164 3 331 6005', RegionCode.US)));
   assertTrue(
       NZ_NUMBER.equals(phoneUtil.parse('+64 3 331 6005', RegionCode.US)));
+  // We should ignore the leading plus here, since it is not followed by a valid
+  // country code but instead is followed by the IDD for the US.
+  assertTrue(
+      NZ_NUMBER.equals(phoneUtil.parse('+01164 3 331 6005', RegionCode.US)));
+  assertTrue(
+      NZ_NUMBER.equals(phoneUtil.parse('+0064 3 331 6005', RegionCode.NZ)));
+  assertTrue(
+      NZ_NUMBER.equals(phoneUtil.parse('+ 00 64 3 331 6005', RegionCode.NZ)));
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumber = new i18n.phonenumbers.PhoneNumber();
@@ -1933,6 +1939,18 @@ function testFailedParseOnInvalidNumbers() {
          invalidCountryCode);
   } catch (e) {
     // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
+                 e);
+  }
+  try {
+    /** @type {string} */
+    var plusAndIddAndInvalidCountryCode = '+ 00 210 3 331 6005';
+    phoneUtil.parse(plusAndIddAndInvalidCountryCode, RegionCode.NZ);
+    fail('This should not parse without throwing an exception.');
+  } catch (e) {
+    // Expected this exception. 00 is a correct IDD, but 210 is not a valid
+    // country code.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
                  e);
