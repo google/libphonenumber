@@ -30,11 +30,19 @@ test_cpp_version() {
   CC_TEST_FILE=`mktemp`.cc
   CC_TEST_BINARY=`mktemp`
   CMAKE_FLAGS="$1"
+
   # Write the program that tests the installation of the library to a temporary
   # source file.
   > $CC_TEST_FILE echo '
+    #include <cassert>
+
     #include <base/memory/scoped_ptr.h>
+
+    // Include all the public headers.
     #include <phonenumbers/asyoutypeformatter.h>
+    #include <phonenumbers/phonenumber.pb.h>
+    #include <phonenumbers/phonenumbermatch.h>
+    #include <phonenumbers/phonenumbermatcher.h>
     #include <phonenumbers/phonenumberutil.h>
 
     using i18n::phonenumbers::AsYouTypeFormatter;
@@ -44,8 +52,11 @@ test_cpp_version() {
       PhoneNumberUtil* const phone_util = PhoneNumberUtil::GetInstance();
       const scoped_ptr<AsYouTypeFormatter> asytf(
           phone_util->GetAsYouTypeFormatter("US"));
-      return !(phone_util != NULL && asytf != NULL);
+
+      assert(phone_util != NULL);
+      assert(asytf != NULL);
     }'
+
   # Run the build and tests.
   (
     rm -rf cpp/build /tmp/libphonenumber &&
@@ -64,8 +75,9 @@ test_cpp_version() {
   [ $STATUS -ne 0 ] && exit $STATUS
 }
 test_cpp_version ''
-test_cpp_version '-DUSE_RE2=ON'
+test_cpp_version '-DUSE_ICU_REGEXP=ON'
 test_cpp_version '-DUSE_LITE_METADATA=ON'
+test_cpp_version '-DUSE_RE2=ON'
 test_cpp_version '-DUSE_STD_MAP=ON'
 
 # Test Java version using Ant.

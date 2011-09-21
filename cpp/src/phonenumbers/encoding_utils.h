@@ -16,6 +16,7 @@
 #define I18N_PHONENUMBERS_ENCODING_UTILS_H_
 
 #include "base/basictypes.h"
+#include "phonenumbers/utf/unilib.h"
 #include "phonenumbers/utf/utf.h"
 
 namespace i18n {
@@ -31,6 +32,16 @@ class EncodingUtils {
     int len = chartorune(&r, in);
     *out = r;
     return len;
+  }
+
+  static const char* AdvanceOneUTF8Character(const char* buf_utf8) {
+      return buf_utf8 + UniLib::OneCharLen(buf_utf8);
+  }
+
+  static const char* BackUpOneUTF8Character(const char* start,
+                                            const char* end) {
+    while (start < end && UniLib::IsTrailByte(*--end)) {}
+    return end;
   }
 };
 

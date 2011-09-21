@@ -14,6 +14,7 @@
 
 // Author: Philippe Liard
 
+#include <algorithm>
 #include <cassert>
 #include <cstring>
 #include <sstream>
@@ -23,6 +24,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+using std::equal;
 using std::stringstream;
 
 string operator+(const string& s, int n) {
@@ -52,6 +54,43 @@ string SimpleItoa(int n) {
 
 string SimpleItoa(uint64 n) {
   return GenericSimpleItoa(n);
+}
+
+bool HasPrefixString(const string& s, const string& prefix) {
+  return s.size() >= prefix.size() &&
+      equal(s.begin(), s.begin() + prefix.size(), prefix.begin());
+}
+
+size_t FindNth(const string& s, char c, int n) {
+  size_t pos = string::npos;
+
+  for (int i = 0; i < n; ++i) {
+    pos = s.find_first_of(c, pos + 1);
+    if (pos == string::npos) {
+      break;
+    }
+  }
+  return pos;
+}
+
+void SplitStringUsing(const string& s, const string& delimiter,
+                      vector<string>* result) {
+  assert(result);
+  size_t start_pos = 0;
+  size_t find_pos = string::npos;
+  if (delimiter.empty()) {
+    return;
+  }
+  while ((find_pos = s.find(delimiter, start_pos)) != string::npos) {
+    const string substring = s.substr(start_pos, find_pos - start_pos);
+    if (!substring.empty()) {
+      result->push_back(substring);
+    }
+    start_pos = find_pos + delimiter.length();
+  }
+  if (start_pos != s.length()) {
+    result->push_back(s.substr(start_pos));
+  }
 }
 
 void StripString(string* s, const char* remove, char replacewith) {
@@ -248,6 +287,25 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
   result += s5;
   result += s6;
   result += s7;
+
+  return result;
+}
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8) {
+  string result;
+  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length() + s7.Length() + s8.Length() + 1);
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+  result += s8;
 
   return result;
 }

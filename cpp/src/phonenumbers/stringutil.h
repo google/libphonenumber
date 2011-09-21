@@ -19,6 +19,7 @@
 
 #include <cstddef>
 #include <string>
+#include <vector>
 
 #include "base/basictypes.h"
 
@@ -26,6 +27,7 @@ namespace i18n {
 namespace phonenumbers {
 
 using std::string;
+using std::vector;
 
 // Supports string("hello") + 10.
 string operator+(const string& s, int n);
@@ -33,6 +35,18 @@ string operator+(const string& s, int n);
 // Converts integer to string.
 string SimpleItoa(uint64 n);
 string SimpleItoa(int n);
+
+// Returns whether the provided string starts with the supplied prefix.
+bool HasPrefixString(const string& s, const string& prefix);
+
+// Returns the index of the nth occurence of c in s or string::npos if less than
+// n occurrences are present.
+size_t FindNth(const string& s, char c, int n);
+
+// Splits a string using a character delimiter. Appends the components to the
+// provided vector. Note that empty tokens are ignored.
+void SplitStringUsing(const string& s, const string& delimiter,
+                      vector<string>* result);
 
 // Replaces any occurrence of the character 'remove' (or the characters
 // in 'remove') with the character 'replacewith'.
@@ -112,6 +126,11 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s3, const StringHolder& s4,
               const StringHolder& s5, const StringHolder& s6,
               const StringHolder& s7);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8);
 
 string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s3, const StringHolder& s4,

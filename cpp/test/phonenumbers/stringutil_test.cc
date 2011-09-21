@@ -14,9 +14,15 @@
 
 // Author: Philippe Liard
 
+#include "phonenumbers/stringutil.h"
+
+#include <string>
+#include <vector>
+
 #include <gtest/gtest.h>
 
-#include "phonenumbers/stringutil.h"
+using std::string;
+using std::vector;
 
 namespace i18n {
 namespace phonenumbers {
@@ -29,6 +35,55 @@ TEST(StringUtilTest, OperatorPlus) {
 // Test SimpleItoa implementation.
 TEST(StringUtilTest, SimpleItoa) {
   EXPECT_EQ("10", SimpleItoa(10));
+}
+
+TEST(StringUtilTest, HasPrefixString) {
+  EXPECT_TRUE(HasPrefixString("hello world", "hello"));
+  EXPECT_FALSE(HasPrefixString("hello world", "hellO"));
+}
+
+TEST(StringUtilTest, FindNthWithEmptyString) {
+  EXPECT_EQ(string::npos, FindNth("", 'a', 1));
+}
+
+TEST(StringUtilTest, FindNthWithNNegative) {
+  EXPECT_EQ(string::npos, FindNth("hello world", 'o', -1));
+}
+
+TEST(StringUtilTest, FindNthWithNTooHigh) {
+  EXPECT_EQ(string::npos, FindNth("hello world", 'o', 3));
+}
+
+TEST(StringUtilTest, FindNth) {
+  EXPECT_EQ(7, FindNth("hello world", 'o', 2));
+}
+
+TEST(StringUtilTest, SplitStringUsingWithEmptyString) {
+  vector<string> result;
+  SplitStringUsing("", ":", &result);
+  EXPECT_EQ(0, result.size());
+}
+
+TEST(StringUtilTest, SplitStringUsingWithEmptyDelimiter) {
+  vector<string> result;
+  SplitStringUsing("hello", "", &result);
+  EXPECT_EQ(0, result.size());
+}
+
+TEST(StringUtilTest, SplitStringUsing) {
+  vector<string> result;
+  SplitStringUsing(":hello:world:", ":", &result);
+  EXPECT_EQ(2, result.size());
+  EXPECT_EQ("hello", result[0]);
+  EXPECT_EQ("world", result[1]);
+}
+
+TEST(StringUtilTest, SplitStringUsingIgnoresEmptyToken) {
+  vector<string> result;
+  SplitStringUsing("hello::world", ":", &result);
+  EXPECT_EQ(2, result.size());
+  EXPECT_EQ("hello", result[0]);
+  EXPECT_EQ("world", result[1]);
 }
 
 // Test TryStripPrefixString.
@@ -204,6 +259,10 @@ TEST(StringUtilTest, StrCat) {
   // Test with 7 arguments.
   s = StrCat("a", "b", "c", "d", "e", "f", "g");
   EXPECT_EQ("abcdefg", s);
+
+  // Test with 8 arguments.
+  s = StrCat("a", "b", "c", "d", "e", "f", "g", "h");
+  EXPECT_EQ("abcdefgh", s);
 
   // Test with 9 arguments.
   s = StrCat("a", "b", "c", "d", "e", "f", "g", "h", "i");

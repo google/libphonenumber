@@ -80,12 +80,15 @@ How to build libphonenumber C++:
   $ cd libphonenumber
   $ mkdir build
   $ cd build
-  $ cmake ../cpp/
+  $ cmake ..
   $ make
 
 Supported build parameters:
   Build parameters can be specified invoking CMake with '-DKEY=VALUE' or using a
   CMake user interface (ccmake or cmake-gui).
 
+  USE_ICU_REGEXP    = ON | OFF [ON]  -- Use ICU regexp engine.
   USE_LITE_METADATA = ON | OFF [OFF] -- Generates smaller metadata that doesn't
                                         include example numbers.
+  USE_RE2           = ON | OFF [OFF] -- Use RE2.
+  USE_STD_MAP       = ON | OFF [OFF] -- Force the use of std::map.

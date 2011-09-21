@@ -67,8 +67,9 @@ function (find_required_program NAME FILENAME DESCRIPTION)
 endfunction (find_required_program)
 
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
+option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
-option ("USE_RE2" "Use RE2 instead of ICU" "OFF")
+option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 
 # Find all the required libraries and programs.
@@ -94,7 +95,7 @@ check_library_version (PC_ICU_UC icu-uc>=4.4)
 set (ICU_INCLUDE_DIR ${ICU_UC_INCLUDE_DIR})
 set (ICU_LIB ${ICU_UC_LIB})
 # If ICU regexp engine is used, use icui18n as well.
-if (${USE_RE2} STREQUAL "OFF")
+if (${USE_ICU_REGEXP} STREQUAL "ON")
   find_required_library (ICU_I18N unicode/regex.h icui18n "ICU")
   check_library_version (PC_ICU_I18N icu-i18n>=4.4)
   list (APPEND ICU_INCLUDE_DIR ${ICU_I18N_INCLUDE_DIR})
@@ -169,14 +170,22 @@ set (
   "src/phonenumbers/utf/unilib.cc"
 )
 
-# Add regexp engine sources. ICU is used by default.
+# Add regexp engine-dependent sources. ICU is used by default.
 if (${USE_RE2} STREQUAL "ON")
   # Add a flag to select the right regexp factory implementation used by
   # regexp_factory.h and regexp_adapter_test.cc.
+  # When both ICU regexp and RE2 are defined, the regexp engine adapter defaults
+  # to RE2 unless the ICU implementation is instantiated explictly obviously.
   add_definitions (-DUSE_RE2)
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_re2.cc")
-else ()
+endif ()
+
+if (${USE_ICU_REGEXP} STREQUAL "ON")
+  add_definitions (-DUSE_ICU_REGEXP)
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_icu.cc")
+  # The phone number matcher needs ICU.
+  list (APPEND SOURCES "src/phonenumbers/phonenumbermatch.cc")
+  list (APPEND SOURCES "src/phonenumbers/phonenumbermatcher.cc")
 endif ()
 
 # Library sources excluding the metadata files, since special metadata is used
@@ -300,9 +309,15 @@ set (TEST_SOURCES
   "test/phonenumbers/regexp_cache_test.cc"
   "test/phonenumbers/run_tests.cc"
   "test/phonenumbers/stringutil_test.cc"
+  "test/phonenumbers/test_util.cc"
   "test/phonenumbers/unicodestring_test.cc"
   "test/phonenumbers/utf/unicodetext_test.cc"
 )
+if (${USE_ICU_REGEXP} STREQUAL "ON")
+  # Add the phone number matcher tests.
+  list (APPEND TEST_SOURCES "test/phonenumbers/phonenumbermatch_test.cc")
+  list (APPEND TEST_SOURCES "test/phonenumbers/phonenumbermatcher_test.cc")
+endif ()
 
 # Build the testing binary.
 include_directories ("test")
@@ -329,8 +344,17 @@ install (FILES
 install (FILES "src/phonenumbers/utf/unicodetext.h"
          DESTINATION include/phonenumbers/utf/)
 
-install (FILES src/base/basictypes.h
-         DESTINATION include/base/)
+if (${USE_ICU_REGEXP} STREQUAL "ON")
+  # Install the phone number matcher headers.
+  install (FILES
+    "src/phonenumbers/phonenumbermatch.h"
+    "src/phonenumbers/phonenumbermatcher.h"
+    "src/phonenumbers/regexp_adapter.h"
+    DESTINATION include/phonenumbers/
+  )
+endif ()
+
+install (FILES "src/base/basictypes.h" DESTINATION include/base/)
 
 install (FILES
   "src/base/memory/scoped_ptr.h"
@@ -338,7 +362,7 @@ install (FILES
   DESTINATION include/base/memory/
 )
 
-install (FILES src/base/synchronization/lock.h
+install (FILES "src/base/synchronization/lock.h"
          DESTINATION include/base/synchronization/)
 
 install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)

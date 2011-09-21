@@ -26,6 +26,7 @@
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/phonenumberutil.h"
+#include "phonenumbers/test_util.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -35,112 +36,6 @@ using std::make_pair;
 using std::ostream;
 
 using google::protobuf::RepeatedPtrField;
-
-namespace {
-
-// Class containing string constants of region codes for easier testing. This is
-// intended to replace region_code.h for testing in this file, with more
-// constants defined.
-class RegionCode {
- public:
-  static const string& AD() {
-    static const string s = "AD";
-    return s;
-  }
-
-  static const string& AO() {
-    static const string s = "AO";
-    return s;
-  }
-
-  static const string& AR() {
-    static const string s = "AR";
-    return s;
-  }
-
-  static const string& AU() {
-    static const string s = "AU";
-    return s;
-  }
-
-  static const string& BS() {
-    static const string s = "BS";
-    return s;
-  }
-
-  static const string& CN() {
-    static const string s = "CN";
-    return s;
-  }
-
-  static const string& CS() {
-    static const string s = "CS";
-    return s;
-  }
-
-  static const string& DE() {
-    static const string s = "DE";
-    return s;
-  }
-
-  static const string& GB() {
-    static const string s = "GB";
-    return s;
-  }
-
-  static const string& IT() {
-    static const string s = "IT";
-    return s;
-  }
-
-  static const string& KR() {
-    static const string s = "KR";
-    return s;
-  }
-
-  static const string& MX() {
-    static const string s = "MX";
-    return s;
-  }
-
-  static const string& NZ() {
-    static const string s = "NZ";
-    return s;
-  }
-
-  static const string& PL() {
-    static const string s = "PL";
-    return s;
-  }
-
-  static const string& RE() {
-    static const string s = "RE";
-    return s;
-  }
-
-  static const string& SG() {
-    static const string s = "SG";
-    return s;
-  }
-
-  static const string& US() {
-    static const string s = "US";
-    return s;
-  }
-
-  static const string& YT() {
-    static const string s = "YT";
-    return s;
-  }
-
-  // Returns a region code string representing the "unknown" region.
-  static const string& GetUnknown() {
-    static const string s = "ZZ";
-    return s;
-  }
-};
-
-}  // namespace
 
 class PhoneNumberUtilTest : public testing::Test {
  protected:
@@ -218,40 +113,6 @@ class PhoneNumberUtilTest : public testing::Test {
 
   const PhoneNumberUtil& phone_util_;
 };
-
-// Provides PhoneNumber comparison operators to support the use of EXPECT_EQ and
-// EXPECT_NE in the unittests.
-bool operator==(const PhoneNumber& number1, const PhoneNumber& number2) {
-  return ExactlySameAs(number1, number2);
-}
-
-bool operator!=(const PhoneNumber& number1, const PhoneNumber& number2) {
-  return !(number1 == number2);
-}
-
-// Needed by Google Test to display errors.
-ostream& operator<<(ostream& os, const PhoneNumber& number) {
-  os << endl
-     << "country_code: " << number.country_code() << endl
-     << "national_number: " << number.national_number() << endl;
-  if (number.has_extension()) {
-     os << "extension: " << number.extension() << endl;
-  }
-  if (number.has_italian_leading_zero()) {
-     os << "italian_leading_zero: " << number.italian_leading_zero() << endl;
-  }
-  if (number.has_raw_input()) {
-     os << "raw_input: " << number.raw_input() << endl;
-  }
-  if (number.has_country_code_source()) {
-     os << "country_code_source: " << number.country_code_source() << endl;
-  }
-  if (number.has_preferred_domestic_carrier_code()) {
-     os << "preferred_domestic_carrier_code: "
-        << number.preferred_domestic_carrier_code() << endl;
-  }
-  return os;
-}
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   set<string> regions;

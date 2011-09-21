@@ -67,6 +67,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class Singleton<PhoneNumberUtil>;
 #endif
   friend class AsYouTypeFormatter;
+  friend class PhoneNumberMatcher;
+  friend class PhoneNumberMatcherRegExps;
+  friend class PhoneNumberMatcherTest;
   friend class PhoneNumberUtilTest;
  public:
   ~PhoneNumberUtil();

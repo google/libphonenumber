@@ -21,7 +21,7 @@
 #include "base/logging.h"
 #include "base/memory/scoped_ptr.h"
 #include "phonenumbers/phonenumberutil.h"
-#include "phonenumbers/region_code.h"
+#include "phonenumbers/test_util.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -61,7 +61,7 @@ TEST_F(AsYouTypeFormatterTest, ConvertUnicodeStringPosition) {
 }
 
 TEST_F(AsYouTypeFormatterTest, Constructor) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("US"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
   EXPECT_TRUE(GetCurrentMetadata() != NULL);
 }
@@ -107,7 +107,7 @@ TEST_F(AsYouTypeFormatterTest, TooLongNumberMatchingMultipleLeadingDigits) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_US) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("US"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
   EXPECT_EQ("6", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("65", formatter_->InputDigit('5', &result_));
@@ -203,7 +203,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_US) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_USFullWidthCharacters) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("US"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
   EXPECT_EQ("\xEF\xBC\x96" /* "６" */,
             formatter_->InputDigit(UnicodeString("\xEF\xBC\x96" /* "６" */)[0],
@@ -238,7 +238,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_USFullWidthCharacters) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_USMobileShortCode) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("US"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
   EXPECT_EQ("*", formatter_->InputDigit('*', &result_));
   EXPECT_EQ("*1", formatter_->InputDigit('1', &result_));
@@ -248,7 +248,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_USMobileShortCode) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_USVanityNumber) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("US"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
   EXPECT_EQ("8", formatter_->InputDigit('8', &result_));
   EXPECT_EQ("80", formatter_->InputDigit('0', &result_));
@@ -265,7 +265,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_USVanityNumber) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTFAndRememberPositionUS) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("US"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
   EXPECT_EQ("1", formatter_->InputDigitAndRememberPosition('1', &result_));
   EXPECT_EQ(1, formatter_->GetRememberedPosition());
@@ -407,7 +407,7 @@ TEST_F(AsYouTypeFormatterTest, AYTFAndRememberPositionUS) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_GBFixedLine) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("GB"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::GB()));
 
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("02", formatter_->InputDigit('2', &result_));
@@ -425,7 +425,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_GBFixedLine) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_GBTollFree) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("GB"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::GB()));
 
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("08", formatter_->InputDigit('8', &result_));
@@ -441,7 +441,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_GBTollFree) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_GBPremiumRate) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("GB"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::GB()));
 
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("09", formatter_->InputDigit('9', &result_));
@@ -457,7 +457,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_GBPremiumRate) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_NZMobile) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("NZ"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::NZ()));
 
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("02", formatter_->InputDigit('2', &result_));
@@ -473,7 +473,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_NZMobile) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_DE) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("DE"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::DE()));
 
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("03", formatter_->InputDigit('3', &result_));
@@ -513,7 +513,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_DE) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_AR) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("AR"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::AR()));
 
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("01", formatter_->InputDigit('1', &result_));
@@ -529,7 +529,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_AR) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_ARMobile) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("AR"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::AR()));
 
   EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
   EXPECT_EQ("+5", formatter_->InputDigit('5', &result_));
@@ -548,7 +548,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_ARMobile) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_KR) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("KR"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::KR()));
 
   // +82 51 234 5678
   EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
@@ -639,7 +639,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_KR) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("MX"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::MX()));
 
   // +52 800 123 4567
   EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
@@ -724,7 +724,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_MultipleLeadingDigitPatterns) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("JP"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::JP()));
 
   // +81 50 2345 6789
   EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
@@ -773,7 +773,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MultipleLeadingDigitPatterns) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_AU) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("AU"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::AU()));
   // 0011 1 650 253 2250
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
@@ -830,7 +830,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_AU) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_KR) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("KR"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::KR()));
   // 00300 1 650 253 2250
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
@@ -851,7 +851,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_KR) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_LongNDD_KR) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("KR"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::KR()));
   // 08811-9876-7890
   EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("08", formatter_->InputDigit('8', &result_));
@@ -887,7 +887,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_LongNDD_KR) {
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_LongNDD_SG) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter("SG"));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::SG()));
   // 777777 9876 7890
   EXPECT_EQ("7", formatter_->InputDigit('7', &result_));
   EXPECT_EQ("77", formatter_->InputDigit('7', &result_));
