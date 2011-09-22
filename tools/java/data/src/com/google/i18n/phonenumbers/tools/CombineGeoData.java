@@ -35,7 +35,7 @@ import java.util.logging.Logger;
 
 /**
  * Utility class that makes the geocoding data as small as possible. This class assumes the
- * geocoding data provided as input doesn't contain any gap thus should not be used with incomplete
+ * geocoding data provided as input doesn't contain any gaps thus should not be used with incomplete
  * data (missing prefixes).
  * <pre>
  * Example:        Can be combined as:
@@ -49,11 +49,17 @@ import java.util.logging.Logger;
 public class CombineGeoData {
   private final InputStream inputStream;
   private final OutputStream outputStream;
+  private final String outputLineSeparator;
   private static final Logger LOGGER = Logger.getLogger(CombineGeoData.class.getName());
 
-  public CombineGeoData(InputStream inputStream, OutputStream outputStream) {
+  public CombineGeoData(InputStream inputStream, OutputStream outputStream, String lineSeparator) {
     this.inputStream = inputStream;
     this.outputStream = outputStream;
+    this.outputLineSeparator = lineSeparator;
+  }
+
+  public CombineGeoData(InputStream inputStream, OutputStream outputStream) {
+    this(inputStream, outputStream, System.getProperty("line.separator"));
   }
 
   /**
@@ -70,7 +76,8 @@ public class CombineGeoData {
   }
 
   /**
-   * Parses the input text file expected to contain lines written as 'prefix|description'.
+   * Parses the input text file expected to contain lines written as 'prefix|description'. Note that
+   * description can be empty.
    *
    * @return the map of phone prefix data parsed.
    * @throws IOException
@@ -80,10 +87,10 @@ public class CombineGeoData {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
     for (String line; (line = bufferedReader.readLine()) != null; ) {
-      if (!line.matches("\\d+|.+")) {
+      int indexOfPipe = line.indexOf('|');
+      if (indexOfPipe == -1) {
         continue;
       }
-      int indexOfPipe = line.indexOf('|');
       outputMap.put(line.substring(0, indexOfPipe), line.substring(indexOfPipe + 1));
     }
     return outputMap;
@@ -251,14 +258,14 @@ public class CombineGeoData {
 
   /**
    * Combines the geocoding data read from the provided input stream and writes it as a result to
-   * the provided output stream.
+   * the provided output stream. Uses the provided string as the line separator.
    */
   public void run() throws IOException {
     SortedMap<String, String> phonePrefixMap = parseInput();
     phonePrefixMap = combineMultipleTimes(phonePrefixMap);
     PrintWriter printWriter = new PrintWriter(new BufferedOutputStream(outputStream));
     for (Map.Entry<String, String> mapping : phonePrefixMap.entrySet()) {
-      printWriter.printf("%s|%s\n", mapping.getKey(), mapping.getValue());
+      printWriter.printf("%s|%s%s", mapping.getKey(), mapping.getValue(), outputLineSeparator);
     }
     printWriter.flush();
   }
