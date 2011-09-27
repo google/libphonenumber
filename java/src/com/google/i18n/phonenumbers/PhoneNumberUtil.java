@@ -318,7 +318,8 @@ public class PhoneNumberUtil {
   private static PhoneNumberUtil instance = null;
 
   // A mapping from a region code to the PhoneMetadata for that region.
-  private Map<String, PhoneMetadata> regionToMetadataMap = new HashMap<String, PhoneMetadata>();
+  private final Map<String, PhoneMetadata> regionToMetadataMap =
+      Collections.synchronizedMap(new HashMap<String, PhoneMetadata>());
 
   // A cache for frequently used region-specific regular expressions.
   // As most people use phone numbers primarily from one to two countries, and there are roughly 60
@@ -1629,8 +1630,10 @@ public class PhoneNumberUtil {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    if (!regionToMetadataMap.containsKey(regionCode)) {
-      loadMetadataForRegionFromFile(currentFilePrefix, regionCode);
+    synchronized (regionToMetadataMap) {
+      if (!regionToMetadataMap.containsKey(regionCode)) {
+        loadMetadataForRegionFromFile(currentFilePrefix, regionCode);
+      }
     }
     return regionToMetadataMap.get(regionCode);
   }
