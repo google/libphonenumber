@@ -1,3 +1,9 @@
+libphonenumber (3.9) lucid; urgency=low
+
+  * Version update.
+
+ -- Fredrik Roubert <roubert@google.com>  Mon, 26 Sep 2011 15:49:14 +0200
+
 libphonenumber (3.8) unstable; urgency=low
 
   * Initial Debian Package.
