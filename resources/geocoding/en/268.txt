@@ -13,41 +13,42 @@
 # limitations under the License.
 
 # Generated from:
-# http://en.wikipedia.org/wiki/+268 [397077635]
+# http://www.itu.int/oth/T02020000C6/en [2010-09-30]
+# http://en.wikipedia.org/wiki/+268 [451219164]
 
-268207|Nhlangano
-268217|Hlathikulu
-268227|Hluthi
-268237|Mahamba
-268303|Nsoko
-268312|Mhlume
-268313|Mhlume
-268322|Tshaneni
-268323|Tshaneni
-268333|Mpaka
-268343|Siteki
-268344|Siphofaneni
-268363|Big Bend
-268364|Big Bend
-268373|Maphiveni
-268382|Simunye
-268383|Simunye
-268404|Mbabane
-268405|Mbabane
-268406|Mbabane
-268416|Lobamba
-268422|Sidwashini
-268437|Pigg's Peak
-268442|Ngwenya
-268452|Bhunya
-268453|Bhunya
-268467|Mhlambanyatsi
-268472|Mahwalala
-268482|Siphocosini
-268505|Manzini
-268506|Manzini
-268517|Matsapha
-268518|Matsapha
-268528|Malkerns
-268538|Mankayane
-268548|Ludzeludze
+2682207|Nhlangano, Shiselweni district
+2682217|Hlathikulu, Shiselweni district
+2682227|Hluthi, Shiselweni district
+2682237|Mahamba, Shiselweni district
+2682303|Nsoko, Lubombo district
+2682312|Mhlume, Lubombo district
+2682313|Mhlume, Lubombo district
+2682322|Tshaneni, Lubombo district
+2682323|Tshaneni, Lubombo district
+2682333|Mpaka, Lubombo district
+2682343|Siteki, Lubombo district
+2682344|Siphofaneni, Lubombo district
+2682363|Big Bend, Lubombo district
+2682364|Big Bend, Lubombo district
+2682373|Maphiveni, Lubombo district
+2682382|Simunye, Lubombo district
+2682383|Simunye, Lubombo district
+2682404|Mbabane, Hhohho district
+2682405|Mbabane, Hhohho district
+2682406|Mbabane, Hhohho district
+2682416|Lobamba, Hhohho district
+2682422|Sidwashini, Hhohho district
+2682437|Pigg's Peak, Hhohho district
+2682442|Ngwenya, Hhohho district
+2682452|Bhunya, Hhohho district
+2682453|Bhunya, Hhohho district
+2682467|Mhlambanyatsi, Hhohho district
+2682472|Mahwalala, Hhohho district
+2682482|Siphocosini, Hhohho district
+2682505|Manzini
+2682506|Manzini
+2682517|Matsapha, Manzini district
+2682518|Matsapha, Manzini district
+2682528|Malkerns, Manzini district
+2682538|Mankayane, Manzini district
+2682548|Ludzeludze, Manzini district

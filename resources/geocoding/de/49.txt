@@ -2212,7 +2212,7 @@
 494407|Wardenburg
 494408|Hude Oldenburg
 494409|Westerstede-Ocholt
-49441|Oldenburg (Oldb)
+49441|Oldenburg
 494421|Wilhelmshaven
 494422|Sande Kreis Friesl
 494423|Fedderwarden

@@ -13,12 +13,13 @@
 # limitations under the License.
 
 # Generated from:
-# http://en.wikipedia.org/wiki/+242 [414319147]
+# http://www.itu.int/oth/T020200002E/en [2010-11-01]
+# http://en.wikipedia.org/wiki/+242 [451637896]
 
-24221|Cuvette
-24222|Likouala/Sangha
-24223|Pool
-24224|Plateaux
-24225|Bouenza/Lekoumou/Niari
-24228|Brazzaville
-24229|Pointe-Noire
+2422221|Cuvette
+2422222|Likouala/Sangha
+2422223|Pool
+2422224|Plateaux
+2422225|Bouenza/Lekoumou/Niari
+2422228|Brazzaville
+2422229|Pointe-Noire

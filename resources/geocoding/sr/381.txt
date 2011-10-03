@@ -42,7 +42,7 @@
 38131|Užice
 38132|Čačak
 38133|Prijepolje
-38134|Kragujevac (TC)
+38134|Kragujevac
 38135|Jagodina
 38136|Kraljevo
 38137|Kruševac

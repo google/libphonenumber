@@ -1,0 +1,35 @@
+# Copyright (C) 2011 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translated from pt/245.txt using Freebase and Wikipedia.
+
+24522|S. Luzia
+24525|Brá
+24531|Mansoa/Manssabá
+24532|Bigene/Bissorã
+24533|Bula/Ingore
+24535|Farim
+24541|Bafatá/Bambadinca
+24551|Gabú
+24552|Sonaco
+24553|Pirada
+24561|Bedanda/Buba/Cacine/Catio/Fulacunda/Tite
+24562|Quebo
+24581|Bolama
+24582|Bubaque
+24583|Caravela
+24584|Uno
+24591|Canchungo
+24592|Cacheu
+24593|S. Domingos

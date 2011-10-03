@@ -70,7 +70,7 @@
 432259|Münchendorf
 432262|Korneuburg
 432263|Großrußbach
-432264|Rückersdorf (Harmannsdorf)
+432264|Rückersdorf, Harmannsdorf
 432265|Hausleiten
 432266|Stockerau
 432267|Sierndorf
@@ -94,7 +94,7 @@
 432288|Auersthal
 432289|Matzen
 432522|Laa an der Thaya
-432523|Kirchstetten (Neudorf bei Staatz)
+432523|Kirchstetten, Neudorf bei Staatz
 432524|Kautendorf
 432525|Gnadendorf
 432526|Stronsdorf
@@ -135,7 +135,7 @@
 432626|Mattersburg
 432627|Pitten
 432628|Felixdorf
-432629|Warth (Niederösterreich)
+432629|Warth, Niederösterreich
 432630|Ternitz
 432631|Pöttsching
 432632|Pernitz
@@ -152,7 +152,7 @@
 432644|Grimmenstein
 432645|Wiesmath
 432646|Kirchschlag in der Buckligen Welt
-432647|Krumbach (Niederösterreich)
+432647|Krumbach, Niederösterreich
 432648|Hochneukirchen
 432649|Mönichkirchen
 432662|Gloggnitz
@@ -245,7 +245,7 @@
 432843|Dobersberg
 432846|Raabs an der Thaya
 432847|Groß-Siegharts
-432848|Pfaffenschlag bei Waidhofen a.d.Thaya
+432848|Pfaffenschlag bei Waidhofen
 432849|Schwarzenau
 432852|Gmünd
 432853|Schrems
@@ -270,7 +270,7 @@
 432913|Hötzelsdorf
 432914|Japons
 432915|Drosendorf-Zissersdorf
-432916|Riegersburg (Hardegg)
+432916|Riegersburg, Hardegg
 432942|Retz
 432943|Obritz
 432944|Haugsdorf
@@ -589,7 +589,7 @@
 434784|Mallnitz
 434785|Außerfragant
 434822|Winklern
-434823|Tresdorf (Rangersdorf)
+434823|Tresdorf, Rangersdorf
 434824|Heiligenblut
 434825|Großkirchheim
 434826|Mörtschach
@@ -917,7 +917,7 @@
 437412|Ybbs an der Donau
 437413|Marbach an der Donau
 437414|Weins-Isperdorf
-437415|Altenmarkt (Yspertal)
+437415|Altenmarkt, Yspertal
 437416|Wieselburg
 437432|Strengberg
 437433|Wallsee
@@ -932,12 +932,12 @@
 437472|Amstetten
 437473|Blindenmarkt
 437474|Euratsfeld
-437475|Hausmening (Neuhofen an der Ybbs)
+437475|Hausmening, Neuhofen an der Ybbs
 437476|Aschbach-Markt
 437477|Sankt Peter in der Au
 437478|Oed-Oehling
 437479|Ardagger
-437480|Langau (Gaming)
+437480|Langau, Gaming
 437482|Scheibbs
 437483|Oberndorf an der Melk
 437484|Göstling an der Ybbs
@@ -964,7 +964,7 @@
 437615|Scharnstein
 437616|Grünau im Almtal
 437617|Traunkirchen
-437618|Neukirchen (Altmünster)
+437618|Neukirchen, Altmünster
 437619|Kirchham
 437662|Seewalchen am Attersee
 437663|Steinbach am Attersee

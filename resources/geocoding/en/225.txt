@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from:
-# http://en.wikipedia.org/wiki/+225 [421886067]
+# Translated from fr/225.txt using Freebase and Wikipedia.
 
 22520|Plateau
 22521|Abidjan
