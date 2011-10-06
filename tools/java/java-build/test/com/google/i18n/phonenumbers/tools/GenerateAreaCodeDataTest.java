@@ -200,4 +200,93 @@ public class GenerateAreaCodeDataTest extends TestCase {
       // Expected.
     }
   }
+
+  public void testGetEnglishDataPath() {
+    assertEquals("/path/en/33.txt",
+                 GenerateAreaCodeData.getEnglishDataPath(new File("/path/fr/33.txt")));
+  }
+
+  public void testHasOverlap() {
+    SortedMap<Integer, String> map = new TreeMap<Integer, String>();
+    map.put(1234, "");
+    map.put(123, "");
+    map.put(2345, "");
+
+    assertTrue(GenerateAreaCodeData.hasOverlappingPrefix(1234, map));
+    assertFalse(GenerateAreaCodeData.hasOverlappingPrefix(2345, map));
+  }
+
+  public void testCompressAccordingToEnglishDataMakesDescriptionEmpty() {
+    SortedMap<Integer, String> frenchMappings = new TreeMap<Integer, String>();
+    frenchMappings.put(411, "Genève");
+    frenchMappings.put(4112, "Zurich");
+
+    SortedMap<Integer, String> englishMappings = new TreeMap<Integer, String>();
+    englishMappings.put(411, "Geneva");
+    englishMappings.put(4112, "Zurich");
+    // The English map should not be modified.
+    englishMappings = Collections.unmodifiableSortedMap(englishMappings);
+
+    GenerateAreaCodeData.compressAccordingToEnglishData(englishMappings, frenchMappings);
+
+    assertEquals(2, frenchMappings.size());
+    assertEquals("Genève", frenchMappings.get(411));
+    assertEquals("", frenchMappings.get(4112));
+  }
+
+  public void testCompressAccordingToEnglishDataRemovesMappingWhenNoOverlap() {
+    SortedMap<Integer, String> frenchMappings = new TreeMap<Integer, String>();
+    frenchMappings.put(411, "Genève");
+    frenchMappings.put(412, "Zurich");
+
+    SortedMap<Integer, String> englishMappings = new TreeMap<Integer, String>();
+    englishMappings.put(411, "Geneva");
+    englishMappings.put(412, "Zurich");
+    // The English map should not be modified.
+    englishMappings = Collections.unmodifiableSortedMap(englishMappings);
+
+    GenerateAreaCodeData.compressAccordingToEnglishData(englishMappings, frenchMappings);
+
+    assertEquals(1, frenchMappings.size());
+    assertEquals("Genève", frenchMappings.get(411));
+  }
+
+  public void testCompressAccordingToEnglishData() {
+    SortedMap<Integer, String> frenchMappings = new TreeMap<Integer, String>();
+    frenchMappings.put(12, "A");
+    frenchMappings.put(123, "B");
+
+    SortedMap<Integer, String> englishMappings = new TreeMap<Integer, String>();
+    englishMappings.put(12, "A");
+    englishMappings.put(123, "B");
+    // The English map should not be modified.
+    englishMappings = Collections.unmodifiableSortedMap(englishMappings);
+
+    GenerateAreaCodeData.compressAccordingToEnglishData(englishMappings, frenchMappings);
+
+    assertEquals(0, frenchMappings.size());
+  }
+
+  public void testRemoveEmptyEnglishMappingsDoesNotRemoveNonEnglishMappings() {
+    SortedMap<Integer, String> frenchMappings = new TreeMap<Integer, String>();
+    frenchMappings.put(331, "Paris");
+    frenchMappings.put(334, "");
+    // The French map should not be modified.
+    frenchMappings = Collections.unmodifiableSortedMap(frenchMappings);
+
+    GenerateAreaCodeData.removeEmptyEnglishMappings(frenchMappings, "fr");
+
+    assertEquals(2, frenchMappings.size());
+  }
+
+  public void testRemoveEmptyEnglishMappings() {
+    SortedMap<Integer, String> englishMappings = new TreeMap<Integer, String>();
+    englishMappings.put(331, "Paris");
+    englishMappings.put(334, "");
+
+    GenerateAreaCodeData.removeEmptyEnglishMappings(englishMappings, "en");
+
+    assertEquals(1, englishMappings.size());
+    assertEquals("Paris", englishMappings.get(331));
+  }
 }

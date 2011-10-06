@@ -49,6 +49,7 @@ public class BuildMetadataFromXml {
   // String constants used to fetch the XML nodes and attributes.
   private static final String CARRIER_CODE_FORMATTING_RULE = "carrierCodeFormattingRule";
   private static final String COUNTRY_CODE = "countryCode";
+  private static final String EMERGENCY = "emergency";
   private static final String EXAMPLE_NUMBER = "exampleNumber";
   private static final String FIXED_LINE = "fixedLine";
   private static final String FORMAT = "format";
@@ -427,6 +428,7 @@ public class BuildMetadataFromXml {
                                                              PERSONAL_NUMBER));
     metadata.setPager(processPhoneNumberDescElement(generalDesc, element, PAGER));
     metadata.setUan(processPhoneNumberDescElement(generalDesc, element, UAN));
+    metadata.setEmergency(processPhoneNumberDescElement(generalDesc, element, EMERGENCY));
     metadata.setNoInternationalDialling(processPhoneNumberDescElement(generalDesc, element,
                                                                       NO_INTERNATIONAL_DIALLING));
     metadata.setSameMobileAndFixedLinePattern(

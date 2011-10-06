@@ -603,6 +603,27 @@ public class PhoneNumberUtilTest extends TestCase {
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(usNumber, "15"));
   }
 
+  public void testFormatNumberForMobileDialing() {
+    // US toll free numbers are marked as noInternationalDialling in the test metadata for testing
+    // purposes.
+    assertEquals("800 253 0000",
+        phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US, true));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.CN, true));
+    assertEquals("+1 650 253 0000",
+        phoneUtil.formatNumberForMobileDialing(US_NUMBER, RegionCode.US, true));
+    PhoneNumber usNumberWithExtn = new PhoneNumber().mergeFrom(US_NUMBER).setExtension("1234");
+    assertEquals("+1 650 253 0000",
+        phoneUtil.formatNumberForMobileDialing(usNumberWithExtn, RegionCode.US, true));
+
+    assertEquals("8002530000",
+        phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US, false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.CN, false));
+    assertEquals("+16502530000",
+        phoneUtil.formatNumberForMobileDialing(US_NUMBER, RegionCode.US, false));
+    assertEquals("+16502530000",
+        phoneUtil.formatNumberForMobileDialing(usNumberWithExtn, RegionCode.US, false));
+  }
+
   public void testFormatByPattern() {
     NumberFormat newNumFormat = new NumberFormat();
     newNumFormat.setPattern("(\\d{3})(\\d{3})(\\d{4})");

@@ -87,6 +87,10 @@ public class PhoneNumberUtil {
   private final Set<String> nanpaRegions = new HashSet<String>(35);
   private static final int NANPA_COUNTRY_CODE = 1;
 
+  // The prefix that needs to be inserted in front of a Colombian landline number when dialed from
+  // a mobile phone in Colombia.
+  private static final String COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX = "3";
+
   // The PLUS_SIGN signifies the international prefix.
   static final char PLUS_SIGN = '+';
 
@@ -635,6 +639,7 @@ public class PhoneNumberUtil {
    *                string if no character used to start phone numbers (such as + or any digit) is
    *                found in the number
    */
+  // @VisibleForTesting
   static String extractPossibleNumber(String number) {
     Matcher m = VALID_START_CHAR_PATTERN.matcher(number);
     if (m.find()) {
@@ -666,6 +671,7 @@ public class PhoneNumberUtil {
    * @param number  string to be checked for viability as a phone number
    * @return        true if the number could be a phone number of some sort, otherwise false
    */
+  // @VisibleForTesting
   static boolean isViablePhoneNumber(String number) {
     if (number.length() < MIN_LENGTH_FOR_NSN) {
       return false;
@@ -917,7 +923,7 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Convenience method to enable tests to get a list of what regions the library has metadata for.
+   * Convenience method to get a list of what regions the library has metadata for.
    */
   public Set<String> getSupportedRegions() {
     return supportedRegions;
@@ -1141,6 +1147,52 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Returns a number formatted in such a way that it can be dialed from a mobile phone in a
+   * specific region. If the number cannot be reached from the region (e.g. some countries block
+   * toll-free numbers from being called outside of the country), the method returns an empty
+   * string.
+   *
+   * @param number  the phone number to be formatted
+   * @param regionCallingFrom  the region where the call is being placed
+   * @param withFormatting  whether the number should be returned with formatting symbols, such as
+   *     spaces and dashes.
+   * @return  the formatted phone number
+   */
+  public String formatNumberForMobileDialing(PhoneNumber number, String regionCallingFrom,
+                                             boolean withFormatting) {
+    String regionCode = getRegionCodeForNumber(number);
+    if (!isValidRegionCode(regionCode)) {
+      return number.hasRawInput() ? number.getRawInput() : "";
+    }
+
+    String formattedNumber;
+    // Clear the extension, as that part cannot normally be dialed together with the main number.
+    number.clearExtension();
+    PhoneNumberType numberType = getNumberType(number);
+    if ((regionCode == "CO") && (regionCallingFrom == "CO") &&
+        (numberType == PhoneNumberType.FIXED_LINE)) {
+      formattedNumber =
+          formatNationalNumberWithCarrierCode(number, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
+    } else if ((regionCode == "BR") && (regionCallingFrom == "BR") &&
+        ((numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
+         (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE))) {
+      formattedNumber = number.hasPreferredDomesticCarrierCode()
+          ? formatNationalNumberWithPreferredCarrierCode(number, "")
+          // Brazilian fixed line and mobile numbers need to be dialed with a carrier code when
+          // called within Brazil. Without that, most of the carriers won't connect the call.
+          // Because of that, we return an empty string here.
+          : "";
+    } else if (canBeInternationallyDialled(number)) {
+      return withFormatting ? format(number, PhoneNumberFormat.INTERNATIONAL)
+                            : format(number, PhoneNumberFormat.E164);
+    } else {
+      formattedNumber = (regionCallingFrom == regionCode)
+          ? format(number, PhoneNumberFormat.NATIONAL) : "";
+    }
+    return withFormatting ? formattedNumber : normalizeDigitsOnly(formattedNumber);
+  }
+
+  /**
    * Formats a phone number for out-of-country dialing purposes. If no regionCallingFrom is
    * supplied, we format the number in its INTERNATIONAL format. If the country calling code is the
    * same as that of the region where the number is from, then NATIONAL formatting will be applied.
@@ -1348,18 +1400,8 @@ public class PhoneNumberUtil {
    * @return  the national significant number of the PhoneNumber object passed in
    */
   public String getNationalSignificantNumber(PhoneNumber number) {
-    // The leading zero in the national (significant) number of an Italian phone number has a
-    // special meaning. Unlike the rest of the world, it indicates the number is a landline
-    // number. There have been plans to migrate landline numbers to start with the digit two since
-    // December 2000, but it has not yet happened.
-    // See http://en.wikipedia.org/wiki/%2B39 for more details.
-    // Other regions such as Cote d'Ivoire and Gabon use this for their mobile numbers.
-    StringBuilder nationalNumber = new StringBuilder(
-        (number.hasItalianLeadingZero() &&
-         number.isItalianLeadingZero() &&
-         isLeadingZeroPossible(number.getCountryCode()))
-        ? "0" : ""
-    );
+    // If a leading zero has been set, we prefix this now. Note this is not a national prefix.
+    StringBuilder nationalNumber = new StringBuilder(number.isItalianLeadingZero() ? "0" : "");
     nationalNumber.append(number.getNationalNumber());
     return nationalNumber.toString();
   }
@@ -1378,7 +1420,7 @@ public class PhoneNumberUtil {
         formattedNumber.insert(0, " ").insert(0, countryCallingCode).insert(0, PLUS_SIGN);
         return;
       case RFC3966:
-        formattedNumber.insert(0, "-").insert(0, countryCallingCode) .insert(0, PLUS_SIGN);
+        formattedNumber.insert(0, "-").insert(0, countryCallingCode).insert(0, PLUS_SIGN);
         return;
       case NATIONAL:
       default:
@@ -2024,6 +2066,7 @@ public class PhoneNumberUtil {
    *     only populated when keepCountryCodeSource is true.
    * @return  the country calling code extracted or 0 if none could be extracted
    */
+  // @VisibleForTesting
   int maybeExtractCountryCode(String number, PhoneMetadata defaultRegionMetadata,
                               StringBuilder nationalNumber, boolean keepRawInput,
                               PhoneNumber phoneNumber)
@@ -2131,6 +2174,7 @@ public class PhoneNumberUtil {
    *     removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the number did
    *     not seem to be in international format.
    */
+  // @VisibleForTesting
   CountryCodeSource maybeStripInternationalPrefixAndNormalize(
       StringBuilder number,
       String possibleIddPrefix) {
@@ -2168,6 +2212,7 @@ public class PhoneNumberUtil {
    * @param metadata  the metadata for the region that we think this number is from
    * @return the carrier code extracted if it is present, otherwise return an empty string.
    */
+  // @VisibleForTesting
   String maybeStripNationalPrefixAndCarrierCode(StringBuilder number, PhoneMetadata metadata) {
     String carrierCode = "";
     int numberLength = number.length();
@@ -2224,6 +2269,7 @@ public class PhoneNumberUtil {
    * @param number  the non-normalized telephone number that we wish to strip the extension from
    * @return        the phone extension
    */
+  // @VisibleForTesting
   String maybeStripExtension(StringBuilder number) {
     Matcher m = EXTN_PATTERN.matcher(number);
     // If we find a potential extension, and the number preceding this is a viable number, we assume

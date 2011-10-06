@@ -120,6 +120,7 @@ message PhoneMetadata {
   required PhoneNumberDesc voip = 8;
   required PhoneNumberDesc pager = 21;
   required PhoneNumberDesc uan = 25;
+  required PhoneNumberDesc emergency = 27;
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.
   required PhoneNumberDesc no_international_dialling = 24;

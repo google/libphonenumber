@@ -1,3 +1,17 @@
+October 6th, 2011: libphonenumber-4.0
+* Code changes
+ - New function formatNumberForMobileDialing, which attempts to format a number in
+   such a way that the call can be connected from a mobile phone. If this is
+   impossible, for example for numbers that cannot be internationally dialled,
+   then an empty string is returned.
+ - Fallback functionality to English for non-CJK languages for geocoding
+
+* Metadata changes
+ - Collecting data for emergency numbers
+ - Updates: AR, AU, BR, CN, CZ, EG, GD, IE, IL, JM, KW, KH, SD, SO, TR, UG, UZ
+ - Geocoding data changes: AO, AR, AT, BJ, BR, CD, CG, CI, CL, CN, CV, DE, ES,
+   FR, GR, GW, HU, KM, MR, MZ, NL, PL, PT, SE, ST, SZ
+
 September 13th, 2011: libphonenumber-3.9
 * Code changes
  - Enable AsYouTypeFormatter to handle long IDD and NDD.

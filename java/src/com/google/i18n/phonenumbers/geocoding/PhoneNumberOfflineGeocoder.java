@@ -69,8 +69,8 @@ public class PhoneNumberOfflineGeocoder {
   }
 
   private AreaCodeMap getPhonePrefixDescriptions(
-      int countryCallingCode, String language, String script, String region) {
-    String fileName = mappingFileProvider.getFileName(countryCallingCode, language, script, region);
+      int prefixMapKey, String language, String script, String region) {
+    String fileName = mappingFileProvider.getFileName(prefixMapKey, language, script, region);
     if (fileName.length() == 0) {
       return null;
     }
@@ -179,9 +179,25 @@ public class PhoneNumberOfflineGeocoder {
         countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
     AreaCodeMap phonePrefixDescriptions =
         getPhonePrefixDescriptions(phonePrefix, lang, script, region);
-    String description = phonePrefixDescriptions != null
+    String description = (phonePrefixDescriptions != null)
         ? phonePrefixDescriptions.lookup(number)
-        : "";
-    return description == null ? "" : description;
+        : null;
+    // When a location is not available in the requested language, fall back to English.
+    if ((description == null || description.length() == 0) && mayFallBackToEnglish(lang)) {
+      AreaCodeMap defaultMap = getPhonePrefixDescriptions(phonePrefix, "en", "", "");
+      if (defaultMap == null) {
+        return "";
+      }
+      description = defaultMap.lookup(number);
+    }
+    return description != null ? description : "";
+  }
+
+  private boolean mayFallBackToEnglish(String lang) {
+    // Don't fall back to English if the requested language is among the following:
+    // - Chinese
+    // - Japanese
+    // - Korean
+    return !lang.equals("zh") && !lang.equals("ja") && !lang.equals("ko");
   }
 }

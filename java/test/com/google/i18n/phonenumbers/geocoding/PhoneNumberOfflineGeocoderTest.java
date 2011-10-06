@@ -63,8 +63,6 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
     // a result, the country name of United States in simplified Chinese is returned.
     assertEquals("\u7F8E\u56FD",
         geocoder.getDescriptionForNumber(US_NUMBER1, Locale.SIMPLIFIED_CHINESE));
-    assertEquals("Stati Uniti",
-        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.ITALIAN));
     assertEquals("Bahamas",
         geocoder.getDescriptionForNumber(BS_NUMBER1, new Locale("en", "US")));
     assertEquals("Australia",
@@ -100,7 +98,21 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
         geocoder.getDescriptionForNumber(KO_NUMBER1, Locale.KOREAN));
     assertEquals("\uC778\uCC9C",
         geocoder.getDescriptionForNumber(KO_NUMBER2, Locale.KOREAN));
-    assertEquals("\uC81C\uC8FC",
+  }
+
+  public void testGetDescriptionForFallBack() {
+    // No fallback, as the location name for the given phone number is available in the requested
+    // language.
+    assertEquals("Kalifornien",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN));
+    // German falls back to English.
+    assertEquals("New York, NY",
+        geocoder.getDescriptionForNumber(US_NUMBER3, Locale.GERMAN));
+    // Italian falls back to English.
+    assertEquals("CA",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.ITALIAN));
+    // Korean doesn't fall back to English.
+    assertEquals("\uB300\uD55C\uBBFC\uAD6D",
         geocoder.getDescriptionForNumber(KO_NUMBER3, Locale.KOREAN));
   }
 

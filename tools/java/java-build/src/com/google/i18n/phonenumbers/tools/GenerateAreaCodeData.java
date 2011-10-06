@@ -34,6 +34,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,6 +42,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * A utility that generates the binary serialization of the area code/location mappings from
@@ -59,6 +61,12 @@ public class GenerateAreaCodeData extends Command {
   // The path to the output directory.
   private final File outputPath;
   private static final int NANPA_COUNTRY_CODE = 1;
+  // Pattern used to match the two-letter-long language code contained in the input text file path.
+  private static final Pattern LANGUAGE_IN_FILE_PATH_PATTERN =
+      Pattern.compile("(.*)(?:[a-z]{2})(/\\d+\\.txt)");
+  // Map used to store the English mappings to avoid reading the English text files multiple times.
+  private final Map<Integer /* country code */, SortedMap<Integer, String>> englishMaps =
+      new HashMap<Integer, SortedMap<Integer,String>>();
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
@@ -232,6 +240,22 @@ public class GenerateAreaCodeData extends Command {
   }
 
   /**
+   * Returns the country code extracted from the provided text file name expected as
+   * [1-9][0-9]*.txt.
+   *
+   * @throws RuntimeException if the file path is not formatted as expected
+   */
+  private static int getCountryCodeFromTextFileName(String filename) {
+    int indexOfDot = filename.indexOf('.');
+    if (indexOfDot < 1) {
+      throw new RuntimeException(
+          String.format("unexpected file name %s, expected pattern [1-9][0-9]*.txt", filename));
+    }
+    String countryCode = filename.substring(0, indexOfDot);
+    return Integer.parseInt(countryCode);
+  }
+
+  /**
    * Generates the mappings between the input text files and the output binary files.
    *
    * @throws IOException
@@ -251,18 +275,9 @@ public class GenerateAreaCodeData extends Command {
           continue;
         }
         String countryCodeFileName = countryCodeFile.getName();
-        int indexOfDot = countryCodeFileName.indexOf('.');
-        if (indexOfDot == -1) {
-          throw new RuntimeException(
-              String.format("unexpected file name %s, expected pattern .*\\.txt",
-                            countryCodeFileName));
-        }
-        String countryCode = countryCodeFileName.substring(0, indexOfDot);
-        if (!countryCode.matches("\\d+")) {
-          throw new RuntimeException("unexpected file " + countryCodeFileName);
-        }
         List<File> outputFiles = createOutputFiles(
-            countryCodeFile, Integer.parseInt(countryCode), languageDirectory.getName());
+            countryCodeFile, getCountryCodeFromTextFileName(countryCodeFileName),
+            languageDirectory.getName());
         mappings.put(countryCodeFile, outputFiles);
       }
     }
@@ -343,10 +358,105 @@ public class GenerateAreaCodeData extends Command {
   }
 
   /**
+   * Gets the English data text file path corresponding to the provided one.
+   */
+  // @VisibleForTesting
+  static String getEnglishDataPath(File inputTextFile) {
+    return LANGUAGE_IN_FILE_PATH_PATTERN.matcher(inputTextFile.getAbsolutePath()).replaceFirst(
+        "$1en$2");
+  }
+
+  /**
+   * Tests whether any prefix of the given number overlaps with any phone number prefix contained in
+   * the provided map.
+   */
+  // @VisibleForTesting
+  static boolean hasOverlappingPrefix(int number, SortedMap<Integer, String> mappings) {
+    while (number > 0) {
+      number = number / 10;
+      if (mappings.get(number) != null) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Compresses the provided non-English map according to the English map provided. For each mapping
+   * which is contained in both maps with a same description this method either:
+   * <ul>
+   *  <li> Removes from the non-English map the mapping whose prefix does not overlap with an
+   *       existing prefix in the map, or;
+   *  <li> Keeps this mapping in both maps but makes the description an empty string in the
+   *       non-English map.
+   * </ul>
+   */
+  // @VisibleForTesting
+  static void compressAccordingToEnglishData(
+      SortedMap<Integer, String> englishMap, SortedMap<Integer, String> nonEnglishMap) {
+    Iterator<Map.Entry<Integer, String>> it = nonEnglishMap.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry<Integer, String> entry = it.next();
+      int prefix = entry.getKey();
+      String englishDescription = englishMap.get(prefix);
+      if (englishDescription != null && englishDescription.equals(entry.getValue())) {
+        if (!hasOverlappingPrefix(prefix, nonEnglishMap)) {
+          it.remove();
+        } else {
+          nonEnglishMap.put(prefix, "");
+        }
+      }
+    }
+  }
+
+  /**
+   * Compresses the provided mappings according to the English data file if any.
+   *
+   * @throws IOException
+   */
+  private void makeDataFallbackToEnglish(File inputTextFile, SortedMap<Integer, String> mappings)
+      throws IOException {
+    File englishTextFile = new File(getEnglishDataPath(inputTextFile));
+    if (inputTextFile.getAbsolutePath().equals(englishTextFile.getAbsolutePath()) ||
+        !englishTextFile.exists()) {
+      return;
+    }
+    int countryCode = getCountryCodeFromTextFileName(inputTextFile.getName());
+    SortedMap<Integer, String> englishMap = englishMaps.get(countryCode);
+    if (englishMap == null) {
+      FileInputStream englishFileInputStream = null;
+      try {
+        englishFileInputStream = new FileInputStream(englishTextFile);
+        englishMap = readMappingsFromTextFile(englishFileInputStream);
+        englishMaps.put(countryCode, englishMap);
+      } finally {
+        closeFile(englishFileInputStream);
+      }
+    }
+    compressAccordingToEnglishData(englishMap, mappings);
+  }
+
+  /**
+   * Removes the empty-description mappings in the provided map if the language passed-in is "en".
+   */
+  // @VisibleForTesting
+  static void removeEmptyEnglishMappings(SortedMap<Integer, String> map, String lang) {
+    if (!lang.equals("en")) {
+      return;
+    }
+    Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry<Integer, String> mapping = it.next();
+      if (mapping.getValue().isEmpty()) {
+        it.remove();
+      }
+    }
+  }
+
+  /**
    * Runs the area code data generator.
    *
    * @throws IOException
-   * @throws FileNotFoundException
    */
   public void run() throws IOException {
     Map<File, List<File>> inputOutputMappings = createInputOutputMappings();
@@ -361,6 +471,8 @@ public class GenerateAreaCodeData extends Command {
         List<File> outputBinaryFiles = inputOutputMapping.getValue();
         fileInputStream = new FileInputStream(textFile);
         SortedMap<Integer, String> mappings = readMappingsFromTextFile(fileInputStream);
+        removeEmptyEnglishMappings(mappings, textFile.getParentFile().getName());
+        makeDataFallbackToEnglish(textFile, mappings);
         Map<File, SortedMap<Integer, String>> mappingsForFiles =
             splitMap(mappings, outputBinaryFiles);
 

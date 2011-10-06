@@ -430,6 +430,20 @@ public final class Phonemetadata {
       return this;
     }
 
+    // required PhoneNumberDesc emergency = 27;
+    private boolean hasEmergency;
+    private PhoneNumberDesc emergency_ = null;
+    public boolean hasEmergency() { return hasEmergency; }
+    public PhoneNumberDesc getEmergency() { return emergency_; }
+    public PhoneMetadata setEmergency(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasEmergency = true;
+      emergency_ = value;
+      return this;
+    }
+
     // required PhoneNumberDesc noInternationalDialling = 24;
     private boolean hasNoInternationalDialling;
     private PhoneNumberDesc noInternationalDialling_ = null;
@@ -660,6 +674,10 @@ public final class Phonemetadata {
       if (hasUan) {
         uan_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasEmergency);
+      if (hasEmergency) {
+        emergency_.writeExternal(objectOutput);
+      }
       objectOutput.writeBoolean(hasNoInternationalDialling);
       if (hasNoInternationalDialling) {
         noInternationalDialling_.writeExternal(objectOutput);
@@ -778,6 +796,12 @@ public final class Phonemetadata {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
         setUan(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setEmergency(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
