@@ -17,6 +17,8 @@
 #ifndef I18N_PHONENUMBERS_REGEXP_ADAPTER_RE2_H_
 #define I18N_PHONENUMBERS_REGEXP_ADAPTER_RE2_H_
 
+#include <string>
+
 #include "phonenumbers/regexp_adapter.h"
 
 namespace i18n {

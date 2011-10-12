@@ -20,6 +20,7 @@
 #ifndef I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
 #define I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
 
+#include <stddef.h>
 #include <list>
 #include <map>
 #include <set>

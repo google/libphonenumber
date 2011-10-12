@@ -24,8 +24,12 @@
 #error phonenumbermatcher depends on ICU (i.e. USE_ICU_REGEXP must be set)
 #endif  // USE_ICU_REGEXP
 
+#include <ctype.h>
 #include <limits>
+#include <stddef.h>
 #include <string>
+#include <vector>
+
 #include <unicode/uchar.h>
 
 #include "base/logging.h"

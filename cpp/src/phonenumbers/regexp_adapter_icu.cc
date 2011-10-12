@@ -17,6 +17,7 @@
 
 #include "phonenumbers/regexp_adapter_icu.h"
 
+#include <stddef.h>
 #include <string>
 
 #include <unicode/regex.h>

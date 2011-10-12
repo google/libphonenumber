@@ -107,6 +107,10 @@ class PhoneNumberUtilTest : public testing::Test {
     return ExactlySameAs(expected_number, actual_number);
   }
 
+  bool ContainsOnlyValidDigits(const string& s) const {
+    return phone_util_.ContainsOnlyValidDigits(s);
+  }
+
   void GetNddPrefixForRegion(const string& region,
                              bool strip_non_digits,
                              string* ndd_prefix) const {
@@ -117,6 +121,15 @@ class PhoneNumberUtilTest : public testing::Test {
 
   const PhoneNumberUtil& phone_util_;
 };
+
+TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
+  EXPECT_TRUE(ContainsOnlyValidDigits(""));
+  EXPECT_TRUE(ContainsOnlyValidDigits("2"));
+  EXPECT_TRUE(ContainsOnlyValidDigits("25"));
+  EXPECT_TRUE(ContainsOnlyValidDigits("\xEF\xBC\x96" /* "６" */));
+  EXPECT_FALSE(ContainsOnlyValidDigits("a"));
+  EXPECT_FALSE(ContainsOnlyValidDigits("2a"));
+}
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   set<string> regions;

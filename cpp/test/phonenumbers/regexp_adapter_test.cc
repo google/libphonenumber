@@ -22,7 +22,6 @@
 
 #include <gtest/gtest.h>
 
-#include "base/basictypes.h"
 #include "base/memory/scoped_ptr.h"
 #include "phonenumbers/stl_util.h"
 #include "phonenumbers/stringutil.h"
