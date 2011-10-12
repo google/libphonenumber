@@ -99,6 +99,10 @@ scoped_ptr<map<char32, char> > alpha_phone_mappings;
 // as "-" and " ".
 scoped_ptr<map<char32, char> > all_plus_number_grouping_symbols;
 
+// The prefix that needs to be inserted in front of a Colombian landline
+// number when dialed from a mobile phone in Colombia.
+const char kColombiaMobileToFixedLinePrefix[] = "3";
+
 // The kPlusSign signifies the international prefix.
 const char kPlusSign[] = "+";
 
@@ -985,6 +989,56 @@ void PhoneNumberUtil::FormatNationalNumberWithPreferredCarrierCode(
           ? number.preferred_domestic_carrier_code()
           : fallback_carrier_code,
       formatted_number);
+}
+
+void PhoneNumberUtil::FormatNumberForMobileDialing(
+    const PhoneNumber& number,
+    const string& calling_from,
+    bool with_formatting,
+    string* formatted_number) const {
+  string region_code;
+  GetRegionCodeForNumber(number, &region_code);
+  if (!IsValidRegionCode(region_code)) {
+    formatted_number->assign(number.has_raw_input() ? number.raw_input() : "");
+    return;
+  }
+
+  // Clear the extension, as that part cannot normally be dialed together with
+  // the main number.
+  PhoneNumber number_no_extension(number);
+  number_no_extension.clear_extension();
+  PhoneNumberType number_type = GetNumberType(number_no_extension);
+  if ((region_code == "CO") && (calling_from == "CO") &&
+      (number_type == FIXED_LINE)) {
+      FormatNationalNumberWithCarrierCode(
+          number_no_extension, kColombiaMobileToFixedLinePrefix,
+          formatted_number);
+  } else if ((region_code == "BR") && (calling_from == "BR") &&
+      ((number_type == FIXED_LINE) || (number_type == MOBILE) ||
+       (number_type == FIXED_LINE_OR_MOBILE))) {
+    if (number_no_extension.has_preferred_domestic_carrier_code()) {
+      FormatNationalNumberWithPreferredCarrierCode(number_no_extension, "",
+                                                   formatted_number);
+    } else {
+      // Brazilian fixed line and mobile numbers need to be dialed with a
+      // carrier code when called within Brazil. Without that, most of the
+      // carriers won't connect the call. Because of that, we return an empty
+      // string here.
+      formatted_number->assign("");
+    }
+  } else if (CanBeInternationallyDialled(number_no_extension)) {
+    with_formatting
+        ? Format(number_no_extension, INTERNATIONAL, formatted_number)
+        : Format(number_no_extension, E164, formatted_number);
+    return;
+  } else if (calling_from == region_code) {
+    Format(number_no_extension, NATIONAL, formatted_number);
+  } else {
+    formatted_number->assign("");
+  }
+  if (!with_formatting) {
+    NormalizeDigitsOnly(formatted_number);
+  }
 }
 
 void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
@@ -2255,6 +2309,21 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
 AsYouTypeFormatter* PhoneNumberUtil::GetAsYouTypeFormatter(
     const string& region_code) const {
   return new AsYouTypeFormatter(region_code);
+}
+
+bool PhoneNumberUtil::CanBeInternationallyDialled(
+    const PhoneNumber& number) const {
+  string region_code;
+  GetRegionCodeForNumber(number, &region_code);
+  string national_significant_number;
+  GetNationalSignificantNumber(number, &national_significant_number);
+  if (!HasValidRegionCode(region_code, number.country_code(),
+                          national_significant_number)) {
+    return true;
+  }
+  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
+  return !IsNumberMatchingDesc(
+      national_significant_number, metadata->no_international_dialling());
 }
 
 }  // namespace phonenumbers

@@ -298,6 +298,16 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& fallback_carrier_code,
       string* formatted_number) const;
 
+  // Returns a number formatted in such a way that it can be dialed from a
+  // mobile phone in a specific region. If the number cannot be reached from
+  // the region (e.g. some countries block toll-free numbers from being called
+  // outside of the country), the method returns an empty string.
+  void FormatNumberForMobileDialing(
+      const PhoneNumber& number,
+      const string& region_calling_from,
+      bool with_formatting,
+      string* formatted_number) const;
+
   // Formats a phone number for out-of-country dialing purposes.
   //
   // Note this function takes care of the case for calling inside of NANPA
@@ -674,6 +684,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
+
+  // Returns true if the number can only be dialled from within the region. If
+  // unknown, or the number can be dialled from outside the region as well,
+  // returns false. Does not check the number is a valid number.
+  bool CanBeInternationallyDialled(const PhoneNumber& number) const;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);
 };
