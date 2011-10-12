@@ -644,12 +644,12 @@ TEST_F(PhoneNumberMatcherTest,
   const string& region = RegionCode::US();
   PhoneNumber number1;
   number1.set_country_code(phone_util_.GetCountryCodeForRegion(region));
-  number1.set_national_number(6502534561);
+  number1.set_national_number(6502534561ULL);
   PhoneNumberMatch match1(5, "650-253-4561", number1);
 
   PhoneNumber number2;
   number2.set_country_code(phone_util_.GetCountryCodeForRegion(region));
-  number2.set_national_number(4552343451);
+  number2.set_national_number(4552343451ULL);
   PhoneNumberMatch match2(21, "455-234-3451", number2);
 
   PhoneNumberMatcher matcher(
@@ -872,12 +872,12 @@ TEST_F(PhoneNumberMatcherTest, Sequences) {
 
   PhoneNumber number1;
   number1.set_country_code(phone_util_.GetCountryCodeForRegion(region));
-  number1.set_national_number(33316005);
+  number1.set_national_number(33316005ULL);
   PhoneNumberMatch match1(5, "033316005", number1);
 
   PhoneNumber number2;
   number2.set_country_code(phone_util_.GetCountryCodeForRegion(region));
-  number2.set_national_number(32316005);
+  number2.set_national_number(32316005ULL);
   PhoneNumberMatch match2(19, "032316005", number2);
 
   PhoneNumberMatcher matcher(
