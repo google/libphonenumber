@@ -59,12 +59,14 @@ public class PhoneNumberOfflineGeocoder {
   private void loadMappingFileProvider() {
     InputStream source =
         PhoneNumberOfflineGeocoder.class.getResourceAsStream(phonePrefixDataDirectory + "config");
-    ObjectInputStream in;
+    ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
       mappingFileProvider.readExternal(in);
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
+    } finally {
+      close(in);
     }
   }
 
@@ -83,7 +85,7 @@ public class PhoneNumberOfflineGeocoder {
   private void loadAreaCodeMapFromFile(String fileName) {
     InputStream source =
         PhoneNumberOfflineGeocoder.class.getResourceAsStream(phonePrefixDataDirectory + fileName);
-    ObjectInputStream in;
+    ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
       AreaCodeMap map = new AreaCodeMap();
@@ -91,6 +93,18 @@ public class PhoneNumberOfflineGeocoder {
       availablePhonePrefixMaps.put(fileName, map);
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
+    } finally {
+      close(in);
+    }
+  }
+
+  private static void close(InputStream in) {
+    if (in != null) {
+      try {
+        in.close();
+      } catch (IOException e) {
+        LOGGER.log(Level.WARNING, e.toString());
+      }
     }
   }
 
