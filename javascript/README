@@ -33,7 +33,7 @@ project:
     have changed:
   a.  Manually update the .pb.js files with the changes of the .proto files.
   b.  Manually update the toJsArray() Java methods in
-      tools/java/java-build/src/com/google/i18n/phonenumbers/tools/BuildMetadataJsonFromXml.java
+      tools/java/java-build/src/com/google/i18n/phonenumbers/BuildMetadataJsonFromXml.java
   c.  Build tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar
       by running:
       mvn -f tools/java/java-build/pom.xml package

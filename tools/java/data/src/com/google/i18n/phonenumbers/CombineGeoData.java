@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

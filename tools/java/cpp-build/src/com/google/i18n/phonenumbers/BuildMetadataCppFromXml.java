@@ -14,9 +14,10 @@
  *  limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

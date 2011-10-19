@@ -84,7 +84,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.google.i18n.phonenumbers.tools.EntryPoint</mainClass>
+              <mainClass>com.google.i18n.phonenumbers.EntryPoint</mainClass>
             </manifest>
           </archive>
         </configuration>

@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers;
 
 /**
  * Abstract class defining a common interface for commands provided by build tools (e.g: commands to

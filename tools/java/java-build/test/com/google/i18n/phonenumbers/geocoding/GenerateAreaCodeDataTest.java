@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers.geocoding;
 
-import com.google.i18n.phonenumbers.geocoding.AreaCodeMap;
-import com.google.i18n.phonenumbers.geocoding.MappingFileProvider;
-import com.google.i18n.phonenumbers.tools.GenerateAreaCodeData.AreaCodeMappingHandler;
+import com.google.i18n.phonenumbers.geocoding.GenerateAreaCodeData.AreaCodeMappingHandler;
 
 import junit.framework.TestCase;
 

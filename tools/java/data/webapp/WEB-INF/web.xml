@@ -6,7 +6,7 @@
   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <servlet-name>CombineGeoDataServlet</servlet-name>
-    <servlet-class>com.google.i18n.phonenumbers.tools.CombineGeoDataServlet</servlet-class>
+    <servlet-class>com.google.i18n.phonenumbers.CombineGeoDataServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CombineGeoDataServlet</servlet-name>

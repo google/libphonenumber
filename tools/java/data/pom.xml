@@ -69,7 +69,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.google.i18n.phonenumbers.tools.CombineGeoData</mainClass>
+              <mainClass>com.google.i18n.phonenumbers.CombineGeoData</mainClass>
             </manifest>
           </archive>
         </configuration>

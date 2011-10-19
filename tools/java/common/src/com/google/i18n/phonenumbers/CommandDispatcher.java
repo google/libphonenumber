@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers;
 
 /**
  * This class is designed to execute a requested command among a set of provided commands.

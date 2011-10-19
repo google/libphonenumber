@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.google.i18n.phonenumbers.tools.CombineGeoData.Range;
+import com.google.i18n.phonenumbers.CombineGeoData.Range;
 
 import org.junit.Test;
 

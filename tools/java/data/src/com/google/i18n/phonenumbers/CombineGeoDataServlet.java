@@ -16,7 +16,7 @@
  * @author Philippe Liard
  */
 
-package com.google.i18n.phonenumbers.tools;
+package com.google.i18n.phonenumbers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
