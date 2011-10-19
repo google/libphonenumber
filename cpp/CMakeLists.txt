@@ -248,7 +248,10 @@ add_metadata_gen_target (
   "test_metadata"
 )
 list (APPEND TESTING_LIBRARY_SOURCES "src/phonenumbers/test_metadata.cc")
-add_definitions ("-Wall -Werror")
+
+if (NOT WIN32)
+  add_definitions ("-Wall -Werror")
+endif ()
 
 include_directories ("src")
 
@@ -322,10 +325,13 @@ endif ()
 # Build the testing binary.
 include_directories ("test")
 add_executable (libphonenumber_test ${TEST_SOURCES})
-target_link_libraries (
-  libphonenumber_test
-  phonenumber_testing ${GTEST_LIB} pthread
-)
+set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
+
+if (NOT WIN32)
+  list (APPEND TEST_LIBS pthread)
+endif ()
+
+target_link_libraries (libphonenumber_test ${TEST_LIBS})
 add_custom_target(test COMMAND libphonenumber_test DEPENDS libphonenumber_test)
 
 # Install rules.
