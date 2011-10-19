@@ -16,8 +16,6 @@
 
 package com.google.i18n.phonenumbers.geocoding;
 
-import com.google.i18n.phonenumbers.Command;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -54,59 +52,64 @@ import java.util.regex.Pattern;
  *
  * @author Philippe Liard
  */
-public class GenerateAreaCodeData extends Command {
+public class GenerateAreaCodeData {
   // The path to the input directory containing the languages directories.
   private final File inputPath;
-  // The path to the output directory.
-  private final File outputPath;
   private static final int NANPA_COUNTRY_CODE = 1;
   // Pattern used to match the two-letter-long language code contained in the input text file path.
   private static final Pattern LANGUAGE_IN_FILE_PATH_PATTERN =
       Pattern.compile("(.*)(?:[a-z]{2})(/\\d+\\.txt)");
   // Map used to store the English mappings to avoid reading the English text files multiple times.
   private final Map<Integer /* country code */, SortedMap<Integer, String>> englishMaps =
-      new HashMap<Integer, SortedMap<Integer,String>>();
+      new HashMap<Integer, SortedMap<Integer, String>>();
+  // The IO Handler used to output the generated binary files.
+  private final IOHandler ioHandler;
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
   /**
-   * Empty constructor used by the EntryPoint class.
+   * Abstracts the way the generated binary files are created and written.
    */
-  public GenerateAreaCodeData() {
-    inputPath = null;
-    outputPath = null;
+  abstract static class IOHandler {
+    /**
+     * Adds the provided file to the global output that can be for example a JAR.
+     *
+     * @throws IOException
+     */
+    abstract void addFileToOutput(File file) throws IOException;
+
+    /**
+     * Creates a new file from the provided path.
+     */
+    abstract File createFile(String path);
+
+    /**
+     * Releases the resources used by the underlying implementation if any.
+     */
+    abstract void close();
+
+    /**
+     * Closes the provided file and logs any potential IOException.
+     */
+    void closeFile(Closeable closeable) {
+      if (closeable == null) {
+        return;
+      }
+      try {
+        closeable.close();
+      } catch (IOException e) {
+        LOGGER.log(Level.WARNING, e.getMessage());
+      }
+    }
   }
 
-  public GenerateAreaCodeData(File inputPath, File outputPath) throws IOException {
+  public GenerateAreaCodeData(File inputPath, IOHandler ioHandler) throws IOException {
     if (!inputPath.isDirectory()) {
       throw new IOException("The provided input path does not exist: " +
                              inputPath.getAbsolutePath());
     }
-    if (outputPath.exists()) {
-      if (!outputPath.isDirectory()) {
-        throw new IOException("Expected directory: " + outputPath.getAbsolutePath());
-      }
-    } else {
-      if (!outputPath.mkdirs()) {
-        throw new IOException("Could not create directory " + outputPath.getAbsolutePath());
-      }
-    }
     this.inputPath = inputPath;
-    this.outputPath = outputPath;
-  }
-
-  /**
-   * Closes the provided file and log any potential IOException.
-   */
-  private static void closeFile(Closeable closeable) {
-    if (closeable == null) {
-      return;
-    }
-    try {
-      closeable.close();
-    } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.getMessage());
-    }
+    this.ioHandler = ioHandler;
   }
 
   /**
@@ -228,12 +231,10 @@ public class GenerateAreaCodeData extends Command {
         }
       });
       for (int prefix : phonePrefixes) {
-        outputFiles.add(
-            new File(outputPath, generateBinaryFilename(prefix, language)));
+        outputFiles.add(ioHandler.createFile(generateBinaryFilename(prefix, language)));
       }
     } else {
-      outputFiles.add(
-          new File(outputPath, generateBinaryFilename(countryCode, language)));
+      outputFiles.add(ioHandler.createFile(generateBinaryFilename(countryCode, language)));
     }
     return outputFiles;
   }
@@ -429,7 +430,7 @@ public class GenerateAreaCodeData extends Command {
         englishMap = readMappingsFromTextFile(englishFileInputStream);
         englishMaps.put(countryCode, englishMap);
       } finally {
-        closeFile(englishFileInputStream);
+        ioHandler.closeFile(englishFileInputStream);
       }
     }
     compressAccordingToEnglishData(englishMap, mappings);
@@ -483,8 +484,9 @@ public class GenerateAreaCodeData extends Command {
             fileOutputStream = new FileOutputStream(outputBinaryFile);
             writeToBinaryFile(mappingsForFile.getValue(), fileOutputStream);
             addConfigurationMapping(availableDataFiles, outputBinaryFile);
+            ioHandler.addFileToOutput(outputBinaryFile);
           } finally {
-            closeFile(fileOutputStream);
+            ioHandler.closeFile(fileOutputStream);
           }
         }
       } catch (RuntimeException e) {
@@ -494,44 +496,21 @@ public class GenerateAreaCodeData extends Command {
       } catch (IOException e) {
         LOGGER.log(Level.SEVERE, e.getMessage());
       } finally {
-        closeFile(fileInputStream);
-        closeFile(fileOutputStream);
+        ioHandler.closeFile(fileInputStream);
+        ioHandler.closeFile(fileOutputStream);
       }
     }
     // Output the binary configuration file mapping country codes to languages.
     FileOutputStream fileOutputStream = null;
     try {
-      File configFile = new File(outputPath, "config");
+      File configFile = ioHandler.createFile("config");
       fileOutputStream = new FileOutputStream(configFile);
       outputBinaryConfiguration(availableDataFiles, fileOutputStream);
+      ioHandler.addFileToOutput(configFile);
     } finally {
-      closeFile(fileOutputStream);
+      ioHandler.closeFile(fileOutputStream);
+      ioHandler.close();
     }
     LOGGER.log(Level.INFO, "Geocoding data successfully generated.");
-  }
-
-  @Override
-  public String getCommandName() {
-    return "GenerateAreaCodeData";
-  }
-
-  @Override
-  public boolean start() {
-    String[] args = getArgs();
-
-    if (args.length != 3) {
-      LOGGER.log(Level.SEVERE,
-                 "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output/directory");
-      return false;
-    }
-    try {
-      GenerateAreaCodeData generateAreaCodeData =
-          new GenerateAreaCodeData(new File(args[1]), new File(args[2]));
-      generateAreaCodeData.run();
-    } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, e.getMessage());
-      return false;
-    }
-    return true;
   }
 }
