@@ -142,7 +142,7 @@
     </territory>
 
     <!-- Brazil -->
-    <territory id="BR" countryCode="55" nationalPrefix="0">
+    <territory id="BR" countryCode="55" internationalPrefix="0014" nationalPrefix="0">
       <emergency>
         <nationalNumberPattern>
           19[023]|
