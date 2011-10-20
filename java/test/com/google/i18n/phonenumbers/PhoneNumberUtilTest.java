@@ -442,7 +442,7 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("1 650 253 0000",
                  phoneUtil.formatOutOfCountryCallingNumber(US_NUMBER, RegionCode.BS));
 
-    assertEquals("0~0 1 650 253 0000",
+    assertEquals("00 1 650 253 0000",
                  phoneUtil.formatOutOfCountryCallingNumber(US_NUMBER, RegionCode.PL));
 
     assertEquals("011 44 7912 345 678",
@@ -714,6 +714,15 @@ public class PhoneNumberUtilTest extends TestCase {
 
     PhoneNumber number5 = phoneUtil.parse("+442087654321", RegionCode.GB);
     assertEquals("(020) 8765 4321", phoneUtil.formatInOriginalFormat(number5, RegionCode.GB));
+
+    // Invalid numbers should be formatted using its raw input when that is available. Note area
+    // codes starting with 7 are intentionally excluded in the test metadata for testing purposes.
+    PhoneNumber number6 = phoneUtil.parseAndKeepRawInput("7345678901", RegionCode.US);
+    assertEquals("7345678901", phoneUtil.formatInOriginalFormat(number6, RegionCode.US));
+
+    // When the raw input is unavailable, format as usual.
+    PhoneNumber number7 = phoneUtil.parse("7345678901", RegionCode.US);
+    assertEquals("734 567 8901", phoneUtil.formatInOriginalFormat(number7, RegionCode.US));
   }
 
   public void testIsPremiumRate() {
@@ -972,7 +981,7 @@ public class PhoneNumberUtilTest extends TestCase {
     adNumber.setCountryCode(376).setNationalNumber(13L);
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_SHORT,
                  phoneUtil.isPossibleNumberWithReason(adNumber));
-    adNumber.setCountryCode(376).setNationalNumber(1234567890123456L);
+    adNumber.setCountryCode(376).setNationalNumber(12345678901234567L);
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_LONG,
                  phoneUtil.isPossibleNumberWithReason(adNumber));
   }

@@ -325,7 +325,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // number is parsed from. The original format is embedded in the
   // country_code_source field of the PhoneNumber object passed in. If such
   // information is missing, the number will be formatted into the NATIONAL
-  // format by default.
+  // format by default. When the number is an invalid number, the method returns
+  // the raw input when it is available.
   void FormatInOriginalFormat(const PhoneNumber& number,
                               const string& region_calling_from,
                               string* formatted_number) const;
@@ -548,7 +549,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   // The minimum and maximum length of the national significant number.
   static const size_t kMinLengthForNsn = 3;
-  static const size_t kMaxLengthForNsn = 15;
+  // The ITU says the maximum length should be 15, but we have found longer
+  // numbers in Germany.
+  static const size_t kMaxLengthForNsn = 16;
   // The maximum length of the country calling code.
   static const size_t kMaxLengthCountryCode = 3;
 

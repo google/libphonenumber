@@ -141,6 +141,18 @@
       </premiumRate>
     </territory>
 
+    <!-- Brazil -->
+    <territory id="BR" countryCode="55" nationalPrefix="0">
+      <emergency>
+        <nationalNumberPattern>
+          19[023]|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>190</exampleNumber>
+      </emergency>
+    </territory>
+
     <!-- Bahamas -->
     <territory id="BS" countryCode="1" internationalPrefix="011"
                nationalPrefix="1">
@@ -565,7 +577,7 @@
 
     <!-- Poland -->
     <!-- http://en.wikipedia.org/wiki/%2B48 -->
-    <territory id="PL" countryCode="48" internationalPrefix="0~0"
+    <territory id="PL" countryCode="48" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
@@ -704,6 +716,14 @@
         <nationalNumberPattern>900\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          119|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Mayotte -->

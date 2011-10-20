@@ -543,7 +543,7 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryCallingNumber) {
   EXPECT_EQ("1 650 253 0000", formatted_number);
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::PL(),
                                               &formatted_number);
-  EXPECT_EQ("0~0 1 650 253 0000", formatted_number);
+  EXPECT_EQ("00 1 650 253 0000", formatted_number);
 
   test_number.set_country_code(44);
   test_number.set_national_number(7912345678ULL);
@@ -1280,7 +1280,7 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumberWithReason) {
   EXPECT_EQ(PhoneNumberUtil::TOO_SHORT,
             phone_util_.IsPossibleNumberWithReason(ad_number));
   ad_number.set_country_code(376);
-  ad_number.set_national_number(1234567890123456ULL);
+  ad_number.set_national_number(12345678901234567ULL);
   EXPECT_EQ(PhoneNumberUtil::TOO_LONG,
             phone_util_.IsPossibleNumberWithReason(ad_number));
 }
@@ -1421,6 +1421,27 @@ TEST_F(PhoneNumberUtilTest, FormatUsingOriginalNumberFormat) {
   phone_util_.FormatInOriginalFormat(phone_number, RegionCode::GB(),
                                      &formatted_number);
   EXPECT_EQ("(020) 8765 4321", formatted_number);
+
+  // Invalid numbers should be formatted using its raw input when that is
+  // available. Note area codes starting with 7 are intentionally excluded in
+  // the test metadata for testing purposes.
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.ParseAndKeepRawInput("7345678901", RegionCode::US(),
+                                             &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, RegionCode::US(),
+                                     &formatted_number);
+  EXPECT_EQ("7345678901", formatted_number);
+
+  // When the raw input is unavailable, format as usual.
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("7345678901", RegionCode::US(), &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, RegionCode::US(),
+                                     &formatted_number);
+  EXPECT_EQ("734 567 8901", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, IsPremiumRate) {

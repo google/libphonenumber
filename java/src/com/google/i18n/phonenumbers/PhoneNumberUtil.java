@@ -59,7 +59,8 @@ public class PhoneNumberUtil {
   static final int REGEX_FLAGS = Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE;
   // The minimum and maximum length of the national significant number.
   private static final int MIN_LENGTH_FOR_NSN = 3;
-  static final int MAX_LENGTH_FOR_NSN = 15;
+  // The ITU says the maximum length should be 15, but we have found longer numbers in Germany.
+  static final int MAX_LENGTH_FOR_NSN = 16;
   // The maximum length of the country calling code.
   static final int MAX_LENGTH_COUNTRY_CODE = 3;
   static final String META_DATA_FILE_PREFIX =
@@ -651,7 +652,6 @@ public class PhoneNumberUtil {
    *                string if no character used to start phone numbers (such as + or any digit) is
    *                found in the number
    */
-  // @VisibleForTesting
   static String extractPossibleNumber(String number) {
     Matcher m = VALID_START_CHAR_PATTERN.matcher(number);
     if (m.find()) {
@@ -1280,7 +1280,8 @@ public class PhoneNumberUtil {
    * Formats a phone number using the original phone number format that the number is parsed from.
    * The original format is embedded in the country_code_source field of the PhoneNumber object
    * passed in. If such information is missing, the number will be formatted into the NATIONAL
-   * format by default.
+   * format by default. When the number is an invalid number, the method returns the raw input when
+   * it is available.
    *
    * @param number  the phone number that needs to be formatted in its original number format
    * @param regionCallingFrom  the region whose IDD needs to be prefixed if the original number
@@ -1288,6 +1289,9 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number in its original number format
    */
   public String formatInOriginalFormat(PhoneNumber number, String regionCallingFrom) {
+    if (number.hasRawInput() && !isValidNumber(number)) {
+      return number.getRawInput();
+    }
     if (!number.hasCountryCodeSource()) {
       return format(number, PhoneNumberFormat.NATIONAL);
     }
@@ -2203,13 +2207,6 @@ public class PhoneNumberUtil {
     }
     // Attempt to parse the first digits as an international prefix.
     Pattern iddPattern = regexCache.getPatternForRegex(possibleIddPrefix);
-    if (parsePrefixAsIdd(iddPattern, number)) {
-      normalize(number);
-      return CountryCodeSource.FROM_NUMBER_WITH_IDD;
-    }
-    // If still not found, then try and normalize the number and then try again. This shouldn't be
-    // done before, since non-numeric characters (+ and ~) may legally be in the international
-    // prefix.
     normalize(number);
     return parsePrefixAsIdd(iddPattern, number)
            ? CountryCodeSource.FROM_NUMBER_WITH_IDD

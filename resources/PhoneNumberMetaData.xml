@@ -31,6 +31,9 @@
 
      Country code, international and national prefix information main source:
      http://www.itu.int/publ/T-SP-E.164C-2010/en
+
+     Emergency numbers Wikipedia source:
+     http://en.wikipedia.org/wiki/Emergency_telephone_number
 -->
 
 <!DOCTYPE phoneNumberMetadata [
@@ -219,6 +222,14 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>700012345</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          99[789]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Afghanistan -->
@@ -249,6 +260,16 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>701234567</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            02|
+            19
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>119</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Antigua and Barbuda -->
@@ -500,6 +521,11 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>70012345</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>12[789]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>129</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Armenia -->
@@ -591,11 +617,19 @@
       <shortCode>
         <nationalNumberPattern>
           8[1-7]\d{2}|
-          1\d{2}
+          1(?:
+            0[04-9]|
+            [1-9]\d
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>8711</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>10[123]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>102</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Netherlands Antilles -->
@@ -934,6 +968,16 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>8101234567</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[017]|
+            28
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>101</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- American Samoa -->
@@ -1179,6 +1223,17 @@
         <possibleNumberPattern>\d{5,13}</possibleNumberPattern>
         <exampleNumber>50123</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            [12]2|
+            33|
+            44
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Australia -->
@@ -1356,6 +1411,14 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>550123456</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          000|
+          112
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Aruba -->
@@ -1669,6 +1732,11 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>81123456</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>12[234]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>122</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Barbados -->
@@ -1728,6 +1796,11 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>[235]11</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>211</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Bangladesh -->
@@ -1917,6 +1990,11 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>8001234567</exampleNumber>
       </tollFree>
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Belgium -->
@@ -2012,6 +2090,16 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>87123456</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[01]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Burkina Faso -->
@@ -2055,8 +2143,8 @@
           7(?:
             [02-68]\d|
             1[0-4689]|
-            7[0-3]|
-            9[0-6]
+            7[0-6]|
+            9[0-689]
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>70123456</exampleNumber>
@@ -2175,6 +2263,17 @@
         <nationalNumberPattern>700\d{5}</nationalNumberPattern>
         <exampleNumber>70012345</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            50|
+            6[06]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Bahrain -->
@@ -2250,6 +2349,11 @@
         <nationalNumberPattern>84\d{6}</nationalNumberPattern>
         <exampleNumber>84123456</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Burundi -->
@@ -2460,8 +2564,7 @@
 
     <!-- Brunei Darussalam -->
     <!-- http://www.itu.int/oth/T020200001F/en -->
-    <territory id="BN" countryCode="673" internationalPrefix="00"
-               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+    <territory id="BN" countryCode="673" internationalPrefix="00">
       <!-- Format is from http://aiti.gov.bn/contact.html -->
       <availableFormats>
         <numberFormat pattern="([2-578]\d{2})(\d{4})">
@@ -2534,6 +2637,11 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>71234567</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>11[089]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>110</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Brazil -->
@@ -2638,6 +2746,18 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>40041234</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            28|
+            9[023]
+          )|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>190</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Bahamas -->
@@ -2872,8 +2992,9 @@
     <!-- Belarus -->
     <!-- http://eng.beltelecom.by/info/numbering/ -->
     <!-- Information on national prefix provided by a Belarussian person. -->
-    <territory id="BY" countryCode="375" internationalPrefix="8~10"
-               nationalPrefixForParsing="80?" nationalPrefix="8">
+    <territory id="BY" countryCode="375" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefixForParsing="80?"
+               nationalPrefix="8">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="$NP 0$FG"
           pattern="([1-4]\d)(\d{3})(\d{4})">
@@ -2990,6 +3111,16 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9021234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[123]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Belize -->
@@ -3172,6 +3303,14 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Cocos Islands. -->
@@ -3394,6 +3533,16 @@
         <nationalNumberPattern>878\d{6}</nationalNumberPattern>
         <exampleNumber>878123456</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            1[278]|
+            44
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Côte d'Ivoire -->
@@ -3596,6 +3745,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>441234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>13[123]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>133</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Cameroon -->
@@ -3882,10 +4036,11 @@
             )|
             7(?:
               01|
-              [157]\d|
+              [17]\d|
               2[248]|
               3[04-9]|
               4[3-6]|
+              5[0-3689]|
               6[2368]|
               9[02-9]
             )|
@@ -3915,13 +4070,12 @@
         <exampleNumber>1012345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 145, 152, 157 and 182 from http://en.wikipedia.org/wiki/+86#Mobile_phones -->
         <nationalNumberPattern>
           1(?:
             3\d|
             4[57]|
             5[0-35-9]|
-            8[025-9]
+            8[0235-9]
           )\d{8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
@@ -3950,6 +4104,16 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>4001234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            1[09]|
+            20
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>119</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Colombia -->
@@ -4045,6 +4209,18 @@
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
         <exampleNumber>19001234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            1[29]|
+            23|
+            32|
+            56
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Costa Rica -->
@@ -4134,12 +4310,19 @@
               1[78]|
               77
             )|
-          )|
-          911
+          )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
         <exampleNumber>1022</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Cuba -->
@@ -4274,6 +4457,16 @@
         </nationalNumberPattern>
         <exampleNumber>77123456</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            99
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Christmas Islands. -->
@@ -4407,6 +4600,16 @@
         <nationalNumberPattern>9[17]0\d{6}</nationalNumberPattern>
         <exampleNumber>910123456</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            5[058]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Germany -->
@@ -4424,7 +4627,7 @@
         </numberFormat>
         <!-- The order of the rules on 3-5 digits area code matter as fallback is used here. -->
         <!-- 3 digit area codes. -->
-        <numberFormat pattern="(\d{3})(\d{3,10})">
+        <numberFormat pattern="(\d{3})(\d{3,11})">
           <leadingDigits>
             2(?:
               \d1|
@@ -4446,7 +4649,7 @@
           <format>$1/$2</format>
         </numberFormat>
         <!-- 4 digit area codes. -->
-        <numberFormat pattern="(\d{4})(\d{2,8})">
+        <numberFormat pattern="(\d{4})(\d{2,11})">
           <leadingDigits>
             [24-6]|
             [7-9](?:
@@ -4534,7 +4737,7 @@
           <format>$1/$2</format>
         </numberFormat>
         <!-- 5 digit area codes. -->
-        <numberFormat pattern="(\d{5})(\d{1,6})">
+        <numberFormat pattern="(\d{5})(\d{1,10})">
           <leadingDigits>3</leadingDigits>
           <format>$1/$2</format>
         </numberFormat>
@@ -4571,7 +4774,7 @@
              stricter for numbers starting with 49, to try and remove the country code if the number
              begins with 49 whenever possible. -->
         <nationalNumberPattern>
-          [1-35-9]\d{3,13}|
+          [1-35-9]\d{3,14}|
           4(?:
             [0-8]\d{4,12}|
             9(?:
@@ -4580,7 +4783,7 @@
             )\d{2,7}
           )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{2,14}</possibleNumberPattern>
+        <possibleNumberPattern>\d{2,15}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
         <!-- The numbering plan defines rather optimistic longest-number limits - online numbers
@@ -4588,15 +4791,16 @@
         <nationalNumberPattern>
           [246]\d{5,13}|
           3(?:
-            [03-9]\d{4,11}|
+            [03-9]\d{4,13}|
             2\d{9}
           )|
           5(?:
             0[2-8]|
+            [1256]\d|
             [38][0-8]|
-            [124-6]\d|
+            4\d{0,2}|
             [79][0-7]
-          )\d{3,10}|
+          )\d{3,11}|
           7(?:
             0[2-8]|
             [1-9]\d
@@ -4665,6 +4869,11 @@
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
         <exampleNumber>70012345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>11[02]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Djibouti -->
@@ -4696,18 +4905,23 @@
         <nationalNumberPattern>[6-8]\d{5}</nationalNumberPattern>
         <exampleNumber>601234</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>1[78]</nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>17</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Denmark -->
     <!-- http://en.itst.dk/telecom-internet-regulation/numbering-issues/numbering-lists -->
     <territory id="DK" countryCode="45" internationalPrefix="00">
       <availableFormats>
-        <numberFormat pattern="([1-9]\d)(\d{2})(\d{2})(\d{2})">
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[2-9]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <!-- There are some overlaps for some number prefixes - the plan says that they are 'mainly'
@@ -4741,6 +4955,11 @@
         <nationalNumberPattern>90\d{6}</nationalNumberPattern>
         <exampleNumber>90123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Dominica -->
@@ -4826,10 +5045,60 @@
         <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- We could be more detailed here, as the metadata contains information about some of the
-             mobile/fixed-line prefixes, but the data is incomplete, so we restrict ourselves to a
-             more generic rule for now. -->
-        <nationalNumberPattern>8[024]9[2-9]\d{6}</nationalNumberPattern>
+        <!-- The ITU data seems to be somewhat incomplete. We ensure that the fully-specified mobile
+             prefixes in the document are classified as such by excluding them from the fixed-line
+             ranges, but other than this have a generic rule. -->
+        <nationalNumberPattern>
+          8(?:
+            [04]9[2-9]\d{6}|
+            29(?:
+              2(?:
+                [0-59]\d|
+                6[04-9]|
+                7[0-27]|
+                8[0237-9]
+              )|
+              3(?:
+                [0-35-9]\d|
+                4[7-9]
+              )|
+              [45]\d{2}|
+              6(?:
+                [0-27-9]\d|
+                [3-5][1-9]|
+                6[0135-8]
+              )|
+              7(?:
+                0[013-9]|
+                [1-37]\d|
+                4[1-35689]|
+                5[1-4689]|
+                6[1-57-9]|
+                8[1-79]|
+                9[1-8]
+              )|
+              8(?:
+                0[146-9]|
+                1[0-48]|
+                [248]\d|
+                3[1-79]|
+                5[01589]|
+                6[013-68]|
+                7[124-8]|
+                9[0-8]
+              )|
+              9(?:
+                [0-24]\d|
+                3[02-46-9]|
+                5[0-79]|
+                60|
+                7[0169]|
+                8[57-9]|
+                9[02-9]
+              )
+            )\d{4}
+          )
+        </nationalNumberPattern>
         <exampleNumber>8092345678</exampleNumber>
       </fixedLine>
       <mobile>
@@ -4866,7 +5135,15 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
-    </territory>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
+   </territory>
 
     <!-- Algeria -->
     <!-- http://www.itu.int/oth/T0202000003/en -->
@@ -4945,7 +5222,12 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>983123456</exampleNumber>
       </voip>
-    </territory>
+      <emergency>
+        <nationalNumberPattern>1[47]</nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>17</exampleNumber>
+      </emergency>
+   </territory>
 
     <!-- Ecuador -->
     <!-- http://en.wikipedia.org/wiki/+593 -->
@@ -5001,6 +5283,17 @@
         <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
         <exampleNumber>18001234567</exampleNumber>
       </tollFree>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[12]|
+            12
+          )|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Estonia -->
@@ -5140,10 +5433,20 @@
         <exampleNumber>70012345</exampleNumber>
       </personalNumber>
       <shortCode>
-        <nationalNumberPattern>1[1-9]\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[13-9]|
+            [2-9]\d
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>116</exampleNumber>
+      </shortCode>
+      <emergency>
+        <nationalNumberPattern>11[02]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
-      </shortCode>
+      </emergency>
     </territory>
 
     <!-- Egypt -->
@@ -5259,6 +5562,16 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9001234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            2[23]|
+            80
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>122</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Eritrea -->
@@ -5360,6 +5673,18 @@
         <nationalNumberPattern>51\d{7}</nationalNumberPattern>
         <exampleNumber>511234567</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          0(?:
+            61|
+            8[05]|
+            9[12]
+          )|
+          112
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Ethiopia -->
@@ -5595,6 +5920,11 @@
         <possibleNumberPattern>\d{5,10}</possibleNumberPattern>
         <exampleNumber>10112345</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Fiji -->
@@ -5669,11 +5999,16 @@
           30|
           [45]4|
           75|
-          91[137]
+          913
         </nationalNumberPattern>
         <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
         <exampleNumber>22</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>91[17]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Falkland Islands (Malvinas) -->
@@ -5794,15 +6129,20 @@
         <!-- Includes special numbers, special services and universal services.  -->
         <nationalNumberPattern>
           1(?:
-            1[248]|
+            1[48]|
             4[124]\d|
             71\d|
             8[7-9]\d
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
-        <exampleNumber>211234</exampleNumber>
+        <exampleNumber>114</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- France -->
@@ -5812,6 +6152,7 @@
     <territory id="FR" countryCode="33" internationalPrefix="[04579]0"
       preferredInternationalPrefix="00"
       nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <!-- 4-digit premium-rate numbers will be formatted as a block without a national prefix. -->
       <availableFormats>
         <numberFormat pattern="([1-79])(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[1-79]</leadingDigits>
@@ -5824,11 +6165,20 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-9]\d{8}</nationalNumberPattern>
-        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <nationalNumberPattern>
+          [124-9]\d{8}|
+          3\d{3}(?:\d{5})?
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}(?:\d{5})?</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <nationalNumberPattern>3\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>3123</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <nationalNumberPattern>[1-5]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>123456789</exampleNumber>
       </fixedLine>
       <mobile>
@@ -5836,14 +6186,22 @@
           6\d{8}|
           7[5-9]\d{7}
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>612345678</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>80\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>801234567</exampleNumber>
       </tollFree>
       <premiumRate>
-        <nationalNumberPattern>89[1-37-9]\d{6}</nationalNumberPattern>
+        <!-- We are putting 4-digit premium-rate numbers here for now, since they are used by
+             agencies such as CPAM and the national unemployment agency. -->
+        <nationalNumberPattern>
+          3\d{3}|
+          89[1-37-9]\d{6}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}(?:\d{5})?</possibleNumberPattern>
         <exampleNumber>891123456</exampleNumber>
       </premiumRate>
       <sharedCost>
@@ -5855,13 +6213,25 @@
             90
           )\d{6}
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>810123456</exampleNumber>
       </sharedCost>
       <voip>
         <!-- 087 numbers used to be used for this. -->
         <nationalNumberPattern>9\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>912345678</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            [578]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Gabon -->
@@ -6535,7 +6905,7 @@
           1(?:
             0[01]|
             1(?:
-              [12]|
+              1|
               [68]\d{3}
             )|
             2[123]|
@@ -6571,14 +6941,19 @@
           )|
           650|
           789|
-          9(?:
-            01|
-            99
-          )
+          901
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>150</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          999
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Grenada -->
@@ -6670,7 +7045,8 @@
     <!-- Georgia -->
     <!-- http://www.itu.int/oth/T0202000050/en
          http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia. -->
-    <territory id="GE" countryCode="995" internationalPrefix="8~10" nationalPrefix="8">
+    <territory id="GE" countryCode="995" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8">
       <availableFormats>
         <!-- Format isn't very strictly defined - the yellow pages omits area code and does 2 2 2,
              the communications commission uses 2 3 3. Wikipedia says 3 2 3. Some use 2 6. -->
@@ -6731,6 +7107,23 @@
       </tollFree>
       <!-- It seems there may be special 6 digit numbers beginning with 91, but we are not sure, so
            these are omitted for now. -->
+      <emergency>
+        <!-- According to Wikipedia, 011, 022 and 033 will be replaced by 111, 122, 113 and 114 in
+             2011. We are not sure if that has happened, so we support both versions for now. -->
+        <nationalNumberPattern>
+          0(?:
+            11|
+            22|
+            33
+          )|
+          1(?:
+            1[123]|
+            22
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- French Guiana (French Dept. of) -->
@@ -6777,6 +7170,11 @@
       <!-- The 876 prefix is mentioned in the plan, but the plan is from 2006 and in France VOIP
            numbers were changed from 087 to the 09 prefix in 2009. It is likely this occurred here
            too. -->
+      <emergency>
+        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>15</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Guernsey -->
@@ -6961,6 +7359,14 @@
         <exampleNumber>231234567</exampleNumber>
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
+      <emergency>
+        <nationalNumberPattern>
+          19[123]|
+          999
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Gibraltar -->
@@ -7006,7 +7412,6 @@
           1(?:
             00|
             1(?:
-              2|
               6(?:
                 00[06]|
                 11[17]
@@ -7019,7 +7424,7 @@
               7[014]
             )|
             5[015]|
-            9[0349]
+            9[34]
           )|
           8(?:
             00|
@@ -7030,6 +7435,16 @@
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>116123</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            9[09]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Greenland -->
@@ -7069,6 +7484,11 @@
         <nationalNumberPattern>3[89]\d{4}</nationalNumberPattern>
         <exampleNumber>381234</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Gambia -->
@@ -7385,6 +7805,18 @@
         <nationalNumberPattern>70\d{8}</nationalNumberPattern>
         <exampleNumber>7012345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            00|
+            12|
+            66|
+            99
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Guatemala -->
@@ -7434,13 +7866,23 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            2|
-            [57]\d
-          )\d
+            2[124-9]|
+            [57]\d{2}
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>123</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            10|
+            2[03]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>110</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Guam -->
@@ -7687,6 +8129,11 @@
        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
        <exampleNumber>0801</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>91[123]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Hong Kong -->
@@ -7747,7 +8194,15 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>81123456</exampleNumber>
       </personalNumber>
-    </territory>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          99[29]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
+   </territory>
 
     <!-- Honduras -->
     <!-- http://www.itu.int/oth/T020200005F/en -->
@@ -7811,6 +8266,11 @@
         <nationalNumberPattern>[37-9]\d{7}</nationalNumberPattern>
         <exampleNumber>91234567</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>199</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>199</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Croatia -->
@@ -7916,6 +8376,17 @@
         <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
         <exampleNumber>741234567</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            92
+          )|
+          9[34]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Haiti -->
@@ -8043,6 +8514,16 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>40123456</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[457]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Indonesia -->
@@ -8181,6 +8662,11 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>8091234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>11[02389]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Ireland -->
@@ -8359,6 +8845,14 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>818123456</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          999
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Israel -->
@@ -8485,6 +8979,16 @@
         <possibleNumberPattern>\d{4}</possibleNumberPattern>
         <exampleNumber>1455</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[012]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Isle of Man -->
@@ -8883,14 +9387,46 @@
            <leadingDigits>18[06]0</leadingDigits>
            <format>$1 $2 $3</format>
          </numberFormat>
+         <!-- Televoting numbers. Formatting information is from
+              http://www.bsnl.co.in/service/telev.htm -->
+         <numberFormat nationalPrefixFormattingRule="$FG"
+           pattern="(\d{4})(\d{3})(\d{4})(\d{2})">
+           <leadingDigits>18[06]</leadingDigits>
+           <leadingDigits>
+             18(?:
+               03|
+               6[12]
+             )
+           </leadingDigits>
+           <format>$1 $2 $3 $4</format>
+         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          1\d{7,11}|
+          1\d{7,12}|
           [2-9]\d{9,10}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6,12}</possibleNumberPattern>
+        <possibleNumberPattern>\d{6,13}</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <nationalNumberPattern>
+          1(?:
+            600\d{6}|
+            8(?:
+              0(?:
+                0\d{4,8}|
+                3\d{9}
+              )|
+              6(?:
+                0\d{7}|
+                [12]\d{9}
+              )
+            )
+           )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{8,13}</possibleNumberPattern>
+        <exampleNumber>1800123456</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <!-- This is a list of the 2 and 3 digit area codes and the first 3 digits of 4 digit area
              codes, so we can check the following digit belongs to one of the operator-codes (2-6).
@@ -9213,22 +9749,44 @@
       <tollFree>
         <!-- Information gathered from sites such as
              http://www.surfindia.com/india-facts/toll-free-no.html and
-             http://indmusings.blogspot.com/2008/09/free-help-line-numbersindia.html -->
+             http://indmusings.blogspot.com/2008/09/free-help-line-numbersindia.html
+             http://www.bsnl.co.in/service/telev.htm -->
         <nationalNumberPattern>
           1(?:
             600\d{6}|
-            800\d{4,8}
-           )
+            80(?:
+              0\d{4,8}|
+              3\d{9}
+            )
+          )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{8,12}</possibleNumberPattern>
+        <possibleNumberPattern>\d{8,13}</possibleNumberPattern>
         <exampleNumber>1800123456</exampleNumber>
       </tollFree>
+      <premiumRate>
+        <!-- Only televoting numbers are covered here for now. The 900 numbers are not covered
+             because they overlap with mobile, and we haven't found any real numbers online. -->
+        <nationalNumberPattern>186[12]\d{9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{13}</possibleNumberPattern>
+        <exampleNumber>1861123456789</exampleNumber>
+      </premiumRate>
       <uan>
-        <!-- Information gathered from sites such as http://www.calcutta.bsnl.co.in/insuan.html -->
-        <nationalNumberPattern>1860345\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>1860\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
         <exampleNumber>18603451234</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[0128]|
+            12|
+            298
+          )|
+          2611
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>108</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- British Indian Ocean Territory / Diego Garcia -->
@@ -9432,6 +9990,16 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9990123456</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            1[025]|
+            25
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Iceland -->
@@ -9525,6 +10093,11 @@
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>4931234</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Italy -->
@@ -9650,6 +10223,11 @@
         <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
         <exampleNumber>1781234567</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>11[2358]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Jersey -->
@@ -9953,6 +10531,11 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>11[09]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>119</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Jordan -->
@@ -10034,6 +10617,14 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>87101234</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Japan -->
@@ -10954,6 +11545,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>570123456</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>11[09]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>110</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Kenya -->
@@ -11224,13 +11820,13 @@
 
     <!-- Kiribati -->
     <!-- http://www.itu.int/oth/T0202000071/en -->
+    <!-- We include the national prefix for parsing here just in case numbers can be dialled with a
+         leading 0 - the main ITU document says this is not the case and no numbers online have been
+         found formatted this way, but Kiribati's own document lists it as a national dialling
+         prefix. -->
     <territory id="KI" countryCode="686" internationalPrefix="00"
-               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
-      <availableFormats>
-        <numberFormat pattern="(\d{5})">
-          <format>$1</format>
-        </numberFormat>
-      </availableFormats>
+               nationalPrefixForParsing="0">
+      <!-- Numbers should be formatted as a block." -->
       <generalDesc>
         <nationalNumberPattern>[2-689]\d{4}</nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
@@ -11678,12 +12274,16 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>15441234</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>11[29]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Kuwait -->
     <!-- http://www.itu.int/oth/T0202000073/en -->
-    <territory id="KW" countryCode="965" internationalPrefix="00"
-               nationalPrefixFormattingRule="$NP$FG">
+    <territory id="KW" countryCode="965" internationalPrefix="00">
       <availableFormats>
         <!-- Format is from ITU. -->
         <numberFormat pattern="(\d{4})(\d{3,4})">
@@ -11744,10 +12344,20 @@
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
       <shortCode>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+           [02-9]\d|
+           1[013-9]
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>177</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Cayman Islands -->
@@ -11843,12 +12453,18 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Kazakhstan -->
     <!-- http://www.itu.int/oth/T020200006F/en -->
-    <territory id="KZ" countryCode="7" internationalPrefix="8~10"
-               nationalPrefix="8" nationalPrefixFormattingRule="$NP$FG">
+    <territory id="KZ" countryCode="7" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="$NP$FG">
        <!-- Formatting rules obtained from Russia. -->
       <generalDesc>
         <nationalNumberPattern>
@@ -11992,6 +12608,16 @@
         <nationalNumberPattern>751\d{7}</nationalNumberPattern>
         <exampleNumber>7511234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[123]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Lao People's Dem. Rep. -->
@@ -12107,6 +12733,18 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>80123456</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            40|
+            75
+          )|
+          999
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Saint Lucia -->
@@ -12351,6 +12989,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>712345678</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>11[0189]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>119</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Liberia -->
@@ -12517,6 +13160,21 @@
         <nationalNumberPattern>90[0239]\d{5}</nationalNumberPattern>
         <exampleNumber>90012345</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          0(?:
+            11?|
+            22?|
+            33?
+          )|
+          1(?:
+            0[123]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Luxembourg -->
@@ -12706,15 +13364,15 @@
         <exampleNumber>2012345</exampleNumber>
       </voip>
       <shortCode>
-        <nationalNumberPattern>
-          1(?:
-            1[23]|
-            2\d{3}
-          )
-        </nationalNumberPattern>
+        <nationalNumberPattern>12\d{3}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>12123</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>11[23]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Latvia -->
@@ -12745,6 +13403,14 @@
         <nationalNumberPattern>90\d{6}</nationalNumberPattern>
         <exampleNumber>90123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          0[123]|
+          112
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Libya (Soc. People’s Libyan Arab Jamahiriya) -->
@@ -12906,17 +13572,28 @@
         <nationalNumberPattern>89\d{7}</nationalNumberPattern>
         <exampleNumber>891234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            [59]|
+            77
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>15</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Monaco -->
     <!-- http://www.itu.int/oth/T020200008D/en -->
     <!-- We support Kosovo mobile numbers (044, 045) with a Monaco country-code here, as we do not
-         support Kosovo at the moment. Kosovo seems to use a variety of country codes currently. -->
+         support Kosovo at the moment. Kosovo seems to use a variety of country codes currently. It
+         also seems that the national prefix is only used for mobile numbers, not fixed-line. -->
     <territory id="MC" countryCode="377" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
         <!-- Following formatting found online rather than in the ITU document example. -->
-        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$FG">
           <leadingDigits>[89]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -12961,6 +13638,16 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>90123456</exampleNumber>
       </tollFree>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            [578]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Moldova, Rep. of -->
@@ -13012,14 +13699,19 @@
         <exampleNumber>22212345</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Includes prefixes for Interdnestrcom, http://www.idknet.com/. -->
         <nationalNumberPattern>
           (?:
+            562|
             6(?:
               50|
               7[1-4]|
               [089]\d
             )|
-            7[89]\d
+            7(?:
+              7[47-9]|
+              [89]\d
+            )
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>65012345</exampleNumber>
@@ -13052,7 +13744,7 @@
         <nationalNumberPattern>
           1(?:
             1(?:
-              [279]|
+              [79]|
               6(?:
                 000|
                 1(?:
@@ -13066,12 +13758,23 @@
             5[0-3]\d|
             6[0-389]\d|
             8\d{2}|
-            9[0-4]\d
+            9(?:
+              0[04-9]|
+              [1-4]\d
+            )
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>116000</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          90[123]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Montenegro -->
@@ -13186,19 +13889,31 @@
         <exampleNumber>77273012</exampleNumber>
       </uan>
       <shortCode>
-        <!-- Emergency and other services. -->
         <nationalNumberPattern>
           1(?:
             16\d{3}|
-            2\d{1,2}|
+            2(?:
+              [015-9]|
+              \d{2}
+            )|
             [0135]\d{2}|
             4\d{2,3}|
             9\d{3}
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
-        <exampleNumber>123</exampleNumber>
+        <exampleNumber>1011</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            2[234]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Madagascar -->
@@ -13395,13 +14110,22 @@
         </nationalNumberPattern>
         <exampleNumber>80123456</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            9[234]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Mali -->
     <!-- http://www.itu.int/oth/T0202000083/en -->
     <!-- http://crt-mali.org/pdf/plan_num -->
-    <territory id="ML" countryCode="223" internationalPrefix="00"
-               nationalPrefix="0">
+    <territory id="ML" countryCode="223" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="([246-8]\d)(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -13453,7 +14177,12 @@
         <nationalNumberPattern>800\d{5}</nationalNumberPattern>
         <exampleNumber>80012345</exampleNumber>
       </tollFree>
-    </territory>
+      <emergency>
+        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>17</exampleNumber>
+      </emergency>
+   </territory>
 
     <!-- Myanmar -->
     <!-- http://www.itu.int/oth/T0202000092/en -->
@@ -13522,6 +14251,11 @@
         <exampleNumber>92123456</exampleNumber>
       </mobile>
       <!-- No information on other types of phone numbers for Myanmar has been found. -->
+      <emergency>
+        <nationalNumberPattern>199</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>199</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Mongolia -->
@@ -13624,6 +14358,11 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>75123456</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>10[0-3]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>102</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Macao, China -->
@@ -13654,6 +14393,11 @@
         <exampleNumber>66123456</exampleNumber>
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!--  Northern Mariana Islands -->
@@ -13965,6 +14709,11 @@
         </nationalNumberPattern>
         <exampleNumber>50031234</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Mauritius -->
@@ -14046,13 +14795,24 @@
       </voip>
       <shortCode>
         <nationalNumberPattern>
-          1\d{2,4}
-          8\d{3}|
-          99\d
+          1(?:
+            1[0-36-9]|
+            [02-9]\d|
+            \d{3,4}
+          )|
+          8\d{3}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>995</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          11[45]|
+          99\d
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Maldives -->
@@ -14136,6 +14896,16 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>123</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            02|
+            19
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>102</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Malawi -->
@@ -14420,6 +15190,14 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9001234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          06[568]|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>066</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Malaysia -->
@@ -14506,6 +15284,14 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>1541234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          999
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Mozambique -->
@@ -14969,6 +15755,11 @@
         <possibleNumberPattern>\d{10,14}</possibleNumberPattern>
         <exampleNumber>7001234567</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>199</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>199</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Nicaragua -->
@@ -14995,6 +15786,11 @@
         <nationalNumberPattern>1800\d{4}</nationalNumberPattern>
         <exampleNumber>18001234</exampleNumber>
       </tollFree>
+      <emergency>
+        <nationalNumberPattern>118</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>118</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Netherlands -->
@@ -15074,6 +15870,14 @@
         <nationalNumberPattern>85\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Norway -->
@@ -15161,6 +15965,11 @@
         </nationalNumberPattern>
         <exampleNumber>01234</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>11[023]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Nepal -->
@@ -15239,6 +16048,16 @@
         <exampleNumber>9841234567</exampleNumber>
       </mobile>
       <!-- No information on other types of phone numbers for Nepal has been found. -->
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[0-3]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Nauru -->
@@ -15462,14 +16281,18 @@
         <exampleNumber>80071234</exampleNumber>
       </tollFree>
       <!-- No premiumRate information can be found. -->
+      <emergency>
+        <nationalNumberPattern>9999</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>9999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Panama -->
     <!-- http://www.asep.gob.pa/telecom/pnn/default.asp - last read May 19th 2011. -->
     <!-- http://en.wikipedia.org/wiki/%2B507 - although it omits the fact that mobile phones are 8
          digits long. -->
-    <territory id="PA" countryCode="507" internationalPrefix="00"
-               nationalPrefix="0">
+    <territory id="PA" countryCode="507" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[1-57-9]</leadingDigits>
@@ -15614,13 +16437,15 @@
         <exampleNumber>8601234</exampleNumber>
       </premiumRate>
       <shortCode>
-        <nationalNumberPattern>
-          10[2-4]|
-          911
-        </nationalNumberPattern>
+        <nationalNumberPattern>10[2-4]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>102</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Peru -->
@@ -15696,6 +16521,16 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>80212345</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            05|
+            1[67]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>105</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- French Polynesia (Tahiti) (Territoire français d'outre-mer) -->
@@ -15971,6 +16806,14 @@
       </tollFree>
       <!-- No information can be found about other types of numbers (such as premium rate) in the
            Philippines. -->
+      <emergency>
+        <nationalNumberPattern>
+          11[27]|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>117</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Pakistan -->
@@ -16268,6 +17111,19 @@
         <possibleNumberPattern>\d{11,12}</possibleNumberPattern>
         <exampleNumber>21111825888</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              22?|
+              5
+            )|
+            [56]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,4}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Poland -->
@@ -16349,6 +17205,14 @@
         <nationalNumberPattern>39\d{7}</nationalNumberPattern>
         <exampleNumber>391234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          99[789]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Saint Pierre and Miquelon (Collectivité territoriale de la République française) -->
@@ -16372,6 +17236,11 @@
         <nationalNumberPattern>55\d{4} </nationalNumberPattern>
         <exampleNumber>551234</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>17</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Pitcairn Island -->
@@ -16571,6 +17440,11 @@
         <nationalNumberPattern>30\d{7}</nationalNumberPattern>
         <exampleNumber>301234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Palau -->
@@ -16756,6 +17630,14 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>123</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          128|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Qatar -->
@@ -16763,8 +17645,8 @@
     <!-- http://wtng.info/wtng-qq.html -->
     <territory id="QA" countryCode="974" internationalPrefix="00">
       <availableFormats>
-        <numberFormat pattern="(8\d{2})(\d{4})">
-          <leadingDigits>8</leadingDigits>
+        <numberFormat pattern="([28]\d{2})(\d{4})">
+          <leadingDigits>[28]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="([3-7]\d{3})(\d{4})">
@@ -16773,7 +17655,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[3-8]\d{6,7}</nationalNumberPattern>
+        <nationalNumberPattern>[2-8]\d{6,7}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -16781,22 +17663,40 @@
         <exampleNumber>44123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Extra prefixes 30 and 70 have been added from numbers found online.  -->
-        <nationalNumberPattern>
-          (?:
-            3[03]|
-            55|
-            66|
-            7[07]
-          )\d{6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[3567]\d{7}</nationalNumberPattern>
         <exampleNumber>33123456</exampleNumber>
       </mobile>
+      <pager>
+        <nationalNumberPattern>
+          2(?:
+            [12]\d|
+            61
+          )\d{4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <exampleNumber>2123456</exampleNumber>
+      </pager>
       <tollFree>
         <nationalNumberPattern>800\d{4}</nationalNumberPattern>
         <exampleNumber>8001234</exampleNumber>
       </tollFree>
       <!-- No premiumRate information can be found. -->
+      <shortCode>
+        <nationalNumberPattern>
+          (?:
+            1|
+            20|
+            9[27]\d
+          )\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>2012</exampleNumber>
+      </shortCode>
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Réunion (French Departments and Territories in the Indian Ocean) -->
@@ -16908,6 +17808,11 @@
         <nationalNumberPattern>802\d{6}</nationalNumberPattern>
         <exampleNumber>802123456</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Serbia -->
@@ -16996,18 +17901,34 @@
         <exampleNumber>700123456</exampleNumber>
       </uan>
       <shortCode>
-        <nationalNumberPattern>1[189]\d{1,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              [013-9]|
+              \d(2,4)
+            )|
+            [89]\d{1,4}
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>12345</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          9[234]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Russian Federation -->
     <!-- http://www.itu.int/oth/T02020000AD/en -->
     <!-- http://en.wikipedia.org/wiki/%2B7 -->
-    <territory id="RU" countryCode="7" internationalPrefix="8~10"
-               nationalPrefix="8" nationalPrefixFormattingRule="$NP ($FG)"
-               mainCountryForCode="true" >
+    <territory id="RU" countryCode="7" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="$NP ($FG)" mainCountryForCode="true" >
       <availableFormats>
         <!-- Formatting from wikipedia, confirmed on Goverment websites such as
              http://www.minjust.ru/ru/structure/contact/. Contains formatting instructions for
@@ -17075,6 +17996,14 @@
         <nationalNumberPattern>80[39]\d{7}</nationalNumberPattern>
         <exampleNumber>8091234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          0[123]|
+          112
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Rwanda -->
@@ -17129,6 +18058,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>900123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Saudi Arabia -->
@@ -17197,12 +18131,23 @@
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
         <exampleNumber>92001234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>99[7-9]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Solomon Islands -->
     <!-- http://www.itu.int/oth/T02020000BF/en -->
     <territory id="SB" countryCode="677" internationalPrefix="0[01]">
-      <!-- No formatting rules. A single group is used to format the numbers. -->
+      <!-- A single group is used to format 5-digit numbers. -->
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{4})">
+          <leadingDigits>[78]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[1-8]\d{4,6}</nationalNumberPattern>
         <possibleNumberPattern>\d{5,7}</possibleNumberPattern>
@@ -17226,9 +18171,10 @@
         <nationalNumberPattern>
           7(?:
             4\d|
-            5[025-7]
+            5[025-8]|
+            6[01]
           )\d{4}|
-          8[48]\d{5}
+          8[4-8]\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>7421234</exampleNumber>
@@ -17258,13 +18204,17 @@
             33|
             55|
             77|
-            88|
-            99
+            88
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>100</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Seychelles -->
@@ -17407,6 +18357,11 @@
         <nationalNumberPattern>9[012569]\d{7}</nationalNumberPattern>
         <exampleNumber>911231234</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Sweden -->
@@ -17617,6 +18572,14 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>771234567</exampleNumber>
       </sharedCost>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          90000
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Singapore -->
@@ -17700,11 +18663,22 @@
               0[1-9]
             )|
             [57]\d{2,3})|
-          99\d
+          99[0-46-8]
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>1312</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          112|
+          9(?:
+            11|
+            9[59]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Saint Helena and Tristan da Cunha -->
@@ -17840,6 +18814,11 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>59012345</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>11[23]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Svalbard -->
@@ -17973,6 +18952,16 @@
         </nationalNumberPattern>
         <exampleNumber>690123456</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            5[058]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Sierra Leone -->
@@ -18009,6 +18998,16 @@
         </nationalNumberPattern>
         <exampleNumber>25123456</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>
+          (?:
+            01|
+            99
+          )9
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- San Marino -->
@@ -18073,6 +19072,11 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>58001110</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>11[358]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>113</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Senegal -->
@@ -18260,10 +19264,21 @@
         <exampleNumber>561234</exampleNumber>
       </voip>
       <shortCode>
-        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            [02-9]\d|
+            1[0-46-9]|
+            \d{3}
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>1234</exampleNumber>
       </shortCode>
+      <emergency>
+        <nationalNumberPattern>115</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>115</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Sao Tome and Principe -->
@@ -18340,6 +19355,11 @@
         <possibleNumberPattern>\d{7}(?:\d{4})?</possibleNumberPattern>
         <exampleNumber>9001234</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Syrian Arab Republic -->
@@ -18396,6 +19416,11 @@
         <exampleNumber>944567890</exampleNumber>
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
+      <emergency>
+        <nationalNumberPattern>11[023]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Swaziland -->
@@ -18571,6 +19596,11 @@
         </nationalNumberPattern>
         <exampleNumber>63012345</exampleNumber>
       </mobile>
+      <emergency>
+        <nationalNumberPattern>1[78]</nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>17</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- French Southern Territories -->
@@ -18677,12 +19707,23 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>601234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            669|
+            9[19]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>191</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Tajikistan -->
     <!-- http://www.itu.int/oth/T02020000CA/en -->
-    <territory id="TJ" countryCode="992" internationalPrefix="8~10"
-               nationalPrefix="8" nationalPrefixFormattingRule="($NP) $FG">
+    <territory id="TJ" countryCode="992" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="($NP) $FG">
       <availableFormats>
         <numberFormat pattern="([349]\d{2})(\d{2})(\d{4})">
           <leadingDigits>
@@ -18760,6 +19801,16 @@
         <exampleNumber>917123456</exampleNumber>
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[1-3]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Tokelau -->
@@ -18817,8 +19868,9 @@
 
     <!-- Turkmenistan -->
     <!-- http://www.itu.int/oth/T02020000D7/en -->
-    <territory id="TM" countryCode="993" internationalPrefix="8~10"
-               nationalPrefix="8" nationalPrefixFormattingRule="$NP $FG">
+    <territory id="TM" countryCode="993" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="$NP $FG">
       <availableFormats>
         <!-- There doesn't seem to be a standardized format. The format below is based on the
              Turkmenistan embassy at
@@ -18883,6 +19935,11 @@
         <nationalNumberPattern>8[028]\d{6}</nationalNumberPattern>
         <exampleNumber>80123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>19[078]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>197</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Tonga -->
@@ -19047,6 +20104,16 @@
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
         <exampleNumber>4441444</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            1[02]|
+            55
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Trinidad and Tobago -->
@@ -19137,6 +20204,11 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
+      <emergency>
+        <nationalNumberPattern>99[09]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Tuvalu -->
@@ -19208,6 +20280,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>900123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>11[029]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>110</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Tanzania -->
@@ -19278,7 +20355,8 @@
     <!-- Ukraine -->
     <!-- http://www.itu.int/oth/T02020000DB/en -->
     <!-- http://en.wikipedia.org/wiki/%2B380 -->
-    <territory id="UA" countryCode="380" internationalPrefix="0~0"
+    <territory id="UA" countryCode="380" preferredInternationalPrefix="0~0"
+               internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
         <!-- City codes separated out. No definitive list has been found of what constitutes the
@@ -19448,6 +20526,16 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>900123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            0[123]|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Uganda -->
@@ -19525,6 +20613,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>901123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>999</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- United States -->
@@ -19770,7 +20863,10 @@
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
       <emergency>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>911</exampleNumber>
       </emergency>
@@ -19832,19 +20928,27 @@
             0[4-9]|
             1[2368]|
             2[0-3568]
-          )|
-          911
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>104</exampleNumber>
       </shortCode>
-    </territory>
+      <emergency>
+        <nationalNumberPattern>
+          128|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
+     </territory>
 
     <!-- Uzbekistan -->
     <!-- http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng -->
     <!-- http://www.itu.int/oth/T02020000E1/en -->
-    <territory id="UZ" countryCode="998" internationalPrefix="8~10"
-               nationalPrefix="8" nationalPrefixFormattingRule="$NP$FG">
+    <territory id="UZ" countryCode="998" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
         <numberFormat pattern="([679]\d)(\d{3})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -20205,6 +21309,11 @@
         <possibleNumberPattern>N/A</possibleNumberPattern>
       </mobile>
       <!-- No information exists about other types of numbers. -->
+      <emergency>
+        <nationalNumberPattern>11[2358]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>113</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Saint Vincent and the Grenadines -->
@@ -20346,6 +21455,11 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9001234567</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>171</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>171</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Virgin Islands, British -->
@@ -20674,6 +21788,11 @@
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
         <exampleNumber>1900123456</exampleNumber>
       </premiumRate>
+      <emergency>
+        <nationalNumberPattern>11[345]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>113</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Vanuatu -->
@@ -20727,6 +21846,11 @@
         <possibleNumberPattern>\d{5,7}</possibleNumberPattern>
         <exampleNumber>30123</exampleNumber>
       </uan>
+      <emergency>
+        <nationalNumberPattern>112</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Wallis and Futuna (Territoire français d'outre-mer) -->
@@ -20767,19 +21891,17 @@
 
     <!-- Samoa -->
     <!-- http://www.itu.int/oth/T02020000B4/en -->
-    <territory id="WS" countryCode="685" internationalPrefix="0"
-               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+    <territory id="WS" countryCode="685" internationalPrefix="0">
       <availableFormats>
-      <!-- Should be formatted in one block, apart from the specific series below. For this reason
-           the leadingDigits is more detailed than would appear necessary. -->
-      <numberFormat pattern="(8[04]0)(\d{3,4})">
-        <leadingDigits>8[04]0</leadingDigits>
-        <format>$1 $2</format>
-      </numberFormat>
-      <numberFormat pattern="(7[25-7])(\d{5})">
-        <leadingDigits>7[25-7]</leadingDigits>
-        <format>$1 $2</format>
-      </numberFormat>
+        <!-- Should be formatted in one block, apart from the specific series below. -->
+        <numberFormat pattern="(8\d{2})(\d{3,4})">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(7\d)(\d{5})">
+          <leadingDigits>7</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[2-8]\d{4,6}</nationalNumberPattern>
@@ -20790,7 +21912,7 @@
           (?:
             [2-5]\d|
             6[1-9]|
-            840\d
+            84\d{2}
           )\d{3}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5,7}</possibleNumberPattern>
@@ -20983,6 +22105,19 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>871234567</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            01(?:
+              11|
+              77
+            )|
+            12
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <exampleNumber>10111</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Zambia -->
@@ -21024,6 +22159,16 @@
         <nationalNumberPattern>800\d{6}</nationalNumberPattern>
         <exampleNumber>800123456</exampleNumber>
       </tollFree>
+      <emergency>
+        <nationalNumberPattern>
+          (?:
+            112|
+            99[139]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Zimbabwe -->
@@ -21275,6 +22420,16 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>8686123456</exampleNumber>
       </voip>
+      <emergency>
+        <nationalNumberPattern>
+          (?:
+            112|
+            99[3459]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>999</exampleNumber>
+      </emergency>
     </territory>
   </territories>
 </phoneNumberMetadata>

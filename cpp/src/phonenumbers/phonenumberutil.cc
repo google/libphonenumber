@@ -1117,6 +1117,10 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
                                              string* formatted_number) const {
   DCHECK(formatted_number);
 
+  if (number.has_raw_input() && !IsValidNumber(number)) {
+    formatted_number->assign(number.raw_input());
+    return;
+  }
   if (!number.has_country_code_source()) {
     Format(number, NATIONAL, formatted_number);
     return;
@@ -1917,13 +1921,6 @@ PhoneNumberUtil::MaybeStripInternationalPrefixAndNormalize(
   }
   // Attempt to parse the first digits as an international prefix.
   const RegExp& idd_pattern = regexp_cache->GetRegExp(possible_idd_prefix);
-  if (ParsePrefixAsIdd(idd_pattern, number)) {
-    Normalize(number);
-    return PhoneNumber::FROM_NUMBER_WITH_IDD;
-  }
-  // If still not found, then try and normalize the number and then try again.
-  // This shouldn't be done before, since non-numeric characters (+ and ~) may
-  // legally be in the international prefix.
   Normalize(number);
   return ParsePrefixAsIdd(idd_pattern, number)
       ? PhoneNumber::FROM_NUMBER_WITH_IDD

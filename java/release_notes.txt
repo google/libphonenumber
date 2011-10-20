@@ -1,3 +1,26 @@
+October 19th, 2011: libphonenumber-4.1
+* Code changes
+ - Update code and metadata for countries with IDD "8~10" to accept phone
+   numbers where the "~" is omitted.
+ - Modify formatInOriginalFormat to use raw_input (when present) when the number
+   is considered as invalid by the library.
+ - Add ShortNumberUtil to deal with international short phone numbers, such as
+   short codes and emergency numbers.
+ - Increase the maximum phone-number length accepted when parsing (now set to
+   16).
+
+* Metadata changes
+ - Updates: BF, BN, CN, DE, DK, DO, FR, IN, KI, KW, MC, MD, ML, PA, QA, SB, UK,
+   WS
+ - Emergency number information also added to: AE, AF, AL, AM, AR, AT, AU, BA,
+   BB, BD, BE, BG, BH, BO, BR, BY, CA, CH, CL, CN, CO, CR, CY, CZ, DE, DJ, DK,
+   DO, DZ, EC, EE, EG, ES, FI, FJ, FO, FR, GB, GE, GF, GH, GI, GL, GR, GT, GY,
+   HK, HN, HR, HU, ID, IE, IL, IN, IR, IS, IT, JM, JO, JP, KR, KW, KY, KZ, LB,
+   LK, LT, LU, LV, MA, MC, MD, ME, MK, ML, MM, MN, MO, MT, MU, MV, MX, MY, NG,
+   NI, NL, NO, NP, OM, PA, PE, PH, PK, PL, PM, PT, PY, QA, RO, RS, RU, RW, SA,
+   SB, SD, SE, SG, SI, SK, SL, SM, SR, SV, SY, TD, TH, TJ, TM, TN, TR, TT, TW,
+   UA, UG, US, UY, UZ, VA, VE, VN, VU, ZA, ZM, ZW
+
 October 6th, 2011: libphonenumber-4.0
 * Code changes
  - New function formatNumberForMobileDialing, which attempts to format a number in
