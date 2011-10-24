@@ -622,7 +622,7 @@ function testFormatOutOfCountryCallingNumber() {
   assertEquals('1 650 253 0000',
       phoneUtil.formatOutOfCountryCallingNumber(US_NUMBER, RegionCode.BS));
 
-  assertEquals('0~0 1 650 253 0000',
+  assertEquals('00 1 650 253 0000',
       phoneUtil.formatOutOfCountryCallingNumber(US_NUMBER, RegionCode.PL));
 
   assertEquals('011 44 7912 345 678',
@@ -825,6 +825,35 @@ function testFormatWithPreferredCarrierCode() {
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(usNumber, '15'));
 }
 
+function testFormatNumberForMobileDialing() {
+  // US toll free numbers are marked as noInternationalDialling in the test
+  // metadata for testing purposes.
+  assertEquals('800 253 0000',
+      phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US, true));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.CN, true));
+  assertEquals('+1 650 253 0000',
+      phoneUtil.formatNumberForMobileDialing(US_NUMBER, RegionCode.US, true));
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var usNumberWithExtn = US_NUMBER.clone();
+  usNumberWithExtn.setExtension('1234');
+  assertEquals('+1 650 253 0000',
+      phoneUtil.formatNumberForMobileDialing(usNumberWithExtn,
+                                             RegionCode.US, true));
+
+  assertEquals('8002530000',
+      phoneUtil.formatNumberForMobileDialing(US_TOLLFREE,
+                                             RegionCode.US, false));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(US_TOLLFREE,
+                                             RegionCode.CN, false));
+  assertEquals('+16502530000',
+      phoneUtil.formatNumberForMobileDialing(US_NUMBER, RegionCode.US, false));
+  assertEquals('+16502530000',
+      phoneUtil.formatNumberForMobileDialing(usNumberWithExtn,
+                                             RegionCode.US, false));
+}
+
 function testFormatByPattern() {
   var PNF = i18n.phonenumbers.PhoneNumberFormat;
   /** @type {i18n.phonenumbers.NumberFormat} */
@@ -943,6 +972,20 @@ function testFormatUsingOriginalNumberFormat() {
   var number5 = phoneUtil.parse('+442087654321', RegionCode.GB);
   assertEquals('(020) 8765 4321',
                phoneUtil.formatInOriginalFormat(number5, RegionCode.GB));
+
+  // Invalid numbers should be formatted using its raw input when that is
+  // available. Note area codes starting with 7 are intentionally excluded in
+  // the test metadata for testing purposes.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number6 = phoneUtil.parseAndKeepRawInput('7345678901', RegionCode.US);
+  assertEquals('7345678901',
+               phoneUtil.formatInOriginalFormat(number6, RegionCode.US));
+
+  // When the raw input is unavailable, format as usual.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number7 = phoneUtil.parse('7345678901', RegionCode.US);
+  assertEquals('734 567 8901',
+               phoneUtil.formatInOriginalFormat(number7, RegionCode.US));
 }
 
 function testIsPremiumRate() {
@@ -1255,7 +1298,7 @@ function testIsPossibleNumberWithReason() {
   assertEquals(VR.TOO_SHORT,
                phoneUtil.isPossibleNumberWithReason(adNumber));
   adNumber.setCountryCode(376);
-  adNumber.setNationalNumber(1234567890123456);
+  adNumber.setNationalNumber(12345678901234567);
   assertEquals(VR.TOO_LONG,
                phoneUtil.isPossibleNumberWithReason(adNumber));
 }

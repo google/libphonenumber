@@ -1020,6 +1020,57 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearUan = function() {
 
 
 /**
+ * Gets the value of the emergency field.
+ * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getEmergency = function() {
+  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(27));
+};
+
+
+/**
+ * Gets the value of the emergency field or the default value if not set.
+ * @return {!i18n.phonenumbers.PhoneNumberDesc} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getEmergencyOrDefault = function() {
+  return /** @type {!i18n.phonenumbers.PhoneNumberDesc} */ (this.get$ValueOrDefault(27));
+};
+
+
+/**
+ * Sets the value of the emergency field.
+ * @param {!i18n.phonenumbers.PhoneNumberDesc} value The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.setEmergency = function(value) {
+  this.set$Value(27, value);
+};
+
+
+/**
+ * @return {boolean} Whether the emergency field has a value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.hasEmergency = function() {
+  return this.has$Value(27);
+};
+
+
+/**
+ * @return {number} The number of values in the emergency field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.emergencyCount = function() {
+  return this.count$Values(27);
+};
+
+
+/**
+ * Clears the values in the emergency field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.clearEmergency = function() {
+  this.clear$Field(27);
+};
+
+
+/**
  * Gets the value of the no_international_dialling field.
  * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
  */
@@ -2008,6 +2059,12 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadata, {
   },
   25: {
     name: 'uan',
+    required: true,
+    fieldType: goog.proto2.Message.FieldType.MESSAGE,
+    type: i18n.phonenumbers.PhoneNumberDesc
+  },
+  27: {
+    name: 'emergency',
     required: true,
     fieldType: goog.proto2.Message.FieldType.MESSAGE,
     type: i18n.phonenumbers.PhoneNumberDesc

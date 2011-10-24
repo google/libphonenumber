@@ -105,13 +105,14 @@ i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 3;
 
 
 /**
- * The maximum length of the national significant number.
+ * The ITU says the maximum length should be 15, but we have found longer
+ * numbers in Germany.
  *
  * @const
  * @type {number}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 15;
+i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 16;
 
 
 /**
@@ -132,6 +133,17 @@ i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE_ = 3;
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ = 'ZZ';
+
+
+/**
+ * The prefix that needs to be inserted in front of a Colombian landline number
+ * when dialed from a mobile phone in Colombia.
+ *
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_ = '3';
 
 
 /**
@@ -1391,6 +1403,70 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 
 
 /**
+ * Returns a number formatted in such a way that it can be dialed from a mobile
+ * phone in a specific region. If the number cannot be reached from the region
+ * (e.g. some countries block toll-free numbers from being called outside of the
+ * country), the method returns an empty string.
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number to be
+ *     formatted.
+ * @param {string} regionCallingFrom the region where the call is being placed.
+ * @param {boolean} withFormatting whether the number should be returned with
+ *     formatting symbols, such as spaces and dashes.
+ * @return {string} the formatted phone number.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
+    function(number, regionCallingFrom, withFormatting) {
+
+  /** @type {?string} */
+  var regionCode = this.getRegionCodeForNumber(number);
+  if (!this.isValidRegionCode_(regionCode)) {
+    return number.hasRawInput() ? number.getRawInputOrDefault() : '';
+  }
+
+  /** @type {string} */
+  var formattedNumber;
+  // Clear the extension, as that part cannot normally be dialed together with
+  // the main number.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var numberNoExt = number.clone();
+  numberNoExt.clearExtension();
+  /** @type {i18n.phonenumbers.PhoneNumberType} */
+  var numberType = this.getNumberType(numberNoExt);
+  if ((regionCode == 'CO') && (regionCallingFrom == 'CO') &&
+      (numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE)) {
+    formattedNumber = this.formatNationalNumberWithCarrierCode(
+        numberNoExt,
+        i18n.phonenumbers.PhoneNumberUtil
+            .COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_);
+  } else if ((regionCode == 'BR') && (regionCallingFrom == 'BR') &&
+      ((numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE) ||
+      (numberType == i18n.phonenumbers.PhoneNumberType.MOBILE) ||
+      (numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE))) {
+    formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode() ?
+        this.formatNationalNumberWithPreferredCarrierCode(numberNoExt, '') :
+        // Brazilian fixed line and mobile numbers need to be dialed with a
+        // carrier code when called within Brazil. Without that, most of the
+        // carriers won't connect the call. Because of that, we return an empty
+        // string here.
+        '';
+  } else if (this.canBeInternationallyDialled(numberNoExt)) {
+    return withFormatting ?
+        this.format(numberNoExt,
+                    i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL) :
+        this.format(numberNoExt, i18n.phonenumbers.PhoneNumberFormat.E164);
+  } else {
+    formattedNumber = (regionCallingFrom == regionCode) ?
+        this.format(numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL) :
+        '';
+  }
+  return withFormatting ?
+      formattedNumber :
+      i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(formattedNumber);
+};
+
+
+/**
  * Formats a phone number for out-of-country dialing purposes. If no
  * regionCallingFrom is supplied, we format the number in its INTERNATIONAL
  * format. If the country calling code is the same as that of the region where
@@ -1487,7 +1563,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
  * Formats a phone number using the original phone number format that the number
  * is parsed from. The original format is embedded in the country_code_source
  * field of the PhoneNumber object passed in. If such information is missing,
- * the number will be formatted into the NATIONAL format by default.
+ * the number will be formatted into the NATIONAL format by default. When the
+ * number is an invalid number, the method returns the raw input when it is
+ * available.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number that needs to
  *     be formatted in its original number format.
@@ -1498,6 +1576,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
 i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
     function(number, regionCallingFrom) {
 
+  if (number.hasRawInput() && !this.isValidNumber(number)) {
+    return number.getRawInputOrDefault();
+  }
   if (!number.hasCountryCodeSource()) {
     return this.format(number, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
   }
@@ -1649,16 +1730,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
     function(number) {
 
-  // The leading zero in the national (significant) number of an Italian phone
-  // number has a special meaning. Unlike the rest of the world, it indicates
-  // the number is a landline number. There have been plans to migrate landline
-  // numbers to start with the digit two since December 2000, but it has not yet
-  // happened. See http://en.wikipedia.org/wiki/%2B39 for more details. Other
-  // regions such as Cote d'Ivoire and Gabon use this for their mobile numbers.
+  // If a leading zero has been set, we prefix this now. Note this is not a
+  // national prefix.
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
-  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
-      this.isLeadingZeroPossible(number.getCountryCodeOrDefault())) {
+  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero()) {
     return '0' + nationalNumber;
   }
   return nationalNumber;
@@ -2720,8 +2796,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parsePrefixAsIdd_ =
     if (matchedGroups && matchedGroups[1] != null &&
         matchedGroups[1].length > 0) {
       /** @type {string} */
-      var normalizedGroup = i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(
-          matchedGroups[1]);
+      var normalizedGroup =
+          i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(
+              matchedGroups[1]);
       if (normalizedGroup == '0') {
         return false;
       }
@@ -2771,13 +2848,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   // Attempt to parse the first digits as an international prefix.
   /** @type {!RegExp} */
   var iddPattern = new RegExp(possibleIddPrefix);
-  if (this.parsePrefixAsIdd_(iddPattern, number)) {
-    i18n.phonenumbers.PhoneNumberUtil.normalizeSB_(number);
-    return i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_IDD;
-  }
-  // If still not found, then try and normalize the number and then try again.
-  // This shouldn't be done before, since non-numeric characters (+ and ~) may
-  // legally be in the international prefix.
   i18n.phonenumbers.PhoneNumberUtil.normalizeSB_(number);
   return this.parsePrefixAsIdd_(iddPattern, number) ?
       i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_IDD :
