@@ -433,8 +433,6 @@ public class PhoneNumberMatcherTest extends TestCase {
   };
 
   public void testMatchesWithStrictGroupingLeniency() throws Exception {
-    int noMatchFoundCount = 0;
-    int wrongMatchFoundCount = 0;
     List<NumberTest> testCases = new ArrayList<NumberTest>();
     testCases.addAll(Arrays.asList(STRICT_GROUPING_CASES));
     testCases.addAll(Arrays.asList(EXACT_GROUPING_CASES));
@@ -893,13 +891,6 @@ public class PhoneNumberMatcherTest extends TestCase {
   private Iterator<PhoneNumberMatch> findNumbersForLeniency(
       String text, String defaultCountry, PhoneNumberUtil.Leniency leniency) {
     return phoneUtil.findNumbers(text, defaultCountry, leniency, Long.MAX_VALUE).iterator();
-  }
-
-  /**
-   * Returns true if there were no matches found.
-   */
-  private boolean hasNoMatches(Iterator<PhoneNumberMatch> iterator) {
-    return !iterator.hasNext();
   }
 
   private boolean hasNoMatches(Iterable<PhoneNumberMatch> iterable) {

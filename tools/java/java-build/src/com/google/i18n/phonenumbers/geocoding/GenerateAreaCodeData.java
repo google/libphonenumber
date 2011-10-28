@@ -336,14 +336,12 @@ public class GenerateAreaCodeData {
     for (Map.Entry<Integer, String> mapping : mappings.entrySet()) {
       String prefix = String.valueOf(mapping.getKey());
       File targetFile = null;
-      int correspondingAreaCode = -1;
 
       for (File outputBinaryFile : outputBinaryFiles) {
         String outputBinaryFilePrefix =
             getPhonePrefixLanguagePairFromFilename(outputBinaryFile.getName()).prefix;
         if (prefix.startsWith(outputBinaryFilePrefix)) {
           targetFile = outputBinaryFile;
-          correspondingAreaCode = Integer.parseInt(outputBinaryFilePrefix);
           break;
         }
       }
@@ -361,9 +359,8 @@ public class GenerateAreaCodeData {
    * Gets the English data text file path corresponding to the provided one.
    */
   // @VisibleForTesting
-  static String getEnglishDataPath(File inputTextFile) {
-    return LANGUAGE_IN_FILE_PATH_PATTERN.matcher(inputTextFile.getAbsolutePath()).replaceFirst(
-        "$1en$2");
+  static String getEnglishDataPath(String inputTextFileName) {
+    return LANGUAGE_IN_FILE_PATH_PATTERN.matcher(inputTextFileName).replaceFirst("$1en$2");
   }
 
   /**
@@ -416,7 +413,7 @@ public class GenerateAreaCodeData {
    */
   private void makeDataFallbackToEnglish(File inputTextFile, SortedMap<Integer, String> mappings)
       throws IOException {
-    File englishTextFile = new File(getEnglishDataPath(inputTextFile));
+    File englishTextFile = new File(getEnglishDataPath(inputTextFile.getAbsolutePath()));
     if (inputTextFile.getAbsolutePath().equals(englishTextFile.getAbsolutePath()) ||
         !englishTextFile.exists()) {
       return;

@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class ShortNumberUtil {
 
-  private static PhoneNumberUtil phoneUtil;
+  private final PhoneNumberUtil phoneUtil;
 
   public ShortNumberUtil() {
     phoneUtil = PhoneNumberUtil.getInstance();
@@ -62,7 +62,7 @@ public class ShortNumberUtil {
     PhoneNumberDesc emergencyNumberDesc = phoneUtil.getMetadataForRegion(regionCode).getEmergency();
     Pattern emergencyNumberPattern =
         Pattern.compile(emergencyNumberDesc.getNationalNumberPattern());
-    if (regionCode == "BR") {
+    if (regionCode.equals("BR")) {
       // This is to prevent Brazilian local numbers which start with 911 being incorrectly
       // classified as emergency numbers. In Brazil, it is impossible to append additional digits to
       // an emergency number to dial the number.

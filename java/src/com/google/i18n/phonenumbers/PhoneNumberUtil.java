@@ -1179,27 +1179,27 @@ public class PhoneNumberUtil {
 
     String formattedNumber;
     // Clear the extension, as that part cannot normally be dialed together with the main number.
-    number.clearExtension();
-    PhoneNumberType numberType = getNumberType(number);
-    if ((regionCode == "CO") && (regionCallingFrom == "CO") &&
+    PhoneNumber numberNoExt = new PhoneNumber().mergeFrom(number).clearExtension();
+    PhoneNumberType numberType = getNumberType(numberNoExt);
+    if ((regionCode.equals("CO")) && (regionCallingFrom.equals("CO")) &&
         (numberType == PhoneNumberType.FIXED_LINE)) {
       formattedNumber =
-          formatNationalNumberWithCarrierCode(number, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
-    } else if ((regionCode == "BR") && (regionCallingFrom == "BR") &&
+          formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
+    } else if ((regionCode.equals("BR")) && (regionCallingFrom.equals("BR")) &&
         ((numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
          (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE))) {
-      formattedNumber = number.hasPreferredDomesticCarrierCode()
-          ? formatNationalNumberWithPreferredCarrierCode(number, "")
+      formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode()
+          ? formatNationalNumberWithPreferredCarrierCode(numberNoExt, "")
           // Brazilian fixed line and mobile numbers need to be dialed with a carrier code when
           // called within Brazil. Without that, most of the carriers won't connect the call.
           // Because of that, we return an empty string here.
           : "";
-    } else if (canBeInternationallyDialled(number)) {
-      return withFormatting ? format(number, PhoneNumberFormat.INTERNATIONAL)
-                            : format(number, PhoneNumberFormat.E164);
+    } else if (canBeInternationallyDialled(numberNoExt)) {
+      return withFormatting ? format(numberNoExt, PhoneNumberFormat.INTERNATIONAL)
+                            : format(numberNoExt, PhoneNumberFormat.E164);
     } else {
-      formattedNumber = (regionCallingFrom == regionCode)
-          ? format(number, PhoneNumberFormat.NATIONAL) : "";
+      formattedNumber = (regionCallingFrom.equals(regionCode))
+          ? format(numberNoExt, PhoneNumberFormat.NATIONAL) : "";
     }
     return withFormatting ? formattedNumber : normalizeDigitsOnly(formattedNumber);
   }

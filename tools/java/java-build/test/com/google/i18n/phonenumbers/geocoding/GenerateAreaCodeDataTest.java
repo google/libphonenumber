@@ -200,8 +200,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
   }
 
   public void testGetEnglishDataPath() {
-    assertEquals("/path/en/33.txt",
-                 GenerateAreaCodeData.getEnglishDataPath(new File("/path/fr/33.txt")));
+    assertEquals("/path/en/33.txt", GenerateAreaCodeData.getEnglishDataPath("/path/fr/33.txt"));
   }
 
   public void testHasOverlap() {
