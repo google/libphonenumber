@@ -29,6 +29,7 @@ public class ShortNumberUtilTest extends TestCase {
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
   public ShortNumberUtilTest() {
+    PhoneNumberUtil.resetInstance();
     PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance(
         TEST_META_DATA_FILE_PREFIX,
         CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());

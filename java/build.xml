@@ -149,7 +149,7 @@
     <junit printsummary="yes">
       <classpath refid="test.classpath"/>
       <formatter type="xml"/>
-      <batchtest fork="yes" todir="${report.dir}">
+      <batchtest fork="no" todir="${report.dir}">
         <fileset dir="${test.dir}" includes="**/*Test.java"/>
       </batchtest>
     </junit>
