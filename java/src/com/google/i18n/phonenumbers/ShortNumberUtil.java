@@ -16,6 +16,7 @@
 
 package com.google.i18n.phonenumbers;
 
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 
 import java.util.regex.Pattern;
@@ -51,6 +52,25 @@ public class ShortNumberUtil {
    * @return  if the number might be used to connect to an emergency service in the given region.
    */
   public boolean connectsToEmergencyNumber(String number, String regionCode) {
+    return matchesEmergencyNumberHelper(number, regionCode, true /* allows prefix match */);
+  }
+
+  /**
+   * Returns true if the number exactly matches an emergency service number in the given region.
+   *
+   * This method takes into account cases where the number might contain formatting, but doesn't
+   * allow additional digits to be appended.
+   *
+   * @param number  the phone number to test
+   * @param regionCode  the region where the phone number is being dialed
+   * @return  if the number exactly matches an emergency services number in the given region.
+   */
+  public boolean isEmergencyNumber(String number, String regionCode) {
+    return matchesEmergencyNumberHelper(number, regionCode, false /* doesn't allow prefix match */);
+  }
+
+  private boolean matchesEmergencyNumberHelper(String number, String regionCode,
+      boolean allowPrefixMatch) {
     number = PhoneNumberUtil.extractPossibleNumber(number);
     if (PhoneNumberUtil.PLUS_CHARS_PATTERN.matcher(number).lookingAt()) {
       // Returns false if the number starts with a plus sign. We don't believe dialing the country
@@ -58,20 +78,17 @@ public class ShortNumberUtil {
       // add additional logic here to handle it.
       return false;
     }
-    String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(number);
-    PhoneNumberDesc emergencyNumberDesc = phoneUtil.getMetadataForRegion(regionCode).getEmergency();
-    Pattern emergencyNumberPattern =
-        Pattern.compile(emergencyNumberDesc.getNationalNumberPattern());
-    if (regionCode.equals("BR")) {
-      // This is to prevent Brazilian local numbers which start with 911 being incorrectly
-      // classified as emergency numbers. In Brazil, it is impossible to append additional digits to
-      // an emergency number to dial the number.
-      if (!emergencyNumberPattern.matcher(normalizedNumber).matches()) {
-        return false;
-      }
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion(regionCode);
+    if (metadata == null || !metadata.hasEmergency()) {
+      return false;
     }
-
-    // Check the prefix against possible emergency numbers for this region.
-    return emergencyNumberPattern.matcher(normalizedNumber).lookingAt();
+    Pattern emergencyNumberPattern =
+        Pattern.compile(metadata.getEmergency().getNationalNumberPattern());
+    String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(number);
+    // In Brazil, it is impossible to append additional digits to an emergency number to dial the
+    // number.
+    return (!allowPrefixMatch || regionCode.equals("BR"))
+        ? emergencyNumberPattern.matcher(normalizedNumber).matches()
+        : emergencyNumberPattern.matcher(normalizedNumber).lookingAt();
   }
 }

@@ -420,15 +420,18 @@ public class PhoneNumberUtil {
     /**
      * Phone numbers accepted are
      * {@linkplain PhoneNumberUtil#isPossibleNumber(Phonenumber.PhoneNumber) possible} and
-     * {@linkplain PhoneNumberUtil#isValidNumber(Phonenumber.PhoneNumber) valid}.
+     * {@linkplain PhoneNumberUtil#isValidNumber(Phonenumber.PhoneNumber) valid}. Numbers written
+     * in national format must have their national-prefix present if it is usually written for a
+     * number of this type.
      */
     VALID {
       @Override
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number)) {
+        if (!util.isValidNumber(number) ||
+            !containsOnlyValidXChars(number, candidate, util)) {
           return false;
         }
-        return containsOnlyValidXChars(number, candidate, util);
+        return isNationalPrefixPresentIfRequired(number, util);
       }
     },
     /**
@@ -447,7 +450,8 @@ public class PhoneNumberUtil {
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
         if (!util.isValidNumber(number) ||
             !containsOnlyValidXChars(number, candidate, util) ||
-            containsMoreThanOneSlash(candidate)) {
+            containsMoreThanOneSlash(candidate) ||
+            !isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
         // TODO: Evaluate how this works for other locales (testing has been
@@ -501,7 +505,8 @@ public class PhoneNumberUtil {
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
         if (!util.isValidNumber(number) ||
             !containsOnlyValidXChars(number, candidate, util) ||
-            containsMoreThanOneSlash(candidate)) {
+            containsMoreThanOneSlash(candidate) ||
+            !isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
         // TODO: Evaluate how this works for other locales (testing has been
@@ -587,6 +592,51 @@ public class PhoneNumberUtil {
               return false;
           }
         }
+      }
+      return true;
+    }
+
+    private static boolean isNationalPrefixPresentIfRequired(
+        PhoneNumber number, PhoneNumberUtil util) {
+      // First, check how we deduced the country code. If it was written in international format,
+      // then the national prefix is not required.
+      if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
+        return true;
+      }
+      String phoneNumberRegion =
+          util.getRegionCodeForCountryCode(number.getCountryCode());
+      PhoneMetadata metadata = util.getMetadataForRegion(phoneNumberRegion);
+      if (metadata == null) {
+        return true;
+      }
+      // Check if a national prefix should be present when formatting this number.
+      String nationalNumber = util.getNationalSignificantNumber(number);
+      NumberFormat formatRule =
+          util.chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+      // To do this, we check that a national prefix formatting rule was present and that it wasn't
+      // just the first-group symbol ($1) with punctuation.
+      if ((formatRule != null) && formatRule.getNationalPrefixFormattingRule().length() > 0) {
+        if (formatRule.isNationalPrefixOptionalWhenFormatting()) {
+          // The national-prefix is optional in these cases, so we don't need to check if it was
+          // present.
+          return true;
+        }
+        // Remove the first-group symbol.
+        String candidateNationalPrefixRule = formatRule.getNationalPrefixFormattingRule();
+        // We assume that the first-group symbol will never be _before_ the national prefix.
+        candidateNationalPrefixRule =
+            candidateNationalPrefixRule.substring(0, candidateNationalPrefixRule.indexOf("$1"));
+        candidateNationalPrefixRule = util.normalizeDigitsOnly(candidateNationalPrefixRule);
+        if (candidateNationalPrefixRule.length() == 0) {
+          // National Prefix not needed for this number.
+          return true;
+        }
+        // Normalize the remainder.
+        String rawInputCopy = util.normalizeDigitsOnly(number.getRawInput());
+        StringBuilder rawInput = new StringBuilder(rawInputCopy);
+        // Check if we found a national prefix and/or carrier code at the start of the raw input,
+        // and return the result.
+        return util.maybeStripNationalPrefixAndCarrierCode(rawInput, metadata, null);
       }
       return true;
     }
@@ -1476,6 +1526,22 @@ public class PhoneNumberUtil {
     return formattedNationalNumber;
   }
 
+  private NumberFormat chooseFormattingPatternForNumber(List<NumberFormat> availableFormats,
+                                                        String nationalNumber) {
+    for (NumberFormat numFormat : availableFormats) {
+      int size = numFormat.leadingDigitsPatternSize();
+      if (size == 0 || regexCache.getPatternForRegex(
+              // We always use the last leading_digits_pattern, as it is the most detailed.
+              numFormat.getLeadingDigitsPattern(size - 1)).matcher(nationalNumber).lookingAt()) {
+        Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
+        if (m.matches()) {
+          return numFormat;
+        }
+      }
+    }
+    return null;
+  }
+
   // Simple wrapper of formatAccordingToFormats for the common case of no carrier code.
   private String formatAccordingToFormats(String nationalNumber,
                                           List<NumberFormat> availableFormats,
@@ -1489,44 +1555,37 @@ public class PhoneNumberUtil {
                                           List<NumberFormat> availableFormats,
                                           PhoneNumberFormat numberFormat,
                                           String carrierCode) {
-    for (NumberFormat numFormat : availableFormats) {
-      int size = numFormat.leadingDigitsPatternSize();
-      if (size == 0 || regexCache.getPatternForRegex(
-              // We always use the last leading_digits_pattern, as it is the most detailed.
-              numFormat.getLeadingDigitsPattern(size - 1)).matcher(nationalNumber).lookingAt()) {
-        Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
-        if (m.matches()) {
-          String numberFormatRule = numFormat.getFormat();
-          if (numberFormat == PhoneNumberFormat.NATIONAL &&
-              carrierCode != null && carrierCode.length() > 0 &&
-              numFormat.getDomesticCarrierCodeFormattingRule().length() > 0) {
-            // Replace the $CC in the formatting rule with the desired carrier code.
-            String carrierCodeFormattingRule = numFormat.getDomesticCarrierCodeFormattingRule();
-            carrierCodeFormattingRule =
-                CC_PATTERN.matcher(carrierCodeFormattingRule).replaceFirst(carrierCode);
-            // Now replace the $FG in the formatting rule with the first group and the carrier code
-            // combined in the appropriate way.
-            numberFormatRule = FIRST_GROUP_PATTERN.matcher(numberFormatRule)
-                .replaceFirst(carrierCodeFormattingRule);
-            return m.replaceAll(numberFormatRule);
-          } else {
-            // Use the national prefix formatting rule instead.
-            String nationalPrefixFormattingRule = numFormat.getNationalPrefixFormattingRule();
-            if (numberFormat == PhoneNumberFormat.NATIONAL &&
-                nationalPrefixFormattingRule != null &&
-                nationalPrefixFormattingRule.length() > 0) {
-              Matcher firstGroupMatcher = FIRST_GROUP_PATTERN.matcher(numberFormatRule);
-              return m.replaceAll(firstGroupMatcher.replaceFirst(nationalPrefixFormattingRule));
-            } else {
-              return m.replaceAll(numberFormatRule);
-            }
-          }
-        }
+    NumberFormat numFormat = chooseFormattingPatternForNumber(availableFormats, nationalNumber);
+    if (numFormat == null) {
+      // If no pattern above is matched, we format the number as a whole.
+      return nationalNumber;
+    }
+    String numberFormatRule = numFormat.getFormat();
+    Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
+    if (numberFormat == PhoneNumberFormat.NATIONAL &&
+        carrierCode != null && carrierCode.length() > 0 &&
+        numFormat.getDomesticCarrierCodeFormattingRule().length() > 0) {
+      // Replace the $CC in the formatting rule with the desired carrier code.
+      String carrierCodeFormattingRule = numFormat.getDomesticCarrierCodeFormattingRule();
+      carrierCodeFormattingRule =
+          CC_PATTERN.matcher(carrierCodeFormattingRule).replaceFirst(carrierCode);
+      // Now replace the $FG in the formatting rule with the first group and the carrier code
+      // combined in the appropriate way.
+      numberFormatRule = FIRST_GROUP_PATTERN.matcher(numberFormatRule)
+          .replaceFirst(carrierCodeFormattingRule);
+      return m.replaceAll(numberFormatRule);
+    } else {
+      // Use the national prefix formatting rule instead.
+      String nationalPrefixFormattingRule = numFormat.getNationalPrefixFormattingRule();
+      if (numberFormat == PhoneNumberFormat.NATIONAL &&
+          nationalPrefixFormattingRule != null &&
+          nationalPrefixFormattingRule.length() > 0) {
+        Matcher firstGroupMatcher = FIRST_GROUP_PATTERN.matcher(numberFormatRule);
+        return m.replaceAll(firstGroupMatcher.replaceFirst(nationalPrefixFormattingRule));
+      } else {
+        return m.replaceAll(numberFormatRule);
       }
     }
-
-    // If no pattern above is matched, we format the number as a whole.
-    return nationalNumber;
   }
 
   /**
@@ -2131,7 +2190,8 @@ public class PhoneNumberUtil {
         PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
         Pattern validNumberPattern =
             regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
-        maybeStripNationalPrefixAndCarrierCode(potentialNationalNumber, defaultRegionMetadata);
+        maybeStripNationalPrefixAndCarrierCode(
+            potentialNationalNumber, defaultRegionMetadata, null /* Don't need the carrier code */);
         Pattern possibleNumberPattern =
             regexCache.getPatternForRegex(generalDesc.getPossibleNumberPattern());
         // If the number was not valid before but is valid now, or if it was too long before, we
@@ -2219,16 +2279,17 @@ public class PhoneNumberUtil {
    * @param number  the normalized telephone number that we wish to strip any national
    *     dialing prefix from
    * @param metadata  the metadata for the region that we think this number is from
-   * @return the carrier code extracted if it is present, otherwise return an empty string.
+   * @param carrierCode  a place to insert the carrier code if one is extracted
+   * @return true if a national prefix or carrier code (or both) could be extracted.
    */
   // @VisibleForTesting
-  String maybeStripNationalPrefixAndCarrierCode(StringBuilder number, PhoneMetadata metadata) {
-    String carrierCode = "";
+  boolean maybeStripNationalPrefixAndCarrierCode(
+      StringBuilder number, PhoneMetadata metadata, StringBuilder carrierCode) {
     int numberLength = number.length();
     String possibleNationalPrefix = metadata.getNationalPrefixForParsing();
     if (numberLength == 0 || possibleNationalPrefix.length() == 0) {
       // Early return for numbers of zero length.
-      return "";
+      return false;
     }
     // Attempt to parse the first digits as a national prefix.
     Matcher prefixMatcher = regexCache.getPatternForRegex(possibleNationalPrefix).matcher(number);
@@ -2247,12 +2308,13 @@ public class PhoneNumberUtil {
         // If the original number was viable, and the resultant number is not, we return.
         if (isViableOriginalNumber &&
             !nationalNumberRule.matcher(number.substring(prefixMatcher.end())).matches()) {
-          return "";
+          return false;
         }
-        if (numOfGroups > 0 && prefixMatcher.group(numOfGroups) != null) {
-          carrierCode = prefixMatcher.group(1);
+        if (carrierCode != null && numOfGroups > 0 && prefixMatcher.group(numOfGroups) != null) {
+          carrierCode.append(prefixMatcher.group(1));
         }
         number.delete(0, prefixMatcher.end());
+        return true;
       } else {
         // Check that the resultant number is still viable. If not, return. Check this by copying
         // the string buffer and making the transformation on the copy first.
@@ -2260,15 +2322,16 @@ public class PhoneNumberUtil {
         transformedNumber.replace(0, numberLength, prefixMatcher.replaceFirst(transformRule));
         if (isViableOriginalNumber &&
             !nationalNumberRule.matcher(transformedNumber.toString()).matches()) {
-          return "";
+          return false;
         }
-        if (numOfGroups > 1) {
-          carrierCode = prefixMatcher.group(1);
+        if (carrierCode != null && numOfGroups > 1) {
+          carrierCode.append(prefixMatcher.group(1));
         }
         number.replace(0, number.length(), transformedNumber.toString());
+        return true;
       }
     }
-    return carrierCode;
+    return false;
   }
 
   /**
@@ -2511,10 +2574,10 @@ public class PhoneNumberUtil {
                                      "The string supplied is too short to be a phone number.");
     }
     if (regionMetadata != null) {
-      String carrierCode =
-          maybeStripNationalPrefixAndCarrierCode(normalizedNationalNumber, regionMetadata);
+      StringBuilder carrierCode = new StringBuilder();
+      maybeStripNationalPrefixAndCarrierCode(normalizedNationalNumber, regionMetadata, carrierCode);
       if (keepRawInput) {
-        phoneNumber.setPreferredDomesticCarrierCode(carrierCode);
+        phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
       }
     }
     int lengthOfNationalNumber = normalizedNationalNumber.length();

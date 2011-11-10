@@ -279,6 +279,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * combining marks should also return true since we assume they have been added to a preceding
    * Latin character.
    */
+  // @VisibleForTesting
   static boolean isLatinLetter(char letter) {
     // Combining marks are a subset of non-spacing-mark.
     if (!Character.isLetter(letter) && Character.getType(letter) != Character.NON_SPACING_MARK) {
@@ -420,8 +421,14 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         }
       }
 
-      PhoneNumber number = phoneUtil.parse(candidate, preferredRegion);
+      PhoneNumber number = phoneUtil.parseAndKeepRawInput(candidate, preferredRegion);
       if (leniency.verify(number, candidate, phoneUtil)) {
+        // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
+        // values parsed. TODO: stop clearing all values here and switch all users over
+        // to using rawInput() rather than the rawString() of PhoneNumberMatch.
+        number.clearCountryCodeSource();
+        number.clearRawInput();
+        number.clearPreferredDomesticCarrierCode();
         return new PhoneNumberMatch(offset, candidate, number);
       }
     } catch (NumberParseException e) {

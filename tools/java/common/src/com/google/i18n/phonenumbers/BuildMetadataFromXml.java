@@ -63,6 +63,8 @@ public class BuildMetadataFromXml {
   private static final String NATIONAL_NUMBER_PATTERN = "nationalNumberPattern";
   private static final String NATIONAL_PREFIX = "nationalPrefix";
   private static final String NATIONAL_PREFIX_FORMATTING_RULE = "nationalPrefixFormattingRule";
+  private static final String NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING =
+      "nationalPrefixOptionalWhenFormatting";
   private static final String NATIONAL_PREFIX_FOR_PARSING = "nationalPrefixForParsing";
   private static final String NATIONAL_PREFIX_TRANSFORM_RULE = "nationalPrefixTransformRule";
   private static final String NO_INTERNATIONAL_DIALLING = "noInternationalDialling";
@@ -270,12 +272,15 @@ public class BuildMetadataFromXml {
 
   /**
    *  Extracts the available formats from the provided DOM element. If it does not contain any
-   *  nationalPrefixFormattingRule, the one passed-in is retained.
+   *  nationalPrefixFormattingRule, the one passed-in is retained. The nationalPrefix,
+   *  nationalPrefixFormattingRule and nationalPrefixOptionalWhenFormatting values are provided from
+   *  the parent (territory) element.
    */
   // @VisibleForTesting
   static void loadAvailableFormats(PhoneMetadata.Builder metadata, String regionCode,
                                    Element element, String nationalPrefix,
-                                   String nationalPrefixFormattingRule) {
+                                   String nationalPrefixFormattingRule,
+                                   boolean nationalPrefixOptionalWhenFormatting) {
     String carrierCodeFormattingRule = "";
     if (element.hasAttribute(CARRIER_CODE_FORMATTING_RULE)) {
       carrierCodeFormattingRule = validateRE(
@@ -293,8 +298,11 @@ public class BuildMetadataFromXml {
         if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_FORMATTING_RULE)) {
           format.setNationalPrefixFormattingRule(
               getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix));
+          format.setNationalPrefixOptionalWhenFormatting(
+              numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
         } else {
           format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
+          format.setNationalPrefixOptionalWhenFormatting(nationalPrefixOptionalWhenFormatting);
         }
         if (numberFormatElement.hasAttribute(CARRIER_CODE_FORMATTING_RULE)) {
           format.setDomesticCarrierCodeFormattingRule(validateRE(
@@ -444,7 +452,8 @@ public class BuildMetadataFromXml {
         loadTerritoryTagMetadata(regionCode, element, nationalPrefix, nationalPrefixFormattingRule);
 
     loadAvailableFormats(metadata, regionCode, element, nationalPrefix.toString(),
-                         nationalPrefixFormattingRule.toString());
+                         nationalPrefixFormattingRule.toString(),
+                         element.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
     loadGeneralDesc(metadata, element);
     return metadata.build();
   }

@@ -486,7 +486,8 @@
     <!-- Mexico -->
     <territory id="MX" countryCode="52" internationalPrefix="00"
                nationalPrefix="01" nationalPrefixForParsing="01|04[45](\d{10})"
-               nationalPrefixTransformRule="1$1" nationalPrefixFormattingRule="$NP $FG">
+               nationalPrefixTransformRule="1$1" nationalPrefixFormattingRule="$NP $FG"
+               nationalPrefixOptionalWhenFormatting="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>[89]00</leadingDigits>

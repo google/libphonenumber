@@ -102,6 +102,19 @@ public final class Phonemetadata {
       return this;
     }
 
+    // optional bool national_prefix_optional_when_formatting = 6;
+    private boolean hasNationalPrefixOptionalWhenFormatting;
+    private boolean nationalPrefixOptionalWhenFormatting_ = false;
+    public boolean hasNationalPrefixOptionalWhenFormatting() {
+      return hasNationalPrefixOptionalWhenFormatting; }
+    public boolean isNationalPrefixOptionalWhenFormatting() {
+      return nationalPrefixOptionalWhenFormatting_; }
+    public NumberFormat setNationalPrefixOptionalWhenFormatting(boolean value) {
+      hasNationalPrefixOptionalWhenFormatting = true;
+      nationalPrefixOptionalWhenFormatting_ = value;
+      return this;
+    }
+
     // optional string domestic_carrier_code_formatting_rule = 5;
     private boolean hasDomesticCarrierCodeFormattingRule;
     private String domesticCarrierCodeFormattingRule_ = "";
@@ -132,6 +145,7 @@ public final class Phonemetadata {
       if (other.hasDomesticCarrierCodeFormattingRule()) {
         setDomesticCarrierCodeFormattingRule(other.getDomesticCarrierCodeFormattingRule());
       }
+      setNationalPrefixOptionalWhenFormatting(other.isNationalPrefixOptionalWhenFormatting());
       return this;
     }
 
@@ -152,6 +166,7 @@ public final class Phonemetadata {
       if (hasDomesticCarrierCodeFormattingRule) {
         objectOutput.writeUTF(domesticCarrierCodeFormattingRule_);
       }
+      objectOutput.writeBoolean(nationalPrefixOptionalWhenFormatting_);
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
@@ -167,6 +182,7 @@ public final class Phonemetadata {
       if (objectInput.readBoolean()) {
         setDomesticCarrierCodeFormattingRule(objectInput.readUTF());
       }
+      setNationalPrefixOptionalWhenFormatting(objectInput.readBoolean());
     }
   }
 

@@ -15,7 +15,8 @@
  */
 
 // Definition of protocol buffer for holding metadata for international
-// telephone numbers.
+// telephone numbers. The fields here correspond exactly to those in
+// resources/PhoneNumberMetaData.xml.
 // @author Shaopeng Jia
 
 syntax = "proto2";
@@ -67,12 +68,23 @@ message NumberFormat {
   // would contain "($NP)$FG". Note $FG should always be present in this field,
   // but $NP can be omitted. For example, having "$FG" could indicate the
   // number should be formatted in NATIONAL format without the national prefix.
-  // This is commonly used to override the rule from generalDesc.
+  // This is commonly used to override the rule specified for the territory in
+  // the XML file.
   //
   // When this field is missing, a number will be formatted without national
   // prefix in NATIONAL format. This field does not affect how a number
   // is formatted in other formats, such as INTERNATIONAL.
   optional string national_prefix_formatting_rule = 4;
+
+  // This field specifies whether the $NP can be omitted when formatting a
+  // number in national format, even though it usually wouldn't be. For example,
+  // a UK number would be formatted by our library as 020 XXXX XXXX. If we have
+  // commonly seen this number written by people without the leading 0, for
+  // example as (20) XXXX XXXX, this field would be set to true. This will be
+  // inherited from the value set for the territory in the XML file, unless a
+  // national_prefix_formatting_rule is defined specifically for this
+  // NumberFormat.
+  optional bool national_prefix_optional_when_formatting = 6;
 
   // This field specifies how any carrier code ($CC) together with the first
   // group ($FG) in the national significant number should be formatted
@@ -203,6 +215,23 @@ message PhoneMetadata {
   // format. In this case, the prefix 9 is inserted when dialling from
   // overseas, but otherwise the prefix 0 and the carrier selection code
   // 15 (inserted after the area code of 343) is used.
+  // Note: this field is populated by setting a value for <intlFormat> inside
+  // the <numberFormat> tag in the XML file. If <intlFormat> is not set then it
+  // defaults to the same value as the <format> tag.
+  //
+  // Examples:
+  //   To set the <intlFormat> to a different value than the <format>:
+  //     <numberFormat pattern=....>
+  //       <format>$1 $2 $3</format>
+  //       <intlFormat>$1-$2-$3</intlFormat>
+  //     </numberFormat>
+  //
+  //   To have a format only used for national formatting, set <intlFormat> to
+  //   "NA":
+  //     <numberFormat pattern=....>
+  //       <format>$1 $2 $3</format>
+  //       <intlFormat>NA</intlFormat>
+  //     </numberFormat>
   repeated NumberFormat intl_number_format = 20;
 
   // This field is set when this country is considered to be the main country

@@ -21,6 +21,8 @@ import junit.framework.TestCase;
 import java.io.InputStream;
 
 /**
+ * Unit tests for ShortNumberUtil.java
+ *
  * @author Shaopeng Jia
  */
 public class ShortNumberUtilTest extends TestCase {
@@ -73,5 +75,74 @@ public class ShortNumberUtilTest extends TestCase {
     assertFalse(shortUtil.connectsToEmergencyNumber("9111", RegionCode.BR));
     assertFalse(shortUtil.connectsToEmergencyNumber("1900", RegionCode.BR));
     assertFalse(shortUtil.connectsToEmergencyNumber("9996", RegionCode.BR));
+  }
+
+  public void testConnectsToEmergencyNumber_AO() {
+    // Angola doesn't have any metadata for emergency numbers in the test metadata.
+    assertFalse(shortUtil.connectsToEmergencyNumber("911", RegionCode.AO));
+    assertFalse(shortUtil.connectsToEmergencyNumber("222123456", RegionCode.AO));
+    assertFalse(shortUtil.connectsToEmergencyNumber("923123456", RegionCode.AO));
+  }
+
+  public void testConnectsToEmergencyNumber_ZW() {
+    // Zimbabwe doesn't have any metadata in the test metadata.
+    assertFalse(shortUtil.connectsToEmergencyNumber("911", RegionCode.ZW));
+    assertFalse(shortUtil.connectsToEmergencyNumber("01312345", RegionCode.ZW));
+    assertFalse(shortUtil.connectsToEmergencyNumber("0711234567", RegionCode.ZW));
+  }
+
+  public void testIsEmergencyNumber_US() {
+    assertTrue(shortUtil.isEmergencyNumber("911", RegionCode.US));
+    assertTrue(shortUtil.isEmergencyNumber("119", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("999", RegionCode.US));
+  }
+
+  public void testIsEmergencyNumberLongNumber_US() {
+    assertFalse(shortUtil.isEmergencyNumber("9116666666", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("1196666666", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("9996666666", RegionCode.US));
+  }
+
+  public void testIsEmergencyNumberWithFormatting_US() {
+    assertTrue(shortUtil.isEmergencyNumber("9-1-1", RegionCode.US));
+    assertTrue(shortUtil.isEmergencyNumber("*911", RegionCode.US));
+    assertTrue(shortUtil.isEmergencyNumber("1-1-9", RegionCode.US));
+    assertTrue(shortUtil.isEmergencyNumber("*119", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("9-9-9", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("*999", RegionCode.US));
+  }
+
+  public void testIsEmergencyNumberWithPlusSign_US() {
+    assertFalse(shortUtil.isEmergencyNumber("+911", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("\uFF0B911", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber(" +911", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("+119", RegionCode.US));
+    assertFalse(shortUtil.isEmergencyNumber("+999", RegionCode.US));
+  }
+
+  public void testIsEmergencyNumber_BR() {
+    assertTrue(shortUtil.isEmergencyNumber("911", RegionCode.BR));
+    assertTrue(shortUtil.isEmergencyNumber("190", RegionCode.BR));
+    assertFalse(shortUtil.isEmergencyNumber("999", RegionCode.BR));
+  }
+
+  public void testIsEmergencyNumberLongNumber_BR() {
+    assertFalse(shortUtil.isEmergencyNumber("9111", RegionCode.BR));
+    assertFalse(shortUtil.isEmergencyNumber("1900", RegionCode.BR));
+    assertFalse(shortUtil.isEmergencyNumber("9996", RegionCode.BR));
+  }
+
+  public void testIsEmergencyNumber_AO() {
+    // Angola doesn't have any metadata for emergency numbers in the test metadata.
+    assertFalse(shortUtil.isEmergencyNumber("911", RegionCode.AO));
+    assertFalse(shortUtil.isEmergencyNumber("222123456", RegionCode.AO));
+    assertFalse(shortUtil.isEmergencyNumber("923123456", RegionCode.AO));
+  }
+
+  public void testIsEmergencyNumber_ZW() {
+    // Zimbabwe doesn't have any metadata in the test metadata.
+    assertFalse(shortUtil.isEmergencyNumber("911", RegionCode.ZW));
+    assertFalse(shortUtil.isEmergencyNumber("01312345", RegionCode.ZW));
+    assertFalse(shortUtil.isEmergencyNumber("0711234567", RegionCode.ZW));
   }
 }

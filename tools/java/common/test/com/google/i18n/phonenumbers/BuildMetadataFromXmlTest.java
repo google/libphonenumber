@@ -259,7 +259,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "</territory>";
     Element element = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.loadAvailableFormats(metadata, "AE", element, "0", "");
+    BuildMetadataFromXml.loadAvailableFormats(
+        metadata, "AE", element, "0", "", false /* NP not optional */);
     assertEquals("($1)", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
     assertEquals("0 $CC ($1)", metadata.getNumberFormat(0).getDomesticCarrierCodeFormattingRule());
     assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
@@ -277,7 +278,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "</territory>";
     Element element = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.loadAvailableFormats(metadata, "AE", element, "0", "");
+    BuildMetadataFromXml.loadAvailableFormats(
+        metadata, "AE", element, "0", "", false /* NP not optional */);
     assertEquals("($1)", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
     assertEquals("0 $CC ($1)", metadata.getNumberFormat(0).getDomesticCarrierCodeFormattingRule());
     assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
@@ -293,7 +295,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "</territory>";
     Element element = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.loadAvailableFormats(metadata, "AE", element, "", "($1)");
+    BuildMetadataFromXml.loadAvailableFormats(
+        metadata, "AE", element, "", "($1)", false /* NP not optional */);
     assertEquals("($1)", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
   }
 
@@ -307,7 +310,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "</territory>";
     Element element = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.loadAvailableFormats(metadata, "AE", element, "0", "($1)");
+    BuildMetadataFromXml.loadAvailableFormats(
+        metadata, "AE", element, "0", "($1)", false /* NP not optional */);
     assertEquals(0, metadata.intlNumberFormatSize());
   }
 
@@ -322,7 +326,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "</territory>";
     Element element = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.loadAvailableFormats(metadata, "AE", element, "0", "($1)");
+    BuildMetadataFromXml.loadAvailableFormats(
+        metadata, "AE", element, "0", "($1)", false /* NP not optional */);
     assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
     assertEquals("$1-$2", metadata.getNumberFormat(1).getFormat());
   }

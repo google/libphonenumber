@@ -38,7 +38,7 @@ public class CountryCodeToRegionCodeMap {
 
     ArrayList<String> listWithRegionCode;
 
-    listWithRegionCode = new ArrayList<String>(24);
+    listWithRegionCode = new ArrayList<String>(25);
     listWithRegionCode.add("US");
     listWithRegionCode.add("AG");
     listWithRegionCode.add("AI");
@@ -58,6 +58,7 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("MP");
     listWithRegionCode.add("MS");
     listWithRegionCode.add("PR");
+    listWithRegionCode.add("SX");
     listWithRegionCode.add("TC");
     listWithRegionCode.add("TT");
     listWithRegionCode.add("VC");

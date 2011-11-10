@@ -45,7 +45,8 @@ public class PhoneNumberMatcherTest extends TestCase {
   public void testFindNationalNumber() throws Exception {
     // same cases as in testParseNationalNumber
     doTestFindInContext("033316005", RegionCode.NZ);
-    doTestFindInContext("33316005", RegionCode.NZ);
+    // ("33316005", RegionCode.NZ) is omitted since the national prefix is obligatory for these
+    // types of numbers in New Zealand.
     // National prefix attached and some formatting present.
     doTestFindInContext("03-331 6005", RegionCode.NZ);
     doTestFindInContext("03 331 6005", RegionCode.NZ);
@@ -375,6 +376,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("1650 x 253 - 1234", RegionCode.US),
     new NumberTest("650 x 253 - 1234", RegionCode.US),
     new NumberTest("650x2531234", RegionCode.US),
+    new NumberTest("(20) 3346 1234", RegionCode.GB),  // Non-optional NP omitted
   };
 
   /**
@@ -393,7 +395,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("800 234 1 111x1111", RegionCode.US),
     new NumberTest("+494949-4-94", RegionCode.DE),  // National number in wrong format
     new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17\uFF17",
-                   RegionCode.US)
+                   RegionCode.US),
   };
 
   /**
@@ -405,7 +407,7 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("415-6667777", RegionCode.US),
     // Should be found by strict grouping but not exact grouping, as the last two groups are
     // formatted together as a block.
-    new NumberTest("800-2491234", RegionCode.DE),
+    new NumberTest("0800-2491234", RegionCode.DE),
   };
 
   /**
@@ -430,6 +432,8 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("+49494949 ext. 49", RegionCode.DE),
     new NumberTest("0494949", RegionCode.DE),
     new NumberTest("0494949 ext. 49", RegionCode.DE),
+    new NumberTest("01 (33) 3461 2234", RegionCode.MX),  // Optional NP present
+    new NumberTest("(33) 3461 2234", RegionCode.MX),  // Optional NP omitted
   };
 
   public void testMatchesWithStrictGroupingLeniency() throws Exception {

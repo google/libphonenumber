@@ -1,3 +1,19 @@
+November 10th, 2011: libphonenumber-4.2
+* Code changes
+ - Providing an "exact match" isEmergencyNumber method
+ - Improvement to PhoneNumberMatcher: requires national prefix to be present
+   when matching national-format numbers, unless matching for a region where it
+   is explicitly marked in the metadata that they may be omitted. Applies to
+   leniency level VALID and higher.
+ - Change formatNumberForMobileDialing not to modify the phoneNumber passed in.
+
+* Metadata changes
+ - Emergency numbers added for all remaining countries
+ - Collected data on which numbers we format with a national prefix are
+   commonly written without one and added this
+ - Updates for AR, AT, BH, CZ, GR, IR, KM, LT, MX, PT, SE, SO, UG
+ - Addition of SX (Sint Maarten)
+
 October 19th, 2011: libphonenumber-4.1
 * Code changes
  - Update code and metadata for countries with IDD "8~10" to accept phone
