@@ -923,7 +923,7 @@ public class PhoneNumberUtil {
       return 0;
     }
 
-    if (getRegionCodeForNumber(number).equals("AR") &&
+    if (getRegionCodeForCountryCode(number.getCountryCode()).equals("AR") &&
         getNumberType(number) == PhoneNumberType.MOBILE) {
       // Argentinian mobile numbers, when formatted in the international format, are in the form of
       // +54 9 NDC XXXX.... As a result, we take the length of the third group (NDC) and add 1 for
