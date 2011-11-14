@@ -601,6 +601,18 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryCallingNumber) {
   EXPECT_EQ("011 15 8765-4321 ext. 1234", formatted_number);
 }
 
+TEST_F(PhoneNumberUtilTest, FormatOutOfCountryWithInvalidRegion) {
+  PhoneNumber test_number;
+  string formatted_number;
+  test_number.set_country_code(1);
+  test_number.set_national_number(6502530000ULL);
+  // AQ/Antarctica isn't a valid region code for phone number formatting,
+  // so this falls back to intl formatting.
+  phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::AQ(),
+                                              &formatted_number);
+  EXPECT_EQ("+1 650 253 0000", formatted_number);
+}
+
 TEST_F(PhoneNumberUtilTest, FormatOutOfCountryWithPreferredIntlPrefix) {
   PhoneNumber test_number;
   string formatted_number;

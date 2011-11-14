@@ -53,8 +53,10 @@ class PhoneNumberMatcher {
     // accepted at this leniency level, whereas "650 253 0000" or "6502530000"
     // are. Numbers with more than one '/' symbol are also dropped at this
     // level.
-    // Warning: This and the next level might result in lower coverage
-    // especially for regions outside of country code "+1".
+    // Warning: The next two levels might result in lower coverage especially
+    // for regions outside of country code "+1". If you are not sure about which
+    // level to use, you can send an e-mail to the discussion group
+    // http://groups.google.com/group/libphonenumber-discuss/
     STRICT_GROUPING,
     // Phone numbers accepted are valid and are grouped in the same way that we
     // would have formatted it, or as a single block. For example, a US number
@@ -95,6 +97,12 @@ class PhoneNumberMatcher {
   // match is found, otherwise returns false. The value "offset" refers to the
   // start index of the candidate string within the overall text.
   bool Find(int index, PhoneNumberMatch* match);
+
+  // Checks a number was formatted with a national prefix, if the number was
+  // found in national format, and a national prefix is required for that
+  // number. Returns false if the number needed to have a national prefix and
+  // none was found.
+  bool IsNationalPrefixPresentIfRequired(const PhoneNumber& number) const;
 
   // Attempts to extract a match from candidate. Returns true if the match was
   // found, otherwise returns false.

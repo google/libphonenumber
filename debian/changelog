@@ -1,3 +1,9 @@
+libphonenumber (4.2) lucid; urgency=low
+
+  * Version update.
+
+ -- Fredrik Roubert <roubert@google.com>  Mon, 14 Nov 2011 14:30:28 +0200
+
 libphonenumber (4.1) lucid; urgency=low
 
   * Version update.

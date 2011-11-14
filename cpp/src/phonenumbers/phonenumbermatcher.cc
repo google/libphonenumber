@@ -38,6 +38,7 @@
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
 #include "phonenumbers/normalize_utf8.h"
+#include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/phonenumbermatch.h"
 #include "phonenumbers/phonenumberutil.h"
@@ -359,13 +360,20 @@ bool PhoneNumberMatcher::ParseAndVerify(const string& candidate, int offset,
   }
 
   PhoneNumber number;
-  if (phone_util_.Parse(candidate, preferred_region_, &number) !=
+  if (phone_util_.ParseAndKeepRawInput(candidate, preferred_region_, &number) !=
       PhoneNumberUtil::NO_PARSING_ERROR) {
     return false;
   }
   if (VerifyAccordingToLeniency(leniency_, number, candidate)) {
     match->set_start(offset);
     match->set_raw_string(candidate);
+    // We used ParseAndKeepRawInput to create this number, but for now we don't
+    // return the extra values parsed. TODO: stop clearing all values here and
+    // switch all users over to using raw_input() rather than the raw_string()
+    // of PhoneNumberMatch.
+    number.clear_country_code_source();
+    number.clear_preferred_domestic_carrier_code();
+    number.clear_raw_input();
     match->set_number(number);
     return true;
   }
@@ -381,15 +389,17 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
     case PhoneNumberMatcher::POSSIBLE:
       return phone_util_.IsPossibleNumber(number);
     case PhoneNumberMatcher::VALID:
-      if (!phone_util_.IsValidNumber(number)) {
+      if (!phone_util_.IsValidNumber(number) ||
+          !ContainsOnlyValidXChars(number, candidate, phone_util_)) {
         return false;
       }
-      return ContainsOnlyValidXChars(number, candidate, phone_util_);
+      return IsNationalPrefixPresentIfRequired(number);
     case PhoneNumberMatcher::STRICT_GROUPING: {
       if (!phone_util_.IsValidNumber(number) ||
           !ContainsOnlyValidXChars(number, candidate, phone_util_) ||
           // Two or more slashes were present.
-          FindNth(candidate, '/', 2) != string::npos) {
+          (FindNth(candidate, '/', 2) != string::npos) ||
+          !IsNationalPrefixPresentIfRequired(number)) {
         return false;
       }
       // TODO(lararennie,shaopengjia): Evaluate how this works for other locales
@@ -440,7 +450,8 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
       if (!phone_util_.IsValidNumber(number) ||
           !ContainsOnlyValidXChars(number, candidate, phone_util_) ||
           // Two or more slashes were present.
-          FindNth(candidate, '/', 2) != string::npos) {
+          (FindNth(candidate, '/', 2) != string::npos) ||
+          !IsNationalPrefixPresentIfRequired(number)) {
         return false;
       }
       // TODO(lararennie,shaopengjia): Evaluate how this works for other locales
@@ -624,6 +635,61 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
     --max_tries_;
   }
   return false;
+}
+
+bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(
+    const PhoneNumber& number) const {
+  // First, check how we deduced the country code. If it was written in
+  // international format, then the national prefix is not required.
+  if (number.country_code_source() != PhoneNumber::FROM_DEFAULT_COUNTRY) {
+    return true;
+  }
+  string phone_number_region;
+  phone_util_.GetRegionCodeForCountryCode(
+      number.country_code(), &phone_number_region);
+  const PhoneMetadata* metadata =
+      phone_util_.GetMetadataForRegion(phone_number_region);
+  if (!metadata) {
+    return true;
+  }
+  // Check if a national prefix should be present when formatting this number.
+  string national_number;
+  phone_util_.GetNationalSignificantNumber(number, &national_number);
+  const NumberFormat* format_rule =
+      phone_util_.ChooseFormattingPatternForNumber(metadata->number_format(),
+                                                   national_number,
+                                                   national_number);
+  // To do this, we check that a national prefix formatting rule was present and
+  // that it wasn't just the first-group symbol ($1) with punctuation.
+  if (format_rule && !format_rule->national_prefix_formatting_rule().empty()) {
+    if (format_rule->national_prefix_optional_when_formatting()) {
+      // The national-prefix is optional in these cases, so we don't need to
+      // check if it was present.
+      return true;
+    }
+    // Remove the first-group symbol.
+    string candidate_national_prefix_rule(
+        format_rule->national_prefix_formatting_rule());
+    // We assume that the first-group symbol will never be _before_ the national
+    // prefix.
+    candidate_national_prefix_rule.erase(
+        candidate_national_prefix_rule.find("$1"));
+    phone_util_.NormalizeDigitsOnly(&candidate_national_prefix_rule);
+    if (candidate_national_prefix_rule.empty()) {
+      // National Prefix not needed for this number.
+      return true;
+    }
+    // Normalize the remainder.
+    string raw_input_copy(number.raw_input());
+    // Check if we found a national prefix and/or carrier code at the start of
+    // the raw input, and return the result.
+    phone_util_.NormalizeDigitsOnly(&raw_input_copy);
+    return phone_util_.MaybeStripNationalPrefixAndCarrierCode(
+        *metadata,
+        &raw_input_copy,
+        NULL);  // Don't need to keep the stripped carrier code.
+  }
+  return true;
 }
 
 }  // namespace phonenumbers

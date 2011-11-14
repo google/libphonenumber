@@ -326,7 +326,8 @@ class PhoneNumberMatcherTest : public testing::Test {
 TEST_F(PhoneNumberMatcherTest, FindNationalNumber) {
   // Same cases as in ParseNationalNumber.
   DoTestFindInContext("033316005", RegionCode::NZ());
-  DoTestFindInContext("33316005", RegionCode::NZ());
+  // "33316005", RegionCode::NZ() is omitted since the national-prefix is
+  // obligatory for these types of numbers in New Zealand.
   // National prefix attached and some formatting present.
   DoTestFindInContext("03-331 6005", RegionCode::NZ());
   DoTestFindInContext("03 331 6005", RegionCode::NZ());
@@ -697,6 +698,7 @@ static const NumberTest POSSIBLE_ONLY_CASES[] = {
   NumberTest("1650 x 253 - 1234", RegionCode::US()),
   NumberTest("650 x 253 - 1234", RegionCode::US()),
   NumberTest("650x2531234", RegionCode::US()),
+  NumberTest("(20) 3346 1234", RegionCode::GB()),  // Non-optional NP omitted
 };
 
 // Strings with number-like things that should only be found up to and including
@@ -727,7 +729,7 @@ static const NumberTest STRICT_GROUPING_CASES[] = {
   NumberTest("415-6667777", RegionCode::US()),
   // Should be found by strict grouping but not exact grouping, as the last two
   // groups are formatted together as a block.
-  NumberTest("800-2491234", RegionCode::DE()),
+  NumberTest("0800-2491234", RegionCode::DE()),
 };
 
 // Strings with number-like things that should found at all levels.
@@ -757,6 +759,8 @@ static const NumberTest EXACT_GROUPING_CASES[] = {
   NumberTest("+49494949 ext. 49", RegionCode::DE()),
   NumberTest("0494949", RegionCode::DE()),
   NumberTest("0494949 ext. 49", RegionCode::DE()),
+  NumberTest("01 (33) 3461 2234", RegionCode::MX()),  // Optional NP present
+  NumberTest("(33) 3461 2234", RegionCode::MX()),  // Optional NP omitted
 };
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithStrictGroupingLeniency) {

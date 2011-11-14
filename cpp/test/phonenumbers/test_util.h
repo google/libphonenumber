@@ -57,6 +57,11 @@ class RegionCode {
     return s;
   }
 
+  static const string& AQ() {
+    static const string s = "AQ";
+    return s;
+  }
+
   static const string& AR() {
     static const string s = "AR";
     return s;

@@ -147,6 +147,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     TOO_LONG,
   };
 
+  // Convenience method to get a list of what regions the library has metadata
+  // for.
+  void GetSupportedRegions(set<string>* regions) const;
+
   // Gets a PhoneNumberUtil instance to carry out international phone number
   // formatting, parsing, or validation. The instance is loaded with phone
   // number metadata for a number of most commonly used regions, as specified by
@@ -201,8 +205,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //
   // int area_code_length = phone_util.GetLengthOfGeographicalAreaCode(number);
   // if (area_code_length > 0) {
-  //   area_code = national_significant_number.substring(0, area_code_length);
-  //   subscriber_number = national_significant_number.substring(
+  //   area_code = national_significant_number.substr(0, area_code_length);
+  //   subscriber_number = national_significant_number.substr(
   //       area_code_length, string::npos);
   // else {
   //   area_code = "";
@@ -244,9 +248,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // int national_destination_code_length =
   //     phone_util.GetLengthOfGeographicalAreaCode(number);
   // if (national_destination_code_length > 0) {
-  //   national_destination_code = national_significant_number.substring(
+  //   national_destination_code = national_significant_number.substr(
   //       0, national_destination_code_length);
-  //   subscriber_number = national_significant_number.substring(
+  //   subscriber_number = national_significant_number.substr(
   //       national_destination_code_length, string::npos);
   // else {
   //   national_destination_code = "";
@@ -604,9 +608,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Trims unwanted end characters from a phone number string.
   void TrimUnwantedEndChars(string* number) const;
 
-  // Gets all the supported regions.
-  void GetSupportedRegions(set<string>* regions) const;
-
   // Helper function to check region code is not unknown or null.
   bool IsValidRegionCode(const string& region_code) const;
 
@@ -623,6 +624,26 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   void GetRegionCodesForCountryCallingCode(
       int country_calling_code,
       list<string>* region_codes) const;
+
+  const NumberFormat* ChooseFormattingPatternForNumber(
+      const RepeatedPtrField<NumberFormat>& available_formats,
+      const string& number_for_leading_digits_match,
+      const string& national_number) const;
+
+  void FormatAccordingToFormatsWithCarrier(
+      const string& number_for_leading_digits_match,
+      const RepeatedPtrField<NumberFormat>& available_formats,
+      PhoneNumberUtil::PhoneNumberFormat number_format,
+      const string& national_number,
+      const string& carrier_code,
+      string* formatted_number) const;
+
+  void FormatAccordingToFormats(
+      const string& number_for_leading_digits_match,
+      const RepeatedPtrField<NumberFormat>& available_formats,
+      PhoneNumberUtil::PhoneNumberFormat number_format,
+      const string& national_number,
+      string* formatted_number) const;
 
   // Simple wrapper of FormatNationalNumberWithCarrier for the common case of
   // no carrier code.
@@ -660,7 +681,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& possible_idd_prefix,
       string* number) const;
 
-  void MaybeStripNationalPrefixAndCarrierCode(
+  bool MaybeStripNationalPrefixAndCarrierCode(
       const PhoneMetadata& metadata,
       string* number,
       string* carrier_code) const;
