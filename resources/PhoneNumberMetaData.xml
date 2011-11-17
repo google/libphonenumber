@@ -12513,7 +12513,7 @@
           </leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
+        <numberFormat pattern="(\d{2})(\d{3,4})(\d{4})">
           <leadingDigits>
             1(?:
               [169][2-8]|
@@ -12551,54 +12551,17 @@
           <leadingDigits>13[2-9]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
+        <!-- 030 numbers are used for Unified Messaging Services, according to the plan. There is a
+             limit of what digits may follow the 030, but we ignore that here. These numbers are
+             actually not supported for validation purposes by the library at the moment as no
+             online examples can be found, but we leave theme here so formatting continues to work
+             if they are entered. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{3})(\d{4})">
           <leadingDigits>30</leadingDigits>
           <format>$1-$2-$3-$4</format>
         </numberFormat>
-        <numberFormat pattern="(\d)(\d{4})(\d{4})">
-          <leadingDigits>
-            2(?:
-              [26]|
-              3[0-467]
-            )
-          </leadingDigits>
-          <leadingDigits>
-            2(?:
-              [26]|
-              3(?:
-                01|
-                1[45]|
-                2[17-9]|
-                39|
-                4|
-                6[67]|
-                7[078]
-              )
-            )
-          </leadingDigits>
-          <format>$1-$2-$3</format>
-        </numberFormat>
-        <numberFormat pattern="(\d)(\d{3})(\d{4})">
-          <leadingDigits>
-            2(?:
-              3[0-35-9]|
-              [457-9]
-            )
-          </leadingDigits>
-          <leadingDigits>
-            2(?:
-              3(?:
-                0[02-9]|
-                1[0-36-9]|
-                2[02-6]|
-                3[0-8]|
-                6[0-589]|
-                7[1-69]|
-                [589]
-              )|
-              [457-9]
-            )
-          </leadingDigits>
+        <numberFormat pattern="(\d)(\d{3,4})(\d{4})">
+          <leadingDigits>2[2-9]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d)(\d{3,4})">
