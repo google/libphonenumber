@@ -665,6 +665,13 @@ function testFormatOutOfCountryCallingNumber() {
                                                 RegionCode.AR));
 }
 
+function testFormatOutOfCountryWithInvalidRegion() {
+  // AQ/Antarctica isn't a valid region code for phone number formatting,
+  // so this falls back to intl formatting.
+  assertEquals('+1 650 253 0000',
+               phoneUtil.formatOutOfCountryCallingNumber(US_NUMBER, 'AQ'));
+}
+
 function testFormatOutOfCountryWithPreferredIntlPrefix() {
   // This should use 0011, since that is the preferred international prefix
   // (both 0011 and 0012 are accepted as possible international prefixes in our
@@ -1453,17 +1460,20 @@ function testMaybeStripNationalPrefix() {
   var numberToStrip = new goog.string.StringBuffer('34356778');
   /** @type {string} */
   var strippedNumber = '356778';
-  phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
+  assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+      numberToStrip, metadata, null));
   assertEquals('Should have had national prefix stripped.',
                strippedNumber, numberToStrip.toString());
   // Retry stripping - now the number should not start with the national prefix,
   // so no more stripping should occur.
-  phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
+  assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+      numberToStrip, metadata, null));
   assertEquals('Should have had no change - no national prefix present.',
                strippedNumber, numberToStrip.toString());
   // Some countries have no national prefix. Repeat test with none specified.
   metadata.setNationalPrefixForParsing('');
-  phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
+  assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+      numberToStrip, metadata, null));
   assertEquals('Should not strip anything with empty national prefix.',
                strippedNumber, numberToStrip.toString());
   // If the resultant number doesn't match the national rule, it shouldn't be
@@ -1471,7 +1481,8 @@ function testMaybeStripNationalPrefix() {
   metadata.setNationalPrefixForParsing('3');
   numberToStrip = new goog.string.StringBuffer('3123');
   strippedNumber = '3123';
-  phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
+  assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+      numberToStrip, metadata, null));
   assertEquals('Should have had no change - after stripping, it would not ' +
                'have matched the national rule.',
                strippedNumber, numberToStrip.toString());
@@ -1479,9 +1490,11 @@ function testMaybeStripNationalPrefix() {
   metadata.setNationalPrefixForParsing('0(81)?');
   numberToStrip = new goog.string.StringBuffer('08122123456');
   strippedNumber = '22123456';
-  assertEquals('81',
-               phoneUtil.maybeStripNationalPrefixAndCarrierCode(
-                   numberToStrip, metadata));
+  /** @type {!goog.string.StringBuffer} */
+  var carrierCode = new goog.string.StringBuffer();
+  assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+      numberToStrip, metadata, carrierCode));
+  assertEquals('81', carrierCode.toString());
   assertEquals('Should have had national prefix and carrier code stripped.',
                strippedNumber, numberToStrip.toString());
   // If there was a transform rule, check it was applied.
@@ -1491,7 +1504,8 @@ function testMaybeStripNationalPrefix() {
   numberToStrip = new goog.string.StringBuffer('031123');
   /** @type {string} */
   var transformedNumber = '5315123';
-  phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata);
+  assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+      numberToStrip, metadata, null));
   assertEquals('Should transform the 031 to a 5315.',
                transformedNumber, numberToStrip.toString());
 }

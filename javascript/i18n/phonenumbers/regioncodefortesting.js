@@ -49,6 +49,7 @@ i18n.phonenumbers.RegionCode = {
   SG: 'SG',
   US: 'US',
   YT: 'YT',
+  ZW: 'ZW',
   // Official code for the unknown region.
   ZZ: 'ZZ'
 };

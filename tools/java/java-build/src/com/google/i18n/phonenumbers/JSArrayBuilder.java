@@ -76,6 +76,13 @@ public class JSArrayBuilder implements CharSequence {
   }
 
   /**
+   * Add a boolean to the array.
+   */
+  public JSArrayBuilder append(boolean b) {
+    return append(b ? 1 : 0);
+  }
+
+  /**
    * Add a collection of strings to the array.
    */
   public final JSArrayBuilder appendIterator(Iterator<String> iterator) {

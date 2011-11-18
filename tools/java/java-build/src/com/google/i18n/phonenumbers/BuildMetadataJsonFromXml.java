@@ -202,6 +202,12 @@ public class BuildMetadataJsonFromXml extends Command {
     } else {
       jsArrayBuilder.append(null);
     }
+    // optional bool national_prefix_optional_when_formatting = 6;
+    if (format.hasNationalPrefixOptionalWhenFormatting()) {
+      jsArrayBuilder.append(format.isNationalPrefixOptionalWhenFormatting());
+    } else {
+      jsArrayBuilder.append(null);
+    }
 
     jsArrayBuilder.endArray();
   }
