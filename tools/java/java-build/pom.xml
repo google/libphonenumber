@@ -21,7 +21,7 @@
 
   <properties>
     <phonenumberutil.resources.dir>
-      ${project.dir}/../../../../java/src/
+      ${project.dir}/../../../../java/libphonenumber/src/
     </phonenumberutil.resources.dir>
   </properties>
 
@@ -49,7 +49,7 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!-- Add ../../../java/src/ to make Phonemetadata.java available to the source
+      <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to the source
            directories. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -64,7 +64,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>../../../java/src/</source>
+                <source>../../../java/libphonenumber/src/</source>
                 <!-- Also add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
               </sources>

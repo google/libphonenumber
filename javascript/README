@@ -43,7 +43,7 @@ project:
     run the following commands to regenerate metadata.js and
     metadatafortesting.js:
 
-    ant -f java/build.xml build-js-metadata
+    ant -f java/libphonenumber/build.xml build-js-metadata
 
 3.  Manually port any changes of the Java code to the JavaScript code:
       PhoneNumberUtil.java => phonenumberutil.js

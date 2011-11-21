@@ -81,10 +81,10 @@ test_cpp_version '-DUSE_RE2=ON'
 test_cpp_version '-DUSE_STD_MAP=ON'
 
 # Test Java version using Ant.
-(cd java && ant clean jar && ant junit) || exit $?
+(cd java/libphonenumber && ant clean jar && ant junit) || exit $?
 
 # Test Java version using Maven.
-(cd java && mvn clean package) || exit $?
+(cd java/libphonenumber && mvn clean package) || exit $?
 
 # Test build tools.
 (cd tools/java && mvn clean package) || exit $?

@@ -27,7 +27,7 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!-- Add ../../../java/src/ to make Phonemetadata.java available to the source
+      <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to the source
            directories. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -42,7 +42,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>../../../java/src/</source>
+                <source>../../../java/libphonenumber/src/</source>
               </sources>
             </configuration>
           </execution>

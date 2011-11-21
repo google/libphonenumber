@@ -24,7 +24,7 @@ JAVA_HOME ?= /usr/lib/jvm/default-java
 
 CMAKE_FLAGS := -DCMAKE_INSTALL_PREFIX=/usr
 CPP_BUILD := cpp/build
-JAVA_BUILD := java/build
+JAVA_BUILD := java/libphonenumber/build
 
 ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O0

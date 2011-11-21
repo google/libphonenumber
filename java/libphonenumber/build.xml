@@ -6,15 +6,19 @@
   <property name="build.dir" value="build"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
-  <property name="lib.dir" value="lib"/>
+  <property name="lib.dir" value="../lib"/>
   <property name="report.dir" value="${build.dir}/junitreport"/>
+  <property name="resources.dir" value="../../resources/"/>
+  <property name="javascript.dir" value="../../javascript/"/>
+  <property name="build.tools.jar"
+      value="../../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
 
   <path id="classpath">
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
   </path>
   <path id="test.classpath">
     <pathelement location="${classes.dir}"/>
-    <pathelement location="lib/junit/junit-4.8.1.jar"/>
+    <pathelement location="${lib.dir}/junit-4.8.1.jar"/>
     <pathelement location="${jar.dir}/${ant.project.name}-test.jar"/>
     <fileset dir="${lib.dir}">
       <include name="**/*.jar"/>
@@ -24,9 +28,9 @@
   <target name="build-metadata">
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="../resources/PhoneNumberMetaData.xml"/>
+      <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
       <arg value="src"/>
       <arg value="false"/> <!-- Not for testing. -->
       <arg value="false"/> <!-- No lite metadata. -->
@@ -36,9 +40,9 @@
   <target name="build-test-metadata">
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="../resources/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
       <arg value="test"/>
       <arg value="true"/> <!-- For testing. -->
       <arg value="false"/> <!-- No lite metadata. -->
@@ -48,9 +52,9 @@
   <target name="build-geo-data">
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="GenerateAreaCodeData"/>
-      <arg value="../resources/geocoding/"/>
+      <arg value="${resources.dir}/geocoding/"/>
       <arg value="src/com/google/i18n/phonenumbers/geocoding/data"/>
     </exec>
   </target>
@@ -58,9 +62,9 @@
   <target name="build-geo-test-data">
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="GenerateAreaCodeData"/>
-      <arg value="../resources/test/geocoding/"/>
+      <arg value="${resources.dir}/test/geocoding/"/>
       <arg value="test/com/google/i18n/phonenumbers/geocoding/testing_data"/>
     </exec>
   </target>
@@ -68,25 +72,25 @@
   <target name="build-js-metadata">
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
-      <arg value="../resources/PhoneNumberMetaData.xml"/>
-      <arg value="../javascript/i18n/phonenumbers/metadata.js"/>
+      <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
+      <arg value="${javascript.dir}/i18n/phonenumbers/metadata.js"/>
     </exec>
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
-      <arg value="../resources/PhoneNumberMetaData.xml"/>
-      <arg value="../javascript/i18n/phonenumbers/metadatalite.js"/>
+      <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
+      <arg value="${javascript.dir}/i18n/phonenumbers/metadatalite.js"/>
       <arg value="true"/> <!-- Lite metadata. -->
     </exec>
     <exec executable="java">
       <arg value="-jar" />
-      <arg value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+      <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
-      <arg value="../resources/PhoneNumberMetaDataForTesting.xml"/>
-      <arg value="../javascript/i18n/phonenumbers/metadatafortesting.js"/>
+      <arg value="${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="${javascript.dir}/i18n/phonenumbers/metadatafortesting.js"/>
     </exec>
   </target>
 
