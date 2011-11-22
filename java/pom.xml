@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.googlecode.libphonenumber</groupId>
+  <artifactId>libphonenumber-parent</artifactId>
+  <version>4.3-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <url>http://code.google.com/p/libphonenumber/</url>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <description>
+    Google's common Java library for parsing, formatting, storing and validating international phone numbers.
+    Optimized for running on smartphones.
+  </description>
+
+  <organization>
+    <name>Google</name>
+    <url>http://www.google.com/</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</connection>
+    <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/trunk/java/</developerConnection>
+    <url>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</url>
+  </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <developers>
+    <developer>
+      <id>jia.shao.peng</id>
+      <name>Shaopeng Jia</name>
+      <email>jia.shao.peng@gmail.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>owner</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>lararennie</id>
+      <name>Lara Rennie</name>
+      <email>lararennie@google.com</email>
+      <organization>Google</organization>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <contributors>
+    <contributor>
+      <name>tronikos</name>
+      <email>tronikos@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>g1smd.email</name>
+      <email>g1smd.email@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>Philippe Liard</name>
+      <email>philip.liard@gmail.com</email>
+    </contributor>
+  </contributors>
+
+  <modules>
+    <module>libphonenumber</module>
+    <module>geocoder</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.10</version>
+        <configuration>
+          <forkMode>never</forkMode>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.2.1</version>
+        <configuration>
+          <tagBase>https://libphonenumber.googlecode.com/svn/tags/</tagBase>
+          <tagNameFormat>libphonenumber-@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.1</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>

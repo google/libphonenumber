@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
-  <artifactId>libphonenumber</artifactId>
-  <version>4.3-SNAPSHOT</version>
+  <artifactId>geocoder</artifactId>
+  <version>1.7-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>http://code.google.com/p/libphonenumber/</url>
 
@@ -18,16 +18,24 @@
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
       <resource>
-        <directory>src/com/google/i18n/phonenumbers/data</directory>
-        <targetPath>com/google/i18n/phonenumbers/data</targetPath>
+        <directory>src/com/google/i18n/phonenumbers/geocoding/data</directory>
+        <targetPath>com/google/i18n/phonenumbers/geocoding/data</targetPath>
       </resource>
     </resources>
     <testResources>
       <testResource>
-        <directory>test/com/google/i18n/phonenumbers/data</directory>
-        <targetPath>com/google/i18n/phonenumbers/data</targetPath>
+        <directory>test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
+        <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data</targetPath>
       </testResource>
     </testResources>
   </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.googlecode.libphonenumber</groupId>
+      <artifactId>libphonenumber</artifactId>
+      <version>4.3-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
 </project>

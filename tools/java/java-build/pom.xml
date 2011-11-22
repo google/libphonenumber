@@ -49,8 +49,6 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to the source
-           directories. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -64,8 +62,13 @@
             </goals>
             <configuration>
               <sources>
+                <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
+                     the source directories. -->
                 <source>../../../java/libphonenumber/src/</source>
-                <!-- Also add ../common/src/ which contains BuildMetadataFromXml.java -->
+                <!-- Add ../../../java/geocoder/src/ to make AreaCodeMap.java available to the
+                     source directories. -->
+                <source>../../../java/geocoder/src/</source>
+                <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
               </sources>
             </configuration>
