@@ -39,11 +39,13 @@ class StdoutLogger : public Logger {
 
 #else
 
+#include <sstream>
 #include <string>
 
 #include "phonenumbers/logger.h"
 
 using std::string;
+using std::stringstream;
 
 // Make the logging functions private (not declared in logger.h) as the client
 // should not have any reason to use them.
@@ -65,10 +67,12 @@ struct ConvertToString {
 
 template <>
 struct ConvertToString<int> {
-  static inline string DoWork(const int& n) {
-    char buffer[16];
-    std::snprintf(buffer, sizeof(buffer), "%d", n);
-    return string(buffer);
+  static inline string DoWork(int n) {
+    stringstream stream;
+    stream << n;
+    string result;
+    stream >> result;
+    return result;
   }
 };
 
