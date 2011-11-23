@@ -73,9 +73,12 @@ option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 
 # Find all the required libraries and programs.
-find_package (Boost 1.40.0 COMPONENTS thread)
+if (WIN32)
+  set (Boost_USE_STATIC_LIBS ON)
+endif ()
+find_package (Boost 1.40.0 COMPONENTS date_time thread)
 if (NOT Boost_FOUND)
-  print_error ("Boost Thread" "Boost")
+  print_error ("Boost Datetime/Thread" "Boost")
 endif ()
 include_directories (${Boost_INCLUDE_DIRS})
 
