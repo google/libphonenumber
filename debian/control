@@ -22,14 +22,14 @@ Vcs-Svn: http://libphonenumber.googlecode.com/svn/trunk/
 Package: libphonenumber-dev
 Section: libdevel
 Architecture: any
-Depends: libphonenumber3 (=${binary:Version}), ${misc:Depends}
+Depends: libphonenumber4 (=${binary:Version}), ${misc:Depends}
 Description: parsing/formatting/validating phone numbers - development
  Google's common C++ and Java library for parsing, formatting, storing and
  validating international phone numbers.
  .
  This package contains the static libraries and include files.
 
-Package: libphonenumber3
+Package: libphonenumber4
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
