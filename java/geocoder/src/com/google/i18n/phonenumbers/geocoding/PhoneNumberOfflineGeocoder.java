@@ -130,6 +130,13 @@ public class PhoneNumberOfflineGeocoder {
    */
   private String getCountryNameForNumber(PhoneNumber number, Locale language) {
     String regionCode = phoneUtil.getRegionCodeForNumber(number);
+    return getRegionDisplayName(regionCode, language);
+  }
+
+  /**
+   * Returns the customary display name in the given language for the given region.
+   */
+  private String getRegionDisplayName(String regionCode, Locale language) {
     return (regionCode == null || regionCode.equals("ZZ"))
         ? "" : new Locale("", regionCode).getDisplayCountry(language);
   }
@@ -188,7 +195,7 @@ public class PhoneNumberOfflineGeocoder {
       return getDescriptionForValidNumber(number, languageCode);
     }
     // Otherwise, we just show the region(country) name for now.
-    return getCountryNameForNumber(number, languageCode);
+    return getRegionDisplayName(regionCode, languageCode);
     // TODO: Concatenate the lower-level and country-name information in an appropriate
     // way for each language.
   }

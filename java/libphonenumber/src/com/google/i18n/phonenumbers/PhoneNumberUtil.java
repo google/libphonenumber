@@ -162,9 +162,9 @@ public class PhoneNumberUtil {
     ALPHA_PHONE_MAPPINGS = Collections.unmodifiableMap(combinedMap);
 
     HashMap<Character, Character> diallableCharMap = new HashMap<Character, Character>();
+    diallableCharMap.putAll(asciiDigitMappings);
     diallableCharMap.put('+', '+');
     diallableCharMap.put('*', '*');
-    diallableCharMap.putAll(asciiDigitMappings);
     DIALLABLE_CHAR_MAPPINGS = Collections.unmodifiableMap(diallableCharMap);
 
     HashMap<Character, Character> allPlusNumberGroupings = new HashMap<Character, Character>();

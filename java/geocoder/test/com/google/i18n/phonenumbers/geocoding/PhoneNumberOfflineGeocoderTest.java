@@ -117,13 +117,13 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
   }
 
   public void testGetDescriptionForNumberWithUserRegion() {
-    // User in Italy, American number. We should just show United States, in German, and not more
+    // User in Italy, American number. We should just show United States, in Spanish, and not more
     // detailed information.
-    assertEquals("Vereinigte Staaten von Amerika",
-        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN, "IT"));
+    assertEquals("Estados Unidos",
+        geocoder.getDescriptionForNumber(US_NUMBER1, new Locale("es", "ES"), "IT"));
     // Unknown region - should just show country name.
-    assertEquals("Vereinigte Staaten von Amerika",
-        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN, "ZZ"));
+    assertEquals("Estados Unidos",
+        geocoder.getDescriptionForNumber(US_NUMBER1, new Locale("es", "ES"), "ZZ"));
     // User in the States, language German, should show detailed data.
     assertEquals("Kalifornien",
         geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN, "US"));
