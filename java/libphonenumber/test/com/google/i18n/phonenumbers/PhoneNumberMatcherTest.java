@@ -266,6 +266,13 @@ public class PhoneNumberMatcherTest extends TestCase {
     findMatchesInContexts(possibleOnlyContexts, false, true);
   }
 
+  public void testPercentageNotSeenAsPhoneNumber() throws Exception {
+    ArrayList<NumberContext> possibleOnlyContexts = new ArrayList<NumberContext>();
+    possibleOnlyContexts.add(new NumberContext("", "%"));
+    // Numbers followed by % should be dropped.
+    findMatchesInContexts(possibleOnlyContexts, false, true);
+  }
+
   public void testPhoneNumberWithLeadingOrTrailingMoneyMatches() throws Exception {
     // Because of the space after the 20 (or before the 100) these dollar amounts should not stop
     // the actual number from being found.

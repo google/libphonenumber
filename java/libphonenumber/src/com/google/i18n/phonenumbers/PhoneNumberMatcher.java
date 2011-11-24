@@ -294,8 +294,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         block.equals(UnicodeBlock.COMBINING_DIACRITICAL_MARKS);
   }
 
-  private static boolean isCurrencySymbol(char character) {
-    return Character.getType(character) == Character.CURRENCY_SYMBOL;
+  private static boolean isInvalidPunctuationSymbol(char character) {
+    return character == '%' || Character.getType(character) == Character.CURRENCY_SYMBOL;
   }
 
   /**
@@ -407,15 +407,15 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         // punctuation, check the previous character.
         if (offset > 0 && !LEAD_CLASS.matcher(candidate).lookingAt()) {
           char previousChar = text.charAt(offset - 1);
-          // We return null if it is a latin letter or a currency symbol.
-          if (isCurrencySymbol(previousChar) || isLatinLetter(previousChar)) {
+          // We return null if it is a latin letter or an invalid punctuation symbol.
+          if (isInvalidPunctuationSymbol(previousChar) || isLatinLetter(previousChar)) {
             return null;
           }
         }
         int lastCharIndex = offset + candidate.length();
         if (lastCharIndex < text.length()) {
           char nextChar = text.charAt(lastCharIndex);
-          if (isCurrencySymbol(nextChar) || isLatinLetter(nextChar)) {
+          if (isInvalidPunctuationSymbol(nextChar) || isLatinLetter(nextChar)) {
             return null;
           }
         }

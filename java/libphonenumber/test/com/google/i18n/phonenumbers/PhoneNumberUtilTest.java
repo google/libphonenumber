@@ -71,6 +71,8 @@ public class PhoneNumberUtilTest extends TestCase {
   private static final PhoneNumber IT_NUMBER =
       new PhoneNumber().setCountryCode(39).setNationalNumber(236618300L).
       setItalianLeadingZero(true);
+  private static final PhoneNumber JP_STAR_NUMBER =
+      new PhoneNumber().setCountryCode(81).setNationalNumber(2345);
   // Numbers to test the formatting rules from Mexico.
   private static final PhoneNumber MX_MOBILE1 =
       new PhoneNumber().setCountryCode(52).setNationalNumber(12345678900L);
@@ -614,7 +616,8 @@ public class PhoneNumberUtilTest extends TestCase {
     // US toll free numbers are marked as noInternationalDialling in the test metadata for testing
     // purposes.
     assertEquals("800 253 0000",
-        phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US, true));
+        phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US,
+                                               true /*  keep formatting */));
     assertEquals("", phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.CN, true));
     assertEquals("+1 650 253 0000",
         phoneUtil.formatNumberForMobileDialing(US_NUMBER, RegionCode.US, true));
@@ -623,12 +626,26 @@ public class PhoneNumberUtilTest extends TestCase {
         phoneUtil.formatNumberForMobileDialing(usNumberWithExtn, RegionCode.US, true));
 
     assertEquals("8002530000",
-        phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US, false));
+        phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US,
+                                               false /* remove formatting */));
     assertEquals("", phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.CN, false));
     assertEquals("+16502530000",
         phoneUtil.formatNumberForMobileDialing(US_NUMBER, RegionCode.US, false));
     assertEquals("+16502530000",
         phoneUtil.formatNumberForMobileDialing(usNumberWithExtn, RegionCode.US, false));
+
+    // An invalid US number, which is one digit too long.
+    assertEquals("+165025300001",
+        phoneUtil.formatNumberForMobileDialing(US_LONG_NUMBER, RegionCode.US, false));
+    assertEquals("+1 65025300001",
+        phoneUtil.formatNumberForMobileDialing(US_LONG_NUMBER, RegionCode.US, true));
+
+    // Star numbers. In real life they appear in Israel, but we have them in JP in our test
+    // metadata.
+    assertEquals("*2345",
+        phoneUtil.formatNumberForMobileDialing(JP_STAR_NUMBER, RegionCode.JP, false));
+    assertEquals("*2345",
+        phoneUtil.formatNumberForMobileDialing(JP_STAR_NUMBER, RegionCode.JP, true));
   }
 
   public void testFormatByPattern() {
@@ -730,6 +747,11 @@ public class PhoneNumberUtilTest extends TestCase {
     // When the raw input is unavailable, format as usual.
     PhoneNumber number7 = phoneUtil.parse("7345678901", RegionCode.US);
     assertEquals("734 567 8901", phoneUtil.formatInOriginalFormat(number7, RegionCode.US));
+
+    // This number is valid, but we don't have a formatting pattern for it. Fall back to the raw
+    // input.
+    PhoneNumber number8 = phoneUtil.parseAndKeepRawInput("02-4567-8900", RegionCode.KR);
+    assertEquals("02-4567-8900", phoneUtil.formatInOriginalFormat(number8, RegionCode.KR));
   }
 
   public void testIsPremiumRate() {

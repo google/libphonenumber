@@ -116,6 +116,26 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
         geocoder.getDescriptionForNumber(KO_NUMBER3, Locale.KOREAN));
   }
 
+  public void testGetDescriptionForNumberWithUserRegion() {
+    // User in Italy, American number. We should just show United States, in German, and not more
+    // detailed information.
+    assertEquals("Vereinigte Staaten von Amerika",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN, "IT"));
+    // Unknown region - should just show country name.
+    assertEquals("Vereinigte Staaten von Amerika",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN, "ZZ"));
+    // User in the States, language German, should show detailed data.
+    assertEquals("Kalifornien",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.GERMAN, "US"));
+    // User in the States, language French, no data for French, so we fallback to English detailed
+    // data.
+    assertEquals("CA",
+        geocoder.getDescriptionForNumber(US_NUMBER1, Locale.FRENCH, "US"));
+    // Invalid number - return an empty string.
+    assertEquals("", geocoder.getDescriptionForNumber(US_INVALID_NUMBER, Locale.ENGLISH,
+                                                      "US"));
+  }
+
   public void testGetDescriptionForInvalidNumber() {
     assertEquals("", geocoder.getDescriptionForNumber(KO_INVALID_NUMBER, Locale.ENGLISH));
     assertEquals("", geocoder.getDescriptionForNumber(US_INVALID_NUMBER, Locale.ENGLISH));

@@ -97,6 +97,11 @@ public class PhoneNumberUtil {
 
   private static final String RFC3966_EXTN_PREFIX = ";ext=";
 
+  // A map that contains characters that are essential when dialling. That means any of the
+  // characters in this map must not be removed from a number when dialing, otherwise the call will
+  // not reach the intended destination.
+  private static final Map<Character, Character> DIALLABLE_CHAR_MAPPINGS;
+
   // Only upper-case variants of alpha characters are stored.
   private static final Map<Character, Character> ALPHA_MAPPINGS;
 
@@ -155,6 +160,12 @@ public class PhoneNumberUtil {
     combinedMap.putAll(ALPHA_MAPPINGS);
     combinedMap.putAll(asciiDigitMappings);
     ALPHA_PHONE_MAPPINGS = Collections.unmodifiableMap(combinedMap);
+
+    HashMap<Character, Character> diallableCharMap = new HashMap<Character, Character>();
+    diallableCharMap.put('+', '+');
+    diallableCharMap.put('*', '*');
+    diallableCharMap.putAll(asciiDigitMappings);
+    DIALLABLE_CHAR_MAPPINGS = Collections.unmodifiableMap(diallableCharMap);
 
     HashMap<Character, Character> allPlusNumberGroupings = new HashMap<Character, Character>();
     // Put (lower letter -> upper letter) and (upper letter -> upper letter) mappings.
@@ -407,9 +418,8 @@ public class PhoneNumberUtil {
    */
   public enum Leniency {
     /**
-     * Phone numbers accepted are
-     * {@linkplain PhoneNumberUtil#isPossibleNumber(Phonenumber.PhoneNumber) possible}, but not
-     * necessarily {@linkplain PhoneNumberUtil#isValidNumber(Phonenumber.PhoneNumber) valid}.
+     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
+     * possible}, but not necessarily {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}.
      */
     POSSIBLE {
       @Override
@@ -418,9 +428,8 @@ public class PhoneNumberUtil {
       }
     },
     /**
-     * Phone numbers accepted are
-     * {@linkplain PhoneNumberUtil#isPossibleNumber(Phonenumber.PhoneNumber) possible} and
-     * {@linkplain PhoneNumberUtil#isValidNumber(Phonenumber.PhoneNumber) valid}. Numbers written
+     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
+     * possible} and {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}. Numbers written
      * in national format must have their national-prefix present if it is usually written for a
      * number of this type.
      */
@@ -1059,9 +1068,8 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Same as {@link #format(Phonenumber.PhoneNumber, PhoneNumberUtil.PhoneNumberFormat)}, but
-   * accepts a mutable StringBuilder as a parameter to decrease object creation when invoked many
-   * times.
+   * Same as {@link #format(PhoneNumber, PhoneNumberFormat)}, but accepts a mutable StringBuilder as
+   * a parameter to decrease object creation when invoked many times.
    */
   public void format(PhoneNumber number, PhoneNumberFormat numberFormat,
                      StringBuilder formattedNumber) {
@@ -1222,7 +1230,7 @@ public class PhoneNumberUtil {
    */
   public String formatNumberForMobileDialing(PhoneNumber number, String regionCallingFrom,
                                              boolean withFormatting) {
-    String regionCode = getRegionCodeForNumber(number);
+    String regionCode = getRegionCodeForCountryCode(number.getCountryCode());
     if (!isValidRegionCode(regionCode)) {
       return number.hasRawInput() ? number.getRawInput() : "";
     }
@@ -1231,11 +1239,19 @@ public class PhoneNumberUtil {
     // Clear the extension, as that part cannot normally be dialed together with the main number.
     PhoneNumber numberNoExt = new PhoneNumber().mergeFrom(number).clearExtension();
     PhoneNumberType numberType = getNumberType(numberNoExt);
-    if ((regionCode.equals("CO")) && (regionCallingFrom.equals("CO")) &&
-        (numberType == PhoneNumberType.FIXED_LINE)) {
-      formattedNumber =
-          formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
-    } else if ((regionCode.equals("BR")) && (regionCallingFrom.equals("BR")) &&
+    if (regionCode.equals("CO") && regionCallingFrom.equals("CO")) {
+      if (numberType == PhoneNumberType.FIXED_LINE) {
+        formattedNumber =
+            formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
+      } else {
+        // E164 doesn't work at all when dialing within Colombia.
+        formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
+      }
+    } else if (regionCode.equals("PE") && regionCallingFrom.equals("PE")) {
+      // In Peru, numbers cannot be dialled using E164 format from a mobile phone for Movistar.
+      // Instead they must be dialled in national format.
+      formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
+    } else if (regionCode.equals("BR") && regionCallingFrom.equals("BR") &&
         ((numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
          (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE))) {
       formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode()
@@ -1251,7 +1267,9 @@ public class PhoneNumberUtil {
       formattedNumber = (regionCallingFrom.equals(regionCode))
           ? format(numberNoExt, PhoneNumberFormat.NATIONAL) : "";
     }
-    return withFormatting ? formattedNumber : normalizeDigitsOnly(formattedNumber);
+    return withFormatting ? formattedNumber
+                          : normalizeHelper(formattedNumber, DIALLABLE_CHAR_MAPPINGS,
+                                            true /* remove non matches */);
   }
 
   /**
@@ -1339,7 +1357,11 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number in its original number format
    */
   public String formatInOriginalFormat(PhoneNumber number, String regionCallingFrom) {
-    if (number.hasRawInput() && !isValidNumber(number)) {
+    if (number.hasRawInput() &&
+        (!hasFormattingPatternForNumber(number) || !isValidNumber(number))) {
+      // We check if we have the formatting pattern because without that, we might format the number
+      // as a group without national prefix. We also want to check the validity of the number
+      // because we don't want to risk formatting the number if we don't really understand it.
       return number.getRawInput();
     }
     if (!number.hasCountryCodeSource()) {
@@ -1356,6 +1378,18 @@ public class PhoneNumberUtil {
       default:
         return format(number, PhoneNumberFormat.NATIONAL);
     }
+  }
+
+  private boolean hasFormattingPatternForNumber(PhoneNumber number) {
+    String phoneNumberRegion = getRegionCodeForCountryCode(number.getCountryCode());
+    PhoneMetadata metadata = getMetadataForRegion(phoneNumberRegion);
+    if (metadata == null) {
+      return false;
+    }
+    String nationalNumber = getNationalSignificantNumber(number);
+    NumberFormat formatRule =
+        chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+    return formatRule != null;
   }
 
   /**
@@ -2028,10 +2062,10 @@ public class PhoneNumberUtil {
   /**
    * Check whether a phone number is a possible number given a number in the form of a string, and
    * the region where the number could be dialed from. It provides a more lenient check than
-   * {@link #isValidNumber}. See {@link #isPossibleNumber(Phonenumber.PhoneNumber)} for details.
+   * {@link #isValidNumber}. See {@link #isPossibleNumber(PhoneNumber)} for details.
    *
-   * <p>This method first parses the number, then invokes
-   * {@link #isPossibleNumber(Phonenumber.PhoneNumber)} with the resultant PhoneNumber object.
+   * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber)}
+   * with the resultant PhoneNumber object.
    *
    * @param number  the number that needs to be checked, in the form of a string
    * @param regionDialingFrom  the region that we are expecting the number to be dialed from.
@@ -2683,15 +2717,14 @@ public class PhoneNumberUtil {
 
   /**
    * Takes two phone numbers as strings and compares them for equality. This is a convenience
-   * wrapper for {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)}. No
-   * default region is known.
+   * wrapper for {@link #isNumberMatch(PhoneNumber, PhoneNumber)}. No default region is known.
    *
    * @param firstNumber  first number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
-   *     {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)} for more details.
+   *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
    */
   public MatchType isNumberMatch(String firstNumber, String secondNumber) {
     try {
@@ -2723,14 +2756,13 @@ public class PhoneNumberUtil {
 
   /**
    * Takes two phone numbers and compares them for equality. This is a convenience wrapper for
-   * {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)}. No default region is
-   * known.
+   * {@link #isNumberMatch(PhoneNumber, PhoneNumber)}. No default region is known.
    *
    * @param firstNumber  first number to compare in proto buffer format.
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
-   *     {@link #isNumberMatch(Phonenumber.PhoneNumber, Phonenumber.PhoneNumber)} for more details.
+   *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
    */
   public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber) {
     // First see if the second number has an implicit country calling code, by attempting to parse

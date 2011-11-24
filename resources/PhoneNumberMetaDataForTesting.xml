@@ -346,9 +346,9 @@
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
-          <leadingDigits>222|333</leadingDigits>
-          <leadingDigits>(?:222|333)1</leadingDigits>
-          <leadingDigits>(?:222|333)11</leadingDigits>
+          <leadingDigits>111|222|333</leadingDigits>
+          <leadingDigits>(?:111|222|333)1</leadingDigits>
+          <leadingDigits>(?:111|222|333)11</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d)(\d{4})">
@@ -364,11 +364,15 @@
         </numberFormat>
         <!-- The following numberFormat is added to test that the format containing the star sign is
              not used by the AYTF. -->
-        <numberFormat pattern="(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{4})">
           <leadingDigits>[23]</leadingDigits>
           <format>*$1</format>
         </numberFormat>
       </availableFormats>
+      <noInternationalDialling>
+        <nationalNumberPattern>[23]\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </noInternationalDialling>
     </territory>
 
     <!-- Korea (Rep. of) -->

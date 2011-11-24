@@ -93,6 +93,7 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+81 90 1234 5678", formatter.inputDigit('8'));
     assertEquals("+81 90 12 345 6789", formatter.inputDigit('9'));
     assertEquals("+81901234567890", formatter.inputDigit('0'));
+    assertEquals("+819012345678901", formatter.inputDigit('1'));
   }
 
   public void testAYTFUS() {
@@ -715,6 +716,15 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+81 222 12 56", formatter.inputDigit('6'));
     assertEquals("+81 222 12 567", formatter.inputDigit('7'));
     assertEquals("+81 222 12 5678", formatter.inputDigit('8'));
+
+    // 011113
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("01", formatter.inputDigit('1'));
+    assertEquals("011", formatter.inputDigit('1'));
+    assertEquals("011 1", formatter.inputDigit('1'));
+    assertEquals("011 11", formatter.inputDigit('1'));
+    assertEquals("011113", formatter.inputDigit('3'));
 
     // +81 3332 2 5678
     formatter.clear();

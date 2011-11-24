@@ -1,3 +1,16 @@
+November 24th, 2011: libphonenumber-4.3
+* Code changes
+ - Fix the problems with AYTF crashing for longer numbers entered with +CountryCode, and incorrectly
+   removing national prefix for some numbers.
+ - Improve PhoneNumberMatcher to not match numbers ending with '%'.
+ - Fix formatNumberForMobileDialing to handle Israeli star numbers, Peruvian and Colombian numbers.
+ - Modify formatInOriginalFormat to use the raw input if we don't have a formatting pattern for a
+   number.
+ - Simple offline geocoding function which takes into account the user's region.
+
+* Metadata changes
+ - Updates for CR, GN, JP, KE, PL, SG, SR, SX, TH, TK
+
 November 10th, 2011: libphonenumber-4.2
 * Code changes
  - Providing an "exact match" isEmergencyNumber method
