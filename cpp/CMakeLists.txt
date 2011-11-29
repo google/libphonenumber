@@ -18,7 +18,7 @@ cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 4)
-set (libphonenumber_VERSION_MINOR 2)
+set (libphonenumber_VERSION_MINOR 3)
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.

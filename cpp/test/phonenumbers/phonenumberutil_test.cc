@@ -825,13 +825,15 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   // metadata for testing purposes.
   test_number.set_national_number(8002530000ULL);
   phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::US(), true, &formatted_number);
+      test_number, RegionCode::US(), true, /* keep formatting */
+      &formatted_number);
   EXPECT_EQ("800 253 0000", formatted_number);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::CN(), true, &formatted_number);
   EXPECT_EQ("", formatted_number);
   phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::US(), false, &formatted_number);
+      test_number, RegionCode::US(), false, /* remove formatting */
+      &formatted_number);
   EXPECT_EQ("8002530000", formatted_number);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::CN(), false, &formatted_number);
@@ -852,6 +854,26 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::US(), false, &formatted_number);
   EXPECT_EQ("+16502530000", formatted_number);
+
+  // An invalid US number, which is one digit too long.
+  test_number.set_national_number(65025300001ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), true, &formatted_number);
+  EXPECT_EQ("+1 65025300001", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("+165025300001", formatted_number);
+
+  // Star numbers. In real life they appear in Israel, but we have them in JP
+  // in our test metadata.
+  test_number.set_country_code(81);
+  test_number.set_national_number(2345ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::JP(), true, &formatted_number);
+  EXPECT_EQ("*2345", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::JP(), false, &formatted_number);
+  EXPECT_EQ("*2345", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatByPattern) {
@@ -1168,7 +1190,7 @@ TEST_F(PhoneNumberUtilTest, IsValidForRegion) {
   // However, it should be recognised as from La Mayotte.
   string region_code;
   phone_util_.GetRegionCodeForNumber(re_number, &region_code);
-  EXPECT_EQ(RegionCode::YT(), region_code);
+  EXPECT_EQ("YT", region_code);
   // This number is valid in both places.
   re_number.set_national_number(800123456ULL);
   EXPECT_TRUE(phone_util_.IsValidNumberForRegion(re_number, RegionCode::YT()));
@@ -1454,6 +1476,17 @@ TEST_F(PhoneNumberUtilTest, FormatUsingOriginalNumberFormat) {
   phone_util_.FormatInOriginalFormat(phone_number, RegionCode::US(),
                                      &formatted_number);
   EXPECT_EQ("734 567 8901", formatted_number);
+
+  // This number is valid, but we don't have a formatting pattern for it. Fall
+  // back to the raw input.
+  phone_number.Clear();
+  formatted_number.clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.ParseAndKeepRawInput("02-4567-8900", RegionCode::KR(),
+                                             &phone_number));
+  phone_util_.FormatInOriginalFormat(phone_number, RegionCode::KR(),
+                                     &formatted_number);
+  EXPECT_EQ("02-4567-8900", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, IsPremiumRate) {

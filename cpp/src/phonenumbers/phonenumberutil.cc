@@ -88,6 +88,10 @@ scoped_ptr<RegExpCache> regexp_cache;
 
 // These objects are created in the function InitializeStaticMapsAndSets.
 
+// A map that contains characters that are essential when dialling. That means
+// any of the characters in this map must not be removed from a number when
+// dialing, otherwise the call will not reach the intended destination.
+scoped_ptr<map<char32, char> > diallable_char_mappings;
 // These mappings map a character (key) to a specific digit that should replace
 // it for normalization purposes.
 scoped_ptr<map<char32, char> > alpha_mappings;
@@ -368,9 +372,13 @@ void InitializeStaticMapsAndSets() {
   regexp_factory.reset(new RegExpFactory());
   regexp_cache.reset(new RegExpCache(*regexp_factory.get(), 128));
   all_plus_number_grouping_symbols.reset(new map<char32, char>);
+  diallable_char_mappings.reset(new map<char32, char>);
   alpha_mappings.reset(new map<char32, char>);
   alpha_phone_mappings.reset(new map<char32, char>);
 
+
+  diallable_char_mappings->insert(make_pair('+', '+'));
+  diallable_char_mappings->insert(make_pair('*', '*'));
   // Punctuation that we wish to respect in alpha numbers, as they show number
   // groupings are mapped here.
   all_plus_number_grouping_symbols->insert(
@@ -461,6 +469,7 @@ void InitializeStaticMapsAndSets() {
                                            alpha_letters.end());
   // Add the ASCII digits so that they don't get deleted by NormalizeHelper().
   for (char c = '0'; c <= '9'; ++c) {
+    diallable_char_mappings->insert(make_pair(c, c));
     alpha_phone_mappings->insert(make_pair(c, c));
     all_plus_number_grouping_symbols->insert(make_pair(c, c));
   }
@@ -940,8 +949,11 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
       // E164 doesn't work at all when dialing within Colombia.
       Format(number_no_extension, NATIONAL, formatted_number);
     }
-  } else if ((region_code == "BR") &&
-      (calling_from == "BR") &&
+  } else if ((region_code == "PE") && (calling_from == "PE")) {
+    // In Peru, numbers cannot be dialled using E164 format from a mobile phone
+    // for Movistar. Instead they must be dialled in national format.
+    Format(number_no_extension, NATIONAL, formatted_number);
+  } else if ((region_code == "BR") && (calling_from == "BR") &&
       ((number_type == FIXED_LINE) || (number_type == MOBILE) ||
        (number_type == FIXED_LINE_OR_MOBILE))) {
     if (number_no_extension.has_preferred_domestic_carrier_code()) {
@@ -965,7 +977,8 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
     formatted_number->assign("");
   }
   if (!with_formatting) {
-    NormalizeDigitsOnly(formatted_number);
+    NormalizeHelper(*diallable_char_mappings, true, /* remove non matches */
+                    formatted_number);
   }
 }
 
@@ -1046,7 +1059,12 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
                                              string* formatted_number) const {
   DCHECK(formatted_number);
 
-  if (number.has_raw_input() && !IsValidNumber(number)) {
+  if (number.has_raw_input() &&
+      (!HasFormattingPatternForNumber(number) || !IsValidNumber(number))) {
+    // We check if we have the formatting pattern because without that, we might
+    // format the number as a group without national prefix. We also want to
+    // check the validity of the number because we don't want to risk formatting
+    // the number if we don't really understand it.
     formatted_number->assign(number.raw_input());
     return;
   }
@@ -1070,6 +1088,23 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
     default:
       Format(number, NATIONAL, formatted_number);
   }
+}
+
+bool PhoneNumberUtil::HasFormattingPatternForNumber(
+    const PhoneNumber& number) const {
+  string region_code;
+  GetRegionCodeForCountryCode(number.country_code(), &region_code);
+  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
+  if (!metadata) {
+    return false;
+  }
+  string national_number;
+  GetNationalSignificantNumber(number, &national_number);
+  const NumberFormat* format_rule =
+      ChooseFormattingPatternForNumber(metadata->number_format(),
+                                       national_number,
+                                       national_number);
+  return format_rule;
 }
 
 void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(

@@ -413,9 +413,14 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
           InputAccruedNationalNumber(phone_number);
           return;
         }
-        phone_number->assign(able_to_format_
-            ? prefix_before_national_number_ + temp_national_number
-            : temp_national_number);
+        if (able_to_format_) {
+          phone_number->assign(
+              prefix_before_national_number_ + temp_national_number);
+        } else {
+          phone_number->clear();
+          accrued_input_.toUTF8String(*phone_number);
+        }
+        return;
       } else {
         AttemptToChooseFormattingPattern(phone_number);
       }
@@ -502,8 +507,13 @@ void AsYouTypeFormatter::AttemptToChooseFormattingPattern(
         national_number_.substr(0, kMinLeadingDigitsLength);
 
     GetAvailableFormats(leading_digits);
-    MaybeCreateNewTemplate();
-    InputAccruedNationalNumber(formatted_number);
+    if (MaybeCreateNewTemplate()) {
+      InputAccruedNationalNumber(formatted_number);
+    } else {
+      formatted_number->clear();
+      accrued_input_.toUTF8String(*formatted_number);
+    }
+    return;
   } else {
     formatted_number->assign(prefix_before_national_number_ + national_number_);
   }
@@ -520,9 +530,13 @@ void AsYouTypeFormatter::InputAccruedNationalNumber(string* number) {
       temp_national_number.clear();
       InputDigitHelper(national_number_[i], &temp_national_number);
     }
-    number->assign(able_to_format_
-        ? prefix_before_national_number_ + temp_national_number
-        : temp_national_number);
+    if (able_to_format_) {
+      number->assign(prefix_before_national_number_ + temp_national_number);
+    } else {
+      number->clear();
+      accrued_input_.toUTF8String(*number);
+    }
+    return;
   } else {
     number->assign(prefix_before_national_number_);
   }

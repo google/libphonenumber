@@ -561,6 +561,13 @@ TEST_F(PhoneNumberMatcherTest, MoneyNotSeenAsPhoneNumber) {
   FindMatchesInContexts(possible_only_contexts, false, true);
 }
 
+TEST_F(PhoneNumberMatcherTest, PercentageNotSeenAsPhoneNumber) {
+  vector<NumberContext> possible_only_contexts;
+  possible_only_contexts.push_back(NumberContext("", "%"));
+  // Numbers followed by % should be dropped.
+  FindMatchesInContexts(possible_only_contexts, false, true);
+}
+
 TEST_F(PhoneNumberMatcherTest, PhoneNumberWithLeadingOrTrailingMoneyMatches) {
   vector<NumberContext> contexts;
   contexts.push_back(NumberContext("$20 ", ""));

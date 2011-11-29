@@ -34,7 +34,7 @@ class AsYouTypeFormatterTest : public testing::Test {
   }
 
   const PhoneMetadata* GetCurrentMetadata() const {
-    return formatter_.get()->current_metadata_;
+    return formatter_->current_metadata_;
   }
 
   int ConvertUnicodeStringPosition(const UnicodeString& s, int pos) const {
@@ -104,6 +104,7 @@ TEST_F(AsYouTypeFormatterTest, TooLongNumberMatchingMultipleLeadingDigits) {
   EXPECT_EQ("+81 90 1234 5678", formatter_->InputDigit('8', &result_));
   EXPECT_EQ("+81 90 12 345 6789", formatter_->InputDigit('9', &result_));
   EXPECT_EQ("+81901234567890", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("+819012345678901", formatter_->InputDigit('1', &result_));
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_US) {
@@ -755,6 +756,15 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MultipleLeadingDigitPatterns) {
   EXPECT_EQ("+81 222 12 56", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+81 222 12 567", formatter_->InputDigit('7', &result_));
   EXPECT_EQ("+81 222 12 5678", formatter_->InputDigit('8', &result_));
+
+  // 011113
+  formatter_->Clear();
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("01", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("011", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("011 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("011 11", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("011113", formatter_->InputDigit('3', &result_));
 
   // +81 3332 2 5678
   formatter_->Clear();

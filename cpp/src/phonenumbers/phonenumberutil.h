@@ -645,6 +645,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& national_number,
       string* formatted_number) const;
 
+  bool HasFormattingPatternForNumber(const PhoneNumber& number) const;
+
   // Simple wrapper of FormatNationalNumberWithCarrier for the common case of
   // no carrier code.
   void FormatNationalNumber(const string& number,

@@ -66,8 +66,8 @@ string Limit(int lower, int upper) {
   return StrCat("{", lower, ",", upper, "}");
 }
 
-bool IsCurrencySymbol(char32 character) {
-  return (u_charType(character) == U_CURRENCY_SYMBOL);
+bool IsInvalidPunctuationSymbol(char32 character) {
+  return character == '%' || u_charType(character) == U_CURRENCY_SYMBOL;
 }
 
 // Helper method to get the national-number part of a number, formatted without
@@ -341,8 +341,10 @@ bool PhoneNumberMatcher::ParseAndVerify(const string& candidate, int offset,
           EncodingUtils::BackUpOneUTF8Character(text_.c_str(),
                                                 text_.c_str() + offset);
       EncodingUtils::DecodeUTF8Char(previous_char_ptr, &previous_char);
-      // We return false if it is a latin letter or a currency symbol.
-      if (IsCurrencySymbol(previous_char) || IsLatinLetter(previous_char)) {
+      // We return false if it is a latin letter or an invalid punctuation
+      // symbol.
+      if (IsInvalidPunctuationSymbol(previous_char) ||
+          IsLatinLetter(previous_char)) {
         return false;
       }
     }
@@ -353,7 +355,7 @@ bool PhoneNumberMatcher::ParseAndVerify(const string& candidate, int offset,
           EncodingUtils::AdvanceOneUTF8Character(
               text_.c_str() + lastCharIndex - 1);
       EncodingUtils::DecodeUTF8Char(next_char_ptr, &next_char);
-      if (IsCurrencySymbol(next_char) || IsLatinLetter(next_char)) {
+      if (IsInvalidPunctuationSymbol(next_char) || IsLatinLetter(next_char)) {
         return false;
       }
     }
