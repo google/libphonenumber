@@ -22,6 +22,15 @@
 namespace i18n {
 namespace phonenumbers {
 
+// There is no Logger in the new base implementation - provide a NOP one.
+class Logger {
+ public:
+  Logger() {}
+  virtual ~Logger() {}
+
+  static void set_logger_impl(Logger*) {}
+};
+
 // If Google base/ is used, LOG() and VLOG() from base/logging.h are used
 // therefore the default logger implementation (StdoutLogger) instantiated in
 // phonenumberutil will actually never be used. Thus provide a dummy

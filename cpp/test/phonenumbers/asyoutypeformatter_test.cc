@@ -34,7 +34,7 @@ class AsYouTypeFormatterTest : public testing::Test {
   }
 
   const PhoneMetadata* GetCurrentMetadata() const {
-    return CHECK_NOTNULL(formatter_.get())->current_metadata_;
+    return formatter_.get()->current_metadata_;
   }
 
   int ConvertUnicodeStringPosition(const UnicodeString& s, int pos) const {
