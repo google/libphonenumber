@@ -1,11 +1,9 @@
 C++ version of the libphonenumber project.
-Work in progress.
 
 This is a port of the Java version.
 
 This project uses some third-party code:
-  - src/base/ sources come from Chromium browser.
-  - src/utf/ sources come from lib9 which is also used in Go.
+  - src/phonenumbers/utf/ sources come from lib9 which is also used in Go.
 
 Requirements:
   - CMake build system
