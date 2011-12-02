@@ -51,8 +51,8 @@ class AsYouTypeFormatter;
 class Logger;
 class NumberFormat;
 class PhoneMetadata;
-class PhoneMetadataCollection;
-class PhoneNumber;
+class PhoneNumberMatcherRegExps;
+class PhoneNumberRegExpsAndMappings;
 class RegExp;
 
 // NOTE: A lot of methods in this class require Region Code strings. These must
@@ -71,6 +71,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class PhoneNumberMatcher;
   friend class PhoneNumberMatcherRegExps;
   friend class PhoneNumberMatcherTest;
+  friend class PhoneNumberRegExpsAndMappings;
   friend class PhoneNumberUtilTest;
  public:
   ~PhoneNumberUtil();
@@ -161,10 +162,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 #ifdef USE_GOOGLE_BASE
   static PhoneNumberUtil* GetInstance();
 #endif
-
-  // Initialisation helper function used to populate the regular expressions in
-  // a defined order.
-  void CreateRegularExpressions() const;
 
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will
@@ -549,6 +546,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   bool IsLeadingZeroPossible(int country_calling_code) const;
 
  private:
+  scoped_ptr<Logger> logger_;
+
   typedef pair<int, list<string>*> IntRegionsPair;
 
   // The minimum and maximum length of the national significant number.
@@ -577,6 +576,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // string preceding this is captured.
   // This corresponds to SECOND_NUMBER_START in the java version.
   static const char kCaptureUpToSecondNumberStart[];
+
+  // Helper class holding useful regular expressions and character mappings.
+  scoped_ptr<PhoneNumberRegExpsAndMappings> reg_exps_;
 
   // A mapping from a country calling code to a RegionCode object which denotes
   // the region represented by that country calling code. Note regions under
