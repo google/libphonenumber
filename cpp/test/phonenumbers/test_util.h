@@ -44,121 +44,101 @@ ostream& operator<<(ostream& os, const PhoneNumber& number);
 
 ostream& operator<<(ostream& os, const vector<PhoneNumber>& numbers);
 
-// Class containing string constants of region codes for easier testing.
+// Class containing string constants of region codes for easier testing. Note
+// that another private RegionCode class is defined in
+// cpp/src/phonenumbers/region_code.h. This one contains more constants.
 class RegionCode {
  public:
-  static const string& AD() {
-    static const string s = "AD";
-    return s;
+  static const char* AD() {
+    return "AD";
   }
 
-  static const string& AO() {
-    static const string s = "AO";
-    return s;
+  static const char* AO() {
+    return "AO";
   }
 
-  static const string& AQ() {
-    static const string s = "AQ";
-    return s;
+  static const char* AQ() {
+    return "AQ";
   }
 
-  static const string& AR() {
-    static const string s = "AR";
-    return s;
+  static const char* AR() {
+    return "AR";
   }
 
-  static const string& AU() {
-    static const string s = "AU";
-    return s;
+  static const char* AU() {
+    return "AU";
   }
 
-  static const string& BS() {
-    static const string s = "BS";
-    return s;
+  static const char* BS() {
+    return "BS";
   }
 
-  static const string& CA() {
-    static const string s = "CA";
-    return s;
+  static const char* CA() {
+    return "CA";
   }
 
-  static const string& CN() {
-    static const string s = "CN";
-    return s;
+  static const char* CN() {
+    return "CN";
   }
 
-  static const string& CS() {
-    static const string s = "CS";
-    return s;
+  static const char* CS() {
+    return "CS";
   }
 
-  static const string& DE() {
-    static const string s = "DE";
-    return s;
+  static const char* DE() {
+    return "DE";
   }
 
-  static const string& GB() {
-    static const string s = "GB";
-    return s;
+  static const char* GB() {
+    return "GB";
   }
 
-  static const string& IT() {
-    static const string s = "IT";
-    return s;
+  static const char* IT() {
+    return "IT";
   }
 
-  static const string& JP() {
-    static const string s = "JP";
-    return s;
+  static const char* JP() {
+    return "JP";
   }
 
-  static const string& KR() {
-    static const string s = "KR";
-    return s;
+  static const char* KR() {
+    return "KR";
   }
 
-  static const string& MX() {
-    static const string s = "MX";
-    return s;
+  static const char* MX() {
+    return "MX";
   }
 
-  static const string& NZ() {
-    static const string s = "NZ";
-    return s;
+  static const char* NZ() {
+    return "NZ";
   }
 
-  static const string& PL() {
-    static const string s = "PL";
-    return s;
+  static const char* PL() {
+    return "PL";
   }
 
-  static const string& RE() {
-    static const string s = "RE";
-    return s;
+  static const char* RE() {
+    return "RE";
   }
 
-  static const string& SG() {
-    static const string s = "SG";
-    return s;
+  static const char* SG() {
+    return "SG";
   }
 
-  static const string& US() {
-    static const string s = "US";
-    return s;
+  static const char* US() {
+    return "US";
   }
 
-  static const string& YT() {
-    static const string s = "YT";
-    return s;
+  static const char* YT() {
+    return "YT";
   }
 
   // Returns a region code string representing the "unknown" region.
-  static const string& GetUnknown() {
-    static const string s = "ZZ";
-    return s;
+  static const char* GetUnknown() {
+    return "ZZ";
   }
 
-  static const string& ZZ() {
+  static const char* ZZ() {
     return GetUnknown();
   }
 };

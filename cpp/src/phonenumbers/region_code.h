@@ -25,9 +25,8 @@ using std::string;
 class RegionCode {
  public:
   // Returns a region code string representing the "unknown" region.
-  static const string& GetUnknown() {
-    static const string s = "ZZ";
-    return s;
+  static const char* GetUnknown() {
+    return "ZZ";
   }
 };
 
