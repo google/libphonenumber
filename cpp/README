@@ -5,6 +5,9 @@ This is a port of the Java version.
 This project uses some third-party code:
   - src/phonenumbers/utf/ sources come from lib9 which is also used in Go.
 
+
+Building the library on GNU/Linux
+---------------------------------
 Requirements:
   - CMake build system
     http://www.cmake.org
@@ -81,7 +84,70 @@ How to build libphonenumber C++:
   $ cmake ..
   $ make
 
-Supported build parameters:
+
+Building the library on Windows (Visual Studio)
+-----------------------------------------------
+The library was tested with Visual Studio 2010.
+
+You will need to manually fetch and install the following dependencies:
+  - CMake (tested with v2.8.6):
+    http://cmake.org/cmake/resources/software.html
+    * Download and install the Win32 installer.
+
+  - Boost (tested with v1.44) from BoostPro:
+    http://www.boostpro.com/download/
+    * Select all the variants and Boost DateTime and Boost Thread during the
+      installation process.
+
+  - GTest (tested with v1.6.0):
+    http://code.google.com/p/googletest/downloads/list
+    * Open msvc/gtest-md.sln with Visual Studio and build the whole solution.
+
+  - ICU (MSVC binaries, tested with v4.8.1):
+    http://site.icu-project.org/download/48#ICU4C-Download
+    * Simply extract the archive.
+
+  - Protocol Buffers:
+    http://code.google.com/p/protobuf/downloads/list
+    * Open vsprojects/protobuf.sln with Visual Studio and build the whole
+      solution.
+
+Then run cmake-gui and specify the path to the libphonenumber's cpp directory
+and its build directory which must be created (e.g. cpp/build).
+
+When clicking on "Configure", specify the appropriate Visual Studio version
+(tested with 2010).
+
+Then CMake will need your help to locate the dependencies. You will have to set
+the following variables (this example assumes that you extracted the
+dependencies to C:/).
+
+GTEST_INCLUDE_DIR         C:/gtest-1.6.0/include
+GTEST_LIB                 C:/gtest-1.6.0/msvc/gtest-md/Release/gtest.lib
+
+ICU_I18N_INCLUDE_DIR      C:/icu/include
+ICU_I18N_LIB              C:/icu/lib/icuin.lib
+
+ICU_UC_INCLUDE_DIR        C:/icu/include
+ICU_UC_LIB                C:/icu/lib/icuuc.lib
+
+PROTOBUF_INCLUDE_DIR      C:/protobuf-2.4.1/src
+PROTOBUF_LIB              C:/protobuf-2.4.1/vsprojects/Release/libprotobuf.lib
+PROTOC_BIN                C:/protobuf-2.4.1/vsprojects/Release/protoc.exe
+
+Then you can click on "Configure" again. CMake should have located all the
+dependencies.
+Then click on "Generate" to generate the appropriate Visual Studio project.
+Then open cpp/build/libphonenumber.sln with Visual Studio and build the INSTALL
+target.
+
+As a result the library's headers and binaries should have been installed to
+C:/Program Files/libphonenumber/.
+Note that this path can be set by overriding the CMAKE_INSTALL_PREFIX variable
+with cmake-gui.
+
+Supported build parameters
+--------------------------
   Build parameters can be specified invoking CMake with '-DKEY=VALUE' or using a
   CMake user interface (ccmake or cmake-gui).
 
