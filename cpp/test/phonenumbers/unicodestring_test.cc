@@ -22,16 +22,16 @@
 
 using std::ostream;
 
+namespace i18n {
+namespace phonenumbers {
+
 // Used by GTest to print the expected and actual results in case of failure.
-ostream& operator<<(ostream& out, const i18n::phonenumbers::UnicodeString& s) {
+ostream& operator<<(ostream& out, const UnicodeString& s) {
   string utf8;
   s.toUTF8String(utf8);
   out << utf8;
   return out;
 }
-
-namespace i18n {
-namespace phonenumbers {
 
 TEST(UnicodeString, ToUTF8StringWithEmptyString) {
   UnicodeString s;
