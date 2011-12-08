@@ -80,6 +80,7 @@
   <modules>
     <module>libphonenumber</module>
     <module>geocoder</module>
+    <module>demo</module>
   </modules>
 
   <build>
