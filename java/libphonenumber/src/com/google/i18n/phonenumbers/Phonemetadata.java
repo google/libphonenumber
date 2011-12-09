@@ -446,6 +446,20 @@ public final class Phonemetadata {
       return this;
     }
 
+    // required PhoneNumberDesc voicemail = 28;
+    private boolean hasVoicemail;
+    private PhoneNumberDesc voicemail_ = null;
+    public boolean hasVoicemail() { return hasVoicemail; }
+    public PhoneNumberDesc getVoicemail() { return voicemail_; }
+    public PhoneMetadata setVoicemail(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasVoicemail = true;
+      voicemail_ = value;
+      return this;
+    }
+
     // required PhoneNumberDesc emergency = 27;
     private boolean hasEmergency;
     private PhoneNumberDesc emergency_ = null;
@@ -690,6 +704,10 @@ public final class Phonemetadata {
       if (hasUan) {
         uan_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasVoicemail);
+      if (hasVoicemail) {
+        voicemail_.writeExternal(objectOutput);
+      }
       objectOutput.writeBoolean(hasEmergency);
       if (hasEmergency) {
         emergency_.writeExternal(objectOutput);
@@ -812,6 +830,12 @@ public final class Phonemetadata {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
         setUan(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setVoicemail(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {

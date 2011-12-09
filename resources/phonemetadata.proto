@@ -133,6 +133,7 @@ message PhoneMetadata {
   required PhoneNumberDesc pager = 21;
   required PhoneNumberDesc uan = 25;
   required PhoneNumberDesc emergency = 27;
+  required PhoneNumberDesc voicemail = 28;
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.
   required PhoneNumberDesc no_international_dialling = 24;

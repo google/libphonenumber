@@ -739,19 +739,24 @@ public class PhoneNumberUtilTest extends TestCase {
     PhoneNumber number5 = phoneUtil.parse("+442087654321", RegionCode.GB);
     assertEquals("(020) 8765 4321", phoneUtil.formatInOriginalFormat(number5, RegionCode.GB));
 
-    // Invalid numbers should be formatted using its raw input when that is available. Note area
+    // Invalid numbers that we have a formatting pattern for should be formatted properly. Note area
     // codes starting with 7 are intentionally excluded in the test metadata for testing purposes.
     PhoneNumber number6 = phoneUtil.parseAndKeepRawInput("7345678901", RegionCode.US);
-    assertEquals("7345678901", phoneUtil.formatInOriginalFormat(number6, RegionCode.US));
+    assertEquals("734 567 8901", phoneUtil.formatInOriginalFormat(number6, RegionCode.US));
 
-    // When the raw input is unavailable, format as usual.
-    PhoneNumber number7 = phoneUtil.parse("7345678901", RegionCode.US);
-    assertEquals("734 567 8901", phoneUtil.formatInOriginalFormat(number7, RegionCode.US));
+    // US is not a leading zero country, and the presence of the leading zero leads us to format the
+    // number using raw_input.
+    PhoneNumber number7 = phoneUtil.parseAndKeepRawInput("07345678901", RegionCode.US);
+    assertEquals("07345678901", phoneUtil.formatInOriginalFormat(number7, RegionCode.US));
 
     // This number is valid, but we don't have a formatting pattern for it. Fall back to the raw
     // input.
     PhoneNumber number8 = phoneUtil.parseAndKeepRawInput("02-4567-8900", RegionCode.KR);
     assertEquals("02-4567-8900", phoneUtil.formatInOriginalFormat(number8, RegionCode.KR));
+
+    // US local numbers are formatted correctly, as we have formatting patterns for them.
+    PhoneNumber localNumberUS = phoneUtil.parseAndKeepRawInput("2530000", RegionCode.US);
+    assertEquals("253 0000", phoneUtil.formatInOriginalFormat(localNumberUS, RegionCode.US));
   }
 
   public void testIsPremiumRate() {
@@ -1721,6 +1726,15 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(ukNumber, phoneUtil.parse("+44 2034567890 x 456  ", RegionCode.GB));
     assertEquals(ukNumber, phoneUtil.parse("+44 2034567890  X 456", RegionCode.GB));
     assertEquals(ukNumber, phoneUtil.parse("+44-2034567890;ext=456", RegionCode.GB));
+    // Full-width extension, "extn" only.
+    assertEquals(ukNumber, phoneUtil.parse("+442034567890\uFF45\uFF58\uFF54\uFF4E456",
+                                           RegionCode.GB));
+    // "xtn" only.
+    assertEquals(ukNumber, phoneUtil.parse("+442034567890\uFF58\uFF54\uFF4E456",
+                                           RegionCode.GB));
+    // "xt" only.
+    assertEquals(ukNumber, phoneUtil.parse("+442034567890\uFF58\uFF54456",
+                                           RegionCode.GB));
 
     PhoneNumber usWithExtension = new PhoneNumber();
     usWithExtension.setCountryCode(1).setNationalNumber(8009013355L).setExtension("7246433");

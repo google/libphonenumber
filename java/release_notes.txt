@@ -1,3 +1,13 @@
+December 9th, 2011: libphonenumber-4.4
+* Code changes
+ - Support for Voicemail numbers
+ - Support prefixes "xt" and "xtn" to indicate extensions of phone numbers
+ - Change formatInOriginalFormat to use raw_input for numbers with incorrect leading zeroes, instead
+   of all invalid numbers.
+
+* Metadata changes
+ - Updates for AR, BD, CH, CI, IL, IR, IS, IT, JP, KW, LR, MM, NG, SA, SC, UZ
+
 November 24th, 2011: libphonenumber-4.3
 * Code changes
  - Fix the problems with AYTF crashing for longer numbers entered with +CountryCode, and incorrectly

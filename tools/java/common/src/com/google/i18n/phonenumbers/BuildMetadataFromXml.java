@@ -79,6 +79,7 @@ public class BuildMetadataFromXml {
   private static final String SHARED_COST = "sharedCost";
   private static final String TOLL_FREE = "tollFree";
   private static final String UAN = "uan";
+  private static final String VOICEMAIL = "voicemail";
   private static final String VOIP = "voip";
 
   // @VisibleForTesting
@@ -436,6 +437,7 @@ public class BuildMetadataFromXml {
                                                              PERSONAL_NUMBER));
     metadata.setPager(processPhoneNumberDescElement(generalDesc, element, PAGER));
     metadata.setUan(processPhoneNumberDescElement(generalDesc, element, UAN));
+    metadata.setVoicemail(processPhoneNumberDescElement(generalDesc, element, VOICEMAIL));
     metadata.setEmergency(processPhoneNumberDescElement(generalDesc, element, EMERGENCY));
     metadata.setNoInternationalDialling(processPhoneNumberDescElement(generalDesc, element,
                                                                       NO_INTERNATIONAL_DIALLING));
