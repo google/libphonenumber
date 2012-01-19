@@ -335,7 +335,7 @@
          patterns as digits beyond the third one are entered. As a result, only a few fake
          formatting rules are added. -->
     <territory id="JP" countryCode="81" internationalPrefix="010"
-               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>[57-9]0</leadingDigits>
@@ -362,6 +362,10 @@
           <leadingDigits>[23]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{4})">
+          <leadingDigits>077</leadingDigits>
+          <format>$1-$2</format>
+        </numberFormat>
         <!-- The following numberFormat is added to test that the format containing the star sign is
              not used by the AYTF. -->
         <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{4})">
@@ -373,6 +377,15 @@
         <nationalNumberPattern>[23]\d{3}</nationalNumberPattern>
         <possibleNumberPattern>\d{4}</possibleNumberPattern>
       </noInternationalDialling>
+      <generalDesc>
+        <nationalNumberPattern>07\d{5}|[1-357-9]\d{3,10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4,11}</possibleNumberPattern>
+      </generalDesc>
+      <tollFree>
+        <nationalNumberPattern>0777[01]\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <exampleNumber>0777012</exampleNumber>
+      </tollFree>
     </territory>
 
     <!-- Korea (Rep. of) -->
@@ -751,6 +764,31 @@
       <tollFree>
         <nationalNumberPattern>80\d{7}</nationalNumberPattern>
         <exampleNumber>801234567</exampleNumber>
+      </tollFree>
+    </territory>
+
+    <!-- International Toll Free numbers  -->
+    <territory id="001" countryCode="800">
+      <availableFormats>
+        <numberFormat pattern="(\d{4})(\d{4})">
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+        <exampleNumber>12345678</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>\d{8}</nationalNumberPattern>
       </tollFree>
     </territory>
   </territories>

@@ -183,7 +183,7 @@ public class BuildMetadataFromXml {
     }
     if (element.hasAttribute(NATIONAL_PREFIX_FOR_PARSING)) {
       metadata.setNationalPrefixForParsing(
-          validateRE(element.getAttribute(NATIONAL_PREFIX_FOR_PARSING)));
+          validateRE(element.getAttribute(NATIONAL_PREFIX_FOR_PARSING), true));
       if (element.hasAttribute(NATIONAL_PREFIX_TRANSFORM_RULE)) {
         metadata.setNationalPrefixTransformRule(
             validateRE(element.getAttribute(NATIONAL_PREFIX_TRANSFORM_RULE)));

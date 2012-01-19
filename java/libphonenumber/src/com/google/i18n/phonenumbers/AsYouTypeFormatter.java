@@ -523,7 +523,9 @@ public class AsYouTypeFormatter {
     nationalNumber.setLength(0);
     nationalNumber.append(numberWithoutCountryCallingCode);
     String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
-    if (!newRegionCode.equals(defaultCountry)) {
+    if (PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(newRegionCode)) {
+      currentMetaData = phoneUtil.getMetadataForNonGeographicalRegion(countryCode);
+    } else if (!newRegionCode.equals(defaultCountry)) {
       currentMetaData = getMetadataForRegion(newRegionCode);
     }
     String countryCodeString = Integer.toString(countryCode);

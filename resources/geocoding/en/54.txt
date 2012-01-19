@@ -89,16 +89,19 @@
 542475|Rojas, Buenos Aires
 542477|Pergamino
 542478|Arrecifes, Buenos Aires
+54260|San Rafael
 54261|Mendoza, Capital
 542622|Tunuyán, Mendoza
 542623|San Martin
 542625|General Alvear, Mendoza
 542627|San Rafael
+54263|San Martin
 54264|San Juan, Capital
 542646|Valle Fértil
-542652|San Luis, La Capital
 542656|Merlo, San Luis
 542657|Villa Mercedes, General Pedernera
+54266|San Luis, La Capital
+54280|Trelew, Rawson
 542901|Ushuaia
 542902|El Calafate, Lago Argentino
 54291|Bahía Blanca
@@ -114,21 +117,22 @@
 542932|Punta Alta, Buenos Aires
 542934|San Antonio Oeste, Río Negro
 542936|Buenos Aires Province
-542941|Confluencia
+54294|San Carlos de Bariloche, Río Negro
+542940|Ingeniero Jacobacci, Río Negro
 542942|Zapala
 542944|San Carlos de Bariloche, Río Negro
 542945|Esquel, Futaleufú
-542946|Choele-choel, Río Negro
+542946|Choele Choel, Río Negro
 542948|Chos Malal, Neuquén
 542952|General Acha, La Pampa
 542953|Macachín, La Pampa
 542954|Santa Rosa, La Pampa
 542962|Puerto San Julián, Santa Cruz
 542964|Río Grande
-542965|Trelew, Rawson
 542966|Río Gallegos, Ger Aike
 54297|Comodoro Rivadavia, Escalante
 542972|San Martín de los Andes
+54298|General Roca, Río Negro
 542983|Tres Arroyos
 54299|Neuquén, Confluencia
 543327|López Camelo, Buenos Aires
@@ -193,6 +197,8 @@
 543573|Villa del Rosario, Córdoba
 543576|Córdoba
 54358|Río Cuarto
+54362|Resistencia, San Fernando
+54364|Presidencia Roque Sáenz Pena, Chaco
 543717|Formosa
 543718|Clorinda, Formosa
 543722|Resistencia, San Fernando
@@ -203,18 +209,19 @@
 543735|Villa Angela, Mayor Luis Fonta
 543743|Puerto Rico, Misiones
 543751|El Dorado, Misiones
-543752|Posadas, Capital
 543754|Leandro N. Alem, Misiones
 543755|Oberá, Misiones
 543756|Santo Tomé, Corrientes
 543757|Puerto Iguazú, Misiones
 543758|Apóstoles, Misiones
+54376|Posadas, Capital
 543772|Paso de Los Libres, Corrientes/Resistencia
 543773|Mercedes, Corrientes
 543774|Curuzú Cuatiá, Corrientes
 543775|Monte Caseros, Corrientes
 543777|Goya, Corrientes
 543783|Corrientes, Capital
+54379|Corrientes, Capital
 54381|San Miguel de Tucumán, Capital
 543822|La Rioja, Capital
 543825|Chilecito, La Rioja

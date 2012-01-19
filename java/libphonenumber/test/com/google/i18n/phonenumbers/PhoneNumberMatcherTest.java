@@ -369,20 +369,20 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("31/8/2011", RegionCode.US),
     new NumberTest("1/12/2011", RegionCode.US),
     new NumberTest("10/12/82", RegionCode.DE),
+    new NumberTest("650x2531234", RegionCode.US),
   };
 
   /**
    * Strings with number-like things that should only be found under "possible".
    */
   private static final NumberTest[] POSSIBLE_ONLY_CASES = {
-    new NumberTest("abc8002345678", RegionCode.US),
     // US numbers cannot start with 7 in the test metadata to be valid.
     new NumberTest("7121115678", RegionCode.US),
     // 'X' should not be found in numbers at leniencies stricter than POSSIBLE, unless it represents
     // a carrier code or extension.
     new NumberTest("1650 x 253 - 1234", RegionCode.US),
     new NumberTest("650 x 253 - 1234", RegionCode.US),
-    new NumberTest("650x2531234", RegionCode.US),
+    new NumberTest("6502531x234", RegionCode.US),
     new NumberTest("(20) 3346 1234", RegionCode.GB),  // Non-optional NP omitted
   };
 
@@ -391,18 +391,19 @@ public class PhoneNumberMatcherTest extends TestCase {
    * leniency level.
    */
   private static final NumberTest[] VALID_CASES = {
-    new NumberTest("65 02 53 00 00.", RegionCode.US),
+    new NumberTest("65 02 53 00 00", RegionCode.US),
     new NumberTest("6502 538365", RegionCode.US),
     new NumberTest("650//253-1234", RegionCode.US),  // 2 slashes are illegal at higher levels
     new NumberTest("650/253/1234", RegionCode.US),
     new NumberTest("9002309. 158", RegionCode.US),
-    new NumberTest("21 7/8 - 14 12/34 - 5", RegionCode.US),
+    new NumberTest("12 7/8 - 14 12/34 - 5", RegionCode.US),
     new NumberTest("12.1 - 23.71 - 23.45", RegionCode.US),
-    new NumberTest("1979-2011 100%", RegionCode.US),
+
     new NumberTest("800 234 1 111x1111", RegionCode.US),
+    new NumberTest("1979-2011 100", RegionCode.US),
     new NumberTest("+494949-4-94", RegionCode.DE),  // National number in wrong format
-    new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17\uFF17",
-                   RegionCode.US),
+    new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF16-\uFF17\uFF17\uFF17", RegionCode.US),
+
   };
 
   /**
@@ -442,6 +443,36 @@ public class PhoneNumberMatcherTest extends TestCase {
     new NumberTest("01 (33) 3461 2234", RegionCode.MX),  // Optional NP present
     new NumberTest("(33) 3461 2234", RegionCode.MX),  // Optional NP omitted
   };
+
+  public void testMatchesWithPossibleLeniency() throws Exception {
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(STRICT_GROUPING_CASES));
+    testCases.addAll(Arrays.asList(EXACT_GROUPING_CASES));
+    testCases.addAll(Arrays.asList(VALID_CASES));
+    testCases.addAll(Arrays.asList(POSSIBLE_ONLY_CASES));
+    doTestNumberMatchesForLeniency(testCases, Leniency.POSSIBLE);
+  }
+
+  public void testNonMatchesWithPossibleLeniency() throws Exception {
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(IMPOSSIBLE_CASES));
+    doTestNumberNonMatchesForLeniency(testCases, Leniency.POSSIBLE);
+  }
+
+  public void testMatchesWithValidLeniency() throws Exception {
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(STRICT_GROUPING_CASES));
+    testCases.addAll(Arrays.asList(EXACT_GROUPING_CASES));
+    testCases.addAll(Arrays.asList(VALID_CASES));
+    doTestNumberMatchesForLeniency(testCases, Leniency.VALID);
+  }
+
+  public void testNonMatchesWithValidLeniency() throws Exception {
+    List<NumberTest> testCases = new ArrayList<NumberTest>();
+    testCases.addAll(Arrays.asList(IMPOSSIBLE_CASES));
+    testCases.addAll(Arrays.asList(POSSIBLE_ONLY_CASES));
+    doTestNumberNonMatchesForLeniency(testCases, Leniency.VALID);
+  }
 
   public void testMatchesWithStrictGroupingLeniency() throws Exception {
     List<NumberTest> testCases = new ArrayList<NumberTest>();

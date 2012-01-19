@@ -685,6 +685,24 @@ public class AsYouTypeFormatterTest extends TestCase {
     assertEquals("+52 1 541 234 5678", formatter.inputDigit('8'));
   }
 
+  public void testAYTF_International_Toll_Free() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
+    // +800 1234 5678
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+80", formatter.inputDigit('0'));
+    assertEquals("+800 ", formatter.inputDigit('0'));
+    assertEquals("+800 1", formatter.inputDigit('1'));
+    assertEquals("+800 12", formatter.inputDigit('2'));
+    assertEquals("+800 123", formatter.inputDigit('3'));
+    assertEquals("+800 1234", formatter.inputDigit('4'));
+    assertEquals("+800 1234 5", formatter.inputDigit('5'));
+    assertEquals("+800 1234 56", formatter.inputDigit('6'));
+    assertEquals("+800 1234 567", formatter.inputDigit('7'));
+    assertEquals("+800 1234 5678", formatter.inputDigit('8'));
+    assertEquals("+800123456789", formatter.inputDigit('9'));
+  }
+
   public void testAYTFMultipleLeadingDigitPatterns() {
     // +81 50 2345 6789
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.JP);

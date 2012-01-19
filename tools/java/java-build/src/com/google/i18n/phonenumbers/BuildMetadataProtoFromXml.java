@@ -102,6 +102,11 @@ public class BuildMetadataProtoFromXml extends Command {
 
       for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
         String regionCode = metadata.getId();
+        // For non-geographical country calling codes (e.g. +800), use the country calling codes
+        // instead of the region code to form the file name.
+        if (regionCode.equals("001")) {
+          regionCode = Integer.toString(metadata.getCountryCode());
+        }
         PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
         outMetadataCollection.addMetadata(metadata);
         FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);

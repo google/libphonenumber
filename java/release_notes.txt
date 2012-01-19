@@ -1,3 +1,16 @@
+January 19th, 2012: libphonenumber-4.5
+* Code changes
+ - Support for non-geographical country calling codes (e.g. +800).
+ - Modify formatInOriginalFormat to not insert/remove/modify digits in the original number passed
+   in.
+ - Fix formatOutOfCountryKeepingAlphaChars to not throw a NPE.
+
+* Metadata changes
+ - Updates for AR, BH, CI, CN, CR, DE, GA, IL, JO, JP, KE, KZ, LB, LK, LT, MV, MW, MZ, NA, NL, NZ,
+   PL, RO, SA, SV, TM, UG, US
+ - New country calling codes: 800, 808, 883, 888, 979
+ - Geocoding data updates: AR, US
+
 December 9th, 2011: libphonenumber-4.4
 * Code changes
  - Support for Voicemail numbers
