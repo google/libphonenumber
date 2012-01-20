@@ -137,7 +137,8 @@ public class PhoneNumberOfflineGeocoder {
    * Returns the customary display name in the given language for the given region.
    */
   private String getRegionDisplayName(String regionCode, Locale language) {
-    return (regionCode == null || regionCode.equals("ZZ"))
+    return (regionCode == null || regionCode.equals("ZZ") ||
+            regionCode.equals(PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY))
         ? "" : new Locale("", regionCode).getDisplayCountry(language);
   }
 

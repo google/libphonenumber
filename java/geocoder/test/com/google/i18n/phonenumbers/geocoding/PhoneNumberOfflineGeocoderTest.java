@@ -57,6 +57,8 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
       new PhoneNumber().setCountryCode(61).setNationalNumber(236618300L);
   private static final PhoneNumber NUMBER_WITH_INVALID_COUNTRY_CODE =
       new PhoneNumber().setCountryCode(999).setNationalNumber(2423651234L);
+  private static final PhoneNumber INTERNATIONAL_TOLL_FREE =
+      new PhoneNumber().setCountryCode(800).setNationalNumber(12345678L);
 
   public void testGetDescriptionForNumberWithNoDataFile() {
     // No data file containing mappings for US numbers is available in Chinese for the unittests. As
@@ -68,6 +70,8 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
     assertEquals("Australia",
         geocoder.getDescriptionForNumber(AU_NUMBER, new Locale("en", "US")));
     assertEquals("", geocoder.getDescriptionForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
+                                                      new Locale("en", "US")));
+    assertEquals("", geocoder.getDescriptionForNumber(INTERNATIONAL_TOLL_FREE,
                                                       new Locale("en", "US")));
   }
 
