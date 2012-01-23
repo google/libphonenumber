@@ -1449,9 +1449,11 @@ public class PhoneNumberUtil {
           break;
         }
         // Otherwise, we need to remove the national prefix from our output.
-        formatRule.clearNationalPrefixFormattingRule();
+        NumberFormat numFormatCopy = new NumberFormat();
+        numFormatCopy.mergeFrom(formatRule);
+        numFormatCopy.clearNationalPrefixFormattingRule();
         List<NumberFormat> numberFormats = new ArrayList<NumberFormat>(1);
-        numberFormats.add(formatRule);
+        numberFormats.add(numFormatCopy);
         formattedNumber = formatByPattern(number, PhoneNumberFormat.NATIONAL, numberFormats);
         break;
     }

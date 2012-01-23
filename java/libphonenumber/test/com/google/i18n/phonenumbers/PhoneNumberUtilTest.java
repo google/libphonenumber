@@ -823,6 +823,8 @@ public class PhoneNumberUtilTest extends TestCase {
         phoneUtil.parseAndKeepRawInput("2087654321", RegionCode.GB);
     assertEquals("20 8765 4321",
         phoneUtil.formatInOriginalFormat(numberWithoutNationalPrefixGB, RegionCode.GB));
+    // Make sure no metadata is modified as a result of the previous function call.
+    assertEquals("(020) 8765 4321", phoneUtil.formatInOriginalFormat(number5, RegionCode.GB));
 
     PhoneNumber numberWithNationalPrefixMX =
         phoneUtil.parseAndKeepRawInput("013312345678", RegionCode.MX);
