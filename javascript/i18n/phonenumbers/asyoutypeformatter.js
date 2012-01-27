@@ -599,7 +599,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
         }
         return this.ableToFormat_ ?
             this.prefixBeforeNationalNumber_.toString() + tempNationalNumber :
-            tempNationalNumber;
+            this.accruedInput_.toString();
       } else {
         return this.attemptToChooseFormattingPattern_();
       }
@@ -752,8 +752,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     this.getAvailableFormats_(
         nationalNumber.substring(0,
             i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_));
-    this.maybeCreateNewTemplate_();
-    return this.inputAccruedNationalNumber_();
+    return this.maybeCreateNewTemplate_() ?
+        this.inputAccruedNationalNumber_() : this.accruedInput_.toString();
   } else {
     return this.prefixBeforeNationalNumber_.toString() + nationalNumber;
   }
@@ -783,7 +783,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.inputAccruedNationalNumber_ =
     }
     return this.ableToFormat_ ?
         this.prefixBeforeNationalNumber_.toString() + tempNationalNumber :
-        tempNationalNumber;
+        this.accruedInput_.toString();
   } else {
     return this.prefixBeforeNationalNumber_.toString();
   }
@@ -896,7 +896,11 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   this.nationalNumber_.append(numberWithoutCountryCallingCode.toString());
   /** @type {string} */
   var newRegionCode = this.phoneUtil_.getRegionCodeForCountryCode(countryCode);
-  if (newRegionCode != this.defaultCountry_) {
+  if (i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY ==
+      newRegionCode) {
+    this.currentMetaData_ =
+        this.phoneUtil_.getMetadataForNonGeographicalRegion(countryCode);
+  } else if (newRegionCode != this.defaultCountry_) {
     this.currentMetaData_ = this.getMetadataForRegion_(newRegionCode);
   }
   /** @type {string} */

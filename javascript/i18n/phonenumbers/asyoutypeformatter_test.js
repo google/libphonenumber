@@ -93,6 +93,7 @@ function testTooLongNumberMatchingMultipleLeadingDigits() {
   assertEquals('+81 90 1234 5678', f.inputDigit('8'));
   assertEquals('+81 90 12 345 6789', f.inputDigit('9'));
   assertEquals('+81901234567890', f.inputDigit('0'));
+  assertEquals('+819012345678901', f.inputDigit('1'));
 }
 
 function testAYTFUS() {
@@ -699,6 +700,25 @@ function testAYTF_MX() {
   assertEquals('+52 1 541 234 5678', f.inputDigit('8'));
 }
 
+function testAYTF_International_Toll_Free() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
+  // +800 1234 5678
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+8', f.inputDigit('8'));
+  assertEquals('+80', f.inputDigit('0'));
+  assertEquals('+800 ', f.inputDigit('0'));
+  assertEquals('+800 1', f.inputDigit('1'));
+  assertEquals('+800 12', f.inputDigit('2'));
+  assertEquals('+800 123', f.inputDigit('3'));
+  assertEquals('+800 1234', f.inputDigit('4'));
+  assertEquals('+800 1234 5', f.inputDigit('5'));
+  assertEquals('+800 1234 56', f.inputDigit('6'));
+  assertEquals('+800 1234 567', f.inputDigit('7'));
+  assertEquals('+800 1234 5678', f.inputDigit('8'));
+  assertEquals('+800123456789', f.inputDigit('9'));
+}
+
 function testAYTFMultipleLeadingDigitPatterns() {
   // +81 50 2345 6789
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
@@ -731,6 +751,15 @@ function testAYTFMultipleLeadingDigitPatterns() {
   assertEquals('+81 222 12 56', f.inputDigit('6'));
   assertEquals('+81 222 12 567', f.inputDigit('7'));
   assertEquals('+81 222 12 5678', f.inputDigit('8'));
+
+  // 011113
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('01', f.inputDigit('1'));
+  assertEquals('011', f.inputDigit('1'));
+  assertEquals('011 1', f.inputDigit('1'));
+  assertEquals('011 11', f.inputDigit('1'));
+  assertEquals('011113', f.inputDigit('3'));
 
   // +81 3332 2 5678
   f.clear();

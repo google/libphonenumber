@@ -1122,6 +1122,57 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearEmergency = function() {
 
 
 /**
+ * Gets the value of the voicemail field.
+ * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getVoicemail = function() {
+  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(28));
+};
+
+
+/**
+ * Gets the value of the voicemail field or the default value if not set.
+ * @return {!i18n.phonenumbers.PhoneNumberDesc} The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.getVoicemailOrDefault = function() {
+  return /** @type {!i18n.phonenumbers.PhoneNumberDesc} */ (this.get$ValueOrDefault(28));
+};
+
+
+/**
+ * Sets the value of the voicemail field.
+ * @param {!i18n.phonenumbers.PhoneNumberDesc} value The value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.setVoicemail = function(value) {
+  this.set$Value(28, value);
+};
+
+
+/**
+ * @return {boolean} Whether the voicemail field has a value.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.hasVoicemail = function() {
+  return this.has$Value(28);
+};
+
+
+/**
+ * @return {number} The number of values in the voicemail field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.voicemailCount = function() {
+  return this.count$Values(28);
+};
+
+
+/**
+ * Clears the values in the voicemail field.
+ */
+i18n.phonenumbers.PhoneMetadata.prototype.clearVoicemail = function() {
+  this.clear$Field(28);
+};
+
+
+/**
  * Gets the value of the no_international_dialling field.
  * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
  */
@@ -2121,6 +2172,12 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadata, {
   },
   27: {
     name: 'emergency',
+    required: true,
+    fieldType: goog.proto2.Message.FieldType.MESSAGE,
+    type: i18n.phonenumbers.PhoneNumberDesc
+  },
+  28: {
+    name: 'voicemail',
     required: true,
     fieldType: goog.proto2.Message.FieldType.MESSAGE,
     type: i18n.phonenumbers.PhoneNumberDesc

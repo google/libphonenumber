@@ -25,7 +25,7 @@ pages with your web browser:
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 388).
+The JavaScript library is ported from the Java implementation (revision 421).
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
@@ -43,7 +43,7 @@ project:
     run the following commands to regenerate metadata.js and
     metadatafortesting.js:
 
-    ant -f java/libphonenumber/build.xml build-js-metadata
+    ant -f java/build.xml build-js-metadata
 
 3.  Manually port any changes of the Java code to the JavaScript code:
       PhoneNumberUtil.java => phonenumberutil.js

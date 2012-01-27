@@ -361,6 +361,8 @@ public class BuildMetadataJsonFromXml extends Command {
     }
     // required PhoneNumberDesc emergency = 27;
     toJsArray(metadata.getEmergency(), jsArrayBuilder);
+    // required PhoneNumberDesc voicemail = 28;
+    toJsArray(metadata.getVoicemail(), jsArrayBuilder);
 
     jsArrayBuilder.endArray();
   }
