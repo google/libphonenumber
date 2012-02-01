@@ -69,6 +69,10 @@ class RegionCode {
     return "AU";
   }
 
+  static const char* BR() {
+    return "BR";
+  }
+
   static const char* BS() {
     return "BS";
   }
@@ -123,6 +127,10 @@ class RegionCode {
 
   static const char* SG() {
     return "SG";
+  }
+
+  static const char* UN001() {
+    return "001";
   }
 
   static const char* US() {

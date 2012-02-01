@@ -618,8 +618,10 @@ bool AsYouTypeFormatter::AttemptToExtractCountryCode() {
   national_number_.assign(number_without_country_code);
   string new_region_code;
   phone_util_.GetRegionCodeForCountryCode(country_code, &new_region_code);
-
-  if (new_region_code != default_country_) {
+  if (PhoneNumberUtil::kRegionCodeForNonGeoEntity == new_region_code) {
+    current_metadata_ =
+        phone_util_.GetMetadataForNonGeographicalRegion(country_code);
+  } else if (new_region_code != default_country_) {
     current_metadata_ = GetMetadataForRegion(new_region_code);
   }
   StrAppend(&prefix_before_national_number_, country_code, " ");
