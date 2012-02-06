@@ -526,15 +526,16 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
 TEST_F(PhoneNumberMatcherTest, IsLatinLetter) {
   EXPECT_TRUE(IsLatinLetter('c'));
   EXPECT_TRUE(IsLatinLetter('C'));
-  EXPECT_TRUE(IsLatinLetter(UnicodeString("\xC3\x89" /* "É" */)[0]));
+  EXPECT_TRUE(IsLatinLetter(UnicodeString::fromUTF8("\xC3\x89" /* "É" */)[0]));
   // Combining acute accent.
-  EXPECT_TRUE(IsLatinLetter(UnicodeString("\xCC\x81")[0]));
+  EXPECT_TRUE(IsLatinLetter(UnicodeString::fromUTF8("\xCC\x81")[0]));
   EXPECT_FALSE(IsLatinLetter(':'));
   EXPECT_FALSE(IsLatinLetter('5'));
   EXPECT_FALSE(IsLatinLetter('-'));
   EXPECT_FALSE(IsLatinLetter('.'));
   EXPECT_FALSE(IsLatinLetter(' '));
-  EXPECT_FALSE(IsLatinLetter(UnicodeString("\xE6\x88\x91" /* "我" */)[0]));
+  EXPECT_FALSE(
+      IsLatinLetter(UnicodeString::fromUTF8("\xE6\x88\x91" /* "我" */)[0]));
 }
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingLatinChars) {

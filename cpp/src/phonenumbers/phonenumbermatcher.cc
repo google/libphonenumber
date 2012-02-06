@@ -207,7 +207,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   scoped_ptr<const RegExp> pattern_;
 
 #ifdef USE_GOOGLE_BASE
-  PhoneNumberMatcherRegExps* PhoneNumberMatcherRegExps::GetInstance() {
+  static PhoneNumberMatcherRegExps* GetInstance() {
     return Singleton<PhoneNumberMatcherRegExps>::get();
   }
 #endif  // USE_GOOGLE_BASE
