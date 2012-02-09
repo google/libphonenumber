@@ -95,6 +95,8 @@ public class PhoneNumberUtil {
   // The PLUS_SIGN signifies the international prefix.
   static final char PLUS_SIGN = '+';
 
+  private static final char STAR_SIGN = '*';
+
   private static final String RFC3966_EXTN_PREFIX = ";ext=";
 
   // A map that contains characters that are essential when dialling. That means any of the
@@ -256,11 +258,11 @@ public class PhoneNumberUtil {
   // carrier codes, for example in Brazilian phone numbers. We also allow multiple "+" characters at
   // the start.
   // Corresponds to the following:
-  // plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
+  // plus_sign*(([punctuation]|[star])*[digits]){3,}([punctuation]|[star]|[digits]|[alpha])*
   // Note VALID_PUNCTUATION starts with a -, so must be the first in the range.
   private static final String VALID_PHONE_NUMBER =
-      "[" + PLUS_CHARS + "]*(?:[" + VALID_PUNCTUATION + "]*" + DIGITS + "){3,}[" +
-      VALID_PUNCTUATION + VALID_ALPHA + DIGITS + "]*";
+      "[" + PLUS_CHARS + "]*(?:[" + VALID_PUNCTUATION + STAR_SIGN + "]*" + DIGITS + "){3,}[" +
+      VALID_PUNCTUATION + STAR_SIGN + VALID_ALPHA + DIGITS + "]*";
 
   // Default extension prefix to use when formatting. This will be put in front of any extension
   // component of the number, after the main national number is formatted. For example, if you wish
@@ -993,6 +995,7 @@ public class PhoneNumberUtil {
     return normalizedNumber.toString();
   }
 
+  // @VisibleForTesting
   static synchronized PhoneNumberUtil getInstance(
       String baseFileLocation,
       Map<Integer, List<String>> countryCallingCodeToRegionCodeMap) {
@@ -1017,6 +1020,14 @@ public class PhoneNumberUtil {
    */
   public Set<String> getSupportedRegions() {
     return supportedRegions;
+  }
+
+  /**
+   * Convenience method to get a list of what global network calling codes the library has metadata
+   * for.
+   */
+  public Set<Integer> getSupportedGlobalNetworkCallingCodes() {
+    return countryCodeToNonGeographicalMetadataMap.keySet();
   }
 
   /**
@@ -1091,23 +1102,24 @@ public class PhoneNumberUtil {
       // Early exit for E164 case since no formatting of the national number needs to be applied.
       // Extensions are not formatted.
       formattedNumber.append(nationalSignificantNumber);
-      formatNumberByFormat(countryCallingCode, PhoneNumberFormat.E164, formattedNumber);
+      prefixNumberWithCountryCallingCode(countryCallingCode, PhoneNumberFormat.E164,
+                                         formattedNumber);
       return;
     }
     // Note getRegionCodeForCountryCode() is used because formatting information for regions which
     // share a country calling code is contained by only one region for performance reasons. For
     // example, for NANPA regions it will be contained in the metadata for US.
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
-   if (!hasValidCountryCallingCode(countryCallingCode)) {
+    if (!hasValidCountryCallingCode(countryCallingCode)) {
       formattedNumber.append(nationalSignificantNumber);
       return;
     }
 
     PhoneMetadata metadata =
         getMetadataForRegionOrCallingCode(countryCallingCode, regionCode);
-    formattedNumber.append(formatNationalNumber(nationalSignificantNumber, metadata, numberFormat));
-    maybeGetFormattedExtension(number, metadata, numberFormat, formattedNumber);
-    formatNumberByFormat(countryCallingCode, numberFormat, formattedNumber);
+    formattedNumber.append(formatNsn(nationalSignificantNumber, metadata, numberFormat));
+    maybeAppendFormattedExtension(number, metadata, numberFormat, formattedNumber);
+    prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
   }
 
   /**
@@ -1133,18 +1145,24 @@ public class PhoneNumberUtil {
     if (!hasValidCountryCallingCode(countryCallingCode)) {
       return nationalSignificantNumber;
     }
-    List<NumberFormat> userDefinedFormatsCopy =
-        new ArrayList<NumberFormat>(userDefinedFormats.size());
     PhoneMetadata metadata =
         getMetadataForRegionOrCallingCode(countryCallingCode, regionCode);
-    for (NumberFormat numFormat : userDefinedFormats) {
-      String nationalPrefixFormattingRule = numFormat.getNationalPrefixFormattingRule();
+
+    StringBuilder formattedNumber = new StringBuilder(20);
+
+    NumberFormat formattingPattern =
+        chooseFormattingPatternForNumber(userDefinedFormats, nationalSignificantNumber);
+    if (formattingPattern == null) {
+      // If no pattern above is matched, we format the number as a whole.
+      formattedNumber.append(nationalSignificantNumber);
+    } else {
+      NumberFormat numFormatCopy = new NumberFormat();
+      // Before we do a replacement of the national prefix pattern $NP with the national prefix, we
+      // need to copy the rule so that subsequent replacements for different numbers have the
+      // appropriate national prefix.
+      numFormatCopy.mergeFrom(formattingPattern);
+      String nationalPrefixFormattingRule = formattingPattern.getNationalPrefixFormattingRule();
       if (nationalPrefixFormattingRule.length() > 0) {
-        // Before we do a replacement of the national prefix pattern $NP with the national prefix,
-        // we need to copy the rule so that subsequent replacements for different numbers have the
-        // appropriate national prefix.
-        NumberFormat numFormatCopy = new NumberFormat();
-        numFormatCopy.mergeFrom(numFormat);
         String nationalPrefix = metadata.getNationalPrefix();
         if (nationalPrefix.length() > 0) {
           // Replace $NP with national prefix and $FG with the first group ($1).
@@ -1157,19 +1175,12 @@ public class PhoneNumberUtil {
           // We don't want to have a rule for how to format the national prefix if there isn't one.
           numFormatCopy.clearNationalPrefixFormattingRule();
         }
-        userDefinedFormatsCopy.add(numFormatCopy);
-      } else {
-        // Otherwise, we just add the original rule to the modified list of formats.
-        userDefinedFormatsCopy.add(numFormat);
       }
+      formattedNumber.append(
+          formatNsnUsingPattern(nationalSignificantNumber, numFormatCopy, numberFormat));
     }
-
-    StringBuilder formattedNumber =
-        new StringBuilder(formatAccordingToFormats(nationalSignificantNumber,
-                                                   userDefinedFormatsCopy,
-                                                   numberFormat));
-    maybeGetFormattedExtension(number, metadata, numberFormat, formattedNumber);
-    formatNumberByFormat(countryCallingCode, numberFormat, formattedNumber);
+    maybeAppendFormattedExtension(number, metadata, numberFormat, formattedNumber);
+    prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
     return formattedNumber.toString();
   }
 
@@ -1197,12 +1208,11 @@ public class PhoneNumberUtil {
 
     StringBuilder formattedNumber = new StringBuilder(20);
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCallingCode, regionCode);
-    formattedNumber.append(formatNationalNumber(nationalSignificantNumber,
-                                                metadata,
-                                                PhoneNumberFormat.NATIONAL,
-                                                carrierCode));
-    maybeGetFormattedExtension(number, metadata, PhoneNumberFormat.NATIONAL, formattedNumber);
-    formatNumberByFormat(countryCallingCode, PhoneNumberFormat.NATIONAL, formattedNumber);
+    formattedNumber.append(formatNsn(nationalSignificantNumber, metadata,
+                                     PhoneNumberFormat.NATIONAL, carrierCode));
+    maybeAppendFormattedExtension(number, metadata, PhoneNumberFormat.NATIONAL, formattedNumber);
+    prefixNumberWithCountryCallingCode(countryCallingCode, PhoneNumberFormat.NATIONAL,
+                                       formattedNumber);
     return formattedNumber.toString();
   }
 
@@ -1314,6 +1324,10 @@ public class PhoneNumberUtil {
   public String formatOutOfCountryCallingNumber(PhoneNumber number,
                                                 String regionCallingFrom) {
     if (!isValidRegionCode(regionCallingFrom)) {
+      LOGGER.log(Level.WARNING,
+                 "Trying to format number from invalid region "
+                 + regionCallingFrom
+                 + ". International formatting applied.");
       return format(number, PhoneNumberFormat.INTERNATIONAL);
     }
     int countryCallingCode = number.getCountryCode();
@@ -1327,7 +1341,7 @@ public class PhoneNumberUtil {
         // country calling code.
         return countryCallingCode + " " + format(number, PhoneNumberFormat.NATIONAL);
       }
-    } else if (countryCallingCode == getCountryCodeForRegion(regionCallingFrom)) {
+    } else if (countryCallingCode == getCountryCodeForValidRegion(regionCallingFrom)) {
     // For regions that share a country calling code, the country calling code need not be dialled.
     // This also applies when dialling within a region, so this if clause covers both these cases.
     // Technically this is the case for dialling from La Reunion to other overseas departments of
@@ -1353,18 +1367,17 @@ public class PhoneNumberUtil {
     PhoneMetadata metadataForRegion =
         getMetadataForRegionOrCallingCode(countryCallingCode, regionCode);
     String formattedNationalNumber =
-        formatNationalNumber(nationalSignificantNumber,
-                             metadataForRegion, PhoneNumberFormat.INTERNATIONAL);
+        formatNsn(nationalSignificantNumber, metadataForRegion, PhoneNumberFormat.INTERNATIONAL);
     StringBuilder formattedNumber = new StringBuilder(formattedNationalNumber);
-    maybeGetFormattedExtension(number, metadataForRegion, PhoneNumberFormat.INTERNATIONAL,
-                               formattedNumber);
+    maybeAppendFormattedExtension(number, metadataForRegion, PhoneNumberFormat.INTERNATIONAL,
+                                  formattedNumber);
     if (internationalPrefixForFormatting.length() > 0) {
       formattedNumber.insert(0, " ").insert(0, countryCallingCode).insert(0, " ")
           .insert(0, internationalPrefixForFormatting);
     } else {
-      formatNumberByFormat(countryCallingCode,
-                           PhoneNumberFormat.INTERNATIONAL,
-                           formattedNumber);
+      prefixNumberWithCountryCallingCode(countryCallingCode,
+                                         PhoneNumberFormat.INTERNATIONAL,
+                                         formattedNumber);
     }
     return formattedNumber.toString();
   }
@@ -1379,6 +1392,7 @@ public class PhoneNumberUtil {
    *
    * Note this method guarantees no digit will be inserted, removed or modified as a result of
    * formatting.
+   *
    * @param number  the phone number that needs to be formatted in its original number format
    * @param regionCallingFrom  the region whose IDD needs to be prefixed if the original number
    *     has one
@@ -1565,26 +1579,27 @@ public class PhoneNumberUtil {
       if (isNANPACountry(regionCallingFrom)) {
         return countryCode + " " + rawInput;
       }
-    } else if (countryCode == getCountryCodeForRegion(regionCallingFrom)) {
-      // Here we copy the formatting rules so we can modify the pattern we expect to match against.
-      List<NumberFormat> availableFormats =
-          new ArrayList<NumberFormat>(metadataForRegionCallingFrom.numberFormatSize());
-      for (NumberFormat format : metadataForRegionCallingFrom.numberFormats()) {
-        NumberFormat newFormat = new NumberFormat();
-        newFormat.mergeFrom(format);
-        // The first group is the first group of digits that the user determined.
-        newFormat.setPattern("(\\d+)(.*)");
-        // Here we just concatenate them back together after the national prefix has been fixed.
-        newFormat.setFormat("$1$2");
-        availableFormats.add(newFormat);
+    } else if (isValidRegionCode(regionCallingFrom) &&
+               countryCode == getCountryCodeForValidRegion(regionCallingFrom)) {
+      NumberFormat formattingPattern =
+          chooseFormattingPatternForNumber(metadataForRegionCallingFrom.numberFormats(),
+                                           nationalNumber);
+      if (formattingPattern == null) {
+        // If no pattern above is matched, we format the original input.
+        return rawInput;
       }
-      // Now we format using these patterns instead of the default pattern, but with the national
-      // prefix prefixed if necessary, by choosing the format rule based on the leading digits
-      // present in the unformatted national number.
+      NumberFormat newFormat = new NumberFormat();
+      newFormat.mergeFrom(formattingPattern);
+      // The first group is the first group of digits that the user wrote together.
+      newFormat.setPattern("(\\d+)(.*)");
+      // Here we just concatenate them back together after the national prefix has been fixed.
+      newFormat.setFormat("$1$2");
+      // Now we format using this pattern instead of the default pattern, but with the national
+      // prefix prefixed if necessary.
       // This will not work in the cases where the pattern (and not the leading digits) decide
       // whether a national prefix needs to be used, since we have overridden the pattern to match
       // anything, but that is not the case in the metadata to date.
-      return formatAccordingToFormats(rawInput, availableFormats, PhoneNumberFormat.NATIONAL);
+      return formatNsnUsingPattern(rawInput, newFormat, PhoneNumberFormat.NATIONAL);
     }
     String internationalPrefixForFormatting = "";
     // If an unsupported region-calling-from is entered, or a country with multiple international
@@ -1600,15 +1615,15 @@ public class PhoneNumberUtil {
     StringBuilder formattedNumber = new StringBuilder(rawInput);
     String regionCode = getRegionCodeForCountryCode(countryCode);
     PhoneMetadata metadataForRegion = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    maybeGetFormattedExtension(number, metadataForRegion,
-                               PhoneNumberFormat.INTERNATIONAL, formattedNumber);
+    maybeAppendFormattedExtension(number, metadataForRegion,
+                                  PhoneNumberFormat.INTERNATIONAL, formattedNumber);
     if (internationalPrefixForFormatting.length() > 0) {
       formattedNumber.insert(0, " ").insert(0, countryCode).insert(0, " ")
           .insert(0, internationalPrefixForFormatting);
     } else {
       // Invalid region entered as country-calling-from (so no metadata was found for it) or the
       // region chosen has multiple international dialling prefixes.
-      formatNumberByFormat(countryCode,
+      prefixNumberWithCountryCallingCode(countryCode,
                            PhoneNumberFormat.INTERNATIONAL,
                            formattedNumber);
     }
@@ -1632,9 +1647,9 @@ public class PhoneNumberUtil {
   /**
    * A helper function that is used by format and formatByPattern.
    */
-  private void formatNumberByFormat(int countryCallingCode,
-                                    PhoneNumberFormat numberFormat,
-                                    StringBuilder formattedNumber) {
+  private void prefixNumberWithCountryCallingCode(int countryCallingCode,
+                                                  PhoneNumberFormat numberFormat,
+                                                  StringBuilder formattedNumber) {
     switch (numberFormat) {
       case E164:
         formattedNumber.insert(0, countryCallingCode).insert(0, PLUS_SIGN);
@@ -1651,21 +1666,19 @@ public class PhoneNumberUtil {
     }
   }
 
-  // Simple wrapper of formatNationalNumber for the common case of no carrier code.
-  private String formatNationalNumber(String number,
-                                      PhoneMetadata metadata,
-                                      PhoneNumberFormat numberFormat) {
-    return formatNationalNumber(number, metadata, numberFormat, null);
+  // Simple wrapper of formatNsn for the common case of no carrier code.
+  private String formatNsn(String number, PhoneMetadata metadata, PhoneNumberFormat numberFormat) {
+    return formatNsn(number, metadata, numberFormat, null);
   }
 
   // Note in some regions, the national number can be written in two completely different ways
   // depending on whether it forms part of the NATIONAL format or INTERNATIONAL format. The
   // numberFormat parameter here is used to specify which format to use for those cases. If a
   // carrierCode is specified, this will be inserted into the formatted string to replace $CC.
-  private String formatNationalNumber(String number,
-                                      PhoneMetadata metadata,
-                                      PhoneNumberFormat numberFormat,
-                                      String carrierCode) {
+  private String formatNsn(String number,
+                           PhoneMetadata metadata,
+                           PhoneNumberFormat numberFormat,
+                           String carrierCode) {
     List<NumberFormat> intlNumberFormats = metadata.intlNumberFormats();
     // When the intlNumberFormats exists, we use that to format national number for the
     // INTERNATIONAL format instead of using the numberDesc.numberFormats.
@@ -1673,13 +1686,10 @@ public class PhoneNumberUtil {
         (intlNumberFormats.size() == 0 || numberFormat == PhoneNumberFormat.NATIONAL)
         ? metadata.numberFormats()
         : metadata.intlNumberFormats();
-    String formattedNationalNumber =
-        formatAccordingToFormats(number, availableFormats, numberFormat, carrierCode);
-    if (numberFormat == PhoneNumberFormat.RFC3966) {
-      formattedNationalNumber =
-          SEPARATOR_PATTERN.matcher(formattedNationalNumber).replaceAll("-");
-    }
-    return formattedNationalNumber;
+    NumberFormat formattingPattern = chooseFormattingPatternForNumber(availableFormats, number);
+    return (formattingPattern == null)
+        ? number
+        : formatNsnUsingPattern(number, formattingPattern, numberFormat, carrierCode);
   }
 
   private NumberFormat chooseFormattingPatternForNumber(List<NumberFormat> availableFormats,
@@ -1698,50 +1708,58 @@ public class PhoneNumberUtil {
     return null;
   }
 
-  // Simple wrapper of formatAccordingToFormats for the common case of no carrier code.
-  private String formatAccordingToFormats(String nationalNumber,
-                                          List<NumberFormat> availableFormats,
-                                          PhoneNumberFormat numberFormat) {
-    return formatAccordingToFormats(nationalNumber, availableFormats, numberFormat, null);
+  // Simple wrapper of formatNsnUsingPattern for the common case of no carrier code.
+  private String formatNsnUsingPattern(String nationalNumber,
+                                       NumberFormat formattingPattern,
+                                       PhoneNumberFormat numberFormat) {
+    return formatNsnUsingPattern(nationalNumber, formattingPattern, numberFormat, null);
   }
 
   // Note that carrierCode is optional - if NULL or an empty string, no carrier code replacement
   // will take place.
-  private String formatAccordingToFormats(String nationalNumber,
-                                          List<NumberFormat> availableFormats,
-                                          PhoneNumberFormat numberFormat,
-                                          String carrierCode) {
-    NumberFormat numFormat = chooseFormattingPatternForNumber(availableFormats, nationalNumber);
-    if (numFormat == null) {
-      // If no pattern above is matched, we format the number as a whole.
-      return nationalNumber;
-    }
-    String numberFormatRule = numFormat.getFormat();
-    Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
+  private String formatNsnUsingPattern(String nationalNumber,
+                                       NumberFormat formattingPattern,
+                                       PhoneNumberFormat numberFormat,
+                                       String carrierCode) {
+    String numberFormatRule = formattingPattern.getFormat();
+    Matcher m =
+        regexCache.getPatternForRegex(formattingPattern.getPattern()).matcher(nationalNumber);
+    String formattedNationalNumber = "";
     if (numberFormat == PhoneNumberFormat.NATIONAL &&
         carrierCode != null && carrierCode.length() > 0 &&
-        numFormat.getDomesticCarrierCodeFormattingRule().length() > 0) {
+        formattingPattern.getDomesticCarrierCodeFormattingRule().length() > 0) {
       // Replace the $CC in the formatting rule with the desired carrier code.
-      String carrierCodeFormattingRule = numFormat.getDomesticCarrierCodeFormattingRule();
+      String carrierCodeFormattingRule = formattingPattern.getDomesticCarrierCodeFormattingRule();
       carrierCodeFormattingRule =
           CC_PATTERN.matcher(carrierCodeFormattingRule).replaceFirst(carrierCode);
       // Now replace the $FG in the formatting rule with the first group and the carrier code
       // combined in the appropriate way.
       numberFormatRule = FIRST_GROUP_PATTERN.matcher(numberFormatRule)
           .replaceFirst(carrierCodeFormattingRule);
-      return m.replaceAll(numberFormatRule);
+      formattedNationalNumber = m.replaceAll(numberFormatRule);
     } else {
       // Use the national prefix formatting rule instead.
-      String nationalPrefixFormattingRule = numFormat.getNationalPrefixFormattingRule();
+      String nationalPrefixFormattingRule = formattingPattern.getNationalPrefixFormattingRule();
       if (numberFormat == PhoneNumberFormat.NATIONAL &&
           nationalPrefixFormattingRule != null &&
           nationalPrefixFormattingRule.length() > 0) {
         Matcher firstGroupMatcher = FIRST_GROUP_PATTERN.matcher(numberFormatRule);
-        return m.replaceAll(firstGroupMatcher.replaceFirst(nationalPrefixFormattingRule));
+        formattedNationalNumber =
+            m.replaceAll(firstGroupMatcher.replaceFirst(nationalPrefixFormattingRule));
       } else {
-        return m.replaceAll(numberFormatRule);
+        formattedNationalNumber = m.replaceAll(numberFormatRule);
       }
     }
+    if (numberFormat == PhoneNumberFormat.RFC3966) {
+      // Strip any leading punctuation.
+      Matcher matcher = SEPARATOR_PATTERN.matcher(formattedNationalNumber);
+      if (matcher.lookingAt()) {
+        formattedNationalNumber = matcher.replaceFirst("");
+      }
+      // Replace the rest with a dash between each number group.
+      formattedNationalNumber = matcher.reset(formattedNationalNumber).replaceAll("-");
+    }
+    return formattedNationalNumber;
   }
 
   /**
@@ -1769,7 +1787,7 @@ public class PhoneNumberUtil {
   public PhoneNumber getExampleNumberForType(String regionCode, PhoneNumberType type) {
     // Check the region code is valid.
     if (!isValidRegionCode(regionCode)) {
-      LOGGER.log(Level.SEVERE, "Invalid or unknown region code provided: " + regionCode);
+      LOGGER.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
       return null;
     }
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode), type);
@@ -1802,6 +1820,9 @@ public class PhoneNumberUtil {
       } catch (NumberParseException e) {
         LOGGER.log(Level.SEVERE, e.toString());
       }
+    } else {
+      LOGGER.log(Level.WARNING,
+                 "Invalid or unknown country calling code provided: " + countryCallingCode);
     }
     return null;
   }
@@ -1810,29 +1831,19 @@ public class PhoneNumberUtil {
    * Appends the formatted extension of a phone number to formattedNumber, if the phone number had
    * an extension specified.
    */
-  private void maybeGetFormattedExtension(PhoneNumber number, PhoneMetadata metadata,
-                                          PhoneNumberFormat numberFormat,
-                                          StringBuilder formattedNumber) {
+  private void maybeAppendFormattedExtension(PhoneNumber number, PhoneMetadata metadata,
+                                             PhoneNumberFormat numberFormat,
+                                             StringBuilder formattedNumber) {
     if (number.hasExtension() && number.getExtension().length() > 0) {
       if (numberFormat == PhoneNumberFormat.RFC3966) {
         formattedNumber.append(RFC3966_EXTN_PREFIX).append(number.getExtension());
       } else {
-        formatExtension(number.getExtension(), metadata, formattedNumber);
+        if (metadata.hasPreferredExtnPrefix()) {
+          formattedNumber.append(metadata.getPreferredExtnPrefix()).append(number.getExtension());
+        } else {
+          formattedNumber.append(DEFAULT_EXTN_PREFIX).append(number.getExtension());
+        }
       }
-    }
-  }
-
-  /**
-   * Formats the extension part of the phone number by prefixing it with the appropriate extension
-   * prefix. This will be the default extension prefix, unless overridden by a preferred
-   * extension prefix for this region.
-   */
-  private void formatExtension(String extensionDigits, PhoneMetadata metadata,
-                               StringBuilder extension) {
-    if (metadata.hasPreferredExtnPrefix()) {
-      extension.append(metadata.getPreferredExtnPrefix()).append(extensionDigits);
-    } else {
-      extension.append(DEFAULT_EXTN_PREFIX).append(extensionDigits);
     }
   }
 
@@ -1992,12 +2003,14 @@ public class PhoneNumberUtil {
    */
   public boolean isValidNumberForRegion(PhoneNumber number, String regionCode) {
     int countryCode = number.getCountryCode();
-    if (countryCode == 0 ||
+    PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
+    if ((metadata == null) ||
         (!REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode) &&
-         countryCode != getCountryCodeForRegion(regionCode))) {
+         countryCode != getCountryCodeForValidRegion(regionCode))) {
+      // Either the region code was invalid, or the country calling code for this number does not
+      // match that of the region code.
       return false;
     }
-    PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
     PhoneNumberDesc generalNumDesc = metadata.getGeneralDesc();
     String nationalSignificantNumber = getNationalSignificantNumber(number);
 
@@ -2072,12 +2085,23 @@ public class PhoneNumberUtil {
    */
   public int getCountryCodeForRegion(String regionCode) {
     if (!isValidRegionCode(regionCode)) {
-      LOGGER.log(Level.SEVERE,
+      LOGGER.log(Level.WARNING,
                  "Invalid or missing region code ("
                   + ((regionCode == null) ? "null" : regionCode)
                   + ") provided.");
       return 0;
     }
+    return getCountryCodeForValidRegion(regionCode);
+  }
+
+  /**
+   * Returns the country calling code for a specific region. For example, this would be 1 for the
+   * United States, and 64 for New Zealand. Assumes the region is already valid.
+   *
+   * @param regionCode  the region that we want to get the country calling code for
+   * @return  the country calling code for the region denoted by regionCode
+   */
+  private int getCountryCodeForValidRegion(String regionCode) {
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
     return metadata.getCountryCode();
   }
@@ -2098,7 +2122,7 @@ public class PhoneNumberUtil {
    */
   public String getNddPrefixForRegion(String regionCode, boolean stripNonDigits) {
     if (!isValidRegionCode(regionCode)) {
-      LOGGER.log(Level.SEVERE,
+      LOGGER.log(Level.WARNING,
                  "Invalid or missing region code ("
                   + ((regionCode == null) ? "null" : regionCode)
                   + ") provided.");

@@ -1,3 +1,19 @@
+February 9th, 2012: libphonenumber-4.6
+* Bug fixes
+ - Fix for formatByPattern to enable RFC formatting to work
+ - Fix for RFC formatting to work even when the international formatting rule starts with
+   punctuation
+ - Logging consistency changes - some warnings are no longer printed, others have become only
+   WARNINGS
+ - Fix for isValidNumberForRegion potentially throwing a NPE
+ - Parsing Israeli * numbers written in international format now works
+ - PhoneNumberMatcher doesn't match timestamps as phone-numbers
+* Metadata changes
+ - Updates for AN, AX, BF, BJ, BR, BS, DJ, FI, IN, LV, MW, RS, SC, VN
+ - New countries supported: SS (South Sudan), CW (Curaçao) and BQ (Bonaire, Sint Eustatius and Saba)
+* Refactoring of the private formatting functions in PhoneNumberUtil to ensure names are more
+  descriptive and to reduce code duplication.
+
 January 19th, 2012: libphonenumber-4.5
 * Code changes
  - Support for non-geographical country calling codes (e.g. +800).

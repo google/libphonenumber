@@ -71,6 +71,14 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       Pattern.compile("(?:(?:[0-3]?\\d/[01]?\\d)|(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}");
 
   /**
+   * Matches timestamps. Examples: "2012-01-02 08:00". Note that the reg-ex does not include the
+   * trailing ":\d\d" -- that is covered by TIME_STAMPS_SUFFIX.
+   */
+  private static final Pattern TIME_STAMPS =
+      Pattern.compile("[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d [0-2]\\d$");
+  private static final Pattern TIME_STAMPS_SUFFIX = Pattern.compile(":[0-5]\\d");
+
+  /**
    * Pattern to check that brackets match. Opening brackets should be closed within a phone number.
    * This also checks that there is something inside the brackets. Having no brackets at all is also
    * fine.
@@ -309,6 +317,13 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // Skip a match that is more likely a publication page reference or a date.
     if (PUB_PAGES.matcher(candidate).find() || SLASH_SEPARATED_DATES.matcher(candidate).find()) {
       return null;
+    }
+    // Skip potential time-stamps.
+    if (TIME_STAMPS.matcher(candidate).find()) {
+      String followingText = text.toString().substring(offset + candidate.length());
+      if (TIME_STAMPS_SUFFIX.matcher(followingText).lookingAt()) {
+        return null;
+      }
     }
 
     // Try to come up with a valid match given the entire candidate.

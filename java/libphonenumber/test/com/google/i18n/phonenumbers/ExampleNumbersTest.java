@@ -141,6 +141,13 @@ public class ExampleNumbersTest extends TestCase {
     assertEquals(0, wrongTypeCases.size());
   }
 
+  public void testVoicemail() throws Exception {
+    Set<PhoneNumberType> voicemailTypes = EnumSet.of(PhoneNumberType.VOICEMAIL);
+    checkNumbersValidAndCorrectType(PhoneNumberType.VOICEMAIL, voicemailTypes);
+    assertEquals(0, invalidCases.size());
+    assertEquals(0, wrongTypeCases.size());
+  }
+
   public void testSharedCost() throws Exception {
     Set<PhoneNumberType> sharedCostTypes = EnumSet.of(PhoneNumberType.SHARED_COST);
     checkNumbersValidAndCorrectType(PhoneNumberType.SHARED_COST, sharedCostTypes);
@@ -162,9 +169,42 @@ public class ExampleNumbersTest extends TestCase {
       }
       if (exampleNumber != null && phoneNumberUtil.canBeInternationallyDialled(exampleNumber)) {
         wrongTypeCases.add(exampleNumber);
+        LOGGER.log(Level.SEVERE, "Number " + exampleNumber.toString()
+                   + " should not be internationally diallable");
       }
     }
     assertEquals(0, wrongTypeCases.size());
+  }
+
+  // TODO: Update this to use connectsToEmergencyNumber or similar once that is
+  // implemented.
+  public void testEmergency() throws Exception {
+    int wrongTypeCounter = 0;
+    for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
+      PhoneNumberDesc desc =
+          phoneNumberUtil.getMetadataForRegion(regionCode).getEmergency();
+      if (desc.hasExampleNumber()) {
+        String exampleNumber = desc.getExampleNumber();
+        if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
+            !exampleNumber.matches(desc.getNationalNumberPattern())) {
+          wrongTypeCounter++;
+          LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
+        }
+      }
+    }
+    assertEquals(0, wrongTypeCounter);
+  }
+
+  public void testGlobalNetworkNumbers() throws Exception {
+    for (Integer callingCode : phoneNumberUtil.getSupportedGlobalNetworkCallingCodes()) {
+      PhoneNumber exampleNumber =
+          phoneNumberUtil.getExampleNumberForNonGeoEntity(callingCode);
+      assertNotNull("No example phone number for calling code " + callingCode, exampleNumber);
+      if (!phoneNumberUtil.isValidNumber(exampleNumber)) {
+        invalidCases.add(exampleNumber);
+        LOGGER.log(Level.SEVERE, "Failed validation for " + exampleNumber.toString());
+      }
+    }
   }
 
   public void testEveryRegionHasAnExampleNumber() throws Exception {

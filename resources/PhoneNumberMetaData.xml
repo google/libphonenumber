@@ -669,92 +669,38 @@
     </territory>
 
     <!-- Netherlands Antilles -->
+    <!-- Note this country no longer exists. This metadata exists only to validate old Sint Maarten
+         numbers through their parallel running period (which ends Sep 2012). -->
+    <!-- The link below no longer works, since ITU deleted this document since this country no
+         longer exists. We keep it here as a record of the last place we found information on this
+         country. -->
     <!-- http://www.itu.int/oth/T0202000097/en -->
     <territory id="AN" countryCode="599" internationalPrefix="00">
-      <availableFormats>
-        <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[13-7]</leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
-        <numberFormat pattern="(9)(\d{3})(\d{4})">
-          <leadingDigits>9</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-      </availableFormats>
+      <!-- Shares formatting patterns with "CW". -->
       <generalDesc>
-        <nationalNumberPattern>[13-79]\d{6,7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
+        <nationalNumberPattern>5\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- The prefixes listed beginning with 5 are in fact for Sint Maarten and should be removed
-             when parallel running has ended (predicted to be September 2012). -->
         <nationalNumberPattern>
-          (?:
-            318|
-            5(?:
-              25|
-              4\d|
-              8[239]
-            )|
-            7(?:
-              1[578]|
-              50
-            )|
-            9(?:
-              [48]\d{2}|
-              50\d|
-              7(?:
-                2[0-2]|
-                [34]\d|
-                6[35-7]|
-                77
-              )
-            )
-          )\d{4}|
-          416[0239]\d{3}
+          5(?:
+            4\d|
+            8[239]
+          )\d{4}
         </nationalNumberPattern>
-        <exampleNumber>7151234</exampleNumber>
+        <exampleNumber>5451234</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
-          (?:
-            318|
-            5(?:
-              1[01]|
-              2[0-7]|
-              5\d|
-              8[016-8]
-            )|
-            7(?:
-              0[01]|
-              [89]\d
-            )|
-            9(?:
-              5(?:
-                [1246]\d|
-                3[01]
-              )|
-              6(?:
-                [1679]\d|
-                3[01]
-              )
-            )
-          )\d{4}|
-          416[15-8]\d{3}
+          5(?:
+            1[01]|
+            2[0-7]|
+            5\d|
+            8[016-8]
+          )\d{4}
         </nationalNumberPattern>
-        <exampleNumber>3181234</exampleNumber>
+        <exampleNumber>5101234</exampleNumber>
       </mobile>
-      <!-- Value-added services are lumped together under shared cost, since we are not sure exactly
-           what they are. -->
-      <sharedCost>
-        <nationalNumberPattern>
-          (?:
-            10|
-            69
-          )\d{5}
-        </nationalNumberPattern>
-        <exampleNumber>1011234</exampleNumber>
-      </sharedCost>
       <emergency>
         <!-- http://www.rijksdienstcn.com/index.php?view=pagina&id=126&set_language=EN -->
         <nationalNumberPattern>
@@ -1770,6 +1716,31 @@
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <!-- According to the national numbering plan, service numbers are in general not accessible
+             from abroad, although 600/700/800 numbers may be. -->
+        <nationalNumberPattern>
+          [13]00\d{3,7}|
+          2(?:
+            0(?:
+              0\d{3,7}|
+              2[023]\d{1,6}|
+              9[89]\d{1,6}
+            )
+          )|
+          60(?:
+            [12]\d{5,6}|
+            6\d{7}
+          )|
+          7(?:
+            1\d{7}|
+            3\d{8}|
+            5[03-9]\d{2,7}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,10}</possibleNumberPattern>
+        <exampleNumber>100123</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <nationalNumberPattern>18[1-8]\d{3,9}</nationalNumberPattern>
         <possibleNumberPattern>\d{6,12}</possibleNumberPattern>
@@ -1795,18 +1766,22 @@
         <exampleNumber>600123456</exampleNumber>
       </premiumRate>
       <uan>
+        <!-- Covers nationwide non-geographic numbers, and nationwide "service numbers", typically
+             assigned to institutions such as universities, the national post, etc, where they are
+             not otherwise classified as toll-free or premium-rate numbers. -->
         <nationalNumberPattern>
-          10[1-9]\d{3,7}|
+          [13]0\d{4,8}|
           2(?:
             0(?:
-              [16-8]\d{3,7}|
-              2[14-9]\d{1,6}|
-              [3-5]\d{2,7}|
-              9[0-7]\d{1,6}
+              [016-8]\d{3,7}|
+              [2-59]\d{2,7}
             )|
             9\d{4,8}
           )|
-          30[1-9]\d{3,7}|
+          60(?:
+            [12]\d{5,6}|
+            6\d{7}
+          )|
           7(?:
             1\d{7}|
             3\d{8}|
@@ -2451,7 +2426,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2457]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[24-7]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -2478,11 +2453,14 @@
              since diallable numbers have been found outside the range that the document specifies.
              Including 716 as well since many numbers seem to have this prefix. -->
         <nationalNumberPattern>
-          7(?:
-            [02-68]\d|
-            1[0-4689]|
-            7[0-6]|
-            9[0-689]
+          (?:
+            60[0-3]|
+            7(?:
+              [02-68]\d|
+              1[0-4689]|
+              7[0-6]|
+              9[0-689]
+            )
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>70123456</exampleNumber>
@@ -2808,13 +2786,18 @@
         <possibleNumberPattern>\d{4}</possibleNumberPattern>
         <exampleNumber>7312</exampleNumber>
       </tollFree>
-      <!-- Other numbers beginning with 81 are reserved for _either_ free phone or shared-cost, but
-           there is no clear differentiation between these. -->
       <voip>
         <nationalNumberPattern>857[58]\d{4}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>85751234</exampleNumber>
       </voip>
+      <!-- Numbers beginning with 81 are reserved for _either_ free phone or shared-cost (same cost
+           as a local-call.) We model these as UAN since we have no more detailed information. -->
+      <uan>
+        <nationalNumberPattern>81\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+        <exampleNumber>81123456</exampleNumber>
+      </uan>
       <emergency>
         <nationalNumberPattern>11[78]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
@@ -3031,6 +3014,51 @@
       </emergency>
     </territory>
 
+    <!-- Bonaire, Sint Eustatius and Saba -->
+    <!-- http://www.itu.int/oth/T02020000F8/en -->
+    <territory id="BQ" countryCode="599" internationalPrefix="00">
+      <!-- Shares formatting patterns with CW. -->
+      <generalDesc>
+        <nationalNumberPattern>[347]\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>
+          (?:
+            318[023]|
+            416[0239]|
+            7(?:
+              1[578]|
+              50
+            )\d
+          )\d{3}
+        </nationalNumberPattern>
+        <exampleNumber>7151234</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>
+          (?:
+            318[1456]|
+            416[15-8]|
+            7(?:
+              0[01]|
+              [89]\d
+            )\d
+          )\d{3}|
+        </nationalNumberPattern>
+        <exampleNumber>3181234</exampleNumber>
+      </mobile>
+      <emergency>
+        <!-- http://www.rijksdienstcn.com/index.php?view=pagina&id=126&set_language=EN -->
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
+    </territory>
+
     <!-- Brazil -->
     <!-- http://en.wikipedia.org/wiki/%2B55 -->
     <territory id="BR" countryCode="55"
@@ -3051,10 +3079,6 @@
         </numberFormat>
         <numberFormat pattern="([34]00\d)(\d{4})">
           <leadingDigits>[34]00</leadingDigits>
-          <leadingDigits>
-            400|
-            3003
-          </leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG"
@@ -3068,12 +3092,7 @@
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
-        <nationalNumberPattern>
-          (?:
-            400\d|
-            3003
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[34]00\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>40041234</exampleNumber>
       </noInternationalDialling>
@@ -3124,12 +3143,7 @@
         <exampleNumber>300123456</exampleNumber>
       </premiumRate>
       <sharedCost>
-        <nationalNumberPattern>
-          (?:
-            400\d|
-            3003
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[34]00\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>40041234</exampleNumber>
       </sharedCost>
@@ -3148,7 +3162,7 @@
     </territory>
 
     <!-- Bahamas -->
-    <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000100001MSWE.pdf -->
+    <!-- http://www.itu.int/oth/T0202000010/en -->
     <territory id="BS" countryCode="1" leadingDigits="242"
       nationalPrefix="1" internationalPrefix="011">
       <generalDesc>
@@ -3196,7 +3210,7 @@
               81
             )|
             5(?:
-              2[34]|
+              2[45]|
               3[35]|
               44|
               5[1-9]|
@@ -4911,6 +4925,81 @@
       </emergency>
     </territory>
 
+    <!-- Curaçao -->
+    <!-- http://www.itu.int/oth/T02020000F5/en -->
+    <territory id="CW" countryCode="599" internationalPrefix="00" mainCountryForCode="true">
+      <!-- All the formatting patterns for country-code 599 are here. -->
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{4})">
+          <leadingDigits>[13-7]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(9)(\d{3})(\d{4})">
+          <leadingDigits>9</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[169]\d{6,7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>
+          9(?:
+            [48]\d{2}|
+            50\d|
+            7(?:
+              2[0-2]|
+              [34]\d|
+              6[35-7]|
+              77
+            )
+          )\d{4}
+        </nationalNumberPattern>
+        <exampleNumber>94151234</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>
+          9(?:
+            5(?:
+              [1246]\d|
+              3[01]
+            )|
+            6(?:
+              [1679]\d|
+              3[01]
+            )
+          )\d{4}
+        </nationalNumberPattern>
+        <exampleNumber>95181234</exampleNumber>
+      </mobile>
+      <pager>
+        <nationalNumberPattern>955\d{5}</nationalNumberPattern>
+        <exampleNumber>95581234</exampleNumber>
+      </pager>
+      <sharedCost>
+        <!-- Value-added services are lumped together under shared cost, since we are not sure
+             exactly what they are. -->
+        <nationalNumberPattern>
+          (?:
+            10|
+            69
+          )\d{5}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <exampleNumber>1011234</exampleNumber>
+      </sharedCost>
+      <emergency>
+        <!-- http://www.rijksdienstcn.com/index.php?view=pagina&id=126&set_language=EN -->
+        <nationalNumberPattern>
+          112|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
+    </territory>
+
     <!-- Cyprus -->
     <!-- http://www.itu.int/oth/T0202000034/en -->
     <territory id="CY" countryCode="357" internationalPrefix="00">
@@ -5404,30 +5493,36 @@
     <!-- http://www.itu.int/oth/T020200003A/en -->
     <territory id="DJ" countryCode="253" internationalPrefix="00">
       <availableFormats>
-        <!-- The number format here is suggested in the plan and used online,
-        although the phone numbers of the national numbering authority itself on
-        the plan do not follow this. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
+      <!--TODO: Remove support for 6-digit numbers after March 1st, 2012, when the national
+          numbering plan is going to migrate to 8 digits. -->
       <generalDesc>
-        <nationalNumberPattern>[1-8]\d{5}</nationalNumberPattern>
-        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <nationalNumberPattern>[1-8]\d{5,7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Includes "Numéro long CDMA fixe" numbers starting with the digit 5. -->
+        <!-- Includes "Numéro long CDMA fixe" numbers. -->
         <nationalNumberPattern>
           (?:
             1[05]|
             [2-5]\d
-          )\d{4}
+          )\d{4}|
+          2(?:
+            1[2-5]|
+            7[45]|
+          )\d{5}
         </nationalNumberPattern>
-        <exampleNumber>251234</exampleNumber>
+        <exampleNumber>21360003</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>[6-8]\d{5}</nationalNumberPattern>
-        <exampleNumber>601234</exampleNumber>
+        <nationalNumberPattern>(?:77)?[6-8]\d{5}</nationalNumberPattern>
+        <exampleNumber>77831001</exampleNumber>
       </mobile>
       <emergency>
         <nationalNumberPattern>1[78]</nationalNumberPattern>
@@ -6389,6 +6484,15 @@
     <territory id="FI" countryCode="358" internationalPrefix="00|99[049]" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mainCountryForCode="true">
       <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3,7})">
+          <leadingDigits>
+            (?:
+              [1-3]00|
+              [6-8]0
+            )
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4,10})">
           <leadingDigits>
             2[09]|
@@ -6405,10 +6509,6 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="([6-8]00)(\d{4,7})">
-          <leadingDigits>[6-8]0</leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
@@ -6417,6 +6517,31 @@
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <!-- According to the national numbering plan, service numbers are in general not accessible
+             from abroad, although 600/700/800 numbers may be. -->
+        <nationalNumberPattern>
+          [13]00\d{3,7}|
+          2(?:
+            0(?:
+              0\d{3,7}|
+              2[023]\d{1,6}|
+              9[89]\d{1,6}
+            )
+          )|
+          60(?:
+            [12]\d{5,6}|
+            6\d{7}
+          )|
+          7(?:
+            1\d{7}|
+            3\d{8}|
+            5[03-9]\d{2,7}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,10}</possibleNumberPattern>
+        <exampleNumber>100123</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <!-- This is limited to geographic numbers - non-geographic nationwide subscriber numbers
              are listed under UAN. It also excludes Åland numbers. -->
@@ -6453,18 +6578,22 @@
         <exampleNumber>600123456</exampleNumber>
       </premiumRate>
       <uan>
+        <!-- Covers nationwide non-geographic numbers, and nationwide "service numbers", typically
+             assigned to institutions such as universities, the national post, etc, where they are
+             not otherwise classified as toll-free or premium-rate numbers. -->
         <nationalNumberPattern>
-          10[1-9]\d{3,7}|
+          [13]0\d{4,8}|
           2(?:
             0(?:
-              [16-8]\d{3,7}|
-              2[14-9]\d{1,6}|
-              [3-5]\d{2,7}|
-              9[0-7]\d{1,6}
+              [016-8]\d{3,7}|
+              [2-59]\d{2,7}
             )|
             9\d{4,8}
           )|
-          30[1-9]\d{3,7}|
+          60(?:
+            [12]\d{5,6}|
+            6\d{7}
+          )|
           7(?:
             1\d{7}|
             3\d{8}|
@@ -9798,9 +9927,9 @@
                2[236-9]|
                3[0479]|
                4[0-68]|
-               5[0-579]
+               5[0-57-9]
                6[05789]
-               7[12569]|
+               7[123569]|
                8[0124-9]|
                9[02-9]
              )|
@@ -9822,7 +9951,7 @@
                  9[689]
                )|
                4(?:
-                 0[245789]|
+                 0[1245789]|
                  1[15-9]|
                  [29][89]|
                  39|
@@ -9877,7 +10006,7 @@
                  8[567]
                )|
                3(?:
-                 0[235-8]|
+                 0[0235-8]|
                  4[14789]|
                  74|
                  90
@@ -9894,6 +10023,7 @@
                  30|
                  4[47]|
                  53|
+                 85|
                  7[45]|
                  9[015]
                )|
@@ -9903,6 +10033,7 @@
                )|
                7(?:
                  1[24]|
+                 33|
                  [2569]
                )|
                8(?:
@@ -9910,13 +10041,13 @@
                  17|
                  2[024-8]|
                  44|
-                 5[389]|
+                 5[3589]|
                  6[0167]
                )|
                9(?:
                  [057-9]|
                  2[35-9]|
-                 3[09]|
+                 3[019]|
                  4[03678]|
                  6[0-46-9]
                )
@@ -10295,14 +10426,13 @@
         <!-- A couple of additional prefixes not found on the wikipedia page, are added because SMS
              messages have been successfully sent to these numbers. It seems almost impossible to
              know for some of these numbers whether they are land-line or mobile, since the ranges
-             overlap. Extra prefixes added: 7277, 730[124-689], 735[0-4789], 738[1-9], 740[47-9],
-             750[79], 7520, 7796, 787[2-4], 789[146], 810[0-8], 811[56], 812[0-2569], 814[0-35],
-             8171, 8179, 8197, 822[1-689], 823\d, 8252, 826[0-7], 827[01357], 828[567],
-             829[0-246-9], the ranges in 83X excepting 8303, 8344 and 8390, 840[0-57-9], 842[2-689],
-             843[0-59], 844[0-489], 845[0-24-9], 846[09], 847[0135], 848[0-8], 850[079], 8511,
-             852[0-689], 8530, 854[47], 857[45], 8595, 860[125-9], 865[03-79], 867[09], 868[0-579],
-             869[0-467], 8712, 872[013-9], 875[1-35-9], 876[0-8], 879[24589], 882[04], 885[89],
-             8887, 892[679], 894[6-8], 896[3469].  -->
+             overlap. Extra prefixes added: 7277, 730[124-689], 735[0-2478], 738[1-57], 740[479],
+             750[79], 7796, 787[34], 7896, 810[1-358], 811[56], 812[02569], 814[01], 8171, 8179,
+             822[1-689], 823[0-24-9], 826[0-35-7], 827[0137], 829[0-2479], the ranges in 83X
+             excepting 830[037], 834[14] and 8390, 840[02-57-9], 842[24-689], 843[0-59], 844[0-489],
+             845[0-24-689], 846[09], 847[0135], 848[0-8], 850[79], 852[02-589], 8530, 854[47], 8595,
+             860[1259], 865[03-79], 867[09], 868[349], 869[0-46], 872[013-9], 875[1-35-9],
+             876[0-47], 879[4589], 8824, 8859, 892[67], 894[6-8], 896[346].  -->
         <nationalNumberPattern>
           (?:
             7(?:
@@ -10320,7 +10450,7 @@
                 9[689]
               )|
               4(?:
-                0[245789]|
+                0[1245789]|
                 1[15-9]|
                 [29][89]|
                 39|
@@ -10378,7 +10508,7 @@
                 8[567]
               )|
               3(?:
-                0[235-8]|
+                0[0235-8]|
                 4[14789]|
                 74|
                 90
@@ -10396,6 +10526,7 @@
                 4[47]|
                 53|
                 7[45]|
+                85|
                 9[015]
               )|
               6(?:
@@ -10404,6 +10535,7 @@
               )|
               7(?:
                 1[24]|
+                33|
                 [2569]\d
               )|
               8(?:
@@ -10411,13 +10543,13 @@
                 17|
                 2[024-8]|
                 44|
-                5[389]|
+                5[3589]|
                 6[0167]
               )|
               9(?:
                 [057-9]\d|
                 2[35-9]|
-                3[09]|
+                3[019]|
                 4[036-8]|
                 6[0-46-9]
               )
@@ -14303,6 +14435,7 @@
 
     <!-- Latvia -->
     <!-- http://www.itu.int/oth/T0202000076/en -->
+    <!-- http://en.wikipedia.org/wiki/+371 -->
     <territory id="LV" countryCode="371" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="([2689]\d)(\d{3})(\d{3})">
@@ -14314,8 +14447,8 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>6\d{7}</nationalNumberPattern>
-        <exampleNumber>61234567</exampleNumber>
+        <nationalNumberPattern>6[3-8]\d{6}</nationalNumberPattern>
+        <exampleNumber>63123456</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>2\d{7}</nationalNumberPattern>
@@ -14329,6 +14462,10 @@
         <nationalNumberPattern>90\d{6}</nationalNumberPattern>
         <exampleNumber>90123456</exampleNumber>
       </premiumRate>
+      <sharedCost>
+        <nationalNumberPattern>81\d{6}</nationalNumberPattern>
+        <exampleNumber>81123456</exampleNumber>
+      </sharedCost>
       <emergency>
         <nationalNumberPattern>
           0[123]|
@@ -15917,7 +16054,7 @@
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3})">
-          <leadingDigits>[13-5]</leadingDigits>
+          <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(2\d{2})(\d{3})(\d{3})">
@@ -15928,25 +16065,14 @@
           <leadingDigits>[1789]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
-        <!-- Delete in Jan 2012. -->
-        <numberFormat pattern="(\d)(\d{3})(\d{3})">
-          <leadingDigits>[89]</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
       </availableFormats>
-      <!-- According to the plan, the switch from 7 to 9 digits for mobile numbers happened in July
-           2009. However, online numbers don't seem to reflect this - even on the telephone company
-           websites. Recent information provided by ITU stated that final migration happened on 30th
-           November 2011, and from December 1st only the 9-digit plan will be in use. We will delete
-           the old-format numbers in January 2010. -->
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            [3-5]|
-            [27]\d{2}|
-            [189](?:
+            1(?:
               \d{2}
-            )?
+            )?|
+            [2789]\d{2}
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
@@ -15967,16 +16093,12 @@
         <nationalNumberPattern>
           (?:
             111|
-            [3-5]|
             77\d|
-            8(?:
-              8\d
-            )?|
-            9(?:
-              9\d
-            )?
+            88\d|
+            99\d
           )\d{6}
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>991234567</exampleNumber>
       </mobile>
       <emergency>
@@ -19092,13 +19214,44 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-36-9]\d{4,11}</nationalNumberPattern>
+        <!-- The complicated pattern here is to distinguish between Pristina (area code 38, followed
+             by 2-9) and the country calling code (381). -->
+        <nationalNumberPattern>
+          [126-9]\d{4,11}|
+          3(?:
+            [0-79]\d{3,10}|
+            8[2-9]\d{2,9}
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>[1-3]\d{6,11}</nationalNumberPattern>
+        <!-- Most subscriber numbers may not start with 0 or 1. Exceptionally, the prefix 11 1[5-7]
+             has been issused, so we allow 11 1X here. -->
+        <nationalNumberPattern>
+          (?:
+            1(?:
+              [02-9][2-9]|
+              1[1-9]
+            )\d|
+            2(?:
+              [0-24-7][2-9]\d|
+              [389](?:
+                0[2-9]|
+                [2-9]\d
+              )
+            )|
+            3(?:
+              [0-8][2-9]\d|
+              9(?:
+                [2-9]\d|
+                0[2-9]
+              )
+            )
+          )\d{3,8}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
-        <exampleNumber>101234567</exampleNumber>
+        <exampleNumber>10234567</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
@@ -19517,6 +19670,8 @@
         <exampleNumber>4217123</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Although wikipedia says the prefix 28 is as-of-yet unallocated, open-source users have
+             already reported seeing numbers with this prefix. -->
         <nationalNumberPattern>
           2(?:
             5(?:
@@ -19526,7 +19681,8 @@
             7(?:
               [0-79]\d|
               8[24-9]
-            )
+            )|
+            8\d{2}
           )\d{3}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
@@ -20544,6 +20700,59 @@
       </emergency>
     </territory>
 
+    <!-- South Sudan -->
+    <!-- http://www.itu.int/oth/T02020000F9/en -->
+    <!-- http://en.wikipedia.org/wiki/+211 -->
+    <!-- These number sources disagree over whether the number length should be 7 or 10 digits. The
+         contact numbers for the South Sudan telecommunications authority, along with all numbers
+         seen online, are 9 digits, so we follow this instead. -->
+    <territory id="SS" countryCode="211" internationalPrefix="00" nationalPrefix="0">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[1489]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <!-- 1[67] has been included as per the ITU document, even though no online numbers can be
+             found. -->
+        <nationalNumberPattern>
+          (?:
+            1[67]\d|
+            811
+          )\d{6}
+        </nationalNumberPattern>
+        <exampleNumber>811123456</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <!-- Online numbers indicate that 95 is used by Vivacell, [49]77 by Gemtel, 91 by Zain,
+             9[29] by MTN (although it is unclear if 477 is still in use). 12 has been ascribed
+             to "Sudani", but it is not clear whether they are in fact still operating in South
+             Sudan. Patterns here are derived entirely from numbers found online. -->
+        <nationalNumberPattern>
+          (?:
+            1(?:
+              02|
+              2[1269]
+            )|
+            477|
+            9(?:
+              0[03689]|
+              1\d|
+              2[024-9]|
+              5[5-79]|
+              77|
+              98
+            )
+          )\d{6}
+        </nationalNumberPattern>
+        <exampleNumber>977123456</exampleNumber>
+      </mobile>
+    </territory>
+
     <!-- Sao Tome and Principe -->
     <!-- http://www.itu.int/oth/T02020000B6/en -->
     <territory id="ST" countryCode="239" internationalPrefix="00">
@@ -20636,6 +20845,7 @@
 
     <!-- Sint Maarten -->
     <!-- http://www.nanpa.com/pdf/PL_429.pdf -->
+    <!-- http://www.itu.int/oth/T02020000F7/en -->
     <territory id="SX" countryCode="1" leadingDigits="721"
       nationalPrefix="1" internationalPrefix="011">
       <generalDesc>
@@ -23205,6 +23415,10 @@
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
                nationalPrefixOptionalWhenFormatting="true">
       <availableFormats>
+        <numberFormat pattern="([17]99)(\d{4})">
+          <leadingDigits>[17]99</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
         <numberFormat pattern="([48])(\d{4})(\d{4})">
           <leadingDigits>[48]</leadingDigits>
           <format>$1 $2 $3</format>
@@ -23214,7 +23428,7 @@
             2[025-79]|
             3[0136-9]|
             5[2-9]|
-            6[0-46-9]|
+            6[0-46-8]|
             7[02-79]
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -23245,7 +23459,7 @@
           <leadingDigits>
             1(?:
               [26]|
-              88|
+              8[68]|
               99
             )
           </leadingDigits>
@@ -23259,11 +23473,20 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          8\d{5,8}|
-          [1-79]\d{7,9}
+          [17]\d{6,9}|
+          [2-69]\d{7,9}|
+          8\d{6,8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <nationalNumberPattern>
+          [17]99\d{4}|
+          69\d{5,6}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
+        <exampleNumber>1992000</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <nationalNumberPattern>
           (?:
@@ -23276,7 +23499,7 @@
               [0136-9]|
               [25][01]
             )|
-            [48]\d|
+            4\d|
             5(?:
               [01][01]|
               [2-9]
@@ -23288,12 +23511,11 @@
             7(?:
               [02-79]|
               [18][01]
-            )
-          )\d{7}|
-          69\d{5,6}|
-          80\d{5}
+            )|
+            8[1-9]
+          )\d{7}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
         <exampleNumber>2101234567</exampleNumber>
       </fixedLine>
       <mobile>
@@ -23303,7 +23525,7 @@
             1(?:
               2\d|
               6[3-9]|
-              88|
+              8[68]|
               99
             )
           )\d{7}
@@ -23321,6 +23543,18 @@
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
         <exampleNumber>1900123456</exampleNumber>
       </premiumRate>
+      <uan>
+        <!-- These include non-geographic fixed numbers, such as for government ministries. While
+        listed as "private networks", they may actually be callable from within Vietnam. (They are
+        "private" in the sense that ordinary people could not be assigned these numbers.) -->
+        <nationalNumberPattern>
+          [17]99\d{4}|
+          69\d{5,6}|
+          80\d{5}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
+        <exampleNumber>1992000</exampleNumber>
+      </uan>
       <emergency>
         <nationalNumberPattern>11[345]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>

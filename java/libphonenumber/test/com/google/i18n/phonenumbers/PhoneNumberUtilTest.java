@@ -709,6 +709,9 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals("+1 (650) 253-0000", phoneUtil.formatByPattern(US_NUMBER,
                                                                 PhoneNumberFormat.INTERNATIONAL,
                                                                 newNumberFormats));
+    assertEquals("+1-650-253-0000", phoneUtil.formatByPattern(US_NUMBER,
+                                                              PhoneNumberFormat.RFC3966,
+                                                              newNumberFormats));
 
     // $NP is set to '1' for the US. Here we check that for other NANPA countries the US rules are
     // followed.
@@ -1027,6 +1030,18 @@ public class PhoneNumberUtilTest extends TestCase {
     assertTrue(phoneUtil.isValidNumberForRegion(reNumber, RegionCode.RE));
     assertTrue(phoneUtil.isValidNumberForRegion(INTERNATIONAL_TOLL_FREE, RegionCode.UN001));
     assertFalse(phoneUtil.isValidNumberForRegion(INTERNATIONAL_TOLL_FREE, RegionCode.US));
+    assertFalse(phoneUtil.isValidNumberForRegion(INTERNATIONAL_TOLL_FREE, RegionCode.ZZ));
+
+    PhoneNumber invalidNumber = new PhoneNumber();
+    // Invalid country calling codes.
+    invalidNumber.setCountryCode(3923).setNationalNumber(2366L);
+    assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.ZZ));
+    invalidNumber.setCountryCode(3923).setNationalNumber(2366L);
+    assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.UN001));
+    invalidNumber.setCountryCode(0).setNationalNumber(2366L);
+    assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.UN001));
+    invalidNumber.setCountryCode(0);
+    assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.ZZ));
   }
 
   public void testIsNotValidNumber() {
@@ -1046,6 +1061,13 @@ public class PhoneNumberUtilTest extends TestCase {
 
     invalidNumber.clear();
     invalidNumber.setCountryCode(64).setNationalNumber(3316005L);
+    assertFalse(phoneUtil.isValidNumber(invalidNumber));
+
+    invalidNumber.clear();
+    // Invalid country calling codes.
+    invalidNumber.setCountryCode(3923).setNationalNumber(2366L);
+    assertFalse(phoneUtil.isValidNumber(invalidNumber));
+    invalidNumber.setCountryCode(0);
     assertFalse(phoneUtil.isValidNumber(invalidNumber));
 
     assertFalse(phoneUtil.isValidNumber(INTERNATIONAL_TOLL_FREE_TOO_LONG));
@@ -1551,6 +1573,10 @@ public class PhoneNumberUtilTest extends TestCase {
     // already possible.
     usNumber.setCountryCode(1).setNationalNumber(1234567890L);
     assertEquals(usNumber, phoneUtil.parse("123-456-7890", RegionCode.US));
+
+    // Test star numbers. Although this is not strictly valid, we would like to make sure we can
+    // parse the output we produce when formatting the number.
+    assertEquals(JP_STAR_NUMBER, phoneUtil.parse("+81 *2345", RegionCode.JP));
   }
 
   public void testParseNumberWithAlphaCharacters() throws Exception {
@@ -1696,6 +1722,26 @@ public class PhoneNumberUtilTest extends TestCase {
       String plusMinusPhoneNumber = "+---";
       phoneUtil.parse(plusMinusPhoneNumber, RegionCode.DE);
       fail("This should not parse without throwing an exception " + plusMinusPhoneNumber);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    }
+    try {
+      String plusStar = "+***";
+      phoneUtil.parse(plusStar, RegionCode.DE);
+      fail("This should not parse without throwing an exception " + plusStar);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    }
+    try {
+      String plusStarPhoneNumber = "+*******91";
+      phoneUtil.parse(plusStarPhoneNumber, RegionCode.DE);
+      fail("This should not parse without throwing an exception " + plusStarPhoneNumber);
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
