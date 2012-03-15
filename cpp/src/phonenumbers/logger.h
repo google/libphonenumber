@@ -62,8 +62,9 @@ class Logger {
     level_ = level;
   }
 
-  static inline void set_logger_impl(Logger* logger) {
+  static inline Logger* set_logger_impl(Logger* logger) {
     impl_ = logger;
+    return logger;
   }
 
   static inline Logger* mutable_logger_impl() {

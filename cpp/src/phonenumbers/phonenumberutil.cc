@@ -93,6 +93,8 @@ const char kColombiaMobileToFixedLinePrefix[] = "3";
 // The kPlusSign signifies the international prefix.
 const char kPlusSign[] = "+";
 
+const char kStarSign[] = "*";
+
 const char kRfc3966ExtnPrefix[] = ";ext=";
 
 const char kDigits[] = "\\p{Nd}";
@@ -152,36 +154,27 @@ const PhoneNumberDesc* GetNumberDescByType(
 }
 
 // A helper function that is used by Format and FormatByPattern.
-void FormatNumberByFormat(int country_calling_code,
-                          PhoneNumberUtil::PhoneNumberFormat number_format,
-                          const string& formatted_national_number,
-                          const string& formatted_extension,
-                          string* formatted_number) {
+void PrefixNumberWithCountryCallingCode(
+    int country_calling_code,
+    PhoneNumberUtil::PhoneNumberFormat number_format,
+    string* formatted_number) {
   switch (number_format) {
     case PhoneNumberUtil::E164:
-      formatted_number->assign(StrCat(kPlusSign,
-                                      SimpleItoa(country_calling_code),
-                                      formatted_national_number,
-                                      formatted_extension));
+      formatted_number->insert(
+          0, StrCat(kPlusSign, SimpleItoa(country_calling_code)));
       return;
     case PhoneNumberUtil::INTERNATIONAL:
-      formatted_number->assign(StrCat(kPlusSign,
-                                      SimpleItoa(country_calling_code),
-                                      " ",
-                                      formatted_national_number,
-                                      formatted_extension));
+      formatted_number->insert(
+          0, StrCat(kPlusSign, SimpleItoa(country_calling_code), " "));
       return;
     case PhoneNumberUtil::RFC3966:
-      formatted_number->assign(StrCat(kPlusSign,
-                                      SimpleItoa(country_calling_code),
-                                      "-",
-                                      formatted_national_number,
-                                      formatted_extension));
+      formatted_number->insert(
+          0, StrCat(kPlusSign, SimpleItoa(country_calling_code), "-"));
       return;
     case PhoneNumberUtil::NATIONAL:
     default:
-      formatted_number->assign(StrCat(formatted_national_number,
-                                      formatted_extension));
+      // Do nothing.
+      return;
   }
 }
 
@@ -480,6 +473,8 @@ class PhoneNumberRegExpsAndMappings {
     }
   }
 
+  const string punctuation_and_star_sign_;
+
   // Regular expression of viable phone numbers. This is location independent.
   // Checks we have at least three leading digits, and only valid punctuation,
   // alpha characters and digits in the phone number. Does not include extension
@@ -487,7 +482,8 @@ class PhoneNumberRegExpsAndMappings {
   // used as a placeholder for carrier codes, for example in Brazilian phone
   // numbers. We also allow multiple plus-signs at the start.
   // Corresponds to the following:
-  // plus_sign*([punctuation]*[digits]){3,}([punctuation]|[digits]|[alpha])*
+  // plus_sign*(([punctuation]|[star])*[digits]){3,}
+  // ([punctuation]|[star]|[digits]|[alpha])*
   const string valid_phone_number_;
 
   // Regexp of all possible ways to write extensions, for use when parsing. This
@@ -583,11 +579,14 @@ class PhoneNumberRegExpsAndMappings {
   scoped_ptr<const RegExp> plus_chars_pattern_;
 
   PhoneNumberRegExpsAndMappings()
-      : valid_phone_number_(
+      : punctuation_and_star_sign_(StrCat(PhoneNumberUtil::kValidPunctuation,
+                                          kStarSign)),
+        valid_phone_number_(
             StrCat("[", PhoneNumberUtil::kPlusChars, "]*(?:[",
-                   PhoneNumberUtil::kValidPunctuation, "]*[",
+                   punctuation_and_star_sign_, "]*[",
                    kDigits, "]){3,}[", kValidAlpha,
-                   PhoneNumberUtil::kValidPunctuation, kDigits, "]*")),
+                   punctuation_and_star_sign_, kDigits,
+                   "]*")),
         extn_patterns_for_parsing_(
             CreateExtnPattern(StrCat(",", kSingleExtnSymbolsForMatching))),
         regexp_factory_(new RegExpFactory()),
@@ -644,7 +643,7 @@ class PhoneNumberRegExpsAndMappings {
 
 // Private constructor. Also takes care of initialisation.
 PhoneNumberUtil::PhoneNumberUtil()
-    : logger_(new StdoutLogger()),
+    : logger_(Logger::set_logger_impl(new StdoutLogger())),
       reg_exps_(new PhoneNumberRegExpsAndMappings),
       country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
       nanpa_regions_(new set<string>()),
@@ -667,6 +666,7 @@ PhoneNumberUtil::PhoneNumberUtil()
        it != metadata_collection.metadata().end();
        ++it) {
     const string& region_code = it->id();
+
     int country_calling_code = it->country_code();
     if (kRegionCodeForNonGeoEntity == region_code) {
       country_code_to_non_geographical_metadata_map_->insert(
@@ -774,8 +774,8 @@ void PhoneNumberUtil::GetNddPrefixForRegion(const string& region_code,
                                             string* national_prefix) const {
   DCHECK(national_prefix);
   if (!IsValidRegionCode(region_code)) {
-    LOG(ERROR) << "Invalid or unknown region code (" << region_code
-               << ") provided.";
+    LOG(WARNING) << "Invalid or unknown region code (" << region_code
+                 << ") provided.";
     return;
   }
   const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
@@ -842,8 +842,9 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
   if (number_format == E164) {
     // Early exit for E164 case since no formatting of the national number needs
     // to be applied. Extensions are not formatted.
-    FormatNumberByFormat(country_calling_code, E164,
-                         national_significant_number, "", formatted_number);
+    formatted_number->assign(national_significant_number);
+    PrefixNumberWithCountryCallingCode(country_calling_code, E164,
+                                       formatted_number);
     return;
   }
   // Note here that all NANPA formatting rules are contained by US, so we use
@@ -858,15 +859,12 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
   }
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
-  string formatted_extension;
-  MaybeGetFormattedExtension(number, *metadata, number_format,
-                             &formatted_extension);
-  string formatted_national_number;
-  FormatNationalNumber(national_significant_number, *metadata, number_format,
-                       &formatted_national_number);
-  FormatNumberByFormat(country_calling_code, number_format,
-                       formatted_national_number,
-                       formatted_extension, formatted_number);
+  FormatNsn(national_significant_number, *metadata, number_format,
+            formatted_number);
+  MaybeAppendFormattedExtension(number, *metadata, number_format,
+                                formatted_number);
+  PrefixNumberWithCountryCallingCode(country_calling_code, number_format,
+                                     formatted_number);
 }
 
 void PhoneNumberUtil::FormatByPattern(
@@ -888,47 +886,44 @@ void PhoneNumberUtil::FormatByPattern(
     formatted_number->assign(national_significant_number);
     return;
   }
-  RepeatedPtrField<NumberFormat> user_defined_formats_copy;
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
-  for (RepeatedPtrField<NumberFormat>::const_iterator it =
-           user_defined_formats.begin();
-       it != user_defined_formats.end();
-       ++it) {
+  const NumberFormat* formatting_pattern =
+      ChooseFormattingPatternForNumber(user_defined_formats,
+                                       national_significant_number);
+  if (!formatting_pattern) {
+    // If no pattern above is matched, we format the number as a whole.
+    formatted_number->assign(national_significant_number);
+  } else {
+    NumberFormat num_format_copy;
+    // Before we do a replacement of the national prefix pattern $NP with the
+    // national prefix, we need to copy the rule so that subsequent replacements
+    // for different numbers have the appropriate national prefix.
+    num_format_copy.MergeFrom(*formatting_pattern);
     string national_prefix_formatting_rule(
-        it->national_prefix_formatting_rule());
+        formatting_pattern->national_prefix_formatting_rule());
     if (!national_prefix_formatting_rule.empty()) {
       const string& national_prefix = metadata->national_prefix();
-      NumberFormat* num_format_copy = user_defined_formats_copy.Add();
-      num_format_copy->MergeFrom(*it);
       if (!national_prefix.empty()) {
         // Replace $NP with national prefix and $FG with the first group ($1).
         GlobalReplaceSubstring("$NP", national_prefix,
                                &national_prefix_formatting_rule);
         GlobalReplaceSubstring("$FG", "$1",
                                &national_prefix_formatting_rule);
-        num_format_copy->set_national_prefix_formatting_rule(
+        num_format_copy.set_national_prefix_formatting_rule(
             national_prefix_formatting_rule);
       } else {
         // We don't want to have a rule for how to format the national prefix if
         // there isn't one.
-        num_format_copy->clear_national_prefix_formatting_rule();
+        num_format_copy.clear_national_prefix_formatting_rule();
       }
-    } else {
-      user_defined_formats_copy.Add()->MergeFrom(*it);
     }
+    FormatNsnUsingPattern(national_significant_number, num_format_copy,
+                          number_format, formatted_number);
   }
-  string formatted_number_without_extension;
-  FormatAccordingToFormats(national_significant_number,
-                           user_defined_formats_copy,
-                           number_format, national_significant_number,
-                           &formatted_number_without_extension);
-  string formatted_extension;
-  MaybeGetFormattedExtension(number, *metadata, NATIONAL,
-                             &formatted_extension);
-  FormatNumberByFormat(country_calling_code, number_format,
-                       formatted_number_without_extension, formatted_extension,
-                       formatted_number);
+  MaybeAppendFormattedExtension(number, *metadata, NATIONAL, formatted_number);
+  PrefixNumberWithCountryCallingCode(country_calling_code, number_format,
+                                     formatted_number);
 }
 
 void PhoneNumberUtil::FormatNationalNumberWithCarrierCode(
@@ -949,16 +944,11 @@ void PhoneNumberUtil::FormatNationalNumberWithCarrierCode(
   }
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
-  string formatted_extension;
-  MaybeGetFormattedExtension(number, *metadata, NATIONAL,
-                             &formatted_extension);
-  string formatted_national_number;
-  FormatNationalNumberWithCarrier(national_significant_number, *metadata,
-                                  NATIONAL, carrier_code,
-                                  &formatted_national_number);
-  FormatNumberByFormat(country_calling_code, NATIONAL,
-                       formatted_national_number, formatted_extension,
-                       formatted_number);
+  FormatNsnWithCarrier(national_significant_number, *metadata, NATIONAL,
+                       carrier_code, formatted_number);
+  MaybeAppendFormattedExtension(number, *metadata, NATIONAL, formatted_number);
+  PrefixNumberWithCountryCallingCode(country_calling_code, NATIONAL,
+                                     formatted_number);
 }
 
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegionOrCallingCode(
@@ -1046,9 +1036,9 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
     string* formatted_number) const {
   DCHECK(formatted_number);
   if (!IsValidRegionCode(calling_from)) {
-    VLOG(1) << "Trying to format number from invalid region "
-            << calling_from
-            << ". International formatting applied.";
+    LOG(WARNING) << "Trying to format number from invalid region "
+                 << calling_from
+                 << ". International formatting applied.";
     Format(number, INTERNATIONAL, formatted_number);
     return;
   }
@@ -1063,12 +1053,11 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
     if (IsNANPACountry(calling_from)) {
       // For NANPA regions, return the national format for these regions but
       // prefix it with the country calling code.
-      string national_number;
-      Format(number, NATIONAL, &national_number);
-      formatted_number->assign(StrCat(country_code, " ", national_number));
+      Format(number, NATIONAL, formatted_number);
+      formatted_number->insert(0, StrCat(country_code, " "));
       return;
     }
-  } else if (country_code == GetCountryCodeForRegion(calling_from)) {
+  } else if (country_code == GetCountryCodeForValidRegion(calling_from)) {
     // If neither region is a NANPA region, then we check to see if the
     // country calling code of the number and the country calling code of the
     // region we are calling from are the same.
@@ -1099,19 +1088,16 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
       reg_exps_->unique_international_prefix_->FullMatch(international_prefix)
       ? international_prefix
       : metadata_calling_from->preferred_international_prefix());
-  string formatted_national_number;
-  FormatNationalNumber(national_significant_number, *metadata_for_region,
-                       INTERNATIONAL, &formatted_national_number);
-  string formatted_extension;
-  MaybeGetFormattedExtension(number, *metadata_for_region, INTERNATIONAL,
-                             &formatted_extension);
+  FormatNsn(national_significant_number, *metadata_for_region, INTERNATIONAL,
+            formatted_number);
+  MaybeAppendFormattedExtension(number, *metadata_for_region, INTERNATIONAL,
+                                formatted_number);
   if (!international_prefix_for_formatting.empty()) {
-    formatted_number->assign(
-        StrCat(international_prefix_for_formatting, " ", country_code, " ",
-               formatted_national_number, formatted_extension));
+    formatted_number->insert(
+        0, StrCat(international_prefix_for_formatting, " ", country_code, " "));
   } else {
-    FormatNumberByFormat(country_code, INTERNATIONAL, formatted_national_number,
-                         formatted_extension, formatted_number);
+    PrefixNumberWithCountryCallingCode(country_code, INTERNATIONAL,
+                                       formatted_number);
   }
 }
 
@@ -1176,7 +1162,7 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
       // HasFormattingPatternForNumber.
       const NumberFormat* format_rule =
           ChooseFormattingPatternForNumber(metadata->number_format(),
-                                           national_number, national_number);
+                                           national_number);
       // When the format we apply to this number doesn't contain national
       // prefix, we can just return the national format.
       // TODO: Refactor the code below with the code in
@@ -1261,7 +1247,6 @@ bool PhoneNumberUtil::HasFormattingPatternForNumber(
   GetNationalSignificantNumber(number, &national_number);
   const NumberFormat* format_rule =
       ChooseFormattingPatternForNumber(metadata->number_format(),
-                                       national_number,
                                        national_number);
   return format_rule;
 }
@@ -1276,7 +1261,8 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
     FormatOutOfCountryCallingNumber(number, calling_from, formatted_number);
     return;
   }
-  if (!HasValidCountryCallingCode(number.country_code())) {
+  int country_code = number.country_code();
+  if (!HasValidCountryCallingCode(country_code)) {
     formatted_number->assign(number.raw_input());
     return;
   }
@@ -1302,33 +1288,35 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
   const PhoneMetadata* metadata = GetMetadataForRegion(calling_from);
   if (number.country_code() == kNanpaCountryCode) {
     if (IsNANPACountry(calling_from)) {
-      formatted_number->assign(StrCat(number.country_code(), " ",
-                                      raw_input_copy));
+      StrAppend(formatted_number, country_code, " ", raw_input_copy);
       return;
     }
-  } else if (number.country_code() == GetCountryCodeForRegion(calling_from)) {
-    // Here we copy the formatting rules so we can modify the pattern we expect
-    // to match against.
-    RepeatedPtrField<NumberFormat> available_formats =
-        metadata->number_format();
-    for (RepeatedPtrField<NumberFormat>::iterator
-         it = available_formats.begin(); it != available_formats.end(); ++it) {
-      // The first group is the first group of digits that the user determined.
-      it->set_pattern("(\\d+)(.*)");
-      // Here we just concatenate them back together after the national prefix
-      // has been fixed.
-      it->set_format("$1$2");
+  } else if (IsValidRegionCode(calling_from) &&
+             country_code == GetCountryCodeForValidRegion(calling_from)) {
+    const NumberFormat* formatting_pattern =
+        ChooseFormattingPatternForNumber(metadata->number_format(),
+                                         national_number);
+    if (!formatting_pattern) {
+      // If no pattern above is matched, we format the original input.
+      formatted_number->assign(raw_input_copy);
+      return;
     }
-    // Now we format using these patterns instead of the default pattern, but
-    // with the national prefix prefixed if necessary, by choosing the format
-    // rule based on the leading digits present in the unformatted national
-    // number.
+    NumberFormat new_format;
+    new_format.MergeFrom(*formatting_pattern);
+    // The first group is the first group of digits that the user wrote
+    // together.
+    new_format.set_pattern("(\\d+)(.*)");
+    // Here we just concatenate them back together after the national prefix
+    // has been fixed.
+    new_format.set_format("$1$2");
+    // Now we format using this pattern instead of the default pattern, but
+    // with the national prefix prefixed if necessary.
     // This will not work in the cases where the pattern (and not the
     // leading digits) decide whether a national prefix needs to be used, since
     // we have overridden the pattern to match anything, but that is not the
     // case in the metadata to date.
-    FormatAccordingToFormats(national_number, available_formats,
-                             NATIONAL, raw_input_copy, formatted_number);
+    FormatNsnUsingPattern(raw_input_copy, new_format, NATIONAL,
+                          formatted_number);
     return;
   }
 
@@ -1344,29 +1332,30 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
         : metadata->preferred_international_prefix();
   }
   if (!international_prefix_for_formatting.empty()) {
-    formatted_number->assign(
-        StrCat(international_prefix_for_formatting, " ", number.country_code(),
-               " ", raw_input_copy));
+    StrAppend(formatted_number, international_prefix_for_formatting, " ",
+              country_code, " ", raw_input_copy);
   } else {
     // Invalid region entered as country-calling-from (so no metadata was found
     // for it) or the region chosen has multiple international dialling
     // prefixes.
-    FormatNumberByFormat(number.country_code(), INTERNATIONAL, raw_input_copy,
-                         "", formatted_number);
+    LOG(WARNING) << "Trying to format number from invalid region "
+                 << calling_from
+                 << ". International formatting applied.";
+    formatted_number->assign(raw_input_copy);
+    PrefixNumberWithCountryCallingCode(country_code, INTERNATIONAL,
+                                       formatted_number);
   }
 }
 
 const NumberFormat* PhoneNumberUtil::ChooseFormattingPatternForNumber(
     const RepeatedPtrField<NumberFormat>& available_formats,
-    const string& number_for_leading_digits_match,
     const string& national_number) const {
   for (RepeatedPtrField<NumberFormat>::const_iterator
        it = available_formats.begin(); it != available_formats.end(); ++it) {
     int size = it->leading_digits_pattern_size();
     if (size > 0) {
       const scoped_ptr<RegExpInput> number_copy(
-          reg_exps_->regexp_factory_->CreateInput(
-              number_for_leading_digits_match));
+          reg_exps_->regexp_factory_->CreateInput(national_number));
       // We always use the last leading_digits_pattern, as it is the most
       // detailed.
       if (!reg_exps_->regexp_cache_->GetRegExp(
@@ -1384,82 +1373,75 @@ const NumberFormat* PhoneNumberUtil::ChooseFormattingPatternForNumber(
   return NULL;
 }
 
-// The number_for_leading_digits_match is a separate parameter, because for
-// alpha numbers we want to pass in the numeric version to select the right
-// formatting rule, but then we actually apply the formatting pattern to the
-// national_number (which in this case has alpha characters in it).
-//
 // Note that carrier_code is optional - if an empty string, no carrier code
 // replacement will take place.
-void PhoneNumberUtil::FormatAccordingToFormatsWithCarrier(
-    const string& number_for_leading_digits_match,
-    const RepeatedPtrField<NumberFormat>& available_formats,
-    PhoneNumberUtil::PhoneNumberFormat number_format,
+void PhoneNumberUtil::FormatNsnUsingPatternWithCarrier(
     const string& national_number,
+    const NumberFormat& formatting_pattern,
+    PhoneNumberUtil::PhoneNumberFormat number_format,
     const string& carrier_code,
     string* formatted_number) const {
   DCHECK(formatted_number);
-  const NumberFormat* format = ChooseFormattingPatternForNumber(
-      available_formats,
-      number_for_leading_digits_match,
-      national_number);
-  if (!format) {
-    // If no pattern above is matched, we format the number as a whole.
-    formatted_number->assign(national_number);
-    return;
-  }
-  string formatting_pattern(format->format());
+  string number_format_rule(formatting_pattern.format());
   if (number_format == PhoneNumberUtil::NATIONAL &&
       carrier_code.length() > 0 &&
-      format->domestic_carrier_code_formatting_rule().length() > 0) {
+      formatting_pattern.domestic_carrier_code_formatting_rule().length() > 0) {
     // Replace the $CC in the formatting rule with the desired carrier code.
     string carrier_code_formatting_rule =
-        format->domestic_carrier_code_formatting_rule();
+        formatting_pattern.domestic_carrier_code_formatting_rule();
     reg_exps_->carrier_code_pattern_->Replace(&carrier_code_formatting_rule,
                                               carrier_code);
-    reg_exps_->first_group_capturing_pattern_->Replace(&formatting_pattern,
-                                               carrier_code_formatting_rule);
+    reg_exps_->first_group_capturing_pattern_->
+        Replace(&number_format_rule, carrier_code_formatting_rule);
   } else {
     // Use the national prefix formatting rule instead.
     string national_prefix_formatting_rule =
-        format->national_prefix_formatting_rule();
+        formatting_pattern.national_prefix_formatting_rule();
     if (number_format == PhoneNumberUtil::NATIONAL &&
         national_prefix_formatting_rule.length() > 0) {
       // Apply the national_prefix_formatting_rule as the formatting_pattern
       // contains only information on how the national significant number
       // should be formatted at this point.
       reg_exps_->first_group_capturing_pattern_->Replace(
-          &formatting_pattern, national_prefix_formatting_rule);
+          &number_format_rule, national_prefix_formatting_rule);
     }
   }
   formatted_number->assign(national_number);
+
   const RegExp& pattern_to_match(
-      reg_exps_->regexp_cache_->GetRegExp(format->pattern()));
-  pattern_to_match.GlobalReplace(formatted_number, formatting_pattern);
+      reg_exps_->regexp_cache_->GetRegExp(formatting_pattern.pattern()));
+  pattern_to_match.GlobalReplace(formatted_number, number_format_rule);
+
+  if (number_format == RFC3966) {
+    // First consume any leading punctuation, if any was present.
+    const scoped_ptr<RegExpInput> number(
+        reg_exps_->regexp_factory_->CreateInput(*formatted_number));
+    if (reg_exps_->separator_pattern_->Consume(number.get())) {
+      formatted_number->assign(number->ToString());
+    }
+    // Then replace all separators with a "-".
+    reg_exps_->separator_pattern_->GlobalReplace(formatted_number, "-");
+  }
 }
 
-// Simple wrapper of FormatAccordingToFormatsWithCarrier for the common case of
+// Simple wrapper of FormatNsnUsingPatternWithCarrier for the common case of
 // no carrier code.
-void PhoneNumberUtil::FormatAccordingToFormats(
-    const string& number_for_leading_digits_match,
-    const RepeatedPtrField<NumberFormat>& available_formats,
-    PhoneNumberUtil::PhoneNumberFormat number_format,
+void PhoneNumberUtil::FormatNsnUsingPattern(
     const string& national_number,
+    const NumberFormat& formatting_pattern,
+    PhoneNumberUtil::PhoneNumberFormat number_format,
     string* formatted_number) const {
   DCHECK(formatted_number);
-  FormatAccordingToFormatsWithCarrier(number_for_leading_digits_match,
-                                      available_formats, number_format,
-                                      national_number, "", formatted_number);
+  FormatNsnUsingPatternWithCarrier(national_number, formatting_pattern,
+                                   number_format, "", formatted_number);
 }
 
-void PhoneNumberUtil::FormatNationalNumber(
-    const string& number,
-    const PhoneMetadata& metadata,
-    PhoneNumberFormat number_format,
-    string* formatted_number) const {
+void PhoneNumberUtil::FormatNsn(const string& number,
+                                const PhoneMetadata& metadata,
+                                PhoneNumberFormat number_format,
+                                string* formatted_number) const {
   DCHECK(formatted_number);
-  FormatNationalNumberWithCarrier(number, metadata, number_format, "",
-                                  formatted_number);
+  FormatNsnWithCarrier(number, metadata, number_format, "", formatted_number);
 }
 
 // Note in some regions, the national number can be written in two completely
@@ -1467,12 +1449,11 @@ void PhoneNumberUtil::FormatNationalNumber(
 // INTERNATIONAL format. The number_format parameter here is used to specify
 // which format to use for those cases. If a carrier_code is specified, this
 // will be inserted into the formatted string to replace $CC.
-void PhoneNumberUtil::FormatNationalNumberWithCarrier(
-    const string& number,
-    const PhoneMetadata& metadata,
-    PhoneNumberFormat number_format,
-    const string& carrier_code,
-    string* formatted_number) const {
+void PhoneNumberUtil::FormatNsnWithCarrier(const string& number,
+                                           const PhoneMetadata& metadata,
+                                           PhoneNumberFormat number_format,
+                                           const string& carrier_code,
+                                           string* formatted_number) const {
   DCHECK(formatted_number);
   // When the intl_number_formats exists, we use that to format national number
   // for the INTERNATIONAL format instead of using the number_formats.
@@ -1480,45 +1461,35 @@ void PhoneNumberUtil::FormatNationalNumberWithCarrier(
       (metadata.intl_number_format_size() == 0 || number_format == NATIONAL)
       ? metadata.number_format()
       : metadata.intl_number_format();
-  FormatAccordingToFormatsWithCarrier(number, available_formats, number_format,
-                                      number, carrier_code, formatted_number);
-  if (number_format == RFC3966) {
-    // Replace all separators with a "-".
-    reg_exps_->separator_pattern_->GlobalReplace(formatted_number, "-");
+  const NumberFormat* formatting_pattern =
+      ChooseFormattingPatternForNumber(available_formats, number);
+  if (!formatting_pattern) {
+    formatted_number->assign(number);
+  } else {
+    FormatNsnUsingPatternWithCarrier(number, *formatting_pattern, number_format,
+                                     carrier_code, formatted_number);
   }
 }
 
-// Gets the formatted extension of a phone number, if the phone number had an
-// extension specified. If not, it returns an empty string.
-void PhoneNumberUtil::MaybeGetFormattedExtension(
+// Appends the formatted extension of a phone number, if the phone number had an
+// extension specified.
+void PhoneNumberUtil::MaybeAppendFormattedExtension(
     const PhoneNumber& number,
     const PhoneMetadata& metadata,
     PhoneNumberFormat number_format,
-    string* extension) const {
-  DCHECK(extension);
-  if (!number.has_extension() || number.extension().length() == 0) {
-    extension->assign("");
-  } else {
+    string* formatted_number) const {
+  DCHECK(formatted_number);
+  if (number.has_extension() && number.extension().length() > 0) {
     if (number_format == RFC3966) {
-      StrAppend(extension, kRfc3966ExtnPrefix, number.extension());
-      return;
+      StrAppend(formatted_number, kRfc3966ExtnPrefix, number.extension());
+    } else {
+      if (metadata.has_preferred_extn_prefix()) {
+        StrAppend(formatted_number, metadata.preferred_extn_prefix(),
+                  number.extension());
+      } else {
+        StrAppend(formatted_number, kDefaultExtnPrefix, number.extension());
+      }
     }
-    FormatExtension(number.extension(), metadata, extension);
-  }
-}
-
-// Formats the extension part of the phone number by prefixing it with the
-// appropriate extension prefix. This will be the default extension prefix,
-// unless overridden by a preferred extension prefix for this region.
-void PhoneNumberUtil::FormatExtension(const string& extension_digits,
-                                      const PhoneMetadata& metadata,
-                                      string* extension) const {
-  DCHECK(extension);
-  if (metadata.has_preferred_extn_prefix()) {
-    extension->assign(StrCat(metadata.preferred_extn_prefix(),
-                             extension_digits));
-  } else {
-    extension->assign(StrCat(kDefaultExtnPrefix, extension_digits));
   }
 }
 
@@ -1558,8 +1529,8 @@ void PhoneNumberUtil::GetRegionCodeForCountryCode(
   list<string> region_codes;
 
   GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
-  *region_code = (region_codes.size() > 0)
-      ? region_codes.front() : RegionCode::GetUnknown();
+  *region_code = (region_codes.size() > 0) ?
+      region_codes.front() : RegionCode::GetUnknown();
 }
 
 void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
@@ -1612,10 +1583,15 @@ void PhoneNumberUtil::GetRegionCodeForNumberFromRegionList(
 
 int PhoneNumberUtil::GetCountryCodeForRegion(const string& region_code) const {
   if (!IsValidRegionCode(region_code)) {
-    LOG(ERROR) << "Invalid or unknown region code (" << region_code
-               << ") provided.";
+    LOG(WARNING) << "Invalid or unknown region code (" << region_code
+                 << ") provided.";
     return 0;
   }
+  return GetCountryCodeForValidRegion(region_code);
+}
+
+int PhoneNumberUtil::GetCountryCodeForValidRegion(
+    const string& region_code) const {
   const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
   return metadata->country_code();
 }
@@ -1626,31 +1602,32 @@ int PhoneNumberUtil::GetCountryCodeForRegion(const string& region_code) const {
 bool PhoneNumberUtil::GetExampleNumber(const string& region_code,
                                        PhoneNumber* number) const {
   DCHECK(number);
-  return GetExampleNumberForType(region_code,
-                                 FIXED_LINE,
-                                 number);
+  return GetExampleNumberForType(region_code, FIXED_LINE, number);
 }
 
 // Gets a valid number for the specified region_code and type.  Returns false if
 // the country was unknown or 001 (representing non-geographical regions), or if
-// the country was unknown or if no number exists.
+// no number exists.
 bool PhoneNumberUtil::GetExampleNumberForType(
     const string& region_code,
     PhoneNumberUtil::PhoneNumberType type,
     PhoneNumber* number) const {
   DCHECK(number);
   if (!IsValidRegionCode(region_code)) {
-    LOG(ERROR) << "Invalid or unknown region code (" << region_code
-               << ") provided.";
+    LOG(WARNING) << "Invalid or unknown region code (" << region_code
+                 << ") provided.";
     return false;
   }
   const PhoneMetadata* region_metadata = GetMetadataForRegion(region_code);
-  const PhoneNumberDesc* description =
-      GetNumberDescByType(*region_metadata, type);
-  if (description && description->has_example_number()) {
-    return (Parse(description->example_number(),
-                  region_code,
-                  number) == NO_PARSING_ERROR);
+  const PhoneNumberDesc* desc = GetNumberDescByType(*region_metadata, type);
+  if (desc && desc->has_example_number()) {
+    ErrorType success = Parse(desc->example_number(), region_code, number);
+    if (success == NO_PARSING_ERROR) {
+      return true;
+    } else {
+      LOG(ERROR) << "Error parsing example number ("
+                 << static_cast<int>(success) << ")";
+    }
   }
   return false;
 }
@@ -1663,10 +1640,20 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
   if (metadata) {
     const PhoneNumberDesc& desc = metadata->general_desc();
     if (desc.has_example_number()) {
-      return (Parse(StrCat(kPlusSign, SimpleItoa(country_calling_code),
-                           desc.example_number()),
-                    "ZZ", number) == NO_PARSING_ERROR);
+      ErrorType success = Parse(StrCat(kPlusSign,
+                                       SimpleItoa(country_calling_code),
+                                       desc.example_number()),
+                                RegionCode::ZZ(), number);
+      if (success == NO_PARSING_ERROR) {
+        return true;
+      } else {
+        LOG(ERROR) << "Error parsing example number ("
+                   << static_cast<int>(success) << ")";
+      }
     }
+  } else {
+    LOG(WARNING) << "Invalid or unknown country calling code provided: "
+                 << country_calling_code;
   }
   return false;
 }
@@ -1949,13 +1936,15 @@ bool PhoneNumberUtil::IsValidNumber(const PhoneNumber& number) const {
 bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
                                              const string& region_code) const {
   int country_code = number.country_code();
-  if (country_code == 0 ||
-      (kRegionCodeForNonGeoEntity != region_code &&
-       country_code != GetCountryCodeForRegion(region_code))) {
-    return false;
-  }
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_code, region_code);
+  if (!metadata ||
+      ((kRegionCodeForNonGeoEntity != region_code) &&
+       country_code != GetCountryCodeForValidRegion(region_code))) {
+    // Either the region code was invalid, or the country calling code for this
+    // number does not match that of the region code.
+    return false;
+  }
   const PhoneNumberDesc& general_desc = metadata->general_desc();
   string national_number;
   GetNationalSignificantNumber(number, &national_number);
@@ -1977,8 +1966,8 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
 bool PhoneNumberUtil::IsLeadingZeroPossible(int country_calling_code) const {
   string region_code;
   GetRegionCodeForCountryCode(country_calling_code, &region_code);
-  const PhoneMetadata* main_metadata_for_calling_code =
-      GetMetadataForRegion(region_code);
+  const PhoneMetadata* main_metadata_for_calling_code = GetMetadataForRegion(
+      region_code);
   if (!main_metadata_for_calling_code) return false;
   return main_metadata_for_calling_code->leading_zero_possible();
 }

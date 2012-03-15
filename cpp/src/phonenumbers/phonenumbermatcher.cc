@@ -190,6 +190,10 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   // Matches strings that look like dates using "/" as a separator. Examples:
   // 3/10/2011, 31/10/96 or 08/31/95.
   scoped_ptr<const RegExp> slash_separated_dates_;
+  // Matches timestamps. Examples: "2012-01-02 08:00". Note that the reg-ex does
+  // not include trailing ":\d\d" -- that is covered by time_stamps_suffix_.
+  scoped_ptr<const RegExp> time_stamps_;
+  scoped_ptr<const RegExp> time_stamps_suffix_;
   // Pattern to check that brackets match. Opening brackets should be closed
   // within a phone number. This also checks that there is something inside the
   // brackets. Having no brackets at all is also fine.
@@ -249,6 +253,9 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         slash_separated_dates_(regexp_factory_->CreateRegExp(
             "(?:(?:[0-3]?\\d/[01]?\\d)|"
             "(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}")),
+        time_stamps_(regexp_factory_->CreateRegExp(
+            "[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d [0-2]\\d$")),
+        time_stamps_suffix_(regexp_factory_->CreateRegExp(":[0-5]\\d")),
         matching_brackets_(regexp_factory_->CreateRegExp(
             StrCat(leading_maybe_matched_bracket_, non_parens_, "+",
                    bracket_pairs_, non_parens_, "*"))),
@@ -578,6 +585,15 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
       reg_exps_->slash_separated_dates_->PartialMatch(candidate)) {
     return false;
   }
+  // Skip potential time-stamps.
+  if (reg_exps_->time_stamps_->PartialMatch(candidate)) {
+    scoped_ptr<RegExpInput> following_text(
+        reg_exps_->regexp_factory_->CreateInput(
+            text_.substr(offset + candidate.size())));
+    if (reg_exps_->time_stamps_suffix_->Consume(following_text.get())) {
+      return false;
+    }
+  }
 
   // Try to come up with a valid match given the entire candidate.
   if (ParseAndVerify(candidate, offset, match)) {
@@ -659,7 +675,6 @@ bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(
   phone_util_.GetNationalSignificantNumber(number, &national_number);
   const NumberFormat* format_rule =
       phone_util_.ChooseFormattingPatternForNumber(metadata->number_format(),
-                                                   national_number,
                                                    national_number);
   // To do this, we check that a national prefix formatting rule was present and
   // that it wasn't just the first-group symbol ($1) with punctuation.

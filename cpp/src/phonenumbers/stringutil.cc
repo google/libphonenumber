@@ -374,5 +374,41 @@ void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2) {
   *dest += s2;
 }
 
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3) {
+  assert(dest);
+
+  dest->reserve(dest->length() + s1.Length() + s2.Length() + s3.Length() + 1);
+  *dest += s1;
+  *dest += s2;
+  *dest += s3;
+}
+
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3, const StringHolder& s4) {
+  assert(dest);
+
+  dest->reserve(dest->length() + s1.Length() + s2.Length() + s3.Length() +
+      s4.Length() + 1);
+  *dest += s1;
+  *dest += s2;
+  *dest += s3;
+  *dest += s4;
+}
+
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3, const StringHolder& s4,
+               const StringHolder& s5) {
+  assert(dest);
+
+  dest->reserve(dest->length() + s1.Length() + s2.Length() + s3.Length() +
+      s4.Length() + s5.Length() + 1);
+  *dest += s1;
+  *dest += s2;
+  *dest += s3;
+  *dest += s4;
+  *dest += s5;
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n

@@ -279,15 +279,27 @@ TEST(StringUtilTest, StrAppend) {
 
   // Test with 1 argument.
   StrAppend(&s, "a");
-  EXPECT_EQ("a", s);
+  ASSERT_EQ("a", s);
 
   // Test with 2 arguments.
   StrAppend(&s, "b", "c");
-  EXPECT_EQ("abc", s);
+  ASSERT_EQ("abc", s);
+
+  // Test with 3 arguments.
+  StrAppend(&s, "d", "e", "f");
+  ASSERT_EQ("abcdef", s);
+
+  // Test with 4 arguments.
+  StrAppend(&s, "g", "h", "i", "j");
+  ASSERT_EQ("abcdefghij", s);
+
+  // Test with 5 arguments.
+  StrAppend(&s, "k", "l", "m", "n", "o");
+  ASSERT_EQ("abcdefghijklmno", s);
 
   // Test with int argument.
   StrAppend(&s, 42);
-  EXPECT_EQ("abc42", s);
+  ASSERT_EQ("abcdefghijklmno42", s);
 }
 
 }  // namespace phonenumbers

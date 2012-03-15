@@ -149,6 +149,16 @@ void StrAppend(string* dest, const StringHolder& s1);
 
 void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2);
 
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3);
+
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3, const StringHolder& s4);
+
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3, const StringHolder& s4,
+               const StringHolder& s5);
+
 }  // namespace phonenumbers
 }  // namespace i18n
 

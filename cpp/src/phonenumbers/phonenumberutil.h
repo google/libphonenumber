@@ -647,28 +647,29 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       int country_calling_code,
       const string& region_code) const;
 
+  // As per GetCountryCodeForRegion, but assumes the validity of the region_code
+  // has already been checked.
+  int GetCountryCodeForValidRegion(const string& region_code) const;
+
   void GetRegionCodesForCountryCallingCode(
       int country_calling_code,
       list<string>* region_codes) const;
 
   const NumberFormat* ChooseFormattingPatternForNumber(
       const RepeatedPtrField<NumberFormat>& available_formats,
-      const string& number_for_leading_digits_match,
       const string& national_number) const;
 
-  void FormatAccordingToFormatsWithCarrier(
-      const string& number_for_leading_digits_match,
-      const RepeatedPtrField<NumberFormat>& available_formats,
-      PhoneNumberUtil::PhoneNumberFormat number_format,
+  void FormatNsnUsingPatternWithCarrier(
       const string& national_number,
+      const NumberFormat& formatting_pattern,
+      PhoneNumberUtil::PhoneNumberFormat number_format,
       const string& carrier_code,
       string* formatted_number) const;
 
-  void FormatAccordingToFormats(
-      const string& number_for_leading_digits_match,
-      const RepeatedPtrField<NumberFormat>& available_formats,
-      PhoneNumberUtil::PhoneNumberFormat number_format,
+  void FormatNsnUsingPattern(
       const string& national_number,
+      const NumberFormat& formatting_pattern,
+      PhoneNumberUtil::PhoneNumberFormat number_format,
       string* formatted_number) const;
 
   // Check if raw_input, which is assumed to be in the national format, has a
@@ -685,27 +686,24 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   bool HasFormattingPatternForNumber(const PhoneNumber& number) const;
 
-  // Simple wrapper of FormatNationalNumberWithCarrier for the common case of
+  // Simple wrapper of FormatNsnWithCarrier for the common case of
   // no carrier code.
-  void FormatNationalNumber(const string& number,
+  void FormatNsn(const string& number,
+                 const PhoneMetadata& metadata,
+                 PhoneNumberFormat number_format,
+                 string* formatted_number) const;
+
+  void FormatNsnWithCarrier(const string& number,
                             const PhoneMetadata& metadata,
                             PhoneNumberFormat number_format,
+                            const string& carrier_code,
                             string* formatted_number) const;
 
-  void FormatNationalNumberWithCarrier(const string& number,
-                                       const PhoneMetadata& metadata,
-                                       PhoneNumberFormat number_format,
-                                       const string& carrier_code,
-                                       string* formatted_number) const;
-  void MaybeGetFormattedExtension(
+  void MaybeAppendFormattedExtension(
       const PhoneNumber& number,
       const PhoneMetadata& metadata,
       PhoneNumberFormat number_format,
       string* extension) const;
-
-  void FormatExtension(const string& extension_digits,
-                       const PhoneMetadata& metadata,
-                       string* extension) const;
 
   void GetRegionCodeForNumberFromRegionList(
       const PhoneNumber& number,

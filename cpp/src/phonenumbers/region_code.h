@@ -26,6 +26,10 @@ class RegionCode {
  public:
   // Returns a region code string representing the "unknown" region.
   static const char* GetUnknown() {
+    return ZZ();
+  }
+
+  static const char* ZZ() {
     return "ZZ";
   }
 };

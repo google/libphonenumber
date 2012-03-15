@@ -724,6 +724,23 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
   EXPECT_EQ("+52 1 541 234 5678", formatter_->InputDigit('8', &result_));
 }
 
+TEST_F(AsYouTypeFormatterTest, AYTF_International_Toll_Free) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
+  // +800 1234 5678
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+80", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("+800 ", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("+800 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+800 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+800 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+800 1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+800 1234 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+800 1234 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+800 1234 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("+800 1234 5678", formatter_->InputDigit('8', &result_));
+}
+
 TEST_F(AsYouTypeFormatterTest, AYTF_MultipleLeadingDigitPatterns) {
   formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::JP()));
 
