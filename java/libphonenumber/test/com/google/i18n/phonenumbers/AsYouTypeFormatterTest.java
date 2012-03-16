@@ -21,18 +21,12 @@ import junit.framework.TestCase;
 /**
  * Unit tests for AsYouTypeFormatter.java
  *
- * Note that these tests use the metadata contained in the files with TEST_META_DATA_FILE_PREFIX,
- * not the normal metadata files, so should not be used for regression test purposes - these tests
- * are illustrative only and test functionality.
+ * Note that these tests use the test metadata, not the normal metadata file, so should not be used
+ * for regression test purposes - these tests are illustrative only and test functionality.
  *
  * @author Shaopeng Jia
  */
-public class AsYouTypeFormatterTest extends TestCase {
-  private PhoneNumberUtil phoneUtil;
-
-  public AsYouTypeFormatterTest() {
-    phoneUtil = PhoneNumberUtilTest.initializePhoneUtilForTesting();
-  }
+public class AsYouTypeFormatterTest extends TestMetadataTestCase {
 
   public void testInvalidRegion() {
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);

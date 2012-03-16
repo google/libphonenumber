@@ -31,19 +31,13 @@ import java.util.List;
 /**
  * Unit tests for PhoneNumberUtil.java
  *
- * Note that these tests use the metadata contained in the files with TEST_META_DATA_FILE_PREFIX,
- * not the normal metadata files, so should not be used for regression test purposes - these tests
- * are illustrative only and test functionality.
+ * Note that these tests use the test metadata, not the normal metadata file, so should not be used
+ * for regression test purposes - these tests are illustrative only and test functionality.
  *
  * @author Shaopeng Jia
  * @author Lara Rennie
  */
-public class PhoneNumberUtilTest extends TestCase {
-  private PhoneNumberUtil phoneUtil;
-  // This is used by BuildMetadataProtoFromXml.
-  static final String TEST_META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
-
+public class PhoneNumberUtilTest extends TestMetadataTestCase {
   // Set up some test numbers to re-use.
   private static final PhoneNumber ALPHA_NUMERIC_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(80074935247L);
@@ -109,17 +103,6 @@ public class PhoneNumberUtilTest extends TestCase {
       new PhoneNumber().setCountryCode(800).setNationalNumber(12345678L);
   private static final PhoneNumber INTERNATIONAL_TOLL_FREE_TOO_LONG =
       new PhoneNumber().setCountryCode(800).setNationalNumber(1234567890L);
-
-  public PhoneNumberUtilTest() {
-    phoneUtil = initializePhoneUtilForTesting();
-  }
-
-  static PhoneNumberUtil initializePhoneUtilForTesting() {
-    PhoneNumberUtil.resetInstance();
-    return PhoneNumberUtil.getInstance(
-        TEST_META_DATA_FILE_PREFIX,
-        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
-  }
 
   public void testGetSupportedRegions() {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
@@ -1036,11 +1019,9 @@ public class PhoneNumberUtilTest extends TestCase {
     // Invalid country calling codes.
     invalidNumber.setCountryCode(3923).setNationalNumber(2366L);
     assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.ZZ));
-    invalidNumber.setCountryCode(3923).setNationalNumber(2366L);
-    assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.UN001));
-    invalidNumber.setCountryCode(0).setNationalNumber(2366L);
     assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.UN001));
     invalidNumber.setCountryCode(0);
+    assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.UN001));
     assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.ZZ));
   }
 
@@ -1592,6 +1573,38 @@ public class PhoneNumberUtilTest extends TestCase {
     assertEquals(premiumNumber, phoneUtil.parse("0900 332 600a5", RegionCode.NZ));
     assertEquals(premiumNumber, phoneUtil.parse("0900 332 600A5", RegionCode.NZ));
     assertEquals(premiumNumber, phoneUtil.parse("0900 a332 600A5", RegionCode.NZ));
+  }
+
+  public void testParseMaliciousInput() throws Exception {
+    // Lots of leading + signs before the possible number.
+    StringBuilder maliciousNumber = new StringBuilder(6000);
+    for (int i = 0; i < 6000; i++) {
+      maliciousNumber.append('+');
+    }
+    maliciousNumber.append("12222-33-244 extensioB 343+");
+    try {
+      phoneUtil.parse(maliciousNumber.toString(), RegionCode.US);
+      fail("This should not parse without throwing an exception " + maliciousNumber);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.TOO_LONG,
+                   e.getErrorType());
+    }
+    StringBuilder maliciousNumberWithAlmostExt = new StringBuilder(6000);
+    for (int i = 0; i < 350; i++) {
+      maliciousNumberWithAlmostExt.append("200");
+    }
+    maliciousNumberWithAlmostExt.append(" extensiOB 345");
+    try {
+      phoneUtil.parse(maliciousNumberWithAlmostExt.toString(), RegionCode.US);
+      fail("This should not parse without throwing an exception " + maliciousNumberWithAlmostExt);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.TOO_LONG,
+                   e.getErrorType());
+    }
   }
 
   public void testParseWithInternationalPrefixes() throws Exception {

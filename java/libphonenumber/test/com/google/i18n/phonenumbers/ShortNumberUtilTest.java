@@ -25,16 +25,10 @@ import java.io.InputStream;
  *
  * @author Shaopeng Jia
  */
-public class ShortNumberUtilTest extends TestCase {
+public class ShortNumberUtilTest extends TestMetadataTestCase {
   private ShortNumberUtil shortUtil;
-  static final String TEST_META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
   public ShortNumberUtilTest() {
-    PhoneNumberUtil.resetInstance();
-    PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance(
-        TEST_META_DATA_FILE_PREFIX,
-        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
     shortUtil = new ShortNumberUtil(phoneUtil);
   }
 

@@ -33,13 +33,7 @@ import java.util.NoSuchElementException;
  * @author Tom Hofmann
  * @see PhoneNumberUtilTest {@link PhoneNumberUtilTest} for the origin of the test data
  */
-public class PhoneNumberMatcherTest extends TestCase {
-  private PhoneNumberUtil phoneUtil;
-
-  @Override
-  protected void setUp() throws Exception {
-    phoneUtil = PhoneNumberUtilTest.initializePhoneUtilForTesting();
-  }
+public class PhoneNumberMatcherTest extends TestMetadataTestCase {
 
   /** See {@link PhoneNumberUtilTest#testParseNationalNumber()}. */
   public void testFindNationalNumber() throws Exception {
@@ -708,6 +702,19 @@ public class PhoneNumberMatcherTest extends TestCase {
       actual.add(match.number());
     }
     assertEquals(expected, actual);
+  }
+
+  public void testNonPlusPrefixedNumbersNotFoundForInvalidRegion() throws Exception {
+    // Does not start with a "+", we won't match it.
+    Iterable<PhoneNumberMatch> iterable = phoneUtil.findNumbers("1 456 764 156", RegionCode.ZZ);
+    Iterator<PhoneNumberMatch> iterator = iterable.iterator();
+
+    assertFalse(iterator.hasNext());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (NoSuchElementException e) { /* Success */ }
+    assertFalse(iterator.hasNext());
   }
 
   public void testEmptyIteration() throws Exception {
