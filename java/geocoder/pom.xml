@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>geocoder</artifactId>
-  <version>1.10-SNAPSHOT</version>
+  <version>1.9</version>
   <packaging>jar</packaging>
   <url>http://code.google.com/p/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>4.7-SNAPSHOT</version>
+    <version>4.7</version>
   </parent>
 
   <build>
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>4.7-SNAPSHOT</version>
+      <version>4.7</version>
     </dependency>
   </dependencies>
 
