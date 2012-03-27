@@ -18,9 +18,6 @@ package com.google.i18n.phonenumbers;
 
 import junit.framework.TestCase;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
  * Root class for PhoneNumberUtil tests that depend on the test metadata file.
  * <p>

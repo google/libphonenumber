@@ -23,8 +23,6 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
-import junit.framework.TestCase;
-
 import java.util.ArrayList;
 import java.util.List;
 

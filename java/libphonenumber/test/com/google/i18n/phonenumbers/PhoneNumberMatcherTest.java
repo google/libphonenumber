@@ -19,8 +19,6 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.Leniency;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
-import junit.framework.TestCase;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;

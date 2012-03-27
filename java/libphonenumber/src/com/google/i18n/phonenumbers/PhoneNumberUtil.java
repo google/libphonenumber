@@ -650,13 +650,13 @@ public class PhoneNumberUtil {
         // We assume that the first-group symbol will never be _before_ the national prefix.
         candidateNationalPrefixRule =
             candidateNationalPrefixRule.substring(0, candidateNationalPrefixRule.indexOf("$1"));
-        candidateNationalPrefixRule = util.normalizeDigitsOnly(candidateNationalPrefixRule);
+        candidateNationalPrefixRule = normalizeDigitsOnly(candidateNationalPrefixRule);
         if (candidateNationalPrefixRule.length() == 0) {
           // National Prefix not needed for this number.
           return true;
         }
         // Normalize the remainder.
-        String rawInputCopy = util.normalizeDigitsOnly(number.getRawInput());
+        String rawInputCopy = normalizeDigitsOnly(number.getRawInput());
         StringBuilder rawInput = new StringBuilder(rawInputCopy);
         // Check if we found a national prefix and/or carrier code at the start of the raw input,
         // and return the result.

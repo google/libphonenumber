@@ -16,8 +16,6 @@
 
 package com.google.i18n.phonenumbers;
 
-import junit.framework.TestCase;
-
 /**
  * Unit tests for AsYouTypeFormatter.java
  *

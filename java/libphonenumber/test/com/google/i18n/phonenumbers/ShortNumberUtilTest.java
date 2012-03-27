@@ -16,10 +16,6 @@
 
 package com.google.i18n.phonenumbers;
 
-import junit.framework.TestCase;
-
-import java.io.InputStream;
-
 /**
  * Unit tests for ShortNumberUtil.java
  *
