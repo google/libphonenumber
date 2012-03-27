@@ -970,6 +970,10 @@ function testFormatByPattern() {
                phoneUtil.formatByPattern(US_NUMBER,
                                          PNF.INTERNATIONAL,
                                          [newNumFormat]));
+  assertEquals('+1-650-253-0000',
+               phoneUtil.formatByPattern(US_NUMBER,
+                                         PNF.RFC3966,
+                                         [newNumFormat]));
 
   // $NP is set to '1' for the US. Here we check that for other NANPA countries
   // the US rules are followed.
@@ -1383,6 +1387,21 @@ function testIsValidForRegion() {
                                               RegionCode.UN001));
   assertFalse(phoneUtil.isValidNumberForRegion(INTERNATIONAL_TOLL_FREE,
                                                RegionCode.US));
+  assertFalse(phoneUtil.isValidNumberForRegion(INTERNATIONAL_TOLL_FREE,
+                                               RegionCode.ZZ));
+
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var invalidNumber = new i18n.phonenumbers.PhoneNumber();
+  // Invalid country calling codes.
+  invalidNumber.setCountryCode(3923);
+  invalidNumber.setNationalNumber(2366);
+  assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.ZZ));
+  assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber,
+                                               RegionCode.UN001));
+  invalidNumber.setCountryCode(0);
+  assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber,
+                                               RegionCode.UN001));
+  assertFalse(phoneUtil.isValidNumberForRegion(invalidNumber, RegionCode.ZZ));
 }
 
 function testIsNotValidNumber() {
@@ -1408,6 +1427,14 @@ function testIsNotValidNumber() {
   invalidNumber = new i18n.phonenumbers.PhoneNumber();
   invalidNumber.setCountryCode(64);
   invalidNumber.setNationalNumber(3316005);
+  assertFalse(phoneUtil.isValidNumber(invalidNumber));
+
+  invalidNumber = new i18n.phonenumbers.PhoneNumber();
+  // Invalid country calling codes.
+  invalidNumber.setCountryCode(3923);
+  invalidNumber.setNationalNumber(2366);
+  assertFalse(phoneUtil.isValidNumber(invalidNumber));
+  invalidNumber.setCountryCode(0);
   assertFalse(phoneUtil.isValidNumber(invalidNumber));
 
   assertFalse(phoneUtil.isValidNumber(INTERNATIONAL_TOLL_FREE_TOO_LONG));
@@ -2015,6 +2042,11 @@ function testParseNationalNumber() {
   usNumber.setCountryCode(1);
   usNumber.setNationalNumber(1234567890);
   assertTrue(usNumber.equals(phoneUtil.parse('123-456-7890', RegionCode.US)));
+
+  // Test star numbers. Although this is not strictly valid, we would like to
+  // make sure we can parse the output we produce when formatting the number.
+  assertTrue(
+      JP_STAR_NUMBER.equals(phoneUtil.parse("+81 *2345", RegionCode.JP)));
 }
 
 function testParseNumberWithAlphaCharacters() {
@@ -2041,6 +2073,42 @@ function testParseNumberWithAlphaCharacters() {
       phoneUtil.parse('0900 332 600A5', RegionCode.NZ)));
   assertTrue(premiumNumber.equals(
       phoneUtil.parse('0900 a332 600A5', RegionCode.NZ)));
+}
+
+function testParseMaliciousInput() {
+  // Lots of leading + signs before the possible number.
+  /** @type {!goog.string.StringBuffer} */
+  var maliciousNumber = new goog.string.StringBuffer();
+  for (var i = 0; i < 6000; i++) {
+    maliciousNumber.append('+');
+  }
+  maliciousNumber.append('12222-33-244 extensioB 343+');
+  try {
+    phoneUtil.parse(maliciousNumber.toString(), RegionCode.US);
+    fail('This should not parse without throwing an exception ' +
+         maliciousNumber.toString());
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 'The string supplied was too long to parse',
+                 e);
+  }
+  /** @type {!goog.string.StringBuffer} */
+  var maliciousNumberWithAlmostExt = new goog.string.StringBuffer();
+  for (i = 0; i < 350; i++) {
+    maliciousNumberWithAlmostExt.append('200');
+  }
+  maliciousNumberWithAlmostExt.append(' extensiOB 345');
+  try {
+    phoneUtil.parse(maliciousNumberWithAlmostExt.toString(), RegionCode.US);
+    fail('This should not parse without throwing an exception ' +
+         maliciousNumberWithAlmostExt.toString());
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 'The string supplied was too long to parse',
+                 e);
+  }
 }
 
 function testParseWithInternationalPrefixes() {
@@ -2226,6 +2294,29 @@ function testFailedParseOnInvalidNumbers() {
     phoneUtil.parse(plusMinusPhoneNumber, RegionCode.DE);
     fail('This should not parse without throwing an exception ' +
          plusMinusPhoneNumber);
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
+    /** @type {string} */
+    var plusStar = '+***';
+    phoneUtil.parse(plusStar, RegionCode.DE);
+    fail('This should not parse without throwing an exception ' + plusStar);
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
+    /** @type {string} */
+    var plusStarPhoneNumber = '+*******91';
+    phoneUtil.parse(plusStarPhoneNumber, RegionCode.DE);
+    fail('This should not parse without throwing an exception ' +
+         plusStarPhoneNumber);
   } catch (e) {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
