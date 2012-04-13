@@ -1286,7 +1286,7 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
     }
   }
   const PhoneMetadata* metadata = GetMetadataForRegion(calling_from);
-  if (number.country_code() == kNanpaCountryCode) {
+  if (country_code == kNanpaCountryCode) {
     if (IsNANPACountry(calling_from)) {
       StrAppend(formatted_number, country_code, " ", raw_input_copy);
       return;

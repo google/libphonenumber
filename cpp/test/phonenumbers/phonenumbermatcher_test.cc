@@ -1010,7 +1010,17 @@ TEST_F(PhoneNumberMatcherTest, MaxMatchesMixed) {
   EXPECT_EQ(expected, actual);
 }
 
-TEST_F(PhoneNumberMatcherTest, TestEmptyIteration) {
+TEST_F(PhoneNumberMatcherTest, NonPlusPrefixedNumbersNotFoundForInvalidRegion) {
+  PhoneNumberMatch match;
+  scoped_ptr<PhoneNumberMatcher> matcher(
+      GetMatcherWithLeniency("1 456 764 156", RegionCode::GetUnknown(),
+                             PhoneNumberMatcher::VALID));
+  EXPECT_FALSE(matcher->HasNext());
+  EXPECT_FALSE(matcher->Next(&match));
+  EXPECT_FALSE(matcher->HasNext());
+}
+
+TEST_F(PhoneNumberMatcherTest, EmptyIteration) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("", RegionCode::GetUnknown(),
@@ -1021,7 +1031,7 @@ TEST_F(PhoneNumberMatcherTest, TestEmptyIteration) {
   EXPECT_FALSE(matcher->HasNext());
 }
 
-TEST_F(PhoneNumberMatcherTest, TestSingleIteration) {
+TEST_F(PhoneNumberMatcherTest, SingleIteration) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("+14156667777", RegionCode::GetUnknown(),
@@ -1036,7 +1046,7 @@ TEST_F(PhoneNumberMatcherTest, TestSingleIteration) {
   EXPECT_FALSE(matcher->Next(&match));
 }
 
-TEST_F(PhoneNumberMatcherTest, TestSingleIteration_WithNextOnly) {
+TEST_F(PhoneNumberMatcherTest, SingleIteration_WithNextOnly) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("+14156667777", RegionCode::GetUnknown(),
@@ -1045,7 +1055,7 @@ TEST_F(PhoneNumberMatcherTest, TestSingleIteration_WithNextOnly) {
   EXPECT_FALSE(matcher->Next(&match));
 }
 
-TEST_F(PhoneNumberMatcherTest, TestDoubleIteration) {
+TEST_F(PhoneNumberMatcherTest, DoubleIteration) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("+14156667777 foobar +14156667777 ",
@@ -1065,7 +1075,7 @@ TEST_F(PhoneNumberMatcherTest, TestDoubleIteration) {
   EXPECT_FALSE(matcher->HasNext());
 }
 
-TEST_F(PhoneNumberMatcherTest, TestDoubleIteration_WithNextOnly) {
+TEST_F(PhoneNumberMatcherTest, DoubleIteration_WithNextOnly) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("+14156667777 foobar +14156667777 ",
