@@ -545,8 +545,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
   static boolean checkNumberGroupingIsValid(
       PhoneNumber number, String candidate, PhoneNumberUtil util, NumberGroupingChecker checker) {
-    // TODO(lararennie,shaopengjia): Evaluate how this works for other locales (testing has been
-    // limited to NANPA regions) and optimise if necessary.
+    // TODO: Evaluate how this works for other locales (testing has been limited to NANPA regions)
+    // and optimise if necessary.
     StringBuilder normalizedCandidate =
         PhoneNumberUtil.normalizeDigits(candidate, true /* keep non-digits */);
     String[] formattedNumberGroups = getNationalNumberGroups(util, number, null);
