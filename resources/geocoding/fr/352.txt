@@ -12,33 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Translated from fr/352.txt using Freebase and Wikipedia.
+# Generated from:
+# Internal statistical data (2012-04-04).
 
-35222|Luxemburg
-35223|Bad Mondorf
-35224|Luxemburg
-35225|Luxemburg
-35226|Luxemburg
-35227|Luxemburg
-35229|Luxemburg
-35230|Kanton Capellen
+35222|Luxembourg
+35223|Mondorf-les-Bains
+35224|Luxembourg
+35225|Luxembourg
+35226|Luxembourg
+35227|Luxembourg
+35229|Luxembourg
+35230|Capellen
 35231|Bertrange
-35232|Kanton Mersch
-35233|Walferdingen
+35232|Mersch
+35233|Walferdange
 35234|Senningerberg
 35235|Sandweiler
-35236|Hesperingen
+35236|Hespérange
 35237|Leudelange
 35239|Steinfort
-35240|Luxemburg
-35242|Luxemburg
-35243|Luxemburg
-35244|Luxemburg
-35245|Luxemburg
-35246|Luxemburg
-35247|Luxemburg
-35248|Luxemburg
-35249|Luxemburg
+35240|Luxembourg
+35242|Luxembourg
+35243|Luxembourg
+35244|Luxembourg
+35245|Luxembourg
+35246|Luxembourg
+35247|Luxembourg
+35248|Luxembourg
+35249|Luxembourg
 35250|Bascharage
 35251|Dudelange
 35252|Dudelange
@@ -52,15 +53,15 @@
 35271|Betzdorf
 35272|Echternach
 35274|Wasserbillig
-35275|Distrikt Grevenmacher
+35275|Grevenmacher
 35276|Wormeldange
 35278|Junglinster
 35279|Berdorf
-35280|Kanton Diekirch
-35281|Ettelbrück
-35283|Kanton Vianden
+35280|Diekirch
+35281|Ettelbruck
+35283|Vianden
 35287|Larochette
-35292|Kanton Clerf
-35295|Kanton Wiltz
+35292|Clervaux
+35295|Wiltz
 35297|Weiswampach
 35299|Troisvierges

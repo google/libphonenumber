@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from:
+# Originally generated from:
 # http://en.wikipedia.org/wiki/+374 [440755811]
 # http://www.spyur.am/en/armenia (2011-07-28)
 # http://www.phonebookoftheworld.com/phonebookofarmenia.htm (2011-07-28)
@@ -113,7 +113,7 @@
 37432297|Dzoraget
 37432298|Lermontovo
 37432299|Vahagni
-37447|Aygestan/Berdzor
+37447|Nagorno-Karabakh
 374471|Stepanakert
 374474|Martakert
 374475|Hadrut
@@ -121,3 +121,4 @@
 374477|Shushi
 37447732|Berdzor/Kashatagh
 374478|Martuni
+374479|Stepanakert

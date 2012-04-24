@@ -17,6 +17,11 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.Leniency;
+import com.google.i18n.phonenumbers.PhoneNumberUtil.MatchType;
+import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.lang.Character.UnicodeBlock;
@@ -212,32 +217,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     this.preferredRegion = country;
     this.leniency = leniency;
     this.maxTries = maxTries;
-  }
-
-  public boolean hasNext() {
-    if (state == State.NOT_READY) {
-      lastMatch = find(searchIndex);
-      if (lastMatch == null) {
-        state = State.DONE;
-      } else {
-        searchIndex = lastMatch.end();
-        state = State.READY;
-      }
-    }
-    return state == State.READY;
-  }
-
-  public PhoneNumberMatch next() {
-    // Check the state and find the next match as a side-effect if necessary.
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-
-    // Don't retain that memory any longer than necessary.
-    PhoneNumberMatch result = lastMatch;
-    lastMatch = null;
-    state = State.NOT_READY;
-    return result;
   }
 
   /**
@@ -450,6 +429,236 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       // ignore and continue
     }
     return null;
+  }
+
+  /**
+   * Small helper interface such that the number groups can be checked according to different
+   * criteria.
+   */
+  interface NumberGroupingChecker {
+    /**
+     * Returns true if the groups of digits found in our candidate phone number match our
+     * expectations.
+     *
+     * @param number  the original number we found when parsing
+     * @param normalizedCandidate  the candidate number, normalized to only contain ASCII digits,
+     *     but with non-digits (spaces etc) retained
+     * @param expectedNumberGroups  the groups of digits that we would expect to see if we
+     *     formatted this number
+     */
+    boolean checkGroups(PhoneNumberUtil util, PhoneNumber number,
+                        StringBuilder normalizedCandidate, String[] expectedNumberGroups);
+  }
+
+  static boolean allNumberGroupsRemainGrouped(PhoneNumberUtil util,
+                                              PhoneNumber number,
+                                              StringBuilder normalizedCandidate,
+                                              String[] formattedNumberGroups) {
+    int fromIndex = 0;
+    // Check each group of consecutive digits are not broken into separate groupings in the
+    // {@code normalizedCandidate} string.
+    for (int i = 0; i < formattedNumberGroups.length; i++) {
+      // Fails if the substring of {@code normalizedCandidate} starting from {@code fromIndex}
+      // doesn't contain the consecutive digits in formattedNumberGroups[i].
+      fromIndex = normalizedCandidate.indexOf(formattedNumberGroups[i], fromIndex);
+      if (fromIndex < 0) {
+        return false;
+      }
+      // Moves {@code fromIndex} forward.
+      fromIndex += formattedNumberGroups[i].length();
+      if (i == 0 && fromIndex < normalizedCandidate.length()) {
+        // We are at the position right after the NDC.
+        if (Character.isDigit(normalizedCandidate.charAt(fromIndex))) {
+          // This means there is no formatting symbol after the NDC. In this case, we only
+          // accept the number if there is no formatting symbol at all in the number, except
+          // for extensions.
+          String nationalSignificantNumber = util.getNationalSignificantNumber(number);
+          return normalizedCandidate.substring(fromIndex - formattedNumberGroups[i].length())
+              .startsWith(nationalSignificantNumber);
+        }
+      }
+    }
+    // The check here makes sure that we haven't mistakenly already used the extension to
+    // match the last group of the subscriber number. Note the extension cannot have
+    // formatting in-between digits.
+    return normalizedCandidate.substring(fromIndex).contains(number.getExtension());
+  }
+
+  static boolean allNumberGroupsAreExactlyPresent(PhoneNumberUtil util,
+                                                  PhoneNumber number,
+                                                  StringBuilder normalizedCandidate,
+                                                  String[] formattedNumberGroups) {
+    String[] candidateGroups =
+        PhoneNumberUtil.NON_DIGITS_PATTERN.split(normalizedCandidate.toString());
+    // Set this to the last group, skipping it if the number has an extension.
+    int candidateNumberGroupIndex =
+        number.hasExtension() ? candidateGroups.length - 2 : candidateGroups.length - 1;
+    // First we check if the national significant number is formatted as a block.
+    // We use contains and not equals, since the national significant number may be present with
+    // a prefix such as a national number prefix, or the country code itself.
+    if (candidateGroups.length == 1 ||
+        candidateGroups[candidateNumberGroupIndex].contains(
+            util.getNationalSignificantNumber(number))) {
+      return true;
+    }
+    // Starting from the end, go through in reverse, excluding the first group, and check the
+    // candidate and number groups are the same.
+    for (int formattedNumberGroupIndex = (formattedNumberGroups.length - 1);
+         formattedNumberGroupIndex > 0 && candidateNumberGroupIndex >= 0;
+         formattedNumberGroupIndex--, candidateNumberGroupIndex--) {
+      if (!candidateGroups[candidateNumberGroupIndex].equals(
+          formattedNumberGroups[formattedNumberGroupIndex])) {
+        return false;
+      }
+    }
+    // Now check the first group. There may be a national prefix at the start, so we only check
+    // that the candidate group ends with the formatted number group.
+    return (candidateNumberGroupIndex >= 0 &&
+            candidateGroups[candidateNumberGroupIndex].endsWith(formattedNumberGroups[0]));
+  }
+
+  /**
+   * Helper method to get the national-number part of a number, formatted without any national
+   * prefix, and return it as a set of digit blocks that would be formatted together.
+   */
+  private static String[] getNationalNumberGroups(PhoneNumberUtil util, PhoneNumber number,
+                                                  NumberFormat formattingPattern) {
+    if (formattingPattern == null) {
+      // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
+      String rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
+      // We remove the extension part from the formatted string before splitting it into different
+      // groups.
+      int endIndex = rfc3966Format.indexOf(';');
+      if (endIndex < 0) {
+        endIndex = rfc3966Format.length();
+      }
+      // The country-code will have a '-' following it.
+      int startIndex = rfc3966Format.indexOf('-') + 1;
+      return rfc3966Format.substring(startIndex, endIndex).split("-");
+    } else {
+      // We format the NSN only, and split that according to the separator.
+      String nationalSignificantNumber = util.getNationalSignificantNumber(number);
+      return util.formatNsnUsingPattern(nationalSignificantNumber,
+                                        formattingPattern, PhoneNumberFormat.RFC3966).split("-");
+    }
+  }
+
+  static boolean checkNumberGroupingIsValid(
+      PhoneNumber number, String candidate, PhoneNumberUtil util, NumberGroupingChecker checker) {
+    // TODO(lararennie,shaopengjia): Evaluate how this works for other locales (testing has been
+    // limited to NANPA regions) and optimise if necessary.
+    StringBuilder normalizedCandidate =
+        PhoneNumberUtil.normalizeDigits(candidate, true /* keep non-digits */);
+    String[] formattedNumberGroups = getNationalNumberGroups(util, number, null);
+    if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
+      return true;
+    }
+    return false;
+  }
+
+  static boolean containsMoreThanOneSlash(String candidate) {
+    int firstSlashIndex = candidate.indexOf('/');
+    return (firstSlashIndex > 0 && candidate.substring(firstSlashIndex + 1).contains("/"));
+  }
+
+  static boolean containsOnlyValidXChars(
+      PhoneNumber number, String candidate, PhoneNumberUtil util) {
+    // The characters 'x' and 'X' can be (1) a carrier code, in which case they always precede the
+    // national significant number or (2) an extension sign, in which case they always precede the
+    // extension number. We assume a carrier code is more than 1 digit, so the first case has to
+    // have more than 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1 'x'
+    // or 'X'. We ignore the character if it appears as the last character of the string.
+    for (int index = 0; index < candidate.length() - 1; index++) {
+      char charAtIndex = candidate.charAt(index);
+      if (charAtIndex == 'x' || charAtIndex == 'X') {
+        char charAtNextIndex = candidate.charAt(index + 1);
+        if (charAtNextIndex == 'x' || charAtNextIndex == 'X') {
+          // This is the carrier code case, in which the 'X's always precede the national
+          // significant number.
+          index++;
+          if (util.isNumberMatch(number, candidate.substring(index)) != MatchType.NSN_MATCH) {
+            return false;
+          }
+        // This is the extension sign case, in which the 'x' or 'X' should always precede the
+        // extension number.
+        } else if (!PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(index)).equals(
+            number.getExtension())) {
+            return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  static boolean isNationalPrefixPresentIfRequired(PhoneNumber number, PhoneNumberUtil util) {
+    // First, check how we deduced the country code. If it was written in international format, then
+    // the national prefix is not required.
+    if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
+      return true;
+    }
+    String phoneNumberRegion =
+        util.getRegionCodeForCountryCode(number.getCountryCode());
+    PhoneMetadata metadata = util.getMetadataForRegion(phoneNumberRegion);
+    if (metadata == null) {
+      return true;
+    }
+    // Check if a national prefix should be present when formatting this number.
+    String nationalNumber = util.getNationalSignificantNumber(number);
+    NumberFormat formatRule =
+        util.chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+    // To do this, we check that a national prefix formatting rule was present and that it wasn't
+    // just the first-group symbol ($1) with punctuation.
+    if ((formatRule != null) && formatRule.getNationalPrefixFormattingRule().length() > 0) {
+      if (formatRule.isNationalPrefixOptionalWhenFormatting()) {
+        // The national-prefix is optional in these cases, so we don't need to check if it was
+        // present.
+        return true;
+      }
+      // Remove the first-group symbol.
+      String candidateNationalPrefixRule = formatRule.getNationalPrefixFormattingRule();
+      // We assume that the first-group symbol will never be _before_ the national prefix.
+      candidateNationalPrefixRule =
+          candidateNationalPrefixRule.substring(0, candidateNationalPrefixRule.indexOf("$1"));
+      candidateNationalPrefixRule =
+          PhoneNumberUtil.normalizeDigitsOnly(candidateNationalPrefixRule);
+      if (candidateNationalPrefixRule.length() == 0) {
+        // National Prefix not needed for this number.
+        return true;
+      }
+      // Normalize the remainder.
+      String rawInputCopy = PhoneNumberUtil.normalizeDigitsOnly(number.getRawInput());
+      StringBuilder rawInput = new StringBuilder(rawInputCopy);
+      // Check if we found a national prefix and/or carrier code at the start of the raw input, and
+      // return the result.
+      return util.maybeStripNationalPrefixAndCarrierCode(rawInput, metadata, null);
+    }
+    return true;
+  }
+
+  public boolean hasNext() {
+    if (state == State.NOT_READY) {
+      lastMatch = find(searchIndex);
+      if (lastMatch == null) {
+        state = State.DONE;
+      } else {
+        searchIndex = lastMatch.end();
+        state = State.READY;
+      }
+    }
+    return state == State.READY;
+  }
+
+  public PhoneNumberMatch next() {
+    // Check the state and find the next match as a side-effect if necessary.
+    if (!hasNext()) {
+      throw new NoSuchElementException();
+    }
+
+    // Don't retain that memory any longer than necessary.
+    PhoneNumberMatch result = lastMatch;
+    lastMatch = null;
+    state = State.NOT_READY;
+    return result;
   }
 
   /**

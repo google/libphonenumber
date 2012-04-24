@@ -51,15 +51,16 @@
 542286|General Lamadrid, Buenos Aires
 542291|Miramar, Buenos Aires
 542292|Buenos Aires
-542293|Tandil
+542293|Tandil, Buenos Aires
 542296|Ayacucho, Buenos Aires
 542297|Buenos Aires
+54230|Pilar, Buenos Aires
 542302|General Pico, La Pampa
 542314|Bolívar, Buenos Aires
 542316|Daireaux, Buenos Aires
 542317|9 de Julio, Buenos Aires
 542320|José C. Paz
-542322|Pilar
+542322|Pilar, Buenos Aires
 542323|Luján
 542324|Mercedes
 542325|San Andrés de Giles/Azcuénaga
@@ -80,7 +81,7 @@
 542355|Lincoln, Buenos Aires
 542356|General Pinto, Buenos Aires
 542358|Buenos Aires
-542362|Junín, Buenos Aires
+54236|Junín, Buenos Aires
 54237|Moreno
 542392|Buenos Aires/Trenque Lauquen
 542394|Salliqueló, Buenos Aires
@@ -91,6 +92,7 @@
 542475|Rojas, Buenos Aires
 542477|Pergamino
 542478|Arrecifes, Buenos Aires
+54249|Tandil, Buenos Aires
 54260|San Rafael
 54261|Mendoza, Capital
 542622|Tunuyán, Mendoza
@@ -139,6 +141,7 @@
 54299|Neuquén, Confluencia
 543327|López Camelo, Buenos Aires
 543329|Buenos Aires
+54336|San Nicolás, Buenos Aires
 543382|Rufino, Santa Fe
 543385|Laboulaye, Córdoba
 543388|General Villegas, Buenos Aires
@@ -170,10 +173,10 @@
 543471|Cañada de Gómez, Santa Fe
 543472|Marcos Juárez
 543476|San Lorenzo, Santa Fe
+54348|Escobar, Buenos Aires
 543482|Reconquista, Santa Fe
 543483|Rosario
 543487|Zárate
-543488|Belén de Escobar, Escobar
 543489|Campana
 543491|Ceres, Santa Fe
 543492|Rafaela, Santa Fe
@@ -201,6 +204,7 @@
 54358|Río Cuarto
 54362|Resistencia, San Fernando
 54364|Presidencia Roque Sáenz Pena, Chaco
+54370|Formosa
 543717|Formosa
 543718|Clorinda, Formosa
 543722|Resistencia, San Fernando
@@ -224,9 +228,11 @@
 543777|Goya, Corrientes
 543783|Corrientes, Capital
 54379|Corrientes, Capital
+54380|La Rioja
 54381|San Miguel de Tucumán, Capital
-543822|La Rioja, Capital
+543822|La Rioja
 543825|Chilecito, La Rioja
+54383|Catamarca
 543833|San Fernando del Valle de Catamarca, Catamarca
 543835|Andalgalá, Catamarca
 543844|Añatuya, Santiago del Estero

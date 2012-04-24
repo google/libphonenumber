@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from:
-# Internal statistical data (2011-08-08) and translated with Freebase.
+# Translated from fr/352.txt using Freebase and Wikipedia.
 
 35222|Luxembourg
 35223|Mondorf-les-Bains
@@ -31,7 +30,15 @@
 35236|Hesperange
 35237|Leudelange
 35239|Steinfort
-3524|Luxembourg
+35240|Luxembourg
+35242|Luxembourg
+35243|Luxembourg
+35244|Luxembourg
+35245|Luxembourg
+35246|Luxembourg
+35247|Luxembourg
+35248|Luxembourg
+35249|Luxembourg
 35250|Bascharage
 35251|Dudelange
 35252|Dudelange
@@ -55,5 +62,5 @@
 35287|Larochette
 35292|Clervaux
 35295|Wiltz
-35297|Huldange
+35297|Weiswampach
 35299|Troisvierges

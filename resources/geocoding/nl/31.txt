@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2011-06-01)
+# Internal statistical data (2012-03-29).
 
 3110|Rotterdam
 31111|Zierikzee
@@ -24,9 +24,11 @@
 3113|Tilburg
 3115|Delft
 31161|Rijen
+31162|Oosterhout
 31164|Bergen op Zoom
 31165|Roosendaal
 31166|Tholen
+31167|Steenbergen
 31168|Zevenbergen
 31172|Alphen aan den Rijn
 31180|Barendrecht
@@ -41,6 +43,7 @@
 31224|Schagen
 31227|Medemblik
 31228|Enkhuizen
+31229|Hoorn
 3123|Haarlem
 3124|Nijmegen
 31251|Beverwijk
@@ -65,6 +68,7 @@
 31344|Tiel
 31345|Culemborg
 31346|Maarssen
+31347|Vianen
 31348|Woerden
 3135|Hilversum
 3136|Almere
@@ -80,6 +84,8 @@
 3146|Sittard
 31475|Roermond
 31478|Venray
+31481|Elst
+31486|Schaijk
 31487|Druten
 31492|Helmond
 31493|Deurne
@@ -131,6 +137,7 @@
 3171|Leiden
 3172|Alkmaar
 3173|'s-Hertogenbosch
+3174|Hengelo
 3175|Zaandam
 3176|Breda
 3177|Venlo

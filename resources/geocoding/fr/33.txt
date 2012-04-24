@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2011-06-02)
+# Internal statistical data (2012-03-29) merged with the older data.
 
 3310000|Paris
 3313004|Ecquevilly
@@ -22,6 +22,7 @@
 3313007|Plaisir
 3313008|Marly-le-Roi
 3313009|Chatou
+3313010|Cormeilles-en-Parisis
 3313011|Gonesse
 3313013|Trappes
 3313015|Montesson
@@ -29,7 +30,7 @@
 3313017|Cergy
 3313018|Goussainville
 3313021|Versailles
-3313022|Meulan
+3313022|Les Mureaux
 3313023|Bois-d'Arcy
 3313024|Viroflay
 3313025|Argenteuil
@@ -56,7 +57,7 @@
 3313047|Saint-Rémy-lès-Chevreuse
 3313048|Montigny-le-Bretonneux
 3313049|Coignières
-3313050|Trappes
+3313050|Maurepas
 3313051|Trappes
 3313052|Chevreuse
 3313053|Chatou
@@ -86,7 +87,7 @@
 3313079|Plaisir
 3313080|Saint-Nom-la-Bretèche
 3313081|Plaisir
-3313082|Bougival
+3313082|La Celle Saint Cloud
 3313083|Versailles
 3313084|Versailles
 3313085|Saint-Cyr-l'École
@@ -101,12 +102,13 @@
 3313096|Montigny-le-Bretonneux
 3313097|Versailles
 3313098|Mantes-la-Jolie
-3313099|Meulan
+3313099|Les Mureaux
 3313402|Saint-Ouen-l'Aumône
 3313404|Sarcelles
 3313405|Enghien-les-Bains
 3313406|Eaubonne
 3313407|Gonesse
+3313408|L'Isle Adam
 3313409|Viarmes
 3313410|Argenteuil
 3313411|Argenteuil
@@ -118,7 +120,7 @@
 3313417|Saint-Gratien
 3313418|Taverny
 3313419|Sarcelles
-3313420|Cergy
+3313420|Pontoise
 3313421|Saint-Ouen-l'Aumône
 3313422|Cergy
 3313423|Argenteuil
@@ -128,12 +130,12 @@
 3313428|Deuil-la-Barre
 3313429|Roissy-en-France
 3313430|Saint-Ouen-l'Aumône
-3313431|Saint-Witz
+3313431|Fosses
 3313432|Cergy
 3313433|Cergy
 3313434|Argenteuil
 3313435|Cergy
-3313437|Ermont
+3313437|Franconville
 3313438|Sarcelles
 3313439|Domont
 3313440|Saint-Ouen-l'Aumône
@@ -143,7 +145,7 @@
 3313444|Franconville
 3313445|Garges-lès-Gonesse
 3313446|Cergy
-3313448|Saint-Ouen-l'Aumône
+3313448|Auvers-sur-Oise
 3313450|Herblay
 3313451|Saint-Germain-en-Laye
 3313452|Montigny-le-Bretonneux
@@ -151,18 +153,19 @@
 3313457|Rambouillet
 3313458|Vélizy-Villacoublay
 3313459|Plaisir
-3313460|Bois-d'Arcy
+3313460|Fontenay-le-Fleury
 3313461|Coignières
 3313462|Noisy-le-Roi
 3313464|Saint-Ouen-l'Aumône
 3313465|Vélizy-Villacoublay
 3313467|Magny-en-Vexin
 3313468|Louvres
+3313469|L'Isle Adam
 3313470|Beaumont-sur-Oise
 3313471|Luzarches
-3313472|Louvres
+3313472|Fosses
 3313473|Parmain
-3313474|Meulan
+3313474|Les Mureaux
 3313475|Ecquevilly
 3313477|Mantes-la-Jolie
 3313479|Porcheville
@@ -170,11 +173,12 @@
 3313481|Plaisir
 3313482|Trappes
 3313483|Rambouillet
+3313484|Le Perray en Yvelines
 3313485|Rambouillet
 3313486|Montfort-l'Amaury
 3313489|Beynes
 3313490|Conflans-Sainte-Honorine
-3313492|Meulan
+3313492|Les Mureaux
 3313493|Maisons-Laffitte
 3313494|Rambouillet
 3313497|Mantes-la-Jolie
@@ -192,7 +196,7 @@
 3313915|Sartrouville
 3313916|Marly-le-Roi
 3313917|Marly-le-Roi
-3313918|Bougival
+3313918|La Celle Saint Cloud
 3313919|Conflans-Sainte-Honorine
 3313920|Versailles
 3313921|Saint-Germain-en-Laye
@@ -210,7 +214,7 @@
 3313935|Domont
 3313937|Chambly
 3313942|Saint-Cyr-l'École
-3313943|Versailles
+3313943|Le Chesnay
 3313944|Montigny-le-Bretonneux
 3313945|Vélizy-Villacoublay
 3313946|Vélizy-Villacoublay
@@ -220,8 +224,8 @@
 3313951|Versailles
 3313952|Chatou
 3313953|Versailles
-3313954|Versailles
-3313955|Versailles
+3313954|Le Chesnay
+3313955|Le Chesnay
 3313956|Buc
 3313957|Sartrouville
 3313958|Marly-le-Roi
@@ -229,18 +233,19 @@
 3313960|Taverny
 3313961|Argenteuil
 3313962|Maisons-Laffitte
+3313963|Le Chesnay
 3313964|Enghien-les-Bains
 3313965|Poissy
 3313967|Versailles
 3313968|Houilles
-3313969|Bougival
+3313969|La Celle Saint Cloud
 3313970|Triel-sur-Seine
 3313971|Verneuil-sur-Seine
 3313972|Conflans-Sainte-Honorine
 3313973|Saint-Germain-en-Laye
 3313974|Andrésy
 3313975|Orgeval
-3313976|Croissy-sur-Seine
+3313976|Le Vésinet
 3313978|Cormeilles-en-Parisis
 3313979|Poissy
 3313980|Argenteuil
@@ -384,20 +389,21 @@
 3314154|Neuilly-sur-Marne
 3314155|Bondy
 3314157|Aubervilliers
+3314158|Montreuil Sous Bois
 3314160|Drancy
 3314161|Aubervilliers
-3314170|Livry-Gargan
+3314170|Montfermeil
 3314171|Pantin
-3314173|Thiais
+3314173|Rungis Complexe
 3314174|Vincennes
 3314177|Champigny-sur-Marne
 3314178|Créteil
 3314179|Maisons-Alfort
-3314180|Thiais
+3314180|Rungis Complexe
 3314181|Saint-Maur-des-Fossés
 3314183|Pantin
 3314186|Boulogne-Billancourt
-3314187|Sceaux
+3314187|Bourg-la-Reine
 3314188|Courbevoie
 3314190|Issy-les-Moulineaux
 3314191|Nanterre
@@ -485,7 +491,7 @@
 3314284|Paris
 3314285|Paris
 3314286|Paris
-3314287|Montreuil
+3314287|Montreuil Sous Bois
 3314288|Paris
 3314289|Paris
 3314292|Paris
@@ -495,7 +501,7 @@
 3314297|Paris
 3314299|Paris
 3314300|Neuilly-Plaisance
-3314301|Livry-Gargan
+3314301|Gagny
 3314302|Gagny
 3314303|Noisy-le-Grand
 3314304|Noisy-le-Grand
@@ -505,6 +511,7 @@
 3314308|Neuilly-sur-Marne
 3314309|Neuilly-sur-Marne
 3314310|Sevran
+3314311|La Courneuve
 3314312|Paris
 3314313|Paris
 3314314|Paris
@@ -513,7 +520,7 @@
 3314320|Paris
 3314321|Paris
 3314322|Paris
-3314324|Nogent-sur-Marne
+3314324|Le Perreux sur Marne
 3314325|Paris
 3314326|Paris
 3314327|Paris
@@ -560,7 +567,7 @@
 3314378|Maisons-Alfort
 3314379|Paris
 3314380|Paris
-3314381|Gagny
+3314381|Le Raincy
 3314382|Villeneuve-Saint-Georges
 3314383|Sevran
 3314384|Sevran
@@ -644,18 +651,18 @@
 3314504|Paris
 3314505|Paris
 3314506|Suresnes
-3314507|Sèvres
+3314507|Meudon
 3314508|Paris
 3314509|Montfermeil
 3314510|Boissy-Saint-Léger
 3314511|Saint-Maur-des-Fossés
-3314512|Thiais
+3314512|Rungis Complexe
 3314513|Bonneuil-sur-Marne
 3314514|Fontenay-sous-Bois
 3314515|Ivry-sur-Seine
 3314516|Champigny-sur-Marne
 3314517|Créteil
-3314518|Alfortville
+3314518|Maisons-Alfort
 3314519|Levallois-Perret
 3314520|Paris
 3314521|Ivry-sur-Seine
@@ -665,7 +672,7 @@
 3314525|Paris
 3314526|Paris
 3314527|Paris
-3314528|Rosny-sous-Bois
+3314528|Rosny-Sous-Bois
 3314529|Issy-les-Moulineaux
 3314530|Paris
 3314531|Paris
@@ -695,7 +702,7 @@
 3314556|Paris
 3314557|Paris
 3314558|Paris
-3314560|Thiais
+3314560|Rungis Complexe
 3314561|Paris
 3314562|Paris
 3314563|Paris
@@ -715,11 +722,11 @@
 3314579|Paris
 331458|Paris
 3314590|Sucy-en-Brie
-3314591|Aulnay-sous-Bois
+3314591|Le Blanc Mesnil
 3314592|Noisy-le-Grand
 3314593|Chennevières-sur-Marne
 3314594|Chennevières-sur-Marne
-3314595|Boissy-Saint-Léger
+3314595|Villecresnes
 3314596|Paris
 3314597|Villeneuve-le-Roi
 3314598|Mandres-les-Roses
@@ -774,7 +781,7 @@
 3314658|Ivry-sur-Seine
 3314659|Paris
 3314660|Sceaux
-3314661|Bourg-la-Reine
+3314661|Sceaux
 3314662|Issy-les-Moulineaux
 3314663|Cachan
 3314664|Bagneux
@@ -788,7 +795,7 @@
 3314672|Ivry-sur-Seine
 3314673|Montrouge
 3314674|Antony
-3314675|Chevilly-Larue
+3314675|Rungis Complexe
 3314677|Villejuif
 3314678|Villejuif
 3314680|Vitry-sur-Seine
@@ -797,10 +804,10 @@
 3314683|Sceaux
 3314684|Boulogne-Billancourt
 3314685|Gennevilliers
-3314686|Thiais
-3314687|Thiais
+3314686|Rungis Complexe
+3314687|Rungis Complexe
 3314688|Asnières-sur-Seine
-3314689|Saint-Cloud
+3314689|Antony
 3314691|Courbevoie
 3314692|Puteaux
 3314694|Boulogne-Billancourt
@@ -912,11 +919,11 @@
 3314809|Saint-Denis
 3314810|Pantin
 3314811|Aubervilliers
-3314812|Rosny-sous-Bois
+3314812|Rosny-Sous-Bois
 3314813|Saint-Denis
 3314815|Noisy-le-Grand
 3314817|Villepinte
-3314818|Montreuil
+3314818|Montreuil Sous Bois
 3314819|Aulnay-sous-Bois
 3314820|Saint-Denis
 3314821|Stains
@@ -933,9 +940,10 @@
 3314832|Drancy
 3314833|Aubervilliers
 3314834|Aubervilliers
-3314836|Drancy
-3314837|Dugny
-3314838|Drancy
+3314835|La Courneuve
+3314836|La Courneuve
+3314837|Le Bourget
+3314838|La Courneuve
 3314839|Aubervilliers
 3314840|Pantin
 3314841|Épinay-sur-Seine
@@ -948,27 +956,27 @@
 3314848|Bondy
 3314849|Bondy
 3314850|Bondy
-3314851|Montreuil
+3314851|Montreuil Sous Bois
 3314852|Choisy-le-Roi
 3314853|Choisy-le-Roi
-3314854|Villemomble
-3314855|Rosny-sous-Bois
+3314854|Rosny-Sous-Bois
+3314855|Villemomble
 3314856|Paris
-3314857|Montreuil
-3314858|Montreuil
-3314859|Montreuil
+3314857|Montreuil Sous Bois
+3314858|Montreuil Sous Bois
+3314859|Montreuil Sous Bois
 3314860|Tremblay-en-France
 3314861|Tremblay-en-France
 3314862|Roissy-en-France
 3314863|Villepinte
-3314865|Aulnay-sous-Bois
+3314865|Le Blanc Mesnil
 3314866|Aulnay-sous-Bois
-3314867|Aulnay-sous-Bois
+3314867|Le Blanc Mesnil
 3314868|Aulnay-sous-Bois
 3314869|Aulnay-sous-Bois
-3314870|Montreuil
-3314871|Nogent-sur-Marne
-3314872|Nogent-sur-Marne
+3314870|Montreuil Sous Bois
+3314871|Le Perreux sur Marne
+3314872|Le Perreux sur Marne
 3314873|Nogent-sur-Marne
 3314874|Paris
 3314875|Fontenay-sous-Bois
@@ -990,9 +998,9 @@
 3314891|Pantin
 3314892|Choisy-le-Roi
 3314893|Charenton-le-Pont
-3314894|Rosny-sous-Bois
+3314894|Rosny-Sous-Bois
 3314895|Drancy
-3314896|Bobigny
+3314896|Drancy
 3314897|Bagnolet
 3314898|Créteil
 3314899|Créteil
@@ -1020,13 +1028,14 @@
 3314931|Noisy-le-Grand
 3314932|Noisy-le-Grand
 3314933|Saint-Denis
-3314935|Rosny-sous-Bois
+3314934|La Courneuve
+3314935|Rosny-Sous-Bois
 3314936|Sevran
 3314937|Aubervilliers
 3314938|Villepinte
 3314940|Saint-Denis
 3314941|Villiers-sur-Marne
-3314942|Pantin
+3314942|Noisy-le-Sec
 3314944|Neuilly-sur-Marne
 3314945|Saint-Ouen
 3314946|Saint-Denis
@@ -1051,13 +1060,13 @@
 3314968|Clichy
 3314969|Cachan
 3314970|Paris
-3314971|Saint-Denis
+3314971|Stains
 3314972|Bagnolet
 3314974|Fontenay-sous-Bois
 3314975|Orly
 3314976|Saint-Maur-des-Fossés
 3314977|Maisons-Alfort
-3314978|Thiais
+3314978|Rungis Complexe
 3314979|Chevilly-Larue
 3314980|Créteil
 3314981|Créteil
@@ -1066,7 +1075,7 @@
 3314984|Fresnes
 3314985|Arcueil
 3314986|Gentilly
-3314988|Montreuil
+3314988|Montreuil Sous Bois
 3314989|Villepinte
 3314993|Bagnolet
 3314995|Paris
@@ -1168,7 +1177,7 @@
 3315538|Boulogne-Billancourt
 3315542|Paris
 3315543|Paris
-3315546|Levallois-Perret
+3315546|Clichy
 3315547|Rueil-Malmaison
 3315548|Montrouge
 3315552|Châtenay-Malabry
@@ -1193,7 +1202,7 @@
 3315579|Paris
 3315580|Paris
 3315585|Noisy-le-Grand
-3315586|Montreuil
+3315586|Montreuil Sous Bois
 3315587|Saint-Denis
 3315590|Levallois-Perret
 3315593|Saint-Denis
@@ -1212,8 +1221,8 @@
 3315624|Paris
 3315626|Paris
 3315628|Paris
-3315629|Alfortville
-3315630|Thiais
+3315629|Maisons-Alfort
+3315630|Rungis Complexe
 3315631|Chennevières-sur-Marne
 3315633|Paris
 3315636|Paris
@@ -1229,7 +1238,7 @@
 3315662|Paris
 3315668|Paris
 3315669|Paris
-3315670|Thiais
+3315670|Rungis Complexe
 3315671|Créteil
 3315672|Créteil
 3315673|Sucy-en-Brie
@@ -1243,6 +1252,7 @@
 3315689|Paris
 3315690|Paris
 3315691|Paris
+3315692|Paris
 3315695|Paris
 3315698|Paris
 3315714|Pantin
@@ -1284,9 +1294,10 @@
 3316016|Sainte-Geneviève-des-Bois
 3316017|Torcy
 3316018|Pontault-Combault
-3316019|Bièvres
+3316019|Igny
 3316020|Chelles
 3316021|Mitry-Mory
+3316022|La Ferté sous Jouarre
 3316023|Meaux
 3316024|Meaux
 3316025|Meaux
@@ -1310,7 +1321,7 @@
 3316046|Brunoy
 3316047|Brunoy
 3316048|Athis-Mons
-3316049|Chilly-Mazarin
+3316049|Longjumeau
 3316052|Provins
 3316054|Dammartin-en-Goële
 3316055|Nemours
@@ -1319,7 +1330,7 @@
 3316058|Provins
 3316059|Melun
 3316060|Combs-la-Ville
-3316062|Brie-Comté-Robert
+3316062|Brie-Comte-Robert
 3316063|Savigny-le-Temple
 3316064|Roissy-en-Brie
 3316065|Saint-Fargeau-Ponthierry
@@ -1332,9 +1343,9 @@
 3316073|Montereau-Fault-Yonne
 3316074|Fontainebleau
 3316075|Soisy-sur-Seine
-3316077|Évry
-3316078|Évry
-3316079|Évry
+3316077|Evry
+3316078|Evry
+3316079|Evry
 3316080|Étréchy
 3316081|Dourdan
 3316082|Lardy
@@ -1342,10 +1353,10 @@
 3316084|Brétigny-sur-Orge
 3316085|Brétigny-sur-Orge
 3316086|Bondoufle
-3316087|Évry
+3316087|Evry
 3316088|Corbeil-Essonnes
 3316089|Corbeil-Essonnes
-3316091|Évry
+3316091|Evry
 3316092|Villebon-sur-Yvette
 3316093|Chelles
 3316095|Lognes
@@ -1358,7 +1369,7 @@
 3316400|Provins
 3316402|Lagny-sur-Marne
 3316403|Coulommiers
-3316405|Brie-Comté-Robert
+3316405|Brie-Comte-Robert
 3316407|Tournan-en-Brie
 3316408|Nangis
 3316409|Melun
@@ -1394,18 +1405,19 @@
 3316451|Fontenay-Trésigny
 3316452|Melun
 3316453|Palaiseau
-3316454|Chilly-Mazarin
+3316454|Morangis
 3316456|Saint-Chéron
 3316457|Mennecy
 3316458|Breuillet
 3316459|Dourdan
-3316460|Provins
+3316460|Nangis
 3316461|Champs-sur-Marne
+3316462|Lognes
 3316463|Crécy-la-Chapelle
 3316464|Melun
 3316465|Coulommiers
 3316466|Bussy-Saint-Georges
-3316467|Mitry-Mory
+3316467|Villeparisis
 3316468|Champs-sur-Marne
 3316469|Fontainebleau
 3316470|Montereau-Fault-Yonne
@@ -1417,22 +1429,22 @@
 3316477|Bussy-Saint-Georges
 3316478|Nemours
 3316479|Dammarie-les-Lys
-3316480|Torcy
+3316480|Lognes
 3316481|Bois-le-Roi
 3316485|Soisy-sur-Seine
-3316486|Gif-sur-Yvette
+3316486|Les Ulis
 3316487|Melun
 3316488|Moissy-Cramayel
 3316489|Savigny-le-Temple
 3316490|Arpajon
-3316491|Forges-les-Bains
+3316491|Limours en Hurepoix
 3316492|Arpajon
 3316493|Ballancourt-sur-Essonne
 3316494|Étampes
 3316496|Corbeil-Essonnes
-3316497|Évry
+3316497|Evry
 3316498|Milly-la-Forêt
-3316499|Maisse
+3316499|Mennecy
 3316900|Quincy-sous-Sénart
 3316901|Montlhéry
 3316902|Ris-Orangis
@@ -1442,10 +1454,11 @@
 3316906|Ris-Orangis
 3316907|Gif-sur-Yvette
 3316909|Chilly-Mazarin
+3316910|Chilly-Mazarin
 3316911|Lisses
 3316912|Viry-Châtillon
 3316914|Marolles-en-Hurepoix
-3316918|Villebon-sur-Yvette
+3316918|Les Ulis
 3316919|Palaiseau
 3316920|Massy
 3316921|Juvisy-sur-Orge
@@ -1463,7 +1476,7 @@
 3316933|Saclay
 3316934|Chilly-Mazarin
 3316935|Bièvres
-3316936|Évry
+3316936|Evry
 3316938|Athis-Mons
 3316939|Brunoy
 3316940|Draveil
@@ -1473,16 +1486,16 @@
 3316944|Savigny-sur-Orge
 3316945|Juvisy-sur-Orge
 3316946|Sainte-Geneviève-des-Bois
-3316947|Évry
+3316947|Evry
 3316948|Yerres
 3316949|Yerres
 3316951|Sainte-Geneviève-des-Bois
 3316952|Montgeron
 3316953|Massy
-3316956|Savigny-sur-Orge
+3316956|Juvisy-sur-Orge
 3316957|Athis-Mons
 3316958|Étampes
-3316963|Montlhéry
+3316963|Marcoussis
 3316972|Sainte-Geneviève-des-Bois
 3316975|Massy
 3316978|Étampes
@@ -1492,66 +1505,104 @@
 3316982|Orsay
 3316983|Yerres
 3316984|Athis-Mons
+3316985|Igny
 3316986|Orsay
 3316988|Brétigny-sur-Orge
-3316989|Soisy-sur-Seine
+3316989|Saint-Pierre-du-Perray
 3316990|Mennecy
-3316991|Évry
+3316991|Evry
 3316992|Étampes
 3316994|Breuillet
 3316995|Angerville
 3316996|Savigny-sur-Orge
+3317000|Chelles
+3317007|Montreuil
 3317019|Boulogne-Billancourt
 3317028|Boulogne-Billancourt
 3317039|Paris
 3317068|Boulogne-Billancourt
+3317117|Boulogne-Billancourt
 3317118|Paris
 3317119|Paris
 3317124|Paris
 3317127|Paris
+3317132|Paris
+3317137|Paris
+3317139|Paris
 3317150|Paris
 3317160|Paris
+3317170|Paris
 3317173|Paris
 3317175|Paris
 3317197|Paris
+3317234|Paris
 3317251|Aulnay-sous-Bois
 3317253|Argenteuil
+3317348|Boulogne-Billancourt
+3317413|Saint-Germain-en-Laye
+3317430|Paris
+3317462|Boulogne-Billancourt
+3317463|Neuilly-sur-Seine
 3317464|Paris
 3317543|Paris
 3317549|Boulogne-Billancourt
 3317550|Paris
+3317551|Paris
 3317557|Paris
 3317593|Saint-Germain-en-Laye
 3317621|Paris
 3317629|Argenteuil
 3317702|Argenteuil
+3317710|Paris
+3317711|Paris
+3317712|Paris
+3317713|Paris
+3317715|Paris
+3317716|Paris
+3317717|Paris
+3317718|Paris
+3317719|Paris
 3317762|Paris
 3317775|Paris
 3317780|Sarcelles
 3317809|Paris
+3317851|Montigny-le-Bretonneux
+3317852|Versailles
+3317853|Asnières-sur-Seine
+3317854|Créteil
 3317874|Versailles
 3317876|Paris
+3317930|Asnières-sur-Seine
+3317946|Issy-les-Moulineaux
+3317951|Argenteuil
+3317956|Créteil
 3318006|Paris
+3318129|Paris
 3318200|Boulogne-Billancourt
+3318209|Paris
 3318306|Paris
-3318362|Paris
+3318356|Paris
+3318362|Courbevoie
 3318364|Paris
 3318387|Paris
 3318389|Paris
 3318391|Paris
+3318392|Paris
+3318394|Paris
+3318395|Paris
 3322310|Pénestin
 3322315|Cancale
 3322316|Combourg
 3322318|Saint-Malo
 3322320|Rennes
 3322321|Rennes
-3322325|Saint-Grégoire
+3322325|Saint-Gregoire
 3322327|Vern-sur-Seiche
 3322330|Rennes
 3322331|Bain-de-Bretagne
 3322335|Rennes
 3322340|Rennes
-3322341|Pacé
+3322341|Bréal-sous-Montfort
 3322342|Rennes
 3322343|Saint-Méen-le-Grand
 3322344|Rennes
@@ -1566,11 +1617,11 @@
 3322800|Bouguenais
 3322802|Vigneux-de-Bretagne
 3322803|Saint-Herblain
-3322807|Saint-Herblain
+3322807|Orvault
 3322808|Nantes
 3322811|Saint-Jean-de-Monts
 3322812|Challans
-3322813|Fontenay-le-Comté
+3322813|Fontenay-le-Comte
 3322814|Luçon
 3322823|Nantes
 3322824|Nantes
@@ -1580,9 +1631,9 @@
 3322854|Saint-Nazaire
 3322900|Brest
 3322940|Briec
-3322962|Ploudaniel
+3322962|Landerneau
 3323106|Caen
-3323109|Viré
+3323109|Vire
 3323110|Bayeux
 3323114|Deauville
 3323115|Caen
@@ -1598,12 +1649,13 @@
 3323135|Caen
 3323137|Courseulles-sur-Mer
 3323138|Caen
+3323139|Caen
 3323140|Falaise
 3323141|Falaise
 3323143|Caen
 3323144|Caen
 3323146|Caen
-3323147|Hérouville-Saint-Clair
+3323147|Caen
 3323148|Lisieux
 3323150|Caen
 3323151|Bayeux
@@ -1614,9 +1666,9 @@
 3323162|Lisieux
 3323164|Pont-l'Évêque
 3323165|Pont-l'Évêque
-3323166|Viré
-3323167|Viré
-3323168|Viré
+3323166|Vire
+3323167|Vire
+3323168|Vire
 3323169|Condé-sur-Noireau
 3323170|Caen
 3323171|Carpiquet
@@ -1645,7 +1697,7 @@
 3323208|Rouen
 3323209|Louviers
 3323210|Rouen
-3323211|Grand-Couronne
+3323211|Le Grand Quevilly
 3323212|Rouen
 3323214|Dieppe
 3323218|Rouen
@@ -1658,6 +1710,7 @@
 3323225|Louviers
 3323227|Gisors
 3323228|Évreux
+3323229|Breteuil sur Iton
 3323230|Conches-en-Ouche
 3323231|Évreux
 3323232|Verneuil-sur-Avre
@@ -1674,9 +1727,9 @@
 3323250|Louviers
 3323251|Vernon
 3323253|Gaillon
-3323254|Vernon
+3323254|Les Andelys
 3323255|Gisors
-3323258|Saint-Lubin-des-Joncherets
+3323258|Nonancourt
 3323259|Val-de-Reuil
 3323260|Verneuil-sur-Avre
 3323261|Val-de-Reuil
@@ -1691,8 +1744,8 @@
 3323279|Montivilliers
 3323281|Rouen
 3323282|Maromme
-3323283|Canteleu
-3323284|Lillebonne
+3323283|Rouen
+3323284|Notre-Dame-de-Gravenchon
 3323286|Bonsecours
 3323289|Gournay-en-Bray
 3323290|Dieppe
@@ -1704,8 +1757,8 @@
 3323301|Cherbourg-Octeville
 3323302|Cherbourg-Octeville
 3323303|Équeurdreville-Hainneville
-3323305|Saint-Lô
-3323306|Saint-Lô
+3323305|Saint-Lo
+3323306|Saint-Lo
 3323307|Coutances
 3323308|Cherbourg-Octeville
 3323310|Cherbourg-Octeville
@@ -1714,7 +1767,8 @@
 3323319|Coutances
 3323320|Cherbourg-Octeville
 3323322|Tourlaville
-3323323|Tourlaville
+3323323|Cherbourg-Octeville
+3323324|L'Aigle
 3323325|Mortagne-Au-Perche
 3323326|Alençon
 3323328|Alençon
@@ -1731,7 +1785,7 @@
 3323349|Saint-Hilaire-du-Harcouët
 3323350|Granville
 3323353|Cherbourg-Octeville
-3323357|Saint-Lô
+3323357|Saint-Lo
 3323358|Avranches
 3323362|Flers
 3323364|Flers
@@ -1739,14 +1793,15 @@
 3323367|Argentan
 3323368|Avranches
 3323371|Carentan
-3323372|Saint-Lô
+3323372|Saint-Lo
 3323376|Coutances
-3323377|Saint-Lô
+3323377|Saint-Lo
 3323378|Cherbourg-Octeville
 3323379|Avranches
 3323380|Alençon
 3323381|Alençon
 3323382|Alençon
+3323384|L'Aigle
 3323385|Mortagne-Au-Perche
 3323387|Cherbourg-Octeville
 3323388|Cherbourg-Octeville
@@ -1766,7 +1821,7 @@
 3323508|Darnétal
 3323509|Gournay-en-Bray
 3323510|Fécamp
-3323512|Mont-Saint-Aignan
+3323512|Bois-Guillaume
 3323514|Rouen
 3323515|Rouen
 3323519|Le Havre
@@ -1788,20 +1843,20 @@
 3323541|Le Havre
 3323542|Le Havre
 3323543|Le Havre
-3323544|Octeville-sur-Mer
-3323545|Harfleur
-3323546|Sainte-Adresse
-3323547|Harfleur
-3323548|Octeville-sur-Mer
-3323549|Harfleur
+3323544|Le Havre
+3323545|Le Havre
+3323546|Le Havre
+3323547|Le Havre
+3323548|Le Havre
+3323549|Le Havre
 3323550|Eu
-3323551|Harfleur
+3323551|Le Havre
 3323552|Rouen
 3323553|Le Havre
-3323554|Sainte-Adresse
+3323554|Le Havre
 3323555|Montivilliers
 3323556|Yvetot
-3323557|Saint-Valéry-en-Caux
+3323557|Saint-Valery-en-Caux
 3323558|Rouen
 3323559|Bois-Guillaume
 3323560|Bois-Guillaume
@@ -1813,7 +1868,7 @@
 3323566|Saint-Étienne-du-Rouvray
 3323567|Grand-Couronne
 3323568|Petit-Couronne
-3323569|Grand-Couronne
+3323569|Le Grand Quevilly
 3323570|Rouen
 3323571|Rouen
 3323572|Rouen
@@ -1832,7 +1887,7 @@
 3323591|Barentin
 3323592|Barentin
 3323595|Yvetot
-3323597|Saint-Valéry-en-Caux
+3323597|Saint-Valery-en-Caux
 3323598|Rouen
 3323616|Tours
 3323617|Orléans
@@ -1866,6 +1921,7 @@
 3323764|Ézy-sur-Eure
 3323765|Tremblay-les-Villages
 3323766|Châteaudun
+3323781|La Loupe
 3323783|Épernon
 3323784|Chartres
 3323788|Chartres
@@ -1886,6 +1942,7 @@
 3323829|Coullons
 3323830|Pithiviers
 3323831|Briare
+3323833|Puiseaux
 3323834|Malesherbes
 3323835|Saint-Benoît-sur-Loire
 3323836|Sully-sur-Loire
@@ -1906,7 +1963,7 @@
 3323858|Châteauneuf-sur-Loire
 3323859|Jargeau
 3323860|Saint-Jean-de-Braye
-3323861|Saint-Jean-de-Braye
+3323861|Orléans
 3323862|Orléans
 3323863|Olivet
 3323864|Olivet
@@ -1945,6 +2002,7 @@
 3324007|Derval
 3324008|Nantes
 3324009|Liré
+3324011|La Baule Escoublac
 3324012|Nantes
 3324013|Rezé
 3324014|Nantes
@@ -1960,9 +2018,9 @@
 3324024|Guérande
 3324025|Sainte-Luce-sur-Loire
 3324027|Saint-Brevin-les-Pins
-3324028|Châteaubriant
+3324028|Chateaubriant
 3324029|Nantes
-3324030|Carquefou
+3324030|Nantes
 3324032|Rezé
 3324033|Vallet
 3324034|Vertou
@@ -1973,10 +2031,10 @@
 3324039|Saint-Brevin-les-Pins
 3324040|Nantes
 3324041|Nantes
-3324042|Guérande
+3324042|Le Pouliguen
 3324043|Nantes
 3324044|Nantes
-3324045|Montoir-de-Bretagne
+3324045|Donges
 3324046|Nantes
 3324047|Nantes
 3324048|Nantes
@@ -1989,7 +2047,7 @@
 3324057|Héric
 3324058|Nantes
 3324059|Nantes
-3324060|La Baule-Escoublac
+3324060|La Baule Escoublac
 3324061|Pornichet
 3324062|Guérande
 3324063|Orvault
@@ -2008,7 +2066,7 @@
 3324078|Saint-Philbert-de-Grand-Lieu
 3324079|Blain
 3324080|Saint-Sébastien-sur-Loire
-3324081|Châteaubriant
+3324081|Chateaubriant
 3324082|Pornic
 3324083|Ancenis
 3324084|Nantes
@@ -2017,6 +2075,7 @@
 3324088|Herbignac
 3324089|Nantes
 3324090|Trignac
+3324091|Saint-Nazaire
 3324092|Saint-Herblain
 3324093|Nantes
 3324094|Treillières
@@ -2059,7 +2118,7 @@
 3324159|Doué-la-Fontaine
 3324160|Angers
 3324162|Cholet
-3324163|Beaupréau
+3324163|Beaupreau
 3324164|Jallais
 3324165|Cholet
 3324166|Angers
@@ -2067,32 +2126,34 @@
 3324168|Angers
 3324169|Avrillé
 3324171|Cholet
-3324172|Angers
+3324172|Saint-Florent-le-Vieil
 3324173|Angers
 3324174|Angers
 3324175|Cholet
 3324176|Durtal
 3324178|Chalonnes-sur-Loire
 3324179|Angers
-3324180|Mazé
+3324180|Maze
 3324181|Angers
 3324183|Saumur
 3324186|Angers
 3324187|Angers
 3324188|Angers
-3324189|Baugé
+3324189|Bauge
 3324190|Cheviré-le-Rouge
 3324191|Brissac-Quincé
 3324192|Segré
 3324193|Saint-Barthélémy-d'Anjou
-3324196|Angers
+3324196|Saint-Barthélémy-d'Anjou
 3324301|Évron
 3324304|Mayenne
 3324305|Ernée
 3324306|Craon
+3324307|Château Gontier Bazouges
 3324308|Gorron
-3324309|Craon
+3324309|Château Gontier Bazouges
 3324314|Le Mans
+3324316|Le Mans
 3324321|Arnage
 3324323|Le Mans
 3324324|Le Mans
@@ -2105,7 +2166,9 @@
 3324332|Mayenne
 3324335|Saint-Calais
 3324338|Château-du-Loir
+3324339|Le Mans
 3324340|Changé
+3324341|Le Mans
 3324342|Écommoy
 3324343|Le Mans
 3324344|Château-du-Loir
@@ -2114,14 +2177,14 @@
 3324349|Laval
 3324350|Le Mans
 3324351|Le Mans
-3324352|Sillé-le-Guillaume
+3324352|Le Mans
 3324353|Laval
-3324354|Champagné
+3324354|Le Mans
 3324355|Sablé-sur-Sarthe
 3324356|Laval
 3324358|Laval
 3324359|Laval
-3324360|Vibraye
+3324360|La Ferté Bernard
 3324362|Sablé-sur-Sarthe
 3324363|Saint-Calais
 3324364|Laval
@@ -2129,19 +2192,22 @@
 3324367|Laval
 3324368|Laval
 3324369|Laval
+3324371|La Ferté Bernard
 3324372|Le Mans
-3324375|Parigné-L'Évêque
-3324377|Roézé-sur-Sarthe
+3324375|Le Mans
+3324376|Le Mans
+3324377|Le Mans
 3324378|Le Mans
 3324380|Allonnes
-3324381|Coulaines
-3324382|Coulaines
+3324381|Le Mans
+3324382|Le Mans
 3324384|Le Mans
 3324385|Le Mans
 3324386|Le Mans
 3324389|Connerré
 3324391|Laval
 3324392|Sablé-sur-Sarthe
+3324394|La Flèche
 3324395|Sablé-sur-Sarthe
 3324401|Angers
 3324705|Tours
@@ -2152,7 +2218,7 @@
 3324727|Saint-Avertin
 3324728|Chambray-lès-Tours
 3324729|Parçay-Meslay
-3324730|Bléré
+3324730|Amboise
 3324731|Tours
 3324732|Saint-Pierre-des-Corps
 3324736|Tours
@@ -2167,7 +2233,7 @@
 3324746|Tours
 3324747|Tours
 3324748|Chambray-lès-Tours
-3324749|Tours
+3324749|Fondettes
 3324750|Montlouis-sur-Loire
 3324751|Tours
 3324752|Vouvray
@@ -2187,12 +2253,13 @@
 3324770|Tours
 3324771|Chambray-lès-Tours
 3324773|Joué-lès-Tours
-3324774|Chambray-lès-Tours
+3324774|Saint-Avertin
 3324775|Tours
 3324776|Tours
 3324777|Tours
 3324780|Joué-lès-Tours
 3324785|Tours
+3324786|Tours
 3324787|Tours
 3324788|Tours
 3324791|Loches
@@ -2232,40 +2299,44 @@
 3324881|Aubigny-sur-Nère
 3324883|Vierzon
 3324896|Saint-Amand-Montrond
+3324910|Nantes
+3324944|Nantes
 3325001|Caen
 3325028|Caen
+3325065|Caen
+3325105|La Roche sur Yon
 3325106|Montaigu
-3325108|La Roche-sur-Yon
+3325108|La Roche sur Yon
 3325110|Saint-Nazaire
 3325111|Rezé
-3325112|Nort-sur-Erdre
+3325112|La Chapelle sur Erdre
 3325113|Nantes
 3325114|Ancenis
 3325116|Saint-Nazaire
 3325117|Nantes
 3325120|Talmont-Saint-Hilaire
-3325121|Château-d'Olonne
-3325123|Olonne-sur-Mer
-3325124|La Roche-sur-Yon
+3325121|Les Sables d'Olonne
+3325123|Les Sables d'Olonne
+3325124|La Roche sur Yon
 3325125|Nantes
 3325126|Saint-Gilles-Croix-de-Vie
 3325129|Luçon
-3325130|Nalliers
-3325132|Château-d'Olonne
+3325130|La Tranche sur Mer
+3325132|Les Sables d'Olonne
 3325133|Jard-sur-Mer
 3325135|Challans
-3325136|La Roche-sur-Yon
-3325137|La Roche-sur-Yon
+3325136|La Roche sur Yon
+3325137|La Roche sur Yon
 3325138|Mouilleron-le-Captif
 3325139|Noirmoutier-en-l'Île
 3325140|Bournezeau
 3325141|Belleville-sur-Vie
 3325142|Saint-Fulgent
-3325144|La Roche-sur-Yon
-3325147|La Roche-sur-Yon
+3325144|La Roche sur Yon
+3325147|La Roche sur Yon
 3325148|Aizenay
 3325149|Challans
-3325150|Fontenay-le-Comté
+3325150|Fontenay-le-Comte
 3325151|Fontenay-le-Comté
 3325153|Saint-Martin-de-Fraigneau
 3325154|Saint-Hilaire-de-Riez
@@ -2275,13 +2346,14 @@
 3325158|Saint-Jean-de-Monts
 3325159|Saint-Jean-de-Monts
 3325160|Saint-Gilles-Croix-de-Vie
-3325162|La Roche-sur-Yon
+3325162|La Roche sur Yon
 3325163|Mortagne-sur-Sèvre
+3325164|Les Herbiers
 3325165|Mortagne-sur-Sèvre
-3325166|Mouchamps
-3325167|Saint-Laurent-sur-Sèvre
+3325166|Les Herbiers
+3325167|Les Herbiers
 3325168|Challans
-3325169|Fontenay-le-Comté
+3325169|Fontenay-le-Comte
 3325170|Rezé
 3325171|Vertou
 3325172|Nantes
@@ -2291,7 +2363,7 @@
 3325177|Nantes
 3325178|Orvault
 3325179|Vertou
-3325180|Saint-Herblain
+3325180|Nantes
 3325181|Nantes
 3325182|Nantes
 3325183|Nantes
@@ -2300,13 +2372,15 @@
 3325186|Nantes
 3325188|Nantes
 3325189|Nantes
-3325190|Brétignolles-sur-Mer
-3325191|Pouzauges
+3325190|Bretignolles-sur-Mer
+3325191|Les Herbiers
 3325192|Saint-Paul-en-Pareds
 3325193|Challans
 3325194|Chantonnay
-3325195|Olonne-sur-Mer
+3325195|Les Sables d'Olonne
 3325197|Angles
+3325345|Nantes
+3325355|Nantes
 3325378|Nantes
 3325400|Valençay
 3325401|Argenton-sur-Creuse
@@ -2314,28 +2388,31 @@
 3325403|Issoudun
 3325404|Sainte-Lizaigne
 3325406|Aigurande
-3325407|Châteauroux
-3325408|Châteauroux
+3325407|Chateauroux
+3325408|Chateauroux
 3325421|Issoudun
-3325422|Châteauroux
+3325422|Chateauroux
 3325423|Savigny-sur-Braye
 3325424|Argenton-sur-Creuse
 3325426|Villedieu-sur-Indre
-3325427|Châteauroux
+3325427|Chateauroux
+3325428|Le Blanc
 3325429|Niherne
 3325431|Cluis
 3325432|Montrichard
-3325434|Châteauroux
+3325434|Chateauroux
 3325435|Levroux
 3325436|Ardentes
+3325437|Le Blanc
 3325438|Châtillon-sur-Indre
 3325439|Azay-le-Ferron
-3325441|Lyé
+3325441|Lye
 3325442|Blois
 3325443|Blois
 3325445|Blois
 3325446|Bracieux
-3325448|Montgivray
+3325448|La Châtre
+3325449|Vatan
 3325450|Vineuil
 3325451|Blois
 3325452|Blois
@@ -2344,8 +2421,8 @@
 3325456|Blois
 3325457|Blois
 3325458|Blois
-3325460|Châteauroux
-3325461|Châteauroux
+3325460|Chateauroux
+3325461|Chateauroux
 3325467|Vendôme
 3325470|Mont-prés-Chambord
 3325473|Vendôme
@@ -2367,6 +2444,9 @@
 3325495|Romorantin-Lanthenay
 3325496|Romorantin-Lanthenay
 3325497|Salbris
+3325629|Brest
+3325651|Rennes
+3325654|Lorient
 3326220|Saint-Denis
 3326221|Saint-Denis
 3326222|Saint-Paul
@@ -2374,7 +2454,7 @@
 3326224|Saint-Paul
 3326225|Saint-Pierre
 3326226|Saint-Louis
-3326227|Saint-Pierre
+3326227|Le Tampon
 3326228|Saint-Denis
 3326229|Saint-Denis
 3326230|Saint-Denis
@@ -2388,8 +2468,8 @@
 3326239|Saint-Louis
 3326240|Saint-Denis
 3326241|Saint-Denis
-3326242|Saint-Paul
-3326243|Saint-Paul
+3326242|Le Port
+3326243|Le Port
 3326244|Saint-Paul
 3326245|Saint-Paul
 3326246|Saint-André
@@ -2403,11 +2483,11 @@
 3326254|Saint-Leu
 3326255|Saint-Paul
 3326256|Saint-Joseph
-3326257|Saint-Pierre
+3326257|Le Tampon
 3326258|Saint-André
-3326259|Saint-Pierre
+3326259|Le Tampon
 3326270|Saint-Pierre
-3326271|Saint-Paul
+3326271|Le Port
 3326272|Sainte-Marie
 3326273|Saint-Denis
 3326290|Saint-Denis
@@ -2424,6 +2504,8 @@
 3327600|Rouen
 3327601|Rouen
 3327652|Rouen
+3327776|Rouen
+3328537|Nantes
 3329009|Rennes
 3329078|Rennes
 3329091|Brest
@@ -2433,7 +2515,7 @@
 3329611|Ploumagoar
 3329613|Guingamp
 3329614|Lannion
-3329615|Trégastel
+3329615|Trébeurden
 3329616|Plouézec
 3329620|Paimpol
 3329623|Perros-Guirec
@@ -2446,12 +2528,14 @@
 3329632|Plaintel
 3329633|Saint-Brieuc
 3329635|Plestin-les-Grèves
+3329636|Plouguernével
 3329637|Lannion
 3329638|Plouaret
 3329639|Dinan
 3329640|Guingamp
 3329641|Saint-Cast-le-Guildo
 3329642|Plœuc-sur-Lié
+3329643|Guingamp
 3329644|Guingamp
 3329645|Bégard
 3329646|Lannion
@@ -2510,7 +2594,7 @@
 3329728|Séglien
 3329729|Auray
 3329730|Quiberon
-3329731|Bangor
+3329731|Le Palais
 3329732|Pont-Scorff
 3329733|Plouay
 3329734|Guiscriff
@@ -2530,7 +2614,7 @@
 3329752|Carnac
 3329753|Arzon
 3329754|Vannes
-3329755|Belz
+3329755|Erdeven
 3329756|Auray
 3329757|Baden
 3329758|Baden
@@ -2539,7 +2623,7 @@
 3329763|Vannes
 3329764|Lorient
 3329765|Languidic
-3329766|Grand-Champ
+3329766|Séné
 3329768|Vannes
 3329769|Vannes
 3329772|Ploërmel
@@ -2549,7 +2633,7 @@
 3329776|Lanester
 3329780|Quéven
 3329781|Lanester
-3329782|Port-Louis
+3329782|Ploemeur
 3329783|Lorient
 3329784|Lorient
 3329785|Hennebont
@@ -2563,7 +2647,7 @@
 3329803|Brest
 3329804|Lannilis
 3329805|Brest
-3329806|Riec-sur-Bélon
+3329806|Riec-sur-Belon
 3329807|Guilers
 3329809|Pont-Aven
 3329810|Quimper
@@ -2576,17 +2660,17 @@
 3329824|Landivisiau
 3329826|Pleyben
 3329827|Crozon
-3329828|Guipavas
+3329828|Le Relecq Kerhuon
 3329829|Saint-Pol-de-Léon
 3329830|Landerneau
 3329832|Saint-Renan
 3329833|Brest
 3329834|Brest
 3329835|Quimperlé
-3329836|Guilers
+3329836|Plougastel-Daoulas
 3329837|Plabennec
 3329838|Ploudalmézeau
-3329839|Quimperlé
+3329839|Bannalec
 3329840|Plougastel-Daoulas
 3329841|Brest
 3329842|Brest
@@ -2618,9 +2702,9 @@
 3329869|Saint-Pol-de-Léon
 3329870|Audierne
 3329871|Clohars-Carnoët
-3329872|Guerlesquin
+3329872|Plourin-lès-Morlaix
 3329874|Douarnenez
-3329875|Audierne
+3329875|Douarnenez
 3329878|Pleyber-Christ
 3329879|Saint-Thégonnec
 3329880|Brest
@@ -2629,10 +2713,11 @@
 3329883|Lesneven
 3329884|Guipavas
 3329885|Landerneau
-3329886|Châteaulin
+3329886|Chateaulin
 3329887|Pont-l'Abbé
 3329888|Morlaix
 3329890|Quimper
+3329891|Plozévet
 3329892|Douarnenez
 3329893|Carhaix-Plouguer
 3329895|Quimper
@@ -2640,7 +2725,7 @@
 3329897|Concarneau
 3329898|Quimper
 3329899|Carhaix-Plouguer
-3329900|Châteaubourg
+3329900|Chateaubourg
 3329904|Noyal-sur-Vilaine
 3329905|Bruz
 3329906|Montauban-de-Bretagne
@@ -2655,7 +2740,7 @@
 3329920|Saint-Malo
 3329921|Saint-Malo
 3329922|Rennes
-3329923|Saint-Grégoire
+3329923|Saint-Gregoire
 3329925|Cesson-Sévigné
 3329926|Rennes
 3329927|Rennes
@@ -2670,7 +2755,7 @@
 3329939|Saint-Aubin-du-Cormier
 3329940|Saint-Malo
 3329941|Chantepie
-3329942|Laillé
+3329942|Laille
 3329943|Bain-de-Bretagne
 3329946|Dinard
 3329947|Janzé
@@ -2732,7 +2817,7 @@
 3332006|Lille
 3332007|Loos
 3332008|Pérenchies
-3332009|Lille
+3332009|Lomme
 3332011|Tourcoing
 3332012|Lille
 3332013|Lille
@@ -2750,7 +2835,7 @@
 3332026|Tourcoing
 3332027|Tourcoing
 3332028|Tourcoing
-3332029|Lille
+3332029|La Bassée
 3332030|Lille
 3332031|Lille
 3332032|Seclin
@@ -2791,7 +2876,7 @@
 3332072|Marcq-en-Barœul
 3332073|Roubaix
 3332074|Lille
-3332075|Roubaix
+3332075|Wattrelos
 3332076|Tourcoing
 3332077|Armentières
 3332078|Lille
@@ -2799,27 +2884,27 @@
 3332081|Roubaix
 3332082|Roubaix
 3332083|Roubaix
-3332085|Lille
+3332085|Annœullin
 3332087|Lesquin
 3332088|Lille
 3332089|Marcq-en-Barœul
 3332090|Seclin
 3332091|Villeneuve-d'Ascq
-3332092|Lambersart
+3332092|Lomme
 3332093|Lille
 3332094|Tourcoing
-3332095|Lille
+3332095|Wattignies
 3332098|Marcq-en-Barœul
 3332099|Roubaix
 3332100|Calais
 3332101|Béthune
 3332103|Saint-Pol-sur-Ternoise
-3332105|Le Touquet-Paris-Plage
+3332105|Le Touquet Paris Plage
 3332106|Montreuil
-3332109|Berck
+3332109|Berck sur Mer
 3332110|Boulogne-sur-Mer
 3332111|Saint-Omer
-3332113|Lens
+3332113|Hénin-Beaumont
 3332114|Lens
 3332115|Arras
 3332116|Arras
@@ -2864,11 +2949,11 @@
 3332178|Lens
 3332180|Boulogne-sur-Mer
 3332183|Boulogne-sur-Mer
-3332184|Berck
+3332184|Berck sur Mer
 3332185|Calais
 3332187|Boulogne-sur-Mer
 3332188|Saint-Omer
-3332189|Berck
+3332189|Berck sur Mer
 3332191|Boulogne-sur-Mer
 3332192|Boulogne-sur-Mer
 3332194|Étaples
@@ -2882,12 +2967,15 @@
 3332222|Amiens
 3332224|Abbeville
 3332225|Rue
+3332226|Cayeux-sur-Mer
+3332227|Le Crotoy
 3332229|Airaines
 3332230|Friville-Escarbotin
 3332231|Abbeville
+3332232|Doullens
 3332233|Amiens
 3332235|Moreuil
-3332241|Ailly-sur-Noyé
+3332241|Ailly-sur-Noye
 3332243|Amiens
 3332244|Amiens
 3332245|Amiens
@@ -2899,7 +2987,7 @@
 3332252|Amiens
 3332253|Amiens
 3332254|Amiens
-3332260|Saint-Valéry-sur-Somme
+3332260|Saint-Valery-sur-Somme
 3332261|Friville-Escarbotin
 3332266|Amiens
 3332267|Amiens
@@ -2945,6 +3033,7 @@
 3332352|Chauny
 3332353|Soissons
 3332354|Vailly-sur-Aisne
+3332356|La Fère
 3332357|Tergnier
 3332358|Hirson
 3332359|Soissons
@@ -3085,7 +3174,7 @@
 3332732|Valenciennes
 3332733|Valenciennes
 3332739|Jeumont
-3332740|Condé-sur-l'Escaut
+3332740|Vieux-Condé
 3332741|Valenciennes
 3332742|Valenciennes
 3332743|Denain
@@ -3117,11 +3206,12 @@
 3332781|Cambrai
 3332782|Cambrai
 3332783|Cambrai
-3332784|Landrecies
+3332784|Le Cateau Cambrésis
 3332785|Caudry
 3332786|Somain
 3332787|Douai
 3332788|Douai
+3332792|Aniche
 3332793|Douai
 3332794|Douai
 3332795|Douai
@@ -3133,6 +3223,7 @@
 3332807|Lille
 3332809|Villeneuve-d'Ascq
 3332814|Lille
+3332816|Seclin
 3332820|Dunkerque
 3332821|Dunkerque
 3332822|Bourbourg
@@ -3150,7 +3241,7 @@
 3332841|Hazebrouck
 3332844|Hazebrouck
 3332849|Bailleul
-3332850|Hazebrouck
+3332850|Bailleul
 3332851|Dunkerque
 3332852|Lille
 3332853|Lille
@@ -3160,7 +3251,7 @@
 3332860|Dunkerque
 3332861|Dunkerque
 3332863|Dunkerque
-3332864|Dunkerque
+3332864|Saint-Pol-sur-Mer
 3332865|Wormhout
 3332866|Dunkerque
 3332868|Bergues
@@ -3173,6 +3264,7 @@
 3332922|Remiremont
 3332923|Remiremont
 3332924|Vagney
+3332925|La Bresse
 3332926|Remiremont
 3332929|Épinal
 3332930|Le Val-d'Ajol
@@ -3237,7 +3329,7 @@
 3334426|Neuilly-en-Thelle
 3334427|Précy-sur-Oise
 3334428|Creil
-3334429|Sacy-le-Grand
+3334429|Saint-Martin-Longueau
 3334430|Compiègne
 3334431|Pont-Sainte-Maxence
 3334432|Senlis
@@ -3288,18 +3380,32 @@
 3334494|Crépy-en-Valois
 3334496|Thourotte
 3334497|Compiègne
+3335101|Reims
 3335448|Metz
 3335451|Nancy
+3335462|Metz
+3335580|Metz
+3335728|Metz
 3335922|Lille
 3336036|Beauvais
+3336138|Dunkerque
+3336210|Tourcoing
 3336228|Lille
 3336264|Lille
 3336265|Lille
+3336664|Lille
 3336672|Lille
+3336708|Strasbourg
+3336847|Mulhouse
+3336914|Strasbourg
+3336919|Mulhouse
 3336932|Strasbourg
 3336954|Mulhouse
 3336958|Mulhouse
 3336973|Strasbourg
+3336977|Mulhouse
+3336978|Strasbourg
+3336981|Strasbourg
 3338010|Dijon
 3338022|Beaune
 3338024|Beaune
@@ -3328,12 +3434,12 @@
 3338051|Chenôve
 3338052|Chenôve
 3338053|Dijon
-3338054|Dijon
+3338054|Chenôve
 3338055|Dijon
 3338056|Fontaine-lès-Dijon
 3338057|Talant
 3338058|Dijon
-3338059|Chenôve
+3338059|Dijon
 3338060|Dijon
 3338061|Nuits-Saint-Georges
 3338062|Nuits-Saint-Georges
@@ -3351,8 +3457,9 @@
 3338076|Dijon
 3338077|Dijon
 3338078|Dijon
+3338079|Dijon
 3338089|Montbard
-3338090|Arnay-le-Duc
+3338090|Pouilly-en-Auxois
 3338091|Châtillon-sur-Seine
 3338092|Montbard
 3338095|Is-sur-Tille
@@ -3364,7 +3471,7 @@
 3338130|Audincourt
 3338131|Montbéliard
 3338132|Montbéliard
-3338134|Seloncourt
+3338134|Audincourt
 3338135|Audincourt
 3338136|Audincourt
 3338137|Valentigney
@@ -3433,7 +3540,7 @@
 3338291|Audun-le-Tiche
 3338315|Ludres
 3338317|Nancy
-3338318|Tomblaine
+3338318|Nancy
 3338319|Nancy
 3338321|Essey-lès-Nancy
 3338322|Bouxières-Aux-Dames
@@ -3514,7 +3621,7 @@
 3338456|Beaucourt
 3338457|Belfort
 3338458|Belfort
-3338460|Saint-Laurent-en-Grandvaux
+3338460|Les Rousses
 3338462|Lure
 3338464|Gray
 3338465|Gray
@@ -3538,22 +3645,22 @@
 3338495|Saulx
 3338496|Vesoul
 3338497|Vesoul
-3338520|Charnay-lès-Mâcon
-3338521|Mâcon
-3338522|Mâcon
+3338520|Macon
+3338521|Macon
+3338522|Macon
 3338524|Charolles
 3338525|Marcigny
 3338526|Chauffailles
 3338527|Tournus
-3338528|Varennes-sous-Dun
-3338529|Mâcon
+3338528|La Clayette
+3338529|Macon
 3338531|Replonges
 3338532|Tournus
-3338534|Mâcon
+3338534|Charnay-lès-Mâcon
 3338535|Romanèche-Thorins
 3338537|Crèches-sur-Saône
-3338538|Mâcon
-3338539|Mâcon
+3338538|Macon
+3338539|Macon
 3338541|Chalon-sur-Saône
 3338542|Chalon-sur-Saône
 3338543|Chalon-sur-Saône
@@ -3571,8 +3678,9 @@
 3338567|Montceau-les-Mines
 3338568|Blanzy
 3338569|Montceau-les-Mines
-3338573|Montchanin
+3338573|Le Creusot
 3338575|Louhans
+3338577|Le Creusot
 3338578|Montchanin
 3338580|Le Creusot
 3338581|Paray-le-Monial
@@ -3626,7 +3734,7 @@
 3338666|Villeneuve-la-Guyard
 3338667|Pont-sur-Yonne
 3338668|Prémery
-3338670|La Charité-sur-Loire
+3338670|La Charité sur Loire
 3338671|Nevers
 3338672|Auxerre
 3338674|Saint-Fargeau
@@ -3636,7 +3744,7 @@
 3338681|Vermenton
 3338682|Noyers
 3338683|Sens
-3338685|Saint-Léger-de-Fougeret
+3338685|Château-Chinon
 3338687|Villeneuve-sur-Yonne
 3338692|Migennes
 3338693|Nevers
@@ -3662,7 +3770,7 @@
 3338730|Metz
 3338731|Metz
 3338732|Metz
-3338733|Woippy
+3338733|Metz
 3338734|Metz
 3338735|Metz
 3338736|Metz
@@ -3717,7 +3825,7 @@
 3338805|Haguenau
 3338806|Haguenau
 3338808|Barr
-3338809|Reichshoffen
+3338809|Niederbronn-les-Bains
 3338810|Strasbourg
 3338812|Strasbourg
 3338813|Strasbourg
@@ -3726,7 +3834,7 @@
 3338816|Strasbourg
 3338818|Schiltigheim
 3338819|Schiltigheim
-3338820|Mundolsheim
+3338820|Souffelweyersheim
 3338821|Strasbourg
 3338822|Strasbourg
 3338823|Strasbourg
@@ -3755,7 +3863,7 @@
 3338851|Brumath
 3338852|Strasbourg
 3338853|Drusenheim
-3338854|Wissembourg
+3338854|Betschdorf
 3338855|Geispolsheim
 3338856|Oberhausbergen
 3338857|Villé
@@ -3817,9 +3925,10 @@
 3338944|Mulhouse
 3338945|Mulhouse
 3338946|Mulhouse
+3338951|Wittenheim
 3338952|Wittenheim
 3338953|Wittenheim
-3338954|Rixheim
+3338954|Mulhouse
 3338955|Wittelsheim
 3338956|Mulhouse
 3338958|Sainte-Marie-aux-Mines
@@ -3827,14 +3936,14 @@
 3338960|Mulhouse
 3338961|Illzach
 3338963|Rixheim
-3338964|Rixheim
-3338965|Riedisheim
+3338964|Mulhouse
+3338965|Rixheim
 3338966|Mulhouse
 3338967|Saint-Louis
 3338969|Saint-Louis
 3338970|Saint-Louis
 3338971|Orbey
-3338973|Ribeauvillé
+3338973|Ribeauville
 3338974|Guebwiller
 3338975|Cernay
 3338976|Guebwiller
@@ -3844,6 +3953,7 @@
 3338980|Colmar
 3338989|Saint-Louis
 3339000|Erstein
+3339020|Strasbourg
 3339022|Strasbourg
 3339023|Strasbourg
 3339040|Strasbourg
@@ -3853,11 +3963,26 @@
 3339180|Bruay-la-Buissière
 3339183|Carvin
 3339190|Boulogne-sur-Mer
+3341164|Perpignan
+3341175|Montpellier
+3341305|Salon-de-Provence
+3341320|Marseille
+3341339|Avignon
+3341363|Marseille
+3342004|Ajaccio
+3342210|Cannes
+3342602|Lyon
+3342650|Valence
 3342652|Valence
 3342655|Villeurbanne
+3342663|Lyon
 3342668|Lyon
 3342702|Lyon
 3342740|Saint-Étienne
+3342764|Saint-Étienne
+3342789|Lyon
+3343010|Montpellier
+3343016|Narbonne
 3343017|Béziers
 3343041|Béziers
 3343044|Perpignan
@@ -3882,6 +4007,7 @@
 3343433|Béziers
 3343435|Montpellier
 3343440|Montpellier
+3343443|Montpellier
 3343702|Vienne
 3343703|Bourgoin-Jallieu
 3343720|Givors
@@ -3895,18 +4021,19 @@
 3343737|Lyon
 3343740|Caluire-et-Cuire
 3343741|Lyon
-3343742|Décines-Charpieu
+3343742|Lyon
 3343743|Villeurbanne
 3343744|Meyzieu
 3343745|Vaulx-en-Velin
 3343746|Lyon
-3343747|Villeurbanne
+3343747|Lyon
 3343748|Lyon
 3343749|Limonest
 3343750|Lissieu
 3343756|Lyon
 3343757|Lyon
 3343758|Sain-Bel
+3343761|Ambérieu-en-Bugey
 3343764|Lyon
 3343765|Lyon
 3343769|Lyon
@@ -3922,7 +4049,7 @@
 3343886|Grenoble
 3343892|Crolles
 3344201|Cassis
-3344202|Les Pennes-Mirabeau
+3344202|Les Pennes Mirabeau
 3344203|Aubagne
 3344204|Roquevaire
 3344205|Fos-sur-Mer
@@ -3945,7 +4072,7 @@
 3344224|Aix-en-Provence
 3344226|Aix-en-Provence
 3344227|Aix-en-Provence
-3344228|Aix-en-Provence
+3344228|Ventabren
 3344229|Trets
 3344230|Gignac-la-Nerthe
 3344231|Marignane
@@ -3968,7 +4095,7 @@
 3344250|Rognes
 3344251|Gardanne
 3344252|Aix-en-Provence
-3344253|Aix-en-Provence
+3344253|Peynier
 3344254|Venelles
 3344255|Istres
 3344256|Istres
@@ -3982,17 +4109,17 @@
 3344264|Aix-en-Provence
 3344265|Gardanne
 3344266|Puyloubier
-3344267|Peyrolles-en-Provence
+3344267|Aix-en-Provence
 3344268|Fuveau
 3344269|Cabriès
 3344270|Aubagne
 3344271|La Ciotat
 3344272|Aubagne
 3344273|Carnoux-en-Provence
-3344274|Berre-l'Étang
+3344274|Velaux
 3344275|Vitrolles
 3344276|Châteauneuf-les-Martigues
-3344277|Vitrolles
+3344277|Marignane
 3344278|Rognac
 3344279|Vitrolles
 3344280|Martigues
@@ -4013,16 +4140,18 @@
 3344295|Aix-en-Provence
 3344296|Aix-en-Provence
 3344297|Aix-en-Provence
+3344298|La Ciotat
 3344299|Aix-en-Provence
 3344357|Clermont-Ferrand
 3345001|Rumilly
 3345002|Thônes
-3345003|Saint-Pierre-en-Faucigny
+3345003|La Roche sur Foron
 3345005|Annecy
 3345007|Bonneville
 3345008|Annecy
 3345009|Annecy-le-Vieux
 3345010|Annecy
+3345017|Thonon-les-Bains
 3345018|Cluses
 3345019|Sévrier
 3345020|Divonne-les-Bains
@@ -4048,14 +4177,14 @@
 3345051|Annecy
 3345052|Annecy
 3345053|Chamonix-Mont-Blanc
-3345054|Chamonix-Mont-Blanc
+3345054|Les Houches
 3345055|Chamonix-Mont-Blanc
 3345056|Bellegarde-sur-Valserine
 3345057|Annecy
 3345058|Sallanches
 3345059|Seyssel
 3345062|Vallières
-3345064|Rumilly
+3345064|Annecy-le-Vieux
 3345065|Annecy
 3345066|Annecy
 3345067|Annecy
@@ -4078,7 +4207,7 @@
 3345088|Annecy
 3345089|Cluses
 3345090|Arâches-la-Frasse
-3345091|Sallanches
+3345091|Megève
 3345092|Annemasse
 3345093|Saint-Gervais-les-Bains
 3345094|Douvaine
@@ -4086,13 +4215,14 @@
 3345096|Cluses
 3345097|Bonneville
 3345098|Cluses
-3345099|Divonne-les-Bains
+3345099|Thoiry
 3345600|Grenoble
 3345630|Thonon-les-Bains
 3345659|Grenoble
 3345708|Chambéry
 3345709|Annecy
 3345713|Grenoble
+3345739|Grenoble
 3345741|Annecy
 3345793|Grenoble
 3346601|Bellegarde
@@ -4114,16 +4244,19 @@
 3346631|Saint-Chély-d'Apcher
 3346632|Marvejols
 3346633|Bagnols-sur-Cèze
+3346634|La Grand Combe
 3346636|Nîmes
 3346637|Remoulins
 3346638|Nîmes
 3346639|Pont-Saint-Esprit
 3346640|Nîmes
 3346642|Aumont-Aubrac
+3346643|Alès
 3346644|Ispagnac
 3346649|Mende
+3346651|Le Grau du Roi
 3346652|Alès
-3346653|Aiguës-Mortes
+3346653|Aigues-Mortes
 3346654|Alès
 3346655|Alès
 3346656|Alès
@@ -4144,7 +4277,7 @@
 3346675|Marguerittes
 3346676|Nîmes
 3346678|Alès
-3346679|Bagnols-sur-Cèze
+3346679|Laudun-l'Ardoise
 3346680|Sommières
 3346684|Nîmes
 3346685|Saint-Jean-du-Gard
@@ -4176,7 +4309,7 @@
 3346723|Bédarieux
 3346724|Montagnac
 3346725|Paulhan
-3346726|Agde
+3346726|Le Cap d'Agde
 3346727|Montpellier
 3346728|Béziers
 3346729|Mauguio
@@ -4198,12 +4331,12 @@
 3346747|Montpellier
 3346748|Frontignan
 3346749|Béziers
-3346750|Pérols
+3346750|Perols
 3346751|Sète
 3346752|Montpellier
 3346753|Sète
 3346754|Montpellier
-3346756|Montpellier
+3346756|La Grande Motte
 3346757|Gignac
 3346758|Montpellier
 3346760|Montpellier
@@ -4225,14 +4358,15 @@
 3346777|Marseillan
 3346779|Montpellier
 3346780|Frontignan
+3346781|Le Vigan
 3346783|Lunel
 3346784|Saint-Gély-du-Fesc
 3346785|Fabrègues
 3346788|Clermont-L'Hérault
-3346789|Cessenon-sur-Orb
+3346789|Quarante
 3346791|Montpellier
 3346792|Montpellier
-3346793|Cazouls-lès-Béziers
+3346793|Capestang
 3346794|Agde
 3346795|Bédarieux
 3346796|Clermont-L'Hérault
@@ -4296,8 +4430,10 @@
 3346880|Canet-en-Roussillon
 3346881|Argelès-sur-Mer
 3346882|Collioure
+3346883|Le Boulou
 3346884|Ille-sur-Têt
 3346885|Perpignan
+3346886|Le Barcarès
 3346887|Céret
 3346888|Banyuls-sur-Mer
 3346890|Narbonne
@@ -4307,8 +4443,11 @@
 3346895|Argelès-sur-Mer
 3346896|Prades
 3346898|Port-Vendres
+3346931|Bourgoin-Jallieu
 3346935|Saint-Étienne
+3346960|Lyon
 3346968|Saint-Étienne
+3346970|Lyon
 3347002|Montluçon
 3347003|Montluçon
 3347005|Montluçon
@@ -4334,12 +4473,13 @@
 3347098|Vichy
 3347099|Lapalisse
 3347100|Saint-Paulien
+3347102|Le Puy en Velay
 3347103|Craponne-sur-Arzon
-3347104|Brives-Charensac
-3347105|Lantriac
-3347106|Le Puy-en-Velay
+3347104|Le Puy en Velay
+3347105|Le Puy en Velay
+3347106|Le Puy en Velay
 3347107|Le Puy-en-Velay
-3347109|Brives-Charensac
+3347109|Le Puy en Velay
 3347120|Murat
 3347143|Aurillac
 3347145|Aurillac
@@ -4365,7 +4505,7 @@
 3347204|Vaulx-en-Velin
 3347205|Décines-Charpieu
 3347207|Lyon
-3347208|Neuville-sur-Saône
+3347208|Genay
 3347209|Saint-Priest
 3347210|Lyon
 3347212|Lyon
@@ -4378,14 +4518,14 @@
 3347219|Lyon
 3347220|Lyon
 3347221|Vénissieux
-3347222|Saint-Priest
+3347222|Lyon Saint Exupéry Aéroport
 3347223|Saint-Priest
 3347224|Givors
 3347226|Saint-André-de-Corcy
 3347227|Caluire-et-Cuire
 3347228|Saint-Priest
 3347229|Lyon
-3347230|Vernaison
+3347230|Irigny
 3347231|Brignais
 3347232|Lyon
 3347233|Lyon
@@ -4393,17 +4533,17 @@
 3347235|Lyon
 3347236|Lyon
 3347237|Bron
-3347238|Tassin-la-Demi-Lune
+3347238|Lyon
 3347239|Saint-Genis-Laval
 3347240|Lyon
 3347241|Lyon
 3347242|Fontaines-sur-Saône
-3347243|Lyon
+3347243|Villeurbanne
 3347244|Lyon
 3347245|Meyzieu
 3347246|Pont-de-Chéruy
 3347247|Chassieu
-3347248|Saint-Bonnet-de-Mûre
+3347248|Saint-Bonnet-de-Mure
 3347249|Givors
 3347250|Vénissieux
 3347251|Vénissieux
@@ -4428,7 +4568,7 @@
 3347276|Lyon
 3347277|Lyon
 3347278|Lyon
-3347279|Genas
+3347279|Chassieu
 3347280|Lyon
 3347281|Bron
 3347282|Lyon
@@ -4444,7 +4584,7 @@
 3347293|Décines-Charpieu
 3347298|Lyon
 3347314|Clermont-Ferrand
-3347315|Aubière
+3347315|Clermont-Ferrand
 3347316|Clermont-Ferrand
 3347317|Clermont-Ferrand
 3347319|Clermont-Ferrand
@@ -4474,10 +4614,11 @@
 3347353|Courpière
 3347354|Brassac-les-Mines
 3347355|Issoire
-3347360|Aulnat
+3347360|Nohanent
 3347361|Lempdes
 3347362|Orcines
 3347364|Riom
+3347365|Le Mont Dore
 3347367|Riom
 3347368|Billom
 3347369|Cournon-D'Auvergne
@@ -4485,7 +4626,7 @@
 3347374|Clermont-Ferrand
 3347377|Cournon-D'Auvergne
 3347380|Thiers
-3347381|Saint-Sauvés-d'Auvergne
+3347381|La Bourboule
 3347382|Ambert
 3347383|Pont-du-Château
 3347384|Cournon-D'Auvergne
@@ -4511,17 +4652,20 @@
 3347411|Salaise-sur-Sanne
 3347412|Oyonnax
 3347414|Viriat
-3347416|Pont-Évêque
+3347416|Vienne
 3347419|Bourgoin-Jallieu
-3347420|Saint-Siméon-de-Bressieux
+3347420|La Côte Saint André
 3347421|Bourg-en-Bresse
 3347422|Bourg-en-Bresse
 3347423|Bourg-en-Bresse
 3347424|Bourg-en-Bresse
+3347425|Viriat
+3347427|L'Isle d'Abeau
 3347428|Bourgoin-Jallieu
 3347429|Roussillon
 3347431|Vienne
 3347432|Bourg-en-Bresse
+3347433|Les Avenières
 3347434|Ambérieu-en-Bugey
 3347435|Hauteville-Lompnes
 3347437|Poncin
@@ -4564,6 +4708,7 @@
 3347494|Saint-Quentin-Fallavier
 3347495|Saint-Quentin-Fallavier
 3347496|Villefontaine
+3347497|La Tour du Pin
 3347498|Villars-les-Dombes
 3347499|Saint-Quentin-Fallavier
 3347500|Montélimar
@@ -4574,11 +4719,12 @@
 3347507|Tournon-sur-Rhône
 3347508|Tournon-sur-Rhône
 3347520|Privas
-3347522|Dié
+3347522|Die
 3347523|Saint-Vallier
 3347525|Crest
 3347526|Nyons
 3347528|Buis-les-Baronnies
+3347529|Le Cheylard
 3347530|Saint-Agrève
 3347531|Saint-Rambert-d'Albon
 3347532|Annonay
@@ -4591,6 +4737,7 @@
 3347544|Valence
 3347545|Saint-Donat-sur-l'Herbasse
 3347546|Dieulefit
+3347549|Le Teil
 3347550|Montélimar
 3347551|Montélimar
 3347552|Montélimar
@@ -4617,7 +4764,7 @@
 3347576|Crest
 3347578|Valence
 3347579|Valence
-3347580|Valence
+3347580|Saint-Péray
 3347581|Valence
 3347582|Valence
 3347583|Bourg-lès-Valence
@@ -4629,7 +4776,7 @@
 3347592|Montélimar
 3347593|Aubenas
 3347596|Pierrelatte
-3347598|Pierrelatte
+3347598|Tulette
 3347600|Grenoble
 3347601|Grenoble
 3347603|Grenoble
@@ -4639,6 +4786,7 @@
 3347607|Tullins
 3347608|Crolles
 3347609|Échirolles
+3347611|L'Alpe d'Huez
 3347612|Grenoble
 3347614|Eybens
 3347615|Grenoble
@@ -4648,7 +4796,7 @@
 3347622|Grenoble
 3347623|Grenoble
 3347624|Saint-Martin-d'Hères
-3347625|Eybens
+3347625|Saint-Martin-d'Hères
 3347626|Fontaine
 3347627|Fontaine
 3347628|Grenoble
@@ -4657,6 +4805,7 @@
 3347634|Mens
 3347635|Moirans
 3347636|Vinay
+3347637|Le Pont de Beauvoisin
 3347638|Saint-Marcellin
 3347640|Échirolles
 3347641|Meylan
@@ -4690,12 +4839,15 @@
 3347675|Saint-Egrève
 3347677|Domène
 3347678|Vizille
+3347679|Les Deux Alpes
+3347680|L'Alpe d'Huez
+3347681|La Mure d'Isère
 3347684|Grenoble
 3347685|Grenoble
 3347686|Grenoble
 3347687|Grenoble
 3347688|Saint-Pierre-de-Chartreuse
-3347689|Gières
+3347689|Saint-Martin-d'Uriage
 3347690|Meylan
 3347691|Rives
 3347692|Crolles
@@ -4806,7 +4958,7 @@
 3347837|Lyon
 3347838|Lyon
 3347839|Lyon
-3347840|Saint-Bonnet-de-Mûre
+3347840|Saint-Bonnet-de-Mure
 3347841|Bron
 3347842|Lyon
 3347844|Mornant
@@ -4856,21 +5008,23 @@
 3347891|Neuville-sur-Saône
 3347892|Lyon
 3347893|Lyon
-3347894|Lyon
+3347894|Villeurbanne
 3347895|Lyon
 3347896|Chaponnay
 3347897|Rillieux-la-Pape
 3347900|Saint-Martin-de-Belleville
+3347901|Courchevel Saint Bon
 3347904|Bourg-Saint-Maurice
 3347905|Modane
 3347906|Tignes
 3347907|Bourg-Saint-Maurice
-3347908|Pralognan-la-Vanoise
+3347908|Courchevel Saint Bon
 3347909|Aimé
 3347910|Albertville
 3347920|Aussois
 3347922|Bozel
-3347924|Aigueblanche
+3347924|Moutiers Tarentaise
+3347925|La Motte Servolex
 3347926|Chambéry
 3347931|Albertville
 3347932|Albertville
@@ -4884,7 +5038,7 @@
 3347941|Val-D'Isère
 3347942|Belley
 3347944|Chambéry
-3347952|Voglans
+3347952|Aix-les-Bains
 3347955|Brides-les-Bains
 3347956|Saint-Michel-de-Maurienne
 3347960|Chambéry
@@ -4904,19 +5058,29 @@
 3347988|Aix-les-Bains
 3347989|Ugine
 3347996|Chambéry
+3348038|Grenoble
 3348253|Lyon
+3348312|Fréjus
 3348314|Cannes
 3348316|Toulon
+3348345|Nice
+3348350|Nice
 3348357|Toulon
 3348425|Marseille
+3348612|Marseille
 3348631|Aix-en-Provence
 3348657|Marseille
 3348665|Avignon
+3348671|Carpentras
+3348681|Avignon
+3348695|Marseille
 3348805|Aix-en-Provence
 3348861|Avignon
 3348884|Carpentras
 3348900|Nice
+3348903|Nice
 3348905|Nice
+3348914|Nice
 3348922|Nice
 3348924|Nice
 3348966|Toulon
@@ -4925,15 +5089,16 @@
 3348979|Toulon
 3348981|Nice
 3348982|Cannes
+3348992|Nice
 3348996|Toulon
 3348999|Fréjus
 3349001|Caumont-sur-Durance
 3349002|Morières-lès-Avignon
-3349003|Sorgues
+3349003|Le Pontet
 3349004|Apt
 3349005|Roussillon
 3349006|Cavaillon
-3349007|Pertuis
+3349007|La Tour d'Aigues
 3349008|Lauris
 3349009|Pertuis
 3349011|Orange
@@ -4943,8 +5108,8 @@
 3349016|Avignon
 3349017|Salon-de-Provence
 3349018|Arles
-3349020|Velleron
-3349021|L'Isle-sur-la-Sorgue
+3349020|L'Isle sur la Sorgue
+3349021|L'Isle sur la Sorgue
 3349022|Saint-Saturnin-lès-Avignon
 3349023|Caumont-sur-Durance
 3349024|Châteaurenard
@@ -4954,14 +5119,14 @@
 3349028|Vaison-la-Romaine
 3349029|Piolenc
 3349030|Bollène
-3349031|Vedène
-3349032|Vedène
-3349033|Bédarrides
+3349031|Le Pontet
+3349032|Le Pontet
+3349033|Le Thor
 3349034|Orange
 3349035|Valréas
 3349036|Vaison-la-Romaine
-3349037|Camaret-sur-Aiguës
-3349038|L'Isle-sur-la-Sorgue
+3349037|Camaret-sur-Aigues
+3349038|L'Isle sur la Sorgue
 3349039|Sorgues
 3349040|Bollène
 3349041|Visan
@@ -5005,7 +5170,7 @@
 3349080|Avignon
 3349081|Avignon
 3349082|Avignon
-3349083|Sorgues
+3349083|Châteauneuf-du-Pape
 3349084|Avignon
 3349085|Avignon
 3349086|Avignon
@@ -5018,9 +5183,10 @@
 3349093|Arles
 3349094|Châteaurenard
 3349096|Arles
-3349097|Saintes-Mariés-de-la-Mer
+3349097|Saintes-Maries-de-La-Mer
 3349098|Arles
 334910|Marseille
+3349107|Allauch
 334911|Marseille
 3349121|Marseille
 3349122|Marseille
@@ -5068,17 +5234,18 @@
 3349208|Carros
 3349209|Nice
 3349210|Menton
-3349211|Saint-Jeannet
+3349211|La Gaude
 3349212|Saint-Laurent-du-Var
 3349213|Cagnes-sur-Mer
 3349214|Nice
 3349215|Nice
 3349217|Nice
-3349218|Cannes
-3349219|Cannes
+3349218|Le Cannet
+3349219|La Roquette sur Siagne
 3349220|Briançon
 3349221|Briançon
 3349222|Briançon
+3349223|L'Argentière la Bessée
 3349224|Saint-Chaffrey
 3349226|Nice
 3349227|Saint-Laurent-du-Var
@@ -5124,13 +5291,14 @@
 3349279|Oraison
 3349281|Barcelonnette
 3349283|Castellane
-3349284|Jausiers
+3349284|Pra-Loup
+3349285|La Bréole
 3349287|Manosque
 3349289|Saint-André-les-Alpes
-3349290|Antibes
-3349291|Antibes
+3349290|Antibes Juan les Pins
+3349291|Antibes Juan les Pins
 3349292|Mougins
-3349293|Antibes
+3349293|Antibes Juan les Pins
 3349294|Biot
 3349295|Vallauris
 3349296|Valbonne
@@ -5139,7 +5307,7 @@
 3349299|Cannes
 3349300|Valbonne
 3349301|Beaulieu-sur-Mer
-3349303|Saint-Martin-Vésubie
+3349303|Roquebillière
 3349304|Sospel
 3349305|Puget-Théniers
 3349306|Cannes
@@ -5163,9 +5331,9 @@
 3349328|Menton
 3349329|Carros
 3349331|Saint-Laurent-du-Var
-3349332|Saint-Paul
-3349333|Antibes
-3349334|Antibes
+3349332|La Colle sur Loup
+3349333|Antibes Juan les Pins
+3349334|Antibes Juan les Pins
 3349335|Menton
 3349336|Grasse
 3349337|Nice
@@ -5176,7 +5344,7 @@
 3349342|Pégomas
 3349343|Cannes
 3349344|Nice
-3349345|Cannes
+3349345|Le Cannet
 3349346|Le Cannet
 3349347|Cannes
 3349348|Cannes
@@ -5190,32 +5358,32 @@
 3349357|Menton
 3349358|Vence
 3349359|Tourrettes-sur-Loup
-3349361|Antibes
+3349361|Antibes Juan les Pins
 3349362|Nice
-3349363|Vallauris
+3349363|Le Golfe Juan
 3349364|Vallauris
 3349365|Biot
 3349366|Peymeinade
-3349367|Antibes
+3349367|Antibes Juan les Pins
 3349368|Cannes
-3349369|Cannes
+3349369|Le Cannet
 3349370|Grasse
 3349371|Nice
 3349372|Nice
 3349373|Cagnes-sur-Mer
-3349374|Antibes
+3349374|Antibes Juan les Pins
 3349375|Mougins
 3349376|Saint-Jean-Cap-Ferrat
 3349377|Roquefort-les-Pins
 3349378|Beausoleil
-3349379|Contes
+3349379|Nice
 334938|Nice
 3349390|Cannes
 3349391|Tourrette-Levens
 3349392|Nice
 3349393|Mandelieu-la-Napoule
 3349394|Cannes
-3349395|Vallauris
+3349395|Antibes Juan les Pins
 3349396|Nice
 3349397|Nice
 3349398|Nice
@@ -5224,11 +5392,11 @@
 3349401|Hyères
 3349403|Toulon
 3349404|Carcès
-3349406|La Seyne-sur-Mer
+3349406|La Seyne sur Mer
 3349407|Six-Fours-les-Plages
 3349408|La Garde
 3349409|Toulon
-3349410|Six-Fours-les-Plages
+3349410|La Seyne sur Mer
 3349411|La Seyne-sur-Mer
 3349412|Hyères
 3349413|Solliès-Pont
@@ -5238,7 +5406,7 @@
 3349418|Toulon
 3349419|Saint-Raphaël
 3349420|Toulon
-3349421|Toulon
+3349421|La Garde
 3349422|Toulon
 3349423|Toulon
 3349424|Toulon
@@ -5247,7 +5415,7 @@
 3349427|Toulon
 3349428|Cuers
 3349429|Bandol
-3349430|Six-Fours-les-Plages
+3349430|La Seyne sur Mer
 3349431|Toulon
 3349432|Bandol
 3349433|Solliès-Pont
@@ -5276,19 +5444,20 @@
 3349457|Hyères
 3349458|Carqueiranne
 3349459|Saint-Maximin-la-Sainte-Baume
-3349460|Draguignan
+3349460|Le Luc
 3349461|Toulon
 3349462|Toulon
 3349463|Ollioules
 3349464|Cavalaire-sur-Mer
 3349465|Hyères
-3349466|Hyères
+3349466|La Crau
 3349467|Draguignan
 3349468|Draguignan
 3349469|Brignoles
 3349471|Bormes-les-Mimosas
 3349473|Vidauban
 3349474|Sanary-sur-Mer
+3349475|La Garde
 3349476|Fayence
 3349477|Barjols
 3349478|Saint-Maximin-la-Sainte-Baume
@@ -5298,18 +5467,18 @@
 3349483|Saint-Raphaël
 3349485|Draguignan
 3349486|Saint-Maximin-la-Sainte-Baume
-3349487|La Seyne-sur-Mer
+3349487|La Seyne sur Mer
 3349488|Sanary-sur-Mer
 3349489|Toulon
 3349490|Signes
 3349491|Toulon
 3349492|Toulon
 3349493|Toulon
-3349494|La Seyne-sur-Mer
+3349494|La Seyne sur Mer
 3349495|Saint-Raphaël
 3349496|Sainte-Maxime
 3349497|Saint-Tropez
-3349498|Toulon
+3349498|Le Beausset
 3349499|Vidauban
 3349504|Marseille
 3349505|Marseille
@@ -5323,6 +5492,8 @@
 3349523|Ajaccio
 3349525|Grosseto-Prugna
 3349526|Cargèse
+3349527|Piana
+3349528|Sagone
 3349530|Bastia
 3349531|Bastia
 3349532|Bastia
@@ -5350,6 +5521,7 @@
 3349574|Serra-Di-Ferro
 3349576|Propriano
 3349577|Sartène
+3349578|Levie
 3349610|Marseille
 3349611|Marseille
 3349612|Marseille
@@ -5367,14 +5539,14 @@
 3349711|Nice
 3349712|Saint-Laurent-du-Var
 3349719|Saint-Laurent-du-Var
-3349721|Antibes
-3349723|Valbonne
+3349721|Antibes Juan les Pins
+3349723|Antibes Juan les Pins
 3349725|Nice
 3349800|Toulon
 3349803|Toulon
 3349805|Saint-Maximin-la-Sainte-Baume
 3349810|Draguignan
-3349811|Saint-Raphaël
+3349811|Puget-sur-Argens
 3349812|Fréjus
 3349902|Sète
 3349904|Sète
@@ -5399,10 +5571,18 @@
 3349992|Montpellier
 3351649|La Rochelle
 3351665|Rochefort
+3351685|La Rochelle
+3351725|Rochefort
 3352407|Bordeaux
+3352426|Dax
+3352433|Biarritz
 3352436|Pau
+3352460|Bordeaux
+3352461|Bordeaux
 3352498|Pau
 3353154|Toulouse
+3353198|Toulouse
+3353348|Bordeaux
 3353351|Bordeaux
 3353401|Pamiers
 3353409|Foix
@@ -5422,13 +5602,15 @@
 3353446|Muret
 3353450|Toulouse
 3353451|Toulouse
-3353455|Colomiers
+3353455|Toulouse
 3353456|Toulouse
+3353459|Tournefeuille
 3353460|Toulouse
 3353461|Toulouse
 3353463|Toulouse
 3354005|Bordeaux
 3354039|Bayonne
+3354071|Bordeaux
 3354525|Angoulême
 3354529|Ruffec
 3354530|Ruffec
@@ -5438,10 +5620,12 @@
 3354536|Cognac
 3354537|Angoulême
 3354538|Angoulême
+3354539|Chasseneuil-sur-Bonnieure
 3354561|Angoulême
+3354563|La Rochefoucauld
 3354565|Ruelle-sur-Touvre
 3354566|Roullet-Saint-Estèphe
-3354567|Mouthiers-sur-Boëme
+3354567|La Couronne
 3354568|Angoulême
 3354569|Angoulême
 3354570|Montbron
@@ -5462,6 +5646,7 @@
 3354595|Angoulême
 3354597|Châteauneuf-sur-Charente
 3354598|Chalais
+3354600|La Rochelle
 3354601|Marans
 3354602|Saujon
 3354605|Royan
@@ -5473,21 +5658,23 @@
 3354623|Saint-Palais-sur-Mer
 3354624|Villeneuve-la-Comtesse
 3354625|Mons
+3354627|La Rochelle
 3354628|La Rochelle
 3354629|Ars-en-Ré
 3354630|Sainte-Marie-de-Ré
+3354631|La Rochelle
 3354632|Saint-Jean-d'Angély
 3354634|La Rochelle
 3354635|Aigrefeuille-d'Aunis
-3354636|Arvert
+3354636|La Tremblade
 3354637|Nieul-sur-Mer
 3354638|Royan
 3354639|Royan
 3354641|La Rochelle
 3354642|La Rochelle
 3354643|La Rochelle
-3354644|Aytré
-3354645|Aytré
+3354644|La Rochelle
+3354645|La Rochelle
 3354647|Saint-Pierre-d'Oléron
 3354648|Jonzac
 3354650|La Rochelle
@@ -5495,7 +5682,7 @@
 3354656|Châtelaillon-Plage
 3354658|Matha
 3354659|Saint-Jean-d'Angély
-3354667|Lagord
+3354667|La Rochelle
 3354668|Puilboreau
 3354674|Saintes
 3354675|Dolus-d'Oléron
@@ -5510,8 +5697,10 @@
 3354697|Saintes
 3354698|Saintes
 3354699|Rochefort
+3354729|Bordeaux
 3354733|Bordeaux
 3354755|Dax
+3354764|Bayonne
 3354774|Bordeaux
 3354779|Bordeaux
 3354792|Pau
@@ -5521,7 +5710,7 @@
 3354903|Poitiers
 3354904|Niort
 3354905|Saint-Maixent-l'École
-3354906|Niort
+3354906|Coulonges-sur-l'Autize
 3354908|Chauray
 3354909|Niort
 3354911|Poitiers
@@ -5546,7 +5735,7 @@
 3354943|Vivonne
 3354944|Poitiers
 3354945|Poitiers
-3354946|Poitiers
+3354946|Chauvigny
 3354947|Poitiers
 3354949|Chasseneuil-du-Poitou
 3354950|Poitiers
@@ -5591,7 +5780,7 @@
 3355309|Périgueux
 3355313|Périgueux
 3355320|Marmande
-3355323|Bergerac
+3355323|Eymet
 3355324|Bergerac
 3355327|Bergerac
 3355330|Sarlat-la-Canéda
@@ -5647,6 +5836,7 @@
 3355517|Brive-la-Gaillarde
 3355518|Brive-la-Gaillarde
 3355520|Tulle
+3355522|Brive-la-Gaillarde
 3355523|Brive-la-Gaillarde
 3355524|Brive-la-Gaillarde
 3355526|Tulle
@@ -5674,6 +5864,7 @@
 3355556|Saint-Léonard-de-Noblat
 3355558|Nexon
 3355561|Guéret
+3355563|La Souterraine
 3355564|Bourganeuf
 3355566|Aubusson
 3355568|Bellac
@@ -5693,6 +5884,7 @@
 3355587|Brive-la-Gaillarde
 3355588|Brive-la-Gaillarde
 3355589|Dun-le-Palestel
+3355591|Beaulieu-sur-Dordogne
 3355592|Malemort-sur-Corrèze
 3355593|Égletons
 3355595|Meymac
@@ -5747,7 +5939,7 @@
 3355650|Bordeaux
 3355651|Bordeaux
 3355652|Bordeaux
-3355654|Arcachon
+3355654|La Teste de Buch
 3355655|Mérignac
 3355656|Bordeaux
 3355657|Eysines
@@ -5790,11 +5982,11 @@
 3355710|Bordeaux
 3355712|Gradignan
 3355714|Bordeaux
-3355715|Gujan-Mestras
+3355715|La Teste de Buch
 3355717|Biganos
 3355719|Bordeaux
 3355722|Bordeaux
-3355724|Saint-Émilion
+3355724|Saint-Emilion
 3355725|Libourne
 3355726|Pessac
 3355729|Mérignac
@@ -5810,7 +6002,7 @@
 3355749|Coutras
 3355750|Libourne
 3355751|Libourne
-3355752|Arcachon
+3355752|La Teste de Buch
 3355753|Mérignac
 3355754|Cenon
 3355755|Libourne
@@ -5844,7 +6036,7 @@
 3355809|Mimizan
 3355835|Saint-Paul-lès-Dax
 3355841|Soustons
-3355842|Lit-et-Mixé
+3355842|Lit-et-Mixe
 3355843|Soorts-Hossegor
 3355846|Mont-de-Marsan
 3355847|Magescq
@@ -5872,7 +6064,7 @@
 3355901|Biarritz
 3355902|Pau
 3355903|Anglet
-3355905|Arudy
+3355905|Laruns
 3355906|Jurançon
 3355909|Saint-Palais
 3355911|Pau
@@ -5939,7 +6131,7 @@
 3355985|Saint-Jean-de-Luz
 3355988|Arette
 3355990|Pau
-3355992|Pau
+3355992|Lons
 3355993|Ustaritz
 3355998|Pau
 3356100|Labège
@@ -6021,6 +6213,7 @@
 3356200|Saint-Gaudens
 3356205|Auch
 3356206|Fleurance
+3356207|L'Isle Jourdain
 3356209|Eauze
 3356211|Toulouse
 3356212|Toulouse
@@ -6070,7 +6263,7 @@
 3356275|Aucamville
 3356287|Toulouse
 3356288|Toulouse
-3356289|Saint-Jean
+3356289|L'Union
 3356290|Ibos
 3356291|Bagnères-de-Bigorre
 3356292|Cauterets
@@ -6138,6 +6331,7 @@
 3356534|Figeac
 3356535|Cahors
 3356537|Souillac
+3356538|Saint-Céré
 3356539|Biars-sur-Cère
 3356541|Gourdon
 3356542|Rodez
@@ -6165,65 +6359,95 @@
 3356598|Saint-Affrique
 3356700|Toulouse
 3356711|Toulouse
+3356716|Toulouse
 3356722|Toulouse
 3356733|Toulouse
 3356745|Tarbes
+3358134|Toulouse
 3358160|Toulouse
 3358197|Toulouse
+3358274|Toulouse
 3358295|Toulouse
 3358741|Limoges
-3359020|Morne-A-l'Eau
-3359021|Baie Mahault
+3359020|Les Abymes
+3359021|Pointe-à-Pitre
 3359022|Petit-Canal
-3359023|Sainte-Anne
-3359024|Morne-A-l'Eau
+3359023|Le Moule
+3359024|Morne-À-l'Eau
 3359025|Baie Mahault
 3359026|Baie Mahault
+3359027|Saint Barthélémy
 3359028|Sainte Rose
+3359029|Saint Barthélémy
 3359032|Baie Mahault
 3359038|Baie Mahault
 3359041|Baie Mahault
+3359048|Les Abymes
+3359051|Saint Barthélémy
+3359052|Saint Barthélémy
 3359060|Baie Mahault
 3359068|Sainte Rose
-3359080|Baie Mahault
+3359080|Saint-Claude
 3359081|Basse Terre
-3359083|Saint-Francois
-3359084|Sainte-Anne
+3359082|Pointe-à-Pitre
+3359083|Pointe-à-Pitre
+3359084|Le Gosier
 3359085|Sainte-Anne
 3359086|Capesterre Belle Eau
+3359087|Saint Barthélémy
 3359088|Sainte-Anne
-3359089|Sainte-Anne
-3359090|Saint-Francois
-3359091|Saint-Francois
-3359092|Trois Rivieres
-3359093|Baie Mahault
+3359089|Les Abymes
+3359090|Pointe-à-Pitre
+3359091|Les Abymes
+3359092|Trois-Rivières
+3359093|Pointe-à-Pitre
 3359094|Petit Bourg
 3359095|Petit Bourg
 3359097|Grand-Bourg
-3359098|Pointe Noire
+3359098|Vieux Habitants
 3359099|Basse Terre
 3359422|Kourou
 3359425|Cayenne
-3359427|Roura
+3359427|Saint-Laurent-du-Maroni
 3359428|Cayenne
 3359429|Cayenne
 3359430|Cayenne
 3359431|Cayenne
 3359432|Kourou
-3359434|Mana
+3359434|Saint-Laurent-du-Maroni
 3359435|Matoury
 3359437|Cayenne
-3359438|Remire-Montjoly
+3359438|Cayenne
 3359439|Cayenne
-3359650|Saint-Joseph
+3359638|Le Robert
+3359639|Fort de France
+3359642|Fort de France
+3359648|Rivière-Salée
+3359650|Fort de France
+3359651|Fort de France
 3359652|Schoelcher
-3359655|Bellefontaine
-3359656|Saint-Esprit
+3359653|Le Lorrain
+3359654|Le François
+3359655|Le Morne Vert
+3359656|Ducos
 3359657|Saint-Joseph
-3359660|Schoelcher
+3359658|Fort de France
+3359660|Fort de France
 3359661|Schoelcher
+3359662|Rivière-Pilote
+3359663|Fort de France
 3359664|Fort de France
-3359670|Schoelcher
-3359672|Schoelcher
-3359677|Saint-Esprit
+3359665|Le Robert
+3359667|Gros-Morne
+3359668|Rivière-Salée
+3359669|Sainte-Marie
+3359670|Fort de France
+3359671|Fort de France
+3359672|Fort de France
+3359673|Fort de France
+3359674|Le Vauclin
+3359675|Fort de France
+3359676|Sainte-Anne
+3359677|Ducos
 3359678|Saint-Pierre
+3359679|Fort de France

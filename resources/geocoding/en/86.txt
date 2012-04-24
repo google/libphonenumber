@@ -55,6 +55,7 @@
 86374|Xuchang, Henan
 86375|Pingdingshan, Henan
 86376|Xinyang, Henan
+86377|Nanyang, Henan
 86378|Kaifeng, Henan
 86379|Luoyang, Henan
 86391|Jiaozuo, Henan
@@ -103,6 +104,7 @@
 86472|Baotou, Inner Mongolia
 86473|Wuhai, Inner Mongolia
 86474|Jining, Inner Mongolia
+86475|Tongliao, Inner Mongolia
 86476|Chifeng, Inner Mongolia
 86477|Dongsheng, Inner Mongolia
 86478|Linhe, Inner Mongolia

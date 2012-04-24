@@ -14,25 +14,27 @@
 
 # Translated from es/56.txt with Freebase and Wikipedia.
 
-562|Santiago
+562|Santiago, Metropolitan Region
 5632|Valparaíso
-5633|Quillota
-5635|San Antonio
-5641|Concepción
-5642|Chillán
-5643|Los Angeles
-5645|Temuco
-5651|Coquimbo
-5652|Copiapó
-5653|Ovalle
+5633|Quillota, Valparaíso
+5634|San Felipe, Valparaíso
+5635|San Antonio, Valparaíso
+5641|Concepción, Biobío
+5642|Chillán, Biobío
+5643|Los Angeles, Biobío
+5645|Temuco, Araucanía
+5651|La Serena, Coquimbo
+5652|Copiapó, Atacama
+5653|Ovalle, Coquimbo
 5655|Antofagasta
-5657|Iquique
-5658|Arica
-5661|Punta Arenas
-5663|Valdivia
-5664|Osorno
-5665|Puerto Montt
-5671|Talca
-5672|Rancagua
-5673|Linares
-5675|Curicó
+5657|Iquique, Tarapacá
+5658|Arica, Arica and Parinacota
+5661|Punta Arenas, Magallanes and Antártica Chilena
+5663|Valdivia, Los Ríos
+5664|Osorno, Los Lagos
+5665|Puerto Montt, Los Lagos
+5667|Coyhaique, Aisén
+5671|Talca, Maule
+5672|Rancagua, O'Higgins
+5673|Linares, Maule
+5675|Curicó, Maule

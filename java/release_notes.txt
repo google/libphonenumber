@@ -1,11 +1,23 @@
+April 24th, 2012: libphonenumber-4.8
+* Functionality changes
+ - RFC format now outputs a number starting with "tel:"
+ - Parsing support for numbers in RFC format that contain the country info in the "phone-context"
+   part
+ - Support for obtaining area codes for Italy, Vatican City, San Marino
+* Metadata changes
+ - AM, AO, AR, BE, BF, CD, EG, GH, GM, GN, IN, IR, IT, JO, LA, LC, MD, MS, NO, PA, PK, SI, SJ, SO,
+   SY, TC, TN, UZ, VN, ZW
+ - Geocoding updates for country calling codes 1, 20, 233, 31, 33, 352, 374, 54, 56, 86
+* Refactoring of matching functions, including moving them to PhoneNumberMatcher.
+
 March 16th, 2012: libphonenumber-4.7
 * Bug fixes
  - Now return "too long" for input that is longer than 250 chars when parsing
 * Metadata changes
  - AC,AM,AT,AZ,BF,BR,BY,BZ,CR,CU,DE,DJ,EE,EG,ET,GA,GH,HK,HN,ID,IN,JP,KE,KG,KH,KR,KW,KY,LB,LU,MA,MD,
    MK,NA,NE,NZ,SA,SB,SC,SE,SL,SN,UZ
- * Refactoring of test classes so that tests requiring the test metadata to be loaded have a common
-   base class which handles this.
+* Refactoring of test classes so that tests requiring the test metadata to be loaded have a common
+  base class which handles this.
 
 February 9th, 2012: libphonenumber-4.6
 * Bug fixes

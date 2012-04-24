@@ -232,6 +232,7 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     assertFalse(PhoneNumberMatcher.isLatinLetter('.'));
     assertFalse(PhoneNumberMatcher.isLatinLetter(' '));
     assertFalse(PhoneNumberMatcher.isLatinLetter('\u6211'));  // Chinese character
+    assertFalse(PhoneNumberMatcher.isLatinLetter('\u306E'));  // Hiragana letter no
   }
 
   public void testMatchesWithSurroundingLatinChars() throws Exception {
@@ -415,7 +416,7 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
   };
 
   /**
-   * Strings with number-like things that should found at all levels.
+   * Strings with number-like things that should be found at all levels.
    */
   private static final NumberTest[] EXACT_GROUPING_CASES = {
     new NumberTest("\uFF14\uFF11\uFF15\uFF16\uFF16\uFF16\uFF17\uFF17\uFF17\uFF17", RegionCode.US),
