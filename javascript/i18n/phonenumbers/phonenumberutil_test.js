@@ -321,6 +321,10 @@ function testGetLengthOfGeographicalAreaCode() {
   // Google Sydney, which has area code '2'.
   assertEquals(1, phoneUtil.getLengthOfGeographicalAreaCode(AU_NUMBER));
 
+  // Italian numbers - there is no national prefix, but it still has an area
+  // code.
+  assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(IT_NUMBER));
+
   // Google Singapore. Singapore has no area code and no national prefix.
   assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(SG_NUMBER));
 
@@ -488,7 +492,7 @@ function testFormatUSNumber() {
                phoneUtil.format(US_PREMIUM, PNF.NATIONAL));
   assertEquals('+1 900 253 0000',
                phoneUtil.format(US_PREMIUM, PNF.INTERNATIONAL));
-  assertEquals('+1-900-253-0000',
+  assertEquals('tel:+1-900-253-0000',
                phoneUtil.format(US_PREMIUM, PNF.RFC3966));
   // Numbers with all zeros in the national number part will be formatted by
   // using the raw_input if that is available no matter which format is
@@ -529,7 +533,7 @@ function testFormatDENumber() {
                phoneUtil.format(deNumber, PNF.NATIONAL));
   assertEquals('+49 30/1234',
                phoneUtil.format(deNumber, PNF.INTERNATIONAL));
-  assertEquals('+49-30-1234',
+  assertEquals('tel:+49-30-1234',
                phoneUtil.format(deNumber, PNF.RFC3966));
 
   deNumber = new i18n.phonenumbers.PhoneNumber();
@@ -970,7 +974,7 @@ function testFormatByPattern() {
                phoneUtil.formatByPattern(US_NUMBER,
                                          PNF.INTERNATIONAL,
                                          [newNumFormat]));
-  assertEquals('+1-650-253-0000',
+  assertEquals('tel:+1-650-253-0000',
                phoneUtil.formatByPattern(US_NUMBER,
                                          PNF.RFC3966,
                                          [newNumFormat]));
@@ -1043,7 +1047,7 @@ function testFormatNumberWithExtension() {
   assertEquals('03-331 6005 ext. 1234',
                phoneUtil.format(nzNumber, PNF.NATIONAL));
   // Uses RFC 3966 syntax.
-  assertEquals('+64-3-331-6005;ext=1234',
+  assertEquals('tel:+64-3-331-6005;ext=1234',
                phoneUtil.format(nzNumber, PNF.RFC3966));
   // Extension prefix overridden in the territory information for the US:
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -2007,6 +2011,13 @@ function testParseNationalNumber() {
   // National prefix attached and some formatting present.
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('03-331 6005', RegionCode.NZ)));
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('03 331 6005', RegionCode.NZ)));
+  // Test parsing RFC3966 format with a phone context.
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:03-331-6005;phone-context=+64', RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:331-6005;phone-context=+64-3', RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:331-6005;phone-context=+64-3', RegionCode.US)));
 
   // Testing international prefixes.
   // Should strip country calling code.
@@ -2046,7 +2057,7 @@ function testParseNationalNumber() {
   // Test star numbers. Although this is not strictly valid, we would like to
   // make sure we can parse the output we produce when formatting the number.
   assertTrue(
-      JP_STAR_NUMBER.equals(phoneUtil.parse("+81 *2345", RegionCode.JP)));
+      JP_STAR_NUMBER.equals(phoneUtil.parse('+81 *2345', RegionCode.JP)));
 }
 
 function testParseNumberWithAlphaCharacters() {
@@ -2462,6 +2473,30 @@ function testFailedParseOnInvalidNumbers() {
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
                  e);
   }
+  try {
+    /** @type {string} */
+    var domainRfcPhoneContext = 'tel:555-1234;phone-context:www.google.com';
+    phoneUtil.parse(domainRfcPhoneContext, RegionCode.US);
+    fail('Domain provided for phone context - should fail.');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
+    // This is invalid because no '+' sign is present as part of phone-context.
+    // This should not succeed in being parsed.
+    /** @type {string} */
+    var invalidRfcPhoneContext = 'tel:555-1234;phone-context:1-331';
+    phoneUtil.parse(invalidRfcPhoneContext, RegionCode.US);
+    fail('No leading plus provided in phone context - should fail.');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
 }
 
 function testParseNumbersWithPlusWithNoRegion() {
@@ -2479,6 +2514,12 @@ function testParseNumbersWithPlusWithNoRegion() {
       NZ_NUMBER.equals(phoneUtil.parse('+64 3 331 6005', null)));
   assertTrue(
       INTERNATIONAL_TOLL_FREE.equals(phoneUtil.parse('+800 1234 5678', null)));
+
+  // Test parsing RFC3966 format with a phone context.
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:03-331-6005;phone-context=+64', RegionCode.ZZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('  tel:03-331-6005;phone-context=+64', RegionCode.ZZ)));
 
   // It is important that we set the carrier code to an empty string, since we
   // used ParseAndKeepRawInput and no carrier code was found.
@@ -2553,6 +2594,9 @@ function testParseExtensions() {
       phoneUtil.parse('+44 2034567890  X 456', RegionCode.GB)));
   assertTrue(ukNumber.equals(
       phoneUtil.parse('+44-2034567890;ext=456', RegionCode.GB)));
+  assertTrue(ukNumber.equals(
+      phoneUtil.parse('tel:2034567890;ext=456;phone-context=+44',
+                      RegionCode.ZZ)));
   // Full-width extension, 'extn' only.
   assertTrue(ukNumber.equals(
       phoneUtil.parse('+442034567890\uFF45\uFF58\uFF54\uFF4E456',

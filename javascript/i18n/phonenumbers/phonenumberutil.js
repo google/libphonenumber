@@ -185,6 +185,25 @@ i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ = ';ext=';
 
 
 /**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_ = 'tel:';
+
+
+/**
+ * We include the "+" here since RFC3966 format specifies that the context must
+ * be specified in international format.
+ *
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_ = ';phone-context=+';
+
+
+/**
  * These mappings map a character (key) to a specific digit that should replace
  * it for normalization purposes. Non-European digits that may be used in phone
  * numbers are mapped to a European equivalent.
@@ -788,13 +807,14 @@ i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY = '001';
 
 /**
  * INTERNATIONAL and NATIONAL formats are consistent with the definition in
- * ITU-T Recommendation E. 123. For example, the number of the Google
- * Switzerland office will be written as '+41 44 668 1800' in INTERNATIONAL
- * format, and as '044 668 1800' in NATIONAL format. E164 format is as per
- * INTERNATIONAL format but with no formatting applied, e.g. +41446681800.
- * RFC3966 is as per INTERNATIONAL format, but with all spaces and other
- * separating symbols replaced with a hyphen, and with any phone number
- * extension appended with ';ext='.
+ * ITU-T Recommendation E123. For example, the number of the Google Switzerland
+ * office will be written as '+41 44 668 1800' in INTERNATIONAL format, and as
+ * '044 668 1800' in NATIONAL format. E164 format is as per INTERNATIONAL format
+ * but with no formatting applied, e.g. '+41446681800'. RFC3966 is as per
+ * INTERNATIONAL format, but with all spaces and other separating symbols
+ * replaced with a hyphen, and with any phone number extension appended with
+ * ';ext='. It also will have a prefix of 'tel:' added, e.g.
+ * 'tel:+41-44-668-1800'.
  *
  * Note: If you are considering storing the number in a neutral format, you are
  * highly advised to use the PhoneNumber class.
@@ -1015,12 +1035,12 @@ i18n.phonenumbers.PhoneNumberUtil.convertAlphaCharactersInNumber =
 
 
 /**
- * Gets the length of the geographical area code in the {@code national_number}
- * field of the PhoneNumber object passed in, so that clients could use it to
- * split a national significant number into geographical area code and
- * subscriber number. It works in such a way that the resultant subscriber
- * number should be diallable, at least on some devices. An example of how this
- * could be used:
+ * Gets the length of the geographical area code from the
+ * {@code national_number} field of the PhoneNumber object passed in, so that
+ * clients could use it to split a national significant number into geographical
+ * area code and subscriber number. It works in such a way that the resultant
+ * subscriber number should be diallable, at least on some devices. An example
+ * of how this could be used:
  *
  * <pre>
  * var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
@@ -1073,7 +1093,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
   }
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = this.getMetadataForRegion(regionCode);
-  if (!metadata.hasNationalPrefix()) {
+  // If a country doesn't use a national prefix, and this number doesn't have an
+  // Italian leading zero, we assume it is a closed dialling plan with no area
+  // codes.
+  if (!metadata.hasNationalPrefix() && !number.hasItalianLeadingZero()) {
     return 0;
   }
 
@@ -2052,7 +2075,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
       return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCallingCode +
           ' ' + formattedNationalNumber + formattedExtension;
     case i18n.phonenumbers.PhoneNumberFormat.RFC3966:
-      return i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCallingCode +
+      return i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_ +
+          i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + countryCallingCode +
           '-' + formattedNationalNumber + formattedExtension;
     case i18n.phonenumbers.PhoneNumberFormat.NATIONAL:
     default:
@@ -3465,18 +3489,43 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
       i18n.phonenumbers.PhoneNumberUtil.MAX_INPUT_STRING_LENGTH_) {
     throw 'The string supplied was too long to parse';
   }
-  // Extract a possible number from the string passed in (this strips leading
-  // characters that could not be the start of a phone number.)
-  /** @type {string} */
-  var number =
-      i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber(numberToParse);
-  if (!i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber(number)) {
+
+  /** @type {number} */
+  var indexOfPhoneContext = numberToParse.indexOf(
+      i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
+  /** @type {!goog.string.StringBuffer} */
+  var nationalNumber = new goog.string.StringBuffer();
+  if (indexOfPhoneContext > 0) {
+    // Prefix the number with the phone context. The offset here is because the
+    // context we are expecting to match should start with a "+" sign, and we
+    // want to include this at the start of the number.
+    nationalNumber.append(numberToParse.substring(
+        indexOfPhoneContext +
+        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_.length - 1));
+    // Now append everything between the "tel:" prefix and the phone-context.
+    nationalNumber.append(numberToParse.substring(
+        numberToParse.indexOf(
+            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_) +
+        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length,
+        indexOfPhoneContext));
+    // Note that phone-contexts that are URLs will not be parsed -
+    // isViablePhoneNumber will throw an exception below.
+  } else {
+    // Extract a possible number from the string passed in (this strips leading
+    // characters that could not be the start of a phone number.)
+    nationalNumber.append(
+        i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber(numberToParse));
+  }
+
+  if (!i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber(
+      nationalNumber.toString())) {
     throw i18n.phonenumbers.Error.NOT_A_NUMBER;
   }
 
   // Check the region supplied is valid, or that the extracted number starts
   // with some sort of + sign so the number's region can be determined.
-  if (checkRegion && !this.checkRegionForParsing_(number, defaultRegion)) {
+  if (checkRegion &&
+      !this.checkRegionForParsing_(nationalNumber.toString(), defaultRegion)) {
     throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
   }
 
@@ -3485,8 +3534,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   if (keepRawInput) {
     phoneNumber.setRawInput(numberToParse);
   }
-  /** @type {!goog.string.StringBuffer} */
-  var nationalNumber = new goog.string.StringBuffer(number);
   // Attempt to parse extension first, since it doesn't require region-specific
   // data and we want to have the non-normalised number here.
   /** @type {string} */
