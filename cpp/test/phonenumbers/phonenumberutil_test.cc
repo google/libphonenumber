@@ -337,7 +337,7 @@ TEST_F(PhoneNumberUtilTest, FormatUSNumber) {
                      &formatted_number);
   EXPECT_EQ("+1 900 253 0000", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::RFC3966, &formatted_number);
-  EXPECT_EQ("+1-900-253-0000", formatted_number);
+  EXPECT_EQ("tel:+1-900-253-0000", formatted_number);
   test_number.set_national_number(0ULL);
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
   EXPECT_EQ("0", formatted_number);
@@ -405,7 +405,7 @@ TEST_F(PhoneNumberUtilTest, FormatDENumber) {
                      &formatted_number);
   EXPECT_EQ("+49 30/1234", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::RFC3966, &formatted_number);
-  EXPECT_EQ("+49-30-1234", formatted_number);
+  EXPECT_EQ("tel:+49-30-1234", formatted_number);
 
   test_number.set_national_number(291123ULL);
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
@@ -968,7 +968,7 @@ TEST_F(PhoneNumberUtilTest, FormatByPattern) {
   phone_util_.FormatByPattern(test_number, PhoneNumberUtil::RFC3966,
                               number_formats,
                               &formatted_number);
-  EXPECT_EQ("+1-650-253-0000", formatted_number);
+  EXPECT_EQ("tel:+1-650-253-0000", formatted_number);
 
   // $NP is set to '1' for the US. Here we check that for other NANPA countries
   // the US rules are followed.
@@ -1057,7 +1057,7 @@ TEST_F(PhoneNumberUtilTest, FormatNumberWithExtension) {
   EXPECT_EQ("03-331 6005 ext. 1234", formatted_number);
   // Uses RFC 3966 syntax.
   phone_util_.Format(nz_number, PhoneNumberUtil::RFC3966, &formatted_number);
-  EXPECT_EQ("+64-3-331-6005;ext=1234", formatted_number);
+  EXPECT_EQ("tel:+64-3-331-6005;ext=1234", formatted_number);
   // Extension prefix overridden in the territory information for the US:
   PhoneNumber us_number_with_extension;
   us_number_with_extension.set_country_code(1);
@@ -1105,9 +1105,17 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_national_number(293744000ULL);
   EXPECT_EQ(1, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
+  // Italian numbers - there is no national prefix, but it still has an area
+  // code.
+  number.set_country_code(39);
+  number.set_national_number(236618300ULL);
+  number.set_italian_leading_zero(true);
+  EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
+
   // Google Singapore. Singapore has no area code and no national prefix.
   number.set_country_code(65);
   number.set_national_number(65218000ULL);
+  number.set_italian_leading_zero(false);
   EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // An international toll free number, which has no area code.
@@ -2593,6 +2601,19 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03 331 6005", RegionCode::NZ(), &test_number));
   EXPECT_EQ(nz_number, test_number);
+  // Test parsing RFC3966 format with a phone context.
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:03-331-6005;phone-context=+64",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:331-6005;phone-context=+64-3",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:331-6005;phone-context=+64-3",
+                              RegionCode::US(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
 
   // Testing international prefixes.
   // Should strip country code.
@@ -3043,6 +3064,18 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
             phone_util_.Parse("0119", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  // RFC3966 phone-context is a website.
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("tel:555-1234;phone-context:www.google.com",
+                              RegionCode::US(), &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+  // This is invalid because no "+" sign is present as part of phone-context.
+  // This should not succeed in being parsed.
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("tel:555-1234;phone-context:1-331",
+                              RegionCode::US(), &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
@@ -3078,6 +3111,18 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
             phone_util_.Parse("+800 1234 5678",
                               RegionCode::GetUnknown(), &result_proto));
   EXPECT_EQ(toll_free_number, result_proto);
+
+  result_proto.Clear();
+  // Test parsing RFC3966 format with a phone context.
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:03-331-6005;phone-context=+64",
+                              RegionCode::GetUnknown(), &result_proto));
+  EXPECT_EQ(nz_number, result_proto);
+  result_proto.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("  tel:03-331-6005;phone-context=+64",
+                              RegionCode::GetUnknown(), &result_proto));
+  EXPECT_EQ(nz_number, result_proto);
 
   nz_number.set_raw_input("+64 3 331 6005");
   nz_number.set_country_code_source(PhoneNumber::FROM_NUMBER_WITH_PLUS_SIGN);
@@ -3206,6 +3251,12 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
             phone_util_.Parse("+44-2034567890;ext=456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:2034567890;ext=456;phone-context=+44",
+                              RegionCode::ZZ(), &test_number));
+  EXPECT_EQ(uk_number, test_number);
+
   // Full-width extension, "extn" only.
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,

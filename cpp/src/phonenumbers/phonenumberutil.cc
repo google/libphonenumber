@@ -96,6 +96,10 @@ const char kPlusSign[] = "+";
 const char kStarSign[] = "*";
 
 const char kRfc3966ExtnPrefix[] = ";ext=";
+const char kRfc3966Prefix[] = "tel:";
+// We include the "+" here since RFC3966 format specifies that the context must
+// be specified in international format.
+const char kRfc3966PhoneContext[] = ";phone-context=+";
 
 const char kDigits[] = "\\p{Nd}";
 // We accept alpha characters in phone numbers, ASCII only. We store lower-case
@@ -169,7 +173,8 @@ void PrefixNumberWithCountryCallingCode(
       return;
     case PhoneNumberUtil::RFC3966:
       formatted_number->insert(
-          0, StrCat(kPlusSign, SimpleItoa(country_calling_code), "-"));
+          0, StrCat(kRfc3966Prefix, kPlusSign,
+                    SimpleItoa(country_calling_code), "-"));
       return;
     case PhoneNumberUtil::NATIONAL:
     default:
@@ -666,6 +671,9 @@ PhoneNumberUtil::PhoneNumberUtil()
        it != metadata_collection.metadata().end();
        ++it) {
     const string& region_code = it->id();
+    if (region_code == RegionCode::GetUnknown()) {
+      continue;
+    }
 
     int country_calling_code = it->country_code();
     if (kRegionCodeForNonGeoEntity == region_code) {
@@ -1697,10 +1705,32 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     bool check_region,
     PhoneNumber* phone_number) const {
   DCHECK(phone_number);
-  // Extract a possible number from the string passed in (this strips leading
-  // characters that could not be the start of a phone number.)
+
+  size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
   string national_number;
-  ExtractPossibleNumber(number_to_parse, &national_number);
+  if (index_of_phone_context != string::npos) {
+    // Prefix the number with the phone context. The offset here is because the
+    // context we are expecting to match should start with a "+" sign, and we
+    // want to include this at the start of the number.
+    StrAppend(
+        &national_number,
+        number_to_parse.substr(
+            index_of_phone_context + strlen(kRfc3966PhoneContext) - 1));
+    // Now append everything between the "tel:" prefix and the phone-context.
+    int end_of_rfc_prefix =
+        number_to_parse.find(kRfc3966Prefix) + strlen(kRfc3966Prefix);
+    StrAppend(
+        &national_number,
+        number_to_parse.substr(end_of_rfc_prefix,
+                               index_of_phone_context - end_of_rfc_prefix));
+    // Note that phone-contexts that are URLs will not be parsed -
+    // IsViablePhoneNumber will throw an exception below.
+  } else {
+    // Extract a possible number from the string passed in (this strips leading
+    // characters that could not be the start of a phone number.)
+    ExtractPossibleNumber(number_to_parse, &national_number);
+  }
+
   if (!IsViablePhoneNumber(national_number)) {
     VLOG(2) << "The string supplied did not seem to be a phone number.";
     return NOT_A_NUMBER;
@@ -1991,7 +2021,10 @@ int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
   }
   const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
   DCHECK(metadata);
-  if (!metadata->has_national_prefix()) {
+  // If a country doesn't use a national prefix, and this number doesn't have an
+  // Italian leading zero, we assume it is a closed dialling plan with no area
+  // codes.
+  if (!metadata->has_national_prefix() && !number.italian_leading_zero()) {
     return 0;
   }
 

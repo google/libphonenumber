@@ -340,6 +340,7 @@ add_custom_target(test COMMAND libphonenumber_test DEPENDS libphonenumber_test)
 # Install rules.
 install (FILES
   "src/phonenumbers/asyoutypeformatter.h"
+  "src/phonenumbers/callback.h"
   "src/phonenumbers/logger.h"
   "src/phonenumbers/phonenumber.pb.h"
   "src/phonenumbers/phonemetadata.pb.h"

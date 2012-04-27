@@ -23,16 +23,20 @@
 #define I18N_PHONENUMBERS_PHONENUMBERMATCHER_H_
 
 #include <string>
+#include <vector>
 
 #include "base/basictypes.h"
 #include "base/memory/scoped_ptr.h"
+#include "phonenumbers/callback.h"
 #include "phonenumbers/regexp_adapter.h"
 
 namespace i18n {
 namespace phonenumbers {
 
 using std::string;
+using std::vector;
 
+class NumberFormat;
 class PhoneNumber;
 class PhoneNumberMatch;
 class PhoneNumberMatcherRegExps;
@@ -120,6 +124,23 @@ class PhoneNumberMatcher {
   // succeed, returns true, otherwise this method returns false;
   bool ParseAndVerify(const string& candidate, int offset,
                       PhoneNumberMatch* match);
+
+  bool CheckNumberGroupingIsValid(
+    const PhoneNumber& phone_number,
+    const string& candidate,
+    ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
+                    const string&, const vector<string>&>* checker) const;
+
+  void GetNationalNumberGroups(
+      const PhoneNumber& number,
+      const NumberFormat* formatting_pattern,
+      vector<string>* digit_blocks) const;
+
+  bool AllNumberGroupsAreExactlyPresent(
+      const PhoneNumberUtil& util,
+      const PhoneNumber& phone_number,
+      const string& normalized_candidate,
+      const vector<string>& formatted_number_groups) const;
 
   bool VerifyAccordingToLeniency(Leniency leniency, const PhoneNumber& number,
                                  const string& candidate) const;

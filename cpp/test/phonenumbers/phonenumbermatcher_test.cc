@@ -536,6 +536,10 @@ TEST_F(PhoneNumberMatcherTest, IsLatinLetter) {
   EXPECT_FALSE(IsLatinLetter(' '));
   EXPECT_FALSE(
       IsLatinLetter(UnicodeString::fromUTF8("\xE6\x88\x91" /* "我" */)[0]));
+  /* Hiragana letter no (の) - this should neither seem to start or end with a
+     Latin letter. */
+  EXPECT_FALSE(IsLatinLetter(UnicodeString::fromUTF8("\xE3\x81\xAE")[0]));
+  EXPECT_FALSE(IsLatinLetter(UnicodeString::fromUTF8("\xE3\x81\xAE")[2]));
 }
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingLatinChars) {
@@ -747,7 +751,7 @@ static const NumberTest kStrictGroupingCases[] = {
   NumberTest("0800-2491234", RegionCode::DE()),
 };
 
-// Strings with number-like things that should found at all levels.
+// Strings with number-like things that should be found at all levels.
 static const NumberTest kExactGroupingCases[] = {
   NumberTest(
       /* "４１５６６６７７７７" */
