@@ -1,3 +1,9 @@
+May 8th, 2012: libphonenumber-4.8.1
+* Metadata update only:
+ - CA, CI, EG, HK, IN, IR, LB, MA, ME, MM
+ - Non-geographical entity with calling code 870 (Inmarsat)
+ - Geocoding updates for country calling codes 1 for new area codes
+
 April 24th, 2012: libphonenumber-4.8
 * Functionality changes
  - RFC format now outputs a number starting with "tel:"
