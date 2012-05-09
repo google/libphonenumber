@@ -30,6 +30,7 @@ test_cpp_version() {
   CC_TEST_FILE=`mktemp`.cc
   CC_TEST_BINARY=`mktemp`
   CMAKE_FLAGS="$1"
+  LD_FLAGS="-L${INSTALL_PREFIX}/lib -lphonenumber -lboost_thread $2"
 
   # Write the program that tests the installation of the library to a temporary
   # source file.
@@ -59,13 +60,15 @@ test_cpp_version() {
 
   # Run the build and tests.
   (
-    rm -rf cpp/build /tmp/libphonenumber &&
-    mkdir cpp/build /tmp/libphonenumber && cd cpp/build &&
-    cmake "${CMAKE_FLAGS}" -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX .. &&
-    make && ./libphonenumber_test && make install &&
-    $CXX -o $CC_TEST_BINARY $CC_TEST_FILE -I${INSTALL_PREFIX}/include \
-        -lboost_thread -L${INSTALL_PREFIX}/lib -lphonenumber &&
-    LD_LIBRARY_PATH=${INSTALL_PREFIX}/lib $CC_TEST_BINARY
+    set +e
+    rm -rf cpp/build /tmp/libphonenumber
+    mkdir cpp/build /tmp/libphonenumber
+    cd cpp/build
+    cmake "${CMAKE_FLAGS}" -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ..
+    make test
+    make install
+    $CXX -o $CC_TEST_BINARY $CC_TEST_FILE -I${INSTALL_PREFIX}/include $LD_FLAGS
+    LD_LIBRARY_PATH="${INSTALL_PREFIX}/lib" $CC_TEST_BINARY
   )
   STATUS=$?
   # Remove the temporary files.
@@ -74,11 +77,14 @@ test_cpp_version() {
 
   [ $STATUS -ne 0 ] && exit $STATUS
 }
-test_cpp_version ''
-test_cpp_version '-DUSE_ICU_REGEXP=ON'
-test_cpp_version '-DUSE_LITE_METADATA=ON'
-test_cpp_version '-DUSE_RE2=ON'
-test_cpp_version '-DUSE_STD_MAP=ON'
+
+BASE_LIBS='-licuuc -lprotobuf'
+
+test_cpp_version '' "$BASE_LIBS"
+test_cpp_version '-DUSE_ICU_REGEXP=ON' "$BASE_LIBS"
+test_cpp_version '-DUSE_LITE_METADATA=ON' '-licuuc -lprotobuf-lite'
+test_cpp_version '-DUSE_RE2=ON' "$BASE_LIBS -lre2"
+test_cpp_version '-DUSE_STD_MAP=ON' "$BASE_LIBS"
 
 # Test Java version using Ant.
 (cd java && ant clean jar && ant junit) || exit $?
