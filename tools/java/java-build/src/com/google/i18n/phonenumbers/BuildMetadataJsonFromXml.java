@@ -136,6 +136,11 @@ public class BuildMetadataJsonFromXml extends Command {
         writer.write(",");
       }
       String regionCode = metadata.getId();
+      // For non-geographical country calling codes (e.g. +800), use the country calling codes
+      // instead of the region code as key in the map.
+      if (regionCode.equals("001")) {
+        regionCode = Integer.toString(metadata.getCountryCode());
+      }
       JSArrayBuilder jsArrayBuilder = new JSArrayBuilder();
       toJsArray(metadata, jsArrayBuilder);
       writer.write("\"");

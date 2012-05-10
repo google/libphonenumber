@@ -1250,9 +1250,16 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_ =
 i18n.phonenumbers.PhoneNumberUtil.prototype.isValidRegionCode_ =
     function(regionCode) {
 
+  // In Java we check whether the regionCode is contained in supportedRegions
+  // that is built out of all the values of countryCallingCodeToRegionCodeMap
+  // (countryCodeToRegionCodeMap in JS) minus REGION_CODE_FOR_NON_GEO_ENTITY.
+  // In JS we check whether the regionCode is contained in the keys of
+  // countryToMetadata but since for non-geographical country calling codes
+  // (e.g. +800) we use the country calling codes instead of the region code as
+  // key in the map we have to make sure regionCode is not a number to prevent
+  // returning true for non-geographical country calling codes.
   return regionCode != null &&
-      regionCode !=
-          i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY &&
+      isNaN(regionCode) &&
       regionCode.toUpperCase() in i18n.phonenumbers.metadata.countryToMetadata;
 };
 
@@ -2512,8 +2519,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getMetadataForRegion =
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     getMetadataForNonGeographicalRegion = function(countryCallingCode) {
 
-  return this.getMetadataForRegion(
-      this.getRegionCodeForCountryCode(countryCallingCode));
+  return this.getMetadataForRegion('' + countryCallingCode);
 };
 
 
