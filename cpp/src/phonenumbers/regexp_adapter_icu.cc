@@ -15,18 +15,24 @@
 // Author: George Yakovlev
 //         Philippe Liard
 
+// Note that we don't use features of ICU that depend on std::string (e.g.
+// UnicodeString::toUTF8String()) to support clients that build ICU without
+// -DU_HAVE_STD_STRING.
+
 #include "phonenumbers/regexp_adapter_icu.h"
 
 #include <stddef.h>
 #include <string>
 
 #include <unicode/regex.h>
+#include <unicode/stringpiece.h>
 #include <unicode/unistr.h>
 
 #include "base/basictypes.h"
 #include "base/logging.h"
 #include "base/memory/scoped_ptr.h"
 #include "phonenumbers/default_logger.h"
+#include "phonenumbers/string_byte_sink.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -40,8 +46,16 @@ namespace {
 // Converts UnicodeString 'source' to a UTF8-formatted std::string.
 string UnicodeStringToUtf8String(const UnicodeString& source) {
   string data;
-  source.toUTF8String<string>(data);
+  StringByteSink sink(&data);
+  source.toUTF8(sink);
   return data;
+}
+
+// Converts UTF8-formatted std::string 'source' to a UnicodeString.
+UnicodeString Utf8StringToUnicodeString(const string& source) {
+  // Note that we don't use icu::StringPiece(const string&).
+  return UnicodeString::fromUTF8(
+      icu::StringPiece(source.c_str(), source.size()));
 }
 
 }  // namespace
@@ -53,7 +67,7 @@ string UnicodeStringToUtf8String(const UnicodeString& source) {
 class IcuRegExpInput : public RegExpInput {
  public:
   explicit IcuRegExpInput(const string& utf8_input)
-      : utf8_input_(UnicodeString::fromUTF8(utf8_input)),
+      : utf8_input_(Utf8StringToUnicodeString(utf8_input)),
         position_(0) {}
 
   virtual ~IcuRegExpInput() {}
@@ -92,7 +106,7 @@ class IcuRegExp : public RegExp {
     UParseError parse_error;
     UErrorCode status = U_ZERO_ERROR;
     utf8_regexp_.reset(RegexPattern::compile(
-        UnicodeString::fromUTF8(utf8_regexp), 0, parse_error, status));
+        Utf8StringToUnicodeString(utf8_regexp), 0, parse_error, status));
     if (U_FAILURE(status)) {
       // The provided regular expressions should compile correctly.
       LOG(ERROR) << "Error compiling regular expression: " << utf8_regexp;
@@ -178,9 +192,9 @@ class IcuRegExp : public RegExp {
     }
     UnicodeString result = global
         ? matcher->replaceAll(
-            UnicodeString::fromUTF8(replacement_string), status)
+            Utf8StringToUnicodeString(replacement_string), status)
         : matcher->replaceFirst(
-            UnicodeString::fromUTF8(replacement_string), status);
+            Utf8StringToUnicodeString(replacement_string), status);
     if (U_FAILURE(status)) {
       return false;
     }
