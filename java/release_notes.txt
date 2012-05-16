@@ -1,3 +1,8 @@
+May 16th, 2012: libphonenumber-4.8.2
+* Metadata update only:
+ - BH, CR, EE, JO, KW, LA, QA, SI, TH
+ - Non-geographical entity with calling code 878 (VISIONng)
+
 May 8th, 2012: libphonenumber-4.8.1
 * Metadata update only:
  - CA, CI, EG, HK, IN, IR, LB, MA, ME, MM

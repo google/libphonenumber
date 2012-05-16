@@ -2622,6 +2622,7 @@
           (?:
             3(?:
               [23469]\d|
+              5[35]|
               77|
               8[348]
             )\d|
@@ -4766,16 +4767,19 @@
         <!-- Including trunking service numbers starting with 5100. -->
         <nationalNumberPattern>
           210[0-6]\d{4}|
-          40(?:
-            [04]0\d{4}|
-            10[0-3]\d{3}|
-            2(?:
-              00\d|
-              900
-            )\d{2}|
-            3[01]\d{4}|
-            5\d{5}|
-            70[01]\d{3}
+          4(?:
+            0(?:
+              [04]0\d{4}|
+              10[0-3]\d{3}|
+              2(?:
+                00\d|
+                900
+              )\d{2}|
+              3[01]\d{4}|
+              5\d{5}|
+              70[01]\d{3}
+            )|
+            1[01]\d{5}
           )|
           5100\d{4}
         </nationalNumberPattern>
@@ -5533,6 +5537,12 @@
         <possibleNumberPattern>\d{8,14}</possibleNumberPattern>
         <exampleNumber>18500123456</exampleNumber>
       </uan>
+      <shortCode>
+        <!-- Public Service Number for German administration. -->
+        <nationalNumberPattern>115</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>115</exampleNumber>
+      </shortCode>
       <emergency>
         <nationalNumberPattern>11[02]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
@@ -6036,14 +6046,18 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          1\d{3,4}|
           [3-9]\d{6,7}|
           800\d{6,7}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
-        <nationalNumberPattern>800[2-9]\d{3}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <nationalNumberPattern>
+          1\d{3,4}|
+          800[2-9]\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,7}</possibleNumberPattern>
         <exampleNumber>8002123</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
@@ -6106,6 +6120,24 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>70012345</exampleNumber>
       </personalNumber>
+      <uan>
+        <!-- All 4-5 digit numbers listed in the plan as being a "short number for a service" are
+             included here. -->
+        <nationalNumberPattern>
+          1(?:
+            2[01245]|
+            3[0-6]|
+            4[1-489]|
+            5[0-59]|
+            6[1-46-9]|
+            7[0-27-9]|
+            8[189]|
+            9[012]
+          )\d{1,2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
+        <exampleNumber>12123</exampleNumber>
+      </uan>
       <shortCode>
         <nationalNumberPattern>
           1(?:
@@ -11740,7 +11772,6 @@
              However, a web search shows that such numbers seem to exist. -->
         <nationalNumberPattern>
           7(?:
-            45|
             5\d|
             7[2-79]|
             8[5-8]|
@@ -13573,6 +13604,7 @@
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Added 969 from an opensource report that this is now in use by Zain. -->
         <nationalNumberPattern>
           (?:
             5(?:
@@ -13595,7 +13627,7 @@
             9(?:
               0[09]|
               4[049]|
-              66|
+              6[69]|
               [79]\d
             )
           )\d{5}
@@ -13934,10 +13966,10 @@
         <exampleNumber>21212862</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 2078, 2058 and 2097 from numbers found online. -->
+        <!-- Adding 2028, 2058, 2078 and 2097 from numbers found online. -->
         <nationalNumberPattern>
           20(?:
-            2[23]|
+            2[238]|
             5[4-68]|
             7[78]|
             9[7-9]
@@ -19337,7 +19369,8 @@
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>44\d{6}</nationalNumberPattern>
+        <!-- The prefix 40 has now been allocated, based on numbers seen online. -->
+        <nationalNumberPattern>4[04]\d{6}</nationalNumberPattern>
         <exampleNumber>44123456</exampleNumber>
       </fixedLine>
       <mobile>
@@ -20453,7 +20486,7 @@
             [12]|
             3[4-8]|
             4[24-8]|
-            5[3-8]|
+            5[2-8]|
             7[3-8]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
@@ -20490,10 +20523,10 @@
         <nationalNumberPattern>
           (?:
             1\d|
-            2[2-8]|
+            [25][2-8]|
             3[4-8]|
             4[24-8]|
-            [57][3-8]
+            7[3-8]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
@@ -21574,12 +21607,8 @@
           <leadingDigits>2</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="([3-7]\d)(\d{3})(\d{3,4})">
-          <leadingDigits>[3-7]</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-        <numberFormat pattern="([89])(\d{4})(\d{4})">
-          <leadingDigits>[89]</leadingDigits>
+        <numberFormat pattern="([3-9]\d)(\d{3})(\d{3,4})">
+          <leadingDigits>[3-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$FG"
@@ -24663,6 +24692,34 @@
           )\d{7}
         </nationalNumberPattern>
       </mobile>
+    </territory>
+
+    <!-- VISIONng -->
+    <!-- http://www.itu.int/oth/T02020000E5/en -->
+    <!-- Number length has been derived from examples found online. -->
+    <territory id="001" countryCode="878">
+      <availableFormats>
+        <!-- Formatting chosen based on online examples. -->
+        <numberFormat pattern="(\d{2})(\d{5})(\d{5})">
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>1\d{11}</nationalNumberPattern>
+        <possibleNumberPattern>\d{12}</possibleNumberPattern>
+        <exampleNumber>101234567890</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </mobile>
+      <voip>
+        <nationalNumberPattern>10\d{10}</nationalNumberPattern>
+      </voip>
     </territory>
 
     <!-- http://www.itu.int/oth/T02020000F3/en -->
