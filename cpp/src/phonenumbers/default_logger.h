@@ -17,31 +17,17 @@
 #ifndef I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
 #define I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
 
+#include "phonenumbers/logger.h"
+
 #ifdef USE_GOOGLE_BASE
 
 namespace i18n {
 namespace phonenumbers {
 
-// There is no Logger in the new base implementation - provide a NOP one.
-class Logger {
- public:
-  Logger() {}
-  virtual ~Logger() {}
-
-  static void set_logger_impl(Logger*) {}
-};
-
 // If Google base/ is used, LOG() and VLOG() from base/logging.h are used
 // therefore the default logger implementation (StdoutLogger) instantiated in
-// phonenumberutil will actually never be used. Thus provide a dummy
-// implementation of this logger.
-class StdoutLogger : public Logger {
- public:
-  virtual ~StdoutLogger() {}
-
-  virtual void WriteLevel() {}
-  virtual void WriteMessage(const string& /* msg */) {}
-};
+// phonenumberutil will actually never be used.
+typedef NullLogger StdoutLogger;
 
 }  // namespace phonenumbers
 }  // namespace i18n
@@ -50,8 +36,6 @@ class StdoutLogger : public Logger {
 
 #include <sstream>
 #include <string>
-
-#include "phonenumbers/logger.h"
 
 using std::string;
 using std::stringstream;
