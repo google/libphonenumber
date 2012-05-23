@@ -55,25 +55,25 @@ TEST(StringUtilTest, FindNthWithNTooHigh) {
 }
 
 TEST(StringUtilTest, FindNth) {
-  EXPECT_EQ(7, FindNth("hello world", 'o', 2));
+  EXPECT_EQ(7U, FindNth("hello world", 'o', 2));
 }
 
 TEST(StringUtilTest, SplitStringUsingWithEmptyString) {
   vector<string> result;
   SplitStringUsing("", ":", &result);
-  EXPECT_EQ(0, result.size());
+  EXPECT_EQ(0U, result.size());
 }
 
 TEST(StringUtilTest, SplitStringUsingWithEmptyDelimiter) {
   vector<string> result;
   SplitStringUsing("hello", "", &result);
-  EXPECT_EQ(0, result.size());
+  EXPECT_EQ(0U, result.size());
 }
 
 TEST(StringUtilTest, SplitStringUsing) {
   vector<string> result;
   SplitStringUsing(":hello:world:", ":", &result);
-  EXPECT_EQ(2, result.size());
+  EXPECT_EQ(2U, result.size());
   EXPECT_EQ("hello", result[0]);
   EXPECT_EQ("world", result[1]);
 }
@@ -81,7 +81,7 @@ TEST(StringUtilTest, SplitStringUsing) {
 TEST(StringUtilTest, SplitStringUsingIgnoresEmptyToken) {
   vector<string> result;
   SplitStringUsing("hello::world", ":", &result);
-  EXPECT_EQ(2, result.size());
+  EXPECT_EQ(2U, result.size());
   EXPECT_EQ("hello", result[0]);
   EXPECT_EQ("world", result[1]);
 }
