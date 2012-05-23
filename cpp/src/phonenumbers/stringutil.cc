@@ -27,7 +27,7 @@ namespace phonenumbers {
 using std::equal;
 using std::stringstream;
 
-string operator+(const string& s, int n) {
+string operator+(const string& s, int n) {  // NOLINT(runtime/string)
   stringstream stream;
 
   stream << s << n;
@@ -171,23 +171,23 @@ int GlobalReplaceSubstring(const string& substring,
 
 // StringHolder class
 
-StringHolder::StringHolder(const string& s) :
-  string_(&s),
-  cstring_(NULL),
-  len_(s.size())
+StringHolder::StringHolder(const string& s)
+  : string_(&s),
+    cstring_(NULL),
+    len_(s.size())
 {}
 
-StringHolder::StringHolder(const char* s) :
-  string_(NULL),
-  cstring_(s),
-  len_(std::strlen(s))
+StringHolder::StringHolder(const char* s)
+  : string_(NULL),
+    cstring_(s),
+    len_(std::strlen(s))
 {}
 
-StringHolder::StringHolder(uint64 n) :
-  converted_string_(SimpleItoa(n)),
-  string_(&converted_string_),
-  cstring_(NULL),
-  len_(converted_string_.length())
+StringHolder::StringHolder(uint64 n)
+  : converted_string_(SimpleItoa(n)),
+    string_(&converted_string_),
+    cstring_(NULL),
+    len_(converted_string_.length())
 {}
 
 StringHolder::~StringHolder() {}
