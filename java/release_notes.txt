@@ -1,3 +1,7 @@
+May 30th, 2012: libphonenumber-4.8.3
+* Metadata update only:
+ - AN, ET, KW, MN, SX, TC, TL
+
 May 16th, 2012: libphonenumber-4.8.2
 * Metadata update only:
  - BH, CR, EE, JO, KW, LA, QA, SI, TH

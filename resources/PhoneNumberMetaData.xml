@@ -684,7 +684,9 @@
 
     <!-- Netherlands Antilles -->
     <!-- Note this country no longer exists. This metadata exists only to validate old Sint Maarten
-         numbers through their parallel running period (which ends Sep 2012). -->
+         numbers through their parallel running period (which ends Sep 2012). New number ranges
+         added to Sint Maarten during this time will be added to the new territory only and not
+         here. -->
     <!-- The link below no longer works, since ITU deleted this document since this country no
          longer exists. We keep it here as a record of the last place we found information on this
          country. -->
@@ -698,18 +700,22 @@
       <fixedLine>
         <nationalNumberPattern>
           5(?:
-            4\d|
+            4[2-8]|
             8[239]
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>5451234</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- The code 555 was NOT migrated when the new country calling code (+1 721) was assigned
+             for Sint Maarten, so it is supported here but not there. The codes 55[12] also seem
+             to not have been migrated: although they were not explicitly mentioned in the migration
+             instructions, they are not in the new plan for SX. -->
         <nationalNumberPattern>
           5(?:
-            1[01]|
-            2[0-7]|
-            5\d|
+            1[02]|
+            2\d|
+            5[0-79]|
             8[016-8]
           )\d{4}
         </nationalNumberPattern>
@@ -6526,8 +6532,14 @@
       <mobile>
         <!-- The data here is not regularly updated by the Ethiopian authorities, and many more
              numbers are visible online than are reported in the ITU document. This pattern is
-             therefore somewhat more relaxed than in the ITU document. -->
-        <nationalNumberPattern>9[12]\d{7}</nationalNumberPattern>
+             therefore somewhat more relaxed than in the ITU document. According to the ETC, the
+             prefix 93 is assigned to Addis Ababa Mobile and 95[89] to some CDMA providers. -->
+             <nationalNumberPattern>
+          9(?:
+            [1-3]\d|
+            5[89]
+          )\d{6}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>911234567</exampleNumber>
       </mobile>
@@ -13604,7 +13616,6 @@
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Added 969 from an opensource report that this is now in use by Zain. -->
         <nationalNumberPattern>
           (?:
             5(?:
@@ -13622,7 +13633,7 @@
               )|
               6\d|
               7[067]|
-              9[69]
+              9[069]
             )|
             9(?:
               0[09]|
@@ -15796,19 +15807,15 @@
             4[2-68]\d{1,2}|
             5[1-4689]\d{1,2}
           )\d{5}|
-          (?:
-            5[0568]|
-            70
-          )\d{6}
+          5[0568]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>70123456</exampleNumber>
+        <exampleNumber>50123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding prefix 98 from numbers found on the internet. -->
         <nationalNumberPattern>
           (?:
             8[89]|
-            9[15689]
+            9[013-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
@@ -15816,7 +15823,9 @@
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
       <voip>
-        <nationalNumberPattern>7[569]\d{6}</nationalNumberPattern>
+        <!-- According to the document this could be stricter, but there are counter examples
+             online. -->
+        <nationalNumberPattern>7[05-8]\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>75123456</exampleNumber>
       </voip>
@@ -21224,7 +21233,8 @@
         <nationalNumberPattern>
           7215(?:
             4[2-8]|
-            8[239]
+            8[239]|
+            9[056]
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>7215425678</exampleNumber>
@@ -21236,8 +21246,8 @@
           7215(?:
             1[02]|
             2\d|
-            5[03469]|
-            8[01678]
+            5[034679]|
+            8[014-8]
           )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -21435,7 +21445,7 @@
         <nationalNumberPattern>
           649(?:
             2(?:
-              3[12]|
+              3[129]|
               4[1-7]
             )|
             3(?:
@@ -21821,7 +21831,9 @@
         <exampleNumber>2112345</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>7[2-4]\d{5}</nationalNumberPattern>
+        <!-- The prefix 79 is assigned to "pagers" in the numbering plan, but it seems from numbers
+             found online that it is in fact assigned to mobile users. -->
+        <nationalNumberPattern>7[2-49]\d{5}</nationalNumberPattern>
         <exampleNumber>7212345</exampleNumber>
       </mobile>
       <tollFree>
