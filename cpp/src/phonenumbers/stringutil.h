@@ -34,6 +34,7 @@ string operator+(const string& s, int n);  // NOLINT(runtime/string)
 
 // Converts integer to string.
 string SimpleItoa(uint64 n);
+string SimpleItoa(int64 n);
 string SimpleItoa(int n);
 
 // Returns whether the provided string starts with the supplied prefix.
@@ -64,6 +65,9 @@ void safe_strto32(const string& s, int32 *n);
 
 // Converts string to uint64.
 void safe_strtou64(const string& s, uint64 *n);
+
+// Converts string to int64.
+void safe_strto64(const string& s, int64* n);
 
 // Remove all occurrences of a given set of characters from a string.
 void strrmm(string* s, const string& chars);

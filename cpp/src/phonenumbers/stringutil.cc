@@ -56,6 +56,10 @@ string SimpleItoa(uint64 n) {
   return GenericSimpleItoa(n);
 }
 
+string SimpleItoa(int64 n) {
+  return GenericSimpleItoa(n);
+}
+
 bool HasPrefixString(const string& s, const string& prefix) {
   return s.size() >= prefix.size() &&
       equal(s.begin(), s.begin() + prefix.size(), prefix.begin());
@@ -130,6 +134,10 @@ void safe_strto32(const string& s, int32 *n) {
 }
 
 void safe_strtou64(const string& s, uint64 *n) {
+  GenericAtoi(s, n);
+}
+
+void safe_strto64(const string& s, int64* n) {
   GenericAtoi(s, n);
 }
 
