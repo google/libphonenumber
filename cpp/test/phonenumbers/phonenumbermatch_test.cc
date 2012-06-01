@@ -33,8 +33,9 @@ TEST(PhoneNumberMatch, TestGetterMethods) {
   PhoneNumberMatch match1(start_index, raw_phone_number, number);
 
   EXPECT_EQ(start_index, match1.start());
-  EXPECT_EQ(start_index + raw_phone_number.length(), match1.end());
-  EXPECT_EQ(raw_phone_number.length(), match1.length());
+  EXPECT_EQ(start_index + static_cast<int>(raw_phone_number.length()),
+            match1.end());
+  EXPECT_EQ(static_cast<int>(raw_phone_number.length()), match1.length());
   EXPECT_EQ(raw_phone_number, match1.raw_string());
 
   EXPECT_EQ("PhoneNumberMatch [10,25) 1 800 234 45 67", match1.ToString());
