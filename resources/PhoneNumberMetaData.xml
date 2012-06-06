@@ -195,7 +195,7 @@
           <leadingDigits>[2-4679][2-8]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(5[056])(\d{3})(\d{4})">
+        <numberFormat pattern="(5[0256])(\d{3})(\d{4})">
           <leadingDigits>5</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -226,7 +226,9 @@
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>5[056]\d{7}</nationalNumberPattern>
+        <!-- The prefix 52 has been added afte notification from the Emirates Telecommunications
+             Company. -->
+        <nationalNumberPattern>5[0256]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>501234567</exampleNumber>
       </mobile>
@@ -19485,7 +19487,6 @@
 
     <!-- Romania -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000AC0001MSWE.doc -->
-    <!-- http://en.wikipedia.org/wiki/Romania_telephone_area_codes -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
     <!-- Extension prefix found online, confirmed by a Romanian. -->
     <territory id="RO" countryCode="40" internationalPrefix="00"
@@ -19499,27 +19500,56 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(21)(\d{4})">
+          <leadingDigits>21</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
-            [23][02-9]|
+            [23][3-7]|
             [89]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(2\d{2})(\d{3})">
+          <leadingDigits>2[3-6]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[237-9]\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>
+          2\d{5,8}|
+          [37-9]\d{8}
+        </nationalNumberPattern>
         <!-- Although the ITU plan says the number plan is open, this was changed in 2008 according
-             to wikipedia and people must dial the full number. For this reason the possible number
-             pattern is restricted to 9 digits. -->
-        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+             to wikipedia and people must dial the full number. However, there are still short
+             numbers that total 6 digits long, so the possible number pattern should take these into
+             account. -->
+        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>[23][13-6]\d{7}</nationalNumberPattern>
+        <!-- We exclude three-digit short numbers for Bucharest (219\d{2}) and four-digit short
+             numbers outside Bucharest (2[36]\d9\d{3}) even though ITU suggests these exist. We do
+             this based on numbers found online and the wikipedia article which indicate that these
+             are four digits long in Bucharest only, and three digits elsewhere. -->
+        <nationalNumberPattern>
+          2(?:
+            1(?:
+              \d{7}|
+              9\d{3}
+            )|
+            [3-6](?:
+              \d{7}|
+              \d9\d{2}
+            )
+          )|
+          3[13-6]\d{7}
+          </nationalNumberPattern>
         <exampleNumber>211234567</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>7[1-8]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>712345678</exampleNumber>
       </mobile>
       <tollFree>
@@ -19529,14 +19559,17 @@
       </tollFree>
       <premiumRate>
         <nationalNumberPattern>90[036]\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>900123456</exampleNumber>
       </premiumRate>
       <sharedCost>
         <nationalNumberPattern>801\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>801123456</exampleNumber>
       </sharedCost>
       <personalNumber>
         <nationalNumberPattern>802\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>802123456</exampleNumber>
       </personalNumber>
       <uan>
@@ -19544,6 +19577,7 @@
              location-independent national numbers. Only numbers beginning with 37 have been seen so
              these are the only ones supported for now. -->
         <nationalNumberPattern>37\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>372123456</exampleNumber>
       </uan>
       <emergency>
@@ -24732,6 +24766,34 @@
       <voip>
         <nationalNumberPattern>10\d{10}</nationalNumberPattern>
       </voip>
+    </territory>
+
+    <!-- Iridium -->
+    <!-- www.iridium.com -->
+    <!-- http://www.itu.int/oth/T0202000069/en -->
+    <!-- Globalstar also reports using this prefix, but we cannot find any online numbers with the
+         Globalstar prefixes, so are not sure how exactly these work, and what length the numbers
+         are. For this reason, we only support Iridium numbers at the moment. -->
+    <territory id="001" countryCode="881">
+      <availableFormats>
+        <!-- Formatting chosen based on ITU document and Iridium website FAQ. -->
+        <numberFormat pattern="(\d)(\d{3})(\d{5})">
+          <leadingDigits>[67]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>612345678</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
+      </mobile>
     </territory>
 
     <!-- http://www.itu.int/oth/T02020000F3/en -->

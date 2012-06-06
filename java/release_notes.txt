@@ -1,3 +1,8 @@
+June 5th, 2012: libphonenumber-4.8.4
+* Metadata update only:
+ - AE, RO
+ - Non-geographical entity with calling code 881 (Iridium)
+
 May 30th, 2012: libphonenumber-4.8.3
 * Metadata update only:
  - AN, ET, KW, MN, SX, TC, TL
