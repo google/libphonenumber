@@ -1,3 +1,7 @@
+June 14th, 2012: libphonenumber-4.8.5
+* Metadata update only:
+ - AC, CR, DE, DK, IL, IN, IS, KH, LI, LR, MA, MD, MK, PA, SA, SG, SS
+
 June 5th, 2012: libphonenumber-4.8.4
 * Metadata update only:
  - AE, RO
