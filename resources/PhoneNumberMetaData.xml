@@ -14315,9 +14315,9 @@
             0[1289]|
             70
           )\d{3}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>8770123</exampleNumber>
-        </nationalNumberPattern>
       </uan>
       <voicemail>
         <nationalNumberPattern>
