@@ -15,5 +15,5 @@
 # Generated from:
 # http://en.wikipedia.org/wiki/+221 [373996724]
 
-2218|Dakar
-2219|Outside Dakar
+221338|Dakar
+221339|Outside Dakar

@@ -176,9 +176,8 @@ public class ExampleNumbersTest extends TestCase {
     assertEquals(0, wrongTypeCases.size());
   }
 
-  // TODO: Update this to use connectsToEmergencyNumber or similar once that is
-  // implemented.
   public void testEmergency() throws Exception {
+    ShortNumberUtil shortUtil = new ShortNumberUtil(phoneNumberUtil);
     int wrongTypeCounter = 0;
     for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumberDesc desc =
@@ -186,7 +185,7 @@ public class ExampleNumbersTest extends TestCase {
       if (desc.hasExampleNumber()) {
         String exampleNumber = desc.getExampleNumber();
         if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
-            !exampleNumber.matches(desc.getNationalNumberPattern())) {
+            !shortUtil.isEmergencyNumber(exampleNumber, regionCode)) {
           wrongTypeCounter++;
           LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
         }

@@ -59,7 +59,7 @@ public class PhoneNumberUtil {
   /** Flags to use when compiling regular expressions for phone numbers. */
   static final int REGEX_FLAGS = Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE;
   // The minimum and maximum length of the national significant number.
-  private static final int MIN_LENGTH_FOR_NSN = 3;
+  private static final int MIN_LENGTH_FOR_NSN = 2;
   // The ITU says the maximum length should be 15, but we have found longer numbers in Germany.
   static final int MAX_LENGTH_FOR_NSN = 16;
   // The maximum length of the country calling code.
@@ -103,9 +103,8 @@ public class PhoneNumberUtil {
 
   private static final String RFC3966_EXTN_PREFIX = ";ext=";
   private static final String RFC3966_PREFIX = "tel:";
-  // We include the "+" here since RFC3966 format specifies that the context must be specified in
-  // international format.
-  private static final String RFC3966_PHONE_CONTEXT = ";phone-context=+";
+  private static final String RFC3966_PHONE_CONTEXT = ";phone-context=";
+  private static final String RFC3966_ISDN_SUBADDRESS = ";isub=";
 
   // A map that contains characters that are essential when dialling. That means any of the
   // characters in this map must not be removed from a number when dialing, otherwise the call will
@@ -173,7 +172,7 @@ public class PhoneNumberUtil {
 
     HashMap<Character, Character> diallableCharMap = new HashMap<Character, Character>();
     diallableCharMap.putAll(asciiDigitMappings);
-    diallableCharMap.put('+', '+');
+    diallableCharMap.put(PLUS_SIGN, PLUS_SIGN);
     diallableCharMap.put('*', '*');
     DIALLABLE_CHAR_MAPPINGS = Collections.unmodifiableMap(diallableCharMap);
 
@@ -220,7 +219,7 @@ public class PhoneNumberUtil {
   // placeholder for carrier information in some phone numbers. Full-width variants are also
   // present.
   static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F " +
-      "\u00A0\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
+      "\u00A0\u00AD\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
 
   private static final String DIGITS = "\\p{Nd}";
   // We accept alpha characters in phone numbers, ASCII only, upper and lower case.
@@ -618,7 +617,7 @@ public class PhoneNumberUtil {
 
   /**
    * Checks to see if the string of characters could possibly be a phone number at all. At the
-   * moment, checks to see that the string begins with at least 3 digits, ignoring any punctuation
+   * moment, checks to see that the string begins with at least 2 digits, ignoring any punctuation
    * commonly found in phone numbers.
    * This method does not require the number to be normalized in advance - but does assume that
    * leading non-number symbols have been removed, such as by the method extractPossibleNumber.
@@ -1342,7 +1341,9 @@ public class PhoneNumberUtil {
     // If no digit is inserted/removed/modified as a result of our formatting, we return the
     // formatted phone number; otherwise we return the raw input the user entered.
     return (formattedNumber != null &&
-            normalizeDigitsOnly(formattedNumber).equals(normalizeDigitsOnly(rawInput)))
+            normalizeHelper(formattedNumber, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */)
+                .equals(normalizeHelper(
+                    rawInput, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */)))
         ? formattedNumber
         : rawInput;
   }
@@ -2273,7 +2274,7 @@ public class PhoneNumberUtil {
       phoneNumber.setCountryCodeSource(countryCodeSource);
     }
     if (countryCodeSource != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
-      if (fullNumber.length() < MIN_LENGTH_FOR_NSN) {
+      if (fullNumber.length() <= MIN_LENGTH_FOR_NSN) {
         throw new NumberParseException(NumberParseException.ErrorType.TOO_SHORT_AFTER_IDD,
                                        "Phone number had an IDD, but after this was not "
                                        + "long enough to be a viable phone number.");
@@ -2495,7 +2496,8 @@ public class PhoneNumberUtil {
    * particular region is not performed. This can be done separately with {@link #isValidNumber}.
    *
    * @param numberToParse     number that we are attempting to parse. This can contain formatting
-   *                          such as +, ( and -, as well as a phone number extension.
+   *                          such as +, ( and -, as well as a phone number extension. It can also
+   *                          be provided in RFC3966 format.
    * @param defaultRegion     region that we are expecting the number to be from. This is only used
    *                          if the number being parsed is not written in international format.
    *                          The country_code for the number in this case would be stored as that
@@ -2614,24 +2616,8 @@ public class PhoneNumberUtil {
                                      "The string supplied was too long to parse.");
     }
 
-    int indexOfPhoneContext = numberToParse.indexOf(RFC3966_PHONE_CONTEXT);
     StringBuilder nationalNumber = new StringBuilder();
-    if (indexOfPhoneContext > 0) {
-      // Prefix the number with the phone context. The offset here is because the context we are
-      // expecting to match should start with a "+" sign, and we want to include this at the start
-      // of the number.
-      nationalNumber.append(numberToParse.substring(indexOfPhoneContext +
-                                                    RFC3966_PHONE_CONTEXT.length() - 1));
-      // Now append everything between the "tel:" prefix and the phone-context.
-      nationalNumber.append(numberToParse.substring(
-          numberToParse.indexOf(RFC3966_PREFIX) + RFC3966_PREFIX.length(), indexOfPhoneContext));
-      // Note that phone-contexts that are URLs will not be parsed - isViablePhoneNumber will throw
-      // an exception below.
-    } else {
-      // Extract a possible number from the string passed in (this strips leading characters that
-      // could not be the start of a phone number.)
-      nationalNumber.append(extractPossibleNumber(numberToParse));
-    }
+    buildNationalNumberForParsing(numberToParse, nationalNumber);
 
     if (!isViablePhoneNumber(nationalNumber.toString())) {
       throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
@@ -2723,6 +2709,50 @@ public class PhoneNumberUtil {
       phoneNumber.setItalianLeadingZero(true);
     }
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));
+  }
+
+  /**
+   * Converts numberToParse to a form that we can parse and write it to nationalNumber if it is
+   * written in RFC3966; otherwise extract a possible number out of it and write to nationalNumber.
+   */
+  private void buildNationalNumberForParsing(String numberToParse, StringBuilder nationalNumber) {
+    int indexOfPhoneContext = numberToParse.indexOf(RFC3966_PHONE_CONTEXT);
+    if (indexOfPhoneContext > 0) {
+      int phoneContextStart = indexOfPhoneContext + RFC3966_PHONE_CONTEXT.length();
+      // If the phone context contains a phone number prefix, we need to capture it, whereas domains
+      // will be ignored.
+      if (numberToParse.charAt(phoneContextStart) == PLUS_SIGN) {
+        // Additional parameters might follow the phone context. If so, we will remove them here
+        // because the parameters after phone context are not important for parsing the
+        // phone number.
+        int phoneContextEnd = numberToParse.indexOf(';', phoneContextStart);
+        if (phoneContextEnd > 0) {
+          nationalNumber.append(numberToParse.substring(phoneContextStart, phoneContextEnd));
+        } else {
+          nationalNumber.append(numberToParse.substring(phoneContextStart));
+        }
+      }
+
+      // Now append everything between the "tel:" prefix and the phone-context. This should include
+      // the national number, an optional extension or isdn-subaddress component.
+      nationalNumber.append(numberToParse.substring(
+          numberToParse.indexOf(RFC3966_PREFIX) + RFC3966_PREFIX.length(), indexOfPhoneContext));
+    } else {
+      // Extract a possible number from the string passed in (this strips leading characters that
+      // could not be the start of a phone number.)
+      nationalNumber.append(extractPossibleNumber(numberToParse));
+    }
+
+    // Delete the isdn-subaddress and everything after it if it is present. Note extension won't
+    // appear at the same time with isdn-subaddress according to paragraph 5.3 of the RFC3966 spec,
+    int indexOfIsdn = nationalNumber.indexOf(RFC3966_ISDN_SUBADDRESS);
+    if (indexOfIsdn > 0) {
+      nationalNumber.delete(indexOfIsdn, nationalNumber.length());
+    }
+    // If both phone context and isdn-subaddress are absent but other parameters are present, the
+    // parameters are left in nationalNumber. This is because we are concerned about deleting
+    // content from a potential number string when there is no strong evidence that the number is
+    // actually written in RFC3966.
   }
 
   /**

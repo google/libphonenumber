@@ -99,8 +99,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
           .setRawInput("000-000-0000");
   private static final PhoneNumber INTERNATIONAL_TOLL_FREE =
       new PhoneNumber().setCountryCode(800).setNationalNumber(12345678L);
+  // We set this to be the same length as numbers for the other non-geographical country prefix that
+  // we have in our test metadata. However, this is not considered valid because they differ in
+  // their country calling code.
   private static final PhoneNumber INTERNATIONAL_TOLL_FREE_TOO_LONG =
-      new PhoneNumber().setCountryCode(800).setNationalNumber(1234567890L);
+      new PhoneNumber().setCountryCode(800).setNationalNumber(123456789L);
+  private static final PhoneNumber UNIVERSAL_PREMIUM_RATE =
+      new PhoneNumber().setCountryCode(979).setNationalNumber(123456789L);
 
   public void testGetSupportedRegions() {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
@@ -286,6 +291,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
   public void testGetExampleNumberForNonGeoEntity() {
     assertEquals(INTERNATIONAL_TOLL_FREE, phoneUtil.getExampleNumberForNonGeoEntity(800));
+    assertEquals(UNIVERSAL_PREMIUM_RATE, phoneUtil.getExampleNumberForNonGeoEntity(979));
   }
 
   public void testConvertAlphaCharactersInNumber() {
@@ -296,7 +302,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testNormaliseRemovePunctuation() {
-    String inputNumber = "034-56&+#234";
+    String inputNumber = "034-56&+#2\u00AD34";
     String expectedOutput = "03456234";
     assertEquals("Conversion did not correctly remove punctuation",
                  expectedOutput,
@@ -868,6 +874,12 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.parseAndKeepRawInput("0011 16502530000", RegionCode.AU);
     assertEquals("0011 1 650 253 0000",
         phoneUtil.formatInOriginalFormat(outOfCountryNumberFromAU2, RegionCode.AU));
+
+    // Test the star sign is not removed from or added to the original input by this method.
+    PhoneNumber starNumber = phoneUtil.parseAndKeepRawInput("*1234", RegionCode.JP);
+    assertEquals("*1234", phoneUtil.formatInOriginalFormat(starNumber, RegionCode.JP));
+    PhoneNumber numberWithoutStar = phoneUtil.parseAndKeepRawInput("1234", RegionCode.JP);
+    assertEquals("1234", phoneUtil.formatInOriginalFormat(numberWithoutStar, RegionCode.JP));
   }
 
   public void testIsPremiumRate() {
@@ -892,6 +904,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     premiumRateNumber.setCountryCode(49).setNationalNumber(90091234567L);
     assertEquals(PhoneNumberUtil.PhoneNumberType.PREMIUM_RATE,
                  phoneUtil.getNumberType(premiumRateNumber));
+
+    assertEquals(PhoneNumberUtil.PhoneNumberType.PREMIUM_RATE,
+                 phoneUtil.getNumberType(UNIVERSAL_PREMIUM_RATE));
   }
 
   public void testIsTollFree() {
@@ -977,6 +992,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isValidNumber(IT_NUMBER));
     assertTrue(phoneUtil.isValidNumber(GB_MOBILE));
     assertTrue(phoneUtil.isValidNumber(INTERNATIONAL_TOLL_FREE));
+    assertTrue(phoneUtil.isValidNumber(UNIVERSAL_PREMIUM_RATE));
 
     PhoneNumber nzNumber = new PhoneNumber().setCountryCode(64).setNationalNumber(21387835L);
     assertTrue(phoneUtil.isValidNumber(nzNumber));
@@ -1061,6 +1077,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(RegionCode.GB, phoneUtil.getRegionCodeForCountryCode(44));
     assertEquals(RegionCode.DE, phoneUtil.getRegionCodeForCountryCode(49));
     assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForCountryCode(800));
+    assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForCountryCode(979));
   }
 
   public void testGetRegionCodeForNumber() {
@@ -1068,6 +1085,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(RegionCode.US, phoneUtil.getRegionCodeForNumber(US_NUMBER));
     assertEquals(RegionCode.GB, phoneUtil.getRegionCodeForNumber(GB_MOBILE));
     assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForNumber(INTERNATIONAL_TOLL_FREE));
+    assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForNumber(UNIVERSAL_PREMIUM_RATE));
   }
 
   public void testGetCountryCodeForRegion() {
@@ -1158,7 +1176,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     adNumber.setCountryCode(376).setNationalNumber(12345L);
     assertEquals(PhoneNumberUtil.ValidationResult.IS_POSSIBLE,
                  phoneUtil.isPossibleNumberWithReason(adNumber));
-    adNumber.setCountryCode(376).setNationalNumber(13L);
+    adNumber.setCountryCode(376).setNationalNumber(1L);
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_SHORT,
                  phoneUtil.isPossibleNumberWithReason(adNumber));
     adNumber.setCountryCode(376).setNationalNumber(12345678901234567L);
@@ -1535,7 +1553,14 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;phone-context=+64", RegionCode.NZ));
     assertEquals(NZ_NUMBER, phoneUtil.parse("tel:331-6005;phone-context=+64-3", RegionCode.NZ));
     assertEquals(NZ_NUMBER, phoneUtil.parse("tel:331-6005;phone-context=+64-3", RegionCode.US));
-
+    // Test parsing RFC3966 format with optional user-defined parameters. The parameters will appear
+    // after the context if present.
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;phone-context=+64;a=%A1",
+        RegionCode.NZ));
+    // Test parsing RFC3966 with an ISDN subaddress.
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;isub=12345;phone-context=+64",
+        RegionCode.NZ));
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:+64-3-331-6005;isub=12345", RegionCode.NZ));
     // Testing international prefixes.
     // Should strip country calling code.
     assertEquals(NZ_NUMBER, phoneUtil.parse("0064 3 331 6005", RegionCode.NZ));
@@ -1548,6 +1573,17 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(NZ_NUMBER, phoneUtil.parse("+01164 3 331 6005", RegionCode.US));
     assertEquals(NZ_NUMBER, phoneUtil.parse("+0064 3 331 6005", RegionCode.NZ));
     assertEquals(NZ_NUMBER, phoneUtil.parse("+ 00 64 3 331 6005", RegionCode.NZ));
+
+    assertEquals(US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;phone-context=www.google.com", RegionCode.US));
+    assertEquals(US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;isub=12345;phone-context=www.google.com", RegionCode.US));
+    // This is invalid because no "+" sign is present as part of phone-context. The phone context
+    // is simply ignored in this case just as if it contains a domain.
+    assertEquals(US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:2530000;isub=12345;phone-context=1-650", RegionCode.US));
+    assertEquals(US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:2530000;isub=12345;phone-context=1234.com", RegionCode.US));
 
     PhoneNumber nzNumber = new PhoneNumber();
     nzNumber.setCountryCode(64).setNationalNumber(64123456L);
@@ -1633,6 +1669,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testParseNonAscii() throws Exception {
     // Using a full-width plus sign.
     assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B1 (650) 253-0000", RegionCode.SG));
+    // Using a soft hyphen U+00AD.
+    assertEquals(US_NUMBER, phoneUtil.parse("1 (650) 253\u00AD-0000", RegionCode.US));
     // The whole number, including punctuation, is here represented in full-width form.
     assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
                                             "\u3000\uFF12\uFF15\uFF13\uFF0D\uFF10\uFF10\uFF10" +
@@ -1904,31 +1942,26 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       fail("Null string - but should not throw a null pointer exception.");
     }
     try {
-      String domainRfcPhoneContext = "tel:555-1234;phone-context:www.google.com";
-      phoneUtil.parse(domainRfcPhoneContext, RegionCode.US);
-      fail("Domain provided for phone context - should fail.");
+      String domainRfcPhoneContext = "tel:555-1234;phone-context=www.google.com";
+      phoneUtil.parse(domainRfcPhoneContext, RegionCode.ZZ);
+      fail("'Unknown' region code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
-                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                    e.getErrorType());
-    } catch (NullPointerException e) {
-      fail("Domain provided for phone context - but should not throw a null pointer exception.");
     }
     try {
       // This is invalid because no "+" sign is present as part of phone-context. This should not
       // succeed in being parsed.
-      String invalidRfcPhoneContext = "tel:555-1234;phone-context:1-331";
-      phoneUtil.parse(invalidRfcPhoneContext, RegionCode.US);
-      fail("No leading plus provided in phone context - should fail.");
+      String invalidRfcPhoneContext = "tel:555-1234;phone-context=1-331";
+      phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
+      fail("'Unknown' region code not allowed: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
-                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                    e.getErrorType());
-    } catch (NullPointerException e) {
-      fail("No leading plus provided in phone context - but should not throw a null pointer " +
-           "exception.");
     }
   }
 
@@ -1942,10 +1975,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(NZ_NUMBER, phoneUtil.parse("Tel: +64 3 331 6005", RegionCode.ZZ));
     assertEquals(NZ_NUMBER, phoneUtil.parse("+64 3 331 6005", null));
     assertEquals(INTERNATIONAL_TOLL_FREE, phoneUtil.parse("+800 1234 5678", null));
+    assertEquals(UNIVERSAL_PREMIUM_RATE, phoneUtil.parse("+979 123 456 789", null));
 
     // Test parsing RFC3966 format with a phone context.
     assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;phone-context=+64", RegionCode.ZZ));
     assertEquals(NZ_NUMBER, phoneUtil.parse("  tel:03-331-6005;phone-context=+64", RegionCode.ZZ));
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;isub=12345;phone-context=+64",
+        RegionCode.ZZ));
 
     // It is important that we set the carrier code to an empty string, since we used
     // ParseAndKeepRawInput and no carrier code was found.
@@ -2112,6 +2148,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.isNumberMatch("+643 331-6005", "+6433316005"));
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "+6433316005"));
+    assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch("+64 3 331-6005", "tel:+64-3-331-6005;isub=123"));
     // Test alpha numbers.
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+1800 siX-Flags", "+1 800 7493 5247"));
@@ -2162,6 +2200,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Extension different, all else the same.
     assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005 extn 1234", "0116433316005#1235"));
+    assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
+                 phoneUtil.isNumberMatch(
+                     "+64 3 331-6005 extn 1234", "tel:+64-3-331-6005;ext=1235"));
     // NSN matches, but extension is different - not the same number.
     assertEquals(PhoneNumberUtil.MatchType.NO_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005 ext.1235", "3 331 6005#1234"));
@@ -2181,6 +2222,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // NSN matches.
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "03 331 6005"));
+    assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
+                 phoneUtil.isNumberMatch(
+                     "+64 3 331-6005", "tel:03-331-6005;isub=1234;phone-context=abc.nz"));
     assertEquals(PhoneNumberUtil.MatchType.NSN_MATCH,
                  phoneUtil.isNumberMatch(NZ_NUMBER, "03 331 6005"));
     // Here the second number possibly starts with the country calling code for New Zealand,
@@ -2215,12 +2259,22 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Short NSN matches with the country not specified for either one or both numbers.
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005", "331 6005"));
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("+64 3 331-6005", "tel:331-6005;phone-context=abc.nz"));
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("+64 3 331-6005",
+                     "tel:331-6005;isub=1234;phone-context=abc.nz"));
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("+64 3 331-6005",
+                     "tel:331-6005;isub=1234;phone-context=abc.nz;a=%A1"));
     // We did not know that the "0" was a national prefix since neither number has a country code,
     // so this is considered a SHORT_NSN_MATCH.
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("3 331-6005", "03 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("3 331-6005", "331 6005"));
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("3 331-6005", "tel:331-6005;phone-context=abc.nz"));
     assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                  phoneUtil.isNumberMatch("3 331-6005", "+64 331 6005"));
     // Short NSN match with the country specified.

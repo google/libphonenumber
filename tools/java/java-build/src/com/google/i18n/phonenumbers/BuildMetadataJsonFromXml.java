@@ -117,6 +117,7 @@ public class BuildMetadataJsonFromXml extends Command {
 
       writer.flush();
       writer.close();
+      formatter.close()
     } catch (Exception e) {
       e.printStackTrace();
       return false;
@@ -135,16 +136,16 @@ public class BuildMetadataJsonFromXml extends Command {
       } else {
         writer.write(",");
       }
-      String regionCode = metadata.getId();
+      String key = metadata.getId();
       // For non-geographical country calling codes (e.g. +800), use the country calling codes
       // instead of the region code as key in the map.
-      if (regionCode.equals("001")) {
-        regionCode = Integer.toString(metadata.getCountryCode());
+      if (key.equals("001")) {
+        key = Integer.toString(metadata.getCountryCode());
       }
       JSArrayBuilder jsArrayBuilder = new JSArrayBuilder();
       toJsArray(metadata, jsArrayBuilder);
       writer.write("\"");
-      writer.write(regionCode);
+      writer.write(key);
       writer.write("\":");
       writer.write(jsArrayBuilder.toString());
     }

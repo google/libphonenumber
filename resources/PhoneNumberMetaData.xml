@@ -2433,8 +2433,9 @@
         <nationalNumberPattern>
           (?:
             6(?:
-              0[0-5]|
-              [68]0
+              0[0-7]|
+              6[0-2]|
+              8[01]
             )|
             7(?:
               [02-68]\d|
@@ -5169,12 +5170,27 @@
     <territory id="CZ" countryCode="420" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="([2-9]\d{2})(\d{3})(\d{3})">
+          <leadingDigits>
+            [2-8]|
+            9[015-7]
+          </leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(96\d)(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>96</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(9\d)(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>9[36]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-9]\d{8}</nationalNumberPattern>
-        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <nationalNumberPattern>
+          [2-8]\d{8}|
+          9\d{8,11}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{9,12}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>
@@ -5192,7 +5208,7 @@
           (?:
             60[1-8]|
             7(?:
-              0[25]|
+              0[2-5]|
               [2379]\d
             )
           )\d{6}
@@ -5229,7 +5245,7 @@
         <!-- Numbers belonging to private communication networks are included here. These are
              classified as Institutional networks, belonging to institutions like the police, armed
              forces and railways, along with a couple of formerly government-owned banks. These
-             numbers are reachable by the public.  -->
+             numbers are reachable by the public. -->
         <nationalNumberPattern>
           9(?:
             5[056]|
@@ -5238,6 +5254,32 @@
         </nationalNumberPattern>
         <exampleNumber>972123456</exampleNumber>
       </uan>
+      <voicemail>
+        <nationalNumberPattern>
+          9(?:
+            3\d{9}|
+            6\d{7,10}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{9,12}</possibleNumberPattern>
+        <exampleNumber>93123456789</exampleNumber>
+      </voicemail>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              6\d{3}|
+              8\d
+            )|
+            2\d{2,3}|
+            3\d{3,4}|
+            4\d{3}|
+            99
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
+        <exampleNumber>116123</exampleNumber>
+      </shortCode>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -6332,31 +6374,61 @@
         <nationalNumberPattern>[5-9]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
+      <!-- The pattern is complex because the Lleida Networks mobile ranges are inside the
+           fixed-line ranges. -->
       <fixedLine>
         <nationalNumberPattern>
-          (?:
-            8(?:
-              [13]0|
-              [28][0-8]|
-              [47][1-9]|
-              5[01346-9]|
-              6[0457-9]
+          8(?:
+            [13]0|
+            [28][0-8]|
+            [47][1-9]|
+            5[01346-9]|
+            6[0457-9]
+          )\d{6}|
+          9(?:
+            [1238][0-8]\d{6}|
+            4[1-9]\d{6}|
+            5\d{7}|
+            6(?:
+              [0-8]\d{6}|
+              9(?:
+                0(?:
+                  [0-57-9]\d{4}|
+                  6(?:
+                    0[0-8]|
+                    1[1-9]|
+                    [2-9]\d
+                  )\d{2}
+                )|
+                [1-9]\d{5}
+              )
             )|
-            9(?:
-              [1238][0-8]|
-              [47][1-9]|
-              [56]\d
-            )
-          )\d{6}
+            7(?:
+              [124-9]\d{2}|
+              3(?:
+                [0-8]\d|
+                9[1-9]
+              )
+            )\d{4}
+          )
         </nationalNumberPattern>
         <exampleNumber>810123456</exampleNumber>
       </fixedLine>
+      <!-- The ranges 969060900 to 969061099 and 973900000 to 973909999 are mobile according to
+           information received from Lleida Networks. -->
       <mobile>
         <nationalNumberPattern>
           (?:
-            6\d|
-            7[1-4]
-          )\d{7}
+            6\d{6}|
+            7[1-4]\d{5}|
+            9(?:
+              6906(?:
+                09|
+                10
+              )|
+              7390\d{2}
+            )
+          )\d{2}
         </nationalNumberPattern>
         <exampleNumber>612345678</exampleNumber>
       </mobile>
@@ -13585,21 +13657,16 @@
           <leadingDigits>[1269]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(5[05]\d)(\d{5})">
+        <numberFormat pattern="(5[015]\d)(\d{5})">
           <leadingDigits>5</leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
-        <numberFormat pattern="(65816)(\d{6})">
-          <leadingDigits>65816</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [12569]\d{6,7}|
-          65816\d{6}
+          [12569]\d{6,7}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{7,8}|\d{11}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>
@@ -13607,7 +13674,10 @@
             18\d|
             2(?:
               [23]\d{2}|
-              4[1-35-9]\d|
+              4(?:
+                [1-35-9]\d|
+                44
+              )|
               5(?:
                 0[034]|
                 [2-46]\d|
@@ -13625,17 +13695,12 @@
           (?:
             5(?:
               0[0-2568]|
+              11|
               5\d
             )|
             6(?:
               0[034679]|
-              5(?:
-                [015-79]|
-                8(?:
-                  [02-9]|
-                  1[0-57-9]
-                )
-              )|
+              5[015-9]|
               6\d|
               7[067]|
               9[069]
@@ -13652,12 +13717,6 @@
         <exampleNumber>50012345</exampleNumber>
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
-      <voicemail>
-        <!-- Wataniya Telecom -->
-        <nationalNumberPattern>65816\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{11}</possibleNumberPattern>
-        <exampleNumber>65816123456</exampleNumber>
-      </voicemail>
       <shortCode>
         <nationalNumberPattern>
           1(?:
@@ -24813,6 +24872,102 @@
       <mobile>
         <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
       </mobile>
+    </territory>
+
+    <!-- BebbiCell (Formerly Global Networks Switzerland AG) +88234 -->
+    <!-- http://www.itu.int/oth/T0202000054/en -->
+    <!-- http://www.gsm.aq/numberplan.php -->
+    <!-- http://www.global.aq -->
+    <!-- Maritime Communications Partner (MCP) +88232 -->
+    <!-- http://www.itu.int/oth/T02020000F4/en -->
+    <!-- Oration Technologies +88237 -->
+    <!-- http://www.itu.int/oth/T02020000A0/en -->
+    <!-- Telespazio S.p.A. +88213 -->
+    <!-- http://www.itu.int/oth/T02020000CC/en -->
+    <!-- Thuraya +88216 -->
+    <!-- http://www.itu.int/oth/T02020000CF/en -->
+    <territory id="001" countryCode="882">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{4})(\d{3})">
+          <leadingDigits>3[23]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{5})">
+          <leadingDigits>
+            16|
+            342
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
+          <leadingDigits>34[57]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{4})(\d{4})">
+          <leadingDigits>348</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{4})">
+          <leadingDigits>1</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3,4})(\d{4})">
+          <leadingDigits>16</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{4,5})(\d{5})">
+          <leadingDigits>16</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[13]\d{6,11}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,12}</possibleNumberPattern>
+        <exampleNumber>32123456</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <!-- Bebbicell Mobile numbers, MCP & Oration. We are guessing the number length for
+             Oration based on numbers found online. -->
+        <nationalNumberPattern>
+          3(?:
+            2\d{3}|
+            37\d{2}|
+            4(?:
+              2|
+              7\d{3}
+            )
+          )\d{4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
+      </mobile>
+      <voip>
+        <!-- Telespazio S.p.A., Thuraya and Bebbicell VOIP numbers. -->
+        <nationalNumberPattern>
+          1(?:
+            3(?:
+              0[0347]|
+              [13][0139]|
+              2[035]|
+              4[013568]|
+              6[0459]|
+              7[06]|
+              8[15678]|
+              9[0689]
+            )\d{4}|
+            6\d{5,10}
+          )|
+          345\d{7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,12}</possibleNumberPattern>
+      </voip>
+      <voicemail>
+        <nationalNumberPattern>348[57]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{11}</possibleNumberPattern>
+      </voicemail>
     </territory>
 
     <!-- http://www.itu.int/oth/T02020000F3/en -->

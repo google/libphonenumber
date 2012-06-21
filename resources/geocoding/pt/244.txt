@@ -13,40 +13,47 @@
 # limitations under the License.
 
 # Generated from:
-# http://www.angolatelecom.com/AngolaTelecom/PT/telList/natIndicative/c (2011-07-22)
+# http://www.angolatelecom.com/AngolaTelecom/PT/telList/natIndicative/c (2012-06-20)
 # http://en.wikipedia.org/wiki/+244 [440874733]
+# Names were then checked on Portuguese wikipedia to find the most common
+# Portuguese spelling: http://pt.wikipedia.org/wiki/Prov%C3%ADncias_de_Angola.
+# St. Clara has apparently been renamed as Curoca.
 
-24431|Cabinda
-24432|Zaire
-244321|Soyo
-24433|Uige
-24434|Bengo
-244348|Caxito
-24435|Kuanza Norte
-244358|N'Dalatando
-24436|Kuanza Sul
-244363|Sumbe
-244364|Porto Amboim
-24441|Huambo
-24448|Bie
-244485|Kuito
-24449|Kuando Kubango
-24451|Malange
-244526|Dundo
-24453|Lunda Sul
-244535|Saurimo
-24454|Moxico
-244546|Luena
-24461|Huila
-244612|Lubango
-24464|Namibe
-244643|Tombua
-24465|Cunene
-244652|St. Clara/Cunene
-244655|Ondjiva
-24472|Benguela
-244722|Lobito
-244726|Bela Vista
-244728|Baia Farta
-244729|Catumbela
-244777|Dama Universal
+24422|Luanda
+244231|Cabinda
+244232|Zaire
+2442321|Soyo
+244233|Uíge
+244234|Bengo
+2442348|Caxito
+244235|Kwanza-Norte
+2442358|N'Dalatando
+244236|Kwanza-Sul
+2442363|Sumbe
+2442364|Porto Amboim
+244241|Huambo
+244248|Bié
+2442485|Kuito
+244249|Cuando-Cubango
+2442498|Menongue
+244251|Malanje
+244252|Lunda-Norte
+2442524|Lucapa
+2442526|Dundo
+244253|Lunda-Sul
+2442535|Saurimo
+244254|Moxico
+2442546|Luena
+244261|Huíla
+2442612|Lubango
+244264|Namibe
+2442643|Tombua
+244265|Cunene
+2442652|Curoca
+2442655|Ondjiva
+244272|Benguela
+2442722|Lobito
+2442726|Bela Vista
+2442728|Baía Farta
+2442729|Catumbela
+2442777|Dama Universal

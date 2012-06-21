@@ -1,8 +1,27 @@
+June 21st, 2012: libphonenumber-4.9
+* Bug fix
+ - formatInOriginalFormat fixed not to add a star sign if it was not present
+   originally.
+* Metadata changes
+ - BF, CZ, ES, KW
+ - Non-geographical entities with calling code 882 (BebbiCell, Maritime
+   Communications, Oration Technologies, Telespazio and Thuraya)
+ - Geocoding data updates for country calling codes 221, 224, 226, 242, 244, 245
+* Functionality changes:
+ - Minimum allowed length for a national significant number (NSN) when parsing
+   changed from 3 to 2.
+ - Support parsing of RFC3966-formatted strings with an isdn-subaddress or extra
+   parameters specified.
+ - Allow soft hyphen to appear in phone numbers (\u00AD)
+* Testing changes:
+ - Add extra unit tests for non-geographical phone number entities
+ - ExampleNumbersTest testEmergency tests now uses ShortNumberUtil
+
 June 14th, 2012: libphonenumber-4.8.5
 * Metadata update only:
  - AC, CR, DE, DK, IL, IN, IS, KH, LI, LR, MA, MD, MK, PA, SA, SG, SS
 
-June 5th, 2012: libphonenumber-4.8.4
+June 6th, 2012: libphonenumber-4.8.4
 * Metadata update only:
  - AE, RO
  - Non-geographical entity with calling code 881 (Iridium)

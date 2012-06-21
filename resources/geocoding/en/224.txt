@@ -15,24 +15,24 @@
 # Generated from:
 # http://en.wikipedia.org/wiki/+224 [373997051]
 
-22424|Fria
-22431|Boké
-22432|Kamsar
-22441|Conakry
-22442|Sangoya
-22443|Conakry
-22445|Conakry
-22446|Boussoura
-22447|Conakry
-22451|Labé
-22453|Pita
-22461|Kindia
-224613|Télimélé
-22468|Mamou
-22469|Dalaba
-22471|Kankan
-22481|Faranah
-22491|N'Zérékoré
-22494|Macenta
-22497|Guéckédou
-22498|Kissidougou
+2243024|Fria
+2243031|Boké
+2243032|Kamsar
+2243041|Conakry
+2243042|Conakry
+2243043|Conakry
+2243045|Conakry
+2243046|Boussoura
+2243047|Conakry
+2243051|Labé
+2243053|Pita
+2243061|Kindia
+22430613|Télimélé
+2243068|Mamou
+2243069|Dalaba
+2243071|Kankan
+2243081|Faranah
+2243091|N'Zérékoré
+2243094|Macenta
+2243097|Guéckédou
+2243098|Kissidougou

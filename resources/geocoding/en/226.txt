@@ -13,31 +13,37 @@
 # limitations under the License.
 
 # Generated from:
-# http://en.wikipedia.org/wiki/+226 [374115628]
+# http://en.wikipedia.org/wiki/+226 [482669671] Except where overruled by
+# http://www.onatel.bf/onatelsa/plandenumerotation_burkina.pdf
+# Where there are many cities for a prefix, we only kept the more significant
+# ones.
 
-22630|Ouagadougou
-22631|Ouagadougou
-22632|Ouagadougou
-22633|Ouagadougou
-22634|Ouagadougou
-22635|Ouagadougou
-22636|Ouagadougou
-22637|Ouagadougou
-22638|Ouagadougou
-22644|Koudougou
-22645|Kaya
-22649|Kaya
-22652|Dédougou
-22653|Tougan
-22654|Tougan
-22655|Ouahigouya
-22656|Ouahigouya
-22666|Dori
-22670|Koupéla
-22671|Tenkodogo
-22677|Fada
-22679|Kantchari
-22686|Diébougou
-22687|Gaoua
-22688|Banfora
-22696|Orodara
+2262049|Kaya
+2262052|Dédougou
+2262053|Boromo/Djibasso/Nouna
+2262090|Gaoua
+2262091|Banfora
+2262096|Orodara
+2262097|Bobo-Dioulasso
+2262098|Bobo-Dioulasso
+2262099|Béréba/Fo/Houndé
+2264045|Kaya
+2264046|Falagountou/Dori
+2264054|Yako
+2264055|Ouahigouya
+2264056|Djibo
+2264070|Pouytenga/Koupéla
+2264071|Tenkodogo
+2264077|Fada/Diabo
+2264079|Kantchari
+226503|Ouagadougou
+2265040|Pô/Kombissiri/Koubri
+2265041|Léo/Sapouy
+2265042|Ouagadougou
+2265043|Ouagadougou
+2265044|Koudougou
+2265045|Ouagadougou
+2265046|Ouagadougou
+2265047|Ouagadougou
+2265048|Ouagadougou
+2265049|Ouagadougou

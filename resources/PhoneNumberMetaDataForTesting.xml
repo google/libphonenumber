@@ -791,5 +791,30 @@
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
       </tollFree>
     </territory>
+
+    <!-- Universal International Premium Rate Number -->
+    <territory id="001" countryCode="979">
+      <availableFormats>
+        <numberFormat pattern="(\d)(\d{4})(\d{4})">
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>\d{9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>123456789</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>NA</nationalNumberPattern>
+        <possibleNumberPattern>NA</possibleNumberPattern>
+      </mobile>
+      <premiumRate>
+        <nationalNumberPattern>\d{9}</nationalNumberPattern>
+      </premiumRate>
+    </territory>
   </territories>
 </phoneNumberMetadata>
