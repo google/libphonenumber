@@ -117,7 +117,7 @@ public class BuildMetadataJsonFromXml extends Command {
 
       writer.flush();
       writer.close();
-      formatter.close()
+      formatter.close();
     } catch (Exception e) {
       e.printStackTrace();
       return false;
