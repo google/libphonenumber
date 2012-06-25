@@ -33,6 +33,8 @@ goog.provide('i18n.phonenumbers.Error');
 goog.provide('i18n.phonenumbers.PhoneNumberFormat');
 goog.provide('i18n.phonenumbers.PhoneNumberType');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil');
+goog.provide('i18n.phonenumbers.PhoneNumberUtil.MatchType');
+goog.provide('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 goog.require('goog.array');
 goog.require('goog.proto2.PbLiteSerializer');
