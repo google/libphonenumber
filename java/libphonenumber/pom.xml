@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>4.9-SNAPSHOT</version>
+  <version>4.9</version>
   <packaging>jar</packaging>
   <url>http://code.google.com/p/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>4.9-SNAPSHOT</version>
+    <version>4.9</version>
   </parent>
 
   <build>
