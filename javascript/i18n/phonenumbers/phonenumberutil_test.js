@@ -209,10 +209,19 @@ INTERNATIONAL_TOLL_FREE.setCountryCode(800);
 INTERNATIONAL_TOLL_FREE.setNationalNumber(12345678);
 
 
+// We set this to be the same length as numbers for the other non-geographical
+// country prefix that we have in our test metadata. However, this is not
+// considered valid because they differ in their country calling code.
 /** @type {i18n.phonenumbers.PhoneNumber} */
 var INTERNATIONAL_TOLL_FREE_TOO_LONG = new i18n.phonenumbers.PhoneNumber();
 INTERNATIONAL_TOLL_FREE_TOO_LONG.setCountryCode(800);
-INTERNATIONAL_TOLL_FREE_TOO_LONG.setNationalNumber(1234567890);
+INTERNATIONAL_TOLL_FREE_TOO_LONG.setNationalNumber(123456789);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
+var UNIVERSAL_PREMIUM_RATE = new i18n.phonenumbers.PhoneNumber();
+UNIVERSAL_PREMIUM_RATE.setCountryCode(979);
+UNIVERSAL_PREMIUM_RATE.setNationalNumber(123456789);
 
 var RegionCode = i18n.phonenumbers.RegionCode;
 
@@ -418,6 +427,8 @@ function testGetExampleNumber() {
 function testGetExampleNumberForNonGeoEntity() {
   assertTrue(INTERNATIONAL_TOLL_FREE.equals(
       phoneUtil.getExampleNumberForNonGeoEntity(800)));
+  assertTrue(UNIVERSAL_PREMIUM_RATE.equals(
+      phoneUtil.getExampleNumberForNonGeoEntity(979)));
 }
 
 function testConvertAlphaCharactersInNumber() {
@@ -432,7 +443,7 @@ function testConvertAlphaCharactersInNumber() {
 
 function testNormaliseRemovePunctuation() {
   /** @type {string} */
-  var inputNumber = '034-56&+#234';
+  var inputNumber = '034-56&+#2\u00AD34';
   /** @type {string} */
   var expectedOutput = '03456234';
   assertEquals('Conversion did not correctly remove punctuation',
@@ -1214,6 +1225,18 @@ function testFormatInOriginalFormat() {
   assertEquals('0011 1 650 253 0000',
       phoneUtil.formatInOriginalFormat(outOfCountryNumberFromAU2,
                                        RegionCode.AU));
+
+  // Test the star sign is not removed from or added to the original input by
+  // this method.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var starNumber =
+      phoneUtil.parseAndKeepRawInput('*1234', RegionCode.JP);
+  assertEquals('*1234', phoneUtil.formatInOriginalFormat(starNumber,
+                                                         RegionCode.JP));
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var numberWithoutStar = phoneUtil.parseAndKeepRawInput('1234', RegionCode.JP);
+  assertEquals('1234', phoneUtil.formatInOriginalFormat(numberWithoutStar,
+                                                        RegionCode.JP));
 }
 
 function testIsPremiumRate() {
@@ -1241,6 +1264,8 @@ function testIsPremiumRate() {
   premiumRateNumber.setCountryCode(49);
   premiumRateNumber.setNationalNumber(90091234567);
   assertEquals(PNT.PREMIUM_RATE, phoneUtil.getNumberType(premiumRateNumber));
+  assertEquals(PNT.PREMIUM_RATE, phoneUtil.getNumberType(
+      UNIVERSAL_PREMIUM_RATE));
 }
 
 function testIsTollFree() {
@@ -1343,6 +1368,7 @@ function testIsValidNumber() {
   assertTrue(phoneUtil.isValidNumber(IT_NUMBER));
   assertTrue(phoneUtil.isValidNumber(GB_MOBILE));
   assertTrue(phoneUtil.isValidNumber(INTERNATIONAL_TOLL_FREE));
+  assertTrue(phoneUtil.isValidNumber(UNIVERSAL_PREMIUM_RATE));
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumber = new i18n.phonenumbers.PhoneNumber();
@@ -1449,6 +1475,7 @@ function testGetRegionCodeForCountryCode() {
   assertEquals(RegionCode.GB, phoneUtil.getRegionCodeForCountryCode(44));
   assertEquals(RegionCode.DE, phoneUtil.getRegionCodeForCountryCode(49));
   assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForCountryCode(800));
+  assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForCountryCode(979));
 }
 
 function testGetRegionCodeForNumber() {
@@ -1457,6 +1484,8 @@ function testGetRegionCodeForNumber() {
   assertEquals(RegionCode.GB, phoneUtil.getRegionCodeForNumber(GB_MOBILE));
   assertEquals(RegionCode.UN001,
       phoneUtil.getRegionCodeForNumber(INTERNATIONAL_TOLL_FREE));
+  assertEquals(RegionCode.UN001,
+      phoneUtil.getRegionCodeForNumber(UNIVERSAL_PREMIUM_RATE));
 }
 
 function testGetCountryCodeForRegion() {
@@ -1566,7 +1595,7 @@ function testIsPossibleNumberWithReason() {
   assertEquals(VR.IS_POSSIBLE,
       phoneUtil.isPossibleNumberWithReason(adNumber));
   adNumber.setCountryCode(376);
-  adNumber.setNationalNumber(13);
+  adNumber.setNationalNumber(1);
   assertEquals(VR.TOO_SHORT,
       phoneUtil.isPossibleNumberWithReason(adNumber));
   adNumber.setCountryCode(376);
@@ -2018,7 +2047,17 @@ function testParseNationalNumber() {
       phoneUtil.parse('tel:331-6005;phone-context=+64-3', RegionCode.NZ)));
   assertTrue(NZ_NUMBER.equals(
       phoneUtil.parse('tel:331-6005;phone-context=+64-3', RegionCode.US)));
-
+  // Test parsing RFC3966 format with optional user-defined parameters. The
+  // parameters will appear after the context if present.
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:03-331-6005;phone-context=+64;a=%A1',
+                      RegionCode.NZ)));
+  // Test parsing RFC3966 with an ISDN subaddress.
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:03-331-6005;isub=12345;phone-context=+64',
+                      RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:+64-3-331-6005;isub=12345', RegionCode.NZ)));
   // Testing international prefixes.
   // Should strip country calling code.
   assertTrue(
@@ -2037,6 +2076,22 @@ function testParseNationalNumber() {
       NZ_NUMBER.equals(phoneUtil.parse('+0064 3 331 6005', RegionCode.NZ)));
   assertTrue(
       NZ_NUMBER.equals(phoneUtil.parse('+ 00 64 3 331 6005', RegionCode.NZ)));
+
+  assertTrue(US_LOCAL_NUMBER.equals(
+      phoneUtil.parse('tel:253-0000;phone-context=www.google.com',
+                      RegionCode.US)));
+  assertTrue(US_LOCAL_NUMBER.equals(
+      phoneUtil.parse('tel:253-0000;isub=12345;phone-context=www.google.com',
+                      RegionCode.US)));
+  // This is invalid because no "+" sign is present as part of phone-context.
+  // The phone context is simply ignored in this case just as if it contains a
+  // domain.
+  assertTrue(US_LOCAL_NUMBER.equals(
+      phoneUtil.parse('tel:2530000;isub=12345;phone-context=1-650',
+                      RegionCode.US)));
+  assertTrue(US_LOCAL_NUMBER.equals(
+      phoneUtil.parse('tel:2530000;isub=12345;phone-context=1234.com',
+                      RegionCode.US)));
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumber = new i18n.phonenumbers.PhoneNumber();
@@ -2151,6 +2206,9 @@ function testParseNonAscii() {
   // Using a full-width plus sign.
   assertTrue(US_NUMBER.equals(
       phoneUtil.parse('\uFF0B1 (650) 253-0000', RegionCode.SG)));
+  // Using a soft hyphen U+00AD.
+  assertTrue(US_NUMBER.equals(
+      phoneUtil.parse('1 (650) 253\u00AD-0000', RegionCode.US)));
   // The whole number, including punctuation, is here represented in full-width
   // form.
   assertTrue(US_NUMBER.equals(
@@ -2475,26 +2533,26 @@ function testFailedParseOnInvalidNumbers() {
   }
   try {
     /** @type {string} */
-    var domainRfcPhoneContext = 'tel:555-1234;phone-context:www.google.com';
-    phoneUtil.parse(domainRfcPhoneContext, RegionCode.US);
-    fail('Domain provided for phone context - should fail.');
+    var domainRfcPhoneContext = 'tel:555-1234;phone-context=www.google.com';
+    phoneUtil.parse(domainRfcPhoneContext, RegionCode.ZZ);
+    fail('"Unknown" region code not allowed: should fail.');
   } catch (e) {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
-                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
                  e);
   }
   try {
     // This is invalid because no '+' sign is present as part of phone-context.
     // This should not succeed in being parsed.
     /** @type {string} */
-    var invalidRfcPhoneContext = 'tel:555-1234;phone-context:1-331';
-    phoneUtil.parse(invalidRfcPhoneContext, RegionCode.US);
-    fail('No leading plus provided in phone context - should fail.');
+    var invalidRfcPhoneContext = 'tel:555-1234;phone-context=1-331';
+    phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
+    fail('"Unknown" region code not allowed: should fail.');
   } catch (e) {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
-                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
                  e);
   }
 }
@@ -2514,12 +2572,17 @@ function testParseNumbersWithPlusWithNoRegion() {
       NZ_NUMBER.equals(phoneUtil.parse('+64 3 331 6005', null)));
   assertTrue(
       INTERNATIONAL_TOLL_FREE.equals(phoneUtil.parse('+800 1234 5678', null)));
+  assertTrue(
+      UNIVERSAL_PREMIUM_RATE.equals(phoneUtil.parse('+979 123 456 789', null)));
 
   // Test parsing RFC3966 format with a phone context.
   assertTrue(NZ_NUMBER.equals(
       phoneUtil.parse('tel:03-331-6005;phone-context=+64', RegionCode.ZZ)));
   assertTrue(NZ_NUMBER.equals(
       phoneUtil.parse('  tel:03-331-6005;phone-context=+64', RegionCode.ZZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('tel:03-331-6005;isub=12345;phone-context=+64',
+                      RegionCode.ZZ)));
 
   // It is important that we set the carrier code to an empty string, since we
   // used ParseAndKeepRawInput and no carrier code was found.
@@ -2762,6 +2825,9 @@ function testIsNumberMatchMatches() {
                phoneUtil.isNumberMatch('+643 331-6005', '+6433316005'));
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005', '+6433316005'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch('+64 3 331-6005',
+                                       'tel:+64-3-331-6005;isub=123'));
   // Test alpha numbers.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch('+1800 siX-Flags', '+1 800 7493 5247'));
@@ -2824,6 +2890,9 @@ function testIsNumberMatchNonMatches() {
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NO_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005 extn 1234',
                                        '0116433316005#1235'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NO_MATCH,
+               phoneUtil.isNumberMatch('+64 3 331-6005 extn 1234',
+                                       'tel:+64-3-331-6005;ext=1235'));
   // NSN matches, but extension is different - not the same number.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NO_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005 ext.1235',
@@ -2844,6 +2913,9 @@ function testIsNumberMatchNsnMatches() {
   // NSN matches.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005', '03 331 6005'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH,
+               phoneUtil.isNumberMatch('+64 3 331-6005',
+               'tel:03-331-6005;isub=1234;phone-context=abc.nz'));
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH,
                phoneUtil.isNumberMatch(NZ_NUMBER, '03 331 6005'));
   // Here the second number possibly starts with the country calling code for
@@ -2883,12 +2955,26 @@ function testIsNumberMatchShortNsnMatches() {
   // numbers.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005', '331 6005'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch('+64 3 331-6005',
+                                       'tel:331-6005;phone-context=abc.nz'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch(
+                   '+64 3 331-6005',
+                   'tel:331-6005;isub=1234;phone-context=abc.nz'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch(
+                   '+64 3 331-6005',
+                   'tel:331-6005;isub=1234;phone-context=abc.nz;a=%A1'));
   // We did not know that the '0' was a national prefix since neither number has
   // a country code, so this is considered a SHORT_NSN_MATCH.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                phoneUtil.isNumberMatch('3 331-6005', '03 331 6005'));
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                phoneUtil.isNumberMatch('3 331-6005', '331 6005'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch('3 331-6005',
+                                       'tel:331-6005;phone-context=abc.nz'));
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
                phoneUtil.isNumberMatch('3 331-6005', '+64 331 6005'));
   // Short NSN match with the country specified.

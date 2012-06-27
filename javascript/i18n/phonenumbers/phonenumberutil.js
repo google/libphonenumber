@@ -103,7 +103,7 @@ i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_ = 1;
  * @type {number}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 3;
+i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 2;
 
 
 /**
@@ -195,14 +195,19 @@ i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_ = 'tel:';
 
 
 /**
- * We include the "+" here since RFC3966 format specifies that the context must
- * be specified in international format.
- *
  * @const
  * @type {string}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_ = ';phone-context=+';
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_ = ';phone-context=';
+
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_ISDN_SUBADDRESS_ = ';isub=';
 
 
 /**
@@ -277,7 +282,7 @@ i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_ = {
   '7': '7',
   '8': '8',
   '9': '9',
-  '+': '+',
+  '+': i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN,
   '*': '*'
 };
 
@@ -516,8 +521,8 @@ i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_ =
  * @type {string}
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION =
-    '-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F \u00A0\u200B\u2060\u3000()' +
-    '\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E';
+    '-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F \u00A0\u00AD\u200B\u2060\u3000' +
+    '()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E';
 
 
 /**
@@ -941,7 +946,7 @@ i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber = function(number) {
 
 /**
  * Checks to see if the string of characters could possibly be a phone number at
- * all. At the moment, checks to see that the string begins with at least 3
+ * all. At the moment, checks to see that the string begins with at least 2
  * digits, ignoring any punctuation commonly found in phone numbers. This method
  * does not require the number to be normalized in advance - but does assume
  * that leading non-number symbols have been removed, such as by the method
@@ -1818,9 +1823,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
   // return the formatted phone number; otherwise we return the raw input the
   // user entered.
   return (formattedNumber != null &&
-          i18n.phonenumbers.PhoneNumberUtil
-              .normalizeDigitsOnly(formattedNumber) ==
-          i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(rawInput)) ?
+          i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(formattedNumber,
+              i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_,
+              true /* remove non matches */) ==
+          i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(rawInput,
+              i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_,
+              true /* remove non matches */)) ?
       formattedNumber :
       rawInput;
 };
@@ -3118,7 +3126,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
   }
   if (countryCodeSource !=
       i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY) {
-    if (fullNumber.getLength() <
+    if (fullNumber.getLength() <=
         i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
       throw i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD;
     }
@@ -3418,7 +3426,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
  *
  * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
- *     extension.
+ *     extension. It can also be provided in RFC3966 format.
  * @param {?string} defaultRegion region that we are expecting the number to be
  *     from. This is only used if the number being parsed is not written in
  *     international format. The country_code for the number in this case would
@@ -3498,32 +3506,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     throw 'The string supplied was too long to parse';
   }
 
-  /** @type {number} */
-  var indexOfPhoneContext = numberToParse.indexOf(
-      i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
   /** @type {!goog.string.StringBuffer} */
   var nationalNumber = new goog.string.StringBuffer();
-  if (indexOfPhoneContext > 0) {
-    // Prefix the number with the phone context. The offset here is because the
-    // context we are expecting to match should start with a "+" sign, and we
-    // want to include this at the start of the number.
-    nationalNumber.append(numberToParse.substring(
-        indexOfPhoneContext +
-        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_.length - 1));
-    // Now append everything between the "tel:" prefix and the phone-context.
-    nationalNumber.append(numberToParse.substring(
-        numberToParse.indexOf(
-            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_) +
-        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length,
-        indexOfPhoneContext));
-    // Note that phone-contexts that are URLs will not be parsed -
-    // isViablePhoneNumber will throw an exception below.
-  } else {
-    // Extract a possible number from the string passed in (this strips leading
-    // characters that could not be the start of a phone number.)
-    nationalNumber.append(
-        i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber(numberToParse));
-  }
+  this.buildNationalNumberForParsing_(numberToParse, nationalNumber);
 
   if (!i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber(
       nationalNumber.toString())) {
@@ -3630,6 +3615,77 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   }
   phoneNumber.setNationalNumber(parseInt(normalizedNationalNumberStr, 10));
   return phoneNumber;
+};
+
+
+/**
+ * Converts numberToParse to a form that we can parse and write it to
+ * nationalNumber if it is written in RFC3966; otherwise extract a possible
+ * number out of it and write to nationalNumber.
+ *
+ * @param {?string} numberToParse number that we are attempting to parse. This
+ *     can contain formatting such as +, ( and -, as well as a phone number
+ *     extension.
+ * @param {!goog.string.StringBuffer} nationalNumber a string buffer for storing
+ *     the national significant number.
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
+    function(numberToParse, nationalNumber) {
+
+  /** @type {number} */
+  var indexOfPhoneContext = numberToParse.indexOf(
+      i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
+  if (indexOfPhoneContext > 0) {
+    var phoneContextStart = indexOfPhoneContext +
+        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_.length;
+    // If the phone context contains a phone number prefix, we need to capture
+    // it, whereas domains will be ignored.
+    if (numberToParse.charAt(phoneContextStart) ==
+        i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+      // Additional parameters might follow the phone context. If so, we will
+      // remove them here because the parameters after phone context are not
+      // important for parsing the phone number.
+      var phoneContextEnd = numberToParse.indexOf(';', phoneContextStart);
+      if (phoneContextEnd > 0) {
+        nationalNumber.append(numberToParse.substring(phoneContextStart,
+            phoneContextEnd));
+      } else {
+        nationalNumber.append(numberToParse.substring(phoneContextStart));
+      }
+    }
+
+    // Now append everything between the "tel:" prefix and the phone-context.
+    // This should include the national number, an optional extension or
+    // isdn-subaddress component.
+    nationalNumber.append(numberToParse.substring(
+        numberToParse.indexOf(
+            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_) +
+        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length,
+        indexOfPhoneContext));
+  } else {
+    // Extract a possible number from the string passed in (this strips leading
+    // characters that could not be the start of a phone number.)
+    nationalNumber.append(
+        i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber(numberToParse));
+  }
+
+  // Delete the isdn-subaddress and everything after it if it is present.
+  // Note extension won't appear at the same time with isdn-subaddress
+  // according to paragraph 5.3 of the RFC3966 spec,
+  /** @type {string} */
+  var nationalNumberStr = nationalNumber.toString();
+  var indexOfIsdn = nationalNumberStr.indexOf(
+      i18n.phonenumbers.PhoneNumberUtil.RFC3966_ISDN_SUBADDRESS_);
+  if (indexOfIsdn > 0) {
+    nationalNumber.clear();
+    nationalNumber.append(nationalNumberStr.substring(0, indexOfIsdn));
+  }
+  // If both phone context and isdn-subaddress are absent but other
+  // parameters are present, the parameters are left in nationalNumber. This
+  // is because we are concerned about deleting content from a potential
+  // number string when there is no strong evidence that the number is
+  // actually written in RFC3966.
 };
 
 
