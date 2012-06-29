@@ -35,6 +35,7 @@
       <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
       <arg value="libphonenumber/src"/>
       <arg value="false"/> <!-- Not for testing. -->
+      <arg value="false"/> <!-- Not for alternate formats. -->
       <arg value="false"/> <!-- No lite metadata. -->
     </exec>
   </target>
@@ -47,6 +48,7 @@
       <arg value="${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
       <arg value="libphonenumber/test"/>
       <arg value="true"/> <!-- For testing. -->
+      <arg value="false"/> <!-- Not for alternate formats. -->
       <arg value="false"/> <!-- No lite metadata. -->
     </exec>
   </target>
