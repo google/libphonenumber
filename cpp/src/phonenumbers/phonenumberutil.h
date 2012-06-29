@@ -161,7 +161,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // DEFAULT_REGIONS_.
   //
   // The PhoneNumberUtil is implemented as a singleton. Therefore, calling
-  // getInstance multiple times will only result in one instance being created.
+  // GetInstance multiple times will only result in one instance being created.
 #ifdef USE_GOOGLE_BASE
   static PhoneNumberUtil* GetInstance();
 #endif
@@ -194,7 +194,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // a way that the resultant subscriber number should be diallable, at least on
   // some devices. An example of how this could be used:
   //
-  // const PhoneNumberUtil& phone_util(PhoneNumberUtil::GetInstance());
+  // const PhoneNumberUtil& phone_util(*PhoneNumberUtil::GetInstance());
   // PhoneNumber number;
   // phone_util.Parse("16502530000", "US", &number);
   // string national_significant_number;
@@ -213,8 +213,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //   subscriber_number = national_significant_number;
   // }
   //
-  // N.B.: area code is a very ambiguous concept, so the I18N team generally
-  // recommends against using it for most purposes, but recommends using the
+  // N.B.: area code is a very ambiguous concept, so the authors generally
+  // recommend against using it for most purposes, but recommend using the
   // more general national_number instead. Read the following carefully before
   // deciding to use this method:
   //
@@ -237,7 +237,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // there is a subscriber number part that follows. An example of how this
   // could be used:
   //
-  // const PhoneNumberUtil& phone_util(PhoneNumberUtil::GetInstance());
+  // const PhoneNumberUtil& phone_util(*PhoneNumberUtil::GetInstance());
   // PhoneNumber number;
   // phone_util.Parse("16502530000", "US", &number);
   // string national_significant_number;
