@@ -155,7 +155,8 @@
 
   <target name="junit" depends="test-jar">
     <mkdir dir="${report.dir}"/>
-    <junit printsummary="yes">
+    <junit printsummary="yes"
+        failureProperty="test.failed" errorProperty="test.failed">
       <classpath refid="test.classpath"/>
       <formatter type="xml"/>
       <batchtest fork="no" todir="${report.dir}">
@@ -165,6 +166,8 @@
         <fileset dir="${geocoder.test.dir}" includes="**/*Test.java"/>
       </batchtest>
     </junit>
+    <fail message="Tests failed. Run 'ant junitreport' for more info."
+        if="test.failed"/>
   </target>
 
   <target name="junitreport">
