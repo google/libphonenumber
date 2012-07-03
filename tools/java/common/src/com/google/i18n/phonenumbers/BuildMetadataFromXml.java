@@ -134,7 +134,9 @@ public class BuildMetadataFromXml {
       } else {
         // For most countries, there will be only one region code for the country calling code.
         List<String> listWithRegionCode = new ArrayList<String>(1);
-        listWithRegionCode.add(regionCode);
+        if (!regionCode.isEmpty()) {  // For alternate formats, there are no region codes at all.
+          listWithRegionCode.add(regionCode);
+        }
         countryCodeToRegionCodeMap.put(countryCode, listWithRegionCode);
       }
     }

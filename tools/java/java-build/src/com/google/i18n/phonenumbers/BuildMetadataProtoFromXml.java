@@ -20,13 +20,20 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Writer;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Tool to convert phone number metadata from the XML format to protocol buffer format.
@@ -34,78 +41,104 @@ import java.util.Map;
  * @author Shaopeng Jia
  */
 public class BuildMetadataProtoFromXml extends Command {
-  private static final String PACKAGE_NAME = "com/google/i18n/phonenumbers";
+  private static final String CLASS_NAME = BuildMetadataProtoFromXml.class.getSimpleName();
+  private static final String PACKAGE_NAME = BuildMetadataProtoFromXml.class.getPackage().getName();
 
-  private static final String META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
-  private static final String TEST_META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
-  private static final String ALTERNATE_FORMATS_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberAlternateFormatsProto";
-
-  private static final String COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
-      "CountryCodeToRegionCodeMap";
-  private static final String TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
-      "CountryCodeToRegionCodeMapForTesting";
-  private static final String ALTERNATE_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME =
-      "CountryCodeToRegionCodeMapForAlternate";
+  // Command line parameter names.
+  private static final String INPUT_FILE = "input-file";
+  private static final String OUTPUT_DIR = "output-dir";
+  private static final String DATA_PREFIX = "data-prefix";
+  private static final String MAPPING_CLASS = "mapping-class";
+  private static final String COPYRIGHT = "copyright";
+  private static final String LITE_BUILD = "lite-build";
 
   private static final String HELP_MESSAGE =
-      "Usage:\n" +
-      "BuildMetadataProtoFromXml <inputFile> <outputDir>" +
-      "                          <forTesting> <forAlternate> [<liteBuild>]\n" +
+      "Usage: " + CLASS_NAME + " [OPTION]...\n" +
       "\n" +
-      "where:\n" +
-      "  inputFile    The input file containing phone number metadata in XML format.\n" +
-      "  outputDir    The output source directory to store phone number metadata in proto\n" +
-      "               format (one file per region) and the country code to region code\n" +
-      "               mapping file.\n" +
-      "  forTesting   Flag whether to generate metadata for testing purposes or not.\n" +
-      "  forAlternate Flag whether to generate metadata for alternate formats or not.\n" +
-      "  liteBuild    Whether to generate the lite-version of the metadata (default:\n" +
-      "               false). When set to true certain metadata will be omitted.\n" +
-      "               At this moment, example numbers information is omitted.\n" +
+      "  --" + INPUT_FILE + "=PATH     Read phone number metadata in XML format from PATH.\n" +
+      "  --" + OUTPUT_DIR + "=PATH     Use PATH as the root directory for output files.\n" +
+      "  --" + DATA_PREFIX +
+          "=PATH    Use PATH (relative to " + OUTPUT_DIR + ") as the basename when\n" +
+      "                        writing phone number metadata (one file per region) in\n" +
+      "                        proto format.\n" +
+      "  --" + MAPPING_CLASS + "=NAME  Store country code mappings in the class NAME, which\n" +
+      "                        will be written to a file in " + OUTPUT_DIR + ".\n" +
+      "  --" + COPYRIGHT + "=YEAR      Use YEAR in generated copyright headers.\n" +
       "\n" +
-      "Metadata will be stored in:\n" +
-      "  <outputDir>" + META_DATA_FILE_PREFIX + "_*\n" +
-      "Mapping file will be stored in:\n" +
-      "  <outputDir>/" + PACKAGE_NAME + "/" +
-          COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME + ".java\n" +
+      "  [--" + LITE_BUILD + "=<true|false>]  Optional (default: false). In a lite build,\n" +
+      "                               certain metadata will be omitted. At this\n" +
+      "                               moment, example numbers information is omitted.\n" +
       "\n" +
       "Example command line invocation:\n" +
-      "BuildMetadataProtoFromXml PhoneNumberMetadata.xml src false false false\n";
+      CLASS_NAME + " \\\n" +
+      "  --" + INPUT_FILE + "=resources/PhoneNumberMetaData.xml \\\n" +
+      "  --" + OUTPUT_DIR + "=java/libphonenumber/src/com/google/i18n/phonenumbers \\\n" +
+      "  --" + DATA_PREFIX + "=data/PhoneNumberMetadataProto \\\n" +
+      "  --" + MAPPING_CLASS + "=CountryCodeToRegionCodeMap \\\n" +
+      "  --" + COPYRIGHT + "=2010 \\\n" +
+      "  --" + LITE_BUILD + "=false\n";
 
   private static final String GENERATION_COMMENT =
-      "/* This file is automatically generated by {@link BuildMetadataProtoFromXml}.\n" +
+      "/* This file is automatically generated by {@link " + CLASS_NAME + "}.\n" +
       " * Please don't modify it directly.\n" +
       " */\n\n";
 
   @Override
   public String getCommandName() {
-    return "BuildMetadataProtoFromXml";
+    return CLASS_NAME;
   }
 
   @Override
   public boolean start() {
-    String[] args = getArgs();
-    if (args.length != 5 && args.length != 6) {
+    // The format of a well-formed command line parameter.
+    Pattern pattern = Pattern.compile("--(.+?)=(.*)");
+
+    String inputFile = null;
+    String outputDir = null;
+    String dataPrefix = null;
+    String mappingClass = null;
+    String copyright = null;
+    boolean liteBuild = false;
+
+    for (int i = 1; i < getArgs().length; i++) {
+      String key = null;
+      String value = null;
+      Matcher matcher = pattern.matcher(getArgs()[i]);
+      if (matcher.matches()) {
+        key = matcher.group(1);
+        value = matcher.group(2);
+      }
+
+      if (INPUT_FILE.equals(key)) {
+        inputFile = value;
+      } else if (OUTPUT_DIR.equals(key)) {
+        outputDir = value;
+      } else if (DATA_PREFIX.equals(key)) {
+        dataPrefix = value;
+      } else if (MAPPING_CLASS.equals(key)) {
+        mappingClass = value;
+      } else if (COPYRIGHT.equals(key)) {
+        copyright = value;
+      } else if (LITE_BUILD.equals(key) &&
+                 ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
+        liteBuild = "true".equalsIgnoreCase(value);
+      } else {
+        System.err.println(HELP_MESSAGE);
+        System.err.println("Illegal command line parameter: " + getArgs()[i]);
+        return false;
+      }
+    }
+
+    if (inputFile == null ||
+        outputDir == null ||
+        dataPrefix == null ||
+        mappingClass == null ||
+        copyright == null) {
       System.err.println(HELP_MESSAGE);
       return false;
     }
-    String inputFile = args[1];
-    String outputDir = args[2];
-    boolean forTesting = args[3].equals("true");
-    boolean forAlternate = args[4].equals("true");
-    boolean liteBuild = args.length > 5 && args[5].equals("true");
 
-    String filePrefix;
-    if (forAlternate) {
-      filePrefix = outputDir + ALTERNATE_FORMATS_FILE_PREFIX;
-    } else if (forTesting) {
-      filePrefix = outputDir + TEST_META_DATA_FILE_PREFIX;
-    } else {
-      filePrefix = outputDir + META_DATA_FILE_PREFIX;
-    }
+    String filePrefix = new File(outputDir, dataPrefix).getPath();
 
     try {
       PhoneMetadataCollection metadataCollection =
@@ -130,7 +163,7 @@ public class BuildMetadataProtoFromXml extends Command {
           BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
 
       writeCountryCallingCodeMappingToJavaFile(
-          countryCodeToRegionCodeMap, outputDir, forTesting, forAlternate);
+          countryCodeToRegionCodeMap, outputDir, mappingClass, copyright);
     } catch (Exception e) {
       e.printStackTrace();
       return false;
@@ -139,75 +172,147 @@ public class BuildMetadataProtoFromXml extends Command {
     return true;
   }
 
-  private static final String MAPPING_IMPORTS =
-      "import java.util.ArrayList;\n" +
-      "import java.util.HashMap;\n" +
-      "import java.util.List;\n" +
-      "import java.util.Map;\n";
-  private static final String MAPPING_COMMENT =
+  private static final String MAP_COMMENT =
       "  // A mapping from a country code to the region codes which denote the\n" +
       "  // country/region represented by that country code. In the case of multiple\n" +
       "  // countries sharing a calling code, such as the NANPA countries, the one\n" +
       "  // indicated with \"isMainCountryForCode\" in the metadata should be first.\n";
-  private static final double MAPPING_LOAD_FACTOR = 0.75;
-  private static final String MAPPING_COMMENT_2 =
+  private static final String SET_COMMENT =
+      "  // A set of all country codes for which data is available.\n";
+  private static final double CAPACITY_FACTOR = 0.75;
+  private static final String CAPACITY_COMMENT =
       "    // The capacity is set to %d as there are %d different country codes,\n" +
-      "    // and this offers a load factor of roughly " + MAPPING_LOAD_FACTOR + ".\n";
-  private static final int COPYRIGHT_YEAR = 2010;
+      "    // and this offers a load factor of roughly " + CAPACITY_FACTOR + ".\n";
 
   private static void writeCountryCallingCodeMappingToJavaFile(
       Map<Integer, List<String>> countryCodeToRegionCodeMap,
-      String outputDir, boolean forTesting, boolean forAlternate) throws IOException {
-    String mappingClassName;
-    if (forAlternate) {
-      // For alternate formats there will be no region codes in the map (and a set would have been
-      // more appropriate), but we are lazy and re-use existing infrastructure.
-      mappingClassName = ALTERNATE_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
-    } else if (forTesting) {
-      mappingClassName = TEST_COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
+      String outputDir, String mappingClass, String copyright) throws IOException {
+    int capacity = (int) (countryCodeToRegionCodeMap.size() / CAPACITY_FACTOR);
+
+    // Find out whether the countryCodeToRegionCodeMap has any region codes listed in it.
+    boolean hasRegionCodes = false;
+    for (List<String> listWithRegionCode : countryCodeToRegionCodeMap.values()) {
+      if (!listWithRegionCode.isEmpty()) {
+        hasRegionCodes = true;
+        break;
+      }
+    }
+
+    ClassWriter writer = new ClassWriter(outputDir, mappingClass, copyright);
+
+    if (hasRegionCodes) {
+      writeMap(writer, capacity, countryCodeToRegionCodeMap);
     } else {
-      mappingClassName = COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME;
+      writeSet(writer, capacity, countryCodeToRegionCodeMap.keySet());
     }
-    String mappingFile = outputDir + "/" + PACKAGE_NAME + "/" + mappingClassName + ".java";
-    int capacity = (int) (countryCodeToRegionCodeMap.size() / MAPPING_LOAD_FACTOR);
 
-    BufferedWriter writer = new BufferedWriter(new FileWriter(mappingFile));
+    writer.writeToFile();
+  }
 
-    CopyrightNotice.writeTo(writer, COPYRIGHT_YEAR);
-    writer.write(GENERATION_COMMENT);
-    if (PACKAGE_NAME.length() > 0) {
-      writer.write("package " + PACKAGE_NAME.replaceAll("/", ".") + ";\n\n");
-    }
-    writer.write(MAPPING_IMPORTS);
-    writer.write("\n");
-    writer.write("public class " + mappingClassName + " {\n");
-    writer.write(MAPPING_COMMENT);
-    writer.write("  static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {\n");
-    Formatter formatter = new Formatter(writer);
-    formatter.format(MAPPING_COMMENT_2, capacity, countryCodeToRegionCodeMap.size());
-    writer.write("    Map<Integer, List<String>> countryCodeToRegionCodeMap =\n");
-    writer.write("        new HashMap<Integer, List<String>>(" + capacity + ");\n");
-    writer.write("\n");
-    writer.write("    ArrayList<String> listWithRegionCode;\n");
-    writer.write("\n");
+  private static void writeMap(ClassWriter writer, int capacity,
+                               Map<Integer, List<String>> countryCodeToRegionCodeMap) {
+    writer.addToBody(MAP_COMMENT);
+
+    writer.addToImports("java.util.ArrayList");
+    writer.addToImports("java.util.HashMap");
+    writer.addToImports("java.util.List");
+    writer.addToImports("java.util.Map");
+
+    writer.addToBody("  static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {\n");
+    writer.formatToBody(CAPACITY_COMMENT, capacity, countryCodeToRegionCodeMap.size());
+    writer.addToBody("    Map<Integer, List<String>> countryCodeToRegionCodeMap =\n");
+    writer.addToBody("        new HashMap<Integer, List<String>>(" + capacity + ");\n");
+    writer.addToBody("\n");
+    writer.addToBody("    ArrayList<String> listWithRegionCode;\n");
+    writer.addToBody("\n");
 
     for (Map.Entry<Integer, List<String>> entry : countryCodeToRegionCodeMap.entrySet()) {
       int countryCallingCode = entry.getKey();
       List<String> regionCodes = entry.getValue();
-      writer.write("    listWithRegionCode = new ArrayList<String>(" + regionCodes.size() + ");\n");
+      writer.addToBody("    listWithRegionCode = new ArrayList<String>(" +
+                       regionCodes.size() + ");\n");
       for (String regionCode : regionCodes) {
-        writer.write("    listWithRegionCode.add(\"" + regionCode + "\");\n");
+        writer.addToBody("    listWithRegionCode.add(\"" + regionCode + "\");\n");
       }
-      writer.write("    countryCodeToRegionCodeMap.put(" + countryCallingCode +
-                   ", listWithRegionCode);\n");
-      writer.write("\n");
+      writer.addToBody("    countryCodeToRegionCodeMap.put(" + countryCallingCode +
+                       ", listWithRegionCode);\n");
+      writer.addToBody("\n");
     }
 
-    writer.write("    return countryCodeToRegionCodeMap;\n");
-    writer.write("  }\n");
-    writer.write("}\n");
+    writer.addToBody("    return countryCodeToRegionCodeMap;\n");
+    writer.addToBody("  }\n");
+  }
 
-    writer.flush();
-    writer.close();
+  private static void writeSet(ClassWriter writer, int capacity,
+                               Set<Integer> countryCodeSet) {
+    writer.addToBody(SET_COMMENT);
+
+    writer.addToImports("java.util.HashSet");
+    writer.addToImports("java.util.Set");
+
+    writer.addToBody("  static Set<Integer> getCountryCodeSet() {\n");
+    writer.formatToBody(CAPACITY_COMMENT, capacity, countryCodeSet.size());
+    writer.addToBody("    Set<Integer> countryCodeSet = new HashSet<Integer>(" + capacity + ");\n");
+    writer.addToBody("\n");
+
+    for (int countryCallingCode : countryCodeSet) {
+      writer.addToBody("    countryCodeSet.add(" + countryCallingCode + ");\n");
+    }
+
+    writer.addToBody("\n");
+    writer.addToBody("    return countryCodeSet;\n");
+    writer.addToBody("  }\n");
+  }
+
+  private static final class ClassWriter {
+    private final String name;
+    private final String copyright;
+
+    private final SortedSet<String> imports;
+    private final StringBuffer body;
+    private final Formatter formatter;
+    private final Writer writer;
+
+    ClassWriter(String outputDir, String name, String copyright) throws IOException {
+      this.name = name;
+      this.copyright = copyright;
+
+      imports = new TreeSet<String>();
+      body = new StringBuffer();
+      formatter = new Formatter(body);
+      writer = new BufferedWriter(new FileWriter(new File(outputDir, name + ".java")));
+    }
+
+    void addToImports(String name) {
+      imports.add(name);
+    }
+
+    void addToBody(CharSequence text) {
+      body.append(text);
+    }
+
+    void formatToBody(String format, Object... args) {
+      formatter.format(format, args);
+    }
+
+    void writeToFile() throws IOException {
+      CopyrightNotice.writeTo(writer, Integer.valueOf(copyright));
+      writer.write(GENERATION_COMMENT);
+      writer.write("package " + PACKAGE_NAME + ";\n\n");
+
+      if (!imports.isEmpty()) {
+        for (String item : imports) {
+          writer.write("import " + item + ";\n");
+        }
+        writer.write("\n");
+      }
+
+      writer.write("public class " + name + " {\n");
+      writer.write(body.toString());
+      writer.write("}\n");
+
+      writer.flush();
+      writer.close();
+    }
   }
 }
