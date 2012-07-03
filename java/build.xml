@@ -32,11 +32,12 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
-      <arg value="libphonenumber/src"/>
-      <arg value="false"/> <!-- Not for testing. -->
-      <arg value="false"/> <!-- Not for alternate formats. -->
-      <arg value="false"/> <!-- No lite metadata. -->
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetaData.xml"/>
+      <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/PhoneNumberMetadataProto"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=false"/>
     </exec>
   </target>
 
@@ -45,11 +46,12 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
-      <arg value="libphonenumber/test"/>
-      <arg value="true"/> <!-- For testing. -->
-      <arg value="false"/> <!-- Not for alternate formats. -->
-      <arg value="false"/> <!-- No lite metadata. -->
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/PhoneNumberMetadataProtoForTesting"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=false"/>
     </exec>
   </target>
 
