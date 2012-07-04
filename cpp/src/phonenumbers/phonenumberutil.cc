@@ -17,9 +17,9 @@
 
 #include "phonenumbers/phonenumberutil.h"
 
+#include <string.h>
 #include <algorithm>
 #include <cctype>
-#include <cstddef>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -73,10 +73,10 @@ const char PhoneNumberUtil::kPlusChars[] = "+\xEF\xBC\x8B";  /* "+＋" */
 // unicode character.
 // static
 const char PhoneNumberUtil::kValidPunctuation[] =
-    /* "-x‐-―−ー－-／  <U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
+    /* "-x‐-―−ー－-／  ­<U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
     "-x\xE2\x80\x90-\xE2\x80\x95\xE2\x88\x92\xE3\x83\xBC\xEF\xBC\x8D-\xEF\xBC"
-    "\x8F \xC2\xA0\xE2\x80\x8B\xE2\x81\xA0\xE3\x80\x80()\xEF\xBC\x88\xEF\xBC"
-    "\x89\xEF\xBC\xBB\xEF\xBC\xBD.\\[\\]/~\xE2\x81\x93\xE2\x88\xBC";
+    "\x8F \xC2\xA0\xC2\xAD\xE2\x80\x8B\xE2\x81\xA0\xE3\x80\x80()\xEF\xBC\x88"
+    "\xEF\xBC\x89\xEF\xBC\xBB\xEF\xBC\xBD.\\[\\]/~\xE2\x81\x93\xE2\x88\xBC";
 
 // static
 const char PhoneNumberUtil::kCaptureUpToSecondNumberStart[] = "(.*)[\\\\/] *x";
@@ -97,9 +97,8 @@ const char kStarSign[] = "*";
 
 const char kRfc3966ExtnPrefix[] = ";ext=";
 const char kRfc3966Prefix[] = "tel:";
-// We include the "+" here since RFC3966 format specifies that the context must
-// be specified in international format.
-const char kRfc3966PhoneContext[] = ";phone-context=+";
+const char kRfc3966PhoneContext[] = ";phone-context=";
+const char kRfc3966IsdnSubaddress[] = ";isub=";
 
 const char kDigits[] = "\\p{Nd}";
 // We accept alpha characters in phone numbers, ASCII only. We store lower-case
@@ -588,8 +587,8 @@ class PhoneNumberRegExpsAndMappings {
                                           kStarSign)),
         valid_phone_number_(
             StrCat("[", PhoneNumberUtil::kPlusChars, "]*(?:[",
-                   punctuation_and_star_sign_, "]*[",
-                   kDigits, "]){3,}[", kValidAlpha,
+                   punctuation_and_star_sign_, "]*",
+                   kDigits, "){3,}[", kValidAlpha,
                    punctuation_and_star_sign_, kDigits,
                    "]*")),
         extn_patterns_for_parsing_(
@@ -738,6 +737,13 @@ PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
 
 const string& PhoneNumberUtil::GetExtnPatternsForMatching() const {
   return reg_exps_->extn_patterns_for_matching_;
+}
+
+bool PhoneNumberUtil::StartsWithPlusCharsPattern(const string& number)
+    const {
+  const scoped_ptr<RegExpInput> number_string_piece(
+      reg_exps_->regexp_factory_->CreateInput(number));
+  return reg_exps_->plus_chars_pattern_->Consume(number_string_piece.get());
 }
 
 bool PhoneNumberUtil::ContainsOnlyValidDigits(const string& s) const {
@@ -1202,9 +1208,11 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
   // user entered.
   if (!formatted_number->empty()) {
     string formatted_number_copy(*formatted_number);
-    NormalizeDigitsOnly(&formatted_number_copy);
+    NormalizeHelper(reg_exps_->diallable_char_mappings_,
+                    true /* remove non matches */, &formatted_number_copy);
     string raw_input_copy(number.raw_input());
-    NormalizeDigitsOnly(&raw_input_copy);
+    NormalizeHelper(reg_exps_->diallable_char_mappings_,
+                    true /* remove non matches */, &raw_input_copy);
     if (formatted_number_copy != raw_input_copy) {
       formatted_number->assign(number.raw_input());
     }
@@ -1698,6 +1706,60 @@ bool PhoneNumberUtil::CheckRegionForParsing(
   return true;
 }
 
+// Converts number_to_parse to a form that we can parse and write it to
+// national_number if it is written in RFC3966; otherwise extract a possible
+// number out of it and write to national_number.
+void PhoneNumberUtil::BuildNationalNumberForParsing(
+    const string& number_to_parse, string* national_number) const {
+  size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
+  if (index_of_phone_context != string::npos) {
+    int phone_context_start =
+        index_of_phone_context + strlen(kRfc3966PhoneContext);
+    // If the phone context contains a phone number prefix, we need to capture
+    // it, whereas domains will be ignored.
+    if (number_to_parse.at(phone_context_start) == kPlusSign[0]) {
+      // Additional parameters might follow the phone context. If so, we will
+      // remove them here because the parameters after phone context are not
+      // important for parsing the phone number.
+      size_t phone_context_end = number_to_parse.find(';', phone_context_start);
+      if (phone_context_end != string::npos) {
+        StrAppend(
+            national_number, number_to_parse.substr(
+                phone_context_start, phone_context_end - phone_context_start));
+      } else {
+        StrAppend(national_number, number_to_parse.substr(phone_context_start));
+      }
+    }
+
+    // Now append everything between the "tel:" prefix and the phone-context.
+    // This should include the national number, an optional extension or
+    // isdn-subaddress component.
+    int end_of_rfc_prefix =
+        number_to_parse.find(kRfc3966Prefix) + strlen(kRfc3966Prefix);
+    StrAppend(
+        national_number,
+        number_to_parse.substr(end_of_rfc_prefix,
+                               index_of_phone_context - end_of_rfc_prefix));
+  } else {
+    // Extract a possible number from the string passed in (this strips leading
+    // characters that could not be the start of a phone number.)
+    ExtractPossibleNumber(number_to_parse, national_number);
+  }
+
+  // Delete the isdn-subaddress and everything after it if it is present. Note
+  // extension won't appear at the same time with isdn-subaddress according to
+  // paragraph 5.3 of the RFC3966 spec.
+  size_t index_of_isdn = national_number->find(kRfc3966IsdnSubaddress);
+  if (index_of_isdn != string::npos) {
+    national_number->erase(index_of_isdn);
+  }
+  // If both phone context and isdn-subaddress are absent but other parameters
+  // are present, the parameters are left in nationalNumber. This is because
+  // we are concerned about deleting content from a potential number string
+  // when there is no strong evidence that the number is actually written in
+  // RFC3966.
+}
+
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     const string& number_to_parse,
     const string& default_region,
@@ -1706,30 +1768,8 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     PhoneNumber* phone_number) const {
   DCHECK(phone_number);
 
-  size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
   string national_number;
-  if (index_of_phone_context != string::npos) {
-    // Prefix the number with the phone context. The offset here is because the
-    // context we are expecting to match should start with a "+" sign, and we
-    // want to include this at the start of the number.
-    StrAppend(
-        &national_number,
-        number_to_parse.substr(
-            index_of_phone_context + strlen(kRfc3966PhoneContext) - 1));
-    // Now append everything between the "tel:" prefix and the phone-context.
-    int end_of_rfc_prefix =
-        number_to_parse.find(kRfc3966Prefix) + strlen(kRfc3966Prefix);
-    StrAppend(
-        &national_number,
-        number_to_parse.substr(end_of_rfc_prefix,
-                               index_of_phone_context - end_of_rfc_prefix));
-    // Note that phone-contexts that are URLs will not be parsed -
-    // IsViablePhoneNumber will throw an exception below.
-  } else {
-    // Extract a possible number from the string passed in (this strips leading
-    // characters that could not be the start of a phone number.)
-    ExtractPossibleNumber(number_to_parse, &national_number);
-  }
+  BuildNationalNumberForParsing(number_to_parse, &national_number);
 
   if (!IsViablePhoneNumber(national_number)) {
     VLOG(2) << "The string supplied did not seem to be a phone number.";
@@ -2390,7 +2430,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
     phone_number->set_country_code_source(country_code_source);
   }
   if (country_code_source != PhoneNumber::FROM_DEFAULT_COUNTRY) {
-    if (national_number->length() < kMinLengthForNsn) {
+    if (national_number->length() <= kMinLengthForNsn) {
       VLOG(2) << "Phone number had an IDD, but after this was not "
               << "long enough to be a viable phone number.";
       return TOO_SHORT_AFTER_IDD;

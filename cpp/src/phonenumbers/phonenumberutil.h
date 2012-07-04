@@ -73,6 +73,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class PhoneNumberMatcherTest;
   friend class PhoneNumberRegExpsAndMappings;
   friend class PhoneNumberUtilTest;
+  friend class ShortNumberUtil;
+  friend class ShortNumberUtilTest;
  public:
   ~PhoneNumberUtil();
   static const char kRegionCodeForNonGeoEntity[];
@@ -487,6 +489,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // particular region is not performed. This can be done separately with
   // IsValidNumber().
   //
+  // number_to_parse can also be provided in RFC3966 format.
+  //
   // default_region represents the country that we are expecting the number to
   // be from. This is only used if the number being parsed is not written in
   // international format. The country_code for the number in this case would be
@@ -565,7 +569,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   typedef pair<int, list<string>*> IntRegionsPair;
 
   // The minimum and maximum length of the national significant number.
-  static const size_t kMinLengthForNsn = 3;
+  static const size_t kMinLengthForNsn = 2;
   // The ITU says the maximum length should be 15, but we have found longer
   // numbers in Germany.
   static const size_t kMaxLengthForNsn = 16;
@@ -621,6 +625,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Returns a regular expression for the possible extensions that may be found
   // in a number, for use when matching.
   const string& GetExtnPatternsForMatching() const;
+
+  // Checks if a number matches the plus chars pattern.
+  bool StartsWithPlusCharsPattern(const string& number) const;
 
   // Checks whether a string contains only valid digits.
   bool ContainsOnlyValidDigits(const string& s) const;
@@ -747,6 +754,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
+
+  void BuildNationalNumberForParsing(const string& number_to_parse,
+                                     string* national_number) const;
 
   // Returns true if the number can be dialled from outside the region, or
   // unknown. If the number can only be dialled from within the region, returns

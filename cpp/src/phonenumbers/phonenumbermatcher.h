@@ -33,6 +33,9 @@
 namespace i18n {
 namespace phonenumbers {
 
+template <class R, class A1, class A2, class A3, class A4>
+    class ResultCallback4;
+
 using std::string;
 using std::vector;
 

@@ -141,6 +141,10 @@ class RegionCode {
     return "YT";
   }
 
+  static const char* ZW() {
+    return "ZW";
+  }
+
   // Returns a region code string representing the "unknown" region.
   static const char* GetUnknown() {
     return "ZZ";
