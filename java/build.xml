@@ -55,6 +55,20 @@
     </exec>
   </target>
 
+  <target name="build-alternate-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberAlternateFormats.xml"/>
+      <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/PhoneNumberAlternateFormatsProto"/>
+      <arg value="--mapping-class=AlternateFormatsCountryCodeSet"/>
+      <arg value="--copyright=2012"/>
+      <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
   <target name="build-geo-data">
     <exec executable="java">
       <arg value="-jar" />
@@ -101,7 +115,7 @@
   </target>
 
   <target name="compile" description="Compile Java source."
-          depends="build-metadata,build-geo-data">
+          depends="build-metadata,build-alternate-metadata,build-geo-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${libphonenumber.src.dir};${geocoder.src.dir}"
            destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
@@ -121,6 +135,7 @@
       </fileset>
       <fileset dir="${libphonenumber.src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
+        <include name="**/PhoneNumberAlternateFormatsProto*"/>
       </fileset>
     </jar>
     <jar destfile="${jar.dir}/offline-geocoder.jar">
@@ -145,6 +160,7 @@
       </fileset>
       <fileset dir="${libphonenumber.src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
+        <include name="**/PhoneNumberAlternateFormatsProto*"/>
       </fileset>
       <fileset dir="${libphonenumber.test.dir}">
         <include name="**/PhoneNumberMetadataProtoForTesting*"/>

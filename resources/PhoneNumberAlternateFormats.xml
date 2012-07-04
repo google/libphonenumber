@@ -1,0 +1,807 @@
+<!-- Copyright (C) 2011 The Libphonenumber Authors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+     @author: Lara Rennie
+     @author: Shaopeng Jia
+
+     Additional Phone Number Formatting information, containing alternative
+     formats that are commonly used when writing phone numbers in certain
+     countries. Note that this is in addition to the formatting information
+     provided by the main PhoneNumberMetaData.xml file - formatting patterns
+     should not be duplicated.
+
+     Note also that only the most specific leading-digits pattern is present for
+     each pattern - the less specific ones are used only by the
+     AsYouTypeFormatter, and the AsYouTypeFormatter does not require information
+     on alternate formatting patterns.
+
+     For regions that share a country calling code, only the region with
+     mainCountryForCode set to true in PhoneNumberMetaData.xml should be present
+     here.
+
+     Note: Territories are in alphabetical order by their IDs, which are based on ISO 3166-1
+           two-letter country codes. The country names in the comments are the official short names
+           in English according to ISO 3166-1.
+
+     For more information on what each element represents, see
+     phonemetadata.proto
+-->
+
+<!DOCTYPE phoneNumberMetadata [
+    <!ELEMENT phoneNumberMetadata (territories)>
+    <!ELEMENT territories (territory+)>
+    <!ELEMENT territory (availableFormats)>
+    <!ELEMENT numberFormat (leadingDigits*, format, intlFormat*)>
+    <!ELEMENT leadingDigits (#PCDATA)>
+    <!ELEMENT format (#PCDATA)>
+    <!ELEMENT intlFormat (#PCDATA)>
+
+    <!ATTLIST territory countryCode CDATA #REQUIRED>
+    <!ATTLIST numberFormat pattern CDATA #REQUIRED>
+]>
+
+<phoneNumberMetadata>
+  <territories>
+    <!-- Australia (AU) -->
+    <territory countryCode="61">
+      <availableFormats>
+        <numberFormat pattern="(1[389]\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            1(?:
+              [38]00|
+              90
+            )
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(1[389]\d{2})(\d{6})">
+          <leadingDigits>
+            1(?:
+              [38]00|
+              90
+            )
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="([2378])(\d{8})">
+          <leadingDigits>[2378]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Brazil (BR) -->
+    <territory countryCode="55">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{8})" >
+          <leadingDigits>[1-9][1-9]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Germany (DE) -->
+    <territory countryCode="49">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})">
+          <leadingDigits>
+            3[02]|
+            40|
+            [68]9
+          </leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            3[02]|
+            40|
+            [68]9
+          </leadingDigits>
+          <format>$1/$2 $3 $4 $5</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{4})(\d{3,4})">
+          <leadingDigits>
+            3[02]|
+            40|
+            [68]9
+          </leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            3[02]|
+            40|
+            [68]9
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3})(\d{2,3})">
+          <leadingDigits>
+            3[02]|
+            40|
+            [68]9
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <!-- 3 digit area codes. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2,4})">
+          <leadingDigits>
+            2(?:
+              \d1|
+              0[2389]|
+              1[24]|
+              28|
+              34
+            )|
+            3(?:
+              [3-9][15]|
+              40
+            )|
+            [4-8][1-9]1|
+            9(?:
+              06|
+              [1-9]1
+            )
+          </leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{4})(\d{3,4})">
+          <leadingDigits>
+            2(?:
+              \d1|
+              0[2389]|
+              1[24]|
+              28|
+              34
+            )|
+            3(?:
+              [3-9][15]|
+              40
+            )|
+            [4-8][1-9]1|
+            9(?:
+              06|
+              [1-9]1
+            )
+          </leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            2(?:
+              \d1|
+              0[2389]|
+              1[24]|
+              28|
+              34
+            )|
+            3(?:
+              [3-9][15]|
+              40
+            )|
+            [4-8][1-9]1|
+            9(?:
+              06|
+              [1-9]1
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})(\d)">
+          <leadingDigits>
+            2(?:
+              \d1|
+              0[2389]|
+              1[24]|
+              28|
+              34
+            )|
+            3(?:
+              [3-9][15]|
+              40
+            )|
+            [4-8][1-9]1|
+            9(?:
+              06|
+              [1-9]1
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4 $5</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})(\d{2,3})">
+          <leadingDigits>
+            2(?:
+              \d1|
+              0[2389]|
+              1[24]|
+              28|
+              34
+            )|
+            3(?:
+              [3-9][15]|
+              40
+            )|
+            [4-8][1-9]1|
+            9(?:
+              06|
+              [1-9]1
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <!-- 4 digit area codes. -->
+        <numberFormat pattern="(\d{4})(\d{3})(\d{3,4})">
+          <leadingDigits>
+            [24-6]|
+            [7-9](?:
+              \d[1-9]|
+              [1-9]\d
+            )|
+            3(?:
+              3(?:
+                0[1-467]|
+                2[127-9]|
+                3[124578]|
+                [46][1246]|
+                7[1257-9]|
+                8[1256]|
+                9[145]
+              )|
+              4(?:
+                2[135]|
+                3[1357]|
+                4[13578]|
+                6[1246]|
+                7[1356]|
+                9[1346]
+              )|
+              5(?:
+                0[14]|
+                2[1-3589]|
+                3[1357]|
+                4[1246]|
+                6[1-4]|
+                7[1346]|
+                8[13568]|
+                9[1246]
+              )|
+              6(?:
+                0[356]|
+                2[1-489]|
+                3[124-6]|
+                4[1347]|
+                6[13]|
+                7[12579]|
+                8[1-356]|
+                9[135]
+              )|
+              7(?:
+                2[1-7]|
+                3[1357]|
+                4[145]|
+                6[1-5]|
+                7[1-4]
+              )|
+              8(?:
+                21|
+                3[1468]|
+                4[1347]|
+                6[0135-9]|
+                7[1467]|
+                8[136]
+              )|
+              9(?:
+                0[12479]|
+                2[1358]|
+                3[1357]|
+                4[134679]|
+                6[1-9]|
+                7[136]|
+                8[147]|
+                9[1468]
+              )
+            )
+          </leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{4})(\d{1,4})">
+          <leadingDigits>
+            [24-6]|
+            [7-9](?:
+              \d[1-9]|
+              [1-9]\d
+            )|
+            3(?:
+              3(?:
+                0[1-467]|
+                2[127-9]|
+                3[124578]|
+                [46][1246]|
+                7[1257-9]|
+                8[1256]|
+                9[145]
+              )|
+              4(?:
+                2[135]|
+                3[1357]|
+                4[13578]|
+                6[1246]|
+                7[1356]|
+                9[1346]
+              )|
+              5(?:
+                0[14]|
+                2[1-3589]|
+                3[1357]|
+                4[1246]|
+                6[1-4]|
+                7[1346]|
+                8[13568]|
+                9[1246]
+              )|
+              6(?:
+                0[356]|
+                2[1-489]|
+                3[124-6]|
+                4[1347]|
+                6[13]|
+                7[12579]|
+                8[1-356]|
+                9[135]
+              )|
+              7(?:
+                2[1-7]|
+                3[1357]|
+                4[145]|
+                6[1-5]|
+                7[1-4]
+              )|
+              8(?:
+                21|
+                3[1468]|
+                4[1347]|
+                6[0135-9]|
+                7[1467]|
+                8[136]
+              )|
+              9(?:
+                0[12479]|
+                2[1358]|
+                3[1357]|
+                4[134679]|
+                6[1-9]|
+                7[136]|
+                8[147]|
+                9[1468]
+              )
+            )
+          </leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>
+            [24-6]|
+            [7-9](?:
+              \d[1-9]|
+              [1-9]\d
+            )|
+            3(?:
+              3(?:
+                0[1-467]|
+                2[127-9]|
+                3[124578]|
+                [46][1246]|
+                7[1257-9]|
+                8[1256]|
+                9[145]
+              )|
+              4(?:
+                2[135]|
+                3[1357]|
+                4[13578]|
+                6[1246]|
+                7[1356]|
+                9[1346]
+              )|
+              5(?:
+                0[14]|
+                2[1-3589]|
+                3[1357]|
+                4[1246]|
+                6[1-4]|
+                7[1346]|
+                8[13568]|
+                9[1246]
+              )|
+              6(?:
+                0[356]|
+                2[1-489]|
+                3[124-6]|
+                4[1347]|
+                6[13]|
+                7[12579]|
+                8[1-356]|
+                9[135]
+              )|
+              7(?:
+                2[1-7]|
+                3[1357]|
+                4[145]|
+                6[1-5]|
+                7[1-4]
+              )|
+              8(?:
+                21|
+                3[1468]|
+                4[1347]|
+                6[0135-9]|
+                7[1467]|
+                8[136]
+              )|
+              9(?:
+                0[12479]|
+                2[1358]|
+                3[1357]|
+                4[134679]|
+                6[1-9]|
+                7[136]|
+                8[147]|
+                9[1468]
+              )
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{2})(\d{3})(\d{2})">
+          <leadingDigits>
+            [24-6]|
+            [7-9](?:
+              \d[1-9]|
+              [1-9]\d
+            )|
+            3(?:
+              3(?:
+                0[1-467]|
+                2[127-9]|
+                3[124578]|
+                [46][1246]|
+                7[1257-9]|
+                8[1256]|
+                9[145]
+              )|
+              4(?:
+                2[135]|
+                3[1357]|
+                4[13578]|
+                6[1246]|
+                7[1356]|
+                9[1346]
+              )|
+              5(?:
+                0[14]|
+                2[1-3589]|
+                3[1357]|
+                4[1246]|
+                6[1-4]|
+                7[1346]|
+                8[13568]|
+                9[1246]
+              )|
+              6(?:
+                0[356]|
+                2[1-489]|
+                3[124-6]|
+                4[1347]|
+                6[13]|
+                7[12579]|
+                8[1-356]|
+                9[135]
+              )|
+              7(?:
+                2[1-7]|
+                3[1357]|
+                4[145]|
+                6[1-5]|
+                7[1-4]
+              )|
+              8(?:
+                21|
+                3[1468]|
+                4[1347]|
+                6[0135-9]|
+                7[1467]|
+                8[136]
+              )|
+              9(?:
+                0[12479]|
+                2[1358]|
+                3[1357]|
+                4[134679]|
+                6[1-9]|
+                7[136]|
+                8[147]|
+                9[1468]
+              )
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            [24-6]|
+            [7-9](?:
+              \d[1-9]|
+              [1-9]\d
+            )|
+            3(?:
+              3(?:
+                0[1-467]|
+                2[127-9]|
+                3[124578]|
+                [46][1246]|
+                7[1257-9]|
+                8[1256]|
+                9[145]
+              )|
+              4(?:
+                2[135]|
+                3[1357]|
+                4[13578]|
+                6[1246]|
+                7[1356]|
+                9[1346]
+              )|
+              5(?:
+                0[14]|
+                2[1-3589]|
+                3[1357]|
+                4[1246]|
+                6[1-4]|
+                7[1346]|
+                8[13568]|
+                9[1246]
+              )|
+              6(?:
+                0[356]|
+                2[1-489]|
+                3[124-6]|
+                4[1347]|
+                6[13]|
+                7[12579]|
+                8[1-356]|
+                9[135]
+              )|
+              7(?:
+                2[1-7]|
+                3[1357]|
+                4[145]|
+                6[1-5]|
+                7[1-4]
+              )|
+              8(?:
+                21|
+                3[1468]|
+                4[1347]|
+                6[0135-9]|
+                7[1467]|
+                8[136]
+              )|
+              9(?:
+                0[12479]|
+                2[1358]|
+                3[1357]|
+                4[134679]|
+                6[1-9]|
+                7[136]|
+                8[147]|
+                9[1468]
+              )
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{2})(\d{2})(\d{2,3})">
+          <leadingDigits>
+            [24-6]|
+            [7-9](?:
+              \d[1-9]|
+              [1-9]\d
+            )|
+            3(?:
+              3(?:
+                0[1-467]|
+                2[127-9]|
+                3[124578]|
+                [46][1246]|
+                7[1257-9]|
+                8[1256]|
+                9[145]
+              )|
+              4(?:
+                2[135]|
+                3[1357]|
+                4[13578]|
+                6[1246]|
+                7[1356]|
+                9[1346]
+              )|
+              5(?:
+                0[14]|
+                2[1-3589]|
+                3[1357]|
+                4[1246]|
+                6[1-4]|
+                7[1346]|
+                8[13568]|
+                9[1246]
+              )|
+              6(?:
+                0[356]|
+                2[1-489]|
+                3[124-6]|
+                4[1347]|
+                6[13]|
+                7[12579]|
+                8[1-356]|
+                9[135]
+              )|
+              7(?:
+                2[1-7]|
+                3[1357]|
+                4[145]|
+                6[1-5]|
+                7[1-4]
+              )|
+              8(?:
+                21|
+                3[1468]|
+                4[1347]|
+                6[0135-9]|
+                7[1467]|
+                8[136]
+              )|
+              9(?:
+                0[12479]|
+                2[1358]|
+                3[1357]|
+                4[134679]|
+                6[1-9]|
+                7[136]|
+                8[147]|
+                9[1468]
+              )
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <!-- 5 digit area codes. -->
+        <numberFormat pattern="(\d{5})(\d{3})(\d{3,4})">
+          <leadingDigits>3</leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{5})(\d{4})(\d{3,4})">
+          <leadingDigits>3</leadingDigits>
+          <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{5})(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>3</leadingDigits>
+          <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="([18]\d{2})(\d{2,3})(\d{3})(\d{2})">
+          <leadingDigits>
+            1[5-7]|
+            800
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d)(\d{3})(\d{3,4})">
+          <leadingDigits>
+            180|
+            900[1359]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d)(\d{4})(\d{3,4})">
+          <leadingDigits>
+            180|
+            900[1359]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{4,10})">
+          <leadingDigits>
+            180|
+            900[1359]
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})(\d{2})">
+          <leadingDigits>
+            900[1359]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Great Britain (GB) -->
+    <territory countryCode="44" >
+      <availableFormats>
+        <!-- London. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
+          <leadingDigits>20</leadingDigits>
+          <format>$1-$2-$3</format>
+        </numberFormat>
+        <!-- 7ddd (not 70, 76) with 10 digits. Note: DOES include 7624 when used for IM. Also
+             includes the four-digit fixed-line codes. -->
+        <numberFormat pattern="(\d{4})(\d{3})(\d{3})">
+          <leadingDigits>
+            1[2-48][02-9]|
+            7(?:
+              [1-5789]|
+              624
+            )
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <!-- 7ddd (not 70, 76) with 10 digits.-->
+        <numberFormat pattern="(\d{3})(\d{4})(\d{3})">
+          <leadingDigits>7[1-5789]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(80\d)(\d{3,4})(\d{3})">
+          <leadingDigits>80</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Japan (JP) -->
+    <territory countryCode="81" >
+      <availableFormats>
+        <!-- Toll-free, premium-rate and UAN numbers -->
+        <numberFormat pattern="(\d{3})(\d{2})(\d{4})">
+          <leadingDigits>
+            (?:
+              12|
+              57|
+              99
+            )0
+          </leadingDigits>
+          <format>$1-$2-$3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            (?:
+              12|
+              57|
+              99
+            )0
+          </leadingDigits>
+          <format>$1-$2-$3-$4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{4})(\d{2})">
+          <leadingDigits>
+            (?:
+              12|
+              57|
+              99
+            )0
+          </leadingDigits>
+          <format>$1-$2-$3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+  </territories>
+</phoneNumberMetadata>
