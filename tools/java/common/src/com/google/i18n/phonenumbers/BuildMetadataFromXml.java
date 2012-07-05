@@ -102,14 +102,14 @@ public class BuildMetadataFromXml {
     int numOfTerritories = territory.getLength();
     for (int i = 0; i < numOfTerritories; i++) {
       Element territoryElement = (Element) territory.item(i);
-      String id = territoryElement.getAttribute("id");
-      try {
-        PhoneMetadata metadata = loadCountryMetadata(id, territoryElement);
-        metadataCollection.addMetadata(metadata);
-      } catch (IllegalArgumentException e) {
-        LOGGER.log(Level.WARNING, "Found data for region '" + id + "' but no valid region code " +
-                   "can be found to match this. Data will be ignored.");
+      String regionCode = "";
+      // For the main metadata file this should always be set, but for other supplementary data
+      // files the country calling code may be all that is needed.
+      if (territoryElement.hasAttribute("id")) {
+        regionCode = territoryElement.getAttribute("id");
       }
+      PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
+      metadataCollection.addMetadata(metadata);
     }
     return metadataCollection.build();
   }
@@ -170,8 +170,7 @@ public class BuildMetadataFromXml {
 
   // @VisibleForTesting
   static PhoneMetadata.Builder loadTerritoryTagMetadata(String regionCode, Element element,
-                                                        String nationalPrefix,
-                                                        String nationalPrefixFormattingRule) {
+                                                        String nationalPrefix) {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     metadata.setId(regionCode);
     metadata.setCountryCode(Integer.parseInt(element.getAttribute(COUNTRY_CODE)));
@@ -280,7 +279,7 @@ public class BuildMetadataFromXml {
    *  the parent (territory) element.
    */
   // @VisibleForTesting
-  static void loadAvailableFormats(PhoneMetadata.Builder metadata, String regionCode,
+  static void loadAvailableFormats(PhoneMetadata.Builder metadata,
                                    Element element, String nationalPrefix,
                                    String nationalPrefixFormattingRule,
                                    boolean nationalPrefixOptionalWhenFormatting) {
@@ -450,12 +449,11 @@ public class BuildMetadataFromXml {
 
   public static PhoneMetadata loadCountryMetadata(String regionCode, Element element) {
     String nationalPrefix = getNationalPrefix(element);
+    PhoneMetadata.Builder metadata =
+        loadTerritoryTagMetadata(regionCode, element, nationalPrefix);
     String nationalPrefixFormattingRule =
         getNationalPrefixFormattingRuleFromElement(element, nationalPrefix);
-    PhoneMetadata.Builder metadata =
-        loadTerritoryTagMetadata(regionCode, element, nationalPrefix, nationalPrefixFormattingRule);
-
-    loadAvailableFormats(metadata, regionCode, element, nationalPrefix.toString(),
+    loadAvailableFormats(metadata, element, nationalPrefix.toString(),
                          nationalPrefixFormattingRule.toString(),
                          element.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
     loadGeneralDesc(metadata, element);
