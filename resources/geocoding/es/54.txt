@@ -15,6 +15,8 @@
 # Generated from:
 # http://www.cnc.gov.ar/infotecnica/numeracion/indicativosinter.asp (2011-07-11)
 # http://en.wikipedia.org/wiki/+54 [431727225]
+# Some manual edits were made after the file was generated, according to the
+# ITU file published 2011-12-16 here: http://www.itu.int/oth/T0202000009/en
 
 5411|Ciudad Autónoma de Buenos Aires
 54220|Merlo
@@ -51,7 +53,6 @@
 542286|General Lamadrid, Buenos Aires
 542291|Miramar, Buenos Aires
 542292|Buenos Aires
-542293|Tandil, Buenos Aires
 542296|Ayacucho, Buenos Aires
 542297|Buenos Aires
 54230|Pilar, Buenos Aires
@@ -60,7 +61,6 @@
 542316|Daireaux, Buenos Aires
 542317|9 de Julio, Buenos Aires
 542320|José C. Paz
-542322|Pilar, Buenos Aires
 542323|Luján
 542324|Mercedes
 542325|San Andrés de Giles/Azcuénaga
@@ -96,9 +96,7 @@
 54260|San Rafael
 54261|Mendoza, Capital
 542622|Tunuyán, Mendoza
-542623|San Martin
 542625|General Alvear, Mendoza
-542627|San Rafael
 54263|San Martin
 54264|San Juan, Capital
 542646|Valle Fértil
@@ -124,7 +122,6 @@
 54294|San Carlos de Bariloche, Río Negro
 542940|Ingeniero Jacobacci, Río Negro
 542942|Zapala
-542944|San Carlos de Bariloche, Río Negro
 542945|Esquel, Futaleufú
 542946|Choele Choel, Río Negro
 542948|Chos Malal, Neuquén
@@ -163,7 +160,6 @@
 543447|Colón
 54345|Concordia, Entre Ríos
 543460|Santa Teresa, Santa Fe
-543461|San Nicolás de Los Arroyos, San Nicolás
 543462|Venado Tuerto, General López
 543463|Canals, Córdoba
 543464|Casilda, Santa Fe
@@ -205,12 +201,9 @@
 54362|Resistencia, San Fernando
 54364|Presidencia Roque Sáenz Pena, Chaco
 54370|Formosa
-543717|Formosa
 543718|Clorinda, Formosa
-543722|Resistencia, San Fernando
 543725|Chaco
 543731|Charata, Chacabuco
-543732|Presidencia Roque Sáenz Pena, Chaco
 543734|Machagai, Chaco
 543735|Villa Angela, Mayor Luis Fonta
 543743|Puerto Rico, Misiones
@@ -226,14 +219,11 @@
 543774|Curuzú Cuatiá, Corrientes
 543775|Monte Caseros, Corrientes
 543777|Goya, Corrientes
-543783|Corrientes, Capital
 54379|Corrientes, Capital
 54380|La Rioja
 54381|San Miguel de Tucumán, Capital
-543822|La Rioja
 543825|Chilecito, La Rioja
 54383|Catamarca
-543833|San Fernando del Valle de Catamarca, Catamarca
 543835|Andalgalá, Catamarca
 543844|Añatuya, Santiago del Estero
 54385|Santiago del Estero, Capital

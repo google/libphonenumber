@@ -1,3 +1,9 @@
+July 6th, 2012: libphonenumber-4.9.1
+* Metadata changes
+ - AR, BA, BF, CR, DE, EC, ES, KZ, MK, NC, NG, PF, SB, UZ, non-geo entity 882
+ - Geocoding data updates for country calling codes 54 (AR) and 81 (JP), new
+   data for 234 (NG)
+
 June 21st, 2012: libphonenumber-4.9
 * Bug fix
  - formatInOriginalFormat fixed not to add a star sign if it was not present

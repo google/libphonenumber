@@ -14,6 +14,7 @@
 
 # Generated from:
 # ja/81.txt and translated with Freebase.
+# Some manual edits were made after the file was generated.
 
 8111|Sapporo, Hokkaido
 811232|Chitose, Hokkaido
@@ -50,10 +51,10 @@
 811363|Kutchan, Hokkaido
 811364|Kutchan, Hokkaido
 811365|Kutchan, Hokkaido
-811366|Rusutsu, Hokkaido
-811367|Rusutsu, Hokkaido
+811366|Suttsu, Hokkaido
+811367|Suttsu, Hokkaido
 811372|Shikabe, Hokkaido
-811374|Aomori, Aomori
+811374|Mori, Hokkaido
 811375|Yakumo, Hokkaido
 811376|Yakumo, Hokkaido
 811377|Yakumo, Hokkaido
@@ -123,8 +124,8 @@
 811583|Monbetsu, Hokkaido
 811584|Engaru, Hokkaido
 811585|Engaru, Hokkaido
-811586|
-811587|
+811586|Nakayubetsu, Hokkaido
+811587|Nakayubetsu, Hokkaido
 811588|Okoppe, Hokkaido
 811589|Okoppe, Hokkaido
 81162|Wakkanai, Hokkaido
@@ -170,7 +171,7 @@
 81179|Sannohe, Aomori
 81182|Yokote, Akita
 81183|Yuzawa, Akita
-81184|Honjo, Akita
+81184|Yurihonjo, Akita
 811852|Oga, Akita
 811853|Oga, Akita
 811854|Oga, Akita
@@ -230,7 +231,7 @@
 811986|Tono, Iwate
 811987|Tono, Iwate
 81199|Morioka, Iwate
-81220|Ohasama, Iwate
+81220|
 81222|Sendai, Miyagi
 812230|Sendai, Miyagi
 812232|Iwanuma, Miyagi
@@ -241,9 +242,9 @@
 812237|Sendai, Miyagi
 812238|Sendai, Miyagi
 812239|Sendai, Miyagi
-812242|Shiroishi, Saga
-812243|Shiroishi, Saga
-812244|Shiroishi, Saga
+812242|Shiroishi, Miyagi
+812243|Shiroishi, Miyagi
+812244|Shiroishi, Miyagi
 812245|Ogawara, Miyagi
 812246|Ogawara, Miyagi
 812247|Ogawara, Miyagi
@@ -252,15 +253,15 @@
 81226|Kesennuma, Miyagi
 81227|Sendai, Miyagi
 81228|
-81229|Kakogawa, Hyogo
+81229|
 81233|Shinjo, Yamagata
 81234|Sakata, Yamagata
 81235|Tsuruoka, Yamagata
 81236|Yamagata, Yamagata
-812372|Yamate, Okayama
-812373|Yamate, Okayama
-812374|Yamate, Okayama
-812375|Yamate, Okayama
+812372|Murayama, Yamagata
+812373|Murayama, Yamagata
+812374|Murayama, Yamagata
+812375|Murayama, Yamagata
 812376|Sagae, Yamagata
 812377|Sagae, Yamagata
 812378|Sagae, Yamagata
@@ -277,22 +278,22 @@
 812413|Kitakata, Fukushima
 812414|Yanaizu, Fukushima
 812415|Yanaizu, Fukushima
-812416|Etajima, Hiroshima
+812416|Tajima, Fukushima
 812417|
 812418|
-8124190|Etajima, Hiroshima
-8124191|Etajima, Hiroshima
-8124192|Etajima, Hiroshima
-8124193|Etajima, Hiroshima
-8124194|Etajima, Hiroshima
-8124195|Etajima, Hiroshima
+8124190|Tajima, Fukushima
+8124191|Tajima, Fukushima
+8124192|Tajima, Fukushima
+8124193|Tajima, Fukushima
+8124194|Tajima, Fukushima
+8124195|Tajima, Fukushima
 8124196|Yanaizu, Fukushima
 8124197|Yanaizu, Fukushima
-8124198|Etajima, Hiroshima
-8124199|Etajima, Hiroshima
+8124198|Tajima, Fukushima
+8124199|Tajima, Fukushima
 81242|Aizuwakamatsu, Fukushima
 81243|Nihonmatsu, Fukushima
-81244|Nishihara, Okinawa
+81244|Hobara, Fukushima
 81245|Fukushima, Fukushima
 81246|Iwaki, Fukushima
 812472|Ishikawa, Fukushima
@@ -317,20 +318,20 @@
 812542|Shibata, Niigata
 812543|Shibata, Niigata
 812544|Shibata, Niigata
-812545|Ueno, Gunma
-812546|Ueno, Gunma
-812547|Ueno, Gunma
-8125480|Ueno, Gunma
-8125481|Ueno, Gunma
-8125482|Ueno, Gunma
-8125483|Ueno, Gunma
-8125484|Ueno, Gunma
-8125485|Nakatsugawa, Gifu
-8125486|Nakatsugawa, Gifu
-8125487|Nakatsugawa, Gifu
-8125488|Nakatsugawa, Gifu
-8125489|Nakatsugawa, Gifu
-812549|Nakatsugawa, Gifu
+812545|Murakami, Niigata
+812546|Murakami, Niigata
+812547|Murakami, Niigata
+8125480|Murakami, Niigata
+8125481|Murakami, Niigata
+8125482|Murakami, Niigata
+8125483|Murakami, Niigata
+8125484|Murakami, Niigata
+8125485|Tsugawa, Niigata
+8125486|Tsugawa, Niigata
+8125487|Tsugawa, Niigata
+8125488|Tsugawa, Niigata
+8125489|Tsugawa, Niigata
+812549|Tsugawa, Niigata
 812550|Yasuzuka, Niigata
 812551|Joetsu, Niigata
 812552|Joetsu, Niigata
@@ -347,9 +348,9 @@
 812564|Sanjo, Niigata
 812565|Sanjo, Niigata
 812566|Sanjo, Niigata
-812567|Ishinomaki, Miyagi
-812568|Ishinomaki, Miyagi
-812569|Ishinomaki, Miyagi
+812567|
+812568|
+812569|
 812570|
 812571|Muika, Niigata
 812572|Kashiwazaki, Niigata
@@ -371,23 +372,23 @@
 812589|Nagaoka, Niigata
 81259|Sado, Niigata
 81260|Anan, Nagano
-812612|Daisen, Tottori
-812613|Daisen, Tottori
-812614|Daisen, Tottori
-812615|Daisen, Tottori
-812616|Daisen, Tottori
-8126170|Daisen, Tottori
-8126171|Daisen, Tottori
-8126172|Daisen, Tottori
-8126173|Daisen, Tottori
-8126174|Daisen, Tottori
-8126175|Daisen, Tottori
-8126176|Daisen, Tottori
-8126177|Nagano, Nagano
-8126178|Daisen, Tottori
-8126179|Daisen, Tottori
-812618|Daisen, Tottori
-812619|Daisen, Tottori
+812612|Omachi, Nagano
+812613|Omachi, Nagano
+812614|Omachi, Nagano
+812615|Omachi, Nagano
+812616|Omachi, Nagano
+8126170|Omachi, Nagano
+8126171|Omachi, Nagano
+8126172|Omachi, Nagano
+8126173|Omachi, Nagano
+8126174|Omachi, Nagano
+8126175|Omachi, Nagano
+8126176|Omachi, Nagano
+8126177|
+8126178|Omachi, Nagano
+8126179|Omachi, Nagano
+812618|Omachi, Nagano
+812619|Omachi, Nagano
 81262|Nagano, Nagano
 81263|Matsumoto, Nagano
 812640|Nagano, Nagano
@@ -416,11 +417,11 @@
 812677|Saku, Nagano
 812678|Saku, Nagano
 812679|Saku, Nagano
-81268|Asahikawa, Hokkaido
-812692|Nakano, Tokyo
-812693|Nakano, Tokyo
-812694|Nakano, Tokyo
-812695|Nakano, Tokyo
+81268|Ueda, Nagano
+812692|Nakano, Nagano
+812693|Nakano, Nagano
+812694|Nakano, Nagano
+812695|Nakano, Nagano
 812696|Iiyama, Nagano
 812697|Iiyama, Nagano
 812698|Iiyama, Nagano
@@ -431,18 +432,18 @@
 812743|Fujioka, Gunma
 812744|Fujioka, Gunma
 812745|Fujioka, Gunma
-812746|Tomioka, Fukushima
-812747|Tomioka, Fukushima
-812748|Tomioka, Fukushima
+812746|Tomioka, Gunma
+812747|Tomioka, Gunma
+812748|Tomioka, Gunma
 81276|Ota, Gunma
 81277|Kiryu, Gunma
 812780|Maebashi, Gunma
-812782|Numata, Hokkaido
-812783|Numata, Hokkaido
-812784|Numata, Hokkaido
-812785|Numata, Hokkaido
-812786|Numata, Hokkaido
-812787|Numata, Hokkaido
+812782|Numata, Gunma
+812783|Numata, Gunma
+812784|Numata, Gunma
+812785|Numata, Gunma
+812786|Numata, Gunma
+812787|Numata, Gunma
 812788|Maebashi, Gunma
 812789|Maebashi, Gunma
 812792|Shibukawa, Gunma
@@ -466,14 +467,14 @@
 812838|Sano, Tochigi
 812839|Sano, Tochigi
 81284|Ashikaga, Tochigi
-812852|Oyama, Shizuoka
-812853|Oyama, Shizuoka
-812854|Oyama, Shizuoka
-812855|Oyama, Shizuoka
+812852|Oyama, Tochigi
+812853|Oyama, Tochigi
+812854|Oyama, Tochigi
+812855|Oyama, Tochigi
 812856|Mooka, Tochigi
 812857|Mooka, Tochigi
 812858|Mooka, Tochigi
-812859|Oyama, Shizuoka
+812859|Oyama, Tochigi
 81286|Utsunomiya, Tochigi
 812872|Otawara, Tochigi
 812873|Otawara, Tochigi
@@ -481,17 +482,17 @@
 812875|Otawara, Tochigi
 812876|Kuroiso, Tochigi
 812877|Kuroiso, Tochigi
-812878|
-8128790|
-8128791|
-8128792|
-8128793|
-8128794|
-8128795|
-8128796|
-8128797|
+812878|Nasukarasuyama, Tochigi
+8128790|Nasukarasuyama, Tochigi
+8128791|Nasukarasuyama, Tochigi
+8128792|Nasukarasuyama, Tochigi
+8128793|Nasukarasuyama, Tochigi
+8128794|Nasukarasuyama, Tochigi
+8128795|Nasukarasuyama, Tochigi
+8128796|Nasukarasuyama, Tochigi
+8128797|Nasukarasuyama, Tochigi
 8128798|Otawara, Tochigi
-8128799|
+8128799|Nasukarasuyama, Tochigi
 81288|Imabari, Ehime
 812890|Utsunomiya, Tochigi
 812892|Utsunomiya, Tochigi
@@ -526,10 +527,10 @@
 812965|Shimodate, Ibaraki
 812967|Kasama, Ibaraki
 812968|Kasama, Ibaraki
-812972|Shimizu, Hokkaido
-812973|Shimizu, Hokkaido
-812974|Shimizu, Hokkaido
-812975|Shimizu, Hokkaido
+812972|
+812973|
+812974|
+812975|
 812976|
 812977|
 812978|
@@ -543,7 +544,7 @@
 812997|Itako, Ibaraki
 812998|Itako, Ibaraki
 812999|Itako, Ibaraki
-813|
+813|Tokyo
 81420|Tokorozawa, Saitama
 814220|Kokubunji, Tokyo
 814222|
@@ -591,7 +592,7 @@
 81432|Chiba, Chiba
 81433|Chiba, Chiba
 81434|Chiba, Chiba
-81436|Odawara, Kanagawa
+81436|Ichihara, Chiba
 81438|Kisarazu, Chiba
 81439|Kisarazu, Chiba
 8144|Kawasaki, Kanagawa
@@ -610,12 +611,12 @@
 814703|Tateyama, Chiba
 814704|Tateyama, Chiba
 814705|Tateyama, Chiba
-814706|Ogawara, Miyagi
-814707|Ogawara, Miyagi
-814708|Ogawara, Miyagi
+814706|
+814707|
+814708|
 814709|Kamogawa, Chiba
 81471|Kashiwa, Chiba
-81473|Kyoto, Kyoto
+81473|Ichikawa, Chiba
 81474|Funabashi, Chiba
 814752|Mobara, Chiba
 814753|Mobara, Chiba
@@ -625,9 +626,9 @@
 814757|Togane, Chiba
 814758|Togane, Chiba
 81476|Narita, Chiba
-814770|Kyoto, Kyoto
-814771|Kyoto, Kyoto
-814772|Kyoto, Kyoto
+814770|Ichikawa, Chiba
+814771|Ichikawa, Chiba
+814772|Ichikawa, Chiba
 814775|Funabashi, Chiba
 814776|Funabashi, Chiba
 814777|Funabashi, Chiba
@@ -649,15 +650,15 @@
 814797|Yokaichiba, Chiba
 814798|Yokaichiba, Chiba
 81480|Kuki, Saitama
-81482|Kawaguchi, Niigata
-81484|Kawaguchi, Niigata
+81482|Kawaguchi, Saitama
+81484|Kawaguchi, Saitama
 81485|Kumagaya, Saitama
 81486|Urawa, Saitama
 81487|Urawa, Saitama
 81488|Urawa, Saitama
 81489|Soka, Saitama
-81492|Kawagoe, Mie
-81493|
+81492|Kawagoe, Saitama
+81493|Higashimatsuyama, Saitama
 81494|Chichibu, Saitama
 81495|Honjo, Saitama
 814992|
@@ -665,7 +666,7 @@
 814996|
 814998|Ogasawara, Tokyo
 8152|Nagoya, Aichi
-81531|Odawara, Kanagawa
+81531|Tahara, Aichi
 81532|Toyohashi, Aichi
 81533|Toyohashi, Aichi
 81534|Hamamatsu, Shizuoka
@@ -681,10 +682,10 @@
 815393|Hamamatsu, Shizuoka
 815394|Hamamatsu, Shizuoka
 815395|Hamamatsu, Shizuoka
-8153960|Tenryu Ward, Hamamatsu
-8153961|Tenryu Ward, Hamamatsu
-8153962|Tenryu Ward, Hamamatsu
-8153963|Tenryu Ward, Hamamatsu
+8153960|
+8153961|
+8153962|
+8153963|
 8153964|Hamamatsu, Shizuoka
 8153965|Hamamatsu, Shizuoka
 8153966|Hamamatsu, Shizuoka
@@ -695,27 +696,27 @@
 8153971|Hamamatsu, Shizuoka
 8153972|Hamamatsu, Shizuoka
 8153973|Hamamatsu, Shizuoka
-8153974|Tenryu Ward, Hamamatsu
+8153974|
 8153975|Hamamatsu, Shizuoka
 8153976|Hamamatsu, Shizuoka
-8153977|Tenryu Ward, Hamamatsu
+8153977|
 8153978|Hamamatsu, Shizuoka
 8153979|Hamamatsu, Shizuoka
 815398|Hamamatsu, Shizuoka
-815399|Tenryu Ward, Hamamatsu
-81542|Mori, Shizuoka
-81543|Mori, Shizuoka
+815399|
+81542|Shizuoka, Shizuoka
+81543|Shizuoka, Shizuoka
 81544|Fujinomiya, Shizuoka
 81545|Fuji, Shizuoka
-81546|Mori, Shizuoka
-81547|Etajima, Hiroshima
+81546|Shizuoka, Shizuoka
+81547|Shimada, Shizuoka
 81548|Haibara, Shizuoka
-81549|Mori, Shizuoka
+81549|Shizuoka, Shizuoka
 81550|Gotenba, Shizuoka
 81551|Nirasaki, Yamanashi
 81552|Kofu, Yamanashi
-81553|Nanbu, Yamanashi
-81554|Otsuki, Kochi
+81553|Yamanashi, Yamanashi
+81554|Otsuki, Yamanashi
 81555|Fujiyoshida, Yamanashi
 815562|
 815563|
@@ -723,11 +724,11 @@
 815565|
 815566|Minobu, Yamanashi
 81557|Ito, Shizuoka
-815582|Shimoda, Aomori
-815583|Shimoda, Aomori
-815584|Shimoda, Aomori
-815585|Shimoda, Aomori
-815586|Shimoda, Aomori
+815582|Shimoda, Shizuoka
+815583|Shimoda, Shizuoka
+815584|Shimoda, Shizuoka
+815585|Shimoda, Shizuoka
+815586|Shimoda, Shizuoka
 815587|
 815588|
 815589|
@@ -756,10 +757,10 @@
 815746|Minokamo, Gifu
 815747|
 815748|
-815752|Shimonoseki, Yamaguchi
-815753|Shimonoseki, Yamaguchi
-815754|Shimonoseki, Yamaguchi
-815755|Shimonoseki, Yamaguchi
+815752|Sekigahara, Gifu
+815753|Sekigahara, Gifu
+815754|Sekigahara, Gifu
+815755|Sekigahara, Gifu
 815756|
 815757|
 815758|
@@ -778,27 +779,27 @@
 81583|Gifu, Gifu
 81584|Ogaki, Gifu
 81585|Ibigawa, Gifu
-81586|Ichinomiya, Chiba
-81587|Ichinomiya, Chiba
-81591|
-81592|
+81586|Ichinomiya, Aichi
+81587|Ichinomiya, Aichi
+81591|Tsu, Mie
+81592|Tsu, Mie
 81593|Yokkaichi, Mie
 81594|Kuwana, Mie
-815952|Asahikawa, Hokkaido
-815953|Asahikawa, Hokkaido
-815954|Asahikawa, Hokkaido
-815955|Asahikawa, Hokkaido
-815956|Asahikawa, Hokkaido
-815957|Asahikawa, Hokkaido
+815952|
+815953|
+815954|
+815955|
+815956|
+815957|
 815958|Kameyama, Mie
 815959|Kameyama, Mie
 81596|Ise, Mie
 815972|Owase, Mie
 815973|Owase, Mie
 815974|Owase, Mie
-815977|Kumano, Hiroshima
-815978|Kumano, Hiroshima
-815979|Kumano, Hiroshima
+815977|Kumano, Mie
+815978|Kumano, Mie
+815979|Kumano, Mie
 815982|Matsusaka, Mie
 815983|Matsusaka, Mie
 815984|Matsusaka, Mie
@@ -813,7 +814,7 @@
 815996|Ago, Mie
 815997|Ago, Mie
 815998|Ago, Mie
-815999|
+815999| Tsu, Mie
 816|Osaka, Osaka
 81721|Tondabayashi, Osaka
 81722|Sakai, Osaka
@@ -833,7 +834,7 @@
 81727|Ikeda, Osaka
 81728|Neyagawa, Osaka
 81729|Yao, Osaka
-81734|Misato, Wakayama
+81734|Wakayama, Wakayama
 817352|Shingu, Fukuoka
 817353|Shingu, Fukuoka
 817354|Shingu, Fukuoka
@@ -886,7 +887,7 @@
 817496|Nagahama, Shiga
 817497|Nagahama, Shiga
 817498|Nagahama, Shiga
-8175|
+8175|Kyoto, Kyoto
 817612|Komatsu, Ishikawa
 817613|Komatsu, Ishikawa
 817614|Komatsu, Ishikawa
@@ -944,12 +945,12 @@
 81775|Otsu, Shiga
 81776|Fukui, Fukui
 81778|Takefu, Fukui
-81779|Ono, Fukui
+81779|Ono, Gifu
 8178|Kobe, Hyogo
-817902|Kawasaki, Fukuoka
-817903|Kawasaki, Fukuoka
-817904|Kawasaki, Fukuoka
-817905|Kawasaki, Fukuoka
+817902|Fukusaki, Hyogo
+817903|Fukusaki, Hyogo
+817904|Fukusaki, Hyogo
+817905|Fukusaki, Hyogo
 817906|
 817907|
 817908|
@@ -965,19 +966,19 @@
 817943|Kakogawa, Hyogo
 817944|Kakogawa, Hyogo
 817945|Kakogawa, Hyogo
-817946|Miki, Kagawa
-817947|Miki, Kagawa
-817948|Miki, Kagawa
+817946|Miki, Hyogo
+817947|Miki, Hyogo
+817948|Miki, Hyogo
 817949|Kakogawa, Hyogo
-817950|Omuta, Fukuoka
+817950|Sanda, Hyogo
 817952|Nishiwaki, Hyogo
 817953|Nishiwaki, Hyogo
 817954|Nishiwaki, Hyogo
-817955|Omuta, Fukuoka
-817956|Omuta, Fukuoka
+817955|Sanda, Hyogo
+817956|Sanda, Hyogo
 817957|
 817958|
-817959|Omuta, Fukuoka
+817959|Sanda, Hyogo
 817960|
 817962|Toyooka, Hyogo
 817963|Toyooka, Hyogo
@@ -1019,9 +1020,9 @@
 818263|Kake, Hiroshima
 818264|
 818265|
-818266|Chiyoda, Tokyo
-818267|Chiyoda, Tokyo
-818268|Chiyoda, Tokyo
+818266|
+818267|
+818268|
 81827|Iwakuni, Yamaguchi
 81828|Hiroshima, Hiroshima
 818290|Hiroshima, Hiroshima
@@ -1273,9 +1274,9 @@
 818836|Mima, Tokushima
 818837|
 818838|
-818842|Anan, Nagano
-818843|Anan, Nagano
-818844|Anan, Nagano
+818842|Anan, Tokushima
+818843|Anan, Tokushima
+818844|Anan, Tokushima
 818845|
 818846|
 818847|
@@ -1362,7 +1363,7 @@
 819438|Tanushimaru, Fukuoka
 81944|Setaka, Fukuoka
 81946|Amagi, Fukuoka
-81947|Asahikawa, Hokkaido
+81947|Tagawa, Fukuoka
 81948|Iizuka, Fukuoka
 81949|Nogata, Fukuoka
 81950|Hirado, Nagasaki
@@ -1370,8 +1371,8 @@
 819542|Takeo, Saga
 819543|Takeo, Saga
 819544|Takeo, Saga
-819546|Kagoshima, Kagoshima
-819547|Kagoshima, Kagoshima
+819546|Kashima, Saga
+819547|Kashima, Saga
 819552|Imari, Saga
 819553|Imari, Saga
 819554|Imari, Saga
@@ -1390,8 +1391,8 @@
 81958|Nagasaki, Nagasaki
 819592|Oseto, Nagasaki
 819593|Oseto, Nagasaki
-819594|Aridagawa, Wakayama
-819595|Aridagawa, Wakayama
+819594|
+819595|
 819596|Fukue, Nagasaki
 819597|Fukue, Nagasaki
 819598|Fukue, Nagasaki
@@ -1412,8 +1413,8 @@
 819674|
 819675|
 819676|Takamori, Kumamoto
-819677|Oyabe, Toyama
-819678|Oyabe, Toyama
+819677|
+819678|
 819679|Takamori, Kumamoto
 819682|Yamaga, Kumamoto
 819683|Yamaga, Kumamoto
@@ -1451,7 +1452,7 @@
 819787|Kunisaki, Oita
 819788|Kunisaki, Oita
 819789|Kitsuki, Oita
-81979|Nakatsugawa, Gifu
+81979|Nakatsu, Oita
 819802|Minamidaito, Okinawa
 819803|Nago, Okinawa
 819804|Nago, Okinawa
@@ -1481,7 +1482,7 @@
 81984|Kobayashi, Miyazaki
 81985|Miyazaki, Miyazaki
 81986|Miyakonojo, Miyazaki
-81987|Nichinan, Tottori
+81987|Nichinan, Miyazaki
 81988|Naha, Okinawa
 81989|Naha, Okinawa
 819912|
