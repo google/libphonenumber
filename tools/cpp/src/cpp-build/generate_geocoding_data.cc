@@ -494,9 +494,12 @@ bool WriteCountryLanguages(const map<int32, set<string> >& languages,
 }
 
 // Returns a copy of input where all occurences of pattern are replaced with
-// value.
+// value. If pattern is empty, input is returned unchanged.
 string ReplaceAll(const string& input, const string& pattern,
                   const string& value) {
+  if (pattern.size() == 0) {
+    return input;
+  }
   string replaced;
   std::back_insert_iterator<string> output = std::back_inserter(replaced);
   string::const_iterator begin = input.begin(), end = begin;

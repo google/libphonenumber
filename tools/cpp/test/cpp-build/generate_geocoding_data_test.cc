@@ -27,5 +27,13 @@ TEST(GenerateGeocodingDataTest, TestMakeStringLiteral) {
             MakeStringLiteral("Op\xc3\xa9ra"));
 }
 
+TEST(GenerateGeocodingDataTest, TestReplaceAll) {
+  EXPECT_EQ("", ReplaceAll("", "$input$", "cc"));
+  EXPECT_EQ("accb", ReplaceAll("a$input$b", "$input$", "cc"));
+  EXPECT_EQ("ab", ReplaceAll("a$input$b", "$input$", ""));
+  EXPECT_EQ("ab", ReplaceAll("ab", "", "cc"));
+  EXPECT_EQ("acdc", ReplaceAll("a$input$d$input$", "$input$", "c"));
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n

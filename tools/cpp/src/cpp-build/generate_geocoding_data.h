@@ -26,6 +26,9 @@ using std::string;
 
 string MakeStringLiteral(const string& s);
 
+string ReplaceAll(const string& input, const string& pattern,
+                  const string& value);
+
 int Main(int argc, const char* argv[]);
 
 }  // namespace phonenumbers
