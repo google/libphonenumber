@@ -1,23 +1,30 @@
+July 12th, 2012: libphonenumber-5.0
+* Code changes:
+  - Support for alternate formats when finding phone numbers.
+  - Allowing two-digit numbers to be parsed if they are entered in national-format with no
+    punctuation
+* Metadata changes
+  - IL, GA
+* Other
+  - Reflowed this file to 100 char width to make it unambiguous as to what the standard should be.
+
 July 6th, 2012: libphonenumber-4.9.1
 * Metadata changes
  - AR, BA, BF, CR, DE, EC, ES, KZ, MK, NC, NG, PF, SB, UZ, non-geo entity 882
- - Geocoding data updates for country calling codes 54 (AR) and 81 (JP), new
-   data for 234 (NG)
+ - Geocoding data updates for country calling codes 54 (AR) and 81 (JP), new data for 234 (NG)
 
 June 21st, 2012: libphonenumber-4.9
 * Bug fix
- - formatInOriginalFormat fixed not to add a star sign if it was not present
-   originally.
+ - formatInOriginalFormat fixed not to add a star sign if it was not present originally.
 * Metadata changes
  - BF, CZ, ES, KW
- - Non-geographical entities with calling code 882 (BebbiCell, Maritime
-   Communications, Oration Technologies, Telespazio and Thuraya)
+ - Non-geographical entities with calling code 882 (BebbiCell, Maritime Communications, Oration
+   Technologies, Telespazio and Thuraya)
  - Geocoding data updates for country calling codes 221, 224, 226, 242, 244, 245
 * Functionality changes:
- - Minimum allowed length for a national significant number (NSN) when parsing
-   changed from 3 to 2.
- - Support parsing of RFC3966-formatted strings with an isdn-subaddress or extra
-   parameters specified.
+ - Minimum allowed length for a national significant number (NSN) when parsing changed from 3 to 2.
+ - Support parsing of RFC3966-formatted strings with an isdn-subaddress or extra parameters
+   specified.
  - Allow soft hyphen to appear in phone numbers (\u00AD)
 * Testing changes:
  - Add extra unit tests for non-geographical phone number entities
@@ -123,33 +130,31 @@ November 24th, 2011: libphonenumber-4.3
 November 10th, 2011: libphonenumber-4.2
 * Code changes
  - Providing an "exact match" isEmergencyNumber method
- - Improvement to PhoneNumberMatcher: requires national prefix to be present
-   when matching national-format numbers, unless matching for a region where it
-   is explicitly marked in the metadata that they may be omitted. Applies to
-   leniency level VALID and higher.
+ - Improvement to PhoneNumberMatcher: requires national prefix to be present when matching
+   national-format numbers, unless matching for a region where it is explicitly marked in the
+   metadata that they may be omitted. Applies to leniency level VALID and higher.
  - Change formatNumberForMobileDialing not to modify the phoneNumber passed in.
 
 * Metadata changes
  - Emergency numbers added for all remaining countries
- - Collected data on which numbers we format with a national prefix are
-   commonly written without one and added this
+ - Collected data on which numbers we format with a national prefix are commonly written without one
+   and added this
  - Updates for AR, AT, BH, CZ, GR, IR, KM, LT, MX, PT, SE, SO, UG
  - Addition of SX (Sint Maarten)
 
 October 19th, 2011: libphonenumber-4.1
 * Code changes
- - Update code and metadata for countries with IDD "8~10" to accept phone
-   numbers where the "~" is omitted.
- - Modify formatInOriginalFormat to use raw_input (when present) when the number
-   is considered as invalid by the library.
- - Add ShortNumberUtil to deal with international short phone numbers, such as
-   short codes and emergency numbers.
+ - Update code and metadata for countries with IDD "8~10" to accept phone numbers where the "~" is
+   omitted.
+ - Modify formatInOriginalFormat to use raw_input (when present) when the number is considered as
+   invalid by the library.
+ - Add ShortNumberUtil to deal with international short phone numbers, such as short codes and
+   emergency numbers.
  - Increase the maximum phone-number length accepted when parsing (now set to
    16).
 
 * Metadata changes
- - Updates: BF, BN, CN, DE, DK, DO, FR, IN, KI, KW, MC, MD, ML, PA, QA, SB, UK,
-   WS
+ - Updates: BF, BN, CN, DE, DK, DO, FR, IN, KI, KW, MC, MD, ML, PA, QA, SB, UK, WS
  - Emergency number information also added to: AE, AF, AL, AM, AR, AT, AU, BA,
    BB, BD, BE, BG, BH, BO, BR, BY, CA, CH, CL, CN, CO, CR, CY, CZ, DE, DJ, DK,
    DO, DZ, EC, EE, EG, ES, FI, FJ, FO, FR, GB, GE, GF, GH, GI, GL, GR, GT, GY,
@@ -161,10 +166,9 @@ October 19th, 2011: libphonenumber-4.1
 
 October 6th, 2011: libphonenumber-4.0
 * Code changes
- - New function formatNumberForMobileDialing, which attempts to format a number in
-   such a way that the call can be connected from a mobile phone. If this is
-   impossible, for example for numbers that cannot be internationally dialled,
-   then an empty string is returned.
+ - New function formatNumberForMobileDialing, which attempts to format a number in such a way that
+   the call can be connected from a mobile phone. If this is impossible, for example for numbers
+   that cannot be internationally dialled, then an empty string is returned.
  - Fallback functionality to English for non-CJK languages for geocoding
 
 * Metadata changes
@@ -178,8 +182,7 @@ September 13th, 2011: libphonenumber-3.9
  - Enable AsYouTypeFormatter to handle long IDD and NDD.
  - Allow the presence of an IDD following a +.
  - Fix formatting of phone numbers which contain only 0s in the national number.
- - Refactored some code in geocoding including AreaCodeMap and the storage
-   strategies.
+ - Refactored some code in geocoding including AreaCodeMap and the storage strategies.
 
 * Metadata changes
  - Updates: AM, BE, BH, BJ, BR, BT, BZ, CI, CL, CN, DE, DK, DM, DZ, EC, EG, FJ,
@@ -194,16 +197,14 @@ August 11th, 2011: libphonenumber-3.8
 * Code changes
  - Fix to demo to not throw null-ptr exceptions for invalid NANPA numbers
  - Fixed AYTF to not accept plus signs in the middle of input
- - PhoneNumberMatcher improvements - added STRICT_GROUPING and EXACT_GROUPING
-   levels, numbers followed/preceded by a currency symbol will not match,
-   multiple numbers separated by phone-number punctuation will now match. ", "
-   is no longer accepted as an extension symbol when matching, only when
-   parsing. "x" is only accepted as a carrier code or extension marker, not
-   otherwise.
- - Changes to handling of leading zeroes - these will not be silently ignored
-   anymore, but will be stored as part of the number.
- - PhoneNumberOfflineGeocoder - new method to get the description of a number that assumes
-   the validity of the number has already been checked and will not re-verify it.
+ - PhoneNumberMatcher improvements - added STRICT_GROUPING and EXACT_GROUPING levels, numbers
+   followed/preceded by a currency symbol will not match, multiple numbers separated by phone-number
+   punctuation will now match. ", " is no longer accepted as an extension symbol when matching, only
+   when parsing. "x" is only accepted as a carrier code or extension marker, not otherwise.
+ - Changes to handling of leading zeroes - these will not be silently ignored anymore, but will be
+   stored as part of the number.
+ - PhoneNumberOfflineGeocoder - new method to get the description of a number that assumes the
+   validity of the number has already been checked and will not re-verify it.
  - Split geocoding US binary data into multiple files.
 
 * Metadata changes
@@ -461,16 +462,16 @@ August 16th, 2010
 August 4th, 2010
 * Further improve startup performance
   - Preload no country specific metadata at startup.
-  - Stop creating the file containing mapping from country calling code to region code
-    and loading it at startup; instead, do the initialization in PhoneNumberUtil.
+  - Stop creating the file containing mapping from country calling code to region code and loading
+    it at startup; instead, do the initialization in PhoneNumberUtil.
 
 July 31th, 2010
 
 * Improve startup performance
   - Separate generated metadata binary file to one file per region
   - Preload US at start up, and load other region at the time when needed
-  - Create a file containing mapping from country calling code to region code,
-    and load it at startup
+  - Create a file containing mapping from country calling code to region code, and load it at
+    startup
   - Same change also applied to unittests
 
 July 30th, 2010

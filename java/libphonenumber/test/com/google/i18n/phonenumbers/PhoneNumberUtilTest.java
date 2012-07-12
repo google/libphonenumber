@@ -1256,16 +1256,20 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testIsViablePhoneNumber() {
+    assertFalse(PhoneNumberUtil.isViablePhoneNumber("1"));
     // Only one or two digits before strange non-possible punctuation.
-    assertFalse(PhoneNumberUtil.isViablePhoneNumber("12. March"));
     assertFalse(PhoneNumberUtil.isViablePhoneNumber("1+1+1"));
     assertFalse(PhoneNumberUtil.isViablePhoneNumber("80+0"));
-    assertFalse(PhoneNumberUtil.isViablePhoneNumber("00"));
-    // Three digits is viable.
+    // Two digits is viable.
+    assertTrue(PhoneNumberUtil.isViablePhoneNumber("00"));
     assertTrue(PhoneNumberUtil.isViablePhoneNumber("111"));
     // Alpha numbers.
     assertTrue(PhoneNumberUtil.isViablePhoneNumber("0800-4-pizza"));
     assertTrue(PhoneNumberUtil.isViablePhoneNumber("0800-4-PIZZA"));
+    // We need at least three digits before any alpha characters.
+    assertFalse(PhoneNumberUtil.isViablePhoneNumber("08-PIZZA"));
+    assertFalse(PhoneNumberUtil.isViablePhoneNumber("8-PIZZA"));
+    assertFalse(PhoneNumberUtil.isViablePhoneNumber("12. March"));
   }
 
   public void testIsViablePhoneNumberNonAscii() {
@@ -1600,6 +1604,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Test star numbers. Although this is not strictly valid, we would like to make sure we can
     // parse the output we produce when formatting the number.
     assertEquals(JP_STAR_NUMBER, phoneUtil.parse("+81 *2345", RegionCode.JP));
+
+    PhoneNumber shortNumber = new PhoneNumber();
+    shortNumber.setCountryCode(64).setNationalNumber(12L);
+    assertEquals(shortNumber, phoneUtil.parse("12", RegionCode.NZ));
   }
 
   public void testParseNumberWithAlphaCharacters() throws Exception {
@@ -1757,6 +1765,36 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testFailedParseOnInvalidNumbers() {
     try {
       String sentencePhoneNumber = "This is not a phone number";
+      phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
+      fail("This should not parse without throwing an exception " + sentencePhoneNumber);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    }
+    try {
+      String sentencePhoneNumber = "1 Still not a number";
+      phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
+      fail("This should not parse without throwing an exception " + sentencePhoneNumber);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    }
+    try {
+      String sentencePhoneNumber = "1 MICROSOFT";
+      phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
+      fail("This should not parse without throwing an exception " + sentencePhoneNumber);
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    }
+    try {
+      String sentencePhoneNumber = "12 MICROSOFT";
       phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
       fail("This should not parse without throwing an exception " + sentencePhoneNumber);
     } catch (NumberParseException e) {
@@ -2209,7 +2247,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     // Invalid numbers that can't be parsed.
     assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
-                 phoneUtil.isNumberMatch("43", "3 331 6043"));
+                 phoneUtil.isNumberMatch("4", "3 331 6043"));
     assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
                  phoneUtil.isNumberMatch("+43", "+64 3 331 6005"));
     assertEquals(PhoneNumberUtil.MatchType.NOT_A_NUMBER,
@@ -2321,7 +2359,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isAlphaNumber("1800 six-flags"));
     assertTrue(phoneUtil.isAlphaNumber("1800 six-flags ext. 1234"));
     assertTrue(phoneUtil.isAlphaNumber("+800 six-flags"));
+    assertTrue(phoneUtil.isAlphaNumber("180 six-flags"));
     assertFalse(phoneUtil.isAlphaNumber("1800 123-1234"));
+    assertFalse(phoneUtil.isAlphaNumber("1 six-flags"));
+    assertFalse(phoneUtil.isAlphaNumber("18 six-flags"));
     assertFalse(phoneUtil.isAlphaNumber("1800 123-1234 extension: 1234"));
     assertFalse(phoneUtil.isAlphaNumber("+800 1234-1234"));
   }

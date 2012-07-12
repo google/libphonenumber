@@ -433,7 +433,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
   /**
    * Small helper interface such that the number groups can be checked according to different
-   * criteria.
+   * criteria, both for our default way of performing formatting and for any alternate formats we
+   * may want to check.
    */
   interface NumberGroupingChecker {
     /**
@@ -552,6 +553,17 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     String[] formattedNumberGroups = getNationalNumberGroups(util, number, null);
     if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
       return true;
+    }
+    // If this didn't pass, see if there are any alternate formats, and try them instead.
+    PhoneMetadata alternateFormats =
+        MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
+    if (alternateFormats != null) {
+      for (NumberFormat alternateFormat : alternateFormats.numberFormats()) {
+        formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
+        if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
+          return true;
+        }
+      }
     }
     return false;
   }
