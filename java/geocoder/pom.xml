@@ -10,7 +10,7 @@
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>4.10-SNAPSHOT</version>
+    <version>5.0-SNAPSHOT</version>
   </parent>
 
   <build>
@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>4.10-SNAPSHOT</version>
+      <version>5.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
