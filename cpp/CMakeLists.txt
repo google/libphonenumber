@@ -342,7 +342,7 @@ set (GEOCODING_TEST_DATA_OUTPUT
 
 add_custom_command (
   COMMAND generate_geocoding_data "${GEOCODING_TEST_DIR}"
-    "${GEOCODING_TEST_DATA_OUTPUT}"
+    "${GEOCODING_TEST_DATA_OUTPUT}" "_test"
 
   OUTPUT ${GEOCODING_TEST_DATA_OUTPUT}
   DEPENDS ${GEOCODING_TEST_SOURCES} generate_geocoding_data
@@ -352,6 +352,7 @@ add_custom_command (
 set (TEST_SOURCES
   "test/phonenumbers/asyoutypeformatter_test.cc"
   "test/phonenumbers/geocoding/area_code_map_test.cc"
+  "test/phonenumbers/geocoding/geocoding_data_test.cc"
   "test/phonenumbers/geocoding/geocoding_test_data.cc"
   "test/phonenumbers/logger_test.cc"
   "test/phonenumbers/phonenumberutil_test.cc"
