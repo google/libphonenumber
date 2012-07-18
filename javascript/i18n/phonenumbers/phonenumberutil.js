@@ -658,9 +658,31 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_PHONE_PATTERN_ =
  * used as a placeholder for carrier codes, for example in Brazilian phone
  * numbers. We also allow multiple '+' characters at the start.
  * Corresponds to the following:
+ * [digits]{minLengthNsn}|
  * plus_sign*
  * (([punctuation]|[star])*[digits]){3,}([punctuation]|[star]|[digits]|[alpha])*
+ *
+ * The first reg-ex is to allow short numbers (two digits long) to be parsed if
+ * they are entered as "15" etc, but only if there is no punctuation in them.
+ * The second expression restricts the number of digits to three or more, but
+ * then allows them to be in international form, and to have alpha-characters
+ * and punctuation. We split up the two reg-exes here and combine them when
+ * creating the reg-ex VALID_PHONE_NUMBER_PATTERN_ itself so we can prefix it
+ * with ^ and append $ to each branch.
+ *
  * Note VALID_PUNCTUATION starts with a -, so must be the first in the range.
+ *
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_PHONE_NUMBER_PATTERN_ =
+    '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{' +
+    i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ + '}';
+
+
+/**
+ * See MIN_LENGTH_PHONE_NUMBER_PATTERN_ for a full description of this reg-exp.
  *
  * @const
  * @type {string}
@@ -755,10 +777,13 @@ i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_PATTERN_ =
-    new RegExp('^' + i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ +
-               '(?:' +
-               i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ +
-               ')?' + '$', 'i');
+    new RegExp(
+        '^' +
+        i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_PHONE_NUMBER_PATTERN_ +
+        '$|' +
+        '^' + i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ +
+        '(?:' + i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ +
+        ')?' + '$', 'i');
 
 
 /**

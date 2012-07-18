@@ -1698,16 +1698,20 @@ function testTruncateTooLongNumber() {
 
 function testIsViablePhoneNumber() {
   var isViable = i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber;
+  assertFalse(isViable('1'));
   // Only one or two digits before strange non-possible punctuation.
-  assertFalse(isViable('12. March'));
   assertFalse(isViable('1+1+1'));
   assertFalse(isViable('80+0'));
-  assertFalse(isViable('00'));
-  // Three digits is viable.
+  // Two digits is viable.
+  assertTrue(isViable('00'));
   assertTrue(isViable('111'));
   // Alpha numbers.
   assertTrue(isViable('0800-4-pizza'));
   assertTrue(isViable('0800-4-PIZZA'));
+  // We need at least three digits before any alpha characters.
+  assertFalse(isViable('08-PIZZA'));
+  assertFalse(isViable('8-PIZZA'));
+  assertFalse(isViable('12. March'));
 }
 
 function testIsViablePhoneNumberNonAscii() {
@@ -2113,6 +2117,12 @@ function testParseNationalNumber() {
   // make sure we can parse the output we produce when formatting the number.
   assertTrue(
       JP_STAR_NUMBER.equals(phoneUtil.parse('+81 *2345', RegionCode.JP)));
+
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var shortNumber = new i18n.phonenumbers.PhoneNumber();
+  shortNumber.setCountryCode(64);
+  shortNumber.setNationalNumber(12);
+  assertTrue(shortNumber.equals(phoneUtil.parse('12', RegionCode.NZ)));
 }
 
 function testParseNumberWithAlphaCharacters() {
@@ -2346,6 +2356,39 @@ function testFailedParseOnInvalidNumbers() {
                  e);
   }
   try {
+    sentencePhoneNumber = '1 Still not a number';
+    phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
+    fail('This should not parse without throwing an exception ' +
+         sentencePhoneNumber);
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
+    sentencePhoneNumber = '1 MICROSOFT';
+    phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
+    fail('This should not parse without throwing an exception ' +
+         sentencePhoneNumber);
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
+    sentencePhoneNumber = '12 MICROSOFT';
+    phoneUtil.parse(sentencePhoneNumber, RegionCode.NZ);
+    fail('This should not parse without throwing an exception ' +
+         sentencePhoneNumber);
+  } catch (e) {
+    // Expected this exception.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e);
+  }
+  try {
     /** @type {string} */
     var tooLongPhoneNumber = '01495 72553301873 810104';
     phoneUtil.parse(tooLongPhoneNumber, RegionCode.GB);
@@ -2440,7 +2483,6 @@ function testFailedParseOnInvalidNumbers() {
                  e);
   }
   try {
-    /** @type {string} */
     someNumber = '123 456 7890';
     phoneUtil.parse(someNumber, RegionCode.CS);
     fail('Deprecated region code not allowed: should fail.');
@@ -2900,7 +2942,7 @@ function testIsNumberMatchNonMatches() {
 
   // Invalid numbers that can't be parsed.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER,
-               phoneUtil.isNumberMatch('43', '3 331 6043'));
+               phoneUtil.isNumberMatch('4', '3 331 6043'));
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER,
                phoneUtil.isNumberMatch('+43', '+64 3 331 6005'));
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER,
@@ -3028,7 +3070,10 @@ function testIsAlphaNumber() {
   assertTrue(phoneUtil.isAlphaNumber('1800 six-flags'));
   assertTrue(phoneUtil.isAlphaNumber('1800 six-flags ext. 1234'));
   assertTrue(phoneUtil.isAlphaNumber('+800 six-flags'));
+  assertTrue(phoneUtil.isAlphaNumber('180 six-flags'));
   assertFalse(phoneUtil.isAlphaNumber('1800 123-1234'));
+  assertFalse(phoneUtil.isAlphaNumber('1 six-flags'));
+  assertFalse(phoneUtil.isAlphaNumber('18 six-flags'));
   assertFalse(phoneUtil.isAlphaNumber('1800 123-1234 extension: 1234'));
   assertFalse(phoneUtil.isAlphaNumber('+800 1234-1234'));
 }
