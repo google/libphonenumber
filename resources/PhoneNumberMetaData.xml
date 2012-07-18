@@ -7127,93 +7127,28 @@
 
     <!-- Gabon -->
     <!-- http://www.itu.int/oth/T020200004E/en -->
-    <territory id="GA" countryCode="241" internationalPrefix="00" leadingZeroPossible="true"
-      nationalPrefix="0">
+    <territory id="GA" countryCode="241" internationalPrefix="00"
+      nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
-        <numberFormat pattern="(\d)(\d{2})(\d{2})(\d{2})"
-          nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[12]</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </numberFormat>
-        <numberFormat pattern="(0\d)(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>0</leadingDigits>
+        <numberFormat pattern="(\d)(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>
-          [12]\d{6}|
-          0\d{7}
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{6,8}</possibleNumberPattern>
+        <nationalNumberPattern>[1-7]\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- The plan stated that the new 7-digit fixed-line plan would come into force in 2005, but
-             then said it was "postponed til a later time". This time was never communicated, but
-             now 7-digit numbers can be found online so we have assumed that this has in fact
-             happened. In addition, we attempted to dial 6-digit numbers and the result was an
-             "invalid number" error. There is also a typo in one place in the ITU document stating
-             that the numbers in Ntoum moved from "42" to "02 41" - it seems they moved to "02 42"
-             as written later in the document. -->
-        <nationalNumberPattern>
-          (?:
-            1(?:
-              4[4-8]|
-              7\d
-            )|
-            2(?:
-              4[02]|
-              5[04-689]|
-              6[024-79]|
-              8[236]|
-              9[02368]
-            )
-          )\d{4}
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{6,7}</possibleNumberPattern>
+        <!-- A 7-digit fixed-line plan was implemented as of June 17, 2012. (The doc refers to an
+             8-digit plan since it counts the initial 0.) -->
+        <nationalNumberPattern>1\d{6}</nationalNumberPattern>
         <exampleNumber>1441234</exampleNumber>
       </fixedLine>
-      <!-- The leading zero here is supposed to be temporary - at a later date, Gabon intends to
-           have a 0 as their national prefix for all numbers instead. It is uncertain at the moment
-           whether the 0 for mobile numbers is still necessary when dialling from outside the
-           country or not. -->
-      <!-- http://www.wtng.info/wtng-241-ga.html was used as the basis for the acceptable prefixes,
-           with some supplementary prefixes added from internet research. There is supposedly a
-           resource on mobile prefixes on the Gabon Telecom website, but the site (www.ogooue.ga)
-           doesn't seem to work and no alternative can be found. Extra prefixes added: 07 12, 07 13,
-           06 71, 07 33, 07 [67]\d -->
+        <!-- A 7-digit mobile plan was implemented as of June 17, 2012. (The doc refers to an
+             8-digit plan since it counts the initial 0.) -->
       <mobile>
-        <nationalNumberPattern>
-          0(?:
-            5(?:
-              0[89]|
-              3[0-4]|
-              8[0-26]|
-              9[238]
-            )|
-            6(?:
-              0[3-7]|
-              1[01]|
-              2[0-7]|
-              6[0-589]|
-              71|
-              83|
-              9[57]
-            )|
-            7(?:
-              1[2-5]|
-              2[89]|
-              3[35-9]|
-              4[01]|
-              5[0-47-9]|
-              [67]\d|
-              8[457-9]|
-              9[0146]
-            )
-          )\d{4}
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{8}</possibleNumberPattern>
-        <exampleNumber>06031234</exampleNumber>
+        <nationalNumberPattern>[2-7]\d{6}</nationalNumberPattern>
+        <exampleNumber>6031234</exampleNumber>
       </mobile>
       <emergency>
         <nationalNumberPattern>
@@ -9995,11 +9930,9 @@
     <!-- http://www.itu.int/oth/T020200006A/en -->
     <!-- http://en.wikipedia.org/wiki/%2B972 -->
     <!-- http://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%93%D7%95%D7%9E%D7%AA_%D7%98%D7%9C%D7%A4%D7%95%D7%9F_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C
-         (in Hebrew)-->
-    <!-- http://www.wtng.info/wtng-972-il.html -->
-    <!-- http://www.moc.gov.il/new/documents/engineering/MISP0200.ppt (in Hebrew) -->
+         (in Hebrew) -->
     <!-- Formatting practice following wikipedia, and government sites. -->
-    <territory id="IL" countryCode="972" internationalPrefix="0(?:0|1[2-48])"
+    <territory id="IL" countryCode="972" internationalPrefix="0(?:0|1[2-9])"
                nationalPrefix="0" nationalPrefixFormattingRule="$FG">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="$NP$FG"
@@ -10058,28 +9991,27 @@
         <exampleNumber>1700123456</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
-        <nationalNumberPattern>
-          (?:
-            [2-489]|
-            7[2-46-8]
-          )\d{7}
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
+        <nationalNumberPattern>[2-489]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- The ITU document says 055 is reserved, but wikipedia claims it is already in use. We
+             are fairly sure wikipedia is accurate based on news coverage of the launch of these
+             numbers. -->
         <nationalNumberPattern>
           5(?:
-            [02346-9]\d{2}|
+            [02347-9]\d{2}|
             5(?:
-              22|
-              33|
-              44|
-              5[58]|
-              66|
-              77|
-              88
-            )
+              2[23]|
+              3[34]|
+              4[45]|
+              5[5689]|
+              6[67]|
+              7[78]|
+              8[89]
+            )|
+            6[2-9]\d
           )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
@@ -10099,14 +10031,16 @@
       <premiumRate>
           <!-- Peculiarly, one source states that 1956 and 1957 are the new premium rate prefixes.
                However, no online numbers starting with these prefixes can be found, and this data
-               is not found in any other source. Instead, 1919 numbers are commonly used online for
-               these services, so we support them. -->
+               is not found in any other source. -->
           <!-- 1200 and 1212 numbers are for televoting. -->
         <nationalNumberPattern>
           1(?:
             212|
             (?:
-              919|
+              9(?:
+                0[01]|
+                19
+              )|
               200
             )\d{2}
           )\d{4}
@@ -10120,7 +10054,27 @@
         <exampleNumber>1700123456</exampleNumber>
       </sharedCost>
       <voip>
-        <nationalNumberPattern>77\d{7}</nationalNumberPattern>
+        <!-- These rules are a union of the wikipedia and ITU document prefixes. They are mostly
+             marked as VoIP on wikipedia, but it seems they may indeed be DID (Direct Inward
+             Dialing) numbers, that most people forward to VoIP numbers. -->
+        <nationalNumberPattern>
+          7(?:
+            2[23]\d|
+            3[237]\d|
+            47\d|
+            6(?:
+              5\d|
+              88
+            )|
+            7\d{2}|
+            8(?:
+              33|
+              55|
+              77|
+              81
+            )
+          )\d{5}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>771234567</exampleNumber>
       </voip>
