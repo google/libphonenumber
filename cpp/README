@@ -15,6 +15,9 @@ Requirements:
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install cmake
 
+    Additionally it is recommended you install the ccmake configuration tool:
+    $ sudo apt-get install cmake-curses-gui
+
   - Protocol Buffers
     http://code.google.com/p/protobuf/
     Version 2.4 or more recent is required.
@@ -56,18 +59,30 @@ Requirements:
     $ make testinstall
 
   - ICU
-    Version 4.4 or more recent is required.
-    It can be built from sources. You need to download the source tarball at
-    this location:
-    http://site.icu-project.org/download
-    Then you can extract, build and install it this way:
-    $ tar xzf icu4c-4_4_2-src.tgz
+    Version 4.4 or more recent is required. It can be installed easily on Debian
+    systems or be built from the most recent sources (currently 49.1.2).
+
+    If you have a Debian-based distribution you can check which version of the
+    ICU libraries is available by doing:
+    $ apt-cache show libicu-dev
+    And looking for the "Version:" string.
+
+    If this is above 4.4 then you can just do:
+    $ sudo apt-get install libicu-dev
+
+    Otherwise you need to download the source tarball for the latest version
+    from:
+      http://site.icu-project.org/download
+    And then extract it via:
+    $ tar xzf icu4c-49_1_2-src.tgz
+
+    Alternatively you can export the SVN repository to the current directory
+    via:
+    $ svn export http://source.icu-project.org/repos/icu/icu/tags/release-49-1-2/
+
+    Having acquired the latest sources, make and install it via:
     $ cd icu/source
     $ ./configure && make && sudo make install
-
-    If you have a Debian-based distribution providing an up-to-date version of
-    ICU, you can install it using apt-get:
-    $ sudo apt-get install libicu-dev
 
   - Boost
     Version 1.40 or more recent is required.
@@ -78,12 +93,74 @@ Requirements:
     Note: Boost Thread is the only library needed at link time.
 
 How to build libphonenumber C++:
-  $ cd libphonenumber
+  $ cd libphonenumber/cpp
   $ mkdir build
   $ cd build
   $ cmake ..
   $ make
 
+Troubleshooting CMake via ccmake:
+  Follow these instructions if the build steps above don't work for you.
+
+  - Incorrect protocol buffer library issues
+    If the build process complains that the version of protoc being used is too
+    old or that it cannot find the correct libprotobuf library, you may need to
+    change the library path of the project.
+
+    This issue should typically only occur in cases where you have two (or more)
+    versions of the protocol buffer libraries installed on your system. This
+    step assumes that you have already manually downloaded and installed the
+    protocol buffer libraries into /usr/local (as described above).
+
+    To make cmake use the manually installed version of the protocol buffer
+    libraries, install cmake-curses-gui and use ccmake as follows.
+
+    From within libphonenumber/cpp/build:
+    $ ccmake .
+
+    You should set the following values:
+      PROTOBUF_INCLUDE_DIR         /usr/local/include
+      PROTOBUF_LIB                 /usr/local/lib/libprotobuf.so
+      PROTOC_BIN                   /usr/local/bin/protoc
+
+    Now press 'c' then 'g' to configure the new parameters and exit ccmake.
+    Finally regenerate the make files and rebuild via:
+    $ cmake ..
+    $ make
+
+  - Protoc binary not executing properly
+    If you still have issues with the protoc binary tool in /usr/local/bin not
+    running correctly (cannot find libprotobuf.so.x) then you may need to
+    configure the LD_LIBRARY_PATH. To do this, as a superuser, add the following
+    file:
+      /etc/ld.so.conf.d/libprotobuf.conf
+
+    with the contents:
+      # Use the manually installed version of the protocol buffer libraries.
+      /usr/local/lib
+
+    And then run:
+      $ sudo chmod 644 /etc/ld.so.conf.d/libprotobuf.conf
+      $ sudo ldconfig
+
+  - Incorrect ICU library issues
+    Similar to the protocol buffer library issue above, it is possible that your
+    build may fail if you have two conflicting versions of the ICU libraries
+    installed on your system. This step assumes that you have already manually
+    downloaded and installed a recent version of the ICU libraries into
+    /usr/local.
+
+    Install and run the ccmake tool (as described above) and set the following
+    values:
+      ICU_I18N_INCLUDE_DIR         /usr/local/include
+      ICU_I18N_LIB                 /usr/local/lib/libicui18n.so
+      ICU_UC_INCLUDE_DIR           /usr/local/include
+      ICU_UC_LIB                   /usr/local/lib/libicuuc.so
+
+    Now press 'c' then 'g' to configure the new parameters and exit ccmake.
+    Finally regenerate the make files and rebuild via:
+    $ cmake ..
+    $ make
 
 Building the library on Windows (Visual Studio)
 -----------------------------------------------
