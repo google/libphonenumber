@@ -44,7 +44,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 public class BuildMetadataFromXml {
   private static final Logger LOGGER = Logger.getLogger(BuildMetadataFromXml.class.getName());
-  private static boolean liteBuild;
 
   // String constants used to fetch the XML nodes and attributes.
   private static final String CARRIER_CODE_FORMATTING_RULE = "carrierCodeFormattingRule";
@@ -82,15 +81,9 @@ public class BuildMetadataFromXml {
   private static final String VOICEMAIL = "voicemail";
   private static final String VOIP = "voip";
 
-  // @VisibleForTesting
-  static void setLiteBuild(boolean b) {
-    liteBuild = b;
-  }
-
   // Build the PhoneMetadataCollection from the input XML file.
   public static PhoneMetadataCollection buildPhoneMetadataCollection(String inputXmlFile,
       boolean liteBuild) throws Exception {
-    BuildMetadataFromXml.liteBuild = liteBuild;
     DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder builder = builderFactory.newDocumentBuilder();
     File xmlFile = new File(inputXmlFile);
@@ -108,7 +101,7 @@ public class BuildMetadataFromXml {
       if (territoryElement.hasAttribute("id")) {
         regionCode = territoryElement.getAttribute("id");
       }
-      PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement);
+      PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement, liteBuild);
       metadataCollection.addMetadata(metadata);
     }
     return metadataCollection.build();
@@ -389,7 +382,8 @@ public class BuildMetadataFromXml {
   // @VisibleForTesting
   static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc.Builder generalDesc,
                                                                Element countryElement,
-                                                               String numberType) {
+                                                               String numberType,
+                                                               boolean liteBuild) {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
     PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
     if (phoneNumberDescList.getLength() == 0 && !isValidNumberType(numberType)) {
@@ -423,31 +417,42 @@ public class BuildMetadataFromXml {
   }
 
   // @VisibleForTesting
-  static void loadGeneralDesc(PhoneMetadata.Builder metadata, Element element) {
+  static void loadGeneralDesc(PhoneMetadata.Builder metadata, Element element, boolean liteBuild) {
     PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
-    generalDesc = processPhoneNumberDescElement(generalDesc, element, GENERAL_DESC);
+    generalDesc = processPhoneNumberDescElement(generalDesc, element, GENERAL_DESC, liteBuild);
     metadata.setGeneralDesc(generalDesc);
 
-    metadata.setFixedLine(processPhoneNumberDescElement(generalDesc, element, FIXED_LINE));
-    metadata.setMobile(processPhoneNumberDescElement(generalDesc, element, MOBILE));
-    metadata.setTollFree(processPhoneNumberDescElement(generalDesc, element, TOLL_FREE));
-    metadata.setPremiumRate(processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE));
-    metadata.setSharedCost(processPhoneNumberDescElement(generalDesc, element, SHARED_COST));
-    metadata.setVoip(processPhoneNumberDescElement(generalDesc, element, VOIP));
-    metadata.setPersonalNumber(processPhoneNumberDescElement(generalDesc, element,
-                                                             PERSONAL_NUMBER));
-    metadata.setPager(processPhoneNumberDescElement(generalDesc, element, PAGER));
-    metadata.setUan(processPhoneNumberDescElement(generalDesc, element, UAN));
-    metadata.setVoicemail(processPhoneNumberDescElement(generalDesc, element, VOICEMAIL));
-    metadata.setEmergency(processPhoneNumberDescElement(generalDesc, element, EMERGENCY));
-    metadata.setNoInternationalDialling(processPhoneNumberDescElement(generalDesc, element,
-                                                                      NO_INTERNATIONAL_DIALLING));
+    metadata.setFixedLine(
+        processPhoneNumberDescElement(generalDesc, element, FIXED_LINE, liteBuild));
+    metadata.setMobile(
+        processPhoneNumberDescElement(generalDesc, element, MOBILE, liteBuild));
+    metadata.setTollFree(
+        processPhoneNumberDescElement(generalDesc, element, TOLL_FREE, liteBuild));
+    metadata.setPremiumRate(
+        processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE, liteBuild));
+    metadata.setSharedCost(
+        processPhoneNumberDescElement(generalDesc, element, SHARED_COST, liteBuild));
+    metadata.setVoip(
+        processPhoneNumberDescElement(generalDesc, element, VOIP, liteBuild));
+    metadata.setPersonalNumber(
+        processPhoneNumberDescElement(generalDesc, element, PERSONAL_NUMBER, liteBuild));
+    metadata.setPager(
+        processPhoneNumberDescElement(generalDesc, element, PAGER, liteBuild));
+    metadata.setUan(
+        processPhoneNumberDescElement(generalDesc, element, UAN, liteBuild));
+    metadata.setVoicemail(
+        processPhoneNumberDescElement(generalDesc, element, VOICEMAIL, liteBuild));
+    metadata.setEmergency(
+        processPhoneNumberDescElement(generalDesc, element, EMERGENCY, liteBuild));
+    metadata.setNoInternationalDialling(
+        processPhoneNumberDescElement(generalDesc, element, NO_INTERNATIONAL_DIALLING, liteBuild));
     metadata.setSameMobileAndFixedLinePattern(
         metadata.getMobile().getNationalNumberPattern().equals(
         metadata.getFixedLine().getNationalNumberPattern()));
   }
 
-  public static PhoneMetadata loadCountryMetadata(String regionCode, Element element) {
+  // @VisibleForTesting
+  static PhoneMetadata loadCountryMetadata(String regionCode, Element element, boolean liteBuild) {
     String nationalPrefix = getNationalPrefix(element);
     PhoneMetadata.Builder metadata =
         loadTerritoryTagMetadata(regionCode, element, nationalPrefix);
@@ -456,7 +461,7 @@ public class BuildMetadataFromXml {
     loadAvailableFormats(metadata, element, nationalPrefix.toString(),
                          nationalPrefixFormattingRule.toString(),
                          element.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
-    loadGeneralDesc(metadata, element);
+    loadGeneralDesc(metadata, element, liteBuild);
     return metadata.build();
   }
 }
