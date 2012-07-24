@@ -737,9 +737,12 @@ static const NumberTest kValidCases[] = {
       "\x2D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97", RegionCode::US()),
   NumberTest("2012-0102 08", RegionCode::US()),  // Very strange formatting.
   NumberTest("2012-01-02 08", RegionCode::US()),
-  // Breakdown assistance number.
-  NumberTest("1800-10-10 22", RegionCode::AU()),
-};
+  // Breakdown assistance number with unexpected formatting.
+  NumberTest("1800-1-0-10 22", RegionCode::AU()),
+  NumberTest("030-3-2 23 12 34", RegionCode::DE()),
+  NumberTest("03 0 -3 2 23 12 34", RegionCode::DE()),
+  NumberTest("(0)3 0 -3 2 23 12 34", RegionCode::DE()),
+  NumberTest("0 3 0 -3 2 23 12 34", RegionCode::DE()),};
 
 // Strings with number-like things that should only be found up to and including
 // the "strict_grouping" leniency level.
@@ -749,6 +752,11 @@ static const NumberTest kStrictGroupingCases[] = {
   // Should be found by strict grouping but not exact grouping, as the last two
   // groups are formatted together as a block.
   NumberTest("0800-2491234", RegionCode::DE()),
+  // Doesn't match any formatting in the test file, but almost matches an
+  // alternate format (the last two groups have been squashed together here).
+  NumberTest("0900-1 123123", RegionCode::DE()),
+  NumberTest("(0)900-1 123123", RegionCode::DE()),
+  NumberTest("0 900-1 123123", RegionCode::DE()),
 };
 
 // Strings with number-like things that should be found at all levels.
@@ -780,6 +788,13 @@ static const NumberTest kExactGroupingCases[] = {
   NumberTest("0494949 ext. 49", RegionCode::DE()),
   NumberTest("01 (33) 3461 2234", RegionCode::MX()),  // Optional NP present
   NumberTest("(33) 3461 2234", RegionCode::MX()),  // Optional NP omitted
+  // Breakdown assistance number with normal formatting.
+  NumberTest("1800-10-10 22", RegionCode::AU()),
+  // Doesn't match any formatting in the test file, but matches an alternate
+  // format exactly.
+  NumberTest("0900-1 123 123", RegionCode::DE()),
+  NumberTest("(0)900-1 123 123", RegionCode::DE()),
+  NumberTest("0 900-1 123 123", RegionCode::DE()),
 };
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithPossibleLeniency) {

@@ -39,6 +39,7 @@ template <class R, class A1, class A2, class A3, class A4>
 using std::string;
 using std::vector;
 
+class AlternateFormats;
 class NumberFormat;
 class PhoneNumber;
 class PhoneNumberMatch;
@@ -155,6 +156,10 @@ class PhoneNumberMatcher {
 
   // Helper class holding useful regular expressions.
   const PhoneNumberMatcherRegExps* reg_exps_;
+
+  // Helper class holding loaded data containing alternate ways phone numbers
+  // might be formatted for certain regions.
+  const AlternateFormats* alternate_formats_;
 
   // The phone number utility;
   const PhoneNumberUtil& phone_util_;

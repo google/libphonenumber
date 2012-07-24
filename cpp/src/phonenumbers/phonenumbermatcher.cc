@@ -25,6 +25,8 @@
 #endif  // USE_ICU_REGEXP
 
 #include <ctype.h>
+#include <map>
+#include <iostream>
 #include <limits>
 #include <stddef.h>
 #include <string>
@@ -35,6 +37,7 @@
 #include "base/logging.h"
 #include "base/memory/scoped_ptr.h"
 #include "base/memory/singleton.h"
+#include "phonenumbers/alternate_format.h"
 #include "phonenumbers/callback.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
@@ -51,6 +54,10 @@
 #include "phonenumbers/regexp_adapter_re2.h"
 #endif  // USE_RE2_AND_ICU
 
+using std::cerr;
+using std::endl;
+using std::make_pair;
+using std::map;
 using std::numeric_limits;
 using std::string;
 using std::vector;
@@ -148,6 +155,15 @@ bool AllNumberGroupsRemainGrouped(
     // extension cannot have formatting in-between digits.
     return normalized_candidate.substr(from_index)
         .find(phone_number.extension()) != string::npos;
+}
+
+bool LoadAlternateFormats(PhoneMetadataCollection* alternate_formats) {
+  if (!alternate_formats->ParseFromArray(alternate_format_get(),
+                                         alternate_format_size())) {
+    cerr << "Could not parse binary data." << endl;
+    return false;
+  }
+  return true;
 }
 }  // namespace
 
@@ -298,12 +314,61 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatcherRegExps);
 };
 
+#ifdef USE_GOOGLE_BASE
+class AlternateFormats {
+  friend struct DefaultSingletonTraits<AlternateFormats>;
+#else
+class AlternateFormats : public Singleton<AlternateFormats> {
+  friend class Singleton<AlternateFormats>;
+#endif  // USE_GOOGLE_BASE
+ public:
+  PhoneMetadataCollection format_data_;
+
+  map<int, const PhoneMetadata*> calling_code_to_alternate_formats_map_;
+
+#ifdef USE_GOOGLE_BASE
+  static AlternateFormats* GetInstance() {
+    return Singleton<AlternateFormats>::get();
+  }
+#endif  // USE_GOOGLE_BASE
+
+  AlternateFormats()
+      : format_data_(),
+        calling_code_to_alternate_formats_map_() {
+    if (!LoadAlternateFormats(&format_data_)) {
+      LOG(DFATAL) << "Could not parse compiled-in metadata.";
+      return;
+    }
+    for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
+             format_data_.metadata().begin();
+         it != format_data_.metadata().end();
+         ++it) {
+      calling_code_to_alternate_formats_map_.insert(
+          make_pair(it->country_code(), &*it));
+    }
+  }
+
+  const PhoneMetadata* GetAlternateFormatsForCountry(int country_calling_code)
+      const {
+    map<int, const PhoneMetadata*>::const_iterator it =
+        calling_code_to_alternate_formats_map_.find(country_calling_code);
+    if (it != calling_code_to_alternate_formats_map_.end()) {
+      return it->second;
+    }
+    return NULL;
+  }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(AlternateFormats);
+};
+
 PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
                                        const string& text,
                                        const string& region_code,
                                        PhoneNumberMatcher::Leniency leniency,
                                        int max_tries)
     : reg_exps_(PhoneNumberMatcherRegExps::GetInstance()),
+      alternate_formats_(AlternateFormats::GetInstance()),
       phone_util_(util),
       text_(text),
       preferred_region_(region_code),
@@ -317,6 +382,7 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
 PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
                                        const string& region_code)
     : reg_exps_(PhoneNumberMatcherRegExps::GetInstance()),
+      alternate_formats_(NULL),  // Not used.
       phone_util_(*PhoneNumberUtil::GetInstance()),
       text_(text),
       preferred_region_(region_code),
@@ -612,6 +678,23 @@ bool PhoneNumberMatcher::CheckNumberGroupingIsValid(
   if (checker->Run(phone_util_, phone_number, normalized_candidate,
                    formatted_number_groups)) {
     return true;
+  }
+  // If this didn't pass, see if there are any alternate formats, and try them
+  // instead.
+  const PhoneMetadata* alternate_formats =
+    alternate_formats_->GetAlternateFormatsForCountry(
+        phone_number.country_code());
+  if (alternate_formats) {
+    for (RepeatedPtrField<NumberFormat>::const_iterator it =
+             alternate_formats->number_format().begin();
+         it != alternate_formats->number_format().end(); ++it) {
+      formatted_number_groups.clear();
+      GetNationalNumberGroups(phone_number, &*it, &formatted_number_groups);
+      if (checker->Run(phone_util_, phone_number, normalized_candidate,
+                       formatted_number_groups)) {
+        return true;
+      }
+    }
   }
   return false;
 }
