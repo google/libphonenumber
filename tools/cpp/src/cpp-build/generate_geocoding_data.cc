@@ -174,14 +174,9 @@ bool ParsePrefixes(const string& path, map<int32, string>* prefixes) {
       continue;
     }
     --end;
-    if (*end != '\n') {
-      if (!feof(input)) {
-        // A line without LF can only happen at the end of file.
-        return false;
-      }
-    } else {
-      // Consume the LF.
-      --end;
+    if (*end != '\n' && !feof(input)) {
+      // A line without LF can only happen at the end of file.
+      return false;
     }
 
     // Trim and check for comments.

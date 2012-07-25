@@ -157,8 +157,8 @@ TEST(GeocodingDataTest, TestTestGeocodingData) {
   ASSERT_EQ(2, desc_1_de->prefixes_size);
   const int32 expected_prefixes[] = {1201, 1650};
   const char* expected_descriptions[] = {
-    "New Jerse",
-    "Kalifornie",
+    "New Jersey",
+    "Kalifornien",
   };
   for (int i = 0; i < desc_1_de->prefixes_size; ++i) {
     EXPECT_EQ(expected_prefixes[i], desc_1_de->prefixes[i]);
