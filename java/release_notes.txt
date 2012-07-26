@@ -1,3 +1,9 @@
+July 26th, 2012: libphonenumber-5.0.1
+* Metadata changes
+ - CL, DE ,IN, KR, US
+ - New geocoding data for country calling codes 40, 57, 66, 82, 91.
+ - Fixed comments for 353 (IE).
+
 July 12th, 2012: libphonenumber-5.0
 * Code changes:
   - Support for alternate formats when finding phone numbers.

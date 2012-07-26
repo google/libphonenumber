@@ -13,12 +13,12 @@
 # limitations under the License.
 
 # Originally sourced from:
-# http://www.comreg.ie/gtna/index.html 
+# http://www.comreg.ie/gtna/index.html
 # "Charleville" and "Newcastle West" are chosen over "Rathluirc" and
 # "Newcastlewest" as being the names in common everyday usage, for example the
 # Wikipedia entries for both towns use the former names throughout.
 # http://en.wikipedia.org/wiki/Charleville,_County_Cork,
-# http://en.wikipedia.org/wiki/Newcastle_West 
+# http://en.wikipedia.org/wiki/Newcastle_West
 
 3531|Dublin
 35321|Cork/Kinsale/Coachford
