@@ -23,6 +23,7 @@
 
 #include <gtest/gtest.h>  // NOLINT(build/include_order)
 
+#include "phonenumbers/geocoding/geocoding_data.h"
 #include "phonenumbers/phonenumber.pb.h"
 
 namespace i18n {
@@ -34,37 +35,89 @@ using std::vector;
 
 namespace {
 
-void MakeCodeMap(const map<int, string>& m, scoped_ptr<AreaCodeMap>* code_map) {
+void MakeCodeMap(const PrefixDescriptions* descriptions,
+                 scoped_ptr<AreaCodeMap>* code_map) {
   scoped_ptr<AreaCodeMap> cm(new AreaCodeMap());
-  cm->ReadAreaCodeMap(m);
+  cm->ReadAreaCodeMap(descriptions);
   code_map->swap(cm);
 }
 
+const int32 prefix_1_us_prefixes[] = {
+  1212,
+  1480,
+  1650,
+  1907,
+  1201664,
+  1480893,
+  1501372,
+  1626308,
+  1650345,
+  1867993,
+  1972480,
+};
+
+const char* prefix_1_us_descriptions[] = {
+  "New York",
+  "Arizona",
+  "California",
+  "Alaska",
+  "Westwood, NJ",
+  "Phoenix, AZ",
+  "Little Rock, AR",
+  "Alhambra, CA",
+  "San Mateo, CA",
+  "Dawson, YT",
+  "Richardson, TX",
+};
+
+const int32 prefix_1_us_lengths[] = {
+  4, 7,
+};
+
+const PrefixDescriptions prefix_1_us = {
+  prefix_1_us_prefixes,
+  sizeof(prefix_1_us_prefixes) / sizeof(*prefix_1_us_prefixes),
+  prefix_1_us_descriptions,
+  prefix_1_us_lengths,
+  sizeof(prefix_1_us_lengths) / sizeof(*prefix_1_us_lengths),
+};
+
+const int32 prefix_39_it_prefixes[] = {
+  3902,
+  3906,
+  39010,
+  390131,
+  390321,
+  390975,
+};
+
+const char* prefix_39_it_descriptions[] = {
+  "Milan",
+  "Rome",
+  "Genoa",
+  "Alessandria",
+  "Novara",
+  "Potenza",
+};
+
+const int32 prefix_39_it_lengths[] = {
+  4, 5, 6,
+};
+
+const PrefixDescriptions prefix_39_it = {
+  prefix_39_it_prefixes,
+  sizeof(prefix_39_it_prefixes) / sizeof(*prefix_39_it_prefixes),
+  prefix_39_it_descriptions,
+  prefix_39_it_lengths,
+  sizeof(prefix_39_it_lengths) / sizeof(*prefix_1_us_lengths),
+};
+
 void MakeCodeMapUS(scoped_ptr<AreaCodeMap>* code_map) {
-  map<int, string> m;
-  m[1212] = "New York";
-  m[1480] = "Arizona";
-  m[1650] = "California";
-  m[1907] = "Alaska";
-  m[1201664] = "Westwood, NJ";
-  m[1480893] = "Phoenix, AZ";
-  m[1501372] = "Little Rock, AR";
-  m[1626308] = "Alhambra, CA";
-  m[1650345] = "San Mateo, CA";
-  m[1867993] = "Dawson, YT";
-  m[1972480] = "Richardson, TX";
-  MakeCodeMap(m, code_map);
+  MakeCodeMap(&prefix_1_us, code_map);
 }
 
 void MakeCodeMapIT(scoped_ptr<AreaCodeMap>* code_map) {
-  map<int, string> m;
-  m[3902] = "Milan";
-  m[3906] = "Rome";
-  m[39010] = "Genoa";
-  m[390131] = "Alessandria";
-  m[390321] = "Novara";
-  m[390975] = "Potenza";
-  MakeCodeMap(m, code_map);
+  MakeCodeMap(&prefix_39_it, code_map);
 }
 
 PhoneNumber MakePhoneNumber(int32 country_code, uint64 national_number) {
@@ -88,58 +141,60 @@ class AreaCodeMapTest : public testing::Test {
 };
 
 TEST_F(AreaCodeMapTest, TestLookupInvalidNumberUS) {
-  EXPECT_EQ("New York", *map_US_->Lookup(MakePhoneNumber(1, 2121234567L)));
+  EXPECT_STREQ("New York", map_US_->Lookup(MakePhoneNumber(1, 2121234567L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberNJ) {
-  EXPECT_EQ("Westwood, NJ", *map_US_->Lookup(MakePhoneNumber(1, 2016641234L)));
+  EXPECT_STREQ("Westwood, NJ",
+               map_US_->Lookup(MakePhoneNumber(1, 2016641234L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberNY) {
-  EXPECT_EQ("New York", *map_US_->Lookup(MakePhoneNumber(1, 2126641234L)));
+  EXPECT_STREQ("New York", map_US_->Lookup(MakePhoneNumber(1, 2126641234L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCA1) {
-  EXPECT_EQ("San Mateo, CA", *map_US_->Lookup(MakePhoneNumber(1, 6503451234L)));
+  EXPECT_STREQ("San Mateo, CA",
+               map_US_->Lookup(MakePhoneNumber(1, 6503451234L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCA2) {
-  EXPECT_EQ("California", *map_US_->Lookup(MakePhoneNumber(1, 6502531234L)));
+  EXPECT_STREQ("California", map_US_->Lookup(MakePhoneNumber(1, 6502531234L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberTX) {
-  EXPECT_EQ("Richardson, TX",
-            *map_US_->Lookup(MakePhoneNumber(1, 9724801234L)));
+  EXPECT_STREQ("Richardson, TX",
+            map_US_->Lookup(MakePhoneNumber(1, 9724801234L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberNotFoundTX) {
-  EXPECT_EQ(NULL, map_US_->Lookup(MakePhoneNumber(1, 9724811234L)));
+  EXPECT_STREQ(NULL, map_US_->Lookup(MakePhoneNumber(1, 9724811234L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCH) {
-  EXPECT_EQ(NULL, map_US_->Lookup(MakePhoneNumber(41, 446681300L)));
+  EXPECT_STREQ(NULL, map_US_->Lookup(MakePhoneNumber(41, 446681300L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberIT) {
   PhoneNumber number = MakePhoneNumber(39, 212345678L);
   number.set_italian_leading_zero(true);
-  EXPECT_EQ("Milan", *map_IT_->Lookup(number));
+  EXPECT_STREQ("Milan", map_IT_->Lookup(number));
 
   number.set_national_number(612345678L);
-  EXPECT_EQ("Rome", *map_IT_->Lookup(number));
+  EXPECT_STREQ("Rome", map_IT_->Lookup(number));
 
   number.set_national_number(3211234L);
-  EXPECT_EQ("Novara", *map_IT_->Lookup(number));
+  EXPECT_STREQ("Novara", map_IT_->Lookup(number));
 
   // A mobile number
   number.set_national_number(321123456L);
   number.set_italian_leading_zero(false);
-  EXPECT_EQ(NULL, map_IT_->Lookup(number));
+  EXPECT_STREQ(NULL, map_IT_->Lookup(number));
 
   // An invalid number (too short)
   number.set_national_number(321123L);
   number.set_italian_leading_zero(true);
-  EXPECT_EQ("Novara", *map_IT_->Lookup(number));
+  EXPECT_STREQ("Novara", map_IT_->Lookup(number));
 }
 
 }  // namespace phonenumbers

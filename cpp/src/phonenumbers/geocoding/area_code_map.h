@@ -29,9 +29,10 @@ namespace phonenumbers {
 using std::map;
 using std::string;
 
-class AreaCodeMapStorageStrategy;
+class DefaultMapStorage;
 class PhoneNumber;
 class PhoneNumberUtil;
+struct PrefixDescriptions;
 
 // A utility that maps phone number prefixes to a string describing the
 // geographical area the prefix covers.
@@ -46,18 +47,16 @@ class AreaCodeMap {
   // description is not available in the current language an empty string is
   // returned. If no description was found for the provided number, null is
   // returned.
-  const string* Lookup(const PhoneNumber& number) const;
+  const char* Lookup(const PhoneNumber& number) const;
 
   // Creates an AreaCodeMap initialized with area_codes. Note that the
   // underlying implementation of this method is expensive thus should
   // not be called by time-critical applications.
   //
   // area_codes maps phone number prefixes to geographical area description.
-  void ReadAreaCodeMap(const map<int, string>& area_codes);
+  void ReadAreaCodeMap(const PrefixDescriptions* descriptions);
 
  private:
-  AreaCodeMapStorageStrategy* CreateDefaultMapStorage() const;
-
   // Does a binary search for value in the provided array from start to end
   // (inclusive). Returns the position if {@code value} is found; otherwise,
   // returns the position which has the largest value that is less than value.
@@ -65,7 +64,7 @@ class AreaCodeMap {
   int BinarySearch(int start, int end, int64 value) const;
 
   const PhoneNumberUtil& phone_util_;
-  scoped_ptr<const AreaCodeMapStorageStrategy> storage_;
+  scoped_ptr<const DefaultMapStorage> storage_;
 
   DISALLOW_COPY_AND_ASSIGN(AreaCodeMap);
 };

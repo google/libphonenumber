@@ -16,17 +16,12 @@
 
 #include "phonenumbers/geocoding/default_map_storage.h"
 
-#include <math.h>
-#include <utility>
-
+#include "base/basictypes.h"
 #include "base/logging.h"
+#include "phonenumbers/geocoding/geocoding_data.h"
 
 namespace i18n {
 namespace phonenumbers {
-
-using std::map;
-using std::set;
-using std::string;
 
 DefaultMapStorage::DefaultMapStorage() {
 }
@@ -34,37 +29,36 @@ DefaultMapStorage::DefaultMapStorage() {
 DefaultMapStorage::~DefaultMapStorage() {
 }
 
-int DefaultMapStorage::GetPrefix(int index) const {
+int32 DefaultMapStorage::GetPrefix(int index) const {
   DCHECK_GE(index, 0);
-  DCHECK_LT(index, static_cast<int>(prefixes_.size()));
+  DCHECK_LT(index, prefixes_size_);
   return prefixes_[index];
 }
 
-const string& DefaultMapStorage::GetDescription(int index) const {
+const char* DefaultMapStorage::GetDescription(int index) const {
   DCHECK_GE(index, 0);
-  DCHECK_LT(index, static_cast<int>(descriptions_.size()));
+  DCHECK_LT(index, prefixes_size_);
   return descriptions_[index];
 }
 
-void DefaultMapStorage::ReadFromMap(const map<int, string>& area_codes) {
-  prefixes_.resize(area_codes.size());
-  descriptions_.resize(area_codes.size());
-  possible_lengths_.clear();
-  int index = 0;
-  for (map<int, string>::const_iterator it = area_codes.begin();
-       it != area_codes.end(); ++it, ++index) {
-    prefixes_[index] = it->first;
-    descriptions_[index] = it->second;
-    possible_lengths_.insert(static_cast<int>(log10(it->first)) + 1);
-  }
+void DefaultMapStorage::ReadFromMap(const PrefixDescriptions* descriptions) {
+  prefixes_ = descriptions->prefixes;
+  prefixes_size_ = descriptions->prefixes_size;
+  descriptions_ = descriptions->descriptions;
+  possible_lengths_ = descriptions->possible_lengths;
+  possible_lengths_size_ = descriptions->possible_lengths_size;
 }
 
 int DefaultMapStorage::GetNumOfEntries() const {
-  return prefixes_.size();
+  return prefixes_size_;
 }
 
-const set<int>& DefaultMapStorage::GetPossibleLengths() const {
+const int* DefaultMapStorage::GetPossibleLengths() const {
   return possible_lengths_;
+}
+
+int DefaultMapStorage::GetPossibleLengthsSize() const {
+  return possible_lengths_size_;
 }
 
 }  // namespace phonenumbers
