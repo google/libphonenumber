@@ -1,3 +1,10 @@
+Aug 07, 2012: libphonenumber-5.0.2
+* Metadata changes:
+ - Updated metadata for region code(s):
+   BF, CN, DJ, IL, JO, KH, KZ, MA, MT, MV, MY, NC, NG, SD, SK, SN, TL, UZ
+ - New geocoding data for country calling code(s): 7 (ru), 98 (en)
+ - Updated geocoding data for country calling code(s): 7 (en)
+
 July 26th, 2012: libphonenumber-5.0.1
 * Metadata changes
  - CL, DE ,IN, KR, US

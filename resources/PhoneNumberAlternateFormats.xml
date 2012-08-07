@@ -35,7 +35,7 @@
            in English according to ISO 3166-1.
 
      For more information on what each element represents, see
-     phonemetadata.proto
+     resources/phonemetadata.proto
 -->
 
 <!DOCTYPE phoneNumberMetadata [

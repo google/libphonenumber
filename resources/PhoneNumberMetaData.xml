@@ -22,7 +22,7 @@
            official short names in English according to ISO 3166-1.
 
      For more information on what each element represents, see
-     java/com/google/i18n/phonenumbers/phonemetadata.proto
+     resources/phonemetadata.proto
 
      Note that if you want to add validation metadata, the generalDesc nationalNumberPattern and
      possibleNumberPattern must be provided. If this is missing, then the country will be
@@ -2466,9 +2466,9 @@
         <nationalNumberPattern>
           (?:
             6(?:
-              0[0-7]|
-              6[0-2]|
-              8[01]
+              0\d|
+              [18][01]|
+              6[0-4]
             )|
             7(?:
               [02-68]\d|
@@ -4326,11 +4326,13 @@
 
     <!-- China -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T020200002B0001XLSE.xls -->
-    <territory id="CN" countryCode="86" internationalPrefix="00"
-               nationalPrefix="0">
+    <territory id="CN" countryCode="86" internationalPrefix="(1[1279]\d{3})?00"
+               preferredInternationalPrefix="00" nationalPrefix="0"
+               nationalPrefixForParsing="(1[1279]\d{3})|0">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(80\d{2})(\d{4})"
-                      nationalPrefixOptionalWhenFormatting="true">
+                      nationalPrefixOptionalWhenFormatting="true"
+                      carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>80[2678]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -4350,12 +4352,14 @@
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(21)(\d{4})(\d{4,6})"
-                      nationalPrefixOptionalWhenFormatting="true">
+                      nationalPrefixOptionalWhenFormatting="true"
+                      carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>21</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="([12]\d)(\d{4})(\d{4})"
-                      nationalPrefixOptionalWhenFormatting="true">
+                      nationalPrefixOptionalWhenFormatting="true"
+                      carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
             10[1-9]|
             2[02-9]
@@ -4378,7 +4382,8 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{4})(\d{4})"
-                      nationalPrefixOptionalWhenFormatting="true">
+                      nationalPrefixOptionalWhenFormatting="true"
+                      carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
             3(?:
               11|
@@ -4406,7 +4411,8 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{3})(\d{4})"
-                      nationalPrefixOptionalWhenFormatting="true">
+                      nationalPrefixOptionalWhenFormatting="true"
+                      carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
             3(?:
               1[02-9]|
@@ -4464,7 +4470,7 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(1[3-58]\d)(\d{4})(\d{4})">
+        <numberFormat pattern="(1[3-58]\d)(\d{4})(\d{4})" carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>1[3-58]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -4849,8 +4855,8 @@
             400|
             5(?:
               15|
-              5[15]|
-            )
+              5[15]
+            )|
             693|
             7(?:
               00|
@@ -5659,7 +5665,7 @@
         <nationalNumberPattern>
           2(?:
             1[2-5]|
-            7[45]|
+            7[45]
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>21360003</exampleNumber>
@@ -7783,7 +7789,7 @@
             3(?:
               02|
               45
-            )
+            )|
             425
           )|
           3[13]3|
@@ -10005,9 +10011,8 @@
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- The ITU document says 055 is reserved, but wikipedia claims it is already in use. We
-             are fairly sure wikipedia is accurate based on news coverage of the launch of these
-             numbers. -->
+        <!-- The ITU document has only some of these prefixes - wikipedia lists more. We are fairly
+             sure wikipedia is accurate based on news coverage of the launch of these numbers. -->
         <nationalNumberPattern>
           5(?:
             [02347-9]\d{2}|
@@ -10073,7 +10078,7 @@
             47\d|
             6(?:
               5\d|
-              88
+              8[08]
             )|
             7\d{2}|
             8(?:
@@ -11769,7 +11774,7 @@
                 7[1-379]|
                 8[0-68]|
                 9[02-39]
-              )|
+              )
             )|
             87(?:
               [02]0|
@@ -13022,7 +13027,7 @@
     <!-- Cambodia -->
     <!-- http://www.itu.int/oth/T0202000023/en -->
     <!-- http://en.wikipedia.org/wiki/+855 -->
-    <territory id="KH" countryCode="855" internationalPrefix="00[178]"
+    <territory id="KH" countryCode="855" internationalPrefix="00[14-9]"
                nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG">
@@ -13060,21 +13065,21 @@
         <exampleNumber>23456789</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 86 from numbers found online, along with 88 (these numbers seem to be one digit
-             longer as well.) Adding 97 followed by 7 digits as such numbers have been found online.
-             Adding 14 as Mobitel have informed us they are using this prefix. -->
+        <!-- Adding 86 and 87 from numbers found online, along with 88 (the 88 numbers seem to be
+             one digit longer as well.) Adding 97 followed by 7 digits as such numbers have been
+             found online. Adding 14 as Mobitel have informed us they are using this prefix. Adding
+             60[1-9] based on information received from Beeline. -->
         <nationalNumberPattern>
           (?:
             (?:
               1\d|
-              6[6-9]|
-              7[06-9]
+              [67][06-9]
             )[1-9]|
             8(?:
               0[89]|
+              [134679]\d|
               5[2-689]|
-              8\d{2}|
-              [13469]\d|
+              8\d{2}
             )|
             9(?:
               [0-689][1-9]|
@@ -13781,8 +13786,11 @@
                internationalPrefix="810" nationalPrefix="8">
        <!-- Formatting rules obtained from Russia. -->
       <generalDesc>
+        <!-- We make this as specific as possible to overlap as little as possible with Russia, so
+             determining the country is faster. -->
         <nationalNumberPattern>
           (?:
+            33\d|
             7\d{2}|
             80[09]
           )\d{7}
@@ -13795,8 +13803,11 @@
         <exampleNumber>7511234567</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
-        <!-- VSAT numbers are also included here. -->
+        <!-- VSAT numbers are also included here. We also include the area code for Baikonur (336
+             22), which is within Kazakhstan but in fact rented and administered by Russia at the
+             moment. -->
         <nationalNumberPattern>
+          33622\d{5}|
           7(?:
             1(?:
               0(?:
@@ -13878,10 +13889,9 @@
                 59
               )|
               7(?:
-                [23]\d|
+                [237]\d|
                 40|
-                5[279]|
-                7\d
+                5[279]
               )|
               8(?:
                 [23]\d|
@@ -13893,8 +13903,7 @@
                 3[124578]|
                 59
               )
-            )|
-            3622
+            )
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>7123456789</exampleNumber>
@@ -13904,7 +13913,8 @@
           7(?:
             0[01257]|
             6[02-4]|
-            7[1578]
+            7[1578]|
+            85
           )\d{7}
         </nationalNumberPattern>
         <exampleNumber>7710009998</exampleNumber>
@@ -14973,7 +14983,7 @@
                 2[2-9]|
                 3[2-57]|
                 4[2-8]|
-                8[235-9]|
+                8[235-9]
               )\d|
               9(?:
                 0\d|
@@ -16206,7 +16216,7 @@
           (?:
             7(?:
               210|
-              [79]\d{2}|
+              [79]\d{2}
             )|
             9(?:
               2[13]\d|
@@ -16383,7 +16393,7 @@
           (?:
             3(?:
               0[01]|
-              3[0-59]|
+              3[0-59]
             )|
             6(?:
               [567][02468]|
@@ -16793,7 +16803,7 @@
         <nationalNumberPattern>
           1(?:
             [02-46-9][2-9]|
-            11\d
+            1[12]\d
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
@@ -17091,7 +17101,7 @@
         <nationalNumberPattern>
           (?:
             [79]\d|
-            8[0-79]|
+            8[0-79]
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>751234</exampleNumber>
@@ -17332,7 +17342,7 @@
               9(?:
                 8[5-9]|
                 6[1-5]
-              )|
+              )
             )|
             4(?:
               28[0-2]|
@@ -20227,10 +20237,11 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Retaining previous prefix as 18 since it seems still to be used. -->
+        <!-- Retaining previous prefix as 18 since it seems still to be used. Adding 11 from numbers
+             found online. -->
         <nationalNumberPattern>
           1(?:
-            [25]\d|
+            [125]\d|
             8[3567]
           )\d{6}
         </nationalNumberPattern>
@@ -20824,6 +20835,22 @@
         <nationalNumberPattern>[2-689]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <nationalNumberPattern>
+          (?:
+            8(?:
+              00|
+              [5-9]\d
+            )|
+            9(?:
+              00|
+              [78]\d
+            )
+          )\d{6}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>800123456</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <nationalNumberPattern>[2-5]\d{8}</nationalNumberPattern>
         <exampleNumber>212345678</exampleNumber>
@@ -20866,6 +20893,11 @@
         </nationalNumberPattern>
         <exampleNumber>690123456</exampleNumber>
       </voip>
+      <uan>
+        <nationalNumberPattern>96\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>961234567</exampleNumber>
+      </uan>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -21011,7 +21043,10 @@
       <fixedLine>
         <nationalNumberPattern>
           3(?:
-            010|
+            0(?:
+              1[01]|
+              80
+            )|
             3(?:
               8[1-9]|
               9[2-9]
@@ -21021,26 +21056,30 @@
         <exampleNumber>301012345</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- The patterns from the ITU document seem too restrictive, based on numbers found in
-             online searches and phones that SMSs have been successfully received from, so the
-             ranges, have been extended to include 76 5[4-7], 76 6[3-5] and 77 01, 1[239], 2[89],
-             3[49], 4[7-9], 7[4-7], 8[2-9] and 9\d. -->
         <nationalNumberPattern>
           7(?:
-            0[1256]0|
+            0(?:
+              [01279]0|
+              3[03]|
+              4[05]|
+              5[06]|
+              6[03-5]|
+              8[029]
+            )|
             6(?:
               1[23]|
               2[89]|
               3[3489]|
               4[6-9]|
-              5[1-9]|
+              5\d|
               6[3-9]|
               7[45]|
               8[3-8]
             )|
-            7(?:
+            7\d{2}|
+            8(?:
               01|
-              [1-9]\d
+              1[01]
             )
           )\d{5}
         </nationalNumberPattern>
@@ -21918,12 +21957,22 @@
     <territory id="TL" countryCode="670" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
+          <leadingDigits>[2-489]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <!-- Since numbers grew an extra digit, we have no indication of how people are formatting
+             them. If we see another pattern being used, we should change this later. -->
+        <numberFormat pattern="(\d{4})(\d{4})">
+          <leadingDigits>7</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-47-9]\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <nationalNumberPattern>
+          [2-489]\d{6}|
+          7\d{6,7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>
@@ -21933,30 +21982,47 @@
             4[1-4]
           )\d{5}
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>2112345</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- The prefix 79 is assigned to "pagers" in the numbering plan, but it seems from numbers
-             found online that it is in fact assigned to mobile users. -->
-        <nationalNumberPattern>7[2-49]\d{5}</nationalNumberPattern>
-        <exampleNumber>7212345</exampleNumber>
+        <nationalNumberPattern>7[78][1-9]\d{5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+        <exampleNumber>77212345</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>80\d{5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>8012345</exampleNumber>
       </tollFree>
       <premiumRate>
         <nationalNumberPattern>90\d{5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>9012345</exampleNumber>
       </premiumRate>
+      <!-- We don't include paging or voicemail because the identified paging range was used by
+           mobile previously, and for voicemail, it is unclear if the 2012 change affected these
+           numbers, or if the range was indeed previously used for voicemail at all. -->
       <personalNumber>
+        <!-- We presume this wasn't affected by the numbering plan update. -->
         <nationalNumberPattern>70\d{5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>7012345</exampleNumber>
       </personalNumber>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0[02]|
+            2[0138]|
+            72|
+            9[07]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>102</exampleNumber>
+      </shortCode>
       <emergency>
-        <!-- http://www.fco.gov.uk/en/travel-and-living-abroad/travel-advice-by-country/asia-oceania/east-timor
-             Seems to be a number for the local UN Police. -->
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <nationalNumberPattern>11[25]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
@@ -23164,7 +23230,7 @@
               6\d{2}|
               7(?:
                 [23]\d|
-                7[69]|
+                7[69]
               )|
               9(?:
                 22|
