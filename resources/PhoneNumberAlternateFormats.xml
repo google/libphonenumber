@@ -81,6 +81,32 @@
       </availableFormats>
     </territory>
 
+    <!-- Austria (AT) -->
+    <territory countryCode="43">
+      <availableFormats>
+        <numberFormat pattern="(5)(\d{3,12})">
+         <leadingDigits>5[079]</leadingDigits>
+           <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(50)(\d{2})(\d{2})(\d{2,4})">
+          <leadingDigits>50</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(5\d)(\d{2})(\d{2})(\d{2})(\d{2,4})">
+          <leadingDigits>5[079]</leadingDigits>
+          <format>$1 $2 $3 $4 $5</format>
+        </numberFormat>
+        <numberFormat pattern="(5\d)(\d{5})(\d{4,6})">
+          <leadingDigits>5[079]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(5\d)(\d{6,7})">
+          <leadingDigits>5[079]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Brazil (BR) -->
     <territory countryCode="55">
       <availableFormats>

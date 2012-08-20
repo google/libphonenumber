@@ -223,8 +223,6 @@
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- The prefix 52 has been added afte notification from the Emirates Telecommunications
-             Company. -->
         <nationalNumberPattern>5[0256]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>501234567</exampleNumber>
@@ -1305,12 +1303,23 @@
     <territory id="AT" countryCode="43" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
-        <numberFormat pattern="([15])(\d{3,12})">
-          <leadingDigits>
-            1|
-            5[079]
-          </leadingDigits>
+        <numberFormat pattern="(1)(\d{3,12})">
+          <leadingDigits>1</leadingDigits>
           <format>$1 $2</format>
+        </numberFormat>
+        <!-- The following three patterns are the most common for prefixes 050, 057 and 059, as
+             found on Austrian web pages. -->
+        <numberFormat pattern="(5\d)(\d{3,5})">
+          <leadingDigits>5[079]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(5\d)(\d{3})(\d{3,4})">
+          <leadingDigits>5[079]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(5\d)(\d{4})(\d{4,7})">
+          <leadingDigits>5[079]</leadingDigits>
+          <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3,10})">
           <leadingDigits>
@@ -1473,7 +1482,7 @@
             )\d{2,10}|
             [79]\d{3,11}
           )|
-          720\d{6, 10}
+          720\d{6,10}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5,13}</possibleNumberPattern>
         <exampleNumber>50123</exampleNumber>
@@ -2467,8 +2476,9 @@
           (?:
             6(?:
               0\d|
-              [18][01]|
-              6[0-4]
+              1[01]|
+              6[0-4]|
+              8[0-2]
             )|
             7(?:
               [02-68]\d|
@@ -11787,15 +11797,12 @@
         <exampleNumber>62001234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Trunked radio dispatch is included under mobile. -->
-        <!-- According to the ITU document of 23.X.2011, the leading digits 75 are not possible.
-             However, a web search shows that such numbers seem to exist. -->
         <nationalNumberPattern>
           7(?:
-            5\d|
-            7[2-79]|
+            55|
+            7[25-79]|
             8[5-8]|
-            9[035-9]
+            9[05-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
@@ -17321,9 +17328,10 @@
         <exampleNumber>12345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- More 81X prefixes have been added based on online numbers. Furthermore, the prefixes
-             owned by Starcomms have apparently, according to the company, been used for both
-             fixed-line and mobile numbers, despite the ITU plan, so we list them here as well. -->
+        <!-- More 81X prefixes have been added based on online numbers, including the prefix 817
+             from Etisalat. Furthermore, the fixed-line prefixes owned by Starcomms have
+             apparently, according to the company, been used for mobile numbers too, despite
+             the ITU plan, so we list them here as well. -->
         <nationalNumberPattern>
           (?:
             1(?:
@@ -17403,7 +17411,7 @@
             )|
             8(?:
               0[2-9]|
-              1[0235689]
+              1[0235-9]
             )\d
           )\d{6}
         </nationalNumberPattern>
@@ -19840,6 +19848,12 @@
         <!-- Formatting from wikipedia, confirmed on Goverment websites such as
              http://www.minjust.ru/ru/structure/contact/. Contains formatting instructions for
              Kazakhstan as well. -->
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$FG">
+          <!-- Local numbers only - these do not start with the national prefix. -->
+          <leadingDigits>[1-79]</leadingDigits>
+          <format>$1-$2-$3</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <numberFormat pattern="([3489]\d{2})(\d{3})(\d{2})(\d{2})">
           <leadingDigits>[34689]</leadingDigits>
           <format>$1 $2-$3-$4</format>
@@ -20929,16 +20943,12 @@
         <exampleNumber>22221234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding prefix 50 because it was found in online numbers and this is supported by
-             http://www.wtng.info/wtng-232-sl.html - although the data may be outdated, since no
-             further information about Datatel can be found. Adding prefix 79 since it was launched
-             by Airtel on Feb 2nd 2012. -->
         <nationalNumberPattern>
           (?:
-            25|
-            3[03]|
-            44|
-            5[056]|
+            2[15]|
+            3[034]|
+            4[04]|
+            5[05]|
             7[6-9]|
             88
           )\d{6}

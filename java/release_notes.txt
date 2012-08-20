@@ -1,3 +1,9 @@
+Aug 20, 2012: libphonenumber-5.0.3
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 43
+ - Updated metadata for region code(s): AT, BF, JO, NG, RU, SL
+ - New geocoding data for country calling code(s): 62 (en, id), 98 (fa)
+
 Aug 07, 2012: libphonenumber-5.0.2
 * Metadata changes:
  - Updated metadata for region code(s):
