@@ -17,6 +17,7 @@
 package com.google.i18n.phonenumbers.geocoding;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.io.IOException;
@@ -148,7 +149,9 @@ public class PhoneNumberOfflineGeocoder {
    * name of the geographical area the phone number is from if more detailed information is
    * available.
    *
-   * <p>This method assumes the validity of the number passed in has already been checked.
+   * <p>This method assumes the validity of the number passed in has already been checked, and that
+   * the number is suitable for geocoding. We consider fixed-line and mobile numbers possible
+   * candidates for geocoding.
    *
    * @param number  a valid phone number for which we want to get a text description
    * @param languageCode  the language code for which the description should be written
@@ -211,8 +214,11 @@ public class PhoneNumberOfflineGeocoder {
    *     string if the number passed in is invalid
    */
   public String getDescriptionForNumber(PhoneNumber number, Locale languageCode) {
-    if (!phoneUtil.isValidNumber(number)) {
+    PhoneNumberType numberType = phoneUtil.getNumberType(number);
+    if (numberType == PhoneNumberType.UNKNOWN) {
       return "";
+    } else if (!canBeGeocoded(numberType)) {
+      return getCountryNameForNumber(number, languageCode);
     }
     return getDescriptionForValidNumber(number, languageCode);
   }
@@ -231,10 +237,19 @@ public class PhoneNumberOfflineGeocoder {
    */
   public String getDescriptionForNumber(PhoneNumber number, Locale languageCode,
                                         String userRegion) {
-    if (!phoneUtil.isValidNumber(number)) {
+    PhoneNumberType numberType = phoneUtil.getNumberType(number);
+    if (numberType == PhoneNumberType.UNKNOWN) {
       return "";
+    } else if (!canBeGeocoded(numberType)) {
+      return getCountryNameForNumber(number, languageCode);
     }
     return getDescriptionForValidNumber(number, languageCode, userRegion);
+  }
+
+  private boolean canBeGeocoded(PhoneNumberType numberType) {
+    return (numberType == PhoneNumberType.FIXED_LINE ||
+            numberType == PhoneNumberType.MOBILE ||
+            numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
   }
 
   /**

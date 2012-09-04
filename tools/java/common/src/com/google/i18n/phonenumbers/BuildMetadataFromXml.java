@@ -211,7 +211,7 @@ public class BuildMetadataFromXml {
   // @VisibleForTesting
   static boolean loadInternationalFormat(PhoneMetadata.Builder metadata,
                                          Element numberFormatElement,
-                                         String nationalFormat) {
+                                         NumberFormat nationalFormat) {
     NumberFormat.Builder intlFormat = NumberFormat.newBuilder();
     setLeadingDigitsPatterns(numberFormatElement, intlFormat);
     intlFormat.setPattern(numberFormatElement.getAttribute(PATTERN));
@@ -226,7 +226,7 @@ public class BuildMetadataFromXml {
                                  metadata.getId());
     } else if (intlFormatPattern.getLength() == 0) {
       // Default to use the same as the national pattern if none is defined.
-      intlFormat.setFormat(nationalFormat);
+      intlFormat.mergeFrom(nationalFormat);
     } else {
       String intlFormatPatternValue = intlFormatPattern.item(0).getFirstChild().getNodeValue();
       if (!intlFormatPatternValue.equals("NA")) {
@@ -245,11 +245,10 @@ public class BuildMetadataFromXml {
    * Extracts the pattern for the national format.
    *
    * @throws  RuntimeException if multiple or no formats have been encountered.
-   * @return  the national format string.
    */
   // @VisibleForTesting
-  static String loadNationalFormat(PhoneMetadata.Builder metadata, Element numberFormatElement,
-                                   NumberFormat.Builder format) {
+  static void loadNationalFormat(PhoneMetadata.Builder metadata, Element numberFormatElement,
+                                 NumberFormat.Builder format) {
     setLeadingDigitsPatterns(numberFormatElement, format);
     format.setPattern(validateRE(numberFormatElement.getAttribute(PATTERN)));
 
@@ -260,9 +259,7 @@ public class BuildMetadataFromXml {
       throw new RuntimeException("Invalid number of format patterns for country: " +
                                    metadata.getId());
     }
-    String nationalFormat = formatPattern.item(0).getFirstChild().getNodeValue();
-    format.setFormat(nationalFormat);
-    return nationalFormat;
+    format.setFormat(formatPattern.item(0).getFirstChild().getNodeValue());
   }
 
   /**
@@ -306,11 +303,10 @@ public class BuildMetadataFromXml {
         } else {
           format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
         }
-        String nationalFormat =
-            loadNationalFormat(metadata, numberFormatElement, format);
+        loadNationalFormat(metadata, numberFormatElement, format);
         metadata.addNumberFormat(format);
 
-        if (loadInternationalFormat(metadata, numberFormatElement, nationalFormat)) {
+        if (loadInternationalFormat(metadata, numberFormatElement, format.build())) {
           hasExplicitIntlFormatDefined = true;
         }
       }

@@ -1,3 +1,11 @@
+Sep 3, 2012: libphonenumber-5.1
+* Code changes:
+ - Inserting a space after the national prefix in the AsYouTypeFormatter when formatting numbers in
+   national format, if the formatting rules for that country dictate that a space is appropriate.
+ - Format emergency numbers and short-codes as a block in the AsYouTypeFormatter.
+* Metadata changes:
+ - Updated metadata for region code(s): BF, BG, DZ, GA, IT, JP, KW, PF
+
 Aug 20, 2012: libphonenumber-5.0.3
 * Metadata changes:
  - New alternate formatting data for country calling code(s): 43
@@ -19,13 +27,13 @@ July 26th, 2012: libphonenumber-5.0.1
 
 July 12th, 2012: libphonenumber-5.0
 * Code changes:
-  - Support for alternate formats when finding phone numbers.
-  - Allowing two-digit numbers to be parsed if they are entered in national-format with no
-    punctuation
+ - Support for alternate formats when finding phone numbers.
+ - Allowing two-digit numbers to be parsed if they are entered in national-format with no
+   punctuation
 * Metadata changes
-  - IL, GA
+ - IL, GA
 * Other
-  - Reflowed this file to 100 char width to make it unambiguous as to what the standard should be.
+ - Reflowed this file to 100 char width to make it unambiguous as to what the standard should be.
 
 July 6th, 2012: libphonenumber-4.9.1
 * Metadata changes

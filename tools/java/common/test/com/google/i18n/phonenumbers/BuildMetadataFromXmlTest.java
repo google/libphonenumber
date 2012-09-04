@@ -153,7 +153,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String xmlInput = "<numberFormat><intlFormat>" + intlFormat + "</intlFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    String nationalFormat = "";
+    NumberFormat nationalFormat = NumberFormat.newBuilder().build();
 
     assertTrue(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                             nationalFormat));
@@ -166,10 +166,11 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String xmlInput = "<numberFormat><intlFormat>" + intlFormat + "</intlFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    String nationalFormat = "$1";
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
+    nationalFormat.setFormat("$1");
 
     assertTrue(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                            nationalFormat));
+                                                            nationalFormat.build()));
     assertEquals(intlFormat, metadata.getIntlNumberFormat(0).getFormat());
   }
 
@@ -181,7 +182,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     // Should throw an exception as multiple intlFormats are provided.
     try {
-      BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement, "");
+      BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
+                                                   NumberFormat.newBuilder().build());
       fail();
     } catch (RuntimeException e) {
       // Test passed.
@@ -193,14 +195,29 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String xmlInput = "<numberFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    String nationalFormat = "$1 $2 $3";
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
+    String nationalPattern = "$1 $2 $3";
+    nationalFormat.setFormat(nationalPattern);
 
     assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                             nationalFormat));
-    assertEquals(nationalFormat, metadata.getIntlNumberFormat(0).getFormat());
+                                                             nationalFormat.build()));
+    assertEquals(nationalPattern, metadata.getIntlNumberFormat(0).getFormat());
   }
 
-  // Tests loadNationalFormat().
+  public void testLoadInternationalFormatCopiesNationalFormatData()
+      throws ParserConfigurationException, SAXException, IOException {
+    String xmlInput = "<numberFormat></numberFormat>";
+    Element numberFormatElement = parseXmlString(xmlInput);
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
+    nationalFormat.setFormat("$1-$2");
+    nationalFormat.setNationalPrefixOptionalWhenFormatting(true);
+
+    assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
+                                                             nationalFormat.build()));
+    assertTrue(metadata.getIntlNumberFormat(0).isNationalPrefixOptionalWhenFormatting());
+  }
+
   public void testLoadNationalFormat()
       throws ParserConfigurationException, SAXException, IOException {
     String nationalFormat = "$1 $2";
@@ -210,9 +227,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     NumberFormat.Builder numberFormat = NumberFormat.newBuilder();
 
-    assertEquals(nationalFormat,
-                 BuildMetadataFromXml.loadNationalFormat(metadata, numberFormatElement,
-                                                         numberFormat));
+    BuildMetadataFromXml.loadNationalFormat(metadata, numberFormatElement, numberFormat);
+    assertEquals(nationalFormat, numberFormat.getFormat());
   }
 
   public void testLoadNationalFormatRequiresFormat()
@@ -337,9 +353,11 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String xmlInput = "<numberFormat><intlFormat>NA</intlFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    String nationalFormat = "$1 $2";
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
+    nationalFormat.setFormat("$1 $2");
 
-    BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement, nationalFormat);
+    BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
+                                                 nationalFormat.build());
     assertEquals(0, metadata.intlNumberFormatSize());
   }
 

@@ -88,6 +88,35 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("+819012345678901", formatter.inputDigit('1'));
   }
 
+  public void testCountryWithSpaceInNationalPrefixFormattingRule() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.BY);
+    assertEquals("8", formatter.inputDigit('8'));
+    assertEquals("88", formatter.inputDigit('8'));
+    assertEquals("881", formatter.inputDigit('1'));
+    assertEquals("8 819", formatter.inputDigit('9'));
+    assertEquals("8 8190", formatter.inputDigit('0'));
+    // The formatting rule for 5 digit numbers states that no space should be present after the
+    // national prefix.
+    assertEquals("881 901", formatter.inputDigit('1'));
+    assertEquals("8 819 012", formatter.inputDigit('2'));
+    // Too long, no formatting rule applies.
+    assertEquals("88190123", formatter.inputDigit('3'));
+  }
+
+  public void testCountryWithSpaceInNationalPrefixFormattingRuleAndLongNdd() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.BY);
+    assertEquals("9", formatter.inputDigit('9'));
+    assertEquals("99", formatter.inputDigit('9'));
+    assertEquals("999", formatter.inputDigit('9'));
+    assertEquals("9999", formatter.inputDigit('9'));
+    assertEquals("99999 ", formatter.inputDigit('9'));
+    assertEquals("99999 1", formatter.inputDigit('1'));
+    assertEquals("99999 12", formatter.inputDigit('2'));
+    assertEquals("99999 123", formatter.inputDigit('3'));
+    assertEquals("99999 1234", formatter.inputDigit('4'));
+    assertEquals("99999 12 345", formatter.inputDigit('5'));
+  }
+
   public void testAYTFUS() {
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
     assertEquals("6", formatter.inputDigit('6'));
@@ -753,7 +782,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
   }
 
   public void testAYTFLongIDD_AU() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("AU");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.AU);
     // 0011 1 650 253 2250
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("00", formatter.inputDigit('0'));
@@ -810,7 +839,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
   }
 
   public void testAYTFLongIDD_KR() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("KR");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.KR);
     // 00300 1 650 253 2222
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("00", formatter.inputDigit('0'));
@@ -831,7 +860,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
   }
 
   public void testAYTFLongNDD_KR() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("KR");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.KR);
     // 08811-9876-7890
     assertEquals("0", formatter.inputDigit('0'));
     assertEquals("08", formatter.inputDigit('8'));
@@ -867,7 +896,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
   }
 
   public void testAYTFLongNDD_SG() {
-    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("SG");
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.SG);
     // 777777 9876 7890
     assertEquals("7", formatter.inputDigit('7'));
     assertEquals("77", formatter.inputDigit('7'));
@@ -883,5 +912,184 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("777777 9876 78", formatter.inputDigit('8'));
     assertEquals("777777 9876 789", formatter.inputDigit('9'));
     assertEquals("777777 9876 7890", formatter.inputDigit('0'));
+  }
+
+  public void testAYTFShortNumberFormattingFix_AU() {
+    // For Australia, the national prefix is not optional when formatting.
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.AU);
+
+    // 1234567890 - For leading digit 1, the national prefix formatting rule has first group only.
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("12", formatter.inputDigit('2'));
+    assertEquals("123", formatter.inputDigit('3'));
+    assertEquals("1234", formatter.inputDigit('4'));
+    assertEquals("1234 5", formatter.inputDigit('5'));
+    assertEquals("1234 56", formatter.inputDigit('6'));
+    assertEquals("1234 567", formatter.inputDigit('7'));
+    assertEquals("1234 567 8", formatter.inputDigit('8'));
+    assertEquals("1234 567 89", formatter.inputDigit('9'));
+    assertEquals("1234 567 890", formatter.inputDigit('0'));
+
+    // +61 1234 567 890 - Test the same number, but with the country code.
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+6", formatter.inputDigit('6'));
+    assertEquals("+61 ", formatter.inputDigit('1'));
+    assertEquals("+61 1", formatter.inputDigit('1'));
+    assertEquals("+61 12", formatter.inputDigit('2'));
+    assertEquals("+61 123", formatter.inputDigit('3'));
+    assertEquals("+61 1234", formatter.inputDigit('4'));
+    assertEquals("+61 1234 5", formatter.inputDigit('5'));
+    assertEquals("+61 1234 56", formatter.inputDigit('6'));
+    assertEquals("+61 1234 567", formatter.inputDigit('7'));
+    assertEquals("+61 1234 567 8", formatter.inputDigit('8'));
+    assertEquals("+61 1234 567 89", formatter.inputDigit('9'));
+    assertEquals("+61 1234 567 890", formatter.inputDigit('0'));
+
+    // 212345678 - For leading digit 2, the national prefix formatting rule puts the national prefix
+    // before the first group.
+    formatter.clear();
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("02", formatter.inputDigit('2'));
+    assertEquals("021", formatter.inputDigit('1'));
+    assertEquals("02 12", formatter.inputDigit('2'));
+    assertEquals("02 123", formatter.inputDigit('3'));
+    assertEquals("02 1234", formatter.inputDigit('4'));
+    assertEquals("02 1234 5", formatter.inputDigit('5'));
+    assertEquals("02 1234 56", formatter.inputDigit('6'));
+    assertEquals("02 1234 567", formatter.inputDigit('7'));
+    assertEquals("02 1234 5678", formatter.inputDigit('8'));
+
+    // 212345678 - Test the same number, but without the leading 0.
+    formatter.clear();
+    assertEquals("2", formatter.inputDigit('2'));
+    assertEquals("21", formatter.inputDigit('1'));
+    assertEquals("212", formatter.inputDigit('2'));
+    assertEquals("2123", formatter.inputDigit('3'));
+    assertEquals("21234", formatter.inputDigit('4'));
+    assertEquals("212345", formatter.inputDigit('5'));
+    assertEquals("2123456", formatter.inputDigit('6'));
+    assertEquals("21234567", formatter.inputDigit('7'));
+    assertEquals("212345678", formatter.inputDigit('8'));
+
+    // +61 2 1234 5678 - Test the same number, but with the country code.
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+6", formatter.inputDigit('6'));
+    assertEquals("+61 ", formatter.inputDigit('1'));
+    assertEquals("+61 2", formatter.inputDigit('2'));
+    assertEquals("+61 21", formatter.inputDigit('1'));
+    assertEquals("+61 2 12", formatter.inputDigit('2'));
+    assertEquals("+61 2 123", formatter.inputDigit('3'));
+    assertEquals("+61 2 1234", formatter.inputDigit('4'));
+    assertEquals("+61 2 1234 5", formatter.inputDigit('5'));
+    assertEquals("+61 2 1234 56", formatter.inputDigit('6'));
+    assertEquals("+61 2 1234 567", formatter.inputDigit('7'));
+    assertEquals("+61 2 1234 5678", formatter.inputDigit('8'));
+  }
+
+  public void testAYTFShortNumberFormattingFix_KR() {
+    // For Korea, the national prefix is not optional when formatting, and the national prefix
+    // formatting rule doesn't consist of only the first group.
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.KR);
+
+    // 111
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("11", formatter.inputDigit('1'));
+    assertEquals("111", formatter.inputDigit('1'));
+
+    // 114
+    formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("11", formatter.inputDigit('1'));
+    assertEquals("114", formatter.inputDigit('4'));
+
+    // 13121234 - Test a mobile number without the national prefix. Even though it is not an
+    // emergency number, it should be formatted as a block.
+    formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("13", formatter.inputDigit('3'));
+    assertEquals("131", formatter.inputDigit('1'));
+    assertEquals("1312", formatter.inputDigit('2'));
+    assertEquals("13121", formatter.inputDigit('1'));
+    assertEquals("131212", formatter.inputDigit('2'));
+    assertEquals("1312123", formatter.inputDigit('3'));
+    assertEquals("13121234", formatter.inputDigit('4'));
+
+    // +82 131-2-1234 - Test the same number, but with the country code.
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+82 ", formatter.inputDigit('2'));
+    assertEquals("+82 1", formatter.inputDigit('1'));
+    assertEquals("+82 13", formatter.inputDigit('3'));
+    assertEquals("+82 131", formatter.inputDigit('1'));
+    assertEquals("+82 131-2", formatter.inputDigit('2'));
+    assertEquals("+82 131-2-1", formatter.inputDigit('1'));
+    assertEquals("+82 131-2-12", formatter.inputDigit('2'));
+    assertEquals("+82 131-2-123", formatter.inputDigit('3'));
+    assertEquals("+82 131-2-1234", formatter.inputDigit('4'));
+  }
+
+  public void testAYTFShortNumberFormattingFix_MX() {
+    // For Mexico, the national prefix is optional when formatting.
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.MX);
+
+    // 911
+    assertEquals("9", formatter.inputDigit('9'));
+    assertEquals("91", formatter.inputDigit('1'));
+    assertEquals("911", formatter.inputDigit('1'));
+
+    // 800 123 4567 - Test a toll-free number, which should have a formatting rule applied to it
+    // even though it doesn't begin with the national prefix.
+    formatter.clear();
+    assertEquals("8", formatter.inputDigit('8'));
+    assertEquals("80", formatter.inputDigit('0'));
+    assertEquals("800", formatter.inputDigit('0'));
+    assertEquals("800 1", formatter.inputDigit('1'));
+    assertEquals("800 12", formatter.inputDigit('2'));
+    assertEquals("800 123", formatter.inputDigit('3'));
+    assertEquals("800 123 4", formatter.inputDigit('4'));
+    assertEquals("800 123 45", formatter.inputDigit('5'));
+    assertEquals("800 123 456", formatter.inputDigit('6'));
+    assertEquals("800 123 4567", formatter.inputDigit('7'));
+
+    // +52 800 123 4567 - Test the same number, but with the country code.
+    formatter.clear();
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+5", formatter.inputDigit('5'));
+    assertEquals("+52 ", formatter.inputDigit('2'));
+    assertEquals("+52 8", formatter.inputDigit('8'));
+    assertEquals("+52 80", formatter.inputDigit('0'));
+    assertEquals("+52 800", formatter.inputDigit('0'));
+    assertEquals("+52 800 1", formatter.inputDigit('1'));
+    assertEquals("+52 800 12", formatter.inputDigit('2'));
+    assertEquals("+52 800 123", formatter.inputDigit('3'));
+    assertEquals("+52 800 123 4", formatter.inputDigit('4'));
+    assertEquals("+52 800 123 45", formatter.inputDigit('5'));
+    assertEquals("+52 800 123 456", formatter.inputDigit('6'));
+    assertEquals("+52 800 123 4567", formatter.inputDigit('7'));
+  }
+
+  public void testAYTFShortNumberFormattingFix_US() {
+    // For the US, an initial 1 is treated specially.
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);
+
+    // 101 - Test that the initial 1 is not treated as a national prefix.
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("10", formatter.inputDigit('0'));
+    assertEquals("101", formatter.inputDigit('1'));
+
+    // 112 - Test that the initial 1 is not treated as a national prefix.
+    formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("11", formatter.inputDigit('1'));
+    assertEquals("112", formatter.inputDigit('2'));
+
+    // 122 - Test that the initial 1 is treated as a national prefix.
+    formatter.clear();
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("12", formatter.inputDigit('2'));
+    assertEquals("1 22", formatter.inputDigit('2'));
   }
 }

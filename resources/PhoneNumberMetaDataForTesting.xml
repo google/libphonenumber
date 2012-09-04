@@ -177,6 +177,39 @@
       </premiumRate>
     </territory>
 
+    <!-- Belarus -->
+    <!-- This country has been coopted to test the case of a national prefix formatting rule with a
+         space in it. -->
+    <territory id="BY" countryCode="375" internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixForParsing="80?|99999" nationalPrefixFormattingRule="$NP $FG">
+      <availableFormats>
+        <!-- We make some bogus formatting templates that differ only in length to check that
+             switching formatting patterns works as expected.-->
+        <numberFormat pattern="(\d{4})">
+          <leadingDigits>[1-8]</leadingDigits>
+          <format>$1</format>
+        </numberFormat>
+        <!-- This pattern has an override to remove the space after the national prefix. -->
+        <numberFormat pattern="(\d{2})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>[1-8]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})">
+          <leadingDigits>[1-8]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <!-- This numbering plan is completely bogus, but is used to test the AYTF logic. For that
+             reason, it is kept very simple. -->
+        <nationalNumberPattern>[1-9]\d{5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <exampleNumber>112345</exampleNumber>
+      </fixedLine>
+    </territory>
+
     <!-- Germany -->
     <territory id="DE" countryCode="49" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
@@ -701,11 +734,10 @@
 
     <!-- United States -->
     <!-- http://www.nanpa.com/reports/reports_npa.html -->
-    <!-- For testing purposes, numbers starting with 24 are not considered US
-    numbers.-->
+    <!-- For testing purposes, numbers starting with 24 are not considered US numbers.-->
     <territory id="US" countryCode="1" internationalPrefix="011"
                preferredExtnPrefix=" extn. " nationalPrefix="1"
-               mainCountryForCode="true" >
+               mainCountryForCode="true" nationalPrefixOptionalWhenFormatting="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>

@@ -348,6 +348,11 @@ public class PhoneNumberUtil {
   private static final Pattern FG_PATTERN = Pattern.compile("\\$FG");
   private static final Pattern CC_PATTERN = Pattern.compile("\\$CC");
 
+  // A pattern that is used to determine if the national prefix formatting rule has the first group
+  // only, i.e., does not start with the national prefix. Note that the pattern explicitly allows
+  // for unbalanced parentheses.
+  private static final Pattern FIRST_GROUP_ONLY_PREFIX_PATTERN = Pattern.compile("\\(?\\$1\\)?");
+
   private static PhoneNumberUtil instance = null;
 
   // A mapping from a region code to the PhoneMetadata for that region.
@@ -920,6 +925,14 @@ public class PhoneNumberUtil {
           CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap());
     }
     return instance;
+  }
+
+  /**
+   * Helper function to check if the national prefix formatting rule has the first group only, i.e.,
+   * does not start with the national prefix.
+   */
+  static boolean formattingRuleHasFirstGroupOnly(String nationalPrefixFormattingRule) {
+    return FIRST_GROUP_ONLY_PREFIX_PATTERN.matcher(nationalPrefixFormattingRule).matches();
   }
 
   /**
