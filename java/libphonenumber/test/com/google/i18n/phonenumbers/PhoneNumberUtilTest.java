@@ -111,6 +111,30 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
   }
 
+  public void testGetInstanceLoadBadMetadata() {
+    assertNull(phoneUtil.getMetadataForRegion("No Such Region"));
+    assertNull(phoneUtil.getMetadataForNonGeographicalRegion(-1));
+  }
+
+  public void testMissingMetadataFileThrowsRuntimeException() {
+    // In normal usage we should never get a state where we are asking to load metadata that doesn't
+    // exist. However if the library is packaged incorrectly in the jar, this could happen and the
+    // best we can do is make sure the exception has the file name in it.
+    try {
+      phoneUtil.loadMetadataFromFile("no/such/file", "XX", -1);
+      fail("expected exception");
+    } catch (RuntimeException e) {
+      assertTrue("Unexpected error: " + e, e.toString().contains("no/such/file_XX"));
+    }
+    try {
+      phoneUtil.loadMetadataFromFile(
+          "no/such/file", PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY, 123);
+      fail("expected exception");
+    } catch (RuntimeException e) {
+      assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file_123"));
+    }
+  }
+
   public void testGetInstanceLoadUSMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.US);
     assertEquals("US", metadata.getId());

@@ -1,3 +1,7 @@
+Sep 5, 2010: libphonenumber-5.1.1
+* Code changes:
+  - Added better logging/exception handling for catching cases where metadata is invalid/missing.
+
 Sep 3, 2012: libphonenumber-5.1
 * Code changes:
  - Inserting a space after the national prefix in the AsYouTypeFormatter when formatting numbers in

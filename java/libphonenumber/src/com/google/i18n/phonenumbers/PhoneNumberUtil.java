@@ -558,25 +558,38 @@ public class PhoneNumberUtil {
     nanpaRegions.addAll(countryCallingCodeToRegionCodeMap.get(NANPA_COUNTRY_CODE));
   }
 
-  private void loadMetadataFromFile(String filePrefix, String regionCode, int countryCallingCode) {
+  // @VisibleForTesting
+  void loadMetadataFromFile(String filePrefix, String regionCode, int countryCallingCode) {
     boolean isNonGeoRegion = REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
-    InputStream source = isNonGeoRegion
-        ? PhoneNumberUtil.class.getResourceAsStream(filePrefix + "_" + countryCallingCode)
-        : PhoneNumberUtil.class.getResourceAsStream(filePrefix + "_" + regionCode);
+    String fileName = filePrefix + "_" +
+        (isNonGeoRegion ? String.valueOf(countryCallingCode) : regionCode);
+    InputStream source = PhoneNumberUtil.class.getResourceAsStream(fileName);
+    if (source == null) {
+      LOGGER.log(Level.SEVERE, "missing metadata: " + fileName);
+      throw new RuntimeException("missing metadata: " + fileName);
+    }
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
       metadataCollection.readExternal(in);
-      for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
-        if (isNonGeoRegion) {
-          countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
-        } else {
-          regionToMetadataMap.put(regionCode, metadata);
-        }
+      List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
+      if (metadataList.isEmpty()) {
+        LOGGER.log(Level.SEVERE, "empty metadata: " + fileName);
+        throw new RuntimeException("empty metadata: " + fileName);
+      }
+      if (metadataList.size() > 1) {
+        LOGGER.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
+      }
+      PhoneMetadata metadata = metadataList.get(0);
+      if (isNonGeoRegion) {
+        countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
+      } else {
+        regionToMetadataMap.put(regionCode, metadata);
       }
     } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
+      LOGGER.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
+      throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
     } finally {
       close(in);
     }
@@ -587,7 +600,7 @@ public class PhoneNumberUtil {
       try {
         in.close();
       } catch (IOException e) {
-        LOGGER.log(Level.WARNING, e.toString());
+        LOGGER.log(Level.WARNING, "error closing input stream (ignored)", e);
       }
     }
   }
