@@ -13,6 +13,10 @@
 // limitations under the License.
 
 // Unit tests for asyoutypeformatter.cc, ported from AsYouTypeFormatterTest.java
+//
+// Note that these tests use the test metadata, not the normal metadata file,
+// so should not be used for regression test purposes - these tests are
+// illustrative only and test functionality.
 
 #include "phonenumbers/asyoutypeformatter.h"
 
@@ -105,6 +109,38 @@ TEST_F(AsYouTypeFormatterTest, TooLongNumberMatchingMultipleLeadingDigits) {
   EXPECT_EQ("+81 90 12 345 6789", formatter_->InputDigit('9', &result_));
   EXPECT_EQ("+81901234567890", formatter_->InputDigit('0', &result_));
   EXPECT_EQ("+819012345678901", formatter_->InputDigit('1', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, CountryWithSpaceInNationalPrefixFormattingRule) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::BY()));
+
+  EXPECT_EQ("8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("88", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("881", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("8 819", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("8 8190", formatter_->InputDigit('0', &result_));
+  // The formatting rule for 5 digit numbers states that no space should be
+  // present after the national prefix.
+  EXPECT_EQ("881 901", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("8 819 012", formatter_->InputDigit('2', &result_));
+  // Too long, no formatting rule applies.
+  EXPECT_EQ("88190123", formatter_->InputDigit('3', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest,
+       CountryWithSpaceInNationalPrefixFormattingRuleAndLongNdd) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::BY()));
+
+  EXPECT_EQ("9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("99", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("999", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("9999", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("99999 ", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("99999 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("99999 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("99999 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("99999 1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("99999 12 345", formatter_->InputDigit('5', &result_));
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_US) {
@@ -930,6 +966,186 @@ TEST_F(AsYouTypeFormatterTest, AYTF_LongNDD_SG) {
   EXPECT_EQ("777777 9876 78", formatter_->InputDigit('8', &result_));
   EXPECT_EQ("777777 9876 789", formatter_->InputDigit('9', &result_));
   EXPECT_EQ("777777 9876 7890", formatter_->InputDigit('0', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_AU) {
+  // For Australia, the national prefix is not optional when formatting.
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::AU()));
+
+  // 1234567890 - For leading digit 1, the national prefix formatting rule has
+  // first group only.
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("1234 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("1234 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("1234 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("1234 567 8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("1234 567 89", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("1234 567 890", formatter_->InputDigit('0', &result_));
+
+  // +61 1234 567 890 - Test the same number, but with the country code.
+  formatter_->Clear();
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+6", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+61 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+61 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+61 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+61 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+61 1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+61 1234 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+61 1234 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+61 1234 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("+61 1234 567 8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+61 1234 567 89", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("+61 1234 567 890", formatter_->InputDigit('0', &result_));
+
+  // 212345678 - For leading digit 2, the national prefix formatting rule puts
+  // the national prefix before the first group.
+  formatter_->Clear();
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("02", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("021", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("02 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("02 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("02 1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("02 1234 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("02 1234 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("02 1234 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("02 1234 5678", formatter_->InputDigit('8', &result_));
+
+  // 212345678 - Test the same number, but without the leading 0.
+  formatter_->Clear();
+  EXPECT_EQ("2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("21", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("212", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("2123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("21234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("212345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("2123456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("21234567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("212345678", formatter_->InputDigit('8', &result_));
+
+  // +61 2 1234 5678 - Test the same number, but with the country code.
+  formatter_->Clear();
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+6", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+61 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+61 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+61 21", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+61 2 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+61 2 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+61 2 1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+61 2 1234 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+61 2 1234 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+61 2 1234 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("+61 2 1234 5678", formatter_->InputDigit('8', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_KR) {
+  // For Korea, the national prefix is not optional when formatting, and the
+  // national prefix formatting rule doesn't consist of only the first group.
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::KR()));
+
+  // 111
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("11", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("111", formatter_->InputDigit('1', &result_));
+
+  // 114
+  formatter_->Clear();
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("11", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("114", formatter_->InputDigit('4', &result_));
+
+  // 131212345 - Test a mobile number without the national prefix. Even though
+  // it is not an emergency number, it should be formatted as a block.
+  formatter_->Clear();
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("13", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("131", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("1312", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("13121", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("131212", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("1312123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("13121234", formatter_->InputDigit('4', &result_));
+
+  // +82 131-2-1234 - Test the same number, but with the country code.
+  formatter_->Clear();
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+82 ", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+82 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+82 13", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+82 131", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+82 131-2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+82 131-2-1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+82 131-2-12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+82 131-2-123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+82 131-2-1234", formatter_->InputDigit('4', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_MX) {
+  // For Mexico, the national prefix is optional when formatting.
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::MX()));
+
+  // 911
+  EXPECT_EQ("9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("91", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("911", formatter_->InputDigit('1', &result_));
+
+  // 800 123 4567 - Test a toll-free number, which should have a formatting rule
+  // applied to it even though it doesn't begin with the national prefix.
+  formatter_->Clear();
+  EXPECT_EQ("8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("80", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("800", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("800 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("800 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("800 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("800 123 4", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("800 123 45", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("800 123 456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("800 123 4567", formatter_->InputDigit('7', &result_));
+
+  // +52 800 123 4567 - Test the same number, but with the country code.
+  formatter_->Clear();
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+52 ", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+52 8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+52 80", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("+52 800", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("+52 800 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+52 800 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+52 800 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+52 800 123 4", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+52 800 123 45", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+52 800 123 456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_US) {
+  // For the US, an initial 1 is treated specially.
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
+
+  // 101 - Test that the initial 1 is not treated as a national prefix.
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("10", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("101", formatter_->InputDigit('1', &result_));
+
+  // 112 - Test that the initial 1 is not treated as a national prefix.
+  formatter_->Clear();
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("11", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("112", formatter_->InputDigit('2', &result_));
+
+  // 122 - Test that the initial 1 is treated as a national prefix.
+  formatter_->Clear();
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("1 22", formatter_->InputDigit('2', &result_));
 }
 
 }  // namespace phonenumbers

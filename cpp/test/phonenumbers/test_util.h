@@ -77,6 +77,10 @@ class RegionCode {
     return "BS";
   }
 
+  static const char* BY() {
+    return "BY";
+  }
+
   static const char* CA() {
     return "CA";
   }

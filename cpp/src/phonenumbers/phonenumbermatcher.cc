@@ -30,6 +30,7 @@
 #include <limits>
 #include <stddef.h>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include <unicode/uchar.h>
@@ -764,15 +765,8 @@ bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(
       // check if it was present.
       return true;
     }
-    // Remove the first-group symbol.
-    string candidate_national_prefix_rule(
-        format_rule->national_prefix_formatting_rule());
-    // We assume that the first-group symbol will never be _before_ the national
-    // prefix.
-    candidate_national_prefix_rule.erase(
-        candidate_national_prefix_rule.find("$1"));
-    phone_util_.NormalizeDigitsOnly(&candidate_national_prefix_rule);
-    if (candidate_national_prefix_rule.empty()) {
+    if (phone_util_.FormattingRuleHasFirstGroupOnly(
+        format_rule->national_prefix_formatting_rule())) {
       // National Prefix not needed for this number.
       return true;
     }

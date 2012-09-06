@@ -224,7 +224,7 @@ class PhoneNumberMatcherTest : public testing::Test {
     // With a second number later.
     context_pairs.push_back(NumberContext("Call ", " or +1800-123-4567!"));
     // With a Month-Day date.
-    context_pairs.push_back(NumberContext("Call me on June 21 at", ""));
+    context_pairs.push_back(NumberContext("Call me on June 2 at", ""));
     // With publication pages.
     context_pairs.push_back(NumberContext(
         "As quoted by Alfonso 12-15 (2009), you may call me at ", ""));
@@ -742,7 +742,8 @@ static const NumberTest kValidCases[] = {
   NumberTest("030-3-2 23 12 34", RegionCode::DE()),
   NumberTest("03 0 -3 2 23 12 34", RegionCode::DE()),
   NumberTest("(0)3 0 -3 2 23 12 34", RegionCode::DE()),
-  NumberTest("0 3 0 -3 2 23 12 34", RegionCode::DE()),};
+  NumberTest("0 3 0 -3 2 23 12 34", RegionCode::DE()),
+};
 
 // Strings with number-like things that should only be found up to and including
 // the "strict_grouping" leniency level.

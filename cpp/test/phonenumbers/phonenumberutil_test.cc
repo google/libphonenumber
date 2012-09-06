@@ -15,6 +15,12 @@
 // Author: Shaopeng Jia
 // Author: Lara Rennie
 // Open-sourced by: Philippe Liard
+//
+// Note that these tests use the metadata contained in the test metadata file,
+// not the normal metadata file, so should not be used for regression test
+// purposes - these tests are illustrative only and test functionality.
+
+#include "phonenumbers/phonenumberutil.h"
 
 #include <iostream>
 #include <set>
@@ -25,7 +31,6 @@
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
-#include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/test_util.h"
 
 namespace i18n {
@@ -2091,16 +2096,23 @@ TEST_F(PhoneNumberUtilTest, GetNationalDiallingPrefixForRegion) {
 }
 
 TEST_F(PhoneNumberUtilTest, IsViablePhoneNumber) {
+  EXPECT_FALSE(IsViablePhoneNumber("1"));
   // Only one or two digits before strange non-possible punctuation.
-  EXPECT_FALSE(IsViablePhoneNumber("12. March"));
   EXPECT_FALSE(IsViablePhoneNumber("1+1+1"));
   EXPECT_FALSE(IsViablePhoneNumber("80+0"));
-  EXPECT_FALSE(IsViablePhoneNumber("00"));
-  // Three digits is viable.
+  // Two digits is viable.
+  EXPECT_TRUE(IsViablePhoneNumber("00"));
   EXPECT_TRUE(IsViablePhoneNumber("111"));
   // Alpha numbers.
   EXPECT_TRUE(IsViablePhoneNumber("0800-4-pizza"));
   EXPECT_TRUE(IsViablePhoneNumber("0800-4-PIZZA"));
+  // We need at least three digits before any alpha characters.
+  EXPECT_FALSE(IsViablePhoneNumber("08-PIZZA"));
+  EXPECT_FALSE(IsViablePhoneNumber("8-PIZZA"));
+  EXPECT_FALSE(IsViablePhoneNumber("12. March"));
+}
+
+TEST_F(PhoneNumberUtilTest, IsViablePhoneNumberNonAscii) {
   // Only one or two digits before possible punctuation followed by more digits.
   // The punctuation used here is the unicode character u+3000.
   EXPECT_TRUE(IsViablePhoneNumber("1\xE3\x80\x80" "34" /* "1　34" */));
@@ -2555,7 +2567,7 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchNonMatches) {
                                                     "3 331 6005#1234"));
   // Invalid numbers that can't be parsed.
   EXPECT_EQ(PhoneNumberUtil::INVALID_NUMBER,
-            phone_util_.IsNumberMatchWithTwoStrings("43", "3 331 6043"));
+            phone_util_.IsNumberMatchWithTwoStrings("4", "3 331 6043"));
   // Invalid numbers that can't be parsed.
   EXPECT_EQ(PhoneNumberUtil::INVALID_NUMBER,
             phone_util_.IsNumberMatchWithTwoStrings("+43", "+64 3 331 6005"));
@@ -2840,6 +2852,14 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+81 *2345", RegionCode::JP(), &test_number));
   EXPECT_EQ(star_number, test_number);
+
+  PhoneNumber short_number;
+  short_number.set_country_code(64);
+  short_number.set_national_number(12ULL);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("12", RegionCode::NZ(), &test_number));
+  EXPECT_EQ(short_number, test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, ParseNumberWithAlphaCharacters) {
@@ -3154,6 +3174,21 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   PhoneNumber test_number;
   EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
             phone_util_.Parse("This is not a phone number", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("1 Still not a number", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("1 MICROSOFT", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("12 MICROSOFT", RegionCode::NZ(),
                               &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
@@ -3617,19 +3652,15 @@ TEST_F(PhoneNumberUtilTest, CanBeInternationallyDialled) {
 }
 
 TEST_F(PhoneNumberUtilTest, IsAlphaNumber) {
-  static const string kAlphaNumber("1800 six-flags");
-  EXPECT_TRUE(phone_util_.IsAlphaNumber(kAlphaNumber));
-  static const string kAlphaNumberWithExtension = "1800 six-flags ext. 1234";
-  EXPECT_TRUE(phone_util_.IsAlphaNumber(kAlphaNumberWithExtension));
-  static const string kI18nAlphaNumber("+800 six-flags");
-  EXPECT_TRUE(phone_util_.IsAlphaNumber(kI18nAlphaNumber));
-  static const string kNonAlphaNumber("1800 123-1234");
-  EXPECT_FALSE(phone_util_.IsAlphaNumber(kNonAlphaNumber));
-  static const string kNonAlphaNumberWithExtension(
-      "1800 123-1234 extension: 1234");
-  EXPECT_FALSE(phone_util_.IsAlphaNumber(kNonAlphaNumberWithExtension));
-  static const string kI18nNonAlphaNumber("+800 1234-1234");
-  EXPECT_FALSE(phone_util_.IsAlphaNumber(kI18nNonAlphaNumber));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("1800 six-flags"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("1800 six-flags ext. 1234"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("+800 six-flags"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("180 six-flags"));
+  EXPECT_FALSE(phone_util_.IsAlphaNumber("1800 123-1234"));
+  EXPECT_FALSE(phone_util_.IsAlphaNumber("1 six-flags"));
+  EXPECT_FALSE(phone_util_.IsAlphaNumber("18 six-flags"));
+  EXPECT_FALSE(phone_util_.IsAlphaNumber("1800 123-1234 extension: 1234"));
+  EXPECT_FALSE(phone_util_.IsAlphaNumber("+800 1234-1234"));
 }
 
 }  // namespace phonenumbers

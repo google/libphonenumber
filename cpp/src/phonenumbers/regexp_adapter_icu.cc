@@ -190,18 +190,31 @@ class IcuRegExp : public RegExp {
     if (U_FAILURE(status)) {
       return false;
     }
-    UnicodeString result = global
-        ? matcher->replaceAll(
-            Utf8StringToUnicodeString(replacement_string), status)
-        : matcher->replaceFirst(
-            Utf8StringToUnicodeString(replacement_string), status);
+
+    UnicodeString output;
+    // We reimplement ReplaceFirst and ReplaceAll such that their behaviour is
+    // consistent with the RE2 reg-ex matcher.
+    if (!matcher->find()) {
+      return false;
+    }
+    matcher->appendReplacement(output,
+                               Utf8StringToUnicodeString(replacement_string),
+                               status);
+    if (global) {
+      // Continue and look for more matches.
+      while (matcher->find()) {
+        matcher->appendReplacement(
+            output,
+            Utf8StringToUnicodeString(replacement_string),
+            status);
+      }
+    }
+
+    matcher->appendTail(output);
     if (U_FAILURE(status)) {
       return false;
     }
-    const string replaced_string = UnicodeStringToUtf8String(result);
-    if (replaced_string == *string_to_process) {
-      return false;
-    }
+    const string replaced_string = UnicodeStringToUtf8String(output);
     *string_to_process = replaced_string;
     return true;
   }

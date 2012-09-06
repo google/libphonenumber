@@ -477,7 +477,10 @@ class PhoneNumberRegExpsAndMappings {
     }
   }
 
+  // Small string helpers since StrCat has a maximum number of arguments. These
+  // are both used to build valid_phone_number_.
   const string punctuation_and_star_sign_;
+  const string min_length_phone_number_pattern_;
 
   // Regular expression of viable phone numbers. This is location independent.
   // Checks we have at least three leading digits, and only valid punctuation,
@@ -486,8 +489,15 @@ class PhoneNumberRegExpsAndMappings {
   // used as a placeholder for carrier codes, for example in Brazilian phone
   // numbers. We also allow multiple plus-signs at the start.
   // Corresponds to the following:
+  // [digits]{minLengthNsn}|
   // plus_sign*(([punctuation]|[star])*[digits]){3,}
   // ([punctuation]|[star]|[digits]|[alpha])*
+  //
+  // The first reg-ex is to allow short numbers (two digits long) to be parsed
+  // if they are entered as "15" etc, but only if there is no punctuation in
+  // them. The second expression restricts the number of digits to three or
+  // more, but then allows them to be in international form, and to have
+  // alpha-characters and punctuation.
   const string valid_phone_number_;
 
   // Regexp of all possible ways to write extensions, for use when parsing. This
@@ -585,8 +595,11 @@ class PhoneNumberRegExpsAndMappings {
   PhoneNumberRegExpsAndMappings()
       : punctuation_and_star_sign_(StrCat(PhoneNumberUtil::kValidPunctuation,
                                           kStarSign)),
+        min_length_phone_number_pattern_(
+            StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}")),
         valid_phone_number_(
-            StrCat("[", PhoneNumberUtil::kPlusChars, "]*(?:[",
+            StrCat(min_length_phone_number_pattern_, "|[",
+                   PhoneNumberUtil::kPlusChars, "]*(?:[",
                    punctuation_and_star_sign_, "]*",
                    kDigits, "){3,}[", kValidAlpha,
                    punctuation_and_star_sign_, kDigits,
@@ -781,6 +794,17 @@ bool PhoneNumberUtil::IsFormatEligibleForAsYouTypeFormatter(
       StrCat("[", kValidPunctuation, "]*", "(\\$\\d", "[",
              kValidPunctuation, "]*)+"));
   return eligible_format_pattern.FullMatch(format);
+}
+
+bool PhoneNumberUtil::FormattingRuleHasFirstGroupOnly(
+    const string& national_prefix_formatting_rule) const {
+  // A pattern that is used to determine if the national prefix formatting rule
+  // has the first group only, i.e., does not start with the national prefix.
+  // Note that the pattern explicitly allows for unbalanced parentheses.
+  const RegExp& first_group_only_prefix_pattern =
+      reg_exps_->regexp_cache_->GetRegExp("\\(?\\$1\\)?");
+  return first_group_only_prefix_pattern.FullMatch(
+      national_prefix_formatting_rule);
 }
 
 void PhoneNumberUtil::GetNddPrefixForRegion(const string& region_code,

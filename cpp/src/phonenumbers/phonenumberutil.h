@@ -51,7 +51,6 @@ class AsYouTypeFormatter;
 class Logger;
 class NumberFormat;
 class PhoneMetadata;
-class PhoneNumberMatcherRegExps;
 class PhoneNumberRegExpsAndMappings;
 class RegExp;
 
@@ -83,10 +82,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // in ITU-T Recommendation E. 123. For example, the number of the Google
   // Zürich office will be written as "+41 44 668 1800" in INTERNATIONAL
   // format, and as "044 668 1800" in NATIONAL format. E164 format is as per
-  // INTERNATIONAL format but with no formatting applied e.g. +41446681800.
+  // INTERNATIONAL format but with no formatting applied e.g. "+41446681800".
   // RFC3966 is as per INTERNATIONAL format, but with all spaces and other
   // separating symbols replaced with a hyphen, and with any phone number
-  // extension appended with ";ext=".
+  // extension appended with ";ext=". It also will have a prefix of "tel:"
+  // added, e.g. "tel:+41-44-668-1800".
   enum PhoneNumberFormat {
     E164,
     INTERNATIONAL,
@@ -632,8 +632,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Checks whether a string contains only valid digits.
   bool ContainsOnlyValidDigits(const string& s) const;
 
-  // Checks if a format is eligible to be used by the AsYouTypeFormatter.
+  // Checks if a format is eligible to be used by the AsYouTypeFormatter. This
+  // method is here rather than in asyoutypeformatter.h since it depends on the
+  // valid punctuation declared by the phone number util.
   bool IsFormatEligibleForAsYouTypeFormatter(const string& format) const;
+
+  // Helper function to check if the national prefix formatting rule has the
+  // first group only, i.e., does not start with the national prefix.
+  bool FormattingRuleHasFirstGroupOnly(
+      const string& national_prefix_formatting_rule) const;
 
   // Trims unwanted end characters from a phone number string.
   void TrimUnwantedEndChars(string* number) const;

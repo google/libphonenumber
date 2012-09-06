@@ -52,6 +52,15 @@ const size_t kMinLeadingDigitsLength = 3;
 // the punctuation space.
 const char kDigitPlaceholder[] = "\xE2\x80\x88"; /* " " */
 
+// Character used when appropriate to separate a prefix, such as a long NDD or a
+// country calling code, from the national number.
+const char kSeparatorBeforeNationalNumber = ' ';
+
+// A set of characters that, if found in a national prefix formatting rules, are
+// an indicator to us that we should separate the national prefix from the
+// number when formatting.
+const char kNationalPrefixSeparatorsPattern[] = "[- ]";
+
 // Replaces any standalone digit in the pattern (not any inside a {} grouping)
 // with \d. This function replaces the standalone digit regex used in the Java
 // version which is currently not supported by RE2 because it uses a special
@@ -122,7 +131,7 @@ AsYouTypeFormatter::AsYouTypeFormatter(const string& region_code)
       accrued_input_without_formatting_(),
       able_to_format_(true),
       input_has_formatting_(false),
-      is_international_formatting_(false),
+      is_complete_number_(false),
       is_expecting_country_code_(false),
       phone_util_(*PhoneNumberUtil::GetInstance()),
       default_country_(region_code),
@@ -133,6 +142,7 @@ AsYouTypeFormatter::AsYouTypeFormatter(const string& region_code)
       original_position_(0),
       position_to_remember_(0),
       prefix_before_national_number_(),
+      should_add_space_after_national_prefix_(false),
       national_prefix_extracted_(),
       national_number_(),
       possible_formats_() {
@@ -170,6 +180,7 @@ bool AsYouTypeFormatter::MaybeCreateNewTemplate() {
     }
     if (CreateFormattingTemplate(number_format)) {
       current_formatting_pattern_ = pattern;
+      SetShouldAddSpaceAfterNationalPrefix(number_format);
       // With a new formatting template, the matched position using the old
       // template needs to be reset.
       last_match_position_ = 0;
@@ -183,15 +194,20 @@ bool AsYouTypeFormatter::MaybeCreateNewTemplate() {
 void AsYouTypeFormatter::GetAvailableFormats(
     const string& leading_three_digits) {
   const RepeatedPtrField<NumberFormat>& format_list =
-      (is_international_formatting_ &&
+      (is_complete_number_ &&
        current_metadata_->intl_number_format().size() > 0)
           ? current_metadata_->intl_number_format()
           : current_metadata_->number_format();
 
   for (RepeatedPtrField<NumberFormat>::const_iterator it = format_list.begin();
        it != format_list.end(); ++it) {
-    if (phone_util_.IsFormatEligibleForAsYouTypeFormatter(it->format())) {
-      possible_formats_.push_back(&*it);
+    if (is_complete_number_ ||
+        it->national_prefix_optional_when_formatting() ||
+        phone_util_.FormattingRuleHasFirstGroupOnly(
+            it->national_prefix_formatting_rule())) {
+      if (phone_util_.IsFormatEligibleForAsYouTypeFormatter(it->format())) {
+        possible_formats_.push_back(&*it);
+      }
     }
   }
   NarrowDownPossibleFormats(leading_three_digits);
@@ -220,6 +236,15 @@ void AsYouTypeFormatter::NarrowDownPossibleFormats(
        // and it should be retained.
     ++it;
   }
+}
+
+void AsYouTypeFormatter::SetShouldAddSpaceAfterNationalPrefix(
+    const NumberFormat& format) {
+  static const scoped_ptr<const RegExp> national_prefix_separators_pattern(
+      regexp_factory_->CreateRegExp(kNationalPrefixSeparatorsPattern));
+  should_add_space_after_national_prefix_ =
+      national_prefix_separators_pattern->PartialMatch(
+          format.national_prefix_formatting_rule());
 }
 
 bool AsYouTypeFormatter::CreateFormattingTemplate(const NumberFormat& format) {
@@ -291,9 +316,10 @@ void AsYouTypeFormatter::Clear() {
   input_has_formatting_ = false;
   position_to_remember_ = 0;
   original_position_ = 0;
-  is_international_formatting_ = false;
+  is_complete_number_ = false;
   is_expecting_country_code_ = false;
   possible_formats_.clear();
+  should_add_space_after_national_prefix_ = false;
 
   if (current_metadata_ != default_metadata_) {
     current_metadata_ = GetMetadataForRegion(default_country_);
@@ -357,8 +383,10 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
       }
     } else if (AbleToExtractLongerNdd()) {
       // Add an additional space to separate long NDD and national significant
-      // number for readability.
-      prefix_before_national_number_.append(" ");
+      // number for readability. We don't set
+      // should_add_space_after_national_prefix_ to true, since we don't want
+      // this to change later when we choose formatting templates.
+      prefix_before_national_number_.push_back(kSeparatorBeforeNationalNumber);
       AttemptToChoosePatternWithPrefixExtracted(phone_number);
       return;
     }
@@ -414,8 +442,7 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
           return;
         }
         if (able_to_format_) {
-          phone_number->assign(
-              prefix_before_national_number_ + temp_national_number);
+          AppendNationalNumber(temp_national_number, phone_number);
         } else {
           phone_number->clear();
           accrued_input_.toUTF8String(*phone_number);
@@ -453,30 +480,27 @@ bool AsYouTypeFormatter::AbleToExtractLongerNdd() {
 }
 
 void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
-    string* formatted_number) {
-  DCHECK(formatted_number);
+    string* formatted_result) {
+  DCHECK(formatted_result);
 
   for (list<const NumberFormat*>::const_iterator it = possible_formats_.begin();
        it != possible_formats_.end(); ++it) {
     DCHECK(*it);
-    const NumberFormat& num_format = **it;
-    string pattern = num_format.pattern();
+    const NumberFormat& number_format = **it;
+    const string& pattern = number_format.pattern();
 
     if (regexp_cache_.GetRegExp(pattern).FullMatch(national_number_)) {
-      formatted_number->assign(national_number_);
-      string new_formatted_number(*formatted_number);
-      string format = num_format.format();
+      SetShouldAddSpaceAfterNationalPrefix(number_format);
 
+      string formatted_number(national_number_);
       bool status = regexp_cache_.GetRegExp(pattern).GlobalReplace(
-          &new_formatted_number, format);
+          &formatted_number, number_format.format());
       DCHECK(status);
 
-      formatted_number->assign(prefix_before_national_number_);
-      formatted_number->append(new_formatted_number);
+      AppendNationalNumber(formatted_number, formatted_result);
       return;
     }
   }
-  formatted_number->clear();
 }
 
 int AsYouTypeFormatter::GetRememberedPosition() const {
@@ -498,6 +522,28 @@ int AsYouTypeFormatter::GetRememberedPosition() const {
   return ConvertUnicodeStringPosition(current_output, current_output_index);
 }
 
+void AsYouTypeFormatter::AppendNationalNumber(const string& national_number,
+                                              string* phone_number) const {
+  int prefix_before_national_number_length =
+      prefix_before_national_number_.size();
+  if (should_add_space_after_national_prefix_ &&
+      prefix_before_national_number_length > 0 &&
+      prefix_before_national_number_.at(
+          prefix_before_national_number_length - 1) !=
+      kSeparatorBeforeNationalNumber) {
+    // We want to add a space after the national prefix if the national prefix
+    // formatting rule indicates that this would normally be done, with the
+    // exception of the case where we already appended a space because the NDD
+    // was surprisingly long.
+    phone_number->assign(prefix_before_national_number_);
+    phone_number->push_back(kSeparatorBeforeNationalNumber);
+    StrAppend(phone_number, national_number);
+  } else {
+    phone_number->assign(
+        StrCat(prefix_before_national_number_, national_number));
+  }
+}
+
 void AsYouTypeFormatter::AttemptToChooseFormattingPattern(
     string* formatted_number) {
   DCHECK(formatted_number);
@@ -515,7 +561,7 @@ void AsYouTypeFormatter::AttemptToChooseFormattingPattern(
     }
     return;
   } else {
-    formatted_number->assign(prefix_before_national_number_ + national_number_);
+    AppendNationalNumber(national_number_, formatted_number);
   }
 }
 
@@ -531,7 +577,7 @@ void AsYouTypeFormatter::InputAccruedNationalNumber(string* number) {
       InputDigitHelper(national_number_[i], &temp_national_number);
     }
     if (able_to_format_) {
-      number->assign(prefix_before_national_number_ + temp_national_number);
+      AppendNationalNumber(temp_national_number, number);
     } else {
       number->clear();
       accrued_input_.toUTF8String(*number);
@@ -542,14 +588,26 @@ void AsYouTypeFormatter::InputAccruedNationalNumber(string* number) {
   }
 }
 
+bool AsYouTypeFormatter::IsNanpaNumberWithNationalPrefix() const {
+  // For NANPA numbers beginning with 1[2-9], treat the 1 as the national
+  // prefix. The reason is that national significant numbers in NANPA always
+  // start with [2-9] after the national prefix.  Numbers beginning with 1[01]
+  // can only be short/emergency numbers, which don't need the national
+  // prefix.
+  return (current_metadata_->country_code() == 1) &&
+         (national_number_[0] == '1') && (national_number_[1] != '0') &&
+         (national_number_[1] != '1');
+}
+
 void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber(
     string* national_prefix) {
   int start_of_national_number = 0;
 
-  if (current_metadata_->country_code() == 1 && national_number_[0] == '1') {
+  if (IsNanpaNumberWithNationalPrefix()) {
     start_of_national_number = 1;
-    prefix_before_national_number_.append("1 ");
-    is_international_formatting_ = true;
+    prefix_before_national_number_.append("1");
+    prefix_before_national_number_.push_back(kSeparatorBeforeNationalNumber);
+    is_complete_number_ = true;
   } else if (current_metadata_->has_national_prefix_for_parsing()) {
     const scoped_ptr<RegExpInput> consumed_input(
         regexp_factory_->CreateInput(national_number_));
@@ -560,7 +618,7 @@ void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber(
       // When the national prefix is detected, we use international formatting
       // rules instead of national ones, because national formatting rules could
       // countain local formatting rules for numbers entered without area code.
-      is_international_formatting_ = true;
+      is_complete_number_ = true;
       start_of_national_number =
           national_number_.length() - consumed_input->ToString().length();
       prefix_before_national_number_.append(
@@ -582,7 +640,7 @@ bool AsYouTypeFormatter::AttemptToExtractIdd() {
              current_metadata_->international_prefix()));
 
   if (international_prefix.Consume(consumed_input.get())) {
-    is_international_formatting_ = true;
+    is_complete_number_ = true;
     const int start_of_country_code =
         accrued_input_without_formatting_.length() -
         consumed_input->ToString().length();
@@ -598,7 +656,7 @@ bool AsYouTypeFormatter::AttemptToExtractIdd() {
     prefix_before_national_number_.append(before_country_code);
 
     if (accrued_input_without_formatting_[0] != kPlusSign) {
-      prefix_before_national_number_.append(" ");
+      prefix_before_national_number_.push_back(kSeparatorBeforeNationalNumber);
     }
     return true;
   }
@@ -624,7 +682,8 @@ bool AsYouTypeFormatter::AttemptToExtractCountryCode() {
   } else if (new_region_code != default_country_) {
     current_metadata_ = GetMetadataForRegion(new_region_code);
   }
-  StrAppend(&prefix_before_national_number_, country_code, " ");
+  StrAppend(&prefix_before_national_number_, country_code);
+  prefix_before_national_number_.push_back(kSeparatorBeforeNationalNumber);
 
   return true;
 }
