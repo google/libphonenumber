@@ -754,8 +754,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
  * Combines the national number with any prefix (IDD/+ and country code or
  * national prefix) that was collected. A space will be inserted between them if
  * the current formatting template indicates this to be suitable.
- * @param {string} nationalNumber
- * @return {string}
+ * @param {string} nationalNumber The number to be appended.
+ * @return {string} The combined number.
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.appendNationalNumber_ =
@@ -873,9 +873,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.inputAccruedNationalNumber_ =
 
 
 /**
- * Returns true if the current country is a NANPA country and the national
- * number begins with the national prefix.
- * @return {boolean}
+ * @return {boolean} true if the current country is a NANPA country and the
+ *     national number begins with the national prefix.
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.

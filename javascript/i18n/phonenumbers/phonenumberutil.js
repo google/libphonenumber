@@ -1288,8 +1288,10 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_ =
  * Helper function to check if the national prefix formatting rule has the first
  * group only, i.e., does not start with the national prefix.
  *
- * @param {string} nationalPrefixFormattingRule
- * @return {boolean}
+ * @param {string} nationalPrefixFormattingRule The formatting rule for the
+ *     national prefix.
+ * @return {boolean} true if the national prefix formatting rule has the first
+ *     group only.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
     function(nationalPrefixFormattingRule) {
