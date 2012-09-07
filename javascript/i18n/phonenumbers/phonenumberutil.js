@@ -831,6 +831,18 @@ i18n.phonenumbers.PhoneNumberUtil.CC_PATTERN_ = /\$CC/;
 
 
 /**
+ * A pattern that is used to determine if the national prefix formatting rule
+ * has the first group only, i.e., does not start with the national prefix.
+ * Note that the pattern explicitly allows for unbalanced parentheses.
+ * @const
+ * @type {!RegExp}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_ONLY_PREFIX_PATTERN_ =
+    /^\(?\$1\)?$/;
+
+
+/**
  * @const
  * @type {string}
  */
@@ -1269,6 +1281,20 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_ =
     // If neither of the above are true, we remove this character.
   }
   return normalizedNumber.toString();
+};
+
+
+/**
+ * Helper function to check if the national prefix formatting rule has the first
+ * group only, i.e., does not start with the national prefix.
+ *
+ * @param {string} nationalPrefixFormattingRule
+ * @return {boolean}
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
+    function(nationalPrefixFormattingRule) {
+  return i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_ONLY_PREFIX_PATTERN_.
+      test(nationalPrefixFormattingRule);
 };
 
 

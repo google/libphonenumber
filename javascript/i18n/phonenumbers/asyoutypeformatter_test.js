@@ -96,6 +96,37 @@ function testTooLongNumberMatchingMultipleLeadingDigits() {
   assertEquals('+819012345678901', f.inputDigit('1'));
 }
 
+function testCountryWithSpaceInNationalPrefixFormattingRule() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.BY);
+  assertEquals('8', f.inputDigit('8'));
+  assertEquals('88', f.inputDigit('8'));
+  assertEquals('881', f.inputDigit('1'));
+  assertEquals('8 819', f.inputDigit('9'));
+  assertEquals('8 8190', f.inputDigit('0'));
+  // The formatting rule for 5 digit numbers states that no space should be
+  // present after the national prefix.
+  assertEquals('881 901', f.inputDigit('1'));
+  assertEquals('8 819 012', f.inputDigit('2'));
+  // Too long, no formatting rule applies.
+  assertEquals('88190123', f.inputDigit('3'));
+}
+
+function testCountryWithSpaceInNationalPrefixFormattingRuleAndLongNdd() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.BY);
+  assertEquals('9', f.inputDigit('9'));
+  assertEquals('99', f.inputDigit('9'));
+  assertEquals('999', f.inputDigit('9'));
+  assertEquals('9999', f.inputDigit('9'));
+  assertEquals('99999 ', f.inputDigit('9'));
+  assertEquals('99999 1', f.inputDigit('1'));
+  assertEquals('99999 12', f.inputDigit('2'));
+  assertEquals('99999 123', f.inputDigit('3'));
+  assertEquals('99999 1234', f.inputDigit('4'));
+  assertEquals('99999 12 345', f.inputDigit('5'));
+}
+
 function testAYTFUS() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
   var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
@@ -779,7 +810,7 @@ function testAYTFMultipleLeadingDigitPatterns() {
 
 function testAYTFLongIDD_AU() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('AU');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.AU);
   // 0011 1 650 253 2250
   assertEquals('0', f.inputDigit('0'));
   assertEquals('00', f.inputDigit('0'));
@@ -837,7 +868,7 @@ function testAYTFLongIDD_AU() {
 
 function testAYTFLongIDD_KR() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('KR');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.KR);
   // 00300 1 650 253 2222
   assertEquals('0', f.inputDigit('0'));
   assertEquals('00', f.inputDigit('0'));
@@ -859,7 +890,7 @@ function testAYTFLongIDD_KR() {
 
 function testAYTFLongNDD_KR() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('KR');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.KR);
   // 08811-9876-7890
   assertEquals('0', f.inputDigit('0'));
   assertEquals('08', f.inputDigit('8'));
@@ -896,7 +927,7 @@ function testAYTFLongNDD_KR() {
 
 function testAYTFLongNDD_SG() {
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
-  var f = new i18n.phonenumbers.AsYouTypeFormatter('SG');
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.SG);
   // 777777 9876 7890
   assertEquals('7', f.inputDigit('7'));
   assertEquals('77', f.inputDigit('7'));
@@ -912,4 +943,187 @@ function testAYTFLongNDD_SG() {
   assertEquals('777777 9876 78', f.inputDigit('8'));
   assertEquals('777777 9876 789', f.inputDigit('9'));
   assertEquals('777777 9876 7890', f.inputDigit('0'));
+}
+
+function testAYTFShortNumberFormattingFix_AU() {
+  // For Australia, the national prefix is not optional when formatting.
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.AU);
+
+  // 1234567890 - For leading digit 1, the national prefix formatting rule has
+  // first group only.
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('12', f.inputDigit('2'));
+  assertEquals('123', f.inputDigit('3'));
+  assertEquals('1234', f.inputDigit('4'));
+  assertEquals('1234 5', f.inputDigit('5'));
+  assertEquals('1234 56', f.inputDigit('6'));
+  assertEquals('1234 567', f.inputDigit('7'));
+  assertEquals('1234 567 8', f.inputDigit('8'));
+  assertEquals('1234 567 89', f.inputDigit('9'));
+  assertEquals('1234 567 890', f.inputDigit('0'));
+
+  // +61 1234 567 890 - Test the same number, but with the country code.
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+6', f.inputDigit('6'));
+  assertEquals('+61 ', f.inputDigit('1'));
+  assertEquals('+61 1', f.inputDigit('1'));
+  assertEquals('+61 12', f.inputDigit('2'));
+  assertEquals('+61 123', f.inputDigit('3'));
+  assertEquals('+61 1234', f.inputDigit('4'));
+  assertEquals('+61 1234 5', f.inputDigit('5'));
+  assertEquals('+61 1234 56', f.inputDigit('6'));
+  assertEquals('+61 1234 567', f.inputDigit('7'));
+  assertEquals('+61 1234 567 8', f.inputDigit('8'));
+  assertEquals('+61 1234 567 89', f.inputDigit('9'));
+  assertEquals('+61 1234 567 890', f.inputDigit('0'));
+
+  // 212345678 - For leading digit 2, the national prefix formatting rule puts
+  // the national prefix before the first group.
+  f.clear();
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('02', f.inputDigit('2'));
+  assertEquals('021', f.inputDigit('1'));
+  assertEquals('02 12', f.inputDigit('2'));
+  assertEquals('02 123', f.inputDigit('3'));
+  assertEquals('02 1234', f.inputDigit('4'));
+  assertEquals('02 1234 5', f.inputDigit('5'));
+  assertEquals('02 1234 56', f.inputDigit('6'));
+  assertEquals('02 1234 567', f.inputDigit('7'));
+  assertEquals('02 1234 5678', f.inputDigit('8'));
+
+  // 212345678 - Test the same number, but without the leading 0.
+  f.clear();
+  assertEquals('2', f.inputDigit('2'));
+  assertEquals('21', f.inputDigit('1'));
+  assertEquals('212', f.inputDigit('2'));
+  assertEquals('2123', f.inputDigit('3'));
+  assertEquals('21234', f.inputDigit('4'));
+  assertEquals('212345', f.inputDigit('5'));
+  assertEquals('2123456', f.inputDigit('6'));
+  assertEquals('21234567', f.inputDigit('7'));
+  assertEquals('212345678', f.inputDigit('8'));
+
+  // +61 2 1234 5678 - Test the same number, but with the country code.
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+6', f.inputDigit('6'));
+  assertEquals('+61 ', f.inputDigit('1'));
+  assertEquals('+61 2', f.inputDigit('2'));
+  assertEquals('+61 21', f.inputDigit('1'));
+  assertEquals('+61 2 12', f.inputDigit('2'));
+  assertEquals('+61 2 123', f.inputDigit('3'));
+  assertEquals('+61 2 1234', f.inputDigit('4'));
+  assertEquals('+61 2 1234 5', f.inputDigit('5'));
+  assertEquals('+61 2 1234 56', f.inputDigit('6'));
+  assertEquals('+61 2 1234 567', f.inputDigit('7'));
+  assertEquals('+61 2 1234 5678', f.inputDigit('8'));
+}
+
+function testAYTFShortNumberFormattingFix_KR() {
+  // For Korea, the national prefix is not optional when formatting, and the
+  // national prefix formatting rule doesn't consist of only the first group.
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.KR);
+
+  // 111
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('11', f.inputDigit('1'));
+  assertEquals('111', f.inputDigit('1'));
+
+  // 114
+  f.clear();
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('11', f.inputDigit('1'));
+  assertEquals('114', f.inputDigit('4'));
+
+  // 13121234 - Test a mobile number without the national prefix. Even though it
+  // is not an emergency number, it should be formatted as a block.
+  f.clear();
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('13', f.inputDigit('3'));
+  assertEquals('131', f.inputDigit('1'));
+  assertEquals('1312', f.inputDigit('2'));
+  assertEquals('13121', f.inputDigit('1'));
+  assertEquals('131212', f.inputDigit('2'));
+  assertEquals('1312123', f.inputDigit('3'));
+  assertEquals('13121234', f.inputDigit('4'));
+
+  // +82 131-2-1234 - Test the same number, but with the country code.
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+8', f.inputDigit('8'));
+  assertEquals('+82 ', f.inputDigit('2'));
+  assertEquals('+82 1', f.inputDigit('1'));
+  assertEquals('+82 13', f.inputDigit('3'));
+  assertEquals('+82 131', f.inputDigit('1'));
+  assertEquals('+82 131-2', f.inputDigit('2'));
+  assertEquals('+82 131-2-1', f.inputDigit('1'));
+  assertEquals('+82 131-2-12', f.inputDigit('2'));
+  assertEquals('+82 131-2-123', f.inputDigit('3'));
+  assertEquals('+82 131-2-1234', f.inputDigit('4'));
+}
+
+function testAYTFShortNumberFormattingFix_MX() {
+  // For Mexico, the national prefix is optional when formatting.
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.MX);
+
+  // 911
+  assertEquals('9', f.inputDigit('9'));
+  assertEquals('91', f.inputDigit('1'));
+  assertEquals('911', f.inputDigit('1'));
+
+  // 800 123 4567 - Test a toll-free number, which should have a formatting rule
+  // applied to it even though it doesn't begin with the national prefix.
+  f.clear();
+  assertEquals('8', f.inputDigit('8'));
+  assertEquals('80', f.inputDigit('0'));
+  assertEquals('800', f.inputDigit('0'));
+  assertEquals('800 1', f.inputDigit('1'));
+  assertEquals('800 12', f.inputDigit('2'));
+  assertEquals('800 123', f.inputDigit('3'));
+  assertEquals('800 123 4', f.inputDigit('4'));
+  assertEquals('800 123 45', f.inputDigit('5'));
+  assertEquals('800 123 456', f.inputDigit('6'));
+  assertEquals('800 123 4567', f.inputDigit('7'));
+
+  // +52 800 123 4567 - Test the same number, but with the country code.
+  f.clear();
+  assertEquals('+', f.inputDigit('+'));
+  assertEquals('+5', f.inputDigit('5'));
+  assertEquals('+52 ', f.inputDigit('2'));
+  assertEquals('+52 8', f.inputDigit('8'));
+  assertEquals('+52 80', f.inputDigit('0'));
+  assertEquals('+52 800', f.inputDigit('0'));
+  assertEquals('+52 800 1', f.inputDigit('1'));
+  assertEquals('+52 800 12', f.inputDigit('2'));
+  assertEquals('+52 800 123', f.inputDigit('3'));
+  assertEquals('+52 800 123 4', f.inputDigit('4'));
+  assertEquals('+52 800 123 45', f.inputDigit('5'));
+  assertEquals('+52 800 123 456', f.inputDigit('6'));
+  assertEquals('+52 800 123 4567', f.inputDigit('7'));
+}
+
+function testAYTFShortNumberFormattingFix_US() {
+  // For the US, an initial 1 is treated specially.
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.US);
+
+  // 101 - Test that the initial 1 is not treated as a national prefix.
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('10', f.inputDigit('0'));
+  assertEquals('101', f.inputDigit('1'));
+
+  // 112 - Test that the initial 1 is not treated as a national prefix.
+  f.clear();
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('11', f.inputDigit('1'));
+  assertEquals('112', f.inputDigit('2'));
+
+  // 122 - Test that the initial 1 is treated as a national prefix.
+  f.clear();
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('12', f.inputDigit('2'));
+  assertEquals('1 22', f.inputDigit('2'));
 }

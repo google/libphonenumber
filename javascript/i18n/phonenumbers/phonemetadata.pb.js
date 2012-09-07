@@ -23,9 +23,9 @@
  */
 
 goog.provide('i18n.phonenumbers.NumberFormat');
-goog.provide('i18n.phonenumbers.PhoneNumberDesc');
 goog.provide('i18n.phonenumbers.PhoneMetadata');
 goog.provide('i18n.phonenumbers.PhoneMetadataCollection');
+goog.provide('i18n.phonenumbers.PhoneNumberDesc');
 
 goog.require('goog.proto2.Message');
 

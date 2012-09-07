@@ -38,6 +38,7 @@ i18n.phonenumbers.RegionCode = {
   AU: 'AU',
   BR: 'BR',
   BS: 'BS',
+  BY: 'BY',
   CA: 'CA',
   CN: 'CN',
   CS: 'CS',
