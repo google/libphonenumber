@@ -198,10 +198,11 @@ void AsYouTypeFormatter::GetAvailableFormats(
        current_metadata_->intl_number_format().size() > 0)
           ? current_metadata_->intl_number_format()
           : current_metadata_->number_format();
-
+  bool national_prefix_used_by_country =
+      current_metadata_->has_national_prefix();
   for (RepeatedPtrField<NumberFormat>::const_iterator it = format_list.begin();
        it != format_list.end(); ++it) {
-    if (is_complete_number_ ||
+    if (!national_prefix_used_by_country || is_complete_number_ ||
         it->national_prefix_optional_when_formatting() ||
         phone_util_.FormattingRuleHasFirstGroupOnly(
             it->national_prefix_formatting_rule())) {

@@ -177,8 +177,10 @@ public class AsYouTypeFormatter {
         (isCompleteNumber && currentMetaData.intlNumberFormatSize() > 0)
         ? currentMetaData.intlNumberFormats()
         : currentMetaData.numberFormats();
+    boolean nationalPrefixIsUsedByCountry = currentMetaData.hasNationalPrefix();
     for (NumberFormat format : formatList) {
-      if (isCompleteNumber || format.isNationalPrefixOptionalWhenFormatting() ||
+      if (!nationalPrefixIsUsedByCountry || isCompleteNumber ||
+          format.isNationalPrefixOptionalWhenFormatting() ||
           phoneUtil.formattingRuleHasFirstGroupOnly(format.getNationalPrefixFormattingRule())) {
         if (isFormatEligible(format.getFormat())) {
           possibleFormats.add(format);
@@ -520,7 +522,7 @@ public class AsYouTypeFormatter {
       isCompleteNumber = true;
     } else if (currentMetaData.hasNationalPrefixForParsing()) {
       Pattern nationalPrefixForParsing =
-        regexCache.getPatternForRegex(currentMetaData.getNationalPrefixForParsing());
+          regexCache.getPatternForRegex(currentMetaData.getNationalPrefixForParsing());
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       if (m.lookingAt()) {
         // When the national prefix is detected, we use international formatting rules instead of

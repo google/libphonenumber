@@ -1126,6 +1126,17 @@ TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_MX) {
   EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
 }
 
+TEST_F(AsYouTypeFormatterTest, AYTF_NoNationalPrefix) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::IT()));
+
+  EXPECT_EQ("3", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("33", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("333", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("333 3", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("333 33", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("333 333", formatter_->InputDigit('3', &result_));
+}
+
 TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_US) {
   // For the US, an initial 1 is treated specially.
   formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
