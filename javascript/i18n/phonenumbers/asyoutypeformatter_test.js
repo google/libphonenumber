@@ -1105,6 +1105,17 @@ function testAYTFShortNumberFormattingFix_MX() {
   assertEquals('+52 800 123 4567', f.inputDigit('7'));
 }
 
+function testAYTFNoNationalPrefix() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.IT);
+  assertEquals('3', f.inputDigit('3'));
+  assertEquals('33', f.inputDigit('3'));
+  assertEquals('333', f.inputDigit('3'));
+  assertEquals('333 3', f.inputDigit('3'));
+  assertEquals('333 33', f.inputDigit('3'));
+  assertEquals('333 333', f.inputDigit('3'));
+}
+
 function testAYTFShortNumberFormattingFix_US() {
   // For the US, an initial 1 is treated specially.
   /** @type {i18n.phonenumbers.AsYouTypeFormatter} */

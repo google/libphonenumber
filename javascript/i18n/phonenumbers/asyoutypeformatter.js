@@ -358,7 +358,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
   for (var i = 0; i < formatListLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
     var format = formatList[i];
-    if (this.isCompleteNumber_ ||
+    /** @type {boolean} */
+    var nationalPrefixIsUsedByCountry =
+        this.currentMetaData_.hasNationalPrefix();
+    if (!nationalPrefixIsUsedByCountry || this.isCompleteNumber_ ||
         format.getNationalPrefixOptionalWhenFormatting() ||
         this.phoneUtil_.formattingRuleHasFirstGroupOnly(
             format.getNationalPrefixFormattingRule())) {
