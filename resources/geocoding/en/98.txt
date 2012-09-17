@@ -153,7 +153,7 @@
 98661|Khorramabad
 98662|Brojerd
 98663|Khoramabad suburbs
-98664|Aligodarz
+98664|Aligudarz
 98665|Borujerd suburbs
 98666|Aligudarz suburbs
 98671|Behbahan

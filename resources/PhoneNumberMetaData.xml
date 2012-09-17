@@ -22,7 +22,7 @@
            official short names in English according to ISO 3166-1.
 
      For more information on what each element represents, see
-     java/com/google/i18n/phonenumbers/phonemetadata.proto
+     resources/phonemetadata.proto
 
      Note that if you want to add validation metadata, the generalDesc nationalNumberPattern and
      possibleNumberPattern must be provided. If this is missing, then the country will be
@@ -6289,10 +6289,7 @@
          </numberFormat>
          <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
            <leadingDigits>
-             1(?:
-               [012]|
-               5[0-2]
-             )|
+             1[012]|
              [89]00
            </leadingDigits>
            <format>$1 $2 $3</format>
@@ -6364,11 +6361,12 @@
       </fixedLine>
       <mobile>
         <!-- Adding the extra prefixes 102 and 121 from user reports that Vodafone and Mobinil have
-             started allocating numbers beginning with these prefixes. -->
+             started allocating numbers beginning with these prefixes, along with 115 from numbers
+             found online. -->
         <nationalNumberPattern>
           1(?:
             0[01269]|
-            1[124]|
+            1[1245]|
             2[0-278]
           )\d{7}
         </nationalNumberPattern>
@@ -14175,13 +14173,13 @@
         <exampleNumber>21212862</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 2028, 2058, 2078 and 2097 from numbers found online. -->
+        <!-- Adding 202[89], 205[89], 207[68] and 209[57] from numbers found online. -->
         <nationalNumberPattern>
           20(?:
-            2[238]|
-            5[4-68]|
-            7[78]|
-            9[7-9]
+            2[2389]|
+            5[4-689]|
+            7[6-8]|
+            9[57-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -14199,8 +14197,7 @@
     <!-- Lebanon -->
     <!-- http://www.itu.int/oth/T0202000077/en -->
     <!-- http://en.wikipedia.org/wiki/%2B961 -->
-    <territory id="LB" countryCode="961" internationalPrefix="00"
-               nationalPrefix="0">
+    <territory id="LB" countryCode="961" internationalPrefix="00" nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
@@ -14208,7 +14205,8 @@
             7(?:
               [2-579]|
               62|
-              8[0-7])|
+              8[0-7]
+            )|
             [89][2-9]
             </leadingDigits>
           <format>$1 $2 $3</format>
@@ -14219,7 +14217,9 @@
             7(?:
               [01]|
               6[013-9]|
-              88)
+              88|
+              91
+            )
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -14235,7 +14235,8 @@
             7(?:
               [2-579]\d|
               62|
-              8[0-7])|
+              8[0-7]
+            )|
             [89][2-9]\d
           )\d{4}
         </nationalNumberPattern>
@@ -14243,13 +14244,16 @@
         <exampleNumber>1123456</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- 791\d{5} is being used for mobile, according to numbers found online, despite
+             overlapping partially with shorter fixed-line numbers beginning with 79. -->
         <nationalNumberPattern>
           (?:
             3\d|
             7(?:
               [01]\d|
               6[013-9]|
-              88
+              88|
+              91
             )
           )\d{5}
         </nationalNumberPattern>
@@ -14388,7 +14392,7 @@
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})">
           <leadingDigits>
             [23]|
-            7[3-9]|
+            7[3-57-9]|
             87
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -14461,7 +14465,7 @@
             36|
             4[25]|
             56|
-            [6-9]\d
+            [7-9]\d
           )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
@@ -19629,8 +19633,7 @@
         <nationalNumberPattern>
           9(?:
             61|
-            7[1-6]|
-            8[1-5]|
+            [78][1-6]|
             9[1-5]
           )\d{6}
         </nationalNumberPattern>
@@ -24997,7 +25000,7 @@
 
     <!-- Universal International Toll Free Number -->
     <!-- http://www.itu.int/en/ITU-T/inr/unum/Pages/uifn.aspx -->
-    <territory id="001" countryCode="800">
+    <territory id="001" countryCode="800" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -25023,7 +25026,7 @@
 
     <!-- Universal International Shared Cost Number -->
     <!-- http://www.itu.int/rec/T-REC-E.169-200205-I/en -->
-    <territory id="001" countryCode="808">
+    <territory id="001" countryCode="808" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -25269,7 +25272,7 @@
     <!-- Numbers here are classified as UAN, as they are non-geographical and universally
          accessible. In addition, the end-user tariff to reach these numbers is lower or similar to
          the tariff of a national call. -->
-    <territory id="001" countryCode="888">
+    <territory id="001" countryCode="888" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{5})">
           <format>$1 $2 $3</format>
@@ -25295,7 +25298,7 @@
 
     <!-- Universal International Premium Rate Number -->
     <!-- http://www.itu.int/rec/T-REC-E.169-200205-I/en -->
-    <territory id="001" countryCode="979">
+    <territory id="001" countryCode="979" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d)(\d{4})(\d{4})">
           <format>$1 $2 $3</format>

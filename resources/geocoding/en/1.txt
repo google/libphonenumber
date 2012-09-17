@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistics data (2012-03-11) with later refinements.
+# Internal statistics data (2012-08-19) with later refinements.
 
 1201|New Jersey
 1201200|Jersey City, NJ
@@ -28,6 +28,7 @@
 1201339|Bayonne, NJ
 1201342|Hackensack, NJ
 1201357|Teaneck, NJ
+1201360|Jersey City, NJ
 1201395|Jersey City, NJ
 1201413|Jersey City, NJ
 1201432|Jersey City, NJ
@@ -37,7 +38,9 @@
 1201436|Bayonne, NJ
 1201437|Bayonne, NJ
 1201451|Jersey City, NJ
+1201457|Hackensack, NJ
 1201487|Hackensack, NJ
+1201488|Hackensack, NJ
 1201498|Hackensack, NJ
 1201512|Mahwah, NJ
 1201529|Mahwah, NJ
@@ -150,6 +153,7 @@
 1203426|Newtown, CT
 1203431|Ridgefield, CT
 1203432|New Haven, CT
+1203437|Waterbury, CT
 1203438|Ridgefield, CT
 1203439|Cheshire, CT
 1203440|Meriden, CT
@@ -204,6 +208,7 @@
 1203679|Wallingford Center, CT
 1203686|Meriden, CT
 1203688|New Haven, CT
+1203694|Meriden, CT
 1203697|Wallingford Center, CT
 1203699|Cheshire, CT
 1203709|Waterbury, CT
@@ -345,6 +350,7 @@
 1204385|Gladstone, MB
 1204414|Winnipeg, MB
 1204415|Winnipeg, MB
+1204421|Winnipeg, MB
 1204424|La Broquerie, MB
 1204434|Grunthal, MB
 1204444|Oakbank, MB
@@ -543,6 +549,7 @@
 1205622|Oakman, AL
 1205625|Oneonta, AL
 1205631|Gardendale, AL
+1205640|Moody, AL
 1205652|Livingston, AL
 1205665|Montevallo, AL
 1205668|Calera, AL
@@ -576,6 +583,7 @@
 1205884|Pell City, AL
 1205918|Birmingham, AL
 1205921|Hamilton, AL
+1205924|Carbon Hill, AL
 1205925|Birmingham, AL
 1205930|Birmingham, AL
 1205932|Fayette, AL
@@ -667,6 +675,7 @@
 1206547|Seattle, WA
 1206548|Seattle, WA
 1206553|Seattle, WA
+1206567|Vashon, WA
 1206568|Seattle, WA
 1206570|Seattle, WA
 1206583|Seattle, WA
@@ -795,6 +804,7 @@
 1207676|North Berwick, ME
 1207693|Naples, ME
 1207695|Greenville, ME
+1207696|Madison, ME
 1207698|Berwick, ME
 1207723|Millinocket, ME
 1207728|Madawaska, ME
@@ -1045,6 +1055,7 @@
 1208895|Meridian, ID
 1208897|Downey, ID
 1208922|Kuna, ID
+1208926|Kooskia, ID
 1208934|Gooding, ID
 1208935|Kamiah, ID
 1208937|Nezperce, ID
@@ -1207,6 +1218,7 @@
 1213|Los Angeles, CA
 1214|Texas
 1214200|Dallas, TX
+1214210|Dallas, TX
 1214219|Dallas, TX
 1214220|Dallas, TX
 1214221|Dallas, TX
@@ -1268,6 +1280,7 @@
 1214467|Dallas, TX
 1214468|Dallas, TX
 1214488|Lewisville, TX
+1214495|Allen, TX
 1214503|Dallas, TX
 1214515|Dallas, TX
 1214520|Dallas, TX
@@ -1327,6 +1340,7 @@
 1214749|Dallas, TX
 1214750|Dallas, TX
 1214752|Dallas, TX
+1214754|Dallas, TX
 1214758|Dallas, TX
 1214760|Dallas, TX
 1214761|Dallas, TX
@@ -1363,6 +1377,7 @@
 1214942|Dallas, TX
 1214943|Dallas, TX
 1214946|Dallas, TX
+1214947|Dallas, TX
 1214948|Dallas, TX
 1214951|Dallas, TX
 1214953|Dallas, TX
@@ -1558,10 +1573,12 @@
 1215765|Philadelphia, PA
 1215769|Philadelphia, PA
 1215772|Philadelphia, PA
+1215781|Bristol, PA
 1215787|Philadelphia, PA
 1215788|Bristol, PA
 1215790|Philadelphia, PA
 1215807|Philadelphia, PA
+1215821|Philadelphia, PA
 1215823|Philadelphia, PA
 1215824|Philadelphia, PA
 1215827|Philadelphia, PA
@@ -1606,6 +1623,7 @@
 1215963|Philadelphia, PA
 1215969|Philadelphia, PA
 1215972|Philadelphia, PA
+1215977|Philadelphia, PA
 1215978|Philadelphia, PA
 1215979|Philadelphia, PA
 1215981|Philadelphia, PA
@@ -1656,6 +1674,7 @@
 1216479|Cleveland, OH
 1216481|Cleveland, OH
 1216486|Cleveland, OH
+1216515|Cleveland, OH
 1216522|Cleveland, OH
 1216523|Cleveland, OH
 1216531|Cleveland, OH
@@ -1714,6 +1733,7 @@
 1217224|Quincy, IL
 1217226|Assumption, IL
 1217228|Quincy, IL
+1217229|Raymond, IL
 1217233|Decatur, IL
 1217234|Mattoon, IL
 1217235|Mattoon, IL
@@ -1873,6 +1893,7 @@
 1217965|Virden, IL
 1217999|Mount Olive, IL
 1218|Minnesota
+1218226|Silver Bay, MN
 1218229|Aurora, MN
 1218233|Moorhead, MN
 1218236|Moorhead, MN
@@ -1966,6 +1987,7 @@
 1218743|Bigfork, MN
 1218744|Eveleth, MN
 1218745|Warren, MN
+1218746|Pillager, MN
 1218749|Virginia, MN
 1218751|Bemidji, MN
 1218753|Tower, MN
@@ -2038,6 +2060,7 @@
 1219662|Crown Point, IN
 1219663|Crown Point, IN
 1219696|Lowell, IN
+1219733|Wanatah, IN
 1219736|Merrillville, IN
 1219738|Merrillville, IN
 1219756|Merrillville, IN
@@ -2080,6 +2103,7 @@
 1219956|Wheatfield, IN
 1219977|Gary, IN
 1219987|De Motte, IN
+1219989|Hammond, IN
 1219992|Lake Village, IN
 1219996|Hebron, IN
 1224|Illinois
@@ -2382,6 +2406,7 @@
 1231853|Ravenna, MI
 1231854|Hesperia, MI
 1231864|Bear Lake, MI
+1231865|Fruitport Township, MI
 1231869|Pentwater, MI
 1231876|Cadillac, MI
 1231879|Fife Lake, MI
@@ -2405,6 +2430,7 @@
 1239226|Fort Myers, FL
 1239234|Naples, FL
 1239242|Cape Coral, FL
+1239252|Naples, FL
 1239254|Naples, FL
 1239261|Naples, FL
 1239262|Naples, FL
@@ -2417,6 +2443,7 @@
 1239278|Fort Myers, FL
 1239303|Lehigh Acres, FL
 1239304|Naples, FL
+1239313|Fort Myers, FL
 1239331|Naples, FL
 1239332|Fort Myers, FL
 1239334|Fort Myers, FL
@@ -2508,6 +2535,7 @@
 1240379|Frederick, MD
 1240420|Hagerstown, MD
 1240566|Frederick, MD
+1240632|Gaithersburg, MD
 1240826|Rockville, MD
 1240857|Joint Base Andrews Naval Air Facility, MD
 1240864|Rockville, MD
@@ -2574,6 +2602,7 @@
 1248673|Waterford Township, MI
 1248674|Waterford Township, MI
 1248680|Troy, MI
+1248685|Milford, MI
 1248689|Troy, MI
 1248693|Lake Orion, MI
 1248698|White Lake, MI
@@ -2709,6 +2738,7 @@
 1250549|Vernon, BC
 1250554|Kamloops, BC
 1250558|Vernon, BC
+1250559|Queen Charlotte, BC
 1250561|Prince George, BC
 1250562|Prince George, BC
 1250563|Prince George, BC
@@ -2821,6 +2851,7 @@
 1250877|Smithers, BC
 1250881|Victoria, BC
 1250884|Victoria, BC
+1250888|Victoria, BC
 1250897|Courtenay, BC
 1250920|Victoria, BC
 1250923|Campbell River, BC
@@ -2949,6 +2980,7 @@
 1252265|Wilson, NC
 1252291|Wilson, NC
 1252293|Wilson, NC
+1252308|Roanoke Rapids, NC
 1252317|Greenville, NC
 1252321|Greenville, NC
 1252328|Greenville, NC
@@ -3003,6 +3035,7 @@
 1252551|Greenville, NC
 1252559|Kinston, NC
 1252566|La Grange, NC
+1252583|Halifax, NC
 1252633|New Bern, NC
 1252634|New Bern, NC
 1252635|New Bern, NC
@@ -3318,6 +3351,7 @@
 1256574|Scottsboro, AL
 1256582|Guntersville, AL
 1256584|Decatur, AL
+1256585|Huntsville, AL
 1256586|Arab, AL
 1256593|Boaz, AL
 1256634|Mentone, AL
@@ -3371,6 +3405,7 @@
 1256922|Huntsville, AL
 1256927|Centre, AL
 1256931|Arab, AL
+1256971|Huntsville, AL
 1256974|Moulton, AL
 1256997|Fort Payne, AL
 1260|Indiana
@@ -3449,10 +3484,11 @@
 1260745|Fort Wayne, IN
 1260747|Fort Wayne, IN
 1260755|Fort Wayne, IN
+1260758|Markle, IN
 1260768|Shipshewana, IN
 1260824|Bluffton, IN
 1260829|Orland, IN
-1260837|Waterloo, IN, IN
+1260837|Waterloo, IN
 1260868|Butler, IN
 1260894|Ligonier, IN
 1260897|Avilla, IN
@@ -3483,6 +3519,7 @@
 1262472|Whitewater, WI
 1262473|Whitewater, WI
 1262521|Waukesha, WI
+1262522|Waukesha, WI
 1262524|Waukesha, WI
 1262537|Burlington, WI
 1262539|Burlington, WI
@@ -3728,6 +3765,7 @@
 1270653|Clinton, KY
 1270659|Glasgow, KY
 1270664|Clay, KY
+1270665|La Center, KY
 1270667|Providence, KY
 1270678|Glasgow, KY
 1270683|Owensboro, KY
@@ -3741,6 +3779,7 @@
 1270692|Lebanon, KY
 1270699|Lebanon, KY
 1270706|Elizabethtown, KY
+1270707|Hopkinsville, KY
 1270725|Russellville, KY
 1270726|Russellville, KY
 1270735|Elizabethtown, KY
@@ -3818,6 +3857,7 @@
 1276496|Saltville, VA
 1276523|Big Stone Gap, VA
 1276546|Pennington Gap, VA
+1276565|Appalachia, VA
 1276591|Bristol, VA
 1276619|Abingdon, VA
 1276623|Abingdon, VA
@@ -3847,6 +3887,8 @@
 1276782|Marion, VA
 1276783|Marion, VA
 1276796|Pound, VA
+1276865|Haysi, VA
+1276873|Honaker, VA
 1276889|Lebanon, VA
 1276926|Clintwood, VA
 1276935|Grundy, VA
@@ -3854,6 +3896,7 @@
 1281|Texas
 1281204|Houston, TX
 1281209|Houston, TX
+1281213|Cypress, TX
 1281219|Houston, TX
 1281227|Houston, TX
 1281242|Sugar Land, TX
@@ -3879,6 +3922,7 @@
 1281350|Spring, TX
 1281351|Tomball, TX
 1281353|Spring, TX
+1281354|Porter, TX
 1281355|Spring, TX
 1281356|Magnolia, TX
 1281357|Tomball, TX
@@ -3992,6 +4036,7 @@
 1281856|Houston, TX
 1281858|Houston, TX
 1281859|Houston, TX
+1281861|Houston, TX
 1281866|Houston, TX
 1281867|La Porte, TX
 1281870|Houston, TX
@@ -4025,6 +4070,7 @@
 1281987|Houston, TX
 1281988|Houston, TX
 1281991|Pasadena, TX
+1281996|Friendswood, TX
 1281997|Pearland, TX
 1281998|Pasadena, TX
 1281999|Houston, TX
@@ -4059,6 +4105,7 @@
 1301315|Rockville, MD
 1301334|Oakland, MD
 1301342|Patuxent River, MD
+1301352|Bowie, MD
 1301360|Frederick, MD
 1301365|Bethesda, MD
 1301374|Waldorf, MD
@@ -4074,6 +4121,8 @@
 1301475|Leonardtown, MD
 1301495|Silver Spring, MD
 1301496|Bethesda, MD
+1301528|Germantown, MD
+1301530|Bethesda, MD
 1301533|Oakland, MD
 1301545|Rockville, MD
 1301559|Hyattsville, MD
@@ -4164,6 +4213,7 @@
 1301978|Gaithersburg, MD
 1301981|Joint Base Andrews Naval Air Facility, MD
 1301983|Potomac, MD
+1301984|Rockville, MD
 1301997|Leonardtown, MD
 1302|Delaware
 1302224|Newark, DE
@@ -4213,6 +4263,7 @@
 1302575|Wilmington, DE
 1302576|Wilmington, DE
 1302622|Wilmington, DE
+1302623|Newark, DE
 1302628|Seaford, DE
 1302629|Seaford, DE
 1302651|Wilmington, DE
@@ -4335,6 +4386,7 @@
 1303571|Denver, CO
 1303572|Denver, CO
 1303573|Denver, CO
+1303574|Denver, CO
 1303576|Denver, CO
 1303592|Denver, CO
 1303595|Denver, CO
@@ -4381,6 +4433,7 @@
 1303776|Longmont, CO
 1303777|Denver, CO
 1303778|Denver, CO
+1303780|Denver, CO
 1303786|Boulder, CO
 1303805|Parker, CO
 1303820|Denver, CO
@@ -4403,7 +4456,9 @@
 1303871|Denver, CO
 1303892|Denver, CO
 1303893|Denver, CO
+1303904|Littleton, CO
 1303938|Boulder, CO
+1303939|Boulder, CO
 1303948|Littleton, CO
 1303964|Denver, CO
 1303972|Littleton, CO
@@ -4562,6 +4617,7 @@
 1304845|Moundsville, WV
 1304847|Webster Springs, WV
 1304848|Bridgeport, WV
+1304856|Capon Bridge, WV
 1304865|Parkersburg, WV
 1304872|Summersville, WV
 1304873|West Union, WV
@@ -4625,6 +4681,7 @@
 1305347|Miami, FL
 1305348|Miami, FL
 1305349|Miami, FL
+1305350|Miami, FL
 1305355|Miami, FL
 1305358|Miami, FL
 1305361|Key Biscayne, FL
@@ -4724,10 +4781,12 @@
 1305824|Hialeah, FL
 1305825|Hialeah, FL
 1305826|Hialeah, FL
+1305827|Hialeah, FL
 1305828|Hialeah, FL
 1305856|Miami, FL
 1305857|Miami, FL
 1305858|Miami, FL
+1305859|Miami, FL
 1305860|Miami, FL
 1305872|Big Pine Key, FL
 1305971|Miami, FL
@@ -4960,6 +5019,7 @@
 1307746|Newcastle, WY
 1307754|Powell, WY
 1307755|Laramie, WY
+1307760|Laramie, WY
 1307765|Greybull, WY
 1307766|Laramie, WY
 1307772|Cheyenne, WY
@@ -5252,6 +5312,7 @@
 1310533|Torrance, CA
 1310545|Manhattan Beach, CA
 1310546|Manhattan Beach, CA
+1310552|Los Angeles, CA
 1310553|Los Angeles, CA
 1310575|Los Angeles, CA
 1310576|Santa Monica, CA
@@ -5286,6 +5347,8 @@
 1310832|San Pedro, CA
 1310860|Beverly Hills, CA
 1310899|Santa Monica, CA
+1310914|Los Angeles, CA
+1310954|Los Angeles, CA
 1310966|Los Angeles, CA
 1310979|Los Angeles, CA
 1310998|Santa Monica, CA
@@ -5303,6 +5366,7 @@
 1313285|Detroit, MI
 1313291|Taylor, MI
 1313295|Taylor, MI
+1313297|Detroit, MI
 1313309|Detroit, MI
 1313331|Detroit, MI
 1313340|Detroit, MI
@@ -5362,6 +5426,7 @@
 1313863|Detroit, MI
 1313864|Detroit, MI
 1313866|Detroit, MI
+1313874|Detroit, MI
 1313892|Detroit, MI
 1313894|Detroit, MI
 1313895|Detroit, MI
@@ -5390,16 +5455,18 @@
 1313983|Detroit, MI
 1313993|Detroit, MI
 1314|Missouri
+1314226|St. Louis, MO
 1314231|St. Louis, MO
 1314241|St. Louis, MO
-1314244|Saint Louis, MO
+1314244|St. Louis, MO
 1314251|St. Louis, MO
 1314256|St. Louis, MO
 1314261|St. Louis, MO
-1314268|Saint Louis, MO
+1314268|St. Louis, MO
+1314286|St. Louis, MO
 1314289|St. Louis, MO
 1314290|St. Louis, MO
-1314340|Saint Louis, MO
+1314340|St. Louis, MO
 1314345|St. Louis, MO
 1314351|St. Louis, MO
 1314352|St. Louis, MO
@@ -5418,30 +5485,30 @@
 1314421|St. Louis, MO
 1314432|St. Louis, MO
 1314436|St. Louis, MO
-1314444|Saint Louis, MO
-1314454|Saint Louis, MO
-1314467|Saint Louis, MO
-1314480|Saint Louis, MO
+1314444|St. Louis, MO
+1314454|St. Louis, MO
+1314467|St. Louis, MO
+1314480|St. Louis, MO
 1314481|St. Louis, MO
 1314487|St. Louis, MO
-1314516|Saint Louis, MO
+1314516|St. Louis, MO
 1314525|St. Louis, MO
 1314531|St. Louis, MO
 1314533|St. Louis, MO
 1314534|St. Louis, MO
 1314535|St. Louis, MO
-1314539|Saint Louis, MO
+1314539|St. Louis, MO
 1314544|St. Louis, MO
 1314552|St. Louis, MO
 1314563|St. Louis, MO
 1314577|St. Louis, MO
 1314588|St. Louis, MO
-1314601|Saint Louis, MO
+1314601|St. Louis, MO
 1314615|St. Louis, MO
 1314621|St. Louis, MO
-1314622|Saint Louis, MO
+1314622|St. Louis, MO
 1314631|St. Louis, MO
-1314633|Saint Louis, MO
+1314633|St. Louis, MO
 1314638|St. Louis, MO
 1314644|St. Louis, MO
 1314645|St. Louis, MO
@@ -5450,7 +5517,7 @@
 1314652|St. Louis, MO
 1314653|St. Louis, MO
 1314664|St. Louis, MO
-1314679|Saint Louis, MO
+1314679|St. Louis, MO
 1314692|St. Louis, MO
 1314721|St. Louis, MO
 1314725|St. Louis, MO
@@ -5464,7 +5531,8 @@
 1314773|St. Louis, MO
 1314776|St. Louis, MO
 1314781|St. Louis, MO
-1314802|Saint Louis, MO
+1314802|St. Louis, MO
+1314814|St. Louis, MO
 1314830|Florissant, MO
 1314831|Florissant, MO
 1314832|St. Louis, MO
@@ -5473,24 +5541,24 @@
 1314839|Florissant, MO
 1314845|St. Louis, MO
 1314846|St. Louis, MO
-1314854|Saint Louis, MO
+1314854|St. Louis, MO
 1314863|St. Louis, MO
 1314865|St. Louis, MO
 1314867|St. Louis, MO
 1314868|St. Louis, MO
 1314869|St. Louis, MO
 1314877|St. Louis, MO
-1314886|Saint Louis, MO
-1314889|Saint Louis, MO
+1314886|St. Louis, MO
+1314889|St. Louis, MO
 1314892|St. Louis, MO
 1314894|St. Louis, MO
 1314895|Hazelwood, MO
 1314921|Florissant, MO
 1314932|St. Louis, MO
-1314935|Saint Louis, MO
+1314935|St. Louis, MO
 1314972|Florissant, MO
 1314977|St. Louis, MO
-1314983|Saint Louis, MO
+1314983|St. Louis, MO
 1314989|St. Louis, MO
 1314991|St. Louis, MO
 1314993|St. Louis, MO
@@ -5646,6 +5714,7 @@
 1316265|Wichita, KS
 1316266|Wichita, KS
 1316267|Wichita, KS
+1316268|Wichita, KS
 1316269|Wichita, KS
 1316282|Newton, KS
 1316283|Newton, KS
@@ -5664,6 +5733,7 @@
 1316440|Wichita, KS
 1316448|Wichita, KS
 1316462|Wichita, KS
+1316529|Wichita, KS
 1316540|Cheney, KS
 1316542|Cheney, KS
 1316558|Wichita, KS
@@ -5813,6 +5883,7 @@
 1317549|Indianapolis, IN
 1317554|Indianapolis, IN
 1317558|Indianapolis, IN
+1317567|Indianapolis, IN
 1317583|Indianapolis, IN
 1317588|Indianapolis, IN
 1317591|Indianapolis, IN
@@ -5835,6 +5906,7 @@
 1317687|Indianapolis, IN
 1317688|Carmel, IN
 1317692|Indianapolis, IN
+1317718|Danville, IN
 1317722|Indianapolis, IN
 1317726|Indianapolis, IN
 1317736|Franklin, IN
@@ -5886,6 +5958,7 @@
 1317916|Indianapolis, IN
 1317917|Indianapolis, IN
 1317920|Indianapolis, IN
+1317921|Indianapolis, IN
 1317923|Indianapolis, IN
 1317924|Indianapolis, IN
 1317925|Indianapolis, IN
@@ -6010,6 +6083,7 @@
 1318757|Ferriday, LA
 1318765|Pollock, LA
 1318766|St. Joseph, LA
+1318767|Alexandria, LA
 1318769|Alexandria, LA
 1318777|Dubach, LA
 1318795|Shreveport, LA
@@ -6258,7 +6332,7 @@
 1321453|Merritt Island, FL
 1321454|Merritt Island, FL
 1321459|Merritt Island, FL
-1321494|Patrick Air Force Base, FL
+1321494|Patrick AFB, FL
 1321751|Melbourne, FL
 1321752|Melbourne, FL
 1321757|Melbourne, FL
@@ -6598,6 +6672,7 @@
 1330679|Salineville, OH
 1330682|Orrville, OH
 1330683|Orrville, OH
+1330684|Orrville, OH
 1330698|Apple Creek, OH
 1330699|Uniontown, OH
 1330702|Canfield, OH
@@ -6668,6 +6743,7 @@
 1331|Illinois
 1334|Alabama
 1334206|Montgomery, AL
+1334209|Auburn, AL
 1334213|Montgomery, AL
 1334215|Montgomery, AL
 1334222|Andalusia, AL
@@ -6718,6 +6794,7 @@
 1334376|Georgiana, AL
 1334382|Greenville, AL
 1334383|Greenville, AL
+1334386|Montgomery, AL
 1334387|Montgomery, AL
 1334393|Enterprise, AL
 1334395|Montgomery, AL
@@ -6925,6 +7002,7 @@
 1336699|East Bend, NC
 1336703|Winston-Salem, NC
 1336712|Clemmons, NC
+1336713|Winston-Salem, NC
 1336714|Winston-Salem, NC
 1336716|Winston-Salem, NC
 1336718|Winston-Salem, NC
@@ -7110,6 +7188,7 @@
 1337991|Lafayette, LA
 1337993|Lafayette, LA
 1339|Massachusetts
+1345949|George Town
 1347|New York
 1347221|Brooklyn, NY
 1347240|Brooklyn, NY
@@ -7151,6 +7230,7 @@
 1352315|Leesburg, FL
 1352323|Leesburg, FL
 1352326|Leesburg, FL
+1352330|Wildwood, FL
 1352331|Gainesville, FL
 1352332|Gainesville, FL
 1352333|Gainesville, FL
@@ -7162,6 +7242,7 @@
 1352343|Tavares, FL
 1352351|Ocala, FL
 1352357|Eustis, FL
+1352360|Leesburg, FL
 1352365|Leesburg, FL
 1352367|Gainesville, FL
 1352368|Ocala, FL
@@ -7188,6 +7269,7 @@
 1352404|Clermont, FL
 1352433|Ocala, FL
 1352435|Leesburg, FL
+1352447|Inglis, FL
 1352466|Micanopy, FL
 1352472|Newberry, FL
 1352473|Keystone Heights, FL
@@ -7242,6 +7324,7 @@
 1352754|Brooksville, FL
 1352759|Astor, FL
 1352787|Leesburg, FL
+1352789|Ocala, FL
 1352794|Crystal River, FL
 1352795|Crystal River, FL
 1352796|Brooksville, FL
@@ -7285,6 +7368,7 @@
 1360341|Clinton, WA
 1360352|Olympia, WA
 1360354|Lynden, WA
+1360357|Olympia, WA
 1360370|Friday Harbor, WA
 1360371|Blaine, WA
 1360373|Bremerton, WA
@@ -7334,6 +7418,7 @@
 1360495|McCleary, WA
 1360496|Morton, WA
 1360514|Vancouver, WA
+1360524|Vancouver, WA
 1360527|Bellingham, WA
 1360537|Aberdeen, WA
 1360546|Vancouver, WA
@@ -7353,6 +7438,7 @@
 1360597|Vancouver, WA
 1360604|Vancouver, WA
 1360629|Stanwood, WA
+1360636|Longview, WA
 1360647|Bellingham, WA
 1360650|Bellingham, WA
 1360659|Marysville, WA
@@ -7626,6 +7712,7 @@
 1386943|DeLand, FL
 1386947|Daytona Beach, FL
 1386961|Lake City, FL
+1386985|De Leon Springs, FL
 1386986|Palm Coast, FL
 1401|Rhode Island
 1401222|Providence, RI
@@ -7692,6 +7779,7 @@
 1401863|Providence, RI
 1401921|Warwick, RI
 1402|Nebraska
+1402202|Lincoln, NE
 1402219|Lincoln, NE
 1402223|Beatrice, NE
 1402225|Nelson, NE
@@ -7891,6 +7979,7 @@
 1402845|Doniphan, NE
 1402846|Walthill, NE
 1402852|Pawnee City, NE
+1402857|Niobrara, NE
 1402858|Lincoln, NE
 1402861|Omaha, NE
 1402862|Humboldt, NE
@@ -8213,6 +8302,7 @@
 1404351|Atlanta, GA
 1404352|Atlanta, GA
 1404355|Atlanta, GA
+1404364|Atlanta, GA
 1404442|Atlanta, GA
 1404443|Atlanta, GA
 1404464|Atlanta, GA
@@ -8389,6 +8479,7 @@
 1405456|Oklahoma City, OK
 1405471|Edmond, OK
 1405485|Blanchard, OK
+1405488|Oklahoma City, OK
 1405513|Edmond, OK
 1405521|Oklahoma City, OK
 1405522|Oklahoma City, OK
@@ -8569,6 +8660,7 @@
 1406466|Choteau, MT
 1406467|Fairfield, MT
 1406468|Cascade, MT
+1406477|Lame Deer, MT
 1406482|Sidney, MT
 1406485|Circle, MT
 1406487|Scobey, MT
@@ -8620,6 +8712,7 @@
 1406698|Billings, MT
 1406721|Missoula, MT
 1406723|Butte, MT
+1406726|Arlee, MT
 1406727|Great Falls, MT
 1406728|Missoula, MT
 1406741|Hot Springs, MT
@@ -8664,6 +8757,7 @@
 1406873|Cut Bank, MT
 1406874|Miles City, MT
 1406883|Polson, MT
+1406889|Eureka, MT
 1406892|Columbia Falls, MT
 1406896|Billings, MT
 1406922|Bozeman, MT
@@ -8766,6 +8860,7 @@
 1407650|Orlando, FL
 1407658|Orlando, FL
 1407665|Sanford, FL
+1407674|Orlando, FL
 1407704|Orlando, FL
 1407730|Orlando, FL
 1407736|Orlando, FL
@@ -8905,6 +9000,7 @@
 1408629|San Jose, CA
 1408654|Santa Clara, CA
 1408683|San Martin, CA
+1408719|Milpitas, CA
 1408720|Sunnyvale, CA
 1408723|San Jose, CA
 1408727|Santa Clara, CA
@@ -8936,6 +9032,7 @@
 1408847|Gilroy, CA
 1408848|Gilroy, CA
 1408851|Santa Clara, CA
+1408855|Santa Clara, CA
 1408867|Saratoga, CA
 1408885|San Jose, CA
 1408918|San Jose, CA
@@ -9001,6 +9098,7 @@
 1409740|Galveston, TX
 1409741|Galveston, TX
 1409744|Galveston, TX
+1409745|Orange, TX
 1409747|Galveston, TX
 1409751|Lumberton, TX
 1409755|Lumberton, TX
@@ -9010,6 +9108,7 @@
 1409766|Galveston, TX
 1409769|Vidor, TX
 1409770|Galveston, TX
+1409772|Galveston, TX
 1409783|Vidor, TX
 1409786|Vidor, TX
 1409787|Hemphill, TX
@@ -9100,6 +9199,7 @@
 1410342|Baltimore, MD
 1410347|Baltimore, MD
 1410350|Baltimore, MD
+1410352|Bishopville, MD
 1410354|Baltimore, MD
 1410355|Baltimore, MD
 1410358|Baltimore, MD
@@ -9167,6 +9267,7 @@
 1410581|Owings Mills, MD
 1410584|Cockeysville, MD
 1410585|Baltimore, MD
+1410601|Baltimore, MD
 1410605|Baltimore, MD
 1410614|Baltimore, MD
 1410620|Elkton, MD
@@ -9267,6 +9368,7 @@
 1412231|Pittsburgh, PA
 1412232|Pittsburgh, PA
 1412233|Clairton, PA
+1412235|Pittsburgh, PA
 1412237|Pittsburgh, PA
 1412242|Pittsburgh, PA
 1412244|Pittsburgh, PA
@@ -9488,6 +9590,7 @@
 1414289|Milwaukee, WI
 1414291|Milwaukee, WI
 1414297|Milwaukee, WI
+1414298|Milwaukee, WI
 1414306|West Bend, WI
 1414319|Milwaukee, WI
 1414337|Milwaukee, WI
@@ -9556,6 +9659,7 @@
 1414961|Milwaukee, WI
 1414964|Milwaukee, WI
 1414978|Milwaukee, WI
+1414988|Milwaukee, WI
 1415|California
 1415202|San Francisco, CA
 1415206|San Francisco, CA
@@ -9576,6 +9680,7 @@
 1415263|San Francisco, CA
 1415267|San Francisco, CA
 1415268|San Francisco, CA
+1415273|San Francisco, CA
 1415277|San Francisco, CA
 1415278|San Francisco, CA
 1415281|San Francisco, CA
@@ -9647,6 +9752,7 @@
 1415452|San Francisco, CA
 1415469|San Francisco, CA
 1415472|San Rafael, CA
+1415473|San Rafael, CA
 1415474|San Francisco, CA
 1415476|San Francisco, CA
 1415479|San Rafael, CA
@@ -9697,6 +9803,7 @@
 1415641|San Francisco, CA
 1415642|San Francisco, CA
 1415643|San Francisco, CA
+1415644|San Francisco, CA
 1415647|San Francisco, CA
 1415648|San Francisco, CA
 1415655|San Francisco, CA
@@ -9821,6 +9928,8 @@
 1416323|Toronto, ON
 1416324|Toronto, ON
 1416340|Toronto, ON
+1416348|Toronto, ON
+1416351|Toronto, ON
 1416360|Toronto, ON
 1416361|Toronto, ON
 1416362|Toronto, ON
@@ -9866,6 +9975,7 @@
 1416537|Toronto, ON
 1416538|Toronto, ON
 1416539|Toronto, ON
+1416544|Toronto, ON
 1416585|Toronto, ON
 1416588|Toronto, ON
 1416591|Toronto, ON
@@ -9928,6 +10038,7 @@
 1417|Missouri
 1417206|Joplin, MO
 1417223|Pineville, MO
+1417232|Lockwood, MO
 1417235|Monett, MO
 1417237|Carthage, MO
 1417239|Branson, MO
@@ -9986,6 +10097,7 @@
 1417649|Carl Junction, MO
 1417659|Joplin, MO
 1417667|Nevada, MO
+1417673|Webb City, MO
 1417678|Aurora, MO
 1417679|Gainesville, MO
 1417681|Lamar, MO
@@ -10346,6 +10458,7 @@
 1419539|Toledo, OH
 1419542|Hicksville, OH
 1419547|Clyde, OH
+1419557|Sandusky, OH
 1419562|Bucyrus, OH
 1419578|Toledo, OH
 1419584|Celina, OH
@@ -10405,6 +10518,7 @@
 1419794|Maumee, OH
 1419797|Port Clinton, OH
 1419822|Delta, OH
+1419824|Sylvania, OH
 1419825|Swanton, OH
 1419826|Swanton, OH
 1419832|Grand Rapids, OH
@@ -10560,6 +10674,7 @@
 1423798|Greeneville, TN
 1423821|Chattanooga, TN
 1423825|Chattanooga, TN
+1423843|Hixson, TN
 1423844|Bristol, TN
 1423854|Johnson City, TN
 1423855|Chattanooga, TN
@@ -10590,7 +10705,9 @@
 1424208|Los Angeles, CA
 1424238|Santa Monica, CA
 1425|Washington
+1425204|Renton, WA
 1425207|Renton, WA
+1425212|Everett, WA
 1425226|Renton, WA
 1425227|Renton, WA
 1425228|Renton, WA
@@ -10617,6 +10734,7 @@
 1425413|Maple Valley, WA
 1425430|Renton, WA
 1425432|Maple Valley, WA
+1425438|Everett, WA
 1425452|Bellevue, WA
 1425453|Bellevue, WA
 1425454|Bellevue, WA
@@ -10753,6 +10871,7 @@
 1434582|Lynchburg, VA
 1434634|Emporia, VA
 1434645|Crewe, VA
+1434654|Charlottesville, VA
 1434656|Gretna, VA
 1434676|Kenbridge, VA
 1434685|Danville, VA
@@ -10760,6 +10879,7 @@
 1434736|Keysville, VA
 1434738|Boydton, VA
 1434757|La Crosse, VA
+1434767|Burkeville, VA
 1434773|Danville, VA
 1434791|Danville, VA
 1434792|Danville, VA
@@ -10834,6 +10954,7 @@
 1435678|Blanding, UT
 1435687|Huntington, UT
 1435688|St. George, UT
+1435713|Logan, UT
 1435716|Logan, UT
 1435722|Roosevelt, UT
 1435723|Brigham City, UT
@@ -10975,6 +11096,7 @@
 1450314|Laval, QC
 1450332|Longueuil, QC
 1450346|Saint-Jean-sur-Richelieu, QC
+1450347|Saint-Jean-sur-Richelieu, QC
 1450348|Saint-Jean-sur-Richelieu, QC
 1450349|Saint-Jean-sur-Richelieu, QC
 1450359|Saint-Jean-sur-Richelieu, QC
@@ -11034,6 +11156,7 @@
 1450628|Laval, QC
 1450629|Laval, QC
 1450641|Boucherville, QC
+1450645|Boucherville, QC
 1450646|Longueuil, QC
 1450647|Longueuil, QC
 1450649|Sainte-Julie, QC
@@ -11137,6 +11260,7 @@
 1478289|Swainsboro, GA
 1478293|Warner Robins, GA
 1478296|Dublin, GA
+1478327|Robins AFB, GA
 1478301|Macon, GA
 1478314|Macon, GA
 1478322|Warner Robins, GA
@@ -11284,6 +11408,7 @@
 1479784|Fort Smith, AR
 1479785|Fort Smith, AR
 1479787|Gravette, AR
+1479795|Centerton, AR
 1479824|Lincoln, AR
 1479839|West Fork, AR
 1479846|Prairie Grove, AR
@@ -11291,6 +11416,7 @@
 1479872|Springdale, AR
 1479880|Russellville, AR
 1479890|Russellville, AR
+1479899|Rogers, AR
 1479925|Rogers, AR
 1479927|Springdale, AR
 1479936|Rogers, AR
@@ -11308,6 +11434,7 @@
 1480314|Scottsdale, AZ
 1480325|Mesa, AZ
 1480348|Scottsdale, AZ
+1480350|Tempe, AZ
 1480362|Scottsdale, AZ
 1480367|Scottsdale, AZ
 1480368|Scottsdale, AZ
@@ -11372,6 +11499,7 @@
 1484875|Exton, PA
 1484884|Bethlehem, PA
 1501|Arkansas
+1501205|Conway, AR
 1501217|Little Rock, AR
 1501219|Little Rock, AR
 1501221|Little Rock, AR
@@ -11436,10 +11564,13 @@
 1501603|Little Rock, AR
 1501604|Little Rock, AR
 1501605|Cabot, AR
+1501609|Hot Springs, AR
 1501614|Little Rock, AR
 1501620|Hot Springs, AR
+1501622|Hot Springs, AR
 1501623|Hot Springs, AR
 1501624|Hot Springs, AR
+1501625|Hot Springs, AR
 1501660|Little Rock, AR
 1501661|Little Rock, AR
 1501663|Little Rock, AR
@@ -11711,6 +11842,7 @@
 1503375|Salem, OR
 1503378|Salem, OR
 1503384|Portland, OR
+1503388|Portland, OR
 1503391|Salem, OR
 1503394|Scio, OR
 1503397|St. Helens, OR
@@ -11906,6 +12038,7 @@
 1504589|New Orleans, LA
 1504592|New Orleans, LA
 1504593|New Orleans, LA
+1504595|New Orleans, LA
 1504596|New Orleans, LA
 1504598|New Orleans, LA
 1504599|New Orleans, LA
@@ -11982,6 +12115,7 @@
 1505271|Albuquerque, NM
 1505272|Albuquerque, NM
 1505275|Albuquerque, NM
+1505277|Albuquerque, NM
 1505280|Albuquerque, NM
 1505285|Grants, NM
 1505287|Grants, NM
@@ -12005,12 +12139,14 @@
 1505331|Albuquerque, NM
 1505332|Albuquerque, NM
 1505334|Aztec, NM
+1505338|Albuquerque, NM
 1505341|Albuquerque, NM
 1505342|Albuquerque, NM
 1505343|Albuquerque, NM
 1505344|Albuquerque, NM
 1505345|Albuquerque, NM
 1505346|Albuquerque, NM
+1505350|Albuquerque, NM
 1505352|Albuquerque, NM
 1505362|Albuquerque, NM
 1505363|Albuquerque, NM
@@ -12083,6 +12219,7 @@
 1505726|Gallup, NM
 1505727|Albuquerque, NM
 1505747|Espanola, NM
+1505750|Albuquerque, NM
 1505751|Taos, NM
 1505753|Espanola, NM
 1505757|Pecos, NM
@@ -12094,6 +12231,7 @@
 1505767|Albuquerque, NM
 1505768|Albuquerque, NM
 1505769|Clovis, NM
+1505782|Zuni, NM
 1505786|Crownpoint, NM
 1505792|Albuquerque, NM
 1505795|Santa Fe, NM
@@ -12181,6 +12319,8 @@
 1506365|Doaktown, NB
 1506372|Salisbury, NB
 1506384|Moncton, NB
+1506393|Tracadie-Sheila, NB
+1506395|Tracadie-Sheila, NB
 1506423|Saint Leonard, NB
 1506432|Sussex, NB
 1506433|Sussex, NB
@@ -12204,6 +12344,7 @@
 1506523|Richibucto, NB
 1506529|Saint Andrews, NB
 1506532|Shediac, NB
+1506533|Shediac, NB
 1506536|Sackville, NB
 1506546|Bathurst, NB
 1506548|Bathurst, NB
@@ -12393,6 +12534,7 @@
 1507895|La Crescent, MN
 1507896|Houston, MN
 1507929|Marshall, MN
+1507931|St. Peter, MN
 1507934|St. Peter, MN
 1507964|Arlington, MN
 1508|Massachusetts
@@ -12679,6 +12821,7 @@
 1509682|Chelan, WA
 1509684|Colville, WA
 1509685|Colville, WA
+1509687|Manson, WA
 1509689|Brewster, WA
 1509697|Selah, WA
 1509698|Selah, WA
@@ -12851,6 +12994,7 @@
 1510836|Oakland, CA
 1510839|Oakland, CA
 1510841|Berkeley, CA
+1510842|Oakland, CA
 1510843|Berkeley, CA
 1510845|Berkeley, CA
 1510848|Berkeley, CA
@@ -13142,6 +13286,7 @@
 1513662|Cincinnati, OH
 1513665|Cincinnati, OH
 1513671|Cincinnati, OH
+1513674|Cincinnati, OH
 1513679|Cincinnati, OH
 1513681|Cincinnati, OH
 1513684|Cincinnati, OH
@@ -13315,6 +13460,7 @@
 1515246|Des Moines, IA
 1515247|Des Moines, IA
 1515248|Des Moines, IA
+1515256|Des Moines, IA
 1515262|Des Moines, IA
 1515263|Des Moines, IA
 1515264|Des Moines, IA
@@ -13536,6 +13682,7 @@
 1518324|Plattsburgh, NY
 1518325|Hillsdale, NY
 1518346|Schenectady, NY
+1518347|Schenectady, NY
 1518348|Clifton Park, NY
 1518355|Schenectady, NY
 1518356|Schenectady, NY
@@ -13624,6 +13771,7 @@
 1518775|Gloversville, NY
 1518782|Latham, NY
 1518783|Latham, NY
+1518785|Latham, NY
 1518789|Millerton, NY
 1518822|Hudson, NY
 1518827|Middleburgh, NY
@@ -13699,6 +13847,7 @@
 1519352|Chatham, ON
 1519353|Paisley, ON
 1519354|Chatham, ON
+1519355|Chatham, ON
 1519357|Wingham, ON
 1519358|Chatham, ON
 1519363|Chesley, ON
@@ -13901,6 +14050,7 @@
 1519923|Dundalk, ON
 1519924|Flesherton, ON
 1519925|Shelburne, ON
+1519927|Caledon, ON
 1519928|Grand Valley, ON
 1519934|Tara, ON
 1519936|London, ON
@@ -13966,6 +14116,7 @@
 1520364|Douglas, AZ
 1520377|Nogales, AZ
 1520381|Casa Grande, AZ
+1520383|Sells, AZ
 1520384|Willcox, AZ
 1520385|San Manuel, AZ
 1520387|Ajo, AZ
@@ -14384,6 +14535,7 @@
 1540967|Louisa, VA
 1540980|Pulaski, VA
 1540981|Roanoke, VA
+1540983|Roanoke, VA
 1540984|Edinburg, VA
 1540985|Roanoke, VA
 1540989|Roanoke, VA
@@ -14649,6 +14801,7 @@
 1559277|Fresno, CA
 1559278|Fresno, CA
 1559297|Clovis, CA
+1559298|Clovis, CA
 1559299|Clovis, CA
 1559320|Fresno, CA
 1559324|Clovis, CA
@@ -14838,6 +14991,7 @@
 1561637|Delray Beach, FL
 1561638|Delray Beach, FL
 1561640|West Palm Beach, FL
+1561650|West Palm Beach, FL
 1561681|West Palm Beach, FL
 1561682|West Palm Beach, FL
 1561683|West Palm Beach, FL
@@ -15171,6 +15325,7 @@
 1573248|Hannibal, MO
 1573256|Columbia, MO
 1573264|Scott City, MO
+1573265|St. James, MO
 1573276|Malden, MO
 1573288|Canton, MO
 1573293|Bernie, MO
@@ -15462,6 +15617,7 @@
 1575835|Socorro, NM
 1575838|Socorro, NM
 1575854|Magdalena, NM
+1575882|Anthony, NM
 1575885|Carlsbad, NM
 1575887|Carlsbad, NM
 1575894|Truth or Consequences, NM
@@ -15576,7 +15732,8 @@
 1580795|Madill, OK
 1580822|Okeene, OK
 1580824|Waynoka, OK
-1580832|Cordell, OK
+1580832|New Cordell, OK
+1580856|Ratliff City, OK
 1580857|Allen, OK
 1580863|Garber, OK
 1580875|Walters, OK
@@ -15628,6 +15785,7 @@
 1585292|Rochester, NY
 1585293|Churchville, NY
 1585295|Rochester, NY
+1585319|Rochester, NY
 1585321|Rochester, NY
 1585324|Rochester, NY
 1585325|Rochester, NY
@@ -15677,6 +15835,7 @@
 1585527|Rochester, NY
 1585529|Rochester, NY
 1585530|Rochester, NY
+1585538|Caledonia, NY
 1585544|Rochester, NY
 1585546|Rochester, NY
 1585563|Rochester, NY
@@ -15980,6 +16139,7 @@
 1602546|Phoenix, AZ
 1602553|Phoenix, AZ
 1602569|Phoenix, AZ
+1602589|Phoenix, AZ
 1602604|Phoenix, AZ
 1602640|Phoenix, AZ
 1602643|Phoenix, AZ
@@ -16085,11 +16245,13 @@
 1603569|Wolfeboro, NH
 1603577|Nashua, NH
 1603580|Exeter, NH
+1603585|Fitzwilliam, NH
 1603588|Antrim, NH
 1603589|Nashua, NH
 1603624|Manchester, NH
 1603628|Manchester, NH
 1603629|Manchester, NH
+1603632|Enfield, NH
 1603634|Manchester, NH
 1603635|Pelham, NH
 1603642|Kingston, NH
@@ -16179,6 +16341,7 @@
 1604279|Richmond, BC
 1604284|Richmond, BC
 1604291|Burnaby, BC
+1604294|Burnaby, BC
 1604295|Richmond, BC
 1604298|Burnaby, BC
 1604299|Burnaby, BC
@@ -16212,6 +16375,7 @@
 1604502|Surrey, BC
 1604504|Abbotsford, BC
 1604507|Surrey, BC
+1604510|Langley, BC
 1604514|Langley, BC
 1604530|Langley, BC
 1604532|Langley, BC
@@ -16331,6 +16495,7 @@
 1604899|Vancouver, BC
 1604903|North Vancouver, BC
 1604904|North Vancouver, BC
+1604905|Whistler, BC
 1604913|West Vancouver, BC
 1604921|West Vancouver, BC
 1604922|West Vancouver, BC
@@ -16347,6 +16512,7 @@
 1604973|North Vancouver, BC
 1604980|North Vancouver, BC
 1604981|North Vancouver, BC
+1604982|North Vancouver, BC
 1604983|North Vancouver, BC
 1604984|North Vancouver, BC
 1604985|North Vancouver, BC
@@ -16425,6 +16591,7 @@
 1605448|Britton, SD
 1605456|Newell, SD
 1605472|Redfield, SD
+1605498|Tea, SD
 1605528|Hartford, SD
 1605529|Baltic, SD
 1605532|Clark, SD
@@ -16516,6 +16683,7 @@
 1605964|Eagle Butte, SD
 1605967|Faith, SD
 1605977|Sioux Falls, SD
+1605983|Arlington, SD
 1605987|Canton, SD
 1605988|Sioux Falls, SD
 1605990|Mitchell, SD
@@ -16524,8 +16692,8 @@
 1605997|Flandreau, SD
 1606|Kentucky
 1606218|Pikeville, KY
-1606242|Middlesborough, KY
-1606248|Middlesborough, KY
+1606242|Middlesboro, KY
+1606248|Middlesboro, KY
 1606256|Mount Vernon, KY
 1606258|Corbin, KY
 1606274|Somerset, KY
@@ -16543,6 +16711,7 @@
 1606340|Monticello, KY
 1606348|Monticello, KY
 1606349|Salyersville, KY
+1606354|Pine Knot, KY
 1606365|Stanford, KY
 1606387|Albany, KY
 1606408|Ashland, KY
@@ -16570,6 +16739,7 @@
 1606589|Cumberland, KY
 1606593|Booneville, KY
 1606598|Manchester, KY
+1606599|Manchester, KY
 1606633|Whitesburg, KY
 1606636|Nancy, KY
 1606638|Louisa, KY
@@ -16588,6 +16758,7 @@
 1606738|Sandy Hook, KY
 1606739|Catlettsburg, KY
 1606743|West Liberty, KY
+1606754|Elkhorn City, KY
 1606756|Augusta, KY
 1606758|Brodhead, KY
 1606759|Maysville, KY
@@ -16610,6 +16781,7 @@
 1606889|Prestonsburg, KY
 1606920|Ashland, KY
 1606928|Ashland, KY
+1606929|Ashland, KY
 1606932|South Shore, KY
 1607|New York
 1607243|Dundee, NY
@@ -16643,6 +16815,7 @@
 1607533|Lansing, NY
 1607547|Cooperstown, NY
 1607563|Sidney, NY
+1607564|Newfield, NY
 1607565|Waverly, NY
 1607566|Avoca, NY
 1607569|Hammondsport, NY
@@ -16663,6 +16836,7 @@
 1607732|Elmira, NY
 1607733|Elmira, NY
 1607734|Elmira, NY
+1607735|Elmira, NY
 1607737|Elmira, NY
 1607746|Delhi, NY
 1607749|Homer, NY
@@ -16670,6 +16844,7 @@
 1607756|Cortland, NY
 1607758|Cortland, NY
 1607762|Binghamton, NY
+1607763|Johnson City, NY
 1607767|Elmira, NY
 1607771|Binghamton, NY
 1607772|Binghamton, NY
@@ -16679,9 +16854,11 @@
 1607795|Horseheads, NY
 1607843|Oxford, NY
 1607847|New Berlin, NY
+1607863|Cincinnatus, NY
 1607865|Walton, NY
 1607869|Ovid, NY
 1607898|Groton, NY
+1607937|Corning, NY
 1607967|Bainbridge, NY
 1608|Wisconsin
 1608204|Madison, WI
@@ -16806,6 +16983,7 @@
 1608758|Janesville, WI
 1608763|Potosi, WI
 1608764|Deerfield, WI
+1608767|Black Earth, WI
 1608768|Reedsburg, WI
 1608776|Darlington, WI
 1608782|La Crosse, WI
@@ -16871,11 +17049,12 @@
 1609430|Princeton, NJ
 1609441|Atlantic City, NJ
 1609449|Atlantic City, NJ
-1609452|Princeton Township, NJ
+1609452|Princeton, NJ
 1609497|Princeton, NJ
-1609514|Princeton Township, NJ
-1609520|Princeton Township, NJ
+1609514|Princeton, NJ
+1609520|Princeton, NJ
 1609525|Ocean City, NJ
+1609538|Ewing Township, NJ
 1609561|Hammonton, NJ
 1609562|Fort Dix, NJ
 1609567|Hammonton, NJ
@@ -16904,19 +17083,23 @@
 1609838|Trenton, NJ
 1609859|Southampton Township, NJ
 1609861|Woodbine, NJ
+1609877|Willingboro Township, NJ
 1609884|Cape May, NJ
 1609888|Trenton, NJ
 1609893|Browns Mills, NJ
 1609894|Pemberton, NJ
 1609898|Cape May, NJ
 1609909|Mays Landing, NJ
+1609921|Princeton, NJ
 1609924|Princeton, NJ
+1609951|Princeton, NJ
 1609953|Medford, NJ
 1609967|Avalon, NJ
 1609984|Trenton, NJ
 1609989|Trenton, NJ
 1610|Pennsylvania
 1610205|King of Prussia, PA
+1610208|Reading, PA
 1610250|Easton, PA
 1610252|Easton, PA
 1610253|Easton, PA
@@ -17043,6 +17226,7 @@
 1612|Minnesota
 1612215|Minneapolis, MN
 1612225|Minneapolis, MN
+1612259|Minneapolis, MN
 1612252|Minneapolis, MN
 1612273|Minneapolis, MN
 1612302|Minneapolis, MN
@@ -17155,6 +17339,7 @@
 1613267|Perth, ON
 1613269|Merrickville, ON
 1613273|Westport, ON
+1613279|Sharbot Lake, ON
 1613283|Smiths Falls, ON
 1613284|Smiths Falls, ON
 1613332|Bancroft, ON
@@ -17251,6 +17436,7 @@
 1613782|Ottawa, ON
 1613789|Ottawa, ON
 1613798|Ottawa, ON
+1613924|Athens, ON
 1613925|Prescott, ON
 1613930|Cornwall, ON
 1613932|Cornwall, ON
@@ -17286,6 +17472,7 @@
 1614251|Columbus, OH
 1614252|Columbus, OH
 1614253|Columbus, OH
+1614255|Columbus, OH
 1614257|Columbus, OH
 1614258|Columbus, OH
 1614261|Columbus, OH
@@ -17312,6 +17499,7 @@
 1614308|Columbus, OH
 1614326|Columbus, OH
 1614338|Columbus, OH
+1614340|Columbus, OH
 1614351|Columbus, OH
 1614355|Columbus, OH
 1614365|Columbus, OH
@@ -17406,6 +17594,7 @@
 1615298|Nashville, TN
 1615302|Spring Hill, TN
 1615309|Brentwood, TN
+1615312|Nashville, TN
 1615313|Nashville, TN
 1615315|Nashville, TN
 1615320|Nashville, TN
@@ -17546,6 +17735,7 @@
 1616225|Greenville, MI
 1616233|Grand Rapids, MI
 1616235|Grand Rapids, MI
+1616241|Grand Rapids, MI
 1616242|Grand Rapids, MI
 1616243|Grand Rapids, MI
 1616245|Grand Rapids, MI
@@ -17569,6 +17759,7 @@
 1616399|Holland, MI
 1616447|Grand Rapids, MI
 1616451|Grand Rapids, MI
+1616452|Grand Rapids, MI
 1616453|Grand Rapids, MI
 1616454|Grand Rapids, MI
 1616456|Grand Rapids, MI
@@ -17616,6 +17807,8 @@
 1616891|Caledonia, MI
 1616897|Lowell, MI
 1616940|Grand Rapids, MI
+1616942|Grand Rapids, MI
+1616949|Grand Rapids, MI
 1616954|Grand Rapids, MI
 1616956|Grand Rapids, MI
 1616957|Grand Rapids, MI
@@ -17643,6 +17836,7 @@
 1617266|Boston, MA
 1617267|Boston, MA
 1617269|Boston, MA
+1617284|Somerville, MA
 1617289|Boston, MA
 1617292|Boston, MA
 1617305|Boston, MA
@@ -17839,6 +18033,7 @@
 1618443|Sparta, IL
 1618445|Albion, IL
 1618451|Granite City, IL
+1618452|Granite City, IL
 1618453|Carbondale, IL
 1618457|Carbondale, IL
 1618462|Alton, IL
@@ -17989,12 +18184,14 @@
 1619427|Chula Vista, CA
 1619428|San Diego, CA
 1619435|Coronado, CA
+1619437|Coronado, CA
 1619440|El Cajon, CA
 1619441|El Cajon, CA
 1619442|El Cajon, CA
 1619444|El Cajon, CA
 1619446|San Diego, CA
 1619447|El Cajon, CA
+1619450|San Diego, CA
 1619473|Pine Valley, CA
 1619474|National City, CA
 1619476|Chula Vista, CA
@@ -18270,6 +18467,7 @@
 1630357|Naperville, IL
 1630368|Oak Brook, IL
 1630369|Naperville, IL
+1630375|Aurora, IL
 1630378|Bolingbrook, IL
 1630393|Warrenville, IL
 1630397|Geneva, IL
@@ -18324,6 +18522,7 @@
 1630983|Naperville, IL
 1630990|Oak Brook, IL
 1631|New York
+1631204|Southampton, NY
 1631206|Bay Shore, NY
 1631208|Riverhead, NY
 1631226|Lindenhurst, NY
@@ -18343,6 +18542,7 @@
 1631548|Riverhead, NY
 1631584|St. James, NY
 1631598|Amityville, NY
+1631604|East Hampton, NY
 1631647|Bay Shore, NY
 1631665|Bay Shore, NY
 1631666|Bay Shore, NY
@@ -18353,6 +18553,7 @@
 1631727|Riverhead, NY
 1631728|Hampton Bays, NY
 1631734|Cutchogue, NY
+1631749|Shelter Island, NY
 1631765|Southold, NY
 1631907|East Hampton, NY
 1631929|Wading River, NY
@@ -18362,15 +18563,15 @@
 1631991|Lindenhurst, NY
 1636|Missouri
 1636239|Washington, MO
-1636240|O Fallon, MO
+1636240|O'Fallon, MO
 1636250|St. Charles, MO
 1636255|St. Charles, MO
 1636257|Pacific, MO
 1636271|Pacific, MO
-1636272|O Fallon, MO
+1636272|O'Fallon, MO
 1636278|St. Peters, MO
 1636279|St. Peters, MO
-1636281|O Fallon, MO
+1636281|O'Fallon, MO
 1636282|Arnold, MO
 1636287|Arnold, MO
 1636296|Arnold, MO
@@ -18383,7 +18584,7 @@
 1636349|Fenton, MO
 1636356|Moscow Mills, MO
 1636376|High Ridge, MO
-1636379|O Fallon, MO
+1636379|O'Fallon, MO
 1636390|Washington, MO
 1636397|St. Peters, MO
 1636456|Warrenton, MO
@@ -18400,7 +18601,7 @@
 1636584|Union, MO
 1636586|De Soto, MO
 1636587|Eureka, MO
-1636629|St. Clair, MO
+1636629|Saint Clair, MO
 1636639|Wentzville, MO
 1636671|House Springs, MO
 1636677|High Ridge, MO
@@ -18418,7 +18619,7 @@
 1636947|St. Charles, MO
 1636949|St. Charles, MO
 1636970|St. Peters, MO
-1636978|O Fallon, MO
+1636978|O'Fallon, MO
 1636980|O'Fallon, MO
 1641|Iowa
 1641209|Fairfield, IA
@@ -18449,6 +18650,7 @@
 1641464|Mount Ayr, IA
 1641469|Fairfield, IA
 1641472|Fairfield, IA
+1641473|Gladbrook, IA
 1641483|State Center, IA
 1641487|Zearing, IA
 1641494|Mason City, IA
@@ -18811,7 +19013,9 @@
 1661835|Bakersfield, CA
 1661836|Bakersfield, CA
 1661837|Bakersfield, CA
+1661845|Lamont, CA
 1661847|Bakersfield, CA
+1661849|Earlimart, CA
 1661852|Bakersfield, CA
 1661854|Arvin, CA
 1661859|Bakersfield, CA
@@ -18975,6 +19179,7 @@
 1678339|Alpharetta, GA
 1678342|Covington, GA
 1678363|Dallas, GA
+1678366|Alpharetta, GA
 1678413|Conyers, GA
 1678423|Newnan, GA
 1678442|Lawrenceville, GA
@@ -18987,6 +19192,7 @@
 1678583|McDonough, GA
 1678625|Covington, GA
 1678688|Griffin, GA
+1678712|Covington, GA
 1678715|Douglasville, GA
 1678721|Cartersville, GA
 1678817|Fayetteville, GA
@@ -18995,9 +19201,11 @@
 1678847|Lawrenceville, GA
 1678867|Alpharetta, GA
 1678880|Canton, GA
+1678947|Cumming, GA
 1678964|Conyers, GA
 1682|Texas
 1682518|Mansfield, TX
+1682622|Mansfield, TX
 1682867|Arlington, TX
 1682885|Fort Worth, TX
 1701|North Dakota
@@ -19109,6 +19317,7 @@
 1701754|Napoleon, ND
 1701756|Mohall, ND
 1701757|Grand Forks, ND
+1701764|Killdeer, ND
 1701772|Grand Forks, ND
 1701774|Williston, ND
 1701775|Grand Forks, ND
@@ -19224,6 +19433,7 @@
 1702471|Las Vegas, NV
 1702472|Las Vegas, NV
 1702474|Las Vegas, NV
+1702478|Las Vegas, NV
 1702485|Las Vegas, NV
 1702486|Las Vegas, NV
 1702515|Las Vegas, NV
@@ -19238,6 +19448,7 @@
 1702579|Las Vegas, NV
 1702597|Las Vegas, NV
 1702598|Las Vegas, NV
+1702629|Las Vegas, NV
 1702632|Las Vegas, NV
 1702641|Las Vegas, NV
 1702645|Las Vegas, NV
@@ -19301,6 +19512,7 @@
 1702939|Las Vegas, NV
 1702940|Las Vegas, NV
 1702942|Las Vegas, NV
+1702947|Las Vegas, NV
 1702948|Las Vegas, NV
 1702949|Las Vegas, NV
 1702951|Las Vegas, NV
@@ -19381,6 +19593,7 @@
 1703535|Alexandria, VA
 1703548|Alexandria, VA
 1703549|Alexandria, VA
+1703550|Lorton, VA
 1703553|Arlington, VA
 1703558|Arlington, VA
 1703567|Alexandria, VA
@@ -19799,6 +20012,7 @@
 1705748|Peterborough, ON
 1705749|Peterborough, ON
 1705750|Peterborough, ON
+1705753|West Nipissing, ON
 1705759|Sault Ste. Marie, ON
 1705762|Bala, ON
 1705765|Port Carling, ON
@@ -19921,6 +20135,7 @@
 1706552|Athens, GA
 1706553|Woodbury, GA
 1706554|Waynesboro, GA
+1706560|Augusta, GA
 1706561|Columbus, GA
 1706562|Columbus, GA
 1706563|Columbus, GA
@@ -20125,6 +20340,7 @@
 1707578|Santa Rosa, CA
 1707579|Santa Rosa, CA
 1707591|Santa Rosa, CA
+1707624|Vacaville, CA
 1707642|Vallejo, CA
 1707643|Vallejo, CA
 1707644|Vallejo, CA
@@ -20196,6 +20412,7 @@
 1707996|Sonoma, CA
 1707998|Clearlake Oaks, CA
 1708|Illinois
+1708202|Hines, IL
 1708216|Maywood, IL
 1708222|Cicero, IL
 1708245|La Grange, IL
@@ -20203,6 +20420,7 @@
 1708301|Homer Glen, IL
 1708327|Maywood, IL
 1708335|Hazel Crest, IL
+1708342|Tinley Park, IL
 1708349|Orland Park, IL
 1708358|Oak Park, IL
 1708364|Orland Park, IL
@@ -20256,6 +20474,7 @@
 1709257|Botwood, NL
 1709258|Bishop's Falls, NL
 1709279|Marystown, NL
+1709437|Torbay, NL
 1709466|Clarenville, NL
 1709468|Bonavista, NL
 1709489|Grand Falls-Windsor, NL
@@ -20778,6 +20997,7 @@
 1714667|Santa Ana, CA
 1714671|Brea, CA
 1714672|Brea, CA
+1714674|Brea, CA
 1714680|Fullerton, CA
 1714687|Anaheim, CA
 1714692|Yorba Linda, CA
@@ -20823,6 +21043,7 @@
 1714997|Orange, CA
 1714999|Anaheim, CA
 1715|Wisconsin
+1715228|Coloma, WI
 1715231|Menomonie, WI
 1715232|Menomonie, WI
 1715233|Menomonie, WI
@@ -20846,6 +21067,7 @@
 1715267|Greenwood, WI
 1715268|Amery, WI
 1715273|Ellsworth, WI
+1715275|Elcho, WI
 1715277|Lake Tomahawk, WI
 1715284|Black River Falls, WI
 1715286|Augusta, WI
@@ -21061,6 +21283,7 @@
 1716774|Grand Island, NY
 1716775|Grand Island, NY
 1716791|Ransomville, NY
+1716792|Brocton, NY
 1716816|Buffalo, NY
 1716829|Buffalo, NY
 1716842|Buffalo, NY
@@ -21284,6 +21507,7 @@
 1718236|Brooklyn, NY
 1718237|Brooklyn, NY
 1718239|Bronx, NY
+1718243|Brooklyn, NY
 1718244|Jamaica, NY
 1718252|Brooklyn, NY
 1718256|Brooklyn, NY
@@ -21306,6 +21530,8 @@
 1718299|Bronx, NY
 1718302|Brooklyn, NY
 1718317|Staten Island, NY
+1718319|Bronx, NY
+1718320|Bronx, NY
 1718321|Flushing, NY
 1718324|Bronx, NY
 1718325|Bronx, NY
@@ -21431,6 +21657,7 @@
 1718693|Brooklyn, NY
 1718703|Brooklyn, NY
 1718720|Staten Island, NY
+1718722|Brooklyn, NY
 1718727|Staten Island, NY
 1718731|Bronx, NY
 1718733|Bronx, NY
@@ -21507,8 +21734,10 @@
 1718993|Bronx, NY
 1718994|Bronx, NY
 1718995|Jamaica, NY
+1718996|Brooklyn, NY
 1718998|Brooklyn, NY
 1719|Colorado
+1719203|Colorado Springs, CO
 1719213|Colorado Springs, CO
 1719219|Colorado Springs, CO
 1719226|Colorado Springs, CO
@@ -21555,6 +21784,7 @@
 1719383|La Junta, CO
 1719384|La Junta, CO
 1719385|Colorado Springs, CO
+1719387|Colorado Springs, CO
 1719388|Colorado Springs, CO
 1719389|Colorado Springs, CO
 1719390|Colorado Springs, CO
@@ -21682,6 +21912,7 @@
 1720848|Aurora, CO
 1720851|Parker, CO
 1720855|Denver, CO
+1720859|Aurora, CO
 1720865|Denver, CO
 1720904|Denver, CO
 1720913|Denver, CO
@@ -21721,7 +21952,9 @@
 1724437|Uniontown, PA
 1724438|Uniontown, PA
 1724439|Uniontown, PA
+1724444|Gibsonia, PA
 1724445|Chicora, PA
+1724449|Gibsonia, PA
 1724450|Grove City, PA
 1724457|Coraopolis, PA
 1724458|Grove City, PA
@@ -21768,6 +22001,7 @@
 1724668|New Alexandria, PA
 1724684|Monessen, PA
 1724693|Oakdale, PA
+1724694|Derry, PA
 1724725|Point Marion, PA
 1724727|Apollo, PA
 1724736|Perryopolis, PA
@@ -21832,6 +22066,7 @@
 1727527|St. Petersburg, FL
 1727528|St. Petersburg, FL
 1727553|St. Petersburg, FL
+1727562|Clearwater, FL
 1727567|St. Petersburg, FL
 1727573|Clearwater, FL
 1727576|St. Petersburg, FL
@@ -21839,6 +22074,7 @@
 1727578|St. Petersburg, FL
 1727579|St. Petersburg, FL
 1727581|Largo, FL
+1727588|Largo, FL
 1727723|Clearwater, FL
 1727733|Dunedin, FL
 1727734|Dunedin, FL
@@ -21980,10 +22216,12 @@
 1732557|Toms River, NJ
 1732562|Piscataway Township, NJ
 1732607|Old Bridge, NJ
+1732615|Middletown, NJ
 1732650|Edison, NJ
 1732671|Middletown, NJ
 1732697|Perth Amboy, NJ
 1732736|Toms River, NJ
+1732785|Brick, NJ
 1732802|Carteret, NJ
 1732818|Toms River, NJ
 1732826|Perth Amboy, NJ
@@ -22028,12 +22266,14 @@
 1734433|Chelsea, MI
 1734439|Milan, MI
 1734449|Whitmore Lake, MI
+1734453|Plymouth, MI
 1734457|Monroe, MI
 1734462|Livonia, MI
 1734464|Livonia, MI
 1734475|Chelsea, MI
 1734477|Ann Arbor, MI
 1734481|Ypsilanti, MI
+1734487|Ypsilanti, MI
 1734495|Canton, MI
 1734523|Livonia, MI
 1734529|Dundee, MI
@@ -22057,6 +22297,7 @@
 1734712|Ypsilanti, MI
 1734714|Ypsilanti, MI
 1734741|Ann Arbor, MI
+1734744|Livonia, MI
 1734747|Ann Arbor, MI
 1734753|New Boston, MI
 1734761|Ann Arbor, MI
@@ -22065,6 +22306,7 @@
 1734769|Ann Arbor, MI
 1734779|Livonia, MI
 1734785|Southgate, MI
+1734794|Ann Arbor, MI
 1734827|Ann Arbor, MI
 1734844|Canton, MI
 1734845|Ann Arbor, MI
@@ -22208,6 +22450,7 @@
 1740795|Powhatan Point, OH
 1740824|Warsaw, OH
 1740826|New Concord, OH
+1740828|Frazeysburg, OH
 1740833|Delaware, OH
 1740845|London, OH
 1740852|London, OH
@@ -22302,6 +22545,7 @@
 1757480|Norfolk, VA
 1757481|Virginia Beach, VA
 1757482|Chesapeake, VA
+1757485|Chesapeake, VA
 1757486|Virginia Beach, VA
 1757489|Norfolk, VA
 1757490|Virginia Beach, VA
@@ -22384,6 +22628,7 @@
 1757886|Newport News, VA
 1757889|Norfolk, VA
 1757896|Hampton, VA
+1757899|Wakefield, VA
 1757903|Williamsburg, VA
 1757923|Suffolk, VA
 1757925|Suffolk, VA
@@ -22518,6 +22763,7 @@
 1760843|Victorville, CA
 1760863|Indio, CA
 1760864|Palm Springs, CA
+1760868|Phelan, CA
 1760872|Bishop, CA
 1760873|Bishop, CA
 1760876|Lone Pine, CA
@@ -22528,6 +22774,7 @@
 1760924|Mammoth Lakes, CA
 1760929|Carlsbad, CA
 1760930|Carlsbad, CA
+1760931|Carlsbad, CA
 1760932|Bridgeport, CA
 1760934|Mammoth Lakes, CA
 1760946|Apple Valley, CA
@@ -22552,6 +22799,7 @@
 1763444|Isanti, MN
 1763525|Minneapolis, MN
 1763552|Cambridge, MN
+1763581|Maple Grove, MN
 1763631|Princeton, MN
 1763675|Montrose, MN
 1763682|Buffalo, MN
@@ -22666,6 +22914,7 @@
 1765789|Albany, IN
 1765793|Covington, IN
 1765795|Cloverdale, IN
+1765807|Lafayette, IN
 1765825|Connersville, IN
 1765827|Connersville, IN
 1765832|Clinton, IN
@@ -22710,6 +22959,7 @@
 1770297|Gainesville, GA
 1770304|Newnan, GA
 1770321|Marietta, GA
+1770339|Lawrenceville, GA
 1770345|Canton, GA
 1770346|Alpharetta, GA
 1770358|Barnesville, GA
@@ -22766,6 +23016,7 @@
 1770577|Douglasville, GA
 1770578|Marietta, GA
 1770579|Marietta, GA
+1770599|Senoia, GA
 1770602|Conyers, GA
 1770606|Cartersville, GA
 1770607|Cartersville, GA
@@ -22874,6 +23125,7 @@
 1772600|Stuart, FL
 1772621|Port St. Lucie, FL
 1772626|Port St. Lucie, FL
+1772672|Fort Pierce, FL
 1772770|Vero Beach, FL
 1772778|Vero Beach, FL
 1772785|Port St. Lucie, FL
@@ -23155,6 +23407,7 @@
 1780827|Grande Cache, AB
 1780830|Grande Prairie, AB
 1780831|Grande Prairie, AB
+1780832|Grande Prairie, AB
 1780835|Fairview, AB
 1780836|Manning, AB
 1780837|Falher, AB
@@ -23426,6 +23679,7 @@
 1785726|Ellis, KS
 1785731|Ransom, KS
 1785733|Waverly, KS
+1785735|Victoria, KS
 1785738|Beloit, KS
 1785742|Hiawatha, KS
 1785743|WaKeeney, KS
@@ -23521,6 +23775,7 @@
 1801466|Salt Lake City, UT
 1801467|Salt Lake City, UT
 1801468|Salt Lake City, UT
+1801474|Salt Lake City, UT
 1801476|Ogden, UT
 1801479|Ogden, UT
 1801483|Salt Lake City, UT
@@ -23567,7 +23822,7 @@
 1801765|Orem, UT
 1801768|Lehi, UT
 1801771|Layton, UT
-1801777|Hill Air Force Base, UT
+1801777|Hill AFB, UT
 1801789|Eagle Mountain, UT
 1801794|Spanish Fork, UT
 1801798|Spanish Fork, UT
@@ -23621,6 +23876,8 @@
 1802482|Hinesburg, VT
 1802485|Northfield, VT
 1802488|Burlington, VT
+1802524|St. Albans, VT
+1802527|St. Albans, VT
 1802635|Johnson, VT
 1802649|Norwich, VT
 1802655|Winooski, VT
@@ -23764,6 +24021,7 @@
 1803694|Whitmire, SC
 1803695|Columbia, SC
 1803699|Columbia, SC
+1803712|Winnsboro, SC
 1803731|Columbia, SC
 1803733|Columbia, SC
 1803734|Columbia, SC
@@ -23995,6 +24253,7 @@
 1805529|Moorpark, CA
 1805531|Moorpark, CA
 1805532|Moorpark, CA
+1805534|Los Osos, CA
 1805541|San Luis Obispo, CA
 1805542|San Luis Obispo, CA
 1805543|San Luis Obispo, CA
@@ -24379,6 +24638,7 @@
 1808622|Wahiawa, HI
 1808623|Mililani, HI
 1808625|Mililani, HI
+1808627|Mililani, HI
 1808632|Lihue, HI
 1808638|Haleiwa, HI
 1808661|Lahaina, HI
@@ -24492,6 +24752,7 @@
 1810579|Grand Blanc, MI
 1810603|Grand Blanc, MI
 1810606|Grand Blanc Township, MI
+1810622|Port Sanilac, MI
 1810629|Fenton, MI
 1810631|Otisville, MI
 1810635|Swartz Creek, MI
@@ -24696,6 +24957,7 @@
 1812948|New Albany, IN
 1812949|New Albany, IN
 1812951|Georgetown, IN
+1812952|Lanesville, IN
 1812961|Bloomington, IN
 1812962|Evansville, IN
 1812963|Evansville, IN
@@ -24778,6 +25040,7 @@
 1813636|Tampa, FL
 1813637|Tampa, FL
 1813639|Tampa, FL
+1813644|Tampa, FL
 1813664|Tampa, FL
 1813707|Plant City, FL
 1813715|Zephyrhills, FL
@@ -24828,6 +25091,7 @@
 1813890|Tampa, FL
 1813901|Tampa, FL
 1813902|Tampa, FL
+1813903|Tampa, FL
 1813908|Tampa, FL
 1813910|Tampa, FL
 1813915|Tampa, FL
@@ -24857,6 +25121,7 @@
 1814201|Altoona, PA
 1814224|Roaring Spring, PA
 1814225|Eldred, PA
+1814226|Clarion, PA
 1814231|State College, PA
 1814234|State College, PA
 1814235|State College, PA
@@ -24866,6 +25131,7 @@
 1814247|Hastings, PA
 1814254|Johnstown, PA
 1814255|Johnstown, PA
+1814258|Elkland, PA
 1814262|Johnstown, PA
 1814265|Brockway, PA
 1814266|Johnstown, PA
@@ -24924,6 +25190,7 @@
 1814535|Johnstown, PA
 1814536|Johnstown, PA
 1814539|Johnstown, PA
+1814542|Mount Union, PA
 1814589|Pleasantville, PA
 1814623|Bedford, PA
 1814634|Meyersdale, PA
@@ -25294,6 +25561,7 @@
 1816983|Kansas City, MO
 1816987|Pleasant Hill, MO
 1817|Texas
+1817202|Cleburne, TX
 1817207|Fort Worth, TX
 1817220|Springtown, TX
 1817226|Arlington, TX
@@ -25361,6 +25629,7 @@
 1817472|Arlington, TX
 1817473|Mansfield, TX
 1817492|Fort Worth, TX
+1817517|Cleburne, TX
 1817523|Springtown, TX
 1817529|Fort Worth, TX
 1817531|Fort Worth, TX
@@ -25386,6 +25655,7 @@
 1817626|Fort Worth, TX
 1817633|Arlington, TX
 1817635|Arlington, TX
+1817636|Rhome, TX
 1817640|Arlington, TX
 1817641|Cleburne, TX
 1817645|Cleburne, TX
@@ -25507,6 +25777,7 @@
 1819293|Nicolet, QC
 1819294|Bécancour, QC
 1819296|Yamachiche, QC
+1819326|Sainte-Agathe-des-Monts, QC
 1819333|La Sarre, QC
 1819339|La Sarre, QC
 1819346|Sherbrooke, QC
@@ -25612,6 +25883,7 @@
 1819864|Sherbrooke, QC
 1819868|Magog, QC
 1819874|Val-d'Or, QC
+1819875|Cookshire, QC
 1819876|Stanstead, QC
 1819877|Weedon, QC
 1819879|Asbestos, QC
@@ -25625,6 +25897,7 @@
 1828232|Asheville, NC
 1828235|Canton, NC
 1828236|Asheville, NC
+1828241|Catawba, NC
 1828245|Forest City, NC
 1828247|Forest City, NC
 1828248|Forest City, NC
@@ -25654,6 +25927,7 @@
 1828298|Asheville, NC
 1828299|Asheville, NC
 1828304|Hickory, NC
+1828315|Hickory, NC
 1828321|Andrews, NC
 1828322|Hickory, NC
 1828323|Hickory, NC
@@ -25692,6 +25966,7 @@
 1828586|Sylva, NC
 1828622|Hot Springs, NC
 1828627|Clyde, NC
+1828628|Fairview, NC
 1828631|Sylva, NC
 1828632|Taylorsville, NC
 1828635|Taylorsville, NC
@@ -25893,9 +26168,11 @@
 1831899|Seaside, CA
 1832|Texas
 1832203|Houston, TX
+1832230|Houston, TX
 1832237|Houston, TX
 1832239|Houston, TX
 1832242|Houston, TX
+1832243|Houston, TX
 1832249|Houston, TX
 1832251|Houston, TX
 1832252|Houston, TX
@@ -25909,6 +26186,7 @@
 1832384|Houston, TX
 1832393|Houston, TX
 1832397|Houston, TX
+1832426|Houston, TX
 1832437|Katy, TX
 1832467|Houston, TX
 1832476|Houston, TX
@@ -25920,6 +26198,7 @@
 1832822|Houston, TX
 1832824|Houston, TX
 1832825|Houston, TX
+1832826|Houston, TX
 1832912|Houston, TX
 1838433|Morganton, NC
 1843|South Carolina
@@ -26031,6 +26310,7 @@
 1843706|Bluffton, SC
 1843712|Myrtle Beach, SC
 1843716|Loris, SC
+1843717|Ridgeland, SC
 1843719|Moncks Corner, SC
 1843720|Charleston, SC
 1843722|Charleston, SC
@@ -26157,6 +26437,7 @@
 1845855|Pawling, NY
 1845856|Port Jervis, NY
 1845858|Port Jervis, NY
+1845868|Stanfordville, NY
 1845871|Rhinebeck, NY
 1845876|Rhinebeck, NY
 1845888|Wurtsboro, NY
@@ -26185,11 +26466,13 @@
 1847352|Schaumburg, IL
 1847358|Palatine, IL
 1847359|Palatine, IL
+1847360|Waukegan, IL
 1847377|Waukegan, IL
 1847395|Antioch, IL
 1847412|Northbrook, IL
 1847413|Schaumburg, IL
 1847424|Evanston, IL
+1847429|Elgin, IL
 1847432|Highland Park, IL
 1847451|Franklin Park, IL
 1847455|Franklin Park, IL
@@ -26201,6 +26484,7 @@
 1847498|Northbrook, IL
 1847509|Northbrook, IL
 1847517|Schaumburg, IL
+1847531|Elgin, IL
 1847534|Schaumburg, IL
 1847548|Grayslake, IL
 1847559|Northbrook, IL
@@ -26211,12 +26495,14 @@
 1847579|Highland Park, IL
 1847588|Niles, IL
 1847605|Schaumburg, IL
+1847608|Elgin, IL
 1847618|Arlington Heights, IL
 1847619|Schaumburg, IL
 1847647|Niles, IL
 1847657|Glenview, IL
 1847669|Huntley, IL
 1847683|Hampshire, IL
+1847695|Elgin, IL
 1847706|Schaumburg, IL
 1847723|Park Ridge, IL
 1847724|Glenview, IL
@@ -26314,6 +26600,7 @@
 1850494|Pensacola, FL
 1850497|Pensacola, FL
 1850505|Pensacola, FL
+1850508|Tallahassee, FL
 1850513|Tallahassee, FL
 1850514|Tallahassee, FL
 1850521|Tallahassee, FL
@@ -26416,6 +26703,7 @@
 1850973|Madison, FL
 1850981|Milton, FL
 1850983|Milton, FL
+1850984|Panacea, FL
 1850997|Monticello, FL
 1851788|Riverside, CA
 1856|New Jersey
@@ -26437,6 +26725,7 @@
 1856365|Camden, NJ
 1856396|Marlton, NJ
 1856405|Vineland, NJ
+1856414|Cherry Hill, NJ
 1856439|Moorestown, NJ
 1856451|Bridgeton, NJ
 1856453|Bridgeton, NJ
@@ -26531,7 +26820,7 @@
 1858549|San Diego, CA
 1858550|San Diego, CA
 1858552|San Diego, CA
-1858554|San Diego, CA
+1858554|La Jolla, CA
 1858558|San Diego, CA
 1858560|San Diego, CA
 1858564|San Diego, CA
@@ -26628,6 +26917,7 @@
 1859294|Lexington, KY
 1859296|Lexington, KY
 1859299|Lexington, KY
+1859301|Edgewood, KY
 1859309|Lexington, KY
 1859313|Lexington, KY
 1859317|Lexington, KY
@@ -26702,6 +26992,7 @@
 1860283|Thomaston, CT
 1860284|Farmington, CT
 1860285|Windsor, CT
+1860286|Bloomfield, CT
 1860293|Hartford, CT
 1860295|Marlborough, CT
 1860296|Hartford, CT
@@ -26837,6 +27128,7 @@
 1863284|Lakeland, FL
 1863285|Fort Meade, FL
 1863291|Winter Haven, FL
+1863292|Winter Haven, FL
 1863293|Winter Haven, FL
 1863294|Winter Haven, FL
 1863297|Winter Haven, FL
@@ -26946,15 +27238,18 @@
 1864271|Greenville, SC
 1864281|Greenville, SC
 1864282|Greenville, SC
+1864283|Greenville, SC
 1864284|Greenville, SC
 1864286|Greenville, SC
 1864287|Anderson, SC
 1864294|Greenville, SC
 1864296|Anderson, SC
 1864298|Greenville, SC
+1864299|Greenville, SC
 1864306|Easley, SC
 1864327|Spartanburg, SC
 1864331|Greenville, SC
+1864332|Anderson, SC
 1864338|Belton, SC
 1864342|Spartanburg, SC
 1864348|Iva, SC
@@ -26970,6 +27265,7 @@
 1864445|Saluda, SC
 1864446|Abbeville, SC
 1864455|Greenville, SC
+1864456|Ware Shoals, SC
 1864457|Landrum, SC
 1864459|Abbeville, SC
 1864461|Chesnee, SC
@@ -27011,6 +27307,7 @@
 1864647|Westminster, SC
 1864654|Clemson, SC
 1864672|Greenville, SC
+1864674|Jonesville, SC
 1864676|Greenville, SC
 1864681|Laurens, SC
 1864682|Laurens, SC
@@ -27018,6 +27315,7 @@
 1864725|Greenwood, SC
 1864751|Greenville, SC
 1864757|Simpsonville, SC
+1864760|Anderson, SC
 1864801|Greer, SC
 1864804|Spartanburg, SC
 1864833|Clinton, SC
@@ -27033,6 +27331,7 @@
 1864855|Easley, SC
 1864859|Easley, SC
 1864862|Fountain Inn, SC
+1864876|Gray Court, SC
 1864877|Greer, SC
 1864878|Pickens, SC
 1864879|Greer, SC
@@ -27205,6 +27504,7 @@
 1870265|Lake Village, AR
 1870268|Jonesboro, AR
 1870269|Mountain View, AR
+1870275|Jonesboro, AR
 1870283|Cave City, AR
 1870285|Murfreesboro, AR
 1870286|Dierks, AR
@@ -27550,6 +27850,7 @@
 1902794|North Sydney, NS
 1902798|Windsor, NS
 1902825|Middleton, NS
+1902836|Kensington, PE
 1902837|Weymouth, NS
 1902838|Montague, PE
 1902842|Glace Bay, NS
@@ -27583,6 +27884,7 @@
 1903238|Longview, TX
 1903255|Texarkana, TX
 1903262|Tyler, TX
+1903266|Tyler, TX
 1903291|Longview, TX
 1903295|Longview, TX
 1903297|Longview, TX
@@ -27658,6 +27960,7 @@
 1903636|Big Sandy, TX
 1903639|Hughes Springs, TX
 1903640|Bonham, TX
+1903641|Corsicana, TX
 1903643|Longview, TX
 1903645|Daingerfield, TX
 1903654|Corsicana, TX
@@ -28048,6 +28351,7 @@
 1905486|Mississauga, ON
 1905488|Brampton, ON
 1905492|Pickering, ON
+1905493|Whitby, ON
 1905494|Brampton, ON
 1905495|Brampton, ON
 1905497|Brampton, ON
@@ -28393,6 +28697,7 @@
 1907481|Kodiak, AK
 1907486|Kodiak, AK
 1907487|Kodiak, AK
+1907488|North Pole, AK
 1907490|North Pole, AK
 1907495|Willow, AK
 1907522|Anchorage, AK
@@ -28452,6 +28757,7 @@
 1908217|Newark, NJ
 1908236|Lebanon, NJ
 1908237|Flemington, NJ
+1908273|Summit, NJ
 1908277|Summit, NJ
 1908281|Hillsborough, NJ
 1908282|Elizabeth, NJ
@@ -28483,6 +28789,7 @@
 1908629|Elizabeth, NJ
 1908659|Elizabeth, NJ
 1908662|Elizabeth, NJ
+1908686|Union Township, NJ
 1908687|Union Township, NJ
 1908688|Union Township, NJ
 1908689|Washington, NJ
@@ -28490,6 +28797,7 @@
 1908782|Flemington, NJ
 1908788|Flemington, NJ
 1908806|Flemington, NJ
+1908810|Union, NJ
 1908813|Hackettstown, NJ
 1908820|Elizabeth, NJ
 1908835|Washington, NJ
@@ -28660,6 +28968,7 @@
 1910438|Fayetteville, NC
 1910439|Mount Gilead, NC
 1910442|Wilmington, NC
+1910450|Camp Lejeune, NC
 1910451|Camp Lejeune, NC
 1910452|Wilmington, NC
 1910454|Southport, NC
@@ -28747,6 +29056,7 @@
 1910893|Lillington, NC
 1910895|Rockingham, NC
 1910904|Raeford, NC
+1910907|Fort Bragg, NC
 1910937|Jacksonville, NC
 1910938|Jacksonville, NC
 1910944|Aberdeen, NC
@@ -28834,7 +29144,9 @@
 1912587|Statesboro, GA
 1912588|Jesup, GA
 1912598|Savannah, GA
+1912629|Savannah, GA
 1912632|Alma, GA
+1912634|St. Simons, GA
 1912638|St. Simons, GA
 1912644|Savannah, GA
 1912647|Patterson, GA
@@ -28857,6 +29169,7 @@
 1912819|Savannah, GA
 1912826|Rincon, GA
 1912829|Sylvania, GA
+1912842|Brooklet, GA
 1912863|Sylvania, GA
 1912871|Statesboro, GA
 1912876|Hinesville, GA
@@ -28935,6 +29248,7 @@
 1914376|Yonkers, NY
 1914377|Yonkers, NY
 1914378|Yonkers, NY
+1914421|White Plains, NY
 1914422|White Plains, NY
 1914423|Yonkers, NY
 1914457|Yonkers, NY
@@ -29051,6 +29365,7 @@
 1915779|El Paso, TX
 1915781|El Paso, TX
 1915783|El Paso, TX
+1915790|El Paso, TX
 1915821|El Paso, TX
 1915822|El Paso, TX
 1915832|El Paso, TX
@@ -29242,6 +29557,7 @@
 1918257|Afton, OK
 1918258|Broken Arrow, OK
 1918259|Broken Arrow, OK
+1918266|Catoosa, OK
 1918267|Beggs, OK
 1918270|Tulsa, OK
 1918272|Owasso, OK
@@ -29301,6 +29617,7 @@
 1918458|Tahlequah, OK
 1918459|Tulsa, OK
 1918461|Tulsa, OK
+1918463|Warner, OK
 1918465|Wilburton, OK
 1918469|Quinton, OK
 1918473|Checotah, OK
@@ -29446,6 +29763,8 @@
 1919309|Durham, NC
 1919317|Durham, NC
 1919319|Cary, NC
+1919331|Angier, NC
+1919340|Louisburg, NC
 1919350|Raleigh, NC
 1919359|Clayton, NC
 1919365|Wendell, NC
@@ -29560,6 +29879,7 @@
 1919835|Raleigh, NC
 1919836|Raleigh, NC
 1919838|Raleigh, NC
+1919839|Raleigh, NC
 1919841|Raleigh, NC
 1919843|Chapel Hill, NC
 1919844|Raleigh, NC
@@ -29721,6 +30041,7 @@
 1920833|Seymour, WI
 1920834|Oconto, WI
 1920835|Oconto, WI
+1920837|Casco, WI
 1920839|Baileys Harbor, WI
 1920842|Suring, WI
 1920845|Luxemburg, WI
@@ -29804,6 +30125,7 @@
 1925454|Livermore, CA
 1925455|Livermore, CA
 1925456|Livermore, CA
+1925458|Bay Point, CA
 1925460|Pleasanton, CA
 1925461|Pleasanton, CA
 1925462|Pleasanton, CA
@@ -29963,6 +30285,7 @@
 1928927|Quartzsite, AZ
 1931|Tennessee
 1931221|Clarksville, TN
+1931223|Columbia, TN
 1931232|Dover, TN
 1931243|Celina, TN
 1931245|Clarksville, TN
@@ -30093,6 +30416,7 @@
 1936436|Huntsville, TX
 1936439|Huntsville, TX
 1936441|Conroe, TX
+1936449|Montgomery, TX
 1936462|Nacogdoches, TX
 1936494|Conroe, TX
 1936522|Conroe, TX
@@ -30153,6 +30477,7 @@
 1937253|Dayton, OH
 1937254|Dayton, OH
 1937256|Dayton, OH
+1937257|Dayton, OH
 1937258|Dayton, OH
 1937262|Dayton, OH
 1937263|Dayton, OH
@@ -30361,6 +30686,7 @@
 1941342|Sarasota, FL
 1941343|Sarasota, FL
 1941346|Sarasota, FL
+1941347|Punta Gorda, FL
 1941349|Sarasota, FL
 1941351|Sarasota, FL
 1941355|Sarasota, FL
@@ -30573,6 +30899,8 @@
 1951699|Temecula, CA
 1951719|Temecula, CA
 1951738|Corona, CA
+1951739|Corona, CA
+1951763|Anza, CA
 1951765|Hemet, CA
 1951766|Hemet, CA
 1951774|Riverside, CA
@@ -30961,6 +31289,7 @@
 1972253|Irving, TX
 1972254|Irving, TX
 1972255|Irving, TX
+1972256|Irving, TX
 1972257|Irving, TX
 1972258|Irving, TX
 1972259|Irving, TX
@@ -31027,6 +31356,7 @@
 1972502|Dallas, TX
 1972509|Plano, TX
 1972512|Carrollton, TX
+1972513|Irving, TX
 1972517|Plano, TX
 1972518|Irving, TX
 1972519|Plano, TX
@@ -31081,6 +31411,7 @@
 1972727|Allen, TX
 1972734|Princeton, TX
 1972736|Princeton, TX
+1972744|Richardson, TX
 1972745|Coppell, TX
 1972749|Dallas, TX
 1972756|Irving, TX
@@ -31133,6 +31464,7 @@
 1973247|Paterson, NJ
 1973259|Bloomfield, NJ
 1973273|Newark, NJ
+1973274|Newark, NJ
 1973278|Paterson, NJ
 1973279|Paterson, NJ
 1973284|Nutley, NJ
@@ -31140,6 +31472,7 @@
 1973290|Morristown, NJ
 1973293|Montague, NJ
 1973297|Newark, NJ
+1973305|Wayne, NJ
 1973321|Paterson, NJ
 1973322|Livingston, NJ
 1973324|West Orange, NJ
@@ -31161,6 +31494,7 @@
 1973483|Newark, NJ
 1973485|Newark, NJ
 1973491|Newark, NJ
+1973497|Newark, NJ
 1973504|Newark, NJ
 1973509|Montclair, NJ
 1973522|Newark, NJ
@@ -31210,6 +31544,7 @@
 1973754|Paterson, NJ
 1973758|Livingston, NJ
 1973759|Belleville, NJ
+1973782|Paterson, NJ
 1973783|Montclair, NJ
 1973792|Newark, NJ
 1973799|Newark, NJ
@@ -31228,6 +31563,7 @@
 1973972|Newark, NJ
 1973977|Paterson, NJ
 1973991|Newark, NJ
+1973993|Morristown, NJ
 1973994|Livingston, NJ
 1978|Massachusetts
 1978232|Beverly, MA
@@ -31307,6 +31643,7 @@
 1978579|Sudbury, MA
 1978582|Lunenburg, MA
 1978589|Westford, MA
+1978594|Salem, MA
 1978597|Townsend, MA
 1978620|Lawrence, MA
 1978623|Andover, MA
