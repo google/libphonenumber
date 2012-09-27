@@ -70,6 +70,10 @@ set (TEST_SOURCES
 
 set (TEST_LIBS ${GTEST_LIB})
 
+if (NOT WIN32)
+  list (APPEND TEST_LIBS pthread)
+endif ()
+
 # Build the testing binary.
 include_directories ("test")
 add_executable (generate_geocoding_data_test ${TEST_SOURCES})
