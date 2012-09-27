@@ -1590,7 +1590,7 @@
           [237]\d{8}|
           8(?:
             [68]\d{3}|
-            7[0-6]\d{2}|
+            7[0-69]\d{2}|
             9(?:
               [02-9]\d{2}|
               1(?:
@@ -1614,12 +1614,11 @@
           4(?:
             [0-2]\d|
             3[0-57-9]|
-            4[46-9]|
-            5[0-37-9]|
+            4[47-9]|
+            5[0-35-9]|
             6[6-9]|
-            7[07-9]|
-            8[7-9]|
-            9[89]
+            [79][07-9]|
+            8[17-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
@@ -6032,7 +6031,6 @@
     <!-- http://www.conatel.gob.ec/site_conatel/index.php?option=com_content&view=category&layout=blog&id=52&Itemid=153
          -->
     <!-- http://www.itu.int/oth/T020200003D/en -->
-    <!-- A new plan has been prepared, but no implementation date has yet been stated. -->
     <territory id="EC" countryCode="593" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="($NP$FG)">
       <availableFormats>
@@ -6044,22 +6042,23 @@
           <format>$1 $2-$3</format>
           <intlFormat>$1-$2-$3</intlFormat>
         </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{3})(\d{3})"
-          nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>
-            [356]9|
-            [89]
-          </leadingDigits>
+        <!-- Formatting for the new longer mobile numbers comes from the advertisements about the
+             change on the www.conatel.gob.ec site. -->
+        <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(1800)(\d{3})(\d{3,4})"
-          nationalPrefixFormattingRule="$FG">
+        <numberFormat pattern="(1800)(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$FG">
           <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-9]\d{7}|1\d{9,10}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d{9,10}|
+          [2-8]\d{7}|
+          9\d{8}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{7,11}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -6069,13 +6068,13 @@
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
-          (?:
-            [356]9|
+          9(?:
+            [2-7]9|
             [89]\d
           )\d{6}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{8}</possibleNumberPattern>
-        <exampleNumber>99123456</exampleNumber>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>991234567</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>1800\d{6,7}</nationalNumberPattern>
@@ -13277,8 +13276,8 @@
               8\d{2}
             )|
             9(?:
-              [0-689][1-9]|
-              7[1-9]\d?
+              [0-589][1-9]|
+              [67][1-9]\d?
             )
           )\d{5}
         </nationalNumberPattern>
@@ -14217,7 +14216,7 @@
             7(?:
               [01]|
               6[013-9]|
-              88|
+              8[89]|
               91
             )
           </leadingDigits>
@@ -14244,15 +14243,14 @@
         <exampleNumber>1123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- 791\d{5} is being used for mobile, according to numbers found online, despite
-             overlapping partially with shorter fixed-line numbers beginning with 79. -->
+        <!-- We only validate the first three digits here, since the ranges are growing rapidly. -->
         <nationalNumberPattern>
           (?:
             3\d|
             7(?:
               [01]\d|
               6[013-9]|
-              88|
+              8[89]|
               91
             )
           )\d{5}
@@ -22335,7 +22333,7 @@
         <nationalNumberPattern>
           (?:
             [259]\d|
-            4[01]
+            4[0-2]
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>20123456</exampleNumber>
@@ -23187,7 +23185,7 @@
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>2012345678</exampleNumber>
+        <exampleNumber>2015550123</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
@@ -23279,7 +23277,7 @@
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>2012345678</exampleNumber>
+        <exampleNumber>2015550123</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>
