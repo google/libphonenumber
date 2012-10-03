@@ -40,12 +40,12 @@ Requirements:
   - RE2
     http://code.google.com/p/re2/
 
-    You can install it very easily on Ubuntu Maverick and later:
+    You can install it very easily on Ubuntu Natty:
     $ sudo apt-get install libre2-dev
 
     Otherwise if you use a Debian-based distribution you can fetch the Ubuntu
     package which should work:
-    http://packages.ubuntu.com/maverick/libre2-dev
+    http://packages.ubuntu.com/natty/libre2-dev
 
     If you want to install it manually:
     You need Mercurial to checkout its source code:
