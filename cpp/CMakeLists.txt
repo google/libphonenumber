@@ -23,6 +23,8 @@ set (libphonenumber_VERSION_MINOR 1)
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
+include (../tools/cpp/gtest.cmake)
+
 function (print_error DESCRIPTION FILE)
   message (FATAL_ERROR
     "Can't find ${DESCRIPTION}: can't locate ${FILE}. Please read the README.")
@@ -82,7 +84,7 @@ if (NOT Boost_FOUND)
 endif ()
 include_directories (${Boost_INCLUDE_DIRS})
 
-find_required_library (GTEST gtest/gtest.h gtest "Google Test framework")
+find_or_build_gtest ()
 
 if (${USE_RE2} STREQUAL "ON")
   find_required_library (RE2 re2/re2.h re2 "Google RE2")

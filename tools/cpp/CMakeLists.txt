@@ -21,32 +21,9 @@ project (generate_geocoding_data)
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
-function (print_error DESCRIPTION FILE)
-  message (FATAL_ERROR
-    "Can't find ${DESCRIPTION}: can't locate ${FILE}. Please read the README.")
-endfunction ()
+include (gtest.cmake)
 
-# Find a library. If it has not been found, stop CMake with a fatal error
-# message.
-function (find_required_library NAME HEADER LIBRARY DESCRIPTION)
-  # Check the header.
-  find_path (${NAME}_INCLUDE_DIR ${HEADER})
-  set (INCLUDE_DIR ${${NAME}_INCLUDE_DIR})
-
-  if (${INCLUDE_DIR} STREQUAL "${INCLUDE_DIR}-NOTFOUND")
-    print_error (${DESCRIPTION} ${HEADER})
-  endif ()
-  include_directories (${INCLUDE_DIR})
-  # Check the binary.
-  find_library (${NAME}_LIB ${LIBRARY})
-  set (LIB ${NAME}_LIB)
-
-  if (${LIB} STREQUAL "${LIB}-NOTFOUND")
-    print_error (${DESCRIPTION} ${LIBRARY})
-  endif ()
-endfunction (find_required_library)
-
-find_required_library (GTEST gtest/gtest.h gtest "Google Test framework")
+find_or_build_gtest ()
 
 set (
   SOURCES
