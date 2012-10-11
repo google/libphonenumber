@@ -811,12 +811,12 @@ void PhoneNumberUtil::GetNddPrefixForRegion(const string& region_code,
                                             bool strip_non_digits,
                                             string* national_prefix) const {
   DCHECK(national_prefix);
-  if (!IsValidRegionCode(region_code)) {
+  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
+  if (!metadata) {
     LOG(WARNING) << "Invalid or unknown region code (" << region_code
                  << ") provided.";
     return;
   }
-  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
   national_prefix->assign(metadata->national_prefix());
   if (strip_non_digits) {
     // Note: if any other non-numeric symbols are ever used in national
@@ -841,7 +841,8 @@ bool PhoneNumberUtil::HasValidCountryCallingCode(
                         target_pair, OrderByFirst()));
 }
 
-// Returns a pointer to the phone metadata for the appropriate region.
+// Returns a pointer to the phone metadata for the appropriate region or NULL
+// if the region code is invalid or unknown.
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
     const string& region_code) const {
   map<string, PhoneMetadata>::const_iterator it =
@@ -870,6 +871,11 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
   if (number.national_number() == 0) {
     const string& raw_input = number.raw_input();
     if (!raw_input.empty()) {
+      // Unparseable numbers that kept their raw input just use that.
+      // This is the only case where a number can be formatted as E164 without a
+      // leading '+' symbol (but the original number wasn't parseable anyway).
+      // TODO: Consider removing the 'if' above so that unparseable
+      // strings without raw input format to the empty string instead of "+00".
       formatted_number->assign(raw_input);
       return;
     }
@@ -878,11 +884,16 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
   if (number_format == E164) {
-    // Early exit for E164 case since no formatting of the national number needs
-    // to be applied. Extensions are not formatted.
+    // Early exit for E164 case (even if the country calling code is invalid)
+    // since no formatting of the national number needs to be applied.
+    // Extensions are not formatted.
     formatted_number->assign(national_significant_number);
     PrefixNumberWithCountryCallingCode(country_calling_code, E164,
                                        formatted_number);
+    return;
+  }
+  if (!HasValidCountryCallingCode(country_calling_code)) {
+    formatted_number->assign(national_significant_number);
     return;
   }
   // Note here that all NANPA formatting rules are contained by US, so we use
@@ -891,10 +902,9 @@ void PhoneNumberUtil::Format(const PhoneNumber& number,
   // contained by Réunion.
   string region_code;
   GetRegionCodeForCountryCode(country_calling_code, &region_code);
-  if (!HasValidCountryCallingCode(country_calling_code)) {
-    formatted_number->assign(national_significant_number);
-    return;
-  }
+  // Metadata cannot be NULL because the country calling code is valid (which
+  // means that the region code cannot be ZZ and must be one of our supported
+  // region codes).
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
   FormatNsn(national_significant_number, *metadata, number_format,
@@ -916,14 +926,15 @@ void PhoneNumberUtil::FormatByPattern(
   // for regions which share a country calling code is contained by only one
   // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
-  string region_code;
-  GetRegionCodeForCountryCode(country_calling_code, &region_code);
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
   if (!HasValidCountryCallingCode(country_calling_code)) {
     formatted_number->assign(national_significant_number);
     return;
   }
+  string region_code;
+  GetRegionCodeForCountryCode(country_calling_code, &region_code);
+  // Metadata cannot be NULL because the country calling code is valid.
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
   const NumberFormat* formatting_pattern =
@@ -971,15 +982,18 @@ void PhoneNumberUtil::FormatNationalNumberWithCarrierCode(
   int country_calling_code = number.country_code();
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
+  if (!HasValidCountryCallingCode(country_calling_code)) {
+    formatted_number->assign(national_significant_number);
+    return;
+  }
+
   // Note GetRegionCodeForCountryCode() is used because formatting information
   // for regions which share a country calling code is contained by only one
   // region for performance reasons. For example, for NANPA regions it will be
   // contained in the metadata for US.
   string region_code;
   GetRegionCodeForCountryCode(country_calling_code, &region_code);
-  if (!HasValidCountryCallingCode(country_calling_code)) {
-    formatted_number->assign(national_significant_number);
-  }
+  // Metadata cannot be NULL because the country calling code is valid.
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
   FormatNsnWithCarrier(national_significant_number, *metadata, NATIONAL,
@@ -1111,10 +1125,7 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
     Format(number, NATIONAL, formatted_number);
     return;
   }
-  string region_code;
-  GetRegionCodeForCountryCode(country_code, &region_code);
-  const PhoneMetadata* metadata_for_region =
-      GetMetadataForRegionOrCallingCode(country_code, region_code);
+  // Metadata cannot be NULL because we checked 'IsValidRegionCode()' above.
   const PhoneMetadata* metadata_calling_from =
       GetMetadataForRegion(calling_from);
   const string& international_prefix =
@@ -1126,6 +1137,12 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
       reg_exps_->unique_international_prefix_->FullMatch(international_prefix)
       ? international_prefix
       : metadata_calling_from->preferred_international_prefix());
+
+  string region_code;
+  GetRegionCodeForCountryCode(country_code, &region_code);
+  // Metadata cannot be NULL because the country_code is valid.
+  const PhoneMetadata* metadata_for_region =
+      GetMetadataForRegionOrCallingCode(country_code, region_code);
   FormatNsn(national_significant_number, *metadata_for_region, INTERNATIONAL,
             formatted_number);
   MaybeAppendFormattedExtension(number, *metadata_for_region, INTERNATIONAL,
@@ -1193,6 +1210,8 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
         Format(number, NATIONAL, formatted_number);
         break;
       }
+      // Metadata cannot be NULL here because GetNddPrefixForRegion() (above)
+      // leaves the prefix empty if there is no metadata for the region.
       const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
       string national_number;
       GetNationalSignificantNumber(number, &national_number);
@@ -1201,6 +1220,14 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
       const NumberFormat* format_rule =
           ChooseFormattingPatternForNumber(metadata->number_format(),
                                            national_number);
+      // The format rule could still be NULL here if the national number was 0
+      // and there was no raw input (this should not be possible for numbers
+      // generated by the phonenumber library as they would also not have a
+      // country calling code and we would have exited earlier).
+      if (!format_rule) {
+        Format(number, NATIONAL, formatted_number);
+        break;
+      }
       // When the format we apply to this number doesn't contain national
       // prefix, we can just return the national format.
       // TODO: Refactor the code below with the code in
@@ -1230,14 +1257,15 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
   // If no digit is inserted/removed/modified as a result of our formatting, we
   // return the formatted phone number; otherwise we return the raw input the
   // user entered.
-  if (!formatted_number->empty()) {
-    string formatted_number_copy(*formatted_number);
+  if (!formatted_number->empty() && !number.raw_input().empty()) {
+    string normalized_formatted_number(*formatted_number);
     NormalizeHelper(reg_exps_->diallable_char_mappings_,
-                    true /* remove non matches */, &formatted_number_copy);
-    string raw_input_copy(number.raw_input());
+                    true /* remove non matches */,
+                    &normalized_formatted_number);
+    string normalized_raw_input(number.raw_input());
     NormalizeHelper(reg_exps_->diallable_char_mappings_,
-                    true /* remove non matches */, &raw_input_copy);
-    if (formatted_number_copy != raw_input_copy) {
+                    true /* remove non matches */, &normalized_raw_input);
+    if (normalized_formatted_number != normalized_raw_input) {
       formatted_number->assign(number.raw_input());
     }
   }
@@ -1331,7 +1359,7 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
       StrAppend(formatted_number, country_code, " ", raw_input_copy);
       return;
     }
-  } else if (IsValidRegionCode(calling_from) &&
+  } else if (metadata &&
              country_code == GetCountryCodeForValidRegion(calling_from)) {
     const NumberFormat* formatting_pattern =
         ChooseFormattingPatternForNumber(metadata->number_format(),
@@ -1603,6 +1631,8 @@ void PhoneNumberUtil::GetRegionCodeForNumberFromRegionList(
   GetNationalSignificantNumber(number, &national_number);
   for (list<string>::const_iterator it = region_codes.begin();
        it != region_codes.end(); ++it) {
+    // Metadata cannot be NULL because the region codes come from the country
+    // calling code map.
     const PhoneMetadata* metadata = GetMetadataForRegion(*it);
     if (metadata->has_leading_digits()) {
       const scoped_ptr<RegExpInput> number(
@@ -1966,6 +1996,7 @@ PhoneNumberUtil::ValidationResult PhoneNumberUtil::IsPossibleNumberWithReason(
   }
   string region_code;
   GetRegionCodeForCountryCode(country_code, &region_code);
+  // Metadata cannot be NULL because the country calling code is valid.
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_code, region_code);
   const PhoneNumberDesc& general_num_desc = metadata->general_desc();
@@ -2008,14 +2039,13 @@ PhoneNumberUtil::PhoneNumberType PhoneNumberUtil::GetNumberType(
     const PhoneNumber& number) const {
   string region_code;
   GetRegionCodeForNumber(number, &region_code);
-  if (!IsValidRegionCode(region_code) &&
-      kRegionCodeForNonGeoEntity != region_code) {
+  const PhoneMetadata* metadata =
+      GetMetadataForRegionOrCallingCode(number.country_code(), region_code);
+  if (!metadata) {
     return UNKNOWN;
   }
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
-  const PhoneMetadata* metadata =
-      GetMetadataForRegionOrCallingCode(number.country_code(), region_code);
   return GetNumberTypeHelper(national_significant_number,
                              *metadata,
                              reg_exps_->regexp_cache_.get());
@@ -2057,11 +2087,20 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
                              reg_exps_->regexp_cache_.get()) != UNKNOWN;
 }
 
+bool PhoneNumberUtil::IsNumberGeographical(
+    const PhoneNumber& phone_number) const {
+  PhoneNumberType number_type = GetNumberType(phone_number);
+  // TODO: Include mobile phone numbers from countries like
+  // Indonesia, which has some mobile numbers that are geographical.
+  return number_type == PhoneNumberUtil::FIXED_LINE ||
+      number_type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE;
+}
+
 bool PhoneNumberUtil::IsLeadingZeroPossible(int country_calling_code) const {
   string region_code;
   GetRegionCodeForCountryCode(country_calling_code, &region_code);
-  const PhoneMetadata* main_metadata_for_calling_code = GetMetadataForRegion(
-      region_code);
+  const PhoneMetadata* main_metadata_for_calling_code =
+      GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
   if (!main_metadata_for_calling_code) return false;
   return main_metadata_for_calling_code->leading_zero_possible();
 }
@@ -2080,11 +2119,10 @@ int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
     const PhoneNumber& number) const {
   string region_code;
   GetRegionCodeForNumber(number, &region_code);
-  if (!IsValidRegionCode(region_code)) {
+  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
+  if (!metadata) {
     return 0;
   }
-  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
-  DCHECK(metadata);
   // If a country doesn't use a national prefix, and this number doesn't have an
   // Italian leading zero, we assume it is a closed dialling plan with no area
   // codes.
@@ -2092,13 +2130,7 @@ int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
     return 0;
   }
 
-  string national_significant_number;
-  GetNationalSignificantNumber(number, &national_significant_number);
-  PhoneNumberType type = GetNumberTypeHelper(national_significant_number,
-                                             *metadata,
-                                             reg_exps_->regexp_cache_.get());
-  // Most numbers other than the two types below have to be dialled in full.
-  if (type != FIXED_LINE && type != FIXED_LINE_OR_MOBILE) {
+  if (!IsNumberGeographical(number)) {
     return 0;
   }
 
@@ -2657,12 +2689,12 @@ bool PhoneNumberUtil::CanBeInternationallyDialled(
     const PhoneNumber& number) const {
   string region_code;
   GetRegionCodeForNumber(number, &region_code);
-  if (!IsValidRegionCode(region_code)) {
+  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
+  if (!metadata) {
     // Note numbers belonging to non-geographical entities (e.g. +800 numbers)
     // are always internationally diallable, and will be caught here.
     return true;
   }
-  const PhoneMetadata* metadata = GetMetadataForRegion(region_code);
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
   return !IsNumberMatchingDesc(

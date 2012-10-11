@@ -689,9 +689,8 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("UY");
     countryCodeToRegionCodeMap.put(598, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(3);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("CW");
-    listWithRegionCode.add("AN");
     listWithRegionCode.add("BQ");
     countryCodeToRegionCodeMap.put(599, listWithRegionCode);
 

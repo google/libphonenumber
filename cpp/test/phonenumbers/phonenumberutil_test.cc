@@ -22,7 +22,9 @@
 
 #include "phonenumbers/phonenumberutil.h"
 
+#include <algorithm>
 #include <iostream>
+#include <list>
 #include <set>
 #include <string>
 
@@ -37,10 +39,13 @@ namespace i18n {
 namespace phonenumbers {
 
 using std::endl;
+using std::find;
 using std::make_pair;
 using std::ostream;
 
 using google::protobuf::RepeatedPtrField;
+
+static const int kInvalidCountryCode = 2;
 
 class PhoneNumberUtilTest : public testing::Test {
  protected:
@@ -61,6 +66,13 @@ class PhoneNumberUtilTest : public testing::Test {
     phone_util_.GetSupportedRegions(regions);
   }
 
+  void GetRegionCodesForCountryCallingCode(
+      int country_calling_code,
+      list<string>* regions) {
+    phone_util_.GetRegionCodesForCountryCallingCode(country_calling_code,
+                                                    regions);
+  }
+
   void ExtractPossibleNumber(const string& number,
                              string* extracted_number) const {
     phone_util_.ExtractPossibleNumber(number, extracted_number);
@@ -76,6 +88,10 @@ class PhoneNumberUtilTest : public testing::Test {
 
   void Normalize(string* number) const {
     phone_util_.Normalize(number);
+  }
+
+  bool IsNumberGeographical(const PhoneNumber& phone_number) const {
+    return phone_util_.IsNumberGeographical(phone_number);
   }
 
   bool IsLeadingZeroPossible(int country_calling_code) const {
@@ -146,6 +162,35 @@ TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
 
   GetSupportedRegions(&regions);
   EXPECT_GT(regions.size(), 0U);
+}
+
+TEST_F(PhoneNumberUtilTest, GetRegionCodesForCountryCallingCode) {
+  list<string> regions;
+
+  GetRegionCodesForCountryCallingCode(1, &regions);
+  EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::US())
+              != regions.end());
+  EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::BS())
+              != regions.end());
+
+  regions.clear();
+  GetRegionCodesForCountryCallingCode(44, &regions);
+  EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::GB())
+              != regions.end());
+
+  regions.clear();
+  GetRegionCodesForCountryCallingCode(49, &regions);
+  EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::DE())
+              != regions.end());
+
+  regions.clear();
+  GetRegionCodesForCountryCallingCode(800, &regions);
+  EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::UN001())
+              != regions.end());
+
+  regions.clear();
+  GetRegionCodesForCountryCallingCode(kInvalidCountryCode, &regions);
+  EXPECT_TRUE(regions.empty());
 }
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
@@ -847,6 +892,14 @@ TEST_F(PhoneNumberUtilTest, FormatWithCarrierCode) {
   phone_util_.FormatNationalNumberWithCarrierCode(us_number, "15",
                                                   &formatted_number);
   EXPECT_EQ("424 123 1234", formatted_number);
+
+  // Invalid country code should just get the NSN.
+  PhoneNumber invalid_number;
+  invalid_number.set_country_code(kInvalidCountryCode);
+  invalid_number.set_national_number(12345ULL);
+  phone_util_.FormatNationalNumberWithCarrierCode(invalid_number, "89",
+                                                  &formatted_number);
+  EXPECT_EQ("12345", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatWithPreferredCarrierCode) {
@@ -1638,10 +1691,27 @@ TEST_F(PhoneNumberUtilTest, TruncateTooLongNumber) {
   EXPECT_EQ(too_short_number_copy, too_short_number);
 }
 
+TEST_F(PhoneNumberUtilTest, IsNumberGeographical) {
+  PhoneNumber number;
+
+  number.set_country_code(1);
+  number.set_national_number(2423570000ULL);
+  EXPECT_FALSE(IsNumberGeographical(number));  // Bahamas, mobile phone number.
+
+  number.set_country_code(61);
+  number.set_national_number(236618300ULL);
+  EXPECT_TRUE(IsNumberGeographical(number));  // Australian fixed line number.
+
+  number.set_country_code(800);
+  number.set_national_number(12345678ULL);
+  EXPECT_FALSE(IsNumberGeographical(number));  // Internation toll free number.
+}
+
 TEST_F(PhoneNumberUtilTest, IsLeadingZeroPossible) {
   EXPECT_TRUE(IsLeadingZeroPossible(39));  // Italy
   EXPECT_FALSE(IsLeadingZeroPossible(1));  // USA
-  EXPECT_FALSE(IsLeadingZeroPossible(800));  // International toll free numbers
+  EXPECT_TRUE(IsLeadingZeroPossible(800));  // International toll free
+  EXPECT_FALSE(IsLeadingZeroPossible(979));  // International premium-rate
   EXPECT_FALSE(IsLeadingZeroPossible(888));  // Not in metadata file, should
                                              // return default value of false.
 }
@@ -1912,6 +1982,17 @@ TEST_F(PhoneNumberUtilTest, FormatInOriginalFormat) {
   phone_util_.FormatInOriginalFormat(phone_number, RegionCode::JP(),
                                      &formatted_number);
   EXPECT_EQ("1234", formatted_number);
+
+  // Test that an invalid national number without raw input is just formatted
+  // as the national number.
+  phone_number.Clear();
+  formatted_number.clear();
+  phone_number.set_country_code_source(PhoneNumber::FROM_DEFAULT_COUNTRY);
+  phone_number.set_country_code(1);
+  phone_number.set_national_number(650253000ULL);
+  phone_util_.FormatInOriginalFormat(phone_number, RegionCode::US(),
+                                     &formatted_number);
+  EXPECT_EQ("650253000", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, IsPremiumRate) {
@@ -2457,11 +2538,19 @@ TEST_F(PhoneNumberUtilTest, CountryWithNoNumberDesc) {
   EXPECT_EQ("00 1 650 253 0000", formatted_number);
 }
 
-TEST_F(PhoneNumberUtilTest, UnknownCountryCallingCodeForValidation) {
+TEST_F(PhoneNumberUtilTest, UnknownCountryCallingCode) {
   PhoneNumber invalid_number;
-  invalid_number.set_country_code(0);
-  invalid_number.set_national_number(1234ULL);
+  invalid_number.set_country_code(kInvalidCountryCode);
+  invalid_number.set_national_number(12345ULL);
+
   EXPECT_FALSE(phone_util_.IsValidNumber(invalid_number));
+
+  // It's not very well defined as to what the E164 representation for a number
+  // with an invalid country calling code is, but just prefixing the country
+  // code and national number is about the best we can do.
+  string formatted_number;
+  phone_util_.Format(invalid_number, PhoneNumberUtil::E164, &formatted_number);
+  EXPECT_EQ("+212345", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, IsNumberMatchMatches) {

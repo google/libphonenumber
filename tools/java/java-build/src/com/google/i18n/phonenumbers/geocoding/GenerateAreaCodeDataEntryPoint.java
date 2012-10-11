@@ -31,45 +31,6 @@ import java.util.logging.Logger;
 public class GenerateAreaCodeDataEntryPoint extends Command {
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
-  /**
-   * Implementation of the IOHandler required by the GenerateAreaCodeData class used here to create
-   * the output files.
-   */
-  private static class IOHandler extends GenerateAreaCodeData.IOHandler {
-    // The path to the output directory.
-    private final File outputPath;
-
-    public IOHandler(File outputPath) throws IOException {
-      if (outputPath.exists()) {
-        if (!outputPath.isDirectory()) {
-          throw new IOException("Expected directory: " + outputPath.getAbsolutePath());
-        }
-      } else {
-        if (!outputPath.mkdirs()) {
-          throw new IOException("Could not create directory " + outputPath.getAbsolutePath());
-        }
-      }
-      this.outputPath = outputPath;
-    }
-
-    @Override
-    public void addFileToOutput(File file) throws IOException {
-      // Do nothing. This would be the place dealing with the addition of the provided file to the
-      // resulting JAR if the global output was a JAR instead of a directory containing the binary
-      // files.
-    }
-
-    @Override
-    public File createFile(String path) {
-      return new File(outputPath, path);
-    }
-
-    @Override
-    public void close() {
-      // Do nothing as no resource needs to be released.
-    }
-  }
-
   @Override
   public String getCommandName() {
     return "GenerateAreaCodeData";
@@ -86,7 +47,7 @@ public class GenerateAreaCodeDataEntryPoint extends Command {
     }
     try {
       GenerateAreaCodeData generateAreaCodeData =
-          new GenerateAreaCodeData(new File(args[1]), new IOHandler(new File(args[2])));
+          new GenerateAreaCodeData(new File(args[1]), new AreaCodeDataIOHandler(new File(args[2])));
       generateAreaCodeData.run();
     } catch (IOException e) {
       LOGGER.log(Level.SEVERE, e.getMessage());

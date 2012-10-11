@@ -1,3 +1,11 @@
+libphonenumber (5.2) lucid; urgency=low
+
+  * Metadata changes:
+    - Updated metadata for region code(s): DE, GR, HR, OM, SB, ZA
+    - Updated geocoding data for country calling code(s): 30 (el, en)
+
+ -- David Beaumont <dbeaumont@google.com>  Wed, 10 Oct 2012 17:42:28 +0200
+
 libphonenumber (5.1) lucid; urgency=low
 
   * Version update.

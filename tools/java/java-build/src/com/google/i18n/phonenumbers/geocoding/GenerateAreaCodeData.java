@@ -63,47 +63,12 @@ public class GenerateAreaCodeData {
   private final Map<Integer /* country code */, SortedMap<Integer, String>> englishMaps =
       new HashMap<Integer, SortedMap<Integer, String>>();
   // The IO Handler used to output the generated binary files.
-  private final IOHandler ioHandler;
+  private final AbstractAreaCodeDataIOHandler ioHandler;
 
   private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
 
-  /**
-   * Abstracts the way the generated binary files are created and written.
-   */
-  abstract static class IOHandler {
-    /**
-     * Adds the provided file to the global output that can be for example a JAR.
-     *
-     * @throws IOException
-     */
-    abstract void addFileToOutput(File file) throws IOException;
-
-    /**
-     * Creates a new file from the provided path.
-     */
-    abstract File createFile(String path);
-
-    /**
-     * Releases the resources used by the underlying implementation if any.
-     */
-    abstract void close();
-
-    /**
-     * Closes the provided file and logs any potential IOException.
-     */
-    void closeFile(Closeable closeable) {
-      if (closeable == null) {
-        return;
-      }
-      try {
-        closeable.close();
-      } catch (IOException e) {
-        LOGGER.log(Level.WARNING, e.getMessage());
-      }
-    }
-  }
-
-  public GenerateAreaCodeData(File inputPath, IOHandler ioHandler) throws IOException {
+  public GenerateAreaCodeData(File inputPath, AbstractAreaCodeDataIOHandler ioHandler)
+      throws IOException {
     if (!inputPath.isDirectory()) {
       throw new IOException("The provided input path does not exist: " +
                              inputPath.getAbsolutePath());

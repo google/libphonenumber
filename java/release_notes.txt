@@ -1,3 +1,18 @@
+Oct 10, 2012: libphonenumber-5.2
+* Code changes:
+ - Adds isNumberGeographical() method.
+ - Adds getRegionCodesForCountryCode() method.
+ - Fixing issue with getSupportedGlobalNetworkCallingCodes()
+   [http://code.google.com/p/libphonenumber/issues/detail?id=202]
+ - Ensures that returned collections are unmodifiable where necessary
+   [there is a very slight risk that this may break existing users who were relying on being able
+   to modify these collections, but doing so would be breaking lots of other assumptions that this
+   library makes - if you need to modify any affected collections you must copy them first]
+* Metadata changes:
+ - Updated metadata for region code(s): DE, GR, HR, OM, SB, ZA
+ - Removed metadata for region code: AN (Netherlands Antilles)
+ - Updated geocoding data for country calling code(s): 30 (el, en)
+
 Sep 27, 2012: libphonenumber-5.1.4
 * Metadata changes:
  - Updated metadata for region code(s): AU, EC, KH, LB, TN, US

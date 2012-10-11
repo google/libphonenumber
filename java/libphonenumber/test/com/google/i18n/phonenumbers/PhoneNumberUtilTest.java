@@ -37,6 +37,8 @@ import java.util.List;
  */
 public class PhoneNumberUtilTest extends TestMetadataTestCase {
   // Set up some test numbers to re-use.
+  // TODO: Rewrite this as static functions that return new numbers each time to avoid
+  // any risk of accidental changes to mutable static state affecting many tests.
   private static final PhoneNumber ALPHA_NUMERIC_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(80074935247L);
   private static final PhoneNumber AR_MOBILE =
@@ -106,6 +108,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(800).setNationalNumber(123456789L);
   private static final PhoneNumber UNIVERSAL_PREMIUM_RATE =
       new PhoneNumber().setCountryCode(979).setNationalNumber(123456789L);
+  private static final PhoneNumber UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT =
+      new PhoneNumber().setCountryCode(2).setNationalNumber(12345L);
 
   public void testGetSupportedRegions() {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
@@ -202,10 +206,18 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("12345678", metadata.getTollFree().getExampleNumber());
   }
 
+  public void testIsNumberGeographical() {
+    assertFalse(phoneUtil.isNumberGeographical(BS_MOBILE));  // Bahamas, mobile phone number.
+    assertTrue(phoneUtil.isNumberGeographical(AU_NUMBER));  // Australian fixed line number.
+    assertFalse(phoneUtil.isNumberGeographical(INTERNATIONAL_TOLL_FREE));  // International toll
+                                                                           // free number.
+  }
+
   public void testIsLeadingZeroPossible() {
     assertTrue(phoneUtil.isLeadingZeroPossible(39));  // Italy
     assertFalse(phoneUtil.isLeadingZeroPossible(1));  // USA
-    assertFalse(phoneUtil.isLeadingZeroPossible(800));  // International toll free numbers
+    assertTrue(phoneUtil.isLeadingZeroPossible(800));  // International toll free
+    assertFalse(phoneUtil.isLeadingZeroPossible(979));  // International premium-rate
     assertFalse(phoneUtil.isLeadingZeroPossible(888));  // Not in metadata file, just default to
                                                         // false.
   }
@@ -639,6 +651,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("+5492234654321", phoneUtil.format(arMobile, PhoneNumberFormat.E164));
     // We don't support this for the US so there should be no change.
     assertEquals("650 253 0000", phoneUtil.formatNationalNumberWithCarrierCode(US_NUMBER, "15"));
+
+    // Invalid country code should just get the NSN.
+    assertEquals("12345",
+        phoneUtil.formatNationalNumberWithCarrierCode(UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT, "89"));
   }
 
   public void testFormatWithPreferredCarrierCode() {
@@ -904,6 +920,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("*1234", phoneUtil.formatInOriginalFormat(starNumber, RegionCode.JP));
     PhoneNumber numberWithoutStar = phoneUtil.parseAndKeepRawInput("1234", RegionCode.JP);
     assertEquals("1234", phoneUtil.formatInOriginalFormat(numberWithoutStar, RegionCode.JP));
+
+    // Test an invalid national number without raw input is just formatted as the national number.
+    assertEquals("650253000",
+        phoneUtil.formatInOriginalFormat(US_SHORT_BY_ONE_NUMBER, RegionCode.US));
   }
 
   public void testIsPremiumRate() {
@@ -1110,6 +1130,17 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(RegionCode.GB, phoneUtil.getRegionCodeForNumber(GB_MOBILE));
     assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForNumber(INTERNATIONAL_TOLL_FREE));
     assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForNumber(UNIVERSAL_PREMIUM_RATE));
+  }
+
+  public void testGetRegionCodesForCountryCode() {
+    List<String> regionCodesForNANPA = phoneUtil.getRegionCodesForCountryCode(1);
+    assertTrue(regionCodesForNANPA.contains(RegionCode.US));
+    assertTrue(regionCodesForNANPA.contains(RegionCode.BS));
+    assertTrue(phoneUtil.getRegionCodesForCountryCode(44).contains(RegionCode.GB));
+    assertTrue(phoneUtil.getRegionCodesForCountryCode(49).contains(RegionCode.DE));
+    assertTrue(phoneUtil.getRegionCodesForCountryCode(800).contains(RegionCode.UN001));
+    // Test with invalid country calling code.
+    assertTrue(phoneUtil.getRegionCodesForCountryCode(-1).isEmpty());
   }
 
   public void testGetCountryCodeForRegion() {
@@ -2189,10 +2220,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.formatOutOfCountryCallingNumber(US_NUMBER, RegionCode.AD));
   }
 
-  public void testUnknownCountryCallingCodeForValidation() {
-    PhoneNumber invalidNumber = new PhoneNumber();
-    invalidNumber.setCountryCode(0).setNationalNumber(1234L);
-    assertFalse(phoneUtil.isValidNumber(invalidNumber));
+  public void testUnknownCountryCallingCode() {
+    assertFalse(phoneUtil.isValidNumber(UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT));
+    // It's not very well defined as to what the E164 representation for a number with an invalid
+    // country calling code is, but just prefixing the country code and national number is about
+    // the best we can do.
+    assertEquals("+212345",
+        phoneUtil.format(UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT, PhoneNumberFormat.E164));
   }
 
   public void testIsNumberMatchMatches() throws Exception {

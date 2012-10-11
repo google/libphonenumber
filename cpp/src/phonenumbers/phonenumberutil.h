@@ -157,6 +157,14 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // for.
   void GetSupportedRegions(set<string>* regions) const;
 
+  // Populates a list with the region codes that match the specific country
+  // calling code. For non-geographical country calling codes, the region code
+  // 001 is returned. Also, in the case of no region code being found, the list
+  // is left unchanged.
+  void GetRegionCodesForCountryCallingCode(
+      int country_calling_code,
+      list<string>* region_codes) const;
+
   // Gets a PhoneNumberUtil instance to carry out international phone number
   // formatting, parsing, or validation. The instance is loaded with phone
   // number metadata for a number of most commonly used regions, as specified by
@@ -383,6 +391,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // are examined.
   // This is useful for determining for example whether a particular number is
   // valid for Canada, rather than just a valid NANPA number.
+  // Warning: In most cases, you want to use IsValidNumber instead. For
+  // example, this method will mark numbers from British Crown dependencies
+  // such as the Isle of Man as invalid for the region "GB" (United Kingdom),
+  // since it has its own region code, "IM", which may be undesirable.
   bool IsValidNumberForRegion(
       const PhoneNumber& number,
       const string& region_code) const;
@@ -645,6 +657,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Trims unwanted end characters from a phone number string.
   void TrimUnwantedEndChars(string* number) const;
 
+  // Tests whether a phone number has a geographical association. It checks if
+  // the number is associated to a certain region in the country where it
+  // belongs to. Note that this doesn't verify if the number is actually in use.
+  bool IsNumberGeographical(const PhoneNumber& phone_number) const;
+
   // Helper function to check region code is not unknown or null.
   bool IsValidRegionCode(const string& region_code) const;
 
@@ -664,10 +681,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // As per GetCountryCodeForRegion, but assumes the validity of the region_code
   // has already been checked.
   int GetCountryCodeForValidRegion(const string& region_code) const;
-
-  void GetRegionCodesForCountryCallingCode(
-      int country_calling_code,
-      list<string>* region_codes) const;
 
   const NumberFormat* ChooseFormattingPatternForNumber(
       const RepeatedPtrField<NumberFormat>& available_formats,

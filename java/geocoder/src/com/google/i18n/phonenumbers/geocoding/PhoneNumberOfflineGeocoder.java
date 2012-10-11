@@ -246,6 +246,11 @@ public class PhoneNumberOfflineGeocoder {
     return getDescriptionForValidNumber(number, languageCode, userRegion);
   }
 
+  /**
+   * A similar method is implemented as PhoneNumberUtil.isNumberGeographical, which performs a
+   * stricter check, as it determines if a number has a geographical association. Also, if new
+   * phone number types were added, we should check if this other method should be updated too.
+   */
   private boolean canBeGeocoded(PhoneNumberType numberType) {
     return (numberType == PhoneNumberType.FIXED_LINE ||
             numberType == PhoneNumberType.MOBILE ||

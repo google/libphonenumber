@@ -800,7 +800,7 @@
     </territory>
 
     <!-- International Toll Free numbers  -->
-    <territory id="001" countryCode="800">
+    <territory id="001" countryCode="800" leadingZeroPossible="true">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
