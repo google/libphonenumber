@@ -6,42 +6,6 @@ libphonenumber (5.2) lucid; urgency=low
 
  -- David Beaumont <dbeaumont@google.com>  Wed, 10 Oct 2012 17:42:28 +0200
 
-libphonenumber (5.1) lucid; urgency=low
-
-  * Version update.
-
- -- Fredrik Roubert <roubert@google.com>  Thu, 27 Sep 2012 17:06:43 +0200
-
-libphonenumber (4.3) lucid; urgency=low
-
-  * Version update.
-
- -- Fredrik Roubert <roubert@google.com>  Mon, 28 Nov 2011 12:30:24 +0200
-
-libphonenumber (4.2) lucid; urgency=low
-
-  * Version update.
-
- -- Fredrik Roubert <roubert@google.com>  Mon, 14 Nov 2011 14:30:28 +0200
-
-libphonenumber (4.1) lucid; urgency=low
-
-  * Version update.
-
- -- Fredrik Roubert <roubert@google.com>  Wed, 19 Oct 2011 13:30:18 +0200
-
-libphonenumber (4.0) lucid; urgency=low
-
-  * Version update.
-
- -- Fredrik Roubert <roubert@google.com>  Wed, 12 Oct 2011 16:17:14 +0200
-
-libphonenumber (3.9) lucid; urgency=low
-
-  * Version update.
-
- -- Fredrik Roubert <roubert@google.com>  Mon, 26 Sep 2011 15:49:14 +0200
-
 libphonenumber (3.8) unstable; urgency=low
 
   * Initial Debian Package.
