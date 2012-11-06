@@ -488,7 +488,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,[,,"NA","NA"]
 ,,,[,,"NA","NA"]
 ,[,,"NA","NA"]
-,,[,,"NA","NA"]
+,1,[,,"NA","NA"]
 ,[,,"NA","NA"]
 ]
 ,"979":[,[,,"\\d{9}","\\d{9}",,,"123456789"]

@@ -25,6 +25,7 @@
  * @author Nikolaos Trogkanis
  */
 
+goog.require('goog.array');
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.RegionCode');
@@ -35,6 +36,9 @@ var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 
 
 // Set up some test numbers to re-use.
+// TODO: Rewrite this as static functions that return new numbers each time to
+// avoid any risk of accidental changes to mutable static state affecting many
+// tests.
 /** @type {i18n.phonenumbers.PhoneNumber} */
 var ALPHA_NUMERIC_NUMBER = new i18n.phonenumbers.PhoneNumber();
 ALPHA_NUMERIC_NUMBER.setCountryCode(1);
@@ -223,6 +227,12 @@ var UNIVERSAL_PREMIUM_RATE = new i18n.phonenumbers.PhoneNumber();
 UNIVERSAL_PREMIUM_RATE.setCountryCode(979);
 UNIVERSAL_PREMIUM_RATE.setNationalNumber(123456789);
 
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
+var UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT = new i18n.phonenumbers.PhoneNumber();
+UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT.setCountryCode(2);
+UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT.setNationalNumber(12345);
+
 var RegionCode = i18n.phonenumbers.RegionCode;
 
 function testGetInstanceLoadUSMetadata() {
@@ -300,13 +310,24 @@ function testGetInstanceLoadInternationalTollFreeMetadata() {
   assertEquals('12345678', metadata.getTollFree().getExampleNumber());
 }
 
+function testIsNumberGeographical() {
+  // Bahamas, mobile phone number.
+  assertFalse(phoneUtil.isNumberGeographical_(BS_MOBILE));
+  // Australian fixed line number.
+  assertTrue(phoneUtil.isNumberGeographical_(AU_NUMBER));
+  // International toll free number.
+  assertFalse(phoneUtil.isNumberGeographical_(INTERNATIONAL_TOLL_FREE));
+}
+
 function testIsLeadingZeroPossible() {
   // Italy
   assertTrue(phoneUtil.isLeadingZeroPossible(39));
   // USA
   assertFalse(phoneUtil.isLeadingZeroPossible(1));
-  // International toll free numbers
-  assertFalse(phoneUtil.isLeadingZeroPossible(800));
+  // International toll free
+  assertTrue(phoneUtil.isLeadingZeroPossible(800));
+  // International premium-rate
+  assertFalse(phoneUtil.isLeadingZeroPossible(979));
   // Not in metadata file, just default to false.
   assertFalse(phoneUtil.isLeadingZeroPossible(888));
 }
@@ -880,6 +901,9 @@ function testFormatWithCarrierCode() {
   // We don't support this for the US so there should be no change.
   assertEquals('650 253 0000',
                phoneUtil.formatNationalNumberWithCarrierCode(US_NUMBER, '15'));
+  // Invalid country code should just get the NSN.
+  assertEquals('12345', phoneUtil.formatNationalNumberWithCarrierCode(
+                   UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT, '89'));
 }
 
 function testFormatWithPreferredCarrierCode() {
@@ -1237,6 +1261,11 @@ function testFormatInOriginalFormat() {
   var numberWithoutStar = phoneUtil.parseAndKeepRawInput('1234', RegionCode.JP);
   assertEquals('1234', phoneUtil.formatInOriginalFormat(numberWithoutStar,
                                                         RegionCode.JP));
+
+  // Test an invalid national number without raw input is just formatted as the
+  // national number.
+  assertEquals('650253000',
+      phoneUtil.formatInOriginalFormat(US_SHORT_BY_ONE_NUMBER, RegionCode.US));
 }
 
 function testIsPremiumRate() {
@@ -1486,6 +1515,21 @@ function testGetRegionCodeForNumber() {
       phoneUtil.getRegionCodeForNumber(INTERNATIONAL_TOLL_FREE));
   assertEquals(RegionCode.UN001,
       phoneUtil.getRegionCodeForNumber(UNIVERSAL_PREMIUM_RATE));
+}
+
+function testGetRegionCodesForCountryCode() {
+  /** @type {Array.<string>} */
+  var regionCodesForNANPA = phoneUtil.getRegionCodesForCountryCode(1);
+  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.US));
+  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.BS));
+  assertTrue(goog.array.contains(
+      phoneUtil.getRegionCodesForCountryCode(44), RegionCode.GB));
+  assertTrue(goog.array.contains(
+      phoneUtil.getRegionCodesForCountryCode(49), RegionCode.DE));
+  assertTrue(goog.array.contains(
+      phoneUtil.getRegionCodesForCountryCode(800), RegionCode.UN001));
+  // Test with invalid country calling code.
+  assertTrue(goog.array.isEmpty(phoneUtil.getRegionCodesForCountryCode(-1)));
 }
 
 function testGetCountryCodeForRegion() {
@@ -2838,12 +2882,14 @@ function testCountryWithNoNumberDesc() {
                                                          RegionCode.AD));
 }
 
-function testUnknownCountryCallingCodeForValidation() {
-  /** @type {i18n.phonenumbers.PhoneNumber} */
-  var invalidNumber = new i18n.phonenumbers.PhoneNumber();
-  invalidNumber.setCountryCode(0);
-  invalidNumber.setNationalNumber(1234);
-  assertFalse(phoneUtil.isValidNumber(invalidNumber));
+function testUnknownCountryCallingCode() {
+  var PNF = i18n.phonenumbers.PhoneNumberFormat;
+  assertFalse(phoneUtil.isValidNumber(UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT));
+  // It's not very well defined as to what the E164 representation for a number
+  // with an invalid country calling code is, but just prefixing the country
+  // code and national number is about the best we can do.
+  assertEquals('+212345',
+               phoneUtil.format(UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT, PNF.E164));
 }
 
 function testIsNumberMatchMatches() {
