@@ -2861,7 +2861,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForValidRegion_ =
   if (metadata == null) {
     throw 'Invalid region code: ' + regionCode;
   }
-  return metadata.getCountryCode();
+  return metadata.getCountryCodeOrDefault();
 };
 
 
