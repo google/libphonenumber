@@ -2210,7 +2210,7 @@ function testParseMaliciousInput() {
   } catch (e) {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
-                 'The string supplied was too long to parse',
+                 i18n.phonenumbers.Error.TOO_LONG,
                  e);
   }
   /** @type {!goog.string.StringBuffer} */
@@ -2226,7 +2226,7 @@ function testParseMaliciousInput() {
   } catch (e) {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
-                 'The string supplied was too long to parse',
+                 i18n.phonenumbers.Error.TOO_LONG,
                  e);
   }
 }

@@ -3628,7 +3628,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     throw i18n.phonenumbers.Error.NOT_A_NUMBER;
   } else if (numberToParse.length >
       i18n.phonenumbers.PhoneNumberUtil.MAX_INPUT_STRING_LENGTH_) {
-    throw 'The string supplied was too long to parse';
+    throw i18n.phonenumbers.Error.TOO_LONG;
   }
 
   /** @type {!goog.string.StringBuffer} */
