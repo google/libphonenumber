@@ -364,7 +364,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
     if (!nationalPrefixIsUsedByCountry || this.isCompleteNumber_ ||
         format.getNationalPrefixOptionalWhenFormatting() ||
         this.phoneUtil_.formattingRuleHasFirstGroupOnly(
-            format.getNationalPrefixFormattingRule())) {
+            format.getNationalPrefixFormattingRuleOrDefault())) {
       if (this.isFormatEligible_(format.getFormatOrDefault())) {
         this.possibleFormats_.push(format);
       }
