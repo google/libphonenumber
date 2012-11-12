@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (C) 2010 The Libphonenumber Authors
+ * Copyright (C) 2010 The Libphonenumber Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -903,7 +903,7 @@ function testFormatWithCarrierCode() {
                phoneUtil.formatNationalNumberWithCarrierCode(US_NUMBER, '15'));
   // Invalid country code should just get the NSN.
   assertEquals('12345', phoneUtil.formatNationalNumberWithCarrierCode(
-                   UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT, '89'));
+      UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT, '89'));
 }
 
 function testFormatWithPreferredCarrierCode() {

@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (C) 2010 The Libphonenumber Authors
+ * Copyright (C) 2010 The Libphonenumber Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -198,6 +198,7 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.SEPARATOR_BEFORE_NATIONAL_NUMBER_ = ' ';
+
 
 /**
  * @const
