@@ -51,6 +51,10 @@ project:
       PhoneNumberUtilTest.java => phonenumberutil_test.js
       AsYouTypeFormatterTest.java => asyoutypeformatter_test.js
 
+4.  Run the Closure Compiler to get your changes syntax checked:
+
+    ./compile.sh
+
 
 TODO:
 =====
