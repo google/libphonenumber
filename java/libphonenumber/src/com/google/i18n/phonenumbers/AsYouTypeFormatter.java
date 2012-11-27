@@ -397,8 +397,8 @@ public class AsYouTypeFormatter {
       // Put the extracted NDD back to the national number before attempting to extract a new NDD.
       nationalNumber.insert(0, nationalPrefixExtracted);
       // Remove the previously extracted NDD from prefixBeforeNationalNumber. We cannot simply set
-      // it to empty string because people sometimes enter national prefix after country code, e.g
-      // +44 (0)20-1234-5678.
+      // it to empty string because people sometimes incorrectly enter national prefix after the
+      // country code, e.g. +44 (0)20-1234-5678.
       int indexOfPreviousNdd = prefixBeforeNationalNumber.lastIndexOf(nationalPrefixExtracted);
       prefixBeforeNationalNumber.setLength(indexOfPreviousNdd);
     }

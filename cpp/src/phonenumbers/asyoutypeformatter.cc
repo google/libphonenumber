@@ -469,8 +469,8 @@ bool AsYouTypeFormatter::AbleToExtractLongerNdd() {
     // extract a new NDD.
     national_number_.insert(0, national_prefix_extracted_);
     // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
-    // cannot simply set it to empty string because people sometimes enter
-    // national prefix after country code, e.g +44 (0)20-1234-5678.
+    // cannot simply set it to empty string because people sometimes incorrectly
+    // enter national prefix after the country code, e.g. +44 (0)20-1234-5678.
     int index_of_previous_ndd =
         prefix_before_national_number_.find_last_of(national_prefix_extracted_);
     prefix_before_national_number_.resize(index_of_previous_ndd);

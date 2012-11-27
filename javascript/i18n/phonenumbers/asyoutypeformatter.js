@@ -687,8 +687,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.ableToExtractLongerNdd_ =
     this.nationalNumber_.append(this.nationalPrefixExtracted_);
     this.nationalNumber_.append(nationalNumberStr);
     // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
-    // cannot simply set it to empty string because people sometimes enter
-    // national prefix after country code, e.g +44 (0)20-1234-5678.
+    // cannot simply set it to empty string because people sometimes incorrectly
+    // enter national prefix after the country code, e.g. +44 (0)20-1234-5678.
     /** @type {string} */
     var prefixBeforeNationalNumberStr =
         this.prefixBeforeNationalNumber_.toString();
