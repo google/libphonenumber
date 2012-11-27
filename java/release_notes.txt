@@ -1,3 +1,9 @@
+Nov 26, 2012: libphonenumber-5.2.1
+* Metadata changes:
+ - Updated metadata for region code(s):
+   AE, AW, BF, CN, DE, JO, KE, KH, LT, MM, MU, NG, RW, SR, TR, VU
+ - New geocoding data for country calling code(s): 359 (bg, en)
+
 Oct 10, 2012: libphonenumber-5.2
 * Code changes:
  - Adds isNumberGeographical() method.
