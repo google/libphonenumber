@@ -7682,13 +7682,15 @@
       </tollFree>
       <premiumRate>
         <!-- 871, 872, 873 with 10 digits are now Controlled Premium Rate Services, so are listed
-             here as well as 900-909, 910-919, 980-983 with 10 digits. -->
+             here as well as 900-909, 910-919, 982-984, 989 with 10 digits.
+             Note that only 908, 909, 980-989 are reserved for "adult services" while 900-907 and
+             910-919 are reserved for standard premium rate services. -->
         <nationalNumberPattern>
           (?:
             87[123]|
             9(?:
               [01]\d|
-              8[0-3]
+              8[2349]
             )
           )\d{7}
         </nationalNumberPattern>
