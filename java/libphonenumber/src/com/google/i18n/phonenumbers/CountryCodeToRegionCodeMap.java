@@ -257,8 +257,9 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("SS");
     countryCodeToRegionCodeMap.put(211, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("MA");
+    listWithRegionCode.add("EH");
     countryCodeToRegionCodeMap.put(212, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);

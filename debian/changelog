@@ -1,3 +1,13 @@
+libphonenumber (5.2.2) lucid; urgency=low
+
+  * Metadata changes:
+    - New metadata for region code(s): EH
+    - Updated metadata for region code(s): BR, CL, CR, IN, MA, PG, PK,
+    RO
+    - New geocoding data for country calling code(s): 241 (en)
+
+ -- Lara Rennie <lararennie@google.com>  Thu, 06 Dec 2012 13:27:48 +0100
+
 libphonenumber (5.2.1) lucid; urgency=low
 
   * Metadata changes:

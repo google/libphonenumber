@@ -3049,6 +3049,29 @@
            the number after capturing. We also need a nationalTransformRule to repopulate with the
            number without the carrier code. -->
       <availableFormats>
+        <!-- Numbers can be dialled without an area code on mobile phones in Brazil. The first two
+             rules here handle this case. The leading digits pattern must be specific enough such
+             that it doesn't match X00 numbers (e.g. toll-free). -->
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{4})(\d{4})">
+          <leadingDigits>
+            [2-9](?:
+              [1-9]|
+              0[1-9]
+            )
+          </leadingDigits>
+          <format>$1-$2</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{5})(\d{4})">
+          <leadingDigits>
+            9(?:
+              [1-9]|
+              0[1-9]
+            )
+          </leadingDigits>
+          <format>$1-$2</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <numberFormat nationalPrefixFormattingRule="($FG)"
           pattern="(\d{2})(\d{5})(\d{4})"
           carrierCodeFormattingRule="$NP $CC ($FG)">
@@ -4117,7 +4140,7 @@
       we strip here. National destinations may be dialled with a carrier if they are not local so
       we extract these carrier codes as well. -->
       <availableFormats>
-        <numberFormat pattern="(2)(\d{3})(\d{4})"
+        <numberFormat pattern="(2)(\d{3,4})(\d{4})"
           nationalPrefixFormattingRule="($FG)"
           carrierCodeFormattingRule="$CC ($FG)">
           <leadingDigits>2</leadingDigits>
@@ -4176,24 +4199,43 @@
         <exampleNumber>6001234567</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
+        <!-- Nov 2012: The prefixing of '2' to all fixed line numbers, which is being rolled
+             out between October 2012 and June 2013 means that temporarily the regular
+             expressions for areas will get very messy as some adopt the leading '2' but
+             others do not. Eventually when the conversion is complete things should simplify
+             again. Note that area codes 32 or 41 were transitioned in 2007.
+             IMPORTANT: A literal reading of the transition rules suggest that all numbers get
+             a '2' prefix, but some numbers are already 7 digits long (but these always start
+             with a '2'). The prefixing seems almost certain to only apply to 6-digit numbers and
+             will unify all fixed line numbers to be 9 digits in total. The fact that the new seven
+             digit numbers currently only start with a '2' is likely to change in the future.
+             Note also that at some stage it is likely that Santiago numbers (area code '2') will
+             have a prefix of "2\d" and not "22" (it's like 10 2-digit area codes wrapped into one).
+             See: http://www.gob.cl/especiales/informate-de-la-nueva-forma-de-marcar/
+                  http://www.subtel.cl/index.php?option=com_content&view=article&id=3081:&catid=3:noticias
+             -->
         <nationalNumberPattern>
           (?:
-            2|
+            22|
             32|
-            41
+            41|
+            58
           )\d{7}|
           (?:
             3[3-5]|
             4[235]|
-            5[1-3578]|
+            5[1-357]|
             6[13-57]|
             7[1-35]
           )\d{6,7}
         </nationalNumberPattern>
         <!-- Area codes do not need to be dialled when dialling within the same area, so the
              smallest possible number is length 6. -->
+        <!-- Nov 2012: The prefixing of '2' to all 6-digit fixed line numbers means that while
+             the maximum possible number length stays as 9, the minimum length will become '7'
+             when all area codes are migrated. -->
         <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
-        <exampleNumber>21234567</exampleNumber>
+        <exampleNumber>221234567</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>9[5-9]\d{7}</nationalNumberPattern>
@@ -4750,7 +4792,7 @@
             0[0-4]|
             7[01]
           )\d{5}|
-          [67][01]\d{6}|
+          [67][0-2]\d{6}|
           8[3-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
@@ -6344,6 +6386,60 @@
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>122</exampleNumber>
+      </emergency>
+    </territory>
+
+    <!-- Western Sahara -->
+    <!-- Country calling code shared with Morocco (MA). -->
+    <!-- Two area codes are defined in the Morocco ITU document; 05288 XXXXX and 05289 XXXXX -->
+    <!-- http://www.itu.int/oth/T0202000090/en -->
+    <territory id="EH" countryCode="212" leadingDigits="528[89]" internationalPrefix="00"
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <!-- Uses MA formatting rules and shares general description
+           (non-geographical numbers for Morocco are still valid). -->
+      <generalDesc>
+        <nationalNumberPattern>[5689]\d{8}</nationalNumberPattern>
+        <!-- Closed numbering plan. -->
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>528[89]\d{5}</nationalNumberPattern>
+        <exampleNumber>528812345</exampleNumber>
+      </fixedLine>
+      <!-- The following sections are copied verbatim from Morocco to allow these non-geographical
+           numbers to be recognized as available from within Western Sahara. -->
+      <mobile>
+        <!-- Prefixes 60[1-5], 62[7-9], 63[0458] and 68[01] are from numbers found online,
+             bug-reports, and information provided directly by the carriers. -->
+        <nationalNumberPattern>
+          6(?:
+            0[0-6]|
+            [14-7]\d|
+            2[236-9]|
+            3[03458]|
+            8[01]|
+            99
+          )\d{6}
+        </nationalNumberPattern>
+        <exampleNumber>650123456</exampleNumber>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>80\d{7}</nationalNumberPattern>
+        <exampleNumber>801234567</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>89\d{7}</nationalNumberPattern>
+        <exampleNumber>891234567</exampleNumber>
+      </premiumRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            [59]|
+            77
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <exampleNumber>15</exampleNumber>
       </emergency>
     </territory>
 
@@ -10213,6 +10309,7 @@
     <!-- http://www.dot.gov.in/numbering_plan/numberplanindex.htm -->
     <!-- http://www.itu.int/oth/T0202000063/en -->
     <!-- http://en.wikipedia.org/wiki/%2B91 -->
+    <!-- http://www.coai.in/msccodes.php -->
     <!-- Note that several changes in area codes have occurred since the numbering plan was released
          - fixed line changes are notified on the www.bsnl.co.in website. Area codes can be verified
            here at http://dq.ndc.bsnl.co.in/bsnl-web/stdSearch.seam. -->
@@ -10229,12 +10326,12 @@
                5[024-9]|
                6[0-35-9]|
                7[03469]|
-               8[0-4679]
+               8[0-79]
              )|
              8(?:
-               0[01589]|
-               1[0-479]|
-               2[236-9]|
+               0[015689]|
+               1[0-57-9]|
+               2[2356-9]|
                3[0-57-9]|
                [45]|
                6[0245789]|
@@ -10293,22 +10390,24 @@
                  [03][07-9]|
                  14|
                  2[7-9]|
-                 4[25]|
-                 6[09]|
-                 7|
+                 [4-7]|
                  9[013-9]
                )
              )|
              8(?:
-               0[01589]|
-               1(?:
-                 [024]|
-                 1[56]|
-                 30|
-                 7[19]|
-                 97
+               0(?:
+                 [01589]|
+                 6[67]
                )|
-               2[236-9]|
+               1(?:
+                 [02-589]|
+                 1[0135-9]|
+                 7[0-79]
+               )|
+               2(?:
+                 [236-9]|
+                 5[1-9]
+               )|
                3(?:
                  [037-9]|
                  4[1-9]|
@@ -10699,6 +10798,9 @@
         <exampleNumber>1123456789</exampleNumber>
       </fixedLine>
       <!-- http://en.wikipedia.org/wiki/Mobile_telephone_numbering_in_India -->
+      <!-- The document titled "List of MSC codes" linked off
+           http://www.dot.gov.in/numbering_plan/numberplanindex.htm is the best source for these.
+           -->
       <mobile>
         <!-- A couple of additional prefixes found neither on the wikipedia page nor in the MSC
              codes list, are added because SMS messages have been successfully sent to these
@@ -10754,27 +10856,23 @@
                 [03][07-9]|
                 14|
                 2[7-9]|
-                4[25]|
-                6[09]|
-                7\d|
+                [4-7]\d|
                 9[013-9]
               )
             )|
             8(?:
               0(?:
                 [01589]\d|
-                66
+                6[67]
               )|
               1(?:
-                [024]\d|
-                1[56]|
-                30|
-                7[19]|
-                97
+                [02-589]\d|
+                1[0135-9]|
+                7[0-79]
               )|
               2(?:
                 [236-9]\d|
-                52
+                5[1-9]
               )|
               3(?:
                 [037-9]\d|
@@ -15092,10 +15190,11 @@
     </territory>
 
     <!-- Morocco -->
+    <!-- Shares formatting and some metadata with Western Sahara. -->
     <!-- http://www.itu.int/oth/T0202000090/en -->
     <!-- http://en.wikipedia.org/wiki/+212 -->
     <territory id="MA" countryCode="212" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixFormattingRule="$NP$FG">
+               nationalPrefixFormattingRule="$NP$FG" mainCountryForCode="true">
       <availableFormats>
         <numberFormat pattern="([56]\d{2})(\d{6})">
           <leadingDigits>
@@ -15169,7 +15268,7 @@
                 2[2-9]|
                 3[2-57]|
                 4[2-8]|
-                8[235-9]
+                8[235-7]
               )\d|
               9(?:
                 0\d|
@@ -15192,6 +15291,7 @@
         </nationalNumberPattern>
         <exampleNumber>520123456</exampleNumber>
       </fixedLine>
+      <!-- Also duplicated in Western Sahara, please ensure you update both. -->
       <mobile>
         <!-- Prefixes 60[1-5], 62[7-9], 63[0458] and 68[01] are from numbers found online,
              bug-reports, and information provided directly by the carriers. -->
@@ -18616,8 +18716,8 @@
           <leadingDigits>[1-689]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(7[1-36]\d)(\d{2})(\d{3})">
-          <leadingDigits>7[1-36]</leadingDigits>
+        <numberFormat pattern="(7\d{2})(\d{2})(\d{3})">
+          <leadingDigits>7</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -18646,12 +18746,14 @@
         <exampleNumber>3123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Mobile number patterns from the numbering plan are included here, as well as 68x from
-             Wikipedia and 730 from online numbers. -->
+        <!-- Mobile number patterns from the numbering plan are included here, as well as 68X from
+             Wikipedia and 730 from online numbers. The prefix 70X is added since open-source users
+             have reported it as now being in use, although no real numbers can be found as of yet.
+             -->
         <nationalNumberPattern>
           (?:
             68|
-            7[1236]\d
+            7[0-36]\d
           )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
@@ -19061,12 +19163,13 @@
         <exampleNumber>2123456789</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 311 & 325 as SMSs have been successfully sent to these numbers and numbers can
-             be found online with these prefixes. -->
+        <!-- Adding 311, 325 and 320 as SMSs have been successfully sent to these numbers and numbers
+             can be found online with these prefixes. -->
         <nationalNumberPattern>
           3(?:
             0\d|
-            [12][1-5]|
+            1[1-5]|
+            2[0-5]|
             3[1-6]|
             4[1-7]|
             55|
@@ -19859,10 +19962,7 @@
                preferredExtnPrefix=" int ">
       <availableFormats>
         <numberFormat pattern="([237]\d)(\d{3})(\d{4})">
-          <leadingDigits>
-            [23]1|
-            7
-          </leadingDigits>
+          <leadingDigits>[23]1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(21)(\d{4})">
@@ -19870,9 +19970,12 @@
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
+          <!-- We format mobile numbers like this, even though ITU and wikipedia hint at
+               \d{2}\d{3}\d{4} grouping, since the yellow pages (http://en.paginiaurii.ro/) and the
+               majority of numbers found online follow this convention. -->
           <leadingDigits>
             [23][3-7]|
-            [89]
+            [7-9]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>

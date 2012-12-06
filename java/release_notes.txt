@@ -1,3 +1,9 @@
+Dec 06, 2012: libphonenumber-5.2.2
+* Metadata changes:
+ - New metadata for region code(s): EH
+ - Updated metadata for region code(s): BR, CL, CR, IN, MA, PG, PK, RO
+ - New geocoding data for country calling code(s): 241 (en)
+
 Nov 26, 2012: libphonenumber-5.2.1
 * Metadata changes:
  - Updated metadata for region code(s):

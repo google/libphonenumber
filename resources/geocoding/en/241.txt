@@ -1,0 +1,48 @@
+# Copyright (C) 2012 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# http://www.itu.int/oth/T020200004E/en [2012-07-04]
+# http://en.wikipedia.org/wiki/+241 [503030636]
+
+241140|Kango
+2411420|Ntoum
+2411424|Cocobeach
+241144|Libreville
+241145|Libreville
+241146|Libreville
+241147|Libreville
+241148|Libreville
+241150|Gamba
+241154|Omboué
+241155|Port-Gentil
+241156|Port-Gentil
+241158|Lambaréné
+241159|Ndjolé
+241160|Ngouoni
+241162|Mounana
+241164|Lastourville
+241165|Koulamoutou
+241166|Moanda
+241167|Franceville
+241169|Léconi/Akiéni/Okondja
+24117|Libreville
+241182|Tchibanga
+241183|Mayumba
+241186|Mouila
+241190|Makokou
+241192|Mékambo
+241193|Booué
+241196|Bitam
+241198|Oyem
