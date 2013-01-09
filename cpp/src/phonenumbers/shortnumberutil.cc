@@ -67,8 +67,8 @@ bool ShortNumberUtil::MatchesEmergencyNumberHelper(const string& number,
   const scoped_ptr<RegExpInput> normalized_number_input(
       regexp_factory->CreateInput(extracted_number));
 
-  // In Brazil, it is impossible to append additional digits to an emergency
-  // number to dial the number.
+  // In Brazil, emergency numbers don't work when additional digits are
+  // appended.
   return (!allow_prefix_match || region_code == "BR")
       ? emergency_number_pattern->FullMatch(extracted_number)
       : emergency_number_pattern->Consume(normalized_number_input.get());

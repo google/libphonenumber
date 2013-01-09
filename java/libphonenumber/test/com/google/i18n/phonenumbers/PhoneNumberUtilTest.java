@@ -41,6 +41,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   // any risk of accidental changes to mutable static state affecting many tests.
   private static final PhoneNumber ALPHA_NUMERIC_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(80074935247L);
+  private static final PhoneNumber AE_UAN =
+      new PhoneNumber().setCountryCode(971).setNationalNumber(600123456L);
   private static final PhoneNumber AR_MOBILE =
       new PhoneNumber().setCountryCode(54).setNationalNumber(91187654321L);
   private static final PhoneNumber AR_NUMBER =
@@ -725,6 +727,12 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE, RegionCode.JP, false));
     assertEquals("+800 1234 5678",
         phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE, RegionCode.JP, true));
+
+    // UAE numbers beginning with 600 (classified as UAN) need to be dialled without +971 locally.
+    assertEquals("+971600123456",
+        phoneUtil.formatNumberForMobileDialing(AE_UAN, RegionCode.JP, false));
+    assertEquals("600123456",
+        phoneUtil.formatNumberForMobileDialing(AE_UAN, RegionCode.AE, false));
   }
 
   public void testFormatByPattern() {

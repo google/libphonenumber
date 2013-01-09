@@ -46,6 +46,12 @@ ALPHA_NUMERIC_NUMBER.setNationalNumber(80074935247);
 
 
 /** @type {i18n.phonenumbers.PhoneNumber} */
+var AE_UAN = new i18n.phonenumbers.PhoneNumber();
+AE_UAN.setCountryCode(971);
+AE_UAN.setNationalNumber(600123456);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
 var AR_MOBILE = new i18n.phonenumbers.PhoneNumber();
 AR_MOBILE.setCountryCode(54);
 AR_MOBILE.setNationalNumber(91187654321);
@@ -992,6 +998,13 @@ function testFormatNumberForMobileDialing() {
   assertEquals('+800 1234 5678',
       phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE,
                                              RegionCode.JP, true));
+
+  // UAE numbers beginning with 600 (classified as UAN) need to be dialled
+  // without +971 locally.
+  assertEquals('+971600123456',
+      phoneUtil.formatNumberForMobileDialing(AE_UAN, RegionCode.JP, false));
+  assertEquals('600123456',
+      phoneUtil.formatNumberForMobileDialing(AE_UAN, RegionCode.AE, false));
 }
 
 function testFormatByPattern() {

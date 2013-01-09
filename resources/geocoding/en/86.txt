@@ -149,7 +149,6 @@
 86562|Tongling, Anhui
 86563|Xuancheng, Anhui
 86564|LiuAn, Anhui
-86565|Chaohu, Anhui
 86566|Chizhou, Anhui
 86570|Quzhou, Zhejiang
 86571|Hangzhou, Zhejiang

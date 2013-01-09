@@ -32,6 +32,7 @@ i18n.phonenumbers.RegionCode = {
   // Region code for global networks (e.g. +800 numbers).
   UN001: '001',
   AD: 'AD',
+  AE: 'AE',
   AO: 'AO',
   AQ: 'AQ',
   AR: 'AR',

@@ -883,6 +883,7 @@ TEST_F(PhoneNumberUtilTest, FormatWithCarrierCode) {
   // Here the international rule is used, so no carrier code should be present.
   phone_util_.Format(ar_number, PhoneNumberUtil::E164, &formatted_number);
   EXPECT_EQ("+5491234125678", formatted_number);
+
   // We don't support this for the US so there should be no change.
   PhoneNumber us_number;
   us_number.set_country_code(1);
@@ -1010,6 +1011,17 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::JP(), true, &formatted_number);
   EXPECT_EQ("+800 1234 5678", formatted_number);
+
+  // UAE numbers beginning with 600 (classified as UAN) need to be dialled
+  // without +971 locally.
+  test_number.set_country_code(971);
+  test_number.set_national_number(600123456ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::JP(), false, &formatted_number);
+  EXPECT_EQ("+971600123456", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::AE(), true, &formatted_number);
+  EXPECT_EQ("600123456", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatByPattern) {

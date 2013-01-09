@@ -84,8 +84,7 @@ public class ShortNumberUtil {
     Pattern emergencyNumberPattern =
         Pattern.compile(metadata.getEmergency().getNationalNumberPattern());
     String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(number);
-    // In Brazil, it is impossible to append additional digits to an emergency number to dial the
-    // number.
+    // In Brazil, emergency numbers don't work when additional digits are appended.
     return (!allowPrefixMatch || regionCode.equals("BR"))
         ? emergencyNumberPattern.matcher(normalizedNumber).matches()
         : emergencyNumberPattern.matcher(normalizedNumber).lookingAt();

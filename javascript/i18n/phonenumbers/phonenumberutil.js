@@ -1649,6 +1649,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
     // for Movistar. Instead they must be dialled in national format.
     formattedNumber = this.format(
         numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
+  } else if (regionCode == 'AE' && regionCallingFrom == 'AE' &&
+             (numberType == i18n.phonenumbers.PhoneNumberType.UAN)) {
+    // In the United Arab Emirates, numbers with the prefix 600 (UAN numbers)
+    // cannot be dialled using E164 format. Instead they must be dialled in
+    // national format.
+    formattedNumber = this.format(
+        numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
   } else if (regionCode == 'BR' && regionCallingFrom == 'BR' &&
       ((numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE) ||
       (numberType == i18n.phonenumbers.PhoneNumberType.MOBILE) ||

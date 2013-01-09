@@ -1,3 +1,13 @@
+Jan 08, 2013: libphonenumber-5.3
+* Code changes:
+ - Handling UAN numbers in Argentina better when dialling them locally from a
+   mobile
+* Metadata changes:
+ - Updated metadata for region code(s):
+   BE, BW, CL, CN, CO, EH, KW, MA, ML, NG, PL, SY, ZA, ZM
+ - New geocoding data for country calling code(s): 32 (en, fr, nl)
+ - Updated geocoding data for country calling code(s): 27 (en), 86 (en, zh)
+
 Dec 06, 2012: libphonenumber-5.2.2
 * Metadata changes:
  - New metadata for region code(s): EH

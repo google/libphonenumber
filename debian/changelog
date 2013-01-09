@@ -1,3 +1,16 @@
+libphonenumber (5.3) lucid; urgency=low
+  * Code changes:
+    - Handling UAN numbers in Argentina better when dialling them locally from a
+      mobile
+  * Metadata changes:
+    - Updated metadata for region code(s):
+    BE, BW, CL, CN, CO, EH, KW, MA, ML, NG, PL, SY, ZA, ZM
+    - New geocoding data for country calling code(s): 32 (en, fr, nl)
+    - Updated geocoding data for country calling code(s): 27 (en), 86
+    (en, zh)
+
+ -- Lara Rennie <lararennie@google.com>  Tue, 08 Jan 2013 16:49:27 +0100
+
 libphonenumber (5.2.2) lucid; urgency=low
 
   * Metadata changes:

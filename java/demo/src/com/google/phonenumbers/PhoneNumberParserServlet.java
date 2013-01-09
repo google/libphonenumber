@@ -181,21 +181,33 @@ public class PhoneNumberParserServlet extends HttpServlet {
       output.append("</TABLE>");
       output.append("</DIV>");
 
+      boolean isPossible = phoneUtil.isPossibleNumber(number);
       boolean isNumberValid = phoneUtil.isValidNumber(number);
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
       output.append("<TR><TD colspan=2>Validation Results</TD></TR>");
-      appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
-      appendLine(
-          "Result from isValidNumberForRegion()", 
-          Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
-          output);
-      String region = phoneUtil.getRegionCodeForNumber(number);
-      appendLine("Phone Number region", region == null ? "" : region, output);
-      appendLine("Result from isPossibleNumber()",
-                 Boolean.toString(phoneUtil.isPossibleNumber(number)), output);
-      appendLine("Result from getNumberType()", phoneUtil.getNumberType(number).toString(), output);
+      appendLine("Result from isPossibleNumber()", Boolean.toString(isPossible), output);
+      if (!isPossible) {
+        appendLine("Result from isPossibleNumberWithReason()",
+                   phoneUtil.isPossibleNumberWithReason(number).toString(), output);
+        output.append("<TR><TD colspan=2>Note: numbers that are not possible have type " +
+                      "UNKNOWN, an unknown region, and are considered invalid.</TD></TR>");
+      } else {
+        appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
+        if (isNumberValid) {
+          if (!defaultCountry.isEmpty() && defaultCountry != "ZZ") {
+            appendLine(
+                "Result from isValidNumberForRegion()",
+                Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
+                output);
+          }
+        }
+        String region = phoneUtil.getRegionCodeForNumber(number);
+        appendLine("Phone Number region", region == null ? "" : region, output);
+        appendLine("Result from getNumberType()",
+                   phoneUtil.getNumberType(number).toString(), output);
+      }
       output.append("</TABLE>");
       output.append("</DIV>");
 
@@ -207,14 +219,18 @@ public class PhoneNumberParserServlet extends HttpServlet {
                  output);
       appendLine("Original format",
                  phoneUtil.formatInOriginalFormat(number, defaultCountry), output);
+      appendLine("National format", phoneUtil.format(number, PhoneNumberFormat.NATIONAL), output);
       appendLine(
           "International format",
           isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid",
           output);
-      appendLine("National format", phoneUtil.format(number, PhoneNumberFormat.NATIONAL), output);
       appendLine(
           "Out-of-country format from US",
           isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "US") : "invalid",
+          output);
+      appendLine(
+          "Out-of-country format from CH",
+          isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid",
           output);
       output.append("</TABLE>");
       output.append("</DIV>");
@@ -238,7 +254,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       output.append("<TABLE border=1>");
       output.append("<TR><TD colspan=2>PhoneNumberOfflineGeocoder Results</TD></TR>");
       appendLine(
-          "Location", 
+          "Location",
           PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
               number, new Locale(languageCode, regionCode)),
           output);

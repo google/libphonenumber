@@ -25,6 +25,20 @@
     <territory id="AD" countryCode="376" internationalPrefix="00">
     </territory>
 
+    <!-- United Arab Emirates -->
+    <!-- Added since when formatting the number for mobile dialling we have special rules to handle
+         it. -->
+    <territory id="AE" countryCode="971" internationalPrefix="00">
+      <generalDesc>
+        <nationalNumberPattern>[1-9]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <uan>
+        <nationalNumberPattern>600\d{6}</nationalNumberPattern>
+        <exampleNumber>600123456</exampleNumber>
+      </uan>
+    </territory>
+
     <!-- Angola -->
     <!-- This country has been coopted to test the case of a national prefix
     with a non-numeric symbol in it. -->
@@ -43,7 +57,7 @@
         <exampleNumber>222123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Expanded the 92 prefix possibilities to matchnumbers found online. -->
+        <!-- Expanded the 92 prefix possibilities to match numbers found online. -->
         <nationalNumberPattern>9[1-3]\d{7}</nationalNumberPattern>
         <exampleNumber>923123456</exampleNumber>
       </mobile>

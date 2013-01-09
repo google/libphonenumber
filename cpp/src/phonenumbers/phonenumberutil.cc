@@ -1053,6 +1053,12 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
     // In Peru, numbers cannot be dialled using E164 format from a mobile phone
     // for Movistar. Instead they must be dialled in national format.
     Format(number_no_extension, NATIONAL, formatted_number);
+  } else if ((region_code == "AE") &&
+             (calling_from == "AE") && (number_type == UAN)) {
+    // In the United Arab Emirates, numbers with the prefix 600 (UAN numbers)
+    // cannot be dialled using E164 format. Instead they must be dialled in
+    // national format.
+    Format(number_no_extension, NATIONAL, formatted_number);
   } else if ((region_code == "BR") && (calling_from == "BR") &&
       ((number_type == FIXED_LINE) || (number_type == MOBILE) ||
        (number_type == FIXED_LINE_OR_MOBILE))) {
@@ -1130,6 +1136,7 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
       GetMetadataForRegion(calling_from);
   const string& international_prefix =
       metadata_calling_from->international_prefix();
+
   // For regions that have multiple international prefixes, the international
   // format of the number is returned, unless there is a preferred international
   // prefix.

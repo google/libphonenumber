@@ -23,6 +23,7 @@ final class RegionCode {
   // Region code for global networks (e.g. +800 numbers).
   static final String UN001 = "001";
   static final String AD = "AD";
+  static final String AE = "AE";
   static final String AO = "AO";
   static final String AQ = "AQ";
   static final String AR = "AR";

@@ -1220,6 +1220,11 @@ public class PhoneNumberUtil {
       // In Peru, numbers cannot be dialled using E164 format from a mobile phone for Movistar.
       // Instead they must be dialled in national format.
       formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
+    } else if (regionCode.equals("AE") && regionCallingFrom.equals("AE") &&
+               numberType == PhoneNumberType.UAN) {
+      // In the United Arab Emirates, numbers with the prefix 600 (UAN numbers) cannot be dialled
+      // using E164 format. Instead they must be dialled in national format.
+      formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
     } else if (regionCode.equals("BR") && regionCallingFrom.equals("BR") &&
         ((numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
          (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE))) {
@@ -1279,12 +1284,12 @@ public class PhoneNumberUtil {
         return countryCallingCode + " " + format(number, PhoneNumberFormat.NATIONAL);
       }
     } else if (countryCallingCode == getCountryCodeForValidRegion(regionCallingFrom)) {
-    // If regions share a country calling code, the country calling code need not be dialled.
-    // This also applies when dialling within a region, so this if clause covers both these cases.
-    // Technically this is the case for dialling from La Reunion to other overseas departments of
-    // France (French Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover this
-    // edge case for now and for those cases return the version including country calling code.
-    // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
+      // If regions share a country calling code, the country calling code need not be dialled.
+      // This also applies when dialling within a region, so this if clause covers both these cases.
+      // Technically this is the case for dialling from La Reunion to other overseas departments of
+      // France (French Guiana, Martinique, Guadeloupe), but not vice versa - so we don't cover this
+      // edge case for now and for those cases return the version including country calling code.
+      // Details here: http://www.petitfute.com/voyage/225-info-pratiques-reunion
       return format(number, PhoneNumberFormat.NATIONAL);
     }
     // Metadata cannot be null because we checked 'isValidRegionCode()' above.

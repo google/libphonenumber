@@ -53,6 +53,10 @@ class RegionCode {
     return "AD";
   }
 
+  static const char* AE() {
+    return "AE";
+  }
+
   static const char* AO() {
     return "AO";
   }

@@ -14,6 +14,7 @@
 
 # Generated from:
 # Internal statistical data (2011-08-05).
+# 2720 prefix from the South African ITU document 2012-12-05.
 
 2710|Johannesburg
 2711|Johannesburg
@@ -24,10 +25,10 @@
 2716|Vereeniging
 2717|Ermelo
 2718|Klerksdorp
+2720|Fraserberg/Leeugamka/Merweville
 2721|Cape Town
 2722|Malmesbury
 2723|Worcester
-2724|Cape Town
 2727|Vredendal
 2728|Hermanus
 2731|Durban
