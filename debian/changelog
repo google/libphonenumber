@@ -1,3 +1,11 @@
+libphonenumber (5.3.1) precise; urgency=low
+
+  * Metadata changes:
+    - Updated metadata for region code(s): CN, DK, EH, GN, KH, KW, MA,
+    MY, PA
+
+ -- David Yonge-Mallo <davinci@google.com>  Fri, 25 Jan 2013 14:58:55 +0100
+
 libphonenumber (5.3) lucid; urgency=low
   * Code changes:
     - Handling UAN numbers in Argentina better when dialling them locally from a

@@ -1,3 +1,7 @@
+Jan 25, 2013: libphonenumber-5.3.1
+* Metadata changes:
+ - Updated metadata for region code(s): CN, DK, EH, GN, KH, KW, MA, MY, PA
+
 Jan 08, 2013: libphonenumber-5.3
 * Code changes:
  - Handling UAN numbers in Argentina better when dialling them locally from a

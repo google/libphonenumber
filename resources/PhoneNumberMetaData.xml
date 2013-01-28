@@ -4352,6 +4352,14 @@
           <leadingDigits>[48]00</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- 95xxx shared cost numbers. Without this rule, the numbers will be formatted
+             incorrectly by the AsYouTypeFormatter because they overlap with area code 095x.
+             Note although ITU says the format is more like 95 xxx, in reality no space is used
+             when writing such numbers in China -->
+        <numberFormat pattern="(\d{5})">
+          <leadingDigits>95</leadingDigits>
+          <format>$1</format>
+        </numberFormat>
         <!-- Local numbers -->
         <!-- Chinese fixed-line numbers can be dialed from a cell phone without area code and they
              can be 7 to 8 digits. This rule is here to make formatting work with such numbers, as
@@ -4496,21 +4504,28 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [1-79]\d{7,11}|
-          8[0-357-9]\d{6,9}
+          [1-7]\d{7,11}|
+          8[0-357-9]\d{6,9}|
+          9(?:
+            5\d{3}|
+            \d{9}
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,12}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
+        <!-- 95xxx numbers have been verified to be unreachable from overseas by placing actual
+             calls. -->
         <nationalNumberPattern>
           (?:
             4|
             (?:
               10
             )?8
-          )00\d{7}
+          )00\d{7}|
+          95\d{3}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{10,12}</possibleNumberPattern>
+        <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
         <exampleNumber>4001234567</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
@@ -4643,8 +4658,13 @@
         <exampleNumber>16812345</exampleNumber>
       </premiumRate>
       <sharedCost>
-        <nationalNumberPattern>400\d{7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <!-- 95xxx numbers are covered by the ITU doc, but the following doc contains more info:
+             http://baike.baidu.com/view/3269670.htm -->
+        <nationalNumberPattern>
+          400\d{7}|
+          95\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5}(?:\d{5})?</possibleNumberPattern>
         <exampleNumber>4001234567</exampleNumber>
       </sharedCost>
       <emergency>
@@ -5698,7 +5718,7 @@
     </territory>
 
     <!-- Denmark -->
-    <!-- http://en.itst.dk/telecom-internet-regulation/numbering-issues/numbering-lists -->
+    <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK" countryCode="45" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
@@ -5716,7 +5736,7 @@
           (?:
             [2-7]\d|
             8[126-9]|
-            9[16-9]
+            9[126-9]
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>32123456</exampleNumber>
@@ -5726,7 +5746,7 @@
           (?:
             [2-7]\d|
             8[126-9]|
-            9[16-9]
+            9[126-9]
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>20123456</exampleNumber>
@@ -6417,14 +6437,14 @@
       <!-- The following sections are copied verbatim from Morocco to allow these non-geographical
            numbers to be recognized as available from within Western Sahara. -->
       <mobile>
-        <!-- Prefixes 60[1-5], 62[47-9], 63[0458] and 68[01] are from numbers found online,
+        <!-- Prefixes 60[1-5], 62[47-9], 63[04578] and 68[01] are from numbers found online,
              bug-reports, and information provided directly by the carriers. -->
         <nationalNumberPattern>
           6(?:
             0[0-6]|
             [14-7]\d|
             2[2-46-9]|
-            3[03458]|
+            3[034578]|
             8[01]|
             99
           )\d{6}
@@ -8578,7 +8598,8 @@
              are also allowing an extra digit for numbers beginning with 62, since Orange is
              apparently moving their 62 and 68 ranges both to 62 and adding an extra digit.
              Extra prefixes 24, 66 and 69 have been added for MTN Guinée, as notified by an
-             opensource contributor and matched by numbers found online. -->
+             opensource contributor and matched by numbers found online. 61[0-5] is assigned to
+             Orange. -->
         <nationalNumberPattern>
           (?:
             24|
@@ -8590,6 +8611,7 @@
               3[3467]|
               5[2457-9]
             )|
+            1[0-5]\d|
             2\d{2,3}|
             [4-9]\d{2}|
             3(?:
@@ -13338,12 +13360,17 @@
         <!-- Adding 86 and 87 from numbers found online, along with 88 (the 88 numbers seem to be
              one digit longer as well.) Adding 97 followed by 7 digits as such numbers have been
              found online. Adding 14 as Mobitel have informed us they are using this prefix. Adding
-             60[1-9] based on information received from Beeline. -->
+             60[1-9] based on information received from Beeline. 76 numbers seem now to be 9 digits
+             long. -->
         <nationalNumberPattern>
           (?:
             (?:
               1\d|
-              [67][06-9]
+              6[06-9]|
+              7(?:
+                [07-9]|
+                6\d
+              )
             )[1-9]|
             8(?:
               0[89]|
@@ -13893,15 +13920,14 @@
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
-      <!-- Note that the mobile range starting 503 is not specified in the ITU documentation, but
-           can be found online as of Dec 2012. -->
+      <!-- Note that the mobile ranges starting 50[34] are not specified in the ITU documentation,
+           but can be found online as of Dec 2012. -->
       <mobile>
         <nationalNumberPattern>
           (?:
             5(?:
-              0[0-35-9]|
               11|
-              5\d
+              [05]\d
             )|
             6(?:
               0[034679]|
@@ -15303,14 +15329,14 @@
       </fixedLine>
       <!-- Also duplicated in Western Sahara, please ensure you update both. -->
       <mobile>
-        <!-- Prefixes 60[1-5], 62[47-9], 63[0458] and 68[01] are from numbers found online,
+        <!-- Prefixes 60[1-5], 62[47-9], 63[04578] and 68[01] are from numbers found online,
              bug-reports, and information provided directly by the carriers. -->
         <nationalNumberPattern>
           6(?:
             0[0-6]|
             [14-7]\d|
             2[2-46-9]|
-            3[03458]|
+            3[034578]|
             8[01]|
             99
           )\d{6}
@@ -17157,20 +17183,23 @@
       <fixedLine>
         <nationalNumberPattern>
           (?:
-            3\d{2}|
-            [4-79]\d|
-            8[2-9]
+            3[2-9]\d|
+            [4-9][2-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
-        <exampleNumber>312345678</exampleNumber>
+        <exampleNumber>323456789</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
           1(?:
-            [02-46-9][2-9]|
-            1[12]\d
-          )\d{6}
+            1[1-3]\d{2}|
+            [02-4679][2-9]\d|
+            8(?:
+              1[23]|
+              [2-9]\d
+            )
+          )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9,10}</possibleNumberPattern>
         <exampleNumber>123456789</exampleNumber>
@@ -18421,7 +18450,7 @@
     </territory>
 
     <!-- Panama -->
-    <!-- http://www.asep.gob.pa/telecom/pnn/default.asp - last read June 6th 2012. -->
+    <!-- http://www.asep.gob.pa/telecom/pnn/default.asp - last read Jan 17th 2013. -->
     <!-- http://en.wikipedia.org/wiki/%2B507 - although it omits the fact that mobile phones are 8
          digits long. -->
     <territory id="PA" countryCode="507" internationalPrefix="00">
@@ -18534,8 +18563,8 @@
           6(?:
             [04-9]\d|
             1[0-5]|
-            2[0-6]|
-            3[6-9]
+            2[0-7]|
+            3[5-9]
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>60012345</exampleNumber>
