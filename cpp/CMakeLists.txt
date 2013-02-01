@@ -201,6 +201,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
     "src/phonenumbers/geocoding/geocoding_data.cc"
     "src/phonenumbers/geocoding/mapping_file_provider.cc"
     "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc"
+    "src/phonenumbers/phonenumber.pb.h"  # Forces proto buffer generation.
   )
 endif ()
 
