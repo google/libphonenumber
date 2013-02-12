@@ -1,3 +1,10 @@
+Feb 11, 2013: libphonenumber-5.3.2
+* Metadata changes:
+ - Updated metadata for region code(s):
+   BD, BE, BY, CA, EH, GR, IE, IN, IS, LI, MA, MU, PT, SE, SG, TL
+ - New geocoding data for country calling code(s):
+   375 (be, en, ru), 1 (en)
+
 Jan 25, 2013: libphonenumber-5.3.1
 * Metadata changes:
  - Updated metadata for region code(s): CN, DK, EH, GN, KH, KW, MA, MY, PA

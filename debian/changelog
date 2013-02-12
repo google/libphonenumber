@@ -1,3 +1,13 @@
+libphonenumber (5.3.2) precise; urgency=low
+
+  * Metadata changes:
+    - Updated metadata for region code(s):
+    BD, BE, BY, CA, EH, GR, IE, IN, IS, LI, MA, MU, PT, SE, SG, TL
+    - New geocoding data for country calling code(s):
+    375 (be, en, ru), 1 (en)
+
+ -- Lara Rennie <lararennie@google.com>  Mon, 11 Feb 2013 15:21:35 +0100
+
 libphonenumber (5.3.1) precise; urgency=low
 
   * Metadata changes:
