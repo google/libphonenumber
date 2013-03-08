@@ -1203,43 +1203,47 @@ public class PhoneNumberUtil {
       return number.hasRawInput() ? number.getRawInput() : "";
     }
 
-    String formattedNumber;
+    String formattedNumber = "";
     // Clear the extension, as that part cannot normally be dialed together with the main number.
     PhoneNumber numberNoExt = new PhoneNumber().mergeFrom(number).clearExtension();
-    PhoneNumberType numberType = getNumberType(numberNoExt);
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
-    if (regionCode.equals("CO") && regionCallingFrom.equals("CO")) {
-      if (numberType == PhoneNumberType.FIXED_LINE) {
+    if (regionCallingFrom.equals(regionCode)) {
+      PhoneNumberType numberType = getNumberType(numberNoExt);
+      boolean isFixedLineOrMobile =
+          (numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
+          (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
+      // Carrier codes may be needed in some countries. We handle this here.
+      if (regionCode.equals("CO") && numberType == PhoneNumberType.FIXED_LINE) {
         formattedNumber =
             formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
+      } else if (regionCode.equals("BR") && isFixedLineOrMobile) {
+        formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode()
+            ? formattedNumber = formatNationalNumberWithPreferredCarrierCode(numberNoExt, "")
+            // Brazilian fixed line and mobile numbers need to be dialed with a carrier code when
+            // called within Brazil. Without that, most of the carriers won't connect the call.
+            // Because of that, we return an empty string here.
+            : "";
       } else {
-        // E164 doesn't work at all when dialing within Colombia.
-        formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
+        // For NANPA countries, non-geographical countries, and Mexican fixed line and mobile
+        // numbers, we output international format for numbers that can be dialed internationally
+        // as that always works.
+        if ((countryCallingCode == NANPA_COUNTRY_CODE ||
+            regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY) ||
+            // MX fixed line and mobile numbers should always be formatted in international format,
+            // even when dialed within MX. For national format to work, a carrier code needs to be
+            // used, and the correct carrier code depends on if the caller and callee are from the
+            // same local area. It is trickier to get that to work correctly than using
+            // international format, which is tested to work fine on all carriers.
+            (regionCode.equals("MX") && isFixedLineOrMobile)) &&
+            canBeInternationallyDialled(numberNoExt)) {
+          formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
+        } else {
+          formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
+        }
       }
-    } else if (regionCode.equals("PE") && regionCallingFrom.equals("PE")) {
-      // In Peru, numbers cannot be dialled using E164 format from a mobile phone for Movistar.
-      // Instead they must be dialled in national format.
-      formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
-    } else if (regionCode.equals("AE") && regionCallingFrom.equals("AE") &&
-               numberType == PhoneNumberType.UAN) {
-      // In the United Arab Emirates, numbers with the prefix 600 (UAN numbers) cannot be dialled
-      // using E164 format. Instead they must be dialled in national format.
-      formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
-    } else if (regionCode.equals("BR") && regionCallingFrom.equals("BR") &&
-        ((numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
-         (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE))) {
-      formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode()
-          ? formatNationalNumberWithPreferredCarrierCode(numberNoExt, "")
-          // Brazilian fixed line and mobile numbers need to be dialed with a carrier code when
-          // called within Brazil. Without that, most of the carriers won't connect the call.
-          // Because of that, we return an empty string here.
-          : "";
     } else if (canBeInternationallyDialled(numberNoExt)) {
       return withFormatting ? format(numberNoExt, PhoneNumberFormat.INTERNATIONAL)
                             : format(numberNoExt, PhoneNumberFormat.E164);
-    } else {
-      formattedNumber = (regionCallingFrom.equals(regionCode))
-          ? format(numberNoExt, PhoneNumberFormat.NATIONAL) : "";
     }
     return withFormatting ? formattedNumber
                           : normalizeHelper(formattedNumber, DIALLABLE_CHAR_MAPPINGS,

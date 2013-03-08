@@ -14,6 +14,8 @@
 
 # Generated from:
 # http://www.itu.int/oth/T0202000066/en [2012-07-24]
+# Numbering Plan received from Sony Ericsson [2012-04]
+# Some names were changed to the more common English spelling.
 
 98111|Babol
 98112|Babol suburbs
@@ -54,8 +56,7 @@
 98252|Qom suburbs
 98255|Saveh
 98256|Saveh suburbs
-98261|Karaj
-98262|Karaj suburbs
+9826|Karaj
 98273|Shahroud
 98274|Shahroud suburbs
 98281|Qazvin
@@ -151,7 +152,7 @@
 98651|Sarbandar
 98652|Sarbandar suburbs
 98661|Khorramabad
-98662|Brojerd
+98662|Borujerd
 98663|Khoramabad suburbs
 98664|Aligudarz
 98665|Borujerd suburbs

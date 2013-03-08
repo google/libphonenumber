@@ -23,6 +23,7 @@
 8241|Chungnam
 8242|Daejeon
 8243|Chungbuk
+8244|Sejong City
 8251|Busan
 8252|Ulsan
 8253|Daegu

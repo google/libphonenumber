@@ -689,8 +689,21 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testFormatNumberForMobileDialing() {
+    // Numbers are normally dialed in national format in-country, and international format from
+    // outside the country.
+    assertEquals("030123456",
+        phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
+    assertEquals("+4930123456",
+        phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.CH, false));
+    PhoneNumber deNumberWithExtn = new PhoneNumber().mergeFrom(DE_NUMBER).setExtension("1234");
+    assertEquals("030123456",
+        phoneUtil.formatNumberForMobileDialing(deNumberWithExtn, RegionCode.DE, false));
+    assertEquals("+4930123456",
+        phoneUtil.formatNumberForMobileDialing(deNumberWithExtn, RegionCode.CH, false));
+
     // US toll free numbers are marked as noInternationalDialling in the test metadata for testing
-    // purposes.
+    // purposes. For such numbers, we expect nothing to be returned when the region code is not the
+    // same one.
     assertEquals("800 253 0000",
         phoneUtil.formatNumberForMobileDialing(US_TOLLFREE, RegionCode.US,
                                                true /*  keep formatting */));
@@ -733,6 +746,17 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.formatNumberForMobileDialing(AE_UAN, RegionCode.JP, false));
     assertEquals("600123456",
         phoneUtil.formatNumberForMobileDialing(AE_UAN, RegionCode.AE, false));
+
+    assertEquals("+523312345678",
+        phoneUtil.formatNumberForMobileDialing(MX_NUMBER1, RegionCode.MX, false));
+    assertEquals("+523312345678",
+        phoneUtil.formatNumberForMobileDialing(MX_NUMBER1, RegionCode.US, false));
+
+    // Non-geographical numbers should always be dialed in international format.
+    assertEquals("+80012345678",
+        phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE, RegionCode.US, false));
+    assertEquals("+80012345678",
+        phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE, RegionCode.UN001, false));
   }
 
   public void testFormatByPattern() {

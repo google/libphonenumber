@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from:
-# http://en.wikipedia.org/wiki/+263 [410798684]
+# Generated from the ITU plan published 12th December 2012. The Wikipedia page
+# has many errors since it is based on the area codes before 2009.
+# The spelling of "Shanagani" has been corrected to "Shangani".
 
 26313|Victoria Falls
 26314|Rutenga
@@ -22,30 +23,74 @@
 26317|Filabusi
 26318|Dete
 26320|Mutare
+263204|Odzi
+263205|Pengalonga
 26321|Murambinda
-26322|Wedza
+263220|Mutare
+263222|Wedza
+263225|Rusape
+263227|Chipinge
+263228|Hauna
 26324|Chipangayi
+263248|Birchenough Bridge
 26325|Rusape
+2632582|Headlands
+2632583|Nyazura
 26326|Chimanimani
-26327|Chipinge
-26328|Hauna
+263270|Chitungwiza
+263271|Bindura
+263272|Mutoko
+263273|Ruwa
+263274|Arcturus
+263275|Mazowe
+263276|Mt. Darwin
+263277|Mvurwi
+263278|Murewa
+263279|Marondera
+263280|Plumtree
+263281|Hwange
+263282|Kezi
+263283|Figtree
+263284|Gwanda
+263285|Turkmine
+263286|Beitbridge
+263287|Nyamandhlovu
+263288|Esigodini
+263289|Jotsholo
 26329|Juliasdale
+263298|Nyanga
 26330|Gutu
+263308|Chatsworth
 26331|Chiredzi
+263317|Checheche
 26332|Mvuma
 26333|Triangle
+263337|Nyaningwe
+263338|Nyika
 26334|Jerera
 26335|Mashava
 26336|Ngundu
-26338|Nyika
-26339|Masvingo (Ft. Victoria)
+263371|Shamva
+263375|Concession
+263376|Glendale
+263379|Macheke
+263383|Matopos
+263387|Tsholotsho
+26339|Masvingo
+263398|Lupane
 2634|Harare
+26342729|Marondera
 26350|Shangani
 26351|Zvishavane
+263516|Mberengwa
+263517|Mataga
 26352|Shurugwi
 26353|Chegutu
 26354|Gweru
+2635483|Lalapanzi
 26355|Kwekwe
+263557|Munyati
+263558|Nkayi
 26356|Chivhu
 26357|Centenary
 26358|Guruve
@@ -53,31 +98,19 @@
 26360|Mhangura
 26361|Kariba
 26362|Norton
+263628|Selous
 26363|Makuti
+263637|Chirundu
 26364|Karoi
 26365|Beatrice
 26366|Banket
+263667|Raffingora
+263668|Mutorashanga
 26367|Chinhoyi
+263675|Murombedzi
 26368|Kadoma
+263687|Sanyati
+263688|Chakari
 26369|Darwendale
-26370|Chitungwiza
-26371|Bindura
-26372|Mutoku
-26373|Ruwa
-26374|Arcturus
-26375|Mazowe
-26376|Mount Darwin
-26377|Mvurwi
-26378|Murewa
-26379|Marondera
-26380|Plumtree
-26381|Hwange
-26382|Kezi
-26383|Figtree
-26384|Gwanda
-26385|Turk Mine
-26386|Beitbridge
-26387|Nyamandhlovu
-26388|Esigodini
-26389|Jotsholo
+263698|Trelawney
 2639|Bulawayo

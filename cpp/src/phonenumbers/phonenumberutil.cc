@@ -163,17 +163,14 @@ void PrefixNumberWithCountryCallingCode(
     string* formatted_number) {
   switch (number_format) {
     case PhoneNumberUtil::E164:
-      formatted_number->insert(
-          0, StrCat(kPlusSign, SimpleItoa(country_calling_code)));
+      formatted_number->insert(0, StrCat(kPlusSign, country_calling_code));
       return;
     case PhoneNumberUtil::INTERNATIONAL:
-      formatted_number->insert(
-          0, StrCat(kPlusSign, SimpleItoa(country_calling_code), " "));
+      formatted_number->insert(0, StrCat(kPlusSign, country_calling_code, " "));
       return;
     case PhoneNumberUtil::RFC3966:
-      formatted_number->insert(
-          0, StrCat(kRfc3966Prefix, kPlusSign,
-                    SimpleItoa(country_calling_code), "-"));
+      formatted_number->insert(0, StrCat(kRfc3966Prefix, kPlusSign,
+                                         country_calling_code, "-"));
       return;
     case PhoneNumberUtil::NATIONAL:
     default:
@@ -1033,54 +1030,60 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
     return;
   }
 
+  formatted_number->assign("");
   // Clear the extension, as that part cannot normally be dialed together with
   // the main number.
   PhoneNumber number_no_extension(number);
   number_no_extension.clear_extension();
-  PhoneNumberType number_type = GetNumberType(number_no_extension);
   string region_code;
   GetRegionCodeForCountryCode(country_calling_code, &region_code);
-  if ((region_code == "CO") && (calling_from == "CO")) {
-    if (number_type == FIXED_LINE) {
+  if (calling_from == region_code) {
+    PhoneNumberType number_type = GetNumberType(number_no_extension);
+    bool is_fixed_line_or_mobile =
+        (number_type == FIXED_LINE) || (number_type == MOBILE) ||
+        (number_type == FIXED_LINE_OR_MOBILE);
+    // Carrier codes may be needed in some countries. We handle this here.
+    if ((region_code == "CO") && (number_type == FIXED_LINE)) {
       FormatNationalNumberWithCarrierCode(
           number_no_extension, kColombiaMobileToFixedLinePrefix,
           formatted_number);
-    } else {
-      // E164 doesn't work at all when dialing within Colombia.
-      Format(number_no_extension, NATIONAL, formatted_number);
-    }
-  } else if ((region_code == "PE") && (calling_from == "PE")) {
-    // In Peru, numbers cannot be dialled using E164 format from a mobile phone
-    // for Movistar. Instead they must be dialled in national format.
-    Format(number_no_extension, NATIONAL, formatted_number);
-  } else if ((region_code == "AE") &&
-             (calling_from == "AE") && (number_type == UAN)) {
-    // In the United Arab Emirates, numbers with the prefix 600 (UAN numbers)
-    // cannot be dialled using E164 format. Instead they must be dialled in
-    // national format.
-    Format(number_no_extension, NATIONAL, formatted_number);
-  } else if ((region_code == "BR") && (calling_from == "BR") &&
-      ((number_type == FIXED_LINE) || (number_type == MOBILE) ||
-       (number_type == FIXED_LINE_OR_MOBILE))) {
-    if (number_no_extension.has_preferred_domestic_carrier_code()) {
+    } else if ((region_code == "BR") && (is_fixed_line_or_mobile)) {
+      if (number_no_extension.has_preferred_domestic_carrier_code()) {
       FormatNationalNumberWithPreferredCarrierCode(number_no_extension, "",
                                                    formatted_number);
+      } else {
+        // Brazilian fixed line and mobile numbers need to be dialed with a
+        // carrier code when called within Brazil. Without that, most of the
+        // carriers won't connect the call. Because of that, we return an empty
+        // string here.
+        formatted_number->assign("");
+      }
     } else {
-      // Brazilian fixed line and mobile numbers need to be dialed with a
-      // carrier code when called within Brazil. Without that, most of the
-      // carriers won't connect the call. Because of that, we return an empty
-      // string here.
-      formatted_number->assign("");
+      // For NANPA countries, non-geographical countries, and Mexican fixed line
+      // and mobile numbers, we output international format for numbers that can
+      // be dialed internationally as that always works.
+      if ((country_calling_code == kNanpaCountryCode ||
+           region_code == kRegionCodeForNonGeoEntity ||
+           // MX fixed line and mobile numbers should always be formatted in
+           // international format, even when dialed within MX. For national
+           // format to work, a carrier code needs to be used, and the correct
+           // carrier code depends on if the caller and callee are from the same
+           // local area. It is trickier to get that to work correctly than
+           // using international format, which is tested to work fine on all
+           // carriers.
+           (region_code == "MX" && is_fixed_line_or_mobile)) &&
+          CanBeInternationallyDialled(number_no_extension)) {
+        Format(number_no_extension, INTERNATIONAL, formatted_number);
+      } else {
+        Format(number_no_extension, NATIONAL, formatted_number);
+      }
+
     }
   } else if (CanBeInternationallyDialled(number_no_extension)) {
     with_formatting
         ? Format(number_no_extension, INTERNATIONAL, formatted_number)
         : Format(number_no_extension, E164, formatted_number);
     return;
-  } else if (calling_from == region_code) {
-    Format(number_no_extension, NATIONAL, formatted_number);
-  } else {
-    formatted_number->assign("");
   }
   if (!with_formatting) {
     NormalizeHelper(reg_exps_->diallable_char_mappings_,

@@ -947,10 +947,35 @@ TEST_F(PhoneNumberUtilTest, FormatWithPreferredCarrierCode) {
 TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   PhoneNumber test_number;
   string formatted_number;
-  test_number.set_country_code(1);
 
+  // Numbers are normally dialed in national format in-country, and
+  // international format from outside the country.
+  test_number.set_country_code(49);
+  test_number.set_national_number(30123456ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::DE(), false, /* remove formatting */
+      &formatted_number);
+  EXPECT_EQ("030123456", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::CH(), false, /* remove formatting */
+      &formatted_number);
+  EXPECT_EQ("+4930123456", formatted_number);
+
+  test_number.set_extension("1234");
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::DE(), false, /* remove formatting */
+      &formatted_number);
+  EXPECT_EQ("030123456", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::CH(), false, /* remove formatting */
+      &formatted_number);
+  EXPECT_EQ("+4930123456", formatted_number);
+
+  test_number.set_country_code(1);
+  test_number.clear_extension();
   // US toll free numbers are marked as noInternationalDialling in the test
-  // metadata for testing purposes.
+  // metadata for testing purposes. For such numbers, we expect nothing to be
+  // returned when the region code is not the same one.
   test_number.set_national_number(8002530000ULL);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::US(), true, /* keep formatting */
@@ -1022,6 +1047,25 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::AE(), true, &formatted_number);
   EXPECT_EQ("600123456", formatted_number);
+
+  test_number.set_country_code(52);
+  test_number.set_national_number(3312345678ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::MX(), false, &formatted_number);
+  EXPECT_EQ("+523312345678", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("+523312345678", formatted_number);
+
+  // Non-geographical numbers should always be dialed in international format.
+  test_number.set_country_code(800);
+  test_number.set_national_number(12345678ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("+80012345678", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::UN001(), false, &formatted_number);
+  EXPECT_EQ("+80012345678", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatByPattern) {

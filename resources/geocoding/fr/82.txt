@@ -21,6 +21,7 @@
 8241|Chungcheong du Sud
 8242|Daejeon
 8243|Chungcheong du Nord
+8244|Sejong (ville)
 8251|Busan
 8252|Ulsan
 8253|Daegu

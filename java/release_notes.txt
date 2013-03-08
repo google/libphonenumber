@@ -1,3 +1,15 @@
+Mar 07, 2013: libphonenumber-5.4
+* Code changes:
+ - Switch formatNumberForMobileDialing to prefer national format to international format when the
+   number is dialed from the same region the phone number is from.
+
+* Metadata changes:
+ - Updated metadata for region code(s):
+   BF, CD, CN, CZ, GN, IR, JP, KR, KW, LR, NZ, TT, UG, ZW
+ - New geocoding data for country calling code(s): 82 (cs)
+ - Updated geocoding data for country calling code(s):
+   82 (en, fr, ko, zh, zh_Hant), 98 (en, fa), 263 (en)
+
 Feb 11, 2013: libphonenumber-5.3.2
 * Metadata changes:
  - Updated metadata for region code(s):
