@@ -1650,8 +1650,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           this.formatNationalNumberWithPreferredCarrierCode(numberNoExt, '') :
           // Brazilian fixed line and mobile numbers need to be dialed with a
           // carrier code when called within Brazil. Without that, most of the
-          // carriers won't connect the call. Because of that, we return an empty
-          // string here.
+          // carriers won't connect the call. Because of that, we return an
+          // empty string here.
           '';
     } else {
       // For NANPA countries, non-geographical countries, and Mexican fixed
@@ -1676,7 +1676,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
         formattedNumber = this.format(
           numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
       }
-    }  
+    }
   } else if (this.canBeInternationallyDialled(numberNoExt)) {
     return withFormatting ?
         this.format(numberNoExt,
