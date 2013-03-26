@@ -1,3 +1,10 @@
+Mar 25, 2013: libphonenumber-5.4.1
+* Metadata changes:
+ - Updated metadata for region code(s): BF, BH, CR, EC, IR, MG, PF, TD, TN
+ - New geocoding data for country calling code(s): 374 (am, ru)
+ - Updated geocoding data for country calling code(s):
+   98 (en, fa), 358 (en, se), 374 (en)
+
 Mar 07, 2013: libphonenumber-5.4
 * Code changes:
  - Switch formatNumberForMobileDialing to prefer national format to international format when the

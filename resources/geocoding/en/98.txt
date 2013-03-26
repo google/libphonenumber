@@ -37,14 +37,7 @@
 98182|Bandar Anzali suburbs
 98191|Chalus
 98192|Chalus suburbs
-98212|Tehran
-98213|Tehran
-98214|Tehran
-98215|Tehran
-98216|Tehran
-98217|Tehran
-98218|Tehran
-98219|Tehran
+9821|Tehran
 98221|Tehran suburbs
 98228|Eslamshahr
 98229|Eslamshahr suburbs

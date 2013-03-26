@@ -1,3 +1,14 @@
+libphonenumber (5.4.1) precise; urgency=low
+
+  * Metadata changes:
+    - Updated metadata for region code(s): BF, BH, CR, EC, IR, MG, PF,
+    TD, TN
+    - New geocoding data for country calling code(s): 374 (am, ru)
+    - Updated geocoding data for country calling code(s):
+    98 (en, fa), 358 (en, se), 374 (en)
+
+ -- Shaopeng Jia <shaopengjia@google.com>  Mon, 25 Mar 2013 13:42:45 +0100
+
 libphonenumber (5.4) precise; urgency=low
 
   * Code changes:

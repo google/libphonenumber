@@ -16,10 +16,14 @@
 # http://en.wikipedia.org/wiki/+374 [440755811]
 # http://www.spyur.am/en/armenia (2011-07-28)
 # http://www.phonebookoftheworld.com/phonebookofarmenia.htm (2011-07-28)
-# with some translation for a small number of entries.
+# http://www.itu.int/oth/T020200000A/en (2013-03-06)
+# http://phone.beeline.am/ru/main/codes.wbp (2013-03-06)
+# with some translation for a small number of entries, and to fix the
+# spelling to be consistent.
 
 37410|Yerevan/Jrvezh
 374222|Abovyan/Akunk/Byureghavan/Nor Gyugh/Verin Ptghni
+3742227|Garni
 3742229|Zovk
 37422290|Mayakovsky
 37422291|Balahovit/Kamaris
@@ -27,6 +31,7 @@
 37422294|Arzni
 37422296|Ptghni
 37422297|Geghashen
+37422298|Arinj
 37422299|Kotayk
 374223|Hankavan/Hrazdan/Tsakhkadzor
 37422391|Lernanist
@@ -42,23 +47,39 @@
 37422672|Arzakan
 37422675|Alapars/Vardanavank
 374231|Echmiadzin/Musaler/Parakar/Zvartnots
-37423190|Baghramian
+37423190|Baghramyan
 37423191|Vache
 37423195|Norakert
 37423198|Jrarat
 37423199|Khoronk
 374232|Aghdzq/Ashtarak/Karbi/Oshakan
+37423290|Ohanavan
+37423294|Byurakan
 374233|Baghramyan/Lernagog
 37423374|Myasnikyan
 37423375|Karakert
 37423376|Dalarik
-374234|Vedi/Vosketap
+374234|Vedi/Vosketap/Ararat
+37423481|Aygavan
+37423486|Urtsadzor
+37423492|Martirosyan
+37423497|Pokr Vedi
+37423498|Taperakan
 374235|Artashat/Aygezard/Dalar/Kaghtsrashen/Mkhchyan/Shahumyan
+37423572|Arevshat
+3742359|Norashen
 374236|Ayntap/Masis/Nor Kharberd/Norabats
+3742363|Aintab
+37423699|Dashtavan
 374237|Araks/Armavir/Hoktember/Lenughi/Metsamor/Zartonk
+3742377|Mrgashat
+37423779|Bambakashat
+3742379|Nalbandian
+37423794|Margara
+37423796|Tandzut
+37423798|Shenavan
 374238|Ararat/Avshar/Surenavan/Yeraskh
-374242|Maralik
-37424291|Sarnakhbyur
+374242|Maralik/Sarnaghbyur
 37424293|Shirakavan
 37424297|Ani Kayaran
 37424300|Akhuryan/Arapi/Kamo/Musayelyan
@@ -66,24 +87,56 @@
 37424492|Panik
 37424495|Arevshat
 37424496|Mets Mantash
-374245|Ashotsk
-374246|Amasia
-3742490|Talin
+374245|Ashotsk region
+374246|Amasia region
+374249|Talin
+37424973|Katnaghbyur
 3742499|Aragatsavan
+37424996|Nerkin Bazmaberd
+37424997|Mastara
 374252|Aparan
+37425251|Kuchak
+37425295|Artavan
 374253|Alaverdi/Odzun/Tsaghkashat/Tumanyan
+37425352|Akhtala
+37425353|Shnogh
+37425356|Chochkan
+37425357|Tumanyan
 374254|Tashir
-374255|Spitak
+3742549|Metsavan
+374255|Spitak region
 374256|Bovadzor/Stepanavan
+37425691|Kurtan
 37425694|Agarak
-3742570|Tsakhkahovit
+37425695|Lejan
+374257|Aragats
+3742570|Tsakhkahovit region
 374261|Sevan
 374262|Martuni
+3742625|Vardenik
+37426272|Lichk
+37426299|Eranos
 374263|Azatamut/Getahovit/Ijevan/Yenokavan
+37426374|Aygehovit
+37426392|Achajur
+37426397|Azatamut
 374264|Gavar/Sarukhan
 374265|Tchambarak
+37426596|Vahan
 374266|Berdavan/Koghb/Noyemberyan
+3742665|Koghb
+3742667|Berdavan
+37426692|Archis
+37426693|Baghanis
+37426695|Zorakan
+37426696|Voskepar
+37426699|Koti
 374267|Aygepar/Berd
+3742675|Artsvaberd
+37426791|Navur
+37426794|Tovuz
+37426796|Mosesgegh
+37426797|Norashen
 3742680|Dilijan
 374269|Vardenis
 374281|Getap/Salli/Yeghegnadzor
@@ -95,17 +148,23 @@
 37428197|Yelpin
 37428198|Rind
 37428199|Shatin
-374282|Vayk
+374282|Vayk region
 3742830|Sisian
+37428375|Tasik
+37428396|Angehakot
 374284|Goris/Verishen
+37428427|Verishen
+37428491|Harzhis
 37428494|Khndzoresk
 37428495|Shinuhayr
+37428499|Kornidzor
 374285|Davit Bek/Kajaran/Kapan
-374286|Agarak
-3742860|Meghri
-374287|Jermuk/Gyumri
-374312|Azatan/Gyumri/Hatsik
-374322|Vanadzor
+374286|Meghri/Agarak
+37428695|Shvanidzor
+374287|Jermuk
+37428794|Gndevaz
+374312|Gyumri/Akhuryan region
+374322|Vanadzor/Gugark region
 37432293|Pambak
 37432294|Lernapat
 37432295|Yeghegnut

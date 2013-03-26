@@ -14,6 +14,7 @@
 
 # Generated from:
 # http://en.wikipedia.org/wiki/+358 [437010438]
+# Expanded 3585 prefix to exclude mobile.
 
 35813|Norra Karelen
 35814|Mellersta Finland
@@ -24,7 +25,14 @@
 35819|Nyland
 3582|Åbo/Björneborg
 3583|Tavastland
-3585|Kymmene
+35851|Kymmene
+35852|Kymmene
+35853|Kymmene
+35854|Kymmene
+35855|Kymmene
+35856|Kymmene
+35857|Kymmene
+35858|Kymmene
 3586|Vasa
 3588|Uleåborg
 3589|Helsingfors
