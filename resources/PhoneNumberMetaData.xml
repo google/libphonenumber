@@ -2627,7 +2627,7 @@
             6(?:
               [056]\d|
               1[0-36-9]|
-              8[0-3]|
+              8[0-5]|
               90
             )|
             7(?:
@@ -7459,7 +7459,7 @@
 
     <!-- Gabon -->
     <!-- http://www.itu.int/oth/T020200004E/en -->
-    <territory id="GA" countryCode="241" internationalPrefix="00" leading_zero_possible="true"
+    <territory id="GA" countryCode="241" internationalPrefix="00" leadingZeroPossible="true"
                nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(1)(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
@@ -11060,8 +11060,9 @@
         <!-- A couple of additional prefixes found neither on the wikipedia page nor in the MSC
              codes list, are added because SMS messages have been successfully sent to these
              numbers. It seems almost impossible to know for some of these numbers whether they are
-             land-line or mobile, since the ranges overlap. Extra prefixes added: 777[7-9],
-             778[1-9], 7790, 822[1-689], 8299, 8309. -->
+             land-line or mobile, since the ranges overlap. Extra prefixes added: 8299, 8309.
+             New prefixes were added based on the document provided from mobile carriers:
+             https://code.google.com/p/libphonenumber/issues/detail?id=260 -->
         <nationalNumberPattern>
           (?:
             7(?:
@@ -11105,16 +11106,12 @@
                 0[27-9]|
                 3[5-9]|
                 42|
-                60|
-                7[7-9]|
-                8[1-9]|
-                9[05-9]
+                6[03-9]|
+                [79]\d|
+                8[1-9]
               )|
               8(?:
-                [03][07-9]|
-                14|
-                2[7-9]|
-                [4-7]\d|
+                [0-7]\d|
                 9[013-9]
               )
             )|
@@ -13862,7 +13859,7 @@
               5[1-4]
             )|
             [68]0|
-            [3-6][1-9][2-9]
+            [3-6][1-9][1-9]
           </leadingDigits>
           <leadingDigits>
             1(?:
@@ -13874,7 +13871,7 @@
               )
             )|
             [68]0|
-            [3-6][1-9][2-9]
+            [3-6][1-9][1-9]
           </leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
@@ -13902,7 +13899,7 @@
           <format>$1-$2-$3-$4</format>
         </numberFormat>
         <numberFormat pattern="(\d)(\d{3,4})(\d{4})">
-          <leadingDigits>2[2-9]</leadingDigits>
+          <leadingDigits>2[1-9]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d)(\d{3,4})">
@@ -13957,7 +13954,8 @@
       </generalDesc>
       <fixedLine>
         <!-- We omit 049, supposedly for Kaesong Industrial Region, since real numbers can't be
-             found, and it is in North Korea anyway. -->
+             found, and it is in North Korea anyway. We support 7-8 digits long subscriber numbers
+             starting with 1 based on evidence of real numbers found online. -->
         <nationalNumberPattern>
           (?:
             2|
@@ -13966,7 +13964,7 @@
             5[1-5]
           )(?:
             1\d{2,3}|
-            [2-9]\d{6,7}
+            [1-9]\d{6,7}
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
@@ -16955,12 +16953,13 @@
       </fixedLine>
       <mobile>
         <!-- 7[45] has been added as many numbers online have been found with this prefix. 46[46]
-             are new prefixes for Dhiraagu and Wataniya, used currently for SMS-based services. -->
+             are new prefixes for Dhiraagu and Wataniya, used currently for SMS-based services.
+             91 was added based on information from Wataniya Telecom. -->
         <nationalNumberPattern>
           (?:
             46[46]|
             7[3-9]\d|
-            9[6-9]\d
+            9[16-9]\d
           )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
@@ -19081,8 +19080,11 @@
         <format>$1 $2 $3</format>
       </numberFormat>
       <numberFormat nationalPrefixFormattingRule="$NP$FG"
-        pattern="(9\d{2})(\d{3})(\d{4})">
-        <leadingDigits>9</leadingDigits>
+        pattern="(\d{3})(\d{3})(\d{4})">
+        <leadingDigits>
+          81|
+          9
+        </leadingDigits>
         <format>$1 $2 $3</format>
       </numberFormat>
       <!-- Formatting from http://www.uniontelecard.com/calling-guides/philippines/guide1.aspx -->
@@ -19118,17 +19120,19 @@
       <exampleNumber>21234567</exampleNumber>
     </fixedLine>
     <mobile>
-      <!-- Adding Sun prefixes 94[23] based on http://en.wikipedia.org/wiki/Sun_Cellular -->
       <nationalNumberPattern>
-        9(?:
-          0[5-9]|
-          1[025-9]|
-          2[0-36-9]|
-          3[02-9]|
-          4[236-9]|
-          7[349]|
-          89|
-          9[49]
+        (?:
+          81[37]|
+          9(?:
+            0[5-9]|
+            1[025-9]|
+            2[0-35-9]|
+            3[02-9]|
+            4[236-9]|
+            7[3479]|
+            89|
+            9[46-9]
+          )
         )\d{7}
       </nationalNumberPattern>
       <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -21744,7 +21748,8 @@
       <mobile>
         <!-- 24 is used by the carrier Telesom. 28 is used by Nationlink. 6[89] are apparently used
              by Nationlink Somalia, 67 by Nationlink Puntland, and 61 by Hormuud. 7X is used by
-             Somtel. 6 followed by only 7 digits is used by Telecom. -->
+             Somtel. 6 followed by only 7 digits is used by Telecom. We have received information
+             from Golis Telecom that 90 numbers are extended by 1 digit by becoming 907. -->
         <nationalNumberPattern>
           (?:
             15\d|
@@ -21754,10 +21759,13 @@
             )|
             6[17-9]?\d{2}|
             7\d{2}|
-            9[01]\d
+            9(?:
+              07|
+              1
+            )\d
           )\d{5}
         </nationalNumberPattern>
-        <exampleNumber>90792024</exampleNumber>
+        <exampleNumber>907792024</exampleNumber>
       </mobile>
       <!-- According to the following webpage, there is no emergency number in Somalia:
            http://www.netglobers.com/africa/somalia-emergency-numbers-in-somalia.html -->
@@ -23201,9 +23209,9 @@
              area code - http://www.ua.all-biz.info/guide/phonecodes is useful but not error-free.
              Have used local yellow pages guidelines, Google searches and regression tests to
              reverse-engineer these rules as well as bugs. -->
-        <numberFormat pattern="([3-69]\d)(\d{3})(\d{4})">
+        <numberFormat pattern="([3-689]\d)(\d{3})(\d{4})">
           <leadingDigits>
-            39|
+            [38]9|
             4(?:
               [45][0-5]|
               87
@@ -23217,7 +23225,7 @@
             9[1-9]
           </leadingDigits>
           <leadingDigits>
-            39|
+            [38]9|
             4(?:
               [45][0-5]|
               87
@@ -23248,7 +23256,7 @@
               [12][29]|
               5[24]
             )|
-            8|
+            8[0-8]|
             90
           </leadingDigits>
           <leadingDigits>
@@ -23266,7 +23274,7 @@
               [12][29]|
               5[24]
             )|
-            8|
+            8[0-8]|
             90
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -23364,6 +23372,12 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>900123456</exampleNumber>
       </premiumRate>
+      <!-- Added based on: http://www.didx.net/did/ShowCountry/Country/AreaDesc/Area/9442 -->
+      <voip>
+        <nationalNumberPattern>89\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>891234567</exampleNumber>
+      </voip>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -23585,7 +23599,7 @@
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>2015550123</exampleNumber>
+        <exampleNumber>2015555555</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
@@ -23677,7 +23691,7 @@
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>2015550123</exampleNumber>
+        <exampleNumber>2015555555</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>

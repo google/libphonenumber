@@ -1,3 +1,7 @@
+Apr 19, 2013: libphonenumber-5.4.2
+* Metadata changes:
+ - Updated metadata for region code(s): BF, GA, IN, KR, MV, PH, SO, UA, US
+
 Mar 25, 2013: libphonenumber-5.4.1
 * Metadata changes:
  - Updated metadata for region code(s): BF, BH, CR, EC, IR, MG, PF, TD, TN

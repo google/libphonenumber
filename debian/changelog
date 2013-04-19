@@ -1,3 +1,11 @@
+libphonenumber (5.4.2) precise; urgency=low
+
+  * Metadata changes:
+    - Updated metadata for region code(s): BF, GA, IN, KR, MV, PH, SO,
+    UA, US
+
+ -- Shaopeng Jia <shaopengjia@google.com>  Fri, 19 Apr 2013 15:55:35 +0200
+
 libphonenumber (5.4.1) precise; urgency=low
 
   * Metadata changes:
