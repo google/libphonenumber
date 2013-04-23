@@ -1138,7 +1138,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfGeographicalAreaCode =
     return 0;
   }
 
-  if (!this.isNumberGeographical_(number)) {
+  if (!this.isNumberGeographical(number)) {
     return 0;
   }
 
@@ -1296,9 +1296,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
  *
  * @param {i18n.phonenumbers.PhoneNumber} phoneNumber The phone number to test.
  * @return {boolean} true if the phone number has a geographical association.
- * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical_ =
+i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
     function(phoneNumber) {
   /** @type {i18n.phonenumbers.PhoneNumberType} */
   var numberType = this.getNumberType(phoneNumber);

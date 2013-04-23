@@ -318,11 +318,11 @@ function testGetInstanceLoadInternationalTollFreeMetadata() {
 
 function testIsNumberGeographical() {
   // Bahamas, mobile phone number.
-  assertFalse(phoneUtil.isNumberGeographical_(BS_MOBILE));
+  assertFalse(phoneUtil.isNumberGeographical(BS_MOBILE));
   // Australian fixed line number.
-  assertTrue(phoneUtil.isNumberGeographical_(AU_NUMBER));
+  assertTrue(phoneUtil.isNumberGeographical(AU_NUMBER));
   // International toll free number.
-  assertFalse(phoneUtil.isNumberGeographical_(INTERNATIONAL_TOLL_FREE));
+  assertFalse(phoneUtil.isNumberGeographical(INTERNATIONAL_TOLL_FREE));
 }
 
 function testIsLeadingZeroPossible() {

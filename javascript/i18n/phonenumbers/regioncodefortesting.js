@@ -41,6 +41,7 @@ i18n.phonenumbers.RegionCode = {
   BS: 'BS',
   BY: 'BY',
   CA: 'CA',
+  CH: 'CH',
   CN: 'CN',
   CS: 'CS',
   DE: 'DE',
