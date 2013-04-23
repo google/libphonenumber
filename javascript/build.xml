@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+
+<project name="libphonenumber-javascript" default="compile">
+  <property name="closure-compiler.dir"
+            value="${basedir}/../../closure-compiler" />
+  <property name="closure-compiler.jar"
+            value="${closure-compiler.dir}/build/compiler.jar" /> 
+  <property name="closure-library.dir"
+            value="${basedir}/../../closure-library" />
+  <property name="closure-linter.dir"
+            value="${basedir}/../../closure-linter" />
+  <property name="python-gflags.dir"
+            value="${basedir}/../../python-gflags" />
+
+  <macrodef name="closure-compile">
+    <attribute name="inputfile" />
+    <attribute name="outputfile" />
+    <attribute name="compilationlevel" default="ADVANCED_OPTIMIZATIONS" />
+    <attribute name="outputmode" default="compiled" />
+    <attribute name="outputwrapper" default="(function(){%output%})();" />
+    <element name="extraflags" optional="yes" />
+    <sequential>
+      <exec executable="python" failonerror="true" logError="true">
+        <arg value="${closure-library.dir}/closure/bin/calcdeps.py" />
+        <arg line='-i "@{inputfile}"' />
+        <arg line='--output_file "@{outputfile}"' />
+        <arg line='-p "${closure-library.dir}"' />
+        <arg line="-o @{outputmode}" />
+        <arg line='-c "${closure-compiler.jar}"' />
+        <arg line='-f "--output_wrapper=@{outputwrapper}"' />
+        <arg line='-f "--compilation_level=@{compilationlevel}"' />
+        <arg line='-f "--warning_level=VERBOSE"' />
+        <arg line='-f "--jscomp_error=accessControls"' />
+        <arg line='-f "--jscomp_error=ambiguousFunctionDecl"' />
+        <arg line='-f "--jscomp_error=checkDebuggerStatement"' />
+        <arg line='-f "--jscomp_error=checkRegExp"' />
+        <arg line='-f "--jscomp_error=checkTypes"' />
+        <arg line='-f "--jscomp_error=checkVars"' />
+        <arg line='-f "--jscomp_error=const"' />
+        <arg line='-f "--jscomp_error=constantProperty"' />
+        <arg line='-f "--jscomp_error=deprecated"' />
+        <arg line='-f "--jscomp_error=duplicate"' />
+        <arg line='-f "--jscomp_error=duplicateMessage"' />
+        <arg line='-f "--jscomp_error=es5Strict"' />
+        <arg line='-f "--jscomp_error=externsValidation"' />
+        <arg line='-f "--jscomp_error=fileoverviewTags"' />
+        <arg line='-f "--jscomp_error=globalThis"' />
+        <arg line='-f "--jscomp_error=internetExplorerChecks"' />
+        <arg line='-f "--jscomp_error=invalidCasts"' />
+        <arg line='-f "--jscomp_error=misplacedTypeAnnotation"' />
+        <arg line='-f "--jscomp_error=missingProperties"' />
+        <arg line='-f "--jscomp_error=nonStandardJsDocs"' />
+        <arg line='-f "--jscomp_error=strictModuleDepCheck"' />
+        <arg line='-f "--jscomp_error=suspiciousCode"' />
+        <arg line='-f "--jscomp_error=typeInvalidation"' />
+        <arg line='-f "--jscomp_error=undefinedNames"' />
+        <arg line='-f "--jscomp_error=undefinedVars"' />
+        <arg line='-f "--jscomp_error=unknownDefines"' />
+        <arg line='-f "--jscomp_error=uselessCode"' />
+        <arg line='-f "--jscomp_error=visibility"' />
+        <extraflags />
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="gjslint">
+    <attribute name="inputfile" />
+    <sequential>
+      <exec executable="python" failonerror="false" logError="true">
+        <env key="PYTHONPATH"
+             value="${closure-linter.dir}:${python-gflags.dir}"/>
+        <arg value="${closure-linter.dir}/closure_linter/gjslint.py" />
+        <arg line='--strict' />
+        <arg line='"@{inputfile}"' />
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <condition property="os.iswindows">
+    <os family="windows" />
+  </condition>
+  <condition property="os.isunix">
+    <os family="unix" />
+  </condition>
+  <target name="nul" if="os.iswindows">
+    <property name="null.device" value="NUL" />
+  </target>
+  <target name="devnull" if="os.isunix">
+    <property name="null.device" value="/dev/null" />
+  </target>
+  <target name="setnulldevice" depends="nul,devnull" />
+
+  <target name="clean" description="deletes all generated files">
+    <delete file="i18n/phonenumbers/demo-compiled.js" />
+  </target>
+
+  <target name="compile-demo"
+          description="generates demo-compiled.js">
+    <closure-compile inputfile="i18n/phonenumbers/demo.js"
+                     outputfile="i18n/phonenumbers/demo-compiled.js">
+      <extraflags>
+        <arg line='-p "i18n/phonenumbers"' />
+        <arg line='-e "i18n/phonenumbers/metadatafortesting.js"' />
+        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
+        <arg line='-e "i18n/phonenumbers/regioncodefortesting.js"' />
+      </extraflags>
+    </closure-compile>
+  </target>
+
+  <target name="compile-tests" depends="setnulldevice">
+    <closure-compile inputfile="i18n/phonenumbers/asyoutypeformatter_test.js"
+                     outputfile="${null.device}">
+      <extraflags>
+        <arg line='-p "i18n/phonenumbers"' />
+        <arg line='-e "i18n/phonenumbers/metadata.js"' />
+        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
+      </extraflags>
+    </closure-compile>
+    <closure-compile inputfile="i18n/phonenumbers/phonenumberutil_test.js"
+                     outputfile="${null.device}">
+      <extraflags>
+        <arg line='-p "i18n/phonenumbers"' />
+        <arg line='-e "i18n/phonenumbers/metadata.js"' />
+        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
+      </extraflags>
+    </closure-compile>
+  </target>
+
+  <target name="compile" depends="compile-demo,compile-tests" />
+
+  <target name="lint" description="lints all javascript files">
+    <gjslint inputfile="i18n/phonenumbers/asyoutypeformatter*.js" />
+    <gjslint inputfile="i18n/phonenumbers/demo.js" />
+    <gjslint inputfile="i18n/phonenumbers/phonenumberutil*.js" />
+  </target>
+
+</project>
