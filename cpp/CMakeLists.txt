@@ -175,7 +175,7 @@ endif ()
 
 set (
   SOURCES
-  "src/base/string_piece.cc"
+  "src/base/strings/string_piece.cc"
   "src/phonenumbers/asyoutypeformatter.cc"
   "src/phonenumbers/default_logger.cc"
   "src/phonenumbers/logger.cc"

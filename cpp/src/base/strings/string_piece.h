@@ -15,8 +15,8 @@
 // conversions from "const char*" to "string" and back again.
 //
 
-#ifndef BASE_STRING_PIECE_H_
-#define BASE_STRING_PIECE_H_
+#ifndef BASE_STRINGS_STRING_PIECE_H_
+#define BASE_STRINGS_STRING_PIECE_H_
 #pragma once
 
 #include <string>
@@ -189,4 +189,4 @@ inline bool operator>=(const StringPiece& x, const StringPiece& y) {
 
 }  // namespace base
 
-#endif  // BASE_STRING_PIECE_H_
+#endif  // BASE_STRINGS_STRING_PIECE_H_
