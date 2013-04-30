@@ -17,6 +17,8 @@
 #ifndef I18N_PHONENUMBERS_BASE_SINGLETON_H_
 #define I18N_PHONENUMBERS_BASE_SINGLETON_H_
 
+#if defined(I18N_PHONENUMBERS_USE_BOOST)
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/thread/once.hpp>
 #include <boost/utility.hpp>
@@ -45,6 +47,31 @@ class Singleton : private boost::noncopyable {
 
 template <class T> boost::scoped_ptr<T> Singleton<T>::instance;
 template <class T> boost::once_flag Singleton<T>::flag = BOOST_ONCE_INIT;
+
+#else  // !I18N_PHONENUMBERS_USE_BOOST
+
+#include "phonenumbers/base/thread_safety_check.h"
+
+namespace i18n {
+namespace phonenumbers {
+
+// Note that this implementation is not thread-safe. For a thread-safe
+// implementation, please compile with -DI18N_PHONENUMBERS_USE_BOOST.
+template <class T>
+class Singleton {
+ public:
+  virtual ~Singleton() {}
+
+  static T* GetInstance() {
+    static T* instance = NULL;
+    if (!instance) {
+      instance = new T();
+    }
+    return instance;
+  }
+};
+
+#endif  // !I18N_PHONENUMBERS_USE_BOOST
 
 }  // namespace phonenumbers
 }  // namespace i18n

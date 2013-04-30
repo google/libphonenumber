@@ -21,13 +21,17 @@
 
 #include <cassert>
 
+#if !defined(CHECK_EQ)
 #define CHECK_EQ(X, Y) assert((X) == (Y))
+#endif
 
-# define DCHECK(X) assert(X)
-# define DCHECK_EQ(X, Y) CHECK_EQ((X), (Y))
-# define DCHECK_GE(X, Y) assert((X) >= (Y))
-# define DCHECK_GT(X, Y) assert((X) > (Y))
-# define DCHECK_LT(X, Y) assert((X) < (Y))
+#if !defined(DCHECK)
+#define DCHECK(X) assert(X)
+#define DCHECK_EQ(X, Y) CHECK_EQ((X), (Y))
+#define DCHECK_GE(X, Y) assert((X) >= (Y))
+#define DCHECK_GT(X, Y) assert((X) > (Y))
+#define DCHECK_LT(X, Y) assert((X) < (Y))
+#endif
 
 template <typename T> T* CHECK_NOTNULL(T* ptr) {
   assert(ptr);

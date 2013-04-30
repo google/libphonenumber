@@ -85,7 +85,10 @@ Requirements:
     $ ./configure && make && sudo make install
 
   - Boost
-    Version 1.40 or more recent is required.
+    Version 1.40 or more recent is required if you need libphonenumber to be
+    thread-safe. If you access libphonenumber from a single thread, you can
+    avoid the Boost dependency by disabling the USE_BOOST CMake option (see
+    Troubleshooting section below for information about ccmake).
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install libboost1.40-dev libboost-thread1.40-dev
@@ -175,6 +178,7 @@ You will need to manually fetch and install the following dependencies:
     http://www.boostpro.com/download/
     * Select all the variants and Boost DateTime and Boost Thread during the
       installation process.
+    See Linux instructions for information about thread-safety.
 
   - GTest (tested with v1.6.0):
     http://code.google.com/p/googletest/downloads/list
@@ -228,6 +232,8 @@ Supported build parameters
   Build parameters can be specified invoking CMake with '-DKEY=VALUE' or using a
   CMake user interface (ccmake or cmake-gui).
 
+  USE_BOOST         = ON | OFF [ON]  -- Use Boost. This is only needed in
+                                        multi-threaded environments.
   USE_ICU_REGEXP    = ON | OFF [ON]  -- Use ICU regexp engine.
   USE_LITE_METADATA = ON | OFF [OFF] -- Generates smaller metadata that doesn't
                                         include example numbers.

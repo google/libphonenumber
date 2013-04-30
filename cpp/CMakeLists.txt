@@ -70,20 +70,24 @@ endfunction (find_required_program)
 
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
 option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
+option ("USE_BOOST" "Use Boost" "ON")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 
 # Find all the required libraries and programs.
-if (WIN32)
-  set (Boost_USE_STATIC_LIBS ON)
+if (${USE_BOOST} STREQUAL "ON")
+  add_definitions ("-DI18N_PHONENUMBERS_USE_BOOST")
+  if (WIN32)
+    set (Boost_USE_STATIC_LIBS ON)
+  endif ()
+  find_package (Boost 1.40.0 COMPONENTS date_time thread)
+  if (NOT Boost_FOUND)
+    print_error ("Boost Datetime/Thread" "Boost")
+  endif ()
+  include_directories (${Boost_INCLUDE_DIRS})
 endif ()
-find_package (Boost 1.40.0 COMPONENTS date_time thread)
-if (NOT Boost_FOUND)
-  print_error ("Boost Datetime/Thread" "Boost")
-endif ()
-include_directories (${Boost_INCLUDE_DIRS})
 
 find_or_build_gtest ()
 
@@ -358,7 +362,11 @@ endif ()
 # Libraries used by both libphonenumber and libgeocoding.
 set (COMMON_DEPS ${ICU_LIB})
 
-set (LIBRARY_DEPS ${PROTOBUF_LIB} ${Boost_LIBRARIES})
+set (LIBRARY_DEPS ${PROTOBUF_LIB})
+
+if (${USE_BOOST} STREQUAL "ON")
+  list (APPEND LIBRARY_DEPS ${Boost_LIBRARIES})
+endif ()
 
 if (${USE_RE2} STREQUAL "ON")
   list (APPEND LIBRARY_DEPS ${RE2_LIB})

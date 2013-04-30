@@ -94,16 +94,20 @@ typedef signed int         char32;
 
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class
+#if !defined(DISALLOW_COPY_AND_ASSIGN)
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
   TypeName(const TypeName&);               \
   void operator=(const TypeName&)
+#endif
 
 // An older, deprecated, politically incorrect name for the above.
 // NOTE: The usage of this macro was baned from our code base, but some
 // third_party libraries are yet using it.
 // TODO(tfarina): Figure out how to fix the usage of this macro in the
 // third_party libraries and get rid of it.
+#if !defined(DISALLOW_EVIL_CONSTRUCTORS)
 #define DISALLOW_EVIL_CONSTRUCTORS(TypeName) DISALLOW_COPY_AND_ASSIGN(TypeName)
+#endif
 
 // A macro to disallow all the implicit constructors, namely the
 // default constructor, copy constructor and operator= functions.
@@ -111,9 +115,11 @@ typedef signed int         char32;
 // This should be used in the private: declarations for a class
 // that wants to prevent anyone from instantiating it. This is
 // especially useful for classes containing only static methods.
+#if !defined(DISALLOW_IMPLICIT_CONSTRUCTORS)
 #define DISALLOW_IMPLICIT_CONSTRUCTORS(TypeName) \
   TypeName();                                    \
   DISALLOW_COPY_AND_ASSIGN(TypeName)
+#endif
 
 // The arraysize(arr) macro returns the # of elements in an array arr.
 // The expression is a compile-time constant, and therefore can be
@@ -140,7 +146,9 @@ template <typename T, size_t N>
 char (&ArraySizeHelper(const T (&array)[N]))[N];
 #endif
 
+#if !defined(arraysize)
 #define arraysize(array) (sizeof(ArraySizeHelper(array)))
+#endif
 
 // ARRAYSIZE_UNSAFE performs essentially the same calculation as arraysize,
 // but can be used on anonymous types or types defined inside
@@ -179,10 +187,11 @@ char (&ArraySizeHelper(const T (&array)[N]))[N];
 // where a pointer is 4 bytes, this means all pointers to a type whose
 // size is 3 or greater than 4 will be (righteously) rejected.
 
+#if !defined(ARRAYSIZE_UNSAFE)
 #define ARRAYSIZE_UNSAFE(a) \
   ((sizeof(a) / sizeof(*(a))) / \
    static_cast<size_t>(!(sizeof(a) % sizeof(*(a)))))
-
+#endif
 
 // Use implicit_cast as a safe version of static_cast or const_cast
 // for upcasting in the type hierarchy (i.e. casting a pointer to Foo
@@ -225,9 +234,10 @@ template <bool>
 struct CompileAssert {
 };
 
-#undef COMPILE_ASSERT
+#if !defined(COMPILE_ASSERT)
 #define COMPILE_ASSERT(expr, msg) \
   typedef CompileAssert<(bool(expr))> msg[bool(expr) ? 1 : -1]
+#endif
 
 // Implementation details of COMPILE_ASSERT:
 //
