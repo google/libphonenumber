@@ -32,7 +32,7 @@
 #define UTIL_UTF8_UNILIB_H__
 
 #include <string>
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 
 namespace UniLib {
 

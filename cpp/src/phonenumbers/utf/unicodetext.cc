@@ -19,7 +19,7 @@
 #include <cassert>
 
 #include "phonenumbers/utf/unicodetext.h"
-//#include "base/logging.h"
+//#include "phonenumbers/base/logging.h"
 #include "phonenumbers/utf/stringpiece.h"
 //#include "utf/stringprintf.h"
 #include "phonenumbers/utf/utf.h"

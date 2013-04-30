@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <ostream>
 
-#include "base/strings/string_piece.h"
+#include "phonenumbers/base/strings/string_piece.h"
 
 namespace base {
 

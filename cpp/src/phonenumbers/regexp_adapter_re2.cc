@@ -23,8 +23,8 @@
 #include <re2/re2.h>
 #include <re2/stringpiece.h>
 
-#include "base/basictypes.h"
-#include "base/logging.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/logging.h"
 #include "phonenumbers/stringutil.h"
 
 namespace i18n {

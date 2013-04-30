@@ -32,10 +32,10 @@
 #include <unicode/uchar.h>
 #include <unicode/utf8.h>
 
-#include "base/basictypes.h"
-#include "base/logging.h"
-#include "base/memory/singleton.h"
 #include "phonenumbers/asyoutypeformatter.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/logging.h"
+#include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
 #include "phonenumbers/metadata.h"

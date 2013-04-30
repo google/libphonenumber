@@ -28,9 +28,9 @@
 #include <unicode/stringpiece.h>
 #include <unicode/unistr.h>
 
-#include "base/basictypes.h"
-#include "base/logging.h"
-#include "base/memory/scoped_ptr.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/logging.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/string_byte_sink.h"
 

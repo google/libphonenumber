@@ -15,7 +15,7 @@
 #ifndef I18N_PHONENUMBERS_ENCODING_UTILS_H_
 #define I18N_PHONENUMBERS_ENCODING_UTILS_H_
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/utf/unilib.h"
 #include "phonenumbers/utf/utf.h"
 

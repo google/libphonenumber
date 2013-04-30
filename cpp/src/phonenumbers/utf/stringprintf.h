@@ -17,6 +17,6 @@
 #define STRINGS_STRINGPRINTF_H_
 
 //#include "third_party/chromium/src/base/string_util.h"
-#include "base/string_util.h"
+#include "phonenumbers/base/string_util.h"
 
 #endif  // STRINGS_STRINGPRINTF_H_

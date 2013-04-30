@@ -25,9 +25,9 @@
 #endif  // USE_ICU_REGEXP
 
 #include <ctype.h>
-#include <map>
 #include <iostream>
 #include <limits>
+#include <map>
 #include <stddef.h>
 #include <string>
 #include <utility>
@@ -35,10 +35,10 @@
 
 #include <unicode/uchar.h>
 
-#include "base/logging.h"
-#include "base/memory/scoped_ptr.h"
-#include "base/memory/singleton.h"
 #include "phonenumbers/alternate_format.h"
+#include "phonenumbers/base/logging.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
+#include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/callback.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"

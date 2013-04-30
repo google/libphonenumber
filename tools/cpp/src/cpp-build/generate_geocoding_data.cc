@@ -279,7 +279,7 @@ void WriteCppHeader(const string& base_name, FILE* output) {
   fprintf(output, "#include \"phonenumbers/geocoding/%s.h\"\n",
           base_name.c_str());
   fprintf(output, "\n");
-  fprintf(output, "#include \"base/basictypes.h\"\n");
+  fprintf(output, "#include \"phonenumbers/base/basictypes.h\"\n");
   fprintf(output, "\n");
 }
 

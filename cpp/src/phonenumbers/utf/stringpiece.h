@@ -16,7 +16,7 @@
 #ifndef STRINGS_STRINGPIECE_H_
 #define STRINGS_STRINGPIECE_H_
 
-#include "base/strings/string_piece.h"
+#include "phonenumbers/base/strings/string_piece.h"
 
 using base::StringPiece;
 

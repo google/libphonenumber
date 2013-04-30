@@ -25,8 +25,8 @@
 #include <string>
 #include <vector>
 
-#include "base/basictypes.h"
-#include "base/memory/scoped_ptr.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/callback.h"
 #include "phonenumbers/regexp_adapter.h"
 

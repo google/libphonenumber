@@ -16,7 +16,7 @@
 
 #include "phonenumbers/shortnumberutil.h"
 
-#include "base/memory/scoped_ptr.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/regexp_adapter.h"

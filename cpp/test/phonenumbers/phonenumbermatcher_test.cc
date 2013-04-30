@@ -22,9 +22,9 @@
 #include <gtest/gtest.h>
 #include <unicode/unistr.h>
 
-#include "base/basictypes.h"
-#include "base/memory/scoped_ptr.h"
-#include "base/memory/singleton.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
+#include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/phonenumbermatch.h"

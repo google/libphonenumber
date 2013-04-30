@@ -20,8 +20,8 @@
 
 #include <google/protobuf/message_lite.h>
 
-#include "base/logging.h"
-#include "base/memory/scoped_ptr.h"
+#include "phonenumbers/base/logging.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/regexp_cache.h"

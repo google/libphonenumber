@@ -22,8 +22,8 @@
 
 #include <unicode/locid.h>  // NOLINT(build/include_order)
 
-#include "base/basictypes.h"
-#include "base/memory/scoped_ptr.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
 
 namespace i18n {
 namespace phonenumbers {

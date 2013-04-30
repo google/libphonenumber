@@ -19,7 +19,7 @@
 #ifndef I18N_PHONENUMBERS_DEFAULT_MAP_STORAGE_H_
 #define I18N_PHONENUMBERS_DEFAULT_MAP_STORAGE_H_
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 
 namespace i18n {
 namespace phonenumbers {

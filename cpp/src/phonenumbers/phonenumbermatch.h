@@ -53,7 +53,7 @@
 
 #include <string>
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/phonenumber.pb.h"
 
 namespace i18n {

@@ -15,13 +15,13 @@
 // conversions from "const char*" to "string" and back again.
 //
 
-#ifndef BASE_STRINGS_STRING_PIECE_H_
-#define BASE_STRINGS_STRING_PIECE_H_
+#ifndef I18N_PHONENUMBERS_BASE_STRINGS_STRING_PIECE_H_
+#define I18N_PHONENUMBERS_BASE_STRINGS_STRING_PIECE_H_
 #pragma once
 
 #include <string>
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 
 namespace base {
 
@@ -189,4 +189,4 @@ inline bool operator>=(const StringPiece& x, const StringPiece& y) {
 
 }  // namespace base
 
-#endif  // BASE_STRINGS_STRING_PIECE_H_
+#endif  // I18N_PHONENUMBERS_BASE_STRINGS_STRING_PIECE_H_

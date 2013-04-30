@@ -20,7 +20,7 @@
 
 #include <gtest/gtest.h>  // NOLINT(build/include_order)
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/geocoding/geocoding_data.h"
 #include "phonenumbers/geocoding/geocoding_test_data.h"
 #include "phonenumbers/stringutil.h"

@@ -15,7 +15,7 @@
 #ifndef I18N_PHONENUMBERS_GEOCODING_TEST_DATA
 #define I18N_PHONENUMBERS_GEOCODING_TEST_DATA
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/geocoding/geocoding_data.h"
 
 namespace i18n {

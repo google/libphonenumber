@@ -16,8 +16,8 @@
 
 // This file provides a minimalist implementation of common macros.
 
-#ifndef BASE_LOGGING_H_
-#define BASE_LOGGING_H_
+#ifndef I18N_PHONENUMBERS_BASE_LOGGING_H_
+#define I18N_PHONENUMBERS_BASE_LOGGING_H_
 
 #include <cassert>
 
@@ -34,4 +34,4 @@ template <typename T> T* CHECK_NOTNULL(T* ptr) {
   return ptr;
 }
 
-#endif  // BASE_LOGGING_H_
+#endif  // I18N_PHONENUMBERS_BASE_LOGGING_H_

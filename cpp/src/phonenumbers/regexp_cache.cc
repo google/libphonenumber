@@ -20,7 +20,7 @@
 #include <string>
 #include <utility>
 
-#include "base/synchronization/lock.h"
+#include "phonenumbers/base/synchronization/lock.h"
 #include "phonenumbers/regexp_adapter.h"
 
 using std::string;

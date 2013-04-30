@@ -16,8 +16,8 @@
 
 #include "phonenumbers/geocoding/default_map_storage.h"
 
-#include "base/basictypes.h"
-#include "base/logging.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/logging.h"
 #include "phonenumbers/geocoding/geocoding_data.h"
 
 namespace i18n {

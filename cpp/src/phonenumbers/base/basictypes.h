@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef BASE_BASICTYPES_H_
-#define BASE_BASICTYPES_H_
+#ifndef I18N_PHONENUMBERS_BASE_BASICTYPES_H_
+#define I18N_PHONENUMBERS_BASE_BASICTYPES_H_
 #pragma once
 
 #include <limits.h>         // So we can set the bounds of our types
@@ -299,4 +299,4 @@ namespace base {
 enum LinkerInitialized { LINKER_INITIALIZED };
 }  // base
 
-#endif  // BASE_BASICTYPES_H_
+#endif  // I18N_PHONENUMBERS_BASE_BASICTYPES_H_

@@ -21,7 +21,7 @@
 #include <string>
 #include <vector>
 
-#include "base/basictypes.h"
+#include "phonenumbers/base/basictypes.h"
 
 namespace i18n {
 namespace phonenumbers {

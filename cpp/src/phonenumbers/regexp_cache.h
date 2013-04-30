@@ -30,9 +30,9 @@
 #include <cstddef>
 #include <string>
 
-#include "base/basictypes.h"
-#include "base/memory/scoped_ptr.h"
-#include "base/synchronization/lock.h"
+#include "phonenumbers/base/basictypes.h"
+#include "phonenumbers/base/memory/scoped_ptr.h"
+#include "phonenumbers/base/synchronization/lock.h"
 
 #ifdef USE_TR1_UNORDERED_MAP
 #  include <tr1/unordered_map>
