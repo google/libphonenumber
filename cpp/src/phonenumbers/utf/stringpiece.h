@@ -18,6 +18,6 @@
 
 #include "phonenumbers/base/strings/string_piece.h"
 
-using base::StringPiece;
+using i18n::phonenumbers::StringPiece;
 
 #endif  // STRINGS_STRINGPIECE_H_

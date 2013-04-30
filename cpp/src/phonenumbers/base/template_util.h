@@ -7,7 +7,8 @@
 
 #include <cstddef>  // For size_t.
 
-namespace base {
+namespace i18n {
+namespace phonenumbers {
 
 // template definitions from tr1
 
@@ -101,6 +102,7 @@ struct is_class
                             sizeof(internal::YesType)> {
 };
 
-}  // namespace base
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #endif  // I18N_PHONENUMBERS_BASE_TEMPLATE_UTIL_H_

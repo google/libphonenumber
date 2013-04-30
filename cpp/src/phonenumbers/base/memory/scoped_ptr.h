@@ -24,7 +24,8 @@ using boost::scoped_ptr;
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/template_util.h"
 
-namespace base {
+namespace i18n {
+namespace phonenumbers {
 
 // Function object which deletes its parameter, which must be a pointer.
 // If C is an array type, invokes 'delete[]' on the parameter; otherwise,
@@ -47,7 +48,7 @@ struct DefaultDeleter {
     // cannot convert to T*.
     enum { T_must_be_complete = sizeof(T) };
     enum { U_must_be_complete = sizeof(U) };
-    COMPILE_ASSERT((base::is_convertible<U*, T*>::value),
+    COMPILE_ASSERT((is_convertible<U*, T*>::value),
                    U_ptr_must_implicitly_convert_to_T_ptr);
   }
   inline void operator()(T* ptr) const {
@@ -197,8 +198,8 @@ class scoped_ptr_impl {
 };
 
 }  // namespace internal
-
-}  // namespace base
+}  // namespace phonenumbers
+}  // namespace i18n
 
 // A scoped_ptr<T> is like a T*, except that the destructor of scoped_ptr<T>
 // automatically deletes the pointer it holds (if any).
@@ -216,7 +217,7 @@ class scoped_ptr_impl {
 // unique_ptr<> features. Known deficiencies include not supporting move-only
 // deleteres, function pointers as deleters, and deleters with reference
 // types.
-template <class T, class D = base::DefaultDeleter<T> >
+template <class T, class D = i18n::phonenumbers::DefaultDeleter<T> >
 class scoped_ptr {
  public:
   // The element and deleter types.
@@ -244,7 +245,8 @@ class scoped_ptr {
   // implementation of scoped_ptr.
   template <typename U, typename V>
   scoped_ptr(scoped_ptr<U, V> other) : impl_(&other.impl_) {
-    COMPILE_ASSERT(!base::is_array<U>::value, U_cannot_be_an_array);
+    COMPILE_ASSERT(!i18n::phonenumbers::is_array<U>::value,
+                   U_cannot_be_an_array);
   }
 
   // operator=.  Allows assignment from a scoped_ptr rvalue for a convertible
@@ -259,7 +261,8 @@ class scoped_ptr {
   // scoped_ptr.
   template <typename U, typename V>
   scoped_ptr& operator=(scoped_ptr<U, V> rhs) {
-    COMPILE_ASSERT(!base::is_array<U>::value, U_cannot_be_an_array);
+    COMPILE_ASSERT(!i18n::phonenumbers::is_array<U>::value,
+                   U_cannot_be_an_array);
     impl_.TakeState(&rhs.impl_);
     return *this;
   }
@@ -287,8 +290,8 @@ class scoped_ptr {
   // Allow scoped_ptr<element_type> to be used in boolean expressions, but not
   // implicitly convertible to a real bool (which is dangerous).
  private:
-  typedef base::internal::scoped_ptr_impl<element_type, deleter_type>
-      scoped_ptr::*Testable;
+  typedef i18n::phonenumbers::internal::scoped_ptr_impl<
+      element_type, deleter_type> scoped_ptr::*Testable;
 
  public:
   operator Testable() const { return impl_.get() ? &scoped_ptr::impl_ : NULL; }
@@ -316,7 +319,8 @@ class scoped_ptr {
  private:
   // Needed to reach into |impl_| in the constructor.
   template <typename U, typename V> friend class scoped_ptr;
-  base::internal::scoped_ptr_impl<element_type, deleter_type> impl_;
+  i18n::phonenumbers::internal::scoped_ptr_impl<
+      element_type, deleter_type> impl_;
 
   // Forbid comparison of scoped_ptr types.  If U != T, it totally
   // doesn't make sense, and if U == T, it still doesn't make sense
@@ -372,8 +376,8 @@ class scoped_ptr<T[], D> {
   // Allow scoped_ptr<element_type> to be used in boolean expressions, but not
   // implicitly convertible to a real bool (which is dangerous).
  private:
-  typedef base::internal::scoped_ptr_impl<element_type, deleter_type>
-      scoped_ptr::*Testable;
+  typedef i18n::phonenumbers::internal::scoped_ptr_impl<
+      element_type, deleter_type> scoped_ptr::*Testable;
 
  public:
   operator Testable() const { return impl_.get() ? &scoped_ptr::impl_ : NULL; }
@@ -403,7 +407,8 @@ class scoped_ptr<T[], D> {
   enum { type_must_be_complete = sizeof(element_type) };
 
   // Actually hold the data.
-  base::internal::scoped_ptr_impl<element_type, deleter_type> impl_;
+  i18n::phonenumbers::internal::scoped_ptr_impl<
+      element_type, deleter_type> impl_;
 
   // Disable initialization from any type other than element_type*, by
   // providing a constructor that matches such an initialization, but is

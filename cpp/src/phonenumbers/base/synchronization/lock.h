@@ -20,15 +20,20 @@
 #if defined(I18N_PHONENUMBERS_USE_BOOST)
 #include <boost/thread/mutex.hpp>
 
-namespace base {
-  typedef boost::mutex Lock;
-  typedef boost::mutex::scoped_lock AutoLock;
-}
+namespace i18n {
+namespace phonenumbers {
+
+typedef boost::mutex Lock;
+typedef boost::mutex::scoped_lock AutoLock;
+
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #else  // I18N_PHONENUMBERS_USE_BOOST
 #include "phonenumbers/base/thread_safety_check.h"
 
-namespace base {
+namespace i18n {
+namespace phonenumbers {
 
 // Dummy lock implementation. If you care about thread-safety, please compile
 // with -DI18N_PHONENUMBERS_USE_BOOST.
@@ -38,7 +43,8 @@ struct AutoLock {
   AutoLock(Lock) {}
 };
 
-}  // namespace base
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #endif  // I18N_PHONENUMBERS_USE_BOOST
 #endif  // I18N_PHONENUMBERS_BASE_SYNCHRONIZATION_LOCK_H_

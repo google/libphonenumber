@@ -23,7 +23,8 @@
 
 #include "phonenumbers/base/basictypes.h"
 
-namespace base {
+namespace i18n {
+namespace phonenumbers {
 
 class StringPiece {
  public:
@@ -187,6 +188,7 @@ inline bool operator>=(const StringPiece& x, const StringPiece& y) {
   return !(x < y);
 }
 
-}  // namespace base
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #endif  // I18N_PHONENUMBERS_BASE_STRINGS_STRING_PIECE_H_

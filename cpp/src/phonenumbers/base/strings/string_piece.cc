@@ -8,7 +8,8 @@
 
 #include "phonenumbers/base/strings/string_piece.h"
 
-namespace base {
+namespace i18n {
+namespace phonenumbers {
 
 typedef StringPiece::size_type size_type;
 
@@ -216,4 +217,5 @@ StringPiece StringPiece::substr(size_type pos, size_type n) const {
 
 const StringPiece::size_type StringPiece::npos = size_type(-1);
 
-}  // namespace base
+}  // namespace phonenumbers
+}  // namespace i18n

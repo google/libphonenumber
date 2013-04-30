@@ -28,8 +28,6 @@ using std::string;
 namespace i18n {
 namespace phonenumbers {
 
-using base::AutoLock;
-
 RegExpCache::RegExpCache(const AbstractRegExpFactory& regexp_factory,
                          size_t min_items)
     : regexp_factory_(regexp_factory),

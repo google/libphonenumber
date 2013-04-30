@@ -65,7 +65,7 @@ class RegExpCache {
 
  private:
   const AbstractRegExpFactory& regexp_factory_;
-  base::Lock lock_;  // protects cache_impl_
+  Lock lock_;  // protects cache_impl_
   scoped_ptr<CacheImpl> cache_impl_;  // protected by lock_
   friend class RegExpCacheTest_CacheConstructor_Test;
   DISALLOW_COPY_AND_ASSIGN(RegExpCache);
