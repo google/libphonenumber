@@ -30,17 +30,35 @@ typedef boost::mutex::scoped_lock AutoLock;
 }  // namespace i18n
 
 #else  // I18N_PHONENUMBERS_USE_BOOST
-#include "phonenumbers/base/thread_safety_check.h"
+
+#include "phonenumbers/base/logging.h"
+#include "phonenumbers/base/thread_checker.h"
 
 namespace i18n {
 namespace phonenumbers {
 
 // Dummy lock implementation. If you care about thread-safety, please compile
 // with -DI18N_PHONENUMBERS_USE_BOOST.
-struct Lock {};
+class Lock {
+ public:
+  Lock() : thread_checker_() {}
 
-struct AutoLock {
-  AutoLock(Lock) {}
+  void Acquire() const {
+    DCHECK(thread_checker_.CalledOnValidThread());
+  }
+
+  // No need for Release() since Acquire() is a no-op and Release() is not used
+  // in the codebase.
+
+ private:
+  const ThreadChecker thread_checker_;
+};
+
+class AutoLock {
+ public:
+  AutoLock(Lock& lock) {
+    lock.Acquire();
+  }
 };
 
 }  // namespace phonenumbers

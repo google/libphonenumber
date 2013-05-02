@@ -28,4 +28,41 @@
 
 #endif
 
+#if !defined(NDEBUG) && !defined(I18N_PHONENUMBERS_USE_BOOST) && \
+    (defined(__linux__) || defined(__apple__))
+
+#include <pthread.h>
+
+namespace i18n {
+namespace phonenumbers {
+
+class ThreadChecker {
+ public:
+  ThreadChecker() : thread_id_(pthread_self()) {}
+
+  bool CalledOnValidThread() const {
+    return thread_id_ == pthread_self();
+  }
+
+ private:
+  const pthread_t thread_id_;
+};
+
+#else
+
+namespace i18n {
+namespace phonenumbers {
+
+class ThreadChecker {
+ public:
+  bool CalledOnValidThread() const {
+    return true;
+  }
+};
+
+#endif
+
+}  // namespace phonenumbers
+}  // namespace i18n
+
 #endif  // I18N_PHONENUMBERS_BASE_THREAD_SAFETY_CHECK_H_

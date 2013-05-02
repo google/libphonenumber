@@ -50,7 +50,8 @@ template <class T> boost::once_flag Singleton<T>::flag = BOOST_ONCE_INIT;
 
 #else  // !I18N_PHONENUMBERS_USE_BOOST
 
-#include "phonenumbers/base/thread_safety_check.h"
+#include "phonenumbers/base/logging.h"
+#include "phonenumbers/base/thread_checker.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -60,6 +61,8 @@ namespace phonenumbers {
 template <class T>
 class Singleton {
  public:
+  Singleton() : thread_checker_() {}
+
   virtual ~Singleton() {}
 
   static T* GetInstance() {
@@ -67,8 +70,12 @@ class Singleton {
     if (!instance) {
       instance = new T();
     }
+    DCHECK(instance->thread_checker_.CalledOnValidThread());
     return instance;
   }
+
+ private:
+  const ThreadChecker thread_checker_;
 };
 
 #endif  // !I18N_PHONENUMBERS_USE_BOOST
