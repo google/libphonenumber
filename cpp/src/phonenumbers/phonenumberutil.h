@@ -59,13 +59,8 @@ class RegExp;
 // codes can be found here:
 // http://www.iso.org/iso/english_country_names_and_code_elements
 
-#ifdef USE_GOOGLE_BASE
-class PhoneNumberUtil {
-  friend struct DefaultSingletonTraits<PhoneNumberUtil>;
-#else
 class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
-  friend class Singleton<PhoneNumberUtil>;
-#endif
+ private:
   friend class AsYouTypeFormatter;
   friend class PhoneNumberMatcher;
   friend class PhoneNumberMatcherRegExps;
@@ -74,6 +69,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class PhoneNumberUtilTest;
   friend class ShortNumberUtil;
   friend class ShortNumberUtilTest;
+  friend class Singleton<PhoneNumberUtil>;
+
  public:
   ~PhoneNumberUtil();
   static const char kRegionCodeForNonGeoEntity[];
@@ -172,9 +169,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //
   // The PhoneNumberUtil is implemented as a singleton. Therefore, calling
   // GetInstance multiple times will only result in one instance being created.
-#ifdef USE_GOOGLE_BASE
   static PhoneNumberUtil* GetInstance();
-#endif
 
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will
@@ -552,9 +547,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   MatchType IsNumberMatchWithOneString(const PhoneNumber& first_number,
                                        const string& second_number) const;
 
-  // Overrides the default logging system. The provided logger destruction is
-  // handled by this class (i.e don't delete it).
-  static void SetLogger(Logger* logger);
+  // Overrides the default logging system. This takes ownership of the provided
+  // logger.
+  void SetLogger(Logger* logger);
 
   // Gets an AsYouTypeFormatter for the specific region.
   // Returns an AsYouTypeFormatter object, which could be used to format phone

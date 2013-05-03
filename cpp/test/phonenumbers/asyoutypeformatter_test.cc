@@ -24,6 +24,7 @@
 
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
+#include "phonenumbers/default_logger.h"
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/test_util.h"
 
@@ -35,6 +36,7 @@ class PhoneMetadata;
 class AsYouTypeFormatterTest : public testing::Test {
  protected:
   AsYouTypeFormatterTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
+    PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
   }
 
   const PhoneMetadata* GetCurrentMetadata() const {

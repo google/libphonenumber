@@ -127,7 +127,7 @@ if (${USE_STD_MAP} STREQUAL "OFF")
   INCLUDE (CheckIncludeFileCXX)
   CHECK_INCLUDE_FILE_CXX ("tr1/unordered_map" HAVE_CXX_TR1_UNORDERED_MAP)
   if (HAVE_CXX_TR1_UNORDERED_MAP)
-    add_definitions ("-DUSE_TR1_UNORDERED_MAP")
+    add_definitions ("-DI18N_PHONENUMBERS_USE_TR1_UNORDERED_MAP")
   endif ()
 endif ()
 
@@ -215,12 +215,12 @@ if (${USE_RE2} STREQUAL "ON")
   # regexp_factory.h and regexp_adapter_test.cc.
   # When both ICU regexp and RE2 are defined, the regexp engine adapter defaults
   # to RE2 unless the ICU implementation is instantiated explictly obviously.
-  add_definitions (-DUSE_RE2)
+  add_definitions ("-DI18N_PHONENUMBERS_USE_RE2")
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_re2.cc")
 endif ()
 
 if (${USE_ICU_REGEXP} STREQUAL "ON")
-  add_definitions (-DUSE_ICU_REGEXP)
+  add_definitions ("-DI18N_PHONENUMBERS_USE_ICU_REGEXP")
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_icu.cc")
   # The phone number matcher needs ICU.
   list (APPEND SOURCES "src/phonenumbers/alternate_format.cc")

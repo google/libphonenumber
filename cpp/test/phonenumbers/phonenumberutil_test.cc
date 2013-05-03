@@ -30,6 +30,7 @@
 
 #include <gtest/gtest.h>
 
+#include "phonenumbers/default_logger.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
@@ -50,6 +51,7 @@ static const int kInvalidCountryCode = 2;
 class PhoneNumberUtilTest : public testing::Test {
  protected:
   PhoneNumberUtilTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
+    PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
   }
 
   // Wrapper functions for private functions that we want to test.

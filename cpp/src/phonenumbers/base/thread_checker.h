@@ -14,8 +14,8 @@
 
 // Author: Philippe Liard
 
-#ifndef I18N_PHONENUMBERS_BASE_THREAD_SAFETY_CHECK_H_
-#define I18N_PHONENUMBERS_BASE_THREAD_SAFETY_CHECK_H_
+#ifndef I18N_PHONENUMBERS_BASE_THREAD_CHECKER_H_
+#define I18N_PHONENUMBERS_BASE_THREAD_CHECKER_H_
 
 #if !defined(I18N_PHONENUMBERS_USE_BOOST)
 
@@ -23,7 +23,8 @@
 // user of the library know that it can't be used in a thread-safe manner when
 // it is not depending on Boost.
 #if !defined(I18N_PHONENUMBERS_NO_THREAD_SAFETY)
-#error "Building without Boost, please provide -DNO_THREAD_SAFETY"
+#error Building without Boost, please provide \
+       -DI18N_PHONENUMBERS_NO_THREAD_SAFETY
 #endif
 
 #endif
@@ -65,4 +66,4 @@ class ThreadChecker {
 }  // namespace phonenumbers
 }  // namespace i18n
 
-#endif  // I18N_PHONENUMBERS_BASE_THREAD_SAFETY_CHECK_H_
+#endif  // I18N_PHONENUMBERS_BASE_THREAD_CHECKER_H_

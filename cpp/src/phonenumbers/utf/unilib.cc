@@ -21,6 +21,8 @@
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/utf/utf.h"
 
+namespace i18n {
+namespace phonenumbers {
 namespace UniLib {
 
 namespace {
@@ -62,3 +64,5 @@ int SpanInterchangeValid(const char* begin, int byte_length) {
 }
 
 }  // namespace UniLib
+}  // namespace phonenumbers
+}  // namespace i18n

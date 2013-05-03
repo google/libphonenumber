@@ -369,7 +369,8 @@ PhoneNumberUtil::ValidationResult TestNumberLengthAgainstPattern(
 }  // namespace
 
 void PhoneNumberUtil::SetLogger(Logger* logger) {
-  Logger::set_logger_impl(logger);
+  logger_.reset(logger);
+  Logger::set_logger_impl(logger_.get());
 }
 
 class PhoneNumberRegExpsAndMappings {
@@ -657,7 +658,7 @@ class PhoneNumberRegExpsAndMappings {
 
 // Private constructor. Also takes care of initialisation.
 PhoneNumberUtil::PhoneNumberUtil()
-    : logger_(Logger::set_logger_impl(new StdoutLogger())),
+    : logger_(Logger::set_logger_impl(new NullLogger())),
       reg_exps_(new PhoneNumberRegExpsAndMappings),
       country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
       nanpa_regions_(new set<string>()),
@@ -739,11 +740,9 @@ void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
 // Public wrapper function to get a PhoneNumberUtil instance with the default
 // metadata file.
 // static
-#ifdef USE_GOOGLE_BASE
 PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
-  return Singleton<PhoneNumberUtil>::get();
+  return Singleton<PhoneNumberUtil>::GetInstance();
 }
-#endif
 
 const string& PhoneNumberUtil::GetExtnPatternsForMatching() const {
   return reg_exps_->extn_patterns_for_matching_;

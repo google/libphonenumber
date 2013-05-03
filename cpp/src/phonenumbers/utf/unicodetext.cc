@@ -19,11 +19,13 @@
 #include <cassert>
 
 #include "phonenumbers/utf/unicodetext.h"
-//#include "phonenumbers/base/logging.h"
 #include "phonenumbers/utf/stringpiece.h"
 //#include "utf/stringprintf.h"
 #include "phonenumbers/utf/utf.h"
 #include "phonenumbers/utf/unilib.h"
+
+namespace i18n {
+namespace phonenumbers {
 
 using std::stringstream;
 using std::max;
@@ -512,3 +514,6 @@ string UnicodeText::const_iterator::DebugString() const {
 
   return result;
 }
+
+}  // namespace phonenumbers
+}  // namespace i18n

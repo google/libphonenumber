@@ -25,6 +25,7 @@
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/memory/singleton.h"
+#include "phonenumbers/default_logger.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/phonenumbermatch.h"
@@ -77,6 +78,7 @@ class PhoneNumberMatcherTest : public testing::Test {
                  RegionCode::US(),
                  PhoneNumberMatcher::VALID, 5),
         offset_(0) {
+    PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
   }
 
   bool IsLatinLetter(char32 letter) {

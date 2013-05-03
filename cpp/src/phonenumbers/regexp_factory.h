@@ -18,25 +18,25 @@
 #define I18N_PHONENUMBERS_REGEXP_ADAPTER_FACTORY_H_
 
 // This file selects the right implementation of the abstract regexp factory at
-// compile time depending on the compilation flags (USE_RE2). The default
-// abstract regexp factory implementation can be obtained using the type
-// RegExpFactory. This will be set to RE2RegExpFactory if RE2 is used or
+// compile time depending on the compilation flags (I18N_PHONENUMBERS_USE_RE2).
+// The default abstract regexp factory implementation can be obtained using the
+// type RegExpFactory. This will be set to RE2RegExpFactory if RE2 is used or
 // ICURegExpFactory otherwise.
 
-#ifdef USE_RE2
+#ifdef I18N_PHONENUMBERS_USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"
 #else
 #include "phonenumbers/regexp_adapter_icu.h"
-#endif  // USE_RE2
+#endif  // I18N_PHONENUMBERS_USE_RE2
 
 namespace i18n {
 namespace phonenumbers {
 
-#ifdef USE_RE2
+#ifdef I18N_PHONENUMBERS_USE_RE2
 typedef RE2RegExpFactory RegExpFactory;
 #else
 typedef ICURegExpFactory RegExpFactory;
-#endif  // USE_RE2
+#endif  // I18N_PHONENUMBERS_USE_RE2
 
 }  // namespace phonenumbers
 }  // namespace i18n

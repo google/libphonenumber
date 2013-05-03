@@ -31,7 +31,7 @@ namespace phonenumbers {
 RegExpCache::RegExpCache(const AbstractRegExpFactory& regexp_factory,
                          size_t min_items)
     : regexp_factory_(regexp_factory),
-#ifdef USE_TR1_UNORDERED_MAP
+#ifdef I18N_PHONENUMBERS_USE_TR1_UNORDERED_MAP
       cache_impl_(new CacheImpl(min_items))
 #else
       cache_impl_(new CacheImpl())

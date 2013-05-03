@@ -19,7 +19,7 @@
 #include "phonenumbers/utf/unicodetext.h"
 
 namespace i18n {
-namespace unicodetext {
+namespace phonenumbers {
 
 TEST(UnicodeTextTest, Iterator) {
   struct value {
@@ -41,5 +41,5 @@ TEST(UnicodeTextTest, Iterator) {
   }
 }
 
-} // namespace unicodetext
+} // namespace phonenumbers
 } // namespace i18n

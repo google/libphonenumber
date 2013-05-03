@@ -16,6 +16,7 @@
 
 #include <gtest/gtest.h>
 
+#include "phonenumbers/default_logger.h"
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/shortnumberutil.h"
 #include "phonenumbers/test_util.h"
@@ -26,6 +27,7 @@ namespace phonenumbers {
 class ShortNumberUtilTest : public testing::Test {
  protected:
   ShortNumberUtilTest() : short_util_() {
+    PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
   }
 
   const ShortNumberUtil short_util_;

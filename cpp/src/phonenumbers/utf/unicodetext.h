@@ -21,7 +21,9 @@
 #include <string>
 #include <utility>
 #include "phonenumbers/base/basictypes.h"
-//#include "util/utf8/public/config.h"
+
+namespace i18n {
+namespace phonenumbers {
 
 using std::string;
 using std::bidirectional_iterator_tag;
@@ -452,5 +454,8 @@ inline UnicodeText UTF8ToUnicodeText(const string& utf8_string) {
 inline string UnicodeTextToUTF8(const UnicodeText& t) {
   return string(t.utf8_data(), t.utf8_length());
 }
+
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #endif  // UTIL_UTF8_UNICODETEXT_H__

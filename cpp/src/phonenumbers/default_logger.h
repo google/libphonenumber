@@ -19,32 +19,15 @@
 
 #include "phonenumbers/logger.h"
 
-#ifdef USE_GOOGLE_BASE
+#include <sstream>
+#include <string>
 
 namespace i18n {
 namespace phonenumbers {
 
-// If Google base/ is used, LOG() and VLOG() from base/logging.h are used
-// therefore the default logger implementation (StdoutLogger) instantiated in
-// phonenumberutil will actually never be used.
-typedef NullLogger StdoutLogger;
-
-}  // namespace phonenumbers
-}  // namespace i18n
-
-#else
-
-#include <sstream>
-#include <string>
-
+using i18n::phonenumbers::Logger;
 using std::string;
 using std::stringstream;
-
-// Make the logging functions private (not declared in logger.h) as the client
-// should not have any reason to use them.
-namespace {
-
-using i18n::phonenumbers::Logger;
 
 // Class template used to inline the right implementation for the T -> string
 // conversion.
@@ -91,11 +74,6 @@ class LoggerHandler {
   Logger* const impl_;
 };
 
-}  // namespace
-
-namespace i18n {
-namespace phonenumbers {
-
 inline LoggerHandler VLOG(int n) {
   Logger* const logger_impl = Logger::mutable_logger_impl();
   if (logger_impl->level() < n) {
@@ -122,5 +100,4 @@ class StdoutLogger : public Logger {
 }  // namespace phonenumbers
 }  // namespace i18n
 
-#endif  // USE_GOOGLE_BASE
 #endif  // I18N_PHONENUMBERS_DEFAULT_LOGGER_H_

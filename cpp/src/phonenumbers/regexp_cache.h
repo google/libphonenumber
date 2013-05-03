@@ -34,7 +34,7 @@
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/synchronization/lock.h"
 
-#ifdef USE_TR1_UNORDERED_MAP
+#ifdef I18N_PHONENUMBERS_USE_TR1_UNORDERED_MAP
 #  include <tr1/unordered_map>
 #else
 #  include <map>
@@ -50,7 +50,7 @@ class RegExp;
 
 class RegExpCache {
  private:
-#ifdef USE_TR1_UNORDERED_MAP
+#ifdef I18N_PHONENUMBERS_USE_TR1_UNORDERED_MAP
   typedef std::tr1::unordered_map<string, const RegExp*> CacheImpl;
 #else
   typedef std::map<string, const RegExp*> CacheImpl;

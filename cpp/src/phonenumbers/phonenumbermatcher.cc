@@ -20,9 +20,10 @@
 
 #include "phonenumbers/phonenumbermatcher.h"
 
-#ifndef USE_ICU_REGEXP
-#error phonenumbermatcher depends on ICU (i.e. USE_ICU_REGEXP must be set)
-#endif  // USE_ICU_REGEXP
+#ifndef I18N_PHONENUMBERS_USE_ICU_REGEXP
+#error phonenumbermatcher depends on ICU \
+    (i.e. I18N_PHONENUMBERS_USE_ICU_REGEXP must be set)
+#endif  // I18N_PHONENUMBERS_USE_ICU_REGEXP
 
 #include <ctype.h>
 #include <iostream>
@@ -51,9 +52,9 @@
 #include "phonenumbers/regexp_adapter_icu.h"
 #include "phonenumbers/stringutil.h"
 
-#ifdef USE_RE2
+#ifdef I18N_PHONENUMBERS_USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"
-#endif  // USE_RE2_AND_ICU
+#endif  // I18N_PHONENUMBERS_USE_RE2_AND_ICU
 
 using std::cerr;
 using std::endl;
@@ -168,14 +169,10 @@ bool LoadAlternateFormats(PhoneMetadataCollection* alternate_formats) {
 }
 }  // namespace
 
-#ifdef USE_GOOGLE_BASE
-class PhoneNumberMatcherRegExps {
-  friend struct DefaultSingletonTraits<PhoneNumberMatcherRegExps>;
-#else
 class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
-  friend class Singleton<PhoneNumberMatcherRegExps>;
-#endif  // USE_GOOGLE_BASE
  private:
+  friend class Singleton<PhoneNumberMatcherRegExps>;
+
   string opening_parens_;
   string closing_parens_;
   string non_parens_;
@@ -248,12 +245,6 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   // Phone number pattern allowing optional punctuation.
   scoped_ptr<const RegExp> pattern_;
 
-#ifdef USE_GOOGLE_BASE
-  static PhoneNumberMatcherRegExps* GetInstance() {
-    return Singleton<PhoneNumberMatcherRegExps>::get();
-  }
-#endif  // USE_GOOGLE_BASE
-
   PhoneNumberMatcherRegExps()
       : opening_parens_("(\\[\xEF\xBC\x88\xEF\xBC\xBB" /* "(\\[（［" */),
         closing_parens_(")\\]\xEF\xBC\x89\xEF\xBC\xBD" /* ")\\]）］" */),
@@ -281,11 +272,11 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
             PhoneNumberUtil::GetInstance()->GetExtnPatternsForMatching(),
             ")?")),
         regexp_factory_for_pattern_(new ICURegExpFactory()),
-#ifdef USE_RE2
+#ifdef I18N_PHONENUMBERS_USE_RE2
         regexp_factory_(new RE2RegExpFactory()),
 #else
         regexp_factory_(new ICURegExpFactory()),
-#endif  // USE_RE2
+#endif  // I18N_PHONENUMBERS_USE_RE2
         pub_pages_(regexp_factory_->CreateRegExp(
             "\\d{1,5}-+\\d{1,5}\\s{0,4}\\(\\d{1,4}")),
         slash_separated_dates_(regexp_factory_->CreateRegExp(
@@ -315,23 +306,11 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatcherRegExps);
 };
 
-#ifdef USE_GOOGLE_BASE
-class AlternateFormats {
-  friend struct DefaultSingletonTraits<AlternateFormats>;
-#else
 class AlternateFormats : public Singleton<AlternateFormats> {
-  friend class Singleton<AlternateFormats>;
-#endif  // USE_GOOGLE_BASE
  public:
   PhoneMetadataCollection format_data_;
 
   map<int, const PhoneMetadata*> calling_code_to_alternate_formats_map_;
-
-#ifdef USE_GOOGLE_BASE
-  static AlternateFormats* GetInstance() {
-    return Singleton<AlternateFormats>::get();
-  }
-#endif  // USE_GOOGLE_BASE
 
   AlternateFormats()
       : format_data_(),

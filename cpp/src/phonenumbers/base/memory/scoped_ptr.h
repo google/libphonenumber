@@ -93,8 +93,6 @@ struct FreeDeleter {
   }
 };
 
-namespace internal {
-
 // Minimal implementation of the core logic of scoped_ptr, suitable for
 // reuse in both scoped_ptr and its specializations.
 template <class T, class D>
@@ -197,10 +195,6 @@ class scoped_ptr_impl {
   DISALLOW_COPY_AND_ASSIGN(scoped_ptr_impl);
 };
 
-}  // namespace internal
-}  // namespace phonenumbers
-}  // namespace i18n
-
 // A scoped_ptr<T> is like a T*, except that the destructor of scoped_ptr<T>
 // automatically deletes the pointer it holds (if any).
 // That is, scoped_ptr<T> owns the T object that it points to.
@@ -217,7 +211,7 @@ class scoped_ptr_impl {
 // unique_ptr<> features. Known deficiencies include not supporting move-only
 // deleteres, function pointers as deleters, and deleters with reference
 // types.
-template <class T, class D = i18n::phonenumbers::DefaultDeleter<T> >
+template <class T, class D = DefaultDeleter<T> >
 class scoped_ptr {
  public:
   // The element and deleter types.
@@ -245,8 +239,7 @@ class scoped_ptr {
   // implementation of scoped_ptr.
   template <typename U, typename V>
   scoped_ptr(scoped_ptr<U, V> other) : impl_(&other.impl_) {
-    COMPILE_ASSERT(!i18n::phonenumbers::is_array<U>::value,
-                   U_cannot_be_an_array);
+    COMPILE_ASSERT(!is_array<U>::value, U_cannot_be_an_array);
   }
 
   // operator=.  Allows assignment from a scoped_ptr rvalue for a convertible
@@ -261,8 +254,7 @@ class scoped_ptr {
   // scoped_ptr.
   template <typename U, typename V>
   scoped_ptr& operator=(scoped_ptr<U, V> rhs) {
-    COMPILE_ASSERT(!i18n::phonenumbers::is_array<U>::value,
-                   U_cannot_be_an_array);
+    COMPILE_ASSERT(!is_array<U>::value, U_cannot_be_an_array);
     impl_.TakeState(&rhs.impl_);
     return *this;
   }
@@ -290,8 +282,7 @@ class scoped_ptr {
   // Allow scoped_ptr<element_type> to be used in boolean expressions, but not
   // implicitly convertible to a real bool (which is dangerous).
  private:
-  typedef i18n::phonenumbers::internal::scoped_ptr_impl<
-      element_type, deleter_type> scoped_ptr::*Testable;
+  typedef scoped_ptr_impl<element_type, deleter_type> scoped_ptr::*Testable;
 
  public:
   operator Testable() const { return impl_.get() ? &scoped_ptr::impl_ : NULL; }
@@ -319,8 +310,7 @@ class scoped_ptr {
  private:
   // Needed to reach into |impl_| in the constructor.
   template <typename U, typename V> friend class scoped_ptr;
-  i18n::phonenumbers::internal::scoped_ptr_impl<
-      element_type, deleter_type> impl_;
+  scoped_ptr_impl<element_type, deleter_type> impl_;
 
   // Forbid comparison of scoped_ptr types.  If U != T, it totally
   // doesn't make sense, and if U == T, it still doesn't make sense
@@ -376,8 +366,7 @@ class scoped_ptr<T[], D> {
   // Allow scoped_ptr<element_type> to be used in boolean expressions, but not
   // implicitly convertible to a real bool (which is dangerous).
  private:
-  typedef i18n::phonenumbers::internal::scoped_ptr_impl<
-      element_type, deleter_type> scoped_ptr::*Testable;
+  typedef scoped_ptr_impl<element_type, deleter_type> scoped_ptr::*Testable;
 
  public:
   operator Testable() const { return impl_.get() ? &scoped_ptr::impl_ : NULL; }
@@ -407,8 +396,7 @@ class scoped_ptr<T[], D> {
   enum { type_must_be_complete = sizeof(element_type) };
 
   // Actually hold the data.
-  i18n::phonenumbers::internal::scoped_ptr_impl<
-      element_type, deleter_type> impl_;
+  scoped_ptr_impl<element_type, deleter_type> impl_;
 
   // Disable initialization from any type other than element_type*, by
   // providing a constructor that matches such an initialization, but is
@@ -454,6 +442,9 @@ template <typename T>
 scoped_ptr<T> make_scoped_ptr(T* ptr) {
   return scoped_ptr<T>(ptr);
 }
+
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #endif  // !I18N_PHONENUMBERS_USE_BOOST
 #endif  // I18N_PHONENUMBERS_BASE_MEMORY_SCOPED_PTR_H_

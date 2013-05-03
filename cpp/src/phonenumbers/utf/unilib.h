@@ -34,6 +34,8 @@
 #include <string>
 #include "phonenumbers/base/basictypes.h"
 
+namespace i18n {
+namespace phonenumbers {
 namespace UniLib {
 
 // Returns true unless a surrogate code point
@@ -91,5 +93,7 @@ inline bool IsInterchangeValid(const std::string& src) {
 }
 
 }  // namespace UniLib
+}  // namespace phonenumbers
+}  // namespace i18n
 
 #endif  // UTIL_UTF8_PUBLIC_UNILIB_H_
