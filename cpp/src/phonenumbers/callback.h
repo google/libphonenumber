@@ -26,7 +26,8 @@ namespace i18n {
 namespace phonenumbers {
 
 template <typename R, typename A1, typename A2, typename A3, typename A4>
-struct ResultCallback4 {
+class ResultCallback4 {
+ public:
   virtual ~ResultCallback4() {}
   virtual R Run(A1 a1, A2 a2, A3 a3, A4 a4) = 0;
 };
