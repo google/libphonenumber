@@ -160,13 +160,18 @@ bool AllNumberGroupsRemainGrouped(
 }
 
 bool LoadAlternateFormats(PhoneMetadataCollection* alternate_formats) {
+#if defined(I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS)
   if (!alternate_formats->ParseFromArray(alternate_format_get(),
                                          alternate_format_size())) {
     cerr << "Could not parse binary data." << endl;
     return false;
   }
   return true;
+#else
+  return false;
+#endif
 }
+
 }  // namespace
 
 class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {

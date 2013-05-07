@@ -70,11 +70,16 @@ endfunction (find_required_program)
 
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
 option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
+option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
 option ("USE_BOOST" "Use Boost" "ON")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
+
+if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+  add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
+endif ()
 
 # Find all the required libraries and programs.
 if (${USE_BOOST} STREQUAL "ON")
@@ -223,9 +228,11 @@ if (${USE_ICU_REGEXP} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ICU_REGEXP")
   list (APPEND SOURCES "src/phonenumbers/regexp_adapter_icu.cc")
   # The phone number matcher needs ICU.
-  list (APPEND SOURCES "src/phonenumbers/alternate_format.cc")
   list (APPEND SOURCES "src/phonenumbers/phonenumbermatch.cc")
   list (APPEND SOURCES "src/phonenumbers/phonenumbermatcher.cc")
+  if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+    list (APPEND SOURCES "src/phonenumbers/alternate_format.cc")
+  endif ()
 endif ()
 
 # Library sources excluding the metadata files, since special metadata is used
@@ -298,14 +305,16 @@ add_metadata_gen_target (
 list (APPEND TESTING_LIBRARY_SOURCES "src/phonenumbers/test_metadata.cc")
 
 if (${USE_ICU_REGEXP} STREQUAL "ON")
-  # Add alternate format metadata generation for the phone number matcher
-  set (ALT_FORMAT_METADATA_TARGET "generate-alt-format-metadata")
-  add_metadata_gen_target (
-    ${ALT_FORMAT_METADATA_TARGET}
-    "${RESOURCES_DIR}/PhoneNumberAlternateFormats.xml"
-    "alternate_format"
-    "alternate_format"
-  )
+  if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+    # Add alternate format metadata generation for the phone number matcher.
+    set (ALT_FORMAT_METADATA_TARGET "generate-alt-format-metadata")
+    add_metadata_gen_target (
+      ${ALT_FORMAT_METADATA_TARGET}
+      "${RESOURCES_DIR}/PhoneNumberAlternateFormats.xml"
+      "alternate_format"
+      "alternate_format"
+    )
+  endif ()
 endif ()
 
 if (NOT WIN32)
@@ -317,7 +326,9 @@ include_directories ("src")
 # Build a static library (without -fPIC).
 add_library (phonenumber STATIC ${SOURCES})
 if (${USE_ICU_REGEXP} STREQUAL "ON")
-  add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+  if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+    add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+  endif ()
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
@@ -349,7 +360,9 @@ endif ()
 if (BUILD_SHARED_LIB)
   add_library (phonenumber-shared SHARED ${SOURCES})
   if (${USE_ICU_REGEXP} STREQUAL "ON")
-    add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+    if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+    endif ()
   endif ()
   set_target_properties (phonenumber-shared
     PROPERTIES
