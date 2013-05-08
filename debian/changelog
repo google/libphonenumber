@@ -1,3 +1,19 @@
+libphonenumber (5.5) precise; urgency=low
+
+  * Code changes:
+    - Changed internal initialization code and made more fields final.
+      Note that we now throw an exception if an attempt is made to set the
+      metadata more than once (which should only happen during testing).
+    - Fix problem with formatNumberForMobileDialing for HU and CL.
+  * Metadata changes:
+    - Updated alternate formatting data for country calling code(s): 49
+    - Updated metadata for region code(s):
+    AM, BF, BR, CR, DE, MA, MG, MM, SA, TL, UA
+    - Updated geocoding data for country calling code(s): 374 (am, en,
+    ru)
+
+ -- David Beaumont <dbeaumont@google.com>  Wed, 08 May 2013 15:52:22 +0200
+
 libphonenumber (5.4.2) precise; urgency=low
 
   * Metadata changes:

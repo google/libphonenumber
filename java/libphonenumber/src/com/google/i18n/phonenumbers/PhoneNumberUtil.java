@@ -69,27 +69,12 @@ public class PhoneNumberUtil {
   private static final int MAX_INPUT_STRING_LENGTH = 250;
   static final String META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
-  private String currentFilePrefix = META_DATA_FILE_PREFIX;
+
   private static final Logger LOGGER = Logger.getLogger(PhoneNumberUtil.class.getName());
-
-  // A mapping from a country calling code to the region codes which denote the region represented
-  // by that country calling code. In the case of multiple regions sharing a calling code, such as
-  // the NANPA regions, the one indicated with "isMainCountryForCode" in the metadata should be
-  // first.
-  private Map<Integer, List<String>> countryCallingCodeToRegionCodeMap = null;
-
-  // The set of regions the library supports.
-  // There are roughly 240 of them and we set the initial capacity of the HashSet to 320 to offer a
-  // load factor of roughly 0.75.
-  private final Set<String> supportedRegions = new HashSet<String>(320);
 
   // Region-code for the unknown region.
   private static final String UNKNOWN_REGION = "ZZ";
 
-  // The set of regions that share country calling code 1.
-  // There are roughly 26 regions and we set the initial capacity of the HashSet to 35 to offer a
-  // load factor of roughly 0.75.
-  private final Set<String> nanpaRegions = new HashSet<String>(35);
   private static final int NANPA_COUNTRY_CODE = 1;
 
   // The prefix that needs to be inserted in front of a Colombian landline number when dialed from
@@ -355,25 +340,6 @@ public class PhoneNumberUtil {
 
   private static PhoneNumberUtil instance = null;
 
-  // A mapping from a region code to the PhoneMetadata for that region.
-  private final Map<String, PhoneMetadata> regionToMetadataMap =
-      Collections.synchronizedMap(new HashMap<String, PhoneMetadata>());
-
-  // A mapping from a country calling code for a non-geographical entity to the PhoneMetadata for
-  // that country calling code. Examples of the country calling codes include 800 (International
-  // Toll Free Service) and 808 (International Shared Cost Service).
-  private final Map<Integer, PhoneMetadata> countryCodeToNonGeographicalMetadataMap =
-      Collections.synchronizedMap(new HashMap<Integer, PhoneMetadata>());
-
-  // The set of county calling codes that map to the non-geo entity region ("001"). This set
-  // currently contains < 12 elements so the default capacity of 16 (load factor=0.75) is fine.
-  private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<Integer>();
-
-  // A cache for frequently used region-specific regular expressions.
-  // As most people use phone numbers primarily from one to two countries, and there are roughly 60
-  // regular expressions needed, the initial capacity of 100 offers a rough load factor of 0.75.
-  private RegexCache regexCache = new RegexCache(100);
-
   public static final String REGION_CODE_FOR_NON_GEO_ENTITY = "001";
 
   /**
@@ -547,14 +513,55 @@ public class PhoneNumberUtil {
     abstract boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util);
   }
 
+  // A mapping from a country calling code to the region codes which denote the region represented
+  // by that country calling code. In the case of multiple regions sharing a calling code, such as
+  // the NANPA regions, the one indicated with "isMainCountryForCode" in the metadata should be
+  // first.
+  private final Map<Integer, List<String>> countryCallingCodeToRegionCodeMap;
+
+  // The set of regions that share country calling code 1.
+  // There are roughly 26 regions and we set the initial capacity of the HashSet to 35 to offer a
+  // load factor of roughly 0.75.
+  private final Set<String> nanpaRegions = new HashSet<String>(35);
+
+  // A mapping from a region code to the PhoneMetadata for that region.
+  // Note: Synchronization, though only needed for the Android version of the library, is used in
+  // all versions for consistency.
+  private final Map<String, PhoneMetadata> regionToMetadataMap =
+      Collections.synchronizedMap(new HashMap<String, PhoneMetadata>());
+
+  // A mapping from a country calling code for a non-geographical entity to the PhoneMetadata for
+  // that country calling code. Examples of the country calling codes include 800 (International
+  // Toll Free Service) and 808 (International Shared Cost Service).
+  // Note: Synchronization, though only needed for the Android version of the library, is used in
+  // all versions for consistency.
+  private final Map<Integer, PhoneMetadata> countryCodeToNonGeographicalMetadataMap =
+      Collections.synchronizedMap(new HashMap<Integer, PhoneMetadata>());
+
+  // A cache for frequently used region-specific regular expressions.
+  // The initial capacity is set to 100 as this seems to be an optimal value for Android, based on
+  // performance measurements.
+  private final RegexCache regexCache = new RegexCache(100);
+
+  // The set of regions the library supports.
+  // There are roughly 240 of them and we set the initial capacity of the HashSet to 320 to offer a
+  // load factor of roughly 0.75.
+  private final Set<String> supportedRegions = new HashSet<String>(320);
+
+  // The set of county calling codes that map to the non-geo entity region ("001"). This set
+  // currently contains < 12 elements so the default capacity of 16 (load factor=0.75) is fine.
+  private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<Integer>();
+
+  // The prefix of the metadata files from which region data is loaded.
+  private final String currentFilePrefix;
+
   /**
    * This class implements a singleton, so the only constructor is private.
    */
-  private PhoneNumberUtil() {
-  }
-
-  private void init(String filePrefix) {
-    currentFilePrefix = filePrefix;
+  private PhoneNumberUtil(String filePrefix,
+      Map<Integer, List<String>> countryCallingCodeToRegionCodeMap) {
+    this.currentFilePrefix = filePrefix;
+    this.countryCallingCodeToRegionCodeMap = countryCallingCodeToRegionCodeMap;
     for (Map.Entry<Integer, List<String>> entry : countryCallingCodeToRegionCodeMap.entrySet()) {
       List<String> regionCodes = entry.getValue();
       // We can assume that if the county calling code maps to the non-geo entity region code then
@@ -585,7 +592,7 @@ public class PhoneNumberUtil {
     InputStream source = PhoneNumberUtil.class.getResourceAsStream(fileName);
     if (source == null) {
       LOGGER.log(Level.SEVERE, "missing metadata: " + fileName);
-      throw new RuntimeException("missing metadata: " + fileName);
+      throw new IllegalStateException("missing metadata: " + fileName);
     }
     ObjectInputStream in = null;
     try {
@@ -595,7 +602,7 @@ public class PhoneNumberUtil {
       List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
       if (metadataList.isEmpty()) {
         LOGGER.log(Level.SEVERE, "empty metadata: " + fileName);
-        throw new RuntimeException("empty metadata: " + fileName);
+        throw new IllegalStateException("empty metadata: " + fileName);
       }
       if (metadataList.size() > 1) {
         LOGGER.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
@@ -902,15 +909,18 @@ public class PhoneNumberUtil {
     return normalizedNumber.toString();
   }
 
+  /**
+   * An unsafe version of getInstance() which must only be used for testing purposes.
+   */
   // @VisibleForTesting
   static synchronized PhoneNumberUtil getInstance(
       String baseFileLocation,
       Map<Integer, List<String>> countryCallingCodeToRegionCodeMap) {
-    if (instance == null) {
-      instance = new PhoneNumberUtil();
-      instance.countryCallingCodeToRegionCodeMap = countryCallingCodeToRegionCodeMap;
-      instance.init(baseFileLocation);
+    if (instance != null) {
+      throw new IllegalStateException(
+          "PhoneNumberUtil instance is already set (you should call resetInstance() first)");
     }
+    instance = new PhoneNumberUtil(baseFileLocation, countryCallingCodeToRegionCodeMap);
     return instance;
   }
 
@@ -1223,10 +1233,17 @@ public class PhoneNumberUtil {
             // called within Brazil. Without that, most of the carriers won't connect the call.
             // Because of that, we return an empty string here.
             : "";
+      } else if (regionCode.equals("HU")) {
+        // The national format for HU numbers doesn't contain the national prefix, because that is
+        // how numbers are normally written down. However, the national prefix is obligatory when
+        // dialing from a mobile phone. As a result, we add it back here.
+        formattedNumber =
+            getNddPrefixForRegion(regionCode, true /* strip non-digits */) +
+            " " + format(numberNoExt, PhoneNumberFormat.NATIONAL);
       } else {
-        // For NANPA countries, non-geographical countries, and Mexican fixed line and mobile
-        // numbers, we output international format for numbers that can be dialed internationally
-        // as that always works.
+        // For NANPA countries, non-geographical countries, Mexican and Chilean fixed line and
+        // mobile numbers, we output international format for numbers that can be dialed
+        // internationally as that always works.
         if ((countryCallingCode == NANPA_COUNTRY_CODE ||
             regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY) ||
             // MX fixed line and mobile numbers should always be formatted in international format,
@@ -1234,7 +1251,10 @@ public class PhoneNumberUtil {
             // used, and the correct carrier code depends on if the caller and callee are from the
             // same local area. It is trickier to get that to work correctly than using
             // international format, which is tested to work fine on all carriers.
-            (regionCode.equals("MX") && isFixedLineOrMobile)) &&
+            // CL fixed line numbers need the national prefix when dialing in the national format,
+            // but don't have it when used for display. The reverse is true for mobile numbers.
+            // As a result, we output them in the international format to make it work.
+            ((regionCode.equals("MX") || regionCode.equals("CL")) && isFixedLineOrMobile)) &&
             canBeInternationallyDialled(numberNoExt)) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
         } else {

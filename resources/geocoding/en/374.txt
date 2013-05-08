@@ -22,6 +22,7 @@
 # spelling to be consistent.
 
 37410|Yerevan/Jrvezh
+37411|Yerevan
 374222|Abovyan/Akunk/Byureghavan/Nor Gyugh/Verin Ptghni
 3742227|Garni
 3742229|Zovk

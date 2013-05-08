@@ -1652,10 +1652,19 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           // carriers won't connect the call. Because of that, we return an
           // empty string here.
           '';
+    } else if (regionCode == 'HU') {
+      // The national format for HU numbers doesn't contain the national prefix,
+      // because that is how numbers are normally written down. However, the
+      // national prefix is obligatory when dialing from a mobile phone. As a
+      // result, we add it back here.
+      formattedNumber =
+          this.getNddPrefixForRegion(regionCode, true /* strip non-digits */) +
+          ' ' + this.format(numberNoExt,
+              i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
     } else {
-      // For NANPA countries, non-geographical countries, and Mexican fixed
-      // line and mobile numbers, we output international format for numbersi
-      // that can be dialed internationally as that always works.
+      // For NANPA countries, non-geographical countries, Mexican and Chilean
+      // fixed line and mobile numbers, we output international format for
+      // numbers that can be dialed internationally as that always works.
       if ((countryCallingCode ==
           i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_ ||
           regionCode ==
@@ -1667,7 +1676,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           // same local area. It is trickier to get that to work correctly than
           // using international format, which is tested to work fine on all
           // carriers.
-          (regionCode == 'MX' && isFixedLineOrMobile)) &&
+          // CL fixed line numbers need the national prefix when dialing in the
+          // national format, but don't have it when used for display. The
+          // reverse is true for mobile numbers. As a result, we output them in
+          // the international format to make it work.
+          ((regionCode == 'MX' || regionCode == 'CL') &&
+              isFixedLineOrMobile)) &&
           this.canBeInternationallyDialled(numberNoExt)) {
         formattedNumber = this.format(
           numberNoExt, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);

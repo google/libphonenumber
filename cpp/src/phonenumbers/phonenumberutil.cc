@@ -1057,10 +1057,21 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         // string here.
         formatted_number->assign("");
       }
+    } else if (region_code == "HU") {
+      // The national format for HU numbers doesn't contain the national prefix,
+      // because that is how numbers are normally written down. However, the
+      // national prefix is obligatory when dialing from a mobile phone. As a
+      // result, we add it back here.
+      Format(number_no_extension, NATIONAL, formatted_number);
+      string hu_national_prefix;
+      GetNddPrefixForRegion(region_code, true /* strip non-digits */,
+                            &hu_national_prefix);
+      formatted_number->assign(
+          StrCat(hu_national_prefix, " ", *formatted_number));
     } else {
-      // For NANPA countries, non-geographical countries, and Mexican fixed line
-      // and mobile numbers, we output international format for numbers that can
-      // be dialed internationally as that always works.
+      // For NANPA countries, non-geographical countries, Mexican and Chilean
+      // fixed line and mobile numbers, we output international format for
+      // numbers that can be dialed internationally as that always works.
       if ((country_calling_code == kNanpaCountryCode ||
            region_code == kRegionCodeForNonGeoEntity ||
            // MX fixed line and mobile numbers should always be formatted in
@@ -1070,7 +1081,12 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
            // local area. It is trickier to get that to work correctly than
            // using international format, which is tested to work fine on all
            // carriers.
-           (region_code == "MX" && is_fixed_line_or_mobile)) &&
+           // CL fixed line numbers need the national prefix when dialing in the
+           // national format, but don't have it when used for display. The
+           // reverse is true for mobile numbers. As a result, we output them in
+           // the international format to make it work.
+           ((region_code == "MX" || region_code == "CL") &&
+               is_fixed_line_or_mobile)) &&
           CanBeInternationallyDialled(number_no_extension)) {
         Format(number_no_extension, INTERNATIONAL, formatted_number);
       } else {

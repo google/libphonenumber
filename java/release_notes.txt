@@ -1,3 +1,15 @@
+May 08, 2013: libphonenumber-5.5
+* Code changes:
+ - Changed internal initialization code and made more fields final.
+   Note that we now throw an exception if an attempt is made to set the
+   metadata more than once (which should only happen during testing).
+ - Fix problem with formatNumberForMobileDialing for HU and CL.
+* Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 49
+ - Updated metadata for region code(s):
+   AM, BF, BR, CR, DE, MA, MG, MM, SA, TL, UA
+ - Updated geocoding data for country calling code(s): 374 (am, en, ru)
+
 Apr 19, 2013: libphonenumber-5.4.2
 * Metadata changes:
  - Updated metadata for region code(s): BF, GA, IN, KR, MV, PH, SO, UA, US
