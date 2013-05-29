@@ -1201,10 +1201,11 @@
         <exampleNumber>6846221234</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Adding 24[246], operated from Blue Sky. -->
         <nationalNumberPattern>
           684(?:
             733|
-            258
+            25[2468]
           )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -2809,13 +2810,14 @@
         <exampleNumber>17001234</exampleNumber>
       </fixedLine>
       <!-- Mobile prefix 384 is not yet in the ITU document but other sources (e.g. Google
-           searches) suggest mobile numbers with this prefix are in use. -->
+           searches) suggest mobile numbers with this prefix are in use. 350 was added as
+           VIVO are apparently using that prefix. -->
       <mobile>
         <nationalNumberPattern>
           (?:
             3(?:
               [23469]\d|
-              5[35]|
+              5[035]|
               77|
               8[348]
             )\d|
@@ -2945,11 +2947,11 @@
       </fixedLine>
       <mobile>
         <!-- We have restricted the pattern here to the first two digits, as beyond this the data
-             seems to be no longer accurate. The prefixes 9[468] have also been added, along with 66
-             (seemingly a prefix for Mobile MTN), and 64 for BeninCell. -->
+             seems to be no longer accurate. The prefixes 9[468] have also been added, along with
+             6[67] (seemingly prefixes for Mobile MTN), and 64 for BeninCell. -->
         <nationalNumberPattern>
           (?:
-            6[46]|
+            6[467]|
             9[03-8]
           )\d{6}
         </nationalNumberPattern>
@@ -4275,13 +4277,13 @@
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Added the prefixes 4[0-2] (Moov), 5[57-9] & 65 because SMS messages have been
+        <!-- Added the prefixes 4[0-2] (Moov), 5[5-9] & 65 because SMS messages have been
              successfully delivered. Supported by numbers found on the internet. -->
         <nationalNumberPattern>
           (?:
             0[1-9]|
             4[0-24-9]|
-            5[057-9]|
+            5[05-9]|
             6[05679]
           )\d{6}
         </nationalNumberPattern>
@@ -6234,10 +6236,10 @@
       </fixedLine>
       <mobile>
         <!-- Adding 65 and 78 from numbers found online. Also, prefix 670 is added since the carrier
-             Mobilis Algeria provided it.-->
+             Mobilis Algeria provided it, and 54 for Nedjma.-->
         <nationalNumberPattern>
           (?:
-            5[56]|
+            5[4-6]|
             7[7-9]
           )\d{7}|
           6(?:
@@ -6668,13 +6670,13 @@
       <!-- The following sections are copied verbatim from Morocco to allow these non-geographical
            numbers to be recognized as available from within Western Sahara. -->
       <mobile>
-        <!-- Prefixes 60[1-5], 62[47-9], 63[04-8] and 68[01] are from numbers found online,
+        <!-- Prefixes 60[1-578], 62[0147-9], 63[04-8] and 68[01] are from numbers found online,
              bug-reports, and information provided directly by the carriers. -->
         <nationalNumberPattern>
           6(?:
-            0[0-6]|
+            0[0-8]|
             [14-7]\d|
-            2[2-46-9]|
+            2[0-46-9]|
             3[03-8]|
             8[01]|
             99
@@ -7181,12 +7183,12 @@
       </fixedLine>
       <mobile>
         <!-- Adding 7[67], 8[367], and 9[034678] from numbers found online and numbers where SMSs
-             have been received from.  -->
+             have been received from. Adding 9[15] and 84 from Vodafone Fiji IR21. -->
         <nationalNumberPattern>
           (?:
             7[0-467]|
-            8[367]|
-            9[02346-9]
+            8[3467]|
+            9\d
           )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
@@ -10672,7 +10674,7 @@
                3(?:
                  [037-9]|
                  4[1-9]|
-                 5[0-37-9]
+                 5[0-57-9]
                )|
                [45]|
                6[02457-9]|
@@ -11066,7 +11068,8 @@
         <!-- A couple of additional prefixes found neither on the wikipedia page nor in the MSC
              codes list, are added because SMS messages have been successfully sent to these
              numbers. It seems almost impossible to know for some of these numbers whether they are
-             land-line or mobile, since the ranges overlap. Extra prefixes added: 8299, 8309.
+             land-line or mobile, since the ranges overlap. Extra prefixes added: 8299, 8309,
+             835[45].
              New prefixes were added based on the document provided from mobile carriers:
              https://code.google.com/p/libphonenumber/issues/detail?id=260 -->
         <nationalNumberPattern>
@@ -11138,7 +11141,7 @@
               3(?:
                 [037-9]\d|
                 4[1-9]|
-                5[0-37-9]
+                5[0-57-9]
               )|
               [45]\d{2}|
               6[02457-9]\d|
@@ -13510,13 +13513,13 @@
         <!-- Adding 86 and 87 from numbers found online, along with 88 (the 88 numbers seem to be
              one digit longer as well.) Adding 97 followed by 7 digits as such numbers have been
              found online. Adding 14 as Mobitel have informed us they are using this prefix. Adding
-             60[1-9] based on information received from Beeline. 76 numbers seem now to be 9 digits
-             long. -->
+             60[1-9] based on information received from Beeline, and 857 and 61 from Cellcard. 76
+             numbers seem now to be 9 digits long. -->
         <nationalNumberPattern>
           (?:
             (?:
               1\d|
-              6[06-9]|
+              6[016-9]|
               7(?:
                 [07-9]|
                 6\d
@@ -13525,7 +13528,7 @@
             8(?:
               0[89]|
               [134679]\d|
-              5[2-689]|
+              5[2-9]|
               8\d{2}
             )|
             9(?:
@@ -14365,11 +14368,12 @@
         <exampleNumber>7123456789</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Added 776, apparently assigned to Beeline. -->
         <nationalNumberPattern>
           7(?:
             0[01257]|
             6[02-4]|
-            7[1578]|
+            7[15-8]|
             85
           )\d{7}
         </nationalNumberPattern>
@@ -15480,13 +15484,13 @@
       </fixedLine>
       <!-- Also duplicated in Western Sahara, please ensure you update both. -->
       <mobile>
-        <!-- Prefixes 60[1-5], 62[047-9], 63[04-8] and 68[01] are from numbers found online,
+        <!-- Prefixes 60[1-578], 62[0147-9], 63[04-8] and 68[01] are from numbers found online,
              bug-reports, and information provided directly by the carriers. -->
         <nationalNumberPattern>
           6(?:
-            0[0-6]|
+            0[0-8]|
             [14-7]\d|
-            2[02-46-9]|
+            2[0-46-9]|
             3[03-8]|
             8[01]|
             99
@@ -15637,7 +15641,7 @@
             562|
             6(?:
               50|
-              7[1-5]|
+              7[1-6]|
               [089]\d
             )|
             7(?:
@@ -16112,15 +16116,10 @@
         <exampleNumber>20212345</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 63 from numbers found online. -->
         <!-- Orange Mali have updated their numbering plan, though this is not reflected in the ITU
-             document (which is very stale). All mobile numbers starting with 7 are now Orange. -->
-        <nationalNumberPattern>
-          (?:
-            6[3569]|
-            7\d
-          )\d{6}
-        </nationalNumberPattern>
+             document (which is very stale). All mobile numbers starting with 7 are now Orange.
+             Includes 6x from Malitel IR21. -->
+        <nationalNumberPattern>[67]\d{7}</nationalNumberPattern>
         <exampleNumber>65012345</exampleNumber>
       </mobile>
       <tollFree>
@@ -17335,7 +17334,7 @@
           <format>$1-$2 $3</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG"
-          pattern="(154)(\d{3})(\d{4})">
+          pattern="(15[49])(\d{3})(\d{4})">
           <leadingDigits>15</leadingDigits>
           <format>$1-$2 $3</format>
         </numberFormat>
@@ -17355,10 +17354,14 @@
         <exampleNumber>323456789</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Although the plan lists the prefix 159 as broadband services (data only), apparently it
+             is possible to send SMSs (and receive them) from numbers in this block, so we are
+             listing them as mobile. -->
         <nationalNumberPattern>
           1(?:
             1[1-3]\d{2}|
             [02-4679][2-9]\d|
+            59\d{2}|
             8(?:
               1[23]|
               [2-9]\d
@@ -17883,7 +17886,8 @@
         <!-- More 81X prefixes have been added based on online numbers, including the prefix 817
              from Etisalat, 814 MTN and 811 from Glo. Furthermore, the fixed-line prefixes owned by
              Starcomms have apparently, according to the company, been used for mobile numbers too,
-             despite the ITU plan, so we list them here as well. -->
+             despite the ITU plan, so we list them here as well. 701 has been added for Airtel/Zain.
+             -->
         <nationalNumberPattern>
           (?:
             1(?:
@@ -17959,7 +17963,7 @@
           )\d{4}|
           (?:
             70(?:
-              [3-9]\d|
+              [13-9]\d|
               2[1-9]
             )|
             8(?:
@@ -19925,7 +19929,7 @@
     <!-- Paraguay -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Paraguay -->
     <!-- http://www.itu.int/oth/T02020000A5/en -->
-    <!-- http://www.copaco.com.py/seccion/codigos -->
+    <!-- http://www.copaco.com.py/portal/index.php/component/content/article/8-empresa/74-codigos-de-area.html -->
     <territory id="PY" countryCode="595" internationalPrefix="00" nationalPrefix="0">
       <availableFormats>
         <!-- CONATEL plan. -->
@@ -20020,9 +20024,10 @@
         <exampleNumber>212345678</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- 962 was added for Tigo. -->
         <nationalNumberPattern>
           9(?:
-            61|
+            6[12]|
             [78][1-6]|
             9[1-5]
           )\d{6}
@@ -22543,10 +22548,10 @@
       </fixedLine>
       <mobile>
         <!-- Adding 90 prefix as SMS messages could be successfully delivered to these mobile
-             numbers. -->
+             numbers, and 501 for TCell. -->
         <nationalNumberPattern>
           (?:
-            505|
+            50[15]|
             9[0-35-9]\d
           )\d{6}
         </nationalNumberPattern>
@@ -23008,7 +23013,7 @@
         <exampleNumber>8682211234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 703 as messages have been successfully delivered to phones with this prefix. -->
+        <!-- Adding 48X & 70X from the IR21 published by TSTT. -->
         <nationalNumberPattern>
           868(?:
             2(?:
@@ -23020,19 +23025,15 @@
               1[02-9]|
               [2-9]\d
             )|
-            4(?:
-              [679]\d|
-              8[0-4]
-            )|
+            4[6-9]\d|
             6(?:
               20|
               78|
               8\d
             )|
             7(?:
-              03|
               1[02-9]|
-              [2-9]\d
+              [02-9]\d
             )
           )\d{4}
         </nationalNumberPattern>
