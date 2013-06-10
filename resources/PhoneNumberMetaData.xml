@@ -2602,8 +2602,9 @@
       <fixedLine>
         <!-- The prefix 50 48 has been added based on numbers found online, while 40 49 has been
              deleted since we haven't found any numbers with this prefix and it is not mentioned in
-             the onatel document. Note the most recent ITU document seems to have major errors in
-             the fixed-line table, so we have not changed our patterns based on this. -->
+             the Onatel document.
+             IMPORTANT: Note that the ITU documents of Mar/Apr 2013 seem to have major errors in the
+             fixed-line table, so we have not changed our patterns based on these. -->
         <nationalNumberPattern>
           (?:
             20(?:
@@ -2677,6 +2678,7 @@
         <numberFormat pattern="(\d{2})(\d{3})(\d{2,3})">
           <leadingDigits>
             [356]|
+            4[124-7]|
             7[1-9]|
             8[1-6]|
             9[1-7]
@@ -2986,8 +2988,9 @@
     <!-- There seems to be some overlap with phone numbers from Saint Martin and Guadeloupe. The
          national numbering plan does not specify any St Barthélemy-specific numbering prefixes, but
          it appears from searches in online white and yellow pages that a subset of the prefixes
-         available in Guadeloupe are used. In these cases, if getRegionCodeForNumber is used, one of
-         these region codes will be returned, although numbers will be valid for both regions. -->
+         available in these regions are used. In these cases, if getRegionCodeForNumber is used, one
+         of these region codes will be returned, although numbers will be valid for both regions.
+         -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <territory id="BL" countryCode="590" internationalPrefix="00" nationalPrefix="0">
       <!-- Formatting rules borrowed from Guadeloupe. -->
@@ -3006,16 +3009,17 @@
         <exampleNumber>590271234</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Any ranges assigned from
+             http://www.arcep.fr/index.php?id=interactivenumeros have been listed as belonging to
+             Guadeloupe, St Martin and St Barthélemy, since we can't reliably distinguish between
+             them. -->
         <nationalNumberPattern>
           690(?:
-            10|
-            2[27]|
-            66|
-            77|
-            8[78]
+            0[0-7]|
+            [1-9]\d
           )\d{4}
         </nationalNumberPattern>
-        <exampleNumber>690221234</exampleNumber>
+        <exampleNumber>690301234</exampleNumber>
       </mobile>
       <!-- http://www.comstbarth.fr/urgences.asp -->
       <emergency>
@@ -4046,13 +4050,13 @@
         </numberFormat>
         <numberFormat pattern="([89]\d{2})(\d{3})(\d{3})">
           <leadingDigits>
-            8[0-259]|
+            8[0-2459]|
             9
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d{3})">
-          <leadingDigits>8[48]</leadingDigits>
+          <leadingDigits>88</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{5})">
@@ -4079,13 +4083,16 @@
         <exampleNumber>1234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- According to IR-21 CCT 20081024.doc CCT for Congo has ranges 84\d{5} and 85\d{7}. We
-             are following this rather than the ITU document ranges for CCT. Similarly, for numbers
-             with the prefix 88, only 5 subsequent digits can be found. -->
+        <!-- As of May'13 the 88 range looks as if it is defunct. The ITU document lists "Yozma
+             Timeturns" as the operator, but their website (http://www.ytt.cd) is offline and the
+             holdings company http://www.timeturnsholdings.com/products does not show a link for
+             DRC. While there are still numbers of the form "88\d{5}" online, none of the ones
+             tried were valid. If the holdings company does not respond to requests about this
+             range and unless we receive further information, we will remove this range. -->
         <nationalNumberPattern>
           8(?:
-            [0-259]\d{2}|
-            [48]
+            [0-2459]\d{2}|
+            8
           )\d{5}|
           9[7-9]\d{7}
         </nationalNumberPattern>
@@ -5726,7 +5733,8 @@
           <leadingDigits>3</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(800)(\d{7,10})">
+        <!-- Note: this is getting ridiculous! How can we format these better? -->
+        <numberFormat pattern="(800)(\d{7,12})">
           <leadingDigits>800</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -5825,9 +5833,10 @@
             [1-9]\d
           )\d{3,10}|
           9(?:
-            0[6-9]|
-            [1-9]\d
-          )\d{3,10}
+            0[6-9]\d{3,10}|
+            1\d{4,12}|
+            [2-9]\d{4,11}
+          )
         </nationalNumberPattern>
         <exampleNumber>30123456</exampleNumber>
       </fixedLine>
@@ -5860,8 +5869,8 @@
         <exampleNumber>16412345</exampleNumber>
       </pager>
       <tollFree>
-        <nationalNumberPattern>800\d{7,10}</nationalNumberPattern>
-        <possibleNumberPattern>\d{10,13}</possibleNumberPattern>
+        <nationalNumberPattern>800\d{7,12}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10,15}</possibleNumberPattern>
         <exampleNumber>8001234567890</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -8328,6 +8337,7 @@
     <!-- French Guiana (French Dept. of) -->
     <!-- http://www.itu.int/oth/T020200004C/en -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0594&CMD=RESULTS_NUMEROTATION -->
+    <!-- http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf -->
     <!-- Using a national prefix here as online numbers are formatted with it.  -->
     <territory id="GF" countryCode="594" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
@@ -8359,9 +8369,8 @@
           694(?:
             [04][0-7]|
             1[0-5]|
-            2[0-46-9]|
-            38|
-            9\d
+            3[018]|
+            [29]\d
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>694201234</exampleNumber>
@@ -8868,6 +8877,7 @@
 
     <!-- Guadeloupe -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
+    <!-- http://www.arcep.fr/index.php?id=interactivenumeros - ZABPQ-ZNE.xls -->
     <territory id="GP" countryCode="590" internationalPrefix="00"
                mainCountryForCode="true" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
@@ -8881,35 +8891,31 @@
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- The plan says 59011 and 59012 are not implemented yet, but is from 2006 and online
-             examples can be found. -->
         <nationalNumberPattern>
           590(?:
-            1[12]|
+            0[13468]|
+            1[012]|
             2[0-68]|
             3[28]|
-            4[126-8]|
-            5[067]|
-            6[018]|
-            [89]\d
+            4[0-8]|
+            5[579]|
+            6[0189]|
+            70|
+            8[0-689]|
+            9\d
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>590201234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 1[1-9] and 2[013-5] as prefixes after SMSs have been successfully sent to
-             numbers with this prefix. starpy.net/rates.php also attributes this range to Guadeloupe
-             Digicel Mobile. -->
+        <!-- Any ranges assigned from
+             http://www.arcep.fr/index.php?id=interactivenumeros have been listed as belonging to
+             Guadeloupe, St Martin and St Barthélemy, since we can't reliably distinguish between
+             them. -->
         <nationalNumberPattern>
           690(?:
-            00|
-            1[1-9]|
-            2[013-5]|
-            [3-5]\d|
-            6[0-57-9]|
-            7[1-6]|
-            8[0-6]|
-            9[09]
+            0[0-7]|
+            [1-9]\d
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>690301234</exampleNumber>
@@ -14931,6 +14937,10 @@
       </mobile>
       <premiumRate>
         <!-- Telemedia service is listed under premium rate. -->
+        <!-- Note that as of March 2013, the ITU document talks about the withdrawal of the range
+             (90) 0 XXX XXX. This is a 9 digit range and one we have never supported, but this could
+             be a mistake in the ITU document and refer to (90) 0XX XXX. However as this is unclear
+             at the moment, we decided to leave the (90) range unchanged for now. -->
         <nationalNumberPattern>90\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>90123456</exampleNumber>
@@ -15645,6 +15655,7 @@
               [089]\d
             )|
             7(?:
+              67|
               7[47-9]|
               [89]\d
             )
@@ -15918,6 +15929,7 @@
 
     <!-- Saint-Martin, French Antilles -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
+    <!-- http://www.arcep.fr/index.php?id=interactivenumeros - ZABPQ-ZNE.xls -->
     <territory id="MF" countryCode="590" internationalPrefix="00" nationalPrefix="0">
       <!-- Formatting rules borrowed from Guadeloupe. -->
       <generalDesc>
@@ -15927,25 +15939,26 @@
       <fixedLine>
         <nationalNumberPattern>
           590(?:
-            10|
-            2[79]|
-            5[128]|
+            [02][79]|
+            13|
+            5[0-268]|
             [78]7
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>590271234</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Any ranges assigned from
+             http://www.arcep.fr/index.php?id=interactivenumeros have been listed as belonging to
+             Guadeloupe, St Martin and St Barthélemy, since we can't reliably distinguish between
+             them. -->
         <nationalNumberPattern>
           690(?:
-            10|
-            2[27]|
-            66|
-            77|
-            8[78]
+            0[0-7]|
+            [1-9]\d
           )\d{4}
         </nationalNumberPattern>
-        <exampleNumber>690221234</exampleNumber>
+        <exampleNumber>690301234</exampleNumber>
       </mobile>
       <!-- http://www.leshotelsdesaintmartin.com/fr/saint-martin-antilles/informations-saint-martin/infos-pratiques-sxm.html -->
       <emergency>
@@ -19787,7 +19800,18 @@
     <!-- http://www.anacom.pt/render.jsp?categoryId=279098 -->
     <territory id="PT" countryCode="351" internationalPrefix="00">
       <availableFormats>
+        <!-- Note: the wikipedia page suggests that mobile numbers may also be formatted with only
+             two digits in the first group; however, this doesn't seem to be majority usage based on
+             searches online. -->
+        <numberFormat pattern="(2\d)(\d{3})(\d{4})">
+          <leadingDigits>2[12]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
         <numberFormat pattern="([2-46-9]\d{2})(\d{3})(\d{3})">
+          <leadingDigits>
+            2[3-9]|
+            [346-9]
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -22231,7 +22255,7 @@
               4[1-7]
             )|
             3(?:
-              3[1-39]|
+              3[1-389]|
               4[1-7]
             )|
             4[34][12]
@@ -23494,7 +23518,7 @@
       </fixedLine>
       <mobile>
         <!-- Added 79[5-9] and 707 from online numbers found with this prefix. -->
-        <!-- Ranges with prefixes 7[2346] are "not yet operational" as of Jan. 2013. -->
+        <!-- Ranges with prefixes 7[46] are "not yet operational" as of Jun. 2013. -->
         <nationalNumberPattern>
           7(?:
             0[0-7]|

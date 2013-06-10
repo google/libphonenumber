@@ -1082,6 +1082,17 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("333 333", formatter.inputDigit('3'));
   }
 
+  public void testAYTFNoNationalPrefixFormattingRule() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.AO);
+
+    assertEquals("3", formatter.inputDigit('3'));
+    assertEquals("33", formatter.inputDigit('3'));
+    assertEquals("333", formatter.inputDigit('3'));
+    assertEquals("333 3", formatter.inputDigit('3'));
+    assertEquals("333 33", formatter.inputDigit('3'));
+    assertEquals("333 333", formatter.inputDigit('3'));
+  }
+
   public void testAYTFShortNumberFormattingFix_US() {
     // For the US, an initial 1 is treated specially.
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.US);

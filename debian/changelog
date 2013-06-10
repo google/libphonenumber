@@ -1,3 +1,18 @@
+libphonenumber (5.6) precise; urgency=low
+
+  * Code changes:
+   - Fix for as-you-type-formatting bug affecting countries with no national prefix
+     formatting rule, such as China.
+  * Metadata changes:
+    - New alternate formatting data for country calling code(s): 351
+    - Updated alternate formatting data for country calling code(s): 49
+    - Updated metadata for region code(s):
+    AS, BG, BH, BJ, BL, CD, CI, DE, DZ, EH, FJ, GF, GP, IN, KH, KZ, MA,
+    MD, MF,
+    ML, MY, NG, PT, PY, TC, TJ, TT
+
+ -- Lara Scheidegger <lararennie@google.com>  Wed, 05 Jun 2013 14:39:28 +0200
+
 libphonenumber (5.5) precise; urgency=low
 
   * Code changes:

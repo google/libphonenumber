@@ -748,6 +748,10 @@
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <numberFormat pattern="(8\d{2})(\d{6})(\d{2})(\d{1,4})">
+          <leadingDigits>800</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
         <numberFormat pattern="(\d{3})(\d)(\d{3})(\d{3,4})">
           <leadingDigits>
             180|
@@ -843,6 +847,30 @@
             )0
           </leadingDigits>
           <format>$1-$2-$3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Portugal (PT) -->
+    <territory countryCode="351" >
+      <availableFormats>
+        <!-- Lisbon/Porto numbers are usually formatted with the 21 or 22 separated - but sometimes
+             they are formatted as 21X or 22X. -->
+        <numberFormat pattern="(2\d{2})(\d{3})(\d{3})">
+          <leadingDigits>2[12]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <!-- Commonly used mobile formatting pattern. -->
+        <numberFormat pattern="(9\d)(\d{3})(\d{4})">
+          <leadingDigits>9</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            2[12]|
+            9
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
     </territory>

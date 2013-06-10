@@ -1284,8 +1284,9 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
     function(nationalPrefixFormattingRule) {
-  return i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_ONLY_PREFIX_PATTERN_.
-      test(nationalPrefixFormattingRule);
+  return nationalPrefixFormattingRule.length == 0 ||
+      i18n.phonenumbers.PhoneNumberUtil.FIRST_GROUP_ONLY_PREFIX_PATTERN_.
+          test(nationalPrefixFormattingRule);
 };
 
 
@@ -1684,10 +1685,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
               isFixedLineOrMobile)) &&
           this.canBeInternationallyDialled(numberNoExt)) {
         formattedNumber = this.format(
-          numberNoExt, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
+            numberNoExt, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
       } else {
         formattedNumber = this.format(
-          numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
+            numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
       }
     }
   } else if (this.canBeInternationallyDialled(numberNoExt)) {

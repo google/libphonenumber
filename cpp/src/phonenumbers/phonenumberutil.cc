@@ -799,8 +799,9 @@ bool PhoneNumberUtil::FormattingRuleHasFirstGroupOnly(
   // Note that the pattern explicitly allows for unbalanced parentheses.
   const RegExp& first_group_only_prefix_pattern =
       reg_exps_->regexp_cache_->GetRegExp("\\(?\\$1\\)?");
-  return first_group_only_prefix_pattern.FullMatch(
-      national_prefix_formatting_rule);
+  return national_prefix_formatting_rule.empty() ||
+      first_group_only_prefix_pattern.FullMatch(
+          national_prefix_formatting_rule);
 }
 
 void PhoneNumberUtil::GetNddPrefixForRegion(const string& region_code,

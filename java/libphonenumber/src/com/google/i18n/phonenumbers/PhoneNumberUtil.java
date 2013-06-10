@@ -970,7 +970,8 @@ public class PhoneNumberUtil {
    * does not start with the national prefix.
    */
   static boolean formattingRuleHasFirstGroupOnly(String nationalPrefixFormattingRule) {
-    return FIRST_GROUP_ONLY_PREFIX_PATTERN.matcher(nationalPrefixFormattingRule).matches();
+    return nationalPrefixFormattingRule.length() == 0 ||
+        FIRST_GROUP_ONLY_PREFIX_PATTERN.matcher(nationalPrefixFormattingRule).matches();
   }
 
   /**

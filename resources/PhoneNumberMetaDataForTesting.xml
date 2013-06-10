@@ -40,8 +40,8 @@
     </territory>
 
     <!-- Angola -->
-    <!-- This country has been coopted to test the case of a national prefix
-    with a non-numeric symbol in it. -->
+    <!-- This country has been coopted to test the case of a national prefix with a non-numeric
+         symbol in it. It is also useful since it has no national prefix formatting rule. -->
     <territory id="AO" countryCode="244" internationalPrefix="00" nationalPrefix="0~0">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
