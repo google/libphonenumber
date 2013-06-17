@@ -9,7 +9,7 @@
 #include <stddef.h>         // For size_t
 #include <string.h>         // for memcpy
 
-#ifndef COMPILER_MSVC
+#if !defined(_WIN32)
 // stdint.h is part of C99 but MSVC doesn't have it.
 #include <stdint.h>         // For intptr_t.
 #endif
