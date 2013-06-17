@@ -235,7 +235,11 @@ Supported build parameters
   USE_ALTERNATE_FORMATS = ON | OFF [ON]  -- Use alternate formats for the phone
                                             number matcher.
   USE_BOOST             = ON | OFF [ON]  -- Use Boost. This is only needed in
-                                            multi-threaded environments.
+                                            multi-threaded environments that
+                                            are not Linux and Mac.
+                                            Libphonenumber relies on Boost for
+                                            non-POSIX (e.g. Windows)
+                                            multi-threading.
   USE_ICU_REGEXP        = ON | OFF [ON]  -- Use ICU regexp engine.
   USE_LITE_METADATA     = ON | OFF [OFF] -- Generates smaller metadata that
                                             doesn't include example numbers.

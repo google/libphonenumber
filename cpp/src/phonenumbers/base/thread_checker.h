@@ -22,7 +22,8 @@
 // Note that I18N_PHONENUMBERS_NO_THREAD_SAFETY must be defined only to let the
 // user of the library know that it can't be used in a thread-safe manner when
 // it is not depending on Boost.
-#if !defined(I18N_PHONENUMBERS_NO_THREAD_SAFETY)
+#if !defined(__linux__) && !defined(__APPLE__) && \
+    !defined(I18N_PHONENUMBERS_NO_THREAD_SAFETY)
 #error Building without Boost, please provide \
        -DI18N_PHONENUMBERS_NO_THREAD_SAFETY
 #endif

@@ -14,8 +14,8 @@
 
 // Author: Philippe Liard
 
-#ifndef I18N_PHONENUMBERS_BASE_SINGLETON_H_
-#define I18N_PHONENUMBERS_BASE_SINGLETON_H_
+#ifndef I18N_PHONENUMBERS_BASE_MEMORY_SINGLETON_H_
+#define I18N_PHONENUMBERS_BASE_MEMORY_SINGLETON_H_
 
 #if defined(I18N_PHONENUMBERS_USE_BOOST)
 
@@ -48,16 +48,22 @@ class Singleton : private boost::noncopyable {
 template <class T> boost::scoped_ptr<T> Singleton<T>::instance;
 template <class T> boost::once_flag Singleton<T>::flag = BOOST_ONCE_INIT;
 
+}  // namespace phonenumbers
+}  // namespace i18n
+
 #else  // !I18N_PHONENUMBERS_USE_BOOST
 
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/base/thread_checker.h"
 
+#if !defined(__linux__) && !defined(__APPLE__)
+
 namespace i18n {
 namespace phonenumbers {
 
 // Note that this implementation is not thread-safe. For a thread-safe
-// implementation, please compile with -DI18N_PHONENUMBERS_USE_BOOST.
+// implementation on non-POSIX platforms, please compile with
+// -DI18N_PHONENUMBERS_USE_BOOST.
 template <class T>
 class Singleton {
  public:
@@ -78,9 +84,12 @@ class Singleton {
   const ThreadChecker thread_checker_;
 };
 
-#endif  // !I18N_PHONENUMBERS_USE_BOOST
-
 }  // namespace phonenumbers
 }  // namespace i18n
 
-#endif // I18N_PHONENUMBERS_BASE_SINGLETON_H_
+#else
+#include "phonenumbers/base/memory/singleton_posix.h"
+#endif  // !defined(__linux__) && !defined(__APPLE__)
+
+#endif  // !I18N_PHONENUMBERS_USE_BOOST
+#endif  // I18N_PHONENUMBERS_BASE_MEMORY_SINGLETON_H_
