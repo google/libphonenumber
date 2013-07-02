@@ -68,25 +68,25 @@ const char kNationalPrefixSeparatorsPattern[] = "[- ]";
 void ReplacePatternDigits(string* pattern) {
   DCHECK(pattern);
   string new_pattern;
+  bool is_in_braces = false;
 
   for (string::const_iterator it = pattern->begin(); it != pattern->end();
        ++it) {
     const char current_char = *it;
 
     if (isdigit(current_char)) {
-      if (it + 1 != pattern->end()) {
-        const char next_char = it[1];
-
-        if (next_char != ',' && next_char != '}') {
-          new_pattern += "\\d";
-        } else {
-          new_pattern += current_char;
-        }
+      if (is_in_braces) {
+        new_pattern += current_char;
       } else {
         new_pattern += "\\d";
       }
     } else {
       new_pattern += current_char;
+      if (current_char == '{') {
+        is_in_braces = true;
+      } else if (current_char == '}') {
+        is_in_braces = false;
+      }
     }
   }
   pattern->assign(new_pattern);

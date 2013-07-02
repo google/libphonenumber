@@ -232,7 +232,7 @@
           <leadingDigits>2|3[3-9]|906|[4-9][1-9]1</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{4,9})">
+        <numberFormat pattern="(\d{2})(\d{4,11})">
           <leadingDigits>[34]0|[68]9</leadingDigits>
           <format>$1/$2</format>
         </numberFormat>
