@@ -32,7 +32,7 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="--input-file=${resources.dir}/PhoneNumberMetaData.xml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadata.xml"/>
       <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
       <arg value="--data-prefix=data/PhoneNumberMetadataProto"/>
       <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
@@ -46,7 +46,7 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="--input-file=${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
       <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
       <arg value="--data-prefix=data/PhoneNumberMetadataProtoForTesting"/>
       <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
@@ -94,14 +94,14 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
-      <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
+      <arg value="${resources.dir}/PhoneNumberMetadata.xml"/>
       <arg value="${javascript.dir}/i18n/phonenumbers/metadata.js"/>
     </exec>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
-      <arg value="${resources.dir}/PhoneNumberMetaData.xml"/>
+      <arg value="${resources.dir}/PhoneNumberMetadata.xml"/>
       <arg value="${javascript.dir}/i18n/phonenumbers/metadatalite.js"/>
       <arg value="true"/> <!-- Lite metadata. -->
     </exec>
@@ -109,7 +109,7 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
-      <arg value="${resources.dir}/PhoneNumberMetaDataForTesting.xml"/>
+      <arg value="${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
       <arg value="${javascript.dir}/i18n/phonenumbers/metadatafortesting.js"/>
     </exec>
   </target>

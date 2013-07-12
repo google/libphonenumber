@@ -16,7 +16,7 @@
 
 // Definition of protocol buffer for holding metadata for international
 // telephone numbers. The fields here correspond exactly to those in
-// resources/PhoneNumberMetaData.xml.
+// resources/PhoneNumberMetadata.xml.
 // @author Shaopeng Jia
 
 syntax = "proto2";

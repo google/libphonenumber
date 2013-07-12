@@ -1,3 +1,10 @@
+libphonenumber (5.6.1) precise; urgency=low
+
+  * Code changes:
+   - Rename all instances of PhoneNumberMetadata to PhoneNumberMetadata for consistency.
+
+ -- David Yonge-Mallo <davinci@google.com>  Fri, Jul 12 2013 10:26:53 +0200
+
 libphonenumber (5.6) precise; urgency=low
 
   * Code changes:

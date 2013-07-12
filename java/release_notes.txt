@@ -1,3 +1,7 @@
+Jul 12, 2013: libphonenumber-5.6.1
+* Code changes:
+ - Rename all instances of PhoneNumberMetadata to PhoneNumberMetadata for consistency.
+
 Jun 05, 2013: libphonenumber-5.6
 * Code changes:
  - Fix for as-you-type-formatting bug affecting countries with no national prefix

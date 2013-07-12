@@ -16,7 +16,7 @@
 
      MetaData on Phone Number Plan and formatting rules. This file is used
      solely for the purpose of unittesting, so data in this file is not
-     necessarily consistent with that of PhoneNumberMetaData.xml.
+     necessarily consistent with that of PhoneNumberMetadata.xml.
 -->
 
 <phoneNumberMetadata>

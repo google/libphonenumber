@@ -68,7 +68,7 @@ project:
       mvn -f tools/java/java-build/pom.xml package
 
 2.  If the phone number metadata in the XML format has changed
-    (resources/PhoneNumberMetaData.xml)
+    (resources/PhoneNumberMetadata.xml)
     run the following commands to regenerate metadata.js and
     metadatafortesting.js:
 

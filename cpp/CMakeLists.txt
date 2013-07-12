@@ -277,7 +277,7 @@ if (${USE_LITE_METADATA} STREQUAL "ON")
   set (METADATA_TARGET "generate-lite-metadata")
   add_metadata_gen_target (
     ${METADATA_TARGET}
-    "${RESOURCES_DIR}/PhoneNumberMetaData.xml"
+    "${RESOURCES_DIR}/PhoneNumberMetadata.xml"
     "lite_metadata"
     "metadata"
   )
@@ -287,7 +287,7 @@ else ()
   set (METADATA_TARGET "generate-metadata")
   add_metadata_gen_target (
     ${METADATA_TARGET}
-    "${RESOURCES_DIR}/PhoneNumberMetaData.xml"
+    "${RESOURCES_DIR}/PhoneNumberMetadata.xml"
     "metadata"
     "metadata"
   )
@@ -298,7 +298,7 @@ endif ()
 set (TEST_METADATA_TARGET "generate-test-metadata")
 add_metadata_gen_target (
   ${TEST_METADATA_TARGET}
-  "${RESOURCES_DIR}/PhoneNumberMetaDataForTesting.xml"
+  "${RESOURCES_DIR}/PhoneNumberMetadataForTesting.xml"
   "test_metadata"
   "metadata"
 )

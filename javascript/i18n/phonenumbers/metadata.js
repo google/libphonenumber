@@ -17,7 +17,7 @@
 
 /**
  * @fileoverview Generated metadata for file
- * ../resources/PhoneNumberMetaData.xml
+ * ../resources/PhoneNumberMetadata.xml
  * @author Nikolaos Trogkanis
  */
 

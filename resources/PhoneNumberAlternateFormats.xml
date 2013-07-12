@@ -18,7 +18,7 @@
      Additional Phone Number Formatting information, containing alternative
      formats that are commonly used when writing phone numbers in certain
      countries. Note that this is in addition to the formatting information
-     provided by the main PhoneNumberMetaData.xml file - formatting patterns
+     provided by the main PhoneNumberMetadata.xml file - formatting patterns
      should not be duplicated.
 
      Note also that only the most specific leading-digits pattern is present for
@@ -27,7 +27,7 @@
      on alternate formatting patterns.
 
      For regions that share a country calling code, only the region with
-     mainCountryForCode set to true in PhoneNumberMetaData.xml should be present
+     mainCountryForCode set to true in PhoneNumberMetadata.xml should be present
      here.
 
      Note: Territories are in alphabetical order by their IDs, which are based on ISO 3166-1

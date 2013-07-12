@@ -71,7 +71,7 @@ public class BuildMetadataProtoFromXml extends Command {
       "\n" +
       "Example command line invocation:\n" +
       CLASS_NAME + " \\\n" +
-      "  --" + INPUT_FILE + "=resources/PhoneNumberMetaData.xml \\\n" +
+      "  --" + INPUT_FILE + "=resources/PhoneNumberMetadata.xml \\\n" +
       "  --" + OUTPUT_DIR + "=java/libphonenumber/src/com/google/i18n/phonenumbers \\\n" +
       "  --" + DATA_PREFIX + "=data/PhoneNumberMetadataProto \\\n" +
       "  --" + MAPPING_CLASS + "=CountryCodeToRegionCodeMap \\\n" +
