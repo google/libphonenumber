@@ -1,0 +1,1301 @@
+<!-- Copyright (C) 2013 The Libphonenumber Authors
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+     @author: David Yonge-Mallo
+     @author: Shaopeng Jia
+     @author: Lara Rennie
+
+     Metadata on Short Number patterns, containing information for classifying short numbers by
+     type and cost. Note that this is used in addition to the information provided by the
+     PhoneNumberMetadata.xml file - patterns should not be duplicated between these files.
+     For now, metadata for emergency numbers lives in PhoneNumberMetadata.xml.
+-->
+
+<!DOCTYPE phoneNumberMetadata [
+    <!ELEMENT phoneNumberMetadata (territories)>
+    <!ELEMENT territories (territory+)>
+    <!ELEMENT territory (generalDesc, carrierSpecific?, tollFree?, standardRate?, premiumRate?)>
+    <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern, exampleNumber?)>
+    <!ELEMENT shortCode (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
+
+    <!-- carrierSpecific numbers are numbers which can be called only from a specific carrier,
+         and will not necessarily work on another carrier. -->
+    <!ELEMENT carrierSpecific (nationalNumberPattern, possibleNumberPattern?, exampleNumber?)>
+
+    <!-- The following cost categories are mutually exclusive. Emergency numbers are implicitly
+         considered toll free and do not need to be repeated here. Otherwise, a short number which
+         does not fall into one of these categories is considered to have unknown cost. -->
+    <!ELEMENT tollFree (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
+    <!ELEMENT standardRate (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
+    <!ELEMENT premiumRate (nationalNumberPattern?, possibleNumberPattern?, exampleNumber?)>
+
+    <!ELEMENT nationalNumberPattern (#PCDATA)>
+    <!ELEMENT possibleNumberPattern (#PCDATA)>
+    <!ELEMENT exampleNumber (#PCDATA)>
+
+    <!ATTLIST territory id CDATA #REQUIRED>
+]>
+
+<phoneNumberMetadata>
+  <territories>
+    <!-- Armenia -->
+    <territory id="AM">
+      <generalDesc>
+        <nationalNumberPattern>[18]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          8[1-7]\d{2}|
+          1(?:
+            0[04-9]|
+            [1-9]\d
+          )
+        </nationalNumberPattern>
+        <exampleNumber>8711</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Argentina -->
+    <territory id="AR">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0[2356]|
+            1[02-5]|
+            21
+          )
+        </nationalNumberPattern>
+        <exampleNumber>121</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Bangladesh -->
+    <territory id="BD">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0(?:
+              [39]|
+              5(?:
+                0\d|
+                [1-4]
+              )|
+              6\d{2}|
+              7[0-4]|
+              8[0-29]
+            )|
+            1[6-9]|
+            2(?:
+              2[0-5]|
+              [34]
+            )|
+            3(?:
+              1\d?|
+              3\d|
+              6[3-6]
+            )|
+            4(?:
+              0\d|
+              1\d{2}
+            )|
+            5[2-9]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>103</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Switzerland -->
+    <!-- http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Switzerland#Short_numbers -->
+    <!-- http://csi.sunrise.ch/smartzone/_privat/csv_export.php -->
+    <territory id="CH">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- According to the "E.164 national numbering plan of Switzerland", some short numbers
+             may be accessible from abroad. However, it does not specify which ones. -->
+        <nationalNumberPattern>
+          1(?:
+            0[78]\d{2}|
+            1(?:
+              [278]|
+              45|
+              6(?:
+                000|
+                111
+              )
+            )|
+            4(?:
+              [03457]|
+              1[45]
+            )|
+            6(?:
+              00|
+              [1-46]
+            )|
+            8(?:
+              02|
+              1[189]|
+              50|
+              7|
+              8[08]|
+              99
+            )
+          )|
+          [2-9]\d{2,4}
+        </nationalNumberPattern>
+        <exampleNumber>147</exampleNumber>
+      </shortCode>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          14(?:
+            [0356]|
+            1[45]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>140</exampleNumber>
+      </expandedEmergency>
+      <tollFree>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <!-- http://www.zouk88.com/switzerland/index.htm -->
+        <!-- http://aonebill.com/coverage&tariffs#Switzerland -->
+        <nationalNumberPattern>
+          543|
+          83111
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <exampleNumber>543</exampleNumber>
+      </premiumRate>
+      <carrierSelectionCodes>
+        <!-- https://www.eofcom.admin.ch/eofcom/public/listEofcom_cscAllocated.do -->
+        <nationalNumberPattern>10[78]\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>10742</exampleNumber>
+      </carrierSelectionCodes>
+      <directoryServices>
+        <nationalNumberPattern>18\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1818</exampleNumber>
+      </directoryServices>
+      <smsServices>
+        <nationalNumberPattern>[2-9]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <exampleNumber>600</exampleNumber>
+      </smsServices>
+      <socialServices>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </socialServices>
+    </territory>
+
+    <!-- Costa Rica -->
+    <territory id="CR">
+      <generalDesc>
+        <nationalNumberPattern>1\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- This pattern excludes 4-digit SMS content numbers for now. -->
+        <nationalNumberPattern>
+          1(?:
+            0(?:
+              00|
+              15|
+              2[2-4679]
+            )|
+            1(?:
+              1[0-35-9]|
+              37|
+              [46]6|
+              7[57]|
+              8[79]|
+              9[0-379]
+            )|
+            2(?:
+              00|
+              [12]2|
+              34|
+              55
+            )|
+            333|
+            4(?:
+              00|
+              1[56]
+            )|
+            5(?:
+              15|
+              5[15]
+            )|
+            693|
+            7(?:
+              00|
+              1[789]|
+              2[02]|
+              [67]7
+            )|
+            975
+          )
+        </nationalNumberPattern>
+        <exampleNumber>1022</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Cuba -->
+    <territory id="CU">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              6111|
+              8
+            )|
+            40
+          )
+        </nationalNumberPattern>
+        <exampleNumber>140</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Czech Rep. -->
+    <territory id="CZ">
+      <generalDesc>
+        <nationalNumberPattern>1\d{3,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              6\d{3}|
+              8\d
+            )|
+            2\d{2,3}|
+            3\d{3,4}|
+            4\d{3}|
+            99
+          )
+        </nationalNumberPattern>
+        <exampleNumber>116123</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Germany -->
+    <territory id="DE">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- Public Service Number for German administration. -->
+        <nationalNumberPattern>115</nationalNumberPattern>
+        <exampleNumber>115</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Estonia -->
+    <territory id="EE">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            1[13-9]|
+            [2-9]\d
+          )
+        </nationalNumberPattern>
+        <exampleNumber>116</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- France -->
+    <!-- http://www.arcep.fr/index.php?id=8146 -->
+    <!-- http://fr.wikipedia.org/wiki/Num%C3%A9ro_d'appel_d'urgence -->
+    <territory id="FR">
+      <generalDesc>
+        <nationalNumberPattern>
+          1\d{1,5}|
+          3\d{3,4}|
+          [4-8]\d{4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- 110 is a number used for different campaigns such as Sidaction for a limited time only.
+             -->
+        <nationalNumberPattern>
+          1(?:
+            0\d{2}|
+            1(?:
+              [02459]|
+              6000|
+              8\d{3}
+            )|
+            [578]
+          )|
+          3\d{3}
+        </nationalNumberPattern>
+        <exampleNumber>1010</exampleNumber>
+      </shortCode>
+      <tollFree>
+        <!-- http://www.appel118.fr/detail.php#histo -->
+        <!-- Includes some "urgent services" numbers, plus short-codes designated as being free of
+             cost and European harmonised numbers (116XXX). -->
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              [02459]|
+              6\d{3}|
+              8710
+            )|
+            [578]
+          )|
+          3[01]\d{2}
+        </nationalNumberPattern>
+        <exampleNumber>3010</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <!-- http://www.appel118.fr/detail.php#histo -->
+        <nationalNumberPattern>118777</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>118777</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <!-- According to
+             http://www.arcep.fr/uploads/tx_gspublication/guide-operateurs-editeurs-sva-sept2012.pdf
+             these numbers may be premium rate or standard rate; here we assume the higher cost.
+             118XYZ numbers are supposed to be tollfree by 2015 according to
+             http://www.arcep.fr/uploads/tx_gspublication/guide-operateurs-editeurs-sva-sept2012.pdf
+             but their current prices vary: according to http://www.appel118.fr/detail.php#histo
+             only one number is free at the moment, and one number standard rate.
+             SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
+             prefix - we consider these all premium rate for now. -->
+        <nationalNumberPattern>
+          (?:
+            1(?:
+              0|
+              18(
+                [0-68]\d{3}|
+                7(?:
+                  0\d|
+                  1[1-9]|
+                  [2-9]\d
+                )
+              )
+            )|
+            3[2-9]|
+            [4-8]\d{2}
+          )\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
+        <exampleNumber>3200</exampleNumber>
+      </premiumRate>
+      <carrierSelectionCodes>
+        <!-- The specific carrier selection codes have not yet been assigned. -->
+        <nationalNumberPattern>16\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1600</exampleNumber>
+      </carrierSelectionCodes>
+      <!-- Other services in the French plan: -->
+      <carrierServices>
+        <nationalNumberPattern>10\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1012</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>118\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>118218</exampleNumber>
+      </directoryServices>
+      <socialServices>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </socialServices>
+      <!-- https://clients.txtnation.com/entries/22523777-France-Premium-SMS-Short-Code-Regulations
+           -->
+      <smsServices>
+        <nationalNumberPattern>[3-8]\d{4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>30000</exampleNumber>
+      </smsServices>
+    </territory>
+
+    <!-- Fiji -->
+    <territory id="FJ">
+      <generalDesc>
+        <nationalNumberPattern>[0-579]\d{1,2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- From the Emergency Numbers page on the Telecom Fiji website. -->
+        <nationalNumberPattern>
+          0(?:
+           04|
+           1[34]|
+           8[1-4]
+          )|
+          1(?:
+            0[1-3]|
+            [25]9
+          )|
+          2[289]|
+          30|
+          [45]4|
+          75|
+          913
+        </nationalNumberPattern>
+        <exampleNumber>22</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Falkland Islands (Malvinas) -->
+    <territory id="FK">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- Service numbers use 3 digit short codes -->
+        <exampleNumber>123</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Faroe Islands -->
+    <territory id="FO">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- Includes special numbers, special services and universal services.  -->
+        <nationalNumberPattern>
+          1(?:
+            1[48]|
+            4[124]\d|
+            71\d|
+            8[7-9]\d
+          )
+        </nationalNumberPattern>
+        <exampleNumber>114</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- United Kingdom -->
+    <territory id="GB">
+      <generalDesc>
+        <nationalNumberPattern>[1-4679]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- This is a list of the ones that can be called (as opposed to numbers used by text
+             delivery or data services). -->
+        <nationalNumberPattern>
+          1(?:
+            0[01]|
+            1(?:
+              1|
+              [68]\d{3}
+            )|
+            2[123]|
+            33|
+            4(?:
+              1|
+              7\d
+            )|
+            5\d|
+            70\d|
+            800\d|
+            9[15]
+          )|
+          2(?:
+            02|
+            2(?:
+              02|
+              11|
+              2
+            )|
+            3(?:
+              02|
+              45
+            )|
+            425
+          )|
+          3[13]3|
+          4(?:
+            0[02]|
+            35[01]|
+            44[45]|
+            5\d
+          )|
+          650|
+          789|
+          901
+        </nationalNumberPattern>
+        <exampleNumber>150</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Guernsey -->
+    <territory id="GG">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- Taken from numbers listed explicitly as Public Telephone Network Numbers in
+             http://stakeholders.ofcom.org.uk/binaries/telecoms/numbering/numplan201210.pdf -->
+        <nationalNumberPattern>
+          1(?:
+            0[01]|
+            1(?:
+              1|
+              [68]\d{3}
+            )|
+            23|
+            4(?:
+              1|
+              7\d
+            )|
+            55|
+            800\d|
+            95
+          )
+        </nationalNumberPattern>
+        <exampleNumber>155</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Gibraltar -->
+    <territory id="GI">
+      <generalDesc>
+        <nationalNumberPattern>[18]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            00|
+            1(?:
+              6(?:
+                00[06]|
+                11[17]
+              )|
+              8\d{2}
+            )|
+            23|
+            4(?:
+              1|
+              7[014]
+            )|
+            5[015]|
+            9[34]
+          )|
+          8(?:
+            00|
+            4[0-2]|
+            8\d
+          )
+        </nationalNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Guatemala -->
+    <territory id="GT">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            10|
+            2\d|
+            [57]\d{2}
+          )
+        </nationalNumberPattern>
+        <exampleNumber>123</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Guyana -->
+    <territory id="GY">
+      <generalDesc>
+        <nationalNumberPattern>0\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          0(?:
+            02|
+            171|
+            444|
+            7[67]7|
+            801|
+            9(?:
+              0[78]|
+              [2-47]
+            )
+          )
+       </nationalNumberPattern>
+        <exampleNumber>0801</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Haiti -->
+    <territory id="HT">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>114</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Israel -->
+    <territory id="IL">
+      <generalDesc>
+        <nationalNumberPattern>1\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>1455</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Isle of Man -->
+    <territory id="IM">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>1\d{2}(?:\d{3})?</nationalNumberPattern>
+        <exampleNumber>150</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Italy -->
+    <territory id="IT">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- Later, when we have better support for short-codes, we could add the codes
+             used for MMS and SMS services here too. -->
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              [47]|
+              6\d{3}
+            )|
+            2\d{2}|
+            4(?:
+              82|
+              9\d{1,3}
+            )|
+            5(?:
+              00|
+              1[58]|
+              2[25]|
+              3[03]|
+              44
+            )|
+            86|
+            9(?:
+              2(?:
+                [01]\d{2}|
+                [2-9]\d
+              )|
+              4\d|
+              696
+            )
+          )
+        </nationalNumberPattern>
+        <exampleNumber>114</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Jersey -->
+    <territory id="JE">
+      <generalDesc>
+        <nationalNumberPattern>[12]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&childID=1036 -->
+        <nationalNumberPattern>
+          1(?:
+            00|
+            18\d{3}|
+            23|
+            4(?:
+              [14]|
+              28|
+              7\d
+            )|
+            5\d|
+            7(?:
+              0[12]|
+              [128]|
+              35?
+            )|
+            808|
+            9[135]
+          )|
+          23[234]
+        </nationalNumberPattern>
+        <exampleNumber>150</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Jordan -->
+    <territory id="JO">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            09|
+            1[01]|
+            9[024-79]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Kenya -->
+    <territory id="KE">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- Excluding SMS-only premium-rate short codes for now. -->
+        <nationalNumberPattern>
+          1(?:
+            0[09]|
+            1(?:
+              [06]|
+              9[0-2579]
+            )|
+            2[13]|
+            3[01]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>116</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Kiribati -->
+    <territory id="KI">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          10(?:
+            [0-8]|
+            5[01259]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>100</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Kuwait -->
+    <territory id="KW">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+           [02-9]\d|
+           1[013-9]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>177</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Liechtenstein -->
+    <territory id="LI">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            145|
+            4(?:
+              [0357]|
+              14
+            )|
+            50\d{4}|
+            6(?:
+              00|
+              [1-4]
+            )|
+            75|
+            8(?:
+              1[128]|
+              7
+            )
+          )
+        </nationalNumberPattern>
+        <exampleNumber>1600</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Luxembourg -->
+    <territory id="LU">
+      <generalDesc>
+        <nationalNumberPattern>12\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>12123</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Moldova, Rep. of -->
+    <territory id="MD">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              [79]|
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8\d
+            )|
+            4\d{3}|
+            5[0-3]\d|
+            6[0-389]\d|
+            8\d{2}|
+            9(?:
+              0[04-9]|
+              [1-4]\d
+            )
+          )
+        </nationalNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Montenegro -->
+    <territory id="ME">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            16\d{3}|
+            2(?:
+              [015-9]|
+              \d{2}
+            )|
+            [0135]\d{2}|
+            4\d{2,3}|
+            9\d{3}
+          )
+        </nationalNumberPattern>
+        <exampleNumber>1011</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Mauritius -->
+    <territory id="MU">
+      <generalDesc>
+        <nationalNumberPattern>[189]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1\d{2,4}|
+          8\d{3}|
+          99\d
+        </nationalNumberPattern>
+        <exampleNumber>995</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Maldives -->
+    <territory id="MV">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            [19]0|
+            23
+          )
+          </nationalNumberPattern>
+        <exampleNumber>123</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Mozambique -->
+    <territory id="MZ">
+      <generalDesc>
+        <nationalNumberPattern>1\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>1[02-5]\d{2}</nationalNumberPattern>
+        <exampleNumber>1011</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Namibia -->
+    <territory id="NA">
+      <generalDesc>
+        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1\d{3}|
+          9(?:
+            3111|
+            \d{2}
+          )
+        </nationalNumberPattern>
+        <exampleNumber>93111</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- New Caledonia (Territoire français d'outre-mer) -->
+    <territory id="NC">
+      <generalDesc>
+        <nationalNumberPattern>1\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <!-- OPT: Office des Postes et Télécommunications de Nouvelle Calédonie -->
+        <nationalNumberPattern>
+          10(?:
+            0[06]|
+            1[02-46]|
+            20|
+            3[0125]|
+            42|
+            5[058]|
+            77
+          )
+        </nationalNumberPattern>
+        <exampleNumber>1000</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Netherlands -->
+    <territory id="NL">
+      <generalDesc>
+        <nationalNumberPattern>18\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>1833</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Nauru -->
+    <territory id="NR">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            1[0-2]|
+            23|
+            92
+          )
+        </nationalNumberPattern>
+        <exampleNumber>110</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Panama -->
+    <territory id="PA">
+      <generalDesc>
+        <nationalNumberPattern>10[2-4]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>102</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Paraguay -->
+    <territory id="PY">
+      <generalDesc>
+        <nationalNumberPattern>1[1-4]\d</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>123</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Qatar -->
+    <territory id="QA">
+      <generalDesc>
+        <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          (?:
+            1|
+            20|
+            9[27]\d
+          )\d{2}
+        </nationalNumberPattern>
+        <exampleNumber>2012</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Serbia -->
+    <territory id="RS">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1[189]\d{1,4}|
+          9[234]
+        </nationalNumberPattern>
+        <exampleNumber>112</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Saudi Arabia -->
+    <territory id="SA">
+      <generalDesc>
+        <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            16111|
+            9(?:
+              00|
+              1[89]|
+              9(?:
+                099|
+                22|
+                91
+              )
+            )
+          )|
+          9(
+            37|
+            8[6-8]|
+            9[2-6]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>937</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Solomon Islands -->
+    <territory id="SB">
+      <generalDesc>
+        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0[02-79]|
+            1[12]|
+            2[0-26]|
+            4[189]|
+            68
+          )|
+          9(?:
+            [01]1|
+            22|
+            33|
+            55|
+            77|
+            88
+          )
+        </nationalNumberPattern>
+        <exampleNumber>100</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Seychelles -->
+    <territory id="SC">
+      <generalDesc>
+        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0\d|
+            1[027]|
+            2[0-8]|
+            3[13]|
+            4[0-2]|
+            [59][15]|
+            6[1-9]|
+            7[124-6]|
+            8[158]
+          )|
+          96\d{2}
+        </nationalNumberPattern>
+        <exampleNumber>100</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Singapore -->
+    <territory id="SG">
+      <generalDesc>
+        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            [0136]\d{2}|
+            [89](?:
+              [1-9]\d|
+              0[1-9]
+            )|
+            [57]\d{2,3})|
+          99[0246-8]
+        </nationalNumberPattern>
+        <exampleNumber>1312</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Saint Helena and Tristan da Cunha -->
+    <territory id="SH">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <exampleNumber>1234</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Suriname -->
+    <territory id="SR">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            [02-9]\d|
+            1[0-46-9]|
+            \d{3}
+          )
+        </nationalNumberPattern>
+        <exampleNumber>1234</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Timor-Leste (East Timor) -->
+    <territory id="TL">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0[02]|
+            2[0138]|
+            72|
+            9[07]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>102</exampleNumber>
+      </shortCode>
+    </territory>
+
+    <!-- Uruguay -->
+    <territory id="UY">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0[4-9]|
+            1[2368]|
+            2[0-3568]
+          )
+        </nationalNumberPattern>
+        <exampleNumber>104</exampleNumber>
+      </shortCode>
+    </territory>
+  </territories>
+</phoneNumberMetadata>

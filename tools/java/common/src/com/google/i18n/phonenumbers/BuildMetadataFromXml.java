@@ -166,7 +166,9 @@ public class BuildMetadataFromXml {
                                                         String nationalPrefix) {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     metadata.setId(regionCode);
-    metadata.setCountryCode(Integer.parseInt(element.getAttribute(COUNTRY_CODE)));
+    if (element.hasAttribute(COUNTRY_CODE)) {
+      metadata.setCountryCode(Integer.parseInt(element.getAttribute(COUNTRY_CODE)));
+    }
     if (element.hasAttribute(LEADING_DIGITS)) {
       metadata.setLeadingDigits(validateRE(element.getAttribute(LEADING_DIGITS)));
     }

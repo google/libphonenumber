@@ -41,6 +41,20 @@
     </exec>
   </target>
 
+  <target name="build-short-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/ShortNumberMetadata.xml"/>
+      <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/ShortNumberMetadataProto"/>
+      <arg value="--mapping-class=ShortNumbersRegionCodeSet"/>
+      <arg value="--copyright=2013"/>
+      <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
   <target name="build-test-metadata">
     <exec executable="java">
       <arg value="-jar" />

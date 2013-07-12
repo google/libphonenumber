@@ -177,11 +177,13 @@ public class BuildMetadataProtoFromXml extends Command {
       "  // country/region represented by that country code. In the case of multiple\n" +
       "  // countries sharing a calling code, such as the NANPA countries, the one\n" +
       "  // indicated with \"isMainCountryForCode\" in the metadata should be first.\n";
-  private static final String SET_COMMENT =
+  private static final String COUNTRY_CODE_SET_COMMENT =
       "  // A set of all country codes for which data is available.\n";
+  private static final String REGION_CODE_SET_COMMENT =
+      "  // A set of all region codes for which data is available.\n";
   private static final double CAPACITY_FACTOR = 0.75;
   private static final String CAPACITY_COMMENT =
-      "    // The capacity is set to %d as there are %d different country codes,\n" +
+      "    // The capacity is set to %d as there are %d different entries,\n" +
       "    // and this offers a load factor of roughly " + CAPACITY_FACTOR + ".\n";
 
   private static void writeCountryCallingCodeMappingToJavaFile(
@@ -197,13 +199,16 @@ public class BuildMetadataProtoFromXml extends Command {
         break;
       }
     }
+    boolean hasCountryCodes = countryCodeToRegionCodeMap.size() > 1;
 
     ClassWriter writer = new ClassWriter(outputDir, mappingClass, copyright);
 
-    if (hasRegionCodes) {
+    if (hasRegionCodes && hasCountryCodes) {
       writeMap(writer, capacity, countryCodeToRegionCodeMap);
+    } else if (hasCountryCodes) {
+      writeCountryCodeSet(writer, capacity, countryCodeToRegionCodeMap.keySet());
     } else {
-      writeSet(writer, capacity, countryCodeToRegionCodeMap.keySet());
+      writeRegionCodeSet(writer, capacity, countryCodeToRegionCodeMap.get(0));
     }
 
     writer.writeToFile();
@@ -243,9 +248,30 @@ public class BuildMetadataProtoFromXml extends Command {
     writer.addToBody("  }\n");
   }
 
-  private static void writeSet(ClassWriter writer, int capacity,
-                               Set<Integer> countryCodeSet) {
-    writer.addToBody(SET_COMMENT);
+  private static void writeRegionCodeSet(ClassWriter writer, int capacity,
+                                         List<String> regionCodeSet) {
+    writer.addToBody(REGION_CODE_SET_COMMENT);
+
+    writer.addToImports("java.util.HashSet");
+    writer.addToImports("java.util.Set");
+
+    writer.addToBody("  static Set<String> getRegionCodeSet() {\n");
+    writer.formatToBody(CAPACITY_COMMENT, capacity, regionCodeSet.size());
+    writer.addToBody("    Set<String> regionCodeSet = new HashSet<String>(" + capacity + ");\n");
+    writer.addToBody("\n");
+
+    for (String regionCode : regionCodeSet) {
+      writer.addToBody("    regionCodeSet.add(\"" + regionCode + "\");\n");
+    }
+
+    writer.addToBody("\n");
+    writer.addToBody("    return regionCodeSet;\n");
+    writer.addToBody("  }\n");
+  }
+
+  private static void writeCountryCodeSet(ClassWriter writer, int capacity,
+                                          Set<Integer> countryCodeSet) {
+    writer.addToBody(COUNTRY_CODE_SET_COMMENT);
 
     writer.addToImports("java.util.HashSet");
     writer.addToImports("java.util.Set");
