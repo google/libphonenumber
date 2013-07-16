@@ -181,12 +181,12 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    * @private
    */
   this.defaultCountry_ = regionCode;
-  this.currentMetaData_ = this.getMetadataForRegion_(this.defaultCountry_);
+  this.currentMetadata_ = this.getMetadataForRegion_(this.defaultCountry_);
   /**
    * @type {i18n.phonenumbers.PhoneMetadata}
    * @private
    */
-  this.defaultMetaData_ = this.currentMetaData_;
+  this.defaultMetadata_ = this.currentMetadata_;
 };
 
 
@@ -351,9 +351,9 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var formatList =
       (this.isCompleteNumber_ &&
-           this.currentMetaData_.intlNumberFormatCount() > 0) ?
-      this.currentMetaData_.intlNumberFormatArray() :
-      this.currentMetaData_.numberFormatArray();
+           this.currentMetadata_.intlNumberFormatCount() > 0) ?
+      this.currentMetadata_.intlNumberFormatArray() :
+      this.currentMetadata_.numberFormatArray();
   /** @type {number} */
   var formatListLength = formatList.length;
   for (var i = 0; i < formatListLength; ++i) {
@@ -361,7 +361,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
     var format = formatList[i];
     /** @type {boolean} */
     var nationalPrefixIsUsedByCountry =
-        this.currentMetaData_.hasNationalPrefix();
+        this.currentMetadata_.hasNationalPrefix();
     if (!nationalPrefixIsUsedByCountry || this.isCompleteNumber_ ||
         format.getNationalPrefixOptionalWhenFormatting() ||
         this.phoneUtil_.formattingRuleHasFirstGroupOnly(
@@ -515,8 +515,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
   this.isExpectingCountryCallingCode_ = false;
   this.possibleFormats_ = [];
   this.shouldAddSpaceAfterNationalPrefix_ = false;
-  if (this.currentMetaData_ != this.defaultMetaData_) {
-    this.currentMetaData_ = this.getMetadataForRegion_(this.defaultCountry_);
+  if (this.currentMetadata_ != this.defaultMetadata_) {
+    this.currentMetadata_ = this.getMetadataForRegion_(this.defaultCountry_);
   }
 };
 
@@ -887,7 +887,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   // prefix. The reason is that national significant numbers in NANPA always
   // start with [2-9] after the national prefix. Numbers beginning with 1[01]
   // can only be short/emergency numbers, which don't need the national prefix.
-  if (this.currentMetaData_.getCountryCode() != 1) {
+  if (this.currentMetadata_.getCountryCode() != 1) {
     return false;
   }
   /** @type {string} */
@@ -916,10 +916,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
     this.prefixBeforeNationalNumber_.append('1').append(
         i18n.phonenumbers.AsYouTypeFormatter.SEPARATOR_BEFORE_NATIONAL_NUMBER_);
     this.isCompleteNumber_ = true;
-  } else if (this.currentMetaData_.hasNationalPrefixForParsing()) {
+  } else if (this.currentMetadata_.hasNationalPrefixForParsing()) {
     /** @type {RegExp} */
     var nationalPrefixForParsing = new RegExp(
-        '^(?:' + this.currentMetaData_.getNationalPrefixForParsing() + ')');
+        '^(?:' + this.currentMetadata_.getNationalPrefixForParsing() + ')');
     /** @type {Array.<string>} */
     var m = nationalNumber.match(nationalPrefixForParsing);
     if (m != null && m[0] != null && m[0].length > 0) {
@@ -955,7 +955,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToExtractIdd_ =
   /** @type {RegExp} */
   var internationalPrefix = new RegExp(
       '^(?:' + '\\' + i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN + '|' +
-      this.currentMetaData_.getInternationalPrefix() + ')');
+      this.currentMetadata_.getInternationalPrefix() + ')');
   /** @type {Array.<string>} */
   var m = accruedInputWithoutFormatting.match(internationalPrefix);
   if (m != null && m[0] != null && m[0].length > 0) {
@@ -1008,10 +1008,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   var newRegionCode = this.phoneUtil_.getRegionCodeForCountryCode(countryCode);
   if (i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY ==
       newRegionCode) {
-    this.currentMetaData_ =
+    this.currentMetadata_ =
         this.phoneUtil_.getMetadataForNonGeographicalRegion(countryCode);
   } else if (newRegionCode != this.defaultCountry_) {
-    this.currentMetaData_ = this.getMetadataForRegion_(newRegionCode);
+    this.currentMetadata_ = this.getMetadataForRegion_(newRegionCode);
   }
   /** @type {string} */
   var countryCodeString = '' + countryCode;

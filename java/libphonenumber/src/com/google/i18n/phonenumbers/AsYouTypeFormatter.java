@@ -63,8 +63,8 @@ public class AsYouTypeFormatter {
   private static final char SEPARATOR_BEFORE_NATIONAL_NUMBER = ' ';
   private static final PhoneMetadata EMPTY_METADATA =
       new PhoneMetadata().setInternationalPrefix("NA");
-  private PhoneMetadata defaultMetaData;
-  private PhoneMetadata currentMetaData;
+  private PhoneMetadata defaultMetadata;
+  private PhoneMetadata currentMetadata;
 
   // A pattern that is used to match character classes in regular expressions. An example of a
   // character class is [1-4].
@@ -126,8 +126,8 @@ public class AsYouTypeFormatter {
    */
   AsYouTypeFormatter(String regionCode) {
     defaultCountry = regionCode;
-    currentMetaData = getMetadataForRegion(defaultCountry);
-    defaultMetaData = currentMetaData;
+    currentMetadata = getMetadataForRegion(defaultCountry);
+    defaultMetadata = currentMetadata;
   }
 
   // The metadata needed by this class is the same for all regions sharing the same country calling
@@ -174,10 +174,10 @@ public class AsYouTypeFormatter {
 
   private void getAvailableFormats(String leadingThreeDigits) {
     List<NumberFormat> formatList =
-        (isCompleteNumber && currentMetaData.intlNumberFormatSize() > 0)
-        ? currentMetaData.intlNumberFormats()
-        : currentMetaData.numberFormats();
-    boolean nationalPrefixIsUsedByCountry = currentMetaData.hasNationalPrefix();
+        (isCompleteNumber && currentMetadata.intlNumberFormatSize() > 0)
+        ? currentMetadata.intlNumberFormats()
+        : currentMetadata.numberFormats();
+    boolean nationalPrefixIsUsedByCountry = currentMetadata.hasNationalPrefix();
     for (NumberFormat format : formatList) {
       if (!nationalPrefixIsUsedByCountry || isCompleteNumber ||
           format.isNationalPrefixOptionalWhenFormatting() ||
@@ -277,8 +277,8 @@ public class AsYouTypeFormatter {
     isExpectingCountryCallingCode = false;
     possibleFormats.clear();
     shouldAddSpaceAfterNationalPrefix = false;
-    if (!currentMetaData.equals(defaultMetaData)) {
-      currentMetaData = getMetadataForRegion(defaultCountry);
+    if (!currentMetadata.equals(defaultMetadata)) {
+      currentMetadata = getMetadataForRegion(defaultCountry);
     }
   }
 
@@ -509,7 +509,7 @@ public class AsYouTypeFormatter {
     // that national significant numbers in NANPA always start with [2-9] after the national prefix.
     // Numbers beginning with 1[01] can only be short/emergency numbers, which don't need the
     // national prefix.
-    return (currentMetaData.getCountryCode() == 1) && (nationalNumber.charAt(0) == '1') &&
+    return (currentMetadata.getCountryCode() == 1) && (nationalNumber.charAt(0) == '1') &&
            (nationalNumber.charAt(1) != '0') && (nationalNumber.charAt(1) != '1');
   }
 
@@ -520,9 +520,9 @@ public class AsYouTypeFormatter {
       startOfNationalNumber = 1;
       prefixBeforeNationalNumber.append('1').append(SEPARATOR_BEFORE_NATIONAL_NUMBER);
       isCompleteNumber = true;
-    } else if (currentMetaData.hasNationalPrefixForParsing()) {
+    } else if (currentMetadata.hasNationalPrefixForParsing()) {
       Pattern nationalPrefixForParsing =
-          regexCache.getPatternForRegex(currentMetaData.getNationalPrefixForParsing());
+          regexCache.getPatternForRegex(currentMetadata.getNationalPrefixForParsing());
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       if (m.lookingAt()) {
         // When the national prefix is detected, we use international formatting rules instead of
@@ -548,7 +548,7 @@ public class AsYouTypeFormatter {
   private boolean attemptToExtractIdd() {
     Pattern internationalPrefix =
         regexCache.getPatternForRegex("\\" + PhoneNumberUtil.PLUS_SIGN + "|" +
-            currentMetaData.getInternationalPrefix());
+            currentMetadata.getInternationalPrefix());
     Matcher iddMatcher = internationalPrefix.matcher(accruedInputWithoutFormatting);
     if (iddMatcher.lookingAt()) {
       isCompleteNumber = true;
@@ -586,9 +586,9 @@ public class AsYouTypeFormatter {
     nationalNumber.append(numberWithoutCountryCallingCode);
     String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
     if (PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(newRegionCode)) {
-      currentMetaData = phoneUtil.getMetadataForNonGeographicalRegion(countryCode);
+      currentMetadata = phoneUtil.getMetadataForNonGeographicalRegion(countryCode);
     } else if (!newRegionCode.equals(defaultCountry)) {
-      currentMetaData = getMetadataForRegion(newRegionCode);
+      currentMetadata = getMetadataForRegion(newRegionCode);
     }
     String countryCodeString = Integer.toString(countryCode);
     prefixBeforeNationalNumber.append(countryCodeString).append(SEPARATOR_BEFORE_NATIONAL_NUMBER);
