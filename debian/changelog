@@ -9,8 +9,6 @@ libphonenumber (5.6.2) precise; urgency=low
    - New geocoding data for country calling code(s): 47 (en), 82 (ar)
    - Updated geocoding data for country calling code(s):
      49 (en), 98 (en, fa), 241 (en)
-   - Rename all instances of PhoneNumberMetadata to PhoneNumberMetadata for
-     consistency.
 
  -- Lara Rennie <lararennie@google.com>  Tue, Jul 16 2013 10:01:53 +0200
 
