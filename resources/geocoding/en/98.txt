@@ -15,6 +15,7 @@
 # Generated from:
 # http://www.itu.int/oth/T0202000066/en [2012-07-24]
 # Numbering Plan received from Sony Ericsson [2012-04]
+# Some prefixes were changed/removed based on http://www.tct.ir/?siteid=1&pageid=195
 # Some names were changed to the more common English spelling.
 
 98111|Babol
@@ -37,25 +38,19 @@
 98182|Bandar Anzali suburbs
 98191|Chalus
 98192|Chalus suburbs
-9821|Tehran
-98221|Tehran suburbs
-98228|Eslamshahr
-98229|Eslamshahr suburbs
+9821|Tehran province
 98231|Semnan
 98232|Semnan suburbs
 98241|Zanjan
 98242|Zanjan suburbs
-98251|Qom
-98252|Qom suburbs
+9825|Qom province
 98255|Saveh
 98256|Saveh suburbs
-9826|Karaj
+9826|Alborz
 98273|Shahroud
 98274|Shahroud suburbs
 98281|Qazvin
 98282|Qazvin suburbs
-98291|Varamin
-98292|Varamin suburbs
 98311|Isfahan
 98312|Isfahan suburbs
 98321|Shahreza

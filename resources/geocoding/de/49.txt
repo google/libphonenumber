@@ -2015,12 +2015,12 @@
 494129|Haseldorf
 494131|Lüneburg
 494132|Amelinghausen
-494133|Wittorf Kreis Lünebeburg
-494134|Embsen Kreis Lünebeburg
+494133|Wittorf Kreis Lüneburg
+494134|Embsen Kreis Lüneburg
 494135|Kirchgellersen
 494136|Scharnebeck
 494137|Barendorf
-494138|Betzendorf Kreis Lünebeburg
+494138|Betzendorf Kreis Lüneburg
 494139|Hohnstorf Elbe
 494140|Estorf Kreis Stade
 494141|Stade

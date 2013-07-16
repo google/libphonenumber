@@ -74,6 +74,15 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat pattern="(1)([389]\d{2})(\d{3})(\d{3})">
+          <leadingDigits>
+            1(?:
+              [38]00|
+              90
+            )
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
         <numberFormat pattern="([2378])(\d{8})">
           <leadingDigits>[2378]</leadingDigits>
           <format>$1 $2</format>
@@ -144,7 +153,7 @@
           </leadingDigits>
           <format>$1/$2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{1,2})">
           <leadingDigits>
             3[02]|
             40|
@@ -159,6 +168,14 @@
             [68]9
           </leadingDigits>
           <format>$1/$2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d)(\d{2})(\d{2})">
+          <leadingDigits>
+            3[02]|
+            40|
+            [68]9
+          </leadingDigits>
+          <format>$1/$2 $3 $4 $5 $6</format>
         </numberFormat>
         <!-- 3 digit area codes. -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{2,4})">
@@ -202,6 +219,27 @@
             )
           </leadingDigits>
           <format>$1/$2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d)">
+          <leadingDigits>
+            2(?:
+              \d1|
+              0[2389]|
+              1[24]|
+              28|
+              34
+            )|
+            3(?:
+              [3-9][15]|
+              40
+            )|
+            [4-8][1-9]1|
+            9(?:
+              06|
+              [1-9]1
+            )
+          </leadingDigits>
+          <format>$1/$2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})">
           <leadingDigits>
@@ -782,6 +820,18 @@
       </availableFormats>
     </territory>
 
+    <!-- Spain (ES) -->
+    <territory countryCode="34" >
+      <availableFormats>
+        <numberFormat pattern="([5-9]\d{2})(\d{3})(\d{3})">
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(9\d)(\d{3})(\d{2})(\d{2})">
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Great Britain (GB) -->
     <territory countryCode="44" >
       <availableFormats>
@@ -869,6 +919,69 @@
           <leadingDigits>
             2[12]|
             9
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Turkey (TR) -->
+    <territory countryCode="90">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            [23589]|
+            4(?:
+              [0-35-9]|
+              4[0-35-9]
+            )
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Ukraine -->
+    <territory countryCode="380" >
+      <availableFormats>
+        <numberFormat pattern="([3-689]\d)(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            [38]9|
+            4(?:
+              [45][0-5]|
+              87
+            )|
+            5(?:
+              0|
+              6(?:
+                3[14-7]|
+                7
+              )|
+              7[37]
+            )|
+            6[36-8]|
+            9[1-9]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <!-- Less common but still sometimes used. -->
+        <numberFormat pattern="([3-689]\d)(\d{2})(\d{3})(\d{2})">
+          <leadingDigits>
+            [38]9|
+            4(?:
+              [45][0-5]|
+              87
+            )|
+            5(?:
+              0|
+              6(?:
+                3[14-7]|
+                7
+              )|
+              7[37]
+            )|
+            6[36-8]|
+            9[1-9]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>

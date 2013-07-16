@@ -1,0 +1,49 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Prefixes from:
+# http://www.npt.no/npt/numsys/E.164.pdf
+# Note Svalbard is excluded; it has its own region code.
+
+472|Oslo
+4731|Buskerud
+4732|Buskerud
+4733|Vestfold
+4734|Vestfold
+4735|Telemark
+4737|Aust-Agder
+4738|Vest-Agder
+4751|Rogaland
+4752|Rogaland
+4753|Hordaland
+4755|Hordaland
+4756|Hordaland
+4757|Sogn og Fjordane
+4760|Oppland
+4761|Oppland
+4762|Hedmark
+4763|Akershus
+4764|Akershus
+4766|Akershus
+4767|Akershus
+4769|Østfold
+4770|Møre og Romsdal
+4771|Møre og Romsdal
+4772|Sør-Trøndelag
+4773|Sør-Trøndelag
+4774|Nord-Trøndelag
+4775|Nordland
+4776|Nordland
+4777|Troms
+4778|Finnmark

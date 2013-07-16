@@ -1,3 +1,14 @@
+Jul 16, 2013: libphonenumber-5.6.2
+* Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 49, 61
+ - New metadata for region code(s): TA
+ - Updated metadata for region code(s):
+   BF, BH, BI, BJ, BR, CR, EH, GA, GE, GN, GU, IL, IN, IR, KH, KW, KZ, MA, MT,
+   NA, NE, NL, PH, RO, SH, SO, TK
+ - New geocoding data for country calling code(s): 47 (en), 82 (ar)
+ - Updated geocoding data for country calling code(s):
+   49 (en), 98 (en, fa), 241 (en)
+
 Jul 12, 2013: libphonenumber-5.6.1
 * Code changes:
  - Rename all instances of PhoneNumberMetadata to PhoneNumberMetadata for consistency.
