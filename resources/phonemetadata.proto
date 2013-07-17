@@ -134,6 +134,8 @@ message PhoneMetadata {
   required PhoneNumberDesc uan = 25;
   required PhoneNumberDesc emergency = 27;
   required PhoneNumberDesc voicemail = 28;
+  required PhoneNumberDesc short_code = 29;
+  required PhoneNumberDesc standard_rate = 30;
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.
   required PhoneNumberDesc no_international_dialling = 24;

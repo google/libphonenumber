@@ -18,6 +18,7 @@ package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.Leniency;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +33,50 @@ import java.util.NoSuchElementException;
  * @see PhoneNumberUtilTest {@link PhoneNumberUtilTest} for the origin of the test data
  */
 public class PhoneNumberMatcherTest extends TestMetadataTestCase {
+
+  public void testContainsMoreThanOneSlashInNationalNumber() throws Exception {
+    // A date should return true.
+    PhoneNumber number = new PhoneNumber();
+    number.setCountryCode(1);
+    number.setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY);
+    String candidate = "1/05/2013";
+    assertTrue(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+
+    // Here, the country code source thinks it started with a country calling code, but this is not
+    // the same as the part before the slash, so it's still true.
+    number = new PhoneNumber();
+    number.setCountryCode(274);
+    number.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
+    candidate = "27/4/2013";
+    assertTrue(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+
+    // Now it should be false, because the first slash is after the country calling code.
+    number = new PhoneNumber();
+    number.setCountryCode(49);
+    number.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
+    candidate = "49/69/2013";
+    assertFalse(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+
+    number = new PhoneNumber();
+    number.setCountryCode(49);
+    number.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
+    candidate = "+49/69/2013";
+    assertFalse(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+
+    candidate = "+ 49/69/2013";
+    assertFalse(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+
+    candidate = "+ 49/69/20/13";
+    assertTrue(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+
+    // Here, the first group is not assumed to be the country calling code, even though it is the
+    // same as it, so this should return true.
+    number = new PhoneNumber();
+    number.setCountryCode(49);
+    number.setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY);
+    candidate = "49/69/2013";
+    assertTrue(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
+  }
 
   /** See {@link PhoneNumberUtilTest#testParseNationalNumber()}. */
   public void testFindNationalNumber() throws Exception {
@@ -516,8 +561,7 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     doTestNumberNonMatchesForLeniency(testCases, Leniency.EXACT_GROUPING);
   }
 
-  private void doTestNumberMatchesForLeniency(List<NumberTest> testCases,
-                                              PhoneNumberUtil.Leniency leniency) {
+  private void doTestNumberMatchesForLeniency(List<NumberTest> testCases, Leniency leniency) {
     int noMatchFoundCount = 0;
     int wrongMatchFoundCount = 0;
     for (NumberTest test : testCases) {
@@ -539,8 +583,7 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     assertEquals(0, wrongMatchFoundCount);
   }
 
-  private void doTestNumberNonMatchesForLeniency(List<NumberTest> testCases,
-                                                 PhoneNumberUtil.Leniency leniency) {
+  private void doTestNumberNonMatchesForLeniency(List<NumberTest> testCases, Leniency leniency) {
     int matchFoundCount = 0;
     for (NumberTest test : testCases) {
       Iterator<PhoneNumberMatch> iterator =
@@ -956,7 +999,7 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
   }
 
   private Iterator<PhoneNumberMatch> findNumbersForLeniency(
-      String text, String defaultCountry, PhoneNumberUtil.Leniency leniency) {
+      String text, String defaultCountry, Leniency leniency) {
     return phoneUtil.findNumbers(text, defaultCountry, leniency, Long.MAX_VALUE).iterator();
   }
 

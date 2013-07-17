@@ -189,9 +189,8 @@ public class BuildMetadataProtoFromXml extends Command {
   private static void writeCountryCallingCodeMappingToJavaFile(
       Map<Integer, List<String>> countryCodeToRegionCodeMap,
       String outputDir, String mappingClass, String copyright) throws IOException {
-    int capacity = (int) (countryCodeToRegionCodeMap.size() / CAPACITY_FACTOR);
-
-    // Find out whether the countryCodeToRegionCodeMap has any region codes listed in it.
+    // Find out whether the countryCodeToRegionCodeMap has any region codes or country
+    // calling codes listed in it.
     boolean hasRegionCodes = false;
     for (List<String> listWithRegionCode : countryCodeToRegionCodeMap.values()) {
       if (!listWithRegionCode.isEmpty()) {
@@ -203,12 +202,15 @@ public class BuildMetadataProtoFromXml extends Command {
 
     ClassWriter writer = new ClassWriter(outputDir, mappingClass, copyright);
 
+    int capacity = (int) (countryCodeToRegionCodeMap.size() / CAPACITY_FACTOR);
     if (hasRegionCodes && hasCountryCodes) {
       writeMap(writer, capacity, countryCodeToRegionCodeMap);
     } else if (hasCountryCodes) {
       writeCountryCodeSet(writer, capacity, countryCodeToRegionCodeMap.keySet());
     } else {
-      writeRegionCodeSet(writer, capacity, countryCodeToRegionCodeMap.get(0));
+      List<String> regionCodeList = countryCodeToRegionCodeMap.get(0);
+      capacity = (int) (regionCodeList.size() / CAPACITY_FACTOR);
+      writeRegionCodeSet(writer, capacity, regionCodeList);
     }
 
     writer.writeToFile();
@@ -249,18 +251,18 @@ public class BuildMetadataProtoFromXml extends Command {
   }
 
   private static void writeRegionCodeSet(ClassWriter writer, int capacity,
-                                         List<String> regionCodeSet) {
+                                         List<String> regionCodeList) {
     writer.addToBody(REGION_CODE_SET_COMMENT);
 
     writer.addToImports("java.util.HashSet");
     writer.addToImports("java.util.Set");
 
     writer.addToBody("  static Set<String> getRegionCodeSet() {\n");
-    writer.formatToBody(CAPACITY_COMMENT, capacity, regionCodeSet.size());
+    writer.formatToBody(CAPACITY_COMMENT, capacity, regionCodeList.size());
     writer.addToBody("    Set<String> regionCodeSet = new HashSet<String>(" + capacity + ");\n");
     writer.addToBody("\n");
 
-    for (String regionCode : regionCodeSet) {
+    for (String regionCode : regionCodeList) {
       writer.addToBody("    regionCodeSet.add(\"" + regionCode + "\");\n");
     }
 

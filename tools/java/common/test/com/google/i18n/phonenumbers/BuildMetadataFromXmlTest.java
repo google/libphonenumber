@@ -509,12 +509,13 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  <mobile><nationalNumberPattern>\\d{2}</nationalNumberPattern></mobile>" +
         "  <pager><nationalNumberPattern>\\d{3}</nationalNumberPattern></pager>" +
         "  <tollFree><nationalNumberPattern>\\d{4}</nationalNumberPattern></tollFree>" +
-        "  <premiumRate><nationalNumberPattern>\\d{5}</nationalNumberPattern></premiumRate>" +
-        "  <sharedCost><nationalNumberPattern>\\d{6}</nationalNumberPattern></sharedCost>" +
-        "  <personalNumber><nationalNumberPattern>\\d{7}</nationalNumberPattern></personalNumber>" +
-        "  <voip><nationalNumberPattern>\\d{8}</nationalNumberPattern></voip>" +
-        "  <uan><nationalNumberPattern>\\d{9}</nationalNumberPattern></uan>" +
-        "  <shortCode><nationalNumberPattern>\\d{10}</nationalNumberPattern></shortCode>" +
+        "  <standardRate><nationalNumberPattern>\\d{5}</nationalNumberPattern></standardRate>" +
+        "  <premiumRate><nationalNumberPattern>\\d{6}</nationalNumberPattern></premiumRate>" +
+        "  <shortCode><nationalNumberPattern>\\d{7}</nationalNumberPattern></shortCode>" +
+        "  <sharedCost><nationalNumberPattern>\\d{8}</nationalNumberPattern></sharedCost>" +
+        "  <personalNumber><nationalNumberPattern>\\d{9}</nationalNumberPattern></personalNumber>" +
+        "  <voip><nationalNumberPattern>\\d{10}</nationalNumberPattern></voip>" +
+        "  <uan><nationalNumberPattern>\\d{11}</nationalNumberPattern></uan>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
@@ -523,10 +524,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("\\d{2}", metadata.getMobile().getNationalNumberPattern());
     assertEquals("\\d{3}", metadata.getPager().getNationalNumberPattern());
     assertEquals("\\d{4}", metadata.getTollFree().getNationalNumberPattern());
-    assertEquals("\\d{5}", metadata.getPremiumRate().getNationalNumberPattern());
-    assertEquals("\\d{6}", metadata.getSharedCost().getNationalNumberPattern());
-    assertEquals("\\d{7}", metadata.getPersonalNumber().getNationalNumberPattern());
-    assertEquals("\\d{8}", metadata.getVoip().getNationalNumberPattern());
-    assertEquals("\\d{9}", metadata.getUan().getNationalNumberPattern());
+    assertEquals("\\d{5}", metadata.getStandardRate().getNationalNumberPattern());
+    assertEquals("\\d{6}", metadata.getPremiumRate().getNationalNumberPattern());
+    assertEquals("\\d{7}", metadata.getShortCode().getNationalNumberPattern());
+    assertEquals("\\d{8}", metadata.getSharedCost().getNationalNumberPattern());
+    assertEquals("\\d{9}", metadata.getPersonalNumber().getNationalNumberPattern());
+    assertEquals("\\d{10}", metadata.getVoip().getNationalNumberPattern());
+    assertEquals("\\d{11}", metadata.getUan().getNationalNumberPattern());
   }
 }

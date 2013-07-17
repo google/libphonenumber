@@ -447,6 +447,20 @@ public final class Phonemetadata {
       return this;
     }
 
+    // required PhoneNumberDesc emergency = 27;
+    private boolean hasEmergency;
+    private PhoneNumberDesc emergency_ = null;
+    public boolean hasEmergency() { return hasEmergency; }
+    public PhoneNumberDesc getEmergency() { return emergency_; }
+    public PhoneMetadata setEmergency(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasEmergency = true;
+      emergency_ = value;
+      return this;
+    }
+
     // required PhoneNumberDesc voicemail = 28;
     private boolean hasVoicemail;
     private PhoneNumberDesc voicemail_ = null;
@@ -461,17 +475,31 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc emergency = 27;
-    private boolean hasEmergency;
-    private PhoneNumberDesc emergency_ = null;
-    public boolean hasEmergency() { return hasEmergency; }
-    public PhoneNumberDesc getEmergency() { return emergency_; }
-    public PhoneMetadata setEmergency(PhoneNumberDesc value) {
+    // required PhoneNumberDesc short_code = 29;
+    private boolean hasShortCode;
+    private PhoneNumberDesc shortCode_ = null;
+    public boolean hasShortCode() { return hasShortCode; }
+    public PhoneNumberDesc getShortCode() { return shortCode_; }
+    public PhoneMetadata setShortCode(PhoneNumberDesc value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      hasEmergency = true;
-      emergency_ = value;
+      hasShortCode = true;
+      shortCode_ = value;
+      return this;
+    }
+
+    // required PhoneNumberDesc standard_rate = 30;
+    private boolean hasStandardRate;
+    private PhoneNumberDesc standardRate_ = null;
+    public boolean hasStandardRate() { return hasStandardRate; }
+    public PhoneNumberDesc getStandardRate() { return standardRate_; }
+    public PhoneMetadata setStandardRate(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasStandardRate = true;
+      standardRate_ = value;
       return this;
     }
 
@@ -705,13 +733,21 @@ public final class Phonemetadata {
       if (hasUan) {
         uan_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasEmergency);
+      if (hasEmergency) {
+        emergency_.writeExternal(objectOutput);
+      }
       objectOutput.writeBoolean(hasVoicemail);
       if (hasVoicemail) {
         voicemail_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(hasEmergency);
-      if (hasEmergency) {
-        emergency_.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasShortCode);
+      if (hasShortCode) {
+        shortCode_.writeExternal(objectOutput);
+      }
+      objectOutput.writeBoolean(hasStandardRate);
+      if (hasStandardRate) {
+        standardRate_.writeExternal(objectOutput);
       }
       objectOutput.writeBoolean(hasNoInternationalDialling);
       if (hasNoInternationalDialling) {
@@ -836,13 +872,25 @@ public final class Phonemetadata {
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
+        setEmergency(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
         setVoicemail(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        setEmergency(desc);
+        setShortCode(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setStandardRate(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {

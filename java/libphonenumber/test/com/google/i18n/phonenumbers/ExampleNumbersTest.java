@@ -38,12 +38,14 @@ import java.util.logging.Logger;
 public class ExampleNumbersTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(ExampleNumbersTest.class.getName());
   private PhoneNumberUtil phoneNumberUtil;
+  private ShortNumberUtil shortNumberUtil;
   private List<PhoneNumber> invalidCases = new ArrayList<PhoneNumber>();
   private List<PhoneNumber> wrongTypeCases = new ArrayList<PhoneNumber>();
 
   public ExampleNumbersTest() {
     PhoneNumberUtil.resetInstance();
     phoneNumberUtil = PhoneNumberUtil.getInstance();
+    shortNumberUtil = new ShortNumberUtil(phoneNumberUtil);
   }
 
   @Override
@@ -177,7 +179,6 @@ public class ExampleNumbersTest extends TestCase {
   }
 
   public void testEmergency() throws Exception {
-    ShortNumberUtil shortUtil = new ShortNumberUtil(phoneNumberUtil);
     int wrongTypeCounter = 0;
     for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumberDesc desc =
@@ -185,7 +186,7 @@ public class ExampleNumbersTest extends TestCase {
       if (desc.hasExampleNumber()) {
         String exampleNumber = desc.getExampleNumber();
         if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
-            !shortUtil.isEmergencyNumber(exampleNumber, regionCode)) {
+            !shortNumberUtil.isEmergencyNumber(exampleNumber, regionCode)) {
           wrongTypeCounter++;
           LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
         }
@@ -210,6 +211,12 @@ public class ExampleNumbersTest extends TestCase {
     for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumber exampleNumber = phoneNumberUtil.getExampleNumber(regionCode);
       assertNotNull("None found for region " + regionCode, exampleNumber);
+    }
+
+    for (String regionCode : shortNumberUtil.getSupportedRegions()) {
+      String exampleShortNumber = shortNumberUtil.getExampleShortNumber(regionCode);
+      assertFalse("No example short number found for region " + regionCode,
+          exampleShortNumber.equals(""));
     }
   }
 }

@@ -1,3 +1,11 @@
+libphonenumber (5.7) precise; urgency=low
+
+  * Code changes:
+    - Improve phone number extraction recall.
+    - Add support for loading short number metadata.
+
+ -- David Yonge-Mallo <davinci@google.com>  Wed, 17 Jul 2013 11:25:45 +0200
+
 libphonenumber (5.6.2) precise; urgency=low
 
   * Metadata changes:
@@ -10,14 +18,14 @@ libphonenumber (5.6.2) precise; urgency=low
    - Updated geocoding data for country calling code(s):
      49 (en), 98 (en, fa), 241 (en)
 
- -- Lara Rennie <lararennie@google.com>  Tue, Jul 16 2013 10:01:53 +0200
+ -- Lara Rennie <lararennie@google.com>  Tue, 16 Jul 2013 10:01:53 +0200
 
 libphonenumber (5.6.1) precise; urgency=low
 
   * Code changes:
    - Rename all instances of PhoneNumberMetadata to PhoneNumberMetadata for consistency.
 
- -- David Yonge-Mallo <davinci@google.com>  Fri, Jul 12 2013 10:26:53 +0200
+ -- David Yonge-Mallo <davinci@google.com>  Fri, 12 Jul 2013 10:26:53 +0200
 
 libphonenumber (5.6) precise; urgency=low
 

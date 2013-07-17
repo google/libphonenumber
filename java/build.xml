@@ -27,7 +27,7 @@
     </fileset>
   </path>
 
-  <target name="build-metadata">
+  <target name="build-phone-metadata">
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -129,7 +129,7 @@
   </target>
 
   <target name="compile" description="Compile Java source."
-          depends="build-metadata,build-alternate-metadata,build-geo-data">
+          depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-geo-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${libphonenumber.src.dir};${geocoder.src.dir}"
            destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
@@ -150,6 +150,7 @@
       <fileset dir="${libphonenumber.src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
         <include name="**/PhoneNumberAlternateFormatsProto*"/>
+        <include name="**/ShortNumberMetadataProto*"/>
       </fileset>
     </jar>
     <jar destfile="${jar.dir}/offline-geocoder.jar">
@@ -175,6 +176,7 @@
       <fileset dir="${libphonenumber.src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
         <include name="**/PhoneNumberAlternateFormatsProto*"/>
+        <include name="**/ShortNumberMetadataProto*"/>
       </fileset>
       <fileset dir="${libphonenumber.test.dir}">
         <include name="**/PhoneNumberMetadataProtoForTesting*"/>

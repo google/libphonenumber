@@ -451,7 +451,8 @@ public class PhoneNumberUtil {
      * are grouped in a possible way for this locale. For example, a US number written as
      * "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
      * "650 253 0000", "650 2530000" or "6502530000" are.
-     * Numbers with more than one '/' symbol are also dropped at this level.
+     * Numbers with more than one '/' symbol in the national significant number are also dropped at
+     * this level.
      * <p>
      * Warning: This level might result in lower coverage especially for regions outside of country
      * code "+1". If you are not sure about which level to use, email the discussion group
@@ -462,7 +463,7 @@ public class PhoneNumberUtil {
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
         if (!util.isValidNumber(number) ||
             !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util) ||
-            PhoneNumberMatcher.containsMoreThanOneSlash(candidate) ||
+            PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate) ||
             !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
@@ -493,7 +494,7 @@ public class PhoneNumberUtil {
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
         if (!util.isValidNumber(number) ||
             !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util) ||
-            PhoneNumberMatcher.containsMoreThanOneSlash(candidate) ||
+            PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate) ||
             !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
@@ -745,6 +746,17 @@ public class PhoneNumberUtil {
       }
     }
     return normalizedDigits;
+  }
+
+  /**
+   * Normalizes a string of characters representing a phone number. This strips all characters which
+   * are not diallable on a mobile phone keypad (including all non-ASCII digits).
+   *
+   * @param number  a string of characters representing a phone number
+   * @return        the normalized string version of the phone number
+   */
+  static String normalizeDiallableCharsOnly(String number) {
+    return normalizeHelper(number, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
   }
 
   /**
@@ -1267,8 +1279,7 @@ public class PhoneNumberUtil {
                             : format(numberNoExt, PhoneNumberFormat.E164);
     }
     return withFormatting ? formattedNumber
-                          : normalizeHelper(formattedNumber, DIALLABLE_CHAR_MAPPINGS,
-                                            true /* remove non matches */);
+                          : normalizeDiallableCharsOnly(formattedNumber);
   }
 
   /**
@@ -1453,10 +1464,8 @@ public class PhoneNumberUtil {
     // If no digit is inserted/removed/modified as a result of our formatting, we return the
     // formatted phone number; otherwise we return the raw input the user entered.
     if (formattedNumber != null && rawInput.length() > 0) {
-      String normalizedFormattedNumber =
-          normalizeHelper(formattedNumber, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
-      String normalizedRawInput =
-          normalizeHelper(rawInput, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
+      String normalizedFormattedNumber = normalizeDiallableCharsOnly(formattedNumber);
+      String normalizedRawInput = normalizeDiallableCharsOnly(rawInput);
       if (!normalizedFormattedNumber.equals(normalizedRawInput)) {
         formattedNumber = rawInput;
       }
@@ -1961,14 +1970,21 @@ public class PhoneNumberUtil {
     return countryCodeToNonGeographicalMetadataMap.get(countryCallingCode);
   }
 
-  private boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
+  // @VisibleForTesting
+  boolean isNumberPossibleForDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
     Matcher possibleNumberPatternMatcher =
         regexCache.getPatternForRegex(numberDesc.getPossibleNumberPattern())
             .matcher(nationalNumber);
+    return possibleNumberPatternMatcher.matches();
+  }
+
+  // @VisibleForTesting
+  boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
     Matcher nationalNumberPatternMatcher =
         regexCache.getPatternForRegex(numberDesc.getNationalNumberPattern())
             .matcher(nationalNumber);
-    return possibleNumberPatternMatcher.matches() && nationalNumberPatternMatcher.matches();
+    return isNumberPossibleForDesc(nationalNumber, numberDesc) &&
+        nationalNumberPatternMatcher.matches();
   }
 
   /**

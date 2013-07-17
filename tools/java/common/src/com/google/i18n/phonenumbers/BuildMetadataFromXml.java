@@ -76,6 +76,8 @@ public class BuildMetadataFromXml {
   private static final String PREFERRED_INTERNATIONAL_PREFIX = "preferredInternationalPrefix";
   private static final String PREMIUM_RATE = "premiumRate";
   private static final String SHARED_COST = "sharedCost";
+  private static final String SHORT_CODE = "shortCode";
+  private static final String STANDARD_RATE = "standardRate";
   private static final String TOLL_FREE = "tollFree";
   private static final String UAN = "uan";
   private static final String VOICEMAIL = "voicemail";
@@ -426,8 +428,12 @@ public class BuildMetadataFromXml {
         processPhoneNumberDescElement(generalDesc, element, MOBILE, liteBuild));
     metadata.setTollFree(
         processPhoneNumberDescElement(generalDesc, element, TOLL_FREE, liteBuild));
+    metadata.setStandardRate(
+        processPhoneNumberDescElement(generalDesc, element, STANDARD_RATE, liteBuild));
     metadata.setPremiumRate(
         processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE, liteBuild));
+    metadata.setShortCode(
+        processPhoneNumberDescElement(generalDesc, element, SHORT_CODE, liteBuild));
     metadata.setSharedCost(
         processPhoneNumberDescElement(generalDesc, element, SHARED_COST, liteBuild));
     metadata.setVoip(

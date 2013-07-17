@@ -28,6 +28,24 @@ public class ShortNumberUtilTest extends TestMetadataTestCase {
     shortUtil = new ShortNumberUtil(phoneUtil);
   }
 
+  public void testGetExampleShortNumber() {
+    assertEquals("8711", shortUtil.getExampleShortNumber(RegionCode.AM));
+    assertEquals("1010", shortUtil.getExampleShortNumber(RegionCode.FR));
+    assertEquals("", shortUtil.getExampleShortNumber(RegionCode.UN001));
+    assertEquals("", shortUtil.getExampleShortNumber(null));
+  }
+
+  public void testGetExampleShortNumberForCost() {
+    assertEquals("3010", shortUtil.getExampleShortNumberForCost(RegionCode.FR,
+        ShortNumberUtil.ShortNumberCost.TOLL_FREE));
+    assertEquals("118777", shortUtil.getExampleShortNumberForCost(RegionCode.FR,
+        ShortNumberUtil.ShortNumberCost.STANDARD_RATE));
+    assertEquals("3200", shortUtil.getExampleShortNumberForCost(RegionCode.FR,
+        ShortNumberUtil.ShortNumberCost.PREMIUM_RATE));
+    assertEquals("", shortUtil.getExampleShortNumberForCost(RegionCode.FR,
+        ShortNumberUtil.ShortNumberCost.UNKNOWN_COST));
+  }
+
   public void testConnectsToEmergencyNumber_US() {
     assertTrue(shortUtil.connectsToEmergencyNumber("911", RegionCode.US));
     assertTrue(shortUtil.connectsToEmergencyNumber("119", RegionCode.US));

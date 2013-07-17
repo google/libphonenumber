@@ -377,6 +377,14 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  PhoneNumberUtil.normalizeDigitsOnly(inputNumber));
   }
 
+  public void testNormaliseStripNonDiallableCharacters() {
+    String inputNumber = "03*4-56&+a#234";
+    String expectedOutput = "03*456+234";
+    assertEquals("Conversion did not correctly remove non-diallable characters",
+                 expectedOutput,
+                 PhoneNumberUtil.normalizeDiallableCharsOnly(inputNumber));
+  }
+
   public void testFormatUSNumber() {
     assertEquals("650 253 0000", phoneUtil.format(US_NUMBER, PhoneNumberFormat.NATIONAL));
     assertEquals("+1 650 253 0000", phoneUtil.format(US_NUMBER, PhoneNumberFormat.INTERNATIONAL));

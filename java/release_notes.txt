@@ -1,3 +1,8 @@
+Jul 17, 2013: libphonenumber-5.7
+* Code changes:
+ - Improve phone number extraction recall.
+ - Add support for loading short number metadata.
+
 Jul 16, 2013: libphonenumber-5.6.2
 * Metadata changes:
  - Updated alternate formatting data for country calling code(s): 49, 61

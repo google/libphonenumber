@@ -17,7 +17,12 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 
+import java.util.Collections;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /*
@@ -25,10 +30,22 @@ import java.util.regex.Pattern;
  * most commercial short numbers are not handled here, but by the PhoneNumberUtil.
  *
  * @author Shaopeng Jia
+ * @author David Yonge-Mallo
  */
 public class ShortNumberUtil {
 
   private final PhoneNumberUtil phoneUtil;
+  private static final Logger LOGGER = Logger.getLogger(ShortNumberUtil.class.getName());
+
+  /**
+   * Cost categories of short numbers.
+   */
+  public enum ShortNumberCost {
+    TOLL_FREE,
+    STANDARD_RATE,
+    PREMIUM_RATE,
+    UNKNOWN_COST
+  }
 
   public ShortNumberUtil() {
     phoneUtil = PhoneNumberUtil.getInstance();
@@ -37,6 +54,71 @@ public class ShortNumberUtil {
   // @VisibleForTesting
   ShortNumberUtil(PhoneNumberUtil util) {
     phoneUtil = util;
+  }
+
+  /**
+   * Convenience method to get a list of what regions the library has metadata for.
+   */
+  public Set<String> getSupportedRegions() {
+    return Collections.unmodifiableSet(MetadataManager.getShortNumberMetadataSupportedRegions());
+  }
+
+  /**
+   * Gets a valid short number for the specified region.
+   *
+   * @param regionCode  the region for which an example short number is needed
+   * @return  a valid short number for the specified region. Returns an empty string when the
+   *    metadata does not contain such information.
+   */
+  // @VisibleForTesting
+  String getExampleShortNumber(String regionCode) {
+    PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(regionCode);
+    if (null == phoneMetadata) {
+      LOGGER.log(Level.WARNING, "Unable to get short number metadata for region: " + regionCode);
+      return "";
+    }
+    PhoneNumberDesc desc = phoneMetadata.getShortCode();
+    if (desc.hasExampleNumber()) {
+      return desc.getExampleNumber();
+    }
+    return "";
+  }
+
+  /**
+   * Gets a valid short number for the specified cost category.
+   *
+   * @param regionCode  the region for which an example short number is needed
+   * @param cost  the cost category of number that is needed
+   * @return  a valid short number for the specified region and cost category. Returns an empty
+   *    string when the metadata does not contain such information, or the cost is UNKNOWN_COST.
+   */
+  // @VisibleForTesting
+  String getExampleShortNumberForCost(String regionCode, ShortNumberCost cost) {
+    PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(regionCode);
+    if (null == phoneMetadata) {
+      LOGGER.log(Level.WARNING, "Unable to get short number metadata for region: " + regionCode);
+      return "";
+    }
+    PhoneNumberDesc desc = getShortNumberDescByCost(phoneMetadata, cost);
+    if (desc != null && desc.hasExampleNumber()) {
+      return desc.getExampleNumber();
+    }
+    return "";
+  }
+
+  private PhoneNumberDesc getShortNumberDescByCost(PhoneMetadata metadata, ShortNumberCost cost) {
+    switch (cost) {
+      case TOLL_FREE:
+        return metadata.getTollFree();
+      case STANDARD_RATE:
+        return metadata.getStandardRate();
+      case PREMIUM_RATE:
+        return metadata.getPremiumRate();
+      default:
+        // UNKNOWN_COST numbers are computed by the process of elimination from the other cost
+        // categories.
+        return null;
+    }
   }
 
   /**

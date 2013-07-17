@@ -568,9 +568,30 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     return false;
   }
 
-  static boolean containsMoreThanOneSlash(String candidate) {
-    int firstSlashIndex = candidate.indexOf('/');
-    return (firstSlashIndex > 0 && candidate.substring(firstSlashIndex + 1).contains("/"));
+  static boolean containsMoreThanOneSlashInNationalNumber(PhoneNumber number, String candidate) {
+    int firstSlashInBodyIndex = candidate.indexOf('/');
+    if (firstSlashInBodyIndex < 0) {
+      // No slashes, this is okay.
+      return false;
+    }
+    // Now look for a second one.
+    int secondSlashInBodyIndex = candidate.indexOf('/', firstSlashInBodyIndex + 1);
+    if (secondSlashInBodyIndex < 0) {
+      // Only one slash, this is okay.
+      return false;
+    }
+
+    // If the first slash is after the country calling code, this is permitted.
+    boolean candidateHasCountryCode =
+        (number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN ||
+         number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
+    if (candidateHasCountryCode &&
+        PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(0, firstSlashInBodyIndex))
+            .equals(Integer.toString(number.getCountryCode()))) {
+      // Any more slashes and this is illegal.
+      return candidate.substring(secondSlashInBodyIndex + 1).contains("/");
+    }
+    return true;
   }
 
   static boolean containsOnlyValidXChars(
