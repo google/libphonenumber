@@ -26,10 +26,10 @@
 #endif  // I18N_PHONENUMBERS_USE_ICU_REGEXP
 
 #include <ctype.h>
+#include <stddef.h>
 #include <iostream>
 #include <limits>
 #include <map>
-#include <stddef.h>
 #include <string>
 #include <utility>
 #include <vector>
@@ -478,8 +478,8 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
     case PhoneNumberMatcher::STRICT_GROUPING: {
       if (!phone_util_.IsValidNumber(number) ||
           !ContainsOnlyValidXChars(number, candidate, phone_util_) ||
-          // Two or more slashes were present.
-          (FindNth(candidate, '/', 2) != string::npos) ||
+          ContainsMoreThanOneSlashInNationalNumber(
+              number, candidate, phone_util_) ||
           !IsNationalPrefixPresentIfRequired(number)) {
         return false;
       }
@@ -493,8 +493,8 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
     case PhoneNumberMatcher::EXACT_GROUPING: {
       if (!phone_util_.IsValidNumber(number) ||
           !ContainsOnlyValidXChars(number, candidate, phone_util_) ||
-          // Two or more slashes were present.
-          (FindNth(candidate, '/', 2) != string::npos) ||
+          ContainsMoreThanOneSlashInNationalNumber(
+              number, candidate, phone_util_) ||
           !IsNationalPrefixPresentIfRequired(number)) {
         return false;
       }
@@ -816,6 +816,38 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
   return (candidate_number_group_index >= 0 &&
           HasSuffixString(candidate_groups.at(candidate_number_group_index),
                           formatted_number_groups.at(0)));
+}
+
+// static
+bool PhoneNumberMatcher::ContainsMoreThanOneSlashInNationalNumber(
+    const PhoneNumber& number,
+    const string& candidate,
+    const PhoneNumberUtil& util) {
+  size_t first_slash_in_body = candidate.find('/');
+  if (first_slash_in_body == string::npos) {
+    // No slashes, this is okay.
+    return false;
+  }
+  // Now look for a second one.
+  size_t second_slash_in_body = candidate.find('/', first_slash_in_body + 1);
+  if (second_slash_in_body == string::npos) {
+    // Only one slash, this is okay.
+    return false;
+  }
+
+  // If the first slash is after the country calling code, this is permitted.
+  if (number.country_code_source() == PhoneNumber::FROM_NUMBER_WITH_PLUS_SIGN ||
+      number.country_code_source() ==
+          PhoneNumber::FROM_NUMBER_WITHOUT_PLUS_SIGN) {
+    string normalized_country_code =
+        candidate.substr(0, first_slash_in_body);
+    util.NormalizeDigitsOnly(&normalized_country_code);
+    if (normalized_country_code == SimpleItoa(number.country_code())) {
+      // Any more slashes and this is illegal.
+      return candidate.find('/', second_slash_in_body + 1) != string::npos;
+    }
+  }
+  return true;
 }
 
 }  // namespace phonenumbers

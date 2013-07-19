@@ -188,6 +188,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // strips punctuation and alpha characters.
   void NormalizeDigitsOnly(string* number) const;
 
+  // Normalizes a string of characters representing a phone number. This strips
+  // all characters which are not diallable on a mobile phone keypad (including
+  // all non-ASCII digits).
+  void NormalizeDiallableCharsOnly(string* number) const;
+
   // Gets the national significant number of a phone number. Note a national
   // significant number doesn't contain a national prefix or any formatting.
   void GetNationalSignificantNumber(const PhoneNumber& number,
@@ -737,6 +742,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   bool ParsePrefixAsIdd(const RegExp& idd_pattern, string* number) const;
 
   void Normalize(string* number) const;
+
   PhoneNumber::CountryCodeSource MaybeStripInternationalPrefixAndNormalize(
       const string& possible_idd_prefix,
       string* number) const;

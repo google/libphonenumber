@@ -92,6 +92,10 @@ class PhoneNumberUtilTest : public testing::Test {
     phone_util_.Normalize(number);
   }
 
+  void NormalizeDiallableCharsOnly(string* number) const {
+    phone_util_.NormalizeDiallableCharsOnly(number);
+  }
+
   bool IsNumberGeographical(const PhoneNumber& phone_number) const {
     return phone_util_.IsNumberGeographical(phone_number);
   }
@@ -148,6 +152,9 @@ class PhoneNumberUtilTest : public testing::Test {
   }
 
   const PhoneNumberUtil& phone_util_;
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtilTest);
 };
 
 TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
@@ -2319,6 +2326,14 @@ TEST_F(PhoneNumberUtilTest, NormaliseStripAlphaCharacters) {
   static const string kExpectedOutput("03456234");
   EXPECT_EQ(kExpectedOutput, input_number)
       << "Conversion did not correctly remove alpha characters";
+}
+
+TEST_F(PhoneNumberUtilTest, NormaliseStripNonDiallableCharacters) {
+  string input_number("03*4-56&+a#234");
+  NormalizeDiallableCharsOnly(&input_number);
+  static const string kExpectedOutput("03*456+234");
+  EXPECT_EQ(kExpectedOutput, input_number)
+      << "Conversion did not correctly remove non-diallable characters";
 }
 
 TEST_F(PhoneNumberUtilTest, MaybeStripInternationalPrefix) {

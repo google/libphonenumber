@@ -68,6 +68,8 @@ const char kNationalPrefixSeparatorsPattern[] = "[- ]";
 void ReplacePatternDigits(string* pattern) {
   DCHECK(pattern);
   string new_pattern;
+  // This is needed since sometimes there is more than one digit in between the
+  // curly braces.
   bool is_in_braces = false;
 
   for (string::const_iterator it = pattern->begin(); it != pattern->end();

@@ -1093,7 +1093,6 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
       } else {
         Format(number_no_extension, NATIONAL, formatted_number);
       }
-
     }
   } else if (CanBeInternationallyDialled(number_no_extension)) {
     with_formatting
@@ -1102,8 +1101,7 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
     return;
   }
   if (!with_formatting) {
-    NormalizeHelper(reg_exps_->diallable_char_mappings_,
-                    true /* remove non matches */, formatted_number);
+    NormalizeDiallableCharsOnly(formatted_number);
   }
 }
 
@@ -1285,12 +1283,9 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
   // user entered.
   if (!formatted_number->empty() && !number.raw_input().empty()) {
     string normalized_formatted_number(*formatted_number);
-    NormalizeHelper(reg_exps_->diallable_char_mappings_,
-                    true /* remove non matches */,
-                    &normalized_formatted_number);
+    NormalizeDiallableCharsOnly(&normalized_formatted_number);
     string normalized_raw_input(number.raw_input());
-    NormalizeHelper(reg_exps_->diallable_char_mappings_,
-                    true /* remove non matches */, &normalized_raw_input);
+    NormalizeDiallableCharsOnly(&normalized_raw_input);
     if (normalized_formatted_number != normalized_raw_input) {
       formatted_number->assign(number.raw_input());
     }
@@ -2211,6 +2206,12 @@ void PhoneNumberUtil::NormalizeDigitsOnly(string* number) const {
   non_digits_pattern.GlobalReplace(number, "");
   // Normalize all decimal digits to ASCII digits.
   number->assign(NormalizeUTF8::NormalizeDecimalDigits(*number));
+}
+
+void PhoneNumberUtil::NormalizeDiallableCharsOnly(string* number) const {
+  DCHECK(number);
+  NormalizeHelper(reg_exps_->diallable_char_mappings_,
+                  true /* remove non matches */, number);
 }
 
 bool PhoneNumberUtil::IsAlphaNumber(const string& number) const {
