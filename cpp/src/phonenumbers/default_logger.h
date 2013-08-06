@@ -74,7 +74,7 @@ class LoggerHandler {
   Logger* const impl_;
 };
 
-inline LoggerHandler VLOG(int n) {
+inline LoggerHandler LOG(int n) {
   Logger* const logger_impl = Logger::mutable_logger_impl();
   if (logger_impl->level() < n) {
     return LoggerHandler(NULL);
@@ -83,8 +83,10 @@ inline LoggerHandler VLOG(int n) {
   return LoggerHandler(logger_impl);
 }
 
-inline LoggerHandler LOG(int n) {
-  return VLOG(n);
+inline LoggerHandler VLOG(int n) {
+  // VLOG(1) is the next logging level after LOG(DEBUG).
+  n += LOG_DEBUG;
+  return LOG(n);
 }
 
 // Default logger implementation used by PhoneNumberUtil class. It outputs the

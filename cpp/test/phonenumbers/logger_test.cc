@@ -20,6 +20,7 @@
 
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/default_logger.h"
+#include "phonenumbers/logger.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -69,36 +70,102 @@ class LoggerTest : public ::testing::Test {
 TEST_F(LoggerTest, LoggerIgnoresHigherVerbosity) {
   // The logger verbosity is set to LOG_INFO, therefore LOG_DEBUG messages
   // should be ignored.
-  VLOG(LOG_DEBUG) << "Hello";
+  LOG(LOG_DEBUG) << "Hello";
   EXPECT_EQ("", test_logger_->message());
 }
 
 TEST_F(LoggerTest, LoggerOutputsNewline) {
-  VLOG(LOG_INFO) << "Hello";
+  LOG(LOG_INFO) << "Hello";
   EXPECT_EQ("Hello\n", test_logger_->message());
 }
 
 TEST_F(LoggerTest, LoggerLogsEqualVerbosity) {
-  VLOG(LOG_INFO) << "Hello";
+  LOG(LOG_INFO) << "Hello";
   EXPECT_EQ("Hello\n", test_logger_->message());
 }
 
-TEST_F(LoggerTest, LoggerLogsLowerVerbosity) {
-  VLOG(LOG_WARNING) << "Hello";
+TEST_F(LoggerTest, LoggerLogsMoreSeriousMessages) {
+  // The logger verbosity is set to LOG_INFO, therefore LOG_WARNING messages
+  // should still be printed.
+  LOG(LOG_WARNING) << "Hello";
   EXPECT_EQ("Hello\n", test_logger_->message());
 }
 
 TEST_F(LoggerTest, LoggerConcatenatesMessages) {
-  VLOG(LOG_INFO) << "Hello";
+  LOG(LOG_INFO) << "Hello";
   ASSERT_EQ("Hello\n", test_logger_->message());
 
-  VLOG(LOG_INFO) << " World";
+  LOG(LOG_INFO) << " World";
   EXPECT_EQ("Hello\n World\n", test_logger_->message());
 }
 
 TEST_F(LoggerTest, LoggerHandlesDifferentTypes) {
-  VLOG(LOG_INFO) << "Hello " << 42;
+  LOG(LOG_INFO) << "Hello " << 42;
   EXPECT_EQ("Hello 42\n", test_logger_->message());
+}
+
+TEST_F(LoggerTest, LoggerIgnoresVerboseLogs) {
+  // VLOG is always lower verbosity than LOG, so with LOG_INFO set as the
+  // verbosity level, no VLOG call should result in anything.
+  VLOG(1) << "Hello";
+  EXPECT_EQ("", test_logger_->message());
+
+  // VLOG(0) is the same as LOG_DEBUG.
+  VLOG(0) << "Hello";
+  EXPECT_EQ("", test_logger_->message());
+
+  // With LOG_DEBUG as the current verbosity level, VLOG(1) should still not
+  // result in anything.
+  test_logger_->set_level(LOG_DEBUG);
+
+  VLOG(1) << "Hello";
+  EXPECT_EQ("", test_logger_->message());
+
+  // However, VLOG(0) does.
+  VLOG(0) << "Hello";
+  EXPECT_EQ("Hello\n", test_logger_->message());
+}
+
+TEST_F(LoggerTest, LoggerShowsDebugLogsAtDebugLevel) {
+  test_logger_->set_level(LOG_DEBUG);
+  // Debug logs should still be seen.
+  LOG(LOG_DEBUG) << "Debug hello";
+  EXPECT_EQ("Debug hello\n", test_logger_->message());
+}
+
+TEST_F(LoggerTest, LoggerOutputsDebugLogsWhenVerbositySet) {
+  // This should now output LOG_DEBUG.
+  int verbose_log_level = 2;
+  test_logger_->set_verbosity_level(verbose_log_level);
+
+  LOG(LOG_DEBUG) << "Debug hello";
+  EXPECT_EQ("Debug hello\n", test_logger_->message());
+}
+
+TEST_F(LoggerTest, LoggerOutputsErrorLogsWhenVerbositySet) {
+  // This should now output LOG_ERROR.
+  int verbose_log_level = 2;
+  test_logger_->set_verbosity_level(verbose_log_level);
+
+  LOG(ERROR) << "Error hello";
+  EXPECT_EQ("Error hello\n", test_logger_->message());
+}
+
+TEST_F(LoggerTest, LoggerOutputsLogsAccordingToVerbosity) {
+  int verbose_log_level = 2;
+  test_logger_->set_verbosity_level(verbose_log_level);
+
+  // More verbose than the current limit.
+  VLOG(verbose_log_level + 1) << "Hello 3";
+  EXPECT_EQ("", test_logger_->message());
+
+  // Less verbose than the current limit.
+  VLOG(verbose_log_level - 1) << "Hello";
+  EXPECT_EQ("Hello\n", test_logger_->message());
+
+  // At the current limit. This will be appended to the previous log output.
+  VLOG(verbose_log_level) << "Hello 2";
+  EXPECT_EQ("Hello\nHello 2\n", test_logger_->message());
 }
 
 }  // namespace phonenumbers

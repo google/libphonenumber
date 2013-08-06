@@ -29,18 +29,27 @@ void StdoutLogger::WriteMessage(const string& msg) {
 }
 
 void StdoutLogger::WriteLevel() {
-  LogLevel log_level = level();
+  int verbosity_level = level();
+  if (verbosity_level <= 0) {
+    verbosity_level = LOG_FATAL;
+  }
+
   cout << "[";
 
-  switch (log_level) {
-    case LOG_FATAL:   cout << "FATAL"; break;
+  // Handle verbose logs first.
+  if (verbosity_level > LOG_DEBUG) {
+    cout << "VLOG" << (verbosity_level - LOG_DEBUG);
+  } else {
+    switch (verbosity_level) {
+      case LOG_FATAL:   cout << "FATAL"; break;
 #ifdef ERROR  // In case ERROR is defined by MSVC (i.e not set to LOG_ERROR).
-    case ERROR:
+      case ERROR:
 #endif
-    case LOG_ERROR:   cout << "ERROR"; break;
-    case LOG_WARNING: cout << "WARNING"; break;
-    case LOG_INFO:    cout << "INFO"; break;
-    case LOG_DEBUG:   cout << "DEBUG"; break;
+      case LOG_ERROR:   cout << "ERROR"; break;
+      case LOG_WARNING: cout << "WARNING"; break;
+      case LOG_INFO:    cout << "INFO"; break;
+      case LOG_DEBUG:   cout << "DEBUG"; break;
+    }
   }
   cout << "]";
 }

@@ -25,7 +25,7 @@ namespace phonenumbers {
 
 using std::string;
 
-enum LogLevel {
+enum {
   LOG_FATAL = 1,
   LOG_ERROR,
   LOG_WARNING,
@@ -54,12 +54,24 @@ class Logger {
   // Writes the provided message to the underlying output stream.
   virtual void WriteMessage(const string& msg) = 0;
 
-  inline LogLevel level() const {
+  // Note that if set_verbosity_level has been used to set the level to a value
+  // that is not represented by an enum, the result here will be a log
+  // level that is higher than LOG_DEBUG.
+  inline int level() const {
     return level_;
   }
 
-  inline void set_level(LogLevel level) {
+  inline void set_level(int level) {
     level_ = level;
+  }
+
+  // If you want to see verbose logs in addition to other logs, use this method.
+  // This will result in all log messages at the levels above being shown, along
+  // with calls to VLOG with the verbosity level set to this level or lower.
+  // For example, set_verbosity_level(2) will show calls of VLOG(1) and VLOG(2)
+  // but not VLOG(3), along with all calls to LOG().
+  inline void set_verbosity_level(int verbose_logs_level) {
+    set_level(LOG_DEBUG + verbose_logs_level);
   }
 
   static inline Logger* set_logger_impl(Logger* logger) {
@@ -73,7 +85,7 @@ class Logger {
 
  private:
   static Logger* impl_;
-  LogLevel level_;
+  int level_;
 };
 
 // Logger that does not log anything. It could be useful to "mute" the
