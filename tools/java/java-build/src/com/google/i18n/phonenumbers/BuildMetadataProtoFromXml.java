@@ -38,6 +38,9 @@ import java.util.regex.Pattern;
 /**
  * Tool to convert phone number metadata from the XML format to protocol buffer format.
  *
+ * Based on the name of the {@code inputFile}, some optimization and removal of unnecessary metadata
+ * is carried out to reduce the size of the output file.
+ *
  * @author Shaopeng Jia
  */
 public class BuildMetadataProtoFromXml extends Command {

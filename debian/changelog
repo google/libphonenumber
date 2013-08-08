@@ -1,3 +1,14 @@
+libphonenumber (5.7.1) precise; urgency=low
+
+  * Metadata changes:
+   - Change to the way the metadata is built; now only parts of the proto that
+     are relevant will be generated. This means short-code data won't be
+     generated for the normal protos, and fixed-line data won't be generated
+     for short-number protos. This cuts the metadata binary size approximately
+     in half.
+
+ -- Lara Rennie <lararennie@google.com>  Thu, 8 Aug, 2013 13:12:00 +0200
+
 libphonenumber (5.7) precise; urgency=low
 
   * Code changes:

@@ -120,25 +120,26 @@ message PhoneMetadata {
   // from its counterpart in the general_desc. Every locale is assumed to have
   // fixed line and mobile numbers - if these types are missing in the XML
   // file, they will inherit all fields from the general_desc. For all other
-  // types, if the whole type is missing in the xml file, it will be given a
-  // national_number_pattern of "NA" and a possible_number_pattern of "NA".
-  required PhoneNumberDesc general_desc = 1;
-  required PhoneNumberDesc fixed_line = 2;
-  required PhoneNumberDesc mobile = 3;
-  required PhoneNumberDesc toll_free = 4;
-  required PhoneNumberDesc premium_rate = 5;
-  required PhoneNumberDesc shared_cost = 6;
-  required PhoneNumberDesc personal_number = 7;
-  required PhoneNumberDesc voip = 8;
-  required PhoneNumberDesc pager = 21;
-  required PhoneNumberDesc uan = 25;
-  required PhoneNumberDesc emergency = 27;
-  required PhoneNumberDesc voicemail = 28;
-  required PhoneNumberDesc short_code = 29;
-  required PhoneNumberDesc standard_rate = 30;
+  // types, if the whole type is missing in the xml file and it is relevant for
+  // the metadata being created, it will be given a national_number_pattern of
+  // "NA" and a possible_number_pattern of "NA".
+  optional PhoneNumberDesc general_desc = 1;
+  optional PhoneNumberDesc fixed_line = 2;
+  optional PhoneNumberDesc mobile = 3;
+  optional PhoneNumberDesc toll_free = 4;
+  optional PhoneNumberDesc premium_rate = 5;
+  optional PhoneNumberDesc shared_cost = 6;
+  optional PhoneNumberDesc personal_number = 7;
+  optional PhoneNumberDesc voip = 8;
+  optional PhoneNumberDesc pager = 21;
+  optional PhoneNumberDesc uan = 25;
+  optional PhoneNumberDesc emergency = 27;
+  optional PhoneNumberDesc voicemail = 28;
+  optional PhoneNumberDesc short_code = 29;
+  optional PhoneNumberDesc standard_rate = 30;
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.
-  required PhoneNumberDesc no_international_dialling = 24;
+  optional PhoneNumberDesc no_international_dialling = 24;
 
   // The ISO 3166-1 alpha-2 representation of a country/region, with the
   // exception of "country calling codes" used for non-geographical entities,

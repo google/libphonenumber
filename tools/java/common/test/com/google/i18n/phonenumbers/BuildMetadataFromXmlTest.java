@@ -486,8 +486,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
   }
 
-  // Tests loadGeneralDesc().
-  public void testLoadGeneralDescSetsSameMobileAndFixedLinePattern()
+  // Tests setRelevantDescPatterns().
+  public void testSetRelevantDescPatternsSetsSameMobileAndFixedLinePattern()
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput =
         "<territory countryCode=\"33\">" +
@@ -497,11 +497,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     // Should set sameMobileAndFixedPattern to true.
-    BuildMetadataFromXml.loadGeneralDesc(metadata, territoryElement, false);
+    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
+        false /* isShortNumberMetadata */);
     assertTrue(metadata.isSameMobileAndFixedLinePattern());
   }
 
-  public void testLoadGeneralDescSetsAllDescriptions()
+  public void testSetRelevantDescPatternsSetsAllDescriptionsForRegularLengthNumbers()
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput =
         "<territory countryCode=\"33\">" +
@@ -509,27 +510,69 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  <mobile><nationalNumberPattern>\\d{2}</nationalNumberPattern></mobile>" +
         "  <pager><nationalNumberPattern>\\d{3}</nationalNumberPattern></pager>" +
         "  <tollFree><nationalNumberPattern>\\d{4}</nationalNumberPattern></tollFree>" +
-        "  <standardRate><nationalNumberPattern>\\d{5}</nationalNumberPattern></standardRate>" +
-        "  <premiumRate><nationalNumberPattern>\\d{6}</nationalNumberPattern></premiumRate>" +
-        "  <shortCode><nationalNumberPattern>\\d{7}</nationalNumberPattern></shortCode>" +
-        "  <sharedCost><nationalNumberPattern>\\d{8}</nationalNumberPattern></sharedCost>" +
-        "  <personalNumber><nationalNumberPattern>\\d{9}</nationalNumberPattern></personalNumber>" +
-        "  <voip><nationalNumberPattern>\\d{10}</nationalNumberPattern></voip>" +
-        "  <uan><nationalNumberPattern>\\d{11}</nationalNumberPattern></uan>" +
+        "  <premiumRate><nationalNumberPattern>\\d{5}</nationalNumberPattern></premiumRate>" +
+        "  <sharedCost><nationalNumberPattern>\\d{6}</nationalNumberPattern></sharedCost>" +
+        "  <personalNumber><nationalNumberPattern>\\d{7}</nationalNumberPattern></personalNumber>" +
+        "  <voip><nationalNumberPattern>\\d{8}</nationalNumberPattern></voip>" +
+        "  <uan><nationalNumberPattern>\\d{9}</nationalNumberPattern></uan>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.loadGeneralDesc(metadata, territoryElement, false);
+    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
+        false /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getFixedLine().getNationalNumberPattern());
     assertEquals("\\d{2}", metadata.getMobile().getNationalNumberPattern());
     assertEquals("\\d{3}", metadata.getPager().getNationalNumberPattern());
     assertEquals("\\d{4}", metadata.getTollFree().getNationalNumberPattern());
-    assertEquals("\\d{5}", metadata.getStandardRate().getNationalNumberPattern());
-    assertEquals("\\d{6}", metadata.getPremiumRate().getNationalNumberPattern());
-    assertEquals("\\d{7}", metadata.getShortCode().getNationalNumberPattern());
-    assertEquals("\\d{8}", metadata.getSharedCost().getNationalNumberPattern());
-    assertEquals("\\d{9}", metadata.getPersonalNumber().getNationalNumberPattern());
-    assertEquals("\\d{10}", metadata.getVoip().getNationalNumberPattern());
-    assertEquals("\\d{11}", metadata.getUan().getNationalNumberPattern());
+    assertEquals("\\d{5}", metadata.getPremiumRate().getNationalNumberPattern());
+    assertEquals("\\d{6}", metadata.getSharedCost().getNationalNumberPattern());
+    assertEquals("\\d{7}", metadata.getPersonalNumber().getNationalNumberPattern());
+    assertEquals("\\d{8}", metadata.getVoip().getNationalNumberPattern());
+    assertEquals("\\d{9}", metadata.getUan().getNationalNumberPattern());
+  }
+
+  public void testSetRelevantDescPatternsSetsAllDescriptionsForShortNumbers()
+      throws ParserConfigurationException, SAXException, IOException {
+    String xmlInput =
+        "<territory ID=\"FR\">" +
+        "  <tollFree><nationalNumberPattern>\\d{1}</nationalNumberPattern></tollFree>" +
+        "  <standardRate><nationalNumberPattern>\\d{2}</nationalNumberPattern></standardRate>" +
+        "  <premiumRate><nationalNumberPattern>\\d{3}</nationalNumberPattern></premiumRate>" +
+        "  <shortCode><nationalNumberPattern>\\d{4}</nationalNumberPattern></shortCode>" +
+        "</territory>";
+    Element territoryElement = parseXmlString(xmlInput);
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
+        true /* isShortNumberMetadata */);
+    assertEquals("\\d{1}", metadata.getTollFree().getNationalNumberPattern());
+    assertEquals("\\d{2}", metadata.getStandardRate().getNationalNumberPattern());
+    assertEquals("\\d{3}", metadata.getPremiumRate().getNationalNumberPattern());
+    assertEquals("\\d{4}", metadata.getShortCode().getNationalNumberPattern());
+  }
+
+  public void testAlternateFormatsOmitsDescPatterns()
+      throws ParserConfigurationException, SAXException, IOException {
+    String xmlInput =
+        "<territory countryCode=\"33\">" +
+        "  <availableFormats>" +
+        "    <numberFormat pattern=\"(1)(\\d{3})\">" +
+        "      <leadingDigits>1</leadingDigits>" +
+        "      <format>$1</format>" +
+        "    </numberFormat>" +
+        "  </availableFormats>" +
+        "  <fixedLine><nationalNumberPattern>\\d{1}</nationalNumberPattern></fixedLine>" +
+        "  <shortCode><nationalNumberPattern>\\d{2}</nationalNumberPattern></shortCode>" +
+        "</territory>";
+    Element territoryElement = parseXmlString(xmlInput);
+    PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
+        false /* liteBuild */, false /* isShortNumberMetadata */,
+        true /* isAlternateFormatsMetadata */);
+    assertEquals("(1)(\\d{3})", metadata.getNumberFormat(0).getPattern());
+    assertEquals("1", metadata.getNumberFormat(0).getLeadingDigitsPattern(0));
+    assertEquals("$1", metadata.getNumberFormat(0).getFormat());
+    assertFalse(metadata.hasFixedLine());
+    assertNull(metadata.getFixedLine());
+    assertFalse(metadata.hasShortCode());
+    assertNull(metadata.getShortCode());
   }
 }

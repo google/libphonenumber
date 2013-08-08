@@ -1,3 +1,10 @@
+Aug 8, 2013: libphonenumber-5.7.1
+* Metadata/code changes:
+ - Change to the way the metadata is built; now only parts of the proto that are relevant will be
+   generated. This means short-code data won't be generated for the normal protos, and fixed-line
+   data won't be generated for short-number protos. This cuts the metadata binary size approximately
+   in half.
+
 Jul 17, 2013: libphonenumber-5.7
 * Code changes:
  - Improve phone number extraction recall.
