@@ -7,7 +7,7 @@ libphonenumber (5.7.1) precise; urgency=low
      for short-number protos. This cuts the metadata binary size approximately
      in half.
 
- -- Lara Rennie <lararennie@google.com>  Thu, 8 Aug, 2013 13:12:00 +0200
+ -- Lara Scheidegger <lararennie@google.com>  Thu, 8 Aug 2013 13:12:00 +0200
 
 libphonenumber (5.7) precise; urgency=low
 
@@ -29,7 +29,7 @@ libphonenumber (5.6.2) precise; urgency=low
    - Updated geocoding data for country calling code(s):
      49 (en), 98 (en, fa), 241 (en)
 
- -- Lara Rennie <lararennie@google.com>  Tue, 16 Jul 2013 10:01:53 +0200
+ -- Lara Scheidegger <lararennie@google.com>  Tue, 16 Jul 2013 10:01:53 +0200
 
 libphonenumber (5.6.1) precise; urgency=low
 
