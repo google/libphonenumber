@@ -1,3 +1,13 @@
+Aug 09, 2013: libphonenumber-5.7.2
+* Metadata changes:
+ - New alternate formatting data for country calling code(s):
+   352, 359, 372, 373, 375, 595, 7, 855
+ - Updated phone metadata for region code(s):
+   AR, BF, BH, BR, BY, CH, CM, CN, GE, GW, HN, JM, KH, LT, LU, MU, NP, RO, SO
+ - New short number metadata for region code(s): BR
+ - Updated short number metadata for region code(s):
+   CH, FJ, GB, GG, IM, IT, JE, SH
+
 Aug 8, 2013: libphonenumber-5.7.1
 * Metadata/code changes:
  - Change to the way the metadata is built; now only parts of the proto that are relevant will be
