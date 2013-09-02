@@ -539,6 +539,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  <standardRate><nationalNumberPattern>\\d{2}</nationalNumberPattern></standardRate>" +
         "  <premiumRate><nationalNumberPattern>\\d{3}</nationalNumberPattern></premiumRate>" +
         "  <shortCode><nationalNumberPattern>\\d{4}</nationalNumberPattern></shortCode>" +
+        "  <carrierSpecific>" +
+        "    <nationalNumberPattern>\\d{5}</nationalNumberPattern>" +
+        "  </carrierSpecific>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
@@ -548,6 +551,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("\\d{2}", metadata.getStandardRate().getNationalNumberPattern());
     assertEquals("\\d{3}", metadata.getPremiumRate().getNationalNumberPattern());
     assertEquals("\\d{4}", metadata.getShortCode().getNationalNumberPattern());
+    assertEquals("\\d{5}", metadata.getCarrierSpecific().getNationalNumberPattern());
   }
 
   public void testAlternateFormatsOmitsDescPatterns()
@@ -574,5 +578,34 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertNull(metadata.getFixedLine());
     assertFalse(metadata.hasShortCode());
     assertNull(metadata.getShortCode());
+  }
+
+  public void testNationalPrefixRulesSetCorrectly()
+      throws ParserConfigurationException, SAXException, IOException {
+    String xmlInput =
+        "<territory countryCode=\"33\" nationalPrefix=\"0\"" +
+        " nationalPrefixFormattingRule=\"$NP$FG\">" +
+        "  <availableFormats>" +
+        "    <numberFormat pattern=\"(1)(\\d{3})\" nationalPrefixOptionalWhenFormatting=\"true\">" +
+        "      <leadingDigits>1</leadingDigits>" +
+        "      <format>$1</format>" +
+        "    </numberFormat>" +
+        "    <numberFormat pattern=\"(\\d{3})\" nationalPrefixOptionalWhenFormatting=\"false\">" +
+        "      <leadingDigits>2</leadingDigits>" +
+        "      <format>$1</format>" +
+        "    </numberFormat>" +
+        "  </availableFormats>" +
+        "  <fixedLine><nationalNumberPattern>\\d{1}</nationalNumberPattern></fixedLine>" +
+        "</territory>";
+    Element territoryElement = parseXmlString(xmlInput);
+    PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
+        false /* liteBuild */, false /* isShortNumberMetadata */,
+        true /* isAlternateFormatsMetadata */);
+    assertTrue(metadata.getNumberFormat(0).isNationalPrefixOptionalWhenFormatting());
+    // This is inherited from the territory, with $NP replaced by the actual national prefix, and
+    // $FG replaced with $1.
+    assertEquals("0$1", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
+    // Here it is explicitly set to false.
+    assertFalse(metadata.getNumberFormat(1).isNationalPrefixOptionalWhenFormatting());
   }
 }

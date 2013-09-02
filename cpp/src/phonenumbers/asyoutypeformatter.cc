@@ -556,6 +556,12 @@ void AsYouTypeFormatter::AttemptToChooseFormattingPattern(
         national_number_.substr(0, kMinLeadingDigitsLength);
 
     GetAvailableFormats(leading_digits);
+    formatted_number->clear();
+    AttemptToFormatAccruedDigits(formatted_number);
+    // See if the accrued digits can be formatted properly already.
+    if (formatted_number->length() > 0) {
+      return;
+    }
     if (MaybeCreateNewTemplate()) {
       InputAccruedNationalNumber(formatted_number);
     } else {
@@ -617,15 +623,20 @@ void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber(
     const RegExp& pattern = regexp_cache_.GetRegExp(
         current_metadata_->national_prefix_for_parsing());
 
+    // Since some national prefix patterns are entirely optional, check that a
+    // national prefix could actually be extracted.
     if (pattern.Consume(consumed_input.get())) {
-      // When the national prefix is detected, we use international formatting
-      // rules instead of national ones, because national formatting rules could
-      // countain local formatting rules for numbers entered without area code.
-      is_complete_number_ = true;
       start_of_national_number =
           national_number_.length() - consumed_input->ToString().length();
-      prefix_before_national_number_.append(
-          national_number_.substr(0, start_of_national_number));
+      if (start_of_national_number > 0) {
+        // When the national prefix is detected, we use international formatting
+        // rules instead of national ones, because national formatting rules
+        // could countain local formatting rules for numbers entered without
+        // area code.
+        is_complete_number_ = true;
+        prefix_before_national_number_.append(
+            national_number_.substr(0, start_of_national_number));
+      }
     }
   }
   national_prefix->assign(national_number_, 0, start_of_national_number);

@@ -473,10 +473,15 @@ public class AsYouTypeFormatter {
    * version of the digits entered so far.
    */
   private String attemptToChooseFormattingPattern() {
-    // We start to attempt to format only when as least MIN_LEADING_DIGITS_LENGTH digits of national
+    // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH digits of national
     // number (excluding national prefix) have been entered.
     if (nationalNumber.length() >= MIN_LEADING_DIGITS_LENGTH) {
       getAvailableFormats(nationalNumber.substring(0, MIN_LEADING_DIGITS_LENGTH));
+      // See if the accrued digits can be formatted properly already.
+      String formattedNumber = attemptToFormatAccruedDigits();
+      if (formattedNumber.length() > 0) {
+        return formattedNumber;
+      }
       return maybeCreateNewTemplate() ? inputAccruedNationalNumber() : accruedInput.toString();
     } else {
       return appendNationalNumber(nationalNumber.toString());
@@ -524,7 +529,9 @@ public class AsYouTypeFormatter {
       Pattern nationalPrefixForParsing =
           regexCache.getPatternForRegex(currentMetadata.getNationalPrefixForParsing());
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
-      if (m.lookingAt()) {
+      // Since some national prefix patterns are entirely optional, check that a national prefix
+      // could actually be extracted.
+      if (m.lookingAt() && m.end() > 0) {
         // When the national prefix is detected, we use international formatting rules instead of
         // national ones, because national formatting rules could contain local formatting rules
         // for numbers entered without area code.

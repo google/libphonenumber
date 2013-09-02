@@ -136,13 +136,23 @@ bool AllNumberGroupsRemainGrouped(
     // Moves from_index forward.
     from_index += formatted_number_groups.at(i).length();
     if (i == 0 && from_index < normalized_candidate.length()) {
-      // We are at the position right after the NDC. Note although
-      // normalized_candidate might contain non-ASCII formatting characters,
-      // they won't be treated as ASCII digits when converted to a char.
-      if (isdigit(normalized_candidate.at(from_index))) {
+      // We are at the position right after the NDC. We get the region used for
+      // formatting information based on the country code in the phone number,
+      // rather than the number itself, as we do not need to distinguish between
+      // different countries with the same country calling code and this is
+      // faster.
+      string region;
+      util.GetRegionCodeForCountryCode(phone_number.country_code(), &region);
+      string ndd_prefix;
+      util.GetNddPrefixForRegion(region, true, &ndd_prefix);
+      // Note although normalized_candidate might contain non-ASCII formatting
+      // characters, they won't be treated as ASCII digits when converted to a
+      // char.
+      if (!ndd_prefix.empty() && isdigit(normalized_candidate.at(from_index))) {
         // This means there is no formatting symbol after the NDC. In this case,
         // we only accept the number if there is no formatting symbol at all in
-        // the number, except for extensions.
+        // the number, except for extensions. This is only important for
+        // countries with national prefixes.
         string national_significant_number;
         util.GetNationalSignificantNumber(
             phone_number, &national_significant_number);

@@ -1,3 +1,34 @@
+libphonenumber (5.8) precise; urgency=low
+
+  * Code changes:
+   - Renamed ShortNumberUtil to ShortNumberInfo -> the former class is now deprecated and will be
+     deleted in a later release. At the moment it just delegates to ShortNumberInfo.
+   - New methods in the ShortNumberInfo API - isCarrierSpecific, singleton interface,
+     isPossibleShortNumber, isValidShortNumber, getShortNumberCost. Note this is an experimental API
+     at the moment and subject to change.
+   - Bug fixes:
+      -- AsYouTypeFormatting: 3-digit numbers can be formatted as a group where appropriate
+      -- AsYouTypeFormatting: Countries with an optional national prefix were considered before to
+         have always entered it, resulting in bugs where numbers without the national prefix were
+         not properly formatted.
+      -- Numbers in Chile that overlap with emergency numbers are no longer marked as connecting to
+         them
+      -- Not requiring the NDC to be alone for countries where there is no national prefix in strict
+         grouping when extracting phone numbers
+  * Metadata changes:
+   - New alternate formatting data for country calling code(s):
+     30, 31, 385, 58, 62, 63, 971, 972
+   - Updated alternate formatting data for country calling code(s): 43, 44, 49
+   - Moved emergency phone number data to the ShortNumberMetadata.xml file
+   - Updated phone metadata for region code(s):
+     AT, EG, ML, NC, NL, SA
+   - New short number metadata for region code(s):
+     AR, CL, CO, ES, MX, NC
+   - Emergency metadata fixes for region code(s):
+     GA, JM, MH, VE
+
+ -- Lara Scheidegger <lararennie@google.com>  Mon, 2 Sep 2013 14:56:20 +0200
+
 libphonenumber (5.7.2) precise; urgency=low
 
   * Metadata changes:

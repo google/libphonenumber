@@ -468,11 +468,16 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       // Moves {@code fromIndex} forward.
       fromIndex += formattedNumberGroups[i].length();
       if (i == 0 && fromIndex < normalizedCandidate.length()) {
-        // We are at the position right after the NDC.
-        if (Character.isDigit(normalizedCandidate.charAt(fromIndex))) {
+        // We are at the position right after the NDC. We get the region used for formatting
+        // information based on the country code in the phone number, rather than the number itself,
+        // as we do not need to distinguish between different countries with the same country
+        // calling code and this is faster.
+        String region = util.getRegionCodeForCountryCode(number.getCountryCode());
+        if (util.getNddPrefixForRegion(region, true) != null &&
+            Character.isDigit(normalizedCandidate.charAt(fromIndex))) {
           // This means there is no formatting symbol after the NDC. In this case, we only
           // accept the number if there is no formatting symbol at all in the number, except
-          // for extensions.
+          // for extensions. This is only important for countries with national prefixes.
           String nationalSignificantNumber = util.getNationalSignificantNumber(number);
           return normalizedCandidate.substring(fromIndex - formattedNumberGroups[i].length())
               .startsWith(nationalSignificantNumber);
@@ -647,14 +652,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         // present.
         return true;
       }
-      // Remove the first-group symbol.
-      String candidateNationalPrefixRule = formatRule.getNationalPrefixFormattingRule();
-      // We assume that the first-group symbol will never be _before_ the national prefix.
-      candidateNationalPrefixRule =
-          candidateNationalPrefixRule.substring(0, candidateNationalPrefixRule.indexOf("$1"));
-      candidateNationalPrefixRule =
-          PhoneNumberUtil.normalizeDigitsOnly(candidateNationalPrefixRule);
-      if (candidateNationalPrefixRule.length() == 0) {
+      if (PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+          formatRule.getNationalPrefixFormattingRule())) {
         // National Prefix not needed for this number.
         return true;
       }

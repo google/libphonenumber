@@ -18,9 +18,8 @@
 //
 // Author: David Yonge-Mallo
 //
-// This is a direct port from ShortNumberUtil.java.
-// Changes to this class should also happen to the Java version, whenever it
-// makes sense.
+// This class is deprecated. Users should migrate to ShortNumberInfo instead for
+// this information.
 
 #ifndef I18N_PHONENUMBERS_SHORTNUMBERUTIL_H_
 #define I18N_PHONENUMBERS_SHORTNUMBERUTIL_H_
@@ -34,8 +33,7 @@ namespace phonenumbers {
 
 using std::string;
 
-class PhoneNumberUtil;
-
+// Deprecated - use ShortNumberInfo instead.
 class ShortNumberUtil {
  public:
   ShortNumberUtil();
@@ -58,12 +56,6 @@ class ShortNumberUtil {
                          const string& region_code) const;
 
  private:
-  const PhoneNumberUtil& phone_util_;
-
-  bool MatchesEmergencyNumberHelper(const string& number,
-                                    const string& region_code,
-                                    bool allow_prefix_match) const;
-
   DISALLOW_COPY_AND_ASSIGN(ShortNumberUtil);
 };
 

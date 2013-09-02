@@ -156,15 +156,9 @@
     </territory>
 
     <!-- Brazil -->
-    <territory id="BR" countryCode="55" internationalPrefix="0014" nationalPrefix="0">
-      <emergency>
-        <nationalNumberPattern>
-          19[023]|
-          911
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
-        <exampleNumber>190</exampleNumber>
-      </emergency>
+    <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
+         recognised by the library. -->
+    <territory id="BR" countryCode="55">
     </territory>
 
     <!-- Bahamas -->
@@ -222,6 +216,12 @@
       <fixedLine>
         <exampleNumber>112345</exampleNumber>
       </fixedLine>
+    </territory>
+
+    <!-- France -->
+    <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
+         recognised by the library. -->
+    <territory id="FR" countryCode="33">
     </territory>
 
     <!-- Germany -->
@@ -332,6 +332,12 @@
         <nationalNumberPattern>70\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
       </personalNumber>
+    </territory>
+
+    <!-- Guernsey -->
+    <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
+         recognised by the library, and it must be the same as that of the United Kingdom. -->
+    <territory id="GG" countryCode="44">
     </territory>
 
     <!-- Italy -->
@@ -780,14 +786,6 @@
         <nationalNumberPattern>900\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
       </premiumRate>
-      <emergency>
-        <nationalNumberPattern>
-          119|
-          911
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
-        <exampleNumber>911</exampleNumber>
-      </emergency>
     </territory>
 
     <!-- Mayotte -->

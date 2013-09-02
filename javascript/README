@@ -96,4 +96,4 @@ Port functionality to extract phone-numbers from text (findNumbers).
 Port offline phone number geocoder.
 Enable PhoneNumberUtil to handle all digits, rather than a subset
 (JavaScript has no equivalent to the Java Character.digit).
-Port ShortNumberUtil.
+Port ShortNumberInfo.

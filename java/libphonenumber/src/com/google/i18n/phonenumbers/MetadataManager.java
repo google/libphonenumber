@@ -121,6 +121,11 @@ class MetadataManager {
     }
   }
 
+  // @VisibleForTesting
+  static Set<String> getShortNumberMetadataSupportedRegions() {
+    return regionCodeSet;
+  }
+
   static PhoneMetadata getShortNumberMetadataForRegion(String regionCode) {
     if (!regionCodeSet.contains(regionCode)) {
       return null;
@@ -131,10 +136,5 @@ class MetadataManager {
       }
     }
     return regionCodeToShortNumberMetadataMap.get(regionCode);
-  }
-
-  // @VisibleForTesting
-  static Set<String> getShortNumberMetadataSupportedRegions() {
-    return regionCodeSet;
   }
 }

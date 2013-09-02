@@ -21,9 +21,9 @@
 
 syntax = "proto2";
 
-option java_package = "com.google.i18n.phonenumbers";
 option optimize_for = LITE_RUNTIME;
 
+option java_package = "com.google.i18n.phonenumbers";
 package i18n.phonenumbers;
 
 message NumberFormat {
@@ -118,11 +118,12 @@ message PhoneMetadata {
   // for all types of phone numbers. If any element is missing in the
   // description of a specific type in the XML file, the element will inherit
   // from its counterpart in the general_desc. Every locale is assumed to have
-  // fixed line and mobile numbers - if these types are missing in the XML
-  // file, they will inherit all fields from the general_desc. For all other
-  // types, if the whole type is missing in the xml file and it is relevant for
-  // the metadata being created, it will be given a national_number_pattern of
-  // "NA" and a possible_number_pattern of "NA".
+  // fixed line and mobile numbers - if these types are missing in the
+  // PhoneNumberMetadata XML file, they will inherit all fields from the
+  // general_desc. For all other types that are generally relevant to normal
+  // phone numbers, if the whole type is missing in the PhoneNumberMetadata XML
+  // file, it will be given a national_number_pattern of "NA" and a
+  // possible_number_pattern of "NA".
   optional PhoneNumberDesc general_desc = 1;
   optional PhoneNumberDesc fixed_line = 2;
   optional PhoneNumberDesc mobile = 3;
@@ -137,6 +138,8 @@ message PhoneMetadata {
   optional PhoneNumberDesc voicemail = 28;
   optional PhoneNumberDesc short_code = 29;
   optional PhoneNumberDesc standard_rate = 30;
+  optional PhoneNumberDesc carrier_specific = 31;
+
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.
   optional PhoneNumberDesc no_international_dialling = 24;
@@ -151,14 +154,14 @@ message PhoneMetadata {
   // The country calling code that one would dial from overseas when trying to
   // dial a phone number in this country. For example, this would be "64" for
   // New Zealand.
-  required int32 country_code = 10;
+  optional int32 country_code = 10;
 
   // The international_prefix of country A is the number that needs to be
   // dialled from country A to another country (country B). This is followed
   // by the country code for country B. Note that some countries may have more
   // than one international prefix, and for those cases, a regular expression
   // matching the international prefixes will be stored in this field.
-  required string international_prefix = 11;
+  optional string international_prefix = 11;
 
   // If more than one international prefix is present, a preferred prefix can
   // be specified here for out-of-country formatting purposes. If this field is

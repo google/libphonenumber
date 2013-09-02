@@ -39,7 +39,9 @@ public final class CppMetadataGenerator {
     /** The basic phone number metadata (expected to be written to metadata.[h/cc]). */
     METADATA("metadata", 2011),
     /** The alternate format metadata (expected to be written to alternate_format.[h/cc]). */
-    ALTERNATE_FORMAT("alternate_format", 2012);
+    ALTERNATE_FORMAT("alternate_format", 2012),
+    /** Metadata for short numbers (expected to be written to short_metadata.[h/cc]). */
+    SHORT_NUMBERS("short_metadata", 2013);
 
     private final String typeName;
     private final int copyrightYear;
@@ -72,6 +74,8 @@ public final class CppMetadataGenerator {
         return Type.METADATA;
       } else if (Type.ALTERNATE_FORMAT.toString().equalsIgnoreCase(typeName)) {
         return Type.ALTERNATE_FORMAT;
+      } else if (Type.SHORT_NUMBERS.toString().equalsIgnoreCase(typeName)) {
+        return Type.SHORT_NUMBERS;
       } else {
         return null;
       }

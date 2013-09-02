@@ -831,13 +831,18 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 
   /** @type {string} */
   var nationalNumber = this.nationalNumber_.toString();
-  // We start to attempt to format only when as least MIN_LEADING_DIGITS_LENGTH
+  // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH
   // digits of national number (excluding national prefix) have been entered.
   if (nationalNumber.length >=
       i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_) {
     this.getAvailableFormats_(
         nationalNumber.substring(0,
             i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_));
+    // See if the accrued digits can be formatted properly already.
+    var formattedNumber = this.attemptToFormatAccruedDigits_();
+    if (formattedNumber.length > 0) {
+      return formattedNumber;
+    }
     return this.maybeCreateNewTemplate_() ?
         this.inputAccruedNationalNumber_() : this.accruedInput_.toString();
   } else {
@@ -922,6 +927,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
         '^(?:' + this.currentMetadata_.getNationalPrefixForParsing() + ')');
     /** @type {Array.<string>} */
     var m = nationalNumber.match(nationalPrefixForParsing);
+    // Since some national prefix patterns are entirely optional, check that a
+    // national prefix could actually be extracted.
     if (m != null && m[0] != null && m[0].length > 0) {
       // When the national prefix is detected, we use international formatting
       // rules instead of national ones, because national formatting rules could

@@ -56,6 +56,8 @@ import java.util.regex.Pattern;
  * @author Lara Rennie
  */
 public class PhoneNumberUtil {
+  private static final Logger logger = Logger.getLogger(PhoneNumberUtil.class.getName());
+
   /** Flags to use when compiling regular expressions for phone numbers. */
   static final int REGEX_FLAGS = Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE;
   // The minimum and maximum length of the national significant number.
@@ -69,8 +71,6 @@ public class PhoneNumberUtil {
   private static final int MAX_INPUT_STRING_LENGTH = 250;
   static final String META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
-
-  private static final Logger LOGGER = Logger.getLogger(PhoneNumberUtil.class.getName());
 
   // Region-code for the unknown region.
   private static final String UNKNOWN_REGION = "ZZ";
@@ -579,7 +579,7 @@ public class PhoneNumberUtil {
     // there are entries that list the non-geo entity alongside normal regions (which is wrong).
     // If we discover this, remove the non-geo entity from the set of supported regions and log.
     if (supportedRegions.remove(REGION_CODE_FOR_NON_GEO_ENTITY)) {
-      LOGGER.log(Level.WARNING, "invalid metadata " +
+      logger.log(Level.WARNING, "invalid metadata " +
           "(country calling code was mapped to the non-geo entity as well as specific region(s))");
     }
     nanpaRegions.addAll(countryCallingCodeToRegionCodeMap.get(NANPA_COUNTRY_CODE));
@@ -592,7 +592,7 @@ public class PhoneNumberUtil {
         (isNonGeoRegion ? String.valueOf(countryCallingCode) : regionCode);
     InputStream source = PhoneNumberUtil.class.getResourceAsStream(fileName);
     if (source == null) {
-      LOGGER.log(Level.SEVERE, "missing metadata: " + fileName);
+      logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
     ObjectInputStream in = null;
@@ -602,11 +602,11 @@ public class PhoneNumberUtil {
       metadataCollection.readExternal(in);
       List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
       if (metadataList.isEmpty()) {
-        LOGGER.log(Level.SEVERE, "empty metadata: " + fileName);
+        logger.log(Level.SEVERE, "empty metadata: " + fileName);
         throw new IllegalStateException("empty metadata: " + fileName);
       }
       if (metadataList.size() > 1) {
-        LOGGER.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
+        logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
       }
       PhoneMetadata metadata = metadataList.get(0);
       if (isNonGeoRegion) {
@@ -615,7 +615,7 @@ public class PhoneNumberUtil {
         regionToMetadataMap.put(regionCode, metadata);
       }
     } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
+      logger.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
       throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
     } finally {
       close(in);
@@ -627,7 +627,7 @@ public class PhoneNumberUtil {
       try {
         in.close();
       } catch (IOException e) {
-        LOGGER.log(Level.WARNING, "error closing input stream (ignored)", e);
+        logger.log(Level.WARNING, "error closing input stream (ignored)", e);
       }
     }
   }
@@ -655,7 +655,7 @@ public class PhoneNumberUtil {
       Matcher trailingCharsMatcher = UNWANTED_END_CHAR_PATTERN.matcher(number);
       if (trailingCharsMatcher.find()) {
         number = number.substring(0, trailingCharsMatcher.start());
-        LOGGER.log(Level.FINER, "Stripped trailing characters: " + number);
+        logger.log(Level.FINER, "Stripped trailing characters: " + number);
       }
       // Check for extra numbers at the end.
       Matcher secondNumber = SECOND_NUMBER_START_PATTERN.matcher(number);
@@ -1302,7 +1302,7 @@ public class PhoneNumberUtil {
   public String formatOutOfCountryCallingNumber(PhoneNumber number,
                                                 String regionCallingFrom) {
     if (!isValidRegionCode(regionCallingFrom)) {
-      LOGGER.log(Level.WARNING,
+      logger.log(Level.WARNING,
                  "Trying to format number from invalid region "
                  + regionCallingFrom
                  + ". International formatting applied.");
@@ -1617,7 +1617,7 @@ public class PhoneNumberUtil {
     } else {
       // Invalid region entered as country-calling-from (so no metadata was found for it) or the
       // region chosen has multiple international dialling prefixes.
-      LOGGER.log(Level.WARNING,
+      logger.log(Level.WARNING,
                  "Trying to format number from invalid region "
                  + regionCallingFrom
                  + ". International formatting applied.");
@@ -1786,7 +1786,7 @@ public class PhoneNumberUtil {
   public PhoneNumber getExampleNumberForType(String regionCode, PhoneNumberType type) {
     // Check the region code is valid.
     if (!isValidRegionCode(regionCode)) {
-      LOGGER.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
+      logger.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
       return null;
     }
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode), type);
@@ -1795,7 +1795,7 @@ public class PhoneNumberUtil {
         return parse(desc.getExampleNumber(), regionCode);
       }
     } catch (NumberParseException e) {
-      LOGGER.log(Level.SEVERE, e.toString());
+      logger.log(Level.SEVERE, e.toString());
     }
     return null;
   }
@@ -1817,10 +1817,10 @@ public class PhoneNumberUtil {
           return parse("+" + countryCallingCode + desc.getExampleNumber(), "ZZ");
         }
       } catch (NumberParseException e) {
-        LOGGER.log(Level.SEVERE, e.toString());
+        logger.log(Level.SEVERE, e.toString());
       }
     } else {
-      LOGGER.log(Level.WARNING,
+      logger.log(Level.WARNING,
                  "Invalid or unknown country calling code provided: " + countryCallingCode);
     }
     return null;
@@ -2051,7 +2051,7 @@ public class PhoneNumberUtil {
     List<String> regions = countryCallingCodeToRegionCodeMap.get(countryCode);
     if (regions == null) {
       String numberString = getNationalSignificantNumber(number);
-      LOGGER.log(Level.WARNING,
+      logger.log(Level.WARNING,
                  "Missing/invalid country_code (" + countryCode + ") for number " + numberString);
       return null;
     }
@@ -2111,7 +2111,7 @@ public class PhoneNumberUtil {
    */
   public int getCountryCodeForRegion(String regionCode) {
     if (!isValidRegionCode(regionCode)) {
-      LOGGER.log(Level.WARNING,
+      logger.log(Level.WARNING,
                  "Invalid or missing region code ("
                   + ((regionCode == null) ? "null" : regionCode)
                   + ") provided.");
@@ -2153,7 +2153,7 @@ public class PhoneNumberUtil {
   public String getNddPrefixForRegion(String regionCode, boolean stripNonDigits) {
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
     if (metadata == null) {
-      LOGGER.log(Level.WARNING,
+      logger.log(Level.WARNING,
                  "Invalid or missing region code ("
                   + ((regionCode == null) ? "null" : regionCode)
                   + ") provided.");
@@ -2281,7 +2281,7 @@ public class PhoneNumberUtil {
     PhoneNumberDesc generalNumDesc = metadata.getGeneralDesc();
     // Handling case of numbers with no metadata.
     if (!generalNumDesc.hasNationalNumberPattern()) {
-      LOGGER.log(Level.FINER, "Checking if number is possible with incomplete metadata.");
+      logger.log(Level.FINER, "Checking if number is possible with incomplete metadata.");
       int numberLength = nationalNumber.length();
       if (numberLength < MIN_LENGTH_FOR_NSN) {
         return ValidationResult.TOO_SHORT;

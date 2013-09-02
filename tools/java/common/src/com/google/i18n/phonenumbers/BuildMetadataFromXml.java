@@ -47,6 +47,7 @@ public class BuildMetadataFromXml {
 
   // String constants used to fetch the XML nodes and attributes.
   private static final String CARRIER_CODE_FORMATTING_RULE = "carrierCodeFormattingRule";
+  private static final String CARRIER_SPECIFIC = "carrierSpecific";
   private static final String COUNTRY_CODE = "countryCode";
   private static final String EMERGENCY = "emergency";
   private static final String EXAMPLE_NUMBER = "exampleNumber";
@@ -299,11 +300,18 @@ public class BuildMetadataFromXml {
         if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_FORMATTING_RULE)) {
           format.setNationalPrefixFormattingRule(
               getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix));
-          format.setNationalPrefixOptionalWhenFormatting(
-              numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
         } else {
           format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
-          format.setNationalPrefixOptionalWhenFormatting(nationalPrefixOptionalWhenFormatting);
+        }
+
+        if (format.hasNationalPrefixFormattingRule()) {
+          if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)) {
+            format.setNationalPrefixOptionalWhenFormatting(
+                Boolean.valueOf(numberFormatElement.getAttribute(
+                    NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)));
+          } else {
+            format.setNationalPrefixOptionalWhenFormatting(nationalPrefixOptionalWhenFormatting);
+          }
         }
         if (numberFormatElement.hasAttribute(CARRIER_CODE_FORMATTING_RULE)) {
           format.setDomesticCarrierCodeFormattingRule(validateRE(
@@ -452,16 +460,16 @@ public class BuildMetadataFromXml {
       metadata.setSameMobileAndFixedLinePattern(
           metadata.getMobile().getNationalNumberPattern().equals(
           metadata.getFixedLine().getNationalNumberPattern()));
-      // TODO(davinci): When emergency metadata is moved to ShortNumberMetadata.xml, this needs
-      // to be moved below.
-      metadata.setEmergency(
-          processPhoneNumberDescElement(generalDesc, element, EMERGENCY, liteBuild));
     } else {
       // Set fields used only by short numbers.
       metadata.setStandardRate(
           processPhoneNumberDescElement(generalDesc, element, STANDARD_RATE, liteBuild));
       metadata.setShortCode(
           processPhoneNumberDescElement(generalDesc, element, SHORT_CODE, liteBuild));
+      metadata.setCarrierSpecific(
+          processPhoneNumberDescElement(generalDesc, element, CARRIER_SPECIFIC, liteBuild));
+      metadata.setEmergency(
+          processPhoneNumberDescElement(generalDesc, element, EMERGENCY, liteBuild));
     }
 
     // Set fields used by both regular length and short numbers.

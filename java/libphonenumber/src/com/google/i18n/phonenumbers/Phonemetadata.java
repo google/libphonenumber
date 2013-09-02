@@ -307,7 +307,7 @@ public final class Phonemetadata {
       return new Builder();
     }
 
-    // required PhoneNumberDesc general_desc = 1;
+    // optional PhoneNumberDesc general_desc = 1;
     private boolean hasGeneralDesc;
     private PhoneNumberDesc generalDesc_ = null;
     public boolean hasGeneralDesc() { return hasGeneralDesc; }
@@ -321,7 +321,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc fixed_line = 2;
+    // optional PhoneNumberDesc fixed_line = 2;
     private boolean hasFixedLine;
     private PhoneNumberDesc fixedLine_ = null;
     public boolean hasFixedLine() { return hasFixedLine; }
@@ -335,7 +335,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc mobile = 3;
+    // optional PhoneNumberDesc mobile = 3;
     private boolean hasMobile;
     private PhoneNumberDesc mobile_ = null;
     public boolean hasMobile() { return hasMobile; }
@@ -349,7 +349,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc toll_free = 4;
+    // optional PhoneNumberDesc toll_free = 4;
     private boolean hasTollFree;
     private PhoneNumberDesc tollFree_ = null;
     public boolean hasTollFree() { return hasTollFree; }
@@ -363,7 +363,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc premium_rate = 5;
+    // optional PhoneNumberDesc premium_rate = 5;
     private boolean hasPremiumRate;
     private PhoneNumberDesc premiumRate_ = null;
     public boolean hasPremiumRate() { return hasPremiumRate; }
@@ -377,7 +377,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc shared_cost = 6;
+    // optional PhoneNumberDesc shared_cost = 6;
     private boolean hasSharedCost;
     private PhoneNumberDesc sharedCost_ = null;
     public boolean hasSharedCost() { return hasSharedCost; }
@@ -391,7 +391,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc personal_number = 7;
+    // optional PhoneNumberDesc personal_number = 7;
     private boolean hasPersonalNumber;
     private PhoneNumberDesc personalNumber_ = null;
     public boolean hasPersonalNumber() { return hasPersonalNumber; }
@@ -405,7 +405,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc voip = 8;
+    // optional PhoneNumberDesc voip = 8;
     private boolean hasVoip;
     private PhoneNumberDesc voip_ = null;
     public boolean hasVoip() { return hasVoip; }
@@ -419,7 +419,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc pager = 21;
+    // optional PhoneNumberDesc pager = 21;
     private boolean hasPager;
     private PhoneNumberDesc pager_ = null;
     public boolean hasPager() { return hasPager; }
@@ -433,7 +433,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc uan = 25;
+    // optional PhoneNumberDesc uan = 25;
     private boolean hasUan;
     private PhoneNumberDesc uan_ = null;
     public boolean hasUan() { return hasUan; }
@@ -447,7 +447,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc emergency = 27;
+    // optional PhoneNumberDesc emergency = 27;
     private boolean hasEmergency;
     private PhoneNumberDesc emergency_ = null;
     public boolean hasEmergency() { return hasEmergency; }
@@ -461,7 +461,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc voicemail = 28;
+    // optional PhoneNumberDesc voicemail = 28;
     private boolean hasVoicemail;
     private PhoneNumberDesc voicemail_ = null;
     public boolean hasVoicemail() { return hasVoicemail; }
@@ -475,7 +475,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc short_code = 29;
+    // optional PhoneNumberDesc short_code = 29;
     private boolean hasShortCode;
     private PhoneNumberDesc shortCode_ = null;
     public boolean hasShortCode() { return hasShortCode; }
@@ -489,7 +489,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc standard_rate = 30;
+    // optional PhoneNumberDesc standard_rate = 30;
     private boolean hasStandardRate;
     private PhoneNumberDesc standardRate_ = null;
     public boolean hasStandardRate() { return hasStandardRate; }
@@ -503,7 +503,21 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required PhoneNumberDesc noInternationalDialling = 24;
+    // optional PhoneNumberDesc carrier_specific = 31;
+    private boolean hasCarrierSpecific;
+    private PhoneNumberDesc carrierSpecific_ = null;
+    public boolean hasCarrierSpecific() { return hasCarrierSpecific; }
+    public PhoneNumberDesc getCarrierSpecific() { return carrierSpecific_; }
+    public PhoneMetadata setCarrierSpecific(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasCarrierSpecific = true;
+      carrierSpecific_ = value;
+      return this;
+    }
+
+    // optional PhoneNumberDesc noInternationalDialling = 24;
     private boolean hasNoInternationalDialling;
     private PhoneNumberDesc noInternationalDialling_ = null;
     public boolean hasNoInternationalDialling() { return hasNoInternationalDialling; }
@@ -749,6 +763,10 @@ public final class Phonemetadata {
       if (hasStandardRate) {
         standardRate_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasCarrierSpecific);
+      if (hasCarrierSpecific) {
+        carrierSpecific_.writeExternal(objectOutput);
+      }
       objectOutput.writeBoolean(hasNoInternationalDialling);
       if (hasNoInternationalDialling) {
         noInternationalDialling_.writeExternal(objectOutput);
@@ -891,6 +909,12 @@ public final class Phonemetadata {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
         setStandardRate(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setCarrierSpecific(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
