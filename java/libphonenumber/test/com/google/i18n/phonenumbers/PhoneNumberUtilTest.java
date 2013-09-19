@@ -292,6 +292,15 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(4, phoneUtil.getLengthOfNationalDestinationCode(INTERNATIONAL_TOLL_FREE));
   }
 
+  public void testGetCountryMobileToken() {
+    assertEquals("1", PhoneNumberUtil.getCountryMobileToken(phoneUtil.getCountryCodeForRegion(
+        RegionCode.MX)));
+
+    // Country calling code for Sweden, which has no mobile token.
+    assertEquals("", PhoneNumberUtil.getCountryMobileToken(phoneUtil.getCountryCodeForRegion(
+        RegionCode.SE)));
+  }
+
   public void testGetNationalSignificantNumber() {
     assertEquals("6502530000", phoneUtil.getNationalSignificantNumber(US_NUMBER));
 

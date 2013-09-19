@@ -1,3 +1,7 @@
+Sep 19, 2013: libphonenumber-5.8.2
+* Code changes:
+  - New method in the PhoneNumberUtil API - getCountryMobileToken.
+
 Sep 19, 2013: libphonenumber-5.8.1
 * Metadata changes:
  - New alternate formatting data for country calling code(s): 675
