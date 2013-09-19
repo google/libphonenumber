@@ -1,3 +1,14 @@
+Sep 19, 2013: libphonenumber-5.8.1
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 675
+ - Updated phone metadata for region code(s):
+   AO, AU, BF, BW, CA, CH, CI, CN, DE, FR, MA, MR, MU, NI, PG, SA, SE, US, VI
+ - New short number metadata for region code(s): IQ
+ - Updated short number metadata for region code(s):
+   AU, BR, DO, EG, FR, GH, ID, IL, JM, KE, KZ, LR, MW, NG, NI, SA, SE, SL, TZ, US, UZ
+ - New geocoding data for country calling code(s):
+   966 (ar, en), 1 (en)
+
 Sep 2, 2013: libphonenumber-5.8
 * Code changes:
  - Renamed ShortNumberUtil to ShortNumberInfo -> the former class is now deprecated and will be

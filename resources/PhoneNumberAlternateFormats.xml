@@ -1142,6 +1142,16 @@
       </availableFormats>
     </territory>
 
+    <!-- Papua New Guinea (PG) -->
+    <territory countryCode="675">
+      <availableFormats>
+        <numberFormat pattern="(7\d{2})(\d{2})(\d{3})">
+          <leadingDigits>7</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Philippines (PH) -->
     <territory countryCode="63">
       <availableFormats>
@@ -1224,7 +1234,7 @@
       </availableFormats>
     </territory>
 
-    <!-- Ukraine -->
+    <!-- Ukraine (UA) -->
     <territory countryCode="380" >
       <availableFormats>
         <numberFormat pattern="([3-689]\d)(\d{3})(\d{2})(\d{2})">

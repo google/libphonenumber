@@ -3840,6 +3840,7 @@
 1270932|Greensburg, KY
 1270965|Marion, KY
 1270982|Elizabethtown, KY
+1272|Pennsylvania
 1276|Virginia
 1276223|Wytheville, VA
 1276228|Wytheville, VA
@@ -22331,6 +22332,7 @@
 1734996|Ann Arbor, MI
 1734997|Ann Arbor, MI
 1734998|Ann Arbor, MI
+1737|Texas
 1740|Ohio
 1740223|Marion, OH
 1740246|Thornville, OH

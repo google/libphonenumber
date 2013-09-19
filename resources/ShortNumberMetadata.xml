@@ -385,22 +385,127 @@
     <!-- http://www.itu.int/oth/T020200000D/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia -->
     <territory id="AU">
+      <!-- Note 200[1-3] are ignored, despite being mentioned in the ITU document, because no
+           evidence that these numbers really exist could be found online, and it is unclear what
+           they actually are. -->
       <generalDesc>
-        <nationalNumberPattern>[01]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>
+          [027]\d{2}|
+          1\d{2,7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,8}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           000|
-          112
+          1(?:
+            06|
+            1(?:
+              00|
+              2|
+              9[46]
+            )|
+            2(?:
+              [23]\d|
+              4\d{2,3}|
+              5\d{3,4}|
+              8(?:
+                2|
+                [013-9]\d
+              )
+            )|
+            555|
+            9(?:
+              [13-5]\d{3}|
+              [679]\d{5}
+            )
+          )|
+          225|
+          7(?:
+            33|
+            67
+          )
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          1(?:
+            258885|
+            555
+          )|
+          733
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,7}</possibleNumberPattern>
+        <exampleNumber>733</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <nationalNumberPattern>
+          1(?:
+            1\d{2}|
+            24733
+          )|
+          225|
+          767
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <exampleNumber>225</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <!-- http://www.vodafone.com.au/personal/services/messaging/txt/mobilepremiumservices -->
+        <nationalNumberPattern>
+          1(?:
+            2(?:
+              34|
+              456
+            )|
+            9\d{4,6}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,8}</possibleNumberPattern>
+        <exampleNumber>191123</exampleNumber>
+      </premiumRate>
+      <carrierSpecific>
+        <!-- http://www.vodafone.com.au/personal/services/messaging/txt/mobilepremiumservices -->
+        <nationalNumberPattern>
+          1(?:
+            258885|
+            555
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,7}</possibleNumberPattern>
+        <exampleNumber>1555</exampleNumber>
+      </carrierSpecific>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            2\d{1,5}|
+            555
+          )|
+          [27]\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,7}</possibleNumberPattern>
+        <exampleNumber>1282</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>122[35]</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1223</exampleNumber>
+      </directoryServices>
+      <smsServices>
+        <nationalNumberPattern>19\d{4,6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6,8}</possibleNumberPattern>
+        <exampleNumber>191123</exampleNumber>
+      </smsServices>
       <emergency>
         <nationalNumberPattern>
           000|
-          112
+          1(?:
+            06|
+            12
+          )
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
     </territory>
@@ -603,6 +708,7 @@
         <exampleNumber>17</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs_909/conseils-par-pays_12191/burkina-faso_12217/index.html -->
         <nationalNumberPattern>1[78]</nationalNumberPattern>
         <exampleNumber>17</exampleNumber>
       </emergency>
@@ -666,6 +772,7 @@
         <exampleNumber>117</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs_909/conseils-par-pays_12191/burundi_12220/index.html -->
         <nationalNumberPattern>11[78]</nationalNumberPattern>
         <exampleNumber>117</exampleNumber>
       </emergency>
@@ -700,6 +807,7 @@
         <exampleNumber>18</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.comstbarth.fr/urgences.asp -->
         <nationalNumberPattern>18</nationalNumberPattern>
         <exampleNumber>18</exampleNumber>
       </emergency>
@@ -786,10 +894,10 @@
     <!-- Brazil -->
     <!-- http://en.wikipedia.org/wiki/%2B55#Public_utility -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=32 -->
-    <!-- https://support.twitter.com/articles/20170024 -->
+    <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
     <territory id="BR">
       <generalDesc>
-        <nationalNumberPattern>[149]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[1249]\d{2,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -804,8 +912,9 @@
             2[38]|
             68|
             81|
-            9[0-4789]
+            9[0-5789]
           )|
+          27878|
           40404|
           911
         </nationalNumberPattern>
@@ -824,6 +933,8 @@
         <exampleNumber>181</exampleNumber>
       </tollFree>
       <carrierServices>
+        <!-- We have conducted tests in Brazil which verified that carrier customer service numbers
+             are not carrier-specific. -->
         <nationalNumberPattern>
           10(?:
             [36]\d{2}|
@@ -833,6 +944,15 @@
         <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
         <exampleNumber>10321</exampleNumber>
       </carrierServices>
+      <carrierSpecific>
+        <!-- https://support.twitter.com/articles/20170024 -->
+        <nationalNumberPattern>
+          27878|
+          40404
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>27878</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -846,17 +966,40 @@
         <exampleNumber>190</exampleNumber>
       </emergency>
       <expandedEmergency>
+        <!-- 195 from https://www9.sabesp.com.br/agenciavirtual/ is limited to the state of São
+             Paulo. -->
         <nationalNumberPattern>
           1(?:
             16|
             23|
             68|
-            9[14789]
+            9[145789]
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>168</exampleNumber>
       </expandedEmergency>
+      <carrierSelectionCodes>
+        <!-- http://en.wikipedia.org/wiki/Brazilian_Carrier_Selection_Code -->
+        <nationalNumberPattern>
+          1[245]|
+          2[135]|
+          31|
+          4[13]|
+          65
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <exampleNumber>15</exampleNumber>
+      </carrierSelectionCodes>
+      <smsServices>
+        <!-- https://support.twitter.com/articles/20170024 -->
+        <nationalNumberPattern>
+          27878|
+          40404
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>27878</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Bahamas -->
@@ -959,6 +1102,7 @@
         <exampleNumber>911</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
         <nationalNumberPattern>
           9(?:
             0|
@@ -1016,6 +1160,18 @@
         <exampleNumber>112</exampleNumber>
       </emergency>
     </territory>
+
+    <!-- Congo, Dem. Rep. of the (formerly Zaire) -->
+    <!-- id="CD" -->
+    <!-- No national emergency numbers were located for Congo. -->
+
+    <!-- Central African Republic -->
+    <!-- id="CF" -->
+    <!-- No emergency numbers information can be found. -->
+
+    <!-- Congo (Rep. of the) (Brazzaville) -->
+    <!-- id="CG" -->
+    <!-- No emergency numbers information can be found. -->
 
     <!-- Switzerland -->
     <!-- http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en -->
@@ -1160,6 +1316,7 @@
         <exampleNumber>110</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
         <nationalNumberPattern>
           1(?:
             1[01]|
@@ -1423,7 +1580,7 @@
           4342
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4}</possibleNumberPattern>
-        <exampleNumber>4342</exampleNumber>
+        <exampleNumber>1213</exampleNumber>
       </carrierServices>
       <emergency>
         <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=41 -->
@@ -1471,6 +1628,7 @@
         <exampleNumber>113</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs_909/conseils-par-pays_12191/cameroun_12221/index.html -->
         <!-- Numbers must be prefixed with a 1 when dialled from a mobile. -->
         <nationalNumberPattern>1?1[37]</nationalNumberPattern>
         <exampleNumber>113</exampleNumber>
@@ -1904,7 +2062,7 @@
           112|
           911
         </nationalNumberPattern>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>112</exampleNumber>
       </emergency>
     </territory>
 
@@ -1980,18 +2138,25 @@
     <!-- http://www.itu.int/oth/T020200003E/en -->
     <territory id="EG">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[13]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
             2[23]|
             80
-          )
+          )|
+          34400
         </nationalNumberPattern>
         <exampleNumber>122</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>34400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>34400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -1999,8 +2164,15 @@
             80
           )
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>122</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>34400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>34400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Western Sahara -->
@@ -2030,6 +2202,10 @@
         <exampleNumber>15</exampleNumber>
       </emergency>
     </territory>
+
+    <!-- Eritrea -->
+    <!-- id="ER" -->
+    <!-- No emergency numbers information can be found. -->
 
     <!-- Spain -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/2012_09_10_Presentation_E164_Numbering_plan_Spain.pdf -->
@@ -2368,8 +2544,9 @@
       <generalDesc>
         <nationalNumberPattern>
           1\d{1,5}|
+          [27]\d{2,4}|
           3\d{3,4}|
-          [4-8]\d{4}
+          [4-68]\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{2,6}</possibleNumberPattern>
       </generalDesc>
@@ -2386,7 +2563,18 @@
             )|
             [578]
           )|
-          3\d{3}
+          2(?:
+            0000|
+            24
+          )|
+          3\d{3,4}|
+          7(?:
+            0[06]|
+            22|
+            40|
+            \d{4}
+          )|
+          [4-68]\d{4}
         </nationalNumberPattern>
         <exampleNumber>1010</exampleNumber>
       </shortCode>
@@ -2396,57 +2584,82 @@
              cost and European harmonised numbers (116XXX). -->
         <nationalNumberPattern>
           1(?:
-            1(?:
-              [02459]|
-              6\d{3}|
-              8710
+            0(?:
+              07|
+              13
             )|
-            [578]
+            1(?:
+              [0459]|
+              6\d{3}|
+              871[03]
+            )
           )|
-          3[01]\d{2}
+          224|
+          3(?:
+            [01]\d{2}|
+            3700
+          )|
+          740
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>3010</exampleNumber>
       </tollFree>
       <standardRate>
-        <!-- http://www.appel118.fr/detail.php#histo -->
-        <nationalNumberPattern>118777</nationalNumberPattern>
-        <possibleNumberPattern>\d{6}</possibleNumberPattern>
-        <exampleNumber>118777</exampleNumber>
+        <!-- 3646 is listed as being the same as a local call on www.ameli.fr. -->
+        <nationalNumberPattern>
+          1023|
+          3(?:
+            646|
+            900
+          )|
+          70[06]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>1023</exampleNumber>
       </standardRate>
       <premiumRate>
-        <!-- According to
+        <!-- 118XYZ numbers are supposed to be tollfree by 2015 according to
              http://www.arcep.fr/uploads/tx_gspublication/guide-operateurs-editeurs-sva-sept2012.pdf
-             these numbers may be premium rate or standard rate; here we assume the higher cost.
-             118XYZ numbers are supposed to be tollfree by 2015 according to
-             http://www.arcep.fr/uploads/tx_gspublication/guide-operateurs-editeurs-sva-sept2012.pdf
-             but their current prices vary: according to http://www.appel118.fr/detail.php#histo
-             only one number is free at the moment, and one number standard rate.
+             but their current prices vary: according to http://www.appel118.fr/detail.php
+             only two numbers are free at the moment.
              SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
              prefix - we consider these all premium rate for now. -->
         <nationalNumberPattern>
-          (?:
-            1(?:
-              0|
-              18(
-                [0-68]\d{3}|
-                7(?:
-                  0\d|
-                  1[1-9]|
-                  [2-9]\d
-                )
-              )
-            )|
-            3[2-9]|
-            [4-8]\d{2}
-          )\d{2}
+          118(
+            [0-68]\d{2}|
+            7(?:
+              0\d|
+              1[1-9]|
+              [2-9]\d
+            )
+          )|
+          36665|
+          [4-8]\d{4}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
-        <exampleNumber>3200</exampleNumber>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <exampleNumber>42000</exampleNumber>
       </premiumRate>
+      <carrierSpecific>
+        <!-- http://www.appel118.fr/detail.php lists 118777 as only being accessible from SFR. 224
+             is an Orange-only service. -->
+        <nationalNumberPattern>
+          118777|
+          2(?:
+            0000|
+            24
+          )|
+          7\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <exampleNumber>118777</exampleNumber>
+      </carrierSpecific>
       <!-- Other services in the French plan: -->
       <carrierServices>
-        <nationalNumberPattern>10\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <nationalNumberPattern>
+          10\d{2}|
+          7\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>1012</exampleNumber>
       </carrierServices>
       <directoryServices>
@@ -2474,7 +2687,7 @@
       <smsServices>
         <nationalNumberPattern>[3-8]\d{4}</nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
-        <exampleNumber>30000</exampleNumber>
+        <exampleNumber>33700</exampleNumber>
       </smsServices>
       <carrierSelectionCodes>
         <!-- The specific carrier selection codes have not yet been assigned. -->
@@ -2704,16 +2917,31 @@
     <!-- http://www.nca.org.gh/index.php?option=com_content&view=article&id=90&Itemid=65 -->
     <territory id="GH">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[1589]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           19[123]|
+          (?:
+            54|
+            83
+          )00|
           999
         </nationalNumberPattern>
         <exampleNumber>999</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>
+          (?:
+            54|
+            83
+          )00
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>5400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           19[123]|
@@ -2722,6 +2950,17 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>
+          (?:
+            54|
+            83
+          )00
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>5400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Gibraltar -->
@@ -2806,6 +3045,10 @@
       </emergency>
     </territory>
 
+    <!-- Guinea -->
+    <!-- id="GN" -->
+    <!-- No national emergency numbers were located for Guinea. -->
+
     <!-- Guadeloupe -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <!-- http://www.guadeloupe.franceantilles.fr/pratique/urgences/numeros-urgence-guadeloupe-14950.php -->
@@ -2823,6 +3066,10 @@
         <exampleNumber>18</exampleNumber>
       </emergency>
     </territory>
+
+    <!-- Equatorial Guinea -->
+    <!-- id="GQ" -->
+    <!-- No national emergency numbers were located for Equatorial Guinea. -->
 
     <!-- Greece -->
     <!-- http://www.itu.int/oth/T0202000055/en -->
@@ -3036,6 +3283,7 @@
         <exampleNumber>114</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
         <nationalNumberPattern>11[48]</nationalNumberPattern>
         <exampleNumber>118</exampleNumber>
       </emergency>
@@ -3072,17 +3320,33 @@
     <!-- http://en.wikipedia.org/wiki/%2B62 -->
     <territory id="ID">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[17]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>11[02389]</nationalNumberPattern>
+        <nationalNumberPattern>
+          11[02389]|
+          71400
+        </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>71400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>71400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>11[02389]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>71400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>71400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Ireland -->
@@ -3112,13 +3376,16 @@
     <!-- http://en.wikipedia.org/wiki/%2B972 -->
     <territory id="IL">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <nationalNumberPattern>1\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[012]|
+            0(?:
+              [012]|
+              400
+            )|
             1(?:
               [013-9]\d|
               2
@@ -3128,6 +3395,12 @@
         </nationalNumberPattern>
         <exampleNumber>1455</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>10400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>10400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -3138,6 +3411,12 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>10400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>10400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Isle of Man -->
@@ -3192,6 +3471,39 @@
           2611
         </nationalNumberPattern>
         <exampleNumber>108</exampleNumber>
+      </emergency>
+    </territory>
+
+    <!-- British Indian Ocean Territory / Diego Garcia -->
+    <!-- id="IO" -->
+    <!-- It seems that there are no emergency numbers for this island. -->
+
+    <!-- Iraq -->
+    <territory id="IQ">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            0[04]|
+            15|
+            22
+          )
+        </nationalNumberPattern>
+        <exampleNumber>122</exampleNumber>
+      </shortCode>
+      <emergency>
+        <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=112 -->
+        <nationalNumberPattern>
+          1(?:
+            0[04]|
+            15|
+            22
+          )
+        </nationalNumberPattern>
+        <exampleNumber>122</exampleNumber>
       </emergency>
     </territory>
 
@@ -3453,7 +3765,7 @@
           11[029]|
           911
         </nationalNumberPattern>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>112</exampleNumber>
       </emergency>
     </territory>
 
@@ -3512,14 +3824,17 @@
     <!-- http://en.wikipedia.org/wiki/+254 -->
     <territory id="KE">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <!-- Excluding SMS-only premium-rate short codes for now. -->
         <nationalNumberPattern>
           1(?:
-            0[09]|
+            0(?:
+              [09]|
+              400
+            )|
             1(?:
               [026]|
               9[0-2579]
@@ -3531,6 +3846,12 @@
         </nationalNumberPattern>
         <exampleNumber>116</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>10400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>10400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <!-- http://www.kenyapolice.go.ke/report_a_crime.asp -->
         <nationalNumberPattern>
@@ -3540,6 +3861,12 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>10400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>10400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Kyrgyzstan -->
@@ -3621,6 +3948,7 @@
         <exampleNumber>17</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.comstbarth.fr/urgences.asp -->
         <nationalNumberPattern>1[78]</nationalNumberPattern>
         <exampleNumber>17</exampleNumber>
       </emergency>
@@ -3656,6 +3984,11 @@
         <exampleNumber>999</exampleNumber>
       </emergency>
     </territory>
+
+    <!-- Korea, Dem. People's Rep. of -->
+    <!-- id="KP" -->
+    <!-- According to the following webpage, there is no emergency number in North Korea:
+         http://www.netglobers.com/asia/north-korea-emergency-numbers-in-north-korea.html -->
 
     <!-- Korea (Rep. of) -->
     <!-- http://www.itu.int/oth/T0202000072/en -->
@@ -3713,18 +4046,25 @@
     <!-- http://www.itu.int/oth/T020200006F/en -->
     <territory id="KZ">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[13]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
             0[123]|
             12
-          )
+          )|
+          30400
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>30400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>30400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -3732,8 +4072,15 @@
             12
           )
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>30400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>30400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Lao People's Dem. Rep. -->
@@ -3820,6 +4167,7 @@
 
     <!-- Liechtenstein -->
     <!-- http://www.llv.li/amtsstellen/llv-ak-nummerierung.htm -->
+    <!-- http://www.llv.li/pdf-llv-ak-shortnumbers_20110331.pdf -->
     <territory id="LI">
       <generalDesc>
         <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
@@ -3884,24 +4232,38 @@
     <!-- http://www.itu.int/oth/T0202000079/en -->
     <territory id="LR">
       <generalDesc>
-        <nationalNumberPattern>[39]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[389]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           355|
+          8400|
           911
         </nationalNumberPattern>
         <exampleNumber>911</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>8400</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>8400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_950.html -->
         <nationalNumberPattern>
           355|
           911
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>911</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>8400</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>8400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Lesotho -->
@@ -4177,6 +4539,7 @@
         <exampleNumber>18</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.leshotelsdesaintmartin.com/fr/saint-martin-antilles/informations-saint-martin/infos-pratiques-sxm.html -->
         <nationalNumberPattern>1[578]</nationalNumberPattern>
         <exampleNumber>18</exampleNumber>
       </emergency>
@@ -4510,6 +4873,7 @@
         <exampleNumber>15</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.martinique.franceantilles.fr/pratique/urgences/ -->
         <nationalNumberPattern>
           1(?:
             12|
@@ -4533,6 +4897,7 @@
         <exampleNumber>17</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://www.lemoci.com/Mauritanie/14-Donnees-generales.htm -->
         <nationalNumberPattern>1[78]</nationalNumberPattern>
         <exampleNumber>17</exampleNumber>
       </emergency>
@@ -4555,6 +4920,7 @@
         <exampleNumber>911</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
         <nationalNumberPattern>
           9(?:
             11|
@@ -4640,16 +5006,23 @@
     <!-- http://www.itu.int/oth/T0202000080/en -->
     <territory id="MW">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[189]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           199|
+          80400|
           99[789]
         </nationalNumberPattern>
         <exampleNumber>997</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>80400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>80400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <!-- http://www.malawiembassy.org/visit/contact.html -->
         <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_959.html -->
@@ -4657,8 +5030,15 @@
           199|
           99[789]
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>997</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>80400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>80400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Mexico -->
@@ -4896,6 +5276,10 @@
       </emergency>
     </territory>
 
+    <!-- Niger -->
+    <!-- id="NE" -->
+    <!-- No emergency numbers information can be found. -->
+
     <!-- Norfolk Island -->
     <!-- http://www.itu.int/oth/T020200009D/en -->
     <territory id="NF">
@@ -4930,34 +5314,98 @@
     <!-- http://www.itu.int/oth/T020200009C/en -->
     <territory id="NG">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>199</nationalNumberPattern>
+        <nationalNumberPattern>
+          199|
+          40700
+        </nationalNumberPattern>
         <exampleNumber>199</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>40700</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>40700</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>199</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>199</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>40700</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>40700</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Nicaragua -->
     <!-- http://www.itu.int/oth/T020200009A/en -->
     <territory id="NI">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[12467]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>118</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[58]|
+            2(?:
+              [158]|
+              00?
+            )|
+            900
+          )|
+          2100|
+          4878|
+          6100|
+          7(?:
+            010|
+            100|
+            373
+          )
+        </nationalNumberPattern>
         <exampleNumber>118</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>7373</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>7373</exampleNumber>
+      </tollFree>
       <emergency>
-        <nationalNumberPattern>118</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[58]|
+            2[08]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>118</exampleNumber>
       </emergency>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            2(?:
+              00|
+              1
+            )|
+            900
+          )|
+          2100|
+          4878|
+          6100|
+          7(?:
+            010|
+            100|
+            373
+          )
+        </nationalNumberPattern>
+        <exampleNumber>121</exampleNumber>
+      </carrierServices>
     </territory>
 
     <!-- Netherlands -->
@@ -5171,6 +5619,7 @@
         <exampleNumber>15</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
         <nationalNumberPattern>1[578]</nationalNumberPattern>
         <exampleNumber>15</exampleNumber>
       </emergency>
@@ -5499,6 +5948,8 @@
     </territory>
 
     <!-- Saudi Arabia -->
+    <!-- http://www.itu.int/oth/T02020000B7/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia -->
     <territory id="SA">
       <generalDesc>
         <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
@@ -5507,7 +5958,12 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            16111|
+            1(?:
+              00|
+              2|
+              6111
+            )|
+            410|
             9(?:
               00|
               1[89]|
@@ -5519,24 +5975,89 @@
             )
           )|
           9(
-            37|
-            8[6-8]|
-            9[2-6]
+            0[24-79]|
+            11|
+            3[379]|
+            40|
+            66|
+            8[5-9]|
+            9[02-9]
           )
         </nationalNumberPattern>
         <exampleNumber>937</exampleNumber>
       </shortCode>
+      <tollFree>
+        <!-- http://www.childhelplineinternational.org/media/40652/speaker_3_-_saudi_arabia__2_.pdf
+             says that 116111 is free. http://www.arabnews.com/news/451698 talks about 937 being
+             toll free. -->
+        <nationalNumberPattern>
+          116111|
+          937|
+          998
+        </nationalNumberPattern>
+        <exampleNumber>116111</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <!-- This is listed on
+             http://www.mobily.com.sa/portalu/wps/portal/personal/services/video-and-voice-calls/voice-mail/?lang=en
+             as costing 25 per minute. The normal mobile rate for calls is 10-30. -->
+        <nationalNumberPattern>1410</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1410</exampleNumber>
+      </standardRate>
       <emergency>
         <nationalNumberPattern>
           112|
           9(?:
             11|
-            9[7-9]
+            9[79]
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <!-- 116 111 is set up for counselling and referral services in Saudi Arabia, not emergency
+             cases. -->
+        <nationalNumberPattern>
+          9(?:
+            37|
+            66|
+            87|
+            9[68]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>937</exampleNumber>
+      </expandedEmergency>
+      <carrierSpecific>
+        <!-- 1410 is the Mobily voicemail number. -->
+        <nationalNumberPattern>
+          1(?:
+            100|
+            410
+          )|
+          90[24679]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>902</exampleNumber>
+      </carrierSpecific>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            100|
+            410
+          )|
+          902
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>902</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>905</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>905</exampleNumber>
+      </directoryServices>
     </territory>
 
     <!-- Solomon Islands -->
@@ -5624,26 +6145,135 @@
     </territory>
 
     <!-- Sweden -->
-    <!-- http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Sv_nrplan_telefoni_enl_TU-T_rek_E.164.pdf -->
+    <!-- http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Nrplansammanst%C3%A4llning-2013-07-05.pdf -->
+    <!-- http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx -->
     <territory id="SE">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <nationalNumberPattern>[1-37-9]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          112|
-          90000
+          11(?:
+            [25]|
+            313|
+            4\d{2}|
+            6(?:
+              00[06]|
+              11[17]|
+              123
+            )|
+            7[0-8]|
+            8(?:
+              1(?:
+                [02-9]\d|
+                1[013-9]
+              )|
+              [02-46-9]\d{2}
+            )
+          )|
+          2(?:
+            2[02358]|
+            33|
+            4[01]|
+            50|
+            6[1-4]
+          )|
+          32[13]|
+          7\d{4}|
+          8(?:
+            22|
+            88
+          )|
+          9(?:
+            0(?:
+              000|
+              1(?:
+                [02-9]\d|
+                1[013-9]
+              )|
+              [2-4]\d{2}|
+              510
+            )|
+            12
+          )
         </nationalNumberPattern>
-        <exampleNumber>112</exampleNumber>
+        <exampleNumber>11313</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>
+          11811[89]|
+          72\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <exampleNumber>118118</exampleNumber>
+      </premiumRate>
+      <carrierServices>
+        <!-- All numbers have been found on individual operator homepages, they are not
+             specified in the numbering plan. -->
+        <nationalNumberPattern>
+          2(?:
+            2[0238]|
+            33
+          )|
+          32[13]|
+          888
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>222</exampleNumber>
+      </carrierServices>
+      <carrierSpecific>
+        <!-- As with carrierServices, none of the numbers are specified in the numbering plan, they
+             have been found on operator homepages. -->
+        <!-- http://www.bth.se/for/telefoni.nsf/bilagor/Lathund_Telenor_One_2_0_pdf/$file/Lathund_Telenor_One_2.0.pdf -->
+        <!-- http://www.tele2.se/foretag/files/manual_tele2mobil_mini.pdf -->
+        <nationalNumberPattern>
+          2(?:
+            2[02358]|
+            33|
+            4[01]|
+            50|
+            6[1-4]
+          )|
+          32[13]|
+          8(?:
+            22|
+            88
+          )|
+          912
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>222</exampleNumber>
+      </carrierSpecific>
+      <directoryServices>
+        <nationalNumberPattern>118\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>118400</exampleNumber>
+      </directoryServices>
       <emergency>
         <nationalNumberPattern>
           112|
           90000
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>116111</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116111</exampleNumber>
+      </expandedEmergency>
+      <smsServices>
+        <!-- http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx -->
+        <nationalNumberPattern>7\d{4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>72123</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Singapore -->
@@ -5731,6 +6361,7 @@
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- Same as Norway, according to http://kho.unis.no/nordlysstasjon_useful.htm -->
         <nationalNumberPattern>11[023]</nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
@@ -5768,18 +6399,25 @@
     <!-- http://www.itu.int/oth/T02020000BB/en -->
     <territory id="SL">
       <generalDesc>
-        <nationalNumberPattern>[09]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[069]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           (?:
             01|
             99
-          )9
+          )9|
+          60400
         </nationalNumberPattern>
         <exampleNumber>999</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>60400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>60400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           (?:
@@ -5787,8 +6425,15 @@
             99
           )9
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>60400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>60400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- San Marino -->
@@ -5808,6 +6453,15 @@
         <exampleNumber>113</exampleNumber>
       </emergency>
     </territory>
+
+    <!-- Senegal -->
+    <!-- id="SN" -->
+    <!-- No emergency numbers information can be found. -->
+
+    <!-- Somalia -->
+    <!-- id="SO" -->
+    <!-- According to the following webpage, there is no emergency number in Somalia:
+         http://www.netglobers.com/africa/somalia-emergency-numbers-in-somalia.html -->
 
     <!-- Suriname -->
     <territory id="SR">
@@ -6055,6 +6709,10 @@
       </emergency>
     </territory>
 
+    <!-- Tokelau -->
+    <!-- id="TK" -->
+    <!-- No evidence that any emergency numbers exist for this tiny island has been found. -->
+
     <!-- Timor-Leste (East Timor) -->
     <territory id="TL">
       <generalDesc>
@@ -6108,7 +6766,6 @@
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>19[078]</nationalNumberPattern>
-        <exampleNumber>197</exampleNumber>
         <exampleNumber>197</exampleNumber>
       </shortCode>
       <emergency>
@@ -6236,16 +6893,23 @@
     <!-- http://www.itu.int/oth/T02020000CB/en -->
     <territory id="TZ">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[149]\d{2,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           11[12]|
+          46400|
           999
         </nationalNumberPattern>
         <exampleNumber>111</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>46400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>46400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_1038.html
              http://in2eastafrica.net/emergency-numbers-in-tanzania -->
@@ -6253,8 +6917,15 @@
           11[12]|
           999
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>111</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>46400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>46400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Ukraine -->
@@ -6323,7 +6994,7 @@
           112|
           911
         </nationalNumberPattern>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>112</exampleNumber>
       </emergency>
     </territory>
 
@@ -6361,8 +7032,8 @@
     <!-- http://www.itu.int/oth/T02020000E1/en -->
     <territory id="UZ">
       <generalDesc>
-        <nationalNumberPattern>0\d{1,2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <nationalNumberPattern>[04]\d{1,4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{2,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
@@ -6370,10 +7041,17 @@
             0[123]|
             [123]|
             50
-          )
+          )|
+          45400
         </nationalNumberPattern>
         <exampleNumber>01</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>45400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>45400</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_1057.html
              http://www.expat.uz/index.php?/Emergency-Numbers.html
@@ -6388,8 +7066,15 @@
             50
           )
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
         <exampleNumber>01</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.google.com/plus/answer/1304917 -->
+        <nationalNumberPattern>45400</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>45400</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Vatican City -->
@@ -6563,6 +7248,8 @@
         <exampleNumber>15</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- http://lannuaire.service-public.fr/navigation/wallis-et-futuna-wallis-futuna-alofi.html
+             -->
         <nationalNumberPattern>1[578]</nationalNumberPattern>
         <exampleNumber>15</exampleNumber>
       </emergency>
@@ -6621,9 +7308,9 @@
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
-      <!-- http://www.sfr-mayotte.com/la-carte/les-services-@/article.jspz?oid=679&categ=345 -->
-      <!-- http://www.sccfd.org/travel.html -->
       <emergency>
+        <!-- http://www.sfr-mayotte.com/la-carte/les-services-@/article.jspz?oid=679&categ=345 -->
+        <!-- http://www.sccfd.org/travel.html -->
         <nationalNumberPattern>
           1(?:
             12|

@@ -1,20 +1,38 @@
+libphonenumber (5.8.1) precise; urgency=low
+
+  * Metadata changes:
+    - New alternate formatting data for country calling code(s): 675
+    - Updated phone metadata for region code(s):
+      AO, AU, BF, BW, CA, CH, CI, CN, DE, FR, MA, MR, MU, NI, PG, SA, SE, US,
+      VI
+    - New short number metadata for region code(s): IQ
+    - Updated short number metadata for region code(s):
+      AU, BR, DO, EG, FR, GH, ID, IL, JM, KE, KZ, LR, MW, NG, NI, SA, SE, SL,
+      TZ, US, UZ
+    - New geocoding data for country calling code(s):
+    966 (ar, en), 1 (en)
+
+ -- Lara Scheidegger <lararennie@google.com>  Thurs, 19 Sep 2013 13:55:28 +0200
+
 libphonenumber (5.8) precise; urgency=low
 
   * Code changes:
-   - Renamed ShortNumberUtil to ShortNumberInfo -> the former class is now deprecated and will be
-     deleted in a later release. At the moment it just delegates to ShortNumberInfo.
+   - Renamed ShortNumberUtil to ShortNumberInfo -> the former class is now
+     deprecated and will be deleted in a later release. At the moment it just
+     delegates to ShortNumberInfo.
    - New methods in the ShortNumberInfo API - isCarrierSpecific, singleton interface,
-     isPossibleShortNumber, isValidShortNumber, getShortNumberCost. Note this is an experimental API
-     at the moment and subject to change.
+     isPossibleShortNumber, isValidShortNumber, getShortNumberCost. Note this
+     is an experimental API at the moment and subject to change.
    - Bug fixes:
-      -- AsYouTypeFormatting: 3-digit numbers can be formatted as a group where appropriate
-      -- AsYouTypeFormatting: Countries with an optional national prefix were considered before to
-         have always entered it, resulting in bugs where numbers without the national prefix were
-         not properly formatted.
-      -- Numbers in Chile that overlap with emergency numbers are no longer marked as connecting to
-         them
-      -- Not requiring the NDC to be alone for countries where there is no national prefix in strict
-         grouping when extracting phone numbers
+      -- AsYouTypeFormatting: 3-digit numbers can be formatted as a group
+         where appropriate
+      -- AsYouTypeFormatting: Countries with an optional national prefix were
+         considered before to have always entered it, resulting in bugs where
+         numbers without the national prefix were not properly formatted.
+      -- Numbers in Chile that overlap with emergency numbers are no longer
+         marked as connecting to them
+      -- Not requiring the NDC to be alone for countries where there is no
+         national prefix in strict grouping when extracting phone numbers
   * Metadata changes:
    - New alternate formatting data for country calling code(s):
      30, 31, 385, 58, 62, 63, 971, 972
