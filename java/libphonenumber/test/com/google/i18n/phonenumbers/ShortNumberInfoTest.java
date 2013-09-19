@@ -106,9 +106,9 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
   public void testGetExampleShortNumberForCost() {
     assertEquals("3010", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
         ShortNumberInfo.ShortNumberCost.TOLL_FREE));
-    assertEquals("118777", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+    assertEquals("1023", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
         ShortNumberInfo.ShortNumberCost.STANDARD_RATE));
-    assertEquals("3200", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+    assertEquals("42000", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
         ShortNumberInfo.ShortNumberCost.PREMIUM_RATE));
     assertEquals("", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
         ShortNumberInfo.ShortNumberCost.UNKNOWN_COST));
