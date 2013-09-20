@@ -55,6 +55,8 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
   private static final PhoneNumber AU_NUMBER =
       new PhoneNumber().setCountryCode(61).setNationalNumber(236618300L);
+  private static final PhoneNumber AR_MOBILE_NUMBER =
+      new PhoneNumber().setCountryCode(54).setNationalNumber(92214000000L);
   private static final PhoneNumber NUMBER_WITH_INVALID_COUNTRY_CODE =
       new PhoneNumber().setCountryCode(999).setNationalNumber(2423651234L);
   private static final PhoneNumber INTERNATIONAL_TOLL_FREE =
@@ -102,6 +104,11 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
         geocoder.getDescriptionForNumber(KO_NUMBER1, Locale.KOREAN));
     assertEquals("\uC778\uCC9C",
         geocoder.getDescriptionForNumber(KO_NUMBER2, Locale.KOREAN));
+  }
+
+  public void testGetDescriptionForArgentinianMobileNumber() {
+    assertEquals("La Plata",
+        geocoder.getDescriptionForNumber(AR_MOBILE_NUMBER, Locale.ENGLISH));
   }
 
   public void testGetDescriptionForFallBack() {

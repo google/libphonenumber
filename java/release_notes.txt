@@ -1,3 +1,9 @@
+Sep 20, 2013: libphonenumber-5.8.3
+* Code changes:
+  - PhoneNumberOfflineGeocoder: Moved utility functionality to PrefixFileReader.
+  - Bug fix: Argentinian (and other countries with mobile tokens) mobile numbers now geocode
+             correctly.
+
 Sep 19, 2013: libphonenumber-5.8.2
 * Code changes:
   - New method in the PhoneNumberUtil API - getCountryMobileToken.
