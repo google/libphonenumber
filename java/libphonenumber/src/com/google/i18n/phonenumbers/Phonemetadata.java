@@ -706,6 +706,17 @@ public final class Phonemetadata {
       return this;
     }
 
+    // optional bool mobile_number_portable_region = 32 [default = false];
+    private boolean hasMobileNumberPortableRegion;
+    private boolean mobileNumberPortableRegion_ = false;
+    public boolean hasMobileNumberPortableRegion() { return hasMobileNumberPortableRegion; }
+    public boolean isMobileNumberPortableRegion() { return mobileNumberPortableRegion_; }
+    public PhoneMetadata setMobileNumberPortableRegion(boolean value) {
+      hasMobileNumberPortableRegion = true;
+      mobileNumberPortableRegion_ = value;
+      return this;
+    }
+
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeBoolean(hasGeneralDesc);
       if (hasGeneralDesc) {
@@ -823,6 +834,8 @@ public final class Phonemetadata {
       }
 
       objectOutput.writeBoolean(leadingZeroPossible_);
+
+      objectOutput.writeBoolean(mobileNumberPortableRegion_);
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
@@ -976,6 +989,8 @@ public final class Phonemetadata {
       }
 
       setLeadingZeroPossible(objectInput.readBoolean());
+
+      setMobileNumberPortableRegion(objectInput.readBoolean());
     }
   }
 

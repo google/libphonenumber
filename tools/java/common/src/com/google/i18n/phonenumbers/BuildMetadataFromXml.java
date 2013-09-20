@@ -60,6 +60,7 @@ public class BuildMetadataFromXml {
   private static final String LEADING_ZERO_POSSIBLE = "leadingZeroPossible";
   private static final String MAIN_COUNTRY_FOR_CODE = "mainCountryForCode";
   private static final String MOBILE = "mobile";
+  private static final String MOBILE_NUMBER_PORTABLE_REGION = "mobileNumberPortableRegion";
   private static final String NATIONAL_NUMBER_PATTERN = "nationalNumberPattern";
   private static final String NATIONAL_PREFIX = "nationalPrefix";
   private static final String NATIONAL_PREFIX_FORMATTING_RULE = "nationalPrefixFormattingRule";
@@ -207,6 +208,9 @@ public class BuildMetadataFromXml {
     }
     if (element.hasAttribute(LEADING_ZERO_POSSIBLE)) {
       metadata.setLeadingZeroPossible(true);
+    }
+    if (element.hasAttribute(MOBILE_NUMBER_PORTABLE_REGION)) {
+      metadata.setMobileNumberPortableRegion(true);
     }
     return metadata;
   }

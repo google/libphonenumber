@@ -1,3 +1,7 @@
+Sep 20, 2013: libphonenumber-5.8.4
+* Metadata changes:
+ - Adding a token to indicate which countries have mobile portability.
+
 Sep 20, 2013: libphonenumber-5.8.3
 * Code changes:
   - PhoneNumberOfflineGeocoder: Moved utility functionality to PrefixFileReader.

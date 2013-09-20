@@ -1,3 +1,10 @@
+libphonenumber (5.8.4) precise; urgency=low
+
+  * Metadata changes:
+    - Adding a token to indicate which countries have mobile portability.
+
+ -- Lara Scheidegger <lararennie@google.com>  Fri, 20 Sep 2013 17:22:29 +0200
+
 libphonenumber (5.8.1) precise; urgency=low
 
   * Metadata changes:

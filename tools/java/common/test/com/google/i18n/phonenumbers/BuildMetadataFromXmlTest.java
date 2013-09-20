@@ -100,7 +100,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "           preferredInternationalPrefix='0011' nationalPrefixForParsing='0'" +
         "           nationalPrefixTransformRule='9$1'" + // nationalPrefix manually injected.
         "           preferredExtnPrefix=' x' mainCountryForCode='true'" +
-        "           leadingZeroPossible='true'>" +
+        "           leadingZeroPossible='true' mobileNumberPortableRegion='true'>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder phoneMetadata =
@@ -115,6 +115,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals(" x", phoneMetadata.getPreferredExtnPrefix());
     assertTrue(phoneMetadata.getMainCountryForCode());
     assertTrue(phoneMetadata.isLeadingZeroPossible());
+    assertTrue(phoneMetadata.isMobileNumberPortableRegion());
   }
 
   public void testLoadTerritoryTagMetadataSetsBooleanFieldsToFalseByDefault()
@@ -125,6 +126,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         BuildMetadataFromXml.loadTerritoryTagMetadata("33", territoryElement, "");
     assertFalse(phoneMetadata.getMainCountryForCode());
     assertFalse(phoneMetadata.isLeadingZeroPossible());
+    assertFalse(phoneMetadata.isMobileNumberPortableRegion());
   }
 
   public void testLoadTerritoryTagMetadataSetsNationalPrefixForParsingByDefault()
@@ -226,7 +228,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
     Element numberFormatElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     NumberFormat.Builder numberFormat = NumberFormat.newBuilder();
-
     BuildMetadataFromXml.loadNationalFormat(metadata, numberFormatElement, numberFormat);
     assertEquals(nationalFormat, numberFormat.getFormat());
   }
