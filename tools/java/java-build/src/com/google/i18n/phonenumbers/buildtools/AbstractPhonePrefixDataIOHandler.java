@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.buildtools;
 
 import java.io.Closeable;
 import java.io.File;
@@ -23,12 +23,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Abstracts the way GenerateAreaCodeDataEntryPoint creates files and writes the area code data to
- * them.
+ * Abstracts the way GeneratePhonePrefixDataEntryPoint creates files and writes
+ * the phone prefix data to them.
  */
-public abstract class AbstractAreaCodeDataIOHandler {
+public abstract class AbstractPhonePrefixDataIOHandler {
   private static final Logger LOGGER = Logger.getLogger(
-      AbstractAreaCodeDataIOHandler.class.getName());
+      AbstractPhonePrefixDataIOHandler.class.getName());
   /**
    * Adds the provided file to a global output that can be for example a JAR.
    *

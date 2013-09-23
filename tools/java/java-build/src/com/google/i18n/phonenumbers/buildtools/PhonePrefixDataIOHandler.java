@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.buildtools;
 
 import java.io.File;
 import java.io.IOException;
 
 /**
- * Implementation of the IOHandler required by the GenerateAreaCodeData class used here to create
+ * Implementation of the IOHandler required by the GeneratePhonePrefixData class used here to create
  * the output files.
  */
-class AreaCodeDataIOHandler extends AbstractAreaCodeDataIOHandler {
+class PhonePrefixDataIOHandler extends AbstractPhonePrefixDataIOHandler {
   // The path to the output directory.
   private final File outputPath;
 
-  public AreaCodeDataIOHandler(File outputPath) throws IOException {
+  public PhonePrefixDataIOHandler(File outputPath) throws IOException {
     if (outputPath.exists()) {
       if (!outputPath.isDirectory()) {
         throw new IOException("Expected directory: " + outputPath.getAbsolutePath());

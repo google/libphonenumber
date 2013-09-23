@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.buildtools;
 
 import com.google.i18n.phonenumbers.Command;
 
@@ -24,16 +24,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Entry point class used to invoke the generation of the binary geocoding data files.
+ * Entry point class used to invoke the generation of the binary phone prefix data files.
  *
  * @author Philippe Liard
  */
-public class GenerateAreaCodeDataEntryPoint extends Command {
-  private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
+public class GeneratePhonePrefixDataEntryPoint extends Command {
+  private static final Logger LOGGER = Logger.getLogger(GeneratePhonePrefixData.class.getName());
 
   @Override
   public String getCommandName() {
-    return "GenerateAreaCodeData";
+    return "GeneratePhonePrefixData";
   }
 
   @Override
@@ -42,13 +42,13 @@ public class GenerateAreaCodeDataEntryPoint extends Command {
 
     if (args.length != 3) {
       LOGGER.log(Level.SEVERE,
-                 "usage: GenerateAreaCodeData /path/to/input/directory /path/to/output/directory");
+                 "usage: GeneratePhonePrefixData /path/to/input/directory /path/to/output/directory");
       return false;
     }
     try {
-      GenerateAreaCodeData generateAreaCodeData =
-          new GenerateAreaCodeData(new File(args[1]), new AreaCodeDataIOHandler(new File(args[2])));
-      generateAreaCodeData.run();
+      GeneratePhonePrefixData generatePhonePrefixData =
+          new GeneratePhonePrefixData(new File(args[1]), new PhonePrefixDataIOHandler(new File(args[2])));
+      generatePhonePrefixData.run();
     } catch (IOException e) {
       LOGGER.log(Level.SEVERE, e.getMessage());
       return false;

@@ -89,7 +89,7 @@
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
-      <arg value="GenerateAreaCodeData"/>
+      <arg value="GeneratePhonePrefixData"/>
       <arg value="${resources.dir}/geocoding/"/>
       <arg value="geocoder/src/com/google/i18n/phonenumbers/geocoding/data"/>
     </exec>
@@ -99,7 +99,7 @@
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
-      <arg value="GenerateAreaCodeData"/>
+      <arg value="GeneratePhonePrefixData"/>
       <arg value="${resources.dir}/test/geocoding/"/>
       <arg value="geocoder/test/com/google/i18n/phonenumbers/geocoding/testing_data"/>
     </exec>
@@ -161,7 +161,6 @@
         <include name="**/geocoding/*.class"/>
         <include name="**/prefixmapper/*.class"/>
         <exclude name="**/*Test*"/>
-        <exclude name="**/geocoding/GenerateAreaCodeData*"/>
       </fileset>
       <fileset dir="${geocoder.src.dir}">
         <include name="**/geocoding/data/*"/>

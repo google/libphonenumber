@@ -65,9 +65,9 @@
                 <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
                      the source directories. -->
                 <source>../../../java/libphonenumber/src/</source>
-                <!-- Add ../../../java/geocoder/src/ to make AreaCodeMap.java available to the
-                     source directories. -->
-                <source>../../../java/geocoder/src/</source>
+                <!-- Add ../../../java/internal/phoneprefix/src/ to make PhonePrefixMap.java
+                     available to the source directories. -->
+                <source>../../../java/internal/prefixmapper/src/</source>
                 <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
               </sources>

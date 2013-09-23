@@ -1,3 +1,8 @@
+Sep 23, 2013: libphonenumber-5.8.6
+* Code changes:
+  - Restructured the geocoder binary generation code, moving the classes under tools/ from
+    geocoding/ to buildtools/ and renaming AreaCode to PhonePrefix.
+
 Sep 23, 2013: libphonenumber-5.8.5
 * Code changes:
   - Restructured the geocoder, moving the utility classes to a new module internal/prefixmapper.

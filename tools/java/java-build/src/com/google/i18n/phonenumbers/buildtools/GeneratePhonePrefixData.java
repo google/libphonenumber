@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.buildtools;
+
+import com.google.i18n.phonenumbers.prefixmapper.MappingFileProvider;
+import com.google.i18n.phonenumbers.prefixmapper.PhonePrefixMap;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -42,7 +45,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
- * A utility that generates the binary serialization of the area code/location mappings from
+ * A utility that generates the binary serialization of the phone prefix mappings from
  * human-readable text files. It also generates a configuration file which contains information on
  * data files available for use.
  *
@@ -52,7 +55,7 @@ import java.util.regex.Pattern;
  *
  * @author Philippe Liard
  */
-public class GenerateAreaCodeData {
+public class GeneratePhonePrefixData {
   // The path to the input directory containing the languages directories.
   private final File inputPath;
   private static final int NANPA_COUNTRY_CODE = 1;
@@ -63,11 +66,11 @@ public class GenerateAreaCodeData {
   private final Map<Integer /* country code */, SortedMap<Integer, String>> englishMaps =
       new HashMap<Integer, SortedMap<Integer, String>>();
   // The IO Handler used to output the generated binary files.
-  private final AbstractAreaCodeDataIOHandler ioHandler;
+  private final AbstractPhonePrefixDataIOHandler ioHandler;
 
-  private static final Logger LOGGER = Logger.getLogger(GenerateAreaCodeData.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(GeneratePhonePrefixData.class.getName());
 
-  public GenerateAreaCodeData(File inputPath, AbstractAreaCodeDataIOHandler ioHandler)
+  public GeneratePhonePrefixData(File inputPath, AbstractPhonePrefixDataIOHandler ioHandler)
       throws IOException {
     if (!inputPath.isDirectory()) {
       throw new IOException("The provided input path does not exist: " +
@@ -80,7 +83,7 @@ public class GenerateAreaCodeData {
   /**
    * Implement this interface to provide a callback to the parseTextFile() method.
    */
-  static interface AreaCodeMappingHandler {
+  static interface PhonePrefixMappingHandler {
     /**
      * Method called every time the parser matches a mapping. Note that 'prefix' is the prefix as
      * it is written in the text file (i.e phone number prefix appended to country code).
@@ -93,7 +96,8 @@ public class GenerateAreaCodeData {
    * mapping read.
    */
   // @VisibleForTesting
-  static void parseTextFile(InputStream input, AreaCodeMappingHandler handler) throws IOException {
+  static void parseTextFile(InputStream input,
+                            PhonePrefixMappingHandler handler) throws IOException {
     BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(
             new BufferedInputStream(input), Charset.forName("UTF-8")));
@@ -116,18 +120,18 @@ public class GenerateAreaCodeData {
   }
 
   /**
-   * Writes the provided area code map to the provided output stream.
+   * Writes the provided phone prefix map to the provided output stream.
    *
    * @throws IOException
    */
   // @VisibleForTesting
   static void writeToBinaryFile(SortedMap<Integer, String> sortedMap, OutputStream output)
       throws IOException {
-    // Build the corresponding area code map and serialize it to the binary format.
-    AreaCodeMap areaCodeMap = new AreaCodeMap();
-    areaCodeMap.readAreaCodeMap(sortedMap);
+    // Build the corresponding phone prefix map and serialize it to the binary format.
+    PhonePrefixMap phonePrefixMap = new PhonePrefixMap();
+    phonePrefixMap.readPhonePrefixMap(sortedMap);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
-    areaCodeMap.writeExternal(objectOutputStream);
+    phonePrefixMap.writeExternal(objectOutputStream);
     objectOutputStream.flush();
   }
 
@@ -139,16 +143,16 @@ public class GenerateAreaCodeData {
   // @VisibleForTesting
   static SortedMap<Integer, String> readMappingsFromTextFile(InputStream input)
       throws IOException {
-    final SortedMap<Integer, String> areaCodeMap = new TreeMap<Integer, String>();
-    parseTextFile(input, new AreaCodeMappingHandler() {
+    final SortedMap<Integer, String> phonePrefixMap = new TreeMap<Integer, String>();
+    parseTextFile(input, new PhonePrefixMappingHandler() {
       @Override
       public void process(int prefix, String location) {
-        if (areaCodeMap.put(prefix, location) != null) {
+        if (phonePrefixMap.put(prefix, location) != null) {
           throw new RuntimeException(String.format("duplicated prefix %d", prefix));
         }
       }
     });
-    return areaCodeMap;
+    return phonePrefixMap;
   }
 
   private static class PhonePrefixLanguagePair {
@@ -189,7 +193,7 @@ public class GenerateAreaCodeData {
       // Fetch the 4-digit prefixes stored in the file.
       final Set<Integer> phonePrefixes = new HashSet<Integer>();
       FileInputStream inputStream = new FileInputStream(countryCodeFile);
-      parseTextFile(inputStream, new AreaCodeMappingHandler() {
+      parseTextFile(inputStream, new PhonePrefixMappingHandler() {
         @Override
         public void process(int prefix, String location) {
           phonePrefixes.add(Integer.parseInt(String.valueOf(prefix).substring(0, 4)));
@@ -251,17 +255,17 @@ public class GenerateAreaCodeData {
 
   /**
    * Adds a phone number prefix/language mapping to the provided map. The prefix and language are
-   * generated from the provided file name previously used to output the area code/location mappings
-   * for the given country.
+   * generated from the provided file name previously used to output the phone prefix mappings for
+   * the given country.
    */
   // @VisibleForTesting
   static void addConfigurationMapping(SortedMap<Integer, Set<String>> availableDataFiles,
-                                      File outputAreaCodeMappingsFile) {
-    String outputAreaCodeMappingsFileName = outputAreaCodeMappingsFile.getName();
-    PhonePrefixLanguagePair areaCodeLanguagePair =
-        getPhonePrefixLanguagePairFromFilename(outputAreaCodeMappingsFileName);
-    int prefix = Integer.parseInt(areaCodeLanguagePair.prefix);
-    String language = areaCodeLanguagePair.language;
+                                      File outputPhonePrefixMappingsFile) {
+    String outputPhonePrefixMappingsFileName = outputPhonePrefixMappingsFile.getName();
+    PhonePrefixLanguagePair phonePrefixLanguagePair =
+        getPhonePrefixLanguagePairFromFilename(outputPhonePrefixMappingsFileName);
+    int prefix = Integer.parseInt(phonePrefixLanguagePair.prefix);
+    String language = phonePrefixLanguagePair.language;
     Set<String> languageSet = availableDataFiles.get(prefix);
     if (languageSet == null) {
       languageSet = new HashSet<String>();
@@ -284,13 +288,14 @@ public class GenerateAreaCodeData {
   }
 
   /**
-   * Splits the provided area code map into multiple maps according to the provided list of output
-   * binary files. A map associating output binary files to area code maps is returned as a result.
+   * Splits the provided phone prefix map into multiple maps according to the provided list of
+   * output binary files. A map associating output binary files to phone prefix maps is returned as
+   * a result.
    * <pre>
    * Example:
-   *   input map: { 12011: Location1, 12021: Location2 }
+   *   input map: { 12011: Description1, 12021: Description2 }
    *   outputBinaryFiles: { 1201_en, 1202_en }
-   *   output map: { 1201_en: { 12011: Location1 }, 1202_en: { 12021: Location2 } }
+   *   output map: { 1201_en: { 12011: Description1 }, 1202_en: { 12021: Description2 } }
    * </pre>
    */
   // @VisibleForTesting
@@ -310,12 +315,12 @@ public class GenerateAreaCodeData {
           break;
         }
       }
-      SortedMap<Integer, String> mappingsForAreaCodeLangPair = mappingsForFiles.get(targetFile);
-      if (mappingsForAreaCodeLangPair == null) {
-        mappingsForAreaCodeLangPair = new TreeMap<Integer, String>();
-        mappingsForFiles.put(targetFile, mappingsForAreaCodeLangPair);
+      SortedMap<Integer, String> mappingsForPhonePrefixLangPair = mappingsForFiles.get(targetFile);
+      if (mappingsForPhonePrefixLangPair == null) {
+        mappingsForPhonePrefixLangPair = new TreeMap<Integer, String>();
+        mappingsForFiles.put(targetFile, mappingsForPhonePrefixLangPair);
       }
-      mappingsForAreaCodeLangPair.put(mapping.getKey(), mapping.getValue());
+      mappingsForPhonePrefixLangPair.put(mapping.getKey(), mapping.getValue());
     }
     return mappingsForFiles;
   }
@@ -416,7 +421,7 @@ public class GenerateAreaCodeData {
   }
 
   /**
-   * Runs the area code data generator.
+   * Runs the phone prefix data generator.
    *
    * @throws IOException
    */
@@ -473,6 +478,6 @@ public class GenerateAreaCodeData {
       ioHandler.closeFile(fileOutputStream);
       ioHandler.close();
     }
-    LOGGER.log(Level.INFO, "Geocoding data successfully generated.");
+    LOGGER.log(Level.INFO, "Phone prefix data successfully generated.");
   }
 }

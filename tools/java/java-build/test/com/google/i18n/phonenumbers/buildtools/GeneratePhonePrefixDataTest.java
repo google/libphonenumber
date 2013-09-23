@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.buildtools;
 
-import com.google.i18n.phonenumbers.geocoding.GenerateAreaCodeData.AreaCodeMappingHandler;
+import com.google.i18n.phonenumbers.buildtools.GeneratePhonePrefixData.PhonePrefixMappingHandler;
+import com.google.i18n.phonenumbers.prefixmapper.MappingFileProvider;
+import com.google.i18n.phonenumbers.prefixmapper.PhonePrefixMap;
 
 import junit.framework.TestCase;
 
@@ -35,26 +37,26 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
- * Unittests for GenerateAreaCodeData.java
+ * Unittests for GeneratePhonePrefixData.java
  *
  * @author Philippe Liard
  */
-public class GenerateAreaCodeDataTest extends TestCase {
+public class GeneratePhonePrefixDataTest extends TestCase {
   private static final SortedMap<Integer, Set<String>> AVAILABLE_DATA_FILES;
   static {
     SortedMap<Integer, Set<String>> temporaryMap = new TreeMap<Integer, Set<String>>();
 
     // Languages for US.
-    GenerateAreaCodeData.addConfigurationMapping(temporaryMap, new File("1_en"));
-    GenerateAreaCodeData.addConfigurationMapping(temporaryMap, new File("1_en_US"));
-    GenerateAreaCodeData.addConfigurationMapping(temporaryMap, new File("1_es"));
+    GeneratePhonePrefixData.addConfigurationMapping(temporaryMap, new File("1_en"));
+    GeneratePhonePrefixData.addConfigurationMapping(temporaryMap, new File("1_en_US"));
+    GeneratePhonePrefixData.addConfigurationMapping(temporaryMap, new File("1_es"));
 
     // Languages for France.
-    GenerateAreaCodeData.addConfigurationMapping(temporaryMap, new File("33_fr"));
-    GenerateAreaCodeData.addConfigurationMapping(temporaryMap, new File("33_en"));
+    GeneratePhonePrefixData.addConfigurationMapping(temporaryMap, new File("33_fr"));
+    GeneratePhonePrefixData.addConfigurationMapping(temporaryMap, new File("33_en"));
 
     // Languages for China.
-    GenerateAreaCodeData.addConfigurationMapping(temporaryMap, new File("86_zh_Hans"));
+    GeneratePhonePrefixData.addConfigurationMapping(temporaryMap, new File("86_zh_Hans"));
 
     AVAILABLE_DATA_FILES = Collections.unmodifiableSortedMap(temporaryMap);
   }
@@ -80,7 +82,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
 
   public void testOutputBinaryConfiguration() throws IOException {
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    GenerateAreaCodeData.outputBinaryConfiguration(AVAILABLE_DATA_FILES, byteArrayOutputStream);
+    GeneratePhonePrefixData.outputBinaryConfiguration(AVAILABLE_DATA_FILES, byteArrayOutputStream);
     MappingFileProvider mappingFileProvider = new MappingFileProvider();
     mappingFileProvider.readExternal(
         new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
@@ -89,11 +91,11 @@ public class GenerateAreaCodeDataTest extends TestCase {
 
   private static Map<Integer, String> parseTextFileHelper(String input) throws IOException {
     final Map<Integer, String> mappings = new HashMap<Integer, String>();
-    GenerateAreaCodeData.parseTextFile(new ByteArrayInputStream(input.getBytes()),
-                                       new AreaCodeMappingHandler() {
+    GeneratePhonePrefixData.parseTextFile(new ByteArrayInputStream(input.getBytes()),
+                                          new PhonePrefixMappingHandler() {
       @Override
-      public void process(int areaCode, String location) {
-        mappings.put(areaCode, location);
+      public void process(int phonePrefix, String location) {
+        mappings.put(phonePrefix, location);
       }
     });
     return mappings;
@@ -149,7 +151,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     mappings.put(12022, "Location4");
 
     Map<File, SortedMap<Integer, String>> splitMaps =
-        GenerateAreaCodeData.splitMap(mappings, outputFiles);
+        GeneratePhonePrefixData.splitMap(mappings, outputFiles);
     assertEquals(2, splitMaps.size());
     assertEquals("Location1", splitMaps.get(new File("1201_en")).get(12011));
     assertEquals("Location2", splitMaps.get(new File("1201_en")).get(12012));
@@ -161,16 +163,16 @@ public class GenerateAreaCodeDataTest extends TestCase {
     ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-    SortedMap<Integer, String> areaCodeMappings =
-        GenerateAreaCodeData.readMappingsFromTextFile(byteArrayInputStream);
-    GenerateAreaCodeData.writeToBinaryFile(areaCodeMappings, byteArrayOutputStream);
-    // The byte array output stream now contains the corresponding serialized area code map. Try
+    SortedMap<Integer, String> phonePrefixMappings =
+        GeneratePhonePrefixData.readMappingsFromTextFile(byteArrayInputStream);
+    GeneratePhonePrefixData.writeToBinaryFile(phonePrefixMappings, byteArrayOutputStream);
+    // The byte array output stream now contains the corresponding serialized phone prefix map. Try
     // to deserialize it and compare it with the initial input.
-    AreaCodeMap areaCodeMap = new AreaCodeMap();
-    areaCodeMap.readExternal(
+    PhonePrefixMap phonePrefixMap = new PhonePrefixMap();
+    phonePrefixMap.readExternal(
         new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
 
-    return areaCodeMap.toString();
+    return phonePrefixMap.toString();
   }
 
   public void testConvertData() throws IOException {
@@ -188,7 +190,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     assertEquals(input, dataAfterDeserialization);
   }
 
-  public void testConvertDataThrowsExceptionWithDuplicatedAreaCodes() throws IOException {
+  public void testConvertDataThrowsExceptionWithDuplicatedPhonePrefixes() throws IOException {
     String input = "331|Paris\n331|Marseilles\n";
 
     try {
@@ -200,7 +202,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
   }
 
   public void testGetEnglishDataPath() {
-    assertEquals("/path/en/33.txt", GenerateAreaCodeData.getEnglishDataPath("/path/fr/33.txt"));
+    assertEquals("/path/en/33.txt", GeneratePhonePrefixData.getEnglishDataPath("/path/fr/33.txt"));
   }
 
   public void testHasOverlap() {
@@ -209,8 +211,8 @@ public class GenerateAreaCodeDataTest extends TestCase {
     map.put(123, "");
     map.put(2345, "");
 
-    assertTrue(GenerateAreaCodeData.hasOverlappingPrefix(1234, map));
-    assertFalse(GenerateAreaCodeData.hasOverlappingPrefix(2345, map));
+    assertTrue(GeneratePhonePrefixData.hasOverlappingPrefix(1234, map));
+    assertFalse(GeneratePhonePrefixData.hasOverlappingPrefix(2345, map));
   }
 
   public void testCompressAccordingToEnglishDataMakesDescriptionEmpty() {
@@ -224,7 +226,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     // The English map should not be modified.
     englishMappings = Collections.unmodifiableSortedMap(englishMappings);
 
-    GenerateAreaCodeData.compressAccordingToEnglishData(englishMappings, frenchMappings);
+    GeneratePhonePrefixData.compressAccordingToEnglishData(englishMappings, frenchMappings);
 
     assertEquals(2, frenchMappings.size());
     assertEquals("Genève", frenchMappings.get(411));
@@ -242,7 +244,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     // The English map should not be modified.
     englishMappings = Collections.unmodifiableSortedMap(englishMappings);
 
-    GenerateAreaCodeData.compressAccordingToEnglishData(englishMappings, frenchMappings);
+    GeneratePhonePrefixData.compressAccordingToEnglishData(englishMappings, frenchMappings);
 
     assertEquals(1, frenchMappings.size());
     assertEquals("Genève", frenchMappings.get(411));
@@ -259,7 +261,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     // The English map should not be modified.
     englishMappings = Collections.unmodifiableSortedMap(englishMappings);
 
-    GenerateAreaCodeData.compressAccordingToEnglishData(englishMappings, frenchMappings);
+    GeneratePhonePrefixData.compressAccordingToEnglishData(englishMappings, frenchMappings);
 
     assertEquals(0, frenchMappings.size());
   }
@@ -271,7 +273,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     // The French map should not be modified.
     frenchMappings = Collections.unmodifiableSortedMap(frenchMappings);
 
-    GenerateAreaCodeData.removeEmptyEnglishMappings(frenchMappings, "fr");
+    GeneratePhonePrefixData.removeEmptyEnglishMappings(frenchMappings, "fr");
 
     assertEquals(2, frenchMappings.size());
   }
@@ -281,7 +283,7 @@ public class GenerateAreaCodeDataTest extends TestCase {
     englishMappings.put(331, "Paris");
     englishMappings.put(334, "");
 
-    GenerateAreaCodeData.removeEmptyEnglishMappings(englishMappings, "en");
+    GeneratePhonePrefixData.removeEmptyEnglishMappings(englishMappings, "en");
 
     assertEquals(1, englishMappings.size());
     assertEquals("Paris", englishMappings.get(331));
