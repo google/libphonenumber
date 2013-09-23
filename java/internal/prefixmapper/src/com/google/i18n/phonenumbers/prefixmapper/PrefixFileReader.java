@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
@@ -40,7 +40,8 @@ public class PrefixFileReader {
   private MappingFileProvider mappingFileProvider = new MappingFileProvider();
   // A mapping from countryCallingCode_lang to the corresponding phone prefix map that has been
   // loaded.
-  private Map<String, AreaCodeMap> availablePhonePrefixMaps = new HashMap<String, AreaCodeMap>();
+  private Map<String, PhonePrefixMap> availablePhonePrefixMaps =
+      new HashMap<String, PhonePrefixMap>();
 
   public PrefixFileReader(String phonePrefixDataDirectory) {
     this.phonePrefixDataDirectory = phonePrefixDataDirectory;
@@ -61,25 +62,25 @@ public class PrefixFileReader {
     }
   }
 
-  private AreaCodeMap getPhonePrefixDescriptions(
+  private PhonePrefixMap getPhonePrefixDescriptions(
       int prefixMapKey, String language, String script, String region) {
     String fileName = mappingFileProvider.getFileName(prefixMapKey, language, script, region);
     if (fileName.length() == 0) {
       return null;
     }
     if (!availablePhonePrefixMaps.containsKey(fileName)) {
-      loadAreaCodeMapFromFile(fileName);
+      loadPhonePrefixMapFromFile(fileName);
     }
     return availablePhonePrefixMaps.get(fileName);
   }
 
-  private void loadAreaCodeMapFromFile(String fileName) {
+  private void loadPhonePrefixMapFromFile(String fileName) {
     InputStream source =
         PrefixFileReader.class.getResourceAsStream(phonePrefixDataDirectory + fileName);
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
-      AreaCodeMap map = new AreaCodeMap();
+      PhonePrefixMap map = new PhonePrefixMap();
       map.readExternal(in);
       availablePhonePrefixMaps.put(fileName, map);
     } catch (IOException e) {
@@ -117,14 +118,13 @@ public class PrefixFileReader {
     // prefix of 4 digits for NANPA instead, e.g. 1650.
     int phonePrefix = (countryCallingCode != 1) ?
         countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
-    AreaCodeMap phonePrefixDescriptions =
+    PhonePrefixMap phonePrefixDescriptions =
         getPhonePrefixDescriptions(phonePrefix, lang, script, region);
-    String description = (phonePrefixDescriptions != null)
-        ? phonePrefixDescriptions.lookup(number)
-        : null;
+    String description = (phonePrefixDescriptions != null) ?
+        phonePrefixDescriptions.lookup(number) : null;
     // When a location is not available in the requested language, fall back to English.
     if ((description == null || description.length() == 0) && mayFallBackToEnglish(lang)) {
-      AreaCodeMap defaultMap = getPhonePrefixDescriptions(phonePrefix, "en", "", "");
+      PhonePrefixMap defaultMap = getPhonePrefixDescriptions(phonePrefix, "en", "", "");
       if (defaultMap == null) {
         return "";
       }

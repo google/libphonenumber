@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import junit.framework.TestCase;
@@ -28,16 +28,16 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
- * Unittests for AreaCodeMap.java
+ * Unittests for PhonePrefixMap.java
  *
  * @author Shaopeng Jia
  */
-public class AreaCodeMapTest extends TestCase {
-  private final AreaCodeMap areaCodeMapForUS = new AreaCodeMap();
-  private final AreaCodeMap areaCodeMapForIT = new AreaCodeMap();
+public class PhonePrefixMapTest extends TestCase {
+  private final PhonePrefixMap phonePrefixMapForUS = new PhonePrefixMap();
+  private final PhonePrefixMap phonePrefixMapForIT = new PhonePrefixMap();
   private PhoneNumber number = new PhoneNumber();
 
-  public AreaCodeMapTest() {
+  public PhonePrefixMapTest() {
     SortedMap<Integer, String> sortedMapForUS = new TreeMap<Integer, String>();
     sortedMapForUS.put(1212, "New York");
     sortedMapForUS.put(1480, "Arizona");
@@ -51,7 +51,7 @@ public class AreaCodeMapTest extends TestCase {
     sortedMapForUS.put(1867993, "Dawson, YT");
     sortedMapForUS.put(1972480, "Richardson, TX");
 
-    areaCodeMapForUS.readAreaCodeMap(sortedMapForUS);
+    phonePrefixMapForUS.readPhonePrefixMap(sortedMapForUS);
 
     SortedMap<Integer, String> sortedMapForIT = new TreeMap<Integer, String>();
     sortedMapForIT.put(3902, "Milan");
@@ -61,12 +61,12 @@ public class AreaCodeMapTest extends TestCase {
     sortedMapForIT.put(390321, "Novara");
     sortedMapForIT.put(390975, "Potenza");
 
-    areaCodeMapForIT.readAreaCodeMap(sortedMapForIT);
+    phonePrefixMapForIT.readPhonePrefixMap(sortedMapForIT);
   }
 
   private static SortedMap<Integer, String> createDefaultStorageMapCandidate() {
     SortedMap<Integer, String> sortedMap = new TreeMap<Integer, String>();
-    // Make the area codes bigger to store them using integer.
+    // Make the phone prefixs bigger to store them using integer.
     sortedMap.put(121212345, "New York");
     sortedMap.put(148034434, "Arizona");
     return sortedMap;
@@ -82,111 +82,112 @@ public class AreaCodeMapTest extends TestCase {
   }
 
   public void testGetSmallerMapStorageChoosesDefaultImpl() {
-    AreaCodeMapStorageStrategy mapStorage =
-        new AreaCodeMap().getSmallerMapStorage(createDefaultStorageMapCandidate());
+    PhonePrefixMapStorageStrategy mapStorage =
+        new PhonePrefixMap().getSmallerMapStorage(createDefaultStorageMapCandidate());
     assertFalse(mapStorage instanceof FlyweightMapStorage);
   }
 
   public void testGetSmallerMapStorageChoosesFlyweightImpl() {
-    AreaCodeMapStorageStrategy mapStorage =
-        new AreaCodeMap().getSmallerMapStorage(createFlyweightStorageMapCandidate());
+    PhonePrefixMapStorageStrategy mapStorage =
+        new PhonePrefixMap().getSmallerMapStorage(createFlyweightStorageMapCandidate());
     assertTrue(mapStorage instanceof FlyweightMapStorage);
   }
 
   public void testLookupInvalidNumber_US() {
     // central office code cannot start with 1.
     number.setCountryCode(1).setNationalNumber(2121234567L);
-    assertEquals("New York", areaCodeMapForUS.lookup(number));
+    assertEquals("New York", phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumber_NJ() {
     number.setCountryCode(1).setNationalNumber(2016641234L);
-    assertEquals("Westwood, NJ", areaCodeMapForUS.lookup(number));
+    assertEquals("Westwood, NJ", phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumber_NY() {
     number.setCountryCode(1).setNationalNumber(2126641234L);
-    assertEquals("New York", areaCodeMapForUS.lookup(number));
+    assertEquals("New York", phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumber_CA_1() {
     number.setCountryCode(1).setNationalNumber(6503451234L);
-    assertEquals("San Mateo, CA", areaCodeMapForUS.lookup(number));
+    assertEquals("San Mateo, CA", phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumber_CA_2() {
     number.setCountryCode(1).setNationalNumber(6502531234L);
-    assertEquals("California", areaCodeMapForUS.lookup(number));
+    assertEquals("California", phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumberFound_TX() {
     number.setCountryCode(1).setNationalNumber(9724801234L);
-    assertEquals("Richardson, TX", areaCodeMapForUS.lookup(number));
+    assertEquals("Richardson, TX", phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumberNotFound_TX() {
     number.setCountryCode(1).setNationalNumber(9724811234L);
-    assertNull(areaCodeMapForUS.lookup(number));
+    assertNull(phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumber_CH() {
     number.setCountryCode(41).setNationalNumber(446681300L);
-    assertNull(areaCodeMapForUS.lookup(number));
+    assertNull(phonePrefixMapForUS.lookup(number));
   }
 
   public void testLookupNumber_IT() {
     number.setCountryCode(39).setNationalNumber(212345678L).setItalianLeadingZero(true);
-    assertEquals("Milan", areaCodeMapForIT.lookup(number));
+    assertEquals("Milan", phonePrefixMapForIT.lookup(number));
 
     number.setNationalNumber(612345678L);
-    assertEquals("Rome", areaCodeMapForIT.lookup(number));
+    assertEquals("Rome", phonePrefixMapForIT.lookup(number));
 
     number.setNationalNumber(3211234L);
-    assertEquals("Novara", areaCodeMapForIT.lookup(number));
+    assertEquals("Novara", phonePrefixMapForIT.lookup(number));
 
     // A mobile number
     number.setNationalNumber(321123456L).setItalianLeadingZero(false);
-    assertNull(areaCodeMapForIT.lookup(number));
+    assertNull(phonePrefixMapForIT.lookup(number));
 
     // An invalid number (too short)
     number.setNationalNumber(321123L).setItalianLeadingZero(true);
-    assertEquals("Novara", areaCodeMapForIT.lookup(number));
+    assertEquals("Novara", phonePrefixMapForIT.lookup(number));
   }
 
   /**
-   * Creates a new area code map serializing the provided area code map to a stream and then reading
-   * this stream. The resulting area code map is expected to be strictly equal to the provided one
-   * from which it was generated.
+   * Creates a new phone prefix map serializing the provided phone prefix map to a stream and then
+   * reading this stream. The resulting phone prefix map is expected to be strictly equal to the
+   * provided one from which it was generated.
    */
-  private static AreaCodeMap createNewAreaCodeMap(AreaCodeMap areaCodeMap) throws IOException {
+  private static PhonePrefixMap createNewPhonePrefixMap(
+      PhonePrefixMap phonePrefixMap) throws IOException {
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-    areaCodeMap.writeExternal(objectOutputStream);
+    phonePrefixMap.writeExternal(objectOutputStream);
     objectOutputStream.flush();
 
-    AreaCodeMap newAreaCodeMap = new AreaCodeMap();
-    newAreaCodeMap.readExternal(
+    PhonePrefixMap newPhonePrefixMap = new PhonePrefixMap();
+    newPhonePrefixMap.readExternal(
         new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
-    return newAreaCodeMap;
+    return newPhonePrefixMap;
   }
 
   public void testReadWriteExternalWithDefaultStrategy() throws IOException {
-    AreaCodeMap localAreaCodeMap = new AreaCodeMap();
-    localAreaCodeMap.readAreaCodeMap(createDefaultStorageMapCandidate());
-    assertFalse(localAreaCodeMap.getAreaCodeMapStorage() instanceof FlyweightMapStorage);
+    PhonePrefixMap localPhonePrefixMap = new PhonePrefixMap();
+    localPhonePrefixMap.readPhonePrefixMap(createDefaultStorageMapCandidate());
+    assertFalse(localPhonePrefixMap.getPhonePrefixMapStorage() instanceof FlyweightMapStorage);
 
-    AreaCodeMap newAreaCodeMap;
-    newAreaCodeMap = createNewAreaCodeMap(localAreaCodeMap);
-    assertEquals(localAreaCodeMap.toString(), newAreaCodeMap.toString());
+    PhonePrefixMap newPhonePrefixMap;
+    newPhonePrefixMap = createNewPhonePrefixMap(localPhonePrefixMap);
+    assertEquals(localPhonePrefixMap.toString(), newPhonePrefixMap.toString());
   }
 
   public void testReadWriteExternalWithFlyweightStrategy() throws IOException {
-    AreaCodeMap localAreaCodeMap = new AreaCodeMap();
-    localAreaCodeMap.readAreaCodeMap(createFlyweightStorageMapCandidate());
-    assertTrue(localAreaCodeMap.getAreaCodeMapStorage() instanceof FlyweightMapStorage);
+    PhonePrefixMap localPhonePrefixMap = new PhonePrefixMap();
+    localPhonePrefixMap.readPhonePrefixMap(createFlyweightStorageMapCandidate());
+    assertTrue(localPhonePrefixMap.getPhonePrefixMapStorage() instanceof FlyweightMapStorage);
 
-    AreaCodeMap newAreaCodeMap;
-    newAreaCodeMap = createNewAreaCodeMap(localAreaCodeMap);
-    assertEquals(localAreaCodeMap.toString(), newAreaCodeMap.toString());
+    PhonePrefixMap newPhonePrefixMap;
+    newPhonePrefixMap = createNewPhonePrefixMap(localPhonePrefixMap);
+    assertEquals(localPhonePrefixMap.toString(), newPhonePrefixMap.toString());
   }
 }

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
-  <artifactId>geocoder</artifactId>
+  <artifactId>prefixmapper</artifactId>
   <version>2.10-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>http://code.google.com/p/libphonenumber/</url>
@@ -16,15 +16,9 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
-    <resources>
-      <resource>
-        <directory>src/com/google/i18n/phonenumbers/geocoding/data</directory>
-        <targetPath>com/google/i18n/phonenumbers/geocoding/data</targetPath>
-      </resource>
-    </resources>
     <testResources>
       <testResource>
-        <directory>test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
+        <directory>../../geocoder/test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
         <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data</targetPath>
       </testResource>
     </testResources>
@@ -35,11 +29,6 @@
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
       <version>5.9-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.googlecode.libphonenumber</groupId>
-      <artifactId>prefixmapper</artifactId>
-      <version>2.10-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
@@ -30,36 +30,36 @@ import java.util.SortedSet;
 import java.util.logging.Logger;
 
 /**
- * A utility that maps phone number prefixes to a string describing the geographical area the prefix
- * covers.
+ * A utility that maps phone number prefixes to a description string, which may be, for example,
+ * the geographical area the prefix covers.
  *
  * @author Shaopeng Jia
  */
-public class AreaCodeMap implements Externalizable {
+public class PhonePrefixMap implements Externalizable {
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-  private static final Logger LOGGER = Logger.getLogger(AreaCodeMap.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(PhonePrefixMap.class.getName());
 
-  private AreaCodeMapStorageStrategy areaCodeMapStorage;
+  private PhonePrefixMapStorageStrategy phonePrefixMapStorage;
 
   // @VisibleForTesting
-  AreaCodeMapStorageStrategy getAreaCodeMapStorage() {
-    return areaCodeMapStorage;
+  PhonePrefixMapStorageStrategy getPhonePrefixMapStorage() {
+    return phonePrefixMapStorage;
   }
 
   /**
-   * Creates an empty {@link AreaCodeMap}. The default constructor is necessary for implementing
+   * Creates an empty {@link PhonePrefixMap}. The default constructor is necessary for implementing
    * {@link Externalizable}. The empty map could later be populated by
-   * {@link #readAreaCodeMap(java.util.SortedMap)} or {@link #readExternal(java.io.ObjectInput)}.
+   * {@link #readPhonePrefixMap(java.util.SortedMap)} or {@link #readExternal(java.io.ObjectInput)}.
    */
-  public AreaCodeMap() {}
+  public PhonePrefixMap() {}
 
   /**
-   * Gets the size of the provided area code map storage. The map storage passed-in will be filled
-   * as a result.
+   * Gets the size of the provided phone prefix map storage. The map storage passed-in will be
+   * filled as a result.
    */
-  private static int getSizeOfAreaCodeMapStorage(AreaCodeMapStorageStrategy mapStorage,
-      SortedMap<Integer, String> areaCodeMap) throws IOException {
-    mapStorage.readFromSortedMap(areaCodeMap);
+  private static int getSizeOfPhonePrefixMapStorage(PhonePrefixMapStorageStrategy mapStorage,
+      SortedMap<Integer, String> phonePrefixMap) throws IOException {
+    mapStorage.readFromSortedMap(phonePrefixMap);
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
     mapStorage.writeExternal(objectOutputStream);
@@ -69,27 +69,29 @@ public class AreaCodeMap implements Externalizable {
     return sizeOfStorage;
   }
 
-  private AreaCodeMapStorageStrategy createDefaultMapStorage() {
+  private PhonePrefixMapStorageStrategy createDefaultMapStorage() {
     return new DefaultMapStorage();
   }
 
-  private AreaCodeMapStorageStrategy createFlyweightMapStorage() {
+  private PhonePrefixMapStorageStrategy createFlyweightMapStorage() {
     return new FlyweightMapStorage();
   }
 
   /**
-   * Gets the smaller area code map storage strategy according to the provided area code map. It
-   * actually uses (outputs the data to a stream) both strategies and retains the best one which
+   * Gets the smaller phone prefix map storage strategy according to the provided phone prefix map.
+   * It actually uses (outputs the data to a stream) both strategies and retains the best one which
    * make this method quite expensive.
    */
   // @VisibleForTesting
-  AreaCodeMapStorageStrategy getSmallerMapStorage(SortedMap<Integer, String> areaCodeMap) {
+  PhonePrefixMapStorageStrategy getSmallerMapStorage(SortedMap<Integer, String> phonePrefixMap) {
     try {
-      AreaCodeMapStorageStrategy flyweightMapStorage = createFlyweightMapStorage();
-      int sizeOfFlyweightMapStorage = getSizeOfAreaCodeMapStorage(flyweightMapStorage, areaCodeMap);
+      PhonePrefixMapStorageStrategy flyweightMapStorage = createFlyweightMapStorage();
+      int sizeOfFlyweightMapStorage = getSizeOfPhonePrefixMapStorage(flyweightMapStorage,
+                                                                     phonePrefixMap);
 
-      AreaCodeMapStorageStrategy defaultMapStorage = createDefaultMapStorage();
-      int sizeOfDefaultMapStorage = getSizeOfAreaCodeMapStorage(defaultMapStorage, areaCodeMap);
+      PhonePrefixMapStorageStrategy defaultMapStorage = createDefaultMapStorage();
+      int sizeOfDefaultMapStorage = getSizeOfPhonePrefixMapStorage(defaultMapStorage,
+                                                                   phonePrefixMap);
 
       return sizeOfFlyweightMapStorage < sizeOfDefaultMapStorage
           ? flyweightMapStorage : defaultMapStorage;
@@ -100,57 +102,57 @@ public class AreaCodeMap implements Externalizable {
   }
 
   /**
-   * Creates an {@link AreaCodeMap} initialized with {@code sortedAreaCodeMap}.  Note that the
+   * Creates an {@link PhonePrefixMap} initialized with {@code sortedPhonePrefixMap}.  Note that the
    * underlying implementation of this method is expensive thus should not be called by
    * time-critical applications.
    *
-   * @param sortedAreaCodeMap  a map from phone number prefixes to descriptions of corresponding
-   *     geographical areas, sorted in ascending order of the phone number prefixes as integers.
+   * @param sortedPhonePrefixMap  a map from phone number prefixes to descriptions of those prefixes
+   * sorted in ascending order of the phone number prefixes as integers.
    */
-  public void readAreaCodeMap(SortedMap<Integer, String> sortedAreaCodeMap) {
-    areaCodeMapStorage = getSmallerMapStorage(sortedAreaCodeMap);
+  public void readPhonePrefixMap(SortedMap<Integer, String> sortedPhonePrefixMap) {
+    phonePrefixMapStorage = getSmallerMapStorage(sortedPhonePrefixMap);
   }
 
   /**
    * Supports Java Serialization.
    */
   public void readExternal(ObjectInput objectInput) throws IOException {
-    // Read the area code map storage strategy flag.
+    // Read the phone prefix map storage strategy flag.
     boolean useFlyweightMapStorage = objectInput.readBoolean();
     if (useFlyweightMapStorage) {
-      areaCodeMapStorage = new FlyweightMapStorage();
+      phonePrefixMapStorage = new FlyweightMapStorage();
     } else {
-      areaCodeMapStorage = new DefaultMapStorage();
+      phonePrefixMapStorage = new DefaultMapStorage();
     }
-    areaCodeMapStorage.readExternal(objectInput);
+    phonePrefixMapStorage.readExternal(objectInput);
   }
 
   /**
    * Supports Java Serialization.
    */
   public void writeExternal(ObjectOutput objectOutput) throws IOException {
-    objectOutput.writeBoolean(areaCodeMapStorage instanceof FlyweightMapStorage);
-    areaCodeMapStorage.writeExternal(objectOutput);
+    objectOutput.writeBoolean(phonePrefixMapStorage instanceof FlyweightMapStorage);
+    phonePrefixMapStorage.writeExternal(objectOutput);
   }
 
   /**
-   * Returns the description of the geographical area the {@code number} corresponds to. This method
-   * distinguishes the case of an invalid prefix and a prefix for which the name is not available in
-   * the current language. If the description is not available in the current language an empty
-   * string is returned. If no description was found for the provided number, null is returned.
+   * Returns the description of the {@code number}. This method distinguishes the case of an invalid
+   * prefix and a prefix for which the name is not available in the current language. If the
+   * description is not available in the current language an empty string is returned. If no
+   * description was found for the provided number, null is returned.
    *
    * @param number  the phone number to look up
-   * @return  the description of the geographical area
+   * @return  the description of the number
    */
   String lookup(PhoneNumber number) {
-    int numOfEntries = areaCodeMapStorage.getNumOfEntries();
+   int numOfEntries = phonePrefixMapStorage.getNumOfEntries();
     if (numOfEntries == 0) {
       return null;
     }
     long phonePrefix =
         Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number));
     int currentIndex = numOfEntries - 1;
-    SortedSet<Integer> currentSetOfLengths = areaCodeMapStorage.getPossibleLengths();
+    SortedSet<Integer> currentSetOfLengths = phonePrefixMapStorage.getPossibleLengths();
     while (currentSetOfLengths.size() > 0) {
       Integer possibleLength = currentSetOfLengths.last();
       String phonePrefixStr = String.valueOf(phonePrefix);
@@ -161,9 +163,9 @@ public class AreaCodeMap implements Externalizable {
       if (currentIndex < 0) {
         return null;
       }
-      int currentPrefix = areaCodeMapStorage.getPrefix(currentIndex);
+      int currentPrefix = phonePrefixMapStorage.getPrefix(currentIndex);
       if (phonePrefix == currentPrefix) {
-        return areaCodeMapStorage.getDescription(currentIndex);
+        return phonePrefixMapStorage.getDescription(currentIndex);
       }
       currentSetOfLengths = currentSetOfLengths.headSet(possibleLength);
     }
@@ -180,7 +182,7 @@ public class AreaCodeMap implements Externalizable {
     int current = 0;
     while (start <= end) {
       current = (start + end) >>> 1;
-      int currentValue = areaCodeMapStorage.getPrefix(current);
+      int currentValue = phonePrefixMapStorage.getPrefix(current);
       if (currentValue == value) {
         return current;
       } else if (currentValue > value) {
@@ -194,10 +196,10 @@ public class AreaCodeMap implements Externalizable {
   }
 
   /**
-   * Dumps the mappings contained in the area code map.
+   * Dumps the mappings contained in the phone prefix map.
    */
   @Override
   public String toString() {
-    return areaCodeMapStorage.toString();
+    return phonePrefixMapStorage.toString();
   }
 }

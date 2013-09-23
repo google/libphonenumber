@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -22,13 +22,13 @@ import java.io.ObjectOutput;
 import java.util.SortedMap;
 
 /**
- * Default area code map storage strategy that is used for data not containing description
+ * Default phone prefix map storage strategy that is used for data not containing description
  * duplications. It is mainly intended to avoid the overhead of the string table management when it
  * is actually unnecessary (i.e no string duplication).
  *
  * @author Shaopeng Jia
  */
-class DefaultMapStorage extends AreaCodeMapStorageStrategy {
+class DefaultMapStorage extends PhonePrefixMapStorageStrategy {
 
   public DefaultMapStorage() {}
 
@@ -46,16 +46,16 @@ class DefaultMapStorage extends AreaCodeMapStorageStrategy {
   }
 
   @Override
-  public void readFromSortedMap(SortedMap<Integer, String> sortedAreaCodeMap) {
-    numOfEntries = sortedAreaCodeMap.size();
+  public void readFromSortedMap(SortedMap<Integer, String> sortedPhonePrefixMap) {
+    numOfEntries = sortedPhonePrefixMap.size();
     phoneNumberPrefixes = new int[numOfEntries];
     descriptions = new String[numOfEntries];
     int index = 0;
-    for (int prefix : sortedAreaCodeMap.keySet()) {
+    for (int prefix : sortedPhonePrefixMap.keySet()) {
       phoneNumberPrefixes[index++] = prefix;
       possibleLengths.add((int) Math.log10(prefix) + 1);
     }
-    sortedAreaCodeMap.values().toArray(descriptions);
+    sortedPhonePrefixMap.values().toArray(descriptions);
   }
 
   @Override

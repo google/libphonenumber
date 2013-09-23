@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -33,9 +33,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * A utility which knows the data files that are available for the geocoder to use. The data files
- * contain mappings from phone number prefixes to text descriptions, and are organized by country
- * calling code and language that the text descriptions are in.
+ * A utility which knows the data files that are available for the phone prefix mappers to use.
+ * The data files contain mappings from phone number prefixes to text descriptions, and are
+ * organized by country calling code and language that the text descriptions are in.
  *
  * @author Shaopeng Jia
  */

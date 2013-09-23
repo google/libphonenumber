@@ -5,6 +5,8 @@
   <property name="libphonenumber.test.dir" value="libphonenumber/test"/>
   <property name="geocoder.src.dir" value="geocoder/src"/>
   <property name="geocoder.test.dir" value="geocoder/test"/>
+  <property name="prefixmapper.src.dir" value="internal/prefixmapper/src"/>
+  <property name="prefixmapper.test.dir" value="internal/prefixmapper/test"/>
   <property name="build.dir" value="build"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
@@ -131,9 +133,9 @@
   <target name="compile" description="Compile Java source."
           depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-geo-data">
     <mkdir dir="${classes.dir}"/>
-    <javac srcdir="${libphonenumber.src.dir};${geocoder.src.dir}"
+    <javac srcdir="${libphonenumber.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
            destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
-    <javac srcdir="${libphonenumber.test.dir};${geocoder.test.dir}"
+    <javac srcdir="${libphonenumber.test.dir};${geocoder.test.dir};${prefixmapper.test.dir}"
            destdir="${classes.dir}" classpathref="classpath" debug="on"
            includeAntRuntime="false"/>
   </target>
@@ -146,6 +148,7 @@
         <exclude name="**/*Test*"/>
         <exclude name="**/BuildMetadata*"/>
         <exclude name="**/geocoding/*"/>
+        <exclude name="**/prefixmapper/*"/>
       </fileset>
       <fileset dir="${libphonenumber.src.dir}">
         <include name="**/PhoneNumberMetadataProto*"/>
@@ -156,6 +159,7 @@
     <jar destfile="${jar.dir}/offline-geocoder.jar">
       <fileset dir="${classes.dir}">
         <include name="**/geocoding/*.class"/>
+        <include name="**/prefixmapper/*.class"/>
         <exclude name="**/*Test*"/>
         <exclude name="**/geocoding/GenerateAreaCodeData*"/>
       </fileset>
@@ -198,6 +202,9 @@
       </batchtest>
       <batchtest fork="no" todir="${report.dir}">
         <fileset dir="${geocoder.test.dir}" includes="**/*Test.java"/>
+      </batchtest>
+      <batchtest fork="no" todir="${report.dir}">
+        <fileset dir="${prefixmapper.test.dir}" includes="**/*Test.java"/>
       </batchtest>
     </junit>
     <fail message="Tests failed. Run 'ant junitreport' for more info."

@@ -19,7 +19,7 @@ package com.google.i18n.phonenumbers.geocoding;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
-import com.google.i18n.phonenumbers.geocoding.PrefixFileReader;
+import com.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;
 
 import java.util.Locale;
 

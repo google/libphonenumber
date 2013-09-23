@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -23,13 +23,13 @@ import java.util.SortedMap;
 import java.util.TreeSet;
 
 /**
- * Abstracts the way area code data is stored into memory and serialized to a stream. It is used by
- * {@link AreaCodeMap} to support the most space-efficient storage strategy according to the
+ * Abstracts the way phone prefix data is stored into memory and serialized to a stream. It is used
+ * by {@link PhonePrefixMap} to support the most space-efficient storage strategy according to the
  * provided data.
  *
  * @author Philippe Liard
  */
-abstract class AreaCodeMapStorageStrategy {
+abstract class PhonePrefixMapStorageStrategy {
   protected int numOfEntries = 0;
   protected final TreeSet<Integer> possibleLengths = new TreeSet<Integer>();
 
@@ -53,18 +53,18 @@ abstract class AreaCodeMapStorageStrategy {
 
   /**
    * Sets the internal state of the underlying storage implementation from the provided {@code
-   * sortedAreaCodeMap} that maps phone number prefixes to description strings.
+   * sortedPhonePrefixMap} that maps phone number prefixes to description strings.
    *
-   * @param sortedAreaCodeMap  a sorted map that maps phone number prefixes including country
+   * @param sortedPhonePrefixMap  a sorted map that maps phone number prefixes including country
    *    calling code to description strings
    */
-  public abstract void readFromSortedMap(SortedMap<Integer, String> sortedAreaCodeMap);
+  public abstract void readFromSortedMap(SortedMap<Integer, String> sortedPhonePrefixMap);
 
   /**
    * Sets the internal state of the underlying storage implementation reading the provided {@code
    * objectInput}.
    *
-   * @param objectInput  the object input stream from which the area code map is read
+   * @param objectInput  the object input stream from which the phone prefix map is read
    * @throws IOException  if an error occurred reading the provided input stream
    */
   public abstract void readExternal(ObjectInput objectInput) throws IOException;
@@ -73,13 +73,13 @@ abstract class AreaCodeMapStorageStrategy {
    * Writes the internal state of the underlying storage implementation to the provided {@code
    * objectOutput}.
    *
-   * @param objectOutput  the object output stream to which the area code map is written
+   * @param objectOutput  the object output stream to which the phone prefix map is written
    * @throws IOException  if an error occurred writing to the provided output stream
    */
   public abstract void writeExternal(ObjectOutput objectOutput) throws IOException;
 
   /**
-   * @return  the number of entries contained in the area code map
+   * @return  the number of entries contained in the phone prefix map
    */
   public int getNumOfEntries() {
     return numOfEntries;

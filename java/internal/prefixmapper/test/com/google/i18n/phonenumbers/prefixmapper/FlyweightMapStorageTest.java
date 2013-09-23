@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import junit.framework.TestCase;
 
@@ -33,7 +33,7 @@ import java.util.TreeMap;
  * @author Philippe Liard
  */
 public class FlyweightMapStorageTest extends TestCase {
-  private static final SortedMap<Integer, String> areaCodeMap;
+  private static final SortedMap<Integer, String> phonePrefixMap;
   static {
     SortedMap<Integer, String> tmpMap = new TreeMap<Integer, String>();
     tmpMap.put(331402, "Paris");
@@ -42,7 +42,7 @@ public class FlyweightMapStorageTest extends TestCase {
     tmpMap.put(334911, "Marseille");
     tmpMap.put(334912, "");
     tmpMap.put(334913, "");
-    areaCodeMap = Collections.unmodifiableSortedMap(tmpMap);
+    phonePrefixMap = Collections.unmodifiableSortedMap(tmpMap);
   }
 
   private FlyweightMapStorage mapStorage;
@@ -50,7 +50,7 @@ public class FlyweightMapStorageTest extends TestCase {
   @Override
   protected void setUp() throws Exception {
     mapStorage = new FlyweightMapStorage();
-    mapStorage.readFromSortedMap(areaCodeMap);
+    mapStorage.readFromSortedMap(phonePrefixMap);
   }
 
   public void testReadFromSortedMap() {

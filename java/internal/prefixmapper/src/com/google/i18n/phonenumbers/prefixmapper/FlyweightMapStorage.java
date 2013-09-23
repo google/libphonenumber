@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers.geocoding;
+package com.google.i18n.phonenumbers.prefixmapper;
 
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -27,13 +27,13 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Flyweight area code map storage strategy that uses a table to store unique strings and shorts to
- * store the prefix and description indexes when possible. It is particularly space-efficient when
- * the provided area code map contains a lot of redundant descriptions.
+ * Flyweight phone prefix map storage strategy that uses a table to store unique strings and shorts
+ * to store the prefix and description indexes when possible. It is particularly space-efficient
+ * when the provided phone prefix map contains a lot of redundant descriptions.
  *
  * @author Philippe Liard
  */
-final class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
+final class FlyweightMapStorage extends PhonePrefixMapStorageStrategy {
   // Size of short and integer types in bytes.
   private static final int SHORT_NUM_BYTES = Short.SIZE / 8;
   private static final int INT_NUM_BYTES = Integer.SIZE / 8;
@@ -67,30 +67,30 @@ final class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
   }
 
   @Override
-  public void readFromSortedMap(SortedMap<Integer, String> areaCodeMap) {
+  public void readFromSortedMap(SortedMap<Integer, String> phonePrefixMap) {
     SortedSet<String> descriptionsSet = new TreeSet<String>();
-    numOfEntries = areaCodeMap.size();
-    prefixSizeInBytes = getOptimalNumberOfBytesForValue(areaCodeMap.lastKey());
+    numOfEntries = phonePrefixMap.size();
+    prefixSizeInBytes = getOptimalNumberOfBytesForValue(phonePrefixMap.lastKey());
     phoneNumberPrefixes = ByteBuffer.allocate(numOfEntries * prefixSizeInBytes);
 
     // Fill the phone number prefixes byte buffer, the set of possible lengths of prefixes and the
     // description set.
     int index = 0;
-    for (Entry<Integer, String> entry : areaCodeMap.entrySet()) {
+    for (Entry<Integer, String> entry : phonePrefixMap.entrySet()) {
       int prefix = entry.getKey();
       storeWordInBuffer(phoneNumberPrefixes, prefixSizeInBytes, index, prefix);
       possibleLengths.add((int) Math.log10(prefix) + 1);
       descriptionsSet.add(entry.getValue());
       ++index;
     }
-    createDescriptionPool(descriptionsSet, areaCodeMap);
+    createDescriptionPool(descriptionsSet, phonePrefixMap);
   }
 
   /**
-   * Creates the description pool from the provided set of string descriptions and area code map.
+   * Creates the description pool from the provided set of string descriptions and phone prefix map.
    */
   private void createDescriptionPool(SortedSet<String> descriptionsSet,
-      SortedMap<Integer, String> areaCodeMap) {
+      SortedMap<Integer, String> phonePrefixMap) {
     descIndexSizeInBytes = getOptimalNumberOfBytesForValue(descriptionsSet.size() - 1);
     descriptionIndexes = ByteBuffer.allocate(numOfEntries * descIndexSizeInBytes);
     descriptionPool = new String[descriptionsSet.size()];
@@ -100,7 +100,7 @@ final class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
     int index = 0;
     for (int i = 0; i < numOfEntries; i++) {
       int prefix = readWordFromBuffer(phoneNumberPrefixes, prefixSizeInBytes, i);
-      String description = areaCodeMap.get(prefix);
+      String description = phonePrefixMap.get(prefix);
       int positionInDescriptionPool = Arrays.binarySearch(descriptionPool, description);
       storeWordInBuffer(descriptionIndexes, descIndexSizeInBytes, index, positionInDescriptionPool);
       ++index;
@@ -134,8 +134,8 @@ final class FlyweightMapStorage extends AreaCodeMapStorageStrategy {
   }
 
   /**
-   * Reads the area code entries from the provided input stream and stores them to the internal byte
-   * buffers.
+   * Reads the phone prefix entries from the provided input stream and stores them to the internal
+   * byte buffers.
    */
   private void readEntries(ObjectInput objectInput) throws IOException {
     numOfEntries = objectInput.readInt();
