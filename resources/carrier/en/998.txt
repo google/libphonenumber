@@ -1,0 +1,33 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+99861|MTS
+99862|MTS
+99865|MTS
+99866|MTS
+99867|MTS
+99869|MTS
+99870|MTS
+99872|MTS
+99873|MTS
+99874|MTS
+99875|MTS
+99876|MTS
+99879|MTS
+99890|Beeline
+99891|Beeline
+99892|MTS
+99893|Ucell
+99894|Ucell
+99897|MTS

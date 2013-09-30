@@ -1,0 +1,43 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+92300|Mobilink
+92301|Mobilink
+92302|Mobilink
+92303|Mobilink
+92304|Mobilink
+92305|Mobilink
+92306|Mobilink
+92307|Mobilink
+92308|Mobilink
+92311|Ufone
+92312|Ufone
+92313|Ufone
+92314|Ufone
+92315|Ufone
+9232|Warid
+92331|Ufone
+92332|Ufone
+92333|Ufone
+92334|Ufone
+92335|Ufone
+92336|Ufone
+92341|Telenor
+92342|Telenor
+92343|Telenor
+92344|Telenor
+92345|Telenor
+92346|Telenor
+92347|Telenor
+92364|Ufone

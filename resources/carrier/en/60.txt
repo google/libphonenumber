@@ -1,0 +1,113 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+60102|DiGi
+601030|Celcom
+601031|Celcom
+601032|Celcom
+601033|Celcom
+601034|Celcom
+601036|DiGi
+601037|DiGi
+601038|DiGi
+601039|DiGi
+601040|Celcom
+601041|Celcom
+601042|Maxis
+601043|Maxis
+601046|DiGi
+601050|Celcom
+601051|Celcom
+601052|Celcom
+601053|Celcom
+601054|Celcom
+601056|DiGi
+601057|Celcom
+601058|Celcom
+601059|Celcom
+601066|DiGi
+601070|Maxis
+601071|Maxis
+601076|DiGi
+601077|Celcom
+601078|Celcom
+601079|Celcom
+601080|Celcom
+601081|Celcom
+601082|DiGi
+601083|Celcom
+601084|Celcom
+601085|Celcom
+601086|Celcom
+601087|Celcom
+601088|DiGi
+601089|Maxis
+601090|DiGi
+601091|DiGi
+601092|DiGi
+601093|DiGi
+601094|DiGi
+601095|DiGi
+601096|DiGi
+601097|DiGi
+601098|DiGi
+601113|Celcom
+601115|Celcom
+601116|DiGi
+601119|Celcom
+601126|DiGi
+6012|Maxis
+6013|Celcom
+60142|Maxis
+60143|DiGi
+60145|Celcom
+60146|DiGi
+60147|Maxis
+60148|Celcom
+60149|DiGi
+6015920|Celcom
+6015921|Celcom
+6015922|Celcom
+6015923|Celcom
+6015924|Celcom
+6016|DiGi
+6017|Maxis
+60182|TM Homeline
+601831|TM Homeline
+601832|TM Homeline
+601833|TM Homeline
+601835|TM Homeline
+601836|TM Homeline
+601837|TM Homeline
+601838|TM Homeline
+601839|TM Homeline
+601840|TM Homeline
+601846|TM Homeline
+601847|TM Homeline
+601857|TM Homeline
+601866|TM Homeline
+601876|TM Homeline
+601877|TM Homeline
+601878|TM Homeline
+601879|TM Homeline
+601887|TM Homeline
+601890|TM Homeline
+601891|TM Homeline
+601894|TM Homeline
+601895|TM Homeline
+601896|TM Homeline
+601897|TM Homeline
+601898|TM Homeline
+601899|TM Homeline
+6019|Celcom

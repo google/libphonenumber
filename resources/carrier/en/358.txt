@@ -1,0 +1,44 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+35841|DNA
+35842|Sonera
+3584320|DNA
+3584321|DNA
+358436|TDC
+358438|TDC
+35844|DNA
+358450|Sonera
+358451|Elisa
+358452|Elisa
+358453|Elisa
+3584541|Sonera
+3584542|Finnet Group / NOKIA OYJ
+3584543|Finnet Group / NOKIA OYJ
+3584544|Finnet Group / NOKIA OYJ
+3584545|Finnet Group / NOKIA OYJ
+3584559|Sonera
+358456|Elisa
+3584570|AMT
+3584573|AMT
+3584574|DNA
+3584575|AMT
+3584576|DNA
+3584577|DNA
+3584578|DNA
+3584579|DNA
+358458|Elisa
+35846|Elisa
+3584944|DNA
+35850|Elisa

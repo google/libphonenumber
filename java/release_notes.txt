@@ -1,3 +1,17 @@
+Sep 30, 2013:
+* Code changes:
+  - Added PhoneNumberToCarrierMapper including unittests.
+  - Added build rules for generating binary carrier mapping files from text files.
+  - Modified PhoneNumberParserServlet.java (the appengine demo) to incorporate carrier mapping.
+* Metadata changes:
+  - Added carrier mapping files for some NANPA countries, EG, SS, MA, DZ, TN, GM, SN, MR, ML, GN,
+    CI, BF, NE, TG, BJ, MU, LR, SL, GH, NG, TD, CF, CM, CV, ST, GQ, GA, CG, CD, AO, GW, SC, SD, RW,
+    ET, SO, DJ, KE, TZ, UG, BI, MZ, ZM, MG, ZW, MW, BW, SZ, ZA, AW, FO, GL, GR, NL, BE, FR, GI, PT,
+    LU, IE, AL, CY, FI, BG, HU, LT, EE, AM, BY, AD, UA, RS, HR, SI, BA, IT, RO, CH, CZ, SK, AT, DK,
+    NO, PL, DE, BZ, CR, PE, CU, AR, BR, CL, CO, VE, BO, PY, SR, UY, MY, AU, ID, PH, NZ, SG, TH, TL,
+    BN, PG, TO, VU, FJ, WS, KI, RU, VN, HK, KH, LA, CN, BD, TR, IN, PK, AF, LK, MV, JO, IQ, KW, SA,
+    YE, OM, PS, AE, IL, BH, QA, BT, NP, IR, TJ, TM, AZ, GE, KG and UZ in English.
+
 Sep 23, 2013: libphonenumber-5.8.6
 * Code changes:
   - Restructured the geocoder binary generation code, moving the classes under tools/ from

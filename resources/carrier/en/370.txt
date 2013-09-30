@@ -1,0 +1,50 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+37060|Tele 2
+37061|Omnitel
+37062|Omnitel
+370640|BITĖ
+370641|BITĖ
+370642|BITĖ
+370643|BITĖ
+370644|BITĖ
+370645|Tele 2
+370646|Tele 2
+370647|Tele 2
+370648|Tele 2
+370649|BITĖ
+37065|BITĖ
+370660|BITĖ
+370662|Omnitel
+37067|Tele 2
+370680|Omnitel
+370681|BITĖ
+370682|Omnitel
+370683|Tele 2
+370684|Tele 2
+370685|BITĖ
+370686|Omnitel
+370687|Omnitel
+370688|Omnitel
+370689|BITĖ
+370690|BITĖ
+370692|Omnitel
+370693|Omnitel
+370694|Omnitel
+370695|Omnitel
+370696|Omnitel
+370697|Omnitel
+370698|Omnitel
+370699|BITĖ

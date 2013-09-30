@@ -50,6 +50,11 @@
       <artifactId>geocoder</artifactId>
       <version>2.10-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>com.googlecode.libphonenumber</groupId>
+      <artifactId>carrier</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>

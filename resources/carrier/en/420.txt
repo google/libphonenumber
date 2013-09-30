@@ -1,0 +1,32 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+420601|O2
+420602|O2
+420603|T-Mobile
+420604|T-Mobile
+420605|T-Mobile
+420606|O2
+420607|O2
+420608|Vodafone
+42072|O2
+42073|T-Mobile
+42077|Vodafone
+42093|T-Mobile
+420962|O2
+420963|T-Mobile
+420964|T-Mobile
+420965|T-Mobile
+420966|O2
+420967|Vodafone

@@ -1,0 +1,65 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+31610|KPN
+31611|Vodafone Libertel B.V.
+31612|KPN
+31613|KPN
+31614|T-Mobile
+31615|Vodafone Libertel B.V.
+31616|Telfort
+31617|Telfort
+31620|KPN
+31621|Vodafone Libertel B.V.
+31622|KPN
+31623|KPN
+31624|T-Mobile
+31625|Vodafone Libertel B.V.
+31626|Telfort
+31627|Vodafone Libertel B.V.
+31629|Vodafone Libertel B.V.
+31630|KPN
+31631|Vodafone Libertel B.V.
+31633|Telfort
+31634|T-Mobile
+316351|Intercity Zakelijk
+316359|ASPIDER Solutions Nederland B.V.
+31636|Tele2
+31637|Teleena (MVNE)
+31640|Tele2
+31641|T-Mobile
+31642|T-Mobile
+31643|T-Mobile
+31644|Telfort
+31645|Telfort
+31646|Vodafone Libertel B.V.
+31647|Telfort
+31649|Telfort
+31650|Vodafone Libertel B.V.
+31651|KPN
+31652|Vodafone Libertel B.V.
+31653|KPN
+31654|Vodafone Libertel B.V.
+31655|Vodafone Libertel B.V.
+31656|T-Mobile
+31657|KPN
+31658|Telfort
+31659|Vectone Mobile/Delight Mobile
+31680|Vodafone Libertel B.V.
+31681|T-Mobile
+31683|KPN
+31684|Lycamobile
+31685|Lycamobile
+31686|Lycamobile
+31687|Lycamobile

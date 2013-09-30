@@ -20,8 +20,10 @@ package com.google.phonenumbers;
 
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
+import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 
@@ -183,6 +185,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
 
       boolean isPossible = phoneUtil.isPossibleNumber(number);
       boolean isNumberValid = phoneUtil.isValidNumber(number);
+      PhoneNumberType numberType = phoneUtil.getNumberType(number);
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
@@ -205,8 +208,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         }
         String region = phoneUtil.getRegionCodeForNumber(number);
         appendLine("Phone Number region", region == null ? "" : region, output);
-        appendLine("Result from getNumberType()",
-                   phoneUtil.getNumberType(number).toString(), output);
+        appendLine("Result from getNumberType()", numberType.toString(), output);
       }
       output.append("</TABLE>");
       output.append("</DIV>");
@@ -250,16 +252,33 @@ public class PhoneNumberParserServlet extends HttpServlet {
       output.append("</TABLE>");
       output.append("</DIV>");
 
-      output.append("<DIV>");
-      output.append("<TABLE border=1>");
-      output.append("<TR><TD colspan=2>PhoneNumberOfflineGeocoder Results</TD></TR>");
-      appendLine(
-          "Location",
-          PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
-              number, new Locale(languageCode, regionCode)),
-          output);
-      output.append("</TABLE>");
-      output.append("</DIV>");
+      if (isNumberValid) {
+        output.append("<DIV>");
+        output.append("<TABLE border=1>");
+        output.append("<TR><TD colspan=2>PhoneNumberOfflineGeocoder Results</TD></TR>");
+        appendLine(
+            "Location",
+            PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
+                number, new Locale(languageCode, regionCode)),
+            output);
+        output.append("</TABLE>");
+        output.append("</DIV>");
+
+        if (numberType == PhoneNumberType.MOBILE ||
+            numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE ||
+            numberType == PhoneNumberType.PAGER) {
+          output.append("<DIV>");
+          output.append("<TABLE border=1>");
+          output.append("<TR><TD colspan=2>PhoneNumberToCarrierMapper Results</TD></TR>");
+          appendLine(
+              "Carrier",
+              PhoneNumberToCarrierMapper.getInstance().getDescriptionForNumber(
+                  number, new Locale(languageCode, regionCode)),
+              output);
+          output.append("</TABLE>");
+          output.append("</DIV>");
+        }
+      }
     } catch (NumberParseException e) {
       output.append(e.toString());
     }

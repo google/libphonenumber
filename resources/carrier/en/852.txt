@@ -1,0 +1,201 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+852176|PCCW Mobile
+85241|CMCC HK
+852454|PCCW Mobile
+852480|3
+852481|3
+852482|1O1O / One2Free / New World Mobility
+852486|3
+852487|New World Mobility
+852488|1O1O / One2Free / New World Mobility
+852489|1O1O / One2Free / New World Mobility
+852490|PCCW Mobile
+852493|3
+852510|CMCC HK
+8525110|New World Mobility
+8525111|New World Mobility
+8525112|New World Mobility
+8525113|New World Mobility
+8525114|New World Mobility
+852512|CMCC HK
+852513|CMCC HK
+852514|CMCC HK
+852516|CMCC HK
+852517|CMCC HK
+852519|3
+85253|CMCC HK
+852601|SmarTone
+852602|New World Mobility
+852603|New World Mobility
+852604|3
+852605|1O1O / One2Free / New World Mobility
+852606|CMCC HK
+852607|3
+852608|3
+852609|CMCC HK
+852610|3
+852611|SmarTone
+852612|PCCW Mobile
+852613|New World Mobility
+852614|1O1O / One2Free / New World Mobility
+852615|CMCC HK
+852616|1O1O / One2Free / New World Mobility
+852617|New World Mobility
+852618|PCCW Mobile
+852619|3
+852620|3
+852622|CMCC HK
+852623|CMCC HK
+852625|PCCW Mobile
+852627|3
+852628|New World Mobility
+852629|1O1O / One2Free / New World Mobility
+852630|PCCW Mobile
+852632|SmarTone
+852633|3
+852634|3
+852635|CMCC HK
+852637|New World Mobility
+852638|PCCW Mobile
+852639|1O1O / One2Free / New World Mobility
+852640|3
+852641|New World Mobility
+852642|New World Mobility
+852643|CMCC HK
+852644|PCCW Mobile
+852646|SmarTone
+852647|3
+852648|CMCC HK
+852649|PCCW Mobile
+852650|3
+852653|New World Mobility
+852654|New World Mobility
+852657|CMCC HK
+852659|New World Mobility
+852660|PCCW Mobile
+852662|PCCW Mobile
+852664|CMCC HK
+852665|1O1O / One2Free / New World Mobility
+852667|CMCC HK
+852668|3
+852669|PCCW Mobile
+852670|CMCC HK
+852671|1O1O / One2Free / New World Mobility
+852672|CMCC HK
+852673|CMCC HK
+852674|CMCC HK
+852675|New World Mobility
+852676|CMCC HK
+852677|1O1O / One2Free / New World Mobility
+852679|3
+852680|PCCW Mobile
+852682|New World Mobility
+852683|1O1O / One2Free / New World Mobility
+852684|CMCC HK
+852685|CMCC HK
+852687|CMCC HK
+852688|CMCC HK
+852689|1O1O / One2Free / New World Mobility
+852690|3
+852691|CMCC HK
+852692|PCCW Mobile
+852693|CMCC HK
+852694|CMCC HK
+852695|CMCC HK
+852697|1O1O / One2Free / New World Mobility
+852901|SmarTone
+852902|1O1O / One2Free / New World Mobility
+852903|1O1O / One2Free / New World Mobility
+852904|3
+852905|1O1O / One2Free / New World Mobility
+852906|CMCC HK
+852907|1O1O / One2Free / New World Mobility
+852908|1O1O / One2Free / New World Mobility
+852909|1O1O / One2Free / New World Mobility
+852910|1O1O / One2Free / New World Mobility
+852912|3
+852913|SmarTone
+852914|1O1O / One2Free / New World Mobility
+852915|1O1O / One2Free / New World Mobility
+852916|SmarTone
+852917|SmarTone
+852918|1O1O / One2Free / New World Mobility
+852919|1O1O / One2Free / New World Mobility
+852920|CMCC HK
+852921|New World Mobility
+852922|SmarTone
+852923|PCCW Mobile
+852924|SmarTone
+852925|New World Mobility
+852926|1O1O / One2Free / New World Mobility
+852927|PCCW Mobile
+852928|3
+852930|1O1O / One2Free / New World Mobility
+852931|SmarTone
+852932|3
+852933|1O1O / One2Free / New World Mobility
+852934|CMCC HK
+852935|3
+852936|3
+852937|3
+852938|SmarTone
+852940|1O1O / One2Free / New World Mobility
+852941|3
+852942|3
+852943|SmarTone
+852944|SmarTone
+852945|SmarTone
+852946|1O1O / One2Free / New World Mobility
+852947|3
+852948|3
+852949|3
+852950|3
+852951|CMCC HK
+852952|PCCW Mobile
+852953|1O1O / One2Free / New World Mobility
+852954|SmarTone
+852955|New World Mobility
+852956|1O1O / One2Free / New World Mobility
+852957|3
+852958|CMCC HK
+852960|CMCC HK
+852961|1O1O / One2Free / New World Mobility
+852962|New World Mobility
+852963|3
+852964|PCCW Mobile
+852965|New World Mobility
+852966|SmarTone
+852967|3
+852968|SmarTone
+852970|3
+852971|CMCC HK
+852972|SmarTone
+852973|SmarTone
+852974|3
+852975|3
+852976|1O1O / One2Free / New World Mobility
+852977|PCCW Mobile
+852978|New World Mobility
+852979|CMCC HK
+852980|PCCW Mobile
+852981|3
+852982|3
+852983|3
+852984|SmarTone
+852985|SmarTone
+852986|SmarTone
+852987|New World Mobility
+852988|1O1O / One2Free / New World Mobility

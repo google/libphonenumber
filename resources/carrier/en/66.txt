@@ -1,0 +1,240 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+66800|AIS
+66801|AIS
+66802|True Move
+66803|True Move
+66804|dtac
+66805|dtac
+66806|AIS
+66807|AIS
+6680895|dtac
+6680896|dtac
+6680897|dtac
+6680898|dtac
+66809|True Move
+66810|AIS
+66811|AIS
+6681202|True Move
+6681203|True Move
+6681204|True Move
+6681205|dtac
+6681206|dtac
+6681207|dtac
+6681208|dtac
+6681209|dtac
+6681234|True Move
+6681235|True Move
+6681245|True Move
+6681246|True Move
+6681247|True Move
+6681248|True Move
+6681249|True Move
+668130|dtac
+668134|dtac
+668139|dtac
+668140|dtac
+668141|dtac
+668142|dtac
+668143|dtac
+668144|dtac
+668145|dtac
+6681460|dtac
+6681461|dtac
+6681462|dtac
+6681463|dtac
+6681464|dtac
+6681465|dtac
+6681466|dtac
+6681467|dtac
+6681468|True Move
+6681469|True Move
+668153|dtac
+668154|dtac
+668155|dtac
+668156|dtac
+668157|dtac
+668158|dtac
+668159|dtac
+66816|dtac
+668171|dtac
+66818|AIS
+66819|AIS
+66820|True Move
+66821|AIS
+66822|AIS
+66823|dtac
+66824|dtac
+66825|True Move
+66826|True Move
+66827|dtac
+66828|AIS
+6682900|True Move
+6682901|True Move
+6682902|True Move
+668291|True Move
+668292|True Move
+668293|True Move
+668294|True Move
+668295|True Move
+668296|True Move
+668297|True Move
+668298|True Move
+668299|True Move
+66831|dtac
+668320|True Move
+668321|True Move
+668322|True Move
+668323|True Move
+668324|True Move
+668325|True Move
+668326|True Move
+668327|True Move
+668328|dtac
+668329|dtac
+66833|AIS
+668340|True Move
+668341|dtac
+668342|True Move
+668343|True Move
+668344|True Move
+668345|True Move
+668346|True Move
+668347|True Move
+668348|True Move
+668349|True Move
+668350|True Move
+668351|True Move
+668352|True Move
+668353|True Move
+668354|dtac
+668355|dtac
+668356|dtac
+668357|dtac
+668358|dtac
+668359|dtac
+668360|True Move
+668361|True Move
+668362|dtac
+668363|dtac
+668364|dtac
+668365|dtac
+668366|dtac
+668367|dtac
+668368|True Move
+668369|dtac
+668370|True Move
+668371|True Move
+668372|dtac
+668373|dtac
+668374|dtac
+668375|True Move
+668376|dtac
+668377|True Move
+668378|True Move
+668379|True Move
+66838|True Move
+668390|True Move
+668391|True Move
+668392|True Move
+668393|True Move
+668394|True Move
+668395|dtac
+668396|dtac
+668397|True Move
+668398|True Move
+668399|True Move
+66840|True Move
+66841|True Move
+66842|True Move
+668430|dtac
+668440|dtac
+668450|True Move
+668451|dtac
+668458|True Move
+668459|dtac
+66846|dtac
+66847|AIS
+66848|AIS
+668497|True Move
+668498|True Move
+668499|True Move
+66850|dtac
+66851|dtac
+66852|AIS
+66853|dtac
+668540|dtac
+668541|dtac
+668549|dtac
+66855|True Move
+668561|dtac
+66857|AIS
+66858|True Move
+668590|dtac
+668591|dtac
+668592|dtac
+668593|True Move
+668594|True Move
+668595|True Move
+668596|True Move
+668597|True Move
+668598|True Move
+668599|True Move
+66860|AIS
+66861|AIS
+66862|AIS
+66865|True Move
+66866|True Move
+668670|True Move
+668671|True Move
+668672|True Move
+668673|True Move
+668674|True Move
+668675|dtac
+668676|dtac
+668677|dtac
+668678|dtac
+668679|dtac
+66868|dtac
+66869|dtac
+66870|AIS
+66871|AIS
+66872|AIS
+66873|dtac
+66874|dtac
+66875|dtac
+66876|dtac
+66877|dtac
+66878|AIS
+66879|AIS
+66880|dtac
+66881|dtac
+66882|dtac
+66883|AIS
+66884|AIS
+66886|True Move
+66887|True Move
+66888|dtac
+668890|dtac
+66890|AIS
+66891|True Move
+66892|AIS
+66894|dtac
+66895|AIS
+66896|dtac
+66897|dtac
+66898|AIS
+66899|AIS
+66900|dtac

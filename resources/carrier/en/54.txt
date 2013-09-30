@@ -1,0 +1,98 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+549113|Personal
+549114|Personal
+549115|Personal
+549116|Personal
+549220|Personal
+549221|Personal
+549222|Personal
+549223|Personal
+549224|Personal
+549225|Personal
+549226|Personal
+549227|Personal
+549228|Personal
+549229|Personal
+549230|Personal
+549231|Personal
+549232|Personal
+549233|Personal
+549234|Personal
+549235|Personal
+549236|Personal
+549239|Personal
+549247|Personal
+549249|Personal
+549260|Personal
+549261|Personal
+549262|Personal
+549263|Personal
+549264|Personal
+549265|Personal
+549266|Personal
+549280|Personal
+549290|Personal
+549291|Personal
+549292|Personal
+549293|Personal
+549294|Personal
+549295|Personal
+549296|Personal
+549297|Personal
+549298|Personal
+549299|Personal
+549332|Personal
+549336|Personal
+549338|Personal
+549340|Personal
+549341|Personal
+549342|Personal
+549343|Personal
+549344|Personal
+549345|Personal
+549346|Personal
+549347|Personal
+549348|Personal
+549349|Personal
+549351|Personal
+549352|Personal
+549353|Personal
+549354|Personal
+549356|Personal
+549357|Personal
+549358|Personal
+549362|Personal
+549364|Personal
+549370|Personal
+549371|Personal
+549372|Personal
+549373|Personal
+549374|Personal
+549375|Personal
+549376|Personal
+549377|Personal
+549378|Personal
+549379|Personal
+549380|Personal
+549381|Personal
+549382|Personal
+549383|Personal
+549384|Personal
+549385|Personal
+549386|Personal
+549387|Personal
+549388|Personal
+549389|Personal

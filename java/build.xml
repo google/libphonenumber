@@ -3,6 +3,8 @@
 <project name="libphonenumber" default="compile">
   <property name="libphonenumber.src.dir" value="libphonenumber/src"/>
   <property name="libphonenumber.test.dir" value="libphonenumber/test"/>
+  <property name="carrier.src.dir" value="carrier/src"/>
+  <property name="carrier.test.dir" value="carrier/test"/>
   <property name="geocoder.src.dir" value="geocoder/src"/>
   <property name="geocoder.test.dir" value="geocoder/test"/>
   <property name="prefixmapper.src.dir" value="internal/prefixmapper/src"/>
@@ -85,6 +87,26 @@
     </exec>
   </target>
 
+  <target name="build-carrier-data">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="GeneratePhonePrefixData"/>
+      <arg value="${resources.dir}/carrier/"/>
+      <arg value="carrier/src/com/google/i18n/phonenumbers/carrier/data"/>
+    </exec>
+  </target>
+
+  <target name="build-carrier-test-data">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="GeneratePhonePrefixData"/>
+      <arg value="${resources.dir}/test/carrier/"/>
+      <arg value="carrier/test/com/google/i18n/phonenumbers/carrier/testing_data"/>
+    </exec>
+  </target>
+
   <target name="build-geo-data">
     <exec executable="java">
       <arg value="-jar" />
@@ -131,11 +153,11 @@
   </target>
 
   <target name="compile" description="Compile Java source."
-          depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-geo-data">
+          depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data">
     <mkdir dir="${classes.dir}"/>
-    <javac srcdir="${libphonenumber.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
+    <javac srcdir="${libphonenumber.src.dir};${carrier.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
            destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
-    <javac srcdir="${libphonenumber.test.dir};${geocoder.test.dir};${prefixmapper.test.dir}"
+    <javac srcdir="${libphonenumber.test.dir};${carrier.test.dir};${geocoder.test.dir};${prefixmapper.test.dir}"
            destdir="${classes.dir}" classpathref="classpath" debug="on"
            includeAntRuntime="false"/>
   </target>
@@ -147,6 +169,7 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
         <exclude name="**/BuildMetadata*"/>
+        <exclude name="**/PhoneNumberToCarrierMapper*"/>
         <exclude name="**/geocoding/*"/>
         <exclude name="**/prefixmapper/*"/>
       </fileset>
@@ -154,6 +177,16 @@
         <include name="**/PhoneNumberMetadataProto*"/>
         <include name="**/PhoneNumberAlternateFormatsProto*"/>
         <include name="**/ShortNumberMetadataProto*"/>
+      </fileset>
+    </jar>
+    <jar destfile="${jar.dir}/carrier-mapper.jar">
+      <fileset dir="${classes.dir}">
+        <include name="**/PhoneNumberToCarrierMapper.class"/>
+        <include name="**/prefixmapper/*.class"/>
+        <exclude name="**/*Test*"/>
+      </fileset>
+      <fileset dir="${carrier.src.dir}">
+        <include name="**/carrier/data/*"/>
       </fileset>
     </jar>
     <jar destfile="${jar.dir}/offline-geocoder.jar">
@@ -169,7 +202,7 @@
   </target>
 
   <target name="test-jar"
-          depends="compile,build-test-metadata,build-geo-test-data">
+          depends="compile,build-test-metadata,build-carrier-test-data,build-geo-test-data">
     <mkdir dir="${jar.dir}"/>
     <jar destfile="${jar.dir}/${ant.project.name}-test.jar">
       <fileset dir="${classes.dir}">
@@ -183,6 +216,9 @@
       </fileset>
       <fileset dir="${libphonenumber.test.dir}">
         <include name="**/PhoneNumberMetadataProtoForTesting*"/>
+      </fileset>
+      <fileset dir="${carrier.test.dir}">
+        <include name="**/carrier/testing_data/*"/>
       </fileset>
       <fileset dir="${geocoder.test.dir}">
         <include name="**/geocoding/testing_data/*"/>
@@ -198,6 +234,9 @@
       <formatter type="xml"/>
       <batchtest fork="no" todir="${report.dir}">
         <fileset dir="${libphonenumber.test.dir}" includes="**/*Test.java"/>
+      </batchtest>
+      <batchtest fork="no" todir="${report.dir}">
+        <fileset dir="${carrier.test.dir}" includes="**/*Test.java"/>
       </batchtest>
       <batchtest fork="no" todir="${report.dir}">
         <fileset dir="${geocoder.test.dir}" includes="**/*Test.java"/>
@@ -227,6 +266,7 @@
       <formatter type="plain" usefile="false"/>
       <batchtest fork="no">
         <fileset dir="${libphonenumber.test.dir}" includes="**/*${test}.java"/>
+        <fileset dir="${carrier.test.dir}" includes="**/*${test}.java"/>
         <fileset dir="${geocoder.test.dir}" includes="**/*${test}.java"/>
       </batchtest>
     </junit>
