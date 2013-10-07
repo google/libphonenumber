@@ -1,4 +1,4 @@
-Oct 2, 2013:
+Oct 7, 2013:
 * Code changes:
   - Added PhoneNumberToTimeZonesMapper including unittests to the geocoder maven project.
   - Added build rules for generating the binary time zones mapping file from the text file.
