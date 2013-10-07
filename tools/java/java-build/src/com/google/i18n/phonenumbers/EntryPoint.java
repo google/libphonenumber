@@ -17,6 +17,7 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.buildtools.GeneratePhonePrefixDataEntryPoint;
+import com.google.i18n.phonenumbers.buildtools.GenerateTimeZonesMapDataEntryPoint;
 
 /**
  * Entry point class for Java and JavaScript build tools.
@@ -30,6 +31,7 @@ public class EntryPoint {
       new BuildMetadataJsonFromXml(),
       new BuildMetadataProtoFromXml(),
       new GeneratePhonePrefixDataEntryPoint(),
+      new GenerateTimeZonesMapDataEntryPoint(),
     }).start();
 
     System.exit(status ? 0 : 1);

@@ -127,6 +127,26 @@
     </exec>
   </target>
 
+  <target name="build-timezones-data">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="GenerateTimeZonesMapData"/>
+      <arg value="${resources.dir}/timezones/map_data.txt"/>
+      <arg value="geocoder/src/com/google/i18n/phonenumbers/timezones/data"/>
+    </exec>
+  </target>
+
+  <target name="build-timezones-test-data">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="GenerateTimeZonesMapData"/>
+      <arg value="${resources.dir}/test/timezones/map_data.txt"/>
+      <arg value="geocoder/test/com/google/i18n/phonenumbers/timezones/testing_data"/>
+    </exec>
+  </target>
+
   <target name="build-js-metadata">
     <exec executable="java">
       <arg value="-jar" />
@@ -153,7 +173,7 @@
   </target>
 
   <target name="compile" description="Compile Java source."
-          depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data">
+          depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data,build-timezones-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${libphonenumber.src.dir};${carrier.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
            destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
@@ -169,7 +189,7 @@
         <include name="**/*.class"/>
         <exclude name="**/*Test*"/>
         <exclude name="**/BuildMetadata*"/>
-        <exclude name="**/PhoneNumberToCarrierMapper*"/>
+        <exclude name="**/PhoneNumberTo*"/>
         <exclude name="**/geocoding/*"/>
         <exclude name="**/prefixmapper/*"/>
       </fileset>
@@ -192,17 +212,19 @@
     <jar destfile="${jar.dir}/offline-geocoder.jar">
       <fileset dir="${classes.dir}">
         <include name="**/geocoding/*.class"/>
+        <include name="**/PhoneNumberToTimeZonesMapper*"/>
         <include name="**/prefixmapper/*.class"/>
         <exclude name="**/*Test*"/>
       </fileset>
       <fileset dir="${geocoder.src.dir}">
         <include name="**/geocoding/data/*"/>
+        <include name="**/timezones/data/*"/>
       </fileset>
     </jar>
   </target>
 
   <target name="test-jar"
-          depends="compile,build-test-metadata,build-carrier-test-data,build-geo-test-data">
+          depends="compile,build-test-metadata,build-carrier-test-data,build-geo-test-data,build-timezones-test-data">
     <mkdir dir="${jar.dir}"/>
     <jar destfile="${jar.dir}/${ant.project.name}-test.jar">
       <fileset dir="${classes.dir}">
@@ -222,6 +244,7 @@
       </fileset>
       <fileset dir="${geocoder.test.dir}">
         <include name="**/geocoding/testing_data/*"/>
+        <include name="**/timezones/testing_data/*"/>
       </fileset>
     </jar>
   </target>

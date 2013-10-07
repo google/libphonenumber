@@ -144,13 +144,12 @@ public class PhonePrefixMap implements Externalizable {
    * @param number  the phone number to look up
    * @return  the description of the number
    */
-  String lookup(PhoneNumber number) {
-   int numOfEntries = phonePrefixMapStorage.getNumOfEntries();
+  String lookup(long number) {
+    int numOfEntries = phonePrefixMapStorage.getNumOfEntries();
     if (numOfEntries == 0) {
       return null;
     }
-    long phonePrefix =
-        Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number));
+    long phonePrefix = number;
     int currentIndex = numOfEntries - 1;
     SortedSet<Integer> currentSetOfLengths = phonePrefixMapStorage.getPossibleLengths();
     while (currentSetOfLengths.size() > 0) {
@@ -170,6 +169,18 @@ public class PhonePrefixMap implements Externalizable {
       currentSetOfLengths = currentSetOfLengths.headSet(possibleLength);
     }
     return null;
+  }
+
+  /**
+   * As per {@link #lookup(long)}, but receives the number as a PhoneNumber instead of a long.
+   *
+   * @param number  the phone number to look up
+   * @return  the description corresponding to the prefix that best matches this phone number
+   */
+  public String lookup(PhoneNumber number) {
+    long phonePrefix =
+        Long.parseLong(number.getCountryCode() + phoneUtil.getNationalSignificantNumber(number));
+    return lookup(phonePrefix);
   }
 
   /**

@@ -21,11 +21,19 @@
         <directory>src/com/google/i18n/phonenumbers/geocoding/data</directory>
         <targetPath>com/google/i18n/phonenumbers/geocoding/data</targetPath>
       </resource>
+      <resource>
+        <directory>src/com/google/i18n/phonenumbers/timezones/data</directory>
+        <targetPath>com/google/i18n/phonenumbers/timezones/data</targetPath>
+      </resource>
     </resources>
     <testResources>
       <testResource>
         <directory>test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
         <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data</targetPath>
+      </testResource>
+      <testResource>
+        <directory>test/com/google/i18n/phonenumbers/timezones/testing_data</directory>
+        <targetPath>com/google/i18n/phonenumbers/timezones/testing_data</targetPath>
       </testResource>
     </testResources>
   </build>

@@ -21,6 +21,7 @@ package com.google.phonenumbers;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
+import com.google.i18n.phonenumbers.PhoneNumberToTimeZonesMapper;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
@@ -260,6 +261,16 @@ public class PhoneNumberParserServlet extends HttpServlet {
             "Location",
             PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
                 number, new Locale(languageCode, regionCode)),
+            output);
+        output.append("</TABLE>");
+        output.append("</DIV>");
+
+        output.append("<DIV>");
+        output.append("<TABLE border=1>");
+        output.append("<TR><TD colspan=2>PhoneNumberToTimeZonesMapper Results</TD></TR>");
+        appendLine(
+            "Time zone(s)",
+            PhoneNumberToTimeZonesMapper.getInstance().getTimeZonesForNumber(number).toString(),
             output);
         output.append("</TABLE>");
         output.append("</DIV>");
