@@ -61,57 +61,61 @@ public class PhoneNumberToCarrierMapperTest extends TestCase {
   private static final PhoneNumber INTERNATIONAL_TOLL_FREE =
       new PhoneNumber().setCountryCode(800).setNationalNumber(12345678L);
 
-  public void testGetDescriptionForMobilePortableRegion() {
+  public void testGetNameForMobilePortableRegion() {
     assertEquals("British carrier",
-                 carrierMapper.getDescriptionForNumber(UK_MOBILE1, Locale.ENGLISH));
+                 carrierMapper.getNameForNumber(UK_MOBILE1, Locale.ENGLISH));
     assertEquals("Brittisk operatör",
-                 carrierMapper.getDescriptionForNumber(UK_MOBILE1, new Locale("sv", "SE")));
+                 carrierMapper.getNameForNumber(UK_MOBILE1, new Locale("sv", "SE")));
     assertEquals("British carrier",
-                 carrierMapper.getDescriptionForNumber(UK_MOBILE1, Locale.FRENCH));
+                 carrierMapper.getNameForNumber(UK_MOBILE1, Locale.FRENCH));
+    // Returns an empty string because the UK implements mobile number portability.
+    assertEquals("", carrierMapper.getSafeDisplayName(UK_MOBILE1, Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForNonMobilePortableRegion() {
+  public void testGetNameForNonMobilePortableRegion() {
     assertEquals("Angolan carrier",
-                 carrierMapper.getDescriptionForNumber(AO_MOBILE1, Locale.ENGLISH));
+                 carrierMapper.getNameForNumber(AO_MOBILE1, Locale.ENGLISH));
+    assertEquals("Angolan carrier",
+                 carrierMapper.getSafeDisplayName(AO_MOBILE1, Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForFixedLineNumber() {
-    assertEquals("", carrierMapper.getDescriptionForNumber(AO_FIXED1, Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForNumber(UK_FIXED1, Locale.ENGLISH));
+  public void testGetNameForFixedLineNumber() {
+    assertEquals("", carrierMapper.getNameForNumber(AO_FIXED1, Locale.ENGLISH));
+    assertEquals("", carrierMapper.getNameForNumber(UK_FIXED1, Locale.ENGLISH));
     // If the carrier information is present in the files and the method that assumes a valid
     // number is used, a carrier is returned.
     assertEquals("Angolan fixed line carrier",
-                 carrierMapper.getDescriptionForValidNumber(AO_FIXED2, Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForValidNumber(UK_FIXED2, Locale.ENGLISH));
+                 carrierMapper.getNameForValidNumber(AO_FIXED2, Locale.ENGLISH));
+    assertEquals("", carrierMapper.getNameForValidNumber(UK_FIXED2, Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForFixedOrMobileNumber() {
-    assertEquals("US carrier", carrierMapper.getDescriptionForNumber(US_FIXED_OR_MOBILE,
+  public void testGetNameForFixedOrMobileNumber() {
+    assertEquals("US carrier", carrierMapper.getNameForNumber(US_FIXED_OR_MOBILE,
                                                                      Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForPagerNumber() {
-    assertEquals("British pager", carrierMapper.getDescriptionForNumber(UK_PAGER, Locale.ENGLISH));
+  public void testGetNameForPagerNumber() {
+    assertEquals("British pager", carrierMapper.getNameForNumber(UK_PAGER, Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForNumberWithNoDataFile() {
-    assertEquals("", carrierMapper.getDescriptionForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
+  public void testGetNameForNumberWithNoDataFile() {
+    assertEquals("", carrierMapper.getNameForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
                                                            Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForNumber(INTERNATIONAL_TOLL_FREE,
+    assertEquals("", carrierMapper.getNameForNumber(INTERNATIONAL_TOLL_FREE,
                                                            Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForValidNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
+    assertEquals("", carrierMapper.getNameForValidNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
                                                                 Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForValidNumber(INTERNATIONAL_TOLL_FREE,
+    assertEquals("", carrierMapper.getNameForValidNumber(INTERNATIONAL_TOLL_FREE,
                                                                 Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForNumberWithMissingPrefix() {
-    assertEquals("", carrierMapper.getDescriptionForNumber(UK_MOBILE2, Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForNumber(AO_MOBILE2, Locale.ENGLISH));
+  public void testGetNameForNumberWithMissingPrefix() {
+    assertEquals("", carrierMapper.getNameForNumber(UK_MOBILE2, Locale.ENGLISH));
+    assertEquals("", carrierMapper.getNameForNumber(AO_MOBILE2, Locale.ENGLISH));
   }
 
-  public void testGetDescriptionForInvalidNumber() {
-    assertEquals("", carrierMapper.getDescriptionForNumber(UK_INVALID_NUMBER, Locale.ENGLISH));
-    assertEquals("", carrierMapper.getDescriptionForNumber(AO_INVALID_NUMBER, Locale.ENGLISH));
+  public void testGetNameForInvalidNumber() {
+    assertEquals("", carrierMapper.getNameForNumber(UK_INVALID_NUMBER, Locale.ENGLISH));
+    assertEquals("", carrierMapper.getNameForNumber(AO_INVALID_NUMBER, Locale.ENGLISH));
   }
 }

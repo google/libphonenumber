@@ -3132,4 +3132,20 @@ public class PhoneNumberUtil {
     String nationalSignificantNumber = getNationalSignificantNumber(number);
     return !isNumberMatchingDesc(nationalSignificantNumber, metadata.getNoInternationalDialling());
   }
+
+  /**
+   * Returns true if the supplied region supports mobile number portability. Returns false for
+   * invalid, unknown or regions that don't support mobile number portability.
+   *
+   * @param regionCode  the region for which we want to know whether it supports mobile number
+   *                    portability or not.
+   */
+  public boolean isMobileNumberPortableRegion(String regionCode) {
+    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    if (metadata == null) {
+      logger.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
+      return false;
+    }
+    return metadata.isMobileNumberPortableRegion();
+  }
 }

@@ -283,7 +283,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
           output.append("<TR><TD colspan=2>PhoneNumberToCarrierMapper Results</TD></TR>");
           appendLine(
               "Carrier",
-              PhoneNumberToCarrierMapper.getInstance().getDescriptionForNumber(
+              PhoneNumberToCarrierMapper.getInstance().getNameForNumber(
                   number, new Locale(languageCode, regionCode)),
               output);
           output.append("</TABLE>");

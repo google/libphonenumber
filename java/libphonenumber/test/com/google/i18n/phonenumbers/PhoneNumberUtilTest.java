@@ -2473,4 +2473,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertFalse(phoneUtil.isAlphaNumber("1800 123-1234 extension: 1234"));
     assertFalse(phoneUtil.isAlphaNumber("+800 1234-1234"));
   }
+
+  public void testIsMobileNumberPortableRegion() {
+    assertTrue(phoneUtil.isMobileNumberPortableRegion(RegionCode.US));
+    assertTrue(phoneUtil.isMobileNumberPortableRegion(RegionCode.GB));
+    assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.AE));
+    assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.BS));
+  }
 }

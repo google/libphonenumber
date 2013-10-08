@@ -1,3 +1,9 @@
+Oct 8, 2013: libphonenumber-5.8.7
+* Code changes:
+  - New method in the PhoneNumberUtil API - isMobileNumberPortableRegion.
+  - Carrier mapper: Updated API and added a getSafeDisplayName method that only returns the carrier
+                    if it's safe to display to the user.
+
 Oct 7, 2013:
 * Code changes:
   - Added PhoneNumberToTimeZonesMapper including unittests to the geocoder maven project.
