@@ -272,6 +272,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // GetLengthOfGeographicalAreaCode().
   int GetLengthOfNationalDestinationCode(const PhoneNumber& number) const;
 
+  // Returns the mobile token for the provided country calling code if it has
+  // one, otherwise returns an empty string. A mobile token is a number inserted
+  // before the area code when dialing a mobile number from that country from
+  // abroad.
+  void GetCountryMobileToken(int country_calling_code,
+                             string* mobile_token) const;
+
   // Formats a phone number in the specified format using default rules. Note
   // that this does not promise to produce a phone number that the user can
   // dial from where they are - although we do format in either NATIONAL or

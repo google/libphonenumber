@@ -130,9 +130,9 @@ TEST(GeocodingDataTest, TestTestPrefixDescriptions) {
 }
 
 TEST(GeocodingDataTest, TestTestGeocodingData) {
-  ASSERT_EQ(2, get_test_country_calling_codes_size());
+  ASSERT_EQ(3, get_test_country_calling_codes_size());
   const int* country_calling_codes = get_test_country_calling_codes();
-  const int expected_calling_codes[] = {1, 82};
+  const int expected_calling_codes[] = {1, 54, 82};
   for (int i = 0; i < get_test_country_calling_codes_size(); ++i) {
     EXPECT_EQ(expected_calling_codes[i], country_calling_codes[i]);
   }
@@ -144,10 +144,10 @@ TEST(GeocodingDataTest, TestTestGeocodingData) {
     EXPECT_STREQ(expected_languages[i], langs_1->available_languages[i]);
   }
 
-  ASSERT_EQ(4, get_test_prefix_language_code_pairs_size());
+  ASSERT_EQ(5, get_test_prefix_language_code_pairs_size());
   const char** language_code_pairs = get_test_prefix_language_code_pairs();
   const char* expected_language_code_pairs[] = {
-    "1_de", "1_en", "82_en", "82_ko",
+    "1_de", "1_en", "54_en", "82_en", "82_ko",
   };
   for (int i = 0; i < get_test_prefix_language_code_pairs_size(); ++i) {
     EXPECT_STREQ(expected_language_code_pairs[i], language_code_pairs[i]);

@@ -1281,6 +1281,11 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
   number.set_national_number(1155303000ULL);
   EXPECT_EQ(2, phone_util_.GetLengthOfNationalDestinationCode(number));
 
+  // An Argentinian mobile which has NDC "911".
+  number.set_country_code(54);
+  number.set_national_number(91187654321ULL);
+  EXPECT_EQ(3, phone_util_.GetLengthOfNationalDestinationCode(number));
+
   // Google Sydney, which has NDC "2".
   number.set_country_code(61);
   number.set_national_number(293744000ULL);
@@ -1318,6 +1323,20 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
   number.set_country_code(800);
   number.set_national_number(12345678ULL);
   EXPECT_EQ(4, phone_util_.GetLengthOfNationalDestinationCode(number));
+}
+
+TEST_F(PhoneNumberUtilTest, GetCountryMobileToken) {
+  int country_calling_code;
+  string mobile_token;
+
+  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::MX());
+  phone_util_.GetCountryMobileToken(country_calling_code, &mobile_token);
+  EXPECT_EQ("1", mobile_token);
+
+  // Country calling code for United States, which has no mobile token.
+  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::US());
+  phone_util_.GetCountryMobileToken(country_calling_code, &mobile_token);
+  EXPECT_EQ("", mobile_token);
 }
 
 TEST_F(PhoneNumberUtilTest, ExtractPossibleNumber) {

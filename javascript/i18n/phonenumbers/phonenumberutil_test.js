@@ -415,6 +415,15 @@ function testGetLengthOfNationalDestinationCode() {
       phoneUtil.getLengthOfNationalDestinationCode(INTERNATIONAL_TOLL_FREE));
 }
 
+function testGetCountryMobileToken() {
+  assertEquals('1', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
+      phoneUtil.getCountryCodeForRegion(RegionCode.MX)));
+
+  // Country calling code for United States, which has no mobile token.
+  assertEquals('', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
+      phoneUtil.getCountryCodeForRegion(RegionCode.US)));
+}
+
 function testGetNationalSignificantNumber() {
   assertEquals('6502530000',
       phoneUtil.getNationalSignificantNumber(US_NUMBER));

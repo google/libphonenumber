@@ -473,6 +473,9 @@ class PhoneNumberRegExpsAndMappings {
       alpha_phone_mappings_.insert(make_pair(c, c));
       all_plus_number_grouping_symbols_.insert(make_pair(c, c));
     }
+
+    mobile_token_mappings_.insert(make_pair(52, '1'));
+    mobile_token_mappings_.insert(make_pair(54, '9'));
   }
 
   // Small string helpers since StrCat has a maximum number of arguments. These
@@ -525,6 +528,12 @@ class PhoneNumberRegExpsAndMappings {
   // numbers. This includes digits, ascii letters and number grouping symbols
   // such as "-" and " ".
   map<char32, char> all_plus_number_grouping_symbols_;
+
+  // Map of country calling codes that use a mobile token before the area code.
+  // One example of when this is relevant is when determining the length of the
+  // national destination code, which should be the length of the area code plus
+  // the length of the mobile token.
+  map<int, char> mobile_token_mappings_;
 
   // Pattern that makes it easy to distinguish whether a region has a unique
   // international dialing prefix or not. If a region has a unique international
@@ -610,6 +619,7 @@ class PhoneNumberRegExpsAndMappings {
         alpha_mappings_(),
         alpha_phone_mappings_(),
         all_plus_number_grouping_symbols_(),
+        mobile_token_mappings_(),
         unique_international_prefix_(regexp_factory_->CreateRegExp(
             /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
             "[\\d]+(?:[~\xE2\x81\x93\xE2\x88\xBC\xEF\xBD\x9E][\\d]+)?")),
@@ -2185,17 +2195,33 @@ int PhoneNumberUtil::GetLengthOfNationalDestinationCode(
       third_group = digit_group;
     }
   }
-  string region_code;
-  GetRegionCodeForCountryCode(number.country_code(), &region_code);
-  if (region_code == "AR" &&
-      GetNumberType(number) == MOBILE) {
-    // Argentinian mobile numbers, when formatted in the international format,
-    // are in the form of +54 9 NDC XXXX.... As a result, we take the length of
-    // the third group (NDC) and add 1 for the digit 9, which also forms part of
-    // the national significant number.
-    return third_group.size() + 1;
+
+  if (GetNumberType(number) == MOBILE) {
+    // For example Argentinian mobile numbers, when formatted in the
+    // international format, are in the form of +54 9 NDC XXXX.... As a result,
+    // we take the length of the third group (NDC) and add the length of the
+    // mobile token, which also forms part of the national significant number.
+    // This assumes that the mobile token is always formatted separately from
+    // the rest of the phone number.
+    string mobile_token;
+    GetCountryMobileToken(number.country_code(), &mobile_token);
+    if (!mobile_token.empty()) {
+      return third_group.size() + mobile_token.size();
+    }
   }
   return ndc.size();
+}
+
+void PhoneNumberUtil::GetCountryMobileToken(int country_calling_code,
+                                            string* mobile_token) const {
+  DCHECK(mobile_token);
+  map<int, char>::iterator it = reg_exps_->mobile_token_mappings_.find(
+      country_calling_code);
+  if (it != reg_exps_->mobile_token_mappings_.end()) {
+    *mobile_token = it->second;
+  } else {
+    mobile_token->assign("");
+  }
 }
 
 void PhoneNumberUtil::NormalizeDigitsOnly(string* number) const {

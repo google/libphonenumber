@@ -160,6 +160,22 @@ i18n.phonenumbers.PhoneNumberUtil.COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_ = '3';
 
 
 /**
+ * Map of country calling codes that use a mobile token before the area code.
+ * One example of when this is relevant is when determining the length of the
+ * national destination code, which should be the length of the area code plus
+ * the length of the mobile token.
+ *
+ * @const
+ * @type {!Object.<number, string>}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.MOBILE_TOKEN_MAPPINGS_ = {
+  52: '1',
+  54: '9'
+};
+
+
+/**
  * The PLUS_SIGN signifies the international prefix.
  *
  * @const
@@ -1217,19 +1233,38 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getLengthOfNationalDestinationCode =
     return 0;
   }
 
-  if (this.getRegionCodeForCountryCode(number.getCountryCodeOrDefault()) ==
-      'AR' &&
-      this.getNumberType(number) == i18n.phonenumbers.PhoneNumberType.MOBILE) {
-    // Argentinian mobile numbers, when formatted in the international format,
-    // are in the form of +54 9 NDC XXXX.... As a result, we take the length of
-    // the third group (NDC) and add 1 for the digit 9, which also forms part of
-    // the national significant number.
-    //
-    // TODO: Investigate the possibility of better modeling the metadata to make
-    // it easier to obtain the NDC.
-    return numberGroups[2].length + 1;
+  if (this.getNumberType(number) == i18n.phonenumbers.PhoneNumberType.MOBILE) {
+    // For example Argentinian mobile numbers, when formatted in the
+    // international format, are in the form of +54 9 NDC XXXX.... As a result,
+    // we take the length of the third group (NDC) and add the length of the
+    // mobile token, which also forms part of the national significant number.
+    // This assumes that the mobile token is always formatted separately from
+    // the rest of the phone number.
+    /** @type {string} */
+    var mobileToken = i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
+        number.getCountryCodeOrDefault());
+    if (mobileToken != '') {
+      return numberGroups[2].length + mobileToken.length;
+    }
   }
   return numberGroups[1].length;
+};
+
+
+/**
+ * Returns the mobile token for the provided country calling code if it has
+ * one, otherwise returns an empty string. A mobile token is a number inserted
+ * before the area code when dialing a mobile number from that country from
+ * abroad.
+ *
+ * @param {number} countryCallingCode the country calling code for which we
+ *     want the mobile token.
+ * @return {string} the mobile token for the given country calling code.
+ */
+i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
+    function(countryCallingCode) {
+  return i18n.phonenumbers.PhoneNumberUtil.MOBILE_TOKEN_MAPPINGS_[
+      countryCallingCode] || '';
 };
 
 
