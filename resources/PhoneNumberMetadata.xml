@@ -938,11 +938,6 @@
           <format>$1</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
-        <numberFormat pattern="(\d{2})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>0</leadingDigits>
-          <format>$1</format>
-          <intlFormat>NA</intlFormat>
-        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
@@ -2043,7 +2038,7 @@
                 3|
                 4\d
               )
-            )|
+            )
           )\d{3}|
           4(?:
             0(?:
@@ -2303,7 +2298,7 @@
         <numberFormat pattern="([15-8]\d)(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
             [156]|
-            7[0178]|
+            7[018]|
             8(?:
               0[1-9]|
               [1-79]
@@ -2326,21 +2321,17 @@
         <possibleNumberPattern>\d{8,9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Note that 80 is a valid area code, so we explicitly check for this case that the third
-             digit begins with 1-9 -->
+        <!-- According to the published Excel document the third digit must be 1-9. -->
         <nationalNumberPattern>
           (?:
             1[0-69]|
-            [23][2-8]|
             [49][23]|
             5\d|
             6[013-57-9]|
-            71
-          )\d{6}|
-          8(?:
-            0[1-9]|
-            [1-79]\d
-          )\d{5}
+            71|
+            8[0-79]
+          )[1-9]\d{5}|
+          [23][2-8]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>12345678</exampleNumber>
@@ -2365,9 +2356,9 @@
       <premiumRate>
         <nationalNumberPattern>
           (?:
-            90|
-            7[07]
-          )\d{6}
+            70[2-7]|
+            90\d
+          )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>90123456</exampleNumber>
@@ -2424,8 +2415,8 @@
         <nationalNumberPattern>
           6(?:
             [0-24-6]\d|
-            8[0-5]|
-            3[0-3]|
+            8[0-8]|
+            3[0-3]
           )\d{5}|
           7\d{7}
         </nationalNumberPattern>
@@ -3086,7 +3077,7 @@
           1(?:
             1(?:
               5[347]|
-              [6-9]\d|
+              [6-9]\d
             )|
             [2-9][6-9]\d
           )\d{6}|
@@ -4645,7 +4636,9 @@
     <!-- Colombia -->
     <!-- http://www.itu.int/oth/T020200002C/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia -->
-    <territory id="CO" countryCode="57" internationalPrefix="00[579]|#555|#999"
+    <!-- Extra international dialling prefixes from www.claro.com.co and www.tigo.com.co. -->
+    <!-- 05 and 005 are for Orbitel: co.orbitel.com -->
+    <territory id="CO" countryCode="57" internationalPrefix="00(?:4(?:[14]4|56)|[579])"
                nationalPrefix="0" nationalPrefixForParsing="0([3579]|4(?:44|56))?"
                mobileNumberPortableRegion="true">
       <availableFormats>
@@ -4742,7 +4735,7 @@
     <!-- Costa Rica -->
     <!-- http://www.itu.int/oth/T0202000030/en -->
     <territory id="CR" countryCode="506" internationalPrefix="00"
-               nationalPrefixForParsing="(19(?:0[0-2468]|19|20|66|77))"
+               nationalPrefixForParsing="(19(?:0[01468]|19|20|66|77))"
                carrierCodeFormattingRule="$CC $FG">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
@@ -4797,10 +4790,7 @@
             0(?:
               [04]0\d{4}|
               10[0-3]\d{3}|
-              2(?:
-                00\d|
-                900
-              )\d{2}|
+              2900\d{2}|
               3[01]\d{4}|
               5\d{5}|
               70[01]\d{3}|
@@ -6519,8 +6509,8 @@
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4,10})">
           <leadingDigits>
-            2[09]|
             [14]|
+            2[09]|
             50|
             7[135]
           </leadingDigits>
@@ -7888,8 +7878,15 @@
     </territory>
 
     <!-- Gibraltar -->
+    <!-- http://www.gra.gi/index.php?topic=numbering+plan&section=legislation&site=communications -->
     <territory id="GI" countryCode="350" internationalPrefix="00">
-      <!-- No formatting rules - numbers are always formatted as a block. -->
+      <availableFormats>
+        <!-- Most numbers are formatted as a block -->
+        <numberFormat pattern="(\d{3})(\d{5})">
+          <leadingDigits>2</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[2568]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
@@ -7898,8 +7895,14 @@
         <nationalNumberPattern>
           2(?:
             00\d|
-            16[0-7]|
-            22[2457]
+            1(?:
+              6[24-7]|
+              9\d
+            )|
+            2(?:
+              00|
+              2[2457]
+            )
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>20012345</exampleNumber>
@@ -7907,8 +7910,8 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            5[4-8]|
-            60
+            5[46-8]|
+            62
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>57123456</exampleNumber>
@@ -8008,7 +8011,7 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            2[0-2]|
+            2[0-6]|
             [3679]\d
           )\d{5}
         </nationalNumberPattern>
@@ -10559,7 +10562,7 @@
       <mobile>
         <!-- TETRA = TErrestrial Trunked RAdio is included under mobile. -->
         <nationalNumberPattern>
-          38[59]\d{6}|
+          38[589]\d{6}|
           (?:
             6(?:
               1[0-8]|
@@ -10584,6 +10587,9 @@
         <exampleNumber>6101234</exampleNumber>
       </mobile>
       <tollFree>
+        <!-- The UIFN numbers mentioned in the Excel document are not yet included since no real
+             numbers can be found online, and it is not clear what these are; the standard
+             definition would have them under the +800 country code instead of Iceland. -->
         <nationalNumberPattern>800\d{4}</nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>8001234</exampleNumber>
@@ -10600,7 +10606,6 @@
       </voip>
       <voicemail>
         <nationalNumberPattern>
-          388\d{6}|
           (?:
             6(?:
               2[0-8]|
@@ -10616,7 +10621,8 @@
             95[48]
           )\d{4}
         </nationalNumberPattern>
-        <exampleNumber>388123456</exampleNumber>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <exampleNumber>6201234</exampleNumber>
       </voicemail>
     </territory>
 
@@ -15552,7 +15558,7 @@
             )|
             7\d{2}|
             8(?:
-              [26]\d|
+              [256]\d|
               7[15-8]
             )|
             9[0-8]\d

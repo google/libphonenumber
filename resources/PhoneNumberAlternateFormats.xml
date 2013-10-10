@@ -148,6 +148,10 @@
     <!-- Bulgaria (BG) -->
     <territory countryCode="359">
       <availableFormats>
+        <numberFormat pattern="(\d)(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>2</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
             48|
@@ -155,6 +159,14 @@
             9[08]
           </leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            48|
+            8[7-9]|
+            9[08]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
     </territory>
@@ -379,7 +391,7 @@
           <format>$1/$2 $3 $4</format>
         </numberFormat>
         <!-- 4 digit area codes. -->
-        <numberFormat pattern="(\d{4})(\d{3})(\d{3,4})">
+        <numberFormat pattern="(\d{4})(\d{3})(\d{1,4})">
           <leadingDigits>
             [24-6]|
             [7-9](?:
@@ -904,6 +916,11 @@
     <!-- Estonia (EE) -->
     <territory countryCode="372">
       <availableFormats>
+        <!-- There are about 2 million search results for numbers written with the 6 separate. -->
+        <numberFormat pattern="(\d)(\d{3})(\d{3})">
+          <leadingDigits>6</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d{3})">
           <leadingDigits>
             [69]|
@@ -959,6 +976,29 @@
       </availableFormats>
     </territory>
 
+    <!-- Finland (FI) -->
+    <!-- Metadata shared with Åland (AX) -->
+    <territory countryCode="358">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})">
+          <leadingDigits>
+            [14]|
+            2[09]|
+            50|
+            7[135]
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d)(\d{3})(\d{3,4})">
+          <leadingDigits>
+            [25689][1-8]|
+            3
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Great Britain (GB) -->
     <territory countryCode="44" >
       <availableFormats>
@@ -995,6 +1035,26 @@
       </availableFormats>
     </territory>
 
+    <!-- Georgia (GE) -->
+    <territory countryCode="995">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d)(\d{2})(\d{2})(\d{2})" >
+          <leadingDigits>[348]</leadingDigits>
+          <format>$1 $2 $3 $4 $5</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Gibraltar (GI) -->
+    <territory countryCode="350" >
+      <availableFormats>
+        <numberFormat pattern="(\d{4})(\d{4})">
+          <leadingDigits>2</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Greece (GR) -->
     <territory countryCode="30">
       <availableFormats>
@@ -1027,11 +1087,25 @@
       </availableFormats>
     </territory>
 
+    <!-- Hungary (HU) -->
+    <territory countryCode="36">
+      <availableFormats>
+        <numberFormat pattern="(1)(\d{4})(\d{3})">
+          <leadingDigits>1</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{4})(\d{3})">
+          <leadingDigits>[2-9]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Indonesia (ID) -->
     <territory countryCode="62">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="($NP$FG)"
-          pattern="(\d{2})(\d{4})(\d{4})">
+          pattern="(\d{2})(\d{3,4})(\d{4})">
           <leadingDigits>
             2[124]|
             [36]1
@@ -1098,6 +1172,16 @@
       </availableFormats>
     </territory>
 
+    <!-- Sri Lanka (LK) -->
+    <territory countryCode="94">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>7</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Luxembourg (LU) -->
     <territory countryCode="352">
       <availableFormats>
@@ -1138,6 +1222,16 @@
             8[4578]
           </leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="([1-5]\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            1[16-8]|
+            2[259]|
+            3[124]|
+            4[17-9]|
+            5[124679]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
     </territory>
@@ -1211,9 +1305,32 @@
           <leadingDigits>[346-9]</leadingDigits>
           <format>$1 $2-$3</format>
         </numberFormat>
+        <numberFormat pattern="(\d{5})(\d{5})">
+          <leadingDigits>[346-9]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
         <numberFormat pattern="(\d{4})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[346-9]</leadingDigits>
           <format>$1 $2-$3-$4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{3})">
+          <leadingDigits>[346-9]</leadingDigits>
+          <format>$1 $2-$3-$4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d)(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>[346-9]</leadingDigits>
+          <format>$1-$2 $3-$4-$5</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Thailand (TH) -->
+    <territory countryCode="66">
+      <availableFormats>
+        <!-- Over a million of the search results are formatted in two blocks like this. -->
+        <numberFormat pattern="(2\d{3})(\d{4})">
+          <leadingDigits>2</leadingDigits>
+          <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
     </territory>
@@ -1286,6 +1403,20 @@
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Viet Nam (VN) -->
+    <territory countryCode="84">
+      <availableFormats>
+        <numberFormat pattern="(9\d{2})(\d{3})(\d{3})">
+          <leadingDigits>9</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="([48])(\d{2})(\d{3})(\d{3})">
+          <leadingDigits>[48]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
     </territory>

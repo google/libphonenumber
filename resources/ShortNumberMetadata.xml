@@ -273,9 +273,8 @@
         <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <!-- Note that 000 is formatted with national prefix 0. -->
         <nationalNumberPattern>
-          00|
+          000|
           1(?:
             0[0-35-7]|
             1[02-5]|
@@ -290,7 +289,7 @@
         <!-- According to http://wikitravel.org/en/Argentina all 2 and 3 digit numbers are free,
              except for 113. -->
         <nationalNumberPattern>
-          [09]\d{1,2}|
+          [09]\d{2}|
           1(?:
             [02-9]\d?|
             1[0-24-9]?
@@ -669,21 +668,103 @@
 
     <!-- Belgium -->
     <!-- http://www.bipt.be/en/161/ShowContent/502/Database/Databases.aspx -->
-    <!-- http://www.telefoonzones.be/ -->
+    <!-- http://www.mobileweb.be/en/mobileweb/sms-numberplan.asp -->
     <territory id="BE">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>
+          1\d{2,5}|
+          [2-9]\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[01]|
-            12
-          )
+            0[0-8]|
+            1(?:
+              [027]|
+              6000
+            )|
+            2(?:
+              0[47]|
+              12|
+              3[0-24]|
+              99
+            )|
+            3(?:
+              0[47]|
+              13|
+              99
+            )|
+            4(?:
+              0[47]|
+              14|
+              50|
+              99
+            )|
+            7(?:
+              00|
+              1[27]|
+              33|
+              65|
+              77
+            )|
+            819
+          )|
+          [2-9]\d{3}
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <tollFree>
+        <!-- Documentation from www.childfocus.be says that 110 and 116000 are both free. Other
+             information comes from the website of each number. -->
+        <nationalNumberPattern>
+          1(?:
+            0[25-8]|
+            1(?:
+              0|
+              6\d{3}
+            )|
+            7(?:
+              12|
+              77
+            )
+          )|
+          8\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <!-- For the numbers starting with 2-7 or 9, in practice, there is a range of rates; but the
+             maximum is at least half a Euro, and in some cases 31 Euros (for mobile payments) so we
+             consider them all premium rate for now. Other numbers have been assigned here because
+             operators have listed them as being more expensive than normal numbers, e.g.
+             http://www.voo.be/fr/telephone/tarifs-speciaux/ -->
+        <nationalNumberPattern>
+          1(?:
+            212|
+            3(?:
+              0[47]|
+              13
+            )|
+            4[01]4
+          )|
+          [2-79]\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>7212</exampleNumber>
+      </premiumRate>
+      <directoryServices>
+        <nationalNumberPattern>1[2-4]\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1212</exampleNumber>
+      </directoryServices>
+      <smsServices>
+        <nationalNumberPattern>[2-9]\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>2787</exampleNumber>
+      </smsServices>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -691,8 +772,42 @@
             12
           )
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <!-- http://www.childfocus.be/fr/accueil/ lists this as being an emergency number. -->
+        <nationalNumberPattern>
+          11(?:
+            0|
+            6000
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </expandedEmergency>
+      <carrierSelectionCodes>
+        <nationalNumberPattern>
+          1(?:
+            5(?:
+              1[05]|
+              2[25]|
+              5[15]|
+              66|
+              88|
+              9[59]
+            )|
+            6(?:
+              02|
+              1[167]|
+              36|
+              6[156]
+            )
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1510</exampleNumber>
+      </carrierSelectionCodes>
     </territory>
 
     <!-- Burkina Faso -->
@@ -2253,9 +2368,7 @@
             [357]\d{3}|
             80\d{2}
           )|
-          3(?:
-            [357]\d{3}|
-          )|
+          3[357]\d{3}|
           [79]9[57]\d{3}
         </nationalNumberPattern>
         <exampleNumber>010</exampleNumber>
@@ -2964,9 +3077,10 @@
     </territory>
 
     <!-- Gibraltar -->
+    <!-- http://www.gra.gi/index.php?topic=numbering+plan&section=legislation&site=communications-->
     <territory id="GI">
       <generalDesc>
-        <nationalNumberPattern>[18]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[158]\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -2977,7 +3091,10 @@
               2|
               6(?:
                 00[06]|
-                11[17]
+                1(?:
+                  1[17]|
+                  23
+                )
               )|
               8\d{2}
             )|
@@ -2987,16 +3104,76 @@
               7[014]
             )|
             5[015]|
-            9[0349]
+            9[02349]
           )|
+          555|
           8(?:
-            00|
+            008?|
             4[0-2]|
-            8\d
+            88
           )
         </nationalNumberPattern>
         <exampleNumber>116000</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          1(?:
+            00|
+            16\d{3}|
+            23|
+            47\d|
+            5[15]|
+            9[2-4]
+          )|
+          555
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <exampleNumber>100</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <nationalNumberPattern>150</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>150</exampleNumber>
+      </standardRate>
+      <carrierSpecific>
+        <nationalNumberPattern>
+          1(?:
+            18\d{2}|
+            23|
+            51|
+            9[2-4]
+          )|
+          555|
+          8(?:
+            00|
+            88
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <exampleNumber>123</exampleNumber>
+      </carrierSpecific>
+      <carrierServices>
+        <nationalNumberPattern>
+          123|
+          555|
+          8(?:
+            00|
+            88
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>123</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>
+          1(?:
+            00|
+            18\d{2}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <exampleNumber>11812</exampleNumber>
+      </directoryServices>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -3007,6 +3184,17 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>116111</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116111</exampleNumber>
+      </expandedEmergency>
+      <!-- Type B codes in the plan. -->
+      <carrierSelectionCodes>
+        <nationalNumberPattern>88[467]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>884</exampleNumber>
+      </carrierSelectionCodes>
     </territory>
 
     <!-- Greenland -->
@@ -5629,11 +5817,17 @@
     <!-- http://www.itu.int/oth/T02020000A4/en -->
     <!-- http://en.wikipedia.org/wiki/%2B675 -->
     <territory id="PG">
+      <generalDesc>
+        <nationalNumberPattern>0\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>000</nationalNumberPattern>
+        <exampleNumber>000</exampleNumber>
+      </shortCode>
       <emergency>
         <!-- http://www.pngbd.com/emergency.php has been used, excluding fixed-line phone-numbers.
              -->
-        <!-- Since the national prefix is 0, this is parsed with a national number of 00 including
-             Italian leading zero, which means the pattern here won't match. -->
         <nationalNumberPattern>000</nationalNumberPattern>
         <exampleNumber>000</exampleNumber>
       </emergency>
@@ -6975,27 +7169,186 @@
     </territory>
 
     <!-- United States -->
-    <!-- http://www.nanpa.com/reports/reports_npa.html -->
-    <!-- http://en.wikipedia.org/wiki/North_American_Numbering_Plan -->
+    <!-- http://en.wikipedia.org/wiki/North_American_Numbering_Plan#Special_numbers_and_codes -->
+    <!-- http://en.wikipedia.org/wiki/Vertical_service_code -->
+    <!-- http://www.call811.com/how-811-works/default.aspx -->
     <territory id="US">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[1-9]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          112|
-          911
+          1(?:
+            1(?:
+              2|
+              5[1-47]|
+              [68]\d|
+              7[0-57]|
+              98
+            )
+          )|
+          [2-9](?:
+            11|
+            \d{4,5}
+          )
         </nationalNumberPattern>
         <exampleNumber>911</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>611</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>611</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <nationalNumberPattern>
+          2(?:
+            3333|
+            42242|
+            56447|
+            6688|
+            75622
+          )|
+          3(?:
+            1010|
+            2665|
+            7404
+          )|
+          40404|
+          560560|
+          6(?:
+            0060|
+            22639|
+            5246|
+            7622
+          )|
+          7(?:
+            0701|
+            3822|
+            4666
+          )|
+          8(?:
+            38255|
+            4816|
+            72265
+          )|
+          99099
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <exampleNumber>73822</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <nationalNumberPattern>
+          2(?:
+            4280|
+            5209|
+            7(?:
+              449|
+              663
+            )
+          )|
+          3(?:
+            2340|
+            3786|
+            5564|
+            8(?:
+              135|
+              254
+            )
+          )|
+          4(?:
+            1(?:
+              366|
+              463
+            )|
+            3355|
+            6(?:
+              157|
+              327
+            )|
+            7553|
+            8(?:
+              221|
+              277
+            )
+          )|
+          5(?:
+            2944|
+            4892|
+            5928|
+            9(?:
+              187|
+              342
+            )
+          )|
+          69388|
+          7(?:
+            2(?:
+              078|
+              087
+            )|
+            3(?:
+              288|
+              909
+            )|
+            6426
+          )|
+          8(?:
+            6234|
+            9616
+          )|
+          9(?:
+            5297|
+            6(?:
+              040|
+              835
+            )|
+            7(?:
+              294|
+              688
+            )|
+            9(?:
+              689|
+              796
+            )
+          )
+        </nationalNumberPattern>
+        <exampleNumber>24280</exampleNumber>
+      </premiumRate>
+      <carrierSpecific>
+        <!-- https://support.google.com/plus/answer/1304917
+             611 is listed as working from "most" wireless carriers. -->
+        <nationalNumberPattern>
+          33669|
+          611
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>33669</exampleNumber>
+      </carrierSpecific>
+      <carrierServices>
+        <!-- http://www.dial611.com/why_611.php -->
+        <nationalNumberPattern>611</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>611</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>411</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>411</exampleNumber>
+      </directoryServices>
       <emergency>
         <nationalNumberPattern>
           112|
           911
         </nationalNumberPattern>
-        <exampleNumber>112</exampleNumber>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>911</exampleNumber>
       </emergency>
+      <smsServices>
+        <nationalNumberPattern>[2-9]\d{4,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <exampleNumber>20566</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Uruguay -->

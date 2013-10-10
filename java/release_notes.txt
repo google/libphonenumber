@@ -1,3 +1,16 @@
+Oct 10, 2013: libphonenumber-5.8.8
+* Metadata changes:
+ - New alternate formatting data for country calling code(s):
+   350, 358, 36, 66, 84, 94, 995
+ - Updated alternate formatting data for country calling code(s):
+   31, 359, 372, 49, 62, 7
+ - Updated phone metadata for region code(s):
+   AR, BD, BE, BF, BR, CO, CR, FI, GI, GM, IS, MU
+ - Updated short number metadata for region code(s): AR, BE, ES, GI, PG, US
+ - Updated geocoding data for country calling code(s): 220 (en)
+ - Updated carrier data for country calling code(s):
+   20 (en), 220 (en), 224 (en), 230 (en), 852 (en)
+
 Oct 8, 2013: libphonenumber-5.8.7
 * Code changes:
   - New method in the PhoneNumberUtil API - isMobileNumberPortableRegion.

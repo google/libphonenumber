@@ -64,7 +64,7 @@ public class PhoneNumberToCarrierMapperTest extends TestCase {
   public void testGetNameForMobilePortableRegion() {
     assertEquals("British carrier",
                  carrierMapper.getNameForNumber(UK_MOBILE1, Locale.ENGLISH));
-    assertEquals("Brittisk operatör",
+    assertEquals("Brittisk operat\u00F6r",
                  carrierMapper.getNameForNumber(UK_MOBILE1, new Locale("sv", "SE")));
     assertEquals("British carrier",
                  carrierMapper.getNameForNumber(UK_MOBILE1, Locale.FRENCH));

@@ -2110,7 +2110,10 @@ public class PhoneNumberUtil {
   /**
    * Returns the region code that matches the specific country calling code. In the case of no
    * region code being found, ZZ will be returned. In the case of multiple regions, the one
-   * designated in the metadata as the "main" region for this calling code will be returned.
+   * designated in the metadata as the "main" region for this calling code will be returned. If the
+   * countryCallingCode entered is valid but doesn't match a specific region (such as in the case of
+   * non-geographical calling codes like 800) the value "001" will be returned (corresponding to
+   * the value for World in the UN M.49 schema).
    */
   public String getRegionCodeForCountryCode(int countryCallingCode) {
     List<String> regionCodes = countryCallingCodeToRegionCodeMap.get(countryCallingCode);

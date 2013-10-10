@@ -12,13 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Prefixes from http://www.itu.int/oth/T020200005B/en
+
 22460|Sotelgui
-22461|Orange S.A.
-22462|Orange S.A.
-2246310|Telecel Guinee
-2246335|Telecel Guinee
-2246340|Telecel Guinee
-22464|MTN
+22462|Orange
+22463|Intercel
 22465|Cellcom
-22467|Cellcom
-22468|Orange S.A.
+22466|Areeba
