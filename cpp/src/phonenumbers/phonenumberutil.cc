@@ -17,14 +17,11 @@
 
 #include "phonenumbers/phonenumberutil.h"
 
-#include <string.h>
 #include <algorithm>
 #include <cctype>
-#include <fstream>
-#include <iostream>
+#include <cstring>
 #include <iterator>
 #include <map>
-#include <sstream>
 #include <utility>
 #include <vector>
 
@@ -55,12 +52,8 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::cerr;
-using std::endl;
-using std::ifstream;
 using std::make_pair;
 using std::sort;
-using std::stringstream;
 
 using google::protobuf::RepeatedPtrField;
 
@@ -118,7 +111,7 @@ const char kSingleExtnSymbolsForMatching[] =
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
-    cerr << "Could not parse binary data." << endl;
+    LOG(ERROR) << "Could not parse binary data.";
     return false;
   }
   return true;

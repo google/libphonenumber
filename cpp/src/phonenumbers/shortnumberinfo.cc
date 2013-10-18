@@ -31,15 +31,13 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::cerr;
-using std::endl;
 using std::make_pair;
 using std::map;
 using std::string;
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(short_metadata_get(), short_metadata_size())) {
-    cerr << "Could not parse binary data." << endl;
+    LOG(ERROR) << "Could not parse binary data.";
     return false;
   }
   return true;

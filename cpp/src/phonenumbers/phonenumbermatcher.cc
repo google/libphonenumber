@@ -27,7 +27,6 @@
 
 #include <ctype.h>
 #include <stddef.h>
-#include <iostream>
 #include <limits>
 #include <map>
 #include <string>
@@ -56,8 +55,6 @@
 #include "phonenumbers/regexp_adapter_re2.h"
 #endif  // I18N_PHONENUMBERS_USE_RE2_AND_ICU
 
-using std::cerr;
-using std::endl;
 using std::make_pair;
 using std::map;
 using std::numeric_limits;
@@ -173,7 +170,7 @@ bool LoadAlternateFormats(PhoneMetadataCollection* alternate_formats) {
 #if defined(I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS)
   if (!alternate_formats->ParseFromArray(alternate_format_get(),
                                          alternate_format_size())) {
-    cerr << "Could not parse binary data." << endl;
+    LOG(ERROR) << "Could not parse binary data.";
     return false;
   }
   return true;
