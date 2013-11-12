@@ -16,6 +16,7 @@
 
 package com.google.i18n.phonenumbers.geocoding;
 
+import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
@@ -33,7 +34,7 @@ public class PhoneNumberOfflineGeocoder {
   private static final String MAPPING_DATA_DIRECTORY =
       "/com/google/i18n/phonenumbers/geocoding/data/";
   private PrefixFileReader prefixFileReader = null;
-  
+
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
   // @VisibleForTesting
@@ -101,11 +102,13 @@ public class PhoneNumberOfflineGeocoder {
       // In some countries, eg. Argentina, mobile numbers have a mobile token before the national
       // destination code, this should be removed before geocoding.
       nationalNumber = nationalNumber.substring(mobileToken.length());
-      PhoneNumber copiedNumber = new PhoneNumber();
-      copiedNumber.setCountryCode(number.getCountryCode());
-      copiedNumber.setNationalNumber(Long.parseLong(nationalNumber));
-      if (nationalNumber.startsWith("0")) {
-        copiedNumber.setItalianLeadingZero(true);
+      String region = phoneUtil.getRegionCodeForCountryCode(number.getCountryCode());
+      PhoneNumber copiedNumber;
+      try {
+        copiedNumber = phoneUtil.parse(nationalNumber, region);
+      } catch (NumberParseException e) {
+        // If this happens, just reuse what we had.
+        copiedNumber = number;
       }
       areaDescription = prefixFileReader.getDescriptionForNumber(copiedNumber, langStr, scriptStr,
                                                                  regionStr);

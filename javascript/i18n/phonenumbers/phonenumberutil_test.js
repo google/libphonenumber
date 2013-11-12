@@ -419,9 +419,9 @@ function testGetCountryMobileToken() {
   assertEquals('1', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
       phoneUtil.getCountryCodeForRegion(RegionCode.MX)));
 
-  // Country calling code for United States, which has no mobile token.
+  // Country calling code for Sweden, which has no mobile token.
   assertEquals('', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
-      phoneUtil.getCountryCodeForRegion(RegionCode.US)));
+      phoneUtil.getCountryCodeForRegion(RegionCode.SE)));
 }
 
 function testGetNationalSignificantNumber() {
@@ -1045,6 +1045,78 @@ function testFormatNumberForMobileDialing() {
   assertEquals('+80012345678',
       phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE,
                                              RegionCode.UN001, false));
+
+  // Test that a short number is formatted correctly for mobile dialing within
+  // the region, and is not diallable from outside the region.
+  var deShortNumber = new i18n.phonenumbers.PhoneNumber();
+  deShortNumber.setCountryCode(49);
+  deShortNumber.setNationalNumber(123);
+  assertEquals('123',
+      phoneUtil.formatNumberForMobileDialing(deShortNumber,
+                                             RegionCode.DE, false));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(deShortNumber,
+                                             RegionCode.IT, false));
+
+  // Test the special logic for Hungary, where the national prefix must be added
+  // before dialing from a mobile phone for regular length numbers, but not for
+  // short numbers.
+  var huRegularNumber = new i18n.phonenumbers.PhoneNumber();
+  huRegularNumber.setCountryCode(36);
+  huRegularNumber.setNationalNumber(301234567);
+  assertEquals('06301234567',
+      phoneUtil.formatNumberForMobileDialing(huRegularNumber,
+                                             RegionCode.HU, false));
+  assertEquals('+36301234567',
+      phoneUtil.formatNumberForMobileDialing(huRegularNumber,
+                                             RegionCode.JP, false));
+  var huShortNumber = new i18n.phonenumbers.PhoneNumber();
+  huShortNumber.setCountryCode(36);
+  huShortNumber.setNationalNumber(104);
+  assertEquals('104',
+      phoneUtil.formatNumberForMobileDialing(huShortNumber,
+                                             RegionCode.HU, false));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(huShortNumber,
+                                             RegionCode.JP, false));
+
+  // Test the special logic for NANPA countries, for which regular length phone
+  // numbers are always output in international format, but short numbers are in
+  // national format.
+  assertEquals('+16502530000',
+      phoneUtil.formatNumberForMobileDialing(US_NUMBER,
+          RegionCode.US, false));
+  assertEquals('+16502530000',
+      phoneUtil.formatNumberForMobileDialing(US_NUMBER,
+          RegionCode.CA, false));
+  assertEquals('+16502530000',
+      phoneUtil.formatNumberForMobileDialing(US_NUMBER,
+          RegionCode.BR, false));
+  var usShortNumber = new i18n.phonenumbers.PhoneNumber();
+  usShortNumber.setCountryCode(1);
+  usShortNumber.setNationalNumber(911);
+  assertEquals('911',
+      phoneUtil.formatNumberForMobileDialing(usShortNumber,
+          RegionCode.US, false));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(usShortNumber,
+          RegionCode.CA, false));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(usShortNumber,
+          RegionCode.BR, false));
+
+  // Test that the Australian emergency number 000 is formatted correctly.
+  var auShortNumber = new i18n.phonenumbers.PhoneNumber();
+  auShortNumber.setCountryCode(61);
+  auShortNumber.setNationalNumber(0);
+  auShortNumber.setItalianLeadingZero(true);
+  auShortNumber.setNumberOfLeadingZeros(2);
+  assertEquals('000',
+      phoneUtil.formatNumberForMobileDialing(auShortNumber,
+          RegionCode.AU, false));
+  assertEquals('',
+      phoneUtil.formatNumberForMobileDialing(auShortNumber,
+          RegionCode.NZ, false));
 }
 
 function testFormatByPattern() {
@@ -2738,6 +2810,28 @@ function testParseNumbersWithPlusWithNoRegion() {
       phoneUtil.parseAndKeepRawInput('+64 3 331 6005', null)));
 }
 
+function testParseNumberTooShortIfNationalPrefixStripped() {
+  // Test that a number whose first digits happen to coincide with the national
+  // prefix does not get them stripped if doing so would result in a number too
+  // short to be a possible (regular length) phone number for that region.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var byNumber = new i18n.phonenumbers.PhoneNumber();
+  byNumber.setCountryCode(375);
+  byNumber.setNationalNumber(8123);
+  assertTrue(byNumber.equals(phoneUtil.parse('8123', RegionCode.BY)));
+  byNumber.setNationalNumber(81234);
+  assertTrue(byNumber.equals(phoneUtil.parse('81234', RegionCode.BY)));
+
+  // The prefix doesn't get stripped, since the input is a viable 6-digit
+  // number, whereas the result of stripping is only 5 digits.
+  byNumber.setNationalNumber(812345);
+  assertTrue(byNumber.equals(phoneUtil.parse('812345', RegionCode.BY)));
+
+  // The prefix gets stripped, since only 6-digit numbers are possible.
+  byNumber.setNationalNumber(123456);
+  assertTrue(byNumber.equals(phoneUtil.parse('8123456', RegionCode.BY)));
+}
+
 function testParseExtensions() {
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumber = new i18n.phonenumbers.PhoneNumber();
@@ -2914,6 +3008,43 @@ function testParseAndKeepRaw() {
       phoneUtil.parseAndKeepRawInput('08122123456', RegionCode.KR)));
 }
 
+function testParseItalianLeadingZeros() {
+  // Test the number "011".
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var oneZero = new i18n.phonenumbers.PhoneNumber();
+  oneZero.setCountryCode(61);
+  oneZero.setNationalNumber(11);
+  oneZero.setItalianLeadingZero(true);
+  assertTrue(oneZero.equals(phoneUtil.parse('011', RegionCode.AU)));
+
+  // Test the number "001".
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var twoZeros = new i18n.phonenumbers.PhoneNumber();
+  twoZeros.setCountryCode(61);
+  twoZeros.setNationalNumber(1);
+  twoZeros.setItalianLeadingZero(true);
+  twoZeros.setNumberOfLeadingZeros(2);
+  assertTrue(twoZeros.equals(phoneUtil.parse('001', RegionCode.AU)));
+
+  // Test the number "000". This number has 2 leading zeros.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var stillTwoZeros = new i18n.phonenumbers.PhoneNumber();
+  stillTwoZeros.setCountryCode(61);
+  stillTwoZeros.setNationalNumber(0);
+  stillTwoZeros.setItalianLeadingZero(true);
+  stillTwoZeros.setNumberOfLeadingZeros(2);
+  assertTrue(stillTwoZeros.equals(phoneUtil.parse('000', RegionCode.AU)));
+
+  // Test the number "0000". This number has 3 leading zeros.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var threeZeros = new i18n.phonenumbers.PhoneNumber();
+  threeZeros.setCountryCode(61);
+  threeZeros.setNationalNumber(0);
+  threeZeros.setItalianLeadingZero(true);
+  threeZeros.setNumberOfLeadingZeros(3);
+  assertTrue(threeZeros.equals(phoneUtil.parse('0000', RegionCode.AU)));
+}
+
 function testCountryWithNoNumberDesc() {
   var PNF = i18n.phonenumbers.PhoneNumberFormat;
   var PNT = i18n.phonenumbers.PhoneNumberType;
@@ -2946,8 +3077,8 @@ function testUnknownCountryCallingCode() {
 }
 
 function testIsNumberMatchMatches() {
-  // Test simple matches where formatting is different, or leading zeroes,
-  // or country calling code has been specified.
+  // Test simple matches where formatting is different, or leading zeros, or
+  // country calling code has been specified.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var num1 = phoneUtil.parse('+64 3 331 6005', RegionCode.NZ);
   /** @type {i18n.phonenumbers.PhoneNumber} */

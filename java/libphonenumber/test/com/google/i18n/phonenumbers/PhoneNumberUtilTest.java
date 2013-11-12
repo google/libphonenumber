@@ -774,6 +774,48 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE, RegionCode.US, false));
     assertEquals("+80012345678",
         phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE, RegionCode.UN001, false));
+
+    // Test that a short number is formatted correctly for mobile dialing within the region,
+    // and is not diallable from outside the region.
+    PhoneNumber deShortNumber = new PhoneNumber().setCountryCode(49).setNationalNumber(123L);
+    assertEquals("123", phoneUtil.formatNumberForMobileDialing(deShortNumber, RegionCode.DE,
+        false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(deShortNumber, RegionCode.IT, false));
+
+    // Test the special logic for Hungary, where the national prefix must be added before dialing
+    // from a mobile phone for regular length numbers, but not for short numbers.
+    PhoneNumber huRegularNumber = new PhoneNumber().setCountryCode(36)
+        .setNationalNumber(301234567L);
+    assertEquals("06301234567", phoneUtil.formatNumberForMobileDialing(huRegularNumber,
+        RegionCode.HU, false));
+    assertEquals("+36301234567", phoneUtil.formatNumberForMobileDialing(huRegularNumber,
+        RegionCode.JP, false));
+    PhoneNumber huShortNumber = new PhoneNumber().setCountryCode(36).setNationalNumber(104L);
+    assertEquals("104", phoneUtil.formatNumberForMobileDialing(huShortNumber, RegionCode.HU,
+        false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(huShortNumber, RegionCode.JP, false));
+
+    // Test the special logic for NANPA countries, for which regular length phone numbers are always
+    // output in international format, but short numbers are in national format.
+    PhoneNumber usRegularNumber = new PhoneNumber().setCountryCode(1)
+        .setNationalNumber(6502530000L);
+    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(usRegularNumber,
+        RegionCode.US, false));
+    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(usRegularNumber,
+        RegionCode.CA, false));
+    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(usRegularNumber,
+        RegionCode.BR, false));
+    PhoneNumber usShortNumber = new PhoneNumber().setCountryCode(1).setNationalNumber(911L);
+    assertEquals("911", phoneUtil.formatNumberForMobileDialing(usShortNumber, RegionCode.US,
+        false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(usShortNumber, RegionCode.CA, false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(usShortNumber, RegionCode.BR, false));
+
+    // Test that the Australian emergency number 000 is formatted correctly.
+    PhoneNumber auNumber = new PhoneNumber().setCountryCode(61).setNationalNumber(0L)
+        .setItalianLeadingZero(true).setNumberOfLeadingZeros(2);
+    assertEquals("000", phoneUtil.formatNumberForMobileDialing(auNumber, RegionCode.AU, false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(auNumber, RegionCode.NZ, false));
   }
 
   public void testFormatByPattern() {
@@ -2137,6 +2179,25 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(nzNumberWithRawInput, phoneUtil.parseAndKeepRawInput("+64 3 331 6005", null));
   }
 
+  public void testParseNumberTooShortIfNationalPrefixStripped() throws Exception {
+    // Test that a number whose first digits happen to coincide with the national prefix does not
+    // get them stripped if doing so would result in a number too short to be a possible (regular
+    // length) phone number for that region.
+    PhoneNumber byNumber = new PhoneNumber().setCountryCode(375).setNationalNumber(8123L);
+    assertEquals(byNumber, phoneUtil.parse("8123", RegionCode.BY));
+    byNumber.setNationalNumber(81234L);
+    assertEquals(byNumber, phoneUtil.parse("81234", RegionCode.BY));
+
+    // The prefix doesn't get stripped, since the input is a viable 6-digit number, whereas the
+    // result of stripping is only 5 digits.
+    byNumber.setNationalNumber(812345L);
+    assertEquals(byNumber, phoneUtil.parse("812345", RegionCode.BY));
+
+    // The prefix gets stripped, since only 6-digit numbers are possible.
+    byNumber.setNationalNumber(123456L);
+    assertEquals(byNumber, phoneUtil.parse("8123456", RegionCode.BY));
+  }
+
   public void testParseExtensions() throws Exception {
     PhoneNumber nzNumber = new PhoneNumber();
     nzNumber.setCountryCode(64).setNationalNumber(33316005L).setExtension("3456");
@@ -2254,6 +2315,31 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(koreanNumber, phoneUtil.parseAndKeepRawInput("08122123456", RegionCode.KR));
   }
 
+  public void testParseItalianLeadingZeros() throws Exception {
+    // Test the number "011".
+    PhoneNumber oneZero = new PhoneNumber();
+    oneZero.setCountryCode(61).setNationalNumber(11L).setItalianLeadingZero(true);
+    assertEquals(oneZero, phoneUtil.parse("011", RegionCode.AU));
+
+    // Test the number "001".
+    PhoneNumber twoZeros = new PhoneNumber();
+    twoZeros.setCountryCode(61).setNationalNumber(1).setItalianLeadingZero(true)
+        .setNumberOfLeadingZeros(2);
+    assertEquals(twoZeros, phoneUtil.parse("001", RegionCode.AU));
+
+    // Test the number "000". This number has 2 leading zeros.
+    PhoneNumber stillTwoZeros = new PhoneNumber();
+    stillTwoZeros.setCountryCode(61).setNationalNumber(0L).setItalianLeadingZero(true)
+        .setNumberOfLeadingZeros(2);
+    assertEquals(stillTwoZeros, phoneUtil.parse("000", RegionCode.AU));
+
+    // Test the number "0000". This number has 3 leading zeros.
+    PhoneNumber threeZeros = new PhoneNumber();
+    threeZeros.setCountryCode(61).setNationalNumber(0L).setItalianLeadingZero(true)
+        .setNumberOfLeadingZeros(3);
+    assertEquals(threeZeros, phoneUtil.parse("0000", RegionCode.AU));
+  }
+
   public void testCountryWithNoNumberDesc() {
     // Andorra is a country where we don't have PhoneNumberDesc info in the metadata.
     PhoneNumber adNumber = new PhoneNumber();
@@ -2279,7 +2365,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testIsNumberMatchMatches() throws Exception {
-    // Test simple matches where formatting is different, or leading zeroes, or country calling code
+    // Test simple matches where formatting is different, or leading zeros, or country calling code
     // has been specified.
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331 6005", "+64 03 331 6005"));

@@ -21,6 +21,7 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -40,6 +41,16 @@ public class ShortNumberInfo {
 
   private static final ShortNumberInfo INSTANCE =
       new ShortNumberInfo(PhoneNumberUtil.getInstance());
+
+  // In these countries, if extra digits are added to an emergency number, it no longer connects
+  // to the emergency service.
+  private static final Set<String> REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT =
+      new HashSet<String>();
+  static {
+    REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.add("BR");
+    REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.add("CL");
+    REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.add("NI");
+  }
 
   /** Cost categories of short numbers. */
   public enum ShortNumberCost {
@@ -62,15 +73,15 @@ public class ShortNumberInfo {
   }
 
   /**
-   * Check whether a short number is a possible number, given the number in the form of a string,
-   * and the region where the number is dialed from. This provides a more lenient check than
-   * {@link #isValidShortNumber}.
+   * Check whether a short number is a possible number when dialled from a region, given the number
+   * in the form of a string, and the region where the number is dialed from. This provides a more
+   * lenient check than {@link #isValidShortNumberForRegion}.
    *
    * @param shortNumber the short number to check as a string
    * @param regionDialingFrom the region from which the number is dialed
    * @return whether the number is a possible short number
    */
-  public boolean isPossibleShortNumber(String shortNumber, String regionDialingFrom) {
+  public boolean isPossibleShortNumberForRegion(String shortNumber, String regionDialingFrom) {
     PhoneMetadata phoneMetadata =
         MetadataManager.getShortNumberMetadataForRegion(regionDialingFrom);
     if (phoneMetadata == null) {
@@ -81,9 +92,10 @@ public class ShortNumberInfo {
   }
 
   /**
-   * Check whether a short number is a possible number. This provides a more lenient check than
-   * {@link #isValidShortNumber}. See {@link #isPossibleShortNumber(String, String)} for
-   * details.
+   * Check whether a short number is a possible number. If a country calling code is shared by
+   * multiple regions, this returns true if it's possible in any of them. This provides a more
+   * lenient check than {@link #isValidShortNumber}. See {@link
+   * #isPossibleShortNumberForRegion(String, String)} for details.
    *
    * @param number the short number to check
    * @return whether the number is a possible short number
@@ -91,24 +103,25 @@ public class ShortNumberInfo {
   public boolean isPossibleShortNumber(PhoneNumber number) {
     List<String> regionCodes = phoneUtil.getRegionCodesForCountryCode(number.getCountryCode());
     String shortNumber = phoneUtil.getNationalSignificantNumber(number);
-    String regionCode = getRegionCodeForShortNumberFromRegionList(number, regionCodes);
-    if (regionCodes.size() > 1 && regionCode != null) {
-      // If a matching region had been found for the phone number from among two or more regions,
-      // then we have already implicitly verified its validity for that region.
-      return true;
+    for (String region : regionCodes) {
+      PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(region);
+      if (phoneUtil.isNumberPossibleForDesc(shortNumber, phoneMetadata.getGeneralDesc())) {
+        return true;
+      }
     }
-    return isPossibleShortNumber(shortNumber, regionCode);
+    return false;
   }
 
   /**
-   * Tests whether a short number matches a valid pattern. Note that this doesn't verify the number
-   * is actually in use, which is impossible to tell by just looking at the number itself.
+   * Tests whether a short number matches a valid pattern in a region. Note that this doesn't verify
+   * the number is actually in use, which is impossible to tell by just looking at the number
+   * itself.
    *
    * @param shortNumber the short number to check as a string
    * @param regionDialingFrom the region from which the number is dialed
    * @return whether the short number matches a valid pattern
    */
-  public boolean isValidShortNumber(String shortNumber, String regionDialingFrom) {
+  public boolean isValidShortNumberForRegion(String shortNumber, String regionDialingFrom) {
     PhoneMetadata phoneMetadata =
         MetadataManager.getShortNumberMetadataForRegion(regionDialingFrom);
     if (phoneMetadata == null) {
@@ -129,9 +142,10 @@ public class ShortNumberInfo {
   }
 
   /**
-   * Tests whether a short number matches a valid pattern. Note that this doesn't verify the number
-   * is actually in use, which is impossible to tell by just looking at the number itself. See
-   * {@link #isValidShortNumber(String, String)} for details.
+   * Tests whether a short number matches a valid pattern. If a country calling code is shared by
+   * multiple regions, this returns true if it's valid in any of them. Note that this doesn't verify
+   * the number is actually in use, which is impossible to tell by just looking at the number
+   * itself. See {@link #isValidShortNumberForRegion(String, RegionCode)} for details.
    *
    * @param number the short number for which we want to test the validity
    * @return whether the short number matches a valid pattern
@@ -145,54 +159,109 @@ public class ShortNumberInfo {
       // then we have already implicitly verified its validity for that region.
       return true;
     }
-    return isValidShortNumber(shortNumber, regionCode);
+    return isValidShortNumberForRegion(shortNumber, regionCode);
   }
 
   /**
-   * Gets the expected cost category of a short number (however, nothing is implied about its
-   * validity). If it is important that the number is valid, then its validity must first be checked
-   * using {@link isValidShortNumber}. Note that emergency numbers are always considered toll-free.
-   * Example usage:
+   * Gets the expected cost category of a short number when dialled from a region (however, nothing
+   * is implied about its validity). If it is important that the number is valid, then its validity
+   * must first be checked using {@link isValidShortNumberForRegion}. Note that emergency numbers
+   * are always considered toll-free. Example usage:
    * <pre>{@code
-   * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
    * ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
-   * PhoneNumber number = phoneUtil.parse("110", "FR");
-   * if (shortInfo.isValidShortNumber(number)) {
-   *   ShortNumberInfo.ShortNumberCost cost = shortInfo.getExpectedCost(number);
+   * String shortNumber = "110";
+   * String regionCode = "FR";
+   * if (shortInfo.isValidShortNumberForRegion(shortNumber, regionCode)) {
+   *   ShortNumberInfo.ShortNumberCost cost = shortInfo.getExpectedCostForRegion(shortNumber,
+   *       regionCode);
    *   // Do something with the cost information here.
    * }}</pre>
    *
-   * @param number the short number for which we want to know the expected cost category
-   * @return the expected cost category of the short number. Returns UNKNOWN_COST if the number does
-   *     not match a cost category. Note that an invalid number may match any cost category.
+   * @param shortNumber the short number for which we want to know the expected cost category,
+   *     as a string
+   * @param regionDialingFrom the region from which the number is dialed
+   * @return the expected cost category for that region of the short number. Returns UNKNOWN_COST if
+   *     the number does not match a cost category. Note that an invalid number may match any cost
+   *     category.
    */
-  public ShortNumberCost getExpectedCost(PhoneNumber number) {
-    List<String> regionCodes = phoneUtil.getRegionCodesForCountryCode(number.getCountryCode());
-    String regionCode = getRegionCodeForShortNumberFromRegionList(number, regionCodes);
-
-    // Note that regionCode may be null, in which case phoneMetadata will also be null.
-    PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(regionCode);
+  public ShortNumberCost getExpectedCostForRegion(String shortNumber, String regionDialingFrom) {
+    // Note that regionDialingFrom may be null, in which case phoneMetadata will also be null.
+    PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(
+        regionDialingFrom);
     if (phoneMetadata == null) {
       return ShortNumberCost.UNKNOWN_COST;
     }
-    String nationalNumber = phoneUtil.getNationalSignificantNumber(number);
 
     // The cost categories are tested in order of decreasing expense, since if for some reason the
     // patterns overlap the most expensive matching cost category should be returned.
-    if (phoneUtil.isNumberMatchingDesc(nationalNumber, phoneMetadata.getPremiumRate())) {
+    if (phoneUtil.isNumberMatchingDesc(shortNumber, phoneMetadata.getPremiumRate())) {
       return ShortNumberCost.PREMIUM_RATE;
     }
-    if (phoneUtil.isNumberMatchingDesc(nationalNumber, phoneMetadata.getStandardRate())) {
+    if (phoneUtil.isNumberMatchingDesc(shortNumber, phoneMetadata.getStandardRate())) {
       return ShortNumberCost.STANDARD_RATE;
     }
-    if (phoneUtil.isNumberMatchingDesc(nationalNumber, phoneMetadata.getTollFree())) {
+    if (phoneUtil.isNumberMatchingDesc(shortNumber, phoneMetadata.getTollFree())) {
       return ShortNumberCost.TOLL_FREE;
     }
-    if (isEmergencyNumber(nationalNumber, regionCode)) {
+    if (isEmergencyNumber(shortNumber, regionDialingFrom)) {
       // Emergency numbers are implicitly toll-free.
       return ShortNumberCost.TOLL_FREE;
     }
     return ShortNumberCost.UNKNOWN_COST;
+  }
+
+  /**
+   * Gets the expected cost category of a short number (however, nothing is implied about its
+   * validity). If the country calling code is unique to a region, this method behaves exactly the
+   * same as {@link #getExpectedCostForRegion(String, RegionCode)}. However, if the country calling
+   * code is shared by multiple regions, then it returns the highest cost in the sequence
+   * PREMIUM_RATE, UNKNOWN_COST, STANDARD_RATE, TOLL_FREE. The reason for the position of
+   * UNKNOWN_COST in this order is that if a number is UNKNOWN_COST in one region but STANDARD_RATE
+   * or TOLL_FREE in another, its expected cost cannot be estimated as one of the latter since it
+   * might be a PREMIUM_RATE number.
+   *
+   * For example, if a number is STANDARD_RATE in the US, but TOLL_FREE in Canada, the expected cost
+   * returned by this method will be STANDARD_RATE, since the NANPA countries share the same country
+   * calling code.
+   *
+   * Note: If the region from which the number is dialed is known, it is highly preferable to call
+   * {@link #getExpectedCostForRegion(String, RegionCode)} instead.
+   *
+   * @param number the short number for which we want to know the expected cost category
+   * @return the highest expected cost category of the short number in the region(s) with the given
+   *     country calling code
+   */
+  public ShortNumberCost getExpectedCost(PhoneNumber number) {
+    List<String> regionCodes = phoneUtil.getRegionCodesForCountryCode(number.getCountryCode());
+    if (regionCodes.size() == 0) {
+      return ShortNumberCost.UNKNOWN_COST;
+    }
+    String shortNumber = phoneUtil.getNationalSignificantNumber(number);
+    if (regionCodes.size() == 1) {
+      return getExpectedCostForRegion(shortNumber, regionCodes.get(0));
+    }
+    ShortNumberCost cost = ShortNumberCost.TOLL_FREE;
+    for (String regionCode : regionCodes) {
+      ShortNumberCost costForRegion = getExpectedCostForRegion(shortNumber, regionCode);
+      switch (costForRegion) {
+        case PREMIUM_RATE:
+          return ShortNumberCost.PREMIUM_RATE;
+        case UNKNOWN_COST:
+          cost = ShortNumberCost.UNKNOWN_COST;
+          break;
+        case STANDARD_RATE:
+          if (cost != ShortNumberCost.UNKNOWN_COST) {
+            cost = ShortNumberCost.STANDARD_RATE;
+          }
+          break;
+        case TOLL_FREE:
+          // Do nothing.
+          break;
+        default:
+          logger.log(Level.SEVERE, "Unrecognised cost for region: " + costForRegion);
+      }
+    }
+    return cost;
   }
 
   // Helper method to get the region code for a given phone number, from a list of possible region
@@ -324,8 +393,7 @@ public class ShortNumberInfo {
     Pattern emergencyNumberPattern =
         Pattern.compile(metadata.getEmergency().getNationalNumberPattern());
     String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(number);
-    // In Brazil and Chile, emergency numbers don't work when additional digits are appended.
-    return (!allowPrefixMatch || regionCode == "BR" || regionCode == "CL")
+    return (!allowPrefixMatch || REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.contains(regionCode))
         ? emergencyNumberPattern.matcher(normalizedNumber).matches()
         : emergencyNumberPattern.matcher(normalizedNumber).lookingAt();
   }
@@ -333,7 +401,8 @@ public class ShortNumberInfo {
   /**
    * Given a valid short number, determines whether it is carrier-specific (however, nothing is
    * implied about its validity). If it is important that the number is valid, then its validity
-   * must first be checked using {@link isValidShortNumber}.
+   * must first be checked using {@link #isValidShortNumber} or
+   * {@link #isValidShortNumberForRegion}.
    *
    * @param number the valid short number to check
    * @return whether the short number is carrier-specific (assuming the input was a valid short

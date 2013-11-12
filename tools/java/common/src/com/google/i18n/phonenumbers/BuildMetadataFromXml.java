@@ -33,6 +33,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -153,13 +154,20 @@ public class BuildMetadataFromXml {
   static String validateRE(String regex, boolean removeWhitespace) {
     // Removes all the whitespace and newline from the regexp. Not using pattern compile options to
     // make it work across programming languages.
-    if (removeWhitespace) {
-      regex = regex.replaceAll("\\s", "");
+    String compressedRegex = removeWhitespace ? regex.replaceAll("\\s", "") : regex;
+    Pattern.compile(compressedRegex);
+    // We don't ever expect to see | followed by a ) in our metadata - this would be an indication
+    // of a bug. If one wants to make something optional, we prefer ? to using an empty group.
+    int errorIndex = compressedRegex.indexOf("|)");
+    if (errorIndex >= 0) {
+      LOGGER.log(Level.SEVERE,
+                 "Error with original regex: " + regex + "\n| should not be followed directly " +
+                 "by ) in phone number regular expressions.");
+      throw new PatternSyntaxException("| followed by )", compressedRegex, errorIndex);
     }
-    Pattern.compile(regex);
-    // return regex itself if it is of correct regex syntax
-    // i.e. compile did not fail with a PatternSyntaxException.
-    return regex;
+    // return the regex if it is of correct syntax, i.e. compile did not fail with a
+    // PatternSyntaxException.
+    return compressedRegex;
   }
 
   /**

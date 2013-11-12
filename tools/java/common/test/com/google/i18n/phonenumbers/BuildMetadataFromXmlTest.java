@@ -76,6 +76,23 @@ public class BuildMetadataFromXmlTest extends TestCase {
     } catch (PatternSyntaxException e) {
       // Test passed.
     }
+    // We don't allow | to be followed by ) because it introduces bugs, since we typically use it at
+    // the end of each line and when a line is deleted, if the pipe from the previous line is not
+    // removed, we end up erroneously accepting an empty group as well.
+    String patternWithPipeFollowedByClosingParentheses = "|)";
+    try {
+      BuildMetadataFromXml.validateRE(patternWithPipeFollowedByClosingParentheses, true);
+      fail();
+    } catch (PatternSyntaxException e) {
+      // Test passed.
+    }
+    String patternWithPipeFollowedByNewLineAndClosingParentheses = "|\n)";
+    try {
+      BuildMetadataFromXml.validateRE(patternWithPipeFollowedByNewLineAndClosingParentheses, true);
+      fail();
+    } catch (PatternSyntaxException e) {
+      // Test passed.
+    }
   }
 
   public void testValidateRE() {

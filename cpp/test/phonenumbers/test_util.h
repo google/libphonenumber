@@ -109,8 +109,16 @@ class RegionCode {
     return "DE";
   }
 
+  static const char* FR() {
+    return "FR";
+  }
+
   static const char* GB() {
     return "GB";
+  }
+
+  static const char* HU() {
+    return "HU";
   }
 
   static const char* IT() {
@@ -139,6 +147,10 @@ class RegionCode {
 
   static const char* RE() {
     return "RE";
+  }
+
+  static const char* SE() {
+    return "SE";
   }
 
   static const char* SG() {

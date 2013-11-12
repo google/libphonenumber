@@ -12,7 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Source: Prefixes 60, 66 and 67 from Wikipedia, 69 from ITU.
+# Source: Prefixes 60, 66, 67, 69 & 77 from ITU, 56 from www.atci.ci.
+# 61 came from an open-source bug report, and 65 is on Comium's own website.
+# Atlantic Telecom is listed in the ITU doc, but Moov is the name of their
+# mobile phone operator company. Similarly, KoZ is the brand name for Comium and
+# GreenN for Oricel. Aircomm appears to be a typo for Aircom.
 
 22501|Moov
 22502|Moov
@@ -33,11 +37,14 @@
 22548|Orange
 22549|Orange
 22555|MTN
+22556|MTN
 22557|Orange
 22558|Orange
 22559|Orange
 22560|GreenN
 22561|GreenN
+22565|KoZ
 22566|KoZ
 22567|KoZ
 22569|Aircom
+22577|Orange

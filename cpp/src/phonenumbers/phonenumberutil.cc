@@ -17,9 +17,9 @@
 
 #include "phonenumbers/phonenumberutil.h"
 
+#include <string.h>
 #include <algorithm>
 #include <cctype>
-#include <cstring>
 #include <iterator>
 #include <map>
 #include <utility>
@@ -56,6 +56,12 @@ using std::make_pair;
 using std::sort;
 
 using google::protobuf::RepeatedPtrField;
+
+// static constants
+const size_t PhoneNumberUtil::kMinLengthForNsn;
+const size_t PhoneNumberUtil::kMaxLengthForNsn;
+const size_t PhoneNumberUtil::kMaxLengthCountryCode;
+const int PhoneNumberUtil::kNanpaCountryCode;
 
 // static
 const char PhoneNumberUtil::kPlusChars[] = "+\xEF\xBC\x8B";  /* "+＋" */
@@ -185,92 +191,6 @@ bool IsNationalNumberSuffixOfTheOther(const PhoneNumber& first_number,
                          second_number_national_number) ||
          HasSuffixString(second_number_national_number,
                          first_number_national_number);
-}
-
-bool IsNumberMatchingDesc(const string& national_number,
-                          const PhoneNumberDesc& number_desc,
-                          RegExpCache* regexp_cache) {
-  return regexp_cache->GetRegExp(number_desc.possible_number_pattern())
-             .FullMatch(national_number) &&
-         regexp_cache->GetRegExp(number_desc.national_number_pattern())
-             .FullMatch(national_number);
-}
-
-PhoneNumberUtil::PhoneNumberType GetNumberTypeHelper(
-    const string& national_number, const PhoneMetadata& metadata,
-    RegExpCache* regexp_cache) {
-  const PhoneNumberDesc& general_desc = metadata.general_desc();
-  if (!general_desc.has_national_number_pattern() ||
-      !IsNumberMatchingDesc(national_number, general_desc, regexp_cache)) {
-    VLOG(4) << "Number type unknown - doesn't match general national number"
-            << " pattern.";
-    return PhoneNumberUtil::UNKNOWN;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.premium_rate(),
-                           regexp_cache)) {
-    VLOG(4) << "Number is a premium number.";
-    return PhoneNumberUtil::PREMIUM_RATE;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.toll_free(),
-                           regexp_cache)) {
-    VLOG(4) << "Number is a toll-free number.";
-    return PhoneNumberUtil::TOLL_FREE;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.shared_cost(),
-                           regexp_cache)) {
-    VLOG(4) << "Number is a shared cost number.";
-    return PhoneNumberUtil::SHARED_COST;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.voip(), regexp_cache)) {
-    VLOG(4) << "Number is a VOIP (Voice over IP) number.";
-    return PhoneNumberUtil::VOIP;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.personal_number(),
-                           regexp_cache)) {
-    VLOG(4) << "Number is a personal number.";
-    return PhoneNumberUtil::PERSONAL_NUMBER;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.pager(), regexp_cache)) {
-    VLOG(4) << "Number is a pager number.";
-    return PhoneNumberUtil::PAGER;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.uan(), regexp_cache)) {
-    VLOG(4) << "Number is a UAN.";
-    return PhoneNumberUtil::UAN;
-  }
-  if (IsNumberMatchingDesc(national_number, metadata.voicemail(),
-                           regexp_cache)) {
-    VLOG(4) << "Number is a voicemail number.";
-    return PhoneNumberUtil::VOICEMAIL;
-  }
-
-  bool is_fixed_line =
-      IsNumberMatchingDesc(national_number, metadata.fixed_line(),
-                           regexp_cache);
-  if (is_fixed_line) {
-    if (metadata.same_mobile_and_fixed_line_pattern()) {
-      VLOG(4) << "Fixed-line and mobile patterns equal, number is fixed-line"
-              << " or mobile";
-      return PhoneNumberUtil::FIXED_LINE_OR_MOBILE;
-    } else if (IsNumberMatchingDesc(national_number, metadata.mobile(),
-                                    regexp_cache)) {
-      VLOG(4) << "Fixed-line and mobile patterns differ, but number is "
-              << "still fixed-line or mobile";
-      return PhoneNumberUtil::FIXED_LINE_OR_MOBILE;
-    }
-    VLOG(4) << "Number is a fixed line number.";
-    return PhoneNumberUtil::FIXED_LINE;
-  }
-  // Otherwise, test to see if the number is mobile. Only do this if certain
-  // that the patterns for mobile and fixed line aren't the same.
-  if (!metadata.same_mobile_and_fixed_line_pattern() &&
-      IsNumberMatchingDesc(national_number, metadata.mobile(), regexp_cache)) {
-    VLOG(4) << "Number is a mobile number.";
-    return PhoneNumberUtil::MOBILE;
-  }
-  VLOG(4) << "Number type unknown - doesn\'t match any specific number type"
-          << " pattern.";
-  return PhoneNumberUtil::UNKNOWN;
 }
 
 char32 ToUnicodeCodepoint(const char* unicode_char) {
@@ -1040,8 +960,9 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
   number_no_extension.clear_extension();
   string region_code;
   GetRegionCodeForCountryCode(country_calling_code, &region_code);
+  PhoneNumberType number_type = GetNumberType(number_no_extension);
+  bool is_valid_number = (number_type != UNKNOWN);
   if (calling_from == region_code) {
-    PhoneNumberType number_type = GetNumberType(number_no_extension);
     bool is_fixed_line_or_mobile =
         (number_type == FIXED_LINE) || (number_type == MOBILE) ||
         (number_type == FIXED_LINE_OR_MOBILE);
@@ -1061,23 +982,38 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         // string here.
         formatted_number->assign("");
       }
-    } else if (region_code == "HU") {
+    } else if (is_valid_number && region_code == "HU") {
       // The national format for HU numbers doesn't contain the national prefix,
       // because that is how numbers are normally written down. However, the
-      // national prefix is obligatory when dialing from a mobile phone. As a
-      // result, we add it back here.
+      // national prefix is obligatory when dialing from a mobile phone, except
+      // for short numbers. As a result, we add it back here if it is a valid
+      // regular length phone number.
       Format(number_no_extension, NATIONAL, formatted_number);
       string hu_national_prefix;
       GetNddPrefixForRegion(region_code, true /* strip non-digits */,
                             &hu_national_prefix);
       formatted_number->assign(
           StrCat(hu_national_prefix, " ", *formatted_number));
+    } else if (country_calling_code == kNanpaCountryCode) {
+      // For NANPA countries, we output international format for numbers that
+      // can be dialed internationally, since that always works, except for
+      // numbers which might potentially be short numbers, which are always
+      // dialled in national format.
+      const PhoneMetadata* region_metadata = GetMetadataForRegion(calling_from);
+      string national_number;
+      GetNationalSignificantNumber(number_no_extension, &national_number);
+      if (CanBeInternationallyDialled(number_no_extension) &&
+          !IsShorterThanPossibleNormalNumber(region_metadata,
+              national_number)) {
+        Format(number_no_extension, INTERNATIONAL, formatted_number);
+      } else {
+        Format(number_no_extension, NATIONAL, formatted_number);
+      }
     } else {
-      // For NANPA countries, non-geographical countries, Mexican and Chilean
-      // fixed line and mobile numbers, we output international format for
-      // numbers that can be dialed internationally as that always works.
-      if ((country_calling_code == kNanpaCountryCode ||
-           region_code == kRegionCodeForNonGeoEntity ||
+      // For non-geographical countries, and Mexican and Chilean fixed line and
+      // mobile numbers, we output international format for numbers that can be
+      // dialed internationally as that always works.
+      if ((region_code == kRegionCodeForNonGeoEntity ||
            // MX fixed line and mobile numbers should always be formatted in
            // international format, even when dialed within MX. For national
            // format to work, a carrier code needs to be used, and the correct
@@ -1097,7 +1033,11 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         Format(number_no_extension, NATIONAL, formatted_number);
       }
     }
-  } else if (CanBeInternationallyDialled(number_no_extension)) {
+  } else if (is_valid_number &&
+      CanBeInternationallyDialled(number_no_extension)) {
+    // We assume that short numbers are not diallable from outside their
+    // region, so if a number is not a valid regular length phone number, we
+    // treat it as if it cannot be internationally dialled.
     with_formatting
         ? Format(number_no_extension, INTERNATIONAL, formatted_number)
         : Format(number_no_extension, E164, formatted_number);
@@ -1666,8 +1606,7 @@ void PhoneNumberUtil::GetRegionCodeForNumberFromRegionList(
         *region_code = *it;
         return;
       }
-    } else if (GetNumberTypeHelper(national_number, *metadata,
-                                   reg_exps_->regexp_cache_.get()) != UNKNOWN) {
+    } else if (GetNumberTypeHelper(national_number, *metadata) != UNKNOWN) {
       *region_code = *it;
       return;
     }
@@ -1914,11 +1853,22 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     return TOO_SHORT_NSN;
   }
   if (country_metadata) {
-    string* carrier_code = keep_raw_input ?
-        temp_number.mutable_preferred_domestic_carrier_code() : NULL;
+    string carrier_code;
+    string potential_national_number(normalized_national_number);
     MaybeStripNationalPrefixAndCarrierCode(*country_metadata,
-                                           &normalized_national_number,
-                                           carrier_code);
+                                           &potential_national_number,
+                                           &carrier_code);
+    // We require that the NSN remaining after stripping the national prefix
+    // and carrier code be of a possible length for the region. Otherwise, we
+    // don't do the stripping, since the original number could be a valid short
+    // number.
+    if (!IsShorterThanPossibleNormalNumber(country_metadata,
+        potential_national_number)) {
+      normalized_national_number.assign(potential_national_number);
+      if (keep_raw_input) {
+        temp_number.set_preferred_domestic_carrier_code(carrier_code);
+      }
+    }
   }
   size_t normalized_national_number_length =
       normalized_national_number.length();
@@ -1931,9 +1881,8 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     return TOO_LONG_NSN;
   }
   temp_number.set_country_code(country_code);
-  if (normalized_national_number[0] == '0') {
-    temp_number.set_italian_leading_zero(true);
-  }
+  SetItalianLeadingZerosForPhoneNumber(normalized_national_number,
+      &temp_number);
   uint64 number_as_int;
   safe_strtou64(normalized_national_number, &number_as_int);
   temp_number.set_national_number(number_as_int);
@@ -2070,9 +2019,7 @@ PhoneNumberUtil::PhoneNumberType PhoneNumberUtil::GetNumberType(
   }
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
-  return GetNumberTypeHelper(national_significant_number,
-                             *metadata,
-                             reg_exps_->regexp_cache_.get());
+  return GetNumberTypeHelper(national_significant_number, *metadata);
 }
 
 bool PhoneNumberUtil::IsValidNumber(const PhoneNumber& number) const {
@@ -2107,8 +2054,7 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
     return number_length > kMinLengthForNsn &&
         number_length <= kMaxLengthForNsn;
   }
-  return GetNumberTypeHelper(national_number, *metadata,
-                             reg_exps_->regexp_cache_.get()) != UNKNOWN;
+  return GetNumberTypeHelper(national_number, *metadata) != UNKNOWN;
 }
 
 bool PhoneNumberUtil::IsNumberGeographical(
@@ -2129,13 +2075,117 @@ bool PhoneNumberUtil::IsLeadingZeroPossible(int country_calling_code) const {
   return main_metadata_for_calling_code->leading_zero_possible();
 }
 
+// A helper function to set the values related to leading zeros in a
+// PhoneNumber.
+void PhoneNumberUtil::SetItalianLeadingZerosForPhoneNumber(
+    const string& national_number, PhoneNumber* phone_number) const {
+  if (national_number.length() > 1 && national_number[0] == '0') {
+    phone_number->set_italian_leading_zero(true);
+    size_t number_of_leading_zeros = 1;
+    // Note that if the national number is all "0"s, the last "0" is not
+    // counted as a leading zero.
+    while (number_of_leading_zeros < national_number.length() - 1 &&
+        national_number[number_of_leading_zeros] == '0') {
+      number_of_leading_zeros++;
+    }
+    if (number_of_leading_zeros != 1) {
+      phone_number->set_number_of_leading_zeros(number_of_leading_zeros);
+    }
+  }
+}
+
+bool PhoneNumberUtil::IsNumberPossibleForDesc(
+    const string& national_number, const PhoneNumberDesc& number_desc) const {
+  return reg_exps_->regexp_cache_.get()->
+             GetRegExp(number_desc.possible_number_pattern())
+             .FullMatch(national_number);
+}
+
+bool PhoneNumberUtil::IsNumberMatchingDesc(
+    const string& national_number, const PhoneNumberDesc& number_desc) const {
+  return IsNumberPossibleForDesc(national_number, number_desc) &&
+         reg_exps_->regexp_cache_.get()->
+             GetRegExp(number_desc.national_number_pattern())
+             .FullMatch(national_number);
+}
+
+PhoneNumberUtil::PhoneNumberType PhoneNumberUtil::GetNumberTypeHelper(
+    const string& national_number, const PhoneMetadata& metadata) const {
+  const PhoneNumberDesc& general_desc = metadata.general_desc();
+  if (!general_desc.has_national_number_pattern() ||
+      !IsNumberMatchingDesc(national_number, general_desc)) {
+    VLOG(4) << "Number type unknown - doesn't match general national number"
+            << " pattern.";
+    return PhoneNumberUtil::UNKNOWN;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.premium_rate())) {
+    VLOG(4) << "Number is a premium number.";
+    return PhoneNumberUtil::PREMIUM_RATE;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.toll_free())) {
+    VLOG(4) << "Number is a toll-free number.";
+    return PhoneNumberUtil::TOLL_FREE;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.shared_cost())) {
+    VLOG(4) << "Number is a shared cost number.";
+    return PhoneNumberUtil::SHARED_COST;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.voip())) {
+    VLOG(4) << "Number is a VOIP (Voice over IP) number.";
+    return PhoneNumberUtil::VOIP;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.personal_number())) {
+    VLOG(4) << "Number is a personal number.";
+    return PhoneNumberUtil::PERSONAL_NUMBER;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.pager())) {
+    VLOG(4) << "Number is a pager number.";
+    return PhoneNumberUtil::PAGER;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.uan())) {
+    VLOG(4) << "Number is a UAN.";
+    return PhoneNumberUtil::UAN;
+  }
+  if (IsNumberMatchingDesc(national_number, metadata.voicemail())) {
+    VLOG(4) << "Number is a voicemail number.";
+    return PhoneNumberUtil::VOICEMAIL;
+  }
+
+  bool is_fixed_line =
+      IsNumberMatchingDesc(national_number, metadata.fixed_line());
+  if (is_fixed_line) {
+    if (metadata.same_mobile_and_fixed_line_pattern()) {
+      VLOG(4) << "Fixed-line and mobile patterns equal, number is fixed-line"
+              << " or mobile";
+      return PhoneNumberUtil::FIXED_LINE_OR_MOBILE;
+    } else if (IsNumberMatchingDesc(national_number, metadata.mobile())) {
+      VLOG(4) << "Fixed-line and mobile patterns differ, but number is "
+              << "still fixed-line or mobile";
+      return PhoneNumberUtil::FIXED_LINE_OR_MOBILE;
+    }
+    VLOG(4) << "Number is a fixed line number.";
+    return PhoneNumberUtil::FIXED_LINE;
+  }
+  // Otherwise, test to see if the number is mobile. Only do this if certain
+  // that the patterns for mobile and fixed line aren't the same.
+  if (!metadata.same_mobile_and_fixed_line_pattern() &&
+      IsNumberMatchingDesc(national_number, metadata.mobile())) {
+    VLOG(4) << "Number is a mobile number.";
+    return PhoneNumberUtil::MOBILE;
+  }
+  VLOG(4) << "Number type unknown - doesn\'t match any specific number type"
+          << " pattern.";
+  return PhoneNumberUtil::UNKNOWN;
+}
+
 void PhoneNumberUtil::GetNationalSignificantNumber(
     const PhoneNumber& number,
     string* national_number) const {
   DCHECK(national_number);
-  // If a leading zero has been set, we prefix this now. Note this is not a
+  // If leading zero(s) have been set, we prefix this now. Note this is not a
   // national prefix.
-  StrAppend(national_number, number.italian_leading_zero() ? "0" : "");
+  StrAppend(national_number, number.italian_leading_zero() ?
+      string(number.number_of_leading_zeros(), '0') : "");
   StrAppend(national_number, number.national_number());
 }
 
@@ -2731,6 +2781,15 @@ AsYouTypeFormatter* PhoneNumberUtil::GetAsYouTypeFormatter(
   return new AsYouTypeFormatter(region_code);
 }
 
+bool PhoneNumberUtil::IsShorterThanPossibleNormalNumber(
+    const PhoneMetadata* country_metadata, const string& number) const {
+  const RegExp& possible_number_pattern =
+      reg_exps_->regexp_cache_->GetRegExp(StrCat("(",
+          country_metadata->general_desc().possible_number_pattern(), ")"));
+  return TestNumberLengthAgainstPattern(possible_number_pattern, number) ==
+      PhoneNumberUtil::TOO_SHORT;
+}
+
 bool PhoneNumberUtil::CanBeInternationallyDialled(
     const PhoneNumber& number) const {
   string region_code;
@@ -2744,8 +2803,7 @@ bool PhoneNumberUtil::CanBeInternationallyDialled(
   string national_significant_number;
   GetNationalSignificantNumber(number, &national_significant_number);
   return !IsNumberMatchingDesc(
-      national_significant_number, metadata->no_international_dialling(),
-      reg_exps_->regexp_cache_.get());
+      national_significant_number, metadata->no_international_dialling());
 }
 
 }  // namespace phonenumbers

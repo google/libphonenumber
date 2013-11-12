@@ -416,6 +416,25 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       }
 
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(candidate, preferredRegion);
+      // Check Israel * numbers: these are a special case in that they are four-digit numbers that
+      // our library supports, but they can only be dialled with a leading *. Since we don't
+      // actually store or detect the * in our phone number library, this means in practice we
+      // detect most four digit numbers as being valid for Israel. We are considering moving these
+      // numbers to ShortNumberInfo instead, in which case this problem would go away, but in the
+      // meantime we want to restrict the false matches so we only allow these numbers if they are
+      // preceded by a star. We enforce this for all leniency levels even though these numbers are
+      // technically accepted by isPossibleNumber and isValidNumber since we consider it to be a
+      // deficiency in those methods that they accept these numbers without the *.
+      // TODO: Remove this or make it significantly less hacky once we've decided how to
+      // handle these short codes going forward in ShortNumberInfo. We could use the formatting
+      // rules for instance, but that would be slower.
+      if (phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()).equals("IL") &&
+          phoneUtil.getNationalSignificantNumber(number).length() == 4 &&
+          (offset == 0 || (offset > 0 && text.charAt(offset - 1) != '*'))) {
+        // No match.
+        return null;
+      }
+
       if (leniency.verify(number, candidate, phoneUtil)) {
         // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
         // values parsed. TODO: stop clearing all values here and switch all users over
@@ -456,6 +475,11 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
                                               StringBuilder normalizedCandidate,
                                               String[] formattedNumberGroups) {
     int fromIndex = 0;
+    if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
+      // First skip the country code if the normalized candidate contained it.
+      String countryCode = Integer.toString(number.getCountryCode());
+      fromIndex = normalizedCandidate.indexOf(countryCode) + countryCode.length();
+    }
     // Check each group of consecutive digits are not broken into separate groupings in the
     // {@code normalizedCandidate} string.
     for (int i = 0; i < formattedNumberGroups.length; i++) {
@@ -621,7 +645,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         // extension number.
         } else if (!PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(index)).equals(
             number.getExtension())) {
-            return false;
+          return false;
         }
       }
     }

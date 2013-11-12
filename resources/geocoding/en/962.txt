@@ -1,0 +1,32 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# http://www.itu.int/dms_pub/itu-t/oth/02/02/T020200006E0001PDFE.pdf
+# It seems that the first 3 digits of the national significant number indicate
+# the location. The association of 6 with Amman comes from Wikipedia.
+
+962266|Mafraq
+962267|Jarash
+962268|Ajloun
+962269|Irbid
+9623222|Tafileh
+962324|Aqaba
+962325|Maan
+9623260|Tafileh
+962327|Karak
+962530|Zarqa
+962531|Madaba
+962533|Balqa
+9626|Amman

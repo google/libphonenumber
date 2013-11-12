@@ -468,6 +468,9 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     new NumberTest("0900-1 123123", RegionCode.DE),
     new NumberTest("(0)900-1 123123", RegionCode.DE),
     new NumberTest("0 900-1 123123", RegionCode.DE),
+    // NDC also found as part of the country calling code; this shouldn't ruin the grouping
+    // expectations.
+    new NumberTest("+33 3 34 2312", RegionCode.FR),
   };
 
   /**
@@ -499,6 +502,7 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     new NumberTest("0900-1 123 123", RegionCode.DE),
     new NumberTest("(0)900-1 123 123", RegionCode.DE),
     new NumberTest("0 900-1 123 123", RegionCode.DE),
+    new NumberTest("+33 3 34 23 12", RegionCode.FR),
   };
 
   public void testMatchesWithPossibleLeniency() throws Exception {

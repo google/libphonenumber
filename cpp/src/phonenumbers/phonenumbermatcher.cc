@@ -116,10 +116,15 @@ bool ContainsOnlyValidXChars(const PhoneNumber& number, const string& candidate,
 
 bool AllNumberGroupsRemainGrouped(
     const PhoneNumberUtil& util,
-    const PhoneNumber& phone_number,
+    const PhoneNumber& number,
     const string& normalized_candidate,
     const vector<string>& formatted_number_groups) {
   size_t from_index = 0;
+  if (number.country_code_source() != PhoneNumber::FROM_DEFAULT_COUNTRY) {
+    // First skip the country code if the normalized candidate contained it.
+    string country_code = SimpleItoa(number.country_code());
+    from_index = normalized_candidate.find(country_code) + country_code.size();
+  }
   // Check each group of consecutive digits are not broken into separate
   // groupings in the normalized_candidate string.
   for (size_t i = 0; i < formatted_number_groups.size(); ++i) {
@@ -139,7 +144,7 @@ bool AllNumberGroupsRemainGrouped(
       // different countries with the same country calling code and this is
       // faster.
       string region;
-      util.GetRegionCodeForCountryCode(phone_number.country_code(), &region);
+      util.GetRegionCodeForCountryCode(number.country_code(), &region);
       string ndd_prefix;
       util.GetNddPrefixForRegion(region, true, &ndd_prefix);
       // Note although normalized_candidate might contain non-ASCII formatting
@@ -151,8 +156,7 @@ bool AllNumberGroupsRemainGrouped(
         // the number, except for extensions. This is only important for
         // countries with national prefixes.
         string national_significant_number;
-        util.GetNationalSignificantNumber(
-            phone_number, &national_significant_number);
+        util.GetNationalSignificantNumber(number, &national_significant_number);
         return HasPrefixString(normalized_candidate.substr(
             from_index - formatted_number_groups.at(i).length()),
             national_significant_number);
@@ -163,7 +167,7 @@ bool AllNumberGroupsRemainGrouped(
     // extension to match the last group of the subscriber number. Note the
     // extension cannot have formatting in-between digits.
     return normalized_candidate.substr(from_index)
-        .find(phone_number.extension()) != string::npos;
+        .find(number.extension()) != string::npos;
 }
 
 bool LoadAlternateFormats(PhoneMetadataCollection* alternate_formats) {
@@ -452,6 +456,36 @@ bool PhoneNumberMatcher::ParseAndVerify(const string& candidate, int offset,
       PhoneNumberUtil::NO_PARSING_ERROR) {
     return false;
   }
+
+
+  // Check Israel * numbers: these are a special case in that they are
+  // four-digit numbers that our library supports, but they can only be dialled
+  // with a leading *. Since we don't actually store or detect the * in our
+  // phone number library, this means in practice we detect most four digit
+  // numbers as being valid for Israel. We are considering moving these numbers
+  // to ShortNumberInfo instead, in which case this problem would go away, but
+  // in the meantime we want to restrict the false matches so we only allow
+  // these numbers if they are preceded by a star. We enforce this for all
+  // leniency levels even though these numbers are technically accepted by
+  // isPossibleNumber and isValidNumber since we consider it to be a deficiency
+  // in those methods that they accept these numbers without the *.
+  // TODO: Remove this or make it significantly less hacky once
+  // we've decided how to handle these short codes going forward in
+  // ShortNumberInfo. We could use the formatting rules for instance, but that
+  // would be slower.
+  string region_code;
+  phone_util_.GetRegionCodeForCountryCode(number.country_code(), &region_code);
+  if (region_code == "IL") {
+    string national_number;
+    phone_util_.GetNationalSignificantNumber(number, &national_number);
+    if (national_number.length() == 4 &&
+        // Just check the previous char, since * is an ASCII character.
+        (offset == 0 || (offset > 0 && text_[offset - 1] != '*'))) {
+      // No match.
+      return false;
+    }
+  }
+
   if (VerifyAccordingToLeniency(leniency_, number, candidate)) {
     match->set_start(offset);
     match->set_raw_string(candidate);

@@ -25,6 +25,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -608,8 +609,7 @@ public class PhoneNumberUtil {
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
-      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-      metadataCollection.readExternal(in);
+      PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
       List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
       if (metadataList.isEmpty()) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
@@ -627,17 +627,30 @@ public class PhoneNumberUtil {
     } catch (IOException e) {
       logger.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
       throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
-    } finally {
-      close(in);
     }
   }
 
-  private static void close(InputStream in) {
-    if (in != null) {
+  /**
+   * Loads the metadata protocol buffer from the given stream and closes the stream afterwards. Any
+   * exceptions that occur while reading the stream are propagated (though exceptions that occur
+   * when the stream is closed will be ignored).
+   *
+   * @param source  the non-null stream from which metadata is to be read.
+   * @return        the loaded metadata protocol buffer.
+   */
+  private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInput source) {
+    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
+    try {
+      metadataCollection.readExternal(source);
+    } catch (IOException e) {
+      logger.log(Level.WARNING, "error reading input (ignored)", e);
+    } finally {
       try {
-        in.close();
+        source.close();
       } catch (IOException e) {
         logger.log(Level.WARNING, "error closing input stream (ignored)", e);
+      } finally {
+        return metadataCollection;
       }
     }
   }
@@ -1256,8 +1269,9 @@ public class PhoneNumberUtil {
     // Clear the extension, as that part cannot normally be dialed together with the main number.
     PhoneNumber numberNoExt = new PhoneNumber().mergeFrom(number).clearExtension();
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
+    PhoneNumberType numberType = getNumberType(numberNoExt);
+    boolean isValidNumber = (numberType != PhoneNumberType.UNKNOWN);
     if (regionCallingFrom.equals(regionCode)) {
-      PhoneNumberType numberType = getNumberType(numberNoExt);
       boolean isFixedLineOrMobile =
           (numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
           (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
@@ -1272,19 +1286,31 @@ public class PhoneNumberUtil {
             // called within Brazil. Without that, most of the carriers won't connect the call.
             // Because of that, we return an empty string here.
             : "";
-      } else if (regionCode.equals("HU")) {
+      } else if (isValidNumber && regionCode.equals("HU")) {
         // The national format for HU numbers doesn't contain the national prefix, because that is
         // how numbers are normally written down. However, the national prefix is obligatory when
-        // dialing from a mobile phone. As a result, we add it back here.
+        // dialing from a mobile phone, except for short numbers. As a result, we add it back here
+        // if it is a valid regular length phone number.
         formattedNumber =
             getNddPrefixForRegion(regionCode, true /* strip non-digits */) +
             " " + format(numberNoExt, PhoneNumberFormat.NATIONAL);
+      } else if (countryCallingCode == NANPA_COUNTRY_CODE) {
+        // For NANPA countries, we output international format for numbers that can be dialed
+        // internationally, since that always works, except for numbers which might potentially be
+        // short numbers, which are always dialled in national format.
+        PhoneMetadata regionMetadata = getMetadataForRegion(regionCallingFrom);
+        if (canBeInternationallyDialled(numberNoExt) &&
+            !isShorterThanPossibleNormalNumber(regionMetadata,
+                getNationalSignificantNumber(numberNoExt))) {
+          formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
+        } else {
+          formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
+        }
       } else {
-        // For NANPA countries, non-geographical countries, Mexican and Chilean fixed line and
-        // mobile numbers, we output international format for numbers that can be dialed
-        // internationally as that always works.
-        if ((countryCallingCode == NANPA_COUNTRY_CODE ||
-            regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY) ||
+        // For non-geographical countries, and Mexican and Chilean fixed line and mobile numbers, we
+        // output international format for numbers that can be dialed internationally as that always
+        // works.
+        if ((regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY) ||
             // MX fixed line and mobile numbers should always be formatted in international format,
             // even when dialed within MX. For national format to work, a carrier code needs to be
             // used, and the correct carrier code depends on if the caller and callee are from the
@@ -1300,7 +1326,10 @@ public class PhoneNumberUtil {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
         }
       }
-    } else if (canBeInternationallyDialled(numberNoExt)) {
+    } else if (isValidNumber && canBeInternationallyDialled(numberNoExt)) {
+      // We assume that short numbers are not diallable from outside their region, so if a number
+      // is not a valid regular length phone number, we treat it as if it cannot be internationally
+      // dialled.
       return withFormatting ? format(numberNoExt, PhoneNumberFormat.INTERNATIONAL)
                             : format(numberNoExt, PhoneNumberFormat.E164);
     }
@@ -1662,8 +1691,13 @@ public class PhoneNumberUtil {
    * @return  the national significant number of the PhoneNumber object passed in
    */
   public String getNationalSignificantNumber(PhoneNumber number) {
-    // If a leading zero has been set, we prefix this now. Note this is not a national prefix.
-    StringBuilder nationalNumber = new StringBuilder(number.isItalianLeadingZero() ? "0" : "");
+    // If leading zero(s) have been set, we prefix this now. Note this is not a national prefix.
+    StringBuilder nationalNumber = new StringBuilder();
+    if (number.isItalianLeadingZero()) {
+      char[] zeros = new char[number.getNumberOfLeadingZeros()];
+      Arrays.fill(zeros, '0');
+      nationalNumber.append(new String(zeros));
+    }
     nationalNumber.append(number.getNationalNumber());
     return nationalNumber.toString();
   }
@@ -1996,7 +2030,6 @@ public class PhoneNumberUtil {
     return countryCodeToNonGeographicalMetadataMap.get(countryCallingCode);
   }
 
-  // @VisibleForTesting
   boolean isNumberPossibleForDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
     Matcher possibleNumberPatternMatcher =
         regexCache.getPatternForRegex(numberDesc.getPossibleNumberPattern())
@@ -2004,7 +2037,6 @@ public class PhoneNumberUtil {
     return possibleNumberPatternMatcher.matches();
   }
 
-  // @VisibleForTesting
   boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
     Matcher nationalNumberPatternMatcher =
         regexCache.getPatternForRegex(numberDesc.getNationalNumberPattern())
@@ -2271,6 +2303,17 @@ public class PhoneNumberUtil {
     } else {
       return ValidationResult.TOO_SHORT;
     }
+  }
+
+  /**
+   * Helper method to check whether a number is too short to be a regular length phone number in a
+   * region.
+   */
+  private boolean isShorterThanPossibleNormalNumber(PhoneMetadata regionMetadata, String number) {
+    Pattern possibleNumberPattern = regexCache.getPatternForRegex(
+        regionMetadata.getGeneralDesc().getPossibleNumberPattern());
+    return testNumberLengthAgainstPattern(possibleNumberPattern, number) ==
+        ValidationResult.TOO_SHORT;
   }
 
   /**
@@ -2788,6 +2831,25 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * A helper function to set the values related to leading zeros in a PhoneNumber.
+   */
+  static void setItalianLeadingZerosForPhoneNumber(String nationalNumber, PhoneNumber phoneNumber) {
+    if (nationalNumber.length() > 1 && nationalNumber.charAt(0) == '0') {
+      phoneNumber.setItalianLeadingZero(true);
+      int numberOfLeadingZeros = 1;
+      // Note that if the national number is all "0"s, the last "0" is not counted as a leading
+      // zero.
+      while (numberOfLeadingZeros < nationalNumber.length() - 1 &&
+             nationalNumber.charAt(numberOfLeadingZeros) == '0') {
+        numberOfLeadingZeros++;
+      }
+      if (numberOfLeadingZeros != 1) {
+        phoneNumber.setNumberOfLeadingZeros(numberOfLeadingZeros);
+      }
+    }
+  }
+
+  /**
    * Parses a string and fills up the phoneNumber. This method is the same as the public
    * parse() method, with the exception that it allows the default region to be null, for use by
    * isNumberMatch(). checkRegion should be set to false if it is permitted for the default region
@@ -2880,9 +2942,16 @@ public class PhoneNumberUtil {
     }
     if (regionMetadata != null) {
       StringBuilder carrierCode = new StringBuilder();
-      maybeStripNationalPrefixAndCarrierCode(normalizedNationalNumber, regionMetadata, carrierCode);
-      if (keepRawInput) {
-        phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
+      StringBuilder potentialNationalNumber = new StringBuilder(normalizedNationalNumber);
+      maybeStripNationalPrefixAndCarrierCode(potentialNationalNumber, regionMetadata, carrierCode);
+      // We require that the NSN remaining after stripping the national prefix and carrier code be
+      // of a possible length for the region. Otherwise, we don't do the stripping, since the
+      // original number could be a valid short number.
+      if (!isShorterThanPossibleNormalNumber(regionMetadata, potentialNationalNumber.toString())) {
+        normalizedNationalNumber = potentialNationalNumber;
+        if (keepRawInput) {
+          phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
+        }
       }
     }
     int lengthOfNationalNumber = normalizedNationalNumber.length();
@@ -2894,9 +2963,7 @@ public class PhoneNumberUtil {
       throw new NumberParseException(NumberParseException.ErrorType.TOO_LONG,
                                      "The string supplied is too long to be a phone number.");
     }
-    if (normalizedNationalNumber.charAt(0) == '0') {
-      phoneNumber.setItalianLeadingZero(true);
-    }
+    setItalianLeadingZerosForPhoneNumber(normalizedNationalNumber.toString(), phoneNumber);
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));
   }
 

@@ -1075,6 +1075,72 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::UN001(), false, &formatted_number);
   EXPECT_EQ("+80012345678", formatted_number);
+
+  // Test that a short number is formatted correctly for mobile dialing within
+  // the region, and is not diallable from outside the region.
+  test_number.set_country_code(49);
+  test_number.set_national_number(123L);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::DE(), false, &formatted_number);
+  EXPECT_EQ("123", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::IT(), false, &formatted_number);
+  EXPECT_EQ("", formatted_number);
+
+  // Test the special logic for Hungary, where the national prefix must be
+  // added before dialing from a mobile phone for regular length numbers, but
+  // not for short numbers.
+  test_number.set_country_code(36);
+  test_number.set_national_number(301234567L);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::HU(), false, &formatted_number);
+  EXPECT_EQ("06301234567", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::JP(), false, &formatted_number);
+  EXPECT_EQ("+36301234567", formatted_number);
+  test_number.set_national_number(104L);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::HU(), false, &formatted_number);
+  EXPECT_EQ("104", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::JP(), false, &formatted_number);
+  EXPECT_EQ("", formatted_number);
+
+  // Test the special logic for NANPA countries, for which regular length phone
+  // numbers are always output in international format, but short numbers are
+  // in national format.
+  test_number.set_country_code(1);
+  test_number.set_national_number(6502530000L);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("+16502530000", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::CA(), false, &formatted_number);
+  EXPECT_EQ("+16502530000", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::BR(), false, &formatted_number);
+  EXPECT_EQ("+16502530000", formatted_number);
+  test_number.set_national_number(911L);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("911", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::CA(), false, &formatted_number);
+  EXPECT_EQ("", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::BR(), false, &formatted_number);
+  EXPECT_EQ("", formatted_number);
+  // Test that the Australian emergency number 000 is formatted correctly.
+  test_number.set_country_code(61);
+  test_number.set_national_number(0L);
+  test_number.set_italian_leading_zero(true);
+  test_number.set_number_of_leading_zeros(2);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::AU(), false, &formatted_number);
+  EXPECT_EQ("000", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::NZ(), false, &formatted_number);
+  EXPECT_EQ("", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatByPattern) {
@@ -1333,8 +1399,8 @@ TEST_F(PhoneNumberUtilTest, GetCountryMobileToken) {
   phone_util_.GetCountryMobileToken(country_calling_code, &mobile_token);
   EXPECT_EQ("1", mobile_token);
 
-  // Country calling code for United States, which has no mobile token.
-  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::US());
+  // Country calling code for Sweden, which has no mobile token.
+  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::SE());
   phone_util_.GetCountryMobileToken(country_calling_code, &mobile_token);
   EXPECT_EQ("", mobile_token);
 }
@@ -2646,7 +2712,7 @@ TEST_F(PhoneNumberUtilTest, UnknownCountryCallingCode) {
 }
 
 TEST_F(PhoneNumberUtilTest, IsNumberMatchMatches) {
-  // Test simple matches where formatting is different, or leading zeroes, or
+  // Test simple matches where formatting is different, or leading zeros, or
   // country code has been specified.
   EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331 6005",
@@ -3523,6 +3589,44 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   EXPECT_EQ(nz_number, result_proto);
 }
 
+TEST_F(PhoneNumberUtilTest, ParseNumberTooShortIfNationalPrefixStripped) {
+  PhoneNumber test_number;
+
+  // Test that a number whose first digits happen to coincide with the national
+  // prefix does not get them stripped if doing so would result in a number too
+  // short to be a possible (regular length) phone number for that region.
+  PhoneNumber by_number;
+  by_number.set_country_code(375);
+  by_number.set_national_number(8123L);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("8123", RegionCode::BY(),
+                              &test_number));
+  EXPECT_EQ(by_number, test_number);
+  by_number.set_national_number(81234L);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("81234", RegionCode::BY(),
+                              &test_number));
+  EXPECT_EQ(by_number, test_number);
+
+  // The prefix doesn't get stripped, since the input is a viable 6-digit
+  // number, whereas the result of stripping is only 5 digits.
+  by_number.set_national_number(812345L);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("812345", RegionCode::BY(),
+                              &test_number));
+  EXPECT_EQ(by_number, test_number);
+
+  // The prefix gets stripped, since only 6-digit numbers are possible.
+  by_number.set_national_number(123456L);
+  test_number.Clear();
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("8123456", RegionCode::BY(),
+                              &test_number));
+  EXPECT_EQ(by_number, test_number);
+}
+
 TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
@@ -3803,6 +3907,51 @@ TEST_F(PhoneNumberUtilTest, ParseAndKeepRaw) {
                                              RegionCode::KR(),
                                              &test_number));
   EXPECT_EQ(korean_number, test_number);
+}
+
+TEST_F(PhoneNumberUtilTest, ParseItalianLeadingZeros) {
+  PhoneNumber zeros_number;
+  zeros_number.set_country_code(61);
+  PhoneNumber test_number;
+
+  // Test the number "011".
+  zeros_number.set_national_number(11L);
+  zeros_number.set_italian_leading_zero(true);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("011", RegionCode::AU(),
+                              &test_number));
+  EXPECT_EQ(zeros_number, test_number);
+  test_number.Clear();
+
+  // Test the number "001".
+  zeros_number.set_national_number(1L);
+  zeros_number.set_italian_leading_zero(true);
+  zeros_number.set_number_of_leading_zeros(2);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("001", RegionCode::AU(),
+                              &test_number));
+  EXPECT_EQ(zeros_number, test_number);
+  test_number.Clear();
+
+  // Test the number "000". This number has 2 leading zeros.
+  zeros_number.set_national_number(0L);
+  zeros_number.set_italian_leading_zero(true);
+  zeros_number.set_number_of_leading_zeros(2);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("000", RegionCode::AU(),
+                              &test_number));
+  EXPECT_EQ(zeros_number, test_number);
+  test_number.Clear();
+
+  // Test the number "0000". This number has 3 leading zeros.
+  zeros_number.set_national_number(0L);
+  zeros_number.set_italian_leading_zero(true);
+  zeros_number.set_number_of_leading_zeros(3);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("0000", RegionCode::AU(),
+                              &test_number));
+  EXPECT_EQ(zeros_number, test_number);
+  test_number.Clear();
 }
 
 TEST_F(PhoneNumberUtilTest, CanBeInternationallyDialled) {

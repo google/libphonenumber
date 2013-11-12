@@ -12,26 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-965500|Viva
-965501|Wataniya
-965502|Wataniya
-965505|Viva
-965506|Wataniya
-965507|Wataniya
-965508|Wataniya
-965509|Wataniya
-96551|Wataniya
-96555|Viva
-96557|Wataniya
-96558|Wataniya
-96559|Wataniya
-96560|Wataniya
-96565|Wataniya
-96566|Wataniya
-96567|Wataniya
-96570|Wataniya
-96577|Wataniya
-96590|zain KW
-96594|zain KW
-96597|zain KW
-96599|zain KW
+9655|VIVA
+9656|Wataniya
+9659|Zain

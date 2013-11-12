@@ -51,6 +51,7 @@ class AsYouTypeFormatter;
 class Logger;
 class NumberFormat;
 class PhoneMetadata;
+class PhoneNumberDesc;
 class PhoneNumberRegExpsAndMappings;
 class RegExp;
 
@@ -154,14 +155,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // for.
   void GetSupportedRegions(set<string>* regions) const;
 
-  // Populates a list with the region codes that match the specific country
-  // calling code. For non-geographical country calling codes, the region code
-  // 001 is returned. Also, in the case of no region code being found, the list
-  // is left unchanged.
-  void GetRegionCodesForCountryCallingCode(
-      int country_calling_code,
-      list<string>* region_codes) const;
-
   // Gets a PhoneNumberUtil instance to carry out international phone number
   // formatting, parsing, or validation. The instance is loaded with phone
   // number metadata for a number of most commonly used regions, as specified by
@@ -218,7 +211,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //   area_code = national_significant_number.substr(0, area_code_length);
   //   subscriber_number = national_significant_number.substr(
   //       area_code_length, string::npos);
-  // else {
+  // } else {
   //   area_code = "";
   //   subscriber_number = national_significant_number;
   // }
@@ -257,13 +250,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // string subscriber_number;
   //
   // int national_destination_code_length =
-  //     phone_util.GetLengthOfGeographicalAreaCode(number);
+  //     phone_util.GetLengthOfNationalDestinationCode(number);
   // if (national_destination_code_length > 0) {
   //   national_destination_code = national_significant_number.substr(
   //       0, national_destination_code_length);
   //   subscriber_number = national_significant_number.substr(
   //       national_destination_code_length, string::npos);
-  // else {
+  // } else {
   //   national_destination_code = "";
   //   subscriber_number = national_significant_number;
   // }
@@ -394,7 +387,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // doesn't verify the number is actually in use, which is impossible to tell
   // by just looking at a number itself. If the country calling code is not the
   // same as the country calling code for the region, this immediately exits
-  // with false.  After this, the specific number pattern rules for the region
+  // with false. After this, the specific number pattern rules for the region
   // are examined.
   // This is useful for determining for example whether a particular number is
   // valid for Canada, rather than just a valid NANPA number.
@@ -418,8 +411,20 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Returns the region code that matches the specific country code. Note that
   // it is possible that several regions share the same country calling code
   // (e.g. US and Canada), and in that case, only one of the regions (normally
-  // the one with the largest population) is returned.
+  // the one with the largest population) is returned. If the
+  // countryCallingCode entered is valid but doesn't match a specific region
+  // (such as in the case of non-geographical calling codes like 800) the
+  // RegionCode 001 will be returned (corresponding to the value for World in
+  // the UN M.49 schema).
   void GetRegionCodeForCountryCode(int country_code, string* region_code) const;
+
+  // Populates a list with the region codes that match the specific country
+  // calling code. For non-geographical country calling codes, the region code
+  // 001 is returned. Also, in the case of no region code being found, the list
+  // is left unchanged.
+  void GetRegionCodesForCountryCallingCode(
+      int country_calling_code,
+      list<string>* region_codes) const;
 
   // Checks if this is a region under the North American Numbering Plan
   // Administration (NANPA).
@@ -582,6 +587,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // country is Italy.
   bool IsLeadingZeroPossible(int country_calling_code) const;
 
+  bool IsNumberPossibleForDesc(const string& national_number,
+                               const PhoneNumberDesc& number_desc) const;
+
+  bool IsNumberMatchingDesc(const string& national_number,
+                            const PhoneNumberDesc& number_desc) const;
+
+  PhoneNumberUtil::PhoneNumberType GetNumberTypeHelper(
+      const string& national_number, const PhoneMetadata& metadata) const;
+
  private:
   scoped_ptr<Logger> logger_;
 
@@ -647,6 +661,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   // Checks if a number matches the plus chars pattern.
   bool StartsWithPlusCharsPattern(const string& number) const;
+
+  void SetItalianLeadingZerosForPhoneNumber(
+      const string& national_number, PhoneNumber* phone_number) const;
 
   // Checks whether a string contains only valid digits.
   bool ContainsOnlyValidDigits(const string& s) const;
@@ -786,9 +803,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   void BuildNationalNumberForParsing(const string& number_to_parse,
                                      string* national_number) const;
 
+  bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
+                                         const string& number) const;
+
   // Returns true if the number can be dialled from outside the region, or
   // unknown. If the number can only be dialled from within the region, returns
-  // false. Does not check the number is a valid number.
+  // false. Does not check the number is a valid number. Note that, at the
+  // moment, this method does not handle short numbers.
   bool CanBeInternationallyDialled(const PhoneNumber& number) const;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);

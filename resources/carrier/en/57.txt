@@ -12,14 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-5730|Tigo
+57300|Tigo
+57301|Tigo
+57302|Tigo
+57303|Uff!
+57304|Une
+57305|Movil Exito
 57310|Claro
 57311|Claro
 57312|Claro
 57313|Claro
 57314|Claro
-57315|movistar
-57316|movistar
-57317|movistar
-57318|movistar
-5732|Claro
+57315|Movistar
+57316|Movistar
+57317|Movistar
+57318|Movistar
+57319|Virgin Mobile
+57320|Claro
+57321|Claro
+57350|Avantel
+57351|Avantel

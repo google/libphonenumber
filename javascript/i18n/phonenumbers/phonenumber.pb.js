@@ -253,6 +253,57 @@ i18n.phonenumbers.PhoneNumber.prototype.clearItalianLeadingZero = function() {
 
 
 /**
+ * Gets the value of the number_of_leading_zeros field.
+ * @return {?number} The value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.getNumberOfLeadingZeros = function() {
+  return /** @type {?number} */ (this.get$Value(8));
+};
+
+
+/**
+ * Gets the value of the number_of_leading_zeros field or the default value if not set.
+ * @return {number} The value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.getNumberOfLeadingZerosOrDefault = function() {
+  return /** @type {number} */ (this.get$ValueOrDefault(8));
+};
+
+
+/**
+ * Sets the value of the number_of_leading_zeros field.
+ * @param {number} value The value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.setNumberOfLeadingZeros = function(value) {
+  this.set$Value(8, value);
+};
+
+
+/**
+ * @return {boolean} Whether the number_of_leading_zeros field has a value.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.hasNumberOfLeadingZeros = function() {
+  return this.has$Value(8);
+};
+
+
+/**
+ * @return {number} The number of values in the number_of_leading_zeros field.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.numberOfLeadingZerosCount = function() {
+  return this.count$Values(8);
+};
+
+
+/**
+ * Clears the values in the number_of_leading_zeros field.
+ */
+i18n.phonenumbers.PhoneNumber.prototype.clearNumberOfLeadingZeros = function() {
+  this.clear$Field(8);
+};
+
+
+/**
  * Gets the value of the raw_input field.
  * @return {?string} The value.
  */
@@ -443,6 +494,12 @@ goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneNumber, {
     name: 'italian_leading_zero',
     fieldType: goog.proto2.Message.FieldType.BOOL,
     type: Boolean
+  },
+  8: {
+    name: 'number_of_leading_zeros',
+    fieldType: goog.proto2.Message.FieldType.INT32,
+    defaultValue: 1,
+    type: Number
   },
   5: {
     name: 'raw_input',

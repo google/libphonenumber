@@ -29,6 +29,7 @@ final class RegionCode {
   static final String AQ = "AQ";
   static final String AR = "AR";
   static final String AU = "AU";
+  static final String BB = "BB";
   static final String BR = "BR";
   static final String BS = "BS";
   static final String BY = "BY";
@@ -37,9 +38,11 @@ final class RegionCode {
   static final String CL = "CL";
   static final String CN = "CN";
   static final String CS = "CS";
+  static final String CX = "CX";
   static final String DE = "DE";
   static final String FR = "FR";
   static final String GB = "GB";
+  static final String HU = "HU";
   static final String IT = "IT";
   static final String JP = "JP";
   static final String KR = "KR";

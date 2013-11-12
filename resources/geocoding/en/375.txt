@@ -134,7 +134,6 @@
 3752346|Khoiniki, Gomel Region
 3752347|Loyev, Gomel Region
 3752350|Petrikov, Gomel Region
-3752351|Mozyr
 3752353|Zhitkovichi, Gomel Region
 3752354|Yelsk, Gomel Region
 3752355|Narovlya, Gomel Region

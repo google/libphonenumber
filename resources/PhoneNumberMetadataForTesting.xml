@@ -119,6 +119,7 @@
     </territory>
 
     <!-- Australia -->
+    <!-- Country calling code shared with Cocos Islands (CC) and Christmas Islands (CX) -->
     <territory id="AU" countryCode="61" internationalPrefix="001[12]"
                nationalPrefix="0" preferredInternationalPrefix="0011"
                nationalPrefixFormattingRule="$NP$FG">
@@ -187,7 +188,8 @@
 
     <!-- Belarus -->
     <!-- This country has been coopted to test the case of a national prefix formatting rule with a
-         space in it. -->
+         space in it and the case where a number happens to begin with the national prefix, but
+         would become too short if the prefix is stripped. -->
     <territory id="BY" countryCode="375" internationalPrefix="810" nationalPrefix="8"
                nationalPrefixForParsing="80?|99999" nationalPrefixFormattingRule="$NP $FG">
       <availableFormats>
@@ -218,10 +220,18 @@
       </fixedLine>
     </territory>
 
-    <!-- France -->
+    <!-- Cocos Islands -->
+    <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library. -->
-    <territory id="FR" countryCode="33">
+    <territory id="CC" countryCode="61">
+    </territory>
+
+    <!-- Christmas Islands -->
+    <!-- Country calling code shared with Australia. -->
+    <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
+         recognised by the library. -->
+    <territory id="CX" countryCode="61">
     </territory>
 
     <!-- Germany -->
@@ -280,6 +290,23 @@
       </premiumRate>
     </territory>
 
+    <!-- France -->
+    <territory id="FR" countryCode="33" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+      <availableFormats>
+        <!-- We use this to test the phone number matcher. For our test-case, the formatting
+             pattern must have as the first group a sub-part of the country calling code,
+             and have a national prefix. This corresponds to the test number +33 3 34 2312. -->
+        <numberFormat pattern="(\d)(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>3</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>3\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+      </generalDesc>
+    </territory>
+
     <!-- United Kingdom -->
     <territory id="GB" countryCode="44" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="($NP$FG)"
@@ -313,6 +340,10 @@
         <nationalNumberPattern>7[1-57-9]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
       </mobile>
+      <pager>
+        <nationalNumberPattern>76\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </pager>
       <tollFree>
         <nationalNumberPattern>80\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -339,6 +370,19 @@
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library, and it must be the same as that of the United Kingdom. -->
     <territory id="GG" countryCode="44">
+    </territory>
+
+    <!-- Hungary -->
+    <!-- This country has special logic in formatNumberForMobileDialing which must be tested. -->
+    <territory id="HU" countryCode="36" nationalPrefix="06">
+      <generalDesc>
+        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </generalDesc>
+      <mobile>
+        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+      </mobile>
     </territory>
 
     <!-- Italy -->

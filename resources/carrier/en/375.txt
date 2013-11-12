@@ -12,16 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-375259|life:)
-375291|velcom
+# Diallog operates as Belcel.
+
+37525|life:)
+375291|Velcom
 375292|MTS
-375293|velcom
+375293|Velcom
+375294|Belcel
 375295|MTS
-375296|velcom
+375296|Velcom
 375297|MTS
 375298|MTS
-375299|velcom
-375336|MTS
-375444|velcom
-375445|velcom
-375447|velcom
+375299|Velcom
+37533|MTS
+37544|Velcom

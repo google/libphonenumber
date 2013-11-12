@@ -12,5 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-6866|Kiribati - Frigate Net
-6869|Kiribati - Frigate Net
+# According to Wikipedia, the only carrier is TSKL (Telecom Services Kiribati Limited)
+# http://en.wikipedia.org/wiki/TSKL
+
+6866|TSKL
+6867|TSKL
+6869|TSKL

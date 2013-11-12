@@ -812,6 +812,9 @@ static const NumberTest kStrictGroupingCases[] = {
   NumberTest("0900-1 123123", RegionCode::DE()),
   NumberTest("(0)900-1 123123", RegionCode::DE()),
   NumberTest("0 900-1 123123", RegionCode::DE()),
+  // NDC also found as part of the country calling code; this shouldn't ruin the
+  // grouping expectations.
+  NumberTest("+33 3 34 2312", RegionCode::FR()),
 };
 
 // Strings with number-like things that should be found at all levels.
@@ -850,6 +853,7 @@ static const NumberTest kExactGroupingCases[] = {
   NumberTest("0900-1 123 123", RegionCode::DE()),
   NumberTest("(0)900-1 123 123", RegionCode::DE()),
   NumberTest("0 900-1 123 123", RegionCode::DE()),
+  NumberTest("+33 3 34 23 12", RegionCode::FR()),
 };
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithPossibleLeniency) {

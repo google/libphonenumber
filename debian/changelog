@@ -1,3 +1,43 @@
+libphonenumber (5.9) precise; urgency=low
+
+  * Code changes:
+    - Adding support for numbers with multiple Italian leading zeros, by
+      adding a field to the phone number proto to allow an arbitrary number of
+      leading zeros, and supporting this when parsing, validating and
+      formatting.
+    - Adding more functionality to ShortNumberInfo -> such as
+      GetExpectedCostForRegion.
+    - Fix for parsing short numbers that start with the national prefix.
+    - Updating FormatNumberForMobileDialing to work with short numbers.
+    - Stop finding Israeli 4-digit "star" numbers in text when no star is in
+      fact present.
+    - Bug fix for finding phone numbers where the area code was also part of
+      the country calling code.
+  * Metadata changes:
+    - Updated phone metadata for region code(s):
+    AU, BQ, BY, CI, CO, CW, GN, HN, IN, JO, KI, KW, MG, MK, MM, NA, PK,
+    TC, TM,
+    UG
+    - New short number metadata for region code(s): CD, GN
+    - Updated short number metadata for region code(s):
+    AF, AG, AI, AM, AR, AS, AW, AZ, BD, BH, BI, BM, BO, BQ, BT, BW, BY,
+    CA, CH,
+    CI, CM, CO, CW, DZ, FJ, GD, GE, GH, GT, GY, HN, HT, ID, IE, IM, IN,
+    IQ, JM,
+    JO, KE, KG, KH, KI, KW, KZ, LR, SV
+    - New geocoding data for country calling code(s):
+    257 (en), 389 (en), 599 (en), 686 (en), 962 (en)
+    - Updated geocoding data for country calling code(s):
+    264 (en), 375 (be, en, ru)
+    - New carrier data for country calling code(s):
+    375 (be, ru), 389 (en), 599 (en), 965 (ar)
+    - Updated carrier data for country calling code(s):
+    57 (en), 61 (en), 92 (en), 225 (en), 256 (en), 257 (en), 261 (en),
+    375 (en),
+    686 (en), 962 (en), 965 (en)
+
+ -- Lara Scheidegger <lararennie@google.com>  Tue, 12 Nov 2013 12:09:15 +0100
+
 libphonenumber (5.8.8) precise; urgency=low
 
   * Metadata changes:

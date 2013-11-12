@@ -1,0 +1,47 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Antillano Por, in the document, should be Antilliano Por, and seems to be
+# operating as Digicel, based on news articles.
+# d.b.a stands for "doing business as".
+# Setel became UTS in 1999, and their mobile brand is Chippie.
+
+599700|Digicel
+599701|Digicel
+599770|Telbo N.V.
+599777|Telbo N.V.
+59978|Digicel
+59979|PCS
+5994161|Satel
+5994165|WIC
+5994166|WIC
+5994167|WIC
+5994168|WIC
+5994169|Satel
+5993181|Eutel/Radcomm
+5993184|Eutel/Radcomm
+5993185|Eutel/Radcomm
+5993186|Eutel/Telcell
+5993188|Eutel N.V.
+599951|Chippie
+599952|Chippie
+599953|Chippie
+599954|Chippie
+599956|Chippie
+599961|CSC
+599963|GSM Caribbean
+599966|Digicel
+599967|Digicel
+599968|Digicel
+599969|Digicel

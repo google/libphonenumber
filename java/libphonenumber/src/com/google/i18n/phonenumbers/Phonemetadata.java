@@ -542,7 +542,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required int32 country_code = 10;
+    // optional int32 country_code = 10;
     private boolean hasCountryCode;
     private int countryCode_ = 0;
     public boolean hasCountryCode() { return hasCountryCode; }
@@ -553,7 +553,7 @@ public final class Phonemetadata {
       return this;
     }
 
-    // required string international_prefix = 11;
+    // optional string international_prefix = 11;
     private boolean hasInternationalPrefix;
     private String internationalPrefix_ = "";
     public boolean hasInternationalPrefix() { return hasInternationalPrefix; }

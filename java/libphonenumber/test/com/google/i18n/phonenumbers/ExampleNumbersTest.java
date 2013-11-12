@@ -178,37 +178,6 @@ public class ExampleNumbersTest extends TestCase {
     assertEquals(0, wrongTypeCases.size());
   }
 
-  public void testEmergency() throws Exception {
-    int wrongTypeCounter = 0;
-    for (String regionCode : shortNumberInfo.getSupportedRegions()) {
-      if (regionCode == RegionCode.PG) {
-        // The only short number for Papua New Guinea is 000, which fails the test, since the
-        // national prefix is 0. This needs to be fixed.
-        continue;
-      }
-      PhoneNumberDesc desc =
-          MetadataManager.getShortNumberMetadataForRegion(regionCode).getEmergency();
-      if (desc.hasExampleNumber()) {
-        String exampleNumber = desc.getExampleNumber();
-        if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
-            !shortNumberInfo.isEmergencyNumber(exampleNumber, regionCode)) {
-          wrongTypeCounter++;
-          LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
-        } else {
-          PhoneNumber emergencyNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
-          if (shortNumberInfo.getExpectedCost(emergencyNumber) !=
-                  ShortNumberInfo.ShortNumberCost.TOLL_FREE) {
-            // TODO: Reenable this when a method is available to get the expected cost for a
-            // particular region.
-            // wrongTypeCounter++;
-            LOGGER.log(Level.WARNING, "Emergency example number not toll free for " + regionCode);
-          }
-        }
-      }
-    }
-    assertEquals(0, wrongTypeCounter);
-  }
-
   public void testGlobalNetworkNumbers() throws Exception {
     for (Integer callingCode : phoneNumberUtil.getSupportedGlobalNetworkCallingCodes()) {
       PhoneNumber exampleNumber =
@@ -232,13 +201,8 @@ public class ExampleNumbersTest extends TestCase {
   public void testShortNumbersValidAndCorrectCost() throws Exception {
     List<String> invalidStringCases = new ArrayList<String>();
     for (String regionCode : shortNumberInfo.getSupportedRegions()) {
-      if (regionCode == RegionCode.PG) {
-        // The only short number for Papua New Guinea is 000, which fails the test, since the
-        // national prefix is 0. This needs to be fixed.
-        continue;
-      }
       String exampleShortNumber = shortNumberInfo.getExampleShortNumber(regionCode);
-      if (!shortNumberInfo.isValidShortNumber(exampleShortNumber, regionCode)) {
+      if (!shortNumberInfo.isValidShortNumberForRegion(exampleShortNumber, regionCode)) {
         String invalidStringCase = "region_code: " + regionCode + ", national_number: " +
             exampleShortNumber;
         invalidStringCases.add(invalidStringCase);
@@ -253,8 +217,7 @@ public class ExampleNumbersTest extends TestCase {
       for (ShortNumberInfo.ShortNumberCost cost : ShortNumberInfo.ShortNumberCost.values()) {
         exampleShortNumber = shortNumberInfo.getExampleShortNumberForCost(regionCode, cost);
         if (!exampleShortNumber.equals("")) {
-          phoneNumber = phoneNumberUtil.parse(exampleShortNumber, regionCode);
-          if (cost != shortNumberInfo.getExpectedCost(phoneNumber)) {
+          if (cost != shortNumberInfo.getExpectedCostForRegion(exampleShortNumber, regionCode)) {
             wrongTypeCases.add(phoneNumber);
             LOGGER.log(Level.SEVERE, "Wrong cost for " + phoneNumber.toString());
           }
@@ -264,5 +227,46 @@ public class ExampleNumbersTest extends TestCase {
     assertEquals(0, invalidStringCases.size());
     assertEquals(0, invalidCases.size());
     assertEquals(0, wrongTypeCases.size());
+  }
+
+  public void testEmergency() throws Exception {
+    int wrongTypeCounter = 0;
+    for (String regionCode : shortNumberInfo.getSupportedRegions()) {
+      PhoneNumberDesc desc =
+          MetadataManager.getShortNumberMetadataForRegion(regionCode).getEmergency();
+      if (desc.hasExampleNumber()) {
+        String exampleNumber = desc.getExampleNumber();
+        if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
+            !shortNumberInfo.isEmergencyNumber(exampleNumber, regionCode)) {
+          wrongTypeCounter++;
+          LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
+        } else if (shortNumberInfo.getExpectedCostForRegion(exampleNumber, regionCode) !=
+                       ShortNumberInfo.ShortNumberCost.TOLL_FREE) {
+          wrongTypeCounter++;
+          LOGGER.log(Level.WARNING, "Emergency example number not toll free for " + regionCode);
+        }
+      }
+    }
+    assertEquals(0, wrongTypeCounter);
+  }
+
+  public void testCarrierSpecificShortNumbers() throws Exception {
+    int wrongTagCounter = 0;
+    for (String regionCode : shortNumberInfo.getSupportedRegions()) {
+      // Test the carrier-specific tag.
+      PhoneNumberDesc desc =
+          MetadataManager.getShortNumberMetadataForRegion(regionCode).getCarrierSpecific();
+      if (desc.hasExampleNumber()) {
+        String exampleNumber = desc.getExampleNumber();
+        PhoneNumber carrierSpecificNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
+        if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
+            !shortNumberInfo.isCarrierSpecific(carrierSpecificNumber)) {
+          wrongTagCounter++;
+          LOGGER.log(Level.SEVERE, "Carrier-specific test failed for " + regionCode);
+        }
+      }
+      // TODO: Test other tags here.
+    }
+    assertEquals(0, wrongTagCounter);
   }
 }

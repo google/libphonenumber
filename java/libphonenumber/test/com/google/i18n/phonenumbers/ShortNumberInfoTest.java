@@ -34,21 +34,26 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
     PhoneNumber possibleNumber = new PhoneNumber();
     possibleNumber.setCountryCode(33).setNationalNumber(123456L);
     assertTrue(shortInfo.isPossibleShortNumber(possibleNumber));
-    assertTrue(shortInfo.isPossibleShortNumber("123456", RegionCode.FR));
+    assertTrue(shortInfo.isPossibleShortNumberForRegion("123456", RegionCode.FR));
 
     PhoneNumber impossibleNumber = new PhoneNumber();
     impossibleNumber.setCountryCode(33).setNationalNumber(9L);
     assertFalse(shortInfo.isPossibleShortNumber(impossibleNumber));
-    assertFalse(shortInfo.isPossibleShortNumber("9", RegionCode.FR));
+    assertFalse(shortInfo.isPossibleShortNumberForRegion("9", RegionCode.FR));
+
+    // Note that GB and GG share the country calling code 44, and that this number is possible but
+    // not valid.
+    assertTrue(shortInfo.isPossibleShortNumber(
+        new PhoneNumber().setCountryCode(44).setNationalNumber(11001L)));
   }
 
   public void testIsValidShortNumber() {
     assertTrue(shortInfo.isValidShortNumber(
         new PhoneNumber().setCountryCode(33).setNationalNumber(1010L)));
-    assertTrue(shortInfo.isValidShortNumber("1010", RegionCode.FR));
+    assertTrue(shortInfo.isValidShortNumberForRegion("1010", RegionCode.FR));
     assertFalse(shortInfo.isValidShortNumber(
         new PhoneNumber().setCountryCode(33).setNationalNumber(123456L)));
-    assertFalse(shortInfo.isValidShortNumber("123456", RegionCode.FR));
+    assertFalse(shortInfo.isValidShortNumberForRegion("123456", RegionCode.FR));
 
     // Note that GB and GG share the country calling code 44.
     assertTrue(shortInfo.isValidShortNumber(
@@ -56,44 +61,104 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
   }
 
   public void testGetExpectedCost() {
+    String premiumRateExample = shortInfo.getExampleShortNumberForCost(
+        RegionCode.FR, ShortNumberInfo.ShortNumberCost.PREMIUM_RATE);
+    assertEquals(ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
+        shortInfo.getExpectedCostForRegion(premiumRateExample, RegionCode.FR));
     PhoneNumber premiumRateNumber = new PhoneNumber();
-    premiumRateNumber.setCountryCode(33).setNationalNumber(
-        Integer.parseInt(shortInfo.getExampleShortNumberForCost(
-            RegionCode.FR, ShortNumberInfo.ShortNumberCost.PREMIUM_RATE)));
+    premiumRateNumber.setCountryCode(33).setNationalNumber(Integer.parseInt(premiumRateExample));
     assertEquals(ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
         shortInfo.getExpectedCost(premiumRateNumber));
 
+    String standardRateExample = shortInfo.getExampleShortNumberForCost(
+        RegionCode.FR, ShortNumberInfo.ShortNumberCost.STANDARD_RATE);
+    assertEquals(ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
+        shortInfo.getExpectedCostForRegion(standardRateExample, RegionCode.FR));
     PhoneNumber standardRateNumber = new PhoneNumber();
-    standardRateNumber.setCountryCode(33).setNationalNumber(
-        Integer.parseInt(shortInfo.getExampleShortNumberForCost(
-            RegionCode.FR, ShortNumberInfo.ShortNumberCost.STANDARD_RATE)));
+    standardRateNumber.setCountryCode(33).setNationalNumber(Integer.parseInt(standardRateExample));
     assertEquals(ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
         shortInfo.getExpectedCost(standardRateNumber));
 
+    String tollFreeExample = shortInfo.getExampleShortNumberForCost(
+        RegionCode.FR, ShortNumberInfo.ShortNumberCost.TOLL_FREE);
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCostForRegion(tollFreeExample, RegionCode.FR));
     PhoneNumber tollFreeNumber = new PhoneNumber();
-    tollFreeNumber.setCountryCode(33).setNationalNumber(
-        Integer.parseInt(shortInfo.getExampleShortNumberForCost(
-            RegionCode.FR, ShortNumberInfo.ShortNumberCost.TOLL_FREE)));
+    tollFreeNumber.setCountryCode(33).setNationalNumber(Integer.parseInt(tollFreeExample));
     assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
         shortInfo.getExpectedCost(tollFreeNumber));
 
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion("12345", RegionCode.FR));
     PhoneNumber unknownCostNumber = new PhoneNumber();
     unknownCostNumber.setCountryCode(33).setNationalNumber(12345L);
     assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
         shortInfo.getExpectedCost(unknownCostNumber));
 
     // Test that an invalid number may nevertheless have a cost other than UNKNOWN_COST.
+    assertFalse(shortInfo.isValidShortNumberForRegion("116123", RegionCode.FR));
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCostForRegion("116123", RegionCode.FR));
     PhoneNumber invalidNumber = new PhoneNumber();
     invalidNumber.setCountryCode(33).setNationalNumber(116123L);
     assertFalse(shortInfo.isValidShortNumber(invalidNumber));
     assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
         shortInfo.getExpectedCost(invalidNumber));
 
-    // Test a non-existent country code.
+    // Test a nonexistent country code.
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion("911", RegionCode.ZZ));
     unknownCostNumber.clear();
     unknownCostNumber.setCountryCode(123).setNationalNumber(911L);
     assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
         shortInfo.getExpectedCost(unknownCostNumber));
+  }
+
+  public void testGetExpectedCostForSharedCountryCallingCode() {
+    // Test some numbers which have different costs in countries sharing the same country calling
+    // code. In Australia, 1234 is premium-rate, 1194 is standard-rate, and 733 is toll-free. These
+    // are not known to be valid numbers in the Christmas Islands.
+    String ambiguousPremiumRateString = "1234";
+    PhoneNumber ambiguousPremiumRateNumber = new PhoneNumber().setCountryCode(61)
+        .setNationalNumber(1234L);
+    String ambiguousStandardRateString = "1194";
+    PhoneNumber ambiguousStandardRateNumber = new PhoneNumber().setCountryCode(61)
+        .setNationalNumber(1194L);
+    String ambiguousTollFreeString = "733";
+    PhoneNumber ambiguousTollFreeNumber = new PhoneNumber().setCountryCode(61)
+        .setNationalNumber(733L);
+
+    assertTrue(shortInfo.isValidShortNumber(ambiguousPremiumRateNumber));
+    assertTrue(shortInfo.isValidShortNumber(ambiguousStandardRateNumber));
+    assertTrue(shortInfo.isValidShortNumber(ambiguousTollFreeNumber));
+
+    assertTrue(shortInfo.isValidShortNumberForRegion(ambiguousPremiumRateString, RegionCode.AU));
+    assertEquals(ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
+        shortInfo.getExpectedCostForRegion(ambiguousPremiumRateString, RegionCode.AU));
+    assertFalse(shortInfo.isValidShortNumberForRegion(ambiguousPremiumRateString, RegionCode.CX));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion(ambiguousPremiumRateString, RegionCode.CX));
+    // PREMIUM_RATE takes precedence over UNKNOWN_COST.
+    assertEquals(ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
+        shortInfo.getExpectedCost(ambiguousPremiumRateNumber));
+
+    assertTrue(shortInfo.isValidShortNumberForRegion(ambiguousStandardRateString, RegionCode.AU));
+    assertEquals(ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
+        shortInfo.getExpectedCostForRegion(ambiguousStandardRateString, RegionCode.AU));
+    assertFalse(shortInfo.isValidShortNumberForRegion(ambiguousStandardRateString, RegionCode.CX));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion(ambiguousStandardRateString, RegionCode.CX));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCost(ambiguousStandardRateNumber));
+
+    assertTrue(shortInfo.isValidShortNumberForRegion(ambiguousTollFreeString, RegionCode.AU));
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCostForRegion(ambiguousTollFreeString, RegionCode.AU));
+    assertFalse(shortInfo.isValidShortNumberForRegion(ambiguousTollFreeString, RegionCode.CX));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion(ambiguousTollFreeString, RegionCode.CX));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCost(ambiguousTollFreeNumber));
   }
 
   public void testGetExampleShortNumber() {
@@ -231,5 +296,36 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
     assertFalse(shortInfo.isEmergencyNumber("911", RegionCode.ZW));
     assertFalse(shortInfo.isEmergencyNumber("01312345", RegionCode.ZW));
     assertFalse(shortInfo.isEmergencyNumber("0711234567", RegionCode.ZW));
+  }
+
+  public void testEmergencyNumberForSharedCountryCallingCode() {
+    // Test the emergency number 112, which is valid in both Australia and the Christmas Islands.
+    assertTrue(shortInfo.isEmergencyNumber("112", RegionCode.AU));
+    assertTrue(shortInfo.isValidShortNumberForRegion("112", RegionCode.AU));
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCostForRegion("112", RegionCode.AU));
+    assertTrue(shortInfo.isEmergencyNumber("112", RegionCode.CX));
+    assertTrue(shortInfo.isValidShortNumberForRegion("112", RegionCode.CX));
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCostForRegion("112", RegionCode.CX));
+    PhoneNumber sharedEmergencyNumber =
+        new PhoneNumber().setCountryCode(61).setNationalNumber(112L);
+    assertTrue(shortInfo.isValidShortNumber(sharedEmergencyNumber));
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCost(sharedEmergencyNumber));
+  }
+
+  public void testOverlappingNANPANumber() {
+    // 211 is an emergency number in Barbados, while it is a toll-free information line in Canada
+    // and the USA.
+    assertTrue(shortInfo.isEmergencyNumber("211", RegionCode.BB));
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+        shortInfo.getExpectedCostForRegion("211", RegionCode.BB));
+    assertFalse(shortInfo.isEmergencyNumber("211", RegionCode.US));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion("211", RegionCode.US));
+    assertFalse(shortInfo.isEmergencyNumber("211", RegionCode.CA));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion("211", RegionCode.CA));
   }
 }

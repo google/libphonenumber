@@ -106,6 +106,22 @@ public final class Phonenumber {
       return this;
     }
 
+    // optional int32 number_of_leading_zeros = 8 [default = 1];
+    private boolean hasNumberOfLeadingZeros;
+    private int numberOfLeadingZeros_ = 1;
+    public boolean hasNumberOfLeadingZeros() { return hasNumberOfLeadingZeros; }
+    public int getNumberOfLeadingZeros() { return numberOfLeadingZeros_; }
+    public PhoneNumber setNumberOfLeadingZeros(int value) {
+      hasNumberOfLeadingZeros = true;
+      numberOfLeadingZeros_ = value;
+      return this;
+    }
+    public PhoneNumber clearNumberOfLeadingZeros() {
+      hasNumberOfLeadingZeros = false;
+      numberOfLeadingZeros_ = 1;
+      return this;
+    }
+
     // optional string raw_input = 5;
     private boolean hasRawInput;
     private String rawInput_ = "";
@@ -168,6 +184,7 @@ public final class Phonenumber {
       clearNationalNumber();
       clearExtension();
       clearItalianLeadingZero();
+      clearNumberOfLeadingZeros();
       clearRawInput();
       clearCountryCodeSource();
       clearPreferredDomesticCarrierCode();
@@ -186,6 +203,9 @@ public final class Phonenumber {
       }
       if (other.hasItalianLeadingZero()) {
         setItalianLeadingZero(other.isItalianLeadingZero());
+      }
+      if (other.hasNumberOfLeadingZeros()) {
+        setNumberOfLeadingZeros(other.getNumberOfLeadingZeros());
       }
       if (other.hasRawInput()) {
         setRawInput(other.getRawInput());
@@ -208,6 +228,7 @@ public final class Phonenumber {
       }
       return (countryCode_ == other.countryCode_ && nationalNumber_ == other.nationalNumber_ &&
           extension_.equals(other.extension_) && italianLeadingZero_ == other.italianLeadingZero_ &&
+          numberOfLeadingZeros_ == other.numberOfLeadingZeros_ &&
           rawInput_.equals(other.rawInput_) && countryCodeSource_ == other.countryCodeSource_ &&
           preferredDomesticCarrierCode_.equals(other.preferredDomesticCarrierCode_) &&
           hasPreferredDomesticCarrierCode() == other.hasPreferredDomesticCarrierCode());
@@ -229,6 +250,7 @@ public final class Phonenumber {
       hash = (53 * hash) + Long.valueOf(getNationalNumber()).hashCode();
       hash = (53 * hash) + getExtension().hashCode();
       hash = (53 * hash) + (isItalianLeadingZero() ? 1231 : 1237);
+      hash = (53 * hash) + getNumberOfLeadingZeros();
       hash = (53 * hash) + getRawInput().hashCode();
       hash = (53 * hash) + getCountryCodeSource().hashCode();
       hash = (53 * hash) + getPreferredDomesticCarrierCode().hashCode();
@@ -242,7 +264,10 @@ public final class Phonenumber {
       outputString.append("Country Code: ").append(countryCode_);
       outputString.append(" National Number: ").append(nationalNumber_);
       if (hasItalianLeadingZero() && isItalianLeadingZero()) {
-        outputString.append(" Leading Zero: true");
+        outputString.append(" Leading Zero(s): true");
+      }
+      if (hasNumberOfLeadingZeros()) {
+        outputString.append(" Number of leading zeros: ").append(numberOfLeadingZeros_);
       }
       if (hasExtension()) {
         outputString.append(" Extension: ").append(extension_);
