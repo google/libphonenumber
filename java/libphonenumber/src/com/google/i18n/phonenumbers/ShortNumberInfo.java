@@ -145,7 +145,7 @@ public class ShortNumberInfo {
    * Tests whether a short number matches a valid pattern. If a country calling code is shared by
    * multiple regions, this returns true if it's valid in any of them. Note that this doesn't verify
    * the number is actually in use, which is impossible to tell by just looking at the number
-   * itself. See {@link #isValidShortNumberForRegion(String, RegionCode)} for details.
+   * itself. See {@link #isValidShortNumberForRegion(String, String)} for details.
    *
    * @param number the short number for which we want to test the validity
    * @return whether the short number matches a valid pattern
@@ -213,7 +213,7 @@ public class ShortNumberInfo {
   /**
    * Gets the expected cost category of a short number (however, nothing is implied about its
    * validity). If the country calling code is unique to a region, this method behaves exactly the
-   * same as {@link #getExpectedCostForRegion(String, RegionCode)}. However, if the country calling
+   * same as {@link #getExpectedCostForRegion(String, String)}. However, if the country calling
    * code is shared by multiple regions, then it returns the highest cost in the sequence
    * PREMIUM_RATE, UNKNOWN_COST, STANDARD_RATE, TOLL_FREE. The reason for the position of
    * UNKNOWN_COST in this order is that if a number is UNKNOWN_COST in one region but STANDARD_RATE
@@ -225,7 +225,7 @@ public class ShortNumberInfo {
    * calling code.
    *
    * Note: If the region from which the number is dialed is known, it is highly preferable to call
-   * {@link #getExpectedCostForRegion(String, RegionCode)} instead.
+   * {@link #getExpectedCostForRegion(String, String)} instead.
    *
    * @param number the short number for which we want to know the expected cost category
    * @return the highest expected cost category of the short number in the region(s) with the given
