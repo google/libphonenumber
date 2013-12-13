@@ -13,44 +13,45 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2011-08-05).
-# 2720 prefix from the South African ITU document 2012-12-05.
+# Internal statistical data (2013-11-28).
+# The following prefixes from http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf:
+# 2710, 2711, 2712, 2713, 2715, 2716, 2718, 2721, 2731, 2732, 2735, 2739, 2741, 2743, 2744, 2751
 
 2710|Johannesburg
 2711|Johannesburg
-2712|Pretoria
-2713|Mbombela
+2712|Tshwane
+2713|Middelburg/Witbank/Nelspruit
 2714|Rustenburg
 2715|Polokwane
-2716|Vereeniging
-2717|Ermelo
-2718|Klerksdorp
+2716|Vaal Triangle
+2717|Ermelo/Secunda
+2718|Potschefstroom/Klerksdorp
 2720|Fraserberg/Leeugamka/Merweville
 2721|Cape Town
-2722|Malmesbury
-2723|Worcester
-2727|Vredendal
-2728|Hermanus
+2722|Malmesbury/Vredenburg
+2723|Worcester/Robertson
+2727|Vredendal/Springbok
+2728|Hermanus/Swellendam
 2731|Durban
-2732|KwaDukuza
+2732|Stanger
 2733|Pietermaritzburg
-2734|Newcastle
-2735|Richards Bay
+2734|Newcastle/Vryheid
+2735|Zululand
 2736|Ladysmith
-2739|Port Shepstone
-2740|Bisho
+2739|Eastern Pondoland/Port Shepstone
+2740|Bisho/Alice
 2741|Port Elizabeth
-2742|Jeffrey's Bay
+2742|Jeffreys Bay/Humansdorp
 2743|East London
-2744|George
+2744|Garden Route
 2745|Queenstown
 2746|Grahamstown
-2747|Umtata
+2747|Mthatha/Butterworth
 2748|Cradock
 2749|Graaff-Reinet
-2751|Bloemfontein
-2753|Kimberley
+2751|Bloemfontein/Aliwal North
+2753|Kimberley/Kuruman
 2754|Upington
-2756|Kroonstad
-2757|Welkom
+2756|Parys
+2757|Voorspoed, Welkom/Welkom Central, Welkom
 2758|Bethlehem

@@ -1,3 +1,15 @@
+Dec 13, 2013: libphonenumber-5.9.1
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 505, 679
+ - Updated phone metadata for region code(s):
+   BF, CI, EG, EH, FJ, IN, KI, MA, MT, NG, NI, SI, SN, SR, TT
+ - Updated short number metadata for region code(s): KI
+ - Updated geocoding data for country calling code(s):
+   27 (en), 226 (en), 1 (en)
+ - New carrier data for country calling code(s): 356 (en), 677 (en)
+ - Updated carrier data for country calling code(s):
+   212 (en), 221 (en), 225 (en), 226 (en), 234 (en), 597 (en), 1 (en)
+
 Nov 12, 2013: libphonenumber-5.9
 * Code changes:
  - Adding support for numbers with multiple Italian leading zeros, by adding a field

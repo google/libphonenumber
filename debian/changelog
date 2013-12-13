@@ -1,3 +1,19 @@
+libphonenumber (5.9.1) precise; urgency=low
+
+  * Metadata changes:
+    - New alternate formatting data for country calling code(s): 505,
+    679
+    - Updated phone metadata for region code(s):
+    BF, CI, EG, EH, FJ, IN, KI, MA, MT, NG, NI, SI, SN, SR, TT
+    - Updated short number metadata for region code(s): KI
+    - Updated geocoding data for country calling code(s):
+    27 (en), 226 (en), 1 (en)
+    - New carrier data for country calling code(s): 356 (en), 677 (en)
+    - Updated carrier data for country calling code(s):
+    212 (en), 221 (en), 225 (en), 226 (en), 234 (en), 597 (en), 1 (en)
+
+ -- Lara Scheidegger <lararennie@google.com>  Fri, 13 Dec 2013 10:53:59 +0100
+
 libphonenumber (5.9) precise; urgency=low
 
   * Code changes:

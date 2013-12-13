@@ -15,7 +15,14 @@
 59771|Digicel
 59772|Digicel
 59773|Uniqa
+597740|Digicel
+597741|Digicel
+597742|Digicel
+597743|Digicel
+597744|Digicel
+597745|Digicel
 59775|Telesur
+59777|Telesur
 59781|Digicel
 59782|Digicel
 59783|Uniqa

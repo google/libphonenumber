@@ -4690,18 +4690,21 @@
     <!-- http://www.itu.int/oth/T0202000071/en - these conflict with those
          registered at
          http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=123&pg_size=50 but
-         were updated later. -->
+         were updated later. http://tskl.net.ki/services has others. -->
     <territory id="KI">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[179]\d{2,3}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- http://tskl.net.ki/services/3g-4g-rates-offpeaks/quick-dial-credit-checking-codes/
+             lists 777 as voicemail access. -->
         <nationalNumberPattern>
           10(?:
             [0-8]|
             5[01259]
           )|
+          777|
           99[2349]
         </nationalNumberPattern>
         <exampleNumber>100</exampleNumber>
@@ -4712,6 +4715,11 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>103</exampleNumber>
       </standardRate>
+      <carrierServices>
+        <nationalNumberPattern>777</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>777</exampleNumber>
+      </carrierServices>
       <directoryServices>
         <nationalNumberPattern>103</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>

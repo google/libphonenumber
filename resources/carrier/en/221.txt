@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Note CSU SA is a consortium that seems to be behind the HAYO brand.
+# https://www.facebook.com/media/set/?set=a.556554534376057.1073741825.516491468382364&type=1
+
 22170|Expresso
+22172|HAYO
 22176|Tigo
 22177|Orange
+22178|Orange
+22179|ADIE

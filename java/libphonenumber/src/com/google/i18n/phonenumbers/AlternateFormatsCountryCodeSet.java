@@ -26,9 +26,9 @@ import java.util.Set;
 public class AlternateFormatsCountryCodeSet {
   // A set of all country codes for which data is available.
   static Set<Integer> getCountryCodeSet() {
-    // The capacity is set to 44 as there are 33 different entries,
+    // The capacity is set to 46 as there are 35 different entries,
     // and this offers a load factor of roughly 0.75.
-    Set<Integer> countryCodeSet = new HashSet<Integer>(44);
+    Set<Integer> countryCodeSet = new HashSet<Integer>(46);
 
     countryCodeSet.add(7);
     countryCodeSet.add(30);
@@ -57,8 +57,10 @@ public class AlternateFormatsCountryCodeSet {
     countryCodeSet.add(373);
     countryCodeSet.add(380);
     countryCodeSet.add(385);
+    countryCodeSet.add(505);
     countryCodeSet.add(595);
     countryCodeSet.add(675);
+    countryCodeSet.add(679);
     countryCodeSet.add(855);
     countryCodeSet.add(971);
     countryCodeSet.add(972);

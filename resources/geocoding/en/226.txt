@@ -29,6 +29,7 @@
 2262099|Béréba/Fo/Houndé
 2264045|Kaya
 2264046|Falagountou/Dori
+2264049|Falagountou/Dori
 2264054|Yako
 2264055|Ouahigouya
 2264056|Djibo
