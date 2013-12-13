@@ -1,0 +1,67 @@
+# This is the list of people who have contributed to the repository.
+# The AUTHORS file lists the copyright holders; this file
+# lists people.  For example, Google employees are listed here
+# but not in AUTHORS, because Google holds the copyright.
+
+# Core team:
+# 
+# These people were responsible for the initial implementations in Java and
+# C++, and carry out the bulk of metadata maintenance, bug fixes & feature
+# requests, and porting new features to Javascript.
+
+Shaopeng Jia
+Lara Rennie
+David Yonge-Mallo
+David Beaumont
+
+# Additional contributions:
+
+# Javascript
+Nikolaos Tronikos
+    -- Initial implementation, some subsequent maintenance.
+
+# Java:
+Walter Erquínigo
+    -- Timezone mapper.
+Philippe Liard
+    -- Offline geocoder, local Maven expert.
+Cecilia Roes
+    -- Carrier mapper.
+Tom Hofmann
+    -- First version of the PhoneNumberMatcher and related classes.
+Fabien Allanic
+Kushal Pisavadia
+
+# C++:
+Patrick Mézard
+    -- Geocoding library implementation.
+Philippe Liard
+    -- Initial open-sourcing of a C++ library, responsible for getting this to
+       work across multiple platforms.
+Ben Gertzfield
+Fredrik Roubert
+George Yakovlev
+Nico Weber
+Yoshifumi Inoue
+
+# Debian:
+Fredrik Roubert
+
+# Metadata:
+Alec McTurk
+Alexandru Manea
+András Eisenberger
+Bradford Smith
+Cecilia Roes
+Florian Görisch
+Fredrik Roubert
+Ian Galpin -- Maintains the data for the UK
+Javier Kohen
+Jeanine Lilleng
+Karen Lees
+Khaled Hafez
+Lei Zhang
+monjiwired@
+Philippe Liard
+Sang-il Lee
+Yugui Sonoda
