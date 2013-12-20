@@ -1,3 +1,17 @@
+libphonenumber (5.9.2) precise; urgency=low
+
+  * Metadata changes:
+    - New alternate formatting data for country calling code(s): 255,
+    27, 381, 506
+    - Updated alternate formatting data for country calling code(s): 43
+    - Updated phone metadata for region code(s):
+    AG, AI, AS, BB, BF, BM, BS, CA, CR, DM, DO, EC, GD, GU, JM, KN, KY,
+    LC, MP,
+    MS, PR, SO, SX, TC, TT, US, VC, VG, VI
+    - Updated carrier data for country calling code(s): 226 (en)
+
+ -- Lara Scheidegger <lararennie@google.com>  Fri, 20 Dec 2013 10:47:07 +0100
+
 libphonenumber (5.9.1) precise; urgency=low
 
   * Metadata changes:

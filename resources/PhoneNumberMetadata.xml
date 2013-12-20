@@ -13,7 +13,6 @@
      limitations under the License.
 
      @author: Shaopeng Jia
-     @author: Lara Rennie
 
      Metadata on Phone Number Plan and formatting rules
      Note: Territories are in alphabetical order by their IDs, which are based on ISO 3166-1
@@ -309,6 +308,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -383,6 +383,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -1125,6 +1126,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -1855,6 +1857,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -2416,7 +2419,7 @@
             [0-24-6]\d|
             70|
             8[0-8]|
-            3[0-3]
+            3[0-7]
           )\d{5}|
           7\d{7}
         </nationalNumberPattern>
@@ -2834,6 +2837,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -3184,6 +3188,7 @@
           242300\d{4}|
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -3710,6 +3715,8 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
+            55|
             66|
             77|
             88
@@ -4853,7 +4860,11 @@
             0[0-4]|
             7[01]
           )\d{5}|
-          [67][0-2]\d{6}|
+          6(?:
+            [0-2]\d|
+            30
+          )\d{5}|
+          7[0-2]\d{6}|
           8[3-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
@@ -5705,6 +5716,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -5807,6 +5819,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -5963,8 +5976,8 @@
         <nationalNumberPattern>
           9(?:
             39|
-            [4-6][89]|
-            7[7-9]|
+            [45][89]|
+            [67][7-9]|
             [89]\d
           )\d{6}
         </nationalNumberPattern>
@@ -7609,6 +7622,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -8531,6 +8545,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -11195,6 +11210,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -12779,6 +12795,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -13231,6 +13248,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -13600,6 +13618,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -15333,6 +15352,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -15475,6 +15495,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -18236,6 +18257,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -20215,7 +20237,7 @@
             7\d{2}|
             9(?:
               07|
-              [19]
+              [13-9]
             )\d
           )\d{5}
         </nationalNumberPattern>
@@ -20423,6 +20445,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -20627,6 +20650,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -21327,6 +21351,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -21984,6 +22009,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -22490,6 +22516,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -22634,6 +22661,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|
@@ -22754,6 +22782,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            44|
             55|
             66|
             77|

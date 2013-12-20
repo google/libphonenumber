@@ -1,3 +1,12 @@
+Dec 20, 2013: libphonenumber-5.9.2
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 255, 27, 381, 506
+ - Updated alternate formatting data for country calling code(s): 43
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BF, BM, BS, CA, CR, DM, DO, EC, GD, GU, JM, KN, KY, LC, MP,
+   MS, PR, SO, SX, TC, TT, US, VC, VG, VI
+ - Updated carrier data for country calling code(s): 226 (en)
+
 Dec 13, 2013: libphonenumber-5.9.1
 * Metadata changes:
  - New alternate formatting data for country calling code(s): 505, 679
