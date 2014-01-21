@@ -1,3 +1,13 @@
+Jan 21, 2014: libphonenumber-5.9.3
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   BF, BH, BR, CN, GR, IN, MY, PA, TN, US
+ - Updated short number metadata for region code(s): CN
+ - New geocoding data for country calling code(s): 1364 (en), 1725 (en)
+ - Updated geocoding data for country calling code(s): 86 (en)
+ - Updated carrier data for country calling code(s):
+   55 (en), 226 (en), 973 (en)
+
 Dec 20, 2013: libphonenumber-5.9.2
 * Metadata changes:
  - New alternate formatting data for country calling code(s): 255, 27, 381, 506

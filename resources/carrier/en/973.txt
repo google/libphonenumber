@@ -12,13 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-973322|Batelco
+# Prefixes obtained here:
+# http://www.tra.org.bh/en/marketNumbering.aspx
+
+97331|Royal Court
+97332|Batelco
 97333|VIVA
 97334|VIVA
+97335|VIVA
 97336|zain BH
 97337|zain BH
-973383|Batelco
-973384|Batelco
-973388|Batelco
+97338|Batelco
 97339|Batelco
-97366|zain BH
+97363|VIVA
+973663|zain BH
+973666|zain BH
+973669|zain BH

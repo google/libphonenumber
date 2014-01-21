@@ -2060,18 +2060,44 @@
     <!-- http://www.itu.int/oth/T020200002B/en -->
     <territory id="CN">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
+            00\d{2}|
             1[09]|
             20
-          )
+          )|
+          95\d{3,4}
         </nationalNumberPattern>
         <exampleNumber>119</exampleNumber>
       </shortCode>
+      <carrierServices>
+        <!-- 100xx numbers are mainly used for carrier services. They can be dialed nationwide and
+             are always routed to the local provider. They are free if called from a phone by the
+             same carrier, or charged at local rate if called from a phone by a different carrier.
+             Note they can also be used with area codes when one specifically wants to reach an
+             operator in a different region. That case is more like fixed-line and is covered under
+             the fixed-line pattern in PhoneNumberMetadata.xml. -->
+        <nationalNumberPattern>100\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>10000</exampleNumber>
+      </carrierServices>
+      <standardRate>
+        <!-- 95xxx(x) numbers are covered by the ITU doc, but the following doc contains more info:
+             http://baike.baidu.com/view/3269670.htm. They can be dialed nationwide and are always
+             routed to the local provider. Note they can also be used with area codes when one
+             specifically wants to reach an operator in a different region. That case is more like
+             fixed-line and is covered under the fixed-line pattern in PhoneNumberMetadata.xml. -->
+        <nationalNumberPattern>
+          100\d{2}|
+          95\d{3,4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <exampleNumber>95566</exampleNumber>
+      </standardRate>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -2079,6 +2105,7 @@
             20
           )
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>119</exampleNumber>
       </emergency>
     </territory>
@@ -7611,6 +7638,8 @@
 
     <!-- Tunisia -->
     <!-- http://www.itu.int/oth/T02020000D5/en -->
+    <!-- http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf
+        -->
     <territory id="TN">
       <generalDesc>
         <nationalNumberPattern>1\d{2}</nationalNumberPattern>

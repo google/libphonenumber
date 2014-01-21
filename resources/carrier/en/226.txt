@@ -22,12 +22,7 @@
 22665|Airtel
 22666|Airtel
 226670|Airtel
-226680|Telecel Faso
-226681|Telecel Faso
-226682|Telecel Faso
-226683|Telecel Faso
-226684|Telecel Faso
-226685|Telecel Faso
+22668|Telecel Faso
 22670|Telmob
 22671|Telmob
 22672|Telmob

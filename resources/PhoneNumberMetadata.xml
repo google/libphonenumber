@@ -2416,10 +2416,9 @@
       <mobile>
         <nationalNumberPattern>
           6(?:
-            [0-24-6]\d|
-            70|
-            8[0-8]|
-            3[0-7]
+            [0-24-68]\d|
+            3[0-7]|
+            70
           )\d{5}|
           7\d{7}
         </nationalNumberPattern>
@@ -2548,7 +2547,6 @@
 
     <!-- Bahrain -->
     <!-- http://www.itu.int/oth/T0202000011/en -->
-    <!-- http://www.tra.org.bh/en/pdf/National_Numbering_Plan_2.pdf -->
     <!-- http://www.tra.org.bh/en/marketNumbering.aspx -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Bahrain -->
     <territory id="BH" countryCode="973" internationalPrefix="00" mobileNumberPortableRegion="true">
@@ -2561,11 +2559,12 @@
         <nationalNumberPattern>[136-9]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
-      <!-- Universal Service numbers are under both Mobile and Fixed-Line, as they can be assigned
-           to either. -->
+      <!-- Some ranges were previously described as "universal", but in subsequent versions of the
+           ITU doc they have been specified to be mobile or fixed-line. We follow the ITU
+           designations, even though some publications still refer to them as universal. -->
       <!-- According to http://en.wikipedia.org/wiki/Telephone_numbers_in_Bahrain, the ranges
-           "6966-6969, 6996, 6999" are assigned to Rapid. However this contradicts our ranges of
-           "6966, 6969, 6996-6999". TODO: Investigate this further. -->
+           "6966-6969, 6996, 6999" are assigned to Rapid. However this contradicts the ITU doc
+           which lists "6966, 6969, 6996, 6999". We follow ITU here. -->
       <fixedLine>
         <nationalNumberPattern>
           (?:
@@ -2576,16 +2575,14 @@
             )\d|
             6(?:
               1[16]\d|
+              500|
               6(?:
                 0\d|
                 3[12]|
                 44|
                 88
               )|
-              9(?:
-                6[69]|
-                9[6-9]
-              )
+              9[69][69]
             )|
             7(?:
               7\d{2}|
@@ -2595,41 +2592,27 @@
         </nationalNumberPattern>
         <exampleNumber>17001234</exampleNumber>
       </fixedLine>
-      <!-- Previously 6644 was assigned to Universal Service, along with 6111, 6160, 6500, 6600,
-           6688, 6969, 6996, 6999, and 77. These were put under both Mobile and Fixed-Line, as they
-           could be assigned to either. However, in the new document these are assigned to
-           Fixed-Line only (with the exception of 6644 which was removed). For now we are keeping
-           these number in both sections.
-           Note also that 31 is not listed in the ITU document and could probably be removed.
-           TODO: Check above ranges and move/remove ranges where necessary.-->
+      <!-- 31 is assigned to Royal Court, as per documents on Bahrain's own telecom site, even
+           though it is omitted from the ITU document. -->
       <mobile>
         <nationalNumberPattern>
           (?:
             3(?:
               [1-4679]\d|
               5[0135]|
-              8[348]
+              8[0-48]
             )\d|
             6(?:
-              1[16]\d|
               3(?:
                 00|
                 33|
                 6[16]
               )|
-              500|
               6(?:
-                [069]\d|
-                3[03-9]|
-                44|
-                88
-              )|
-              9(?:
-                6[69]|
-                9[6-9]
+                [69]\d|
+                3[03-9]
               )
-            )|
-            77\d{2}
+            )
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>36001234</exampleNumber>
@@ -3075,34 +3058,24 @@
         </nationalNumberPattern>
         <exampleNumber>1123456789</exampleNumber>
       </fixedLine>
-      <!-- Also includes the new 11-digit mobile numbers that are being rolled out since 2012,
-           which are added at the end. -->
       <mobile>
+        <!-- Since 2012, Brazil has been migrating from 10 to 11 digits by inserting a 9 before the
+             last 8 digits. The following pattern is divided into 3 sections: ranges for which the
+             migration has been completed, ranges which are in transition, and ranges which are
+             still in the old format. (Ranges which were supposed to have been deprecated in
+             Oct. 2013 are still working as of Jan. 2014.) -->
         <nationalNumberPattern>
-          1(?:
-            1(?:
-              5[347]|
-              [6-9]\d
-            )|
-            [2-9][6-9]\d
-          )\d{6}|
+          1[1-9]9\d{8}|
+          2[12478]9?[6-9]\d{7}|
           (?:
-            2[12478]|
             3[1-578]|
             [4689][1-9]|
             5[13-5]|
             7[13-579]
-          )[6-9]\d{7}|
-          (?:
-            1(?:
-              19\d|
-              [2-9]9[6-9]
-            )|
-            2[12478]9[6-9]
-          )\d{7}
+          )[6-9]\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
-        <exampleNumber>1161234567</exampleNumber>
+        <exampleNumber>11961234567</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>800\d{6,7}</nationalNumberPattern>
@@ -4322,10 +4295,11 @@
           <leadingDigits>[48]00</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 100xx and 95xxx(x) numbers. Without this rule, the numbers will be formatted
-             incorrectly by the AsYouTypeFormatter because they overlap with area codes 010, 095x.
-             Note although ITU says the format is more like 95 xxx, in reality no space is used
-             when writing such numbers in China -->
+        <!-- 100xx and 95xxx(x) short numbers without area codes. Without this rule, these short
+             numbers will be formatted incorrectly by the AsYouTypeFormatter because they overlap
+             with area codes 010, 095x. These numbers are defined in ShortNumberMetadata.xml but
+             must be accounted for here. Note although ITU says the format is more like 95 xxx, in
+             reality no space is used when writing such numbers in China. -->
         <numberFormat pattern="(\d{5,6})">
           <leadingDigits>
             100|
@@ -4334,7 +4308,8 @@
           <format>$1</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
-        <!-- 100xx and 95xxx(x) numbers with area codes. -->
+        <!-- 100xx and 95xxx(x) numbers with area codes (these numbers without an area code are now
+             dealt with by ShortNumberMetadata.xml). -->
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{2})(\d{5,6})"
                       carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
@@ -4523,33 +4498,22 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          1(?:
-            00\d{2}|
-            \d{6,11}
-          )|
-          [2-7]\d{6,11}|
+          [1-7]\d{6,11}|
           8[0-357-9]\d{6,9}|
-          9(?:
-            5\d{3,4}|
-            \d{9}
-          )
+          9\d{9}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,12}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
-        <!-- 100xx and 95xxx(x) numbers have been verified to be unreachable from overseas by
-             placing actual calls. -->
         <nationalNumberPattern>
-          100\d{2}|
           (?:
             4|
             (?:
               10
             )?8
-          )00\d{7}|
-          95\d{3,4}
+          )00\d{7}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
+        <possibleNumberPattern>\d{10,12}</possibleNumberPattern>
         <exampleNumber>4001234567</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
@@ -4676,9 +4640,9 @@
       <mobile>
         <nationalNumberPattern>
           1(?:
-            3\d|
+            [38]\d|
             4[57]|
-            [58][0-35-9]
+            5[0-35-9]
           )\d{8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
@@ -4703,30 +4667,10 @@
         <exampleNumber>16812345</exampleNumber>
       </premiumRate>
       <sharedCost>
-        <!-- 95xxx(x) numbers are covered by the ITU doc, but the following doc contains more info:
-             http://baike.baidu.com/view/3269670.htm. They can be dialed nationwide and are always
-             routed to the local provider. Note they can also be used with area codes when one
-             specifically wants to reach an operator in a different region. That case is more
-             like fixed-line numbers and is covered under the fixed-line pattern. -->
-        <nationalNumberPattern>
-          400\d{7}|
-          95\d{3,4}
-        </nationalNumberPattern>
-        <possibleNumberPattern>\d{5,10}</possibleNumberPattern>
+        <nationalNumberPattern>400\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>4001234567</exampleNumber>
       </sharedCost>
-      <uan>
-        <!-- 100xx numbers are mainly used for carrier services. They can be dialed nationwide and
-             are always routed to the local provider. They are free if called from a phone by the
-             same carrier, or charged at local rate if called from a phone by a different carrier.
-             Note they can also be used with area codes when one specifically wants to reach an
-             operator in a different region. That case is more like fixed-line numbers and is
-             covered under the fixed-line pattern.
-          -->
-        <nationalNumberPattern>100\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
-        <exampleNumber>10000</exampleNumber>
-      </uan>
     </territory>
 
     <!-- Colombia -->
@@ -8298,20 +8242,21 @@
           2(?:
             1\d{2}|
             2(?:
+              2[1-46-9]|
               3[1-8]|
               4[1-7]|
               5[1-4]|
               6[1-8]|
               7[1-5]|
-              [289][1-9]
+              [89][1-9]
             )|
             3(?:
               1\d|
               2[1-57]|
-              3[1-4]|
-              [45][1-3]|
+              [35][1-3]|
+              4[13]|
               7[1-7]|
-              8[1-6]|
+              8[124-6]|
               9[1-79]
             )|
             4(?:
@@ -8324,13 +8269,14 @@
             )|
             5(?:
               1\d|
-              [239][1-4]|
+              [29][1-4]|
+              3[1-5]|
               4[124]|
               5[1-6]
             )|
             6(?:
               1\d|
-              3[124]|
+              3[1245]|
               4[1-7]|
               5[13-9]|
               [269][1-6]|
@@ -8343,14 +8289,14 @@
               3[1-6]|
               4[1-7]|
               5[1-57]|
-              6[134]|
-              9[15-7]
+              6[135]|
+              9[125-7]
             )|
             8(?:
               1\d|
               2[1-5]|
               [34][1-4]|
-              9[1-7]
+              9[1-57]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -9959,8 +9905,8 @@
          <numberFormat pattern="(\d{4})(\d{3})(\d{3})">
            <leadingDigits>
              1(?:
-               [2-579]|
-               [68][1-9]
+               [23579]|
+               [468][1-9]
              )|
              [2-8]
            </leadingDigits>
@@ -9982,6 +9928,11 @@
            pattern="(18[06]0)(\d{2,4})(\d{4})">
            <leadingDigits>18[06]</leadingDigits>
            <leadingDigits>18[06]0</leadingDigits>
+           <format>$1 $2 $3</format>
+         </numberFormat>
+         <numberFormat nationalPrefixFormattingRule="$FG"
+           pattern="(140)(\d{3})(\d{4})">
+           <leadingDigits>140</leadingDigits>
            <format>$1 $2 $3</format>
          </numberFormat>
          <!-- Televoting numbers. Formatting information is from
@@ -10019,7 +9970,7 @@
                 [12]\d{9}
               )
             )
-           )
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8,13}</possibleNumberPattern>
         <exampleNumber>1800123456</exampleNumber>
@@ -10326,10 +10277,19 @@
         <possibleNumberPattern>\d{13}</possibleNumberPattern>
         <exampleNumber>1861123456789</exampleNumber>
       </premiumRate>
-      <uan>
+      <sharedCost>
+        <!-- While described as "universal numbers" in the numbering plan, evidence suggests
+             that 1860 number are best described as shared cost. See "Call Local Service" in:
+             http://www.tatadocomo.com/corporates/toll-free.aspx -->
         <nationalNumberPattern>1860\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
         <exampleNumber>18603451234</exampleNumber>
+      </sharedCost>
+      <uan>
+        <!-- Telemarketing numbers: http://en.wikipedia.org/wiki/Telephone_numbers_in_India -->
+        <nationalNumberPattern>140\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <exampleNumber>1409305260</exampleNumber>
       </uan>
     </territory>
 
@@ -16127,7 +16087,8 @@
         <exampleNumber>123456789</exampleNumber>
       </mobile>
       <tollFree>
-        <nationalNumberPattern>1[38]00\d{6}</nationalNumberPattern>
+        <!-- http://www.skmm.gov.my/skmmgovmy/media/General/pdf/Special_Service_Number.pdf -->
+        <nationalNumberPattern>1[378]00\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>1300123456</exampleNumber>
       </tollFree>
@@ -16136,11 +16097,6 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>1600123456</exampleNumber>
       </premiumRate>
-      <personalNumber>
-        <nationalNumberPattern>1700\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{10}</possibleNumberPattern>
-        <exampleNumber>1700123456</exampleNumber>
-      </personalNumber>
       <voip>
         <nationalNumberPattern>154\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -17296,7 +17252,7 @@
               65|
               7[016-8]|
               8[58]|
-              9[134]
+              9[1349]
             )|
             2(?:
               [0235679]\d|
@@ -17305,19 +17261,18 @@
               8[028]
             )|
             3(?:
-              0[0-7]|
+              [09]\d|
               1[14-7]|
               2[0-3]|
               3[03]|
               4[0457]|
               5[56]|
               6[068]|
-              7[078]|
-              80|
-              9\d
+              7[06-8]|
+              8[089]
             )|
             4(?:
-              3[013-59]|
+              3[013-69]|
               4\d|
               7[0-689]
             )|
@@ -17330,8 +17285,9 @@
             7(?:
               0[09]|
               2[0-267]|
-              [349]0|
-              5[6-9]|
+              3[06]|
+              [49]0|
+              5[06-9]|
               7[0-24-7]|
               8[89]
             )|
@@ -17341,10 +17297,10 @@
               8[02]
             )|
             9(?:
-              0[78]|
-              1[0178]|
-              2[0378]|
-              3[379]|
+              0[6-8]|
+              1[016-8]|
+              2[036-8]|
+              3[3679]|
               40|
               5[0489]|
               6[06-9]|
@@ -17370,10 +17326,9 @@
             )
           )\d{4}|
           6(?:
-            [04-9]\d|
+            [024-9]\d|
             1[0-5]|
-            2[0-7]|
-            3[5-9]
+            3[04-9]
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>60012345</exampleNumber>
@@ -21080,6 +21035,9 @@
 
     <!-- Tunisia -->
     <!-- http://www.itu.int/oth/T02020000D5/en -->
+    <!-- http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf
+         http://www.tunisietelecom.tn/tt/internet/fr/pme/fixe/numeros_acceuil
+      -->
     <territory id="TN" countryCode="216" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
@@ -21091,19 +21049,18 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- We support the whole 81 prefix here instead of just 81200 as
-             indicated in the ITU doc, as more real phone numbers have been
-             found online. -->
+        <!-- 3[012] numbers are no longer listed in the ITU doc, but we support them based on
+             online searches. -->
         <nationalNumberPattern>
-          (?:
-            3[012]|
-            7\d|
-            81
-          )\d{6}
+          3[012]\d{6}|
+          7\d{7}|
+          81200\d{3}
         </nationalNumberPattern>
         <exampleNumber>71234567</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Numbers starting with 5 are no longer listed in the ITU doc, but we support them based
+             on online searches and Wikipedia. -->
         <nationalNumberPattern>
           (?:
             [259]\d|
@@ -21112,12 +21069,24 @@
         </nationalNumberPattern>
         <exampleNumber>20123456</exampleNumber>
       </mobile>
-      <!-- These are listed as 'value added services' - pending further information, we add them
-           here for now. -->
+      <tollFree>
+        <!-- ITU lists 80 xx xx xx, but the document published by Tunisie Telecom has more specific
+             information which is followed here. -->
+        <nationalNumberPattern>8010\d{4}</nationalNumberPattern>
+        <exampleNumber>80101234</exampleNumber>
+      </tollFree>
       <premiumRate>
-        <nationalNumberPattern>8[028]\d{6}</nationalNumberPattern>
-        <exampleNumber>80123456</exampleNumber>
+        <nationalNumberPattern>88\d{6}</nationalNumberPattern>
+        <exampleNumber>88123456</exampleNumber>
       </premiumRate>
+      <sharedCost>
+        <!-- 8110xxxx numbers are listed as being "discounted non-geographical numbers" and are put
+             here for now. In the future we might consider them as UAN.
+             ITU lists 82 xx xx xx, but the document published by Tunisie Telecom has more specific
+             information which is followed here. -->
+        <nationalNumberPattern>8[12]10\d{4}</nationalNumberPattern>
+        <exampleNumber>81101234</exampleNumber>
+      </sharedCost>
     </territory>
 
     <!-- Tonga -->
@@ -21842,7 +21811,7 @@
               3[014679]|
               47|
               5[12]|
-              6[01]|
+              6[014]|
               8[056]
             )|
             4(?:
@@ -21881,7 +21850,7 @@
             7(?:
               0[1-46-8]|
               1[02-9]|
-              2[047]|
+              2[0457]|
               3[1247]|
               4[07]|
               5[47]|
@@ -21934,7 +21903,7 @@
               3[014679]|
               47|
               5[12]|
-              6[01]|
+              6[014]|
               8[056]
             )|
             4(?:
@@ -21973,7 +21942,7 @@
             7(?:
               0[1-46-8]|
               1[02-9]|
-              2[047]|
+              2[0457]|
               3[1247]|
               4[07]|
               5[47]|
