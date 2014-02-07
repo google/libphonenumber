@@ -1,3 +1,13 @@
+Feb 07, 2014: libphonenumber-5.9.4
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   883, BF, BJ, BW, CL, CR, DZ, FR, GD, IN, JP, MD, NG, NZ, PK, PL, SY, UY, VU
+ - Updated short number metadata for region code(s): LV, MD
+ - New carrier data for country calling code(s): 373 (en), 1473 (en)
+ - Updated carrier data for country calling code(s):
+   48 (en), 49 (en), 91 (en), 92 (en), 213 (en), 226 (en), 229 (en), 234 (en),
+   267 (en), 389 (en), 506 (en), 598 (en)
+
 Jan 21, 2014: libphonenumber-5.9.3
 * Metadata changes:
  - Updated phone metadata for region code(s):

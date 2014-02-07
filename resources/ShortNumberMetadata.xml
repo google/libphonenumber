@@ -5205,27 +5205,91 @@
     </territory>
 
     <!-- Latvia -->
-    <!-- http://www.itu.int/oth/T0202000076/en -->
     <!-- http://en.wikipedia.org/wiki/+371 -->
     <territory id="LV">
       <generalDesc>
-        <nationalNumberPattern>[01]\d{1,2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <nationalNumberPattern>
+          0\d|
+          1\d{2,6}|
+          8\d{3,4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          0[123]|
-          112
+          0[1-4]|
+          1(?:
+            1(?:
+              [02-4]|
+              6(?:
+                000|
+                111
+              )|
+              8[0189]
+            )|
+            55|
+            655|
+            77
+          )|
+          821[57]4
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <tollFree>
+        <!-- http://116000.lv/en/about -->
+        <nationalNumberPattern>116000</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <!-- http://www.ldz.lv/?object_id=2568 - 0.177 LVL per minute. -->
+        <nationalNumberPattern>1181</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1181</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <nationalNumberPattern>
+          1180|
+          8(?:
+            2\d{3}|
+            [89]\d{2}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
+      </premiumRate>
+      <carrierSpecific>
+        <nationalNumberPattern>16\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1655</exampleNumber>
+      </carrierSpecific>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            6\d{2}|
+            77
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>177</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>118\d</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1180</exampleNumber>
+      </directoryServices>
       <emergency>
         <nationalNumberPattern>
           0[123]|
-          112
+          11[023]
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>155</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>155</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Libya (Soc. People’s Libyan Arab Jamahiriya) -->
@@ -5313,6 +5377,7 @@
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- http://www.idknet.com/mobile/sms/ -->
         <nationalNumberPattern>
           1(?:
             1(?:
@@ -5324,7 +5389,8 @@
                   23
                 )
               )|
-              8\d
+              8\d|
+              99
             )|
             4\d{3}|
             5[0-3]\d|

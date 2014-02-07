@@ -42,6 +42,8 @@
 1441590|Digicel Bermuda
 1441599|Digicel Bermuda
 14417|Cellular One
+1473520|Affordable Island Communications
+1473521|Affordable Island Communications
 164923|C&W
 164924|C&W
 164933|DIGICEL

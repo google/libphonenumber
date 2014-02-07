@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2014 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-38970|T-Mobile
-38971|T-Mobile
-38972|T-Mobile
-389732|Albafone
-3897421|Mobik Telekomunikacii
-38975|One
-38976|One
-38977|vip
-38978|vip
+373562|IDC
+373774|IDC
+373775|IDC
+373777|IDC
+373778|IDC
+373779|IDC

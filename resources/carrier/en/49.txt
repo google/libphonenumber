@@ -12,9 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# O2 is run by Telefónica (the name listed in the ITU doc). The ITU doc also
+# lists Telekom Deutschland for T-Mobile, but these are the same company.
+
 49151|T-Mobile
 491520|Vodafone
-49156|Mobilcom
+491521|Vodafone/Lycamobile
+491522|Vodafone
+491523|Vodafone
+491525|Vodafone
+491529|Vodafone/Truphone
+491570|Eplus/Telogic
+491573|Eplus
+491575|Eplus
+491577|Eplus
+491578|Eplus
+491579|Eplus/Sipgate
+491590|O2
 49160|T-Mobile
 49162|Vodafone
 49163|Eplus

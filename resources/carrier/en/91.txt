@@ -111,6 +111,7 @@
 917598|CellOne
 917599|CellOne
 917600|AirTel
+917601|Reliance
 917602|AirTel
 917607|AirTel
 917620|Reliance
@@ -125,6 +126,8 @@
 917676|Reliance
 917677|Reliance
 917679|Reliance
+917686|Aircel
+917687|Aircel
 917696|TATA DOCOMO
 917697|Idea Cellular Ltd
 917698|IDEA
