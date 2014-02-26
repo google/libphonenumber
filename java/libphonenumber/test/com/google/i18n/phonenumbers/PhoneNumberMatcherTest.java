@@ -29,7 +29,6 @@ import java.util.NoSuchElementException;
 /**
  * Tests for {@link PhoneNumberMatcher}. This only tests basic functionality based on test metadata.
  *
- * @author Tom Hofmann
  * @see PhoneNumberUtilTest {@link PhoneNumberUtilTest} for the origin of the test data
  */
 public class PhoneNumberMatcherTest extends TestMetadataTestCase {
@@ -97,7 +96,8 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
 
     doTestFindInContext("64(0)64123456", RegionCode.NZ);
     // Check that using a "/" is fine in a phone number.
-    doTestFindInContext("123/45678", RegionCode.DE);
+    // Note that real Polish numbers do *not* start with a 0.
+    doTestFindInContext("0123/456789", RegionCode.PL);
     doTestFindInContext("123-456-7890", RegionCode.US);
   }
 
@@ -240,29 +240,58 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     }
   }
 
+  public void testFourMatchesInARow() throws Exception {
+    String number1 = "415-666-7777";
+    String number2 = "800-443-1223";
+    String number3 = "212-443-1223";
+    String number4 = "650-443-1223";
+    String text = number1 + " - " + number2 + " - " + number3 + " - " + number4;
+
+    Iterator<PhoneNumberMatch> iterator =
+        phoneUtil.findNumbers(text, RegionCode.US).iterator();
+    PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number1, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number2, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number3, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number4, RegionCode.US);
+  }
+
+  public void testMatchesFoundWithMultipleSpaces() throws Exception {
+    String number1 = "(415) 666-7777";
+    String number2 = "(800) 443-1223";
+    String text = number1 + " " + number2;
+
+    Iterator<PhoneNumberMatch> iterator =
+        phoneUtil.findNumbers(text, RegionCode.US).iterator();
+    PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number1, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number2, RegionCode.US);
+  }
+
   public void testMatchWithSurroundingZipcodes() throws Exception {
     String number = "415-666-7777";
     String zipPreceding = "My address is CA 34215 - " + number + " is my number.";
-    PhoneNumber expectedResult = phoneUtil.parse(number, RegionCode.US);
 
     Iterator<PhoneNumberMatch> iterator =
         phoneUtil.findNumbers(zipPreceding, RegionCode.US).iterator();
     PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
-    assertNotNull("Did not find a number in '" + zipPreceding + "'; expected " + number, match);
-    assertEquals(expectedResult, match.number());
-    assertEquals(number, match.rawString());
+    assertMatchProperties(match, zipPreceding, number, RegionCode.US);
 
     // Now repeat, but this time the phone number has spaces in it. It should still be found.
     number = "(415) 666 7777";
 
     String zipFollowing = "My number is " + number + ". 34215 is my zip-code.";
     iterator = phoneUtil.findNumbers(zipFollowing, RegionCode.US).iterator();
-
     PhoneNumberMatch matchWithSpaces = iterator.hasNext() ? iterator.next() : null;
-    assertNotNull("Did not find a number in '" + zipFollowing + "'; expected " + number,
-                  matchWithSpaces);
-    assertEquals(expectedResult, matchWithSpaces.number());
-    assertEquals(number, matchWithSpaces.rawString());
+    assertMatchProperties(matchWithSpaces, zipFollowing, number, RegionCode.US);
   }
 
   public void testIsLatinLetter() throws Exception {
@@ -874,6 +903,18 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     } catch (UnsupportedOperationException e) { /* success */ }
 
     assertFalse(iterator.hasNext());
+  }
+
+  /**
+   * Asserts that the expected match is non-null, and that the raw string and expected
+   * proto buffer are set appropriately.
+   */
+  private void assertMatchProperties(
+      PhoneNumberMatch match, String text, String number, String region) throws Exception {
+    PhoneNumber expectedResult = phoneUtil.parse(number, region);
+    assertNotNull("Did not find a number in '" + text + "'; expected " + number, match);
+    assertEquals(expectedResult, match.number());
+    assertEquals(number, match.rawString());
   }
 
   /**

@@ -1768,7 +1768,7 @@ function testIsPossibleNumberWithReason() {
   assertEquals(VR.TOO_SHORT,
       phoneUtil.isPossibleNumberWithReason(adNumber));
   adNumber.setCountryCode(376);
-  adNumber.setNationalNumber(12345678901234567);
+  adNumber.setNationalNumber(123456789012345678);
   assertEquals(VR.TOO_LONG,
       phoneUtil.isPossibleNumberWithReason(adNumber));
 }

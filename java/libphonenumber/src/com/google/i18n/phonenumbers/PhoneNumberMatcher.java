@@ -39,8 +39,6 @@ import java.util.regex.Pattern;
  * not found.
  *
  * <p>This class is not thread-safe.
- *
- * @author Tom Hofmann
  */
 final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   /**
@@ -91,11 +89,33 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   private static final Pattern MATCHING_BRACKETS;
 
   /**
-   * Matches white-space, which may indicate the end of a phone number and the start of something
-   * else (such as a neighbouring zip-code). If white-space is found, continues to match all
-   * characters that are not typically used to start a phone number.
+   * Patterns used to extract phone numbers from a larger phone-number-like pattern. These are
+   * ordered according to specificity. For example, white-space is last since that is frequently
+   * used in numbers, not just to separate two numbers. We have separate patterns since we don't
+   * want to break up the phone-number-like text on more than one different kind of symbol at one
+   * time, although symbols of the same type (e.g. space) can be safely grouped together.
+   *
+   * Note that if there is a match, we will always check any text found up to the first match as
+   * well.
    */
-  private static final Pattern GROUP_SEPARATOR;
+  private static final Pattern[] INNER_MATCHES = {
+      // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
+      Pattern.compile("/+(.*)"),
+      // Note that the bracket here is inside the capturing group, since we consider it part of the
+      // phone number. Will match a pattern like "(650) 223 3345 (754) 223 3321".
+      Pattern.compile("(\\([^(]*)"),
+      // Breaks on a hyphen - e.g. "12345 - 332-445-1234 is my number."
+      // We require a space on either side of the hyphen for it to be considered a separator.
+      Pattern.compile("(?:\\p{Z}-|-\\p{Z})\\p{Z}*(.+)"),
+      // Various types of wide hyphens. Note we have decided not to enforce a space here, since it's
+      // possible that it's supposed to be used to break two numbers without spaces, and we haven't
+      // seen many instances of it used within a number.
+      Pattern.compile("[\u2012-\u2015\uFF0D]\\p{Z}*(.+)"),
+      // Breaks on a full stop - e.g. "12345. 332-445-1234 is my number."
+      Pattern.compile("\\.+\\p{Z}*([^.]+)"),
+      // Breaks on space - e.g. "3324451234 8002341234"
+      Pattern.compile("\\p{Z}+(\\P{Z}+)")
+  };
 
   /**
    * Punctuation that may be at the start of a phone number - brackets and plus signs.
@@ -144,7 +164,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     String leadClassChars = openingParens + PhoneNumberUtil.PLUS_CHARS;
     String leadClass = "[" + leadClassChars + "]";
     LEAD_CLASS = Pattern.compile(leadClass);
-    GROUP_SEPARATOR = Pattern.compile("\\p{Z}" + "[^" + leadClassChars  + "\\p{Nd}]*");
 
     /* Phone number pattern allowing optional punctuation. */
     PATTERN = Pattern.compile(
@@ -293,10 +312,11 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * @return  the match found, null if none can be found
    */
   private PhoneNumberMatch extractMatch(CharSequence candidate, int offset) {
-    // Skip a match that is more likely a publication page reference or a date.
-    if (PUB_PAGES.matcher(candidate).find() || SLASH_SEPARATED_DATES.matcher(candidate).find()) {
+    // Skip a match that is more likely to be a date.
+    if (SLASH_SEPARATED_DATES.matcher(candidate).find()) {
       return null;
     }
+
     // Skip potential time-stamps.
     if (TIME_STAMPS.matcher(candidate).find()) {
       String followingText = text.toString().substring(offset + candidate.length());
@@ -326,48 +346,26 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * @return  the match found, null if none can be found
    */
   private PhoneNumberMatch extractInnerMatch(String candidate, int offset) {
-    // Try removing either the first or last "group" in the number and see if this gives a result.
-    // We consider white space to be a possible indication of the start or end of the phone number.
-    Matcher groupMatcher = GROUP_SEPARATOR.matcher(candidate);
-
-    if (groupMatcher.find()) {
-      // Try the first group by itself.
-      CharSequence firstGroupOnly = candidate.substring(0, groupMatcher.start());
-      firstGroupOnly = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
-                                           firstGroupOnly);
-      PhoneNumberMatch match = parseAndVerify(firstGroupOnly.toString(), offset);
-      if (match != null) {
-        return match;
-      }
-      maxTries--;
-
-      int withoutFirstGroupStart = groupMatcher.end();
-      // Try the rest of the candidate without the first group.
-      CharSequence withoutFirstGroup = candidate.substring(withoutFirstGroupStart);
-      withoutFirstGroup = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
-                                              withoutFirstGroup);
-      match = parseAndVerify(withoutFirstGroup.toString(), offset + withoutFirstGroupStart);
-      if (match != null) {
-        return match;
-      }
-      maxTries--;
-
-      if (maxTries > 0) {
-        int lastGroupStart = withoutFirstGroupStart;
-        while (groupMatcher.find()) {
-          // Find the last group.
-          lastGroupStart = groupMatcher.start();
+    for (Pattern possibleInnerMatch : INNER_MATCHES) {
+      int rangeStart = 0;
+      Matcher groupMatcher = possibleInnerMatch.matcher(candidate);
+      boolean isFirstMatch = true;
+      while (groupMatcher.find() && maxTries > 0) {
+        if (isFirstMatch) {
+          // We should handle any group before this one too.
+          CharSequence group = trimAfterFirstMatch(
+              PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
+              candidate.substring(0, groupMatcher.start()));
+          PhoneNumberMatch match = parseAndVerify(group.toString(), offset);
+          if (match != null) {
+            return match;
+          }
+          maxTries--;
+          isFirstMatch = false;
         }
-        CharSequence withoutLastGroup = candidate.substring(0, lastGroupStart);
-        withoutLastGroup = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
-                                               withoutLastGroup);
-        if (withoutLastGroup.equals(firstGroupOnly)) {
-          // If there are only two groups, then the group "without the last group" is the same as
-          // the first group. In these cases, we don't want to re-check the number group, so we exit
-          // already.
-          return null;
-        }
-        match = parseAndVerify(withoutLastGroup.toString(), offset);
+        CharSequence group = trimAfterFirstMatch(
+            PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN, groupMatcher.group(1));
+        PhoneNumberMatch match = parseAndVerify(group.toString(), offset + groupMatcher.start(1));
         if (match != null) {
           return match;
         }
@@ -390,7 +388,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     try {
       // Check the candidate doesn't contain any formatting which would indicate that it really
       // isn't a phone number.
-      if (!MATCHING_BRACKETS.matcher(candidate).matches()) {
+      if (!MATCHING_BRACKETS.matcher(candidate).matches() || PUB_PAGES.matcher(candidate).find()) {
         return null;
       }
 
@@ -416,6 +414,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       }
 
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(candidate, preferredRegion);
+
       // Check Israel * numbers: these are a special case in that they are four-digit numbers that
       // our library supports, but they can only be dialled with a leading *. Since we don't
       // actually store or detect the * in our phone number library, this means in practice we

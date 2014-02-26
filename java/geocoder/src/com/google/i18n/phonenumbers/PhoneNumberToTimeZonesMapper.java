@@ -31,8 +31,6 @@ import java.util.logging.Logger;
 
 /**
  * An offline mapper from phone numbers to time zones.
- *
- * @author Walter Erquinigo
  */
 public class PhoneNumberToTimeZonesMapper {
   private static PhoneNumberToTimeZonesMapper instance = null;

@@ -31,8 +31,6 @@ import java.util.StringTokenizer;
 /**
  * A utility that maps phone number prefixes to a list of strings describing the time zones to
  * which each prefix belongs.
- *
- * @author Walter Erquinigo
  */
 public class PrefixTimeZonesMap implements Externalizable {
   private final PhonePrefixMap phonePrefixMap = new PhonePrefixMap();

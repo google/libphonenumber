@@ -33,7 +33,6 @@ import java.util.List;
  * for regression test purposes - these tests are illustrative only and test functionality.
  *
  * @author Shaopeng Jia
- * @author Lara Rennie
  */
 public class PhoneNumberUtilTest extends TestMetadataTestCase {
   // Set up some test numbers to re-use.
@@ -797,13 +796,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     // Test the special logic for NANPA countries, for which regular length phone numbers are always
     // output in international format, but short numbers are in national format.
-    PhoneNumber usRegularNumber = new PhoneNumber().setCountryCode(1)
-        .setNationalNumber(6502530000L);
-    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(usRegularNumber,
+    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(US_NUMBER,
         RegionCode.US, false));
-    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(usRegularNumber,
+    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(US_NUMBER,
         RegionCode.CA, false));
-    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(usRegularNumber,
+    assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(US_NUMBER,
         RegionCode.BR, false));
     PhoneNumber usShortNumber = new PhoneNumber().setCountryCode(1).setNationalNumber(911L);
     assertEquals("911", phoneUtil.formatNumberForMobileDialing(usShortNumber, RegionCode.US,
@@ -1325,7 +1322,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     adNumber.setCountryCode(376).setNationalNumber(1L);
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_SHORT,
                  phoneUtil.isPossibleNumberWithReason(adNumber));
-    adNumber.setCountryCode(376).setNationalNumber(12345678901234567L);
+    adNumber.setCountryCode(376).setNationalNumber(123456789012345678L);
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_LONG,
                  phoneUtil.isPossibleNumberWithReason(adNumber));
   }

@@ -1,3 +1,18 @@
+Feb 25, 2014: libphonenumber-6.0
+* Code changes:
+ - Better support for detecting phone numbers in text that are beside each other
+ - Change to how Japanese numbers beginning with "00" are modelled, with the
+   side-effect that the maximum possible number length has been extended by 1.
+ - Handle StringIndexOutOfBoundsException in the AsYouTypeFormatter when the
+   national prefix that was extracted was not found in the prefix. This affected
+   countries with very long carrier codes, such as Korea.
+ - Removal of some of the author attributions - contributions to be tracked in
+   CONTRIBUTORS file.
+* Metadata changes:
+ - Updated phone metadata for region code(s): AS, BR, KW, LU
+ - New carrier data for country calling code(s): 1684 (en)
+ - Updated carrier data for country calling code(s): 352 (en)
+
 Feb 07, 2014: libphonenumber-5.9.4
 * Metadata changes:
  - Updated phone metadata for region code(s):

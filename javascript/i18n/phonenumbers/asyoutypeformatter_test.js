@@ -1149,3 +1149,35 @@ function testAYTFShortNumberFormattingFix_US() {
   assertEquals('12', f.inputDigit('2'));
   assertEquals('1 22', f.inputDigit('2'));
 }
+
+function testAYTFClearNDDAfterIddExtraction() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.KR);
+
+  // Check that when we have successfully extracted an IDD, the previously
+  // extracted NDD is cleared since it is no longer valid.
+  assertEquals('0', f.inputDigit('0'));
+  assertEquals('00', f.inputDigit('0'));
+  assertEquals('007', f.inputDigit('7'));
+  assertEquals('0070', f.inputDigit('0'));
+  assertEquals('00700', f.inputDigit('0'));
+  assertEquals('0', f.getExtractedNationalPrefix_());
+  assertEquals('00700 1 ', f.inputDigit('1'));
+  assertEquals('', f.getExtractedNationalPrefix_());
+  assertEquals('00700 1 2', f.inputDigit('2'));
+  assertEquals('00700 1 23', f.inputDigit('3'));
+  assertEquals('00700 1 234', f.inputDigit('4'));
+  assertEquals('00700 1 234 5', f.inputDigit('5'));
+  assertEquals('00700 1 234 56', f.inputDigit('6'));
+  assertEquals('00700 1 234 567', f.inputDigit('7'));
+  assertEquals('00700 1 234 567 8', f.inputDigit('8'));
+  assertEquals('00700 1 234 567 89', f.inputDigit('9'));
+  assertEquals('00700 1 234 567 890', f.inputDigit('0'));
+  assertEquals('00700 1 234 567 8901', f.inputDigit('1'));
+  assertEquals('00700123456789012', f.inputDigit('2'));
+  assertEquals('007001234567890123', f.inputDigit('3'));
+  assertEquals('0070012345678901234', f.inputDigit('4'));
+  assertEquals('00700123456789012345', f.inputDigit('5'));
+  assertEquals('007001234567890123456', f.inputDigit('6'));
+  assertEquals('0070012345678901234567', f.inputDigit('7'));
+}

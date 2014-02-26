@@ -1886,7 +1886,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   uint64 number_as_int;
   safe_strtou64(normalized_national_number, &number_as_int);
   temp_number.set_national_number(number_as_int);
-  phone_number->MergeFrom(temp_number);
+  phone_number->Swap(&temp_number);
   return NO_PARSING_ERROR;
 }
 

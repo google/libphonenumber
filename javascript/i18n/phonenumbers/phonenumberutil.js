@@ -114,7 +114,7 @@ i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 2;
  * @type {number}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 16;
+i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 17;
 
 
 /**
@@ -1511,8 +1511,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
     /** @type {string} */
     var nationalPrefixFormattingRule =
         formattingPattern.getNationalPrefixFormattingRuleOrDefault();
-    /** @type {string} */
     if (nationalPrefixFormattingRule.length > 0) {
+      /** @type {string} */
       var nationalPrefix = metadata.getNationalPrefixOrDefault();
       if (nationalPrefix.length > 0) {
         // Replace $NP with national prefix and $FG with the first group ($1).

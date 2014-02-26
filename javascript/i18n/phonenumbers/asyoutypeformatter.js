@@ -165,7 +165,7 @@ i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {
    * @type {string}
    * @private
    */
-  this.nationalPrefixExtracted_ = '';
+  this.extractedNationalPrefix_ = '';
   /**
    * @type {!goog.string.StringBuffer}
    * @private
@@ -505,7 +505,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.clear = function() {
   this.lastMatchPosition_ = 0;
   this.currentFormattingPattern_ = '';
   this.prefixBeforeNationalNumber_.clear();
-  this.nationalPrefixExtracted_ = '';
+  this.extractedNationalPrefix_ = '';
   this.nationalNumber_.clear();
   this.ableToFormat_ = true;
   this.inputHasFormatting_ = false;
@@ -617,7 +617,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
         this.isExpectingCountryCallingCode_ = true;
       } else {
         // No IDD or plus sign is found, might be entering in national format.
-        this.nationalPrefixExtracted_ =
+        this.extractedNationalPrefix_ =
             this.removeNationalPrefixFromNationalNumber_();
         return this.attemptToChooseFormattingPattern_();
       }
@@ -670,6 +670,16 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 
 
 /**
+ * @return {string}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.getExtractedNationalPrefix_ =
+    function() {
+  return this.extractedNationalPrefix_;
+};
+
+
+/**
  * Some national prefixes are a substring of others. If extracting the shorter
  * NDD doesn't result in a number we can format, we try to see if we can extract
  * a longer version here.
@@ -678,13 +688,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.ableToExtractLongerNdd_ =
     function() {
-  if (this.nationalPrefixExtracted_.length > 0) {
+  if (this.extractedNationalPrefix_.length > 0) {
     // Put the extracted NDD back to the national number before attempting to
     // extract a new NDD.
     /** @type {string} */
     var nationalNumberStr = this.nationalNumber_.toString();
     this.nationalNumber_.clear();
-    this.nationalNumber_.append(this.nationalPrefixExtracted_);
+    this.nationalNumber_.append(this.extractedNationalPrefix_);
     this.nationalNumber_.append(nationalNumberStr);
     // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
     // cannot simply set it to empty string because people sometimes incorrectly
@@ -694,12 +704,12 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.ableToExtractLongerNdd_ =
         this.prefixBeforeNationalNumber_.toString();
     /** @type {number} */
     var indexOfPreviousNdd = prefixBeforeNationalNumberStr.lastIndexOf(
-        this.nationalPrefixExtracted_);
+        this.extractedNationalPrefix_);
     this.prefixBeforeNationalNumber_.clear();
     this.prefixBeforeNationalNumber_.append(
         prefixBeforeNationalNumberStr.substring(0, indexOfPreviousNdd));
   }
-  return this.nationalPrefixExtracted_ !=
+  return this.extractedNationalPrefix_ !=
       this.removeNationalPrefixFromNationalNumber_();
 };
 
@@ -1024,6 +1034,9 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   var countryCodeString = '' + countryCode;
   this.prefixBeforeNationalNumber_.append(countryCodeString).append(
       i18n.phonenumbers.AsYouTypeFormatter.SEPARATOR_BEFORE_NATIONAL_NUMBER_);
+  // When we have successfully extracted the IDD, the previously extracted NDD
+  // should be cleared because it is no longer valid.
+  this.extractedNationalPrefix_ = "";
   return true;
 };
 

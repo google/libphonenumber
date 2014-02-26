@@ -30,8 +30,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author Lara Rennie
- *
  * Verifies all of the example numbers in the metadata are valid and of the correct type. If no
  * example number exists for a particular type, the test still passes.
  */

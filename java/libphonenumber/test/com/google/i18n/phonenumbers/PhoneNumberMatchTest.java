@@ -22,8 +22,6 @@ import junit.framework.TestCase;
 
 /**
  * Tests for {@link PhoneNumberMatch}.
- *
- * @author Tom Hofmann
  */
 public class PhoneNumberMatchTest extends TestCase {
   /**

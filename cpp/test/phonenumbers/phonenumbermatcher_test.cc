@@ -140,6 +140,17 @@ class PhoneNumberMatcherTest : public testing::Test {
     }
   }
 
+  // Asserts that the raw string and expected proto buffer for a match are set
+  // appropriately.
+  void AssertMatchProperties(const PhoneNumberMatch& match, const string& text,
+                             const string& number, const string& region_code) {
+    PhoneNumber expected_result;
+    phone_util_.Parse(number, region_code, &expected_result);
+
+    EXPECT_EQ(expected_result, match.number());
+    EXPECT_EQ(number, match.raw_string()) << " Wrong number found in " << text;
+  }
+
   // Asserts that another number can be found in "text" starting at "index", and
   // that its corresponding range is [start, end).
   void AssertEqualRange(const string& text, int index, int start, int end) {
@@ -395,7 +406,8 @@ TEST_F(PhoneNumberMatcherTest, FindNationalNumber) {
 
   DoTestFindInContext("64(0)64123456", RegionCode::NZ());
   // Check that using a "/" is fine in a phone number.
-  DoTestFindInContext("123/45678", RegionCode::DE());
+  // Note that real Polish numbers do *not* start with a 0.
+  DoTestFindInContext("0123/456789", RegionCode::PL());
   DoTestFindInContext("123-456-7890", RegionCode::US());
 }
 
@@ -543,6 +555,50 @@ TEST_F(PhoneNumberMatcherTest, IntermediateParsePositions) {
   }
 }
 
+TEST_F(PhoneNumberMatcherTest, FourMatchesInARow) {
+  string number1 = "415-666-7777";
+  string number2 = "800-443-1223";
+  string number3 = "212-443-1223";
+  string number4 = "650-443-1223";
+  string text = StrCat(number1, " - ", number2, " - ", number3, " - ", number4);
+
+  PhoneNumberMatcher matcher(text, RegionCode::US());
+  PhoneNumberMatch match;
+
+  EXPECT_TRUE(matcher.HasNext());
+  EXPECT_TRUE(matcher.Next(&match));
+  AssertMatchProperties(match, text, number1, RegionCode::US());
+
+  EXPECT_TRUE(matcher.HasNext());
+  EXPECT_TRUE(matcher.Next(&match));
+  AssertMatchProperties(match, text, number2, RegionCode::US());
+
+  EXPECT_TRUE(matcher.HasNext());
+  EXPECT_TRUE(matcher.Next(&match));
+  AssertMatchProperties(match, text, number3, RegionCode::US());
+
+  EXPECT_TRUE(matcher.HasNext());
+  EXPECT_TRUE(matcher.Next(&match));
+  AssertMatchProperties(match, text, number4, RegionCode::US());
+}
+
+TEST_F(PhoneNumberMatcherTest, MatchesFoundWithMultipleSpaces) {
+  string number1 = "415-666-7777";
+  string number2 = "800-443-1223";
+  string text = StrCat(number1, " ", number2);
+
+  PhoneNumberMatcher matcher(text, RegionCode::US());
+  PhoneNumberMatch match;
+
+  EXPECT_TRUE(matcher.HasNext());
+  EXPECT_TRUE(matcher.Next(&match));
+  AssertMatchProperties(match, text, number1, RegionCode::US());
+
+  EXPECT_TRUE(matcher.HasNext());
+  EXPECT_TRUE(matcher.Next(&match));
+  AssertMatchProperties(match, text, number2, RegionCode::US());
+}
+
 TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
   string number = "415-666-7777";
   string zip_preceding =
@@ -557,8 +613,7 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
   PhoneNumberMatch match;
   EXPECT_TRUE(matcher->HasNext());
   EXPECT_TRUE(matcher->Next(&match));
-  EXPECT_EQ(expected_result, match.number());
-  EXPECT_EQ(number, match.raw_string());
+  AssertMatchProperties(match, zip_preceding, number, RegionCode::US());
 
   // Now repeat, but this time the phone number has spaces in it. It should
   // still be found.
@@ -573,8 +628,8 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
   PhoneNumberMatch match_with_spaces;
   EXPECT_TRUE(matcher->HasNext());
   EXPECT_TRUE(matcher->Next(&match_with_spaces));
-  EXPECT_EQ(expected_result, match_with_spaces.number());
-  EXPECT_EQ(number, match_with_spaces.raw_string());
+  AssertMatchProperties(
+      match_with_spaces, zip_following, number, RegionCode::US());
 }
 
 TEST_F(PhoneNumberMatcherTest, IsLatinLetter) {

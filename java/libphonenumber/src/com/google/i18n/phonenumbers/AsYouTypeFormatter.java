@@ -111,7 +111,7 @@ public class AsYouTypeFormatter {
   private boolean shouldAddSpaceAfterNationalPrefix = false;
   // This contains the national prefix that has been extracted. It contains only digits without
   // formatting.
-  private String nationalPrefixExtracted = "";
+  private String extractedNationalPrefix = "";
   private StringBuilder nationalNumber = new StringBuilder();
   private List<NumberFormat> possibleFormats = new ArrayList<NumberFormat>();
 
@@ -267,7 +267,7 @@ public class AsYouTypeFormatter {
     lastMatchPosition = 0;
     currentFormattingPattern = "";
     prefixBeforeNationalNumber.setLength(0);
-    nationalPrefixExtracted = "";
+    extractedNationalPrefix = "";
     nationalNumber.setLength(0);
     ableToFormat = true;
     inputHasFormatting = false;
@@ -352,7 +352,7 @@ public class AsYouTypeFormatter {
         if (attemptToExtractIdd()) {
           isExpectingCountryCallingCode = true;
         } else {  // No IDD or plus sign is found, might be entering in national format.
-          nationalPrefixExtracted = removeNationalPrefixFromNationalNumber();
+          extractedNationalPrefix = removeNationalPrefixFromNationalNumber();
           return attemptToChooseFormattingPattern();
         }
       default:
@@ -390,19 +390,24 @@ public class AsYouTypeFormatter {
     return attemptToChooseFormattingPattern();
   }
 
+  // @VisibleForTesting
+  String getExtractedNationalPrefix() {
+    return extractedNationalPrefix;
+  }
+
   // Some national prefixes are a substring of others. If extracting the shorter NDD doesn't result
   // in a number we can format, we try to see if we can extract a longer version here.
   private boolean ableToExtractLongerNdd() {
-    if (nationalPrefixExtracted.length() > 0) {
+    if (extractedNationalPrefix.length() > 0) {
       // Put the extracted NDD back to the national number before attempting to extract a new NDD.
-      nationalNumber.insert(0, nationalPrefixExtracted);
+      nationalNumber.insert(0, extractedNationalPrefix);
       // Remove the previously extracted NDD from prefixBeforeNationalNumber. We cannot simply set
       // it to empty string because people sometimes incorrectly enter national prefix after the
       // country code, e.g. +44 (0)20-1234-5678.
-      int indexOfPreviousNdd = prefixBeforeNationalNumber.lastIndexOf(nationalPrefixExtracted);
+      int indexOfPreviousNdd = prefixBeforeNationalNumber.lastIndexOf(extractedNationalPrefix);
       prefixBeforeNationalNumber.setLength(indexOfPreviousNdd);
     }
-    return !nationalPrefixExtracted.equals(removeNationalPrefixFromNationalNumber());
+    return !extractedNationalPrefix.equals(removeNationalPrefixFromNationalNumber());
   }
 
   private boolean isDigitOrLeadingPlusSign(char nextChar) {
@@ -599,6 +604,9 @@ public class AsYouTypeFormatter {
     }
     String countryCodeString = Integer.toString(countryCode);
     prefixBeforeNationalNumber.append(countryCodeString).append(SEPARATOR_BEFORE_NATIONAL_NUMBER);
+    // When we have successfully extracted the IDD, the previously extracted NDD should be cleared
+    // because it is no longer valid.
+    extractedNationalPrefix = "";
     return true;
   }
 

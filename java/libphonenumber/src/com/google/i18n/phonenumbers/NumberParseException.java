@@ -18,7 +18,6 @@ package com.google.i18n.phonenumbers;
 
 /**
  * Generic exception class for errors encountered when parsing phone numbers.
- * @author Lara Rennie
  */
 @SuppressWarnings("serial")
 public class NumberParseException extends Exception {

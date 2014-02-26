@@ -56,6 +56,13 @@
 1671878|Choice Phone
 1671888|Choice Phone
 1671898|Choice Phone
+1684252|Blue Sky
+1684254|Blue Sky
+1684256|Blue Sky
+1684258|Blue Sky
+1684731|ASTCA
+1684733|ASTCA
+1684770|ASTCA
 1767225|Cable & Wireless
 1767235|Cable & Wireless
 1767245|Cable & Wireless

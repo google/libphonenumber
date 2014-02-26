@@ -316,23 +316,25 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
   bool success = phone_util_.GetExampleNumber(RegionCode::DE(), &test_number);
   EXPECT_TRUE(success);
   EXPECT_EQ(de_number, test_number);
+
   success = phone_util_.GetExampleNumberForType(RegionCode::DE(),
                                                 PhoneNumberUtil::FIXED_LINE,
                                                 &test_number);
   EXPECT_TRUE(success);
   EXPECT_EQ(de_number, test_number);
-  test_number.Clear();
+
   success = phone_util_.GetExampleNumberForType(RegionCode::DE(),
                                                 PhoneNumberUtil::MOBILE,
                                                 &test_number);
   // Here we test that an example number was not returned, and that the number
   // passed in was not modified.
+  test_number.Clear();
   EXPECT_FALSE(success);
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
   // For the US, the example number is placed under general description, and
   // hence should be used for both fixed line and mobile, so neither of these
   // should return null.
-  test_number.Clear();
   success = phone_util_.GetExampleNumberForType(RegionCode::US(),
                                                 PhoneNumberUtil::FIXED_LINE,
                                                 &test_number);
@@ -340,21 +342,19 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
   // number passed in was modified.
   EXPECT_TRUE(success);
   EXPECT_NE(PhoneNumber::default_instance(), test_number);
-  test_number.Clear();
   success = phone_util_.GetExampleNumberForType(RegionCode::US(),
                                                 PhoneNumberUtil::MOBILE,
                                                 &test_number);
   EXPECT_TRUE(success);
   EXPECT_NE(PhoneNumber::default_instance(), test_number);
 
-  test_number.Clear();
   // CS is an invalid region, so we have no data for it. We should return false.
+  test_number.Clear();
   EXPECT_FALSE(phone_util_.GetExampleNumberForType(RegionCode::CS(),
                                                    PhoneNumberUtil::MOBILE,
                                                    &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
-  test_number.Clear();
   // RegionCode 001 is reserved for supporting non-geographical country calling
   // code. We don't support getting an example number for it with this method.
   EXPECT_FALSE(phone_util_.GetExampleNumber(RegionCode::UN001(), &test_number));
@@ -1740,7 +1740,7 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumberWithReason) {
   EXPECT_EQ(PhoneNumberUtil::TOO_SHORT,
             phone_util_.IsPossibleNumberWithReason(ad_number));
   ad_number.set_country_code(376);
-  ad_number.set_national_number(12345678901234567ULL);
+  ad_number.set_national_number(123456789012345678ULL);
   EXPECT_EQ(PhoneNumberUtil::TOO_LONG,
             phone_util_.IsPossibleNumberWithReason(ad_number));
 }
@@ -2998,36 +2998,30 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   EXPECT_EQ(nz_number, test_number);
   // Testing international prefixes.
   // Should strip country code.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0064 3 331 6005",
                               RegionCode::NZ(), &test_number));
   EXPECT_EQ(nz_number, test_number);
   // Try again, but this time we have an international number with Region Code
   // US. It should recognise the country code and parse accordingly.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("01164 3 331 6005",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(nz_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+64 3 331 6005",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(nz_number, test_number);
   // We should ignore the leading plus here, since it is not followed by a valid
   // country code but instead is followed by the IDD for the US.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+01164 3 331 6005",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(nz_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+0064 3 331 6005",
                               RegionCode::NZ(), &test_number));
   EXPECT_EQ(nz_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+ 00 64 3 331 6005",
                               RegionCode::NZ(), &test_number));
@@ -3036,12 +3030,10 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   PhoneNumber us_local_number;
   us_local_number.set_country_code(1);
   us_local_number.set_national_number(2530000ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("tel:253-0000;phone-context=www.google.com",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(us_local_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse(
                 "tel:253-0000;isub=12345;phone-context=www.google.com",
@@ -3050,12 +3042,10 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   // This is invalid because no "+" sign is present as part of phone-context.
   // The phone context is simply ignored in this case just as if it contains a
   // domain.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("tel:2530000;isub=12345;phone-context=1-650",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(us_local_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("tel:2530000;isub=12345;phone-context=1234.com",
                               RegionCode::US(), &test_number));
@@ -3065,7 +3055,6 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   nz_number.Clear();
   nz_number.set_country_code(64);
   nz_number.set_national_number(64123456ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+64(0)64123456",
                               RegionCode::US(), &test_number));
@@ -3075,7 +3064,6 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   PhoneNumber de_number;
   de_number.set_country_code(49);
   de_number.set_national_number(12345678ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("123/45678", RegionCode::DE(), &test_number));
   EXPECT_EQ(de_number, test_number);
@@ -3085,7 +3073,6 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   // Check it doesn't use the '1' as a country code when parsing if the phone
   // number was already possible.
   us_number.set_national_number(1234567890ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("123-456-7890", RegionCode::US(), &test_number));
   EXPECT_EQ(us_number, test_number);
@@ -3095,7 +3082,6 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   PhoneNumber star_number;
   star_number.set_country_code(81);
   star_number.set_national_number(2345ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+81 *2345", RegionCode::JP(), &test_number));
   EXPECT_EQ(star_number, test_number);
@@ -3103,7 +3089,6 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   PhoneNumber short_number;
   short_number.set_country_code(64);
   short_number.set_national_number(12ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("12", RegionCode::NZ(), &test_number));
   EXPECT_EQ(short_number, test_number);
@@ -3119,7 +3104,6 @@ TEST_F(PhoneNumberUtilTest, ParseNumberWithAlphaCharacters) {
             phone_util_.Parse("0800 DDA 005", RegionCode::NZ(), &test_number));
   EXPECT_EQ(tollfree_number, test_number);
 
-  test_number.Clear();
   PhoneNumber premium_number;
   premium_number.set_country_code(64);
   premium_number.set_national_number(9003326005ULL);
@@ -3129,24 +3113,20 @@ TEST_F(PhoneNumberUtilTest, ParseNumberWithAlphaCharacters) {
 
   // Not enough alpha characters for them to be considered intentional, so they
   // are stripped.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0900 332 6005a",
                               RegionCode::NZ(), &test_number));
   EXPECT_EQ(premium_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0900 332 600a5",
                               RegionCode::NZ(), &test_number));
   EXPECT_EQ(premium_number, test_number);
 
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0900 332 600A5",
                               RegionCode::NZ(), &test_number));
   EXPECT_EQ(premium_number, test_number);
 
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0900 a332 600A5",
                               RegionCode::NZ(), &test_number));
@@ -3162,7 +3142,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
             phone_util_.Parse("+1 (650) 333-6000",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(us_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+1-650-333-6000",
                               RegionCode::US(), &test_number));
@@ -3170,44 +3149,37 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
 
   // Calling the US number from Singapore by using different service providers
   // 1st test: calling using SingTel IDD service (IDD is 001)
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0011-650-333-6000",
                               RegionCode::SG(), &test_number));
   EXPECT_EQ(us_number, test_number);
   // 2nd test: calling using StarHub IDD service (IDD is 008)
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0081-650-333-6000",
                               RegionCode::SG(), &test_number));
   EXPECT_EQ(us_number, test_number);
   // 3rd test: calling using SingTel V019 service (IDD is 019)
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0191-650-333-6000",
                               RegionCode::SG(), &test_number));
   EXPECT_EQ(us_number, test_number);
   // Calling the US number from Poland
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0~01-650-333-6000",
                               RegionCode::PL(), &test_number));
   EXPECT_EQ(us_number, test_number);
 
   // Using "++" at the start.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("++1 (650) 333-6000",
                               RegionCode::PL(), &test_number));
   EXPECT_EQ(us_number, test_number);
   // Using a full-width plus sign.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("\xEF\xBC\x8B" "1 (650) 333-6000",
                               /* "＋1 (650) 333-6000" */
                               RegionCode::SG(), &test_number));
   // Using a soft hyphen U+00AD.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("1 (650) 333" "\xC2\xAD" "-6000",
                               /* "1 (650) 333­-6000­" */
@@ -3215,7 +3187,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
   EXPECT_EQ(us_number, test_number);
   // The whole number, including punctuation, is here represented in full-width
   // form.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("\xEF\xBC\x8B\xEF\xBC\x91\xE3\x80\x80\xEF\xBC\x88"
                               "\xEF\xBC\x96\xEF\xBC\x95\xEF\xBC\x90\xEF\xBC\x89"
@@ -3227,7 +3198,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
   EXPECT_EQ(us_number, test_number);
 
   // Using the U+30FC dash.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("\xEF\xBC\x8B\xEF\xBC\x91\xE3\x80\x80\xEF\xBC\x88"
                               "\xEF\xBC\x96\xEF\xBC\x95\xEF\xBC\x90\xEF\xBC\x89"
@@ -3241,7 +3211,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
   PhoneNumber toll_free_number;
   toll_free_number.set_country_code(800);
   toll_free_number.set_national_number(12345678ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("011 800 1234 5678",
                               RegionCode::US(), &test_number));
@@ -3258,7 +3227,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithLeadingZero) {
             phone_util_.Parse("+39 02-36618 300",
                               RegionCode::NZ(), &test_number));
   EXPECT_EQ(it_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("02-36618 300", RegionCode::IT(), &test_number));
   EXPECT_EQ(it_number, test_number);
@@ -3266,7 +3234,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithLeadingZero) {
   it_number.Clear();
   it_number.set_country_code(39);
   it_number.set_national_number(312345678ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("312 345 678", RegionCode::IT(), &test_number));
   EXPECT_EQ(it_number, test_number);
@@ -3282,19 +3249,16 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumberArgentina) {
             phone_util_.Parse("+54 9 343 555 1212", RegionCode::AR(),
                               &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0343 15 555 1212", RegionCode::AR(),
                               &test_number));
   EXPECT_EQ(ar_number, test_number);
 
   ar_number.set_national_number(93715654320ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+54 9 3715 65 4320", RegionCode::AR(),
                               &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03715 15 65 4320", RegionCode::AR(),
                               &test_number));
@@ -3302,34 +3266,28 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumberArgentina) {
 
   // Test parsing fixed-line numbers of Argentina.
   ar_number.set_national_number(1137970000ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+54 11 3797 0000", RegionCode::AR(),
                               &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("011 3797 0000", RegionCode::AR(), &test_number));
   EXPECT_EQ(ar_number, test_number);
 
   ar_number.set_national_number(3715654321ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+54 3715 65 4321", RegionCode::AR(),
                               &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03715 65 4321", RegionCode::AR(), &test_number));
   EXPECT_EQ(ar_number, test_number);
 
   ar_number.set_national_number(2312340000ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+54 23 1234 0000", RegionCode::AR(),
                               &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("023 1234 0000", RegionCode::AR(), &test_number));
   EXPECT_EQ(ar_number, test_number);
@@ -3345,15 +3303,12 @@ TEST_F(PhoneNumberUtilTest, ParseWithXInNumber) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0123456789", RegionCode::AR(), &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(0) 123456789", RegionCode::AR(), &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0 123456789", RegionCode::AR(), &test_number));
   EXPECT_EQ(ar_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(0xx) 123456789", RegionCode::AR(),
                               &test_number));
@@ -3367,7 +3322,6 @@ TEST_F(PhoneNumberUtilTest, ParseWithXInNumber) {
   // extension, as we allow extensions up to 7 digits. This assumption is okay
   // for now as all the countries where a carrier selection code is written in
   // the form of xx have a national significant number of length larger than 7.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("011xx5481429712", RegionCode::US(),
                               &test_number));
@@ -3385,12 +3339,10 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersMexico) {
             phone_util_.Parse("+52 (449)978-0001", RegionCode::MX(),
                               &test_number));
   EXPECT_EQ(mx_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("01 (449)978-0001", RegionCode::MX(),
                               &test_number));
   EXPECT_EQ(mx_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(449)978-0001", RegionCode::MX(),
                               &test_number));
@@ -3400,17 +3352,14 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersMexico) {
   mx_number.Clear();
   mx_number.set_country_code(52);
   mx_number.set_national_number(13312345678ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+52 1 33 1234-5678", RegionCode::MX(),
                               &test_number));
   EXPECT_EQ(mx_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("044 (33) 1234-5678", RegionCode::MX(),
                               &test_number));
   EXPECT_EQ(mx_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("045 33 1234-5678", RegionCode::MX(),
                               &test_number));
@@ -3603,7 +3552,6 @@ TEST_F(PhoneNumberUtilTest, ParseNumberTooShortIfNationalPrefixStripped) {
                               &test_number));
   EXPECT_EQ(by_number, test_number);
   by_number.set_national_number(81234L);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("81234", RegionCode::BY(),
                               &test_number));
@@ -3612,7 +3560,6 @@ TEST_F(PhoneNumberUtilTest, ParseNumberTooShortIfNationalPrefixStripped) {
   // The prefix doesn't get stripped, since the input is a viable 6-digit
   // number, whereas the result of stripping is only 5 digits.
   by_number.set_national_number(812345L);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("812345", RegionCode::BY(),
                               &test_number));
@@ -3620,7 +3567,6 @@ TEST_F(PhoneNumberUtilTest, ParseNumberTooShortIfNationalPrefixStripped) {
 
   // The prefix gets stripped, since only 6-digit numbers are possible.
   by_number.set_national_number(123456L);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("8123456", RegionCode::BY(),
                               &test_number));
@@ -3637,17 +3583,14 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
             phone_util_.Parse("03 331 6005 ext 3456", RegionCode::NZ(),
                               &test_number));
   EXPECT_EQ(nz_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03 331 6005x3456", RegionCode::NZ(),
                               &test_number));
   EXPECT_EQ(nz_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03-331 6005 int.3456", RegionCode::NZ(),
                               &test_number));
   EXPECT_EQ(nz_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03 331 6005 #3456", RegionCode::NZ(),
                               &test_number));
@@ -3657,22 +3600,18 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   PhoneNumber non_extn_number;
   non_extn_number.set_country_code(1);
   non_extn_number.set_national_number(80074935247ULL);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("1800 six-flags", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(non_extn_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("1800 SIX-FLAGS", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(non_extn_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0~0 1800 7493 5247", RegionCode::PL(),
                               &test_number));
   EXPECT_EQ(non_extn_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(1800) 7493.5247", RegionCode::US(),
                               &test_number));
@@ -3683,7 +3622,6 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   extn_number.set_country_code(1);
   extn_number.set_national_number(80074935247ULL);
   extn_number.set_extension("1234");
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("0~0 1800 7493 5247 ~1234", RegionCode::PL(),
                               &test_number));
@@ -3696,73 +3634,60 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   uk_number.set_country_code(44);
   uk_number.set_national_number(2034567890ULL);
   uk_number.set_extension("456");
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890x456", RegionCode::NZ(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890x456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890 x456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890 X456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890 X 456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890 X   456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890 x 456  ", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44 2034567890  X 456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44-2034567890;ext=456", RegionCode::GB(),
                               &test_number));
   EXPECT_EQ(uk_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("tel:2034567890;ext=456;phone-context=+44",
                               RegionCode::ZZ(), &test_number));
   EXPECT_EQ(uk_number, test_number);
 
   // Full-width extension, "extn" only.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse(
                 "+442034567890\xEF\xBD\x85\xEF\xBD\x98\xEF\xBD\x94\xEF\xBD\x8E"
                 "456", RegionCode::GB(), &test_number));
   EXPECT_EQ(uk_number, test_number);
   // "xtn" only.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse(
                 "+44-2034567890\xEF\xBD\x98\xEF\xBD\x94\xEF\xBD\x8E""456",
                 RegionCode::GB(), &test_number));
   EXPECT_EQ(uk_number, test_number);
   // "xt" only.
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+44-2034567890\xEF\xBD\x98\xEF\xBD\x94""456",
                               RegionCode::GB(), &test_number));
@@ -3772,30 +3697,25 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   us_with_extension.set_country_code(1);
   us_with_extension.set_national_number(8009013355ULL);
   us_with_extension.set_extension("7246433");
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 x 7246433", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 , ext 7246433", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 ,extension 7246433",
                               RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 ,extensi\xC3\xB3n 7246433",
                               /* "(800) 901-3355 ,extensión 7246433" */
                               RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
-  test_number.Clear();
   // Repeat with the small letter o with acute accent created by combining
   // characters.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
@@ -3804,12 +3724,10 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
                               RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 , 7246433", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 ext: 7246433", RegionCode::US(),
                               &test_number));
@@ -3820,17 +3738,14 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   us_with_two_extensions_number.set_country_code(1);
   us_with_two_extensions_number.set_national_number(2121231234ULL);
   us_with_two_extensions_number.set_extension("508");
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(212)123-1234 x508/x1234", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_two_extensions_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(212)123-1234 x508/ x1234", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_two_extensions_number, test_number);
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(212)123-1234 x508\\x1234", RegionCode::US(),
                               &test_number));
@@ -3842,7 +3757,6 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   us_with_extension.set_country_code(1);
   us_with_extension.set_national_number(6451231234ULL);
   us_with_extension.set_extension("910");
-  test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+1 (645) 123 1234-910#", RegionCode::US(),
                               &test_number));
@@ -3890,7 +3804,8 @@ TEST_F(PhoneNumberUtilTest, ParseAndKeepRaw) {
                                              &test_number));
   EXPECT_EQ(alpha_numeric_number, test_number);
 
-  // Try with invalid region - expect failure.
+  // Try with invalid region - expect failure. We clear the test number first
+  // because if parsing isn't successful, the number parsed in won't be changed.
   test_number.Clear();
   EXPECT_EQ(PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR,
             phone_util_.Parse("123 456 7890", RegionCode::CS(), &test_number));
@@ -3921,7 +3836,6 @@ TEST_F(PhoneNumberUtilTest, ParseItalianLeadingZeros) {
             phone_util_.Parse("011", RegionCode::AU(),
                               &test_number));
   EXPECT_EQ(zeros_number, test_number);
-  test_number.Clear();
 
   // Test the number "001".
   zeros_number.set_national_number(1L);
@@ -3931,7 +3845,6 @@ TEST_F(PhoneNumberUtilTest, ParseItalianLeadingZeros) {
             phone_util_.Parse("001", RegionCode::AU(),
                               &test_number));
   EXPECT_EQ(zeros_number, test_number);
-  test_number.Clear();
 
   // Test the number "000". This number has 2 leading zeros.
   zeros_number.set_national_number(0L);
@@ -3941,7 +3854,6 @@ TEST_F(PhoneNumberUtilTest, ParseItalianLeadingZeros) {
             phone_util_.Parse("000", RegionCode::AU(),
                               &test_number));
   EXPECT_EQ(zeros_number, test_number);
-  test_number.Clear();
 
   // Test the number "0000". This number has 3 leading zeros.
   zeros_number.set_national_number(0L);
@@ -3951,7 +3863,6 @@ TEST_F(PhoneNumberUtilTest, ParseItalianLeadingZeros) {
             phone_util_.Parse("0000", RegionCode::AU(),
                               &test_number));
   EXPECT_EQ(zeros_number, test_number);
-  test_number.Clear();
 }
 
 TEST_F(PhoneNumberUtilTest, CanBeInternationallyDialled) {

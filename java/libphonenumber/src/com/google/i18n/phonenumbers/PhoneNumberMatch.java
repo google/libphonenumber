@@ -50,8 +50,6 @@ import java.util.Arrays;
  * // invoked on rawString().
  * util.parse(m.rawString(), country).equals(m.number());
  * </pre>
- *
- * @author Tom Hofmann
  */
 public final class PhoneNumberMatch {
   /** The start index into the text. */

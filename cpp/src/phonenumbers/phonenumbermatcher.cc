@@ -249,11 +249,17 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   // within a phone number. This also checks that there is something inside the
   // brackets. Having no brackets at all is also fine.
   scoped_ptr<const RegExp> matching_brackets_;
-  // Matches white-space, which may indicate the end of a phone number and the
-  // start of something else (such as a neighbouring zip-code). If white-space
-  // is found, continues to match all characters that are not typically used to
-  // start a phone number.
-  scoped_ptr<const RegExp> group_separator_;
+  // Patterns used to extract phone numbers from a larger phone-number-like
+  // pattern. These are ordered according to specificity. For example,
+  // white-space is last since that is frequently used in numbers, not just to
+  // separate two numbers. We have separate patterns since we don't want to
+  // break up the phone-number-like text on more than one different kind of
+  // symbol at one time, although symbols of the same type (e.g. space) can be
+  // safely grouped together.
+  //
+  // Note that if there is a match, we will always check any text found up to
+  // the first match as well.
+  scoped_ptr<vector<const RegExp*> > inner_matches_;
   scoped_ptr<const RegExp> capture_up_to_second_number_start_pattern_;
   scoped_ptr<const RegExp> capturing_ascii_digits_pattern_;
   // Compiled reg-ex representing lead_class_;
@@ -304,8 +310,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         matching_brackets_(regexp_factory_->CreateRegExp(
             StrCat(leading_maybe_matched_bracket_, non_parens_, "+",
                    bracket_pairs_, non_parens_, "*"))),
-        group_separator_(regexp_factory_->CreateRegExp(
-            StrCat("\\p{Z}", "[^", lead_class_chars_, "\\p{Nd}]*"))),
+        inner_matches_(new vector<const RegExp*>()),
         capture_up_to_second_number_start_pattern_(
             regexp_factory_->CreateRegExp(
                 PhoneNumberUtil::kCaptureUpToSecondNumberStart)),
@@ -316,6 +321,33 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
             StrCat("(", opening_punctuation_, lead_limit_,
                    digit_sequence_, "(?:", punctuation_, digit_sequence_, ")",
                    block_limit_, optional_extn_pattern_, ")"))) {
+    inner_matches_->push_back(
+        // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
+        regexp_factory_->CreateRegExp("/+(.*)"));
+    inner_matches_->push_back(
+        // Note that the bracket here is inside the capturing group, since we
+        // consider it part of the phone number. Will match a pattern like
+        // "(650) 223 3345 (754) 223 3321".
+        regexp_factory_->CreateRegExp("(\\([^(]*)"));
+    inner_matches_->push_back(
+        // Breaks on a hyphen - e.g. "12345 - 332-445-1234 is my number." We
+        // require a space on either side of the hyphen for it to be considered
+        // a separator.
+        regexp_factory_->CreateRegExp("(?:\\p{Z}-|-\\p{Z})\\p{Z}*(.+)"));
+    inner_matches_->push_back(
+        // Various types of wide hyphens. Note we have decided not to enforce a
+        // space here, since it's possible that it's supposed to be used to
+        // break two numbers without spaces, and we haven't seen many instances
+        // of it used within a number.
+        regexp_factory_->CreateRegExp(
+            "[\xE2\x80\x92-\x2D\xE2\x80\x95\xEF\xBC\x8D]" /* "‒-―－" */
+            "\\p{Z}*(.+)"));
+    inner_matches_->push_back(
+        // Breaks on a full stop - e.g. "12345. 332-445-1234 is my number."
+        regexp_factory_->CreateRegExp("\\.+\\p{Z}*([^.]+)"));
+    inner_matches_->push_back(
+        // Breaks on space - e.g. "3324451234 8002341234"
+        regexp_factory_->CreateRegExp("\\p{Z}+(\\P{Z}+)"));
   }
 
  private:
@@ -412,7 +444,8 @@ bool PhoneNumberMatcher::ParseAndVerify(const string& candidate, int offset,
   DCHECK(match);
   // Check the candidate doesn't contain any formatting which would indicate
   // that it really isn't a phone number.
-  if (!reg_exps_->matching_brackets_->FullMatch(candidate)) {
+  if (!reg_exps_->matching_brackets_->FullMatch(candidate) ||
+      reg_exps_->pub_pages_->PartialMatch(candidate)) {
     return false;
   }
 
@@ -557,50 +590,30 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
 bool PhoneNumberMatcher::ExtractInnerMatch(const string& candidate, int offset,
                                            PhoneNumberMatch* match) {
   DCHECK(match);
-  // Try removing either the first or last "group" in the number and see if this
-  // gives a result. We consider white space to be a possible indication of
-  // the start or end of the phone number.
-  scoped_ptr<RegExpInput> candidate_input(
-      reg_exps_->regexp_factory_->CreateInput(candidate));
-  if (reg_exps_->group_separator_->FindAndConsume(candidate_input.get(),
-                                                  NULL)) {
-    // Try the first group by itself.
-    int group_start_index =
-        candidate.length() - candidate_input->ToString().length();
-    string first_group_only = candidate.substr(0, group_start_index);
-    phone_util_.TrimUnwantedEndChars(&first_group_only);
-    bool success = ParseAndVerify(first_group_only, offset, match);
-    if (success) {
-      return true;
-    }
-    --max_tries_;
-
-    // Try the rest of the candidate without the first group.
-    string without_first_group(candidate_input->ToString());
-    phone_util_.TrimUnwantedEndChars(&without_first_group);
-    success =
-        ParseAndVerify(without_first_group, offset + group_start_index, match);
-    if (success) {
-      return true;
-    }
-    --max_tries_;
-
-    if (max_tries_ > 0) {
-      while (reg_exps_->group_separator_->FindAndConsume(candidate_input.get(),
-                                                         NULL)) {
-        // Find the last group.
+  for (vector<const RegExp*>::const_iterator regex =
+           reg_exps_->inner_matches_->begin();
+           regex != reg_exps_->inner_matches_->end(); regex++) {
+    scoped_ptr<RegExpInput> candidate_input(
+        reg_exps_->regexp_factory_->CreateInput(candidate));
+    bool is_first_match = true;
+    string group;
+    while ((*regex)->FindAndConsume(candidate_input.get(), &group) &&
+           max_tries_ > 0) {
+      int group_start_index = candidate.length() -
+          candidate_input->ToString().length() - group.length();
+      if (is_first_match) {
+        // We should handle any group before this one too.
+        string first_group_only = candidate.substr(0, group_start_index);
+        phone_util_.TrimUnwantedEndChars(&first_group_only);
+        bool success = ParseAndVerify(first_group_only, offset, match);
+        if (success) {
+          return true;
+        }
+        --max_tries_;
+        is_first_match = false;
       }
-      int last_group_start =
-          candidate.length() - candidate_input->ToString().length();
-      string without_last_group = candidate.substr(0, last_group_start);
-      phone_util_.TrimUnwantedEndChars(&without_last_group);
-      if (without_last_group == first_group_only) {
-        // If there are only two groups, then the group "without the last group"
-        // is the same as the first group. In these cases, we don't want to
-        // re-check the number group, so we exit already.
-        return false;
-      }
-      success = ParseAndVerify(without_last_group, offset, match);
+      phone_util_.TrimUnwantedEndChars(&group);
+      bool success = ParseAndVerify(group, offset + group_start_index, match);
       if (success) {
         return true;
       }
@@ -613,11 +626,11 @@ bool PhoneNumberMatcher::ExtractInnerMatch(const string& candidate, int offset,
 bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
                                       PhoneNumberMatch* match) {
   DCHECK(match);
-  // Skip a match that is more likely a publication page reference or a date.
-  if (reg_exps_->pub_pages_->PartialMatch(candidate) ||
-      reg_exps_->slash_separated_dates_->PartialMatch(candidate)) {
+  // Skip a match that is more likely to be a date.
+  if (reg_exps_->slash_separated_dates_->PartialMatch(candidate)) {
     return false;
   }
+
   // Skip potential time-stamps.
   if (reg_exps_->time_stamps_->PartialMatch(candidate)) {
     scoped_ptr<RegExpInput> following_text(
@@ -813,8 +826,8 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
     const PhoneNumber& phone_number,
     const string& normalized_candidate,
     const vector<string>& formatted_number_groups) const {
-    const scoped_ptr<RegExpInput> candidate_number(
-        reg_exps_->regexp_factory_->CreateInput(normalized_candidate));
+  const scoped_ptr<RegExpInput> candidate_number(
+      reg_exps_->regexp_factory_->CreateInput(normalized_candidate));
   vector<string> candidate_groups;
   string digit_block;
   while (reg_exps_->capturing_ascii_digits_pattern_->FindAndConsume(

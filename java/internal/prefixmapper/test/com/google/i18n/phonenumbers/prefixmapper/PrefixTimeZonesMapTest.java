@@ -31,8 +31,6 @@ import java.util.TreeMap;
 
 /**
  * Unittests for PrefixTimeZonesMap.java
- *
- * @author Walter Erquinigo
  */
 public class PrefixTimeZonesMapTest extends TestCase {
   private final PrefixTimeZonesMap prefixTimeZonesMapForUS = new PrefixTimeZonesMap();

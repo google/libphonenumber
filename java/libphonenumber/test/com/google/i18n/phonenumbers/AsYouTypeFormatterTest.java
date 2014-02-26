@@ -1114,4 +1114,39 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("12", formatter.inputDigit('2'));
     assertEquals("1 22", formatter.inputDigit('2'));
   }
+
+  public void testAYTFClearNDDAfterIDDExtraction() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.KR);
+
+    // Check that when we have successfully extracted an IDD, the previously extracted NDD is
+    // cleared since it is no longer valid.
+    assertEquals("0", formatter.inputDigit('0'));
+    assertEquals("00", formatter.inputDigit('0'));
+    assertEquals("007", formatter.inputDigit('7'));
+    assertEquals("0070", formatter.inputDigit('0'));
+    assertEquals("00700", formatter.inputDigit('0'));
+    assertEquals("0", formatter.getExtractedNationalPrefix());
+
+    // Once the IDD "00700" has been extracted, it no longer makes sense for the initial "0" to be
+    // treated as an NDD.  
+    assertEquals("00700 1 ", formatter.inputDigit('1'));
+    assertEquals("", formatter.getExtractedNationalPrefix());
+
+    assertEquals("00700 1 2", formatter.inputDigit('2'));
+    assertEquals("00700 1 23", formatter.inputDigit('3'));
+    assertEquals("00700 1 234", formatter.inputDigit('4'));
+    assertEquals("00700 1 234 5", formatter.inputDigit('5'));
+    assertEquals("00700 1 234 56", formatter.inputDigit('6'));
+    assertEquals("00700 1 234 567", formatter.inputDigit('7'));
+    assertEquals("00700 1 234 567 8", formatter.inputDigit('8'));
+    assertEquals("00700 1 234 567 89", formatter.inputDigit('9'));
+    assertEquals("00700 1 234 567 890", formatter.inputDigit('0'));
+    assertEquals("00700 1 234 567 8901", formatter.inputDigit('1'));
+    assertEquals("00700123456789012", formatter.inputDigit('2'));
+    assertEquals("007001234567890123", formatter.inputDigit('3'));
+    assertEquals("0070012345678901234", formatter.inputDigit('4'));
+    assertEquals("00700123456789012345", formatter.inputDigit('5'));
+    assertEquals("007001234567890123456", formatter.inputDigit('6'));
+    assertEquals("0070012345678901234567", formatter.inputDigit('7'));
+  }
 }

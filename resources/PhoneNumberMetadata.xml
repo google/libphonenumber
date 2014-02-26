@@ -1112,11 +1112,14 @@
         <exampleNumber>6846221234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 24[246], operated from Blue Sky. -->
+        <!-- Added 25[246], operated from Blue Sky. Added 731, 770, operated by ASTCA. -->
         <nationalNumberPattern>
           684(?:
-            733|
-            25[2468]
+            25[2468]|
+            7(?:
+              3[13]|
+              70
+            )
           )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -3063,9 +3066,13 @@
              last 8 digits. The following pattern is divided into 3 sections: ranges for which the
              migration has been completed, ranges which are in transition, and ranges which are
              still in the old format. (Ranges which were supposed to have been deprecated in
-             Oct. 2013 are still working as of Jan. 2014.) -->
+             Oct. 2013 are still working as of Jan. 2014.) Note that mobile radio services are
+             still 10 digits, with the subscriber number (the last 8 digits) beginning with 7. -->
         <nationalNumberPattern>
-          1[1-9]9\d{8}|
+          1[1-9](?:
+            7|
+            9\d
+          )\d{7}|
           2[12478]9?[6-9]\d{7}|
           (?:
             3[1-578]|
@@ -13109,13 +13116,11 @@
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- The mention of the mobile range 6933 0000 - 6969 9999 seems to be
-             a mistake in the ITU plan, and should be 6933 0000 - 6933 9999. -->
         <nationalNumberPattern>
           (?:
             5(?:
-              1[0-5]|
-              [05]\d
+              [05]\d|
+              1[0-6]
             )|
             6(?:
               0[034679]|
@@ -14152,7 +14157,12 @@
         <exampleNumber>27123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>6[269][18]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          6(?:
+            [269][18]|
+            71
+          )\d{6}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>628123456</exampleNumber>
       </mobile>

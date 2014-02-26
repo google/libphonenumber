@@ -22,8 +22,6 @@ import junit.framework.TestCase;
 
 /**
  * Some basic tests to check that the phone number metadata can be correctly loaded.
- *
- * @author Lara Rennie
  */
 public class MetadataManagerTest extends TestCase {
 

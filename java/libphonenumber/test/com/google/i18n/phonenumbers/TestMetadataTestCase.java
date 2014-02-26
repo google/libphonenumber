@@ -25,7 +25,6 @@ import junit.framework.TestCase;
  * used for regression test purposes.
  *
  * @author Shaopeng Jia
- * @author Lara Rennie
  */
 public class TestMetadataTestCase extends TestCase {
   private static final String TEST_META_DATA_FILE_PREFIX =

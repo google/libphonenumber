@@ -151,7 +151,7 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   // Test a nonexistent country code.
   EXPECT_EQ(ShortNumberInfo::ShortNumberCost::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion("911", RegionCode::ZZ()));
-  unknown_cost_number.clear();
+  unknown_cost_number.Clear();
   unknown_cost_number.set_country_code(123);
   unknown_cost_number.set_national_number(911ULL);
   EXPECT_EQ(ShortNumberInfo::ShortNumberCost::UNKNOWN_COST,
