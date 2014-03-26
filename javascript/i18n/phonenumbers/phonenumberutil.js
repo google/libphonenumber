@@ -1506,7 +1506,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatByPattern =
     // Before we do a replacement of the national prefix pattern $NP with the
     // national prefix, we need to copy the rule so that subsequent replacements
     // for different numbers have the appropriate national prefix.
-    /** type {i18n.phonenumbers.NumberFormat} */
+    /** @type {i18n.phonenumbers.NumberFormat} */
     var numFormatCopy = formattingPattern.clone();
     /** @type {string} */
     var nationalPrefixFormattingRule =
