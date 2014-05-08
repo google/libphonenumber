@@ -35,28 +35,11 @@ import java.util.logging.Logger;
  */
 public class ExampleNumbersTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(ExampleNumbersTest.class.getName());
-  private PhoneNumberUtil phoneNumberUtil;
-  private ShortNumberInfo shortNumberInfo;
+  private PhoneNumberUtil phoneNumberUtil =
+      PhoneNumberUtil.createInstance(PhoneNumberUtil.DEFAULT_METADATA_LOADER);
+  private ShortNumberInfo shortNumberInfo = new ShortNumberInfo(phoneNumberUtil);
   private List<PhoneNumber> invalidCases = new ArrayList<PhoneNumber>();
   private List<PhoneNumber> wrongTypeCases = new ArrayList<PhoneNumber>();
-
-  public ExampleNumbersTest() {
-    PhoneNumberUtil.resetInstance();
-    phoneNumberUtil = PhoneNumberUtil.getInstance();
-    shortNumberInfo = new ShortNumberInfo(phoneNumberUtil);
-  }
-
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    invalidCases.clear();
-    wrongTypeCases.clear();
-  }
-
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
-  }
 
   /**
    * @param exampleNumberRequestedType  type we are requesting an example number for

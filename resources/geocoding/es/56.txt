@@ -13,9 +13,10 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2012-04-03).
+# Internal statistical data (2014-04-10).
+# Extra 2 added for Santiago to stop it clashing with other prefixes.
 
-562|Santiago, Región Metropolitana
+5622|Santiago, Región Metropolitana
 5632|Valparaíso
 5633|Quillota, Valparaíso
 5634|San Felipe, Valparaíso

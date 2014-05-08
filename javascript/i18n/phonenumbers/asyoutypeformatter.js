@@ -342,11 +342,11 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.maybeCreateNewTemplate_ =
 
 
 /**
- * @param {string} leadingThreeDigits first three digits of entered number.
+ * @param {string} leadingDigits leading digits of entered number.
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
-    function(leadingThreeDigits) {
+    function(leadingDigits) {
 
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var formatList =
@@ -371,7 +371,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
       }
     }
   }
-  this.narrowDownPossibleFormats_(leadingThreeDigits);
+  this.narrowDownPossibleFormats_(leadingDigits);
 };
 
 
@@ -405,16 +405,18 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.narrowDownPossibleFormats_ =
   for (var i = 0; i < possibleFormatsLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
     var format = this.possibleFormats_[i];
-    if (format.leadingDigitsPatternCount() > indexOfLeadingDigitsPattern) {
-      /** @type {string} */
-      var leadingDigitsPattern =
-          format.getLeadingDigitsPatternOrDefault(indexOfLeadingDigitsPattern);
-      if (leadingDigits.search(leadingDigitsPattern) == 0) {
-        possibleFormats.push(this.possibleFormats_[i]);
-      }
-    } else {
-      // else the particular format has no more specific leadingDigitsPattern,
-      // and it should be retained.
+    if (format.leadingDigitsPatternCount() == 0) {
+      // Keep everything that isn't restricted by leading digits.
+      possibleFormats.push(this.possibleFormats_[i]);
+      continue;
+    }
+    /** @type {number} */
+    var lastLeadingDigitsPattern = Math.min(
+        indexOfLeadingDigitsPattern, format.leadingDigitsPatternCount() - 1);
+    /** @type {string} */
+    var leadingDigitsPattern = /** @type {string} */
+        (format.getLeadingDigitsPattern(lastLeadingDigitsPattern));
+    if (leadingDigits.search(leadingDigitsPattern) == 0) {
       possibleFormats.push(this.possibleFormats_[i]);
     }
   }
@@ -630,7 +632,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
             this.nationalNumber_.toString();
       }
       if (this.possibleFormats_.length > 0) {
-        // The formatting pattern is already chosen.
+        // The formatting patterns are already chosen.
         /** @type {string} */
         var tempNationalNumber = this.inputDigitHelper_(nextChar);
         // See if the accrued digits can be formatted properly already. If not,
@@ -845,9 +847,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   // digits of national number (excluding national prefix) have been entered.
   if (nationalNumber.length >=
       i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_) {
-    this.getAvailableFormats_(
-        nationalNumber.substring(0,
-            i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_));
+    this.getAvailableFormats_(nationalNumber);
     // See if the accrued digits can be formatted properly already.
     var formattedNumber = this.attemptToFormatAccruedDigits_();
     if (formattedNumber.length > 0) {
@@ -1036,7 +1036,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
       i18n.phonenumbers.AsYouTypeFormatter.SEPARATOR_BEFORE_NATIONAL_NUMBER_);
   // When we have successfully extracted the IDD, the previously extracted NDD
   // should be cleared because it is no longer valid.
-  this.extractedNationalPrefix_ = "";
+  this.extractedNationalPrefix_ = '';
   return true;
 };
 

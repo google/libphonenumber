@@ -1172,5 +1172,27 @@ TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_US) {
   EXPECT_EQ("1 22", formatter_->InputDigit('2', &result_));
 }
 
+TEST_F(AsYouTypeFormatterTest,
+       NumberPatternsBecomingInvalidShouldNotResultInDigitLoss) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::CN()));
+
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+86 ", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("+86 9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("+86 98", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+86 988", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+86 988 1", formatter_->InputDigit('1', &result_));
+  // Now the number pattern is no longer valid because there are multiple
+  // leading digit patterns; when we try again to extract a country code we
+  // should ensure we use the last leading digit pattern, rather than the first
+  // one such that it *thinks* it's found a valid formatting rule again.
+  // https://code.google.com/p/libphonenumber/issues/detail?id=437
+  EXPECT_EQ("+8698812", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+86988123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+869881234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+8698812345", formatter_->InputDigit('5', &result_));
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n

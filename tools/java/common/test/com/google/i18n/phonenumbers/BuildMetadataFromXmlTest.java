@@ -379,6 +379,34 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals(0, metadata.intlNumberFormatSize());
   }
 
+  // Tests setLeadingDigitsPatterns() in the case of international and national formatting rules
+  // being present but not both defined for this numberFormat - we don't want to add them twice.
+  public void testSetLeadingDigitsPatternsNotAddedTwiceWhenInternationalFormatsPresent()
+      throws ParserConfigurationException, SAXException, IOException {
+    String xmlInput =
+        "  <availableFormats>" +
+        "    <numberFormat pattern=\"(1)(\\d{3})\">" +
+        "      <leadingDigits>1</leadingDigits>" +
+        "      <format>$1</format>" +
+        "    </numberFormat>" +
+        "    <numberFormat pattern=\"(2)(\\d{3})\">" +
+        "      <leadingDigits>2</leadingDigits>" +
+        "      <format>$1</format>" +
+        "      <intlFormat>9-$1</intlFormat>" +
+        "    </numberFormat>" +
+        "  </availableFormats>";
+    Element element = parseXmlString(xmlInput);
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    BuildMetadataFromXml.loadAvailableFormats(
+        metadata, element, "0", "", false /* NP not optional */);
+    assertEquals(1, metadata.getNumberFormat(0).leadingDigitsPatternSize());
+    assertEquals(1, metadata.getNumberFormat(1).leadingDigitsPatternSize());
+    // When we merge the national format rules into the international format rules, we shouldn't add
+    // the leading digit patterns multiple times.
+    assertEquals(1, metadata.getIntlNumberFormat(0).leadingDigitsPatternSize());
+    assertEquals(1, metadata.getIntlNumberFormat(1).leadingDigitsPatternSize());
+  }
+
   // Tests setLeadingDigitsPatterns().
   public void testSetLeadingDigitsPatterns()
       throws ParserConfigurationException, SAXException, IOException {

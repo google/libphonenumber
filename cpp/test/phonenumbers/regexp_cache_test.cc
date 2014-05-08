@@ -19,6 +19,7 @@
 
 #include <gtest/gtest.h>
 
+#include "phonenumbers/base/synchronization/lock.h"
 #include "phonenumbers/regexp_cache.h"
 #include "phonenumbers/regexp_factory.h"
 
@@ -39,6 +40,7 @@ class RegExpCacheTest : public testing::Test {
 };
 
 TEST_F(RegExpCacheTest, CacheConstructor) {
+  AutoLock l(cache_.lock_);  
   ASSERT_TRUE(cache_.cache_impl_ != NULL);
   EXPECT_TRUE(cache_.cache_impl_->empty());
 }

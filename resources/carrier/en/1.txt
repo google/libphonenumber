@@ -42,8 +42,13 @@
 1441590|Digicel Bermuda
 1441599|Digicel Bermuda
 14417|Cellular One
+1473402|Affordable Island Communications
+147341|Digicel Grenada
+1473420|Digicel Grenada
 1473520|Affordable Island Communications
 1473521|Affordable Island Communications
+147353|AWS Grenada
+1473901|Affordable Island Communications
 164923|C&W
 164924|C&W
 164933|DIGICEL
@@ -63,6 +68,23 @@
 1684731|ASTCA
 1684733|ASTCA
 1684770|ASTCA
+175828|Cable & Wireless
+1758384|Cable & Wireless
+1758460|Cable & Wireless
+1758461|Cable & Wireless
+1758484|Cable & Wireless
+1758485|Cable & Wireless
+1758486|Cable & Wireless
+1758487|Cable & Wireless
+1758488|Cable & Wireless
+1758489|Cable & Wireless
+175851|AT&T
+175852|AT&T
+1758584|Cable & Wireless
+17587|Digicel
+1767315|Digicel
+1767316|Digicel
+1767317|Digicel
 1767225|Cable & Wireless
 1767235|Cable & Wireless
 1767245|Cable & Wireless
@@ -70,9 +92,37 @@
 1767275|Cable & Wireless
 1767276|Cable & Wireless
 1767277|Cable & Wireless
+1767285|Cable & Wireless
+1767295|Cable & Wireless
+1767612|Digicel
+1767613|Digicel
 1767614|Digicel
 1767615|Digicel
 1767616|Digicel
+1767617|Digicel
+1784430|AT&T
+1784431|AT&T
+1784432|AT&T
+1784433|Digicel
+1784434|Digicel
+1784454|Cable & Wireless
+1784455|Cable & Wireless
+1784489|Cable & Wireless
+1784490|Cable & Wireless
+1784491|Cable & Wireless
+1784492|Cable & Wireless
+1784493|Cable & Wireless
+1784494|Cable & Wireless
+1784495|Cable & Wireless
+1784526|Digicel
+1784527|Digicel
+1784528|Digicel
+1784529|Digicel
+1784530|Digicel
+1784531|Digicel
+1784532|Digicel
+1784533|Digicel
+1784534|Digicel
 1787203|Claro
 1787210|SunCom Wireless Puerto Rico
 1787212|Claro
@@ -347,6 +397,10 @@
 18684|bmobile
 18686|bmobile
 18687|bmobile
+186955|CariGlobe St. Kitts
+186956|The Cable St. Kitts
+186966|Cable & Wireless
+186976|Digicel
 1939201|CENTENNIAL
 1939212|CENTENNIAL
 1939214|CENTENNIAL

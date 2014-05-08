@@ -172,7 +172,7 @@ public class AsYouTypeFormatter {
     return false;
   }
 
-  private void getAvailableFormats(String leadingThreeDigits) {
+  private void getAvailableFormats(String leadingDigits) {
     List<NumberFormat> formatList =
         (isCompleteNumber && currentMetadata.intlNumberFormatSize() > 0)
         ? currentMetadata.intlNumberFormats()
@@ -187,7 +187,7 @@ public class AsYouTypeFormatter {
         }
       }
     }
-    narrowDownPossibleFormats(leadingThreeDigits);
+    narrowDownPossibleFormats(leadingDigits);
   }
 
   private boolean isFormatEligible(String format) {
@@ -199,16 +199,18 @@ public class AsYouTypeFormatter {
     Iterator<NumberFormat> it = possibleFormats.iterator();
     while (it.hasNext()) {
       NumberFormat format = it.next();
-      if (format.leadingDigitsPatternSize() > indexOfLeadingDigitsPattern) {
-        Pattern leadingDigitsPattern =
-            regexCache.getPatternForRegex(
-                format.getLeadingDigitsPattern(indexOfLeadingDigitsPattern));
-        Matcher m = leadingDigitsPattern.matcher(leadingDigits);
-        if (!m.lookingAt()) {
-          it.remove();
-        }
-      } // else the particular format has no more specific leadingDigitsPattern, and it should be
-        // retained.
+      if (format.leadingDigitsPatternSize() == 0) {
+        // Keep everything that isn't restricted by leading digits.
+        continue;
+      }
+      int lastLeadingDigitsPattern =
+          Math.min(indexOfLeadingDigitsPattern, format.leadingDigitsPatternSize() - 1);
+      Pattern leadingDigitsPattern = regexCache.getPatternForRegex(
+          format.getLeadingDigitsPattern(lastLeadingDigitsPattern));
+      Matcher m = leadingDigitsPattern.matcher(leadingDigits);
+      if (!m.lookingAt()) {
+        it.remove();
+      }
     }
   }
 
@@ -362,7 +364,7 @@ public class AsYouTypeFormatter {
           }
           return prefixBeforeNationalNumber + nationalNumber.toString();
         }
-        if (possibleFormats.size() > 0) {  // The formatting pattern is already chosen.
+        if (possibleFormats.size() > 0) {  // The formatting patterns are already chosen.
           String tempNationalNumber = inputDigitHelper(nextChar);
           // See if the accrued digits can be formatted properly already. If not, use the results
           // from inputDigitHelper, which does formatting based on the formatting pattern chosen.
@@ -481,7 +483,8 @@ public class AsYouTypeFormatter {
     // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH digits of national
     // number (excluding national prefix) have been entered.
     if (nationalNumber.length() >= MIN_LEADING_DIGITS_LENGTH) {
-      getAvailableFormats(nationalNumber.substring(0, MIN_LEADING_DIGITS_LENGTH));
+
+      getAvailableFormats(nationalNumber.toString());
       // See if the accrued digits can be formatted properly already.
       String formattedNumber = attemptToFormatAccruedDigits();
       if (formattedNumber.length() > 0) {

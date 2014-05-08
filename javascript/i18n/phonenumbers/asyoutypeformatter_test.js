@@ -1181,3 +1181,25 @@ function testAYTFClearNDDAfterIddExtraction() {
   assertEquals('007001234567890123456', f.inputDigit('6'));
   assertEquals('0070012345678901234567', f.inputDigit('7'));
 }
+
+function testAYTFNumberPatternsBecomingInvalidShouldNotResultInDigitLoss() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.CN);
+
+   assertEquals('+', f.inputDigit('+'));
+   assertEquals('+8', f.inputDigit('8'));
+   assertEquals('+86 ', f.inputDigit('6'));
+   assertEquals('+86 9', f.inputDigit('9'));
+   assertEquals('+86 98', f.inputDigit('8'));
+   assertEquals('+86 988', f.inputDigit('8'));
+   assertEquals('+86 988 1', f.inputDigit('1'));
+   // Now the number pattern is no longer valid because there are multiple leading digit patterns;
+   // when we try again to extract a country code we should ensure we use the last leading digit
+   // pattern, rather than the first one such that it *thinks* it's found a valid formatting rule
+   // again.
+   // https://code.google.com/p/libphonenumber/issues/detail?id=437
+   assertEquals('+8698812', f.inputDigit('2'));
+   assertEquals('+86988123', f.inputDigit('3'));
+   assertEquals('+869881234', f.inputDigit('4'));
+   assertEquals('+8698812345', f.inputDigit('5'));
+}

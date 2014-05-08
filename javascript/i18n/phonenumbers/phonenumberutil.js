@@ -2238,8 +2238,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero()) {
-    return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0')
-        + nationalNumber;
+    return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
+        nationalNumber;
   }
   return nationalNumber;
 };
@@ -3546,8 +3546,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     // Check if the original number is viable.
     /** @type {boolean} */
     var isViableOriginalNumber =
-      i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-          nationalNumberRule, numberStr);
+        i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
+            nationalNumberRule, numberStr);
     // prefixMatcher[numOfGroups] == null implies nothing was captured by the
     // capturing groups in possibleNationalPrefix; therefore, no transformation
     // is necessary, and we just remove the national prefix.
@@ -3564,10 +3564,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
       // we return.
       if (isViableOriginalNumber &&
           !i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-              nationalNumberRule, numberStr.substring(prefixMatcher[0].length))) {
+              nationalNumberRule,
+              numberStr.substring(prefixMatcher[0].length))) {
         return false;
       }
-      if (carrierCode != null && numOfGroups > 0 && prefixMatcher[numOfGroups] != null) {
+      if (carrierCode != null &&
+          numOfGroups > 0 && prefixMatcher[numOfGroups] != null) {
         carrierCode.append(prefixMatcher[1]);
       }
       number.set(numberStr.substring(prefixMatcher[0].length));

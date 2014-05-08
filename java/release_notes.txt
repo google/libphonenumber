@@ -1,3 +1,25 @@
+May 08, 2014: libphonenumber-6.1
+* Code changes:
+ - Adding MetadataLoader support to allow custom metadata loading from
+   alternative sources (should have no visible impact to users).
+ - Fixing bug where digits could be lost in as-you-type formatting and
+   formatting patterns incorrectly applied.
+
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, BF, BR, BS, CL, CN, CO, CR, DE, DM, EC, EG, FR, GA, GD, GH, HU, ID, IL,
+   IN, JP, KH, KI, KN, LA, LC, LR, ML, MU, MX, MZ, NA, NE, PF, PL, RU, SM, TH,
+   TW, UZ, VA, VC
+ - Updated short number metadata for region code(s): BI, CR, PL, TH
+ - New geocoding data for country calling code(s): 32 (de), 1242 (en)
+ - Updated geocoding data for country calling code(s):
+   32 (en, nl), 55 (en), 56 (en, es), 86 (en, zh)
+ - New carrier data for country calling code(s):
+   1758 (en), 1784 (en), 1869 (en)
+ - Updated carrier data for country calling code(s):
+   66 (en), 86 (en), 227 (en), 231 (en), 233 (en), 258 (en), 1473 (en),
+   1767 (en)
+
 Feb 25, 2014: libphonenumber-6.0
 * Code changes:
  - Better support for detecting phone numbers in text that are beside each other

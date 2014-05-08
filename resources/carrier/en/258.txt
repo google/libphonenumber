@@ -12,5 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-25882|mCel
+25882|mcel
+25883|mcel
 25884|Vodacom
+25887|Movitel

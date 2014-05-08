@@ -1128,7 +1128,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("0", formatter.getExtractedNationalPrefix());
 
     // Once the IDD "00700" has been extracted, it no longer makes sense for the initial "0" to be
-    // treated as an NDD.  
+    // treated as an NDD.
     assertEquals("00700 1 ", formatter.inputDigit('1'));
     assertEquals("", formatter.getExtractedNationalPrefix());
 
@@ -1148,5 +1148,26 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("00700123456789012345", formatter.inputDigit('5'));
     assertEquals("007001234567890123456", formatter.inputDigit('6'));
     assertEquals("0070012345678901234567", formatter.inputDigit('7'));
+  }
+
+  public void testAYTFNumberPatternsBecomingInvalidShouldNotResultInDigitLoss() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.CN);
+
+    assertEquals("+", formatter.inputDigit('+'));
+    assertEquals("+8", formatter.inputDigit('8'));
+    assertEquals("+86 ", formatter.inputDigit('6'));
+    assertEquals("+86 9", formatter.inputDigit('9'));
+    assertEquals("+86 98", formatter.inputDigit('8'));
+    assertEquals("+86 988", formatter.inputDigit('8'));
+    assertEquals("+86 988 1", formatter.inputDigit('1'));
+    // Now the number pattern is no longer valid because there are multiple leading digit patterns;
+    // when we try again to extract a country code we should ensure we use the last leading digit
+    // pattern, rather than the first one such that it *thinks* it's found a valid formatting rule
+    // again.
+    // https://code.google.com/p/libphonenumber/issues/detail?id=437
+    assertEquals("+8698812", formatter.inputDigit('2'));
+    assertEquals("+86988123", formatter.inputDigit('3'));
+    assertEquals("+869881234", formatter.inputDigit('4'));
+    assertEquals("+8698812345", formatter.inputDigit('5'));
   }
 }

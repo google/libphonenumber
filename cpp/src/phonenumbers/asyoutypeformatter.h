@@ -93,7 +93,7 @@ class AsYouTypeFormatter {
   // existing template.
   bool MaybeCreateNewTemplate();
 
-  void GetAvailableFormats(const string& leading_three_digits);
+  void GetAvailableFormats(const string& leading_digits);
 
   void NarrowDownPossibleFormats(const string& leading_digits);
 

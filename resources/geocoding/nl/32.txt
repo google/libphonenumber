@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Data from http://detelefoon.be/zonenummers/telefoonzones-op-zonenummer with
-# the accent re-added in La Louvière and spelling fixed for Charleroi.
+# Data from http://mijntelefoon.be/telefoonzones/ with the accent re-added in La
+# Louvière and spelling fixed for Charleroi. The prefix for Liège was restricted
+# beyond one digit to stop it being applied to all mobile phone numbers as well.
 
 3210|Waver
 3211|Hasselt
@@ -25,7 +26,8 @@
 3219|Borgworm
 322|Brussel
 323|Antwerpen
-324|Luik
+3242|Luik
+3243|Luik
 3250|Brugge
 3251|Roeselare
 3252|Dendermonde

@@ -1016,7 +1016,7 @@
           1(?:
             1\d|
             5[3-6]|
-            6[01]
+            60
           )|
           611|
           7(?:
@@ -2211,7 +2211,7 @@
     <!-- http://www.itu.int/oth/T0202000030/en -->
     <territory id="CR">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[1359]\d{2,3}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -2243,10 +2243,7 @@
               00|
               1[56]
             )|
-            5(?:
-              15|
-              5[15]
-            )|
+            515|
             693|
             7(?:
               00|
@@ -2255,6 +2252,14 @@
               [67]7
             )|
             975
+          )|
+          3855|
+          5(?:
+            0(?:
+              30|
+              49
+            )|
+            510
           )|
           911
         </nationalNumberPattern>
@@ -6068,6 +6073,11 @@
         </nationalNumberPattern>
         <exampleNumber>1011</exampleNumber>
       </shortCode>
+      <carrierServices>
+        <nationalNumberPattern>1[0235]\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1011</exampleNumber>
+      </carrierServices>
       <emergency>
         <!-- 11X is national, 19X is for Maputo. -->
         <!-- http://www.lonelyplanet.com/shop_pickandmix/previews/mozambique-maputo-preview.pdf -->
@@ -6632,13 +6642,28 @@
     <!-- http://www.itu.int/oth/T02020000A8/en -->
     <territory id="PL">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>
+          1\d{2}(?:\d{3})?|
+          9\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          112|
-          99[789]
+          11(?:
+            2|
+            6(?:
+              000|
+              1(?:
+                11|
+                23
+              )
+            )
+          )|
+          9(?:
+            8[4-7]|
+            9[1-9]
+          )
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
@@ -6647,8 +6672,19 @@
           112|
           99[789]
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          9(?:
+            8[4-6]|
+            9[56]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>984</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Saint Pierre and Miquelon (Collectivité territoriale de la République française) -->
@@ -7602,6 +7638,8 @@
     <!-- Thailand -->
     <!-- http://www.itu.int/oth/T02020000CD/en -->
     <!-- http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf -->
+    <!-- http://en.wikipedia.org/wiki/+66 -->
+    <!-- Other numbers found in online searches. -->
     <territory id="TH">
       <generalDesc>
         <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
@@ -7610,12 +7648,60 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            669|
+            0[0-2]|
+            1(?:
+              00|
+              12|
+              25|
+              33|
+              5[05]|
+              7[58]|
+              9[37]
+            )|
+            3(?:
+              18|
+              31|
+              56|
+              73
+            )|
+            5(?:
+              5[45]|
+              66|
+              72|
+              8[01]|
+              9[59]
+            )|
+            6(?:
+              00|
+              69|
+              7[28]|
+              9[01]
+            )|
+            790|
             9[19]
           )
         </nationalNumberPattern>
         <exampleNumber>191</exampleNumber>
       </shortCode>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              00|
+              75
+            )|
+            331|
+            678
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1175</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>1133</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1133</exampleNumber>
+      </directoryServices>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -7625,6 +7711,19 @@
         </nationalNumberPattern>
         <exampleNumber>191</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              50|
+              93
+            )|
+            691
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1193</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Tajikistan -->

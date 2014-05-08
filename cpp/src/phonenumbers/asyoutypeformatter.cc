@@ -14,6 +14,7 @@
 
 #include "phonenumbers/asyoutypeformatter.h"
 
+#include <math.h>
 #include <cctype>
 #include <list>
 #include <string>
@@ -193,8 +194,7 @@ bool AsYouTypeFormatter::MaybeCreateNewTemplate() {
   return false;
 }
 
-void AsYouTypeFormatter::GetAvailableFormats(
-    const string& leading_three_digits) {
+void AsYouTypeFormatter::GetAvailableFormats(const string& leading_digits) {
   const RepeatedPtrField<NumberFormat>& format_list =
       (is_complete_number_ &&
        current_metadata_->intl_number_format().size() > 0)
@@ -213,7 +213,7 @@ void AsYouTypeFormatter::GetAvailableFormats(
       }
     }
   }
-  NarrowDownPossibleFormats(leading_three_digits);
+  NarrowDownPossibleFormats(leading_digits);
 }
 
 void AsYouTypeFormatter::NarrowDownPossibleFormats(
@@ -225,18 +225,21 @@ void AsYouTypeFormatter::NarrowDownPossibleFormats(
        it != possible_formats_.end(); ) {
     DCHECK(*it);
     const NumberFormat& format = **it;
-
-    if (format.leading_digits_pattern_size() >
-        index_of_leading_digits_pattern) {
-      const scoped_ptr<RegExpInput> input(
-          regexp_factory_->CreateInput(leading_digits));
-      if (!regexp_cache_.GetRegExp(format.leading_digits_pattern().Get(
-              index_of_leading_digits_pattern)).Consume(input.get())) {
-        it = possible_formats_.erase(it);
-        continue;
-      }
-    }  // else the particular format has no more specific leadingDigitsPattern,
-       // and it should be retained.
+    if (format.leading_digits_pattern_size() == 0) {
+      // Keep everything that isn't restricted by leading digits.
+      ++it;
+      continue;
+    }
+    int last_leading_digits_pattern =
+        std::min(index_of_leading_digits_pattern,
+                 format.leading_digits_pattern_size() - 1);
+    const scoped_ptr<RegExpInput> input(
+        regexp_factory_->CreateInput(leading_digits));
+    if (!regexp_cache_.GetRegExp(format.leading_digits_pattern().Get(
+            last_leading_digits_pattern)).Consume(input.get())) {
+      it = possible_formats_.erase(it);
+      continue;
+    }
     ++it;
   }
 }
@@ -427,7 +430,7 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
         return;
       }
       if (possible_formats_.size() > 0) {
-        // The formatting pattern is already chosen.
+        // The formatting patterns are already chosen.
         string temp_national_number;
         InputDigitHelper(normalized_next_char, &temp_national_number);
         // See if accrued digits can be formatted properly already. If not, use
@@ -550,12 +553,10 @@ void AsYouTypeFormatter::AppendNationalNumber(const string& national_number,
 void AsYouTypeFormatter::AttemptToChooseFormattingPattern(
     string* formatted_number) {
   DCHECK(formatted_number);
-
+  // We start to attempt to format only when at least MIN_LEADING_DIGITS_LENGTH
+  // digits of national number (excluding national prefix) have been entered.
   if (national_number_.length() >= kMinLeadingDigitsLength) {
-    const string leading_digits =
-        national_number_.substr(0, kMinLeadingDigitsLength);
-
-    GetAvailableFormats(leading_digits);
+    GetAvailableFormats(national_number_);
     formatted_number->clear();
     AttemptToFormatAccruedDigits(formatted_number);
     // See if the accrued digits can be formatted properly already.

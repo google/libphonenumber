@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2012-03-29).
+# Internal statistical data (2014-04-10).
 
 3110|Rotterdam
 31111|Zierikzee

@@ -227,6 +227,25 @@
     <territory id="CC" countryCode="61">
     </territory>
 
+    <!-- China -->
+    <!-- Used to test as-you-type-formatter with complicated number format patterns. -->
+    <territory id="CN" countryCode="86">
+      <availableFormats>
+        <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{5,6})"
+                      carrierCodeFormattingRule="$CC $FG">
+          <leadingDigits>[3-9]</leadingDigits>
+          <leadingDigits>[3-9]\d{2}[19]</leadingDigits>
+          <leadingDigits>
+            [3-9]\d{2}(?:
+              10|
+              95
+            )
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+    
     <!-- Christmas Islands -->
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be

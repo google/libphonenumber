@@ -235,8 +235,6 @@ public class BuildMetadataFromXml {
                                          Element numberFormatElement,
                                          NumberFormat nationalFormat) {
     NumberFormat.Builder intlFormat = NumberFormat.newBuilder();
-    setLeadingDigitsPatterns(numberFormatElement, intlFormat);
-    intlFormat.setPattern(numberFormatElement.getAttribute(PATTERN));
     NodeList intlFormatPattern = numberFormatElement.getElementsByTagName(INTL_FORMAT);
     boolean hasExplicitIntlFormatDefined = false;
 
@@ -250,6 +248,8 @@ public class BuildMetadataFromXml {
       // Default to use the same as the national pattern if none is defined.
       intlFormat.mergeFrom(nationalFormat);
     } else {
+      intlFormat.setPattern(numberFormatElement.getAttribute(PATTERN));
+      setLeadingDigitsPatterns(numberFormatElement, intlFormat);
       String intlFormatPatternValue = intlFormatPattern.item(0).getFirstChild().getNodeValue();
       if (!intlFormatPatternValue.equals("NA")) {
         intlFormat.setFormat(intlFormatPatternValue);

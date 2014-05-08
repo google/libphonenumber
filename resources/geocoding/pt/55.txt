@@ -13,68 +13,74 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2011-06-01)
+# Internal statistical data (2014-04-10)
+# Missing prefixes were filled in per the ITU document.
 
 5511|São Paulo - SP
 5512|São José dos Campos - SP
 5513|Santos - SP
 5514|Bauru - SP
 5515|Sorocaba - SP
-5516|Ribeirão Preto - SP
-5517|São José do Rio Preto - SP
-5518|Araçatuba - SP
+5516|Ribeirão Prêto - SP
+5517|São José do Rio Prêto - SP
+5518|Presidente Prudente - SP
 5519|Campinas - SP
-5521|Rio de Janeiro - RJ
-5522|Campos dos Goytacazes - RJ
+5521|Rio de Janeiro
+5522|Rio de Janeiro
 5524|Petrópolis - RJ
 5527|Vitória - ES
 5528|Cachoeiro de Itapemirim - ES
-5531|Belo Horizonte - MG
+5531|Minas Gerais
 5532|Juiz de Fora - MG
 5533|Governador Valadares - MG
-5534|Araguari - MG
+5534|Minas Gerais
+5535|Minas Gerais
 5537|Divinópolis - MG
 5538|Montes Claros - MG
 5541|Curitiba - PR
-5542|Ponta Grossa - PR
+5542|Paraná
 5543|Londrina - PR
 5544|Maringá - PR
-5545|Cascavel - PR
-5546|Pato Branco - PR
-5547|Joinville - SC
+5545|Foz do Iguaçu - PR
+5546|Francisco Beltrão - PR
+5547|Santa Catarina
 5548|Florianópolis - SC
-5549|Chapecó - SC
-5551|Porto Alegre - RS
+5549|Santa Catarina
+5551|Rio Grande do Sul
+5552|Rio Grande do Sul
 5553|Pelotas - RS
 5554|Caxias do Sul - RS
+5555|Rio Grande do Sul
 5561|Brasília - DF
 5562|Goiânia - GO
 5563|Palmas - TO
+5564|Itumbiara - GO
 5565|Cuiabá - MT
-5566|Rondonópolis - MT
+5566|Mato Grosso
 5567|Campo Grande - MS
 5568|Rio Branco - AC
-5569|Porto Velho - RO
+5569|Rondônia
 5571|Salvador - BA
 5573|Itabuna - BA
-5574|Juazeiro - BA
+5574|Irecê - BA
 5575|Feira de Santana - BA
 5577|Vitória da Conquista - BA
 5579|Aracaju - SE
-5581|Recife - PE
+5581|Pernambuco
 5582|Maceió - AL
 5583|João Pessoa - PB
 5584|Natal - RN
 5585|Fortaleza - CE
 5586|Teresina - PI
 5587|Petrolina - PE
-5588|Juazeiro do Norte - CE
+5588|Ceará
 5589|Picos - PI
 5591|Belém - PA
 5592|Manaus - AM
 5593|Santarém - PA
-5594|Marabá - PA
+5594|Pará
 5595|Boa Vista - RR
 5596|Macapá - AP
+5597|Amazonas
 5598|São Luís - MA
 5599|Imperatriz - MA

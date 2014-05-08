@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Data from http://detelefoon.be/zonenummers/telefoonzones-op-zonenummer,
-# translated into French by wikipedia.
+# Data from http://mijntelefoon.be/telefoonzones/ translated into French by
+# wikipedia. The prefix for Liège was restricted beyond one digit to stop it
+# being applied to all mobile phone numbers as well.
 
 3210|Wavre
 3211|Hasselt
@@ -25,7 +26,8 @@
 3219|Waremme
 322|Bruxelles
 323|Anvers
-324|Liège
+3242|Liège
+3243|Liège
 3250|Bruges
 3251|Roulers
 3252|Termonde
