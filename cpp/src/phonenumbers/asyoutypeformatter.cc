@@ -146,7 +146,7 @@ AsYouTypeFormatter::AsYouTypeFormatter(const string& region_code)
       position_to_remember_(0),
       prefix_before_national_number_(),
       should_add_space_after_national_prefix_(false),
-      national_prefix_extracted_(),
+      extracted_national_prefix_(),
       national_number_(),
       possible_formats_() {
 }
@@ -316,7 +316,7 @@ void AsYouTypeFormatter::Clear() {
   last_match_position_ = 0;
   current_formatting_pattern_.clear();
   prefix_before_national_number_.clear();
-  national_prefix_extracted_.clear();
+  extracted_national_prefix_.clear();
   national_number_.clear();
   able_to_format_ = true;
   input_has_formatting_ = false;
@@ -414,9 +414,10 @@ void AsYouTypeFormatter::InputDigitWithOptionToRememberPosition(
     case 3:
       if (AttemptToExtractIdd()) {
         is_expecting_country_code_ = true;
+        // FALLTHROUGH_INTENDED
       } else {
         // No IDD or plus sign is found, might be entering in national format.
-        RemoveNationalPrefixFromNationalNumber(&national_prefix_extracted_);
+        RemoveNationalPrefixFromNationalNumber(&extracted_national_prefix_);
         AttemptToChooseFormattingPattern(phone_number);
         return;
       }
@@ -468,21 +469,25 @@ void AsYouTypeFormatter::AttemptToChoosePatternWithPrefixExtracted(
   AttemptToChooseFormattingPattern(formatted_number);
 }
 
+const string& AsYouTypeFormatter::GetExtractedNationalPrefix() const {
+  return extracted_national_prefix_;
+}
+
 bool AsYouTypeFormatter::AbleToExtractLongerNdd() {
-  if (national_prefix_extracted_.length() > 0) {
+  if (extracted_national_prefix_.length() > 0) {
     // Put the extracted NDD back to the national number before attempting to
     // extract a new NDD.
-    national_number_.insert(0, national_prefix_extracted_);
+    national_number_.insert(0, extracted_national_prefix_);
     // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
     // cannot simply set it to empty string because people sometimes incorrectly
     // enter national prefix after the country code, e.g. +44 (0)20-1234-5678.
     int index_of_previous_ndd =
-        prefix_before_national_number_.find_last_of(national_prefix_extracted_);
+        prefix_before_national_number_.find_last_of(extracted_national_prefix_);
     prefix_before_national_number_.resize(index_of_previous_ndd);
   }
   string new_national_prefix;
   RemoveNationalPrefixFromNationalNumber(&new_national_prefix);
-  return national_prefix_extracted_ != new_national_prefix;
+  return extracted_national_prefix_ != new_national_prefix;
 }
 
 void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
@@ -699,6 +704,9 @@ bool AsYouTypeFormatter::AttemptToExtractCountryCode() {
   }
   StrAppend(&prefix_before_national_number_, country_code);
   prefix_before_national_number_.push_back(kSeparatorBeforeNationalNumber);
+  // When we have successfully extracted the IDD, the previously extracted NDD
+  // should be cleared because it is no longer valid.
+  extracted_national_prefix_.clear();
 
   return true;
 }

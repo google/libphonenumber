@@ -43,6 +43,10 @@ class AsYouTypeFormatterTest : public testing::Test {
     return formatter_->current_metadata_;
   }
 
+  const string& GetExtractedNationalPrefix() const {
+    return formatter_->GetExtractedNationalPrefix();
+  }
+
   int ConvertUnicodeStringPosition(const UnicodeString& s, int pos) const {
     return AsYouTypeFormatter::ConvertUnicodeStringPosition(s, pos);
   }
@@ -1170,6 +1174,41 @@ TEST_F(AsYouTypeFormatterTest, AYTF_ShortNumberFormattingFix_US) {
   EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
   EXPECT_EQ("12", formatter_->InputDigit('2', &result_));
   EXPECT_EQ("1 22", formatter_->InputDigit('2', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_ClearNDDAfterIDDExtraction) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::KR()));
+
+  // Check that when we have successfully extracted an IDD, the previously
+  // extracted NDD is cleared since it is no longer valid.
+  EXPECT_EQ("0", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("007", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("0070", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00700", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("0", GetExtractedNationalPrefix());
+
+  // Once the IDD "00700" has been extracted, it no longer makes sense for the
+  // initial "0" to be treated as an NDD.
+  EXPECT_EQ("00700 1 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("", GetExtractedNationalPrefix());
+
+  EXPECT_EQ("00700 1 2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("00700 1 23", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("00700 1 234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("00700 1 234 5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("00700 1 234 56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("00700 1 234 567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("00700 1 234 567 8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("00700 1 234 567 89", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("00700 1 234 567 890", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("00700 1 234 567 8901", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("00700123456789012", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("007001234567890123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("0070012345678901234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("00700123456789012345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("007001234567890123456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("0070012345678901234567", formatter_->InputDigit('7', &result_));
 }
 
 TEST_F(AsYouTypeFormatterTest,

@@ -181,7 +181,8 @@ public class AsYouTypeFormatter {
     for (NumberFormat format : formatList) {
       if (!nationalPrefixIsUsedByCountry || isCompleteNumber ||
           format.isNationalPrefixOptionalWhenFormatting() ||
-          phoneUtil.formattingRuleHasFirstGroupOnly(format.getNationalPrefixFormattingRule())) {
+          PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+              format.getNationalPrefixFormattingRule())) {
         if (isFormatEligible(format.getFormat())) {
           possibleFormats.add(format);
         }
