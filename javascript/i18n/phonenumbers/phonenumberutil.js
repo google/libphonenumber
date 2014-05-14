@@ -3722,7 +3722,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
  * PhoneNumber.
  *
  * @param {string} nationalNumber the number we are parsing.
- * @param {i18n.phonenumbers.PhoneNumber} phoneNumber a phone number proto
+ * @param {i18n.phonenumbers.PhoneNumber} phoneNumber a phone number proto
  *     buffer to fill in.
  * @private
  */
