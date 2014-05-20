@@ -440,6 +440,10 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     new NumberTest("2012-01-02 08:00", RegionCode.US),
     new NumberTest("2012/01/02 08:00", RegionCode.US),
     new NumberTest("20120102 08:00", RegionCode.US),
+    new NumberTest("2014-04-12 04:04 PM", RegionCode.US),
+    new NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode.US),
+    new NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode.US),
+    new NumberTest("2014-04-12  04:04 PM", RegionCode.US),
   };
 
   /**

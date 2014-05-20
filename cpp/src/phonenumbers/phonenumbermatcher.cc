@@ -305,7 +305,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
             "(?:(?:[0-3]?\\d/[01]?\\d)|"
             "(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}")),
         time_stamps_(regexp_factory_->CreateRegExp(
-            "[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d [0-2]\\d$")),
+            "[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d +[0-2]\\d$")),
         time_stamps_suffix_(regexp_factory_->CreateRegExp(":[0-5]\\d")),
         matching_brackets_(regexp_factory_->CreateRegExp(
             StrCat(leading_maybe_matched_bracket_, non_parens_, "+",

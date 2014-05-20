@@ -78,7 +78,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * trailing ":\d\d" -- that is covered by TIME_STAMPS_SUFFIX.
    */
   private static final Pattern TIME_STAMPS =
-      Pattern.compile("[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d [0-2]\\d$");
+      Pattern.compile("[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d +[0-2]\\d$");
   private static final Pattern TIME_STAMPS_SUFFIX = Pattern.compile(":[0-5]\\d");
 
   /**

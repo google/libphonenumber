@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Author: Lara Rennie
-
 #include "phonenumbers/phonenumbermatcher.h"
 
 #include <string>
@@ -811,6 +809,10 @@ static const NumberTest kImpossibleCases[] = {
   NumberTest("2012-01-02 08:00", RegionCode::US()),
   NumberTest("2012/01/02 08:00", RegionCode::US()),
   NumberTest("20120102 08:00", RegionCode::US()),
+  NumberTest("2014-04-12 04:04 PM", RegionCode::US()),
+  NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
+  NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
+  NumberTest("2014-04-12  04:04 PM", RegionCode::US()),
 };
 
 // Strings with number-like things that should only be found under "possible".
