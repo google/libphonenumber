@@ -1750,13 +1750,17 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
 
     // Now append everything between the "tel:" prefix and the phone-context.
     // This should include the national number, an optional extension or
-    // isdn-subaddress component.
-    int end_of_rfc_prefix =
-        number_to_parse.find(kRfc3966Prefix) + strlen(kRfc3966Prefix);
+    // isdn-subaddress component. Note we also handle the case when "tel:" is
+    // missing, as we have seen in some of the phone number inputs. In that
+    // case, we append everything from the beginning.
+    size_t index_of_rfc_prefix = number_to_parse.find(kRfc3966Prefix);
+    int index_of_national_number = (index_of_rfc_prefix != string::npos) ?
+        index_of_rfc_prefix + strlen(kRfc3966Prefix) : 0;
     StrAppend(
         national_number,
-        number_to_parse.substr(end_of_rfc_prefix,
-                               index_of_phone_context - end_of_rfc_prefix));
+        number_to_parse.substr(
+            index_of_national_number,
+            index_of_phone_context - index_of_national_number));
   } else {
     // Extract a possible number from the string passed in (this strips leading
     // characters that could not be the start of a phone number.)

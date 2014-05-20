@@ -2981,6 +2981,10 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
             phone_util_.Parse("tel:331-6005;phone-context=+64-3",
                               RegionCode::US(), &test_number));
   EXPECT_EQ(nz_number, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("My number is tel:03-331-6005;phone-context=+64",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
   // Test parsing RFC3966 format with optional user-defined parameters. The
   // parameters will appear after the context if present.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
@@ -2995,6 +2999,10 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("tel:+64-3-331-6005;isub=12345",
                               RegionCode::US(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03-331-6005;phone-context=+64",
+                              RegionCode::NZ(), &test_number));
   EXPECT_EQ(nz_number, test_number);
   // Testing international prefixes.
   // Should strip country code.
