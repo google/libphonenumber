@@ -59,7 +59,7 @@ public class PhoneNumberUtil {
   // @VisibleForTesting
   static final MetadataLoader DEFAULT_METADATA_LOADER = new MetadataLoader() {
     public InputStream loadMetadata(String metadataFileName) {
-      return PhoneNumberUtil.class.getResourceAsStream(metadataFileName); 
+      return PhoneNumberUtil.class.getResourceAsStream(metadataFileName);
     }
   };
 
@@ -76,7 +76,7 @@ public class PhoneNumberUtil {
   // We don't allow input strings for parsing to be longer than 250 chars. This prevents malicious
   // input from overflowing the regular-expression engine.
   private static final int MAX_INPUT_STRING_LENGTH = 250;
-  
+
   private static final String META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
 
