@@ -26,6 +26,12 @@ CMAKE_FLAGS := -DCMAKE_INSTALL_PREFIX=/usr
 CPP_BUILD := cpp/build
 JAVA_BUILD := java/build
 
+# CMake doesn't read CPPFLAGS and dh_auto commands are not used in this rules
+# file so we have to manually set the flags here to ensure that hardening flags
+# are used:
+CFLAGS += $(CPPFLAGS)
+CXXFLAGS += $(CPPFLAGS)
+
 ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O0
 else
@@ -55,8 +61,14 @@ ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
 	$(ANT) -f $(JAVA_BUILD).xml junit
 endif
 
+# Hack for multiarch: CMake doesn't really support libdir so we just manually
+# move /usr/lib/* to a proper multiarch location.
 override_dh_auto_install:
 	dh_auto_install --builddirectory=$(CPP_BUILD)
+	mkdir -p debian/tmp/usr/lib-$(DEB_HOST_MULTIARCH)
+	mv debian/tmp/usr/lib/* debian/tmp/usr/lib-$(DEB_HOST_MULTIARCH)
+	mv debian/tmp/usr/lib-$(DEB_HOST_MULTIARCH) \
+		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)
 
 override_dh_auto_clean:
 	-test -d $(CPP_BUILD) && $(MAKE) -C $(CPP_BUILD) clean

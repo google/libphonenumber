@@ -2,10 +2,12 @@ Source: libphonenumber
 Priority: optional
 Maintainer: Fredrik Roubert <roubert@google.com>
 Build-Depends: ant,
+               ant-optional,
                cmake,
-               debhelper (>= 7.0.50~),
+               debhelper (>= 9),
                default-jdk | java-sdk,
                javahelper (>= 0.34),
+               junit,
                libboost-dev (>= 1.40),
                libboost-system-dev (>= 1.40),
                libboost-thread-dev (>= 1.40),
@@ -14,7 +16,7 @@ Build-Depends: ant,
                libprotobuf-dev (>= 2.4),
                libre2-dev,
                protobuf-compiler
-Standards-Version: 3.9.1
+Standards-Version: 3.9.5
 Section: libs
 Homepage: http://code.google.com/p/libphonenumber/
 Vcs-Browser: http://code.google.com/p/libphonenumber/source/browse/
@@ -24,21 +26,21 @@ Package: libphonenumber-dev
 Section: libdevel
 Architecture: any
 Depends: libphonenumber6 (=${binary:Version}), ${misc:Depends}
-Description: parsing/formatting/validating phone numbers - development
+Description: parsing/formatting/validating phone numbers - development files
  Google's common C++ and Java library for parsing, formatting, storing and
  validating international phone numbers.
  .
  This package contains the static libraries and include files.
 
 Package: libphonenumber6
-Section: libs
 Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: parsing/formatting/validating phone numbers - runtime
+Description: parsing/formatting/validating phone numbers
  Google's common C++ and Java library for parsing, formatting, storing and
  validating international phone numbers.
  .
- This package contains the runtime libraries.
+ This package contains the runtime libraries for C++ users.
 
 Package: libphonenumber-java
 Section: java
@@ -48,4 +50,4 @@ Description: parsing/formatting/validating phone numbers - java
  Google's common C++ and Java library for parsing, formatting, storing and
  validating international phone numbers.
  .
- This package contains the JAR files.
+ This package contains the runtime library JARs for Java users.
