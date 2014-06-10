@@ -8022,6 +8022,7 @@
 1337993|Lafayette, LA
 1339|Massachusetts
 1345949|George Town
+1346|Texas
 1347|New York
 1347221|Brooklyn, NY
 1347240|Brooklyn, NY
@@ -35165,6 +35166,7 @@
 1956982|Brownsville, TX
 1956992|McAllen, TX
 1956994|McAllen, TX
+1959|Connecticut
 1970|Colorado
 1970203|Loveland, CO
 1970204|Fort Collins, CO

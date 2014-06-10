@@ -242,17 +242,51 @@
     <!-- http://www.itu.int/oth/T0202000002/en -->
     <territory id="AL">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[15]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>12[789]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              2|
+              6(?:
+                000|
+                1(?:
+                  06|
+                  11|
+                  23
+                )
+              )
+            )|
+            2[5-9]
+          )|
+          5\d{4}
+        </nationalNumberPattern>
         <exampleNumber>129</exampleNumber>
       </shortCode>
       <emergency>
-        <nationalNumberPattern>12[789]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            2[789]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>129</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <!-- According to http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx this is for
+             sea emergencies. -->
+        <nationalNumberPattern>125</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>125</exampleNumber>
+      </expandedEmergency>
+      <smsServices>
+        <nationalNumberPattern>5\d{4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>51234</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Armenia -->

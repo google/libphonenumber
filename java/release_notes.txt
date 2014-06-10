@@ -1,3 +1,16 @@
+Jun 06, 2014: libphonenumber-6.1.1
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   AF, AG, AI, AS, BB, BF, BM, BS, CA, CN, CR, DM, DO, DZ, FR, GD, GU, IN, JM,
+   KH, KN, KW, KY, LC, MN, MP, MS, NG, NI, PH, PR, SX, TC, TT, US, VC, VG, VI
+ - Updated short number metadata for region code(s): AL
+ - New geocoding data for country calling code(s): 1346 (en), 1959 (en)
+ - Updated geocoding data for country calling code(s):
+   33 (en, fr), 352 (de, en, fr), 355 (en)
+ - New carrier data for country calling code(s): 505 (en)
+ - Updated carrier data for country calling code(s):
+   63 (en), 91 (en), 93 (en), 234 (en)
+
 May 08, 2014: libphonenumber-6.1
 * Code changes:
  - Adding MetadataLoader support to allow custom metadata loading from

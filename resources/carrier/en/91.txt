@@ -12,6 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+917048|Tata
+917049|Idea
+917050|Telewings
+917051|AirTel
+917052|Idea
+917053|Aircel
+917054|AirTel
+917055|Idea
+917056|Idea
+917057|Idea
+917058|Telewings
+917059|Dishnet
+917060|AirTel
+917061|Reliance
+917062|Aircel
+917063|AirTel
+917064|Vodafone
+917065|Idea
+917066|Vodafone
+917067|Reliance
+917068|Telewings
+917069|Vodafone
+917070|AirTel
+917071|Dishnet Wireless
 917200|TATA DOCOMO
 917204|TATA DOCOMO
 917205|TATA DOCOMO

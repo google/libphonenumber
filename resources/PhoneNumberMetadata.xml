@@ -234,7 +234,17 @@
     <territory id="AF" countryCode="93" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
+        <!-- Formatting based primarily on ITU document. -->
         <numberFormat pattern="([2-7]\d)(\d{3})(\d{4})">
+          <leadingDigits>
+            [2-6]|
+            7[013-9]
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <!-- Formatting 729 numbers differently based on numbers seen online. -->
+        <numberFormat pattern="(729)(\d{3})(\d{3})">
+          <leadingDigits>729</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -253,7 +263,12 @@
         <exampleNumber>234567890</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>7[057-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          7(?:
+            [057-9]\d{7}|
+            29\d{6}
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>701234567</exampleNumber>
       </mobile>
@@ -324,12 +339,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -399,12 +416,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -1146,12 +1165,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -1877,12 +1898,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -2421,7 +2444,7 @@
         <nationalNumberPattern>
           6(?:
             [0-689]\d|
-            7[0-2]
+            7[0-5]
           )\d{5}|
           7\d{7}
         </nationalNumberPattern>
@@ -2839,12 +2862,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -3185,12 +3210,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -3712,12 +3739,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -4325,7 +4354,9 @@
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- 100xx and 95xxx(x) numbers with area codes (these numbers without an area code are now
-             dealt with by ShortNumberMetadata.xml). -->
+             dealt with by ShortNumberMetadata.xml) and 96xxx(x) numbers with area codes (we don't
+             support these as short numbers because they are only unique within a province, not
+             within a country). -->
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{2})(\d{5,6})"
                       carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
@@ -4340,7 +4371,7 @@
               2\d
             )(?:
               10|
-              95
+              9[56]
             )
           </leadingDigits>
           <leadingDigits>
@@ -4349,7 +4380,7 @@
               2\d
             )(?:
               100|
-              95
+              9[56]
             )
           </leadingDigits>
           <format>$1 $2</format>
@@ -4361,7 +4392,7 @@
           <leadingDigits>
             [3-9]\d{2}(?:
               10|
-              95
+              9[56]
             )
           </leadingDigits>
           <format>$1 $2</format>
@@ -4685,8 +4716,67 @@
         <exampleNumber>16812345</exampleNumber>
       </premiumRate>
       <sharedCost>
-        <nationalNumberPattern>400\d{7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+        <!-- 96xxx(x) numbers with area codes are included here. Their costs are not well
+             documented, but they are thought to be mostly local costs with certain exceptions. We
+             don't support them for 4-digit area codes though, as they don't seem to be used there
+             based on online searches. -->
+        <nationalNumberPattern>
+          400\d{7}|
+          (?:
+            10|
+            2[0-57-9]|
+            3(?:
+              [157]\d|
+              35|
+              49|
+              9[1-68]
+            )|
+            4(?:
+              [17]\d|
+              2[179]|
+              [35][1-9]|
+              6[4789]|
+              8[23]
+            )|
+            5(?:
+              [1357]\d|
+              2[37]|
+              4[36]|
+              6[1-46]|
+              80|
+              9[1-9]
+            )|
+            6(?:
+              3[1-5]|
+              6[0238]|
+              9[12]
+            )|
+            7(?:
+              01|
+              [1579]\d|
+              2[248]|
+              3[014-9]|
+              4[3-6]|
+              6[023689]
+            )|
+            8(?:
+              1[236-8]|
+              2[5-7]|
+              [37]\d|
+              5[1-9]|
+              8[3678]|
+              9[1-8]
+            )|
+            9(?:
+              0[1-3689]|
+              1[1-79]|
+              [379]\d|
+              4[13]|
+              5[1-5]
+            )
+          )96\d{3,4}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
         <exampleNumber>4001234567</exampleNumber>
       </sharedCost>
     </territory>
@@ -4841,15 +4931,17 @@
         <exampleNumber>9001234567</exampleNumber>
       </premiumRate>
       <voip>
-        <!-- Including trunking service numbers starting with 5100. -->
+        <!-- Including trunking service numbers starting with 5100. 4001 (callmyway.com) was added
+             from an open-source bug report supported by numbers found online. -->
         <nationalNumberPattern>
           210[0-6]\d{4}|
           4(?:
             0(?:
-              [04]0\d{4}|
+              0[01]\d{4}|
               10[0-3]\d{3}|
               2900\d{2}|
               3[01]\d{4}|
+              40\d{4}|
               5\d{5}|
               70[01]\d{3}|
               8[0-2]\d{4}
@@ -5720,12 +5812,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -5823,12 +5917,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -5880,7 +5976,7 @@
       </fixedLine>
       <mobile>
         <!-- Adding 65 and 78 from numbers found online. Also, prefix 670 is added since the carrier
-             Mobilis Algeria provided it, and 54 for Nedjma. Prefixes 67[12] were also added for
+             Mobilis Algeria provided it, and 54 for Nedjma. Prefixes 67[1-3] were also added for
              Mobilis Algeria based on evidence found online. -->
         <nationalNumberPattern>
           (?:
@@ -5889,7 +5985,7 @@
           )\d{7}|
           6(?:
             [569]\d|
-            7[0-2]
+            7[0-3]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
@@ -6905,10 +7001,9 @@
         <exampleNumber>123456789</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Prefixes 7[0-24] were added based on numbers found online. -->
         <nationalNumberPattern>
           6\d{8}|
-          7[0-24-9]\d{7}
+          7[5-9]\d{7}
         </nationalNumberPattern>
         <exampleNumber>612345678</exampleNumber>
       </mobile>
@@ -7645,12 +7740,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -8573,12 +8670,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -9770,7 +9869,7 @@
          <numberFormat pattern="(\d{2})(\d{2})(\d{6})">
            <leadingDigits>
              7(?:
-               0[2-4]|
+               0[2-7]|
                2[0579]|
                3[057-9]|
                4[0-389]|
@@ -9795,8 +9894,8 @@
              7(?:
                0(?:
                  2[2-9]|
-                 3|
-                 4[0-7]
+                 [3-6]|
+                 7[01]
                )|
                2(?:
                  0[04-9]|
@@ -10264,8 +10363,8 @@
             7(?:
               0(?:
                 2[2-9]|
-                3\d|
-                4[0-7]
+                [3-6]\d|
+                7[01]
               )|
               2(?:
                 0[04-9]|
@@ -11281,12 +11380,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -12679,15 +12780,15 @@
              Mobitel uses 01[1247].
              Cellcard uses 0857 and 061.
              Extra prefixes found online: 088, 097.
-             Allowing 9-digit 12, 31, and 76 numbers based on information from Cambodia Yellow
-             Pages. -->
+             Allowing 9-digit 12, 31, 38 and 76 numbers based on information from Cambodia Yellow
+             Pages and online search. -->
         <nationalNumberPattern>
           (?:
             1(?:
               [013-9]|
               2\d?
             )|
-            31\d|
+            3[18]\d|
             6[016-9]|
             7(?:
               [07-9]|
@@ -12881,12 +12982,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -13229,7 +13332,7 @@
               4[049]|
               6[069]|
               [79]\d|
-              8[08]
+              8[089]
             )
           )\d{5}
         </nationalNumberPattern>
@@ -13335,12 +13438,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -13709,12 +13814,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -15309,7 +15416,7 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            8[89]|
+            8[689]|
             9[013-9]
           )\d{6}
         </nationalNumberPattern>
@@ -15449,12 +15556,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -15592,12 +15701,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -16600,7 +16711,7 @@
           <leadingDigits>
             70|
             8[01]|
-            90[39]
+            90[239]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -16742,7 +16853,7 @@
               0[2-9]|
               1\d
             )\d|
-            90[39]\d
+            90[239]\d
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
@@ -16780,13 +16891,13 @@
       <mobile>
         <!-- Online users have reported seeing 5500 used by Claro; until we can find actual numbers
              or any documentation about it, we restrict this pattern to this prefix exactly. 57 and
-             78 were added from bug reports/numbers found online. -->
+             7[5-8] were added from bug reports/numbers found online. -->
         <nationalNumberPattern>
           5(?:
             500\d{4}|
             7\d{6}
           )|
-          78\d{6}|
+          7[5-8]\d{6}|
           8\d{7}
         </nationalNumberPattern>
         <exampleNumber>81234567</exampleNumber>
@@ -17833,13 +17944,13 @@
             81[37]|
             9(?:
               0[5-9]|
-              1[025-9]|
+              1[024-9]|
               2[0-35-9]|
               3[02-9]|
               4[236-9]|
-              7[3479]|
+              7[34-79]|
               89|
-              9[46-9]
+              9[4-9]
             )
           )\d{7}
         </nationalNumberPattern>
@@ -18340,12 +18451,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -20528,12 +20641,14 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -20738,12 +20853,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -21455,12 +21572,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -21941,10 +22060,10 @@
               1[02-9]|
               2[0135]|
               3[014679]|
-              47|
+              4[67]|
               5[12]|
               6[014]|
-              8[056]
+              8[56]
             )|
             4(?:
               0[124-9]|
@@ -22006,7 +22125,7 @@
               2[0589]|
               3[1678]|
               4[0179]|
-              5[1246]|
+              5[12469]|
               7[0-3589]|
               8[0459]
             )
@@ -22033,10 +22152,10 @@
               1[02-9]|
               2[0135]|
               3[014679]|
-              47|
+              4[67]|
               5[12]|
               6[014]|
-              8[056]
+              8[56]
             )|
             4(?:
               0[124-9]|
@@ -22098,7 +22217,7 @@
               2[0589]|
               3[1678]|
               4[0179]|
-              5[1246]|
+              5[12469]|
               7[0-3589]|
               8[0459]
             )
@@ -22126,12 +22245,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -22636,12 +22757,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -22781,12 +22904,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -22902,12 +23027,14 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_416.pdf -->
+        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
         <nationalNumberPattern>
           5(?:
             00|
             33|
-            44
+            44|
+            66|
+            77
           )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
