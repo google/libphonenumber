@@ -1,6 +1,7 @@
 Source: libphonenumber
 Priority: optional
-Maintainer: Fredrik Roubert <roubert@google.com>
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Daniel Pocock <daniel@pocock.pro>, Fredrik Roubert <roubert@google.com>
 Build-Depends: ant,
                ant-optional,
                cmake,
@@ -22,9 +23,12 @@ Homepage: http://code.google.com/p/libphonenumber/
 Vcs-Browser: http://code.google.com/p/libphonenumber/source/browse/
 Vcs-Svn: http://libphonenumber.googlecode.com/svn/trunk/
 
-Package: libphonenumber-dev
+Package: libphonenumber6-dev
 Section: libdevel
 Architecture: any
+Provides: libphonenumber-dev
+Conflicts: libphonenumber-dev
+Replaces: libphonenumber-dev
 Depends: libphonenumber6 (=${binary:Version}), ${misc:Depends}
 Description: parsing/formatting/validating phone numbers - development files
  Google's common C++ and Java library for parsing, formatting, storing and
@@ -42,7 +46,7 @@ Description: parsing/formatting/validating phone numbers
  .
  This package contains the runtime libraries for C++ users.
 
-Package: libphonenumber-java
+Package: libphonenumber6-java
 Section: java
 Architecture: all
 Depends: ${java:Depends}, ${misc:Depends}
