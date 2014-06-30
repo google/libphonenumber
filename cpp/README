@@ -91,7 +91,8 @@ Requirements:
     Troubleshooting section below for information about ccmake).
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
-    $ sudo apt-get install libboost1.40-dev libboost-thread1.40-dev
+    $ sudo apt-get install libboost1.40-dev libboost-thread1.40-dev \
+      libboost-system1.40-dev
 
     Note: Boost Thread is the only library needed at link time.
 
