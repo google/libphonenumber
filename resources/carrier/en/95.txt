@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2014 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-99620|Aktel
-99651|Katel
-99654|Aktel
-99655|ALFA Telecom
-99656|Winline
-99657|Sotel
-99670|Nur Telecom
-99677|Sky mobile
+95979|Telenor
+95997|Ooredoo

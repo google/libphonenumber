@@ -22,6 +22,7 @@
 212601|Inwi
 212602|Inwi
 212603|Inwi
+212604|Inwi
 212605|Inwi
 212606|Inwi
 212607|Inwi
@@ -99,6 +100,8 @@
 212680|Inwi
 212681|Inwi
 212692|GlobalStar
+212694|Méditel
+212695|Inwi
 212697|Maroc Telecom
 212698|Inwi
 212699|Inwi

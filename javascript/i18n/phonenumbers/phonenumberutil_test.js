@@ -2220,6 +2220,9 @@ function testParseNationalNumber() {
       phoneUtil.parse('tel:331-6005;phone-context=+64-3', RegionCode.NZ)));
   assertTrue(NZ_NUMBER.equals(
       phoneUtil.parse('tel:331-6005;phone-context=+64-3', RegionCode.US)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('My number is tel:03-331-6005;phone-context=+64',
+                      RegionCode.NZ)));
   // Test parsing RFC3966 format with optional user-defined parameters. The
   // parameters will appear after the context if present.
   assertTrue(NZ_NUMBER.equals(
@@ -2231,6 +2234,9 @@ function testParseNationalNumber() {
                       RegionCode.NZ)));
   assertTrue(NZ_NUMBER.equals(
       phoneUtil.parse('tel:+64-3-331-6005;isub=12345', RegionCode.NZ)));
+  // Test parsing RFC3966 with "tel:" missing.
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse('03-331-6005;phone-context=+64', RegionCode.NZ)));
   // Testing international prefixes.
   // Should strip country calling code.
   assertTrue(

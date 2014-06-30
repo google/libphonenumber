@@ -3933,12 +3933,16 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
 
     // Now append everything between the "tel:" prefix and the phone-context.
     // This should include the national number, an optional extension or
-    // isdn-subaddress component.
-    nationalNumber.append(numberToParse.substring(
-        numberToParse.indexOf(
-            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_) +
-        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length,
-        indexOfPhoneContext));
+    // isdn-subaddress component. Note we also handle the case when "tel:" is
+    // missing, as we have seen in some of the phone number inputs.
+    // In that case, we append everything from the beginning.
+    var indexOfRfc3966Prefix = numberToParse.indexOf(
+        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_);
+    var indexOfNationalNumber = (indexOfRfc3966Prefix >= 0) ?
+        indexOfRfc3966Prefix +
+        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length : 0;
+    nationalNumber.append(numberToParse.substring(indexOfNationalNumber,
+          indexOfPhoneContext));
   } else {
     // Extract a possible number from the string passed in (this strips leading
     // characters that could not be the start of a phone number.)

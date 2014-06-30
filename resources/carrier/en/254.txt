@@ -12,11 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-25420|Orange Kenya
 25470|Safaricom
 25471|Safaricom
 25472|Safaricom
 25473|Airtel
-25475|yu
-25477|Orange Kenya
-25478|Airtel
+254750|Essar
+254751|Essar
+254752|Essar
+254753|Essar
+254754|Essar
+254755|Essar
+254756|Essar
+254770|Telkom
+254771|Telkom
+254772|Telkom
+254773|Telkom
+254774|Telkom
+254775|Telkom
+254780|Airtel
+254781|Airtel
+254782|Airtel
+254785|Airtel
+254786|Airtel
+254787|Airtel
+254788|Airtel
+254789|Airtel

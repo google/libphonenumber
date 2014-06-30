@@ -1,3 +1,20 @@
+Jun 30, 2014: libphonenumber-6.2
+* Code changes:
+ - Better exclusion of dates when matching phone numbers from text.
+ - Handle phone input in RFC3966 with missing tel: prefix
+
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 95
+ - Updated phone metadata for region code(s):
+   AF, CN, EH, FJ, IN, JP, KE, KG, KW, MA, MM, PG, PK, SN, SO
+ - New short number metadata for region code(s): SN
+ - Updated short number metadata for region code(s): FR, KE
+ - Updated geocoding data for country calling code(s): 254 (en)
+ - New carrier data for country calling code(s): 95 (en)
+ - Updated carrier data for country calling code(s):
+   92 (en), 93 (en), 212 (en), 221 (en), 254 (en), 675 (en), 679 (en), 965 (en),
+   996 (en)
+
 Jun 06, 2014: libphonenumber-6.1.1
 * Metadata changes:
  - Updated phone metadata for region code(s):

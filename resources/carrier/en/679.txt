@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2014 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Digicel prefix from ITU doc. Vodafone prefixes from Wikipedia and open-source
+# bug reports, e.g.
+# https://code.google.com/p/libphonenumber/issues/detail?id=476
+# https://code.google.com/p/libphonenumber/issues/detail?id=386
+
 6797|Digicel
-6798|Vodafone
+67984|Vodafone
+67989|Vodafone
 6799|Vodafone

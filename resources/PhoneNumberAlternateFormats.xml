@@ -1286,6 +1286,16 @@
       </availableFormats>
     </territory>
 
+    <!-- Myanmar (MM) -->
+    <territory countryCode="95">
+      <availableFormats>
+        <numberFormat pattern="(9)(\d{4})(\d{5})">
+          <leadingDigits>925</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Nicaragua (NI) -->
     <territory  countryCode="505">
       <availableFormats>

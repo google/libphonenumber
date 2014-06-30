@@ -26,9 +26,9 @@ import java.util.Set;
 public class ShortNumbersRegionCodeSet {
   // A set of all region codes for which data is available.
   static Set<String> getRegionCodeSet() {
-    // The capacity is set to 308 as there are 231 different entries,
+    // The capacity is set to 309 as there are 232 different entries,
     // and this offers a load factor of roughly 0.75.
-    Set<String> regionCodeSet = new HashSet<String>(308);
+    Set<String> regionCodeSet = new HashSet<String>(309);
 
     regionCodeSet.add("AC");
     regionCodeSet.add("AD");
@@ -222,6 +222,7 @@ public class ShortNumbersRegionCodeSet {
     regionCodeSet.add("SK");
     regionCodeSet.add("SL");
     regionCodeSet.add("SM");
+    regionCodeSet.add("SN");
     regionCodeSet.add("SR");
     regionCodeSet.add("ST");
     regionCodeSet.add("SV");

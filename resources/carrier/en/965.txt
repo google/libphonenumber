@@ -13,5 +13,5 @@
 # limitations under the License.
 
 9655|VIVA
-9656|Wataniya
+9656|Ooredoo
 9659|Zain
