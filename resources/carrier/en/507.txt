@@ -1,0 +1,84 @@
+# Copyright (C) 2014 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Prefixes are from La Autoridad Nacional de los Servicios Públicos (ASEP):
+# http://www.asep.gob.pa/telecom/pnn/default.asp
+
+507111|Digicel
+507161|Cable & Wireless
+507218|Telefónica Móviles
+507219|Telefónica Móviles
+50760|Digicel
+507610|Digicel
+507611|Digicel
+507612|Digicel
+507613|Digicel
+507614|Digicel
+507615|Digicel
+50762|Claro
+507630|Claro
+507631|Claro
+507632|Claro
+507634|Cable & Wireless
+507635|Telefónica Móviles
+507636|Telefónica Móviles
+507637|Cable & Wireless
+507638|Telefónica Móviles
+507639|Telefónica Móviles
+50764|Telefónica Móviles
+507650|Cable & Wireless
+507651|Cable & Wireless
+507652|Cable & Wireless
+507653|Cable & Wireless
+507654|Cable & Wireless
+507655|Cable & Wireless
+507656|Telefónica Móviles
+507657|Telefónica Móviles
+507658|Telefónica Móviles
+507659|Telefónica Móviles
+507660|Telefónica Móviles
+507661|Telefónica Móviles
+507662|Telefónica Móviles
+507663|Telefónica Móviles
+507664|Telefónica Móviles
+507665|Cable & Wireless
+507666|Cable & Wireless
+507667|Cable & Wireless
+507668|Cable & Wireless
+507669|Cable & Wireless
+50767|Cable & Wireless
+507680|Cable & Wireless
+507681|Telefónica Móviles
+507682|Telefónica Móviles
+507683|Telefónica Móviles
+507684|Cable & Wireless
+507685|Telefónica Móviles
+507686|Telefónica Móviles
+507687|Cable & Wireless
+507688|Cable & Wireless
+507689|Telefónica Móviles
+507690|Cable & Wireless
+507691|Cable & Wireless
+507692|Telefónica Móviles
+507693|Telefónica Móviles
+507694|Cable & Wireless
+507695|Cable & Wireless
+507696|Cable & Wireless
+507697|Telefónica Móviles
+507698|Cable & Wireless
+507699|Cable & Wireless
+507810|Mobilphone
+507811|Mobilphone
+507872|Cable & Wireless
+507873|Cable & Wireless

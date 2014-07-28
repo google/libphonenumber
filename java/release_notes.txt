@@ -1,3 +1,9 @@
+Jul 28, 2014: libphonenumber-6.2.1
+* Metadata changes:
+ - Updated phone metadata for region code(s): BW, LB, MD, PA, PF, VI, ZM
+ - New carrier data for country calling code(s): 507 (en), 961 (en)
+ - Updated carrier data for country calling code(s): 267 (en), 373 (en)
+
 Jun 30, 2014: libphonenumber-6.2
 * Code changes:
  - Better exclusion of dates when matching phone numbers from text.

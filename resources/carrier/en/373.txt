@@ -11,8 +11,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# Prefixes are from the National Regulatory Agency for Electronic Communications
+# and Information Technology of the Republic of Moldolva:
+# http://en.anrceti.md/resurse_numerotare_tel_mobila
+# http://anrceti.md/fileupload/58
 
 373562|IDC
+37360|Orange
+373610|Orange
+373611|Orange
+373621|Orange
+373650|Eventis Mobile
+373671|Moldtelecom
+373672|Moldtelecom
+373673|Moldtelecom
+373674|Moldtelecom
+373675|Moldtelecom
+373676|Moldtelecom
+3736770|Moldtelecom
+3736771|Moldtelecom
+3736772|Moldtelecom
+3736773|Moldtelecom
+3736774|Moldtelecom
+37368|Orange
+37369|Orange
+373760|Moldcell
 373774|IDC
 373775|IDC
 373777|IDC
