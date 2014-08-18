@@ -47,7 +47,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -56,12 +55,10 @@
       <plugin>
         <groupId>net.kindleit</groupId>
         <artifactId>maven-gae-plugin</artifactId>
-        <version>0.9.1</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.2.1</version>
         <configuration>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -86,7 +83,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
         <configuration>
           <warSourceDirectory>webapp</warSourceDirectory>
         </configuration>

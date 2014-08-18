@@ -23,7 +23,6 @@
     <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
-        <version>2.3.2</version>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -54,7 +53,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.5</version>
         <executions>
           <execution>
             <id>add-source</id>
@@ -76,7 +74,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -99,7 +96,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.2.1</version>
         <configuration>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
