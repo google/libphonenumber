@@ -1,0 +1,21 @@
+NMUs are welcome
+
+
+Use something like the script below to update from Git
+
+
+#!/bin/bash
+
+VERSION=6.3~svn680
+
+echo "*.jar export-ignore" > .gitattributes
+
+git archive --worktree-attributes \
+    --format tar \
+    --prefix libphonenumber/ \
+    -o ../libphonenumber_${VERSION}.orig.tar \
+    master
+
+cd ..
+
+bzip2 libphonenumber_${VERSION}.orig.tar
