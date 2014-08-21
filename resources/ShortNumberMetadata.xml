@@ -2222,7 +2222,7 @@
       <expandedEmergency>
         <!-- Traffic accidents, civil defense, GAULA and urgent local short numbers from above. -->
         <nationalNumberPattern>
-          1(?
+          1(?:
             [01]6|
             [23]7|
             4[47]|
@@ -3187,7 +3187,7 @@
              SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
              prefix - we consider these all premium rate for now. -->
         <nationalNumberPattern>
-          118(
+          118(?:
             [0-68]\d{2}|
             7(?:
               0\d|
@@ -5181,7 +5181,7 @@
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>
           4040|
-          8?(:
+          8(?:
             400|
             933
           )
@@ -7002,7 +7002,7 @@
               )
             )
           )|
-          9(
+          9(?:
             0[24-79]|
             11|
             3[379]|
@@ -8249,7 +8249,7 @@
           33669|
           611
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>33669</exampleNumber>
       </carrierSpecific>
       <carrierServices>

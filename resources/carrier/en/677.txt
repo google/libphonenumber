@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Data from ITU: http://www.itu.int/oth/T02020000BF/en
+
+67770|Satsol
+67771|Satsol
 67774|Solomon Telekom
 67775|Solomon Telekom
 67776|Solomon Telekom

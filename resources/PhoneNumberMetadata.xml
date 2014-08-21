@@ -2950,11 +2950,20 @@
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>[2-5]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          2(?:
+            [013-9]\d|
+            2[0-7]
+          )\d{4}|
+          [3-5]\d{6}
+        </nationalNumberPattern>
         <exampleNumber>2345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>[78]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          22[89]\d{4}|
+          [78]\d{6}
+        </nationalNumberPattern>
         <exampleNumber>7123456</exampleNumber>
       </mobile>
     </territory>
@@ -4237,13 +4246,6 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 65 is the only remaining prefix using the old fixed-line format. -->
-        <numberFormat pattern="(\d{2})(\d{2})(\d{4})"
-          nationalPrefixFormattingRule="($FG)"
-          carrierCodeFormattingRule="$CC ($FG)">
-          <leadingDigits>65</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="(9)([5-9]\d{3})(\d{4})">
           <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3</format>
@@ -4292,7 +4294,7 @@
             123
           )\d{7,8}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6,11}</possibleNumberPattern>
+        <possibleNumberPattern>\d{7,11}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
         <nationalNumberPattern>600\d{7,8}</nationalNumberPattern>
@@ -4302,8 +4304,7 @@
       <fixedLine>
         <!-- In mid-2013, Chile switched from 8 digits to 9 digits for fixed-line numbers, by
              inserting a '2' after the area code (which are 2 digits, with the exception of '2').
-             As of Feb. 2014, all of the prefixes have been switched over to the new plan, except
-             for 65 (which according to the schedule should have been switched over by July 2013).
+             As of Aug. 2014, all of the prefixes have been switched over to the new plan.
              IMPORTANT: The fact that Santiago numbers have a prefix of "22", and that numbers in
              other areas have '2' as their third digit, is likely to change in the future. At some
              stage, Santiago numbers will probably switch to prefix "2\d", and the third digit in
@@ -4320,16 +4321,12 @@
             3[2-5]|
             [47][1-35]|
             5[1-3578]|
-            6[1347]
-          )\d{7}|
-          65\d{6,7}
+            6[13-57]
+          )\d{7}
         </nationalNumberPattern>
         <!-- Area codes do not need to be dialled when dialling within the same area, so the
-             smallest possible number is length 6. -->
-        <!-- Nov 2012: The prefixing of '2' to all 6-digit fixed line numbers means that while
-             the maximum possible number length stays as 9, the minimum length will become '7'
-             when all area codes are migrated. -->
-        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
+             smallest possible number is length 7. -->
+        <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
         <exampleNumber>221234567</exampleNumber>
       </fixedLine>
       <mobile>
@@ -4955,7 +4952,8 @@
           3(?:
             0[0-5]|
             1\d|
-            [25][01]
+            2[0-2]|
+            5[01]
           )\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -5845,7 +5843,7 @@
           (?:
             [2-7]\d|
             8[126-9]|
-            9[126-9]
+            9[1-36-9]
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>32123456</exampleNumber>
@@ -5855,7 +5853,7 @@
           (?:
             [2-7]\d|
             8[126-9]|
-            9[126-9]
+            9[1-36-9]
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>20123456</exampleNumber>
@@ -10104,7 +10102,7 @@
                0(?:
                  2[2-9]|
                  [3-6]|
-                 7[01]
+                 7[0-8]
                )|
                2(?:
                  0[04-9]|
@@ -10573,7 +10571,7 @@
               0(?:
                 2[2-9]|
                 [3-6]\d|
-                7[01]
+                7[0-8]
               )|
               2(?:
                 0[04-9]|
@@ -19795,7 +19793,7 @@
         <nationalNumberPattern>
           48\d{3}|
           7(?:
-            [46-8]\d|
+            [0146-8]\d|
             5[025-9]|
             90
           )\d{4}|
@@ -20811,6 +20809,10 @@
           <leadingDigits>69</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat pattern="(90\d)(\d{3})(\d{3})">
+          <leadingDigits>90</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[1-79]\d{6,8}</nationalNumberPattern>
@@ -20835,7 +20837,9 @@
         <!-- 24 is used by the carrier Telesom. 28 is used by Nationlink. 6[89] are apparently used
              by Nationlink Somalia, 67 by Nationlink Puntland, and 61 by Hormuud. 7X is used by
              Somtel. 6 followed by only 7 digits is used by Telecom. Note that in June 2014 many
-             ranges were suspended by the government. -->
+             ranges were suspended by the government. 90\d{6} was listed as one of the ranges to be
+             suspended, but open-source contributors confirm that 907\d{6} is still in use, even if
+             the shorter 90 ranges are no longer. -->
         <nationalNumberPattern>
           (?:
             15\d|
@@ -20844,7 +20848,8 @@
               8
             )|
             6[137-9]?\d{2}|
-            7[1-9]\d
+            7[1-9]\d|
+            907\d
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>71123456</exampleNumber>

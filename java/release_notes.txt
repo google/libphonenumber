@@ -1,3 +1,10 @@
+Aug 21, 2014: libphonenumber-6.2.2
+* Metadata changes:
+ - Updated phone metadata for region code(s): BN, CL, CO, DK, IN, SB, SO
+ - Updated short number metadata for region code(s): FR, SA, US
+ - Updated carrier data for country calling code(s):
+   27 (en), 57 (en), 91 (en), 252 (en), 677 (en)
+
 Jul 28, 2014: libphonenumber-6.2.1
 * Metadata changes:
  - Updated phone metadata for region code(s): BW, LB, MD, PA, PF, VI, ZM
