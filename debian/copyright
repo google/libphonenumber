@@ -3,12 +3,29 @@ Upstream-Name: libphonenumber
 Upstream-Contact: Fredrik Roubert <roubert@google.com>
 Source: http://code.google.com/p/libphonenumber/
 
-Files: *
+Files: * cpp/src/phonenumbers/base/logging.h
+ cpp/src/phonenumbers/base/thread_checker.h
+ cpp/src/phonenumbers/base/memory/singleton.h
+ cpp/src/phonenumbers/base/memory/singleton_posix.h
+ cpp/src/phonenumbers/base/synchronization/lock.h
+ cpp/src/phonenumbers/base/synchronization/lock_posix.h
+ cpp/src/phonenumbers/base/thread_checker.h
 Copyright: 2011, The Libphonenumber Authors
 License: Apache-2.0
  On Debian systems, the full text of the Apache
  License version 2.0 can be found in the file
  `/usr/share/common-licenses/Apache-2.0'.
+
+Files: cpp/src/phonenumbers/utf/rune.c
+ cpp/src/phonenumbers/utf/utf.h
+ cpp/src/phonenumbers/utf/utfdef.h
+Copyright: 1998-2002, Lucent Technologies
+License: MIT
+
+Files: cpp/src/phonenumbers/base/*
+ tools/cpp/src/base/*
+Copyright: 2006-2012, The Chromium Authors
+License: BSD
 
 Files: debian/*
 Copyright: 2011, The Libphonenumber Authors
@@ -17,3 +34,41 @@ License: Apache-2.0
  On Debian systems, the full text of the Apache
  License version 2.0 can be found in the file
  `/usr/share/common-licenses/Apache-2.0'.
+
+License: MIT
+ Permission to use, copy, modify, and distribute this software for any
+ purpose without fee is hereby granted, provided that this entire notice
+ is included in all copies of any software which is or includes a copy
+ or modification of this software and in all copies of the supporting
+ documentation for such software.
+ THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED
+ WARRANTY.  IN PARTICULAR, NEITHER THE AUTHORS NOR LUCENT TECHNOLOGIES MAKE ANY
+ REPRESENTATION OR WARRANTY OF ANY KIND CONCERNING THE MERCHANTABILITY
+ OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
+
+License: BSD
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above
+   copyright notice, this list of conditions and the following disclaimer
+   in the documentation and/or other materials provided with the
+   distribution.
+ * Neither the name of Google Inc. nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
