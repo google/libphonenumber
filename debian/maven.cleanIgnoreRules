@@ -1,0 +1,17 @@
+# Maven clean ignore rules - ignore some Maven dependencies and plugins
+# during the clean phase of a Maven build
+# Format of this file is:
+# [group] [artifact] [type] [version] [classifier] [scope]
+# where each element can be either
+# - the exact string, for example org.apache for the group, or 3.1
+#   for the version. In this case, the element is simply matched
+#   and left as it is
+# - * (the star character, alone). In this case, anything will
+#   match and be left as it is. For example, using * on the
+#  position of the artifact field will match any artifact id
+# All elements much match before a rule can be applied
+# Example rule: match jar with groupid= junit, artifactid= junit
+# and version starting with 3., this dependency is then removed
+# from the POM before mvn clean is called
+#   junit junit jar s/3\..*/3.x/
+

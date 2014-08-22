@@ -2,13 +2,10 @@ Source: libphonenumber
 Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Daniel Pocock <daniel@pocock.pro>, Fredrik Roubert <roubert@google.com>
-Build-Depends: ant,
-               ant-optional,
+Build-Depends: cdbs,
                cmake,
                debhelper (>= 9),
                default-jdk | java-sdk,
-               javahelper (>= 0.34),
-               junit,
                libboost-dev (>= 1.40),
                libboost-system-dev (>= 1.40),
                libboost-thread-dev (>= 1.40),
@@ -16,12 +13,37 @@ Build-Depends: ant,
                libicu-dev (>= 4.4),
                libprotobuf-dev (>= 2.4),
                libre2-dev,
-               protobuf-compiler
+               maven-debian-helper (>= 1.5),
+               protobuf-compiler,
+               default-jdk-doc,
+               junit4,
+               libbuild-helper-maven-plugin-java,
+               libmaven-antrun-plugin-java,
+               libmaven-assembly-plugin-java,
+               libmaven-compiler-plugin-java,
+               libmaven-exec-plugin-java,
+               libmaven-jar-plugin-java,
+               libmaven-javadoc-plugin-java,
+               libmaven-war-plugin-java,
+               libprotobuf-java,
+               libservlet2.5-java,
+               libservlet2.5-java-doc
 Standards-Version: 3.9.5
 Section: libs
 Homepage: http://code.google.com/p/libphonenumber/
 Vcs-Browser: http://code.google.com/p/libphonenumber/source/browse/
 Vcs-Svn: http://libphonenumber.googlecode.com/svn/trunk/
+
+Package: libphonenumber6-java
+Section: java
+Architecture: all
+Depends: ${misc:Depends}, ${maven:Depends}
+Recommends: ${maven:OptionalDepends}
+Description: parsing/formatting/validating phone numbers - java
+ Google's common C++ and Java library for parsing, formatting, storing and
+ validating international phone numbers.
+ .
+ This package contains the runtime library JARs for Java users.
 
 Package: libphonenumber6-dev
 Section: libdevel
@@ -45,13 +67,3 @@ Description: parsing/formatting/validating phone numbers
  validating international phone numbers.
  .
  This package contains the runtime libraries for C++ users.
-
-Package: libphonenumber6-java
-Section: java
-Architecture: all
-Depends: ${java:Depends}, ${misc:Depends}
-Description: parsing/formatting/validating phone numbers - java
- Google's common C++ and Java library for parsing, formatting, storing and
- validating international phone numbers.
- .
- This package contains the runtime library JARs for Java users.

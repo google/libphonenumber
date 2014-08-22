@@ -1,0 +1,13 @@
+diff --git a/java/pom.xml b/java/pom.xml
+index 4e7cdb5..eb68bcc 100644
+--- a/java/pom.xml
++++ b/java/pom.xml
+@@ -76,7 +76,7 @@
+     <module>internal/prefixmapper</module>
+     <module>carrier</module>
+     <module>geocoder</module>
+-    <module>demo</module>
++    <!--<module>demo</module>-->
+   </modules>
+
+   <build>

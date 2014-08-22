@@ -18,9 +18,13 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-ANT ?= ant
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/maven.mk
+
+JAVA_HOME := /usr/lib/jvm/default-java
+DEB_MAVEN_DOC_TARGET := javadoc:jar javadoc:aggregate
+
 CMAKE ?= cmake
-JAVA_HOME ?= /usr/lib/jvm/default-java
 
 CMAKE_FLAGS := -DCMAKE_INSTALL_PREFIX=/usr
 CPP_BUILD := cpp/build
@@ -45,31 +49,39 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
   MAKEFLAGS += -j$(NUMJOBS)
 endif
 
-%:
-	dh $@ --with javahelper
+#%:
+#	dh $@ --with javahelper
 
-override_dh_auto_configure:
+#override_dh_auto_configure:
+configure/libphonenumber6::
 	mkdir -p $(CPP_BUILD) && cd $(CPP_BUILD) && $(CMAKE) $(CMAKE_FLAGS) ..
 
-override_dh_auto_build:
+#override_dh_auto_build:
+#	( cd tools/java && $(MVN) package )
+#	mkdir java/lib
+#	ln -s /usr/share/java/junit4.jar java/lib/junit-4.8.1.jar
+#	$(ANT) -f $(JAVA_BUILD).xml jar
+build/libphonenumber6::
 	$(MAKE) -C $(CPP_BUILD) phonenumber phonenumber-shared
-	$(ANT) -f $(JAVA_BUILD).xml jar
 
-override_dh_auto_test:
-ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
-	$(MAKE) -C $(CPP_BUILD) test
-	$(ANT) -f $(JAVA_BUILD).xml junit
-endif
+#override_dh_auto_test:
+#ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+#	$(MAKE) -C $(CPP_BUILD) test
+#	$(ANT) -f $(JAVA_BUILD).xml junit
+#endif
 
 # Hack for multiarch: CMake doesn't really support libdir so we just manually
 # move /usr/lib/* to a proper multiarch location.
-override_dh_auto_install:
+#override_dh_auto_install:
+common-install-arch::
 	dh_auto_install --builddirectory=$(CPP_BUILD)
 	mkdir -p debian/tmp/usr/lib-$(DEB_HOST_MULTIARCH)
 	mv debian/tmp/usr/lib/* debian/tmp/usr/lib-$(DEB_HOST_MULTIARCH)
 	mv debian/tmp/usr/lib-$(DEB_HOST_MULTIARCH) \
 		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)
 
-override_dh_auto_clean:
+#override_dh_auto_clean:
+clean::
 	-test -d $(CPP_BUILD) && $(MAKE) -C $(CPP_BUILD) clean
-	-$(ANT) -f $(JAVA_BUILD).xml clean
+	#-$(ANT) -f $(JAVA_BUILD).xml clean
+	#-( cd tools/java && $(MVN) clean )

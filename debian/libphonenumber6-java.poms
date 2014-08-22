@@ -1,0 +1,39 @@
+# List of POM files for the package
+# Format of this file is:
+# <path to pom file> [option]*
+# where option can be:
+#   --ignore: ignore this POM and its artifact if any
+#   --ignore-pom: don't install the POM. To use on POM files that are created
+#     temporarily for certain artifacts such as Javadoc jars. [mh_install, mh_installpoms]
+#   --no-parent: remove the <parent> tag from the POM
+#   --package=<package>: an alternative package to use when installing this POM
+#      and its artifact
+#   --has-package-version: to indicate that the original version of the POM is the same as the upstream part
+#      of the version for the package.
+#   --keep-elements=<elem1,elem2>: a list of XML elements to keep in the POM
+#      during a clean operation with mh_cleanpom or mh_installpom
+#   --artifact=<path>: path to the build artifact associated with this POM,
+#      it will be installed when using the command mh_install. [mh_install]
+#   --java-lib: install the jar into /usr/share/java to comply with Debian
+#      packaging guidelines
+#   --usj-name=<name>: name to use when installing the library in /usr/share/java
+#   --usj-version=<version>: version to use when installing the library in /usr/share/java
+#   --no-usj-versionless: don't install the versionless link in /usr/share/java
+#   --dest-jar=<path>: the destination for the real jar.
+#     It will be installed with mh_install. [mh_install]
+#   --classifier=<classifier>: Optional, the classifier for the jar. Empty by default.
+#   --site-xml=<location>: Optional, the location for site.xml if it needs to be installed.
+#     Empty by default. [mh_install]
+#
+pom.xml
+tools/java/pom.xml
+tools/java/common/pom.xml
+tools/java/cpp-build/pom.xml
+tools/java/data/pom.xml
+tools/java/java-build/pom.xml
+java/pom.xml
+java/libphonenumber/pom.xml --java-lib
+java/internal/prefixmapper/pom.xml --java-lib
+java/carrier/pom.xml --java-lib
+java/geocoder/pom.xml --java-lib
+java/demo/pom.xml --ignore
