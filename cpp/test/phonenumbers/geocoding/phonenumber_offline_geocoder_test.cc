@@ -49,19 +49,19 @@ const Locale kSimplifiedChineseLocale = Locale("zh", "CN");
 class PhoneNumberOfflineGeocoderTest : public testing::Test {
  protected:
   PhoneNumberOfflineGeocoderTest() :
-    KO_NUMBER1(MakeNumber(82, 22123456L)),
-    KO_NUMBER2(MakeNumber(82, 322123456L)),
-    KO_NUMBER3(MakeNumber(82, 6421234567L)),
-    KO_INVALID_NUMBER(MakeNumber(82, 1234L)),
-    US_NUMBER1(MakeNumber(1, 6502530000L)),
-    US_NUMBER2(MakeNumber(1, 6509600000L)),
-    US_NUMBER3(MakeNumber(1, 2128120000L)),
-    US_NUMBER4(MakeNumber(1, 6174240000L)),
-    US_INVALID_NUMBER(MakeNumber(1, 123456789L)),
-    BS_NUMBER1(MakeNumber(1, 2423651234L)),
-    AU_NUMBER(MakeNumber(61, 236618300L)),
-    NUMBER_WITH_INVALID_COUNTRY_CODE(MakeNumber(999, 2423651234L)),
-    INTERNATIONAL_TOLL_FREE(MakeNumber(800, 12345678L)) {
+    KO_NUMBER1(MakeNumber(82, 22123456UL)),
+    KO_NUMBER2(MakeNumber(82, 322123456UL)),
+    KO_NUMBER3(MakeNumber(82, 6421234567UL)),
+    KO_INVALID_NUMBER(MakeNumber(82, 1234UL)),
+    US_NUMBER1(MakeNumber(1, 6502530000UL)),
+    US_NUMBER2(MakeNumber(1, 6509600000UL)),
+    US_NUMBER3(MakeNumber(1, 2128120000UL)),
+    US_NUMBER4(MakeNumber(1, 6174240000UL)),
+    US_INVALID_NUMBER(MakeNumber(1, 123456789UL)),
+    BS_NUMBER1(MakeNumber(1, 2423651234UL)),
+    AU_NUMBER(MakeNumber(61, 236618300UL)),
+    NUMBER_WITH_INVALID_COUNTRY_CODE(MakeNumber(999, 2423651234UL)),
+    INTERNATIONAL_TOLL_FREE(MakeNumber(800, 12345678UL)) {
   }
 
   virtual void SetUp() {
