@@ -1,9 +1,9 @@
 NMUs are welcome
 
-
 Use something like the script below to update from Git
 
-
+Note: there is no "Build-Depends-Indep" in debian/control because
+some of the Java tools need to be built for use during the C++ build.
 #!/bin/bash
 
 VERSION=6.3~svn680
