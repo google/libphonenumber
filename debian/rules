@@ -62,6 +62,8 @@ configure/libphonenumber6::
 #	ln -s /usr/share/java/junit4.jar java/lib/junit-4.8.1.jar
 #	$(ANT) -f $(JAVA_BUILD).xml jar
 build/libphonenumber6::
+	ln -sf cpp-build-1.0-SNAPSHOT.jar tools/java/cpp-build/target/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar
+	ln -sf /usr/share/java/protobuf.jar tools/java/cpp-build/target/protobuf-java-debian.jar
 	$(MAKE) -C $(CPP_BUILD) phonenumber phonenumber-shared
 
 #override_dh_auto_test:

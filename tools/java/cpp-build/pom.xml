@@ -91,6 +91,18 @@
           </arguments>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.google.i18n.phonenumbers.EntryPoint</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
       <!-- Build a JAR with its dependencies (protocol buffers and common library). This JAR
            contains the C++ build tools invoked by CMake during the libphonenumber C++ build. -->
       <plugin>
