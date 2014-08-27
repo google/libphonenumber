@@ -7,6 +7,12 @@
   <packaging>pom</packaging>
   <url>http://code.google.com/p/libphonenumber/</url>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
   <description>
     Google's common Java library for parsing, formatting, storing and validating international phone numbers.
     Optimized for running on smartphones.
