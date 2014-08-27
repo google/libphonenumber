@@ -51,7 +51,11 @@ Architecture: any
 Provides: libphonenumber-dev
 Conflicts: libphonenumber-dev
 Replaces: libphonenumber-dev
-Depends: libphonenumber6 (=${binary:Version}), ${misc:Depends}
+Depends: libphonenumber6 (=${binary:Version}), ${misc:Depends},
+         libboost-dev (>= 1.40),
+         libboost-system-dev (>= 1.40),
+         libboost-thread-dev (>= 1.40),
+         libprotobuf-dev (>= 2.4)
 Description: parsing/formatting/validating phone numbers - development files
  Google's common C++ and Java library for parsing, formatting, storing and
  validating international phone numbers.
