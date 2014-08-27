@@ -31,7 +31,7 @@ tools/java/common/pom.xml
 tools/java/cpp-build/pom.xml
 tools/java/data/pom.xml
 tools/java/java-build/pom.xml
-java/pom.xml
+java/pom.xml --no-parent
 java/libphonenumber/pom.xml --java-lib
 java/internal/prefixmapper/pom.xml --java-lib
 java/carrier/pom.xml --java-lib
