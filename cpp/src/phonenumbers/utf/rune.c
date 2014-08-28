@@ -1,6 +1,7 @@
 /*
  * The authors of this software are Rob Pike and Ken Thompson.
  *              Copyright (c) 2002 by Lucent Technologies.
+ *              Portions Copyright (c) 2009 The Go Authors.  All rights reserved.
  * Permission to use, copy, modify, and distribute this software for any
  * purpose without fee is hereby granted, provided that this entire notice
  * is included in all copies of any software which is or includes a copy
@@ -11,8 +12,6 @@
  * REPRESENTATION OR WARRANTY OF ANY KIND CONCERNING THE MERCHANTABILITY
  * OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
  */
-#include <stdarg.h>
-#include <string.h>
 #include "phonenumbers/utf/utf.h"
 #include "phonenumbers/utf/utfdef.h"
 
@@ -35,11 +34,13 @@ enum
 	Rune1	= (1<<(Bit1+0*Bitx))-1,		/* 0000 0000 0111 1111 */
 	Rune2	= (1<<(Bit2+1*Bitx))-1,		/* 0000 0111 1111 1111 */
 	Rune3	= (1<<(Bit3+2*Bitx))-1,		/* 1111 1111 1111 1111 */
-	Rune4	= (1<<(Bit4+3*Bitx))-1,
-                                        /* 0001 1111 1111 1111 1111 1111 */
+	Rune4	= (1<<(Bit4+3*Bitx))-1,		/* 0001 1111 1111 1111 1111 1111 */
 
 	Maskx	= (1<<Bitx)-1,			/* 0011 1111 */
 	Testx	= Maskx ^ 0xFF,			/* 1100 0000 */
+
+	SurrogateMin	= 0xD800,
+	SurrogateMax	= 0xDFFF,
 
 	Bad	= Runeerror,
 };
@@ -79,7 +80,7 @@ charntorune(Rune *rune, const char *str, int length)
 	 */
 	c = *(uchar*)str;
 	if(c < Tx) {
-		*rune = c;
+		*rune = (Rune)c;
 		return 1;
 	}
 
@@ -101,7 +102,7 @@ charntorune(Rune *rune, const char *str, int length)
 		l = ((c << Bitx) | c1) & Rune2;
 		if(l <= Rune1)
 			goto bad;
-		*rune = l;
+		*rune = (Rune)l;
 		return 2;
 	}
 
@@ -121,7 +122,9 @@ charntorune(Rune *rune, const char *str, int length)
 		l = ((((c << Bitx) | c1) << Bitx) | c2) & Rune3;
 		if(l <= Rune2)
 			goto bad;
-		*rune = l;
+		if (SurrogateMin <= l && l <= SurrogateMax)
+			goto bad;
+		*rune = (Rune)l;
 		return 3;
 	}
 
@@ -137,9 +140,9 @@ charntorune(Rune *rune, const char *str, int length)
 		goto bad;
 	if (c < T5) {
 		l = ((((((c << Bitx) | c1) << Bitx) | c2) << Bitx) | c3) & Rune4;
-		if (l <= Rune3)
+		if (l <= Rune3 || l > Runemax)
 			goto bad;
-		*rune = l;
+		*rune = (Rune)l;
 		return 4;
 	}
 
@@ -175,7 +178,7 @@ chartorune(Rune *rune, const char *str)
 	 */
 	c = *(uchar*)str;
 	if(c < Tx) {
-		*rune = c;
+		*rune = (Rune)c;
 		return 1;
 	}
 
@@ -192,7 +195,7 @@ chartorune(Rune *rune, const char *str)
 		l = ((c << Bitx) | c1) & Rune2;
 		if(l <= Rune1)
 			goto bad;
-		*rune = l;
+		*rune = (Rune)l;
 		return 2;
 	}
 
@@ -207,7 +210,9 @@ chartorune(Rune *rune, const char *str)
 		l = ((((c << Bitx) | c1) << Bitx) | c2) & Rune3;
 		if(l <= Rune2)
 			goto bad;
-		*rune = l;
+		if (SurrogateMin <= l && l <= SurrogateMax)
+			goto bad;
+		*rune = (Rune)l;
 		return 3;
 	}
 
@@ -220,9 +225,9 @@ chartorune(Rune *rune, const char *str)
 		goto bad;
 	if (c < T5) {
 		l = ((((((c << Bitx) | c1) << Bitx) | c2) << Bitx) | c3) & Rune4;
-		if (l <= Rune3)
+		if (l <= Rune3 || l > Runemax)
 			goto bad;
-		*rune = l;
+		*rune = (Rune)l;
 		return 4;
 	}
 
@@ -240,7 +245,8 @@ bad:
 }
 
 int
-isvalidcharntorune(const char* str, int length, Rune* rune, int* consumed) {
+isvalidcharntorune(const char* str, int length, Rune* rune, int* consumed)
+{
 	*consumed = charntorune(rune, str, length);
 	return *rune != Runeerror || *consumed == 3;
 }
@@ -257,7 +263,7 @@ runetochar(char *str, const Rune *rune)
 	 */
 	c = *rune;
 	if(c <= Rune1) {
-		str[0] = c;
+		str[0] = (char)c;
 		return 1;
 	}
 
@@ -266,18 +272,20 @@ runetochar(char *str, const Rune *rune)
 	 *	0080-07FF => T2 Tx
 	 */
 	if(c <= Rune2) {
-		str[0] = T2 | (c >> 1*Bitx);
-		str[1] = Tx | (c & Maskx);
+		str[0] = (char)(T2 | (c >> 1*Bitx));
+		str[1] = (char)(Tx | (c & Maskx));
 		return 2;
 	}
 
 	/*
-	 * If the Rune is out of range, convert it to the error rune.
+	 * If the Rune is out of range or a surrogate half, convert it to the error rune.
 	 * Do this test here because the error rune encodes to three bytes.
 	 * Doing it earlier would duplicate work, since an out of range
 	 * Rune wouldn't have fit in one or two bytes.
 	 */
 	if (c > Runemax)
+		c = Runeerror;
+	if (SurrogateMin <= c && c <= SurrogateMax)
 		c = Runeerror;
 
 	/*
@@ -285,9 +293,9 @@ runetochar(char *str, const Rune *rune)
 	 *	0800-FFFF => T3 Tx Tx
 	 */
 	if (c <= Rune3) {
-		str[0] = T3 |  (c >> 2*Bitx);
-		str[1] = Tx | ((c >> 1*Bitx) & Maskx);
-		str[2] = Tx |  (c & Maskx);
+		str[0] = (char)(T3 |  (c >> 2*Bitx));
+		str[1] = (char)(Tx | ((c >> 1*Bitx) & Maskx));
+		str[2] = (char)(Tx |  (c & Maskx));
 		return 3;
 	}
 
@@ -295,10 +303,10 @@ runetochar(char *str, const Rune *rune)
 	 * four character sequence (21-bit value)
 	 *     10000-1FFFFF => T4 Tx Tx Tx
 	 */
-	str[0] = T4 | (c >> 3*Bitx);
-	str[1] = Tx | ((c >> 2*Bitx) & Maskx);
-	str[2] = Tx | ((c >> 1*Bitx) & Maskx);
-	str[3] = Tx | (c & Maskx);
+	str[0] = (char)(T4 | (c >> 3*Bitx));
+	str[1] = (char)(Tx | ((c >> 2*Bitx) & Maskx));
+	str[2] = (char)(Tx | ((c >> 1*Bitx) & Maskx));
+	str[3] = (char)(Tx | (c & Maskx));
 	return 4;
 }
 
@@ -317,7 +325,7 @@ runenlen(const Rune *r, int nrune)
 
 	nb = 0;
 	while(nrune--) {
-		c = *r++;
+		c = (int)*r++;
 		if (c <= Rune1)
 			nb++;
 		else if (c <= Rune2)

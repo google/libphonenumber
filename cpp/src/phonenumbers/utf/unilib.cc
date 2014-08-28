@@ -46,7 +46,7 @@ inline bool IsInterchangeValidCodepoint(char32 c) {
 }  // namespace
 
 int SpanInterchangeValid(const char* begin, int byte_length) {
-  char32 rune;
+  Rune rune;
   const char* p = begin;
   const char* end = begin + byte_length;
   while (p < end) {
