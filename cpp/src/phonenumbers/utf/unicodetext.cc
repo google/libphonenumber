@@ -494,6 +494,7 @@ int UnicodeText::const_iterator::get_utf8(char* utf8_output) const {
 
 
 UnicodeText::const_iterator UnicodeText::MakeIterator(const char* p) const {
+#ifndef NDEBUG
   assert(p != NULL);
   const char* start = utf8_data();
   int len = utf8_length();
@@ -501,6 +502,7 @@ UnicodeText::const_iterator UnicodeText::MakeIterator(const char* p) const {
   assert(p >= start);
   assert(p <= end);
   assert(p == end || !UniLib::IsTrailByte(*p));
+#endif
   return const_iterator(p);
 }
 
