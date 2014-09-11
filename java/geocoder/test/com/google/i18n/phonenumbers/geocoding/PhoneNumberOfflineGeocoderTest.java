@@ -51,6 +51,8 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(6174240000L);
   private static final PhoneNumber US_INVALID_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(123456789L);
+  private static final PhoneNumber NANPA_TOLL_FREE =
+      new PhoneNumber().setCountryCode(1).setNationalNumber(8002431234L);
   private static final PhoneNumber BS_NUMBER1 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
   private static final PhoneNumber AU_NUMBER =
@@ -82,6 +84,13 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
     // covered by the geocoding data file.
     assertEquals("United States",
         geocoder.getDescriptionForNumber(US_NUMBER4, new Locale("en", "US")));
+  }
+
+  public void testGetDescriptionForNumberBelongingToMultipleCountriesIsEmpty() {
+      // Test that nothing is returned when the number passed in is valid but not
+      // covered by the geocoding data file and belongs to multiple countries
+      assertEquals("",
+          geocoder.getDescriptionForNumber(NANPA_TOLL_FREE, new Locale("en", "US")));
   }
 
   public void testGetDescriptionForNumber_en_US() {

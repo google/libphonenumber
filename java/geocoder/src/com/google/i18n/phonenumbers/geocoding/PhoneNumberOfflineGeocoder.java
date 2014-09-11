@@ -22,6 +22,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -60,11 +61,27 @@ public class PhoneNumberOfflineGeocoder {
 
   /**
    * Returns the customary display name in the given language for the given territory the phone
-   * number is from.
+   * number is from. If it could be from many territories, nothing is returned.
    */
   private String getCountryNameForNumber(PhoneNumber number, Locale language) {
-    String regionCode = phoneUtil.getRegionCodeForNumber(number);
-    return getRegionDisplayName(regionCode, language);
+    List<String> regionCodes =
+        phoneUtil.getRegionCodesForCountryCode(number.getCountryCode());
+    if (regionCodes.size() == 1) {
+      return getRegionDisplayName(regionCodes.get(0), language);
+    } else {
+      String regionWhereNumberIsValid = "ZZ";
+      for (String regionCode : regionCodes) {
+        if (phoneUtil.isValidNumberForRegion(number, regionCode)) {
+          if (!regionWhereNumberIsValid.equals("ZZ")) {
+            // If we can't assign the phone number as definitely belonging to only one territory,
+            // then we return nothing.
+            return ""; 
+          }   
+          regionWhereNumberIsValid = regionCode;
+        }   
+      }   
+      return getRegionDisplayName(regionWhereNumberIsValid, language);
+    }
   }
 
   /**
