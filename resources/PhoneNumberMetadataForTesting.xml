@@ -223,14 +223,8 @@
     <!-- Cocos Islands -->
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
-         recognised by the library. However, we don't want all numbers to be considered valid for
-         it, so we set at least a general description that allows our test geocoding numbers to be
-         valid only for Australia. -->
+         recognised by the library. -->
     <territory id="CC" countryCode="61">
-      <generalDesc>
-        <nationalNumberPattern>5\d{3,14}</nationalNumberPattern>
-        <possibleNumberPattern>\d{2,14}</possibleNumberPattern>
-      </generalDesc>
     </territory>
 
     <!-- China -->
@@ -251,18 +245,12 @@
         </numberFormat>
       </availableFormats>
     </territory>
-    
+
     <!-- Christmas Islands -->
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
-         recognised by the library. However, we don't want all numbers to be considered valid for
-         it, so we set at least a general description that allows our test geocoding numbers to be
-         valid only for Australia. -->
+         recognised by the library. -->
     <territory id="CX" countryCode="61">
-      <generalDesc>
-        <nationalNumberPattern>5\d{3,14}</nationalNumberPattern>
-        <possibleNumberPattern>\d{2,14}</possibleNumberPattern>
-      </generalDesc>
     </territory>
 
     <!-- Germany -->

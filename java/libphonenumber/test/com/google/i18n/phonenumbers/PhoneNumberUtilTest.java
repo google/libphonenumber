@@ -1314,18 +1314,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     assertEquals(PhoneNumberUtil.ValidationResult.TOO_LONG,
                  phoneUtil.isPossibleNumberWithReason(INTERNATIONAL_TOLL_FREE_TOO_LONG));
-
-    // Try with number that we don't have metadata for.
-    PhoneNumber adNumber = new PhoneNumber();
-    adNumber.setCountryCode(376).setNationalNumber(12345L);
-    assertEquals(PhoneNumberUtil.ValidationResult.IS_POSSIBLE,
-                 phoneUtil.isPossibleNumberWithReason(adNumber));
-    adNumber.setCountryCode(376).setNationalNumber(1L);
-    assertEquals(PhoneNumberUtil.ValidationResult.TOO_SHORT,
-                 phoneUtil.isPossibleNumberWithReason(adNumber));
-    adNumber.setCountryCode(376).setNationalNumber(123456789012345678L);
-    assertEquals(PhoneNumberUtil.ValidationResult.TOO_LONG,
-                 phoneUtil.isPossibleNumberWithReason(adNumber));
   }
 
   public void testIsNotPossibleNumber() {
@@ -2350,7 +2338,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("+37612345", phoneUtil.format(adNumber, PhoneNumberFormat.E164));
     assertEquals("12345", phoneUtil.format(adNumber, PhoneNumberFormat.NATIONAL));
     assertEquals(PhoneNumberUtil.PhoneNumberType.UNKNOWN, phoneUtil.getNumberType(adNumber));
-    assertTrue(phoneUtil.isValidNumber(adNumber));
+    assertFalse(phoneUtil.isValidNumber(adNumber));
 
     // Test dialing a US number from within Andorra.
     assertEquals("00 1 650 253 0000",

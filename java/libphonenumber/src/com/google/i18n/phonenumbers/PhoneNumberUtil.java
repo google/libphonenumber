@@ -1981,9 +1981,7 @@ public class PhoneNumberUtil {
   }
 
   private PhoneNumberType getNumberTypeHelper(String nationalNumber, PhoneMetadata metadata) {
-    PhoneNumberDesc generalNumberDesc = metadata.getGeneralDesc();
-    if (!generalNumberDesc.hasNationalNumberPattern() ||
-        !isNumberMatchingDesc(nationalNumber, generalNumberDesc)) {
+    if (!isNumberMatchingDesc(nationalNumber, metadata.getGeneralDesc())) {
       return PhoneNumberType.UNKNOWN;
     }
 
@@ -2114,16 +2112,7 @@ public class PhoneNumberUtil {
       // match that of the region code.
       return false;
     }
-    PhoneNumberDesc generalNumDesc = metadata.getGeneralDesc();
     String nationalSignificantNumber = getNationalSignificantNumber(number);
-
-    // For regions where we don't have metadata for PhoneNumberDesc, we treat any number passed in
-    // as a valid number if its national significant number is between the minimum and maximum
-    // lengths defined by ITU for a national significant number.
-    if (!generalNumDesc.hasNationalNumberPattern()) {
-      int numberLength = nationalSignificantNumber.length();
-      return numberLength > MIN_LENGTH_FOR_NSN && numberLength <= MAX_LENGTH_FOR_NSN;
-    }
     return getNumberTypeHelper(nationalSignificantNumber, metadata) != PhoneNumberType.UNKNOWN;
   }
 
@@ -2382,18 +2371,6 @@ public class PhoneNumberUtil {
     // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
     PhoneNumberDesc generalNumDesc = metadata.getGeneralDesc();
-    // Handling case of numbers with no metadata.
-    if (!generalNumDesc.hasNationalNumberPattern()) {
-      logger.log(Level.FINER, "Checking if number is possible with incomplete metadata.");
-      int numberLength = nationalNumber.length();
-      if (numberLength < MIN_LENGTH_FOR_NSN) {
-        return ValidationResult.TOO_SHORT;
-      } else if (numberLength > MAX_LENGTH_FOR_NSN) {
-        return ValidationResult.TOO_LONG;
-      } else {
-        return ValidationResult.IS_POSSIBLE;
-      }
-    }
     Pattern possibleNumberPattern =
         regexCache.getPatternForRegex(generalNumDesc.getPossibleNumberPattern());
     return testNumberLengthAgainstPattern(possibleNumberPattern, nationalNumber);
