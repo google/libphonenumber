@@ -26659,6 +26659,7 @@
 1781963|Randolph, MA
 1781979|Melrose, MA
 1781986|Randolph, MA
+1782|Nova Scotia
 1785|Kansas
 1785215|Topeka, KS
 1785222|La Crosse, KS
@@ -34115,6 +34116,8 @@
 1928871|Window Rock, AZ
 1928899|Prescott, AZ
 1928927|Quartzsite, AZ
+1929|New York
+1930|Indiana
 1931|Tennessee
 1931221|Clarksville, TN
 1931223|Columbia, TN
@@ -34433,6 +34436,7 @@
 1937962|Lewisburg, OH
 1937964|Springfield, OH
 1937981|Greenfield, OH
+1938|Alabama
 1940|Texas
 1940228|Wichita Falls, TX
 1940243|Denton, TX

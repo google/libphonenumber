@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2014 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,25 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Data from ITU: http://www.itu.int/oth/T02020000BF/en
+# http://www.pfs.is/english/telecom-affairs/numbering/
 
-67770|Satsol
-67771|Satsol
-67774|Solomon Telekom
-67775|Solomon Telekom
-67776|Solomon Telekom
-67777|Solomon Telekom
-67778|Solomon Telekom
-677790|Solomon Telekom
-677794|Solomon Telekom
-67784|BMobile
-67785|BMobile
-67786|BMobile
-67787|BMobile
-67788|BMobile
-67794|Smile
-67795|Smile
-67796|Smile
-67797|Smile
-67798|Smile
-67799|Smile
+354385|Síminn
+354388|IMC
+354389|IMC
+354519|Nova
+354611|Tal
+354612|Tal
+354613|Tal
+354614|Tal
+354615|Vodafone
+354616|Vodafone
+354617|Vodafone
+354618|Vodafone
+354619|Vodafone
+354630|IMC
+354646|IMC
+354647|IMC
+354659|Vodafone
+35466|Vodafone
+35467|Vodafone
+35469|Vodafone
+35477|Nova
+35478|Nova
+35482|Vodafone
+35483|Síminn
+35484|Síminn
+35485|Síminn
+35486|Síminn
+35489|Síminn

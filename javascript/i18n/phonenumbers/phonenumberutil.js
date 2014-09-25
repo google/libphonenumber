@@ -2612,10 +2612,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberType =
 i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberTypeHelper_ =
     function(nationalNumber, metadata) {
 
-  /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-  var generalNumberDesc = metadata.getGeneralDesc();
-  if (!generalNumberDesc.hasNationalNumberPattern() ||
-      !this.isNumberMatchingDesc_(nationalNumber, generalNumberDesc)) {
+  if (!this.isNumberMatchingDesc_(nationalNumber, metadata.getGeneralDesc())) {
     return i18n.phonenumbers.PhoneNumberType.UNKNOWN;
   }
 
@@ -2781,22 +2778,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumberForRegion =
     // number does not match that of the region code.
     return false;
   }
-  /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-  var generalNumDesc = metadata.getGeneralDesc();
   /** @type {string} */
   var nationalSignificantNumber = this.getNationalSignificantNumber(number);
 
-  // For regions where we don't have metadata for PhoneNumberDesc, we treat any
-  // number passed in as a valid number if its national significant number is
-  // between the minimum and maximum lengths defined by ITU for a national
-  // significant number.
-  if (!generalNumDesc.hasNationalNumberPattern()) {
-    /** @type {number} */
-    var numberLength = nationalSignificantNumber.length;
-    return numberLength >
-        i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ &&
-        numberLength <= i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_;
-  }
   return this.getNumberTypeHelper_(nationalSignificantNumber, metadata) !=
       i18n.phonenumbers.PhoneNumberType.UNKNOWN;
 };
@@ -3161,24 +3145,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata =
       this.getMetadataForRegionOrCallingCode_(countryCode, regionCode);
-  /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-  var generalNumDesc = metadata.getGeneralDesc();
-  // Handling case of numbers with no metadata.
-  if (!generalNumDesc.hasNationalNumberPattern()) {
-    /** @type {number} */
-    var numberLength = nationalNumber.length;
-    if (numberLength < i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-      return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT;
-    } else if (numberLength >
-               i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_) {
-      return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
-    } else {
-      return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
-    }
-  }
   /** @type {string} */
   var possibleNumberPattern =
-      generalNumDesc.getPossibleNumberPatternOrDefault();
+      metadata.getGeneralDesc().getPossibleNumberPatternOrDefault();
   return this.testNumberLengthAgainstPattern_(possibleNumberPattern,
                                               nationalNumber);
 };
@@ -3942,7 +3911,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
         indexOfRfc3966Prefix +
         i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length : 0;
     nationalNumber.append(numberToParse.substring(indexOfNationalNumber,
-          indexOfPhoneContext));
+        indexOfPhoneContext));
   } else {
     // Extract a possible number from the string passed in (this strips leading
     // characters that could not be the start of a phone number.)

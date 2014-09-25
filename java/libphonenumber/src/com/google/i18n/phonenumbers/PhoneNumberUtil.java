@@ -2370,9 +2370,8 @@ public class PhoneNumberUtil {
     String regionCode = getRegionCodeForCountryCode(countryCode);
     // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    PhoneNumberDesc generalNumDesc = metadata.getGeneralDesc();
     Pattern possibleNumberPattern =
-        regexCache.getPatternForRegex(generalNumDesc.getPossibleNumberPattern());
+        regexCache.getPatternForRegex(metadata.getGeneralDesc().getPossibleNumberPattern());
     return testNumberLengthAgainstPattern(possibleNumberPattern, nationalNumber);
   }
 

@@ -12,11 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Data from Wikipedia:
+# http://en.wikipedia.org/wiki/Telephone_numbers_in_Armenia#Mobile_network_codes
+
+37441|Orange
+37443|Beeline
+37449|VivaCell-MTS
 37455|Orange
 37477|VivaCell-MTS
 37491|Beeline
 37493|VivaCell-MTS
 37494|VivaCell-MTS
 37495|Orange
+37496|Beeline
 37498|VivaCell-MTS
 37499|Beeline

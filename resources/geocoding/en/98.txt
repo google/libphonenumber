@@ -44,23 +44,12 @@
 98241|Zanjan
 98242|Zanjan suburbs
 9825|Qom province
-98255|Saveh
-98256|Saveh suburbs
 9826|Alborz
 98273|Shahroud
 98274|Shahroud suburbs
 98281|Qazvin
 98282|Qazvin suburbs
-98311|Isfahan
-98312|Isfahan suburbs
-98321|Shahreza
-98322|Shahreza suburbs
-98323|Naein
-98324|Naein suburbs
-98331|Najafabad
-98332|Najafabad suburbs
-98334|Zarrinshahr
-98335|Zarrinshahr suburbs
+9831|Isfahan province
 98341|Kerman
 98342|Kerman suburbs
 98344|Bam
@@ -72,10 +61,6 @@
 98351|Yazd
 98352|Yazd suburbs
 98353|Yazd suburbs
-98361|Kashan
-98362|Kashan suburbs
-98371|Khansar
-98372|Khansar suburbs
 98381|Shahrekord
 98382|Shahrekord suburbs
 98391|Rafsanjan
@@ -104,13 +89,7 @@
 98482|Myandoab suburbs
 98491|Marand
 98492|Marand suburbs
-98511|Mashhad
-98512|Mashhad suburbs
-98528|Torbat-e Jam
-98529|Torbat-e Jam suburbs
-98531|Torbat-e Heydarieh
-98532|Torbat-e Heydarieh suburbs
-98533|Gonabad
+9851|Razavi Khorasan
 98534|Ferdows
 98535|Ferdows suburbs
 98541|Zahedan
@@ -151,20 +130,14 @@
 98682|Masjed Soleiman suburbs
 98691|Ramhormoz
 98692|Ramhormoz suburbs
-98711|Shiraz
-98712|Shiraz suburbs
-98721|Kazeroon
-98722|Kazeroon suburbs
-98728|Marvdasht
-98729|Marvdasht suburbs
-98731|Fasa
-98732|Fasa suburbs
+9871|Fars
+98713|Shiraz
+98714|Kazeroon/Marvdasht/Abadeh
+98715|Lar/Fasa/Jahrom
 98741|Yasooj
 98742|Dogonbadan
 98743|Yasooj suburbs
 98744|Dogonbadan suburbs
-98751|Abadeh
-98752|Abadeh suburbs
 98761|Bandar Abbas
 98762|Bandar Lengeh
 98763|Bandar Abbas suburbs
@@ -174,10 +147,6 @@
 98771|Bushehr
 98772|Bushehr suburbs
 98773|Bushehr suburbs
-98781|Lar
-98782|Lar suburbs
-98791|Jahrom
-98792|Jahrom suburbs
 98811|Hamedan
 98812|Hamedan suburbs
 98831|Kermanshah
@@ -190,10 +159,7 @@
 98842|Ilam suburbs
 98851|Malayer
 98852|Malayer suburbs
-98861|Arak
-98862|Arak suburbs
-98865|Khomein
-98866|Khomein suburbs
+9886|Markazi
 98871|Sanandaj
 98872|Sanandaj suburbs
 98874|Saqqez

@@ -1728,21 +1728,6 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumberWithReason) {
   number.set_national_number(123456789ULL);
   EXPECT_EQ(PhoneNumberUtil::TOO_LONG,
             phone_util_.IsPossibleNumberWithReason(number));
-
-  // Try with number that we don't have metadata for.
-  PhoneNumber ad_number;
-  ad_number.set_country_code(376);
-  ad_number.set_national_number(12345ULL);
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
-            phone_util_.IsPossibleNumberWithReason(ad_number));
-  ad_number.set_country_code(376);
-  ad_number.set_national_number(1ULL);
-  EXPECT_EQ(PhoneNumberUtil::TOO_SHORT,
-            phone_util_.IsPossibleNumberWithReason(ad_number));
-  ad_number.set_country_code(376);
-  ad_number.set_national_number(123456789012345678ULL);
-  EXPECT_EQ(PhoneNumberUtil::TOO_LONG,
-            phone_util_.IsPossibleNumberWithReason(ad_number));
 }
 
 TEST_F(PhoneNumberUtilTest, IsNotPossibleNumber) {
@@ -2685,7 +2670,7 @@ TEST_F(PhoneNumberUtilTest, CountryWithNoNumberDesc) {
   phone_util_.Format(ad_number, PhoneNumberUtil::NATIONAL, &formatted_number);
   EXPECT_EQ("12345", formatted_number);
   EXPECT_EQ(PhoneNumberUtil::UNKNOWN, phone_util_.GetNumberType(ad_number));
-  EXPECT_TRUE(phone_util_.IsValidNumber(ad_number));
+  EXPECT_FALSE(phone_util_.IsValidNumber(ad_number));
 
   // Test dialing a US number from within Andorra.
   PhoneNumber us_number;

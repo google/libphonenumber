@@ -12,10 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Prefix 25476 added for Airtel Kenya based on open-source bug report. Most
+# other prefixes from Wikipedia:
+# http://en.wikipedia.org/wiki/Telephone_numbers_in_Kenya
+
 25470|Safaricom
 25471|Safaricom
 25472|Safaricom
 25473|Airtel
+25476|Airtel
 254750|Essar
 254751|Essar
 254752|Essar

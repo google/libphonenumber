@@ -1976,20 +1976,8 @@ PhoneNumberUtil::ValidationResult PhoneNumberUtil::IsPossibleNumberWithReason(
   // Metadata cannot be NULL because the country calling code is valid.
   const PhoneMetadata* metadata =
       GetMetadataForRegionOrCallingCode(country_code, region_code);
-  const PhoneNumberDesc& general_num_desc = metadata->general_desc();
-  // Handling case of numbers with no metadata.
-  if (!general_num_desc.has_national_number_pattern()) {
-    size_t number_length = national_number.length();
-    if (number_length < kMinLengthForNsn) {
-      return TOO_SHORT;
-    } else if (number_length > kMaxLengthForNsn) {
-      return TOO_LONG;
-    } else {
-      return IS_POSSIBLE;
-    }
-  }
   const RegExp& possible_number_pattern = reg_exps_->regexp_cache_->GetRegExp(
-      StrCat("(", general_num_desc.possible_number_pattern(), ")"));
+      StrCat("(", metadata->general_desc().possible_number_pattern(), ")"));
   return TestNumberLengthAgainstPattern(possible_number_pattern,
                                         national_number);
 }
@@ -2044,20 +2032,9 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
     // number does not match that of the region code.
     return false;
   }
-  const PhoneNumberDesc& general_desc = metadata->general_desc();
   string national_number;
   GetNationalSignificantNumber(number, &national_number);
 
-  // For regions where we don't have metadata for PhoneNumberDesc, we treat
-  // any number passed in as a valid number if its national significant number
-  // is between the minimum and maximum lengths defined by ITU for a national
-  // significant number.
-  if (!general_desc.has_national_number_pattern()) {
-    VLOG(3) << "Validating number with incomplete metadata.";
-    size_t number_length = national_number.length();
-    return number_length > kMinLengthForNsn &&
-        number_length <= kMaxLengthForNsn;
-  }
   return GetNumberTypeHelper(national_number, *metadata) != UNKNOWN;
 }
 
@@ -2115,9 +2092,7 @@ bool PhoneNumberUtil::IsNumberMatchingDesc(
 
 PhoneNumberUtil::PhoneNumberType PhoneNumberUtil::GetNumberTypeHelper(
     const string& national_number, const PhoneMetadata& metadata) const {
-  const PhoneNumberDesc& general_desc = metadata.general_desc();
-  if (!general_desc.has_national_number_pattern() ||
-      !IsNumberMatchingDesc(national_number, general_desc)) {
+  if (!IsNumberMatchingDesc(national_number, metadata.general_desc())) {
     VLOG(4) << "Number type unknown - doesn't match general national number"
             << " pattern.";
     return PhoneNumberUtil::UNKNOWN;

@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# http://en.wikipedia.org/wiki/List_of_mobile_codes_in_Pakistan
+
 92300|Mobilink
 92301|Mobilink
 92302|Mobilink
@@ -21,13 +23,15 @@
 92306|Mobilink
 92307|Mobilink
 92308|Mobilink
+92309|Mobilink
 92310|Zong
-92311|Ufone
-92312|Ufone
-92313|Ufone
-92314|Ufone
-92315|Ufone
+92311|Zong
+92312|Zong
+92313|Zong
+92314|Zong
+92315|Zong
 9232|Warid
+92330|Ufone
 92331|Ufone
 92332|Ufone
 92333|Ufone
@@ -43,4 +47,3 @@
 92345|Telenor
 92346|Telenor
 92347|Telenor
-92364|Ufone

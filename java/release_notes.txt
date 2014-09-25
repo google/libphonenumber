@@ -1,3 +1,20 @@
+Sep 25, 2014: libphonenumber-6.3
+* Code changes:
+  - Changing the offline geocoder to not return any country at all if the number
+    could belong to multiple countries
+  - Removing obsolete code that treated countries with no metadata as valid.
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 54, 91
+ - Updated phone metadata for region code(s):
+   AM, AR, BR, CA, CL, IL, IN, IR, IS, KE, NI, PF, SB, SN, TH, TN, US
+ - New geocoding data for country calling code(s):
+   1782 (en), 1929 (en), 1930 (en), 1938 (en)
+ - Updated geocoding data for country calling code(s): 98 (en, fa)
+ - New carrier data for country calling code(s): 354 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 56 (en), 66 (en), 91 (en), 92 (en), 98 (en), 216 (en), 221 (en),
+   254 (en), 374 (en), 505 (en), 677 (en), 972 (en)
+
 Aug 21, 2014: libphonenumber-6.2.2
 * Metadata changes:
  - Updated phone metadata for region code(s): BN, CL, CO, DK, IN, SB, SO
