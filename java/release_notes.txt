@@ -1,3 +1,11 @@
+Oct 13, 2014: libphonenumber-6.3.1
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   AC, AU, CR, DE, IL, MR, NO, SA, SR, UG
+ - Updated short number metadata for region code(s): CR
+ - Updated carrier data for country calling code(s):
+   61 (en), 256 (en), 506 (en), 597 (en), 966 (en), 972 (en)
+
 Sep 25, 2014: libphonenumber-6.3
 * Code changes:
   - Changing the offline geocoder to not return any country at all if the number

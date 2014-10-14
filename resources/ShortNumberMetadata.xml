@@ -2272,12 +2272,18 @@
               34|
               55
             )|
-            333|
-            4(?:
-              00|
-              1[56]
+            3(?:
+              21|
+              33
             )|
-            515|
+            4(?:
+              0[06]|
+              1[4-6]
+            )|
+            5(?:
+              15|
+              5[15]
+            )|
             693|
             7(?:
               00|
@@ -2299,6 +2305,32 @@
         </nationalNumberPattern>
         <exampleNumber>1022</exampleNumber>
       </shortCode>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            4(?:
+              06|
+              14
+            )|
+            693
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1406</exampleNumber>
+      </carrierServices>
+      <smsServices>
+        <nationalNumberPattern>
+          3855|
+          5(?:
+            0(?:
+              30|
+              49
+            )|
+            510
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+      </smsServices>
       <emergency>
         <nationalNumberPattern>
           112|
