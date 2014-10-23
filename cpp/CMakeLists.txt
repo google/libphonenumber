@@ -194,7 +194,6 @@ set (
   "src/phonenumbers/phonenumberutil.cc"
   "src/phonenumbers/regexp_cache.cc"
   "src/phonenumbers/shortnumberinfo.cc"
-  "src/phonenumbers/shortnumberutil.cc"
   "src/phonenumbers/string_byte_sink.cc"
   "src/phonenumbers/stringutil.cc"
   "src/phonenumbers/unicodestring.cc"
@@ -449,7 +448,6 @@ set (TEST_SOURCES
   "test/phonenumbers/regexp_adapter_test.cc"
   "test/phonenumbers/regexp_cache_test.cc"
   "test/phonenumbers/run_tests.cc"
-  "test/phonenumbers/shortnumberutil_test.cc"
   "test/phonenumbers/stringutil_test.cc"
   "test/phonenumbers/test_util.cc"
   "test/phonenumbers/unicodestring_test.cc"
@@ -510,7 +508,6 @@ install (FILES
   "src/phonenumbers/regexp_adapter.h"
   "src/phonenumbers/regexp_cache.h"
   "src/phonenumbers/shortnumberinfo.h"
-  "src/phonenumbers/shortnumberutil.h"
   "src/phonenumbers/unicodestring.h"
   DESTINATION include/phonenumbers/
 )
