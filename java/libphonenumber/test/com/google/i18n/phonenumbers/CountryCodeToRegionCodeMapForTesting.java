@@ -38,9 +38,11 @@ public class CountryCodeToRegionCodeMapForTesting {
 
     ArrayList<String> listWithRegionCode;
 
-    listWithRegionCode = new ArrayList<String>(2);
+    listWithRegionCode = new ArrayList<String>(4);
     listWithRegionCode.add("US");
+    listWithRegionCode.add("BB");
     listWithRegionCode.add("BS");
+    listWithRegionCode.add("CA");
     countryCodeToRegionCodeMap.put(1, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);

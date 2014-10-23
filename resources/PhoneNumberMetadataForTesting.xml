@@ -156,6 +156,10 @@
       </premiumRate>
     </territory>
 
+    <!-- Barbados -->
+    <territory id="BB" countryCode="1" internationalPrefix="011">
+    </territory>
+
     <!-- Brazil -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library. -->
@@ -220,6 +224,10 @@
       </fixedLine>
     </territory>
 
+    <!-- Canada -->
+    <territory id="CA" countryCode="1" internationalPrefix="011">
+    </territory>
+
     <!-- Cocos Islands -->
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
@@ -250,7 +258,7 @@
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library. -->
-    <territory id="CX" countryCode="61">
+    <territory id="CX" countryCode="61" internationalPrefix="00">
     </territory>
 
     <!-- Germany -->
@@ -310,7 +318,8 @@
     </territory>
 
     <!-- France -->
-    <territory id="FR" countryCode="33" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
+    <territory id="FR" countryCode="33" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
+               internationalPrefix="00">
       <availableFormats>
         <!-- We use this to test the phone number matcher. For our test-case, the formatting
              pattern must have as the first group a sub-part of the country calling code,

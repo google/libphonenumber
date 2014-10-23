@@ -37,7 +37,7 @@ public class ExampleNumbersTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(ExampleNumbersTest.class.getName());
   private PhoneNumberUtil phoneNumberUtil =
       PhoneNumberUtil.createInstance(PhoneNumberUtil.DEFAULT_METADATA_LOADER);
-  private ShortNumberInfo shortNumberInfo = new ShortNumberInfo(phoneNumberUtil);
+  private ShortNumberInfo shortNumberInfo = ShortNumberInfo.getInstance();
   private List<PhoneNumber> invalidCases = new ArrayList<PhoneNumber>();
   private List<PhoneNumber> wrongTypeCases = new ArrayList<PhoneNumber>();
 
@@ -183,7 +183,8 @@ public class ExampleNumbersTest extends TestCase {
     List<String> invalidStringCases = new ArrayList<String>();
     for (String regionCode : shortNumberInfo.getSupportedRegions()) {
       String exampleShortNumber = shortNumberInfo.getExampleShortNumber(regionCode);
-      if (!shortNumberInfo.isValidShortNumberForRegion(exampleShortNumber, regionCode)) {
+      if (!shortNumberInfo.isValidShortNumberForRegion(
+          phoneNumberUtil.parse(exampleShortNumber, regionCode), regionCode)) {
         String invalidStringCase = "region_code: " + regionCode + ", national_number: " +
             exampleShortNumber;
         invalidStringCases.add(invalidStringCase);
@@ -198,7 +199,8 @@ public class ExampleNumbersTest extends TestCase {
       for (ShortNumberInfo.ShortNumberCost cost : ShortNumberInfo.ShortNumberCost.values()) {
         exampleShortNumber = shortNumberInfo.getExampleShortNumberForCost(regionCode, cost);
         if (!exampleShortNumber.equals("")) {
-          if (cost != shortNumberInfo.getExpectedCostForRegion(exampleShortNumber, regionCode)) {
+          if (cost != shortNumberInfo.getExpectedCostForRegion(
+              phoneNumberUtil.parse(exampleShortNumber, regionCode), regionCode)) {
             wrongTypeCases.add(phoneNumber);
             LOGGER.log(Level.SEVERE, "Wrong cost for " + phoneNumber.toString());
           }
@@ -217,12 +219,13 @@ public class ExampleNumbersTest extends TestCase {
           MetadataManager.getShortNumberMetadataForRegion(regionCode).getEmergency();
       if (desc.hasExampleNumber()) {
         String exampleNumber = desc.getExampleNumber();
-        if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
-            !shortNumberInfo.isEmergencyNumber(exampleNumber, regionCode)) {
+        PhoneNumber phoneNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
+        if (!shortNumberInfo.isPossibleShortNumberForRegion(phoneNumber, regionCode)
+            || !shortNumberInfo.isEmergencyNumber(exampleNumber, regionCode)) {
           wrongTypeCounter++;
           LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
-        } else if (shortNumberInfo.getExpectedCostForRegion(exampleNumber, regionCode) !=
-                       ShortNumberInfo.ShortNumberCost.TOLL_FREE) {
+        } else if (shortNumberInfo.getExpectedCostForRegion(phoneNumber, regionCode)
+            != ShortNumberInfo.ShortNumberCost.TOLL_FREE) {
           wrongTypeCounter++;
           LOGGER.log(Level.WARNING, "Emergency example number not toll free for " + regionCode);
         }
@@ -240,8 +243,8 @@ public class ExampleNumbersTest extends TestCase {
       if (desc.hasExampleNumber()) {
         String exampleNumber = desc.getExampleNumber();
         PhoneNumber carrierSpecificNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
-        if (!exampleNumber.matches(desc.getPossibleNumberPattern()) ||
-            !shortNumberInfo.isCarrierSpecific(carrierSpecificNumber)) {
+        if (!shortNumberInfo.isPossibleShortNumberForRegion(carrierSpecificNumber, regionCode)
+            || !shortNumberInfo.isCarrierSpecific(carrierSpecificNumber)) {
           wrongTagCounter++;
           LOGGER.log(Level.SEVERE, "Carrier-specific test failed for " + regionCode);
         }
