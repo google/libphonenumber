@@ -155,6 +155,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // for.
   void GetSupportedRegions(set<string>* regions) const;
 
+  // Convenience method to get a list of what global network calling codes the
+  // library has metadata for.
+  void GetSupportedGlobalNetworkCallingCodes(
+      set<int>* calling_codes) const;
+
   // Gets a PhoneNumberUtil instance to carry out international phone number
   // formatting, parsing, or validation. The instance is loaded with phone
   // number metadata for a number of most commonly used regions, as specified by

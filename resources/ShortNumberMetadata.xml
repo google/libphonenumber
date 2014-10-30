@@ -5450,6 +5450,7 @@
         <nationalNumberPattern>
           1(?:
             12|
+            41|
             [578]
           )
         </nationalNumberPattern>

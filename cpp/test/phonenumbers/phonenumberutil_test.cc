@@ -173,6 +173,20 @@ TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   EXPECT_GT(regions.size(), 0U);
 }
 
+TEST_F(PhoneNumberUtilTest, GetSupportedGlobalNetworkCallingCodes) {
+  set<int> calling_codes;
+
+  phone_util_.GetSupportedGlobalNetworkCallingCodes(&calling_codes);
+  EXPECT_GT(calling_codes.size(), 0U);
+  for (set<int>::const_iterator it = calling_codes.begin();
+       it != calling_codes.end(); ++it) {
+    EXPECT_GT(*it, 0);
+    string region_code;
+    phone_util_.GetRegionCodeForCountryCode(*it, &region_code);
+    EXPECT_EQ(RegionCode::UN001(), region_code);
+  }
+}
+
 TEST_F(PhoneNumberUtilTest, GetRegionCodesForCountryCallingCode) {
   list<string> regions;
 

@@ -424,6 +424,29 @@ function testGetCountryMobileToken() {
       phoneUtil.getCountryCodeForRegion(RegionCode.SE)));
 }
 
+function testGetSupportedRegions() {
+  assertTrue(phoneUtil.getSupportedRegions().length > 0);
+  assertTrue(goog.array.contains(
+      phoneUtil.getSupportedRegions(), RegionCode.US));
+  assertFalse(goog.array.contains(
+      phoneUtil.getSupportedRegions(), RegionCode.UN001));
+  assertFalse(goog.array.contains(phoneUtil.getSupportedRegions(), '800'));
+}
+
+function testGetSupportedGlobalNetworkCallingCodes() {
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().length > 0);
+  assertFalse(goog.array.contains(
+      phoneUtil.getSupportedGlobalNetworkCallingCodes(), RegionCode.US));
+  assertTrue(goog.array.contains(
+      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 800));
+  goog.array.forEach(
+      phoneUtil.getSupportedGlobalNetworkCallingCodes(),
+      function(countryCallingCode) {
+        assertEquals(RegionCode.UN001,
+            phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
+      });
+}
+
 function testGetNationalSignificantNumber() {
   assertEquals('6502530000',
       phoneUtil.getNationalSignificantNumber(US_NUMBER));

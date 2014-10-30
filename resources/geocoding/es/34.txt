@@ -17,32 +17,56 @@
 
 34810|Madrid
 34820|Ávila
+34821|Segovia
 34822|Tenerife
 34823|Salamanca
+34824|Badajoz
+34825|Toledo
+34826|Ciudad Real
 34827|Cáceres
+34828|Las Palmas
+34830|Barcelona
+34841|La Rioja
 34842|Cantabria
 34843|Guipúzcoa
+34845|Álava
 34847|Burgos
 34848|Navarra
+34849|Guadalajara
 34850|Álmería
+34851|Málaga
 34853|Jaén
+34854|Sevilla
 34856|Cádiz
+34857|Córdoba
+34858|Granada
 34859|Huelva
 34860|Valencia
+34864|Castellón
+34865|Alicante
+34867|Albacete
 34868|Murcia
 34869|Cuenca
+34871|Baleares
 34872|Gerona
+34873|Lérida
 34874|Huesca
 34875|Soria
 34876|Zaragoza
+34877|Tarragona
 34878|Teruel
 34879|Palencia
 34880|Zamora
 34881|La Coruña
+34882|Lugo
+34883|Valladolid
 34884|Asturias
+34886|Pontevedra
+34887|León
 34888|Orense
 3491|Madrid
 34920|Ávila
+34921|Segovia
 34922|Tenerife
 34923|Salamanca
 34924|Badajoz

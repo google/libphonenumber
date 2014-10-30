@@ -25,6 +25,7 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Unit tests for PhoneNumberUtil.java
@@ -114,6 +115,16 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
   public void testGetSupportedRegions() {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
+  }
+
+  public void testGetSupportedGlobalNetworkCallingCodes() {
+    Set<Integer> globalNetworkCallingCodes =
+        phoneUtil.getSupportedGlobalNetworkCallingCodes();
+    assertTrue(globalNetworkCallingCodes.size() > 0);
+    for (int callingCode : globalNetworkCallingCodes) {
+      assertTrue(callingCode > 0);
+      assertEquals(RegionCode.UN001, phoneUtil.getRegionCodeForCountryCode(callingCode));
+    }
   }
 
   public void testGetInstanceLoadBadMetadata() {

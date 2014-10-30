@@ -1,3 +1,15 @@
+Oct 29, 2014: libphonenumber-7.0
+* Code changes:
+ - New APIs for ShortNumberInfo. The old APIs have been deprecated and will be
+   removed in an upcoming release.
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, AU, CC, CI, CX, DZ, EE, IN, KZ, MC, SB, TJ, TT
+ - Updated short number metadata for region code(s): MC
+ - Updated geocoding data for country calling code(s): 34 (en, es), 54 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en), 61 (en), 91 (en), 225 (en), 677 (en), 967 (en), 992 (en), 1868 (en)
+
 Oct 13, 2014: libphonenumber-6.3.1
 * Metadata changes:
  - Updated phone metadata for region code(s):

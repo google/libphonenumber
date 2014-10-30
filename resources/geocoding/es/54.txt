@@ -134,7 +134,11 @@
 54297|Comodoro Rivadavia, Escalante
 542972|San Martín de los Andes
 54298|General Roca, Río Negro
-542983|Tres Arroyos
+542982|Claromeco, Buenos Aires
+54298240|Orense, Buenos Aires
+54298242|Orense, Buenos Aires
+542982497|San Francisco de Bellocq, Buenos Aires
+542983|Tres Arroyos, Buenos Aires
 54299|Neuquén, Confluencia
 543327|López Camelo, Buenos Aires
 543329|Buenos Aires

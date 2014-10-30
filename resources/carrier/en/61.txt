@@ -33,6 +33,10 @@
 61418|Telstra
 61419|Telstra
 61420|Vodafone
+6142000|Rail Corporation NSW
+6142001|Rail Corporation NSW
+6142002|Dialogue Communications
+6142010|Pivotel Satellite
 61421|Optus
 61422|Optus
 61423|Optus
@@ -68,8 +72,10 @@
 61468|Optus
 61469|Lycamobile
 61470|Lycamobile
+61473|Telstra
 61474|Telstra
 61475|Telstra
+61476|Telstra
 61477|Telstra
 61478|Optus
 614790|Optus
@@ -77,6 +83,8 @@
 61481|Optus
 61487|Telstra
 61488|Telstra
+614888|My Number
+6148984|Victorian Rail Track
 61490|Telstra
 61491|Telstra
 61497|Telstra

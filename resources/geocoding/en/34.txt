@@ -16,32 +16,56 @@
 
 34810|Madrid
 34820|Ávila
+34821|Segovia
 34822|Tenerife
 34823|Salamanca
+34824|Badajoz
+34825|Toledo
+34826|Ciudad Real
 34827|Cáceres
+34828|Las Palmas
+34830|Barcelona
+34841|La Rioja
 34842|Cantabria
 34843|Guipúzcoa
+34845|Araba
 34847|Burgos
 34848|Navarre
+34849|Guadalajara
 34850|Almería
+34851|Málaga
 34853|Jaén
+34854|Seville
 34856|Cádiz
+34857|Cordova
+34858|Granada
 34859|Huelva
 34860|Valencia
+34864|Castellón
+34865|Alicante
+34867|Albacete
 34868|Murcia
 34869|Cuenca
+34871|Balearic Islands
 34872|Gerona
+34873|Lleida
 34874|Huesca
 34875|Soria
 34876|Zaragoza
+34877|Tarragona
 34878|Teruel
 34879|Palencia
 34880|Zamora
 34881|La Coruña
+34882|Lugo
+34883|Valladolid
 34884|Asturias
+34886|Pontevedra
+34887|León
 34888|Ourense
 3491|Madrid
 34920|Ávila
+34921|Segovia
 34922|Tenerife
 34923|Salamanca
 34924|Badajoz
@@ -54,7 +78,7 @@
 34942|Cantabria
 34943|Guipúzcoa
 34944|Vizcaya
-34945|Álava
+34945|Araba
 34946|Vizcaya
 34947|Burgos
 34948|Navarre
@@ -66,7 +90,7 @@
 34954|Seville
 34955|Seville
 34956|Cádiz
-34957|Córdoba
+34957|Cordova
 34958|Granada
 34959|Huelva
 34960|Valencia
@@ -81,7 +105,7 @@
 34969|Cuenca
 34971|Balearic Islands
 34972|Gerona
-34973|Lérida
+34973|Lleida
 34974|Huesca
 34975|Soria
 34976|Zaragoza

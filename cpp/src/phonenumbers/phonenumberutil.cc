@@ -660,6 +660,16 @@ void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
   }
 }
 
+void PhoneNumberUtil::GetSupportedGlobalNetworkCallingCodes(
+    set<int>* calling_codes) const {
+  DCHECK(calling_codes);
+  for (map<int, PhoneMetadata>::const_iterator it =
+           country_code_to_non_geographical_metadata_map_->begin();
+       it != country_code_to_non_geographical_metadata_map_->end(); ++it) {
+    calling_codes->insert(it->first);
+  }
+}
+
 // Public wrapper function to get a PhoneNumberUtil instance with the default
 // metadata file.
 // static

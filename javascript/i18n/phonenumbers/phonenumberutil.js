@@ -1269,6 +1269,42 @@ i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
 
 
 /**
+ * Convenience method to get a list of what regions the library has metadata
+ * for.
+ *
+ * @return {!Array<string>} region codes supported by the library.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
+  return goog.array.filter(
+      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
+      function(regionCode) {
+        return isNaN(regionCode);
+      });
+};
+
+
+/**
+ * Convenience method to get a list of what global network calling codes the
+ * library has metadata for.
+ *
+ * @return {!Array<number>} global network calling codes supported by the
+ *     library.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.
+    getSupportedGlobalNetworkCallingCodes = function() {
+  var callingCodesAsStrings = goog.array.filter(
+      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
+      function(regionCode) {
+        return !isNaN(regionCode);
+      });
+  return goog.array.map(callingCodesAsStrings,
+      function(callingCode) {
+        return parseInt(callingCode, 10);
+      });
+};
+
+
+/**
  * Normalizes a string of characters representing a phone number by replacing
  * all characters found in the accompanying map with the values therein, and
  * stripping all other characters if removeNonMatches is true.
