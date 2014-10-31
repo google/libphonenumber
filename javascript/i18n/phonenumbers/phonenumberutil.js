@@ -1271,8 +1271,7 @@ i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
 /**
  * Convenience method to get a list of what regions the library has metadata
  * for.
- *
- * @return {!Array<string>} region codes supported by the library.
+ * @return {!Array.<string>} region codes supported by the library.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
   return goog.array.filter(
@@ -1286,8 +1285,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
 /**
  * Convenience method to get a list of what global network calling codes the
  * library has metadata for.
- *
- * @return {!Array<number>} global network calling codes supported by the
+ * @return {!Array.<number>} global network calling codes supported by the
  *     library.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.

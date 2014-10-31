@@ -63,13 +63,13 @@ public class BuildMetadataJsonFromXml extends Command {
       " * region represented by that country calling code. In the case of multiple\n" +
       " * countries sharing a calling code, such as the NANPA regions, the one\n" +
       " * indicated with \"isMainCountryForCode\" in the metadata should be first.\n" +
-      " * @type {Object.<number, Array.<string>>}\n" +
+      " * @type {!Object.<number, Array.<string>>}\n" +
       " */\n";
 
   private static final String COUNTRY_TO_METADATA_COMMENT =
       "/**\n" +
       " * A mapping from a region code to the PhoneMetadata for that region.\n" +
-      " * @type {Object.<string, Array>}\n" +
+      " * @type {!Object.<string, Array>}\n" +
       " */\n";
 
   private static final int COPYRIGHT_YEAR = 2010;

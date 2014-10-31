@@ -28,7 +28,7 @@ goog.provide('i18n.phonenumbers.metadata');
  * region represented by that country calling code. In the case of multiple
  * countries sharing a calling code, such as the NANPA regions, the one
  * indicated with "isMainCountryForCode" in the metadata should be first.
- * @type {Object.<number, Array.<string>>}
+ * @type {!Object.<number, Array.<string>>}
  */
 i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
 1:["US","BB","BS","CA"]
@@ -58,7 +58,7 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
 
 /**
  * A mapping from a region code to the PhoneMetadata for that region.
- * @type {Object.<string, Array>}
+ * @type {!Object.<string, Array>}
  */
 i18n.phonenumbers.metadata.countryToMetadata = {
 "AD":[,[]
