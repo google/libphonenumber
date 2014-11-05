@@ -99,6 +99,7 @@ class PhoneNumberOfflineGeocoder {
                                  const Locale& locale) const;
 
   // As per GetDescriptionForValidNumber(PhoneNumber, Locale, String) but
+  // explicitly checks the validity of the number passed in.
   string GetDescriptionForNumber(const PhoneNumber& number,
       const Locale& language, const string& user_region) const;
 

@@ -15,10 +15,10 @@
 // Sample program using the geocoding functionality. This is used to test that
 // the geocoding library is compiled correctly.
 
-#include <cassert>
 #include <iostream>
 #include <string>
 
+#include "phonenumbers/base/logging.h"
 #include "phonenumbers/geocoding/phonenumber_offline_geocoder.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/phonenumberutil.h"
@@ -32,12 +32,12 @@ int main() {
   const PhoneNumberUtil& phone_util = *PhoneNumberUtil::GetInstance();
   const PhoneNumberUtil::ErrorType status = phone_util.Parse(
       "16502530000", "US", &number);
-  assert(status == PhoneNumberUtil::NO_PARSING_ERROR);
+  CHECK_EQ(status, PhoneNumberUtil::NO_PARSING_ERROR);
 
   const std::string description =
       PhoneNumberOfflineGeocoder().GetDescriptionForNumber(
           number, icu::Locale("en", "GB"));
   std::cout << description << std::endl;
-  assert(description == "Mountain View, CA");
+  CHECK_EQ(description, "Mountain View, CA");
   return 0;
 }

@@ -190,7 +190,8 @@ TEST_F(PhoneNumberOfflineGeocoderTest,
   // Invalid number - return an empty string.
   EXPECT_EQ("",
             geocoder_->GetDescriptionForNumber(US_INVALID_NUMBER,
-                                               kEnglishLocale, "US"));
+                                               kEnglishLocale,
+                                               "US"));
 }
 
 TEST_F(PhoneNumberOfflineGeocoderTest, TestGetDescriptionForInvalidNumber) {
