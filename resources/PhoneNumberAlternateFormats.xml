@@ -1727,6 +1727,19 @@
       </availableFormats>
     </territory>
 
+    <!-- Tonga (TO) -->
+    <territory countryCode="676">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{5})">
+          <leadingDigits>
+            7[5-9]|
+            8[47-9]
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Turkey (TR) -->
     <territory countryCode="90">
       <availableFormats>

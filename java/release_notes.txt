@@ -1,3 +1,13 @@
+Nov 25, 2014: libphonenumber-7.0.1
+* Metadata changes:
+ - New alternate formatting data for country calling code(s): 676
+ - Updated phone metadata for region code(s):
+   BI, CM, ID, IR, KR, LA, NP, TG, TH, TO
+ - New geocoding data for country calling code(s): 237 (en)
+ - Updated geocoding data for country calling code(s): 98 (en, fa)
+ - Updated carrier data for country calling code(s):
+   237 (en), 257 (en), 856 (en), 977 (en)
+
 Oct 29, 2014: libphonenumber-7.0
 * Code changes:
  - New APIs for ShortNumberInfo. The old APIs have been deprecated and will be
