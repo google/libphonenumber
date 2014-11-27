@@ -11,8 +11,8 @@ How to setup:
 
 e.g.
 svn checkout http://libphonenumber.googlecode.com/svn/trunk/ ~/src/libphonenumber
-svn checkout http://closure-library.googlecode.com/svn/trunk/ ~/src/closure-library
-svn checkout http://closure-compiler.googlecode.com/svn/trunk/ ~/src/closure-compiler
+git clone https://github.com/google/closure-library/
+git clone https://github.com/google/closure-compiler.git
 svn checkout http://closure-linter.googlecode.com/svn/trunk/ ~/src/closure-linter
 svn checkout http://python-gflags.googlecode.com/svn/trunk/ ~/src/python-gflags
 

@@ -75,11 +75,11 @@ public class PhoneNumberOfflineGeocoder {
           if (!regionWhereNumberIsValid.equals("ZZ")) {
             // If we can't assign the phone number as definitely belonging to only one territory,
             // then we return nothing.
-            return ""; 
-          }   
+            return "";
+          }
           regionWhereNumberIsValid = regionCode;
-        }   
-      }   
+        }
+      }
       return getRegionDisplayName(regionWhereNumberIsValid, language);
     }
   }
