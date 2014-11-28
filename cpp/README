@@ -1,18 +1,50 @@
-C++ version of the libphonenumber project.
+                  C++ version of the libphonenumber project
+                  =========================================
 
-This is a port of the Java version.
+This library is a port of the Java version.
 
 This project uses some third-party code:
   - src/phonenumbers/utf/ sources come from lib9 which is also used in Go.
 
 
-Building the library on GNU/Linux
----------------------------------
+Installing the library on GNU/Linux
+-----------------------------------
+In recent Debian-based distributions you may be able to simply install the
+libphonenumber library directly.
+
+Installing the binary packages:
+  - Use this if you just need to use or link against the library:
+    $ sudo apt-get install libphonenumber6 libphonenumber6-dev
+
+Installing the source package:
+  - Use this if you wish to develop or debug the library:
+    $ sudo apt-get source libphonenumber
+
+The latest packages can be found on the Debian packages site:
+  https://packages.debian.org/search?searchon=names&keywords=libphonenumber
+
+
+Manually installing the library on GNU/Linux
+--------------------------------------------
+You should only need these instructions if the above instructions do not work.
+
+The example command lines below assume that you have a Debian-based GNU/Linux
+distribution. Other distributions and packaging systems will differ.
+
+Quickstart:
+  - In recent Debian-based distributions, it should be sufficent to run:
+    $ sudo apt-get install \
+      cmake cmake-curses-gui libprotobuf-dev libgtest-dev libre2-dev \
+      libicu-dev libboost-dev libboost-thread-dev libboost-system-dev
+
+If any of these packages fails to install correctly, follow the instructions
+in the appropriate section below.
+
 Requirements:
   - CMake build system
     http://www.cmake.org
 
-    You can install it very easily on a Debian-based GNU/Linux distribution:
+    Installation:
     $ sudo apt-get install cmake
 
     Additionally it is recommended you install the ccmake configuration tool:
@@ -20,9 +52,17 @@ Requirements:
 
   - Protocol Buffers
     http://code.google.com/p/protobuf/
-    Version 2.4 or more recent is required.
+    Version 2.4 or more recent is required (this is available by default for
+    recent Debian-based GNU/Linux distributions).
 
-    You can install it very easily on a Debian-based GNU/Linux distribution:
+    You can check which version is available:
+    $ apt-cache show libprotobuf-dev 
+    Package: libprotobuf-dev
+    Source: protobuf
+    Version: 2.5.0-9ubuntu1   <-- This must be >= 2.4.0
+    ...
+
+    Installation:
     $ sudo apt-get install libprotobuf-dev
 
     Note: if your GNU/Linux distribution doesn't provide the needed package,
@@ -34,51 +74,44 @@ Requirements:
   - Google Test
     http://code.google.com/p/googletest/
 
-    You can install it very easily on a Debian-based GNU/Linux distribution:
+    Installation:
     $ sudo apt-get install libgtest-dev
 
   - RE2
     http://code.google.com/p/re2/
 
-    You can install it very easily on Ubuntu Natty:
+    Installation:
     $ sudo apt-get install libre2-dev
 
-    Otherwise if you use a Debian-based distribution you can fetch the Ubuntu
-    package which should work:
-    http://packages.ubuntu.com/natty/libre2-dev
+    Note that some distributions (notably Ubuntu 10.4) may not include this,
+    so you might need to download and install it manually.
 
-    If you want to install it manually:
-    You need Mercurial to checkout its source code:
-    $ sudo apt-get install mercurial
+    Find and download the Debian packages for your system. For example:
+    http://packages.ubuntu.com/utopic/libre2-1
+    http://packages.ubuntu.com/utopic/libre2-dev
 
-    Then checkout, build and install it:
-    $ hg clone https://re2.googlecode.com/hg re2
-    $ cd re2
-    $ make test
-    $ make install
-    $ make testinstall
+    You need to download both the libre2-dev and libre2-1 packages.
+    Once downloaded, install them with:
+    $ sudo dpkg -i libre2*.deb
+
+    If you want to install it from source, it's available via Mercurial at:
+    https://re2.googlecode.com/hg
+    however precise instructions on building and installing are outside the
+    scope of this document.
 
   - ICU
-    Version 4.4 or more recent is required. It can be installed easily on Debian
-    systems or be built from the most recent sources (currently 49.1.2).
-
-    If you have a Debian-based distribution you can check which version of the
-    ICU libraries is available by doing:
-    $ apt-cache show libicu-dev
-    And looking for the "Version:" string.
-
-    If this is above 4.4 then you can just do:
+    Installation:
     $ sudo apt-get install libicu-dev
 
     Otherwise you need to download the source tarball for the latest version
     from:
       http://site.icu-project.org/download
     And then extract it via:
-    $ tar xzf icu4c-49_1_2-src.tgz
+    $ tar xzf icu4c-*-src.tgz
 
     Alternatively you can export the SVN repository to the current directory
     via:
-    $ svn export http://source.icu-project.org/repos/icu/icu/tags/release-49-1-2/
+    $ svn export http://source.icu-project.org/repos/icu/icu/tags/release-XX-y-z/
 
     Having acquired the latest sources, make and install it via:
     $ cd icu/source
@@ -91,19 +124,22 @@ Requirements:
     Troubleshooting section below for information about ccmake).
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
-    $ sudo apt-get install libboost1.40-dev libboost-thread1.40-dev \
-      libboost-system1.40-dev
+    $ sudo apt-get install libboost-dev libboost-thread-dev libboost-system-dev
 
     Note: Boost Thread is the only library needed at link time.
 
-How to build libphonenumber C++:
+
+Building the library
+--------------------
   $ cd libphonenumber/cpp
   $ mkdir build
   $ cd build
   $ cmake ..
   $ make
 
-Troubleshooting CMake via ccmake:
+
+Troubleshooting CMake via ccmake
+--------------------------------
   Follow these instructions if the build steps above don't work for you.
 
   - Incorrect protocol buffer library issues
