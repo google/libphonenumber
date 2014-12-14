@@ -536,13 +536,18 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
 endif ()
 
 install (
-  FILES "src/phonenumbers/base/basictypes.h"
+  FILES
+  "src/phonenumbers/base/basictypes.h"
+  "src/phonenumbers/base/template_util.h"
+  "src/phonenumbers/base/logging.h"
+  "src/phonenumbers/base/thread_checker.h"
   DESTINATION include/phonenumbers/base/
 )
 
 install (FILES
   "src/phonenumbers/base/memory/scoped_ptr.h"
   "src/phonenumbers/base/memory/singleton.h"
+  "src/phonenumbers/base/memory/singleton_posix.h"
   DESTINATION include/phonenumbers/base/memory/
 )
 
