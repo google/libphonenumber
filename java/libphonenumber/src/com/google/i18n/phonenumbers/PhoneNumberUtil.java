@@ -58,6 +58,7 @@ import java.util.regex.Pattern;
 public class PhoneNumberUtil {
   // @VisibleForTesting
   static final MetadataLoader DEFAULT_METADATA_LOADER = new MetadataLoader() {
+    @Override
     public InputStream loadMetadata(String metadataFileName) {
       return PhoneNumberUtil.class.getResourceAsStream(metadataFileName);
     }
@@ -487,6 +488,7 @@ public class PhoneNumberUtil {
         }
         return PhoneNumberMatcher.checkNumberGroupingIsValid(
             number, candidate, util, new PhoneNumberMatcher.NumberGroupingChecker() {
+              @Override
               public boolean checkGroups(PhoneNumberUtil util, PhoneNumber number,
                                          StringBuilder normalizedCandidate,
                                          String[] expectedNumberGroups) {
@@ -518,6 +520,7 @@ public class PhoneNumberUtil {
         }
         return PhoneNumberMatcher.checkNumberGroupingIsValid(
             number, candidate, util, new PhoneNumberMatcher.NumberGroupingChecker() {
+              @Override
               public boolean checkGroups(PhoneNumberUtil util, PhoneNumber number,
                                          StringBuilder normalizedCandidate,
                                          String[] expectedNumberGroups) {
@@ -2830,6 +2833,7 @@ public class PhoneNumberUtil {
       final long maxTries) {
 
     return new Iterable<PhoneNumberMatch>() {
+      @Override
       public Iterator<PhoneNumberMatch> iterator() {
         return new PhoneNumberMatcher(
             PhoneNumberUtil.this, text, defaultRegion, leniency, maxTries);

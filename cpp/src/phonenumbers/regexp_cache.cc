@@ -23,6 +23,7 @@
 #include "phonenumbers/base/synchronization/lock.h"
 #include "phonenumbers/regexp_adapter.h"
 
+using std::make_pair;
 using std::string;
 
 namespace i18n {

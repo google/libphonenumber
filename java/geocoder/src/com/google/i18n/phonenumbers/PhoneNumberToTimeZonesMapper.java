@@ -33,7 +33,6 @@ import java.util.logging.Logger;
  * An offline mapper from phone numbers to time zones.
  */
 public class PhoneNumberToTimeZonesMapper {
-  private static PhoneNumberToTimeZonesMapper instance = null;
   private static final String MAPPING_DATA_DIRECTORY =
       "/com/google/i18n/phonenumbers/timezones/data/";
   private static final String MAPPING_DATA_FILE_NAME = "map_data";
