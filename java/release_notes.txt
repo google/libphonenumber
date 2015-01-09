@@ -1,3 +1,12 @@
+Jan 09, 2015: libphonenumber-7.0.2
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   BD, BH, EH, GH, IN, JM, LU, MA, MY, NF, NG, PK, SB, TT, TZ
+ - Updated geocoding data for country calling code(s): 91 (en), 352 (en, fr)
+ - New carrier data for country calling code(s): 1876 (en)
+ - Updated carrier data for country calling code(s):
+   60 (en), 91 (en), 92 (en), 212 (en), 233 (en), 234 (en), 352 (en), 677 (en)
+
 Nov 25, 2014: libphonenumber-7.0.1
 * Metadata changes:
  - New alternate formatting data for country calling code(s): 676
