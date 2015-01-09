@@ -14,10 +14,14 @@
 
 # In 2013 http://en.wikipedia.org/wiki/LuxGSM was renamed to POST.
 
+# Each number with prefix 6X1 has a corresponding voicemail number with prefix
+# 6X8: http://en.wikipedia.org/wiki/Telephone_numbers_in_Luxembourg
+
 352621|POST
 352628|POST
 352661|Orange
 352668|Orange
-352671|Join
+352671|JOIN
+352678|JOIN
 352691|Tango
 352698|Tango

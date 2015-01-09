@@ -14,18 +14,19 @@
 
 # Translated from fr/352.txt using Freebase and Wikipedia.
 
-35222|Luxembourg
-35223|Mondorf-les-Bains
+35221|Weicherdange
+35222|Luxembourg City
+35223|Mondorf-les-Bains/Bascharage/Noerdange/Remich
 35224|Luxembourg
 3522421|Weicherdange
-3522422|Luxembourg
-3522423|Mondorf-les-Bains
+3522422|Luxembourg City
+3522423|Mondorf-les-Bains/Bascharage/Noerdange/Remich
 3522425|Luxembourg
 3522427|Belair, Luxembourg
-3522428|Luxembourg
+3522428|Luxembourg City
 3522429|Luxembourg/Kockelscheuer
 3522430|Capellen/Kehlen
-3522431|Bertrange
+3522431|Bertrange/Mamer/Munsbach/Strassen
 3522432|Lintgen/Mersch/Steinfort
 3522433|Walferdange
 3522434|Rameldange/Senningerberg
@@ -72,14 +73,14 @@
 3522499|Troisvierges
 35225|Luxembourg
 3522621|Weicherdange
-3522622|Luxembourg
-3522623|Mondorf-les-Bains
+3522622|Luxembourg City
+3522623|Mondorf-les-Bains/Bascharage/Noerdange/Remich
 3522625|Luxembourg
 3522627|Belair, Luxembourg
-3522628|Luxembourg
+3522628|Luxembourg City
 3522629|Luxembourg/Kockelscheuer
 3522630|Capellen/Kehlen
-3522631|Bertrange
+3522631|Bertrange/Mamer/Munsbach/Strassen
 3522632|Lintgen/Mersch/Steinfort
 3522633|Walferdange
 3522634|Rameldange/Senningerberg
@@ -125,14 +126,14 @@
 3522697|Huldange
 3522699|Troisvierges
 3522721|Weicherdange
-3522722|Luxembourg
-3522723|Mondorf-les-Bains
+3522722|Luxembourg City
+3522723|Mondorf-les-Bains/Bascharage/Noerdange/Remich
 3522725|Luxembourg
 3522727|Belair, Luxembourg
-3522728|Luxembourg
+3522728|Luxembourg City
 3522729|Luxembourg/Kockelscheuer
 3522730|Capellen/Kehlen
-3522731|Bertrange
+3522731|Bertrange/Mamer/Munsbach/Strassen
 3522732|Lintgen/Mersch/Steinfort
 3522733|Walferdange
 3522734|Rameldange/Senningerberg
@@ -177,10 +178,10 @@
 3522795|Wiltz
 3522797|Huldange
 3522799|Troisvierges
-35228|Luxembourg
-35229|Luxembourg
+35228|Luxembourg City
+35229|Luxembourg/Kockelscheuer
 35230|Capellen/Kehlen
-35231|Bertrange
+35231|Bertrange/Mamer/Munsbach/Strassen
 35232|Mersch
 35233|Walferdange
 35234|Rameldange/Senningerberg
@@ -188,7 +189,7 @@
 35236|Hesperange/Kockelscheuer/Roeser
 35237|Leudelange/Ehlange/Mondercange
 35239|Windhof/Steinfort
-3524|Luxembourg
+3524|Luxembourg City
 35240|Howald
 35242|Plateau de Kirchberg
 35243|Findel/Kirchberg

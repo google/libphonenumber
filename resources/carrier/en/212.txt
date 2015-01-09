@@ -99,9 +99,12 @@
 212679|Méditel
 212680|Inwi
 212681|Inwi
+212690|Inwi
+212691|Inwi
 212692|GlobalStar
 212694|Méditel
 212695|Inwi
+212696|Inwi
 212697|Maroc Telecom
 212698|Inwi
 212699|Inwi
