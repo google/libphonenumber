@@ -19533,7 +19533,7 @@
       <fixedLine>
         <!-- The Ivanovo area code 493 was omitted on the official document, but this is still used
              in the yellow pages, and on their own website and is listed on wikipedia. This applies
-             also to 395 (Irkutsk). Also including the 840 prefix for Abkhazia. -->
+             also to 395 (Irkutsk). -->
         <nationalNumberPattern>
           ((?:
             3(?:
@@ -19555,7 +19555,7 @@
               1[1-8]|
               2[01]|
               3[13-6]|
-              4[0-8]|
+              4[1-8]|
               5[15]|
               6[1-35-7]|
               7[1-37-9]
