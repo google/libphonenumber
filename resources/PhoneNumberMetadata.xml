@@ -90,6 +90,32 @@
 
 <phoneNumberMetadata>
   <territories>
+    <!-- Abkhazia -->
+    <territory
+        id="AB" countryCode="7" internationalPrefix="810"
+        nationalPrefixFormattingRule="$NP ($FG)"
+        nationalPrefixOptionalWhenFormatting="true" >
+
+      <references>
+        <sourceUrl>https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BB%D0%B0%D0%BD_%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B8_%D0%90%D0%B1%D1%85%D0%B0%D0%B7%D0%B8%D1%8F</sourceUrl>
+      </references>
+
+      <generalDesc>
+        <nationalNumberPattern>(8402\d{6}|940[79]\d{6})</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </generalDesc>
+
+      <fixedLine>
+        <nationalNumberPattern>8402[2-8]\d{5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </fixedLine>
+
+      <mobile>
+        <nationalNumberPattern>940[79]\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{10}</possibleNumberPattern>
+      </mobile>
+    </territory>
+
     <!-- Ascension Island -->
     <territory id="AC" countryCode="247" internationalPrefix="00">
       <references>
@@ -19509,7 +19535,7 @@
              in the yellow pages, and on their own website and is listed on wikipedia. This applies
              also to 395 (Irkutsk). Also including the 840 prefix for Abkhazia. -->
         <nationalNumberPattern>
-          (?:
+          ((?:
             3(?:
               0[12]|
               4[1-35-79]|
@@ -19534,12 +19560,15 @@
               6[1-35-7]|
               7[1-37-9]
             )
-          )\d{7}
+          )\d{7})|(
+            840[013-9]\d[6]|
+            8402[19]\d{5}
+          )
         </nationalNumberPattern>
         <exampleNumber>3011234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>9\d{9}</nationalNumberPattern>
+        <nationalNumberPattern>9([0-35-9]\d{8}|4[1-9]\d{7})</nationalNumberPattern>
         <exampleNumber>9123456789</exampleNumber>
       </mobile>
       <tollFree>
