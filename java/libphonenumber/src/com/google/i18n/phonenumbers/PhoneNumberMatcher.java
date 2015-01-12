@@ -347,7 +347,6 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    */
   private PhoneNumberMatch extractInnerMatch(String candidate, int offset) {
     for (Pattern possibleInnerMatch : INNER_MATCHES) {
-      int rangeStart = 0;
       Matcher groupMatcher = possibleInnerMatch.matcher(candidate);
       boolean isFirstMatch = true;
       while (groupMatcher.find() && maxTries > 0) {
@@ -690,6 +689,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     return true;
   }
 
+  @Override
   public boolean hasNext() {
     if (state == State.NOT_READY) {
       lastMatch = find(searchIndex);
@@ -703,6 +703,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     return state == State.READY;
   }
 
+  @Override
   public PhoneNumberMatch next() {
     // Check the state and find the next match as a side-effect if necessary.
     if (!hasNext()) {
@@ -719,6 +720,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   /**
    * Always throws {@link UnsupportedOperationException} as removal is not supported.
    */
+  @Override
   public void remove() {
     throw new UnsupportedOperationException();
   }
