@@ -32,7 +32,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::make_pair;
 using std::map;
 using std::string;
 
@@ -59,7 +58,7 @@ ShortNumberInfo::ShortNumberInfo()
        it != metadata_collection.metadata().end();
        ++it) {
     const string& region_code = it->id();
-    region_to_short_metadata_map_->insert(make_pair(region_code, *it));
+    region_to_short_metadata_map_->insert(std::make_pair(region_code, *it));
   }
   regions_where_emergency_numbers_must_be_exact_->insert("BR");
   regions_where_emergency_numbers_must_be_exact_->insert("CL");

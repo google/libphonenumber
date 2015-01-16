@@ -39,9 +39,7 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::endl;
 using std::find;
-using std::make_pair;
 using std::ostream;
 
 using google::protobuf::RepeatedPtrField;

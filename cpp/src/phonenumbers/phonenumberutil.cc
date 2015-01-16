@@ -52,9 +52,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::make_pair;
-using std::sort;
-
 using google::protobuf::RepeatedPtrField;
 
 // static constants
@@ -289,70 +286,70 @@ void PhoneNumberUtil::SetLogger(Logger* logger) {
 class PhoneNumberRegExpsAndMappings {
  private:
   void InitializeMapsAndSets() {
-    diallable_char_mappings_.insert(make_pair('+', '+'));
-    diallable_char_mappings_.insert(make_pair('*', '*'));
+    diallable_char_mappings_.insert(std::make_pair('+', '+'));
+    diallable_char_mappings_.insert(std::make_pair('*', '*'));
     // Here we insert all punctuation symbols that we wish to respect when
     // formatting alpha numbers, as they show the intended number groupings.
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("-"), '-'));
+        std::make_pair(ToUnicodeCodepoint("-"), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xEF\xBC\x8D" /* "－" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xEF\xBC\x8D" /* "－" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x80\x90" /* "‐" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x80\x90" /* "‐" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x80\x91" /* "‑" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x80\x91" /* "‑" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x80\x92" /* "‒" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x80\x92" /* "‒" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x80\x93" /* "–" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x80\x93" /* "–" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x80\x94" /* "—" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x80\x94" /* "—" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x80\x95" /* "―" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x80\x95" /* "―" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x88\x92" /* "−" */), '-'));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x88\x92" /* "−" */), '-'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("/"), '/'));
+        std::make_pair(ToUnicodeCodepoint("/"), '/'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xEF\xBC\x8F" /* "／" */), '/'));
+        std::make_pair(ToUnicodeCodepoint("\xEF\xBC\x8F" /* "／" */), '/'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint(" "), ' '));
+        std::make_pair(ToUnicodeCodepoint(" "), ' '));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE3\x80\x80" /* "　" */), ' '));
+        std::make_pair(ToUnicodeCodepoint("\xE3\x80\x80" /* "　" */), ' '));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xE2\x81\xA0"), ' '));
+        std::make_pair(ToUnicodeCodepoint("\xE2\x81\xA0"), ' '));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("."), '.'));
+        std::make_pair(ToUnicodeCodepoint("."), '.'));
     all_plus_number_grouping_symbols_.insert(
-        make_pair(ToUnicodeCodepoint("\xEF\xBC\x8E" /* "．" */), '.'));
+        std::make_pair(ToUnicodeCodepoint("\xEF\xBC\x8E" /* "．" */), '.'));
     // Only the upper-case letters are added here - the lower-case versions are
     // added programmatically.
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("A"), '2'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("B"), '2'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("C"), '2'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("D"), '3'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("E"), '3'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("F"), '3'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("G"), '4'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("H"), '4'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("I"), '4'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("J"), '5'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("K"), '5'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("L"), '5'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("M"), '6'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("N"), '6'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("O"), '6'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("P"), '7'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("Q"), '7'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("R"), '7'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("S"), '7'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("T"), '8'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("U"), '8'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("V"), '8'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("W"), '9'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("X"), '9'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("Y"), '9'));
-    alpha_mappings_.insert(make_pair(ToUnicodeCodepoint("Z"), '9'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("A"), '2'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("B"), '2'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("C"), '2'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("D"), '3'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("E"), '3'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("F"), '3'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("G"), '4'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("H"), '4'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("I"), '4'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("J"), '5'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("K"), '5'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("L"), '5'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("M"), '6'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("N"), '6'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("O"), '6'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("P"), '7'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("Q"), '7'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("R"), '7'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("S"), '7'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("T"), '8'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("U"), '8'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("V"), '8'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("W"), '9'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("X"), '9'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("Y"), '9'));
+    alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("Z"), '9'));
     map<char32, char> lower_case_mappings;
     map<char32, char> alpha_letters;
     for (map<char32, char>::const_iterator it = alpha_mappings_.begin();
@@ -362,12 +359,12 @@ class PhoneNumberRegExpsAndMappings {
       if (it->first < 128) {
         char letter_as_upper = static_cast<char>(it->first);
         char32 letter_as_lower = static_cast<char32>(tolower(letter_as_upper));
-        lower_case_mappings.insert(make_pair(letter_as_lower, it->second));
+        lower_case_mappings.insert(std::make_pair(letter_as_lower, it->second));
         // Add the letters in both variants to the alpha_letters map. This just
         // pairs each letter with its upper-case representation so that it can
         // be retained when normalising alpha numbers.
-        alpha_letters.insert(make_pair(letter_as_lower, letter_as_upper));
-        alpha_letters.insert(make_pair(it->first, letter_as_upper));
+        alpha_letters.insert(std::make_pair(letter_as_lower, letter_as_upper));
+        alpha_letters.insert(std::make_pair(it->first, letter_as_upper));
       }
     }
     // In the Java version we don't insert the lower-case mappings in the map,
@@ -382,13 +379,13 @@ class PhoneNumberRegExpsAndMappings {
                                              alpha_letters.end());
     // Add the ASCII digits so that they don't get deleted by NormalizeHelper().
     for (char c = '0'; c <= '9'; ++c) {
-      diallable_char_mappings_.insert(make_pair(c, c));
-      alpha_phone_mappings_.insert(make_pair(c, c));
-      all_plus_number_grouping_symbols_.insert(make_pair(c, c));
+      diallable_char_mappings_.insert(std::make_pair(c, c));
+      alpha_phone_mappings_.insert(std::make_pair(c, c));
+      all_plus_number_grouping_symbols_.insert(std::make_pair(c, c));
     }
 
-    mobile_token_mappings_.insert(make_pair(52, '1'));
-    mobile_token_mappings_.insert(make_pair(54, '9'));
+    mobile_token_mappings_.insert(std::make_pair(52, '1'));
+    mobile_token_mappings_.insert(std::make_pair(54, '9'));
   }
 
   // Small string helpers since StrCat has a maximum number of arguments. These
@@ -611,9 +608,9 @@ PhoneNumberUtil::PhoneNumberUtil()
     int country_calling_code = it->country_code();
     if (kRegionCodeForNonGeoEntity == region_code) {
       country_code_to_non_geographical_metadata_map_->insert(
-          make_pair(country_calling_code, *it));
+          std::make_pair(country_calling_code, *it));
     } else {
-      region_to_metadata_map_->insert(make_pair(region_code, *it));
+      region_to_metadata_map_->insert(std::make_pair(region_code, *it));
     }
     map<int, list<string>* >::iterator calling_code_in_map =
         country_calling_code_to_region_map.find(country_calling_code);
@@ -628,7 +625,7 @@ PhoneNumberUtil::PhoneNumberUtil()
       list<string>* list_with_region_code = new list<string>();
       list_with_region_code->push_back(region_code);
       country_calling_code_to_region_map.insert(
-          make_pair(country_calling_code, list_with_region_code));
+          std::make_pair(country_calling_code, list_with_region_code));
     }
     if (country_calling_code == kNanpaCountryCode) {
         nanpa_regions_->insert(region_code);
@@ -640,9 +637,9 @@ PhoneNumberUtil::PhoneNumberUtil()
       country_calling_code_to_region_map.begin(),
       country_calling_code_to_region_map.end());
   // Sort all the pairs in ascending order according to country calling code.
-  sort(country_calling_code_to_region_code_map_->begin(),
-       country_calling_code_to_region_code_map_->end(),
-       OrderByFirst());
+  std::sort(country_calling_code_to_region_code_map_->begin(),
+            country_calling_code_to_region_code_map_->end(),
+            OrderByFirst());
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {
