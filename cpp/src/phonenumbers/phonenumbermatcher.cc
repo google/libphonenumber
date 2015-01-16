@@ -55,7 +55,6 @@
 #include "phonenumbers/regexp_adapter_re2.h"
 #endif  // I18N_PHONENUMBERS_USE_RE2_AND_ICU
 
-using std::make_pair;
 using std::map;
 using std::numeric_limits;
 using std::string;
@@ -372,7 +371,7 @@ class AlternateFormats : public Singleton<AlternateFormats> {
          it != format_data_.metadata().end();
          ++it) {
       calling_code_to_alternate_formats_map_.insert(
-          make_pair(it->country_code(), &*it));
+          std::make_pair(it->country_code(), &*it));
     }
   }
 

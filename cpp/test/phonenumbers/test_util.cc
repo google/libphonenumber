@@ -20,42 +20,39 @@
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/test_util.h"
 
-using std::cout;
-using std::endl;
-
 namespace i18n {
 namespace phonenumbers {
 
 ostream& operator<<(ostream& os, const PhoneNumber& number) {
-  os << endl
-     << "country_code: " << number.country_code() << endl
-     << "national_number: " << number.national_number() << endl;
+  os << std::endl
+     << "country_code: " << number.country_code() << std::endl
+     << "national_number: " << number.national_number() << std::endl;
   if (number.has_extension()) {
-     os << "extension: " << number.extension() << endl;
+     os << "extension: " << number.extension() << std::endl;
   }
   if (number.has_italian_leading_zero()) {
-     os << "italian_leading_zero: " << number.italian_leading_zero() << endl;
+     os << "italian_leading_zero: " << number.italian_leading_zero() << std::endl;
   }
   if (number.has_raw_input()) {
-     os << "raw_input: " << number.raw_input() << endl;
+     os << "raw_input: " << number.raw_input() << std::endl;
   }
   if (number.has_country_code_source()) {
-     os << "country_code_source: " << number.country_code_source() << endl;
+     os << "country_code_source: " << number.country_code_source() << std::endl;
   }
   if (number.has_preferred_domestic_carrier_code()) {
      os << "preferred_domestic_carrier_code: "
-        << number.preferred_domestic_carrier_code() << endl;
+        << number.preferred_domestic_carrier_code() << std::endl;
   }
   return os;
 }
 
 ostream& operator<<(ostream& os, const vector<PhoneNumber>& numbers) {
-  os << "[" << endl;
+  os << "[" << std::endl;
   for (vector<PhoneNumber>::const_iterator it = numbers.begin();
        it != numbers.end(); ++it) {
     os << *it;
   }
-  os << endl << "]" << endl;
+  os << std::endl << "]" << std::endl;
   return os;
 }
 

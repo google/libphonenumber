@@ -23,7 +23,6 @@
 #include "phonenumbers/base/synchronization/lock.h"
 #include "phonenumbers/regexp_adapter.h"
 
-using std::make_pair;
 using std::string;
 
 namespace i18n {
@@ -53,7 +52,7 @@ const RegExp& RegExpCache::GetRegExp(const string& pattern) {
   if (it != cache_impl_->end()) return *it->second;
 
   const RegExp* regexp = regexp_factory_.CreateRegExp(pattern);
-  cache_impl_->insert(make_pair(pattern, regexp));
+  cache_impl_->insert(std::make_pair(pattern, regexp));
   return *regexp;
 }
 
