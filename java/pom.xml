@@ -5,7 +5,7 @@
   <artifactId>libphonenumber-parent</artifactId>
   <version>7.0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <url>http://code.google.com/p/libphonenumber/</url>
+  <url>https://github.com/googlei18n/libphonenumber/</url>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -31,9 +31,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</connection>
-    <developerConnection>scm:svn:https://libphonenumber.googlecode.com/svn/trunk/java/</developerConnection>
-    <url>scm:svn:http://libphonenumber.googlecode.com/svn/trunk/java/</url>
+    <connection>scm:git:https://github.com/googlei18n/libphonenumber.git</connection>
+    <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git</developerConnection>
+    <url>https://github.com/googlei18n/libphonenumber/</url>
   </scm>
 
   <properties>
@@ -128,7 +128,6 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>2.2.1</version>
         <configuration>
-          <tagBase>https://libphonenumber.googlecode.com/svn/tags/</tagBase>
           <tagNameFormat>libphonenumber-@{project.version}</tagNameFormat>
         </configuration>
       </plugin>
