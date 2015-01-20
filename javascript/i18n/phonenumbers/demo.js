@@ -152,7 +152,7 @@ function phoneNumberParser() {
       output.append(formatter.inputDigit(inputChar));
     }
   } catch (e) {
-    output.append('\n' + e);
+    output.append('\n' + e.toString());
   }
   $('output').value = output.toString();
   return false;

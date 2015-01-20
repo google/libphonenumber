@@ -673,7 +673,6 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 
 /**
  * @return {string}
- * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getExtractedNationalPrefix_ =
     function() {

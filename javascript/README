@@ -10,9 +10,9 @@ How to setup:
     next to libphonenumber:
 
 e.g.
-svn checkout http://libphonenumber.googlecode.com/svn/trunk/ ~/src/libphonenumber
-git clone https://github.com/google/closure-library/
-git clone https://github.com/google/closure-compiler.git
+git clone https://github.com/googlei18n/libphonenumber.git ~/src/libphonenumber
+git clone https://github.com/google/closure-library ~/src/closure-library
+git clone https://github.com/google/closure-compiler ~/src/closure-compiler
 svn checkout http://closure-linter.googlecode.com/svn/trunk/ ~/src/closure-linter
 svn checkout http://python-gflags.googlecode.com/svn/trunk/ ~/src/python-gflags
 
