@@ -2962,7 +2962,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForValidRegion_ =
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = this.getMetadataForRegion(regionCode);
   if (metadata == null) {
-    throw 'Invalid region code: ' + regionCode;
+    throw new Error('Invalid region code: ' + regionCode);
   }
   return metadata.getCountryCodeOrDefault();
 };
@@ -3360,7 +3360,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
       i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY) {
     if (fullNumber.getLength() <=
         i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-      throw i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD;
+      throw new Error(i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD);
     }
     /** @type {number} */
     var potentialCountryCode = this.extractCountryCode(fullNumber,
@@ -3372,7 +3372,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
 
     // If this fails, they must be using a strange country calling code that we
     // don't recognize, or that doesn't exist.
-    throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
+    throw new Error(i18n.phonenumbers.Error.INVALID_COUNTRY_CODE);
   } else if (defaultRegionMetadata != null) {
     // Check to see if the number starts with the country calling code for the
     // default region. If so, we remove the country calling code, and do some
@@ -3713,7 +3713,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
   if (!this.isValidRegionCode_(defaultRegion)) {
     if (numberToParse.length > 0 && numberToParse.charAt(0) !=
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
-      throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
+      throw new Error(i18n.phonenumbers.Error.INVALID_COUNTRY_CODE);
     }
   }
   return this.parseHelper_(numberToParse, defaultRegion, true, true);
@@ -3772,10 +3772,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     function(numberToParse, defaultRegion, keepRawInput, checkRegion) {
 
   if (numberToParse == null) {
-    throw i18n.phonenumbers.Error.NOT_A_NUMBER;
+    throw new Error(i18n.phonenumbers.Error.NOT_A_NUMBER);
   } else if (numberToParse.length >
       i18n.phonenumbers.PhoneNumberUtil.MAX_INPUT_STRING_LENGTH_) {
-    throw i18n.phonenumbers.Error.TOO_LONG;
+    throw new Error(i18n.phonenumbers.Error.TOO_LONG);
   }
 
   /** @type {!goog.string.StringBuffer} */
@@ -3784,14 +3784,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
 
   if (!i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber(
       nationalNumber.toString())) {
-    throw i18n.phonenumbers.Error.NOT_A_NUMBER;
+    throw new Error(i18n.phonenumbers.Error.NOT_A_NUMBER);
   }
 
   // Check the region supplied is valid, or that the extracted number starts
   // with some sort of + sign so the number's region can be determined.
   if (checkRegion &&
       !this.checkRegionForParsing_(nationalNumber.toString(), defaultRegion)) {
-    throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
+    throw new Error(i18n.phonenumbers.Error.INVALID_COUNTRY_CODE);
   }
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -3830,10 +3830,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
       countryCode = this.maybeExtractCountryCode(nationalNumberStr,
           regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
       if (countryCode == 0) {
-        throw e;
+        throw (typeof e === 'string') ? new Error(e) : e;
       }
     } else {
-      throw e;
+      throw (typeof e === 'string') ? new Error(e) : e;
     }
   }
   if (countryCode != 0) {
@@ -3859,7 +3859,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   }
   if (normalizedNationalNumber.getLength() <
       i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-    throw i18n.phonenumbers.Error.TOO_SHORT_NSN;
+    throw new Error(i18n.phonenumbers.Error.TOO_SHORT_NSN);
   }
 
   if (regionMetadata != null) {
@@ -3884,11 +3884,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   var lengthOfNationalNumber = normalizedNationalNumberStr.length;
   if (lengthOfNationalNumber <
       i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-    throw i18n.phonenumbers.Error.TOO_SHORT_NSN;
+    throw new Error(i18n.phonenumbers.Error.TOO_SHORT_NSN);
   }
   if (lengthOfNationalNumber >
       i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_) {
-    throw i18n.phonenumbers.Error.TOO_LONG;
+    throw new Error(i18n.phonenumbers.Error.TOO_LONG);
   }
   this.setItalianLeadingZerosForPhoneNumber_(
       normalizedNationalNumberStr, phoneNumber);
