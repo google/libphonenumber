@@ -1947,6 +1947,7 @@
 747|Europe/Moscow
 748|Europe/Moscow
 749|Europe/Moscow
+77|Asia/Aqtobe&Asia/Almaty
 7710|Asia/Almaty
 7711|Asia/Aqtobe
 7712|Asia/Aqtobe
