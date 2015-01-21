@@ -35,7 +35,6 @@
 7776|Beeline
 7777|Beeline
 7778|Kcell/Activ
-7900|Tele2
 790003|Motiv
 790004|Motiv
 7900197|Motiv
@@ -74,7 +73,7 @@
 790072|Antares
 790073|Antares
 790074|Antares
-7901|Tele2
+7900|Tele2
 7901108|Sotel
 7901139|Arctic Region Svyaz
 7901152|Sotel
@@ -108,7 +107,7 @@
 7901952|Sotel
 7901953|MTT Invest
 7901998|Tula Cellular Radio
-7902|Tele2
+7901|Tele2
 790205|Beeline
 790206|Beeline
 790207|Beeline
@@ -187,8 +186,8 @@
 7902993|Beeline
 7902994|Beeline
 7902995|Beeline
+7902|Tele2
 7903|Beeline
-7904|Tele2
 790416|Motiv
 790417|Motiv
 790438|Motiv
@@ -196,9 +195,9 @@
 790456|TumenRuscom
 790462|Beeline
 790470|SMARTS
-790471|SMARTS-Kazan
 7904710|SMARTS
 7904711|SMARTS
+790471|SMARTS-Kazan
 7904720|SMARTS
 7904721|SMARTS
 7904722|SMARTS
@@ -235,9 +234,9 @@
 7904953|TM SAT
 7904954|TM SAT
 790498|Motiv
+7904|Tele2
 7905|Beeline
 7906|Beeline
-7908|Tele2
 790833|SMARTS-Kazan
 7908340|SMARTS-Kazan
 7908341|SMARTS-Kazan
@@ -290,6 +289,7 @@
 790897|Beeline
 790898|Beeline
 790899|Beeline
+7908|Tele2
 7909|Beeline
 791|MTS
 792|Megafon
@@ -301,7 +301,6 @@
 7936|Megafon
 7937|Megafon
 7938|Megafon
-7939|Megafon
 793939|SMARTS-Kazan
 7939501|SMARTS-Kazan
 7939502|SMARTS-Kazan
@@ -312,8 +311,8 @@
 7939507|SMARTS-Kazan
 7939508|SMARTS-Kazan
 7939509|SMARTS-Kazan
+7939|Megafon
 7941|GLONASS
-7950|Tele2
 795019|Motiv
 795020|Motiv
 795023|SMARTS
@@ -341,10 +340,10 @@
 7950942|SMARTS-Ufa
 7950943|SMARTS-Ufa
 7950944|SMARTS-Ufa
-7951|Tele2
+7950|Tele2
 795104|FC Imperative
 795128|SMARTS
-7952|Tele2
+7951|Tele2
 795213|Motiv
 795214|Motiv
 7952725|Motiv
@@ -359,18 +358,19 @@
 7952743|Motiv
 7952744|Motiv
 79527530|Esotel
-7953|Tele2
+7952|Tele2
 795300|Motiv
 7953039|Motiv
 795304|Motiv
-795305|Motiv
 7953059|Tele2
+795305|Motiv
 795320|Beeline
 795321|Beeline
 795322|Beeline
 795338|Motiv
 795360|Motiv
 795399790|FarEastTelecom
+7953|Tele2
 7954100|Marafon-M
 7954101|GTNT
 7954102|Iridium Comm.
@@ -420,7 +420,6 @@
 7958534|iConnect
 7958535|A-Tel
 7958536|Yo-Mobile
-7958537|Sigma-Tele
 795853700|Yo-Mobile
 795853701|Yo-Mobile
 795853702|Yo-Mobile
@@ -435,6 +434,7 @@
 79585372|Yota
 79585373|Yota
 795853740|Yota
+7958537|Sigma-Tele
 79585380|AsTel
 79585381|AsTel
 79585382|AsTel
@@ -457,11 +457,9 @@
 79585399|Sigma-Tele
 7958540|Sigma-Tele
 79585410|Sigma-Tele
-79585411|Sigma-Tele
-7958541114|Sigma-Tele
-7958541115|Sprint
 795854118|Yota
 795854119|Yota
+79585411|Sigma-Tele
 79585412|Yota
 79585413|Yota
 79585414|Yota
@@ -494,63 +492,41 @@
 7970200|FarEastTelecom
 7970234|Comstar - UT
 7970300|RTComm
-79703030300|Rostelecom
-79703030303|Rostelecom
-79703040000|Smoltelecom
-79703050000|TuvaSvyazInform
-7970350000|Rostelecom
+797030303|Rostelecom
+797030400|Smoltelecom
+797030500|TuvaSvyazInform
+797035000|Rostelecom
 7970423|FarEastTelecom
 7970492|Rostelecom
 7970494|Rostelecom
-7970500500|Orange Business Services
-79705005010|Orange Business Services
-79705005020|Orange Business Services
-79705005030|Orange Business Services
-79705005040|Orange Business Services
-79705005050|Orange Business Services
-79705005060|Orange Business Services
-79705005070|Orange Business Services
-79705005080|Orange Business Services
-79705005090|Orange Business Services
-79705005555|Orange Business Services
+79705005|Orange Business Services
 7970707|Rostelecom
 7970811|Rostelecom
 7970837|Rostelecom
-79711010101|Rostelecom
+797110101|Rostelecom
 7971300|RTComm
-79713030300|Rostelecom
-79713030303|Rostelecom
-79713050000|TuvaSvyazInform
-7971350000|Rostelecom
-79713550000|Computer Ambulance
-7971500500|Orange Business Services
-79715005010|Orange Business Services
-79715005020|Orange Business Services
-79715005030|Orange Business Services
-79715005040|Orange Business Services
-79715005050|Orange Business Services
-79715005060|Orange Business Services
-79715005070|Orange Business Services
-79715005080|Orange Business Services
-79715005090|Orange Business Services
-79715005555|Orange Business Services
-7971701000|Phonecom
+797130303|Rostelecom
+797130500|TuvaSvyazInform
+797135000|Rostelecom
+797135500|Computer Ambulance
+79715005|Orange Business Services
+79717010|Phonecom
 7971707|Rostelecom
 79780|MTS
 79786|Beeline
 79787|MTS
 79788|MTS
 79789|MTS
-798|MTS
 7985905|MGTS
+798|MTS
 7991|Tele2
 7992|Tele2
 7993|Tele2
 7994|Tele2
-7995|Tele2
 799580|Vainah Telecom
 799581|Vainah Telecom
 799582|Vainah Telecom
+7995|Tele2
 7996|Tele2
 79971|ASVT Moscow
 7997421|Pilgrim
@@ -578,12 +554,10 @@
 7997470|Pilgrim
 7997471|Pilgrim
 7997472|Pilgrim
-79974730000|Murmansk Trawl Fleet
-79974730001|Murmansk Trawl Fleet
-79976|ASVT Moscow
+799747300|Murmansk Trawl Fleet
 799768|RusSDO
 799769|RusSDO
-7999|Yota/Megafon
+79976|ASVT Moscow
 7999055|Mit-Tel
 79992200|Tele2
 79992201|Tele2
@@ -598,8 +572,8 @@
 7999688|Tele2
 7999689|Tele2
 7999777|Matrix Mobile
-7999779|Matrix Mobile
 79997799|Tele2
+7999779|Matrix Mobile
 799988|Tele2
 799989|Tele2
 799990|Tele2
@@ -616,3 +590,4 @@
 7999947|Osnova Telecom
 7999948|Osnova Telecom
 799995|Osnova Telecom
+7999|Yota/Megafon
