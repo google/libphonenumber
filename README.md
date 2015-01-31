@@ -110,3 +110,4 @@ Several people are porting the phone number library to other languages. Here are
   * Python: https://github.com/daviddrysdale/python-phonenumbers
   * Ruby: https://github.com/sstephenson/global_phone
   * PHP: https://github.com/giggsey/libphonenumber-for-php
+  * JavaScript (node): https://github.com/seegno/google-libphonenumber
