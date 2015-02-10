@@ -10,7 +10,7 @@ How to setup:
     next to libphonenumber:
 
 e.g.
-svn checkout http://libphonenumber.googlecode.com/svn/trunk/ ~/src/libphonenumber
+git clone https://github.com/googlei18n/libphonenumber/
 git clone https://github.com/google/closure-library/
 git clone https://github.com/google/closure-compiler.git
 svn checkout http://closure-linter.googlecode.com/svn/trunk/ ~/src/closure-linter
@@ -81,9 +81,11 @@ project:
       AsYouTypeFormatterTest.java => asyoutypeformatter_test.js
 
 4.  Run the Closure Compiler to get your changes syntax and type checked.
-    This will also generate demo-compiled.js used by demo-compiler.html:
+    This will also generate demo-compiled.js used by demo-compiler.html
+    (TODO: Use target "compile" rather than "compile-demo" once
+     visibility issues for getExtractedNationalPrefix_ have been resolved):
 
-    ant -f javascript/build.xml compile
+    ant -f javascript/build.xml compile-demo
 
 5.  Run the Closure Linter to lint the JavaScript files:
 
