@@ -37,7 +37,7 @@ goog.require('goog.proto2.Message');
  * @extends {goog.proto2.Message}
  */
 i18n.phonenumbers.NumberFormat = function() {
-  goog.proto2.Message.apply(this);
+  goog.proto2.Message.call(this);
 };
 goog.inherits(i18n.phonenumbers.NumberFormat, goog.proto2.Message);
 
@@ -374,7 +374,7 @@ i18n.phonenumbers.NumberFormat.prototype.clearDomesticCarrierCodeFormattingRule 
  * @extends {goog.proto2.Message}
  */
 i18n.phonenumbers.PhoneNumberDesc = function() {
-  goog.proto2.Message.apply(this);
+  goog.proto2.Message.call(this);
 };
 goog.inherits(i18n.phonenumbers.PhoneNumberDesc, goog.proto2.Message);
 
@@ -540,6 +540,108 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.clearExampleNumber = function() {
 };
 
 
+/**
+ * Gets the value of the national_number_matcher_data field.
+ * @return {?string} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getNationalNumberMatcherData = function() {
+  return /** @type {?string} */ (this.get$Value(7));
+};
+
+
+/**
+ * Gets the value of the national_number_matcher_data field or the default value if not set.
+ * @return {string} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getNationalNumberMatcherDataOrDefault = function() {
+  return /** @type {string} */ (this.get$ValueOrDefault(7));
+};
+
+
+/**
+ * Sets the value of the national_number_matcher_data field.
+ * @param {string} value The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.setNationalNumberMatcherData = function(value) {
+  this.set$Value(7, value);
+};
+
+
+/**
+ * @return {boolean} Whether the national_number_matcher_data field has a value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.hasNationalNumberMatcherData = function() {
+  return this.has$Value(7);
+};
+
+
+/**
+ * @return {number} The number of values in the national_number_matcher_data field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.nationalNumberMatcherDataCount = function() {
+  return this.count$Values(7);
+};
+
+
+/**
+ * Clears the values in the national_number_matcher_data field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.clearNationalNumberMatcherData = function() {
+  this.clear$Field(7);
+};
+
+
+/**
+ * Gets the value of the possible_number_matcher_data field.
+ * @return {?string} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleNumberMatcherData = function() {
+  return /** @type {?string} */ (this.get$Value(8));
+};
+
+
+/**
+ * Gets the value of the possible_number_matcher_data field or the default value if not set.
+ * @return {string} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleNumberMatcherDataOrDefault = function() {
+  return /** @type {string} */ (this.get$ValueOrDefault(8));
+};
+
+
+/**
+ * Sets the value of the possible_number_matcher_data field.
+ * @param {string} value The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.setPossibleNumberMatcherData = function(value) {
+  this.set$Value(8, value);
+};
+
+
+/**
+ * @return {boolean} Whether the possible_number_matcher_data field has a value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.hasPossibleNumberMatcherData = function() {
+  return this.has$Value(8);
+};
+
+
+/**
+ * @return {number} The number of values in the possible_number_matcher_data field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.possibleNumberMatcherDataCount = function() {
+  return this.count$Values(8);
+};
+
+
+/**
+ * Clears the values in the possible_number_matcher_data field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.clearPossibleNumberMatcherData = function() {
+  this.clear$Field(8);
+};
+
+
 
 /**
  * Message PhoneMetadata.
@@ -547,7 +649,7 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.clearExampleNumber = function() {
  * @extends {goog.proto2.Message}
  */
 i18n.phonenumbers.PhoneMetadata = function() {
-  goog.proto2.Message.apply(this);
+  goog.proto2.Message.call(this);
 };
 goog.inherits(i18n.phonenumbers.PhoneMetadata, goog.proto2.Message);
 
@@ -1959,14 +2061,13 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearLeadingZeroPossible = function() 
 };
 
 
-
 /**
  * Message PhoneMetadataCollection.
  * @constructor
  * @extends {goog.proto2.Message}
  */
 i18n.phonenumbers.PhoneMetadataCollection = function() {
-  goog.proto2.Message.apply(this);
+  goog.proto2.Message.call(this);
 };
 goog.inherits(i18n.phonenumbers.PhoneMetadataCollection, goog.proto2.Message);
 
@@ -2041,243 +2142,302 @@ i18n.phonenumbers.PhoneMetadataCollection.prototype.clearMetadata = function() {
 };
 
 
-goog.proto2.Message.set$Metadata(i18n.phonenumbers.NumberFormat, {
-  0: {
-    name: 'NumberFormat',
-    fullName: 'i18n.phonenumbers.NumberFormat'
-  },
-  1: {
-    name: 'pattern',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  2: {
-    name: 'format',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  3: {
-    name: 'leading_digits_pattern',
-    repeated: true,
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  4: {
-    name: 'national_prefix_formatting_rule',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  6: {
-    name: 'national_prefix_optional_when_formatting',
-    fieldType: goog.proto2.Message.FieldType.BOOL,
-    type: Boolean
-  },
-  5: {
-    name: 'domestic_carrier_code_formatting_rule',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
+/** @override */
+i18n.phonenumbers.NumberFormat.prototype.getDescriptor = function() {
+  if (!i18n.phonenumbers.NumberFormat.descriptor_) {
+    // The descriptor is created lazily when we instantiate a new instance.
+    var descriptorObj = {
+      0: {
+        name: 'NumberFormat',
+        fullName: 'i18n.phonenumbers.NumberFormat'
+      },
+      1: {
+        name: 'pattern',
+        required: true,
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      2: {
+        name: 'format',
+        required: true,
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      3: {
+        name: 'leading_digits_pattern',
+        repeated: true,
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      4: {
+        name: 'national_prefix_formatting_rule',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      6: {
+        name: 'national_prefix_optional_when_formatting',
+        fieldType: goog.proto2.Message.FieldType.BOOL,
+        type: Boolean
+      },
+      5: {
+        name: 'domestic_carrier_code_formatting_rule',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      }
+    };
+    i18n.phonenumbers.NumberFormat.descriptor_ =
+        goog.proto2.Message.createDescriptor(
+             i18n.phonenumbers.NumberFormat, descriptorObj);
   }
-});
+  return i18n.phonenumbers.NumberFormat.descriptor_;
+};
 
 
-goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneNumberDesc, {
-  0: {
-    name: 'PhoneNumberDesc',
-    fullName: 'i18n.phonenumbers.PhoneNumberDesc'
-  },
-  2: {
-    name: 'national_number_pattern',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  3: {
-    name: 'possible_number_pattern',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  6: {
-    name: 'example_number',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
+// Export getDescriptor static function robust to minification.
+i18n.phonenumbers.NumberFormat['ctor'] = i18n.phonenumbers.NumberFormat;
+i18n.phonenumbers.NumberFormat['ctor'].getDescriptor =
+    i18n.phonenumbers.NumberFormat.prototype.getDescriptor;
+
+
+/** @override */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
+  if (!i18n.phonenumbers.PhoneNumberDesc.descriptor_) {
+    // The descriptor is created lazily when we instantiate a new instance.
+    var descriptorObj = {
+      0: {
+        name: 'PhoneNumberDesc',
+        fullName: 'i18n.phonenumbers.PhoneNumberDesc'
+      },
+      2: {
+        name: 'national_number_pattern',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      3: {
+        name: 'possible_number_pattern',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      6: {
+        name: 'example_number',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      7: {
+        name: 'national_number_matcher_data',
+        fieldType: goog.proto2.Message.FieldType.BYTES,
+        type: String
+      },
+      8: {
+        name: 'possible_number_matcher_data',
+        fieldType: goog.proto2.Message.FieldType.BYTES,
+        type: String
+      }
+    };
+    i18n.phonenumbers.PhoneNumberDesc.descriptor_ =
+        goog.proto2.Message.createDescriptor(
+             i18n.phonenumbers.PhoneNumberDesc, descriptorObj);
   }
-});
+  return i18n.phonenumbers.PhoneNumberDesc.descriptor_;
+};
 
 
-goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadata, {
-  0: {
-    name: 'PhoneMetadata',
-    fullName: 'i18n.phonenumbers.PhoneMetadata'
-  },
-  1: {
-    name: 'general_desc',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  2: {
-    name: 'fixed_line',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  3: {
-    name: 'mobile',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  4: {
-    name: 'toll_free',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  5: {
-    name: 'premium_rate',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  6: {
-    name: 'shared_cost',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  7: {
-    name: 'personal_number',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  8: {
-    name: 'voip',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  21: {
-    name: 'pager',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  25: {
-    name: 'uan',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  27: {
-    name: 'emergency',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  28: {
-    name: 'voicemail',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  24: {
-    name: 'no_international_dialling',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneNumberDesc
-  },
-  9: {
-    name: 'id',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  10: {
-    name: 'country_code',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.INT32,
-    type: Number
-  },
-  11: {
-    name: 'international_prefix',
-    required: true,
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  17: {
-    name: 'preferred_international_prefix',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  12: {
-    name: 'national_prefix',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  13: {
-    name: 'preferred_extn_prefix',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  15: {
-    name: 'national_prefix_for_parsing',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  16: {
-    name: 'national_prefix_transform_rule',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  18: {
-    name: 'same_mobile_and_fixed_line_pattern',
-    fieldType: goog.proto2.Message.FieldType.BOOL,
-    defaultValue: false,
-    type: Boolean
-  },
-  19: {
-    name: 'number_format',
-    repeated: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.NumberFormat
-  },
-  20: {
-    name: 'intl_number_format',
-    repeated: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.NumberFormat
-  },
-  22: {
-    name: 'main_country_for_code',
-    fieldType: goog.proto2.Message.FieldType.BOOL,
-    defaultValue: false,
-    type: Boolean
-  },
-  23: {
-    name: 'leading_digits',
-    fieldType: goog.proto2.Message.FieldType.STRING,
-    type: String
-  },
-  26: {
-    name: 'leading_zero_possible',
-    fieldType: goog.proto2.Message.FieldType.BOOL,
-    defaultValue: false,
-    type: Boolean
+// Export getDescriptor static function robust to minification.
+i18n.phonenumbers.PhoneNumberDesc['ctor'] = i18n.phonenumbers.PhoneNumberDesc;
+i18n.phonenumbers.PhoneNumberDesc['ctor'].getDescriptor =
+    i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor;
+
+
+/** @override */
+i18n.phonenumbers.PhoneMetadata.prototype.getDescriptor = function() {
+  if (!i18n.phonenumbers.PhoneMetadata.descriptor_) {
+    // The descriptor is created lazily when we instantiate a new instance.
+    var descriptorObj = {
+      0: {
+        name: 'PhoneMetadata',
+        fullName: 'i18n.phonenumbers.PhoneMetadata'
+      },
+      1: {
+        name: 'general_desc',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      2: {
+        name: 'fixed_line',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      3: {
+        name: 'mobile',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      4: {
+        name: 'toll_free',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      5: {
+        name: 'premium_rate',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      6: {
+        name: 'shared_cost',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      7: {
+        name: 'personal_number',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      8: {
+        name: 'voip',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      21: {
+        name: 'pager',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      25: {
+        name: 'uan',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      27: {
+        name: 'emergency',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      28: {
+        name: 'voicemail',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      24: {
+        name: 'no_international_dialling',
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneNumberDesc
+      },
+      9: {
+        name: 'id',
+        required: true,
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      10: {
+        name: 'country_code',
+        fieldType: goog.proto2.Message.FieldType.INT32,
+        type: Number
+      },
+      11: {
+        name: 'international_prefix',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      17: {
+        name: 'preferred_international_prefix',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      12: {
+        name: 'national_prefix',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      13: {
+        name: 'preferred_extn_prefix',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      15: {
+        name: 'national_prefix_for_parsing',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      16: {
+        name: 'national_prefix_transform_rule',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      18: {
+        name: 'same_mobile_and_fixed_line_pattern',
+        fieldType: goog.proto2.Message.FieldType.BOOL,
+        defaultValue: false,
+        type: Boolean
+      },
+      19: {
+        name: 'number_format',
+        repeated: true,
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.NumberFormat
+      },
+      20: {
+        name: 'intl_number_format',
+        repeated: true,
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.NumberFormat
+      },
+      22: {
+        name: 'main_country_for_code',
+        fieldType: goog.proto2.Message.FieldType.BOOL,
+        defaultValue: false,
+        type: Boolean
+      },
+      23: {
+        name: 'leading_digits',
+        fieldType: goog.proto2.Message.FieldType.STRING,
+        type: String
+      },
+      26: {
+        name: 'leading_zero_possible',
+        fieldType: goog.proto2.Message.FieldType.BOOL,
+        defaultValue: false,
+        type: Boolean
+      }
+    };
+    i18n.phonenumbers.PhoneMetadata.descriptor_ =
+        goog.proto2.Message.createDescriptor(
+             i18n.phonenumbers.PhoneMetadata, descriptorObj);
   }
-});
+  return i18n.phonenumbers.PhoneMetadata.descriptor_;
+};
 
 
-goog.proto2.Message.set$Metadata(i18n.phonenumbers.PhoneMetadataCollection, {
-  0: {
-    name: 'PhoneMetadataCollection',
-    fullName: 'i18n.phonenumbers.PhoneMetadataCollection'
-  },
-  1: {
-    name: 'metadata',
-    repeated: true,
-    fieldType: goog.proto2.Message.FieldType.MESSAGE,
-    type: i18n.phonenumbers.PhoneMetadata
+// Export getDescriptor static function robust to minification.
+i18n.phonenumbers.PhoneMetadata['ctor'] = i18n.phonenumbers.PhoneMetadata;
+i18n.phonenumbers.PhoneMetadata['ctor'].getDescriptor =
+    i18n.phonenumbers.PhoneMetadata.prototype.getDescriptor;
+
+
+/** @override */
+i18n.phonenumbers.PhoneMetadataCollection.prototype.getDescriptor = function() {
+  if (!i18n.phonenumbers.PhoneMetadataCollection.descriptor_) {
+    // The descriptor is created lazily when we instantiate a new instance.
+    var descriptorObj = {
+      0: {
+        name: 'PhoneMetadataCollection',
+        fullName: 'i18n.phonenumbers.PhoneMetadataCollection'
+      },
+      1: {
+        name: 'metadata',
+        repeated: true,
+        fieldType: goog.proto2.Message.FieldType.MESSAGE,
+        type: i18n.phonenumbers.PhoneMetadata
+      }
+    };
+    i18n.phonenumbers.PhoneMetadataCollection.descriptor_ =
+        goog.proto2.Message.createDescriptor(
+             i18n.phonenumbers.PhoneMetadataCollection, descriptorObj);
   }
-});
+  return i18n.phonenumbers.PhoneMetadataCollection.descriptor_;
+};
+
+
+// Export getDescriptor static function robust to minification.
+i18n.phonenumbers.PhoneMetadataCollection['ctor'] = i18n.phonenumbers.PhoneMetadataCollection;
+i18n.phonenumbers.PhoneMetadataCollection['ctor'].getDescriptor =
+    i18n.phonenumbers.PhoneMetadataCollection.prototype.getDescriptor;
