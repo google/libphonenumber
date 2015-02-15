@@ -4171,7 +4171,7 @@
           <nationalNumberPattern>
           (?:
             0[1-9]|
-            4[0-24-9]|
+            4\d|
             5[4-9]|
             6[015-79]|
             7[57]
@@ -4410,7 +4410,7 @@
       <mobile>
         <!-- Temporarily allow both old [579]\d{7} and new 6[5-79]\d{7} format. -->
         <nationalNumberPattern>
-          6[5-79]\d{7}|
+          6[5-9]\d{7}|
           [579]\d{7}
         </nationalNumberPattern>
         <exampleNumber>671234567</exampleNumber>
@@ -8259,7 +8259,7 @@
             2[034678]\d|
             5(?:
               [047]\d|
-              54|
+              5[3-6]|
               6[01]
             )
           )\d{6}
@@ -12979,7 +12979,7 @@
             6[016-9]|
             7(?:
               [07-9]|
-              6\d
+              [16]\d
             )|
             8(?:
               [013-79]|
@@ -16581,7 +16581,7 @@
              listing them as mobile. 115 was added based on numbers found online. -->
         <nationalNumberPattern>
           1(?:
-            1[1-35]\d{2}|
+            1[1-5]\d{2}|
             [02-4679][2-9]\d|
             59\d{2}|
             8(?:
