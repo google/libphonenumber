@@ -738,6 +738,8 @@ char AsYouTypeFormatter::NormalizeAndAccrueDigitsAndPlusSign(
 void AsYouTypeFormatter::InputDigitHelper(char next_char, string* number) {
   DCHECK(number);
   number->clear();
+  // Note that formattingTemplate is not guaranteed to have a value, it could be
+  // empty, e.g. when the next digit is entered after extracting an IDD or NDD.
   const char32 placeholder_codepoint = UnicodeString(kDigitPlaceholder)[0];
   int placeholder_pos = formatting_template_
       .tempSubString(last_match_position_).indexOf(placeholder_codepoint);
