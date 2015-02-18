@@ -466,6 +466,9 @@ void AsYouTypeFormatter::AttemptToChoosePatternWithPrefixExtracted(
   able_to_format_ = true;
   is_expecting_country_code_ = false;
   possible_formats_.clear();
+  last_match_position_ = 0;
+  formatting_template_.remove();
+  current_formatting_pattern_.clear();
   AttemptToChooseFormattingPattern(formatted_number);
 }
 
