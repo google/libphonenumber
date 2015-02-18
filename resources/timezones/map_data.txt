@@ -1413,7 +1413,7 @@
 421|Europe/Bratislava
 423|Europe/Vaduz
 43|Europe/Vienna
-44|Atlantic/Reykjavik&Europe/London
+44|Europe/London
 4411|Europe/London
 4412|Europe/London
 44130|Europe/London
