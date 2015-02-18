@@ -667,6 +667,9 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   this.ableToFormat_ = true;
   this.isExpectingCountryCallingCode_ = false;
   this.possibleFormats_ = [];
+  this.lastMatchPosition_ = 0;
+  this.formattingTemplate_.clear();
+  this.currentFormattingPattern_ = '';
   return this.attemptToChooseFormattingPattern_();
 };
 
