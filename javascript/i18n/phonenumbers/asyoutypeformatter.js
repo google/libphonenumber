@@ -1086,6 +1086,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigitHelper_ =
     function(nextChar) {
 
+  // Note that formattingTemplate is not guaranteed to have a value, it could be
+  // empty, e.g. when the next digit is entered after extracting an IDD or NDD.
   /** @type {string} */
   var formattingTemplate = this.formattingTemplate_.toString();
   if (formattingTemplate.substring(this.lastMatchPosition_)
