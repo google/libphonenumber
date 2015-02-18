@@ -15,7 +15,7 @@
 # The carrier prefixes were added according to the Wikipedia page
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa
 # and the open-source bug
-# https://code.google.com/p/libphonenumber/issues/detail?id=489
+# https://github.com/googlei18n/libphonenumber/issues/489
 
 27603|MTN
 27604|MTN

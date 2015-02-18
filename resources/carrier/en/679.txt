@@ -14,8 +14,8 @@
 
 # Digicel prefix from ITU doc. Vodafone prefixes from Wikipedia and open-source
 # bug reports, e.g.
-# https://code.google.com/p/libphonenumber/issues/detail?id=476
-# https://code.google.com/p/libphonenumber/issues/detail?id=386
+# https://github.com/googlei18n/libphonenumber/issues/476
+# https://github.com/googlei18n/libphonenumber/issues/386
 
 6797|Digicel
 67984|Vodafone

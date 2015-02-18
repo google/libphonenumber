@@ -10599,7 +10599,7 @@
              numbers. It seems almost impossible to know for some of these numbers whether they are
              land-line or mobile, since the ranges overlap. Extra prefixes added: 7601, 768[567],
              7695, 8299, 8309. New prefixes were also added based on the document provided from
-             mobile carriers: https://code.google.com/p/libphonenumber/issues/detail?id=260 -->
+             mobile carriers: https://github.com/googlei18n/libphonenumber/issues/260 -->
         <nationalNumberPattern>
           (?:
             7(?:
@@ -15891,7 +15891,7 @@
         </nationalNumberPattern>
         <exampleNumber>35123456</exampleNumber>
       </fixedLine>
-      <!-- Added "49\d" in response to https://code.google.com/p/libphonenumber/issues/detail?id=529
+      <!-- Added "49\d" in response to https://github.com/googlei18n/libphonenumber/issues/529
            which might be overly permissive, but we don't have an official documentation for this
            and only a small number of numbers were found online. At least 492 and 495 are valid.
            -->
