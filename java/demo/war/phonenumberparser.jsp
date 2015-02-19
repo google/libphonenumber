@@ -33,7 +33,7 @@
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">
       <p></p>
-      <a href="http://code.google.com/p/libphonenumber/">Back to libphonenumber</a>
+      <a href="https://github.com/googlei18n/libphonenumber/">Back to libphonenumber</a>
     </form>
   </body>
 </html>
