@@ -155,20 +155,20 @@ TEST_F(AreaCodeMapTest, TestLookupNumberNY) {
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCA1) {
   EXPECT_STREQ("San Mateo, CA",
-               map_US_->Lookup(MakePhoneNumber(1, 6503451234L)));
+               map_US_->Lookup(MakePhoneNumber(1, 6503451234LL)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCA2) {
-  EXPECT_STREQ("California", map_US_->Lookup(MakePhoneNumber(1, 6502531234L)));
+  EXPECT_STREQ("California", map_US_->Lookup(MakePhoneNumber(1, 6502531234LL)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberTX) {
   EXPECT_STREQ("Richardson, TX",
-            map_US_->Lookup(MakePhoneNumber(1, 9724801234L)));
+            map_US_->Lookup(MakePhoneNumber(1, 9724801234LL)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberNotFoundTX) {
-  EXPECT_STREQ(NULL, map_US_->Lookup(MakePhoneNumber(1, 9724811234L)));
+  EXPECT_STREQ(NULL, map_US_->Lookup(MakePhoneNumber(1, 9724811234LL)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCH) {
