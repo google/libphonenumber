@@ -3641,6 +3641,12 @@
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
         <exampleNumber>9021234567</exampleNumber>
       </premiumRate>
+      <voip>
+        <!-- 249 prefix for Beltelcom's Maxiphone added based on online info. -->
+        <nationalNumberPattern>249\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>249123456</exampleNumber>
+      </voip>
     </territory>
 
     <!-- Belize -->
