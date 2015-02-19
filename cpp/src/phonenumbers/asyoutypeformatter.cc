@@ -114,6 +114,7 @@ void MatchAllGroups(const string& pattern,
   bool status =
       cache->GetRegExp(new_pattern).Consume(consume_input.get(), group);
   DCHECK(status);
+  IGNORE_UNUSED(status);
 }
 
 PhoneMetadata CreateEmptyMetadata() {
@@ -510,6 +511,7 @@ void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
       bool status = regexp_cache_.GetRegExp(pattern).GlobalReplace(
           &formatted_number, number_format.format());
       DCHECK(status);
+      IGNORE_UNUSED(status);
 
       AppendNationalNumber(formatted_number, formatted_result);
       return;
