@@ -23769,7 +23769,6 @@
         <sourceUrl>http://www.itu.int/oth/T02020000B4/en</sourceUrl>
       </references>
       <availableFormats>
-        <!-- Should be formatted in one block, apart from the specific series below. -->
         <numberFormat pattern="(8\d{2})(\d{3,4})">
           <leadingDigits>8</leadingDigits>
           <format>$1 $2</format>
@@ -23777,6 +23776,10 @@
         <numberFormat pattern="(7\d)(\d{5})">
           <leadingDigits>7</leadingDigits>
           <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{5})">
+          <leadingDigits>[2-6]</leadingDigits>
+          <format>$1</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
