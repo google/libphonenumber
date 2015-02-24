@@ -47,7 +47,7 @@ ostream& operator<<(ostream& os, const vector<PhoneNumber>& numbers);
 // Class containing string constants of region codes for easier testing. Note
 // that another private RegionCode class is defined in
 // cpp/src/phonenumbers/region_code.h. This one contains more constants.
-class RegionCode {
+class TestRegionCode {
  public:
   static const char* AD() {
     return "AD";

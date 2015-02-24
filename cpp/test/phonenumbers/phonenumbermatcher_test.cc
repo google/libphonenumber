@@ -73,7 +73,7 @@ class PhoneNumberMatcherTest : public testing::Test {
   PhoneNumberMatcherTest()
       : phone_util_(*PhoneNumberUtil::GetInstance()),
         matcher_(phone_util_, "",
-                 RegionCode::US(),
+                 TestRegionCode::US(),
                  PhoneNumberMatcher::VALID, 5),
         offset_(0) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
@@ -153,7 +153,7 @@ class PhoneNumberMatcherTest : public testing::Test {
   // that its corresponding range is [start, end).
   void AssertEqualRange(const string& text, int index, int start, int end) {
     string sub = text.substr(index);
-    PhoneNumberMatcher matcher(phone_util_, sub, RegionCode::NZ(),
+    PhoneNumberMatcher matcher(phone_util_, sub, TestRegionCode::NZ(),
                                PhoneNumberMatcher::POSSIBLE,
                                1000000 /* max_tries */);
     PhoneNumberMatch match;
@@ -213,7 +213,7 @@ class PhoneNumberMatcherTest : public testing::Test {
   // Variant of FindMatchesInContexts that uses a default number and region.
   void FindMatchesInContexts(const vector<NumberContext>& contexts,
                              bool is_valid, bool is_possible) {
-    const string& region = RegionCode::US();
+    const string& region = TestRegionCode::US();
     const string number("415-666-7777");
 
     FindMatchesInContexts(contexts, is_valid, is_possible, region, number);
@@ -388,46 +388,46 @@ TEST_F(PhoneNumberMatcherTest, ContainsMoreThanOneSlashInNationalNumber) {
 // See PhoneNumberUtilTest::ParseNationalNumber.
 TEST_F(PhoneNumberMatcherTest, FindNationalNumber) {
   // Same cases as in ParseNationalNumber.
-  DoTestFindInContext("033316005", RegionCode::NZ());
-  // "33316005", RegionCode::NZ() is omitted since the national-prefix is
+  DoTestFindInContext("033316005", TestRegionCode::NZ());
+  // "33316005", TestRegionCode::NZ() is omitted since the national-prefix is
   // obligatory for these types of numbers in New Zealand.
   // National prefix attached and some formatting present.
-  DoTestFindInContext("03-331 6005", RegionCode::NZ());
-  DoTestFindInContext("03 331 6005", RegionCode::NZ());
+  DoTestFindInContext("03-331 6005", TestRegionCode::NZ());
+  DoTestFindInContext("03 331 6005", TestRegionCode::NZ());
   // Testing international prefixes.
   // Should strip country code.
-  DoTestFindInContext("0064 3 331 6005", RegionCode::NZ());
+  DoTestFindInContext("0064 3 331 6005", TestRegionCode::NZ());
   // Try again, but this time we have an international number with Region Code
   // US. It should recognize the country code and parse accordingly.
-  DoTestFindInContext("01164 3 331 6005", RegionCode::US());
-  DoTestFindInContext("+64 3 331 6005", RegionCode::US());
+  DoTestFindInContext("01164 3 331 6005", TestRegionCode::US());
+  DoTestFindInContext("+64 3 331 6005", TestRegionCode::US());
 
-  DoTestFindInContext("64(0)64123456", RegionCode::NZ());
+  DoTestFindInContext("64(0)64123456", TestRegionCode::NZ());
   // Check that using a "/" is fine in a phone number.
   // Note that real Polish numbers do *not* start with a 0.
-  DoTestFindInContext("0123/456789", RegionCode::PL());
-  DoTestFindInContext("123-456-7890", RegionCode::US());
+  DoTestFindInContext("0123/456789", TestRegionCode::PL());
+  DoTestFindInContext("123-456-7890", TestRegionCode::US());
 }
 
 // See PhoneNumberUtilTest::ParseWithInternationalPrefixes.
 TEST_F(PhoneNumberMatcherTest, FindWithInternationalPrefixes) {
-  DoTestFindInContext("+1 (650) 333-6000", RegionCode::NZ());
-  DoTestFindInContext("1-650-333-6000", RegionCode::US());
+  DoTestFindInContext("+1 (650) 333-6000", TestRegionCode::NZ());
+  DoTestFindInContext("1-650-333-6000", TestRegionCode::US());
   // Calling the US number from Singapore by using different service providers
   // 1st test: calling using SingTel IDD service (IDD is 001)
-  DoTestFindInContext("0011-650-333-6000", RegionCode::SG());
+  DoTestFindInContext("0011-650-333-6000", TestRegionCode::SG());
   // 2nd test: calling using StarHub IDD service (IDD is 008)
-  DoTestFindInContext("0081-650-333-6000", RegionCode::SG());
+  DoTestFindInContext("0081-650-333-6000", TestRegionCode::SG());
   // 3rd test: calling using SingTel V019 service (IDD is 019)
-  DoTestFindInContext("0191-650-333-6000", RegionCode::SG());
+  DoTestFindInContext("0191-650-333-6000", TestRegionCode::SG());
   // Calling the US number from Poland
-  DoTestFindInContext("0~01-650-333-6000", RegionCode::PL());
+  DoTestFindInContext("0~01-650-333-6000", TestRegionCode::PL());
   // Using "++" at the start.
-  DoTestFindInContext("++1 (650) 333-6000", RegionCode::PL());
+  DoTestFindInContext("++1 (650) 333-6000", TestRegionCode::PL());
   // Using a full-width plus sign.
   DoTestFindInContext(
       "\xEF\xBC\x8B""1 (650) 333-6000" /* "＋1 (650) 333-6000" */,
-      RegionCode::SG());
+      TestRegionCode::SG());
   // The whole number, including punctuation, is here represented in full-width
   // form.
   DoTestFindInContext(
@@ -435,103 +435,104 @@ TEST_F(PhoneNumberMatcherTest, FindWithInternationalPrefixes) {
       "\xEF\xBC\x8B\xEF\xBC\x91\xE3\x80\x80\xEF\xBC\x88\xEF\xBC\x96\xEF\xBC\x95"
       "\xEF\xBC\x90\xEF\xBC\x89\xE3\x80\x80\xEF\xBC\x93\xEF\xBC\x93\xEF\xBC\x93"
       "\xEF\xBC\x8D\xEF\xBC\x96\xEF\xBC\x90\xEF\xBC\x90\xEF\xBC\x90",
-      RegionCode::SG());
+      TestRegionCode::SG());
 }
 
 // See PhoneNumberUtilTest::ParseWithLeadingZero.
 TEST_F(PhoneNumberMatcherTest, FindWithLeadingZero) {
-  DoTestFindInContext("+39 02-36618 300", RegionCode::NZ());
-  DoTestFindInContext("02-36618 300", RegionCode::IT());
-  DoTestFindInContext("312 345 678", RegionCode::IT());
+  DoTestFindInContext("+39 02-36618 300", TestRegionCode::NZ());
+  DoTestFindInContext("02-36618 300", TestRegionCode::IT());
+  DoTestFindInContext("312 345 678", TestRegionCode::IT());
 }
 
 // See PhoneNumberUtilTest::ParseNationalNumberArgentina.
 TEST_F(PhoneNumberMatcherTest, FindNationalNumberArgentina) {
   // Test parsing mobile numbers of Argentina.
-  DoTestFindInContext("+54 9 343 555 1212", RegionCode::AR());
-  DoTestFindInContext("0343 15 555 1212", RegionCode::AR());
+  DoTestFindInContext("+54 9 343 555 1212", TestRegionCode::AR());
+  DoTestFindInContext("0343 15 555 1212", TestRegionCode::AR());
 
-  DoTestFindInContext("+54 9 3715 65 4320", RegionCode::AR());
-  DoTestFindInContext("03715 15 65 4320", RegionCode::AR());
+  DoTestFindInContext("+54 9 3715 65 4320", TestRegionCode::AR());
+  DoTestFindInContext("03715 15 65 4320", TestRegionCode::AR());
 
   // Test parsing fixed-line numbers of Argentina.
-  DoTestFindInContext("+54 11 3797 0000", RegionCode::AR());
-  DoTestFindInContext("011 3797 0000", RegionCode::AR());
+  DoTestFindInContext("+54 11 3797 0000", TestRegionCode::AR());
+  DoTestFindInContext("011 3797 0000", TestRegionCode::AR());
 
-  DoTestFindInContext("+54 3715 65 4321", RegionCode::AR());
-  DoTestFindInContext("03715 65 4321", RegionCode::AR());
+  DoTestFindInContext("+54 3715 65 4321", TestRegionCode::AR());
+  DoTestFindInContext("03715 65 4321", TestRegionCode::AR());
 
-  DoTestFindInContext("+54 23 1234 0000", RegionCode::AR());
-  DoTestFindInContext("023 1234 0000", RegionCode::AR());
+  DoTestFindInContext("+54 23 1234 0000", TestRegionCode::AR());
+  DoTestFindInContext("023 1234 0000", TestRegionCode::AR());
 }
 
 // See PhoneNumberMatcherTest::ParseWithXInNumber.
 TEST_F(PhoneNumberMatcherTest, FindWithXInNumber) {
-  DoTestFindInContext("(0xx) 123456789", RegionCode::AR());
+  DoTestFindInContext("(0xx) 123456789", TestRegionCode::AR());
   // A case where x denotes both carrier codes and extension symbol.
-  DoTestFindInContext("(0xx) 123456789 x 1234", RegionCode::AR());
+  DoTestFindInContext("(0xx) 123456789 x 1234", TestRegionCode::AR());
 
   // This test is intentionally constructed such that the number of digit after
   // xx is larger than 7, so that the number won't be mistakenly treated as an
   // extension, as we allow extensions up to 7 digits. This assumption is okay
   // for now as all the countries where a carrier selection code is written in
   // the form of xx have a national significant number of length larger than 7.
-  DoTestFindInContext("011xx5481429712", RegionCode::US());
+  DoTestFindInContext("011xx5481429712", TestRegionCode::US());
 }
 
 // See PhoneNumberUtilTest::ParseNumbersMexico.
 TEST_F(PhoneNumberMatcherTest, FindNumbersMexico) {
   // Test parsing fixed-line numbers of Mexico.
-  DoTestFindInContext("+52 (449)978-0001", RegionCode::MX());
-  DoTestFindInContext("01 (449)978-0001", RegionCode::MX());
-  DoTestFindInContext("(449)978-0001", RegionCode::MX());
+  DoTestFindInContext("+52 (449)978-0001", TestRegionCode::MX());
+  DoTestFindInContext("01 (449)978-0001", TestRegionCode::MX());
+  DoTestFindInContext("(449)978-0001", TestRegionCode::MX());
 
   // Test parsing mobile numbers of Mexico.
-  DoTestFindInContext("+52 1 33 1234-5678", RegionCode::MX());
-  DoTestFindInContext("044 (33) 1234-5678", RegionCode::MX());
-  DoTestFindInContext("045 33 1234-5678", RegionCode::MX());
+  DoTestFindInContext("+52 1 33 1234-5678", TestRegionCode::MX());
+  DoTestFindInContext("044 (33) 1234-5678", TestRegionCode::MX());
+  DoTestFindInContext("045 33 1234-5678", TestRegionCode::MX());
 }
 
 // See PhoneNumberUtilTest::ParseNumbersWithPlusWithNoRegion.
 TEST_F(PhoneNumberMatcherTest, FindNumbersWithPlusWithNoRegion) {
   // RegionCode::ZZ() is allowed only if the number starts with a '+' - then the
   // country code can be calculated.
-  DoTestFindInContext("+64 3 331 6005", RegionCode::ZZ());
+  DoTestFindInContext("+64 3 331 6005", TestRegionCode::ZZ());
 }
 
 // See PhoneNumberUtilTest::ParseExtensions.
 TEST_F(PhoneNumberMatcherTest, FindExtensions) {
-  DoTestFindInContext("03 331 6005 ext 3456", RegionCode::NZ());
-  DoTestFindInContext("03-3316005x3456", RegionCode::NZ());
-  DoTestFindInContext("03-3316005 int.3456", RegionCode::NZ());
-  DoTestFindInContext("03 3316005 #3456", RegionCode::NZ());
-  DoTestFindInContext("0~0 1800 7493 524", RegionCode::PL());
-  DoTestFindInContext("(1800) 7493.524", RegionCode::US());
+  DoTestFindInContext("03 331 6005 ext 3456", TestRegionCode::NZ());
+  DoTestFindInContext("03-3316005x3456", TestRegionCode::NZ());
+  DoTestFindInContext("03-3316005 int.3456", TestRegionCode::NZ());
+  DoTestFindInContext("03 3316005 #3456", TestRegionCode::NZ());
+  DoTestFindInContext("0~0 1800 7493 524", TestRegionCode::PL());
+  DoTestFindInContext("(1800) 7493.524", TestRegionCode::US());
   // Check that the last instance of an extension token is matched.
-  DoTestFindInContext("0~0 1800 7493 524 ~1234", RegionCode::PL());
+  DoTestFindInContext("0~0 1800 7493 524 ~1234", TestRegionCode::PL());
   // Verifying bug-fix where the last digit of a number was previously omitted
   // if it was a 0 when extracting the extension. Also verifying a few different
   // cases of extensions.
-  DoTestFindInContext("+44 2034567890x456", RegionCode::NZ());
-  DoTestFindInContext("+44 2034567890x456", RegionCode::GB());
-  DoTestFindInContext("+44 2034567890 x456", RegionCode::GB());
-  DoTestFindInContext("+44 2034567890 X456", RegionCode::GB());
-  DoTestFindInContext("+44 2034567890 X 456", RegionCode::GB());
-  DoTestFindInContext("+44 2034567890 X  456", RegionCode::GB());
-  DoTestFindInContext("+44 2034567890  X 456", RegionCode::GB());
+  DoTestFindInContext("+44 2034567890x456", TestRegionCode::NZ());
+  DoTestFindInContext("+44 2034567890x456", TestRegionCode::GB());
+  DoTestFindInContext("+44 2034567890 x456", TestRegionCode::GB());
+  DoTestFindInContext("+44 2034567890 X456", TestRegionCode::GB());
+  DoTestFindInContext("+44 2034567890 X 456", TestRegionCode::GB());
+  DoTestFindInContext("+44 2034567890 X  456", TestRegionCode::GB());
+  DoTestFindInContext("+44 2034567890  X 456", TestRegionCode::GB());
 
-  DoTestFindInContext("(800) 901-3355 x 7246433", RegionCode::US());
-  DoTestFindInContext("(800) 901-3355 , ext 7246433", RegionCode::US());
-  DoTestFindInContext("(800) 901-3355 ,extension 7246433", RegionCode::US());
+  DoTestFindInContext("(800) 901-3355 x 7246433", TestRegionCode::US());
+  DoTestFindInContext("(800) 901-3355 , ext 7246433", TestRegionCode::US());
+  DoTestFindInContext("(800) 901-3355 ,extension 7246433",
+                      TestRegionCode::US());
   // The next test differs from PhoneNumberUtil -> when matching we don't
   // consider a lone comma to indicate an extension, although we accept it when
   // parsing.
-  DoTestFindInContext("(800) 901-3355 ,x 7246433", RegionCode::US());
-  DoTestFindInContext("(800) 901-3355 ext: 7246433", RegionCode::US());
+  DoTestFindInContext("(800) 901-3355 ,x 7246433", TestRegionCode::US());
+  DoTestFindInContext("(800) 901-3355 ext: 7246433", TestRegionCode::US());
 }
 
 TEST_F(PhoneNumberMatcherTest, FindInterspersedWithSpace) {
-  DoTestFindInContext("0 3   3 3 1   6 0 0 5", RegionCode::NZ());
+  DoTestFindInContext("0 3   3 3 1   6 0 0 5", TestRegionCode::NZ());
 }
 
 // Test matching behavior when starting in the middle of a phone number.
@@ -560,24 +561,24 @@ TEST_F(PhoneNumberMatcherTest, FourMatchesInARow) {
   string number4 = "650-443-1223";
   string text = StrCat(number1, " - ", number2, " - ", number3, " - ", number4);
 
-  PhoneNumberMatcher matcher(text, RegionCode::US());
+  PhoneNumberMatcher matcher(text, TestRegionCode::US());
   PhoneNumberMatch match;
 
   EXPECT_TRUE(matcher.HasNext());
   EXPECT_TRUE(matcher.Next(&match));
-  AssertMatchProperties(match, text, number1, RegionCode::US());
+  AssertMatchProperties(match, text, number1, TestRegionCode::US());
 
   EXPECT_TRUE(matcher.HasNext());
   EXPECT_TRUE(matcher.Next(&match));
-  AssertMatchProperties(match, text, number2, RegionCode::US());
+  AssertMatchProperties(match, text, number2, TestRegionCode::US());
 
   EXPECT_TRUE(matcher.HasNext());
   EXPECT_TRUE(matcher.Next(&match));
-  AssertMatchProperties(match, text, number3, RegionCode::US());
+  AssertMatchProperties(match, text, number3, TestRegionCode::US());
 
   EXPECT_TRUE(matcher.HasNext());
   EXPECT_TRUE(matcher.Next(&match));
-  AssertMatchProperties(match, text, number4, RegionCode::US());
+  AssertMatchProperties(match, text, number4, TestRegionCode::US());
 }
 
 TEST_F(PhoneNumberMatcherTest, MatchesFoundWithMultipleSpaces) {
@@ -585,16 +586,16 @@ TEST_F(PhoneNumberMatcherTest, MatchesFoundWithMultipleSpaces) {
   string number2 = "800-443-1223";
   string text = StrCat(number1, " ", number2);
 
-  PhoneNumberMatcher matcher(text, RegionCode::US());
+  PhoneNumberMatcher matcher(text, TestRegionCode::US());
   PhoneNumberMatch match;
 
   EXPECT_TRUE(matcher.HasNext());
   EXPECT_TRUE(matcher.Next(&match));
-  AssertMatchProperties(match, text, number1, RegionCode::US());
+  AssertMatchProperties(match, text, number1, TestRegionCode::US());
 
   EXPECT_TRUE(matcher.HasNext());
   EXPECT_TRUE(matcher.Next(&match));
-  AssertMatchProperties(match, text, number2, RegionCode::US());
+  AssertMatchProperties(match, text, number2, TestRegionCode::US());
 }
 
 TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
@@ -602,16 +603,16 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
   string zip_preceding =
       StrCat("My address is CA 34215 - ", number, " is my number.");
   PhoneNumber expected_result;
-  phone_util_.Parse(number, RegionCode::US(), &expected_result);
+  phone_util_.Parse(number, TestRegionCode::US(), &expected_result);
 
   scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency(zip_preceding, RegionCode::US(),
+      GetMatcherWithLeniency(zip_preceding, TestRegionCode::US(),
                              PhoneNumberMatcher::VALID));
 
   PhoneNumberMatch match;
   EXPECT_TRUE(matcher->HasNext());
   EXPECT_TRUE(matcher->Next(&match));
-  AssertMatchProperties(match, zip_preceding, number, RegionCode::US());
+  AssertMatchProperties(match, zip_preceding, number, TestRegionCode::US());
 
   // Now repeat, but this time the phone number has spaces in it. It should
   // still be found.
@@ -620,14 +621,14 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
   string zip_following =
       StrCat("My number is ", number, ". 34215 is my zip-code.");
   matcher.reset(
-      GetMatcherWithLeniency(zip_following, RegionCode::US(),
+      GetMatcherWithLeniency(zip_following, TestRegionCode::US(),
                              PhoneNumberMatcher::VALID));
 
   PhoneNumberMatch match_with_spaces;
   EXPECT_TRUE(matcher->HasNext());
   EXPECT_TRUE(matcher->Next(&match_with_spaces));
   AssertMatchProperties(
-      match_with_spaces, zip_following, number, RegionCode::US());
+      match_with_spaces, zip_following, number, TestRegionCode::US());
 }
 
 TEST_F(PhoneNumberMatcherTest, IsLatinLetter) {
@@ -703,10 +704,10 @@ TEST_F(PhoneNumberMatcherTest,
   // characters, but should be considered possible.
   string number_with_plus = "+14156667777";
   string number_with_brackets = "(415)6667777";
-  FindMatchesInContexts(possible_only_contexts, false, true, RegionCode::US(),
-                        number_with_plus);
-  FindMatchesInContexts(possible_only_contexts, false, true, RegionCode::US(),
-                        number_with_brackets);
+  FindMatchesInContexts(possible_only_contexts, false, true,
+                        TestRegionCode::US(), number_with_plus);
+  FindMatchesInContexts(possible_only_contexts, false, true,
+                        TestRegionCode::US(), number_with_brackets);
 
   vector<NumberContext> valid_contexts;
   valid_contexts.push_back(NumberContext("abc", ""));
@@ -717,9 +718,9 @@ TEST_F(PhoneNumberMatcherTest,
   valid_contexts.push_back(NumberContext("\xC3\x89" /* "É" */, " def"));
 
   // Numbers should be considered valid, since they start with punctuation.
-  FindMatchesInContexts(valid_contexts, true, true, RegionCode::US(),
+  FindMatchesInContexts(valid_contexts, true, true, TestRegionCode::US(),
                         number_with_plus);
-  FindMatchesInContexts(valid_contexts, true, true, RegionCode::US(),
+  FindMatchesInContexts(valid_contexts, true, true, TestRegionCode::US(),
                         number_with_brackets);
 }
 
@@ -761,7 +762,7 @@ TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingPunctuation) {
 TEST_F(PhoneNumberMatcherTest,
        MatchesMultiplePhoneNumbersSeparatedByPhoneNumberPunctuation) {
   const string text = "Call 650-253-4561 -- 455-234-3451";
-  const string& region = RegionCode::US();
+  const string& region = TestRegionCode::US();
   PhoneNumber number1;
   number1.set_country_code(phone_util_.GetCountryCodeForRegion(region));
   number1.set_national_number(6502534561ULL);
@@ -788,7 +789,7 @@ TEST_F(PhoneNumberMatcherTest,
 TEST_F(PhoneNumberMatcherTest,
        DoesNotMatchMultiplePhoneNumbersSeparatedWithNoWhiteSpace) {
   const string text = "Call 650-253-4561--455-234-3451";
-  const string& region = RegionCode::US();
+  const string& region = TestRegionCode::US();
   PhoneNumberMatcher matcher(
       phone_util_, text, region, PhoneNumberMatcher::VALID, 100);
   EXPECT_FALSE(matcher.HasNext());
@@ -796,82 +797,84 @@ TEST_F(PhoneNumberMatcherTest,
 
 // Strings with number-like things that shouldn't be found under any level.
 static const NumberTest kImpossibleCases[] = {
-  NumberTest("12345", RegionCode::US()),
-  NumberTest("23456789", RegionCode::US()),
-  NumberTest("234567890112", RegionCode::US()),
-  NumberTest("650+253+1234", RegionCode::US()),
-  NumberTest("3/10/1984", RegionCode::CA()),
-  NumberTest("03/27/2011", RegionCode::US()),
-  NumberTest("31/8/2011", RegionCode::US()),
-  NumberTest("1/12/2011", RegionCode::US()),
-  NumberTest("10/12/82", RegionCode::DE()),
-  NumberTest("650x2531234", RegionCode::US()),
-  NumberTest("2012-01-02 08:00", RegionCode::US()),
-  NumberTest("2012/01/02 08:00", RegionCode::US()),
-  NumberTest("20120102 08:00", RegionCode::US()),
-  NumberTest("2014-04-12 04:04 PM", RegionCode::US()),
-  NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
-  NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
-  NumberTest("2014-04-12  04:04 PM", RegionCode::US()),
+  NumberTest("12345", TestRegionCode::US()),
+  NumberTest("23456789", TestRegionCode::US()),
+  NumberTest("234567890112", TestRegionCode::US()),
+  NumberTest("650+253+1234", TestRegionCode::US()),
+  NumberTest("3/10/1984", TestRegionCode::CA()),
+  NumberTest("03/27/2011", TestRegionCode::US()),
+  NumberTest("31/8/2011", TestRegionCode::US()),
+  NumberTest("1/12/2011", TestRegionCode::US()),
+  NumberTest("10/12/82", TestRegionCode::DE()),
+  NumberTest("650x2531234", TestRegionCode::US()),
+  NumberTest("2012-01-02 08:00", TestRegionCode::US()),
+  NumberTest("2012/01/02 08:00", TestRegionCode::US()),
+  NumberTest("20120102 08:00", TestRegionCode::US()),
+  NumberTest("2014-04-12 04:04 PM", TestRegionCode::US()),
+  NumberTest("2014-04-12 &nbsp;04:04 PM", TestRegionCode::US()),
+  NumberTest("2014-04-12 &nbsp;04:04 PM", TestRegionCode::US()),
+  NumberTest("2014-04-12  04:04 PM", TestRegionCode::US()),
 };
 
 // Strings with number-like things that should only be found under "possible".
 static const NumberTest kPossibleOnlyCases[] = {
   // US numbers cannot start with 7 in the test metadata to be valid.
-  NumberTest("7121115678", RegionCode::US()),
+  NumberTest("7121115678", TestRegionCode::US()),
   // 'X' should not be found in numbers at leniencies stricter than POSSIBLE,
   // unless it represents a carrier code or extension.
-  NumberTest("1650 x 253 - 1234", RegionCode::US()),
-  NumberTest("650 x 253 - 1234", RegionCode::US()),
-  NumberTest("6502531x234", RegionCode::US()),
-  NumberTest("(20) 3346 1234", RegionCode::GB()),  // Non-optional NP omitted
+  NumberTest("1650 x 253 - 1234", TestRegionCode::US()),
+  NumberTest("650 x 253 - 1234", TestRegionCode::US()),
+  NumberTest("6502531x234", TestRegionCode::US()),
+  // Non-optional NP omitted
+  NumberTest("(20) 3346 1234", TestRegionCode::GB()),
 };
 
 // Strings with number-like things that should only be found up to and including
 // the "valid" leniency level.
 static const NumberTest kValidCases[] = {
-  NumberTest("65 02 53 00 00", RegionCode::US()),
-  NumberTest("6502 538365", RegionCode::US()),
+  NumberTest("65 02 53 00 00", TestRegionCode::US()),
+  NumberTest("6502 538365", TestRegionCode::US()),
   // 2 slashes are illegal at higher levels.
-  NumberTest("650//253-1234", RegionCode::US()),
-  NumberTest("650/253/1234", RegionCode::US()),
-  NumberTest("9002309. 158", RegionCode::US()),
-  NumberTest("12 7/8 - 14 12/34 - 5", RegionCode::US()),
-  NumberTest("12.1 - 23.71 - 23.45", RegionCode::US()),
-  NumberTest("800 234 1 111x1111", RegionCode::US()),
-  NumberTest("1979-2011 100", RegionCode::US()),
+  NumberTest("650//253-1234", TestRegionCode::US()),
+  NumberTest("650/253/1234", TestRegionCode::US()),
+  NumberTest("9002309. 158", TestRegionCode::US()),
+  NumberTest("12 7/8 - 14 12/34 - 5", TestRegionCode::US()),
+  NumberTest("12.1 - 23.71 - 23.45", TestRegionCode::US()),
+  NumberTest("800 234 1 111x1111", TestRegionCode::US()),
+  NumberTest("1979-2011 100", TestRegionCode::US()),
   // National number in wrong format.
-  NumberTest("+494949-4-94", RegionCode::DE()),
+  NumberTest("+494949-4-94", TestRegionCode::DE()),
   NumberTest(
       /* "４１５６６６-７７７７" */
       "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x96\xEF\xBC\x96\xEF\xBC\x96"
-      "\x2D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97", RegionCode::US()),
-  NumberTest("2012-0102 08", RegionCode::US()),  // Very strange formatting.
-  NumberTest("2012-01-02 08", RegionCode::US()),
+      "\x2D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97",
+      TestRegionCode::US()),
+  NumberTest("2012-0102 08", TestRegionCode::US()),  // Very strange formatting.
+  NumberTest("2012-01-02 08", TestRegionCode::US()),
   // Breakdown assistance number with unexpected formatting.
-  NumberTest("1800-1-0-10 22", RegionCode::AU()),
-  NumberTest("030-3-2 23 12 34", RegionCode::DE()),
-  NumberTest("03 0 -3 2 23 12 34", RegionCode::DE()),
-  NumberTest("(0)3 0 -3 2 23 12 34", RegionCode::DE()),
-  NumberTest("0 3 0 -3 2 23 12 34", RegionCode::DE()),
+  NumberTest("1800-1-0-10 22", TestRegionCode::AU()),
+  NumberTest("030-3-2 23 12 34", TestRegionCode::DE()),
+  NumberTest("03 0 -3 2 23 12 34", TestRegionCode::DE()),
+  NumberTest("(0)3 0 -3 2 23 12 34", TestRegionCode::DE()),
+  NumberTest("0 3 0 -3 2 23 12 34", TestRegionCode::DE()),
 };
 
 // Strings with number-like things that should only be found up to and including
 // the "strict_grouping" leniency level.
 static const NumberTest kStrictGroupingCases[] = {
-  NumberTest("(415) 6667777", RegionCode::US()),
-  NumberTest("415-6667777", RegionCode::US()),
+  NumberTest("(415) 6667777", TestRegionCode::US()),
+  NumberTest("415-6667777", TestRegionCode::US()),
   // Should be found by strict grouping but not exact grouping, as the last two
   // groups are formatted together as a block.
-  NumberTest("0800-2491234", RegionCode::DE()),
+  NumberTest("0800-2491234", TestRegionCode::DE()),
   // Doesn't match any formatting in the test file, but almost matches an
   // alternate format (the last two groups have been squashed together here).
-  NumberTest("0900-1 123123", RegionCode::DE()),
-  NumberTest("(0)900-1 123123", RegionCode::DE()),
-  NumberTest("0 900-1 123123", RegionCode::DE()),
+  NumberTest("0900-1 123123", TestRegionCode::DE()),
+  NumberTest("(0)900-1 123123", TestRegionCode::DE()),
+  NumberTest("0 900-1 123123", TestRegionCode::DE()),
   // NDC also found as part of the country calling code; this shouldn't ruin the
   // grouping expectations.
-  NumberTest("+33 3 34 2312", RegionCode::FR()),
+  NumberTest("+33 3 34 2312", TestRegionCode::FR()),
 };
 
 // Strings with number-like things that should be found at all levels.
@@ -879,38 +882,39 @@ static const NumberTest kExactGroupingCases[] = {
   NumberTest(
       /* "４１５６６６７７７７" */
       "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x96\xEF\xBC\x96\xEF\xBC\x96"
-      "\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97", RegionCode::US()),
+      "\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97", TestRegionCode::US()),
   NumberTest(
       /* "４１５－６６６－７７７７" */
       "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x8D\xEF\xBC\x96\xEF\xBC\x96"
       "\xEF\xBC\x96\xEF\xBC\x8D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97"
-      "\xEF\xBC\x97", RegionCode::US()),
-  NumberTest("4156667777", RegionCode::US()),
-  NumberTest("4156667777 x 123", RegionCode::US()),
-  NumberTest("415-666-7777", RegionCode::US()),
-  NumberTest("415/666-7777", RegionCode::US()),
-  NumberTest("415-666-7777 ext. 503", RegionCode::US()),
-  NumberTest("1 415 666 7777 x 123", RegionCode::US()),
-  NumberTest("+1 415-666-7777", RegionCode::US()),
-  NumberTest("+494949 49", RegionCode::DE()),
-  NumberTest("+49-49-34", RegionCode::DE()),
-  NumberTest("+49-4931-49", RegionCode::DE()),
-  NumberTest("04931-49", RegionCode::DE()),  // With National Prefix
-  NumberTest("+49-494949", RegionCode::DE()),  // One group with country code
-  NumberTest("+49-494949 ext. 49", RegionCode::DE()),
-  NumberTest("+49494949 ext. 49", RegionCode::DE()),
-  NumberTest("0494949", RegionCode::DE()),
-  NumberTest("0494949 ext. 49", RegionCode::DE()),
-  NumberTest("01 (33) 3461 2234", RegionCode::MX()),  // Optional NP present
-  NumberTest("(33) 3461 2234", RegionCode::MX()),  // Optional NP omitted
+      "\xEF\xBC\x97", TestRegionCode::US()),
+  NumberTest("4156667777", TestRegionCode::US()),
+  NumberTest("4156667777 x 123", TestRegionCode::US()),
+  NumberTest("415-666-7777", TestRegionCode::US()),
+  NumberTest("415/666-7777", TestRegionCode::US()),
+  NumberTest("415-666-7777 ext. 503", TestRegionCode::US()),
+  NumberTest("1 415 666 7777 x 123", TestRegionCode::US()),
+  NumberTest("+1 415-666-7777", TestRegionCode::US()),
+  NumberTest("+494949 49", TestRegionCode::DE()),
+  NumberTest("+49-49-34", TestRegionCode::DE()),
+  NumberTest("+49-4931-49", TestRegionCode::DE()),
+  NumberTest("04931-49", TestRegionCode::DE()),  // With National Prefix
+  // One group with country code
+  NumberTest("+49-494949", TestRegionCode::DE()),
+  NumberTest("+49-494949 ext. 49", TestRegionCode::DE()),
+  NumberTest("+49494949 ext. 49", TestRegionCode::DE()),
+  NumberTest("0494949", TestRegionCode::DE()),
+  NumberTest("0494949 ext. 49", TestRegionCode::DE()),
+  NumberTest("01 (33) 3461 2234", TestRegionCode::MX()),  // Optional NP present
+  NumberTest("(33) 3461 2234", TestRegionCode::MX()),  // Optional NP omitted
   // Breakdown assistance number with normal formatting.
-  NumberTest("1800-10-10 22", RegionCode::AU()),
+  NumberTest("1800-10-10 22", TestRegionCode::AU()),
   // Doesn't match any formatting in the test file, but matches an alternate
   // format exactly.
-  NumberTest("0900-1 123 123", RegionCode::DE()),
-  NumberTest("(0)900-1 123 123", RegionCode::DE()),
-  NumberTest("0 900-1 123 123", RegionCode::DE()),
-  NumberTest("+33 3 34 23 12", RegionCode::FR()),
+  NumberTest("0900-1 123 123", TestRegionCode::DE()),
+  NumberTest("(0)900-1 123 123", TestRegionCode::DE()),
+  NumberTest("0 900-1 123 123", TestRegionCode::DE()),
+  NumberTest("+33 3 34 23 12", TestRegionCode::FR()),
 };
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithPossibleLeniency) {
@@ -1015,23 +1019,24 @@ TEST_F(PhoneNumberMatcherTest, NonMatchingBracketsAreInvalid) {
   // The digits up to the ", " form a valid US number, but it shouldn't be
   // matched as one since there was a non-matching bracket present.
   scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
-      "80.585 [79.964, 81.191]", RegionCode::US(),
+      "80.585 [79.964, 81.191]", TestRegionCode::US(),
       PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 
   // The trailing "]" is thrown away before parsing, so the resultant number,
   // while a valid US number, does not have matching brackets.
   matcher.reset(GetMatcherWithLeniency(
-      "80.585 [79.964]", RegionCode::US(), PhoneNumberMatcher::VALID));
+      "80.585 [79.964]", TestRegionCode::US(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 
   matcher.reset(GetMatcherWithLeniency(
-      "80.585 ((79.964)", RegionCode::US(), PhoneNumberMatcher::VALID));
+      "80.585 ((79.964)", TestRegionCode::US(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 
   // This case has too many sets of brackets to be valid.
   matcher.reset(GetMatcherWithLeniency(
-      "(80).(585) (79).(9)64", RegionCode::US(), PhoneNumberMatcher::VALID));
+      "(80).(585) (79).(9)64", TestRegionCode::US(),
+      PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 }
 
@@ -1039,30 +1044,30 @@ TEST_F(PhoneNumberMatcherTest, NoMatchIfRegionIsUnknown) {
   // Fail on non-international prefix if region code is ZZ.
   scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
       "Random text body - number is 0331 6005, see you there",
-      RegionCode::ZZ(), PhoneNumberMatcher::VALID));
+      TestRegionCode::ZZ(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 }
 
 TEST_F(PhoneNumberMatcherTest, NoMatchInEmptyString) {
   scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
-      "", RegionCode::US(), PhoneNumberMatcher::VALID));
+      "", TestRegionCode::US(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
-  matcher.reset(GetMatcherWithLeniency("  ", RegionCode::US(),
+  matcher.reset(GetMatcherWithLeniency("  ", TestRegionCode::US(),
                                        PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 }
 
 TEST_F(PhoneNumberMatcherTest, NoMatchIfNoNumber) {
   scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
-      "Random text body - number is foobar, see you there", RegionCode::US(),
-      PhoneNumberMatcher::VALID));
+      "Random text body - number is foobar, see you there",
+      TestRegionCode::US(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 }
 
 TEST_F(PhoneNumberMatcherTest, Sequences) {
   // Test multiple occurrences.
   const string text = "Call 033316005  or 032316005!";
-  const string& region = RegionCode::NZ();
+  const string& region = TestRegionCode::NZ();
 
   PhoneNumber number1;
   number1.set_country_code(phone_util_.GetCountryCodeForRegion(region));
@@ -1094,11 +1099,11 @@ TEST_F(PhoneNumberMatcherTest, MaxMatches) {
 
   // Matches all 100. Max only applies to failed cases.
   PhoneNumber number;
-  phone_util_.Parse("+14156667777", RegionCode::US(), &number);
+  phone_util_.Parse("+14156667777", TestRegionCode::US(), &number);
   vector<PhoneNumber> expected(100, number);
 
   PhoneNumberMatcher matcher(
-      phone_util_, numbers, RegionCode::US(), PhoneNumberMatcher::VALID, 10);
+      phone_util_, numbers, TestRegionCode::US(), PhoneNumberMatcher::VALID, 10);
   vector<PhoneNumber> actual;
   PhoneNumberMatch match;
   while (matcher.HasNext()) {
@@ -1119,7 +1124,8 @@ TEST_F(PhoneNumberMatcherTest, MaxMatchesInvalid) {
   }
 
   PhoneNumberMatcher matcher(
-      phone_util_, numbers, RegionCode::US(), PhoneNumberMatcher::VALID, 10);
+      phone_util_, numbers, TestRegionCode::US(), PhoneNumberMatcher::VALID,
+      10);
   EXPECT_FALSE(matcher.HasNext());
 }
 
@@ -1131,11 +1137,12 @@ TEST_F(PhoneNumberMatcherTest, MaxMatchesMixed) {
   }
 
   PhoneNumber number;
-  phone_util_.Parse("+14156667777", RegionCode::ZZ(), &number);
+  phone_util_.Parse("+14156667777", TestRegionCode::ZZ(), &number);
   vector<PhoneNumber> expected(10, number);
 
   PhoneNumberMatcher matcher(
-      phone_util_, numbers, RegionCode::US(), PhoneNumberMatcher::VALID, 10);
+      phone_util_, numbers, TestRegionCode::US(), PhoneNumberMatcher::VALID,
+      10);
   vector<PhoneNumber> actual;
   PhoneNumberMatch match;
   while (matcher.HasNext()) {
@@ -1148,7 +1155,7 @@ TEST_F(PhoneNumberMatcherTest, MaxMatchesMixed) {
 TEST_F(PhoneNumberMatcherTest, NonPlusPrefixedNumbersNotFoundForInvalidRegion) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("1 456 764 156", RegionCode::GetUnknown(),
+      GetMatcherWithLeniency("1 456 764 156", TestRegionCode::GetUnknown(),
                              PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
   EXPECT_FALSE(matcher->Next(&match));
@@ -1158,7 +1165,7 @@ TEST_F(PhoneNumberMatcherTest, NonPlusPrefixedNumbersNotFoundForInvalidRegion) {
 TEST_F(PhoneNumberMatcherTest, EmptyIteration) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("", RegionCode::GetUnknown(),
+      GetMatcherWithLeniency("", TestRegionCode::GetUnknown(),
                              PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
   EXPECT_FALSE(matcher->HasNext());
@@ -1169,7 +1176,7 @@ TEST_F(PhoneNumberMatcherTest, EmptyIteration) {
 TEST_F(PhoneNumberMatcherTest, SingleIteration) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("+14156667777", RegionCode::GetUnknown(),
+      GetMatcherWithLeniency("+14156667777", TestRegionCode::GetUnknown(),
                              PhoneNumberMatcher::VALID));
 
   // Try HasNext() twice to ensure it does not advance.
@@ -1184,7 +1191,7 @@ TEST_F(PhoneNumberMatcherTest, SingleIteration) {
 TEST_F(PhoneNumberMatcherTest, SingleIteration_WithNextOnly) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("+14156667777", RegionCode::GetUnknown(),
+      GetMatcherWithLeniency("+14156667777", TestRegionCode::GetUnknown(),
                              PhoneNumberMatcher::VALID));
   EXPECT_TRUE(matcher->Next(&match));
   EXPECT_FALSE(matcher->Next(&match));
@@ -1194,7 +1201,7 @@ TEST_F(PhoneNumberMatcherTest, DoubleIteration) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("+14156667777 foobar +14156667777 ",
-                             RegionCode::GetUnknown(),
+                             TestRegionCode::GetUnknown(),
                              PhoneNumberMatcher::VALID));
 
   // Double HasNext() to ensure it does not advance.
@@ -1214,7 +1221,7 @@ TEST_F(PhoneNumberMatcherTest, DoubleIteration_WithNextOnly) {
   PhoneNumberMatch match;
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency("+14156667777 foobar +14156667777 ",
-                             RegionCode::GetUnknown(),
+                             TestRegionCode::GetUnknown(),
                              PhoneNumberMatcher::VALID));
 
   EXPECT_TRUE(matcher->Next(&match));
