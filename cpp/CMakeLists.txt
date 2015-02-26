@@ -19,6 +19,15 @@ cmake_minimum_required (VERSION 2.8)
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 7)
 set (libphonenumber_VERSION_MINOR 0)
+set (libphonenumber_VERSION_PATCH 2)
+
+if (32BIT)
+  set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
+  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
+  set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32")
+  set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
+endif ()
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
@@ -76,6 +85,7 @@ option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
+option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -336,16 +346,20 @@ endif ()
 
 include_directories ("src")
 
-# Build a static library (without -fPIC).
-add_library (phonenumber STATIC ${SOURCES})
-if (${USE_ICU_REGEXP} STREQUAL "ON")
-  if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-    add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+if ($BUILD_STATIC_LIB STREQUAL "ON")
+  # Build a static library (without -fPIC).
+  add_library (phonenumber STATIC ${SOURCES})
+  if (${USE_ICU_REGEXP} STREQUAL "ON")
+    if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+    endif ()
   endif ()
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_library (geocoding STATIC ${GEOCODING_SOURCES})
+  if ($BUILD_STATIC_LIB STREQUAL "ON")
+    add_library (geocoding STATIC ${GEOCODING_SOURCES})
+  endif ()
   # The geocoder doesn't use RE2 so there is no reason not to build a shared
   # library for it.
   add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
@@ -374,7 +388,7 @@ if (BUILD_SHARED_LIB)
   add_library (phonenumber-shared SHARED ${SOURCES})
   if (${USE_ICU_REGEXP} STREQUAL "ON")
     if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+      add_dependencies (phonenumber-shared ${ALT_FORMAT_METADATA_TARGET})
     endif ()
   endif ()
   set_target_properties (phonenumber-shared
@@ -404,7 +418,9 @@ endif ()
 
 list (APPEND LIBRARY_DEPS ${COMMON_DEPS})
 
-target_link_libraries (phonenumber ${LIBRARY_DEPS})
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  target_link_libraries (phonenumber ${LIBRARY_DEPS})
+endif ()
 
 if (BUILD_SHARED_LIB)
   target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
@@ -536,30 +552,45 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
 endif ()
 
 install (
-  FILES "src/phonenumbers/base/basictypes.h"
+  FILES
+  "src/phonenumbers/base/basictypes.h"
+  "src/phonenumbers/base/template_util.h"
+  "src/phonenumbers/base/logging.h"
+  "src/phonenumbers/base/thread_checker.h"
   DESTINATION include/phonenumbers/base/
 )
 
 install (FILES
   "src/phonenumbers/base/memory/scoped_ptr.h"
   "src/phonenumbers/base/memory/singleton.h"
+  "src/phonenumbers/base/memory/singleton_posix.h"
   DESTINATION include/phonenumbers/base/memory/
 )
 
 install (FILES "src/phonenumbers/base/synchronization/lock.h"
          DESTINATION include/phonenumbers/base/synchronization/)
 
-install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
+get_property (LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+
+if ("${LIB64}" STREQUAL "TRUE")
+    set (LIBDIR lib64)
+else ()
+    set (LIBDIR lib)
+endif ()
+
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+endif ()
 
 if (BUILD_SHARED_LIB)
-  install (TARGETS phonenumber-shared LIBRARY DESTINATION lib/ ARCHIVE
-           DESTINATION lib/)
+  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+           DESTINATION ${LIBDIR})
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  install (TARGETS geocoding LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
-  install (TARGETS geocoding-shared LIBRARY DESTINATION lib/ ARCHIVE
-           DESTINATION lib/)
+  install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+           DESTINATION ${LIBDIR})
 endif ()
 
 # Build an example program using geocoding, mainly to make sure that both
@@ -571,3 +602,17 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   )
   target_link_libraries (geocoding_test_program geocoding phonenumber)
 endif ()
+
+# Build an RPM
+set (CPACK_PACKAGE_VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR}.${libphonenumber_VERSION_PATCH})
+set (CPACK_GENERATOR "RPM")
+set (CPACK_PACKAGE_NAME "libphonenumber")
+set (CPACK_RPM_PACKAGE_RELEASE 1)
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "Google's phone number handling library")
+if (32BIT)
+  set (CPACK_RPM_PACKAGE_ARCHITECTURE i686)
+else ()
+  set (CPACK_RPM_PACKAGE_ARCHITECTURE x86_64)
+endif ()
+set (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_RPM_PACKAGE_RELEASE}.${CPACK_RPM_PACKAGE_ARCHITECTURE}")
+include (CPack)

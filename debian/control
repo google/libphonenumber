@@ -30,9 +30,9 @@ Build-Depends: cdbs,
                libservlet2.5-java-doc
 Standards-Version: 3.9.5
 Section: libs
-Homepage: http://code.google.com/p/libphonenumber/
-Vcs-Browser: http://code.google.com/p/libphonenumber/source/browse/
-Vcs-Svn: http://libphonenumber.googlecode.com/svn/trunk/
+Homepage: https://github.com/googlei18n/libphonenumber/
+Vcs-Browser: https://github.com/googlei18n/libphonenumber/
+Vcs-Git: https://github.com/googlei18n/libphonenumber.git
 
 Package: libphonenumber6-java
 Section: java

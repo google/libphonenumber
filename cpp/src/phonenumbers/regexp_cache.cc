@@ -52,7 +52,7 @@ const RegExp& RegExpCache::GetRegExp(const string& pattern) {
   if (it != cache_impl_->end()) return *it->second;
 
   const RegExp* regexp = regexp_factory_.CreateRegExp(pattern);
-  cache_impl_->insert(make_pair(pattern, regexp));
+  cache_impl_->insert(std::make_pair(pattern, regexp));
   return *regexp;
 }
 

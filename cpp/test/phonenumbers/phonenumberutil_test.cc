@@ -39,9 +39,7 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::endl;
 using std::find;
-using std::make_pair;
 using std::ostream;
 
 using google::protobuf::RepeatedPtrField;
@@ -1124,7 +1122,7 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   // numbers are always output in international format, but short numbers are
   // in national format.
   test_number.set_country_code(1);
-  test_number.set_national_number(6502530000L);
+  test_number.set_national_number(6502530000LL);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::US(), false, &formatted_number);
   EXPECT_EQ("+16502530000", formatted_number);

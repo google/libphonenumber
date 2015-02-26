@@ -38,4 +38,8 @@ template <typename T> T* CHECK_NOTNULL(T* ptr) {
   return ptr;
 }
 
+#if !defined(IGNORE_UNUSED)
+#define IGNORE_UNUSED(X) (void)(X)
+#endif 
+
 #endif  // I18N_PHONENUMBERS_BASE_LOGGING_H_

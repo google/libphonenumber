@@ -390,6 +390,9 @@ public class AsYouTypeFormatter {
     ableToFormat = true;
     isExpectingCountryCallingCode = false;
     possibleFormats.clear();
+    lastMatchPosition = 0;
+    formattingTemplate.setLength(0);
+    currentFormattingPattern = "";
     return attemptToChooseFormattingPattern();
   }
 
@@ -637,6 +640,8 @@ public class AsYouTypeFormatter {
   }
 
   private String inputDigitHelper(char nextChar) {
+    // Note that formattingTemplate is not guaranteed to have a value, it could be empty, e.g.
+    // when the next digit is entered after extracting an IDD or NDD.
     Matcher digitMatcher = DIGIT_PATTERN.matcher(formattingTemplate);
     if (digitMatcher.find(lastMatchPosition)) {
       String tempTemplate = digitMatcher.replaceFirst(Character.toString(nextChar));

@@ -33,6 +33,7 @@ int main() {
   const PhoneNumberUtil::ErrorType status = phone_util.Parse(
       "16502530000", "US", &number);
   CHECK_EQ(status, PhoneNumberUtil::NO_PARSING_ERROR);
+  IGNORE_UNUSED(status);
 
   const std::string description =
       PhoneNumberOfflineGeocoder().GetDescriptionForNumber(

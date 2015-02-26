@@ -667,6 +667,9 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   this.ableToFormat_ = true;
   this.isExpectingCountryCallingCode_ = false;
   this.possibleFormats_ = [];
+  this.lastMatchPosition_ = 0;
+  this.formattingTemplate_.clear();
+  this.currentFormattingPattern_ = '';
   return this.attemptToChooseFormattingPattern_();
 };
 
@@ -1083,6 +1086,8 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
 i18n.phonenumbers.AsYouTypeFormatter.prototype.inputDigitHelper_ =
     function(nextChar) {
 
+  // Note that formattingTemplate is not guaranteed to have a value, it could be
+  // empty, e.g. when the next digit is entered after extracting an IDD or NDD.
   /** @type {string} */
   var formattingTemplate = this.formattingTemplate_.toString();
   if (formattingTemplate.substring(this.lastMatchPosition_)

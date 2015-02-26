@@ -383,6 +383,14 @@ public class BuildMetadataJsonFromXml extends Command {
     toJsArray(metadata.getEmergency(), jsArrayBuilder);
     // optional PhoneNumberDesc voicemail = 28;
     toJsArray(metadata.getVoicemail(), jsArrayBuilder);
+    // Fields 29-31 are omitted due to space increase.
+    // optional PhoneNumberDesc short_code = 29;
+    // optional PhoneNumberDesc standard_rate = 30;
+    // optional PhoneNumberDesc carrier_specific = 31;
+    // optional bool mobile_number_portable_region = 32 [default=false];
+    // Omit since the JS API doesn't expose this data.
+    // Note: Need to add null for each of the above fields when a subsequent
+    // field is being populated.
 
     jsArrayBuilder.endArray();
   }

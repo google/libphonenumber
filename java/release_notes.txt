@@ -1,3 +1,12 @@
+Jan 09, 2015: libphonenumber-7.0.2
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   BD, BH, EH, GH, IN, JM, LU, MA, MY, NF, NG, PK, SB, TT, TZ
+ - Updated geocoding data for country calling code(s): 91 (en), 352 (en, fr)
+ - New carrier data for country calling code(s): 1876 (en)
+ - Updated carrier data for country calling code(s):
+   60 (en), 91 (en), 92 (en), 212 (en), 233 (en), 234 (en), 352 (en), 677 (en)
+
 Nov 25, 2014: libphonenumber-7.0.1
 * Metadata changes:
  - New alternate formatting data for country calling code(s): 676
@@ -421,7 +430,7 @@ Oct 10, 2012: libphonenumber-5.2
  - Adds isNumberGeographical() method.
  - Adds getRegionCodesForCountryCode() method.
  - Fixing issue with getSupportedGlobalNetworkCallingCodes()
-   [http://code.google.com/p/libphonenumber/issues/detail?id=202]
+   [https://github.com/googlei18n/libphonenumber/issues/202]
  - Ensures that returned collections are unmodifiable where necessary
    [there is a very slight risk that this may break existing users who were relying on being able
    to modify these collections, but doing so would be breaking lots of other assumptions that this

@@ -67,6 +67,8 @@
 601116|DiGi
 601119|Celcom
 601126|DiGi
+60113|Altel
+60115|Altel
 6012|Maxis
 6013|Celcom
 60142|Maxis

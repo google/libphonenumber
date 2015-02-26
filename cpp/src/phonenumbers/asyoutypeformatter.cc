@@ -114,6 +114,7 @@ void MatchAllGroups(const string& pattern,
   bool status =
       cache->GetRegExp(new_pattern).Consume(consume_input.get(), group);
   DCHECK(status);
+  IGNORE_UNUSED(status);
 }
 
 PhoneMetadata CreateEmptyMetadata() {
@@ -466,6 +467,9 @@ void AsYouTypeFormatter::AttemptToChoosePatternWithPrefixExtracted(
   able_to_format_ = true;
   is_expecting_country_code_ = false;
   possible_formats_.clear();
+  last_match_position_ = 0;
+  formatting_template_.remove();
+  current_formatting_pattern_.clear();
   AttemptToChooseFormattingPattern(formatted_number);
 }
 
@@ -507,6 +511,7 @@ void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
       bool status = regexp_cache_.GetRegExp(pattern).GlobalReplace(
           &formatted_number, number_format.format());
       DCHECK(status);
+      IGNORE_UNUSED(status);
 
       AppendNationalNumber(formatted_number, formatted_result);
       return;
@@ -735,6 +740,8 @@ char AsYouTypeFormatter::NormalizeAndAccrueDigitsAndPlusSign(
 void AsYouTypeFormatter::InputDigitHelper(char next_char, string* number) {
   DCHECK(number);
   number->clear();
+  // Note that formattingTemplate is not guaranteed to have a value, it could be
+  // empty, e.g. when the next digit is entered after extracting an IDD or NDD.
   const char32 placeholder_codepoint = UnicodeString(kDigitPlaceholder)[0];
   int placeholder_pos = formatting_template_
       .tempSubString(last_match_position_).indexOf(placeholder_codepoint);
