@@ -1,3 +1,13 @@
+Mar 02, 2015: libphonenumber-7.0.3
+* Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, BH, BY, CI, CN, GH, KR, KW, LU, ME, NZ, SB, WS
+ - New geocoding data for country calling code(s): 64 (en)
+ - Updated geocoding data for country calling code(s):
+   86 (en, zh), 1418 (en), 1438 (en), 1450 (en), 1514 (en), 1819 (en)
+ - Updated carrier data for country calling code(s):
+   225 (en), 233 (en), 677 (en), 973 (en)
+
 Jan 09, 2015: libphonenumber-7.0.2
 * Metadata changes:
  - Updated phone metadata for region code(s):

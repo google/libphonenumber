@@ -145729,9 +145729,7 @@
 86837|MaErkang, Sichuan
 86838|Deyang, Sichuan
 86839|Guangyuan, Sichuan
-86851|Guiyang, Guizhou
-86852|Zunyi, Guizhou
-86853|Anshun, Guizhou
+86851|Guiyang/Zunyi/Anshun, Guizhou
 86854|Duyun, Guizhou
 86855|Kaili, Guizhou
 86856|Tongren, Guizhou
