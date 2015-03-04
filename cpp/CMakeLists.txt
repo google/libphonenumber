@@ -346,7 +346,7 @@ endif ()
 
 include_directories ("src")
 
-if ($BUILD_STATIC_LIB STREQUAL "ON")
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
   # Build a static library (without -fPIC).
   add_library (phonenumber STATIC ${SOURCES})
   if (${USE_ICU_REGEXP} STREQUAL "ON")
@@ -357,7 +357,7 @@ if ($BUILD_STATIC_LIB STREQUAL "ON")
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  if ($BUILD_STATIC_LIB STREQUAL "ON")
+  if (${BUILD_STATIC_LIB} STREQUAL "ON")
     add_library (geocoding STATIC ${GEOCODING_SOURCES})
   endif ()
   # The geocoder doesn't use RE2 so there is no reason not to build a shared
