@@ -15,9 +15,7 @@ Google's common Java, C++ and Javascript library for parsing, formatting, storin
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
 
 # Demo
-[Java Version](http://libphonenumber.appspot.com/) (running code r729 (on Google Code))
-
-[JavaScript Version](http://libphonenumber.googlecode.com/svn/trunk/javascript/i18n/phonenumbers/demo-compiled.html) (running JS code r729 (on Google Code))
+[Java Version](http://libphonenumber.appspot.com/) (running code r7.0.3 (on Google Code))
 
 # Code
 To include the code in your application, either integrate with Maven or download the latest Jars from the Maven repository:
