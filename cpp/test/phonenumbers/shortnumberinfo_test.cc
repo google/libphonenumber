@@ -58,7 +58,8 @@ TEST_F(ShortNumberInfoTest, IsPossibleShortNumber) {
   possible_number.set_national_number(123456ULL);
   EXPECT_TRUE(short_info_.IsPossibleShortNumber(possible_number));
   EXPECT_TRUE(short_info_.IsPossibleShortNumberForRegion(
-      ParseNumberForTesting("123456", RegionCode::FR()), RegionCode::FR()));
+      ParseNumberForTesting("123456", TestRegionCode::FR()),
+      TestRegionCode::FR()));
 
   PhoneNumber impossible_number;
   impossible_number.set_country_code(33);
@@ -79,14 +80,16 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   valid_number.set_national_number(1010ULL);
   EXPECT_TRUE(short_info_.IsValidShortNumber(valid_number));
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting("1010", RegionCode::FR()), RegionCode::FR()));
+      ParseNumberForTesting("1010", TestRegionCode::FR()),
+      TestRegionCode::FR()));
 
   PhoneNumber invalid_number;
   invalid_number.set_country_code(33);
   invalid_number.set_national_number(123456ULL);
   EXPECT_FALSE(short_info_.IsValidShortNumber(invalid_number));
   EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting("123456", RegionCode::FR()), RegionCode::FR()));
+      ParseNumberForTesting("123456", TestRegionCode::FR()),
+      TestRegionCode::FR()));
 
   // Note that GB and GG share the country calling code 44.
   PhoneNumber shared_number;
@@ -99,11 +102,12 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   uint64 national_number;
   const string& premium_rate_example =
       short_info_.GetExampleShortNumberForCost(
-          RegionCode::FR(), ShortNumberInfo::PREMIUM_RATE);
+          TestRegionCode::FR(), ShortNumberInfo::PREMIUM_RATE);
   EXPECT_EQ(ShortNumberInfo::PREMIUM_RATE,
             short_info_.GetExpectedCostForRegion(
-                ParseNumberForTesting(premium_rate_example, RegionCode::FR()),
-                RegionCode::FR()));
+                ParseNumberForTesting(premium_rate_example,
+                                      TestRegionCode::FR()),
+                TestRegionCode::FR()));
   PhoneNumber premium_rate_number;
   premium_rate_number.set_country_code(33);
   safe_strtou64(premium_rate_example, &national_number);
@@ -113,11 +117,12 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
 
   const string& standard_rate_example =
       short_info_.GetExampleShortNumberForCost(
-          RegionCode::FR(), ShortNumberInfo::STANDARD_RATE);
+          TestRegionCode::FR(), ShortNumberInfo::STANDARD_RATE);
   EXPECT_EQ(ShortNumberInfo::STANDARD_RATE,
             short_info_.GetExpectedCostForRegion(
-                ParseNumberForTesting(standard_rate_example, RegionCode::FR()),
-                RegionCode::FR()));
+                ParseNumberForTesting(standard_rate_example,
+                                      TestRegionCode::FR()),
+                TestRegionCode::FR()));
   PhoneNumber standard_rate_number;
   standard_rate_number.set_country_code(33);
   safe_strtou64(standard_rate_example, &national_number);
@@ -127,11 +132,11 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
 
   const string& toll_free_example =
       short_info_.GetExampleShortNumberForCost(
-          RegionCode::FR(), ShortNumberInfo::TOLL_FREE);
+          TestRegionCode::FR(), ShortNumberInfo::TOLL_FREE);
   EXPECT_EQ(ShortNumberInfo::TOLL_FREE,
             short_info_.GetExpectedCostForRegion(
-                ParseNumberForTesting(toll_free_example, RegionCode::FR()),
-                RegionCode::FR()));
+                ParseNumberForTesting(toll_free_example, TestRegionCode::FR()),
+                TestRegionCode::FR()));
   PhoneNumber toll_free_number;
   toll_free_number.set_country_code(33);
   safe_strtou64(toll_free_example, &national_number);
@@ -142,7 +147,8 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   EXPECT_EQ(
       ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("12345", RegionCode::FR()), RegionCode::FR()));
+          ParseNumberForTesting("12345", TestRegionCode::FR()),
+          TestRegionCode::FR()));
   PhoneNumber unknown_cost_number;
   unknown_cost_number.set_country_code(33);
   unknown_cost_number.set_national_number(12345ULL);
@@ -152,11 +158,13 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   // Test that an invalid number may nevertheless have a cost other than
   // UNKNOWN_COST.
   EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting("116123", RegionCode::FR()), RegionCode::FR()));
+      ParseNumberForTesting("116123", TestRegionCode::FR()),
+      TestRegionCode::FR()));
   EXPECT_EQ(
       ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("116123", RegionCode::FR()), RegionCode::FR()));
+          ParseNumberForTesting("116123", TestRegionCode::FR()),
+          TestRegionCode::FR()));
   PhoneNumber invalid_number;
   invalid_number.set_country_code(33);
   invalid_number.set_national_number(116123ULL);
@@ -168,7 +176,8 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   EXPECT_EQ(
       ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("911", RegionCode::US()), RegionCode::ZZ()));
+          ParseNumberForTesting("911", TestRegionCode::US()),
+          TestRegionCode::ZZ()));
   unknown_cost_number.Clear();
   unknown_cost_number.set_country_code(123);
   unknown_cost_number.set_national_number(911ULL);
@@ -199,240 +208,277 @@ TEST_F(ShortNumberInfoTest, GetExpectedCostForSharedCountryCallingCode) {
   EXPECT_TRUE(short_info_.IsValidShortNumber(ambiguous_toll_free_number));
 
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting(ambiguous_premium_rate_string, RegionCode::AU()),
-      RegionCode::AU()));
+      ParseNumberForTesting(ambiguous_premium_rate_string,
+                            TestRegionCode::AU()),
+      TestRegionCode::AU()));
   EXPECT_EQ(ShortNumberInfo::PREMIUM_RATE,
             short_info_.GetExpectedCostForRegion(
                 ParseNumberForTesting(ambiguous_premium_rate_string,
-                                      RegionCode::AU()),
-                RegionCode::AU()));
+                                      TestRegionCode::AU()),
+                TestRegionCode::AU()));
 
   EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting(ambiguous_premium_rate_string, RegionCode::CX()),
-      RegionCode::CX()));
+      ParseNumberForTesting(ambiguous_premium_rate_string,
+                            TestRegionCode::CX()),
+      TestRegionCode::CX()));
   EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
             short_info_.GetExpectedCostForRegion(
                 ParseNumberForTesting(ambiguous_premium_rate_string,
-                                      RegionCode::CX()),
-                RegionCode::CX()));
+                                      TestRegionCode::CX()),
+                TestRegionCode::CX()));
   // PREMIUM_RATE takes precedence over UNKNOWN_COST.
   EXPECT_EQ(ShortNumberInfo::PREMIUM_RATE,
       short_info_.GetExpectedCost(ambiguous_premium_rate_number));
 
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting(ambiguous_standard_rate_string, RegionCode::AU()),
-      RegionCode::AU()));
+      ParseNumberForTesting(ambiguous_standard_rate_string,
+                            TestRegionCode::AU()),
+      TestRegionCode::AU()));
   EXPECT_EQ(ShortNumberInfo::STANDARD_RATE,
             short_info_.GetExpectedCostForRegion(
                 ParseNumberForTesting(ambiguous_standard_rate_string,
-                                      RegionCode::AU()),
-                RegionCode::AU()));
+                                      TestRegionCode::AU()),
+                TestRegionCode::AU()));
 
   EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting(ambiguous_standard_rate_string, RegionCode::CX()),
-      RegionCode::CX()));
+      ParseNumberForTesting(ambiguous_standard_rate_string,
+                            TestRegionCode::CX()),
+      TestRegionCode::CX()));
   EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
             short_info_.GetExpectedCostForRegion(
                 ParseNumberForTesting(ambiguous_standard_rate_string,
-                                      RegionCode::CX()),
-                RegionCode::CX()));
+                                      TestRegionCode::CX()),
+                TestRegionCode::CX()));
   EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCost(ambiguous_standard_rate_number));
 
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting(ambiguous_toll_free_string, RegionCode::AU()),
-      RegionCode::AU()));
+      ParseNumberForTesting(ambiguous_toll_free_string, TestRegionCode::AU()),
+      TestRegionCode::AU()));
   EXPECT_EQ(
       ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting(ambiguous_toll_free_string, RegionCode::AU()),
-          RegionCode::AU()));
+          ParseNumberForTesting(ambiguous_toll_free_string,
+                                TestRegionCode::AU()),
+          TestRegionCode::AU()));
 
   EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting(ambiguous_toll_free_string, RegionCode::CX()),
-      RegionCode::CX()));
+      ParseNumberForTesting(ambiguous_toll_free_string, TestRegionCode::CX()),
+      TestRegionCode::CX()));
   EXPECT_EQ(
       ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting(ambiguous_toll_free_string, RegionCode::CX()),
-          RegionCode::CX()));
+          ParseNumberForTesting(ambiguous_toll_free_string,
+                                TestRegionCode::CX()),
+          TestRegionCode::CX()));
   EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCost(ambiguous_toll_free_number));
 }
 
 TEST_F(ShortNumberInfoTest, GetExampleShortNumber) {
-  EXPECT_EQ("8711", short_info_.GetExampleShortNumber(RegionCode::AM()));
-  EXPECT_EQ("1010", short_info_.GetExampleShortNumber(RegionCode::FR()));
-  EXPECT_EQ("", short_info_.GetExampleShortNumber(RegionCode::UN001()));
-  EXPECT_EQ("", short_info_.GetExampleShortNumber(RegionCode::GetUnknown()));
+  EXPECT_EQ("8711", short_info_.GetExampleShortNumber(TestRegionCode::AM()));
+  EXPECT_EQ("1010", short_info_.GetExampleShortNumber(TestRegionCode::FR()));
+  EXPECT_EQ("", short_info_.GetExampleShortNumber(TestRegionCode::UN001()));
+  EXPECT_EQ("", short_info_.GetExampleShortNumber(
+      TestRegionCode::GetUnknown()));
 }
 
 TEST_F(ShortNumberInfoTest, GetExampleShortNumberForCost) {
   EXPECT_EQ("3010",
-      short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
+      short_info_.GetExampleShortNumberForCost(TestRegionCode::FR(),
       ShortNumberInfo::TOLL_FREE));
   EXPECT_EQ("1023",
-      short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
+      short_info_.GetExampleShortNumberForCost(TestRegionCode::FR(),
       ShortNumberInfo::STANDARD_RATE));
   EXPECT_EQ("42000",
-      short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
+      short_info_.GetExampleShortNumberForCost(TestRegionCode::FR(),
       ShortNumberInfo::PREMIUM_RATE));
-  EXPECT_EQ("", short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
+  EXPECT_EQ("", short_info_.GetExampleShortNumberForCost(TestRegionCode::FR(),
       ShortNumberInfo::UNKNOWN_COST));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumber_US) {
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("911", RegionCode::US()));
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("112", RegionCode::US()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("999", RegionCode::US()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("911",
+      TestRegionCode::US()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("112",
+      TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("999",
+      TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumberLongNumber_US) {
   EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("9116666666",
-      RegionCode::US()));
+      TestRegionCode::US()));
   EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("1126666666",
-      RegionCode::US()));
+      TestRegionCode::US()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("9996666666",
-      RegionCode::US()));
+      TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumberWithFormatting_US) {
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("9-1-1", RegionCode::US()));
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("1-1-2", RegionCode::US()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("9-1-1",
+      TestRegionCode::US()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("1-1-2",
+      TestRegionCode::US()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("9-9-9",
-      RegionCode::US()));
+      TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumberWithPlusSign_US) {
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("+911", RegionCode::US()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("+911",
+      TestRegionCode::US()));
   // This hex sequence is the full-width plus sign U+FF0B.
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("\xEF\xBC\x8B" "911",
-      RegionCode::US()));
+      TestRegionCode::US()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber(" +911",
-      RegionCode::US()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("+112", RegionCode::US()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("+999", RegionCode::US()));
+      TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("+112",
+      TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("+999",
+      TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumber_BR) {
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("911", RegionCode::BR()));
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("190", RegionCode::BR()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("999", RegionCode::BR()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("911",
+      TestRegionCode::BR()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("190",
+      TestRegionCode::BR()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("999",
+      TestRegionCode::BR()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumberLongNumber_BR) {
   // Brazilian emergency numbers don't work when additional digits are appended.
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("9111", RegionCode::BR()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("1900", RegionCode::BR()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("9996", RegionCode::BR()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("9111",
+      TestRegionCode::BR()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("1900",
+      TestRegionCode::BR()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("9996",
+      TestRegionCode::BR()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumber_CL) {
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("131", RegionCode::CL()));
-  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("133", RegionCode::CL()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("131",
+      TestRegionCode::CL()));
+  EXPECT_TRUE(short_info_.ConnectsToEmergencyNumber("133",
+      TestRegionCode::CL()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumberLongNumber_CL) {
   // Chilean emergency numbers don't work when additional digits are appended.
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("1313", RegionCode::CL()));
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("1330", RegionCode::CL()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("1313",
+      TestRegionCode::CL()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("1330",
+      TestRegionCode::CL()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumber_AO) {
   // Angola doesn't have any metadata for emergency numbers in the test
   // metadata.
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("911", RegionCode::AO()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("911",
+      TestRegionCode::AO()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("222123456",
-      RegionCode::AO()));
+      TestRegionCode::AO()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("923123456",
-      RegionCode::AO()));
+      TestRegionCode::AO()));
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumber_ZW) {
   // Zimbabwe doesn't have any metadata in the test metadata.
-  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("911", RegionCode::ZW()));
+  EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("911",
+      TestRegionCode::ZW()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("01312345",
-      RegionCode::ZW()));
+      TestRegionCode::ZW()));
   EXPECT_FALSE(short_info_.ConnectsToEmergencyNumber("0711234567",
-      RegionCode::ZW()));
+      TestRegionCode::ZW()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumber_US) {
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("911", RegionCode::US()));
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("112", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("999", RegionCode::US()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("911", TestRegionCode::US()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("112", TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("999", TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumberLongNumber_US) {
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("9116666666", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("1126666666", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("9996666666", RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("9116666666",
+      TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("1126666666",
+      TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("9996666666",
+      TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumberWithFormatting_US) {
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("9-1-1", RegionCode::US()));
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("*911", RegionCode::US()));
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("1-1-2", RegionCode::US()));
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("*112", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("9-9-9", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("*999", RegionCode::US()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("9-1-1", TestRegionCode::US()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("*911", TestRegionCode::US()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("1-1-2", TestRegionCode::US()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("*112", TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("9-9-9", TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("*999", TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumberWithPlusSign_US) {
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("+911", RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("+911", TestRegionCode::US()));
   // This hex sequence is the full-width plus sign U+FF0B.
   EXPECT_FALSE(short_info_.IsEmergencyNumber("\xEF\xBC\x8B" "911",
-      RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber(" +911", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("+112", RegionCode::US()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("+999", RegionCode::US()));
+      TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber(" +911", TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("+112", TestRegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("+999", TestRegionCode::US()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumber_BR) {
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("911", RegionCode::BR()));
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("190", RegionCode::BR()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("999", RegionCode::BR()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("911", TestRegionCode::BR()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("190", TestRegionCode::BR()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("999", TestRegionCode::BR()));
 }
 
 TEST_F(ShortNumberInfoTest, EmergencyNumberLongNumber_BR) {
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("9111", RegionCode::BR()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("1900", RegionCode::BR()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("9996", RegionCode::BR()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("9111", TestRegionCode::BR()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("1900", TestRegionCode::BR()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("9996", TestRegionCode::BR()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumber_AO) {
   // Angola doesn't have any metadata for emergency numbers in the test
   // metadata.
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("911", RegionCode::AO()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("222123456", RegionCode::AO()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("923123456", RegionCode::AO()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("911", TestRegionCode::AO()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("222123456",
+      TestRegionCode::AO()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("923123456",
+      TestRegionCode::AO()));
 }
 
 TEST_F(ShortNumberInfoTest, IsEmergencyNumber_ZW) {
   // Zimbabwe doesn't have any metadata in the test metadata.
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("911", RegionCode::ZW()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("01312345", RegionCode::ZW()));
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("0711234567", RegionCode::ZW()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("911", TestRegionCode::ZW()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("01312345", TestRegionCode::ZW()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("0711234567",
+      TestRegionCode::ZW()));
 }
 
 TEST_F(ShortNumberInfoTest, EmergencyNumberForSharedCountryCallingCode) {
   // Test the emergency number 112, which is valid in both Australia and the
   // Christmas Islands.
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("112", RegionCode::AU()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("112", TestRegionCode::AU()));
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting("112", RegionCode::AU()), RegionCode::AU()));
+      ParseNumberForTesting("112", TestRegionCode::AU()),
+      TestRegionCode::AU()));
   EXPECT_EQ(
       ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("112", RegionCode::AU()), RegionCode::AU()));
+          ParseNumberForTesting("112", TestRegionCode::AU()),
+          TestRegionCode::AU()));
 
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("112", RegionCode::CX()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("112", TestRegionCode::CX()));
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
-      ParseNumberForTesting("112", RegionCode::CX()), RegionCode::CX()));
+      ParseNumberForTesting("112", TestRegionCode::CX()),
+      TestRegionCode::CX()));
   EXPECT_EQ(
       ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("112", RegionCode::CX()), RegionCode::CX()));
+          ParseNumberForTesting("112", TestRegionCode::CX()),
+          TestRegionCode::CX()));
 
   PhoneNumber shared_emergency_number;
   shared_emergency_number.set_country_code(61);
@@ -445,23 +491,26 @@ TEST_F(ShortNumberInfoTest, EmergencyNumberForSharedCountryCallingCode) {
 TEST_F(ShortNumberInfoTest, OverlappingNANPANumber) {
   // 211 is an emergency number in Barbados, while it is a toll-free
   // information line in Canada and the USA.
-  EXPECT_TRUE(short_info_.IsEmergencyNumber("211", RegionCode::BB()));
+  EXPECT_TRUE(short_info_.IsEmergencyNumber("211", TestRegionCode::BB()));
   EXPECT_EQ(
       ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("211", RegionCode::BB()), RegionCode::BB()));
+          ParseNumberForTesting("211", TestRegionCode::BB()),
+          TestRegionCode::BB()));
 
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("211", RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("211", TestRegionCode::US()));
   EXPECT_EQ(
       ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("211", RegionCode::US()), RegionCode::US()));
+          ParseNumberForTesting("211", TestRegionCode::US()),
+          TestRegionCode::US()));
 
-  EXPECT_FALSE(short_info_.IsEmergencyNumber("211", RegionCode::CA()));
+  EXPECT_FALSE(short_info_.IsEmergencyNumber("211", TestRegionCode::CA()));
   EXPECT_EQ(
       ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion(
-          ParseNumberForTesting("211", RegionCode::CA()), RegionCode::CA()));
+          ParseNumberForTesting("211", TestRegionCode::CA()),
+          TestRegionCode::CA()));
 }
 
 }  // namespace phonenumbers
