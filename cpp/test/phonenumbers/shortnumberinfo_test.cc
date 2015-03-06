@@ -36,8 +36,10 @@ class ShortNumberInfoTest : public testing::Test {
   PhoneNumber ParseNumberForTesting(const string& number,
                                     const string& region_code) {
     PhoneNumber phone_number;
-    CHECK_EQ(phone_util_.Parse(number, region_code, &phone_number),
-             PhoneNumberUtil::NO_PARSING_ERROR);
+    PhoneNumberUtil::ErrorType error_type = phone_util_.Parse(
+                                           number, region_code, &phone_number);
+    CHECK_EQ(error_type, PhoneNumberUtil::NO_PARSING_ERROR);
+    IGNORE_UNUSED(error_type);
     return phone_number;
   }
 
