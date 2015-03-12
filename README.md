@@ -1,6 +1,6 @@
 # What is it?
 
-Google's common Java, C++ and Javascript library for parsing, formatting, storing and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
+Google's common Java, C++ and JavaScript library for parsing, formatting, storing and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
 
 # Highlights of functionality
   * Parsing/formatting/validating phone numbers for all countries/regions of the world.
