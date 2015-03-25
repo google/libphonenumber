@@ -1042,20 +1042,21 @@
     <!-- http://www.itu.int/oth/T0202000022/en -->
     <territory id="BI">
       <generalDesc>
-        <nationalNumberPattern>[16-9]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[16-9]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
             1\d|
-            5[3-6]|
-            60
+            5[2-9]|
+            6[0-256]
           )|
           611|
           7(?:
             10|
-            77
+            77|
+            979
           )|
           8[28]8|
           900
@@ -1078,6 +1079,7 @@
           888|
           900
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>611</exampleNumber>
       </carrierSpecific>
       <carrierServices>
@@ -1091,6 +1093,7 @@
           8[28]8|
           900
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>888</exampleNumber>
       </carrierServices>
       <smsServices>
@@ -1099,12 +1102,19 @@
           710|
           900
         </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>900</exampleNumber>
       </smsServices>
       <emergency>
         <nationalNumberPattern>11[237]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>117</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>11[014-689]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>119</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Benin -->
@@ -2976,7 +2986,7 @@
 
     <!-- Finland -->
     <!-- Country calling code shared with Åland (AX) -->
-    <!-- http://www.ficora.fi/en/index/palvelut/palvelutaiheittain/numerointi/numerotyypitjaalueet.html -->
+    <!-- https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html -->
     <territory id="FI">
       <generalDesc>
         <nationalNumberPattern>1\d{2}</nationalNumberPattern>
@@ -6439,7 +6449,7 @@
 
     <!-- Netherlands -->
     <!-- http://en.wikipedia.org/wiki/%2B31 -->
-    <!-- http://www.opta.nl/en/numbers/search-for-numbers -->
+    <!-- http://wetten.overheid.nl/BWBR0010198 -->
     <territory id="NL">
       <generalDesc>
         <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
