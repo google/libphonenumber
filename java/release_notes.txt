@@ -1,3 +1,12 @@
+Mar 25, 2015: libphonenumber-7.0.4
+* Metadata changes:
+ - Updated phone metadata for region code(s): CA, HU, IL, JO, LU, SG, SL, US
+ - Updated short number metadata for region code(s): BI
+ - New geocoding data for country calling code(s):
+   1220 (en), 1628 (en), 1629 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 232 (en), 972 (en)
+
 Mar 02, 2015: libphonenumber-7.0.3
 * Metadata changes:
  - Updated phone metadata for region code(s):

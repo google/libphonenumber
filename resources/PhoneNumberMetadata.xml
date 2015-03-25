@@ -1702,7 +1702,7 @@
     <territory id="AX" countryCode="358" internationalPrefix="00|99[049]" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
       <references>
-        <sourceUrl>http://www.ficora.fi/en/index/palvelut/palvelutaiheittain/numerointi/numerotyypitjaalueet.html</sourceUrl>
+        <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
       </references>
       <!-- The general desc and fixed line are numbers different from Finland metadata. -->
       <generalDesc>
@@ -3805,6 +3805,7 @@
             5(?:
               06|
               1[49]|
+              48|
               79|
               8[17]
             )|
@@ -3853,6 +3854,7 @@
             5(?:
               06|
               1[49]|
+              48|
               79|
               8[17]
             )|
@@ -6932,7 +6934,7 @@
                nationalPrefixFormattingRule="$NP$FG" mainCountryForCode="true"
                mobileNumberPortableRegion="true">
       <references>
-        <sourceUrl>http://www.ficora.fi/en/index/palvelut/palvelutaiheittain/numerointi/numerotyypitjaalueet.html</sourceUrl>
+        <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3,7})">
@@ -9447,7 +9449,9 @@
         <exampleNumber>80123456</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
-        <!-- Includes numbers for corporate networks. -->
+        <!-- Includes numbers for corporate networks. Note the ITU numbering plan contains a M2M
+             number in the form of 71\d{10}, which doesn't seem to agree with evidence online. We
+             keep it as 71\d{7} like before. -->
         <nationalNumberPattern>
           (?:
             1\d|
@@ -9455,7 +9459,10 @@
               1\d|
               [2-9]
             )|
-            3[2-7]|
+            3(?:
+              [2-7]|
+              8\d
+            )|
             4[24-9]|
             5[2-79]|
             6[23689]|
@@ -9472,7 +9479,7 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            [27]0|
+            [257]0|
             3[01]
           )\d{7}
         </nationalNumberPattern>
@@ -9992,7 +9999,8 @@
       </fixedLine>
       <mobile>
         <!-- The ITU document has only some of these prefixes - wikipedia lists more. We are fairly
-             sure wikipedia is accurate based on news coverage of the launch of these numbers. -->
+             sure wikipedia is accurate based on news coverage of the launch of these numbers. Also
+             added 5570 and 5571 prefixes based on confirmation from the carrier. -->
         <nationalNumberPattern>
           5(?:
             [02347-9]\d{2}|
@@ -10003,7 +10011,7 @@
               4[45]|
               5[5689]|
               6[67]|
-              7[78]|
+              7[0178]|
               8[89]|
               9[7-9]
             )|
@@ -11782,7 +11790,7 @@
             55|
             7[25-9]|
             8[05-9]|
-            9[015-9]
+            9[0-25-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
@@ -14602,17 +14610,22 @@
             )|
             [3-5]|
             7[1-9]|
-            [89](?:
+            8(?:
               [1-9]|
               0[2-9]
+            )|
+            9(?:
+              [1-9]|
+              0[2-46-9]
             )
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{2})(\d{3})">
           <leadingDigits>
-            [89]0[01]|
-            70
+            70|
+            80[01]|
+            90[015]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -14670,7 +14683,7 @@
         <exampleNumber>80012345</exampleNumber>
       </tollFree>
       <premiumRate>
-        <nationalNumberPattern>90[01]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>90[015]\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>90012345</exampleNumber>
       </premiumRate>
@@ -17293,7 +17306,7 @@
                mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B31</sourceUrl>
-        <sourceUrl>http://www.opta.nl/en/numbers/search-for-numbers</sourceUrl>
+        <sourceUrl>http://wetten.overheid.nl/BWBR0010198</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="([1-578]\d)(\d{3})(\d{4})">
@@ -20298,7 +20311,7 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            8[1-7]|
+            8[1-8]|
             9[0-8]
           )\d{6}
         </nationalNumberPattern>
@@ -20657,7 +20670,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-578]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[2-57-9]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{6,8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -20672,7 +20685,8 @@
             4[04]|
             5[05]|
             7[6-9]|
-            88
+            88|
+            99
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>25123456</exampleNumber>
@@ -22601,7 +22615,7 @@
             2(?:
               0[1-35-9]|
               1[02-9]|
-              2[4589]|
+              2[04589]|
               3[149]|
               4[08]|
               5[1-46]|
@@ -22644,7 +22658,7 @@
             6(?:
               0[1-35-9]|
               1[024-9]|
-              2[036]|
+              2[03689]|
               3[016]|
               4[16]|
               5[017]|
@@ -22693,7 +22707,7 @@
             2(?:
               0[1-35-9]|
               1[02-9]|
-              2[4589]|
+              2[04589]|
               3[149]|
               4[08]|
               5[1-46]|
@@ -22736,7 +22750,7 @@
             6(?:
               0[1-35-9]|
               1[024-9]|
-              2[036]|
+              2[03689]|
               3[016]|
               4[16]|
               5[017]|
