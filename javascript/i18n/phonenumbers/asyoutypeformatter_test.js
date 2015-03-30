@@ -1150,6 +1150,7 @@ function testAYTFShortNumberFormattingFix_US() {
   assertEquals('1 22', f.inputDigit('2'));
 }
 
+// https://github.com/googlei18n/libphonenumber/issues/658
 // TODO: Re-enable this test when it can be run from a git repository without:
 // [exec] i18n/phonenumbers/asyoutypeformatter_test.js:1164:
 //     ERROR - Access to private property getExtractedNationalPrefix_ of
