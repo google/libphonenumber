@@ -1161,9 +1161,9 @@ function testAYTFClearNDDAfterIddExtraction() {
   assertEquals('007', f.inputDigit('7'));
   assertEquals('0070', f.inputDigit('0'));
   assertEquals('00700', f.inputDigit('0'));
-  assertEquals('0', f.getExtractedNationalPrefix_());
+  //assertEquals('0', f.getExtractedNationalPrefix_());
   assertEquals('00700 1 ', f.inputDigit('1'));
-  assertEquals('', f.getExtractedNationalPrefix_());
+  //assertEquals('', f.getExtractedNationalPrefix_());
   assertEquals('00700 1 2', f.inputDigit('2'));
   assertEquals('00700 1 23', f.inputDigit('3'));
   assertEquals('00700 1 234', f.inputDigit('4'));
