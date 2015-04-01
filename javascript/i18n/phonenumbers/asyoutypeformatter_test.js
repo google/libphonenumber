@@ -1159,9 +1159,11 @@ function testAYTFClearNDDAfterIddExtraction() {
   assertEquals('007', f.inputDigit('7'));
   assertEquals('0070', f.inputDigit('0'));
   assertEquals('00700', f.inputDigit('0'));
-  // NDD should be '0' at this stage.
+  // NDD is '0' at this stage (the first '0' in '00700') because it's not
+  // clear if the number is a national number or using the IDD to dial out.
   assertEquals('00700 1 ', f.inputDigit('1'));
-  // NDD should be cleared here because IDD '1' was extracted.
+  // NDD should be cleared here because IDD '00700' was extracted after the
+  // country calling code '1' (US) was entered.
   assertEquals('00700 1 2', f.inputDigit('2'));
   // The remaining long sequence of inputs is because the original bug that
   // this test if for only triggered after a lot of subsequent inputs.
