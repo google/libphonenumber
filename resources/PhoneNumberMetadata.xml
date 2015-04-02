@@ -1218,7 +1218,10 @@
         <!-- Added 25[246], operated from Blue Sky. Added 731, 770, operated by ASTCA. -->
         <nationalNumberPattern>
           684(?:
-            25[2468]|
+            2(?:
+              5[2468]|
+              72
+            )|
             7(?:
               3[13]|
               70
@@ -10704,6 +10707,7 @@
               )|
               2(?:
                 0[04-9]|
+                10|
                 5[09]|
                 7[5-8]|
                 9[389]
@@ -17016,7 +17020,7 @@
              89 and 97 prefixes, and Orange use 92. MOOV started using 95 in Jan 2014. -->
         <nationalNumberPattern>
           (?:
-            89|
+            8[89]|
             9\d
           )\d{6}
         </nationalNumberPattern>
