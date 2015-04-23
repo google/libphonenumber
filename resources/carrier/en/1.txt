@@ -65,6 +65,7 @@
 1684254|Blue Sky
 1684256|Blue Sky
 1684258|Blue Sky
+1684272|Blue Sky
 1684731|ASTCA
 1684733|ASTCA
 1684770|ASTCA
@@ -398,6 +399,7 @@
 186956|The Cable St. Kitts
 186966|Cable & Wireless
 186976|Digicel
+187626|Digicel
 1876503|Digicel
 1876504|Digicel
 1876505|Digicel
