@@ -823,7 +823,10 @@
             0[0-8]|
             1(?:
               [027]|
-              6000
+              6(?:
+                000|
+                117
+              )
             )|
             2(?:
               0[47]|
@@ -844,12 +847,13 @@
             )|
             7(?:
               00|
-              1[27]|
+              1[27-9]|
               33|
               65|
-              77
+              7[17]|
+              89
             )|
-            819
+            81[39]
           )|
           [2-9]\d{3}
         </nationalNumberPattern>
@@ -883,12 +887,16 @@
              http://www.voo.be/fr/telephone/tarifs-speciaux/ -->
         <nationalNumberPattern>
           1(?:
-            212|
+            2(?:
+              12|
+              34
+            )|
             3(?:
-              0[47]|
+              07|
               13
             )|
-            4[01]4
+            414|
+            \d04
           )|
           [2-79]\d{3}
         </nationalNumberPattern>
@@ -5130,23 +5138,13 @@
               [278]|
               45
             )|
-            4(?:
-              [03-57]|
-              14
-            )|
-            50\d{4}|
-            6(?:
-              00|
-              [1-4]
-            )|
+            4[3-57]|
+            50|
             75|
-            8(?:
-              1[128]|
-              7
-            )
+            81[18]
           )
         </nationalNumberPattern>
-        <exampleNumber>1600</exampleNumber>
+        <exampleNumber>1145</exampleNumber>
       </shortCode>
       <emergency>
         <nationalNumberPattern>
