@@ -14,7 +14,7 @@ Google's common Java, C++ and JavaScript library for parsing, formatting, storin
   * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
 
-# Demo (v7.0.4)
+# Demo (v7.0.5)
 [Java](http://libphonenumber.appspot.com/)
 
 [JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
