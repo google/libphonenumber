@@ -65,6 +65,7 @@
 62323|Sampang
 62324|Pamekasan
 62325|Sangkapura
+62326|Masalembu Islands
 62327|Kangean/Masalembu
 62328|Sumenep
 62331|Jember
@@ -239,7 +240,7 @@
 62718|Koba/Toboali
 62719|Manggar/Tanjung Pandan
 62721|Bandar Lampung
-62722|Kotaagung
+62722|Tanggamus
 62723|Blambangan Umpu
 62724|Kotabumi
 62725|Metro

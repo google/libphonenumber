@@ -1,3 +1,7 @@
+Apr 24, 2015: libphonenumber-7.0.5
+Metadata changes:
+ - Updated phone metadata for region code(s): ID
+ - Updated geocoding data for country calling code(s): 62 (en)\n
 Apr 23, 2015: libphonenumber-7.0.5
 * Metadata changes:
  - Updated phone metadata for region code(s):
