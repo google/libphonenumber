@@ -12760,7 +12760,7 @@
       <mobile>
         <nationalNumberPattern>[7-9]0[1-9]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
-        <exampleNumber>8012345678</exampleNumber>
+        <exampleNumber>9012345678</exampleNumber>
       </mobile>
       <pager>
         <nationalNumberPattern>20\d{8}</nationalNumberPattern>
