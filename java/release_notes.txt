@@ -1,10 +1,10 @@
-Apr 23, 2015: libphonenumber-7.0.5
+Apr 24, 2015: libphonenumber-7.0.5
 * Metadata changes:
  - Updated phone metadata for region code(s):
-   AF, AS, BD, BE, CA, CI, IN, JM, KH, LI, LU, MU, NE, PL
+   AF, AS, BD, BE, CA, CI, ID, IN, JM, KH, LI, LU, MU, NE, PL
  - Updated short number metadata for region code(s): BE, LI
  - Updated geocoding data for country calling code(s):
-   86 (en, zh), 358 (en, fi, se)
+   62 (en), 86 (en, zh), 358 (en, fi, se)
  - Updated carrier data for country calling code(s):
    32 (en), 93 (en), 225 (en), 227 (en), 855 (en), 1684 (en), 1876 (en)
 
