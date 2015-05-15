@@ -2146,7 +2146,7 @@ function testMaybeExtractCountryCode() {
     // Expected.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   number = new i18n.phonenumbers.PhoneNumber();
   try {
@@ -2349,7 +2349,7 @@ function testParseMaliciousInput() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
   /** @type {!goog.string.StringBuffer} */
   var maliciousNumberWithAlmostExt = new goog.string.StringBuffer();
@@ -2365,7 +2365,7 @@ function testParseMaliciousInput() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
 }
 
@@ -2535,7 +2535,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '1 Still not a number';
@@ -2546,7 +2546,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '1 MICROSOFT';
@@ -2557,7 +2557,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '12 MICROSOFT';
@@ -2568,7 +2568,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2580,7 +2580,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2592,7 +2592,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2603,7 +2603,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2615,7 +2615,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2627,7 +2627,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_NSN,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2639,7 +2639,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2651,7 +2651,7 @@ function testFailedParseOnInvalidNumbers() {
     // country code.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2662,7 +2662,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '123 456 7890';
@@ -2672,7 +2672,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '123 456 7890';
@@ -2682,7 +2682,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0044------';
@@ -2692,7 +2692,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0044';
@@ -2702,7 +2702,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '011';
@@ -2712,7 +2712,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0119';
@@ -2722,7 +2722,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2734,7 +2734,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     // Invalid region.
@@ -2744,7 +2744,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     phoneUtil.parse(null, RegionCode.US);
@@ -2753,7 +2753,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2764,7 +2764,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     // This is invalid because no '+' sign is present as part of phone-context.
@@ -2777,7 +2777,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
 }
 
@@ -3007,7 +3007,7 @@ function testParseAndKeepRaw() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
