@@ -664,10 +664,9 @@ public class PhoneNumberUtil {
         source.close();
       } catch (IOException e) {
         logger.log(Level.WARNING, "error closing input stream (ignored)", e);
-      } finally {
-        return metadataCollection;
       }
     }
+    return metadataCollection;
   }
 
   /**
