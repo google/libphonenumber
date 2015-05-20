@@ -19957,8 +19957,7 @@
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
       <references>
-        <sourceUrl>http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Sv_nrplan_telefoni_enl_TU-T_rek_E.164.pdf</sourceUrl>
-        <sourceUrl>http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Nrplansammanst%C3%A4llning-2013-07-05.pdf</sourceUrl>
+        <sourceUrl>http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/swedish-numbering-plan-for-telephony-acc-itu-140407.pdf</sourceUrl>        
       </references>
       <availableFormats>
       <!-- Formatting patterns are from the numbering plan and from the Swedish yellow pages
@@ -20149,7 +20148,7 @@
         <exampleNumber>8123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>7[0236]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>7[02369]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>701234567</exampleNumber>
       </mobile>
