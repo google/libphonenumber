@@ -3171,6 +3171,7 @@
           <leadingDigits>
             (?:
               1[1-9]|
+              8[1-9]|
               2[12478]|
               9[1-9]
             )9
@@ -3231,6 +3232,10 @@
              Oct. 2013 are still working as of Jan. 2014.) Note that mobile radio services are
              still 10 digits, with the subscriber number (the last 8 digits) beginning with 7. -->
         <nationalNumberPattern>
+          8[1-9](?:
+            7|
+            9\d
+            )\d{7}|
           1[1-9](?:
             7|
             9\d
