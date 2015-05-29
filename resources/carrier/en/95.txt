@@ -12,5 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+95978|Telenor
 95979|Telenor
 95997|Ooredoo

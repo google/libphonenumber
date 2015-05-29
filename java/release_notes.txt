@@ -1,3 +1,11 @@
+May 29, 2015: libphonenumber-7.0.6
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BB, BR, CR, ID, IL, JO, KW, LK, LU, MD, MM, MV, MY, PH, PK, SC, SE
+ - Updated short number metadata for region code(s): BE, LK, US
+ - Updated carrier data for country calling code(s):
+   60 (en), 63 (en), 92 (en), 94 (en), 95 (en), 248 (en), 373 (en), 960 (en),
+   972 (en), 1246 (en)\n
 Apr 24, 2015: libphonenumber-7.0.5
 * Metadata changes:
  - Updated phone metadata for region code(s):
