@@ -22,6 +22,7 @@
 1246252|LIME
 1246253|LIME
 1246254|LIME
+1246256|Digicel
 1246258|Digicel
 124626|Digicel
 124645|Sunbeach Communications

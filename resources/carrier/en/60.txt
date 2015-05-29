@@ -12,12 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Information about carries obtained from:
+# http://www.skmm.gov.my/Sectors/Celco/Numbering-Management/Numbering-Management/Numbers-Assignment/Mobile-Numbers.aspx
+
 60102|DiGi
 601030|Celcom
 601031|Celcom
 601032|Celcom
 601033|Celcom
 601034|Celcom
+601035|Packet One
 601036|DiGi
 601037|DiGi
 601038|DiGi
@@ -26,31 +30,40 @@
 601041|Celcom
 601042|Maxis
 601043|Maxis
+601044|Packet One
+601045|Packet One
 601046|DiGi
-601050|Celcom
-601051|Celcom
-601052|Celcom
-601053|Celcom
-601054|Celcom
+601050|Tune Talk
+601051|Tune Talk
+601052|Tune Talk
+601053|Tune Talk
+601054|Tune Talk
+601055|Packet One
 601056|DiGi
 601057|Celcom
 601058|Celcom
 601059|Celcom
+601060|Baraka
+601061|Baraka
+601062|Baraka
+601063|Baraka
+601064|Baraka
+601065|Packcet One
 601066|DiGi
 601070|Maxis
 601071|Maxis
 601076|DiGi
-601077|Celcom
-601078|Celcom
-601079|Celcom
-601080|Celcom
-601081|Celcom
+601077|Tune Talk
+601078|Tune Talk
+601079|Tune Talk
+601080|Tune Talk
+601081|Tune Talk
 601082|DiGi
-601083|Celcom
-601084|Celcom
-601085|Celcom
-601086|Celcom
-601087|Celcom
+601083|XOX
+601084|XOX
+601085|XOX
+601086|XOX
+601087|XOX
 601088|DiGi
 601089|Maxis
 601090|DiGi
@@ -65,51 +78,184 @@
 601113|Celcom
 601115|Celcom
 601116|DiGi
+6011170|YTL
+6011171|YTL
+6011172|YTL
+6011173|YTL
+6011174|YTL
+6011175|Maxis
+6011176|Maxis
+6011177|Maxis
+6011178|Maxis
+6011179|Maxis
+6011180|Telekom
+6011181|Telekom
+6011182|Telekom
+6011183|Telekom
+6011184|Telekom
+6011185|Tune Talk
+6011186|Tune Talk
+6011187|Tune Talk
+6011188|Tune Talk
+6011189|Tune Talk
 601119|Celcom
+6011200|Talk Focus
+6011201|Talk Focus
+6011202|Talk Focus
+6011203|Talk Focus
+6011204|Talk Focus
+6011205|XOX
+6011206|XOX
+6011207|XOX
+6011208|XOX
+6011209|XOX
+601121|U Mobile
+601122|Clixster
+601123|Maxis
+601124|Maxis
+601125|Maxis
 601126|DiGi
-60113|Altel
-60115|Altel
+6011270|U Mobile
+6011271|U Mobile
+6011272|U Mobile
+6011273|U Mobile
+6011274|U Mobile
+6011275|Maxis
+6011276|Maxis
+6011277|Maxis
+6011278|Maxis
+6011279|Maxis
+601128|U Mobile
+601129|Celecom
+601130|YTL
+601131|DiGi
+601132|Altel
+601133|DiGi
+601134|Enabling Asia
+601135|Tune Talk
+601136|DiGi
+601137|U Mobile
+601138|Ceres
+601139|U Mobile
+601140|Celcom
+601141|Celcom
+601142|Telekomunikasi Indonesia
+601150|Talk Focus
+601152|Altel
 6012|Maxis
 6013|Celcom
 60142|Maxis
 60143|DiGi
+60144|Tune Talk
 60145|Celcom
 60146|DiGi
 60147|Maxis
 60148|Celcom
 60149|DiGi
+6015460|Telekom
+6015461|Telekom
+6015462|Telekom
+6015463|Telekom
+6015464|Telekom
+60154801|Telekom
+60154802|ARL
+60154805|Offisgate
+6015481|Jaring
+60154821|TT dotCom
+60154830|EB Technologies
+60154840|REDtone
+60154841|Bizsurf
+60154845|Fristor
+60154848|Packet One
+60154849|Packet One
+60154850|MyKris
+60154851|Maxis
+60154854|GITN
+60154860|TM Net
+60154862|TM Net
+60154870|Optical Communication
+60154871|REDtone
+60154872|REDtone
+60154873|REDtone
+60154874|REDtone
+60154875|PP International
+60154876|REDtone
+60154877|REDtone
+60154878|Tg Agas
+60154879|REDtone
+60154888|Asian Broadcasting Network
+6015632|Majlis Keselamatan Negara
+6015678|Eletcoms
+6015881|Packet One
+6015882|Asiaspace
+60158850|IP Mobility
+60158860|Izzinet
 6015920|Celcom
 6015921|Celcom
 6015922|Celcom
 6015923|Celcom
 6015924|Celcom
+601596|DiGi
 6016|DiGi
 6017|Maxis
-60182|TM Homeline
-601831|TM Homeline
-601832|TM Homeline
-601833|TM Homeline
-601835|TM Homeline
-601836|TM Homeline
-601837|TM Homeline
-601838|TM Homeline
-601839|TM Homeline
-601840|TM Homeline
-601846|TM Homeline
-601847|TM Homeline
-601857|TM Homeline
-601866|TM Homeline
-601876|TM Homeline
+6018120|U Mobile
+6018130|U Mobile
+60182|U Mobile
+601830|YTL
+601831|U Mobile
+601832|U Mobile
+601833|YTL
+601835|U Mobile
+601836|U Mobile
+601837|U Mobile
+601838|U Mobile
+601839|U Mobile
+601840|U Mobile
+601846|U Mobile
+601847|U Mobile
+601857|U Mobile
+601858|YTL
+601859|YTL
+601860|YTL
+601861|YTL
+601862|YTL
+601863|YTL
+601864|YTL
+601865|YTL
+601866|U Mobile
+601867|YTL
+601868|YTL
+601869|YTL
+601870|YTL
+601871|YTL
+601876|U Mobile
 601877|TM Homeline
-601878|TM Homeline
-601879|TM Homeline
-601887|TM Homeline
-601890|TM Homeline
-601891|TM Homeline
-601894|TM Homeline
-601895|TM Homeline
-601896|TM Homeline
-601897|TM Homeline
-601898|TM Homeline
-601899|TM Homeline
+601878|U Mobile
+6018790|U Mobile
+6018791|U Mobile
+6018792|U Mobile
+6018793|U Mobile
+6018794|U Mobile
+6018795|YTL
+6018796|YTL
+6018797|YTL
+6018798|YTL
+6018799|YTL
+601880|YTL
+601881|YTL
+6018820|YTL
+6018821|YTL
+6018822|YTL
+6018823|YTL
+6018824|YTL
+601887|U Mobile
+601890|U Mobile
+601891|U Mobile
+601892|YTL
+601893|YTL
+601894|U Mobile
+601895|U Mobile
+601896|U Mobile
+601897|U Mobile
+601898|U Mobile
 6019|Celcom

@@ -872,7 +872,8 @@
             7(?:
               12|
               77
-            )
+            )|
+            813
           )|
           8\d{3}
         </nationalNumberPattern>
@@ -5167,11 +5168,11 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>11[0189]</nationalNumberPattern>
+        <nationalNumberPattern>11[024-9]</nationalNumberPattern>
         <exampleNumber>119</exampleNumber>
       </shortCode>
       <emergency>
-        <nationalNumberPattern>11[0189]</nationalNumberPattern>
+        <nationalNumberPattern>11[02689]</nationalNumberPattern>
         <exampleNumber>119</exampleNumber>
       </emergency>
     </territory>
@@ -8158,7 +8159,7 @@
           )|
           [2-9](?:
             11|
-            \d{4,5}
+            \d{3,5}
           )
         </nationalNumberPattern>
         <exampleNumber>911</exampleNumber>
@@ -8287,6 +8288,7 @@
         <!-- https://support.google.com/plus/answer/1304917
              611 is listed as working from "most" wireless carriers. -->
         <nationalNumberPattern>
+          [2-9]\d{3}|
           33669|
           611
         </nationalNumberPattern>
