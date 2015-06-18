@@ -2131,7 +2131,7 @@ public class PhoneNumberUtil {
     List<String> regions = countryCallingCodeToRegionCodeMap.get(countryCode);
     if (regions == null) {
       String numberString = getNationalSignificantNumber(number);
-      logger.log(Level.WARNING,
+      logger.log(Level.INFO,
                  "Missing/invalid country_code (" + countryCode + ") for number " + numberString);
       return null;
     }
