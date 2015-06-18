@@ -1581,9 +1581,9 @@ void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
   if (region_codes.size() == 0) {
     string number_string;
     GetNationalSignificantNumber(number, &number_string);
-    LOG(WARNING) << "Missing/invalid country calling code ("
-                 << country_calling_code
-                 << ") for number " << number_string;
+    VLOG(1) << "Missing/invalid country calling code ("
+            << country_calling_code
+            << ") for number " << number_string;
     *region_code = RegionCode::GetUnknown();
     return;
   }
