@@ -4491,7 +4491,7 @@
       <mobile>
         <!-- Temporarily allow both old [579]\d{7} and new 6[5-79]\d{7} format. -->
         <nationalNumberPattern>
-          6[5-79]\d{7}|
+          6[5-9]\d{7}|
           [579]\d{7}
         </nationalNumberPattern>
         <exampleNumber>671234567</exampleNumber>
