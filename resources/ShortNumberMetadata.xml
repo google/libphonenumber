@@ -3930,14 +3930,20 @@
             02|
             171|
             444|
-            7[67]7|
+            7(?:
+              [67]7|
+              9
+            )|
             801|
             9(?:
               0[78]|
               [2-47]
             )
           )|
-          1443|
+          1(?:
+            443|
+            5[568]
+          )|
           91[123]
        </nationalNumberPattern>
         <exampleNumber>0801</exampleNumber>
@@ -7133,18 +7139,23 @@
     <!-- Solomon Islands -->
     <territory id="SB">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[127-9]\d{2}</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[02-79]|
+            [02]\d|
             1[12]|
-            2[0-26]|
-            4[189]|
-            68
+            [35][01]|
+            [49][1-9]|
+            6[2-9]|
+            7[7-9]|
+            8[0-8]
           )|
+          269|
+          777|
+          835|
           9(?:
             [01]1|
             22|
