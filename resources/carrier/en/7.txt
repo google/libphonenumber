@@ -15,6 +15,7 @@
 7701|Kcell
 7702|Kcell
 7705|Beeline
+7707|Tele2
 7708|Altel
 7747|Tele2
 7771|Beeline

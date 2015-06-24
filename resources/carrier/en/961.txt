@@ -15,11 +15,21 @@
 # Data retrieved from ITU update (5.10.2012), found here:
 # https://drive.google.com/open?id=0B0ip3SV5XgRjZ3poMVNJSkxLUmM&authuser=0
 
-961788|MTC Touch
-9617890|MTC Touch
-9617891|MTC Touch
-9617892|MTC Touch
-9617893|MTC Touch
-9617894|MTC Touch
+961788|Touch
+9617890|Touch
+9617891|Touch
+9617892|Touch
+9617893|Touch
+9617894|Touch
 961791|Alfa
 961793|Alfa
+961810|Touch
+961811|Alfa
+961812|Alfa
+961813|Alfa
+961814|Alfa
+961815|Alfa
+961816|Touch
+961817|Touch
+961818|Touch
+961819|Touch

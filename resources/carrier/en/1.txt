@@ -390,6 +390,7 @@
 180997|Orange
 180998|Orange
 180999|Tricom
+186827|Digicel
 186828|Digicel
 186829|Digicel
 18683|Digicel
