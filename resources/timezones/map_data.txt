@@ -28,7 +28,7 @@
 #    get a longer prefix.
 #   -Add prefixes for America/Noronha and Pacific/Easter.
 
-# List of deleted prefixes from the original Oyster data:
+# List of deleted prefixes from the original data:
 #   -Prefixes 9761, 9762, since they just indicate the carrier.
 #   -Prefix 9765, since it is just a wireless local loop prefix.
 #   -Prefix 5905. It is the only prefix for 590 country code, which has three
