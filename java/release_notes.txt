@@ -1,3 +1,6 @@
+Jun 25, 2015: libphonenumber-7.0.7
+Metadata changes:
+- Updated / refreshed time zone meta data.\n
 Jun 24, 2015: libphonenumber-7.0.7
 Metadata changes:
  - Updated phone metadata for region code(s):
