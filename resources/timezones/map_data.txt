@@ -15,16 +15,10 @@
 # Generated from:
 # Internal statistics data (2015-05-05).
 
-# This file was generated with the following flags:
-#   --max_features_count=2
-#   --min_total_count=1
-#   --confidence_level=1
-
 # TODO: Solve these current issues:
 #   -Australian prefix 618 has almost as many establishments from
 #    Australia/Adelaide as from Australia/Perth. This is due to the short
-#    length of the phone prefix used in the Map/Reduce. Thus, a custom config
-#    (see google3/i18n/phonenumbers/tools/common/config.h) should be used to
+#    length of the phone prefix. Thus, a custom config should be used to
 #    get a longer prefix.
 #   -Add prefixes for America/Noronha and Pacific/Easter.
 
@@ -36,15 +30,6 @@
 #    whereas 5905 has only one (America/Guadeloupe).
 #    TODO: Investigate where the time zones America/Halifax and America/Marigot
 #          should be used.
-#
-# List of prefixes that have to be modified manually after the pipeline runs:
-#   - 153 does not correspond to America/Los_Angeles, but needs to be split into:
-#          1530|America/Los_Angeles (http://en.wikipedia.org/wiki/List_of_California_area_codes)
-#          1534|America/Chicago (http://www.allareacodes.com/wisconsin_area_codes.htm#534)
-#   - 351 has to correspond to Europe/Lisbon&Atlantic/Azores&Atlantic/Madeira
-#   - 35121, 35122, 35123, 35124, 35125, 35126, 35127, 35128, 3512 correspond to Europe/Lisbon
-#   - 351291 has to correspond to Atlantic/Madeira
-#   - 44 corresponds to Europe/London only, not Atlantic/Reykjavik&Europe/London
 
 
 1|America/Anguilla&America/Antigua&America/Barbados&America/Cayman&America/Chicago&America/Denver&America/Dominica&America/Edmonton&America/Grand_Turk&America/Grenada&America/Halifax&America/Jamaica&America/Juneau&America/Los_Angeles&America/Lower_Princes&America/Montserrat&America/Nassau&America/New_York&America/Port_of_Spain&America/Puerto_Rico&America/St_Johns&America/St_Kitts&America/St_Lucia&America/St_Thomas&America/St_Vincent&America/Toronto&America/Tortola&America/Vancouver&America/Winnipeg&Atlantic/Bermuda&Pacific/Guam&Pacific/Honolulu&Pacific/Pago_Pago&Pacific/Saipan
