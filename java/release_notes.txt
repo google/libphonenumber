@@ -1,6 +1,3 @@
-Jun 25, 2015: libphonenumber-7.0.7
-Metadata changes:
-- Updated / refreshed time zone meta data.\n
 Jun 24, 2015: libphonenumber-7.0.7
 Metadata changes:
  - Updated phone metadata for region code(s):
@@ -12,7 +9,9 @@ Metadata changes:
  - New carrier data for country calling code(s): 592 (en), 689 (en)
  - Updated carrier data for country calling code(s):
    7 (en), 60 (en), 91 (en), 237 (en), 242 (en), 249 (en), 359 (en), 961 (en),
-   1868 (en)\n
+   1868 (en)
+- Updated / refreshed time zone meta data.
+
 May 29, 2015: libphonenumber-7.0.6
 Metadata changes:
  - Updated phone metadata for region code(s):
@@ -20,7 +19,8 @@ Metadata changes:
  - Updated short number metadata for region code(s): BE, LK, US
  - Updated carrier data for country calling code(s):
    60 (en), 63 (en), 92 (en), 94 (en), 95 (en), 248 (en), 373 (en), 960 (en),
-   972 (en), 1246 (en)\n
+   972 (en), 1246 (en)
+
 Apr 24, 2015: libphonenumber-7.0.5
 * Metadata changes:
  - Updated phone metadata for region code(s):
