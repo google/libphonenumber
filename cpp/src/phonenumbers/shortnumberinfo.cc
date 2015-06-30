@@ -126,6 +126,9 @@ bool ShortNumberInfo::IsPossibleShortNumber(const PhoneNumber& number) const {
   for (list<string>::const_iterator it = region_codes.begin();
        it != region_codes.end(); ++it) {
     const PhoneMetadata* phone_metadata = GetMetadataForRegion(*it);
+    if (!phone_metadata) {
+      continue;
+    }
     if (matcher_api_->MatchesPossibleNumber(short_number,
                                             phone_metadata->general_desc())) {
       return true;
