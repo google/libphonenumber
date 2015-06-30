@@ -156,6 +156,9 @@ public class ShortNumberInfo {
     String shortNumber = getNationalSignificantNumber(number);
     for (String region : regionCodes) {
       PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(region);
+      if (phoneMetadata == null) {
+        continue;
+      }
       if (matcherApi.matchesPossibleNumber(shortNumber, phoneMetadata.getGeneralDesc())) {
         return true;
       }
