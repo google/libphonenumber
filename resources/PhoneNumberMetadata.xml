@@ -4336,7 +4336,7 @@
         <numberFormat pattern="(\d)(\d{4})(\d{4})"
           nationalPrefixFormattingRule="($FG)"
           carrierCodeFormattingRule="$CC ($FG)">
-          <leadingDigits>22</leadingDigits>
+          <leadingDigits>2[23]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})"
@@ -4417,7 +4417,7 @@
              -->
         <nationalNumberPattern>
           2(?:
-            2\d{7}|
+            [23]\d{7}|
             1962\d{4}
           )|
           (?:
