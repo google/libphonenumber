@@ -22432,7 +22432,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[3-689]\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>[3-9]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{5,9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -22451,7 +22451,8 @@
           (?:
             39|
             50|
-            6[36-8]|
+	    6[36-8]|
+	    73|
             9[1-9]
           )\d{7}
         </nationalNumberPattern>
