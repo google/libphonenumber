@@ -44,14 +44,16 @@ namespace phonenumbers {
 
 class Lock {
  public:
-  Lock() : thread_checker_() {}
+  Lock() {}
 
   void Acquire() const {
     DCHECK(thread_checker_.CalledOnValidThread());
+    IGNORE_UNUSED(thread_checker_);
   }
 
   void Release() const {
     DCHECK(thread_checker_.CalledOnValidThread());
+    IGNORE_UNUSED(thread_checker_);
   }
 
  private:
