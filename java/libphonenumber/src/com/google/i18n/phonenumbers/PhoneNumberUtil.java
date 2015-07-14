@@ -811,7 +811,7 @@ public class PhoneNumberUtil {
    * works in such a way that the resultant subscriber number should be diallable, at least on some
    * devices. An example of how this could be used:
    *
-   * <pre>
+   * <pre>{@code
    * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
    * PhoneNumber number = phoneUtil.parse("16502530000", "US");
    * String nationalSignificantNumber = phoneUtil.getNationalSignificantNumber(number);
@@ -826,7 +826,7 @@ public class PhoneNumberUtil {
    *   areaCode = "";
    *   subscriberNumber = nationalSignificantNumber;
    * }
-   * </pre>
+   * }</pre>
    *
    * N.B.: area code is a very ambiguous concept, so the I18N team generally recommends against
    * using it for most purposes, but recommends using the more general {@code national_number}
@@ -871,7 +871,7 @@ public class PhoneNumberUtil {
    * number is formatted in the international format, if there is a subscriber number part that
    * follows. An example of how this could be used:
    *
-   * <pre>
+   * <pre>{@code
    * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
    * PhoneNumber number = phoneUtil.parse("18002530000", "US");
    * String nationalSignificantNumber = phoneUtil.getNationalSignificantNumber(number);
@@ -887,7 +887,7 @@ public class PhoneNumberUtil {
    *   nationalDestinationCode = "";
    *   subscriberNumber = nationalSignificantNumber;
    * }
-   * </pre>
+   * }</pre>
    *
    * Refer to the unittests to see the difference between this function and
    * {@link #getLengthOfGeographicalAreaCode}.

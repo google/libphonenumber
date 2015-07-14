@@ -100,7 +100,7 @@ public class PhoneNumberToCarrierMapper {
    * Gets the name of the carrier for the given phone number only when it is 'safe' to display to
    * users. A carrier name is considered safe if the number is valid and for a region that doesn't
    * support
-   * {@linkplain http://en.wikipedia.org/wiki/Mobile_number_portability mobile number portability}.
+   * <a href="http://en.wikipedia.org/wiki/Mobile_number_portability">mobile number portability</a>.
    *
    * @param number  the phone number for which we want to get a carrier name
    * @param languageCode  the language code in which the name should be written
