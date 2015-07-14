@@ -99,6 +99,7 @@
 212679|Méditel
 212680|Inwi
 212681|Inwi
+212687|Inwi
 212690|Inwi
 212691|Inwi
 212692|GlobalStar

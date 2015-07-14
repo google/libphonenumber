@@ -1,3 +1,15 @@
+Jul 14, 2015: libphonenumber-7.0.8
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AC, BS, BW, CL, DE, DZ, HN, HR, IL, IN, IT, JO, KY, MA, NP, PL, SH, SL, TM,
+   UA, VA
+ - Updated short number metadata for region code(s): HR
+ - Updated geocoding data for country calling code(s): 56 (en, es)
+ - Updated carrier data for country calling code(s):
+   49 (en), 212 (en), 232 (en), 267 (en), 380 (en), 385 (en), 962 (en),
+   972 (en), 977 (en), 993 (en)
+- Updated / refreshed time zone meta data.
+
 Jun 24, 2015: libphonenumber-7.0.7
 Metadata changes:
  - Updated phone metadata for region code(s):

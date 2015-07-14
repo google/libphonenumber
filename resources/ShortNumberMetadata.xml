@@ -4024,29 +4024,44 @@
     <!-- http://en.wikipedia.org/wiki/%2B385 -->
     <territory id="HR">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{1,2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
+        <nationalNumberPattern>[19]\d{1,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{2,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          1(?:
-            12|
-            92
+         1(?:
+            1[28]|
+            16\d{3}|
+            987|
+            9[2-5]
           )|
           9[34]
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
+        <!-- 93 (fire dep) and 94 (ambulance) don't appear in the latest ITU
+             document, but still on various websites.
+             Need to verify that they are no longer valid before removing. -->
         <nationalNumberPattern>
           1(?:
             12|
-            92
+            9[2-4]
           )|
           9[34]
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+        19(?:
+          5|
+          87
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>195</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Haiti -->

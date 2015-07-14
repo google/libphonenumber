@@ -17,6 +17,7 @@
 # Extra 2 added for Santiago to stop it clashing with other prefixes.
 
 5622|Santiago, Región Metropolitana
+56232|Santiago, Región Metropolitana
 5632|Valparaíso
 5633|Quillota, Valparaíso
 5634|San Felipe, Valparaíso
