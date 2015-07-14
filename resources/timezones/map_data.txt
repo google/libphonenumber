@@ -15,22 +15,6 @@
 # Generated from:
 # Internal statistics data (2015-05-05).
 
-# TODO: Solve these current issues:
-#   -Australian prefix 618 has almost as many establishments from
-#    Australia/Adelaide as from Australia/Perth. This is due to the short
-#    length of the phone prefix. Thus, a custom config should be used to
-#    get a longer prefix.
-#   -Add prefixes for America/Noronha and Pacific/Easter.
-
-# List of deleted prefixes from the original data:
-#   -Prefixes 9761, 9762, since they just indicate the carrier.
-#   -Prefix 9765, since it is just a wireless local loop prefix.
-#   -Prefix 5905. It is the only prefix for 590 country code, which has three
-#    timezones (America/Guadeloupe, America/Halifax and America/Marigot),
-#    whereas 5905 has only one (America/Guadeloupe).
-#    TODO: Investigate where the time zones America/Halifax and America/Marigot
-#          should be used.
-
 1|America/Anguilla&America/Antigua&America/Barbados&America/Cayman&America/Chicago&America/Denver&America/Dominica&America/Edmonton&America/Grand_Turk&America/Grenada&America/Halifax&America/Jamaica&America/Juneau&America/Los_Angeles&America/Lower_Princes&America/Montserrat&America/Nassau&America/New_York&America/Port_of_Spain&America/Puerto_Rico&America/St_Johns&America/St_Kitts&America/St_Lucia&America/St_Thomas&America/St_Vincent&America/Toronto&America/Tortola&America/Vancouver&America/Winnipeg&Atlantic/Bermuda&Pacific/Guam&Pacific/Honolulu&Pacific/Pago_Pago&Pacific/Saipan
 1201|America/New_York
 1202|America/New_York
