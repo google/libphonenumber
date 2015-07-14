@@ -37,7 +37,7 @@ public class PrefixTimeZonesMap implements Externalizable {
   private static final String RAW_STRING_TIMEZONES_SEPARATOR = "&";
 
   /**
-    * Creates a {@link PrefixTimeZoneMap} initialized with {@code sortedPrefixTimeZoneMap}.  Note
+    * Creates a {@link PrefixTimeZonesMap} initialized with {@code sortedPrefixTimeZoneMap}.  Note
     * that the underlying implementation of this method is expensive thus should not be called by
     * time-critical applications.
     *
