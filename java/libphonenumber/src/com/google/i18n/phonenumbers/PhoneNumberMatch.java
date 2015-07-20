@@ -33,7 +33,7 @@ import java.util.Arrays;
 
  * <pre>
  * CharSequence text = "Call me at +1 425 882-8080 for details.";
- * RegionCode country = RegionCode.US;
+ * String country = "US";
  * PhoneNumberUtil util = PhoneNumberUtil.getInstance();
  *
  * // Find the first phone number match:
