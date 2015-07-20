@@ -18786,7 +18786,7 @@
             8[1-79]|
             9[145]
           )\d{7}|
-          [12]2\d{5}|
+          [12]2\d{5}
         </nationalNumberPattern>
         <exampleNumber>123456789</exampleNumber>
       </fixedLine>
