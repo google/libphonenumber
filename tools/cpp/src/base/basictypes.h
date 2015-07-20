@@ -246,7 +246,7 @@ struct CompileAssert {
 // is important for some other reason.)
 // Use like:
 //   int x ALLOW_UNUSED = ...;
-#if defined(COMPILER_GCC)
+#if defined(__GNUC__)
 #define ALLOW_UNUSED __attribute__((unused))
 #else
 #define ALLOW_UNUSED
