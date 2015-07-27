@@ -25,7 +25,7 @@ public class MultiFileMetadataSourceImplTest extends TestMetadataTestCase  {
 
   public MultiFileMetadataSourceImplTest() {
     multiFileMetadataSource = new MultiFileMetadataSourceImpl(TEST_META_DATA_FILE_PREFIX,
-          PhoneNumberUtil.DEFAULT_METADATA_LOADER);
+        PhoneNumberUtil.DEFAULT_METADATA_LOADER);
   }
 
   public void testMissingMetadataFileThrowsRuntimeException() {
@@ -40,8 +40,9 @@ public class MultiFileMetadataSourceImplTest extends TestMetadataTestCase  {
       assertTrue("Unexpected error: " + e, e.toString().contains("no/such/file_XX"));
     }
     try {
-      multiFileMetadataSource.loadMetadataFromFile("no/such/file", PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY,
-          123, PhoneNumberUtil.DEFAULT_METADATA_LOADER);
+      multiFileMetadataSource.loadMetadataFromFile("no/such/file",
+          PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY, 123,
+          PhoneNumberUtil.DEFAULT_METADATA_LOADER);
       fail("expected exception");
     } catch (RuntimeException e) {
       assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file_123"));
