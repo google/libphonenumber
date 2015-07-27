@@ -27,7 +27,7 @@ import junit.framework.TestCase;
  * @author Shaopeng Jia
  */
 public class TestMetadataTestCase extends TestCase {
-  private static final String TEST_META_DATA_FILE_PREFIX =
+  protected static final String TEST_META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
   protected final PhoneNumberUtil phoneUtil;
@@ -38,7 +38,8 @@ public class TestMetadataTestCase extends TestCase {
 
   static PhoneNumberUtil initializePhoneUtilForTesting() {
     PhoneNumberUtil phoneUtil = new PhoneNumberUtil(
-        TEST_META_DATA_FILE_PREFIX, PhoneNumberUtil.DEFAULT_METADATA_LOADER,
+        new MultiFileMetadataSourceImpl(TEST_META_DATA_FILE_PREFIX,
+            PhoneNumberUtil.DEFAULT_METADATA_LOADER),
         CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
     PhoneNumberUtil.setInstance(phoneUtil);
     return phoneUtil;

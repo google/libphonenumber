@@ -18,15 +18,11 @@ package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -77,9 +73,6 @@ public class PhoneNumberUtil {
   // We don't allow input strings for parsing to be longer than 250 chars. This prevents malicious
   // input from overflowing the regular-expression engine.
   private static final int MAX_INPUT_STRING_LENGTH = 250;
-
-  private static final String META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
 
   // Region-code for the unknown region.
   private static final String UNKNOWN_REGION = "ZZ";
@@ -535,6 +528,9 @@ public class PhoneNumberUtil {
     abstract boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util);
   }
 
+  // A source of metadata for different regions.
+  private final MetadataSource metadataSource;
+
   // A mapping from a country calling code to the region codes which denote the region represented
   // by that country calling code. In the case of multiple regions sharing a calling code, such as
   // the NANPA regions, the one indicated with "isMainCountryForCode" in the metadata should be
@@ -545,20 +541,6 @@ public class PhoneNumberUtil {
   // There are roughly 26 regions.
   // We set the initial capacity of the HashSet to 35 to offer a load factor of roughly 0.75.
   private final Set<String> nanpaRegions = new HashSet<String>(35);
-
-  // A mapping from a region code to the PhoneMetadata for that region.
-  // Note: Synchronization, though only needed for the Android version of the library, is used in
-  // all versions for consistency.
-  private final Map<String, PhoneMetadata> regionToMetadataMap =
-      Collections.synchronizedMap(new HashMap<String, PhoneMetadata>());
-
-  // A mapping from a country calling code for a non-geographical entity to the PhoneMetadata for
-  // that country calling code. Examples of the country calling codes include 800 (International
-  // Toll Free Service) and 808 (International Shared Cost Service).
-  // Note: Synchronization, though only needed for the Android version of the library, is used in
-  // all versions for consistency.
-  private final Map<Integer, PhoneMetadata> countryCodeToNonGeographicalMetadataMap =
-      Collections.synchronizedMap(new HashMap<Integer, PhoneMetadata>());
 
   // A cache for frequently used region-specific regular expressions.
   // The initial capacity is set to 100 as this seems to be an optimal value for Android, based on
@@ -574,19 +556,13 @@ public class PhoneNumberUtil {
   // currently contains < 12 elements so the default capacity of 16 (load factor=0.75) is fine.
   private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<Integer>();
 
-  // The prefix of the metadata files from which region data is loaded.
-  private final String currentFilePrefix;
-  // The metadata loader used to inject alternative metadata sources.
-  private final MetadataLoader metadataLoader;
-
   /**
    * This class implements a singleton, the constructor is only visible to facilitate testing.
    */
   // @VisibleForTesting
-  PhoneNumberUtil(String filePrefix, MetadataLoader metadataLoader,
+  PhoneNumberUtil(MetadataSource metadataSource,
       Map<Integer, List<String>> countryCallingCodeToRegionCodeMap) {
-    this.currentFilePrefix = filePrefix;
-    this.metadataLoader = metadataLoader;
+    this.metadataSource = metadataSource;
     this.countryCallingCodeToRegionCodeMap = countryCallingCodeToRegionCodeMap;
     for (Map.Entry<Integer, List<String>> entry : countryCallingCodeToRegionCodeMap.entrySet()) {
       List<String> regionCodes = entry.getValue();
@@ -608,65 +584,6 @@ public class PhoneNumberUtil {
           "(country calling code was mapped to the non-geo entity as well as specific region(s))");
     }
     nanpaRegions.addAll(countryCallingCodeToRegionCodeMap.get(NANPA_COUNTRY_CODE));
-  }
-
-  // @VisibleForTesting
-  void loadMetadataFromFile(String filePrefix, String regionCode, int countryCallingCode,
-      MetadataLoader metadataLoader) {
-    boolean isNonGeoRegion = REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
-    String fileName = filePrefix + "_" +
-        (isNonGeoRegion ? String.valueOf(countryCallingCode) : regionCode);
-    InputStream source = metadataLoader.loadMetadata(fileName);
-    if (source == null) {
-      logger.log(Level.SEVERE, "missing metadata: " + fileName);
-      throw new IllegalStateException("missing metadata: " + fileName);
-    }
-    ObjectInputStream in = null;
-    try {
-      in = new ObjectInputStream(source);
-      PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
-      List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
-      if (metadataList.isEmpty()) {
-        logger.log(Level.SEVERE, "empty metadata: " + fileName);
-        throw new IllegalStateException("empty metadata: " + fileName);
-      }
-      if (metadataList.size() > 1) {
-        logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
-      }
-      PhoneMetadata metadata = metadataList.get(0);
-      if (isNonGeoRegion) {
-        countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
-      } else {
-        regionToMetadataMap.put(regionCode, metadata);
-      }
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
-      throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
-    }
-  }
-
-  /**
-   * Loads the metadata protocol buffer from the given stream and closes the stream afterwards. Any
-   * exceptions that occur while reading the stream are propagated (though exceptions that occur
-   * when the stream is closed will be ignored).
-   *
-   * @param source  the non-null stream from which metadata is to be read.
-   * @return        the loaded metadata protocol buffer.
-   */
-  private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
-    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-    try {
-      metadataCollection.readExternal(source);
-    } catch (IOException e) {
-      logger.log(Level.WARNING, "error reading input (ignored)", e);
-    } finally {
-      try {
-        source.close();
-      } catch (IOException e) {
-        logger.log(Level.WARNING, "error closing input stream (ignored)", e);
-      }
-    }
-    return metadataCollection;
   }
 
   /**
@@ -1022,22 +939,40 @@ public class PhoneNumberUtil {
   /**
    * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
    * formatting, parsing, or validation. The instance is loaded with all metadata by
+   * using the metadataSource specified.
+   *
+   * This method should only be used in the rare case in which you want to manage your own
+   * metadata loading. Calling this method multiple times is very expensive, as each time
+   * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
+   *
+   * @param metadataSource Customized metadata source. This should not be null.
+   * @return a PhoneNumberUtil instance
+   */
+  public static PhoneNumberUtil createInstance(MetadataSource metadataSource) {
+    if (metadataSource == null) {
+      throw new IllegalArgumentException("metadataSource could not be null.");
+    }
+    return new PhoneNumberUtil(metadataSource,
+        CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap());
+  }
+
+  /**
+   * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
+   * formatting, parsing, or validation. The instance is loaded with all metadata by
    * using the metadataLoader specified.
    *
    * This method should only be used in the rare case in which you want to manage your own
    * metadata loading. Calling this method multiple times is very expensive, as each time
    * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
    *
-   * @param metadataLoader Customized metadata loader. If null, default metadata loader will
-   *     be used. This should not be null.
+   * @param metadataLoader Customized metadata loader. This should not be null.
    * @return a PhoneNumberUtil instance
    */
   public static PhoneNumberUtil createInstance(MetadataLoader metadataLoader) {
     if (metadataLoader == null) {
       throw new IllegalArgumentException("metadataLoader could not be null.");
     }
-    return new PhoneNumberUtil(META_DATA_FILE_PREFIX, metadataLoader,
-        CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap());
+    return createInstance(new MultiFileMetadataSourceImpl(metadataLoader));
   }
 
   /**
@@ -2038,27 +1973,14 @@ public class PhoneNumberUtil {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    synchronized (regionToMetadataMap) {
-      if (!regionToMetadataMap.containsKey(regionCode)) {
-        // The regionCode here will be valid and won't be '001', so we don't need to worry about
-        // what to pass in for the country calling code.
-        loadMetadataFromFile(currentFilePrefix, regionCode, 0, metadataLoader);
-      }
-    }
-    return regionToMetadataMap.get(regionCode);
+    return metadataSource.getMetadataForRegion(regionCode);
   }
 
   PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
-    synchronized (countryCodeToNonGeographicalMetadataMap) {
-      if (!countryCallingCodeToRegionCodeMap.containsKey(countryCallingCode)) {
-        return null;
-      }
-      if (!countryCodeToNonGeographicalMetadataMap.containsKey(countryCallingCode)) {
-        loadMetadataFromFile(
-            currentFilePrefix, REGION_CODE_FOR_NON_GEO_ENTITY, countryCallingCode, metadataLoader);
-      }
+    if (!countryCallingCodeToRegionCodeMap.containsKey(countryCallingCode)) {
+      return null;
     }
-    return countryCodeToNonGeographicalMetadataMap.get(countryCallingCode);
+    return metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
   }
 
   boolean isNumberPossibleForDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
