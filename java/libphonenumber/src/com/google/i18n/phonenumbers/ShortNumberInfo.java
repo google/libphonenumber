@@ -223,7 +223,7 @@ public class ShortNumberInfo {
    * Tests whether a short number matches a valid pattern. If a country calling code is shared by
    * multiple regions, this returns true if it's valid in any of them. Note that this doesn't verify
    * the number is actually in use, which is impossible to tell by just looking at the number
-   * itself. See {@link #isValidShortNumberForRegion(PhoneNumber, String) isValidShortNumberForRegion} for details.
+   * itself. See {@link #isValidShortNumberForRegion(PhoneNumber, String)} for details.
    *
    * @param number the short number for which we want to test the validity
    * @return whether the short number matches a valid pattern
@@ -242,7 +242,7 @@ public class ShortNumberInfo {
   /**
    * Gets the expected cost category of a short number when dialled from a region (however, nothing
    * is implied about its validity). If it is important that the number is valid, then its validity
-   * must first be checked using isValidShortNumberForRegion. Note that emergency numbers
+   * must first be checked using {@link isValidShortNumberForRegion}. Note that emergency numbers
    * are always considered toll-free. Example usage:
    * <pre>{@code
    * ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();

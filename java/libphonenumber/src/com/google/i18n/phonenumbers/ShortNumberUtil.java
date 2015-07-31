@@ -44,7 +44,6 @@ import java.util.Set;
 
   /**
    * Convenience method to get a list of what regions the library has metadata for.
-   * @return list of what regions the library has metadata for
    */
   public Set<String> getSupportedRegions() {
     return ShortNumberInfo.getInstance().getSupportedRegions();
