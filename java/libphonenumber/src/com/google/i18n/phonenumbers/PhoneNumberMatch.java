@@ -78,22 +78,22 @@ public final class PhoneNumberMatch {
     this.number = number;
   }
 
-  /** Returns the phone number matched by the receiver. */
+  /** @return  the phone number matched by the receiver. */
   public PhoneNumber number() {
     return number;
   }
 
-  /** Returns the start index of the matched phone number within the searched text. */
+  /** @return  the start index of the matched phone number within the searched text. */
   public int start() {
     return start;
   }
 
-  /** Returns the exclusive end index of the matched phone number within the searched text. */
+  /** @return  the exclusive end index of the matched phone number within the searched text. */
   public int end() {
     return start + rawString.length();
   }
 
-  /** Returns the raw string matched as a phone number in the searched text. */
+  /** @return the raw string matched as a phone number in the searched text. */
   public String rawString() {
     return rawString;
   }

@@ -49,7 +49,7 @@ public class NumberParseException extends Exception {
   }
 
   /**
-   * Returns the error type of the exception that has been thrown.
+   * @return the error type of the exception that has been thrown.
    */
   public ErrorType getErrorType() {
     return errorType;

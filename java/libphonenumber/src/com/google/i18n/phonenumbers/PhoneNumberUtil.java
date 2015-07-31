@@ -459,7 +459,7 @@ public class PhoneNumberUtil {
       }
     },
     /**
-     * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+     * Phone numbers accepted are {@linkplain #isValidNumber(PhoneNumber) valid} and
      * are grouped in a possible way for this locale. For example, a US number written as
      * "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
      * "650 253 0000", "650 2530000" or "6502530000" are.
@@ -716,6 +716,9 @@ public class PhoneNumberUtil {
   /**
    * Converts all alpha characters in a number to their respective digits on a keypad, but retains
    * existing formatting.
+   *
+   * @param number  a string of characters representing a phone number
+   * @return        number without alpha characters
    */
   public static String convertAlphaCharactersInNumber(String number) {
     return normalizeHelper(number, ALPHA_PHONE_MAPPINGS, false);
@@ -736,7 +739,7 @@ public class PhoneNumberUtil {
    * String subscriberNumber;
    *
    * int areaCodeLength = phoneUtil.getLengthOfGeographicalAreaCode(number);
-   * if (areaCodeLength > 0) {
+   * if (areaCodeLength &gt; 0) {
    *   areaCode = nationalSignificantNumber.substring(0, areaCodeLength);
    *   subscriberNumber = nationalSignificantNumber.substring(areaCodeLength);
    * } else {
@@ -796,7 +799,7 @@ public class PhoneNumberUtil {
    * String subscriberNumber;
    *
    * int nationalDestinationCodeLength = phoneUtil.getLengthOfNationalDestinationCode(number);
-   * if (nationalDestinationCodeLength > 0) {
+   * if (nationalDestinationCodeLength &gt; 0) {
    *   nationalDestinationCode = nationalSignificantNumber.substring(0,
    *       nationalDestinationCodeLength);
    *   subscriberNumber = nationalSignificantNumber.substring(nationalDestinationCodeLength);
@@ -906,6 +909,7 @@ public class PhoneNumberUtil {
 
   /**
    * Convenience method to get a list of what regions the library has metadata for.
+   * @return set of supported regions
    */
   public Set<String> getSupportedRegions() {
     return Collections.unmodifiableSet(supportedRegions);
@@ -914,6 +918,7 @@ public class PhoneNumberUtil {
   /**
    * Convenience method to get a list of what global network calling codes the library has metadata
    * for.
+   * @return set of country codes fof nongeografical regions
    */
   public Set<Integer> getSupportedGlobalNetworkCallingCodes() {
     return Collections.unmodifiableSet(countryCodesForNonGeographicalRegion);
@@ -1050,6 +1055,8 @@ public class PhoneNumberUtil {
   /**
    * Same as {@link #format(PhoneNumber, PhoneNumberFormat)}, but accepts a mutable StringBuilder as
    * a parameter to decrease object creation when invoked many times.
+   * @param number         the phone number to be formatted
+   * @param numberFormat   the format the phone number should be formatted into
    */
   public void format(PhoneNumber number, PhoneNumberFormat numberFormat,
                      StringBuilder formattedNumber) {
