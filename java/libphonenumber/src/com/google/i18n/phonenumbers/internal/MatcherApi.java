@@ -24,14 +24,19 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
  */
 public interface MatcherApi {
   /**
-   * Returns whether the given national number (a string containing only decimal digits) matches
+   * @param nationalNumber string representing national number
+   * @param numberDesc     phone number description
+   * @param allowPrefixMatch if prefix match is allowed
+   * @return whether the given national number (a string containing only decimal digits) matches
    * the national number pattern defined in the given {@code PhoneNumberDesc} message.
    */
   boolean matchesNationalNumber(String nationalNumber, PhoneNumberDesc numberDesc,
       boolean allowPrefixMatch);
 
   /**
-   * Returns whether the given national number (a string containing only decimal digits) matches
+   * @param nationalNumber string representing national number
+   * @param numberDesc     phone number description
+   * @return whether the given national number (a string containing only decimal digits) matches
    * the possible number pattern defined in the given {@code PhoneNumberDesc} message.
    */
   boolean matchesPossibleNumber(String nationalNumber, PhoneNumberDesc numberDesc);

@@ -304,6 +304,11 @@ public class AsYouTypeFormatter {
    * that it can be retrieved later by using {@link #getRememberedPosition}. The remembered
    * position will be automatically adjusted if additional formatting characters are later
    * inserted/removed in front of {@code nextChar}.
+   * @param nextChar  the most recently entered digit of a phone number. Formatting characters are
+   *     allowed, but as soon as they are encountered this method formats the number as entered and
+   *     not "as you type" anymore. Full width digits and Arabic-indic digits are allowed, and will
+   *     be shown as they are.
+   * @return  the partially formatted phone number.
    */
   public String inputDigitAndRememberPosition(char nextChar) {
     currentOutput = inputDigitWithOptionToRememberPosition(nextChar, true);
