@@ -1,3 +1,9 @@
+Aug 03, 2015: libphonenumber-7.0.9
+Metadata changes:
+ - Updated phone metadata for region code(s): AR, IN, MX, PL, SZ, YT, ZW
+ - Updated short number metadata for region code(s): MX, ZW
+ - Updated carrier data for country calling code(s): 91 (en), 263 (en)
+
 Jul 14, 2015: libphonenumber-7.0.8
 Metadata changes:
  - Updated phone metadata for region code(s):
