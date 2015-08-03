@@ -6105,10 +6105,12 @@
       <shortCode>
         <nationalNumberPattern>
           0(?:
-            [24589]0|
-            [37][01]|
-            6[0568]|
-            8[09]
+            [249]0|
+            3[01]|
+            5[015]|
+            6[01568]|
+            7[0-578]|
+            8[089]
           )|
           53053|
           7766|
@@ -6127,7 +6129,7 @@
         <exampleNumber>7766</exampleNumber>
       </premiumRate>
       <carrierServices>
-        <nationalNumberPattern>050</nationalNumberPattern>
+        <nationalNumberPattern>05[015]</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>050</exampleNumber>
       </carrierServices>
@@ -6150,8 +6152,12 @@
         <exampleNumber>066</exampleNumber>
       </emergency>
       <expandedEmergency>
-        <!-- Found information online that 089 is a tip line for anonymous crime reporting. -->
-        <nationalNumberPattern>089</nationalNumberPattern>
+        <nationalNumberPattern>
+         0(?:
+           61|
+           8[89]
+         )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
       </expandedEmergency>
     </territory>
@@ -8741,8 +8747,8 @@
       <shortCode>
         <nationalNumberPattern>
           (?:
-            112|
-            99[3459]
+            11[249]|
+            99[3-59]
           )
         </nationalNumberPattern>
         <exampleNumber>999</exampleNumber>
@@ -8750,8 +8756,8 @@
       <emergency>
         <nationalNumberPattern>
           (?:
-            112|
-            99[3459]
+            11[24]|
+            99[3-59]
           )
         </nationalNumberPattern>
         <exampleNumber>999</exampleNumber>
