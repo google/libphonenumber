@@ -12962,7 +12962,7 @@
           <leadingDigits>[24-6]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{6,7})">
+        <numberFormat pattern="(\d{3})(\d{6})">
           <leadingDigits>7</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
