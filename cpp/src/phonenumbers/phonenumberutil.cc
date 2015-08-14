@@ -2741,6 +2741,10 @@ PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatchWithOneString(
       PhoneNumber second_number_with_first_number_region;
       Parse(second_number, first_number_region,
             &second_number_with_first_number_region);
+
+      if (!IsPossibleNumber(second_number_with_first_number_region)) {
+          return NO_MATCH;
+      }
       MatchType match = IsNumberMatch(first_number,
                                       second_number_with_first_number_region);
       if (match == EXACT_MATCH) {
