@@ -216,6 +216,9 @@ class ShortNumberInfo {
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegion(
       const string& region_code) const;
 
+  bool RegionDialingFromMatchesNumber(const PhoneNumber& number,
+      const string& region_dialing_from) const;
+
   // Helper method to get the region code for a given phone number, from a list
   // of possible region codes. If the list contains more than one region, the
   // first region for which the number is valid is returned.

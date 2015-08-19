@@ -101,6 +101,16 @@ public class ShortNumberInfo {
   }
 
   /**
+   * Helper method to check that the country calling code of the number matches the region it's
+   * being dialed from.
+   */
+  private boolean regionDialingFromMatchesNumber(PhoneNumber number,
+      String regionDialingFrom) {
+    List<String> regionCodes = getRegionCodesForCountryCode(number.getCountryCode());
+    return regionCodes.contains(regionDialingFrom);
+  }
+
+  /**
    * Check whether a short number is a possible number when dialled from a region, given the number
    * in the form of a string, and the region where the number is dialed from. This provides a more
    * lenient check than {@link #isValidShortNumberForRegion}.
@@ -133,6 +143,9 @@ public class ShortNumberInfo {
    * @return whether the number is a possible short number
    */
   public boolean isPossibleShortNumberForRegion(PhoneNumber number, String regionDialingFrom) {
+    if (!regionDialingFromMatchesNumber(number, regionDialingFrom)) {
+      return false;
+    }
     PhoneMetadata phoneMetadata =
         MetadataManager.getShortNumberMetadataForRegion(regionDialingFrom);
     if (phoneMetadata == null) {
@@ -205,6 +218,9 @@ public class ShortNumberInfo {
    * @return whether the short number matches a valid pattern
    */
   public boolean isValidShortNumberForRegion(PhoneNumber number, String regionDialingFrom) {
+    if (!regionDialingFromMatchesNumber(number, regionDialingFrom)) {
+      return false;
+    }
     PhoneMetadata phoneMetadata =
         MetadataManager.getShortNumberMetadataForRegion(regionDialingFrom);
     if (phoneMetadata == null) {
@@ -317,6 +333,9 @@ public class ShortNumberInfo {
    *     category.
    */
   public ShortNumberCost getExpectedCostForRegion(PhoneNumber number, String regionDialingFrom) {
+    if (!regionDialingFromMatchesNumber(number, regionDialingFrom)) {
+      return ShortNumberCost.UNKNOWN_COST;
+    }
     // Note that regionDialingFrom may be null, in which case phoneMetadata will also be null.
     PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(
         regionDialingFrom);
