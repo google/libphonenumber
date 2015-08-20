@@ -780,6 +780,10 @@
       </premiumRate>
     </territory>
 
+    <!-- Sweden -->
+    <territory id="SE" countryCode="46" internationalPrefix="00">
+    </territory>
+
     <!-- Singapore -->
     <!-- http://www.ida.gov.sg/policies%20and%20regulation/20060508120124.aspx -->
     <!-- For testing the AYTF with long NDDs, "777777" is added as a possible national prefix. -->

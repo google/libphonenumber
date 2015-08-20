@@ -466,5 +466,18 @@ TEST_F(ShortNumberInfoTest, OverlappingNANPANumber) {
           ParseNumberForTesting("211", RegionCode::CA()), RegionCode::CA()));
 }
 
+TEST_F(ShortNumberInfoTest, CountryCallingCodeIsNotIgnored) {
+  // +46 is the country calling code for Sweden (SE), and 40404 is a valid short
+  // number in the US.
+  EXPECT_FALSE(short_info_.IsPossibleShortNumberForRegion(
+      ParseNumberForTesting("+4640404", RegionCode::SE()), RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
+      ParseNumberForTesting("+4640404", RegionCode::SE()), RegionCode::US()));
+  EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
+            short_info_.GetExpectedCostForRegion(
+                ParseNumberForTesting("+4640404", RegionCode::SE()),
+                RegionCode::US()));
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
