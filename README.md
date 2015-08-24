@@ -24,6 +24,10 @@ To include the code in your application, either integrate with Maven or download
 
 http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
 
+# Contributions
+ If you are considering to contribute to the project, please read the instructions [here]
+ (https://github.com/googlei18n/libphonenumber/wiki/ContributeToTheProject) first.
+
 # Quick Examples
 Let's say you have a string representing a phone number from Switzerland. This is how you parse/normalize it into a ` PhoneNumber ` object:
 
