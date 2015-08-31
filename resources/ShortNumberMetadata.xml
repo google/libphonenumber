@@ -3974,7 +3974,7 @@
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          112|
+          11[0-9]|
           99[29]
         </nationalNumberPattern>
         <exampleNumber>999</exampleNumber>
@@ -4957,17 +4957,48 @@
     <!-- http://en.wikipedia.org/wiki/%2B82 -->
     <territory id="KR">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>11[29]</nationalNumberPattern>
+        <nationalNumberPattern>
+         1(?:
+           0[01]|
+           1[29]|
+           3(?:
+            39|
+            9[18]
+           )
+          )
+        </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
         <nationalNumberPattern>11[29]</nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <!-- Added carrierServices and expandedEmergency shortcodes according to non-itu update and wiki page.
+            https://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea -->
+      <carrierSpecific>
+        <nationalNumberPattern>10[01]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>100</exampleNumber>
+      </carrierSpecific>
+      <carrierServices>
+        <nationalNumberPattern>10[01]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>100</exampleNumber>
+      </carrierServices>
+      <expandedEmergency>
+        <nationalNumberPattern>
+         13(?:
+            39|
+            9[18]
+         )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1339</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Kuwait -->

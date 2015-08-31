@@ -13,3 +13,4 @@
 # limitations under the License.
 
 2356|Airtel
+2359|Millicom

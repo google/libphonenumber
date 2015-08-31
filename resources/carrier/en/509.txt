@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2015 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-4176|Sunrise
-4177|Tele4u
-4178|Salt
-4179|Swisscom
+509980|Hainet
+509981|Hainet
+509982|Hainet
+509983|Hainet
+509985|Hainet
+509995|Hainet
+509996|Hainet
+509997|Hainet
+509998|Hainet
+509999|Hainet
