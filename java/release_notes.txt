@@ -1,3 +1,13 @@
+Aug 31, 2015: libphonenumber-7.0.10
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BY, CR, DZ, EH, ES, HK, HT, IN, JO, MN, MU, ST, TD, TT, ZW
+ - Updated short number metadata for region code(s): HK, KR
+ - Updated geocoding data for country calling code(s): 263 (en)
+ - New carrier data for country calling code(s): 509 (en), 976 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 61 (en), 91 (en), 230 (en), 235 (en), 239 (en)
+
 Aug 03, 2015: libphonenumber-7.0.9
 Metadata changes:
  - Updated phone metadata for region code(s): AR, IN, MX, PL, SZ, YT, ZW
