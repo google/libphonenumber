@@ -28,6 +28,20 @@
         <targetPath>com/google/i18n/phonenumbers/data</targetPath>
       </testResource>
     </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>**/SingleFileMetadataSourceImpl.class</exclude>
+            <exclude>**/SingleFileMetadataSourceImpl.java</exclude>
+            <exclude>**/PhoneNumberMetadataProtoFile</exclude>
+            <exclude>**/PhoneNumberMetadataProtoForTestingFile</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
 </project>

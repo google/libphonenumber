@@ -45,6 +45,20 @@
     </exec>
   </target>
 
+  <target name="build-phone-metadata-to-one-file">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadata.xml"/>
+      <arg value="--output-file=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/PhoneNumberMetadataProtoFile"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
   <target name="build-short-metadata">
     <exec executable="java">
       <arg value="-jar" />
@@ -67,6 +81,20 @@
       <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
       <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
       <arg value="--data-prefix=data/PhoneNumberMetadataProtoForTesting"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
+  <target name="build-test-metadata-to-one-file">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
+      <arg value="--output-file=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/PhoneNumberMetadataProtoForTestingFile"/>
       <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
       <arg value="--copyright=2010"/>
       <arg value="--lite-build=false"/>

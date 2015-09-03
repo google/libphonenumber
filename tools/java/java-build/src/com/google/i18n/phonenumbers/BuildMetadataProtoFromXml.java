@@ -50,6 +50,7 @@ public class BuildMetadataProtoFromXml extends Command {
   // Command line parameter names.
   private static final String INPUT_FILE = "input-file";
   private static final String OUTPUT_DIR = "output-dir";
+  private static final String OUTPUT_FILE = "output-file";
   private static final String DATA_PREFIX = "data-prefix";
   private static final String MAPPING_CLASS = "mapping-class";
   private static final String COPYRIGHT = "copyright";
@@ -60,6 +61,8 @@ public class BuildMetadataProtoFromXml extends Command {
       "\n" +
       "  --" + INPUT_FILE + "=PATH     Read phone number metadata in XML format from PATH.\n" +
       "  --" + OUTPUT_DIR + "=PATH     Use PATH as the root directory for output files.\n" +
+      "  --" + OUTPUT_FILE + "=PATH    Writes to PATH.\n" +
+      "  Only 1 of " + OUTPUT_DIR + " or " + OUTPUT_FILE + " must be specified.\n" +
       "  --" + DATA_PREFIX +
           "=PATH    Use PATH (relative to " + OUTPUT_DIR + ") as the basename when\n" +
       "                        writing phone number metadata (one file per region) in\n" +
@@ -76,6 +79,7 @@ public class BuildMetadataProtoFromXml extends Command {
       CLASS_NAME + " \\\n" +
       "  --" + INPUT_FILE + "=resources/PhoneNumberMetadata.xml \\\n" +
       "  --" + OUTPUT_DIR + "=java/libphonenumber/src/com/google/i18n/phonenumbers \\\n" +
+      "  --" + OUTPUT_FILE + "=java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberMetadataProto \\\n" +
       "  --" + DATA_PREFIX + "=data/PhoneNumberMetadataProto \\\n" +
       "  --" + MAPPING_CLASS + "=CountryCodeToRegionCodeMap \\\n" +
       "  --" + COPYRIGHT + "=2010 \\\n" +
@@ -98,6 +102,7 @@ public class BuildMetadataProtoFromXml extends Command {
 
     String inputFile = null;
     String outputDir = null;
+    String outputFile = null;
     String dataPrefix = null;
     String mappingClass = null;
     String copyright = null;
@@ -116,6 +121,8 @@ public class BuildMetadataProtoFromXml extends Command {
         inputFile = value;
       } else if (OUTPUT_DIR.equals(key)) {
         outputDir = value;
+      } else if (OUTPUT_FILE.equals(key)) {
+        outputFile = value;
       } else if (DATA_PREFIX.equals(key)) {
         dataPrefix = value;
       } else if (MAPPING_CLASS.equals(key)) {
@@ -133,7 +140,7 @@ public class BuildMetadataProtoFromXml extends Command {
     }
 
     if (inputFile == null ||
-        outputDir == null ||
+        ((outputDir == null) == (outputFile == null)) ||
         dataPrefix == null ||
         mappingClass == null ||
         copyright == null) {
@@ -141,24 +148,33 @@ public class BuildMetadataProtoFromXml extends Command {
       return false;
     }
 
-    String filePrefix = new File(outputDir, dataPrefix).getPath();
-
     try {
       PhoneMetadataCollection metadataCollection =
           BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
 
-      for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
-        String regionCode = metadata.getId();
-        // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
-        // country calling codes instead of the region code to form the file name.
-        if (regionCode.equals("001") || regionCode.isEmpty()) {
-          regionCode = Integer.toString(metadata.getCountryCode());
+      if (outputDir != null) {
+        String filePrefix = new File(outputDir, dataPrefix).getPath();
+        for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
+          String regionCode = metadata.getId();
+          // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
+          // country calling codes instead of the region code to form the file name.
+          if (regionCode.equals("001") || regionCode.isEmpty()) {
+            regionCode = Integer.toString(metadata.getCountryCode());
+          }
+          PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
+          outMetadataCollection.addMetadata(metadata);
+          FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
+          ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
+          outMetadataCollection.writeExternal(out);
+          out.close();
         }
-        PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
-        outMetadataCollection.addMetadata(metadata);
-        FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
-        ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
-        outMetadataCollection.writeExternal(out);
+      }
+
+      if (outputFile != null) {
+        String fileName = new File(outputFile, dataPrefix).getPath();
+        FileOutputStream output = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(output);
+        metadataCollection.writeExternal(out);
         out.close();
       }
 
