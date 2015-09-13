@@ -14499,7 +14499,8 @@
         <nationalNumberPattern>
           2\d{7}|
           [37-9]\d{8}|
-          [45]\d{6}
+          4\d{6}|
+          5\d{8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
       </generalDesc>
@@ -14516,7 +14517,7 @@
           (?:
             330\d|
             4[67]|
-            5\d|
+            555\d|
             77\d{2}|
             88\d{2}|
             994\d
