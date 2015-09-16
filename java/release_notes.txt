@@ -1,3 +1,15 @@
+Sep 16, 2015: libphonenumber-7.0.11
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   IN, KE, LR, MM, MR, NA, NE, PT, RO, SO, TZ, US
+ - New short number metadata for region code(s): CF, CG, ER, KP, NE, SO
+ - Updated short number metadata for region code(s): CD, NO, PT
+ - New geocoding data for country calling code(s): 1854 (en)
+ - Updated geocoding data for country calling code(s): 264 (en)
+ - Updated carrier data for country calling code(s):
+   40 (en), 91 (en), 95 (en), 227 (en), 231 (en), 252 (en), 254 (en), 255 (en),
+   509 (en)
+
 Aug 31, 2015: libphonenumber-7.0.10
 Metadata changes:
  - Updated phone metadata for region code(s):

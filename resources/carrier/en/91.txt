@@ -153,8 +153,34 @@
 917241|Idea
 917247|Idea
 917248|Idea
-917250|AirTel
-917259|AirTel
+9172490|Telewings
+9172491|Telewings
+9172492|Telewings
+9172493|Telewings
+9172494|Telewings
+9172495|Telewings
+9172496|Telewings
+9172498|Telewings
+9172499|Vodafone
+917250|Airtel
+917251|Vodafone
+917252|Vodafone
+917253|Vodafone
+917254|Idea
+917255|Idea
+917256|Idea
+9172570|Idea
+9172578|Airtel
+9172579|Airtel
+917258|Airtel
+917259|Airtel
+917260|Airtel
+9172610|Airtel
+9172618|Airtel
+9172619|Vodafone
+917262|Vodafone
+917263|Vodafone
+917264|Vodafone
 917265|Idea
 917266|Telewings
 917267|Telewings
@@ -1138,6 +1164,9 @@
 918521|AirTel
 918522|Telewings
 918523|Telewings
+9185239|Vodafone
+918524|Vodafone
+918525|Vodafone
 918526|Aircel
 918527|AirTel
 918528|Videocon
@@ -1413,6 +1442,10 @@
 918827|AirTel
 9188280|Airtel
 9188285|Idea
+9188286|Idea
+9188287|Idea
+9188288|Idea
+9188289|Idea
 918829|Tata Docomo
 918852|Tata Docomo
 918853|AirTel
@@ -1650,7 +1683,7 @@
 919103|Reliance
 919104|Telewings
 919105|Loop Mobile
-919106|Loop Mobile
+919106|Tata Docomo
 919107|Loop Mobile
 919108|Airtel
 919109|Loop Mobile
@@ -2058,7 +2091,7 @@
 919512|Vodafone
 919513|ETISALAT
 919514|ETISALAT
-919515|Etisalat DB(cheers)
+919515|Airtel
 919516|Etisalat DB(cheers)
 919517|ETISALAT
 919518|ETISALAT
