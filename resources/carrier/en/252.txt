@@ -14,7 +14,10 @@
 
 25224|Telesom
 25228|Nationlink
+25262|Somtel
 25263|Telesom
+25265|Somtel
+25266|Somtel
 25267|Nationlink
 25268|Nationlink
 25269|Nationlink

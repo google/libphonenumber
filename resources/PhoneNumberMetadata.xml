@@ -10372,10 +10372,8 @@
             7(?:
               0|
               2(?:
-                [02379]|
+                [0235679]|
                 [14][017-9]|
-                5[047-9]|
-                6[015-9]|
                 8[0-59]|
                 9[389]
               )|
@@ -10841,10 +10839,8 @@
             7(?:
               0\d{2}|
               2(?:
-                [02379]\d|
+                [0235679]\d|
                 [14][017-9]|
-                5[047-9]|
-                6[015-9]|
                 8[0-59]|
                 9[389]
               )|
@@ -12972,7 +12968,7 @@
           <leadingDigits>[24-6]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{6,7})">
+        <numberFormat pattern="(\d{3})(\d{6})">
           <leadingDigits>7</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -13016,7 +13012,8 @@
             [0-36]\d|
             5[0-6]|
             7[0-5]|
-            8[0-25-9]
+            8[0-25-9]|
+            9[0-4]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
@@ -14482,14 +14479,16 @@
           <leadingDigits>2</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="([79]\d{2})(\d{3})(\d{3})">
-          <leadingDigits>[79]</leadingDigits>
+        <!-- This format captures prefixes 2,5,7,9 of the new 9 digit numbering plan -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>[2579]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="([4-6])(\d{3})(\d{3})">
           <leadingDigits>[4-6]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+         <!-- This format captures prefixes 3,8 of the new 9 digit numbering plan -->
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <leadingDigits>[38]</leadingDigits>
           <format>$1 $2 $3</format>
@@ -14497,9 +14496,10 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          2\d{7}|
+          2\d{7,8}|
           [37-9]\d{8}|
-          [45]\d{6}
+          4\d{6}|
+          5\d{6,8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
       </generalDesc>
@@ -14512,6 +14512,10 @@
         <!-- West Africa Telecom seems to be a mobile company from their website. Adding Atlantic
              Wireless from the document, even though from online news reports it is not clear they
              are still operating. -->
+        <!-- This second regex supports the new 9 digit numbering plan that is available in parallel
+             with the old numbering plan. Prefixes 33202 and 3325 (WASSCOM and Atlantic Realty &
+             Investment Corporation) have been added here as there is no evidence of them being
+             not mobile numbers. They also exist in VOIP section.-->
         <nationalNumberPattern>
           (?:
             330\d|
@@ -14520,7 +14524,21 @@
             77\d{2}|
             88\d{2}|
             994\d
-          )\d{5}
+          )\d{5}|
+          (?:
+            20\d{3}|
+            33(?:
+                0\d{2}|
+                2(?:
+                   02|
+                   5\d
+                )
+            )|
+            555\d{2}|
+            77[0567]\d{2}|
+            88[068]\d{2}|
+            994\d{2}
+          )\d{4}
         </nationalNumberPattern>
         <exampleNumber>770123456</exampleNumber>
       </mobile>
@@ -15660,18 +15678,27 @@
             9(?:
               2[0-4]|
               [35-9]|
-              4[13789]
+              4[137-9]
             )
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(9)(4\d{4})(\d{4})">
-          <leadingDigits>94[0245]</leadingDigits>
+        <numberFormat pattern="(9)([34]\d{4})(\d{4})">
+          <leadingDigits>
+            9(?:
+              3[0-36]|
+              4[0-57-9]
+             )
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- Following majority of numbers found online. -->
         <numberFormat pattern="(9)(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>925</leadingDigits>
+          <leadingDigits>92[56]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(9)(\d{3})(\d{3})(\d{2})">
+          <leadingDigits>93</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -15768,20 +15795,22 @@
         <exampleNumber>1234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Added 99[089] (8 digits), 961 (9 digits), and 978, 979 & 997 (10 digits) from bug
+        <!-- Added 99[089] (8 digits), 961 (9 digits), 977, 978, 979, 996 and 997 (10 digits) from bug
              reports/numbers found online. -->
         <nationalNumberPattern>
           17[01]\d{4}|
           9(?:
             2(?:
               [0-4]|
-              5\d{2}
+              5\d{2}|
+              6[0-5]\d
             )|
-            3[136]\d|
+            3[0-36]\d|
             4(?:
               0[0-4]\d|
               [1379]\d|
-              [24][0-589]\d|
+              2\d{2}|
+              4[0-589]\d|
               5\d{2}|
               88
             )|
@@ -15789,12 +15818,12 @@
             61?\d|
             7(?:
               3\d|
-              [89]\d{2}
+              [789]\d{2}
             )|
             8\d|
             9(?:
               1\d|
-              7\d{2}|
+              [67]\d{2}|
               [089]
             )
           )\d{5}
@@ -16128,25 +16157,7 @@
            and only a small number of numbers were found online. At least 492 and 495 are valid.
            -->
       <mobile>
-        <nationalNumberPattern>
-          (?:
-            2(?:
-              2\d|
-              70
-            )|
-            3(?:
-              3\d|
-              6[1-36]|
-              7[1-3]
-            )|
-            4(?:
-              [49]\d|
-              6[0457-9]|
-              7[4-9]|
-              8[01346-8]
-            )
-          )\d{5}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[234][0-46-9]\d{6}</nationalNumberPattern>
         <exampleNumber>22123456</exampleNumber>
       </mobile>
       <tollFree>
@@ -16924,7 +16935,7 @@
           <leadingDigits>8[1235]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(6\d)(\d{2,3})(\d{4})">
+        <numberFormat pattern="(6\d)(\d{3})(\d{3,4})">
           <leadingDigits>6</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -16976,7 +16987,7 @@
                 [14-689]
               )|
               34|
-              6[29]|
+              6[289]|
               7[01]|
               81
             )|
@@ -17164,7 +17175,7 @@
              use the 89 and 97 prefixes, and Orange use 92. MOOV started using 95 in Jan 2014. -->
         <nationalNumberPattern>
           (?:
-            8[89]|
+            8[089]|
             9\d
           )\d{6}
         </nationalNumberPattern>
@@ -19176,8 +19187,7 @@
       <mobile>
         <nationalNumberPattern>
           9(?:
-            [136]\d{2}|
-            2[0-79]\d|
+            [1236]\d{2}|
             480
           )\d{5}
         </nationalNumberPattern>
@@ -19189,7 +19199,12 @@
       </tollFree>
       <premiumRate>
         <!-- Fixed maximum cost numbers: 761=0.60€, 761=1€, 762=2€. -->
+        <!-- Audio Text prefixes 601,607,608,646 and 648 added here -->
         <nationalNumberPattern>
+          6(?:
+             0[178]|
+             4[68]
+          )\d{6}|
           76(?:
             0[1-57]|
             1[2-47]|
@@ -19209,7 +19224,7 @@
         <exampleNumber>808123456</exampleNumber>
       </sharedCost>
       <personalNumber>
-        <nationalNumberPattern>884[128]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>884[0-4689]\d{5}</nationalNumberPattern>
         <exampleNumber>884123456</exampleNumber>
       </personalNumber>
       <voip>
@@ -19218,13 +19233,19 @@
       </voip>
       <uan>
         <nationalNumberPattern>
-          70(?:
-            7\d|
-            8[17]
+          7(?:
+            0(?:
+              7\d|
+              8[17]
+            )
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>707123456</exampleNumber>
       </uan>
+      <voicemail>
+        <nationalNumberPattern>600\d{6}</nationalNumberPattern>
+        <exampleNumber>600110000</exampleNumber>
+      </voicemail>
     </territory>
 
     <!-- Palau -->
@@ -19517,7 +19538,7 @@
         <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Romania</sourceUrl>
       </references>
       <availableFormats>
-        <numberFormat pattern="([237]\d)(\d{3})(\d{4})">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <leadingDigits>[23]1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -19577,8 +19598,7 @@
              open-source report and confirmation by existence of such numbers online. -->
         <nationalNumberPattern>
           7(?:
-            000|
-            [1-8]\d{2}|
+            [0-8]\d{2}|
             99\d
           )\d{5}
         </nationalNumberPattern>
@@ -21015,12 +21035,9 @@
           <leadingDigits>
             15|
             28|
-            6[1378]
+            6[1-35-9]|
+            799
           </leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
-        <numberFormat pattern="(69\d)(\d{6})">
-          <leadingDigits>69</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(90\d)(\d{3})(\d{3})">
@@ -21061,8 +21078,11 @@
               4\d|
               8
             )|
-            6[137-9]?\d{2}|
-            7[1-9]\d|
+            6[1-35-9]?\d{2}|
+            7(?:
+             [1-8]\d|
+             99?\d
+            )|
             907\d
           )\d{5}
         </nationalNumberPattern>
@@ -22398,12 +22418,12 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            6[1578]|
-            7[1-9]
+            6[25-8]|
+            7[13-9]
           )\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
-        <exampleNumber>612345678</exampleNumber>
+        <exampleNumber>621234567</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>80[08]\d{6}</nationalNumberPattern>
@@ -22821,7 +22841,7 @@
               28|
               3[0-25]|
               4[3578]|
-              5[06-9]|
+              5[046-9]|
               6[02-5]|
               7[028]
             )|
@@ -22913,7 +22933,7 @@
               28|
               3[0-25]|
               4[3578]|
-              5[06-9]|
+              5[046-9]|
               6[02-5]|
               7[028]
             )|
