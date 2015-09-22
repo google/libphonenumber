@@ -28,7 +28,7 @@ Build-Depends: cdbs,
                libprotobuf-java,
                libservlet2.5-java,
                libservlet2.5-java-doc
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Section: libs
 Homepage: https://github.com/googlei18n/libphonenumber/
 Vcs-Browser: https://github.com/googlei18n/libphonenumber/
