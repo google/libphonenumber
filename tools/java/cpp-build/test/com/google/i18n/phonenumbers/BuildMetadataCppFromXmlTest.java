@@ -30,6 +30,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 /**
@@ -78,7 +79,7 @@ public class BuildMetadataCppFromXmlTest {
   }
 
   @Test
-  public void generateMetadata() {
+  public void generateMetadata() throws UnsupportedEncodingException {
     String[] args = new String[] {
         IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "metadata" };
     // Most of the useful asserts are done in the mock class.
@@ -97,7 +98,7 @@ public class BuildMetadataCppFromXmlTest {
   }
 
   @Test
-  public void generateLiteMetadata() {
+  public void generateLiteMetadata() throws UnsupportedEncodingException {
     String[] args = new String[] {
         IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "lite_metadata" };
     // Most of the useful asserts are done in the mock class.
@@ -116,7 +117,7 @@ public class BuildMetadataCppFromXmlTest {
   }
 
   @Test
-  public void generateAlternateFormat() {
+  public void generateAlternateFormat() throws UnsupportedEncodingException {
     String[] args = new String[] {
         IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "alternate_format" };
     // Most of the useful asserts are done in the mock class.
@@ -175,11 +176,11 @@ public class BuildMetadataCppFromXmlTest {
       assertEquals(expectedVariant, variant);
       return sourceOut;
     }
-    String capturedHeaderFile() {
-      return new String(headerOut.toByteArray(), UTF_8);
+    String capturedHeaderFile() throws UnsupportedEncodingException {
+      return new String(headerOut.toByteArray(), "UTF-8");
     }
-    String capturedSourceFile() {
-      return new String(sourceOut.toByteArray(), UTF_8);
+    String capturedSourceFile() throws UnsupportedEncodingException {
+      return new String(sourceOut.toByteArray(), "UTF-8");
     }
   }
 }

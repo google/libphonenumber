@@ -93,7 +93,6 @@ public class GeneratePhonePrefixDataTest extends TestCase {
     final Map<Integer, String> mappings = new HashMap<Integer, String>();
     GeneratePhonePrefixData.parseTextFile(new ByteArrayInputStream(input.getBytes()),
                                           new PhonePrefixMappingHandler() {
-      @Override
       public void process(int phonePrefix, String location) {
         mappings.put(phonePrefix, location);
       }
