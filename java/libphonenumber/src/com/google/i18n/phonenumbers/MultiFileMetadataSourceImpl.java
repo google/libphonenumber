@@ -110,7 +110,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
       List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
-      if (metadataList.isEmpty()) {
+      if (metadataList.size() == 0) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
         throw new IllegalStateException("empty metadata: " + fileName);
       }

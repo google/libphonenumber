@@ -172,7 +172,7 @@ public class PhoneNumberToTimeZonesMapper {
    */
   private List<String> getTimeZonesForGeocodableNumber(PhoneNumber number) {
     List<String> timezones = prefixTimeZonesMap.lookupTimeZonesForNumber(number);
-    return Collections.unmodifiableList(timezones.isEmpty() ? UNKNOWN_TIME_ZONE_LIST
+    return Collections.unmodifiableList(timezones.size() == 0 ? UNKNOWN_TIME_ZONE_LIST
                                                             : timezones);
   }
 
@@ -185,7 +185,7 @@ public class PhoneNumberToTimeZonesMapper {
    */
   private List<String> getCountryLevelTimeZonesforNumber(PhoneNumber number) {
     List<String> timezones = prefixTimeZonesMap.lookupCountryLevelTimeZonesForNumber(number);
-    return Collections.unmodifiableList(timezones.isEmpty() ? UNKNOWN_TIME_ZONE_LIST
+    return Collections.unmodifiableList(timezones.size() == 0 ? UNKNOWN_TIME_ZONE_LIST
                                                             : timezones);
   }
 }

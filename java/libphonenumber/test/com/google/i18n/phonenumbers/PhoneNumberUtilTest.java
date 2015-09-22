@@ -1220,7 +1220,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.getRegionCodesForCountryCode(49).contains(RegionCode.DE));
     assertTrue(phoneUtil.getRegionCodesForCountryCode(800).contains(RegionCode.UN001));
     // Test with invalid country calling code.
-    assertTrue(phoneUtil.getRegionCodesForCountryCode(-1).isEmpty());
+    assertTrue(phoneUtil.getRegionCodesForCountryCode(-1).size() == 0);
   }
 
   public void testGetCountryCodeForRegion() {

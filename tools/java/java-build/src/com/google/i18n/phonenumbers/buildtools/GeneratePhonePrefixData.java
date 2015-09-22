@@ -414,7 +414,7 @@ public class GeneratePhonePrefixData {
     Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
     while (it.hasNext()) {
       Map.Entry<Integer, String> mapping = it.next();
-      if (mapping.getValue().isEmpty()) {
+      if (mapping.getValue().length() == 0) {
         it.remove();
       }
     }
