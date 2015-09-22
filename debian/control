@@ -31,8 +31,8 @@ Build-Depends: cdbs,
 Standards-Version: 3.9.6
 Section: libs
 Homepage: https://github.com/googlei18n/libphonenumber/
-Vcs-Browser: https://github.com/googlei18n/libphonenumber/
-Vcs-Git: https://github.com/googlei18n/libphonenumber.git
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libphonenumber.git/
+Vcs-Git: git://anonscm.debian.org/collab-maint/libphonenumber.git
 
 Package: libphonenumber6-java
 Section: java
