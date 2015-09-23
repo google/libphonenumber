@@ -82,7 +82,7 @@ public class GenerateTimeZonesMapData {
       }
       Integer prefix = Integer.parseInt(line.substring(0, indexOfPipe));
       String timezones = line.substring(indexOfPipe + 1);
-      if (timezones.isEmpty()) {
+      if (timezones.length() == 0) {
         throw new RuntimeException(String.format("line %d: missing time zones", lineNumber));
       }
       if (timeZoneMap.put(prefix, timezones) != null) {

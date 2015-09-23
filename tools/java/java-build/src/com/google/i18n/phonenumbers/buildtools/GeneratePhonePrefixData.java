@@ -145,7 +145,6 @@ public class GeneratePhonePrefixData {
       throws IOException {
     final SortedMap<Integer, String> phonePrefixMap = new TreeMap<Integer, String>();
     parseTextFile(input, new PhonePrefixMappingHandler() {
-      @Override
       public void process(int prefix, String location) {
         if (phonePrefixMap.put(prefix, location) != null) {
           throw new RuntimeException(String.format("duplicated prefix %d", prefix));
@@ -194,7 +193,6 @@ public class GeneratePhonePrefixData {
       final Set<Integer> phonePrefixes = new HashSet<Integer>();
       FileInputStream inputStream = new FileInputStream(countryCodeFile);
       parseTextFile(inputStream, new PhonePrefixMappingHandler() {
-        @Override
         public void process(int prefix, String location) {
           phonePrefixes.add(Integer.parseInt(String.valueOf(prefix).substring(0, 4)));
         }
@@ -414,7 +412,7 @@ public class GeneratePhonePrefixData {
     Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
     while (it.hasNext()) {
       Map.Entry<Integer, String> mapping = it.next();
-      if (mapping.getValue().isEmpty()) {
+      if (mapping.getValue().length() == 0) {
         it.remove();
       }
     }

@@ -151,7 +151,7 @@ public class BuildMetadataProtoFromXml extends Command {
         String regionCode = metadata.getId();
         // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
         // country calling codes instead of the region code to form the file name.
-        if (regionCode.equals("001") || regionCode.isEmpty()) {
+        if (regionCode.equals("001") || regionCode.length() == 0) {
           regionCode = Integer.toString(metadata.getCountryCode());
         }
         PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
@@ -196,7 +196,7 @@ public class BuildMetadataProtoFromXml extends Command {
     // calling codes listed in it.
     boolean hasRegionCodes = false;
     for (List<String> listWithRegionCode : countryCodeToRegionCodeMap.values()) {
-      if (!listWithRegionCode.isEmpty()) {
+      if (!listWithRegionCode.size() == 0) {
         hasRegionCodes = true;
         break;
       }
@@ -331,7 +331,7 @@ public class BuildMetadataProtoFromXml extends Command {
       writer.write(GENERATION_COMMENT);
       writer.write("package " + PACKAGE_NAME + ";\n\n");
 
-      if (!imports.isEmpty()) {
+      if (!imports.size() == 0) {
         for (String item : imports) {
           writer.write("import " + item + ";\n");
         }

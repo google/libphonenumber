@@ -200,7 +200,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       } else {
         appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
         if (isNumberValid) {
-          if (!defaultCountry.isEmpty() && defaultCountry != "ZZ") {
+          if (!defaultCountry.length() == 0 && defaultCountry != "ZZ") {
             appendLine(
                 "Result from isValidNumberForRegion()",
                 Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
