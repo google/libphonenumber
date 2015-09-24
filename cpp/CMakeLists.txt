@@ -510,6 +510,7 @@ install (FILES
   "src/phonenumbers/phonenumberutil.h"
   "src/phonenumbers/regexp_adapter.h"
   "src/phonenumbers/regexp_cache.h"
+  "src/phonenumbers/region_code.h"
   "src/phonenumbers/shortnumberinfo.h"
   "src/phonenumbers/unicodestring.h"
   DESTINATION include/phonenumbers/
@@ -552,6 +553,7 @@ install (FILES
 )
 
 install (FILES "src/phonenumbers/base/synchronization/lock.h"
+         "src/phonenumbers/base/synchronization/lock_posix.h"
          DESTINATION include/phonenumbers/base/synchronization/)
 
 install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
