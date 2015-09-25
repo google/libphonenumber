@@ -16,15 +16,16 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,10 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
 
   private static final String META_DATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
+
+  // Size of byte buffer for deserializing nano metadata files. The largest binary is 10k size so
+  // 16k is sufficient for now
+  private static final int BUFFER_SIZE = 16 * 1024;
 
   // A mapping from a region code to the PhoneMetadata for that region.
   // Note: Synchronization, though only needed for the Android version of the library, is used in
@@ -105,19 +110,18 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    ObjectInputStream in = null;
     try {
-      in = new ObjectInputStream(source);
+      ObjectInputStream in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
-      List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
-      if (metadataList.isEmpty()) {
+      PhoneMetadata[] metadataList = metadataCollection.metadata;
+      if (metadataList.length == 0) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
         throw new IllegalStateException("empty metadata: " + fileName);
       }
-      if (metadataList.size() > 1) {
+      if (metadataList.length > 1) {
         logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
       }
-      PhoneMetadata metadata = metadataList.get(0);
+      PhoneMetadata metadata = metadataList[0];
       if (isNonGeoRegion) {
         countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
       } else {
@@ -140,7 +144,9 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.readExternal(source);
+      CodedInputByteBufferNano buffer = MetadataManager.convertStreamToBufferNano(
+          source, BUFFER_SIZE);
+      metadataCollection.mergeFrom(buffer);
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

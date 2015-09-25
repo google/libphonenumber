@@ -26,4 +26,11 @@
     <module>java-build</module>
   </modules>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.6.1</version>
+    </dependency>
+  </dependencies>
 </project>

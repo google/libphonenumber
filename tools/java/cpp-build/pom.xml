@@ -65,6 +65,9 @@
                 <source>generated/</source>
                 <!-- Also add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
+                <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
+                    the source directories. -->
+                <source>../../../java/libphonenumber/src/</source>
               </sources>
             </configuration>
           </execution>
@@ -76,20 +79,22 @@
         <artifactId>exec-maven-plugin</artifactId>
         <executions>
           <execution>
+            <id>generate-nano-sources</id>
             <phase>generate-sources</phase>
             <goals>
               <goal>exec</goal>
             </goals>
+            <configuration>
+              <executable>protoc</executable>
+              <arguments>
+                <argument>--javanano_out=java_package=phonemetadata.proto|com.google.i18n.phonenumbers.nano:../../../java/libphonenumber/src
+                </argument>
+                <argument>../../../resources/phonemetadata.proto</argument>
+                <argument>--proto_path=../../../resources</argument>
+              </arguments>
+            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <executable>protoc</executable>
-          <arguments>
-            <argument>--java_out=generated</argument>
-            <argument>../../../resources/phonemetadata.proto</argument>
-            <argument>--proto_path=../../../resources</argument>
-          </arguments>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

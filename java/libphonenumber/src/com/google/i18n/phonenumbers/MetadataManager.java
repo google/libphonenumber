@@ -16,16 +16,16 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -37,6 +37,9 @@ import java.util.logging.Logger;
  * would handle the main metadata file (PhoneNumberMetadata.xml) as well.
  */
 class MetadataManager {
+  // Size of byte buffer for deserializing nano metadata files. The largest binary is 10k size so
+  // 16k is sufficient for now
+  private static final int BUFFER_SIZE = 16 * 1024;
   private static final String ALTERNATE_FORMATS_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberAlternateFormatsProto";
   private static final String SHORT_NUMBER_METADATA_FILE_PREFIX =
@@ -71,21 +74,36 @@ class MetadataManager {
     }
   }
 
-  private static void loadAlternateFormatsMetadataFromFile(int countryCallingCode) {
-    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(
-        ALTERNATE_FORMATS_FILE_PREFIX + "_" + countryCallingCode);
-    ObjectInputStream in = null;
+  static CodedInputByteBufferNano convertStreamToBufferNano(ObjectInputStream in, int bufferSize) {
+    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
     try {
-      in = new ObjectInputStream(source);
+      int nRead;
+      byte[] data = new byte[bufferSize];
+
+      while ((nRead = in.read(data, 0, data.length)) != -1) {
+        buffer.write(data, 0, nRead);
+      }
+
+      buffer.flush();
+    } catch (IOException e) {
+      LOGGER.log(Level.WARNING, e.toString());
+    }
+    return CodedInputByteBufferNano.newInstance(buffer.toByteArray());
+  }
+
+  private static void loadAlternateFormatsMetadataFromFile(int countryCallingCode) {
+    String fileName = ALTERNATE_FORMATS_FILE_PREFIX + "_" + countryCallingCode;
+    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(fileName);
+    try {
+      ObjectInputStream src = new ObjectInputStream(source);
+      CodedInputByteBufferNano buffer = convertStreamToBufferNano(src, BUFFER_SIZE);
       PhoneMetadataCollection alternateFormats = new PhoneMetadataCollection();
-      alternateFormats.readExternal(in);
-      for (PhoneMetadata metadata : alternateFormats.getMetadataList()) {
-        callingCodeToAlternateFormatsMap.put(metadata.getCountryCode(), metadata);
+      alternateFormats.mergeFrom(buffer);
+      for (PhoneMetadata metadata : alternateFormats.metadata) {
+        callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
       }
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
-    } finally {
-      close(in);
     }
   }
 
@@ -102,20 +120,18 @@ class MetadataManager {
   }
 
   private static void loadShortNumberMetadataFromFile(String regionCode) {
-    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(
-        SHORT_NUMBER_METADATA_FILE_PREFIX + "_" + regionCode);
-    ObjectInputStream in = null;
+    String fileName = SHORT_NUMBER_METADATA_FILE_PREFIX + "_" + regionCode;
+    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(fileName);
     try {
-      in = new ObjectInputStream(source);
+      ObjectInputStream src = new ObjectInputStream(source);
+      CodedInputByteBufferNano buffer = convertStreamToBufferNano(src, BUFFER_SIZE);
       PhoneMetadataCollection shortNumberMetadata = new PhoneMetadataCollection();
-      shortNumberMetadata.readExternal(in);
-      for (PhoneMetadata metadata : shortNumberMetadata.getMetadataList()) {
+      shortNumberMetadata.mergeFrom(buffer);
+      for (PhoneMetadata metadata : shortNumberMetadata.metadata) {
         regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
       }
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
-    } finally {
-      close(in);
     }
   }
 

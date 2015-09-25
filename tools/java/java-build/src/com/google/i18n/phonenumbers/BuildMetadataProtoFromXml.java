@@ -16,8 +16,9 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedOutputByteBufferNano;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,6 +31,7 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -46,20 +48,28 @@ import java.util.regex.Pattern;
 public class BuildMetadataProtoFromXml extends Command {
   private static final String CLASS_NAME = BuildMetadataProtoFromXml.class.getSimpleName();
   private static final String PACKAGE_NAME = BuildMetadataProtoFromXml.class.getPackage().getName();
+  // Size of byte buffer for serializing nano metadata files. The largest binary is 10k size so 20k
+  // is sufficient for now
+  private static final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
+  // Size of byte buffer for serializing nano metadata files. The binary is 170k size so 256k
+  // is sufficient for now
+  private static final int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
 
   // Command line parameter names.
   private static final String INPUT_FILE = "input-file";
   private static final String OUTPUT_DIR = "output-dir";
+  private static final String OUTPUT_FILE = "output-file";
   private static final String DATA_PREFIX = "data-prefix";
   private static final String MAPPING_CLASS = "mapping-class";
   private static final String COPYRIGHT = "copyright";
   private static final String LITE_BUILD = "lite-build";
-
   private static final String HELP_MESSAGE =
       "Usage: " + CLASS_NAME + " [OPTION]...\n" +
       "\n" +
       "  --" + INPUT_FILE + "=PATH     Read phone number metadata in XML format from PATH.\n" +
       "  --" + OUTPUT_DIR + "=PATH     Use PATH as the root directory for output files.\n" +
+      "  --" + OUTPUT_FILE + "=PATH    Writes to PATH.\n" +
+      "  Only 1 of " + OUTPUT_DIR + " or " + OUTPUT_FILE + " must be specified.\n" +
       "  --" + DATA_PREFIX +
           "=PATH    Use PATH (relative to " + OUTPUT_DIR + ") as the basename when\n" +
       "                        writing phone number metadata (one file per region) in\n" +
@@ -76,6 +86,7 @@ public class BuildMetadataProtoFromXml extends Command {
       CLASS_NAME + " \\\n" +
       "  --" + INPUT_FILE + "=resources/PhoneNumberMetadata.xml \\\n" +
       "  --" + OUTPUT_DIR + "=java/libphonenumber/src/com/google/i18n/phonenumbers \\\n" +
+      "  --" + OUTPUT_FILE + "=java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberMetadataProto \\\n" +
       "  --" + DATA_PREFIX + "=data/PhoneNumberMetadataProto \\\n" +
       "  --" + MAPPING_CLASS + "=CountryCodeToRegionCodeMap \\\n" +
       "  --" + COPYRIGHT + "=2010 \\\n" +
@@ -98,6 +109,7 @@ public class BuildMetadataProtoFromXml extends Command {
 
     String inputFile = null;
     String outputDir = null;
+    String outputFile = null;
     String dataPrefix = null;
     String mappingClass = null;
     String copyright = null;
@@ -115,7 +127,9 @@ public class BuildMetadataProtoFromXml extends Command {
       if (INPUT_FILE.equals(key)) {
         inputFile = value;
       } else if (OUTPUT_DIR.equals(key)) {
-        outputDir = value;
+          outputDir = value;
+      } else if (OUTPUT_FILE.equals(key)) {
+          outputFile = value;
       } else if (DATA_PREFIX.equals(key)) {
         dataPrefix = value;
       } else if (MAPPING_CLASS.equals(key)) {
@@ -133,7 +147,7 @@ public class BuildMetadataProtoFromXml extends Command {
     }
 
     if (inputFile == null ||
-        outputDir == null ||
+        ((outputDir == null) == (outputFile == null)) ||
         dataPrefix == null ||
         mappingClass == null ||
         copyright == null) {
@@ -141,24 +155,42 @@ public class BuildMetadataProtoFromXml extends Command {
       return false;
     }
 
-    String filePrefix = new File(outputDir, dataPrefix).getPath();
-
     try {
       PhoneMetadataCollection metadataCollection =
           BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
 
-      for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
-        String regionCode = metadata.getId();
-        // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
-        // country calling codes instead of the region code to form the file name.
-        if (regionCode.equals("001") || regionCode.isEmpty()) {
-          regionCode = Integer.toString(metadata.getCountryCode());
+      if (outputDir != null) {
+        String filePrefix = new File(outputDir, dataPrefix).getPath();
+        for (PhoneMetadata metadata : metadataCollection.metadata) {
+          String regionCode = metadata.id;
+          // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
+          // country calling codes instead of the region code to form the file name.
+          if (regionCode.equals("001") || regionCode.isEmpty()) {
+              regionCode = Integer.toString(metadata.countryCode);
+          }
+          PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
+          outMetadataCollection.metadata = new PhoneMetadata[1];
+          outMetadataCollection.metadata[0] = metadata;
+
+          FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
+          ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
+          byte[] outputArray = new byte[MULTI_FILE_BUFFER_SIZE];
+          CodedOutputByteBufferNano outputBufferNano = CodedOutputByteBufferNano.newInstance(outputArray);
+          outMetadataCollection.writeTo(outputBufferNano);
+          out.write(outputArray, 0, outputBufferNano.position());
+          out.flush();
+          out.close();
         }
-        PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
-        outMetadataCollection.addMetadata(metadata);
-        FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
-        ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
-        outMetadataCollection.writeExternal(out);
+      }
+      if (outputFile != null) {
+        String fileName = new File(outputFile, dataPrefix).getPath();
+        FileOutputStream output = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(output);
+        byte[] outputArray = new byte[SINGLE_FILE_BUFFER_SIZE];
+        CodedOutputByteBufferNano outputBufferNano = CodedOutputByteBufferNano.newInstance(outputArray);
+        metadataCollection.writeTo(outputBufferNano);
+        out.write(outputArray, 0, outputBufferNano.position());
+        out.flush();
         out.close();
       }
 
@@ -167,6 +199,9 @@ public class BuildMetadataProtoFromXml extends Command {
 
       writeCountryCallingCodeMappingToJavaFile(
           countryCodeToRegionCodeMap, outputDir, mappingClass, copyright);
+    } catch (IOException e) {
+      System.err.println("Generation of metadata failed.");
+      return false;
     } catch (Exception e) {
       e.printStackTrace();
       return false;

@@ -17,6 +17,8 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.CppMetadataGenerator.Type;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedOutputByteBufferNano;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -201,7 +203,14 @@ public class BuildMetadataCppFromXml extends Command {
   // @VisibleForTesting
   void writePhoneMetadataCollection(
       String inputFilePath, boolean liteMetadata, OutputStream out) throws IOException, Exception {
-    BuildMetadataFromXml.buildPhoneMetadataCollection(inputFilePath, liteMetadata).writeTo(out);
+    PhoneMetadataCollection outMetadataCollection =
+        BuildMetadataFromXml.buildPhoneMetadataCollection(inputFilePath, liteMetadata);
+    byte[] outputArray = new byte[100000];
+    CodedOutputByteBufferNano output = CodedOutputByteBufferNano.newInstance(outputArray);
+    outMetadataCollection.writeTo(output);
+    out.write(outputArray, 0, output.position());
+    out.flush();
+    out.close();
   }
 
   // @VisibleForTesting
