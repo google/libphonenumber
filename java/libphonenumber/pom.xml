@@ -36,8 +36,7 @@
           <excludes>
             <exclude>**/SingleFileMetadataSourceImpl.class</exclude>
             <exclude>**/SingleFileMetadataSourceImpl.java</exclude>
-            <exclude>**/PhoneNumberMetadataProtoFile</exclude>
-            <exclude>**/PhoneNumberMetadataProtoForTestingFile</exclude>
+            <exclude>**/SingleFilePhoneNumberMetadataProto</exclude>
           </excludes>
         </configuration>
       </plugin>
