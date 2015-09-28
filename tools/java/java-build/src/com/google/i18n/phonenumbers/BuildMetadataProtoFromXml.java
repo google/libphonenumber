@@ -50,10 +50,10 @@ public class BuildMetadataProtoFromXml extends Command {
   // Command line parameter names.
   private static final String INPUT_FILE = "input-file";
   private static final String OUTPUT_DIR = "output-dir";
-  private static final String OUTPUT_FILE = "output-file";
   private static final String DATA_PREFIX = "data-prefix";
   private static final String MAPPING_CLASS = "mapping-class";
   private static final String COPYRIGHT = "copyright";
+  private static final String SINGLE_FILE = "single-file";
   private static final String LITE_BUILD = "lite-build";
 
   private static final String HELP_MESSAGE =
@@ -61,16 +61,19 @@ public class BuildMetadataProtoFromXml extends Command {
       "\n" +
       "  --" + INPUT_FILE + "=PATH     Read phone number metadata in XML format from PATH.\n" +
       "  --" + OUTPUT_DIR + "=PATH     Use PATH as the root directory for output files.\n" +
-      "  --" + OUTPUT_FILE + "=PATH    Writes to PATH.\n" +
-      "  Only 1 of " + OUTPUT_DIR + " or " + OUTPUT_FILE + " must be specified.\n" +
       "  --" + DATA_PREFIX +
           "=PATH    Use PATH (relative to " + OUTPUT_DIR + ") as the basename when\n" +
-      "                        writing phone number metadata (one file per region) in\n" +
-      "                        proto format.\n" +
+      "                        writing phone number metadata in proto format.\n" +
+      "                        One file per region will be written unless " + SINGLE_FILE +
+      "                        is set, in which case a single file will be written with\n" +
+      "                        metadata for all regions.\n" +
       "  --" + MAPPING_CLASS + "=NAME  Store country code mappings in the class NAME, which\n" +
       "                        will be written to a file in " + OUTPUT_DIR + ".\n" +
       "  --" + COPYRIGHT + "=YEAR      Use YEAR in generated copyright headers.\n" +
       "\n" +
+      "  [--" + SINGLE_FILE + "=<true|false>] Optional (default: false). Whether to write\n" +
+      "                               metadata to a single file, instead of one file\n" +
+      "                               per region.\n" +
       "  [--" + LITE_BUILD + "=<true|false>]  Optional (default: false). In a lite build,\n" +
       "                               certain metadata will be omitted. At this\n" +
       "                               moment, example numbers information is omitted.\n" +
@@ -79,10 +82,10 @@ public class BuildMetadataProtoFromXml extends Command {
       CLASS_NAME + " \\\n" +
       "  --" + INPUT_FILE + "=resources/PhoneNumberMetadata.xml \\\n" +
       "  --" + OUTPUT_DIR + "=java/libphonenumber/src/com/google/i18n/phonenumbers \\\n" +
-      "  --" + OUTPUT_FILE + "=java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberMetadataProto \\\n" +
       "  --" + DATA_PREFIX + "=data/PhoneNumberMetadataProto \\\n" +
       "  --" + MAPPING_CLASS + "=CountryCodeToRegionCodeMap \\\n" +
       "  --" + COPYRIGHT + "=2010 \\\n" +
+      "  --" + SINGLE_FILE + "=false \\\n" +
       "  --" + LITE_BUILD + "=false\n";
 
   private static final String GENERATION_COMMENT =
@@ -102,10 +105,10 @@ public class BuildMetadataProtoFromXml extends Command {
 
     String inputFile = null;
     String outputDir = null;
-    String outputFile = null;
     String dataPrefix = null;
     String mappingClass = null;
     String copyright = null;
+    boolean singleFile = false;
     boolean liteBuild = false;
 
     for (int i = 1; i < getArgs().length; i++) {
@@ -121,14 +124,15 @@ public class BuildMetadataProtoFromXml extends Command {
         inputFile = value;
       } else if (OUTPUT_DIR.equals(key)) {
         outputDir = value;
-      } else if (OUTPUT_FILE.equals(key)) {
-        outputFile = value;
       } else if (DATA_PREFIX.equals(key)) {
         dataPrefix = value;
       } else if (MAPPING_CLASS.equals(key)) {
         mappingClass = value;
       } else if (COPYRIGHT.equals(key)) {
         copyright = value;
+      } else if (SINGLE_FILE.equals(key) &&
+                 ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
+        singleFile = "true".equalsIgnoreCase(value);
       } else if (LITE_BUILD.equals(key) &&
                  ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
         liteBuild = "true".equalsIgnoreCase(value);
@@ -140,7 +144,7 @@ public class BuildMetadataProtoFromXml extends Command {
     }
 
     if (inputFile == null ||
-        ((outputDir == null) == (outputFile == null)) ||
+        outputDir == null ||
         dataPrefix == null ||
         mappingClass == null ||
         copyright == null) {
@@ -148,12 +152,18 @@ public class BuildMetadataProtoFromXml extends Command {
       return false;
     }
 
+    String filePrefix = new File(outputDir, dataPrefix).getPath();
+
     try {
       PhoneMetadataCollection metadataCollection =
           BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
 
-      if (outputDir != null) {
-        String filePrefix = new File(outputDir, dataPrefix).getPath();
+      if (singleFile) {
+        FileOutputStream output = new FileOutputStream(filePrefix);
+        ObjectOutputStream out = new ObjectOutputStream(output);
+        metadataCollection.writeExternal(out);
+        out.close();
+      } else {
         for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
           String regionCode = metadata.getId();
           // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
@@ -168,14 +178,6 @@ public class BuildMetadataProtoFromXml extends Command {
           outMetadataCollection.writeExternal(out);
           out.close();
         }
-      }
-
-      if (outputFile != null) {
-        String fileName = new File(outputFile, dataPrefix).getPath();
-        FileOutputStream output = new FileOutputStream(fileName);
-        ObjectOutputStream out = new ObjectOutputStream(output);
-        metadataCollection.writeExternal(out);
-        out.close();
       }
 
       Map<Integer, List<String>> countryCodeToRegionCodeMap =
