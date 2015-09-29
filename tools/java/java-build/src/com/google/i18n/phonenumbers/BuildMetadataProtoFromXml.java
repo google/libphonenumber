@@ -64,7 +64,7 @@ public class BuildMetadataProtoFromXml extends Command {
       "  --" + DATA_PREFIX +
           "=PATH    Use PATH (relative to " + OUTPUT_DIR + ") as the basename when\n" +
       "                        writing phone number metadata in proto format.\n" +
-      "                        One file per region will be written unless " + SINGLE_FILE +
+      "                        One file per region will be written unless " + SINGLE_FILE + "\n" +
       "                        is set, in which case a single file will be written with\n" +
       "                        metadata for all regions.\n" +
       "  --" + MAPPING_CLASS + "=NAME  Store country code mappings in the class NAME, which\n" +
