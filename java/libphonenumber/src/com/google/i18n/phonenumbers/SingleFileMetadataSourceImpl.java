@@ -24,7 +24,7 @@ public final class SingleFileMetadataSourceImpl implements MetadataSource {
       Logger.getLogger(SingleFileMetadataSourceImpl.class.getName());
 
   private static final String META_DATA_FILE =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoFile";
+      "/com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto";
 
   // A mapping from a region code to the PhoneMetadata for that region.
   // Note: Synchronization, though only needed for the Android version of the library, is used in
