@@ -1533,9 +1533,12 @@
       <sharedCost>
         <nationalNumberPattern>
           8(?:
-            10|
-            2[018]
-          )\d{6,10}
+            (?:
+              10|
+              2[01]
+            )\d{6,10}|
+            28\d{5,10}
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9,13}</possibleNumberPattern>
         <exampleNumber>810123456</exampleNumber>
