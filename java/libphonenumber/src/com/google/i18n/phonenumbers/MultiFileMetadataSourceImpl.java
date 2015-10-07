@@ -55,14 +55,14 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       Collections.synchronizedMap(new HashMap<Integer, PhoneMetadata>());
 
   // The prefix of the metadata files from which region data is loaded.
-  private final String currentFilePrefix;
+  private final String filePrefix;
 
   // The metadata loader used to inject alternative metadata sources.
   private final MetadataLoader metadataLoader;
 
   // It is assumed that metadataLoader is not null.
-  public MultiFileMetadataSourceImpl(String currentFilePrefix, MetadataLoader metadataLoader) {
-    this.currentFilePrefix = currentFilePrefix;
+  public MultiFileMetadataSourceImpl(String filePrefix, MetadataLoader metadataLoader) {
+    this.filePrefix = filePrefix;
     this.metadataLoader = metadataLoader;
   }
 
@@ -77,7 +77,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       if (!regionToMetadataMap.containsKey(regionCode)) {
         // The regionCode here will be valid and won't be '001', so we don't need to worry about
         // what to pass in for the country calling code.
-        loadMetadataFromFile(currentFilePrefix, regionCode, 0, metadataLoader);
+        loadMetadataFromFile(regionCode, 0);
       }
     }
     return regionToMetadataMap.get(regionCode);
@@ -87,16 +87,14 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   public PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
     synchronized (countryCodeToNonGeographicalMetadataMap) {
       if (!countryCodeToNonGeographicalMetadataMap.containsKey(countryCallingCode)) {
-        loadMetadataFromFile(currentFilePrefix, PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY,
-            countryCallingCode, metadataLoader);
+        loadMetadataFromFile(PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY, countryCallingCode);
       }
     }
     return countryCodeToNonGeographicalMetadataMap.get(countryCallingCode);
   }
 
   // @VisibleForTesting
-  void loadMetadataFromFile(String filePrefix, String regionCode, int countryCallingCode,
-      MetadataLoader metadataLoader) {
+  void loadMetadataFromFile(String regionCode, int countryCallingCode) {
     boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
     String fileName = filePrefix + "_" +
         (isNonGeoRegion ? String.valueOf(countryCallingCode) : regionCode);
