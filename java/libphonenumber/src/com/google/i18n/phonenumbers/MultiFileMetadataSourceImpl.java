@@ -129,8 +129,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
 
   /**
    * Loads the metadata protocol buffer from the given stream and closes the stream afterwards. Any
-   * exceptions that occur while reading the stream are propagated (though exceptions that occur
-   * when the stream is closed will be ignored).
+   * exceptions that occur while reading or closing the stream are ignored.
    *
    * @param source  the non-null stream from which metadata is to be read.
    * @return        the loaded metadata protocol buffer.
