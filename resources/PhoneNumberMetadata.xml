@@ -3287,7 +3287,9 @@
           <leadingDigits>
             (?:
               [189][1-9]|
-              2[12478]
+              2[12478]|
+              3[1-578]|
+              7[13-579]
             )9
           </leadingDigits>
           <format>$1 $2-$3</format>
@@ -3342,23 +3344,25 @@
         <!-- Since 2012, Brazil has been migrating from 10 to 11 digits by inserting a 9 before the
              last 8 digits. The following pattern is divided into 3 sections: ranges for which the
              migration has been completed, ranges which are in transition, and ranges which are
-             still in the old format. (Ranges which were supposed to have been deprecated in
-             Oct. 2013 are still working as of May 2015.) Note that mobile radio services are
-             still 10 digits, with the subscriber number (the last 8 digits) beginning with 7. -->
+             still in the old format. (As of Oct. 2015, ranges deprecated prior to that date have
+             been verified to be deactivated.) Note that mobile radio services are still 10 digits,
+             with the subscriber number (the last 8 digits) beginning with 7. -->
         <nationalNumberPattern>
-          1[1-9](?:
+          (?:
+            1[1-9]|
+            2[12478]|
+            [89][1-9]
+          )(?:
             7|
             9\d
           )\d{7}|
           (?:
-            2[12478]|
-            [89][1-9]
+            3[1-578]|
+            7[13-579]
           )9?[6-9]\d{7}|
           (?:
-            3[1-578]|
             [46][1-9]|
-            5[1-5]|
-            7[13-579]
+            5[1-5]
           )[6-9]\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10,11}</possibleNumberPattern>
@@ -3405,7 +3409,7 @@
             461|
             502|
             6(?:
-              0[12]|
+              0[1-3]|
               12|
               7[67]|
               8[78]|
@@ -9524,7 +9528,7 @@
         <!-- The prefix 24 seems to be also used, based on online searches. -->
         <nationalNumberPattern>
           2(?:
-            [24]\d|
+            [248]\d|
             5[1-5]|
             94
           )\d{5}
@@ -11129,8 +11133,10 @@
       <mobile>
         <nationalNumberPattern>
           9(?:
-            0[12]|
-            [1-3]\d
+            0[1-3]|
+            [13]\d|
+            2[0-2]|
+            90
           )\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -13728,7 +13734,8 @@
         <numberFormat pattern="(\d{4})(\d{3,4})">
           <leadingDigits>
             [126]|
-            9[04-9]
+            9[04-9]|
+            52[25]
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -13770,26 +13777,30 @@
         <nationalNumberPattern>
           (?:
             5(?:
-              [05]\d|
-              1[0-7]
+              [05]\d{2}|
+              1[0-7]\d|
+              2(?:
+                22|
+                55
+              )
             )|
             6(?:
-              0[034679]|
-              5[015-9]|
-              6\d|
-              7[067]|
-              9[0369]
+              0[034679]\d|
+              5[015-9]\d|
+              6\d{2}|
+              7[067]\d|
+              9[0369]\d
             )|
             9(?:
-              0[09]|
-              22|
-              4[01479]|
-              55|
-              6[0679]|
-              [79]\d|
-              8[057-9]
+              0[09]\d|
+              22\d|
+              4[01479]\d|
+              55\d|
+              6[0679]\d|
+              [79]\d{2}|
+              8[057-9]\d
             )
-          )\d{5}
+          )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>50012345</exampleNumber>
@@ -15119,7 +15130,7 @@
           6\d{8}|
           4(?:
             4\d|
-            5[2-9]
+            5[1-9]
           )\d{5}
         </nationalNumberPattern>
         <exampleNumber>612345678</exampleNumber>
@@ -18053,16 +18064,16 @@
         <nationalNumberPattern>
           (?:
             1(?:
-              0[02-579]|
-              19|
+              0[0-8]|
+              1[49]|
               2[37]|
-              3[03]|
-              4[479]|
-              57|
-              65|
-              7[016-8]|
+              3[0137]|
+              4[147]|
+              5[05]|
+              6[58]|
+              7[0167]|
               8[58]|
-              9[1349]
+              9[139]
             )|
             2(?:
               [0235679]\d|
@@ -18072,19 +18083,19 @@
             )|
             3(?:
               [09]\d|
-              1[14-7]|
+              1[014-7]|
               2[0-3]|
               3[03]|
-              4[0457]|
-              5[56]|
+              4[03-57]|
+              55|
               6[068]|
               7[06-8]|
-              8[089]
+              8[06-9]
             )|
             4(?:
               3[013-69]|
               4\d|
-              7[0-689]
+              7[0-589]
             )|
             5(?:
               [01]\d|
@@ -18096,18 +18107,19 @@
               0[09]|
               2[0-267]|
               3[06]|
-              [49]0|
+              [469]0|
               5[06-9]|
-              7[0-24-7]|
-              8[89]
+              7[0-24-79]|
+              8[7-9]
             )|
             8(?:
+              09|
               [34]\d|
-              5[0-4]|
+              5[0134]|
               8[02]
             )|
             9(?:
-              0[6-8]|
+              0[6-9]|
               1[016-8]|
               2[036-8]|
               3[3679]|
@@ -18154,15 +18166,12 @@
           (?:
             779|
             8(?:
-              2[235]|
               55|
               60|
-              7[578]|
-              86|
-              95
+              7[78]
             )|
             9(?:
-              0[0-2]|
+              00|
               81
             )
           )\d{4}
@@ -24059,7 +24068,7 @@
           (?:
             5(?:
               7[2-5]|
-              [3-69]\d
+              [0-689]\d
             )|
             7[013-7]\d
           )\d{4}
