@@ -1,3 +1,9 @@
+Oct 08, 2015: libphonenumber-7.1.0
+Metadata changes:
+ - Updated phone metadata for region code(s): BR, BS, HT, IR, KW, MC, PA, VU
+ - Updated carrier data for country calling code(s):
+   98 (en), 678 (en), 880 (en)
+
 Sep 16, 2015: libphonenumber-7.0.11
 Metadata changes:
  - Updated phone metadata for region code(s):
