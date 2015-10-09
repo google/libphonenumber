@@ -16,8 +16,9 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -133,9 +134,15 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
    * @return        the loaded metadata protocol buffer.
    */
   private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
+    // The size of the byte buffer for deserializing the single nano metadata file which holds
+    // metadata for all regions.
+    final int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
+
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.readExternal(source);
+      CodedInputByteBufferNano byteBuffer = MetadataManager.convertStreamToByteBuffer(
+          source, SINGLE_FILE_BUFFER_SIZE);
+      metadataCollection.mergeFrom(byteBuffer);
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

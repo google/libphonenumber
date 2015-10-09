@@ -16,15 +16,15 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,9 +103,8 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    ObjectInputStream in = null;
     try {
-      in = new ObjectInputStream(source);
+      ObjectInputStream in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
       PhoneMetadata[] metadataList = metadataCollection.metadata;
       if (metadataList.length == 0) {
@@ -135,9 +134,15 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
    * @return        the loaded metadata protocol buffer.
    */
   private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
+    // The size of the byte buffer used for deserializing the phone number metadata files for each
+    // region.
+    final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
+
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.readExternal(source);
+      CodedInputByteBufferNano byteBuffer = MetadataManager.convertStreamToByteBuffer(source,
+          MULTI_FILE_BUFFER_SIZE);
+      metadataCollection.mergeFrom(byteBuffer);
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

@@ -16,7 +16,7 @@
 
 package com.google.i18n.phonenumbers.internal;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 /**
  * Internal phonenumber matching API used to isolate the underlying implementation of the

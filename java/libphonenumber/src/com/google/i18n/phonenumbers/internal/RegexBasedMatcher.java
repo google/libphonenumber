@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers.internal;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.RegexCache;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.util.regex.Matcher;
 
