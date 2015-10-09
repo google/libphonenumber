@@ -96,7 +96,7 @@ public class BuildMetadataFromXml {
     document.getDocumentElement().normalize();
     Element rootElement = document.getDocumentElement();
     NodeList territory = rootElement.getElementsByTagName("territory");
-    PhoneMetadataCollection.Builder metadataCollection = PhoneMetadataCollection.newBuilder();
+    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     int numOfTerritories = territory.getLength();
     // TODO: Look for other uses of these constants and possibly pull them out into
     // a separate constants file.
@@ -114,7 +114,7 @@ public class BuildMetadataFromXml {
           isShortNumberMetadata, isAlternateFormatsMetadata);
       metadataCollection.addMetadata(metadata);
     }
-    return metadataCollection.build();
+    return metadataCollection;
   }
 
   // Build a mapping from a country calling code to the region codes which denote the country/region
@@ -179,9 +179,9 @@ public class BuildMetadataFromXml {
   }
 
   // @VisibleForTesting
-  static PhoneMetadata.Builder loadTerritoryTagMetadata(String regionCode, Element element,
-                                                        String nationalPrefix) {
-    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+  static PhoneMetadata loadTerritoryTagMetadata(String regionCode, Element element,
+                                                String nationalPrefix) {
+    PhoneMetadata metadata = new PhoneMetadata();
     metadata.setId(regionCode);
     if (element.hasAttribute(COUNTRY_CODE)) {
       metadata.setCountryCode(Integer.parseInt(element.getAttribute(COUNTRY_CODE)));
@@ -231,10 +231,10 @@ public class BuildMetadataFromXml {
    * @return  whether an international number format is defined.
    */
   // @VisibleForTesting
-  static boolean loadInternationalFormat(PhoneMetadata.Builder metadata,
+  static boolean loadInternationalFormat(PhoneMetadata metadata,
                                          Element numberFormatElement,
                                          NumberFormat nationalFormat) {
-    NumberFormat.Builder intlFormat = NumberFormat.newBuilder();
+    NumberFormat intlFormat = new NumberFormat();
     NodeList intlFormatPattern = numberFormatElement.getElementsByTagName(INTL_FORMAT);
     boolean hasExplicitIntlFormatDefined = false;
 
@@ -270,8 +270,8 @@ public class BuildMetadataFromXml {
    * @throws  RuntimeException if multiple or no formats have been encountered.
    */
   // @VisibleForTesting
-  static void loadNationalFormat(PhoneMetadata.Builder metadata, Element numberFormatElement,
-                                 NumberFormat.Builder format) {
+  static void loadNationalFormat(PhoneMetadata metadata, Element numberFormatElement,
+                                 NumberFormat format) {
     setLeadingDigitsPatterns(numberFormatElement, format);
     format.setPattern(validateRE(numberFormatElement.getAttribute(PATTERN)));
 
@@ -294,7 +294,7 @@ public class BuildMetadataFromXml {
    *  the parent (territory) element.
    */
   // @VisibleForTesting
-  static void loadAvailableFormats(PhoneMetadata.Builder metadata,
+  static void loadAvailableFormats(PhoneMetadata metadata,
                                    Element element, String nationalPrefix,
                                    String nationalPrefixFormattingRule,
                                    boolean nationalPrefixOptionalWhenFormatting) {
@@ -310,7 +310,7 @@ public class BuildMetadataFromXml {
     if (numOfFormatElements > 0) {
       for (int i = 0; i < numOfFormatElements; i++) {
         Element numberFormatElement = (Element) numberFormatElements.item(i);
-        NumberFormat.Builder format = NumberFormat.newBuilder();
+        NumberFormat format = new NumberFormat();
 
         if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_FORMATTING_RULE)) {
           format.setNationalPrefixFormattingRule(
@@ -336,7 +336,7 @@ public class BuildMetadataFromXml {
         loadNationalFormat(metadata, numberFormatElement, format);
         metadata.addNumberFormat(format);
 
-        if (loadInternationalFormat(metadata, numberFormatElement, format.build())) {
+        if (loadInternationalFormat(metadata, numberFormatElement, format)) {
           hasExplicitIntlFormatDefined = true;
         }
       }
@@ -351,7 +351,7 @@ public class BuildMetadataFromXml {
   }
 
   // @VisibleForTesting
-  static void setLeadingDigitsPatterns(Element numberFormatElement, NumberFormat.Builder format) {
+  static void setLeadingDigitsPatterns(Element numberFormatElement, NumberFormat format) {
     NodeList leadingDigitsPatternNodes = numberFormatElement.getElementsByTagName(LEADING_DIGITS);
     int numOfLeadingDigitsPatterns = leadingDigitsPatternNodes.getLength();
     if (numOfLeadingDigitsPatterns > 0) {
@@ -406,18 +406,18 @@ public class BuildMetadataFromXml {
    * @return  complete description of that phone number type
    */
   // @VisibleForTesting
-  static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc.Builder generalDesc,
-                                                               Element countryElement,
-                                                               String numberType,
-                                                               boolean liteBuild) {
+  static PhoneNumberDesc processPhoneNumberDescElement(PhoneNumberDesc generalDesc,
+                                                       Element countryElement,
+                                                       String numberType,
+                                                       boolean liteBuild) {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
-    PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
+    PhoneNumberDesc numberDesc = new PhoneNumberDesc();
     if (phoneNumberDescList.getLength() == 0 && !isValidNumberType(numberType)) {
       numberDesc.setNationalNumberPattern("NA");
       numberDesc.setPossibleNumberPattern("NA");
       return numberDesc;
     }
-    numberDesc.mergeFrom(generalDesc.build());
+    numberDesc.mergeFrom(generalDesc);
     if (phoneNumberDescList.getLength() > 0) {
       Element element = (Element) phoneNumberDescList.item(0);
       NodeList possiblePattern = element.getElementsByTagName(POSSIBLE_NUMBER_PATTERN);
@@ -443,9 +443,9 @@ public class BuildMetadataFromXml {
   }
 
   // @VisibleForTesting
-  static void setRelevantDescPatterns(PhoneMetadata.Builder metadata, Element element,
+  static void setRelevantDescPatterns(PhoneMetadata metadata, Element element,
       boolean liteBuild, boolean isShortNumberMetadata) {
-    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
+    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
     generalDesc = processPhoneNumberDescElement(generalDesc, element, GENERAL_DESC, liteBuild);
     metadata.setGeneralDesc(generalDesc);
 
@@ -496,7 +496,7 @@ public class BuildMetadataFromXml {
   static PhoneMetadata loadCountryMetadata(String regionCode, Element element, boolean liteBuild,
       boolean isShortNumberMetadata, boolean isAlternateFormatsMetadata) {
     String nationalPrefix = getNationalPrefix(element);
-    PhoneMetadata.Builder metadata =
+    PhoneMetadata metadata =
         loadTerritoryTagMetadata(regionCode, element, nationalPrefix);
     String nationalPrefixFormattingRule =
         getNationalPrefixFormattingRuleFromElement(element, nationalPrefix);
@@ -507,6 +507,6 @@ public class BuildMetadataFromXml {
       // The alternate formats metadata does not need most of the patterns to be set.
       setRelevantDescPatterns(metadata, element, liteBuild, isShortNumberMetadata);
     }
-    return metadata.build();
+    return metadata;
   }
 }
