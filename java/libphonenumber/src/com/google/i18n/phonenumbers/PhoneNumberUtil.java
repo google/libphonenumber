@@ -1882,7 +1882,7 @@ public class PhoneNumberUtil {
       if (numberFormat == PhoneNumberFormat.RFC3966) {
         formattedNumber.append(RFC3966_EXTN_PREFIX).append(number.getExtension());
       } else {
-        if (metadata.preferredExtnPrefix.length() != 0) {
+        if (!metadata.preferredExtnPrefix.equals("")) {
           formattedNumber.append(metadata.preferredExtnPrefix).append(number.getExtension());
         } else {
           formattedNumber.append(DEFAULT_EXTN_PREFIX).append(number.getExtension());
@@ -2089,7 +2089,7 @@ public class PhoneNumberUtil {
       // If leadingDigits is present, use this. Otherwise, do full validation.
       // Metadata cannot be null because the region codes come from the country calling code map.
       PhoneMetadata metadata = getMetadataForRegion(regionCode);
-      if (metadata.leadingDigits.length() != 0) {
+      if (!metadata.leadingDigits.equals("")) {
         if (regexCache.getPatternForRegex(metadata.leadingDigits)
                 .matcher(nationalNumber).lookingAt()) {
           return regionCode;

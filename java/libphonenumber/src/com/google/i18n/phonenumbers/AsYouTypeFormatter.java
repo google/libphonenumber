@@ -180,7 +180,7 @@ public class AsYouTypeFormatter {
         (isCompleteNumber && currentMetadata.intlNumberFormat.length > 0)
         ? currentMetadata.intlNumberFormat
         : currentMetadata.numberFormat;
-    boolean nationalPrefixIsUsedByCountry = (currentMetadata.nationalPrefix.length() != 0);
+    boolean nationalPrefixIsUsedByCountry = (!currentMetadata.nationalPrefix.equals(""));
     for (NumberFormat format : numberFormats) {
       if (!nationalPrefixIsUsedByCountry || isCompleteNumber ||
           format.nationalPrefixOptionalWhenFormatting ||
@@ -540,7 +540,7 @@ public class AsYouTypeFormatter {
       startOfNationalNumber = 1;
       prefixBeforeNationalNumber.append('1').append(SEPARATOR_BEFORE_NATIONAL_NUMBER);
       isCompleteNumber = true;
-    } else if (currentMetadata.nationalPrefixForParsing.length() != 0) {
+    } else if (!currentMetadata.nationalPrefixForParsing.equals("")) {
       Pattern nationalPrefixForParsing =
           regexCache.getPatternForRegex(currentMetadata.nationalPrefixForParsing);
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
