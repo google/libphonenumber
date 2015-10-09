@@ -138,10 +138,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(1, metadata.countryCode);
     assertEquals("011", metadata.internationalPrefix);
     assertTrue(metadata.nationalPrefix.length() != 0);
-    assertEquals(2, metadata.numberFormatSize());
+    assertEquals(2, metadata.numberFormat.length);
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
-                 metadata.getNumberFormat(1).pattern);
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(1).format);
+                 metadata.numberFormat[1].pattern);
+    assertEquals("$1 $2 $3", metadata.numberFormat[1].format);
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.generalDesc.nationalNumberPattern);
     assertEquals("\\d{7}(?:\\d{3})?", metadata.generalDesc.possibleNumberPattern);
@@ -159,12 +159,12 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(49, metadata.countryCode);
     assertEquals("00", metadata.internationalPrefix);
     assertEquals("0", metadata.nationalPrefix);
-    assertEquals(6, metadata.numberFormatSize());
-    assertEquals(1, metadata.getNumberFormat(5).leadingDigitsPatternSize());
-    assertEquals("900", metadata.getNumberFormat(5).getLeadingDigitsPattern(0));
+    assertEquals(6, metadata.numberFormat.length);
+    assertEquals(1, metadata.numberFormat[5].leadingDigitsPattern.length);
+    assertEquals("900", metadata.numberFormat[5].leadingDigitsPattern[0]);
     assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
-                 metadata.getNumberFormat(5).pattern);
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(5).format);
+                 metadata.numberFormat[5].pattern);
+    assertEquals("$1 $2 $3", metadata.numberFormat[5].format);
     assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}",
                  metadata.fixedLine.nationalNumberPattern);
     assertEquals("\\d{2,14}", metadata.fixedLine.possibleNumberPattern);
@@ -181,20 +181,20 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("0", metadata.nationalPrefix);
     assertEquals("0(?:(11|343|3715)15)?", metadata.nationalPrefixForParsing);
     assertEquals("9$1", metadata.nationalPrefixTransformRule);
-    assertEquals("$2 15 $3-$4", metadata.getNumberFormat(2).format);
+    assertEquals("$2 15 $3-$4", metadata.numberFormat[2].format);
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
-                 metadata.getNumberFormat(3).pattern);
+                 metadata.numberFormat[3].pattern);
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
-                 metadata.getIntlNumberFormat(3).pattern);
-    assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).format);
+                 metadata.intlNumberFormat[3].pattern);
+    assertEquals("$1 $2 $3 $4", metadata.intlNumberFormat[3].format);
   }
 
   public void testGetInstanceLoadInternationalTollFreeMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForNonGeographicalRegion(800);
     assertEquals("001", metadata.id);
     assertEquals(800, metadata.countryCode);
-    assertEquals("$1 $2", metadata.getNumberFormat(0).format);
-    assertEquals("(\\d{4})(\\d{4})", metadata.getNumberFormat(0).pattern);
+    assertEquals("$1 $2", metadata.numberFormat[0].format);
+    assertEquals("(\\d{4})(\\d{4})", metadata.numberFormat[0].pattern);
     assertEquals("12345678", metadata.generalDesc.exampleNumber);
     assertEquals("12345678", metadata.tollFree.exampleNumber);
   }

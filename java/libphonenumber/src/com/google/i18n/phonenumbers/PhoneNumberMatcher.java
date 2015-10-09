@@ -585,7 +585,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     PhoneMetadata alternateFormats =
         MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
     if (alternateFormats != null) {
-      for (NumberFormat alternateFormat : alternateFormats.numberFormats()) {
+      for (NumberFormat alternateFormat : alternateFormats.numberFormat) {
         formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
         if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
           return true;
@@ -665,7 +665,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // Check if a national prefix should be present when formatting this number.
     String nationalNumber = util.getNationalSignificantNumber(number);
     NumberFormat formatRule =
-        util.chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+        util.chooseFormattingPatternForNumber(metadata.numberFormat, nationalNumber);
     // To do this, we check that a national prefix formatting rule was present and that it wasn't
     // just the first-group symbol ($1) with punctuation.
     if ((formatRule != null) && formatRule.nationalPrefixFormattingRule.length() > 0) {

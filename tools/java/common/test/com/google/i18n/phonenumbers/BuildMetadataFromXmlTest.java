@@ -176,7 +176,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     assertTrue(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                             nationalFormat));
-    assertEquals(intlFormat, metadata.getIntlNumberFormat(0).format);
+    assertEquals(intlFormat, metadata.intlNumberFormat[0].format);
   }
 
   public void testLoadInternationalFormatWithBothNationalAndIntlFormatsDefined()
@@ -190,7 +190,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     assertTrue(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                             nationalFormat));
-    assertEquals(intlFormat, metadata.getIntlNumberFormat(0).format);
+    assertEquals(intlFormat, metadata.intlNumberFormat[0].format);
   }
 
   public void testLoadInternationalFormatExpectsOnlyOnePattern()
@@ -220,7 +220,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                              nationalFormat));
-    assertEquals(nationalPattern, metadata.getIntlNumberFormat(0).format);
+    assertEquals(nationalPattern, metadata.intlNumberFormat[0].format);
   }
 
   public void testLoadInternationalFormatCopiesNationalFormatData()
@@ -234,7 +234,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                              nationalFormat));
-    assertTrue(metadata.getIntlNumberFormat(0).nationalPrefixOptionalWhenFormatting);
+    assertTrue(metadata.intlNumberFormat[0].nationalPrefixOptionalWhenFormatting);
   }
 
   public void testLoadNationalFormat()
@@ -295,9 +295,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "", false /* NP not optional */);
-    assertEquals("($1)", metadata.getNumberFormat(0).nationalPrefixFormattingRule);
-    assertEquals("0 $CC ($1)", metadata.getNumberFormat(0).domesticCarrierCodeFormattingRule);
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(0).format);
+    assertEquals("($1)", metadata.numberFormat[0].nationalPrefixFormattingRule);
+    assertEquals("0 $CC ($1)", metadata.numberFormat[0].domesticCarrierCodeFormattingRule);
+    assertEquals("$1 $2 $3", metadata.numberFormat[0].format);
   }
 
   public void testLoadAvailableFormatsPropagatesCarrierCodeFormattingRule()
@@ -314,9 +314,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "", false /* NP not optional */);
-    assertEquals("($1)", metadata.getNumberFormat(0).nationalPrefixFormattingRule);
-    assertEquals("0 $CC ($1)", metadata.getNumberFormat(0).domesticCarrierCodeFormattingRule);
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(0).format);
+    assertEquals("($1)", metadata.numberFormat[0].nationalPrefixFormattingRule);
+    assertEquals("0 $CC ($1)", metadata.numberFormat[0].domesticCarrierCodeFormattingRule);
+    assertEquals("$1 $2 $3", metadata.numberFormat[0].format);
   }
 
   public void testLoadAvailableFormatsSetsProvidedNationalPrefixFormattingRule()
@@ -331,7 +331,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "", "($1)", false /* NP not optional */);
-    assertEquals("($1)", metadata.getNumberFormat(0).nationalPrefixFormattingRule);
+    assertEquals("($1)", metadata.numberFormat[0].nationalPrefixFormattingRule);
   }
 
   public void testLoadAvailableFormatsClearsIntlFormat()
@@ -346,7 +346,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "($1)", false /* NP not optional */);
-    assertEquals(0, metadata.intlNumberFormatSize());
+    assertEquals(0, metadata.intlNumberFormat.length);
   }
 
   public void testLoadAvailableFormatsHandlesMultipleNumberFormats()
@@ -362,8 +362,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "($1)", false /* NP not optional */);
-    assertEquals("$1 $2 $3", metadata.getNumberFormat(0).format);
-    assertEquals("$1-$2", metadata.getNumberFormat(1).format);
+    assertEquals("$1 $2 $3", metadata.numberFormat[0].format);
+    assertEquals("$1-$2", metadata.numberFormat[1].format);
   }
 
   public void testLoadInternationalFormatDoesNotSetIntlFormatWhenNA()
@@ -374,9 +374,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     NumberFormat nationalFormat = new NumberFormat();
     nationalFormat.format = "$1 $2";
 
-    BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                 nationalFormat);
-    assertEquals(0, metadata.intlNumberFormatSize());
+    BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement, nationalFormat);
+    assertEquals(0, metadata.intlNumberFormat.length);
   }
 
   // Tests setLeadingDigitsPatterns() in the case of international and national formatting rules
@@ -399,12 +398,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = new PhoneMetadata();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "", false /* NP not optional */);
-    assertEquals(1, metadata.getNumberFormat(0).leadingDigitsPatternSize());
-    assertEquals(1, metadata.getNumberFormat(1).leadingDigitsPatternSize());
+    assertEquals(1, metadata.numberFormat[0].leadingDigitsPattern.length);
+    assertEquals(1, metadata.numberFormat[1].leadingDigitsPattern.length);
     // When we merge the national format rules into the international format rules, we shouldn't add
     // the leading digit patterns multiple times.
-    assertEquals(1, metadata.getIntlNumberFormat(0).leadingDigitsPatternSize());
-    assertEquals(1, metadata.getIntlNumberFormat(1).leadingDigitsPatternSize());
+    assertEquals(1, metadata.intlNumberFormat[0].leadingDigitsPattern.length);
+    assertEquals(1, metadata.intlNumberFormat[1].leadingDigitsPattern.length);
   }
 
   // Tests setLeadingDigitsPatterns().
@@ -418,8 +417,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     NumberFormat numberFormat = new NumberFormat();
     BuildMetadataFromXml.setLeadingDigitsPatterns(numberFormatElement, numberFormat);
 
-    assertEquals("1", numberFormat.getLeadingDigitsPattern(0));
-    assertEquals("2", numberFormat.getLeadingDigitsPattern(1));
+    assertEquals("1", numberFormat.leadingDigitsPattern[0]);
+    assertEquals("2", numberFormat.leadingDigitsPattern[1]);
   }
 
   // Tests getNationalPrefixFormattingRuleFromElement().
@@ -617,9 +616,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
         false /* liteBuild */, false /* isShortNumberMetadata */,
         true /* isAlternateFormatsMetadata */);
-    assertEquals("(1)(\\d{3})", metadata.getNumberFormat(0).pattern);
-    assertEquals("1", metadata.getNumberFormat(0).getLeadingDigitsPattern(0));
-    assertEquals("$1", metadata.getNumberFormat(0).format);
+    assertEquals("(1)(\\d{3})", metadata.numberFormat[0].pattern);
+    assertEquals("1", metadata.numberFormat[0].leadingDigitsPattern[0]);
+    assertEquals("$1", metadata.numberFormat[0].format);
     assertNull(metadata.fixedLine);
     assertNull(metadata.shortCode);
   }
@@ -645,11 +644,11 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
         false /* liteBuild */, false /* isShortNumberMetadata */,
         true /* isAlternateFormatsMetadata */);
-    assertTrue(metadata.getNumberFormat(0).nationalPrefixOptionalWhenFormatting);
+    assertTrue(metadata.numberFormat[0].nationalPrefixOptionalWhenFormatting);
     // This is inherited from the territory, with $NP replaced by the actual national prefix, and
     // $FG replaced with $1.
-    assertEquals("0$1", metadata.getNumberFormat(0).nationalPrefixFormattingRule);
+    assertEquals("0$1", metadata.numberFormat[0].nationalPrefixFormattingRule);
     // Here it is explicitly set to false.
-    assertFalse(metadata.getNumberFormat(1).nationalPrefixOptionalWhenFormatting);
+    assertFalse(metadata.numberFormat[1].nationalPrefixOptionalWhenFormatting);
   }
 }
