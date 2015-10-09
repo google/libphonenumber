@@ -79,7 +79,7 @@ class MetadataManager {
       in = new ObjectInputStream(source);
       PhoneMetadataCollection alternateFormats = new PhoneMetadataCollection();
       alternateFormats.readExternal(in);
-      for (PhoneMetadata metadata : alternateFormats.getMetadataList()) {
+      for (PhoneMetadata metadata : alternateFormats.metadata) {
         callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
       }
     } catch (IOException e) {
@@ -109,7 +109,7 @@ class MetadataManager {
       in = new ObjectInputStream(source);
       PhoneMetadataCollection shortNumberMetadata = new PhoneMetadataCollection();
       shortNumberMetadata.readExternal(in);
-      for (PhoneMetadata metadata : shortNumberMetadata.getMetadataList()) {
+      for (PhoneMetadata metadata : shortNumberMetadata.metadata) {
         regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
       }
     } catch (IOException e) {
