@@ -197,13 +197,13 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_formatting_rule = 4;
-    if (format.nationalPrefixFormattingRule.length() != 0) {
+    if (!format.nationalPrefixFormattingRule.equals("")) {
       jsArrayBuilder.append(format.nationalPrefixFormattingRule);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string domestic_carrier_code_formatting_rule = 5;
-    if (format.domesticCarrierCodeFormattingRule.length() != 0) {
+    if (!format.domesticCarrierCodeFormattingRule.equals("")) {
       jsArrayBuilder.append(format.domesticCarrierCodeFormattingRule);
     } else {
       jsArrayBuilder.append(null);
@@ -233,13 +233,13 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 1
     jsArrayBuilder.append(null);
     // optional string national_number_pattern = 2;
-    if (desc.nationalNumberPattern.length() != 0) {
+    if (!desc.nationalNumberPattern.equals("")) {
       jsArrayBuilder.append(desc.nationalNumberPattern);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string possible_number_pattern = 3;
-    if (desc.possibleNumberPattern.length() != 0) {
+    if (!desc.possibleNumberPattern.equals("")) {
       jsArrayBuilder.append(desc.possibleNumberPattern);
     } else {
       jsArrayBuilder.append(null);
@@ -249,7 +249,7 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 5
     jsArrayBuilder.append(null);
     // optional string example_number = 6;
-    if (desc.exampleNumber.length() != 0) {
+    if (!desc.exampleNumber.equals("")) {
       jsArrayBuilder.append(desc.exampleNumber);
     } else {
       jsArrayBuilder.append(null);
@@ -289,20 +289,20 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string international_prefix = 11;
-    if (metadata.internationalPrefix.length() != 0) {
+    if (!metadata.internationalPrefix.equals("")) {
       jsArrayBuilder.append(metadata.internationalPrefix);
     } else {
       jsArrayBuilder.append(null);
     }
 
     // optional string national_prefix = 12;
-    if (metadata.nationalPrefix.length() != 0) {
+    if (!metadata.nationalPrefix.equals("")) {
       jsArrayBuilder.append(metadata.nationalPrefix);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string preferred_extn_prefix = 13;
-    if (metadata.preferredExtnPrefix.length() != 0) {
+    if (!metadata.preferredExtnPrefix.equals("")) {
       jsArrayBuilder.append(metadata.preferredExtnPrefix);
     } else {
       jsArrayBuilder.append(null);
@@ -310,19 +310,19 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 14
     jsArrayBuilder.append(null);
     // optional string national_prefix_for_parsing = 15;
-    if (metadata.nationalPrefixForParsing.length() != 0) {
+    if (!metadata.nationalPrefixForParsing.equals("")) {
       jsArrayBuilder.append(metadata.nationalPrefixForParsing);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_transform_rule = 16;
-    if (metadata.nationalPrefixTransformRule.length() != 0) {
+    if (!metadata.nationalPrefixTransformRule.equals("")) {
       jsArrayBuilder.append(metadata.nationalPrefixTransformRule);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string preferred_international_prefix = 17;
-    if (metadata.preferredInternationalPrefix.length() != 0) {
+    if (!metadata.preferredInternationalPrefix.equals("")) {
       jsArrayBuilder.append(metadata.preferredInternationalPrefix);
     } else {
       jsArrayBuilder.append(null);
@@ -364,7 +364,7 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string leading_digits = 23;
-    if (metadata.leadingDigits.length() != 0) {
+    if (!metadata.leadingDigits.equals("")) {
       jsArrayBuilder.append(metadata.leadingDigits);
     } else {
       jsArrayBuilder.append(null);

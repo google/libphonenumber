@@ -207,7 +207,7 @@ public class BuildMetadataFromXml {
     }
     if (!nationalPrefix.isEmpty()) {
       metadata.nationalPrefix = nationalPrefix;
-      if (metadata.nationalPrefixForParsing.length() == 0) {
+      if (metadata.nationalPrefixForParsing.equals("")) {
         metadata.nationalPrefixForParsing = nationalPrefix;
       }
     }
@@ -428,13 +428,13 @@ public class BuildMetadataFromXml {
       numberDesc.possibleNumberPattern = "NA";
       return numberDesc;
     }
-    if (generalDesc.nationalNumberPattern.length() != 0) {
+    if (!generalDesc.nationalNumberPattern.equals("")) {
       numberDesc.nationalNumberPattern = generalDesc.nationalNumberPattern;
     }
-    if (generalDesc.possibleNumberPattern.length() != 0) {
+    if (!generalDesc.possibleNumberPattern.equals("")) {
       numberDesc.possibleNumberPattern = generalDesc.possibleNumberPattern;
     }
-    if (generalDesc.exampleNumber.length() != 0) {
+    if (!generalDesc.exampleNumber.equals("")) {
       numberDesc.exampleNumber = generalDesc.exampleNumber;
     }
 
