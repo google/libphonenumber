@@ -1,4 +1,7 @@
 Oct 08, 2015: libphonenumber-7.1.0
+API changes:
+ - New MetadataSource implementation that reads from a single metadata file with
+   all regions' phone number metadata.
 Metadata changes:
  - Updated phone metadata for region code(s): BR, BS, HT, IR, KW, MC, PA, VU
  - Updated carrier data for country calling code(s):
