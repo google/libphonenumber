@@ -668,14 +668,14 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         util.chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
     // To do this, we check that a national prefix formatting rule was present and that it wasn't
     // just the first-group symbol ($1) with punctuation.
-    if ((formatRule != null) && formatRule.getNationalPrefixFormattingRule().length() > 0) {
-      if (formatRule.isNationalPrefixOptionalWhenFormatting()) {
+    if ((formatRule != null) && formatRule.nationalPrefixFormattingRule.length() > 0) {
+      if (formatRule.nationalPrefixOptionalWhenFormatting) {
         // The national-prefix is optional in these cases, so we don't need to check if it was
         // present.
         return true;
       }
       if (PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
-          formatRule.getNationalPrefixFormattingRule())) {
+          formatRule.nationalPrefixFormattingRule)) {
         // National Prefix not needed for this number.
         return true;
       }
