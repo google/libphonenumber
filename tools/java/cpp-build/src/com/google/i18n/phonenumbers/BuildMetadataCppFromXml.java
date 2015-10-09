@@ -201,6 +201,7 @@ public class BuildMetadataCppFromXml extends Command {
   // @VisibleForTesting
   void writePhoneMetadataCollection(
       String inputFilePath, boolean liteMetadata, OutputStream out) throws IOException, Exception {
+    // Note: This is a stub and does nothing.
     BuildMetadataFromXml.buildPhoneMetadataCollection(inputFilePath, liteMetadata).writeTo(out);
   }
 
