@@ -137,7 +137,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("US", metadata.id);
     assertEquals(1, metadata.countryCode);
     assertEquals("011", metadata.internationalPrefix);
-    assertTrue(metadata.nationalPrefix.length() != 0);
+    assertTrue(!metadata.nationalPrefix.equals(""));
     assertEquals(2, metadata.numberFormat.length);
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
                  metadata.numberFormat[1].pattern);

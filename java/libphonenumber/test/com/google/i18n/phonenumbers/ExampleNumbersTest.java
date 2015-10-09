@@ -144,7 +144,7 @@ public class ExampleNumbersTest extends TestCase {
       PhoneNumberDesc desc =
           phoneNumberUtil.getMetadataForRegion(regionCode).noInternationalDialling;
       try {
-        if (desc.exampleNumber.length() != 0) {
+        if (!desc.exampleNumber.equals("")) {
           exampleNumber = phoneNumberUtil.parse(desc.exampleNumber, regionCode);
         }
       } catch (NumberParseException e) {
@@ -217,7 +217,7 @@ public class ExampleNumbersTest extends TestCase {
     for (String regionCode : shortNumberInfo.getSupportedRegions()) {
       PhoneNumberDesc desc =
           MetadataManager.getShortNumberMetadataForRegion(regionCode).emergency;
-      if (desc.exampleNumber.length() != 0) {
+      if (!desc.exampleNumber.equals("")) {
         String exampleNumber = desc.exampleNumber;
         PhoneNumber phoneNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
         if (!shortNumberInfo.isPossibleShortNumberForRegion(phoneNumber, regionCode)
@@ -240,7 +240,7 @@ public class ExampleNumbersTest extends TestCase {
       // Test the carrier-specific tag.
       PhoneNumberDesc desc =
           MetadataManager.getShortNumberMetadataForRegion(regionCode).carrierSpecific;
-      if (desc.exampleNumber.length() != 0) {
+      if (!desc.exampleNumber.equals("")) {
         String exampleNumber = desc.exampleNumber;
         PhoneNumber carrierSpecificNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
         if (!shortNumberInfo.isPossibleShortNumberForRegion(carrierSpecificNumber, regionCode)
