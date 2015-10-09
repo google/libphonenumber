@@ -37,6 +37,8 @@ Vcs-Git: git://anonscm.debian.org/collab-maint/libphonenumber.git
 Package: libphonenumber7-java
 Section: java
 Architecture: all
+Conflicts: libphonenumber6-java
+Replaces: libphonenumber6-java
 Depends: ${misc:Depends}, ${maven:Depends}
 Recommends: ${maven:OptionalDepends}
 Description: parsing/formatting/validating phone numbers - java
