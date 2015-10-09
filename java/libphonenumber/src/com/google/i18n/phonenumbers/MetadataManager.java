@@ -80,7 +80,7 @@ class MetadataManager {
       PhoneMetadataCollection alternateFormats = new PhoneMetadataCollection();
       alternateFormats.readExternal(in);
       for (PhoneMetadata metadata : alternateFormats.getMetadataList()) {
-        callingCodeToAlternateFormatsMap.put(metadata.getCountryCode(), metadata);
+        callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
       }
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
