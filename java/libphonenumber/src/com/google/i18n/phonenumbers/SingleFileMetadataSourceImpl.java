@@ -110,8 +110,8 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
         throw new IllegalStateException("empty metadata: " + fileName);
       }
       for (PhoneMetadata metadata : metadataList) {
-        String regionCode = metadata.getId();
-        int countryCallingCode = metadata.getCountryCode();
+        String regionCode = metadata.id;
+        int countryCallingCode = metadata.countryCode;
         boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
         if (isNonGeoRegion) {
           countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
