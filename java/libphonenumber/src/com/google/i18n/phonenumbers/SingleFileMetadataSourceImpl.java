@@ -16,8 +16,9 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -104,14 +105,14 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
     try {
       in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
-      List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
-      if (metadataList.isEmpty()) {
+      PhoneMetadata[] metadataList = metadataCollection.metadata;
+      if (metadataList.length == 0) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
         throw new IllegalStateException("empty metadata: " + fileName);
       }
       for (PhoneMetadata metadata : metadataList) {
-        String regionCode = metadata.getId();
-        int countryCallingCode = metadata.getCountryCode();
+        String regionCode = metadata.id;
+        int countryCallingCode = metadata.countryCode;
         boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
         if (isNonGeoRegion) {
           countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
@@ -133,9 +134,15 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
    * @return        the loaded metadata protocol buffer.
    */
   private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
+    // The size of the byte buffer for deserializing the single nano metadata file which holds
+    // metadata for all regions.
+    final int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
+
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.readExternal(source);
+      CodedInputByteBufferNano byteBuffer = MetadataManager.convertStreamToByteBuffer(
+          source, SINGLE_FILE_BUFFER_SIZE);
+      metadataCollection.mergeFrom(byteBuffer);
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

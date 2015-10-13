@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers.internal;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.RegexCache;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.util.regex.Matcher;
 
@@ -38,7 +38,7 @@ public final class RegexBasedMatcher implements MatcherApi {
   public boolean matchesNationalNumber(String nationalNumber, PhoneNumberDesc numberDesc,
       boolean allowPrefixMatch) {
     Matcher nationalNumberPatternMatcher = regexCache.getPatternForRegex(
-        numberDesc.getNationalNumberPattern()).matcher(nationalNumber);
+        numberDesc.nationalNumberPattern).matcher(nationalNumber);
     return nationalNumberPatternMatcher.matches()
         || (allowPrefixMatch && nationalNumberPatternMatcher.lookingAt());
   }
@@ -46,7 +46,7 @@ public final class RegexBasedMatcher implements MatcherApi {
   // @Override
   public boolean matchesPossibleNumber(String nationalNumber, PhoneNumberDesc numberDesc) {
     Matcher possibleNumberPatternMatcher = regexCache.getPatternForRegex(
-        numberDesc.getPossibleNumberPattern()).matcher(nationalNumber);
+        numberDesc.possibleNumberPattern).matcher(nationalNumber);
     return possibleNumberPatternMatcher.matches();
   }
 }
