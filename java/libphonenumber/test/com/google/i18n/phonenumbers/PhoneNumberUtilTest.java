@@ -132,6 +132,12 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertNull(phoneUtil.getMetadataForNonGeographicalRegion(-1));
   }
 
+  private boolean exactlySame(PhoneNumberDesc first, PhoneNumberDesc second) {
+    return first.nationalNumberPattern.equals(second.nationalNumberPattern) &&
+        first.possibleNumberPattern.equals(second.possibleNumberPattern) &&
+        first.exampleNumber.equals(second.exampleNumber);
+  }
+
   public void testGetInstanceLoadUSMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.US);
     assertEquals("US", metadata.id);
@@ -145,12 +151,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.generalDesc.nationalNumberPattern);
     assertEquals("\\d{7}(?:\\d{3})?", metadata.generalDesc.possibleNumberPattern);
-    assertTrue(metadata.generalDesc.nationalNumberPattern.equals(
-        metadata.fixedLine.nationalNumberPattern));
-    assertTrue(metadata.generalDesc.possibleNumberPattern.equals(
-        metadata.fixedLine.possibleNumberPattern));
-    assertTrue(metadata.generalDesc.exampleNumber.equals(
-        metadata.fixedLine.exampleNumber));
+    assertTrue(exactlySame(metadata.generalDesc, metadata.fixedLine));
     assertEquals("\\d{10}", metadata.tollFree.possibleNumberPattern);
     assertEquals("900\\d{7}", metadata.premiumRate.nationalNumberPattern);
     // No shared-cost data is available, so it should be initialised to "NA".
