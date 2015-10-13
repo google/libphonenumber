@@ -141,7 +141,7 @@ public class BuildMetadataFromXml {
       } else {
         // For most countries, there will be only one region code for the country calling code.
         List<String> listWithRegionCode = new ArrayList<String>(1);
-        if (!regionCode.isEmpty()) {  // For alternate formats, there are no region codes at all.
+        if (!regionCode.equals("")) {  // For alternate formats, there are no region codes at all.
           listWithRegionCode.add(regionCode);
         }
         countryCodeToRegionCodeMap.put(countryCode, listWithRegionCode);
@@ -261,7 +261,7 @@ public class BuildMetadataFromXml {
       hasExplicitIntlFormatDefined = true;
     }
 
-    if (!intlFormat.format.isEmpty()) {
+    if (!intlFormat.format.equals("")) {
       List<NumberFormat> formatList =
           new ArrayList<NumberFormat>(Arrays.asList(metadata.intlNumberFormat));
       formatList.add(intlFormat);
@@ -428,6 +428,7 @@ public class BuildMetadataFromXml {
       numberDesc.possibleNumberPattern = "NA";
       return numberDesc;
     }
+    // TODO: Refactor into a utility class.
     if (!generalDesc.nationalNumberPattern.equals("")) {
       numberDesc.nationalNumberPattern = generalDesc.nationalNumberPattern;
     }
