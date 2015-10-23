@@ -1540,7 +1540,7 @@
             )
           )\d{5,9}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{9,13}</possibleNumberPattern>
+        <possibleNumberPattern>\d{8,13}</possibleNumberPattern>
         <exampleNumber>810123456</exampleNumber>
       </sharedCost>
       <voip>
