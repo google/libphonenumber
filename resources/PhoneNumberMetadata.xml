@@ -1400,12 +1400,10 @@
             51|
             732|
             6(?:
-              44|
               5[0-3579]|
               [6-9]
             )|
             7(?:
-              1|
               [28]0
             )|
             [89]
@@ -1423,7 +1421,7 @@
             5[2-6]|
             6(?:
               [12]|
-              4[1-35-9]|
+              4[1-9]|
               5[468]
             )|
             7(?:
@@ -1503,24 +1501,22 @@
       <mobile>
         <nationalNumberPattern>
           6(?:
-            44|
             5[0-3579]|
             6[013-9]|
             [7-9]\d
           )\d{4,10}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,13}</possibleNumberPattern>
-        <exampleNumber>644123456</exampleNumber>
+        <exampleNumber>664123456</exampleNumber>
       </mobile>
       <tollFree>
-        <nationalNumberPattern>80[02]\d{6,10}</nationalNumberPattern>
+        <nationalNumberPattern>800\d{6,10}</nationalNumberPattern>
         <possibleNumberPattern>\d{9,13}</possibleNumberPattern>
         <exampleNumber>800123456</exampleNumber>
       </tollFree>
       <premiumRate>
         <nationalNumberPattern>
           (?:
-            711|
             9(?:
               0[01]|
               3[019]
