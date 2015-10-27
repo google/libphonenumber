@@ -1639,10 +1639,12 @@ public class PhoneNumberUtil {
     } else {
       // Invalid region entered as country-calling-from (so no metadata was found for it) or the
       // region chosen has multiple international dialling prefixes.
-      logger.log(Level.WARNING,
-                 "Trying to format number from invalid region "
-                 + regionCallingFrom
-                 + ". International formatting applied.");
+      if (!isValidRegionCode(regionCallingFrom)) {
+        logger.log(Level.WARNING,
+                   "Trying to format number from invalid region "
+                   + regionCallingFrom
+                   + ". International formatting applied.");
+      }
       prefixNumberWithCountryCallingCode(countryCode,
                                          PhoneNumberFormat.INTERNATIONAL,
                                          formattedNumber);
