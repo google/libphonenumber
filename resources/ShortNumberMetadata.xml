@@ -730,17 +730,22 @@
     <!-- http://www.itu.int/oth/T0202000013/en -->
     <territory id="BB">
       <generalDesc>
-        <nationalNumberPattern>[235]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[2-689]\d{2}</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>[235]11</nationalNumberPattern>
+        <nationalNumberPattern>[2-689]11</nationalNumberPattern>
         <exampleNumber>211</exampleNumber>
       </shortCode>
       <emergency>
-        <nationalNumberPattern>[235]11</nationalNumberPattern>
+        <nationalNumberPattern>[2359]11</nationalNumberPattern>
         <exampleNumber>211</exampleNumber>
       </emergency>
+      <directoryServices>
+        <nationalNumberPattern>411</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>411</exampleNumber>
+      </directoryServices>
     </territory>
 
     <!-- Bangladesh -->
@@ -6766,15 +6771,21 @@
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>116117</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116117</exampleNumber>
+      </tollFree>
       <emergency>
-        <nationalNumberPattern>
-          11(?:
-             [023]|
-             6117
-            )
-        </nationalNumberPattern>
+        <nationalNumberPattern>11[023]</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>116117</nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116117</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Nepal -->

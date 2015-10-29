@@ -12,7 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-96894|Nawras
-96895|Nawras
-96896|Nawras
-96897|Nawras
+96890|Omantel/Ooredoo
+96891|Omantel
+96892|Omantel
+96893|Omantel
+96894|Ooredoo
+96895|Ooredoo
+96896|Ooredoo
+96897|Ooredoo
+96898|Omantel
+96899|Omantel
