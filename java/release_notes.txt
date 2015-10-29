@@ -1,3 +1,13 @@
+Oct 29, 2015: libphonenumber-7.1.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AT, BB, BR, GW, ID, MD, OM, SO, TT
+ - Updated short number metadata for region code(s): BB, NO
+ - New geocoding data for country calling code(s): 968 (en)
+ - Updated geocoding data for country calling code(s): 245 (en, pt)
+ - Updated carrier data for country calling code(s):
+   62 (en), 245 (en), 252 (en), 373 (en), 968 (en), 1246 (en)
+
 Oct 08, 2015: libphonenumber-7.1.0
 API changes:
  - New MetadataSource implementation that reads from a single metadata file with

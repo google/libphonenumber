@@ -112,8 +112,6 @@
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
       <version>2.6.1</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/../../../java/lib/protobuf-java-2.6.1.jar</systemPath>
     </dependency>
   </dependencies>
 
