@@ -49,6 +49,12 @@
     </plugins>
   </build>
 
+  <repositories>
+    <repository>
+      <id>protobuf-java-lib</id>
+      <url>file://${project.basedir}/../../../java/lib</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
