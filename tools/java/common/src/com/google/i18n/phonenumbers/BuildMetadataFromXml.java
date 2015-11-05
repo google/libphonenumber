@@ -319,14 +319,12 @@ public class BuildMetadataFromXml {
           format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
         }
 
-        if (format.hasNationalPrefixFormattingRule()) {
-          if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)) {
-            format.setNationalPrefixOptionalWhenFormatting(
-                Boolean.valueOf(numberFormatElement.getAttribute(
-                    NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)));
-          } else {
-            format.setNationalPrefixOptionalWhenFormatting(nationalPrefixOptionalWhenFormatting);
-          }
+        if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)) {
+          format.setNationalPrefixOptionalWhenFormatting(
+              Boolean.valueOf(numberFormatElement.getAttribute(
+                  NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)));
+        } else {
+          format.setNationalPrefixOptionalWhenFormatting(nationalPrefixOptionalWhenFormatting);
         }
         if (numberFormatElement.hasAttribute(CARRIER_CODE_FORMATTING_RULE)) {
           format.setDomesticCarrierCodeFormattingRule(validateRE(
