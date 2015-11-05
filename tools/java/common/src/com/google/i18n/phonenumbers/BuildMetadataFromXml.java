@@ -325,14 +325,12 @@ public class BuildMetadataFromXml {
           format.nationalPrefixFormattingRule = nationalPrefixFormattingRule;
         }
 
-        if (!format.nationalPrefixFormattingRule.equals("")) {
-          if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)) {
-            format.nationalPrefixOptionalWhenFormatting =
-                Boolean.valueOf(numberFormatElement.getAttribute(
-                    NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
-          } else {
-            format.nationalPrefixOptionalWhenFormatting = nationalPrefixOptionalWhenFormatting;
-          }
+        if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)) {
+          format.nationalPrefixOptionalWhenFormatting =
+              Boolean.valueOf(numberFormatElement.getAttribute(
+                  NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
+        } else {
+          format.nationalPrefixOptionalWhenFormatting = nationalPrefixOptionalWhenFormatting;
         }
         if (numberFormatElement.hasAttribute(CARRIER_CODE_FORMATTING_RULE)) {
           format.domesticCarrierCodeFormattingRule = validateRE(
