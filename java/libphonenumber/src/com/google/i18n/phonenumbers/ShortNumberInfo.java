@@ -16,11 +16,11 @@
 
 package com.google.i18n.phonenumbers;
 
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.internal.MatcherApi;
 import com.google.i18n.phonenumbers.internal.RegexBasedMatcher;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
-import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +31,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 /**
  * Methods for getting information about short phone numbers, such as short codes and emergency
@@ -131,7 +130,7 @@ public class ShortNumberInfo {
     if (phoneMetadata == null) {
       return false;
     }
-    return matcherApi.matchesPossibleNumber(shortNumber, phoneMetadata.getGeneralDesc());
+    return matcherApi.matchesPossibleNumber(shortNumber, phoneMetadata.generalDesc);
   }
 
   /**
@@ -152,7 +151,7 @@ public class ShortNumberInfo {
       return false;
     }
     return matcherApi.matchesPossibleNumber(getNationalSignificantNumber(number),
-        phoneMetadata.getGeneralDesc());
+        phoneMetadata.generalDesc);
   }
 
   /**
@@ -172,7 +171,7 @@ public class ShortNumberInfo {
       if (phoneMetadata == null) {
         continue;
       }
-      if (matcherApi.matchesPossibleNumber(shortNumber, phoneMetadata.getGeneralDesc())) {
+      if (matcherApi.matchesPossibleNumber(shortNumber, phoneMetadata.generalDesc)) {
         return true;
       }
     }
@@ -200,11 +199,11 @@ public class ShortNumberInfo {
     if (phoneMetadata == null) {
       return false;
     }
-    PhoneNumberDesc generalDesc = phoneMetadata.getGeneralDesc();
+    PhoneNumberDesc generalDesc = phoneMetadata.generalDesc;
     if (!matchesPossibleNumberAndNationalNumber(shortNumber, generalDesc)) {
       return false;
     }
-    PhoneNumberDesc shortNumberDesc = phoneMetadata.getShortCode();
+    PhoneNumberDesc shortNumberDesc = phoneMetadata.shortCode;
     return matchesPossibleNumberAndNationalNumber(shortNumber, shortNumberDesc);
   }
 
@@ -227,11 +226,11 @@ public class ShortNumberInfo {
       return false;
     }
     String shortNumber = getNationalSignificantNumber(number);
-    PhoneNumberDesc generalDesc = phoneMetadata.getGeneralDesc();
+    PhoneNumberDesc generalDesc = phoneMetadata.generalDesc;
     if (!matchesPossibleNumberAndNationalNumber(shortNumber, generalDesc)) {
       return false;
     }
-    PhoneNumberDesc shortNumberDesc = phoneMetadata.getShortCode();
+    PhoneNumberDesc shortNumberDesc = phoneMetadata.shortCode;
     return matchesPossibleNumberAndNationalNumber(shortNumber, shortNumberDesc);
   }
 
@@ -293,13 +292,13 @@ public class ShortNumberInfo {
 
     // The cost categories are tested in order of decreasing expense, since if for some reason the
     // patterns overlap the most expensive matching cost category should be returned.
-    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.getPremiumRate())) {
+    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.premiumRate)) {
       return ShortNumberCost.PREMIUM_RATE;
     }
-    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.getStandardRate())) {
+    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.standardRate)) {
       return ShortNumberCost.STANDARD_RATE;
     }
-    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.getTollFree())) {
+    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.tollFree)) {
       return ShortNumberCost.TOLL_FREE;
     }
     if (isEmergencyNumber(shortNumber, regionDialingFrom)) {
@@ -347,13 +346,13 @@ public class ShortNumberInfo {
 
     // The cost categories are tested in order of decreasing expense, since if for some reason the
     // patterns overlap the most expensive matching cost category should be returned.
-    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.getPremiumRate())) {
+    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.premiumRate)) {
       return ShortNumberCost.PREMIUM_RATE;
     }
-    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.getStandardRate())) {
+    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.standardRate)) {
       return ShortNumberCost.STANDARD_RATE;
     }
-    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.getTollFree())) {
+    if (matchesPossibleNumberAndNationalNumber(shortNumber, phoneMetadata.tollFree)) {
       return ShortNumberCost.TOLL_FREE;
     }
     if (isEmergencyNumber(shortNumber, regionDialingFrom)) {
@@ -430,7 +429,7 @@ public class ShortNumberInfo {
     for (String regionCode : regionCodes) {
       PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(regionCode);
       if (phoneMetadata != null
-          && matchesPossibleNumberAndNationalNumber(nationalNumber, phoneMetadata.getShortCode())) {
+          && matchesPossibleNumberAndNationalNumber(nationalNumber, phoneMetadata.shortCode)) {
         // The number is valid for this region.
         return regionCode;
       }
@@ -458,9 +457,9 @@ public class ShortNumberInfo {
     if (phoneMetadata == null) {
       return "";
     }
-    PhoneNumberDesc desc = phoneMetadata.getShortCode();
-    if (desc.hasExampleNumber()) {
-      return desc.getExampleNumber();
+    PhoneNumberDesc desc = phoneMetadata.shortCode;
+    if (!desc.exampleNumber.equals("")) {
+      return desc.exampleNumber;
     }
     return "";
   }
@@ -482,20 +481,20 @@ public class ShortNumberInfo {
     PhoneNumberDesc desc = null;
     switch (cost) {
       case TOLL_FREE:
-        desc = phoneMetadata.getTollFree();
+        desc = phoneMetadata.tollFree;
         break;
       case STANDARD_RATE:
-        desc = phoneMetadata.getStandardRate();
+        desc = phoneMetadata.standardRate;
         break;
       case PREMIUM_RATE:
-        desc = phoneMetadata.getPremiumRate();
+        desc = phoneMetadata.premiumRate;
         break;
       default:
         // UNKNOWN_COST numbers are computed by the process of elimination from the other cost
         // categories.
     }
-    if (desc != null && desc.hasExampleNumber()) {
-      return desc.getExampleNumber();
+    if (desc != null && !desc.exampleNumber.equals("")) {
+      return desc.exampleNumber;
     }
     return "";
   }
@@ -544,12 +543,12 @@ public class ShortNumberInfo {
       return false;
     }
     PhoneMetadata metadata = MetadataManager.getShortNumberMetadataForRegion(regionCode);
-    if (metadata == null || !metadata.hasEmergency()) {
+    if (metadata == null || metadata.emergency == null) {
       return false;
     }
 
     String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(number);
-    PhoneNumberDesc emergencyDesc = metadata.getEmergency();
+    PhoneNumberDesc emergencyDesc = metadata.emergency;
     boolean allowPrefixMatchForRegion =
         allowPrefixMatch && !REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.contains(regionCode);
     return matcherApi.matchesNationalNumber(normalizedNumber, emergencyDesc,
@@ -573,7 +572,7 @@ public class ShortNumberInfo {
     PhoneMetadata phoneMetadata = MetadataManager.getShortNumberMetadataForRegion(regionCode);
     return (phoneMetadata != null)
         && (matchesPossibleNumberAndNationalNumber(nationalNumber,
-                phoneMetadata.getCarrierSpecific()));
+                phoneMetadata.carrierSpecific));
   }
 
   /**

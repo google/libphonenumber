@@ -16,10 +16,10 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -130,17 +130,17 @@ public class BuildMetadataJsonFromXml extends Command {
                                                 BufferedWriter writer) throws IOException {
     writer.write("{\n");
     boolean isFirstTimeInLoop = true;
-    for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
+    for (PhoneMetadata metadata : metadataCollection.metadata) {
       if (isFirstTimeInLoop) {
         isFirstTimeInLoop = false;
       } else {
         writer.write(",");
       }
-      String key = metadata.getId();
+      String key = metadata.id;
       // For non-geographical country calling codes (e.g. +800), use the country calling codes
       // instead of the region code as key in the map.
       if (key.equals("001")) {
-        key = Integer.toString(metadata.getCountryCode());
+        key = Integer.toString(metadata.countryCode);
       }
       JSArrayBuilder jsArrayBuilder = new JSArrayBuilder();
       toJsArray(metadata, jsArrayBuilder);
@@ -182,35 +182,35 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 0
     jsArrayBuilder.append(null);
     // required string pattern = 1;
-    jsArrayBuilder.append(format.getPattern());
+    jsArrayBuilder.append(format.pattern);
     // required string format = 2;
-    jsArrayBuilder.append(format.getFormat());
+    jsArrayBuilder.append(format.format);
     // repeated string leading_digits_pattern = 3;
-    int leadingDigitsPatternSize = format.leadingDigitsPatternSize();
+    int leadingDigitsPatternSize = format.leadingDigitsPattern.length;
     if (leadingDigitsPatternSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
-        jsArrayBuilder.append(format.getLeadingDigitsPattern(i));
+        jsArrayBuilder.append(format.leadingDigitsPattern[i]);
       }
       jsArrayBuilder.endArray();
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_formatting_rule = 4;
-    if (format.hasNationalPrefixFormattingRule()) {
-      jsArrayBuilder.append(format.getNationalPrefixFormattingRule());
+    if (!format.nationalPrefixFormattingRule.equals("")) {
+      jsArrayBuilder.append(format.nationalPrefixFormattingRule);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string domestic_carrier_code_formatting_rule = 5;
-    if (format.hasDomesticCarrierCodeFormattingRule()) {
-      jsArrayBuilder.append(format.getDomesticCarrierCodeFormattingRule());
+    if (!format.domesticCarrierCodeFormattingRule.equals("")) {
+      jsArrayBuilder.append(format.domesticCarrierCodeFormattingRule);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional bool national_prefix_optional_when_formatting = 6;
-    if (format.hasNationalPrefixOptionalWhenFormatting()) {
-      jsArrayBuilder.append(format.isNationalPrefixOptionalWhenFormatting());
+    if (format.nationalPrefixOptionalWhenFormatting) {
+      jsArrayBuilder.append(format.nationalPrefixOptionalWhenFormatting);
     } else {
       jsArrayBuilder.append(null);
     }
@@ -233,14 +233,14 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 1
     jsArrayBuilder.append(null);
     // optional string national_number_pattern = 2;
-    if (desc.hasNationalNumberPattern()) {
-      jsArrayBuilder.append(desc.getNationalNumberPattern());
+    if (!desc.nationalNumberPattern.equals("")) {
+      jsArrayBuilder.append(desc.nationalNumberPattern);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string possible_number_pattern = 3;
-    if (desc.hasPossibleNumberPattern()) {
-      jsArrayBuilder.append(desc.getPossibleNumberPattern());
+    if (!desc.possibleNumberPattern.equals("")) {
+      jsArrayBuilder.append(desc.possibleNumberPattern);
     } else {
       jsArrayBuilder.append(null);
     }
@@ -249,8 +249,8 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 5
     jsArrayBuilder.append(null);
     // optional string example_number = 6;
-    if (desc.hasExampleNumber()) {
-      jsArrayBuilder.append(desc.getExampleNumber());
+    if (!desc.exampleNumber.equals("")) {
+      jsArrayBuilder.append(desc.exampleNumber);
     } else {
       jsArrayBuilder.append(null);
     }
@@ -265,124 +265,124 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 0
     jsArrayBuilder.append(null);
     // optional PhoneNumberDesc general_desc = 1;
-    toJsArray(metadata.getGeneralDesc(), jsArrayBuilder);
+    toJsArray(metadata.generalDesc, jsArrayBuilder);
     // optional PhoneNumberDesc fixed_line = 2;
-    toJsArray(metadata.getFixedLine(), jsArrayBuilder);
+    toJsArray(metadata.fixedLine, jsArrayBuilder);
     // optional PhoneNumberDesc mobile = 3;
-    toJsArray(metadata.getMobile(), jsArrayBuilder);
+    toJsArray(metadata.mobile, jsArrayBuilder);
     // optional PhoneNumberDesc toll_free = 4;
-    toJsArray(metadata.getTollFree(), jsArrayBuilder);
+    toJsArray(metadata.tollFree, jsArrayBuilder);
     // optional PhoneNumberDesc premium_rate = 5;
-    toJsArray(metadata.getPremiumRate(), jsArrayBuilder);
+    toJsArray(metadata.premiumRate, jsArrayBuilder);
     // optional PhoneNumberDesc shared_cost = 6;
-    toJsArray(metadata.getSharedCost(), jsArrayBuilder);
+    toJsArray(metadata.sharedCost, jsArrayBuilder);
     // optional PhoneNumberDesc personal_number = 7;
-    toJsArray(metadata.getPersonalNumber(), jsArrayBuilder);
+    toJsArray(metadata.personalNumber, jsArrayBuilder);
     // optional PhoneNumberDesc voip = 8;
-    toJsArray(metadata.getVoip(), jsArrayBuilder);
+    toJsArray(metadata.voip, jsArrayBuilder);
     // required string id = 9;
-    jsArrayBuilder.append(metadata.getId());
+    jsArrayBuilder.append(metadata.id);
     // optional int32 country_code = 10;
-    if (metadata.hasCountryCode()) {
-      jsArrayBuilder.append(metadata.getCountryCode());
+    if (metadata.countryCode != 0) {
+      jsArrayBuilder.append(metadata.countryCode);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string international_prefix = 11;
-    if (metadata.hasInternationalPrefix()) {
-      jsArrayBuilder.append(metadata.getInternationalPrefix());
+    if (!metadata.internationalPrefix.equals("")) {
+      jsArrayBuilder.append(metadata.internationalPrefix);
     } else {
       jsArrayBuilder.append(null);
     }
 
     // optional string national_prefix = 12;
-    if (metadata.hasNationalPrefix()) {
-      jsArrayBuilder.append(metadata.getNationalPrefix());
+    if (!metadata.nationalPrefix.equals("")) {
+      jsArrayBuilder.append(metadata.nationalPrefix);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string preferred_extn_prefix = 13;
-    if (metadata.hasPreferredExtnPrefix()) {
-      jsArrayBuilder.append(metadata.getPreferredExtnPrefix());
+    if (!metadata.preferredExtnPrefix.equals("")) {
+      jsArrayBuilder.append(metadata.preferredExtnPrefix);
     } else {
       jsArrayBuilder.append(null);
     }
     // missing 14
     jsArrayBuilder.append(null);
     // optional string national_prefix_for_parsing = 15;
-    if (metadata.hasNationalPrefixForParsing()) {
-      jsArrayBuilder.append(metadata.getNationalPrefixForParsing());
+    if (!metadata.nationalPrefixForParsing.equals("")) {
+      jsArrayBuilder.append(metadata.nationalPrefixForParsing);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_transform_rule = 16;
-    if (metadata.hasNationalPrefixTransformRule()) {
-      jsArrayBuilder.append(metadata.getNationalPrefixTransformRule());
+    if (!metadata.nationalPrefixTransformRule.equals("")) {
+      jsArrayBuilder.append(metadata.nationalPrefixTransformRule);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string preferred_international_prefix = 17;
-    if (metadata.hasPreferredInternationalPrefix()) {
-      jsArrayBuilder.append(metadata.getPreferredInternationalPrefix());
+    if (!metadata.preferredInternationalPrefix.equals("")) {
+      jsArrayBuilder.append(metadata.preferredInternationalPrefix);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional bool same_mobile_and_fixed_line_pattern = 18 [default=false];
-    if (metadata.isSameMobileAndFixedLinePattern()) {
+    if (metadata.sameMobileAndFixedLinePattern) {
       jsArrayBuilder.append(1);
     } else {
       jsArrayBuilder.append(null);
     }
     // repeated NumberFormat number_format = 19;
-    int numberFormatSize = metadata.numberFormatSize();
+    int numberFormatSize = metadata.numberFormat.length;
     if (numberFormatSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < numberFormatSize; i++) {
-        toJsArray(metadata.getNumberFormat(i), jsArrayBuilder);
+        toJsArray(metadata.numberFormat[i], jsArrayBuilder);
       }
       jsArrayBuilder.endArray();
     } else {
       jsArrayBuilder.append(null);
     }
     // repeated NumberFormat intl_number_format = 20;
-    int intlNumberFormatSize = metadata.intlNumberFormatSize();
+    int intlNumberFormatSize = metadata.intlNumberFormat.length;
     if (intlNumberFormatSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < intlNumberFormatSize; i++) {
-        toJsArray(metadata.getIntlNumberFormat(i), jsArrayBuilder);
+        toJsArray(metadata.intlNumberFormat[i], jsArrayBuilder);
       }
       jsArrayBuilder.endArray();
     } else {
       jsArrayBuilder.append(null);
     }
     // optional PhoneNumberDesc pager = 21;
-    toJsArray(metadata.getPager(), jsArrayBuilder);
+    toJsArray(metadata.pager, jsArrayBuilder);
     // optional bool main_country_for_code = 22 [default=false];
-    if (metadata.isMainCountryForCode()) {
+    if (metadata.mainCountryForCode) {
       jsArrayBuilder.append(1);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string leading_digits = 23;
-    if (metadata.hasLeadingDigits()) {
-      jsArrayBuilder.append(metadata.getLeadingDigits());
+    if (!metadata.leadingDigits.equals("")) {
+      jsArrayBuilder.append(metadata.leadingDigits);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional PhoneNumberDesc no_international_dialling = 24;
-    toJsArray(metadata.getNoInternationalDialling(), jsArrayBuilder);
+    toJsArray(metadata.noInternationalDialling, jsArrayBuilder);
     // optional PhoneNumberDesc uan = 25;
-    toJsArray(metadata.getUan(), jsArrayBuilder);
+    toJsArray(metadata.uan, jsArrayBuilder);
     // optional bool leading_zero_possible = 26 [default=false];
-    if (metadata.isLeadingZeroPossible()) {
+    if (metadata.leadingZeroPossible) {
       jsArrayBuilder.append(1);
     } else {
       jsArrayBuilder.append(null);
     }
     // optional PhoneNumberDesc emergency = 27;
-    toJsArray(metadata.getEmergency(), jsArrayBuilder);
+    toJsArray(metadata.emergency, jsArrayBuilder);
     // optional PhoneNumberDesc voicemail = 28;
-    toJsArray(metadata.getVoicemail(), jsArrayBuilder);
+    toJsArray(metadata.voicemail, jsArrayBuilder);
     // Fields 29-31 are omitted due to space increase.
     // optional PhoneNumberDesc short_code = 29;
     // optional PhoneNumberDesc standard_rate = 30;

@@ -30,26 +30,6 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <!-- Create a directory called 'generated'. -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>create-generated-directory</id>
-            <phase>generate-sources</phase>
-            <configuration>
-              <tasks>
-                <mkdir dir="generated"/>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Add generated/ to the source directories. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -62,9 +42,11 @@
             </goals>
             <configuration>
               <sources>
-                <source>generated/</source>
-                <!-- Also add ../common/src/ which contains BuildMetadataFromXml.java -->
+                <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
+                <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
+                     the source directories. -->
+                <source>../../../java/libphonenumber/src/</source>
               </sources>
             </configuration>
           </execution>
@@ -85,7 +67,7 @@
         <configuration>
           <executable>protoc</executable>
           <arguments>
-            <argument>--java_out=generated</argument>
+            <argument>--javanano_out=java_package=phonemetadata.proto|com.google.i18n.phonenumbers.nano:../../../java/libphonenumber/src</argument>
             <argument>../../../resources/phonemetadata.proto</argument>
             <argument>--proto_path=../../../resources</argument>
           </arguments>
@@ -132,6 +114,12 @@
     </plugins>
   </build>
 
+  <repositories>
+    <repository>
+      <id>protobuf-java-lib</id>
+      <url>file://${project.basedir}/../../../java/lib</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -100,18 +100,17 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
       logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    ObjectInputStream in = null;
     try {
-      in = new ObjectInputStream(source);
-      PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
-      List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
-      if (metadataList.isEmpty()) {
+      PhoneMetadataCollection metadataCollection =
+          loadMetadataAndCloseInput(new ObjectInputStream(source));
+      PhoneMetadata[] metadataList = metadataCollection.metadata;
+      if (metadataList.length == 0) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
         throw new IllegalStateException("empty metadata: " + fileName);
       }
       for (PhoneMetadata metadata : metadataList) {
-        String regionCode = metadata.getId();
-        int countryCallingCode = metadata.getCountryCode();
+        String regionCode = metadata.id;
+        int countryCallingCode = metadata.countryCode;
         boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
         if (isNonGeoRegion) {
           countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
@@ -133,9 +132,14 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
    * @return        the loaded metadata protocol buffer.
    */
   private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
+    // The size of the byte buffer for deserializing the single nano metadata file which holds
+    // metadata for all regions.
+    final int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
+
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.readExternal(source);
+      metadataCollection.mergeFrom(
+          MetadataManager.convertStreamToByteBuffer(source, SINGLE_FILE_BUFFER_SIZE));
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

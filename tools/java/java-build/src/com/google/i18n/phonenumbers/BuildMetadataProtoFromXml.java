@@ -16,8 +16,9 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedOutputByteBufferNano;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -159,23 +160,36 @@ public class BuildMetadataProtoFromXml extends Command {
           BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
 
       if (singleFile) {
+        int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
         FileOutputStream output = new FileOutputStream(filePrefix);
         ObjectOutputStream out = new ObjectOutputStream(output);
-        metadataCollection.writeExternal(out);
+        byte[] outputArray = new byte[SINGLE_FILE_BUFFER_SIZE];
+        CodedOutputByteBufferNano outputByteBuffer =
+            CodedOutputByteBufferNano.newInstance(outputArray);
+        metadataCollection.writeTo(outputByteBuffer);
+        out.write(outputArray, 0, outputByteBuffer.position());
+        out.flush();
         out.close();
       } else {
-        for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
-          String regionCode = metadata.getId();
-          // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
-          // country calling codes instead of the region code to form the file name.
+        int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
+        for (PhoneMetadata metadata : metadataCollection.metadata) {
+          String regionCode = metadata.id;
+          // For non-geographical country calling codes (e.g. +800), or for alternate formats, use
+          // the country calling codes instead of the region code to form the file name.
           if (regionCode.equals("001") || regionCode.isEmpty()) {
-            regionCode = Integer.toString(metadata.getCountryCode());
+            regionCode = Integer.toString(metadata.countryCode);
           }
           PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
-          outMetadataCollection.addMetadata(metadata);
+          outMetadataCollection.metadata = new PhoneMetadata[1];
+          outMetadataCollection.metadata[0] = metadata;
           FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
           ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
-          outMetadataCollection.writeExternal(out);
+          byte[] outputArray = new byte[MULTI_FILE_BUFFER_SIZE];
+          CodedOutputByteBufferNano outputBufferNano =
+              CodedOutputByteBufferNano.newInstance(outputArray);
+          outMetadataCollection.writeTo(outputBufferNano);
+          out.write(outputArray, 0, outputBufferNano.position());
+          out.flush();
           out.close();
         }
       }
