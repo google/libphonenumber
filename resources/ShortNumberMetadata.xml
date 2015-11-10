@@ -1412,7 +1412,7 @@
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          11[023]|
+          11[0-6]|
           40404
         </nationalNumberPattern>
         <exampleNumber>113</exampleNumber>
@@ -2654,17 +2654,43 @@
     <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[2-48]|
+            8(?:
+              01|
+              1[0238]|
+              28|
+              30|
+              5[13]|
+              81
+            )
+          )
+        </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <nationalNumberPattern>11[24]</nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <directoryServices>
+        <nationalNumberPattern>
+          1(?:
+            1[38]|
+            8(?:
+              01|
+              [12]8|
+              51
+            )
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <exampleNumber>113</exampleNumber>
+      </directoryServices>
     </territory>
 
     <!-- Dominica -->
