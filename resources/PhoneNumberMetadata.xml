@@ -20888,7 +20888,8 @@
           9(?:
             0[1-8]|
             1[0-24-9]|
-            4[0489]
+            4[0489]|
+            5[0]
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>912123456</exampleNumber>
