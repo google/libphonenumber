@@ -31,17 +31,16 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>**/SingleFileMetadataSourceImpl.class</exclude>
-            <exclude>**/SingleFileMetadataSourceImpl.java</exclude>
-            <exclude>**/SingleFileMetadataSourceImplTest.class</exclude>
-            <exclude>**/SingleFileMetadataSourceImplTest.java</exclude>
-            <exclude>**/SingleFilePhoneNumberMetadataProto</exclude>
-            <exclude>**/SingleFilePhoneNumberMetadataProtoForTesting</exclude>
-          </excludes>
-        </configuration>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
