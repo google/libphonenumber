@@ -1,3 +1,7 @@
+Nov 11, 2015: libphonenumber-7.2.1
+Metadata changes: None
+Fix to 7.2.0
+
 Nov 10, 2015: libphonenumber-7.2.0
 Metadata changes:
  - Updated phone metadata for region code(s):
