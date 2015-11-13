@@ -11,7 +11,8 @@ Metadata changes:
  - New carrier data for country calling code(s): 853 (en)
  - Updated carrier data for country calling code(s):
    45 (en), 257 (en), 421 (en), 964 (en), 972 (en), 975 (en), 976 (en)
-- Updated / refreshed time zone meta data.
+ - Updated / refreshed time zone meta data.
+ - Phonemetadata now generated as nanoproto
 
 Oct 29, 2015: libphonenumber-7.1.1
 Metadata changes:
