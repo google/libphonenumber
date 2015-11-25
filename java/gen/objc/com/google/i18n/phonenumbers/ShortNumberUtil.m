@@ -18,10 +18,12 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersShortNumberUtil_ShortNum
 
 @implementation ComGoogleI18nPhonenumbersShortNumberUtil
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersShortNumberUtil_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (id<JavaUtilSet>)getSupportedRegions {
   return [((ComGoogleI18nPhonenumbersShortNumberInfo *) nil_chk(ComGoogleI18nPhonenumbersShortNumberInfo_getInstance())) getSupportedRegions];
@@ -120,10 +122,10 @@ ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum *ComGoogleI18nPhone
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcFieldInfo fields[] = {
-    { "TOLL_FREE", "TOLL_FREE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_TOLL_FREE, NULL,  },
-    { "STANDARD_RATE", "STANDARD_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_STANDARD_RATE, NULL,  },
-    { "PREMIUM_RATE", "PREMIUM_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_PREMIUM_RATE, NULL,  },
-    { "UNKNOWN_COST", "UNKNOWN_COST", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_UNKNOWN_COST, NULL,  },
+    { "TOLL_FREE", "TOLL_FREE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_TOLL_FREE, NULL, .constantValue.asLong = 0 },
+    { "STANDARD_RATE", "STANDARD_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_STANDARD_RATE, NULL, .constantValue.asLong = 0 },
+    { "PREMIUM_RATE", "PREMIUM_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_PREMIUM_RATE, NULL, .constantValue.asLong = 0 },
+    { "UNKNOWN_COST", "UNKNOWN_COST", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum_UNKNOWN_COST, NULL, .constantValue.asLong = 0 },
   };
   static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum = { 2, "ShortNumberCost", "com.google.i18n.phonenumbers", "ShortNumberUtil", 0x4019, 0, NULL, 4, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/ShortNumberUtil$ShortNumberCost;>;" };

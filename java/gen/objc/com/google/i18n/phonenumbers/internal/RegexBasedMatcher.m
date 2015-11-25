@@ -32,10 +32,12 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatche
   return ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jboolean)matchesNationalNumberWithNSString:(NSString *)nationalNumber
 withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *)numberDesc
@@ -63,7 +65,7 @@ withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPho
     { "matchesPossibleNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:", "matchesPossibleNumber", "Z", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "regexCache_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.RegexCache;", NULL, NULL,  },
+    { "regexCache_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.RegexCache;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersInternalRegexBasedMatcher = { 2, "RegexBasedMatcher", "com.google.i18n.phonenumbers.internal", NULL, 0x11, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher;
@@ -78,7 +80,7 @@ id<ComGoogleI18nPhonenumbersInternalMatcherApi> ComGoogleI18nPhonenumbersInterna
 
 void ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_setAndConsume_regexCache_(self, new_ComGoogleI18nPhonenumbersRegexCache_initWithInt_(100));
+  JreStrongAssignAndConsume(&self->regexCache_, new_ComGoogleI18nPhonenumbersRegexCache_initWithInt_(100));
 }
 
 ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() {

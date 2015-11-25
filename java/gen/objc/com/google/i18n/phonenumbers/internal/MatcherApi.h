@@ -10,20 +10,23 @@
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;
 
-/**
- @brief Internal phonenumber matching API used to isolate the underlying implementation of the matcher and allow different implementations to be swapped in easily.
+/*!
+ @brief Internal phonenumber matching API used to isolate the underlying implementation of the
+ matcher and allow different implementations to be swapped in easily.
  */
 @protocol ComGoogleI18nPhonenumbersInternalMatcherApi < NSObject, JavaObject >
 
-/**
- @brief Returns whether the given national number (a string containing only decimal digits) matches the national number pattern defined in the given <code>PhoneNumberDesc</code> message.
+/*!
+ @brief Returns whether the given national number (a string containing only decimal digits) matches
+ the national number pattern defined in the given <code>PhoneNumberDesc</code> message.
  */
 - (jboolean)matchesNationalNumberWithNSString:(NSString *)nationalNumber
 withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *)numberDesc
                                   withBoolean:(jboolean)allowPrefixMatch;
 
-/**
- @brief Returns whether the given national number (a string containing only decimal digits) matches the possible number pattern defined in the given <code>PhoneNumberDesc</code> message.
+/*!
+ @brief Returns whether the given national number (a string containing only decimal digits) matches
+ the possible number pattern defined in the given <code>PhoneNumberDesc</code> message.
  */
 - (jboolean)matchesPossibleNumberWithNSString:(NSString *)nationalNumber
 withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *)numberDesc;

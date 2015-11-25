@@ -21,21 +21,21 @@
 
 @end
 
-static IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_;
-J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat, _emptyArray_, IOSObjectArray *)
-J2OBJC_STATIC_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat, _emptyArray_, IOSObjectArray *)
+static volatile_id ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat, _emptyArray_, IOSObjectArray *)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat, _emptyArray_, IOSObjectArray *)
 
-static IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_;
-J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc, _emptyArray_, IOSObjectArray *)
-J2OBJC_STATIC_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc, _emptyArray_, IOSObjectArray *)
+static volatile_id ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc, _emptyArray_, IOSObjectArray *)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc, _emptyArray_, IOSObjectArray *)
 
-static IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_;
-J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata, _emptyArray_, IOSObjectArray *)
-J2OBJC_STATIC_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata, _emptyArray_, IOSObjectArray *)
+static volatile_id ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata, _emptyArray_, IOSObjectArray *)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata, _emptyArray_, IOSObjectArray *)
 
-static IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_;
-J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection, _emptyArray_, IOSObjectArray *)
-J2OBJC_STATIC_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection, _emptyArray_, IOSObjectArray *)
+static volatile_id ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection, _emptyArray_, IOSObjectArray *)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection, _emptyArray_, IOSObjectArray *)
 
 @implementation ComGoogleI18nPhonenumbersNanoPhonemetadata
 
@@ -55,19 +55,21 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
   return ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_emptyArray();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *)clear {
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_pattern_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_format_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_leadingDigitsPattern_(self, ComGoogleProtobufNanoWireFormatNano_get_EMPTY_STRING_ARRAY_());
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_nationalPrefixFormattingRule_(self, @"");
-  nationalPrefixOptionalWhenFormatting_ = NO;
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_domesticCarrierCodeFormattingRule_(self, @"");
-  cachedSize_ = -1;
+  JreStrongAssign(&pattern_, @"");
+  JreStrongAssign(&format_, @"");
+  JreStrongAssign(&leadingDigitsPattern_, JreLoadStatic(ComGoogleProtobufNanoWireFormatNano, EMPTY_STRING_ARRAY_));
+  JreStrongAssign(&nationalPrefixFormattingRule_, @"");
+  nationalPrefixOptionalWhenFormatting_ = false;
+  JreStrongAssign(&domesticCarrierCodeFormattingRule_, @"");
+  JreAssignVolatileInt(&cachedSize_, -1);
   return self;
 }
 
@@ -88,7 +90,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
   if (![((NSString *) nil_chk(self->domesticCarrierCodeFormattingRule_)) isEqual:@""]) {
     [output writeStringWithInt:5 withNSString:self->domesticCarrierCodeFormattingRule_];
   }
-  if (self->nationalPrefixOptionalWhenFormatting_ != NO) {
+  if (self->nationalPrefixOptionalWhenFormatting_ != false) {
     [output writeBoolWithInt:6 withBoolean:self->nationalPrefixOptionalWhenFormatting_];
   }
   [super writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:output];
@@ -117,14 +119,14 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
   if (![((NSString *) nil_chk(self->domesticCarrierCodeFormattingRule_)) isEqual:@""]) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeStringSizeWithInt_withNSString_(5, self->domesticCarrierCodeFormattingRule_);
   }
-  if (self->nationalPrefixOptionalWhenFormatting_ != NO) {
+  if (self->nationalPrefixOptionalWhenFormatting_ != false) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeBoolSizeWithInt_withBoolean_(6, self->nationalPrefixOptionalWhenFormatting_);
   }
   return size;
 }
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *)mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input {
-  while (YES) {
+  while (true) {
     jint tag = [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readTag];
     switch (tag) {
       case 0:
@@ -138,12 +140,12 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
       }
       case 10:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_pattern_(self, [input readString]);
+        JreStrongAssign(&self->pattern_, [input readString]);
         break;
       }
       case 18:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_format_(self, [input readString]);
+        JreStrongAssign(&self->format_, [input readString]);
         break;
       }
       case 26:
@@ -159,17 +161,17 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
           [input readTag];
         }
         IOSObjectArray_Set(newArray, i, [input readString]);
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_leadingDigitsPattern_(self, newArray);
+        JreStrongAssign(&self->leadingDigitsPattern_, newArray);
         break;
       }
       case 34:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_nationalPrefixFormattingRule_(self, [input readString]);
+        JreStrongAssign(&self->nationalPrefixFormattingRule_, [input readString]);
         break;
       }
       case 42:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_set_domesticCarrierCodeFormattingRule_(self, [input readString]);
+        JreStrongAssign(&self->domesticCarrierCodeFormattingRule_, [input readString]);
         break;
       }
       case 48:
@@ -210,13 +212,13 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
     { "parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano:", "parseFrom", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", 0x9, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_, NULL,  },
-    { "pattern_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "format_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "leadingDigitsPattern_", NULL, 0x1, "[Ljava.lang.String;", NULL, NULL,  },
-    { "nationalPrefixFormattingRule_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "nationalPrefixOptionalWhenFormatting_", NULL, 0x1, "Z", NULL, NULL,  },
-    { "domesticCarrierCodeFormattingRule_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
+    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_, NULL, .constantValue.asLong = 0 },
+    { "pattern_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "format_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "leadingDigitsPattern_", NULL, 0x1, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "nationalPrefixFormattingRule_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "nationalPrefixOptionalWhenFormatting_", NULL, 0x1, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "domesticCarrierCodeFormattingRule_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat = { 2, "NumberFormat", "com.google.i18n.phonenumbers.nano", "Phonemetadata", 0x19, 8, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat;
@@ -226,14 +228,14 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata)
 
 IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_emptyArray() {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_initialize();
-  if (ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_ == nil) {
-    @synchronized(ComGoogleProtobufNanoInternalNano_get_LAZY_INIT_LOCK_()) {
-      if (ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_ == nil) {
-        JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_, nil, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_class_()]);
+  if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_) == nil) {
+    @synchronized(JreLoadStatic(ComGoogleProtobufNanoInternalNano, LAZY_INIT_LOCK_)) {
+      if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_) == nil) {
+        JreVolatileStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_class_()]);
       }
     }
   }
-  return ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_;
+  return JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat__emptyArray_);
 }
 
 void ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *self) {
@@ -249,7 +251,7 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *new_ComGoogleI18nPhonen
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_parseFromWithByteArray_(IOSByteArray *data) {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_initialize();
-  return ((ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *) ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init() autorelease], data));
+  return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init() autorelease], data);
 }
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano_(ComGoogleProtobufNanoCodedInputByteBufferNano *input) {
@@ -265,16 +267,18 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Numb
   return ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_emptyArray();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *)clear {
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_set_nationalNumberPattern_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_set_possibleNumberPattern_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_set_exampleNumber_(self, @"");
-  cachedSize_ = -1;
+  JreStrongAssign(&nationalNumberPattern_, @"");
+  JreStrongAssign(&possibleNumberPattern_, @"");
+  JreStrongAssign(&exampleNumber_, @"");
+  JreAssignVolatileInt(&cachedSize_, -1);
   return self;
 }
 
@@ -306,7 +310,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Numb
 }
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *)mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input {
-  while (YES) {
+  while (true) {
     jint tag = [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readTag];
     switch (tag) {
       case 0:
@@ -320,17 +324,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Numb
       }
       case 18:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_set_nationalNumberPattern_(self, [input readString]);
+        JreStrongAssign(&self->nationalNumberPattern_, [input readString]);
         break;
       }
       case 26:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_set_possibleNumberPattern_(self, [input readString]);
+        JreStrongAssign(&self->possibleNumberPattern_, [input readString]);
         break;
       }
       case 50:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_set_exampleNumber_(self, [input readString]);
+        JreStrongAssign(&self->exampleNumber_, [input readString]);
         break;
       }
     }
@@ -364,10 +368,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Numb
     { "parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano:", "parseFrom", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", 0x9, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_, NULL,  },
-    { "nationalNumberPattern_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "possibleNumberPattern_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "exampleNumber_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
+    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_, NULL, .constantValue.asLong = 0 },
+    { "nationalNumberPattern_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "possibleNumberPattern_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "exampleNumber_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc = { 2, "PhoneNumberDesc", "com.google.i18n.phonenumbers.nano", "Phonemetadata", 0x19, 8, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;
@@ -377,14 +381,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Numb
 
 IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_emptyArray() {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_initialize();
-  if (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_ == nil) {
-    @synchronized(ComGoogleProtobufNanoInternalNano_get_LAZY_INIT_LOCK_()) {
-      if (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_ == nil) {
-        JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_, nil, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_class_()]);
+  if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_) == nil) {
+    @synchronized(JreLoadStatic(ComGoogleProtobufNanoInternalNano, LAZY_INIT_LOCK_)) {
+      if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_) == nil) {
+        JreVolatileStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_class_()]);
       }
     }
   }
-  return ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_;
+  return JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc__emptyArray_);
 }
 
 void ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *self) {
@@ -400,7 +404,7 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *new_ComGoogleI18nPho
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_parseFromWithByteArray_(IOSByteArray *data) {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_initialize();
-  return ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *) ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init() autorelease], data));
+  return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init() autorelease], data);
 }
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano_(ComGoogleProtobufNanoCodedInputByteBufferNano *input) {
@@ -416,44 +420,46 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   return ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_emptyArray();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *)clear {
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_generalDesc_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_fixedLine_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_mobile_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_tollFree_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_premiumRate_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_sharedCost_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_personalNumber_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_voip_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_pager_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_uan_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_emergency_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_voicemail_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_shortCode_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_standardRate_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_carrierSpecific_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_noInternationalDialling_(self, nil);
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_id__(self, @"");
+  JreStrongAssign(&generalDesc_, nil);
+  JreStrongAssign(&fixedLine_, nil);
+  JreStrongAssign(&mobile_, nil);
+  JreStrongAssign(&tollFree_, nil);
+  JreStrongAssign(&premiumRate_, nil);
+  JreStrongAssign(&sharedCost_, nil);
+  JreStrongAssign(&personalNumber_, nil);
+  JreStrongAssign(&voip_, nil);
+  JreStrongAssign(&pager_, nil);
+  JreStrongAssign(&uan_, nil);
+  JreStrongAssign(&emergency_, nil);
+  JreStrongAssign(&voicemail_, nil);
+  JreStrongAssign(&shortCode_, nil);
+  JreStrongAssign(&standardRate_, nil);
+  JreStrongAssign(&carrierSpecific_, nil);
+  JreStrongAssign(&noInternationalDialling_, nil);
+  JreStrongAssign(&id__, @"");
   countryCode_ = 0;
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_internationalPrefix_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_preferredInternationalPrefix_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_nationalPrefix_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_preferredExtnPrefix_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_nationalPrefixForParsing_(self, @"");
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_nationalPrefixTransformRule_(self, @"");
-  sameMobileAndFixedLinePattern_ = NO;
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_numberFormat_(self, ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_emptyArray());
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_intlNumberFormat_(self, ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_emptyArray());
-  mainCountryForCode_ = NO;
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_leadingDigits_(self, @"");
-  leadingZeroPossible_ = NO;
-  mobileNumberPortableRegion_ = NO;
-  cachedSize_ = -1;
+  JreStrongAssign(&internationalPrefix_, @"");
+  JreStrongAssign(&preferredInternationalPrefix_, @"");
+  JreStrongAssign(&nationalPrefix_, @"");
+  JreStrongAssign(&preferredExtnPrefix_, @"");
+  JreStrongAssign(&nationalPrefixForParsing_, @"");
+  JreStrongAssign(&nationalPrefixTransformRule_, @"");
+  sameMobileAndFixedLinePattern_ = false;
+  JreStrongAssign(&numberFormat_, ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_emptyArray());
+  JreStrongAssign(&intlNumberFormat_, ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_emptyArray());
+  mainCountryForCode_ = false;
+  JreStrongAssign(&leadingDigits_, @"");
+  leadingZeroPossible_ = false;
+  mobileNumberPortableRegion_ = false;
+  JreAssignVolatileInt(&cachedSize_, -1);
   return self;
 }
 
@@ -504,7 +510,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (![((NSString *) nil_chk(self->preferredInternationalPrefix_)) isEqual:@""]) {
     [output writeStringWithInt:17 withNSString:self->preferredInternationalPrefix_];
   }
-  if (self->sameMobileAndFixedLinePattern_ != NO) {
+  if (self->sameMobileAndFixedLinePattern_ != false) {
     [output writeBoolWithInt:18 withBoolean:self->sameMobileAndFixedLinePattern_];
   }
   if (self->numberFormat_ != nil && self->numberFormat_->size_ > 0) {
@@ -526,7 +532,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (self->pager_ != nil) {
     [output writeMessageWithInt:21 withComGoogleProtobufNanoMessageNano:self->pager_];
   }
-  if (self->mainCountryForCode_ != NO) {
+  if (self->mainCountryForCode_ != false) {
     [output writeBoolWithInt:22 withBoolean:self->mainCountryForCode_];
   }
   if (![((NSString *) nil_chk(self->leadingDigits_)) isEqual:@""]) {
@@ -538,7 +544,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (self->uan_ != nil) {
     [output writeMessageWithInt:25 withComGoogleProtobufNanoMessageNano:self->uan_];
   }
-  if (self->leadingZeroPossible_ != NO) {
+  if (self->leadingZeroPossible_ != false) {
     [output writeBoolWithInt:26 withBoolean:self->leadingZeroPossible_];
   }
   if (self->emergency_ != nil) {
@@ -556,7 +562,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (self->carrierSpecific_ != nil) {
     [output writeMessageWithInt:31 withComGoogleProtobufNanoMessageNano:self->carrierSpecific_];
   }
-  if (self->mobileNumberPortableRegion_ != NO) {
+  if (self->mobileNumberPortableRegion_ != false) {
     [output writeBoolWithInt:32 withBoolean:self->mobileNumberPortableRegion_];
   }
   [super writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:output];
@@ -610,7 +616,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (![((NSString *) nil_chk(self->preferredInternationalPrefix_)) isEqual:@""]) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeStringSizeWithInt_withNSString_(17, self->preferredInternationalPrefix_);
   }
-  if (self->sameMobileAndFixedLinePattern_ != NO) {
+  if (self->sameMobileAndFixedLinePattern_ != false) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeBoolSizeWithInt_withBoolean_(18, self->sameMobileAndFixedLinePattern_);
   }
   if (self->numberFormat_ != nil && self->numberFormat_->size_ > 0) {
@@ -632,7 +638,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (self->pager_ != nil) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeMessageSizeWithInt_withComGoogleProtobufNanoMessageNano_(21, self->pager_);
   }
-  if (self->mainCountryForCode_ != NO) {
+  if (self->mainCountryForCode_ != false) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeBoolSizeWithInt_withBoolean_(22, self->mainCountryForCode_);
   }
   if (![((NSString *) nil_chk(self->leadingDigits_)) isEqual:@""]) {
@@ -644,7 +650,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (self->uan_ != nil) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeMessageSizeWithInt_withComGoogleProtobufNanoMessageNano_(25, self->uan_);
   }
-  if (self->leadingZeroPossible_ != NO) {
+  if (self->leadingZeroPossible_ != false) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeBoolSizeWithInt_withBoolean_(26, self->leadingZeroPossible_);
   }
   if (self->emergency_ != nil) {
@@ -662,14 +668,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   if (self->carrierSpecific_ != nil) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeMessageSizeWithInt_withComGoogleProtobufNanoMessageNano_(31, self->carrierSpecific_);
   }
-  if (self->mobileNumberPortableRegion_ != NO) {
+  if (self->mobileNumberPortableRegion_ != false) {
     size += ComGoogleProtobufNanoCodedOutputByteBufferNano_computeBoolSizeWithInt_withBoolean_(32, self->mobileNumberPortableRegion_);
   }
   return size;
 }
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *)mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input {
-  while (YES) {
+  while (true) {
     jint tag = [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readTag];
     switch (tag) {
       case 0:
@@ -684,7 +690,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 10:
       {
         if (self->generalDesc_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_generalDesc_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->generalDesc_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->generalDesc_];
         break;
@@ -692,7 +698,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 18:
       {
         if (self->fixedLine_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_fixedLine_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->fixedLine_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->fixedLine_];
         break;
@@ -700,7 +706,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 26:
       {
         if (self->mobile_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_mobile_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->mobile_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->mobile_];
         break;
@@ -708,7 +714,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 34:
       {
         if (self->tollFree_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_tollFree_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->tollFree_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->tollFree_];
         break;
@@ -716,7 +722,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 42:
       {
         if (self->premiumRate_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_premiumRate_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->premiumRate_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->premiumRate_];
         break;
@@ -724,7 +730,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 50:
       {
         if (self->sharedCost_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_sharedCost_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->sharedCost_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->sharedCost_];
         break;
@@ -732,7 +738,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 58:
       {
         if (self->personalNumber_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_personalNumber_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->personalNumber_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->personalNumber_];
         break;
@@ -740,14 +746,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 66:
       {
         if (self->voip_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_voip_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->voip_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->voip_];
         break;
       }
       case 74:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_id__(self, [input readString]);
+        JreStrongAssign(&self->id__, [input readString]);
         break;
       }
       case 80:
@@ -757,32 +763,32 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       }
       case 90:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_internationalPrefix_(self, [input readString]);
+        JreStrongAssign(&self->internationalPrefix_, [input readString]);
         break;
       }
       case 98:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_nationalPrefix_(self, [input readString]);
+        JreStrongAssign(&self->nationalPrefix_, [input readString]);
         break;
       }
       case 106:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_preferredExtnPrefix_(self, [input readString]);
+        JreStrongAssign(&self->preferredExtnPrefix_, [input readString]);
         break;
       }
       case 122:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_nationalPrefixForParsing_(self, [input readString]);
+        JreStrongAssign(&self->nationalPrefixForParsing_, [input readString]);
         break;
       }
       case 130:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_nationalPrefixTransformRule_(self, [input readString]);
+        JreStrongAssign(&self->nationalPrefixTransformRule_, [input readString]);
         break;
       }
       case 138:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_preferredInternationalPrefix_(self, [input readString]);
+        JreStrongAssign(&self->preferredInternationalPrefix_, [input readString]);
         break;
       }
       case 144:
@@ -805,7 +811,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
         }
         IOSObjectArray_SetAndConsume(newArray, i, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init());
         [input readMessageWithComGoogleProtobufNanoMessageNano:IOSObjectArray_Get(newArray, i)];
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_numberFormat_(self, newArray);
+        JreStrongAssign(&self->numberFormat_, newArray);
         break;
       }
       case 162:
@@ -823,13 +829,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
         }
         IOSObjectArray_SetAndConsume(newArray, i, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init());
         [input readMessageWithComGoogleProtobufNanoMessageNano:IOSObjectArray_Get(newArray, i)];
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_intlNumberFormat_(self, newArray);
+        JreStrongAssign(&self->intlNumberFormat_, newArray);
         break;
       }
       case 170:
       {
         if (self->pager_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_pager_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->pager_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->pager_];
         break;
@@ -841,13 +847,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       }
       case 186:
       {
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_set_leadingDigits_(self, [input readString]);
+        JreStrongAssign(&self->leadingDigits_, [input readString]);
         break;
       }
       case 194:
       {
         if (self->noInternationalDialling_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_noInternationalDialling_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->noInternationalDialling_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->noInternationalDialling_];
         break;
@@ -855,7 +861,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 202:
       {
         if (self->uan_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_uan_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->uan_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->uan_];
         break;
@@ -868,7 +874,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 218:
       {
         if (self->emergency_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_emergency_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->emergency_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->emergency_];
         break;
@@ -876,7 +882,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 226:
       {
         if (self->voicemail_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_voicemail_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->voicemail_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->voicemail_];
         break;
@@ -884,7 +890,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 234:
       {
         if (self->shortCode_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_shortCode_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->shortCode_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->shortCode_];
         break;
@@ -892,7 +898,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 242:
       {
         if (self->standardRate_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_standardRate_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->standardRate_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->standardRate_];
         break;
@@ -900,7 +906,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
       case 250:
       {
         if (self->carrierSpecific_ == nil) {
-          ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_setAndConsume_carrierSpecific_(self, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
+          JreStrongAssignAndConsume(&self->carrierSpecific_, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init());
         }
         [input readMessageWithComGoogleProtobufNanoMessageNano:self->carrierSpecific_];
         break;
@@ -964,38 +970,38 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
     { "parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano:", "parseFrom", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x9, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_, NULL,  },
-    { "generalDesc_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "fixedLine_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "mobile_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "tollFree_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "premiumRate_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "sharedCost_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "personalNumber_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "voip_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "pager_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "uan_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "emergency_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "voicemail_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "shortCode_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "standardRate_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "carrierSpecific_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "noInternationalDialling_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL,  },
-    { "id__", "id", 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "countryCode_", NULL, 0x1, "I", NULL, NULL,  },
-    { "internationalPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "preferredInternationalPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "nationalPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "preferredExtnPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "nationalPrefixForParsing_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "nationalPrefixTransformRule_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "sameMobileAndFixedLinePattern_", NULL, 0x1, "Z", NULL, NULL,  },
-    { "numberFormat_", NULL, 0x1, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", NULL, NULL,  },
-    { "intlNumberFormat_", NULL, 0x1, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", NULL, NULL,  },
-    { "mainCountryForCode_", NULL, 0x1, "Z", NULL, NULL,  },
-    { "leadingDigits_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL,  },
-    { "leadingZeroPossible_", NULL, 0x1, "Z", NULL, NULL,  },
-    { "mobileNumberPortableRegion_", NULL, 0x1, "Z", NULL, NULL,  },
+    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_, NULL, .constantValue.asLong = 0 },
+    { "generalDesc_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "fixedLine_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "mobile_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "tollFree_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "premiumRate_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "sharedCost_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "personalNumber_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "voip_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "pager_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "uan_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "emergency_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "voicemail_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "shortCode_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "standardRate_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "carrierSpecific_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "noInternationalDialling_", NULL, 0x1, "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneNumberDesc;", NULL, NULL, .constantValue.asLong = 0 },
+    { "id__", "id", 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "countryCode_", NULL, 0x1, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "internationalPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "preferredInternationalPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "nationalPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "preferredExtnPrefix_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "nationalPrefixForParsing_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "nationalPrefixTransformRule_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "sameMobileAndFixedLinePattern_", NULL, 0x1, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "numberFormat_", NULL, 0x1, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", NULL, NULL, .constantValue.asLong = 0 },
+    { "intlNumberFormat_", NULL, 0x1, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$NumberFormat;", NULL, NULL, .constantValue.asLong = 0 },
+    { "mainCountryForCode_", NULL, 0x1, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "leadingDigits_", NULL, 0x1, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "leadingZeroPossible_", NULL, 0x1, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "mobileNumberPortableRegion_", NULL, 0x1, "Z", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata = { 2, "PhoneMetadata", "com.google.i18n.phonenumbers.nano", "Phonemetadata", 0x19, 8, methods, 32, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
@@ -1005,14 +1011,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
 
 IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_emptyArray() {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_initialize();
-  if (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_ == nil) {
-    @synchronized(ComGoogleProtobufNanoInternalNano_get_LAZY_INIT_LOCK_()) {
-      if (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_ == nil) {
-        JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_, nil, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_class_()]);
+  if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_) == nil) {
+    @synchronized(JreLoadStatic(ComGoogleProtobufNanoInternalNano, LAZY_INIT_LOCK_)) {
+      if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_) == nil) {
+        JreVolatileStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_class_()]);
       }
     }
   }
-  return ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_;
+  return JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata__emptyArray_);
 }
 
 void ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *self) {
@@ -1028,7 +1034,7 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *new_ComGoogleI18nPhone
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_parseFromWithByteArray_(IOSByteArray *data) {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_initialize();
-  return ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init() autorelease], data));
+  return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init() autorelease], data);
 }
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano_(ComGoogleProtobufNanoCodedInputByteBufferNano *input) {
@@ -1044,14 +1050,16 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
   return ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_emptyArray();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *)clear {
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_set_metadata_(self, ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_emptyArray());
-  cachedSize_ = -1;
+  JreStrongAssign(&metadata_, ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_emptyArray());
+  JreAssignVolatileInt(&cachedSize_, -1);
   return self;
 }
 
@@ -1081,7 +1089,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
 }
 
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *)mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input {
-  while (YES) {
+  while (true) {
     jint tag = [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readTag];
     switch (tag) {
       case 0:
@@ -1108,7 +1116,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
         }
         IOSObjectArray_SetAndConsume(newArray, i, new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init());
         [input readMessageWithComGoogleProtobufNanoMessageNano:IOSObjectArray_Get(newArray, i)];
-        ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_set_metadata_(self, newArray);
+        JreStrongAssign(&self->metadata_, newArray);
         break;
       }
     }
@@ -1140,8 +1148,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
     { "parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano:", "parseFrom", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadataCollection;", 0x9, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadataCollection;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_, NULL,  },
-    { "metadata_", NULL, 0x1, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", NULL, NULL,  },
+    { "_emptyArray_", NULL, 0x4a, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadataCollection;", &ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_, NULL, .constantValue.asLong = 0 },
+    { "metadata_", NULL, 0x1, "[Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection = { 2, "PhoneMetadataCollection", "com.google.i18n.phonenumbers.nano", "Phonemetadata", 0x19, 8, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection;
@@ -1151,14 +1159,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNanoPhonemetadata_Phon
 
 IOSObjectArray *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_emptyArray() {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_initialize();
-  if (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_ == nil) {
-    @synchronized(ComGoogleProtobufNanoInternalNano_get_LAZY_INIT_LOCK_()) {
-      if (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_ == nil) {
-        JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_, nil, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_class_()]);
+  if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_) == nil) {
+    @synchronized(JreLoadStatic(ComGoogleProtobufNanoInternalNano, LAZY_INIT_LOCK_)) {
+      if (JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_) == nil) {
+        JreVolatileStrongAssignAndConsume(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_, [IOSObjectArray newArrayWithLength:0 type:ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_class_()]);
       }
     }
   }
-  return ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_;
+  return JreLoadVolatileId(&ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection__emptyArray_);
 }
 
 void ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *self) {
@@ -1174,7 +1182,7 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *new_ComGoogl
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_parseFromWithByteArray_(IOSByteArray *data) {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_initialize();
-  return ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *) ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() autorelease], data));
+  return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() autorelease], data);
 }
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_parseFromWithComGoogleProtobufNanoCodedInputByteBufferNano_(ComGoogleProtobufNanoCodedInputByteBufferNano *input) {

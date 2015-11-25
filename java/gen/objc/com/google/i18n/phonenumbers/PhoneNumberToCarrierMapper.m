@@ -17,7 +17,7 @@
   ComGoogleI18nPhonenumbersPhoneNumberUtil *phoneUtil_;
 }
 
-/**
+/*!
  @brief Checks if the supplied number type supports carrier lookup.
  */
 - (jboolean)isMobileWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum *)numberType;
@@ -27,7 +27,7 @@
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, prefixFileReader_, ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader *)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, phoneUtil_, ComGoogleI18nPhonenumbersPhoneNumberUtil *)
 
-static ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_ = nil;
+static ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_;
 J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, instance_, ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *)
 J2OBJC_STATIC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, instance_, ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *)
 
@@ -35,6 +35,8 @@ static NSString *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DAT
 J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, MAPPING_DATA_DIRECTORY_, NSString *)
 
 __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_isMobileWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum_(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *self, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum *numberType);
+
+J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
 
 @implementation ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper
 
@@ -82,6 +84,13 @@ __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersPhoneNumberToCa
   [super dealloc];
 }
 
++ (void)initialize {
+  if (self == [ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper class]) {
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_, nil);
+    J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
+  }
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
     { "initWithNSString:", "PhoneNumberToCarrierMapper", NULL, 0x0, NULL, NULL },
@@ -92,10 +101,10 @@ __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersPhoneNumberToCa
     { "isMobileWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum:", "isMobile", "Z", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "instance_", NULL, 0xa, "Lcom.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_, NULL,  },
-    { "MAPPING_DATA_DIRECTORY_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY_, NULL,  },
-    { "prefixFileReader_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;", NULL, NULL,  },
-    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL,  },
+    { "instance_", NULL, 0xa, "Lcom.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_, NULL, .constantValue.asLong = 0 },
+    { "MAPPING_DATA_DIRECTORY_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY_, NULL, .constantValue.asLong = 0 },
+    { "prefixFileReader_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;", NULL, NULL, .constantValue.asLong = 0 },
+    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper = { 2, "PhoneNumberToCarrierMapper", "com.google.i18n.phonenumbers", NULL, 0x1, 6, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper;
@@ -105,9 +114,9 @@ __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersPhoneNumberToCa
 
 void ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *self, NSString *phonePrefixDataDirectory) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_set_prefixFileReader_(self, nil);
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_set_phoneUtil_(self, ComGoogleI18nPhonenumbersPhoneNumberUtil_getInstance());
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_setAndConsume_prefixFileReader_(self, new_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_initWithNSString_(phonePrefixDataDirectory));
+  JreStrongAssign(&self->prefixFileReader_, nil);
+  JreStrongAssign(&self->phoneUtil_, ComGoogleI18nPhonenumbersPhoneNumberUtil_getInstance());
+  JreStrongAssignAndConsume(&self->prefixFileReader_, new_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_initWithNSString_(phonePrefixDataDirectory));
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *new_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(NSString *phonePrefixDataDirectory) {
@@ -120,14 +129,14 @@ ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPh
   ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initialize();
   @synchronized(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_class_()) {
     if (ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_ == nil) {
-      JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_, nil, new_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY_));
+      JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_, new_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY_));
     }
     return ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance_;
   }
 }
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_isMobileWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum_(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *self, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum *numberType) {
-  return (numberType == ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum_get_MOBILE() || numberType == ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum_get_FIXED_LINE_OR_MOBILE() || numberType == ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum_get_PAGER());
+  return (numberType == JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum, MOBILE) || numberType == JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum, FIXED_LINE_OR_MOBILE) || numberType == JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberTypeEnum, PAGER));
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)

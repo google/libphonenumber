@@ -12,7 +12,7 @@
 
 @class ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum;
 
-/**
+/*!
  @brief Generic exception class for errors encountered when parsing phone numbers.
  */
 @interface ComGoogleI18nPhonenumbersNumberParseException : JavaLangException
@@ -22,7 +22,7 @@
 - (instancetype)initWithComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum:(ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum *)errorType
                                                                        withNSString:(NSString *)message;
 
-/**
+/*!
  @brief Returns the error type of the exception that has been thrown.
  */
 - (ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum *)getErrorType;

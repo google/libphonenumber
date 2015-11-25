@@ -29,9 +29,10 @@
   ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *phonePrefixMapStorage_;
 }
 
-/**
+/*!
  @brief Gets the size of the provided phone prefix map storage.
- The map storage passed-in will be filled as a result.
+ The map storage passed-in will be
+ filled as a result.
  */
 + (jint)getSizeOfPhonePrefixMapStorageWithComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy:(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)mapStorage
                                                                                        withJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap;
@@ -40,9 +41,12 @@
 
 - (ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)createFlyweightMapStorage;
 
-/**
- @brief Does a binary search for <code>value</code> in the provided array from <code>start</code> to <code>end</code> (inclusive).
- Returns the position if <code>value</code> is found; otherwise, returns the position which has the largest value that is less than <code>value</code> . This means if <code>value</code> is the smallest, -1 will be returned.
+/*!
+ @brief Does a binary search for <code>value</code> in the provided array from <code>start</code> to <code>end</code>
+ (inclusive).
+ Returns the position if <code>value</code> is found; otherwise, returns the
+ position which has the largest value that is less than <code>value</code>. This means if
+ <code>value</code> is the smallest, -1 will be returned.
  */
 - (jint)binarySearchWithInt:(jint)start
                     withInt:(jint)end
@@ -72,10 +76,12 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
   return phonePrefixMapStorage_;
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (jint)getSizeOfPhonePrefixMapStorageWithComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy:(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)mapStorage
                                                                                        withJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap {
@@ -105,16 +111,16 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
 }
 
 - (void)readPhonePrefixMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)sortedPhonePrefixMap {
-  ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_set_phonePrefixMapStorage_(self, [self getSmallerMapStorageWithJavaUtilSortedMap:sortedPhonePrefixMap]);
+  JreStrongAssign(&phonePrefixMapStorage_, [self getSmallerMapStorageWithJavaUtilSortedMap:sortedPhonePrefixMap]);
 }
 
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput {
   jboolean useFlyweightMapStorage = [((id<JavaIoObjectInput>) nil_chk(objectInput)) readBoolean];
   if (useFlyweightMapStorage) {
-    ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_setAndConsume_phonePrefixMapStorage_(self, new_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init());
+    JreStrongAssignAndConsume(&phonePrefixMapStorage_, new_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init());
   }
   else {
-    ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_setAndConsume_phonePrefixMapStorage_(self, new_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init());
+    JreStrongAssignAndConsume(&phonePrefixMapStorage_, new_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init());
   }
   [((ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *) nil_chk(phonePrefixMapStorage_)) readExternalWithJavaIoObjectInput:objectInput];
 }
@@ -174,7 +180,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap class]) {
-    JreStrongAssign(&ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_LOGGER_, nil, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_class_() getName]));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_LOGGER_, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_class_() getName]));
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
   }
 }
@@ -196,9 +202,9 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL,  },
-    { "LOGGER_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_LOGGER_, NULL,  },
-    { "phonePrefixMapStorage_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.PhonePrefixMapStorageStrategy;", NULL, NULL,  },
+    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL, .constantValue.asLong = 0 },
+    { "LOGGER_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_LOGGER_, NULL, .constantValue.asLong = 0 },
+    { "phonePrefixMapStorage_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.PhonePrefixMapStorageStrategy;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap = { 2, "PhonePrefixMap", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x1, 13, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap;
@@ -208,7 +214,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
 
 void ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *self) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_set_phoneUtil_(self, ComGoogleI18nPhonenumbersPhoneNumberUtil_getInstance());
+  JreStrongAssign(&self->phoneUtil_, ComGoogleI18nPhonenumbersPhoneNumberUtil_getInstance());
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *new_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init() {
@@ -240,7 +246,7 @@ ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *ComGoogleI18
 jint ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_binarySearchWithInt_withInt_withLong_(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *self, jint start, jint end, jlong value) {
   jint current = 0;
   while (start <= end) {
-    current = URShift32((start + end), 1);
+    current = JreURShift32((start + end), 1);
     jint currentValue = [((ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *) nil_chk(self->phonePrefixMapStorage_)) getPrefixWithInt:current];
     if (currentValue == value) {
       return current;

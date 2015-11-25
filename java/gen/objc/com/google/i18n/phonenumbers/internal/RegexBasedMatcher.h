@@ -11,8 +11,9 @@
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;
 
-/**
- @brief Implementation of the matcher API using the regular expressions in the PhoneNumberDesc proto message to match numbers.
+/*!
+ @brief Implementation of the matcher API using the regular expressions in the PhoneNumberDesc
+ proto message to match numbers.
  */
 @interface ComGoogleI18nPhonenumbersInternalRegexBasedMatcher : NSObject < ComGoogleI18nPhonenumbersInternalMatcherApi >
 

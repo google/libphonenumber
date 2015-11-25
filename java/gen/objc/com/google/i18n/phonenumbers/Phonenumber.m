@@ -59,10 +59,12 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_
 
 @implementation ComGoogleI18nPhonenumbersPhonenumber
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPhonenumber_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
@@ -89,10 +91,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 
 @implementation ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jboolean)hasCountryCode {
   return hasCountryCode_;
@@ -103,13 +107,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setCountryCodeWithInt:(jint)value {
-  hasCountryCode_ = YES;
+  hasCountryCode_ = true;
   countryCode__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearCountryCode {
-  hasCountryCode_ = NO;
+  hasCountryCode_ = false;
   countryCode__ = 0;
   return self;
 }
@@ -123,13 +127,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setNationalNumberWithLong:(jlong)value {
-  hasNationalNumber_ = YES;
+  hasNationalNumber_ = true;
   nationalNumber__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearNationalNumber {
-  hasNationalNumber_ = NO;
+  hasNationalNumber_ = false;
   nationalNumber__ = 0LL;
   return self;
 }
@@ -146,14 +150,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
   if (value == nil) {
     @throw [new_JavaLangNullPointerException_init() autorelease];
   }
-  hasExtension_ = YES;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_extension__(self, value);
+  hasExtension_ = true;
+  JreStrongAssign(&extension__, value);
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearExtension {
-  hasExtension_ = NO;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_extension__(self, @"");
+  hasExtension_ = false;
+  JreStrongAssign(&extension__, @"");
   return self;
 }
 
@@ -166,14 +170,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setItalianLeadingZeroWithBoolean:(jboolean)value {
-  hasItalianLeadingZero_ = YES;
+  hasItalianLeadingZero_ = true;
   italianLeadingZero__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearItalianLeadingZero {
-  hasItalianLeadingZero_ = NO;
-  italianLeadingZero__ = NO;
+  hasItalianLeadingZero_ = false;
+  italianLeadingZero__ = false;
   return self;
 }
 
@@ -186,13 +190,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setNumberOfLeadingZerosWithInt:(jint)value {
-  hasNumberOfLeadingZeros_ = YES;
+  hasNumberOfLeadingZeros_ = true;
   numberOfLeadingZeros__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearNumberOfLeadingZeros {
-  hasNumberOfLeadingZeros_ = NO;
+  hasNumberOfLeadingZeros_ = false;
   numberOfLeadingZeros__ = 1;
   return self;
 }
@@ -209,14 +213,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
   if (value == nil) {
     @throw [new_JavaLangNullPointerException_init() autorelease];
   }
-  hasRawInput_ = YES;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_rawInput__(self, value);
+  hasRawInput_ = true;
+  JreStrongAssign(&rawInput__, value);
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearRawInput {
-  hasRawInput_ = NO;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_rawInput__(self, @"");
+  hasRawInput_ = false;
+  JreStrongAssign(&rawInput__, @"");
   return self;
 }
 
@@ -232,14 +236,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
   if (value == nil) {
     @throw [new_JavaLangNullPointerException_init() autorelease];
   }
-  hasCountryCodeSource_ = YES;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_countryCodeSource__(self, value);
+  hasCountryCodeSource_ = true;
+  JreStrongAssign(&countryCodeSource__, value);
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearCountryCodeSource {
-  hasCountryCodeSource_ = NO;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_countryCodeSource__(self, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_get_FROM_NUMBER_WITH_PLUS_SIGN());
+  hasCountryCodeSource_ = false;
+  JreStrongAssign(&countryCodeSource__, JreLoadStatic(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum, FROM_NUMBER_WITH_PLUS_SIGN));
   return self;
 }
 
@@ -255,14 +259,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
   if (value == nil) {
     @throw [new_JavaLangNullPointerException_init() autorelease];
   }
-  hasPreferredDomesticCarrierCode_ = YES;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_preferredDomesticCarrierCode__(self, value);
+  hasPreferredDomesticCarrierCode_ = true;
+  JreStrongAssign(&preferredDomesticCarrierCode__, value);
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearPreferredDomesticCarrierCode {
-  hasPreferredDomesticCarrierCode_ = NO;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_preferredDomesticCarrierCode__(self, @"");
+  hasPreferredDomesticCarrierCode_ = false;
+  JreStrongAssign(&preferredDomesticCarrierCode__, @"");
   return self;
 }
 
@@ -308,10 +312,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 
 - (jboolean)exactlySameAsWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)other {
   if (other == nil) {
-    return NO;
+    return false;
   }
   if (self == other) {
-    return YES;
+    return true;
   }
   return (countryCode__ == ((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(other))->countryCode__ && nationalNumber__ == other->nationalNumber__ && [((NSString *) nil_chk(extension__)) isEqual:other->extension__] && italianLeadingZero__ == other->italianLeadingZero__ && numberOfLeadingZeros__ == other->numberOfLeadingZeros__ && [((NSString *) nil_chk(rawInput__)) isEqual:other->rawInput__] && countryCodeSource__ == other->countryCodeSource__ && [((NSString *) nil_chk(preferredDomesticCarrierCode__)) isEqual:other->preferredDomesticCarrierCode__] && [self hasPreferredDomesticCarrierCode] == [other hasPreferredDomesticCarrierCode]);
 }
@@ -408,22 +412,22 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_serialVersionUID },
-    { "hasCountryCode_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "countryCode__", NULL, 0x2, "I", NULL, NULL,  },
-    { "hasNationalNumber_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "nationalNumber__", NULL, 0x2, "J", NULL, NULL,  },
-    { "hasExtension_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "extension__", NULL, 0x2, "Ljava.lang.String;", NULL, NULL,  },
-    { "hasItalianLeadingZero_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "italianLeadingZero__", NULL, 0x2, "Z", NULL, NULL,  },
-    { "hasNumberOfLeadingZeros_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "numberOfLeadingZeros__", NULL, 0x2, "I", NULL, NULL,  },
-    { "hasRawInput_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "rawInput__", NULL, 0x2, "Ljava.lang.String;", NULL, NULL,  },
-    { "hasCountryCodeSource_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "countryCodeSource__", NULL, 0x2, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", NULL, NULL,  },
-    { "hasPreferredDomesticCarrierCode_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "preferredDomesticCarrierCode__", NULL, 0x2, "Ljava.lang.String;", NULL, NULL,  },
+    { "hasCountryCode_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "countryCode__", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasNationalNumber_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "nationalNumber__", NULL, 0x2, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasExtension_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "extension__", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasItalianLeadingZero_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "italianLeadingZero__", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasNumberOfLeadingZeros_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "numberOfLeadingZeros__", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasRawInput_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "rawInput__", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasCountryCodeSource_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "countryCodeSource__", NULL, 0x2, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", NULL, NULL, .constantValue.asLong = 0 },
+    { "hasPreferredDomesticCarrierCode_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "preferredDomesticCarrierCode__", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber = { 2, "PhoneNumber", "com.google.i18n.phonenumbers", "Phonenumber", 0x9, 39, methods, 17, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -436,12 +440,12 @@ void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(ComGoogleI18nPhonenum
   NSObject_init(self);
   self->countryCode__ = 0;
   self->nationalNumber__ = 0LL;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_extension__(self, @"");
-  self->italianLeadingZero__ = NO;
+  JreStrongAssign(&self->extension__, @"");
+  self->italianLeadingZero__ = false;
   self->numberOfLeadingZeros__ = 1;
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_rawInput__(self, @"");
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_preferredDomesticCarrierCode__(self, @"");
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_set_countryCodeSource__(self, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_get_FROM_NUMBER_WITH_PLUS_SIGN());
+  JreStrongAssign(&self->rawInput__, @"");
+  JreStrongAssign(&self->preferredDomesticCarrierCode__, @"");
+  JreStrongAssign(&self->countryCodeSource__, JreLoadStatic(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum, FROM_NUMBER_WITH_PLUS_SIGN));
 }
 
 ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init() {
@@ -505,10 +509,10 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum *ComGoogl
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcFieldInfo fields[] = {
-    { "FROM_NUMBER_WITH_PLUS_SIGN", "FROM_NUMBER_WITH_PLUS_SIGN", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_NUMBER_WITH_PLUS_SIGN, NULL,  },
-    { "FROM_NUMBER_WITH_IDD", "FROM_NUMBER_WITH_IDD", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_NUMBER_WITH_IDD, NULL,  },
-    { "FROM_NUMBER_WITHOUT_PLUS_SIGN", "FROM_NUMBER_WITHOUT_PLUS_SIGN", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_NUMBER_WITHOUT_PLUS_SIGN, NULL,  },
-    { "FROM_DEFAULT_COUNTRY", "FROM_DEFAULT_COUNTRY", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_DEFAULT_COUNTRY, NULL,  },
+    { "FROM_NUMBER_WITH_PLUS_SIGN", "FROM_NUMBER_WITH_PLUS_SIGN", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_NUMBER_WITH_PLUS_SIGN, NULL, .constantValue.asLong = 0 },
+    { "FROM_NUMBER_WITH_IDD", "FROM_NUMBER_WITH_IDD", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_NUMBER_WITH_IDD, NULL, .constantValue.asLong = 0 },
+    { "FROM_NUMBER_WITHOUT_PLUS_SIGN", "FROM_NUMBER_WITHOUT_PLUS_SIGN", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_NUMBER_WITHOUT_PLUS_SIGN, NULL, .constantValue.asLong = 0 },
+    { "FROM_DEFAULT_COUNTRY", "FROM_DEFAULT_COUNTRY", 0x4019, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;", &ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_FROM_DEFAULT_COUNTRY, NULL, .constantValue.asLong = 0 },
   };
   static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber$CountryCodeSource;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum = { 2, "CountryCodeSource", "com.google.i18n.phonenumbers", "Phonenumber$PhoneNumber", 0x4019, 0, NULL, 4, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/Phonenumber$PhoneNumber$CountryCodeSource;>;" };

@@ -76,10 +76,12 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersMetadataManager)
 
 @implementation ComGoogleI18nPhonenumbersMetadataManager
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersMetadataManager_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)closeWithJavaIoInputStream:(JavaIoInputStream *)inArg {
   ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(inArg);
@@ -112,11 +114,11 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersMetadataManager)
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersMetadataManager class]) {
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_LOGGER_, nil, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersMetadataManager_class_() getName]));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap_, nil, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap_, nil, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet_, nil, ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet());
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet_, nil, ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet());
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_LOGGER_, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersMetadataManager_class_() getName]));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap_, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap_, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet_, ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet());
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet_, ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet());
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersMetadataManager)
   }
 }
@@ -133,13 +135,13 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersMetadataManager)
     { "getShortNumberMetadataForRegionWithNSString:", "getShortNumberMetadataForRegion", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x8, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ALTERNATE_FORMATS_FILE_PREFIX_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX_, NULL,  },
-    { "SHORT_NUMBER_METADATA_FILE_PREFIX_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX_, NULL,  },
-    { "LOGGER_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersMetadataManager_LOGGER_, NULL,  },
-    { "callingCodeToAlternateFormatsMap_", NULL, 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap_, "Ljava/util/Map<Ljava/lang/Integer;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;",  },
-    { "regionCodeToShortNumberMetadataMap_", NULL, 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap_, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;",  },
-    { "countryCodeSet_", NULL, 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet_, "Ljava/util/Set<Ljava/lang/Integer;>;",  },
-    { "regionCodeSet_", NULL, 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet_, "Ljava/util/Set<Ljava/lang/String;>;",  },
+    { "ALTERNATE_FORMATS_FILE_PREFIX_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX_, NULL, .constantValue.asLong = 0 },
+    { "SHORT_NUMBER_METADATA_FILE_PREFIX_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX_, NULL, .constantValue.asLong = 0 },
+    { "LOGGER_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersMetadataManager_LOGGER_, NULL, .constantValue.asLong = 0 },
+    { "callingCodeToAlternateFormatsMap_", NULL, 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap_, "Ljava/util/Map<Ljava/lang/Integer;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", .constantValue.asLong = 0 },
+    { "regionCodeToShortNumberMetadataMap_", NULL, 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap_, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", .constantValue.asLong = 0 },
+    { "countryCodeSet_", NULL, 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet_, "Ljava/util/Set<Ljava/lang/Integer;>;", .constantValue.asLong = 0 },
+    { "regionCodeSet_", NULL, 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet_, "Ljava/util/Set<Ljava/lang/String;>;", .constantValue.asLong = 0 },
     { "BUFFER_SIZE", "BUFFER_SIZE", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleI18nPhonenumbersMetadataManager_BUFFER_SIZE },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataManager = { 2, "MetadataManager", "com.google.i18n.phonenumbers", NULL, 0x0, 8, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
@@ -165,7 +167,7 @@ void ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(JavaIo
       [inArg close];
     }
     @catch (JavaIoIOException *e) {
-      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_LOGGER_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_WARNING_() withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
+      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_LOGGER_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING_) withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
     }
   }
 }
@@ -202,7 +204,7 @@ void ComGoogleI18nPhonenumbersMetadataManager_loadAlternateFormatsMetadataFromFi
     }
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_LOGGER_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_WARNING_() withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_LOGGER_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING_) withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
   }
   @finally {
     ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(in);
@@ -242,7 +244,7 @@ void ComGoogleI18nPhonenumbersMetadataManager_loadShortNumberMetadataFromFileWit
     }
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_LOGGER_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_WARNING_() withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_LOGGER_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING_) withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
   }
   @finally {
     ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(in);

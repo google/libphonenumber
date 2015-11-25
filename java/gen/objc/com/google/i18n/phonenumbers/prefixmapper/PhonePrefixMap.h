@@ -15,45 +15,51 @@
 @protocol JavaIoObjectOutput;
 @protocol JavaUtilSortedMap;
 
-/**
- @brief A utility that maps phone number prefixes to a description string, which may be, for example, the geographical area the prefix covers.
+/*!
+ @brief A utility that maps phone number prefixes to a description string, which may be, for example,
+ the geographical area the prefix covers.
  @author Shaopeng Jia
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap : NSObject < JavaIoExternalizable >
 
 #pragma mark Public
 
-/**
- @brief Creates an empty PhonePrefixMap .
- The default constructor is necessary for implementing Externalizable . The empty map could later be populated by #readPhonePrefixMap(java.util.SortedMap) or #readExternal(java.io.ObjectInput) .
+/*!
+ @brief Creates an empty <code>PhonePrefixMap</code>.
+ The default constructor is necessary for implementing
+ <code>Externalizable</code>. The empty map could later be populated by
+ <code>readPhonePrefixMap(java.util.SortedMap)</code> or <code>readExternal(java.io.ObjectInput)</code>.
  */
 - (instancetype)init;
 
-/**
- @brief As per #lookup(long) , but receives the number as a PhoneNumber instead of a long.
- @param number the phone number to look up
+/*!
+ @brief As per <code>lookup(long)</code>, but receives the number as a PhoneNumber instead of a long.
+ @param number  the phone number to look up
  @return the description corresponding to the prefix that best matches this phone number
  */
 - (NSString *)lookupWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
+/*!
  @brief Supports Java Serialization.
  */
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput;
 
-/**
- @brief Creates an PhonePrefixMap initialized with <code>sortedPhonePrefixMap</code> .
- Note that the underlying implementation of this method is expensive thus should not be called by time-critical applications.
- @param sortedPhonePrefixMap a map from phone number prefixes to descriptions of those prefixes sorted in ascending order of the phone number prefixes as integers.
+/*!
+ @brief Creates an <code>PhonePrefixMap</code> initialized with <code>sortedPhonePrefixMap</code>.
+ Note that the
+ underlying implementation of this method is expensive thus should not be called by
+ time-critical applications.
+ @param sortedPhonePrefixMap  a map from phone number prefixes to descriptions of those prefixes
+ sorted in ascending order of the phone number prefixes as integers.
  */
 - (void)readPhonePrefixMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)sortedPhonePrefixMap;
 
-/**
+/*!
  @brief Dumps the mappings contained in the phone prefix map.
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Supports Java Serialization.
  */
 - (void)writeExternalWithJavaIoObjectOutput:(id<JavaIoObjectOutput>)objectOutput;
@@ -62,16 +68,20 @@
 
 - (ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)getPhonePrefixMapStorage;
 
-/**
+/*!
  @brief Gets the smaller phone prefix map storage strategy according to the provided phone prefix map.
- It actually uses (outputs the data to a stream) both strategies and retains the best one which make this method quite expensive.
+ It actually uses (outputs the data to a stream) both strategies and retains the best one which
+ make this method quite expensive.
  */
 - (ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)getSmallerMapStorageWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap;
 
-/**
- @brief Returns the description of the <code>number</code> .
- This method distinguishes the case of an invalid prefix and a prefix for which the name is not available in the current language. If the description is not available in the current language an empty string is returned. If no description was found for the provided number, null is returned.
- @param number the phone number to look up
+/*!
+ @brief Returns the description of the <code>number</code>.
+ This method distinguishes the case of an invalid
+ prefix and a prefix for which the name is not available in the current language. If the
+ description is not available in the current language an empty string is returned. If no
+ description was found for the provided number, null is returned.
+ @param number  the phone number to look up
  @return the description of the number
  */
 - (NSString *)lookupWithLong:(jlong)number;

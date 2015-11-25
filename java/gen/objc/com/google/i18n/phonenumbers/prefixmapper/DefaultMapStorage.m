@@ -32,10 +32,12 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, desc
 
 @implementation ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getPrefixWithInt:(jint)index {
   return IOSIntArray_Get(nil_chk(phoneNumberPrefixes_), index);
@@ -47,13 +49,13 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, desc
 
 - (void)readFromSortedMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)sortedPhonePrefixMap {
   numOfEntries_ = [((id<JavaUtilSortedMap>) nil_chk(sortedPhonePrefixMap)) size];
-  ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_setAndConsume_phoneNumberPrefixes_(self, [IOSIntArray newArrayWithLength:numOfEntries_]);
-  ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_setAndConsume_descriptions_(self, [IOSObjectArray newArrayWithLength:numOfEntries_ type:NSString_class_()]);
+  JreStrongAssignAndConsume(&phoneNumberPrefixes_, [IOSIntArray newArrayWithLength:numOfEntries_]);
+  JreStrongAssignAndConsume(&descriptions_, [IOSObjectArray newArrayWithLength:numOfEntries_ type:NSString_class_()]);
   jint index = 0;
   for (JavaLangInteger *boxed__ in nil_chk([sortedPhonePrefixMap keySet])) {
     jint prefix = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
     *IOSIntArray_GetRef(phoneNumberPrefixes_, index++) = prefix;
-    [((JavaUtilTreeSet *) nil_chk(possibleLengths_)) addWithId:JavaLangInteger_valueOfWithInt_(J2ObjCFpToInt(JavaLangMath_log10WithDouble_(prefix)) + 1)];
+    [((JavaUtilTreeSet *) nil_chk(possibleLengths_)) addWithId:JavaLangInteger_valueOfWithInt_(JreFpToInt(JavaLangMath_log10WithDouble_(prefix)) + 1)];
   }
   [((id<JavaUtilCollection>) nil_chk([sortedPhonePrefixMap values])) toArrayWithNSObjectArray:descriptions_];
 }
@@ -61,10 +63,10 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, desc
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput {
   numOfEntries_ = [((id<JavaIoObjectInput>) nil_chk(objectInput)) readInt];
   if (phoneNumberPrefixes_ == nil || phoneNumberPrefixes_->size_ < numOfEntries_) {
-    ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_setAndConsume_phoneNumberPrefixes_(self, [IOSIntArray newArrayWithLength:numOfEntries_]);
+    JreStrongAssignAndConsume(&phoneNumberPrefixes_, [IOSIntArray newArrayWithLength:numOfEntries_]);
   }
   if (descriptions_ == nil || descriptions_->size_ < numOfEntries_) {
-    ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_setAndConsume_descriptions_(self, [IOSObjectArray newArrayWithLength:numOfEntries_ type:NSString_class_()]);
+    JreStrongAssignAndConsume(&descriptions_, [IOSObjectArray newArrayWithLength:numOfEntries_ type:NSString_class_()]);
   }
   for (jint i = 0; i < numOfEntries_; i++) {
     *IOSIntArray_GetRef(nil_chk(phoneNumberPrefixes_), i) = [objectInput readInt];
@@ -106,8 +108,8 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, desc
     { "writeExternalWithJavaIoObjectOutput:", "writeExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "phoneNumberPrefixes_", NULL, 0x2, "[I", NULL, NULL,  },
-    { "descriptions_", NULL, 0x2, "[Ljava.lang.String;", NULL, NULL,  },
+    { "phoneNumberPrefixes_", NULL, 0x2, "[I", NULL, NULL, .constantValue.asLong = 0 },
+    { "descriptions_", NULL, 0x2, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage = { 2, "DefaultMapStorage", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x0, 6, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage;

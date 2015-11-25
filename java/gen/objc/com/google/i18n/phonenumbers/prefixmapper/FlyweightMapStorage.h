@@ -13,17 +13,20 @@
 @protocol JavaIoObjectOutput;
 @protocol JavaUtilSortedMap;
 
-/**
- @brief Flyweight phone prefix map storage strategy that uses a table to store unique strings and shorts to store the prefix and description indexes when possible.
- It is particularly space-efficient when the provided phone prefix map contains a lot of redundant descriptions.
+/*!
+ @brief Flyweight phone prefix map storage strategy that uses a table to store unique strings and shorts
+ to store the prefix and description indexes when possible.
+ It is particularly space-efficient
+ when the provided phone prefix map contains a lot of redundant descriptions.
  @author Philippe Liard
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage : ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy
 
 #pragma mark Public
 
-/**
- @brief This implementation returns the same string (same identity) when called for multiple indexes corresponding to prefixes that have the same description.
+/*!
+ @brief This implementation returns the same string (same identity) when called for multiple indexes
+ corresponding to prefixes that have the same description.
  */
 - (NSString *)getDescriptionWithInt:(jint)index;
 

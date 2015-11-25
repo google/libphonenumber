@@ -37,14 +37,17 @@
   id<JavaUtilMap> countryCallingCodeToRegionCodeMap_;
 }
 
-/**
+/*!
  @brief Returns a list with the region codes that match the specific country calling code.
- For non-geographical country calling codes, the region code 001 is returned. Also, in the case of no region code being found, an empty list is returned.
+ For
+ non-geographical country calling codes, the region code 001 is returned. Also, in the case
+ of no region code being found, an empty list is returned.
  */
 - (id<JavaUtilList>)getRegionCodesForCountryCodeWithInt:(jint)countryCallingCode;
 
-/**
- @brief Helper method to check that the country calling code of the number matches the region it's being dialed from.
+/*!
+ @brief Helper method to check that the country calling code of the number matches the region it's
+ being dialed from.
  */
 - (jboolean)regionDialingFromMatchesNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                   withNSString:(NSString *)regionDialingFrom;
@@ -56,10 +59,15 @@
                                         withNSString:(NSString *)regionCode
                                          withBoolean:(jboolean)allowPrefixMatch;
 
-/**
+/*!
  @brief Gets the national significant number of the a phone number.
- Note a national significant number doesn't contain a national prefix or any formatting. <p> This is a temporary duplicate of the <code>getNationalSignificantNumber</code> method from <code>PhoneNumberUtil</code> . Ultimately a canonical static version should exist in a separate utility class (to prevent <code>ShortNumberInfo</code> needing to depend on PhoneNumberUtil).
- @param number the phone number for which the national significant number is needed
+ Note a national significant number
+ doesn't contain a national prefix or any formatting.
+ <p>
+ This is a temporary duplicate of the <code>getNationalSignificantNumber</code> method from
+ <code>PhoneNumberUtil</code>. Ultimately a canonical static version should exist in a separate
+ utility class (to prevent <code>ShortNumberInfo</code> needing to depend on PhoneNumberUtil).
+ @param number  the phone number for which the national significant number is needed
  @return the national significant number of the PhoneNumber object passed in
  */
 + (NSString *)getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
@@ -123,7 +131,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
                                           withNSString:(NSString *)regionDialingFrom {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *phoneMetadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionDialingFrom);
   if (phoneMetadata == nil) {
-    return NO;
+    return false;
   }
   return [((id<ComGoogleI18nPhonenumbersInternalMatcherApi>) nil_chk(matcherApi_)) matchesPossibleNumberWithNSString:shortNumber withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->generalDesc_];
 }
@@ -131,11 +139,11 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
 - (jboolean)isPossibleShortNumberForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                   withNSString:(NSString *)regionDialingFrom {
   if (!ComGoogleI18nPhonenumbersShortNumberInfo_regionDialingFromMatchesNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withNSString_(self, number, regionDialingFrom)) {
-    return NO;
+    return false;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *phoneMetadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionDialingFrom);
   if (phoneMetadata == nil) {
-    return NO;
+    return false;
   }
   return [((id<ComGoogleI18nPhonenumbersInternalMatcherApi>) nil_chk(matcherApi_)) matchesPossibleNumberWithNSString:ComGoogleI18nPhonenumbersShortNumberInfo_getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(number) withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->generalDesc_];
 }
@@ -149,21 +157,21 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
       continue;
     }
     if ([((id<ComGoogleI18nPhonenumbersInternalMatcherApi>) nil_chk(matcherApi_)) matchesPossibleNumberWithNSString:shortNumber withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->generalDesc_]) {
-      return YES;
+      return true;
     }
   }
-  return NO;
+  return false;
 }
 
 - (jboolean)isValidShortNumberForRegionWithNSString:(NSString *)shortNumber
                                        withNSString:(NSString *)regionDialingFrom {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *phoneMetadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionDialingFrom);
   if (phoneMetadata == nil) {
-    return NO;
+    return false;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *generalDesc = ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->generalDesc_;
   if (!ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, generalDesc)) {
-    return NO;
+    return false;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *shortNumberDesc = phoneMetadata->shortCode_;
   return ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, shortNumberDesc);
@@ -172,16 +180,16 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
 - (jboolean)isValidShortNumberForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                withNSString:(NSString *)regionDialingFrom {
   if (!ComGoogleI18nPhonenumbersShortNumberInfo_regionDialingFromMatchesNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withNSString_(self, number, regionDialingFrom)) {
-    return NO;
+    return false;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *phoneMetadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionDialingFrom);
   if (phoneMetadata == nil) {
-    return NO;
+    return false;
   }
   NSString *shortNumber = ComGoogleI18nPhonenumbersShortNumberInfo_getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(number);
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *generalDesc = ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->generalDesc_;
   if (!ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, generalDesc)) {
-    return NO;
+    return false;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *shortNumberDesc = phoneMetadata->shortCode_;
   return ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, shortNumberDesc);
@@ -191,7 +199,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
   id<JavaUtilList> regionCodes = ComGoogleI18nPhonenumbersShortNumberInfo_getRegionCodesForCountryCodeWithInt_(self, [((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCode]);
   NSString *regionCode = ComGoogleI18nPhonenumbersShortNumberInfo_getRegionCodeForShortNumberFromRegionListWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withJavaUtilList_(self, number, regionCodes);
   if ([((id<JavaUtilList>) nil_chk(regionCodes)) size] > 1 && regionCode != nil) {
-    return YES;
+    return true;
   }
   return [self isValidShortNumberForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withNSString:regionCode];
 }
@@ -200,74 +208,74 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
                                                                                           withNSString:(NSString *)regionDialingFrom {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *phoneMetadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionDialingFrom);
   if (phoneMetadata == nil) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
   }
   if (ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->premiumRate_)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_PREMIUM_RATE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, PREMIUM_RATE);
   }
   if (ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, phoneMetadata->standardRate_)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_STANDARD_RATE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, STANDARD_RATE);
   }
   if (ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, phoneMetadata->tollFree_)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_TOLL_FREE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, TOLL_FREE);
   }
   if ([self isEmergencyNumberWithNSString:shortNumber withNSString:regionDialingFrom]) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_TOLL_FREE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, TOLL_FREE);
   }
-  return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+  return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
 }
 
 - (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *)getExpectedCostForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                                                                   withNSString:(NSString *)regionDialingFrom {
   if (!ComGoogleI18nPhonenumbersShortNumberInfo_regionDialingFromMatchesNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withNSString_(self, number, regionDialingFrom)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *phoneMetadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionDialingFrom);
   if (phoneMetadata == nil) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
   }
   NSString *shortNumber = ComGoogleI18nPhonenumbersShortNumberInfo_getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(number);
   if (ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(phoneMetadata))->premiumRate_)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_PREMIUM_RATE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, PREMIUM_RATE);
   }
   if (ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, phoneMetadata->standardRate_)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_STANDARD_RATE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, STANDARD_RATE);
   }
   if (ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(self, shortNumber, phoneMetadata->tollFree_)) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_TOLL_FREE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, TOLL_FREE);
   }
   if ([self isEmergencyNumberWithNSString:shortNumber withNSString:regionDialingFrom]) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_TOLL_FREE();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, TOLL_FREE);
   }
-  return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+  return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
 }
 
 - (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *)getExpectedCostWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number {
   id<JavaUtilList> regionCodes = ComGoogleI18nPhonenumbersShortNumberInfo_getRegionCodesForCountryCodeWithInt_(self, [((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCode]);
   if ([((id<JavaUtilList>) nil_chk(regionCodes)) size] == 0) {
-    return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+    return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
   }
   if ([regionCodes size] == 1) {
     return [self getExpectedCostForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withNSString:[regionCodes getWithInt:0]];
   }
-  ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *cost = ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_TOLL_FREE();
+  ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *cost = JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, TOLL_FREE);
   for (NSString * __strong regionCode in regionCodes) {
     ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *costForRegion = [self getExpectedCostForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withNSString:regionCode];
     switch ([costForRegion ordinal]) {
       case ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_PREMIUM_RATE:
-      return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_PREMIUM_RATE();
+      return JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, PREMIUM_RATE);
       case ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_UNKNOWN_COST:
-      cost = ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST();
+      cost = JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST);
       break;
       case ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_STANDARD_RATE:
-      if (cost != ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_UNKNOWN_COST()) {
-        cost = ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_get_STANDARD_RATE();
+      if (cost != JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, UNKNOWN_COST)) {
+        cost = JreLoadStatic(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum, STANDARD_RATE);
       }
       break;
       case ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_TOLL_FREE:
       break;
       default:
-      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersShortNumberInfo_logger_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_SEVERE_() withNSString:JreStrcat("$@", @"Unrecognised cost for region: ", costForRegion)];
+      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersShortNumberInfo_logger_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE_) withNSString:JreStrcat("$@", @"Unrecognised cost for region: ", costForRegion)];
     }
   }
   return cost;
@@ -322,12 +330,12 @@ withComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum:(ComGoogleI18nP
 
 - (jboolean)connectsToEmergencyNumberWithNSString:(NSString *)number
                                      withNSString:(NSString *)regionCode {
-  return ComGoogleI18nPhonenumbersShortNumberInfo_matchesEmergencyNumberHelperWithNSString_withNSString_withBoolean_(self, number, regionCode, YES);
+  return ComGoogleI18nPhonenumbersShortNumberInfo_matchesEmergencyNumberHelperWithNSString_withNSString_withBoolean_(self, number, regionCode, true);
 }
 
 - (jboolean)isEmergencyNumberWithNSString:(NSString *)number
                              withNSString:(NSString *)regionCode {
-  return ComGoogleI18nPhonenumbersShortNumberInfo_matchesEmergencyNumberHelperWithNSString_withNSString_withBoolean_(self, number, regionCode, NO);
+  return ComGoogleI18nPhonenumbersShortNumberInfo_matchesEmergencyNumberHelperWithNSString_withNSString_withBoolean_(self, number, regionCode, false);
 }
 
 - (jboolean)matchesEmergencyNumberHelperWithNSString:(NSString *)number
@@ -361,9 +369,9 @@ withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPho
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersShortNumberInfo class]) {
-    JreStrongAssign(&ComGoogleI18nPhonenumbersShortNumberInfo_logger_, nil, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersShortNumberInfo_class_() getName]));
-    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersShortNumberInfo_INSTANCE_, nil, new_ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create()));
-    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersShortNumberInfo_REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_, nil, new_JavaUtilHashSet_init());
+    JreStrongAssign(&ComGoogleI18nPhonenumbersShortNumberInfo_logger_, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersShortNumberInfo_class_() getName]));
+    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersShortNumberInfo_INSTANCE_, new_ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create()));
+    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersShortNumberInfo_REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_, new_JavaUtilHashSet_init());
     {
       [ComGoogleI18nPhonenumbersShortNumberInfo_REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_ addWithId:@"BR"];
       [ComGoogleI18nPhonenumbersShortNumberInfo_REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_ addWithId:@"CL"];
@@ -412,11 +420,11 @@ withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPho
     { "matchesPossibleNumberAndNationalNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:", "matchesPossibleNumberAndNationalNumber", "Z", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "logger_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersShortNumberInfo_logger_, NULL,  },
-    { "INSTANCE_", NULL, 0x1a, "Lcom.google.i18n.phonenumbers.ShortNumberInfo;", &ComGoogleI18nPhonenumbersShortNumberInfo_INSTANCE_, NULL,  },
-    { "REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_", NULL, 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersShortNumberInfo_REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_, "Ljava/util/Set<Ljava/lang/String;>;",  },
-    { "matcherApi_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.internal.MatcherApi;", NULL, NULL,  },
-    { "countryCallingCodeToRegionCodeMap_", NULL, 0x12, "Ljava.util.Map;", NULL, "Ljava/util/Map<Ljava/lang/Integer;Ljava/util/List<Ljava/lang/String;>;>;",  },
+    { "logger_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersShortNumberInfo_logger_, NULL, .constantValue.asLong = 0 },
+    { "INSTANCE_", NULL, 0x1a, "Lcom.google.i18n.phonenumbers.ShortNumberInfo;", &ComGoogleI18nPhonenumbersShortNumberInfo_INSTANCE_, NULL, .constantValue.asLong = 0 },
+    { "REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_", NULL, 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersShortNumberInfo_REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_, "Ljava/util/Set<Ljava/lang/String;>;", .constantValue.asLong = 0 },
+    { "matcherApi_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.internal.MatcherApi;", NULL, NULL, .constantValue.asLong = 0 },
+    { "countryCallingCodeToRegionCodeMap_", NULL, 0x12, "Ljava.util.Map;", NULL, "Ljava/util/Map<Ljava/lang/Integer;Ljava/util/List<Ljava/lang/String;>;>;", .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberInfo = { 2, "ShortNumberInfo", "com.google.i18n.phonenumbers", NULL, 0x1, 23, methods, 5, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -432,8 +440,8 @@ ComGoogleI18nPhonenumbersShortNumberInfo *ComGoogleI18nPhonenumbersShortNumberIn
 
 void ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(ComGoogleI18nPhonenumbersShortNumberInfo *self, id<ComGoogleI18nPhonenumbersInternalMatcherApi> matcherApi) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersShortNumberInfo_set_matcherApi_(self, matcherApi);
-  ComGoogleI18nPhonenumbersShortNumberInfo_set_countryCallingCodeToRegionCodeMap_(self, ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_getCountryCodeToRegionCodeMap());
+  JreStrongAssign(&self->matcherApi_, matcherApi);
+  JreStrongAssign(&self->countryCallingCodeToRegionCodeMap_, ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_getCountryCodeToRegionCodeMap());
 }
 
 ComGoogleI18nPhonenumbersShortNumberInfo *new_ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(id<ComGoogleI18nPhonenumbersInternalMatcherApi> matcherApi) {
@@ -471,12 +479,12 @@ NSString *ComGoogleI18nPhonenumbersShortNumberInfo_getRegionCodeForShortNumberFr
 
 jboolean ComGoogleI18nPhonenumbersShortNumberInfo_matchesEmergencyNumberHelperWithNSString_withNSString_withBoolean_(ComGoogleI18nPhonenumbersShortNumberInfo *self, NSString *number, NSString *regionCode, jboolean allowPrefixMatch) {
   number = ComGoogleI18nPhonenumbersPhoneNumberUtil_extractPossibleNumberWithNSString_(number);
-  if ([((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_CHARS_PATTERN_())) matcherWithJavaLangCharSequence:number])) lookingAt]) {
-    return NO;
+  if ([((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, PLUS_CHARS_PATTERN_))) matcherWithJavaLangCharSequence:number])) lookingAt]) {
+    return false;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *metadata = ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionCode);
   if (metadata == nil || metadata->emergency_ == nil) {
-    return NO;
+    return false;
   }
   NSString *normalizedNumber = ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsOnlyWithNSString_(number);
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *emergencyDesc = ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(metadata))->emergency_;
@@ -497,7 +505,7 @@ NSString *ComGoogleI18nPhonenumbersShortNumberInfo_getNationalSignificantNumberW
 }
 
 jboolean ComGoogleI18nPhonenumbersShortNumberInfo_matchesPossibleNumberAndNationalNumberWithNSString_withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_(ComGoogleI18nPhonenumbersShortNumberInfo *self, NSString *number, ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *numberDesc) {
-  return [((id<ComGoogleI18nPhonenumbersInternalMatcherApi>) nil_chk(self->matcherApi_)) matchesPossibleNumberWithNSString:number withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:numberDesc] && [self->matcherApi_ matchesNationalNumberWithNSString:number withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:numberDesc withBoolean:NO];
+  return [((id<ComGoogleI18nPhonenumbersInternalMatcherApi>) nil_chk(self->matcherApi_)) matchesPossibleNumberWithNSString:number withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:numberDesc] && [self->matcherApi_ matchesNationalNumberWithNSString:number withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:numberDesc withBoolean:false];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersShortNumberInfo)
@@ -555,10 +563,10 @@ ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *ComGoogleI18nPhone
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcFieldInfo fields[] = {
-    { "TOLL_FREE", "TOLL_FREE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_TOLL_FREE, NULL,  },
-    { "STANDARD_RATE", "STANDARD_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_STANDARD_RATE, NULL,  },
-    { "PREMIUM_RATE", "PREMIUM_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_PREMIUM_RATE, NULL,  },
-    { "UNKNOWN_COST", "UNKNOWN_COST", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_UNKNOWN_COST, NULL,  },
+    { "TOLL_FREE", "TOLL_FREE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_TOLL_FREE, NULL, .constantValue.asLong = 0 },
+    { "STANDARD_RATE", "STANDARD_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_STANDARD_RATE, NULL, .constantValue.asLong = 0 },
+    { "PREMIUM_RATE", "PREMIUM_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_PREMIUM_RATE, NULL, .constantValue.asLong = 0 },
+    { "UNKNOWN_COST", "UNKNOWN_COST", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;", &ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum_UNKNOWN_COST, NULL, .constantValue.asLong = 0 },
   };
   static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.ShortNumberInfo$ShortNumberCost;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum = { 2, "ShortNumberCost", "com.google.i18n.phonenumbers", "ShortNumberInfo", 0x4019, 0, NULL, 4, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/ShortNumberInfo$ShortNumberCost;>;" };

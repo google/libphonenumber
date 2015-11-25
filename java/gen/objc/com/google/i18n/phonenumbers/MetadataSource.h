@@ -10,19 +10,19 @@
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
 
-/**
+/*!
  @brief A source for phone metadata for all regions.
  */
 @protocol ComGoogleI18nPhonenumbersMetadataSource < NSObject, JavaObject >
 
-/**
+/*!
  @brief Gets phone metadata for a region.
  @param regionCode the region code.
  @return the phone metadata for that region, or null if there is none.
  */
 - (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *)getMetadataForRegionWithNSString:(NSString *)regionCode;
 
-/**
+/*!
  @brief Gets phone metadata for a non-geographical region.
  @param countryCallingCode the country calling code.
  @return the phone metadata for that region, or null if there is none.

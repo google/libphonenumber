@@ -66,15 +66,17 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 
 @implementation ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)readFileConfigsWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)availableDataFiles {
   numOfEntries_ = [((id<JavaUtilSortedMap>) nil_chk(availableDataFiles)) size];
-  ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_setAndConsume_countryCallingCodes_(self, [IOSIntArray newArrayWithLength:numOfEntries_]);
-  ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_setAndConsume_availableLanguages_(self, new_JavaUtilArrayList_initWithInt_(numOfEntries_));
+  JreStrongAssignAndConsume(&countryCallingCodes_, [IOSIntArray newArrayWithLength:numOfEntries_]);
+  JreStrongAssignAndConsume(&availableLanguages_, new_JavaUtilArrayList_initWithInt_(numOfEntries_));
   jint index = 0;
   for (JavaLangInteger *boxed__ in nil_chk([availableDataFiles keySet])) {
     jint countryCallingCode = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
@@ -86,10 +88,10 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput {
   numOfEntries_ = [((id<JavaIoObjectInput>) nil_chk(objectInput)) readInt];
   if (countryCallingCodes_ == nil || countryCallingCodes_->size_ < numOfEntries_) {
-    ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_setAndConsume_countryCallingCodes_(self, [IOSIntArray newArrayWithLength:numOfEntries_]);
+    JreStrongAssignAndConsume(&countryCallingCodes_, [IOSIntArray newArrayWithLength:numOfEntries_]);
   }
   if (availableLanguages_ == nil) {
-    ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_setAndConsume_availableLanguages_(self, new_JavaUtilArrayList_init());
+    JreStrongAssignAndConsume(&availableLanguages_, new_JavaUtilArrayList_init());
   }
   for (jint i = 0; i < numOfEntries_; i++) {
     *IOSIntArray_GetRef(nil_chk(countryCallingCodes_), i) = [objectInput readInt];
@@ -189,7 +191,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
       [normalizationMap putWithId:@"zh_TW" withId:@"zh_Hant"];
       [normalizationMap putWithId:@"zh_HK" withId:@"zh_Hant"];
       [normalizationMap putWithId:@"zh_MO" withId:@"zh_Hant"];
-      JreStrongAssign(&ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP_, nil, JavaUtilCollections_unmodifiableMapWithJavaUtilMap_(normalizationMap));
+      JreStrongAssign(&ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP_, JavaUtilCollections_unmodifiableMapWithJavaUtilMap_(normalizationMap));
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider)
   }
@@ -209,10 +211,10 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
     { "appendSubsequentLocalePartWithNSString:withJavaLangStringBuilder:", "appendSubsequentLocalePart", "V", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "numOfEntries_", NULL, 0x2, "I", NULL, NULL,  },
-    { "countryCallingCodes_", NULL, 0x2, "[I", NULL, NULL,  },
-    { "availableLanguages_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Ljava/util/Set<Ljava/lang/String;>;>;",  },
-    { "LOCALE_NORMALIZATION_MAP_", NULL, 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP_, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;",  },
+    { "numOfEntries_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "countryCallingCodes_", NULL, 0x2, "[I", NULL, NULL, .constantValue.asLong = 0 },
+    { "availableLanguages_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Ljava/util/Set<Ljava/lang/String;>;>;", .constantValue.asLong = 0 },
+    { "LOCALE_NORMALIZATION_MAP_", NULL, 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP_, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;", .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider = { 2, "MappingFileProvider", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x1, 10, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider;

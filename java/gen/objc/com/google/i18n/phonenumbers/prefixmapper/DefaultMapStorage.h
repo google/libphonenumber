@@ -13,9 +13,11 @@
 @protocol JavaIoObjectOutput;
 @protocol JavaUtilSortedMap;
 
-/**
- @brief Default phone prefix map storage strategy that is used for data not containing description duplications.
- It is mainly intended to avoid the overhead of the string table management when it is actually unnecessary (i.e no string duplication).
+/*!
+ @brief Default phone prefix map storage strategy that is used for data not containing description
+ duplications.
+ It is mainly intended to avoid the overhead of the string table management when it
+ is actually unnecessary (i.e no string duplication).
  @author Shaopeng Jia
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage : ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy

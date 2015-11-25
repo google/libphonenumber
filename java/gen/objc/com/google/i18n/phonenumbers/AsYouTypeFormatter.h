@@ -8,50 +8,64 @@
 
 #include "J2ObjC_header.h"
 
-/**
+/*!
  @brief A formatter which formats phone numbers as they are entered.
- <p>An AsYouTypeFormatter can be created by invoking PhoneNumberUtil#getAsYouTypeFormatter . After that, digits can be added by invoking #inputDigit on the formatter instance, and the partially formatted phone number will be returned each time a digit is added. #clear can be invoked before formatting a new number. <p>See the unittests for more details on how the formatter is to be used.
+ <p>An AsYouTypeFormatter can be created by invoking
+ <code>PhoneNumberUtil.getAsYouTypeFormatter</code>. After that, digits can be added by invoking
+ <code>inputDigit</code> on the formatter instance, and the partially formatted phone number will be
+ returned each time a digit is added. <code>clear</code> can be invoked before formatting a new
+ number.
+ <p>See the unittests for more details on how the formatter is to be used.
  @author Shaopeng Jia
  */
 @interface ComGoogleI18nPhonenumbersAsYouTypeFormatter : NSObject
 
 #pragma mark Public
 
-/**
+/*!
  @brief Clears the internal state of the formatter, so it can be reused.
  */
 - (void)clear;
 
-/**
- @brief Returns the current position in the partially formatted phone number of the character which was previously passed in as the parameter of #inputDigitAndRememberPosition .
+/*!
+ @brief Returns the current position in the partially formatted phone number of the character which was
+ previously passed in as the parameter of <code>inputDigitAndRememberPosition</code>.
  */
 - (jint)getRememberedPosition;
 
-/**
+/*!
  @brief Formats a phone number on-the-fly as each digit is entered.
- @param nextChar the most recently entered digit of a phone number. Formatting characters are allowed, but as soon as they are encountered this method formats the number as entered and not "as you type" anymore. Full width digits and Arabic-indic digits are allowed, and will be shown as they are.
+ @param nextChar  the most recently entered digit of a phone number. Formatting characters are
+ allowed, but as soon as they are encountered this method formats the number as entered and
+ not "as you type" anymore. Full width digits and Arabic-indic digits are allowed, and will
+ be shown as they are.
  @return the partially formatted phone number.
  */
 - (NSString *)inputDigitWithChar:(jchar)nextChar;
 
-/**
- @brief Same as #inputDigit , but remembers the position where <code>nextChar</code> is inserted, so that it can be retrieved later by using #getRememberedPosition .
- The remembered position will be automatically adjusted if additional formatting characters are later inserted/removed in front of <code>nextChar</code> .
+/*!
+ @brief Same as <code>inputDigit</code>, but remembers the position where <code>nextChar</code> is inserted, so
+ that it can be retrieved later by using <code>getRememberedPosition</code>.
+ The remembered
+ position will be automatically adjusted if additional formatting characters are later
+ inserted/removed in front of <code>nextChar</code>.
  */
 - (NSString *)inputDigitAndRememberPositionWithChar:(jchar)nextChar;
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Constructs an as-you-type formatter.
- Should be obtained from PhoneNumberUtil#getAsYouTypeFormatter .
- @param regionCode the country/region where the phone number is being entered
+ Should be obtained from <code>PhoneNumberUtil.getAsYouTypeFormatter</code>
+ .
+ @param regionCode  the country/region where the phone number is being entered
  */
 - (instancetype)initWithNSString:(NSString *)regionCode;
 
-/**
+/*!
  @brief Check to see if there is an exact pattern match for these digits.
- If so, we should use this instead of any other formatting template whose leadingDigitsPattern also matches the input.
+ If so, we should use this
+ instead of any other formatting template whose leadingDigitsPattern also matches the input.
  */
 - (NSString *)attemptToFormatAccruedDigits;
 

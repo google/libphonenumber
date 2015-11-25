@@ -14,9 +14,11 @@
 @protocol ComGoogleI18nPhonenumbersInternalMatcherApi;
 @protocol JavaUtilSet;
 
-/**
- @brief Methods for getting information about short phone numbers, such as short codes and emergency numbers.
- Note that most commercial short numbers are not handled here, but by the PhoneNumberUtil .
+/*!
+ @brief Methods for getting information about short phone numbers, such as short codes and emergency
+ numbers.
+ Note that most commercial short numbers are not handled here, but by the
+ <code>PhoneNumberUtil</code>.
  @author Shaopeng Jia
  @author David Yonge-Mallo
  */
@@ -24,9 +26,15 @@
 
 #pragma mark Public
 
-/**
- @brief Returns true if the given number, exactly as dialed, might be used to connect to an emergency service in the given region.
- <p> This method accepts a string, rather than a PhoneNumber, because it needs to distinguish cases such as "+1 911" and "911", where the former may not connect to an emergency service in all cases but the latter would. This method takes into account cases where the number might contain formatting, or might have additional digits appended (when it is okay to do that in the specified region).
+/*!
+ @brief Returns true if the given number, exactly as dialed, might be used to connect to an emergency
+ service in the given region.
+ <p>
+ This method accepts a string, rather than a PhoneNumber, because it needs to distinguish
+ cases such as "+1 911" and "911", where the former may not connect to an emergency service in
+ all cases but the latter would. This method takes into account cases where the number might
+ contain formatting, or might have additional digits appended (when it is okay to do that in
+ the specified region).
  @param number the phone number to test
  @param regionCode the region where the phone number is being dialed
  @return whether the number might be used to connect to an emergency service in the given region
@@ -34,50 +42,106 @@
 - (jboolean)connectsToEmergencyNumberWithNSString:(NSString *)number
                                      withNSString:(NSString *)regionCode;
 
-/**
- @brief Gets the expected cost category of a short number (however, nothing is implied about its validity).
- If the country calling code is unique to a region, this method behaves exactly the same as #getExpectedCostForRegion(PhoneNumber,String) . However, if the country calling code is shared by multiple regions, then it returns the highest cost in the sequence PREMIUM_RATE, UNKNOWN_COST, STANDARD_RATE, TOLL_FREE. The reason for the position of UNKNOWN_COST in this order is that if a number is UNKNOWN_COST in one region but STANDARD_RATE or TOLL_FREE in another, its expected cost cannot be estimated as one of the latter since it might be a PREMIUM_RATE number. <p> For example, if a number is STANDARD_RATE in the US, but TOLL_FREE in Canada, the expected cost returned by this method will be STANDARD_RATE, since the NANPA countries share the same country calling code. <p> Note: If the region from which the number is dialed is known, it is highly preferable to call #getExpectedCostForRegion(PhoneNumber,String) instead.
+/*!
+ @brief Gets the expected cost category of a short number (however, nothing is implied about its
+ validity).
+ If the country calling code is unique to a region, this method behaves exactly the
+ same as <code>getExpectedCostForRegion(PhoneNumber,String)</code>. However, if the country
+ calling code is shared by multiple regions, then it returns the highest cost in the sequence
+ PREMIUM_RATE, UNKNOWN_COST, STANDARD_RATE, TOLL_FREE. The reason for the position of
+ UNKNOWN_COST in this order is that if a number is UNKNOWN_COST in one region but STANDARD_RATE
+ or TOLL_FREE in another, its expected cost cannot be estimated as one of the latter since it
+ might be a PREMIUM_RATE number.
+ <p>
+ For example, if a number is STANDARD_RATE in the US, but TOLL_FREE in Canada, the expected
+ cost returned by this method will be STANDARD_RATE, since the NANPA countries share the same
+ country calling code.
+ <p>
+ Note: If the region from which the number is dialed is known, it is highly preferable to call
+ <code>getExpectedCostForRegion(PhoneNumber,String)</code> instead.
  @param number the short number for which we want to know the expected cost category
- @return the highest expected cost category of the short number in the region(s) with the given country calling code
+ @return the highest expected cost category of the short number in the region(s) with the given
+ country calling code
  */
 - (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *)getExpectedCostWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
- @brief Gets the expected cost category of a short number when dialed from a region (however, nothing is implied about its validity).
- If it is important that the number is valid, then its validity must first be checked using #isValidShortNumberForRegion . Note that emergency numbers are always considered toll-free. Example usage: <pre> <code>// The region for which the number was parsed and the region we subsequently check against // need not be the same. Here we parse the number in the US and check it for Canada. PhoneNumber number = phoneUtil.parse("110", "US"); ... String regionCode = "CA"; ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();</code> if (shortInfo.isValidShortNumberForRegion(shortNumber, regionCode)) ShortNumberCost cost = shortInfo.getExpectedCostForRegion(number, regionCode); // Do something with the cost information here. }}</pre>
+/*!
+ @brief Gets the expected cost category of a short number when dialed from a region (however, nothing
+ is implied about its validity).
+ If it is important that the number is valid, then its validity
+ must first be checked using <code>isValidShortNumberForRegion</code>. Note that emergency numbers
+ are always considered toll-free. Example usage:
+ @code
+ // The region for which the number was parsed and the region we subsequently check against
+  // need not be the same. Here we parse the number in the US and check it for Canada.
+  PhoneNumber number = phoneUtil.parse("110", "US");
+  ...
+  String regionCode = "CA";
+  ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+  if (shortInfo.isValidShortNumberForRegion(shortNumber, regionCode)) 
+   ShortNumberCost cost = shortInfo.getExpectedCostForRegion(number, regionCode);
+   // Do something with the cost information here.
+  
+@endcode
  @param number the short number for which we want to know the expected cost category
  @param regionDialingFrom the region from which the number is dialed
- @return the expected cost category for that region of the short number. Returns UNKNOWN_COST if the number does not match a cost category. Note that an invalid number may match any cost category.
+ @return the expected cost category for that region of the short number. Returns UNKNOWN_COST if
+ the number does not match a cost category. Note that an invalid number may match any cost
+ category.
  */
 - (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *)getExpectedCostForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                                                                   withNSString:(NSString *)regionDialingFrom;
 
-/**
- @brief Gets the expected cost category of a short number when dialled from a region (however, nothing is implied about its validity).
- If it is important that the number is valid, then its validity must first be checked using isValidShortNumberForRegion . Note that emergency numbers are always considered toll-free. Example usage: <pre> <code>ShortNumberInfo shortInfo = ShortNumberInfo.getInstance(); String shortNumber = "110"; String regionCode = "FR";</code> if (shortInfo.isValidShortNumberForRegion(shortNumber, regionCode)) ShortNumberInfo.ShortNumberCost cost = shortInfo.getExpectedCostForRegion(shortNumber, regionCode); // Do something with the cost information here. }}</pre>
- @param shortNumber the short number for which we want to know the expected cost category, as a string
+/*!
+ @brief Gets the expected cost category of a short number when dialled from a region (however, nothing
+ is implied about its validity).
+ If it is important that the number is valid, then its validity
+ must first be checked using <code>isValidShortNumberForRegion</code>. Note that emergency numbers
+ are always considered toll-free. Example usage:
+ @code
+ ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+  String shortNumber = "110";
+  String regionCode = "FR";
+  if (shortInfo.isValidShortNumberForRegion(shortNumber, regionCode)) 
+   ShortNumberInfo.ShortNumberCost cost = shortInfo.getExpectedCostForRegion(shortNumber,
+       regionCode);
+   // Do something with the cost information here.
+  
+@endcode
+ @param shortNumber the short number for which we want to know the expected cost category,
+ as a string
  @param regionDialingFrom the region from which the number is dialed
- @return the expected cost category for that region of the short number. Returns UNKNOWN_COST if the number does not match a cost category. Note that an invalid number may match any cost category.
+ @return the expected cost category for that region of the short number. Returns UNKNOWN_COST if
+ the number does not match a cost category. Note that an invalid number may match any cost
+ category.
  */
 - (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *)getExpectedCostForRegionWithNSString:(NSString *)shortNumber
                                                                                           withNSString:(NSString *)regionDialingFrom;
 
-/**
+/*!
  @brief Returns the singleton instance of the ShortNumberInfo.
  */
 + (ComGoogleI18nPhonenumbersShortNumberInfo *)getInstance;
 
-/**
- @brief Given a valid short number, determines whether it is carrier-specific (however, nothing is implied about its validity).
- If it is important that the number is valid, then its validity must first be checked using #isValidShortNumber or #isValidShortNumberForRegion .
+/*!
+ @brief Given a valid short number, determines whether it is carrier-specific (however, nothing is
+ implied about its validity).
+ If it is important that the number is valid, then its validity
+ must first be checked using <code>isValidShortNumber</code> or
+ <code>isValidShortNumberForRegion</code>.
  @param number the valid short number to check
- @return whether the short number is carrier-specific (assuming the input was a valid short number).
+ @return whether the short number is carrier-specific (assuming the input was a valid short
+ number).
  */
 - (jboolean)isCarrierSpecificWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
- @brief Returns true if the given number exactly matches an emergency service number in the given region.
- <p> This method takes into account cases where the number might contain formatting, but doesn't allow additional digits to be appended. Note that <code>isEmergencyNumber(number, region)</code> implies <code>connectsToEmergencyNumber(number, region)</code> .
+/*!
+ @brief Returns true if the given number exactly matches an emergency service number in the given
+ region.
+ <p>
+ This method takes into account cases where the number might contain formatting, but doesn't
+ allow additional digits to be appended. Note that <code>isEmergencyNumber(number, region)</code>
+ implies <code>connectsToEmergencyNumber(number, region)</code>.
  @param number the phone number to test
  @param regionCode the region where the phone number is being dialed
  @return whether the number exactly matches an emergency services number in the given region
@@ -85,17 +149,21 @@
 - (jboolean)isEmergencyNumberWithNSString:(NSString *)number
                              withNSString:(NSString *)regionCode;
 
-/**
+/*!
  @brief Check whether a short number is a possible number.
- If a country calling code is shared by multiple regions, this returns true if it's possible in any of them. This provides a more lenient check than #isValidShortNumber . See #isPossibleShortNumberForRegion(PhoneNumber,String) for details.
+ If a country calling code is shared by
+ multiple regions, this returns true if it's possible in any of them. This provides a more
+ lenient check than <code>isValidShortNumber</code>. See <code>isPossibleShortNumberForRegion(PhoneNumber,String)</code>
+  for details.
  @param number the short number to check
  @return whether the number is a possible short number
  */
 - (jboolean)isPossibleShortNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
+/*!
  @brief Check whether a short number is a possible number when dialed from the given region.
- This provides a more lenient check than #isValidShortNumberForRegion .
+ This
+ provides a more lenient check than <code>isValidShortNumberForRegion</code>.
  @param number the short number to check
  @param regionDialingFrom the region from which the number is dialed
  @return whether the number is a possible short number
@@ -103,9 +171,11 @@
 - (jboolean)isPossibleShortNumberForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                   withNSString:(NSString *)regionDialingFrom;
 
-/**
- @brief Check whether a short number is a possible number when dialled from a region, given the number in the form of a string, and the region where the number is dialed from.
- This provides a more lenient check than #isValidShortNumberForRegion .
+/*!
+ @brief Check whether a short number is a possible number when dialled from a region, given the number
+ in the form of a string, and the region where the number is dialed from.
+ This provides a more
+ lenient check than <code>isValidShortNumberForRegion</code>.
  @param shortNumber the short number to check as a string
  @param regionDialingFrom the region from which the number is dialed
  @return whether the number is a possible short number
@@ -113,17 +183,22 @@
 - (jboolean)isPossibleShortNumberForRegionWithNSString:(NSString *)shortNumber
                                           withNSString:(NSString *)regionDialingFrom;
 
-/**
+/*!
  @brief Tests whether a short number matches a valid pattern.
- If a country calling code is shared by multiple regions, this returns true if it's valid in any of them. Note that this doesn't verify the number is actually in use, which is impossible to tell by just looking at the number itself. See #isValidShortNumberForRegion(PhoneNumber,String) for details.
+ If a country calling code is shared by
+ multiple regions, this returns true if it's valid in any of them. Note that this doesn't verify
+ the number is actually in use, which is impossible to tell by just looking at the number
+ itself. See <code>isValidShortNumberForRegion(PhoneNumber,String)</code> for details.
  @param number the short number for which we want to test the validity
  @return whether the short number matches a valid pattern
  */
 - (jboolean)isValidShortNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
+/*!
  @brief Tests whether a short number matches a valid pattern in a region.
- Note that this doesn't verify the number is actually in use, which is impossible to tell by just looking at the number itself.
+ Note that this doesn't verify
+ the number is actually in use, which is impossible to tell by just looking at the number
+ itself.
  @param number the short number for which we want to test the validity
  @param regionDialingFrom the region from which the number is dialed
  @return whether the short number matches a valid pattern
@@ -131,9 +206,11 @@
 - (jboolean)isValidShortNumberForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                withNSString:(NSString *)regionDialingFrom;
 
-/**
+/*!
  @brief Tests whether a short number matches a valid pattern in a region.
- Note that this doesn't verify the number is actually in use, which is impossible to tell by just looking at the number itself.
+ Note that this doesn't verify
+ the number is actually in use, which is impossible to tell by just looking at the number
+ itself.
  @param shortNumber the short number to check as a string
  @param regionDialingFrom the region from which the number is dialed
  @return whether the short number matches a valid pattern
@@ -145,23 +222,25 @@
 
 - (instancetype)initWithComGoogleI18nPhonenumbersInternalMatcherApi:(id<ComGoogleI18nPhonenumbersInternalMatcherApi>)matcherApi;
 
-/**
+/*!
  @brief Gets a valid short number for the specified region.
  @param regionCode the region for which an example short number is needed
- @return a valid short number for the specified region. Returns an empty string when the metadata does not contain such information.
+ @return a valid short number for the specified region. Returns an empty string when the
+ metadata does not contain such information.
  */
 - (NSString *)getExampleShortNumberWithNSString:(NSString *)regionCode;
 
-/**
+/*!
  @brief Gets a valid short number for the specified cost category.
  @param regionCode the region for which an example short number is needed
  @param cost the cost category of number that is needed
- @return a valid short number for the specified region and cost category. Returns an empty string when the metadata does not contain such information, or the cost is UNKNOWN_COST.
+ @return a valid short number for the specified region and cost category. Returns an empty
+ string when the metadata does not contain such information, or the cost is UNKNOWN_COST.
  */
 - (NSString *)getExampleShortNumberForCostWithNSString:(NSString *)regionCode
 withComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum:(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum *)cost;
 
-/**
+/*!
  @brief Convenience method to get a list of what regions the library has metadata for.
  */
 - (id<JavaUtilSet>)getSupportedRegions;
@@ -185,7 +264,7 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumber
   ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_UNKNOWN_COST = 3,
 };
 
-/**
+/*!
  @brief Cost categories of short numbers.
  */
 @interface ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCostEnum : JavaLangEnum < NSCopying >

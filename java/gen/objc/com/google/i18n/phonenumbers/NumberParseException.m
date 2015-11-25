@@ -54,8 +54,8 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersNumberParseException_Err
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "errorType_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", NULL, NULL,  },
-    { "message_", NULL, 0x2, "Ljava.lang.String;", NULL, NULL,  },
+    { "errorType_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "message_", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNumberParseException = { 2, "NumberParseException", "com.google.i18n.phonenumbers", NULL, 0x1, 3, methods, 2, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -66,8 +66,8 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersNumberParseException_Err
 
 void ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_withNSString_(ComGoogleI18nPhonenumbersNumberParseException *self, ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum *errorType, NSString *message) {
   JavaLangException_initWithNSString_(self, message);
-  ComGoogleI18nPhonenumbersNumberParseException_set_message_(self, message);
-  ComGoogleI18nPhonenumbersNumberParseException_set_errorType_(self, errorType);
+  JreStrongAssign(&self->message_, message);
+  JreStrongAssign(&self->errorType_, errorType);
 }
 
 ComGoogleI18nPhonenumbersNumberParseException *new_ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_withNSString_(ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum *errorType, NSString *message) {
@@ -132,11 +132,11 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum *ComGoogleI18nPhonen
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcFieldInfo fields[] = {
-    { "INVALID_COUNTRY_CODE", "INVALID_COUNTRY_CODE", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_INVALID_COUNTRY_CODE, NULL,  },
-    { "NOT_A_NUMBER", "NOT_A_NUMBER", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_NOT_A_NUMBER, NULL,  },
-    { "TOO_SHORT_AFTER_IDD", "TOO_SHORT_AFTER_IDD", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_TOO_SHORT_AFTER_IDD, NULL,  },
-    { "TOO_SHORT_NSN", "TOO_SHORT_NSN", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_TOO_SHORT_NSN, NULL,  },
-    { "TOO_LONG", "TOO_LONG", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_TOO_LONG, NULL,  },
+    { "INVALID_COUNTRY_CODE", "INVALID_COUNTRY_CODE", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_INVALID_COUNTRY_CODE, NULL, .constantValue.asLong = 0 },
+    { "NOT_A_NUMBER", "NOT_A_NUMBER", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_NOT_A_NUMBER, NULL, .constantValue.asLong = 0 },
+    { "TOO_SHORT_AFTER_IDD", "TOO_SHORT_AFTER_IDD", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_TOO_SHORT_AFTER_IDD, NULL, .constantValue.asLong = 0 },
+    { "TOO_SHORT_NSN", "TOO_SHORT_NSN", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_TOO_SHORT_NSN, NULL, .constantValue.asLong = 0 },
+    { "TOO_LONG", "TOO_LONG", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum_TOO_LONG, NULL, .constantValue.asLong = 0 },
   };
   static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNumberParseException_ErrorTypeEnum = { 2, "ErrorType", "com.google.i18n.phonenumbers", "NumberParseException", 0x4019, 0, NULL, 5, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/NumberParseException$ErrorType;>;" };

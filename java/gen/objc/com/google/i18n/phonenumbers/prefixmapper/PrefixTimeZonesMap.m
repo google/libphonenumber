@@ -23,15 +23,18 @@
   ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *phonePrefixMap_;
 }
 
-/**
+/*!
  @brief Returns the list of time zones <code>key</code> corresponds to.
- <p> <code>key</code> could be the calling country code and the full significant number of a certain number, or it could be just a phone-number prefix. For example, the full number 16502530000 (from the phone-number +1 650 253 0000) is a valid input. Also, any of its prefixes, such as 16502, is also valid.
- @param key the key to look up
+ <p><code>key</code> could be the calling country code and the full significant number of a
+ certain number, or it could be just a phone-number prefix.
+ For example, the full number 16502530000 (from the phone-number +1 650 253 0000) is a valid
+ input. Also, any of its prefixes, such as 16502, is also valid.
+ @param key  the key to look up
  @return the list of corresponding time zones
  */
 - (id<JavaUtilList>)lookupTimeZonesForNumberWithLong:(jlong)key;
 
-/**
+/*!
  @brief Split <code>timezonesString</code> into all the time zones that are part of it.
  */
 - (id<JavaUtilList>)tokenizeRawOutputStringWithNSString:(NSString *)timezonesString;
@@ -82,10 +85,12 @@ __attribute__((unused)) static id<JavaUtilList> ComGoogleI18nPhonenumbersPrefixm
   return [((ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *) nil_chk(phonePrefixMap_)) description];
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)dealloc {
   RELEASE_(phonePrefixMap_);
@@ -105,8 +110,8 @@ __attribute__((unused)) static id<JavaUtilList> ComGoogleI18nPhonenumbersPrefixm
     { "init", NULL, NULL, 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "phonePrefixMap_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.prefixmapper.PhonePrefixMap;", NULL, NULL,  },
-    { "RAW_STRING_TIMEZONES_SEPARATOR_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_RAW_STRING_TIMEZONES_SEPARATOR_, NULL,  },
+    { "phonePrefixMap_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.prefixmapper.PhonePrefixMap;", NULL, NULL, .constantValue.asLong = 0 },
+    { "RAW_STRING_TIMEZONES_SEPARATOR_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_RAW_STRING_TIMEZONES_SEPARATOR_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap = { 2, "PrefixTimeZonesMap", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x1, 9, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap;
@@ -133,7 +138,7 @@ id<JavaUtilList> ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_tokeniz
 
 void ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *self) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_setAndConsume_phonePrefixMap_(self, new_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init());
+  JreStrongAssignAndConsume(&self->phonePrefixMap_, new_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init());
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *new_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init() {

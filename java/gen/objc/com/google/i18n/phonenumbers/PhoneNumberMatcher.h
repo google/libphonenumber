@@ -18,9 +18,13 @@
 @protocol ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker;
 @protocol JavaLangCharSequence;
 
-/**
- @brief A stateful class that finds and extracts telephone numbers from CharSequence text .
- Instances can be created using the PhoneNumberUtil#findNumbers factory methods in PhoneNumberUtil . <p>Vanity numbers (phone numbers using alphabetic digits such as <tt>1-800-SIX-FLAGS</tt> are not found. <p>This class is not thread-safe.
+/*!
+ @brief A stateful class that finds and extracts telephone numbers from text.
+ Instances can be created using the factory methods in
+ <code>PhoneNumberUtil</code>.
+ <p>Vanity numbers (phone numbers using alphabetic digits such as <tt>1-800-SIX-FLAGS</tt> are
+ not found.
+ <p>This class is not thread-safe.
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberMatcher : NSObject < JavaUtilIterator >
 
@@ -30,21 +34,27 @@
 
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)next;
 
-/**
- @brief Always throws UnsupportedOperationException as removal is not supported.
+/*!
+ @brief Always throws <code>UnsupportedOperationException</code> as removal is not supported.
  */
 - (void)remove;
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Creates a new instance.
- See the factory methods in PhoneNumberUtil on how to obtain a new instance.
- @param util the phone number util to use
- @param text the character sequence that we will search, null for no text
- @param country the country to assume for phone numbers not written in international format (with a leading plus, or with the international dialing prefix of the specified region). May be null or "ZZ" if only numbers with a leading plus should be considered.
- @param leniency the leniency to use when evaluating candidate phone numbers
- @param maxTries the maximum number of invalid numbers to try before giving up on the text. This is to cover degenerate cases where the text has a lot of false positives in it. Must be <code>>= 0</code> .
+ See the factory methods in <code>PhoneNumberUtil</code> on how to obtain a
+ new instance.
+ @param util      the phone number util to use
+ @param text      the character sequence that we will search, null for no text
+ @param country   the country to assume for phone numbers not written in international format
+ (with a leading plus, or with the international dialing prefix of the
+ specified region). May be null or "ZZ" if only numbers with a
+ leading plus should be considered.
+ @param leniency  the leniency to use when evaluating candidate phone numbers
+ @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
+ This is to cover degenerate cases where the text has a lot of false positives
+ in it. Must be <code>>= 0</code>.
  */
 - (instancetype)initWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
                                         withJavaLangCharSequence:(id<JavaLangCharSequence>)text
@@ -74,9 +84,11 @@
                                                                            withNSString:(NSString *)candidate
                                            withComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util;
 
-/**
+/*!
  @brief Helper method to determine if a character is a Latin-script letter or not.
- For our purposes, combining marks should also return true since we assume they have been added to a preceding Latin character.
+ For our purposes,
+ combining marks should also return true since we assume they have been added to a preceding
+ Latin character.
  */
 + (jboolean)isLatinLetterWithChar:(jchar)letter;
 
@@ -107,16 +119,21 @@ FOUNDATION_EXPORT jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_isNationa
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 
-/**
- @brief Small helper interface such that the number groups can be checked according to different criteria, both for our default way of performing formatting and for any alternate formats we may want to check.
+/*!
+ @brief Small helper interface such that the number groups can be checked according to different
+ criteria, both for our default way of performing formatting and for any alternate formats we
+ may want to check.
  */
 @protocol ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker < NSObject, JavaObject >
 
-/**
- @brief Returns true if the groups of digits found in our candidate phone number match our expectations.
- @param number the original number we found when parsing
- @param normalizedCandidate the candidate number, normalized to only contain ASCII digits, but with non-digits (spaces etc) retained
- @param expectedNumberGroups the groups of digits that we would expect to see if we formatted this number
+/*!
+ @brief Returns true if the groups of digits found in our candidate phone number match our
+ expectations.
+ @param number  the original number we found when parsing
+ @param normalizedCandidate  the candidate number, normalized to only contain ASCII digits,
+ but with non-digits (spaces etc) retained
+ @param expectedNumberGroups  the groups of digits that we would expect to see if we
+ formatted this number
  */
 - (jboolean)checkGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
                withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number

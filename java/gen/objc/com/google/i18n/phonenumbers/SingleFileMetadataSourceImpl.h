@@ -12,8 +12,8 @@
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
 @protocol ComGoogleI18nPhonenumbersMetadataLoader;
 
-/**
- @brief Implementation of MetadataSource that reads from a single resource file.
+/*!
+ @brief Implementation of <code>MetadataSource</code> that reads from a single resource file.
  */
 @interface ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl : NSObject < ComGoogleI18nPhonenumbersMetadataSource >
 

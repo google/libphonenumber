@@ -115,7 +115,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader)
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader class]) {
-    JreStrongAssign(&ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_, nil, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_class_() getName]));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_class_() getName]));
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader)
   }
 }
@@ -131,10 +131,10 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader)
     { "mayFallBackToEnglishWithNSString:", "mayFallBackToEnglish", "Z", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "LOGGER_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_, NULL,  },
-    { "phonePrefixDataDirectory_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
-    { "mappingFileProvider_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.MappingFileProvider;", NULL, NULL,  },
-    { "availablePhonePrefixMaps_", NULL, 0x2, "Ljava.util.Map;", NULL, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/prefixmapper/PhonePrefixMap;>;",  },
+    { "LOGGER_", NULL, 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_, NULL, .constantValue.asLong = 0 },
+    { "phonePrefixDataDirectory_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "mappingFileProvider_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.MappingFileProvider;", NULL, NULL, .constantValue.asLong = 0 },
+    { "availablePhonePrefixMaps_", NULL, 0x2, "Ljava.util.Map;", NULL, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/prefixmapper/PhonePrefixMap;>;", .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader = { 2, "PrefixFileReader", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x1, 7, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader;
@@ -144,9 +144,9 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader)
 
 void ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_initWithNSString_(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader *self, NSString *phonePrefixDataDirectory) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_setAndConsume_mappingFileProvider_(self, new_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init());
-  ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_setAndConsume_availablePhonePrefixMaps_(self, new_JavaUtilHashMap_init());
-  ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_set_phonePrefixDataDirectory_(self, phonePrefixDataDirectory);
+  JreStrongAssignAndConsume(&self->mappingFileProvider_, new_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init());
+  JreStrongAssignAndConsume(&self->availablePhonePrefixMaps_, new_JavaUtilHashMap_init());
+  JreStrongAssign(&self->phonePrefixDataDirectory_, phonePrefixDataDirectory);
   ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_loadMappingFileProvider(self);
 }
 
@@ -164,7 +164,7 @@ void ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_loadMappingFileProvid
     [((ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *) nil_chk(self->mappingFileProvider_)) readExternalWithJavaIoObjectInput:in];
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_WARNING_() withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING_) withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
   }
   @finally {
     ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_closeWithJavaIoInputStream_(in);
@@ -192,7 +192,7 @@ void ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_loadPhonePrefixMapFro
     [((id<JavaUtilMap>) nil_chk(self->availablePhonePrefixMaps_)) putWithId:fileName withId:map];
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_WARNING_() withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING_) withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
   }
   @finally {
     ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_closeWithJavaIoInputStream_(in);
@@ -206,7 +206,7 @@ void ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_closeWithJavaIoInputS
       [inArg close];
     }
     @catch (JavaIoIOException *e) {
-      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_)) logWithJavaUtilLoggingLevel:JavaUtilLoggingLevel_get_WARNING_() withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
+      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_LOGGER_)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING_) withNSString:[((JavaIoIOException *) nil_chk(e)) description]];
     }
   }
 }

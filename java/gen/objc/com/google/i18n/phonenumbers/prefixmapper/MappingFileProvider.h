@@ -13,51 +13,61 @@
 @protocol JavaIoObjectOutput;
 @protocol JavaUtilSortedMap;
 
-/**
+/*!
  @brief A utility which knows the data files that are available for the phone prefix mappers to use.
- The data files contain mappings from phone number prefixes to text descriptions, and are organized by country calling code and language that the text descriptions are in.
+ The data files contain mappings from phone number prefixes to text descriptions, and are
+ organized by country calling code and language that the text descriptions are in.
  @author Shaopeng Jia
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider : NSObject < JavaIoExternalizable >
 
 #pragma mark Public
 
-/**
- @brief Creates an empty MappingFileProvider .
- The default constructor is necessary for implementing Externalizable . The empty provider could later be populated by #readFileConfigs(java.util.SortedMap) or #readExternal(java.io.ObjectInput) .
+/*!
+ @brief Creates an empty <code>MappingFileProvider</code>.
+ The default constructor is necessary for
+ implementing <code>Externalizable</code>. The empty provider could later be populated by
+ <code>readFileConfigs(java.util.SortedMap)</code> or <code>readExternal(java.io.ObjectInput)</code>.
  */
 - (instancetype)init;
 
-/**
+/*!
  @brief Supports Java Serialization.
  */
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput;
 
-/**
- @brief Initializes an MappingFileProvider with <code>availableDataFiles</code> .
- @param availableDataFiles a map from country calling codes to sets of languages in which data files are available for the specific country calling code. The map is sorted in ascending order of the country calling codes as integers.
+/*!
+ @brief Initializes an <code>MappingFileProvider</code> with <code>availableDataFiles</code>.
+ @param availableDataFiles  a map from country calling codes to sets of languages in which data
+ files are available for the specific country calling code. The map is sorted in ascending
+ order of the country calling codes as integers.
  */
 - (void)readFileConfigsWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)availableDataFiles;
 
-/**
+/*!
  @brief Returns a string representing the data in this class.
- The string contains one line for each country calling code. The country calling code is followed by a '|' and then a list of comma-separated languages sorted in ascending order.
+ The string contains one line for each
+ country calling code. The country calling code is followed by a '|' and then a list of
+ comma-separated languages sorted in ascending order.
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Supports Java Serialization.
  */
 - (void)writeExternalWithJavaIoObjectOutput:(id<JavaIoObjectOutput>)objectOutput;
 
 #pragma mark Package-Private
 
-/**
- @brief Gets the name of the file that contains the mapping data for the <code>countryCallingCode</code> in the language specified.
- @param countryCallingCode the country calling code of phone numbers which the data file contains
- @param language two-letter lowercase ISO language codes as defined by ISO 639-1
- @param script four-letter titlecase (the first letter is uppercase and the rest of the letters are lowercase) ISO script codes as defined in ISO 15924
- @param region two-letter uppercase ISO country codes as defined by ISO 3166-1
+/*!
+ @brief Gets the name of the file that contains the mapping data for the <code>countryCallingCode</code> in
+ the language specified.
+ @param countryCallingCode  the country calling code of phone numbers which the data file
+ contains
+ @param language  two-letter lowercase ISO language codes as defined by ISO 639-1
+ @param script  four-letter titlecase (the first letter is uppercase and the rest of the letters
+ are lowercase) ISO script codes as defined in ISO 15924
+ @param region  two-letter uppercase ISO country codes as defined by ISO 3166-1
  @return the name of the file, or empty string if no such file can be found
  */
 - (NSString *)getFileNameWithInt:(jint)countryCallingCode

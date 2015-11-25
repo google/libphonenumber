@@ -34,41 +34,44 @@
   IOSObjectArray *descriptionPool_;
 }
 
-/**
+/*!
  @brief Creates the description pool from the provided set of string descriptions and phone prefix map.
  */
 - (void)createDescriptionPoolWithJavaUtilSortedSet:(id<JavaUtilSortedSet>)descriptionsSet
                              withJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap;
 
-/**
- @brief Reads the phone prefix entries from the provided input stream and stores them to the internal byte buffers.
+/*!
+ @brief Reads the phone prefix entries from the provided input stream and stores them to the internal
+ byte buffers.
  */
 - (void)readEntriesWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput;
 
-/**
- @brief Gets the minimum number of bytes that can be used to store the provided <code>value</code> .
+/*!
+ @brief Gets the minimum number of bytes that can be used to store the provided <code>value</code>.
  */
 + (jint)getOptimalNumberOfBytesForValueWithInt:(jint)value;
 
-/**
- @brief Stores a value which is read from the provided <code>objectInput</code> to the provided byte <code>buffer</code> at the specified <code>index</code> .
- @param objectInput the object input stream from which the value is read
- @param wordSize the number of bytes used to store the value read from the stream
- @param outputBuffer the byte buffer to which the value is stored
- @param index the index where the value is stored in the buffer
- @throws IOException if an error occurred reading from the object input stream
+/*!
+ @brief Stores a value which is read from the provided <code>objectInput</code> to the provided byte <code>buffer</code>
+  at the specified <code>index</code>.
+ @param objectInput  the object input stream from which the value is read
+ @param wordSize  the number of bytes used to store the value read from the stream
+ @param outputBuffer  the byte buffer to which the value is stored
+ @param index  the index where the value is stored in the buffer
+ @throws IOException  if an error occurred reading from the object input stream
  */
 + (void)readExternalWordWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput
                                       withInt:(jint)wordSize
                         withJavaNioByteBuffer:(JavaNioByteBuffer *)outputBuffer
                                       withInt:(jint)index;
 
-/**
- @brief Writes the value read from the provided byte <code>buffer</code> at the specified <code>index</code> to the provided <code>objectOutput</code> .
- @param objectOutput the object output stream to which the value is written
- @param wordSize the number of bytes used to store the value
- @param inputBuffer the byte buffer from which the value is read
- @param index the index of the value in the the byte buffer
+/*!
+ @brief Writes the value read from the provided byte <code>buffer</code> at the specified <code>index</code> to
+ the provided <code>objectOutput</code>.
+ @param objectOutput  the object output stream to which the value is written
+ @param wordSize  the number of bytes used to store the value
+ @param inputBuffer  the byte buffer from which the value is read
+ @param index  the index of the value in the the byte buffer
  @throws IOException if an error occurred writing to the provided object output stream
  */
 + (void)writeExternalWordWithJavaIoObjectOutput:(id<JavaIoObjectOutput>)objectOutput
@@ -76,25 +79,28 @@
                           withJavaNioByteBuffer:(JavaNioByteBuffer *)inputBuffer
                                         withInt:(jint)index;
 
-/**
- @brief Reads the <code>value</code> at the specified <code>index</code> from the provided byte <code>buffer</code> .
+/*!
+ @brief Reads the <code>value</code> at the specified <code>index</code> from the provided byte <code>buffer</code>.
  Note that only integer and short sizes are supported.
- @param buffer the byte buffer from which the value is read
- @param wordSize the number of bytes used to store the value
- @param index the index where the value is read from
+ @param buffer  the byte buffer from which the value is read
+ @param wordSize  the number of bytes used to store the value
+ @param index  the index where the value is read from
  @return the value read from the buffer
  */
 + (jint)readWordFromBufferWithJavaNioByteBuffer:(JavaNioByteBuffer *)buffer
                                         withInt:(jint)wordSize
                                         withInt:(jint)index;
 
-/**
- @brief Stores the provided <code>value</code> to the provided byte <code>buffer</code> at the specified <code>index</code> using the provided <code>wordSize</code> in bytes.
- Note that only integer and short sizes are supported.
- @param buffer the byte buffer to which the value is stored
- @param wordSize the number of bytes used to store the provided value
- @param index the index to which the value is stored
- @param value the value that is stored assuming it does not require more than the specified number of bytes.
+/*!
+ @brief Stores the provided <code>value</code> to the provided byte <code>buffer</code> at the specified <code>index</code>
+  using the provided <code>wordSize</code> in bytes.
+ Note that only integer and short sizes are
+ supported.
+ @param buffer  the byte buffer to which the value is stored
+ @param wordSize  the number of bytes used to store the provided value
+ @param index  the index to which the value is stored
+ @param value  the value that is stored assuming it does not require more than the specified
+ number of bytes.
  */
 + (void)storeWordInBufferWithJavaNioByteBuffer:(JavaNioByteBuffer *)buffer
                                        withInt:(jint)wordSize
@@ -140,12 +146,12 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
   id<JavaUtilSortedSet> descriptionsSet = [new_JavaUtilTreeSet_init() autorelease];
   numOfEntries_ = [((id<JavaUtilSortedMap>) nil_chk(phonePrefixMap)) size];
   prefixSizeInBytes_ = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_getOptimalNumberOfBytesForValueWithInt_([((JavaLangInteger *) nil_chk([phonePrefixMap lastKey])) intValue]);
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_set_phoneNumberPrefixes_(self, JavaNioByteBuffer_allocateWithInt_(numOfEntries_ * prefixSizeInBytes_));
+  JreStrongAssign(&phoneNumberPrefixes_, JavaNioByteBuffer_allocateWithInt_(numOfEntries_ * prefixSizeInBytes_));
   jint index = 0;
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([phonePrefixMap entrySet])) {
     jint prefix = [((JavaLangInteger *) nil_chk([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey])) intValue];
     ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_storeWordInBufferWithJavaNioByteBuffer_withInt_withInt_withInt_(phoneNumberPrefixes_, prefixSizeInBytes_, index, prefix);
-    [((JavaUtilTreeSet *) nil_chk(possibleLengths_)) addWithId:JavaLangInteger_valueOfWithInt_(J2ObjCFpToInt(JavaLangMath_log10WithDouble_(prefix)) + 1)];
+    [((JavaUtilTreeSet *) nil_chk(possibleLengths_)) addWithId:JavaLangInteger_valueOfWithInt_(JreFpToInt(JavaLangMath_log10WithDouble_(prefix)) + 1)];
     [descriptionsSet addWithId:[entry_ getValue]];
     ++index;
   }
@@ -167,7 +173,7 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
   }
   jint descriptionPoolSize = [objectInput readInt];
   if (descriptionPool_ == nil || descriptionPool_->size_ < descriptionPoolSize) {
-    ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_setAndConsume_descriptionPool_(self, [IOSObjectArray newArrayWithLength:descriptionPoolSize type:NSString_class_()]);
+    JreStrongAssignAndConsume(&descriptionPool_, [IOSObjectArray newArrayWithLength:descriptionPoolSize type:NSString_class_()]);
   }
   for (jint i = 0; i < descriptionPoolSize; i++) {
     NSString *description_ = [objectInput readUTF];
@@ -236,10 +242,12 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
   ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_storeWordInBufferWithJavaNioByteBuffer_withInt_withInt_withInt_(buffer, wordSize, index, value);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)dealloc {
   RELEASE_(phoneNumberPrefixes_);
@@ -267,11 +275,11 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
   static const J2ObjcFieldInfo fields[] = {
     { "SHORT_NUM_BYTES", "SHORT_NUM_BYTES", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_SHORT_NUM_BYTES },
     { "INT_NUM_BYTES", "INT_NUM_BYTES", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_INT_NUM_BYTES },
-    { "prefixSizeInBytes_", NULL, 0x2, "I", NULL, NULL,  },
-    { "descIndexSizeInBytes_", NULL, 0x2, "I", NULL, NULL,  },
-    { "phoneNumberPrefixes_", NULL, 0x2, "Ljava.nio.ByteBuffer;", NULL, NULL,  },
-    { "descriptionIndexes_", NULL, 0x2, "Ljava.nio.ByteBuffer;", NULL, NULL,  },
-    { "descriptionPool_", NULL, 0x2, "[Ljava.lang.String;", NULL, NULL,  },
+    { "prefixSizeInBytes_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "descIndexSizeInBytes_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "phoneNumberPrefixes_", NULL, 0x2, "Ljava.nio.ByteBuffer;", NULL, NULL, .constantValue.asLong = 0 },
+    { "descriptionIndexes_", NULL, 0x2, "Ljava.nio.ByteBuffer;", NULL, NULL, .constantValue.asLong = 0 },
+    { "descriptionPool_", NULL, 0x2, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage = { 2, "FlyweightMapStorage", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x10, 13, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage;
@@ -281,8 +289,8 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
 
 void ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_createDescriptionPoolWithJavaUtilSortedSet_withJavaUtilSortedMap_(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *self, id<JavaUtilSortedSet> descriptionsSet, id<JavaUtilSortedMap> phonePrefixMap) {
   self->descIndexSizeInBytes_ = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_getOptimalNumberOfBytesForValueWithInt_([((id<JavaUtilSortedSet>) nil_chk(descriptionsSet)) size] - 1);
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_set_descriptionIndexes_(self, JavaNioByteBuffer_allocateWithInt_(self->numOfEntries_ * self->descIndexSizeInBytes_));
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_setAndConsume_descriptionPool_(self, [IOSObjectArray newArrayWithLength:[descriptionsSet size] type:NSString_class_()]);
+  JreStrongAssign(&self->descriptionIndexes_, JavaNioByteBuffer_allocateWithInt_(self->numOfEntries_ * self->descIndexSizeInBytes_));
+  JreStrongAssignAndConsume(&self->descriptionPool_, [IOSObjectArray newArrayWithLength:[descriptionsSet size] type:NSString_class_()]);
   [descriptionsSet toArrayWithNSObjectArray:self->descriptionPool_];
   jint index = 0;
   for (jint i = 0; i < self->numOfEntries_; i++) {
@@ -297,10 +305,10 @@ void ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_createDescriptionP
 void ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_readEntriesWithJavaIoObjectInput_(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *self, id<JavaIoObjectInput> objectInput) {
   self->numOfEntries_ = [((id<JavaIoObjectInput>) nil_chk(objectInput)) readInt];
   if (self->phoneNumberPrefixes_ == nil || [self->phoneNumberPrefixes_ capacity] < self->numOfEntries_) {
-    ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_set_phoneNumberPrefixes_(self, JavaNioByteBuffer_allocateWithInt_(self->numOfEntries_ * self->prefixSizeInBytes_));
+    JreStrongAssign(&self->phoneNumberPrefixes_, JavaNioByteBuffer_allocateWithInt_(self->numOfEntries_ * self->prefixSizeInBytes_));
   }
   if (self->descriptionIndexes_ == nil || [self->descriptionIndexes_ capacity] < self->numOfEntries_) {
-    ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_set_descriptionIndexes_(self, JavaNioByteBuffer_allocateWithInt_(self->numOfEntries_ * self->descIndexSizeInBytes_));
+    JreStrongAssign(&self->descriptionIndexes_, JavaNioByteBuffer_allocateWithInt_(self->numOfEntries_ * self->descIndexSizeInBytes_));
   }
   for (jint i = 0; i < self->numOfEntries_; i++) {
     ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_readExternalWordWithJavaIoObjectInput_withInt_withJavaNioByteBuffer_withInt_(objectInput, self->prefixSizeInBytes_, self->phoneNumberPrefixes_, i);

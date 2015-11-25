@@ -12,8 +12,8 @@
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
 @protocol ComGoogleI18nPhonenumbersMetadataLoader;
 
-/**
- @brief Implementation of MetadataSource that reads from multiple resource files.
+/*!
+ @brief Implementation of <code>MetadataSource</code> that reads from multiple resource files.
  */
 @interface ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl : NSObject < ComGoogleI18nPhonenumbersMetadataSource >
 

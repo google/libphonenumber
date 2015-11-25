@@ -12,9 +12,11 @@
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum;
 
-/**
+/*!
  @brief Definition of the class representing international telephone numbers.
- This class is hand-created based on the class file compiled from phonenumber.proto. Please refer to that file for detailed descriptions of the meaning of each field.
+ This class is hand-created
+ based on the class file compiled from phonenumber.proto. Please refer to that file for detailed
+ descriptions of the meaning of each field.
  */
 
 @interface ComGoogleI18nPhonenumbersPhonenumber : NSObject

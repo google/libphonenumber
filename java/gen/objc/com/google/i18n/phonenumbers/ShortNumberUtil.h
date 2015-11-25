@@ -17,26 +17,29 @@
 
 - (instancetype)init;
 
-/**
- @brief Returns true if the number might be used to connect to an emergency service in the given region.
- This method takes into account cases where the number might contain formatting, or might have additional digits appended (when it is okay to do that in the region specified).
- @param number the phone number to test
- @param regionCode the region where the phone number is being dialed
+/*!
+ @brief Returns true if the number might be used to connect to an emergency service in the given
+ region.
+ This method takes into account cases where the number might contain formatting, or might have
+ additional digits appended (when it is okay to do that in the region specified).
+ @param number  the phone number to test
+ @param regionCode  the region where the phone number is being dialed
  @return if the number might be used to connect to an emergency service in the given region.
  */
 - (jboolean)connectsToEmergencyNumberWithNSString:(NSString *)number
                                      withNSString:(NSString *)regionCode;
 
-/**
+/*!
  @brief Convenience method to get a list of what regions the library has metadata for.
  */
 - (id<JavaUtilSet>)getSupportedRegions;
 
-/**
+/*!
  @brief Returns true if the number exactly matches an emergency service number in the given region.
- This method takes into account cases where the number might contain formatting, but doesn't allow additional digits to be appended.
- @param number the phone number to test
- @param regionCode the region where the phone number is being dialed
+ This method takes into account cases where the number might contain formatting, but doesn't
+ allow additional digits to be appended.
+ @param number  the phone number to test
+ @param regionCode  the region where the phone number is being dialed
  @return if the number exactly matches an emergency services number in the given region.
  */
 - (jboolean)isEmergencyNumberWithNSString:(NSString *)number
@@ -59,7 +62,7 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumber
   ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_UNKNOWN_COST = 3,
 };
 
-/**
+/*!
  @brief Cost categories of short numbers.
  */
 @interface ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCostEnum : JavaLangEnum < NSCopying >

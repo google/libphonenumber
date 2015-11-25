@@ -10,15 +10,38 @@
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
 
-/**
+/*!
  @brief The immutable match of a phone number within a piece of text.
- Matches may be found using PhoneNumberUtil#findNumbers . <p>A match consists of the #number() phone number as well as the #start() start and #end() end offsets of the corresponding subsequence of the searched text. Use #rawString() to obtain a copy of the matched subsequence. <p>The following annotated example clarifies the relationship between the searched text, the match offsets, and the parsed number: <pre> CharSequence text = "Call me at +1 425 882-8080 for details."; String country = "US"; PhoneNumberUtil util = PhoneNumberUtil.getInstance(); // Find the first phone number match: PhoneNumberMatch m = util.findNumbers(text, country).iterator().next(); // rawString() contains the phone number as it appears in the text. "+1 425 882-8080".equals(m.rawString()); // start() and end() define the range of the matched subsequence. CharSequence subsequence = text.subSequence(m.start(), m.end()); "+1 425 882-8080".contentEquals(subsequence); // number() returns the the same result as PhoneNumberUtil. PhoneNumberUtil#parse parse() // invoked on rawString(). util.parse(m.rawString(), country).equals(m.number()); </pre>
+ Matches may be found using
+ <code>PhoneNumberUtil.findNumbers</code>.
+ <p>A match consists of the phone number as well as the
+ start and end offsets of the corresponding subsequence
+ of the searched text. Use <code>rawString()</code> to obtain a copy of the matched subsequence.
+ <p>The following annotated example clarifies the relationship between the searched text, the
+ match offsets, and the parsed number:
+ @code
+
+  CharSequence text = "Call me at +1 425 882-8080 for details.";
+  String country = "US";
+  PhoneNumberUtil util = PhoneNumberUtil.getInstance();
+  // Find the first phone number match:
+  PhoneNumberMatch m = util.findNumbers(text, country).iterator().next();
+  // rawString() contains the phone number as it appears in the text.
+  "+1 425 882-8080".equals(m.rawString());
+  // start() and end() define the range of the matched subsequence.
+  CharSequence subsequence = text.subSequence(m.start(), m.end());
+  "+1 425 882-8080".contentEquals(subsequence);
+  // number() returns the the same result as PhoneNumberUtil.<code>parse()</code>
+  // invoked on rawString().
+  util.parse(m.rawString(), country).equals(m.number());
+  
+@endcode
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberMatch : NSObject
 
 #pragma mark Public
 
-/**
+/*!
  @brief Returns the exclusive end index of the matched phone number within the searched text.
  */
 - (jint)end;
@@ -27,17 +50,17 @@
 
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief Returns the phone number matched by the receiver.
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
+/*!
  @brief Returns the raw string matched as a phone number in the searched text.
  */
 - (NSString *)rawString;
 
-/**
+/*!
  @brief Returns the start index of the matched phone number within the searched text.
  */
 - (jint)start;
@@ -46,11 +69,11 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Creates a new match.
- @param start the start index into the target text
- @param rawString the matched substring of the target text
- @param number the matched phone number
+ @param start  the start index into the target text
+ @param rawString  the matched substring of the target text
+ @param number  the matched phone number
  */
 - (instancetype)initWithInt:(jint)start
                withNSString:(NSString *)rawString

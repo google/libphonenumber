@@ -10,7 +10,7 @@
 
 @class JavaUtilRegexPattern;
 
-/**
+/*!
  @brief LRU Cache for compiled regular expressions used by the libphonenumbers libary.
  @author Shaopeng Jia
  */

@@ -15,8 +15,9 @@
 @protocol JavaUtilList;
 @protocol JavaUtilSortedMap;
 
-/**
- @brief A utility that maps phone number prefixes to a list of strings describing the time zones to which each prefix belongs.
+/*!
+ @brief A utility that maps phone number prefixes to a list of strings describing the time zones to
+ which each prefix belongs.
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap : NSObject < JavaIoExternalizable >
 
@@ -24,35 +25,39 @@
 
 - (instancetype)init;
 
-/**
- @brief Returns the list of time zones <code>number</code> 's calling country code corresponds to.
- @param number the phone number to look up
+/*!
+ @brief Returns the list of time zones <code>number</code>'s calling country code corresponds to.
+ @param number  the phone number to look up
  @return the list of corresponding time zones
  */
 - (id<JavaUtilList>)lookupCountryLevelTimeZonesForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
-/**
- @brief As per #lookupTimeZonesForNumber(long) , but receives the number as a PhoneNumber instead of a long.
- @param number the phone number to look up
+/*!
+ @brief As per <code>lookupTimeZonesForNumber(long)</code>, but receives the number as a PhoneNumber
+ instead of a long.
+ @param number  the phone number to look up
  @return the list of corresponding time zones
  */
 - (id<JavaUtilList>)lookupTimeZonesForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput;
 
-/**
- @brief Creates a PrefixTimeZonesMap initialized with <code>sortedPrefixTimeZoneMap</code> .
- Note that the underlying implementation of this method is expensive thus should not be called by time-critical applications.
- @param sortedPrefixTimeZoneMap a map from phone number prefixes to their corresponding time zones, sorted in ascending order of the phone number prefixes as integers.
+/*!
+ @brief Creates a <code>PrefixTimeZonesMap</code> initialized with <code>sortedPrefixTimeZoneMap</code>.
+ Note
+ that the underlying implementation of this method is expensive thus should not be called by
+ time-critical applications.
+ @param sortedPrefixTimeZoneMap  a map from phone number prefixes to their corresponding time
+ zones, sorted in ascending order of the phone number prefixes as integers.
  */
 - (void)readPrefixTimeZonesMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)sortedPrefixTimeZoneMap;
 
-/**
+/*!
  @brief Dumps the mappings contained in the phone prefix map.
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Supports Java Serialization.
  */
 - (void)writeExternalWithJavaIoObjectOutput:(id<JavaIoObjectOutput>)objectOutput;

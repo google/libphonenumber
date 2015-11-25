@@ -29,93 +29,100 @@
 
 @interface ComGoogleI18nPhonenumbersPhoneNumberMatcher () {
  @public
-  /**
+  /*!
    @brief The phone number utility.
    */
   ComGoogleI18nPhonenumbersPhoneNumberUtil *phoneUtil_;
-  /**
+  /*!
    @brief The text searched for phone numbers.
    */
   id<JavaLangCharSequence> text_;
-  /**
-   @brief The region (country) to assume for phone numbers without an international prefix, possibly null.
+  /*!
+   @brief The region (country) to assume for phone numbers without an international prefix, possibly
+ null.
    */
   NSString *preferredRegion_;
-  /**
+  /*!
    @brief The degree of validation requested.
    */
   ComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum *leniency_;
-  /**
+  /*!
    @brief The maximum number of retries after matching an invalid number.
    */
   jlong maxTries_;
-  /**
+  /*!
    @brief The iteration tristate.
    */
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum *state_;
-  /**
-   @brief The last successful match, null unless in State#READY .
+  /*!
+   @brief The last successful match, null unless in <code>State.READY</code>.
    */
   ComGoogleI18nPhonenumbersPhoneNumberMatch *lastMatch_;
-  /**
+  /*!
    @brief The next index to start searching at.
-   Undefined in State#DONE .
+   Undefined in <code>State.DONE</code>. 
    */
   jint searchIndex_;
 }
 
-/**
+/*!
  @brief Returns a regular expression quantifier with an upper and lower limit.
  */
 + (NSString *)limitWithInt:(jint)lower
                    withInt:(jint)upper;
 
-/**
- @brief Attempts to find the next subsequence in the searched sequence on or after <code>searchIndex</code> that represents a phone number.
+/*!
+ @brief Attempts to find the next subsequence in the searched sequence on or after <code>searchIndex</code>
+ that represents a phone number.
  Returns the next match, null if none was found.
- @param index the search index to start searching at
+ @param index  the search index to start searching at
  @return the phone number match found, null if none can be found
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)findWithInt:(jint)index;
 
-/**
- @brief Trims away any characters after the first match of <code>pattern</code> in <code>candidate</code> , returning the trimmed version.
+/*!
+ @brief Trims away any characters after the first match of <code>pattern</code> in <code>candidate</code>,
+ returning the trimmed version.
  */
 + (id<JavaLangCharSequence>)trimAfterFirstMatchWithJavaUtilRegexPattern:(JavaUtilRegexPattern *)pattern
                                                withJavaLangCharSequence:(id<JavaLangCharSequence>)candidate;
 
 + (jboolean)isInvalidPunctuationSymbolWithChar:(jchar)character;
 
-/**
+/*!
  @brief Attempts to extract a match from a <code>candidate</code> character sequence.
- @param candidate the candidate text that might contain a phone number
- @param offset the offset of <code>candidate</code> within #text
+ @param candidate  the candidate text that might contain a phone number
+ @param offset  the offset of <code>candidate</code> within <code>text</code>
  @return the match found, null if none can be found
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)extractMatchWithJavaLangCharSequence:(id<JavaLangCharSequence>)candidate
                                                                             withInt:(jint)offset;
 
-/**
- @brief Attempts to extract a match from <code>candidate</code> if the whole candidate does not qualify as a match.
- @param candidate the candidate text that might contain a phone number
- @param offset the current offset of <code>candidate</code> within #text
+/*!
+ @brief Attempts to extract a match from <code>candidate</code> if the whole candidate does not qualify as a
+ match.
+ @param candidate  the candidate text that might contain a phone number
+ @param offset  the current offset of <code>candidate</code> within <code>text</code>
  @return the match found, null if none can be found
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)extractInnerMatchWithNSString:(NSString *)candidate
                                                                      withInt:(jint)offset;
 
-/**
- @brief Parses a phone number from the <code>candidate</code> using PhoneNumberUtil#parse and verifies it matches the requested #leniency .
- If parsing and verification succeed, a corresponding PhoneNumberMatch is returned, otherwise this method returns null.
- @param candidate the candidate match
- @param offset the offset of <code>candidate</code> within #text
+/*!
+ @brief Parses a phone number from the <code>candidate</code> using <code>PhoneNumberUtil.parse</code> and
+ verifies it matches the requested <code>leniency</code>.
+ If parsing and verification succeed, a
+ corresponding <code>PhoneNumberMatch</code> is returned, otherwise this method returns null.
+ @param candidate  the candidate match
+ @param offset  the offset of <code>candidate</code> within <code>text</code>
  @return the parsed and validated phone number match, or null
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)parseAndVerifyWithNSString:(NSString *)candidate
                                                                   withInt:(jint)offset;
 
-/**
- @brief Helper method to get the national-number part of a number, formatted without any national prefix, and return it as a set of digit blocks that would be formatted together.
+/*!
+ @brief Helper method to get the national-number part of a number, formatted without any national
+ prefix, and return it as a set of digit blocks that would be formatted together.
  */
 + (IOSObjectArray *)getNationalNumberGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
                                    withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
@@ -176,7 +183,7 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberMatcher_State) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_DONE = 2,
 };
 
-/**
+/*!
  @brief The potential states of a PhoneNumberMatcher.
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum : JavaLangEnum < NSCopying >
@@ -308,17 +315,17 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 }
 
 - (jboolean)hasNext {
-  if (state_ == ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_get_NOT_READY()) {
-    ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_lastMatch_(self, ComGoogleI18nPhonenumbersPhoneNumberMatcher_findWithInt_(self, searchIndex_));
+  if (state_ == JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum, NOT_READY)) {
+    JreStrongAssign(&lastMatch_, ComGoogleI18nPhonenumbersPhoneNumberMatcher_findWithInt_(self, searchIndex_));
     if (lastMatch_ == nil) {
-      ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_state_(self, ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_get_DONE());
+      JreStrongAssign(&state_, JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum, DONE));
     }
     else {
       searchIndex_ = [lastMatch_ end];
-      ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_state_(self, ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_get_READY());
+      JreStrongAssign(&state_, JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum, READY));
     }
   }
-  return state_ == ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_get_READY();
+  return state_ == JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum, READY);
 }
 
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)next {
@@ -326,8 +333,8 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
     @throw [new_JavaUtilNoSuchElementException_init() autorelease];
   }
   ComGoogleI18nPhonenumbersPhoneNumberMatch *result = lastMatch_;
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_lastMatch_(self, nil);
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_state_(self, ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_get_NOT_READY());
+  JreStrongAssign(&lastMatch_, nil);
+  JreStrongAssign(&state_, JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum, NOT_READY));
   return result;
 }
 
@@ -347,27 +354,27 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPhoneNumberMatcher class]) {
-    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES_, nil, JavaUtilRegexPattern_compileWithNSString_(@"\\d{1,5}-+\\d{1,5}\\s{0,4}\\(\\d{1,4}"));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_SLASH_SEPARATED_DATES_, nil, JavaUtilRegexPattern_compileWithNSString_(@"(?:(?:[0-3]?\\d/[01]?\\d)|(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}"));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_, nil, JavaUtilRegexPattern_compileWithNSString_(@"[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d +[0-2]\\d$"));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_SUFFIX_, nil, JavaUtilRegexPattern_compileWithNSString_(@":[0-5]\\d"));
-    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_INNER_MATCHES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ JavaUtilRegexPattern_compileWithNSString_(@"/+(.*)"), JavaUtilRegexPattern_compileWithNSString_(@"(\\([^(]*)"), JavaUtilRegexPattern_compileWithNSString_(@"(?:\\p{Z}-|-\\p{Z})\\p{Z}*(.+)"), JavaUtilRegexPattern_compileWithNSString_(@"[\u2012-\u2015\uff0d]\\p{Z}*(.+)"), JavaUtilRegexPattern_compileWithNSString_(@"\\.+\\p{Z}*([^.]+)"), JavaUtilRegexPattern_compileWithNSString_(@"\\p{Z}+(\\P{Z}+)") } count:6 type:JavaUtilRegexPattern_class_()]);
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES_, JavaUtilRegexPattern_compileWithNSString_(@"\\d{1,5}-+\\d{1,5}\\s{0,4}\\(\\d{1,4}"));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_SLASH_SEPARATED_DATES_, JavaUtilRegexPattern_compileWithNSString_(@"(?:(?:[0-3]?\\d/[01]?\\d)|(?:[01]?\\d/[0-3]?\\d))/(?:[12]\\d)?\\d{2}"));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_, JavaUtilRegexPattern_compileWithNSString_(@"[12]\\d{3}[-/]?[01]\\d[-/]?[0-3]\\d +[0-2]\\d$"));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_SUFFIX_, JavaUtilRegexPattern_compileWithNSString_(@":[0-5]\\d"));
+    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_INNER_MATCHES_, [IOSObjectArray newArrayWithObjects:(id[]){ JavaUtilRegexPattern_compileWithNSString_(@"/+(.*)"), JavaUtilRegexPattern_compileWithNSString_(@"(\\([^(]*)"), JavaUtilRegexPattern_compileWithNSString_(@"(?:\\p{Z}-|-\\p{Z})\\p{Z}*(.+)"), JavaUtilRegexPattern_compileWithNSString_(@"[\u2012-\u2015\uff0d]\\p{Z}*(.+)"), JavaUtilRegexPattern_compileWithNSString_(@"\\.+\\p{Z}*([^.]+)"), JavaUtilRegexPattern_compileWithNSString_(@"\\p{Z}+(\\P{Z}+)") } count:6 type:JavaUtilRegexPattern_class_()]);
     {
       NSString *openingParens = @"(\\[\uff08\uff3b";
       NSString *closingParens = @")\\]\uff09\uff3d";
       NSString *nonParens = JreStrcat("$$$C", @"[^", openingParens, closingParens, ']');
       NSString *bracketPairLimit = ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(0, 3);
-      JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS_, nil, JavaUtilRegexPattern_compileWithNSString_(JreStrcat("$$$$$$$$$$C$$$$$$C", @"(?:[", openingParens, @"])?(?:", nonParens, @"+[", closingParens, @"])?", nonParens, @"+(?:[", openingParens, ']', nonParens, @"+[", closingParens, @"])", bracketPairLimit, nonParens, '*')));
+      JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS_, JavaUtilRegexPattern_compileWithNSString_(JreStrcat("$$$$$$$$$$C$$$$$$C", @"(?:[", openingParens, @"])?(?:", nonParens, @"+[", closingParens, @"])?", nonParens, @"+(?:[", openingParens, ']', nonParens, @"+[", closingParens, @"])", bracketPairLimit, nonParens, '*')));
       NSString *leadLimit = ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(0, 2);
       NSString *punctuationLimit = ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(0, 4);
       jint digitBlockLimit = ComGoogleI18nPhonenumbersPhoneNumberUtil_MAX_LENGTH_FOR_NSN + ComGoogleI18nPhonenumbersPhoneNumberUtil_MAX_LENGTH_COUNTRY_CODE;
       NSString *blockLimit = ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(0, digitBlockLimit);
-      NSString *punctuation = JreStrcat("C$C$", '[', ComGoogleI18nPhonenumbersPhoneNumberUtil_get_VALID_PUNCTUATION_(), ']', punctuationLimit);
+      NSString *punctuation = JreStrcat("C$C$", '[', ComGoogleI18nPhonenumbersPhoneNumberUtil_VALID_PUNCTUATION_, ']', punctuationLimit);
       NSString *digitSequence = JreStrcat("$$", @"\\p{Nd}", ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(1, digitBlockLimit));
-      NSString *leadClassChars = JreStrcat("$$", openingParens, ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_CHARS_());
+      NSString *leadClassChars = JreStrcat("$$", openingParens, ComGoogleI18nPhonenumbersPhoneNumberUtil_PLUS_CHARS_);
       NSString *leadClass = JreStrcat("C$C", '[', leadClassChars, ']');
-      JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS_, nil, JavaUtilRegexPattern_compileWithNSString_(leadClass));
-      JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_PATTERN_, nil, JavaUtilRegexPattern_compileWithNSString_withInt_(JreStrcat("$$$C$$$$$C$$$$", @"(?:", leadClass, punctuation, ')', leadLimit, digitSequence, @"(?:", punctuation, digitSequence, ')', blockLimit, @"(?:", ComGoogleI18nPhonenumbersPhoneNumberUtil_get_EXTN_PATTERNS_FOR_MATCHING_(), @")?"), ComGoogleI18nPhonenumbersPhoneNumberUtil_REGEX_FLAGS));
+      JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS_, JavaUtilRegexPattern_compileWithNSString_(leadClass));
+      JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberMatcher_PATTERN_, JavaUtilRegexPattern_compileWithNSString_withInt_(JreStrcat("$$$C$$$$$C$$$$", @"(?:", leadClass, punctuation, ')', leadLimit, digitSequence, @"(?:", punctuation, digitSequence, ')', blockLimit, @"(?:", JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, EXTN_PATTERNS_FOR_MATCHING_), @")?"), ComGoogleI18nPhonenumbersPhoneNumberUtil_REGEX_FLAGS));
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
   }
@@ -396,22 +403,22 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
     { "remove", NULL, "V", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "PATTERN_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PATTERN_, NULL,  },
-    { "PUB_PAGES_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES_, NULL,  },
-    { "SLASH_SEPARATED_DATES_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_SLASH_SEPARATED_DATES_, NULL,  },
-    { "TIME_STAMPS_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_, NULL,  },
-    { "TIME_STAMPS_SUFFIX_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_SUFFIX_, NULL,  },
-    { "MATCHING_BRACKETS_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS_, NULL,  },
-    { "INNER_MATCHES_", NULL, 0x1a, "[Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_INNER_MATCHES_, NULL,  },
-    { "LEAD_CLASS_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS_, NULL,  },
-    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL,  },
-    { "text_", NULL, 0x12, "Ljava.lang.CharSequence;", NULL, NULL,  },
-    { "preferredRegion_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
-    { "leniency_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil$Leniency;", NULL, NULL,  },
-    { "maxTries_", NULL, 0x2, "J", NULL, NULL,  },
-    { "state_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", NULL, NULL,  },
-    { "lastMatch_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", NULL, NULL,  },
-    { "searchIndex_", NULL, 0x2, "I", NULL, NULL,  },
+    { "PATTERN_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PATTERN_, NULL, .constantValue.asLong = 0 },
+    { "PUB_PAGES_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES_, NULL, .constantValue.asLong = 0 },
+    { "SLASH_SEPARATED_DATES_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_SLASH_SEPARATED_DATES_, NULL, .constantValue.asLong = 0 },
+    { "TIME_STAMPS_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_, NULL, .constantValue.asLong = 0 },
+    { "TIME_STAMPS_SUFFIX_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_SUFFIX_, NULL, .constantValue.asLong = 0 },
+    { "MATCHING_BRACKETS_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS_, NULL, .constantValue.asLong = 0 },
+    { "INNER_MATCHES_", NULL, 0x1a, "[Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_INNER_MATCHES_, NULL, .constantValue.asLong = 0 },
+    { "LEAD_CLASS_", NULL, 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS_, NULL, .constantValue.asLong = 0 },
+    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL, .constantValue.asLong = 0 },
+    { "text_", NULL, 0x12, "Ljava.lang.CharSequence;", NULL, NULL, .constantValue.asLong = 0 },
+    { "preferredRegion_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "leniency_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil$Leniency;", NULL, NULL, .constantValue.asLong = 0 },
+    { "maxTries_", NULL, 0x2, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "state_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", NULL, NULL, .constantValue.asLong = 0 },
+    { "lastMatch_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", NULL, NULL, .constantValue.asLong = 0 },
+    { "searchIndex_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$NumberGroupingChecker;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher = { 2, "PhoneNumberMatcher", "com.google.i18n.phonenumbers", NULL, 0x10, 19, methods, 16, fields, 0, NULL, 2, inner_classes, NULL, "Ljava/lang/Object;Ljava/util/Iterator<Lcom/google/i18n/phonenumbers/PhoneNumberMatch;>;" };
@@ -430,8 +437,8 @@ NSString *ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(jint
 
 void ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum_withLong_(ComGoogleI18nPhonenumbersPhoneNumberMatcher *self, ComGoogleI18nPhonenumbersPhoneNumberUtil *util, id<JavaLangCharSequence> text, NSString *country, ComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum *leniency, jlong maxTries) {
   NSObject_init(self);
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_state_(self, ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_get_NOT_READY());
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_lastMatch_(self, nil);
+  JreStrongAssign(&self->state_, JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum, NOT_READY));
+  JreStrongAssign(&self->lastMatch_, nil);
   self->searchIndex_ = 0;
   if ((util == nil) || (leniency == nil)) {
     @throw [new_JavaLangNullPointerException_init() autorelease];
@@ -439,10 +446,10 @@ void ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbe
   if (maxTries < 0) {
     @throw [new_JavaLangIllegalArgumentException_init() autorelease];
   }
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_phoneUtil_(self, util);
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_text_(self, (text != nil) ? ((id) text) : @"");
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_preferredRegion_(self, country);
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_set_leniency_(self, leniency);
+  JreStrongAssign(&self->phoneUtil_, util);
+  JreStrongAssign(&self->text_, (text != nil) ? ((id) text) : @"");
+  JreStrongAssign(&self->preferredRegion_, country);
+  JreStrongAssign(&self->leniency_, leniency);
   self->maxTries_ = maxTries;
 }
 
@@ -457,7 +464,7 @@ ComGoogleI18nPhonenumbersPhoneNumberMatch *ComGoogleI18nPhonenumbersPhoneNumberM
   while ((self->maxTries_ > 0) && [((JavaUtilRegexMatcher *) nil_chk(matcher)) findWithInt:index]) {
     jint start = [((JavaUtilRegexMatcher *) nil_chk(matcher)) start];
     id<JavaLangCharSequence> candidate = [((id<JavaLangCharSequence>) nil_chk(self->text_)) subSequenceFrom:start to:[matcher end]];
-    candidate = ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFirstMatchWithJavaUtilRegexPattern_withJavaLangCharSequence_(ComGoogleI18nPhonenumbersPhoneNumberUtil_get_SECOND_NUMBER_START_PATTERN_(), candidate);
+    candidate = ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFirstMatchWithJavaUtilRegexPattern_withJavaLangCharSequence_(JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, SECOND_NUMBER_START_PATTERN_), candidate);
     ComGoogleI18nPhonenumbersPhoneNumberMatch *match = ComGoogleI18nPhonenumbersPhoneNumberMatcher_extractMatchWithJavaLangCharSequence_withInt_(self, candidate, start);
     if (match != nil) {
       return match;
@@ -480,10 +487,10 @@ id<JavaLangCharSequence> ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFi
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_isLatinLetterWithChar_(jchar letter) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
   if (!JavaLangCharacter_isLetterWithChar_(letter) && JavaLangCharacter_getTypeWithChar_(letter) != JavaLangCharacter_NON_SPACING_MARK) {
-    return NO;
+    return false;
   }
   JavaLangCharacter_UnicodeBlock *block = JavaLangCharacter_UnicodeBlock_ofWithChar_(letter);
-  return [((JavaLangCharacter_UnicodeBlock *) nil_chk(block)) isEqual:JavaLangCharacter_UnicodeBlock_get_BASIC_LATIN_()] || [block isEqual:JavaLangCharacter_UnicodeBlock_get_LATIN_1_SUPPLEMENT_()] || [block isEqual:JavaLangCharacter_UnicodeBlock_get_LATIN_EXTENDED_A_()] || [block isEqual:JavaLangCharacter_UnicodeBlock_get_LATIN_EXTENDED_ADDITIONAL_()] || [block isEqual:JavaLangCharacter_UnicodeBlock_get_LATIN_EXTENDED_B_()] || [block isEqual:JavaLangCharacter_UnicodeBlock_get_COMBINING_DIACRITICAL_MARKS_()];
+  return [((JavaLangCharacter_UnicodeBlock *) nil_chk(block)) isEqual:JreLoadStatic(JavaLangCharacter_UnicodeBlock, BASIC_LATIN_)] || [block isEqual:JreLoadStatic(JavaLangCharacter_UnicodeBlock, LATIN_1_SUPPLEMENT_)] || [block isEqual:JreLoadStatic(JavaLangCharacter_UnicodeBlock, LATIN_EXTENDED_A_)] || [block isEqual:JreLoadStatic(JavaLangCharacter_UnicodeBlock, LATIN_EXTENDED_ADDITIONAL_)] || [block isEqual:JreLoadStatic(JavaLangCharacter_UnicodeBlock, LATIN_EXTENDED_B_)] || [block isEqual:JreLoadStatic(JavaLangCharacter_UnicodeBlock, COMBINING_DIACRITICAL_MARKS_)];
 }
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_isInvalidPunctuationSymbolWithChar_(jchar character) {
@@ -517,18 +524,18 @@ ComGoogleI18nPhonenumbersPhoneNumberMatch *ComGoogleI18nPhonenumbersPhoneNumberM
     while (b__ < e__) {
       JavaUtilRegexPattern *possibleInnerMatch = *b__++;
       JavaUtilRegexMatcher *groupMatcher = [((JavaUtilRegexPattern *) nil_chk(possibleInnerMatch)) matcherWithJavaLangCharSequence:candidate];
-      jboolean isFirstMatch = YES;
+      jboolean isFirstMatch = true;
       while ([((JavaUtilRegexMatcher *) nil_chk(groupMatcher)) find] && self->maxTries_ > 0) {
         if (isFirstMatch) {
-          id<JavaLangCharSequence> group = ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFirstMatchWithJavaUtilRegexPattern_withJavaLangCharSequence_(ComGoogleI18nPhonenumbersPhoneNumberUtil_get_UNWANTED_END_CHAR_PATTERN_(), [((NSString *) nil_chk(candidate)) substring:0 endIndex:[groupMatcher start]]);
+          id<JavaLangCharSequence> group = ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFirstMatchWithJavaUtilRegexPattern_withJavaLangCharSequence_(JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, UNWANTED_END_CHAR_PATTERN_), [((NSString *) nil_chk(candidate)) substring:0 endIndex:[groupMatcher start]]);
           ComGoogleI18nPhonenumbersPhoneNumberMatch *match = ComGoogleI18nPhonenumbersPhoneNumberMatcher_parseAndVerifyWithNSString_withInt_(self, [((id<JavaLangCharSequence>) nil_chk(group)) description], offset);
           if (match != nil) {
             return match;
           }
           self->maxTries_--;
-          isFirstMatch = NO;
+          isFirstMatch = false;
         }
-        id<JavaLangCharSequence> group = ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFirstMatchWithJavaUtilRegexPattern_withJavaLangCharSequence_(ComGoogleI18nPhonenumbersPhoneNumberUtil_get_UNWANTED_END_CHAR_PATTERN_(), [groupMatcher groupWithInt:1]);
+        id<JavaLangCharSequence> group = ComGoogleI18nPhonenumbersPhoneNumberMatcher_trimAfterFirstMatchWithJavaUtilRegexPattern_withJavaLangCharSequence_(JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, UNWANTED_END_CHAR_PATTERN_), [groupMatcher groupWithInt:1]);
         ComGoogleI18nPhonenumbersPhoneNumberMatch *match = ComGoogleI18nPhonenumbersPhoneNumberMatcher_parseAndVerifyWithNSString_withInt_(self, [((id<JavaLangCharSequence>) nil_chk(group)) description], offset + [groupMatcher startWithInt:1]);
         if (match != nil) {
           return match;
@@ -545,7 +552,7 @@ ComGoogleI18nPhonenumbersPhoneNumberMatch *ComGoogleI18nPhonenumbersPhoneNumberM
     if (![((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS_)) matcherWithJavaLangCharSequence:candidate])) matches] || [((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES_)) matcherWithJavaLangCharSequence:candidate])) find]) {
       return nil;
     }
-    if ([((ComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum *) nil_chk(self->leniency_)) compareToWithId:ComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum_get_VALID()] >= 0) {
+    if ([((ComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum *) nil_chk(self->leniency_)) compareToWithId:JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_LeniencyEnum, VALID)] >= 0) {
       if (offset > 0 && ![((JavaUtilRegexMatcher *) nil_chk([((JavaUtilRegexPattern *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS_)) matcherWithJavaLangCharSequence:candidate])) lookingAt]) {
         jchar previousChar = [((id<JavaLangCharSequence>) nil_chk(self->text_)) charAtWithInt:offset - 1];
         if (ComGoogleI18nPhonenumbersPhoneNumberMatcher_isInvalidPunctuationSymbolWithChar_(previousChar) || ComGoogleI18nPhonenumbersPhoneNumberMatcher_isLatinLetterWithChar_(previousChar)) {
@@ -579,19 +586,19 @@ ComGoogleI18nPhonenumbersPhoneNumberMatch *ComGoogleI18nPhonenumbersPhoneNumberM
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_allNumberGroupsRemainGroupedWithComGoogleI18nPhonenumbersPhoneNumberUtil_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withJavaLangStringBuilder_withNSStringArray_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, JavaLangStringBuilder *normalizedCandidate, IOSObjectArray *formattedNumberGroups) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
   jint fromIndex = 0;
-  if ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCodeSource] != ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_get_FROM_DEFAULT_COUNTRY()) {
+  if ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCodeSource] != JreLoadStatic(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum, FROM_DEFAULT_COUNTRY)) {
     NSString *countryCode = JavaLangInteger_toStringWithInt_([number getCountryCode]);
     fromIndex = [((JavaLangStringBuilder *) nil_chk(normalizedCandidate)) indexOfWithNSString:countryCode] + ((jint) [((NSString *) nil_chk(countryCode)) length]);
   }
   for (jint i = 0; i < ((IOSObjectArray *) nil_chk(formattedNumberGroups))->size_; i++) {
     fromIndex = [((JavaLangStringBuilder *) nil_chk(normalizedCandidate)) indexOfWithNSString:IOSObjectArray_Get(formattedNumberGroups, i) withInt:fromIndex];
     if (fromIndex < 0) {
-      return NO;
+      return false;
     }
     fromIndex += ((jint) [((NSString *) nil_chk(IOSObjectArray_Get(formattedNumberGroups, i))) length]);
     if (i == 0 && fromIndex < [normalizedCandidate length]) {
       NSString *region = [((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) getRegionCodeForCountryCodeWithInt:[number getCountryCode]];
-      if ([util getNddPrefixForRegionWithNSString:region withBoolean:YES] != nil && JavaLangCharacter_isDigitWithChar_([normalizedCandidate charAtWithInt:fromIndex])) {
+      if ([util getNddPrefixForRegionWithNSString:region withBoolean:true] != nil && JavaLangCharacter_isDigitWithChar_([normalizedCandidate charAtWithInt:fromIndex])) {
         NSString *nationalSignificantNumber = [util getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number];
         return [((NSString *) nil_chk([normalizedCandidate substringWithInt:fromIndex - ((jint) [((NSString *) nil_chk(IOSObjectArray_Get(formattedNumberGroups, i))) length])])) hasPrefix:nationalSignificantNumber];
       }
@@ -602,14 +609,14 @@ jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_allNumberGroupsRemainGroupe
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_allNumberGroupsAreExactlyPresentWithComGoogleI18nPhonenumbersPhoneNumberUtil_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withJavaLangStringBuilder_withNSStringArray_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, JavaLangStringBuilder *normalizedCandidate, IOSObjectArray *formattedNumberGroups) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
-  IOSObjectArray *candidateGroups = [((JavaUtilRegexPattern *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberUtil_get_NON_DIGITS_PATTERN_())) splitWithJavaLangCharSequence:[((JavaLangStringBuilder *) nil_chk(normalizedCandidate)) description]];
+  IOSObjectArray *candidateGroups = [((JavaUtilRegexPattern *) nil_chk(JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, NON_DIGITS_PATTERN_))) splitWithJavaLangCharSequence:[((JavaLangStringBuilder *) nil_chk(normalizedCandidate)) description]];
   jint candidateNumberGroupIndex = [((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) hasExtension] ? ((IOSObjectArray *) nil_chk(candidateGroups))->size_ - 2 : ((IOSObjectArray *) nil_chk(candidateGroups))->size_ - 1;
   if (((IOSObjectArray *) nil_chk(candidateGroups))->size_ == 1 || [((NSString *) nil_chk(IOSObjectArray_Get(candidateGroups, candidateNumberGroupIndex))) contains:[((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number]]) {
-    return YES;
+    return true;
   }
   for (jint formattedNumberGroupIndex = (((IOSObjectArray *) nil_chk(formattedNumberGroups))->size_ - 1); formattedNumberGroupIndex > 0 && candidateNumberGroupIndex >= 0; formattedNumberGroupIndex--, candidateNumberGroupIndex--) {
     if (![((NSString *) nil_chk(IOSObjectArray_Get(candidateGroups, candidateNumberGroupIndex))) isEqual:IOSObjectArray_Get(formattedNumberGroups, formattedNumberGroupIndex)]) {
-      return NO;
+      return false;
     }
   }
   return (candidateNumberGroupIndex >= 0 && [((NSString *) nil_chk(IOSObjectArray_Get(candidateGroups, candidateNumberGroupIndex))) hasSuffix:IOSObjectArray_Get(formattedNumberGroups, 0)]);
@@ -618,7 +625,7 @@ jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_allNumberGroupsAreExactlyPr
 IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberMatcher_getNationalNumberGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *formattingPattern) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
   if (formattingPattern == nil) {
-    NSString *rfc3966Format = [((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) formatWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum:ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum_get_RFC3966()];
+    NSString *rfc3966Format = [((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) formatWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum:JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum, RFC3966)];
     jint endIndex = [((NSString *) nil_chk(rfc3966Format)) indexOf:';'];
     if (endIndex < 0) {
       endIndex = ((jint) [rfc3966Format length]);
@@ -628,16 +635,16 @@ IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberMatcher_getNationalNumberGro
   }
   else {
     NSString *nationalSignificantNumber = [((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number];
-    return [((NSString *) nil_chk([util formatNsnUsingPatternWithNSString:nationalSignificantNumber withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat:formattingPattern withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum:ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum_get_RFC3966()])) split:@"-"];
+    return [((NSString *) nil_chk([util formatNsnUsingPatternWithNSString:nationalSignificantNumber withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat:formattingPattern withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum:JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormatEnum, RFC3966)])) split:@"-"];
   }
 }
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_checkNumberGroupingIsValidWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_withComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, NSString *candidate, ComGoogleI18nPhonenumbersPhoneNumberUtil *util, id<ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker> checker) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
-  JavaLangStringBuilder *normalizedCandidate = ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsWithNSString_withBoolean_(candidate, YES);
+  JavaLangStringBuilder *normalizedCandidate = ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsWithNSString_withBoolean_(candidate, true);
   IOSObjectArray *formattedNumberGroups = ComGoogleI18nPhonenumbersPhoneNumberMatcher_getNationalNumberGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_(util, number, nil);
   if ([((id<ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker>) nil_chk(checker)) checkGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:util withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withJavaLangStringBuilder:normalizedCandidate withNSStringArray:formattedNumberGroups]) {
-    return YES;
+    return true;
   }
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *alternateFormats = ComGoogleI18nPhonenumbersMetadataManager_getAlternateFormatsForCountryWithInt_([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCode]);
   if (alternateFormats != nil) {
@@ -649,29 +656,29 @@ jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_checkNumberGroupingIsValidW
         ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *alternateFormat = *b__++;
         formattedNumberGroups = ComGoogleI18nPhonenumbersPhoneNumberMatcher_getNationalNumberGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_(util, number, alternateFormat);
         if ([checker checkGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:util withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withJavaLangStringBuilder:normalizedCandidate withNSStringArray:formattedNumberGroups]) {
-          return YES;
+          return true;
         }
       }
     }
   }
-  return NO;
+  return false;
 }
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_containsMoreThanOneSlashInNationalNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withNSString_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, NSString *candidate) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
   jint firstSlashInBodyIndex = [((NSString *) nil_chk(candidate)) indexOf:'/'];
   if (firstSlashInBodyIndex < 0) {
-    return NO;
+    return false;
   }
   jint secondSlashInBodyIndex = [candidate indexOf:'/' fromIndex:firstSlashInBodyIndex + 1];
   if (secondSlashInBodyIndex < 0) {
-    return NO;
+    return false;
   }
-  jboolean candidateHasCountryCode = ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCodeSource] == ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_get_FROM_NUMBER_WITH_PLUS_SIGN() || [number getCountryCodeSource] == ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_get_FROM_NUMBER_WITHOUT_PLUS_SIGN());
+  jboolean candidateHasCountryCode = ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCodeSource] == JreLoadStatic(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum, FROM_NUMBER_WITH_PLUS_SIGN) || [number getCountryCodeSource] == JreLoadStatic(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum, FROM_NUMBER_WITHOUT_PLUS_SIGN));
   if (candidateHasCountryCode && [((NSString *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsOnlyWithNSString_([candidate substring:0 endIndex:firstSlashInBodyIndex]))) isEqual:JavaLangInteger_toStringWithInt_([number getCountryCode])]) {
     return [((NSString *) nil_chk([candidate substring:secondSlashInBodyIndex + 1])) contains:@"/"];
   }
-  return YES;
+  return true;
 }
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_containsOnlyValidXCharsWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, NSString *candidate, ComGoogleI18nPhonenumbersPhoneNumberUtil *util) {
@@ -682,42 +689,42 @@ jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_containsOnlyValidXCharsWith
       jchar charAtNextIndex = [candidate charAtWithInt:index + 1];
       if (charAtNextIndex == 'x' || charAtNextIndex == 'X') {
         index++;
-        if ([((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) isNumberMatchWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withNSString:[candidate substring:index]] != ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchTypeEnum_get_NSN_MATCH()) {
-          return NO;
+        if ([((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) isNumberMatchWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withNSString:[candidate substring:index]] != JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchTypeEnum, NSN_MATCH)) {
+          return false;
         }
       }
       else if (![((NSString *) nil_chk(ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsOnlyWithNSString_([candidate substring:index]))) isEqual:[((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getExtension]]) {
-        return NO;
+        return false;
       }
     }
   }
-  return YES;
+  return true;
 }
 
 jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_isNationalPrefixPresentIfRequiredWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_withComGoogleI18nPhonenumbersPhoneNumberUtil_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number, ComGoogleI18nPhonenumbersPhoneNumberUtil *util) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
-  if ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCodeSource] != ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum_get_FROM_DEFAULT_COUNTRY()) {
-    return YES;
+  if ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) getCountryCodeSource] != JreLoadStatic(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSourceEnum, FROM_DEFAULT_COUNTRY)) {
+    return true;
   }
   NSString *phoneNumberRegion = [((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) getRegionCodeForCountryCodeWithInt:[number getCountryCode]];
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *metadata = [util getMetadataForRegionWithNSString:phoneNumberRegion];
   if (metadata == nil) {
-    return YES;
+    return true;
   }
   NSString *nationalNumber = [util getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number];
   ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *formatRule = [util chooseFormattingPatternForNumberWithComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormatArray:((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(metadata))->numberFormat_ withNSString:nationalNumber];
   if ((formatRule != nil) && ((jint) [((NSString *) nil_chk(formatRule->nationalPrefixFormattingRule_)) length]) > 0) {
     if (formatRule->nationalPrefixOptionalWhenFormatting_) {
-      return YES;
+      return true;
     }
     if (ComGoogleI18nPhonenumbersPhoneNumberUtil_formattingRuleHasFirstGroupOnlyWithNSString_(formatRule->nationalPrefixFormattingRule_)) {
-      return YES;
+      return true;
     }
     NSString *rawInputCopy = ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsOnlyWithNSString_([number getRawInput]);
     JavaLangStringBuilder *rawInput = [new_JavaLangStringBuilder_initWithNSString_(rawInputCopy) autorelease];
     return [util maybeStripNationalPrefixAndCarrierCodeWithJavaLangStringBuilder:rawInput withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata:metadata withJavaLangStringBuilder:nil];
   }
-  return YES;
+  return true;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
@@ -774,9 +781,9 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum *ComGoogleI18nPhonenumbers
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcFieldInfo fields[] = {
-    { "NOT_READY", "NOT_READY", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_NOT_READY, NULL,  },
-    { "READY", "READY", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_READY, NULL,  },
-    { "DONE", "DONE", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_DONE, NULL,  },
+    { "NOT_READY", "NOT_READY", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_NOT_READY, NULL, .constantValue.asLong = 0 },
+    { "READY", "READY", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_READY, NULL, .constantValue.asLong = 0 },
+    { "DONE", "DONE", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum_DONE, NULL, .constantValue.asLong = 0 },
   };
   static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;"};
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher_StateEnum = { 2, "State", "com.google.i18n.phonenumbers", "PhoneNumberMatcher", 0x401a, 0, NULL, 3, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/PhoneNumberMatcher$State;>;" };
