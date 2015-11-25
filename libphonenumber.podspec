@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = "Libphonenumber"
+  s.name             = "LibPhoneNumber"
   s.version          = '7.2.1'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
   s.source           = { :git => "https://github.com/hambroperks/libphonenumber.git", :tag => "v7.2.1-j2objc" }
