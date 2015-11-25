@@ -18,7 +18,7 @@
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
       <resource>
-        <directory>src/com/google/i18n/phonenumbers/data</directory>
+        <directory>src/main/java/com/google/i18n/phonenumbers/data</directory>
         <targetPath>com/google/i18n/phonenumbers/data</targetPath>
       </resource>
     </resources>

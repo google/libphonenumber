@@ -1,0 +1,79 @@
+buildscript {
+
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:1.2.3'
+  }
+
+}
+
+
+allprojects {
+
+  apply plugin: 'maven'
+  group = 'com.googlecode.libphonenumber'
+  version = '7.2.2-SNAPSHOT'
+
+  repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+
+    if (hasProperty('HP_MAVEN_REPO_LOC')) {
+      maven {
+        url "${HP_MAVEN_REPO_LOC}"
+      }
+    }
+
+    maven {
+      url 'https://bitbucket.org/laundrapp/maven-repo/raw/master/releases'
+      credentials {
+        username 'laundrapp'
+        password 'buck1ngh4m'
+        preemptive true
+      }
+    }
+
+  }
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.5
+  targetCompatibility = 1.5
+
+  task packageSources(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+
+  }
+
+  artifacts.archives packageSources
+  repositories {
+    mavenLocal()
+
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url "file:///Users/marcussmith/HambroPerks/hambroperks_org/libphonenumber/java/lib" }
+    maven { url "http://mvnrepository.com/artifact/" }
+  }
+
+  configurations.all {
+  }
+  dependencies {
+    testCompile group: 'junit', name: 'junit', version:'4.8.1'
+  }
+
+
+  task cycleFinder(type:Exec) {
+    inputs.files sourceSets.main.allJava
+    executable "${J2OBJC_HOME}/cycle_finder"
+    args '-sourcepath', sourceSets.main.allJava.srcDirs // + configurations.runtime.allDependencies.dependencyProject.sourceSets.main.allJava.srcDirs.flatten()).join(':')
+    args '-classpath', "${J2OBJC_HOME}/lib/guava-14.0.1.jar:${J2OBJC_HOME}/lib/jsr305-2.0.2.jar"
+    args inputs.files
+  }
+
+  task translateAll(dependsOn: [':carrier:translateCarrier', ':prefixmapper:translatePrefixMapper', ':libphonenumber:translateLibPhoneNumber']) {}
+}

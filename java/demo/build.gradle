@@ -1,0 +1,10 @@
+
+description = ''
+dependencies {
+    compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'org.apache.commons', name: 'commons-io', version:'1.3.2'
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version:'1.2'
+  compile project(':libphonenumber')
+  compile project(':geocoder')
+  compile project(':carrier')
+}

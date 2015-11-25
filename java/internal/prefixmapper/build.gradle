@@ -1,0 +1,28 @@
+
+description = ''
+dependencies {
+  compile project(':libphonenumber')
+}
+
+
+task translatePrefixMapper(type:Exec) {
+  inputs.files sourceSets.main.allJava
+  outputs.files files((sourceSets.main.allJava).collect { i ->
+    i.collect { j ->
+      def name = projectDir.path + '../../gen/objc/' + i.name
+      //def name = j.path.replace(i.srcDirs.iterator().next().path, 'src/gen/objc')
+      return [name.replace('.java', '.h'), name.replace('.java', '.m')]
+    }
+  }.flatten())
+
+
+  // the classpath is built from the runtime dependencies for the sourcesets ...
+  executable "${J2OBJC_HOME}/j2objc"
+  //args '--prefixes', file('main/resources/prefixes.properties').path
+//    args '--mapping', file('mapping.properties').path
+  args '--doc-comments'
+  args '-d', file('../../gen/objc').path
+  args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(':')
+  args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
+  args inputs.files
+}
