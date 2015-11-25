@@ -11,3 +11,4 @@ java/internal/prefixmapper/build
 java/geocoder/build
 java/demo/build
 java/carrier/build
+.DS_Store
