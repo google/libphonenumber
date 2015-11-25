@@ -1,0 +1,13 @@
+java/carrier/carrier.iml
+java/.idea
+java/.gradle
+java/libphonenumber-parent.iml
+java/internal/prefixmapper/prefixmapper.iml
+java/geocoder/geocoder.iml
+java/demo/demo.iml
+java/libphonenumber/libphonenumber.iml
+java/libphonenumber/build
+java/internal/prefixmapper/build
+java/geocoder/build
+java/demo/build
+java/carrier/build
