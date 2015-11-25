@@ -39,10 +39,10 @@
 
 @end
 
-static NSString *ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX_ = @"/com/google/i18n/phonenumbers/data/PhoneNumberAlternateFormatsProto";
+static NSString *ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX_ = @"PhoneNumberAlternateFormatsProto";
 J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersMetadataManager, ALTERNATE_FORMATS_FILE_PREFIX_, NSString *)
 
-static NSString *ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX_ = @"/com/google/i18n/phonenumbers/data/ShortNumberMetadataProto";
+static NSString *ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX_ = @"ShortNumberMetadataProto";
 J2OBJC_STATIC_FIELD_GETTER(ComGoogleI18nPhonenumbersMetadataManager, SHORT_NUMBER_METADATA_FILE_PREFIX_, NSString *)
 
 static JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersMetadataManager_LOGGER_;

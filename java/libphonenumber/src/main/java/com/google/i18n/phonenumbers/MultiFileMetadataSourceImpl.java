@@ -37,7 +37,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       Logger.getLogger(MultiFileMetadataSourceImpl.class.getName());
 
   private static final String META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
+      "PhoneNumberMetadataProto";
 
   // A mapping from a region code to the PhoneMetadata for that region.
   // Note: Synchronization, though only needed for the Android version of the library, is used in

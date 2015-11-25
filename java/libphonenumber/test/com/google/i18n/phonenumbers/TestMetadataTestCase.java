@@ -28,7 +28,7 @@ import junit.framework.TestCase;
  */
 public class TestMetadataTestCase extends TestCase {
   private static final String TEST_META_DATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
+      "PhoneNumberMetadataProtoForTesting";
 
   protected final PhoneNumberUtil phoneUtil;
 
