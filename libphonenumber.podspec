@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "LibPhoneNumber"
   s.version          = '7.2.1'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
-  s.source           = { :git => "https://github.com/hambroperks/libphonenumber.git", :tag => "v7.2.1-j2objc" }
+  s.source           = { :git => "https://github.com/hambroperks/libphonenumber.git", :tag => "v7.2.1.1-j2objc" }
   s.summary          = "Google's common Java, C++ and JavaScript library for parsing, formatting, storing and validating international phone numbers. Converted to Objective-C using J2ObjC."
   s.homepage         = "https://github.com/googlei18n/libphonenumber"
   s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
