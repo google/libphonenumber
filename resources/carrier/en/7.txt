@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+7700|Dalacom
 7701|Kcell
 7702|Kcell
 7705|Beeline
@@ -23,3 +24,18 @@
 7776|Beeline
 7777|Beeline
 7778|Kcell
+7901|Skylink
+7902|Tele2
+7903|Beeline
+7904|Tele2
+7905|Beeline
+7906|Beeline
+7908|Tele2
+7909|Beeline
+791|MTS
+792|Megafon
+793|Megafon
+7950|Tele2
+7951|MTS
+7952|Tele2
+7953|Tele2
