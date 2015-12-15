@@ -1,3 +1,14 @@
+Dec 15, 2015: libphonenumber-7.2.2
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AT, BD, BR, CC, CX, CY, FI, ID, IS, KI, MM, TN, VC
+ - Updated short number metadata for region code(s):
+   AT, BG, CY, CZ, DE, DK, EE, FI, GB, GR, ID, IE, IS, LT, LU, MT, NL, PL, RO,
+   SI, SK
+ - New geocoding data for country calling code(s): 95 (en)
+ - Updated carrier data for country calling code(s):
+   216 (en), 354 (en), 357 (en), 686 (en)
+
 Nov 11, 2015: libphonenumber-7.2.1
 Metadata changes: None
 Fix to 7.2.0
