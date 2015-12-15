@@ -16,5 +16,5 @@
 # http://en.wikipedia.org/wiki/TSKL
 
 6866|TSKL
-6867|TSKL
+6867|ATHKL
 6869|TSKL
