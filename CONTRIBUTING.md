@@ -2,7 +2,7 @@
 
 Thanks for contributing to libphonenumber!
 
-Please read the following before filing an issue. Note that we are not accepting pull requests at this time.
+Please read the following before filing an issue. **Note that we are _not_ accepting pull requests for metadata updates at this time.**
 
 ## Checklist before filing an issue
 
