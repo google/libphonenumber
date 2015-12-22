@@ -26,6 +26,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 
 import org.apache.commons.fileupload.FileItemIterator;
@@ -53,6 +54,7 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class PhoneNumberParserServlet extends HttpServlet {
   private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+  private ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
     String defaultCountry = null;
@@ -187,6 +189,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       boolean isPossible = phoneUtil.isPossibleNumber(number);
       boolean isNumberValid = phoneUtil.isValidNumber(number);
       PhoneNumberType numberType = phoneUtil.getNumberType(number);
+      boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
@@ -200,7 +203,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       } else {
         appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
         if (isNumberValid) {
-          if (!defaultCountry.isEmpty() && defaultCountry != "ZZ") {
+          if (hasDefaultCountry) {
             appendLine(
                 "Result from isValidNumberForRegion()",
                 Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
@@ -213,6 +216,32 @@ public class PhoneNumberParserServlet extends HttpServlet {
       }
       output.append("</TABLE>");
       output.append("</DIV>");
+
+      if (!isNumberValid) {
+        output.append("<DIV>");
+        output.append("<TABLE border=1>");
+        output.append("<TR><TD colspan=2>Short Number Results</TD></TR>");
+        boolean isPossibleShort = shortInfo.isPossibleShortNumber(number);
+        appendLine("Result from isPossibleShortNumber()",
+            Boolean.toString(isPossibleShort), output);
+        if (isPossibleShort) {
+          appendLine("Result from isValidShortNumber()",
+              Boolean.toString(shortInfo.isValidShortNumber(number)), output);
+          if (hasDefaultCountry) {
+            boolean isPossibleShortForRegion =
+                shortInfo.isPossibleShortNumberForRegion(number, defaultCountry);
+            appendLine("Result from isPossibleShortNumberForRegion()",
+                Boolean.toString(isPossibleShortForRegion), output);
+            if (isPossibleShortForRegion) {
+              appendLine("Result from isValidShortNumberForRegion()",
+                  Boolean.toString(shortInfo.isValidShortNumberForRegion(number,
+                      defaultCountry)), output);
+            }
+          }
+        }
+        output.append("</TABLE>");
+        output.append("</DIV>");
+      }
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
