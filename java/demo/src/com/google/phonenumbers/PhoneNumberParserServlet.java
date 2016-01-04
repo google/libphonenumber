@@ -41,6 +41,8 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
@@ -156,6 +158,39 @@ public class PhoneNumberParserServlet extends HttpServlet {
     output.append("<TH>").append(title).append("</TH>");
     output.append("<TD>").append(data.length() > 0 ? data : "&nbsp;").append("</TD>");
     output.append("</TR>");
+  }
+
+  /**
+   * Returns a link to create a new github issue with the relevant information.
+   */
+  private String getNewIssueLink(String phoneNumber, String defaultCountry)
+      throws UnsupportedEncodingException {
+    boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
+    String issueTitle = "Validation issue with " + phoneNumber
+        + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
+
+    // Issue template. This must be kept in sync with the template in
+    // https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md.
+    StringBuilder issueTemplate = new StringBuilder();
+    issueTemplate.append("Please read the \"guidelines for contributing\" (linked above) and fill "
+        + "in the template below.\n\n");
+    issueTemplate.append("Country/region affected (e.g., \"US\"): ")
+        .append(defaultCountry).append("\n\n");
+    issueTemplate.append("Example number(s) affected (\"+1 555 555-1234\"): ")
+        .append(phoneNumber).append("\n\n");
+    issueTemplate.append(
+        "The phone number range(s) to which the issue applies (\"+1 555 555-XXXX\"): \n\n");
+    issueTemplate.append(
+        "The type of the number(s) (\"fixed-line\", \"mobile\", \"short code\", etc.): \n\n");
+    issueTemplate.append(
+        "The cost, if applicable (\"toll-free\", \"premium rate\", \"shared cost\"): \n\n");
+    issueTemplate.append(
+        "Supporting evidence (for example, national numbering plan, announcement from mobile "
+        + "carrier, news article): **IMPORTANT - anything posted here is made public. "
+        + "Read the guidelines first!** \n\n");
+    return  "https://github.com/googlei18n/libphonenumber/issues/new?title="
+        + URLEncoder.encode(issueTitle, UTF_8.name()) + "&body="
+        + URLEncoder.encode(issueTemplate.toString(), UTF_8.name());
   }
 
   /**
@@ -325,6 +360,16 @@ public class PhoneNumberParserServlet extends HttpServlet {
           output.append("</DIV>");
         }
       }
+
+      String newIssueLink = getNewIssueLink(phoneNumber, defaultCountry);
+      String guidelinesLink =
+          "https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md";
+      output.append("<b style=\"color:red\">File an issue</b>: by clicking on "
+          + "<a target=\"_blank\" href=\"" + newIssueLink + "\">this link</a>, I confirm that I "
+          + "have read the <a target=\"_blank\" href=\"" + guidelinesLink
+          + "\">contributor's guidelines</a>.");
+    } catch(UnsupportedEncodingException e) {
+      output.append(StringEscapeUtils.escapeHtml(e.toString()));
     } catch (NumberParseException e) {
       output.append(StringEscapeUtils.escapeHtml(e.toString()));
     }
