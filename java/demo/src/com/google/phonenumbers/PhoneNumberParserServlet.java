@@ -18,6 +18,8 @@
 
 package com.google.phonenumbers;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
@@ -35,6 +37,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -71,7 +74,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         if (item.isFormField()) {
           String fieldName = item.getFieldName();
           if (fieldName.equals("phoneNumber")) {
-            phoneNumber = Streams.asString(in, "UTF-8");
+            phoneNumber = Streams.asString(in, UTF_8.name());
           } else if (fieldName.equals("defaultCountry")) {
             defaultCountry = Streams.asString(in).toUpperCase();
           } else if (fieldName.equals("languageCode")) {
@@ -95,26 +98,14 @@ public class PhoneNumberParserServlet extends HttpServlet {
     }
 
     StringBuilder output;
+    resp.setContentType("text/html");
+    resp.setCharacterEncoding(UTF_8.name());
     if (fileContents.length() == 0) {
-      output = getOutputForSingleNumber(phoneNumber, defaultCountry, languageCode, regionCode);
-      resp.setContentType("text/html");
-      resp.setCharacterEncoding("UTF-8");
-      resp.getWriter().println("<html><head>");
       resp.getWriter().println(
-          "<link type=\"text/css\" rel=\"stylesheet\" href=\"/stylesheets/main.css\" />");
-      resp.getWriter().println("</head>");
-      resp.getWriter().println("<body>");
-      resp.getWriter().println("Phone Number entered: " + phoneNumber + "<br>");
-      resp.getWriter().println("defaultCountry entered: " + defaultCountry + "<br>");
-      resp.getWriter().println(
-          "Language entered: " + languageCode +
-              (regionCode.length() == 0 ? "" : " (" + regionCode + ")" + "<br>"));
+          getOutputForSingleNumber(phoneNumber, defaultCountry, languageCode, regionCode));
     } else {
-      output = getOutputForFile(defaultCountry, fileContents);
-      resp.setContentType("text/html");
+      resp.getWriter().println(getOutputForFile(defaultCountry, fileContents));
     }
-    resp.getWriter().println(output);
-    resp.getWriter().println("</body></html>");
   }
 
   private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
@@ -134,7 +125,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
       phoneNumberId++;
       output.append("<TR>");
       output.append("<TD align=center>").append(phoneNumberId).append(" </TD> \n");
-      output.append("<TD align=center>").append(numberStr).append(" </TD> \n");
+      output.append("<TD align=center>").append(
+          StringEscapeUtils.escapeHtml(numberStr)).append(" </TD> \n");
       try {
         PhoneNumber number = phoneUtil.parseAndKeepRawInput(numberStr, defaultCountry);
         boolean isNumberValid = phoneUtil.isValidNumber(number);
@@ -145,10 +137,13 @@ public class PhoneNumberParserServlet extends HttpServlet {
             ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL)
             : "invalid";
 
-        output.append("<TD align=center>").append(prettyFormat).append(" </TD> \n");
-        output.append("<TD align=center>").append(internationalFormat).append(" </TD> \n");
+        output.append("<TD align=center>").append(
+            StringEscapeUtils.escapeHtml(prettyFormat)).append(" </TD> \n");
+        output.append("<TD align=center>").append(
+            StringEscapeUtils.escapeHtml(internationalFormat)).append(" </TD> \n");
       } catch (NumberParseException e) {
-        output.append("<TD align=center colspan=2>").append(e.toString()).append(" </TD> \n");
+        output.append("<TD align=center colspan=2>").append(
+            StringEscapeUtils.escapeHtml(e.toString())).append(" </TD> \n");
       }
       output.append("</TR>");
     }
@@ -171,6 +166,17 @@ public class PhoneNumberParserServlet extends HttpServlet {
   private StringBuilder getOutputForSingleNumber(
       String phoneNumber, String defaultCountry, String languageCode, String regionCode) {
     StringBuilder output = new StringBuilder();
+    output.append("<HTML><HEAD>");
+    output.append(
+        "<LINK type=\"text/css\" rel=\"stylesheet\" href=\"/stylesheets/main.css\" />");
+    output.append("</HEAD>");
+    output.append("<BODY>");
+    output.append("Phone Number entered: " + StringEscapeUtils.escapeHtml(phoneNumber) + "<BR>");
+    output.append("defaultCountry entered: " + StringEscapeUtils.escapeHtml(defaultCountry)
+        + "<BR>");
+    output.append("Language entered: " + StringEscapeUtils.escapeHtml(languageCode) +
+        (regionCode.isEmpty() ? "" : " (" + StringEscapeUtils.escapeHtml(regionCode) + ")")
+        + "<BR>");
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
       output.append("<DIV>");
@@ -320,8 +326,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
         }
       }
     } catch (NumberParseException e) {
-      output.append(e.toString());
+      output.append(StringEscapeUtils.escapeHtml(e.toString()));
     }
+    output.append("</BODY></HTML>");
     return output;
   }
 }
