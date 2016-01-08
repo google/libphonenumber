@@ -1,3 +1,12 @@
+Jan 08, 2016: libphonenumber-7.2.3
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BR, CC, CR, CW, CX, ET, HN, KR, SI, TV, WF
+ - Updated short number metadata for region code(s): FR, HR, HU, IT, KR, LV, TV
+ - New geocoding data for country calling code(s): 688 (en)
+ - Updated carrier data for country calling code(s):
+   61 (en), 251 (en), 506 (en), 599 (en)
+
 Dec 15, 2015: libphonenumber-7.2.2
 Metadata changes:
  - Updated phone metadata for region code(s):
