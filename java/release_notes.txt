@@ -6,6 +6,10 @@ Metadata changes:
  - New geocoding data for country calling code(s): 688 (en)
  - Updated carrier data for country calling code(s):
    61 (en), 251 (en), 506 (en), 599 (en)
+ - Updated the demo:
+   added short number support;
+   added permalink;
+   added direct link to file an issue
 
 Dec 15, 2015: libphonenumber-7.2.2
 Metadata changes:
