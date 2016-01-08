@@ -3538,7 +3538,10 @@
             0\d{2}|
             1(?:
               [02459]|
-              6000|
+              6(?:
+                000|
+                111
+              )|
               8\d{3}
             )|
             [578]
@@ -3685,7 +3688,12 @@
         <exampleNumber>112</exampleNumber>
       </emergency>
       <expandedEmergency>
-        <nationalNumberPattern>116111</nationalNumberPattern>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            111
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <exampleNumber>116111</exampleNumber>
       </expandedEmergency>
@@ -4502,14 +4510,30 @@
       </emergency>
       <expandedEmergency>
         <nationalNumberPattern>
-        19(?:
-          5|
-          87
+          1(?:
+            16(?:
+              00[06]|
+              111
+            )|
+            9(?:
+              5|
+              87
+            )
           )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>195</exampleNumber>
       </expandedEmergency>
+      <tollFree>
+        <nationalNumberPattern>
+          116(?:
+            00[06]|
+            111
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
     </territory>
 
     <!-- Haiti -->
@@ -4548,14 +4572,23 @@
     <!-- http://www.itu.int/oth/T0202000061/en -->
     <territory id="HU">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
             0[457]|
-            12
+            1(?:
+              2|
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )
+            )
           )
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
@@ -4569,6 +4602,32 @@
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            1(?:
+              11|
+              23
+            )
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </expandedEmergency>
+      <tollFree>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            1(?:
+              11|
+              23
+            )
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
     </territory>
 
     <!-- Indonesia -->
@@ -5031,7 +5090,10 @@
             0\d{2,3}|
             1(?:
               [2-5789]|
-              6000
+              6(?:
+                000|
+                111
+              )
             )|
             2\d{2}|
             3[39]|
@@ -5132,7 +5194,10 @@
            1(?:
              1(?:
                [47]|
-               6111
+               6(?:
+                 000|
+                 111
+               )
              )|
              5(?:
                15|
@@ -5590,11 +5655,14 @@
         <nationalNumberPattern>
          1(?:
            0[01]|
-           1[29]|
+           1[027-9]|
+           2[01389]|
            3(?:
-            39|
-            9[18]
-           )
+             2|
+             39|
+             9[18]
+           )|
+           82
           )
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
@@ -5617,14 +5685,30 @@
       </carrierServices>
       <expandedEmergency>
         <nationalNumberPattern>
-         13(?:
-            39|
-            9[18]
+         1(?:
+           17|
+           29|
+           3(?:
+             39|
+             9[18]
+           )|
+           82
          )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>1339</exampleNumber>
       </expandedEmergency>
+      <tollFree>
+        <nationalNumberPattern>
+          1(?:
+            1[78]|
+            28|
+            82
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>118</exampleNumber>
+      </tollFree>
     </territory>
 
     <!-- Kuwait -->
@@ -6083,7 +6167,12 @@
       </shortCode>
       <tollFree>
         <!-- http://116000.lv/en/about -->
-        <nationalNumberPattern>116000</nationalNumberPattern>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            111
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
@@ -6132,8 +6221,16 @@
         <exampleNumber>112</exampleNumber>
       </emergency>
       <expandedEmergency>
-        <nationalNumberPattern>155</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            16(?:
+              000|
+              111
+            )|
+            55
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>155</exampleNumber>
       </expandedEmergency>
     </territory>
@@ -9047,11 +9144,14 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu -->
     <territory id="TV">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d{2}|
+          911
+        </nationalNumberPattern>
         <exampleNumber>911</exampleNumber>
       </shortCode>
       <emergency>
