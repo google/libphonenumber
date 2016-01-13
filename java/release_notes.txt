@@ -10,6 +10,7 @@ Metadata changes:
    added short number support;
    added permalink;
    added direct link to file an issue
+ - Removed deprecated ShortNumberUtil.java
 
 Dec 15, 2015: libphonenumber-7.2.2
 Metadata changes:
