@@ -106,7 +106,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
     if (fileContents.length() == 0) {
       // Redirect to a URL with the given input encoded in the query parameters.
       Locale geocodingLocale = new Locale(languageCode, regionCode);
-      resp.sendRedirect(getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale));
+      resp.sendRedirect(getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale,
+          false /* absoluteURL */));
     } else {
       resp.getWriter().println(getOutputForFile(defaultCountry, fileContents));
     }
@@ -189,9 +190,10 @@ public class PhoneNumberParserServlet extends HttpServlet {
    * Returns a stable URL pointing to the result page for the given input.
    */
   private String getPermaLinkURL(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
+      String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
+    // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
     StringBuilder permaLink = new StringBuilder(
-        "http://libphonenumber.appspot.com/phonenumberparser");
+        absoluteURL ? "http://libphonenumber.appspot.com/phonenumberparser" : "/phonenumberparser");
     try {
       permaLink.append("?number=" + URLEncoder.encode(phoneNumber, UTF_8.name()));
       if (!defaultCountry.isEmpty()) {
@@ -238,7 +240,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         + "carrier, news article): **IMPORTANT - anything posted here is made public. "
         + "Read the guidelines first!** \n\n");
     issueTemplate.append("[link to demo]("
-        + getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale)
+        + getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale, true /* absoluteURL */)
         + ")\n\n");
     String newIssueLink = "https://github.com/googlei18n/libphonenumber/issues/new?title=";
     try {
