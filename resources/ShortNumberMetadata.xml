@@ -7825,17 +7825,45 @@
     <!-- http://www.anacom.pt/render.jsp?categoryId=279098 -->
     <territory id="PT">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>11[25-8]</nationalNumberPattern>
+        <nationalNumberPattern>
+          11(?:
+            [2578]|
+            6(?:
+              000|
+              111
+            )
+          )
+        </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
         <nationalNumberPattern>11[25]</nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            111
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </expandedEmergency>
+      <tollFree>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            111
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
     </territory>
 
     <!-- Palau -->

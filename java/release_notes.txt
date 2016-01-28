@@ -1,3 +1,12 @@
+Jan 28, 2016: libphonenumber-7.2.4
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BW, CA, CI, CK, GM, IN, NA, NG, PG, TD, TM
+ - Updated short number metadata for region code(s): PT
+ - New geocoding data for country calling code(s): 1825 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 225 (en), 234 (en), 235 (en), 675 (en), 993 (en)
+
 Jan 08, 2016: libphonenumber-7.2.3
 Metadata changes:
  - Updated phone metadata for region code(s):
