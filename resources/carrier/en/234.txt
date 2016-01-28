@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# NITEL and Mtel are brand names of the same consortium. They are merged under
+# NATCOM, and as of Nov 2015 are known as Ntel.
+
 234173|Starcomms
 234174|Starcomms
 2341804|Starcomms
@@ -136,18 +139,23 @@
 2346987|Starcomms
 2346988|Starcomms
 2346989|Starcomms
-2347021|M-Tel
-2347022|M-Tel
+234701|Airtel
+2347020|Smile
+2347021|Ntel
+2347022|Ntel
+2347023|Zoom
+2347024|Prestel
 2347025|Visafone
 2347026|Visafone
+2347027|Multilinks
 2347028|Starcomms
 2347029|Starcomms
 234703|MTN
 234704|Visafone
 234705|Glo
 234706|MTN
-234707|Glo
 234708|Airtel
+234709|Multilinks
 2347380|Starcomms
 2347381|Starcomms
 2347382|Starcomms
@@ -167,9 +175,11 @@
 2347782|Starcomms
 2347783|Starcomms
 2347784|Starcomms
+2348010|Megatech
+2348011|Megatech
 234802|Airtel
 234803|MTN
-234804|M-Tel
+234804|Ntel
 234805|Glo
 234806|MTN
 234807|Glo
@@ -241,6 +251,7 @@
 234902|Airtel
 234903|MTN
 234905|Glo
+234908|Etisalat
 234909|Etisalat
 234980|Starcomms
 234987|Starcomms

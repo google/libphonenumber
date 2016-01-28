@@ -3663,9 +3663,8 @@
             3(?:
               1[0235-9]|
               55|
-              6\d|
-              7[01]|
-              9[0-57]
+              [69]\d|
+              7[01]
             )|
             4(?:
               6[03]|
@@ -4046,6 +4045,7 @@
             8(?:
               [06]7|
               19|
+              25|
               73
             )|
             90[25]
@@ -4096,6 +4096,7 @@
             8(?:
               [06]7|
               19|
+              25|
               73
             )|
             90[25]
@@ -4442,6 +4443,7 @@
     <territory id="CI" countryCode="225" internationalPrefix="00" leadingZeroPossible="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000031/en</sourceUrl>
+        <sourceUrl>http://fr.wikipedia.org/wiki/Liste_des_indicatifs_téléphoniques_en_Côte_d’Ivoire</sourceUrl>
       </references>
       <availableFormats>
         <!-- Using format from online yellow pages over format implied in national numbering plan.
@@ -4451,7 +4453,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[02-7]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[02-8]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -4487,7 +4489,8 @@
             4\d|
             5[4-9]|
             6[015-79]|
-            7[578]
+            7[578]|
+            87
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>01234567</exampleNumber>
@@ -4505,7 +4508,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-57]\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>[2-8]\d{4}</nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -4519,12 +4522,7 @@
         <exampleNumber>21234</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>
-          (?:
-            5[0-68]|
-            7\d
-          )\d{3}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[5-8]\d{4}</nationalNumberPattern>
         <exampleNumber>71234</exampleNumber>
       </mobile>
     </territory>
@@ -8744,12 +8742,7 @@
         <exampleNumber>5661234</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>
-          (?:
-            2[0-6]|
-            [3679]\d
-          )\d{5}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[23679]\d{6}</nationalNumberPattern>
         <exampleNumber>3012345</exampleNumber>
       </mobile>
     </territory>
@@ -10529,7 +10522,7 @@
               )|
               3(?:
                 [058]|
-                10|
+                1[09]|
                 7[3679]|
                 9[689]
               )|
@@ -10980,7 +10973,7 @@
         <!-- A couple of additional prefixes found neither on the wikipedia page nor in the MSC
              codes list, are added because SMS messages have been successfully sent to these
              numbers. It seems almost impossible to know for some of these numbers whether they are
-             land-line or mobile, since the ranges overlap. Extra prefixes added: 7601, 768[567],
+             land-line or mobile, since the ranges overlap. Extra prefixes added: 7601, 768[56],
              7695, 8299, 8309. New prefixes were also added based on the document provided from
              mobile carriers: https://github.com/googlei18n/libphonenumber/issues/260 and
              https://github.com/googlei18n/libphonenumber/pull/692/ -->
@@ -10996,7 +10989,7 @@
               )|
               3(?:
                 [058]\d|
-                10|
+                1[09]|
                 7[3679]|
                 9[689]
               )|
@@ -17151,7 +17144,11 @@
                 [01378]|
                 2\d
               )|
-              4[01]|
+              4(?:
+                [024]|
+                10?|
+                3[15]?
+              )|
               69|
               7[014]
             )|
@@ -17424,10 +17421,28 @@
                mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200009C/en</sourceUrl>
+        <sourceUrl>http://www.ncc.gov.ng/index.php/index.php?option=com_content&amp;view=article&amp;id=113&amp;Itemid=102</sourceUrl>
       </references>
+      <!-- The first pattern which is for mobile ranges overlaps with the pattern
+           below it and is ordered above it as there are more mobile numbers with
+           the overlapping prefixes than fixed-line prefixes. -->
       <availableFormats>
-        <numberFormat pattern="([129])(\d{3})(\d{3,4})">
-          <leadingDigits>[129]</leadingDigits>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
+          <leadingDigits>
+            70|
+            8[01]|
+            90[23589]
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d)(\d{3})(\d{3,4})">
+          <leadingDigits>
+             [12]|
+             9(?:
+               0[3-9]|
+               [1-9]
+             )
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2,3})">
@@ -17438,14 +17453,6 @@
               0[1-9]
             )|
             8[2-9]
-          </leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
-          <leadingDigits>
-            70|
-            8[01]|
-            90[2359]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -17500,12 +17507,6 @@
         <exampleNumber>12345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- More 81X prefixes have been added based on online numbers, including the prefix 817
-             from Etisalat, 814 MTN and 811 from Glo. Furthermore, the fixed-line prefixes owned by
-             Starcomms have apparently, according to the company, been used for mobile numbers too,
-             despite the ITU plan, so we list them here as well. 701 has been added for Airtel/Zain.
-             903 has been added for MTN, 905 has been added for Globacom (Glo), and 909 has been
-             added for Etisalat. -->
         <nationalNumberPattern>
           (?:
             1(?:
@@ -17580,15 +17581,18 @@
             98[07]\d
           )\d{4}|
           (?:
-            70(?:
-              [13-9]\d|
-              2[1-9]
-            )|
+            70[1-689]\d|
             8(?:
-              0[2-9]|
-              1\d
-            )\d|
-            90[2359]\d
+              0(?:
+                1[01]|
+                [2-9]\d
+              )|
+              1(?:
+                [0-8]\d|
+                9[01]
+              )
+            )|
+            90[23589]\d
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
@@ -18545,7 +18549,7 @@
             20150|
             68\d{2}|
             7(?:
-              [0-369]\d|
+              [0-689]\d|
               75
             )\d{2}
           )\d{3}
@@ -21804,7 +21808,7 @@
         <!-- Adding entire 9 prefix based on information from carrier. -->
         <nationalNumberPattern>
           (?:
-            6[02368]\d|
+            6[023568]\d|
             77\d|
             9\d{2}
           )\d{5}
@@ -22185,10 +22189,10 @@
              operating, with the numbers 6[3-5]\d{6}. MTS used to operate the ranges 6[6-8] but this
              has been suspended. It is unclear whether it will resume. We support both ranges in the
              meantime. The range 62 seems also now to be in use, according to numbers found online.
-             MTS Turkmenistan have recently launched there NDC(69). So added range 69 after getting
+             MTS Turkmenistan have recently launched their NDC(69). So added range 69 after getting
              confirmation from the carriers who own them.
              -->
-        <nationalNumberPattern>6[2-9]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>6[1-9]\d{6}</nationalNumberPattern>
         <exampleNumber>66123456</exampleNumber>
       </mobile>
       <!-- No tollFree or premiumRate information can be found. -->
