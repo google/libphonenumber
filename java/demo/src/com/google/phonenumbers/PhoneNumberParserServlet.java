@@ -103,7 +103,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
     StringBuilder output;
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
-    if (fileContents.length() == 0) {
+    if (fileContents == null || fileContents.length() == 0) {
       // Redirect to a URL with the given input encoded in the query parameters.
       Locale geocodingLocale = new Locale(languageCode, regionCode);
       resp.sendRedirect(getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale,
@@ -196,7 +196,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         absoluteURL ? "http://libphonenumber.appspot.com/phonenumberparser" : "/phonenumberparser");
     try {
       permaLink.append("?number=" + URLEncoder.encode(phoneNumber, UTF_8.name()));
-      if (!defaultCountry.isEmpty()) {
+      if (defaultCountry != null && !defaultCountry.isEmpty()) {
         permaLink.append("&country=" + URLEncoder.encode(defaultCountry, UTF_8.name()));
       }
       if (!geocodingLocale.getLanguage().equals(ENGLISH.getLanguage()) ||
