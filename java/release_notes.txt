@@ -1,3 +1,7 @@
+Pending changes
+Code changes:
+ - Fix two places in demo where NPEs can occur on bad input
+
 Jan 28, 2016: libphonenumber-7.2.4
 Metadata changes:
  - Updated phone metadata for region code(s):
