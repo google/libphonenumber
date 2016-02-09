@@ -195,7 +195,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
     StringBuilder permaLink = new StringBuilder(
         absoluteURL ? "http://libphonenumber.appspot.com/phonenumberparser" : "/phonenumberparser");
     try {
-      permaLink.append("?number=" + URLEncoder.encode(phoneNumber, UTF_8.name()));
+      permaLink.append(
+          "?number=" + URLEncoder.encode(phoneNumber != null ? phoneNumber : "", UTF_8.name()));
       if (defaultCountry != null && !defaultCountry.isEmpty()) {
         permaLink.append("&country=" + URLEncoder.encode(defaultCountry, UTF_8.name()));
       }
