@@ -11,7 +11,7 @@
   <version>7.2.5-SNAPSHOT</version>
 
   <properties>
-    <gae.version>1.5.4</gae.version>
+    <gae.version>1.9.32</gae.version>
   </properties>
 
   <repositories>
