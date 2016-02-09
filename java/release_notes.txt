@@ -1,6 +1,8 @@
 Pending changes
 Code changes:
- - Fix two places in demo where NPEs can occur on bad input
+ - Fix two places in demo where NPEs can occur on bad input.
+ - Fix an IllegalStateException when getMetadataForNonGeographicalRegion is
+   called with a country calling code which isn't a non-geographic entity.
 
 Jan 28, 2016: libphonenumber-7.2.4
 Metadata changes:

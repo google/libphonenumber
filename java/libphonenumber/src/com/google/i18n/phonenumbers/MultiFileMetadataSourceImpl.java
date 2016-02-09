@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,7 +87,14 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   public PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
     synchronized (countryCodeToNonGeographicalMetadataMap) {
       if (!countryCodeToNonGeographicalMetadataMap.containsKey(countryCallingCode)) {
-        loadMetadataFromFile(PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY, countryCallingCode);
+        List<String> regionCodes =
+            CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap().get(countryCallingCode);
+        // We can assume that if the country calling code maps to the non-geo entity region code
+        // then that's the only region code it maps to.
+        if (regionCodes.size() == 1 &&
+            PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCodes.get(0))) {
+          loadMetadataFromFile(PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY, countryCallingCode);
+        }
       }
     }
     return countryCodeToNonGeographicalMetadataMap.get(countryCallingCode);
