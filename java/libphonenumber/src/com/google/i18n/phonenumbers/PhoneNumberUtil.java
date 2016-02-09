@@ -552,7 +552,7 @@ public class PhoneNumberUtil {
   // load factor of roughly 0.75.
   private final Set<String> supportedRegions = new HashSet<String>(320);
 
-  // The set of county calling codes that map to the non-geo entity region ("001"). This set
+  // The set of country calling codes that map to the non-geo entity region ("001"). This set
   // currently contains < 12 elements so the default capacity of 16 (load factor=0.75) is fine.
   private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<Integer>();
 
@@ -566,7 +566,7 @@ public class PhoneNumberUtil {
     this.countryCallingCodeToRegionCodeMap = countryCallingCodeToRegionCodeMap;
     for (Map.Entry<Integer, List<String>> entry : countryCallingCodeToRegionCodeMap.entrySet()) {
       List<String> regionCodes = entry.getValue();
-      // We can assume that if the county calling code maps to the non-geo entity region code then
+      // We can assume that if the country calling code maps to the non-geo entity region code then
       // that's the only region code it maps to.
       if (regionCodes.size() == 1 && REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCodes.get(0))) {
         // This is the subset of all country codes that map to the non-geo entity region code.
