@@ -1,4 +1,10 @@
-Pending changes
+Feb 10, 2016: libphonenumber-7.2.5
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BM, BS, CA, DM, DO, ET, GD, GU, JM, KN, KY, LC, MP, MS, PR,
+   SE, SK, SX, TC, TT, US, VC, VG, VI
+ - Updated geocoding data for country calling code(s): 46 (en)
+ - Updated carrier data for country calling code(s): 251 (en)
 Code changes:
  - Fix two places in demo where NPEs can occur on bad input.
  - Fix an IllegalStateException when getMetadataForNonGeographicalRegion is
