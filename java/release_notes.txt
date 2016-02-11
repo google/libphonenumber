@@ -5,8 +5,6 @@ Metadata changes:
    SE, SK, SX, TC, TT, US, VC, VG, VI
  - Updated geocoding data for country calling code(s): 46 (en)
  - Updated carrier data for country calling code(s): 251 (en)
-
-Pending changes
 Code changes:
  - Fix two places in demo where NPEs can occur on bad input.
  - Fix an IllegalStateException when getMetadataForNonGeographicalRegion is
