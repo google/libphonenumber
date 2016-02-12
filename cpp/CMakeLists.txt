@@ -14,7 +14,7 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.1)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 7)
@@ -489,13 +489,13 @@ target_link_libraries (libphonenumber_test ${TEST_LIBS})
 # Unfortunately add_custom_target() can't accept a single command provided as a
 # list of commands.
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_custom_target (test
+  add_custom_target (tests
     COMMAND generate_geocoding_data_test
     COMMAND libphonenumber_test
     DEPENDS generate_geocoding_data_test libphonenumber_test
   )
 else ()
-  add_custom_target (test
+  add_custom_target (tests
     COMMAND libphonenumber_test
     DEPENDS libphonenumber_test
   )
