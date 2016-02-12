@@ -42,6 +42,8 @@ FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersRegexCache_initWithInt_(ComGoogl
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersRegexCache *new_ComGoogleI18nPhonenumbersRegexCache_initWithInt_(jint size) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersRegexCache *create_ComGoogleI18nPhonenumbersRegexCache_initWithInt_(jint size);
+
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersRegexCache)
 
 #endif

@@ -92,4 +92,10 @@ ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *new_ComGoogleI18nPhonen
   return self;
 }
 
+ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *create_ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init() {
+  ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *self = [[ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet alloc] autorelease];
+  ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet)

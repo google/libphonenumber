@@ -500,6 +500,12 @@ ComGoogleI18nPhonenumbersAsYouTypeFormatter *new_ComGoogleI18nPhonenumbersAsYouT
   return self;
 }
 
+ComGoogleI18nPhonenumbersAsYouTypeFormatter *create_ComGoogleI18nPhonenumbersAsYouTypeFormatter_initWithNSString_(NSString *regionCode) {
+  ComGoogleI18nPhonenumbersAsYouTypeFormatter *self = [[ComGoogleI18nPhonenumbersAsYouTypeFormatter alloc] autorelease];
+  ComGoogleI18nPhonenumbersAsYouTypeFormatter_initWithNSString_(self, regionCode);
+  return self;
+}
+
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *ComGoogleI18nPhonenumbersAsYouTypeFormatter_getMetadataForRegionWithNSString_(ComGoogleI18nPhonenumbersAsYouTypeFormatter *self, NSString *regionCode) {
   jint countryCallingCode = [((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(self->phoneUtil_)) getCountryCodeForRegionWithNSString:regionCode];
   NSString *mainCountry = [self->phoneUtil_ getRegionCodeForCountryCodeWithInt:countryCallingCode];

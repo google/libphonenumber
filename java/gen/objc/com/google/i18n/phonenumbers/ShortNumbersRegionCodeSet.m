@@ -286,4 +286,10 @@ ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *new_ComGoogleI18nPhonenumber
   return self;
 }
 
+ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *create_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
+  ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *self = [[ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet alloc] autorelease];
+  ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet)

@@ -273,8 +273,6 @@ J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE)
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *self, NSString *__name, jint __ordinal);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
-
 FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values();
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_valueOfWithNSString_(NSString *name);
@@ -521,6 +519,12 @@ void ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbe
 
 ComGoogleI18nPhonenumbersPhoneNumberMatcher *new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, id<JavaLangCharSequence> text, NSString *country, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *leniency, jlong maxTries) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher *self = [ComGoogleI18nPhonenumbersPhoneNumberMatcher alloc];
+  ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(self, util, text, country, leniency, maxTries);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersPhoneNumberMatcher *create_ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, id<JavaLangCharSequence> text, NSString *country, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *leniency, jlong maxTries) {
+  ComGoogleI18nPhonenumbersPhoneNumberMatcher *self = [[ComGoogleI18nPhonenumbersPhoneNumberMatcher alloc] autorelease];
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(self, util, text, country, leniency, maxTries);
   return self;
 }
@@ -801,12 +805,6 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhon
 
 @implementation ComGoogleI18nPhonenumbersPhoneNumberMatcher_State
 
-- (instancetype)initWithNSString:(NSString *)__name
-                         withInt:(jint)__ordinal {
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(self, __name, __ordinal);
-  return self;
-}
-
 + (IOSObjectArray *)values {
   return ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values();
 }
@@ -821,9 +819,16 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhon
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPhoneNumberMatcher_State class]) {
-    JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, NOT_READY) = new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(@"NOT_READY", 0);
-    JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, READY) = new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(@"READY", 1);
-    JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE) = new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(@"DONE", 2);
+    size_t objSize = class_getInstanceSize(self);
+    size_t allocSize = 3 * objSize;
+    uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
+    id e;
+    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, NOT_READY) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, @"NOT_READY", 0);
+    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, READY) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, @"READY", 1);
+    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, @"DONE", 2);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State)
   }
 }
@@ -843,12 +848,6 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhon
 
 void ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *self, NSString *__name, jint __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
-}
-
-ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *self = [ComGoogleI18nPhonenumbersPhoneNumberMatcher_State alloc];
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(self, __name, __ordinal);
-  return self;
 }
 
 IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values() {

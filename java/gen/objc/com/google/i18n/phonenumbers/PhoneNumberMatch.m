@@ -124,4 +124,10 @@ ComGoogleI18nPhonenumbersPhoneNumberMatch *new_ComGoogleI18nPhonenumbersPhoneNum
   return self;
 }
 
+ComGoogleI18nPhonenumbersPhoneNumberMatch *create_ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(jint start, NSString *rawString, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number) {
+  ComGoogleI18nPhonenumbersPhoneNumberMatch *self = [[ComGoogleI18nPhonenumbersPhoneNumberMatch alloc] autorelease];
+  ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(self, start, rawString, number);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhoneNumberMatch)

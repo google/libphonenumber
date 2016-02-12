@@ -73,6 +73,8 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_ini
 
 __attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager *new_ComGoogleI18nPhonenumbersMetadataManager_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager *create_ComGoogleI18nPhonenumbersMetadataManager_init();
+
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(JavaIoInputStream *inArg);
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_loadAlternateFormatsMetadataFromFileWithInt_(jint countryCallingCode);
@@ -163,6 +165,12 @@ void ComGoogleI18nPhonenumbersMetadataManager_init(ComGoogleI18nPhonenumbersMeta
 
 ComGoogleI18nPhonenumbersMetadataManager *new_ComGoogleI18nPhonenumbersMetadataManager_init() {
   ComGoogleI18nPhonenumbersMetadataManager *self = [ComGoogleI18nPhonenumbersMetadataManager alloc];
+  ComGoogleI18nPhonenumbersMetadataManager_init(self);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersMetadataManager *create_ComGoogleI18nPhonenumbersMetadataManager_init() {
+  ComGoogleI18nPhonenumbersMetadataManager *self = [[ComGoogleI18nPhonenumbersMetadataManager alloc] autorelease];
   ComGoogleI18nPhonenumbersMetadataManager_init(self);
   return self;
 }

@@ -132,6 +132,8 @@ FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(Com
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *create_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber)
 
 #endif

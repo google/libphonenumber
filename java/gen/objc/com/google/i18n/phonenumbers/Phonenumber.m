@@ -22,6 +22,8 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhonenumber_init(Co
 
 __attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber *new_ComGoogleI18nPhonenumbersPhonenumber_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber *create_ComGoogleI18nPhonenumbersPhonenumber_init();
+
 @interface ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber () {
  @public
   jboolean hasCountryCode_;
@@ -55,8 +57,6 @@ J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber, s
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *self, NSString *__name, jint __ordinal);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
-
 @implementation ComGoogleI18nPhonenumbersPhonenumber
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -83,6 +83,12 @@ void ComGoogleI18nPhonenumbersPhonenumber_init(ComGoogleI18nPhonenumbersPhonenum
 
 ComGoogleI18nPhonenumbersPhonenumber *new_ComGoogleI18nPhonenumbersPhonenumber_init() {
   ComGoogleI18nPhonenumbersPhonenumber *self = [ComGoogleI18nPhonenumbersPhonenumber alloc];
+  ComGoogleI18nPhonenumbersPhonenumber_init(self);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersPhonenumber *create_ComGoogleI18nPhonenumbersPhonenumber_init() {
+  ComGoogleI18nPhonenumbersPhonenumber *self = [[ComGoogleI18nPhonenumbersPhonenumber alloc] autorelease];
   ComGoogleI18nPhonenumbersPhonenumber_init(self);
   return self;
 }
@@ -454,6 +460,12 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *new_ComGoogleI18nPhonenumbersP
   return self;
 }
 
+ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *create_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init() {
+  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *self = [[ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber alloc] autorelease];
+  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber)
 
 J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource)
@@ -461,12 +473,6 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_Country
 ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values_[4];
 
 @implementation ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource
-
-- (instancetype)initWithNSString:(NSString *)__name
-                         withInt:(jint)__ordinal {
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(self, __name, __ordinal);
-  return self;
-}
 
 + (IOSObjectArray *)values {
   return ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values();
@@ -482,10 +488,18 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource class]) {
-    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_PLUS_SIGN) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(@"FROM_NUMBER_WITH_PLUS_SIGN", 0);
-    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_IDD) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(@"FROM_NUMBER_WITH_IDD", 1);
-    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITHOUT_PLUS_SIGN) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(@"FROM_NUMBER_WITHOUT_PLUS_SIGN", 2);
-    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_DEFAULT_COUNTRY) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(@"FROM_DEFAULT_COUNTRY", 3);
+    size_t objSize = class_getInstanceSize(self);
+    size_t allocSize = 4 * objSize;
+    uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
+    id e;
+    (JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_PLUS_SIGN) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, @"FROM_NUMBER_WITH_PLUS_SIGN", 0);
+    (JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_IDD) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, @"FROM_NUMBER_WITH_IDD", 1);
+    (JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITHOUT_PLUS_SIGN) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, @"FROM_NUMBER_WITHOUT_PLUS_SIGN", 2);
+    (JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_DEFAULT_COUNTRY) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, @"FROM_DEFAULT_COUNTRY", 3);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource)
   }
 }
@@ -506,12 +520,6 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
 
 void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *self, NSString *__name, jint __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
-}
-
-ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *self = [ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource alloc];
-  ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(self, __name, __ordinal);
-  return self;
 }
 
 IOSObjectArray *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values() {

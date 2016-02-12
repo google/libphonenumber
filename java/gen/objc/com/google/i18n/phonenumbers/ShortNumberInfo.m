@@ -106,8 +106,6 @@ __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersShortNumberInfo
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *self, NSString *__name, jint __ordinal);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *new_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
-
 J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
 
 @implementation ComGoogleI18nPhonenumbersShortNumberInfo
@@ -453,6 +451,12 @@ ComGoogleI18nPhonenumbersShortNumberInfo *new_ComGoogleI18nPhonenumbersShortNumb
   return self;
 }
 
+ComGoogleI18nPhonenumbersShortNumberInfo *create_ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(id<ComGoogleI18nPhonenumbersInternalMatcherApi> matcherApi) {
+  ComGoogleI18nPhonenumbersShortNumberInfo *self = [[ComGoogleI18nPhonenumbersShortNumberInfo alloc] autorelease];
+  ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(self, matcherApi);
+  return self;
+}
+
 id<JavaUtilList> ComGoogleI18nPhonenumbersShortNumberInfo_getRegionCodesForCountryCodeWithInt_(ComGoogleI18nPhonenumbersShortNumberInfo *self, jint countryCallingCode) {
   id<JavaUtilList> regionCodes = [((id<JavaUtilMap>) nil_chk(self->countryCallingCodeToRegionCodeMap_)) getWithId:JavaLangInteger_valueOfWithInt_(countryCallingCode)];
   return JavaUtilCollections_unmodifiableListWithJavaUtilList_(regionCodes == nil ? [new_JavaUtilArrayList_initWithInt_(0) autorelease] : ((id) regionCodes));
@@ -519,12 +523,6 @@ ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *ComGoogleI18nPhonenumb
 
 @implementation ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost
 
-- (instancetype)initWithNSString:(NSString *)__name
-                         withInt:(jint)__ordinal {
-  ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(self, __name, __ordinal);
-  return self;
-}
-
 + (IOSObjectArray *)values {
   return ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_values();
 }
@@ -539,10 +537,18 @@ ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *ComGoogleI18nPhonenumb
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost class]) {
-    JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, TOLL_FREE) = new_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(@"TOLL_FREE", 0);
-    JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, STANDARD_RATE) = new_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(@"STANDARD_RATE", 1);
-    JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, PREMIUM_RATE) = new_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(@"PREMIUM_RATE", 2);
-    JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, UNKNOWN_COST) = new_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(@"UNKNOWN_COST", 3);
+    size_t objSize = class_getInstanceSize(self);
+    size_t allocSize = 4 * objSize;
+    uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
+    id e;
+    (JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, TOLL_FREE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(e, @"TOLL_FREE", 0);
+    (JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, STANDARD_RATE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(e, @"STANDARD_RATE", 1);
+    (JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, PREMIUM_RATE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(e, @"PREMIUM_RATE", 2);
+    (JreEnum(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost, UNKNOWN_COST) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+    ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(e, @"UNKNOWN_COST", 3);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost)
   }
 }
@@ -563,12 +569,6 @@ ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *ComGoogleI18nPhonenumb
 
 void ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *self, NSString *__name, jint __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
-}
-
-ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *new_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
-  ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *self = [ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost alloc];
-  ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(self, __name, __ordinal);
-  return self;
 }
 
 IOSObjectArray *ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_values() {

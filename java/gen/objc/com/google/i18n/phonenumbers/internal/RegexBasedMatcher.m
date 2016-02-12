@@ -26,6 +26,8 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersInternalRegexBasedM
 
 __attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init();
+
 @implementation ComGoogleI18nPhonenumbersInternalRegexBasedMatcher
 
 + (id<ComGoogleI18nPhonenumbersInternalMatcherApi>)create {
@@ -85,6 +87,12 @@ void ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(ComGoogleI18nPhonen
 
 ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() {
   ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self = [ComGoogleI18nPhonenumbersInternalRegexBasedMatcher alloc];
+  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(self);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() {
+  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self = [[ComGoogleI18nPhonenumbersInternalRegexBasedMatcher alloc] autorelease];
   ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(self);
   return self;
 }

@@ -60,6 +60,8 @@ FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersShortNumberUtil_init(ComGoogleI1
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersShortNumberUtil *new_ComGoogleI18nPhonenumbersShortNumberUtil_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersShortNumberUtil *create_ComGoogleI18nPhonenumbersShortNumberUtil_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersShortNumberUtil)
 
 #endif

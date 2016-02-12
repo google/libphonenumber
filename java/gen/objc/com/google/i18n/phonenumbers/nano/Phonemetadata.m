@@ -253,6 +253,12 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *new_ComGoogleI18nPhonen
   return self;
 }
 
+ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *create_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init() {
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *self = [[ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat alloc] autorelease];
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init(self);
+  return self;
+}
+
 ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_parseFromWithByteArray_(IOSByteArray *data) {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_initialize();
   return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_init() autorelease], data);
@@ -402,6 +408,12 @@ void ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init(ComGoogleI1
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init() {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *self = [ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc alloc];
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init(self);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *create_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init() {
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc *self = [[ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc alloc] autorelease];
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_init(self);
   return self;
 }
@@ -1036,6 +1048,12 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *new_ComGoogleI18nPhone
   return self;
 }
 
+ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *create_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init() {
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *self = [[ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata alloc] autorelease];
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init(self);
+  return self;
+}
+
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_parseFromWithByteArray_(IOSByteArray *data) {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_initialize();
   return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_([new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_init() autorelease], data);
@@ -1180,6 +1198,12 @@ void ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init(Com
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() {
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *self = [ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection alloc];
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init(self);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *create_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() {
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *self = [[ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection alloc] autorelease];
   ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init(self);
   return self;
 }

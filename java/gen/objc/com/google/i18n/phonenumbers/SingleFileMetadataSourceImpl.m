@@ -123,8 +123,8 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
     }
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE) withNSString:JreStrcat("$$", @"cannot load/parse metadata: ", fileName_) withJavaLangThrowable:e];
-    @throw [new_JavaLangRuntimeException_initWithNSString_withJavaLangThrowable_(JreStrcat("$$", @"cannot load/parse metadata: ", fileName_), e) autorelease];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE) withNSString:JreStrcat("$$", @"cannot load/parse metadata: ", fileName_) withNSException:e];
+    @throw [new_JavaLangRuntimeException_initWithNSString_withNSException_(JreStrcat("$$", @"cannot load/parse metadata: ", fileName_), e) autorelease];
   }
 }
 
@@ -184,12 +184,24 @@ ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *new_ComGoogleI18nPhonenum
   return self;
 }
 
+ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *create_ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(NSString *fileName, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
+  ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *self = [[ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl alloc] autorelease];
+  ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(self, fileName, metadataLoader);
+  return self;
+}
+
 void ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *self, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
   ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(self, ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_META_DATA_FILE_NAME, metadataLoader);
 }
 
 ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *new_ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
   ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *self = [ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl alloc];
+  ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(self, metadataLoader);
+  return self;
+}
+
+ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *create_ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
+  ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *self = [[ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl alloc] autorelease];
   ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(self, metadataLoader);
   return self;
 }
@@ -202,14 +214,14 @@ ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *ComGoogleI18
     [metadataCollection mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:ComGoogleI18nPhonenumbersMetadataManager_convertStreamToByteBufferWithJavaIoObjectInputStream_withInt_(source, SINGLE_FILE_BUFFER_SIZE)];
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:@"error reading input (ignored)" withJavaLangThrowable:e];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:@"error reading input (ignored)" withNSException:e];
   }
   @finally {
     @try {
       [((JavaIoObjectInputStream *) nil_chk(source)) close];
     }
     @catch (JavaIoIOException *e) {
-      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:@"error closing input stream (ignored)" withJavaLangThrowable:e];
+      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:@"error closing input stream (ignored)" withNSException:e];
     }
   }
   return metadataCollection;

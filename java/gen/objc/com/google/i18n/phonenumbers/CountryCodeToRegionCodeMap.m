@@ -733,4 +733,10 @@ ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *new_ComGoogleI18nPhonenumbe
   return self;
 }
 
+ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *create_ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init() {
+  ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *self = [[ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap alloc] autorelease];
+  ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap)
