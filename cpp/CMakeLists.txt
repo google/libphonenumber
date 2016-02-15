@@ -340,6 +340,9 @@ include_directories ("src")
 
 # Build a static library (without -fPIC).
 add_library (phonenumber STATIC ${SOURCES})
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  add_dependencies (phonenumber generate_geocoding_data)
+endif ()
 if (${USE_ICU_REGEXP} STREQUAL "ON")
   if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
     add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
@@ -348,9 +351,11 @@ endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
   add_library (geocoding STATIC ${GEOCODING_SOURCES})
+  add_dependencies (geocoding generate_geocoding_data)
   # The geocoder doesn't use RE2 so there is no reason not to build a shared
   # library for it.
   add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
+  add_dependencies (geocoding-shared generate_geocoding_data)
   set_target_properties (geocoding-shared
     PROPERTIES
       OUTPUT_NAME "geocoding"
@@ -374,6 +379,9 @@ endif ()
 
 if (BUILD_SHARED_LIB)
   add_library (phonenumber-shared SHARED ${SOURCES})
+  if (${BUILD_GEOCODER} STREQUAL "ON")
+    add_dependencies (phonenumber-shared generate_geocoding_data)
+  endif ()
   if (${USE_ICU_REGEXP} STREQUAL "ON")
     if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
       add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
@@ -422,6 +430,9 @@ endif ()
 
 # Build a specific library for testing purposes.
 add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  add_dependencies (phonenumber_testing generate_geocoding_data)
+endif ()
 target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
