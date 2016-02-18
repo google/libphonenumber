@@ -1247,9 +1247,13 @@ public class PhoneNumberUtil {
    */
   public String formatNationalNumberWithPreferredCarrierCode(PhoneNumber number,
                                                              String fallbackCarrierCode) {
-    return formatNationalNumberWithCarrierCode(number, number.hasPreferredDomesticCarrierCode()
-                                                       ? number.getPreferredDomesticCarrierCode()
-                                                       : fallbackCarrierCode);
+    return formatNationalNumberWithCarrierCode(number,
+        // Historically, we set this to an empty string when parsing with raw input if none was
+        // found in the input string. However, this doesn't result in a number we can dial. For this
+        // reason, we treat the empty string the same as if it isn't set at all.
+        number.getPreferredDomesticCarrierCode().length() > 0
+        ? number.getPreferredDomesticCarrierCode()
+        : fallbackCarrierCode);
   }
 
   /**
@@ -1286,7 +1290,10 @@ public class PhoneNumberUtil {
         formattedNumber =
             formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
       } else if (regionCode.equals("BR") && isFixedLineOrMobile) {
-        formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode()
+        // Historically, we set this to an empty string when parsing with raw input if none was
+        // found in the input string. However, this doesn't result in a number we can dial. For this
+        // reason, we treat the empty string the same as if it isn't set at all.
+        formattedNumber = numberNoExt.getPreferredDomesticCarrierCode().length() > 0
             ? formattedNumber = formatNationalNumberWithPreferredCarrierCode(numberNoExt, "")
             // Brazilian fixed line and mobile numbers need to be dialed with a carrier code when
             // called within Brazil. Without that, most of the carriers won't connect the call.
@@ -3014,7 +3021,7 @@ public class PhoneNumberUtil {
       if (testNumberLength(potentialNationalNumber.toString(), regionMetadata.getGeneralDesc())
               != ValidationResult.TOO_SHORT) {
         normalizedNationalNumber = potentialNationalNumber;
-        if (keepRawInput) {
+        if (keepRawInput && carrierCode.length() > 0) {
           phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
         }
       }

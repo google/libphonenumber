@@ -999,12 +999,18 @@ TEST_F(PhoneNumberUtilTest, FormatWithPreferredCarrierCode) {
   phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "",
                                                            &formatted_number);
   EXPECT_EQ("01234 19 12-5678", formatted_number);
-  // When the preferred_domestic_carrier_code is present (even when it contains
-  // an empty string), use it instead of the default carrier code passed in.
+  // When the preferred_domestic_carrier_code is present (even when it is just a
+  // space), use it instead of the default carrier code passed in.
+  ar_number.set_preferred_domestic_carrier_code(" ");
+  phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "15",
+                                                           &formatted_number);
+  EXPECT_EQ("01234   12-5678", formatted_number);
+  // When the preferred_domestic_carrier_code is present but empty, treat is as
+  // unset and use instead the default carrier code passed in.
   ar_number.set_preferred_domestic_carrier_code("");
   phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "15",
                                                            &formatted_number);
-  EXPECT_EQ("01234 12-5678", formatted_number);
+  EXPECT_EQ("01234 15 12-5678", formatted_number);
   // We don't support this for the US so there should be no change.
   PhoneNumber us_number;
   us_number.set_country_code(1);
@@ -3620,9 +3626,6 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
 
   nz_number.set_raw_input("+64 3 331 6005");
   nz_number.set_country_code_source(PhoneNumber::FROM_NUMBER_WITH_PLUS_SIGN);
-  // It is important that we set this to an empty string, since we used
-  // ParseAndKeepRawInput and no carrrier code was found.
-  nz_number.set_preferred_domestic_carrier_code("");
   result_proto.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.ParseAndKeepRawInput("+64 3 331 6005",
@@ -3863,7 +3866,6 @@ TEST_F(PhoneNumberUtilTest, ParseAndKeepRaw) {
   alpha_numeric_number.set_raw_input("800 six-flags");
   alpha_numeric_number.set_country_code_source(
       PhoneNumber::FROM_DEFAULT_COUNTRY);
-  alpha_numeric_number.set_preferred_domestic_carrier_code("");
 
   PhoneNumber test_number;
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,

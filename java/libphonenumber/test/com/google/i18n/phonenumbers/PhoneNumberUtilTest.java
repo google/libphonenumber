@@ -731,10 +731,15 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, "15"));
     assertEquals("01234 19 12-5678",
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, ""));
-    // When the preferred_domestic_carrier_code is present (even when it contains an empty string),
-    // use it instead of the default carrier code passed in.
+    // When the preferred_domestic_carrier_code is present (even when it is just a space), use it
+    // instead of the default carrier code passed in.
+    arNumber.setPreferredDomesticCarrierCode(" ");
+    assertEquals("01234   12-5678",
+        phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, "15"));
+    // When the preferred_domestic_carrier_code is present but empty, treat it as unset and use
+    // instead the default carrier code passed in.
     arNumber.setPreferredDomesticCarrierCode("");
-    assertEquals("01234 12-5678",
+    assertEquals("01234 15 12-5678",
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, "15"));
     // We don't support this for the US so there should be no change.
     PhoneNumber usNumber = new PhoneNumber();
@@ -2192,12 +2197,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;isub=12345;phone-context=+64",
         RegionCode.ZZ));
 
-    // It is important that we set the carrier code to an empty string, since we used
-    // ParseAndKeepRawInput and no carrier code was found.
     PhoneNumber nzNumberWithRawInput = new PhoneNumber().mergeFrom(NZ_NUMBER).
         setRawInput("+64 3 331 6005").
-        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN).
-        setPreferredDomesticCarrierCode("");
+        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
     assertEquals(nzNumberWithRawInput, phoneUtil.parseAndKeepRawInput("+64 3 331 6005",
                                                                       RegionCode.ZZ));
     // Null is also allowed for the region code in these cases.
@@ -2299,16 +2301,14 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testParseAndKeepRaw() throws Exception {
     PhoneNumber alphaNumericNumber = new PhoneNumber().mergeFrom(ALPHA_NUMERIC_NUMBER).
         setRawInput("800 six-flags").
-        setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY).
-        setPreferredDomesticCarrierCode("");
+        setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY);
     assertEquals(alphaNumericNumber,
                  phoneUtil.parseAndKeepRawInput("800 six-flags", RegionCode.US));
 
     PhoneNumber shorterAlphaNumber = new PhoneNumber().
         setCountryCode(1).setNationalNumber(8007493524L).
         setRawInput("1800 six-flag").
-        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN).
-        setPreferredDomesticCarrierCode("");
+        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
     assertEquals(shorterAlphaNumber,
                  phoneUtil.parseAndKeepRawInput("1800 six-flag", RegionCode.US));
 

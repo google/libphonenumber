@@ -991,7 +991,11 @@ void PhoneNumberUtil::FormatNationalNumberWithPreferredCarrierCode(
     string* formatted_number) const {
   FormatNationalNumberWithCarrierCode(
       number,
-      number.has_preferred_domestic_carrier_code()
+      // Historically, we set this to an empty string when parsing with raw
+      // input if none was found in the input string. However, this doesn't
+      // result in a number we can dial. For this reason, we treat the empty
+      // string the same as if it isn't set at all.
+      !number.preferred_domestic_carrier_code().empty()
           ? number.preferred_domestic_carrier_code()
           : fallback_carrier_code,
       formatted_number);
@@ -1027,9 +1031,13 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
           number_no_extension, kColombiaMobileToFixedLinePrefix,
           formatted_number);
     } else if ((region_code == "BR") && (is_fixed_line_or_mobile)) {
-      if (number_no_extension.has_preferred_domestic_carrier_code()) {
-      FormatNationalNumberWithPreferredCarrierCode(number_no_extension, "",
-                                                   formatted_number);
+      // Historically, we set this to an empty string when parsing with raw
+      // input if none was found in the input string. However, this doesn't
+      // result in a number we can dial. For this reason, we treat the empty
+      // string the same as if it isn't set at all.
+      if (!number_no_extension.preferred_domestic_carrier_code().empty()) {
+        FormatNationalNumberWithPreferredCarrierCode(number_no_extension, "",
+                                                     formatted_number);
       } else {
         // Brazilian fixed line and mobile numbers need to be dialed with a
         // carrier code when called within Brazil. Without that, most of the
@@ -2017,7 +2025,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     if (TestNumberLength(potential_national_number,
                          country_metadata->general_desc()) != TOO_SHORT) {
       normalized_national_number.assign(potential_national_number);
-      if (keep_raw_input) {
+      if (keep_raw_input && !carrier_code.empty()) {
         temp_number.set_preferred_domestic_carrier_code(carrier_code);
       }
     }
