@@ -1,6 +1,9 @@
 # What is it?
 
-Google's common Java, C++ and JavaScript library for parsing, formatting, storing and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
+Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
+
+# Want to report an issue?
+If you want to report an issue, or to contribute to the project, please read the guidelines [here] (https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md) first.
 
 # Highlights of functionality
   * Parsing/formatting/validating phone numbers for all countries/regions of the world.
@@ -14,7 +17,7 @@ Google's common Java, C++ and JavaScript library for parsing, formatting, storin
   * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
 
-# Demo (v7.0.7)
+# Demo (v7.2.5)
 [Java](http://libphonenumber.appspot.com/)
 
 [JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)

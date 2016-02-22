@@ -365,6 +365,7 @@
 26463297|Noordoewer
 26463345|Mariental
 26463626|Helmeringhausen
+26463683|Keetmanshoop
 26463693|South
 264637034|Keetmanshoop
 264637035|Luderitz

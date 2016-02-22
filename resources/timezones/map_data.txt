@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistics data (2015-05-05).
+# Internal statistics data (2015-11-03).
 
 1|America/Anguilla&America/Antigua&America/Barbados&America/Cayman&America/Chicago&America/Denver&America/Dominica&America/Edmonton&America/Grand_Turk&America/Grenada&America/Halifax&America/Jamaica&America/Juneau&America/Los_Angeles&America/Lower_Princes&America/Montserrat&America/Nassau&America/New_York&America/Port_of_Spain&America/Puerto_Rico&America/St_Johns&America/St_Kitts&America/St_Lucia&America/St_Thomas&America/St_Vincent&America/Toronto&America/Tortola&America/Vancouver&America/Winnipeg&Atlantic/Bermuda&Pacific/Guam&Pacific/Honolulu&Pacific/Pago_Pago&Pacific/Saipan
 1201|America/New_York
@@ -29,6 +29,7 @@
 1208251|America/Denver
 1208253|America/Denver
 1208255|America/Los_Angeles
+1208258|America/Denver
 120826|America/Los_Angeles
 120827|America/Denver
 120828|America/Denver
@@ -36,6 +37,7 @@
 1208292|America/Los_Angeles
 1208297|America/Denver
 12083|America/Denver
+120840|America/Denver
 120841|America/Denver
 120842|America/Denver
 1208433|America/Denver
@@ -352,12 +354,14 @@
 1308423|America/Denver
 1308425|America/Chicago
 130843|America/Denver
+130844|America/Chicago
 130845|America/Chicago
 130846|America/Chicago
 13085|America/Chicago
 130862|America/Denver
 130863|America/Denver
 130866|America/Denver
+130867|America/Chicago
 130869|America/Chicago
 130872|America/Chicago
 130874|America/Chicago
@@ -969,6 +973,7 @@
 181249|America/Chicago
 181252|America/New_York
 181253|America/New_York
+1812542|America/New_York
 1812546|America/New_York
 1812547|America/Chicago
 181259|America/New_York
@@ -1108,6 +1113,7 @@
 1850539|America/New_York
 1850545|America/New_York
 1850547|America/Chicago
+185055|America/New_York
 185056|America/New_York
 185057|America/New_York
 1850580|America/New_York
@@ -1236,6 +1242,7 @@
 190624|America/New_York
 190625|America/New_York
 190626|America/Chicago
+190627|America/New_York
 190629|America/New_York
 19063|America/New_York
 19064|America/New_York
@@ -1449,7 +1456,6 @@
 376|Europe/Andorra
 377|Europe/Monaco
 378|Europe/San_Marino
-379|Europe/Vatican
 380|Europe/Bucharest
 381|Europe/Belgrade
 382|Europe/Podgorica
@@ -1457,7 +1463,7 @@
 386|Europe/Ljubljana
 387|Europe/Sarajevo
 389|Europe/Skopje
-39|Europe/Rome
+39|Europe/Rome&Europe/Vatican
 40|Europe/Bucharest
 41|Europe/Zurich
 420|Europe/Prague
@@ -1646,7 +1652,7 @@
 52326|America/Mexico_City
 52327|America/Mazatlan
 52328|America/Mexico_City
-52329|America/Mazatlan&America/Mexico_City
+52329|America/Mexico_City&America/Mazatlan
 5233|America/Mexico_City
 5234|America/Mexico_City
 5235|America/Mexico_City
@@ -1713,8 +1719,8 @@
 5297|America/Mexico_City
 52981|America/Mexico_City
 52982|America/Mexico_City
-52983|America/Mexico_City&America/New_York
-52984|America/Mexico_City&America/New_York
+52983|America/New_York&America/Mexico_City
+52984|America/New_York&America/Mexico_City
 52985|America/Mexico_City
 52986|America/Mexico_City
 52987|America/New_York
@@ -1726,7 +1732,7 @@
 52995|America/Mexico_City
 52996|America/Mexico_City
 52997|America/Mexico_City
-52998|America/Mexico_City&America/New_York
+52998|America/New_York&America/Mexico_City
 52999|America/Mexico_City
 53|America/Havana
 54|America/Buenos_Aires
@@ -1746,7 +1752,15 @@
 5568|America/Rio_Branco
 5569|America/Manaus
 557|America/Sao_Paulo
-558|America/Sao_Paulo
+5581|America/Noronha
+5582|America/Sao_Paulo
+5583|America/Sao_Paulo
+5584|America/Sao_Paulo
+5585|America/Sao_Paulo
+5586|America/Sao_Paulo
+5587|America/Sao_Paulo
+5588|America/Sao_Paulo
+5589|America/Sao_Paulo
 5591|America/Manaus
 5592|America/Manaus
 5593|America/Manaus
@@ -1758,7 +1772,10 @@
 5599|America/Sao_Paulo
 56|America/Santiago&Pacific/Easter
 562|America/Santiago
-563|America/Santiago
+5632|Pacific/Easter
+5633|America/Santiago
+5634|America/Santiago
+5635|America/Santiago
 564|America/Santiago
 565|America/Santiago
 566|America/Santiago
@@ -1803,13 +1820,15 @@
 6238|Asia/Makassar
 62401|Asia/Makassar
 62402|Asia/Makassar
-62403|Asia/Jayapura&Asia/Makassar
+62403|Asia/Makassar&Asia/Jayapura
 62404|Asia/Makassar
 62405|Asia/Makassar
 62408|Asia/Makassar
+62409|Asia/Makassar
 6241|Asia/Makassar
 6242|Asia/Makassar
 6243|Asia/Makassar
+6244|Asia/Makassar
 6245|Asia/Makassar
 6246|Asia/Makassar
 6247|Asia/Makassar
@@ -1823,7 +1842,7 @@
 62519|Asia/Jakarta
 62522|Asia/Jakarta
 62525|Asia/Jakarta
-62526|Asia/Makassar
+62526|Asia/Jakarta&Asia/Makassar
 62527|Asia/Makassar
 62528|Asia/Jakarta
 6253|Asia/Jakarta
@@ -1848,7 +1867,9 @@
 62966|Asia/Jayapura
 62967|Asia/Jayapura
 62969|Asia/Jayapura
-6297|Asia/Jayapura
+62971|Asia/Jayapura
+62975|Asia/Jayapura
+62979|Asia/Jakarta&Asia/Jayapura
 6298|Asia/Jayapura
 63|Asia/Manila
 64|Pacific/Auckland&Pacific/Chatham
@@ -1903,7 +1924,7 @@
 7301|Asia/Irkutsk
 7302|Asia/Yakutsk
 733|Asia/Almaty
-7341|Europe/Moscow
+7341|Europe/Moscow&Europe/Samara
 7342|Asia/Yekaterinburg
 7343|Asia/Yekaterinburg
 7345|Asia/Yekaterinburg
@@ -1956,9 +1977,9 @@
 7843|Europe/Moscow
 7844|Europe/Moscow
 7845|Europe/Moscow
-7846|Europe/Moscow
+7846|Europe/Moscow&Europe/Samara
 7847|Europe/Moscow
-7848|Europe/Moscow
+7848|Europe/Moscow&Europe/Samara
 785|Europe/Moscow
 786|Europe/Moscow
 787|Europe/Moscow

@@ -333,6 +333,17 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
         shortInfo.getExpectedCostForRegion(parse("211", RegionCode.CA), RegionCode.CA));
   }
 
+  public void testCountryCallingCodeIsNotIgnored() {
+    // +46 is the country calling code for Sweden (SE), and 40404 is a valid short number in the US.
+    assertFalse(shortInfo.isPossibleShortNumberForRegion(
+        parse("+4640404", RegionCode.SE), RegionCode.US));
+    assertFalse(shortInfo.isValidShortNumberForRegion(
+        parse("+4640404", RegionCode.SE), RegionCode.US));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion(
+            parse("+4640404", RegionCode.SE), RegionCode.US));
+  }
+
   private PhoneNumber parse(String number, String regionCode) {
     try {
       return phoneUtil.parse(number, regionCode);

@@ -53,7 +53,7 @@ endif
 #	dh $@ --with javahelper
 
 #override_dh_auto_configure:
-configure/libphonenumber6::
+configure/libphonenumber7::
 	mkdir -p $(CPP_BUILD) && cd $(CPP_BUILD) && $(CMAKE) $(CMAKE_FLAGS) ..
 
 #override_dh_auto_build:
@@ -61,7 +61,7 @@ configure/libphonenumber6::
 #	mkdir java/lib
 #	ln -s /usr/share/java/junit4.jar java/lib/junit-4.8.1.jar
 #	$(ANT) -f $(JAVA_BUILD).xml jar
-build/libphonenumber6::
+build/libphonenumber7::
 	ln -sf cpp-build-1.0-SNAPSHOT.jar tools/java/cpp-build/target/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar
 	ln -sf /usr/share/java/protobuf.jar tools/java/cpp-build/target/protobuf-java-debian.jar
 	$(MAKE) -C $(CPP_BUILD) phonenumber phonenumber-shared

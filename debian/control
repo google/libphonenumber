@@ -28,15 +28,17 @@ Build-Depends: cdbs,
                libprotobuf-java,
                libservlet2.5-java,
                libservlet2.5-java-doc
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Section: libs
 Homepage: https://github.com/googlei18n/libphonenumber/
-Vcs-Browser: https://github.com/googlei18n/libphonenumber/
-Vcs-Git: https://github.com/googlei18n/libphonenumber.git
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libphonenumber.git/
+Vcs-Git: git://anonscm.debian.org/collab-maint/libphonenumber.git
 
-Package: libphonenumber6-java
+Package: libphonenumber7-java
 Section: java
 Architecture: all
+Conflicts: libphonenumber6-java
+Replaces: libphonenumber6-java
 Depends: ${misc:Depends}, ${maven:Depends}
 Recommends: ${maven:OptionalDepends}
 Description: parsing/formatting/validating phone numbers - java
@@ -45,13 +47,13 @@ Description: parsing/formatting/validating phone numbers - java
  .
  This package contains the runtime library JARs for Java users.
 
-Package: libphonenumber6-dev
+Package: libphonenumber7-dev
 Section: libdevel
 Architecture: any
 Provides: libphonenumber-dev
 Conflicts: libphonenumber-dev
 Replaces: libphonenumber-dev
-Depends: libphonenumber6 (=${binary:Version}), ${misc:Depends},
+Depends: libphonenumber7 (=${binary:Version}), ${misc:Depends},
          libboost-dev (>= 1.40),
          libboost-system-dev (>= 1.40),
          libboost-thread-dev (>= 1.40),
@@ -62,7 +64,7 @@ Description: parsing/formatting/validating phone numbers - development files
  .
  This package contains the static libraries and include files.
 
-Package: libphonenumber6
+Package: libphonenumber7
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}

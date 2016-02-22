@@ -19,10 +19,10 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.Leniency;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.MatchType;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
-import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
 
 import java.lang.Character.UnicodeBlock;
 import java.util.Iterator;
@@ -585,7 +585,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     PhoneMetadata alternateFormats =
         MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
     if (alternateFormats != null) {
-      for (NumberFormat alternateFormat : alternateFormats.numberFormats()) {
+      for (NumberFormat alternateFormat : alternateFormats.numberFormat) {
         formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
         if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
           return true;
@@ -665,17 +665,17 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // Check if a national prefix should be present when formatting this number.
     String nationalNumber = util.getNationalSignificantNumber(number);
     NumberFormat formatRule =
-        util.chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+        util.chooseFormattingPatternForNumber(metadata.numberFormat, nationalNumber);
     // To do this, we check that a national prefix formatting rule was present and that it wasn't
     // just the first-group symbol ($1) with punctuation.
-    if ((formatRule != null) && formatRule.getNationalPrefixFormattingRule().length() > 0) {
-      if (formatRule.isNationalPrefixOptionalWhenFormatting()) {
+    if ((formatRule != null) && formatRule.nationalPrefixFormattingRule.length() > 0) {
+      if (formatRule.nationalPrefixOptionalWhenFormatting) {
         // The national-prefix is optional in these cases, so we don't need to check if it was
         // present.
         return true;
       }
       if (PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
-          formatRule.getNationalPrefixFormattingRule())) {
+          formatRule.nationalPrefixFormattingRule)) {
         // National Prefix not needed for this number.
         return true;
       }
