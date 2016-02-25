@@ -6161,7 +6161,12 @@
         <exampleNumber>21360003</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>77[6-8]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          77(?:
+            08|
+            [6-8]\d
+          )\d{4}
+        </nationalNumberPattern>
         <exampleNumber>77831001</exampleNumber>
       </mobile>
     </territory>
@@ -15191,7 +15196,7 @@
             2(?:
               (?:
                 [015-7]\d|
-                2[2-9]|
+                2[02-9]|
                 3[2-57]|
                 4[2-8]|
                 8[235-7]
@@ -17197,7 +17202,7 @@
               )|
               4(?:
                 [06]|
-                1\d
+                1\d?
               )|
               5(?:
                 [01357]|
@@ -23021,7 +23026,7 @@
               4[67]|
               5[12]|
               6[014]|
-              8[56]
+              8[056]
             )|
             4(?:
               0[124-9]|
@@ -23113,7 +23118,7 @@
               4[67]|
               5[12]|
               6[014]|
-              8[56]
+              8[056]
             )|
             4(?:
               0[124-9]|

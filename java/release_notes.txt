@@ -1,3 +1,10 @@
+Feb 25, 2016: libphonenumber-7.2.6
+Metadata changes:
+ - Updated phone metadata for region code(s): DJ, MA, NA, US
+ - Updated short number metadata for region code(s): KR
+ - New geocoding data for country calling code(s): 1380 (en)
+ - Updated geocoding data for country calling code(s): 212 (en)
+
 Feb 10, 2016: libphonenumber-7.2.5
 Code changes:
  - Fix two places in demo where NPEs can occur on bad input.
