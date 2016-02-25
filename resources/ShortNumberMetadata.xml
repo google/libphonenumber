@@ -5659,7 +5659,10 @@
            2[01389]|
            3(?:
              2|
-             39|
+             3[039]|
+             45|
+             66|
+             88|
              9[18]
            )|
            82
@@ -5687,9 +5690,11 @@
         <nationalNumberPattern>
          1(?:
            17|
-           29|
+           2[139]|
            3(?:
-             39|
+             3[09]|
+             66|
+             88|
              9[18]
            )|
            82
@@ -5703,10 +5708,11 @@
           1(?:
             1[78]|
             28|
+            330|
             82
           )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>118</exampleNumber>
       </tollFree>
     </territory>
