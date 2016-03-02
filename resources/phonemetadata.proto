@@ -82,7 +82,7 @@ message NumberFormat {
   // commonly seen this number written by people without the leading 0, for
   // example as (20) XXXX XXXX, this field would be set to true. This will be
   // inherited from the value set for the territory in the XML file, unless a
-  // national_prefix_formatting_rule is defined specifically for this
+  // national_prefix_optional_when_formatting is defined specifically for this
   // NumberFormat.
   optional bool national_prefix_optional_when_formatting = 6;
 
