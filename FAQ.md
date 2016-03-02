@@ -84,13 +84,16 @@ a number in an advert, etc. We don't think the lack of M2M support hinders any
 of those use-case, but we might be wrong.
 
 If you would like libphonenumber to support M2M numbers, please engage with the
-developer community with further information to address our questions and
-concerns and please describe what kinds of use-cases fail because M2M numbers
-are not supported by the library.
+developer community at [Support M2M numbers #680]
+(https://github.com/googlei18n/libphonenumber/issues/680) with further
+information to address our questions and concerns and please describe what kinds
+of use-cases fail because M2M numbers are not supported by the library.
 
 More information on this issue would be very welcomed!
 
-Related issues: [#930: JTGlobal - an MNO based in the UK]
+Related issues: [Support M2M numbers #680]
+(https://github.com/googlei18n/libphonenumber/issues/680),
+[#930: JTGlobal - an MNO based in the UK]
 (https://github.com/googlei18n/libphonenumber/issues/930), [#976: Norway]
 (https://github.com/googlei18n/libphonenumber/issues/976), [#985: South Africa,
 Vodacom](https://github.com/googlei18n/libphonenumber/issues/985), [#910:
