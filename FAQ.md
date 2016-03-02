@@ -37,7 +37,7 @@ with varying standardization practices in different regions.
 ### When should I use isValidNumberForRegion?
 
 Rarely! Many people have phone numbers that do not belong to the country they
-live in. This applies to particularly to mobile numbers, but may also be true
+live in. This applies particularly to mobile numbers, but may also be true
 for VoIP numbers etc. Note also that the regions your application supports may
 not be the same as the regions we support. For example, the Channel Islands such
 as "Jersey" have their own region code - JE. If you allow these users to sign up
@@ -65,7 +65,7 @@ way.
 libphonenumber does not support M2M numbers at the moment, but might in the
 future.
 
-One of the reasons libphonenumber doesn't supported M2M so far is because no one
+One of the reasons libphonenumber doesn't support M2M so far is because no one
 could explain their use to us sufficiently.
 
 We don't require that a number to be supported by the library has a human at the
