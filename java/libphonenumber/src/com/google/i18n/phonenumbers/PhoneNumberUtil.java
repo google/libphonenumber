@@ -1016,6 +1016,14 @@ public class PhoneNumberUtil {
     PhoneNumberType numberType = getNumberType(phoneNumber);
     // TODO: Include mobile phone numbers from countries like Indonesia, which has some
     // mobile numbers that are geographical.
+
+    // In Brazil (country code 55), all mobile phones are also associated
+    // with a specific area code
+    if(phoneNumber.getCountryCode() == 55) {
+      return numberType == PhoneNumberType.FIXED_LINE ||
+          numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE ||
+          numberType == PhoneNumberType.MOBILE;
+    }
     return numberType == PhoneNumberType.FIXED_LINE ||
         numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE;
   }

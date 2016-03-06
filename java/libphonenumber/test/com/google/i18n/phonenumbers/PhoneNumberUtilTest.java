@@ -53,6 +53,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423570000L);
   private static final PhoneNumber BS_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
+  private static final PhoneNumber BR_MOBILE =
+      new PhoneNumber().setCountryCode(55).setNationalNumber(21981036511L);
+  private static final PhoneNumber BR_NUMBER =
+      new PhoneNumber().setCountryCode(55).setNationalNumber(2154432211L);
   // Note that this is the same as the example number for DE in the metadata.
   private static final PhoneNumber DE_NUMBER =
       new PhoneNumber().setCountryCode(49).setNationalNumber(30123456L);
@@ -195,6 +199,14 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("$1 $2 $3 $4", metadata.intlNumberFormat[3].format);
   }
 
+  public void testGetInstanceLoadBRMetadata() {
+    PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.BR);
+    assertEquals("BR", metadata.id);
+    assertEquals(55, metadata.countryCode);
+    assertEquals("0", metadata.nationalPrefix);
+    assertEquals("$2", metadata.nationalPrefixTransformRule);
+  }
+
   public void testGetInstanceLoadInternationalTollFreeMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForNonGeographicalRegion(800);
     assertEquals("001", metadata.id);
@@ -227,6 +239,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     // A North America toll-free number, which has no area code.
     assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(US_TOLLFREE));
+
+    // Brazilian numbers, which have 2 digits area code
+    assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(BR_MOBILE));
+    assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(BR_NUMBER));
 
     // Google London, which has area code "20".
     assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(GB_NUMBER));
