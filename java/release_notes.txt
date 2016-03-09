@@ -1,6 +1,11 @@
-Pending changes:
+Mar 09, 2016: libphonenumber-7.2.7
 Code changes:
  - Update nationalPrefixOptionalWhenFormatting documentation.
+Metadata changes:
+ - Updated phone metadata for region code(s): CN, IN, MO, TK
+ - Updated short number metadata for region code(s): FR
+ - Updated carrier data for country calling code(s): 853 (en)
+ - Updated / refreshed time zone meta data.
 
 Feb 25, 2016: libphonenumber-7.2.6
 Metadata changes:
