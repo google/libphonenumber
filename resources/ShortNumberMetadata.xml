@@ -3544,6 +3544,7 @@
               )|
               8\d{3}
             )|
+            9[167]|
             [578]
           )|
           2(?:
@@ -3584,7 +3585,8 @@
               [0459]|
               6\d{3}|
               871[03]
-            )
+            )|
+            9[167]
           )|
           224|
           3(?:
@@ -3689,19 +3691,30 @@
       </emergency>
       <expandedEmergency>
         <nationalNumberPattern>
-          116(?:
-            000|
-            111
+          1(?:
+            1(?:
+              [459]|
+              6(?:
+                000|
+                111
+              )
+            )|
+            9[167]
           )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>116111</exampleNumber>
       </expandedEmergency>
       <!-- https://clients.txtnation.com/entries/22523777-France-Premium-SMS-Short-Code-Regulations
            -->
       <smsServices>
-        <nationalNumberPattern>[3-8]\d{4}</nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <nationalNumberPattern>
+          (?:
+           114|
+           [3-8]\d{4}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>33700</exampleNumber>
       </smsServices>
       <carrierSelectionCodes>
