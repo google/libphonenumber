@@ -42,6 +42,7 @@
 #include "java/util/logging/Logger.h"
 #include "java/util/regex/Matcher.h"
 #include "java/util/regex/Pattern.h"
+#include "java/lang/ClassLoader.h"
 
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil () {
  @public
@@ -3351,7 +3352,10 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_$4_$1 *create_ComGoogleI18nPho
 @implementation ComGoogleI18nPhonenumbersPhoneNumberUtil_$1
 
 - (JavaIoInputStream *)loadMetadataWithNSString:(NSString *)metadataFileName {
-  return [ComGoogleI18nPhonenumbersPhoneNumberUtil_class_() getResourceAsStream:metadataFileName];
+    JavaLangClassLoader* classLoader = [[JavaLangClassLoader alloc] init];
+    JavaIoInputStream* stream = [classLoader  getResourceAsStreamWithNSString:metadataFileName];
+    return  stream;
+  // return [ComGoogleI18nPhonenumbersPhoneNumberUtil_class_() getResourceAsStream:metadataFileName];
 }
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
