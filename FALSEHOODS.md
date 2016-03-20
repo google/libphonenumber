@@ -118,3 +118,18 @@ surprising how many false assumptions programmers continue to make about them.
 
     In Egypt, it is common for phone numbers to be written in native digits.
 
+1.  A given phone number has only one associated phone line. (Corollary: if a
+    call is ongoing with a given phone number, another call cannot be made to
+    or from that number until the first call finishes.)
+
+    In addition to services like call waiting, many phone services (especially
+    for businesses) allow multiple outbound calls from the same phone number.
+
+1.  The area code or country code of a phone number gives some idea of the
+    user's location, time zone, or preferred language.
+
+    For area codes, see <https://xkcd.com/1129/>: mobile phones and number
+    portability make it entirely likely that someone will have an area code
+    from another state or region.  Similarly, international travelers may
+    have a number from another country.  And VoIP services make it possible
+    for users to use a phone number from anywhere in the world.
