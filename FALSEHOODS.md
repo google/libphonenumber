@@ -118,3 +118,9 @@ surprising how many false assumptions programmers continue to make about them.
 
     In Egypt, it is common for phone numbers to be written in native digits.
 
+1.  **The leading zero in domestic numbers can always be discarded when dialing
+    internationally.**
+
+    In Italy, since 1998, the prefix was "fixed" onto the phone numbers, so
+    (01) 2345 became 012345 and should be dialed (internationally) as
+    +39012345 (including the leading zero.
