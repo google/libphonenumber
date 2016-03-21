@@ -31,7 +31,7 @@ http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
 Let's say you have a string representing a phone number from Switzerland. This is how you parse/normalize it into a ` PhoneNumber ` object:
 
 ```java
-String swissNumberStr = "044 668 18 00"
+String swissNumberStr = "044 668 18 00";
 PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 try {
   PhoneNumber swissNumberProto = phoneUtil.parse(swissNumberStr, "CH");
