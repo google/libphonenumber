@@ -1,3 +1,11 @@
+Mar 21, 2016: libphonenumber-7.2.8
+Metadata changes:
+ - Updated phone metadata for region code(s): CL, CN, FO, KE, SE, SO
+ - Updated short number metadata for region code(s): FO
+ - Updated geocoding data for country calling code(s): 86 (en, zh)
+ - Updated carrier data for country calling code(s):
+   86 (en), 252 (en), 254 (en)
+
 Mar 09, 2016: libphonenumber-7.2.7
 Code changes:
  - Update nationalPrefixOptionalWhenFormatting documentation.

@@ -339,7 +339,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         // break two numbers without spaces, and we haven't seen many instances
         // of it used within a number.
         regexp_factory_->CreateRegExp(
-            "[\xE2\x80\x92-\x2D\xE2\x80\x95\xEF\xBC\x8D]" /* "‒-―－" */
+            "[\xE2\x80\x92-\xE2\x80\x95\xEF\xBC\x8D]" /* "‒-―－" */
             "\\p{Z}*(.+)"));
     inner_matches_->push_back(
         // Breaks on a full stop - e.g. "12345. 332-445-1234 is my number."
