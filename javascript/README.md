@@ -14,9 +14,9 @@ How to setup:
 
 * `git clone https://github.com/google/closure-compiler.git`
 
-* `svn checkout http://closure-linter.googlecode.com/svn/trunk/ ~/src/closure-linter`
+* `git clone https://github.com/google/closure-linter.git`
 
-* `svn checkout http://python-gflags.googlecode.com/svn/trunk/ ~/src/python-gflags`
+* `git clone https://github.com/google/python-gflags.git`
 
 If you don't checkout the dependencies next to libphonenumber:
 
