@@ -1,1 +1,3 @@
-
+Code changes:
+ - Added java/pending_code_changes.txt for contributors to track code changes
+   between releases.
