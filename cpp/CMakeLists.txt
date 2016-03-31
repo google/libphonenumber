@@ -14,7 +14,7 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 3.1)
+cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 7)
@@ -126,6 +126,7 @@ find_required_program (JAVA java
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
+  set (CMAKE_MACOSX_RPATH "OFF")
   set (CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS
     "${CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS} -undefined dynamic_lookup")
 endif ()

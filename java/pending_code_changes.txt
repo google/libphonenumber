@@ -1,3 +1,5 @@
 Code changes:
  - Added java/pending_code_changes.txt for contributors to track code changes
    between releases.
+ - Reduced minimum required version of cmake to 2.8.
+ - Added cmake installation instructions for Mac.
