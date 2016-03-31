@@ -1,3 +1,6 @@
 Code changes:
  - Added java/pending_code_changes.txt for contributors to track code changes
    between releases.
+ - Added getExampleNumberForType that doesn't take in a region, and
+   getInvalidExampleNumber
+ - Improvements to javadoc for parse method
