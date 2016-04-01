@@ -35,7 +35,8 @@ Quickstart:
   - In recent Debian-based distributions, it should be sufficent to run:
     $ sudo apt-get install \
       cmake cmake-curses-gui libprotobuf-dev libgtest-dev libre2-dev \
-      libicu-dev libboost-dev libboost-thread-dev libboost-system-dev
+      libicu-dev libboost-dev libboost-thread-dev libboost-system-dev \
+      protobuf-compiler
 
 If any of these packages fails to install correctly, follow the instructions
 in the appropriate section below.
@@ -56,7 +57,7 @@ Requirements:
     recent Debian-based GNU/Linux distributions).
 
     You can check which version is available:
-    $ apt-cache show libprotobuf-dev 
+    $ apt-cache show libprotobuf-dev
     Package: libprotobuf-dev
     Source: protobuf
     Version: 2.5.0-9ubuntu1   <-- This must be >= 2.4.0
@@ -138,6 +139,63 @@ Building and testing the library
   $ make
   $ ./libphonenumber_test
 
+
+Manually installing the library on Mac
+--------------------------------------
+
+You can easily install dependencies on Mac using a package manager. In these
+instructions we use Homebrew (http://brew.sh).
+
+Install Homebrew package manager and use it to install dependencies:
+  $ /usr/bin/ruby -e "$(curl -fsSL \
+    https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  $ brew install boost cmake icu4c pkg-config protobuf wget
+
+See https://github.com/Homebrew/homebrew/issues/14099 - homebrew does not have
+gtest. We don't need to install gtest, we only copy sources. For example:
+  $ mkdir ~/googletest_clone
+  $ cd ~/googletest_clone
+  $ git clone https://github.com/google/googletest.git
+
+Get the libphonenumber source. For example:
+  $ mkdir ~/libphonenumber_clone
+  $ cd ~/libphonenumber_clone
+  $ git clone https://github.com/googlei18n/libphonenumber.git
+
+Build and test the library:
+  $ cd libphonenumber/cpp
+  $ mkdir build
+  $ cd build
+  Replace XXX in the commands below with the appropriate version number:
+  $ cmake \
+    -DGTEST_SOURCE_DIR=~/googletest_clone/googletest/googletest/ \
+    -DGTEST_INCLUDE_DIR=~/googletest_clone/googletest/googletest/include/ \
+    -DICU_UC_INCLUDE_DIR=/usr/local/Cellar/icu4c/XXX/include/ \
+    -DICU_UC_LIB=/usr/local/Cellar/icu4c/XXX/lib/libicuuc.dylib \
+    -DICU_I18N_INCLUDE_DIR=/usr/local/Cellar/icu4c/XXX/include/ \
+    -DICU_I18N_LIB=/usr/local/Cellar/icu4c/XXX/lib/libicui18n.dylib \
+    -DUSE_STD_MAP=ON \
+    ..
+  $ make
+  $ ./libphonenumber_test
+
+Optional: Deleting & uninstalling everything again:
+  $ cd
+  $ rm -rf ~/libphonenumber_clone ~/googletest_clone
+
+  openssl is a dependency of wget and installed with it by Homebrew. If you had
+  openssl before installing wget don't uninstall here.
+  $ brew uninstall boost cmake icu4c openssl pkg-config protobuf wget
+
+  $ /usr/bin/ruby -e "$(curl -fsSL \
+    https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+
+  Homebrew will have changed permissions at installation. See output of previous
+  command for how to change them back, for example:
+  $ sudo chmod 0755 /usr/local
+  $ sudo chgrp wheel /usr/local
+
+
 Troubleshooting CMake via ccmake
 --------------------------------
   Follow these instructions if the build steps above don't work for you.
@@ -202,6 +260,7 @@ Troubleshooting CMake via ccmake
     $ cmake ..
     $ make
 
+
 Building the library on Windows (Visual Studio)
 -----------------------------------------------
 The library was tested with Visual Studio 2010.
@@ -263,6 +322,7 @@ As a result the library's headers and binaries should have been installed to
 C:/Program Files/libphonenumber/.
 Note that this path can be set by overriding the CMAKE_INSTALL_PREFIX variable
 with cmake-gui.
+
 
 Supported build parameters
 --------------------------
