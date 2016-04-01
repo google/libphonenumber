@@ -372,6 +372,25 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
   EXPECT_FALSE(phone_util_.GetExampleNumber(RegionCode::UN001(), &test_number));
 }
 
+TEST_F(PhoneNumberUtilTest, GetInvalidExampleNumber) {
+  // RegionCode 001 is reserved for supporting non-geographical country calling
+  // codes. We don't support getting an invalid example number for it with
+  // GetInvalidExampleNumber.
+  PhoneNumber test_number;
+  EXPECT_FALSE(phone_util_.GetInvalidExampleNumber(RegionCode::UN001(),
+                                                   &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+  EXPECT_FALSE(phone_util_.GetInvalidExampleNumber(RegionCode::CS(),
+                                                   &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  EXPECT_TRUE(phone_util_.GetInvalidExampleNumber(RegionCode::US(),
+                                                  &test_number));
+  // At least the country calling code should be set correctly.
+  EXPECT_EQ(1, test_number.country_code());
+  EXPECT_NE(0, test_number.national_number());
+}
+
 TEST_F(PhoneNumberUtilTest, GetExampleNumberForNonGeoEntity) {
   PhoneNumber toll_free_number;
   toll_free_number.set_country_code(800);
@@ -388,6 +407,30 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumberForNonGeoEntity) {
   success = phone_util_.GetExampleNumberForNonGeoEntity(979 , &test_number);
   EXPECT_TRUE(success);
   EXPECT_EQ(universal_premium_rate, test_number);
+}
+
+TEST_F(PhoneNumberUtilTest, GetExampleNumberWithoutRegion) {
+  // In our test metadata we don't cover all types: in our real metadata, we do.
+  PhoneNumber test_number;
+  bool success = phone_util_.GetExampleNumberForType(
+      PhoneNumberUtil::FIXED_LINE,
+      &test_number);
+  // We test that the call to get an example number succeeded, and that the
+  // number passed in was modified.
+  EXPECT_TRUE(success);
+  EXPECT_NE(PhoneNumber::default_instance(), test_number);
+  test_number.Clear();
+
+  success = phone_util_.GetExampleNumberForType(PhoneNumberUtil::MOBILE,
+                                                &test_number);
+  EXPECT_TRUE(success);
+  EXPECT_NE(PhoneNumber::default_instance(), test_number);
+  test_number.Clear();
+
+  success = phone_util_.GetExampleNumberForType(PhoneNumberUtil::PREMIUM_RATE,
+                                                &test_number);
+  EXPECT_TRUE(success);
+  EXPECT_NE(PhoneNumber::default_instance(), test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatUSNumber) {
@@ -2363,7 +2406,7 @@ TEST_F(PhoneNumberUtilTest, ConvertAlphaCharactersInNumber) {
 
   // Try with some non-ASCII characters.
   input.assign("1\xE3\x80\x80\xEF\xBC\x88" "800) ABC-DEF"
-               /* "1　（800) ABCD-DEF" */);
+               /* "1　（800) ABC-DEF" */);
   static const string kExpectedFullwidthOutput =
       "1\xE3\x80\x80\xEF\xBC\x88" "800) 222-333" /* "1　（800) 222-333" */;
   phone_util_.ConvertAlphaCharactersInNumber(&input);
@@ -3184,6 +3227,7 @@ TEST_F(PhoneNumberUtilTest, ParseWithInternationalPrefixes) {
             phone_util_.Parse("\xEF\xBC\x8B" "1 (650) 333-6000",
                               /* "＋1 (650) 333-6000" */
                               RegionCode::SG(), &test_number));
+  EXPECT_EQ(us_number, test_number);
   // Using a soft hyphen U+00AD.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("1 (650) 333" "\xC2\xAD" "-6000",

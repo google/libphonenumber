@@ -1645,6 +1645,59 @@ bool PhoneNumberUtil::GetExampleNumber(const string& region_code,
   return GetExampleNumberForType(region_code, FIXED_LINE, number);
 }
 
+bool PhoneNumberUtil::GetInvalidExampleNumber(const string& region_code,
+                                              PhoneNumber* number) const {
+  DCHECK(number);
+  if (!IsValidRegionCode(region_code)) {
+    LOG(WARNING) << "Invalid or unknown region code (" << region_code
+                 << ") provided.";
+    return false;
+  }
+  // We start off with a valid fixed-line number since every country supports
+  // this. Alternatively we could start with a different number type, since
+  // fixed-line numbers typically have a wide breadth of valid number lengths
+  // and we may have to make it very short before we get an invalid number.
+  const PhoneMetadata* region_metadata = GetMetadataForRegion(region_code);
+  const PhoneNumberDesc* desc =
+      GetNumberDescByType(*region_metadata, FIXED_LINE);
+  if (!desc->has_example_number()) {
+    // This shouldn't happen - we have a test for this.
+    return false;
+  }
+  const string& example_number = desc->example_number();
+  // Try and make the number invalid. We do this by changing the length. We try
+  // reducing the length of the number, since currently no region has a number
+  // that is the same length as kMinLengthForNsn. This is probably quicker than
+  // making the number longer, which is another alternative. We could also use
+  // the possible number pattern to extract the possible lengths of the number
+  // to make this faster, but this method is only for unit-testing so simplicity
+  // is preferred to performance.
+  // We don't want to return a number that can't be parsed, so we check the
+  // number is long enough. We try all possible lengths because phone number
+  // plans often have overlapping prefixes so the number 123456 might be valid
+  // as a fixed-line number, and 12345 as a mobile number. It would be faster to
+  // loop in a different order, but we prefer numbers that look closer to real
+  // numbers (and it gives us a variety of different lengths for the resulting
+  // phone numbers - otherwise they would all be kMinLengthForNsn digits long.)
+  for (size_t phone_number_length = example_number.length() - 1;
+       phone_number_length >= kMinLengthForNsn;
+       phone_number_length--) {
+    string number_to_try = example_number.substr(0, phone_number_length);
+    PhoneNumber possibly_valid_number;
+    Parse(number_to_try, region_code, &possibly_valid_number);
+    // We don't check the return value since we have already checked the
+    // length, we know example numbers have only valid digits, and we know the
+    // region code is fine.
+    if (!IsValidNumber(possibly_valid_number)) {
+      number->MergeFrom(possibly_valid_number);
+      return true;
+    }
+  }
+  // We have a test to check that this doesn't happen for any of our supported
+  // regions.
+  return false;
+}
+
 // Gets a valid number for the specified region_code and type.  Returns false if
 // the country was unknown or 001 (representing non-geographical regions), or if
 // no number exists.
@@ -1672,6 +1725,45 @@ bool PhoneNumberUtil::GetExampleNumberForType(
   return false;
 }
 
+bool PhoneNumberUtil::GetExampleNumberForType(
+    PhoneNumberUtil::PhoneNumberType type,
+    PhoneNumber* number) const {
+  DCHECK(number);
+  set<string> regions;
+  GetSupportedRegions(&regions);
+  for (set<string>::const_iterator it = regions.begin();
+       it != regions.end(); ++it) {
+    if (GetExampleNumberForType(*it, type, number)) {
+      return true;
+    }
+  }
+  // If there wasn't an example number for a region, try the non-geographical
+  // entities.
+  set<int> global_network_calling_codes;
+  GetSupportedGlobalNetworkCallingCodes(&global_network_calling_codes);
+  for (set<int>::const_iterator it = global_network_calling_codes.begin();
+       it != global_network_calling_codes.end(); ++it) {
+    int country_calling_code = *it;
+    const PhoneMetadata* metadata =
+        GetMetadataForNonGeographicalRegion(country_calling_code);
+    const PhoneNumberDesc& desc = metadata->general_desc();
+    if (desc.has_example_number()) {
+      ErrorType success = Parse(StrCat(kPlusSign,
+                                       country_calling_code,
+                                       desc.example_number()),
+                                RegionCode::GetUnknown(), number);
+      if (success == NO_PARSING_ERROR) {
+        return true;
+      } else {
+        LOG(ERROR) << "Error parsing example number ("
+                   << static_cast<int>(success) << ")";
+      }
+    }
+  }
+  // There are no example numbers of this type for any country in the library.
+  return false;
+}
+
 bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
     int country_calling_code, PhoneNumber* number) const {
   DCHECK(number);
@@ -1683,7 +1775,7 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
       ErrorType success = Parse(StrCat(kPlusSign,
                                        SimpleItoa(country_calling_code),
                                        desc.example_number()),
-                                RegionCode::ZZ(), number);
+                                RegionCode::GetUnknown(), number);
       if (success == NO_PARSING_ERROR) {
         return true;
       } else {

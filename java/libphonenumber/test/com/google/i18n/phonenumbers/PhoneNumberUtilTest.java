@@ -330,12 +330,29 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                                                  PhoneNumberUtil.PhoneNumberType.MOBILE));
     // RegionCode 001 is reserved for supporting non-geographical country calling code. We don't
     // support getting an example number for it with this method.
-    assertEquals(null, phoneUtil.getExampleNumber(RegionCode.UN001));
+    assertNull(phoneUtil.getExampleNumber(RegionCode.UN001));
+  }
+
+  public void testGetInvalidExampleNumber() {
+    // RegionCode 001 is reserved for supporting non-geographical country calling codes. We don't
+    // support getting an invalid example number for it with getInvalidExampleNumber.
+    assertNull(phoneUtil.getInvalidExampleNumber(RegionCode.UN001));
+    assertNull(phoneUtil.getInvalidExampleNumber(RegionCode.CS));
+    PhoneNumber usInvalidNumber = phoneUtil.getInvalidExampleNumber(RegionCode.US);
+    assertEquals(1, usInvalidNumber.getCountryCode());
+    assertFalse(usInvalidNumber.getNationalNumber() == 0);
   }
 
   public void testGetExampleNumberForNonGeoEntity() {
     assertEquals(INTERNATIONAL_TOLL_FREE, phoneUtil.getExampleNumberForNonGeoEntity(800));
     assertEquals(UNIVERSAL_PREMIUM_RATE, phoneUtil.getExampleNumberForNonGeoEntity(979));
+  }
+
+  public void testGetExampleNumberWithoutRegion() {
+    // In our test metadata we don't cover all types: in our real metadata, we do.
+    assertNotNull(phoneUtil.getExampleNumberForType(PhoneNumberUtil.PhoneNumberType.FIXED_LINE));
+    assertNotNull(phoneUtil.getExampleNumberForType(PhoneNumberUtil.PhoneNumberType.MOBILE));
+    assertNotNull(phoneUtil.getExampleNumberForType(PhoneNumberUtil.PhoneNumberType.PREMIUM_RATE));
   }
 
   public void testConvertAlphaCharactersInNumber() {
