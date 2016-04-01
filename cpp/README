@@ -166,7 +166,7 @@ Build and test the library:
   $ cd libphonenumber/cpp
   $ mkdir build
   $ cd build
-  Replace XXX with the appropriate version number:
+  Replace XXX in the commands below with the appropriate version number:
   $ cmake \
     -DGTEST_SOURCE_DIR=~/googletest_clone/googletest/googletest/ \
     -DGTEST_INCLUDE_DIR=~/googletest_clone/googletest/googletest/include/ \
