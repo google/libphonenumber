@@ -35,7 +35,8 @@ Quickstart:
   - In recent Debian-based distributions, it should be sufficent to run:
     $ sudo apt-get install \
       cmake cmake-curses-gui libprotobuf-dev libgtest-dev libre2-dev \
-      libicu-dev libboost-dev libboost-thread-dev libboost-system-dev
+      libicu-dev libboost-dev libboost-thread-dev libboost-system-dev \
+      protobuf-compiler
 
 If any of these packages fails to install correctly, follow the instructions
 in the appropriate section below.
