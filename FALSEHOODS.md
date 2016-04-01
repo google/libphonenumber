@@ -5,18 +5,6 @@
 Given how ubiquitous phone numbers are and how long they've been around, it's
 surprising how many false assumptions programmers continue to make about them.
 
-1.  **Phone numbers that are valid today will always be valid. Phone numbers of
-    a certain type today (e.g., mobile) will never be reassigned to another
-    type.**
-
-    A phone number which connects today may be disconnected tomorrow. A number
-    which is free to call today may cost money to call tomorrow. The phone
-    company may decide to expand the range of available phone numbers by
-    inserting a digit into an existing number.
-
-    **Tip:** Don’t store properties for a phone number such as validity or
-    type. Check this information again from the library when you need it.
-
 1.  **A phone number uniquely identifies an individual**
 
     It wasn't even that long ago that mobile phones didn't exist, and it was
@@ -32,6 +20,18 @@ surprising how many false assumptions programmers continue to make about them.
 
     Old phone numbers are recycled and get reassigned to other people.
 
+1.  **Phone numbers that are valid today will always be valid. Phone numbers of
+    a certain type today (e.g., mobile) will never be reassigned to another
+    type.**
+
+    A phone number which connects today may be disconnected tomorrow. A number
+    which is free to call today may cost money to call tomorrow. The phone
+    company may decide to expand the range of available phone numbers by
+    inserting a digit into an existing number.
+
+    **Tip:** Don’t store properties for a phone number such as validity or
+    type. Check this information again from the library when you need it.
+
 1.  **Each country calling code corresponds to exactly one country**
 
     The USA, Canada, and several Caribbean islands share the country calling
@@ -44,8 +44,8 @@ surprising how many false assumptions programmers continue to make about them.
     country calling code for Serbia (+381), Slovenia (+386), or Monaco (+377),
     depending on where and when one obtained the number.
 
-    **Tip:** Use the phone widget to encourage users to enter their phone number
-    in an international format such that we can understand it.
+    **Tip:** Use a phone widget to encourage users to enter their phone number
+    in an international format such that it can be unambiguously understood.
 
 1.  **A phone number is dialable from anywhere**
 
@@ -101,9 +101,9 @@ surprising how many false assumptions programmers continue to make about them.
 
 1.  **All valid phone numbers follow the ITU specifications**
 
-    ITU says things like "national numbers can not be longer than sixteen
-    digits" but valid numbers in Germany have been assigned that are longer than
-    this.
+    ITU-T specifies that a phone number cannot be longer than fifteen digits,
+    with one to three digits reserved for the country calling code, but valid
+    numbers in Germany have been assigned that are longer than this.
 
 1.  **All valid phone numbers belong to a country**
 
