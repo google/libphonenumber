@@ -88,6 +88,11 @@ public class PhoneNumberUtil {
   // be the length of the area code plus the length of the mobile token.
   private static final Map<Integer, String> MOBILE_TOKEN_MAPPINGS;
 
+  // Set of country calling codes that have geographically assigned mobile numbers. This may not be
+  // complete; we add calling codes case by case, as we find geographical mobile numbers or hear
+  // from user reports.
+  private static final Set<Integer> GEO_MOBILE_COUNTRIES;
+
   // The PLUS_SIGN signifies the international prefix.
   static final char PLUS_SIGN = '+';
 
@@ -118,6 +123,12 @@ public class PhoneNumberUtil {
     mobileTokenMap.put(52, "1");
     mobileTokenMap.put(54, "9");
     MOBILE_TOKEN_MAPPINGS = Collections.unmodifiableMap(mobileTokenMap);
+
+    HashSet<Integer> geoMobileCountries = new HashSet<Integer>();
+    geoMobileCountries.add(52);  // Mexico
+    geoMobileCountries.add(54);  // Argentina
+    geoMobileCountries.add(55);  // Brazil
+    GEO_MOBILE_COUNTRIES = Collections.unmodifiableSet(geoMobileCountries);
 
     // Simple ASCII digits map used to populate ALPHA_PHONE_MAPPINGS and
     // ALL_PLUS_NUMBER_GROUPING_SYMBOLS.
@@ -1014,10 +1025,11 @@ public class PhoneNumberUtil {
    */
   boolean isNumberGeographical(PhoneNumber phoneNumber) {
     PhoneNumberType numberType = getNumberType(phoneNumber);
-    // TODO: Include mobile phone numbers from countries like Indonesia, which has some
-    // mobile numbers that are geographical.
-    return numberType == PhoneNumberType.FIXED_LINE ||
-        numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE;
+
+    return numberType == PhoneNumberType.FIXED_LINE
+        || numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
+        || (GEO_MOBILE_COUNTRIES.contains(phoneNumber.getCountryCode())
+            && numberType == PhoneNumberType.MOBILE);
   }
 
   /**

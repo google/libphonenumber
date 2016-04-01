@@ -210,6 +210,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isNumberGeographical(AU_NUMBER));  // Australian fixed line number.
     assertFalse(phoneUtil.isNumberGeographical(INTERNATIONAL_TOLL_FREE));  // International toll
                                                                            // free number.
+    // We test that mobile phone numbers in relevant regions are indeed considered geographical.
+    assertTrue(phoneUtil.isNumberGeographical(AR_MOBILE));  // Argentina, mobile phone number.
+    assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE1));  // Mexico, mobile phone number.
+    assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE2));  // Mexico, another mobile phone number.
   }
 
   public void testIsLeadingZeroPossible() {

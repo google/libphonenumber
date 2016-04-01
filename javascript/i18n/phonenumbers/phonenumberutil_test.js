@@ -323,6 +323,14 @@ function testIsNumberGeographical() {
   assertTrue(phoneUtil.isNumberGeographical(AU_NUMBER));
   // International toll free number.
   assertFalse(phoneUtil.isNumberGeographical(INTERNATIONAL_TOLL_FREE));
+  // We test that mobile phone numbers in relevant regions are indeed considered
+  // geographical.
+  // Argentina, mobile phone number.
+  assertTrue(phoneUtil.isNumberGeographical(AR_MOBILE));
+  // Mexico, mobile phone number.
+  assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE1));
+  // Mexico, another mobile phone number.
+  assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE2));
 }
 
 function testIsLeadingZeroPossible() {

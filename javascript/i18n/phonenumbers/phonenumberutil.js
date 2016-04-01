@@ -176,6 +176,22 @@ i18n.phonenumbers.PhoneNumberUtil.MOBILE_TOKEN_MAPPINGS_ = {
 
 
 /**
+ * Set of country calling codes that have geographically assigned mobile
+ * numbers. This may not be complete; we add calling codes case by case, as we
+ * find geographical mobile numbers or hear from user reports.
+ *
+ * @const
+ * @type {!Array.<number>}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_ = [
+  52,  // Mexico
+  54,  // Argentina
+  55  // Brazil
+];
+
+
+/**
  * The PLUS_SIGN signifies the international prefix.
  *
  * @const
@@ -1371,10 +1387,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
     function(phoneNumber) {
   /** @type {i18n.phonenumbers.PhoneNumberType} */
   var numberType = this.getNumberType(phoneNumber);
-  // TODO: Include mobile phone numbers from countries like Indonesia, which
-  // has some mobile numbers that are geographical.
+
   return numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
-      numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE;
+      numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
+      (goog.array.contains(
+          i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_,
+          phoneNumber.getCountryCodeOrDefault()) &&
+       numberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
 };
 
 
