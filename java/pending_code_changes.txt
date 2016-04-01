@@ -6,3 +6,4 @@ Code changes:
  - Added getExampleNumberForType that doesn't take in a region, and
    getInvalidExampleNumber
  - Improvements to javadoc for parse method
+ - Update isNumberGeographical to return true for geographical mobile numbers.

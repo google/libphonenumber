@@ -386,6 +386,9 @@ class PhoneNumberRegExpsAndMappings {
 
     mobile_token_mappings_.insert(std::make_pair(52, '1'));
     mobile_token_mappings_.insert(std::make_pair(54, '9'));
+    geo_mobile_countries_.insert(52);  // Mexico
+    geo_mobile_countries_.insert(54);  // Argentina
+    geo_mobile_countries_.insert(55);  // Brazil
   }
 
   // Small string helpers since StrCat has a maximum number of arguments. These
@@ -444,6 +447,11 @@ class PhoneNumberRegExpsAndMappings {
   // national destination code, which should be the length of the area code plus
   // the length of the mobile token.
   map<int, char> mobile_token_mappings_;
+
+  // Set of country calling codes that have geographically assigned mobile
+  // numbers. This may not be complete; we add calling codes case by case, as we
+  // find geographical mobile numbers or hear from user reports.
+  set<int> geo_mobile_countries_;
 
   // Pattern that makes it easy to distinguish whether a region has a unique
   // international dialing prefix or not. If a region has a unique international
@@ -530,6 +538,7 @@ class PhoneNumberRegExpsAndMappings {
         alpha_phone_mappings_(),
         all_plus_number_grouping_symbols_(),
         mobile_token_mappings_(),
+        geo_mobile_countries_(),
         unique_international_prefix_(regexp_factory_->CreateRegExp(
             /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
             "[\\d]+(?:[~\xE2\x81\x93\xE2\x88\xBC\xEF\xBD\x9E][\\d]+)?")),
@@ -2140,10 +2149,12 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
 bool PhoneNumberUtil::IsNumberGeographical(
     const PhoneNumber& phone_number) const {
   PhoneNumberType number_type = GetNumberType(phone_number);
-  // TODO: Include mobile phone numbers from countries like
-  // Indonesia, which has some mobile numbers that are geographical.
+
   return number_type == PhoneNumberUtil::FIXED_LINE ||
-      number_type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE;
+      number_type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE ||
+      (reg_exps_->geo_mobile_countries_.find(phone_number.country_code())
+           != reg_exps_->geo_mobile_countries_.end() &&
+       number_type == PhoneNumberUtil::MOBILE);
 }
 
 bool PhoneNumberUtil::IsLeadingZeroPossible(int country_calling_code) const {
