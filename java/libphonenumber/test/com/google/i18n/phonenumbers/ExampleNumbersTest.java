@@ -175,7 +175,21 @@ public class ExampleNumbersTest extends TestCase {
   public void testEveryRegionHasAnExampleNumber() throws Exception {
     for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumber exampleNumber = phoneNumberUtil.getExampleNumber(regionCode);
-      assertNotNull("None found for region " + regionCode, exampleNumber);
+      assertNotNull("No example number found for region " + regionCode, exampleNumber);
+    }
+  }
+
+  public void testEveryRegionHasAnInvalidExampleNumber() throws Exception {
+    for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
+      PhoneNumber exampleNumber = phoneNumberUtil.getInvalidExampleNumber(regionCode);
+      assertNotNull("No invalid example number found for region " + regionCode, exampleNumber);
+    }
+  }
+
+  public void testEveryTypeHasAnExampleNumber() throws Exception {
+    for (PhoneNumberUtil.PhoneNumberType type : PhoneNumberUtil.PhoneNumberType.values()) {
+      PhoneNumber exampleNumber = phoneNumberUtil.getExampleNumberForType(type);
+      assertNotNull("No example number found for type " + type, exampleNumber);
     }
   }
 
@@ -199,10 +213,14 @@ public class ExampleNumbersTest extends TestCase {
       for (ShortNumberInfo.ShortNumberCost cost : ShortNumberInfo.ShortNumberCost.values()) {
         exampleShortNumber = shortNumberInfo.getExampleShortNumberForCost(regionCode, cost);
         if (!exampleShortNumber.equals("")) {
-          if (cost != shortNumberInfo.getExpectedCostForRegion(
-              phoneNumberUtil.parse(exampleShortNumber, regionCode), regionCode)) {
+          phoneNumber = phoneNumberUtil.parse(exampleShortNumber, regionCode);
+          ShortNumberInfo.ShortNumberCost exampleShortNumberCost =
+              shortNumberInfo.getExpectedCostForRegion(phoneNumber, regionCode);
+          if (cost != exampleShortNumberCost) {
             wrongTypeCases.add(phoneNumber);
-            LOGGER.log(Level.SEVERE, "Wrong cost for " + phoneNumber.toString());
+            LOGGER.log(Level.SEVERE, "Wrong cost for " + phoneNumber.toString()
+                + ": got " + exampleShortNumberCost
+                + ", expected: " + cost);
           }
         }
       }

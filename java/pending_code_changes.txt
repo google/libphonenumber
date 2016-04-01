@@ -3,3 +3,6 @@ Code changes:
    between releases.
  - Reduced minimum required version of cmake to 2.8.
  - Added cmake installation instructions for Mac.
+ - Added getExampleNumberForType that doesn't take in a region, and
+   getInvalidExampleNumber
+ - Improvements to javadoc for parse method
