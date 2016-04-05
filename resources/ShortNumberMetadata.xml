@@ -5408,48 +5408,147 @@
     </territory>
 
     <!-- Kenya -->
-    <!-- http://www.cck.go.ke/licensing/numbering/plan.html -->
+    <!-- http://www.ca.go.ke/images/downloads/NUMBERING/Telecommunication%20Numbering%20Plan%20For%20Kenya%20Feb%202016.Pdf -->
     <!-- http://en.wikipedia.org/wiki/+254 -->
     <territory id="KE">
       <generalDesc>
-        <nationalNumberPattern>[1489]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[1-9]\d{2,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <!-- Excluding SMS-only premium-rate short codes for now. -->
         <nationalNumberPattern>
           1(?:
             0(?:
               [079]|
+              1[12]|
               400
             )|
             1(?:
-              [26]|
-              9[0-259]
+              [2456]|
+              9[0-2459]
             )|
-            2[13]|
-            3[01]
+            2[123]|
+            3[01]|
+            5(?:
+              01|
+              1[01]|
+              2[0-2457]|
+              33|
+              55|
+              6(?:
+                29|
+                6[67]
+              )
+            )|
+            65\d{2}|
+            [78]\d|
+            9(?:
+              [02-9]\d{2}|
+              19
+            )
           )|
-          40404|
-          8988|
-          999
+          (?:
+            2[0-79]|
+            3[0-29]|
+            4[0-4]
+          )\d{3}|
+          5(?:
+            [0-2]\d|
+            99
+          )\d{2}|
+          (?:
+            6[2357]|
+            7[0-29]
+          )\d{3}|
+          8(?:
+            [0-9]\d{3}|
+            988
+          )|
+          9(?:
+            09\d{2}|
+            99
+          )
         </nationalNumberPattern>
         <exampleNumber>116</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          15(?:
+             01|
+             2[127]|
+             6(?:
+               29|
+               6[67]
+              )
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
+        <exampleNumber>1501</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>909\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+      </premiumRate>
       <carrierSpecific>
         <!-- https://support.google.com/plus/answer/1304917 -->
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>
-          10400|
-          40404|
-          8988
+          1(?:
+            0400|
+            3[01]|
+            5(?:
+              1[01]|
+              2[25]
+            )|
+            65\d{2}
+          )|
+          (?:
+            2[0-79]|
+            3[0-29]|
+            4[0-4]
+          )\d{3}|
+          5(?:
+            [0-2]\d|
+            99
+          )\d{2}|
+          (?:
+            6[2357]|
+            7[0-29]
+          )\d{3}|
+          8(?:
+            988|
+            [0-9]\d{3}
+          )|
+          909\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+      </carrierSpecific>
+      <carrierServices>
+        <nationalNumberPattern>
+          1(?:
+            00|
+            2[13]|
+            3[01]
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>121</exampleNumber>
+      </carrierServices>
+      <directoryServices>
+        <nationalNumberPattern>
+          1(?:
+            01[12]|
+            9[02-9]\d{2}
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
-      </carrierSpecific>
+        <exampleNumber>1012</exampleNumber>
+      </directoryServices>
       <emergency>
         <!-- http://www.kenyapolice.go.ke/report_a_crime.asp -->
         <nationalNumberPattern>
           112|
+          114|
           999
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
@@ -5458,12 +5557,29 @@
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>
-          10400|
+          1(?:
+            0400|
+            5(?:
+              01|
+              55|
+              6(?:
+                29|
+                6[67]
+              )
+            )|
+            65\d{2}
+          )|
           40404|
-          8988
+          8988|
+          909\d{2}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
       </smsServices>
+      <carrierSelectionCodes>
+        <nationalNumberPattern>1[78]\d</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <exampleNumber>171</exampleNumber>
+      </carrierSelectionCodes>
     </territory>
 
     <!-- Kyrgyzstan -->
