@@ -84,6 +84,7 @@
 25111468|Keria V, Addis Ababa
 25111515|Filwoha II, Addis Ababa
 25111517|Sheraton/DID, Addis Ababa
+25111518|Addis Ababa Region
 25111544|ECA, Addis Ababa
 25111550|Filwoha IV, Addis Ababa
 25111551|Filwoha III, Addis Ababa

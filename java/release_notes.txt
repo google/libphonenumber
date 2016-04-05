@@ -1,3 +1,22 @@
+Apr 05, 2016: libphonenumber-7.3.0
+Code changes:
+ - Added java/pending_code_changes.txt for contributors to track code changes
+   between releases.
+ - Reduced minimum required version of cmake to 2.8.
+ - Added cmake installation instructions for Mac.
+ - Added getExampleNumberForType that doesn't take in a region, and
+   getInvalidExampleNumber
+ - Improvements to javadoc for parse method
+ - Update isNumberGeographical to return true for geographical mobile numbers.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BJ, BZ, CI, ET, GQ, KE, KW, ML, NO, OM, VN
+ - Updated short number metadata for region code(s): KE
+ - Updated geocoding data for country calling code(s):
+   84 (en), 251 (en), 254 (en)
+ - Updated carrier data for country calling code(s):
+   84 (en), 225 (en), 229 (en), 254 (en), 968 (en)
+
 Mar 21, 2016: libphonenumber-7.2.8
 Metadata changes:
  - Updated phone metadata for region code(s): CL, CN, FO, KE, SE, SO

@@ -77,4 +77,12 @@
 84780|Ca Mau province
 84781|Bac Lieu province
 8479|Soc Trang province
-848|Ho Chi Minh City
+8482|Ho Chi Minh City
+8483|Ho Chi Minh City
+8484|Ho Chi Minh City
+8485|Ho Chi Minh City
+84862|Ho Chi Minh City
+84863|Ho Chi Minh City
+84866|Ho Chi Minh City
+84871|Ho Chi Minh City
+84873|Ho Chi Minh City

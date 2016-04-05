@@ -18,25 +18,25 @@
 # best names based on online research.
 
 25420|Nairobi
-25440|Kwale
+25440|Kwale/Ukunda/Msambweni/Lungalunga
 25441|Mombasa/Mariakani/Kilifi
 25442|Malindi/Lamu/Garsen
 25443|Voi/Wundanyi/Mwatate/Taveta
 25444|Machakos/Makueni/Mwingi/Kitui
 25445|Kajiado/Ngong/Loitokitok/Athi River
 25446|Garissa/Hola/Wajir/Mandera
-25450|Naivasha/Narok
-25451|Nakuru
+25450|Naivasha/Narok/Gilgil
+25451|Nakuru/Njoro/Molo
 25452|Kericho/Bomet
 25453|Eldoret/Turbo/Kapsabet/Iten/Kabarnet
 25454|Kitale/Moi's Bridge/Kapenguria/Lodwar
 25455|Bungoma/Busia
 25456|Kakamega/Mbale/Butere/Mumias
-25457|Kisumu/Siaya
+25457|Kisumu/Siaya/Maseno
 25458|Kisii/Kilgoris/Oyugis/Nyamira
 25459|Homabay/Migori
 25460|Muranga/Kerugoya
-25461|Nyeri
+25461|Nyeri/Karatina
 25462|Nanyuki
 25464|Meru/Maua/Chuka
 25465|Nyahururu/Maralal

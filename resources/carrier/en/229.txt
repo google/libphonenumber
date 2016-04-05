@@ -13,7 +13,10 @@
 # limitations under the License.
 
 22961|MTN
+22962|MTN
+22963|Moov
 22964|Moov
+22965|Moov
 22966|MTN
 22967|MTN
 22968|Glo
