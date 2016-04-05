@@ -35,7 +35,7 @@ message PhoneNumber {
 // code", this is included in the National (significant) Number. Although the ITU says the maximum
 // length should be 15, we have found longer numbers in some countries e.g. Germany.
 // Note that the National (significant) Number does not contain the National(trunk) prefix.
-// Obviously, as a uint64, it will never contain any formatting (hypens, spaces, parentheses), nor
+// Obviously, as a uint64, it will never contain any formatting (hyphens, spaces, parentheses), nor
 // any alphanumeric spellings.
   required uint64 national_number = 2;
 
