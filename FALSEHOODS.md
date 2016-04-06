@@ -5,16 +5,23 @@
 Given how ubiquitous phone numbers are and how long they've been around, it's
 surprising how many false assumptions programmers continue to make about them.
 
+1. **An individual has a phone number**
+
+    Some people do not own phones, or do not wish to provide you with their
+    telephone number when asked. Do not require a user to provide a phone number
+    unless it is essential, and whenever possible try and provide a fallback
+    to accommodate these users.
+
+1.  **An individual has only one phone number**
+
+    Obviously, this isn't necessarily true.
+
 1.  **A phone number uniquely identifies an individual**
 
     It wasn't even that long ago that mobile phones didn't exist, and it was
     common for an entire household to share one fixed-line telephone number. In
     some parts of the world, this is still true, and relatives (or even friends)
     share a single phone number.
-
-1.  **An individual has only one phone number**
-
-    Obviously, this isn't necessarily true.
 
 1.  **Phone numbers cannot be re-used**
 
@@ -53,6 +60,22 @@ surprising how many false assumptions programmers continue to make about them.
     from within a subset of countries, such as the international 00800 numbers.
     Some may be dialable only if the caller is a subscriber to a particular
     telecom company.
+
+1. **You can send a text message to any phone number**
+
+    A lot of people still only have a fixed-line telephone, which typically cannot
+    send or receive text messages.
+
+    **Tip:** Whenever possible, try and accommodate these
+    users by calling them with a voice message or voice prompts. Alternatively,
+    if your service requires sending text messages, verify that the number
+    can receive text messages after the user provides it.
+
+1. **Only mobile phones can receive text messages**
+
+    Some service providers support sending and receiving text messages to fixed-line
+    numbers. There are also online services like Skype that can send and receive
+    text messages.
 
 1.  **There are only two ways to dial a phone number: domestically and from
     overseas**
