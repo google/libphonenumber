@@ -5,7 +5,7 @@
 Given how ubiquitous phone numbers are and how long they've been around, it's
 surprising how many false assumptions programmers continue to make about them.
 
-1. **An individual has a phone number**
+1.  **An individual has a phone number**
 
     Some people do not own phones, or do not wish to provide you with their
     telephone number when asked. Do not require a user to provide a phone number
@@ -61,17 +61,17 @@ surprising how many false assumptions programmers continue to make about them.
     Some may be dialable only if the caller is a subscriber to a particular
     telecom company.
 
-1. **You can send a text message to any phone number**
+1.  **You can send a text message to any phone number**
 
     A lot of people still only have a fixed-line telephone, which typically cannot
     send or receive text messages.
 
-    **Tip:** Whenever possible, try and accommodate these
-    users by calling them with a voice message or voice prompts. Alternatively,
-    if your service requires sending text messages, verify that the number
-    can receive text messages after the user provides it.
+    **Tip:** Whenever possible, try and accommodate these users by calling them
+    with a voice message or voice prompts. Alternatively, if your service
+    requires sending text messages, verify that the number can receive text
+    messages after the user provides it.
 
-1. **Only mobile phones can receive text messages**
+1.  **Only mobile phones can receive text messages**
 
     Some service providers support sending and receiving text messages to fixed-line
     numbers. There are also online services like Skype that can send and receive
