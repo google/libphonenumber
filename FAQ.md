@@ -138,6 +138,14 @@ formatting numbers instead.
 
 ## Metadata
 
+### <a name="metadata_definition"></a>What do we mean by "metadata"?
+
+We use the word "metadata" to refer to all information about phone numbering in
+a particular country - what the country code, international and national
+dialling prefixes are, what carrier codes are operational, which phone numbers
+are possible or valid for a particular country, how to optimally format them,
+which prefixes represent a particular geographical area, etc.
+
 ### Where do we get information from to determine if a number range is valid?
 
 In theory, phone numbering plans are all supposed to be administered through the
