@@ -141,3 +141,8 @@ surprising how many false assumptions programmers continue to make about them.
 
     In Egypt, it is common for phone numbers to be written in native digits.
 
+1.  **Phone numbers have only one prefix**
+
+    In the mid-90s in Iceland, phone numbers changed from 5 and 6 digits to 7 digits.
+    During the transition period, phone numbers could be reached by the old area code
+    or the new 7 digit number (a different prefix).
