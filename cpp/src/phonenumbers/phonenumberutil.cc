@@ -1929,7 +1929,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
       MaybeExtractCountryCode(country_metadata, keep_raw_input,
                               &normalized_national_number, &temp_number);
   if (country_code_error != NO_PARSING_ERROR) {
-     const scoped_ptr<RegExpInput> number_string_piece(
+    const scoped_ptr<RegExpInput> number_string_piece(
         reg_exps_->regexp_factory_->CreateInput(national_number));
     if ((country_code_error == INVALID_COUNTRY_CODE_ERROR) &&
         (reg_exps_->plus_chars_pattern_->Consume(number_string_piece.get()))) {
