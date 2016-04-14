@@ -21,7 +21,9 @@ surprising how many false assumptions programmers continue to make about them.
     It wasn't even that long ago that mobile phones didn't exist, and it was
     common for an entire household to share one fixed-line telephone number. In
     some parts of the world, this is still true, and relatives (or even friends)
-    share a single phone number.
+    share a single phone number. Many phone services (especially for businesses)
+    allow multiple inbound calls to or outbound calls from the same phone
+    number.
 
 1.  **Phone numbers cannot be re-used**
 
@@ -135,9 +137,85 @@ surprising how many false assumptions programmers continue to make about them.
 
 1.  **Phone numbers contain only digits**
 
-    In Israel, certain advertising numbers start with a `*`.
+    In Israel, certain advertising numbers start with a `*`. In New Zealand,
+    non-urgent traffic incidents can be reported by calling `*555` from a mobile
+    phone.
 
 1.  **Phone numbers are always written in ASCII**
 
     In Egypt, it is common for phone numbers to be written in native digits.
 
+1.  **Phone numbers have only one prefix (area code or national destination
+    code) at a given time**
+
+    In the mid-90s in Iceland, phone numbers changed from 5 and 6 digits to 7
+    digits. The old system had regional prefixes, but the new one doesn't.
+    During the transition period, phone numbers could be reached by the old area
+    code or the new 7 digit number (a different prefix).  For example, a
+    Reykjavik phone number could be dialed with `nnnnn` and `55nnnnn` inside the
+    region, and `91-nnnnn` and `55nnnnn` from outside.
+
+    **Tip:** During transition periods, make sure that both forms of a number
+    are supported for look-up by phone number. If sending messages/dialling
+    affected numbers, both the new and old prefix may need to be tried.
+    Depending on the type of transition, you may need to contact affected
+    customers and ask them to update their number.
+
+1.  **A leading zero in numbers formatted for domestic usage can always be
+    discarded when dialing from abroad**
+
+    In some countries, people write the national prefix in brackets (typically
+    `(0)`) after the country calling code to indicate that it should be
+    discarded when dialing internationally. In Italy, since 1988, the prefix was
+    "fixed" to the phone numbers, so that `(01) 2345` became `012345` and should
+    be dialed (internationally) as `+39012345` (including the leading zero).
+
+    **Tip:** Use the library to parse and format numbers to handle this
+    correctly for every country.
+
+1.  **The country or area code of a phone number indicates the user's location,
+    place of residence, time-zone, or preferred language**
+
+    There are many reasons for someone to have a phone number issued in a state
+    or region other than where they reside or hold citizenship.
+
+    These include, but are not limited to:
+    *   *Moving within a country*: In countries with phone number portability,
+        you may retain your number when moving, even in some cases if it is a
+        fixed-line number and even if it has an area code. (See
+        [xkcd](https://xkcd.com/1129/) for a US example.)
+    *   *Moving to another country*: Some people keep their mobile phones when
+        they move to another country.
+    *   *Geopolitical turmoil*: Sometimes countries change their borders, cease
+        to exist, or come into existence.
+    *   *Business, family, and friends*: A business may have many customers in a
+        neighbouring country, or a person may have many family and friends
+        there.
+    *   *Wanting cheaper rates*: VoIP is often cheaper than regular calls.
+        People traveling around Europe may get a SIM card from one country and
+        have a roaming plan.
+
+    Note that geographical area codes are assigned in some countries to mobile phones.
+
+    **Tip:** Programmers should not disallow users from signing up with a phone
+    number merely because it belongs to another country. Care should be taken
+    when calling methods such as `isValidNumberForRegion` that this is what's
+    actually intended. If you have a phone input widget, make sure you allow
+    numbers to be entered in international format (i.e., allow the `+` sign) so
+    people can sign up with an international contact number.
+
+1.  **The plus sign in front of phone numbers in international format is
+    optional, or can always be replaced by `00`**
+
+    The plus sign is part of the [E.164
+    format](https://en.wikipedia.org/wiki/E.164) for international telephone
+    numbers. It can be replaced with the [international call
+    prefix](https://en.wikipedia.org/wiki/List_of_international_call_prefixes)
+    when dialing internationally. Note that while `00` is a common international
+    call prefix, this actually varies by country.
+
+    In North America, which has a country calling code of `+1`, it is a common
+    error to drop the `+` in front of the number and write it like
+    `1-555-123-4567`. This is technically incorrect. To call this number from
+    Japan, where the international call prefix is `010`, one may dial either `+1
+    555 123 4567` or `010 1 555 123 4567`.
