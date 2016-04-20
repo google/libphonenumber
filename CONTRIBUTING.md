@@ -35,7 +35,7 @@ If the evidence is not publicly available online, make sure that you have the ri
 * If you are contributing as an individual, sign the [individual CLA](https://cla.developers.google.com/about/google-individual?csw=1).
 * If you are contributing as part of a corporation, sign the [corporate CLA](https://developers.google.com/open-source/cla/corporate?csw=1).
 
-**By signing the CLA, you confirm that you have the rights to share the information with us to make it available under the library's [open source license](https://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
+**By signing the CLA, you confirm that you have the rights to share the information with us, and that we may use, modify, reproduce, publicly display, and distribute the information in accordance with the library's [open source license](https://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
 
 Once you have signed the CLA, you can request to be whitelisted to send emails to the [libphonenumber-supporting-docs](mailto:libphonenumber-supporting-docs@googlegroups.com) mailbox. Put the GitHub issue number in the subject line and attach the supporting documents. Only the core libphonenumber team has access to view emails sent to this mailbox.
 
