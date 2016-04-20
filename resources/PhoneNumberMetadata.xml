@@ -5938,13 +5938,6 @@
           <leadingDigits>800</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- Voicemail access numbers for the carrier Blau. -->
-        <numberFormat pattern="(177)(99)(\d{7,8})">
-          <leadingDigits>177</leadingDigits>
-          <leadingDigits>1779</leadingDigits>
-          <leadingDigits>17799</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="(\d{3})(\d)(\d{4,10})">
           <leadingDigits>
             (?:
@@ -5991,6 +5984,23 @@
         <numberFormat pattern="(138)(\d{4})">
           <leadingDigits>138</leadingDigits>
           <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(15[013-68])(\d{2})(\d{8})">
+          <leadingDigits>15[013-68]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(15[279]\d)(\d{2})(\d{7})">
+          <leadingDigits>15[279]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(1[67]\d)(\d{2})(\d{7,8})">
+          <leadingDigits>
+            1(?:
+              6[023]|
+              7
+            )
+          </leadingDigits>
+          <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
@@ -6055,7 +6065,8 @@
              numbers beginning with 162, 163 and 17 can all be 10 or 11 digits long.
              The ranges 15[056] have been removed from the ITU doc, but information found online
              indicates that they may still be working.
-             -->
+             Note corresponding voicemail prefixes should be updated as well if new prefixes are
+             added to this section. -->
         <nationalNumberPattern>
           1(?:
             5[0-25-9]\d{8}|
@@ -6136,7 +6147,34 @@
         <exampleNumber>18500123456</exampleNumber>
       </uan>
       <voicemail>
-        <nationalNumberPattern>17799\d{7,8}</nationalNumberPattern>
+        <!-- Note corresponding mobile prefixes should be updated as well if new prefixes are added
+             to this section. -->
+        <nationalNumberPattern>
+          1(?:
+            5(?:
+              (?:
+                2\d55|
+                7\d99|
+                9\d33
+              )\d{7}|
+              (?:
+                [034568]00|
+                113
+              )\d{8}
+            )|
+            6(?:
+              013|
+              255|
+              399
+            )\d{7,8}|
+            7(?:
+              [015]13|
+              [234]55|
+              [69]33|
+              [78]99
+            )\d{7,8}
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{12,13}</possibleNumberPattern>
         <exampleNumber>177991234567</exampleNumber>
       </voicemail>
@@ -6167,12 +6205,8 @@
         <exampleNumber>21360003</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>
-          77(?:
-            08|
-            [6-8]\d
-          )\d{4}
-        </nationalNumberPattern>
+        <!-- 77[0-2] added from numbers found online and user reports. -->
+        <nationalNumberPattern>77[0-26-8]\d{5}</nationalNumberPattern>
         <exampleNumber>77831001</exampleNumber>
       </mobile>
     </territory>
@@ -10318,7 +10352,8 @@
               5[5689]|
               6[67]|
               7[0178]|
-              [89][6-9]
+              8[6-9]|
+              9[5-9]
             )|
             6[2-9]\d
           )\d{5}
@@ -10514,8 +10549,7 @@
         <numberFormat pattern="(\d{5})(\d{5})">
           <leadingDigits>
             7(?:
-              [0257]|
-              3[013-57-9]|
+              [02357]|
               4[0-389]|
               6[0-35-9]|
               8[0-79]
@@ -10543,12 +10577,12 @@
                 9[389]
               )|
               3(?:
-                [058]|
+                [05-8]|
                 1[09]|
-                31|
-                48|
-                7[3679]|
-                9[689]
+                2[5-8]|
+                3[17-9]|
+                4[789]|
+                9[01689]
               )|
               4(?:
                 0[1-9]|
@@ -11012,12 +11046,12 @@
                 9[389]
               )|
               3(?:
-                [058]\d|
+                [05-8]\d|
                 1[09]|
-                31|
-                48|
-                7[3679]|
-                9[689]
+                2[5-8]|
+                3[17-9]|
+                4[789]|
+                9[01689]
               )|
               4(?:
                 0[1-9]|
@@ -13386,13 +13420,13 @@
              Mobitel uses 01[1247].
              Cellcard uses 0857 and 061.
              Extra prefixes found online: 088, 097.
-             Allowing 9-digit 12, 31, 38 and 76 numbers based on information from Cambodia Yellow
+             Allowing 9-digit 1[28], 31, 38 and 76 numbers based on information from Cambodia Yellow
              Pages and online search. Allowing 71 based on open-source report and online search. -->
         <nationalNumberPattern>
           (?:
             1(?:
-              [013-9]|
-              2\d?
+              [013-79]|
+              [28]\d?
             )|
             3[18]\d|
             6[016-9]|

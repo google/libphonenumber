@@ -1359,7 +1359,10 @@
             81|
             9[0-5789]
           )|
-          27878|
+          27(?:
+            330|
+            878
+          )|
           40404|
           911
         </nationalNumberPattern>
@@ -1377,6 +1380,11 @@
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <exampleNumber>181</exampleNumber>
       </tollFree>
+      <standardRate>
+        <nationalNumberPattern>27330</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>27330</exampleNumber>
+      </standardRate>
       <carrierServices>
         <!-- We have conducted tests in Brazil which verified that carrier customer service numbers
              are not carrier-specific. -->
@@ -1439,7 +1447,10 @@
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>
-          27878|
+          27(?:
+            330|
+            878
+          )|
           40404
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
