@@ -1,3 +1,10 @@
+Apr 20, 2016: libphonenumber-7.3.1
+Metadata changes:
+ - Updated phone metadata for region code(s): DE, DJ, IL, IN, KH
+ - Updated short number metadata for region code(s): BR
+ - Updated carrier data for country calling code(s):
+   91 (en), 855 (en), 972 (en)
+
 Apr 05, 2016: libphonenumber-7.3.0
 Code changes:
  - Added java/pending_code_changes.txt for contributors to track code changes
