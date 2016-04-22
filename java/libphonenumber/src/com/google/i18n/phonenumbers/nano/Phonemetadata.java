@@ -2,6 +2,8 @@
 
 package com.google.i18n.phonenumbers.nano;
 
+// @@protoc_insertion_point(imports_scope)
+
 @SuppressWarnings("hiding")
 public interface Phonemetadata {
 
@@ -39,6 +41,8 @@ public interface Phonemetadata {
 
     // optional string domestic_carrier_code_formatting_rule = 5;
     public java.lang.String domesticCarrierCodeFormattingRule;
+
+    // @@protoc_insertion_point(class_scope:i18n.phonenumbers.NumberFormat)
 
     public NumberFormat() {
       clear();
@@ -209,6 +213,8 @@ public interface Phonemetadata {
 
     // optional string example_number = 6;
     public java.lang.String exampleNumber;
+
+    // @@protoc_insertion_point(class_scope:i18n.phonenumbers.PhoneNumberDesc)
 
     public PhoneNumberDesc() {
       clear();
@@ -407,6 +413,8 @@ public interface Phonemetadata {
 
     // optional bool mobile_number_portable_region = 32 [default = false];
     public boolean mobileNumberPortableRegion;
+
+    // @@protoc_insertion_point(class_scope:i18n.phonenumbers.PhoneMetadata)
 
     public PhoneMetadata() {
       clear();
@@ -947,6 +955,8 @@ public interface Phonemetadata {
 
     // repeated .i18n.phonenumbers.PhoneMetadata metadata = 1;
     public com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata[] metadata;
+
+    // @@protoc_insertion_point(class_scope:i18n.phonenumbers.PhoneMetadataCollection)
 
     public PhoneMetadataCollection() {
       clear();
