@@ -141,7 +141,7 @@ bool StrToInt(const string& s, int32* n) {
   std::stringstream stream;
   stream << s;
   stream >> *n;
-  return stream;
+  return !stream.fail();
 }
 
 // Converts integer to string, returns true on success.
@@ -149,7 +149,7 @@ bool IntToStr(int32 n, string* s) {
   std::stringstream stream;
   stream << n;
   stream >> *s;
-  return stream;
+  return !stream.fail();
 }
 
 // Parses the prefix descriptions file at path, clears and fills the output
