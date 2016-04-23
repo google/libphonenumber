@@ -38,6 +38,7 @@ endif ()
 include_directories ("src")
 
 add_executable (generate_geocoding_data ${SOURCES})
+target_link_libraries (generate_geocoding_data ${Boost_LIBRARIES})
 
 set (TEST_SOURCES
   "src/cpp-build/generate_geocoding_data.cc"
