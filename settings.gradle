@@ -1,0 +1,20 @@
+rootProject.name = 'libphonenumber-build-parent'
+include ':tools:common-build'
+include ':tools:cpp-build'
+include ':tools:data-tools'
+include ':tools:java-build'
+include ':libphonenumber-parent:libphonenumber'
+include ':libphonenumber-parent:prefixmapper'
+include ':libphonenumber-parent:carrier'
+include ':libphonenumber-parent:geocoder'
+include ':libphonenumber-parent:demo'
+
+project(':tools:common-build').projectDir = "$rootDir/tools/java/common" as File
+project(':tools:cpp-build').projectDir = "$rootDir/tools/java/cpp-build" as File
+project(':tools:data-tools').projectDir = "$rootDir/tools/java/data" as File
+project(':tools:java-build').projectDir = "$rootDir/tools/java/java-build" as File
+project(':libphonenumber-parent:libphonenumber').projectDir = "$rootDir/java/libphonenumber" as File
+project(':libphonenumber-parent:prefixmapper').projectDir = "$rootDir/java/internal/prefixmapper" as File
+project(':libphonenumber-parent:carrier').projectDir = "$rootDir/java/carrier" as File
+project(':libphonenumber-parent:geocoder').projectDir = "$rootDir/java/geocoder" as File
+project(':libphonenumber-parent:demo').projectDir = "$rootDir/java/demo" as File

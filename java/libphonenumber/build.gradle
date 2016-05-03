@@ -1,0 +1,5 @@
+group = 'com.googlecode.libphonenumber'
+description = ''
+dependencies {
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version:'2.6.1'
+}
