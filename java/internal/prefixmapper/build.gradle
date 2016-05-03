@@ -1,4 +1,4 @@
-group = 'com.googlecode.libphonenumber'
+group = 'com.snapchat'
 description = ''
 dependencies {
   compile project(':libphonenumber-parent:libphonenumber')

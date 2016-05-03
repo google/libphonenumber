@@ -1,8 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-group = 'com.googlecode.libphonenumber'
-version = '7.3.2-SNAPSHOT'
+group = 'com.snapchat'
+version = '1.0.0'
 
 description = """"""
 

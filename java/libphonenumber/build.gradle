@@ -1,4 +1,4 @@
-group = 'com.googlecode.libphonenumber'
+group = 'com.snapchat'
 description = ''
 dependencies {
     compile group: 'com.google.protobuf', name: 'protobuf-java', version:'2.6.1'

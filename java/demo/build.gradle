@@ -1,4 +1,4 @@
-group = 'com.googlecode.libphonenumber'
+group = 'com.snapchat'
 description = ''
 dependencies {
     compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'

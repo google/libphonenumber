@@ -1,8 +1,8 @@
 allprojects  {
   apply plugin: 'maven'
 
-  group = 'com.google.i18n.phonenumbers'
-version = '1.0-SNAPSHOT'
+  group = 'com.snapchat'
+version = '1.0.0'
 }
 
 subprojects {
