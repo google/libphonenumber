@@ -461,7 +461,7 @@ TEST_F(ShortNumberInfoTest, OverlappingNANPANumber) {
 
   EXPECT_FALSE(short_info_.IsEmergencyNumber("211", RegionCode::CA()));
   EXPECT_EQ(
-      ShortNumberInfo::UNKNOWN_COST,
+      ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
           ParseNumberForTesting("211", RegionCode::CA()), RegionCode::CA()));
 }
