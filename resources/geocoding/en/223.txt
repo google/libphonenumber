@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2011 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,9 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-25191|Ethio Telecom
-25192|Ethio Telecom
-25193|Ethio Telecom
-25194|Ethio Telecom
-25195|Ethio Telecom
-25196|Ethio Telecom
+# Generated from:
+# https://www.itu.int/oth/T0202000083/en [2016-02-17]
+
+223202|Bamako
+2232070|Bamako
+2232071|Bamako
+2232072|Bamako
+2232073|Bamako
+2232074|Bamako
+2232075|Bamako
+2232076|Bamako
+2232077|Bamako
+2232078|Bamako
+2232126|Koulikoro
+2232127|Koulikoro
+223214|Mopti
+223215|Kayes
+223216|Sikasso
+223218|Gao and Kidal
+223219|Tombouctou
+223442|Bamako
+223443|Bamako
+223449|Bamako

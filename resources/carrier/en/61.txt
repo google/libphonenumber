@@ -52,6 +52,7 @@
 61433|Vodafone
 61434|Optus
 61435|Optus
+61436|Telstra
 61437|Telstra
 61438|Telstra
 61439|Telstra

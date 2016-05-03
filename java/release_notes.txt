@@ -1,3 +1,14 @@
+May 03, 2016: libphonenumber-7.3.2
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BR, ET, IN, KH, ML, NO, SB, TJ, US
+ - Updated short number metadata for region code(s): CA, ML, US
+ - New geocoding data for country calling code(s):
+   55 (pt), 223 (en), 1548 (en), 1743 (en)
+ - Updated geocoding data for country calling code(s): 27 (en), 55 (en)
+ - Updated carrier data for country calling code(s):
+   61 (en), 91 (en), 223 (en), 251 (en), 677 (en), 992 (en)
+
 Apr 20, 2016: libphonenumber-7.3.1
 Metadata changes:
  - Updated phone metadata for region code(s): DE, DJ, IL, IN, KH
