@@ -218,7 +218,18 @@
 917308|Reliance
 917309|Idea
 917310|Vodafone
+9173175|Airtel
+9173176|Airtel
+9173177|Airtel
+9173178|Airtel
+917318|Airtel
 917319|Airtel
+9173200|Airtel
+9173208|Airtel
+9173209|Airtel
+9173210|Airtel
+9173218|Airtel
+9173219|Airtel
 9173258|Airtel
 9173259|Airtel
 9173260|Airtel
@@ -366,6 +377,8 @@
 917408|Vodafone
 917409|Vodafone
 917411|Tata Docomo
+9174140|Vodafone
+9174148|Vodafone
 917415|Tata Docomo
 917416|Tata Docomo
 917417|Tata Docomo
@@ -746,6 +759,12 @@
 917897|AirTel
 917898|AirTel
 917899|Airtel
+917994|Airtel
+917995|Airtel
+917996|Idea
+917997|Idea
+917998|Dishnet
+917999|Videocon
 9180000|Reliance
 918000|Reliance
 9180010|Vodafone
@@ -1794,7 +1813,7 @@
 919104|Telewings
 919105|Loop Mobile
 919106|Tata Docomo
-919107|Loop Mobile
+919107|Dishnet
 919108|Airtel
 919109|Loop Mobile
 919110|Loop Mobile

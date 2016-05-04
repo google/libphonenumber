@@ -329,7 +329,7 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
     assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
         shortInfo.getExpectedCostForRegion(parse("211", RegionCode.US), RegionCode.US));
     assertFalse(shortInfo.isEmergencyNumber("211", RegionCode.CA));
-    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
         shortInfo.getExpectedCostForRegion(parse("211", RegionCode.CA), RegionCode.CA));
   }
 

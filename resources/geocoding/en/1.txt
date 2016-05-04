@@ -16459,6 +16459,7 @@
 1541996|Lincoln City, OR
 1541997|Florence, OR
 1541998|Junction City, OR
+1548|Ontario
 1551|New Jersey
 1559|California
 1559221|Fresno, CA
@@ -25170,6 +25171,7 @@
 1734998|Ann Arbor, MI
 1737|Texas
 1740|Ohio
+1743|North Carolina
 1740223|Marion, OH
 1740246|Thornville, OH
 1740259|Lucasville, OH
