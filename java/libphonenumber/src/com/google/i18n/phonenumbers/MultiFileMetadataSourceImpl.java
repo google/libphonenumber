@@ -18,6 +18,7 @@ package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -111,8 +112,8 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       throw new IllegalStateException("missing metadata: " + fileName);
     }
     try {
-      PhoneMetadataCollection metadataCollection =
-          loadMetadataAndCloseInput(new ObjectInputStream(source));
+      ObjectInputStream in = new ObjectInputStream(source);
+      PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
       PhoneMetadata[] metadataList = metadataCollection.metadata;
       if (metadataList.length == 0) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
@@ -147,8 +148,9 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
 
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.mergeFrom(
-          MetadataManager.convertStreamToByteBuffer(source, MULTI_FILE_BUFFER_SIZE));
+      CodedInputByteBufferNano byteBuffer = MetadataManager.convertStreamToByteBuffer(source,
+          MULTI_FILE_BUFFER_SIZE);
+      metadataCollection.mergeFrom(byteBuffer);
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

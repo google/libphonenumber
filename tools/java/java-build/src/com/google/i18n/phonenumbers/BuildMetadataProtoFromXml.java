@@ -179,15 +179,15 @@ public class BuildMetadataProtoFromXml extends Command {
           if (regionCode.equals("001") || regionCode.isEmpty()) {
             regionCode = Integer.toString(metadata.countryCode);
           }
-          PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
-          outMetadataCollection.metadata = new PhoneMetadata[1];
-          outMetadataCollection.metadata[0] = metadata;
+          PhoneMetadataCollection singleCollection = new PhoneMetadataCollection();
+          singleCollection.metadata = new PhoneMetadata[1];
+          singleCollection.metadata[0] = metadata;
           FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
           ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
           byte[] outputArray = new byte[MULTI_FILE_BUFFER_SIZE];
           CodedOutputByteBufferNano outputBufferNano =
               CodedOutputByteBufferNano.newInstance(outputArray);
-          outMetadataCollection.writeTo(outputBufferNano);
+          singleCollection.writeTo(outputBufferNano);
           out.write(outputArray, 0, outputBufferNano.position());
           out.flush();
           out.close();

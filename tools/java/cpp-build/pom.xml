@@ -42,7 +42,7 @@
             </goals>
             <configuration>
               <sources>
-                <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
+                <!-- Also add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
                 <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
                      the source directories. -->
