@@ -120,7 +120,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "           leadingZeroPossible='true' mobileNumberPortableRegion='true'>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata phoneMetadata =
+    PhoneMetadata.Builder phoneMetadata =
         BuildMetadataFromXml.loadTerritoryTagMetadata("33", territoryElement, "0");
     assertEquals(33, phoneMetadata.getCountryCode());
     assertEquals("2", phoneMetadata.getLeadingDigits());
@@ -139,7 +139,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<territory countryCode='33'/>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata phoneMetadata =
+    PhoneMetadata.Builder phoneMetadata =
         BuildMetadataFromXml.loadTerritoryTagMetadata("33", territoryElement, "");
     assertFalse(phoneMetadata.getMainCountryForCode());
     assertFalse(phoneMetadata.isLeadingZeroPossible());
@@ -150,7 +150,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<territory countryCode='33'/>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata phoneMetadata =
+    PhoneMetadata.Builder phoneMetadata =
         BuildMetadataFromXml.loadTerritoryTagMetadata("33", territoryElement, "00");
     // When unspecified, nationalPrefixForParsing defaults to nationalPrefix.
     assertEquals("00", phoneMetadata.getNationalPrefix());
@@ -171,8 +171,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String intlFormat = "$1 $2";
     String xmlInput = "<numberFormat><intlFormat>" + intlFormat + "</intlFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat nationalFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat nationalFormat = NumberFormat.newBuilder().build();
 
     assertTrue(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                             nationalFormat));
@@ -184,12 +184,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String intlFormat = "$1 $2";
     String xmlInput = "<numberFormat><intlFormat>" + intlFormat + "</intlFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat nationalFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
     nationalFormat.setFormat("$1");
 
     assertTrue(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                            nationalFormat));
+                                                            nationalFormat.build()));
     assertEquals(intlFormat, metadata.getIntlNumberFormat(0).getFormat());
   }
 
@@ -197,12 +197,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<numberFormat><intlFormat/><intlFormat/></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
 
     // Should throw an exception as multiple intlFormats are provided.
     try {
       BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                   new NumberFormat());
+                                                   NumberFormat.newBuilder().build());
       fail();
     } catch (RuntimeException e) {
       // Test passed.
@@ -213,13 +213,13 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<numberFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat nationalFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
     String nationalPattern = "$1 $2 $3";
     nationalFormat.setFormat(nationalPattern);
 
     assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                             nationalFormat));
+                                                             nationalFormat.build()));
     assertEquals(nationalPattern, metadata.getIntlNumberFormat(0).getFormat());
   }
 
@@ -227,13 +227,13 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<numberFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat nationalFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
     nationalFormat.setFormat("$1-$2");
     nationalFormat.setNationalPrefixOptionalWhenFormatting(true);
 
     assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                             nationalFormat));
+                                                             nationalFormat.build()));
     assertTrue(metadata.getIntlNumberFormat(0).isNationalPrefixOptionalWhenFormatting());
   }
 
@@ -243,8 +243,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
     String xmlInput = String.format("<numberFormat><format>%s</format></numberFormat>",
                                     nationalFormat);
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat numberFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder numberFormat = NumberFormat.newBuilder();
     BuildMetadataFromXml.loadNationalFormat(metadata, numberFormatElement, numberFormat);
     assertEquals(nationalFormat, numberFormat.getFormat());
   }
@@ -253,8 +253,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<numberFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat numberFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder numberFormat = NumberFormat.newBuilder();
 
     try {
       BuildMetadataFromXml.loadNationalFormat(metadata, numberFormatElement, numberFormat);
@@ -268,8 +268,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<numberFormat><format/><format/></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat numberFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder numberFormat = NumberFormat.newBuilder();
 
     try {
       BuildMetadataFromXml.loadNationalFormat(metadata, numberFormatElement, numberFormat);
@@ -292,7 +292,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  </availableFormats>" +
         "</territory>";
     Element element = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "", false /* NP not optional */);
     assertEquals("($1)", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
@@ -311,7 +311,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  </availableFormats>" +
         "</territory>";
     Element element = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "", false /* NP not optional */);
     assertEquals("($1)", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
@@ -328,7 +328,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  </availableFormats>" +
         "</territory>";
     Element element = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "", "($1)", false /* NP not optional */);
     assertEquals("($1)", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
@@ -343,7 +343,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  </availableFormats>" +
         "</territory>";
     Element element = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "($1)", false /* NP not optional */);
     assertEquals(0, metadata.intlNumberFormatSize());
@@ -359,7 +359,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  </availableFormats>" +
         "</territory>";
     Element element = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "($1)", false /* NP not optional */);
     assertEquals("$1 $2 $3", metadata.getNumberFormat(0).getFormat());
@@ -370,12 +370,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<numberFormat><intlFormat>NA</intlFormat></numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
-    NumberFormat nationalFormat = new NumberFormat();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    NumberFormat.Builder nationalFormat = NumberFormat.newBuilder();
     nationalFormat.setFormat("$1 $2");
 
     BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
-                                                 nationalFormat);
+                                                 nationalFormat.build());
     assertEquals(0, metadata.intlNumberFormatSize());
   }
 
@@ -396,7 +396,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "    </numberFormat>" +
         "  </availableFormats>";
     Element element = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "", false /* NP not optional */);
     assertEquals(1, metadata.getNumberFormat(0).leadingDigitsPatternSize());
@@ -415,7 +415,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "<leadingDigits>1</leadingDigits><leadingDigits>2</leadingDigits>" +
         "</numberFormat>";
     Element numberFormatElement = parseXmlString(xmlInput);
-    NumberFormat numberFormat = new NumberFormat();
+    NumberFormat.Builder numberFormat = NumberFormat.newBuilder();
     BuildMetadataFromXml.setLeadingDigitsPatterns(numberFormatElement, numberFormat);
 
     assertEquals("1", numberFormat.getLeadingDigitsPattern(0));
@@ -449,9 +449,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
   // Tests processPhoneNumberDescElement().
   public void testProcessPhoneNumberDescElementWithInvalidInput()
       throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     Element territoryElement = parseXmlString("<territory/>");
-    PhoneNumberDesc phoneNumberDesc;
+    PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "invalidType", false);
@@ -461,10 +461,10 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
   public void testProcessPhoneNumberDescElementMergesWithGeneralDesc()
       throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     generalDesc.setPossibleNumberPattern("\\d{6}");
     Element territoryElement = parseXmlString("<territory><fixedLine/></territory>");
-    PhoneNumberDesc phoneNumberDesc;
+    PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "fixedLine", false);
@@ -473,14 +473,14 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
   public void testProcessPhoneNumberDescElementOverridesGeneralDesc()
       throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     generalDesc.setPossibleNumberPattern("\\d{8}");
     String xmlInput =
         "<territory><fixedLine>" +
         "  <possibleNumberPattern>\\d{6}</possibleNumberPattern>" +
         "</fixedLine></territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneNumberDesc phoneNumberDesc;
+    PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "fixedLine", false);
@@ -489,13 +489,13 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
   public void testProcessPhoneNumberDescElementHandlesLiteBuild()
       throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     String xmlInput =
         "<territory><fixedLine>" +
         "  <exampleNumber>01 01 01 01</exampleNumber>" +
         "</fixedLine></territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneNumberDesc phoneNumberDesc;
+    PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "fixedLine", true);
@@ -504,13 +504,13 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
   public void testProcessPhoneNumberDescOutputsExampleNumberByDefault()
       throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     String xmlInput =
         "<territory><fixedLine>" +
         "  <exampleNumber>01 01 01 01</exampleNumber>" +
         "</fixedLine></territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneNumberDesc phoneNumberDesc;
+    PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "fixedLine", false);
@@ -519,13 +519,13 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
   public void testProcessPhoneNumberDescRemovesWhiteSpacesInPatterns()
       throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc generalDesc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     String xmlInput =
         "<territory><fixedLine>" +
         "  <possibleNumberPattern>\t \\d { 6 } </possibleNumberPattern>" +
         "</fixedLine></territory>";
     Element countryElement = parseXmlString(xmlInput);
-    PhoneNumberDesc phoneNumberDesc;
+    PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, countryElement, "fixedLine", false);
@@ -541,7 +541,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  <mobile><nationalNumberPattern>\\d{6}</nationalNumberPattern></mobile>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     // Should set sameMobileAndFixedPattern to true.
     BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
         false /* isShortNumberMetadata */);
@@ -563,7 +563,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  <uan><nationalNumberPattern>\\d{9}</nationalNumberPattern></uan>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
         false /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getFixedLine().getNationalNumberPattern());
@@ -590,7 +590,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         "  </carrierSpecific>" +
         "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
         true /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getTollFree().getNationalNumberPattern());
