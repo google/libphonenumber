@@ -30,16 +30,11 @@
     </testResources>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <excludes>
-            <exclude>**/SingleFileMetadataSourceImpl.class</exclude>
-            <exclude>**/SingleFileMetadataSourceImpl.java</exclude>
-            <exclude>**/SingleFileMetadataSourceImplTest.class</exclude>
-            <exclude>**/SingleFileMetadataSourceImplTest.java</exclude>
-            <exclude>**/SingleFilePhoneNumberMetadataProto</exclude>
-            <exclude>**/SingleFilePhoneNumberMetadataProtoForTesting</exclude>
+            <exclude>com/google/i18n/phonenumbers/SingleFileMetadataSourceImpl.class</exclude>
+            <exclude>com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto</exclude>
           </excludes>
         </configuration>
       </plugin>
