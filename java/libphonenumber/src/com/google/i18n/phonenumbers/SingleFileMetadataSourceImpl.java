@@ -104,8 +104,8 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
     try {
       in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
-      PhoneMetadata[] metadataList = metadataCollection.metadata;
-      if (metadataList.length == 0) {
+      List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
+      if (metadataList.isEmpty()) {
         logger.log(Level.SEVERE, "empty metadata: " + fileName);
         throw new IllegalStateException("empty metadata: " + fileName);
       }

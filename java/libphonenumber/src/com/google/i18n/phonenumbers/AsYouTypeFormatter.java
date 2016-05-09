@@ -176,12 +176,12 @@ public class AsYouTypeFormatter {
   }
 
   private void getAvailableFormats(String leadingDigits) {
-    NumberFormat[] numberFormats =
-        (isCompleteNumber && currentMetadata.intlNumberFormat.length > 0)
-        ? currentMetadata.intlNumberFormat
-        : currentMetadata.numberFormat;
-    boolean nationalPrefixIsUsedByCountry = (currentMetadata.nationalPrefix.length() != 0);
-    for (NumberFormat format : numberFormats) {
+    List<NumberFormat> formatList =
+        (isCompleteNumber && currentMetadata.intlNumberFormatSize() > 0)
+        ? currentMetadata.intlNumberFormats()
+        : currentMetadata.numberFormats();
+    boolean nationalPrefixIsUsedByCountry = !currentMetadata.nationalPrefix.isEmpty();
+    for (NumberFormat format : formatList) {
       if (!nationalPrefixIsUsedByCountry || isCompleteNumber ||
           format.nationalPrefixOptionalWhenFormatting ||
           PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
@@ -203,14 +203,14 @@ public class AsYouTypeFormatter {
     Iterator<NumberFormat> it = possibleFormats.iterator();
     while (it.hasNext()) {
       NumberFormat format = it.next();
-      if (format.leadingDigitsPattern.length == 0) {
+      if (format.leadingDigitsPatternSize() == 0) {
         // Keep everything that isn't restricted by leading digits.
         continue;
       }
       int lastLeadingDigitsPattern =
-          Math.min(indexOfLeadingDigitsPattern, format.leadingDigitsPattern.length - 1);
+          Math.min(indexOfLeadingDigitsPattern, format.leadingDigitsPatternSize() - 1);
       Pattern leadingDigitsPattern = regexCache.getPatternForRegex(
-          format.leadingDigitsPattern[lastLeadingDigitsPattern]);
+          format.getLeadingDigitsPattern(lastLeadingDigitsPattern));
       Matcher m = leadingDigitsPattern.matcher(leadingDigits);
       if (!m.lookingAt()) {
         it.remove();

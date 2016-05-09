@@ -164,7 +164,7 @@ public class BuildMetadataProtoFromXml extends Command {
         metadataCollection.writeExternal(out);
         out.close();
       } else {
-        for (PhoneMetadata metadata : metadataCollection.metadata) {
+        for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
           String regionCode = metadata.id;
           // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
           // country calling codes instead of the region code to form the file name.

@@ -130,7 +130,7 @@ public class BuildMetadataJsonFromXml extends Command {
                                                 BufferedWriter writer) throws IOException {
     writer.write("{\n");
     boolean isFirstTimeInLoop = true;
-    for (PhoneMetadata metadata : metadataCollection.metadata) {
+    for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
       if (isFirstTimeInLoop) {
         isFirstTimeInLoop = false;
       } else {
@@ -186,11 +186,11 @@ public class BuildMetadataJsonFromXml extends Command {
     // required string format = 2;
     jsArrayBuilder.append(format.format);
     // repeated string leading_digits_pattern = 3;
-    int leadingDigitsPatternSize = format.leadingDigitsPattern.length;
+    int leadingDigitsPatternSize = format.leadingDigitsPatternSize();
     if (leadingDigitsPatternSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
-        jsArrayBuilder.append(format.leadingDigitsPattern[i]);
+        jsArrayBuilder.append(format.getLeadingDigitsPattern(i));
       }
       jsArrayBuilder.endArray();
     } else {
@@ -334,22 +334,22 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // repeated NumberFormat number_format = 19;
-    int numberFormatSize = metadata.numberFormat.length;
+    int numberFormatSize = metadata.numberFormatSize();
     if (numberFormatSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < numberFormatSize; i++) {
-        toJsArray(metadata.numberFormat[i], jsArrayBuilder);
+        toJsArray(metadata.getNumberFormat(i), jsArrayBuilder);
       }
       jsArrayBuilder.endArray();
     } else {
       jsArrayBuilder.append(null);
     }
     // repeated NumberFormat intl_number_format = 20;
-    int intlNumberFormatSize = metadata.intlNumberFormat.length;
+    int intlNumberFormatSize = metadata.intlNumberFormatSize();
     if (intlNumberFormatSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < intlNumberFormatSize; i++) {
-        toJsArray(metadata.intlNumberFormat[i], jsArrayBuilder);
+        toJsArray(metadata.getIntlNumberFormat(i), jsArrayBuilder);
       }
       jsArrayBuilder.endArray();
     } else {

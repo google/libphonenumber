@@ -22,9 +22,6 @@
 
 package com.google.i18n.phonenumbers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
@@ -44,7 +41,21 @@ public final class Phonemetadata {
     public String format = "";
 
     // repeated string leading_digits_pattern = 3;
-    public String[] leadingDigitsPattern = new String[0];
+    private java.util.List<String> leadingDigitsPattern_ = new java.util.ArrayList<String>();
+    public java.util.List<String> leadingDigitPatterns() {
+      return leadingDigitsPattern_;
+    }
+    public int leadingDigitsPatternSize() { return leadingDigitsPattern_.size(); }
+    public String getLeadingDigitsPattern(int index) {
+      return leadingDigitsPattern_.get(index);
+    }
+    public NumberFormat addLeadingDigitsPattern(String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      leadingDigitsPattern_.add(value);
+      return this;
+    }
 
     // optional string national_prefix_formatting_rule = 4;
     public String nationalPrefixFormattingRule = "";
@@ -62,10 +73,9 @@ public final class Phonemetadata {
       if (other.format.length() != 0) {
         format = other.format;
       }
-      int leadingDigitsPatternSize = other.leadingDigitsPattern.length;
-      leadingDigitsPattern = new String[leadingDigitsPatternSize];
+      int leadingDigitsPatternSize = other.leadingDigitsPatternSize();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
-        leadingDigitsPattern[i] = other.leadingDigitsPattern[i];
+        addLeadingDigitsPattern(other.getLeadingDigitsPattern(i));
       }
       if (other.nationalPrefixFormattingRule.length() != 0) {
         nationalPrefixFormattingRule = other.nationalPrefixFormattingRule;
@@ -80,10 +90,10 @@ public final class Phonemetadata {
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
       objectOutput.writeUTF(pattern);
       objectOutput.writeUTF(format);
-      int leadingDigitsPatternSize = leadingDigitsPattern.length;
+      int leadingDigitsPatternSize = leadingDigitsPatternSize();
       objectOutput.writeInt(leadingDigitsPatternSize);
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
-        objectOutput.writeUTF(leadingDigitsPattern[i]);
+        objectOutput.writeUTF(leadingDigitsPattern_.get(i));
       }
 
       objectOutput.writeBoolean(nationalPrefixFormattingRule.length() != 0);
@@ -101,9 +111,8 @@ public final class Phonemetadata {
       pattern = objectInput.readUTF();
       format = objectInput.readUTF();
       int leadingDigitsPatternSize = objectInput.readInt();
-      leadingDigitsPattern = new String[leadingDigitsPatternSize];
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
-        leadingDigitsPattern[i] = objectInput.readUTF();
+        leadingDigitsPattern_.add(objectInput.readUTF());
       }
       if (objectInput.readBoolean()) {
         nationalPrefixFormattingRule = objectInput.readUTF();
@@ -259,10 +268,44 @@ public final class Phonemetadata {
     public boolean sameMobileAndFixedLinePattern = false;
 
     // repeated NumberFormat number_format = 19;
-    public NumberFormat[] numberFormat = new NumberFormat[0];
+    private java.util.List<NumberFormat> numberFormat_ = new java.util.ArrayList<NumberFormat>();
+    public java.util.List<NumberFormat> numberFormats() {
+      return numberFormat_;
+    }
+    public int numberFormatSize() { return numberFormat_.size(); }
+    public NumberFormat getNumberFormat(int index) {
+      return numberFormat_.get(index);
+    }
+    public PhoneMetadata addNumberFormat(NumberFormat value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      numberFormat_.add(value);
+      return this;
+    }
 
     // repeated NumberFormat intl_number_format = 20;
-    public NumberFormat[] intlNumberFormat = new NumberFormat[0];
+    private java.util.List<NumberFormat> intlNumberFormat_ =
+        new java.util.ArrayList<NumberFormat>();
+    public java.util.List<NumberFormat> intlNumberFormats() {
+      return intlNumberFormat_;
+    }
+    public int intlNumberFormatSize() { return intlNumberFormat_.size(); }
+    public NumberFormat getIntlNumberFormat(int index) {
+      return intlNumberFormat_.get(index);
+    }
+
+    public PhoneMetadata addIntlNumberFormat(NumberFormat value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      intlNumberFormat_.add(value);
+      return this;
+    }
+    public PhoneMetadata clearIntlNumberFormat() {
+      intlNumberFormat_.clear();
+      return this;
+    }
 
     // optional bool main_country_for_code = 22 [default = false];
     public boolean mainCountryForCode = false;
@@ -373,16 +416,16 @@ public final class Phonemetadata {
 
       objectOutput.writeBoolean(sameMobileAndFixedLinePattern);
 
-      int numberFormatSize = numberFormat.length;
+      int numberFormatSize = numberFormatSize();
       objectOutput.writeInt(numberFormatSize);
       for (int i = 0; i < numberFormatSize; i++) {
-        numberFormat[i].writeExternal(objectOutput);
+        numberFormat_.get(i).writeExternal(objectOutput);
       }
 
-      int intlNumberFormatSize = intlNumberFormat.length;
+      int intlNumberFormatSize = intlNumberFormatSize();
       objectOutput.writeInt(intlNumberFormatSize);
       for (int i = 0; i < intlNumberFormatSize; i++) {
-        intlNumberFormat[i].writeExternal(objectOutput);
+        intlNumberFormat_.get(i).writeExternal(objectOutput);
       }
 
       objectOutput.writeBoolean(mainCountryForCode);
@@ -527,17 +570,17 @@ public final class Phonemetadata {
       sameMobileAndFixedLinePattern = objectInput.readBoolean();
 
       int nationalFormatSize = objectInput.readInt();
-      numberFormat = new NumberFormat[nationalFormatSize];
       for (int i = 0; i < nationalFormatSize; i++) {
-        numberFormat[i] = new NumberFormat();
-        numberFormat[i].readExternal(objectInput);
+        NumberFormat numFormat = new NumberFormat();
+        numFormat.readExternal(objectInput);
+        numberFormat_.add(numFormat);
       }
 
       int intlNumberFormatSize = objectInput.readInt();
-      intlNumberFormat = new NumberFormat[intlNumberFormatSize];
       for (int i = 0; i < intlNumberFormatSize; i++) {
-        intlNumberFormat[i] = new NumberFormat();
-        intlNumberFormat[i].readExternal(objectInput);
+        NumberFormat numFormat = new NumberFormat();
+        numFormat.readExternal(objectInput);
+        intlNumberFormat_.add(numFormat);
       }
 
       mainCountryForCode = objectInput.readBoolean();
@@ -558,41 +601,40 @@ public final class Phonemetadata {
     public PhoneMetadataCollection() {}
 
     // repeated PhoneMetadata metadata = 1;
-    public PhoneMetadata[] metadata = new PhoneMetadata[0];
+    private java.util.List<PhoneMetadata> metadata_ = new java.util.ArrayList<PhoneMetadata>();
+
+    public java.util.List<PhoneMetadata> getMetadataList() {
+      return metadata_;
+    }
+    public int getMetadataCount() { return metadata_.size(); }
 
     public PhoneMetadataCollection addMetadata(PhoneMetadata value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      List<PhoneMetadata> metadataList =
-          new ArrayList<PhoneMetadata>(Arrays.asList(metadata));
-      metadataList.add(value);
-      metadata = metadataList.toArray(new PhoneMetadata[metadataList.size()]);
+      metadata_.add(value);
       return this;
     }
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
-      int size = metadata.length;
+      int size = getMetadataCount();
       objectOutput.writeInt(size);
       for (int i = 0; i < size; i++) {
-        metadata[i].writeExternal(objectOutput);
+        metadata_.get(i).writeExternal(objectOutput);
       }
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
       int size = objectInput.readInt();
       for (int i = 0; i < size; i++) {
-        PhoneMetadata phoneMetadata = new PhoneMetadata();
-        phoneMetadata.readExternal(objectInput);
-        List<PhoneMetadata> metadataList =
-            new ArrayList<PhoneMetadata>(Arrays.asList(metadata));
-        metadataList.add(phoneMetadata);
-        metadata = metadataList.toArray(new PhoneMetadata[metadataList.size()]);
+        PhoneMetadata metadata = new PhoneMetadata();
+        metadata.readExternal(objectInput);
+        metadata_.add(metadata);
       }
     }
 
     public PhoneMetadataCollection clear() {
-      metadata = new PhoneMetadata[0];
+      metadata_.clear();
       return this;
     }
 

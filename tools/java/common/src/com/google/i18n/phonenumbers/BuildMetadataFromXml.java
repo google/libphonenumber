@@ -27,7 +27,6 @@ import org.w3c.dom.NodeList;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -126,7 +125,7 @@ public class BuildMetadataFromXml {
       PhoneMetadataCollection metadataCollection) {
     Map<Integer, List<String>> countryCodeToRegionCodeMap =
         new TreeMap<Integer, List<String>>();
-    for (PhoneMetadata metadata : metadataCollection.metadata) {
+    for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
       String regionCode = metadata.id;
       int countryCode = metadata.countryCode;
       if (countryCodeToRegionCodeMap.containsKey(countryCode)) {
@@ -259,10 +258,7 @@ public class BuildMetadataFromXml {
     }
 
     if (!intlFormat.format.isEmpty()) {
-      List<NumberFormat> formatList =
-          new ArrayList<NumberFormat> (Arrays.asList(metadata.intlNumberFormat));
-      formatList.add(intlFormat);
-      metadata.intlNumberFormat = formatList.toArray(new NumberFormat[formatList.size()]);
+      metadata.addIntlNumberFormat(intlFormat);
     }
     return hasExplicitIntlFormatDefined;
   }
@@ -336,10 +332,7 @@ public class BuildMetadataFromXml {
           format.domesticCarrierCodeFormattingRule = carrierCodeFormattingRule;
         }
         loadNationalFormat(metadata, numberFormatElement, format);
-        List<NumberFormat> formatList =
-            new ArrayList<NumberFormat> (Arrays.asList(metadata.numberFormat));
-        formatList.add(format);
-        metadata.numberFormat = formatList.toArray(new NumberFormat[formatList.size()]);
+        metadata.addNumberFormat(format);
 
         if (loadInternationalFormat(metadata, numberFormatElement, format)) {
           hasExplicitIntlFormatDefined = true;
@@ -350,7 +343,7 @@ public class BuildMetadataFromXml {
       // metadata. To minimize the size of the metadata file, we only keep intlNumberFormats that
       // actually differ in some way to the national formats.
       if (!hasExplicitIntlFormatDefined) {
-        metadata.intlNumberFormat = new NumberFormat[0];
+        metadata.clearIntlNumberFormat();
       }
     }
   }
@@ -360,12 +353,10 @@ public class BuildMetadataFromXml {
     NodeList leadingDigitsPatternNodes = numberFormatElement.getElementsByTagName(LEADING_DIGITS);
     int numOfLeadingDigitsPatterns = leadingDigitsPatternNodes.getLength();
     if (numOfLeadingDigitsPatterns > 0) {
-      List<String> patternList = new ArrayList<String>(Arrays.asList(format.leadingDigitsPattern));
       for (int i = 0; i < numOfLeadingDigitsPatterns; i++) {
-        patternList.add(
+        format.addLeadingDigitsPattern(
             validateRE((leadingDigitsPatternNodes.item(i)).getFirstChild().getNodeValue(), true));
       }
-      format.leadingDigitsPattern = patternList.toArray(new String[patternList.size()]);
     }
   }
 
