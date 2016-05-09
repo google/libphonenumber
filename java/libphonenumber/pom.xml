@@ -30,25 +30,18 @@
     </testResources>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <excludes>
-            <exclude>com/google/i18n/phonenumbers/SingleFileMetadataSourceImpl.class</exclude>
-            <exclude>com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto</exclude>
+            <exclude>**/SingleFileMetadataSourceImpl.class</exclude>
+            <exclude>**/SingleFileMetadataSourceImpl.java</exclude>
+            <exclude>**/SingleFileMetadataSourceImplTest.class</exclude>
+            <exclude>**/SingleFileMetadataSourceImplTest.java</exclude>
+            <exclude>**/SingleFilePhoneNumberMetadataProto</exclude>
+            <exclude>**/SingleFilePhoneNumberMetadataProtoForTesting</exclude>
           </excludes>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.2</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
