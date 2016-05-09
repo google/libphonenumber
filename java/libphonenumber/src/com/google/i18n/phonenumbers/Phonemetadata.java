@@ -35,10 +35,26 @@ public final class Phonemetadata {
     public NumberFormat() {}
 
     // required string pattern = 1;
-    public String pattern = "";
+    private boolean hasPattern;
+    private String pattern_ = "";
+    public boolean hasPattern() { return hasPattern; }
+    public String getPattern() { return pattern_; }
+    public NumberFormat setPattern(String value) {
+      hasPattern = true;
+      pattern_ = value;
+      return this;
+    }
 
     // required string format = 2;
-    public String format = "";
+    private boolean hasFormat;
+    private String format_ = "";
+    public boolean hasFormat() { return hasFormat; }
+    public String getFormat() { return format_; }
+    public NumberFormat setFormat(String value) {
+      hasFormat = true;
+      format_ = value;
+      return this;
+    }
 
     // repeated string leading_digits_pattern = 3;
     private java.util.List<String> leadingDigitsPattern_ = new java.util.ArrayList<String>();
@@ -58,69 +74,102 @@ public final class Phonemetadata {
     }
 
     // optional string national_prefix_formatting_rule = 4;
-    public String nationalPrefixFormattingRule = "";
+    private boolean hasNationalPrefixFormattingRule;
+    private String nationalPrefixFormattingRule_ = "";
+    public boolean hasNationalPrefixFormattingRule() { return hasNationalPrefixFormattingRule; }
+    public String getNationalPrefixFormattingRule() { return nationalPrefixFormattingRule_; }
+    public NumberFormat setNationalPrefixFormattingRule(String value) {
+      hasNationalPrefixFormattingRule = true;
+      nationalPrefixFormattingRule_ = value;
+      return this;
+    }
+    public NumberFormat clearNationalPrefixFormattingRule() {
+      hasNationalPrefixFormattingRule = false;
+      nationalPrefixFormattingRule_ = "";
+      return this;
+    }
 
     // optional bool national_prefix_optional_when_formatting = 6;
-    public boolean nationalPrefixOptionalWhenFormatting = false;
+    private boolean hasNationalPrefixOptionalWhenFormatting;
+    private boolean nationalPrefixOptionalWhenFormatting_ = false;
+    public boolean hasNationalPrefixOptionalWhenFormatting() {
+      return hasNationalPrefixOptionalWhenFormatting; }
+    public boolean isNationalPrefixOptionalWhenFormatting() {
+      return nationalPrefixOptionalWhenFormatting_; }
+    public NumberFormat setNationalPrefixOptionalWhenFormatting(boolean value) {
+      hasNationalPrefixOptionalWhenFormatting = true;
+      nationalPrefixOptionalWhenFormatting_ = value;
+      return this;
+    }
 
     // optional string domestic_carrier_code_formatting_rule = 5;
-    public String domesticCarrierCodeFormattingRule = "";
+    private boolean hasDomesticCarrierCodeFormattingRule;
+    private String domesticCarrierCodeFormattingRule_ = "";
+    public boolean hasDomesticCarrierCodeFormattingRule() {
+      return hasDomesticCarrierCodeFormattingRule; }
+    public String getDomesticCarrierCodeFormattingRule() {
+      return domesticCarrierCodeFormattingRule_; }
+    public NumberFormat setDomesticCarrierCodeFormattingRule(String value) {
+      hasDomesticCarrierCodeFormattingRule = true;
+      domesticCarrierCodeFormattingRule_ = value;
+      return this;
+    }
 
     public NumberFormat mergeFrom(NumberFormat other) {
-      if (other.pattern.length() != 0) {
-        pattern = other.pattern;
+      if (other.hasPattern()) {
+        setPattern(other.getPattern());
       }
-      if (other.format.length() != 0) {
-        format = other.format;
+      if (other.hasFormat()) {
+        setFormat(other.getFormat());
       }
       int leadingDigitsPatternSize = other.leadingDigitsPatternSize();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
         addLeadingDigitsPattern(other.getLeadingDigitsPattern(i));
       }
-      if (other.nationalPrefixFormattingRule.length() != 0) {
-        nationalPrefixFormattingRule = other.nationalPrefixFormattingRule;
+      if (other.hasNationalPrefixFormattingRule()) {
+        setNationalPrefixFormattingRule(other.getNationalPrefixFormattingRule());
       }
-      if (other.domesticCarrierCodeFormattingRule.length() != 0) {
-        domesticCarrierCodeFormattingRule = other.domesticCarrierCodeFormattingRule;
+      if (other.hasDomesticCarrierCodeFormattingRule()) {
+        setDomesticCarrierCodeFormattingRule(other.getDomesticCarrierCodeFormattingRule());
       }
-      nationalPrefixOptionalWhenFormatting = other.nationalPrefixOptionalWhenFormatting;
+      setNationalPrefixOptionalWhenFormatting(other.isNationalPrefixOptionalWhenFormatting());
       return this;
     }
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
-      objectOutput.writeUTF(pattern);
-      objectOutput.writeUTF(format);
+      objectOutput.writeUTF(pattern_);
+      objectOutput.writeUTF(format_);
       int leadingDigitsPatternSize = leadingDigitsPatternSize();
       objectOutput.writeInt(leadingDigitsPatternSize);
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
         objectOutput.writeUTF(leadingDigitsPattern_.get(i));
       }
 
-      objectOutput.writeBoolean(nationalPrefixFormattingRule.length() != 0);
-      if (nationalPrefixFormattingRule.length() != 0) {
-        objectOutput.writeUTF(nationalPrefixFormattingRule);
+      objectOutput.writeBoolean(hasNationalPrefixFormattingRule);
+      if (hasNationalPrefixFormattingRule) {
+        objectOutput.writeUTF(nationalPrefixFormattingRule_);
       }
-      objectOutput.writeBoolean(domesticCarrierCodeFormattingRule.length() != 0);
-      if (domesticCarrierCodeFormattingRule.length() != 0) {
-        objectOutput.writeUTF(domesticCarrierCodeFormattingRule);
+      objectOutput.writeBoolean(hasDomesticCarrierCodeFormattingRule);
+      if (hasDomesticCarrierCodeFormattingRule) {
+        objectOutput.writeUTF(domesticCarrierCodeFormattingRule_);
       }
-      objectOutput.writeBoolean(nationalPrefixOptionalWhenFormatting);
+      objectOutput.writeBoolean(nationalPrefixOptionalWhenFormatting_);
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
-      pattern = objectInput.readUTF();
-      format = objectInput.readUTF();
+      setPattern(objectInput.readUTF());
+      setFormat(objectInput.readUTF());
       int leadingDigitsPatternSize = objectInput.readInt();
       for (int i = 0; i < leadingDigitsPatternSize; i++) {
         leadingDigitsPattern_.add(objectInput.readUTF());
       }
       if (objectInput.readBoolean()) {
-        nationalPrefixFormattingRule = objectInput.readUTF();
+        setNationalPrefixFormattingRule(objectInput.readUTF());
       }
       if (objectInput.readBoolean()) {
-        domesticCarrierCodeFormattingRule = objectInput.readUTF();
+        setDomesticCarrierCodeFormattingRule(objectInput.readUTF());
       }
-      nationalPrefixOptionalWhenFormatting = objectInput.readBoolean();
+      setNationalPrefixOptionalWhenFormatting(objectInput.readBoolean());
     }
   }
 
@@ -129,61 +178,85 @@ public final class Phonemetadata {
     public PhoneNumberDesc() {}
 
     // optional string national_number_pattern = 2;
-    public String nationalNumberPattern = "";
+    private boolean hasNationalNumberPattern;
+    private String nationalNumberPattern_ = "";
+    public boolean hasNationalNumberPattern() { return hasNationalNumberPattern; }
+    public String getNationalNumberPattern() { return nationalNumberPattern_; }
+    public PhoneNumberDesc setNationalNumberPattern(String value) {
+      hasNationalNumberPattern = true;
+      nationalNumberPattern_ = value;
+      return this;
+    }
 
     // optional string possible_number_pattern = 3;
-    public String possibleNumberPattern = "";
+    private boolean hasPossibleNumberPattern;
+    private String possibleNumberPattern_ = "";
+    public boolean hasPossibleNumberPattern() { return hasPossibleNumberPattern; }
+    public String getPossibleNumberPattern() { return possibleNumberPattern_; }
+    public PhoneNumberDesc setPossibleNumberPattern(String value) {
+      hasPossibleNumberPattern = true;
+      possibleNumberPattern_ = value;
+      return this;
+    }
 
     // optional string example_number = 6;
-    public String exampleNumber = "";
+    private boolean hasExampleNumber;
+    private String exampleNumber_ = "";
+    public boolean hasExampleNumber() { return hasExampleNumber; }
+    public String getExampleNumber() { return exampleNumber_; }
+    public PhoneNumberDesc setExampleNumber(String value) {
+      hasExampleNumber = true;
+      exampleNumber_ = value;
+      return this;
+    }
 
     public PhoneNumberDesc mergeFrom(PhoneNumberDesc other) {
-      if (other.nationalNumberPattern.length() != 0) {
-        nationalNumberPattern = other.nationalNumberPattern;
+      if (other.hasNationalNumberPattern()) {
+        setNationalNumberPattern(other.getNationalNumberPattern());
       }
-      if (other.possibleNumberPattern.length() != 0) {
-        possibleNumberPattern = other.possibleNumberPattern;
+      if (other.hasPossibleNumberPattern()) {
+        setPossibleNumberPattern(other.getPossibleNumberPattern());
       }
-      if (other.exampleNumber.length() != 0) {
-        exampleNumber = other.exampleNumber;
+      if (other.hasExampleNumber()) {
+        setExampleNumber(other.getExampleNumber());
       }
       return this;
     }
 
     public boolean exactlySameAs(PhoneNumberDesc other) {
-      return nationalNumberPattern.equals(other.nationalNumberPattern) &&
-          possibleNumberPattern.equals(other.possibleNumberPattern) &&
-          exampleNumber.equals(other.exampleNumber);
+      return nationalNumberPattern_.equals(other.nationalNumberPattern_) &&
+          possibleNumberPattern_.equals(other.possibleNumberPattern_) &&
+          exampleNumber_.equals(other.exampleNumber_);
     }
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
-      objectOutput.writeBoolean(nationalNumberPattern.length() != 0);
-      if (nationalNumberPattern.length() != 0) {
-        objectOutput.writeUTF(nationalNumberPattern);
+      objectOutput.writeBoolean(hasNationalNumberPattern);
+      if (hasNationalNumberPattern) {
+        objectOutput.writeUTF(nationalNumberPattern_);
       }
 
-      objectOutput.writeBoolean(possibleNumberPattern.length() != 0);
-      if (possibleNumberPattern.length() != 0) {
-        objectOutput.writeUTF(possibleNumberPattern);
+      objectOutput.writeBoolean(hasPossibleNumberPattern);
+      if (hasPossibleNumberPattern) {
+        objectOutput.writeUTF(possibleNumberPattern_);
       }
 
-      objectOutput.writeBoolean(exampleNumber.length() != 0);
-      if (exampleNumber.length() != 0) {
-        objectOutput.writeUTF(exampleNumber);
+      objectOutput.writeBoolean(hasExampleNumber);
+      if (hasExampleNumber) {
+        objectOutput.writeUTF(exampleNumber_);
       }
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
       if (objectInput.readBoolean()) {
-        nationalNumberPattern = objectInput.readUTF();
+        setNationalNumberPattern(objectInput.readUTF());
       }
 
       if (objectInput.readBoolean()) {
-        possibleNumberPattern = objectInput.readUTF();
+        setPossibleNumberPattern(objectInput.readUTF());
       }
 
       if (objectInput.readBoolean()) {
-        exampleNumber = objectInput.readUTF();
+        setExampleNumber(objectInput.readUTF());
       }
     }
   }
@@ -193,79 +266,327 @@ public final class Phonemetadata {
     public PhoneMetadata() {}
 
     // optional PhoneNumberDesc general_desc = 1;
-    public PhoneNumberDesc generalDesc = null;
+    private boolean hasGeneralDesc;
+    private PhoneNumberDesc generalDesc_ = null;
+    public boolean hasGeneralDesc() { return hasGeneralDesc; }
+    public PhoneNumberDesc getGeneralDesc() { return generalDesc_; }
+    public PhoneMetadata setGeneralDesc(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasGeneralDesc = true;
+      generalDesc_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc fixed_line = 2;
-    public PhoneNumberDesc fixedLine = null;
+    private boolean hasFixedLine;
+    private PhoneNumberDesc fixedLine_ = null;
+    public boolean hasFixedLine() { return hasFixedLine; }
+    public PhoneNumberDesc getFixedLine() { return fixedLine_; }
+    public PhoneMetadata setFixedLine(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasFixedLine = true;
+      fixedLine_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc mobile = 3;
-    public PhoneNumberDesc mobile = null;
+    private boolean hasMobile;
+    private PhoneNumberDesc mobile_ = null;
+    public boolean hasMobile() { return hasMobile; }
+    public PhoneNumberDesc getMobile() { return mobile_; }
+    public PhoneMetadata setMobile(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasMobile = true;
+      mobile_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc toll_free = 4;
-    public PhoneNumberDesc tollFree = null;
+    private boolean hasTollFree;
+    private PhoneNumberDesc tollFree_ = null;
+    public boolean hasTollFree() { return hasTollFree; }
+    public PhoneNumberDesc getTollFree() { return tollFree_; }
+    public PhoneMetadata setTollFree(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasTollFree = true;
+      tollFree_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc premium_rate = 5;
-    public PhoneNumberDesc premiumRate = null;
+    private boolean hasPremiumRate;
+    private PhoneNumberDesc premiumRate_ = null;
+    public boolean hasPremiumRate() { return hasPremiumRate; }
+    public PhoneNumberDesc getPremiumRate() { return premiumRate_; }
+    public PhoneMetadata setPremiumRate(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasPremiumRate = true;
+      premiumRate_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc shared_cost = 6;
-    public PhoneNumberDesc sharedCost = null;
+    private boolean hasSharedCost;
+    private PhoneNumberDesc sharedCost_ = null;
+    public boolean hasSharedCost() { return hasSharedCost; }
+    public PhoneNumberDesc getSharedCost() { return sharedCost_; }
+    public PhoneMetadata setSharedCost(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasSharedCost = true;
+      sharedCost_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc personal_number = 7;
-    public PhoneNumberDesc personalNumber = null;
+    private boolean hasPersonalNumber;
+    private PhoneNumberDesc personalNumber_ = null;
+    public boolean hasPersonalNumber() { return hasPersonalNumber; }
+    public PhoneNumberDesc getPersonalNumber() { return personalNumber_; }
+    public PhoneMetadata setPersonalNumber(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasPersonalNumber = true;
+      personalNumber_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc voip = 8;
-    public PhoneNumberDesc voip = null;
+    private boolean hasVoip;
+    private PhoneNumberDesc voip_ = null;
+    public boolean hasVoip() { return hasVoip; }
+    public PhoneNumberDesc getVoip() { return voip_; }
+    public PhoneMetadata setVoip(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasVoip = true;
+      voip_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc pager = 21;
-    public PhoneNumberDesc pager = null;
+    private boolean hasPager;
+    private PhoneNumberDesc pager_ = null;
+    public boolean hasPager() { return hasPager; }
+    public PhoneNumberDesc getPager() { return pager_; }
+    public PhoneMetadata setPager(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasPager = true;
+      pager_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc uan = 25;
-    public PhoneNumberDesc uan = null;
+    private boolean hasUan;
+    private PhoneNumberDesc uan_ = null;
+    public boolean hasUan() { return hasUan; }
+    public PhoneNumberDesc getUan() { return uan_; }
+    public PhoneMetadata setUan(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasUan = true;
+      uan_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc emergency = 27;
-    public PhoneNumberDesc emergency = null;
+    private boolean hasEmergency;
+    private PhoneNumberDesc emergency_ = null;
+    public boolean hasEmergency() { return hasEmergency; }
+    public PhoneNumberDesc getEmergency() { return emergency_; }
+    public PhoneMetadata setEmergency(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasEmergency = true;
+      emergency_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc voicemail = 28;
-    public PhoneNumberDesc voicemail = null;
+    private boolean hasVoicemail;
+    private PhoneNumberDesc voicemail_ = null;
+    public boolean hasVoicemail() { return hasVoicemail; }
+    public PhoneNumberDesc getVoicemail() { return voicemail_; }
+    public PhoneMetadata setVoicemail(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasVoicemail = true;
+      voicemail_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc short_code = 29;
-    public PhoneNumberDesc shortCode = null;
+    private boolean hasShortCode;
+    private PhoneNumberDesc shortCode_ = null;
+    public boolean hasShortCode() { return hasShortCode; }
+    public PhoneNumberDesc getShortCode() { return shortCode_; }
+    public PhoneMetadata setShortCode(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasShortCode = true;
+      shortCode_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc standard_rate = 30;
-    public PhoneNumberDesc standardRate = null;
+    private boolean hasStandardRate;
+    private PhoneNumberDesc standardRate_ = null;
+    public boolean hasStandardRate() { return hasStandardRate; }
+    public PhoneNumberDesc getStandardRate() { return standardRate_; }
+    public PhoneMetadata setStandardRate(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasStandardRate = true;
+      standardRate_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc carrier_specific = 31;
-    public PhoneNumberDesc carrierSpecific = null;
+    private boolean hasCarrierSpecific;
+    private PhoneNumberDesc carrierSpecific_ = null;
+    public boolean hasCarrierSpecific() { return hasCarrierSpecific; }
+    public PhoneNumberDesc getCarrierSpecific() { return carrierSpecific_; }
+    public PhoneMetadata setCarrierSpecific(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasCarrierSpecific = true;
+      carrierSpecific_ = value;
+      return this;
+    }
 
     // optional PhoneNumberDesc noInternationalDialling = 24;
-    public PhoneNumberDesc noInternationalDialling = null;
+    private boolean hasNoInternationalDialling;
+    private PhoneNumberDesc noInternationalDialling_ = null;
+    public boolean hasNoInternationalDialling() { return hasNoInternationalDialling; }
+    public PhoneNumberDesc getNoInternationalDialling() { return noInternationalDialling_; }
+    public PhoneMetadata setNoInternationalDialling(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasNoInternationalDialling = true;
+      noInternationalDialling_ = value;
+      return this;
+    }
 
     // required string id = 9;
-    public String id = "";
+    private boolean hasId;
+    private String id_ = "";
+    public boolean hasId() { return hasId; }
+    public String getId() { return id_; }
+    public PhoneMetadata setId(String value) {
+      hasId = true;
+      id_ = value;
+      return this;
+    }
 
     // optional int32 country_code = 10;
-    public int countryCode = 0;
+    private boolean hasCountryCode;
+    private int countryCode_ = 0;
+    public boolean hasCountryCode() { return hasCountryCode; }
+    public int getCountryCode() { return countryCode_; }
+    public PhoneMetadata setCountryCode(int value) {
+      hasCountryCode = true;
+      countryCode_ = value;
+      return this;
+    }
 
     // optional string international_prefix = 11;
-    public String internationalPrefix = "";
+    private boolean hasInternationalPrefix;
+    private String internationalPrefix_ = "";
+    public boolean hasInternationalPrefix() { return hasInternationalPrefix; }
+    public String getInternationalPrefix() { return internationalPrefix_; }
+    public PhoneMetadata setInternationalPrefix(String value) {
+      hasInternationalPrefix = true;
+      internationalPrefix_ = value;
+      return this;
+    }
 
     // optional string preferred_international_prefix = 17;
-    public String preferredInternationalPrefix = "";
+    private boolean hasPreferredInternationalPrefix;
+    private String preferredInternationalPrefix_ = "";
+    public boolean hasPreferredInternationalPrefix() { return hasPreferredInternationalPrefix; }
+    public String getPreferredInternationalPrefix() { return preferredInternationalPrefix_; }
+    public PhoneMetadata setPreferredInternationalPrefix(String value) {
+      hasPreferredInternationalPrefix = true;
+      preferredInternationalPrefix_ = value;
+      return this;
+    }
 
     // optional string national_prefix = 12;
-    public String nationalPrefix = "";
+    private boolean hasNationalPrefix;
+    private String nationalPrefix_ = "";
+    public boolean hasNationalPrefix() { return hasNationalPrefix; }
+    public String getNationalPrefix() { return nationalPrefix_; }
+    public PhoneMetadata setNationalPrefix(String value) {
+      hasNationalPrefix = true;
+      nationalPrefix_ = value;
+      return this;
+    }
 
     // optional string preferred_extn_prefix = 13;
-    public String preferredExtnPrefix = "";
+    private boolean hasPreferredExtnPrefix;
+    private String preferredExtnPrefix_ = "";
+    public boolean hasPreferredExtnPrefix() { return hasPreferredExtnPrefix; }
+    public String getPreferredExtnPrefix() { return preferredExtnPrefix_; }
+    public PhoneMetadata setPreferredExtnPrefix(String value) {
+      hasPreferredExtnPrefix = true;
+      preferredExtnPrefix_ = value;
+      return this;
+    }
 
     // optional string national_prefix_for_parsing = 15;
-    public String nationalPrefixForParsing = "";
+    private boolean hasNationalPrefixForParsing;
+    private String nationalPrefixForParsing_ = "";
+    public boolean hasNationalPrefixForParsing() { return hasNationalPrefixForParsing; }
+    public String getNationalPrefixForParsing() { return nationalPrefixForParsing_; }
+    public PhoneMetadata setNationalPrefixForParsing(String value) {
+      hasNationalPrefixForParsing = true;
+      nationalPrefixForParsing_ = value;
+      return this;
+    }
 
     // optional string national_prefix_transform_rule = 16;
-    public String nationalPrefixTransformRule = "";
+    private boolean hasNationalPrefixTransformRule;
+    private String nationalPrefixTransformRule_ = "";
+    public boolean hasNationalPrefixTransformRule() { return hasNationalPrefixTransformRule; }
+    public String getNationalPrefixTransformRule() { return nationalPrefixTransformRule_; }
+    public PhoneMetadata setNationalPrefixTransformRule(String value) {
+      hasNationalPrefixTransformRule = true;
+      nationalPrefixTransformRule_ = value;
+      return this;
+    }
 
     // optional bool same_mobile_and_fixed_line_pattern = 18 [default = false];
-    public boolean sameMobileAndFixedLinePattern = false;
+    private boolean hasSameMobileAndFixedLinePattern;
+    private boolean sameMobileAndFixedLinePattern_ = false;
+    public boolean hasSameMobileAndFixedLinePattern() { return hasSameMobileAndFixedLinePattern; }
+    public boolean isSameMobileAndFixedLinePattern() { return sameMobileAndFixedLinePattern_; }
+    public PhoneMetadata setSameMobileAndFixedLinePattern(boolean value) {
+      hasSameMobileAndFixedLinePattern = true;
+      sameMobileAndFixedLinePattern_ = value;
+      return this;
+    }
 
     // repeated NumberFormat number_format = 19;
     private java.util.List<NumberFormat> numberFormat_ = new java.util.ArrayList<NumberFormat>();
@@ -308,113 +629,148 @@ public final class Phonemetadata {
     }
 
     // optional bool main_country_for_code = 22 [default = false];
-    public boolean mainCountryForCode = false;
+    private boolean hasMainCountryForCode;
+    private boolean mainCountryForCode_ = false;
+    public boolean hasMainCountryForCode() { return hasMainCountryForCode; }
+    public boolean isMainCountryForCode() { return mainCountryForCode_; }
+    // Method that lets this class have the same interface as the one generated by Protocol Buffers
+    // which is used by C++ build tools.
+    public boolean getMainCountryForCode() { return mainCountryForCode_; }
+    public PhoneMetadata setMainCountryForCode(boolean value) {
+      hasMainCountryForCode = true;
+      mainCountryForCode_ = value;
+      return this;
+    }
 
     // optional string leading_digits = 23;
-    public String leadingDigits = "";
+    private boolean hasLeadingDigits;
+    private String leadingDigits_ = "";
+    public boolean hasLeadingDigits() { return hasLeadingDigits; }
+    public String getLeadingDigits() { return leadingDigits_; }
+    public PhoneMetadata setLeadingDigits(String value) {
+      hasLeadingDigits = true;
+      leadingDigits_ = value;
+      return this;
+    }
 
     // optional bool leading_zero_possible = 26 [default = false];
-    public boolean leadingZeroPossible = false;
+    private boolean hasLeadingZeroPossible;
+    private boolean leadingZeroPossible_ = false;
+    public boolean hasLeadingZeroPossible() { return hasLeadingZeroPossible; }
+    public boolean isLeadingZeroPossible() { return leadingZeroPossible_; }
+    public PhoneMetadata setLeadingZeroPossible(boolean value) {
+      hasLeadingZeroPossible = true;
+      leadingZeroPossible_ = value;
+      return this;
+    }
 
     // optional bool mobile_number_portable_region = 32 [default = false];
-    public boolean mobileNumberPortableRegion = false;
+    private boolean hasMobileNumberPortableRegion;
+    private boolean mobileNumberPortableRegion_ = false;
+    public boolean hasMobileNumberPortableRegion() { return hasMobileNumberPortableRegion; }
+    public boolean isMobileNumberPortableRegion() { return mobileNumberPortableRegion_; }
+    public PhoneMetadata setMobileNumberPortableRegion(boolean value) {
+      hasMobileNumberPortableRegion = true;
+      mobileNumberPortableRegion_ = value;
+      return this;
+    }
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException {
-      objectOutput.writeBoolean(generalDesc != null);
-      if (generalDesc != null) {
-        generalDesc.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasGeneralDesc);
+      if (hasGeneralDesc) {
+        generalDesc_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(fixedLine != null);
-      if (fixedLine != null) {
-        fixedLine.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasFixedLine);
+      if (hasFixedLine) {
+        fixedLine_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(mobile != null);
-      if (mobile != null) {
-        mobile.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasMobile);
+      if (hasMobile) {
+        mobile_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(tollFree != null);
-      if (tollFree != null) {
-        tollFree.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasTollFree);
+      if (hasTollFree) {
+        tollFree_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(premiumRate != null);
-      if (premiumRate != null) {
-        premiumRate.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasPremiumRate);
+      if (hasPremiumRate) {
+        premiumRate_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(sharedCost != null);
-      if (sharedCost != null) {
-        sharedCost.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasSharedCost);
+      if (hasSharedCost) {
+        sharedCost_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(personalNumber != null);
-      if (personalNumber != null) {
-        personalNumber.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasPersonalNumber);
+      if (hasPersonalNumber) {
+        personalNumber_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(voip != null);
-      if (voip != null) {
-        voip.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasVoip);
+      if (hasVoip) {
+        voip_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(pager != null);
-      if (pager != null) {
-        pager.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasPager);
+      if (hasPager) {
+        pager_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(uan != null);
-      if (uan != null) {
-        uan.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasUan);
+      if (hasUan) {
+        uan_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(emergency != null);
-      if (emergency != null) {
-        emergency.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasEmergency);
+      if (hasEmergency) {
+        emergency_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(voicemail != null);
-      if (voicemail != null) {
-        voicemail.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasVoicemail);
+      if (hasVoicemail) {
+        voicemail_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(shortCode != null);
-      if (shortCode != null) {
-        shortCode.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasShortCode);
+      if (hasShortCode) {
+        shortCode_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(standardRate != null);
-      if (standardRate != null) {
-        standardRate.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasStandardRate);
+      if (hasStandardRate) {
+        standardRate_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(carrierSpecific != null);
-      if (carrierSpecific != null) {
-        carrierSpecific.writeExternal(objectOutput);
+      objectOutput.writeBoolean(hasCarrierSpecific);
+      if (hasCarrierSpecific) {
+        carrierSpecific_.writeExternal(objectOutput);
       }
-      objectOutput.writeBoolean(noInternationalDialling != null);
-      if (noInternationalDialling != null) {
-        noInternationalDialling.writeExternal(objectOutput);
-      }
-
-      objectOutput.writeUTF(id);
-      objectOutput.writeInt(countryCode);
-      objectOutput.writeUTF(internationalPrefix);
-
-      objectOutput.writeBoolean(preferredInternationalPrefix.length() != 0);
-      if (preferredInternationalPrefix.length() != 0) {
-        objectOutput.writeUTF(preferredInternationalPrefix);
+      objectOutput.writeBoolean(hasNoInternationalDialling);
+      if (hasNoInternationalDialling) {
+        noInternationalDialling_.writeExternal(objectOutput);
       }
 
-      objectOutput.writeBoolean(nationalPrefix.length() != 0);
-      if (nationalPrefix.length() != 0) {
-        objectOutput.writeUTF(nationalPrefix);
+      objectOutput.writeUTF(id_);
+      objectOutput.writeInt(countryCode_);
+      objectOutput.writeUTF(internationalPrefix_);
+
+      objectOutput.writeBoolean(hasPreferredInternationalPrefix);
+      if (hasPreferredInternationalPrefix) {
+        objectOutput.writeUTF(preferredInternationalPrefix_);
       }
 
-      objectOutput.writeBoolean(preferredExtnPrefix.length() != 0);
-      if (preferredExtnPrefix.length() != 0) {
-        objectOutput.writeUTF(preferredExtnPrefix);
+      objectOutput.writeBoolean(hasNationalPrefix);
+      if (hasNationalPrefix) {
+        objectOutput.writeUTF(nationalPrefix_);
       }
 
-      objectOutput.writeBoolean(nationalPrefixForParsing.length() != 0);
-      if (nationalPrefixForParsing.length() != 0) {
-        objectOutput.writeUTF(nationalPrefixForParsing);
+      objectOutput.writeBoolean(hasPreferredExtnPrefix);
+      if (hasPreferredExtnPrefix) {
+        objectOutput.writeUTF(preferredExtnPrefix_);
       }
 
-      objectOutput.writeBoolean(nationalPrefixTransformRule.length() != 0);
-      if (nationalPrefixTransformRule.length() != 0) {
-        objectOutput.writeUTF(nationalPrefixTransformRule);
+      objectOutput.writeBoolean(hasNationalPrefixForParsing);
+      if (hasNationalPrefixForParsing) {
+        objectOutput.writeUTF(nationalPrefixForParsing_);
       }
 
-      objectOutput.writeBoolean(sameMobileAndFixedLinePattern);
+      objectOutput.writeBoolean(hasNationalPrefixTransformRule);
+      if (hasNationalPrefixTransformRule) {
+        objectOutput.writeUTF(nationalPrefixTransformRule_);
+      }
+
+      objectOutput.writeBoolean(sameMobileAndFixedLinePattern_);
 
       int numberFormatSize = numberFormatSize();
       objectOutput.writeInt(numberFormatSize);
@@ -428,16 +784,16 @@ public final class Phonemetadata {
         intlNumberFormat_.get(i).writeExternal(objectOutput);
       }
 
-      objectOutput.writeBoolean(mainCountryForCode);
+      objectOutput.writeBoolean(mainCountryForCode_);
 
-      objectOutput.writeBoolean(leadingDigits.length() != 0);
-      if (leadingDigits.length() != 3) {
-        objectOutput.writeUTF(leadingDigits);
+      objectOutput.writeBoolean(hasLeadingDigits);
+      if (hasLeadingDigits) {
+        objectOutput.writeUTF(leadingDigits_);
       }
 
-      objectOutput.writeBoolean(leadingZeroPossible);
+      objectOutput.writeBoolean(leadingZeroPossible_);
 
-      objectOutput.writeBoolean(mobileNumberPortableRegion);
+      objectOutput.writeBoolean(mobileNumberPortableRegion_);
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException {
@@ -445,129 +801,129 @@ public final class Phonemetadata {
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        generalDesc = desc;
+        setGeneralDesc(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        fixedLine = desc;
+        setFixedLine(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        mobile = desc;
+        setMobile(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        tollFree = desc;
+        setTollFree(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        premiumRate = desc;
+        setPremiumRate(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        sharedCost = desc;
+        setSharedCost(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        personalNumber = desc;
+        setPersonalNumber(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        voip = desc;
+        setVoip(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        pager = desc;
+        setPager(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        uan = desc;
+        setUan(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        emergency = desc;
+        setEmergency(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        voicemail = desc;
+        setVoicemail(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        shortCode = desc;
+        setShortCode(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        standardRate = desc;
+        setStandardRate(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        carrierSpecific = desc;
+        setCarrierSpecific(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
-        noInternationalDialling = desc;
+        setNoInternationalDialling(desc);
       }
 
-      id = objectInput.readUTF();
-      countryCode = objectInput.readInt();
-      internationalPrefix = objectInput.readUTF();
+      setId(objectInput.readUTF());
+      setCountryCode(objectInput.readInt());
+      setInternationalPrefix(objectInput.readUTF());
 
       boolean hasString = objectInput.readBoolean();
       if (hasString) {
-        preferredInternationalPrefix = objectInput.readUTF();
+        setPreferredInternationalPrefix(objectInput.readUTF());
       }
 
       hasString = objectInput.readBoolean();
       if (hasString) {
-        nationalPrefix = objectInput.readUTF();
+        setNationalPrefix(objectInput.readUTF());
       }
 
       hasString = objectInput.readBoolean();
       if (hasString) {
-        preferredExtnPrefix = objectInput.readUTF();
+        setPreferredExtnPrefix(objectInput.readUTF());
       }
 
       hasString = objectInput.readBoolean();
       if (hasString) {
-        nationalPrefixForParsing = objectInput.readUTF();
+        setNationalPrefixForParsing(objectInput.readUTF());
       }
 
       hasString = objectInput.readBoolean();
       if (hasString) {
-        nationalPrefixTransformRule = objectInput.readUTF();
+        setNationalPrefixTransformRule(objectInput.readUTF());
       }
 
-      sameMobileAndFixedLinePattern = objectInput.readBoolean();
+      setSameMobileAndFixedLinePattern(objectInput.readBoolean());
 
       int nationalFormatSize = objectInput.readInt();
       for (int i = 0; i < nationalFormatSize; i++) {
@@ -583,16 +939,16 @@ public final class Phonemetadata {
         intlNumberFormat_.add(numFormat);
       }
 
-      mainCountryForCode = objectInput.readBoolean();
+      setMainCountryForCode(objectInput.readBoolean());
 
       hasString = objectInput.readBoolean();
       if (hasString) {
-        leadingDigits = objectInput.readUTF();
+        setLeadingDigits(objectInput.readUTF());
       }
 
-      leadingZeroPossible = objectInput.readBoolean();
+      setLeadingZeroPossible(objectInput.readBoolean());
 
-      mobileNumberPortableRegion = objectInput.readBoolean();
+      setMobileNumberPortableRegion(objectInput.readBoolean());
     }
   }
 

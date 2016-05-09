@@ -36,7 +36,7 @@ public class MetadataManagerTest extends TestCase {
     // We should have some data for France.
     PhoneMetadata franceShortNumberMetadata = MetadataManager.getShortNumberMetadataForRegion("FR");
     assertNotNull(franceShortNumberMetadata);
-    assertTrue(franceShortNumberMetadata.shortCode != null);
+    assertTrue(franceShortNumberMetadata.hasShortCode());
   }
 
   public void testAlternateFormatsFailsGracefully() throws Exception {
