@@ -16,10 +16,10 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

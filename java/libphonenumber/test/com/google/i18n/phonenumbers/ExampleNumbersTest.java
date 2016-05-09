@@ -17,8 +17,8 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import junit.framework.TestCase;
 

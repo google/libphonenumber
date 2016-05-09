@@ -16,11 +16,11 @@
 
 package com.google.i18n.phonenumbers;
 
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -598,24 +598,6 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Returns a copy of the given NumberFormat object.
-   */
-  static NumberFormat copyNumberFormat(NumberFormat other) {
-    NumberFormat copy = new NumberFormat();
-    copy.pattern = other.pattern;
-    copy.format = other.format;
-    int leadingDigitsPatternSize = other.leadingDigitsPattern.length;
-    copy.leadingDigitsPattern = new String[leadingDigitsPatternSize];
-    for (int i = 0; i < leadingDigitsPatternSize; i++) {
-      copy.leadingDigitsPattern[i] = other.leadingDigitsPattern[i];
-    }
-    copy.nationalPrefixFormattingRule = other.nationalPrefixFormattingRule;
-    copy.domesticCarrierCodeFormattingRule = other.domesticCarrierCodeFormattingRule;
-    copy.nationalPrefixOptionalWhenFormatting = other.nationalPrefixOptionalWhenFormatting;
-    return copy;
-  }
-
-  /**
    * Attempts to extract a possible number from the string passed in. This currently strips all
    * leading characters that cannot be used to start a phone number. Characters that can be used to
    * start a phone number are defined in the VALID_START_CHAR_PATTERN. If none of these characters
@@ -1149,10 +1131,11 @@ public class PhoneNumberUtil {
       // If no pattern above is matched, we format the number as a whole.
       formattedNumber.append(nationalSignificantNumber);
     } else {
+      NumberFormat numFormatCopy = new NumberFormat();
       // Before we do a replacement of the national prefix pattern $NP with the national prefix, we
       // need to copy the rule so that subsequent replacements for different numbers have the
       // appropriate national prefix.
-      NumberFormat numFormatCopy = copyNumberFormat(formattingPattern);
+      numFormatCopy.mergeFrom(formattingPattern);
       String nationalPrefixFormattingRule = formattingPattern.nationalPrefixFormattingRule;
       if (nationalPrefixFormattingRule.length() > 0) {
         String nationalPrefix = metadata.nationalPrefix;
@@ -1504,7 +1487,8 @@ public class PhoneNumberUtil {
           break;
         }
         // Otherwise, we need to remove the national prefix from our output.
-        NumberFormat numFormatCopy = copyNumberFormat(formatRule);
+        NumberFormat numFormatCopy = new NumberFormat();
+        numFormatCopy.mergeFrom(formatRule);
         numFormatCopy.nationalPrefixFormattingRule = "";
         List<NumberFormat> numberFormats = new ArrayList<NumberFormat>(1);
         numberFormats.add(numFormatCopy);
@@ -1632,7 +1616,8 @@ public class PhoneNumberUtil {
         // If no pattern above is matched, we format the original input.
         return rawInput;
       }
-      NumberFormat newFormat = copyNumberFormat(formattingPattern);
+      NumberFormat newFormat = new NumberFormat();
+      newFormat.mergeFrom(formattingPattern);
       // The first group is the first group of digits that the user wrote together.
       newFormat.pattern = "(\\d+)(.*)";
       // Here we just concatenate them back together after the national prefix has been fixed.

@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 
 import java.util.ArrayList;
 import java.util.Iterator;

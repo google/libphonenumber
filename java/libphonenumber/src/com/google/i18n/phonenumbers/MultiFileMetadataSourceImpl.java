@@ -16,9 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
-import com.google.protobuf.nano.CodedInputByteBufferNano;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -111,8 +110,9 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
+    ObjectInputStream in = null;
     try {
-      ObjectInputStream in = new ObjectInputStream(source);
+      in = new ObjectInputStream(source);
       PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(in);
       PhoneMetadata[] metadataList = metadataCollection.metadata;
       if (metadataList.length == 0) {
@@ -142,15 +142,9 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
    * @return        the loaded metadata protocol buffer.
    */
   private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
-    // The size of the byte buffer used for deserializing the phone number metadata files for each
-    // region.
-    final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
-
     PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      CodedInputByteBufferNano byteBuffer = MetadataManager.convertStreamToByteBuffer(source,
-          MULTI_FILE_BUFFER_SIZE);
-      metadataCollection.mergeFrom(byteBuffer);
+      metadataCollection.readExternal(source);
     } catch (IOException e) {
       logger.log(Level.WARNING, "error reading input (ignored)", e);
     } finally {

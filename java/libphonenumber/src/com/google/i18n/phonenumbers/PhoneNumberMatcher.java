@@ -19,10 +19,10 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.Leniency;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.MatchType;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
-import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.lang.Character.UnicodeBlock;
 import java.util.Iterator;

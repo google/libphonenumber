@@ -17,11 +17,11 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,12 +145,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.generalDesc.nationalNumberPattern);
     assertEquals("\\d{7}(?:\\d{3})?", metadata.generalDesc.possibleNumberPattern);
-    assertTrue(metadata.generalDesc.nationalNumberPattern.equals(
-        metadata.fixedLine.nationalNumberPattern));
-    assertTrue(metadata.generalDesc.possibleNumberPattern.equals(
-        metadata.fixedLine.possibleNumberPattern));
-    assertTrue(metadata.generalDesc.exampleNumber.equals(
-        metadata.fixedLine.exampleNumber));
+    assertTrue(metadata.generalDesc.exactlySameAs(metadata.fixedLine));
     assertEquals("\\d{10}", metadata.tollFree.possibleNumberPattern);
     assertEquals("900\\d{7}", metadata.premiumRate.nationalNumberPattern);
     // No shared-cost data is available, so it should be initialised to "NA".
