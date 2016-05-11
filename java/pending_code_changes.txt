@@ -1,1 +1,5 @@
-
+Maven changes:
+ - Repackage protobuf runtime dependency to prevent conflicts with clients'
+   protobuf dependencies. Backwards-compatible, so no changes needed for clients
+   who could use the previous release, but enables those with their own protobuf
+   dependencies to use this and future releases without workarounds.
