@@ -1,10 +1,17 @@
+May 11, 2016: libphonenumber-7.4.0
+Maven changes:
+ - Repackage protobuf runtime dependency to prevent conflicts with clients'
+   protobuf dependencies. Backwards-compatible, so no changes needed for clients
+   who could use the previous release, but enables those with their own protobuf
+   dependencies to use this and future releases without workarounds.
+
 May 03, 2016: libphonenumber-7.3.2
 Metadata changes:
  - Updated phone metadata for region code(s):
    AU, BR, ET, IN, KH, ML, NO, SB, TJ, US
  - Updated short number metadata for region code(s): CA, ML, US
  - New geocoding data for country calling code(s): 223 (en)
- - Updated geocoding data for country calling code(s): 
+ - Updated geocoding data for country calling code(s):
    27 (en), 55 (en, pt), 1 (en)
  - Updated carrier data for country calling code(s):
    61 (en), 91 (en), 223 (en), 251 (en), 677 (en), 992 (en)
