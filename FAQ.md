@@ -60,7 +60,7 @@ Some number ranges are explicitly defined as being for fixed-line or mobile
 phones. We even represent ranges defined as being "Mostly land-line" in this
 way.
 
-### What about M2M (machine to machine) numbers?
+### What about M2M (machine to machine) numbers? {#m2m_faq}
 
 libphonenumber does not support M2M numbers at the moment, but might in the
 future.
