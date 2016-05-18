@@ -1,3 +1,8 @@
+May 18, 2016: libphonenumber-7.4.1
+Metadata changes:
+ - Updated phone metadata for region code(s): FR, IL, KR
+ - Updated carrier data for country calling code(s): 972 (en)
+
 May 11, 2016: libphonenumber-7.4.0
 Maven changes:
  - Repackage protobuf runtime dependency to prevent conflicts with clients'
