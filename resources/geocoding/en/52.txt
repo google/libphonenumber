@@ -1,0 +1,819 @@
+5255|Mexico City
+52222|Amozoc
+52222|Puebla
+52223|Magdalena Tetela
+52224|Atoyatempan
+52226|Altotonga
+52226|Jalacingo
+52227|Huejotzingo
+52228|Jalapa
+52232|La Vigueta
+52232|Martinez De La Torre
+52233|Cuetzalan
+52235|Misantla
+52235|Nautla
+52236|Ajalpan
+52236|Calipan
+52236|Cuicatlan
+52236|Huautla De Jimenez
+52241|Apizaco
+52241|Hueyotlipan
+52243|Atencingo
+52243|Izucar De Matamoros
+52244|Atlixco
+52244|La Venta Cacaloxuchil
+52245|Esperanza
+52247|Huamantla
+52249|Acatzingo
+52249|Cañada Morelos
+52249|Los Reyes De Juarez
+52249|Palmar De Bravo
+52249|Palmarito Tochapan
+52271|Amatlan
+52271|Potrero
+52272|Maltrata
+52272|Orizaba
+52273|Chocaman
+52273|Huatusco
+52273|Ixhuatlan Del Cafe
+52273|Paso Del Macho
+52274|Acatlan De Perez Figueroa
+52275|Chiautla De Tapia
+52275|Chinantla-piaxtla
+52275|Huehuetlan El Chico
+52276|Libres
+52276|Oriental
+52278|Omealca
+52279|Actopan
+52279|Alto Lucero
+52279|Estanzuela
+52279|Juchique De Ferrer
+52279|Naolinco De Victoria
+52279|Rinconada
+52281|Loma Bonita
+52282|Alchichica
+52282|Guadalupe Victoria
+52282|Perote
+52282|Profesor Rafael Ramirez
+52283|Isla
+52283|Playa Vicente
+52284|Angel Rosario Cabada
+52284|Lerdo De Tejada
+52285|Ignacio De La Llave
+52285|Jamapa
+52285|Manlio Fabio Altamirano
+52285|Medellin De Bravo
+52285|Paso De Ovejas
+52285|Piedras Negras
+52287|Otatitlan
+52287|Papaloapan
+52288|Chacaltianguis
+52294|Catemaco
+52294|Juan Diaz Covarrubias
+52296|Campamento Farallon
+52296|La Antigua
+52297|Alvarado
+52311|Bellavista
+52311|Francisco I. Madero
+52312|Los Tepames
+52313|Armeria
+52313|Cuyutlan
+52313|Madrid
+52314|Manzanillo
+52314|Peña Colorada
+52315|Careyes
+52315|La Manzanilla
+52316|Ayutla
+52316|Cuautla
+52317|Autlan
+52317|El Chante
+52318|Cuauhtemoc
+52318|La Higuera
+52318|Pihuamo
+52318|Queseria
+52319|Chilapa
+52319|Palma Grande
+52321|El Grullo
+52321|El Limon
+52322|Campamento Sarh
+52322|Ixtapa
+52322|Jose Maria Morelos
+52322|Nuevo Vallarta
+52322|Puerto Vallarta
+52323|Estacion Yago
+52323|Guadalupe Victoria
+52323|La Presa
+52323|La Trozada (villa Juarez)
+52323|Pozo De Ibarra
+52324|Ahuacatlan
+52324|Amatlan De Cañas
+52324|Ixtlan Del Rio
+52324|Jala
+52325|Acaponeta
+52326|Andres Figueroa
+52326|Atemajac De Brizuela
+52327|Jalcocotan
+52327|Las Varas
+52327|Mecatan
+52327|Rincon De Guayabitos
+52328|Churintzio
+52328|Ecuandureo
+52328|Ixtlan De Los Hervores
+52328|La Luz
+52329|Bucerias
+5233|Guadalajara
+52342|Gomez Farias
+52343|Ejutla
+52344|Mexticacan
+52345|Ayotlan
+52345|Betania
+52345|Degollado
+52345|La Concepcion
+52346|Nochistlan
+52348|Arandas
+52348|Jesus Maria
+52348|Josefino De Allende
+52349|Atengo
+52349|Juchitlan
+52349|Quila
+52351|Ario De Rayon
+52352|La Piedad
+52353|La Palma
+52353|Pajacuaran
+52354|Los Reyes
+52354|Periban De Ramos
+52355|Chilchota
+52357|Casimiro Castillo
+52357|La Huerta
+52357|Lo Arado
+52357|Los Tecomates
+52371|Atenquique
+52372|Amacueca
+52372|La Manzanilla De La Paz
+52373|Cuquio
+52373|Ixtlahuacan Del Rio
+52374|Amatitan
+52374|El Arenal
+52375|Ameca
+52376|Atequiza
+52376|Chapala
+52376|Ixtlahuacan De Los Membrillos
+52376|Mezcala
+52377|Estipac
+52378|Acatic
+52378|Capilla De Guadalupe
+52378|Capilla De Milpillas
+52378|Pegueros
+52379|Numaran
+52379|Penjamillo
+52382|Mazamitla
+52382|Quitupan
+52383|Chavinda
+52385|Chiquilistlan
+52386|Ahualulco
+52386|Antonio Escobedo
+52386|Etzatlan
+52386|Hostotipaquillo
+52386|Magdalena
+52387|Acatlan De Juarez
+52387|Jocotepec
+52388|Mascota
+52388|Mixtlan
+52389|Quimichis
+52391|Atotonilco El Alto
+52391|Las Margaritas
+52391|Poncitlan
+52392|Jamay
+52392|Ocotlan
+52393|La Barca
+52411|Cañada De Caracheo
+52411|Jaral Del Progreso
+52412|Empalme Escobedo
+52412|Juventino Rosas
+52413|Apaseo El Alto
+52413|Apaseo El Grande
+52417|Acambaro
+52417|Iramuco
+52417|Nuevo Chupicuaro
+52417|Paracuaro
+52418|Dolores Hidalgo
+52419|Doctor Mora
+52421|Jerecuaro
+52422|Ario De Rosales
+52422|Gabriel Zamora
+52423|Cheran
+52423|Paracho
+52424|El Ahuaje
+52425|Antunez
+52425|La Huacana
+52425|Nueva Italia
+52426|Aguililla
+52426|Buenavista
+52426|Felipe Carrillo Puerto
+52427|Polotitlan
+52428|Ocampo
+52429|Abasolo
+52429|Cueramaro
+52429|Huanimaro
+52429|Pueblo Nuevo
+52431|Jalostotitlan
+52433|Gonzalez Ortega
+52433|Miguel Auza
+52434|Acuitzio Del Canje
+52434|Erongaricuaro
+52434|Patzcuaro
+52435|Huetamo
+52437|Chimaltitan
+52437|Momax
+52438|Cerano
+52438|Pastor Ortiz
+52438|Puruandiro
+52441|Cadereyta
+52441|Ezequiel Montes
+52441|Jalpan De Serra
+52441|Pinal De Amoles
+52442|Bernardo Quintana
+52442|Juriquilla
+52442|La Cruz
+52442|Queretaro
+52443|Morelia
+52445|Moroleon
+52447|Maravatio
+52448|Amealco
+52448|Huimilpan
+52448|Pedro Escobedo
+52449|Aguascalientes
+52449|Jesus Maria
+52451|Charo
+52451|Indaparapeo
+52451|Querendaro
+52452|Nuevo San Juan Parangaricutiro
+52453|Apatzingan
+52454|Angamacutiro
+52454|Huaniqueo De Morales
+52454|Panindicuaro
+52454|Quiroga
+52455|Alvaro Obregon
+52455|Cuitzeo Del Porvenir
+52455|Huandacareo
+52457|Chalchiuites
+52457|Huejucar
+52457|Huejuquilla El Alto
+52457|Mezquitic
+52457|Monte Escobedo
+52458|Felipe Pescador
+52458|Luis Moya
+52458|Ojo Caliente
+52459|Caracuaro
+52459|Pedernales
+52459|Puruaran
+52461|Celaya
+52461|Rincon De Tamayo
+52462|Irapuato
+52463|Jalpa
+52465|Pabellon De Arteaga
+52465|Rincon De Romos
+52466|El Sabino
+52467|Juchipila
+52467|Moyahua
+52469|Buenavista De Cortez
+52469|Penjamo
+52471|Purepero
+52473|Guanajuato
+52474|Lagos De Moreno
+52474|Paso De Cuarenta
+52475|Bajio De San Jose
+52475|Encarnacion De Diaz
+52477|Leon
+52478|Calera Victor Rosales
+52482|Aquismon
+52482|El Naranjo
+52483|Matlapa
+52486|Cerritos
+52486|Charcas
+52487|Cardenas
+52487|Rayon
+52487|Rio Verde
+52488|Cedral
+52488|Doctor Arroyo
+52488|Matehuala
+52489|Axtla De Terrazas
+52489|El Higo
+52492|Morelos
+52493|Fresnillo
+52494|Jerez De Garcia Salinas
+52495|Calvillo
+52496|Loreto
+52496|Ojuelos
+52496|Pinos
+52498|Juan Aldama
+52498|Nieves
+52498|Rio Grande
+52587|Amecameca
+52588|Dongu
+52589|Juchitepec
+52589|Ozumba
+52592|Jaltepec
+52592|Nopaltepec
+52592|Otumba
+52593|Huehuetoca
+52595|Cuautlalpan
+52595|La Purificacion
+52596|Los Reyes Acozac
+52599|Apaxco
+52612|La Paz
+52613|Loreto
+52613|Puerto Adolfo Lopez Mateos
+52613|Puerto San Carlos
+52614|Chihuahua
+52614|General Trias
+52615|Bahia De Tortugas
+52615|Guerrero Negro
+52615|Mulege
+52616|Isla De Cedros
+52618|Durango
+52621|Julimes
+52621|Las Varas
+52621|Naica
+52622|Guaymas
+52623|Aconchi
+52623|Banamichi
+52623|Baviacora
+52623|Carbo
+52623|Huepac
+52624|Buenavista
+52624|Cabo Del Sol
+52624|Cabo San Lucas
+52626|Ojinaga
+52627|Parral
+52628|Pueblito Allende
+52629|Ceballos
+52631|Nogales
+52632|Imuris
+52632|Magdalena
+52633|Agua Prieta
+52633|Esqueda
+52633|Fronteras
+52633|Naco
+52634|Arizpe
+52634|Cumpas
+52634|Huachinera
+52634|Huasabas
+52634|Moctezuma
+52634|Nacozari
+52635|La Junta
+52636|Buenaventura
+52636|Ejido Benito Juarez
+52636|Ignacio Zaragoza
+52636|Janos
+52636|La Ascencion
+52636|Nuevo Casas Grandes
+52636|Ricardo Flores Magon
+52637|Altar
+52637|Caborca
+52638|Puerto Peñasco
+52639|Lazaro Cardenas
+52641|Benjamin Hill
+52642|Navojoa
+52642|Pueblo Mayo
+52643|Altos De Jecopaco
+52643|Buaysiacobe
+52643|Ejido 31 De Octubre
+52643|Ejido Francisco Javier Mina
+52643|Potam
+52643|Pueblo Yaqui
+52643|Quetchehueca
+52644|Bacum
+52644|Ejido Cuauhtemoc
+52644|Marte R. Gomez (el Tobarito)
+52645|Cananea
+52646|Ejido Esteban Cantu
+52646|Ensenada
+52646|La Mision
+52646|Maneadero
+52647|Alamos
+52647|Bacame Nuevo
+52647|Bacobampo
+52647|Etchojoa
+52647|Huatabampo
+52648|Boquilla
+52649|Guachochi
+52649|Guadalupe Y Calvo
+52649|Las Nieves
+52652|Ejido El Largo
+52652|Gomez Farias
+52652|Nicolas Bravo
+52653|Luis B. Sanchez
+52656|Doctor Porfirio Parra
+52656|El Porvenir
+52656|General Rodrigo M. De Quevedo
+52656|Guadalupe Distrito De Bravos
+52656|Praxedis Guerrero
+52658|Benito Juarez
+52658|Guadalupe Victoria
+52658|Hermosillo
+52658|Queretaro
+52659|Bachiniva
+52659|El Molino
+52659|Matachic
+52659|Oscar Soto Maynes
+52661|Primo Tapia
+52662|Bahia Kino
+52662|Distrito Miguel Aleman
+52662|Hermosillo
+52667|Culiacan
+52667|Culiacancito
+52667|El Dorado
+52667|El Salado (culiacan)
+52667|Pueblos Unidos
+52667|Quila
+52668|Ahome
+52668|Alfonso G. Calderon
+52668|Campo Numero 35 (cerillos)
+52668|Chihuahuita
+52668|Emiliano Zapata (bagojo) I
+52668|General Chavez Talamantes
+52668|Higuera De Zaragoza
+52668|Los Mochis
+52668|Poblado No 5
+52669|El Roble
+52669|Mazatlan
+52671|Cuencame De Ceniceros
+52671|Nazas
+52671|Paso Nacional
+52672|Navolato
+52673|Guamuchil
+52673|Mocorito
+52674|Guanacevi
+52675|El Salto
+52675|La Ciudad
+52675|Nombre De Dios
+52676|Guadalupe Victoria
+52676|Ignacio Allende
+52676|Peñon Blanco
+52677|Canatlan
+52677|Francisco I. Madero
+52677|Nuevo Ideal
+52677|Rodeo
+52686|La Rumorosa
+52686|Mexicali
+52686|Michoacan De Ocampo
+52686|Nuevo Leon
+52687|Adolfo Ruiz Cortinez
+52687|Bachoco Pueblo
+52687|Cubilete
+52687|El Burrion
+52687|El Huitussi
+52687|El Mezquite
+52687|Estacion Bamoa
+52687|Estacion Naranjo
+52687|Gabriel Leyva
+52687|Genaro Estrada
+52687|Guasave
+52687|Juan Jose Rios
+52687|La Trinidad
+52687|Leon Fonseca (verdura)
+52687|Nio
+52694|Agua Caliente De Garate
+52694|Agua Verde
+52694|El Apoderado
+52695|Escuinapa
+52695|Ojo De Agua Palmilla
+52696|Dimas
+52696|La Cruz
+52697|Angostura
+52697|Badiraguato
+52697|Caimanero
+52697|La Reforma
+52697|Pericos
+52698|Charay
+52698|Choix
+52698|El Fuerte
+52698|El Jahuara
+52698|Mochicahui (constancia)
+52711|El Oro
+52712|Atlacomulco
+52712|Ixtlahuaca
+52712|Jiquipilco
+52712|Jocotitlan
+52714|Chalma
+52714|Malinalco
+52715|Angangueo
+52715|Jungapeo
+52715|Ocampo
+52716|Almoloya De Alquisiras
+52716|Amatepec
+52717|Atlatlahuaca
+52718|Acambay
+52718|Aculco
+52721|Ixtapan De La Sal
+52722|Calimaya De Diaz
+52722|Mexicaltzingo
+52724|Luvianos
+52725|Almoloya De Juarez
+52726|Amanalco De Becerra
+52727|Atenango Del Rio
+52727|Buenavista De Cuellar
+52727|Huitzuco
+52728|Lerma
+52729|Huixquilucan
+52729|Magdalena Chichicaspa
+52731|Amayuca
+52732|Ajuchitlan De Progreso
+52732|Arcelia
+52732|Cutzamala De Pinzon
+52733|Iguala
+52734|Jojutla
+52735|Cuautla
+52735|Jonacatepec
+52736|Apaxtla De Castrejon
+52737|Miacatlan
+52738|Mixquiahuala
+52739|Huitzilac
+52741|Cuajinicuilapa
+52741|Marquelia
+52741|Ometepec
+52742|Atoyac De Alvarez
+52742|Papanoa
+52744|Acapulco
+52745|Ayutla De Los Libres
+52745|Cruz Grande
+52745|El Ocotito
+52746|Castillo De Teayo
+52746|Chicontepec
+52746|Estacion San Diego
+52746|Metlaltoyuca
+52747|Chihualco
+52747|Chilpancingo
+52747|Mazatlan
+52748|Apam
+52748|Emiliano Zapata
+52748|Nanacamilpa
+52749|Calpulalpan
+52751|Amacuzac
+52751|Puente De Ixtla
+52752|Atlatlahucan
+52752|Oacalco
+52752|Oaxtepec
+52753|Arteaga
+52753|La Mira
+52753|Las Guacamayas- Mich
+52753|Playa Azul
+52754|Atliaca
+52754|Mochitlan
+52755|Ixtapa
+52756|Chilapa
+52756|Olinala
+52757|Huamuxtitlan
+52758|Petatlan
+52759|Ixmiquilpan
+52761|Huichapan
+52761|Jilotepec
+52764|Necaxa
+52765|Alamo Temapache
+52765|Alazan Potrero Del Llano
+52766|Gutierrez Zamora
+52767|Paso De Arena
+52768|Naranjos
+52769|Axochiapan
+52771|Pachuca
+52771|Real Del Monte
+52772|Actopan
+52773|Parque Ind. Tepeji Del Rio
+52774|Atotonilco El Grande
+52774|Calnali
+52774|Huayacocotla
+52774|Molango
+52776|Acaxochitlan
+52776|Ahuazotepec
+52776|Huauchinango
+52777|Cuernavaca
+52778|Ajacuba
+52778|Atotonilco De Tula
+52782|Poza Rica
+52784|Agua Dulce Papantla
+52784|Cazones De Herrera
+52784|Entabladero
+52784|Papantla
+52789|Huejutla De Reyes
+52789|Platon Sanchez
+52797|Chignahuapan
+5281|Monterrey
+52821|Hualahuises
+52821|Linares
+52823|China
+52823|General Bravo
+52823|Los Herreras
+52823|Los Ramones
+52825|Doctor Gonzalez
+52825|General Zuazua
+52825|Marin
+52825|Pesqueria
+52826|Allende
+52826|Galeana
+52826|General Teran
+52826|Montemorelos
+52828|Cadereyta
+52829|Bustamante
+52829|Hidalgo
+52829|Mina
+52831|Los Aztecas
+52832|Antiguo Morelos
+52832|Jaumave
+52832|Llera De Canales
+52832|Ocampo
+52835|Abasolo
+52835|El Barretal
+52835|Estacion Santa Engracia
+52835|Hidalgo
+52835|Nuevo Padilla
+52836|Estacion Cuauhtemoc
+52836|Gonzalez
+52836|Manuel
+52841|Francisco Gonzalez Villarreal
+52842|General Cepeda
+52842|Parras De La Fuente
+52845|Ebano
+52845|Ponciano Arriaga
+52846|Ozuluama
+52846|Panuco
+52861|Nueva Rosita
+52862|Allende
+52862|Morelos
+52862|Nava
+52864|Las Esperanzas
+52864|Minas De Barroteran
+52864|Muzquiz
+52864|Palau
+52866|Castaños
+52866|Monclova
+52867|Nuevo Laredo
+52868|Anahuac
+52868|Empalme
+52868|Matamoros
+52869|Cuatro Cienegas
+52871|El Coyote
+52871|La Goma
+52871|La Partida
+52871|Matamoros
+52872|Bermejillo
+52872|Francisco I. Madero
+52872|Laguna Del Rey
+52872|Mapimi
+52873|Candela
+52873|Lampazos
+52878|Piedras Negras
+52891|Los Comales
+52892|Agualeguas
+52892|Cerralvo
+52892|General Treviño
+52892|Los Aldamas
+52892|Melchor Ocampo
+52897|Nueva Ciudad Guerrero
+52899|Nuevo Progreso
+52899|Reynosa
+52899|Rio Bravo
+52913|Frontera
+52913|Jonuta
+52913|Palizada
+52914|Cunduacan
+52914|Jalpa De Mendez
+52914|Nacajuca
+52914|Once De Febrero
+52916|Catazaja
+52916|Palenque
+52917|Estacion Chontalpa
+52917|Huimanguillo
+52917|Reforma
+52918|Acacoyagua
+52918|Acapetahua
+52918|Escuintla
+52918|Mapastepec
+52918|Pijijiapan
+52918|Pueblo Nuevo Comaltitlan
+52919|Altamirano
+52919|Bochil
+52919|Chilon
+52919|Ococingo
+52919|Oxchuc
+52919|Pantelho
+52919|Petalcingo
+52919|Pueblo Nuevo Solistahuacan
+52921|Ixhuatlan Del Sureste
+52922|Chinameca
+52922|El Naranjito
+52922|Jaltipan
+52922|Minatitlan
+52923|Agua Dulce
+52923|Campo Cuichapa
+52923|La Venta
+52923|Las Choapas
+52923|Pueblo Sanchez Magallanes
+52924|Acayucan
+52924|Jesus Carranza
+52924|Juanita
+52932|Jalapa
+52932|Juarez
+52932|Pichucalco
+52933|Paraiso
+52934|Balancan
+52934|El Triunfo
+52934|Emiliano Zapata
+52936|Macuspana
+52937|Cardenas
+52951|Ejutla
+52951|Etla
+52951|Ixtlan De Juarez
+52951|Miahuatlan
+52951|Mitla
+52951|Nochistlan
+52951|Oaxaca
+52951|Ocotlan De Morelos
+52953|Acatlan De Osorio
+52953|Huajuapan De Leon
+52953|Putla De Guerrero
+52954|Pinotepa De Don Luis I
+52954|Pinotepa Nacional
+52954|Puerto Escondido
+52954|Rio Grande
+52958|Bahia De Huatulco
+52958|Bahia De Tangolunda
+52961|Berriozabal
+52962|Cacahoatan
+52962|Motozintla
+52962|Puerto Madero
+52963|Chicomuselo
+52963|Frontera Comalapa
+52963|La Trinitaria
+52963|Las Margaritas
+52964|Huehuetan
+52964|Huixtla
+52964|Mazatan
+52965|El Parral
+52965|Jesus Maria Garza
+52965|Revolucion Mexicana
+52966|Arriaga
+52968|Jiquipilas
+52968|Ocozocuautla-chis
+52968|Raudales De Malpaso
+52969|Flamboyanes
+52971|Espinal
+52971|Ixtepec
+52971|Juchitan
+52972|Barrio De La Soledad
+52972|Lagunas
+52972|Matias Romero
+52981|Campeche
+52982|Candelaria
+52982|Champoton
+52982|Escarcega
+52983|Bacalar
+52983|Chetumal
+52983|Felipe Carrillo Puerto
+52984|Chemuyil
+52984|Holbox
+52984|Kantunilkin
+52984|Playa Del Carmen
+52984|Puerto Aventuras
+52985|Chemax
+52985|Piste
+52986|Espita
+52986|Panaba
+52988|Acanceh
+52988|Celestun
+52988|Chochola
+52988|Hoctun
+52988|Hunucma
+52988|Izamal
+52991|Baca
+52991|Buctzotz
+52991|Cacalchen
+52991|Cansahcab
+52991|Dzidzantum
+52991|Dzilam Gonzalez
+52991|Motul
+52992|Jaltenango De La Paz
+52992|Nueva Concordia
+52993|Macultepec
+52993|Playas Del Rosario
+52994|Chahuites
+52994|Paredon
+52995|Magdalena Tequisistlan
+52996|Becal
+52996|Calkini
+52996|Dzitbalche
+52996|Hecelchacan
+52996|Hopelchen
+52996|Pomuch
+52997|Akil
+52997|Dziuche
+52997|Halacho
+52997|Jose Maria Morelos
+52997|Maxcanu
+52997|Muna
+52997|Oxkutzcab
+52997|Peto
+52998|Cancun
+52998|Isla Mujeres
+52998|Puerto Morelos
+52999|Merida
