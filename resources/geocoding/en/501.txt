@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2011 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-97150|Etisalat
-97152|du
-97154|Etisalat
-97155|du
-97156|Etisalat
+# Geocoding details are taken from ITU doc:
+# http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000160001MSWE.doc.
+
+5012|Belize District
+5013|Orange Walk District
+5014|Corozal District
+5015|Stann Creek District
+5017|Toledo District
+5018|Cayo District
