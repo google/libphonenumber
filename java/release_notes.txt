@@ -1,3 +1,13 @@
+Jun 01, 2016: libphonenumber-7.4.2
+Code changes:
+ - Make C++ code forward compatible with an upcoming RE2 change.
+Metadata changes:
+ - Updated phone metadata for region code(s): AE, BZ, GU, IN, KR
+ - Updated short number metadata for region code(s): BR
+ - New geocoding data for country calling code(s): 501 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 971 (en), 1671 (en)
+
 May 18, 2016: libphonenumber-7.4.1
 Metadata changes:
  - Updated phone metadata for region code(s): FR, IL, KR

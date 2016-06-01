@@ -1284,8 +1284,8 @@
     <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
     <territory id="BR">
       <generalDesc>
-        <nationalNumberPattern>[1249]\d{2,4}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <nationalNumberPattern>[1249]\d{2,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
@@ -1301,9 +1301,12 @@
             81|
             9[0-5789]
           )|
-          27(?:
-            330|
-            878
+          2(?:
+            7(?:
+              330|
+              878
+            )|
+            85959
           )|
           40404|
           911
@@ -1376,14 +1379,18 @@
       </carrierSelectionCodes>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
+        <!-- Added short code 285959 after a report that it is used for SMS services. -->
         <nationalNumberPattern>
-          27(?:
-            330|
-            878
+          2(?:
+            7(?:
+              330|
+              878
+            )|
+            85959
           )|
           40404
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
         <exampleNumber>27878</exampleNumber>
       </smsServices>
     </territory>

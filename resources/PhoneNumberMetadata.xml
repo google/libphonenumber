@@ -185,7 +185,7 @@
           <leadingDigits>[2-4679][2-8]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(5[0256])(\d{3})(\d{4})">
+        <numberFormat pattern="(5\d)(\d{3})(\d{4})">
           <leadingDigits>5</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -213,8 +213,9 @@
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
+      <!-- Added 9 digit 54 range to mobile as per online evidences. -->
       <mobile>
-        <nationalNumberPattern>5[0256]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>5[024-6]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>501234567</exampleNumber>
       </mobile>
@@ -3989,7 +3990,20 @@
         <possibleNumberPattern>\d{7}(?:\d{4})?</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>[234578][02]\d{5}</nationalNumberPattern>
+        <!-- Wikipedia and ITU seem out of date, but say that for a number in the format ZNY-XXXX
+             Z represents the district code (or 6 for mobile), N the type of number and Y the first
+             digit of the customer's number. Only N = 0 and 2 are supposedly in use, but we have
+             found many numbers starting with 732 online. No evidence has been found about the
+             category of 732 numbers. -->
+        <nationalNumberPattern>
+          (?:
+            [23458][02]\d|
+            7(?:
+              [02]\d|
+              32
+            )
+          )\d{4}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>2221234</exampleNumber>
       </fixedLine>
@@ -9190,6 +9204,7 @@
               [079]7|
               2[0167]|
               3[45]|
+              47|
               8[789]
             )|
             8(?:
@@ -9240,6 +9255,7 @@
               [079]7|
               2[0167]|
               3[45]|
+              47|
               8[789]
             )|
             8(?:
@@ -10601,7 +10617,7 @@
                 1[07-9]|
                 2[015-8]|
                 3[17-9]|
-                4[789]|
+                4[017-9]|
                 9[01689]
               )|
               4(?:
@@ -10690,7 +10706,10 @@
                   [01][089]
                 )|
                 3[17-9]|
-                4[789]|
+                4(?:
+                  [07-9]|
+                  11
+                )|
                 9[01689]
               )|
               4(?:
@@ -11170,7 +11189,10 @@
                   [01][089]
                 )|
                 3[17-9]\d|
-                4[789]\d|
+                4(?:
+                  [07-9]\d|
+                  11
+                )|
                 9[01689]\d
               )|
               4(?:
@@ -13963,7 +13985,7 @@
             1(?:
               5[46-9]|
               6[04678]|
-              8[0579]
+              8[03579]
             )
           </leadingDigits>
           <leadingDigits>
@@ -13984,6 +14006,7 @@
               )|
               8(?:
                 00|
+                33|
                 55|
                 77|
                 99
@@ -14081,6 +14104,7 @@
             )|
             8(?:
               00|
+              33|
               55|
               77|
               99

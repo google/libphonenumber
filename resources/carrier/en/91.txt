@@ -251,6 +251,17 @@
 9173394|Airtel
 9173395|Airtel
 9173396|Airtel
+9173397|Airtel
+9173398|Airtel
+9173399|Airtel
+917340|Airtel
+9173411|Airtel
+9173470|Airtel
+9173472|Airtel
+9173473|Airtel
+9173474|Airtel
+9173475|Airtel
+9173476|Airtel
 9173477|Idea
 9173478|Idea
 9173480|Idea
@@ -1066,7 +1077,7 @@
 918267|Tata Docomo
 918268|Aircel
 918269|Videocon
-918270|UNITECH
+918270|Vodafone
 918271|Telewings
 918272|Tata Docomo
 918273|Telewings
@@ -1911,7 +1922,7 @@
 919202|Tata Docomo
 919203|Tata Docomo
 919204|Tata Docomo
-919205|Tata Docomo
+919205|Airtel
 919206|Tata Docomo
 919207|Tata Docomo
 919208|Tata Docomo
