@@ -34,6 +34,14 @@ phone call with a verification code). This is not technically feasible without
 such a verification step given the complicated international world we live in,
 with varying standardization practices in different regions.
 
+#### But my dialled number connected, so isn't it valid?
+
+Not necessarily. In some countries extra digits at the end are ignored. For
+example, dialling `1800 MICROSOFT` in the US connects to `+1 (800) MIC-ROSO`.
+Moreover, during renumbering transitions, e.g. when all numbers are getting an
+extra `9` added to the front, some carriers will "fix" old numbers long after
+they're no longer working for the majority.
+
 ### When should I use isValidNumberForRegion?
 
 Rarely! Many people have phone numbers that do not belong to the country they
