@@ -185,7 +185,7 @@
           <leadingDigits>[2-4679][2-8]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(5[0256])(\d{3})(\d{4})">
+        <numberFormat pattern="(5\d)(\d{3})(\d{4})">
           <leadingDigits>5</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -213,8 +213,9 @@
         <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
         <exampleNumber>22345678</exampleNumber>
       </fixedLine>
+      <!-- Added 9 digit 54 range to mobile as per online evidences. -->
       <mobile>
-        <nationalNumberPattern>5[0256]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>5[024-6]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>501234567</exampleNumber>
       </mobile>
@@ -3989,7 +3990,20 @@
         <possibleNumberPattern>\d{7}(?:\d{4})?</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <nationalNumberPattern>[234578][02]\d{5}</nationalNumberPattern>
+        <!-- Wikipedia and ITU seem out of date, but say that for a number in the format ZNY-XXXX
+             Z represents the district code (or 6 for mobile), N the type of number and Y the first
+             digit of the customer's number. Only N = 0 and 2 are supposedly in use, but we have
+             found many numbers starting with 732 online. No evidence has been found about the
+             category of 732 numbers. -->
+        <nationalNumberPattern>
+          (?:
+            [23458][02]\d|
+            7(?:
+              [02]\d|
+              32
+            )
+          )\d{4}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <exampleNumber>2221234</exampleNumber>
       </fixedLine>
@@ -7578,7 +7592,7 @@
         <exampleNumber>612345678</exampleNumber>
       </mobile>
       <tollFree>
-        <nationalNumberPattern>80\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
         <exampleNumber>801234567</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -7601,6 +7615,12 @@
         <nationalNumberPattern>9\d{8}</nationalNumberPattern>
         <exampleNumber>912345678</exampleNumber>
       </voip>
+      <uan>
+        <!-- 80[6-9] numbers cost the same as fixed-line calls, but are not geographically assigned,
+             so we classify them as UAN. -->
+        <nationalNumberPattern>80[6-9]\d{6}</nationalNumberPattern>
+        <exampleNumber>806123456</exampleNumber>
+      </uan>
     </territory>
 
     <!-- Gabon -->
@@ -9184,6 +9204,7 @@
               [079]7|
               2[0167]|
               3[45]|
+              47|
               8[789]
             )|
             8(?:
@@ -9234,6 +9255,7 @@
               [079]7|
               2[0167]|
               3[45]|
+              47|
               8[789]
             )|
             8(?:
@@ -10353,7 +10375,7 @@
       <mobile>
         <!-- The ITU document has only some of these prefixes - wikipedia lists more. We are fairly
              sure wikipedia is accurate based on news coverage of the launch of these numbers. Also
-             added 5570 and 5571 prefixes based on confirmation from the carrier. -->
+             added 5570, 5571, and 5594 prefixes based on confirmations from the carriers. -->
         <nationalNumberPattern>
           5(?:
             [02-47-9]\d{2}|
@@ -10366,7 +10388,7 @@
               6[67]|
               7[0178]|
               8[6-9]|
-              9[5-9]
+              9[4-9]
             )|
             6[2-9]\d
           )\d{5}
@@ -10595,7 +10617,7 @@
                 1[07-9]|
                 2[015-8]|
                 3[17-9]|
-                4[789]|
+                4[017-9]|
                 9[01689]
               )|
               4(?:
@@ -10684,7 +10706,10 @@
                   [01][089]
                 )|
                 3[17-9]|
-                4[789]|
+                4(?:
+                  [07-9]|
+                  11
+                )|
                 9[01689]
               )|
               4(?:
@@ -11164,7 +11189,10 @@
                   [01][089]
                 )|
                 3[17-9]\d|
-                4[789]\d|
+                4(?:
+                  [07-9]\d|
+                  11
+                )|
                 9[01689]\d
               )|
               4(?:
@@ -13832,8 +13860,10 @@
         internationalPrefix
             0031, 0033, 0071, 0073 - Special services of KT and DACOM, ignorable
         nationalPrefix
-            1[4-6]XX-YYYY - Country-wide common number services, display as it is without hyphens -->
-    <territory id="KR" countryCode="82" internationalPrefix="00(?:[124-68]|[37]\d{2})"
+            1[4-6]XX-YYYY - Country-wide common number services, display as it is without hyphens.
+        00798 is an ITFS range. So it doesn't appear here as internationalPrefix. -->
+    <territory id="KR" countryCode="82"
+               internationalPrefix="00(?:[124-68]|3\d{2}|7(?:[0-8]\d|9[0-79]))"
                nationalPrefix="0" nationalPrefixForParsing="0(8[1-46-8]|85\d{2})?"
                nationalPrefixFormattingRule="$NP$FG" carrierCodeFormattingRule="$NP$CC-$FG"
                mobileNumberPortableRegion="true">
@@ -13845,6 +13875,18 @@
         <sourceUrl>http://www.telecentro.co.kr/sub/index.php?job=detail&amp;ebcf_id=faq&amp;page=1&amp;mid=0503&amp;eb_seq=36</sourceUrl>
       </references>
       <availableFormats>
+        <numberFormat pattern="(\d{5})(\d{3,4})(\d{4})"
+          nationalPrefixFormattingRule="$FG" leadingZeroPossible="true">
+          <leadingDigits>00798</leadingDigits>
+          <format>$1 $2 $3</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <numberFormat pattern="(\d{5})(\d{2})(\d{3})(\d{4})"
+          nationalPrefixFormattingRule="$FG" leadingZeroPossible="true">
+          <leadingDigits>00798</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>
             1(?:
@@ -13943,7 +13985,7 @@
             1(?:
               5[46-9]|
               6[04678]|
-              8[0579]
+              8[03579]
             )
           </leadingDigits>
           <leadingDigits>
@@ -13964,6 +14006,7 @@
               )|
               8(?:
                 00|
+                33|
                 55|
                 77|
                 99
@@ -13975,11 +14018,18 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          007\d{9,11}|
           [1-7]\d{3,9}|
           8\d{8}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{4,14}</possibleNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <!-- 00798 ITFS numbers can't be dialled internationally. -->
+        <nationalNumberPattern>00798\d{7,9}</nationalNumberPattern>
+        <possibleNumberPattern>\d{12,14}</possibleNumberPattern>
+        <exampleNumber>007981234567</exampleNumber>
+      </noInternationalDialling>
       <fixedLine>
         <!-- We omit 049, supposedly for Kaesong Industrial Region, since real numbers can't be
              found, and it is in North Korea anyway. We support 7-8 digits long subscriber numbers
@@ -14009,8 +14059,13 @@
         <exampleNumber>1523456789</exampleNumber>
       </pager>
       <tollFree>
-        <nationalNumberPattern>80\d{7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            00798\d{0,2}|
+            80
+          )\d{7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{9,14}</possibleNumberPattern>
         <exampleNumber>801234567</exampleNumber>
       </tollFree>
       <!-- The information below is provided by a Korean person. -->
@@ -14049,6 +14104,7 @@
             )|
             8(?:
               00|
+              33|
               55|
               77|
               99
