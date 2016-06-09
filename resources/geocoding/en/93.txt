@@ -13,7 +13,8 @@
 # limitations under the License.
 
 # Generated from:
-# https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000010002PDFE.pdf Page 2 and above [2008-08-28]
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000010002PDFE.pdf
+# Starting Page 2 [2008-08-28]
 
 9320|Kabul
 9321|Parwan
