@@ -1,1 +1,6 @@
-
+Code changes:
+ - Added to checked-in tools/java/cpp-build and tools/java/java-build jars
+   getExampleNumberForType that doesn't take in a region,
+   getInvalidExampleNumber, and isNumberGeographical that returns true for
+   geographical mobile numbers (code released in libphonenumber-7.3.0).
+ - Fixed parent of java/pom.xml, eliminating Maven build warning.
