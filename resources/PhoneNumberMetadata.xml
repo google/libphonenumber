@@ -3993,8 +3993,8 @@
         <!-- Wikipedia and ITU seem out of date, but say that for a number in the format ZNY-XXXX
              Z represents the district code (or 6 for mobile), N the type of number and Y the first
              digit of the customer's number. Only N = 0 and 2 are supposedly in use, but we have
-             found many numbers starting with 732 online. No evidence has been found about the
-             category of 732 numbers. -->
+             found many numbers starting with 732 online. When emailed, Belize Telemedia Ltd
+             confirmed these numbers belong to the Landline Postpaid PSTN category. -->
         <nationalNumberPattern>
           (?:
             [23458][02]\d|
@@ -9434,7 +9434,8 @@
     </territory>
 
     <!-- Hong Kong -->
-    <territory id="HK" countryCode="852" internationalPrefix="00" mobileNumberPortableRegion="true">
+    <territory id="HK" countryCode="852" internationalPrefix="00(?:[126-9]|30|5[09])?"
+               preferredInternationalPrefix="00" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html</sourceUrl>
       </references>
@@ -9542,7 +9543,7 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Extra prefixes 227[01389], 228X, 2292, 260X and 263[04] were added from numbers
+        <!-- Extra prefixes 227[01389], 228X, 2292, 260X, 2617 and 263[04] were added from numbers
              found online. -->
         <nationalNumberPattern>
           2(?:
@@ -9570,6 +9571,7 @@
             )|
             6(?:
               [056]\d|
+              17|
               3[04]|
               4[0-378]|
               [78][0-8]|
@@ -10585,7 +10587,7 @@
           <leadingDigits>
             7(?:
               [02357]|
-              4[0-389]|
+              4[0-37-9]|
               6[0-35-9]|
               8[0-79]|
               99
@@ -10609,7 +10611,7 @@
               2(?:
                 [0235679]|
                 [14][017-9]|
-                8[0-59]|
+                8[0-569]|
                 9[389]
               )|
               3(?:
@@ -10623,9 +10625,10 @@
               4(?:
                 0[1-9]|
                 1[014-9]|
-                [29][89]|
+                2[589]|
                 39|
-                8[389]
+                7[017-9]|
+                [89]
               )|
               5(?:
                 [034678]|
@@ -10692,7 +10695,7 @@
               2(?:
                 [0235679]|
                 [14][017-9]|
-                8[0-59]|
+                8[0-569]|
                 9[389]
               )|
               3(?:
@@ -10718,9 +10721,26 @@
                   [015-9]|
                   4[08]
                 )|
-                [29][89]|
+                2(?:
+                  58|
+                  [89]
+                )|
                 39|
-                8[389]
+                7(?:
+                  0[3-9]|
+                  11|
+                  7[02-8]|
+                  [89]
+                )|
+                8(?:
+                  [0-24-7][089]|
+                  [389]
+                )|
+                9(?:
+                  [0-6][089]|
+                  7[08]|
+                  [89]
+                )
               )|
               5(?:
                 [034678]|
@@ -11158,7 +11178,8 @@
       <!-- http://en.wikipedia.org/wiki/Mobile_telephone_numbering_in_India -->
       <!-- The document titled "List of MSC codes" linked off
            http://www.dot.gov.in/access-services/national-numbering-plan-2003 was helpful but last
-           updated 2012 - more updates at http://www.dot.gov.in/access-services/allotment-msc-codes. -->
+           updated 2012 - more updates at http://www.dot.gov.in/access-services/allotment-msc-codes.
+           -->
       <mobile>
         <!-- A couple of additional prefixes found neither on the wikipedia page nor in the MSC
              codes list, are added because SMS messages have been successfully sent to these
@@ -11173,11 +11194,14 @@
             7(?:
               0\d{3}|
               2(?:
-                [0235679]\d|
-                [14][017-9]|
-                8[0-59]|
-                9[389]
-              )\d|
+                [0235679]\d{2}|
+                [14][017-9]\d|
+                8(?:
+                  [0-59]\d|
+                  6[089]
+                )|
+                9[389]\d
+              )|
               3(?:
                 [05-8]\d{2}|
                 1(?:
@@ -11201,9 +11225,26 @@
                   [015-9]\d|
                   4[08]
                 )|
-                [29][89]\d|
+                2(?:
+                  58|
+                  [89]\d
+                )|
                 39\d|
-                8[389]\d
+                7(?:
+                  0[3-9]|
+                  11|
+                  7[02-8]|
+                  [89]\d
+                )|
+                8(?:
+                  [0-24-7][089]|
+                  [389]\d
+                )|
+                9(?:
+                  [0-6][089]|
+                  7[08]|
+                  [89]\d
+                )
               )|
               5(?:
                 [034678]\d|
@@ -13749,7 +13790,7 @@
               6[5-7]
             )|
             66\d|
-            76[02-6]
+            76[02-7]
           )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
@@ -14182,6 +14223,7 @@
             )|
             6(?:
               0[034679]\d|
+              222|
               5[015-9]\d|
               6\d{2}|
               7[067]\d|
@@ -21245,14 +21287,20 @@
       </fixedLine>
       <mobile>
         <!-- 948 isn't in the number pattern, but many examples using this have been found, so
-             deeming it valid for now. -->
+             deeming it valid for now. 909[1-9] is assigned to carrier Juro as per online
+             references found. -->
         <nationalNumberPattern>
           9(?:
-            0[1-8]|
-            1[0-24-9]|
-            4[0489]|
-            50
-          )\d{6}
+            0(?:
+              [1-8]\d|
+              9[1-9]
+            )|
+            (?:
+              1[0-24-9]|
+              4[0489]|
+              50
+            )\d
+          )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>912123456</exampleNumber>
@@ -21449,7 +21497,7 @@
           7(?:
             [067]\d|
             21|
-            8[0-26]|
+            8[0-46]|
             90
           )\d{6}
         </nationalNumberPattern>
@@ -22166,14 +22214,14 @@
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Numbers found online starting with 62. 14 and 63 are from an open-source bug report,
-             we couldn't find evidence of these specifically being in use but this article
-             http://www.prachachat.net/news_detail.php?newsid=1395732787&grpid=03&catid=06&subcatid=0600
-             talks about prefix 6 and 1 being cleared for mobile use. -->
+        <!-- Numbers found online starting with 62 and 64. 14 and 63 are from an open-source bug
+             report, we couldn't find evidence of these specifically being in use but this article
+             http://www.prachachat.net/news_detail.php?newsid=1395732787 talks about prefix 6 and 1
+             being cleared for mobile use. -->
         <nationalNumberPattern>
           (?:
             14|
-            6[1-3]|
+            6[1-4]|
             [89]\d
           )\d{7}
         </nationalNumberPattern>
@@ -22918,8 +22966,8 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            6[25-8]|
-            7[13-9]
+            6[125-9]|
+            7[1-9]
           )\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>

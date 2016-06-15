@@ -341,7 +341,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
     <territory id="AR">
       <generalDesc>
-        <nationalNumberPattern>[0189]\d{1,4}</nationalNumberPattern>
+        <nationalNumberPattern>[01389]\d{1,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{2,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -353,6 +353,7 @@
             2[15]|
             9
           )|
+          3372|
           89338|
           911
         </nationalNumberPattern>
@@ -371,10 +372,15 @@
         <possibleNumberPattern>\d{2,3}</possibleNumberPattern>
         <exampleNumber>111</exampleNumber>
       </tollFree>
+      <!-- 911 is only available in select cities. Since it's not available everywhere
+           and is location specific adding this number here. -->
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <nationalNumberPattern>89338</nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <nationalNumberPattern>
+          89338|
+          911
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </carrierSpecific>
       <emergency>
         <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
@@ -393,8 +399,11 @@
       </expandedEmergency>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <nationalNumberPattern>89338</nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <nationalNumberPattern>
+          3372|
+          89338
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
       </smsServices>
     </territory>
 
@@ -7287,17 +7296,29 @@
     <!-- Norway -->
     <!-- Country calling code shared with Svalbard. -->
     <!-- http://www.npt.no/npt/numsys/E.164.pdf -->
+    <!-- http://www.nkom.no/npt/numsys/E.1643sifret_en.pdf -->
     <territory id="NO">
       <generalDesc>
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- 143 is assigned but not visible to end users, no other online evidence
+             found, hence not included -->
         <nationalNumberPattern>
-          11(?:
-             [023]|
-             6117
-            )
+          1(?:
+            1(?:
+              [0239]|
+              6117
+            )|
+            2[048]|
+            4(?:
+              12|
+              [59]
+            )|
+            7[57]|
+            90
+          )
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </shortCode>
@@ -7312,7 +7333,12 @@
         <exampleNumber>112</exampleNumber>
       </emergency>
       <expandedEmergency>
-        <nationalNumberPattern>116117</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            16117|
+            412
+          )
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <exampleNumber>116117</exampleNumber>
       </expandedEmergency>
