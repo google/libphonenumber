@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,26 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-421901|Telekom
-421902|Telekom
-421903|Telekom
-421904|Telekom
-421905|Orange
-421906|Orange
-421907|Orange
-421908|Orange
-421909|Juro
-421910|Telekom
-421911|Telekom
-421912|Telekom
-421914|Telekom
-421915|Orange
-421916|Orange
-421917|Orange
-421918|Orange
-421919|Orange
-421940|O2
-421944|O2
-421948|O2
-421949|O2
-421950|4ka of SWAN
+9370|افغان بی سیم
+937280|روشن
+93729|روشن
+93744|افغان تلکام
+93747|افغان تلکام
+9375|افغان تلکام
+9376|ام تی ان
+9377|ام تی ان
+9378|اتصالات
+9379|روشن
