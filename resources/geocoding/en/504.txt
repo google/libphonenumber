@@ -12,4 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+5042407|Roatan, Bay Islands
 5042617|Choloma, Cortés

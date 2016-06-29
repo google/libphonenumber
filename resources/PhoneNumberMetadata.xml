@@ -1932,6 +1932,8 @@
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <!-- ITU uses XX XXX XXXX for mobile numbers, but numbers online typically
+             use XX XXX XX XX. -->
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>[4-8]</leadingDigits>
           <format>$1 $2 $3 $4</format>
@@ -1946,10 +1948,13 @@
         <nationalNumberPattern>[1-9]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
       </generalDesc>
+      <!-- 12109 fixed line numbers are mentioned as "Information Operator Assistance"
+           by ITU. Added it to fixedline numbers as whole 12 range numbers are fixedline
+           numbers in Baku. -->
       <fixedLine>
         <nationalNumberPattern>
           (?:
-            1[28]\d|
+            1[28]\d{3}|
             2(?:
               02|
               1[24]|
@@ -1957,20 +1962,28 @@
               33|
               [45]2|
               6[23]
-            )|
-            365
-          )\d{6}
+            )\d{2}|
+            365(?:
+              [0-46-9]\d|
+              5[0-35-9]
+            )
+          )\d{4}
         </nationalNumberPattern>
         <exampleNumber>123123456</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Prefix 36554 is added to mobile as per confirmation from Ministry of
+             Communications in Azerbaijan. -->
         <nationalNumberPattern>
           (?:
-            4[04]|
-            5[015]|
-            60|
-            7[07]
-          )\d{7}
+            36554|
+            (?:
+              4[04]|
+              5[015]|
+              60|
+              7[07]
+            )\d{3}
+          )\d{4}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <exampleNumber>401234567</exampleNumber>
@@ -2918,13 +2931,14 @@
         <exampleNumber>17001234</exampleNumber>
       </fixedLine>
       <!-- 31 is assigned to Royal Court, as per documents on Bahrain's own telecom site, even
-           though it is omitted from the ITU document. -->
+           though it is omitted from the ITU document. Based on online evidences added prefix
+           354 to mobile. -->
       <mobile>
         <nationalNumberPattern>
           (?:
             3(?:
               [1-4679]\d|
-              5[013569]|
+              5[013-69]|
               8[0-47-9]
             )\d|
             6(?:
@@ -9543,8 +9557,8 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Extra prefixes 227[01389], 228X, 2292, 260X, 2617 and 263[04] were added from numbers
-             found online. -->
+        <!-- Extra prefixes 227[01389], 228X, 2292, 2407, 260X, 2617 and 263[04] were added from
+             numbers found online and user reports. -->
         <nationalNumberPattern>
           2(?:
             2(?:
@@ -9558,6 +9572,7 @@
               9[012]
             )|
             4(?:
+              07|
               2[3-59]|
               3[13-689]|
               4[0-68]|
@@ -10586,10 +10601,9 @@
         <numberFormat pattern="(\d{5})(\d{5})">
           <leadingDigits>
             7(?:
-              [02357]|
+              [023578]|
               4[0-37-9]|
               6[0-35-9]|
-              8[0-79]|
               99
             )|
             8(?:
@@ -10607,7 +10621,7 @@
           </leadingDigits>
           <leadingDigits>
             7(?:
-              0|
+              [08]|
               2(?:
                 [0235679]|
                 [14][017-9]|
@@ -10620,7 +10634,7 @@
                 2[015-8]|
                 3[17-9]|
                 4[017-9]|
-                9[01689]
+                9[015689]
               )|
               4(?:
                 0[1-9]|
@@ -10649,7 +10663,6 @@
                 [1-79]|
                 8[1-9]
               )|
-              8[0-79]|
               99[4-9]
             )|
             8(?:
@@ -10713,7 +10726,10 @@
                   [07-9]|
                   11
                 )|
-                9[01689]
+                9(?:
+                  [01689]|
+                  59
+                )
               )|
               4(?:
                 0[1-9]|
@@ -10761,7 +10777,10 @@
                 [1-79]|
                 8[1-9]
               )|
-              8[0-79]|
+              8(?:
+                [0-79]|
+                880
+              )|
               99[4-9]
             )|
             8(?:
@@ -11217,7 +11236,10 @@
                   [07-9]\d|
                   11
                 )|
-                9[01689]\d
+                9(?:
+                  [01689]\d|
+                  59
+                )
               )|
               4(?:
                 0[1-9]\d|
@@ -11265,7 +11287,10 @@
                 [1-79]\d|
                 8[1-9]
               )\d|
-              8[0-79]\d{2}|
+              8(?:
+                [0-79]\d{2}|
+                880
+              )|
               99[4-9]\d
             )|
             8(?:
@@ -11306,7 +11331,7 @@
           )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{10}</possibleNumberPattern>
-        <exampleNumber>9123456789</exampleNumber>
+        <exampleNumber>9987654321</exampleNumber>
       </mobile>
       <tollFree>
         <!-- Information gathered from sites such as
@@ -23397,7 +23422,7 @@
               0[1346-9]|
               1[02-9]|
               2[0589]|
-              3[01678]|
+              3[014678]|
               4[0179]|
               5[12469]|
               7[0-3589]|
@@ -23405,7 +23430,7 @@
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>2015555555</exampleNumber>
+        <exampleNumber>2015550123</exampleNumber>
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
@@ -23489,7 +23514,7 @@
               0[1346-9]|
               1[02-9]|
               2[0589]|
-              3[01678]|
+              3[014678]|
               4[0179]|
               5[12469]|
               7[0-3589]|
@@ -23497,7 +23522,7 @@
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
-        <exampleNumber>2015555555</exampleNumber>
+        <exampleNumber>2015550123</exampleNumber>
       </mobile>
       <tollFree>
         <nationalNumberPattern>

@@ -1315,7 +1315,7 @@
               330|
               878
             )|
-            85959
+            85959?
           )|
           40404|
           911
@@ -1388,14 +1388,14 @@
       </carrierSelectionCodes>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <!-- Added short code 285959 after a report that it is used for SMS services. -->
+        <!-- Added short codes 28595 and 285959 after a report that it is used for SMS services. -->
         <nationalNumberPattern>
           2(?:
             7(?:
               330|
               878
             )|
-            85959
+            85959?
           )|
           40404
         </nationalNumberPattern>
@@ -4740,8 +4740,8 @@
     <!-- http://en.wikipedia.org/wiki/%2B91 -->
     <territory id="IN">
       <generalDesc>
-        <nationalNumberPattern>[125]\d{2,4}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <nationalNumberPattern>[125]\d{2,6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,7}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
@@ -4751,7 +4751,10 @@
             298
           )|
           2611|
-          53000
+          5(?:
+            3000|
+            757555
+          )
         </nationalNumberPattern>
         <exampleNumber>108</exampleNumber>
       </shortCode>
@@ -4760,6 +4763,12 @@
         <nationalNumberPattern>53000</nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
       </carrierSpecific>
+      <standardRate>
+        <!-- Cost of SMS to 5757555 is of standard rate. -->
+        <nationalNumberPattern>5757555</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <exampleNumber>5757555</exampleNumber>
+      </standardRate>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -4772,6 +4781,10 @@
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>108</exampleNumber>
       </emergency>
+      <smsServices>
+        <nationalNumberPattern>5757555</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- British Indian Ocean Territory / Diego Garcia -->
@@ -8397,7 +8410,8 @@
                 111
               )
             )|
-            5[058]
+            5[058]|
+            8\d{3}
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
