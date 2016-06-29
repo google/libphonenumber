@@ -375,6 +375,7 @@
 9173910|Vodafone
 9173918|Vodafone
 9173919|Vodafone
+9173959|Airtel
 917396|Telewings
 917398|Telewings
 917399|Dishnet
@@ -842,6 +843,7 @@
 917877|Reliance
 917878|Reliance
 917879|Reliance
+9178880|Idea
 917890|Idea
 917891|Idea
 917893|Airtel

@@ -1,3 +1,12 @@
+Jun 29, 2016: libphonenumber-7.4.4
+Metadata changes:
+ - Updated phone metadata for region code(s): AZ, BH, HN, IN, US
+ - Updated short number metadata for region code(s): BR, IN, SK
+ - New geocoding data for country calling code(s): 994 (en), 
+ - Updated geocoding data for country calling code(s): 504 (en), 1 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 973 (en), 994 (en)
+
 Jun 15, 2016: libphonenumber-7.4.3
 Metadata changes:
  - Updated phone metadata for region code(s):
