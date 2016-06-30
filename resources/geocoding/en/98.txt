@@ -37,10 +37,8 @@
 9851|Razavi Khorasan
 9854|Sistan and Baluchestan
 9856|South Khorasan
-9857|North Khorasan
 9858|North Khorasan
 9861|Khuzestan
-9864|North Khorasan
 9866|Lorestan
 9871|Fars
 9874|Kohgiluyeh and Boyer-Ahmad
