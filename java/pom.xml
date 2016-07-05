@@ -8,9 +8,9 @@
   <url>https://github.com/googlei18n/libphonenumber/</url>
 
   <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
+    <groupId>com.google.i18n.phonenumbers</groupId>
+    <artifactId>libphonenumber-build-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
   </parent>
 
   <description>
@@ -92,7 +92,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.12</version>
         <configuration>
-          <forkMode>never</forkMode>
+          <forkCount>0</forkCount>
           <includes>
             <include>**/*Test.java</include>
           </includes>
