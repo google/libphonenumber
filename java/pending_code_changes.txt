@@ -1,1 +1,2 @@
-
+Code changes:
+ - Fixed parent of java/pom.xml, eliminating Maven build warning.
