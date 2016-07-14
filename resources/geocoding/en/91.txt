@@ -2336,7 +2336,7 @@
 918301|Mundagod, Karnataka
 918304|Kundgol, Karnataka
 91831|Belgaum, Karnataka
-91832|Panji, Maharashtra
+91832|Goa
 918330|Saundatti, Karnataka
 918331|Raibag/Kudchi, Karnataka
 918332|Gokak, Karnataka
@@ -2347,10 +2347,6 @@
 918337|Murugod, Karnataka
 918338|Chikkodi, Karnataka
 918339|Ainapur, Karnataka
-918342|Margao, Maharashtra
-918343|Ponda, Maharashtra
-918345|Sanguem, Maharashtra
-918346|Canacona/Quepem, Maharashtra
 918350|Mudhol, Karnataka
 918351|Hungund, Karnataka
 918352|Bijapur, Karnataka

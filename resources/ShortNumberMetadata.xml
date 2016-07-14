@@ -111,12 +111,13 @@
     <!-- http://www.itu.int/oth/T02020000DC/en -->
     <territory id="AE">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[149]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           112|
+          4451|
           99[789]
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
@@ -128,6 +129,12 @@
         </nationalNumberPattern>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- As per online evidences, 4451 is an SMS-able short code. -->
+        <nationalNumberPattern>4451</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>4451</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Afghanistan -->
@@ -1317,7 +1324,10 @@
             )|
             85959?
           )|
-          40404|
+          4(?:
+            0404|
+            828
+          )|
           911
         </nationalNumberPattern>
         <exampleNumber>168</exampleNumber>
@@ -1329,9 +1339,10 @@
           1(?:
             00|
             81
-          )
+          )|
+          4828
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>181</exampleNumber>
       </tollFree>
       <standardRate>
@@ -1388,7 +1399,8 @@
       </carrierSelectionCodes>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <!-- Added short codes 28595 and 285959 after a report that it is used for SMS services. -->
+        <!-- Added short codes 28595, 285959 and 4828 after a report that it is used for SMS
+             services. -->
         <nationalNumberPattern>
           2(?:
             7(?:
@@ -1397,9 +1409,12 @@
             )|
             85959?
           )|
-          40404
+          4(?:
+            0404|
+            828
+          )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
         <exampleNumber>27878</exampleNumber>
       </smsServices>
     </territory>
@@ -3677,18 +3692,23 @@
     <!-- United Kingdom -->
     <territory id="GB">
       <generalDesc>
-        <nationalNumberPattern>[1-4679]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1-467-9]\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <!-- This is a list of the ones that can be called (as opposed to numbers used by text
-             delivery or data services). -->
         <nationalNumberPattern>
           1(?:
             0[01]|
             1(?:
               [12]|
-              [68]\d{3}
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8\d{3}
             )|
             2[123]|
             33|
@@ -3696,13 +3716,20 @@
               1|
               7\d
             )|
-            5\d|
-            70\d|
+            5(?:
+              \d|
+              71
+            )|
+            7(?:
+              0\d|
+              [56]0
+            )|
             800\d|
             9[15]
           )|
           2(?:
-            02|
+            02(?:02)?|
+            1300|
             2(?:
               02|
               11|
@@ -3710,9 +3737,13 @@
             )|
             3(?:
               02|
+              336|
               45
             )|
-            425
+            4(?:
+              25|
+              8
+            )
           )|
           3[13]3|
           4(?:
@@ -3721,8 +3752,19 @@
             44[45]|
             5\d
           )|
-          650|
-          789|
+          6(?:
+            50|
+            \d{4}
+          )|
+          7(?:
+            0\d{3}|
+            8(?:
+              9|
+              \d{3}
+            )|
+            9\d{3}
+          )|
+          8\d{4}|
           9(?:
             01|
             99
@@ -3751,19 +3793,56 @@
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <exampleNumber>116000</exampleNumber>
       </expandedEmergency>
+      <!-- http://www.short-codes.com/codes/browse/70000-70999/100_1 says that the service is not
+           available as voice for any of these prefixes for at least some carriers; for carriers
+           where it is listed as possible it isn't actually activated for any short-code at this
+           time. This is the same for the 78, 79, 80 and 81 prefixes. -->
+      <smsServices>
+        <nationalNumberPattern>
+          2(?:
+            0202|
+            1300
+          )|
+          7\d{4}|
+          8[01]\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>20202</exampleNumber>
+      </smsServices>
       <tollFree>
         <nationalNumberPattern>
-          116(?:
-            000|
-            1(?:
-              11|
-              23
-            )
-          )
+          1(?:
+            16\d{3}|
+            7[56]0|
+            8000
+          )|
+          2(?:
+            202|
+            48
+          )|
+          4444
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6}</possibleNumberPattern>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
+      <carrierSpecific>
+        <nationalNumberPattern>
+          1(?:
+            571|
+            7[56]0
+          )|
+          2(?:
+            02(?:02)?|
+            1300|
+            3336|
+            48
+          )|
+          4444|
+          901
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
+        <exampleNumber>1571</exampleNumber>
+      </carrierSpecific>
     </territory>
 
     <!-- Grenada -->
@@ -9629,9 +9708,11 @@
     <!-- South Africa -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa -->
+    <!-- Check http://smscode.co.za/index.asp for verification of short codes and cost
+         information. -->
     <territory id="ZA">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -9642,10 +9723,16 @@
               77
             )|
             12
-          )
+          )|
+          47751
         </nationalNumberPattern>
         <exampleNumber>10111</exampleNumber>
       </shortCode>
+      <standardRate>
+        <nationalNumberPattern>47751</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>47751</exampleNumber>
+      </standardRate>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -9658,6 +9745,12 @@
         </nationalNumberPattern>
         <exampleNumber>10111</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- Added SMS service short code 47751 as per online evidences found. -->
+        <nationalNumberPattern>47751</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <exampleNumber>47751</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Zambia -->
