@@ -219,3 +219,19 @@ surprising how many false assumptions programmers continue to make about them.
     `1-555-123-4567`. This is technically incorrect. To call this number from
     Japan, where the international call prefix is `010`, one may dial either `+1
     555 123 4567` or `010 1 555 123 4567`.
+
+1.  **Users will only store phone numbers in your product's phone number fields**
+
+    Some users use their contact lists to store things like birthdays or other
+    information. Unless a piece of user-supplied data has actually been verified
+    to be a phone number, it should be stored as-is as entered by the user.
+
+1.  **Phone numbering plans published by governments or telecoms represent
+    reality**
+
+    National numbering plans, such as those administered by the
+    [ITU](http://www.itu.int/oth/T0202.aspx?parent=T0202), represent the
+    intentions of the government or telecom. These may be published before,
+    during, or after the actual implementation of numbering plan changes in the
+    real world. The actual date on which a phone number range becomes active may
+    not always adhere to official announcements.
