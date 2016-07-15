@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@
 # Manually translated
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Armenia#Mobile_network_codes
 
-37441|Оранж
+37441|Юком
 37443|Билайн
 37449|ВиваСелл-МТС
-37455|Оранж
+37455|Юком
 37477|ВиваСелл-МТС
 37491|Билайн
 37493|ВиваСелл-МТС
 37494|ВиваСелл-МТС
-37495|Оранж
+37495|Юком
 37496|Билайн
 37498|ВиваСелл-МТС
-37499|Биланй
+37499|Билайн
