@@ -16,6 +16,9 @@
 
 package com.google.i18n.phonenumbers;
 
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+
+import java.util.concurrent.ConcurrentHashMap;
 import junit.framework.TestCase;
 
 /**
@@ -24,21 +27,38 @@ import junit.framework.TestCase;
 public class MultiFileMetadataSourceImplTest extends TestCase {
   public MultiFileMetadataSourceImplTest() {}
 
+  public void testGeographicalRegionMetadataLoadsCorrectly() {
+    ConcurrentHashMap<String, PhoneMetadata> map = new ConcurrentHashMap<String, PhoneMetadata>();
+    PhoneMetadata metadata = MultiFileMetadataSourceImpl.loadMetadataFromFile(
+        "CA", map, "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting",
+        PhoneNumberUtil.DEFAULT_METADATA_LOADER);
+    assertEquals(metadata, map.get("CA"));
+  }
+
+  public void testNonGeographicalRegionMetadataLoadsCorrectly() {
+    ConcurrentHashMap<Integer, PhoneMetadata> map = new ConcurrentHashMap<Integer, PhoneMetadata>();
+    PhoneMetadata metadata = MultiFileMetadataSourceImpl.loadMetadataFromFile(
+        800, map, "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting",
+        PhoneNumberUtil.DEFAULT_METADATA_LOADER);
+    assertEquals(metadata, map.get(800));
+  }
+
   public void testMissingMetadataFileThrowsRuntimeException() {
-    MultiFileMetadataSourceImpl multiFileMetadataSource = new MultiFileMetadataSourceImpl(
-        "no/such/file", PhoneNumberUtil.DEFAULT_METADATA_LOADER);
     // In normal usage we should never get a state where we are asking to load metadata that doesn't
     // exist. However if the library is packaged incorrectly in the jar, this could happen and the
     // best we can do is make sure the exception has the file name in it.
     try {
-      multiFileMetadataSource.loadMetadataFromFile("XX", -1);
+      MultiFileMetadataSourceImpl.loadMetadataFromFile(
+          "XX", new ConcurrentHashMap<String, PhoneMetadata>(), "no/such/file",
+          PhoneNumberUtil.DEFAULT_METADATA_LOADER);
       fail("expected exception");
     } catch (RuntimeException e) {
       assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file_XX"));
     }
     try {
-      multiFileMetadataSource.loadMetadataFromFile(
-          PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY, 123);
+      MultiFileMetadataSourceImpl.loadMetadataFromFile(
+          123, new ConcurrentHashMap<Integer, PhoneMetadata>(), "no/such/file",
+          PhoneNumberUtil.DEFAULT_METADATA_LOADER);
       fail("expected exception");
     } catch (RuntimeException e) {
       assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file_123"));

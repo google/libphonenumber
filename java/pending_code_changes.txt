@@ -1,1 +1,2 @@
-
+Code changes:
+ - Make metadata loading thread-safe in MultiFileMetadataSourceImpl.
