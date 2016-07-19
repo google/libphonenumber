@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Manually translated
+# Translated manually from en/374.txt
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Armenia#Mobile_network_codes
 
 37441|Юком
