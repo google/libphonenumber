@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Translated manually from en/374.txt
-# http://en.wikipedia.org/wiki/Telephone_numbers_in_Armenia#Mobile_network_codes
+# Translated manually from en/374.txt.
 
 37441|Юком
 37443|Билайн
