@@ -82,18 +82,26 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       return loadMetadataFromFile(
           countryCallingCode, countryCodeToNonGeographicalMetadataMap, filePrefix, metadataLoader);
     }
+    // The given country calling code was non-geographic, so we return null.
     return null;
   }
 
+  // A country calling code is non-geographic if it only maps to the non-geographical region code.
   private boolean isNonGeographicalCountryCallingCode(int countryCallingCode) {
     List<String> regionCodes =
         CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap().get(countryCallingCode);
-    // A country calling code is non-geographic if it only maps to the non-geographical region code.
-    return (regionCodes.size() == 1 &&
-        PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCodes.get(0)));
+    return (regionCodes.size() == 1
+        && PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCodes.get(0)));
   }
 
-  // @param key  The geographical region code or non-geographical region's country calling code.
+  /**
+   * @param key             The geographical region code or non-geographical region's country
+                            calling code.
+   * @param map             The map to contain the mapping from {@code key} to the corresponding
+                            metadata.
+   * @param filePrefix      The prefix of the metadata files from which region data is loaded.
+   * @param metadataLoader  The metadata loader used to inject alternative metadata sources.
+   */
   // @VisibleForTesting
   static <T> PhoneMetadata loadMetadataFromFile(
       T key, ConcurrentHashMap<T, PhoneMetadata> map, String filePrefix,

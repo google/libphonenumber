@@ -1,2 +1,3 @@
 Code changes:
- - Make metadata loading thread-safe in MultiFileMetadataSourceImpl.
+ - Simplify concurrent metadata loading in MultiFileMetadataSourceImpl and
+   reduce points of contention.
