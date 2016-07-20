@@ -110,47 +110,43 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    try {
-      PhoneMetadataCollection metadataCollection =
-          loadMetadataAndCloseInput(new ObjectInputStream(source));
-      PhoneMetadata[] metadataList = metadataCollection.metadata;
-      if (metadataList.length == 0) {
-        logger.log(Level.SEVERE, "empty metadata: " + fileName);
-        throw new IllegalStateException("empty metadata: " + fileName);
-      }
-      if (metadataList.length > 1) {
-        logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
-      }
-      PhoneMetadata metadata = metadataList[0];
-      if (isNonGeoRegion) {
-        countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
-      } else {
-        regionToMetadataMap.put(regionCode, metadata);
-      }
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
-      throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
+    PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(source);
+    PhoneMetadata[] metadataList = metadataCollection.metadata;
+    if (metadataList.length == 0) {
+      logger.log(Level.SEVERE, "empty metadata: " + fileName);
+      throw new IllegalStateException("empty metadata: " + fileName);
+    }
+    if (metadataList.length > 1) {
+      logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
+    }
+    PhoneMetadata metadata = metadataList[0];
+    if (isNonGeoRegion) {
+      countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
+    } else {
+      regionToMetadataMap.put(regionCode, metadata);
     }
   }
 
   /**
-   * Loads the metadata protocol buffer from the given stream and closes the stream afterwards. Any
-   * exceptions that occur while reading or closing the stream are ignored.
+   * Loads the metadata protocol buffer from the given stream and closes the stream afterwards.
    *
    * @param source  the non-null stream from which metadata is to be read.
    * @return        the loaded metadata protocol buffer.
    */
-  private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
+  private static PhoneMetadataCollection loadMetadataAndCloseInput(InputStream source) {
     // The size of the byte buffer used for deserializing the phone number metadata files for each
     // region.
     final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
 
-    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
     try {
-      metadataCollection.mergeFrom(
-          MetadataManager.convertStreamToByteBuffer(source, MULTI_FILE_BUFFER_SIZE));
+      // Read in metadata for each region.
+      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
+      metadataCollection.mergeFrom(MetadataManager.convertStreamToByteBuffer(
+          new ObjectInputStream(source), MULTI_FILE_BUFFER_SIZE));
+      return metadataCollection;
     } catch (IOException e) {
-      logger.log(Level.WARNING, "error reading input (ignored)", e);
+      logger.log(Level.SEVERE, "cannot load/parse metadata", e);
+      throw new RuntimeException("cannot load/parse metadata", e);
     } finally {
       try {
         source.close();
@@ -158,6 +154,5 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
         logger.log(Level.WARNING, "error closing input stream (ignored)", e);
       }
     }
-    return metadataCollection;
   }
 }
