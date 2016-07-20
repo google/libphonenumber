@@ -100,9 +100,9 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
 
   /**
    * @param key             The geographical region code or the non-geographical region's country
-                            calling code.
+   *                        calling code.
    * @param map             The map to contain the mapping from {@code key} to the corresponding
-                            metadata.
+   *                        metadata.
    * @param filePrefix      The prefix of the metadata files from which region data is loaded.
    * @param metadataLoader  The metadata loader used to inject alternative metadata sources.
    */
@@ -114,13 +114,11 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
     String fileName = filePrefix + "_" + key;
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
-      logger.log(Level.SEVERE, "missing metadata: " + fileName);
       throw new IllegalStateException("missing metadata: " + fileName);
     }
     PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(source);
     PhoneMetadata[] metadataList = metadataCollection.metadata;
     if (metadataList.length == 0) {
-      logger.log(Level.SEVERE, "empty metadata: " + fileName);
       throw new IllegalStateException("empty metadata: " + fileName);
     }
     if (metadataList.length > 1) {
@@ -146,7 +144,6 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
           new ObjectInputStream(source), MULTI_FILE_BUFFER_SIZE));
       return metadataCollection;
     } catch (IOException e) {
-      logger.log(Level.SEVERE, "cannot load/parse metadata", e);
       throw new RuntimeException("cannot load/parse metadata", e);
     } finally {
       try {
