@@ -39,13 +39,13 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
 
   // A mapping from a region code to the PhoneMetadata for that region.
-  private final ConcurrentHashMap<String, PhoneMetadata> regionToMetadataMap =
+  private final ConcurrentHashMap<String, PhoneMetadata> geographicalRegions =
       new ConcurrentHashMap<String, PhoneMetadata>();
 
   // A mapping from a country calling code for a non-geographical entity to the PhoneMetadata for
   // that country calling code. Examples of the country calling codes include 800 (International
   // Toll Free Service) and 808 (International Shared Cost Service).
-  private final ConcurrentHashMap<Integer, PhoneMetadata> countryCodeToNonGeographicalMetadataMap =
+  private final ConcurrentHashMap<Integer, PhoneMetadata> nonGeographicalRegions =
       new ConcurrentHashMap<Integer, PhoneMetadata>();
 
   // The prefix of the metadata files from which region data is loaded.
@@ -54,40 +54,44 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   // The metadata loader used to inject alternative metadata sources.
   private final MetadataLoader metadataLoader;
 
-  // It is assumed that metadataLoader is not null.
-  public MultiFileMetadataSourceImpl(String filePrefix, MetadataLoader metadataLoader) {
+  // It is assumed that metadataLoader is not null. If needed, checks should happen before passing
+  // here.
+  // @VisibleForTesting
+  MultiFileMetadataSourceImpl(String filePrefix, MetadataLoader metadataLoader) {
     this.filePrefix = filePrefix;
     this.metadataLoader = metadataLoader;
   }
 
-  // It is assumed that metadataLoader is not null.
+  // It is assumed that metadataLoader is not null. If needed, checks should happen before passing
+  // here.
   public MultiFileMetadataSourceImpl(MetadataLoader metadataLoader) {
     this(META_DATA_FILE_PREFIX, metadataLoader);
   }
 
   @Override
   public PhoneMetadata getMetadataForRegion(String regionCode) {
-    PhoneMetadata metadata = regionToMetadataMap.get(regionCode);
+    PhoneMetadata metadata = geographicalRegions.get(regionCode);
     return (metadata != null) ? metadata : loadMetadataFromFile(
-        regionCode, regionToMetadataMap, filePrefix, metadataLoader);
+        regionCode, geographicalRegions, filePrefix, metadataLoader);
   }
 
   @Override
   public PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
-    PhoneMetadata metadata = countryCodeToNonGeographicalMetadataMap.get(countryCallingCode);
+    PhoneMetadata metadata = nonGeographicalRegions.get(countryCallingCode);
     if (metadata != null) {
       return metadata;
     }
-    if (isNonGeographicalCountryCallingCode(countryCallingCode)) {
+    if (isNonGeographical(countryCallingCode)) {
       return loadMetadataFromFile(
-          countryCallingCode, countryCodeToNonGeographicalMetadataMap, filePrefix, metadataLoader);
+          countryCallingCode, nonGeographicalRegions, filePrefix, metadataLoader);
     }
-    // The given country calling code was non-geographic, so we return null.
+    // The given country calling code was for a geographical region.
     return null;
   }
 
-  // A country calling code is non-geographic if it only maps to the non-geographical region code.
-  private boolean isNonGeographicalCountryCallingCode(int countryCallingCode) {
+  // A country calling code is non-geographical if it only maps to the non-geographical region code,
+  // i.e. "001".
+  private boolean isNonGeographical(int countryCallingCode) {
     List<String> regionCodes =
         CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap().get(countryCallingCode);
     return (regionCodes.size() == 1
@@ -95,7 +99,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   }
 
   /**
-   * @param key             The geographical region code or non-geographical region's country
+   * @param key             The geographical region code or the non-geographical region's country
                             calling code.
    * @param map             The map to contain the mapping from {@code key} to the corresponding
                             metadata.
