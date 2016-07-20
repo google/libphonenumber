@@ -23,7 +23,8 @@ import java.io.InputStream;
  */
 public interface MetadataLoader {
   /**
-   * Returns an input stream corresponding to the metadata to load.
+   * Returns an input stream corresponding to the metadata to load. This method may be called
+   * concurrently so implementations must be thread-safe.
    *
    * @param metadataFileName File name (including path) of metadata to load. File path is an
    *     absolute class path like /com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto.
