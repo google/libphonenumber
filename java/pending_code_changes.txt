@@ -1,3 +1,1 @@
-Code changes:
- - Simplify concurrent metadata loading in MultiFileMetadataSourceImpl and
-   reduce points of contention.
+

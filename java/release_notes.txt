@@ -1,3 +1,8 @@
+Jul 22, 2016: libphonenumber-7.5.0
+Code changes:
+ - Simplify concurrent metadata loading in MultiFileMetadataSourceImpl and
+   reduce points of contention.
+
 Jul 14, 2016: libphonenumber-7.4.5
 Metadata changes:
  - Updated phone metadata for region code(s): CN, HN, IN, KW, LV, TC
@@ -11,7 +16,7 @@ Jun 29, 2016: libphonenumber-7.4.4
 Metadata changes:
  - Updated phone metadata for region code(s): AZ, BH, HN, IN, US
  - Updated short number metadata for region code(s): BR, IN, SK
- - New geocoding data for country calling code(s): 994 (en), 
+ - New geocoding data for country calling code(s): 994 (en),
  - Updated geocoding data for country calling code(s): 504 (en), 1 (en)
  - Updated carrier data for country calling code(s):
    91 (en), 973 (en), 994 (en)
