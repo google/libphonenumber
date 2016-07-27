@@ -202,7 +202,16 @@
 917281|Vodafone
 917282|Vodafone
 917283|Vodafone
-917287|Airtel
+9172870|Airtel
+9172871|Airtel
+9172872|Airtel
+9172873|Airtel
+9172874|Airtel
+9172875|Airtel
+9172876|Airtel
+9172877|Airtel
+9172878|Idea
+9172879|Airtel
 917289|Airtel
 917293|Dishnet
 917298|Dishnet
@@ -471,6 +480,7 @@
 9174500|Idea
 9174508|Idea
 9174509|Idea
+9174559|Airtel
 9174599|Airtel
 9174703|Airtel
 9174704|Airtel
@@ -916,6 +926,7 @@
 917878|Reliance
 917879|Reliance
 9178880|Idea
+9178881|Idea
 917890|Idea
 917891|Idea
 917893|Airtel
