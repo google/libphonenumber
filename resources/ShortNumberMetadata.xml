@@ -4831,6 +4831,7 @@
           )|
           2611|
           5(?:
+            143[46]|
             3000|
             757555
           )
@@ -4843,9 +4844,14 @@
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
       </carrierSpecific>
       <standardRate>
-        <!-- Cost of SMS to 5757555 is of standard rate. -->
-        <nationalNumberPattern>5757555</nationalNumberPattern>
-        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <!-- Cost of SMS to 51434, 51436 and 5757555 is of standard rate. -->
+        <nationalNumberPattern>
+          5(?:
+            143[46]|
+            757555
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,7}</possibleNumberPattern>
         <exampleNumber>5757555</exampleNumber>
       </standardRate>
       <emergency>
@@ -4861,8 +4867,13 @@
         <exampleNumber>108</exampleNumber>
       </emergency>
       <smsServices>
-        <nationalNumberPattern>5757555</nationalNumberPattern>
-        <possibleNumberPattern>\d{7}</possibleNumberPattern>
+        <nationalNumberPattern>
+          5(?:
+            143[46]|
+            757555
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,7}</possibleNumberPattern>
       </smsServices>
     </territory>
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-992411|Megafon
-992418|Megafon
-992501|Tcell
-992502|Tcell
-99255|Megafon
-99288|Megafon
-99290|Megafon
-992917|Tacom
-992918|Babilon-M
-992919|Tacom
-992927|Tcell
-99293|Tcell
-99298|Babilon-M
+# Translations of the en/82.txt file from Wikipedia.
+
+# https://tr.wikipedia.org/wiki/G%C3%BCney_Kore%27nin_idari_b%C3%B6l%C3%BCmleri
+
+822|Seul
+8231|Gyeonggi
+8232|Daejeon
+8233|Gangwon
+8241|Güney Chungcheong
+8242|Daejeon
+8243|Kuzey Chungcheong
+8244|Sejong
+8251|Busan
+8252|Ulsan
+8253|Daegu
+8254|Kuzey Gyeongsang
+8255|Güney Gyeongsang
+8261|Güney Jeolla
+8262|Gwangju
+8263|Kuzey Jeolla
+8264|Jeju

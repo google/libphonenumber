@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-992411|Megafon
-992418|Megafon
-992501|Tcell
-992502|Tcell
-99255|Megafon
-99288|Megafon
-99290|Megafon
-992917|Tacom
-992918|Babilon-M
-992919|Tacom
-992927|Tcell
-99293|Tcell
-99298|Babilon-M
+# Translations of the en/82.txt file from Wikipedia.
+
+# No translations could be found for many of the prefixes, so they have
+# been omitted. Missing prefixes: 41, 43, 44, 54, 55, 62, 63, 64.
+
+822|Σεούλ
+8231|Γκιόνγκι-ντο
+8232|Ίντσον
+8233|Γκάνγουον-ντο (Νότιας Κορέας)
+8242|Ντέτζον
+8251|Μπούσαν
+8252|Ούλσαν
+8253|Ντέγκου
+8262|Γκουάνγκτζου

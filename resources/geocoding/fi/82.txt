@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-992411|Megafon
-992418|Megafon
-992501|Tcell
-992502|Tcell
-99255|Megafon
-99288|Megafon
-99290|Megafon
-992917|Tacom
-992918|Babilon-M
-992919|Tacom
-992927|Tcell
-99293|Tcell
-99298|Babilon-M
+# Translations of the en/82.txt file from Wikipedia.
+# No translation for "Sejong City" could be found, so prefix 8244 has been
+# omitted.
+
+822|Soul
+8231|Gyeonggi
+8232|Incheon
+8233|Gangwon
+8241|Etelä-Chungcheong
+8242|Daejeon
+8243|Pohjois-Chungcheong
+8251|Busan
+8252|Ulsan
+8253|Daegu
+8254|Pohjois-Gyeongsang
+8255|Etelä-Gyeongsang
+8261|Etelä-Jeolla
+8262|Gwangju
+8263|Pohjois-Jeolla
+8264|Jeju
