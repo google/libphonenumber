@@ -7611,20 +7611,9 @@
         <exampleNumber>801234567</exampleNumber>
       </tollFree>
       <premiumRate>
-        <nationalNumberPattern>89[1-37-9]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>8[129]\d{7}</nationalNumberPattern>
         <exampleNumber>891123456</exampleNumber>
       </premiumRate>
-      <sharedCost>
-        <nationalNumberPattern>
-          8(?:
-            1[019]|
-            2[0156]|
-            84|
-            90
-          )\d{6}
-        </nationalNumberPattern>
-        <exampleNumber>810123456</exampleNumber>
-      </sharedCost>
       <voip>
         <!-- 087 numbers used to be used for this. -->
         <nationalNumberPattern>9\d{8}</nationalNumberPattern>
