@@ -12,6 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# We are using this instead of ITU:
+# https://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro#Mobile_Telephony
+# 
+# Mtel changed their branding to m:tel as you can see here:
+# http://mtel.me
+# Crnogorski Telekom brands themselves as Telekom only (http://telekom.me),
+# as does Deutsche Telekom and Magyar Telekom, a group which
+# Crnogorski Telekom is part of.
+
 38260|m:tel
 38263|Telenor
 38266|Telekom
