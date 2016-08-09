@@ -110,13 +110,18 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   static <T> PhoneMetadata loadMetadataFromFile(
       T key, ConcurrentHashMap<T, PhoneMetadata> map, String filePrefix,
       MetadataLoader metadataLoader) {
+    // The size of the byte buffer used for deserializing the phone number metadata files for each
+    // region.
+    final int multiFileBufferSize = 16 * 1024;
+
     // We assume key.toString() is well-defined.
     String fileName = filePrefix + "_" + key;
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(source);
+    PhoneMetadataCollection metadataCollection =
+        MetadataManager.loadMetadataAndCloseInput(source, multiFileBufferSize);
     PhoneMetadata[] metadataList = metadataCollection.metadata;
     if (metadataList.length == 0) {
       throw new IllegalStateException("empty metadata: " + fileName);
@@ -127,30 +132,5 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
     PhoneMetadata metadata = metadataList[0];
     PhoneMetadata oldValue = map.putIfAbsent(key, metadata);
     return (oldValue != null) ? oldValue : metadata;
-  }
-
-  /**
-   * Loads and returns the metadata protocol buffer from the given stream and closes the stream.
-   */
-  private static PhoneMetadataCollection loadMetadataAndCloseInput(InputStream source) {
-    // The size of the byte buffer used for deserializing the phone number metadata files for each
-    // region.
-    final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
-
-    try {
-      // Read in metadata for each region.
-      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-      metadataCollection.mergeFrom(MetadataManager.convertStreamToByteBuffer(
-          new ObjectInputStream(source), MULTI_FILE_BUFFER_SIZE));
-      return metadataCollection;
-    } catch (IOException e) {
-      throw new RuntimeException("cannot load/parse metadata", e);
-    } finally {
-      try {
-        source.close();
-      } catch (IOException e) {
-        logger.log(Level.WARNING, "error closing input stream (ignored)", e);
-      }
-    }
   }
 }

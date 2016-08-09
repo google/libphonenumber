@@ -95,60 +95,29 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
 
   // @VisibleForTesting
   void loadMetadataFromFile() {
-    InputStream source = metadataLoader.loadMetadata(fileName);
-    if (source == null) {
-      logger.log(Level.SEVERE, "missing metadata: " + fileName);
-      throw new IllegalStateException("missing metadata: " + fileName);
-    }
-    try {
-      PhoneMetadataCollection metadataCollection =
-          loadMetadataAndCloseInput(new ObjectInputStream(source));
-      PhoneMetadata[] metadataList = metadataCollection.metadata;
-      if (metadataList.length == 0) {
-        logger.log(Level.SEVERE, "empty metadata: " + fileName);
-        throw new IllegalStateException("empty metadata: " + fileName);
-      }
-      for (PhoneMetadata metadata : metadataList) {
-        String regionCode = metadata.id;
-        int countryCallingCode = metadata.countryCode;
-        boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
-        if (isNonGeoRegion) {
-          countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
-        } else {
-          regionToMetadataMap.put(regionCode, metadata);
-        }
-      }
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
-      throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
-    }
-  }
-
-  /**
-   * Loads the metadata protocol buffer from the given stream and closes the stream afterwards. Any
-   * exceptions that occur while reading or closing the stream are ignored.
-   *
-   * @param source  the non-null stream from which metadata is to be read.
-   * @return        the loaded metadata protocol buffer.
-   */
-  private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
     // The size of the byte buffer for deserializing the single nano metadata file which holds
     // metadata for all regions.
-    final int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
+    final int singleFileBufferSize = 256 * 1024;
 
-    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-    try {
-      metadataCollection.mergeFrom(
-          MetadataManager.convertStreamToByteBuffer(source, SINGLE_FILE_BUFFER_SIZE));
-    } catch (IOException e) {
-      logger.log(Level.WARNING, "error reading input (ignored)", e);
-    } finally {
-      try {
-        source.close();
-      } catch (IOException e) {
-        logger.log(Level.WARNING, "error closing input stream (ignored)", e);
+    InputStream source = metadataLoader.loadMetadata(fileName);
+    if (source == null) {
+      throw new IllegalStateException("missing metadata: " + fileName);
+    }
+    PhoneMetadataCollection metadataCollection =
+        MetadataManager.loadMetadataAndCloseInput(source, singleFileBufferSize);
+    PhoneMetadata[] metadataList = metadataCollection.metadata;
+    if (metadataList.length == 0) {
+      throw new IllegalStateException("empty metadata: " + fileName);
+    }
+    for (PhoneMetadata metadata : metadataList) {
+      String regionCode = metadata.id;
+      int countryCallingCode = metadata.countryCode;
+      boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
+      if (isNonGeoRegion) {
+        countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
+      } else {
+        regionToMetadataMap.put(regionCode, metadata);
       }
     }
-    return metadataCollection;
   }
 }

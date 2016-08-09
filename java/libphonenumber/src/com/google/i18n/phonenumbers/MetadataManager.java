@@ -66,7 +66,7 @@ class MetadataManager {
       try {
         in.close();
       } catch (IOException e) {
-        LOGGER.log(Level.WARNING, e.toString());
+        LOGGER.log(Level.WARNING, "error closing input stream (ignored)", e);
       }
     }
   }
@@ -89,22 +89,40 @@ class MetadataManager {
     return CodedInputByteBufferNano.newInstance(outputStream.toByteArray());
   }
 
-  private static void loadAlternateFormatsMetadataFromFile(int countryCallingCode) {
-    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(
-        ALTERNATE_FORMATS_FILE_PREFIX + "_" + countryCallingCode);
-    ObjectInputStream in = null;
+  /**
+   * Loads and returns the metadata protocol buffer from the given stream and closes the stream.
+   */
+  static PhoneMetadataCollection loadMetadataAndCloseInput(InputStream source, int bufferSize) {
+    ObjectInputStream ois;
     try {
-      in = new ObjectInputStream(source);
-      CodedInputByteBufferNano byteBuffer = convertStreamToByteBuffer(in, BUFFER_SIZE);
-      PhoneMetadataCollection alternateFormats = new PhoneMetadataCollection();
-      alternateFormats.mergeFrom(byteBuffer);
-      for (PhoneMetadata metadata : alternateFormats.metadata) {
-        callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
-      }
+      ois = new ObjectInputStream(source);
     } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
+      close(source);
+      throw new RuntimeException("cannot load/parse metadata", e);
+    }
+
+    try {
+      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
+      try {
+        metadataCollection.mergeFrom(convertStreamToByteBuffer(ois, bufferSize));
+      } catch (IOException e) {
+        throw new RuntimeException("cannot load/parse metadata", e);
+      }
+      return metadataCollection;
     } finally {
-      close(in);
+      close(ois);
+    }
+  }
+
+  private static void loadAlternateFormatsMetadataFromFile(int countryCallingCode) {
+    String fileName = ALTERNATE_FORMATS_FILE_PREFIX + "_" + countryCallingCode;
+    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(fileName);
+    if (source == null) {
+      throw new IllegalStateException("missing metadata: " + fileName);
+    }
+    PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(source, BUFFER_SIZE);
+    for (PhoneMetadata metadata : metadataCollection.metadata) {
+      callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
     }
   }
 
@@ -121,21 +139,14 @@ class MetadataManager {
   }
 
   private static void loadShortNumberMetadataFromFile(String regionCode) {
-    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(
-        SHORT_NUMBER_METADATA_FILE_PREFIX + "_" + regionCode);
-    ObjectInputStream in = null;
-    try {
-      in = new ObjectInputStream(source);
-      CodedInputByteBufferNano byteBuffer = convertStreamToByteBuffer(in, BUFFER_SIZE);
-      PhoneMetadataCollection shortNumberMetadata = new PhoneMetadataCollection();
-      shortNumberMetadata.mergeFrom(byteBuffer);
-      for (PhoneMetadata metadata : shortNumberMetadata.metadata) {
+    String fileName = SHORT_NUMBER_METADATA_FILE_PREFIX + "_" + regionCode;
+    InputStream source = PhoneNumberMatcher.class.getResourceAsStream(fileName);
+    if (source == null) {
+      throw new IllegalStateException("missing metadata: " + fileName);
+    }
+    PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(source, BUFFER_SIZE);
+    for (PhoneMetadata metadata : metadataCollection.metadata) {
         regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
-      }
-    } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
-    } finally {
-      close(in);
     }
   }
 
