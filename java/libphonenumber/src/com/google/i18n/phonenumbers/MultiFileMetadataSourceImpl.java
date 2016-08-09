@@ -140,8 +140,13 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
     ObjectInputStream ois;
     try {
       ois = new ObjectInputStream(source);
-    } catch (IOException e) {
-      throw new RuntimeException("cannot load/parse metadata", e);
+    } catch (IOException oe) {
+      try {
+        source.close();
+      } catch (IOException ie) {
+        logger.log(Level.WARNING, "error closing input stream (ignored)", ie);
+      }
+      throw new RuntimeException("cannot load/parse metadata", oe);
     }
 
     try {
