@@ -139,9 +139,14 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
 
     ObjectInputStream ois;
     try {
+      ois = new ObjectInputStream(source);
+    } catch (IOException e) {
+      throw new RuntimeException("cannot load/parse metadata", e);
+    }
+
+    try {
       // Read in metadata for each region.
       PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-      ois = new ObjectInputStream(source);
       try {
         metadataCollection.mergeFrom(MetadataManager.convertStreamToByteBuffer(
             ois, MULTI_FILE_BUFFER_SIZE));
