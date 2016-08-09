@@ -137,17 +137,31 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
     // region.
     final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
 
+    ObjectInputStream ois;
+    try {
+      ois = new ObjectInputStream(source);
+    } catch (IOException oe) {
+      try {
+        source.close();
+      } catch (IOException ie) {
+        logger.log(Level.WARNING, "error closing input stream (ignored)", ie);
+      }
+      throw new RuntimeException("cannot load/parse metadata", oe);
+    }
+
     try {
       // Read in metadata for each region.
       PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-      metadataCollection.mergeFrom(MetadataManager.convertStreamToByteBuffer(
-          new ObjectInputStream(source), MULTI_FILE_BUFFER_SIZE));
+      try {
+        metadataCollection.mergeFrom(MetadataManager.convertStreamToByteBuffer(
+            ois, MULTI_FILE_BUFFER_SIZE));
+      } catch (IOException e) {
+        throw new RuntimeException("cannot load/parse metadata", e);
+      }
       return metadataCollection;
-    } catch (IOException e) {
-      throw new RuntimeException("cannot load/parse metadata", e);
     } finally {
       try {
-        source.close();
+        ois.close();
       } catch (IOException e) {
         logger.log(Level.WARNING, "error closing input stream (ignored)", e);
       }
