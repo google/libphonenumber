@@ -4831,7 +4831,10 @@
           )|
           2611|
           5(?:
-            143[46]|
+            14(?:
+              2[5-9]|
+              [34]\d
+            )|
             3000|
             757555
           )
@@ -4844,10 +4847,13 @@
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
       </carrierSpecific>
       <standardRate>
-        <!-- Cost of SMS to 51434, 51436 and 5757555 is of standard rate. -->
+        <!-- Cost of SMS to 5142[5-9], 514[34]\d and 5757555 is of standard rate. -->
         <nationalNumberPattern>
           5(?:
-            143[46]|
+            14(?:
+              2[5-9]|
+              [34]\d
+            )|
             757555
           )
         </nationalNumberPattern>
@@ -4869,7 +4875,10 @@
       <smsServices>
         <nationalNumberPattern>
           5(?:
-            143[46]|
+            14(?:
+              2[5-9]|
+              [34]\d
+            )|
             757555
           )
         </nationalNumberPattern>

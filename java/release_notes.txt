@@ -1,3 +1,10 @@
+Aug 10, 2016: libphonenumber-7.5.2
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, IN, ME
+ - Updated short number metadata for region code(s): IN
+ - New carrier data for country calling code(s): 382 (en)
+ - Updated carrier data for country calling code(s): 91 (en)
+
 Jul 27, 2016: libphonenumber-7.5.1
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 595
