@@ -5335,12 +5335,13 @@
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <exampleNumber>12345678</exampleNumber>
       </fixedLine>
+      <!-- Added prefix 323 based on user report and online evidences. -->
       <mobile>
         <nationalNumberPattern>
           3(?:
             0[0-5]|
             1\d|
-            2[0-2]|
+            2[0-3]|
             5[01]
           )\d{7}
         </nationalNumberPattern>
@@ -10639,12 +10640,11 @@
                 9[015689]
               )|
               4(?:
-                [02][1-9]|
+                0[1-9]|
                 1[014-9]|
-                3\d|
+                [2389]|
                 [47][017-9]|
-                5[059]|
-                [89]
+                5[059]
               )|
               5(?:
                 [034678]|
@@ -10743,6 +10743,7 @@
                   4[08]
                 )|
                 2(?:
+                  09|
                   [1-7][089]|
                   [89]
                 )|
@@ -11228,8 +11229,8 @@
              numbers. It seems almost impossible to know for some of these numbers whether they are
              land-line or mobile, since the ranges overlap. We go to a maximum depth of five where
              necessary to distinguish between mobile and fixed-line numbers. Extra prefixes added:
-             72878, 74599, 7601, 768[56], 7695, 8299, 8309. New prefixes were also added based on
-             the document provided from mobile carriers:
+             72878, 74209, 74599, 7601, 768[56], 7695, 8299, 8309. New prefixes were also added
+             based on the document provided from mobile carriers:
              https://github.com/googlei18n/libphonenumber/issues/260 and
              https://github.com/googlei18n/libphonenumber/pull/692/ -->
         <nationalNumberPattern>
@@ -11273,6 +11274,7 @@
                   4[08]
                 )|
                 2(?:
+                  09|
                   [1-7][089]|
                   [89]\d
                 )|
@@ -15822,12 +15824,10 @@
         <exampleNumber>30234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Mobile numbers start with 600, 632, 661, 67, 68 or 69. -->
         <nationalNumberPattern>
           6(?:
             00\d|
-            32\d|
-            [89]\d{2}|
+            3[24]\d|
             61\d|
             7(?:
               [0-8]\d|
@@ -15835,7 +15835,8 @@
                 [3-9]|
                 [0-2]\d
               )
-            )
+            )|
+            [89]\d{2}
           )\d{4}
         </nationalNumberPattern>
         <!-- According to ITU it is possible for the numbers to be between length 4-12

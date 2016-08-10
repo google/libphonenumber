@@ -14,7 +14,7 @@
 
 # We are using this instead of ITU:
 # https://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro#Mobile_Telephony
-# 
+#
 # Mtel changed their branding to m:tel as you can see here:
 # http://mtel.me
 # Crnogorski Telekom brands themselves as Telekom only (http://telekom.me),
