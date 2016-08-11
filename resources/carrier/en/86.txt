@@ -19,7 +19,15 @@
 86131|China Unicom
 86132|China Unicom
 86133|China Telecom
-86134|China Mobile
+861340|China Mobile
+861341|China Mobile
+861342|China Mobile
+861343|China Mobile
+861344|China Mobile
+861345|China Mobile
+861346|China Mobile
+861347|China Mobile
+861348|China Mobile
 86135|China Mobile
 86136|China Mobile
 86137|China Mobile
@@ -50,3 +58,7 @@
 86187|China Mobile
 86188|China Mobile
 86189|China Telecom
+861703|China Mobile
+861705|China Mobile
+861706|China Mobile
+86172|China Mobile
