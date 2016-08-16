@@ -19,14 +19,11 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -95,21 +92,19 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
 
   // @VisibleForTesting
   void loadMetadataFromFile() {
-    // The size of the byte buffer for deserializing the single nano metadata file which holds
-    // metadata for all regions.
-    final int singleFileBufferSize = 256 * 1024;
-
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
+      // This should not happen since clients shouldn't be using this implementation!
       throw new IllegalStateException("missing metadata: " + fileName);
     }
     PhoneMetadataCollection metadataCollection =
-        MetadataManager.loadMetadataAndCloseInput(source, singleFileBufferSize);
-    PhoneMetadata[] metadataList = metadataCollection.metadata;
-    if (metadataList.length == 0) {
+        MetadataManager.loadMetadataAndCloseInput(source, MetadataManager.ALL_REGIONS_BUFFER_SIZE);
+    PhoneMetadata[] metadatas = metadataCollection.metadata;
+    if (metadatas.length == 0) {
+      // This should not happen since clients shouldn't be using this implementation!
       throw new IllegalStateException("empty metadata: " + fileName);
     }
-    for (PhoneMetadata metadata : metadataList) {
+    for (PhoneMetadata metadata : metadatas) {
       String regionCode = metadata.id;
       int countryCallingCode = metadata.countryCode;
       boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);

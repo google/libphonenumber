@@ -19,9 +19,7 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -110,26 +108,25 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   static <T> PhoneMetadata loadMetadataFromFile(
       T key, ConcurrentHashMap<T, PhoneMetadata> map, String filePrefix,
       MetadataLoader metadataLoader) {
-    // The size of the byte buffer used for deserializing the phone number metadata files for each
-    // region.
-    final int multiFileBufferSize = 16 * 1024;
-
     // We assume key.toString() is well-defined.
     String fileName = filePrefix + "_" + key;
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
+      // Sanity check; this should not happen since we only load things based on the expectation
+      // that they are present, by checking the map of available data first.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
     PhoneMetadataCollection metadataCollection =
-        MetadataManager.loadMetadataAndCloseInput(source, multiFileBufferSize);
-    PhoneMetadata[] metadataList = metadataCollection.metadata;
-    if (metadataList.length == 0) {
+        MetadataManager.loadMetadataAndCloseInput(source, MetadataManager.DEFAULT_BUFFER_SIZE);
+    PhoneMetadata[] metadatas = metadataCollection.metadata;
+    if (metadatas.length == 0) {
+      // Sanity check; this should not happen since we build with non-empty metadata.
       throw new IllegalStateException("empty metadata: " + fileName);
     }
-    if (metadataList.length > 1) {
+    if (metadatas.length > 1) {
       logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
     }
-    PhoneMetadata metadata = metadataList[0];
+    PhoneMetadata metadata = metadatas[0];
     PhoneMetadata oldValue = map.putIfAbsent(key, metadata);
     return (oldValue != null) ? oldValue : metadata;
   }
