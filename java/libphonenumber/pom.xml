@@ -30,16 +30,6 @@
     </testResources>
     <plugins>
       <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <excludes>
-            <exclude>com/google/i18n/phonenumbers/SingleFileMetadataSourceImpl.class</exclude>
-            <exclude>com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.4.2</version>
         <executions>
