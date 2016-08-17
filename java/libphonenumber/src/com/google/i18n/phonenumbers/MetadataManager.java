@@ -111,6 +111,7 @@ final class MetadataManager {
     } finally {
       try {
         if (ois != null) {
+          // This will close all underlying streams as well, including source.
           ois.close();
         } else {
           source.close();
