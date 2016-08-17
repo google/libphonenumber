@@ -19,9 +19,7 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -114,43 +112,22 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
     String fileName = filePrefix + "_" + key;
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
+      // Sanity check; this should not happen since we only load things based on the expectation
+      // that they are present, by checking the map of available data first.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    PhoneMetadataCollection metadataCollection = loadMetadataAndCloseInput(source);
-    PhoneMetadata[] metadataList = metadataCollection.metadata;
-    if (metadataList.length == 0) {
+    PhoneMetadataCollection metadataCollection =
+        MetadataManager.loadMetadataAndCloseInput(source, MetadataManager.DEFAULT_BUFFER_SIZE);
+    PhoneMetadata[] metadatas = metadataCollection.metadata;
+    if (metadatas.length == 0) {
+      // Sanity check; this should not happen since we build with non-empty metadata.
       throw new IllegalStateException("empty metadata: " + fileName);
     }
-    if (metadataList.length > 1) {
+    if (metadatas.length > 1) {
       logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
     }
-    PhoneMetadata metadata = metadataList[0];
+    PhoneMetadata metadata = metadatas[0];
     PhoneMetadata oldValue = map.putIfAbsent(key, metadata);
     return (oldValue != null) ? oldValue : metadata;
-  }
-
-  /**
-   * Loads and returns the metadata protocol buffer from the given stream and closes the stream.
-   */
-  private static PhoneMetadataCollection loadMetadataAndCloseInput(InputStream source) {
-    // The size of the byte buffer used for deserializing the phone number metadata files for each
-    // region.
-    final int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
-
-    try {
-      // Read in metadata for each region.
-      PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-      metadataCollection.mergeFrom(MetadataManager.convertStreamToByteBuffer(
-          new ObjectInputStream(source), MULTI_FILE_BUFFER_SIZE));
-      return metadataCollection;
-    } catch (IOException e) {
-      throw new RuntimeException("cannot load/parse metadata", e);
-    } finally {
-      try {
-        source.close();
-      } catch (IOException e) {
-        logger.log(Level.WARNING, "error closing input stream (ignored)", e);
-      }
-    }
   }
 }

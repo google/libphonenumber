@@ -19,14 +19,11 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -97,58 +94,29 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
   void loadMetadataFromFile() {
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
-      logger.log(Level.SEVERE, "missing metadata: " + fileName);
+      // This should not happen since clients shouldn't be using this implementation directly.
+      // The single file implementation is experimental, only for when the jars contain a single
+      // file with all regions' metadata. Currently we do not release such jars.
+      // TODO(b/30807096): Get the MetadataManager to decide whether to use this or the multi file
+      // loading depending on what data is available in the jar.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    try {
-      PhoneMetadataCollection metadataCollection =
-          loadMetadataAndCloseInput(new ObjectInputStream(source));
-      PhoneMetadata[] metadataList = metadataCollection.metadata;
-      if (metadataList.length == 0) {
-        logger.log(Level.SEVERE, "empty metadata: " + fileName);
-        throw new IllegalStateException("empty metadata: " + fileName);
-      }
-      for (PhoneMetadata metadata : metadataList) {
-        String regionCode = metadata.id;
-        int countryCallingCode = metadata.countryCode;
-        boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
-        if (isNonGeoRegion) {
-          countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
-        } else {
-          regionToMetadataMap.put(regionCode, metadata);
-        }
-      }
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "cannot load/parse metadata: " + fileName, e);
-      throw new RuntimeException("cannot load/parse metadata: " + fileName, e);
+    PhoneMetadataCollection metadataCollection =
+        MetadataManager.loadMetadataAndCloseInput(source, MetadataManager.ALL_REGIONS_BUFFER_SIZE);
+    PhoneMetadata[] metadatas = metadataCollection.metadata;
+    if (metadatas.length == 0) {
+      // This should not happen since clients shouldn't be using this implementation!
+      throw new IllegalStateException("empty metadata: " + fileName);
     }
-  }
-
-  /**
-   * Loads the metadata protocol buffer from the given stream and closes the stream afterwards. Any
-   * exceptions that occur while reading or closing the stream are ignored.
-   *
-   * @param source  the non-null stream from which metadata is to be read.
-   * @return        the loaded metadata protocol buffer.
-   */
-  private static PhoneMetadataCollection loadMetadataAndCloseInput(ObjectInputStream source) {
-    // The size of the byte buffer for deserializing the single nano metadata file which holds
-    // metadata for all regions.
-    final int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
-
-    PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
-    try {
-      metadataCollection.mergeFrom(
-          MetadataManager.convertStreamToByteBuffer(source, SINGLE_FILE_BUFFER_SIZE));
-    } catch (IOException e) {
-      logger.log(Level.WARNING, "error reading input (ignored)", e);
-    } finally {
-      try {
-        source.close();
-      } catch (IOException e) {
-        logger.log(Level.WARNING, "error closing input stream (ignored)", e);
+    for (PhoneMetadata metadata : metadatas) {
+      String regionCode = metadata.id;
+      int countryCallingCode = metadata.countryCode;
+      boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
+      if (isNonGeoRegion) {
+        countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);
+      } else {
+        regionToMetadataMap.put(regionCode, metadata);
       }
     }
-    return metadataCollection;
   }
 }
