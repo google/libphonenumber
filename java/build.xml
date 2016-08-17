@@ -45,21 +45,6 @@
     </exec>
   </target>
 
-  <target name="build-single-file-phone-metadata">
-    <exec executable="java">
-      <arg value="-jar" />
-      <arg value="${build.tools.jar}"/>
-      <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="--input-file=${resources.dir}/PhoneNumberMetadata.xml"/>
-      <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
-      <arg value="--data-prefix=data/SingleFilePhoneNumberMetadataProto"/>
-      <arg value="--single-file=true"/>
-      <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
-      <arg value="--copyright=2010"/>
-      <arg value="--lite-build=false"/>
-    </exec>
-  </target>
-
   <target name="build-short-metadata">
     <exec executable="java">
       <arg value="-jar" />
