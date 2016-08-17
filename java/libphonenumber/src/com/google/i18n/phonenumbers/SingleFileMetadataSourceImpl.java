@@ -95,6 +95,10 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {
       // This should not happen since clients shouldn't be using this implementation!
+      // The single file implementation is experimental, only for when the jars contain a single
+      // file with all regions' metadata. Currently we do not release such jars.
+      // TODO(b/30807096): Get the MetadataManager to decide whether to use this or the multi file
+      // loading depending on what data is available in the jar.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
     PhoneMetadataCollection metadataCollection =

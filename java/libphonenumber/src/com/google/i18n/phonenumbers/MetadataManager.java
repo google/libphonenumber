@@ -63,12 +63,12 @@ final class MetadataManager {
 
   // The size of the byte buffer in bytes used to convert a stream containing metadata for a single
   // region, to a nanoproto-compatible CodedInputByteBufferNano. This was determined by the size of
-  // the metadata with which we build our actual jars.
+  // the binary metadata files that contain each region's metadata.
   static final int DEFAULT_BUFFER_SIZE = 16 * 1024;
 
   // The size of the byte buffer in bytes used to convert a stream containing metadata for all
   // regions, to a nanoproto-compatible CodedInputByteBufferNano. This was determined by the size of
-  // the metadata with which we build our actual jars.
+  // the binary metadata file that contains all regions' metadata.
   static final int ALL_REGIONS_BUFFER_SIZE = 256 * 1024;
 
   static CodedInputByteBufferNano convertStreamToByteBuffer(ObjectInputStream in, int bufferSize)
