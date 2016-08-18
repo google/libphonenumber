@@ -103,12 +103,6 @@
     </plugins>
   </build>
 
-  <repositories>
-    <repository>
-      <id>protobuf-java-lib</id>
-      <url>file://${project.basedir}/../../../java/lib</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -117,9 +111,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.6.1</version>
+      <groupId>com.google.protobuf.nano</groupId>
+      <artifactId>protobuf-javanano</artifactId>
+      <!-- If updating the version, see instructions in java/lib/protobuf-javanano-readme.md. -->
+      <version>3.0.0-alpha-7</version>
     </dependency>
   </dependencies>
 
