@@ -73,21 +73,6 @@
     </exec>
   </target>
 
-  <target name="build-single-file-test-metadata">
-    <exec executable="java">
-      <arg value="-jar" />
-      <arg value="${build.tools.jar}"/>
-      <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
-      <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
-      <arg value="--data-prefix=data/SingleFilePhoneNumberMetadataProtoForTesting"/>
-      <arg value="--single-file=true"/>
-      <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
-      <arg value="--copyright=2010"/>
-      <arg value="--lite-build=false"/>
-    </exec>
-  </target>
-
   <target name="build-alternate-metadata">
     <exec executable="java">
       <arg value="-jar" />
