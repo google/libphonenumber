@@ -61,7 +61,9 @@
         <version>1.4.0</version>
         <executions>
           <execution>
-            <phase>generate-sources</phase>
+            <!-- The protoc artifact may not be in the local Maven repository until the "install"
+                 phase, so we build Phonemetadata.java during this phase. -->
+            <phase>install</phase>
             <goals>
               <goal>exec</goal>
             </goals>
@@ -89,41 +91,9 @@
           </archive>
         </configuration>
       </plugin>
-      <!-- Build a JAR with its dependencies (protocol buffers and common library). This JAR
-           contains the C++ build tools invoked by CMake during the libphonenumber C++ build. -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>com.google.i18n.phonenumbers.EntryPoint</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 
-  <repositories>
-    <repository>
-      <id>protobuf-java-lib</id>
-      <url>file://${project.basedir}/../../../java/lib</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -132,9 +102,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>com.google.protobuf.nano</groupId>
+      <artifactId>protobuf-javanano</artifactId>
+      <version>3.0.0-alpha-7</version>
+    </dependency>
+    <dependency>
       <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.6.1</version>
+      <artifactId>protoc</artifactId>
+      <!-- Keep this consistent with the version of library; the latest release of protobuf-javanano
+           is 3.0.0-alpha-7, which was released with the 3.0.0-beta-4 version of protoc:
+           https://github.com/google/protobuf/releases/tag/v3.0.0-beta-4 -->
+      <version>3.0.0-beta-4</version>
+      <type>pom</type>
     </dependency>
   </dependencies>
 
