@@ -54,28 +54,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Invoke Protocol Buffers compiler to generate Phonemetadata.java. -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <executable>protoc</executable>
-          <arguments>
-            <argument>--javanano_out=java_package=phonemetadata.proto|com.google.i18n.phonenumbers.nano:../../../java/libphonenumber/src</argument>
-            <argument>../../../resources/phonemetadata.proto</argument>
-            <argument>--proto_path=../../../resources</argument>
-          </arguments>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -118,12 +96,6 @@
     </plugins>
   </build>
 
-  <repositories>
-    <repository>
-      <id>protobuf-java-lib</id>
-      <url>file://${project.basedir}/../../../java/lib</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -132,9 +104,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.6.1</version>
+      <groupId>com.google.protobuf.nano</groupId>
+      <artifactId>protobuf-javanano</artifactId>
+      <!-- If updating the version, see instructions in java/lib/protobuf-javanano-readme.md. -->
+      <version>3.0.0-alpha-7</version>
     </dependency>
   </dependencies>
 

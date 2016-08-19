@@ -30,28 +30,6 @@
     </testResources>
     <plugins>
       <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.2</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <relocations>
-                <relocation>
-                  <pattern>com.google.protobuf</pattern>
-                  <shadedPattern>
-                    com.google.i18n.phonenumbers.repackaged.com.google.protobuf
-                  </shadedPattern>
-                </relocation>
-              </relocations>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
         <version>1.15</version>
@@ -74,17 +52,12 @@
     </plugins>
   </build>
 
-  <repositories>
-    <repository>
-      <id>protobuf-java-lib</id>
-      <url>file://${project.basedir}/../lib</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.6.1</version>
+      <groupId>com.google.protobuf.nano</groupId>
+      <artifactId>protobuf-javanano</artifactId>
+      <!-- If updating the version, see instructions in java/lib/protobuf-javanano-readme.md. -->
+      <version>3.0.0-alpha-7</version>
     </dependency>
   </dependencies>
 
