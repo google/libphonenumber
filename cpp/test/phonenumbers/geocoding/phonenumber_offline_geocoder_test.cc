@@ -53,6 +53,7 @@ class PhoneNumberOfflineGeocoderTest : public testing::Test {
     KO_NUMBER2(MakeNumber(82, 322123456UL)),
     KO_NUMBER3(MakeNumber(82, 6421234567ULL)),
     KO_INVALID_NUMBER(MakeNumber(82, 1234UL)),
+    KO_MOBILE(MakeNumber(82, 101234567ULL)),
     US_NUMBER1(MakeNumber(1, 6502530000ULL)),
     US_NUMBER2(MakeNumber(1, 6509600000ULL)),
     US_NUMBER3(MakeNumber(1, 2128120000UL)),
@@ -82,6 +83,7 @@ class PhoneNumberOfflineGeocoderTest : public testing::Test {
   const PhoneNumber KO_NUMBER2;
   const PhoneNumber KO_NUMBER3;
   const PhoneNumber KO_INVALID_NUMBER;
+  const PhoneNumber KO_MOBILE;
 
   const PhoneNumber US_NUMBER1;
   const PhoneNumber US_NUMBER2;
@@ -201,5 +203,12 @@ TEST_F(PhoneNumberOfflineGeocoderTest, TestGetDescriptionForInvalidNumber) {
                                                    kEnglishLocale));
 }
 
+TEST_F(PhoneNumberOfflineGeocoderTest,
+       TestGetDescriptionForNonGeographicalNumberWithGeocodingPrefix) {
+  // We have a geocoding prefix, but we shouldn't use it since this is not
+  // geographical.
+  EXPECT_EQ("South Korea",
+            geocoder_->GetDescriptionForNumber(KO_MOBILE, kEnglishLocale));
+}
 }  // namespace phonenumbers
 }  // namespace i18n

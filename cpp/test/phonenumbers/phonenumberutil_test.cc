@@ -1341,7 +1341,8 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_national_number(2070313000ULL);
   EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
-  // A UK mobile phone, which has no area code.
+  // A mobile number in the UK does not have an area code (by default, mobile
+  // numbers do not, unless they have been added to our list of exceptions).
   number.set_country_code(44);
   number.set_national_number(7123456789ULL);
   EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(number));
@@ -1350,6 +1351,11 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_country_code(54);
   number.set_national_number(1155303000ULL);
   EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
+
+  // A mobile number in Argentina also has an area code.
+  number.set_country_code(54);
+  number.set_national_number(91187654321);
+  EXPECT_EQ(3, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // Google Sydney, which has area code "2".
   number.set_country_code(61);
@@ -1444,6 +1450,12 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
   number.set_country_code(800);
   number.set_national_number(12345678ULL);
   EXPECT_EQ(4, phone_util_.GetLengthOfNationalDestinationCode(number));
+
+  // A mobile number from China is geographical, but does not have an area code.
+  PhoneNumber cn_mobile;
+  cn_mobile.set_country_code(86);
+  cn_mobile.set_national_number(18912341234ULL);
+  EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(cn_mobile));
 }
 
 TEST_F(PhoneNumberUtilTest, GetCountryMobileToken) {
