@@ -54,30 +54,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Invoke Protocol Buffers compiler to generate Phonemetadata.java. -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <executions>
-          <execution>
-            <!-- The protoc artifact may not be in the local Maven repository until the "install"
-                 phase, so we build Phonemetadata.java during this phase. -->
-            <phase>install</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <executable>protoc</executable>
-          <arguments>
-            <argument>--javanano_out=java_package=phonemetadata.proto|com.google.i18n.phonenumbers.nano:../../../java/libphonenumber/src</argument>
-            <argument>../../../resources/phonemetadata.proto</argument>
-            <argument>--proto_path=../../../resources</argument>
-          </arguments>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -104,16 +80,10 @@
     <dependency>
       <groupId>com.google.protobuf.nano</groupId>
       <artifactId>protobuf-javanano</artifactId>
+          <!-- Downloaded from https://github.com/google/protobuf/releases/tag/v3.0.0-beta-4;
+               corresponds to the javanano version under dependencies. Runs on x86_64 Linux. -->
+      <!-- Keep this consistent with the protoc binary version. -->
       <version>3.0.0-alpha-7</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protoc</artifactId>
-      <!-- Keep this consistent with the version of library; the latest release of protobuf-javanano
-           is 3.0.0-alpha-7, which was released with the 3.0.0-beta-4 version of protoc:
-           https://github.com/google/protobuf/releases/tag/v3.0.0-beta-4 -->
-      <version>3.0.0-beta-4</version>
-      <type>pom</type>
     </dependency>
   </dependencies>
 
