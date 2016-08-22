@@ -2772,7 +2772,7 @@ public class PhoneNumberUtil {
    * Parses a string and returns it as a phone number in proto buffer format. The method is quite
    * lenient and looks for a number in the input text (raw input) and does not check whether the
    * string is definitely only a phone number. To do this, it ignores punctuation and white-space,
-   * as well as any text before the number (e.g. a leading “Tel: ”) and trims the non-number bits.
+   * as well as any text before the number (e.g. a leading "Tel: ") and trims the non-number bits.
    * It will accept a number in any format (E164, national, international etc), assuming it can be
    * interpreted with the defaultRegion supplied. It also attempts to convert any alpha characters
    * into digits if it thinks this is a vanity number of the type "1800 MICROSOFT".
