@@ -1,6 +1,5 @@
 language: java
 script:
 - mvn test
-- ant jar -f java/build.xml
-- ant test -f java/build.xml
-- ant compile -f java/demo/build.xml
+- ant clean -f java/build.xml && ant jar -f java/build.xml
+- ant junit -f java/build.xml
