@@ -235,11 +235,15 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Google London, which has area code "20".
     assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(GB_NUMBER));
 
-    // A UK mobile phone, which has no area code.
+    // A mobile number in the UK does not have an area code (by default, mobile numbers do not,
+    // unless they have been added to our list of exceptions).
     assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(GB_MOBILE));
 
     // Google Buenos Aires, which has area code "11".
     assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(AR_NUMBER));
+
+    // A mobile number in Argentina also has an area code.
+    assertEquals(3, phoneUtil.getLengthOfGeographicalAreaCode(AR_MOBILE));
 
     // Google Sydney, which has area code "2".
     assertEquals(1, phoneUtil.getLengthOfGeographicalAreaCode(AU_NUMBER));
@@ -255,6 +259,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     // An international toll free number, which has no area code.
     assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(INTERNATIONAL_TOLL_FREE));
+
+    // A mobile number from China is geographical, but does not have an area code.
+    PhoneNumber cnMobile = new PhoneNumber().setCountryCode(86).setNationalNumber(18912341234L);
+    assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(cnMobile));
   }
 
   public void testGetLengthOfNationalDestinationCode() {
@@ -291,6 +299,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     // An international toll free number, which has NDC "1234".
     assertEquals(4, phoneUtil.getLengthOfNationalDestinationCode(INTERNATIONAL_TOLL_FREE));
+
+    // A mobile number from China is geographical, but does not have an area code: however it still
+    // can be considered to have a national destination code.
+    PhoneNumber cnMobile = new PhoneNumber().setCountryCode(86).setNationalNumber(18912341234L);
+    assertEquals(3, phoneUtil.getLengthOfNationalDestinationCode(cnMobile));
   }
 
   public void testGetCountryMobileToken() {
