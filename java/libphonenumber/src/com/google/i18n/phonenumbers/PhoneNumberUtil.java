@@ -88,9 +88,17 @@ public class PhoneNumberUtil {
   // be the length of the area code plus the length of the mobile token.
   private static final Map<Integer, String> MOBILE_TOKEN_MAPPINGS;
 
+  // Set of country codes that have geographically assigned mobile numbers (see GEO_MOBILE_COUNTRIES
+  // below) which are not based on *area codes*. For example, in China mobile numbers start with a
+  // carrier indicator, and beyond that are geographically assigned: this carrier indicator is not
+  // considered to be an area code.
+  private static final Set<Integer> GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES;
+
   // Set of country calling codes that have geographically assigned mobile numbers. This may not be
   // complete; we add calling codes case by case, as we find geographical mobile numbers or hear
-  // from user reports.
+  // from user reports. Note that countries like the US, where we can't distinguish between
+  // fixed-line or mobile numbers, are not listed here, since we consider FIXED_LINE_OR_MOBILE to be
+  // a possibly geographically-related type anyway (like FIXED_LINE).
   private static final Set<Integer> GEO_MOBILE_COUNTRIES;
 
   // The PLUS_SIGN signifies the international prefix.
@@ -124,10 +132,17 @@ public class PhoneNumberUtil {
     mobileTokenMap.put(54, "9");
     MOBILE_TOKEN_MAPPINGS = Collections.unmodifiableMap(mobileTokenMap);
 
+    HashSet<Integer> geoMobileCountriesWithoutMobileAreaCodes = new HashSet<Integer>();
+    geoMobileCountriesWithoutMobileAreaCodes.add(86);  // China
+    GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES =
+        Collections.unmodifiableSet(geoMobileCountriesWithoutMobileAreaCodes);
+
     HashSet<Integer> geoMobileCountries = new HashSet<Integer>();
     geoMobileCountries.add(52);  // Mexico
     geoMobileCountries.add(54);  // Argentina
     geoMobileCountries.add(55);  // Brazil
+    geoMobileCountries.add(62);  // Indonesia: some prefixes only (fixed CMDA wireless)
+    geoMobileCountries.addAll(geoMobileCountriesWithoutMobileAreaCodes);
     GEO_MOBILE_COUNTRIES = Collections.unmodifiableSet(geoMobileCountries);
 
     // Simple ASCII digits map used to populate ALPHA_PHONE_MAPPINGS and
@@ -802,7 +817,17 @@ public class PhoneNumberUtil {
       return 0;
     }
 
-    if (!isNumberGeographical(number)) {
+    PhoneNumberType type = getNumberType(number);
+    int countryCallingCode = number.getCountryCode();
+    if (type == PhoneNumberType.MOBILE
+        // Note this is a rough heuristic; it doesn't cover Indonesia well, for example, where area
+        // codes are present for some mobile phones but not for others. We have no better way of
+        // representing this in the metadata at this point.
+        && GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES.contains(countryCallingCode)) {
+      return 0;
+    }
+
+    if (!isNumberGeographical(type, countryCallingCode)) {
       return 0;
     }
 
@@ -1017,18 +1042,22 @@ public class PhoneNumberUtil {
    * Tests whether a phone number has a geographical association. It checks if the number is
    * associated to a certain region in the country where it belongs to. Note that this doesn't
    * verify if the number is actually in use.
-   *
-   * A similar method is implemented as PhoneNumberOfflineGeocoder.canBeGeocoded, which performs a
-   * looser check, since it only prevents cases where prefixes overlap for geocodable and
-   * non-geocodable numbers. Also, if new phone number types were added, we should check if this
-   * other method should be updated too.
    */
-  boolean isNumberGeographical(PhoneNumber phoneNumber) {
-    PhoneNumberType numberType = getNumberType(phoneNumber);
+  public boolean isNumberGeographical(PhoneNumber phoneNumber) {
+    return isNumberGeographical(getNumberType(phoneNumber), phoneNumber.getCountryCode());
+  }
 
+  /**
+   * Tests whether a phone number has a geographical association, as represented by its type and the
+   * country it belongs to.
+   *
+   * This version of isNumberGeographical exists since calculating the phone number type is
+   * expensive; if we have already done this, we don't want to do it again.
+   */
+  public boolean isNumberGeographical(PhoneNumberType numberType, int countryCallingCode) {
     return numberType == PhoneNumberType.FIXED_LINE
         || numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
-        || (GEO_MOBILE_COUNTRIES.contains(phoneNumber.getCountryCode())
+        || (GEO_MOBILE_COUNTRIES.contains(countryCallingCode)
             && numberType == PhoneNumberType.MOBILE);
   }
 

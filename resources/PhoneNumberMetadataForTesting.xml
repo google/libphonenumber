@@ -236,8 +236,9 @@
     </territory>
 
     <!-- China -->
-    <!-- Used to test as-you-type-formatter with complicated number format patterns. -->
-    <territory id="CN" countryCode="86">
+    <!-- Used to test as-you-type-formatter with complicated number format patterns. Also used to
+         test that not all geographical mobile numbers have an area code. -->
+    <territory id="CN" countryCode="86" nationalPrefix="0">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{5,6})"
                       carrierCodeFormattingRule="$CC $FG">
@@ -251,7 +252,37 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <!-- Note that mobile numbers do not get formatted with the national prefix. -->
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{3})(\d{8})">
+          <leadingDigits>1</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
       </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>
+          [1-7]\d{6,11}|
+          8[0-357-9]\d{6,9}|
+          9\d{7,10}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,12}</possibleNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[2-9]\d{10}</nationalNumberPattern>
+        <possibleNumberPattern>\d{11}</possibleNumberPattern>
+        <exampleNumber>91234567</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>
+          1(?:
+            [38]\d|
+            4[57]|
+            5[0-35-9]|
+            7[0136-8]
+          )\d{8}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{11}</possibleNumberPattern>
+        <exampleNumber>13123456789</exampleNumber>
+      </mobile>
     </territory>
 
     <!-- Christmas Islands -->

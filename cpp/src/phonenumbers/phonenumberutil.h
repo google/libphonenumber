@@ -489,6 +489,20 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& number,
       const string& region_dialing_from) const;
 
+  // Tests whether a phone number has a geographical association. It checks if
+  // the number is associated to a certain region in the country where it
+  // belongs to. Note that this doesn't verify if the number is actually in use.
+  bool IsNumberGeographical(const PhoneNumber& phone_number) const;
+
+  // Tests whether a phone number has a geographical association, as represented
+  // by its type and the country it belongs to.
+  //
+  // This version of IsNumberGeographical exists since calculating the phone
+  // number type is expensive; if we have already done this, we don't want to do
+  // it again.
+  bool IsNumberGeographical(PhoneNumberType phone_number_type,
+                            int country_calling_code) const;
+
   // Gets a valid fixed-line number for the specified region. Returns false if
   // the region was unknown, or the region 001 is passed in. For 001
   // (representing non-geographical numbers), call
@@ -718,11 +732,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   // Trims unwanted end characters from a phone number string.
   void TrimUnwantedEndChars(string* number) const;
-
-  // Tests whether a phone number has a geographical association. It checks if
-  // the number is associated to a certain region in the country where it
-  // belongs to. Note that this doesn't verify if the number is actually in use.
-  bool IsNumberGeographical(const PhoneNumber& phone_number) const;
 
   // Helper function to check region code is not unknown or null.
   bool IsValidRegionCode(const string& region_code) const;

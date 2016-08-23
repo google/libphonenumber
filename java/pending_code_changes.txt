@@ -1,5 +1,8 @@
  - Deleted unsupported SingleFilePhoneNumberMetadataProto.
 Code changes:
  - Refactored metadata loading and closed all streams after loading.
+ - Made isNumberGeographical public, and changed the geocoder to
+   use this when checking whether to give a detailed answer or country-level
+   only.
 Build changes:
  - Use protobuf-javanano 3.0.0-alpha-7 from Maven Central.

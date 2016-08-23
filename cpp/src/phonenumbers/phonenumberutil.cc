@@ -386,9 +386,15 @@ class PhoneNumberRegExpsAndMappings {
 
     mobile_token_mappings_.insert(std::make_pair(52, '1'));
     mobile_token_mappings_.insert(std::make_pair(54, '9'));
+    geo_mobile_countries_without_mobile_area_codes_.insert(86);  // China
     geo_mobile_countries_.insert(52);  // Mexico
     geo_mobile_countries_.insert(54);  // Argentina
     geo_mobile_countries_.insert(55);  // Brazil
+    // Indonesia: some prefixes only (fixed CMDA wireless)
+    geo_mobile_countries_.insert(62);
+    geo_mobile_countries_.insert(
+        geo_mobile_countries_without_mobile_area_codes_.begin(),
+        geo_mobile_countries_without_mobile_area_codes_.end());
   }
 
   // Small string helpers since StrCat has a maximum number of arguments. These
@@ -447,6 +453,13 @@ class PhoneNumberRegExpsAndMappings {
   // national destination code, which should be the length of the area code plus
   // the length of the mobile token.
   map<int, char> mobile_token_mappings_;
+
+  // Set of country codes that have geographically assigned mobile numbers (see
+  // geo_mobile_countries_ below) which are not based on *area codes*. For
+  // example, in China mobile numbers start with a carrier indicator, and beyond
+  // that are geographically assigned: this carrier indicator is not considered
+  // to be an area code.
+  set<int> geo_mobile_countries_without_mobile_area_codes_;
 
   // Set of country calling codes that have geographically assigned mobile
   // numbers. This may not be complete; we add calling codes case by case, as we
@@ -538,6 +551,7 @@ class PhoneNumberRegExpsAndMappings {
         alpha_phone_mappings_(),
         all_plus_number_grouping_symbols_(),
         mobile_token_mappings_(),
+        geo_mobile_countries_without_mobile_area_codes_(),
         geo_mobile_countries_(),
         unique_international_prefix_(regexp_factory_->CreateRegExp(
             /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
@@ -2148,11 +2162,15 @@ bool PhoneNumberUtil::IsValidNumberForRegion(const PhoneNumber& number,
 
 bool PhoneNumberUtil::IsNumberGeographical(
     const PhoneNumber& phone_number) const {
-  PhoneNumberType number_type = GetNumberType(phone_number);
+  return IsNumberGeographical(GetNumberType(phone_number),
+                              phone_number.country_code());
+}
 
+bool PhoneNumberUtil::IsNumberGeographical(
+    PhoneNumberType number_type, int country_calling_code) const {
   return number_type == PhoneNumberUtil::FIXED_LINE ||
       number_type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE ||
-      (reg_exps_->geo_mobile_countries_.find(phone_number.country_code())
+      (reg_exps_->geo_mobile_countries_.find(country_calling_code)
            != reg_exps_->geo_mobile_countries_.end() &&
        number_type == PhoneNumberUtil::MOBILE);
 }
@@ -2293,7 +2311,16 @@ int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
     return 0;
   }
 
-  if (!IsNumberGeographical(number)) {
+  PhoneNumberType type = GetNumberType(number);
+  int country_calling_code = number.country_code();
+  if (type == PhoneNumberUtil::MOBILE &&
+      reg_exps_->geo_mobile_countries_without_mobile_area_codes_.find(
+          country_calling_code) !=
+          reg_exps_->geo_mobile_countries_without_mobile_area_codes_.end()) {
+    return 0;
+  }
+
+  if (!IsNumberGeographical(type, country_calling_code)) {
     return 0;
   }
 

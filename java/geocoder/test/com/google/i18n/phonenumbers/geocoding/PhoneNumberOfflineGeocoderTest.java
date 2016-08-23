@@ -41,6 +41,8 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
       new PhoneNumber().setCountryCode(82).setNationalNumber(6421234567L);
   private static final PhoneNumber KO_INVALID_NUMBER =
       new PhoneNumber().setCountryCode(82).setNationalNumber(1234L);
+  private static final PhoneNumber KO_MOBILE =
+      new PhoneNumber().setCountryCode(82).setNationalNumber(101234567L);
   private static final PhoneNumber US_NUMBER1 =
       new PhoneNumber().setCountryCode(1).setNationalNumber(6502530000L);
   private static final PhoneNumber US_NUMBER2 =
@@ -159,5 +161,10 @@ public class PhoneNumberOfflineGeocoderTest extends TestCase {
   public void testGetDescriptionForInvalidNumber() {
     assertEquals("", geocoder.getDescriptionForNumber(KO_INVALID_NUMBER, Locale.ENGLISH));
     assertEquals("", geocoder.getDescriptionForNumber(US_INVALID_NUMBER, Locale.ENGLISH));
+  }
+
+  public void testGetDescriptionForNonGeographicalNumberWithGeocodingPrefix() {
+    // We have a geocoding prefix, but we shouldn't use it since this is not geographical.
+    assertEquals("South Korea", geocoder.getDescriptionForNumber(KO_MOBILE, Locale.ENGLISH));
   }
 }
