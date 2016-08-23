@@ -1462,7 +1462,7 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
   PhoneNumber cn_mobile;
   cn_mobile.set_country_code(86);
   cn_mobile.set_national_number(18912341234ULL);
-  EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(cn_mobile));
+  EXPECT_EQ(3, phone_util_.GetLengthOfNationalDestinationCode(cn_mobile));
 }
 
 TEST_F(PhoneNumberUtilTest, GetCountryMobileToken) {
