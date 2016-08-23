@@ -386,7 +386,7 @@ class PhoneNumberRegExpsAndMappings {
 
     mobile_token_mappings_.insert(std::make_pair(52, '1'));
     mobile_token_mappings_.insert(std::make_pair(54, '9'));
-    geo_mobile_countries_without_mobile_area_codes_.insert(86);  // Chin
+    geo_mobile_countries_without_mobile_area_codes_.insert(86);  // China
     geo_mobile_countries_.insert(52);  // Mexico
     geo_mobile_countries_.insert(54);  // Argentina
     geo_mobile_countries_.insert(55);  // Brazil
