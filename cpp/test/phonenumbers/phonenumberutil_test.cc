@@ -1165,7 +1165,7 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   // numbers are always output in international format, but short numbers are
   // in national format.
   test_number.set_country_code(1);
-  test_number.set_national_number(6502530000LL);
+  test_number.set_national_number(6502530000L);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::US(), false, &formatted_number);
   EXPECT_EQ("+16502530000", formatted_number);
@@ -1344,7 +1344,7 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   // A mobile number in the UK does not have an area code (by default, mobile
   // numbers do not, unless they have been added to our list of exceptions).
   number.set_country_code(44);
-  number.set_national_number(7123456789ULL);
+  number.set_national_number(7912345678ULL);
   EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // Google Buenos Aires, which has area code "11".
@@ -1379,6 +1379,12 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_country_code(800);
   number.set_national_number(12345678ULL);
   EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(number));
+
+  // A mobile number from China is geographical, but does not have an area code.
+  PhoneNumber cn_mobile;
+  cn_mobile.set_country_code(86);
+  cn_mobile.set_national_number(18912341234ULL);
+  EXPECT_EQ(0, phone_util_.GetLengthOfGeographicalAreaCode(cn_mobile));
 }
 
 TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
@@ -1398,9 +1404,9 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
   number.set_national_number(2070313000ULL);
   EXPECT_EQ(2, phone_util_.GetLengthOfNationalDestinationCode(number));
 
-  // A UK mobile phone, which has NDC "7123"
+  // A UK mobile phone, which has NDC "7912"
   number.set_country_code(44);
-  number.set_national_number(7123456789ULL);
+  number.set_national_number(7912345678ULL);
   EXPECT_EQ(4, phone_util_.GetLengthOfNationalDestinationCode(number));
 
   // Google Buenos Aires, which has NDC "11".
@@ -1451,7 +1457,8 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfNationalDestinationCode) {
   number.set_national_number(12345678ULL);
   EXPECT_EQ(4, phone_util_.GetLengthOfNationalDestinationCode(number));
 
-  // A mobile number from China is geographical, but does not have an area code.
+  // A mobile number from China is geographical, but does not have an area code:
+  // however it still can be considered to have a national destination code.
   PhoneNumber cn_mobile;
   cn_mobile.set_country_code(86);
   cn_mobile.set_national_number(18912341234ULL);
