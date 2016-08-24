@@ -1,3 +1,21 @@
+Aug 24, 2016: libphonenumber-7.6.0
+Code changes:
+ - Refactored metadata loading and closed all streams after loading.
+ - Made isNumberGeographical public, and changed the geocoder to
+   use this when checking whether to give a detailed answer or country-level
+   only.
+Build changes:
+ - Use protobuf-javanano 3.0.0-alpha-7 from Maven Central.
+Metadata changes:
+ - Updated phone metadata for region code(s): EH, ET, JM, MA, SK, SN, SY, ZM
+ - Updated short number metadata for region code(s): ZA
+ - Updated geocoding data for country calling code(s): 212 (en)
+ - New carrier data for country calling code(s):
+   86 (zh, zh_Hant), 852 (zh, zh_Hant), 963 (en)
+ - Updated carrier data for country calling code(s):
+   86 (en), 212 (en), 251 (en), 421 (en)
+ - Deleted unsupported SingleFilePhoneNumberMetadataProto
+
 Aug 10, 2016: libphonenumber-7.5.2
 Metadata changes:
  - Updated phone metadata for region code(s): CO, IN, ME
