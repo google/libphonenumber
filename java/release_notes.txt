@@ -1,5 +1,4 @@
 Aug 24, 2016: libphonenumber-7.6.0
- - Deleted unsupported SingleFilePhoneNumberMetadataProto.
 Code changes:
  - Refactored metadata loading and closed all streams after loading.
  - Made isNumberGeographical public, and changed the geocoder to
@@ -15,6 +14,7 @@ Metadata changes:
    86 (zh, zh_Hant), 852 (zh, zh_Hant), 963 (en)
  - Updated carrier data for country calling code(s):
    86 (en), 212 (en), 251 (en), 421 (en)
+ - Deleted unsupported SingleFilePhoneNumberMetadataProto
 
 Aug 10, 2016: libphonenumber-7.5.2
 Metadata changes:
