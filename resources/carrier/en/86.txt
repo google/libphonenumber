@@ -44,6 +44,10 @@
 86157|China Mobile
 86158|China Mobile
 86159|China Mobile
+861703|China Mobile
+861705|China Mobile
+861706|China Mobile
+86172|China Mobile
 86173|China Telecom
 86176|China Unicom
 86177|China Telecom
@@ -58,7 +62,3 @@
 86187|China Mobile
 86188|China Mobile
 86189|China Telecom
-861703|China Mobile
-861705|China Mobile
-861706|China Mobile
-86172|China Mobile

@@ -9732,7 +9732,7 @@
          information. -->
     <territory id="ZA">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[134]\d{2,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -9744,12 +9744,16 @@
             )|
             12
           )|
+          37567|
           47751
         </nationalNumberPattern>
         <exampleNumber>10111</exampleNumber>
       </shortCode>
       <standardRate>
-        <nationalNumberPattern>47751</nationalNumberPattern>
+        <nationalNumberPattern>
+          37567|
+          47751
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
         <exampleNumber>47751</exampleNumber>
       </standardRate>
@@ -9766,8 +9770,11 @@
         <exampleNumber>10111</exampleNumber>
       </emergency>
       <smsServices>
-        <!-- Added SMS service short code 47751 as per online evidences found. -->
-        <nationalNumberPattern>47751</nationalNumberPattern>
+        <!-- Added SMS service short code 37567 and 47751 as per online evidences found. -->
+        <nationalNumberPattern>
+          37567|
+          47751
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
         <exampleNumber>47751</exampleNumber>
       </smsServices>

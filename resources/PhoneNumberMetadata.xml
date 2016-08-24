@@ -6932,7 +6932,7 @@
       <!-- Uses MA formatting rules and shares general description
            (non-geographical numbers for Morocco are still valid). -->
       <generalDesc>
-        <nationalNumberPattern>[5689]\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>[5-9]\d{8}</nationalNumberPattern>
         <!-- Closed numbering plan. -->
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
@@ -6944,10 +6944,15 @@
            numbers to be recognized as available from within Western Sahara. -->
       <mobile>
         <nationalNumberPattern>
-          6(?:
-            0[0-8]|
-            [12-79]\d|
-            8[017]
+          (?:
+            6(?:
+              [0-79]\d|
+              8[0-247-9]
+            )|
+            7(?:
+              [07][07]|
+              6[12]
+            )
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>650123456</exampleNumber>
@@ -6960,6 +6965,12 @@
         <nationalNumberPattern>89\d{7}</nationalNumberPattern>
         <exampleNumber>891234567</exampleNumber>
       </premiumRate>
+      <voip>
+        <!-- Putting VSAT numbers here. -->
+        <nationalNumberPattern>5924[01]\d{4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>592401234</exampleNumber>
+      </voip>
     </territory>
 
     <!-- Eritrea -->
@@ -7245,10 +7256,10 @@
         <!-- The data here is not regularly updated by the Ethiopian authorities, and many more
              numbers are visible online than are reported in the ITU document. This pattern is
              therefore somewhat more relaxed than in the ITU document. According to the ETC,
-             95[89] is assigned to some CDMA providers. Prefix 9[46] added after a user report.-->
+             95[89] is assigned to some CDMA providers. Prefix 9[468] added after a user report.-->
         <nationalNumberPattern>
           9(?:
-            [1-46]\d|
+            [1-468]\d|
             5[89]
           )\d{6}
         </nationalNumberPattern>
@@ -12215,14 +12226,16 @@
       <mobile>
         <!-- Adding 27, 28, 299, 31, 508, 527 and 566 as extra prefixes, as they have been found to
              be valid by sending SMSs and looking at online number lookup sites. Also added 50[3-79]
-             as we have found information online that the 50[3-9] range has been assigned to Digicel.
-
-             Numbers have been found online for the following ranges 26x, 29x, 53x, 54x, 55x, 56x.
-             Most have mobile numbers online so we have put them under mobile but is possible
-             they are a mixture of fixed line and mobile. -->
+             as we have found information online that the 50[3-9] range has been assigned to
+             Digicel. Numbers have been found online for the following ranges 258, 26x, 29x, 53x,
+             54x, 55x, 56x. Most have mobile numbers online so we have put them under mobile but is
+             possible they are a mixture of fixed line and mobile. -->
         <nationalNumberPattern>
           876(?:
-            2[16-9]\d|
+            2(?:
+              [16-9]\d|
+              58
+            )|
             [348]\d{2}|
             5(?:
               0[3-9]|
@@ -15467,15 +15480,16 @@
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000090/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/+212</sourceUrl>
+        <sourceUrl>https://www.anrt.ma/sites/default/files/blocs_de_numeros_par_operateur_juillet_2016.pdf</sourceUrl>
       </references>
       <availableFormats>
-        <numberFormat pattern="([56]\d{2})(\d{6})">
+        <numberFormat pattern="([5-7]\d{2})(\d{6})">
           <leadingDigits>
             5(?:
               2[015-7]|
               3[0-4]
             )|
-            6
+            [67]
           </leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
@@ -15483,7 +15497,8 @@
           <leadingDigits>
             5(?:
               2[2-489]|
-              3[5-9]
+              3[5-9]|
+              92
             )|
             892
           </leadingDigits>
@@ -15496,7 +15511,8 @@
               3(?:
                 [5-79]|
                 80
-              )
+              )|
+              924
             )|
             892
           </leadingDigits>
@@ -15517,6 +15533,16 @@
           </leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
+        <!-- This format is added based on online references found. -->
+        <numberFormat pattern="([5]\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            5(?:
+              4[067]|
+              5[03]
+            )
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
         <numberFormat pattern="(8[09])(\d{7})">
           <leadingDigits>
             8(?:
@@ -15528,7 +15554,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[5689]\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>[5-9]\d{8}</nationalNumberPattern>
         <!-- Closed numbering plan. -->
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
@@ -15559,21 +15585,27 @@
                 0\d|
                 [89]0
               )
-            )
+            )|
+            (?:
+              4[067]|
+              5[03]
+            )\d{2}
           )\d{4}
         </nationalNumberPattern>
         <exampleNumber>520123456</exampleNumber>
       </fixedLine>
       <!-- Also duplicated in Western Sahara, please ensure you update both. -->
       <mobile>
-        <!-- http://www.anrt.ma/sites/default/files/Blocs_de_numeros_par_operateur.pdf
-             Prefixes 69[0136] added based on numbers found online. -->
-        <!-- Added prefix 982 as per IR21 from the carrier. -->
         <nationalNumberPattern>
-          6(?:
-            0[0-8]|
-            [12-79]\d|
-            8[017]
+          (?:
+            6(?:
+              [0-79]\d|
+              8[0-247-9]
+            )|
+            7(?:
+              [07][07]|
+              6[12]
+            )
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>650123456</exampleNumber>
@@ -15586,6 +15618,12 @@
         <nationalNumberPattern>89\d{7}</nationalNumberPattern>
         <exampleNumber>891234567</exampleNumber>
       </premiumRate>
+      <voip>
+        <!-- Putting VSAT numbers here. -->
+        <nationalNumberPattern>5924[01]\d{4}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <exampleNumber>592401234</exampleNumber>
+      </voip>
     </territory>
 
     <!-- Monaco -->
@@ -21374,7 +21412,7 @@
       <mobile>
         <!-- 948 isn't in the number pattern, but many examples using this have been found, so
              deeming it valid for now. 909[1-9] is assigned to carrier Juro as per online
-             references found. -->
+             references found. 945 is assigned to Orange as per its carrier doc.-->
         <nationalNumberPattern>
           9(?:
             0(?:
@@ -21383,7 +21421,7 @@
             )|
             (?:
               1[0-24-9]|
-              4[0489]|
+              4[04589]|
               50
             )\d
           )\d{5}
@@ -21542,7 +21580,7 @@
     <territory id="SN" countryCode="221" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000B8/en</sourceUrl>
-        <sourceUrl>http://www.artpsenegal.net</sourceUrl>
+        <sourceUrl>http://www.artpsenegal.net/index.php?option=com_content&amp;view=article&amp;id=50</sourceUrl>
       </references>
       <availableFormats>
         <!-- Using yellow pages and online telecom company formatting, rather than that implied in
@@ -21581,9 +21619,8 @@
       <mobile>
         <nationalNumberPattern>
           7(?:
-            [067]\d|
+            [06-8]\d|
             21|
-            8[0-46]|
             90
           )\d{6}
         </nationalNumberPattern>
@@ -22013,8 +22050,8 @@
         <nationalNumberPattern>
           9(?:
             22|
-            [35][0-8]|
-            4\d|
+            3[0-8]|
+            [45]\d|
             6[024-9]|
             88|
             9[0-489]
@@ -25052,12 +25089,12 @@
         <!-- Adding extra prefixes 50 and 6[1-57-9] since SMS messages have been successfully
              delivered to these numbers, and numbers like this can be found on the Internet. Adding
              prefix 960 based on information received from MTN Zambia. The 97 range has been
-             expanded based on their IR21 document, which states the range 97[1-9] is used. -->
+             expanded based on their IR21 document, which states the range 97[1-9] is used.
+             Added 95[3489] and 970 prefixes based on numbers found online. -->
         <nationalNumberPattern>
           9(?:
-            5[05]|
-            6\d|
-            7[1-9]
+            5[034589]|
+            [67]\d
           )\d{6}
         </nationalNumberPattern>
         <exampleNumber>955123456</exampleNumber>
