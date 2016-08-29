@@ -14,7 +14,7 @@ Steps to update the protobuf library version:
   check in any changes to this file. The command from the root directory is:
 
   ```
-  protoc --javanano_out=com.google.i18n.phonenumbers.nano:java/libphonenumber/src \
+  protoc --javanano_out=java/libphonenumber/src \
          resources/phonemetadata.proto \
          --proto_path=resources
   ```
