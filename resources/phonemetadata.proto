@@ -125,10 +125,10 @@ message PhoneNumberDesc {
   // possible value.
   // This could be used to highlight tokens in a text that may be a phone
   // number.
-  // To our knowledge, area codes are only relevant for some fixed-line and
-  // mobile numbers, so this field should only be set for those types of numbers
-  // (and the general description) - this is checked when the metadata XML file
-  // is consumed at build time.
+  // To our knowledge, area codes are usually only relevant for some fixed-line
+  // and mobile numbers, so this field should only be set for those types of
+  // numbers (and the general description) - however there are exceptions for
+  // NANPA countries.
   repeated int32 possible_length_local_only = 10;
 
   // An example national significant number for the specific type. It should
