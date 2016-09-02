@@ -207,6 +207,12 @@ public interface Phonemetadata {
     // optional string possible_number_pattern = 3;
     public java.lang.String possibleNumberPattern;
 
+    // repeated int32 possible_length = 9;
+    public int[] possibleLength;
+
+    // repeated int32 possible_length_local_only = 10;
+    public int[] possibleLengthLocalOnly;
+
     // optional string example_number = 6;
     public java.lang.String exampleNumber;
 
@@ -217,6 +223,8 @@ public interface Phonemetadata {
     public PhoneNumberDesc clear() {
       nationalNumberPattern = "";
       possibleNumberPattern = "";
+      possibleLength = com.google.protobuf.nano.WireFormatNano.EMPTY_INT_ARRAY;
+      possibleLengthLocalOnly = com.google.protobuf.nano.WireFormatNano.EMPTY_INT_ARRAY;
       exampleNumber = "";
       cachedSize = -1;
       return this;
@@ -233,6 +241,16 @@ public interface Phonemetadata {
       }
       if (!this.exampleNumber.equals("")) {
         output.writeString(6, this.exampleNumber);
+      }
+      if (this.possibleLength != null && this.possibleLength.length > 0) {
+        for (int i = 0; i < this.possibleLength.length; i++) {
+          output.writeInt32(9, this.possibleLength[i]);
+        }
+      }
+      if (this.possibleLengthLocalOnly != null && this.possibleLengthLocalOnly.length > 0) {
+        for (int i = 0; i < this.possibleLengthLocalOnly.length; i++) {
+          output.writeInt32(10, this.possibleLengthLocalOnly[i]);
+        }
       }
       super.writeTo(output);
     }
@@ -251,6 +269,26 @@ public interface Phonemetadata {
       if (!this.exampleNumber.equals("")) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(6, this.exampleNumber);
+      }
+      if (this.possibleLength != null && this.possibleLength.length > 0) {
+        int dataSize = 0;
+        for (int i = 0; i < this.possibleLength.length; i++) {
+          int element = this.possibleLength[i];
+          dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeInt32SizeNoTag(element);
+        }
+        size += dataSize;
+        size += 1 * this.possibleLength.length;
+      }
+      if (this.possibleLengthLocalOnly != null && this.possibleLengthLocalOnly.length > 0) {
+        int dataSize = 0;
+        for (int i = 0; i < this.possibleLengthLocalOnly.length; i++) {
+          int element = this.possibleLengthLocalOnly[i];
+          dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeInt32SizeNoTag(element);
+        }
+        size += dataSize;
+        size += 1 * this.possibleLengthLocalOnly.length;
       }
       return size;
     }
@@ -280,6 +318,86 @@ public interface Phonemetadata {
           }
           case 50: {
             this.exampleNumber = input.readString();
+            break;
+          }
+          case 72: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 72);
+            int i = this.possibleLength == null ? 0 : this.possibleLength.length;
+            int[] newArray = new int[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.possibleLength, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readInt32();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readInt32();
+            this.possibleLength = newArray;
+            break;
+          }
+          case 74: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            // First pass to compute array length.
+            int arrayLength = 0;
+            int startPos = input.getPosition();
+            while (input.getBytesUntilLimit() > 0) {
+              input.readInt32();
+              arrayLength++;
+            }
+            input.rewindToPosition(startPos);
+            int i = this.possibleLength == null ? 0 : this.possibleLength.length;
+            int[] newArray = new int[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.possibleLength, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length; i++) {
+              newArray[i] = input.readInt32();
+            }
+            this.possibleLength = newArray;
+            input.popLimit(limit);
+            break;
+          }
+          case 80: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 80);
+            int i = this.possibleLengthLocalOnly == null ? 0 : this.possibleLengthLocalOnly.length;
+            int[] newArray = new int[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.possibleLengthLocalOnly, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readInt32();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readInt32();
+            this.possibleLengthLocalOnly = newArray;
+            break;
+          }
+          case 82: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            // First pass to compute array length.
+            int arrayLength = 0;
+            int startPos = input.getPosition();
+            while (input.getBytesUntilLimit() > 0) {
+              input.readInt32();
+              arrayLength++;
+            }
+            input.rewindToPosition(startPos);
+            int i = this.possibleLengthLocalOnly == null ? 0 : this.possibleLengthLocalOnly.length;
+            int[] newArray = new int[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.possibleLengthLocalOnly, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length; i++) {
+              newArray[i] = input.readInt32();
+            }
+            this.possibleLengthLocalOnly = newArray;
+            input.popLimit(limit);
             break;
           }
         }
