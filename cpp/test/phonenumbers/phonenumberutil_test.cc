@@ -230,6 +230,11 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
             metadata->general_desc().possible_number_pattern());
   EXPECT_TRUE(Equals(metadata->general_desc(), metadata->fixed_line()));
   EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
+  EXPECT_EQ(1, metadata->general_desc().possible_length_size());
+  EXPECT_EQ(10, metadata->general_desc().possible_length(0));
+  // Possible lengths are the same as the general description, so aren't stored
+  // separately in the toll free element as well.
+  EXPECT_EQ(0, metadata->toll_free().possible_length_size());
   EXPECT_EQ("900\\d{7}", metadata->premium_rate().national_number_pattern());
   // No shared-cost data is available, so it should be initialised to "NA".
   EXPECT_EQ("NA", metadata->shared_cost().national_number_pattern());
@@ -247,8 +252,14 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
   EXPECT_EQ("900", metadata->number_format(5).leading_digits_pattern(0));
   EXPECT_EQ("(\\d{3})(\\d{3,4})(\\d{4})",
             metadata->number_format(5).pattern());
+  EXPECT_EQ(2, metadata->general_desc().possible_length_local_only_size());
+  EXPECT_EQ(8, metadata->general_desc().possible_length_size());
+  // Nothing is present for fixed-line, since it is the same as the general
+  // desc, so for efficiency reasons we don't store an extra value.
+  EXPECT_EQ(0, metadata->fixed_line().possible_length_size());
+  EXPECT_EQ(2, metadata->mobile().possible_length_size());
   EXPECT_EQ("$1 $2 $3", metadata->number_format(5).format());
-  EXPECT_EQ("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}",
+  EXPECT_EQ("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}",
             metadata->fixed_line().national_number_pattern());
   EXPECT_EQ("\\d{2,14}", metadata->fixed_line().possible_number_pattern());
   EXPECT_EQ("30123456", metadata->fixed_line().example_number());

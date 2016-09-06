@@ -153,6 +153,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("\\d{7}(?:\\d{3})?", metadata.generalDesc.possibleNumberPattern);
     assertTrue(exactlySame(metadata.generalDesc, metadata.fixedLine));
     assertEquals("\\d{10}", metadata.tollFree.possibleNumberPattern);
+    assertEquals(10, metadata.generalDesc.possibleLength[0]);
+    // Possible lengths are the same as the general description, so aren't stored separately in the
+    // toll free element as well.
+    assertEquals(0, metadata.tollFree.possibleLength.length);
     assertEquals("900\\d{7}", metadata.premiumRate.nationalNumberPattern);
     // No shared-cost data is available, so it should be initialised to "NA".
     assertEquals("NA", metadata.sharedCost.nationalNumberPattern);
@@ -171,7 +175,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
                  metadata.numberFormat[5].pattern);
     assertEquals("$1 $2 $3", metadata.numberFormat[5].format);
-    assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}",
+    assertEquals(2, metadata.generalDesc.possibleLengthLocalOnly.length);
+    assertEquals(8, metadata.generalDesc.possibleLength.length);
+    // Nothing is present for fixed-line, since it is the same as the general desc, so for
+    // efficiency reasons we don't store an extra value.
+    assertEquals(0, metadata.fixedLine.possibleLength.length);
+    assertEquals(2, metadata.mobile.possibleLength.length);
+    assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}",
                  metadata.fixedLine.nationalNumberPattern);
     assertEquals("\\d{2,14}", metadata.fixedLine.possibleNumberPattern);
     assertEquals("30123456", metadata.fixedLine.exampleNumber);
@@ -1494,9 +1504,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     numberToStrip = new StringBuilder("3123");
     strippedNumber = "3123";
     assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
-    assertEquals("Should have had no change - after stripping, it wouldn't have matched " +
-                 "the national rule.",
-                 strippedNumber, numberToStrip.toString());
+    assertEquals("Should have had no change - after stripping, it wouldn't have matched "
+        + "the national rule.",
+        strippedNumber, numberToStrip.toString());
     // Test extracting carrier selection code.
     metadata.nationalPrefixForParsing = "0(81)?";
     numberToStrip = new StringBuilder("08122123456");
@@ -1685,11 +1695,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     try {
       String phoneNumber = "(1 610) 619 446";
       StringBuilder numberToFill = new StringBuilder();
-      assertEquals("Should not have extracted a country calling code - invalid number after " +
-                   "extraction of uncertain country calling code.",
-                   0,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false,
-                                                     number));
+      assertEquals("Should not have extracted a country calling code - invalid number after "
+          + "extraction of uncertain country calling code.",
+          0,
+          phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, false, number));
       assertFalse("Should not contain CountryCodeSource.", number.hasCountryCodeSource());
     } catch (NumberParseException e) {
       fail("Should not have thrown an exception: " + e.toString());
@@ -1698,11 +1707,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     try {
       String phoneNumber = "(1 610) 619";
       StringBuilder numberToFill = new StringBuilder();
-      assertEquals("Should not have extracted a country calling code - too short number both " +
-                   "before and after extraction of uncertain country calling code.",
-                   0,
-                   phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true,
-                                                     number));
+      assertEquals("Should not have extracted a country calling code - too short number both "
+          + "before and after extraction of uncertain country calling code.",
+          0,
+          phoneUtil.maybeExtractCountryCode(phoneNumber, metadata, numberToFill, true, number));
       assertEquals("Did not figure out CountryCodeSource correctly",
                    CountryCodeSource.FROM_DEFAULT_COUNTRY, number.getCountryCodeSource());
     } catch (NumberParseException e) {
@@ -1848,20 +1856,18 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Using a soft hyphen U+00AD.
     assertEquals(US_NUMBER, phoneUtil.parse("1 (650) 253\u00AD-0000", RegionCode.US));
     // The whole number, including punctuation, is here represented in full-width form.
-    assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
-                                            "\u3000\uFF12\uFF15\uFF13\uFF0D\uFF10\uFF10\uFF10" +
-                                            "\uFF10",
-                                            RegionCode.SG));
+    assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09"
+          + "\u3000\uFF12\uFF15\uFF13\uFF0D\uFF10\uFF10\uFF10\uFF10",
+          RegionCode.SG));
     // Using U+30FC dash instead.
-    assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
-                                            "\u3000\uFF12\uFF15\uFF13\u30FC\uFF10\uFF10\uFF10" +
-                                            "\uFF10",
-                                            RegionCode.SG));
+    assertEquals(US_NUMBER, phoneUtil.parse("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09"
+          + "\u3000\uFF12\uFF15\uFF13\u30FC\uFF10\uFF10\uFF10\uFF10",
+          RegionCode.SG));
 
     // Using a very strange decimal digit range (Mongolian digits).
-    assertEquals(US_NUMBER, phoneUtil.parse("\u1811 \u1816\u1815\u1810 " +
-                                            "\u1812\u1815\u1813 \u1810\u1810\u1810\u1810",
-                                            RegionCode.US));
+    assertEquals(US_NUMBER, phoneUtil.parse("\u1811 \u1816\u1815\u1810 "
+          + "\u1812\u1815\u1813 \u1810\u1810\u1810\u1810",
+          RegionCode.US));
   }
 
   public void testParseWithLeadingZero() throws Exception {
