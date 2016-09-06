@@ -288,6 +288,7 @@ class PhoneNumberRegExpsAndMappings {
   void InitializeMapsAndSets() {
     diallable_char_mappings_.insert(std::make_pair('+', '+'));
     diallable_char_mappings_.insert(std::make_pair('*', '*'));
+    diallable_char_mappings_.insert(std::make_pair('#', '#'));
     // Here we insert all punctuation symbols that we wish to respect when
     // formatting alpha numbers, as they show the intended number groupings.
     all_plus_number_grouping_symbols_.insert(
