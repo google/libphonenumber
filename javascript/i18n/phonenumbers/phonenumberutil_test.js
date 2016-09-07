@@ -256,7 +256,10 @@ function testGetInstanceLoadUSMetadata() {
                metadata.getGeneralDesc().getNationalNumberPattern());
   assertEquals('\\d{7}(?:\\d{3})?',
                metadata.getGeneralDesc().getPossibleNumberPattern());
-  assertTrue(metadata.getGeneralDesc().equals(metadata.getFixedLine()));
+  // Fixed-line data should be inherited from the general desc for the national
+  // number pattern, since it wasn't overridden.
+  assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
+               metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{10}',
                metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900\\d{7}',
