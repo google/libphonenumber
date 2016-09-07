@@ -1,3 +1,20 @@
+Sep 07, 2016: libphonenumber-7.6.1
+Code changes:
+ - Phonemetadata.java has two more fields to represent possible lengths of phone
+   numbers. Changed BuildMetadataFromXml (and the resultant jar) to alter the way
+   that metadata about possible-lengths information is consumed when constructing
+   metadata to populate these.
+   Discussion list email:
+   https://groups.google.com/forum/#!topic/libphonenumber-discuss/75TOpTFVi08
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AM, AX, BY, CD, FI, IN, KR, MA, NA, NL, PK, SY
+ - Updated short number metadata for region code(s): BR, GB, NL, NZ
+ - New geocoding data for country calling code(s):
+   82 (pl, pt, ro, ru, sl, sr, uk, vi)
+ - Updated carrier data for country calling code(s):
+   27 (en), 91 (en), 243 (en), 963 (en)
+
 Aug 24, 2016: libphonenumber-7.6.0
 Code changes:
  - Refactored metadata loading and closed all streams after loading.
