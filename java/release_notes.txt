@@ -7,10 +7,8 @@ Code changes:
    Discussion list email:
    https://groups.google.com/forum/#!topic/libphonenumber-discuss/75TOpTFVi08
 Metadata changes:
- - Metadata fixes for BY, KR, NA
-Metadata changes:
  - Updated phone metadata for region code(s):
-   AG, AM, AX, CD, FI, IN, MA, NL, PK, SY
+   AG, AM, AX, BY, CD, FI, IN, KR, MA, NA, NL, PK, SY
  - Updated short number metadata for region code(s): BR, GB, NL, NZ
  - New geocoding data for country calling code(s):
    82 (pl, pt, ro, ru, sl, sr, uk, vi)
