@@ -1307,15 +1307,42 @@
         <nationalNumberPattern>
           1(?:
             0(?:
-              0|
-              [36]\d{2}|
-              5\d
+              [02]|
+              3(?:
+                1[2-579]|
+                2[13-9]|
+                3[124-9]|
+                4[1-3578]|
+                5[1-468]|
+                6[139]|
+                8[149]|
+                9[168]
+              )|
+              5[0-35-9]|
+              6(?:
+                0|
+                1[0-35-8]?|
+                2[0145]|
+                3[0137]?|
+                4[37-9]?|
+                5[0-35]|
+                6[016]?|
+                7[137]?|
+                8[5-8]|
+                9[1359]
+              )
             )|
-            [15][26]|
-            2[38]|
-            68|
-            81|
-            9[0-5789]
+            1[5-8]|
+            2[35789]|
+            3(?:
+              [024568]|
+              3[12]
+            )|
+            4[12568]|
+            5\d|
+            6[0-8]|
+            8[015]|
+            9[0-4789]
           )|
           2(?:
             7(?:
@@ -1325,36 +1352,55 @@
             85959?
           )|
           4(?:
-            0404|
+            0404?|
+            11[12]|
+            57|
             828
           )|
+          55555|
           911
         </nationalNumberPattern>
         <exampleNumber>168</exampleNumber>
       </shortCode>
       <tollFree>
-        <!-- http://www.sdh.gov.br/disque100 -->
-        <!-- http://www.181.pr.gov.br/modules/conteudo/conteudo.php?conteudo=1 -->
+        <!-- The plan says all numbers marked as SERVIÇOS PÚBLICOS DE EMERGÊNCIA are toll-free. The
+             18X and 19X ranges seem to be allocated for these kinds of numbers based on the last
+             numbering plan. -->
         <nationalNumberPattern>
           1(?:
             00|
-            81
+            [89]\d
           )|
-          4828
+          4(?:
+            57|
+            828
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
         <exampleNumber>181</exampleNumber>
       </tollFree>
       <standardRate>
-        <nationalNumberPattern>27330</nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <nationalNumberPattern>
+          102|
+          27330
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
         <exampleNumber>27330</exampleNumber>
       </standardRate>
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
+        <!-- For unsubscribing to SMS short code campaigns: 457 is Vivo, 4112 is Tim, 55555 is Oi,
+             4040 is Claro. For example, see
+             http://www.tim.com.br/sp/sobre-a-tim/regulatorio/mensagens-publicitarias. Note this
+             also mentions 4111 as the TIM short-code to sign up. -->
         <nationalNumberPattern>
           27878|
-          40404
+          4(?:
+            0404?|
+            11[12]|
+            57
+          )|
+          55555
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5}</possibleNumberPattern>
         <exampleNumber>27878</exampleNumber>
@@ -1376,9 +1422,10 @@
              Paulo. -->
         <nationalNumberPattern>
           1(?:
-            16|
+            1[06]|
             23|
             68|
+            8[015]|
             9[145789]
           )
         </nationalNumberPattern>
@@ -1400,7 +1447,7 @@
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
         <!-- Added short codes 28595, 285959 and 4828 after a report that it is used for SMS
-             services. -->
+             services. We can't find range-related information, despite emailing Anatel. -->
         <nationalNumberPattern>
           2(?:
             7(?:
@@ -3710,7 +3757,10 @@
               )|
               8\d{3}
             )|
-            2[123]|
+            2(?:
+              [123]|
+              50
+            )|
             33|
             4(?:
               1|
@@ -3799,6 +3849,7 @@
            time. This is the same for the 78, 79, 80 and 81 prefixes. -->
       <smsServices>
         <nationalNumberPattern>
+          1250|
           2(?:
             0202|
             1300
@@ -3806,7 +3857,7 @@
           7\d{4}|
           8[01]\d{3}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
         <exampleNumber>20202</exampleNumber>
       </smsServices>
       <tollFree>
@@ -3826,8 +3877,10 @@
         <exampleNumber>116000</exampleNumber>
       </tollFree>
       <carrierSpecific>
+        <!-- 1250: White Mobile balance check. -->
         <nationalNumberPattern>
           1(?:
+            250|
             571|
             7[56]0
           )|
@@ -7366,10 +7419,23 @@
               2|
               6(?:
                 00[06]|
-                123
+                1(?:
+                  11|
+                  23
+                )
               )
             )|
-            833
+            2(?:
+              0[0-4]|
+              3[34]|
+              44
+            )|
+            3[03-9]\d|
+            400|
+            8(?:
+              [02-9]\d|
+              1[0-79]
+            )
           )|
           911
         </nationalNumberPattern>
@@ -7387,7 +7453,10 @@
         <nationalNumberPattern>
           116(?:
             00[06]|
-            123
+            1(?:
+              11|
+              23
+            )
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
@@ -7397,12 +7466,20 @@
         <nationalNumberPattern>
           116(?:
             00[06]|
-            123
+            1(?:
+              11|
+              23
+            )
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
+      <carrierSpecific>
+        <nationalNumberPattern>120[0-4]</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <exampleNumber>1202</exampleNumber>
+      </carrierSpecific>
     </territory>
 
     <!-- Norway -->
@@ -7531,17 +7608,31 @@
     <!-- Includes Ross Dependency, Antarctica -->
     <territory id="NZ">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[14]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>111</nationalNumberPattern>
+        <nationalNumberPattern>
+          111|
+          4098
+        </nationalNumberPattern>
+        <possibleLengths national="3,4"/>
         <exampleNumber>111</exampleNumber>
       </shortCode>
       <emergency>
         <nationalNumberPattern>111</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <possibleLengths national="3"/>
         <exampleNumber>111</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- 4098 is a commercial SMS only short code as per Skinny Mobile carrier doc.
+             https://www.skinny.co.nz/assets/pdf/skinny-premium-SMS-prices-Sheet14.pdf -->
+        <nationalNumberPattern>4098</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>4098</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Oman -->

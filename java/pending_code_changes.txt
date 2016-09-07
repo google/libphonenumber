@@ -1,9 +1,1 @@
-Code changes:
- - Phonemetadata.java has two more fields to represent possible lengths of phone
-   numbers. Changed BuildMetadataFromXml (and the resultant jar) to alter the way
-   that metadata about possible-lengths information is consumed when constructing
-   metadata to populate these.
-   Discussion list email:
-   https://groups.google.com/forum/#!topic/libphonenumber-discuss/75TOpTFVi08
-Metadata changes:
- - Metadata fixes for BY, KR, NA
+
