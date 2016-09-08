@@ -16,7 +16,7 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 
 import junit.framework.TestCase;
 
@@ -29,14 +29,14 @@ public class MetadataManagerTest extends TestCase {
     // We should have some data for Germany.
     PhoneMetadata germanyAlternateFormats = MetadataManager.getAlternateFormatsForCountry(49);
     assertNotNull(germanyAlternateFormats);
-    assertTrue(germanyAlternateFormats.numberFormat.length > 0);
+    assertTrue(germanyAlternateFormats.numberFormats().size() > 0);
   }
 
   public void testShortNumberMetadataContainsData() throws Exception {
     // We should have some data for France.
     PhoneMetadata franceShortNumberMetadata = MetadataManager.getShortNumberMetadataForRegion("FR");
     assertNotNull(franceShortNumberMetadata);
-    assertTrue(franceShortNumberMetadata.shortCode != null);
+    assertTrue(franceShortNumberMetadata.hasShortCode());
   }
 
   public void testAlternateFormatsFailsGracefully() throws Exception {

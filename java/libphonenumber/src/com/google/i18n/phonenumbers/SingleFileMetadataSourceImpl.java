@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 
 import java.io.InputStream;
 import java.util.Collections;
@@ -101,16 +101,15 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
       // loading depending on what data is available in the jar.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    PhoneMetadataCollection metadataCollection =
-        MetadataManager.loadMetadataAndCloseInput(source, MetadataManager.ALL_REGIONS_BUFFER_SIZE);
-    PhoneMetadata[] metadatas = metadataCollection.metadata;
-    if (metadatas.length == 0) {
+    PhoneMetadataCollection metadataCollection = MetadataManager.loadMetadataAndCloseInput(source);
+    List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
+    if (metadataList.isEmpty()) {
       // This should not happen since clients shouldn't be using this implementation!
       throw new IllegalStateException("empty metadata: " + fileName);
     }
-    for (PhoneMetadata metadata : metadatas) {
-      String regionCode = metadata.id;
-      int countryCallingCode = metadata.countryCode;
+    for (PhoneMetadata metadata : metadataList) {
+      String regionCode = metadata.getId();
+      int countryCallingCode = metadata.getCountryCode();
       boolean isNonGeoRegion = PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode);
       if (isNonGeoRegion) {
         countryCodeToNonGeographicalMetadataMap.put(countryCallingCode, metadata);

@@ -31,6 +31,26 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+      <!-- Create a directory called 'generated'. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.3</version>
+        <executions>
+          <execution>
+            <id>create-generated-directory</id>
+            <phase>generate-sources</phase>
+            <configuration>
+              <tasks>
+                <mkdir dir="generated"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -44,15 +64,41 @@
             </goals>
             <configuration>
               <sources>
+                <!-- Add generated/ to the source directories. -->
+                <!-- TODO: Add needed functionality to java/libphonenumber/src/Phonemetadata.java
+                     instead, add that directory to sources, and stop generating this. Otherwise
+                     we're depending on a Maven release of protoc that may not be what is on the
+                     local machine, and BuildMetadataFromXml.java has to work with both versions of
+                     Phonemetadata.java. -->
+                <source>generated/</source>
                 <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
                 <source>../common/src/</source>
-                <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
-                     the source directories. -->
-                <source>../../../java/libphonenumber/src/</source>
               </sources>
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <!-- Invoke Protocol Buffers compiler to generate Phonemetadata.java. -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <executable>protoc</executable>
+          <arguments>
+            <argument>--java_out=generated</argument>
+            <argument>../../../resources/phonemetadata.proto</argument>
+            <argument>--proto_path=../../../resources</argument>
+          </arguments>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -104,10 +150,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.protobuf.nano</groupId>
-      <artifactId>protobuf-javanano</artifactId>
-      <!-- If updating the version, see instructions in java/lib/protobuf-javanano-readme.md. -->
-      <version>3.0.0-alpha-7</version>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.5.0</version>
     </dependency>
   </dependencies>
 

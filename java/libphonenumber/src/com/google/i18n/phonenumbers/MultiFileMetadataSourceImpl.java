@@ -16,12 +16,16 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 
 import java.io.InputStream;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.ObjectInputStream;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -116,17 +120,16 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       // that they are present, by checking the map of available data first.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    PhoneMetadataCollection metadataCollection =
-        MetadataManager.loadMetadataAndCloseInput(source, MetadataManager.DEFAULT_BUFFER_SIZE);
-    PhoneMetadata[] metadatas = metadataCollection.metadata;
-    if (metadatas.length == 0) {
+    PhoneMetadataCollection metadataCollection = MetadataManager.loadMetadataAndCloseInput(source);
+    List<PhoneMetadata> metadataList = metadataCollection.getMetadataList();
+    if (metadataList.isEmpty()) {
       // Sanity check; this should not happen since we build with non-empty metadata.
       throw new IllegalStateException("empty metadata: " + fileName);
     }
-    if (metadatas.length > 1) {
+    if (metadataList.size() > 1) {
       logger.log(Level.WARNING, "invalid metadata (too many entries): " + fileName);
     }
-    PhoneMetadata metadata = metadatas[0];
+    PhoneMetadata metadata = metadataList.get(0);
     PhoneMetadata oldValue = map.putIfAbsent(key, metadata);
     return (oldValue != null) ? oldValue : metadata;
   }
