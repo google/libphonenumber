@@ -17,11 +17,11 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,87 +132,81 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertNull(phoneUtil.getMetadataForNonGeographicalRegion(-1));
   }
 
-  private boolean exactlySame(PhoneNumberDesc first, PhoneNumberDesc second) {
-    return first.nationalNumberPattern.equals(second.nationalNumberPattern) &&
-        first.possibleNumberPattern.equals(second.possibleNumberPattern) &&
-        first.exampleNumber.equals(second.exampleNumber);
-  }
-
   public void testGetInstanceLoadUSMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.US);
-    assertEquals("US", metadata.id);
-    assertEquals(1, metadata.countryCode);
-    assertEquals("011", metadata.internationalPrefix);
-    assertTrue(!metadata.nationalPrefix.equals(""));
-    assertEquals(2, metadata.numberFormat.length);
+    assertEquals("US", metadata.getId());
+    assertEquals(1, metadata.getCountryCode());
+    assertEquals("011", metadata.getInternationalPrefix());
+    assertTrue(metadata.hasNationalPrefix());
+    assertEquals(2, metadata.numberFormatSize());
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
-                 metadata.numberFormat[1].pattern);
-    assertEquals("$1 $2 $3", metadata.numberFormat[1].format);
+                 metadata.getNumberFormat(1).getPattern());
+    assertEquals("$1 $2 $3", metadata.getNumberFormat(1).getFormat());
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
-                 metadata.generalDesc.nationalNumberPattern);
-    assertEquals("\\d{7}(?:\\d{3})?", metadata.generalDesc.possibleNumberPattern);
-    assertTrue(exactlySame(metadata.generalDesc, metadata.fixedLine));
-    assertEquals("\\d{10}", metadata.tollFree.possibleNumberPattern);
-    assertEquals(10, metadata.generalDesc.possibleLength[0]);
+                 metadata.getGeneralDesc().getNationalNumberPattern());
+    assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
+    assertTrue(metadata.getGeneralDesc().exactlySameAs(metadata.getFixedLine()));
+    assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
+    assertEquals(10, metadata.getGeneralDesc().getPossibleLength(0));
     // Possible lengths are the same as the general description, so aren't stored separately in the
     // toll free element as well.
-    assertEquals(0, metadata.tollFree.possibleLength.length);
-    assertEquals("900\\d{7}", metadata.premiumRate.nationalNumberPattern);
+    assertEquals(0, metadata.getTollFree().getPossibleLengthCount());
+    assertEquals("900\\d{7}", metadata.getPremiumRate().getNationalNumberPattern());
     // No shared-cost data is available, so it should be initialised to "NA".
-    assertEquals("NA", metadata.sharedCost.nationalNumberPattern);
-    assertEquals("NA", metadata.sharedCost.possibleNumberPattern);
+    assertEquals("NA", metadata.getSharedCost().getNationalNumberPattern());
+    assertEquals("NA", metadata.getSharedCost().getPossibleNumberPattern());
   }
 
   public void testGetInstanceLoadDEMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.DE);
-    assertEquals("DE", metadata.id);
-    assertEquals(49, metadata.countryCode);
-    assertEquals("00", metadata.internationalPrefix);
-    assertEquals("0", metadata.nationalPrefix);
-    assertEquals(6, metadata.numberFormat.length);
-    assertEquals(1, metadata.numberFormat[5].leadingDigitsPattern.length);
-    assertEquals("900", metadata.numberFormat[5].leadingDigitsPattern[0]);
+    assertEquals("DE", metadata.getId());
+    assertEquals(49, metadata.getCountryCode());
+    assertEquals("00", metadata.getInternationalPrefix());
+    assertEquals("0", metadata.getNationalPrefix());
+    assertEquals(6, metadata.numberFormatSize());
+    assertEquals(1, metadata.getNumberFormat(5).leadingDigitsPatternSize());
+    assertEquals("900", metadata.getNumberFormat(5).getLeadingDigitsPattern(0));
     assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
-                 metadata.numberFormat[5].pattern);
-    assertEquals("$1 $2 $3", metadata.numberFormat[5].format);
-    assertEquals(2, metadata.generalDesc.possibleLengthLocalOnly.length);
-    assertEquals(8, metadata.generalDesc.possibleLength.length);
+                 metadata.getNumberFormat(5).getPattern());
+    assertEquals("$1 $2 $3", metadata.getNumberFormat(5).getFormat());
+    assertEquals(2, metadata.getGeneralDesc().getPossibleLengthLocalOnlyCount());
+    assertEquals(8, metadata.getGeneralDesc().getPossibleLengthCount());
     // Nothing is present for fixed-line, since it is the same as the general desc, so for
     // efficiency reasons we don't store an extra value.
-    assertEquals(0, metadata.fixedLine.possibleLength.length);
-    assertEquals(2, metadata.mobile.possibleLength.length);
+    assertEquals(0, metadata.getFixedLine().getPossibleLengthCount());
+    assertEquals(2, metadata.getMobile().getPossibleLengthCount());
     assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}",
-                 metadata.fixedLine.nationalNumberPattern);
-    assertEquals("\\d{2,14}", metadata.fixedLine.possibleNumberPattern);
-    assertEquals("30123456", metadata.fixedLine.exampleNumber);
-    assertEquals("\\d{10}", metadata.tollFree.possibleNumberPattern);
-    assertEquals("900([135]\\d{6}|9\\d{7})", metadata.premiumRate.nationalNumberPattern);
+                 metadata.getFixedLine().getNationalNumberPattern());
+    assertEquals("\\d{2,14}", metadata.getFixedLine().getPossibleNumberPattern());
+    assertEquals("30123456", metadata.getFixedLine().getExampleNumber());
+    assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
+    assertEquals("900([135]\\d{6}|9\\d{7})", metadata.getPremiumRate().getNationalNumberPattern());
   }
 
   public void testGetInstanceLoadARMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForRegion(RegionCode.AR);
-    assertEquals("AR", metadata.id);
-    assertEquals(54, metadata.countryCode);
-    assertEquals("00", metadata.internationalPrefix);
-    assertEquals("0", metadata.nationalPrefix);
-    assertEquals("0(?:(11|343|3715)15)?", metadata.nationalPrefixForParsing);
-    assertEquals("9$1", metadata.nationalPrefixTransformRule);
-    assertEquals("$2 15 $3-$4", metadata.numberFormat[2].format);
+    assertEquals("AR", metadata.getId());
+    assertEquals(54, metadata.getCountryCode());
+    assertEquals("00", metadata.getInternationalPrefix());
+    assertEquals("0", metadata.getNationalPrefix());
+    assertEquals("0(?:(11|343|3715)15)?", metadata.getNationalPrefixForParsing());
+    assertEquals("9$1", metadata.getNationalPrefixTransformRule());
+    assertEquals("$2 15 $3-$4", metadata.getNumberFormat(2).getFormat());
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
-                 metadata.numberFormat[3].pattern);
+                 metadata.getNumberFormat(3).getPattern());
     assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
-                 metadata.intlNumberFormat[3].pattern);
-    assertEquals("$1 $2 $3 $4", metadata.intlNumberFormat[3].format);
+                 metadata.getIntlNumberFormat(3).getPattern());
+    assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).getFormat());
   }
 
   public void testGetInstanceLoadInternationalTollFreeMetadata() {
     PhoneMetadata metadata = phoneUtil.getMetadataForNonGeographicalRegion(800);
-    assertEquals("001", metadata.id);
-    assertEquals(800, metadata.countryCode);
-    assertEquals("$1 $2", metadata.numberFormat[0].format);
-    assertEquals("(\\d{4})(\\d{4})", metadata.numberFormat[0].pattern);
-    assertEquals("12345678", metadata.generalDesc.exampleNumber);
-    assertEquals("12345678", metadata.tollFree.exampleNumber);
+    assertEquals("001", metadata.getId());
+    assertEquals(800, metadata.getCountryCode());
+    assertEquals("$1 $2", metadata.getNumberFormat(0).getFormat());
+    assertEquals("(\\d{4})(\\d{4})", metadata.getNumberFormat(0).getPattern());
+    assertEquals("12345678", metadata.getGeneralDesc().getExampleNumber());
+    assertEquals("12345678", metadata.getTollFree().getExampleNumber());
   }
 
   public void testIsNumberGeographical() {
@@ -859,8 +853,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
   public void testFormatByPattern() {
     NumberFormat newNumFormat = new NumberFormat();
-    newNumFormat.pattern = "(\\d{3})(\\d{3})(\\d{4})";
-    newNumFormat.format = "($1) $2-$3";
+    newNumFormat.setPattern("(\\d{3})(\\d{3})(\\d{4})");
+    newNumFormat.setFormat("($1) $2-$3");
     List<NumberFormat> newNumberFormats = new ArrayList<NumberFormat>();
     newNumberFormats.add(newNumFormat);
 
@@ -875,8 +869,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     // $NP is set to '1' for the US. Here we check that for other NANPA countries the US rules are
     // followed.
-    newNumFormat.nationalPrefixFormattingRule = "$NP ($FG)";
-    newNumFormat.format = "$1 $2-$3";
+    newNumFormat.setNationalPrefixFormattingRule("$NP ($FG)");
+    newNumFormat.setFormat("$1 $2-$3");
     assertEquals("1 (242) 365-1234",
                  phoneUtil.formatByPattern(BS_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
@@ -884,8 +878,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.formatByPattern(BS_NUMBER, PhoneNumberFormat.INTERNATIONAL,
                                            newNumberFormats));
 
-    newNumFormat.pattern = "(\\d{2})(\\d{5})(\\d{3})";
-    newNumFormat.format = "$1-$2 $3";
+    newNumFormat.setPattern("(\\d{2})(\\d{5})(\\d{3})");
+    newNumFormat.setFormat("$1-$2 $3");
     newNumberFormats.set(0, newNumFormat);
 
     assertEquals("02-36618 300",
@@ -895,20 +889,20 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.formatByPattern(IT_NUMBER, PhoneNumberFormat.INTERNATIONAL,
                                            newNumberFormats));
 
-    newNumFormat.nationalPrefixFormattingRule = "$NP$FG";
-    newNumFormat.pattern = "(\\d{2})(\\d{4})(\\d{4})";
-    newNumFormat.format = "$1 $2 $3";
+    newNumFormat.setNationalPrefixFormattingRule("$NP$FG");
+    newNumFormat.setPattern("(\\d{2})(\\d{4})(\\d{4})");
+    newNumFormat.setFormat("$1 $2 $3");
     newNumberFormats.set(0, newNumFormat);
     assertEquals("020 7031 3000",
                  phoneUtil.formatByPattern(GB_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
 
-    newNumFormat.nationalPrefixFormattingRule = "($NP$FG)";
+    newNumFormat.setNationalPrefixFormattingRule("($NP$FG)");
     assertEquals("(020) 7031 3000",
                  phoneUtil.formatByPattern(GB_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
 
-    newNumFormat.nationalPrefixFormattingRule = "";
+    newNumFormat.setNationalPrefixFormattingRule("");
     assertEquals("20 7031 3000",
                  phoneUtil.formatByPattern(GB_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
@@ -1481,9 +1475,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
   public void testMaybeStripNationalPrefix() {
     PhoneMetadata metadata = new PhoneMetadata();
-    metadata.nationalPrefixForParsing = "34";
-    metadata.generalDesc = new PhoneNumberDesc();
-    metadata.generalDesc.nationalNumberPattern = "\\d{4,8}";
+    metadata.setNationalPrefixForParsing("34");
+    metadata.setGeneralDesc(new PhoneNumberDesc().setNationalNumberPattern("\\d{4,8}"));
     StringBuilder numberToStrip = new StringBuilder("34356778");
     String strippedNumber = "356778";
     assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
@@ -1495,12 +1488,12 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("Should have had no change - no national prefix present.",
                  strippedNumber, numberToStrip.toString());
     // Some countries have no national prefix. Repeat test with none specified.
-    metadata.nationalPrefixForParsing = "";
+    metadata.setNationalPrefixForParsing("");
     assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
     assertEquals("Should not strip anything with empty national prefix.",
                  strippedNumber, numberToStrip.toString());
     // If the resultant number doesn't match the national rule, it shouldn't be stripped.
-    metadata.nationalPrefixForParsing = "3";
+    metadata.setNationalPrefixForParsing("3");
     numberToStrip = new StringBuilder("3123");
     strippedNumber = "3123";
     assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
@@ -1508,7 +1501,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         + "the national rule.",
         strippedNumber, numberToStrip.toString());
     // Test extracting carrier selection code.
-    metadata.nationalPrefixForParsing = "0(81)?";
+    metadata.setNationalPrefixForParsing("0(81)?");
     numberToStrip = new StringBuilder("08122123456");
     strippedNumber = "22123456";
     StringBuilder carrierCode = new StringBuilder();
@@ -1518,9 +1511,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("Should have had national prefix and carrier code stripped.",
                  strippedNumber, numberToStrip.toString());
     // If there was a transform rule, check it was applied.
-    metadata.nationalPrefixTransformRule = "5$15";
+    metadata.setNationalPrefixTransformRule("5$15");
     // Note that a capturing group is present here.
-    metadata.nationalPrefixForParsing = "0(\\d{2})";
+    metadata.setNationalPrefixForParsing("0(\\d{2})");
     numberToStrip = new StringBuilder("031123");
     String transformedNumber = "5315123";
     assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
