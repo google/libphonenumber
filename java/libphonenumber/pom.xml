@@ -36,7 +36,6 @@
         <configuration>
           <instructions>
             <Export-Package>com.google.i18n.phonenumbers</Export-Package>
-            <Private-Package>com.google.i18n.phonenumbers.data</Private-Package>
           </instructions>
         </configuration>
       </plugin>
