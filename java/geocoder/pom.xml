@@ -38,26 +38,6 @@
     </testResources>
     <plugins>
       <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <version>3.2.0</version>
-        <configuration>
-          <instructions>
-            <Export-Package>com.google.i18n.phonenumbers.geocoding</Export-Package>
-            <Private-Package>com.google.i18n.phonenumbers.geocoding.data</Private-Package>
-          </instructions>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
         <version>1.15</version>
