@@ -64,15 +64,16 @@
             </goals>
             <configuration>
               <sources>
-                <!-- Add generated/ to the source directories. -->
-                <!-- TODO: Add needed functionality to java/libphonenumber/src/Phonemetadata.java
-                     instead, add that directory to sources, and stop generating this. Otherwise
-                     we're depending on a Maven release of protoc that may not be what is on the
-                     local machine, and BuildMetadataFromXml.java has to work with both versions of
-                     Phonemetadata.java. -->
-                <source>generated/</source>
-                <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
+                <!-- Make BuildMetadataFromXml.java available to the source directories. -->
                 <source>../common/src/</source>
+                <!-- Make Phonemetadata.java available to the source directories.
+                     BuildMetadataFromXml.java has to work with both
+                     tools/java/cpp-build/generated/com/google/i18n/phonenumbers/Phonemetadata.java
+                     and java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java.
+                     TODO: This Phonemetadata.java is generated via a protoc dependency that is not
+                     hermetic and may get out of sync with the other one. Make this file hermetic or
+                     find another way to enable Travis CI on this build. -->
+                <source>generated/</source>
               </sources>
             </configuration>
           </execution>

@@ -36,6 +36,8 @@
       <id>travis</id>
       <modules>
         <module>common</module>
+        <!-- TODO: Add cpp-build once the protoc dependency or the generated Phonemetadata.java is
+             hermetic at tools/java/cpp-build/pom.xml. -->
         <module>data</module>
         <module>java-build</module>
       </modules>
