@@ -1,5 +1,7 @@
 language: java
+install:
+- mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-- mvn test
+- mvn -P travis test
 - ant clean -f java/build.xml && ant jar -f java/build.xml
 - ant junit -f java/build.xml
