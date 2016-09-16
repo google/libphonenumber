@@ -432,7 +432,7 @@ public class BuildMetadataFromXml {
    * @return  complete description of that phone number type
    */
   // @VisibleForTesting
-  static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc.Builder parentDesc,
+  static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc parentDesc,
                                                                Element countryElement,
                                                                String numberType,
                                                                boolean liteBuild) {
@@ -448,7 +448,7 @@ public class BuildMetadataFromXml {
       return numberDesc;
     }
     if (parentDesc != null) {
-      numberDesc.mergeFrom(parentDesc.build());
+      numberDesc.mergeFrom(parentDesc);
     }
 
     if (phoneNumberDescList.getLength() > 0) {
@@ -477,7 +477,7 @@ public class BuildMetadataFromXml {
         // for a certain type or not is available. To ensure binary size is small, we don't set them
         // outside the general desc at this time. If we want this data later, the empty set here
         // should be replaced with the localOnlyLengths set above.
-        setPossibleLengths(lengths, new TreeSet<Integer>(), parentDesc.build(), numberDesc);
+        setPossibleLengths(lengths, new TreeSet<Integer>(), parentDesc, numberDesc);
       }
 
       NodeList validPattern = element.getElementsByTagName(NATIONAL_NUMBER_PATTERN);
@@ -499,14 +499,15 @@ public class BuildMetadataFromXml {
   // @VisibleForTesting
   static void setRelevantDescPatterns(PhoneMetadata.Builder metadata, Element element,
       boolean liteBuild, boolean isShortNumberMetadata) {
-    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
-    generalDesc = processPhoneNumberDescElement(null, element, GENERAL_DESC, liteBuild);
-    metadata.setGeneralDesc(generalDesc);
-
-    String metadataId = metadata.getId();
+    PhoneNumberDesc.Builder generalDescBuilder =
+        processPhoneNumberDescElement(null, element, GENERAL_DESC, liteBuild);
     // Calculate the possible lengths for the general description. This will be based on the
     // possible lengths of the child elements.
-    setPossibleLengthsGeneralDesc(generalDesc, metadataId, element, isShortNumberMetadata);
+    setPossibleLengthsGeneralDesc(
+        generalDescBuilder, metadata.getId(), element, isShortNumberMetadata);
+    metadata.setGeneralDesc(generalDescBuilder);
+
+    PhoneNumberDesc generalDesc = metadata.getGeneralDesc();
 
     if (!isShortNumberMetadata) {
       // Set fields used by regular length phone numbers.
