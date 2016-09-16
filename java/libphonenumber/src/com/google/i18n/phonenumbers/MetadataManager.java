@@ -132,7 +132,7 @@ final class MetadataManager {
     }
     PhoneMetadataCollection shortNumberMetadata = loadMetadataAndCloseInput(source);
     for (PhoneMetadata metadata : shortNumberMetadata.getMetadataList()) {
-        regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
+      regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
     }
   }
 
