@@ -5,7 +5,6 @@ Code changes:
    java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java
    which was present until libphonenumber-7.1.1.
    Does not affect the C++ or JavaScript libraries.
-Metadata changes:
 
 Sep 07, 2016: libphonenumber-7.6.1
 Code changes:
