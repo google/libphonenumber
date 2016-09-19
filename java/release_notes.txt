@@ -1,3 +1,11 @@
+Sep 19, 2016: libphonenumber-7.7.0
+Code changes:
+ - Removed the dependency on protobuf (protobuf-javanano) from the Java library,
+   resurrecting
+   java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java
+   which was present until libphonenumber-7.1.1.
+   Does not affect the C++ or JavaScript libraries.
+
 Sep 07, 2016: libphonenumber-7.6.1
 Code changes:
  - Phonemetadata.java has two more fields to represent possible lengths of phone
