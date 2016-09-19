@@ -1,1 +1,6 @@
-
+Code changes:
+ - Removed the dependency on protobuf (protobuf-javanano) from the Java library,
+   resurrecting
+   java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java
+   which was present until libphonenumber-7.1.1.
+   Does not affect the C++ or JavaScript libraries.
