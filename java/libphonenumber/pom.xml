@@ -52,13 +52,4 @@
     </plugins>
   </build>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.google.protobuf.nano</groupId>
-      <artifactId>protobuf-javanano</artifactId>
-      <!-- If updating the version, see instructions in java/lib/protobuf-javanano-readme.md. -->
-      <version>3.0.0-alpha-7</version>
-    </dependency>
-  </dependencies>
-
 </project>
