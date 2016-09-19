@@ -197,21 +197,21 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_formatting_rule = 4;
-    // TODO: Don't set in format if empty to begin with, and replace this check with "has".
+    // TODO: Don't set in format if default to begin with, and replace this check with "has".
     if (format.getNationalPrefixFormattingRule().length() > 0) {
       jsArrayBuilder.append(format.getNationalPrefixFormattingRule());
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string domestic_carrier_code_formatting_rule = 5;
-    // TODO: Don't set in format if empty to begin with, and replace this check with "has".
+    // TODO: Don't set in format if default to begin with, and replace this check with "has".
     if (format.getDomesticCarrierCodeFormattingRule().length() > 0) {
       jsArrayBuilder.append(format.getDomesticCarrierCodeFormattingRule());
     } else {
       jsArrayBuilder.append(null);
     }
     // optional bool national_prefix_optional_when_formatting = 6;
-    // TODO: Don't set in format if empty to begin with, and replace this check with "has".
+    // TODO: Don't set in format if default to begin with, and replace this check with "has".
     if (format.isNationalPrefixOptionalWhenFormatting()) {
       jsArrayBuilder.append(format.isNationalPrefixOptionalWhenFormatting());
     } else {
@@ -292,7 +292,7 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string international_prefix = 11;
-    // TODO: Don't set in format if empty to begin with, and replace this check with "has".
+    // TODO: Don't set in format if default to begin with, and replace this check with "has".
     if (metadata.getInternationalPrefix().length() > 0) {
       jsArrayBuilder.append(metadata.getInternationalPrefix());
     } else {
