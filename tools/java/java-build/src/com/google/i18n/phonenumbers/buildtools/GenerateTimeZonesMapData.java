@@ -35,10 +35,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * A utility that generates the binary serialization of the prefix/time zones mappings from
- * a human-readable text file.
- *
- * @author Walter Erquinigo
+ * A utility that generates the binary serialization of the prefix/time zones mappings from a
+ * human-readable text file.
  */
 public class GenerateTimeZonesMapData {
   private final File inputTextFile;
@@ -46,7 +44,7 @@ public class GenerateTimeZonesMapData {
   // The IO Handler used to output the generated binary file.
   private final AbstractPhonePrefixDataIOHandler ioHandler;
 
-  private static final Logger LOGGER = Logger.getLogger(GenerateTimeZonesMapData.class.getName());
+  private static final Logger logger = Logger.getLogger(GenerateTimeZonesMapData.class.getName());
 
   public GenerateTimeZonesMapData(File inputTextFile, AbstractPhonePrefixDataIOHandler ioHandler)
       throws IOException {
@@ -128,16 +126,16 @@ public class GenerateTimeZonesMapData {
         ioHandler.closeFile(fileOutputStream);
       }
     } catch (RuntimeException e) {
-      LOGGER.log(Level.SEVERE,
+      logger.log(Level.SEVERE,
                  "Error processing file " + inputTextFile.getAbsolutePath());
       throw e;
     } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, e.getMessage());
+      logger.log(Level.SEVERE, e.getMessage());
     } finally {
       ioHandler.closeFile(fileInputStream);
       ioHandler.closeFile(fileOutputStream);
       ioHandler.close();
     }
-    LOGGER.log(Level.INFO, "Time zone data successfully generated.");
+    logger.log(Level.INFO, "Time zone data successfully generated.");
   }
 }
