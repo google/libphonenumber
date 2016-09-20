@@ -1,6 +1,8 @@
 Build changes:
  - OSGi support added to Manifest information when building jar (#1300)
  - BuildMetadataJsonFromXml changed to output possible lengths for JS build
+ - Fix geocoding file generation to handle language codes that are not just
+   two letters long properly and to process filenames in the same order.
 Code changes:
  - Formatting, naming (LOGGER -> logger) and comment tweaks to follow style
    guide
