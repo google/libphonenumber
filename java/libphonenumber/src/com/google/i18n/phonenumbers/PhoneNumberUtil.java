@@ -1325,7 +1325,7 @@ public class PhoneNumberUtil {
              // CL fixed line numbers need the national prefix when dialing in the national format,
              // but don't have it when used for display. The reverse is true for mobile numbers.  As
              // a result, we output them in the international format to make it work.
-             || ((regionCode.equals(RegionCode.MX) || regionCode.equals(RegionCode.CL))
+             || ((regionCode.equals("MX") || regionCode.equals("CL"))
              && isFixedLineOrMobile))
             && canBeInternationallyDialled(numberNoExt)) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);

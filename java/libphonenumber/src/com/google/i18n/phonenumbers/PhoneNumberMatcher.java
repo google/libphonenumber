@@ -426,7 +426,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       // TODO: Remove this or make it significantly less hacky once we've decided how to
       // handle these short codes going forward in ShortNumberInfo. We could use the formatting
       // rules for instance, but that would be slower.
-      if (phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()).equals(RegionCode.IL)
+      if (phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()).equals("IL")
           && phoneUtil.getNationalSignificantNumber(number).length() == 4
           && (offset == 0 || (offset > 0 && text.charAt(offset - 1) != '*'))) {
         // No match.
