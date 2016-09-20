@@ -37,7 +37,7 @@ import java.util.logging.Logger;
  */
 public class PhonePrefixMap implements Externalizable {
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-  private static final Logger LOGGER = Logger.getLogger(PhonePrefixMap.class.getName());
+  private static final Logger logger = Logger.getLogger(PhonePrefixMap.class.getName());
 
   private PhonePrefixMapStorageStrategy phonePrefixMapStorage;
 
@@ -96,7 +96,7 @@ public class PhonePrefixMap implements Externalizable {
       return sizeOfFlyweightMapStorage < sizeOfDefaultMapStorage
           ? flyweightMapStorage : defaultMapStorage;
     } catch (IOException e) {
-      LOGGER.severe(e.getMessage());
+      logger.severe(e.getMessage());
       return createFlyweightMapStorage();
     }
   }
