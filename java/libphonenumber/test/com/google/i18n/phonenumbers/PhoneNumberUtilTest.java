@@ -145,8 +145,12 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
     assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
-    assertTrue(metadata.getGeneralDesc().exactlySameAs(metadata.getFixedLine()));
+    // Fixed-line data should be inherited from the general desc for the national number pattern,
+    // since it wasn't overridden.
+    assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
+        metadata.getFixedLine().getNationalNumberPattern());
     assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
+    assertEquals(1, metadata.getGeneralDesc().getPossibleLengthCount());
     assertEquals(10, metadata.getGeneralDesc().getPossibleLength(0));
     // Possible lengths are the same as the general description, so aren't stored separately in the
     // toll free element as well.
@@ -1315,7 +1319,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isPossibleNumber("253-0000", RegionCode.US));
     assertTrue(phoneUtil.isPossibleNumber("+1 650 253 0000", RegionCode.GB));
     assertTrue(phoneUtil.isPossibleNumber("+44 20 7031 3000", RegionCode.GB));
-    assertTrue(phoneUtil.isPossibleNumber("(020) 7031 3000", RegionCode.GB));
+    assertTrue(phoneUtil.isPossibleNumber("(020) 7031 300", RegionCode.GB));
     assertTrue(phoneUtil.isPossibleNumber("7031 3000", RegionCode.GB));
     assertTrue(phoneUtil.isPossibleNumber("3331 6005", RegionCode.NZ));
     assertTrue(phoneUtil.isPossibleNumber("+800 1234 5678", RegionCode.UN001));
