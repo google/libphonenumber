@@ -1,5 +1,6 @@
 Build changes:
 -- OSGi support added to Manifest information when building jar (#1300)
+-- BuildMetadataJsonFromXml changed to output possible lengths for JS build
 
 Code changes:
 -- Formatting, naming (LOGGER -> logger) and comment tweaks to follow style
