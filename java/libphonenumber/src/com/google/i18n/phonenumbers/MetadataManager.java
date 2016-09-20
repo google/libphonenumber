@@ -16,16 +16,16 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
-import com.google.protobuf.nano.CodedInputByteBufferNano;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -61,39 +61,13 @@ final class MetadataManager {
   private MetadataManager() {
   }
 
-  // The size of the byte buffer in bytes used to convert a stream containing metadata for a single
-  // region, to a nanoproto-compatible CodedInputByteBufferNano. This was determined by the size of
-  // the binary metadata files that contain each region's metadata.
-  static final int DEFAULT_BUFFER_SIZE = 16 * 1024;
-
-  // The size of the byte buffer in bytes used to convert a stream containing metadata for all
-  // regions, to a nanoproto-compatible CodedInputByteBufferNano. This was determined by the size of
-  // the binary metadata file that contains all regions' metadata.
-  static final int ALL_REGIONS_BUFFER_SIZE = 256 * 1024;
-
-  static CodedInputByteBufferNano convertStreamToByteBuffer(ObjectInputStream in, int bufferSize)
-      throws IOException {
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    int nRead;
-    byte[] data = new byte[bufferSize];
-
-    while ((nRead = in.read(data, 0, bufferSize)) != -1) {
-      outputStream.write(data, 0, nRead);
-    }
-
-    outputStream.flush();
-    return CodedInputByteBufferNano.newInstance(outputStream.toByteArray());
-  }
-
   /**
-   * Loads and returns the metadata protocol buffer from the given stream and closes the stream.
+   * Loads and returns the metadata object from the given stream and closes the stream.
    *
-   * @param source      the non-null stream from which metadata is to be read.
-   * @param bufferSize  the size of the buffer in bytes used to convert the stream to a
-                        nanoproto-compatible {@code CodedInputByteBufferNano}.
-   * @return            the loaded metadata protocol buffer.
+   * @param source  the non-null stream from which metadata is to be read
+   * @return  the loaded metadata object
    */
-  static PhoneMetadataCollection loadMetadataAndCloseInput(InputStream source, int bufferSize) {
+  static PhoneMetadataCollection loadMetadataAndCloseInput(InputStream source) {
     ObjectInputStream ois = null;
     try {
       try {
@@ -103,7 +77,7 @@ final class MetadataManager {
       }
       PhoneMetadataCollection metadataCollection = new PhoneMetadataCollection();
       try {
-        metadataCollection.mergeFrom(convertStreamToByteBuffer(ois, bufferSize));
+        metadataCollection.readExternal(ois);
       } catch (IOException e) {
         throw new RuntimeException("cannot load/parse metadata", e);
       }
@@ -130,10 +104,9 @@ final class MetadataManager {
       // that they are present, by checking the map of available data first.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    PhoneMetadataCollection alternateFormatData =
-        loadMetadataAndCloseInput(source, DEFAULT_BUFFER_SIZE);
-    for (PhoneMetadata metadata : alternateFormatData.metadata) {
-      callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
+    PhoneMetadataCollection alternateFormats = loadMetadataAndCloseInput(source);
+    for (PhoneMetadata metadata : alternateFormats.getMetadataList()) {
+      callingCodeToAlternateFormatsMap.put(metadata.getCountryCode(), metadata);
     }
   }
 
@@ -157,10 +130,9 @@ final class MetadataManager {
       // that they are present, by checking the map of available data first.
       throw new IllegalStateException("missing metadata: " + fileName);
     }
-    PhoneMetadataCollection shortNumberData =
-        loadMetadataAndCloseInput(source, DEFAULT_BUFFER_SIZE);
-    for (PhoneMetadata metadata : shortNumberData.metadata) {
-        regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
+    PhoneMetadataCollection shortNumberMetadata = loadMetadataAndCloseInput(source);
+    for (PhoneMetadata metadata : shortNumberMetadata.getMetadataList()) {
+      regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
     }
   }
 

@@ -31,6 +31,26 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+      <!-- Create a directory called 'generated'. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.3</version>
+        <executions>
+          <execution>
+            <id>create-generated-directory</id>
+            <phase>generate-sources</phase>
+            <configuration>
+              <tasks>
+                <mkdir dir="generated"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -44,15 +64,42 @@
             </goals>
             <configuration>
               <sources>
-                <!-- Add ../common/src/ which contains BuildMetadataFromXml.java -->
+                <!-- Make BuildMetadataFromXml.java available to the source directories. -->
                 <source>../common/src/</source>
-                <!-- Add ../../../java/libphonenumber/src/ to make Phonemetadata.java available to
-                     the source directories. -->
-                <source>../../../java/libphonenumber/src/</source>
+                <!-- Make Phonemetadata.java available to the source directories.
+                     BuildMetadataFromXml.java has to work with both
+                     tools/java/cpp-build/generated/com/google/i18n/phonenumbers/Phonemetadata.java
+                     and java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java.
+                     TODO: This Phonemetadata.java is generated via a protoc dependency that is not
+                     hermetic and may get out of sync with the other one. Make this file hermetic or
+                     find another way to enable Travis CI on this build. -->
+                <source>generated/</source>
               </sources>
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <!-- Invoke Protocol Buffers compiler to generate Phonemetadata.java. -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <executable>protoc</executable>
+          <arguments>
+            <argument>--java_out=generated</argument>
+            <argument>../../../resources/phonemetadata.proto</argument>
+            <argument>--proto_path=../../../resources</argument>
+          </arguments>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -104,10 +151,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.protobuf.nano</groupId>
-      <artifactId>protobuf-javanano</artifactId>
-      <!-- If updating the version, see instructions in java/lib/protobuf-javanano-readme.md. -->
-      <version>3.0.0-alpha-7</version>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.5.0</version>
     </dependency>
   </dependencies>
 
