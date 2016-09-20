@@ -262,22 +262,22 @@ public class BuildMetadataJsonFromXml extends Command {
     // missing 8
     jsArrayBuilder.append(null);
     // repeated int32 possible_length = 9;
-    int possibleLengthSize = desc.possibleLength.length;
+    int possibleLengthSize = desc.getPossibleLengthCount();
     if (possibleLengthSize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < possibleLengthSize; i++) {
-        jsArrayBuilder.append(desc.possibleLength[i]);
+        jsArrayBuilder.append(desc.getPossibleLength(i));
       }
       jsArrayBuilder.endArray();
     } else {
       jsArrayBuilder.append(null);
     }
     // repeated int32 possible_length = 10;
-    int possibleLengthLocalOnlySize = desc.possibleLengthLocalOnly.length;
+    int possibleLengthLocalOnlySize = desc.getPossibleLengthLocalOnlyCount();
     if (possibleLengthLocalOnlySize > 0) {
       jsArrayBuilder.beginArray();
       for (int i = 0; i < possibleLengthLocalOnlySize; i++) {
-        jsArrayBuilder.append(desc.possibleLengthLocalOnly[i]);
+        jsArrayBuilder.append(desc.getPossibleLengthLocalOnly(i));
       }
       jsArrayBuilder.endArray();
     } else {
