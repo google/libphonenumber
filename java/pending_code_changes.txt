@@ -1,1 +1,7 @@
-
+Code changes:
+ - Switching the internal implementation of isPossible and related functions
+   to use the new possibleLengths metadata. This affects a lot of countries,
+   making isPossible more restrictive as more precise data is available. It
+   also affects parsing ambiguous and invalid numbers, as we decide whether
+   to strip a possible national prefix (1) or country code based on the length
+   of the number and whether it is possible before or after this.
