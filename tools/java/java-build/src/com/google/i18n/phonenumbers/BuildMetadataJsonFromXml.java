@@ -51,26 +51,26 @@ public class BuildMetadataJsonFromXml extends Command {
       "BuildMetadataJsonFromXml PhoneNumberMetadata.xml metadatalite.js true\n";
 
   private static final String FILE_OVERVIEW =
-      "/**\n" +
-      " * @fileoverview Generated metadata for file\n" +
-      " * %s\n" +
-      " * @author Nikolaos Trogkanis\n" +
-      " */\n\n";
+      "/**\n"
+      + " * @fileoverview Generated metadata for file\n"
+      + " * %s\n"
+      + " * @author Nikolaos Trogkanis\n"
+      + " */\n\n";
 
   private static final String COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT =
-      "/**\n" +
-      " * A mapping from a country calling code to the region codes which denote the\n" +
-      " * region represented by that country calling code. In the case of multiple\n" +
-      " * countries sharing a calling code, such as the NANPA regions, the one\n" +
-      " * indicated with \"isMainCountryForCode\" in the metadata should be first.\n" +
-      " * @type {!Object.<number, Array.<string>>}\n" +
-      " */\n";
+      "/**\n"
+      + " * A mapping from a country calling code to the region codes which denote the\n"
+      + " * region represented by that country calling code. In the case of multiple\n"
+      + " * countries sharing a calling code, such as the NANPA regions, the one\n"
+      + " * indicated with \"isMainCountryForCode\" in the metadata should be first.\n"
+      + " * @type {!Object.<number, Array.<string>>}\n"
+      + " */\n";
 
   private static final String COUNTRY_TO_METADATA_COMMENT =
-      "/**\n" +
-      " * A mapping from a region code to the PhoneMetadata for that region.\n" +
-      " * @type {!Object.<string, Array>}\n" +
-      " */\n";
+      "/**\n"
+      + " * A mapping from a region code to the PhoneMetadata for that region.\n"
+      + " * @type {!Object.<string, Array>}\n"
+      + " */\n";
 
   private static final int COPYRIGHT_YEAR = 2010;
 

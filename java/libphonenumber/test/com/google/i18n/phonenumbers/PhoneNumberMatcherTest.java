@@ -119,8 +119,8 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     // Using a full-width plus sign.
     doTestFindInContext("\uFF0B1 (650) 333-6000", RegionCode.SG);
     // The whole number, including punctuation, is here represented in full-width form.
-    doTestFindInContext("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
-        "\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10",
+    doTestFindInContext("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09"
+        + "\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10",
         RegionCode.SG);
   }
 
@@ -611,8 +611,8 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
       } else {
         if (!test.rawString.equals(match.rawString())) {
           wrongMatchFoundCount++;
-          System.err.println("Found wrong match in test " + test.toString() +
-                             ". Found " + match.rawString());
+          System.err.println("Found wrong match in test " + test.toString()
+              + ". Found " + match.rawString());
         }
       }
     }

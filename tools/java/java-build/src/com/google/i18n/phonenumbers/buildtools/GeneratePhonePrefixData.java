@@ -68,13 +68,13 @@ public class GeneratePhonePrefixData {
   // The IO Handler used to output the generated binary files.
   private final AbstractPhonePrefixDataIOHandler ioHandler;
 
-  private static final Logger LOGGER = Logger.getLogger(GeneratePhonePrefixData.class.getName());
+  private static final Logger logger = Logger.getLogger(GeneratePhonePrefixData.class.getName());
 
   public GeneratePhonePrefixData(File inputPath, AbstractPhonePrefixDataIOHandler ioHandler)
       throws IOException {
     if (!inputPath.isDirectory()) {
-      throw new IOException("The provided input path does not exist: " +
-                             inputPath.getAbsolutePath());
+      throw new IOException("The provided input path does not exist: "
+          + inputPath.getAbsolutePath());
     }
     this.inputPath = inputPath;
     this.ioHandler = ioHandler;
@@ -138,7 +138,7 @@ public class GeneratePhonePrefixData {
   /**
    * Reads the mappings contained in the provided input stream pointing to a text file.
    *
-   * @return  a map containing the mappings that were read.
+   * @return  a map containing the mappings that were read
    */
   // @VisibleForTesting
   static SortedMap<Integer, String> readMappingsFromTextFile(InputStream input)
@@ -384,8 +384,8 @@ public class GeneratePhonePrefixData {
   private void makeDataFallbackToEnglish(File inputTextFile, SortedMap<Integer, String> mappings)
       throws IOException {
     File englishTextFile = new File(getEnglishDataPath(inputTextFile.getAbsolutePath()));
-    if (inputTextFile.getAbsolutePath().equals(englishTextFile.getAbsolutePath()) ||
-        !englishTextFile.exists()) {
+    if (inputTextFile.getAbsolutePath().equals(englishTextFile.getAbsolutePath())
+        || !englishTextFile.exists()) {
       return;
     }
     int countryCode = getCountryCodeFromTextFileName(inputTextFile.getName());
@@ -457,11 +457,11 @@ public class GeneratePhonePrefixData {
           }
         }
       } catch (RuntimeException e) {
-        LOGGER.log(Level.SEVERE,
+        logger.log(Level.SEVERE,
                    "Error processing file " + inputOutputMapping.getKey().getAbsolutePath());
         throw e;
       } catch (IOException e) {
-        LOGGER.log(Level.SEVERE, e.getMessage());
+        logger.log(Level.SEVERE, e.getMessage());
       } finally {
         ioHandler.closeFile(fileInputStream);
         ioHandler.closeFile(fileOutputStream);
@@ -478,6 +478,6 @@ public class GeneratePhonePrefixData {
       ioHandler.closeFile(fileOutputStream);
       ioHandler.close();
     }
-    LOGGER.log(Level.INFO, "Phone prefix data successfully generated.");
+    logger.log(Level.INFO, "Phone prefix data successfully generated.");
   }
 }
