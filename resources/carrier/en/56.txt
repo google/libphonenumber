@@ -26,13 +26,13 @@
 569435|Simple
 569436|Telefónica Uno Uno Cuatro
 569437|Telefónica Uno Uno Cuatro
-569438|Tribe
-569439|Tribe
+569438|Virgin Mobile
+569439|Virgin Mobile
 56950|Claro
-569510|Tribe
-569511|Tribe
-569512|Tribe
-569513|Tribe
+569510|Virgin Mobile
+569511|Virgin Mobile
+569512|Virgin Mobile
+569513|Virgin Mobile
 569514|Entel
 569515|Entel
 569516|Entel
@@ -43,8 +43,8 @@
 569521|Entel
 569522|Entel
 569523|Entel
-569524|Tribe
-569525|Tribe
+569524|Virgin Mobile
+569525|Virgin Mobile
 569526|Falabella Movil
 569527|Falabella Movil
 569528|Falabella Movil
@@ -52,9 +52,9 @@
 56953|Movistar
 56954|Claro
 569550|OPS Movil
-569551|Nextel
-569552|Nextel
-569553|Nextel
+569551|WOM
+569552|WOM
+569553|WOM
 569554|Netline
 5695550|Netline
 5695551|Netline
@@ -93,11 +93,11 @@
 569638|VTR Móvil
 569639|Movistar
 569640|Movistar
-569641|Nextel
-569642|Nextel
-569643|Nextel
-569644|Nextel
-569645|Nextel
+569641|WOM
+569642|WOM
+569643|WOM
+569644|WOM
+569645|WOM
 569646|Movistar
 569647|Movistar
 569648|Movistar
@@ -176,7 +176,7 @@
 569693|Quantax
 569694|NetUno
 569695|Blue Two
-569696|Tribe
+569696|Virgin Mobile
 569697|VTR Móvil
 569699|Telecomunicaciones Dotcom
 569710|Entel
@@ -210,7 +210,7 @@
 569747|Movistar
 569748|Movistar
 569749|Movistar
-569750|Nextel
+569750|WOM
 569751|Entel
 569752|Entel
 569753|Entel
@@ -266,11 +266,11 @@
 5698102|Viva
 5698103|Viva
 5698104|Viva
-5698105|Nextel
-5698106|Nextel
-5698107|Nextel
-5698108|Nextel
-5698109|Nextel
+5698105|WOM
+5698106|WOM
+5698107|WOM
+5698108|WOM
+5698109|WOM
 569811|Entel
 569812|Movistar
 569813|Entel
@@ -325,8 +325,8 @@
 5699025|Movistar
 5699026|Mobilink
 5699027|Mobilink
-5699028|Nextel
-5699029|Nextel
+5699028|WOM
+5699029|WOM
 569903|Movistar
 5699040|Movistar
 5699041|Movistar
@@ -336,8 +336,8 @@
 5699045|Movistar
 5699046|Movistar
 5699047|Movistar
-5699048|Nextel
-5699049|Nextel
+5699048|WOM
+5699049|WOM
 569905|Claro
 569906|Claro
 569907|Entel
