@@ -30,7 +30,7 @@ import java.util.logging.Logger;
  * @author Philippe Liard
  */
 public class GenerateTimeZonesMapDataEntryPoint extends Command {
-  private static final Logger LOGGER = Logger.getLogger(GenerateTimeZonesMapData.class.getName());
+  private static final Logger logger = Logger.getLogger(GenerateTimeZonesMapData.class.getName());
 
   @Override
   public String getCommandName() {
@@ -42,9 +42,9 @@ public class GenerateTimeZonesMapDataEntryPoint extends Command {
     String[] args = getArgs();
 
     if (args.length != 3) {
-      LOGGER.log(Level.SEVERE,
-                 "usage: GenerateTimeZonesMapData /path/to/input/text_file " +
-                 "/path/to/output/directory");
+      logger.log(Level.SEVERE,
+                 "usage: GenerateTimeZonesMapData /path/to/input/text_file "
+                 + "/path/to/output/directory");
       return false;
     }
     try {
@@ -52,7 +52,7 @@ public class GenerateTimeZonesMapDataEntryPoint extends Command {
           new File(args[1]), new PhonePrefixDataIOHandler(new File(args[2])));
       generateTimeZonesMapData.run();
     } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, e.getMessage());
+      logger.log(Level.SEVERE, e.getMessage());
       return false;
     }
     return true;
