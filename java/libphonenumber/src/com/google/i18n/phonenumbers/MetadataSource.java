@@ -22,6 +22,7 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
  * A source for phone metadata for all regions.
  */
 interface MetadataSource {
+
   /**
    * Gets phone metadata for a region.
    * @param regionCode the region code.

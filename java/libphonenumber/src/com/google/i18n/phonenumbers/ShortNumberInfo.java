@@ -61,7 +61,7 @@ public class ShortNumberInfo {
     TOLL_FREE,
     STANDARD_RATE,
     PREMIUM_RATE,
-    UNKNOWN_COST
+    UNKNOWN_COST;
   }
 
   /** Returns the singleton instance of the ShortNumberInfo. */

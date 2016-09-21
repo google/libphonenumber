@@ -32,7 +32,7 @@ import java.util.logging.Logger;
  * @author Shaopeng Jia
  */
 public class PrefixFileReader {
-  private static final Logger LOGGER = Logger.getLogger(PrefixFileReader.class.getName());
+  private static final Logger logger = Logger.getLogger(PrefixFileReader.class.getName());
 
   private final String phonePrefixDataDirectory;
   // The mappingFileProvider knows for which combination of countryCallingCode and language a phone
@@ -56,7 +56,7 @@ public class PrefixFileReader {
       in = new ObjectInputStream(source);
       mappingFileProvider.readExternal(in);
     } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
+      logger.log(Level.WARNING, e.toString());
     } finally {
       close(in);
     }
@@ -84,7 +84,7 @@ public class PrefixFileReader {
       map.readExternal(in);
       availablePhonePrefixMaps.put(fileName, map);
     } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
+      logger.log(Level.WARNING, e.toString());
     } finally {
       close(in);
     }
@@ -95,7 +95,7 @@ public class PrefixFileReader {
       try {
         in.close();
       } catch (IOException e) {
-        LOGGER.log(Level.WARNING, e.toString());
+        logger.log(Level.WARNING, e.toString());
       }
     }
   }
@@ -116,12 +116,12 @@ public class PrefixFileReader {
     int countryCallingCode = number.getCountryCode();
     // As the NANPA data is split into multiple files covering 3-digit areas, use a phone number
     // prefix of 4 digits for NANPA instead, e.g. 1650.
-    int phonePrefix = (countryCallingCode != 1) ?
-        countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
+    int phonePrefix = (countryCallingCode != 1)
+        ? countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
     PhonePrefixMap phonePrefixDescriptions =
         getPhonePrefixDescriptions(phonePrefix, lang, script, region);
-    String description = (phonePrefixDescriptions != null) ?
-        phonePrefixDescriptions.lookup(number) : null;
+    String description = (phonePrefixDescriptions != null)
+        ? phonePrefixDescriptions.lookup(number) : null;
     // When a location is not available in the requested language, fall back to English.
     if ((description == null || description.length() == 0) && mayFallBackToEnglish(lang)) {
       PhonePrefixMap defaultMap = getPhonePrefixDescriptions(phonePrefix, "en", "", "");

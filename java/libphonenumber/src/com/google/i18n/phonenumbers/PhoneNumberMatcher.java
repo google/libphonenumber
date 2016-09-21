@@ -138,10 +138,10 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
      * closing bracket first. We limit the sets of brackets in a phone number to four.
      */
     MATCHING_BRACKETS = Pattern.compile(
-        "(?:[" + openingParens + "])?" + "(?:" + nonParens + "+" + "[" + closingParens + "])?" +
-        nonParens + "+" +
-        "(?:[" + openingParens + "]" + nonParens + "+[" + closingParens + "])" + bracketPairLimit +
-        nonParens + "*");
+        "(?:[" + openingParens + "])?" + "(?:" + nonParens + "+" + "[" + closingParens + "])?"
+        + nonParens + "+"
+        + "(?:[" + openingParens + "]" + nonParens + "+[" + closingParens + "])" + bracketPairLimit
+        + nonParens + "*");
 
     /* Limit on the number of leading (plus) characters. */
     String leadLimit = limit(0, 2);
@@ -167,9 +167,9 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
     /* Phone number pattern allowing optional punctuation. */
     PATTERN = Pattern.compile(
-        "(?:" + leadClass + punctuation + ")" + leadLimit +
-        digitSequence + "(?:" + punctuation + digitSequence + ")" + blockLimit +
-        "(?:" + PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING + ")?",
+        "(?:" + leadClass + punctuation + ")" + leadLimit
+        + digitSequence + "(?:" + punctuation + digitSequence + ")" + blockLimit
+        + "(?:" + PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING + ")?",
         PhoneNumberUtil.REGEX_FLAGS);
   }
 
@@ -211,16 +211,16 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * Creates a new instance. See the factory methods in {@link PhoneNumberUtil} on how to obtain a
    * new instance.
    *
-   * @param util      the phone number util to use
-   * @param text      the character sequence that we will search, null for no text
-   * @param country   the country to assume for phone numbers not written in international format
-   *                  (with a leading plus, or with the international dialing prefix of the
-   *                  specified region). May be null or "ZZ" if only numbers with a
-   *                  leading plus should be considered.
+   * @param util  the phone number util to use
+   * @param text  the character sequence that we will search, null for no text
+   * @param country  the country to assume for phone numbers not written in international format
+   *     (with a leading plus, or with the international dialing prefix of the specified region).
+   *     May be null or "ZZ" if only numbers with a leading plus should be
+   *     considered.
    * @param leniency  the leniency to use when evaluating candidate phone numbers
    * @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
-   *                  This is to cover degenerate cases where the text has a lot of false positives
-   *                  in it. Must be {@code >= 0}.
+   *     This is to cover degenerate cases where the text has a lot of false positives in it. Must
+   *     be {@code >= 0}.
    */
   PhoneNumberMatcher(PhoneNumberUtil util, CharSequence text, String country, Leniency leniency,
       long maxTries) {
@@ -292,12 +292,12 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       return false;
     }
     UnicodeBlock block = UnicodeBlock.of(letter);
-    return block.equals(UnicodeBlock.BASIC_LATIN) ||
-        block.equals(UnicodeBlock.LATIN_1_SUPPLEMENT) ||
-        block.equals(UnicodeBlock.LATIN_EXTENDED_A) ||
-        block.equals(UnicodeBlock.LATIN_EXTENDED_ADDITIONAL) ||
-        block.equals(UnicodeBlock.LATIN_EXTENDED_B) ||
-        block.equals(UnicodeBlock.COMBINING_DIACRITICAL_MARKS);
+    return block.equals(UnicodeBlock.BASIC_LATIN)
+        || block.equals(UnicodeBlock.LATIN_1_SUPPLEMENT)
+        || block.equals(UnicodeBlock.LATIN_EXTENDED_A)
+        || block.equals(UnicodeBlock.LATIN_EXTENDED_ADDITIONAL)
+        || block.equals(UnicodeBlock.LATIN_EXTENDED_B)
+        || block.equals(UnicodeBlock.COMBINING_DIACRITICAL_MARKS);
   }
 
   private static boolean isInvalidPunctuationSymbol(char character) {
@@ -426,9 +426,9 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       // TODO: Remove this or make it significantly less hacky once we've decided how to
       // handle these short codes going forward in ShortNumberInfo. We could use the formatting
       // rules for instance, but that would be slower.
-      if (phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()).equals("IL") &&
-          phoneUtil.getNationalSignificantNumber(number).length() == 4 &&
-          (offset == 0 || (offset > 0 && text.charAt(offset - 1) != '*'))) {
+      if (phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()).equals("IL")
+          && phoneUtil.getNationalSignificantNumber(number).length() == 4
+          && (offset == 0 || (offset > 0 && text.charAt(offset - 1) != '*'))) {
         // No match.
         return null;
       }
@@ -495,8 +495,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         // as we do not need to distinguish between different countries with the same country
         // calling code and this is faster.
         String region = util.getRegionCodeForCountryCode(number.getCountryCode());
-        if (util.getNddPrefixForRegion(region, true) != null &&
-            Character.isDigit(normalizedCandidate.charAt(fromIndex))) {
+        if (util.getNddPrefixForRegion(region, true) != null
+            && Character.isDigit(normalizedCandidate.charAt(fromIndex))) {
           // This means there is no formatting symbol after the NDC. In this case, we only
           // accept the number if there is no formatting symbol at all in the number, except
           // for extensions. This is only important for countries with national prefixes.
@@ -524,8 +524,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // First we check if the national significant number is formatted as a block.
     // We use contains and not equals, since the national significant number may be present with
     // a prefix such as a national number prefix, or the country code itself.
-    if (candidateGroups.length == 1 ||
-        candidateGroups[candidateNumberGroupIndex].contains(
+    if (candidateGroups.length == 1
+        || candidateGroups[candidateNumberGroupIndex].contains(
             util.getNationalSignificantNumber(number))) {
       return true;
     }
@@ -541,8 +541,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     }
     // Now check the first group. There may be a national prefix at the start, so we only check
     // that the candidate group ends with the formatted number group.
-    return (candidateNumberGroupIndex >= 0 &&
-            candidateGroups[candidateNumberGroupIndex].endsWith(formattedNumberGroups[0]));
+    return (candidateNumberGroupIndex >= 0
+        && candidateGroups[candidateNumberGroupIndex].endsWith(formattedNumberGroups[0]));
   }
 
   /**
@@ -610,10 +610,10 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
     // If the first slash is after the country calling code, this is permitted.
     boolean candidateHasCountryCode =
-        (number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN ||
-         number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
-    if (candidateHasCountryCode &&
-        PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(0, firstSlashInBodyIndex))
+        (number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN
+         || number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
+    if (candidateHasCountryCode
+        && PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(0, firstSlashInBodyIndex))
             .equals(Integer.toString(number.getCountryCode()))) {
       // Any more slashes and this is illegal.
       return candidate.substring(secondSlashInBodyIndex + 1).contains("/");
