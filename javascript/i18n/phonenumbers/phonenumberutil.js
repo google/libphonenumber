@@ -2775,7 +2775,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
   // avoid checking the validation pattern if they don't match. If they are
   // absent, this means they match the general description, which we have
   // already checked before a specific number type.
-
   var actualLength = nationalNumber.length;
   if (numberDesc.possibleLengthCount() > 0 &&
       numberDesc.possibleLengthArray().indexOf(actualLength) == -1) {
