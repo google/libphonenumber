@@ -34,7 +34,7 @@ import java.util.logging.Logger;
  * example number exists for a particular type, the test still passes.
  */
 public class ExampleNumbersTest extends TestCase {
-  private static final Logger LOGGER = Logger.getLogger(ExampleNumbersTest.class.getName());
+  private static final Logger logger = Logger.getLogger(ExampleNumbersTest.class.getName());
   private PhoneNumberUtil phoneNumberUtil =
       PhoneNumberUtil.createInstance(PhoneNumberUtil.DEFAULT_METADATA_LOADER);
   private ShortNumberInfo shortNumberInfo = ShortNumberInfo.getInstance();
@@ -54,18 +54,18 @@ public class ExampleNumbersTest extends TestCase {
       if (exampleNumber != null) {
         if (!phoneNumberUtil.isValidNumber(exampleNumber)) {
           invalidCases.add(exampleNumber);
-          LOGGER.log(Level.SEVERE, "Failed validation for " + exampleNumber.toString());
+          logger.log(Level.SEVERE, "Failed validation for " + exampleNumber.toString());
         } else {
           // We know the number is valid, now we check the type.
           PhoneNumberType exampleNumberType = phoneNumberUtil.getNumberType(exampleNumber);
           if (!possibleExpectedTypes.contains(exampleNumberType)) {
             wrongTypeCases.add(exampleNumber);
-            LOGGER.log(Level.SEVERE, "Wrong type for " +
-                       exampleNumber.toString() +
-                       ": got " + exampleNumberType);
-            LOGGER.log(Level.WARNING, "Expected types: ");
+            logger.log(Level.SEVERE, "Wrong type for "
+                + exampleNumber.toString()
+                + ": got " + exampleNumberType);
+            logger.log(Level.WARNING, "Expected types: ");
             for (PhoneNumberType type : possibleExpectedTypes) {
-              LOGGER.log(Level.WARNING, type.toString());
+              logger.log(Level.WARNING, type.toString());
             }
           }
         }
@@ -148,12 +148,12 @@ public class ExampleNumbersTest extends TestCase {
           exampleNumber = phoneNumberUtil.parse(desc.getExampleNumber(), regionCode);
         }
       } catch (NumberParseException e) {
-        LOGGER.log(Level.SEVERE, e.toString());
+        logger.log(Level.SEVERE, e.toString());
       }
       if (exampleNumber != null && phoneNumberUtil.canBeInternationallyDialled(exampleNumber)) {
         wrongTypeCases.add(exampleNumber);
-        LOGGER.log(Level.SEVERE, "Number " + exampleNumber.toString()
-                   + " should not be internationally diallable");
+        logger.log(Level.SEVERE, "Number " + exampleNumber.toString()
+            + " should not be internationally diallable");
       }
     }
     assertEquals(0, wrongTypeCases.size());
@@ -166,7 +166,7 @@ public class ExampleNumbersTest extends TestCase {
       assertNotNull("No example phone number for calling code " + callingCode, exampleNumber);
       if (!phoneNumberUtil.isValidNumber(exampleNumber)) {
         invalidCases.add(exampleNumber);
-        LOGGER.log(Level.SEVERE, "Failed validation for " + exampleNumber.toString());
+        logger.log(Level.SEVERE, "Failed validation for " + exampleNumber.toString());
       }
     }
     assertEquals(0, invalidCases.size());
@@ -199,15 +199,15 @@ public class ExampleNumbersTest extends TestCase {
       String exampleShortNumber = shortNumberInfo.getExampleShortNumber(regionCode);
       if (!shortNumberInfo.isValidShortNumberForRegion(
           phoneNumberUtil.parse(exampleShortNumber, regionCode), regionCode)) {
-        String invalidStringCase = "region_code: " + regionCode + ", national_number: " +
-            exampleShortNumber;
+        String invalidStringCase = "region_code: " + regionCode + ", national_number: "
+            + exampleShortNumber;
         invalidStringCases.add(invalidStringCase);
-        LOGGER.log(Level.SEVERE, "Failed validation for string " + invalidStringCase);
+        logger.log(Level.SEVERE, "Failed validation for string " + invalidStringCase);
       }
       PhoneNumber phoneNumber = phoneNumberUtil.parse(exampleShortNumber, regionCode);
       if (!shortNumberInfo.isValidShortNumber(phoneNumber)) {
         invalidCases.add(phoneNumber);
-        LOGGER.log(Level.SEVERE, "Failed validation for " + phoneNumber.toString());
+        logger.log(Level.SEVERE, "Failed validation for " + phoneNumber.toString());
       }
 
       for (ShortNumberInfo.ShortNumberCost cost : ShortNumberInfo.ShortNumberCost.values()) {
@@ -218,7 +218,7 @@ public class ExampleNumbersTest extends TestCase {
               shortNumberInfo.getExpectedCostForRegion(phoneNumber, regionCode);
           if (cost != exampleShortNumberCost) {
             wrongTypeCases.add(phoneNumber);
-            LOGGER.log(Level.SEVERE, "Wrong cost for " + phoneNumber.toString()
+            logger.log(Level.SEVERE, "Wrong cost for " + phoneNumber.toString()
                 + ": got " + exampleShortNumberCost
                 + ", expected: " + cost);
           }
@@ -241,11 +241,11 @@ public class ExampleNumbersTest extends TestCase {
         if (!shortNumberInfo.isPossibleShortNumberForRegion(phoneNumber, regionCode)
             || !shortNumberInfo.isEmergencyNumber(exampleNumber, regionCode)) {
           wrongTypeCounter++;
-          LOGGER.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
+          logger.log(Level.SEVERE, "Emergency example number test failed for " + regionCode);
         } else if (shortNumberInfo.getExpectedCostForRegion(phoneNumber, regionCode)
             != ShortNumberInfo.ShortNumberCost.TOLL_FREE) {
           wrongTypeCounter++;
-          LOGGER.log(Level.WARNING, "Emergency example number not toll free for " + regionCode);
+          logger.log(Level.WARNING, "Emergency example number not toll free for " + regionCode);
         }
       }
     }
@@ -264,7 +264,7 @@ public class ExampleNumbersTest extends TestCase {
         if (!shortNumberInfo.isPossibleShortNumberForRegion(carrierSpecificNumber, regionCode)
             || !shortNumberInfo.isCarrierSpecific(carrierSpecificNumber)) {
           wrongTagCounter++;
-          LOGGER.log(Level.SEVERE, "Carrier-specific test failed for " + regionCode);
+          logger.log(Level.SEVERE, "Carrier-specific test failed for " + regionCode);
         }
       }
       // TODO: Test other tags here.

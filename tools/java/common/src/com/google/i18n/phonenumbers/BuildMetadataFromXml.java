@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
  * @author Shaopeng Jia
  */
 public class BuildMetadataFromXml {
-  private static final Logger LOGGER = Logger.getLogger(BuildMetadataFromXml.class.getName());
+  private static final Logger logger = Logger.getLogger(BuildMetadataFromXml.class.getName());
 
   // String constants used to fetch the XML nodes and attributes.
   private static final String CARRIER_CODE_FORMATTING_RULE = "carrierCodeFormattingRule";
@@ -166,7 +166,7 @@ public class BuildMetadataFromXml {
     // of a bug. If one wants to make something optional, we prefer ? to using an empty group.
     int errorIndex = compressedRegex.indexOf("|)");
     if (errorIndex >= 0) {
-      LOGGER.log(Level.SEVERE, "Error with original regex: " + regex
+      logger.log(Level.SEVERE, "Error with original regex: " + regex
           + "\n| should not be followed directly by ) in phone number regular expressions.");
       throw new PatternSyntaxException("| followed by )", compressedRegex, errorIndex);
     }
@@ -244,7 +244,7 @@ public class BuildMetadataFromXml {
     boolean hasExplicitIntlFormatDefined = false;
 
     if (intlFormatPattern.getLength() > 1) {
-      LOGGER.log(Level.SEVERE,
+      logger.log(Level.SEVERE,
           "A maximum of one intlFormat pattern for a numberFormat element should be defined.");
       String countryId = metadata.getId().length() > 0 ? metadata.getId()
           : Integer.toString(metadata.getCountryCode());
@@ -282,7 +282,7 @@ public class BuildMetadataFromXml {
     NodeList formatPattern = numberFormatElement.getElementsByTagName(FORMAT);
     int numFormatPatterns = formatPattern.getLength();
     if (numFormatPatterns != 1) {
-      LOGGER.log(Level.SEVERE, "One format pattern for a numberFormat element should be defined.");
+      logger.log(Level.SEVERE, "One format pattern for a numberFormat element should be defined.");
       String countryId = metadata.getId().length() > 0 ? metadata.getId()
           : Integer.toString(metadata.getCountryCode());
       throw new RuntimeException("Invalid number of format patterns (" + numFormatPatterns
@@ -450,7 +450,6 @@ public class BuildMetadataFromXml {
     if (parentDesc != null) {
       numberDesc.mergeFrom(parentDesc);
     }
-
     if (phoneNumberDescList.getLength() > 0) {
       if (phoneNumberDescList.getLength() > 1) {
         throw new RuntimeException(

@@ -27,7 +27,7 @@ import java.util.logging.Logger;
  * the phone prefix data to them.
  */
 public abstract class AbstractPhonePrefixDataIOHandler {
-  private static final Logger LOGGER = Logger.getLogger(
+  private static final Logger logger = Logger.getLogger(
       AbstractPhonePrefixDataIOHandler.class.getName());
   /**
    * Adds the provided file to a global output that can be for example a JAR.
@@ -56,7 +56,7 @@ public abstract class AbstractPhonePrefixDataIOHandler {
     try {
       closeable.close();
     } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.getMessage());
+      logger.log(Level.WARNING, e.getMessage());
     }
   }
 }
