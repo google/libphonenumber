@@ -1306,8 +1306,8 @@ public class PhoneNumberUtil {
         // short numbers, which are always dialled in national format.
         PhoneMetadata regionMetadata = getMetadataForRegion(regionCallingFrom);
         if (canBeInternationallyDialled(numberNoExt)
-            && !isShorterThanPossibleNormalNumber(regionMetadata,
-                getNationalSignificantNumber(numberNoExt))) {
+            && testNumberLength(getNationalSignificantNumber(numberNoExt),
+                regionMetadata.getGeneralDesc()) != ValidationResult.TOO_SHORT) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
         } else {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
@@ -2113,19 +2113,19 @@ public class PhoneNumberUtil {
     return metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
   }
 
-  boolean isNumberPossibleForDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
-    Matcher possibleNumberPatternMatcher =
-        regexCache.getPatternForRegex(numberDesc.getPossibleNumberPattern())
-            .matcher(nationalNumber);
-    return possibleNumberPatternMatcher.matches();
-  }
-
   boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
+    // Check if any possible number lengths are present; if so, we use them to avoid checking the
+    // validation pattern if they don't match. If they are absent, this means they match the general
+    // description, which we have already checked before checking a specific number type.
+    int actualLength = nationalNumber.length();
+    List<Integer> possibleLengths = numberDesc.getPossibleLengthList();
+    if (possibleLengths.size() > 0 && !possibleLengths.contains(actualLength)) {
+      return false;
+    }
     Matcher nationalNumberPatternMatcher =
         regexCache.getPatternForRegex(numberDesc.getNationalNumberPattern())
             .matcher(nationalNumber);
-    return isNumberPossibleForDesc(nationalNumber, numberDesc)
-        && nationalNumberPatternMatcher.matches();
+    return nationalNumberPatternMatcher.matches();
   }
 
   /**
@@ -2362,32 +2362,35 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Helper method to check a number against a particular pattern and determine whether it matches,
-   * or is too short or too long. Currently, if a number pattern suggests that numbers of length 7
-   * and 10 are possible, and a number in between these possible lengths is entered, such as of
-   * length 8, this will return TOO_LONG.
+   * Helper method to check a number against possible lengths for this number, and determine whether
+   * it matches, or is too short or too long. Currently, if a number pattern suggests that numbers
+   * of length 7 and 10 are possible, and a number in between these possible lengths is entered,
+   * such as of length 8, this will return TOO_LONG.
    */
-  private ValidationResult testNumberLengthAgainstPattern(Pattern numberPattern, String number) {
-    Matcher numberMatcher = numberPattern.matcher(number);
-    if (numberMatcher.matches()) {
+  private ValidationResult testNumberLength(String number, PhoneNumberDesc phoneNumberDesc) {
+    List<Integer> possibleLengths = phoneNumberDesc.getPossibleLengthList();
+    List<Integer> localLengths = phoneNumberDesc.getPossibleLengthLocalOnlyList();
+    int actualLength = number.length();
+    if (localLengths.contains(actualLength)) {
       return ValidationResult.IS_POSSIBLE;
     }
-    if (numberMatcher.lookingAt()) {
-      return ValidationResult.TOO_LONG;
-    } else {
+    // There should always be "possibleLengths" set for every element. This will be a build-time
+    // check once ShortNumberMetadata.xml is migrated to contain this information as well.
+    int minimumLength = possibleLengths.get(0);
+    if (minimumLength == actualLength) {
+      return ValidationResult.IS_POSSIBLE;
+    } else if (minimumLength > actualLength) {
       return ValidationResult.TOO_SHORT;
+    } else if (possibleLengths.get(possibleLengths.size() - 1) < actualLength) {
+      return ValidationResult.TOO_LONG;
     }
-  }
-
-  /**
-   * Helper method to check whether a number is too short to be a regular length phone number in a
-   * region.
-   */
-  private boolean isShorterThanPossibleNormalNumber(PhoneMetadata regionMetadata, String number) {
-    Pattern possibleNumberPattern = regexCache.getPatternForRegex(
-        regionMetadata.getGeneralDesc().getPossibleNumberPattern());
-    return testNumberLengthAgainstPattern(possibleNumberPattern, number) ==
-        ValidationResult.TOO_SHORT;
+    // Note that actually the number is not too long if possibleLengths does not contain the length:
+    // we know it is less than the highest possible number length, and higher than the lowest
+    // possible number length. However, we don't currently have an enum to express this, so we
+    // return TOO_LONG in the short-term.
+    // We skip the first element; we've already checked it.
+    return possibleLengths.subList(1, possibleLengths.size()).contains(actualLength)
+        ? ValidationResult.IS_POSSIBLE : ValidationResult.TOO_LONG;
   }
 
   /**
@@ -2424,9 +2427,7 @@ public class PhoneNumberUtil {
     String regionCode = getRegionCodeForCountryCode(countryCode);
     // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    Pattern possibleNumberPattern =
-        regexCache.getPatternForRegex(metadata.getGeneralDesc().getPossibleNumberPattern());
-    return testNumberLengthAgainstPattern(possibleNumberPattern, nationalNumber);
+    return testNumberLength(nationalNumber, metadata.getGeneralDesc());
   }
 
   /**
@@ -2596,15 +2597,12 @@ public class PhoneNumberUtil {
             regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
         maybeStripNationalPrefixAndCarrierCode(
             potentialNationalNumber, defaultRegionMetadata, null /* Don't need the carrier code */);
-        Pattern possibleNumberPattern =
-            regexCache.getPatternForRegex(generalDesc.getPossibleNumberPattern());
         // If the number was not valid before but is valid now, or if it was too long before, we
         // consider the number with the country calling code stripped to be a better result and
         // keep that instead.
         if ((!validNumberPattern.matcher(fullNumber).matches()
               && validNumberPattern.matcher(potentialNationalNumber).matches())
-            || testNumberLengthAgainstPattern(possibleNumberPattern, fullNumber.toString())
-                == ValidationResult.TOO_LONG) {
+            || testNumberLength(fullNumber.toString(), generalDesc) == ValidationResult.TOO_LONG) {
           nationalNumber.append(potentialNationalNumber);
           if (keepRawInput) {
             phoneNumber.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
@@ -3013,7 +3011,8 @@ public class PhoneNumberUtil {
       // We require that the NSN remaining after stripping the national prefix and carrier code be
       // long enough to be a possible length for the region. Otherwise, we don't do the stripping,
       // since the original number could be a valid short number.
-      if (!isShorterThanPossibleNormalNumber(regionMetadata, potentialNationalNumber.toString())) {
+      if (testNumberLength(potentialNationalNumber.toString(), regionMetadata.getGeneralDesc())
+              != ValidationResult.TOO_SHORT) {
         normalizedNationalNumber = potentialNationalNumber;
         if (keepRawInput) {
           phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
