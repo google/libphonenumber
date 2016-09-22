@@ -20,7 +20,7 @@ import java.io.InputStream;
 
 /**
  * Interface for clients to specify a customized phone metadata loader, useful for Android apps to
- * load Android resources since the library would load Java resources by default. Note that
+ * load Android resources since the library loads Java resources by default. Note that
  * implementation owners have the responsibility to ensure this is thread-safe.
  */
 public interface MetadataLoader {
