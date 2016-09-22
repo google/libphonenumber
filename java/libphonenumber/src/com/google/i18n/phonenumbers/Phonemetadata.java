@@ -18,6 +18,11 @@
  * Definition of the class representing metadata for international telephone numbers. This class is
  * hand created based on the class file compiled from phonemetadata.proto. Please refer to that file
  * for detailed descriptions of the meaning of each field.
+ *
+ * <p>WARNING: This API isn't stable. It is considered libphonenumber-internal and can change at any
+ * time. We only declare it as public for easy inclusion in our build tools not in this package.
+ * Clients should not refer to this file, we do not commit to support backwards-compatibility or to
+ * warn about breaking changes.
  */
 
 package com.google.i18n.phonenumbers;
