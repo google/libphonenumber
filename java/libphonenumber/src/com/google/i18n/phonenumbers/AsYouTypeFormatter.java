@@ -16,8 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -61,11 +61,8 @@ public class AsYouTypeFormatter {
   // Character used when appropriate to separate a prefix, such as a long NDD or a country calling
   // code, from the national number.
   private static final char SEPARATOR_BEFORE_NATIONAL_NUMBER = ' ';
-  private static final PhoneMetadata EMPTY_METADATA;
-  static {
-    EMPTY_METADATA = new PhoneMetadata();
-    EMPTY_METADATA.internationalPrefix = "NA";
-  }
+  private static final PhoneMetadata EMPTY_METADATA =
+      new PhoneMetadata().setInternationalPrefix("NA");
   private PhoneMetadata defaultMetadata;
   private PhoneMetadata currentMetadata;
 
@@ -85,8 +82,8 @@ public class AsYouTypeFormatter {
   // prevents invalid punctuation (such as the star sign in Israeli star numbers) getting into the
   // output of the AYTF.
   private static final Pattern ELIGIBLE_FORMAT_PATTERN =
-      Pattern.compile("[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*" +
-          "(\\$\\d" + "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*)+");
+      Pattern.compile("[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*"
+          + "(\\$\\d" + "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*)+");
   // A set of characters that, if found in a national prefix formatting rules, are an indicator to
   // us that we should separate the national prefix from the number when formatting.
   private static final Pattern NATIONAL_PREFIX_SEPARATORS_PATTERN = Pattern.compile("[- ]");
@@ -154,7 +151,7 @@ public class AsYouTypeFormatter {
     Iterator<NumberFormat> it = possibleFormats.iterator();
     while (it.hasNext()) {
       NumberFormat numberFormat = it.next();
-      String pattern = numberFormat.pattern;
+      String pattern = numberFormat.getPattern();
       if (currentFormattingPattern.equals(pattern)) {
         return false;
       }
@@ -162,7 +159,7 @@ public class AsYouTypeFormatter {
         currentFormattingPattern = pattern;
         shouldAddSpaceAfterNationalPrefix =
             NATIONAL_PREFIX_SEPARATORS_PATTERN.matcher(
-                numberFormat.nationalPrefixFormattingRule).find();
+                numberFormat.getNationalPrefixFormattingRule()).find();
         // With a new formatting template, the matched position using the old template needs to be
         // reset.
         lastMatchPosition = 0;
@@ -176,17 +173,18 @@ public class AsYouTypeFormatter {
   }
 
   private void getAvailableFormats(String leadingDigits) {
-    NumberFormat[] numberFormats =
-        (isCompleteNumber && currentMetadata.intlNumberFormat.length > 0)
-        ? currentMetadata.intlNumberFormat
-        : currentMetadata.numberFormat;
-    boolean nationalPrefixIsUsedByCountry = (!currentMetadata.nationalPrefix.equals(""));
-    for (NumberFormat format : numberFormats) {
-      if (!nationalPrefixIsUsedByCountry || isCompleteNumber ||
-          format.nationalPrefixOptionalWhenFormatting ||
-          PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
-              format.nationalPrefixFormattingRule)) {
-        if (isFormatEligible(format.format)) {
+    List<NumberFormat> formatList =
+        (isCompleteNumber && currentMetadata.intlNumberFormatSize() > 0)
+        ? currentMetadata.intlNumberFormats()
+        : currentMetadata.numberFormats();
+    boolean nationalPrefixIsUsedByCountry = currentMetadata.hasNationalPrefix();
+    for (NumberFormat format : formatList) {
+      if (!nationalPrefixIsUsedByCountry
+          || isCompleteNumber
+          || format.isNationalPrefixOptionalWhenFormatting()
+          || PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+              format.getNationalPrefixFormattingRule())) {
+        if (isFormatEligible(format.getFormat())) {
           possibleFormats.add(format);
         }
       }
@@ -203,14 +201,14 @@ public class AsYouTypeFormatter {
     Iterator<NumberFormat> it = possibleFormats.iterator();
     while (it.hasNext()) {
       NumberFormat format = it.next();
-      if (format.leadingDigitsPattern.length == 0) {
+      if (format.leadingDigitsPatternSize() == 0) {
         // Keep everything that isn't restricted by leading digits.
         continue;
       }
       int lastLeadingDigitsPattern =
-          Math.min(indexOfLeadingDigitsPattern, format.leadingDigitsPattern.length - 1);
+          Math.min(indexOfLeadingDigitsPattern, format.leadingDigitsPatternSize() - 1);
       Pattern leadingDigitsPattern = regexCache.getPatternForRegex(
-          format.leadingDigitsPattern[lastLeadingDigitsPattern]);
+          format.getLeadingDigitsPattern(lastLeadingDigitsPattern));
       Matcher m = leadingDigitsPattern.matcher(leadingDigits);
       if (!m.lookingAt()) {
         it.remove();
@@ -219,7 +217,7 @@ public class AsYouTypeFormatter {
   }
 
   private boolean createFormattingTemplate(NumberFormat format) {
-    String numberPattern = format.pattern;
+    String numberPattern = format.getPattern();
 
     // The formatter doesn't format numbers when numberPattern contains "|", e.g.
     // (20|3)\d{4}. In those cases we quickly return.
@@ -233,7 +231,7 @@ public class AsYouTypeFormatter {
     // Replace any standalone digit (not the one in d{}) with \d
     numberPattern = STANDALONE_DIGIT_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
     formattingTemplate.setLength(0);
-    String tempTemplate = getFormattingTemplate(numberPattern, format.format);
+    String tempTemplate = getFormattingTemplate(numberPattern, format.getFormat());
     if (tempTemplate.length() > 0) {
       formattingTemplate.append(tempTemplate);
       return true;
@@ -361,6 +359,7 @@ public class AsYouTypeFormatter {
           extractedNationalPrefix = removeNationalPrefixFromNationalNumber();
           return attemptToChooseFormattingPattern();
         }
+        // fall through
       default:
         if (isExpectingCountryCallingCode) {
           if (attemptToExtractCountryCallingCode()) {
@@ -420,23 +419,23 @@ public class AsYouTypeFormatter {
   }
 
   private boolean isDigitOrLeadingPlusSign(char nextChar) {
-    return Character.isDigit(nextChar) ||
-        (accruedInput.length() == 1 &&
-         PhoneNumberUtil.PLUS_CHARS_PATTERN.matcher(Character.toString(nextChar)).matches());
+    return Character.isDigit(nextChar)
+        || (accruedInput.length() == 1
+            && PhoneNumberUtil.PLUS_CHARS_PATTERN.matcher(Character.toString(nextChar)).matches());
   }
 
   /**
-   * Check to see if there is an exact pattern match for these digits. If so, we should use this
+   * Checks to see if there is an exact pattern match for these digits. If so, we should use this
    * instead of any other formatting template whose leadingDigitsPattern also matches the input.
    */
   String attemptToFormatAccruedDigits() {
     for (NumberFormat numberFormat : possibleFormats) {
-      Matcher m = regexCache.getPatternForRegex(numberFormat.pattern).matcher(nationalNumber);
+      Matcher m = regexCache.getPatternForRegex(numberFormat.getPattern()).matcher(nationalNumber);
       if (m.matches()) {
         shouldAddSpaceAfterNationalPrefix =
             NATIONAL_PREFIX_SEPARATORS_PATTERN.matcher(
-                numberFormat.nationalPrefixFormattingRule).find();
-        String formattedNumber = m.replaceAll(numberFormat.format);
+                numberFormat.getNationalPrefixFormattingRule()).find();
+        String formattedNumber = m.replaceAll(numberFormat.getFormat());
         return appendNationalNumber(formattedNumber);
       }
     }
@@ -451,10 +450,11 @@ public class AsYouTypeFormatter {
     if (!ableToFormat) {
       return originalPosition;
     }
-    int accruedInputIndex = 0, currentOutputIndex = 0;
+    int accruedInputIndex = 0;
+    int currentOutputIndex = 0;
     while (accruedInputIndex < positionToRemember && currentOutputIndex < currentOutput.length()) {
-      if (accruedInputWithoutFormatting.charAt(accruedInputIndex) ==
-          currentOutput.charAt(currentOutputIndex)) {
+      if (accruedInputWithoutFormatting.charAt(accruedInputIndex)
+          == currentOutput.charAt(currentOutputIndex)) {
         accruedInputIndex++;
       }
       currentOutputIndex++;
@@ -469,8 +469,8 @@ public class AsYouTypeFormatter {
    */
   private String appendNationalNumber(String nationalNumber) {
     int prefixBeforeNationalNumberLength = prefixBeforeNationalNumber.length();
-    if (shouldAddSpaceAfterNationalPrefix && prefixBeforeNationalNumberLength > 0 &&
-        prefixBeforeNationalNumber.charAt(prefixBeforeNationalNumberLength - 1)
+    if (shouldAddSpaceAfterNationalPrefix && prefixBeforeNationalNumberLength > 0
+        && prefixBeforeNationalNumber.charAt(prefixBeforeNationalNumberLength - 1)
             != SEPARATOR_BEFORE_NATIONAL_NUMBER) {
       // We want to add a space after the national prefix if the national prefix formatting rule
       // indicates that this would normally be done, with the exception of the case where we already
@@ -529,8 +529,8 @@ public class AsYouTypeFormatter {
     // that national significant numbers in NANPA always start with [2-9] after the national prefix.
     // Numbers beginning with 1[01] can only be short/emergency numbers, which don't need the
     // national prefix.
-    return (currentMetadata.countryCode == 1) && (nationalNumber.charAt(0) == '1') &&
-           (nationalNumber.charAt(1) != '0') && (nationalNumber.charAt(1) != '1');
+    return (currentMetadata.getCountryCode() == 1) && (nationalNumber.charAt(0) == '1')
+        && (nationalNumber.charAt(1) != '0') && (nationalNumber.charAt(1) != '1');
   }
 
   // Returns the national prefix extracted, or an empty string if it is not present.
@@ -540,9 +540,9 @@ public class AsYouTypeFormatter {
       startOfNationalNumber = 1;
       prefixBeforeNationalNumber.append('1').append(SEPARATOR_BEFORE_NATIONAL_NUMBER);
       isCompleteNumber = true;
-    } else if (!currentMetadata.nationalPrefixForParsing.equals("")) {
+    } else if (currentMetadata.hasNationalPrefixForParsing()) {
       Pattern nationalPrefixForParsing =
-          regexCache.getPatternForRegex(currentMetadata.nationalPrefixForParsing);
+          regexCache.getPatternForRegex(currentMetadata.getNationalPrefixForParsing());
       Matcher m = nationalPrefixForParsing.matcher(nationalNumber);
       // Since some national prefix patterns are entirely optional, check that a national prefix
       // could actually be extracted.
@@ -569,8 +569,8 @@ public class AsYouTypeFormatter {
    */
   private boolean attemptToExtractIdd() {
     Pattern internationalPrefix =
-        regexCache.getPatternForRegex("\\" + PhoneNumberUtil.PLUS_SIGN + "|" +
-            currentMetadata.internationalPrefix);
+        regexCache.getPatternForRegex("\\" + PhoneNumberUtil.PLUS_SIGN + "|"
+            + currentMetadata.getInternationalPrefix());
     Matcher iddMatcher = internationalPrefix.matcher(accruedInputWithoutFormatting);
     if (iddMatcher.lookingAt()) {
       isCompleteNumber = true;

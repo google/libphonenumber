@@ -210,8 +210,8 @@ public class MappingFileProvider implements Externalizable {
   }
 
   private boolean onlyOneOfScriptOrRegionIsEmpty(String script, String region) {
-    return (script.length() == 0 && region.length() > 0) ||
-            (region.length() == 0 && script.length() > 0);
+    return (script.length() == 0 && region.length() > 0)
+        || (region.length() == 0 && script.length() > 0);
   }
 
   private StringBuilder constructFullLocale(String language, String script, String region) {

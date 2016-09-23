@@ -43,6 +43,13 @@ goog.inherits(i18n.phonenumbers.NumberFormat, goog.proto2.Message);
 
 
 /**
+ * Descriptor for this message, deserialized lazily in getDescriptor().
+ * @private {?goog.proto2.Descriptor}
+ */
+i18n.phonenumbers.NumberFormat.descriptor_ = null;
+
+
+/**
  * Overrides {@link goog.proto2.Message#clone} to specify its exact return type.
  * @return {!i18n.phonenumbers.NumberFormat} The cloned message.
  * @override
@@ -183,10 +190,10 @@ i18n.phonenumbers.NumberFormat.prototype.addLeadingDigitsPattern = function(valu
 
 /**
  * Returns the array of values in the leading_digits_pattern field.
- * @return {!Array.<string>} The values in the field.
+ * @return {!Array<string>} The values in the field.
  */
 i18n.phonenumbers.NumberFormat.prototype.leadingDigitsPatternArray = function() {
-  return /** @type {!Array.<string>} */ (this.array$Values(3));
+  return /** @type {!Array<string>} */ (this.array$Values(3));
 };
 
 
@@ -380,6 +387,13 @@ goog.inherits(i18n.phonenumbers.PhoneNumberDesc, goog.proto2.Message);
 
 
 /**
+ * Descriptor for this message, deserialized lazily in getDescriptor().
+ * @private {?goog.proto2.Descriptor}
+ */
+i18n.phonenumbers.PhoneNumberDesc.descriptor_ = null;
+
+
+/**
  * Overrides {@link goog.proto2.Message#clone} to specify its exact return type.
  * @return {!i18n.phonenumbers.PhoneNumberDesc} The cloned message.
  * @override
@@ -486,6 +500,130 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.possibleNumberPatternCount = functio
  */
 i18n.phonenumbers.PhoneNumberDesc.prototype.clearPossibleNumberPattern = function() {
   this.clear$Field(3);
+};
+
+
+/**
+ * Gets the value of the possible_length field at the index given.
+ * @param {number} index The index to lookup.
+ * @return {?number} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleLength = function(index) {
+  return /** @type {?number} */ (this.get$Value(9, index));
+};
+
+
+/**
+ * Gets the value of the possible_length field at the index given or the default value if not set.
+ * @param {number} index The index to lookup.
+ * @return {number} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleLengthOrDefault = function(index) {
+  return /** @type {number} */ (this.get$ValueOrDefault(9, index));
+};
+
+
+/**
+ * Adds a value to the possible_length field.
+ * @param {number} value The value to add.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.addPossibleLength = function(value) {
+  this.add$Value(9, value);
+};
+
+
+/**
+ * Returns the array of values in the possible_length field.
+ * @return {!Array<number>} The values in the field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.possibleLengthArray = function() {
+  return /** @type {!Array<number>} */ (this.array$Values(9));
+};
+
+
+/**
+ * @return {boolean} Whether the possible_length field has a value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.hasPossibleLength = function() {
+  return this.has$Value(9);
+};
+
+
+/**
+ * @return {number} The number of values in the possible_length field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.possibleLengthCount = function() {
+  return this.count$Values(9);
+};
+
+
+/**
+ * Clears the values in the possible_length field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.clearPossibleLength = function() {
+  this.clear$Field(9);
+};
+
+
+/**
+ * Gets the value of the possible_length_local_only field at the index given.
+ * @param {number} index The index to lookup.
+ * @return {?number} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleLengthLocalOnly = function(index) {
+  return /** @type {?number} */ (this.get$Value(10, index));
+};
+
+
+/**
+ * Gets the value of the possible_length_local_only field at the index given or the default value if not set.
+ * @param {number} index The index to lookup.
+ * @return {number} The value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleLengthLocalOnlyOrDefault = function(index) {
+  return /** @type {number} */ (this.get$ValueOrDefault(10, index));
+};
+
+
+/**
+ * Adds a value to the possible_length_local_only field.
+ * @param {number} value The value to add.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.addPossibleLengthLocalOnly = function(value) {
+  this.add$Value(10, value);
+};
+
+
+/**
+ * Returns the array of values in the possible_length_local_only field.
+ * @return {!Array<number>} The values in the field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.possibleLengthLocalOnlyArray = function() {
+  return /** @type {!Array<number>} */ (this.array$Values(10));
+};
+
+
+/**
+ * @return {boolean} Whether the possible_length_local_only field has a value.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.hasPossibleLengthLocalOnly = function() {
+  return this.has$Value(10);
+};
+
+
+/**
+ * @return {number} The number of values in the possible_length_local_only field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.possibleLengthLocalOnlyCount = function() {
+  return this.count$Values(10);
+};
+
+
+/**
+ * Clears the values in the possible_length_local_only field.
+ */
+i18n.phonenumbers.PhoneNumberDesc.prototype.clearPossibleLengthLocalOnly = function() {
+  this.clear$Field(10);
 };
 
 
@@ -655,6 +793,13 @@ goog.inherits(i18n.phonenumbers.PhoneMetadata, goog.proto2.Message);
 
 
 /**
+ * Descriptor for this message, deserialized lazily in getDescriptor().
+ * @private {?goog.proto2.Descriptor}
+ */
+i18n.phonenumbers.PhoneMetadata.descriptor_ = null;
+
+
+/**
  * Overrides {@link goog.proto2.Message#clone} to specify its exact return type.
  * @return {!i18n.phonenumbers.PhoneMetadata} The cloned message.
  * @override
@@ -664,10 +809,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clone;
 
 /**
  * Gets the value of the general_desc field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getGeneralDesc = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(1));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(1));
 };
 
 
@@ -715,10 +860,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearGeneralDesc = function() {
 
 /**
  * Gets the value of the fixed_line field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getFixedLine = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(2));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(2));
 };
 
 
@@ -766,10 +911,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearFixedLine = function() {
 
 /**
  * Gets the value of the mobile field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getMobile = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(3));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(3));
 };
 
 
@@ -817,10 +962,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearMobile = function() {
 
 /**
  * Gets the value of the toll_free field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getTollFree = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(4));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(4));
 };
 
 
@@ -868,10 +1013,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearTollFree = function() {
 
 /**
  * Gets the value of the premium_rate field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getPremiumRate = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(5));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(5));
 };
 
 
@@ -919,10 +1064,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearPremiumRate = function() {
 
 /**
  * Gets the value of the shared_cost field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getSharedCost = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(6));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(6));
 };
 
 
@@ -970,10 +1115,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearSharedCost = function() {
 
 /**
  * Gets the value of the personal_number field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getPersonalNumber = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(7));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(7));
 };
 
 
@@ -1021,10 +1166,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearPersonalNumber = function() {
 
 /**
  * Gets the value of the voip field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getVoip = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(8));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(8));
 };
 
 
@@ -1072,10 +1217,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearVoip = function() {
 
 /**
  * Gets the value of the pager field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getPager = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(21));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(21));
 };
 
 
@@ -1123,10 +1268,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearPager = function() {
 
 /**
  * Gets the value of the uan field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getUan = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(25));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(25));
 };
 
 
@@ -1174,10 +1319,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearUan = function() {
 
 /**
  * Gets the value of the emergency field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getEmergency = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(27));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(27));
 };
 
 
@@ -1225,10 +1370,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearEmergency = function() {
 
 /**
  * Gets the value of the voicemail field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getVoicemail = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(28));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(28));
 };
 
 
@@ -1276,10 +1421,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearVoicemail = function() {
 
 /**
  * Gets the value of the no_international_dialling field.
- * @return {i18n.phonenumbers.PhoneNumberDesc} The value.
+ * @return {?i18n.phonenumbers.PhoneNumberDesc} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getNoInternationalDialling = function() {
-  return /** @type {i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(24));
+  return /** @type {?i18n.phonenumbers.PhoneNumberDesc} */ (this.get$Value(24));
 };
 
 
@@ -1787,10 +1932,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearSameMobileAndFixedLinePattern = f
 /**
  * Gets the value of the number_format field at the index given.
  * @param {number} index The index to lookup.
- * @return {i18n.phonenumbers.NumberFormat} The value.
+ * @return {?i18n.phonenumbers.NumberFormat} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getNumberFormat = function(index) {
-  return /** @type {i18n.phonenumbers.NumberFormat} */ (this.get$Value(19, index));
+  return /** @type {?i18n.phonenumbers.NumberFormat} */ (this.get$Value(19, index));
 };
 
 
@@ -1815,10 +1960,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.addNumberFormat = function(value) {
 
 /**
  * Returns the array of values in the number_format field.
- * @return {!Array.<!i18n.phonenumbers.NumberFormat>} The values in the field.
+ * @return {!Array<!i18n.phonenumbers.NumberFormat>} The values in the field.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.numberFormatArray = function() {
-  return /** @type {!Array.<!i18n.phonenumbers.NumberFormat>} */ (this.array$Values(19));
+  return /** @type {!Array<!i18n.phonenumbers.NumberFormat>} */ (this.array$Values(19));
 };
 
 
@@ -1849,10 +1994,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearNumberFormat = function() {
 /**
  * Gets the value of the intl_number_format field at the index given.
  * @param {number} index The index to lookup.
- * @return {i18n.phonenumbers.NumberFormat} The value.
+ * @return {?i18n.phonenumbers.NumberFormat} The value.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.getIntlNumberFormat = function(index) {
-  return /** @type {i18n.phonenumbers.NumberFormat} */ (this.get$Value(20, index));
+  return /** @type {?i18n.phonenumbers.NumberFormat} */ (this.get$Value(20, index));
 };
 
 
@@ -1877,10 +2022,10 @@ i18n.phonenumbers.PhoneMetadata.prototype.addIntlNumberFormat = function(value) 
 
 /**
  * Returns the array of values in the intl_number_format field.
- * @return {!Array.<!i18n.phonenumbers.NumberFormat>} The values in the field.
+ * @return {!Array<!i18n.phonenumbers.NumberFormat>} The values in the field.
  */
 i18n.phonenumbers.PhoneMetadata.prototype.intlNumberFormatArray = function() {
-  return /** @type {!Array.<!i18n.phonenumbers.NumberFormat>} */ (this.array$Values(20));
+  return /** @type {!Array<!i18n.phonenumbers.NumberFormat>} */ (this.array$Values(20));
 };
 
 
@@ -2073,6 +2218,13 @@ goog.inherits(i18n.phonenumbers.PhoneMetadataCollection, goog.proto2.Message);
 
 
 /**
+ * Descriptor for this message, deserialized lazily in getDescriptor().
+ * @private {?goog.proto2.Descriptor}
+ */
+i18n.phonenumbers.PhoneMetadataCollection.descriptor_ = null;
+
+
+/**
  * Overrides {@link goog.proto2.Message#clone} to specify its exact return type.
  * @return {!i18n.phonenumbers.PhoneMetadataCollection} The cloned message.
  * @override
@@ -2083,10 +2235,10 @@ i18n.phonenumbers.PhoneMetadataCollection.prototype.clone;
 /**
  * Gets the value of the metadata field at the index given.
  * @param {number} index The index to lookup.
- * @return {i18n.phonenumbers.PhoneMetadata} The value.
+ * @return {?i18n.phonenumbers.PhoneMetadata} The value.
  */
 i18n.phonenumbers.PhoneMetadataCollection.prototype.getMetadata = function(index) {
-  return /** @type {i18n.phonenumbers.PhoneMetadata} */ (this.get$Value(1, index));
+  return /** @type {?i18n.phonenumbers.PhoneMetadata} */ (this.get$Value(1, index));
 };
 
 
@@ -2111,10 +2263,10 @@ i18n.phonenumbers.PhoneMetadataCollection.prototype.addMetadata = function(value
 
 /**
  * Returns the array of values in the metadata field.
- * @return {!Array.<!i18n.phonenumbers.PhoneMetadata>} The values in the field.
+ * @return {!Array<!i18n.phonenumbers.PhoneMetadata>} The values in the field.
  */
 i18n.phonenumbers.PhoneMetadataCollection.prototype.metadataArray = function() {
-  return /** @type {!Array.<!i18n.phonenumbers.PhoneMetadata>} */ (this.array$Values(1));
+  return /** @type {!Array<!i18n.phonenumbers.PhoneMetadata>} */ (this.array$Values(1));
 };
 
 
@@ -2144,7 +2296,8 @@ i18n.phonenumbers.PhoneMetadataCollection.prototype.clearMetadata = function() {
 
 /** @override */
 i18n.phonenumbers.NumberFormat.prototype.getDescriptor = function() {
-  if (!i18n.phonenumbers.NumberFormat.descriptor_) {
+  var descriptor = i18n.phonenumbers.NumberFormat.descriptor_;
+  if (!descriptor) {
     // The descriptor is created lazily when we instantiate a new instance.
     var descriptorObj = {
       0: {
@@ -2185,23 +2338,23 @@ i18n.phonenumbers.NumberFormat.prototype.getDescriptor = function() {
         type: String
       }
     };
-    i18n.phonenumbers.NumberFormat.descriptor_ =
+    i18n.phonenumbers.NumberFormat.descriptor_ = descriptor =
         goog.proto2.Message.createDescriptor(
              i18n.phonenumbers.NumberFormat, descriptorObj);
   }
-  return i18n.phonenumbers.NumberFormat.descriptor_;
+  return descriptor;
 };
 
 
-// Export getDescriptor static function robust to minification.
-i18n.phonenumbers.NumberFormat['ctor'] = i18n.phonenumbers.NumberFormat;
-i18n.phonenumbers.NumberFormat['ctor'].getDescriptor =
+/** @nocollapse */
+i18n.phonenumbers.NumberFormat.getDescriptor =
     i18n.phonenumbers.NumberFormat.prototype.getDescriptor;
 
 
 /** @override */
 i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
-  if (!i18n.phonenumbers.PhoneNumberDesc.descriptor_) {
+  var descriptor = i18n.phonenumbers.PhoneNumberDesc.descriptor_;
+  if (!descriptor) {
     // The descriptor is created lazily when we instantiate a new instance.
     var descriptorObj = {
       0: {
@@ -2217,6 +2370,18 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
         name: 'possible_number_pattern',
         fieldType: goog.proto2.Message.FieldType.STRING,
         type: String
+      },
+      9: {
+        name: 'possible_length',
+        repeated: true,
+        fieldType: goog.proto2.Message.FieldType.INT32,
+        type: Number
+      },
+      10: {
+        name: 'possible_length_local_only',
+        repeated: true,
+        fieldType: goog.proto2.Message.FieldType.INT32,
+        type: Number
       },
       6: {
         name: 'example_number',
@@ -2234,23 +2399,23 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
         type: String
       }
     };
-    i18n.phonenumbers.PhoneNumberDesc.descriptor_ =
+    i18n.phonenumbers.PhoneNumberDesc.descriptor_ = descriptor =
         goog.proto2.Message.createDescriptor(
              i18n.phonenumbers.PhoneNumberDesc, descriptorObj);
   }
-  return i18n.phonenumbers.PhoneNumberDesc.descriptor_;
+  return descriptor;
 };
 
 
-// Export getDescriptor static function robust to minification.
-i18n.phonenumbers.PhoneNumberDesc['ctor'] = i18n.phonenumbers.PhoneNumberDesc;
-i18n.phonenumbers.PhoneNumberDesc['ctor'].getDescriptor =
+/** @nocollapse */
+i18n.phonenumbers.PhoneNumberDesc.getDescriptor =
     i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor;
 
 
 /** @override */
 i18n.phonenumbers.PhoneMetadata.prototype.getDescriptor = function() {
-  if (!i18n.phonenumbers.PhoneMetadata.descriptor_) {
+  var descriptor = i18n.phonenumbers.PhoneMetadata.descriptor_;
+  if (!descriptor) {
     // The descriptor is created lazily when we instantiate a new instance.
     var descriptorObj = {
       0: {
@@ -2399,23 +2564,23 @@ i18n.phonenumbers.PhoneMetadata.prototype.getDescriptor = function() {
         type: Boolean
       }
     };
-    i18n.phonenumbers.PhoneMetadata.descriptor_ =
+    i18n.phonenumbers.PhoneMetadata.descriptor_ = descriptor =
         goog.proto2.Message.createDescriptor(
              i18n.phonenumbers.PhoneMetadata, descriptorObj);
   }
-  return i18n.phonenumbers.PhoneMetadata.descriptor_;
+  return descriptor;
 };
 
 
-// Export getDescriptor static function robust to minification.
-i18n.phonenumbers.PhoneMetadata['ctor'] = i18n.phonenumbers.PhoneMetadata;
-i18n.phonenumbers.PhoneMetadata['ctor'].getDescriptor =
+/** @nocollapse */
+i18n.phonenumbers.PhoneMetadata.getDescriptor =
     i18n.phonenumbers.PhoneMetadata.prototype.getDescriptor;
 
 
 /** @override */
 i18n.phonenumbers.PhoneMetadataCollection.prototype.getDescriptor = function() {
-  if (!i18n.phonenumbers.PhoneMetadataCollection.descriptor_) {
+  var descriptor = i18n.phonenumbers.PhoneMetadataCollection.descriptor_;
+  if (!descriptor) {
     // The descriptor is created lazily when we instantiate a new instance.
     var descriptorObj = {
       0: {
@@ -2429,15 +2594,14 @@ i18n.phonenumbers.PhoneMetadataCollection.prototype.getDescriptor = function() {
         type: i18n.phonenumbers.PhoneMetadata
       }
     };
-    i18n.phonenumbers.PhoneMetadataCollection.descriptor_ =
+    i18n.phonenumbers.PhoneMetadataCollection.descriptor_ = descriptor =
         goog.proto2.Message.createDescriptor(
              i18n.phonenumbers.PhoneMetadataCollection, descriptorObj);
   }
-  return i18n.phonenumbers.PhoneMetadataCollection.descriptor_;
+  return descriptor;
 };
 
 
-// Export getDescriptor static function robust to minification.
-i18n.phonenumbers.PhoneMetadataCollection['ctor'] = i18n.phonenumbers.PhoneMetadataCollection;
-i18n.phonenumbers.PhoneMetadataCollection['ctor'].getDescriptor =
+/** @nocollapse */
+i18n.phonenumbers.PhoneMetadataCollection.getDescriptor =
     i18n.phonenumbers.PhoneMetadataCollection.prototype.getDescriptor;

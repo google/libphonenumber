@@ -41,7 +41,7 @@ public class RegexCache {
     return pattern;
   }
 
-  // This method is used for testing.
+  // @VisibleForTesting
   boolean containsRegex(String regex) {
     return cache.containsKey(regex);
   }
@@ -54,6 +54,7 @@ public class RegexCache {
     @SuppressWarnings("serial")
     public LRUCache(int size) {
       this.size = size;
+      // Using access-order instead of insertion-order.
       map = new LinkedHashMap<K, V>(size * 4 / 3 + 1, 0.75f, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
@@ -75,4 +76,3 @@ public class RegexCache {
     }
   }
 }
-

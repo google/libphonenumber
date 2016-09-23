@@ -26,7 +26,7 @@
  * the codes can be found here:
  * http://www.iso.org/iso/english_country_names_and_code_elements
  *
- * @author Nikolaos Trogkanis
+ * Credits to Nikolaos Trogkanis for original implementation.
  */
 
 goog.provide('i18n.phonenumbers.Error');
@@ -1763,8 +1763,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
       /** @type {i18n.phonenumbers.PhoneMetadata} */
       var regionMetadata = this.getMetadataForRegion(regionCallingFrom);
       if (this.canBeInternationallyDialled(numberNoExt) &&
-          !this.isShorterThanPossibleNormalNumber_(
-              regionMetadata, this.getNationalSignificantNumber(numberNoExt))) {
+          this.testNumberLength_(this.getNationalSignificantNumber(numberNoExt),
+              regionMetadata.getGeneralDesc()) !=
+          i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
         formattedNumber = this.format(
             numberNoExt, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
       } else {
@@ -2770,11 +2771,17 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
     function(nationalNumber, numberDesc) {
-
+  // Check if any possible number lengths are present; if so, we use them to
+  // avoid checking the validation pattern if they don't match. If they are
+  // absent, this means they match the general description, which we have
+  // already checked before a specific number type.
+  var actualLength = nationalNumber.length;
+  if (numberDesc.possibleLengthCount() > 0 &&
+      numberDesc.possibleLengthArray().indexOf(actualLength) == -1) {
+    return false;
+  }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-      numberDesc.getPossibleNumberPatternOrDefault(), nationalNumber) &&
-      i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-          numberDesc.getNationalNumberPatternOrDefault(), nationalNumber);
+      numberDesc.getNationalNumberPatternOrDefault(), nationalNumber);
 };
 
 
@@ -3113,41 +3120,40 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
  * in between these possible lengths is entered, such as of length 8, this will
  * return TOO_LONG.
  *
- * @param {string} numberPattern
  * @param {string} number
+ * @param {i18n.phonenumbers.PhoneNumberDesc} phoneNumberDesc
  * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthAgainstPattern_ =
-    function(numberPattern, number) {
-  if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(numberPattern,
-                                                         number)) {
+i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
+    function(number, phoneNumberDesc) {
+  var possibleLengths = phoneNumberDesc.possibleLengthArray();
+  var localLengths = phoneNumberDesc.possibleLengthLocalOnlyArray();
+  var actualLength = number.length;
+  if (localLengths.indexOf(actualLength) > -1) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
   }
-  if (number.search(numberPattern) == 0) {
-    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
-  } else {
+  // There should always be "possibleLengths" set for every element. This will
+  // be a build-time check once ShortNumberMetadata.xml is migrated to contain
+  // this information as well.
+  var minimumLength = possibleLengths[0];
+  if (minimumLength == actualLength) {
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+  } else if (minimumLength > actualLength) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT;
+  } else if (possibleLengths[possibleLengths.length - 1] < actualLength) {
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
   }
-};
-
-
-/**
- * Helper method to check whether a number is too short to be a regular length
- * phone number in a region.
- *
- * @param {i18n.phonenumbers.PhoneMetadata} regionMetadata
- * @param {string} number
- * @return {boolean}
- * @private
- */
-i18n.phonenumbers.PhoneNumberUtil.prototype.isShorterThanPossibleNormalNumber_ =
-    function(regionMetadata, number) {
-  /** @type {string} */
-  var possibleNumberPattern =
-      regionMetadata.getGeneralDesc().getPossibleNumberPatternOrDefault();
-  return this.testNumberLengthAgainstPattern_(possibleNumberPattern, number) ==
-      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT;
+  // Note that actually the number is not too long if possible_lengths does not
+  // contain the length: we know it is less than the highest possible number
+  // length, and higher than the lowest possible number length. However, we
+  // don't currently have an enum to express this, so we return TOO_LONG in the
+  // short-term.
+  // We could skip the first element; we've already checked it; but we prefer to
+  // check one value rather than create an extra object in this case.
+  return (possibleLengths.indexOf(actualLength) > -1) ?
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
 };
 
 
@@ -3198,11 +3204,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata =
       this.getMetadataForRegionOrCallingCode_(countryCode, regionCode);
-  /** @type {string} */
-  var possibleNumberPattern =
-      metadata.getGeneralDesc().getPossibleNumberPatternOrDefault();
-  return this.testNumberLengthAgainstPattern_(possibleNumberPattern,
-                                              nationalNumber);
+  return this.testNumberLength_(nationalNumber, metadata.getGeneralDesc());
 };
 
 
@@ -3416,9 +3418,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
           potentialNationalNumber, defaultRegionMetadata, null);
       /** @type {string} */
       var potentialNationalNumberStr = potentialNationalNumber.toString();
-      /** @type {string} */
-      var possibleNumberPattern =
-          generalDesc.getPossibleNumberPatternOrDefault();
       // If the number was not valid before but is valid now, or if it was too
       // long before, we consider the number with the country calling code
       // stripped to be a better result and keep that instead.
@@ -3426,8 +3425,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
               validNumberPattern, fullNumber.toString()) &&
           i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
               validNumberPattern, potentialNationalNumberStr)) ||
-          this.testNumberLengthAgainstPattern_(possibleNumberPattern,
-                                               fullNumber.toString()) ==
+          this.testNumberLength_(fullNumber.toString(), generalDesc) ==
               i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG) {
         nationalNumber.append(potentialNationalNumberStr);
         if (keepRawInput) {
@@ -3899,8 +3897,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
         new goog.string.StringBuffer(normalizedNationalNumber.toString());
     this.maybeStripNationalPrefixAndCarrierCode(
         potentialNationalNumber, regionMetadata, carrierCode);
-    if (!this.isShorterThanPossibleNormalNumber_(
-            regionMetadata, potentialNationalNumber.toString())) {
+    // We require that the NSN remaining after stripping the national prefix and
+    // carrier code be long enough to be a possible length for the region.
+    // Otherwise, we don't do the stripping, since the original number could be
+    // a valid short number.
+    if (this.testNumberLength_(potentialNationalNumber.toString(),
+            regionMetadata.getGeneralDesc()) !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
       normalizedNationalNumber = potentialNationalNumber;
       if (keepRawInput) {
         phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());

@@ -132,11 +132,6 @@ class PhoneNumberUtilTest : public testing::Test {
                                                phone_number);
   }
 
-  static bool Equals(const PhoneNumberDesc& expected_number,
-                     const PhoneNumberDesc& actual_number) {
-    return ExactlySameAs(expected_number, actual_number);
-  }
-
   bool ContainsOnlyValidDigits(const string& s) const {
     return phone_util_.ContainsOnlyValidDigits(s);
   }
@@ -228,7 +223,10 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
             metadata->general_desc().national_number_pattern());
   EXPECT_EQ("\\d{7}(?:\\d{3})?",
             metadata->general_desc().possible_number_pattern());
-  EXPECT_TRUE(Equals(metadata->general_desc(), metadata->fixed_line()));
+  // Fixed-line data should be inherited from the general desc for the national
+  // number pattern, since it wasn't overridden.
+  EXPECT_EQ(metadata->general_desc().national_number_pattern(),
+            metadata->fixed_line().national_number_pattern());
   EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
   EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ(10, metadata->general_desc().possible_length(0));
@@ -1157,7 +1155,7 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   // added before dialing from a mobile phone for regular length numbers, but
   // not for short numbers.
   test_number.set_country_code(36);
-  test_number.set_national_number(301234567L);
+  test_number.set_national_number(301234567ULL);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::HU(), false, &formatted_number);
   EXPECT_EQ("06301234567", formatted_number);
@@ -1176,7 +1174,7 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   // numbers are always output in international format, but short numbers are
   // in national format.
   test_number.set_country_code(1);
-  test_number.set_national_number(6502530000L);
+  test_number.set_national_number(6502530000ULL);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::US(), false, &formatted_number);
   EXPECT_EQ("+16502530000", formatted_number);
@@ -1365,7 +1363,7 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
 
   // A mobile number in Argentina also has an area code.
   number.set_country_code(54);
-  number.set_national_number(91187654321);
+  number.set_national_number(91187654321ULL);
   EXPECT_EQ(3, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // Google Sydney, which has area code "2".
@@ -1755,7 +1753,7 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumber) {
                                                     RegionCode::GB()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("+44 20 7031 3000",
                                                     RegionCode::GB()));
-  EXPECT_TRUE(phone_util_.IsPossibleNumberForString("(020) 7031 3000",
+  EXPECT_TRUE(phone_util_.IsPossibleNumberForString("(020) 7031 300",
                                                     RegionCode::GB()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("7031 3000",
                                                     RegionCode::GB()));

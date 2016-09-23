@@ -19,7 +19,9 @@ package com.google.i18n.phonenumbers;
 import java.io.InputStream;
 
 /**
- * Interface for caller to specify a customized phone metadata loader.
+ * Interface for clients to specify a customized phone metadata loader, useful for Android apps to
+ * load Android resources since the library loads Java resources by default. Note that
+ * implementation owners have the responsibility to ensure this is thread-safe.
  */
 public interface MetadataLoader {
   /**

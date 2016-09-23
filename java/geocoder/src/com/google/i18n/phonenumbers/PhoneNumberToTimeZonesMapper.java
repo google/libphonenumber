@@ -45,7 +45,7 @@ public class PhoneNumberToTimeZonesMapper {
     UNKNOWN_TIME_ZONE_LIST.add(UNKNOWN_TIMEZONE);
   }
 
-  private static final Logger LOGGER =
+  private static final Logger logger =
       Logger.getLogger(PhoneNumberToTimeZonesMapper.class.getName());
 
   private PrefixTimeZonesMap prefixTimeZonesMap = null;
@@ -68,7 +68,7 @@ public class PhoneNumberToTimeZonesMapper {
       in = new ObjectInputStream(source);
       map.readExternal(in);
     } catch (IOException e) {
-      LOGGER.log(Level.WARNING, e.toString());
+      logger.log(Level.WARNING, e.toString());
     } finally {
       close(in);
     }
@@ -80,7 +80,7 @@ public class PhoneNumberToTimeZonesMapper {
       try {
         in.close();
       } catch (IOException e) {
-        LOGGER.log(Level.WARNING, e.toString());
+        logger.log(Level.WARNING, e.toString());
       }
     }
   }
@@ -137,23 +137,11 @@ public class PhoneNumberToTimeZonesMapper {
     PhoneNumberType numberType = PhoneNumberUtil.getInstance().getNumberType(number);
     if (numberType == PhoneNumberType.UNKNOWN) {
       return UNKNOWN_TIME_ZONE_LIST;
-    } else if (!canBeGeocoded(numberType)) {
+    } else if (!PhoneNumberUtil.getInstance().isNumberGeographical(
+        numberType, number.getCountryCode())) {
       return getCountryLevelTimeZonesforNumber(number);
     }
     return getTimeZonesForGeographicalNumber(number);
-  }
-
-  /**
-   * A similar method is implemented as PhoneNumberUtil.isNumberGeographical, which performs a
-   * stricter check, as it determines if a number has a geographical association. Also, if new
-   * phone number types were added, we should check if this other method should be updated too.
-   * TODO: Remove duplication by completing the logic in the method in PhoneNumberUtil.
-   *                   For more information, see the comments in that method.
-   */
-  private boolean canBeGeocoded(PhoneNumberType numberType) {
-    return (numberType == PhoneNumberType.FIXED_LINE ||
-            numberType == PhoneNumberType.MOBILE ||
-            numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
   }
 
   /**

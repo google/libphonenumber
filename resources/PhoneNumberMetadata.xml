@@ -339,13 +339,14 @@
         <exampleNumber>2684601234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- 268 776/778/779 are not in the plan, but have been added after numbers with these
+        <!-- 268 736/776/778/779 are not in the plan, but have been added after numbers with these
              prefixes have been found in online searches. Same for 268 780/782/784/786. -->
         <nationalNumberPattern>
           268(?:
             464|
             7(?:
-              2[0-9]|
+              2\d|
+              36|
               64|
               7[0-689]|
               8[02-68]
@@ -690,7 +691,7 @@
         <exampleNumber>80112345</exampleNumber>
       </sharedCost>
       <voip>
-        <nationalNumberPattern>60[2-6]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>60[2-7]\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
         <exampleNumber>60271234</exampleNumber>
@@ -1897,8 +1898,12 @@
 
     <!-- Åland Islands. -->
     <!-- Metadata shared with Finland. -->
-    <territory id="AX" countryCode="358" internationalPrefix="00|99[049]" nationalPrefix="0"
-               nationalPrefixFormattingRule="$NP$FG">
+    <!-- Adding all international carrier access codes in below doc that we found corroborating
+         evidence for. https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/internationalcalls/internationalcarrieraccesscodes.html -->
+    <territory id="AX" countryCode="358"
+               internationalPrefix="00|99(?:[02469]|5(?:11|33|5[59]|88|9[09]))"
+               preferredInternationalPrefix="00" nationalPrefix="0"
+               nationalPrefixFormattingRule="$NP$FG" >
       <references>
         <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
       </references>
@@ -4500,7 +4505,7 @@
             [0-2459]\d{2}|
             8
           )\d{5}|
-          9[7-9]\d{7}
+          9[017-9]\d{7}
         </nationalNumberPattern>
         <possibleLengths national="7,9"/>
         <exampleNumber>991234567</exampleNumber>
@@ -7580,7 +7585,11 @@
 
     <!-- Finland -->
     <!-- Metadata shared with Åland (AX) -->
-    <territory id="FI" countryCode="358" internationalPrefix="00|99[049]" nationalPrefix="0"
+    <!-- Adding all international carrier access codes in below doc that we found corroborating
+         evidence for. https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/internationalcalls/internationalcarrieraccesscodes.html -->
+    <territory id="FI" countryCode="358"
+               internationalPrefix="00|99(?:[02469]|5(?:11|33|5[59]|88|9[09]))"
+               preferredInternationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mainCountryForCode="true"
                mobileNumberPortableRegion="true">
       <references>
@@ -11114,8 +11123,7 @@
                 [05-8]|
                 1[07-9]|
                 2[015-8]|
-                3[17-9]|
-                4[017-9]|
+                [34][017-9]|
                 9[015689]
               )|
               4(?:
@@ -11205,7 +11213,7 @@
                   [5-8]|
                   [01][089]
                 )|
-                3[17-9]|
+                3[017-9]|
                 4(?:
                   [07-9]|
                   11
@@ -11738,7 +11746,10 @@
                   [5-8]\d|
                   [01][089]
                 )|
-                3[17-9]\d|
+                3(?:
+                  07|
+                  [17-9]\d
+                )|
                 4(?:
                   [07-9]\d|
                   11
@@ -16174,6 +16185,7 @@
         <!-- Closed numbering plan. -->
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
       </generalDesc>
+      <!-- Prefix 5364 was added from a user report. -->
       <fixedLine>
         <nationalNumberPattern>
           5(?:
@@ -16194,7 +16206,7 @@
               (?:
                 [0-4]\d|
                 [57][2-9]|
-                6[235-8]|
+                6[2-8]|
                 9[3-9]
               )\d|
               8(?:
@@ -18883,7 +18895,12 @@
         <exampleNumber>9061234</exampleNumber>
       </premiumRate>
       <voip>
-        <nationalNumberPattern>85\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            6760|
+            85\d{2}
+          )\d{5}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <possibleLengths national="9"/>
         <exampleNumber>851234567</exampleNumber>
@@ -20141,7 +20158,6 @@
               5[2356]
             )|
             9(?:
-              1|
               2[2-8]|
               3[27-9]|
               4[2-6]|
@@ -22976,16 +22992,12 @@
         <exampleNumber>112345678</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Numbers have been found on the Internet for the prefixes 922, 93[046-8],
-             95[138], and 96[05]. -->
+        <!-- Numbers have been found online for the prefixes 922, 95[138], and 96[05]. -->
         <nationalNumberPattern>
           9(?:
             22|
-            3[0-8]|
-            [45]\d|
-            6[024-9]|
-            88|
-            9[0-489]
+            [3-589]\d|
+            6[024-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>

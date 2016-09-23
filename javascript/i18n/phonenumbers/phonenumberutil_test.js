@@ -256,7 +256,10 @@ function testGetInstanceLoadUSMetadata() {
                metadata.getGeneralDesc().getNationalNumberPattern());
   assertEquals('\\d{7}(?:\\d{3})?',
                metadata.getGeneralDesc().getPossibleNumberPattern());
-  assertTrue(metadata.getGeneralDesc().equals(metadata.getFixedLine()));
+  // Fixed-line data should be inherited from the general desc for the national
+  // number pattern, since it wasn't overridden.
+  assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
+               metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{10}',
                metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900\\d{7}',
@@ -279,7 +282,7 @@ function testGetInstanceLoadDEMetadata() {
   assertEquals('(\\d{3})(\\d{3,4})(\\d{4})',
                metadata.getNumberFormat(5).getPattern());
   assertEquals('$1 $2 $3', metadata.getNumberFormat(5).getFormat());
-  assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}',
+  assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}',
                metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{2,14}', metadata.getFixedLine().getPossibleNumberPattern());
   assertEquals('30123456', metadata.getFixedLine().getExampleNumber());
