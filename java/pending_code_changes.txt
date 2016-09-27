@@ -1,16 +1,1 @@
-Build changes:
- - OSGi support added to Manifest information when building jar (#1300)
- - BuildMetadataJsonFromXml changed to output possible lengths for JS build
- - Fix geocoding file generation to handle language codes that are not just
-   two letters long properly and to process filenames in the same order.
-Code changes:
- - Switching the internal implementation of isPossible and related functions
-   to use the new possibleLengths metadata. This affects a lot of countries,
-   making isPossible more restrictive as more precise data is available. It
-   also affects parsing ambiguous and invalid numbers, as we decide whether
-   to strip a possible national prefix (1) or country code based on the length
-   of the number and whether it is possible before or after this.
- - Formatting, naming (LOGGER -> logger) and comment tweaks to follow style
-   guide
- - Removal of unneeded canBeGeocoded method in the
-   PhoneNumberToTimeZonesMapper.java, using phoneNumberUtil instead
+

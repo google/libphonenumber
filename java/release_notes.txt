@@ -1,3 +1,34 @@
+Sep 27, 2016: libphonenumber-7.7.1
+Build changes:
+ - OSGi support added to Manifest information when building jar (#1300)
+ - BuildMetadataJsonFromXml changed to output possible lengths for JS build
+ - Fix geocoding file generation to handle language codes that are not just
+   two letters long properly and to process filenames in the same order.
+Code changes:
+ - Switching the internal implementation of isPossible and related functions
+   to use the new possibleLengths metadata. This affects a lot of countries,
+   making isPossible more restrictive as more precise data is available. It
+   also affects parsing ambiguous and invalid numbers, as we decide whether
+   to strip a possible national prefix (1) or country code based on the length
+   of the number and whether it is possible before or after this.
+ - Formatting, naming (LOGGER -> logger) and comment tweaks to follow style
+   guide
+ - Removal of unneeded canBeGeocoded method in the
+   PhoneNumberToTimeZonesMapper.java, using phoneNumberUtil instead
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   800, 808, 870, 878, 881, 882, 883, 888, 979, AG, AM, BD, BF, CL, CO, EC, ET,
+   GB, GG, GH, IN, LR, MD, MQ, SH, SN, TA, TH, TR
+ - Updated short number metadata for region code(s):
+   AC, AD, AE, AF, AG, AI, AL, AM, AO, AR, AS, AT, AU, AW, AX, AZ, BA, BB, BD,
+   BE, BF, BG, BH, BI, BJ, BL, BM, BN, BO, BQ, BR, BS, BT, BW, BY, BZ, CA, CC,
+   CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CW, CX, CY, CZ, DE, DJ,
+   DK, DM, DO, DZ, MD
+ - New carrier data for country calling code(s): 593 (en)
+ - Updated carrier data for country calling code(s):
+   49 (en), 56 (en), 66 (en), 90 (en), 91 (en), 226 (en), 231 (en), 373 (en),
+   852 (zh_Hant)
+
 Sep 19, 2016: libphonenumber-7.7.0
 Code changes:
  - Removed the dependency on protobuf (protobuf-javanano) from the Java library,
