@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,38 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# http://en.wikipedia.org/wiki/+66
+# Source: IR.21 docs of individual carriers.
 
-6661|AIS
-6664|Penguin SIM
-6665|AIS
-66800|AIS
-66801|AIS
-66802|AIS
-66803|True Move
-66804|DTAC
-66805|DTAC
-66806|AIS
-66810|AIS
-66811|AIS
-66812|AIS
-66813|DTAC
-66814|DTAC
-66815|DTAC
-66816|DTAC
-66817|AIS
-66818|AIS
-66819|AIS
-6682|AIS
-6683|True Move
-6684|AIS
-6685|DTAC
-66854|AIS
-6686|True Move
-6687|AIS
-6688|True Move
-6689|DTAC
-6690|DTAC
-66901|AIS
-66909|True Move
-6691|DTAC
+593960|CNT
+593961|CNT
+5939620|CNT
+5939621|CNT
+5939622|CNT
+5939623|CNT
+5939624|CNT
