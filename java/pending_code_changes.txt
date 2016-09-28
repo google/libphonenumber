@@ -1,1 +1,3 @@
-
+Code changes:
+ - Stop setting empty preferred_domestic_carrier_code, and if we are passed such
+   a number then treat the empty field as if unset.
