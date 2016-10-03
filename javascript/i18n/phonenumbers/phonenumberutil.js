@@ -2785,7 +2785,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
   // already checked before a specific number type.
   var actualLength = nationalNumber.length;
   if (numberDesc.possibleLengthCount() > 0 &&
-      numberDesc.possibleLengthArray().indexOf(actualLength) == -1) {
+      goog.array.indexOf(numberDesc.possibleLengthArray(),
+          actualLength) == -1) {
     return false;
   }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
@@ -3138,7 +3139,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
   var possibleLengths = phoneNumberDesc.possibleLengthArray();
   var localLengths = phoneNumberDesc.possibleLengthLocalOnlyArray();
   var actualLength = number.length;
-  if (localLengths.indexOf(actualLength) > -1) {
+  if (goog.array.indexOf(localLengths, actualLength) > -1) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
   }
   // There should always be "possibleLengths" set for every element. This will
@@ -3157,9 +3158,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
   // length, and higher than the lowest possible number length. However, we
   // don't currently have an enum to express this, so we return TOO_LONG in the
   // short-term.
-  // We could skip the first element; we've already checked it; but we prefer to
-  // check one value rather than create an extra object in this case.
-  return (possibleLengths.indexOf(actualLength) > -1) ?
+  // We skip the first element since we've already checked it.
+  return (goog.array.indexOf(possibleLengths, actualLength, 1) > -1) ?
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
 };
