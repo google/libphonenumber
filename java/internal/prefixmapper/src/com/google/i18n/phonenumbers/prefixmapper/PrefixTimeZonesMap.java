@@ -88,8 +88,8 @@ public class PrefixTimeZonesMap implements Externalizable {
    * @return  the list of corresponding time zones
    */
   public List<String> lookupTimeZonesForNumber(PhoneNumber number) {
-    long phonePrefix = Long.parseLong(number.getCountryCode() +
-        PhoneNumberUtil.getInstance().getNationalSignificantNumber(number));
+    long phonePrefix = Long.parseLong(number.getCountryCode()
+        + PhoneNumberUtil.getInstance().getNationalSignificantNumber(number));
     return lookupTimeZonesForNumber(phonePrefix);
   }
 

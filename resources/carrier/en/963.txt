@@ -1,0 +1,36 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Taken from https://en.wikipedia.org/wiki/Telephone_numbers_in_Syria
+
+963922|Syriatel
+96393|Syriatel
+96394|MTN
+963950|MTN
+963952|MTN
+963954|MTN
+963955|MTN
+963956|MTN
+963957|MTN
+963958|MTN
+963959|MTN
+963962|MTN
+963964|MTN
+963965|MTN
+963966|MTN
+963967|MTN
+963968|MTN
+963969|MTN
+96398|Syriatel
+96399|Syriatel

@@ -1,3 +1,93 @@
+Oct 06, 2016: libphonenumber-7.7.2
+Code changes:
+ - Stop setting empty preferred_domestic_carrier_code, and if we are passed such
+   a number then treat the empty field as if unset.
+Metadata changes:
+ - Updated phone metadata for region code(s): CL, FR, KE, MU, NG
+ - Updated short number metadata for region code(s):
+   EC, EE, EG, EH, ER, ES, ET, FI, FJ, FK, FM, FO, FR, OM, PA, PE, PF, PG, PH,
+   PK, PL, PM, PR, PT, PW, PY, QA, RE, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG,
+   SH, SI, SJ, SK, SL, SM, SN, SO, SR, ST, SV, SX, SY, SZ, TC, TD, TG, TH, TJ,
+   TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VA, VC, VE, VG, VI,
+   VN, VU, WF, WS, YE, YT, ZA, ZM, ZW
+ - Updated geocoding data for country calling code(s): 56 (en, es)
+ - Updated carrier data for country calling code(s):
+   230 (en), 234 (en), 254 (en)
+
+Sep 27, 2016: libphonenumber-7.7.1
+Build changes:
+ - OSGi support added to Manifest information when building jar (#1300)
+ - BuildMetadataJsonFromXml changed to output possible lengths for JS build
+ - Fix geocoding file generation to handle language codes that are not just
+   two letters long properly and to process filenames in the same order.
+Code changes:
+ - Switching the internal implementation of isPossible and related functions
+   to use the new possibleLengths metadata. This affects a lot of countries,
+   making isPossible more restrictive as more precise data is available. It
+   also affects parsing ambiguous and invalid numbers, as we decide whether
+   to strip a possible national prefix (1) or country code based on the length
+   of the number and whether it is possible before or after this.
+ - Formatting, naming (LOGGER -> logger) and comment tweaks to follow style
+   guide
+ - Removal of unneeded canBeGeocoded method in the
+   PhoneNumberToTimeZonesMapper.java, using phoneNumberUtil instead
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   800, 808, 870, 878, 881, 882, 883, 888, 979, AG, AM, BD, BF, CL, CO, EC, ET,
+   GB, GG, GH, IN, LR, MD, MQ, SH, SN, TA, TH, TR
+ - Updated short number metadata for region code(s):
+   AC, AD, AE, AF, AG, AI, AL, AM, AO, AR, AS, AT, AU, AW, AX, AZ, BA, BB, BD,
+   BE, BF, BG, BH, BI, BJ, BL, BM, BN, BO, BQ, BR, BS, BT, BW, BY, BZ, CA, CC,
+   CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CW, CX, CY, CZ, DE, DJ,
+   DK, DM, DO, DZ, MD
+ - New carrier data for country calling code(s): 593 (en)
+ - Updated carrier data for country calling code(s):
+   49 (en), 56 (en), 66 (en), 90 (en), 91 (en), 226 (en), 231 (en), 373 (en),
+   852 (zh_Hant)
+
+Sep 19, 2016: libphonenumber-7.7.0
+Code changes:
+ - Removed the dependency on protobuf (protobuf-javanano) from the Java library,
+   resurrecting
+   java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java
+   which was present until libphonenumber-7.1.1.
+   Does not affect the C++ or JavaScript libraries.
+
+Sep 07, 2016: libphonenumber-7.6.1
+Code changes:
+ - Phonemetadata.java has two more fields to represent possible lengths of phone
+   numbers. Changed BuildMetadataFromXml (and the resultant jar) to alter the way
+   that metadata about possible-lengths information is consumed when constructing
+   metadata to populate these.
+   Discussion list email:
+   https://groups.google.com/forum/#!topic/libphonenumber-discuss/75TOpTFVi08
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AM, AX, BY, CD, FI, IN, KR, MA, NA, NL, PK, SY
+ - Updated short number metadata for region code(s): BR, GB, NL, NZ
+ - New geocoding data for country calling code(s):
+   82 (pl, pt, ro, ru, sl, sr, uk, vi)
+ - Updated carrier data for country calling code(s):
+   27 (en), 91 (en), 243 (en), 963 (en)
+
+Aug 24, 2016: libphonenumber-7.6.0
+Code changes:
+ - Refactored metadata loading and closed all streams after loading.
+ - Made isNumberGeographical public, and changed the geocoder to
+   use this when checking whether to give a detailed answer or country-level
+   only.
+Build changes:
+ - Use protobuf-javanano 3.0.0-alpha-7 from Maven Central.
+Metadata changes:
+ - Updated phone metadata for region code(s): EH, ET, JM, MA, SK, SN, SY, ZM
+ - Updated short number metadata for region code(s): ZA
+ - Updated geocoding data for country calling code(s): 212 (en)
+ - New carrier data for country calling code(s):
+   86 (zh, zh_Hant), 852 (zh, zh_Hant), 963 (en)
+ - Updated carrier data for country calling code(s):
+   86 (en), 212 (en), 251 (en), 421 (en)
+ - Deleted unsupported SingleFilePhoneNumberMetadataProto
+
 Aug 10, 2016: libphonenumber-7.5.2
 Metadata changes:
  - Updated phone metadata for region code(s): CO, IN, ME

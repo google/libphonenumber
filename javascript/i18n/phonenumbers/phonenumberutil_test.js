@@ -256,7 +256,10 @@ function testGetInstanceLoadUSMetadata() {
                metadata.getGeneralDesc().getNationalNumberPattern());
   assertEquals('\\d{7}(?:\\d{3})?',
                metadata.getGeneralDesc().getPossibleNumberPattern());
-  assertTrue(metadata.getGeneralDesc().equals(metadata.getFixedLine()));
+  // Fixed-line data should be inherited from the general desc for the national
+  // number pattern, since it wasn't overridden.
+  assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
+               metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{10}',
                metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900\\d{7}',
@@ -279,7 +282,7 @@ function testGetInstanceLoadDEMetadata() {
   assertEquals('(\\d{3})(\\d{3,4})(\\d{4})',
                metadata.getNumberFormat(5).getPattern());
   assertEquals('$1 $2 $3', metadata.getNumberFormat(5).getFormat());
-  assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}',
+  assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}',
                metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{2,14}', metadata.getFixedLine().getPossibleNumberPattern());
   assertEquals('30123456', metadata.getFixedLine().getExampleNumber());
@@ -971,10 +974,15 @@ function testFormatWithPreferredCarrierCode() {
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
   assertEquals('01234 19 12-5678',
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, ''));
-  // When the preferred_domestic_carrier_code is present (even when it contains
-  // an empty string), use it instead of the default carrier code passed in.
+  // When the preferred_domestic_carrier_code is present (even when it is just a
+  // space), use it instead of the default carrier code passed in.
+  arNumber.setPreferredDomesticCarrierCode(' ');
+  assertEquals("01234   12-5678",
+      phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
+  // When the preferred_domestic_carrier_code is present but empty, treat it as
+  // unset and use instead the default carrier code passed in.
   arNumber.setPreferredDomesticCarrierCode('');
-  assertEquals('01234 12-5678',
+  assertEquals('01234 15 12-5678',
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
   // We don't support this for the US so there should be no change.
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -2816,14 +2824,11 @@ function testParseNumbersWithPlusWithNoRegion() {
       phoneUtil.parse('tel:03-331-6005;isub=12345;phone-context=+64',
                       RegionCode.ZZ)));
 
-  // It is important that we set the carrier code to an empty string, since we
-  // used ParseAndKeepRawInput and no carrier code was found.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumberWithRawInput = NZ_NUMBER.clone();
   nzNumberWithRawInput.setRawInput('+64 3 331 6005');
   nzNumberWithRawInput.setCountryCodeSource(i18n.phonenumbers.PhoneNumber
       .CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
-  nzNumberWithRawInput.setPreferredDomesticCarrierCode('');
   assertTrue(nzNumberWithRawInput.equals(
       phoneUtil.parseAndKeepRawInput('+64 3 331 6005', RegionCode.ZZ)));
   // Null is also allowed for the region code in these cases.
@@ -2981,7 +2986,6 @@ function testParseAndKeepRaw() {
   var alphaNumericNumber = ALPHA_NUMERIC_NUMBER.clone();
   alphaNumericNumber.setRawInput('800 six-flags');
   alphaNumericNumber.setCountryCodeSource(CCS.FROM_DEFAULT_COUNTRY);
-  alphaNumericNumber.setPreferredDomesticCarrierCode('');
   assertTrue(alphaNumericNumber.equals(
       phoneUtil.parseAndKeepRawInput('800 six-flags', RegionCode.US)));
 
@@ -2991,7 +2995,6 @@ function testParseAndKeepRaw() {
   shorterAlphaNumber.setNationalNumber(8007493524);
   shorterAlphaNumber.setRawInput('1800 six-flag');
   shorterAlphaNumber.setCountryCodeSource(CCS.FROM_NUMBER_WITHOUT_PLUS_SIGN);
-  shorterAlphaNumber.setPreferredDomesticCarrierCode('');
   assertTrue(shorterAlphaNumber.equals(
       phoneUtil.parseAndKeepRawInput('1800 six-flag', RegionCode.US)));
 

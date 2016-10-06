@@ -249,6 +249,7 @@
 9173279|Airtel
 9173280|Airtel
 9173288|Airtel
+9173307|Airtel
 9173376|Airtel
 9173377|Airtel
 9173378|Airtel
@@ -386,6 +387,7 @@
 9173919|Vodafone
 9173959|Airtel
 917396|Telewings
+9173970|Airtel
 917398|Telewings
 917399|Dishnet
 917401|Aircel

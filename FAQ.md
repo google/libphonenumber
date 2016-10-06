@@ -1,5 +1,22 @@
 # Frequently Asked Questions (FAQ)
 
+## Parsing
+
+### Why wasn't the country code removed when parsing?
+
+In some cases, the library cannot tell if the leading digits of a phone number
+are intended to be the country calling code, or the start of the national
+significant number.
+
+This affects primarily German phone numbers, where 49 is both a country calling
+code and an area code, and numbers of variable lengths are valid. The leading
+digits will only be interpreted as a country calling code if the number is not
+already considered a possible number for the region provided when parsing.
+
+If you know that your numbers are always in the form &lt;country calling
+code&gt;&lt;national significant number&gt;, it is safe to put a "+" in front to
+indicate this to the library.
+
 ## Validation and types of numbers
 
 ### What is the difference between isPossibleNumber and isValidNumber?
