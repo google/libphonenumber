@@ -1,3 +1,19 @@
+Oct 06, 2016: libphonenumber-7.7.2
+Code changes:
+ - Stop setting empty preferred_domestic_carrier_code, and if we are passed such
+   a number then treat the empty field as if unset.
+Metadata changes:
+ - Updated phone metadata for region code(s): CL, FR, KE, MU, NG
+ - Updated short number metadata for region code(s):
+   EC, EE, EG, EH, ER, ES, ET, FI, FJ, FK, FM, FO, FR, OM, PA, PE, PF, PG, PH,
+   PK, PL, PM, PR, PT, PW, PY, QA, RE, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG,
+   SH, SI, SJ, SK, SL, SM, SN, SO, SR, ST, SV, SX, SY, SZ, TC, TD, TG, TH, TJ,
+   TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VA, VC, VE, VG, VI,
+   VN, VU, WF, WS, YE, YT, ZA, ZM, ZW
+ - Updated geocoding data for country calling code(s): 56 (en, es)
+ - Updated carrier data for country calling code(s):
+   230 (en), 234 (en), 254 (en)
+
 Sep 27, 2016: libphonenumber-7.7.1
 Build changes:
  - OSGi support added to Manifest information when building jar (#1300)
