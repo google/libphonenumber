@@ -4882,18 +4882,16 @@
         <!-- In mid-2013, Chile switched from 8 digits to 9 digits for fixed-line numbers, by
              inserting a '2' after the area code (which are 2 digits, with the exception of '2').
              As of Aug. 2014, all of the prefixes have been switched over to the new plan.
-             IMPORTANT: The fact that Santiago numbers have a prefix of "22", and that numbers in
-             other areas have '2' as their third digit, is likely to change in the future. At some
-             stage, Santiago numbers will probably switch to prefix "2\d", and the third digit in
-             other areas will probably be allowed to take on other values.
+             IMPORTANT: Originally after the change Santiago numbers had a prefix of "22", but
+             already numbers with the prefix "23" are being added.
              See: http://www.gob.cl/especiales/informate-de-la-nueva-forma-de-marcar/
                   http://www.subtel.cl/index.php?option=com_content&view=article&id=3081:&catid=3:noticias
-             -->
+             Added 2326 range based on online evidence. Added prefix 2327 based on user report. -->
         <nationalNumberPattern>
           2(?:
             1962\d{4}|
             2\d{7}|
-            32[0-2]\d{5}
+            32[0-267]\d{5}
           )|
           (?:
             3[2-5]|
@@ -7971,11 +7969,10 @@
       </fixedLine>
       <mobile>
         <nationalNumberPattern>
-          6\d{8}|
-          7(?:
-            00\d{6}|
-            [3-9]\d{7}
-          )
+          (?:
+            6\d|
+            7[3-9]
+          )\d{7}
         </nationalNumberPattern>
         <possibleLengths national="9"/>
         <exampleNumber>612345678</exampleNumber>
@@ -14062,9 +14059,10 @@
       <mobile>
         <nationalNumberPattern>
           7(?:
-            [0-36]\d|
+            [0-369]\d|
+            4[0-2]|
             5[0-6]|
-            [79][0-7]|
+            7[0-7]|
             8[0-25-9]
           )\d{6}
         </nationalNumberPattern>
@@ -17611,7 +17609,7 @@
         <possibleLengths national="7,8"/>
         <exampleNumber>2012345</exampleNumber>
       </fixedLine>
-      <!-- Added prefix 580 and 581 as per information from the carrier. -->
+      <!-- Added prefix 580, 581 and 589 as per information from the carrier. -->
       <mobile>
         <nationalNumberPattern>
           5(?:
@@ -17624,7 +17622,7 @@
             )|
             7\d{2}|
             8(?:
-              [0-2568]\d|
+              [0-25689]\d|
               7[15-8]
             )|
             9[0-8]\d
@@ -18534,18 +18532,10 @@
         <sourceUrl>http://www.itu.int/oth/T020200009C/en</sourceUrl>
         <sourceUrl>http://www.ncc.gov.ng/index.php/index.php?option=com_content&amp;view=article&amp;id=113&amp;Itemid=102</sourceUrl>
       </references>
-      <!-- The first pattern which is for mobile ranges overlaps with the pattern
-           below it and is ordered above it as there are more mobile numbers with
-           the overlapping prefixes than fixed-line prefixes. -->
+      <!-- This pattern is for fixed-line ranges and overlaps with the pattern for mobile ranges
+           below it. It is ordered above that one as its numbers are shorter, to reduce switching
+           back and forth between the two formats as one is typing. -->
       <availableFormats>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
-          <leadingDigits>
-            70|
-            8[01]|
-            90[23589]
-          </leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="(\d)(\d{3})(\d{3,4})">
           <leadingDigits>
              [12]|
@@ -18553,6 +18543,14 @@
                0[3-9]|
                [1-9]
              )
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
+          <leadingDigits>
+            70|
+            8[01]|
+            90[2357-9]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -18619,6 +18617,7 @@
         <exampleNumber>12345678</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- Added 907 mobile prefix based on report. -->
         <nationalNumberPattern>
           (?:
             1(?:
@@ -18704,7 +18703,7 @@
                 9[01]
               )
             )|
-            90[23589]\d
+            90[2357-9]\d
           )\d{6}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>

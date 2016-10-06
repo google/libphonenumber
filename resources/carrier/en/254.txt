@@ -20,6 +20,9 @@
 25471|Safaricom
 25472|Safaricom
 25473|Airtel
+254740|Safaricom
+254741|Safaricom
+254742|Safaricom
 254750|Airtel
 254751|Airtel
 254752|Airtel
@@ -53,11 +56,4 @@
 254787|Airtel
 254788|Airtel
 254789|Airtel
-254790|Safaricom
-254791|Safaricom
-254792|Safaricom
-254793|Safaricom
-254794|Safaricom
-254795|Safaricom
-254796|Safaricom
-254797|Safaricom
+25479|Safaricom
