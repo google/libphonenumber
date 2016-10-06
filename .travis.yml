@@ -1,3 +1,4 @@
+language: java
 install:
 # Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
