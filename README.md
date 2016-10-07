@@ -112,7 +112,6 @@ More examples on how to use the library can be found in the unittests at https:/
 
 # Known Ports
 Several people are porting the phone number library to other languages. Here are some we know about. Note that they are done on voluntary basis by developers outside our project, so we cannot guarantee their quality.
-  * C#: https://github.com/erezak/libphonenumber-csharp
   * objective-c: https://github.com/iziz/libPhoneNumber-iOS
   * Python: https://github.com/daviddrysdale/python-phonenumbers
   * Ruby: https://github.com/sstephenson/global_phone
