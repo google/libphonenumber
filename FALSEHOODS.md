@@ -235,3 +235,10 @@ surprising how many false assumptions programmers continue to make about them.
     during, or after the actual implementation of numbering plan changes in the
     real world. The actual date on which a phone number range becomes active may
     not always adhere to official announcements.
+
+1.  **Phone numbers are numbers**
+
+    Never try to store phone numbers in an int or any other kind of numeric
+    data type. You can't do arithmetic on them, and while 007, 07 and 7 are the
+    same number they are not necessary the same phone number. In some countries
+    a leading 0 is significant and forms part of the number itself.
