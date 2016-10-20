@@ -1,1 +1,5 @@
-
+Internal changes:
+ - Fixed Phonemetadata.java not to merge from a NumberFormat's unset bool
+   national_prefix_optional_when_formatting.
+ - Added MetadataFilter, an internal API which is under development and subject
+   to backwards-incompatible changes without notice or guarantees.

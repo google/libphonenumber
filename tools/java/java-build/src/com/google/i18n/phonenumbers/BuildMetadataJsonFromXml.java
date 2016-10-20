@@ -93,7 +93,7 @@ public class BuildMetadataJsonFromXml extends Command {
 
     try {
       PhoneMetadataCollection metadataCollection =
-          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, false);
       Map<Integer, List<String>> countryCodeToRegionCodeMap =
           BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
 
