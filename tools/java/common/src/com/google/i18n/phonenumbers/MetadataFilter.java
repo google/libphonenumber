@@ -40,8 +40,8 @@ final class MetadataFilter {
   // EXCLUDABLE_CHILD_FIELDS are PhoneNumberDesc fields of primitive type.
   // EXCLUDABLE_CHILDLESS_FIELDS are PhoneMetadata fields of primitive type.
   // Currently we support only one non-primitive type and the depth of the "family tree" is 2,
-  // meaning a field may have only direct descendants, who may not have descendants of their
-  // own. If this changes, the blacklist handling in this class should also change.
+  // meaning a field may have only direct descendants, who may not have descendants of their own. If
+  // this changes, the blacklist handling in this class should also change.
   // @VisibleForTesting
   static final TreeSet<String> EXCLUDABLE_PARENT_FIELDS = new TreeSet<String>(Arrays.asList(
       "fixedLine",
