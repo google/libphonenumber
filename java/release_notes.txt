@@ -1,3 +1,24 @@
+Oct 26, 2016: libphonenumber-7.7.3
+Internal changes:
+ - Fixed Phonemetadata.java not to merge from a NumberFormat's unset bool
+   national_prefix_optional_when_formatting.
+ - Added MetadataFilter, an internal API which is under development and subject
+   to backwards-incompatible changes without notice or guarantees.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   882, AG, AI, AS, BB, BM, BR, BS, CA, DM, DO, GD, GU, HU, IN, JM, KN, KY, KZ,
+   LC, MP, MS, PR, SX, TC, TR, TT, UG, US, VC, VG, VI
+ - Updated short number metadata for region code(s):
+   GA, GB, GD, GE, GF, GG, GH, GI, GL, GM, GN, GP, GR, GT, GU, GW, GY, HK, HN,
+   HR, HT, HU, ID, IE, IL, IM, IN, IQ, IR, IS, IT, JE, JM, JO, JP, KE, KG, KH,
+   KI, KM, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY,
+   MA, MC, MD, ME, MF, MG, MH, MK, ML, MM, MN, MO, MP, MQ, MR, MS, MT, MU, MV,
+   MW, MX, MZ, NA, NC, NE, NF, NG, NI, NL, NO, NP, NR, NU, UY
+ - New geocoding data for country calling code(s): 1463 (en)
+ - Updated geocoding data for country calling code(s): 7 (en, ru)
+ - Updated carrier data for country calling code(s):
+   91 (en), 256 (en), 1876 (en)
+
 Oct 06, 2016: libphonenumber-7.7.2
 Code changes:
  - Stop setting empty preferred_domestic_carrier_code, and if we are passed such

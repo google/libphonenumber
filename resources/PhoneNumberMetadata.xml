@@ -384,10 +384,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -468,10 +469,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -1421,10 +1423,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -2280,10 +2283,11 @@
         <exampleNumber>2463101234</exampleNumber>
       </voip>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -3336,10 +3340,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -3533,9 +3538,10 @@
             carrierCodeFormattingRule="$NP $CC ($FG)">
           <leadingDigits>
             (?:
-              [1689][1-9]|
+              [14689][1-9]|
               2[12478]|
               3[1-578]|
+              5[1-5]|
               7[13-579]
             )9
           </leadingDigits>
@@ -3568,7 +3574,13 @@
       <generalDesc>
         <nationalNumberPattern>
           [1-46-9]\d{7,10}|
-          5\d{8,9}
+          5(?:
+            [0-4]\d{7,9}|
+            5(?:
+              [2-8]\d{7}|
+              9\d{7,8}
+            )
+          )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8,11}</possibleNumberPattern>
       </generalDesc>
@@ -3605,10 +3617,9 @@
              issued the digit following the 9 may be something else and since the transition period
              is long, we err on the side of caution and already allow any digit here. Mobile radio
              services are still 10 digits, where the 3rd digit is 7.
-             The following pattern is divided into 3 sections: ranges for which the migration is
-             complete, ranges which are in transition, and ranges which are still in the old format.
-             Generally we keep ranges in transition until a few months after we are notified that
-             they are not in use (b/28458993). -->
+             The following pattern is divided into 2 sections: ranges for which the migration is
+             complete and ranges which are in transition. Generally we keep ranges in transition
+             until a few months after we are notified that they are not in use (b/28458993). -->
         <nationalNumberPattern>
           1[1-9](?:
             7|
@@ -3617,16 +3628,13 @@
           (?:
             2[12478]|
             3[1-578]|
-            [689][1-9]|
+            [4689][1-9]|
+            5[1-5]|
             7[13-579]
           )(?:
             [6-8]|
             9\d?
-          )\d{7}|
-          (?:
-            4[1-9]|
-            5[1-5]
-          )[6-9]\d{7}
+          )\d{7}
         </nationalNumberPattern>
         <possibleLengths national="10,11" localOnly="8"/>
         <exampleNumber>11961234567</exampleNumber>
@@ -3755,10 +3763,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -4356,10 +4365,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -6650,10 +6660,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -6763,10 +6774,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -8742,10 +8754,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -9753,10 +9766,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -10296,32 +10310,21 @@
         <exampleNumber>80123456</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
-        <!-- Includes numbers for corporate networks. Note the ITU numbering plan contains a M2M
-             number in the form of 71\d{10}, which doesn't seem to agree with evidence online. We
-             keep it as 71\d{7} like before. -->
         <nationalNumberPattern>
           (?:
             1\d|
-            2(?:
-              1\d|
-              [2-9]
-            )|
-            3(?:
-              [2-7]|
-              8\d
-            )|
+            2[2-9]|
+            3[2-7]|
             4[24-9]|
             5[2-79]|
             6[23689]|
-            7(?:
-              1\d|
-              [2-9]
-            )|
+            7[2-9]|
             8[2-57-9]|
             9[2-69]
           )\d{6}
         </nationalNumberPattern>
-        <possibleLengths national="8,9" localOnly="6,7"/>
+        <possibleNumberPattern>\d{6,8}</possibleNumberPattern>
+        <possibleLengths national="8" localOnly="6"/>
         <exampleNumber>12345678</exampleNumber>
       </fixedLine>
       <mobile>
@@ -10336,7 +10339,8 @@
         <exampleNumber>201234567</exampleNumber>
       </mobile>
       <tollFree>
-        <nationalNumberPattern>80\d{6}</nationalNumberPattern>
+        <!-- The prefix 40 which was earlier sharedcost is changed to toll free as of Jul. 2016. -->
+        <nationalNumberPattern>[48]0\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
         <exampleNumber>80123456</exampleNumber>
@@ -10347,12 +10351,19 @@
         <possibleLengths national="8"/>
         <exampleNumber>90123456</exampleNumber>
       </premiumRate>
-      <sharedCost>
-        <nationalNumberPattern>40\d{6}</nationalNumberPattern>
-        <possibleNumberPattern>\d{8}</possibleNumberPattern>
-        <possibleLengths national="8"/>
-        <exampleNumber>40123456</exampleNumber>
-      </sharedCost>
+       <voip>
+        <!-- Includes non-geographic nomadic numbers. -->
+        <nationalNumberPattern>21\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{9}</possibleNumberPattern>
+        <possibleLengths national="9"/>
+        <exampleNumber>211234567</exampleNumber>
+      </voip>
+      <uan>
+        <!-- Includes numbers for corporate networks. -->
+        <nationalNumberPattern>38\d{7}</nationalNumberPattern>
+        <possibleLengths national="9"/>
+        <exampleNumber>381234567</exampleNumber>
+      </uan>
     </territory>
 
     <!-- Indonesia -->
@@ -11151,7 +11162,7 @@
               )|
               4(?:
                 0[1-9]|
-                1[014-9]|
+                1[0-24-9]|
                 [2389]|
                 [47][017-9]|
                 5[059]
@@ -11251,6 +11262,7 @@
                 0[1-9]|
                 1(?:
                   [015-9]|
+                  2[089]|
                   4[08]
                 )|
                 2(?:
@@ -11788,6 +11800,7 @@
                 0[1-9]\d|
                 1(?:
                   [015-9]\d|
+                  2[089]|
                   4[08]
                 )|
                 2(?:
@@ -12768,12 +12781,11 @@
         <exampleNumber>8765123456</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Adding 27, 28, 299, 31, 508, 527 and 566 as extra prefixes, as they have been found to
-             be valid by sending SMSs and looking at online number lookup sites. Also added 50[3-79]
-             as we have found information online that the 50[3-9] range has been assigned to
-             Digicel. Numbers have been found online for the following ranges 258, 26x, 29x, 53x,
-             54x, 55x, 56x. Most have mobile numbers online so we have put them under mobile but is
-             possible they are a mixture of fixed line and mobile. -->
+        <!-- Adding 27, 28, 299, 31, 508 and 566 as extra prefixes, as they have been found to be
+             valid by sending SMSs and looking at online number lookup sites. Numbers have been
+             found online for the following ranges 258, 26x, 29x, 53x, 54x, 55x, 56x. Most have
+             mobile numbers online so we have put them under mobile but is possible they are a
+             mixture of fixed line and mobile. -->
         <nationalNumberPattern>
           876(?:
             2(?:
@@ -12783,7 +12795,7 @@
             [348]\d{2}|
             5(?:
               0[3-9]|
-              27|
+              2[0-246-9]|
               6[0-24-9]|
               [3-578]\d
             )|
@@ -12824,10 +12836,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -14480,10 +14493,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -15028,10 +15042,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -15073,7 +15088,7 @@
       <fixedLine>
         <!-- VSAT numbers are also included here. We also include the area code for Baikonur (336
              22), which is within Kazakhstan but in fact rented and administered by Russia at the
-             moment. -->
+             moment. Added 7279 from numbers found online. -->
         <nationalNumberPattern>
           33622\d{5}|
           7(?:
@@ -15157,7 +15172,7 @@
                 59
               )|
               7(?:
-                [237]\d|
+                [2379]\d|
                 40|
                 5[279]
               )|
@@ -15435,10 +15450,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -17296,10 +17312,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -17445,10 +17462,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -20445,10 +20463,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -22902,10 +22921,11 @@
         <exampleNumber>9002123456</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -23105,10 +23125,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -23723,7 +23744,10 @@
         <sourceUrl>http://www.itu.int/oth/T02020000D6/en</sourceUrl>
       </references>
       <availableFormats>
-        <numberFormat nationalPrefixFormattingRule="($NP$FG)" pattern="(\d{3})(\d{3})(\d{4})"
+        <!-- In online references we see both these formats for mobile and fixed-line numbers:
+             (\d{3})(\d{3})(\d{2})(\d{2}) and (\d{3})(\d{3})(\d{4}). However the former seems to be
+             more common. -->
+        <numberFormat nationalPrefixFormattingRule="($NP$FG)" pattern="(\d{3})(\d{3})(\d{2})(\d{2})"
           nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>
             [23]|
@@ -23732,11 +23756,19 @@
               4[0-35-9]
             )
           </leadingDigits>
-          <format>$1 $2 $3</format>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{3})(\d{2})(\d{2})"
+          nationalPrefixOptionalWhenFormatting="true">
+          <leadingDigits>5[02-69]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{3})(\d{4})"
           nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>[589]</leadingDigits>
+          <leadingDigits>
+            51|
+            [89]
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(444)(\d{1})(\d{3})">
@@ -23921,10 +23953,11 @@
         <exampleNumber>8686191234</exampleNumber>
       </voicemail>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -24353,7 +24386,9 @@
         <possibleNumberPattern>\d{5,9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Ranges with prefixes 20[5-8] are "not yet operational" as of Feb. 2013. -->
+        <!-- The prefix 202[5-9] was added as per the ITU update on Oct. 2011. It is not
+             mentioned in the new ITU docs but they are still valid based on online
+             evidence. -->
         <nationalNumberPattern>
           20(?:
             [0147]\d{2}|
@@ -24361,9 +24396,12 @@
               40|
               [5-9]\d
             )|
-            3[23]\d|
+            3(?:
+              0[0-4]|
+              [23]\d
+            )|
             5[0-4]\d|
-            6[03]\d|
+            6[035-9]\d|
             8[0-2]\d
           )\d{4}|
           [34]\d{8}
@@ -24376,17 +24414,19 @@
       </fixedLine>
       <mobile>
         <!-- Added 79[5-9] and 707 from online numbers found with this prefix. -->
-        <!-- Ranges with prefixes 7[46] are "not yet operational" as of Jun. 2013. -->
-        <!-- Ranges with prefixes 2030 or 723 are "not yet operational" as of Oct. 2014. -->
         <nationalNumberPattern>
-          2030\d{5}|
           7(?:
-            0[0-7]|
-            [15789]\d|
-            2[03]|
-            30|
-            [46][0-4]
-          )\d{6}
+            (?:
+              0[0-7]|
+              [15789]\d|
+              30|
+              4[0-4]
+            )\d|
+            2(?:
+              [03]\d|
+              60
+            )
+          )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
         <possibleLengths national="9"/>
@@ -24468,7 +24508,7 @@
               3[0245]|
               4[0235]|
               58|
-              69|
+              6[39]|
               7[0589]|
               8[04]
             )|
@@ -24561,7 +24601,7 @@
               3[0245]|
               4[0235]|
               58|
-              69|
+              6[39]|
               7[0589]|
               8[04]
             )|
@@ -24645,10 +24685,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -25275,10 +25316,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -25438,10 +25480,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -25569,10 +25612,11 @@
         <exampleNumber>9002345678</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <!-- http://www.nanpa.com/pdf/PL_466.pdf -->
+        <!-- https://www.nationalnanpa.com/number_resource_info/5XX_codes.html -->
         <nationalNumberPattern>
           5(?:
             00|
+            22|
             33|
             44|
             66|
@@ -26594,6 +26638,8 @@
 
     <territory id="001" countryCode="882">
       <references>
+        <!-- List of all international satellite number prefixes. -->
+        <sourceUrl>https://www.itu.int/net/itu-t/inrdb/e164_intlsharedcc.aspx?cc=-1</sourceUrl>
         <!-- BebbiCell (Formerly Global Networks Switzerland AG) +88234 -->
         <sourceUrl>http://www.itu.int/oth/T0202000054/en</sourceUrl>
         <sourceUrl>http://www.gsm.aq/numberplan.php</sourceUrl>
@@ -26636,7 +26682,10 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4,5})(\d{5})">
-          <leadingDigits>16</leadingDigits>
+          <leadingDigits>
+            16|
+            39
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -26668,6 +26717,8 @@
       </mobile>
       <voip>
         <!-- Telespazio S.p.A., Thuraya and Bebbicell VOIP numbers. -->
+        <!-- Added Vodafone's satellite range +882 39 here. Length and type are based on user-
+             reported issue as there are no numbers found online. -->
         <nationalNumberPattern>
           1(?:
             3(?:
@@ -26682,10 +26733,14 @@
             )\d{4}|
             6\d{5,10}
           )|
-          345\d{7}
+          3(?:
+            45|
+            9\d{3}
+          )\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,12}</possibleNumberPattern>
         <possibleLengths national="[7-12]"/>
+        <exampleNumber>390123456789</exampleNumber>
       </voip>
       <voicemail>
         <nationalNumberPattern>348[57]\d{7}</nationalNumberPattern>
