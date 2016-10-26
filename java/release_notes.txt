@@ -9,7 +9,8 @@ Metadata changes:
    882, AG, AI, AS, BB, BM, BR, BS, CA, DM, DO, GD, GU, HU, IN, JM, KN, KY, KZ,
    LC, MP, MS, PR, SX, TC, TR, TT, UG, US, VC, VG, VI
  - Updated short number metadata for region code(s): UY
- - New geocoding data for country calling code(s): 1463 (en)
+ - New geocoding data for country calling code(s): 1463 (en), 358 (sv)
+ - Removed geocoding data for country calling code(s): 358 (se)
  - Updated geocoding data for country calling code(s): 7 (en, ru)
  - Updated carrier data for country calling code(s):
    91 (en), 256 (en), 1876 (en)
