@@ -7591,6 +7591,7 @@
           112|
           999
         </nationalNumberPattern>
+        <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
       </shortCode>
       <emergency>
@@ -7598,6 +7599,7 @@
           112|
           999
         </nationalNumberPattern>
+        <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
       </emergency>
     </territory>

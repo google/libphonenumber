@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Author: David Yonge-Mallo
-
 #include "phonenumbers/shortnumberinfo.h"
 
 #include <algorithm>
@@ -33,6 +31,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+using google::protobuf::RepeatedField;
 using std::map;
 using std::string;
 
@@ -81,16 +80,19 @@ const PhoneMetadata* ShortNumberInfo::GetMetadataForRegion(
 }
 
 namespace {
-// Same as the matchesPossibleNumberAndNationalNumber method in
-// java/libphonenumber/src/com/google/i18n/phonenumbers/ShortNumberInfo.java
 // TODO: Once we have benchmarked ShortNumberInfo, consider if it is
-// worth keeping this performance optimization, and if so move this into the
-// matcher implementation.
+// worth keeping this performance optimization.
 bool MatchesPossibleNumberAndNationalNumber(
-    const MatcherApi& matcher_api, const string& number,
-    const PhoneNumberDesc& number_desc) {
-  return matcher_api.MatchesPossibleNumber(number, number_desc) &&
-         matcher_api.MatchesNationalNumber(number, number_desc, false);
+    const MatcherApi& matcher_api,
+    const string& number,
+    const PhoneNumberDesc& desc) {
+  const RepeatedField<int>& lengths = desc.possible_length();
+  if (desc.possible_length_size() > 0 &&
+      std::find(lengths.begin(), lengths.end(), number.length()) ==
+          lengths.end()) {
+    return false;
+  }
+  return matcher_api.MatchesNationalNumber(number, desc, false);
 }
 }  // namespace
 
@@ -113,8 +115,10 @@ bool ShortNumberInfo::IsPossibleShortNumberForRegion(
   if (!phone_metadata) {
     return false;
   }
-  const PhoneNumberDesc& general_desc = phone_metadata->general_desc();
-  return matcher_api_->MatchesPossibleNumber(short_number, general_desc);
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  return std::find(lengths.begin(), lengths.end(), short_number.length()) !=
+      lengths.end();
 }
 
 bool ShortNumberInfo::IsPossibleShortNumberForRegion(const PhoneNumber& number,
@@ -129,8 +133,10 @@ bool ShortNumberInfo::IsPossibleShortNumberForRegion(const PhoneNumber& number,
   }
   string short_number;
   phone_util_.GetNationalSignificantNumber(number, &short_number);
-  const PhoneNumberDesc& general_desc = phone_metadata->general_desc();
-  return matcher_api_->MatchesPossibleNumber(short_number, general_desc);
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  return (std::find(lengths.begin(), lengths.end(), short_number.length()) !=
+      lengths.end());
 }
 
 bool ShortNumberInfo::IsPossibleShortNumber(const PhoneNumber& number) const {
@@ -145,8 +151,10 @@ bool ShortNumberInfo::IsPossibleShortNumber(const PhoneNumber& number) const {
     if (!phone_metadata) {
       continue;
     }
-    if (matcher_api_->MatchesPossibleNumber(short_number,
-                                            phone_metadata->general_desc())) {
+    const RepeatedField<int>& lengths =
+        phone_metadata->general_desc().possible_length();
+    if (std::find(lengths.begin(), lengths.end(), short_number.length()) !=
+        lengths.end()) {
       return true;
     }
   }
@@ -212,9 +220,17 @@ ShortNumberInfo::ShortNumberCost ShortNumberInfo::GetExpectedCostForRegion(
     return ShortNumberInfo::UNKNOWN_COST;
   }
 
-  // The cost categories are tested in order of decreasing expense, since if
-  // for some reason the patterns overlap the most expensive matching cost
-  // category should be returned.
+  // The possible lengths are not present for a particular sub-type if they
+  // match the general description; for this reason, we check the possible
+  // lengths against the general description first to allow an early exit if
+  // possible.
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  if (std::find(lengths.begin(), lengths.end(), short_number.length()) ==
+      lengths.end()) {
+    return ShortNumberInfo::UNKNOWN_COST;
+  }
+
   if (MatchesPossibleNumberAndNationalNumber(*matcher_api_, short_number,
                                              phone_metadata->premium_rate())) {
     return ShortNumberInfo::PREMIUM_RATE;
@@ -246,6 +262,17 @@ ShortNumberInfo::ShortNumberCost ShortNumberInfo::GetExpectedCostForRegion(
   }
   string short_number;
   phone_util_.GetNationalSignificantNumber(number, &short_number);
+
+  // The possible lengths are not present for a particular sub-type if they
+  // match the general description; for this reason, we check the possible
+  // lengths against the general description first to allow an early exit if
+  // possible.
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  if (std::find(lengths.begin(), lengths.end(), short_number.length()) ==
+      lengths.end()) {
+    return ShortNumberInfo::UNKNOWN_COST;
+  }
 
   // The cost categories are tested in order of decreasing expense, since if
   // for some reason the patterns overlap the most expensive matching cost
