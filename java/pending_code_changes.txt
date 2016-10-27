@@ -1,5 +1,5 @@
 Code changes:
  - Using new possibleLengthInfo to decide whether a short number is the right
-length or not. This could result in more specific results; whereas before, a
-number from length 3 to length 6 may have been deemed possible, now we may
-exclude a number of length 5.
+   length or not. This could result in more specific results; whereas before, a
+   number from length 3 to length 6 may have been deemed possible, now we may
+   exclude a number of length 5.

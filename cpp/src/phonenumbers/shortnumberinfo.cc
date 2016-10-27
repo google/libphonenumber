@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Author: David Yonge-Mallo
-
 #include "phonenumbers/shortnumberinfo.h"
 
 #include <algorithm>
@@ -33,6 +31,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+using google::protobuf::RepeatedField;
 using std::map;
 using std::string;
 
@@ -87,10 +86,10 @@ bool MatchesPossibleNumberAndNationalNumber(
     const MatcherApi& matcher_api,
     const string& number,
     const PhoneNumberDesc& desc) {
+  const RepeatedField<int>& lengths = desc.possible_length();
   if (desc.possible_length_size() > 0 &&
-      std::find(desc.possible_length().begin(),
-                desc.possible_length().end(),
-                number.length()) == desc.possible_length().end()) {
+      std::find(lengths.begin(), lengths.end(), number.length()) ==
+          lengths.end()) {
     return false;
   }
   return matcher_api.MatchesNationalNumber(number, desc, false);
@@ -116,10 +115,10 @@ bool ShortNumberInfo::IsPossibleShortNumberForRegion(
   if (!phone_metadata) {
     return false;
   }
-  const PhoneNumberDesc& desc = phone_metadata->general_desc();
-  return std::find(desc.possible_length().begin(),
-                   desc.possible_length().end(),
-                   short_number.length()) != desc.possible_length().end();
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  return std::find(lengths.begin(), lengths.end(), short_number.length()) !=
+      lengths.end();
 }
 
 bool ShortNumberInfo::IsPossibleShortNumberForRegion(const PhoneNumber& number,
@@ -134,10 +133,10 @@ bool ShortNumberInfo::IsPossibleShortNumberForRegion(const PhoneNumber& number,
   }
   string short_number;
   phone_util_.GetNationalSignificantNumber(number, &short_number);
-  const PhoneNumberDesc& desc = phone_metadata->general_desc();
-  return std::find(desc.possible_length().begin(),
-                   desc.possible_length().end(),
-                   short_number.length()) != desc.possible_length().end();
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  return (std::find(lengths.begin(), lengths.end(), short_number.length()) !=
+      lengths.end());
 }
 
 bool ShortNumberInfo::IsPossibleShortNumber(const PhoneNumber& number) const {
@@ -152,10 +151,10 @@ bool ShortNumberInfo::IsPossibleShortNumber(const PhoneNumber& number) const {
     if (!phone_metadata) {
       continue;
     }
-    const PhoneNumberDesc& desc = phone_metadata->general_desc();
-    if (std::find(desc.possible_length().begin(),
-                  desc.possible_length().end(),
-                  short_number.length()) != desc.possible_length().end()) {
+    const RepeatedField<int>& lengths =
+        phone_metadata->general_desc().possible_length();
+    if (std::find(lengths.begin(), lengths.end(), short_number.length()) !=
+        lengths.end()) {
       return true;
     }
   }
@@ -225,10 +224,10 @@ ShortNumberInfo::ShortNumberCost ShortNumberInfo::GetExpectedCostForRegion(
   // match the general description; for this reason, we check the possible
   // lengths against the general description first to allow an early exit if
   // possible.
-  const PhoneNumberDesc& desc = phone_metadata->general_desc();
-  if (std::find(desc.possible_length().begin(),
-                desc.possible_length().end(),
-                short_number.length()) == desc.possible_length().end()) {
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  if (std::find(lengths.begin(), lengths.end(), short_number.length()) ==
+      lengths.end()) {
     return ShortNumberInfo::UNKNOWN_COST;
   }
 
@@ -268,10 +267,10 @@ ShortNumberInfo::ShortNumberCost ShortNumberInfo::GetExpectedCostForRegion(
   // match the general description; for this reason, we check the possible
   // lengths against the general description first to allow an early exit if
   // possible.
-  const PhoneNumberDesc& desc = phone_metadata->general_desc();
-  if (std::find(desc.possible_length().begin(),
-                desc.possible_length().end(),
-                short_number.length()) == desc.possible_length().end()) {
+  const RepeatedField<int>& lengths =
+      phone_metadata->general_desc().possible_length();
+  if (std::find(lengths.begin(), lengths.end(), short_number.length()) ==
+      lengths.end()) {
     return ShortNumberInfo::UNKNOWN_COST;
   }
 
