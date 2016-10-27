@@ -182,7 +182,7 @@ surprising how many false assumptions programmers continue to make about them.
     These include, but are not limited to:
     *   *Moving within a country*: In countries with phone number portability,
         you may retain your number when moving, even in some cases if it is a
-        fixed-line number and even if it has an area code. (see
+        fixed-line number and even if it has an area code (see
         *[xkcd](https://xkcd.com/1129/)* for a US example.)
     *   *Moving to another country*: Some people keep their mobile phones when
         they move to another country.
