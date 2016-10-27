@@ -1159,7 +1159,7 @@ public class PhoneNumberUtil {
       // If no pattern above is matched, we format the number as a whole.
       formattedNumber.append(nationalSignificantNumber);
     } else {
-      NumberFormat numFormatCopy = new NumberFormat();
+      NumberFormat.Builder numFormatCopy = NumberFormat.newBuilder();
       // Before we do a replacement of the national prefix pattern $NP with the national prefix, we
       // need to copy the rule so that subsequent replacements for different numbers have the
       // appropriate national prefix.
@@ -1522,7 +1522,7 @@ public class PhoneNumberUtil {
           break;
         }
         // Otherwise, we need to remove the national prefix from our output.
-        NumberFormat numFormatCopy = new NumberFormat();
+        NumberFormat.Builder numFormatCopy =  NumberFormat.newBuilder();
         numFormatCopy.mergeFrom(formatRule);
         numFormatCopy.clearNationalPrefixFormattingRule();
         List<NumberFormat> numberFormats = new ArrayList<NumberFormat>(1);
@@ -1651,7 +1651,7 @@ public class PhoneNumberUtil {
         // If no pattern above is matched, we format the original input.
         return rawInput;
       }
-      NumberFormat newFormat = new NumberFormat();
+      NumberFormat.Builder newFormat = NumberFormat.newBuilder();
       newFormat.mergeFrom(formattingPattern);
       // The first group is the first group of digits that the user wrote together.
       newFormat.setPattern("(\\d+)(.*)");

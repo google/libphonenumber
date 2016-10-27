@@ -38,6 +38,7 @@ import java.util.regex.Pattern;
 /**
  * Tool to convert phone number metadata from the XML format to protocol buffer format.
  *
+ * <p>
  * Based on the name of the {@code inputFile}, some optimization and removal of unnecessary metadata
  * is carried out to reduce the size of the output file.
  *
@@ -55,6 +56,9 @@ public class BuildMetadataProtoFromXml extends Command {
   private static final String COPYRIGHT = "copyright";
   private static final String SINGLE_FILE = "single-file";
   private static final String LITE_BUILD = "lite-build";
+  // Only supported for clients who have consulted with the libphonenumber team, and the behavior is
+  // subject to change without notice.
+  private static final String SPECIAL_BUILD = "special-build";
 
   private static final String HELP_MESSAGE =
       "Usage: " + CLASS_NAME + " [OPTION]...\n" +
@@ -110,6 +114,7 @@ public class BuildMetadataProtoFromXml extends Command {
     String copyright = null;
     boolean singleFile = false;
     boolean liteBuild = false;
+    boolean specialBuild = false;
 
     for (int i = 1; i < getArgs().length; i++) {
       String key = null;
@@ -136,6 +141,9 @@ public class BuildMetadataProtoFromXml extends Command {
       } else if (LITE_BUILD.equals(key) &&
                  ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
         liteBuild = "true".equalsIgnoreCase(value);
+      } else if (SPECIAL_BUILD.equals(key) &&
+                 ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
+        specialBuild = "true".equalsIgnoreCase(value);
       } else {
         System.err.println(HELP_MESSAGE);
         System.err.println("Illegal command line parameter: " + getArgs()[i]);
@@ -156,7 +164,7 @@ public class BuildMetadataProtoFromXml extends Command {
 
     try {
       PhoneMetadataCollection metadataCollection =
-          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, specialBuild);
 
       if (singleFile) {
         FileOutputStream output = new FileOutputStream(filePrefix);

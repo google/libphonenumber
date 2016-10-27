@@ -47,6 +47,29 @@
       </uan>
     </territory>
 
+    <!-- Armenia -->
+    <!-- Added to test same mobile and fixed-line in custom builds. -->
+    <territory id="AM" countryCode="374" internationalPrefix="00"
+               nationalPrefix="0">
+      <generalDesc>
+        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
+        <exampleNumber>10123456</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
+        <possibleLengths national="8" localOnly="5,6"/>
+        <exampleNumber>10123456</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
+        <possibleLengths national="8" localOnly="5,6"/>
+        <exampleNumber>10123456</exampleNumber>
+      </mobile>
+    </territory>
+
     <!-- Angola -->
     <!-- This country has been coopted to test the case of a national prefix with a non-numeric
          symbol in it. It is also useful since it has no national prefix formatting rule. -->
