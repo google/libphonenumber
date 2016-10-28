@@ -1,5 +1,5 @@
 GitHub project changes:
- - Changed tag to vX.Y.Z from libphonenumber-X.Y.Z; this affects porters and
+ - Changed tag to vX.Y.Z from libphonenumber-X.Y.Z; this may affect ports and
    derived projects.
 Code changes:
  - Using new possibleLengthInfo to decide whether a short number is the right
