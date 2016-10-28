@@ -93,6 +93,8 @@ message NumberFormat {
   optional string domestic_carrier_code_formatting_rule = 5;
 }
 
+// If you add, remove, or rename fields, or change their semantics, check if you
+// should change the excludable field sets or the behavior in MetadataFilter.
 message PhoneNumberDesc {
   // The national_number_pattern is the pattern that a valid national
   // significant number would match. This specifies information such as its
@@ -136,6 +138,8 @@ message PhoneNumberDesc {
   optional string example_number = 6;
 }
 
+// If you add, remove, or rename fields, or change their semantics, check if you
+// should change the excludable field sets or the behavior in MetadataFilter.
 message PhoneMetadata {
   // The general_desc contains information which is a superset of descriptions
   // for all types of phone numbers. If any element is missing in the

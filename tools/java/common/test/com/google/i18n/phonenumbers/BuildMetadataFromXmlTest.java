@@ -18,6 +18,7 @@ package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import java.io.IOException;
 import java.io.StringReader;
@@ -27,6 +28,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import junit.framework.TestCase;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -446,7 +448,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "invalidType", false);
+        generalDesc, territoryElement, "invalidType");
     assertEquals("NA", phoneNumberDesc.getPossibleNumberPattern());
     assertEquals("NA", phoneNumberDesc.getNationalNumberPattern());
   }
@@ -459,7 +461,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine", false);
+        generalDesc, territoryElement, "fixedLine");
     assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
   }
 
@@ -474,22 +476,150 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine", false);
+        generalDesc, territoryElement, "fixedLine");
     assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
   }
 
-  public void testProcessPhoneNumberDescElementHandlesLiteBuild()
-      throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
-    String xmlInput = "<territory><fixedLine>"
-        + "  <exampleNumber>01 01 01 01</exampleNumber>"
-        + "</fixedLine></territory>";
-    Element territoryElement = parseXmlString(xmlInput);
-    PhoneNumberDesc.Builder phoneNumberDesc;
+  public void testFilterMetadata_liteBuild() throws Exception {
+    String xmlInput =
+        "<phoneNumberMetadata>"
+        + "  <territories>"
+        + "    <territory id=\"AM\" countryCode=\"374\" internationalPrefix=\"00\">"
+        + "      <generalDesc>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </generalDesc>"
+        + "      <fixedLine>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </fixedLine>"
+        + "      <mobile>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </mobile>"
+        + "    </territory>"
+        + "  </territories>"
+        + "</phoneNumberMetadata>";
+    Document document = parseXmlString(xmlInput).getOwnerDocument();
 
-    phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine", true);
-    assertEquals("", phoneNumberDesc.getExampleNumber());
+    PhoneMetadataCollection metadataCollection = BuildMetadataFromXml.buildPhoneMetadataCollection(
+        document,
+        true,  // liteBuild
+        false,  // specialBuild
+        false,  // isShortNumberMetadata
+        false);  // isAlternateFormatsMetadata
+
+    assertTrue(metadataCollection.getMetadataCount() == 1);
+    PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
+    assertTrue(metadata.hasGeneralDesc());
+    assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    assertEquals("", metadata.getGeneralDesc().getExampleNumber());
+    assertTrue(metadata.hasFixedLine());
+    assertFalse(metadata.getFixedLine().hasExampleNumber());
+    assertEquals("", metadata.getFixedLine().getExampleNumber());
+    assertTrue(metadata.hasMobile());
+    assertFalse(metadata.getMobile().hasExampleNumber());
+    assertEquals("", metadata.getMobile().getExampleNumber());
+  }
+
+  public void testFilterMetadata_specialBuild() throws Exception {
+    String xmlInput =
+        "<phoneNumberMetadata>"
+        + "  <territories>"
+        + "    <territory id=\"AM\" countryCode=\"374\" internationalPrefix=\"00\">"
+        + "      <generalDesc>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </generalDesc>"
+        + "      <fixedLine>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </fixedLine>"
+        + "      <mobile>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </mobile>"
+        + "    </territory>"
+        + "  </territories>"
+        + "</phoneNumberMetadata>";
+    Document document = parseXmlString(xmlInput).getOwnerDocument();
+
+    PhoneMetadataCollection metadataCollection = BuildMetadataFromXml.buildPhoneMetadataCollection(
+        document,
+        false,  // liteBuild
+        true,  // specialBuild
+        false,  // isShortNumberMetadata
+        false);  // isAlternateFormatsMetadata
+
+    assertTrue(metadataCollection.getMetadataCount() == 1);
+    PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
+    assertTrue(metadata.hasGeneralDesc());
+    assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    assertEquals("", metadata.getGeneralDesc().getExampleNumber());
+    // TODO: Consider clearing fixed-line if empty after being filtered.
+    assertTrue(metadata.hasFixedLine());
+    assertFalse(metadata.getFixedLine().hasExampleNumber());
+    assertEquals("", metadata.getFixedLine().getExampleNumber());
+    assertTrue(metadata.hasMobile());
+    assertTrue(metadata.getMobile().hasExampleNumber());
+    assertEquals("10123456", metadata.getMobile().getExampleNumber());
+  }
+
+  public void testFilterMetadata_fullBuild() throws Exception {
+    String xmlInput =
+        "<phoneNumberMetadata>"
+        + "  <territories>"
+        + "    <territory id=\"AM\" countryCode=\"374\" internationalPrefix=\"00\">"
+        + "      <generalDesc>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </generalDesc>"
+        + "      <fixedLine>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </fixedLine>"
+        + "      <mobile>"
+        + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
+        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
+        + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
+        + "        <exampleNumber>10123456</exampleNumber>"
+        + "      </mobile>"
+        + "    </territory>"
+        + "  </territories>"
+        + "</phoneNumberMetadata>";
+    Document document = parseXmlString(xmlInput).getOwnerDocument();
+
+    PhoneMetadataCollection metadataCollection = BuildMetadataFromXml.buildPhoneMetadataCollection(
+        document,
+        false,  // liteBuild
+        false,  // specialBuild
+        false,  // isShortNumberMetadata
+        false);  // isAlternateFormatsMetadata
+
+    assertTrue(metadataCollection.getMetadataCount() == 1);
+    PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
+    assertTrue(metadata.hasGeneralDesc());
+    assertTrue(metadata.getGeneralDesc().hasExampleNumber());
+    assertEquals("10123456", metadata.getGeneralDesc().getExampleNumber());
+    assertTrue(metadata.hasFixedLine());
+    assertTrue(metadata.getFixedLine().hasExampleNumber());
+    assertEquals("10123456", metadata.getFixedLine().getExampleNumber());
+    assertTrue(metadata.hasMobile());
+    assertTrue(metadata.getMobile().hasExampleNumber());
+    assertEquals("10123456", metadata.getMobile().getExampleNumber());
   }
 
   public void testProcessPhoneNumberDescOutputsExampleNumberByDefault()
@@ -502,7 +632,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine", false);
+        generalDesc, territoryElement, "fixedLine");
     assertEquals("01 01 01 01", phoneNumberDesc.getExampleNumber());
   }
 
@@ -516,7 +646,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, countryElement, "fixedLine", false);
+        generalDesc, countryElement, "fixedLine");
     assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
   }
 
@@ -530,7 +660,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     // Should set sameMobileAndFixedPattern to true.
-    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
+    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
         false /* isShortNumberMetadata */);
     assertTrue(metadata.isSameMobileAndFixedLinePattern());
   }
@@ -550,7 +680,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
+    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
         false /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getFixedLine().getNationalNumberPattern());
     assertEquals("\\d{2}", metadata.getMobile().getNationalNumberPattern());
@@ -576,7 +706,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement, false /* liteBuild */,
+    BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
         true /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getTollFree().getNationalNumberPattern());
     assertEquals("\\d{2}", metadata.getStandardRate().getNationalNumberPattern());
@@ -595,7 +725,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     try {
       BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
-          false /* liteBuild */, false /* isShortNumberMetadata */);
+          false /* isShortNumberMetadata */);
       fail("Fixed-line info present twice for France: we should fail.");
     } catch (RuntimeException expected) {
       assertEquals("Multiple elements with type fixedLine found.", expected.getMessage());
@@ -616,8 +746,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
-        false /* liteBuild */, false /* isShortNumberMetadata */,
-        true /* isAlternateFormatsMetadata */);
+        false /* isShortNumberMetadata */, true /* isAlternateFormatsMetadata */).build();
     assertEquals("(1)(\\d{3})", metadata.getNumberFormat(0).getPattern());
     assertEquals("1", metadata.getNumberFormat(0).getLeadingDigitsPattern(0));
     assertEquals("$1", metadata.getNumberFormat(0).getFormat());
@@ -645,8 +774,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
-        false /* liteBuild */, false /* isShortNumberMetadata */,
-        true /* isAlternateFormatsMetadata */);
+        false /* isShortNumberMetadata */, true /* isAlternateFormatsMetadata */).build();
     assertTrue(metadata.getNumberFormat(0).isNationalPrefixOptionalWhenFormatting());
     // This is inherited from the territory, with $NP replaced by the actual national prefix, and
     // $FG replaced with $1.
@@ -672,8 +800,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine",
-        false /* not light build */);
+        generalDesc, territoryElement, "fixedLine");
     assertEquals(2, phoneNumberDesc.getPossibleLengthCount());
     assertEquals(4, phoneNumberDesc.getPossibleLength(0));
     assertEquals(13, phoneNumberDesc.getPossibleLength(1));
@@ -779,8 +906,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
 
     try {
-      BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "mobile", false /* not light build */);
+      BuildMetadataFromXml.processPhoneNumberDescElement(generalDesc, territoryElement, "mobile");
       fail("Invalid data seen: expected failure.");
     } catch (RuntimeException expected) {
       // This should be an error, 6 is seen twice.
@@ -800,8 +926,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
 
     try {
-      BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "mobile", false /* not light build */);
+      BuildMetadataFromXml.processPhoneNumberDescElement(generalDesc, territoryElement, "mobile");
       fail("Invalid data seen: expected failure.");
     } catch (RuntimeException expected) {
       // This should be an error, 6 is seen twice.
@@ -821,7 +946,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "noInternationalDialling", false /* not light build */);
+          generalDesc, territoryElement, "noInternationalDialling");
       fail("Lengths present not covered by the general desc: should fail.");
     } catch (RuntimeException expected) {
       // Lengths were present that the general description didn't know about.
@@ -845,7 +970,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
 
     PhoneNumberDesc.Builder phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine", false /* not light build */);
+        generalDesc, territoryElement, "fixedLine");
     // No possible lengths should be present, because they match the general description.
     assertEquals(0, phoneNumberDesc.getPossibleLengthCount());
     // No local-only lengths should be present for child elements such as fixed-line.
@@ -863,7 +988,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "fixedLine", false /* not light build */);
+          generalDesc, territoryElement, "fixedLine");
       fail("4d is not a number.");
     } catch (NumberFormatException expected) {
       assertEquals("For input string: \"4d\"", expected.getMessage());
@@ -882,7 +1007,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
 
     try {
-      BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement, false /* liteBuild */,
+      BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
           false /* isShortNumberMetadata */, false /* isAlternateFormatsMetadata */);
       fail("Possible lengths explicitly set for generalDesc and should not be: we should fail.");
     } catch (RuntimeException expected) {
@@ -902,7 +1027,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "fixedLine", false /* not light build */);
+          generalDesc, territoryElement, "fixedLine");
       fail("Empty possible length string.");
     } catch (RuntimeException expected) {
       assertEquals("Empty possibleLength string found.", expected.getMessage());
@@ -920,7 +1045,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "</territory>");
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "fixedLine", false /* not light build */);
+          generalDesc, territoryElement, "fixedLine");
       fail("Ranges shouldn't use a comma.");
     } catch (RuntimeException expected) {
       assertEquals("Missing end of range character in possible length string [4,7].",
@@ -939,7 +1064,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "fixedLine", false /* not light build */);
+          generalDesc, territoryElement, "fixedLine");
       fail("Should fail: range incomplete.");
     } catch (RuntimeException expected) {
       assertEquals("Missing end of range character in possible length string [4-.",
@@ -958,7 +1083,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "fixedLine", false /* not light build */);
+          generalDesc, territoryElement, "fixedLine");
       fail("Should fail: range incomplete.");
     } catch (RuntimeException expected) {
       assertEquals("Ranges must have exactly one - character: missing for [4:10].",
@@ -977,11 +1102,26 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     try {
       BuildMetadataFromXml.processPhoneNumberDescElement(
-          generalDesc, territoryElement, "fixedLine", false /* not light build */);
+          generalDesc, territoryElement, "fixedLine");
       fail("Should fail: range even.");
     } catch (RuntimeException expected) {
       assertEquals("The first number in a range should be two or more digits lower than the second."
           + " Culprit possibleLength string: [10-10]", expected.getMessage());
+    }
+  }
+
+  public void testGetMetadataFilter() {
+    assertEquals(BuildMetadataFromXml.getMetadataFilter(false, false),
+        MetadataFilter.emptyFilter());
+    assertEquals(BuildMetadataFromXml.getMetadataFilter(true, false),
+        MetadataFilter.forLiteBuild());
+    assertEquals(BuildMetadataFromXml.getMetadataFilter(false, true),
+        MetadataFilter.forSpecialBuild());
+    try {
+      BuildMetadataFromXml.getMetadataFilter(true, true);
+      fail("getMetadataFilter should fail when liteBuild and specialBuild are both set");
+    } catch (RuntimeException e) {
+      // Test passed.
     }
   }
 }

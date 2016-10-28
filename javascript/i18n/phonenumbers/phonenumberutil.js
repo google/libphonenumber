@@ -42,7 +42,6 @@ goog.require('goog.string');
 goog.require('goog.string.StringBuffer');
 goog.require('i18n.phonenumbers.NumberFormat');
 goog.require('i18n.phonenumbers.PhoneMetadata');
-goog.require('i18n.phonenumbers.PhoneMetadataCollection');
 goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumber.CountryCodeSource');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
@@ -1682,7 +1681,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
         number, fallbackCarrierCode) {
   return this.formatNationalNumberWithCarrierCode(
       number,
-      number.hasPreferredDomesticCarrierCode() ?
+      // Historically, we set this to an empty string when parsing with raw
+      // input if none was found in the input string. However, this doesn't
+      // result in a number we can dial. For this reason, we treat the empty
+      // string the same as if it isn't set at all.
+      number.getPreferredDomesticCarrierCodeOrDefault().length > 0 ?
           number.getPreferredDomesticCarrierCodeOrDefault() :
           fallbackCarrierCode);
 };
@@ -1737,7 +1740,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           i18n.phonenumbers.PhoneNumberUtil
               .COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_);
     } else if (regionCode == 'BR' && isFixedLineOrMobile) {
-      formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode() ?
+      formattedNumber =
+          // Historically, we set this to an empty string when parsing with raw
+          // input if none was found in the input string. However, this doesn't
+          // result in a number we can dial. For this reason, we treat the empty
+          // string the same as if it isn't set at all.
+          numberNoExt.getPreferredDomesticCarrierCodeOrDefault().length > 0 ?
           this.formatNationalNumberWithPreferredCarrierCode(numberNoExt, '') :
           // Brazilian fixed line and mobile numbers need to be dialed with a
           // carrier code when called within Brazil. Without that, most of the
@@ -2777,7 +2785,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
   // already checked before a specific number type.
   var actualLength = nationalNumber.length;
   if (numberDesc.possibleLengthCount() > 0 &&
-      numberDesc.possibleLengthArray().indexOf(actualLength) == -1) {
+      goog.array.indexOf(numberDesc.possibleLengthArray(),
+          actualLength) == -1) {
     return false;
   }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
@@ -3130,7 +3139,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
   var possibleLengths = phoneNumberDesc.possibleLengthArray();
   var localLengths = phoneNumberDesc.possibleLengthLocalOnlyArray();
   var actualLength = number.length;
-  if (localLengths.indexOf(actualLength) > -1) {
+  if (goog.array.indexOf(localLengths, actualLength) > -1) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
   }
   // There should always be "possibleLengths" set for every element. This will
@@ -3149,9 +3158,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
   // length, and higher than the lowest possible number length. However, we
   // don't currently have an enum to express this, so we return TOO_LONG in the
   // short-term.
-  // We could skip the first element; we've already checked it; but we prefer to
-  // check one value rather than create an extra object in this case.
-  return (possibleLengths.indexOf(actualLength) > -1) ?
+  // We skip the first element since we've already checked it.
+  return (goog.array.indexOf(possibleLengths, actualLength, 1) > -1) ?
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
 };
@@ -3905,7 +3913,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
             regionMetadata.getGeneralDesc()) !=
         i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
       normalizedNationalNumber = potentialNationalNumber;
-      if (keepRawInput) {
+      if (keepRawInput && carrierCode.toString().length > 0) {
         phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
       }
     }

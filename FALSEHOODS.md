@@ -182,8 +182,8 @@ surprising how many false assumptions programmers continue to make about them.
     These include, but are not limited to:
     *   *Moving within a country*: In countries with phone number portability,
         you may retain your number when moving, even in some cases if it is a
-        fixed-line number and even if it has an area code. (See
-        [xkcd](https://xkcd.com/1129/) for a US example.)
+        fixed-line number and even if it has an area code (see
+        *[xkcd](https://xkcd.com/1129/)* for a US example.)
     *   *Moving to another country*: Some people keep their mobile phones when
         they move to another country.
     *   *Geopolitical turmoil*: Sometimes countries change their borders, cease
@@ -225,6 +225,20 @@ surprising how many false assumptions programmers continue to make about them.
     Some users use their contact lists to store things like birthdays or other
     information. Unless a piece of user-supplied data has actually been verified
     to be a phone number, it should be stored as-is as entered by the user.
+
+1.  **Phone numbers are numbers**
+
+    Never try to store phone numbers as an int or any other kind of numeric
+    data type. You can't do arithmetic on them, and while 007, 07 and 7 are the
+    same number they are not necessarily the same phone number - in some
+    countries a leading 0 is significant and forms part of the number itself
+    (see *A leading zero in numbers formatted for domestic usage can always be
+    discarded when dialing from abroad*). Moreover, a phone number may contain
+    other diallable characters (see *Phone numbers contain only digits*) or an
+    extension portion, dialled after waiting for a tone.
+
+    **Tip:** Use the library to parse and format numbers to handle this
+    correctly for every country.
 
 1.  **Phone numbering plans published by governments or telecoms represent
     reality**

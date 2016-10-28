@@ -387,6 +387,7 @@
 9173919|Vodafone
 9173959|Airtel
 917396|Telewings
+9173970|Airtel
 917398|Telewings
 917399|Dishnet
 917401|Aircel
@@ -399,6 +400,9 @@
 917408|Vodafone
 917409|Vodafone
 917411|Tata Docomo
+9174120|Vodafone
+9174128|Vodafone
+9174129|Vodafone
 9174140|Vodafone
 9174148|Vodafone
 917415|Tata Docomo

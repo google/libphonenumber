@@ -16,6 +16,7 @@
 # and Information Technology of the Republic of Moldolva:
 # http://en.anrceti.md/resurse_numerotare_tel_mobila
 # http://anrceti.md/fileupload/58
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008C0003PDFE.pdf
 
 373562|IDC
 37360|Orange
@@ -29,16 +30,23 @@
 373674|Moldtelecom
 373675|Moldtelecom
 373676|Moldtelecom
-3736770|Moldtelecom
-3736771|Moldtelecom
-3736772|Moldtelecom
-3736773|Moldtelecom
-3736774|Moldtelecom
+373677|Moldtelecom
 37368|Orange
 37369|Orange
 373760|Moldcell
+373767|Moldcell
 373774|IDC
 373775|IDC
 373777|IDC
 373778|IDC
 373779|IDC
+373780|Moldcell
+373781|Moldcell
+373782|Moldcell
+373783|Moldcell
+373784|Moldcell
+373785|Moldcell
+373786|Moldcell
+373787|Moldcell
+373788|Moldcell
+37379|Moldcell
