@@ -1,3 +1,6 @@
+GitHub project changes:
+ - Changed tag to vX.Y.Z from libphonenumber-X.Y.Z; this affects porters and
+   derived projects.
 Code changes:
  - Using new possibleLengthInfo to decide whether a short number is the right
    length or not. This could result in more specific results; whereas before, a
