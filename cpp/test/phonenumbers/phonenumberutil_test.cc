@@ -1005,7 +1005,7 @@ TEST_F(PhoneNumberUtilTest, FormatWithPreferredCarrierCode) {
   phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "15",
                                                            &formatted_number);
   EXPECT_EQ("01234   12-5678", formatted_number);
-  // When the preferred_domestic_carrier_code is present but empty, treat is as
+  // When the preferred_domestic_carrier_code is present but empty, treat it as
   // unset and use instead the default carrier code passed in.
   ar_number.set_preferred_domestic_carrier_code("");
   phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "15",
