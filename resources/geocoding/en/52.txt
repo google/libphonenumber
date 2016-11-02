@@ -1,0 +1,420 @@
+# Copyright (C) 2011 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# http://www.itu.int/oth/T020200008A/en
+# http://numeracion.ift.org.mx/numeracion.exe/w_edoymun
+#
+# For determine the city's geocoding:
+#    http://numeracion.ift.org.mx/numeracion.exe/info_asl?cld=<lada>
+#   This page shows "Ciudad con mayor cantidad de numeración asignada"
+
+
+52222|Heroica Puebla De Zaragoza
+52223|Tepeaca
+52224|Tecali De Herrera
+52225|Tlapacoyan
+52226|Altotonga
+52227|Huejotzingo
+52228|Xalapa-enriquez
+52229|Veracruz
+52231|Teziutlan
+52232|Martinez De La Torre
+52233|Zacapoaxtla
+52235|Misantla
+52236|Ajalpan
+52237|San Gabriel Chilac
+52238|Tehuacan
+52241|Apizaco
+52243|Izucar De Matamoros
+52244|Atlixco
+52245|Ciudad Serdan
+52246|Tlaxcala De Xicohtencatl
+52247|Huamantla
+52248|San Martin Texmelucan De Labastida
+52249|Tecamachalco
+52271|Cordoba
+52272|Orizaba
+52273|Huatusco De Chicuellar
+52274|Tierra Blanca
+52275|Chiautla De Tapia
+52276|Ciudad De Libres
+52278|Tezonapa
+52279|Naolinco De Victoria
+52281|Loma Bonita
+52282|Perote
+52283|Isla
+52284|Lerdo De Tejada
+52285|Soledad De Doblado
+52287|San Juan Bautista Tuxtepec
+52288|Cosamaloapan
+52294|San Andres Tuxtla
+52296|Jose Cardel
+52297|Alvarado
+52311|Tepic
+52312|Colima
+52313|Tecoman
+52314|Manzanillo
+52315|Cihuatlan
+52316|Ayutla
+52317|Autlan De Navarro
+52319|Tuxpan
+52321|Grullo, El
+52322|Puerto Vallarta
+52323|Santiago Ixcuintla
+52324|Ixtlan Del Rio
+52325|Acaponeta
+52326|Atemajac De Brizuela
+52327|Compostela
+52328|Vista Hermosa De Negrete
+52329|Valle De Banderas
+5233|Guadalajara
+52341|Ciudad Guzman
+52342|Sayula
+52343|Juanacatlan
+52344|Yahualica De Gonzalez Gallo
+52345|Ayotlan
+52346|Teocaltiche
+52347|San Miguel El Alto
+52348|Arandas
+52349|Juchitlan
+52351|Zamora De Hidalgo
+52352|Piedad De Cabadas, La
+52353|Sahuayo De Morelos
+52354|Reyes De Salgado, Los
+52355|Tangancicuaro De Arista
+52356|Yurecuaro
+52357|Casimiro Castillo
+52358|Tamazula De Gordiano
+52359|Numaran
+52371|Tecalitlan
+52372|Teocuitatlan De Corona
+52373|Zapotlanejo
+52374|Tequila
+52375|Ameca
+52376|Chapala
+52377|Cocula
+52378|Tepatitlan De Morelos
+52381|San Jose De Gracia
+52382|Mazamitla
+52383|Santiago Tangamandapio
+52384|Tala
+52385|San Martin De Hidalgo
+52386|Magdalena
+52387|Acatlan De Juarez
+52388|Mascota
+52389|Tecuala
+52391|Atotonilco El Alto
+52392|Ocotlan
+52393|Barca, La
+52394|Cotija De La Paz
+52395|San Juan De Los Lagos
+52411|Cortazar
+52412|Comonfort
+52413|Apaseo El Alto
+52414|Tequisquiapan
+52415|San Miguel De Allende
+52417|Acambaro
+52418|Dolores Hidalgo Cuna De La Indep. Nal.
+52419|San Jose Iturbide
+52421|Jerecuaro
+52422|Ario De Rosales
+52423|Paracho De Verduzco
+52424|Coalcoman De Vazquez Pallares
+52425|Nueva Italia De Ruiz
+52426|Aguililla
+52427|San Juan Del Rio
+52428|San Felipe
+52429|Abasolo
+52431|Jalostotitlan
+52432|Ciudad Manuel Doblado
+52433|Sombrerete
+52434|Patzcuaro
+52435|Huetamo De Nuñez
+52436|Zacapu
+52437|Tlaltenango De Sanchez Roman
+52438|Puruandiro
+52441|Ezequiel Montes
+52442|Santiago De Queretaro
+52443|Morelia
+52444|San Luis Potosi
+52445|Moroleon
+52447|Maravatio De Ocampo
+52448|Pedro Escobedo
+52449|Aguascalientes
+52451|Zinapecuaro De Figueroa
+52452|Uruapan
+52453|Apatzingan De La Constitucion
+52454|Quiroga
+52455|Cuitzeo Del Porvenir
+52456|Valle De Santiago
+52457|Valparaiso
+52458|Ojocaliente
+52459|Tacambaro De Codallos
+52461|Celaya
+52462|Irapuato
+52463|Jalpa
+52464|Salamanca
+52465|Rincon De Romos
+52466|Salvatierra
+52467|Juchipila
+52468|San Luis De La Paz
+52469|Penjamo
+52471|Purepero De Echaiz
+52472|Silao
+52473|Guanajuato
+52474|Lagos De Moreno
+52475|Encarnacion De Diaz
+52476|San Francisco Del Rincon
+52477|Leon De Los Aldama
+52478|Victor Rosales
+52481|Ciudad Valles
+52482|Ciudad Del Maiz
+52483|Tamazunchale
+52485|Santa Maria Del Rio
+52486|Cerritos
+52487|Rioverde
+52488|Matehuala
+52489|Xilitla
+52492|Zacatecas
+52493|Fresnillo
+52494|Jerez De Garcia Salinas
+52495|Calvillo
+52496|Loreto
+52498|Rio Grande
+52499|Villanueva
+5255|Cuauhtemoc
+52588|Villa Del Carbon
+52591|Zumpango De Ocampo
+52592|Otumba De Gomez Farias
+52593|Huehuetoca
+52594|Acolman De Nezahualcoyotl
+52595|Texcoco De Mora
+52596|Reyes Acozac, Los
+52597|Amecameca De Juarez
+52599|Apaxco De Ocampo
+52612|Paz, La
+52613|Ciudad Constitucion
+52614|Chihuahua
+52615|Santa Rosalia
+52616|San Quintin
+52618|Victoria De Durango (durango)
+52621|Saucillo
+52622|Heroica Guaymas
+52623|Heroica Ciudad De Ures
+52624|Cabo San Lucas
+52625|Cuauhtemoc
+52626|Manuel Ojinaga
+52627|Hidalgo Del Parral
+52628|Valle De Ignacio Allende
+52629|Jose Mariano Jimenez
+52631|Heroica Nogales
+52632|Magdalena De Kino
+52633|Agua Prieta
+52634|Nacozari De Garcia
+52635|Vicente Guerrero
+52636|Nuevo Casas Grandes
+52637|Heroica Caborca
+52638|Puerto Peñasco
+52639|Delicias
+52641|Santa Ana
+52642|Navojoa
+52643|Villa Juarez
+52644|Ciudad Obregon
+52645|Cananea
+52646|Ensenada
+52647|Huatabampo
+52648|Santa Rosalia De Camargo
+52649|Guachochi
+52651|Sonoita
+52652|Madera
+52653|San Luis Rio Colorado
+52656|Juarez
+52658|Vicente Guerrero (algodones)
+52659|Namiquipa
+52661|Playas De Rosarito
+52662|Hermosillo
+52664|Tijuana
+52665|Tecate
+52667|Culiacan Rosales
+52668|Mochis, Los
+52669|Mazatlan
+52671|Cuencame De Ceniceros (cuencame)
+52672|Navolato
+52673|Guamuchil
+52674|Santiago Papasquiaro
+52675|Salto, El
+52676|Ciudad Guadalupe Victoria
+52677|Nuevo Ideal (patos)
+52686|Mexicali
+52687|Guasave
+52694|Rosario, El
+52695|Escuinapa
+52696|Cruz, La
+52697|Angostura
+52698|Fuerte, El
+52711|Tlalpujahua De Rayon
+52712|Atlacomulco De Fabela
+52713|Santiago Tianguistenco De Galeana
+52714|Tenancingo De Degollado
+52715|Heroica Zitacuaro
+52716|Almoloya De Alquisiras
+52717|Tenango De Arista
+52718|San Francisco Tepeolulco
+52719|Xonacatlan (xonacatlan De Vicencio)
+52721|Ixtapan De La Sal
+52722|Toluca De Lerdo
+52723|Coatepec Harinas
+52724|Tejupilco De Hidalgo
+52725|Villa De Almoloya De Juarez
+52726|Valle De Bravo
+52727|Ciudad De Huitzuco
+52728|Lerma De Villada
+52731|Tetela Del Volcan
+52732|Arcelia
+52733|Iguala De La Independencia
+52734|Jojutla
+52735|Cuautla
+52736|Teloloapan
+52737|Miacatlan
+52738|Mixquiahuala
+52739|Tepoztlan
+52741|Ometepec
+52742|Atoyac De Alvarez
+52743|Tezontepec
+52744|Acapulco De Juarez
+52745|Tierra Colorada
+52746|Tihuatlan
+52747|Chilpancingo De Los Bravo
+52748|Apan
+52749|Calpulalpan
+52751|Puente De Ixtla
+52753|Ciudad Lazaro Cardenas
+52754|Tixtla De Guerrero
+52755|Zihuatanejo
+52756|Chilapa De Alvarez
+52757|Tlapa De Comonfort
+52758|Petatlan
+52759|Ixmiquilpan
+52761|Huichapan
+52762|Taxco De Alarcon
+52763|Chapantongo
+52764|Xicotepec De Juarez
+52765|Temapache
+52766|Gutierrez Zamora
+52767|Ciudad Altamirano
+52768|Naranjos
+52769|Axochiapan
+52771|Pachuca De Soto
+52772|Actopan
+52773|Tula De Allende
+52774|San Cristobal
+52775|Tulancingo
+52776|Huauchinango
+52777|Cuernavaca
+52778|Atotonilco De Tula
+52779|Tizayuca
+52781|Coyuca De Benitez
+52782|Poza Rica De Hidalgo
+52783|Tuxpam De Rodriguez Cano
+52784|Papantla De Olarte
+52785|Cerro Azul
+52786|Ciudad Hidalgo
+52789|Tantoyuca
+52791|Fray Bernardino De Sahagun (ciudad Sahagun)
+52797|Zacatlan
+5281|Ciudad Monterrey
+52821|Linares
+52823|General Bravo
+52824|Ciudad Sabinas Hidalgo
+52825|Cienega De Flores
+52826|Montemorelos
+52828|Cadereyta Jimenez
+52829|Hidalgo
+52831|Ciudad Mante
+52832|Xicotencatl
+52833|Tampico
+52834|Ciudad Victoria
+52835|Soto La Marina
+52836|Ursulo Galvan (estacion Manuel)
+52841|San Fernando
+52842|Parras De La Fuente
+52844|Saltillo
+52845|Ebano
+52846|Panuco
+52861|Sabinas
+52862|Allende
+52864|Ciudad Melchor Muzquiz
+52866|Monclova
+52867|Nuevo Laredo
+52868|Heroica Matamoros
+52869|San Buenaventura
+52871|Torreon
+52872|San Pedro
+52873|Anahuac
+52877|Ciudad Acuña
+52878|Piedras Negras
+52891|Ciudad Camargo
+52892|Ciudad Cerralvo
+52894|Valle Hermoso
+52897|Ciudad Miguel Aleman
+52899|Reynosa
+52913|Frontera
+52914|Jalpa De Mendez
+52916|Palenque
+52917|Huimanguillo
+52918|Mapastepec
+52919|Ocosingo
+52921|Coatzacoalcos
+52922|Minatitlan
+52923|Choapas, Las
+52924|Acayucan
+52932|Teapa
+52933|Comalcalco
+52934|Emiliano Zapata
+52936|Macuspana
+52937|Cardenas
+52938|Ciudad Del Carmen
+52951|Oaxaca De Juarez
+52953|Heroica Ciudad De Huajuapan De Leon
+52954|Santiago Pinotepa Nacional
+52958|Santa Maria Huatulco
+52961|Tuxtla Gutierrez
+52962|Tapachula De Cordova Y Ordoñez
+52963|Comitan De Dominguez
+52964|Huixtla
+52965|Villaflores
+52966|Tonala
+52967|San Cristobal De Las Casas
+52968|Cintalapa De Figueroa
+52969|Progreso
+52971|Juchitan De Zaragoza
+52972|Matias Romero
+52981|Campeche
+52982|Escarcega
+52983|Chetumal
+52984|Playa Del Carmen
+52985|Valladolid
+52986|Tizimin
+52987|Cozumel
+52988|Izamal
+52991|Motul De Carrillo Puerto
+52992|Teopisca
+52993|Villahermosa
+52994|Chahuites
+52995|Santa Maria Jalapa Del Marques
+52996|Calkini
+52997|Ticul
+52998|Cancun
+52999|Merida
