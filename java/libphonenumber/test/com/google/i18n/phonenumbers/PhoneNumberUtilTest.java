@@ -426,8 +426,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testNormaliseStripNonDiallableCharacters() {
-    String inputNumber = "03*4-56&+a#234";
-    String expectedOutput = "03*456+#234";
+    String inputNumber = "03*4-56&+1a#234";
+    String expectedOutput = "03*456+1#234";
     assertEquals("Conversion did not correctly remove non-diallable characters",
                  expectedOutput,
                  PhoneNumberUtil.normalizeDiallableCharsOnly(inputNumber));
