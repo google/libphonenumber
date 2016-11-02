@@ -2504,9 +2504,9 @@ TEST_F(PhoneNumberUtilTest, NormaliseStripAlphaCharacters) {
 }
 
 TEST_F(PhoneNumberUtilTest, NormaliseStripNonDiallableCharacters) {
-  string input_number("03*4-56&+a#234");
+  string input_number("03*4-56&+1a#234");
   NormalizeDiallableCharsOnly(&input_number);
-  static const string kExpectedOutput("03*456+234");
+  static const string kExpectedOutput("03*456+1#234");
   EXPECT_EQ(kExpectedOutput, input_number)
       << "Conversion did not correctly remove non-diallable characters";
 }

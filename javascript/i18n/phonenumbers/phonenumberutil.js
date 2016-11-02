@@ -314,7 +314,8 @@ i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_ = {
   '8': '8',
   '9': '9',
   '+': i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN,
-  '*': '*'
+  '*': '*',
+  '#': '#'
 };
 
 

@@ -197,6 +197,7 @@ public class PhoneNumberUtil {
     diallableCharMap.putAll(asciiDigitMappings);
     diallableCharMap.put(PLUS_SIGN, PLUS_SIGN);
     diallableCharMap.put('*', '*');
+    diallableCharMap.put('#', '#');
     DIALLABLE_CHAR_MAPPINGS = Collections.unmodifiableMap(diallableCharMap);
 
     HashMap<Character, Character> allPlusNumberGroupings = new HashMap<Character, Character>();

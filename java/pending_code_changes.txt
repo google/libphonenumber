@@ -6,3 +6,6 @@ Code changes:
    length or not. This could result in more specific results; whereas before, a
    number from length 3 to length 6 may have been deemed possible, now we may
    exclude a number of length 5.
+ - Add hash (#) as a diallable character. Numbers with # in them will no longer
+   have formatting applied in formatInOriginalFormat, and
+   normalizeDiallableCharsOnly now retains the # symbol.
