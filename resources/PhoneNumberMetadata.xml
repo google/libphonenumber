@@ -12068,7 +12068,7 @@
       </generalDesc>
       <fixedLine>
         <!-- In Summer 2014 Iran unified all fixed phone numbers in the following way:
-             Each province is assigned a two digit prefix (except for North Khorasan which has 3).
+             Each province is assigned a two digit prefix.
              Within each province, all numbers are exactly eight digits.  The expression below is
              organized by province.  For each province we accept all eight-digit combinations.
 
@@ -12091,10 +12091,8 @@
              51 Razavi Khorasan
              54 Sistan and Baluchestan
              56 South Khorasan
-             57 North Khorasan (Extras)
              58 North Khorasan
              61 Khuzestan
-             64 North Khorasan (Extras)
              66 Lorestan
              71 Fars
              74 Kohgiluyeh and Boyer-Ahmad
