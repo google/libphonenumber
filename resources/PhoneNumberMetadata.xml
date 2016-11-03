@@ -12065,8 +12065,7 @@
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
-      </generalDesc>
-      <fixedLine>
+      </generalDesc>      <fixedLine>
         <!-- In Summer 2014 Iran unified all fixed phone numbers in the following way:
              Each province is assigned a two digit prefix.
              Within each province, all numbers are exactly eight digits.  The expression below is
@@ -12110,8 +12109,8 @@
             2[13-68]|
             3[1458]|
             4[145]|
-            5[146-8]|
-            6[146]|
+            5[1468]|
+            6[16]|
             7[1467]|
             8[13467]
           )\d{8}
