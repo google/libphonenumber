@@ -12065,7 +12065,7 @@
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
-      </generalDesc>      
+      </generalDesc>
       <fixedLine>
         <!-- In Summer 2014 Iran unified all fixed phone numbers in the following way:
              Each province is assigned a two digit prefix.
