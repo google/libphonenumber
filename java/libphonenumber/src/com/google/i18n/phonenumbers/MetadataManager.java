@@ -100,7 +100,9 @@ final class MetadataManager {
   /**
    * @param key  the lookup key for the provided map, typically a region code or a country calling
    *     code
-   * @param map  the map to contain the mapping from {@code key} to the corresponding metadata
+   * @param map  the map containing mappings of already loaded metadata from their {@code key}. If
+   *     this {@code key}'s metadata isn't already loaded, it will be added to this map after
+   *     loading
    * @param filePrefix  the prefix of the file to load metadata from
    * @param metadataLoader  the metadata loader used to inject alternative metadata sources
    */
