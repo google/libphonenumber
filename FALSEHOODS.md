@@ -59,7 +59,8 @@ surprising how many false assumptions programmers continue to make about them.
 1.  **A phone number is dialable from anywhere**
 
     Some numbers can only be dialed within the country. Some can only be dialled
-    from within a subset of countries, such as the international 00800 numbers.
+    from within a subset of countries, such as the +800 [Universal
+    International Freephone Numbers](https://en.wikipedia.org/wiki/Toll-free_telephone_number#Universal_International_Freephone_Service).
     Some may be dialable only if the caller is a subscriber to a particular
     telecom company.
 
@@ -133,7 +134,8 @@ surprising how many false assumptions programmers continue to make about them.
 1.  **All valid phone numbers belong to a country**
 
     There are many "country calling codes" issued to non-geographical entities,
-    such as "800" or satellite services.
+    such as satellite services, and the "800" code for [Universal International
+    Freephone Numbers](https://en.wikipedia.org/wiki/Toll-free_telephone_number#Universal_International_Freephone_Service).
 
 1.  **Phone numbers contain only digits**
 
