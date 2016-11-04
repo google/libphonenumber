@@ -56,7 +56,7 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
     // A country calling code is non-geographical if it only maps to the non-geographical region
     // code, i.e. "001". If this is not true of the given country calling code, then we will return
     // null here. If not for the atomic reference, such as if we were loading in multiple stages, we
-    // would check that the passed in country calling code were indeed non-geographical to avoid
+    // would check that the passed in country calling code was indeed non-geographical to avoid
     // loading costs for a null result. Here though we do not check this since the entire data must
     // be loaded anyway if any of it is needed at some point in the life cycle of this class.
     return MetadataManager.getSingleFileMetadataMaps(phoneNumberMetadataRef,
