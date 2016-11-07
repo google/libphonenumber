@@ -434,12 +434,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
                                                                                       "0"));
   }
 
-  // Tests numberTypeShouldAlwaysBeFilledIn().
-  public void testIsValidNumberTypeWithInvalidInput() {
-    assertFalse(BuildMetadataFromXml.numberTypeShouldAlwaysBeFilledIn("invalidType"));
-    assertFalse(BuildMetadataFromXml.numberTypeShouldAlwaysBeFilledIn("tollFree"));
-  }
-
   // Tests processPhoneNumberDescElement().
   public void testProcessPhoneNumberDescElementWithInvalidInputWithRegex()
       throws ParserConfigurationException, SAXException, IOException {
@@ -453,31 +447,19 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("NA", phoneNumberDesc.getNationalNumberPattern());
   }
 
-  public void testProcessPhoneNumberDescElementMergesWithGeneralDesc()
-      throws ParserConfigurationException, SAXException, IOException {
-    PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
-    generalDesc.setPossibleNumberPattern("\\d{6}");
-    Element territoryElement = parseXmlString("<territory><fixedLine/></territory>");
-    PhoneNumberDesc.Builder phoneNumberDesc;
-
-    phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
-        generalDesc, territoryElement, "fixedLine");
-    assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
-  }
-
   public void testProcessPhoneNumberDescElementOverridesGeneralDesc()
       throws ParserConfigurationException, SAXException, IOException {
     PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
-    generalDesc.setPossibleNumberPattern("\\d{8}");
+    generalDesc.setNationalNumberPattern("\\d{8}");
     String xmlInput = "<territory><fixedLine>"
-        + "  <possibleNumberPattern>\\d{6}</possibleNumberPattern>"
+        + "  <nationalNumberPattern>\\d{6}</nationalNumberPattern>"
         + "</fixedLine></territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "fixedLine");
-    assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
+    assertEquals("\\d{6}", phoneNumberDesc.getNationalNumberPattern());
   }
 
   public void testFilterMetadata_liteBuild() throws Exception {
@@ -488,7 +470,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "      <generalDesc>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
         + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
-        + "        <exampleNumber>10123456</exampleNumber>"
         + "      </generalDesc>"
         + "      <fixedLine>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
@@ -535,7 +516,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "      <generalDesc>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
         + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
-        + "        <exampleNumber>10123456</exampleNumber>"
         + "      </generalDesc>"
         + "      <fixedLine>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
@@ -583,7 +563,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "      <generalDesc>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
         + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
-        + "        <exampleNumber>10123456</exampleNumber>"
         + "      </generalDesc>"
         + "      <fixedLine>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
@@ -612,8 +591,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertTrue(metadataCollection.getMetadataCount() == 1);
     PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
     assertTrue(metadata.hasGeneralDesc());
-    assertTrue(metadata.getGeneralDesc().hasExampleNumber());
-    assertEquals("10123456", metadata.getGeneralDesc().getExampleNumber());
+    assertFalse(metadata.getGeneralDesc().hasExampleNumber());
     assertTrue(metadata.hasFixedLine());
     assertTrue(metadata.getFixedLine().hasExampleNumber());
     assertEquals("10123456", metadata.getFixedLine().getExampleNumber());
