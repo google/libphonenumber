@@ -1804,11 +1804,11 @@ bool PhoneNumberUtil::GetExampleNumberForType(
     int country_calling_code = *it;
     const PhoneMetadata* metadata =
         GetMetadataForNonGeographicalRegion(country_calling_code);
-    const PhoneNumberDesc& desc = metadata->general_desc();
-    if (desc.has_example_number()) {
+    const PhoneNumberDesc* desc = GetNumberDescByType(*metadata, type);
+    if (desc->has_example_number()) {
       ErrorType success = Parse(StrCat(kPlusSign,
                                        country_calling_code,
-                                       desc.example_number()),
+                                       desc->example_number()),
                                 RegionCode::GetUnknown(), number);
       if (success == NO_PARSING_ERROR) {
         return true;
@@ -1828,17 +1828,28 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
   const PhoneMetadata* metadata =
       GetMetadataForNonGeographicalRegion(country_calling_code);
   if (metadata) {
-    const PhoneNumberDesc& desc = metadata->general_desc();
-    if (desc.has_example_number()) {
-      ErrorType success = Parse(StrCat(kPlusSign,
-                                       SimpleItoa(country_calling_code),
-                                       desc.example_number()),
-                                RegionCode::GetUnknown(), number);
-      if (success == NO_PARSING_ERROR) {
-        return true;
-      } else {
-        LOG(ERROR) << "Error parsing example number ("
-                   << static_cast<int>(success) << ")";
+    // For geographical entities, fixed-line data is always present. However,
+    // for non-geographical entities, this is not the case, so we have to go
+    // through different types to find the example number. We don't check
+    // fixed-line or personal number since they aren't used by non-geographical
+    // entities (if this changes, a unit-test will catch this.)
+    const int kNumberTypes = 7;
+    PhoneNumberDesc types[kNumberTypes] = {
+        metadata->mobile(), metadata->toll_free(), metadata->shared_cost(),
+        metadata->voip(), metadata->voicemail(), metadata->uan(),
+        metadata->premium_rate()};
+    for (int i = 0; i < kNumberTypes; i++) {
+      if (types[i].has_example_number()) {
+        ErrorType success = Parse(StrCat(kPlusSign,
+                                         SimpleItoa(country_calling_code),
+                                         types[i].example_number()),
+                                  RegionCode::GetUnknown(), number);
+        if (success == NO_PARSING_ERROR) {
+          return true;
+        } else {
+          LOG(ERROR) << "Error parsing example number ("
+                     << static_cast<int>(success) << ")";
+        }
       }
     }
   } else {
