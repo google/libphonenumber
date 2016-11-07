@@ -1838,7 +1838,7 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
         metadata->mobile(), metadata->toll_free(), metadata->shared_cost(),
         metadata->voip(), metadata->voicemail(), metadata->uan(),
         metadata->premium_rate()};
-    for (int i = 0; i < kNumberTypes; i++) {
+    for (int i = 0; i < kNumberTypes; ++i) {
       if (types[i].has_example_number()) {
         ErrorType success = Parse(StrCat(kPlusSign,
                                          SimpleItoa(country_calling_code),
