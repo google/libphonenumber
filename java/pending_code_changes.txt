@@ -13,9 +13,6 @@ Metadata structure changes:
    removed.
    There should no longer be an exampleNumber at the generalDesc level, but it
    should be present at every PhoneNumberDesc with data.
-Metadata changes
- - Updated phone metadata for region code(s):
-   IR
 Code changes:
  - Using new possibleLengthInfo to decide whether a short number is the right
    length or not. This could result in more specific results; whereas before, a
