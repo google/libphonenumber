@@ -592,6 +592,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
     assertTrue(metadata.hasGeneralDesc());
     assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    assertEquals("", metadata.getGeneralDesc().getExampleNumber());
     assertTrue(metadata.hasFixedLine());
     assertTrue(metadata.getFixedLine().hasExampleNumber());
     assertEquals("10123456", metadata.getFixedLine().getExampleNumber());
