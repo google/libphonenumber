@@ -2531,7 +2531,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForType =
       this.getMetadataForRegion(regionCode), type);
   try {
     if (desc.hasExampleNumber()) {
-      return this.parse(desc.getExampleNumberOrDefault(), regionCode);
+      return this.parse(desc.getExampleNumber(), regionCode);
     }
   } catch (e) {
   }
@@ -2557,13 +2557,20 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForNonGeoEntity =
       this.getMetadataForNonGeographicalRegion(countryCallingCode);
   if (metadata != null) {
     /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-    var desc = metadata.getGeneralDesc();
-    try {
-      if (desc.hasExampleNumber()) {
-        return this.parse('+' + countryCallingCode + desc.getExampleNumber(),
-                          'ZZ');
+    var numberTypeWithExampleNumber = goog.array.find(
+        [metadata.getMobile(), metadata.getTollFree(),
+         metadata.getSharedCost(), metadata.getVoip(),
+         metadata.getVoicemail(), metadata.getUan(),
+         metadata.getPremiumRate()],
+        function(desc, index) {
+          return (desc.hasExampleNumber());
+        });
+    if (numberTypeWithExampleNumber != null) {
+      try {
+        return this.parse('+' + countryCallingCode +
+            numberTypeWithExampleNumber.getExampleNumber(), 'ZZ');
+      } catch (e) {
       }
-    } catch (e) {
     }
   }
   return null;

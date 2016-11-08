@@ -223,9 +223,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
             metadata->general_desc().national_number_pattern());
   EXPECT_EQ("\\d{7}(?:\\d{3})?",
             metadata->general_desc().possible_number_pattern());
-  // Fixed-line data should be inherited from the general desc for the national
-  // number pattern, since it wasn't overridden.
-  EXPECT_EQ(metadata->general_desc().national_number_pattern(),
+  EXPECT_EQ("[13-689]\\d{9}|2[0-35-9]\\d{8}",
             metadata->fixed_line().national_number_pattern());
   EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
   EXPECT_EQ(1, metadata->general_desc().possible_length_size());
@@ -290,7 +288,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadInternationalTollFreeMetadata) {
   EXPECT_EQ(800, metadata->country_code());
   EXPECT_EQ("$1 $2", metadata->number_format(0).format());
   EXPECT_EQ("(\\d{4})(\\d{4})", metadata->number_format(0).pattern());
-  EXPECT_EQ("12345678", metadata->general_desc().example_number());
+  EXPECT_EQ(0, metadata->general_desc().possible_length_local_only_size());
+  EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ("12345678", metadata->toll_free().example_number());
 }
 
@@ -353,9 +352,6 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
   EXPECT_FALSE(success);
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
-  // For the US, the example number is placed under general description, and
-  // hence should be used for both fixed line and mobile, so neither of these
-  // should return null.
   success = phone_util_.GetExampleNumberForType(RegionCode::US(),
                                                 PhoneNumberUtil::FIXED_LINE,
                                                 &test_number);

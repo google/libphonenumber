@@ -31,7 +31,9 @@ import java.util.logging.Logger;
 
 /**
  * Verifies all of the example numbers in the metadata are valid and of the correct type. If no
- * example number exists for a particular type, the test still passes.
+ * example number exists for a particular type, the test still passes since not all types are
+ * relevant for all regions. Tests that check the XML schema will ensure that an exampleNumber
+ * node is present for every phone number description.
  */
 public class ExampleNumbersTest extends TestCase {
   private static final Logger logger = Logger.getLogger(ExampleNumbersTest.class.getName());
@@ -43,7 +45,7 @@ public class ExampleNumbersTest extends TestCase {
 
   /**
    * @param exampleNumberRequestedType  type we are requesting an example number for
-   * @param possibleExpectedTypes       acceptable types that this number should match, such as
+   * @param possibleExpectedTypes  acceptable types that this number should match, such as
    *     FIXED_LINE and FIXED_LINE_OR_MOBILE for a fixed line example number.
    */
   private void checkNumbersValidAndCorrectType(PhoneNumberType exampleNumberRequestedType,
@@ -188,6 +190,9 @@ public class ExampleNumbersTest extends TestCase {
 
   public void testEveryTypeHasAnExampleNumber() throws Exception {
     for (PhoneNumberUtil.PhoneNumberType type : PhoneNumberUtil.PhoneNumberType.values()) {
+      if (type == PhoneNumberType.UNKNOWN) {
+        continue;
+      }
       PhoneNumber exampleNumber = phoneNumberUtil.getExampleNumberForType(type);
       assertNotNull("No example number found for type " + type, exampleNumber);
     }

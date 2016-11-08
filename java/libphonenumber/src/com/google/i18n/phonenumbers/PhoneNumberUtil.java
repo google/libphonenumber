@@ -1976,13 +1976,20 @@ public class PhoneNumberUtil {
   public PhoneNumber getExampleNumberForNonGeoEntity(int countryCallingCode) {
     PhoneMetadata metadata = getMetadataForNonGeographicalRegion(countryCallingCode);
     if (metadata != null) {
-      PhoneNumberDesc desc = metadata.getGeneralDesc();
-      try {
-        if (desc.hasExampleNumber()) {
-          return parse("+" + countryCallingCode + desc.getExampleNumber(), UNKNOWN_REGION);
+      // For geographical entities, fixed-line data is always present. However, for non-geographical
+      // entities, this is not the case, so we have to go through different types to find the
+      // example number. We don't check fixed-line or personal number since they aren't used by
+      // non-geographical entities (if this changes, a unit-test will catch this.)
+      for (PhoneNumberDesc desc : Arrays.asList(metadata.getMobile(), metadata.getTollFree(),
+               metadata.getSharedCost(), metadata.getVoip(), metadata.getVoicemail(),
+               metadata.getUan(), metadata.getPremiumRate())) {
+        try {
+          if (desc != null && desc.hasExampleNumber()) {
+            return parse("+" + countryCallingCode + desc.getExampleNumber(), UNKNOWN_REGION);
+          }
+        } catch (NumberParseException e) {
+          logger.log(Level.SEVERE, e.toString());
         }
-      } catch (NumberParseException e) {
-        logger.log(Level.SEVERE, e.toString());
       }
     } else {
       logger.log(Level.WARNING,

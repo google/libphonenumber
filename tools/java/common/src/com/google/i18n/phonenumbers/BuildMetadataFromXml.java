@@ -397,12 +397,6 @@ public class BuildMetadataFromXml {
     return carrierCodeFormattingRule;
   }
 
-  // @VisibleForTesting
-  static boolean numberTypeShouldAlwaysBeFilledIn(String numberType) {
-    return numberType.equals(FIXED_LINE) || numberType.equals(MOBILE)
-        || numberType.equals(GENERAL_DESC);
-  }
-
   /**
    * Checks if the possible lengths provided as a sorted set are equal to the possible lengths
    * stored already in the description pattern. Note that possibleLengths may be empty but must not
@@ -448,7 +442,7 @@ public class BuildMetadataFromXml {
                                                                String numberType) {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
     PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
-    if (phoneNumberDescList.getLength() == 0 && !numberTypeShouldAlwaysBeFilledIn(numberType)) {
+    if (phoneNumberDescList.getLength() == 0) {
       numberDesc.setNationalNumberPattern("NA");
       numberDesc.setPossibleNumberPattern("NA");
       // -1 will never match a possible phone number length, so is safe to use to ensure this never
@@ -456,9 +450,6 @@ public class BuildMetadataFromXml {
       // mean that the generalDesc possible lengths apply.
       numberDesc.addPossibleLength(-1);
       return numberDesc;
-    }
-    if (parentDesc != null) {
-      numberDesc.mergeFrom(parentDesc);
     }
     if (phoneNumberDescList.getLength() > 0) {
       if (phoneNumberDescList.getLength() > 1) {
