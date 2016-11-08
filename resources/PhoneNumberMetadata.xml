@@ -43,30 +43,30 @@
         areaCodeOptional?, fixedLine?, mobile?, pager?, tollFree?, premiumRate?,
         sharedCost?, personalNumber?, voip?, uan?, voicemail?)>
     <!ELEMENT references (sourceUrl+)>
-    <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern, exampleNumber?)>
+    <!ELEMENT generalDesc (nationalNumberPattern, possibleNumberPattern)>
     <!ELEMENT noInternationalDialling (nationalNumberPattern, possibleNumberPattern?,
-        possibleLengths, exampleNumber?)>
-    <!ELEMENT areaCodeOptional (nationalNumberPattern, possibleNumberPattern, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT fixedLine (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT mobile (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT pager (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT tollFree (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT premiumRate (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT sharedCost (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT personalNumber (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT voip (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
-    <!ELEMENT uan (nationalNumberPattern?, possibleNumberPattern?, possibleLengths, exampleNumber?)>
-    <!ELEMENT voicemail (nationalNumberPattern?, possibleNumberPattern?, possibleLengths,
-        exampleNumber?)>
+        possibleLengths, exampleNumber)>
+    <!ELEMENT areaCodeOptional (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT fixedLine (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT mobile (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT pager (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT tollFree (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT premiumRate (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT sharedCost (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT personalNumber (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT voip (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
+    <!ELEMENT uan (nationalNumberPattern, possibleNumberPattern?, possibleLengths, exampleNumber)>
+    <!ELEMENT voicemail (nationalNumberPattern, possibleNumberPattern?, possibleLengths,
+        exampleNumber)>
     <!ELEMENT sourceUrl (#PCDATA)>
     <!ELEMENT availableFormats (numberFormat+)>
     <!ELEMENT nationalNumberPattern (#PCDATA)>
@@ -23054,11 +23054,6 @@
         <possibleLengths national="4"/>
         <exampleNumber>8999</exampleNumber>
       </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
     </territory>
 
     <!-- Turks and Caicos Islands -->
@@ -26489,21 +26484,11 @@
       <generalDesc>
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
-        <exampleNumber>12345678</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <tollFree>
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
         <possibleLengths national="8"/>
+        <exampleNumber>12345678</exampleNumber>
       </tollFree>
     </territory>
 
@@ -26520,21 +26505,11 @@
       <generalDesc>
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
-        <exampleNumber>12345678</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <sharedCost>
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
         <possibleLengths national="8"/>
+        <exampleNumber>12345678</exampleNumber>
       </sharedCost>
     </territory>
 
@@ -26552,13 +26527,7 @@
       <generalDesc>
         <nationalNumberPattern>[35-7]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
-        <exampleNumber>301234567</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
       <mobile>
         <!-- Assigning these to mobile since Inmarsat considers them to be mobile numbers. -->
         <nationalNumberPattern>
@@ -26568,6 +26537,7 @@
           )\d{7}
         </nationalNumberPattern>
         <possibleLengths national="9"/>
+        <exampleNumber>301234567</exampleNumber>
       </mobile>
     </territory>
 
@@ -26586,21 +26556,11 @@
       <generalDesc>
         <nationalNumberPattern>1\d{11}</nationalNumberPattern>
         <possibleNumberPattern>\d{12}</possibleNumberPattern>
-        <exampleNumber>101234567890</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <voip>
         <nationalNumberPattern>10\d{10}</nationalNumberPattern>
         <possibleLengths national="12"/>
+        <exampleNumber>101234567890</exampleNumber>
       </voip>
     </territory>
 
@@ -26623,16 +26583,11 @@
       <generalDesc>
         <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
-        <exampleNumber>612345678</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
       <mobile>
         <nationalNumberPattern>[67]\d{8}</nationalNumberPattern>
         <possibleLengths national="9"/>
+        <exampleNumber>612345678</exampleNumber>
       </mobile>
     </territory>
 
@@ -26692,13 +26647,7 @@
       <generalDesc>
         <nationalNumberPattern>[13]\d{6,11}</nationalNumberPattern>
         <possibleNumberPattern>\d{7,12}</possibleNumberPattern>
-        <exampleNumber>3451234567</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
       <mobile>
         <!-- Bebbicell Mobile numbers, MCP & Oration. We are guessing the number length for
              Oration based on numbers found online. -->
@@ -26714,6 +26663,7 @@
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
         <possibleLengths national="7,9,10"/>
+        <exampleNumber>3421234</exampleNumber>
       </mobile>
       <voip>
         <!-- Telespazio S.p.A., Thuraya and Bebbicell VOIP numbers. -->
@@ -26746,6 +26696,7 @@
         <nationalNumberPattern>348[57]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
         <possibleLengths national="11"/>
+        <exampleNumber>34851234567</exampleNumber>
       </voicemail>
     </territory>
 
@@ -26779,18 +26730,7 @@
              costs can be found online, so we don't include them here for now. -->
         <nationalNumberPattern>51\d{7}(?:\d{3})?</nationalNumberPattern>
         <possibleNumberPattern>\d{9}(?:\d{3})?</possibleNumberPattern>
-        <exampleNumber>510012345</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <voip>
         <nationalNumberPattern>
           51(?:
@@ -26799,6 +26739,7 @@
           )
         </nationalNumberPattern>
         <possibleLengths national="9,12"/>
+        <exampleNumber>510012345</exampleNumber>
       </voip>
     </territory>
 
@@ -26818,21 +26759,11 @@
       <generalDesc>
         <nationalNumberPattern>\d{11}</nationalNumberPattern>
         <possibleNumberPattern>\d{11}</possibleNumberPattern>
-        <exampleNumber>12345678901</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <uan>
         <nationalNumberPattern>\d{11}</nationalNumberPattern>
         <possibleLengths national="11"/>
+        <exampleNumber>12345678901</exampleNumber>
       </uan>
     </territory>
 
@@ -26849,21 +26780,11 @@
       <generalDesc>
         <nationalNumberPattern>\d{9}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
-        <exampleNumber>123456789</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <premiumRate>
         <nationalNumberPattern>\d{9}</nationalNumberPattern>
         <possibleLengths national="9"/>
+        <exampleNumber>123456789</exampleNumber>
       </premiumRate>
     </territory>
   </territories>
