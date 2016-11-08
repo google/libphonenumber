@@ -1,7 +1,7 @@
 GitHub project changes:
  - Changed tag to vX.Y.Z from libphonenumber-X.Y.Z; this may affect ports and
    derived projects.
-Metadata structure changes:
+Metadata structure changes in XML file:
  - Mobile and Fixed-Line blocks are no longer assumed to inherit missing data
    from the GeneralDesc, but are treated like every other phone number type.
    This means that for the non-geographical country codes, like +800, the
