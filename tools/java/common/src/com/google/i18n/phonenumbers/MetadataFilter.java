@@ -119,14 +119,6 @@ final class MetadataFilter {
    * @param metadata  The {@code PhoneMetadata} object to be filtered
    */
   void filterMetadata(PhoneMetadata.Builder metadata) {
-    // TODO: Resolve same as other fields in the filter.
-    if (!blacklist.isEmpty() && metadata.hasGeneralDesc()) {
-      PhoneNumberDesc.Builder builder =
-          PhoneNumberDesc.newBuilder().mergeFrom(metadata.getGeneralDesc());
-      builder.clearExampleNumber();
-      metadata.setGeneralDesc(builder);
-    }
-
     // TODO: Consider clearing if the filtered PhoneNumberDesc is empty.
     if (metadata.hasFixedLine()) {
       metadata.setFixedLine(getFiltered("fixedLine", metadata.getFixedLine()));
