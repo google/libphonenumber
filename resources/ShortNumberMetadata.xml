@@ -7940,7 +7940,7 @@
     <!-- http://wetten.overheid.nl/BWBR0010198 -->
     <territory id="NL">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1349]\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -7968,6 +7968,7 @@
               1[0-79]
             )
           )|
+          [34]000|
           911
         </nationalNumberPattern>
         <possibleLengths national="3,4,6"/>
@@ -8016,6 +8017,13 @@
         <possibleLengths national="4"/>
         <exampleNumber>1202</exampleNumber>
       </carrierSpecific>
+      <smsServices>
+        <!-- 3000 and 4000 are SMS only shortcodes as per online evidence. -->
+        <nationalNumberPattern>[34]000</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>4000</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Norway -->
@@ -9329,14 +9337,29 @@
 
     <!-- Senegal -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000B80001PDFE.pdf -->
+    <!-- http://www.artpsenegal.net/images/documents/document_Structure_plan_national_de_numerotation_PNN_2012_231.pdf
+         -->
     <territory id="SN">
       <generalDesc>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
-        <possibleNumberPattern>\d{2}</possibleNumberPattern>
+        <nationalNumberPattern>[12]\d{1,5}</nationalNumberPattern>
+        <possibleNumberPattern>\d{2,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
-        <possibleLengths national="2"/>
+        <nationalNumberPattern>
+          1(?:
+            1[69]|
+            2(?:\d{2})?|
+            [46]\d{2}|
+            51\d|
+            [78]
+          )|
+          2(?:
+            0[0-246]|
+            [12468]
+          )\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{2,6}</possibleNumberPattern>
+        <possibleLengths national="[2-6]"/>
         <exampleNumber>17</exampleNumber>
       </shortCode>
       <emergency>
@@ -9345,6 +9368,75 @@
         <possibleLengths national="2"/>
         <exampleNumber>17</exampleNumber>
       </emergency>
+      <!-- 1515 is added as expanded emergency according to official documentation at
+           www.artpsenegal.net, and www.samu.sn suggesting that it's for disaster management. -->
+      <expandedEmergency>
+        <nationalNumberPattern>
+          1(?:
+            1[69]|
+            221|
+            515
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>1221</exampleNumber>
+      </expandedEmergency>
+      <tollFree>
+        <nationalNumberPattern>
+          1515|
+          2(?:
+            00|
+            1
+          )\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
+        <possibleLengths national="[4-6]"/>
+        <exampleNumber>200133</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <nationalNumberPattern>
+          2(?:
+            01|
+            2
+          )\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <possibleLengths national="5,6"/>
+        <exampleNumber>201202</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <nationalNumberPattern>
+          2(?:
+            0[246]|
+            [468]
+          )\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5,6}</possibleNumberPattern>
+        <possibleLengths national="5,6"/>
+        <exampleNumber>202222</exampleNumber>
+      </premiumRate>
+      <carrierSpecific>
+        <nationalNumberPattern>1[46]\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>1415</exampleNumber>
+      </carrierSpecific>
+      <smsServices>
+        <nationalNumberPattern>2[468]\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>24123</exampleNumber>
+      </smsServices>
+      <carrierSelectionCodes>
+        <!-- Carrier selection codes 19xx are added here just for categorization. As there is no
+             valid evidence for specific carrier selection codes, we do not add this range as a
+             valid short code at this time. -->
+        <nationalNumberPattern>19\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>1900</exampleNumber>
+      </carrierSelectionCodes>
     </territory>
 
     <!-- Somalia -->
