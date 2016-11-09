@@ -2914,6 +2914,7 @@
 1248987|Farmington Hills, MI
 1248994|Farmington Hills, MI
 1248996|Southfield, MI
+1249|Ontario
 1250|British Columbia
 1250212|Kelowna, BC
 1250215|Kelowna, BC
@@ -8022,6 +8023,7 @@
 1337991|Lafayette, LA
 1337993|Lafayette, LA
 1339|Massachusetts
+1343|Ontario
 1345949|George Town
 1346|Texas
 1347|New York
@@ -17401,6 +17403,7 @@
 1575887|Carlsbad, NM
 1575894|Truth Or Cnsqncs, NM
 1575935|Clovis, NM
+1579|Quebec
 1580|Oklahoma
 1580223|Ardmore, OK
 1580224|Ardmore, OK
@@ -17499,6 +17502,7 @@
 1580933|Valliant, OK
 1580938|Shattuck, OK
 1580994|Mooreland, OK
+1581|Quebec
 1585|New York
 1585218|Pittsford, NY
 1585223|Fairport, NY
@@ -26667,7 +26671,7 @@
 1781963|Randolph, MA
 1781979|Melrose, MA
 1781986|Randolph, MA
-1782|Nova Scotia
+1782|Nova Scotia/Prince Edward Island
 1785|Kansas
 1785215|Topeka, KS
 1785222|La Crosse, KS
@@ -31046,6 +31050,7 @@
 1865992|Maynardville, TN
 1865993|Bean Station, TN
 1865995|Friendsville, TN
+1867|Northwest Territories/Nunavut/Yukon
 1867393|Whitehorse, YT
 1867456|Whitehorse, YT
 1867536|Watson Lake Hospital
@@ -31341,7 +31346,7 @@
 1901946|Memphis, TN
 1901947|Memphis, TN
 1901948|Memphis, TN
-1902|Nova Scotia
+1902|Nova Scotia/Prince Edward Island
 1902224|Chéticamp, NS
 1902245|Digby, NS
 1902254|Parrsboro, NS

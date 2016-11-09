@@ -145,10 +145,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
     assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
-    // Fixed-line data should be inherited from the general desc for the national number pattern,
-    // since it wasn't overridden.
-    assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
-        metadata.getFixedLine().getNationalNumberPattern());
+    assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
+                 metadata.getFixedLine().getNationalNumberPattern());
     assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
     assertEquals(1, metadata.getGeneralDesc().getPossibleLengthCount());
     assertEquals(10, metadata.getGeneralDesc().getPossibleLength(0));
@@ -209,7 +207,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(800, metadata.getCountryCode());
     assertEquals("$1 $2", metadata.getNumberFormat(0).getFormat());
     assertEquals("(\\d{4})(\\d{4})", metadata.getNumberFormat(0).getPattern());
-    assertEquals("12345678", metadata.getGeneralDesc().getExampleNumber());
+    assertEquals(0, metadata.getGeneralDesc().getPossibleLengthLocalOnlyCount());
+    assertEquals(1, metadata.getGeneralDesc().getPossibleLengthCount());
     assertEquals("12345678", metadata.getTollFree().getExampleNumber());
   }
 
@@ -344,8 +343,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(null,
                  phoneUtil.getExampleNumberForType(RegionCode.DE,
                                                    PhoneNumberUtil.PhoneNumberType.MOBILE));
-    // For the US, the example number is placed under general description, and hence should be used
-    // for both fixed line and mobile, so neither of these should return null.
     assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US,
                                                     PhoneNumberUtil.PhoneNumberType.FIXED_LINE));
     assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US,

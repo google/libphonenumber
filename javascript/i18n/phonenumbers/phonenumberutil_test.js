@@ -256,9 +256,7 @@ function testGetInstanceLoadUSMetadata() {
                metadata.getGeneralDesc().getNationalNumberPattern());
   assertEquals('\\d{7}(?:\\d{3})?',
                metadata.getGeneralDesc().getPossibleNumberPattern());
-  // Fixed-line data should be inherited from the general desc for the national
-  // number pattern, since it wasn't overridden.
-  assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
+  assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('\\d{10}',
                metadata.getTollFree().getPossibleNumberPattern());
@@ -315,7 +313,8 @@ function testGetInstanceLoadInternationalTollFreeMetadata() {
   assertEquals(800, metadata.getCountryCode());
   assertEquals('$1 $2', metadata.getNumberFormat(0).getFormat());
   assertEquals('(\\d{4})(\\d{4})', metadata.getNumberFormat(0).getPattern());
-  assertEquals('12345678', metadata.getGeneralDesc().getExampleNumber());
+  assertEquals(0, metadata.getGeneralDesc().possibleLengthLocalOnlyCount());
+  assertEquals(1, metadata.getGeneralDesc().possibleLengthCount());
   assertEquals('12345678', metadata.getTollFree().getExampleNumber());
 }
 
@@ -481,9 +480,6 @@ function testGetExampleNumber() {
   assertTrue(DE_NUMBER.equals(
       phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.FIXED_LINE)));
   assertNull(phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.MOBILE));
-  // For the US, the example number is placed under general description, and
-  // hence should be used for both fixed line and mobile, so neither of these
-  // should return null.
   assertNotNull(
       phoneUtil.getExampleNumberForType(RegionCode.US, PNT.FIXED_LINE));
   assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US, PNT.MOBILE));
