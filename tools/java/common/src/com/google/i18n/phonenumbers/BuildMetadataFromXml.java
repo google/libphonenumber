@@ -75,7 +75,6 @@ public class BuildMetadataFromXml {
   private static final String PAGER = "pager";
   private static final String PATTERN = "pattern";
   private static final String PERSONAL_NUMBER = "personalNumber";
-  private static final String POSSIBLE_NUMBER_PATTERN = "possibleNumberPattern";
   private static final String POSSIBLE_LENGTHS = "possibleLengths";
   private static final String NATIONAL = "national";
   private static final String LOCAL_ONLY = "localOnly";
@@ -444,7 +443,6 @@ public class BuildMetadataFromXml {
     PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
     if (phoneNumberDescList.getLength() == 0) {
       numberDesc.setNationalNumberPattern("NA");
-      numberDesc.setPossibleNumberPattern("NA");
       // -1 will never match a possible phone number length, so is safe to use to ensure this never
       // matches. We don't leave it empty, since for compression reasons, we use the empty list to
       // mean that the generalDesc possible lengths apply.
@@ -457,13 +455,6 @@ public class BuildMetadataFromXml {
             String.format("Multiple elements with type %s found.", numberType));
       }
       Element element = (Element) phoneNumberDescList.item(0);
-      // Old way of handling possible number lengths. This will be deleted when no data is
-      // represented in this way anymore.
-      NodeList possiblePattern = element.getElementsByTagName(POSSIBLE_NUMBER_PATTERN);
-      if (possiblePattern.getLength() > 0) {
-        numberDesc.setPossibleNumberPattern(
-            validateRE(possiblePattern.item(0).getFirstChild().getNodeValue(), true));
-      }
       if (parentDesc != null) {
         // New way of handling possible number lengths. We don't do this for the general
         // description, since these tags won't be present; instead we will calculate its values

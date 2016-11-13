@@ -45,11 +45,6 @@ bool RegexBasedMatcher::MatchesNationalNumber(
                allow_prefix_match);
 }
 
-bool RegexBasedMatcher::MatchesPossibleNumber(
-    const string& national_number, const PhoneNumberDesc& number_desc) const {
-  return Match(national_number, number_desc.possible_number_pattern(), false);
-}
-
 bool RegexBasedMatcher::Match(const string& national_number,
                               const string& number_pattern,
                               bool allow_prefix_match) const {

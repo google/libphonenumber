@@ -63,7 +63,6 @@ final class MetadataFilter {
   // @VisibleForTesting
   static final TreeSet<String> EXCLUDABLE_CHILD_FIELDS = new TreeSet<String>(Arrays.asList(
       "nationalNumberPattern",
-      "possibleNumberPattern",
       "possibleLength",
       "possibleLengthLocalOnly",
       "exampleNumber"));
@@ -335,9 +334,6 @@ final class MetadataFilter {
     PhoneNumberDesc.Builder builder = PhoneNumberDesc.newBuilder().mergeFrom(desc);
     if (drop(type, "nationalNumberPattern")) {
       builder.clearNationalNumberPattern();
-    }
-    if (drop(type, "possibleNumberPattern")) {
-      builder.clearPossibleNumberPattern();
     }
     if (drop(type, "possibleLength")) {
       builder.clearPossibleLength();
