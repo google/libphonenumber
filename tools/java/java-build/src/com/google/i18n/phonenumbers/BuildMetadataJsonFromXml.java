@@ -242,6 +242,7 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // missing 3
+    jsArrayBuilder.append(null);
     // missing 4
     jsArrayBuilder.append(null);
     // missing 5
