@@ -1,1 +1,4 @@
-
+Code changes:
+ - Refactored metadata loading and removed synchronization for all kinds of
+   metadata. Clients may experience quicker loading of alternate formats and
+   short number metadata, but no change is required for callers of the library.
