@@ -87,8 +87,7 @@ public class MetadataFilterTest extends TestCase {
   public void testParseFieldMapFromString_parentAsGroup() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList(
-        "nationalNumberPattern", "possibleNumberPattern", "possibleLength",
-                "possibleLengthLocalOnly", "exampleNumber")));
+        "nationalNumberPattern", "possibleLength", "possibleLengthLocalOnly", "exampleNumber")));
 
     assertEquals(MetadataFilter.parseFieldMapFromString("fixedLine"), fieldMap);
   }
@@ -146,8 +145,7 @@ public class MetadataFilterTest extends TestCase {
     fieldMap.put("pager", new TreeSet<String>(Arrays.asList(
         "exampleNumber", "nationalNumberPattern")));
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList(
-        "nationalNumberPattern", "possibleNumberPattern", "possibleLength",
-        "possibleLengthLocalOnly", "exampleNumber")));
+        "nationalNumberPattern", "possibleLength", "possibleLengthLocalOnly", "exampleNumber")));
     fieldMap.put("nationalPrefix", new TreeSet<String>());
     fieldMap.put("mobile", new TreeSet<String>(Arrays.asList("nationalNumberPattern")));
     fieldMap.put("tollFree", new TreeSet<String>(Arrays.asList("nationalNumberPattern")));
@@ -197,7 +195,6 @@ public class MetadataFilterTest extends TestCase {
             + ":noInternationalDialling"),
         MetadataFilter.parseFieldMapFromString(
             "nationalNumberPattern"
-            + ":possibleNumberPattern"
             + ":possibleLength"
             + ":possibleLengthLocalOnly"
             + ":exampleNumber"));
@@ -220,14 +217,13 @@ public class MetadataFilterTest extends TestCase {
     // Parent explicitly listing all possible children.
     assertEquals(
         MetadataFilter.parseFieldMapFromString(
-            "uan(nationalNumberPattern,possibleNumberPattern,possibleLength,exampleNumber,"
-            + "possibleLengthLocalOnly)"),
+            "uan(nationalNumberPattern,possibleLength,exampleNumber,possibleLengthLocalOnly)"),
         MetadataFilter.parseFieldMapFromString("uan"));
 
     // All parent's children covered, some implicitly and some explicitly.
     assertEquals(
         MetadataFilter.parseFieldMapFromString(
-            "uan(nationalNumberPattern,possibleNumberPattern,possibleLength,exampleNumber)"
+            "uan(nationalNumberPattern,possibleLength,exampleNumber)"
             + ":possibleLengthLocalOnly"),
         MetadataFilter.parseFieldMapFromString("uan:possibleLengthLocalOnly"));
 
@@ -521,7 +517,7 @@ public class MetadataFilterTest extends TestCase {
     // Child field given first as a child in a group and then as a group by itself.
     try {
       MetadataFilter.parseFieldMapFromString(
-          "uan(nationalNumberPattern,possibleNumberPattern,possibleLength,exampleNumber)"
+          "uan(nationalNumberPattern,possibleLength,exampleNumber)"
           + ":possibleLengthLocalOnly"
           + ":exampleNumber");
       fail();
@@ -747,8 +743,7 @@ public class MetadataFilterTest extends TestCase {
     map1.put("mobile", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
     map1.put("tollFree", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
     map1.put("premiumRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("emergency", new TreeSet<String>(Arrays.asList(
-        "nationalNumberPattern", "possibleNumberPattern")));
+    map1.put("emergency", new TreeSet<String>(Arrays.asList("nationalNumberPattern")));
     map1.put("voicemail", new TreeSet<String>(Arrays.asList("possibleLength", "exampleNumber")));
     map1.put("shortCode", new TreeSet<String>(Arrays.asList("exampleNumber")));
     map1.put("standardRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
@@ -770,10 +765,9 @@ public class MetadataFilterTest extends TestCase {
     map2.put("emergency", new TreeSet<String>(Arrays.asList(
         "possibleLength", "possibleLengthLocalOnly", "exampleNumber")));
     map2.put("voicemail", new TreeSet<String>(Arrays.asList(
-        "nationalNumberPattern", "possibleNumberPattern", "possibleLengthLocalOnly")));
+        "nationalNumberPattern", "possibleLengthLocalOnly")));
     map2.put("shortCode", new TreeSet<String>(Arrays.asList(
-        "nationalNumberPattern", "possibleNumberPattern", "possibleLength",
-        "possibleLengthLocalOnly")));
+        "nationalNumberPattern", "possibleLength", "possibleLengthLocalOnly")));
     map2.put("preferredInternationalPrefix", new TreeSet<String>());
     map2.put("nationalPrefix", new TreeSet<String>());
     map2.put("preferredExtnPrefix", new TreeSet<String>());
@@ -788,8 +782,7 @@ public class MetadataFilterTest extends TestCase {
     blacklist.put("mobile", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
     blacklist.put("tollFree", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
     blacklist.put("premiumRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("emergency", new TreeSet<String>(Arrays.asList(
-        "nationalNumberPattern", "possibleNumberPattern")));
+    blacklist.put("emergency", new TreeSet<String>(Arrays.asList("nationalNumberPattern")));
     blacklist.put("voicemail", new TreeSet<String>(Arrays.asList(
         "possibleLength", "exampleNumber")));
     blacklist.put("shortCode", new TreeSet<String>(Arrays.asList("exampleNumber")));

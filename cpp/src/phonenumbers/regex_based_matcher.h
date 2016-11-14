@@ -42,9 +42,6 @@ class RegexBasedMatcher : public MatcherApi {
                              const PhoneNumberDesc& number_desc,
                              bool allow_prefix_match) const;
 
-  bool MatchesPossibleNumber(const string& national_number,
-                             const PhoneNumberDesc& number_desc) const;
-
  private:
   bool Match(const string& national_number, const string& number_pattern,
              bool allow_prefix_match) const;

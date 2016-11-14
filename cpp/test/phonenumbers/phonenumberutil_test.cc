@@ -221,11 +221,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("$1 $2 $3", metadata->number_format(1).format());
   EXPECT_EQ("[13-689]\\d{9}|2[0-35-9]\\d{8}",
             metadata->general_desc().national_number_pattern());
-  EXPECT_EQ("\\d{7}(?:\\d{3})?",
-            metadata->general_desc().possible_number_pattern());
   EXPECT_EQ("[13-689]\\d{9}|2[0-35-9]\\d{8}",
             metadata->fixed_line().national_number_pattern());
-  EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
   EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ(10, metadata->general_desc().possible_length(0));
   // Possible lengths are the same as the general description, so aren't stored
@@ -234,7 +231,6 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("900\\d{7}", metadata->premium_rate().national_number_pattern());
   // No shared-cost data is available, so it should be initialised to "NA".
   EXPECT_EQ("NA", metadata->shared_cost().national_number_pattern());
-  EXPECT_EQ("NA", metadata->shared_cost().possible_number_pattern());
 }
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
@@ -257,9 +253,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
   EXPECT_EQ("$1 $2 $3", metadata->number_format(5).format());
   EXPECT_EQ("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}",
             metadata->fixed_line().national_number_pattern());
-  EXPECT_EQ("\\d{2,14}", metadata->fixed_line().possible_number_pattern());
   EXPECT_EQ("30123456", metadata->fixed_line().example_number());
-  EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
+  EXPECT_EQ(10, metadata->toll_free().possible_length(0));
   EXPECT_EQ("900([135]\\d{6}|9\\d{7})",
             metadata->premium_rate().national_number_pattern());
 }

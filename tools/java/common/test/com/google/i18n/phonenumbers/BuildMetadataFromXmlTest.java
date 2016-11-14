@@ -443,7 +443,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "invalidType");
-    assertEquals("NA", phoneNumberDesc.getPossibleNumberPattern());
     assertEquals("NA", phoneNumberDesc.getNationalNumberPattern());
   }
 
@@ -469,17 +468,14 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "    <territory id=\"AM\" countryCode=\"374\" internationalPrefix=\"00\">"
         + "      <generalDesc>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "      </generalDesc>"
         + "      <fixedLine>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
         + "        <exampleNumber>10123456</exampleNumber>"
         + "      </fixedLine>"
         + "      <mobile>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
         + "        <exampleNumber>10123456</exampleNumber>"
         + "      </mobile>"
@@ -515,17 +511,14 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "    <territory id=\"AM\" countryCode=\"374\" internationalPrefix=\"00\">"
         + "      <generalDesc>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "      </generalDesc>"
         + "      <fixedLine>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
         + "        <exampleNumber>10123456</exampleNumber>"
         + "      </fixedLine>"
         + "      <mobile>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
         + "        <exampleNumber>10123456</exampleNumber>"
         + "      </mobile>"
@@ -562,17 +555,14 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "    <territory id=\"AM\" countryCode=\"374\" internationalPrefix=\"00\">"
         + "      <generalDesc>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "      </generalDesc>"
         + "      <fixedLine>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
         + "        <exampleNumber>10123456</exampleNumber>"
         + "      </fixedLine>"
         + "      <mobile>"
         + "        <nationalNumberPattern>[1-9]\\d{7}</nationalNumberPattern>"
-        + "        <possibleNumberPattern>\\d{5,8}</possibleNumberPattern>"
         + "        <possibleLengths national=\"8\" localOnly=\"5,6\"/>"
         + "        <exampleNumber>10123456</exampleNumber>"
         + "      </mobile>"
@@ -619,14 +609,14 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     String xmlInput = "<territory><fixedLine>"
-        + "  <possibleNumberPattern>\t \\d { 6 } </possibleNumberPattern>"
+        + "  <nationalNumberPattern>\t \\d { 6 } </nationalNumberPattern>"
         + "</fixedLine></territory>";
     Element countryElement = parseXmlString(xmlInput);
     PhoneNumberDesc.Builder phoneNumberDesc;
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, countryElement, "fixedLine");
-    assertEquals("\\d{6}", phoneNumberDesc.getPossibleNumberPattern());
+    assertEquals("\\d{6}", phoneNumberDesc.getNationalNumberPattern());
   }
 
   // Tests setRelevantDescPatterns().
