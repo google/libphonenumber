@@ -454,7 +454,7 @@ public class ShortNumberInfo {
    * Convenience method to get a list of what regions the library has metadata for.
    */
   Set<String> getSupportedRegions() {
-    return Collections.unmodifiableSet(MetadataManager.getShortNumberMetadataSupportedRegions());
+    return MetadataManager.getSupportedShortNumberRegions();
   }
 
   /**
