@@ -1,4 +1,7 @@
 Code changes:
- - Removing all references to possible_number_pattern other than the proto buffer
-   itself (and derived files, or hand-crafted files based on it.) This information is
-   no longer present in the binary.
+ - Removing all references to possible_number_pattern other than the proto
+   buffer itself (and derived files, or hand-crafted files based on it.) This
+   information is no longer present in the binary.
+ - Refactored metadata loading and removed synchronization for all kinds of
+   metadata. Clients may experience quicker loading of alternate formats and
+   short number metadata, but no change is required for callers of the library.

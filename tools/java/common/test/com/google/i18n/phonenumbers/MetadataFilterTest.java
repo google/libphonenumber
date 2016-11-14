@@ -21,7 +21,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import junit.framework.TestCase;
 
-public final class MetadataFilterTest extends TestCase {
+public class MetadataFilterTest extends TestCase {
   // If this behavior changes then consider whether the change in the blacklist is intended, or you
   // should change the special build configuration. Also look into any change in the size of the
   // build.
