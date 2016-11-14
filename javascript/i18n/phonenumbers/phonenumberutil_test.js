@@ -254,17 +254,12 @@ function testGetInstanceLoadUSMetadata() {
   assertEquals('$1 $2 $3', metadata.getNumberFormat(1).getFormat());
   assertEquals('[13-689]\\d{9}|2[0-35-9]\\d{8}',
                metadata.getGeneralDesc().getNationalNumberPattern());
-  assertEquals('\\d{7}(?:\\d{3})?',
-               metadata.getGeneralDesc().getPossibleNumberPattern());
   assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                metadata.getFixedLine().getNationalNumberPattern());
-  assertEquals('\\d{10}',
-               metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900\\d{7}',
                metadata.getPremiumRate().getNationalNumberPattern());
   // No shared-cost data is available, so it should be initialised to 'NA'.
   assertEquals('NA', metadata.getSharedCost().getNationalNumberPattern());
-  assertEquals('NA', metadata.getSharedCost().getPossibleNumberPattern());
 }
 
 function testGetInstanceLoadDEMetadata() {
@@ -282,9 +277,7 @@ function testGetInstanceLoadDEMetadata() {
   assertEquals('$1 $2 $3', metadata.getNumberFormat(5).getFormat());
   assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}',
                metadata.getFixedLine().getNationalNumberPattern());
-  assertEquals('\\d{2,14}', metadata.getFixedLine().getPossibleNumberPattern());
   assertEquals('30123456', metadata.getFixedLine().getExampleNumber());
-  assertEquals('\\d{10}', metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900([135]\\d{6}|9\\d{7})',
                metadata.getPremiumRate().getNationalNumberPattern());
 }

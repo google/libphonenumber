@@ -1,1 +1,4 @@
-
+Code changes:
+ - Removing all references to possible_number_pattern other than the proto buffer
+   itself (and derived files, or hand-crafted files based on it.) This information is
+   no longer present in the binary.
