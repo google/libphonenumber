@@ -22,7 +22,6 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -52,14 +51,6 @@ import java.util.regex.Pattern;
  * @author Shaopeng Jia
  */
 public class PhoneNumberUtil {
-  // @VisibleForTesting
-  static final MetadataLoader DEFAULT_METADATA_LOADER = new MetadataLoader() {
-    @Override
-    public InputStream loadMetadata(String metadataFileName) {
-      return PhoneNumberUtil.class.getResourceAsStream(metadataFileName);
-    }
-  };
-
   private static final Logger logger = Logger.getLogger(PhoneNumberUtil.class.getName());
 
   /** Flags to use when compiling regular expressions for phone numbers. */
@@ -958,8 +949,7 @@ public class PhoneNumberUtil {
 
   /**
    * Gets a {@link PhoneNumberUtil} instance to carry out international phone number formatting,
-   * parsing, or validation. The instance is loaded with phone number metadata for a number of most
-   * commonly used regions.
+   * parsing, or validation. The instance is loaded with all phone number metadata.
    *
    * <p>The {@link PhoneNumberUtil} is implemented as a singleton. Therefore, calling getInstance
    * multiple times will only result in one instance being created.
@@ -968,9 +958,28 @@ public class PhoneNumberUtil {
    */
   public static synchronized PhoneNumberUtil getInstance() {
     if (instance == null) {
-      setInstance(createInstance(DEFAULT_METADATA_LOADER));
+      setInstance(createInstance(MetadataManager.DEFAULT_METADATA_LOADER));
     }
     return instance;
+  }
+
+  /**
+   * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
+   * formatting, parsing, or validation. The instance is loaded with all metadata by
+   * using the metadataLoader specified.
+   *
+   * <p>This method should only be used in the rare case in which you want to manage your own
+   * metadata loading. Calling this method multiple times is very expensive, as each time
+   * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
+   *
+   * @param metadataLoader  customized metadata loader. This should not be null
+   * @return  a PhoneNumberUtil instance
+   */
+  public static PhoneNumberUtil createInstance(MetadataLoader metadataLoader) {
+    if (metadataLoader == null) {
+      throw new IllegalArgumentException("metadataLoader could not be null.");
+    }
+    return createInstance(new MultiFileMetadataSourceImpl(metadataLoader));
   }
 
   /**
@@ -982,34 +991,15 @@ public class PhoneNumberUtil {
    * metadata loading. Calling this method multiple times is very expensive, as each time
    * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
    *
-   * @param metadataSource  customized metadata source. This should not be null.
+   * @param metadataSource  customized metadata source. This should not be null
    * @return  a PhoneNumberUtil instance
    */
-  public static PhoneNumberUtil createInstance(MetadataSource metadataSource) {
+  private static PhoneNumberUtil createInstance(MetadataSource metadataSource) {
     if (metadataSource == null) {
       throw new IllegalArgumentException("metadataSource could not be null.");
     }
     return new PhoneNumberUtil(metadataSource,
         CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap());
-  }
-
-  /**
-   * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
-   * formatting, parsing, or validation. The instance is loaded with all metadata by
-   * using the metadataLoader specified.
-   *
-   * This method should only be used in the rare case in which you want to manage your own
-   * metadata loading. Calling this method multiple times is very expensive, as each time
-   * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
-   *
-   * @param metadataLoader Customized metadata loader. This should not be null.
-   * @return a PhoneNumberUtil instance
-   */
-  public static PhoneNumberUtil createInstance(MetadataLoader metadataLoader) {
-    if (metadataLoader == null) {
-      throw new IllegalArgumentException("metadataLoader could not be null.");
-    }
-    return createInstance(new MultiFileMetadataSourceImpl(metadataLoader));
   }
 
   /**
@@ -1078,7 +1068,7 @@ public class PhoneNumberUtil {
       // This is the only case where a number can be formatted as E164 without a
       // leading '+' symbol (but the original number wasn't parseable anyway).
       // TODO: Consider removing the 'if' above so that unparseable
-      // strings without raw input format to the empty string instead of "+00"
+      // strings without raw input format to the empty string instead of "+00".
       String rawInput = number.getRawInput();
       if (rawInput.length() > 0) {
         return rawInput;
@@ -1148,7 +1138,7 @@ public class PhoneNumberUtil {
     // share a country calling code is contained by only one region for performance reasons. For
     // example, for NANPA regions it will be contained in the metadata for US.
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
-    // Metadata cannot be null because the country calling code is valid
+    // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata =
         getMetadataForRegionOrCallingCode(countryCallingCode, regionCode);
 
@@ -1306,8 +1296,8 @@ public class PhoneNumberUtil {
         // dialing from a mobile phone, except for short numbers. As a result, we add it back here
         // if it is a valid regular length phone number.
         formattedNumber =
-            getNddPrefixForRegion(regionCode, true /* strip non-digits */) +
-            " " + format(numberNoExt, PhoneNumberFormat.NATIONAL);
+            getNddPrefixForRegion(regionCode, true /* strip non-digits */) + " "
+            + format(numberNoExt, PhoneNumberFormat.NATIONAL);
       } else if (countryCallingCode == NANPA_COUNTRY_CODE) {
         // For NANPA countries, we output international format for numbers that can be dialed
         // internationally, since that always works, except for numbers which might potentially be

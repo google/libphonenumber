@@ -140,8 +140,7 @@ public class MetadataFilterTest extends TestCase {
   public void testParseFieldMapFromString_mixOfGroups() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("uan", new TreeSet<String>(Arrays.asList(
-        "possibleLength", "exampleNumber", "possibleLengthLocalOnly",
-        "nationalNumberPattern")));
+        "possibleLength", "exampleNumber", "possibleLengthLocalOnly", "nationalNumberPattern")));
     fieldMap.put("pager", new TreeSet<String>(Arrays.asList(
         "exampleNumber", "nationalNumberPattern")));
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList(
@@ -223,8 +222,7 @@ public class MetadataFilterTest extends TestCase {
     // All parent's children covered, some implicitly and some explicitly.
     assertEquals(
         MetadataFilter.parseFieldMapFromString(
-            "uan(nationalNumberPattern,possibleLength,exampleNumber)"
-            + ":possibleLengthLocalOnly"),
+            "uan(nationalNumberPattern,possibleLength,exampleNumber):possibleLengthLocalOnly"),
         MetadataFilter.parseFieldMapFromString("uan:possibleLengthLocalOnly"));
 
     // Child field covered by all parents explicitly.
