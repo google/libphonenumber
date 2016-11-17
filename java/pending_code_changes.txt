@@ -7,5 +7,5 @@ Code changes:
    short number metadata, but no change is required for callers of the library.
  - Reduced visibility of `public` internal API
    `PhoneNumberUtil.createInstance(MetadataSource)` to `private`. MetadataSource
-   and all its interfaces are non-public so this should not affect public usage
-   of the library.
+   and all its implementations are non-public so this should not affect public
+   usage of the library.
