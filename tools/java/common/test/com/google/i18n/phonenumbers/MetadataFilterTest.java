@@ -16,15 +16,35 @@
 
 package com.google.i18n.phonenumbers;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import java.util.Arrays;
+import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import junit.framework.TestCase;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-public class MetadataFilterTest extends TestCase {
+/**
+ * Unit tests for {@link MetadataFilter}.
+ */
+@RunWith(JUnit4.class)
+public class MetadataFilterTest  {
+  private static final String NATIONAL_NUMBER_PATTERN = "[1-9]\\d{7}";
+  private static final int[] possibleLengths = {8};
+  private static final int[] possibleLengthsLocalOnly = {5, 6};
+  private static final String EXAMPLE_NUMBER = "10123456";
+
   // If this behavior changes then consider whether the change in the blacklist is intended, or you
   // should change the special build configuration. Also look into any change in the size of the
   // build.
+  @Test
   public void testForLiteBuild() {
     TreeMap<String, TreeSet<String>> blacklist = new TreeMap<String, TreeSet<String>>();
     blacklist.put("fixedLine", new TreeSet<String>(Arrays.asList("exampleNumber")));
@@ -50,23 +70,24 @@ public class MetadataFilterTest extends TestCase {
   // If this behavior changes then consider whether the change in the blacklist is intended, or you
   // should change the special build configuration. Also look into any change in the size of the
   // build.
+  @Test
   public void testForSpecialBuild() {
     TreeMap<String, TreeSet<String>> blacklist = new TreeMap<String, TreeSet<String>>();
-    blacklist.put("fixedLine", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("tollFree", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("premiumRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("sharedCost", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("personalNumber", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("voip", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("pager", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("uan", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("emergency", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("voicemail", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("shortCode", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("standardRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("carrierSpecific", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    blacklist.put("fixedLine", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("tollFree", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("premiumRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("sharedCost", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("personalNumber", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("voip", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("pager", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("uan", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("emergency", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("voicemail", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("shortCode", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("standardRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("carrierSpecific", new TreeSet<String>(MetadataFilter.excludableChildFields));
     blacklist.put("noInternationalDialling",
-        new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+        new TreeSet<String>(MetadataFilter.excludableChildFields));
     blacklist.put("preferredInternationalPrefix", new TreeSet<String>());
     blacklist.put("nationalPrefix", new TreeSet<String>());
     blacklist.put("preferredExtnPrefix", new TreeSet<String>());
@@ -79,11 +100,13 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.forSpecialBuild(), new MetadataFilter(blacklist));
   }
 
+  @Test
   public void testEmptyFilter() {
     assertEquals(MetadataFilter.emptyFilter(),
         new MetadataFilter(new TreeMap<String, TreeSet<String>>()));
   }
 
+  @Test
   public void testParseFieldMapFromString_parentAsGroup() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList(
@@ -92,6 +115,7 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.parseFieldMapFromString("fixedLine"), fieldMap);
   }
 
+  @Test
   public void testParseFieldMapFromString_childAsGroup() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList("exampleNumber")));
@@ -113,6 +137,7 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.parseFieldMapFromString("exampleNumber"), fieldMap);
   }
 
+  @Test
   public void testParseFieldMapFromString_childlessFieldAsGroup() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("nationalPrefix", new TreeSet<String>());
@@ -120,6 +145,7 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.parseFieldMapFromString("nationalPrefix"), fieldMap);
   }
 
+  @Test
   public void testParseFieldMapFromString_parentWithOneChildAsGroup() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList("exampleNumber")));
@@ -127,6 +153,7 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.parseFieldMapFromString("fixedLine(exampleNumber)"), fieldMap);
   }
 
+  @Test
   public void testParseFieldMapFromString_parentWithTwoChildrenAsGroup() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList(
@@ -137,6 +164,7 @@ public class MetadataFilterTest extends TestCase {
         fieldMap);
   }
 
+  @Test
   public void testParseFieldMapFromString_mixOfGroups() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("uan", new TreeSet<String>(Arrays.asList(
@@ -170,6 +198,7 @@ public class MetadataFilterTest extends TestCase {
         fieldMap);
   }
 
+  @Test
   // Many of the strings in this test may be possible to express in shorter ways with the current
   // sets of excludable fields, but their shortest representation changes as those sets change, as
   // do their semantics; therefore we allow currently longer expressions, and we allow explicit
@@ -223,8 +252,7 @@ public class MetadataFilterTest extends TestCase {
     // All parent's children covered, some implicitly and some explicitly.
     assertEquals(
         MetadataFilter.parseFieldMapFromString(
-            "uan(nationalNumberPattern,possibleLength,exampleNumber)"
-            + ":possibleLengthLocalOnly"),
+            "uan(nationalNumberPattern,possibleLength,exampleNumber):possibleLengthLocalOnly"),
         MetadataFilter.parseFieldMapFromString("uan:possibleLengthLocalOnly"));
 
     // Child field covered by all parents explicitly.
@@ -288,6 +316,7 @@ public class MetadataFilterTest extends TestCase {
             + ":noInternationalDialling"));
   }
 
+  @Test
   public void testParseFieldMapFromString_RuntimeExceptionCases() {
     // Null input.
     try {
@@ -704,24 +733,25 @@ public class MetadataFilterTest extends TestCase {
     }
   }
 
+  @Test
   public void testComputeComplement_allAndNothing() {
     TreeMap<String, TreeSet<String>> map1 = new TreeMap<String, TreeSet<String>>();
-    map1.put("fixedLine", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("mobile", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("tollFree", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("premiumRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("sharedCost", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("personalNumber", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("voip", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("pager", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("uan", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("emergency", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("voicemail", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("shortCode", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("standardRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("carrierSpecific", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    map1.put("fixedLine", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("mobile", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("tollFree", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("premiumRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("sharedCost", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("personalNumber", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("voip", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("pager", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("uan", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("emergency", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("voicemail", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("shortCode", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("standardRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("carrierSpecific", new TreeSet<String>(MetadataFilter.excludableChildFields));
     map1.put("noInternationalDialling",
-        new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+        new TreeSet<String>(MetadataFilter.excludableChildFields));
     map1.put("preferredInternationalPrefix", new TreeSet<String>());
     map1.put("nationalPrefix", new TreeSet<String>());
     map1.put("preferredExtnPrefix", new TreeSet<String>());
@@ -737,19 +767,20 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.computeComplement(map2), map1);
   }
 
+  @Test
   public void testComputeComplement_inBetween() {
     TreeMap<String, TreeSet<String>> map1 = new TreeMap<String, TreeSet<String>>();
-    map1.put("fixedLine", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("mobile", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("tollFree", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("premiumRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    map1.put("fixedLine", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("mobile", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("tollFree", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("premiumRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
     map1.put("emergency", new TreeSet<String>(Arrays.asList("nationalNumberPattern")));
     map1.put("voicemail", new TreeSet<String>(Arrays.asList("possibleLength", "exampleNumber")));
     map1.put("shortCode", new TreeSet<String>(Arrays.asList("exampleNumber")));
-    map1.put("standardRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map1.put("carrierSpecific", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    map1.put("standardRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map1.put("carrierSpecific", new TreeSet<String>(MetadataFilter.excludableChildFields));
     map1.put("noInternationalDialling",
-        new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+        new TreeSet<String>(MetadataFilter.excludableChildFields));
     map1.put("nationalPrefixTransformRule", new TreeSet<String>());
     map1.put("sameMobileAndFixedLinePattern", new TreeSet<String>());
     map1.put("mainCountryForCode", new TreeSet<String>());
@@ -757,11 +788,11 @@ public class MetadataFilterTest extends TestCase {
     map1.put("mobileNumberPortableRegion", new TreeSet<String>());
 
     TreeMap<String, TreeSet<String>> map2 = new TreeMap<String, TreeSet<String>>();
-    map2.put("sharedCost", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map2.put("personalNumber", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map2.put("voip", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map2.put("pager", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    map2.put("uan", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    map2.put("sharedCost", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map2.put("personalNumber", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map2.put("voip", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map2.put("pager", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    map2.put("uan", new TreeSet<String>(MetadataFilter.excludableChildFields));
     map2.put("emergency", new TreeSet<String>(Arrays.asList(
         "possibleLength", "possibleLengthLocalOnly", "exampleNumber")));
     map2.put("voicemail", new TreeSet<String>(Arrays.asList(
@@ -776,20 +807,21 @@ public class MetadataFilterTest extends TestCase {
     assertEquals(MetadataFilter.computeComplement(map2), map1);
   }
 
-  public void testDrop() {
+  @Test
+  public void testShouldDrop() {
     TreeMap<String, TreeSet<String>> blacklist = new TreeMap<String, TreeSet<String>>();
-    blacklist.put("fixedLine", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("mobile", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("tollFree", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("premiumRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    blacklist.put("fixedLine", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("mobile", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("tollFree", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("premiumRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
     blacklist.put("emergency", new TreeSet<String>(Arrays.asList("nationalNumberPattern")));
     blacklist.put("voicemail", new TreeSet<String>(Arrays.asList(
         "possibleLength", "exampleNumber")));
     blacklist.put("shortCode", new TreeSet<String>(Arrays.asList("exampleNumber")));
-    blacklist.put("standardRate", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
-    blacklist.put("carrierSpecific", new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+    blacklist.put("standardRate", new TreeSet<String>(MetadataFilter.excludableChildFields));
+    blacklist.put("carrierSpecific", new TreeSet<String>(MetadataFilter.excludableChildFields));
     blacklist.put("noInternationalDialling",
-        new TreeSet<String>(MetadataFilter.EXCLUDABLE_CHILD_FIELDS));
+        new TreeSet<String>(MetadataFilter.excludableChildFields));
     blacklist.put("nationalPrefixTransformRule", new TreeSet<String>());
     blacklist.put("sameMobileAndFixedLinePattern", new TreeSet<String>());
     blacklist.put("mainCountryForCode", new TreeSet<String>());
@@ -797,54 +829,184 @@ public class MetadataFilterTest extends TestCase {
     blacklist.put("mobileNumberPortableRegion", new TreeSet<String>());
 
     MetadataFilter filter = new MetadataFilter(blacklist);
-    assertTrue(filter.drop("fixedLine", "exampleNumber"));
-    assertFalse(filter.drop("sharedCost", "exampleNumber"));
-    assertFalse(filter.drop("emergency", "exampleNumber"));
-    assertTrue(filter.drop("emergency", "nationalNumberPattern"));
-    assertFalse(filter.drop("preferredInternationalPrefix"));
-    assertTrue(filter.drop("mobileNumberPortableRegion"));
+    assertTrue(filter.shouldDrop("fixedLine", "exampleNumber"));
+    assertFalse(filter.shouldDrop("sharedCost", "exampleNumber"));
+    assertFalse(filter.shouldDrop("emergency", "exampleNumber"));
+    assertTrue(filter.shouldDrop("emergency", "nationalNumberPattern"));
+    assertFalse(filter.shouldDrop("preferredInternationalPrefix"));
+    assertTrue(filter.shouldDrop("mobileNumberPortableRegion"));
 
     // Integration tests starting with flag values.
     assertTrue(BuildMetadataFromXml.getMetadataFilter(true, false)
-        .drop("fixedLine", "exampleNumber"));
+        .shouldDrop("fixedLine", "exampleNumber"));
 
     // Integration tests starting with blacklist strings.
     assertTrue(new MetadataFilter(MetadataFilter.parseFieldMapFromString("fixedLine"))
-        .drop("fixedLine", "exampleNumber"));
+        .shouldDrop("fixedLine", "exampleNumber"));
     assertFalse(new MetadataFilter(MetadataFilter.parseFieldMapFromString("uan"))
-        .drop("fixedLine", "exampleNumber"));
+        .shouldDrop("fixedLine", "exampleNumber"));
 
     // Integration tests starting with whitelist strings.
     assertFalse(new MetadataFilter(MetadataFilter.computeComplement(
         MetadataFilter.parseFieldMapFromString("exampleNumber")))
-        .drop("fixedLine", "exampleNumber"));
+        .shouldDrop("fixedLine", "exampleNumber"));
     assertTrue(new MetadataFilter(MetadataFilter.computeComplement(
-        MetadataFilter.parseFieldMapFromString("uan"))).drop("fixedLine", "exampleNumber"));
+        MetadataFilter.parseFieldMapFromString("uan"))).shouldDrop("fixedLine", "exampleNumber"));
 
     // Integration tests with an empty blacklist.
     assertFalse(new MetadataFilter(new TreeMap<String, TreeSet<String>>())
-        .drop("fixedLine", "exampleNumber"));
+        .shouldDrop("fixedLine", "exampleNumber"));
   }
 
+  // Test that a fake PhoneMetadata filtered for liteBuild ends up clearing exactly the expected
+  // fields. The lite build is used to clear example_number fields from all PhoneNumberDescs.
+  @Test
+  public void testFilterMetadata_liteBuild() {
+    PhoneMetadata.Builder metadata = getFakeArmeniaPhoneMetadata();
+
+    MetadataFilter.forLiteBuild().filterMetadata(metadata);
+
+    // id, country_code, and international_prefix should never be cleared.
+    assertEquals(metadata.getId(), "AM");
+    assertEquals(metadata.getCountryCode(), 374);
+    assertEquals(metadata.getInternationalPrefix(), "0[01]");
+
+    // preferred_international_prefix should not be cleared in liteBuild.
+    assertEquals(metadata.getPreferredInternationalPrefix(), "00");
+
+    // All PhoneNumberDescs must have only example_number cleared.
+    for (PhoneNumberDesc desc : Arrays.asList(
+        metadata.getGeneralDesc(),
+        metadata.getFixedLine(),
+        metadata.getMobile(),
+        metadata.getTollFree())) {
+      assertEquals(desc.getNationalNumberPattern(), NATIONAL_NUMBER_PATTERN);
+      assertContentsEqual(desc.getPossibleLengthList(), possibleLengths);
+      assertContentsEqual(desc.getPossibleLengthLocalOnlyList(), possibleLengthsLocalOnly);
+      assertFalse(desc.hasExampleNumber());
+    }
+  }
+
+  // Test that a fake PhoneMetadata filtered for specialBuild ends up clearing exactly the expected
+  // fields. The special build is used to clear PhoneNumberDescs other than general_desc and mobile,
+  // and non-PhoneNumberDesc PhoneMetadata fields that aren't needed for parsing.
+  @Test
+  public void testFilterMetadata_specialBuild() {
+    PhoneMetadata.Builder metadata = getFakeArmeniaPhoneMetadata();
+
+    MetadataFilter.forSpecialBuild().filterMetadata(metadata);
+
+    // id, country_code, and international_prefix should never be cleared.
+    assertEquals(metadata.getId(), "AM");
+    assertEquals(metadata.getCountryCode(), 374);
+    assertEquals(metadata.getInternationalPrefix(), "0[01]");
+
+    // preferred_international_prefix should be cleared in specialBuild.
+    assertFalse(metadata.hasPreferredInternationalPrefix());
+
+    // general_desc should have all fields but example_number; mobile should have all fields.
+    for (PhoneNumberDesc desc : Arrays.asList(
+        metadata.getGeneralDesc(),
+        metadata.getMobile())) {
+      assertEquals(desc.getNationalNumberPattern(), NATIONAL_NUMBER_PATTERN);
+      assertContentsEqual(desc.getPossibleLengthList(), possibleLengths);
+      assertContentsEqual(desc.getPossibleLengthLocalOnlyList(), possibleLengthsLocalOnly);
+    }
+    assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    assertEquals(metadata.getMobile().getExampleNumber(), EXAMPLE_NUMBER);
+
+    // All other PhoneNumberDescs must have all fields cleared.
+    for (PhoneNumberDesc desc : Arrays.asList(
+        metadata.getFixedLine(),
+        metadata.getTollFree())) {
+      assertFalse(desc.hasNationalNumberPattern());
+      assertEquals(desc.getPossibleLengthList().size(), 0);
+      assertEquals(desc.getPossibleLengthLocalOnlyList().size(), 0);
+      assertFalse(desc.hasExampleNumber());
+    }
+  }
+
+  // Test that filtering a fake PhoneMetadata with the empty MetadataFilter results in no change.
+  @Test
+  public void testFilterMetadata_emptyFilter() {
+    PhoneMetadata.Builder metadata = getFakeArmeniaPhoneMetadata();
+
+    MetadataFilter.emptyFilter().filterMetadata(metadata);
+
+    // None of the fields should be cleared.
+    assertEquals(metadata.getId(), "AM");
+    assertEquals(metadata.getCountryCode(), 374);
+    assertEquals(metadata.getInternationalPrefix(), "0[01]");
+    assertEquals(metadata.getPreferredInternationalPrefix(), "00");
+    for (PhoneNumberDesc desc : Arrays.asList(
+        metadata.getGeneralDesc(),
+        metadata.getFixedLine(),
+        metadata.getMobile(),
+        metadata.getTollFree())) {
+      assertEquals(desc.getNationalNumberPattern(), NATIONAL_NUMBER_PATTERN);
+      assertContentsEqual(desc.getPossibleLengthList(), possibleLengths);
+      assertContentsEqual(desc.getPossibleLengthLocalOnlyList(), possibleLengthsLocalOnly);
+    }
+    assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    assertEquals(metadata.getFixedLine().getExampleNumber(), EXAMPLE_NUMBER);
+    assertEquals(metadata.getMobile().getExampleNumber(), EXAMPLE_NUMBER);
+    assertEquals(metadata.getTollFree().getExampleNumber(), EXAMPLE_NUMBER);
+  }
+
+  @Test
   public void testIntegrityOfFieldSets() {
     TreeSet<String> union = new TreeSet<String>();
-    union.addAll(MetadataFilter.EXCLUDABLE_PARENT_FIELDS);
-    union.addAll(MetadataFilter.EXCLUDABLE_CHILD_FIELDS);
-    union.addAll(MetadataFilter.EXCLUDABLE_CHILDLESS_FIELDS);
+    union.addAll(MetadataFilter.excludableParentFields);
+    union.addAll(MetadataFilter.excludableChildFields);
+    union.addAll(MetadataFilter.excludableChildlessFields);
 
     // Mutually exclusive sets.
-    assertTrue(union.size() == MetadataFilter.EXCLUDABLE_PARENT_FIELDS.size()
-        + MetadataFilter.EXCLUDABLE_CHILD_FIELDS.size()
-        + MetadataFilter.EXCLUDABLE_CHILDLESS_FIELDS.size());
+    assertTrue(union.size() == MetadataFilter.excludableParentFields.size()
+        + MetadataFilter.excludableChildFields.size()
+        + MetadataFilter.excludableChildlessFields.size());
 
     // Nonempty sets.
-    assertTrue(MetadataFilter.EXCLUDABLE_PARENT_FIELDS.size() > 0
-        && MetadataFilter.EXCLUDABLE_CHILD_FIELDS.size() > 0
-        && MetadataFilter.EXCLUDABLE_CHILDLESS_FIELDS.size() > 0);
+    assertTrue(MetadataFilter.excludableParentFields.size() > 0
+        && MetadataFilter.excludableChildFields.size() > 0
+        && MetadataFilter.excludableChildlessFields.size() > 0);
 
     // Nonempty and canonical field names.
     for (String field : union) {
       assertTrue(field.length() > 0 && field.trim().equals(field));
+    }
+  }
+
+  private static PhoneMetadata.Builder getFakeArmeniaPhoneMetadata() {
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    metadata.setId("AM");
+    metadata.setCountryCode(374);
+    metadata.setInternationalPrefix("0[01]");
+    metadata.setPreferredInternationalPrefix("00");
+    metadata.setGeneralDesc(getFakeArmeniaPhoneNumberDesc(true));
+    metadata.setFixedLine(getFakeArmeniaPhoneNumberDesc(false));
+    metadata.setMobile(getFakeArmeniaPhoneNumberDesc(false));
+    metadata.setTollFree(getFakeArmeniaPhoneNumberDesc(false));
+    return metadata;
+  }
+
+  private static PhoneNumberDesc getFakeArmeniaPhoneNumberDesc(boolean generalDesc) {
+    PhoneNumberDesc desc = new PhoneNumberDesc().setNationalNumberPattern(NATIONAL_NUMBER_PATTERN);
+    if (!generalDesc) {
+      desc.setExampleNumber(EXAMPLE_NUMBER);
+    }
+    for (int i : possibleLengths) {
+      desc.addPossibleLength(i);
+    }
+    for (int i : possibleLengthsLocalOnly) {
+      desc.addPossibleLengthLocalOnly(i);
+    }
+    return desc;
+  }
+
+  private static void assertContentsEqual(List<Integer> list, int[] array) {
+    assertEquals(list.size(), array.length);
+    for (int i = 0; i < list.size(); i++) {
+      assertEquals((int) list.get(i), array[i]);
     }
   }
 }
