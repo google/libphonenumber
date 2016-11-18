@@ -17,6 +17,12 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
+    <testResources>
+      <testResource>
+        <directory>src/com/google/i18n/phonenumbers</directory>
+        <targetPath>com/google/i18n/phonenumbers</targetPath>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

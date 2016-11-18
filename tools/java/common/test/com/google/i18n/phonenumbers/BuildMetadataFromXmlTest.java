@@ -495,6 +495,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
     assertTrue(metadata.hasGeneralDesc());
     assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    // Some Phonemetadata.java implementations may have custom logic, so we ensure this
+    // implementation is doing the right thing by checking the value of the example number even when
+    // hasExampleNumber is false.
     assertEquals("", metadata.getGeneralDesc().getExampleNumber());
     assertTrue(metadata.hasFixedLine());
     assertFalse(metadata.getFixedLine().hasExampleNumber());
@@ -538,6 +541,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
     assertTrue(metadata.hasGeneralDesc());
     assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    // Some Phonemetadata.java implementations may have custom logic, so we ensure this
+    // implementation is doing the right thing by checking the value of the example number even when
+    // hasExampleNumber is false.
     assertEquals("", metadata.getGeneralDesc().getExampleNumber());
     // TODO: Consider clearing fixed-line if empty after being filtered.
     assertTrue(metadata.hasFixedLine());
@@ -582,6 +588,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata metadata = metadataCollection.getMetadataList().get(0);
     assertTrue(metadata.hasGeneralDesc());
     assertFalse(metadata.getGeneralDesc().hasExampleNumber());
+    // Some Phonemetadata.java implementations may have custom logic, so we ensure this
+    // implementation is doing the right thing by checking the value of the example number even when
+    // hasExampleNumber is false.
     assertEquals("", metadata.getGeneralDesc().getExampleNumber());
     assertTrue(metadata.hasFixedLine());
     assertTrue(metadata.getFixedLine().hasExampleNumber());
