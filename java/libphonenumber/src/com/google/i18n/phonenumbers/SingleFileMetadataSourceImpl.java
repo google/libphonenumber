@@ -41,7 +41,7 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
   }
 
   // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
-  public SingleFileMetadataSourceImpl(MetadataLoader metadataLoader) {
+  SingleFileMetadataSourceImpl(MetadataLoader metadataLoader) {
     this(MetadataManager.SINGLE_FILE_PHONE_NUMBER_METADATA_FILE_NAME, metadataLoader);
   }
 

@@ -26,7 +26,7 @@ import junit.framework.TestCase;
  */
 public class SingleFileMetadataSourceImplTest extends TestCase {
   private static final SingleFileMetadataSourceImpl MISSING_FILE_SOURCE =
-      new SingleFileMetadataSourceImpl("no/such/file", PhoneNumberUtil.DEFAULT_METADATA_LOADER);
+      new SingleFileMetadataSourceImpl("no/such/file", MetadataManager.DEFAULT_METADATA_LOADER);
 
   public void testGeoPhoneNumberMetadataLoadFromMissingFileThrowsException() throws Exception {
     try {
