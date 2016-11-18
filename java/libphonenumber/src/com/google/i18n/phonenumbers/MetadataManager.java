@@ -173,14 +173,12 @@ final class MetadataManager {
   static SingleFileMetadataMaps getSingleFileMetadataMaps(
       AtomicReference<SingleFileMetadataMaps> ref, String fileName, MetadataLoader metadataLoader) {
     SingleFileMetadataMaps maps = ref.get();
-    if (maps == null) {
-      maps = SingleFileMetadataMaps.load(fileName, metadataLoader);
-      SingleFileMetadataMaps existingValue = ref.getAndSet(maps);
-      if (existingValue != null) {
-        maps = existingValue;
-      }
+    if (maps != null) {
+      return maps;
     }
-    return maps;
+    maps = SingleFileMetadataMaps.load(fileName, metadataLoader);
+    ref.compareAndSet(null, maps);
+    return ref.get();
   }
 
   private static List<PhoneMetadata> getMetadataFromSingleFileName(String fileName,
