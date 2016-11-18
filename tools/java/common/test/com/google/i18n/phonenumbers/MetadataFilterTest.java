@@ -35,7 +35,11 @@ import org.junit.runners.JUnit4;
  * Unit tests for {@link MetadataFilter}.
  */
 @RunWith(JUnit4.class)
-public class MetadataFilterTest  {
+public class MetadataFilterTest {
+  private static final String ID = "AM";
+  private static final int COUNTRY_CODE = 374;
+  private static final String INTERNATIONAL_PREFIX = "0[01]";
+  private static final String PREFERRED_INTERNATIONAL_PREFIX = "00";
   private static final String NATIONAL_NUMBER_PATTERN = "[1-9]\\d{7}";
   private static final int[] possibleLengths = {8};
   private static final int[] possibleLengthsLocalOnly = {5, 6};
@@ -197,11 +201,11 @@ public class MetadataFilterTest  {
         fieldMap);
   }
 
-  @Test
   // Many of the strings in this test may be possible to express in shorter ways with the current
   // sets of excludable fields, but their shortest representation changes as those sets change, as
   // do their semantics; therefore we allow currently longer expressions, and we allow explicit
   // listing of children, even if these are currently all the children.
+  @Test
   public void testParseFieldMapFromString_equivalentExpressions() {
     // Listing all excludable parent fields is equivalent to listing all excludable child fields.
     assertEquals(
@@ -866,12 +870,12 @@ public class MetadataFilterTest  {
     MetadataFilter.forLiteBuild().filterMetadata(metadata);
 
     // id, country_code, and international_prefix should never be cleared.
-    assertEquals(metadata.getId(), "AM");
-    assertEquals(metadata.getCountryCode(), 374);
-    assertEquals(metadata.getInternationalPrefix(), "0[01]");
+    assertEquals(metadata.getId(), ID);
+    assertEquals(metadata.getCountryCode(), COUNTRY_CODE);
+    assertEquals(metadata.getInternationalPrefix(), INTERNATIONAL_PREFIX);
 
     // preferred_international_prefix should not be cleared in liteBuild.
-    assertEquals(metadata.getPreferredInternationalPrefix(), "00");
+    assertEquals(metadata.getPreferredInternationalPrefix(), PREFERRED_INTERNATIONAL_PREFIX);
 
     // All PhoneNumberDescs must have only example_number cleared.
     for (PhoneNumberDesc desc : Arrays.asList(
@@ -896,9 +900,9 @@ public class MetadataFilterTest  {
     MetadataFilter.forSpecialBuild().filterMetadata(metadata);
 
     // id, country_code, and international_prefix should never be cleared.
-    assertEquals(metadata.getId(), "AM");
-    assertEquals(metadata.getCountryCode(), 374);
-    assertEquals(metadata.getInternationalPrefix(), "0[01]");
+    assertEquals(metadata.getId(), ID);
+    assertEquals(metadata.getCountryCode(), COUNTRY_CODE);
+    assertEquals(metadata.getInternationalPrefix(), INTERNATIONAL_PREFIX);
 
     // preferred_international_prefix should be cleared in specialBuild.
     assertFalse(metadata.hasPreferredInternationalPrefix());
@@ -933,10 +937,10 @@ public class MetadataFilterTest  {
     MetadataFilter.emptyFilter().filterMetadata(metadata);
 
     // None of the fields should be cleared.
-    assertEquals(metadata.getId(), "AM");
-    assertEquals(metadata.getCountryCode(), 374);
-    assertEquals(metadata.getInternationalPrefix(), "0[01]");
-    assertEquals(metadata.getPreferredInternationalPrefix(), "00");
+    assertEquals(metadata.getId(), ID);
+    assertEquals(metadata.getCountryCode(), COUNTRY_CODE);
+    assertEquals(metadata.getInternationalPrefix(), INTERNATIONAL_PREFIX);
+    assertEquals(metadata.getPreferredInternationalPrefix(), PREFERRED_INTERNATIONAL_PREFIX);
     for (PhoneNumberDesc desc : Arrays.asList(
         metadata.getGeneralDesc(),
         metadata.getFixedLine(),
@@ -977,10 +981,10 @@ public class MetadataFilterTest  {
 
   private static PhoneMetadata.Builder getFakeArmeniaPhoneMetadata() {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
-    metadata.setId("AM");
-    metadata.setCountryCode(374);
-    metadata.setInternationalPrefix("0[01]");
-    metadata.setPreferredInternationalPrefix("00");
+    metadata.setId(ID);
+    metadata.setCountryCode(COUNTRY_CODE);
+    metadata.setInternationalPrefix(INTERNATIONAL_PREFIX);
+    metadata.setPreferredInternationalPrefix(PREFERRED_INTERNATIONAL_PREFIX);
     metadata.setGeneralDesc(getFakeArmeniaPhoneNumberDesc(true));
     metadata.setFixedLine(getFakeArmeniaPhoneNumberDesc(false));
     metadata.setMobile(getFakeArmeniaPhoneNumberDesc(false));

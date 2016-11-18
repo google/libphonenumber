@@ -56,10 +56,10 @@ public final class MetadataFilterCoverageTest {
   public void testCoverageOfExcludableParentFields() {
     for (String field : MetadataFilter.excludableParentFields) {
       String capitalized = Character.toUpperCase(field.charAt(0)) + field.substring(1);
-      String conditional = String.format(
-          "if (metadata.has%s()) {\n      metadata.set%s(getFiltered(\"%s\", metadata.get%s()));\n"
-          + "    }", capitalized, capitalized, field, capitalized);
-      assertTrue("Code is missing correct conditional for " + field, CODE.contains(conditional));
+      String conditional = String.format("(?s).*if \\(metadata.has%s\\(\\)\\) \\{\\s+"
+          + "metadata.set%s\\(getFiltered\\(\"%s\",\\s+metadata.get%s\\(\\)\\)\\);\\s+\\}.*",
+          capitalized, capitalized, field, capitalized);
+      assertTrue("Code is missing correct conditional for " + field, CODE.matches(conditional));
     }
 
     assertEquals(countOccurrencesOf("metadata.has", CODE),
@@ -70,9 +70,9 @@ public final class MetadataFilterCoverageTest {
   public void testCoverageOfExcludableChildFields() {
     for (String field : MetadataFilter.excludableChildFields) {
       String capitalized = Character.toUpperCase(field.charAt(0)) + field.substring(1);
-      String conditional = String.format(
-          "if (shouldDrop(type, \"%s\")) {\n      builder.clear%s();\n    }", field, capitalized);
-      assertTrue("Code is missing correct conditional for " + field, CODE.contains(conditional));
+      String conditional = String.format("(?s).*if \\(shouldDrop\\(type, \"%s\"\\)\\) \\{\\s+"
+          + "builder.clear%s\\(\\);\\s+\\}.*", field, capitalized);
+      assertTrue("Code is missing correct conditional for " + field, CODE.matches(conditional));
     }
 
     assertEquals(countOccurrencesOf("shouldDrop(type, \"", CODE),
@@ -83,9 +83,9 @@ public final class MetadataFilterCoverageTest {
   public void testCoverageOfExcludableChildlessFields() {
     for (String field : MetadataFilter.excludableChildlessFields) {
       String capitalized = Character.toUpperCase(field.charAt(0)) + field.substring(1);
-      String conditional = String.format(
-          "if (shouldDrop(\"%s\")) {\n      metadata.clear%s();\n    }", field, capitalized);
-      assertTrue("Code is missing correct conditional for " + field, CODE.contains(conditional));
+      String conditional = String.format("(?s).*if \\(shouldDrop\\(\"%s\"\\)\\) \\{\\s+"
+          + "metadata.clear%s\\(\\);\\s+\\}.*", field, capitalized);
+      assertTrue("Code is missing correct conditional for " + field, CODE.matches(conditional));
     }
 
     assertEquals(countOccurrencesOf("shouldDrop(\"", CODE),

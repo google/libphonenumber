@@ -39,8 +39,8 @@ final class MetadataFilter {
   // excludableChildFields are PhoneNumberDesc fields of primitive type.
   // excludableChildlessFields are PhoneMetadata fields of primitive type.
   // Currently we support only one non-primitive type and the depth of the "family tree" is 2,
-  // meaning a field may have only direct descendants, who may not have descendants of their
-  // own. If this changes, the blacklist handling in this class should also change.
+  // meaning a field may have only direct descendants, who may not have descendants of their own. If
+  // this changes, the blacklist handling in this class should also change.
   // @VisibleForTesting
   static final TreeSet<String> excludableParentFields = new TreeSet<String>(Arrays.asList(
       "fixedLine",
@@ -161,7 +161,8 @@ final class MetadataFilter {
       metadata.setCarrierSpecific(getFiltered("carrierSpecific", metadata.getCarrierSpecific()));
     }
     if (metadata.hasNoInternationalDialling()) {
-      metadata.setNoInternationalDialling(getFiltered("noInternationalDialling", metadata.getNoInternationalDialling()));
+      metadata.setNoInternationalDialling(getFiltered("noInternationalDialling",
+              metadata.getNoInternationalDialling()));
     }
 
     if (shouldDrop("preferredInternationalPrefix")) {
