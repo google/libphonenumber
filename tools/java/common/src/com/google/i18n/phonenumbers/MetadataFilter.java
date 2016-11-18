@@ -19,7 +19,6 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -36,14 +35,14 @@ final class MetadataFilter {
   // The following 3 sets comprise all the PhoneMetadata fields as defined at phonemetadata.proto
   // which may be excluded from customized serializations of the binary metadata. Fields that are
   // core to the library functionality may not be listed here.
-  // EXCLUDABLE_PARENT_FIELDS are PhoneMetadata fields of type PhoneNumberDesc.
-  // EXCLUDABLE_CHILD_FIELDS are PhoneNumberDesc fields of primitive type.
-  // EXCLUDABLE_CHILDLESS_FIELDS are PhoneMetadata fields of primitive type.
+  // excludableParentFields are PhoneMetadata fields of type PhoneNumberDesc.
+  // excludableChildFields are PhoneNumberDesc fields of primitive type.
+  // excludableChildlessFields are PhoneMetadata fields of primitive type.
   // Currently we support only one non-primitive type and the depth of the "family tree" is 2,
   // meaning a field may have only direct descendants, who may not have descendants of their
   // own. If this changes, the blacklist handling in this class should also change.
   // @VisibleForTesting
-  static final TreeSet<String> EXCLUDABLE_PARENT_FIELDS = new TreeSet<String>(Arrays.asList(
+  static final TreeSet<String> excludableParentFields = new TreeSet<String>(Arrays.asList(
       "fixedLine",
       "mobile",
       "tollFree",
@@ -61,14 +60,14 @@ final class MetadataFilter {
       "noInternationalDialling"));
 
   // @VisibleForTesting
-  static final TreeSet<String> EXCLUDABLE_CHILD_FIELDS = new TreeSet<String>(Arrays.asList(
+  static final TreeSet<String> excludableChildFields = new TreeSet<String>(Arrays.asList(
       "nationalNumberPattern",
       "possibleLength",
       "possibleLengthLocalOnly",
       "exampleNumber"));
 
   // @VisibleForTesting
-  static final TreeSet<String> EXCLUDABLE_CHILDLESS_FIELDS = new TreeSet<String>(Arrays.asList(
+  static final TreeSet<String> excludableChildlessFields = new TreeSet<String>(Arrays.asList(
       "preferredInternationalPrefix",
       "nationalPrefix",
       "preferredExtnPrefix",
@@ -165,28 +164,28 @@ final class MetadataFilter {
       metadata.setNoInternationalDialling(getFiltered("noInternationalDialling", metadata.getNoInternationalDialling()));
     }
 
-    if (drop("preferredInternationalPrefix")) {
+    if (shouldDrop("preferredInternationalPrefix")) {
       metadata.clearPreferredInternationalPrefix();
     }
-    if (drop("nationalPrefix")) {
+    if (shouldDrop("nationalPrefix")) {
       metadata.clearNationalPrefix();
     }
-    if (drop("preferredExtnPrefix")) {
+    if (shouldDrop("preferredExtnPrefix")) {
       metadata.clearPreferredExtnPrefix();
     }
-    if (drop("nationalPrefixTransformRule")) {
+    if (shouldDrop("nationalPrefixTransformRule")) {
       metadata.clearNationalPrefixTransformRule();
     }
-    if (drop("sameMobileAndFixedLinePattern")) {
+    if (shouldDrop("sameMobileAndFixedLinePattern")) {
       metadata.clearSameMobileAndFixedLinePattern();
     }
-    if (drop("mainCountryForCode")) {
+    if (shouldDrop("mainCountryForCode")) {
       metadata.clearMainCountryForCode();
     }
-    if (drop("leadingZeroPossible")) {
+    if (shouldDrop("leadingZeroPossible")) {
       metadata.clearLeadingZeroPossible();
     }
-    if (drop("mobileNumberPortableRegion")) {
+    if (shouldDrop("mobileNumberPortableRegion")) {
       metadata.clearMobileNumberPortableRegion();
     }
   }
@@ -216,17 +215,17 @@ final class MetadataFilter {
       int leftParenIndex = group.indexOf('(');
       int rightParenIndex = group.indexOf(')');
       if (leftParenIndex < 0 && rightParenIndex < 0) {
-        if (EXCLUDABLE_PARENT_FIELDS.contains(group)) {
+        if (excludableParentFields.contains(group)) {
           if (fieldMap.containsKey(group)) {
             throw new RuntimeException(group + " given more than once in " + string);
           }
-          fieldMap.put(group, new TreeSet<String>(EXCLUDABLE_CHILD_FIELDS));
-        } else if (EXCLUDABLE_CHILDLESS_FIELDS.contains(group)) {
+          fieldMap.put(group, new TreeSet<String>(excludableChildFields));
+        } else if (excludableChildlessFields.contains(group)) {
           if (fieldMap.containsKey(group)) {
             throw new RuntimeException(group + " given more than once in " + string);
           }
           fieldMap.put(group, new TreeSet<String>());
-        } else if (EXCLUDABLE_CHILD_FIELDS.contains(group)) {
+        } else if (excludableChildFields.contains(group)) {
           if (wildcardChildren.contains(group)) {
             throw new RuntimeException(group + " given more than once in " + string);
           }
@@ -238,7 +237,7 @@ final class MetadataFilter {
         // We don't check for duplicate parentheses or illegal characters since these will be caught
         // as not being part of valid field tokens.
         String parent = group.substring(0, leftParenIndex);
-        if (!EXCLUDABLE_PARENT_FIELDS.contains(parent)) {
+        if (!excludableParentFields.contains(parent)) {
           throw new RuntimeException(parent + " is not a valid parent token");
         }
         if (fieldMap.containsKey(parent)) {
@@ -246,7 +245,7 @@ final class MetadataFilter {
         }
         TreeSet<String> children = new TreeSet<String>();
         for (String child : group.substring(leftParenIndex + 1, rightParenIndex).split(",", -1)) {
-          if (!EXCLUDABLE_CHILD_FIELDS.contains(child)) {
+          if (!excludableChildFields.contains(child)) {
             throw new RuntimeException(child + " is not a valid child token");
           }
           if (!children.add(child)) {
@@ -259,14 +258,14 @@ final class MetadataFilter {
       }
     }
     for (String wildcardChild : wildcardChildren) {
-      for (String parent : EXCLUDABLE_PARENT_FIELDS) {
+      for (String parent : excludableParentFields) {
         TreeSet<String> children = fieldMap.get(parent);
         if (children == null) {
           children = new TreeSet<String>();
           fieldMap.put(parent, children);
         }
         if (!children.add(wildcardChild)
-            && fieldMap.get(parent).size() != EXCLUDABLE_CHILD_FIELDS.size()) {
+            && fieldMap.get(parent).size() != excludableChildFields.size()) {
           // The map already contains parent -> wildcardChild but not all possible children.
           // So wildcardChild was given explicitly as a child of parent, which is a duplication
           // since it's also given as a wildcard child.
@@ -285,16 +284,16 @@ final class MetadataFilter {
   static TreeMap<String, TreeSet<String>> computeComplement(
       TreeMap<String, TreeSet<String>> fieldMap) {
     TreeMap<String, TreeSet<String>> complement = new TreeMap<String, TreeSet<String>>();
-    for (String parent : EXCLUDABLE_PARENT_FIELDS) {
+    for (String parent : excludableParentFields) {
       if (!fieldMap.containsKey(parent)) {
-        complement.put(parent, new TreeSet<String>(EXCLUDABLE_CHILD_FIELDS));
+        complement.put(parent, new TreeSet<String>(excludableChildFields));
       } else {
         TreeSet<String> otherChildren = fieldMap.get(parent);
         // If the other map has all the children for this parent then we don't want to include the
         // parent as a key.
-        if (otherChildren.size() != EXCLUDABLE_CHILD_FIELDS.size()) {
+        if (otherChildren.size() != excludableChildFields.size()) {
           TreeSet<String> children = new TreeSet<String>();
-          for (String child : EXCLUDABLE_CHILD_FIELDS) {
+          for (String child : excludableChildFields) {
             if (!otherChildren.contains(child)) {
               children.add(child);
             }
@@ -303,7 +302,7 @@ final class MetadataFilter {
         }
       }
     }
-    for (String childlessField : EXCLUDABLE_CHILDLESS_FIELDS) {
+    for (String childlessField : excludableChildlessFields) {
       if (!fieldMap.containsKey(childlessField)) {
         complement.put(childlessField, new TreeSet<String>());
       }
@@ -312,19 +311,19 @@ final class MetadataFilter {
   }
 
   // @VisibleForTesting
-  boolean drop(String parent, String child) {
-    if (!EXCLUDABLE_PARENT_FIELDS.contains(parent)) {
+  boolean shouldDrop(String parent, String child) {
+    if (!excludableParentFields.contains(parent)) {
       throw new RuntimeException(parent + " is not an excludable parent field");
     }
-    if (!EXCLUDABLE_CHILD_FIELDS.contains(child)) {
+    if (!excludableChildFields.contains(child)) {
       throw new RuntimeException(child + " is not an excludable child field");
     }
     return blacklist.containsKey(parent) && blacklist.get(parent).contains(child);
   }
 
   // @VisibleForTesting
-  boolean drop(String childlessField) {
-    if (!EXCLUDABLE_CHILDLESS_FIELDS.contains(childlessField)) {
+  boolean shouldDrop(String childlessField) {
+    if (!excludableChildlessFields.contains(childlessField)) {
       throw new RuntimeException(childlessField + " is not an excludable childless field");
     }
     return blacklist.containsKey(childlessField);
@@ -332,16 +331,16 @@ final class MetadataFilter {
 
   private PhoneNumberDesc getFiltered(String type, PhoneNumberDesc desc) {
     PhoneNumberDesc.Builder builder = PhoneNumberDesc.newBuilder().mergeFrom(desc);
-    if (drop(type, "nationalNumberPattern")) {
+    if (shouldDrop(type, "nationalNumberPattern")) {
       builder.clearNationalNumberPattern();
     }
-    if (drop(type, "possibleLength")) {
+    if (shouldDrop(type, "possibleLength")) {
       builder.clearPossibleLength();
     }
-    if (drop(type, "possibleLengthLocalOnly")) {
+    if (shouldDrop(type, "possibleLengthLocalOnly")) {
       builder.clearPossibleLengthLocalOnly();
     }
-    if (drop(type, "exampleNumber")) {
+    if (shouldDrop(type, "exampleNumber")) {
       builder.clearExampleNumber();
     }
     return builder.build();
