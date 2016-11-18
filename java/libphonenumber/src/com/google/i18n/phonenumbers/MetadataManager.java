@@ -48,7 +48,7 @@ final class MetadataManager {
   private static final String SHORT_NUMBER_METADATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/ShortNumberMetadataProto";
 
-  private static final MetadataLoader METADATA_LOADER = new MetadataLoader() {
+  static final MetadataLoader DEFAULT_METADATA_LOADER = new MetadataLoader() {
     @Override
     public InputStream loadMetadata(String metadataFileName) {
       return MetadataManager.class.getResourceAsStream(metadataFileName);
@@ -81,16 +81,16 @@ final class MetadataManager {
     if (!alternateFormatsCountryCodes.contains(countryCallingCode)) {
       return null;
     }
-    return getMultiFileMetadata(countryCallingCode, alternateFormatsMap,
-        ALTERNATE_FORMATS_FILE_PREFIX, METADATA_LOADER);
+    return getMetadataFromMultiFilePrefix(countryCallingCode, alternateFormatsMap,
+        ALTERNATE_FORMATS_FILE_PREFIX, DEFAULT_METADATA_LOADER);
   }
 
   static PhoneMetadata getShortNumberMetadataForRegion(String regionCode) {
     if (!shortNumberMetadataRegionCodes.contains(regionCode)) {
       return null;
     }
-    return getMultiFileMetadata(regionCode, shortNumberMetadataMap,
-        SHORT_NUMBER_METADATA_FILE_PREFIX, METADATA_LOADER);
+    return getMetadataFromMultiFilePrefix(regionCode, shortNumberMetadataMap,
+        SHORT_NUMBER_METADATA_FILE_PREFIX, DEFAULT_METADATA_LOADER);
   }
 
   static Set<String> getSupportedShortNumberRegions() {
@@ -106,15 +106,15 @@ final class MetadataManager {
    * @param filePrefix  the prefix of the file to load metadata from
    * @param metadataLoader  the metadata loader used to inject alternative metadata sources
    */
-  static <T> PhoneMetadata getMultiFileMetadata(T key, ConcurrentHashMap<T, PhoneMetadata> map,
-      String filePrefix, MetadataLoader metadataLoader) {
+  static <T> PhoneMetadata getMetadataFromMultiFilePrefix(T key,
+      ConcurrentHashMap<T, PhoneMetadata> map, String filePrefix, MetadataLoader metadataLoader) {
     PhoneMetadata metadata = map.get(key);
     if (metadata != null) {
       return metadata;
     }
     // We assume key.toString() is well-defined.
     String fileName = filePrefix + "_" + key;
-    List<PhoneMetadata> metadataList = getMetadataFromFileName(fileName, metadataLoader);
+    List<PhoneMetadata> metadataList = getMetadataFromSingleFileName(fileName, metadataLoader);
     if (metadataList.size() > 1) {
       logger.log(Level.WARNING, "more than one metadata in file " + fileName);
     }
@@ -126,9 +126,10 @@ final class MetadataManager {
   // Loader and holder for the metadata maps loaded from a single file.
   static class SingleFileMetadataMaps {
     static SingleFileMetadataMaps load(String fileName, MetadataLoader metadataLoader) {
-      List<PhoneMetadata> metadataList = getMetadataFromFileName(fileName, metadataLoader);
+      List<PhoneMetadata> metadataList = getMetadataFromSingleFileName(fileName, metadataLoader);
       Map<String, PhoneMetadata> regionCodeToMetadata = new HashMap<String, PhoneMetadata>();
-      Map<Integer, PhoneMetadata> countryCallingCodeToMetadata = new HashMap<Integer, PhoneMetadata>();
+      Map<Integer, PhoneMetadata> countryCallingCodeToMetadata =
+          new HashMap<Integer, PhoneMetadata>();
       for (PhoneMetadata metadata : metadataList) {
         String regionCode = metadata.getId();
         if (PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode)) {
@@ -172,17 +173,15 @@ final class MetadataManager {
   static SingleFileMetadataMaps getSingleFileMetadataMaps(
       AtomicReference<SingleFileMetadataMaps> ref, String fileName, MetadataLoader metadataLoader) {
     SingleFileMetadataMaps maps = ref.get();
-    if (maps == null) {
-      maps = SingleFileMetadataMaps.load(fileName, metadataLoader);
-      SingleFileMetadataMaps existingValue = ref.getAndSet(maps);
-      if (existingValue != null) {
-        maps = existingValue;
-      }
+    if (maps != null) {
+      return maps;
     }
-    return maps;
+    maps = SingleFileMetadataMaps.load(fileName, metadataLoader);
+    ref.compareAndSet(null, maps);
+    return ref.get();
   }
 
-  private static List<PhoneMetadata> getMetadataFromFileName(String fileName,
+  private static List<PhoneMetadata> getMetadataFromSingleFileName(String fileName,
       MetadataLoader metadataLoader) {
     InputStream source = metadataLoader.loadMetadata(fileName);
     if (source == null) {

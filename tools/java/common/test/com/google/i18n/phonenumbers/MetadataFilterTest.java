@@ -168,8 +168,7 @@ public class MetadataFilterTest  {
   public void testParseFieldMapFromString_mixOfGroups() {
     TreeMap<String, TreeSet<String>> fieldMap = new TreeMap<String, TreeSet<String>>();
     fieldMap.put("uan", new TreeSet<String>(Arrays.asList(
-        "possibleLength", "exampleNumber", "possibleLengthLocalOnly",
-        "nationalNumberPattern")));
+        "possibleLength", "exampleNumber", "possibleLengthLocalOnly", "nationalNumberPattern")));
     fieldMap.put("pager", new TreeSet<String>(Arrays.asList(
         "exampleNumber", "nationalNumberPattern")));
     fieldMap.put("fixedLine", new TreeSet<String>(Arrays.asList(

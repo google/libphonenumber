@@ -62,7 +62,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
 
   @Override
   public PhoneMetadata getMetadataForRegion(String regionCode) {
-    return MetadataManager.getMultiFileMetadata(regionCode, geographicalRegions,
+    return MetadataManager.getMetadataFromMultiFilePrefix(regionCode, geographicalRegions,
         multiFilePhoneNumberMetadataFilePrefix, metadataLoader);
   }
 
@@ -72,7 +72,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       // The given country calling code was for a geographical region.
       return null;
     }
-    return MetadataManager.getMultiFileMetadata(countryCallingCode, nonGeographicalRegions,
+    return MetadataManager.getMetadataFromMultiFilePrefix(countryCallingCode, nonGeographicalRegions,
         multiFilePhoneNumberMetadataFilePrefix, metadataLoader);
   }
 
