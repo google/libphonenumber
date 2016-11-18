@@ -25,18 +25,20 @@ import java.util.concurrent.atomic.AtomicReference;
 final class SingleFileMetadataSourceImpl implements MetadataSource {
   // The name of the binary file containing phone number metadata for different regions.
   // This enables us to set up with different metadata, such as for testing.
-  private final String phoneNumberMetadataFileName;
+  private final String singleFilePhoneNumberMetadataFileName;
 
   // The {@link MetadataLoader} used to inject alternative metadata sources.
   private final MetadataLoader metadataLoader;
 
-  private final AtomicReference<MetadataManager.SingleFileMetadataMaps> phoneNumberMetadataRef =
+  private final AtomicReference<MetadataManager.SingleFileMetadataMaps>
+      singleFilePhoneNumberMetadataRef =
       new AtomicReference<MetadataManager.SingleFileMetadataMaps>();
 
   // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
   // @VisibleForTesting
-  SingleFileMetadataSourceImpl(String phoneNumberMetadataFileName, MetadataLoader metadataLoader) {
-    this.phoneNumberMetadataFileName = phoneNumberMetadataFileName;
+  SingleFileMetadataSourceImpl(String singleFilePhoneNumberMetadataFileName,
+      MetadataLoader metadataLoader) {
+    this.singleFilePhoneNumberMetadataFileName = singleFilePhoneNumberMetadataFileName;
     this.metadataLoader = metadataLoader;
   }
 
@@ -47,8 +49,8 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
 
   @Override
   public PhoneMetadata getMetadataForRegion(String regionCode) {
-    return MetadataManager.getSingleFileMetadataMaps(phoneNumberMetadataRef,
-        phoneNumberMetadataFileName, metadataLoader).get(regionCode);
+    return MetadataManager.getSingleFileMetadataMaps(singleFilePhoneNumberMetadataRef,
+        singleFilePhoneNumberMetadataFileName, metadataLoader).get(regionCode);
   }
 
   @Override
@@ -59,7 +61,7 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
     // would check that the passed in country calling code was indeed non-geographical to avoid
     // loading costs for a null result. Here though we do not check this since the entire data must
     // be loaded anyway if any of it is needed at some point in the life cycle of this class.
-    return MetadataManager.getSingleFileMetadataMaps(phoneNumberMetadataRef,
-        phoneNumberMetadataFileName, metadataLoader).get(countryCallingCode);
+    return MetadataManager.getSingleFileMetadataMaps(singleFilePhoneNumberMetadataRef,
+        singleFilePhoneNumberMetadataFileName, metadataLoader).get(countryCallingCode);
   }
 }

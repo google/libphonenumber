@@ -18,7 +18,6 @@ package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;

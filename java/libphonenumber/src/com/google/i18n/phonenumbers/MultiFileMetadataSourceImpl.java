@@ -47,7 +47,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   private final ConcurrentHashMap<Integer, PhoneMetadata> nonGeographicalRegions =
       new ConcurrentHashMap<Integer, PhoneMetadata>();
 
-  // It is assumed that metadataLoader is not null. Checks should happen before passing here.
+  // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
   // @VisibleForTesting
   MultiFileMetadataSourceImpl(String multiFilePhoneNumberMetadataFilePrefix,
       MetadataLoader metadataLoader) {
@@ -55,8 +55,8 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
     this.metadataLoader = metadataLoader;
   }
 
-  // It is assumed that metadataLoader is not null. Checks should happen before passing here.
-  public MultiFileMetadataSourceImpl(MetadataLoader metadataLoader) {
+  // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
+  MultiFileMetadataSourceImpl(MetadataLoader metadataLoader) {
     this(MetadataManager.MULTI_FILE_PHONE_NUMBER_METADATA_FILE_PREFIX, metadataLoader);
   }
 
