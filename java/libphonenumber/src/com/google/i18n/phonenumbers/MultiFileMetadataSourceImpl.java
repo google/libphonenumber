@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 final class MultiFileMetadataSourceImpl implements MetadataSource {
   // The prefix of the binary files containing phone number metadata for different regions.
   // This enables us to set up with different metadata, such as for testing.
-  private final String multiFilePhoneNumberMetadataFilePrefix;
+  private final String phoneNumberMetadataFilePrefix;
 
   // The {@link MetadataLoader} used to inject alternative metadata sources.
   private final MetadataLoader metadataLoader;
@@ -47,23 +47,22 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
   private final ConcurrentHashMap<Integer, PhoneMetadata> nonGeographicalRegions =
       new ConcurrentHashMap<Integer, PhoneMetadata>();
 
-  // It is assumed that metadataLoader is not null. Checks should happen before passing here.
+  // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
   // @VisibleForTesting
-  MultiFileMetadataSourceImpl(String multiFilePhoneNumberMetadataFilePrefix,
-      MetadataLoader metadataLoader) {
-    this.multiFilePhoneNumberMetadataFilePrefix = multiFilePhoneNumberMetadataFilePrefix;
+  MultiFileMetadataSourceImpl(String phoneNumberMetadataFilePrefix, MetadataLoader metadataLoader) {
+    this.phoneNumberMetadataFilePrefix = phoneNumberMetadataFilePrefix;
     this.metadataLoader = metadataLoader;
   }
 
-  // It is assumed that metadataLoader is not null. Checks should happen before passing here.
-  public MultiFileMetadataSourceImpl(MetadataLoader metadataLoader) {
+  // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
+  MultiFileMetadataSourceImpl(MetadataLoader metadataLoader) {
     this(MetadataManager.MULTI_FILE_PHONE_NUMBER_METADATA_FILE_PREFIX, metadataLoader);
   }
 
   @Override
   public PhoneMetadata getMetadataForRegion(String regionCode) {
     return MetadataManager.getMetadataFromMultiFilePrefix(regionCode, geographicalRegions,
-        multiFilePhoneNumberMetadataFilePrefix, metadataLoader);
+        phoneNumberMetadataFilePrefix, metadataLoader);
   }
 
   @Override
@@ -73,7 +72,7 @@ final class MultiFileMetadataSourceImpl implements MetadataSource {
       return null;
     }
     return MetadataManager.getMetadataFromMultiFilePrefix(countryCallingCode, nonGeographicalRegions,
-        multiFilePhoneNumberMetadataFilePrefix, metadataLoader);
+        phoneNumberMetadataFilePrefix, metadataLoader);
   }
 
   // A country calling code is non-geographical if it only maps to the non-geographical region code,

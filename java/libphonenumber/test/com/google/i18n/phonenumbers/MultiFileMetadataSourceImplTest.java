@@ -17,7 +17,6 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import java.util.concurrent.ConcurrentHashMap;
 import junit.framework.TestCase;
 
 /**
