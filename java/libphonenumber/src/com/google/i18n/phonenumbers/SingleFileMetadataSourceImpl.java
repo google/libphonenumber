@@ -35,8 +35,7 @@ final class SingleFileMetadataSourceImpl implements MetadataSource {
 
   // It is assumed that metadataLoader is not null. Checks should happen before passing it in here.
   // @VisibleForTesting
-  SingleFileMetadataSourceImpl(String phoneNumberMetadataFileName,
-      MetadataLoader metadataLoader) {
+  SingleFileMetadataSourceImpl(String phoneNumberMetadataFileName, MetadataLoader metadataLoader) {
     this.phoneNumberMetadataFileName = phoneNumberMetadataFileName;
     this.metadataLoader = metadataLoader;
   }
