@@ -461,7 +461,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("\\d{6}", phoneNumberDesc.getNationalNumberPattern());
   }
 
-  public void testFilterMetadata_liteBuild() throws Exception {
+  public void testBuildPhoneMetadataCollection_liteBuild() throws Exception {
     String xmlInput =
         "<phoneNumberMetadata>"
         + "  <territories>"
@@ -507,7 +507,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("", metadata.getMobile().getExampleNumber());
   }
 
-  public void testFilterMetadata_specialBuild() throws Exception {
+  public void testBuildPhoneMetadataCollection_specialBuild() throws Exception {
     String xmlInput =
         "<phoneNumberMetadata>"
         + "  <territories>"
@@ -554,7 +554,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("10123456", metadata.getMobile().getExampleNumber());
   }
 
-  public void testFilterMetadata_fullBuild() throws Exception {
+  public void testBuildPhoneMetadataCollection_fullBuild() throws Exception {
     String xmlInput =
         "<phoneNumberMetadata>"
         + "  <territories>"
