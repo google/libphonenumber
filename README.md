@@ -30,6 +30,41 @@ To include the code in your application, either integrate with Maven or download
 
 http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
 
+# Versioning and Announcements
+
+We generally choose the release number following these guidelines.
+
+If any of the changes pushed to master since the last release are incompatible
+with the intent / specification of an existing libphonenumber API or may cause
+libphonenumber (Java, C++, or JS) clients to have to change their code to keep
+building, we publish a major release. For example, if the last release were
+7.7.3, the new one would be 8.0.0.
+
+If any of those changes *enable* clients to update their code to take advantage
+of new functionality, we publish a minor release. So we'd go from 7.7.3 to
+7.8.0.
+
+Otherwise, including when a release contains only [metadata]
+(http://github.com/googlei18n/libphonenumber/blob/master/FAQ.md#metadata_definition)
+changes, we publish a sub-minor release, e.g. 7.7.3 to 7.7.4.
+
+Sometimes we make internal changes to the code or metadata that, while not
+affecting compatibility for clients, could affect compatibility for **porters**
+of the library. For such changes we make announcements to
+[libphonenumber-discuss]
+(http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
+are not reflected in the version number, and we would publish a sub-minor
+release if there were no other changes.
+
+Want to get notified of new releases? During most of the year, excepting
+holidays and extenuating circumstances, we release fortnightly. We update
+[release tags](http://github.com/googlei18n/libphonenumber/releases) and
+document detailed [release notes]
+(http://github.com/googlei18n/libphonenumber/blob/master/java/release_notes.txt).
+We also send an announcement to [libphonenumber-discuss]
+(http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
+release.
+
 # Quick Examples
 Let's say you have a string representing a phone number from Switzerland. This is how you parse/normalize it into a ` PhoneNumber ` object:
 
