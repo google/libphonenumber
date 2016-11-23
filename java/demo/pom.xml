@@ -4,11 +4,11 @@
   <parent>
     <artifactId>libphonenumber-parent</artifactId>
     <groupId>com.googlecode.libphonenumber</groupId>
-    <version>7.7.5-SNAPSHOT</version>
+    <version>7.7.5</version>
   </parent>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>demo</artifactId>
-  <version>7.7.5-SNAPSHOT</version>
+  <version>7.7.5</version>
 
   <properties>
     <gae.version>1.9.32</gae.version>
@@ -48,17 +48,17 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>7.7.5-SNAPSHOT</version>
+      <version>7.7.5</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>geocoder</artifactId>
-      <version>2.58-SNAPSHOT</version>
+      <version>2.58</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>carrier</artifactId>
-      <version>1.48-SNAPSHOT</version>
+      <version>1.48</version>
     </dependency>
   </dependencies>
 
