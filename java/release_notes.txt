@@ -1,3 +1,25 @@
+Nov 23, 2016: v7.7.5
+Code changes:
+ - Removing all references to possible_number_pattern other than the proto
+   buffer itself (and derived files, or hand-crafted files based on it.) This
+   information is no longer present in the binary.
+ - Refactored metadata loading and removed synchronization for all kinds of
+   metadata. Clients may experience quicker loading of alternate formats and
+   short number metadata, but no change is required for callers of the library.
+ - Reduced visibility of `public` internal API
+   `PhoneNumberUtil.createInstance(MetadataSource)` to `private`. MetadataSource
+   and all its implementations are non-public so this should not affect public
+   usage of the library.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BB, BD, ES, HN, IN, KR, KW, MC, NL, PH, PK, SH, TW, VG, ZW
+ - Updated short number metadata for region code(s):
+   AF, AG, AM, AR, AW, AZ, BD, BM, BQ, BW, CD, CI, CM, CO, CW, DZ, GD, GE, GN,
+   GT, GY, HN, HT, IE, IN, IQ, JM, JO, KE, KG, KH, KW, LV, NO, SG, SV, UY
+ - Updated geocoding data for country calling code(s): 504 (en)
+ - New carrier data for country calling code(s): 886 (en), 1284 (en)
+ - Updated carrier data for country calling code(s): 63 (en), 92 (en)
+
 Nov 09, 2016: v7.7.4
 GitHub project changes:
  - Changed tag to vX.Y.Z from libphonenumber-X.Y.Z; this may affect ports and

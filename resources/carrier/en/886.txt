@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,26 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# http://en.wikipedia.org/wiki/List_of_mobile_codes_in_Pakistan
+# Carrier for 900 is added based on a user report and wiki link
+# https://en.wikipedia.org/wiki/FarEasTone.
+# The carrier details for other prefixes needs to be updated, TODO(b/32786389).
 
-92300|Mobilink
-92301|Mobilink
-92302|Mobilink
-92303|Mobilink
-92304|Mobilink
-92305|Mobilink
-92306|Mobilink
-92307|Mobilink
-92308|Mobilink
-92309|Mobilink
-9231|Zong
-9232|Warid
-92330|Ufone
-92331|Ufone
-92332|Ufone
-92333|Ufone
-92334|Ufone
-92335|Ufone
-92336|Ufone
-92337|Ufone
-9234|Telenor
+886900|FarEasTone
