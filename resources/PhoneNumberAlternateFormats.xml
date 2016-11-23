@@ -42,12 +42,14 @@
     <!ELEMENT phoneNumberMetadata (territories)>
     <!ELEMENT territories (territory+)>
     <!ELEMENT territory (availableFormats)>
+    <!ELEMENT availableFormats (numberFormat+)>
     <!ELEMENT numberFormat (leadingDigits*, format, intlFormat*)>
     <!ELEMENT leadingDigits (#PCDATA)>
     <!ELEMENT format (#PCDATA)>
     <!ELEMENT intlFormat (#PCDATA)>
 
     <!ATTLIST territory countryCode CDATA #REQUIRED>
+    <!ATTLIST numberFormat nationalPrefixFormattingRule CDATA #IMPLIED>
     <!ATTLIST numberFormat pattern CDATA #REQUIRED>
 ]>
 

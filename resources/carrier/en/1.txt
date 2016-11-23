@@ -45,6 +45,18 @@
 1264584|Digicel
 1264729|Cable & Wireless
 1264772|Cable & Wireless
+1284300|Digicel
+1284340|Digicel
+1284341|Digicel
+1284342|Digicel
+1284343|Digicel
+1284344|Digicel
+1284345|Digicel
+1284346|Digicel
+1284347|Digicel
+1284368|Digicel
+1284393|Digicel
+1284394|Digicel
 14413|Mobility
 1441500|Digicel Bermuda
 1441539|Digicel Bermuda
