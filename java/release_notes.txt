@@ -1,3 +1,6 @@
+Nov 28, 2016: v7.8.0
+Metadata changes:
+
 Nov 23, 2016: v7.7.5
 Code changes:
  - Removing all references to possible_number_pattern other than the proto
