@@ -1,1 +1,5 @@
-
+Code changes:
+ - Deleting deprecated methods in ShortNumberInfo that work on strings, instead
+   of phone number objects. These have been marked deprecated for months. Any
+   users of these methods should call PhoneNumberUtil.parse first to create a
+   PhoneNumber object, and pass this in.
