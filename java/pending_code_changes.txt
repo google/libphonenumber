@@ -1,1 +1,3 @@
-
+Code changes:
+ - Support semicolon as extension character while parsing phone numbers. This
+   is not applicable when you are trying to find the phone numbers.
