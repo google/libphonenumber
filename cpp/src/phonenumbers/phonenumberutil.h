@@ -386,6 +386,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Tests whether a phone number matches a valid pattern. Note this doesn't
   // verify the number is actually in use, which is impossible to tell by just
   // looking at a number itself.
+  // It only verifies whether the parsed, canonicalised number is valid: not
+  // whether a particular series of digits entered by the user is diallable from
+  // the region provided when parsing. For example, the number +41 (0) 78 927
+  // 2696 can be parsed into a number with country code "41" and national
+  // significant number "789272696". This is valid, while the original string
+  // is not diallable.
   bool IsValidNumber(const PhoneNumber& number) const;
 
   // Tests whether a phone number is valid for a certain region. Note this
