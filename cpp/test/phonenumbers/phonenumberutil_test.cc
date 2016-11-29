@@ -2824,6 +2824,9 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchMatches) {
   EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005 extn 1234",
                                                     "+6433316005#1234"));
+  EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
+            phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005 extn 1234",
+                                                    "+6433316005;1234"));
   // Test proto buffers.
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
@@ -3790,6 +3793,15 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   EXPECT_EQ(us_with_extension, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(800) 901-3355 , ext 7246433", RegionCode::US(),
+                              &test_number));
+  EXPECT_EQ(us_with_extension, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("(800) 901-3355 ; 7246433", RegionCode::US(),
+                              &test_number));
+  EXPECT_EQ(us_with_extension, test_number);
+  // To test an extension character without surrounding spaces.
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("(800) 901-3355;7246433", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
