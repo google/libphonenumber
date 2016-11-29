@@ -19,7 +19,6 @@
 #include <iterator>
 #include <map>
 
-#include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/matcher_api.h"
 #include "phonenumbers/phonemetadata.pb.h"
