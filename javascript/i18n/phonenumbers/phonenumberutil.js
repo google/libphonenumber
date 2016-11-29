@@ -3864,7 +3864,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     countryCode = this.maybeExtractCountryCode(nationalNumberStr,
         regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
   } catch (e) {
-    if (e == i18n.phonenumbers.Error.INVALID_COUNTRY_CODE &&
+    if (e.message == i18n.phonenumbers.Error.INVALID_COUNTRY_CODE &&
         i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
             .test(nationalNumberStr)) {
       // Strip the plus-char, and try again.
@@ -4060,7 +4060,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
       firstNumber = this.parse(
           firstNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
     } catch (e) {
-      if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
+      if (e.message != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
         return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
       }
       // The first number has no country calling code. EXACT_MATCH is no longer
@@ -4104,7 +4104,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
           secondNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
       return this.isNumberMatch(firstNumberIn, secondNumber);
     } catch (e) {
-      if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
+      if (e.message != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
         return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
       }
       return this.isNumberMatch(secondNumberIn, firstNumber);
