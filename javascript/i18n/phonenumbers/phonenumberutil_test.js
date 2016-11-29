@@ -2929,6 +2929,11 @@ function testParseExtensions() {
   assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 , ext 7246433', RegionCode.US)));
   assertTrue(usWithExtension.equals(
+      phoneUtil.parse('(800) 901-3355 ; 7246433', RegionCode.US)));
+  // To test an extension character without surrounding spaces.
+  assertTrue(usWithExtension.equals(
+      phoneUtil.parse('(800) 901-3355;7246433', RegionCode.US)));
+  assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 ,extension 7246433', RegionCode.US)));
   assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 ,extensi\u00F3n 7246433',
@@ -3120,6 +3125,9 @@ function testIsNumberMatchMatches() {
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005 extn 1234',
                                        '+6433316005#1234'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch('+64 3 331-6005 ext. 1234',
+                                       '+6433316005;1234'));
   // Test proto buffers.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch(NZ_NUMBER, '+6403 331 6005'));
