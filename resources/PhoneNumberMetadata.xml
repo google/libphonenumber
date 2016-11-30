@@ -15206,7 +15206,7 @@
              determining the country is faster. -->
         <nationalNumberPattern>
           (?:
-            33\d|
+            6\d{2}|
             7\d{2}|
             80[09]
           )\d{7}
