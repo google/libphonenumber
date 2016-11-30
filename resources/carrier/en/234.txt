@@ -154,6 +154,7 @@
 234704|Visafone
 234705|Glo
 234706|MTN
+234707|Zoom
 234708|Airtel
 234709|Multilinks
 2347380|Starcomms
@@ -251,6 +252,7 @@
 234902|Airtel
 234903|MTN
 234905|Glo
+234907|Airtel
 234908|Etisalat
 234909|Etisalat
 234980|Starcomms

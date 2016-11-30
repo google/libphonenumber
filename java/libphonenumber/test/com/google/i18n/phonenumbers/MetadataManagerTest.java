@@ -17,26 +17,18 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-
+import java.util.concurrent.ConcurrentHashMap;
 import junit.framework.TestCase;
 
 /**
- * Some basic tests to check that the phone number metadata can be correctly loaded.
+ * Some basic tests to check that metadata can be correctly loaded.
  */
 public class MetadataManagerTest extends TestCase {
-
-  public void testAlternateFormatsContainsData() throws Exception {
+  public void testAlternateFormatsLoadCorrectly() {
     // We should have some data for Germany.
-    PhoneMetadata germanyAlternateFormats = MetadataManager.getAlternateFormatsForCountry(49);
-    assertNotNull(germanyAlternateFormats);
-    assertTrue(germanyAlternateFormats.numberFormatSize() > 0);
-  }
-
-  public void testShortNumberMetadataContainsData() throws Exception {
-    // We should have some data for France.
-    PhoneMetadata franceShortNumberMetadata = MetadataManager.getShortNumberMetadataForRegion("FR");
-    assertNotNull(franceShortNumberMetadata);
-    assertTrue(franceShortNumberMetadata.hasShortCode());
+    PhoneMetadata germanyMetadata = MetadataManager.getAlternateFormatsForCountry(49);
+    assertNotNull(germanyMetadata);
+    assertTrue(germanyMetadata.numberFormats().size() > 0);
   }
 
   public void testAlternateFormatsFailsGracefully() throws Exception {
@@ -44,8 +36,53 @@ public class MetadataManagerTest extends TestCase {
     assertNull(noAlternateFormats);
   }
 
+  public void testShortNumberMetadataLoadCorrectly() throws Exception {
+    // We should have some data for France.
+    PhoneMetadata franceMetadata = MetadataManager.getShortNumberMetadataForRegion("FR");
+    assertNotNull(franceMetadata);
+    assertTrue(franceMetadata.hasShortCode());
+  }
+
   public void testShortNumberMetadataFailsGracefully() throws Exception {
     PhoneMetadata noShortNumberMetadata = MetadataManager.getShortNumberMetadataForRegion("XXX");
     assertNull(noShortNumberMetadata);
+  }
+
+  public void testGetMetadataFromMultiFilePrefix_regionCode() {
+    ConcurrentHashMap<String, PhoneMetadata> map = new ConcurrentHashMap<String, PhoneMetadata>();
+    PhoneMetadata metadata = MetadataManager.getMetadataFromMultiFilePrefix("CA", map,
+        "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting",
+        MetadataManager.DEFAULT_METADATA_LOADER);
+    assertEquals(metadata, map.get("CA"));
+  }
+
+  public void testGetMetadataFromMultiFilePrefix_countryCallingCode() {
+    ConcurrentHashMap<Integer, PhoneMetadata> map = new ConcurrentHashMap<Integer, PhoneMetadata>();
+    PhoneMetadata metadata = MetadataManager.getMetadataFromMultiFilePrefix(800, map,
+        "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting",
+        MetadataManager.DEFAULT_METADATA_LOADER);
+    assertEquals(metadata, map.get(800));
+  }
+
+  public void testGetMetadataFromMultiFilePrefix_missingMetadataFileThrowsRuntimeException() {
+    // In normal usage we should never get a state where we are asking to load metadata that doesn't
+    // exist. However if the library is packaged incorrectly in the jar, this could happen and the
+    // best we can do is make sure the exception has the file name in it.
+    try {
+      MetadataManager.getMetadataFromMultiFilePrefix("XX",
+          new ConcurrentHashMap<String, PhoneMetadata>(), "no/such/file",
+          MetadataManager.DEFAULT_METADATA_LOADER);
+      fail("expected exception");
+    } catch (RuntimeException e) {
+      assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file_XX"));
+    }
+    try {
+      MetadataManager.getMetadataFromMultiFilePrefix(123,
+          new ConcurrentHashMap<Integer, PhoneMetadata>(), "no/such/file",
+          MetadataManager.DEFAULT_METADATA_LOADER);
+      fail("expected exception");
+    } catch (RuntimeException e) {
+      assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file_123"));
+    }
   }
 }

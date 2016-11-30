@@ -144,12 +144,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("$1 $2 $3", metadata.getNumberFormat(1).getFormat());
     assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
                  metadata.getGeneralDesc().getNationalNumberPattern());
-    assertEquals("\\d{7}(?:\\d{3})?", metadata.getGeneralDesc().getPossibleNumberPattern());
-    // Fixed-line data should be inherited from the general desc for the national number pattern,
-    // since it wasn't overridden.
-    assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
-        metadata.getFixedLine().getNationalNumberPattern());
-    assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
+    assertEquals("[13-689]\\d{9}|2[0-35-9]\\d{8}",
+                 metadata.getFixedLine().getNationalNumberPattern());
     assertEquals(1, metadata.getGeneralDesc().getPossibleLengthCount());
     assertEquals(10, metadata.getGeneralDesc().getPossibleLength(0));
     // Possible lengths are the same as the general description, so aren't stored separately in the
@@ -158,7 +154,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("900\\d{7}", metadata.getPremiumRate().getNationalNumberPattern());
     // No shared-cost data is available, so it should be initialised to "NA".
     assertEquals("NA", metadata.getSharedCost().getNationalNumberPattern());
-    assertEquals("NA", metadata.getSharedCost().getPossibleNumberPattern());
   }
 
   public void testGetInstanceLoadDEMetadata() {
@@ -181,9 +176,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(2, metadata.getMobile().getPossibleLengthCount());
     assertEquals("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}",
                  metadata.getFixedLine().getNationalNumberPattern());
-    assertEquals("\\d{2,14}", metadata.getFixedLine().getPossibleNumberPattern());
     assertEquals("30123456", metadata.getFixedLine().getExampleNumber());
-    assertEquals("\\d{10}", metadata.getTollFree().getPossibleNumberPattern());
+    assertEquals(10, metadata.getTollFree().getPossibleLength(0));
     assertEquals("900([135]\\d{6}|9\\d{7})", metadata.getPremiumRate().getNationalNumberPattern());
   }
 
@@ -209,7 +203,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(800, metadata.getCountryCode());
     assertEquals("$1 $2", metadata.getNumberFormat(0).getFormat());
     assertEquals("(\\d{4})(\\d{4})", metadata.getNumberFormat(0).getPattern());
-    assertEquals("12345678", metadata.getGeneralDesc().getExampleNumber());
+    assertEquals(0, metadata.getGeneralDesc().getPossibleLengthLocalOnlyCount());
+    assertEquals(1, metadata.getGeneralDesc().getPossibleLengthCount());
     assertEquals("12345678", metadata.getTollFree().getExampleNumber());
   }
 
@@ -344,8 +339,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(null,
                  phoneUtil.getExampleNumberForType(RegionCode.DE,
                                                    PhoneNumberUtil.PhoneNumberType.MOBILE));
-    // For the US, the example number is placed under general description, and hence should be used
-    // for both fixed line and mobile, so neither of these should return null.
     assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US,
                                                     PhoneNumberUtil.PhoneNumberType.FIXED_LINE));
     assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US,
@@ -426,8 +419,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testNormaliseStripNonDiallableCharacters() {
-    String inputNumber = "03*4-56&+a#234";
-    String expectedOutput = "03*456+234";
+    String inputNumber = "03*4-56&+1a#234";
+    String expectedOutput = "03*456+1#234";
     assertEquals("Conversion did not correctly remove non-diallable characters",
                  expectedOutput,
                  PhoneNumberUtil.normalizeDiallableCharsOnly(inputNumber));
@@ -731,10 +724,15 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, "15"));
     assertEquals("01234 19 12-5678",
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, ""));
-    // When the preferred_domestic_carrier_code is present (even when it contains an empty string),
-    // use it instead of the default carrier code passed in.
+    // When the preferred_domestic_carrier_code is present (even when it is just a space), use it
+    // instead of the default carrier code passed in.
+    arNumber.setPreferredDomesticCarrierCode(" ");
+    assertEquals("01234   12-5678",
+        phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, "15"));
+    // When the preferred_domestic_carrier_code is present but empty, treat it as unset and use
+    // instead the default carrier code passed in.
     arNumber.setPreferredDomesticCarrierCode("");
-    assertEquals("01234 12-5678",
+    assertEquals("01234 15 12-5678",
         phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, "15"));
     // We don't support this for the US so there should be no change.
     PhoneNumber usNumber = new PhoneNumber();
@@ -2192,12 +2190,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(NZ_NUMBER, phoneUtil.parse("tel:03-331-6005;isub=12345;phone-context=+64",
         RegionCode.ZZ));
 
-    // It is important that we set the carrier code to an empty string, since we used
-    // ParseAndKeepRawInput and no carrier code was found.
     PhoneNumber nzNumberWithRawInput = new PhoneNumber().mergeFrom(NZ_NUMBER).
         setRawInput("+64 3 331 6005").
-        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN).
-        setPreferredDomesticCarrierCode("");
+        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
     assertEquals(nzNumberWithRawInput, phoneUtil.parseAndKeepRawInput("+64 3 331 6005",
                                                                       RegionCode.ZZ));
     // Null is also allowed for the region code in these cases.
@@ -2299,16 +2294,14 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testParseAndKeepRaw() throws Exception {
     PhoneNumber alphaNumericNumber = new PhoneNumber().mergeFrom(ALPHA_NUMERIC_NUMBER).
         setRawInput("800 six-flags").
-        setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY).
-        setPreferredDomesticCarrierCode("");
+        setCountryCodeSource(CountryCodeSource.FROM_DEFAULT_COUNTRY);
     assertEquals(alphaNumericNumber,
                  phoneUtil.parseAndKeepRawInput("800 six-flags", RegionCode.US));
 
     PhoneNumber shorterAlphaNumber = new PhoneNumber().
         setCountryCode(1).setNationalNumber(8007493524L).
         setRawInput("1800 six-flag").
-        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN).
-        setPreferredDomesticCarrierCode("");
+        setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
     assertEquals(shorterAlphaNumber,
                  phoneUtil.parseAndKeepRawInput("1800 six-flag", RegionCode.US));
 

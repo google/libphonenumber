@@ -53,20 +53,6 @@ class ShortNumberInfo {
     UNKNOWN_COST
   };
 
-  // DEPRECATED: Anyone who was using it and passing in a string with whitespace
-  // (or other formatting characters) would have been getting the wrong result.
-  // You should parse the string to PhoneNumber and use the method
-  // IsPossibleShortNumberForRegion(PhoneNumber, String). This method will be
-  // removed in the next release.
-  //
-  // Check whether a short number is a possible number when dialled from a
-  // region, given the number in the form of a string, and the region where the
-  // number is dialed from.  This provides a more lenient check than
-  // IsValidShortNumberForRegion.
-  bool IsPossibleShortNumberForRegion(
-      const string& short_number,
-      const string& region_dialing_from) const;
-
   // Check whether a short number is a possible number when dialled from a
   // region, given the number in the form of a string, and the region where the
   // number is dialed from.  This provides a more lenient check than
@@ -81,19 +67,6 @@ class ShortNumberInfo {
   // See IsPossibleShortNumberForRegion for details.
   bool IsPossibleShortNumber(const PhoneNumber& number) const;
 
-  // DEPRECATED: Anyone who was using it and passing in a string with whitespace
-  // (or other formatting characters) would have been getting the wrong result.
-  // You should parse the string to PhoneNumber and use the method
-  // IsValidShortNumberForRegion(PhoneNumber, String). This method will be
-  // removed in the next release.
-  //
-  // Tests whether a short number matches a valid pattern in a region. Note
-  // that this doesn't verify the number is actually in use, which is
-  // impossible to tell by just looking at the number itself.
-  bool IsValidShortNumberForRegion(
-      const string& short_number,
-      const string& region_dialing_from) const;
-
   // Tests whether a short number matches a valid pattern in a region. Note
   // that this doesn't verify the number is actually in use, which is
   // impossible to tell by just looking at the number itself.
@@ -107,30 +80,6 @@ class ShortNumberInfo {
   // which is impossible to tell by just looking at the number itself. See
   // IsValidShortNumberForRegion for details.
   bool IsValidShortNumber(const PhoneNumber& number) const;
-
-  // DEPRECATED: Anyone who was using it and passing in a string with whitespace
-  // (or other formatting characters) would have been getting the wrong result.
-  // You should parse the string to PhoneNumber and use the method
-  // GetExpectedCostForRegion(PhoneNumber, String). This method will be
-  // removed in the next release.
-  //
-  // Gets the expected cost category of a short number when dialled from a
-  // region (however, nothing is implied about its validity). If it is
-  // important that the number is valid, then its validity must first be
-  // checked using IsValidShortNumberForRegion. Note that emergency numbers are
-  // always considered toll-free. Example usage:
-  //
-  // ShortNumberInfo short_info;
-  // string short_number("110");
-  // RegionCode region_code = RegionCode::FR();
-  // if (short_info.IsValidShortNumberForRegion(short_number, region_code)) {
-  //   ShortNumberInfo::ShortNumberCost cost =
-  //       short_info.GetExpectedCostForRegion(short_number, region_code);
-  //   // Do something with the cost information here.
-  // }
-  ShortNumberCost GetExpectedCostForRegion(
-      const string& short_number,
-      const string& region_dialing_from) const;
 
   // Gets the expected cost category of a short number when dialled from a
   // region (however, nothing is implied about its validity). If it is

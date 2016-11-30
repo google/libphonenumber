@@ -14,10 +14,13 @@
 
 # Generated from:
 # Internal statistical data (2014-04-10).
-# Extra 2 added for Santiago to stop it clashing with other prefixes.
+
+# The ITU document says that 2 is assigned to Santiago, but we have one more
+# digit here to distinguish from the prefix 2196 which is assigned to the rural
+# company CTR.
 
 5622|Santiago, Región Metropolitana
-56232|Santiago, Región Metropolitana
+5623|Santiago, Región Metropolitana
 5632|Valparaíso
 5633|Quillota, Valparaíso
 5634|San Felipe, Valparaíso

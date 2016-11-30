@@ -28,6 +28,7 @@
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>\d{6}</nationalNumberPattern>
         <possibleLengths national="6"/>
       </fixedLine>
     </territory>
@@ -45,6 +46,29 @@
         <possibleLengths national="9"/>
         <exampleNumber>600123456</exampleNumber>
       </uan>
+    </territory>
+
+    <!-- Armenia -->
+    <!-- Added to test same mobile and fixed-line in custom builds. -->
+    <territory id="AM" countryCode="374" internationalPrefix="00"
+               nationalPrefix="0">
+      <generalDesc>
+        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
+        <exampleNumber>10123456</exampleNumber>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
+        <possibleLengths national="8" localOnly="5,6"/>
+        <exampleNumber>10123456</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
+        <possibleLengths national="8" localOnly="5,6"/>
+        <exampleNumber>10123456</exampleNumber>
+      </mobile>
     </territory>
 
     <!-- Angola -->
@@ -195,6 +219,7 @@
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>\d{8,10}</nationalNumberPattern>
         <possibleLengths national="10" localOnly="8"/>
       </fixedLine>
     </territory>
@@ -277,6 +302,7 @@
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>[1-9]\d{5}</nationalNumberPattern>
         <possibleLengths national="6"/>
         <exampleNumber>112345</exampleNumber>
       </fixedLine>
@@ -289,6 +315,7 @@
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>226\d{7}</nationalNumberPattern>
         <possibleLengths national="10" localOnly="7"/>
       </fixedLine>
     </territory>
@@ -303,6 +330,7 @@
         <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>\d{6,10}</nationalNumberPattern>
         <possibleLengths national="10" localOnly="6"/>
       </fixedLine>
     </territory>
@@ -369,6 +397,7 @@
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>\d{8,10}</nationalNumberPattern>
         <possibleLengths national="10" localOnly="8"/>
       </fixedLine>
     </territory>
@@ -423,6 +452,7 @@
           )\d{1,8}
         </nationalNumberPattern>
         <possibleLengths national="[4-11]" localOnly="2,3"/>
+        <possibleNumberPattern>\d{2,14}</possibleNumberPattern>
         <exampleNumber>30123456</exampleNumber>
       </fixedLine>
       <mobile>
@@ -459,6 +489,7 @@
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>3\d{6}</nationalNumberPattern>
         <possibleLengths national="7"/>
       </fixedLine>
     </territory>
@@ -539,6 +570,7 @@
         <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>\d{6,10}</nationalNumberPattern>
         <possibleLengths national="10" localOnly="6"/>
       </fixedLine>
     </territory>
@@ -657,6 +689,7 @@
         <possibleNumberPattern>\d{4,11}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>07\d{5}|[1-357-9]\d{3,10}</nationalNumberPattern>
         <possibleLengths national="[4-11]"/>
       </fixedLine>
       <tollFree>
@@ -1034,11 +1067,19 @@
         <!-- Numbers beginning with 7 are excluded for testing purposes only. -->
         <nationalNumberPattern>[13-689]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
-        <exampleNumber>1234567890</exampleNumber>
       </generalDesc>
       <fixedLine>
+        <nationalNumberPattern>[13-689]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
         <possibleLengths national="10" localOnly="7"/>
+        <exampleNumber>1234567890</exampleNumber>
       </fixedLine>
+      <mobile>
+        <nationalNumberPattern>[13-689]\d{9}|2[0-35-9]\d{8}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7}(?:\d{3})?</possibleNumberPattern>
+        <possibleLengths national="10" localOnly="7"/>
+        <exampleNumber>1234567890</exampleNumber>
+      </mobile>
       <noInternationalDialling>
         <!-- This range is added for testing purposes only. -->
         <nationalNumberPattern>800\d{7}</nationalNumberPattern>
@@ -1093,21 +1134,11 @@
       <generalDesc>
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
-        <exampleNumber>12345678</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <tollFree>
         <nationalNumberPattern>\d{8}</nationalNumberPattern>
         <possibleLengths national="8"/>
+        <exampleNumber>12345678</exampleNumber>
       </tollFree>
     </territory>
 
@@ -1121,21 +1152,11 @@
       <generalDesc>
         <nationalNumberPattern>\d{9}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
-        <exampleNumber>123456789</exampleNumber>
       </generalDesc>
-      <fixedLine>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </fixedLine>
-      <mobile>
-        <nationalNumberPattern>NA</nationalNumberPattern>
-        <possibleNumberPattern>NA</possibleNumberPattern>
-        <possibleLengths national="-1"/>
-      </mobile>
       <premiumRate>
         <nationalNumberPattern>\d{9}</nationalNumberPattern>
         <possibleLengths national="9"/>
+        <exampleNumber>123456789</exampleNumber>
       </premiumRate>
     </territory>
   </territories>

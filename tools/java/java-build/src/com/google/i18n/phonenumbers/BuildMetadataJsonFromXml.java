@@ -93,7 +93,7 @@ public class BuildMetadataJsonFromXml extends Command {
 
     try {
       PhoneMetadataCollection metadataCollection =
-          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, false);
       Map<Integer, List<String>> countryCodeToRegionCodeMap =
           BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
 
@@ -241,12 +241,8 @@ public class BuildMetadataJsonFromXml extends Command {
     } else {
       jsArrayBuilder.append(null);
     }
-    // optional string possible_number_pattern = 3;
-    if (desc.hasPossibleNumberPattern()) {
-      jsArrayBuilder.append(desc.getPossibleNumberPattern());
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    // missing 3
+    jsArrayBuilder.append(null);
     // missing 4
     jsArrayBuilder.append(null);
     // missing 5

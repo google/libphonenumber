@@ -221,13 +221,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("$1 $2 $3", metadata->number_format(1).format());
   EXPECT_EQ("[13-689]\\d{9}|2[0-35-9]\\d{8}",
             metadata->general_desc().national_number_pattern());
-  EXPECT_EQ("\\d{7}(?:\\d{3})?",
-            metadata->general_desc().possible_number_pattern());
-  // Fixed-line data should be inherited from the general desc for the national
-  // number pattern, since it wasn't overridden.
-  EXPECT_EQ(metadata->general_desc().national_number_pattern(),
+  EXPECT_EQ("[13-689]\\d{9}|2[0-35-9]\\d{8}",
             metadata->fixed_line().national_number_pattern());
-  EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
   EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ(10, metadata->general_desc().possible_length(0));
   // Possible lengths are the same as the general description, so aren't stored
@@ -236,7 +231,6 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("900\\d{7}", metadata->premium_rate().national_number_pattern());
   // No shared-cost data is available, so it should be initialised to "NA".
   EXPECT_EQ("NA", metadata->shared_cost().national_number_pattern());
-  EXPECT_EQ("NA", metadata->shared_cost().possible_number_pattern());
 }
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
@@ -259,9 +253,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
   EXPECT_EQ("$1 $2 $3", metadata->number_format(5).format());
   EXPECT_EQ("(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}",
             metadata->fixed_line().national_number_pattern());
-  EXPECT_EQ("\\d{2,14}", metadata->fixed_line().possible_number_pattern());
   EXPECT_EQ("30123456", metadata->fixed_line().example_number());
-  EXPECT_EQ("\\d{10}", metadata->toll_free().possible_number_pattern());
+  EXPECT_EQ(10, metadata->toll_free().possible_length(0));
   EXPECT_EQ("900([135]\\d{6}|9\\d{7})",
             metadata->premium_rate().national_number_pattern());
 }
@@ -290,7 +283,8 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadInternationalTollFreeMetadata) {
   EXPECT_EQ(800, metadata->country_code());
   EXPECT_EQ("$1 $2", metadata->number_format(0).format());
   EXPECT_EQ("(\\d{4})(\\d{4})", metadata->number_format(0).pattern());
-  EXPECT_EQ("12345678", metadata->general_desc().example_number());
+  EXPECT_EQ(0, metadata->general_desc().possible_length_local_only_size());
+  EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ("12345678", metadata->toll_free().example_number());
 }
 
@@ -353,9 +347,6 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
   EXPECT_FALSE(success);
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
-  // For the US, the example number is placed under general description, and
-  // hence should be used for both fixed line and mobile, so neither of these
-  // should return null.
   success = phone_util_.GetExampleNumberForType(RegionCode::US(),
                                                 PhoneNumberUtil::FIXED_LINE,
                                                 &test_number);
@@ -999,12 +990,18 @@ TEST_F(PhoneNumberUtilTest, FormatWithPreferredCarrierCode) {
   phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "",
                                                            &formatted_number);
   EXPECT_EQ("01234 19 12-5678", formatted_number);
-  // When the preferred_domestic_carrier_code is present (even when it contains
-  // an empty string), use it instead of the default carrier code passed in.
+  // When the preferred_domestic_carrier_code is present (even when it is just a
+  // space), use it instead of the default carrier code passed in.
+  ar_number.set_preferred_domestic_carrier_code(" ");
+  phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "15",
+                                                           &formatted_number);
+  EXPECT_EQ("01234   12-5678", formatted_number);
+  // When the preferred_domestic_carrier_code is present but empty, treat it as
+  // unset and use instead the default carrier code passed in.
   ar_number.set_preferred_domestic_carrier_code("");
   phone_util_.FormatNationalNumberWithPreferredCarrierCode(ar_number, "15",
                                                            &formatted_number);
-  EXPECT_EQ("01234 12-5678", formatted_number);
+  EXPECT_EQ("01234 15 12-5678", formatted_number);
   // We don't support this for the US so there should be no change.
   PhoneNumber us_number;
   us_number.set_country_code(1);
@@ -2498,9 +2495,9 @@ TEST_F(PhoneNumberUtilTest, NormaliseStripAlphaCharacters) {
 }
 
 TEST_F(PhoneNumberUtilTest, NormaliseStripNonDiallableCharacters) {
-  string input_number("03*4-56&+a#234");
+  string input_number("03*4-56&+1a#234");
   NormalizeDiallableCharsOnly(&input_number);
-  static const string kExpectedOutput("03*456+234");
+  static const string kExpectedOutput("03*456+1#234");
   EXPECT_EQ(kExpectedOutput, input_number)
       << "Conversion did not correctly remove non-diallable characters";
 }
@@ -3620,9 +3617,6 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
 
   nz_number.set_raw_input("+64 3 331 6005");
   nz_number.set_country_code_source(PhoneNumber::FROM_NUMBER_WITH_PLUS_SIGN);
-  // It is important that we set this to an empty string, since we used
-  // ParseAndKeepRawInput and no carrrier code was found.
-  nz_number.set_preferred_domestic_carrier_code("");
   result_proto.Clear();
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.ParseAndKeepRawInput("+64 3 331 6005",
@@ -3863,7 +3857,6 @@ TEST_F(PhoneNumberUtilTest, ParseAndKeepRaw) {
   alpha_numeric_number.set_raw_input("800 six-flags");
   alpha_numeric_number.set_country_code_source(
       PhoneNumber::FROM_DEFAULT_COUNTRY);
-  alpha_numeric_number.set_preferred_domestic_carrier_code("");
 
   PhoneNumber test_number;
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,

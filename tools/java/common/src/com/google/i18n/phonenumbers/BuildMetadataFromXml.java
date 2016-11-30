@@ -75,7 +75,6 @@ public class BuildMetadataFromXml {
   private static final String PAGER = "pager";
   private static final String PATTERN = "pattern";
   private static final String PERSONAL_NUMBER = "personalNumber";
-  private static final String POSSIBLE_NUMBER_PATTERN = "possibleNumberPattern";
   private static final String POSSIBLE_LENGTHS = "possibleLengths";
   private static final String NATIONAL = "national";
   private static final String LOCAL_ONLY = "localOnly";
@@ -95,20 +94,30 @@ public class BuildMetadataFromXml {
 
   // Build the PhoneMetadataCollection from the input XML file.
   public static PhoneMetadataCollection buildPhoneMetadataCollection(String inputXmlFile,
-      boolean liteBuild) throws Exception {
+      boolean liteBuild, boolean specialBuild) throws Exception {
     DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder builder = builderFactory.newDocumentBuilder();
     File xmlFile = new File(inputXmlFile);
     Document document = builder.parse(xmlFile);
+    // TODO: Look for other uses of these constants and possibly pull them out into a separate
+    // constants file.
+    boolean isShortNumberMetadata = inputXmlFile.contains("ShortNumberMetadata");
+    boolean isAlternateFormatsMetadata = inputXmlFile.contains("PhoneNumberAlternateFormats");
+    return buildPhoneMetadataCollection(document, liteBuild, specialBuild,
+        isShortNumberMetadata, isAlternateFormatsMetadata);
+  }
+
+  // @VisibleForTesting
+  static PhoneMetadataCollection buildPhoneMetadataCollection(Document document,
+      boolean liteBuild, boolean specialBuild, boolean isShortNumberMetadata,
+      boolean isAlternateFormatsMetadata) throws Exception {
     document.getDocumentElement().normalize();
     Element rootElement = document.getDocumentElement();
     NodeList territory = rootElement.getElementsByTagName("territory");
     PhoneMetadataCollection.Builder metadataCollection = PhoneMetadataCollection.newBuilder();
     int numOfTerritories = territory.getLength();
-    // TODO: Look for other uses of these constants and possibly pull them out into a separate
-    // constants file.
-    boolean isShortNumberMetadata = inputXmlFile.contains("ShortNumberMetadata");
-    boolean isAlternateFormatsMetadata = inputXmlFile.contains("PhoneNumberAlternateFormats");
+    // TODO: Infer filter from a single flag.
+    MetadataFilter metadataFilter = getMetadataFilter(liteBuild, specialBuild);
     for (int i = 0; i < numOfTerritories; i++) {
       Element territoryElement = (Element) territory.item(i);
       String regionCode = "";
@@ -117,8 +126,9 @@ public class BuildMetadataFromXml {
       if (territoryElement.hasAttribute("id")) {
         regionCode = territoryElement.getAttribute("id");
       }
-      PhoneMetadata metadata = loadCountryMetadata(regionCode, territoryElement, liteBuild,
+      PhoneMetadata.Builder metadata = loadCountryMetadata(regionCode, territoryElement,
           isShortNumberMetadata, isAlternateFormatsMetadata);
+      metadataFilter.filterMetadata(metadata);
       metadataCollection.addMetadata(metadata);
     }
     return metadataCollection.build();
@@ -386,12 +396,6 @@ public class BuildMetadataFromXml {
     return carrierCodeFormattingRule;
   }
 
-  // @VisibleForTesting
-  static boolean numberTypeShouldAlwaysBeFilledIn(String numberType) {
-    return numberType.equals(FIXED_LINE) || numberType.equals(MOBILE)
-        || numberType.equals(GENERAL_DESC);
-  }
-
   /**
    * Checks if the possible lengths provided as a sorted set are equal to the possible lengths
    * stored already in the description pattern. Note that possibleLengths may be empty but must not
@@ -434,21 +438,16 @@ public class BuildMetadataFromXml {
   // @VisibleForTesting
   static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc parentDesc,
                                                                Element countryElement,
-                                                               String numberType,
-                                                               boolean liteBuild) {
+                                                               String numberType) {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
     PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
-    if (phoneNumberDescList.getLength() == 0 && !numberTypeShouldAlwaysBeFilledIn(numberType)) {
+    if (phoneNumberDescList.getLength() == 0) {
       numberDesc.setNationalNumberPattern("NA");
-      numberDesc.setPossibleNumberPattern("NA");
       // -1 will never match a possible phone number length, so is safe to use to ensure this never
       // matches. We don't leave it empty, since for compression reasons, we use the empty list to
       // mean that the generalDesc possible lengths apply.
       numberDesc.addPossibleLength(-1);
       return numberDesc;
-    }
-    if (parentDesc != null) {
-      numberDesc.mergeFrom(parentDesc);
     }
     if (phoneNumberDescList.getLength() > 0) {
       if (phoneNumberDescList.getLength() > 1) {
@@ -456,13 +455,6 @@ public class BuildMetadataFromXml {
             String.format("Multiple elements with type %s found.", numberType));
       }
       Element element = (Element) phoneNumberDescList.item(0);
-      // Old way of handling possible number lengths. This will be deleted when no data is
-      // represented in this way anymore.
-      NodeList possiblePattern = element.getElementsByTagName(POSSIBLE_NUMBER_PATTERN);
-      if (possiblePattern.getLength() > 0) {
-        numberDesc.setPossibleNumberPattern(
-            validateRE(possiblePattern.item(0).getFirstChild().getNodeValue(), true));
-      }
       if (parentDesc != null) {
         // New way of handling possible number lengths. We don't do this for the general
         // description, since these tags won't be present; instead we will calculate its values
@@ -485,11 +477,9 @@ public class BuildMetadataFromXml {
             validateRE(validPattern.item(0).getFirstChild().getNodeValue(), true));
       }
 
-      if (!liteBuild) {
-        NodeList exampleNumber = element.getElementsByTagName(EXAMPLE_NUMBER);
-        if (exampleNumber.getLength() > 0) {
-          numberDesc.setExampleNumber(exampleNumber.item(0).getFirstChild().getNodeValue());
-        }
+      NodeList exampleNumber = element.getElementsByTagName(EXAMPLE_NUMBER);
+      if (exampleNumber.getLength() > 0) {
+        numberDesc.setExampleNumber(exampleNumber.item(0).getFirstChild().getNodeValue());
       }
     }
     return numberDesc;
@@ -497,9 +487,9 @@ public class BuildMetadataFromXml {
 
   // @VisibleForTesting
   static void setRelevantDescPatterns(PhoneMetadata.Builder metadata, Element element,
-      boolean liteBuild, boolean isShortNumberMetadata) {
-    PhoneNumberDesc.Builder generalDescBuilder =
-        processPhoneNumberDescElement(null, element, GENERAL_DESC, liteBuild);
+      boolean isShortNumberMetadata) {
+    PhoneNumberDesc.Builder generalDescBuilder = processPhoneNumberDescElement(null, element,
+        GENERAL_DESC);
     // Calculate the possible lengths for the general description. This will be based on the
     // possible lengths of the child elements.
     setPossibleLengthsGeneralDesc(
@@ -510,46 +500,30 @@ public class BuildMetadataFromXml {
 
     if (!isShortNumberMetadata) {
       // Set fields used by regular length phone numbers.
-      metadata.setFixedLine(
-          processPhoneNumberDescElement(generalDesc, element, FIXED_LINE, liteBuild));
-      metadata.setMobile(
-          processPhoneNumberDescElement(generalDesc, element, MOBILE, liteBuild));
-      metadata.setSharedCost(
-          processPhoneNumberDescElement(generalDesc, element, SHARED_COST, liteBuild));
-      metadata.setVoip(
-          processPhoneNumberDescElement(generalDesc, element, VOIP, liteBuild));
-      metadata.setPersonalNumber(
-          processPhoneNumberDescElement(generalDesc, element, PERSONAL_NUMBER, liteBuild));
-      metadata.setPager(
-          processPhoneNumberDescElement(generalDesc, element, PAGER, liteBuild));
-      metadata.setUan(
-          processPhoneNumberDescElement(generalDesc, element, UAN, liteBuild));
-      metadata.setVoicemail(
-          processPhoneNumberDescElement(generalDesc, element, VOICEMAIL, liteBuild));
-      metadata.setNoInternationalDialling(
-          processPhoneNumberDescElement(generalDesc, element, NO_INTERNATIONAL_DIALLING,
-          liteBuild));
-      metadata.setSameMobileAndFixedLinePattern(
-          metadata.getMobile().getNationalNumberPattern().equals(
-          metadata.getFixedLine().getNationalNumberPattern()));
-      metadata.setTollFree(
-          processPhoneNumberDescElement(generalDesc, element, TOLL_FREE, liteBuild));
-      metadata.setPremiumRate(
-          processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE, liteBuild));
+      metadata.setFixedLine(processPhoneNumberDescElement(generalDesc, element, FIXED_LINE));
+      metadata.setMobile(processPhoneNumberDescElement(generalDesc, element, MOBILE));
+      metadata.setSharedCost(processPhoneNumberDescElement(generalDesc, element, SHARED_COST));
+      metadata.setVoip(processPhoneNumberDescElement(generalDesc, element, VOIP));
+      metadata.setPersonalNumber(processPhoneNumberDescElement(generalDesc, element,
+          PERSONAL_NUMBER));
+      metadata.setPager(processPhoneNumberDescElement(generalDesc, element, PAGER));
+      metadata.setUan(processPhoneNumberDescElement(generalDesc, element, UAN));
+      metadata.setVoicemail(processPhoneNumberDescElement(generalDesc, element, VOICEMAIL));
+      metadata.setNoInternationalDialling(processPhoneNumberDescElement(generalDesc, element,
+          NO_INTERNATIONAL_DIALLING));
+      metadata.setSameMobileAndFixedLinePattern(metadata.getMobile().getNationalNumberPattern()
+          .equals(metadata.getFixedLine().getNationalNumberPattern()));
+      metadata.setTollFree(processPhoneNumberDescElement(generalDesc, element, TOLL_FREE));
+      metadata.setPremiumRate(processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE));
     } else {
       // Set fields used by short numbers.
-      metadata.setStandardRate(
-          processPhoneNumberDescElement(generalDesc, element, STANDARD_RATE, liteBuild));
-      metadata.setShortCode(
-          processPhoneNumberDescElement(generalDesc, element, SHORT_CODE, liteBuild));
-      metadata.setCarrierSpecific(
-          processPhoneNumberDescElement(generalDesc, element, CARRIER_SPECIFIC, liteBuild));
-      metadata.setEmergency(
-          processPhoneNumberDescElement(generalDesc, element, EMERGENCY, liteBuild));
-      metadata.setTollFree(
-          processPhoneNumberDescElement(generalDesc, element, TOLL_FREE, liteBuild));
-      metadata.setPremiumRate(
-          processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE, liteBuild));
+      metadata.setStandardRate(processPhoneNumberDescElement(generalDesc, element, STANDARD_RATE));
+      metadata.setShortCode(processPhoneNumberDescElement(generalDesc, element, SHORT_CODE));
+      metadata.setCarrierSpecific(processPhoneNumberDescElement(generalDesc, element,
+          CARRIER_SPECIFIC));
+      metadata.setEmergency(processPhoneNumberDescElement(generalDesc, element, EMERGENCY));
+      metadata.setTollFree(processPhoneNumberDescElement(generalDesc, element, TOLL_FREE));
+      metadata.setPremiumRate(processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE));
     }
   }
 
@@ -759,9 +733,8 @@ public class BuildMetadataFromXml {
   }
 
   // @VisibleForTesting
-  static PhoneMetadata loadCountryMetadata(String regionCode,
+  static PhoneMetadata.Builder loadCountryMetadata(String regionCode,
       Element element,
-      boolean liteBuild,
       boolean isShortNumberMetadata,
       boolean isAlternateFormatsMetadata) {
     String nationalPrefix = getNationalPrefix(element);
@@ -773,8 +746,29 @@ public class BuildMetadataFromXml {
                          element.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING));
     if (!isAlternateFormatsMetadata) {
       // The alternate formats metadata does not need most of the patterns to be set.
-      setRelevantDescPatterns(metadata, element, liteBuild, isShortNumberMetadata);
+      setRelevantDescPatterns(metadata, element, isShortNumberMetadata);
     }
-    return metadata.build();
+    return metadata;
+  }
+
+  /**
+   * Processes the custom build flags and gets a {@code MetadataFilter} which may be used to
+   * filter {@code PhoneMetadata} objects. Incompatible flag combinations throw RuntimeException.
+   *
+   * @param liteBuild  The liteBuild flag value as given by the command-line
+   * @param specialBuild  The specialBuild flag value as given by the command-line
+   */
+  // @VisibleForTesting
+  static MetadataFilter getMetadataFilter(boolean liteBuild, boolean specialBuild) {
+    if (specialBuild) {
+      if (liteBuild) {
+        throw new RuntimeException("liteBuild and specialBuild may not both be set");
+      }
+      return MetadataFilter.forSpecialBuild();
+    }
+    if (liteBuild) {
+      return MetadataFilter.forLiteBuild();
+    }
+    return MetadataFilter.emptyFilter();
   }
 }

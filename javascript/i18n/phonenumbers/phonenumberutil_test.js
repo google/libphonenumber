@@ -254,19 +254,12 @@ function testGetInstanceLoadUSMetadata() {
   assertEquals('$1 $2 $3', metadata.getNumberFormat(1).getFormat());
   assertEquals('[13-689]\\d{9}|2[0-35-9]\\d{8}',
                metadata.getGeneralDesc().getNationalNumberPattern());
-  assertEquals('\\d{7}(?:\\d{3})?',
-               metadata.getGeneralDesc().getPossibleNumberPattern());
-  // Fixed-line data should be inherited from the general desc for the national
-  // number pattern, since it wasn't overridden.
-  assertEquals(metadata.getGeneralDesc().getNationalNumberPattern(),
+  assertEquals('[13-689]\\d{9}|2[0-35-9]\\d{8}',
                metadata.getFixedLine().getNationalNumberPattern());
-  assertEquals('\\d{10}',
-               metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900\\d{7}',
                metadata.getPremiumRate().getNationalNumberPattern());
   // No shared-cost data is available, so it should be initialised to 'NA'.
   assertEquals('NA', metadata.getSharedCost().getNationalNumberPattern());
-  assertEquals('NA', metadata.getSharedCost().getPossibleNumberPattern());
 }
 
 function testGetInstanceLoadDEMetadata() {
@@ -284,9 +277,7 @@ function testGetInstanceLoadDEMetadata() {
   assertEquals('$1 $2 $3', metadata.getNumberFormat(5).getFormat());
   assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}',
                metadata.getFixedLine().getNationalNumberPattern());
-  assertEquals('\\d{2,14}', metadata.getFixedLine().getPossibleNumberPattern());
   assertEquals('30123456', metadata.getFixedLine().getExampleNumber());
-  assertEquals('\\d{10}', metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900([135]\\d{6}|9\\d{7})',
                metadata.getPremiumRate().getNationalNumberPattern());
 }
@@ -315,7 +306,8 @@ function testGetInstanceLoadInternationalTollFreeMetadata() {
   assertEquals(800, metadata.getCountryCode());
   assertEquals('$1 $2', metadata.getNumberFormat(0).getFormat());
   assertEquals('(\\d{4})(\\d{4})', metadata.getNumberFormat(0).getPattern());
-  assertEquals('12345678', metadata.getGeneralDesc().getExampleNumber());
+  assertEquals(0, metadata.getGeneralDesc().possibleLengthLocalOnlyCount());
+  assertEquals(1, metadata.getGeneralDesc().possibleLengthCount());
   assertEquals('12345678', metadata.getTollFree().getExampleNumber());
 }
 
@@ -481,9 +473,6 @@ function testGetExampleNumber() {
   assertTrue(DE_NUMBER.equals(
       phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.FIXED_LINE)));
   assertNull(phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.MOBILE));
-  // For the US, the example number is placed under general description, and
-  // hence should be used for both fixed line and mobile, so neither of these
-  // should return null.
   assertNotNull(
       phoneUtil.getExampleNumberForType(RegionCode.US, PNT.FIXED_LINE));
   assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US, PNT.MOBILE));
@@ -974,10 +963,15 @@ function testFormatWithPreferredCarrierCode() {
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
   assertEquals('01234 19 12-5678',
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, ''));
-  // When the preferred_domestic_carrier_code is present (even when it contains
-  // an empty string), use it instead of the default carrier code passed in.
+  // When the preferred_domestic_carrier_code is present (even when it is just a
+  // space), use it instead of the default carrier code passed in.
+  arNumber.setPreferredDomesticCarrierCode(' ');
+  assertEquals('01234   12-5678',
+      phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
+  // When the preferred_domestic_carrier_code is present but empty, treat it as
+  // unset and use instead the default carrier code passed in.
   arNumber.setPreferredDomesticCarrierCode('');
-  assertEquals('01234 12-5678',
+  assertEquals('01234 15 12-5678',
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
   // We don't support this for the US so there should be no change.
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -2157,7 +2151,7 @@ function testMaybeExtractCountryCode() {
     // Expected.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   number = new i18n.phonenumbers.PhoneNumber();
   try {
@@ -2360,7 +2354,7 @@ function testParseMaliciousInput() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
   /** @type {!goog.string.StringBuffer} */
   var maliciousNumberWithAlmostExt = new goog.string.StringBuffer();
@@ -2376,7 +2370,7 @@ function testParseMaliciousInput() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
 }
 
@@ -2546,7 +2540,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '1 Still not a number';
@@ -2557,7 +2551,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '1 MICROSOFT';
@@ -2568,7 +2562,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '12 MICROSOFT';
@@ -2579,7 +2573,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2591,7 +2585,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2603,7 +2597,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2614,7 +2608,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2626,7 +2620,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2638,7 +2632,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_NSN,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2650,7 +2644,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2662,7 +2656,7 @@ function testFailedParseOnInvalidNumbers() {
     // country code.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2673,7 +2667,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '123 456 7890';
@@ -2683,7 +2677,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '123 456 7890';
@@ -2693,7 +2687,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0044------';
@@ -2703,7 +2697,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0044';
@@ -2713,7 +2707,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '011';
@@ -2723,7 +2717,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0119';
@@ -2733,7 +2727,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2745,7 +2739,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     // Invalid region.
@@ -2755,7 +2749,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     phoneUtil.parse(null, RegionCode.US);
@@ -2764,7 +2758,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2775,7 +2769,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     // This is invalid because no '+' sign is present as part of phone-context.
@@ -2788,7 +2782,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
 }
 
@@ -2819,14 +2813,11 @@ function testParseNumbersWithPlusWithNoRegion() {
       phoneUtil.parse('tel:03-331-6005;isub=12345;phone-context=+64',
                       RegionCode.ZZ)));
 
-  // It is important that we set the carrier code to an empty string, since we
-  // used ParseAndKeepRawInput and no carrier code was found.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumberWithRawInput = NZ_NUMBER.clone();
   nzNumberWithRawInput.setRawInput('+64 3 331 6005');
   nzNumberWithRawInput.setCountryCodeSource(i18n.phonenumbers.PhoneNumber
       .CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
-  nzNumberWithRawInput.setPreferredDomesticCarrierCode('');
   assertTrue(nzNumberWithRawInput.equals(
       phoneUtil.parseAndKeepRawInput('+64 3 331 6005', RegionCode.ZZ)));
   // Null is also allowed for the region code in these cases.
@@ -2984,7 +2975,6 @@ function testParseAndKeepRaw() {
   var alphaNumericNumber = ALPHA_NUMERIC_NUMBER.clone();
   alphaNumericNumber.setRawInput('800 six-flags');
   alphaNumericNumber.setCountryCodeSource(CCS.FROM_DEFAULT_COUNTRY);
-  alphaNumericNumber.setPreferredDomesticCarrierCode('');
   assertTrue(alphaNumericNumber.equals(
       phoneUtil.parseAndKeepRawInput('800 six-flags', RegionCode.US)));
 
@@ -2994,7 +2984,6 @@ function testParseAndKeepRaw() {
   shorterAlphaNumber.setNationalNumber(8007493524);
   shorterAlphaNumber.setRawInput('1800 six-flag');
   shorterAlphaNumber.setCountryCodeSource(CCS.FROM_NUMBER_WITHOUT_PLUS_SIGN);
-  shorterAlphaNumber.setPreferredDomesticCarrierCode('');
   assertTrue(shorterAlphaNumber.equals(
       phoneUtil.parseAndKeepRawInput('1800 six-flag', RegionCode.US)));
 
@@ -3018,7 +3007,7 @@ function testParseAndKeepRaw() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
