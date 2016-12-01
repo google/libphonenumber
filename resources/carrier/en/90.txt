@@ -11,17 +11,28 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Wiki Link : https://tr.wikipedia.org/wiki/Türkiye'deki_telefon_numaraları
 
-9050|TurkTelekom
+90501|Türk Telekom
+90505|Türk Telekom
+90506|Türk Telekom
+90507|Türk Telekom
+90551|Türk Telekom
+90552|Türk Telekom
+90553|Türk Telekom
+90554|Türk Telekom
+90555|Türk Telekom
+90556|Türk Telekom
+90559|Türk Telekom
 9053|Turkcell
-90541|Vodafone
-90542|Vodafone
-90543|Vodafone
-90544|Vodafone
-90545|Vodafone
-90546|Vodafone
-90547|Vodafone
-90548|Vodafone
-90549|Vodafone
-9055|TurkTelekom
 90561|Turkcell
+9054|Vodafone
+9053383|Kuzey Kıbrıs Turkcell
+9053384|Kuzey Kıbrıs Turkcell
+9053385|Kuzey Kıbrıs Turkcell
+9053386|Kuzey Kıbrıs Turkcell
+9053387|Kuzey Kıbrıs Turkcell
+9054285|KKTC Telsim
+9054286|KKTC Telsim
+9054287|KKTC Telsim
+9054288|KKTC Telsim
