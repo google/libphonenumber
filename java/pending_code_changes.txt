@@ -1,3 +1,7 @@
 Code changes:
+ - Deleting deprecated methods in ShortNumberInfo that work on strings, instead
+   of phone number objects. These have been marked deprecated for months. Any
+   users of these methods should call PhoneNumberUtil.parse first to create a
+   PhoneNumber object, and pass this in.
  - Support semicolon as extension character while parsing phone numbers. This
    is not applicable when you are trying to find the phone numbers.
