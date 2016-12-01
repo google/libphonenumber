@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-9050|Aycell
+9050|TurkTelekom
 9053|Turkcell
-90541|Turkcell
-90542|Turkcell
-90543|Turkcell
-90544|Turkcell
-90545|Turkcell
-90546|Turkcell
-90547|Turkcell
-90548|Turkcell
-90549|Turkcell
-9055|Aycell
-9056161|Turkcell
+90541|Vodafone
+90542|Vodafone
+90543|Vodafone
+90544|Vodafone
+90545|Vodafone
+90546|Vodafone
+90547|Vodafone
+90548|Vodafone
+90549|Vodafone
+9055|TurkTelekom
+90561|Turkcell
