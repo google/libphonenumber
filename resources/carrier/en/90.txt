@@ -13,10 +13,7 @@
 # limitations under the License.
 # Wiki Link : https://tr.wikipedia.org/wiki/Türkiye'deki_telefon_numaraları
 
-90501|Turk Telekom
-90505|Turk Telekom
-90506|Turk Telekom
-90507|Turk Telekom
+9050|Turk Telekom
 9053|Turkcell
 9053383|Kuzey Kibris Turkcell
 9053384|Kuzey Kibris Turkcell
@@ -28,11 +25,5 @@
 9054286|KKTC Telsim
 9054287|KKTC Telsim
 9054288|KKTC Telsim
-90551|Turk Telekom
-90552|Turk Telekom
-90553|Turk Telekom
-90554|Turk Telekom
-90555|Turk Telekom
-90556|Turk Telekom
-90559|Turk Telekom
+9055|Turk Telekom
 90561|Turkcell
