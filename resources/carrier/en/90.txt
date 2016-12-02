@@ -11,17 +11,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Wiki Link : https://tr.wikipedia.org/wiki/Türkiye'deki_telefon_numaraları
 
-9050|Aycell
+9050|Turk Telekom
 9053|Turkcell
-90541|Turkcell
-90542|Turkcell
-90543|Turkcell
-90544|Turkcell
-90545|Turkcell
-90546|Turkcell
-90547|Turkcell
-90548|Turkcell
-90549|Turkcell
-9055|Aycell
-9056161|Turkcell
+9053383|Kuzey Kibris Turkcell
+9053384|Kuzey Kibris Turkcell
+9053385|Kuzey Kibris Turkcell
+9053386|Kuzey Kibris Turkcell
+9053387|Kuzey Kibris Turkcell
+9054|Vodafone
+9054285|KKTC Telsim
+9054286|KKTC Telsim
+9054287|KKTC Telsim
+9054288|KKTC Telsim
+9055|Turk Telekom
+90561|Turkcell
