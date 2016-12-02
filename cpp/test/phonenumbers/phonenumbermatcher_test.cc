@@ -253,6 +253,10 @@ class PhoneNumberMatcherTest : public testing::Test {
     // With trailing numbers after a comma. The 45 should not be considered an
     // extension.
     context_pairs.push_back(NumberContext("", ", 45 days a year"));
+    // When matching we don't consider semicolon along with legitimate extension
+    // symbol to indicate an extension. The 7246433 should not be considered an
+    // extension.
+    context_pairs.push_back(NumberContext("", ";x 7246433"));
     // With a postfix stripped off as it looks like the start of another number.
     context_pairs.push_back(NumberContext("Call ", "/x12 more"));
 
