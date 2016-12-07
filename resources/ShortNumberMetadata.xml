@@ -6124,10 +6124,8 @@
     </territory>
 
     <!-- Kiribati -->
-    <!-- http://www.itu.int/oth/T0202000071/en - these conflict with those
-         registered at
-         http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=123&pg_size=50 but
-         were updated later. http://tskl.net.ki/services has others. -->
+    <!-- http://www.itu.int/oth/T0202000071/en -->
+    <!-- http://tskl.net.ki/services has others. -->
     <territory id="KI">
       <generalDesc>
         <nationalNumberPattern>[179]\d{2,3}</nationalNumberPattern>
@@ -6137,9 +6135,13 @@
         <!-- http://tskl.net.ki/services/3g-4g-rates-offpeaks/quick-dial-credit-checking-codes/
              lists 777 as voicemail access. -->
         <nationalNumberPattern>
-          10(?:
-            [0-8]|
-            5[01259]
+          1(?:
+            0(?:
+              [0-8]|
+              5[01259]
+            )|
+            88|
+            9[2-5]
           )|
           777|
           99[2349]
@@ -6155,12 +6157,26 @@
         <exampleNumber>103</exampleNumber>
       </standardRate>
       <emergency>
-        <!-- www.tskl.net.ki/directory.pdf -->
-        <nationalNumberPattern>99[2349]</nationalNumberPattern>
+        <!-- ITU 30.VIII.2013 still listed 9XX emergency numbers (not yet 1XX).
+             Newer ITU updates (2016) no longer mention 9XX but list 1XX.
+             9XX might no longer be in use, but some websites (Wikipedia) still
+             list them.
+             TODO(b/33193822): Remove after confirming with government. -->
+        <nationalNumberPattern>
+          19[2-5]|
+          99[2349]
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <possibleLengths national="3"/>
-        <exampleNumber>999</exampleNumber>
+        <exampleNumber>192</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <!-- See comment for emergency section. -->
+        <nationalNumberPattern>188</nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>188</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Comoros -->
@@ -7522,32 +7538,53 @@
     <!-- Maldives -->
     <territory id="MV">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[14]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            02|
-            1[09]|
-            23|
-            90
-          )
+            [0-37-9]\d|
+            [45](?:
+              1|
+              \d{2}
+            )|
+            6\d{2}
+          )|
+          4040
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>123</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <!-- Dhiraagu carrier uses 141 and 151 short codes.
+             https://www.dhiraagu.com.mv/Personal_Mobile_Prepaid_Recharge.aspx -->
+        <nationalNumberPattern>1[45]1</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>141</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
             02|
-            19
+            1[89]
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>102</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+         1(?:
+           04|
+           412|
+           91
+         )
+        </nationalNumberPattern>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>104</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Malawi -->
@@ -7660,15 +7697,61 @@
     <!-- http://www.skmm.gov.my -->
     <territory id="MY">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[139]\d{2,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          112|
-          999
+          1(?:
+            0(?:
+              [01348]|
+              [569]\d
+            )|
+            1(?:
+              [02]|
+              1[128]|
+              311
+            )|
+            2(?:
+              0[125]|
+              [13-6]|
+              2\d{0,2}
+            )|
+            3(?:
+              09\d|
+              [1-39]\d{1,2}|
+              6|
+              [5-7]\d{0,2}
+            )|
+            5(?:
+              [12]\d|
+              454|
+              5\d{1,2}|
+              77|
+              888|
+              999?
+            )|
+            7(?:
+              [136-9]\d|
+              [45]\d{1,2}
+            )|
+            8(?:
+              18?|
+              2|
+              8[18]
+            )|
+            9(?:
+              [03]\d|
+              [124]\d?|
+              68|
+              71|
+              9[0679]
+            )
+          )|
+          3[23679]\d{3}|
+          99[1-469]
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>999</exampleNumber>
       </shortCode>
       <emergency>
@@ -7679,6 +7762,18 @@
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>99[1-46]</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>991</exampleNumber>
+      </expandedEmergency>
+      <smsServices>
+        <!-- http://www.skmm.gov.my/FAQs/Mobile-Content-Services/What-is-a-common-short-code.aspx -->
+        <nationalNumberPattern>3[23679]\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>36000</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Mozambique -->

@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-25562|Viettel
-25563|MTC
-25564|Cootel
-25565|tiGO
-25566|SMILE
-25567|tiGO
-25568|Airtel
-25571|tiGO
-25573|Tanzania Telecom
-25574|Vodacom
-25575|Vodacom
-25576|Vodacom
-25577|Zantel
-25578|Airtel
-25579|Benson Informatics
+# Generated from:
+# https://www.itu.int/oth/T020200009B/en
+# 20 61 is Tahoua; the ITU doc has a typo and maps it to 20 67.
+
+2272020|Niamey
+2272031|Niamey
+2272032|Niamey
+2272033|Niamey
+2272034|Niamey
+2272035|Niamey
+2272036|Niamey
+2272037|Niamey
+2272041|Maradi
+2272044|Agadez
+2272045|Arlit
+2272051|Zinder
+2272054|Diffa
+2272061|Tahoua
+2272064|Konni
+2272065|Dosso
+2272068|Gaya
+2272071|Tillabéry
+2272072|Niamey
+2272073|Niamey
+2272074|Niamey
+2272075|Niamey
+2272077|Filingué
+2272078|Say
