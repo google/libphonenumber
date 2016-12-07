@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-25562|Viettel
-25563|MTC
-25564|Cootel
-25565|tiGO
-25566|SMILE
-25567|tiGO
-25568|Airtel
-25571|tiGO
-25573|Tanzania Telecom
-25574|Vodacom
-25575|Vodacom
-25576|Vodacom
-25577|Zantel
-25578|Airtel
-25579|Benson Informatics
+# http://www.llv.li/#/1344/liechtenstein-numbering-plan
+
+423650|Soracom
+423651|Cubic
+423652|Cubic
+423660|Telecom Liechtenstein
+423661|Dimoco
+4236620|First Mobile
+4236626|Datamobile
+4236627|Datamobile
+4236628|Datamobile
+4236629|Datamobile
+4236639|Emnify
+42373|Telecom Liechtenstein
+42374|First Mobile
+42377|Swisscom
+42378|Salt
+42379|Telecom Liechtenstein
