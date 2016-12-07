@@ -121,40 +121,52 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ComGoogleI18nPhonenumbersMetadataManager_getShortNumberMetadataForRegionWithNSString_(regionCode);
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoCodedInputByteBufferNano;", 0x8, 2, 3, 4, -1, -1, -1 },
+    { NULL, "V", 0xa, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;", 0x8, 7, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 8, 9, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x8, -1, -1, -1, 10, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;", 0x8, 11, 9, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(closeWithJavaIoInputStream:);
+  methods[2].selector = @selector(convertStreamToByteBufferWithJavaIoObjectInputStream:withInt:);
+  methods[3].selector = @selector(loadAlternateFormatsMetadataFromFileWithInt:);
+  methods[4].selector = @selector(getAlternateFormatsForCountryWithInt:);
+  methods[5].selector = @selector(loadShortNumberMetadataFromFileWithNSString:);
+  methods[6].selector = @selector(getShortNumberMetadataSupportedRegions);
+  methods[7].selector = @selector(getShortNumberMetadataForRegionWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ALTERNATE_FORMATS_FILE_PREFIX", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 12, -1, -1 },
+    { "SHORT_NUMBER_METADATA_FILE_PREFIX", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 13, -1, -1 },
+    { "LOGGER", "LJavaUtilLoggingLogger;", .constantValue.asLong = 0, 0x1a, -1, 14, -1, -1 },
+    { "callingCodeToAlternateFormatsMap", "LJavaUtilMap;", .constantValue.asLong = 0, 0x1a, -1, 15, 16, -1 },
+    { "regionCodeToShortNumberMetadataMap", "LJavaUtilMap;", .constantValue.asLong = 0, 0x1a, -1, 17, 18, -1 },
+    { "countryCodeSet", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1a, -1, 19, 20, -1 },
+    { "regionCodeSet", "LJavaUtilSet;", .constantValue.asLong = 0, 0x1a, -1, 21, 22, -1 },
+    { "BUFFER_SIZE", "I", .constantValue.asInt = ComGoogleI18nPhonenumbersMetadataManager_BUFFER_SIZE, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "close", "LJavaIoInputStream;", "convertStreamToByteBuffer", "LJavaIoObjectInputStream;I", "LJavaIoIOException;", "loadAlternateFormatsMetadataFromFile", "I", "getAlternateFormatsForCountry", "loadShortNumberMetadataFromFile", "LNSString;", "()Ljava/util/Set<Ljava/lang/String;>;", "getShortNumberMetadataForRegion", &ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX, &ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX, &ComGoogleI18nPhonenumbersMetadataManager_LOGGER, &ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap, "Ljava/util/Map<Ljava/lang/Integer;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", &ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet, "Ljava/util/Set<Ljava/lang/Integer;>;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet, "Ljava/util/Set<Ljava/lang/String;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataManager = { "MetadataManager", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x0, 8, 8, -1, -1, -1, -1, -1 };
+  return &_ComGoogleI18nPhonenumbersMetadataManager;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersMetadataManager class]) {
     JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_LOGGER, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersMetadataManager_class_() getName]));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
-    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap, JavaUtilCollections_synchronizedMapWithJavaUtilMap_(create_JavaUtilHashMap_init()));
+    JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap, JavaUtilCollections_synchronizedMapWithJavaUtilMap_(create_JavaUtilHashMap_init()));
     JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet, ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet());
     JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet, ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet());
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersMetadataManager)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "MetadataManager", NULL, 0x2, NULL, NULL },
-    { "closeWithJavaIoInputStream:", "close", "V", 0xa, NULL, NULL },
-    { "convertStreamToByteBufferWithJavaIoObjectInputStream:withInt:", "convertStreamToByteBuffer", "Lcom.google.protobuf.nano.CodedInputByteBufferNano;", 0x8, "Ljava.io.IOException;", NULL },
-    { "loadAlternateFormatsMetadataFromFileWithInt:", "loadAlternateFormatsMetadataFromFile", "V", 0xa, NULL, NULL },
-    { "getAlternateFormatsForCountryWithInt:", "getAlternateFormatsForCountry", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x8, NULL, NULL },
-    { "loadShortNumberMetadataFromFileWithNSString:", "loadShortNumberMetadataFromFile", "V", 0xa, NULL, NULL },
-    { "getShortNumberMetadataSupportedRegions", NULL, "Ljava.util.Set;", 0x8, NULL, "()Ljava/util/Set<Ljava/lang/String;>;" },
-    { "getShortNumberMetadataForRegionWithNSString:", "getShortNumberMetadataForRegion", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x8, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ALTERNATE_FORMATS_FILE_PREFIX", "ALTERNATE_FORMATS_FILE_PREFIX", 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX, NULL, .constantValue.asLong = 0 },
-    { "SHORT_NUMBER_METADATA_FILE_PREFIX", "SHORT_NUMBER_METADATA_FILE_PREFIX", 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX, NULL, .constantValue.asLong = 0 },
-    { "LOGGER", "LOGGER", 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersMetadataManager_LOGGER, NULL, .constantValue.asLong = 0 },
-    { "callingCodeToAlternateFormatsMap", "callingCodeToAlternateFormatsMap", 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersMetadataManager_callingCodeToAlternateFormatsMap, "Ljava/util/Map<Ljava/lang/Integer;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", .constantValue.asLong = 0 },
-    { "regionCodeToShortNumberMetadataMap", "regionCodeToShortNumberMetadataMap", 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeToShortNumberMetadataMap, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", .constantValue.asLong = 0 },
-    { "countryCodeSet", "countryCodeSet", 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersMetadataManager_countryCodeSet, "Ljava/util/Set<Ljava/lang/Integer;>;", .constantValue.asLong = 0 },
-    { "regionCodeSet", "regionCodeSet", 0x1a, "Ljava.util.Set;", &ComGoogleI18nPhonenumbersMetadataManager_regionCodeSet, "Ljava/util/Set<Ljava/lang/String;>;", .constantValue.asLong = 0 },
-    { "BUFFER_SIZE", "BUFFER_SIZE", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleI18nPhonenumbersMetadataManager_BUFFER_SIZE },
-  };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataManager = { 2, "MetadataManager", "com.google.i18n.phonenumbers", NULL, 0x0, 8, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleI18nPhonenumbersMetadataManager;
 }
 
 @end
@@ -164,15 +176,11 @@ void ComGoogleI18nPhonenumbersMetadataManager_init(ComGoogleI18nPhonenumbersMeta
 }
 
 ComGoogleI18nPhonenumbersMetadataManager *new_ComGoogleI18nPhonenumbersMetadataManager_init() {
-  ComGoogleI18nPhonenumbersMetadataManager *self = [ComGoogleI18nPhonenumbersMetadataManager alloc];
-  ComGoogleI18nPhonenumbersMetadataManager_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersMetadataManager, init)
 }
 
 ComGoogleI18nPhonenumbersMetadataManager *create_ComGoogleI18nPhonenumbersMetadataManager_init() {
-  ComGoogleI18nPhonenumbersMetadataManager *self = [[ComGoogleI18nPhonenumbersMetadataManager alloc] autorelease];
-  ComGoogleI18nPhonenumbersMetadataManager_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersMetadataManager, init)
 }
 
 void ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(JavaIoInputStream *inArg) {
@@ -189,7 +197,7 @@ void ComGoogleI18nPhonenumbersMetadataManager_closeWithJavaIoInputStream_(JavaIo
 
 ComGoogleProtobufNanoCodedInputByteBufferNano *ComGoogleI18nPhonenumbersMetadataManager_convertStreamToByteBufferWithJavaIoObjectInputStream_withInt_(JavaIoObjectInputStream *inArg, jint bufferSize) {
   ComGoogleI18nPhonenumbersMetadataManager_initialize();
-  JavaIoByteArrayOutputStream *outputStream = [new_JavaIoByteArrayOutputStream_init() autorelease];
+  JavaIoByteArrayOutputStream *outputStream = create_JavaIoByteArrayOutputStream_init();
   jint nRead;
   IOSByteArray *data = [IOSByteArray arrayWithLength:bufferSize];
   while ((nRead = [((JavaIoObjectInputStream *) nil_chk(inArg)) readWithByteArray:data withInt:0 withInt:bufferSize]) != -1) {
@@ -204,9 +212,9 @@ void ComGoogleI18nPhonenumbersMetadataManager_loadAlternateFormatsMetadataFromFi
   JavaIoInputStream *source = [ComGoogleI18nPhonenumbersPhoneNumberMatcher_class_() getResourceAsStream:JreStrcat("$CI", ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX, '_', countryCallingCode)];
   JavaIoObjectInputStream *in = nil;
   @try {
-    in = [new_JavaIoObjectInputStream_initWithJavaIoInputStream_(source) autorelease];
+    in = create_JavaIoObjectInputStream_initWithJavaIoInputStream_(source);
     ComGoogleProtobufNanoCodedInputByteBufferNano *byteBuffer = ComGoogleI18nPhonenumbersMetadataManager_convertStreamToByteBufferWithJavaIoObjectInputStream_withInt_(in, ComGoogleI18nPhonenumbersMetadataManager_BUFFER_SIZE);
-    ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *alternateFormats = [new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() autorelease];
+    ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *alternateFormats = create_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init();
     [alternateFormats mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:byteBuffer];
     {
       IOSObjectArray *a__ = alternateFormats->metadata_;
@@ -244,9 +252,9 @@ void ComGoogleI18nPhonenumbersMetadataManager_loadShortNumberMetadataFromFileWit
   JavaIoInputStream *source = [ComGoogleI18nPhonenumbersPhoneNumberMatcher_class_() getResourceAsStream:JreStrcat("$C$", ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX, '_', regionCode)];
   JavaIoObjectInputStream *in = nil;
   @try {
-    in = [new_JavaIoObjectInputStream_initWithJavaIoInputStream_(source) autorelease];
+    in = create_JavaIoObjectInputStream_initWithJavaIoInputStream_(source);
     ComGoogleProtobufNanoCodedInputByteBufferNano *byteBuffer = ComGoogleI18nPhonenumbersMetadataManager_convertStreamToByteBufferWithJavaIoObjectInputStream_withInt_(in, ComGoogleI18nPhonenumbersMetadataManager_BUFFER_SIZE);
-    ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *shortNumberMetadata = [new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() autorelease];
+    ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *shortNumberMetadata = create_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init();
     [shortNumberMetadata mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:byteBuffer];
     {
       IOSObjectArray *a__ = shortNumberMetadata->metadata_;

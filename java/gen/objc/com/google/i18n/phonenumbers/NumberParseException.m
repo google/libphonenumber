@@ -3,7 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/libphonenumber/java/libphonenumber/src/main/java/com/google/i18n/phonenumbers/NumberParseException.java
 //
 
-#include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/NumberParseException.h"
 #include "java/lang/Enum.h"
@@ -46,17 +46,23 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersNumberParseExceptio
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType:withNSString:", "NumberParseException", NULL, 0x1, NULL, NULL },
-    { "getErrorType", NULL, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType:withNSString:);
+  methods[1].selector = @selector(getErrorType);
+  methods[2].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "errorType_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", NULL, NULL, .constantValue.asLong = 0 },
-    { "message_", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "errorType_", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "message_", "LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNumberParseException = { 2, "NumberParseException", "com.google.i18n.phonenumbers", NULL, 0x1, 3, methods, 2, fields, 0, NULL, 1, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;LNSString;", "toString", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNumberParseException = { "NumberParseException", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x1, 3, 2, -1, 2, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersNumberParseException;
 }
 
@@ -69,15 +75,11 @@ void ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenum
 }
 
 ComGoogleI18nPhonenumbersNumberParseException *new_ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *errorType, NSString *message) {
-  ComGoogleI18nPhonenumbersNumberParseException *self = [ComGoogleI18nPhonenumbersNumberParseException alloc];
-  ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(self, errorType, message);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersNumberParseException, initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_, errorType, message)
 }
 
 ComGoogleI18nPhonenumbersNumberParseException *create_ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *errorType, NSString *message) {
-  ComGoogleI18nPhonenumbersNumberParseException *self = [[ComGoogleI18nPhonenumbersNumberParseException alloc] autorelease];
-  ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(self, errorType, message);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersNumberParseException, initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_, errorType, message)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersNumberParseException)
@@ -100,37 +102,43 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
   return self;
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "[LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", 0x9, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(values);
+  methods[1].selector = @selector(valueOfWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INVALID_COUNTRY_CODE", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", .constantValue.asLong = 0, 0x4019, -1, 2, -1, -1 },
+    { "NOT_A_NUMBER", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", .constantValue.asLong = 0, 0x4019, -1, 3, -1, -1 },
+    { "TOO_SHORT_AFTER_IDD", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
+    { "TOO_SHORT_NSN", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", .constantValue.asLong = 0, 0x4019, -1, 5, -1, -1 },
+    { "TOO_LONG", "LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", .constantValue.asLong = 0, 0x4019, -1, 6, -1, -1 },
+  };
+  static const void *ptrTable[] = { "valueOf", "LNSString;", &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, INVALID_COUNTRY_CODE), &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, NOT_A_NUMBER), &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_AFTER_IDD), &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_NSN), &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_LONG), "LComGoogleI18nPhonenumbersNumberParseException;", "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/NumberParseException$ErrorType;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNumberParseException_ErrorType = { "ErrorType", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x4019, 2, 5, 7, -1, -1, 8, -1 };
+  return &_ComGoogleI18nPhonenumbersNumberParseException_ErrorType;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersNumberParseException_ErrorType class]) {
     size_t objSize = class_getInstanceSize(self);
     size_t allocSize = 5 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    (JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, INVALID_COUNTRY_CODE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, @"INVALID_COUNTRY_CODE", 0);
-    (JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, NOT_A_NUMBER) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, @"NOT_A_NUMBER", 1);
-    (JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_AFTER_IDD) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, @"TOO_SHORT_AFTER_IDD", 2);
-    (JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_NSN) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, @"TOO_SHORT_NSN", 3);
-    (JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_LONG) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, @"TOO_LONG", 4);
+    id names[] = {
+      @"INVALID_COUNTRY_CODE", @"NOT_A_NUMBER", @"TOO_SHORT_AFTER_IDD", @"TOO_SHORT_NSN", @"TOO_LONG",
+    };
+    for (jint i = 0; i < 5; i++) {
+      (ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, names[i], i);
+    }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersNumberParseException_ErrorType)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcFieldInfo fields[] = {
-    { "INVALID_COUNTRY_CODE", "INVALID_COUNTRY_CODE", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, INVALID_COUNTRY_CODE), NULL, .constantValue.asLong = 0 },
-    { "NOT_A_NUMBER", "NOT_A_NUMBER", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, NOT_A_NUMBER), NULL, .constantValue.asLong = 0 },
-    { "TOO_SHORT_AFTER_IDD", "TOO_SHORT_AFTER_IDD", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_AFTER_IDD), NULL, .constantValue.asLong = 0 },
-    { "TOO_SHORT_NSN", "TOO_SHORT_NSN", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_NSN), NULL, .constantValue.asLong = 0 },
-    { "TOO_LONG", "TOO_LONG", 0x4019, "Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;", &JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_LONG), NULL, .constantValue.asLong = 0 },
-  };
-  static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.NumberParseException$ErrorType;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersNumberParseException_ErrorType = { 2, "ErrorType", "com.google.i18n.phonenumbers", "NumberParseException", 0x4019, 0, NULL, 5, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/NumberParseException$ErrorType;>;" };
-  return &_ComGoogleI18nPhonenumbersNumberParseException_ErrorType;
 }
 
 @end
@@ -152,7 +160,7 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
       return e;
     }
   }
-  @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:name] autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
   return nil;
 }
 

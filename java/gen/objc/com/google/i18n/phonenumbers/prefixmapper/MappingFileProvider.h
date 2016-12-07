@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_RESTRICT
-#define ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider 0
 #else
-#define ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider 1
 #endif
-#undef ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 
-#if !defined (ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_) && (ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider))
 #define ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_
 
-#define JavaIoExternalizable_RESTRICT 1
-#define JavaIoExternalizable_INCLUDE 1
+#define RESTRICT_JavaIoExternalizable 1
+#define INCLUDE_JavaIoExternalizable 1
 #include "java/io/Externalizable.h"
 
 @protocol JavaIoObjectInput;
@@ -100,4 +100,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvi
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider")

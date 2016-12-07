@@ -5,18 +5,18 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersNanoPhonemetadata_RESTRICT
-#define ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersNanoPhonemetadata
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata 0
 #else
-#define ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata 1
 #endif
-#undef ComGoogleI18nPhonenumbersNanoPhonemetadata_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersNanoPhonemetadata
 
-#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_) && (ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata || defined(INCLUDE_ComGoogleI18nPhonenumbersNanoPhonemetadata))
 #define ComGoogleI18nPhonenumbersNanoPhonemetadata_
 
-@protocol ComGoogleI18nPhonenumbersNanoPhonemetadata < NSObject, JavaObject >
+@protocol ComGoogleI18nPhonenumbersNanoPhonemetadata < JavaObject >
 
 @end
 
@@ -26,11 +26,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNanoPhonemetadata)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_) && (ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata || defined(INCLUDE_ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat))
 #define ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat_
 
-#define ComGoogleProtobufNanoMessageNano_RESTRICT 1
-#define ComGoogleProtobufNanoMessageNano_INCLUDE 1
+#define RESTRICT_ComGoogleProtobufNanoMessageNano 1
+#define INCLUDE_ComGoogleProtobufNanoMessageNano 1
 #include "com/google/protobuf/nano/MessageNano.h"
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -94,11 +94,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberForm
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_) && (ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata || defined(INCLUDE_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc))
 #define ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc_
 
-#define ComGoogleProtobufNanoMessageNano_RESTRICT 1
-#define ComGoogleProtobufNanoMessageNano_INCLUDE 1
+#define RESTRICT_ComGoogleProtobufNanoMessageNano 1
+#define INCLUDE_ComGoogleProtobufNanoMessageNano 1
 #include "com/google/protobuf/nano/MessageNano.h"
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -157,11 +157,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumbe
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_) && (ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata || defined(INCLUDE_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata))
 #define ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata_
 
-#define ComGoogleProtobufNanoMessageNano_RESTRICT 1
-#define ComGoogleProtobufNanoMessageNano_INCLUDE 1
+#define RESTRICT_ComGoogleProtobufNanoMessageNano 1
+#define INCLUDE_ComGoogleProtobufNanoMessageNano 1
 #include "com/google/protobuf/nano/MessageNano.h"
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;
@@ -272,11 +272,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetad
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_) && (ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata || defined(INCLUDE_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection))
 #define ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_
 
-#define ComGoogleProtobufNanoMessageNano_RESTRICT 1
-#define ComGoogleProtobufNanoMessageNano_INCLUDE 1
+#define RESTRICT_ComGoogleProtobufNanoMessageNano 1
+#define INCLUDE_ComGoogleProtobufNanoMessageNano 1
 #include "com/google/protobuf/nano/MessageNano.h"
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -331,4 +331,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetad
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersNanoPhonemetadata_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersNanoPhonemetadata")

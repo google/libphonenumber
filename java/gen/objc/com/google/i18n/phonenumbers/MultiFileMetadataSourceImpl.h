@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_RESTRICT
-#define ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl 0
 #else
-#define ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl 1
 #endif
-#undef ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl
 
-#if !defined (ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_) && (ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl || defined(INCLUDE_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl))
 #define ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_
 
-#define ComGoogleI18nPhonenumbersMetadataSource_RESTRICT 1
-#define ComGoogleI18nPhonenumbersMetadataSource_INCLUDE 1
+#define RESTRICT_ComGoogleI18nPhonenumbersMetadataSource 1
+#define INCLUDE_ComGoogleI18nPhonenumbersMetadataSource 1
 #include "com/google/i18n/phonenumbers/MetadataSource.h"
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
@@ -64,4 +64,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl")

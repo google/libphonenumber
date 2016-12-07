@@ -5,7 +5,6 @@
 
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/internal/MatcherApi.h"
-#include "com/google/i18n/phonenumbers/nano/Phonemetadata.h"
 
 @interface ComGoogleI18nPhonenumbersInternalMatcherApi : NSObject
 
@@ -14,11 +13,17 @@
 @implementation ComGoogleI18nPhonenumbersInternalMatcherApi
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "matchesNationalNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:withBoolean:", "matchesNationalNumber", "Z", 0x401, NULL, NULL },
-    { "matchesPossibleNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:", "matchesPossibleNumber", "Z", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "Z", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 2, 3, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersInternalMatcherApi = { 2, "MatcherApi", "com.google.i18n.phonenumbers.internal", NULL, 0x609, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(matchesNationalNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:withBoolean:);
+  methods[1].selector = @selector(matchesPossibleNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "matchesNationalNumber", "LNSString;LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;Z", "matchesPossibleNumber", "LNSString;LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersInternalMatcherApi = { "MatcherApi", "com.google.i18n.phonenumbers.internal", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersInternalMatcherApi;
 }
 

@@ -5,7 +5,6 @@
 
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/MetadataLoader.h"
-#include "java/io/InputStream.h"
 
 @interface ComGoogleI18nPhonenumbersMetadataLoader : NSObject
 
@@ -14,10 +13,15 @@
 @implementation ComGoogleI18nPhonenumbersMetadataLoader
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "loadMetadataWithNSString:", "loadMetadata", "Ljava.io.InputStream;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LJavaIoInputStream;", 0x401, 0, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataLoader = { 2, "MetadataLoader", "com.google.i18n.phonenumbers", NULL, 0x609, 1, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(loadMetadataWithNSString:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "loadMetadata", "LNSString;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataLoader = { "MetadataLoader", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersMetadataLoader;
 }
 

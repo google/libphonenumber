@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersRegexCache_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersRegexCache_RESTRICT
-#define ComGoogleI18nPhonenumbersRegexCache_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersRegexCache")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersRegexCache
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersRegexCache 0
 #else
-#define ComGoogleI18nPhonenumbersRegexCache_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersRegexCache 1
 #endif
-#undef ComGoogleI18nPhonenumbersRegexCache_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersRegexCache
 
-#if !defined (ComGoogleI18nPhonenumbersRegexCache_) && (ComGoogleI18nPhonenumbersRegexCache_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersRegexCache_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersRegexCache_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersRegexCache || defined(INCLUDE_ComGoogleI18nPhonenumbersRegexCache))
 #define ComGoogleI18nPhonenumbersRegexCache_
 
 @class JavaUtilRegexPattern;
@@ -48,4 +48,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersRegexCache)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersRegexCache_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersRegexCache")

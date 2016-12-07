@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersPhoneNumberMatch_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPhoneNumberMatch_RESTRICT
-#define ComGoogleI18nPhonenumbersPhoneNumberMatch_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatch")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberMatch
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatch 0
 #else
-#define ComGoogleI18nPhonenumbersPhoneNumberMatch_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatch 1
 #endif
-#undef ComGoogleI18nPhonenumbersPhoneNumberMatch_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberMatch
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberMatch_) && (ComGoogleI18nPhonenumbersPhoneNumberMatch_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberMatch_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberMatch_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatch || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberMatch))
 #define ComGoogleI18nPhonenumbersPhoneNumberMatch_
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
@@ -101,4 +101,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberMatch)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPhoneNumberMatch_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatch")

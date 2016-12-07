@@ -70,7 +70,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
 
 - (NSString *)getSafeDisplayNameWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                   withJavaUtilLocale:(JavaUtilLocale *)languageCode {
-  if ([phoneUtil_ isMobileNumberPortableRegionWithNSString:[((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(phoneUtil_)) getRegionCodeForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number]]) {
+  if ([((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(phoneUtil_)) isMobileNumberPortableRegionWithNSString:[phoneUtil_ getRegionCodeForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number]]) {
     return @"";
   }
   return [self getNameForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number withJavaUtilLocale:languageCode];
@@ -86,30 +86,40 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper;", 0x29, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 5, 6, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(getInstance);
+  methods[2].selector = @selector(getNameForValidNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaUtilLocale:);
+  methods[3].selector = @selector(getNameForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaUtilLocale:);
+  methods[4].selector = @selector(getSafeDisplayNameWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaUtilLocale:);
+  methods[5].selector = @selector(isMobileWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "instance", "LComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper;", .constantValue.asLong = 0, 0xa, -1, 7, -1, -1 },
+    { "MAPPING_DATA_DIRECTORY", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 8, -1, -1 },
+    { "prefixFileReader_", "LComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "phoneUtil_", "LComGoogleI18nPhonenumbersPhoneNumberUtil;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LNSString;", "getNameForValidNumber", "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LJavaUtilLocale;", "getNameForNumber", "getSafeDisplayName", "isMobile", "LComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance, &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper = { "PhoneNumberToCarrierMapper", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x1, 6, 4, -1, -1, -1, -1, -1 };
+  return &_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper class]) {
     JreStrongAssign(&ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance, nil);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "PhoneNumberToCarrierMapper", NULL, 0x0, NULL, NULL },
-    { "getInstance", NULL, "Lcom.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;", 0x29, NULL, NULL },
-    { "getNameForValidNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaUtilLocale:", "getNameForValidNumber", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getNameForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaUtilLocale:", "getNameForNumber", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getSafeDisplayNameWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaUtilLocale:", "getSafeDisplayName", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "isMobileWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType:", "isMobile", "Z", 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "instance", "instance", 0xa, "Lcom.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance, NULL, .constantValue.asLong = 0 },
-    { "MAPPING_DATA_DIRECTORY", "MAPPING_DATA_DIRECTORY", 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY, NULL, .constantValue.asLong = 0 },
-    { "prefixFileReader_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;", NULL, NULL, .constantValue.asLong = 0 },
-    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper = { 2, "PhoneNumberToCarrierMapper", "com.google.i18n.phonenumbers", NULL, 0x1, 6, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper;
 }
 
 @end
@@ -122,15 +132,11 @@ void ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(ComGo
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *new_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(NSString *phonePrefixDataDirectory) {
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *self = [ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper alloc];
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(self, phonePrefixDataDirectory);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, initWithNSString_, phonePrefixDataDirectory)
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *create_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(NSString *phonePrefixDataDirectory) {
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *self = [[ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper alloc] autorelease];
-  ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(self, phonePrefixDataDirectory);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, initWithNSString_, phonePrefixDataDirectory)
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_getInstance() {

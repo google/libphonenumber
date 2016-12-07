@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_RESTRICT
-#define ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap 0
 #else
-#define ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap 1
 #endif
-#undef ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap
 
-#if !defined (ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_) && (ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap))
 #define ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_
 
-#define JavaIoExternalizable_RESTRICT 1
-#define JavaIoExternalizable_INCLUDE 1
+#define RESTRICT_JavaIoExternalizable 1
+#define INCLUDE_JavaIoExternalizable 1
 #include "java/io/Externalizable.h"
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
@@ -87,4 +87,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesM
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap")

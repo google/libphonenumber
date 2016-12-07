@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersMetadataManager_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersMetadataManager_RESTRICT
-#define ComGoogleI18nPhonenumbersMetadataManager_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataManager")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersMetadataManager
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataManager 0
 #else
-#define ComGoogleI18nPhonenumbersMetadataManager_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataManager 1
 #endif
-#undef ComGoogleI18nPhonenumbersMetadataManager_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersMetadataManager
 
-#if !defined (ComGoogleI18nPhonenumbersMetadataManager_) && (ComGoogleI18nPhonenumbersMetadataManager_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersMetadataManager_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersMetadataManager_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataManager || defined(INCLUDE_ComGoogleI18nPhonenumbersMetadataManager))
 #define ComGoogleI18nPhonenumbersMetadataManager_
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
@@ -56,4 +56,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersMetadataManager)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersMetadataManager_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataManager")

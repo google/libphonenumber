@@ -8,7 +8,6 @@
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/prefixmapper/FlyweightMapStorage.h"
 #include "com/google/i18n/phonenumbers/prefixmapper/PhonePrefixMapStorageStrategy.h"
-#include "java/io/IOException.h"
 #include "java/io/ObjectInput.h"
 #include "java/io/ObjectOutput.h"
 #include "java/lang/Integer.h"
@@ -144,7 +143,7 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
 }
 
 - (void)readFromSortedMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap {
-  id<JavaUtilSortedSet> descriptionsSet = [new_JavaUtilTreeSet_init() autorelease];
+  id<JavaUtilSortedSet> descriptionsSet = create_JavaUtilTreeSet_init();
   numOfEntries_ = [((id<JavaUtilSortedMap>) nil_chk(phonePrefixMap)) size];
   prefixSizeInBytes_ = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_getOptimalNumberOfBytesForValueWithInt_([((JavaLangInteger *) nil_chk([phonePrefixMap lastKey])) intValue]);
   JreStrongAssign(&phoneNumberPrefixes_, JavaNioByteBuffer_allocateWithInt_(numOfEntries_ * prefixSizeInBytes_));
@@ -198,7 +197,7 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
   [objectOutput writeIntWithInt:((IOSObjectArray *) nil_chk(descriptionPool_))->size_];
   {
     IOSObjectArray *a__ = descriptionPool_;
-    NSString * const *b__ = a__->buffer_;
+    NSString * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
     NSString * const *e__ = b__ + a__->size_;
     while (b__ < e__) {
       NSString *description_ = *b__++;
@@ -258,31 +257,48 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getPrefixWithInt:", "getPrefix", "I", 0x1, NULL, NULL },
-    { "getDescriptionWithInt:", "getDescription", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "readFromSortedMapWithJavaUtilSortedMap:", "readFromSortedMap", "V", 0x1, NULL, "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V" },
-    { "createDescriptionPoolWithJavaUtilSortedSet:withJavaUtilSortedMap:", "createDescriptionPool", "V", 0x2, NULL, "(Ljava/util/SortedSet<Ljava/lang/String;>;Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V" },
-    { "readExternalWithJavaIoObjectInput:", "readExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "readEntriesWithJavaIoObjectInput:", "readEntries", "V", 0x2, "Ljava.io.IOException;", NULL },
-    { "writeExternalWithJavaIoObjectOutput:", "writeExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "getOptimalNumberOfBytesForValueWithInt:", "getOptimalNumberOfBytesForValue", "I", 0xa, NULL, NULL },
-    { "readExternalWordWithJavaIoObjectInput:withInt:withJavaNioByteBuffer:withInt:", "readExternalWord", "V", 0xa, "Ljava.io.IOException;", NULL },
-    { "writeExternalWordWithJavaIoObjectOutput:withInt:withJavaNioByteBuffer:withInt:", "writeExternalWord", "V", 0xa, "Ljava.io.IOException;", NULL },
-    { "readWordFromBufferWithJavaNioByteBuffer:withInt:withInt:", "readWordFromBuffer", "I", 0xa, NULL, NULL },
-    { "storeWordInBufferWithJavaNioByteBuffer:withInt:withInt:withInt:", "storeWordInBuffer", "V", 0xa, NULL, NULL },
-    { "init", NULL, NULL, 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 3, 4, -1, 5, -1, -1 },
+    { NULL, "V", 0x2, 6, 7, -1, 8, -1, -1 },
+    { NULL, "V", 0x1, 9, 10, 11, -1, -1, -1 },
+    { NULL, "V", 0x2, 12, 10, 11, -1, -1, -1 },
+    { NULL, "V", 0x1, 13, 14, 11, -1, -1, -1 },
+    { NULL, "I", 0xa, 15, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 16, 17, 11, -1, -1, -1 },
+    { NULL, "V", 0xa, 18, 19, 11, -1, -1, -1 },
+    { NULL, "I", 0xa, 20, 21, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 22, 23, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getPrefixWithInt:);
+  methods[1].selector = @selector(getDescriptionWithInt:);
+  methods[2].selector = @selector(readFromSortedMapWithJavaUtilSortedMap:);
+  methods[3].selector = @selector(createDescriptionPoolWithJavaUtilSortedSet:withJavaUtilSortedMap:);
+  methods[4].selector = @selector(readExternalWithJavaIoObjectInput:);
+  methods[5].selector = @selector(readEntriesWithJavaIoObjectInput:);
+  methods[6].selector = @selector(writeExternalWithJavaIoObjectOutput:);
+  methods[7].selector = @selector(getOptimalNumberOfBytesForValueWithInt:);
+  methods[8].selector = @selector(readExternalWordWithJavaIoObjectInput:withInt:withJavaNioByteBuffer:withInt:);
+  methods[9].selector = @selector(writeExternalWordWithJavaIoObjectOutput:withInt:withJavaNioByteBuffer:withInt:);
+  methods[10].selector = @selector(readWordFromBufferWithJavaNioByteBuffer:withInt:withInt:);
+  methods[11].selector = @selector(storeWordInBufferWithJavaNioByteBuffer:withInt:withInt:withInt:);
+  methods[12].selector = @selector(init);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "SHORT_NUM_BYTES", "SHORT_NUM_BYTES", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_SHORT_NUM_BYTES },
-    { "INT_NUM_BYTES", "INT_NUM_BYTES", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_INT_NUM_BYTES },
-    { "prefixSizeInBytes_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "descIndexSizeInBytes_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "phoneNumberPrefixes_", NULL, 0x2, "Ljava.nio.ByteBuffer;", NULL, NULL, .constantValue.asLong = 0 },
-    { "descriptionIndexes_", NULL, 0x2, "Ljava.nio.ByteBuffer;", NULL, NULL, .constantValue.asLong = 0 },
-    { "descriptionPool_", NULL, 0x2, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "SHORT_NUM_BYTES", "I", .constantValue.asInt = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_SHORT_NUM_BYTES, 0x1a, -1, -1, -1, -1 },
+    { "INT_NUM_BYTES", "I", .constantValue.asInt = ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_INT_NUM_BYTES, 0x1a, -1, -1, -1, -1 },
+    { "prefixSizeInBytes_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "descIndexSizeInBytes_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "phoneNumberPrefixes_", "LJavaNioByteBuffer;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "descriptionIndexes_", "LJavaNioByteBuffer;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "descriptionPool_", "[LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage = { 2, "FlyweightMapStorage", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x10, 13, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getPrefix", "I", "getDescription", "readFromSortedMap", "LJavaUtilSortedMap;", "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V", "createDescriptionPool", "LJavaUtilSortedSet;LJavaUtilSortedMap;", "(Ljava/util/SortedSet<Ljava/lang/String;>;Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V", "readExternal", "LJavaIoObjectInput;", "LJavaIoIOException;", "readEntries", "writeExternal", "LJavaIoObjectOutput;", "getOptimalNumberOfBytesForValue", "readExternalWord", "LJavaIoObjectInput;ILJavaNioByteBuffer;I", "writeExternalWord", "LJavaIoObjectOutput;ILJavaNioByteBuffer;I", "readWordFromBuffer", "LJavaNioByteBuffer;II", "storeWordInBuffer", "LJavaNioByteBuffer;III" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage = { "FlyweightMapStorage", "com.google.i18n.phonenumbers.prefixmapper", ptrTable, methods, fields, 7, 0x10, 13, 7, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage;
 }
 
@@ -366,15 +382,11 @@ void ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(ComGoogleI18n
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *new_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init() {
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *self = [ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage alloc];
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage, init)
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *create_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init() {
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *self = [[ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage alloc] autorelease];
-  ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage)

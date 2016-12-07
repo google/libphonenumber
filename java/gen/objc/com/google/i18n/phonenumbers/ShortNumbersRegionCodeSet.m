@@ -22,11 +22,17 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getRegionCodeSet", NULL, "Ljava.util.Set;", 0x8, NULL, "()Ljava/util/Set<Ljava/lang/String;>;" },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LJavaUtilSet;", 0x8, -1, -1, -1, 0, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet = { 2, "ShortNumbersRegionCodeSet", "com.google.i18n.phonenumbers", NULL, 0x1, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getRegionCodeSet);
+  methods[1].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "()Ljava/util/Set<Ljava/lang/String;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet = { "ShortNumbersRegionCodeSet", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x1, 2, 0, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet;
 }
 
@@ -34,7 +40,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 id<JavaUtilSet> ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet() {
   ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_initialize();
-  id<JavaUtilSet> regionCodeSet = [new_JavaUtilHashSet_initWithInt_(317) autorelease];
+  id<JavaUtilSet> regionCodeSet = create_JavaUtilHashSet_initWithInt_(317);
   [regionCodeSet addWithId:@"AC"];
   [regionCodeSet addWithId:@"AD"];
   [regionCodeSet addWithId:@"AE"];
@@ -281,15 +287,11 @@ void ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(ComGoogleI18nPhonen
 }
 
 ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *new_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
-  ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *self = [ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet alloc];
-  ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet, init)
 }
 
 ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *create_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
-  ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *self = [[ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet alloc] autorelease];
-  ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet)

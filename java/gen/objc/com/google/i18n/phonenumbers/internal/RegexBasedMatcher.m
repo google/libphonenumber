@@ -60,16 +60,24 @@ withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPho
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "create", NULL, "Lcom.google.i18n.phonenumbers.internal.MatcherApi;", 0x9, NULL, NULL },
-    { "init", "RegexBasedMatcher", NULL, 0x2, NULL, NULL },
-    { "matchesNationalNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:withBoolean:", "matchesNationalNumber", "Z", 0x1, NULL, NULL },
-    { "matchesPossibleNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:", "matchesPossibleNumber", "Z", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LComGoogleI18nPhonenumbersInternalMatcherApi;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 3, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(create);
+  methods[1].selector = @selector(init);
+  methods[2].selector = @selector(matchesNationalNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:withBoolean:);
+  methods[3].selector = @selector(matchesPossibleNumberWithNSString:withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "regexCache_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.RegexCache;", NULL, NULL, .constantValue.asLong = 0 },
+    { "regexCache_", "LComGoogleI18nPhonenumbersRegexCache;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersInternalRegexBasedMatcher = { 2, "RegexBasedMatcher", "com.google.i18n.phonenumbers.internal", NULL, 0x11, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "matchesNationalNumber", "LNSString;LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;Z", "matchesPossibleNumber", "LNSString;LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersInternalRegexBasedMatcher = { "RegexBasedMatcher", "com.google.i18n.phonenumbers.internal", ptrTable, methods, fields, 7, 0x11, 4, 1, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher;
 }
 
@@ -77,7 +85,7 @@ withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPho
 
 id<ComGoogleI18nPhonenumbersInternalMatcherApi> ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create() {
   ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_initialize();
-  return [new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() autorelease];
+  return create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init();
 }
 
 void ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self) {
@@ -86,15 +94,11 @@ void ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(ComGoogleI18nPhonen
 }
 
 ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() {
-  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self = [ComGoogleI18nPhonenumbersInternalRegexBasedMatcher alloc];
-  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher, init)
 }
 
 ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() {
-  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self = [[ComGoogleI18nPhonenumbersInternalRegexBasedMatcher alloc] autorelease];
-  ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher)

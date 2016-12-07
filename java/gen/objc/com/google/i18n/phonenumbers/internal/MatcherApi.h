@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersInternalMatcherApi_RESTRICT
-#define ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersInternalMatcherApi
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi 0
 #else
-#define ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi 1
 #endif
-#undef ComGoogleI18nPhonenumbersInternalMatcherApi_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersInternalMatcherApi
 
-#if !defined (ComGoogleI18nPhonenumbersInternalMatcherApi_) && (ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersInternalMatcherApi_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi || defined(INCLUDE_ComGoogleI18nPhonenumbersInternalMatcherApi))
 #define ComGoogleI18nPhonenumbersInternalMatcherApi_
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;
@@ -22,7 +22,7 @@
  @brief Internal phonenumber matching API used to isolate the underlying implementation of the
  matcher and allow different implementations to be swapped in easily.
  */
-@protocol ComGoogleI18nPhonenumbersInternalMatcherApi < NSObject, JavaObject >
+@protocol ComGoogleI18nPhonenumbersInternalMatcherApi < JavaObject >
 
 /*!
  @brief Returns whether the given national number (a string containing only decimal digits) matches
@@ -47,4 +47,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersInternalMatcherApi)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi")

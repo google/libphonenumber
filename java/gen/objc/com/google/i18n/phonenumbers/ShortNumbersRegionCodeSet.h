@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_RESTRICT
-#define ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet 0
 #else
-#define ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet 1
 #endif
-#undef ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet
 
-#if !defined (ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_) && (ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet || defined(INCLUDE_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet))
 #define ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_
 
 @protocol JavaUtilSet;
@@ -44,4 +44,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet")

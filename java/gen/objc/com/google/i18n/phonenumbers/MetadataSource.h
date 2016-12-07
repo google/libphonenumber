@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersMetadataSource_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersMetadataSource_RESTRICT
-#define ComGoogleI18nPhonenumbersMetadataSource_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataSource")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersMetadataSource
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataSource 0
 #else
-#define ComGoogleI18nPhonenumbersMetadataSource_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataSource 1
 #endif
-#undef ComGoogleI18nPhonenumbersMetadataSource_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersMetadataSource
 
-#if !defined (ComGoogleI18nPhonenumbersMetadataSource_) && (ComGoogleI18nPhonenumbersMetadataSource_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersMetadataSource_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersMetadataSource_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataSource || defined(INCLUDE_ComGoogleI18nPhonenumbersMetadataSource))
 #define ComGoogleI18nPhonenumbersMetadataSource_
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;
@@ -21,7 +21,7 @@
 /*!
  @brief A source for phone metadata for all regions.
  */
-@protocol ComGoogleI18nPhonenumbersMetadataSource < NSObject, JavaObject >
+@protocol ComGoogleI18nPhonenumbersMetadataSource < JavaObject >
 
 /*!
  @brief Gets phone metadata for a region.
@@ -45,4 +45,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersMetadataSource)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersMetadataSource_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataSource")

@@ -21,7 +21,9 @@
 #include "java/lang/NullPointerException.h"
 #include "java/lang/StringBuilder.h"
 #include "java/lang/UnsupportedOperationException.h"
+#include "java/util/Iterator.h"
 #include "java/util/NoSuchElementException.h"
+#include "java/util/function/Consumer.h"
 #include "java/util/regex/Matcher.h"
 #include "java/util/regex/Pattern.h"
 
@@ -273,9 +275,9 @@ J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE)
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *self, NSString *__name, jint __ordinal);
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values();
+__attribute__((unused)) static IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values();
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_valueOfWithNSString_(NSString *name);
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_valueOfWithNSString_(NSString *name);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_fromOrdinal(NSUInteger ordinal);
 
@@ -394,7 +396,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 
 - (ComGoogleI18nPhonenumbersPhoneNumberMatch *)next {
   if (![self hasNext]) {
-    @throw [new_JavaUtilNoSuchElementException_init() autorelease];
+    @throw create_JavaUtilNoSuchElementException_init();
   }
   ComGoogleI18nPhonenumbersPhoneNumberMatch *result = lastMatch_;
   JreStrongAssign(&lastMatch_, nil);
@@ -403,7 +405,11 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 }
 
 - (void)remove {
-  @throw [new_JavaLangUnsupportedOperationException_init() autorelease];
+  @throw create_JavaLangUnsupportedOperationException_init();
+}
+
+- (void)forEachRemainingWithJavaUtilFunctionConsumer:(id<JavaUtilFunctionConsumer>)arg0 {
+  JavaUtilIterator_forEachRemainingWithJavaUtilFunctionConsumer_(self, arg0);
 }
 
 - (void)dealloc {
@@ -414,6 +420,73 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
   RELEASE_(state_);
   RELEASE_(lastMatch_);
   [super dealloc];
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LNSString;", 0xa, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 2, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberMatch;", 0x2, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LJavaLangCharSequence;", 0xa, 5, 6, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 7, 8, -1, -1, -1, -1 },
+    { NULL, "Z", 0xa, 9, 8, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberMatch;", 0x2, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberMatch;", 0x2, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberMatch;", 0x2, 14, 13, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 15, 16, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 17, 16, -1, -1, -1, -1 },
+    { NULL, "[LNSString;", 0xa, 18, 19, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 20, 21, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 22, 23, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 24, 25, -1, -1, -1, -1 },
+    { NULL, "Z", 0x8, 26, 27, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberMatch;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(limitWithInt:withInt:);
+  methods[1].selector = @selector(initWithComGoogleI18nPhonenumbersPhoneNumberUtil:withJavaLangCharSequence:withNSString:withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency:withLong:);
+  methods[2].selector = @selector(findWithInt:);
+  methods[3].selector = @selector(trimAfterFirstMatchWithJavaUtilRegexPattern:withJavaLangCharSequence:);
+  methods[4].selector = @selector(isLatinLetterWithChar:);
+  methods[5].selector = @selector(isInvalidPunctuationSymbolWithChar:);
+  methods[6].selector = @selector(extractMatchWithJavaLangCharSequence:withInt:);
+  methods[7].selector = @selector(extractInnerMatchWithNSString:withInt:);
+  methods[8].selector = @selector(parseAndVerifyWithNSString:withInt:);
+  methods[9].selector = @selector(allNumberGroupsRemainGroupedWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaLangStringBuilder:withNSStringArray:);
+  methods[10].selector = @selector(allNumberGroupsAreExactlyPresentWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaLangStringBuilder:withNSStringArray:);
+  methods[11].selector = @selector(getNationalNumberGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat:);
+  methods[12].selector = @selector(checkNumberGroupingIsValidWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withNSString:withComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker:);
+  methods[13].selector = @selector(containsMoreThanOneSlashInNationalNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withNSString:);
+  methods[14].selector = @selector(containsOnlyValidXCharsWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withNSString:withComGoogleI18nPhonenumbersPhoneNumberUtil:);
+  methods[15].selector = @selector(isNationalPrefixPresentIfRequiredWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withComGoogleI18nPhonenumbersPhoneNumberUtil:);
+  methods[16].selector = @selector(hasNext);
+  methods[17].selector = @selector(next);
+  methods[18].selector = @selector(remove);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "PATTERN", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 28, -1, -1 },
+    { "PUB_PAGES", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 29, -1, -1 },
+    { "SLASH_SEPARATED_DATES", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 30, -1, -1 },
+    { "TIME_STAMPS", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 31, -1, -1 },
+    { "TIME_STAMPS_SUFFIX", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 32, -1, -1 },
+    { "MATCHING_BRACKETS", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 33, -1, -1 },
+    { "INNER_MATCHES", "[LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 34, -1, -1 },
+    { "LEAD_CLASS", "LJavaUtilRegexPattern;", .constantValue.asLong = 0, 0x1a, -1, 35, -1, -1 },
+    { "phoneUtil_", "LComGoogleI18nPhonenumbersPhoneNumberUtil;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "text_", "LJavaLangCharSequence;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "preferredRegion_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "leniency_", "LComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "maxTries_", "J", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "state_", "LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "lastMatch_", "LComGoogleI18nPhonenumbersPhoneNumberMatch;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "searchIndex_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "limit", "II", "LComGoogleI18nPhonenumbersPhoneNumberUtil;LJavaLangCharSequence;LNSString;LComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency;J", "find", "I", "trimAfterFirstMatch", "LJavaUtilRegexPattern;LJavaLangCharSequence;", "isLatinLetter", "C", "isInvalidPunctuationSymbol", "extractMatch", "LJavaLangCharSequence;I", "extractInnerMatch", "LNSString;I", "parseAndVerify", "allNumberGroupsRemainGrouped", "LComGoogleI18nPhonenumbersPhoneNumberUtil;LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LJavaLangStringBuilder;[LNSString;", "allNumberGroupsAreExactlyPresent", "getNationalNumberGroups", "LComGoogleI18nPhonenumbersPhoneNumberUtil;LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat;", "checkNumberGroupingIsValid", "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LNSString;LComGoogleI18nPhonenumbersPhoneNumberUtil;LComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker;", "containsMoreThanOneSlashInNationalNumber", "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LNSString;", "containsOnlyValidXChars", "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LNSString;LComGoogleI18nPhonenumbersPhoneNumberUtil;", "isNationalPrefixPresentIfRequired", "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LComGoogleI18nPhonenumbersPhoneNumberUtil;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PATTERN, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_SLASH_SEPARATED_DATES, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_SUFFIX, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_INNER_MATCHES, &ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS, "LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;LComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker;", "Ljava/lang/Object;Ljava/util/Iterator<Lcom/google/i18n/phonenumbers/PhoneNumberMatch;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher = { "PhoneNumberMatcher", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x10, 19, 16, -1, 36, -1, 37, -1 };
+  return &_ComGoogleI18nPhonenumbersPhoneNumberMatcher;
 }
 
 + (void)initialize {
@@ -444,57 +517,12 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "limitWithInt:withInt:", "limit", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "initWithComGoogleI18nPhonenumbersPhoneNumberUtil:withJavaLangCharSequence:withNSString:withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency:withLong:", "PhoneNumberMatcher", NULL, 0x0, NULL, NULL },
-    { "findWithInt:", "find", "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", 0x2, NULL, NULL },
-    { "trimAfterFirstMatchWithJavaUtilRegexPattern:withJavaLangCharSequence:", "trimAfterFirstMatch", "Ljava.lang.CharSequence;", 0xa, NULL, NULL },
-    { "isLatinLetterWithChar:", "isLatinLetter", "Z", 0x8, NULL, NULL },
-    { "isInvalidPunctuationSymbolWithChar:", "isInvalidPunctuationSymbol", "Z", 0xa, NULL, NULL },
-    { "extractMatchWithJavaLangCharSequence:withInt:", "extractMatch", "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", 0x2, NULL, NULL },
-    { "extractInnerMatchWithNSString:withInt:", "extractInnerMatch", "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", 0x2, NULL, NULL },
-    { "parseAndVerifyWithNSString:withInt:", "parseAndVerify", "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", 0x2, NULL, NULL },
-    { "allNumberGroupsRemainGroupedWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaLangStringBuilder:withNSStringArray:", "allNumberGroupsRemainGrouped", "Z", 0x8, NULL, NULL },
-    { "allNumberGroupsAreExactlyPresentWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaLangStringBuilder:withNSStringArray:", "allNumberGroupsAreExactlyPresent", "Z", 0x8, NULL, NULL },
-    { "getNationalNumberGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat:", "getNationalNumberGroups", "[Ljava.lang.String;", 0xa, NULL, NULL },
-    { "checkNumberGroupingIsValidWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withNSString:withComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker:", "checkNumberGroupingIsValid", "Z", 0x8, NULL, NULL },
-    { "containsMoreThanOneSlashInNationalNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withNSString:", "containsMoreThanOneSlashInNationalNumber", "Z", 0x8, NULL, NULL },
-    { "containsOnlyValidXCharsWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withNSString:withComGoogleI18nPhonenumbersPhoneNumberUtil:", "containsOnlyValidXChars", "Z", 0x8, NULL, NULL },
-    { "isNationalPrefixPresentIfRequiredWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withComGoogleI18nPhonenumbersPhoneNumberUtil:", "isNationalPrefixPresentIfRequired", "Z", 0x8, NULL, NULL },
-    { "hasNext", NULL, "Z", 0x1, NULL, NULL },
-    { "next", NULL, "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", 0x1, NULL, NULL },
-    { "remove", NULL, "V", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "PATTERN", "PATTERN", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PATTERN, NULL, .constantValue.asLong = 0 },
-    { "PUB_PAGES", "PUB_PAGES", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_PUB_PAGES, NULL, .constantValue.asLong = 0 },
-    { "SLASH_SEPARATED_DATES", "SLASH_SEPARATED_DATES", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_SLASH_SEPARATED_DATES, NULL, .constantValue.asLong = 0 },
-    { "TIME_STAMPS", "TIME_STAMPS", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS, NULL, .constantValue.asLong = 0 },
-    { "TIME_STAMPS_SUFFIX", "TIME_STAMPS_SUFFIX", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_TIME_STAMPS_SUFFIX, NULL, .constantValue.asLong = 0 },
-    { "MATCHING_BRACKETS", "MATCHING_BRACKETS", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_MATCHING_BRACKETS, NULL, .constantValue.asLong = 0 },
-    { "INNER_MATCHES", "INNER_MATCHES", 0x1a, "[Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_INNER_MATCHES, NULL, .constantValue.asLong = 0 },
-    { "LEAD_CLASS", "LEAD_CLASS", 0x1a, "Ljava.util.regex.Pattern;", &ComGoogleI18nPhonenumbersPhoneNumberMatcher_LEAD_CLASS, NULL, .constantValue.asLong = 0 },
-    { "phoneUtil_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil;", NULL, NULL, .constantValue.asLong = 0 },
-    { "text_", NULL, 0x12, "Ljava.lang.CharSequence;", NULL, NULL, .constantValue.asLong = 0 },
-    { "preferredRegion_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "leniency_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.PhoneNumberUtil$Leniency;", NULL, NULL, .constantValue.asLong = 0 },
-    { "maxTries_", NULL, 0x2, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "state_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", NULL, NULL, .constantValue.asLong = 0 },
-    { "lastMatch_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.PhoneNumberMatch;", NULL, NULL, .constantValue.asLong = 0 },
-    { "searchIndex_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$NumberGroupingChecker;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher = { 2, "PhoneNumberMatcher", "com.google.i18n.phonenumbers", NULL, 0x10, 19, methods, 16, fields, 0, NULL, 2, inner_classes, NULL, "Ljava/lang/Object;Ljava/util/Iterator<Lcom/google/i18n/phonenumbers/PhoneNumberMatch;>;" };
-  return &_ComGoogleI18nPhonenumbersPhoneNumberMatcher;
-}
-
 @end
 
 NSString *ComGoogleI18nPhonenumbersPhoneNumberMatcher_limitWithInt_withInt_(jint lower, jint upper) {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
   if ((lower < 0) || (upper <= 0) || (upper < lower)) {
-    @throw [new_JavaLangIllegalArgumentException_init() autorelease];
+    @throw create_JavaLangIllegalArgumentException_init();
   }
   return JreStrcat("CICIC", '{', lower, ',', upper, '}');
 }
@@ -505,28 +533,24 @@ void ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbe
   JreStrongAssign(&self->lastMatch_, nil);
   self->searchIndex_ = 0;
   if ((util == nil) || (leniency == nil)) {
-    @throw [new_JavaLangNullPointerException_init() autorelease];
+    @throw create_JavaLangNullPointerException_init();
   }
   if (maxTries < 0) {
-    @throw [new_JavaLangIllegalArgumentException_init() autorelease];
+    @throw create_JavaLangIllegalArgumentException_init();
   }
   JreStrongAssign(&self->phoneUtil_, util);
-  JreStrongAssign(&self->text_, (text != nil) ? ((id) text) : @"");
+  JreStrongAssign(&self->text_, (text != nil) ? text : @"");
   JreStrongAssign(&self->preferredRegion_, country);
   JreStrongAssign(&self->leniency_, leniency);
   self->maxTries_ = maxTries;
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberMatcher *new_ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, id<JavaLangCharSequence> text, NSString *country, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *leniency, jlong maxTries) {
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher *self = [ComGoogleI18nPhonenumbersPhoneNumberMatcher alloc];
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(self, util, text, country, leniency, maxTries);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPhoneNumberMatcher, initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_, util, text, country, leniency, maxTries)
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberMatcher *create_ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util, id<JavaLangCharSequence> text, NSString *country, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *leniency, jlong maxTries) {
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher *self = [[ComGoogleI18nPhonenumbersPhoneNumberMatcher alloc] autorelease];
-  ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(self, util, text, country, leniency, maxTries);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersPhoneNumberMatcher, initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_, util, text, country, leniency, maxTries)
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberMatch *ComGoogleI18nPhonenumbersPhoneNumberMatcher_findWithInt_(ComGoogleI18nPhonenumbersPhoneNumberMatcher *self, jint index) {
@@ -645,7 +669,7 @@ ComGoogleI18nPhonenumbersPhoneNumberMatch *ComGoogleI18nPhonenumbersPhoneNumberM
       [number clearCountryCodeSource];
       [number clearRawInput];
       [number clearPreferredDomesticCarrierCode];
-      return [new_ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(offset, candidate, number) autorelease];
+      return create_ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(offset, candidate, number);
     }
   }
   @catch (ComGoogleI18nPhonenumbersNumberParseException *e) {
@@ -681,7 +705,7 @@ jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_allNumberGroupsAreExactlyPr
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initialize();
   IOSObjectArray *candidateGroups = [((JavaUtilRegexPattern *) nil_chk(JreLoadStatic(ComGoogleI18nPhonenumbersPhoneNumberUtil, NON_DIGITS_PATTERN))) splitWithJavaLangCharSequence:[((JavaLangStringBuilder *) nil_chk(normalizedCandidate)) description]];
   jint candidateNumberGroupIndex = [((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(number)) hasExtension] ? ((IOSObjectArray *) nil_chk(candidateGroups))->size_ - 2 : ((IOSObjectArray *) nil_chk(candidateGroups))->size_ - 1;
-  if (((IOSObjectArray *) nil_chk(candidateGroups))->size_ == 1 || [((NSString *) nil_chk(IOSObjectArray_Get(candidateGroups, candidateNumberGroupIndex))) contains:[((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number]]) {
+  if (candidateGroups->size_ == 1 || [((NSString *) nil_chk(IOSObjectArray_Get(candidateGroups, candidateNumberGroupIndex))) contains:[((ComGoogleI18nPhonenumbersPhoneNumberUtil *) nil_chk(util)) getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number]]) {
     return true;
   }
   for (jint formattedNumberGroupIndex = (((IOSObjectArray *) nil_chk(formattedNumberGroups))->size_ - 1); formattedNumberGroupIndex > 0 && candidateNumberGroupIndex >= 0; formattedNumberGroupIndex--, candidateNumberGroupIndex--) {
@@ -782,16 +806,16 @@ jboolean ComGoogleI18nPhonenumbersPhoneNumberMatcher_isNationalPrefixPresentIfRe
     return true;
   }
   NSString *nationalNumber = [util getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:number];
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *formatRule = [util chooseFormattingPatternForNumberWithComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormatArray:((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata *) nil_chk(metadata))->numberFormat_ withNSString:nationalNumber];
-  if ((formatRule != nil) && ((jint) [((NSString *) nil_chk(formatRule->nationalPrefixFormattingRule_)) length]) > 0) {
-    if (formatRule->nationalPrefixOptionalWhenFormatting_) {
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *formatRule = [util chooseFormattingPatternForNumberWithComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormatArray:metadata->numberFormat_ withNSString:nationalNumber];
+  if ((formatRule != nil) && ((jint) [((NSString *) nil_chk(((ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *) nil_chk(formatRule))->nationalPrefixFormattingRule_)) length]) > 0) {
+    if (((ComGoogleI18nPhonenumbersNanoPhonemetadata_NumberFormat *) nil_chk(formatRule))->nationalPrefixOptionalWhenFormatting_) {
       return true;
     }
     if (ComGoogleI18nPhonenumbersPhoneNumberUtil_formattingRuleHasFirstGroupOnlyWithNSString_(formatRule->nationalPrefixFormattingRule_)) {
       return true;
     }
     NSString *rawInputCopy = ComGoogleI18nPhonenumbersPhoneNumberUtil_normalizeDigitsOnlyWithNSString_([number getRawInput]);
-    JavaLangStringBuilder *rawInput = [new_JavaLangStringBuilder_initWithNSString_(rawInputCopy) autorelease];
+    JavaLangStringBuilder *rawInput = create_JavaLangStringBuilder_initWithNSString_(rawInputCopy);
     return [util maybeStripNationalPrefixAndCarrierCodeWithJavaLangStringBuilder:rawInput withComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata:metadata withJavaLangStringBuilder:nil];
   }
   return true;
@@ -817,31 +841,41 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhon
   return self;
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "[LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;", 0x9, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(values);
+  methods[1].selector = @selector(valueOfWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "NOT_READY", "LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;", .constantValue.asLong = 0, 0x4019, -1, 2, -1, -1 },
+    { "READY", "LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;", .constantValue.asLong = 0, 0x4019, -1, 3, -1, -1 },
+    { "DONE", "LComGoogleI18nPhonenumbersPhoneNumberMatcher_State;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
+  };
+  static const void *ptrTable[] = { "valueOf", "LNSString;", &JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, NOT_READY), &JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, READY), &JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE), "LComGoogleI18nPhonenumbersPhoneNumberMatcher;", "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/PhoneNumberMatcher$State;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher_State = { "State", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x401a, 2, 3, 5, -1, -1, 6, -1 };
+  return &_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPhoneNumberMatcher_State class]) {
     size_t objSize = class_getInstanceSize(self);
     size_t allocSize = 3 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, NOT_READY) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, @"NOT_READY", 0);
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, READY) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, @"READY", 1);
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, @"DONE", 2);
+    id names[] = {
+      @"NOT_READY", @"READY", @"DONE",
+    };
+    for (jint i = 0; i < 3; i++) {
+      (ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, names[i], i);
+    }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcFieldInfo fields[] = {
-    { "NOT_READY", "NOT_READY", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, NOT_READY), NULL, .constantValue.asLong = 0 },
-    { "READY", "READY", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, READY), NULL, .constantValue.asLong = 0 },
-    { "DONE", "DONE", 0x4019, "Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;", &JreEnum(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State, DONE), NULL, .constantValue.asLong = 0 },
-  };
-  static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.PhoneNumberMatcher$State;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher_State = { 2, "State", "com.google.i18n.phonenumbers", "PhoneNumberMatcher", 0x401a, 0, NULL, 3, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/PhoneNumberMatcher$State;>;" };
-  return &_ComGoogleI18nPhonenumbersPhoneNumberMatcher_State;
 }
 
 @end
@@ -863,7 +897,7 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhon
       return e;
     }
   }
-  @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:name] autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
   return nil;
 }
 
@@ -880,10 +914,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhoneNumberMatcher_Sta
 @implementation ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "checkGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaLangStringBuilder:withNSStringArray:", "checkGroups", "Z", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "Z", 0x401, 0, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker = { 2, "NumberGroupingChecker", "com.google.i18n.phonenumbers", "PhoneNumberMatcher", 0x608, 1, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(checkGroupsWithComGoogleI18nPhonenumbersPhoneNumberUtil:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:withJavaLangStringBuilder:withNSStringArray:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "checkGroups", "LComGoogleI18nPhonenumbersPhoneNumberUtil;LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;LJavaLangStringBuilder;[LNSString;", "LComGoogleI18nPhonenumbersPhoneNumberMatcher;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker = { "NumberGroupingChecker", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x608, 1, 0, 2, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker;
 }
 

@@ -3,11 +3,9 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/libphonenumber/java/internal/prefixmapper/src/main/java/com/google/i18n/phonenumbers/prefixmapper/MappingFileProvider.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/prefixmapper/MappingFileProvider.h"
-#include "java/io/IOException.h"
 #include "java/io/ObjectInput.h"
 #include "java/io/ObjectOutput.h"
 #include "java/lang/Integer.h"
@@ -81,8 +79,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   jint index = 0;
   for (JavaLangInteger *boxed__ in nil_chk([availableDataFiles keySet])) {
     jint countryCallingCode = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
-    *IOSIntArray_GetRef(countryCallingCodes_, index++) = countryCallingCode;
-    [availableLanguages_ addWithId:[new_JavaUtilHashSet_initWithJavaUtilCollection_([availableDataFiles getWithId:JavaLangInteger_valueOfWithInt_(countryCallingCode)]) autorelease]];
+    *IOSIntArray_GetRef(nil_chk(countryCallingCodes_), index++) = countryCallingCode;
+    [((id<JavaUtilList>) nil_chk(availableLanguages_)) addWithId:create_JavaUtilHashSet_initWithJavaUtilCollection_([availableDataFiles getWithId:JavaLangInteger_valueOfWithInt_(countryCallingCode)])];
   }
 }
 
@@ -97,7 +95,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   for (jint i = 0; i < numOfEntries_; i++) {
     *IOSIntArray_GetRef(nil_chk(countryCallingCodes_), i) = [objectInput readInt];
     jint numOfLangs = [objectInput readInt];
-    id<JavaUtilSet> setOfLangs = [new_JavaUtilHashSet_init() autorelease];
+    id<JavaUtilSet> setOfLangs = create_JavaUtilHashSet_init();
     for (jint j = 0; j < numOfLangs; j++) {
       [setOfLangs addWithId:[objectInput readUTF]];
     }
@@ -119,11 +117,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (NSString *)description {
-  JavaLangStringBuilder *output = [new_JavaLangStringBuilder_init() autorelease];
+  JavaLangStringBuilder *output = create_JavaLangStringBuilder_init();
   for (jint i = 0; i < numOfEntries_; i++) {
     [output appendWithInt:IOSIntArray_Get(nil_chk(countryCallingCodes_), i)];
     [output appendWithChar:'|'];
-    id<JavaUtilSortedSet> sortedSetOfLangs = [new_JavaUtilTreeSet_initWithJavaUtilCollection_([((id<JavaUtilList>) nil_chk(availableLanguages_)) getWithInt:i]) autorelease];
+    id<JavaUtilSortedSet> sortedSetOfLangs = create_JavaUtilTreeSet_initWithJavaUtilCollection_([((id<JavaUtilList>) nil_chk(availableLanguages_)) getWithInt:i]);
     for (NSString * __strong lang in sortedSetOfLangs) {
       [output appendWithNSString:lang];
       [output appendWithChar:','];
@@ -148,7 +146,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if ([((id<JavaUtilSet>) nil_chk(setOfLangs)) size] > 0) {
     NSString *languageCode = ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_findBestMatchingLanguageCodeWithJavaUtilSet_withNSString_withNSString_withNSString_(self, setOfLangs, language, script, region);
     if (((jint) [((NSString *) nil_chk(languageCode)) length]) > 0) {
-      JavaLangStringBuilder *fileName = [new_JavaLangStringBuilder_init() autorelease];
+      JavaLangStringBuilder *fileName = create_JavaLangStringBuilder_init();
       [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([fileName appendWithInt:countryCallingCode])) appendWithChar:'_'])) appendWithNSString:languageCode];
       return [fileName description];
     }
@@ -185,10 +183,47 @@ J2OBJC_IGNORE_DESIGNATED_END
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, "V", 0x1, 3, 4, 5, -1, -1, -1 },
+    { NULL, "V", 0x1, 6, 7, 5, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 8, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x0, 9, 10, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x2, 11, 12, -1, 13, -1, -1 },
+    { NULL, "Z", 0x2, 14, 15, -1, -1, -1, -1 },
+    { NULL, "LJavaLangStringBuilder;", 0x2, 16, 17, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 18, 19, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(readFileConfigsWithJavaUtilSortedMap:);
+  methods[2].selector = @selector(readExternalWithJavaIoObjectInput:);
+  methods[3].selector = @selector(writeExternalWithJavaIoObjectOutput:);
+  methods[4].selector = @selector(description);
+  methods[5].selector = @selector(getFileNameWithInt:withNSString:withNSString:withNSString:);
+  methods[6].selector = @selector(findBestMatchingLanguageCodeWithJavaUtilSet:withNSString:withNSString:withNSString:);
+  methods[7].selector = @selector(onlyOneOfScriptOrRegionIsEmptyWithNSString:withNSString:);
+  methods[8].selector = @selector(constructFullLocaleWithNSString:withNSString:withNSString:);
+  methods[9].selector = @selector(appendSubsequentLocalePartWithNSString:withJavaLangStringBuilder:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "numOfEntries_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "countryCallingCodes_", "[I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "availableLanguages_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 20, -1 },
+    { "LOCALE_NORMALIZATION_MAP", "LJavaUtilMap;", .constantValue.asLong = 0, 0x1a, -1, 21, 22, -1 },
+  };
+  static const void *ptrTable[] = { "readFileConfigs", "LJavaUtilSortedMap;", "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/util/Set<Ljava/lang/String;>;>;)V", "readExternal", "LJavaIoObjectInput;", "LJavaIoIOException;", "writeExternal", "LJavaIoObjectOutput;", "toString", "getFileName", "ILNSString;LNSString;LNSString;", "findBestMatchingLanguageCode", "LJavaUtilSet;LNSString;LNSString;LNSString;", "(Ljava/util/Set<Ljava/lang/String;>;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", "onlyOneOfScriptOrRegionIsEmpty", "LNSString;LNSString;", "constructFullLocale", "LNSString;LNSString;LNSString;", "appendSubsequentLocalePart", "LNSString;LJavaLangStringBuilder;", "Ljava/util/List<Ljava/util/Set<Ljava/lang/String;>;>;", &ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider = { "MappingFileProvider", "com.google.i18n.phonenumbers.prefixmapper", ptrTable, methods, fields, 7, 0x1, 10, 4, -1, -1, -1, -1, -1 };
+  return &_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider class]) {
     {
-      id<JavaUtilMap> normalizationMap = [new_JavaUtilHashMap_init() autorelease];
+      id<JavaUtilMap> normalizationMap = create_JavaUtilHashMap_init();
       [normalizationMap putWithId:@"zh_TW" withId:@"zh_Hant"];
       [normalizationMap putWithId:@"zh_HK" withId:@"zh_Hant"];
       [normalizationMap putWithId:@"zh_MO" withId:@"zh_Hant"];
@@ -196,29 +231,6 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "MappingFileProvider", NULL, 0x1, NULL, NULL },
-    { "readFileConfigsWithJavaUtilSortedMap:", "readFileConfigs", "V", 0x1, NULL, "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/util/Set<Ljava/lang/String;>;>;)V" },
-    { "readExternalWithJavaIoObjectInput:", "readExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeExternalWithJavaIoObjectOutput:", "writeExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getFileNameWithInt:withNSString:withNSString:withNSString:", "getFileName", "Ljava.lang.String;", 0x0, NULL, NULL },
-    { "findBestMatchingLanguageCodeWithJavaUtilSet:withNSString:withNSString:withNSString:", "findBestMatchingLanguageCode", "Ljava.lang.String;", 0x2, NULL, "(Ljava/util/Set<Ljava/lang/String;>;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" },
-    { "onlyOneOfScriptOrRegionIsEmptyWithNSString:withNSString:", "onlyOneOfScriptOrRegionIsEmpty", "Z", 0x2, NULL, NULL },
-    { "constructFullLocaleWithNSString:withNSString:withNSString:", "constructFullLocale", "Ljava.lang.StringBuilder;", 0x2, NULL, NULL },
-    { "appendSubsequentLocalePartWithNSString:withJavaLangStringBuilder:", "appendSubsequentLocalePart", "V", 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "numOfEntries_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "countryCallingCodes_", NULL, 0x2, "[I", NULL, NULL, .constantValue.asLong = 0 },
-    { "availableLanguages_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Ljava/util/Set<Ljava/lang/String;>;>;", .constantValue.asLong = 0 },
-    { "LOCALE_NORMALIZATION_MAP", "LOCALE_NORMALIZATION_MAP", 0x1a, "Ljava.util.Map;", &ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;", .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider = { 2, "MappingFileProvider", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x1, 10, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider;
 }
 
 @end
@@ -229,15 +241,11 @@ void ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init(ComGoogleI18n
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *new_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init() {
-  ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self = [ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider alloc];
-  ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider, init)
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *create_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init() {
-  ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self = [[ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider alloc] autorelease];
-  ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider, init)
 }
 
 NSString *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_findBestMatchingLanguageCodeWithJavaUtilSet_withNSString_withNSString_withNSString_(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self, id<JavaUtilSet> setOfLangs, NSString *language, NSString *script, NSString *region) {
@@ -258,12 +266,12 @@ NSString *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_findBestMatch
     }
   }
   else if (((jint) [((NSString *) nil_chk(script)) length]) > 0 && ((jint) [((NSString *) nil_chk(region)) length]) > 0) {
-    JavaLangStringBuilder *langWithScript = [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) [new_JavaLangStringBuilder_initWithNSString_(language) autorelease]) appendWithChar:'_'])) appendWithNSString:script];
+    JavaLangStringBuilder *langWithScript = [((JavaLangStringBuilder *) nil_chk([create_JavaLangStringBuilder_initWithNSString_(language) appendWithChar:'_'])) appendWithNSString:script];
     NSString *langWithScriptStr = [((JavaLangStringBuilder *) nil_chk(langWithScript)) description];
     if ([setOfLangs containsWithId:langWithScriptStr]) {
       return langWithScriptStr;
     }
-    JavaLangStringBuilder *langWithRegion = [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) [new_JavaLangStringBuilder_initWithNSString_(language) autorelease]) appendWithChar:'_'])) appendWithNSString:region];
+    JavaLangStringBuilder *langWithRegion = [((JavaLangStringBuilder *) nil_chk([create_JavaLangStringBuilder_initWithNSString_(language) appendWithChar:'_'])) appendWithNSString:region];
     NSString *langWithRegionStr = [((JavaLangStringBuilder *) nil_chk(langWithRegion)) description];
     if ([setOfLangs containsWithId:langWithRegionStr]) {
       return langWithRegionStr;
@@ -280,7 +288,7 @@ jboolean ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_onlyOneOfScrip
 }
 
 JavaLangStringBuilder *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_constructFullLocaleWithNSString_withNSString_withNSString_(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self, NSString *language, NSString *script, NSString *region) {
-  JavaLangStringBuilder *fullLocale = [new_JavaLangStringBuilder_initWithNSString_(language) autorelease];
+  JavaLangStringBuilder *fullLocale = create_JavaLangStringBuilder_initWithNSString_(language);
   ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_appendSubsequentLocalePartWithNSString_withJavaLangStringBuilder_(self, script, fullLocale);
   ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_appendSubsequentLocalePartWithNSString_withJavaLangStringBuilder_(self, region, fullLocale);
   return fullLocale;

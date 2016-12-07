@@ -3,24 +3,23 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/libphonenumber/java/libphonenumber/src/main/java/com/google/i18n/phonenumbers/Phonenumber.java
 //
 
-#include "J2ObjC_header.h"
-
-#pragma push_macro("ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPhonenumber_RESTRICT
-#define ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL 0
-#else
-#define ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL 1
-#endif
-#undef ComGoogleI18nPhonenumbersPhonenumber_RESTRICT
-
 /*!
  @brief Definition of the class representing international telephone numbers.
  This class is hand-created
  based on the class file compiled from phonenumber.proto. Please refer to that file for detailed
  descriptions of the meaning of each field.
  */
+#include "J2ObjC_header.h"
 
-#if !defined (ComGoogleI18nPhonenumbersPhonenumber_) && (ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhonenumber_INCLUDE))
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPhonenumber
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber 0
+#else
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber 1
+#endif
+#undef RESTRICT_ComGoogleI18nPhonenumbersPhonenumber
+
+#if !defined (ComGoogleI18nPhonenumbersPhonenumber_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber || defined(INCLUDE_ComGoogleI18nPhonenumbersPhonenumber))
 #define ComGoogleI18nPhonenumbersPhonenumber_
 
 @interface ComGoogleI18nPhonenumbersPhonenumber : NSObject
@@ -33,11 +32,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_) && (ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber || defined(INCLUDE_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber))
 #define ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource;
@@ -138,12 +137,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_) && (ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber || defined(INCLUDE_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource))
 #define ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_Enum) {
   ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_Enum_FROM_NUMBER_WITH_PLUS_SIGN = 0,
@@ -154,11 +155,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_Cou
 
 @interface ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -191,4 +194,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_Coun
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPhonenumber_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber")

@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersAsYouTypeFormatter_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersAsYouTypeFormatter_RESTRICT
-#define ComGoogleI18nPhonenumbersAsYouTypeFormatter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersAsYouTypeFormatter
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter 0
 #else
-#define ComGoogleI18nPhonenumbersAsYouTypeFormatter_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter 1
 #endif
-#undef ComGoogleI18nPhonenumbersAsYouTypeFormatter_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersAsYouTypeFormatter
 
-#if !defined (ComGoogleI18nPhonenumbersAsYouTypeFormatter_) && (ComGoogleI18nPhonenumbersAsYouTypeFormatter_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersAsYouTypeFormatter_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersAsYouTypeFormatter_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter || defined(INCLUDE_ComGoogleI18nPhonenumbersAsYouTypeFormatter))
 #define ComGoogleI18nPhonenumbersAsYouTypeFormatter_
 
 /*!
@@ -93,4 +93,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersAsYouTypeFormatter)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersAsYouTypeFormatter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter")

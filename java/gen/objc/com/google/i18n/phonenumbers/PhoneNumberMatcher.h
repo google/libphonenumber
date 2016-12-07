@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPhoneNumberMatcher_RESTRICT
-#define ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatcher")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberMatcher
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatcher 0
 #else
-#define ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatcher 1
 #endif
-#undef ComGoogleI18nPhonenumbersPhoneNumberMatcher_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberMatcher
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberMatcher_) && (ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberMatcher_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatcher || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberMatcher))
 #define ComGoogleI18nPhonenumbersPhoneNumberMatcher_
 
-#define JavaUtilIterator_RESTRICT 1
-#define JavaUtilIterator_INCLUDE 1
+#define RESTRICT_JavaUtilIterator 1
+#define INCLUDE_JavaUtilIterator 1
 #include "java/util/Iterator.h"
 
 @class ComGoogleI18nPhonenumbersPhoneNumberMatch;
@@ -28,6 +28,7 @@
 @class JavaLangStringBuilder;
 @protocol ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker;
 @protocol JavaLangCharSequence;
+@protocol JavaUtilFunctionConsumer;
 
 /*!
  @brief A stateful class that finds and extracts telephone numbers from text.
@@ -134,7 +135,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker_) && (ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatcher || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker))
 #define ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker_
 
 @class ComGoogleI18nPhonenumbersPhoneNumberUtil;
@@ -147,7 +148,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
  criteria, both for our default way of performing formatting and for any alternate formats we
  may want to check.
  */
-@protocol ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker < NSObject, JavaObject >
+@protocol ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGroupingChecker < JavaObject >
 
 /*!
  @brief Returns true if the groups of digits found in our candidate phone number match our
@@ -171,4 +172,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberMatcher_NumberGro
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPhoneNumberMatcher_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberMatcher")

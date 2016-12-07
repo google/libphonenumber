@@ -3,10 +3,8 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/libphonenumber/java/internal/prefixmapper/src/main/java/com/google/i18n/phonenumbers/prefixmapper/PhonePrefixMapStorageStrategy.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/prefixmapper/PhonePrefixMapStorageStrategy.h"
-#include "java/io/IOException.h"
 #include "java/io/ObjectInput.h"
 #include "java/io/ObjectOutput.h"
 #include "java/lang/StringBuilder.h"
@@ -51,7 +49,7 @@
 }
 
 - (NSString *)description {
-  JavaLangStringBuilder *output = [new_JavaLangStringBuilder_init() autorelease];
+  JavaLangStringBuilder *output = create_JavaLangStringBuilder_init();
   jint numOfEntries = [self getNumOfEntries];
   for (jint i = 0; i < numOfEntries; i++) {
     [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([output appendWithInt:[self getPrefixWithInt:i]])) appendWithNSString:@"|"])) appendWithNSString:[self getDescriptionWithInt:i]])) appendWithNSString:@"\n"];
@@ -72,22 +70,35 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getPrefixWithInt:", "getPrefix", "I", 0x401, NULL, NULL },
-    { "getDescriptionWithInt:", "getDescription", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "readFromSortedMapWithJavaUtilSortedMap:", "readFromSortedMap", "V", 0x401, NULL, "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V" },
-    { "readExternalWithJavaIoObjectInput:", "readExternal", "V", 0x401, "Ljava.io.IOException;", NULL },
-    { "writeExternalWithJavaIoObjectOutput:", "writeExternal", "V", 0x401, "Ljava.io.IOException;", NULL },
-    { "getNumOfEntries", NULL, "I", 0x1, NULL, NULL },
-    { "getPossibleLengths", NULL, "Ljava.util.TreeSet;", 0x1, NULL, "()Ljava/util/TreeSet<Ljava/lang/Integer;>;" },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "init", NULL, NULL, 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 3, 4, -1, 5, -1, -1 },
+    { NULL, "V", 0x401, 6, 7, 8, -1, -1, -1 },
+    { NULL, "V", 0x401, 9, 10, 8, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilTreeSet;", 0x1, -1, -1, -1, 11, -1, -1 },
+    { NULL, "LNSString;", 0x1, 12, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getPrefixWithInt:);
+  methods[1].selector = @selector(getDescriptionWithInt:);
+  methods[2].selector = @selector(readFromSortedMapWithJavaUtilSortedMap:);
+  methods[3].selector = @selector(readExternalWithJavaIoObjectInput:);
+  methods[4].selector = @selector(writeExternalWithJavaIoObjectOutput:);
+  methods[5].selector = @selector(getNumOfEntries);
+  methods[6].selector = @selector(getPossibleLengths);
+  methods[7].selector = @selector(description);
+  methods[8].selector = @selector(init);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "numOfEntries_", NULL, 0x4, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "possibleLengths_", NULL, 0x14, "Ljava.util.TreeSet;", NULL, "Ljava/util/TreeSet<Ljava/lang/Integer;>;", .constantValue.asLong = 0 },
+    { "numOfEntries_", "I", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
+    { "possibleLengths_", "LJavaUtilTreeSet;", .constantValue.asLong = 0, 0x14, -1, -1, 13, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy = { 2, "PhonePrefixMapStorageStrategy", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x400, 9, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getPrefix", "I", "getDescription", "readFromSortedMap", "LJavaUtilSortedMap;", "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V", "readExternal", "LJavaIoObjectInput;", "LJavaIoIOException;", "writeExternal", "LJavaIoObjectOutput;", "()Ljava/util/TreeSet<Ljava/lang/Integer;>;", "toString", "Ljava/util/TreeSet<Ljava/lang/Integer;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy = { "PhonePrefixMapStorageStrategy", "com.google.i18n.phonenumbers.prefixmapper", ptrTable, methods, fields, 7, 0x400, 9, 2, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy;
 }
 

@@ -9,7 +9,6 @@
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/prefixmapper/DefaultMapStorage.h"
 #include "com/google/i18n/phonenumbers/prefixmapper/PhonePrefixMapStorageStrategy.h"
-#include "java/io/IOException.h"
 #include "java/io/ObjectInput.h"
 #include "java/io/ObjectOutput.h"
 #include "java/lang/Integer.h"
@@ -54,7 +53,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   jint index = 0;
   for (JavaLangInteger *boxed__ in nil_chk([sortedPhonePrefixMap keySet])) {
     jint prefix = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
-    *IOSIntArray_GetRef(phoneNumberPrefixes_, index++) = prefix;
+    *IOSIntArray_GetRef(nil_chk(phoneNumberPrefixes_), index++) = prefix;
     [((JavaUtilTreeSet *) nil_chk(possibleLengths_)) addWithId:JavaLangInteger_valueOfWithInt_(JreFpToInt(JavaLangMath_log10WithDouble_(prefix)) + 1)];
   }
   [((id<JavaUtilCollection>) nil_chk([sortedPhonePrefixMap values])) toArrayWithNSObjectArray:descriptions_];
@@ -99,19 +98,29 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "DefaultMapStorage", NULL, 0x1, NULL, NULL },
-    { "getPrefixWithInt:", "getPrefix", "I", 0x1, NULL, NULL },
-    { "getDescriptionWithInt:", "getDescription", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "readFromSortedMapWithJavaUtilSortedMap:", "readFromSortedMap", "V", 0x1, NULL, "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V" },
-    { "readExternalWithJavaIoObjectInput:", "readExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeExternalWithJavaIoObjectOutput:", "writeExternal", "V", 0x1, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 3, 4, -1, 5, -1, -1 },
+    { NULL, "V", 0x1, 6, 7, 8, -1, -1, -1 },
+    { NULL, "V", 0x1, 9, 10, 8, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getPrefixWithInt:);
+  methods[2].selector = @selector(getDescriptionWithInt:);
+  methods[3].selector = @selector(readFromSortedMapWithJavaUtilSortedMap:);
+  methods[4].selector = @selector(readExternalWithJavaIoObjectInput:);
+  methods[5].selector = @selector(writeExternalWithJavaIoObjectOutput:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "phoneNumberPrefixes_", NULL, 0x2, "[I", NULL, NULL, .constantValue.asLong = 0 },
-    { "descriptions_", NULL, 0x2, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "phoneNumberPrefixes_", "[I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "descriptions_", "[LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage = { 2, "DefaultMapStorage", "com.google.i18n.phonenumbers.prefixmapper", NULL, 0x0, 6, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getPrefix", "I", "getDescription", "readFromSortedMap", "LJavaUtilSortedMap;", "(Ljava/util/SortedMap<Ljava/lang/Integer;Ljava/lang/String;>;)V", "readExternal", "LJavaIoObjectInput;", "LJavaIoIOException;", "writeExternal", "LJavaIoObjectOutput;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage = { "DefaultMapStorage", "com.google.i18n.phonenumbers.prefixmapper", ptrTable, methods, fields, 7, 0x0, 6, 2, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage;
 }
 
@@ -122,15 +131,11 @@ void ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(ComGoogleI18nPh
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *new_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init() {
-  ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *self = [ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage alloc];
-  ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, init)
 }
 
 ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *create_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init() {
-  ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *self = [[ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage alloc] autorelease];
-  ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage)

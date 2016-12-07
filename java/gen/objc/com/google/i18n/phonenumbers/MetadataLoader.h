@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersMetadataLoader_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersMetadataLoader_RESTRICT
-#define ComGoogleI18nPhonenumbersMetadataLoader_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersMetadataLoader
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader 0
 #else
-#define ComGoogleI18nPhonenumbersMetadataLoader_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader 1
 #endif
-#undef ComGoogleI18nPhonenumbersMetadataLoader_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersMetadataLoader
 
-#if !defined (ComGoogleI18nPhonenumbersMetadataLoader_) && (ComGoogleI18nPhonenumbersMetadataLoader_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersMetadataLoader_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersMetadataLoader_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader || defined(INCLUDE_ComGoogleI18nPhonenumbersMetadataLoader))
 #define ComGoogleI18nPhonenumbersMetadataLoader_
 
 @class JavaIoInputStream;
@@ -21,7 +21,7 @@
 /*!
  @brief Interface for caller to specify a customized phone metadata loader.
  */
-@protocol ComGoogleI18nPhonenumbersMetadataLoader < NSObject, JavaObject >
+@protocol ComGoogleI18nPhonenumbersMetadataLoader < JavaObject >
 
 /*!
  @brief Returns an input stream corresponding to the metadata to load.
@@ -40,4 +40,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersMetadataLoader)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersMetadataLoader_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader")

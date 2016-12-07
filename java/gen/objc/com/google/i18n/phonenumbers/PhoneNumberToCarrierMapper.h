@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_RESTRICT
-#define ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper 0
 #else
-#define ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper 1
 #endif
-#undef ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_) && (ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper))
 #define ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
@@ -97,4 +97,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper")

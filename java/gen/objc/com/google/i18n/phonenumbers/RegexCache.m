@@ -5,7 +5,6 @@
 
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/RegexCache.h"
-#include "java/util/HashMap.h"
 #include "java/util/LinkedHashMap.h"
 #include "java/util/Map.h"
 #include "java/util/regex/Pattern.h"
@@ -74,8 +73,6 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 *
 
 __attribute__((unused)) static ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 *create_ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1_initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_(ComGoogleI18nPhonenumbersRegexCache_LRUCache *outer$, jint arg$0, jfloat arg$1, jboolean arg$2);
 
-J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1)
-
 @implementation ComGoogleI18nPhonenumbersRegexCache
 
 - (instancetype)initWithInt:(jint)size {
@@ -87,7 +84,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1)
   JavaUtilRegexPattern *pattern = [((ComGoogleI18nPhonenumbersRegexCache_LRUCache *) nil_chk(cache_)) getWithId:regex];
   if (pattern == nil) {
     pattern = JavaUtilRegexPattern_compileWithNSString_(regex);
-    [cache_ putWithId:regex withId:pattern];
+    [((ComGoogleI18nPhonenumbersRegexCache_LRUCache *) nil_chk(cache_)) putWithId:regex withId:pattern];
   }
   return pattern;
 }
@@ -102,16 +99,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:", "RegexCache", NULL, 0x1, NULL, NULL },
-    { "getPatternForRegexWithNSString:", "getPatternForRegex", "Ljava.util.regex.Pattern;", 0x1, NULL, NULL },
-    { "containsRegexWithNSString:", "containsRegex", "Z", 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilRegexPattern;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, 3, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:);
+  methods[1].selector = @selector(getPatternForRegexWithNSString:);
+  methods[2].selector = @selector(containsRegexWithNSString:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "cache_", NULL, 0x2, "Lcom.google.i18n.phonenumbers.RegexCache$LRUCache;", NULL, "Lcom/google/i18n/phonenumbers/RegexCache$LRUCache<Ljava/lang/String;Ljava/util/regex/Pattern;>;", .constantValue.asLong = 0 },
+    { "cache_", "LComGoogleI18nPhonenumbersRegexCache_LRUCache;", .constantValue.asLong = 0, 0x2, -1, -1, 4, -1 },
   };
-  static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.RegexCache$LRUCache;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersRegexCache = { 2, "RegexCache", "com.google.i18n.phonenumbers", NULL, 0x1, 3, methods, 1, fields, 0, NULL, 1, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "I", "getPatternForRegex", "LNSString;", "containsRegex", "Lcom/google/i18n/phonenumbers/RegexCache$LRUCache<Ljava/lang/String;Ljava/util/regex/Pattern;>;", "LComGoogleI18nPhonenumbersRegexCache_LRUCache;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersRegexCache = { "RegexCache", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x1, 3, 1, -1, 5, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersRegexCache;
 }
 
@@ -123,15 +126,11 @@ void ComGoogleI18nPhonenumbersRegexCache_initWithInt_(ComGoogleI18nPhonenumbersR
 }
 
 ComGoogleI18nPhonenumbersRegexCache *new_ComGoogleI18nPhonenumbersRegexCache_initWithInt_(jint size) {
-  ComGoogleI18nPhonenumbersRegexCache *self = [ComGoogleI18nPhonenumbersRegexCache alloc];
-  ComGoogleI18nPhonenumbersRegexCache_initWithInt_(self, size);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersRegexCache, initWithInt_, size)
 }
 
 ComGoogleI18nPhonenumbersRegexCache *create_ComGoogleI18nPhonenumbersRegexCache_initWithInt_(jint size) {
-  ComGoogleI18nPhonenumbersRegexCache *self = [[ComGoogleI18nPhonenumbersRegexCache alloc] autorelease];
-  ComGoogleI18nPhonenumbersRegexCache_initWithInt_(self, size);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersRegexCache, initWithInt_, size)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersRegexCache)
@@ -168,17 +167,25 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersRegexCache)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:", "LRUCache", NULL, 0x1, NULL, NULL },
-    { "getWithId:", "get", "TV;", 0x21, NULL, "(TK;)TV;" },
-    { "putWithId:withId:", "put", "V", 0x21, NULL, "(TK;TV;)V" },
-    { "containsKeyWithId:", "containsKey", "Z", 0x21, NULL, "(TK;)Z" },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x21, 1, 2, -1, 3, -1, -1 },
+    { NULL, "V", 0x21, 4, 5, -1, 6, -1, -1 },
+    { NULL, "Z", 0x21, 7, 2, -1, 8, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:);
+  methods[1].selector = @selector(getWithId:);
+  methods[2].selector = @selector(putWithId:withId:);
+  methods[3].selector = @selector(containsKeyWithId:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "map_", NULL, 0x2, "Ljava.util.LinkedHashMap;", NULL, "Ljava/util/LinkedHashMap<TK;TV;>;", .constantValue.asLong = 0 },
-    { "size_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "map_", "LJavaUtilLinkedHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 9, -1 },
+    { "size_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersRegexCache_LRUCache = { 2, "LRUCache", "com.google.i18n.phonenumbers", "RegexCache", 0xa, 4, methods, 2, fields, 0, NULL, 0, NULL, NULL, "<K:Ljava/lang/Object;V:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const void *ptrTable[] = { "I", "get", "LNSObject;", "(TK;)TV;", "put", "LNSObject;LNSObject;", "(TK;TV;)V", "containsKey", "(TK;)Z", "Ljava/util/LinkedHashMap<TK;TV;>;", "LComGoogleI18nPhonenumbersRegexCache;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersRegexCache_LRUCache = { "LRUCache", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0xa, 4, 2, 10, -1, -1, 11, -1 };
   return &_ComGoogleI18nPhonenumbersRegexCache_LRUCache;
 }
 
@@ -191,15 +198,11 @@ void ComGoogleI18nPhonenumbersRegexCache_LRUCache_initWithInt_(ComGoogleI18nPhon
 }
 
 ComGoogleI18nPhonenumbersRegexCache_LRUCache *new_ComGoogleI18nPhonenumbersRegexCache_LRUCache_initWithInt_(jint size) {
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache *self = [ComGoogleI18nPhonenumbersRegexCache_LRUCache alloc];
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache_initWithInt_(self, size);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersRegexCache_LRUCache, initWithInt_, size)
 }
 
 ComGoogleI18nPhonenumbersRegexCache_LRUCache *create_ComGoogleI18nPhonenumbersRegexCache_LRUCache_initWithInt_(jint size) {
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache *self = [[ComGoogleI18nPhonenumbersRegexCache_LRUCache alloc] autorelease];
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache_initWithInt_(self, size);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersRegexCache_LRUCache, initWithInt_, size)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersRegexCache_LRUCache)
@@ -224,16 +227,20 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersRegexCache_LRUCache)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "removeEldestEntryWithJavaUtilMap_Entry:", "removeEldestEntry", "Z", 0x4, NULL, "(Ljava/util/Map$Entry<TK;TV;>;)Z" },
-    { "initWithComGoogleI18nPhonenumbersRegexCache_LRUCache:withInt:withFloat:withBoolean:", "", NULL, 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "Z", 0x4, 0, 1, -1, 2, -1, -1 },
+    { NULL, NULL, 0x0, -1, 3, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(removeEldestEntryWithJavaUtilMap_Entry:);
+  methods[1].selector = @selector(initWithComGoogleI18nPhonenumbersRegexCache_LRUCache:withInt:withFloat:withBoolean:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lcom.google.i18n.phonenumbers.RegexCache$LRUCache;", NULL, NULL, .constantValue.asLong = 0 },
+    { "this$0_", "LComGoogleI18nPhonenumbersRegexCache_LRUCache;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const char *superclass_type_args[] = {"TK;", "TV;"};
-  static const J2ObjCEnclosingMethodInfo enclosing_method = { "ComGoogleI18nPhonenumbersRegexCache_LRUCache", "initWithInt:" };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 = { 2, "", "com.google.i18n.phonenumbers", "RegexCache$LRUCache", 0x8008, 2, methods, 1, fields, 2, superclass_type_args, 0, NULL, &enclosing_method, "Ljava/util/LinkedHashMap<TK;TV;>;" };
+  static const void *ptrTable[] = { "removeEldestEntry", "LJavaUtilMap_Entry;", "(Ljava/util/Map$Entry<TK;TV;>;)Z", "LComGoogleI18nPhonenumbersRegexCache_LRUCache;IFZ", "LComGoogleI18nPhonenumbersRegexCache_LRUCache;", "initWithInt:", "Ljava/util/LinkedHashMap<TK;TV;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 = { "", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x8008, 2, 1, 4, -1, 5, 6, -1 };
   return &_ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1;
 }
 
@@ -245,15 +252,9 @@ void ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1_initWithComGoogleI18nPhonen
 }
 
 ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 *new_ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1_initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_(ComGoogleI18nPhonenumbersRegexCache_LRUCache *outer$, jint arg$0, jfloat arg$1, jboolean arg$2) {
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 *self = [ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 alloc];
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1_initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_(self, outer$, arg$0, arg$1, arg$2);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1, initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_, outer$, arg$0, arg$1, arg$2)
 }
 
 ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 *create_ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1_initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_(ComGoogleI18nPhonenumbersRegexCache_LRUCache *outer$, jint arg$0, jfloat arg$1, jboolean arg$2) {
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 *self = [[ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1 alloc] autorelease];
-  ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1_initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_(self, outer$, arg$0, arg$1, arg$2);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1, initWithComGoogleI18nPhonenumbersRegexCache_LRUCache_withInt_withFloat_withBoolean_, outer$, arg$0, arg$1, arg$2)
 }
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersRegexCache_LRUCache_$1)

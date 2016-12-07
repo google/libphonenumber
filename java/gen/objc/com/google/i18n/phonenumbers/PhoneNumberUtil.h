@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersPhoneNumberUtil_RESTRICT
-#define ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberUtil
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil 0
 #else
-#define ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil 1
 #endif
-#undef ComGoogleI18nPhonenumbersPhoneNumberUtil_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberUtil
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_) && (ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_
 
 @class ComGoogleI18nPhonenumbersAsYouTypeFormatter;
@@ -1054,12 +1054,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_) && (ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_Enum) {
   ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_Enum_E164 = 0,
@@ -1082,11 +1084,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumber
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -1119,12 +1123,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberF
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_) && (ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_Enum) {
   ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_Enum_FIXED_LINE = 0,
@@ -1146,11 +1152,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumber
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -1207,12 +1215,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberT
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_) && (ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_Enum) {
   ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_Enum_NOT_A_NUMBER = 0,
@@ -1228,11 +1238,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_E
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -1268,12 +1280,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_) && (ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_Enum) {
   ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_Enum_IS_POSSIBLE = 0,
@@ -1287,11 +1301,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationR
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -1324,15 +1340,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationRe
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_) && (ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
 
 @class ComGoogleI18nPhonenumbersPhoneNumberUtil;
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_Enum) {
   ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_Enum_POSSIBLE = 0,
@@ -1348,6 +1365,12 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_En
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency : JavaLangEnum < NSCopying >
 
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *)valueOfWithNSString:(NSString *)name;
+
++ (IOSObjectArray *)values;
+
 #pragma mark Package-Private
 
 /*!
@@ -1356,10 +1379,6 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_En
 - (jboolean)verifyWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                           withNSString:(NSString *)candidate
                           withComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util;
-
-+ (IOSObjectArray *)values;
-
-+ (ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *)valueOfWithNSString:(NSString *)name;
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -1428,4 +1447,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersPhoneNumberUtil_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil")

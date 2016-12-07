@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_RESTRICT
-#define ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher 0
 #else
-#define ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher 1
 #endif
-#undef ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher
 
-#if !defined (ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_) && (ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher || defined(INCLUDE_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher))
 #define ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_
 
-#define ComGoogleI18nPhonenumbersInternalMatcherApi_RESTRICT 1
-#define ComGoogleI18nPhonenumbersInternalMatcherApi_INCLUDE 1
+#define RESTRICT_ComGoogleI18nPhonenumbersInternalMatcherApi 1
+#define INCLUDE_ComGoogleI18nPhonenumbersInternalMatcherApi 1
 #include "com/google/i18n/phonenumbers/internal/MatcherApi.h"
 
 @class ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneNumberDesc;
@@ -49,4 +49,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher)
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher")

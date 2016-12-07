@@ -98,14 +98,14 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
   JavaIoInputStream *source = [((id<ComGoogleI18nPhonenumbersMetadataLoader>) nil_chk(metadataLoader_)) loadMetadataWithNSString:fileName];
   if (source == nil) {
     [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE) withNSString:JreStrcat("$$", @"missing metadata: ", fileName)];
-    @throw [new_JavaLangIllegalStateException_initWithNSString_(JreStrcat("$$", @"missing metadata: ", fileName)) autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSString_(JreStrcat("$$", @"missing metadata: ", fileName));
   }
   @try {
-    ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *metadataCollection = ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_loadMetadataAndCloseInputWithJavaIoObjectInputStream_([new_JavaIoObjectInputStream_initWithJavaIoInputStream_(source) autorelease]);
+    ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *metadataCollection = ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_loadMetadataAndCloseInputWithJavaIoObjectInputStream_(create_JavaIoObjectInputStream_initWithJavaIoInputStream_(source));
     IOSObjectArray *metadataList = ((ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *) nil_chk(metadataCollection))->metadata_;
     if (((IOSObjectArray *) nil_chk(metadataList))->size_ == 0) {
       [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE) withNSString:JreStrcat("$$", @"empty metadata: ", fileName)];
-      @throw [new_JavaLangIllegalStateException_initWithNSString_(JreStrcat("$$", @"empty metadata: ", fileName)) autorelease];
+      @throw create_JavaLangIllegalStateException_initWithNSString_(JreStrcat("$$", @"empty metadata: ", fileName));
     }
     if (metadataList->size_ > 1) {
       [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:JreStrcat("$$", @"invalid metadata (too many entries): ", fileName)];
@@ -120,7 +120,7 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
   }
   @catch (JavaIoIOException *e) {
     [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, SEVERE) withNSString:JreStrcat("$$", @"cannot load/parse metadata: ", fileName) withNSException:e];
-    @throw [new_JavaLangRuntimeException_initWithNSString_withNSException_(JreStrcat("$$", @"cannot load/parse metadata: ", fileName), e) autorelease];
+    @throw create_JavaLangRuntimeException_initWithNSString_withNSException_(JreStrcat("$$", @"cannot load/parse metadata: ", fileName), e);
   }
 }
 
@@ -136,6 +136,37 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 6, 7, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection;", 0xa, 8, 9, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:withComGoogleI18nPhonenumbersMetadataLoader:);
+  methods[1].selector = @selector(initWithComGoogleI18nPhonenumbersMetadataLoader:);
+  methods[2].selector = @selector(getMetadataForRegionWithNSString:);
+  methods[3].selector = @selector(getMetadataForNonGeographicalRegionWithInt:);
+  methods[4].selector = @selector(loadMetadataFromFileWithNSString:withInt:);
+  methods[5].selector = @selector(loadMetadataAndCloseInputWithJavaIoObjectInputStream:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "logger", "LJavaUtilLoggingLogger;", .constantValue.asLong = 0, 0x1a, -1, 10, -1, -1 },
+    { "META_DATA_FILE_PREFIX", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "regionToMetadataMap_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 12, -1 },
+    { "countryCodeToNonGeographicalMetadataMap_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x12, -1, -1, 13, -1 },
+    { "filePrefix_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "metadataLoader_", "LComGoogleI18nPhonenumbersMetadataLoader;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LNSString;LComGoogleI18nPhonenumbersMetadataLoader;", "LComGoogleI18nPhonenumbersMetadataLoader;", "getMetadataForRegion", "LNSString;", "getMetadataForNonGeographicalRegion", "I", "loadMetadataFromFile", "LNSString;I", "loadMetadataAndCloseInput", "LJavaIoObjectInputStream;", &ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger, &ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_META_DATA_FILE_PREFIX, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", "Ljava/util/Map<Ljava/lang/Integer;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl = { "MultiFileMetadataSourceImpl", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x10, 6, 6, -1, -1, -1, -1, -1 };
+  return &_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl class]) {
     JreStrongAssign(&ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_class_() getName]));
@@ -143,47 +174,22 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:withComGoogleI18nPhonenumbersMetadataLoader:", "MultiFileMetadataSourceImpl", NULL, 0x1, NULL, NULL },
-    { "initWithComGoogleI18nPhonenumbersMetadataLoader:", "MultiFileMetadataSourceImpl", NULL, 0x1, NULL, NULL },
-    { "getMetadataForRegionWithNSString:", "getMetadataForRegion", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x1, NULL, NULL },
-    { "getMetadataForNonGeographicalRegionWithInt:", "getMetadataForNonGeographicalRegion", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x1, NULL, NULL },
-    { "loadMetadataFromFileWithNSString:withInt:", "loadMetadataFromFile", "V", 0x0, NULL, NULL },
-    { "loadMetadataAndCloseInputWithJavaIoObjectInputStream:", "loadMetadataAndCloseInput", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadataCollection;", 0xa, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "logger", "logger", 0x1a, "Ljava.util.logging.Logger;", &ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_logger, NULL, .constantValue.asLong = 0 },
-    { "META_DATA_FILE_PREFIX", "META_DATA_FILE_PREFIX", 0x1a, "Ljava.lang.String;", &ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_META_DATA_FILE_PREFIX, NULL, .constantValue.asLong = 0 },
-    { "regionToMetadataMap_", NULL, 0x12, "Ljava.util.Map;", NULL, "Ljava/util/Map<Ljava/lang/String;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", .constantValue.asLong = 0 },
-    { "countryCodeToNonGeographicalMetadataMap_", NULL, 0x12, "Ljava.util.Map;", NULL, "Ljava/util/Map<Ljava/lang/Integer;Lcom/google/i18n/phonenumbers/nano/Phonemetadata$PhoneMetadata;>;", .constantValue.asLong = 0 },
-    { "filePrefix_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "metadataLoader_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.MetadataLoader;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl = { 2, "MultiFileMetadataSourceImpl", "com.google.i18n.phonenumbers", NULL, 0x10, 6, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl;
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self, NSString *filePrefix, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
   NSObject_init(self);
-  JreStrongAssign(&self->regionToMetadataMap_, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
-  JreStrongAssign(&self->countryCodeToNonGeographicalMetadataMap_, JavaUtilCollections_synchronizedMapWithJavaUtilMap_([new_JavaUtilHashMap_init() autorelease]));
+  JreStrongAssign(&self->regionToMetadataMap_, JavaUtilCollections_synchronizedMapWithJavaUtilMap_(create_JavaUtilHashMap_init()));
+  JreStrongAssign(&self->countryCodeToNonGeographicalMetadataMap_, JavaUtilCollections_synchronizedMapWithJavaUtilMap_(create_JavaUtilHashMap_init()));
   JreStrongAssign(&self->filePrefix_, filePrefix);
   JreStrongAssign(&self->metadataLoader_, metadataLoader);
 }
 
 ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *new_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(NSString *filePrefix, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self = [ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl alloc];
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(self, filePrefix, metadataLoader);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl, initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_, filePrefix, metadataLoader)
 }
 
 ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *create_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(NSString *filePrefix, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self = [[ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl alloc] autorelease];
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(self, filePrefix, metadataLoader);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl, initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_, filePrefix, metadataLoader)
 }
 
 void ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
@@ -191,21 +197,17 @@ void ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nP
 }
 
 ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *new_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self = [ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl alloc];
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(self, metadataLoader);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl, initWithComGoogleI18nPhonenumbersMetadataLoader_, metadataLoader)
 }
 
 ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *create_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self = [[ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl alloc] autorelease];
-  ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(self, metadataLoader);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl, initWithComGoogleI18nPhonenumbersMetadataLoader_, metadataLoader)
 }
 
 ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_loadMetadataAndCloseInputWithJavaIoObjectInputStream_(JavaIoObjectInputStream *source) {
   ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initialize();
   jint MULTI_FILE_BUFFER_SIZE = 16 * 1024;
-  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *metadataCollection = [new_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init() autorelease];
+  ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection *metadataCollection = create_ComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadataCollection_init();
   @try {
     [metadataCollection mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:ComGoogleI18nPhonenumbersMetadataManager_convertStreamToByteBufferWithJavaIoObjectInputStream_withInt_(source, MULTI_FILE_BUFFER_SIZE)];
   }

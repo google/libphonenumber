@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersNumberParseException_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersNumberParseException_RESTRICT
-#define ComGoogleI18nPhonenumbersNumberParseException_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersNumberParseException
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException 0
 #else
-#define ComGoogleI18nPhonenumbersNumberParseException_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException 1
 #endif
-#undef ComGoogleI18nPhonenumbersNumberParseException_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersNumberParseException
 
-#if !defined (ComGoogleI18nPhonenumbersNumberParseException_) && (ComGoogleI18nPhonenumbersNumberParseException_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNumberParseException_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNumberParseException_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException || defined(INCLUDE_ComGoogleI18nPhonenumbersNumberParseException))
 #define ComGoogleI18nPhonenumbersNumberParseException_
 
-#define JavaLangException_RESTRICT 1
-#define JavaLangException_INCLUDE 1
+#define RESTRICT_JavaLangException 1
+#define INCLUDE_JavaLangException 1
 #include "java/lang/Exception.h"
 
 @class ComGoogleI18nPhonenumbersNumberParseException_ErrorType;
@@ -53,12 +53,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNumberParseException)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersNumberParseException_ErrorType_) && (ComGoogleI18nPhonenumbersNumberParseException_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersNumberParseException_ErrorType_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException || defined(INCLUDE_ComGoogleI18nPhonenumbersNumberParseException_ErrorType))
 #define ComGoogleI18nPhonenumbersNumberParseException_ErrorType_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersNumberParseException_ErrorType_Enum) {
   ComGoogleI18nPhonenumbersNumberParseException_ErrorType_Enum_INVALID_COUNTRY_CODE = 0,
@@ -70,11 +72,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersNumberParseException_ErrorT
 
 @interface ComGoogleI18nPhonenumbersNumberParseException_ErrorType : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -110,4 +114,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNumberParseException_ErrorTy
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersNumberParseException_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException")

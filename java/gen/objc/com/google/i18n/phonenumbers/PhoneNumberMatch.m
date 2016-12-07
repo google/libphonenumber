@@ -3,6 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/libphonenumber/java/libphonenumber/src/main/java/com/google/i18n/phonenumbers/PhoneNumberMatch.java
 //
 
+#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/PhoneNumberMatch.h"
@@ -84,22 +85,34 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:withNSString:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:", "PhoneNumberMatch", NULL, 0x0, NULL, NULL },
-    { "number", NULL, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber;", 0x1, NULL, NULL },
-    { "start", NULL, "I", 0x1, NULL, NULL },
-    { "end", NULL, "I", 0x1, NULL, NULL },
-    { "rawString", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:withNSString:withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:);
+  methods[1].selector = @selector(number);
+  methods[2].selector = @selector(start);
+  methods[3].selector = @selector(end);
+  methods[4].selector = @selector(rawString);
+  methods[5].selector = @selector(hash);
+  methods[6].selector = @selector(isEqual:);
+  methods[7].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "start_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "rawString_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "number_", NULL, 0x12, "Lcom.google.i18n.phonenumbers.Phonenumber$PhoneNumber;", NULL, NULL, .constantValue.asLong = 0 },
+    { "start_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "rawString_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "number_", "LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatch = { 2, "PhoneNumberMatch", "com.google.i18n.phonenumbers", NULL, 0x11, 8, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "ILNSString;LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;", "hashCode", "equals", "LNSObject;", "toString" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhoneNumberMatch = { "PhoneNumberMatch", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x11, 8, 3, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersPhoneNumberMatch;
 }
 
@@ -108,10 +121,10 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
 void ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(ComGoogleI18nPhonenumbersPhoneNumberMatch *self, jint start, NSString *rawString, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number) {
   NSObject_init(self);
   if (start < 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Start index must be >= 0.") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Start index must be >= 0.");
   }
   if (rawString == nil || number == nil) {
-    @throw [new_JavaLangNullPointerException_init() autorelease];
+    @throw create_JavaLangNullPointerException_init();
   }
   self->start_ = start;
   JreStrongAssign(&self->rawString_, rawString);
@@ -119,15 +132,11 @@ void ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComG
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberMatch *new_ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(jint start, NSString *rawString, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number) {
-  ComGoogleI18nPhonenumbersPhoneNumberMatch *self = [ComGoogleI18nPhonenumbersPhoneNumberMatch alloc];
-  ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(self, start, rawString, number);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPhoneNumberMatch, initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_, start, rawString, number)
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberMatch *create_ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(jint start, NSString *rawString, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number) {
-  ComGoogleI18nPhonenumbersPhoneNumberMatch *self = [[ComGoogleI18nPhonenumbersPhoneNumberMatch alloc] autorelease];
-  ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(self, start, rawString, number);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersPhoneNumberMatch, initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_, start, rawString, number)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhoneNumberMatch)

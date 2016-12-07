@@ -4,13 +4,17 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/ShortNumberInfo.h"
 #include "com/google/i18n/phonenumbers/ShortNumberUtil.h"
 #include "java/lang/Deprecated.h"
 #include "java/lang/Enum.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/annotation/Annotation.h"
 #include "java/util/Set.h"
+
+__attribute__((unused)) static IOSObjectArray *ComGoogleI18nPhonenumbersShortNumberUtil__Annotations$0();
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_initWithNSString_withInt_(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost *self, NSString *__name, jint __ordinal);
 
@@ -37,19 +41,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [((ComGoogleI18nPhonenumbersShortNumberInfo *) nil_chk(ComGoogleI18nPhonenumbersShortNumberInfo_getInstance())) isEmergencyNumberWithNSString:number withNSString:regionCode];
 }
 
-+ (IOSObjectArray *)__annotations {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ShortNumberUtil", NULL, 0x1, NULL, NULL },
-    { "getSupportedRegions", NULL, "Ljava.util.Set;", 0x1, NULL, "()Ljava/util/Set<Ljava/lang/String;>;" },
-    { "connectsToEmergencyNumberWithNSString:withNSString:", "connectsToEmergencyNumber", "Z", 0x1, NULL, NULL },
-    { "isEmergencyNumberWithNSString:withNSString:", "isEmergencyNumber", "Z", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x1, -1, -1, -1, 0, -1, -1 },
+    { NULL, "Z", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 3, 2, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberUtil = { 2, "ShortNumberUtil", "com.google.i18n.phonenumbers", NULL, 0x1, 4, methods, 0, NULL, 0, NULL, 1, inner_classes, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getSupportedRegions);
+  methods[2].selector = @selector(connectsToEmergencyNumberWithNSString:withNSString:);
+  methods[3].selector = @selector(isEmergencyNumberWithNSString:withNSString:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "()Ljava/util/Set<Ljava/lang/String;>;", "connectsToEmergencyNumber", "LNSString;LNSString;", "isEmergencyNumber", "LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", (void *)&ComGoogleI18nPhonenumbersShortNumberUtil__Annotations$0 };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberUtil = { "ShortNumberUtil", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x1, 4, 0, -1, 4, -1, -1, 5 };
   return &_ComGoogleI18nPhonenumbersShortNumberUtil;
 }
 
@@ -60,15 +67,15 @@ void ComGoogleI18nPhonenumbersShortNumberUtil_init(ComGoogleI18nPhonenumbersShor
 }
 
 ComGoogleI18nPhonenumbersShortNumberUtil *new_ComGoogleI18nPhonenumbersShortNumberUtil_init() {
-  ComGoogleI18nPhonenumbersShortNumberUtil *self = [ComGoogleI18nPhonenumbersShortNumberUtil alloc];
-  ComGoogleI18nPhonenumbersShortNumberUtil_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersShortNumberUtil, init)
 }
 
 ComGoogleI18nPhonenumbersShortNumberUtil *create_ComGoogleI18nPhonenumbersShortNumberUtil_init() {
-  ComGoogleI18nPhonenumbersShortNumberUtil *self = [[ComGoogleI18nPhonenumbersShortNumberUtil alloc] autorelease];
-  ComGoogleI18nPhonenumbersShortNumberUtil_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersShortNumberUtil, init)
+}
+
+IOSObjectArray *ComGoogleI18nPhonenumbersShortNumberUtil__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_JavaLangDeprecated() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersShortNumberUtil)
@@ -91,34 +98,42 @@ ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost *ComGoogleI18nPhonenumb
   return self;
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "[LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", 0x9, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(values);
+  methods[1].selector = @selector(valueOfWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "TOLL_FREE", "LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", .constantValue.asLong = 0, 0x4019, -1, 2, -1, -1 },
+    { "STANDARD_RATE", "LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", .constantValue.asLong = 0, 0x4019, -1, 3, -1, -1 },
+    { "PREMIUM_RATE", "LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", .constantValue.asLong = 0, 0x4019, -1, 4, -1, -1 },
+    { "UNKNOWN_COST", "LComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;", .constantValue.asLong = 0, 0x4019, -1, 5, -1, -1 },
+  };
+  static const void *ptrTable[] = { "valueOf", "LNSString;", &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, TOLL_FREE), &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, STANDARD_RATE), &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, PREMIUM_RATE), &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, UNKNOWN_COST), "LComGoogleI18nPhonenumbersShortNumberUtil;", "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/ShortNumberUtil$ShortNumberCost;>;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost = { "ShortNumberCost", "com.google.i18n.phonenumbers", ptrTable, methods, fields, 7, 0x4019, 2, 4, 6, -1, -1, 7, -1 };
+  return &_ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;
+}
+
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost class]) {
     size_t objSize = class_getInstanceSize(self);
     size_t allocSize = 4 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    (JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, TOLL_FREE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_initWithNSString_withInt_(e, @"TOLL_FREE", 0);
-    (JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, STANDARD_RATE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_initWithNSString_withInt_(e, @"STANDARD_RATE", 1);
-    (JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, PREMIUM_RATE) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_initWithNSString_withInt_(e, @"PREMIUM_RATE", 2);
-    (JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, UNKNOWN_COST) = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-    ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_initWithNSString_withInt_(e, @"UNKNOWN_COST", 3);
+    id names[] = {
+      @"TOLL_FREE", @"STANDARD_RATE", @"PREMIUM_RATE", @"UNKNOWN_COST",
+    };
+    for (jint i = 0; i < 4; i++) {
+      (ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost_initWithNSString_withInt_(e, names[i], i);
+    }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcFieldInfo fields[] = {
-    { "TOLL_FREE", "TOLL_FREE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, TOLL_FREE), NULL, .constantValue.asLong = 0 },
-    { "STANDARD_RATE", "STANDARD_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, STANDARD_RATE), NULL, .constantValue.asLong = 0 },
-    { "PREMIUM_RATE", "PREMIUM_RATE", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, PREMIUM_RATE), NULL, .constantValue.asLong = 0 },
-    { "UNKNOWN_COST", "UNKNOWN_COST", 0x4019, "Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;", &JreEnum(ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost, UNKNOWN_COST), NULL, .constantValue.asLong = 0 },
-  };
-  static const char *superclass_type_args[] = {"Lcom.google.i18n.phonenumbers.ShortNumberUtil$ShortNumberCost;"};
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost = { 2, "ShortNumberCost", "com.google.i18n.phonenumbers", "ShortNumberUtil", 0x4019, 0, NULL, 4, fields, 1, superclass_type_args, 0, NULL, NULL, "Ljava/lang/Enum<Lcom/google/i18n/phonenumbers/ShortNumberUtil$ShortNumberCost;>;" };
-  return &_ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost;
 }
 
 @end
@@ -140,7 +155,7 @@ ComGoogleI18nPhonenumbersShortNumberUtil_ShortNumberCost *ComGoogleI18nPhonenumb
       return e;
     }
   }
-  @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:name] autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
   return nil;
 }
 

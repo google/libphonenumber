@@ -5,7 +5,6 @@
 
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/MetadataSource.h"
-#include "com/google/i18n/phonenumbers/nano/Phonemetadata.h"
 
 @interface ComGoogleI18nPhonenumbersMetadataSource : NSObject
 
@@ -14,11 +13,17 @@
 @implementation ComGoogleI18nPhonenumbersMetadataSource
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getMetadataForRegionWithNSString:", "getMetadataForRegion", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x401, NULL, NULL },
-    { "getMetadataForNonGeographicalRegionWithInt:", "getMetadataForNonGeographicalRegion", "Lcom.google.i18n.phonenumbers.nano.Phonemetadata$PhoneMetadata;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersNanoPhonemetadata_PhoneMetadata;", 0x401, 2, 3, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataSource = { 2, "MetadataSource", "com.google.i18n.phonenumbers", NULL, 0x608, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getMetadataForRegionWithNSString:);
+  methods[1].selector = @selector(getMetadataForNonGeographicalRegionWithInt:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getMetadataForRegion", "LNSString;", "getMetadataForNonGeographicalRegion", "I" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataSource = { "MetadataSource", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x608, 2, 0, -1, -1, -1, -1, -1 };
   return &_ComGoogleI18nPhonenumbersMetadataSource;
 }
 

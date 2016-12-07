@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE_ALL")
-#ifdef ComGoogleI18nPhonenumbersShortNumberInfo_RESTRICT
-#define ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumberInfo")
+#ifdef RESTRICT_ComGoogleI18nPhonenumbersShortNumberInfo
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumberInfo 0
 #else
-#define ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumberInfo 1
 #endif
-#undef ComGoogleI18nPhonenumbersShortNumberInfo_RESTRICT
+#undef RESTRICT_ComGoogleI18nPhonenumbersShortNumberInfo
 
-#if !defined (ComGoogleI18nPhonenumbersShortNumberInfo_) && (ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersShortNumberInfo_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumberInfo || defined(INCLUDE_ComGoogleI18nPhonenumbersShortNumberInfo))
 #define ComGoogleI18nPhonenumbersShortNumberInfo_
 
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
@@ -268,12 +268,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersShortNumberInfo)
 
 #endif
 
-#if !defined (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_) && (ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE_ALL || defined(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_INCLUDE))
+#if !defined (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumberInfo || defined(INCLUDE_ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost))
 #define ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
+
+@class IOSObjectArray;
 
 typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_Enum) {
   ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_Enum_TOLL_FREE = 0,
@@ -287,11 +289,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumber
  */
 @interface ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost : JavaLangEnum < NSCopying >
 
-#pragma mark Package-Private
+#pragma mark Public
+
++ (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -324,4 +328,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberC
 
 #endif
 
-#pragma pop_macro("ComGoogleI18nPhonenumbersShortNumberInfo_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumberInfo")
