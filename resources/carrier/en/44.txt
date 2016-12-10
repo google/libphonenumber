@@ -1,0 +1,867 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Source http://www.ofcom.org.uk/static/numbering/
+
+447106|Telefonica UK Limited
+447107|Telefonica UK Limited
+447340|Vodafone Uk Ltd
+447341|Vodafone Uk Ltd
+447342|Vodafone Uk Ltd
+447375|EE Limited ( TM)
+447376|EE Limited ( TM)
+447377|EE Limited ( TM)
+4473780|Limitless Mobile Ltd
+4473781|Hutchison 3G UK Ltd
+4473782|Hutchison 3G UK Ltd
+4473783|Hutchison 3G UK Ltd
+4473784|Hutchison 3G UK Ltd
+4473785|Hutchison 3G UK Ltd
+4473786|Hutchison 3G UK Ltd
+4473787|Hutchison 3G UK Ltd
+4473788|Hutchison 3G UK Ltd
+4473789|Hutchison 3G UK Ltd
+447379|Vodafone Uk Ltd
+4473800|AMSUK LTD
+4473801|Hutchison 3G UK Ltd
+4473802|Hutchison 3G UK Ltd
+4473803|Hutchison 3G UK Ltd
+4473804|Hutchison 3G UK Ltd
+4473805|Hutchison 3G UK Ltd
+4473806|Hutchison 3G UK Ltd
+4473807|Hutchison 3G UK Ltd
+4473808|Hutchison 3G UK Ltd
+4473809|Hutchison 3G UK Ltd
+447381|Telefonica UK Limited
+447382|Telefonica UK Limited
+447387|Vodafone Uk Ltd
+447388|Vodafone Uk Ltd
+4473890|Hutchison 3G UK Ltd
+4473891|Hutchison 3G UK Ltd
+4473900|Home Office
+447391|Vodafone Uk Ltd
+447392|Vodafone Uk Ltd
+447393|Vodafone Uk Ltd
+447394|Telefonica UK Limited
+447395|Telefonica UK Limited
+447396|EE Limited ( TM)
+4473970|Hutchison 3G UK Ltd
+4473971|Hutchison 3G UK Ltd
+4473972|Hutchison 3G UK Ltd
+4473973|Hutchison 3G UK Ltd
+4473975|Hutchison 3G UK Ltd
+4473976|Hutchison 3G UK Ltd
+4473977|Hutchison 3G UK Ltd
+4473978|Hutchison 3G UK Ltd
+4473979|Hutchison 3G UK Ltd
+447398|EE Limited ( TM)
+447399|EE Limited ( TM)
+447400|Hutchison 3G UK Ltd
+447401|Hutchison 3G UK Ltd
+447402|Hutchison 3G UK Ltd
+447403|Hutchison 3G UK Ltd
+447404|Lycamobile UK Limited
+447405|Lycamobile UK Limited
+4474060|Cheers International Sales Limited
+4474061|Cheers International Sales Limited
+4474062|Cheers International Sales Limited
+4474063|Vortex Telecom Ltd
+4474064|Titanium Limited
+4474065|Telecom2 Ltd
+4474066|24 Seven Communications Ltd
+4474067|TGL Services (UK) Ltd
+4474068|08Direct Limited
+4474069|CardBoardFish
+447407|Vodafone Uk Ltd
+4474080|Truphone Ltd
+4474081|Truphone Ltd
+4474082|Truphone Ltd
+4474088|Truphone Ltd
+4474089|Truphone Ltd
+447409|Orange
+447410|Orange
+447411|Hutchison 3G UK Ltd
+447412|Hutchison 3G UK Ltd
+447413|Hutchison 3G UK Ltd
+447414|Hutchison 3G UK Ltd
+447415|EE Limited ( TM)
+447416|Orange
+4474171|CardBoardFish
+4474172|Core Telecom Limited
+4474173|Lycamobile UK Limited
+4474174|Lycamobile UK Limited
+4474175|Lycamobile UK Limited
+4474176|Proton Telecom Limited
+4474177|Rexcom Tech Limited
+4474178|Truphone Ltd
+4474179|Core Telecom Limited
+4474180|Hutchison 3G UK Ltd
+4474181|Bellingham Telecommunications Limited
+4474182|TGL Services (UK) Ltd
+4474183|Tismi BV
+4474184|Manx Telecom
+4474185|Telecom North America Mobile Inc
+4474186|Ace Call Limited
+4474187|Teleena UK Limited
+4474188|Eclipse Tel Limited
+4474189|Teleena UK Limited
+447419|Orange
+447420|Orange
+447421|Orange
+447422|Orange
+447423|Vodafone Uk Ltd
+447424|Lycamobile UK Limited
+447425|Vodafone Uk Ltd
+447426|Hutchison 3G UK Ltd
+447427|Hutchison 3G UK Ltd
+447428|Hutchison 3G UK Ltd
+447429|Hutchison 3G UK Ltd
+447430|Telefonica UK Limited
+447431|Telefonica UK Limited
+447432|EE Limited ( TM)
+447433|EE Limited ( TM)
+447434|EE Limited ( TM)
+447435|Vodafone Uk Ltd
+447436|Vodafone Uk Ltd
+447437|Vodafone Uk Ltd
+447438|Lycamobile UK Limited
+4474390|TalkTalk Communications Limited
+4474391|TalkTalk Communications Limited
+4474392|TalkTalk Communications Limited
+4474393|TalkTalk Communications Limited
+4474400|Lycamobile UK Limited
+4474401|Lycamobile UK Limited
+4474402|Lycamobile UK Limited
+4474403|Lycamobile UK Limited
+4474404|Lycamobile UK Limited
+4474405|Lycamobile UK Limited
+4474406|Lycamobile UK Limited
+4474407|Lycamobile UK Limited
+4474408|Telecoms Cloud Networks Limited
+4474409|Cloud9 Mobile Communications Ltd
+4474410|Sound Advertising Ltd
+4474411|Andrews & Arnold Ltd
+4474413|Stour Marine Limited
+4474414|Tismi BV
+4474415|Synectiv Ltd
+4474416|Vodafone Uk Ltd
+4474417|Synectiv Ltd
+4474418|Core Telecom Limited
+4474419|Voxbone SA
+447442|Vodafone Uk Ltd
+447443|Vodafone Uk Ltd
+447444|Vodafone Uk Ltd
+447445|Hutchison 3G UK Ltd
+447446|Hutchison 3G UK Ltd
+447447|Hutchison 3G UK Ltd
+447448|Lycamobile UK Limited
+447449|Hutchison 3G UK Ltd
+447450|Hutchison 3G UK Ltd
+4474510|Mundio Mobile Limited
+4474511|Mundio Mobile Limited
+4474512|Tismi BV
+4474513|Mundio Mobile Limited
+4474514|Mundio Mobile Limited
+4474515|Premium O Limited
+4474516|UK Broadband Limited
+4474517|UK Broadband Limited
+4474518|Mundio Mobile Limited
+4474519|Mundio Mobile Limited
+4474520|Manx Telecom
+4474521|Manx Telecom
+4474522|Manx Telecom
+4474523|Manx Telecom
+4474524|Manx Telecom
+4474525|Manx Telecom
+4474526|Manx Telecom
+4474527|Hutchison 3G UK Ltd
+4474528|Hutchison 3G UK Ltd
+4474529|Hutchison 3G UK Ltd
+447453|Hutchison 3G UK Ltd
+447454|Hutchison 3G UK Ltd
+447455|Hutchison 3G UK Ltd
+447456|Hutchison 3G UK Ltd
+4474570|Mundio Mobile Limited
+4474571|Mundio Mobile Limited
+4474572|Marathon Telecom Limited
+4474573|Mundio Mobile Limited
+4474574|Voicetec Systems Ltd
+4474575|Mundio Mobile Limited
+4474576|Sure (Isle of Man) Limited
+4474577|Spacetel UK Ltd
+4474578|CardBoardFish
+4474579|CardBoardFish
+4474580|Gamma Telecom Holdings Ltd
+4474581|Gamma Telecom Holdings Ltd
+4474582|Premium Routing GmbH
+4474583|Virgin Mobile Telecoms Limited
+4474584|Airwave Solutions Ltd
+4474585|Marathon Telecom Limited
+4474586|Hutchison 3G UK Ltd
+4474587|Limitless Mobile Ltd
+4474588|Limitless Mobile Ltd
+4474589|Hutchison 3G UK Ltd
+447459|Lycamobile UK Limited
+447460|Hutchison 3G UK Ltd
+447461|Telefonica UK Limited
+447462|Hutchison 3G UK Ltd
+447463|Hutchison 3G UK Ltd
+447464|Vodafone Uk Ltd
+4474650|Mundio Mobile Limited
+4474651|Mundio Mobile Limited
+4474652|Hutchison 3G UK Ltd
+4474653|Compatel Ltd
+4474654|Hutchison 3G UK Ltd
+4474655|Netfuse Telecom Ltd
+4474656|Hutchison 3G UK Ltd
+4474657|Hutchison 3G UK Ltd
+4474658|Hutchison 3G UK Ltd
+4474659|Hutchison 3G UK Ltd
+447466|Lycamobile UK Limited
+447467|Vodafone Uk Ltd
+447468|Vodafone Uk Ltd
+447469|Vodafone Uk Ltd
+447470|Vodafone Uk Ltd
+447471|Vodafone Uk Ltd
+447472|Hutchison 3G UK Ltd
+447473|Hutchison 3G UK Ltd
+447474|Hutchison 3G UK Ltd
+447475|Hutchison 3G UK Ltd
+447476|Hutchison 3G UK Ltd
+447477|Hutchison 3G UK Ltd
+447478|Hutchison 3G UK Ltd
+447479|Hutchison 3G UK Ltd
+447480|Hutchison 3G UK Ltd
+447481|Hutchison 3G UK Ltd
+447482|Hutchison 3G UK Ltd
+447483|EE Limited ( TM)
+447484|EE Limited ( TM)
+447485|EE Limited ( TM)
+447486|EE Limited ( TM)
+447487|EE Limited ( TM)
+4474880|Fogg Mobile AB
+4474881|CESG
+4474882|Sky UK Limited
+4474883|Sky UK Limited
+4474884|Hutchison 3G UK Ltd
+4474885|Hutchison 3G UK Ltd
+4474886|Lanonyx Telecom Limited
+4474887|Hutchison 3G UK Ltd
+4474888|Ziron (UK) Ltd
+4474889|Hutchison 3G UK Ltd
+447489|Telefonica UK Limited
+447490|Hutchison 3G UK Ltd
+447491|Hutchison 3G UK Ltd
+447492|Hutchison 3G UK Ltd
+447493|Vodafone Uk Ltd
+447494|EE Limited ( TM)
+447495|EE Limited ( TM)
+447496|EE Limited ( TM)
+447497|EE Limited ( TM)
+447498|EE Limited ( TM)
+447499|Telefonica UK Limited
+447500|Vodafone Uk Ltd
+447501|Vodafone Uk Ltd
+447502|Vodafone Uk Ltd
+447503|Vodafone Uk Ltd
+447504|EE Limited ( TM)
+447505|EE Limited ( TM)
+447506|EE Limited ( TM)
+447507|EE Limited ( TM)
+447508|EE Limited ( TM)
+4475090|Jersey Telecom
+4475091|Jersey Telecom
+4475092|Jersey Telecom
+4475093|Jersey Telecom
+4475094|Jersey Telecom
+4475095|Jersey Telecom
+4475096|Jersey Telecom
+4475097|Jersey Telecom
+44751|Telefonica UK Limited
+4475200|Simwood eSMS Limited
+4475201|BT OnePhone Limited
+4475202|Mundio Mobile Limited
+4475204|Core Communication Services Ltd
+4475205|Esendex Limited
+4475206|Tismi BV
+4475207|(aq) Limited trading as aql
+4475208|D2See Limited
+4475209|Invomo Ltd
+447521|Telefonica UK Limited
+447522|Telefonica UK Limited
+447523|Telefonica UK Limited
+447525|Telefonica UK Limited
+447526|Telefonica UK Limited
+447527|Orange
+447528|Orange
+447529|Orange
+447530|Orange
+447531|Orange
+4475320|Orange
+4475321|Orange
+4475322|Orange
+4475323|Orange
+4475324|Orange
+4475325|SMSRelay AG
+4475326|Hutchison 3G UK Ltd
+4475327|Hutchison 3G UK Ltd
+4475328|Hutchison 3G UK Ltd
+4475329|MOBIWEB TELECOM LIMITED
+447533|Hutchison 3G UK Ltd
+447534|EE Limited ( TM)
+447535|EE Limited ( TM)
+447536|Orange
+4475370|Wavecrest (UK) Ltd
+4475371|Stour Marine Limited
+4475373|Swiftnet Ltd
+4475374|Vodafone Uk Ltd
+4475376|Sound Advertising Ltd
+4475377|CFL Communications Limited
+4475378|Hutchison 3G UK Ltd
+4475379|Hutchison 3G UK Ltd
+447538|EE Limited ( TM)
+447539|EE Limited ( TM)
+44754|Telefonica UK Limited
+447550|EE Limited ( TM)
+447551|Vodafone Uk Ltd
+447552|Vodafone Uk Ltd
+447553|Vodafone Uk Ltd
+447554|Vodafone Uk Ltd
+447555|Vodafone Uk Ltd
+447556|Orange
+447557|Vodafone Uk Ltd
+4475580|Mobile FX Services Ltd
+4475588|Cloud9 Mobile Communications Ltd
+4475590|Mars Communications Limited
+4475591|LegendTel LLC
+4475592|IPV6 Limited
+4475593|Globecom International Limited.
+4475594|Truphone Ltd
+4475595|Confabulate Limited
+4475596|Lleida.net Serveis Telematics Limited
+4475597|Core Telecom Limited
+4475598|Nodemax Limited
+4475599|Resilient Plc
+44756|Telefonica UK Limited
+447570|Vodafone Uk Ltd
+4475710|09 Mobile Ltd
+4475718|Alliance Technologies LLC
+447572|EE Limited ( TM)
+447573|EE Limited ( TM)
+447574|EE Limited ( TM)
+447575|Hutchison 3G UK Ltd
+447576|Hutchison 3G UK Ltd
+447577|Hutchison 3G UK Ltd
+447578|Hutchison 3G UK Ltd
+447579|Orange
+447580|Orange
+447581|Orange
+447582|Orange
+447583|Orange
+447584|Vodafone Uk Ltd
+447585|Vodafone Uk Ltd
+447586|Vodafone Uk Ltd
+447587|Vodafone Uk Ltd
+447588|Hutchison 3G UK Ltd
+4475890|Yim Siam Telecom
+4475891|Oxygen8 Communications UK Limited
+4475892|Oxygen8 Communications UK Limited
+4475893|Oxygen8 Communications UK Limited
+4475894|Mundio Mobile Limited
+4475895|Mundio Mobile Limited
+4475896|Mundio Mobile Limited
+4475897|Mundio Mobile Limited
+4475898|Test2date B.V
+4475899|Moonshado Inc
+44759|Telefonica UK Limited
+4476000|Sound Advertising Ltd
+4476002|PageOne Communications Ltd
+4476006|24 Seven Communications Ltd
+4476007|Relax Telecom Limited
+4476020|Telefonica UK Limited
+4476022|Relax Telecom Limited
+447623|PageOne Communications Ltd
+4476240|Manx Telecom
+4476241|Manx Telecom
+4476242|Sure (Isle of Man) Limited
+4476243|Manx Telecom
+4476244|Manx Telecom
+4476245|Manx Telecom
+4476246|Manx Telecom
+4476247|Manx Telecom
+4476248|Manx Telecom
+4476249|Manx Telecom
+447625|Telefonica UK Limited
+447626|Telefonica UK Limited
+4476400|Core Telecom Limited
+4476401|Telecom2 Ltd
+4476402|M P Tanner Limited t/a FIO Telecom
+4476403|PageOne Communications Ltd
+4476404|PageOne Communications Ltd
+4476406|PageOne Communications Ltd
+4476407|PageOne Communications Ltd
+4476411|Orange
+4476433|Yim Siam Telecom
+4476440|Telefonica UK Limited
+4476441|Telefonica UK Limited
+4476444|Titanium Limited
+4476445|Proton Telecom Limited
+4476446|Media Telecom Ltd
+4476542|PageOne Communications Ltd
+4476543|PageOne Communications Ltd
+4476545|PageOne Communications Ltd
+4476546|PageOne Communications Ltd
+4476591|Vodafone Uk Ltd
+4476592|PageOne Communications Ltd
+4476593|Vodafone Uk Ltd
+4476594|Vodafone Uk Ltd
+4476595|Vodafone Uk Ltd
+4476596|Vodafone Uk Ltd
+4476598|Vodafone Uk Ltd
+4476599|PageOne Communications Ltd
+4476600|Plus Telecom Limited
+4476601|PageOne Communications Ltd
+4476602|PageOne Communications Ltd
+4476603|PageOne Communications Ltd
+4476604|PageOne Communications Ltd
+4476605|PageOne Communications Ltd
+4476606|24 Seven Communications Ltd
+4476607|Premium O Limited
+4476608|Premium O Limited
+4476609|Premium O Limited
+447661|PageOne Communications Ltd
+4476620|Premium O Limited
+4476630|Switch Services Ltd
+4476633|Syntec Limited
+4476636|Relax Telecom Limited
+4476637|Vodafone Uk Ltd
+4476660|24 Seven Communications Ltd
+4476661|Vodafone Uk Ltd
+4476662|Vodafone Uk Ltd
+4476663|Vodafone Uk Ltd
+4476664|Vodafone Uk Ltd
+4476665|Vodafone Uk Ltd
+4476666|Vodafone Uk Ltd
+4476667|Vodafone Uk Ltd
+4476668|Vodafone Uk Ltd
+4476669|M P Tanner Limited t/a FIO Telecom
+4476690|Telefonica UK Limited
+4476691|Telefonica UK Limited
+4476692|Telefonica UK Limited
+4476693|Confabulate Limited
+4476696|Cheers International Sales Limited
+4476698|Telefonica UK Limited
+4476699|Telefonica UK Limited
+4476770|24 Seven Communications Ltd
+4476772|Relax Telecom Limited
+4476776|Telsis Systems Ltd
+4476778|Core Telecom Limited
+4476810|PageOne Communications Ltd
+4476814|PageOne Communications Ltd
+4476818|PageOne Communications Ltd
+447693|Telefonica UK Limited
+447699|Vodafone Uk Ltd
+4477000|Cloud9 Mobile Communications Ltd
+4477001|Nationwide Telephone Assistance Ltd
+4477003|Sure (Jersey) Limited
+4477007|Sure (Jersey) Limited
+4477008|Sure (Jersey) Limited
+447701|Telefonica UK Limited
+447702|Telefonica UK Limited
+447703|Telefonica UK Limited
+447704|Telefonica UK Limited
+447705|Telefonica UK Limited
+447706|Telefonica UK Limited
+447707|Telefonica UK Limited
+447708|Telefonica UK Limited
+447709|Telefonica UK Limited
+447710|Telefonica UK Limited
+447711|Telefonica UK Limited
+447712|Telefonica UK Limited
+447713|Telefonica UK Limited
+447714|Telefonica UK Limited
+447715|Telefonica UK Limited
+447716|Telefonica UK Limited
+447717|Vodafone Uk Ltd
+447718|Telefonica UK Limited
+447719|Telefonica UK Limited
+447720|Telefonica UK Limited
+447721|Vodafone Uk Ltd
+447722|EE Limited ( TM)
+447723|Hutchison 3G UK Ltd
+447724|Telefonica UK Limited
+447725|Telefonica UK Limited
+447726|EE Limited ( TM)
+447727|Hutchison 3G UK Ltd
+447728|Hutchison 3G UK Ltd
+447729|Telefonica UK Limited
+447730|Telefonica UK Limited
+447731|Telefonica UK Limited
+447732|Telefonica UK Limited
+447733|Vodafone Uk Ltd
+447734|Telefonica UK Limited
+447735|Hutchison 3G UK Ltd
+447736|Telefonica UK Limited
+447737|Hutchison 3G UK Ltd
+447738|Telefonica UK Limited
+447739|Telefonica UK Limited
+447740|Telefonica UK Limited
+447741|Vodafone Uk Ltd
+447742|Telefonica UK Limited
+447743|Telefonica UK Limited
+4477442|Core Communication Services Ltd
+4477443|Core Communication Services Ltd
+4477444|Core Communication Services Ltd
+4477445|Core Communication Services Ltd
+4477446|Core Communication Services Ltd
+4477447|Core Communication Services Ltd
+4477448|Core Communication Services Ltd
+4477449|Core Communication Services Ltd
+447745|Telefonica UK Limited
+447746|Telefonica UK Limited
+447747|Vodafone Uk Ltd
+447748|Vodafone Uk Ltd
+447749|Telefonica UK Limited
+447750|Telefonica UK Limited
+447751|Telefonica UK Limited
+447752|Telefonica UK Limited
+4477530|Airwave Solutions Ltd
+4477531|Telefonica UK Limited
+4477532|Telefonica UK Limited
+4477533|Telefonica UK Limited
+4477534|Telefonica UK Limited
+4477535|Telefonica UK Limited
+4477536|Telefonica UK Limited
+4477537|Telefonica UK Limited
+4477538|Telefonica UK Limited
+4477539|Telefonica UK Limited
+447754|Telefonica UK Limited
+4477552|Core Communication Services Ltd
+4477553|Core Communication Services Ltd
+4477554|Core Communication Services Ltd
+4477555|Core Communication Services Ltd
+447756|Telefonica UK Limited
+447757|EE Limited ( TM)
+447758|EE Limited ( TM)
+447759|Telefonica UK Limited
+447760|Vodafone Uk Ltd
+447761|Telefonica UK Limited
+447762|Telefonica UK Limited
+447763|Telefonica UK Limited
+447764|Telefonica UK Limited
+447765|Vodafone Uk Ltd
+447766|Vodafone Uk Ltd
+447767|Vodafone Uk Ltd
+447768|Vodafone Uk Ltd
+447769|Vodafone Uk Ltd
+447770|Vodafone Uk Ltd
+447771|Vodafone Uk Ltd
+447772|Orange
+447773|Orange
+447774|Vodafone Uk Ltd
+447775|Vodafone Uk Ltd
+447776|Vodafone Uk Ltd
+447777|BT
+447778|Vodafone Uk Ltd
+447779|Orange
+447780|Vodafone Uk Ltd
+447781|Sure (Guernsey) Limited
+447782|Hutchison 3G UK Ltd
+447783|Telefonica UK Limited
+447784|Telefonica UK Limited
+447785|Vodafone Uk Ltd
+447786|Vodafone Uk Ltd
+447787|Vodafone Uk Ltd
+447788|Vodafone Uk Ltd
+447789|Vodafone Uk Ltd
+447790|Orange
+447791|Orange
+447792|Orange
+447793|Telefonica UK Limited
+447794|Orange
+447795|Vodafone Uk Ltd
+447796|Vodafone Uk Ltd
+447797|Jersey Telecom
+447798|Vodafone Uk Ltd
+447799|Vodafone Uk Ltd
+447800|Orange
+447801|Telefonica UK Limited
+447802|Telefonica UK Limited
+447803|Telefonica UK Limited
+447804|EE Limited ( TM)
+447805|Orange
+447806|EE Limited ( TM)
+447807|Orange
+447808|Telefonica UK Limited
+447809|Telefonica UK Limited
+447810|Vodafone Uk Ltd
+447811|Orange
+447812|Orange
+447813|Orange
+447814|Orange
+447815|Orange
+447816|Orange
+447817|Orange
+447818|Vodafone Uk Ltd
+447819|Telefonica UK Limited
+447820|Telefonica UK Limited
+447821|Telefonica UK Limited
+4478220|FleXtel Limited
+4478221|Swiftnet Ltd
+4478222|TalkTalk Communications Limited
+4478224|aql Wholesale Limited
+4478225|Icron Network Limited
+4478226|aql Wholesale Limited
+4478227|Cheers International Sales Limited
+4478228|Vodafone Uk Ltd
+4478229|Oxygen8 Communications UK Limited
+447823|Vodafone Uk Ltd
+447824|Vodafone Uk Ltd
+447825|Vodafone Uk Ltd
+447826|Vodafone Uk Ltd
+447827|Vodafone Uk Ltd
+447828|Hutchison 3G UK Ltd
+4478297|Jersey Airtel  Limited
+4478298|Jersey Airtel  Limited
+4478299|Jersey Airtel  Limited
+447830|Hutchison 3G UK Ltd
+447831|Vodafone Uk Ltd
+447832|Hutchison 3G UK Ltd
+447833|Vodafone Uk Ltd
+447834|Telefonica UK Limited
+447835|Telefonica UK Limited
+447836|Vodafone Uk Ltd
+447837|Orange
+447838|Hutchison 3G UK Ltd
+4478391|Guernsey Airtel Limited
+4478392|Guernsey Airtel Limited
+4478397|Guernsey Airtel Limited
+4478398|Sure (Guernsey) Limited
+447840|Telefonica UK Limited
+447841|Telefonica UK Limited
+447842|Telefonica UK Limited
+447843|Telefonica UK Limited
+447844|Telefonica UK Limited
+447845|Telefonica UK Limited
+447846|Hutchison 3G UK Ltd
+447847|EE Limited ( TM)
+447848|Hutchison 3G UK Ltd
+447849|Telefonica UK Limited
+447850|Telefonica UK Limited
+447851|Telefonica UK Limited
+447852|EE Limited ( TM)
+447853|Hutchison 3G UK Ltd
+447854|Orange
+447855|Orange
+447856|Telefonica UK Limited
+447857|Telefonica UK Limited
+447858|Telefonica UK Limited
+447859|Hutchison 3G UK Ltd
+447860|Telefonica UK Limited
+447861|Hutchison 3G UK Ltd
+447862|Hutchison 3G UK Ltd
+447863|Hutchison 3G UK Ltd
+4478640|Telefonica UK Limited
+4478641|Telefonica UK Limited
+4478642|Telefonica UK Limited
+4478643|Telefonica UK Limited
+4478644|Switch Services Ltd
+4478645|Telefonica UK Limited
+4478646|Telefonica UK Limited
+4478647|Telefonica UK Limited
+4478648|Telefonica UK Limited
+4478649|Telefonica UK Limited
+447865|Hutchison 3G UK Ltd
+447866|Orange
+447867|Vodafone Uk Ltd
+447868|Hutchison 3G UK Ltd
+447869|Hutchison 3G UK Ltd
+447870|Orange
+447871|Telefonica UK Limited
+4478720|Telefonica UK Limited
+4478721|Telefonica UK Limited
+4478722|Cloud9 Mobile Communications Ltd
+4478723|Telefonica UK Limited
+4478724|Telefonica UK Limited
+4478725|Telefonica UK Limited
+4478726|Telefonica UK Limited
+4478727|Sky Telecom Limited
+4478728|Telefonica UK Limited
+4478729|Telefonica UK Limited
+4478730|Telesign Mobile Limited
+4478731|Telefonica UK Limited
+4478732|Telefonica UK Limited
+4478733|Telefonica UK Limited
+4478734|Telefonica UK Limited
+4478735|Telefonica UK Limited
+4478736|Telefonica UK Limited
+4478737|Telefonica UK Limited
+4478738|Telefonica UK Limited
+4478739|Telefonica UK Limited
+4478740|Telefonica UK Limited
+4478741|Telefonica UK Limited
+4478742|Telefonica UK Limited
+4478743|Telefonica UK Limited
+4478744|Citrus Telecommunications Ltd
+4478746|Telefonica UK Limited
+4478747|Telefonica UK Limited
+4478748|Telefonica UK Limited
+4478749|Telefonica UK Limited
+447875|Orange
+447876|Vodafone Uk Ltd
+447877|Hutchison 3G UK Ltd
+447878|Hutchison 3G UK Ltd
+447879|Vodafone Uk Ltd
+447880|Vodafone Uk Ltd
+447881|Vodafone Uk Ltd
+447882|Hutchison 3G UK Ltd
+447883|Hutchison 3G UK Ltd
+447884|Vodafone Uk Ltd
+447885|Telefonica UK Limited
+447886|Hutchison 3G UK Ltd
+447887|Vodafone Uk Ltd
+447888|Hutchison 3G UK Ltd
+447889|Telefonica UK Limited
+447890|Orange
+447891|Orange
+4478920|HAY SYSTEMS LIMITED
+4478921|Mundio Mobile Limited
+4478922|Edge Telecom Limited
+4478923|Telefonica UK Limited
+4478924|Telefonica UK Limited
+4478925|FleXtel Limited
+4478926|Telefonica UK Limited
+4478927|Telefonica UK Limited
+4478928|Telefonica UK Limited
+4478929|Telefonica UK Limited
+4478930|Magrathea Telecommunications Limited
+4478931|24 Seven Communications Ltd
+4478932|Telefonica UK Limited
+4478933|Yim Siam Telecom
+4478934|Telefonica UK Limited
+4478935|Telefonica UK Limited
+4478936|Telefonica UK Limited
+4478937|Telefonica UK Limited
+4478938|aql Wholesale Limited
+4478939|Citrus Telecommunications Ltd
+447894|Telefonica UK Limited
+447895|Telefonica UK Limited
+447896|Orange
+447897|Hutchison 3G UK Ltd
+447898|Hutchison 3G UK Ltd
+447899|Vodafone Uk Ltd
+447900|Vodafone Uk Ltd
+447901|Vodafone Uk Ltd
+447902|Telefonica UK Limited
+447903|EE Limited ( TM)
+447904|EE Limited ( TM)
+447905|EE Limited ( TM)
+447906|EE Limited ( TM)
+447907|Telefonica UK Limited
+447908|EE Limited ( TM)
+447909|Vodafone Uk Ltd
+447910|EE Limited ( TM)
+4479110|Marathon Telecom Limited
+4479111|JT (Guernsey) Limited
+4479112|24 Seven Communications Ltd
+4479117|JT (Guernsey) Limited
+4479118|24 Seven Communications Ltd
+447912|Telefonica UK Limited
+447913|EE Limited ( TM)
+447914|EE Limited ( TM)
+447915|Hutchison 3G UK Ltd
+447916|Hutchison 3G UK Ltd
+447917|Vodafone Uk Ltd
+447918|Vodafone Uk Ltd
+447919|Vodafone Uk Ltd
+447920|Vodafone Uk Ltd
+447921|Telefonica UK Limited
+447922|Telefonica UK Limited
+447923|Telefonica UK Limited
+4479240|Manx Telecom
+4479241|Manx Telecom
+4479242|Manx Telecom
+4479243|Manx Telecom
+4479244|Manx Telecom
+4479245|Cloud9 Communications Limited
+4479246|Manx Telecom
+4479247|Manx Telecom
+4479248|Manx Telecom
+4479249|Manx Telecom
+447925|Telefonica UK Limited
+447926|Telefonica UK Limited
+447927|Telefonica UK Limited
+447928|Telefonica UK Limited
+447929|Orange
+447930|EE Limited ( TM)
+447931|EE Limited ( TM)
+447932|EE Limited ( TM)
+447933|Telefonica UK Limited
+447934|Telefonica UK Limited
+447935|Telefonica UK Limited
+447936|Telefonica UK Limited
+447937|Jersey Telecom
+447938|Telefonica UK Limited
+447939|EE Limited ( TM)
+44794|EE Limited ( TM)
+447950|EE Limited ( TM)
+447951|EE Limited ( TM)
+447952|EE Limited ( TM)
+447953|EE Limited ( TM)
+447954|EE Limited ( TM)
+447955|Telefonica UK Limited
+447956|EE Limited ( TM)
+447957|EE Limited ( TM)
+447958|EE Limited ( TM)
+447959|EE Limited ( TM)
+447960|EE Limited ( TM)
+447961|EE Limited ( TM)
+447962|EE Limited ( TM)
+447963|EE Limited ( TM)
+447964|Orange
+447965|Orange
+447966|Orange
+447967|Orange
+447968|Orange
+447969|Orange
+447970|Orange
+447971|Orange
+447972|Orange
+447973|Orange
+447974|Orange
+447975|Orange
+447976|Orange
+447977|Orange
+4479781|QX Telecom Ltd
+4479782|Cloud9 Mobile Communications Ltd
+4479783|Cloud9 Mobile Communications Ltd
+4479784|Cheers International Sales Limited
+4479785|Icron Network Limited
+4479786|Oxygen8 Communications UK Limited
+4479787|TeleWare PLC
+4479788|Truphone Ltd
+4479789|IV Response Limited
+447979|Vodafone Uk Ltd
+447980|Orange
+447981|EE Limited ( TM)
+447982|EE Limited ( TM)
+447983|EE Limited ( TM)
+447984|EE Limited ( TM)
+447985|EE Limited ( TM)
+447986|EE Limited ( TM)
+447987|EE Limited ( TM)
+447988|Hutchison 3G UK Ltd
+447989|Orange
+447990|Vodafone Uk Ltd
+447999|Telefonica UK Limited
