@@ -26,7 +26,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using i18n::phonenumbers::Logger;
-using std::string;
 using std::stringstream;
 
 // Class template used to inline the right implementation for the T -> string

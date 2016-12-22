@@ -25,7 +25,6 @@
 #include <utility>
 #include <vector>
 
-#include <google/protobuf/message_lite.h>
 #include <unicode/uchar.h>
 #include <unicode/utf8.h>
 
@@ -53,7 +52,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using google::protobuf::RepeatedField;
-using google::protobuf::RepeatedPtrField;
 using std::find;
 
 // static constants
