@@ -1,0 +1,6 @@
+group = 'com.snapchat'
+description = ''
+dependencies {
+  compile project(':libphonenumber-parent:libphonenumber')
+  compile project(':libphonenumber-parent:prefixmapper')
+}

@@ -1,0 +1,12 @@
+rootProject.name = 'libphonenumber-parent'
+include ':libphonenumber'
+include ':prefixmapper'
+include ':carrier'
+include ':geocoder'
+include ':demo'
+
+project(':libphonenumber').projectDir = "$rootDir/libphonenumber" as File
+project(':prefixmapper').projectDir = "$rootDir/internal/prefixmapper" as File
+project(':carrier').projectDir = "$rootDir/carrier" as File
+project(':geocoder').projectDir = "$rootDir/geocoder" as File
+project(':demo').projectDir = "$rootDir/demo" as File

@@ -1,0 +1,21 @@
+allprojects  {
+  apply plugin: 'maven'
+
+  group = 'com.snapchat'
+version = '1.0.0'
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.5
+  targetCompatibility = 1.5
+
+  
+  repositories {
+    mavenLocal()
+    
+    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url "./java/lib" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+}
