@@ -19,8 +19,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
-
 struct NormalizeUTF8 {
   // Put a UTF-8 string in ASCII digits: All decimal digits (Nd) replaced by
   // their ASCII counterparts; all other characters are copied from input to
