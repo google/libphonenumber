@@ -112,6 +112,12 @@
 917097|Aircel
 917098|Dishnet
 917099|Telewings
+917190|Airtel
+917191|Airtel
+917192|Airtel
+917193|Airtel
+917194|Airtel
+917195|Airtel
 917200|Tata Docomo
 917201|Idea
 917202|Idea
@@ -230,6 +236,9 @@
 9172877|Airtel
 9172878|Idea
 9172879|Airtel
+9172880|Idea
+9172888|Idea
+9172889|Idea
 9172890|Vodafone
 9172891|Airtel
 9172892|Airtel
@@ -538,11 +547,14 @@
 9174139|Vodafone
 9174140|Vodafone
 9174148|Vodafone
+9174149|Airtel
 917415|Tata Docomo
 917416|Tata Docomo
 917417|Tata Docomo
 917418|Tata Docomo
 917419|Reliance
+9174200|Airtel
+9174208|Airtel
 9174209|Airtel
 9174210|Dishnet
 9174218|Dishnet
@@ -1135,6 +1147,9 @@
 917700|Videocon
 9177010|Tata Docomo
 917702|Airtel
+9177060|Vodafone
+9177068|Vodafone
+9177069|Vodafone
 917708|Airtel
 917709|Airtel
 917710|Airtel
@@ -1237,6 +1252,7 @@
 9177778|Tata Docomo
 9177788|Telewings
 9177798|Airtel
+917780|Airtel
 9177810|Airtel
 9177818|Airtel
 9177828|Airtel
@@ -2441,6 +2457,7 @@
 918907|Dishnet
 918908|Dishnet
 918909|Dishnet
+918912|Airtel
 918919|Reliance Jio
 918922|Telewings
 918923|Telewings

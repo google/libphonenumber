@@ -28,8 +28,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
-
 // Same implementations of AbstractRegExpFactory and RegExpCache in
 // PhoneNumberUtil (copy from phonenumberutil.cc).
 RegexBasedMatcher::RegexBasedMatcher()

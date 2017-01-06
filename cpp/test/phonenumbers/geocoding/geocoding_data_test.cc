@@ -23,7 +23,6 @@
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/geocoding/geocoding_data.h"
 #include "phonenumbers/geocoding/geocoding_test_data.h"
-#include "phonenumbers/stringutil.h"
 
 namespace i18n {
 namespace phonenumbers {

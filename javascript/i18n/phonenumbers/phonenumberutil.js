@@ -763,13 +763,14 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ =
  * also provided after each ASCII version. There are three regular expressions
  * here. The first covers RFC 3966 format, where the extension is added using
  * ';ext='. The second more generic one starts with optional white space and
- * ends with an optional full stop (.), followed by zero or more spaces/tabs and
- * then the numbers themselves. The other one covers the special case of
- * American numbers where the extension is written with a hash at the end, such
- * as '- 503#'. Note that the only capturing groups should be around the digits
- * that you want to capture as part of the extension, or else parsing will fail!
- * We allow two options for representing the accented o - the character itself,
- * and one in the unicode decomposed form with the combining acute accent.
+ * ends with an optional full stop (.), followed by zero or more spaces/tabs
+ * /commas and then the numbers themselves. The other one covers the special
+ * case of American numbers where the extension is written with a hash at the
+ * end, such as '- 503#'. Note that the only capturing groups should be around
+ * the digits that you want to capture as part of the extension, or else parsing
+ * will fail! We allow two options for representing the accented o - the
+ * character itself, and one in the unicode decomposed form with the combining
+ * acute accent.
  *
  * @const
  * @type {string}
@@ -780,7 +781,7 @@ i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ =
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
     '[ \u00A0\\t,]*' +
     '(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|' +
-    '[,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
+    '[;,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
     '[:\\.\uFF0E]?[ \u00A0\\t,-]*' +
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
     '[- ]+([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,5})#';
@@ -3002,7 +3003,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForRegion =
  *     calling code for.
  * @return {number} the country calling code for the region denoted by
  *     regionCode.
- * @throws {string} if the region is invalid
+ * @throws {Error} if the region is invalid
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForValidRegion_ =
@@ -3011,7 +3012,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getCountryCodeForValidRegion_ =
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata = this.getMetadataForRegion(regionCode);
   if (metadata == null) {
-    throw 'Invalid region code: ' + regionCode;
+    throw new Error('Invalid region code: ' + regionCode);
   }
   return metadata.getCountryCodeOrDefault();
 };
@@ -3372,7 +3373,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
  *     only populated when keepCountryCodeSource is true.
  * @return {number} the country calling code extracted or 0 if none could be
  *     extracted.
- * @throws {i18n.phonenumbers.Error}
+ * @throws {Error}
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
     function(number, defaultRegionMetadata, nationalNumber,
@@ -3403,7 +3404,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
       i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY) {
     if (fullNumber.getLength() <=
         i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-      throw i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD;
+      throw new Error(i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD);
     }
     /** @type {number} */
     var potentialCountryCode = this.extractCountryCode(fullNumber,
@@ -3415,7 +3416,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
 
     // If this fails, they must be using a strange country calling code that we
     // don't recognize, or that doesn't exist.
-    throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
+    throw new Error(i18n.phonenumbers.Error.INVALID_COUNTRY_CODE);
   } else if (defaultRegionMetadata != null) {
     // Check to see if the number starts with the country calling code for the
     // default region. If so, we remove the country calling code, and do some
@@ -3728,7 +3729,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
  *     'ZZ' or null can be supplied.
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
- * @throws {i18n.phonenumbers.Error} if the string is not considered to be a
+ * @throws {Error} if the string is not considered to be a
  *     viable phone number (e.g. too few or too many digits) or if no default
  *     region was supplied and the number is not in international format (does
  *     not start with +).
@@ -3753,7 +3754,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parse = function(numberToParse,
  *     case would be stored as that of the default region supplied.
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
- * @throws {i18n.phonenumbers.Error} if the string is not considered to be a
+ * @throws {Error} if the string is not considered to be a
  *     viable phone number or if no default region was supplied.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
@@ -3762,7 +3763,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
   if (!this.isValidRegionCode_(defaultRegion)) {
     if (numberToParse.length > 0 && numberToParse.charAt(0) !=
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
-      throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
+      throw new Error(i18n.phonenumbers.Error.INVALID_COUNTRY_CODE);
     }
   }
   return this.parseHelper_(numberToParse, defaultRegion, true, true);
@@ -3814,17 +3815,17 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.setItalianLeadingZerosForPhoneNumber
  *     the default coregion to be null or unknown ('ZZ').
  * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
- * @throws {i18n.phonenumbers.Error}
+ * @throws {Error}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     function(numberToParse, defaultRegion, keepRawInput, checkRegion) {
 
   if (numberToParse == null) {
-    throw i18n.phonenumbers.Error.NOT_A_NUMBER;
+    throw new Error(i18n.phonenumbers.Error.NOT_A_NUMBER);
   } else if (numberToParse.length >
       i18n.phonenumbers.PhoneNumberUtil.MAX_INPUT_STRING_LENGTH_) {
-    throw i18n.phonenumbers.Error.TOO_LONG;
+    throw new Error(i18n.phonenumbers.Error.TOO_LONG);
   }
 
   /** @type {!goog.string.StringBuffer} */
@@ -3833,14 +3834,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
 
   if (!i18n.phonenumbers.PhoneNumberUtil.isViablePhoneNumber(
       nationalNumber.toString())) {
-    throw i18n.phonenumbers.Error.NOT_A_NUMBER;
+    throw new Error(i18n.phonenumbers.Error.NOT_A_NUMBER);
   }
 
   // Check the region supplied is valid, or that the extracted number starts
   // with some sort of + sign so the number's region can be determined.
   if (checkRegion &&
       !this.checkRegionForParsing_(nationalNumber.toString(), defaultRegion)) {
-    throw i18n.phonenumbers.Error.INVALID_COUNTRY_CODE;
+    throw new Error(i18n.phonenumbers.Error.INVALID_COUNTRY_CODE);
   }
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -3870,7 +3871,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     countryCode = this.maybeExtractCountryCode(nationalNumberStr,
         regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
   } catch (e) {
-    if (e == i18n.phonenumbers.Error.INVALID_COUNTRY_CODE &&
+    if (e.message == i18n.phonenumbers.Error.INVALID_COUNTRY_CODE &&
         i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
             .test(nationalNumberStr)) {
       // Strip the plus-char, and try again.
@@ -3908,7 +3909,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   }
   if (normalizedNationalNumber.getLength() <
       i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-    throw i18n.phonenumbers.Error.TOO_SHORT_NSN;
+    throw new Error(i18n.phonenumbers.Error.TOO_SHORT_NSN);
   }
 
   if (regionMetadata != null) {
@@ -3938,11 +3939,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   var lengthOfNationalNumber = normalizedNationalNumberStr.length;
   if (lengthOfNationalNumber <
       i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_) {
-    throw i18n.phonenumbers.Error.TOO_SHORT_NSN;
+    throw new Error(i18n.phonenumbers.Error.TOO_SHORT_NSN);
   }
   if (lengthOfNationalNumber >
       i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_) {
-    throw i18n.phonenumbers.Error.TOO_LONG;
+    throw new Error(i18n.phonenumbers.Error.TOO_LONG);
   }
   this.setItalianLeadingZerosForPhoneNumber_(
       normalizedNationalNumberStr, phoneNumber);
@@ -4066,7 +4067,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
       firstNumber = this.parse(
           firstNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
     } catch (e) {
-      if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
+      if (e.message != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
         return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
       }
       // The first number has no country calling code. EXACT_MATCH is no longer
@@ -4110,7 +4111,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
           secondNumberIn, i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_);
       return this.isNumberMatch(firstNumberIn, secondNumber);
     } catch (e) {
-      if (e != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
+      if (e.message != i18n.phonenumbers.Error.INVALID_COUNTRY_CODE) {
         return i18n.phonenumbers.PhoneNumberUtil.MatchType.NOT_A_NUMBER;
       }
       return this.isNumberMatch(secondNumberIn, firstNumber);

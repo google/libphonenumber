@@ -25,7 +25,6 @@
 #include <utility>
 #include <vector>
 
-#include <google/protobuf/message_lite.h>
 #include <unicode/uchar.h>
 #include <unicode/utf8.h>
 
@@ -53,7 +52,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using google::protobuf::RepeatedField;
-using google::protobuf::RepeatedPtrField;
 using std::find;
 
 // static constants
@@ -208,9 +206,9 @@ string CreateExtnPattern(const string& single_extn_symbols) {
   // The first regular expression covers RFC 3966 format, where the extension is
   // added using ";ext=". The second more generic one starts with optional white
   // space and ends with an optional full stop (.), followed by zero or more
-  // spaces/tabs and then the numbers themselves. The third one covers the
-  // special case of American numbers where the extension is written with a hash
-  // at the end, such as "- 503#".
+  // spaces/tabs/commas and then the numbers themselves. The third one covers
+  // the special case of American numbers where the extension is written with a
+  // hash at the end, such as "- 503#".
   // Note that the only capturing groups should be around the digits that you
   // want to capture as part of the extension, or else parsing will fail!
   // Canonical-equivalence doesn't seem to be an option with RE2, so we allow
@@ -451,8 +449,8 @@ class PhoneNumberRegExpsAndMappings {
   // will be run as a case-insensitive regexp match. Wide character versions are
   // also provided after each ASCII version.
   // For parsing, we are slightly more lenient in our interpretation than for
-  // matching. Here we allow a "comma" as a possible extension indicator. When
-  // matching, this is hardly ever used to indicate this.
+  // matching. Here we allow "comma" and "semicolon" as possible extension
+  // indicators. When matching, these are hardly ever used to indicate this.
   const string extn_patterns_for_parsing_;
 
  public:
@@ -570,7 +568,7 @@ class PhoneNumberRegExpsAndMappings {
                    punctuation_and_star_sign_, kDigits,
                    "]*")),
         extn_patterns_for_parsing_(
-            CreateExtnPattern(StrCat(",", kSingleExtnSymbolsForMatching))),
+            CreateExtnPattern(StrCat(",;", kSingleExtnSymbolsForMatching))),
         regexp_factory_(new RegExpFactory()),
         regexp_cache_(new RegExpCache(*regexp_factory_.get(), 128)),
         diallable_char_mappings_(),

@@ -35,7 +35,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
 using std::vector;
 
 // Structure that contains the attributes used to test an implementation of the
