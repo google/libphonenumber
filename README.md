@@ -145,9 +145,16 @@ System.out.println(carrierMapper.getNameForNumber(swissMobileNumber, Locale.ENGL
 
 More examples on how to use the library can be found in the unittests at https://github.com/googlei18n/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers
 
-# Known Ports
-Several people are porting the phone number library to other languages. Here are some we know about. Note that they are done on voluntary basis by developers outside our project, so we cannot guarantee their quality.
-  * objective-c: https://github.com/iziz/libPhoneNumber-iOS
-  * Python: https://github.com/daviddrysdale/python-phonenumbers
-  * Ruby: https://github.com/sstephenson/global_phone
-  * PHP: https://github.com/giggsey/libphonenumber-for-php
+# Third-party Ports
+
+Several third-party ports of the phone number library are known to us. We share
+them here in case they're useful for developers.
+
+However, we emphasize that these ports are by developers outside the
+libphonenumber project. We do not evaluate their quality or influence their
+maintenance processes.
+
+*   PHP: https://github.com/giggsey/libphonenumber-for-php
+*   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/sstephenson/global_phone
+*   objective-c: https://github.com/iziz/libPhoneNumber-iOS
