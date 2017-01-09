@@ -3548,14 +3548,14 @@
           <format>$1-$2</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
-        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{5})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
             9(?:
               [1-9]|
               0[1-9]
             )
           </leadingDigits>
-          <format>$1-$2</format>
+          <format>$1-$2-$3</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- Format short numbers as a block. -->
@@ -3565,7 +3565,7 @@
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="($FG)"
-            pattern="(\d{2})(\d{5})(\d{4})"
+            pattern="(\d{2})(\d{3})(\d{3})(\d{3})"
             carrierCodeFormattingRule="$NP $CC ($FG)">
           <leadingDigits>
             (?:
@@ -3576,7 +3576,7 @@
               7[13-579]
             )9
           </leadingDigits>
-          <format>$1 $2-$3</format>
+          <format>$1 $2-$3-$4</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="($FG)"
             pattern="(\d{2})(\d{4})(\d{4})"
