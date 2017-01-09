@@ -3581,7 +3581,15 @@
         <numberFormat nationalPrefixFormattingRule="($FG)"
             pattern="(\d{2})(\d{4})(\d{4})"
             carrierCodeFormattingRule="$NP $CC ($FG)">
-          <leadingDigits>[1-9][1-9]</leadingDigits>
+          <leadingDigits>
+			(?:
+              [14689][1-9]|
+              2[12478]|
+			  3[1-578]|
+			  5[13-5]|
+			  7[13-579]
+            )[1-9]
+		  </leadingDigits>
           <format>$1 $2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{4})">
