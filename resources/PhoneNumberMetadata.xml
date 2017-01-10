@@ -11023,7 +11023,7 @@
               77|
               81
             )|
-            9[29]\d
+            9[2-9]\d
           )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
