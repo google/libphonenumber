@@ -154,6 +154,7 @@ However, we emphasize that these ports are by developers outside the
 libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
+*   C#: https://github.com/aidanbebbington/libphonenumber-csharp
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
 *   Ruby: https://github.com/sstephenson/global_phone
