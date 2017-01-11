@@ -4793,10 +4793,10 @@
           (?:
             0[1-9]|
             4\d|
-            5[14-9]|
+            5[1-9]|
             6[015-79]|
-            7[57-9]|
-            8[7-9]
+            7[4-9]|
+            8[6-9]
           )\d{6}
         </nationalNumberPattern>
         <possibleLengths national="8"/>
@@ -8022,7 +8022,7 @@
         <nationalNumberPattern>
           (?:
             6\d|
-            7[3-9]
+          7\d
           )\d{7}
         </nationalNumberPattern>
         <possibleLengths national="9"/>
