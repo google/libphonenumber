@@ -1157,25 +1157,55 @@
 
     <!-- Bahrain -->
     <!-- http://www.itu.int/oth/T0202000011/en -->
+    <!-- http://www.tra.org.bh/media/document/National%20Numbering%20Plan.pdf -->
     <territory id="BH">
       <generalDesc>
-        <nationalNumberPattern>[89]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[0189]\d{2,4}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,5}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- As per official numbering plan, 85xxx shortcodes are shared cost numbers. As the cost
+             details are not clear, categorized them as unknown cost numbers. -->
         <nationalNumberPattern>
-          88000|
+          0[167]\d{3}|
+          1(?:
+            [02]\d|
+            12|
+            4[01]|
+            51|
+            8[18]|
+            9[169]
+          )|
+          8[158]\d{3}|
           9(?:
-            8555|
-            99
+            [148]\d{3}|
+            9[02489]
           )
         </nationalNumberPattern>
         <possibleLengths national="3,5"/>
         <exampleNumber>999</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          (?:
+            0[167]|
+            81
+          )\d{3}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>07123</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>9[148]\d{3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>94123</exampleNumber>
+      </premiumRate>
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>
+          0[67]\d{3}|
           88000|
           98555
         </nationalNumberPattern>
@@ -1184,11 +1214,20 @@
         <exampleNumber>88000</exampleNumber>
       </carrierSpecific>
       <emergency>
-        <nationalNumberPattern>999</nationalNumberPattern>
+        <nationalNumberPattern>[19]99</nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          112|
+          99[0248]
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>992</exampleNumber>
+      </expandedEmergency>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>
@@ -1443,7 +1482,7 @@
     <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
     <territory id="BR">
       <generalDesc>
-        <nationalNumberPattern>[1249]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[12469]\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
@@ -1501,6 +1540,19 @@
             828
           )|
           55555|
+          6(?:
+            0(?:
+              5(?:
+                0(?:
+                  0[1-9]|
+                  [1-9]\d
+                )|
+                [1-9]\d{2}
+              )|
+              [6-9]\d{3}
+            )|
+            10000
+          )|
           911
         </nationalNumberPattern>
         <possibleLengths national="[3-6]"/>
@@ -1596,6 +1648,19 @@
           4(?:
             0404|
             828
+          )|
+          6(?:
+            0(?:
+              5(?:
+                0(?:
+                  0[1-9]|
+                  [1-9]\d
+                )|
+                [1-9]\d{2}
+              )|
+              [6-9]\d{3}
+            )|
+            10000
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
@@ -9404,12 +9469,15 @@
 
     <!-- Slovakia -->
     <!-- http://www.itu.int/oth/T02020000BD/en -->
+    <!-- http://www.teleoff.gov.sk/data/files/25211.pdf -->
     <territory id="SK">
       <generalDesc>
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- As per online evidence 16xxx and 17xxx short codes cannot be dailled without area code,
+             so it is not included here. -->
         <nationalNumberPattern>
           1(?:
             1(?:
@@ -9417,23 +9485,20 @@
               6(?:
                 000|
                 111
-              )
+              )|
+              8[0-8]
             )|
-            5[058]|
+            [24]\d{3}|
+            5[0589]|
             8\d{3}
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
-        <possibleLengths national="3,5,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
-        <nationalNumberPattern>
-          116(?:
-            000|
-            111
-          )
-        </nationalNumberPattern>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <possibleLengths national="6"/>
         <exampleNumber>116000</exampleNumber>
@@ -9450,13 +9515,13 @@
       </emergency>
       <expandedEmergency>
         <nationalNumberPattern>
-          116(?:
-            000|
-            111
+          1(?:
+            16\d{3}|
+            59
           )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6}</possibleNumberPattern>
-        <possibleLengths national="6"/>
+        <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
+        <possibleLengths national="3,6"/>
         <exampleNumber>116000</exampleNumber>
       </expandedEmergency>
     </territory>

@@ -59,7 +59,7 @@
 917044|Airtel
 917045|Vodafone
 917046|Idea
-917047|Videocon
+917047|Airtel
 917048|Tata Docomo
 917049|Idea
 917050|Telewings
@@ -226,7 +226,7 @@
 9172849|Idea
 9172850|Idea
 9172858|Idea
-9172870|Airtel
+9172870|Idea
 9172871|Airtel
 9172872|Airtel
 9172873|Airtel
@@ -235,7 +235,7 @@
 9172876|Airtel
 9172877|Airtel
 9172878|Idea
-9172879|Airtel
+9172879|Idea
 9172880|Idea
 9172888|Idea
 9172889|Idea
@@ -406,7 +406,7 @@
 917354|Idea
 917355|Videocon
 917356|Aircel
-917357|Videocon
+917357|Hexacom
 917358|Aircel
 917359|Idea
 9173600|Vodafone
@@ -509,11 +509,11 @@
 917397|Airtel
 917398|Telewings
 917399|Dishnet
-9174000|Videocon
-9174001|Videocon
-9174002|Videocon
-9174003|Videocon
-9174004|Videocon
+9174000|Airtel
+9174001|Airtel
+9174002|Airtel
+9174003|Airtel
+9174004|Airtel
 9174005|Tata Docomo
 9174006|Tata Docomo
 9174007|Tata Docomo
@@ -798,6 +798,15 @@
 9175108|Idea
 9175109|Idea
 9175111|Idea
+9175170|Idea
+9175172|Idea
+9175173|Idea
+9175174|Idea
+9175175|Idea
+9175176|Idea
+9175177|Idea
+9175178|Idea
+9175179|Idea
 917519|Dishnet
 917520|Reliance
 9175210|Airtel
@@ -1095,8 +1104,42 @@
 9176250|Airtel
 917631|Vodafone
 917639|Vodafone
+9176468|CellOne
+9176469|CellOne
+9176470|CellOne
+9176478|CellOne
+9176479|CellOne
+9176480|CellOne
+9176488|CellOne
+9176489|CellOne
+9176490|CellOne
+9176498|CellOne
+9176499|CellOne
+9176500|CellOne
+9176508|CellOne
+9176509|CellOne
+9176510|CellOne
+9176518|CellOne
+9176519|CellOne
+9176520|CellOne
+9176528|CellOne
+9176529|CellOne
+9176530|CellOne
+9176538|CellOne
+9176539|CellOne
 917654|Idea
+9176550|CellOne
+9176558|CellOne
+9176559|CellOne
+9176560|CellOne
+9176568|CellOne
+9176569|CellOne
+9176570|CellOne
+9176578|Tata Docomo
+9176579|Tata Docomo
 917658|Idea
+9176580|Tata Docomo
+9176588|Tata Docomo
 917659|Idea
 917660|Idea
 917661|Idea
@@ -1124,8 +1167,10 @@
 917679|Reliance
 917680|Airtel
 917681|Airtel
+9176819|Tata Docomo
 917682|Airtel
 917683|Airtel
+9176830|Tata Docomo
 917684|Airtel
 917685|Dishnet
 917686|Dishnet
@@ -1145,11 +1190,19 @@
 917698|Idea
 917699|Idea
 917700|Videocon
+9177000|Airtel
+9177009|Airtel
 9177010|Tata Docomo
+9177018|Tata Docomo
+9177019|Tata Docomo
 917702|Airtel
+9177038|Tata Docomo
+9177039|Tata Docomo
 9177060|Vodafone
 9177068|Vodafone
 9177069|Vodafone
+9177078|Idea
+9177079|Idea
 917708|Airtel
 917709|Airtel
 917710|Airtel
@@ -1248,7 +1301,7 @@
 9177760|Idea
 9177768|Idea
 9177769|Idea
-9177770|Videocon
+9177770|Airtel
 9177778|Tata Docomo
 9177788|Telewings
 9177798|Airtel
@@ -1424,8 +1477,8 @@
 917897|Airtel
 917898|Airtel
 917899|Idea
-9179000|Videocon
-9179001|Videocon
+9179000|Airtel
+9179001|Airtel
 917903|Reliance Jio
 917904|Reliance Jio
 917905|Reliance Jio
@@ -1453,6 +1506,7 @@
 9179922|Reliance Jio
 9179923|Reliance Jio
 9179924|Reliance Jio
+917993|Airtel
 917994|Airtel
 917995|Airtel
 917996|Idea
@@ -1533,8 +1587,11 @@
 918075|Reliance Jio
 918076|Reliance Jio
 918077|Reliance Jio
+918078|CellOne
 9180786|Reliance Jio
 9180790|Reliance Jio
+9180795|Idea
+9180796|CellOne
 9180800|Reliance
 918080|Reliance
 9180810|Reliance
@@ -1844,6 +1901,10 @@
 918307|Reliance
 918308|Idea
 9183170|Reliance Jio
+9183172|Idea
+918318|Reliance Jio
+918319|Reliance Jio
+918320|Reliance Jio
 9183280|Reliance Jio
 9183281|Reliance Jio
 9183282|Reliance Jio
@@ -1880,6 +1941,7 @@
 918357|Vodafone
 918358|Vodafone
 918359|Vodafone
+918360|Reliance Jio
 918370|Vodafone
 918371|Vodafone
 918372|Vodafone
@@ -2169,6 +2231,9 @@
 918607|Idea
 918608|Idea
 918609|Idea
+918610|Reliance Jio
+918618|Reliance Jio
+918619|Reliance Jio
 918620|Dishnet
 918621|Dishnet
 918622|Dishnet
