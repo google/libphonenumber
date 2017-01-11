@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Geocoding details are added as per online search results.
+
+5042244|Tegucigalpa
 5042407|Roatan, Bay Islands
 5042516|San Pedro Sula, Cortés
 5042540|San Pedro Sula, Cortés

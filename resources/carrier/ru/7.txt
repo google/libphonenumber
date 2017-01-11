@@ -1,0 +1,44 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations from the en file from
+# https://ru.wikipedia.org/wiki/Телефонный_план_нумерации_Казахстана
+
+# See the en file to see why some prefixes were omitted from this file.
+
+# Some names were left as is, based on their home-pages:
+# https://activ.kz/ru/article/nationwide
+# https://www.kcell.kz/ru
+# http://beeline.kz/almatinskaya-obl/customers/mobile
+# http://almaty.tele2.kz/
+
+# Transliteration for NURSAT from their homepage:
+# http://nursat.kz/page.php?lang=1
+
+7700|АЛТЕЛ
+7701|Кcell/activ
+7702|Kcell/Activ
+7705|Beeline
+7707|Tele2
+7708|АЛТЕЛ
+7747|Tele2
+7760|Кулан
+7762|НУРСАТ
+7763|Арна
+7764|2Day Telecom
+7771|Beeline
+7775|Kcell/Activ
+7776|Beeline
+7777|Beeline
+7778|Kcell/Activ

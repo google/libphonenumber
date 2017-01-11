@@ -1,3 +1,17 @@
+Jan 11, 2017: v8.0.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BR, CI, CL, CN, CR, DE, FR, GB, GW, HN, IL, IN, KM, KZ, NG, PG, SC, SK, SO,
+   TT, UA, ZA
+ - Updated short number metadata for region code(s): BH, BR, SK
+ - New geocoding data for country calling code(s): 675 (en)
+ - Updated geocoding data for country calling code(s):
+   7 (en, ru), 86 (en, zh), 252 (en), 374 (en), 504 (en)
+ - New carrier data for country calling code(s): 7 (ru), 44 (en), 269 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en), 62 (en), 86 (en, zh, zh_Hant), 91 (en), 225 (en), 234 (en), 245 (en),
+   252 (en)
+
 Dec 07, 2016: v8.0.0
 Code changes:
  - Deleting deprecated methods in ShortNumberInfo that work on strings, instead

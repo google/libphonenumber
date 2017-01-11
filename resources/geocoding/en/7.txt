@@ -15,10 +15,15 @@
 # Generated from:
 # http://www.itu.int/oth/T02020000AD/en [2009-05-25]
 # http://www.itu.int/oth/T020200006F/en [2012-07-27]
+# Some extra prefixes added from
+# https://telecom.kz/en/catalog/kazahstan.171777/5 although names were
+# generated from Wikipedia for consistency, other than for VSAT regions where
+# the more generic "district" name was preferred. The province was added where
+# this distinguished duplicates.
 
 7301|Republic of Buryatia
 7302|Chita
-7336|Baikonur
+733622|Baikonur
 7341|Udmurtian Republic
 7342|Perm
 7343|Ekaterinburg
@@ -79,6 +84,7 @@
 771038|Shashubai
 771039|Priozersk
 771040|Zhairem (GOK)
+771041|Aktau, Zhezkazgan
 771042|Zharyk
 771043|Zhairem
 771063|Satpaev
@@ -98,7 +104,11 @@
 771142|Taipak
 771143|Akzhaik
 771144|Kaztalovka
-771145|Karatobe
+771145|Karatobe District
+771146|Akzhaiksky District
+771147|Akzhaiksky District
+771149|Zelenovsky District
+7712|Atyrau Region
 77122|Atyrau
 7712302|Tengizshevroil
 7712303|Tengizs
@@ -110,7 +120,9 @@
 771237|Kulsary
 771238|Miyaly
 771239|Makat
+7713|Aktobe Region
 77132|Aktobe/Kargalinskoye
+771330|Khromtau District
 771331|Martuk
 771332|Uil
 771333|Kandyagash
@@ -119,11 +131,16 @@
 771336|Khromtau
 771337|Alga
 771339|Komsomolskoye
+771340|Khobdinsky District
 771341|Khobda
 771342|Badamsha
 771343|Irgiz
 771345|Karauylkeldy
 771346|Shubarkuduk
+771347|Aitekebisky District
+771348|Shalkarsky District
+771349|Shalkarsky District
+7714|Kostanai Region
 77142|Kostanai
 771430|Arkalyk
 771431|Rudny
@@ -132,6 +149,7 @@
 771435|Zhitikara
 771436|Taranovskoye
 771437|Kamysty
+771438|Amangeldy
 771439|Torgai
 771440|Amangeldy
 771441|Karabalyk
@@ -139,13 +157,18 @@
 771443|Borovskoi
 771444|Uzunkol
 771445|Ubaganskoye
+771446|Uzunkolsky District
+771447|Karabalyksky District
 771448|Oktyabrskoye
+771449|Taranovskoye
 771451|Sarykol
 771452|Karasu
 771453|Auliekol
 771454|Karamendy
 771455|Zatobolsk
 771456|Kachar
+771457|Dzhangildinsky District
+77145834|Krasnogorsk
 77152|Petropavlovsk
 771531|Bulayevo
 771532|Smirnovo
@@ -155,11 +178,15 @@
 771536|Taiynsha
 771537|Timiryazevo
 771538|Beskol
+771539|Beskol
+771540|Kishkenekol
 771541|Mamlutka
 771542|Kishkenekol
 771543|Yavlenka
 771544|Presnovka
+771545|Zhambylsky District
 771546|Talshik
+771547|Zhambylsky District
 77162|Kokshetau/Krasni Yar
 771630|Burabay
 771631|Shortandy
@@ -179,8 +206,10 @@
 771646|Makinsk
 771647|Esil
 771648|Derzhavinsk
+771649|Zhaksynsky District
 771651|Kabanbai Batyr
 77172|Astana
+7718|Pavlodar Region
 77182|Pavlodar
 771831|Zhelezinka
 771832|Irtyshsk
@@ -192,11 +221,16 @@
 771839|Akku
 771840|Bayanaul
 771841|Aktogai
-771845|Pavlodar area
+771842|Aktogaisky District
+771843|Maisky District
+771844|Irtyshsky District
+771845|Pavlodar Area
 77187|Ekibastuz
+7721|Karaganda Region
 77212|Karaganda
 77213|Aktau/Temirtau
 772131|Abai
+772132|Nurinsky District
 772137|Saran
 772138|Gabidena Mustafina
 772144|Kiyevka
@@ -218,6 +252,7 @@
 772256|Kainar
 772257|Shulbinsk
 77232|Ust-Kamenogorsk
+772330|Zyryanovsky District
 772331|Glubokoye
 772332|Shemonaikha
 772333|Samarskoye
@@ -238,6 +273,7 @@
 772348|Kokpekty
 772351|Borodulikha
 772353|Novaya Shulba
+7724|Kyzylorda Region
 77242|Kyzylorda
 772431|Zhalagash
 772432|Shiyeli
@@ -246,6 +282,7 @@
 772436|Terenozek
 772437|Zhosaly
 772438|Aiteke bi
+772439|Aralsky District
 77252|Shymkent
 772530|Temirlanovka
 772531|Aksukent
@@ -274,15 +311,18 @@
 772637|Sarykemer
 772638|Tole bi
 772639|Saudakent
+772640|Moiynkumsky District
 772641|Akkol
 772642|Moiynkum
 772643|Shu
 772644|Karatau
+7727|Almaty Region
 77272|Almaty
 772725|Otegen Batyra
 77272956|Talgar
 77272983|Kaskelen
 77273|Almaty
+772740|Karassaisky District
 772752|Otegen Batyra
 772757|Akshi
 772770|Uzynagash
@@ -297,6 +337,7 @@
 772779|Narynkol
 77279|Almaty
 77282|Taldykorgan
+772830|Alakolsky District
 772831|Zharkent
 772832|Zhansugurov
 772833|Usharal
