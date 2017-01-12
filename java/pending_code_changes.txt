@@ -1,1 +1,4 @@
-
+Code changes:
+ - Introduced new isCarrierSpecificForRegion() API in ShortNumberInfo class.
+   This determines whether the provided short code is carrier-specific or
+   not when dialed from the given region.
