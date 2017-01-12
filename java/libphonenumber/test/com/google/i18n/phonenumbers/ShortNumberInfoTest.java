@@ -57,6 +57,28 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
         new PhoneNumber().setCountryCode(44).setNationalNumber(18001L)));
   }
 
+  public void testIsCarrierSpecific() {
+    PhoneNumber carrierSpecificNumber = new PhoneNumber();
+    carrierSpecificNumber.setCountryCode(1).setNationalNumber(33669L);
+    assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumber));
+    assertTrue(
+        shortInfo.isCarrierSpecificForRegion(parse("33669", RegionCode.US), RegionCode.US));
+
+    PhoneNumber notCarrierSpecificNumber = new PhoneNumber();
+    notCarrierSpecificNumber.setCountryCode(1).setNationalNumber(911L);
+    assertFalse(shortInfo.isCarrierSpecific(notCarrierSpecificNumber));
+    assertFalse(
+        shortInfo.isCarrierSpecificForRegion(parse("911", RegionCode.US), RegionCode.US));
+
+    PhoneNumber carrierSpecificNumberForSomeRegion = new PhoneNumber();
+    carrierSpecificNumberForSomeRegion.setCountryCode(1).setNationalNumber(211L);
+    assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumberForSomeRegion));
+    assertTrue(
+        shortInfo.isCarrierSpecificForRegion(carrierSpecificNumberForSomeRegion, RegionCode.US));
+    assertFalse(
+        shortInfo.isCarrierSpecificForRegion(carrierSpecificNumberForSomeRegion, RegionCode.BB));
+  }
+
   public void testGetExpectedCost() {
     String premiumRateExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
         ShortNumberInfo.ShortNumberCost.PREMIUM_RATE);

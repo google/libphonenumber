@@ -149,6 +149,16 @@ class ShortNumberInfo {
   // IsValidShortNumber or IsValidShortNumberForRegion.
   bool IsCarrierSpecific(const PhoneNumber& number) const;
 
+  // Given a valid short number, determines whether it is carrier-specific when
+  // dialed from the given region (however, nothing is implied about its
+  // validity). If it is important that the number is valid, then its validity
+  // must first be checked using IsValidShortNumber or
+  // IsValidShortNumberForRegion. Returns false if the number doesn't match the
+  // region provided.
+  bool IsCarrierSpecificForRegion(
+      const PhoneNumber& number,
+      const string& region_code) const;
+
  private:
   const PhoneNumberUtil& phone_util_;
   const scoped_ptr<const MatcherApi> matcher_api_;
