@@ -55,7 +55,6 @@
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
-        <exampleNumber>10123456</exampleNumber>
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
@@ -213,7 +212,7 @@
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library. It is also used for formatInOriginalFormat tests, so some length
          metadata is needed. -->
-    <territory id="BR" countryCode="55">
+    <territory id="BR" countryCode="55" internationalPrefix="00">
       <generalDesc>
         <nationalNumberPattern>\d{8,10}</nationalNumberPattern>
         <possibleNumberPattern>\d{8,10}</possibleNumberPattern>
@@ -324,7 +323,7 @@
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library, and some length information is needed for parsing. -->
-    <territory id="CC" countryCode="61">
+    <territory id="CC" countryCode="61" internationalPrefix="00">
       <generalDesc>
         <nationalNumberPattern>\d{6,10}</nationalNumberPattern>
         <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
@@ -338,7 +337,7 @@
     <!-- China -->
     <!-- Used to test as-you-type-formatter with complicated number format patterns. Also used to
          test that not all geographical mobile numbers have an area code. -->
-    <territory id="CN" countryCode="86" nationalPrefix="0">
+    <territory id="CN" countryCode="86" internationalPrefix="00" nationalPrefix="0">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="$NP$FG" pattern="(\d{3})(\d{5,6})"
                       carrierCodeFormattingRule="$CC $FG">
@@ -564,7 +563,7 @@
     <!-- Guernsey -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library, and it must be the same as that of the United Kingdom. -->
-    <territory id="GG" countryCode="44">
+    <territory id="GG" countryCode="44" internationalPrefix="00">
       <generalDesc>
         <nationalNumberPattern>\d{6,10}</nationalNumberPattern>
         <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
@@ -577,7 +576,7 @@
 
     <!-- Hungary -->
     <!-- This country has special logic in formatNumberForMobileDialing which must be tested. -->
-    <territory id="HU" countryCode="36" nationalPrefix="06">
+    <territory id="HU" countryCode="36" internationalPrefix="00" nationalPrefix="06">
       <generalDesc>
         <nationalNumberPattern>30\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{9}</possibleNumberPattern>
