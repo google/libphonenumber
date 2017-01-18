@@ -55,7 +55,6 @@
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
         <possibleNumberPattern>\d{5,8}</possibleNumberPattern>
-        <exampleNumber>10123456</exampleNumber>
       </generalDesc>
       <fixedLine>
         <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>

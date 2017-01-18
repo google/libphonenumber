@@ -1,3 +1,6 @@
+Jan 18, 2017: v8.0.1
+Metadata changes:
+
 Jan 11, 2017: v8.0.1
 Metadata changes:
  - Updated phone metadata for region code(s):
