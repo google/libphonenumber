@@ -157,7 +157,7 @@ class ShortNumberInfo {
   // region provided.
   bool IsCarrierSpecificForRegion(
       const PhoneNumber& number,
-      const string& region_code) const;
+      const string& region_dialing_from) const;
 
  private:
   const PhoneNumberUtil& phone_util_;
