@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.0.1-SNAPSHOT</version>
+  <version>8.0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <url>https://github.com/googlei18n/libphonenumber/</url>
 
@@ -34,6 +34,7 @@
     <connection>scm:git:https://github.com/googlei18n/libphonenumber.git</connection>
     <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git</developerConnection>
     <url>https://github.com/googlei18n/libphonenumber/</url>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
@@ -143,8 +144,9 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.2.1</version>
+        <version>2.5.2</version>
         <configuration>
           <tagNameFormat>v@{project.version}</tagNameFormat>
         </configuration>
@@ -191,6 +193,24 @@
     </profile>
   </profiles>
 
+  <!-- Until 08. Dec 2016, this pom worked with maven-release-plugin at 2.2.1
+       and default SCM dependencies. On 11. Jan, 2017 that was no longer the
+       case, presumably because the default SCM version changed (cannot find
+       references), and the 2.5.2, 1.9.4 versions ended up working. -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.maven.scm</groupId>
+        <artifactId>maven-scm-api</artifactId>
+        <version>1.9.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.maven.scm</groupId>
+        <artifactId>maven-scm-provider-gitexe</artifactId>
+        <version>1.9.4</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
