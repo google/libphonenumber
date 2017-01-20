@@ -160,7 +160,7 @@ class ShortNumberInfo {
   // number doesn't match the region provided.
   bool IsCarrierSpecificForRegion(
       const PhoneNumber& number,
-      i18n_identifiers::RegionCode region_dialing_from) const;
+      const string& region_dialing_from) const;
 
  private:
   const PhoneNumberUtil& phone_util_;
