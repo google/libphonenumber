@@ -266,7 +266,7 @@ public class ExampleNumbersTest extends TestCase {
         String exampleNumber = desc.getExampleNumber();
         PhoneNumber carrierSpecificNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
         if (!shortNumberInfo.isPossibleShortNumberForRegion(carrierSpecificNumber, regionCode)
-            || !shortNumberInfo.isCarrierSpecific(carrierSpecificNumber)) {
+            || !shortNumberInfo.isCarrierSpecificForRegion(carrierSpecificNumber, regionCode)) {
           wrongTagCounter++;
           logger.log(Level.SEVERE, "Carrier-specific test failed for " + regionCode);
         }
