@@ -15545,8 +15545,7 @@
           80\d|
           81\d|
           86\d|
-          54\d|
-          0\d{2}
+          54\d
           )\d{5}
         </nationalNumberPattern>
         <possibleLengths national="7,8"/>
