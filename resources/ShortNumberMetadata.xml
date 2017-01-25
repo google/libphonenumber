@@ -10895,6 +10895,7 @@
     <!-- South Africa -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa -->
+    <!-- https://www.icasa.org.za/Portals/0/Regulations/Regulations/NumberingPlanReg.pdf -->
     <!-- Check http://smscode.co.za/index.asp for verification of short codes and cost
          information. -->
     <territory id="ZA">
@@ -10905,16 +10906,26 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            01(?:
-              11|
-              77
+            0(?:
+              1(?:
+                11|
+                77
+              )|
+              20
             )|
-            12
+            12|
+            3[24-7]|
+            77(?:
+              3[237]|
+              [45]7|
+              6[279]|
+              9[26]
+            )
           )|
           37567|
           47751
         </nationalNumberPattern>
-        <possibleLengths national="3,5"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>10111</exampleNumber>
       </shortCode>
       <standardRate>
@@ -10926,6 +10937,11 @@
         <possibleLengths national="5"/>
         <exampleNumber>47751</exampleNumber>
       </standardRate>
+      <carrierSpecific>
+        <nationalNumberPattern>13[24-7]</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>132</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
