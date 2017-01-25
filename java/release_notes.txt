@@ -1,3 +1,18 @@
+Jan 25, 2017: v8.1.0
+Code changes:
+ - Introduced new isCarrierSpecificForRegion() API in ShortNumberInfo class.
+   This determines whether the provided short code is carrier-specific or
+   not when dialed from the given region.
+Metadata changes:
+ - New alternate formatting data for country calling code(s): 52
+ - Updated alternate formatting data for country calling code(s): 62
+ - Updated phone metadata for region code(s):
+   AR, DJ, GB, GG, GH, ID, IM, IN, JE, MA, MQ, MZ, RO, ZA
+ - Updated short number metadata for region code(s): ZA
+ - Updated geocoding data for country calling code(s): 27 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 93 (en, fa), 233 (en), 253 (en), 258 (en)
+
 Jan 11, 2017: v8.0.1
 Metadata changes:
  - Updated phone metadata for region code(s):

@@ -1206,6 +1206,22 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat nationalPrefixFormattingRule="($NP$FG)"
+          pattern="(\d{2})(\d{2})(\d{3})(\d{3})">
+          <leadingDigits>
+            2[124]|
+            [36]1
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(8\d{2})(\d{3})(\d{4,6})">
+          <leadingDigits>8[1-35-9]</leadingDigits>
+          <format>$1-$2-$3</format>
+        </numberFormat>
+        <numberFormat pattern="(8\d{2})(\d{3})(\d{2})(\d{3})">
+          <leadingDigits>8[1-35-9]</leadingDigits>
+          <format>$1-$2-$3-$4</format>
+        </numberFormat>
       </availableFormats>
     </territory>
 
@@ -1536,6 +1552,30 @@
       <availableFormats>
         <numberFormat pattern="(9)(\d{4})(\d{5})">
           <leadingDigits>925</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- Mexico -->
+    <territory countryCode="52">
+      <availableFormats>
+        <numberFormat pattern="([358]\d)(\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>
+            33|
+            55|
+            81
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>
+            [2467]|
+            3[0-2457-9]|
+            5[089]|
+            8[02-9]|
+            9[0-35-9]
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>

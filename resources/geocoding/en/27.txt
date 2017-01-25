@@ -26,7 +26,6 @@
 2716|Vaal Triangle
 2717|Ermelo/Secunda
 2718|Potchefstroom/Klerksdorp
-2720|Fraserberg/Leeugamka/Merweville
 2721|Cape Town
 2722|Malmesbury/Vredenburg
 2723|Worcester/Robertson
