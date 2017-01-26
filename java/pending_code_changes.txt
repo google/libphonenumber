@@ -1,3 +1,4 @@
 Code changes:
- - Made normalizeDiallableCharsOnly() API in PhoneNumberUtil public. This
-   method is already public in the C++ implementation.
+ - Made normalizeDiallableCharsOnly() API in PhoneNumberUtil (Java) public. This
+   method is already public in the C++ implementation. It has also now been
+   added to the Javascript implementation.

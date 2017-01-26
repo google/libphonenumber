@@ -1107,7 +1107,8 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly =
     function(number) {
 
   return i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(number,
-      i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_, true);
+      i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_,
+      true /* remove non matches */);
 };
 
 
