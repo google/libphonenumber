@@ -1,1 +1,3 @@
-
+Code changes:
+ - Made normalizeDiallableCharsOnly() API in PhoneNumberUtil public. This
+   method is already public in the C++ implementation.
