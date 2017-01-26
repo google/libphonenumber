@@ -1096,6 +1096,23 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly = function(number) {
 
 
 /**
+ * Normalizes a string of characters representing a phone number. This strips
+ * all characters which are not diallable on a mobile phone keypad (including
+ * all non-ASCII digits).
+ *
+ * @param {string} number a string of characters representing a phone number.
+ * @return {string} the normalized string version of the phone number.
+ */
+i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly =
+    function(number) {
+
+  return i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(number,
+      i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_,
+      true /* remove non matches */);
+};
+
+
+/**
  * Converts all alpha characters in a number to their respective digits on a
  * keypad, but retains existing formatting. Also converts wide-ascii digits to
  * normal ascii digits, and converts Arabic-Indic numerals to European numerals.
@@ -1820,8 +1837,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
   }
   return withFormatting ?
       formattedNumber :
-      i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(formattedNumber,
-          i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_, true);
+      i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+          formattedNumber);
 };
 
 
@@ -2058,14 +2075,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
   if (formattedNumber != null && rawInput.length > 0) {
     /** @type {string} */
     var normalizedFormattedNumber =
-        i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(formattedNumber,
-            i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_,
-            true /* remove non matches */);
+        i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+            formattedNumber);
     /** @type {string} */
     var normalizedRawInput =
-        i18n.phonenumbers.PhoneNumberUtil.normalizeHelper_(rawInput,
-            i18n.phonenumbers.PhoneNumberUtil.DIALLABLE_CHAR_MAPPINGS_,
-            true /* remove non matches */);
+        i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(rawInput);
     if (normalizedFormattedNumber != normalizedRawInput) {
       formattedNumber = rawInput;
     }

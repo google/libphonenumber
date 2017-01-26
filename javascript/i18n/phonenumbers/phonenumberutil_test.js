@@ -546,6 +546,17 @@ function testNormaliseStripAlphaCharacters() {
       i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(inputNumber));
 }
 
+function testNormaliseStripNonDiallableCharacters() {
+  /** @type {string} */
+  var inputNumber = '03*4-56&+1a#234';
+  /** @type {string} */
+  var expectedOutput = '03*456+1#234';
+  assertEquals('Conversion did not correctly remove non-diallable characters',
+               expectedOutput,
+               i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+                   inputNumber));
+}
+
 function testFormatUSNumber() {
   var PNF = i18n.phonenumbers.PhoneNumberFormat;
   assertEquals('650 253 0000',

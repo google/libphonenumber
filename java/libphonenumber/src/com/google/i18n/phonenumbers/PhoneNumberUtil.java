@@ -728,7 +728,7 @@ public class PhoneNumberUtil {
    * @param number  a string of characters representing a phone number
    * @return  the normalized string version of the phone number
    */
-  static String normalizeDiallableCharsOnly(String number) {
+  public static String normalizeDiallableCharsOnly(String number) {
     return normalizeHelper(number, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
   }
 
