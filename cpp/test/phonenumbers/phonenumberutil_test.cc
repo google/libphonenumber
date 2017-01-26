@@ -62,17 +62,6 @@ class PhoneNumberUtilTest : public testing::Test {
     return phone_util_.GetMetadataForNonGeographicalRegion(country_code);
   }
 
-  void GetSupportedRegions(set<string>* regions) {
-    phone_util_.GetSupportedRegions(regions);
-  }
-
-  void GetRegionCodesForCountryCallingCode(
-      int country_calling_code,
-      list<string>* regions) {
-    phone_util_.GetRegionCodesForCountryCallingCode(country_calling_code,
-                                                    regions);
-  }
-
   void ExtractPossibleNumber(const string& number,
                              string* extracted_number) const {
     phone_util_.ExtractPossibleNumber(number, extracted_number);
@@ -88,10 +77,6 @@ class PhoneNumberUtilTest : public testing::Test {
 
   void Normalize(string* number) const {
     phone_util_.Normalize(number);
-  }
-
-  void NormalizeDiallableCharsOnly(string* number) const {
-    phone_util_.NormalizeDiallableCharsOnly(number);
   }
 
   bool IsNumberGeographical(const PhoneNumber& phone_number) const {
@@ -136,14 +121,6 @@ class PhoneNumberUtilTest : public testing::Test {
     return phone_util_.ContainsOnlyValidDigits(s);
   }
 
-  void GetNddPrefixForRegion(const string& region,
-                             bool strip_non_digits,
-                             string* ndd_prefix) const {
-    // For testing purposes, we check this is empty first.
-    ndd_prefix->clear();
-    phone_util_.GetNddPrefixForRegion(region, strip_non_digits, ndd_prefix);
-  }
-
   const PhoneNumberUtil& phone_util_;
 
  private:
@@ -162,7 +139,7 @@ TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   set<string> regions;
 
-  GetSupportedRegions(&regions);
+  phone_util_.GetSupportedRegions(&regions);
   EXPECT_GT(regions.size(), 0U);
 }
 
@@ -183,29 +160,29 @@ TEST_F(PhoneNumberUtilTest, GetSupportedGlobalNetworkCallingCodes) {
 TEST_F(PhoneNumberUtilTest, GetRegionCodesForCountryCallingCode) {
   list<string> regions;
 
-  GetRegionCodesForCountryCallingCode(1, &regions);
+  phone_util_.GetRegionCodesForCountryCallingCode(1, &regions);
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::US())
               != regions.end());
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::BS())
               != regions.end());
 
   regions.clear();
-  GetRegionCodesForCountryCallingCode(44, &regions);
+  phone_util_.GetRegionCodesForCountryCallingCode(44, &regions);
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::GB())
               != regions.end());
 
   regions.clear();
-  GetRegionCodesForCountryCallingCode(49, &regions);
+  phone_util_.GetRegionCodesForCountryCallingCode(49, &regions);
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::DE())
               != regions.end());
 
   regions.clear();
-  GetRegionCodesForCountryCallingCode(800, &regions);
+  phone_util_.GetRegionCodesForCountryCallingCode(800, &regions);
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::UN001())
               != regions.end());
 
   regions.clear();
-  GetRegionCodesForCountryCallingCode(kInvalidCountryCode, &regions);
+  phone_util_.GetRegionCodesForCountryCallingCode(kInvalidCountryCode, &regions);
   EXPECT_TRUE(regions.empty());
 }
 
@@ -1919,7 +1896,8 @@ TEST_F(PhoneNumberUtilTest, IsNumberGeographical) {
 
   number.set_country_code(800);
   number.set_national_number(12345678ULL);
-  EXPECT_FALSE(IsNumberGeographical(number));  // Internation toll free number.
+  EXPECT_FALSE(IsNumberGeographical(number));  // International toll free
+                                               // number.
 
   // We test that mobile phone numbers in relevant regions are indeed considered
   // geographical.
@@ -2377,33 +2355,40 @@ TEST_F(PhoneNumberUtilTest, GetCountryCodeForRegion) {
 
 TEST_F(PhoneNumberUtilTest, GetNationalDiallingPrefixForRegion) {
   string ndd_prefix;
-  GetNddPrefixForRegion(RegionCode::US(), false, &ndd_prefix);
+  phone_util_.GetNddPrefixForRegion(RegionCode::US(), false, &ndd_prefix);
   EXPECT_EQ("1", ndd_prefix);
 
   // Test non-main country to see it gets the national dialling prefix for the
   // main country with that country calling code.
-  GetNddPrefixForRegion(RegionCode::BS(), false, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::BS(), false, &ndd_prefix);
   EXPECT_EQ("1", ndd_prefix);
 
-  GetNddPrefixForRegion(RegionCode::NZ(), false, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::NZ(), false, &ndd_prefix);
   EXPECT_EQ("0", ndd_prefix);
 
   // Test case with non digit in the national prefix.
-  GetNddPrefixForRegion(RegionCode::AO(), false, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::AO(), false, &ndd_prefix);
   EXPECT_EQ("0~0", ndd_prefix);
 
-  GetNddPrefixForRegion(RegionCode::AO(), true, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::AO(), true, &ndd_prefix);
   EXPECT_EQ("00", ndd_prefix);
 
   // Test cases with invalid regions.
-  GetNddPrefixForRegion(RegionCode::GetUnknown(), false, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::GetUnknown(), false, &ndd_prefix);
   EXPECT_EQ("", ndd_prefix);
 
-  GetNddPrefixForRegion(RegionCode::UN001(), false, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::UN001(), false, &ndd_prefix);
   EXPECT_EQ("", ndd_prefix);
 
   // CS is already deprecated so the library doesn't support it.
-  GetNddPrefixForRegion(RegionCode::CS(), false, &ndd_prefix);
+  ndd_prefix.clear();
+  phone_util_.GetNddPrefixForRegion(RegionCode::CS(), false, &ndd_prefix);
   EXPECT_EQ("", ndd_prefix);
 }
 
@@ -2496,7 +2481,7 @@ TEST_F(PhoneNumberUtilTest, NormaliseStripAlphaCharacters) {
 
 TEST_F(PhoneNumberUtilTest, NormaliseStripNonDiallableCharacters) {
   string input_number("03*4-56&+1a#234");
-  NormalizeDiallableCharsOnly(&input_number);
+  phone_util_.NormalizeDiallableCharsOnly(&input_number);
   static const string kExpectedOutput("03*456+1#234");
   EXPECT_EQ(kExpectedOutput, input_number)
       << "Conversion did not correctly remove non-diallable characters";
