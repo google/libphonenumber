@@ -219,10 +219,6 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   string lead_class_chars_;
   // Same as lead_class_chars_, but enclosed as a character class.
   string lead_class_;
-  // Extra helper strings that form part of pattern_. These are stored
-  // separately since StrCat has a limit of 12 args.
-  string opening_punctuation_;
-  string optional_extn_pattern_;
 
  public:
   // We use two different reg-ex factories here for performance reasons. RE2 is
@@ -287,11 +283,6 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         digit_sequence_(StrCat("\\p{Nd}", Limit(1, digit_block_limit_))),
         lead_class_chars_(StrCat(opening_parens_, PhoneNumberUtil::kPlusChars)),
         lead_class_(StrCat("[", lead_class_chars_, "]")),
-        opening_punctuation_(StrCat("(?:", lead_class_, punctuation_, ")")),
-        optional_extn_pattern_(StrCat(
-            "(?i)(?:",
-            PhoneNumberUtil::GetInstance()->GetExtnPatternsForMatching(),
-            ")?")),
         regexp_factory_for_pattern_(new ICURegExpFactory()),
 #ifdef I18N_PHONENUMBERS_USE_RE2
         regexp_factory_(new RE2RegExpFactory()),
@@ -317,9 +308,11 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
             regexp_factory_->CreateRegExp("(\\d+)")),
         lead_class_pattern_(regexp_factory_->CreateRegExp(lead_class_)),
         pattern_(regexp_factory_for_pattern_->CreateRegExp(
-            StrCat("(", opening_punctuation_, lead_limit_,
+            StrCat("((?:", lead_class_, punctuation_, ")", lead_limit_,
                    digit_sequence_, "(?:", punctuation_, digit_sequence_, ")",
-                   block_limit_, optional_extn_pattern_, ")"))) {
+                   block_limit_, "(?i)(?:",
+                   PhoneNumberUtil::GetInstance()->GetExtnPatternsForMatching(),
+                   ")?)"))) {
     inner_matches_->push_back(
         // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
         regexp_factory_->CreateRegExp("/+(.*)"));
