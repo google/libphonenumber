@@ -422,11 +422,6 @@ class PhoneNumberRegExpsAndMappings {
         geo_mobile_countries_without_mobile_area_codes_.end());
   }
 
-  // Small string helpers since StrCat has a maximum number of arguments. These
-  // are both used to build valid_phone_number_.
-  const string punctuation_and_star_sign_;
-  const string min_length_phone_number_pattern_;
-
   // Regular expression of viable phone numbers. This is location independent.
   // Checks we have at least three leading digits, and only valid punctuation,
   // alpha characters and digits in the phone number. Does not include extension
@@ -556,17 +551,12 @@ class PhoneNumberRegExpsAndMappings {
   scoped_ptr<const RegExp> plus_chars_pattern_;
 
   PhoneNumberRegExpsAndMappings()
-      : punctuation_and_star_sign_(StrCat(PhoneNumberUtil::kValidPunctuation,
-                                          kStarSign)),
-        min_length_phone_number_pattern_(
-            StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}")),
-        valid_phone_number_(
-            StrCat(min_length_phone_number_pattern_, "|[",
+      : valid_phone_number_(
+            StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}|[",
                    PhoneNumberUtil::kPlusChars, "]*(?:[",
-                   punctuation_and_star_sign_, "]*",
-                   kDigits, "){3,}[", kValidAlpha,
-                   punctuation_and_star_sign_, kDigits,
-                   "]*")),
+                   PhoneNumberUtil::kValidPunctuation, kStarSign, "]*",
+                   kDigits, "){3,}[", PhoneNumberUtil::kValidPunctuation,
+                   kStarSign, kValidAlpha, kDigits, "]*")),
         extn_patterns_for_parsing_(
             CreateExtnPattern(StrCat(",;", kSingleExtnSymbolsForMatching))),
         regexp_factory_(new RegExpFactory()),
