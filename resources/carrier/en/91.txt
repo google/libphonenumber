@@ -807,6 +807,7 @@
 9175177|Idea
 9175178|Idea
 9175179|Idea
+917518|Airtel
 917519|Dishnet
 917520|Reliance
 9175210|Airtel
@@ -1942,6 +1943,7 @@
 918358|Vodafone
 918359|Vodafone
 918360|Reliance Jio
+918369|Reliance Jio
 9183670|Idea
 9183672|Idea
 9183673|Idea

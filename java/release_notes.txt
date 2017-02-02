@@ -1,3 +1,18 @@
+Feb 02, 2017: v8.2.0
+Code changes:
+ - Made normalizeDiallableCharsOnly() API in PhoneNumberUtil (Java) public. This
+   method is already public in the C++ implementation. It has also now been
+   added to the Javascript implementation.
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 91
+ - Updated phone metadata for region code(s):
+   AU, AX, BY, BZ, FR, GY, IN, MC, NA, SJ, TG, TT, VN
+ - Updated short number metadata for region code(s): HR, TG
+ - Armenia geocoding data that is in Armenian language is moved to right language
+   code (hy).
+ - Updated geocoding data for country calling code(s): 91 (en), 374 (en, ru)
+ - Updated carrier data for country calling code(s): 91 (en)
+
 Jan 25, 2017: v8.1.0
 Code changes:
  - Introduced new isCarrierSpecificForRegion() API in ShortNumberInfo class.
