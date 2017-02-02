@@ -8,7 +8,8 @@ Metadata changes:
  - Updated phone metadata for region code(s):
    AU, AX, BY, BZ, FR, GY, IN, MC, NA, SJ, TG, TT, VN
  - Updated short number metadata for region code(s): HR, TG
- - New geocoding data for country calling code(s): 374 (hy)
+ - Armenia geocoding data that is in Armenian language is moved to right language
+   code (hy).
  - Updated geocoding data for country calling code(s): 91 (en), 374 (en, ru)
  - Updated carrier data for country calling code(s): 91 (en)
 
