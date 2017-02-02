@@ -4989,20 +4989,34 @@
                 23
               )
             )|
-            987|
-            9[2-5]
+            3977|
+            9(?:
+              [2-5]|
+              87
+            )
           )|
           9[34]
         </nationalNumberPattern>
-        <possibleLengths national="[2-4],6"/>
+        <possibleLengths national="[2-6]"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
-        <possibleNumberPattern>\d{6}</possibleNumberPattern>
-        <possibleLengths national="6"/>
+        <nationalNumberPattern>
+          1(?:
+            16\d{3}|
+            3977
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="5,6"/>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
+      <carrierSpecific>
+        <!-- Bonbon users can send free SMS to 13977 short code.
+             http://www.bonbon.hr/ponuda/pretplata/paketi/ -->
+        <nationalNumberPattern>13977</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>13977</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <!-- 93 (fire dep) and 94 (ambulance) don't appear in the latest ITU document, but still on
              various websites. Need to verify that they are no longer valid before removing. -->
@@ -5033,6 +5047,11 @@
         <possibleLengths national="3,4,6"/>
         <exampleNumber>195</exampleNumber>
       </expandedEmergency>
+      <smsServices>
+        <nationalNumberPattern>13977</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>13977</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Haiti -->
@@ -9923,36 +9942,44 @@
 
     <!-- Togo -->
     <!-- http://www.itu.int/oth/T02020000D1/en -->
+    <!-- https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=212 -->
     <territory id="TG">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            01|
-            1[78]|
-            7[17]
+            011|
+            1[078]|
+            7[127]
           )
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>117</exampleNumber>
       </shortCode>
       <emergency>
-        <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_1041.html -->
-        <!-- http://www.netglobers.com/africa/togo-emergency-numbers-in-togo.html -->
-        <!-- http://www.mapsofworld.com/togo/information/emergency-numbers.html -->
         <nationalNumberPattern>
           1(?:
-            01|
             1[78]|
-            7[17]
+            7[127]
           )
         </nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>117</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          1(?:
+            011|
+            10
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>1011</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Thailand -->

@@ -1687,6 +1687,11 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat nationalPrefixFormattingRule="$NP$FG"
+          pattern="(16)(\d{3,4})">
+          <leadingDigits>16</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat nationalPrefixFormattingRule="$NP$FG"
           pattern="(16)(\d{3})(\d{2,4})">
           <leadingDigits>16</leadingDigits>
           <format>$1 $2 $3</format>
@@ -1730,7 +1735,10 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-578]\d{5,9}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d{4,9}|
+          [2-578]\d{8}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{6,10}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
@@ -1938,10 +1946,11 @@
       <!-- The general desc and fixed line are numbers different from Finland metadata. -->
       <generalDesc>
         <nationalNumberPattern>
-          [135]\d{5,9}|
+          1\d{5,11}|
+          [35]\d{5,9}|
           [27]\d{4,9}|
           4\d{5,10}|
-          6\d{7,8}|
+          6\d{7,9}|
           8\d{6,9}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5,12}</possibleNumberPattern>
@@ -4099,9 +4108,10 @@
       <noInternationalDialling>
         <nationalNumberPattern>
           8(?:
-            [013]|
-            [12]0
-          )\d{8}|
+            0[13]|
+            10|
+            20\d
+          )\d{7}|
           800\d{3,7}|
           902\d{7}
         </nationalNumberPattern>
@@ -4226,11 +4236,16 @@
         <!-- Wikipedia and ITU seem out of date, but say that for a number in the format ZNY-XXXX
              Z represents the district code (or 6 for mobile), N the type of number and Y the first
              digit of the customer's number. Only N = 0 and 2 are supposedly in use, but we have
-             found many numbers starting with 732 online. When emailed, Belize Telemedia Ltd
-             confirmed these numbers belong to the Landline Postpaid PSTN category. -->
+             found some numbers with N = 3 online (prefixes 732 and 236). When emailed,
+             Belize Telemedia Ltd confirmed numbers with prefix 732 belong to the Landline Postpaid
+             PSTN category. -->
         <nationalNumberPattern>
           (?:
-            [23458][02]\d|
+            2(?:
+              [02]\d|
+              36
+            )|
+            [3-58][02]\d|
             7(?:
               [02]\d|
               32
@@ -8035,9 +8050,10 @@
         <exampleNumber>891123456</exampleNumber>
       </premiumRate>
       <sharedCost>
+        <!-- Prefix 812 was added from a user report. -->
         <nationalNumberPattern>
           8(?:
-            1\d|
+            1[0-29]|
             2[0156]|
             84|
             90
@@ -9907,7 +9923,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-4679]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>[2-46-9]\d{6}</nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -11186,7 +11202,7 @@
             8(?:
               0[015-9]|
               [13-69]|
-              2[02356-9]|
+              2[02-9]|
               7[01-69]|
               8[0-24-9]
             )|
@@ -11212,7 +11228,7 @@
               )|
               5(?:
                 [02346-9]|
-                1[0179]|
+                1[017-9]|
                 5[017-9]
               )|
               6(?:
@@ -11242,14 +11258,15 @@
               2(?:
                 0[08]|
                 [236-9]|
+                48|
                 5[1-9]
               )|
               3(?:
                 [0357-9]|
-                1[7-9]|
+                1[07-9]|
                 2[089]|
                 4[1-9]|
-                6[07]
+                6[07-9]
               )|
               [45]|
               6(?:
@@ -11350,7 +11367,7 @@
               5(?:
                 [0346-9]|
                 1(?:
-                  [019]|
+                  [0189]|
                   7[02-9]
                 )|
                 2(?:
@@ -11424,13 +11441,14 @@
               2(?:
                 0[08]|
                 [236-9]|
+                48|
                 5[1-9]
               )|
               3(?:
                 [0357-9]|
                 1(?:
-                  7[02]|
-                  [89]
+                  [089]|
+                  7[02]
                 )|
                 2(?:
                   [09]|
@@ -11438,7 +11456,7 @@
                 )|
                 4[1-9]|
                 6(?:
-                  0|
+                  [089]|
                   7[02-7]
                 )
               )|
@@ -11833,8 +11851,9 @@
              numbers. It seems almost impossible to know for some of these numbers whether they are
              land-line or mobile, since the ranges overlap. We go to a maximum depth of five where
              necessary to distinguish between mobile and fixed-line numbers. Extra prefixes added:
-             72878, 74209, 74599, 7601, 768[56], 7695, 8309, 8329[34], 863[89]0 and 8639[29]. New
-             prefixes were also added based on the document provided from mobile carriers:
+             72878, 74209, 74599, 7518, 7601, 768[56], 7695, 82480, 8309, 83102, 8329[34],
+             8368[124], 8369, 863[89]0 and 8639[29]. New prefixes were also added based on the
+             document provided from mobile carriers:
              https://github.com/googlei18n/libphonenumber/issues/260 and
              https://github.com/googlei18n/libphonenumber/pull/692/ -->
         <nationalNumberPattern>
@@ -11910,7 +11929,7 @@
               5(?:
                 [0346-8]\d{2}|
                 1(?:
-                  [09]\d|
+                  [089]\d|
                   11|
                   7[02-9]
                 )|
@@ -12002,13 +12021,15 @@
                 6[089]\d
               )|
               2(?:
-                0[08]|
-                [236-9]\d|
-                5[1-9]
-              )\d|
+                0[08]\d|
+                [236-9]\d{2}|
+                480|
+                5[1-9]\d
+              )|
               3(?:
                 [0357-9]\d{2}|
                 1(?:
+                  02|
                   7[02]|
                   [89]\d
                 )|
@@ -12019,8 +12040,9 @@
                 )|
                 4[1-9]\d|
                 6(?:
-                  0\d|
-                  7[02-7]
+                  [09]\d|
+                  7[02-7]|
+                  8[124]
                 )
               )|
               [45]\d{3}|
@@ -16473,10 +16495,10 @@
         <possibleNumberPattern>\d{8,9}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
-        <nationalNumberPattern>8\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>870\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
-        <exampleNumber>81234567</exampleNumber>
+        <exampleNumber>87012345</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
         <!-- Restricted to this as no numbers with the prefix of 91, 95 or 96 have been found. -->
@@ -18461,7 +18483,7 @@
         <possibleNumberPattern>\d{8,9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
-        <!-- Includes VSAT service. -->
+        <!-- Includes VSAT service. Added 6768 prefix based on user report. -->
         <nationalNumberPattern>
           6(?:
             1(?:
@@ -18550,7 +18572,7 @@
                 0\d?|
                 [13]
               )|
-              69|
+              6[89]|
               7[01]
             )
           )\d{4}
@@ -22389,7 +22411,7 @@
       <generalDesc>
         <nationalNumberPattern>
           0\d{4}|
-          [4789]\d{7}
+          [45789]\d{7}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{5}(?:\d{3})?</possibleNumberPattern>
       </generalDesc>
@@ -23454,6 +23476,8 @@
       </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
+          <!-- Added leading digits so that the shortcodes do not pick this format during AYTF. -->
+          <leadingDigits>[29]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -24131,8 +24155,7 @@
           868(?:
             2(?:
               01|
-              2[1-6]|
-              3\d
+              [23]\d
             )|
             6(?:
               0[79]|
@@ -25994,8 +26017,8 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [17]\d{6,9}|
-          [2-69]\d{7,9}|
+          [167]\d{6,9}|
+          [2-59]\d{7,9}|
           8\d{6,8}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
