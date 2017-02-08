@@ -1,4 +1,4 @@
-# Copyright (C) 2015 The Libphonenumber Authors
+# Copyright (C) 2017 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-9722|Jerusalem
-9723|Tel Aviv
-9724|Haifa and North Regions
-9728|Hashfela and South Regions
-9729|Hasharon
+# Sourced from https://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%93%D7%95%D7%9E%D7%AA_%D7%98%D7%9C%D7%A4%D7%95%D7%9F_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C
+
+9722|ירושלים
+9723|תל אביב-יפו והמרכז
+9724|חיפה והצפון
+9728|השפלה והדרום
+9729|השרון
