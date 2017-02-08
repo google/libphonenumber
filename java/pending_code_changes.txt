@@ -1,1 +1,8 @@
-
+Code changes:
+ - Added two new enum values to ValidationResult - IS_POSSIBLE_LOCAL_ONLY and
+   INVALID_LENGTH. Added more documentation to the existing values; see the
+   javadoc for when these are going to be used. Note that the API for
+   IsPossibleWithReason has not yet been changed to return these values.
+   IS_POSSIBLE_LOCAL_ONLY will be returned for some values which currently
+   return IS_POSSIBLE, and INVALID_LENGTH will be returned for some values which
+   currently return TOO_LONG.
