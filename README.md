@@ -158,5 +158,6 @@ maintenance processes.
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
 *   Ruby: https://github.com/sstephenson/global_phone
+*   javascript: https://github.com/seegno/google-libphonenumber
 *   javascript (stripped-down version): https://github.com/halt-hammerzeit/libphonenumber-js
 *   objective-c: https://github.com/iziz/libPhoneNumber-iOS
