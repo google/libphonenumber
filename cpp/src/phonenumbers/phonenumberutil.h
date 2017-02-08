@@ -574,9 +574,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // if it thinks this is a vanity number of the type "1800 MICROSOFT".
   //
   // This method will return an error if the number is not considered to be a
-  // possible number, and NO_PARSING_ERROR if it parsed correctly.
-  // Note that validation of whether the number is actually a valid number for a
-  // particular region is not performed. This can be done separately with
+  // possible number, and NO_PARSING_ERROR if it is parsed correctly.
+  // Note that validation of whether the number is actually a valid number for
+  // a particular region is not performed. This can be done separately with
   // IsValidNumber().
   //
   // number_to_parse can also be provided in RFC3966 format.
@@ -590,8 +590,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //
   // Returns an error if the string is not considered to be a viable phone
   // number (e.g.too few or too many digits) or if no default region was
-  // supplied and the number is not in international format (does not
-  // start with +).
+  // supplied and the number is not in international format (does not start with
+  // +).
   ErrorType Parse(const string& number_to_parse,
                   const string& default_region,
                   PhoneNumber* number) const;
@@ -676,7 +676,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   static const size_t kMinLengthForNsn = 2;
   // The ITU says the maximum length should be 15, but we have found longer
   // numbers in Germany.
-  static const size_t kMaxLengthForNsn = 16;
+  static const size_t kMaxLengthForNsn = 17;
   // The maximum length of the country calling code.
   static const size_t kMaxLengthCountryCode = 3;
 
