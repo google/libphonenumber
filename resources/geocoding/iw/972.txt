@@ -12,11 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Sourced from https://he.wikipedia.org/wiki/קידומת_טלפון_בישראל
+# Sourced from https://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%93%D7%95%D7%9E%D7%AA_%D7%98%D7%9C%D7%A4%D7%95%D7%9F_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C
 
 9722|ירושלים
 9723|תל אביב-יפו והמרכז
 9724|חיפה והצפון
 9728|השפלה והדרום
 9729|השרון
-
