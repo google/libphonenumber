@@ -963,9 +963,25 @@ i18n.phonenumbers.PhoneNumberUtil.MatchType = {
  * @enum {number}
  */
 i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
+  /** The number length matches that of valid numbers for this region. */
   IS_POSSIBLE: 0,
+  /**
+   * The number length matches that of local numbers for this region only (i.e. numbers that may
+   * be able to be dialled within an area, but do not have all the information to be dialled from
+   * anywhere inside or outside the country).
+   */
+  IS_POSSIBLE_LOCAL_ONLY: 4,
+  /** The number has an invalid country calling code. */
   INVALID_COUNTRY_CODE: 1,
+  /** The number is shorter than all valid numbers for this region. */
   TOO_SHORT: 2,
+  /**
+   * The number is longer than the shortest valid numbers for this region, shorter than the
+   * longest valid numbers for this region, and does not itself have a number length that matches
+   * valid numbers for this region.
+   */
+  INVALID_LENGTH: 5,
+  /** The number is longer than all valid numbers for this region. */
   TOO_LONG: 3
 };
 
