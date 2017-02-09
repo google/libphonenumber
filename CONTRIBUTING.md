@@ -9,8 +9,8 @@ time.**
 ## Checklist before filing an issue
 
 Please check the following:
-*   Has the issue already been discussed in the [open
-    issues](http://github.com/googlei18n/libphonenumber/issues) or [discussion
+*   Has the issue already been discussed in the
+    [issues](http://github.com/googlei18n/libphonenumber/issues) or [discussion
     group](https://groups.google.com/group/libphonenumber-discuss)? If so, you
     may want to comment on an existing discussion.
 *   Is the issue reproducible using the
