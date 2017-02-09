@@ -18,8 +18,8 @@ Please check the following:
     *   Your issue may be resolved by upgrading to the latest version of the
         library.
     *   If you are using a
-        [port](http://github.com/googlei18n/libphonenumber#known-ports), issues
-        should be reported against that project.
+        [port](http://github.com/googlei18n/libphonenumber#third-party-ports),
+        issues should be reported against that project.
     *   If you are using the library through a front-end or wrapper, issues
         should be reported against that project.
 
