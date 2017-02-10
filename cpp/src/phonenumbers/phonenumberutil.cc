@@ -300,6 +300,25 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
       ? PhoneNumberUtil::IS_POSSIBLE : PhoneNumberUtil::TOO_LONG;
 }
 
+// Returns a new phone number containing only the fields needed to uniquely
+// identify a phone number, rather than any fields that capture the context in
+// which the phone number was created.
+// These fields correspond to those set in Parse() rather than
+// ParseAndKeepRawInput().
+void CopyCoreFieldsOnly(const PhoneNumber& number, PhoneNumber* pruned_number) {
+  pruned_number->set_country_code(number.country_code());
+  pruned_number->set_national_number(number.national_number());
+  if (!number.extension().empty()) {
+    pruned_number->set_extension(number.extension());
+  }
+  if (number.italian_leading_zero()) {
+    pruned_number->set_italian_leading_zero(true);
+    // This field is only relevant if there are leading zeros at all.
+    pruned_number->set_number_of_leading_zeros(
+        number.number_of_leading_zeros());
+  }
+}
+
 }  // namespace
 
 void PhoneNumberUtil::SetLogger(Logger* logger) {
@@ -1937,6 +1956,9 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
   // RFC3966.
 }
 
+// Note if any new field is added to this method that should always be filled
+// in, even when keepRawInput is false, it should also be handled in the
+// CopyCoreFieldsOnly() method.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     const string& number_to_parse,
     const string& default_region,
@@ -2790,25 +2812,12 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
 PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
     const PhoneNumber& first_number_in,
     const PhoneNumber& second_number_in) const {
-  // Make copies of the phone number so that the numbers passed in are not
-  // edited.
-  PhoneNumber first_number(first_number_in);
-  PhoneNumber second_number(second_number_in);
-  // First clear raw_input and country_code_source and
-  // preferred_domestic_carrier_code fields and any empty-string extensions so
-  // that we can use the proto-buffer equality method.
-  first_number.clear_raw_input();
-  first_number.clear_country_code_source();
-  first_number.clear_preferred_domestic_carrier_code();
-  second_number.clear_raw_input();
-  second_number.clear_country_code_source();
-  second_number.clear_preferred_domestic_carrier_code();
-  if (first_number.extension().empty()) {
-    first_number.clear_extension();
-  }
-  if (second_number.extension().empty()) {
-    second_number.clear_extension();
-  }
+  // We only are about the fields that uniquely define a number, so we copy
+  // these across explicitly.
+  PhoneNumber first_number;
+  CopyCoreFieldsOnly(first_number_in, &first_number);
+  PhoneNumber second_number;
+  CopyCoreFieldsOnly(second_number_in, &second_number);
   // Early exit if both had extensions and these are different.
   if (first_number.has_extension() && second_number.has_extension() &&
       first_number.extension() != second_number.extension()) {

@@ -3113,7 +3113,7 @@ public class PhoneNumberUtil {
    * number, rather than any fields that capture the context in which the phone number was created.
    * These fields correspond to those set in parse() rather than parseHelper().
    */
-  private PhoneNumber copyCoreFieldsOnly(PhoneNumber phoneNumberIn) {
+  private static PhoneNumber copyCoreFieldsOnly(PhoneNumber phoneNumberIn) {
     PhoneNumber phoneNumber = new PhoneNumber();
     phoneNumber.setCountryCode(phoneNumberIn.getCountryCode());
     phoneNumber.setNationalNumber(phoneNumberIn.getNationalNumber());

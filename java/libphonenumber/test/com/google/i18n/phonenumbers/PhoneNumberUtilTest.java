@@ -2449,20 +2449,20 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     PhoneNumber nzNumberOne = new PhoneNumber();
     PhoneNumber nzNumberTwo = new PhoneNumber();
     nzNumberOne.setCountryCode(64).setNationalNumber(33316005L).setItalianLeadingZero(true);
-    // The default for number_of_leading_zeros is 1, so it shouldn't be set, however if it is it
-    // should be considered equivalent.
+    // The default for number_of_leading_zeros is 1, so it shouldn't normally be set, however if it
+    // is it should be considered equivalent.
     nzNumberTwo.setCountryCode(64).setNationalNumber(33316005L).setItalianLeadingZero(true)
         .setNumberOfLeadingZeros(1);
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
   }
 
-  public void testIsNumberMatchAcceptsDiffLeadingZerosIfItalianLeadingZeroFalse() throws Exception {
+  public void testIsNumberMatchMatchesDiffLeadingZerosIfItalianLeadingZeroFalse() throws Exception {
     PhoneNumber nzNumberOne = new PhoneNumber();
     PhoneNumber nzNumberTwo = new PhoneNumber();
     nzNumberOne.setCountryCode(64).setNationalNumber(33316005L);
-    // The default for number_of_leading_zeros is 1, so it shouldn't be set, however if it is it
-    // should be considered equivalent.
+    // The default for number_of_leading_zeros is 1, so it shouldn't normally be set, however if it
+    // is it should be considered equivalent.
     nzNumberTwo.setCountryCode(64).setNationalNumber(33316005L).setNumberOfLeadingZeros(1);
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
