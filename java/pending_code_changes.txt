@@ -11,3 +11,6 @@ Code changes:
    to match the same value when explicitly set for these two fields. This fix
    shouldn't be needed for anyone correctly creating phone numbers using "parse"
    as recommended.
+ - C++ only: Fix for ExactlySameAs when comparing phone numbers to include
+   comparison of the number_of_leading_zeros field.
+ - C++ only: Updating maximum length for NSN to be 17 (matches Java and JS)
