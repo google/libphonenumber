@@ -6,3 +6,11 @@ Code changes:
    IS_POSSIBLE_LOCAL_ONLY will be returned for some values which currently
    return IS_POSSIBLE, and INVALID_LENGTH will be returned for some values which
    currently return TOO_LONG.
+ - Fix for isNumberMatch to ignore the numberOfLeadingZeros field when comparing
+   numbers unless hasItalianLeadingZero is true, and to consider default values
+   to match the same value when explicitly set for these two fields. This fix
+   shouldn't be needed for anyone correctly creating phone numbers using "parse"
+   as recommended.
+ - C++ only: Fix for ExactlySameAs when comparing phone numbers to include
+   comparison of the number_of_leading_zeros field.
+ - C++ only: Updating maximum length for NSN to be 17 (matches Java and JS)

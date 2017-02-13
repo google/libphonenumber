@@ -2943,6 +2943,9 @@ public class PhoneNumberUtil {
    * parse() method, with the exception that it allows the default region to be null, for use by
    * isNumberMatch(). checkRegion should be set to false if it is permitted for the default region
    * to be null or unknown ("ZZ").
+   *
+   * Note if any new field is added to this method that should always be filled in, even when
+   * keepRawInput is false, it should also be handled in the copyCoreFieldsOnly() method.
    */
   private void parseHelper(String numberToParse, String defaultRegion, boolean keepRawInput,
                            boolean checkRegion, PhoneNumber phoneNumber)
@@ -3106,6 +3109,26 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Returns a new phone number containing only the fields needed to uniquely identify a phone
+   * number, rather than any fields that capture the context in which the phone number was created.
+   * These fields correspond to those set in parse() rather than parseHelper().
+   */
+  private static PhoneNumber copyCoreFieldsOnly(PhoneNumber phoneNumberIn) {
+    PhoneNumber phoneNumber = new PhoneNumber();
+    phoneNumber.setCountryCode(phoneNumberIn.getCountryCode());
+    phoneNumber.setNationalNumber(phoneNumberIn.getNationalNumber());
+    if (phoneNumberIn.getExtension().length() > 0) {
+      phoneNumber.setExtension(phoneNumberIn.getExtension());
+    }
+    if (phoneNumberIn.isItalianLeadingZero()) {
+      phoneNumber.setItalianLeadingZero(true);
+      // This field is only relevant if there are leading zeros at all.
+      phoneNumber.setNumberOfLeadingZeros(phoneNumberIn.getNumberOfLeadingZeros());
+    }
+    return phoneNumber;
+  }
+
+  /**
    * Takes two phone numbers and compares them for equality.
    *
    * <p>Returns EXACT_MATCH if the country_code, NSN, presence of a leading zero for Italian numbers
@@ -3126,27 +3149,10 @@ public class PhoneNumberUtil {
    *     of the two numbers, described in the method definition.
    */
   public MatchType isNumberMatch(PhoneNumber firstNumberIn, PhoneNumber secondNumberIn) {
-    // Make copies of the phone number so that the numbers passed in are not edited.
-    PhoneNumber firstNumber = new PhoneNumber();
-    firstNumber.mergeFrom(firstNumberIn);
-    PhoneNumber secondNumber = new PhoneNumber();
-    secondNumber.mergeFrom(secondNumberIn);
-    // First clear raw_input, country_code_source and preferred_domestic_carrier_code fields and any
-    // empty-string extensions so that we can use the proto-buffer equality method.
-    firstNumber.clearRawInput();
-    firstNumber.clearCountryCodeSource();
-    firstNumber.clearPreferredDomesticCarrierCode();
-    secondNumber.clearRawInput();
-    secondNumber.clearCountryCodeSource();
-    secondNumber.clearPreferredDomesticCarrierCode();
-    if (firstNumber.hasExtension()
-        && firstNumber.getExtension().length() == 0) {
-      firstNumber.clearExtension();
-    }
-    if (secondNumber.hasExtension()
-        && secondNumber.getExtension().length() == 0) {
-      secondNumber.clearExtension();
-    }
+    // We only care about the fields that uniquely define a number, so we copy these across
+    // explicitly.
+    PhoneNumber firstNumber = copyCoreFieldsOnly(firstNumberIn);
+    PhoneNumber secondNumber = copyCoreFieldsOnly(secondNumberIn);
     // Early exit if both had extensions and these are different.
     if (firstNumber.hasExtension() && secondNumber.hasExtension()
         && !firstNumber.getExtension().equals(secondNumber.getExtension())) {

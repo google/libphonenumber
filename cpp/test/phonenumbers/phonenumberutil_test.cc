@@ -2835,7 +2835,72 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchMatches) {
   nz_number_2.set_national_number(33316005ULL);
   EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
             phone_util_.IsNumberMatch(nz_number, nz_number_2));
+}
 
+TEST_F(PhoneNumberUtilTest, IsNumberMatchShortMatchIfDiffNumLeadingZeros) {
+  PhoneNumber nz_number_one;
+  nz_number_one.set_country_code(64);
+  nz_number_one.set_national_number(33316005ULL);
+  nz_number_one.set_italian_leading_zero(true);
+
+  PhoneNumber nz_number_two;
+  nz_number_two.set_country_code(64);
+  nz_number_two.set_national_number(33316005ULL);
+  nz_number_two.set_italian_leading_zero(true);
+  nz_number_two.set_number_of_leading_zeros(2);
+
+  EXPECT_EQ(PhoneNumberUtil::SHORT_NSN_MATCH,
+            phone_util_.IsNumberMatch(nz_number_one, nz_number_two));
+
+  nz_number_one.set_italian_leading_zero(false);
+  nz_number_one.set_number_of_leading_zeros(1);
+  nz_number_two.set_italian_leading_zero(true);
+  nz_number_two.set_number_of_leading_zeros(1);
+  // Since one doesn't have the "italian_leading_zero" set to true, we ignore
+  // the number of leading zeros present (1 is in any case the default value).
+  EXPECT_EQ(PhoneNumberUtil::SHORT_NSN_MATCH,
+            phone_util_.IsNumberMatch(nz_number_one, nz_number_two));
+}
+
+TEST_F(PhoneNumberUtilTest, IsNumberMatchAcceptsProtoDefaultsAsMatch) {
+  PhoneNumber nz_number_one;
+  nz_number_one.set_country_code(64);
+  nz_number_one.set_national_number(33316005ULL);
+  nz_number_one.set_italian_leading_zero(true);
+
+  PhoneNumber nz_number_two;
+  nz_number_two.set_country_code(64);
+  nz_number_two.set_national_number(33316005ULL);
+  nz_number_two.set_italian_leading_zero(true);
+  // The default for number_of_leading_zeros is 1, so it shouldn't normally be
+  // set, however if it is it should be considered equivalent.
+  nz_number_two.set_number_of_leading_zeros(1);
+  EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
+            phone_util_.IsNumberMatch(nz_number_one, nz_number_two));
+}
+
+TEST_F(PhoneNumberUtilTest,
+       IsNumberMatchMatchesDiffLeadingZerosIfItalianLeadingZeroFalse) {
+  PhoneNumber nz_number_one;
+  nz_number_one.set_country_code(64);
+  nz_number_one.set_national_number(33316005ULL);
+
+  PhoneNumber nz_number_two;
+  nz_number_two.set_country_code(64);
+  nz_number_two.set_national_number(33316005ULL);
+  // The default for number_of_leading_zeros is 1, so it shouldn't normally be
+  // set, however if it is it should be considered equivalent.
+  nz_number_two.set_number_of_leading_zeros(1);
+  EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
+            phone_util_.IsNumberMatch(nz_number_one, nz_number_two));
+  // Even if it is set to ten, it is still equivalent because in both cases
+  // italian_leading_zero is not true.
+  nz_number_two.set_number_of_leading_zeros(10);
+  EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
+            phone_util_.IsNumberMatch(nz_number_one, nz_number_two));
+}
+
+TEST_F(PhoneNumberUtilTest, IsNumberMatchIgnoresSomeFields) {
   // Check raw_input, country_code_source and preferred_domestic_carrier_code
   // are ignored.
   PhoneNumber br_number_1;

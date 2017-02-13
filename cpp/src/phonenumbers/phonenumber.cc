@@ -41,6 +41,12 @@ bool ExactlySameAs(const PhoneNumber& first_number,
       second_number.italian_leading_zero()) {
     return false;
   }
+  if (first_number.has_number_of_leading_zeros() !=
+      second_number.has_number_of_leading_zeros() ||
+      first_number.number_of_leading_zeros() !=
+      second_number.number_of_leading_zeros()) {
+    return false;
+  }
   if (first_number.has_raw_input() != second_number.has_raw_input() ||
       first_number.raw_input() != second_number.raw_input()) {
     return false;
