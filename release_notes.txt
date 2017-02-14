@@ -1,3 +1,30 @@
+Feb 14, 2017: v8.3.0
+Code changes:
+ - Added two new enum values to ValidationResult - IS_POSSIBLE_LOCAL_ONLY and
+   INVALID_LENGTH. Added more documentation to the existing values; see the
+   javadoc for when these are going to be used. Note that the API for
+   IsPossibleNumberWithReason has not yet been changed to return these values.
+   IS_POSSIBLE_LOCAL_ONLY will be returned for some values which currently
+   return IS_POSSIBLE, and INVALID_LENGTH will be returned for some values which
+   currently return TOO_LONG.
+ - Fix for isNumberMatch to ignore the numberOfLeadingZeros field when comparing
+   numbers unless hasItalianLeadingZero is true, and to consider default values
+   to match the same value when explicitly set for these two fields. This fix
+   shouldn't be needed for anyone correctly creating phone numbers using "parse"
+   as recommended.
+ - C++ only: Fix for ExactlySameAs when comparing phone numbers to include
+   comparison of the number_of_leading_zeros field.
+ - C++ only: Updating maximum length for NSN to be 17 (matches Java and JS)
+Metadata changes:
+ - Updated phone metadata for region code(s): IN, MU, RE, TG, TJ, TT, US
+ - New geocoding data for country calling code(s):
+   218 (en), 972 (iw), 1283 (en), 1442 (en), 1458 (en), 1470 (en), 1475 (en),
+   1531 (en), 1534 (en), 1539 (en), 1680 (en), 1681 (en), 1762 (en)
+ - Updated geocoding data for country calling code(s):
+   1206 (en), 1253 (en), 1360 (en), 1425 (en), 1509 (en)
+ - Updated carrier data for country calling code(s):
+   57 (en), 91 (en), 297 (en), 992 (en), 1868 (en)
+
 Feb 02, 2017: v8.2.0
 Code changes:
  - Made normalizeDiallableCharsOnly() API in PhoneNumberUtil (Java) public. This
