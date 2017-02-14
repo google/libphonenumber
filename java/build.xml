@@ -1,6 +1,6 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 
-<project name="libphonenumber" default="compile">
+<project name="libphonenumber" default="compile" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
   <property name="libphonenumber.src.dir" value="libphonenumber/src"/>
   <property name="libphonenumber.test.dir" value="libphonenumber/test"/>
   <property name="carrier.src.dir" value="carrier/src"/>
@@ -18,6 +18,7 @@
   <property name="javascript.dir" value="../javascript"/>
   <property name="build.tools.jar"
       value="../tools/java/java-build/target/java-build-1.0-SNAPSHOT-jar-with-dependencies.jar"/>
+  <property environment="env"/>
 
   <path id="classpath">
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
@@ -30,6 +31,10 @@
       <include name="**/*.jar"/>
     </fileset>
   </path>
+
+  <path id="maven-ant-tasks.classpath" path="lib/maven-ant-tasks-2.1.1.jar"/>
+  <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant"
+           classpathref="maven-ant-tasks.classpath"/>
 
   <target name="build-phone-metadata">
     <exec executable="java">
@@ -304,4 +309,34 @@
   </target>
 
   <target name="clean-build" depends="clean,jar"/>
+
+  <target name="updatePatchPom">
+    <delete file="libphonenumber.patch.pom"/>
+    <copy file="libphonenumber.patch.template.pom" tofile="libphonenumber.patch.pom"/>
+    <replace file="libphonenumber.patch.pom" token="@@@" value="${patch.version}"/>
+  </target>
+
+  <target name="uploadToHaulmontRepository">
+    <artifact:pom id="mypom" file="libphonenumber/pom.xml"/>
+
+    <artifact:install-provider artifactId="wagon-http" version="2.10"/>
+
+    <antcall target="updatePatchPom">
+      <param name="patch.version" value="${mypom.version}.patch${build.number}"/>
+    </antcall>
+
+    <artifact:deploy file="libphonenumber/target/libphonenumber-${mypom.version}.jar">
+      <remoteRepository url="http://repository.haulmont.com:8587/nexus/content/repositories/releases">
+        <authentication username="${env.HAULMONT_REPOSITORY_USER}" password="${env.HAULMONT_REPOSITORY_PASSWORD}"/>
+      </remoteRepository>
+      <pom file="libphonenumber.patch.pom"/>
+    </artifact:deploy>
+  </target>
+
+  <target name="printVersion">
+    <artifact:pom id="mypom" file="libphonenumber/pom.xml"/>
+
+    <echo>The version is ${mypom.version}</echo>
+  </target>
+
 </project>
