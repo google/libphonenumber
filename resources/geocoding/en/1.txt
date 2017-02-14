@@ -633,7 +633,7 @@
 1205991|Birmingham, AL
 1205995|Birmingham, AL
 1205996|Birmingham, AL
-1206|Washington
+1206|Washington State
 1206215|Seattle, WA
 1206217|Seattle, WA
 1206223|Seattle, WA
@@ -3355,7 +3355,7 @@
 1252977|Rocky Mount, NC
 1252985|Rocky Mount, NC
 1252986|Hatteras, NC
-1253|Washington
+1253|Washington State
 1253200|Puyallup, WA
 1253236|Kent, WA
 1253265|Gig Harbor, WA
@@ -4470,6 +4470,7 @@
 1281997|Pearland, TX
 1281998|Pasadena, TX
 1281999|Houston, TX
+1283|Ohio
 1289|Ontario
 1289240|Oshawa, ON
 1289296|Niagara Falls, ON
@@ -8212,7 +8213,7 @@
 1352872|Gainesville, FL
 1352873|Ocala, FL
 1352955|Gainesville, FL
-1360|Washington
+1360|Washington State
 1360210|Camas, WA
 1360213|Vancouver, WA
 1360221|Langley, WA
@@ -11892,7 +11893,7 @@
 1423979|Johnson City, TN
 1423989|Bristol, TN
 1424|California
-1425|Washington
+1425|Washington State
 1425204|Renton, WA
 1425212|Everett, WA
 1425222|Fall City, WA
@@ -12352,6 +12353,7 @@
 1440998|Ashtabula, OH
 1441292|Hamilton
 1441295|Hamilton
+1442|California
 1443|Maryland
 1443394|Owings Mills, MD
 1443438|Baltimore, MD
@@ -12536,6 +12538,7 @@
 1450968|Terrebonne, QC
 1450974|Saint-Eustache, QC
 1450991|Granby, QC
+1458|Oregon
 1463|Indiana
 1469|Texas
 1469232|Dallas, TX
@@ -12549,6 +12552,8 @@
 1469752|Plano, TX
 1469916|Dallas, TX
 1469952|McKinney, TX
+1470|Georgia
+1475|Connecticut
 1478|Georgia
 1478218|Perry, GA
 1478225|Warner Robins, GA
@@ -14113,7 +14118,7 @@
 1508997|New Bedford, MA
 1508998|New Bedford, MA
 1508999|New Bedford, MA
-1509|Washington
+1509|Washington State
 1509216|Spokane, WA
 1509225|Yakima, WA
 1509226|Newman Lake, WA
@@ -16050,6 +16055,9 @@
 1530934|Willows, CA
 1530938|Weed, CA
 1530993|Loyalton, CA
+1531|Nebraska
+1534|Wisconsin
+1539|Oklahoma
 1540|Virginia
 1540206|Roanoke, VA
 1540213|Staunton, VA
@@ -21539,6 +21547,8 @@
 1678973|Atlanta, GA
 1678974|Atlanta, GA
 1678985|Lawrenceville, GA
+1680|New York
+1681|West Virginia
 1682|Texas
 1682518|Mansfield, TX
 1682622|Mansfield, TX
@@ -25709,6 +25719,7 @@
 1760966|Oceanside, CA
 1760967|Oceanside, CA
 1760995|Hesperia, CA
+1762|Georgia
 1763|Minnesota
 1763205|Minneapolis, MN
 1763208|Minneapolis, MN

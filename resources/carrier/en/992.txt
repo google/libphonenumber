@@ -14,14 +14,14 @@
 
 992411|Megafon
 992418|Megafon
-992501|Tcell
-992502|Tcell
+99250|Tcell
 99255|Megafon
+99277|Tcell
 99288|Megafon
 99290|Megafon
 992917|Tacom
 992918|Babilon-M
 992919|Tacom
-992927|Tcell
+99292|Tcell
 99293|Tcell
 99298|Babilon-M
