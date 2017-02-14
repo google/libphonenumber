@@ -313,7 +313,20 @@
   <target name="updatePatchPom">
     <delete file="libphonenumber.patch.pom"/>
     <copy file="libphonenumber.patch.template.pom" tofile="libphonenumber.patch.pom"/>
-    <replace file="libphonenumber.patch.pom" token="@@@" value="${patch.version}"/>
+
+    <pathconvert property="patch.version.u" dirsep="" pathsep="">
+      <path path="${patch.version}"/>
+
+      <!--Pathconvert will try to add the root directory to the "path", so replace with empty string -->
+      <map from="${basedir}" to=""/>
+
+      <filtermapper>
+        <replacestring from="-SNAPSHOT" to=""/>
+      </filtermapper>
+
+    </pathconvert>
+
+    <replace file="libphonenumber.patch.pom" token="@@@" value="${patch.version.u}"/>
   </target>
 
   <target name="uploadToHaulmontRepository">
@@ -336,7 +349,19 @@
   <target name="printVersion">
     <artifact:pom id="mypom" file="libphonenumber/pom.xml"/>
 
-    <echo>The version is ${mypom.version}</echo>
+    <pathconvert property="mypom.version.u" dirsep="" pathsep="">
+      <path path="${mypom.version}"/>
+
+      <!--Pathconvert will try to add the root directory to the "path", so replace with empty string -->
+      <map from="${basedir}" to=""/>
+
+      <filtermapper>
+        <replacestring from="-SNAPSHOT" to=""/>
+      </filtermapper>
+
+    </pathconvert>
+
+    <echo>The version is ${mypom.version.u}</echo>
   </target>
 
 </project>
