@@ -2331,7 +2331,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
   // national prefix.
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
-  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero()) {
+  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
+      number.getNumberOfLeadingZerosOrDefault() > 0) {
     return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
         nationalNumber;
   }

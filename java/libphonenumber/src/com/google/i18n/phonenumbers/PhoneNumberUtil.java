@@ -1717,7 +1717,7 @@ public class PhoneNumberUtil {
   public String getNationalSignificantNumber(PhoneNumber number) {
     // If leading zero(s) have been set, we prefix this now. Note this is not a national prefix.
     StringBuilder nationalNumber = new StringBuilder();
-    if (number.isItalianLeadingZero()) {
+    if (number.isItalianLeadingZero() && number.getNumberOfLeadingZeros() > 0) {
       char[] zeros = new char[number.getNumberOfLeadingZeros()];
       Arrays.fill(zeros, '0');
       nationalNumber.append(new String(zeros));

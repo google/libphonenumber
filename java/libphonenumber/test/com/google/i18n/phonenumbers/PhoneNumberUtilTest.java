@@ -330,6 +330,19 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("12345678", phoneUtil.getNationalSignificantNumber(INTERNATIONAL_TOLL_FREE));
   }
 
+  public void testGetNationalSignificantNumber_ManyLeadingZeros() {
+    PhoneNumber number = new PhoneNumber();
+    number.setCountryCode(1);
+    number.setNationalNumber(650);
+    number.setItalianLeadingZero(true);
+    number.setNumberOfLeadingZeros(2);
+    assertEquals("00650", phoneUtil.getNationalSignificantNumber(number));
+
+    // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros at all.
+    number.setNumberOfLeadingZeros(-3);
+    assertEquals("650", phoneUtil.getNationalSignificantNumber(number));
+  }
+
   public void testGetExampleNumber() {
     assertEquals(DE_NUMBER, phoneUtil.getExampleNumber(RegionCode.DE));
 
