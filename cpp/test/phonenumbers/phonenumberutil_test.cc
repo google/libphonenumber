@@ -300,6 +300,26 @@ TEST_F(PhoneNumberUtilTest, GetNationalSignificantNumber) {
   EXPECT_EQ("12345678", national_significant_number);
 }
 
+TEST_F(PhoneNumberUtilTest, GetNationalSignificantNumber_ManyLeadingZeros) {
+  PhoneNumber number;
+  number.set_country_code(1);
+  number.set_national_number(650ULL);
+  number.set_italian_leading_zero(true);
+  number.set_number_of_leading_zeros(2);
+  string national_significant_number;
+  phone_util_.GetNationalSignificantNumber(number,
+                                           &national_significant_number);
+  EXPECT_EQ("00650", national_significant_number);
+
+  // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros
+  // at all.
+  number.set_number_of_leading_zeros(-3);
+  national_significant_number.clear();
+  phone_util_.GetNationalSignificantNumber(number,
+                                           &national_significant_number);
+  EXPECT_EQ("650", national_significant_number);
+}
+
 TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
   PhoneNumber de_number;
   de_number.set_country_code(49);

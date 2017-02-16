@@ -466,6 +466,21 @@ function testGetNationalSignificantNumber() {
       phoneUtil.getNationalSignificantNumber(INTERNATIONAL_TOLL_FREE));
 }
 
+function testGetNationalSignificantNumber_ManyLeadingZeros() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(1);
+  number.setNationalNumber(650);
+  number.setItalianLeadingZero(true);
+  number.setNumberOfLeadingZeros(2);
+  assertEquals('00650', phoneUtil.getNationalSignificantNumber(number));
+
+  // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros
+  // at all.
+  number.setNumberOfLeadingZeros(-3);
+  assertEquals("650", phoneUtil.getNationalSignificantNumber(number));
+}
+
 function testGetExampleNumber() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   assertTrue(DE_NUMBER.equals(phoneUtil.getExampleNumber(RegionCode.DE)));
