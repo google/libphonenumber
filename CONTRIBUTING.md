@@ -74,3 +74,10 @@ provide as much information as possible that helps us reproduce the problem.
 Please be advised that metadata updates are prioritized over code changes,
 except for bug fixes. In addition, we work with a limited number of build
 systems and may not be able to support every setup.
+
+In particular, we don't actively maintain windows builds but would be able to
+accept a PR provided someone else in the open-source community could test it out
+and would be able to help with the review. One way to look for such
+collaborators would be to email the [discussion
+group](https://groups.google.com/group/libphonenumber-discuss). Also see the
+[known Windows issues](FAQ.md#what-about-windows).

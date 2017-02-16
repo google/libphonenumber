@@ -205,3 +205,22 @@ There is no RFC indicating where the data comes from, or what format they're in.
 We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
+
+## Builds
+
+### What about Windows?
+
+Unfortunately the libphonenumber team does not have the resources or expertise
+to maintain Windows-specific functionality of the C++ library. We list here some
+known issues that would benefit from open-source collaboration. If you can
+contribute a PR and/or review and test out someone else's PR, please chime in on
+these links, or email the [discussion
+group](https://groups.google.com/group/libphonenumber-discuss):
+
+*   PR [#1090](https://github.com/googlei18n/libphonenumber/pull/1090) /
+    [#824](https://github.com/googlei18n/libphonenumber/issues/824) to "Replace
+    POSIX directory operations by Boost Filesystem"
+*   [#1307](https://github.com/googlei18n/libphonenumber/issues/1307) to use
+    readdir instead of readdir_r
+*   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
+    Windows to build cpp library with pthreads for multi-threading
