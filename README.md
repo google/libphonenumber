@@ -60,7 +60,7 @@ Want to get notified of new releases? During most of the year, excepting
 holidays and extenuating circumstances, we release fortnightly. We update
 [release tags](http://github.com/googlei18n/libphonenumber/releases) and
 document detailed [release notes]
-(http://github.com/googlei18n/libphonenumber/blob/master/java/release_notes.txt).
+(http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
 We also send an announcement to [libphonenumber-discuss]
 (http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
 release.
