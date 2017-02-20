@@ -3777,7 +3777,8 @@
               77
             )|
             6[34]6|
-            727
+            727|
+            822
           )\d{4}
         </nationalNumberPattern>
         <possibleLengths national="10" localOnly="7"/>
@@ -26056,13 +26057,17 @@
         <possibleLengths national="7,8"/>
         <exampleNumber>1992000</exampleNumber>
       </noInternationalDialling>
+      <!-- The fixed-line area codes include the new area codes assigned 2017-02-11 as per ITU
+           notification 25.XI.2016, along with all the old area codes. The old area codes 20, 22,
+           23[01], 29, 5[2-4], 51[01] and 3[7-9] will no longer be operational as of 2017-03-12. -->
       <fixedLine>
         <nationalNumberPattern>
           (?:
             2(?:
               [025-79]|
-              1[0189]|
-              [348][01]
+              1[0-689]|
+              3\d|
+              [48][01]
             )|
             3(?:
               [0136-9]|

@@ -41,7 +41,7 @@
 37422297|Geghashen, Kotayk
 37422298|Arinj, Kotayk
 37422299|Kotayk
-374223|Hankavan/Hrazdan/Tsakhkadzor, Kotayk
+374223|Hankavan/Hrazdan/Tsaghkadzor, Kotayk
 3742232|Hrazdan, Kotayk
 3742233|Hrazdan, Kotayk
 3742234|Hrazdan, Kotayk
@@ -184,7 +184,7 @@
 37423593|Norashen, Ararat
 374236|Ayntap/Masis/Nor Kharberd/Norabats, Ararat
 3742362|Masis, Ararat
-3742363|Aintab/Masis, Ararat
+3742363|Ayntap/Masis, Ararat
 3742364|Masis, Ararat
 3742365|Masis, Ararat
 3742366|Masis, Ararat
@@ -260,10 +260,10 @@
 374252|Aparan, Aragatsotn
 3742522|Aparan, Aragatsotn
 3742523|Aparan, Aragatsotn
-3742524|Aparan/Artavan/Quchak, Aragatsotn
+3742524|Aparan/Artavan/Kuchak, Aragatsotn
 37425251|Kuchak, Aragatsotn
 3742526|Aparan, Aragatsotn
-37425281|Aparan/Artavan/Quchak, Aragatsotn
+37425281|Aparan/Artavan/Kuchak, Aragatsotn
 3742529|Aparan, Aragatsotn
 37425291|Kuchak, Aragatsotn
 37425295|Artavan, Aragatsotn

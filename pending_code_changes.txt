@@ -1,4 +1,1 @@
-Code changes:
- - Making getNationalSignificantNumber more robust in the face of malicious
-   input. This now ignores the number_of_leading_zeros if they are less than
-   zero.
+
