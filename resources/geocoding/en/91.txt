@@ -22,6 +22,11 @@
 # usage. Entries with two names separated by a slash indicates the code applies
 # to both places (they are neighbors or the larger one contains the smaller).
 
+# Changed 'Nasikcity' to 'Nasik City' and
+# 'Jodhpur Jodhpur, Rajasthan' to 'Jodhpur, Rajasthan'
+# Added '7265|Nandura, Maharashtra' based on online results.
+# Eg. http://allcodesindia.in/stdcode/mh/nandura.php
+
 9111|New Delhi
 91120|Ghaziabad/Dadri, Uttar Pradesh
 91121|Meerut, Uttar Pradesh
@@ -532,7 +537,7 @@
 912527|Shahapur, Maharashtra
 912528|Dahanu, Maharashtra
 912529|Mokhada, Maharashtra
-91253|Nasikcity, Maharashtra
+91253|Nasik City, Maharashtra
 912550|Niphad, Maharashtra
 912551|Sinnar, Maharashtra
 912552|Nandgaon, Maharashtra
@@ -742,7 +747,7 @@
 912907|Kherwara, Rajasthan
 912908|Amet, Rajasthan
 912909|Bhim/Dawer, Rajasthan
-91291|Jodhpur Jodhpur, Rajasthan
+91291|Jodhpur, Rajasthan
 912920|Bilara/Bhopalgarh, Rajasthan
 912921|Phalodi/Bap, Rajasthan
 912922|Osian, Rajasthan
@@ -1861,6 +1866,7 @@
 917262|Buldhana, Maharashtra
 917263|Khamgaon, Maharashtra
 917264|Chikhali, Maharashtra
+917265|Nandura, Maharashtra
 917266|Jalgaonjamod, Maharashtra
 917267|Malkapur, Maharashtra
 917268|Mekhar, Maharashtra

@@ -330,6 +330,19 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("12345678", phoneUtil.getNationalSignificantNumber(INTERNATIONAL_TOLL_FREE));
   }
 
+  public void testGetNationalSignificantNumber_ManyLeadingZeros() {
+    PhoneNumber number = new PhoneNumber();
+    number.setCountryCode(1);
+    number.setNationalNumber(650);
+    number.setItalianLeadingZero(true);
+    number.setNumberOfLeadingZeros(2);
+    assertEquals("00650", phoneUtil.getNationalSignificantNumber(number));
+
+    // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros at all.
+    number.setNumberOfLeadingZeros(-3);
+    assertEquals("650", phoneUtil.getNationalSignificantNumber(number));
+  }
+
   public void testGetExampleNumber() {
     assertEquals(DE_NUMBER, phoneUtil.getExampleNumber(RegionCode.DE));
 
@@ -2426,6 +2439,55 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch(nzNumber, NZ_NUMBER));
 
+  }
+
+  public void testIsNumberMatchShortMatchIfDiffNumLeadingZeros() throws Exception {
+    PhoneNumber nzNumberOne = new PhoneNumber();
+    PhoneNumber nzNumberTwo = new PhoneNumber();
+    nzNumberOne.setCountryCode(64).setNationalNumber(33316005L).setItalianLeadingZero(true);
+    nzNumberTwo.setCountryCode(64).setNationalNumber(33316005L).setItalianLeadingZero(true)
+        .setNumberOfLeadingZeros(2);
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+
+    nzNumberOne.setItalianLeadingZero(false).setNumberOfLeadingZeros(1);
+    nzNumberTwo.setItalianLeadingZero(true).setNumberOfLeadingZeros(1);
+    // Since one doesn't have the "italian_leading_zero" set to true, we ignore the number of
+    // leading zeros present (1 is in any case the default value).
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+  }
+
+  public void testIsNumberMatchAcceptsProtoDefaultsAsMatch() throws Exception {
+    PhoneNumber nzNumberOne = new PhoneNumber();
+    PhoneNumber nzNumberTwo = new PhoneNumber();
+    nzNumberOne.setCountryCode(64).setNationalNumber(33316005L).setItalianLeadingZero(true);
+    // The default for number_of_leading_zeros is 1, so it shouldn't normally be set, however if it
+    // is it should be considered equivalent.
+    nzNumberTwo.setCountryCode(64).setNationalNumber(33316005L).setItalianLeadingZero(true)
+        .setNumberOfLeadingZeros(1);
+    assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+  }
+
+  public void testIsNumberMatchMatchesDiffLeadingZerosIfItalianLeadingZeroFalse() throws Exception {
+    PhoneNumber nzNumberOne = new PhoneNumber();
+    PhoneNumber nzNumberTwo = new PhoneNumber();
+    nzNumberOne.setCountryCode(64).setNationalNumber(33316005L);
+    // The default for number_of_leading_zeros is 1, so it shouldn't normally be set, however if it
+    // is it should be considered equivalent.
+    nzNumberTwo.setCountryCode(64).setNationalNumber(33316005L).setNumberOfLeadingZeros(1);
+    assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+
+    // Even if it is set to ten, it is still equivalent because in both cases
+    // italian_leading_zero is not true.
+    nzNumberTwo.setNumberOfLeadingZeros(10);
+    assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+  }
+
+  public void testIsNumberMatchIgnoresSomeFields() throws Exception {
     // Check raw_input, country_code_source and preferred_domestic_carrier_code are ignored.
     PhoneNumber brNumberOne = new PhoneNumber();
     PhoneNumber brNumberTwo = new PhoneNumber();

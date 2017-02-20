@@ -52,7 +52,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using google::protobuf::RepeatedField;
-using std::find;
 
 // static constants
 const size_t PhoneNumberUtil::kMinLengthForNsn;
@@ -238,7 +237,7 @@ string CreateExtnPattern(const string& single_extn_symbols) {
 // remove_non_matches - indicates whether characters that are not able to be
 //   replaced should be stripped from the number. If this is false, they will be
 //   left unchanged in the number.
-void NormalizeHelper(const map<char32, char>& normalization_replacements,
+void NormalizeHelper(const std::map<char32, char>& normalization_replacements,
                      bool remove_non_matches,
                      string* number) {
   DCHECK(number);
@@ -249,7 +248,7 @@ void NormalizeHelper(const map<char32, char>& normalization_replacements,
   for (UnicodeText::const_iterator it = number_as_unicode.begin();
        it != number_as_unicode.end();
        ++it) {
-    map<char32, char>::const_iterator found_glyph_pair =
+    std::map<char32, char>::const_iterator found_glyph_pair =
         normalization_replacements.find(*it);
     if (found_glyph_pair != normalization_replacements.end()) {
       normalized_number.push_back(found_glyph_pair->second);
@@ -274,7 +273,7 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
   RepeatedField<int> local_lengths =
       phone_number_desc.possible_length_local_only();
   int actual_length = number.length();
-  if (find(local_lengths.begin(), local_lengths.end(), actual_length) !=
+  if (std::find(local_lengths.begin(), local_lengths.end(), actual_length) !=
       local_lengths.end()) {
     return PhoneNumberUtil::IS_POSSIBLE;
   }
@@ -295,9 +294,29 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
   // don't currently have an enum to express this, so we return TOO_LONG in the
   // short-term.
   // We skip the first element; we've already checked it.
-  return find(possible_lengths.begin() + 1, possible_lengths.end(),
-              actual_length) != possible_lengths.end()
-      ? PhoneNumberUtil::IS_POSSIBLE : PhoneNumberUtil::TOO_LONG;
+  return std::find(possible_lengths.begin() + 1, possible_lengths.end(),
+                   actual_length) != possible_lengths.end()
+             ? PhoneNumberUtil::IS_POSSIBLE
+             : PhoneNumberUtil::TOO_LONG;
+}
+
+// Returns a new phone number containing only the fields needed to uniquely
+// identify a phone number, rather than any fields that capture the context in
+// which the phone number was created.
+// These fields correspond to those set in Parse() rather than
+// ParseAndKeepRawInput().
+void CopyCoreFieldsOnly(const PhoneNumber& number, PhoneNumber* pruned_number) {
+  pruned_number->set_country_code(number.country_code());
+  pruned_number->set_national_number(number.national_number());
+  if (!number.extension().empty()) {
+    pruned_number->set_extension(number.extension());
+  }
+  if (number.italian_leading_zero()) {
+    pruned_number->set_italian_leading_zero(true);
+    // This field is only relevant if there are leading zeros at all.
+    pruned_number->set_number_of_leading_zeros(
+        number.number_of_leading_zeros());
+  }
 }
 
 }  // namespace
@@ -375,9 +394,9 @@ class PhoneNumberRegExpsAndMappings {
     alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("X"), '9'));
     alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("Y"), '9'));
     alpha_mappings_.insert(std::make_pair(ToUnicodeCodepoint("Z"), '9'));
-    map<char32, char> lower_case_mappings;
-    map<char32, char> alpha_letters;
-    for (map<char32, char>::const_iterator it = alpha_mappings_.begin();
+    std::map<char32, char> lower_case_mappings;
+    std::map<char32, char> alpha_letters;
+    for (std::map<char32, char>::const_iterator it = alpha_mappings_.begin();
          it != alpha_mappings_.end();
          ++it) {
       // Convert all the upper-case ASCII letters to lower-case.
@@ -422,11 +441,6 @@ class PhoneNumberRegExpsAndMappings {
         geo_mobile_countries_without_mobile_area_codes_.end());
   }
 
-  // Small string helpers since StrCat has a maximum number of arguments. These
-  // are both used to build valid_phone_number_.
-  const string punctuation_and_star_sign_;
-  const string min_length_phone_number_pattern_;
-
   // Regular expression of viable phone numbers. This is location independent.
   // Checks we have at least three leading digits, and only valid punctuation,
   // alpha characters and digits in the phone number. Does not include extension
@@ -460,24 +474,24 @@ class PhoneNumberRegExpsAndMappings {
   // A map that contains characters that are essential when dialling. That means
   // any of the characters in this map must not be removed from a number when
   // dialing, otherwise the call will not reach the intended destination.
-  map<char32, char> diallable_char_mappings_;
+  std::map<char32, char> diallable_char_mappings_;
   // These mappings map a character (key) to a specific digit that should
   // replace it for normalization purposes.
-  map<char32, char> alpha_mappings_;
+  std::map<char32, char> alpha_mappings_;
   // For performance reasons, store a map of combining alpha_mappings with ASCII
   // digits.
-  map<char32, char> alpha_phone_mappings_;
+  std::map<char32, char> alpha_phone_mappings_;
 
   // Separate map of all symbols that we wish to retain when formatting alpha
   // numbers. This includes digits, ascii letters and number grouping symbols
   // such as "-" and " ".
-  map<char32, char> all_plus_number_grouping_symbols_;
+  std::map<char32, char> all_plus_number_grouping_symbols_;
 
   // Map of country calling codes that use a mobile token before the area code.
   // One example of when this is relevant is when determining the length of the
   // national destination code, which should be the length of the area code plus
   // the length of the mobile token.
-  map<int, char> mobile_token_mappings_;
+  std::map<int, char> mobile_token_mappings_;
 
   // Set of country codes that have geographically assigned mobile numbers (see
   // geo_mobile_countries_ below) which are not based on *area codes*. For
@@ -556,17 +570,12 @@ class PhoneNumberRegExpsAndMappings {
   scoped_ptr<const RegExp> plus_chars_pattern_;
 
   PhoneNumberRegExpsAndMappings()
-      : punctuation_and_star_sign_(StrCat(PhoneNumberUtil::kValidPunctuation,
-                                          kStarSign)),
-        min_length_phone_number_pattern_(
-            StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}")),
-        valid_phone_number_(
-            StrCat(min_length_phone_number_pattern_, "|[",
+      : valid_phone_number_(
+            StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}|[",
                    PhoneNumberUtil::kPlusChars, "]*(?:[",
-                   punctuation_and_star_sign_, "]*",
-                   kDigits, "){3,}[", kValidAlpha,
-                   punctuation_and_star_sign_, kDigits,
-                   "]*")),
+                   PhoneNumberUtil::kValidPunctuation, kStarSign, "]*",
+                   kDigits, "){3,}[", PhoneNumberUtil::kValidPunctuation,
+                   kStarSign, kValidAlpha, kDigits, "]*")),
         extn_patterns_for_parsing_(
             CreateExtnPattern(StrCat(",;", kSingleExtnSymbolsForMatching))),
         regexp_factory_(new RegExpFactory()),
@@ -643,7 +652,7 @@ PhoneNumberUtil::PhoneNumberUtil()
   }
   // Storing data in a temporary map to make it easier to find other regions
   // that share a country calling code when inserting data.
-  map<int, list<string>* > country_calling_code_to_region_map;
+  std::map<int, list<string>* > country_calling_code_to_region_map;
   for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
            metadata_collection.metadata().begin();
        it != metadata_collection.metadata().end();
@@ -660,7 +669,7 @@ PhoneNumberUtil::PhoneNumberUtil()
     } else {
       region_to_metadata_map_->insert(std::make_pair(region_code, *it));
     }
-    map<int, list<string>* >::iterator calling_code_in_map =
+    std::map<int, list<string>* >::iterator calling_code_in_map =
         country_calling_code_to_region_map.find(country_calling_code);
     if (calling_code_in_map != country_calling_code_to_region_map.end()) {
       if (it->main_country_for_code()) {
@@ -670,7 +679,7 @@ PhoneNumberUtil::PhoneNumberUtil()
       }
     } else {
       // For most country calling codes, there will be only one region code.
-      list<string>* list_with_region_code = new list<string>();
+      std::list<string>* list_with_region_code = new std::list<string>();
       list_with_region_code->push_back(region_code);
       country_calling_code_to_region_map.insert(
           std::make_pair(country_calling_code, list_with_region_code));
@@ -1947,6 +1956,9 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
   // RFC3966.
 }
 
+// Note if any new field is added to this method that should always be filled
+// in, even when keepRawInput is false, it should also be handled in the
+// CopyCoreFieldsOnly() method.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     const string& number_to_parse,
     const string& default_region,
@@ -2334,9 +2346,10 @@ void PhoneNumberUtil::GetNationalSignificantNumber(
     string* national_number) const {
   DCHECK(national_number);
   // If leading zero(s) have been set, we prefix this now. Note this is not a
-  // national prefix.
+  // national prefix. Ensure the number of leading zeros is at least 0 so we
+  // don't crash in the case of malicious input.
   StrAppend(national_number, number.italian_leading_zero() ?
-      string(number.number_of_leading_zeros(), '0') : "");
+      string(std::max(number.number_of_leading_zeros(), 0), '0') : "");
   StrAppend(national_number, number.national_number());
 }
 
@@ -2800,25 +2813,12 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
 PhoneNumberUtil::MatchType PhoneNumberUtil::IsNumberMatch(
     const PhoneNumber& first_number_in,
     const PhoneNumber& second_number_in) const {
-  // Make copies of the phone number so that the numbers passed in are not
-  // edited.
-  PhoneNumber first_number(first_number_in);
-  PhoneNumber second_number(second_number_in);
-  // First clear raw_input and country_code_source and
-  // preferred_domestic_carrier_code fields and any empty-string extensions so
-  // that we can use the proto-buffer equality method.
-  first_number.clear_raw_input();
-  first_number.clear_country_code_source();
-  first_number.clear_preferred_domestic_carrier_code();
-  second_number.clear_raw_input();
-  second_number.clear_country_code_source();
-  second_number.clear_preferred_domestic_carrier_code();
-  if (first_number.extension().empty()) {
-    first_number.clear_extension();
-  }
-  if (second_number.extension().empty()) {
-    second_number.clear_extension();
-  }
+  // We only are about the fields that uniquely define a number, so we copy
+  // these across explicitly.
+  PhoneNumber first_number;
+  CopyCoreFieldsOnly(first_number_in, &first_number);
+  PhoneNumber second_number;
+  CopyCoreFieldsOnly(second_number_in, &second_number);
   // Early exit if both had extensions and these are different.
   if (first_number.has_extension() && second_number.has_extension() &&
       first_number.extension() != second_number.extension()) {
