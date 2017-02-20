@@ -1,3 +1,16 @@
+Feb 20, 2017: v8.3.1
+Code changes:
+ - Making getNationalSignificantNumber more robust in the face of malicious
+   input. This now ignores the number_of_leading_zeros if they are less than
+   zero.
+Metadata changes:
+ - New alternate formatting data for country calling code(s): 39
+ - Updated phone metadata for region code(s): BS, VN
+ - Updated geocoding data for country calling code(s):
+   62 (en, id), 84 (en), 374 (en, hy)
+ - Updated carrier data for country calling code(s): 7 (ru), 91 (en), 1242 (en)
+ - Updated / refreshed time zone meta data.
+
 Feb 14, 2017: v8.3.0
 Code changes:
  - Added two new enum values to ValidationResult - IS_POSSIBLE_LOCAL_ONLY and

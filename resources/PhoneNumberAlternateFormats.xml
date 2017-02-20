@@ -1339,6 +1339,20 @@
       </availableFormats>
     </territory>
 
+    <!-- Italy (IT) -->
+    <territory countryCode="39" >
+      <availableFormats>
+        <numberFormat pattern="(0\d{3})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>0[13-57-9][2-46-8]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(0\d{3})(\d{2})(\d{3})">
+          <leadingDigits>0[13-57-9][2-46-8]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Japan (JP) -->
     <territory countryCode="81" >
       <availableFormats>
