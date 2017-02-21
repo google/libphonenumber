@@ -154,6 +154,7 @@ However, we emphasize that these ports are by developers outside the
 libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
+*   PostgreSQL in-database types (pg-libphonenumber): https://github.com/blm768/pg-libphonenumber
 *   C#: https://github.com/aidanbebbington/libphonenumber-csharp
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
