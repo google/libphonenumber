@@ -3777,8 +3777,16 @@
               77
             )|
             6[34]6|
-            727|
-            822
+            7(?:
+              27|
+              38
+            )|
+            8(?:
+              0[1-9]|
+              1[02-9]|
+              2\d|
+              99
+            )
           )\d{4}
         </nationalNumberPattern>
         <possibleLengths national="10" localOnly="7"/>
@@ -4796,19 +4804,17 @@
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Added the prefixes 4[0-2] (Moov), 5[5-9] & 6[15] because SMS messages have been
+        <!-- Added the prefixes 4[0-2] (Moov), 5[7-9] & 61 because SMS messages have been
              successfully delivered. Supported by numbers found on the internet. Also added 43
-             (Moov) based on numbers found online. The prefix 56 was assigned to MTN in July 2013:
-             http://www.atci.ci/images/stories/pdf/decisions-dg/decision_002.pdf
-             The prefix 75 is from an open-source bug report.
-             50 has been removed since Warid seems to have stopped operation in Côte d'Ivoire. -->
-          <nationalNumberPattern>
+             (Moov) based on numbers found online. 50 has been removed since Warid seems to have
+             stopped operation in Côte d'Ivoire. -->
+        <nationalNumberPattern>
           (?:
             0[1-9]|
             4\d|
             5[14-9]|
             6[015-79]|
-            7[57-9]|
+            7[4-9]|
             8[7-9]
           )\d{6}
         </nationalNumberPattern>
@@ -10298,18 +10304,20 @@
         <!-- The prefix 24 seems to be also used, based on online searches. -->
         <nationalNumberPattern>
           2(?:
-            [248]\d|
-            5[1-5]|
-            94
+            [24]\d|
+            5[1-5]
           )\d{5}
         </nationalNumberPattern>
         <possibleLengths national="8"/>
         <exampleNumber>22453300</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- The prefix 31 seems to be also used, based on online searches. -->
         <nationalNumberPattern>
           (?:
+            2(?:
+              81|
+              9\d
+            )|
             3[1-9]\d|
             4\d{2}|
             9(?:
@@ -10910,6 +10918,10 @@
           <leadingDigits>[57]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
+        <numberFormat pattern="(153)(\d{1,2})(\d{3})(\d{4})">
+          <leadingDigits>153</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
         <numberFormat pattern="(1)([7-9]\d{2})(\d{3})(\d{3})">
           <leadingDigits>1[7-9]</leadingDigits>
           <format>$1-$2-$3-$4</format>
@@ -10941,11 +10953,12 @@
       </availableFormats>
       <generalDesc >
         <nationalNumberPattern>
-          [17]\d{6,9}|
+          1\d{6,11}|
           [2-589]\d{3}(?:\d{3,6})?|
-          6\d{3}
+          6\d{3}|
+          7\d{6,9}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{4,10}</possibleNumberPattern>
+        <possibleNumberPattern>\d{4,12}</possibleNumberPattern>
       </generalDesc>
       <noInternationalDialling>
         <nationalNumberPattern>
@@ -10957,9 +10970,18 @@
         <exampleNumber>1700123456</exampleNumber>
       </noInternationalDialling>
       <fixedLine>
-        <nationalNumberPattern>[2-489]\d{7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,8}</possibleNumberPattern>
-        <possibleLengths national="8" localOnly="7"/>
+        <!-- ITU doc states that 153 + NDC (either mobile or fixed-line) + SN corresponds to fax
+             mail. As we do not have separate a fax category, fixedLine is the closest match and
+             consistent with some other countries. For maintainability, only NDC lengths are
+             mentioned: one digit for fixed-line and two for mobile as per ITU. -->
+        <nationalNumberPattern>
+          (?:
+            153\d{1,2}|
+            [2-489]
+          )\d{7}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{7,12}</possibleNumberPattern>
+        <possibleLengths national="8,11,12" localOnly="7"/>
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
@@ -11986,9 +12008,9 @@
               7(?:
                 0(?:
                   0[02-9]|
-                  [16][089]|
+                  [13-6][089]|
                   [289]\d|
-                  [37][89]
+                  7[89]
                 )|
                 [1-9]\d{2}
               )|
@@ -12407,7 +12429,7 @@
         <nationalNumberPattern>
           (?:
             4(?:
-              1[0-24-6]|
+              1[0-24-69]|
               2[0-7]|
               [37][0-8]|
               4[0-245]|
@@ -12419,7 +12441,7 @@
               05|
               [156]\d|
               2[02578]|
-              3[013-79]|
+              3[0-79]|
               4[03-7]|
               7[0-2578]|
               8[0-35-9]|
@@ -12439,23 +12461,23 @@
           (?:
             6(?:
               1[1-8]|
-              2[056]|
-              3[089]|
-              4[0167]|
+              2[0-6]|
+              3[027-9]|
+              4[014679]|
               5[0159]|
               [67][0-69]|
               9\d
             )|
             7(?:
               5[057]|
-              6[0-2]|
-              [78]\d
+              [6-8]\d
             )|
             8(?:
               2[0-59]|
               3[0-4]|
               [469]\d|
-              5[1-9]
+              5[1-9]|
+              88
             )
           )\d{4}
         </nationalNumberPattern>
@@ -12493,7 +12515,7 @@
         <nationalNumberPattern>
           (?:
             6(?:
-              2[1-478]|
+              2[78]|
               49|
               8\d
             )|
@@ -12506,7 +12528,7 @@
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
         <possibleLengths national="7"/>
-        <exampleNumber>6211234</exampleNumber>
+        <exampleNumber>6271234</exampleNumber>
       </voicemail>
     </territory>
 
@@ -14239,6 +14261,7 @@
                mobileNumberPortableRegion="true" nationalPrefixForParsing="005|0">
       <references>
         <sourceUrl>http://www.ca.go.ke/images/downloads/NUMBERING/Telecommunication%20Numbering%20Plan%20For%20Kenya%20Feb%202016.Pdf</sourceUrl>
+        <sourceUrl>https://www.itu.int/oth/T0202000070/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/+254</sourceUrl>
       </references>
       <availableFormats>
@@ -14269,7 +14292,8 @@
         <nationalNumberPattern>
           20\d{6,7}|
           4(?:
-            [0136]\d{7}|
+            0\d{6,7}|
+            [136]\d{7}|
             [245]\d{5,7}
           )|
           5(?:
@@ -14278,7 +14302,8 @@
           )|
           6(?:
             [01457-9]\d{5,7}|
-            [26]\d{7}
+            2\d{7}|
+            6\d{6,7}
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
@@ -14288,10 +14313,9 @@
       <mobile>
         <nationalNumberPattern>
           7(?:
-            [0-369]\d|
-            4[0-2]|
+            [0-3679]\d|
+            4[0-2479]|
             5[0-6]|
-            7[0-7]|
             8[0-25-9]
           )\d{6}
         </nationalNumberPattern>
@@ -22529,7 +22553,7 @@
           <leadingDigits>21[67]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="([3-5]\d)(16)(\d{2,3})">
+        <numberFormat pattern="([3-5]\d)(1[67])(\d{2,3})">
           <leadingDigits>[3-5]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -22589,7 +22613,10 @@
             [2-9]\d{7}
           )|
           [3-5][1-8](?:
-            16\d{2,3}|
+            1(?:
+              6\d{2,3}|
+              7\d{3}
+            )|
             \d{7}
           )
         </nationalNumberPattern>

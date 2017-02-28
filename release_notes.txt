@@ -1,3 +1,11 @@
+Feb 28, 2017: v8.3.2
+Metadata changes:
+ - Updated phone metadata for region code(s): BS, CI, HT, IL, IN, IS, KE, SK
+ - Updated short number metadata for region code(s): KE
+ - Updated geocoding data for country calling code(s): 254 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 225 (en), 254 (en), 354 (en), 509 (en), 1242 (en)
+
 Feb 20, 2017: v8.3.1
 Code changes:
  - Making getNationalSignificantNumber more robust in the face of malicious
