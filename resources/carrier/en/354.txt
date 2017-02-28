@@ -27,13 +27,16 @@
 354618|Vodafone
 35462|Vodafone
 354630|IMC
+354632|Tismi
+354637|Öryggisfjarskipti
 354638|Öryggisfjarskipti
 354639|Öryggisfjarskipti
 354640|Öryggisfjarskipti
 354641|Öryggisfjarskipti
+354644|Nova
 354646|IMC
 354647|IMC
-354649|Vodafone
+354649|Nova
 354650|IMC
 354651|IMC
 354655|Vodafone
@@ -52,4 +55,5 @@
 35484|Síminn
 35485|Síminn
 35486|Síminn
+354888|Síminn
 35489|Síminn

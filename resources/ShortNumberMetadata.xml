@@ -5975,13 +5975,13 @@
         <nationalNumberPattern>
           1(?:
             0(?:
-              [079]|
+              [07-9]|
               1[12]|
               400
             )|
             1(?:
-              [2456]|
-              9[0-2459]
+              [02456]|
+              9[0-579]
             )|
             2[123]|
             3[01]|
@@ -6030,13 +6030,19 @@
       </shortCode>
       <tollFree>
         <nationalNumberPattern>
-          15(?:
-             01|
-             2[127]|
-             6(?:
-               29|
-               6[67]
+          1(?:
+            1(?:
+              6|
+              9\d
+            )|
+            5(?:
+              01|
+              2[127]|
+              6(?:
+                29|
+                6[67]
               )
+            )
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{4,5}</possibleNumberPattern>
@@ -6096,6 +6102,17 @@
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          11(?:
+            [06]|
+            9\d
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>1197</exampleNumber>
+      </expandedEmergency>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>

@@ -1210,8 +1210,15 @@
 9177018|Tata Docomo
 9177019|Tata Docomo
 917702|Airtel
+9177030|Vodafone
 9177038|Tata Docomo
 9177039|Tata Docomo
+9177040|Vodafone
+9177048|Vodafone
+9177049|Vodafone
+9177050|Vodafone
+9177058|Vodafone
+9177059|Vodafone
 9177060|Vodafone
 9177068|Vodafone
 9177069|Vodafone
