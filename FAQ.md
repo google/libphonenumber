@@ -206,7 +206,50 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
-## Builds
+## Misc
+
+### How do I load libphonenumber resources in my Android app?
+
+#### System considerations
+
+tl;dr: Do not call `PhoneNumberUtil` API on the main thread.
+
+If you get surprising exceptions involving metadata loading, e.g. "missing
+metadata" exceptions when the metadata exists, then it's probably because you're
+loading resources on the main thread.
+
+Please ensure that you don't call `PhoneNumberUtil` API on the main thread. Not
+loading resources in the main thread is the suggested best practice at the
+[Android developer
+guide](http://developer.android.com/guide/components/processes-and-threads.html),
+and will prevent the issue reported in
+[#265](https://github.com/googlei18n/libphonenumber/issues/265),
+[#528](https://github.com/googlei18n/libphonenumber/issues/528), and
+[#819](https://github.com/googlei18n/libphonenumber/issues/819).
+
+#### Optimize loads
+
+You can manage your own resources by supplying your own
+[`MetadataLoader`](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/MetadataLoader.java)
+implementation to the `PhoneNumberUtil` instance. It is thus possible for your
+app to load the resources as Android assets, while libphonenumber loads Java
+resources by default. The result is that the files are read as native Android assets
+and so optimized for speed.
+
+Here's the sample code for how to do it:
+
+```
+PhoneNumberUtil util = PhoneNumberUtil.createInstance(new MetadataLoader() {
+  @Override
+  public InputStream loadMetadata(String metadataFileName) {
+    return Application.getContext().getAssets().open("some/asset/path" + metadataFileName);
+  }
+});
+```
+
+You also need to copy the binary metadata files into your app's asset directory, and
+automate updating them from upstream. To avoid net increase of app size, remove them
+from libphonenumber.
 
 ### What about Windows?
 
