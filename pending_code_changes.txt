@@ -1,1 +1,3 @@
-
+Code changes:
+ - Doc fix for PhoneNumberOfflineGeocoder to explain the cases where an empty
+   string might be returned.
