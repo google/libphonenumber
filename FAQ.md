@@ -206,6 +206,33 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
+### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
+
+We only support a country if:
+
+*   **The country has a single country calling code.** For instance, Kosovo (XK)
+    has been using three different country codes until 2017 - those of Serbia,
+    Monaco and Slovenia. The relevant numbers will be marked as valid, but as
+    belonging to Serbia, Monaco or Slovenia respectively. When Kosovo starts
+    using its own country calling code of 383 it will be added to the metadata
+    by itself. Similarly, Antarctica doesn't use its assigned country calling
+    code of 672 - instead the bases belonging to different countries have
+    different solutions. For example, Scott Base, belonging to New Zealand, has
+    an area code that is part of the New Zealand phone number plan, and we
+    support those numbers as valid numbers for NZ.
+*   **The country still exists.** For example, Yugoslavia (YU), Serbia and
+    Montenegro (CS) and Netherlands Antilles (AN) have been dissolved and no
+    longer exist as political entities so we do not support them.
+*   **The country has some phone numbers in use that can be ascribed to it.**
+    For instance, Pitcairn Island has only around thirty inhabitants and they
+    use satellite phones, so there is no numbering plan for Pitcairn Island.
+    Similarly, Bouvet Island is an uninhabited Antarctic volcanic island with no
+    telephone country code and no telephone connection, so we will not support
+    it.
+*   **It has an assigned region code.** For instance, previously Kosovo did not
+    have a region code assigned to it, so we could not support it until it was
+    assigned XK by [CLDR](http://cldr.unicode.org/).
+
 ## Misc
 
 ### How do I load libphonenumber resources in my Android app?
