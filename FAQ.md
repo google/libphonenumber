@@ -210,7 +210,7 @@ to achieve this, please do so. Thanks!
 
 We only support a country if:
 
-*   The country has a single country calling code. For instance, Kosovo (XK) has
+*   *The country has a single country calling code.* For instance, Kosovo (XK) has
     been using three different country codes until 2017 - those of Serbia,
     Monaco and Slovenia. The relevant numbers will be marked as valid, but as
     belonging to Serbia, Monaco or Slovenia respectively. When Kosovo starts
@@ -220,18 +220,18 @@ We only support a country if:
     different solutions. For example, Scott Base, belonging to New Zealand, has
     an area code that is part of the New Zealand phone number plan, and we
     support those numbers as valid numbers for NZ.
-*   The country still exists. For example, Yugoslavia (YU), Serbia and
+*   *The country still exists.* For example, Yugoslavia (YU), Serbia and
     Montenegro (CS) and Netherlands Antilles (AN) have been dissolved and no
     longer exist as political entities so we do not support them.
-*   The country has some phone numbers in use that can be ascribed to it. For
+*   *The country has some phone numbers in use that can be ascribed to it.* For
     instance, Pitcairn Island has only around thirty inhabitants and they use
     satellite phones, so there is no numbering plan for Pitcairn Island.
     Similarly, Bouvet Island is an uninhabited Antarctic volcanic island with no
     telephone country code and no telephone connection, so we will not support
     it.
-*   It has an assigned region code. For instance, previously Kosovo did not have
-    a region code assigned to it, so we could not support it until that was
-    assigned by the ISO organisation.
+*   *It has an assigned region code.* For instance, previously Kosovo did not
+    have a region code assigned to it, so we could not support it until it was
+    assigned XK by [CLDR](http://cldr.unicode.org/).
 
 ## Misc
 
