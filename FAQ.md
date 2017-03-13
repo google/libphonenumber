@@ -280,11 +280,12 @@ from libphonenumber.
 
 ### What about Windows?
 
-Unfortunately the libphonenumber team does not have the resources or expertise
-to maintain Windows-specific functionality of the C++ library. We list here some
-known issues that would benefit from open-source collaboration. If you can
-contribute a PR and/or review and test out someone else's PR, please chime in on
-these links, or email the [discussion
+The libphonenumber team's support of the C++ library on Windows is primarily to
+support Chromium's build environment, and we depend on the community to support
+other Windows build environments / build chains. We list here some known issues
+that would benefit from open-source collaboration. If you can contribute a PR
+or review and test out someone else's PR, please chime in on these links, or
+email the [discussion
 group](https://groups.google.com/group/libphonenumber-discuss):
 
 *   [#1010](https://github.com/googlei18n/libphonenumber/issues/1010) to require
