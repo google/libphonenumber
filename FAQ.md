@@ -287,6 +287,8 @@ contribute a PR and/or review and test out someone else's PR, please chime in on
 these links, or email the [discussion
 group](https://groups.google.com/group/libphonenumber-discuss):
 
+*   [#1010](https://github.com/googlei18n/libphonenumber/issues/1010) to require
+    Visual Studio 2015 update 2 or later on Windows
 *   PR [#1090](https://github.com/googlei18n/libphonenumber/pull/1090) /
     [#824](https://github.com/googlei18n/libphonenumber/issues/824) to "Replace
     POSIX directory operations by Boost Filesystem"
