@@ -273,9 +273,11 @@ https://blogs.msdn.microsoft.com/vcblog/2016/02/22/new-options-for-managing-char
 or a Chrome patch for an example:
 https://codereview.chromium.org/2488853002/diff/80001/build/config/compiler/BUILD.gn
 
-Without this version and the option, your compilation will likely break when
+Without this version and the option, your compilation will have warnings when
 setting the codepage for non-Unicode applications on Windows to one of the CJK
-code pages, since libphonenumber has UTF-8 strings in source files.
+code pages, since libphonenumber has UTF-8 strings in source files. While these
+are only comments (as opposed to string literals) the warnings can be
+suppressed, but we reserve the right to introduce UTF-8 string literals.
 
 The library was tested with Visual Studio 2010.
 
