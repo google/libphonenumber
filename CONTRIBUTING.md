@@ -50,6 +50,8 @@ appropriate Contributor License Agreement (CLA):
 
 *   If you are contributing as an individual, sign the [individual
     CLA](http://cla.developers.google.com/about/google-individual?csw=1).
+    **N.B. Use an email address associated with the GitHub username used to file
+    the corresponding issue.**
 *   If you are contributing as part of a corporation, sign the [corporate
     CLA](http://developers.google.com/open-source/cla/corporate?csw=1).
 
@@ -58,13 +60,16 @@ information with us, and that we may use, modify, reproduce, publicly display,
 and distribute the information in accordance with the library's [open source
 license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
 
-Once you have signed the CLA, you can [request to be whitelisted]
-(http://groups.google.com/forum/#!managemembers/libphonenumber-supporting-docs)
-to send emails to the
-[libphonenumber-supporting-docs](mailto:libphonenumber-supporting-docs@googlegroups.com)
-mailbox. Put the GitHub issue number in the subject line and attach the
-supporting documents. Only the core libphonenumber team has access to view
-emails sent to this mailbox.
+Once you have signed the CLA:
+
+*   If there is no open validation issue for your request, create one.
+*   Comment on the open issue, e.g. "I signed the CLA, please whitelist me to
+    send private documentation to libphonenumber-supporting-docs".
+*   Someone from the team will whitelist you and update you on the issue.
+
+Once whitelisted, you will be able to email
+libphonenumber-supporting-docs@googlegroups.com. Only the core libphonenumber
+team has access to view emails sent to this address.
 
 ## Filing a code issue
 
