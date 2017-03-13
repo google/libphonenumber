@@ -46,11 +46,12 @@ If the evidence is publicly available online, please provide the link.
 
 If the evidence is not publicly available online, make sure that you have the
 rights to share this with us, and confirm this by reading and signing the
-appropriate Contributor License Agreement (CLA); **use an email address
-associated with the GitHub username you use to file the corresponding issue**:
+appropriate Contributor License Agreement (CLA):
 
 *   If you are contributing as an individual, sign the [individual
     CLA](http://cla.developers.google.com/about/google-individual?csw=1).
+    **N.B. Use an email address associated with the GitHub username used to file
+    the corresponding issue.**
 *   If you are contributing as part of a corporation, sign the [corporate
     CLA](http://developers.google.com/open-source/cla/corporate?csw=1).
 
