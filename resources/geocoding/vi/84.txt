@@ -18,11 +18,24 @@
 8420|Lào Cai
 84210|Phú Thọ
 84211|Vĩnh Phúc
+84212|Sơn La
+84213|Lai Châu
+84214|Lào Cai
+84215|Điện Biên
+84216|Yên Bái
 84218|Hòa Bình
 84219|Hà Giang
 8422|Sơn La
 84230|Điện Biên
 84231|Lai Châu
+84232|Quảng Bình
+84233|Quảng Trị
+84234|Thừa Thiên-Huế
+84235|Quảng Nam
+84236|TP Đà Nẵng
+84237|Thanh Hóa
+84238|Nghệ An
+84239|Hà Tĩnh
 84240|Bắc Giang
 84241|Bắc Ninh
 8425|Lạng Sơn
@@ -77,4 +90,12 @@
 84780|Cà Mau
 84781|Bạc Liêu
 8479|Sóc Trăng
-848|Thành phố Hồ Chí Minh
+8482|Thành phố Hồ Chí Minh
+8483|Thành phố Hồ Chí Minh
+8484|Thành phố Hồ Chí Minh
+8485|Thành phố Hồ Chí Minh
+84862|Thành phố Hồ Chí Minh
+84863|Thành phố Hồ Chí Minh
+84866|Thành phố Hồ Chí Minh
+84871|Thành phố Hồ Chí Minh
+84873|Thành phố Hồ Chí Minh
