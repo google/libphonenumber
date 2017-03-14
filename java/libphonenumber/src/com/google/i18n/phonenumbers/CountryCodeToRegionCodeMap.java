@@ -908,6 +908,10 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("001");
     countryCodeToRegionCodeMap.put(979, listWithRegionCode);
+    
+    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode.add("001");
+    countryCodeToRegionCodeMap.put(991, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("TJ");
