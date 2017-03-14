@@ -15,7 +15,7 @@
 # Generated from:
 # http://www.mityc.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Presentation_E164_Numbering_Plan_20101118_%20English.pdf [2011-11-18]
 
-34810|Madrid
+3481|Madrid
 34820|Ávila
 34821|Segovia
 34822|Tenerife
@@ -25,25 +25,33 @@
 34826|Ciudad Real
 34827|Cáceres
 34828|Las Palmas
-34830|Barcelona
+3483|Barcelona
 34841|La Rioja
 34842|Cantabria
 34843|Guipúzcoa
+34844|Vizcaya
 34845|Álava
+34846|Vizcaya
 34847|Burgos
 34848|Navarra
 34849|Guadalajara
 34850|Álmería
 34851|Málaga
+34852|Málaga
 34853|Jaén
 34854|Sevilla
+34855|Seville
 34856|Cádiz
 34857|Córdoba
 34858|Granada
 34859|Huelva
 34860|Valencia
+34861|Valencia
+34862|Valencia
+34863|Valencia
 34864|Castellón
 34865|Alicante
+34866|Alicante
 34867|Albacete
 34868|Murcia
 34869|Cuenca
@@ -61,6 +69,7 @@
 34882|Lugo
 34883|Valladolid
 34884|Asturias
+34885|Asturias
 34886|Pontevedra
 34887|León
 34888|Orense
@@ -114,7 +123,7 @@
 34978|Teruel
 34979|Palencia
 34980|Zamora
-34981|Coruña
+34981|A Coruña
 34982|Lugo
 34983|Valladolid
 34984|Asturias

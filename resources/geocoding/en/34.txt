@@ -14,7 +14,7 @@
 
 # Translated from es/34.txt using Freebase and Wikipedia.
 
-34810|Madrid
+3481|Madrid
 34820|Ávila
 34821|Segovia
 34822|Tenerife
@@ -24,25 +24,33 @@
 34826|Ciudad Real
 34827|Cáceres
 34828|Las Palmas
-34830|Barcelona
+3483|Barcelona
 34841|La Rioja
 34842|Cantabria
 34843|Guipúzcoa
+34844|Bizkaia
 34845|Araba
+34846|Bizkaia
 34847|Burgos
 34848|Navarre
 34849|Guadalajara
 34850|Almería
 34851|Málaga
+34852|Málaga
 34853|Jaén
 34854|Seville
+34855|Seville
 34856|Cádiz
 34857|Cordova
 34858|Granada
 34859|Huelva
 34860|Valencia
+34861|Valencia
+34862|Valencia
+34863|Valencia
 34864|Castellón
 34865|Alicante
+34866|Alicante
 34867|Albacete
 34868|Murcia
 34869|Cuenca
@@ -60,6 +68,7 @@
 34882|Lugo
 34883|Valladolid
 34884|Asturias
+34885|Asturias
 34886|Pontevedra
 34887|León
 34888|Ourense
@@ -77,9 +86,9 @@
 34941|La Rioja
 34942|Cantabria
 34943|Guipúzcoa
-34944|Vizcaya
+34944|Bizkaia
 34945|Araba
-34946|Vizcaya
+34946|Bizkaia
 34947|Burgos
 34948|Navarre
 34949|Guadalajara
@@ -113,7 +122,7 @@
 34978|Teruel
 34979|Palencia
 34980|Zamora
-34981|Coruña
+34981|La Coruña
 34982|Lugo
 34983|Valladolid
 34984|Asturias
