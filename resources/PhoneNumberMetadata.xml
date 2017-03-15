@@ -7034,7 +7034,7 @@
     <territory id="EE" countryCode="372" internationalPrefix="00" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000043/en</sourceUrl>
-        <sourceUrl>http://www.tja.ee/public/Legislation_side/Numbering_/Estonian_NP_eng.htm</sourceUrl>
+        <sourceUrl>http://www.tja.ee/numbering/</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="([3-79]\d{2})(\d{4})">
