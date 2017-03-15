@@ -1,3 +1,18 @@
+Mar 14, 2017: v8.3.3
+Code changes:
+ - Doc fix for PhoneNumberOfflineGeocoder to explain the cases where an empty
+   string might be returned.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BF, BM, BQ, BS, BW, CA, DM, DO, ES, GD, GU, HK, HR, IN, JM,
+   JO, KN, KY, LC, ME, MP, MS, MX, PH, PR, SR, SX, TC, TH, TT, US, VC, VG, VI
+ - Updated short number metadata for region code(s): ES, HR
+ - Updated geocoding data for country calling code(s):
+   34 (en, es), 84 (vi), 91 (en)
+ - New carrier data for country calling code(s): 264 (en)
+ - Updated carrier data for country calling code(s):
+   55 (en), 63 (en), 66 (en), 91 (en), 233 (en), 599 (en)
+
 Feb 28, 2017: v8.3.2
 Metadata changes:
  - Updated phone metadata for region code(s): BS, CI, HT, IL, IN, IS, KE, SK
