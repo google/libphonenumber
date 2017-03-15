@@ -3544,7 +3544,7 @@
         <nationalNumberPattern>
           0(?:
             1[0-26]|
-            6[0-27]|
+            6[0-257]|
             8[058]|
             9[12]
           )|
@@ -3576,7 +3576,14 @@
             80\d{2}
           )|
           3[357]\d{3}|
-          [79]9[57]\d{3}
+          79[57]\d{3}|
+          9(?:
+            0(?:
+              5[124578]|
+              7
+            )|
+            9[57]\d{3}
+          )
         </nationalNumberPattern>
         <possibleLengths national="[3-6]"/>
         <exampleNumber>010</exampleNumber>
@@ -3586,7 +3593,7 @@
         <nationalNumberPattern>
           0(?:
             16|
-            67|
+            6[57]|
             88
           )|
           1(?:
@@ -3626,7 +3633,13 @@
             2\d{1,4}|
             [3-9]\d{3,4}
           )|
-          [379]\d{4,5}
+          9(?:
+            0(?:
+               5[124578]|
+               7
+            )|\d{4,5}
+          )|
+          [37]\d{4,5}
         </nationalNumberPattern>
         <possibleLengths national="[3-6]"/>
         <exampleNumber>23456</exampleNumber>
@@ -4981,13 +4994,16 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            1[28]|
-            16(?:
-              00[06]|
-              1(?:
-                1[17]|
-                23
-              )
+            1(?:
+              2|
+              6(?:
+                00[06]|
+                1(?:
+                  1[17]|
+                  23
+                )
+              )|
+              8\d{2}?
             )|
             3977|
             9(?:
@@ -5010,6 +5026,15 @@
         <possibleLengths national="5,6"/>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
+      <premiumRate>
+        <!-- ITU doc says 118XX short codes are directory enquiry services and cost is standard
+             / premium rate. Adding 118XX to premium rate so that products are aware of the
+             possibility of premium rate numbers under 118 range. -->
+        <nationalNumberPattern>118\d{2}</nationalNumberPattern>
+        <possibleNumberPattern>\d{5}</possibleNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>11812</exampleNumber>
+      </premiumRate>
       <carrierSpecific>
         <!-- Bonbon users can send free SMS to 13977 short code.
              http://www.bonbon.hr/ponuda/pretplata/paketi/ -->
@@ -5033,10 +5058,7 @@
       <expandedEmergency>
         <nationalNumberPattern>
           1(?:
-            16(?:
-              00[06]|
-              111
-            )|
+            16\d{3}|
             9(?:
               5|
               87

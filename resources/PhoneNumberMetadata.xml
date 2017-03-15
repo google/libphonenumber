@@ -387,6 +387,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -472,6 +473,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -1423,6 +1425,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -2285,6 +2288,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -2888,15 +2892,7 @@
               5[23]|
               9[016-9]
             )|
-            4(?:
-              4[569]|
-              5[4-6]|
-              7[0179]
-            )|
-            5(?:
-              [34]\d|
-              50
-            )
+            [45]\d{2}
           )\d{4}
         </nationalNumberPattern>
         <possibleLengths national="8"/>
@@ -3359,6 +3355,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -3496,10 +3493,16 @@
         <possibleNumberPattern>\d{7}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
+        <!-- Prefixes 72[05] are mentioned as "Long distance service" numbers in ITU. Not supporting
+             them for now because we aren't sure what they are used for and no example numbers can
+             be found online. -->
         <nationalNumberPattern>
           (?:
             318[023]|
-            416[023]|
+            41(?:
+              6[023]|
+              70
+            )|
             7(?:
               1[578]|
               50
@@ -3512,12 +3515,16 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            318[14-68]|
-            416[15-9]|
+            31(?:
+              8[14-8]|
+              9[14578]
+            )|
+            416[145-9]|
             7(?:
               0[01]|
               7[07]|
-              [89]\d
+              8\d|
+              9[056]
             )\d
           )\d{3}
         </nationalNumberPattern>
@@ -3798,6 +3805,7 @@
           242300\d{4}|
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -3924,7 +3932,7 @@
               9[0578]
             )|
             3(?:
-              1[0235-9]|
+              1[0-35-9]|
               55|
               [69]\d|
               7[01]
@@ -4405,6 +4413,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -6698,6 +6707,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -6812,6 +6822,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -7436,15 +7447,13 @@
              Madrid area http://www.boe.es/boe/dias/2016/11/17/pdfs/BOE-A-2016-10756.pdf. -->
         <nationalNumberPattern>
           8(?:
-            [13]0|
+            [1356]\d|
             [28][0-8]|
-            [47][1-9]|
-            5[01346-9]|
-            6[0457-9]
+            [47][1-9]
           )\d{6}|
           9(?:
-            [15]\d{7}|
-            [238][0-8]\d{6}|
+            [135]\d{7}|
+            [28][0-8]\d{6}|
             4[1-9]\d{6}|
             6(?:
               [0-8]\d{6}|
@@ -8805,6 +8814,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -9820,6 +9830,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -10026,9 +10037,19 @@
       <fixedLine>
         <nationalNumberPattern>
           (?:
-            [23]\d|
-            58
-          )\d{6}
+            2(?:
+              [13-8]\d|
+              2[013-9]|
+              9[0-24-9]
+            )|
+            3(?:
+              [1569][0-24-9]|
+              4[0-246-9]|
+              7[0-24-69]|
+              89
+            )|
+            58[01]
+          )\d{5}
         </nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
@@ -10037,12 +10058,22 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            5[1-79]\d|
-            6\d{2}|
-            8[4-79]\d|
+            5(?:
+              [1-59][0-46-9]|
+              6[0-4689]|
+              7[0-2469]
+            )|
+            6(?:
+              0[1-9]|
+              [1459]\d|
+              [2368][0-57-9]|
+              7[0-79]
+            )|
             9(?:
               0[1-9]|
-              [1-8]\d
+              1[02-9]|
+              [2358][0-8]|
+              [467]\d
             )
           )\d{5}
         </nationalNumberPattern>
@@ -10173,49 +10204,30 @@
           <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(6[09])(\d{4})(\d{3})">
-          <leadingDigits>6[09]</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-        <numberFormat pattern="([67]2)(\d{3})(\d{3,4})">
-          <leadingDigits>[67]2</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="([2-5]\d)(\d{3})(\d{3,4})">
           <leadingDigits>[2-5]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- For 8 and 9 digit numbers of mobile. -->
         <numberFormat pattern="(9\d)(\d{3})(\d{3,4})">
           <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(9\d)(\d{4})(\d{4})">
-          <leadingDigits>9</leadingDigits>
+        <!-- For 6 and 7 digit numbers of premium rate. -->
+        <numberFormat pattern="(6[01])(\d{2})(\d{2,3})">
+          <leadingDigits>6[01]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(9\d)(\d{3,4})(\d{3})(\d{3})">
-          <leadingDigits>9</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{2})(\d{2,3})">
-          <leadingDigits>
-            6[0145]|
-            7
-          </leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{3,4})(\d{3})">
-          <leadingDigits>
-            6[0145]|
-            7
-          </leadingDigits>
+        <!-- For 8 and 9 digit numbers of premium, personal and UAN numbers. -->
+        <numberFormat pattern="([67]\d)(\d{3})(\d{3,4})">
+          <leadingDigits>[67]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(80[01])(\d{2})(\d{2,3})">
           <leadingDigits>8</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(80[01])(\d{3,4})(\d{3})">
+        <numberFormat pattern="(80[01])(\d{3})(\d{3})">
           <leadingDigits>8</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -10223,9 +10235,9 @@
       <generalDesc>
         <nationalNumberPattern>
           [1-7]\d{5,8}|
-          [89]\d{6,11}
+          [89]\d{6,8}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6,12}</possibleNumberPattern>
+        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
       </generalDesc>
       <fixedLine>
        <nationalNumberPattern>
@@ -10244,41 +10256,51 @@
       <mobile>
         <nationalNumberPattern>
           9(?:
-            [1-9]\d{6,10}|
-            01\d{6,9}
-           )
+            01\d|
+            [1259]\d{2}|
+            7(?:
+              [0679]\d|
+              51
+            )|
+            8\d{1,2}
+          )\d{5}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{8,12}</possibleNumberPattern>
-        <possibleLengths national="[8-12]"/>
-        <exampleNumber>912345678</exampleNumber>
+        <possibleNumberPattern>\d{8,9}</possibleNumberPattern>
+        <possibleLengths national="8,9"/>
+        <exampleNumber>921234567</exampleNumber>
       </mobile>
       <tollFree>
-        <nationalNumberPattern>80[01]\d{4,7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{7,10}</possibleNumberPattern>
-        <possibleLengths national="[7-10]"/>
-        <exampleNumber>8001234567</exampleNumber>
+        <nationalNumberPattern>80[01]\d{4,6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{7,9}</possibleNumberPattern>
+        <possibleLengths national="[7-9]"/>
+        <exampleNumber>800123456</exampleNumber>
       </tollFree>
       <premiumRate>
-        <!-- The prefixes 060, 061, 064, 065 and 069 are named as premium rate numbers by http://www.vipnet.hr/en/poslovni-korisnici/telefon-internet/vip-adsl-usluga#panel_4.-->
         <nationalNumberPattern>
-        6(?:
-          [01459]\d{4,7}
-         )
+          6(?:
+            [01]\d{0,2}|
+            [459]\d{2}
+          )\d{4}
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
-        <possibleLengths national="[6-9]"/>
+        <possibleNumberPattern>\d{6,8}</possibleNumberPattern>
+        <possibleLengths national="[6-8]"/>
         <exampleNumber>611234</exampleNumber>
       </premiumRate>
       <personalNumber>
-        <nationalNumberPattern>7[45]\d{4,7}</nationalNumberPattern>
-        <possibleNumberPattern>\d{6,9}</possibleNumberPattern>
-        <possibleLengths national="[6-9]"/>
-        <exampleNumber>741234567</exampleNumber>
+        <nationalNumberPattern>7[45]\d{6}</nationalNumberPattern>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+        <possibleLengths national="8"/>
+        <exampleNumber>74123456</exampleNumber>
       </personalNumber>
       <uan>
         <!-- ITU numbering specifies the length of the numbers with prefix 62 as 8, but there
              are numbers on the internet with 7 digits after the prefix too. -->
-        <nationalNumberPattern>[76]2\d{6,7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            62\d?|
+            72
+          )\d{6}
+        </nationalNumberPattern>
         <possibleNumberPattern>\d{8,9}</possibleNumberPattern>
         <possibleLengths national="8,9"/>
         <exampleNumber>62123456</exampleNumber>
@@ -11221,11 +11243,12 @@
             7(?:
               [02-8]|
               19|
-              9[07-9]
+              9[037-9]
             )|
             8(?:
               0[015-9]|
-              [1-9]
+              [1-9]|
+              20
             )|
             9
           </leadingDigits>
@@ -11254,30 +11277,27 @@
                 5[017-9]
               )|
               6(?:
-                [05-9]|
-                1[0-257-9]|
-                2[0-5]|
-                3[19]|
-                4[6-9]
+                [02-9]|
+                1[0-257-9]
               )|
               9(?:
                 [089]|
-                7[2-9]
+                31|
+                7[02-9]
               )
             )|
             8(?:
               0(?:
                 [01589]|
                 6[67]|
-                7[2-9]
+                7[02-9]
               )|
               1(?:
-                [02-57-9]|
-                1[0135-9]|
-                6[089]
+                [0-57-9]|
+                6[07-9]
               )|
               2(?:
-                0[08]|
+                0[078]|
                 [14][07-9]|
                 [235-9]
               )|
@@ -11381,10 +11401,7 @@
               )|
               5(?:
                 [0346-9]|
-                1(?:
-                  [0189]|
-                  7[02-9]
-                )|
+                1[017-9]|
                 2(?:
                   [03-9]|
                   [12][089]
@@ -11392,13 +11409,11 @@
                 5[017-9]
               )|
               6(?:
-                [06-9]|
+                [0346-9]|
                 1[0-257-9]|
-                2[0-5]|
-                3[19]|
-                4(?:
-                  6[89]|
-                  [7-9][089]
+                2(?:
+                  [0-4]\d|
+                  [5-9][089]
                 )|
                 5(?:
                   [0-367][089]|
@@ -11422,15 +11437,11 @@
                 )
               )|
               9(?:
-                [08]|
+                [089]|
+                313|
                 7(?:
-                  [2-8]|
+                  [02-8]|
                   9[07-9]
-                )|
-                9(?:
-                  [03-9]|
-                  11|
-                  2[234]
                 )
               )
             )|
@@ -11439,21 +11450,26 @@
                 [01589]|
                 6[67]|
                 7(?:
-                  [2-8]|
-                  9[056]
+                  [02-8]|
+                  9[05-9]
                 )
               )|
               1(?:
                 [02-57-9]|
                 1(?:
-                  [0135-9]|
-                  22|
-                  44
+                  [0-35-9]|
+                  4[0-46-9]
                 )|
-                6[089]
+                6(?:
+                  [089]|
+                  7[02-8]
+                )
               )|
               2(?:
-                0[08]|
+                0(?:
+                  [08]|
+                  7[02]
+                )|
                 [14](?:
                   [089]|
                   7[02-8]
@@ -11968,9 +11984,8 @@
               5(?:
                 [0346-8]\d{2}|
                 1(?:
-                  [089]\d|
-                  11|
-                  7[02-9]
+                  [07-9]\d|
+                  11
                 )|
                 2(?:
                   [04-9]\d|
@@ -11989,17 +12004,17 @@
                 )|
                 (?:
                   1[0-257-9]|
-                  3[19]|
                   [6-9]\d
                 )\d|
                 2(?:
                   [0-4]\d|
-                  50
+                  [5-9][089]
                 )|
-                4(?:
-                  6[89]|
-                  [789][089]
+                3(?:
+                  [02-8][089]|
+                  [19]\d
                 )|
+                4\d[089]|
                 5(?:
                   [0-367][089]|
                   [4589]\d
@@ -12023,20 +12038,11 @@
                 )
               )|
               9(?:
-                0(?:
-                  0[01]|
-                  [3-8]\d|
-                  90
-                )|
+                [089]\d{2}|
+                313|
                 7(?:
-                  [2-8]\d|
+                  [02-8]\d|
                   9[07-9]
-                )|
-                8\d{2}|
-                9(?:
-                  [03-9]\d|
-                  11|
-                  2[234]
                 )
               )
             )|
@@ -12045,21 +12051,26 @@
                 [01589]\d{2}|
                 6[67]\d|
                 7(?:
-                  [2-8]\d|
-                  9[056]
+                  [02-8]\d|
+                  9[05-9]
                 )
               )|
               1(?:
                 [02-57-9]\d{2}|
                 1(?:
-                  [0135-9]\d|
-                  22|
-                  44
+                  [0-35-9]\d|
+                  4[0-46-9]
                 )|
-                6[089]\d
+                6(?:
+                  [089]\d|
+                  7[02-8]
+                 )
               )|
               2(?:
-                0[08]\d|
+                0(?:
+                  [08]\d|
+                  7[02]
+                )|
                 [14](?:
                   [089]\d|
                   7[02-8]
@@ -13056,6 +13067,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -13212,7 +13224,7 @@
           7(?:
             55|
             7[025-9]|
-            8[015-9]|
+            8[0-25-9]|
             9[0-25-9]
           )\d{6}
         </nationalNumberPattern>
@@ -14726,6 +14738,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -15274,6 +15287,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -15686,6 +15700,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -16698,22 +16713,7 @@
             [2-57-9]|
             6[036-9]
           </leadingDigits>
-          <leadingDigits>
-            [2-57-9]|
-            6(?:
-              [03689]|
-              7(?:
-                [0-8]|
-                9[3-9]
-              )
-            )
-          </leadingDigits>
           <format>$1 $2 $3</format>
-        </numberFormat>
-        <numberFormat pattern="(67)(9)(\d{3})(\d{3})">
-          <leadingDigits>679</leadingDigits>
-          <leadingDigits>679[0-2]</leadingDigits>
-          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
@@ -16729,17 +16729,17 @@
             20[2-8]|
             3(?:
               0[2-7]|
-              [12][35-7]|
-              3[4-7]
+              [12][235-7]|
+              3[24-7]
             )|
             4(?:
-              0[2367]|
+              0[2-467]|
               1[267]
             )|
             5(?:
-              0[467]|
+              0[2467]|
               1[267]|
-              2[367]
+              2[2367]
             )
           )\d{5}
         </nationalNumberPattern>
@@ -16748,30 +16748,25 @@
         <exampleNumber>30234567</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- According to ITU it is possible for mobile numbers to be 4-12 digits long
+             (http://www.itu.int/oth/T02020000DA/en). However, in reality they seem to be 8 digits
+             long. In particular, http://www.ekip.me/numeracija/dodijeljena.php mentions 67[0-2]
+             numbers to be 9 digits long but this seems to be no longer the case, based on user
+             reports and online examples. -->
         <nationalNumberPattern>
           6(?:
             00\d|
-            3[24]\d|
-            61\d|
-            7(?:
-              [0-8]\d|
-              9(?:
-                [3-9]|
-                [0-2]\d
-              )
-            )|
-            [89]\d{2}
+            3[024]\d|
+            6[0-25]\d|
+            [7-9]\d{2}
           )\d{4}
         </nationalNumberPattern>
-        <!-- According to ITU it is possible for the numbers to be between length 4-12
-             (http://www.itu.int/oth/T02020000DA/en). However, in reality they seem to be 8 or 9
-             digits long, based on the Montenegro document. -->
-        <possibleNumberPattern>\d{8,9}</possibleNumberPattern>
-        <possibleLengths national="8,9"/>
+        <possibleNumberPattern>\d{8}</possibleNumberPattern>
+        <possibleLengths national="8"/>
         <exampleNumber>67622901</exampleNumber>
       </mobile>
       <tollFree>
-        <nationalNumberPattern>80\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>80[0-258]\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
         <exampleNumber>80080002</exampleNumber>
@@ -16791,13 +16786,13 @@
         <exampleNumber>94515151</exampleNumber>
       </premiumRate>
       <voip>
-        <nationalNumberPattern>78[1-9]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>78[1-49]\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
         <exampleNumber>78108780</exampleNumber>
       </voip>
       <uan>
-        <nationalNumberPattern>77\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>77[1-9]\d{5}</nationalNumberPattern>
         <possibleNumberPattern>\d{8}</possibleNumberPattern>
         <possibleLengths national="8"/>
         <exampleNumber>77273012</exampleNumber>
@@ -17568,6 +17563,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -17718,6 +17714,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -18252,7 +18249,9 @@
         <exampleNumber>2221234567</exampleNumber>
       </fixedLine>
       <mobile>
-      <!-- Also covering fixed satellite service numbers (prefixes: 200 and 201). -->
+      <!-- Fixed satellite service numbers are not included here, although many other prefixes from
+           the fixedLine pattern are. As per official documentation 221 is a mobile NDC but we can't
+           tell that it's a geographic area code, so we only add it here. -->
         <nationalNumberPattern>
           1(?:
             (?:
@@ -18262,7 +18261,7 @@
             )\d{8}|
             (?:
               2(?:
-                2[2-9]|
+                2[1-9]|
                 3[1-35-8]|
                 4[13-9]|
                 7[1-689]|
@@ -20214,7 +20213,7 @@
         <exampleNumber>21234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- 950 added based on info received from Smart. -->
+        <!-- 950 added based on info received from Smart. 96[5-7] added based on user report. -->
         <nationalNumberPattern>
           (?:
             81[37]|
@@ -20223,8 +20222,9 @@
               1[024-9]|
               2[0-35-9]|
               3[02-9]|
-              4[236-9]|
+              4[235-9]|
               5[056]|
+              6[5-7]|
               7[34-79]|
               89|
               9[4-9]
@@ -20742,6 +20742,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -23014,10 +23015,7 @@
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>
-            59|
-            [6-8]
-          </leadingDigits>
+          <leadingDigits>[6-8]</leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
       </availableFormats>
@@ -23051,13 +23049,8 @@
         <exampleNumber>7412345</exampleNumber>
       </mobile>
       <voip>
-        <nationalNumberPattern>
-          5(?:
-            6\d{4}|
-            90[0-4]\d{3}
-          )
-        </nationalNumberPattern>
-        <possibleLengths national="6,7"/>
+        <nationalNumberPattern>56\d{4}</nationalNumberPattern>
+        <possibleLengths national="6"/>
         <exampleNumber>561234</exampleNumber>
       </voip>
     </territory>
@@ -23229,6 +23222,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -23428,6 +23422,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -23623,7 +23618,7 @@
         <nationalNumberPattern>
           (?:
             14|
-            6[1-5]|
+            6[1-6]|
             [89]\d
           )\d{7}
         </nationalNumberPattern>
@@ -24253,6 +24248,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -25031,6 +25027,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -25662,6 +25659,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -25825,6 +25823,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
@@ -25957,6 +25956,7 @@
         <nationalNumberPattern>
           8(?:
             00|
+            33|
             44|
             55|
             66|
