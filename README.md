@@ -30,6 +30,10 @@ To include the code in your application, either integrate with Maven or download
 
 http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
 
+# Javadoc
+
+https://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/8.3.3
+
 # Versioning and Announcements
 
 We generally choose the release number following these guidelines.
