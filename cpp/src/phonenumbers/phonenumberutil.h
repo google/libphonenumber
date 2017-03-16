@@ -56,9 +56,9 @@ class PhoneNumberRegExpsAndMappings;
 class RegExp;
 
 // NOTE: A lot of methods in this class require Region Code strings. These must
-// be provided using ISO 3166-1 two-letter country-code format. The list of the
-// codes can be found here:
-// http://www.iso.org/iso/english_country_names_and_code_elements
+// be provided using CLDR two-letter region-code format. These should be in
+// upper-case. The list of the codes can be found here:
+// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
 
 class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
  private:

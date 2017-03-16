@@ -15,13 +15,12 @@
      @author: Shaopeng Jia
 
      Metadata on Phone Number Plan and formatting rules
-     Note: Territories are in alphabetical order by their IDs, which are based on ISO 3166-1
-           two-letter country codes (or are set to "001" for non-geographical entities, which
+     Note: Territories are in alphabetical order by their IDs, which are based on CLDR
+           two-letter region codes (or are set to "001" for non-geographical entities, which
            represents "World" in the UN M.49 standard). The country names in the comments are the
-           official short names in English according to ISO 3166-1.
+           official short names in English according to CLDR.
 
-     For more information on what each element represents, see
-     resources/phonemetadata.proto
+     For more information on what each element represents, see resources/phonemetadata.proto
 
      Note that if you want to add validation metadata, the generalDesc nationalNumberPattern and
      possibleNumberPattern must be provided. If this is missing, then the country will be
