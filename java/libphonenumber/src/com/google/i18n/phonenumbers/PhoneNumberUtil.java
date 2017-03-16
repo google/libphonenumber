@@ -2192,6 +2192,12 @@ public class PhoneNumberUtil {
       return false;
     }
     String nationalSignificantNumber = getNationalSignificantNumber(number);
+    if (metadata.hasLeadingDigits()) {
+        if (regexCache.getPatternForRegex(metadata.getLeadingDigits())
+                .matcher(nationalSignificantNumber).lookingAt()) {
+          return true;
+        }
+    } 
     return getNumberTypeHelper(nationalSignificantNumber, metadata) != PhoneNumberType.UNKNOWN;
   }
 
