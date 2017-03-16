@@ -20,11 +20,10 @@
  * Functionality includes formatting, parsing and validation.
  * (based on the java implementation).
  *
- * NOTE: A lot of methods in this class require Region Code strings. These must
- * be provided using ISO 3166-1 two-letter country-code format. These should be
- * in upper-case (but for compatibility lower-case is also allowed). The list of
- * the codes can be found here:
- * http://www.iso.org/iso/english_country_names_and_code_elements
+ * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
+ * CLDR two-letter region-code format. These should be in upper-case. The list of the codes
+ * can be found here:
+ * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
  *
  * Credits to Nikolaos Trogkanis for original implementation.
  */
@@ -1434,7 +1433,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
 /**
  * Helper function to check region code is not unknown or null.
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter region code.
+ * @param {?string} regionCode the CLDR two-letter region code.
  * @return {boolean} true if region code is valid.
  * @private
  */
@@ -3094,7 +3093,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
  * Checks if this is a region under the North American Numbering Plan
  * Administration (NANPA).
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter region code.
+ * @param {?string} regionCode the CLDR two-letter region code.
  * @return {boolean} true if regionCode is one of the regions under NANPA.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
