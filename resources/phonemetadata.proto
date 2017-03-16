@@ -282,10 +282,14 @@ message PhoneMetadata {
 
   // This field is populated only for countries or regions that share a country
   // calling code. If a number matches this pattern, it could belong to this
-  // region. This is not intended as a replacement for IsValidForRegion, and
-  // does not mean the number must come from this region (for example, 800
-  // numbers are valid for all NANPA countries.) This field should be a regular
-  // expression of the expected prefix match.
+  // region. This is not intended as a replacement for IsValidForRegion since a
+  // matching prefix is insufficient for a number to be valid. Furthermore, it
+  // does not contain all the prefixes valid for a region - for example, 800
+  // numbers are valid for all NANPA countries and are hence not listed here.
+  // This field should be a regular expression of the expected prefix match.
+  // It is used merely as a short-cut for working out which region a number
+  // comes from in the case that there is only one, so leading_digit prefixes
+  // should not overlap.
   optional string leading_digits = 23;
 
   // The leading zero in a phone number is meaningful in some countries (e.g.
