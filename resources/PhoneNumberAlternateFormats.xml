@@ -30,12 +30,12 @@
      mainCountryForCode set to true in PhoneNumberMetadata.xml should be present
      here.
 
-     Note: Territories are in alphabetical order by their IDs, which are based on ISO 3166-1
-           two-letter country codes. The country names in the comments are the official short names
-           in English according to ISO 3166-1.
+     Note: Territories are in alphabetical order by their IDs, which are based on CLDR
+           two-letter region codes (or are set to "001" for non-geographical entities, which
+           represents "World" in the UN M.49 standard). The country names in the comments are the
+           official short names in English according to CLDR.
 
-     For more information on what each element represents, see
-     resources/phonemetadata.proto
+     For more information on what each element represents, see resources/phonemetadata.proto
 -->
 
 <!DOCTYPE phoneNumberMetadata [

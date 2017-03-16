@@ -93,7 +93,7 @@ class PhoneNumberOfflineGeocoder {
   //
   // user_region is the region code for a given user. This region will be
   // omitted from the description if the phone number comes from this region. It
-  // should be a two-letter uppercase ISO country code as defined by ISO 3166-1.
+  // should be a two-letter uppercase CLDR region code.
   string GetDescriptionForValidNumber(const PhoneNumber& number,
       const Locale& language, const string& user_region) const;
 
@@ -133,11 +133,11 @@ class PhoneNumberOfflineGeocoder {
 
   // Returns an area-level text description in the given language for the given
   // phone number, or an empty string.
-  // lang is a two-letter lowercase ISO language codes as defined by ISO 639-1.
+  // lang is a two or three-letter lowercase ISO language code as defined by ISO
+  // 639.
   // script is a four-letter titlecase (the first letter is uppercase and the
-  // rest of the letters are lowercase) ISO script codes as defined in ISO
-  // 15924.
-  // region should be a two-letter uppercase ISO country codes as defined by ISO
+  // rest of the letters are lowercase) ISO script code as defined in ISO 15924.
+  // region should be a two-letter uppercase ISO country code as defined by ISO
   // 3166-1.
   const char* GetAreaDescription(const PhoneNumber& number, const string& lang,
                                  const string& script,

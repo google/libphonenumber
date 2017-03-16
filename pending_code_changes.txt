@@ -1,1 +1,8 @@
-
+Code changes:
+ - Doc changes to update references to ISO country codes to CLDR region codes,
+   which are what we actually use. Notice in some of the mapper files the
+   country code is still the ISO one, because it's used as part of a description
+   of a language only (e.g. zh-TW vs zh-CN). Edited the language comments there
+   since they can be two *or* three letters (c.f. fil for filipino). Also edited
+   the comment for leadingDigits at the territory level in the
+   phonemetadata.proto file.
