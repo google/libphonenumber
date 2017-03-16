@@ -206,7 +206,7 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
-### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
+### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ), 388, 991, etc. not supported?
 
 We only support a country if:
 
