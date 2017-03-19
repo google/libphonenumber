@@ -25,12 +25,14 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -455,7 +457,9 @@ public class PhoneNumberUtil {
     /**
      * The number is longer than the shortest valid numbers for this region, shorter than the
      * longest valid numbers for this region, and does not itself have a number length that matches
-     * valid numbers for this region.
+     * valid numbers for this region. This can also be returned in the case where
+     * isPossibleNumberForTypeWithReason was called, and there are no numbers of this type at all
+     * for this region.
      */
     INVALID_LENGTH,
     /** The number is longer than all valid numbers for this region. */
@@ -949,18 +953,90 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Convenience method to get a list of what regions the library has metadata for.
+   * Returns all regions the library has metadata for.
+   *
+   * @return  an unordered set of the two-letter region codes for every geographical region the
+   *     library supports
    */
   public Set<String> getSupportedRegions() {
     return Collections.unmodifiableSet(supportedRegions);
   }
 
   /**
-   * Convenience method to get a list of what global network calling codes the library has metadata
-   * for.
+   * Returns all global network calling codes the library has metadata for.
+   *
+   * @return  an unordered set of the country calling codes for every non-geographical entity the
+   *     library supports
    */
   public Set<Integer> getSupportedGlobalNetworkCallingCodes() {
     return Collections.unmodifiableSet(countryCodesForNonGeographicalRegion);
+  }
+
+  /**
+   * Returns true if there is any data set for a particular PhoneNumberDesc.
+   */
+  private boolean descHasData(PhoneNumberDesc desc) {
+    // Using the "example number" property to determine whether there are any numbers of this type
+    // or not at all. This is because it must be there - some other properties are either set to
+    // indicate we do *not* have numbers of this type, or are not set when we do, where they are the
+    // same as the corresponding generalDesc property.
+    // This is documented in the XML schema as needing to be present, and tested with
+    // PhoneNumberMetadataSchemaTest.
+    return desc.hasExampleNumber();
+  }
+
+  /**
+   * Returns the types we have metadata for based on the PhoneMetadata object passed in, which must
+   * be non-null.
+   */
+  private Set<PhoneNumberType> getSupportedTypesForMetadata(PhoneMetadata metadata) {
+    Set<PhoneNumberType> types = new TreeSet<PhoneNumberType>();
+    for (PhoneNumberType type : PhoneNumberType.values()) {
+      if (type == PhoneNumberType.FIXED_LINE_OR_MOBILE || type == PhoneNumberType.UNKNOWN) {
+        // Never return FIXED_LINE_OR_MOBILE (it is a convenience type, and represents that a
+        // particular number type can't be determined) or UNKNOWN (the non-type).
+        continue;
+      }
+      if (descHasData(getNumberDescByType(metadata, type))) {
+        types.add(type);
+      }
+    }
+    return Collections.unmodifiableSet(types);
+  }
+
+  /**
+   * Returns the types for a given region which the library has metadata for. Will not include
+   * FIXED_LINE_OR_MOBILE (if numbers in this region could be classified as FIXED_LINE_OR_MOBILE,
+   * both FIXED_LINE and MOBILE would be present) and UNKNOWN.
+   *
+   * No types will be returned for invalid or unknown region codes.
+   */
+  public Set<PhoneNumberType> getSupportedTypesForRegion(String regionCode) {
+    if (!isValidRegionCode(regionCode)) {
+      logger.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
+      return Collections.unmodifiableSet(new TreeSet<PhoneNumberType>());
+    }
+    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    return getSupportedTypesForMetadata(metadata);
+  }
+
+  /**
+   * Returns the types for a country-code belonging to a non-geographical entity which the library
+   * has metadata for. Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
+   * entity could be classified as FIXED_LINE_OR_MOBILE, both FIXED_LINE and MOBILE would be
+   * present) and UNKNOWN.
+   *
+   * No types will be returned for country calling codes that do not map to a known non-geographical
+   * entity.
+   */
+  public Set<PhoneNumberType> getSupportedTypesForNonGeoEntity(int countryCallingCode) {
+    PhoneMetadata metadata = getMetadataForNonGeographicalRegion(countryCallingCode);
+    if (metadata == null) {
+      logger.log(Level.WARNING, "Unknown country calling code for a non-geographical entity "
+          + "provided: " + countryCallingCode);
+      return Collections.unmodifiableSet(new TreeSet<PhoneNumberType>());
+    }
+    return getSupportedTypesForMetadata(metadata);
   }
 
   /**
@@ -1320,8 +1396,8 @@ public class PhoneNumberUtil {
         // short numbers, which are always dialled in national format.
         PhoneMetadata regionMetadata = getMetadataForRegion(regionCallingFrom);
         if (canBeInternationallyDialled(numberNoExt)
-            && testNumberLength(getNationalSignificantNumber(numberNoExt),
-                regionMetadata.getGeneralDesc()) != ValidationResult.TOO_SHORT) {
+            && testNumberLength(getNationalSignificantNumber(numberNoExt), regionMetadata)
+                != ValidationResult.TOO_SHORT) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
         } else {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
@@ -2387,20 +2463,89 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Helper method to check a number against possible lengths for this number, and determine whether
-   * it matches, or is too short or too long. Currently, if a number pattern suggests that numbers
-   * of length 7 and 10 are possible, and a number in between these possible lengths is entered,
-   * such as of length 8, this will return TOO_LONG.
+   * Convenience wrapper around {@link #isPossibleNumberForTypeWithReason}. Instead of returning the
+   * reason for failure, this method returns a boolean value.
+   *
+   * @param number  the number that needs to be checked
+   * @param type  the type we are interested in
+   * @return  true if the number is possible for this particular type
    */
-  private ValidationResult testNumberLength(String number, PhoneNumberDesc phoneNumberDesc) {
-    List<Integer> possibleLengths = phoneNumberDesc.getPossibleLengthList();
-    List<Integer> localLengths = phoneNumberDesc.getPossibleLengthLocalOnlyList();
+  public boolean isPossibleNumberForType(PhoneNumber number, PhoneNumberType type) {
+    return isPossibleNumberForTypeWithReason(number, type) == ValidationResult.IS_POSSIBLE;
+  }
+
+  /**
+   * Helper method to check a number against possible lengths for this region, based on the metadata
+   * being passed in, and determine whether it matches, or is too short or too long. Currently, if a
+   * number pattern suggests that numbers of length 7 and 10 are possible, and a number in between
+   * these possible lengths is entered, such as of length 8, this will return TOO_LONG.
+   */
+  private ValidationResult testNumberLength(String number, PhoneMetadata metadata) {
+    return testNumberLength(number, metadata, PhoneNumberType.UNKNOWN);
+  }
+
+  /**
+   * Helper method to check a number against possible lengths for this number type, and determine
+   * whether it matches, or is too short or too long. Currently, if a number pattern suggests that
+   * numbers of length 7 and 10 are possible, and a number in between these possible lengths is
+   * entered, such as of length 8, this will return TOO_LONG.
+   */
+  private ValidationResult testNumberLength(
+      String number, PhoneMetadata metadata, PhoneNumberType type) {
+    PhoneNumberDesc descForType = getNumberDescByType(metadata, type);
+    // There should always be "possibleLengths" set for every element. This is declared in the XML
+    // schema which is verified by PhoneNumberMetadataSchemaTest.
+    // For size efficiency, where a sub-description (e.g. fixed-line) has the same possibleLengths
+    // as the parent, this is missing, so we fall back to the general desc (where no numbers of the
+    // type exist at all, there is one possible length (-1) which is guaranteed not to match the
+    // length of any real phone number).
+    List<Integer> possibleLengths = descForType.getPossibleLengthList().isEmpty()
+        ? metadata.getGeneralDesc().getPossibleLengthList() : descForType.getPossibleLengthList();
+
+    List<Integer> localLengths = descForType.getPossibleLengthLocalOnlyList();
+
+    if (type == PhoneNumberType.FIXED_LINE_OR_MOBILE) {
+      if (!descHasData(getNumberDescByType(metadata, PhoneNumberType.FIXED_LINE))) {
+        // The rare case has been encountered where no fixedLine data is available (true for some
+        // non-geographical entities), so we just check mobile.
+        return testNumberLength(number, metadata, PhoneNumberType.MOBILE);
+      } else {
+        PhoneNumberDesc mobileDesc = getNumberDescByType(metadata, PhoneNumberType.MOBILE);
+        if (descHasData(mobileDesc)) {
+          // Merge the mobile data in if there was any. We have to make a copy to do this.
+          possibleLengths = new ArrayList<Integer>(possibleLengths);
+          // Note that when adding the possible lengths from mobile, we have to again check they
+          // aren't empty since if they are this indicates they are the same as the general desc and
+          // should be obtained from there.
+          possibleLengths.addAll(mobileDesc.getPossibleLengthList().size() == 0
+              ? metadata.getGeneralDesc().getPossibleLengthList()
+              : mobileDesc.getPossibleLengthList());
+          // The current list is sorted; we need to merge in the new list and re-sort (duplicates
+          // are okay). Sorting isn't so expensive because the lists are very small.
+          Collections.sort(possibleLengths);
+
+          if (localLengths.isEmpty()) {
+            localLengths = mobileDesc.getPossibleLengthLocalOnlyList();
+          } else {
+            localLengths = new ArrayList<Integer>(localLengths);
+            localLengths.addAll(mobileDesc.getPossibleLengthLocalOnlyList());
+            Collections.sort(localLengths);
+          }
+        }
+      }
+    }
+
+    // If the type is not supported at all (indicated by the possible lengths containing -1 at this
+    // point) we return invalid length.
+    if (possibleLengths.get(0) == -1) {
+      return ValidationResult.INVALID_LENGTH;
+    }
+
     int actualLength = number.length();
     if (localLengths.contains(actualLength)) {
       return ValidationResult.IS_POSSIBLE;
     }
-    // There should always be "possibleLengths" set for every element. This will be a build-time
-    // check once ShortNumberMetadata.xml is migrated to contain this information as well.
+
     int minimumLength = possibleLengths.get(0);
     if (minimumLength == actualLength) {
       return ValidationResult.IS_POSSIBLE;
@@ -2429,7 +2574,7 @@ public class PhoneNumberUtil {
    *      isValidNumber.
    * <li> For fixed line numbers, many regions have the concept of area code, which together with
    *      subscriber number constitute the national significant number. It is sometimes okay to dial
-   *      the subscriber number only when dialing in the same area. This function will return
+   *      only the subscriber number when dialing in the same area. This function will return
    *      true if the subscriber-number-only version is passed in. On the other hand, because
    *      isValidNumber validates using information on both starting digits (for fixed line
    *      numbers, that would most likely be area codes) and length (obviously includes the
@@ -2440,19 +2585,52 @@ public class PhoneNumberUtil {
    * @return  a ValidationResult object which indicates whether the number is possible
    */
   public ValidationResult isPossibleNumberWithReason(PhoneNumber number) {
+    return isPossibleNumberForTypeWithReason(number, PhoneNumberType.UNKNOWN);
+  }
+
+  /**
+   * Check whether a phone number is a possible number of a particular type. For types that don't
+   * exist in a particular region, this will return a result that isn't so useful; it is recommended
+   * that you use {@link #getSupportedTypesForRegion} or {@link #getSupportedTypesForNonGeoEntity}
+   * respectively before calling this method to determine whether you should call it for this number
+   * at all.
+   *
+   * This provides a more lenient check than {@link #isValidNumber} in the following sense:
+   *
+   * <ol>
+   *   <li> It only checks the length of phone numbers. In particular, it doesn't check starting
+   *       digits of the number.
+   *   <li> For fixed line numbers, many regions have the concept of area code, which together with
+   *       subscriber number constitute the national significant number. It is sometimes okay to
+   *       dial the subscriber number only when dialing in the same area. This function will return
+   *       true if the subscriber-number-only version is passed in. On the other hand, because
+   *       isValidNumber validates using information on both starting digits (for fixed line
+   *       numbers, that would most likely be area codes) and length (obviously includes the length
+   *       of area codes for fixed line numbers), it will return false for the
+   *       subscriber-number-only version.
+   * </ol>
+   *
+   * @param number  the number that needs to be checked
+   * @param type  the type we are interested in
+   * @return  a ValidationResult object which indicates whether the number is possible
+   */
+  public ValidationResult isPossibleNumberForTypeWithReason(
+      PhoneNumber number, PhoneNumberType type) {
     String nationalNumber = getNationalSignificantNumber(number);
     int countryCode = number.getCountryCode();
-    // Note: For Russian Fed and NANPA numbers, we just use the rules from the default region (US or
-    // Russia) since the getRegionCodeForNumber will not work if the number is possible but not
-    // valid. This would need to be revisited if the possible number pattern ever differed between
-    // various regions within those plans.
+    // Note: For regions that share a country calling code, like NANPA numbers, we just use the
+    // rules from the default region (US in this case) since the getRegionCodeForNumber will not
+    // work if the number is possible but not valid. There is in fact one country calling code (290)
+    // where the possible number pattern differs between various regions (Saint Helena and Tristan
+    // da Cuñha), but this is handled by putting all possible lengths for any country with this
+    // country calling code in the metadata for the default region in this case.
     if (!hasValidCountryCallingCode(countryCode)) {
       return ValidationResult.INVALID_COUNTRY_CODE;
     }
     String regionCode = getRegionCodeForCountryCode(countryCode);
     // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    return testNumberLength(nationalNumber, metadata.getGeneralDesc());
+    return testNumberLength(nationalNumber, metadata, type);
   }
 
   /**
@@ -2626,8 +2804,9 @@ public class PhoneNumberUtil {
         // consider the number with the country calling code stripped to be a better result and
         // keep that instead.
         if ((!validNumberPattern.matcher(fullNumber).matches()
-              && validNumberPattern.matcher(potentialNationalNumber).matches())
-            || testNumberLength(fullNumber.toString(), generalDesc) == ValidationResult.TOO_LONG) {
+                && validNumberPattern.matcher(potentialNationalNumber).matches())
+            || testNumberLength(fullNumber.toString(), defaultRegionMetadata)
+                == ValidationResult.TOO_LONG) {
           nationalNumber.append(potentialNationalNumber);
           if (keepRawInput) {
             phoneNumber.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
@@ -3039,8 +3218,8 @@ public class PhoneNumberUtil {
       // We require that the NSN remaining after stripping the national prefix and carrier code be
       // long enough to be a possible length for the region. Otherwise, we don't do the stripping,
       // since the original number could be a valid short number.
-      if (testNumberLength(potentialNationalNumber.toString(), regionMetadata.getGeneralDesc())
-              != ValidationResult.TOO_SHORT) {
+      if (testNumberLength(potentialNationalNumber.toString(), regionMetadata)
+          != ValidationResult.TOO_SHORT) {
         normalizedNationalNumber = potentialNationalNumber;
         if (keepRawInput && carrierCode.length() > 0) {
           phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
@@ -3111,7 +3290,7 @@ public class PhoneNumberUtil {
   /**
    * Returns a new phone number containing only the fields needed to uniquely identify a phone
    * number, rather than any fields that capture the context in which the phone number was created.
-   * These fields correspond to those set in parse() rather than parseHelper().
+   * These fields correspond to those set in parse() rather than parseAndKeepRawInput().
    */
   private static PhoneNumber copyCoreFieldsOnly(PhoneNumber phoneNumberIn) {
     PhoneNumber phoneNumber = new PhoneNumber();
