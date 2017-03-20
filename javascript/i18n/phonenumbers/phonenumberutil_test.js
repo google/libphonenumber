@@ -450,6 +450,41 @@ function testGetSupportedGlobalNetworkCallingCodes() {
       });
 }
 
+function testGetSupportedTypesForRegion() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  var types = phoneUtil.getSupportedTypesForRegion(RegionCode.BR);
+  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  // Our test data has no mobile numbers for Brazil.
+  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  // UNKNOWN should never be returned.
+  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+
+  // In the US, many numbers are classified as FIXED_LINE_OR_MOBILE; but we
+  // don't want to expose this as a supported type, instead we say FIXED_LINE
+  // and MOBILE are both present.
+  types = phoneUtil.getSupportedTypesForRegion(RegionCode.US);
+  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  assertTrue(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(goog.array.contains(types, PNT.FIXED_LINE_OR_MOBILE));
+
+  types = phoneUtil.getSupportedTypesForRegion(RegionCode.ZZ);
+  assertTrue(types.length == 0);
+}
+
+function testGetSupportedTypesForNonGeoEntity() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  var types = phoneUtil.getSupportedTypesForNonGeoEntity(999);
+  // No data exists for 999 at all, no types should be returned.
+  assertTrue(types.length == 0);
+
+  types = phoneUtil.getSupportedTypesForNonGeoEntity(979);
+  assertTrue(goog.array.contains(types, PNT.PREMIUM_RATE));
+  // Our test data has no mobile numbers for Brazil.
+  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  // UNKNOWN should never be returned.
+  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+}
+
 function testGetNationalSignificantNumber() {
   assertEquals('6502530000',
       phoneUtil.getNationalSignificantNumber(US_NUMBER));
@@ -478,7 +513,7 @@ function testGetNationalSignificantNumber_ManyLeadingZeros() {
   // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros
   // at all.
   number.setNumberOfLeadingZeros(-3);
-  assertEquals("650", phoneUtil.getNationalSignificantNumber(number));
+  assertEquals('650', phoneUtil.getNationalSignificantNumber(number));
 }
 
 function testGetExampleNumber() {
@@ -487,7 +522,15 @@ function testGetExampleNumber() {
 
   assertTrue(DE_NUMBER.equals(
       phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.FIXED_LINE)));
-  assertNull(phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.MOBILE));
+
+  // Should return the same response if asked for FIXED_LINE_OR_MOBILE too.
+  assertTrue(DE_NUMBER.equals(
+      phoneUtil.getExampleNumberForType(
+          RegionCode.DE, PNT.FIXED_LINE_OR_MOBILE)));
+  // We have data for the US, but no data for VOICEMAIL.
+  assertNull(
+      phoneUtil.getExampleNumberForType(RegionCode.US, PNT.VOICEMAIL));
+
   assertNotNull(
       phoneUtil.getExampleNumberForType(RegionCode.US, PNT.FIXED_LINE));
   assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US, PNT.MOBILE));
