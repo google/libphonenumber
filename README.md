@@ -1,6 +1,7 @@
 <p align="right">
 <img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
 </p>
+
 # What is it?
 
 Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
@@ -161,6 +162,6 @@ maintenance processes.
 *   C#: https://github.com/aidanbebbington/libphonenumber-csharp
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
-*   Ruby: https://github.com/sstephenson/global_phone
-*   javascript (stripped-down version): https://github.com/halt-hammerzeit/libphonenumber-js
-*   objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   Ruby: https://github.com/mobi/telephone_number
+*   Javascript (stripped-down version): https://github.com/halt-hammerzeit/libphonenumber-js
+*   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
