@@ -97,6 +97,32 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_number));
 }
 
+TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
+  PhoneNumber carrier_specific_number;
+  carrier_specific_number.set_country_code(1);
+  carrier_specific_number.set_national_number(33669ULL);
+  EXPECT_TRUE(short_info_.IsCarrierSpecific(carrier_specific_number));
+  EXPECT_TRUE(short_info_.IsCarrierSpecificForRegion(
+      ParseNumberForTesting("33669", RegionCode::US()), RegionCode::US()));
+
+  PhoneNumber not_carrier_specific_number;
+  not_carrier_specific_number.set_country_code(1);
+  not_carrier_specific_number.set_national_number(911ULL);
+  EXPECT_FALSE(short_info_.IsCarrierSpecific(not_carrier_specific_number));
+  EXPECT_FALSE(short_info_.IsCarrierSpecificForRegion(
+      ParseNumberForTesting("911", RegionCode::US()), RegionCode::US()));
+
+  PhoneNumber carrier_specific_number_for_some_region;
+  carrier_specific_number_for_some_region.set_country_code(1);
+  carrier_specific_number_for_some_region.set_national_number(211ULL);
+  EXPECT_TRUE(short_info_.IsCarrierSpecific(
+      carrier_specific_number_for_some_region));
+  EXPECT_TRUE(short_info_.IsCarrierSpecificForRegion(
+      carrier_specific_number_for_some_region, RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsCarrierSpecificForRegion(
+      carrier_specific_number_for_some_region, RegionCode::BB()));
+}
+
 TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   uint64 national_number;
   const string& premium_rate_example =

@@ -44,9 +44,9 @@ import java.util.regex.Pattern;
  * our <a href="http://groups.google.com/group/libphonenumber-discuss/about">mailing list</a>.
  *
  * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
- * ISO 3166-1 two-letter country-code format. These should be in upper-case. The list of the codes
+ * CLDR two-letter region-code format. These should be in upper-case. The list of the codes
  * can be found here:
- * http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm
+ * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
  *
  * @author Shaopeng Jia
  */
@@ -440,9 +440,25 @@ public class PhoneNumberUtil {
    * Possible outcomes when testing if a PhoneNumber is possible.
    */
   public enum ValidationResult {
+    /** The number length matches that of valid numbers for this region. */
     IS_POSSIBLE,
+    /**
+     * The number length matches that of local numbers for this region only (i.e. numbers that may
+     * be able to be dialled within an area, but do not have all the information to be dialled from
+     * anywhere inside or outside the country).
+     */
+    IS_POSSIBLE_LOCAL_ONLY,
+    /** The number has an invalid country calling code. */
     INVALID_COUNTRY_CODE,
+    /** The number is shorter than all valid numbers for this region. */
     TOO_SHORT,
+    /**
+     * The number is longer than the shortest valid numbers for this region, shorter than the
+     * longest valid numbers for this region, and does not itself have a number length that matches
+     * valid numbers for this region.
+     */
+    INVALID_LENGTH,
+    /** The number is longer than all valid numbers for this region. */
     TOO_LONG,
   }
 
@@ -728,7 +744,7 @@ public class PhoneNumberUtil {
    * @param number  a string of characters representing a phone number
    * @return  the normalized string version of the phone number
    */
-  static String normalizeDiallableCharsOnly(String number) {
+  public static String normalizeDiallableCharsOnly(String number) {
     return normalizeHelper(number, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
   }
 
@@ -1701,7 +1717,7 @@ public class PhoneNumberUtil {
   public String getNationalSignificantNumber(PhoneNumber number) {
     // If leading zero(s) have been set, we prefix this now. Note this is not a national prefix.
     StringBuilder nationalNumber = new StringBuilder();
-    if (number.isItalianLeadingZero()) {
+    if (number.isItalianLeadingZero() && number.getNumberOfLeadingZeros() > 0) {
       char[] zeros = new char[number.getNumberOfLeadingZeros()];
       Arrays.fill(zeros, '0');
       nationalNumber.append(new String(zeros));
@@ -2927,6 +2943,9 @@ public class PhoneNumberUtil {
    * parse() method, with the exception that it allows the default region to be null, for use by
    * isNumberMatch(). checkRegion should be set to false if it is permitted for the default region
    * to be null or unknown ("ZZ").
+   *
+   * Note if any new field is added to this method that should always be filled in, even when
+   * keepRawInput is false, it should also be handled in the copyCoreFieldsOnly() method.
    */
   private void parseHelper(String numberToParse, String defaultRegion, boolean keepRawInput,
                            boolean checkRegion, PhoneNumber phoneNumber)
@@ -3090,6 +3109,26 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Returns a new phone number containing only the fields needed to uniquely identify a phone
+   * number, rather than any fields that capture the context in which the phone number was created.
+   * These fields correspond to those set in parse() rather than parseHelper().
+   */
+  private static PhoneNumber copyCoreFieldsOnly(PhoneNumber phoneNumberIn) {
+    PhoneNumber phoneNumber = new PhoneNumber();
+    phoneNumber.setCountryCode(phoneNumberIn.getCountryCode());
+    phoneNumber.setNationalNumber(phoneNumberIn.getNationalNumber());
+    if (phoneNumberIn.getExtension().length() > 0) {
+      phoneNumber.setExtension(phoneNumberIn.getExtension());
+    }
+    if (phoneNumberIn.isItalianLeadingZero()) {
+      phoneNumber.setItalianLeadingZero(true);
+      // This field is only relevant if there are leading zeros at all.
+      phoneNumber.setNumberOfLeadingZeros(phoneNumberIn.getNumberOfLeadingZeros());
+    }
+    return phoneNumber;
+  }
+
+  /**
    * Takes two phone numbers and compares them for equality.
    *
    * <p>Returns EXACT_MATCH if the country_code, NSN, presence of a leading zero for Italian numbers
@@ -3110,27 +3149,10 @@ public class PhoneNumberUtil {
    *     of the two numbers, described in the method definition.
    */
   public MatchType isNumberMatch(PhoneNumber firstNumberIn, PhoneNumber secondNumberIn) {
-    // Make copies of the phone number so that the numbers passed in are not edited.
-    PhoneNumber firstNumber = new PhoneNumber();
-    firstNumber.mergeFrom(firstNumberIn);
-    PhoneNumber secondNumber = new PhoneNumber();
-    secondNumber.mergeFrom(secondNumberIn);
-    // First clear raw_input, country_code_source and preferred_domestic_carrier_code fields and any
-    // empty-string extensions so that we can use the proto-buffer equality method.
-    firstNumber.clearRawInput();
-    firstNumber.clearCountryCodeSource();
-    firstNumber.clearPreferredDomesticCarrierCode();
-    secondNumber.clearRawInput();
-    secondNumber.clearCountryCodeSource();
-    secondNumber.clearPreferredDomesticCarrierCode();
-    if (firstNumber.hasExtension()
-        && firstNumber.getExtension().length() == 0) {
-      firstNumber.clearExtension();
-    }
-    if (secondNumber.hasExtension()
-        && secondNumber.getExtension().length() == 0) {
-      secondNumber.clearExtension();
-    }
+    // We only care about the fields that uniquely define a number, so we copy these across
+    // explicitly.
+    PhoneNumber firstNumber = copyCoreFieldsOnly(firstNumberIn);
+    PhoneNumber secondNumber = copyCoreFieldsOnly(secondNumberIn);
     // Early exit if both had extensions and these are different.
     if (firstNumber.hasExtension() && secondNumber.hasExtension()
         && !firstNumber.getExtension().equals(secondNumber.getExtension())) {

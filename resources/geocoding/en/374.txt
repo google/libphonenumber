@@ -41,7 +41,7 @@
 37422297|Geghashen, Kotayk
 37422298|Arinj, Kotayk
 37422299|Kotayk
-374223|Hankavan/Hrazdan/Tsakhkadzor, Kotayk
+374223|Hankavan/Hrazdan/Tsaghkadzor, Kotayk
 3742232|Hrazdan, Kotayk
 3742233|Hrazdan, Kotayk
 3742234|Hrazdan, Kotayk
@@ -184,7 +184,7 @@
 37423593|Norashen, Ararat
 374236|Ayntap/Masis/Nor Kharberd/Norabats, Ararat
 3742362|Masis, Ararat
-3742363|Aintab/Masis, Ararat
+3742363|Ayntap/Masis, Ararat
 3742364|Masis, Ararat
 3742365|Masis, Ararat
 3742366|Masis, Ararat
@@ -243,8 +243,8 @@
 37424492|Panik, Shirak
 37424495|Arevshat, Shirak
 37424496|Mets Mantash, Shirak
-374245|Ashotsk region, Shirak
-374246|Amasia region, Shirak
+374245|Ashotsk, Shirak
+374246|Amasia, Shirak
 374249|Talin, Aragatsotn
 3742492|Talin, Aragatsotn
 3742493|Talin, Aragatsotn
@@ -260,10 +260,10 @@
 374252|Aparan, Aragatsotn
 3742522|Aparan, Aragatsotn
 3742523|Aparan, Aragatsotn
-3742524|Aparan/Artavan/Quchak, Aragatsotn
+3742524|Aparan/Artavan/Kuchak, Aragatsotn
 37425251|Kuchak, Aragatsotn
 3742526|Aparan, Aragatsotn
-37425281|Aparan/Artavan/Quchak, Aragatsotn
+37425281|Aparan/Artavan/Kuchak, Aragatsotn
 3742529|Aparan, Aragatsotn
 37425291|Kuchak, Aragatsotn
 37425295|Artavan, Aragatsotn
@@ -287,7 +287,7 @@
 37425481|Tashir/Metsavan, Lori
 3742549|Tashir/Metsavan, Lori
 37425494|Metsavan, Lori
-374255|Spitak region, Lori
+374255|Spitak, Lori
 374256|Bovadzor/Stepanavan, Lori
 3742562|Stepanavan, Lori
 3742563|Stepanavan, Lori
@@ -299,11 +299,11 @@
 37425694|Agarak, Lori
 37425695|Lejan, Lori
 374257|Aragats, Aragatsotn
-3742570|Tsakhkahovit region, Aragatsotn
-3742572|Tsakhkahovit region, Aragatsotn
-3742573|Tsakhkahovit region, Aragatsotn
-3742576|Tsakhkahovit region, Aragatsotn
-37425781|Tsakhkahovit region, Aragatsotn
+3742570|Tsakhkahovit, Aragatsotn
+3742572|Tsakhkahovit, Aragatsotn
+3742573|Tsakhkahovit, Aragatsotn
+3742576|Tsakhkahovit, Aragatsotn
+37425781|Tsakhkahovit, Aragatsotn
 374261|Sevan, Gegharkunik
 374262|Martuni, Gegharkunik
 3742622|Martuni, Gegharkunik
@@ -397,26 +397,26 @@
 37428197|Yelpin, Vayots dzor
 37428198|Rind, Vayots dzor
 37428199|Shatin, Vayots dzor
-374282|Vayk region, Vayots dzor
+374282|Vayk, Vayots dzor
 3742830|Sisian, Syunik
-3742832|Sisian region, Syunik
-3742833|Sisian region, Syunik
-37428351|Sisian region, Syunik
-3742836|Sisian region, Syunik
-3742837|Sisian region, Syunik
+3742832|Sisian, Syunik
+3742833|Sisian, Syunik
+37428351|Sisian, Syunik
+3742836|Sisian, Syunik
+3742837|Sisian, Syunik
 37428375|Tasik, Syunik
-3742838|Sisian region, Syunik
-3742839|Sisian region, Syunik
+3742838|Sisian, Syunik
+3742839|Sisian, Syunik
 37428396|Angehakot, Syunik
 374284|Goris/Verishen, Syunik
-3742842|Goris region, Syunik
+3742842|Goris, Syunik
 37428427|Verishen, Syunik
-3742843|Goris region, Syunik
-3742844|Goris region, Syunik
-3742845|Goris region, Syunik
-3742846|Goris region, Syunik
-37428481|Goris region, Syunik
-3742849|Goris region, Syunik
+3742843|Goris, Syunik
+3742844|Goris, Syunik
+3742845|Goris, Syunik
+3742846|Goris, Syunik
+37428481|Goris, Syunik
+3742849|Goris, Syunik
 37428491|Harzhis, Syunik
 37428494|Khndzoresk, Syunik
 37428495|Shinuhayr, Syunik
@@ -472,18 +472,18 @@
 37428781|Jermuk/Gndevaz, Vayots dzor
 3742879|Jermuk, Vayots dzor
 37428794|Gndevaz, Vayots dzor
-374312|Gyumri/Akhuryan region, Shirak
+374312|Gyumri/Akhuryan, Shirak
 3743122|Gyumri, Shirak
 3743123|Gyumri, Shirak
 3743124|Gyumri, Shirak
 3743125|Gyumri, Shirak
 3743126|Gyumri, Shirak
-3743127|Akhuryan region, Shirak
-37431280|Akhuryan region, Shirak
-37431281|Akhuryan region, Shirak
-37431282|Akhuryan region, Shirak
-37431283|Akhuryan region, Shirak
-37431284|Akhuryan region, Shirak
+3743127|Akhuryan, Shirak
+37431280|Akhuryan, Shirak
+37431281|Akhuryan, Shirak
+37431282|Akhuryan, Shirak
+37431283|Akhuryan, Shirak
+37431284|Akhuryan, Shirak
 374312850|Gyumri, Shirak
 374312851|Gyumri, Shirak
 374312852|Gyumri, Shirak
@@ -493,9 +493,9 @@
 374312856|Gyumri, Shirak
 374312857|Gyumri, Shirak
 374312858|Gyumri, Shirak
-374312859|Akhuryan region, Shirak
+374312859|Akhuryan, Shirak
 3743129|Gyumri, Shirak
-374322|Vanadzor/Gugark region, Lori
+374322|Vanadzor/Gugark, Lori
 3743222|Vanadzor, Lori
 3743223|Vanadzor, Lori
 3743224|Vanadzor, Lori

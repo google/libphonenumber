@@ -205,3 +205,95 @@ There is no RFC indicating where the data comes from, or what format they're in.
 We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
+
+### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
+
+We only support a country if:
+
+*   **The country has a single country calling code.** For instance, Kosovo (XK)
+    has been using three different country codes until 2017 - those of Serbia,
+    Monaco and Slovenia. The relevant numbers will be marked as valid, but as
+    belonging to Serbia, Monaco or Slovenia respectively. When Kosovo starts
+    using its own country calling code of 383 it will be added to the metadata
+    by itself. Similarly, Antarctica doesn't use its assigned country calling
+    code of 672 - instead the bases belonging to different countries have
+    different solutions. For example, Scott Base, belonging to New Zealand, has
+    an area code that is part of the New Zealand phone number plan, and we
+    support those numbers as valid numbers for NZ.
+*   **The country still exists.** For example, Yugoslavia (YU), Serbia and
+    Montenegro (CS) and Netherlands Antilles (AN) have been dissolved and no
+    longer exist as political entities so we do not support them.
+*   **The country has some phone numbers in use that can be ascribed to it.**
+    For instance, Pitcairn Island has only around thirty inhabitants and they
+    use satellite phones, so there is no numbering plan for Pitcairn Island.
+    Similarly, Bouvet Island is an uninhabited Antarctic volcanic island with no
+    telephone country code and no telephone connection, so we will not support
+    it.
+*   **It has an assigned region code.** For instance, previously Kosovo did not
+    have a region code assigned to it, so we could not support it until it was
+    assigned XK by [CLDR](http://cldr.unicode.org/).
+
+## Misc
+
+### How do I load libphonenumber resources in my Android app?
+
+#### System considerations
+
+tl;dr: Do not call `PhoneNumberUtil` API on the main thread.
+
+If you get surprising exceptions involving metadata loading, e.g. "missing
+metadata" exceptions when the metadata exists, then it's probably because you're
+loading resources on the main thread.
+
+Please ensure that you don't call `PhoneNumberUtil` API on the main thread. Not
+loading resources in the main thread is the suggested best practice at the
+[Android developer
+guide](http://developer.android.com/guide/components/processes-and-threads.html),
+and will prevent the issue reported in
+[#265](https://github.com/googlei18n/libphonenumber/issues/265),
+[#528](https://github.com/googlei18n/libphonenumber/issues/528), and
+[#819](https://github.com/googlei18n/libphonenumber/issues/819).
+
+#### Optimize loads
+
+You can manage your own resources by supplying your own
+[`MetadataLoader`](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/MetadataLoader.java)
+implementation to the `PhoneNumberUtil` instance. It is thus possible for your
+app to load the resources as Android assets, while libphonenumber loads Java
+resources by default. The result is that the files are read as native Android assets
+and so optimized for speed.
+
+Here's the sample code for how to do it:
+
+```
+PhoneNumberUtil util = PhoneNumberUtil.createInstance(new MetadataLoader() {
+  @Override
+  public InputStream loadMetadata(String metadataFileName) {
+    return Application.getContext().getAssets().open("some/asset/path" + metadataFileName);
+  }
+});
+```
+
+You also need to copy the binary metadata files into your app's asset directory, and
+automate updating them from upstream. To avoid net increase of app size, remove them
+from libphonenumber.
+
+### What about Windows?
+
+The libphonenumber team's support of the C++ library on Windows is primarily to
+support Chromium's build environment, and we depend on the community to support
+other Windows build environments / build chains. We list here some known issues
+that would benefit from open-source collaboration. If you can contribute a PR
+or review and test out someone else's PR, please chime in on these links, or
+email the [discussion
+group](https://groups.google.com/group/libphonenumber-discuss):
+
+*   [#1010](https://github.com/googlei18n/libphonenumber/issues/1010) to require
+    Visual Studio 2015 update 2 or later on Windows
+*   PR [#1090](https://github.com/googlei18n/libphonenumber/pull/1090) /
+    [#824](https://github.com/googlei18n/libphonenumber/issues/824) to "Replace
+    POSIX directory operations by Boost Filesystem"
+*   [#1307](https://github.com/googlei18n/libphonenumber/issues/1307) to use
+    readdir instead of readdir_r
+*   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
+    Windows to build cpp library with pthreads for multi-threading

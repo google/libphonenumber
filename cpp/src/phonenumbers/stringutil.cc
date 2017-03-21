@@ -391,6 +391,130 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
   return result;
 }
 
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13) {
+  string result;
+  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
+                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
+                 s13.Length());
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+  result += s8;
+  result += s9;
+  result += s10;
+  result += s11;
+  result += s12;
+  result += s13;
+
+  return result;
+}
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14) {
+  string result;
+  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
+                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
+                 s13.Length() + s14.Length());
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+  result += s8;
+  result += s9;
+  result += s10;
+  result += s11;
+  result += s12;
+  result += s13;
+  result += s14;
+
+  return result;
+}
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14,
+              const StringHolder& s15) {
+  string result;
+  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
+                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
+                 s13.Length() + s14.Length() + s15.Length());
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+  result += s8;
+  result += s9;
+  result += s10;
+  result += s11;
+  result += s12;
+  result += s13;
+  result += s14;
+  result += s15;
+
+  return result;
+}
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14,
+              const StringHolder& s15, const StringHolder& s16) {
+  string result;
+  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
+                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
+                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
+                 s13.Length() + s14.Length() + s15.Length() + s16.Length());
+  result += s1;
+  result += s2;
+  result += s3;
+  result += s4;
+  result += s5;
+  result += s6;
+  result += s7;
+  result += s8;
+  result += s9;
+  result += s10;
+  result += s11;
+  result += s12;
+  result += s13;
+  result += s14;
+  result += s15;
+  result += s16;
+
+  return result;
+}
+
 // StrAppend
 
 void StrAppend(string* dest, const StringHolder& s1) {

@@ -16,24 +16,30 @@
 # operating as Digicel, based on news articles.
 # d.b.a stands for "doing business as".
 # Setel became UTS in 1999, and their mobile brand is Chippie.
+# Telbo is for fixed telephony and Kla is their mobile telephony.
 
-599700|Digicel
-599701|Digicel
-599770|Telbo N.V.
-599777|Telbo N.V.
-59978|Digicel
-59979|PCS
+5993181|Eutel
+5993184|Eutel
+5993185|Eutel
+5993186|Eutel
+5993187|Eutel
+5993188|Eutel
+599319|WIC
 5994161|Satel
+5994164|WIC
 5994165|WIC
 5994166|WIC
 5994167|WIC
 5994168|WIC
 5994169|Satel
-5993181|Eutel/Radcomm
-5993184|Eutel/Radcomm
-5993185|Eutel/Radcomm
-5993186|Eutel/Telcell
-5993188|Eutel N.V.
+599700|Digicel
+599701|Digicel
+599770|Kla
+599777|Kla
+59978|Digicel
+599790|Chippie
+599795|Chippie
+599796|Chippie
 599951|Chippie
 599952|Chippie
 599953|Chippie

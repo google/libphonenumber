@@ -15,6 +15,7 @@
 # Prefix 25476 added for Airtel Kenya based on open-source bug report. Most
 # other prefixes from Wikipedia:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Kenya
+# https://www.itu.int/oth/T0202000070/en
 
 25470|Safaricom
 25471|Safaricom
@@ -23,6 +24,9 @@
 254740|Safaricom
 254741|Safaricom
 254742|Safaricom
+254744|Homeland Media
+254747|JTL
+254749|WiAfrica
 254750|Airtel
 254751|Airtel
 254752|Airtel
@@ -35,9 +39,9 @@
 254762|Airtel
 254763|Finserve
 254764|Finserve
-254765|Airtel
-254766|Airtel
-254767|Zioncell
+254765|Finserve
+254766|Finserve
+254767|Sema Mobile
 254768|Airtel
 254769|Airtel
 254770|Telkom
@@ -48,6 +52,8 @@
 254775|Telkom
 254776|Telkom
 254777|Telkom
+254778|Telkom
+254779|Telkom
 254780|Airtel
 254781|Airtel
 254782|Airtel

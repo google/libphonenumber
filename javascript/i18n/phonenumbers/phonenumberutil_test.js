@@ -466,6 +466,21 @@ function testGetNationalSignificantNumber() {
       phoneUtil.getNationalSignificantNumber(INTERNATIONAL_TOLL_FREE));
 }
 
+function testGetNationalSignificantNumber_ManyLeadingZeros() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(1);
+  number.setNationalNumber(650);
+  number.setItalianLeadingZero(true);
+  number.setNumberOfLeadingZeros(2);
+  assertEquals('00650', phoneUtil.getNationalSignificantNumber(number));
+
+  // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros
+  // at all.
+  number.setNumberOfLeadingZeros(-3);
+  assertEquals("650", phoneUtil.getNationalSignificantNumber(number));
+}
+
 function testGetExampleNumber() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   assertTrue(DE_NUMBER.equals(phoneUtil.getExampleNumber(RegionCode.DE)));
@@ -544,6 +559,17 @@ function testNormaliseStripAlphaCharacters() {
   assertEquals('Conversion did not correctly remove alpha character',
       expectedOutput,
       i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(inputNumber));
+}
+
+function testNormaliseStripNonDiallableCharacters() {
+  /** @type {string} */
+  var inputNumber = '03*4-56&+1a#234';
+  /** @type {string} */
+  var expectedOutput = '03*456+1#234';
+  assertEquals('Conversion did not correctly remove non-diallable characters',
+               expectedOutput,
+               i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+                   inputNumber));
 }
 
 function testFormatUSNumber() {
@@ -3145,7 +3171,82 @@ function testIsNumberMatchMatches() {
   assertEquals('Numbers did not match',
                i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch(nzNumber, NZ_NUMBER));
+}
 
+function testIsNumberMatchShortMatchIfDiffNumLeadingZeros() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberOne = new i18n.phonenumbers.PhoneNumber();
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberTwo = new i18n.phonenumbers.PhoneNumber();
+
+  nzNumberOne.setCountryCode(64);
+  nzNumberOne.setNationalNumber(33316005);
+  nzNumberOne.setItalianLeadingZero(true);
+
+  nzNumberTwo.setCountryCode(64);
+  nzNumberTwo.setNationalNumber(33316005);
+  nzNumberTwo.setItalianLeadingZero(true);
+  nzNumberTwo.setNumberOfLeadingZeros(2);
+
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+
+  nzNumberOne.setItalianLeadingZero(false);
+  nzNumberOne.setNumberOfLeadingZeros(1);
+  nzNumberTwo.setItalianLeadingZero(true);
+  nzNumberTwo.setNumberOfLeadingZeros(1);
+  // Since one doesn't have the "italian_leading_zero" set to true, we ignore
+  // the number of leading zeros present (1 is in any case the default value).
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+}
+
+function testIsNumberMatchAcceptsProtoDefaultsAsMatch() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberOne = new i18n.phonenumbers.PhoneNumber();
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberTwo = new i18n.phonenumbers.PhoneNumber();
+
+  nzNumberOne.setCountryCode(64);
+  nzNumberOne.setNationalNumber(33316005);
+  nzNumberOne.setItalianLeadingZero(true);
+
+  // The default for number_of_leading_zeros is 1, so it shouldn't normally be
+  // set, however if it is it should be considered equivalent.
+  nzNumberTwo.setCountryCode(64);
+  nzNumberTwo.setNationalNumber(33316005);
+  nzNumberTwo.setItalianLeadingZero(true);
+  nzNumberTwo.setNumberOfLeadingZeros(1);
+
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+}
+
+function testIsNumberMatchMatchesDiffLeadingZerosIfItalianLeadingZeroFalse() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberOne = new i18n.phonenumbers.PhoneNumber();
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberTwo = new i18n.phonenumbers.PhoneNumber();
+
+  nzNumberOne.setCountryCode(64);
+  nzNumberOne.setNationalNumber(33316005);
+
+  // The default for number_of_leading_zeros is 1, so it shouldn't normally be
+  // set, however if it is it should be considered equivalent.
+  nzNumberTwo.setCountryCode(64);
+  nzNumberTwo.setNationalNumber(33316005);
+  nzNumberTwo.setNumberOfLeadingZeros(1);
+
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+
+  // Even if it is set to ten, it is still equivalent because in both cases
+  // italian_leading_zero is not true.
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+}
+
+function testIsNumberMatchIgnoresSomeFields() {
   var CCS = i18n.phonenumbers.PhoneNumber.CountryCodeSource;
   // Check raw_input, country_code_source and preferred_domestic_carrier_code
   // are ignored.
