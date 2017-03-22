@@ -1823,7 +1823,7 @@ function testIsPossibleNumberForType_DifferentTypeLengths() {
   // We use Argentinian numbers since they have different possible lengths for
   // different types.
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   number.setCountryCode(54);
   number.setNationalNumber(12345);
   // Too short for any Argentinian number, including fixed-line.
@@ -1866,7 +1866,7 @@ function testIsPossibleNumberForType_DifferentTypeLengths() {
 function testIsPossibleNumberForType_LocalOnly() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // Here we test a number length which matches a local-only length.
   number.setCountryCode(49);
   number.setNationalNumber(12);
@@ -1880,7 +1880,7 @@ function testIsPossibleNumberForType_LocalOnly() {
 function testIsPossibleNumberForType_DataMissingForSizeReasons() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // Here we test something where the possible lengths match the possible
   // lengths of the country as a whole, and hence aren't present in the .js file
   // for size reasons - this should still work.
@@ -1897,7 +1897,7 @@ function testIsPossibleNumberForType_DataMissingForSizeReasons() {
 function testIsPossibleNumberForType_NumberTypeNotSupportedForRegion() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // There are *no* mobile numbers for this region at all, so we return false.
   number.setCountryCode(55);
   number.setNationalNumber(12345678);
@@ -1919,7 +1919,7 @@ function testIsPossibleNumberForType_NumberTypeNotSupportedForRegion() {
 }
 
 function testIsPossibleNumberWithReason() {
-  var VR = i18n.phonenumbers.PhoneNumberUtil.VR;
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   // National numbers for country calling code +1 that are within 7 to 10 digits
   // are possible.
   assertEquals(VR.IS_POSSIBLE,
@@ -1955,10 +1955,10 @@ function testIsPossibleNumberWithReason() {
 }
 
 function testIsPossibleNumberForTypeWithReason_DifferentTypeLengths() {
-  var VR = i18n.phonenumbers.PhoneNumberUtil.VR;
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // We use Argentinian numbers since they have different possible lengths for
   // different types.
   number.setCountryCode(54);
@@ -2037,10 +2037,10 @@ function testIsPossibleNumberForTypeWithReason_DifferentTypeLengths() {
 }
 
 function testIsPossibleNumberForTypeWithReason_LocalOnly() {
-  var VR = i18n.phonenumbers.PhoneNumberUtil.VR;
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // Here we test a number length which matches a local-only length.
   number.setCountryCode(49);
   number.setNationalNumber(12);
@@ -2055,10 +2055,10 @@ function testIsPossibleNumberForTypeWithReason_LocalOnly() {
 }
 
 function testIsPossibleNumberForTypeWithReason_DataMissingForSizeReasons() {
-  var VR = i18n.phonenumbers.PhoneNumberUtil.VR;
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // Here we test something where the possible lengths match the possible
   // lengths of the country as a whole, and hence aren't present in the binary
   // for size reasons - this should still work.
@@ -2083,10 +2083,10 @@ function testIsPossibleNumberForTypeWithReason_DataMissingForSizeReasons() {
 }
 
 function testIsPossibleNumberForTypeWithReason_NumberTypeNotSupportedForRegion() {
-  var VR = i18n.phonenumbers.PhoneNumberUtil.VR;
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // There are *no* mobile numbers for this region at all, so we return
   // INVALID_LENGTH.
   number.setCountryCode(55);
@@ -2147,13 +2147,14 @@ function testIsPossibleNumberForTypeWithReason_NumberTypeNotSupportedForRegion()
 }
 
 function testIsPossibleNumberForTypeWithReason_FixedLineOrMobile() {
-  var VR = i18n.phonenumbers.PhoneNumberUtil.VR;
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   var PNT = i18n.phonenumbers.PhoneNumberType;
   /** @type {i18n.phonenumbers.PhoneNumber} */
-  var number;
+  var number = new i18n.phonenumbers.PhoneNumber();
   // For FIXED_LINE_OR_MOBILE, a number should be considered valid if it matches
   // the possible lengths for mobile *or* fixed-line numbers.
-  number.setCountryCode(290).setNationalNumber(1234);
+  number.setCountryCode(290);
+  number.setNationalNumber(1234);
   assertEquals(
       VR.TOO_SHORT,
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
