@@ -20,7 +20,7 @@
 62232|Kuningan
 62233|Majalengka
 62234|Indramayu
-6224|Semarang
+6224|Semarang/Demak
 62251|Bogor
 62252|Rangkasbitung
 62253|Pandeglang
@@ -115,7 +115,7 @@
 62405|Kolaka
 62408|Unaaha
 62410|Pangkep
-62411|Makassar
+62411|Makassar/Maros/Sungguminasa
 62413|Bulukumba/Bantaeng
 62414|Kepulauan Selayar
 62417|Malino

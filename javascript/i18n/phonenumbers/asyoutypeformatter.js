@@ -42,8 +42,8 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil');
 /**
  * Constructs an AsYouTypeFormatter for the specific region.
  *
- * @param {string} regionCode the ISO 3166-1 two-letter region code that denotes
- *     the region where the phone number is being entered.
+ * @param {string} regionCode the CLDR two-letter region code that denotes the
+ *     region where the phone number is being entered.
  * @constructor
  */
 i18n.phonenumbers.AsYouTypeFormatter = function(regionCode) {

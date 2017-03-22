@@ -27,7 +27,7 @@
 # http://nursat.kz/page.php?lang=1
 
 7700|АЛТЕЛ
-7701|Кcell/activ
+7701|Kcell/Activ
 7702|Kcell/Activ
 7705|Beeline
 7707|Tele2

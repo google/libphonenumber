@@ -263,6 +263,22 @@ Troubleshooting CMake via ccmake
 
 Building the library on Windows (Visual Studio)
 -----------------------------------------------
+We recommend that libphonenumber on Windows be built with Visual Studio 2015
+Update 2 (https://www.visualstudio.com/en-us/news/releasenotes/vs2015-update2-vs)
+or later.
+
+This enables support of plain UTF-8 source files, for which you also need to specify
+the /utf-8 option in build files; see "New Options in VS2015 Update 2" at
+https://blogs.msdn.microsoft.com/vcblog/2016/02/22/new-options-for-managing-character-sets-in-the-microsoft-cc-compiler/,
+or a Chrome patch for an example:
+https://codereview.chromium.org/2488853002/diff/80001/build/config/compiler/BUILD.gn
+
+Without this version and the option, your compilation will have warnings when
+setting the codepage for non-Unicode applications on Windows to one of the CJK
+code pages, since libphonenumber has UTF-8 strings in source files. While these
+are only comments (as opposed to string literals) the warnings can be
+suppressed, but we reserve the right to introduce UTF-8 string literals.
+
 The library was tested with Visual Studio 2010.
 
 You will need to manually fetch and install the following dependencies:

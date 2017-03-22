@@ -104,10 +104,10 @@ public class PrefixFileReader {
    * Returns a text description in the given language for the given phone number.
    *
    * @param number  the phone number for which we want to get a text description
-   * @param lang  two-letter lowercase ISO language codes as defined by ISO 639-1
+   * @param lang  two or three-letter lowercase ISO language code as defined by ISO 639
    * @param script  four-letter titlecase (the first letter is uppercase and the rest of the letters
-   *     are lowercase) ISO script codes as defined in ISO 15924
-   * @param region  two-letter uppercase ISO country codes as defined by ISO 3166-1
+   *     are lowercase) ISO script code as defined in ISO 15924
+   * @param region  two-letter uppercase ISO country code as defined by ISO 3166-1
    * @return  a text description in the given language for the given phone number, or an empty
    *     string if a description is not available
    */

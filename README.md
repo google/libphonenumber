@@ -20,7 +20,7 @@ If you want to report an issue, or to contribute to the project, please read the
   * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
 
-# Demo (v8.1.0)
+# Demo (v8.3.3)
 [Java](http://libphonenumber.appspot.com/)
 
 [JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
@@ -29,6 +29,10 @@ If you want to report an issue, or to contribute to the project, please read the
 To include the code in your application, either integrate with Maven or download the latest Jars from the Maven repository:
 
 http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
+
+# Javadoc
+
+[Latest release](https://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/)
 
 # Versioning and Announcements
 
@@ -60,7 +64,7 @@ Want to get notified of new releases? During most of the year, excepting
 holidays and extenuating circumstances, we release fortnightly. We update
 [release tags](http://github.com/googlei18n/libphonenumber/releases) and
 document detailed [release notes]
-(http://github.com/googlei18n/libphonenumber/blob/master/java/release_notes.txt).
+(http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
 We also send an announcement to [libphonenumber-discuss]
 (http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
 release.

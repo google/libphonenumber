@@ -18,11 +18,24 @@
 8420|Lao Cai province
 84210|Phu Tho province
 84211|Vinh Phuc province
+84212|Son La province
+84213|Lai Chau province
+84214|Lao Cai province
+84215|Dien Bien province
+84216|Yen Bai province
 84218|Hoa Binh province
 84219|Ha Giang province
 8422|Son La province
 84230|Dien Bien province
 84231|Lai Chau province
+84232|Quang Binh province
+84233|Quang Tri province
+84234|Thua Thien-Hue province
+84235|Quang Nam province
+84236|Da Nang
+84237|Thanh Hoa province
+84238|Nghe An province
+84239|Ha Tinh province
 84240|Bac Giang province
 84241|Bac Ninh province
 8425|Lang Son province

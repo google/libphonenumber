@@ -20,11 +20,10 @@
  * Functionality includes formatting, parsing and validation.
  * (based on the java implementation).
  *
- * NOTE: A lot of methods in this class require Region Code strings. These must
- * be provided using ISO 3166-1 two-letter country-code format. These should be
- * in upper-case (but for compatibility lower-case is also allowed). The list of
- * the codes can be found here:
- * http://www.iso.org/iso/english_country_names_and_code_elements
+ * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
+ * CLDR two-letter region-code format. These should be in upper-case. The list of the codes
+ * can be found here:
+ * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
  *
  * Credits to Nikolaos Trogkanis for original implementation.
  */
@@ -963,9 +962,25 @@ i18n.phonenumbers.PhoneNumberUtil.MatchType = {
  * @enum {number}
  */
 i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
+  /** The number length matches that of valid numbers for this region. */
   IS_POSSIBLE: 0,
+  /**
+   * The number length matches that of local numbers for this region only (i.e.
+   * numbers that may be able to be dialled within an area, but do not have all
+   * the information to be dialled from anywhere inside or outside the country).
+   */
+  IS_POSSIBLE_LOCAL_ONLY: 4,
+  /** The number has an invalid country calling code. */
   INVALID_COUNTRY_CODE: 1,
+  /** The number is shorter than all valid numbers for this region. */
   TOO_SHORT: 2,
+  /**
+   * The number is longer than the shortest valid numbers for this region,
+   * shorter than the longest valid numbers for this region, and does not itself
+   * have a number length that matches valid numbers for this region.
+   */
+  INVALID_LENGTH: 5,
+  /** The number is longer than all valid numbers for this region. */
   TOO_LONG: 3
 };
 
@@ -1418,7 +1433,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
 /**
  * Helper function to check region code is not unknown or null.
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter region code.
+ * @param {?string} regionCode the CLDR two-letter region code.
  * @return {boolean} true if region code is valid.
  * @private
  */
@@ -2315,7 +2330,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
   // national prefix.
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
-  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero()) {
+  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
+      number.getNumberOfLeadingZerosOrDefault() > 0) {
     return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
         nationalNumber;
   }
@@ -3077,7 +3093,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
  * Checks if this is a region under the North American Numbering Plan
  * Administration (NANPA).
  *
- * @param {?string} regionCode the ISO 3166-1 two-letter region code.
+ * @param {?string} regionCode the CLDR two-letter region code.
  * @return {boolean} true if regionCode is one of the regions under NANPA.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
@@ -3816,6 +3832,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.setItalianLeadingZerosForPhoneNumber
  * same as the public {@link #parse} method, with the exception that it allows
  * the default region to be null, for use by {@link #isNumberMatch}.
  *
+ * Note if any new field is added to this method that should always be filled
+ * in, even when keepRawInput is false, it should also be handled in the
+ * copyCoreFieldsOnly method.
+ *
  * @param {?string} numberToParse number that we are attempting to parse. This
  *     can contain formatting such as +, ( and -, as well as a phone number
  *     extension.
@@ -4042,6 +4062,36 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
 
 
 /**
+ * Returns a new phone number containing only the fields needed to uniquely
+ * identify a phone number, rather than any fields that capture the context in
+ * which the phone number was created.
+ * These fields correspond to those set in parse() rather than
+ * parseAndKeepRawInput().
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} numberIn number that we want to copy
+ *     fields from.
+ * @return {i18n.phonenumbers.PhoneNumber} number with core fields only.
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.copyCoreFieldsOnly_ = function(numberIn) {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var phoneNumber = new i18n.phonenumbers.PhoneNumber();
+  phoneNumber.setCountryCode(numberIn.getCountryCodeOrDefault());
+  phoneNumber.setNationalNumber(numberIn.getNationalNumberOrDefault());
+  if (numberIn.getExtensionOrDefault().length > 0) {
+    phoneNumber.setExtension(numberIn.getExtensionOrDefault());
+  }
+  if (numberIn.getItalianLeadingZero()) {
+    phoneNumber.setItalianLeadingZero(true);
+    // This field is only relevant if there are leading zeros at all.
+    phoneNumber.setNumberOfLeadingZeros(
+        numberIn.getNumberOfLeadingZerosOrDefault());
+  }
+  return phoneNumber;
+};
+
+
+/**
  * Takes two phone numbers and compares them for equality.
  *
  * <p>Returns EXACT_MATCH if the country_code, NSN, presence of a leading zero
@@ -4133,37 +4183,29 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
   } else {
     secondNumber = secondNumberIn.clone();
   }
-  // First clear raw_input, country_code_source and
-  // preferred_domestic_carrier_code fields and any empty-string extensions so
-  // that we can use the proto-buffer equality method.
-  firstNumber.clearRawInput();
-  firstNumber.clearCountryCodeSource();
-  firstNumber.clearPreferredDomesticCarrierCode();
-  secondNumber.clearRawInput();
-  secondNumber.clearCountryCodeSource();
-  secondNumber.clearPreferredDomesticCarrierCode();
-  if (firstNumber.hasExtension() && firstNumber.getExtension().length == 0) {
-    firstNumber.clearExtension();
-  }
-  if (secondNumber.hasExtension() && secondNumber.getExtension().length == 0) {
-    secondNumber.clearExtension();
-  }
+  var firstNumberToCompare =
+      i18n.phonenumbers.PhoneNumberUtil.copyCoreFieldsOnly_(firstNumber);
+  var secondNumberToCompare =
+      i18n.phonenumbers.PhoneNumberUtil.copyCoreFieldsOnly_(secondNumber);
 
   // Early exit if both had extensions and these are different.
-  if (firstNumber.hasExtension() && secondNumber.hasExtension() &&
-      firstNumber.getExtension() != secondNumber.getExtension()) {
+  if (firstNumberToCompare.hasExtension() &&
+      secondNumberToCompare.hasExtension() &&
+      firstNumberToCompare.getExtension() !=
+          secondNumberToCompare.getExtension()) {
     return i18n.phonenumbers.PhoneNumberUtil.MatchType.NO_MATCH;
   }
   /** @type {number} */
-  var firstNumberCountryCode = firstNumber.getCountryCodeOrDefault();
+  var firstNumberCountryCode = firstNumberToCompare.getCountryCodeOrDefault();
   /** @type {number} */
-  var secondNumberCountryCode = secondNumber.getCountryCodeOrDefault();
+  var secondNumberCountryCode = secondNumberToCompare.getCountryCodeOrDefault();
   // Both had country_code specified.
   if (firstNumberCountryCode != 0 && secondNumberCountryCode != 0) {
-    if (firstNumber.equals(secondNumber)) {
+    if (firstNumberToCompare.equals(secondNumberToCompare)) {
       return i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH;
     } else if (firstNumberCountryCode == secondNumberCountryCode &&
-        this.isNationalNumberSuffixOfTheOther_(firstNumber, secondNumber)) {
+        this.isNationalNumberSuffixOfTheOther_(
+            firstNumberToCompare, secondNumberToCompare)) {
       // A SHORT_NSN_MATCH occurs if there is a difference because of the
       // presence or absence of an 'Italian leading zero', the presence or
       // absence of an extension, or one NSN being a shorter variant of the
@@ -4176,13 +4218,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatch =
   // Checks cases where one or both country_code fields were not specified. To
   // make equality checks easier, we first set the country_code fields to be
   // equal.
-  firstNumber.setCountryCode(0);
-  secondNumber.setCountryCode(0);
+  firstNumberToCompare.setCountryCode(0);
+  secondNumberToCompare.setCountryCode(0);
   // If all else was the same, then this is an NSN_MATCH.
-  if (firstNumber.equals(secondNumber)) {
+  if (firstNumberToCompare.equals(secondNumberToCompare)) {
     return i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH;
   }
-  if (this.isNationalNumberSuffixOfTheOther_(firstNumber, secondNumber)) {
+  if (this.isNationalNumberSuffixOfTheOther_(firstNumberToCompare,
+                                             secondNumberToCompare)) {
     return i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH;
   }
   return i18n.phonenumbers.PhoneNumberUtil.MatchType.NO_MATCH;
