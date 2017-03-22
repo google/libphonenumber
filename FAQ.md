@@ -235,6 +235,25 @@ We only support a country if:
 
 ## Misc
 
+### <a name="reduced_metadata"></a>What is the metadatalite.js/METADATA_LITE option?
+
+For js, Java and C++ there is the option to use a stripped-down version of the
+metadata. Currently this only removes the example number metadata, so the size
+saving is not a lot, but we may revisit this.
+
+*Impact:*
+    - getExampleNumber, getInvalidExampleNumber, getExampleNumberForType,
+      getExampleNumberForNonGeoEntity will return null
+    - Binary size (or download size for JS) will be slightly smaller
+
+*JS:*
+
+Simply include metadatalite.js instead of metadata.js in your project.
+
+*C++:*
+Set the compiler flag `USE_METADATA_LITE` to `ON` using ccmake or similar.
+
+
 ### How do I load libphonenumber resources in my Android app?
 
 #### System considerations
