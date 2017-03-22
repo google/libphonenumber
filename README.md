@@ -1,6 +1,7 @@
 <p align="right">
 <img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
 </p>
+
 # What is it?
 
 Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
@@ -33,6 +34,10 @@ http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
 # Javadoc
 
 [Latest release](https://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/)
+
+# FAQ
+
+See the [FAQ](FAQ.md) for common questions and tips.
 
 # Versioning and Announcements
 
