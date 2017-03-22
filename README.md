@@ -4,10 +4,14 @@
 
 # What is it?
 
-Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
+Google's common Java, C++ and JavaScript library for parsing, formatting, and
+validating international phone numbers. The Java version is optimized for
+running on smartphones, and is used by the Android framework since 4.0 (Ice
+Cream Sandwich).
 
 # Want to report an issue?
-If you want to report an issue, or to contribute to the project, please read the guidelines [here] (https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md) first.
+If you want to report an issue, or to contribute to the project, please read
+the guidelines [here](CONTRIBUTING.md) first.
 
 # Highlights of functionality
   * Parsing/formatting/validating phone numbers for all countries/regions of the world.
@@ -27,7 +31,8 @@ If you want to report an issue, or to contribute to the project, please read the
 [JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
 
 # Code
-To include the code in your application, either integrate with Maven or download the latest Jars from the Maven repository:
+To include the code in your application, either integrate with Maven or
+download the latest Jars from the Maven repository:
 
 http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
 
@@ -53,8 +58,7 @@ If any of those changes *enable* clients to update their code to take advantage
 of new functionality, we publish a minor release. So we'd go from 7.7.3 to
 7.8.0.
 
-Otherwise, including when a release contains only [metadata]
-(http://github.com/googlei18n/libphonenumber/blob/master/FAQ.md#metadata_definition)
+Otherwise, including when a release contains only [metadata](FAQ.md#metadata_definition)
 changes, we publish a sub-minor release, e.g. 7.7.3 to 7.7.4.
 
 Sometimes we make internal changes to the code or metadata that, while not
@@ -68,10 +72,10 @@ release if there were no other changes.
 Want to get notified of new releases? During most of the year, excepting
 holidays and extenuating circumstances, we release fortnightly. We update
 [release tags](http://github.com/googlei18n/libphonenumber/releases) and
-document detailed [release notes]
-(http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
-We also send an announcement to [libphonenumber-discuss]
-(http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
+document detailed [release notes](
+http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
+We also send an announcement to [libphonenumber-discuss](
+http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
 release.
 
 # Quick Examples
