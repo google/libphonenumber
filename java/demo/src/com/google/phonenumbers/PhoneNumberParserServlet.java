@@ -132,6 +132,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
     } else {
       geocodingLocale = Locale.forLanguageTag(geocodingParam);
     }
+    resp.setContentType("text/html");
+    resp.setCharacterEncoding(UTF_8.name());
     resp.getWriter().println(
         getOutputForSingleNumber(phoneNumber, defaultCountry, geocodingLocale));
   }
