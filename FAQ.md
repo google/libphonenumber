@@ -232,8 +232,8 @@ We only support a country if:
 
 ### <a name="reduced_metadata"></a>What is the metadatalite.js/METADATA_LITE option?
 
-For js, Java and C++ there is the option to use a stripped-down version of the
-metadata. Currently this only removes the example number metadata, so the
+For JavaScript, Java and C++ there is the option to use a stripped-down version
+of the metadata. Currently this only removes the example number metadata, so the
 savings are not a lot, but we may revisit this.
 
 *Impact:*
