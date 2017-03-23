@@ -23,17 +23,14 @@ indicate this to the library.
 
 To understand the behavior of functions, please refer to the documentation in
 the Javadoc/C++ header files. For example, see `isPossibleNumberWithReason` in
-[`PhoneNumberUtil`]
-(https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
+[`PhoneNumberUtil`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
 
 ### Why does PhoneNumberUtil return false for valid short numbers?
 
 Short numbers are out of scope of
-[`PhoneNumberUtil`]
-(https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
+[`PhoneNumberUtil`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
 For short numbers, use
-[`ShortNumberInfo`]
-(https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/ShortNumberInfo.java).
+[`ShortNumberInfo`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/ShortNumberInfo.java).
 
 ### What does it mean for a phone number to be valid?
 
@@ -45,7 +42,7 @@ which numbers can be freely assigned by carriers to users.
 
 Do not rely on libphonenumber to determine whether numbers are currently
 assigned to a specific user and reachable. Some products (e.g.
-[Google 2-step verification] (https://www.google.com/landing/2step/)) do
+[Google 2-step verification](https://www.google.com/landing/2step/)) do
 this with a verification step e.g. by sending an SMS or placing an automated
 phone call with a verification code). This is not technically feasible without
 such a verification step given the complicated international world we live in,
@@ -117,24 +114,22 @@ a number in an advert, etc. We don't think the lack of M2M support hinders any
 of those use-case, but we might be wrong.
 
 If you would like libphonenumber to support M2M numbers, please engage with the
-developer community at [Support M2M numbers #680]
-(https://github.com/googlei18n/libphonenumber/issues/680) with further
-information to address our questions and concerns and please describe what kinds
-of use-cases fail because M2M numbers are not supported by the library.
+developer community at [Support M2M numbers #680](
+https://github.com/googlei18n/libphonenumber/issues/680) with further
+information to address our questions and concerns and please describe what
+kinds of use-cases fail because M2M numbers are not supported by the library.
 
 More information on this issue would be very welcomed!
 
-Related issues: [Support M2M numbers #680]
-(https://github.com/googlei18n/libphonenumber/issues/680),
-[#930: JTGlobal - an MNO based in the UK]
-(https://github.com/googlei18n/libphonenumber/issues/930), [#976: Norway]
-(https://github.com/googlei18n/libphonenumber/issues/976), [#985: South Africa,
-Vodacom](https://github.com/googlei18n/libphonenumber/issues/985), [#910:
-Sweden](https://github.com/googlei18n/libphonenumber/issues/910), [#657:
-Canada](https://github.com/googlei18n/libphonenumber/issues/657), [#550:
-Belgium](https://github.com/googlei18n/libphonenumber/issues/550), [#351:
-Norway](https://github.com/googlei18n/libphonenumber/issues/351), [#332:
-Netherlands](https://github.com/googlei18n/libphonenumber/issues/332)
+Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphonenumber/issues/680),
+[#930: JTGlobal - an MNO based in the UK](https://github.com/googlei18n/libphonenumber/issues/930),
+[#976: Norway](https://github.com/googlei18n/libphonenumber/issues/976),
+[#985: South Africa, Vodacom](https://github.com/googlei18n/libphonenumber/issues/985),
+[#910: Sweden](https://github.com/googlei18n/libphonenumber/issues/910),
+[#657: Canada](https://github.com/googlei18n/libphonenumber/issues/657),
+[#550: Belgium](https://github.com/googlei18n/libphonenumber/issues/550),
+[#351: Norway](https://github.com/googlei18n/libphonenumber/issues/351),
+[#332: Netherlands](https://github.com/googlei18n/libphonenumber/issues/332)
 
 ## Representation
 
@@ -234,6 +229,31 @@ We only support a country if:
     assigned XK by [CLDR](http://cldr.unicode.org/).
 
 ## Misc
+
+### <a name="reduced_metadata"></a>What is the metadatalite.js/METADATA_LITE option?
+
+For JavaScript, Java and C++ there is the option to use a stripped-down version
+of the metadata. Currently this only removes the example number metadata, so the
+savings are not a lot, but we may revisit this.
+
+*Impact:*
+
+-   `getExampleNumber`, `getInvalidExampleNumber`, `getExampleNumberForType`,
+     `getExampleNumberForNonGeoEntity` will return `null`
+-   Binary size (or download size for JS) will be slightly smaller
+
+*JS:*
+Simply include metadatalite.js instead of metadata.js in your project.
+
+*C++:*
+Set the compiler flag `USE_METADATA_LITE` to `ON` using ccmake or similar.
+
+*Java:*
+The metadata binary files can be generated using the ant build rules
+`build-phone-metadata` and `build-short-metadata` with `lite-build` set to
+`true`. This can be set in the [build
+file](https://github.com/googlei18n/libphonenumber/blob/master/java/build.xml)
+itself.
 
 ### How do I load libphonenumber resources in my Android app?
 
