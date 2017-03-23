@@ -237,9 +237,10 @@ of the metadata. Currently this only removes the example number metadata, so the
 savings are not a lot, but we may revisit this.
 
 *Impact:*
-    - `getExampleNumber`, `getInvalidExampleNumber`, `getExampleNumberForType`,
-      `getExampleNumberForNonGeoEntity` will return `null`
-    - Binary size (or download size for JS) will be slightly smaller
+
+-   `getExampleNumber`, `getInvalidExampleNumber`, `getExampleNumberForType`,
+     `getExampleNumberForNonGeoEntity` will return `null`
+-   Binary size (or download size for JS) will be slightly smaller
 
 *JS:*
 Simply include metadatalite.js instead of metadata.js in your project.
