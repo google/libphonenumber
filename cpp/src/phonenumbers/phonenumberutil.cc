@@ -262,16 +262,24 @@ void NormalizeHelper(const std::map<char32, char>& normalization_replacements,
   number->assign(normalized_number);
 }
 
+// Returns true if there is any possible number data set for a particular
+// PhoneNumberDesc.
+bool DescHasPossibleNumberData(const PhoneNumberDesc& desc) {
+  // If this is empty, it means numbers of this type inherit from the "general
+  // desc" -> the value "-1" means that no numbers exist for this type.
+  return desc.possible_length_size() != 1 || desc.possible_length(0) != -1;
+}
+
 // Returns true if there is any data set for a particular PhoneNumberDesc.
 bool DescHasData(const PhoneNumberDesc& desc) {
-  // Using the "example number" property to determine whether there are any
-  // numbers of this type or not at all. This is because it must be there - some
-  // other properties are either set to indicate we do *not* have numbers of
-  // this type, or are not set when we do, where they are the same as the
-  // corresponding generalDesc property.
-  // This is documented in the XML schema as needing to be present, and tested
-  // with PhoneNumberMetadataSchemaTest.
-  return desc.has_example_number();
+  // Checking most properties since we don't know what's present, since a custom
+  // build may have stripped just one of them (e.g. USE_METADATA_LITE strips
+  // exampleNumber). We don't bother checking the PossibleLengthsLocalOnly,
+  // since if this is the only thing that's present we don't really support the
+  // type at all: no type-specific methods will work with only this data.
+  return desc.has_example_number() || DescHasPossibleNumberData(desc) ||
+         (desc.has_national_number_pattern() &&
+          !(desc.national_number_pattern() == "NA"));
 }
 
 // Returns the types we have metadata for based on the PhoneMetadata object
@@ -321,14 +329,14 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
   if (type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE) {
     const PhoneNumberDesc* fixed_line_desc =
         GetNumberDescByType(metadata, PhoneNumberUtil::FIXED_LINE);
-    if (!DescHasData(*fixed_line_desc)) {
+    if (!DescHasPossibleNumberData(*fixed_line_desc)) {
       // The rare case has been encountered where no fixedLine data is available
       // (true for some non-geographical entities), so we just check mobile.
       return TestNumberLength(number, metadata, PhoneNumberUtil::MOBILE);
     } else {
       const PhoneNumberDesc* mobile_desc =
           GetNumberDescByType(metadata, PhoneNumberUtil::MOBILE);
-      if (DescHasData(*mobile_desc)) {
+      if (DescHasPossibleNumberData(*mobile_desc)) {
         // Merge the mobile data in if there was any. Note that when adding the
         // possible lengths from mobile, we have to again check they aren't
         // empty since if they are this indicates they are the same as the

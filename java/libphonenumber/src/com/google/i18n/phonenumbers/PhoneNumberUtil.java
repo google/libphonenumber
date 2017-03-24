@@ -973,16 +973,25 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Returns true if there is any possible number data set for a particular PhoneNumberDesc.
+   */
+  private static boolean descHasPossibleNumberData(PhoneNumberDesc desc) {
+    // If this is empty, it means numbers of this type inherit from the "general desc" -> the value
+    // "-1" means that no numbers exist for this type.
+    return desc.getPossibleLengthCount() != 1 || desc.getPossibleLength(0) != -1;
+  }
+
+  /**
    * Returns true if there is any data set for a particular PhoneNumberDesc.
    */
-  private boolean descHasData(PhoneNumberDesc desc) {
-    // Using the "example number" property to determine whether there are any numbers of this type
-    // or not at all. This is because it must be there - some other properties are either set to
-    // indicate we do *not* have numbers of this type, or are not set when we do, where they are the
-    // same as the corresponding generalDesc property.
-    // This is documented in the XML schema as needing to be present, and tested with
-    // PhoneNumberMetadataSchemaTest.
-    return desc.hasExampleNumber();
+  private static boolean descHasData(PhoneNumberDesc desc) {
+    // Checking most properties since we don't know what's present, since a custom build may have
+    // stripped just one of them (e.g. liteBuild strips exampleNumber). We don't bother checking the
+    // possibleLengthsLocalOnly, since if this is the only thing that's present we don't really
+    // support the type at all: no type-specific methods will work with only this data.
+    return desc.hasExampleNumber()
+        || descHasPossibleNumberData(desc)
+        || (desc.hasNationalNumberPattern() && !desc.getNationalNumberPattern().equals("NA"));
   }
 
   /**
@@ -2505,13 +2514,13 @@ public class PhoneNumberUtil {
     List<Integer> localLengths = descForType.getPossibleLengthLocalOnlyList();
 
     if (type == PhoneNumberType.FIXED_LINE_OR_MOBILE) {
-      if (!descHasData(getNumberDescByType(metadata, PhoneNumberType.FIXED_LINE))) {
+      if (!descHasPossibleNumberData(getNumberDescByType(metadata, PhoneNumberType.FIXED_LINE))) {
         // The rare case has been encountered where no fixedLine data is available (true for some
         // non-geographical entities), so we just check mobile.
         return testNumberLength(number, metadata, PhoneNumberType.MOBILE);
       } else {
         PhoneNumberDesc mobileDesc = getNumberDescByType(metadata, PhoneNumberType.MOBILE);
-        if (descHasData(mobileDesc)) {
+        if (descHasPossibleNumberData(mobileDesc)) {
           // Merge the mobile data in if there was any. We have to make a copy to do this.
           possibleLengths = new ArrayList<Integer>(possibleLengths);
           // Note that when adding the possible lengths from mobile, we have to again check they
