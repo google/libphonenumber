@@ -6,3 +6,9 @@ Code changes:
    since they can be two *or* three letters (c.f. fil for filipino). Also edited
    the comment for leadingDigits at the territory level in the
    phonemetadata.proto file.
+ - New API methods: isPossibleNumberForType and
+   isPossibleNumberForTypeWithReason, along with getSupportedTypesForRegion and
+   getSupportedTypesForNonGeoEntity. These allow you to query which types (e.g.
+   Mobile) exist for a particular region, and work out if a number is possible
+   for that type (this is a simple length check) rather than for the region as a
+   whole.

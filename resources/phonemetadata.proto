@@ -131,6 +131,8 @@ message PhoneNumberDesc {
   // and mobile numbers, so this field should only be set for those types of
   // numbers (and the general description) - however there are exceptions for
   // NANPA countries.
+  // This data is used to calculate whether a number could be a possible number
+  // for a particular type.
   repeated int32 possible_length_local_only = 10;
 
   // An example national significant number for the specific type. It should

@@ -782,8 +782,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals(2, phoneNumberDesc.getPossibleLengthCount());
     assertEquals(4, phoneNumberDesc.getPossibleLength(0));
     assertEquals(13, phoneNumberDesc.getPossibleLength(1));
-    // We don't set the local-only lengths on child elements such as fixed-line.
-    assertEquals(0, phoneNumberDesc.getPossibleLengthLocalOnlyCount());
+    assertEquals(1, phoneNumberDesc.getPossibleLengthLocalOnlyCount());
   }
 
   public void testSetPossibleLengthsGeneralDesc_BuiltFromChildElements() throws Exception {
@@ -951,8 +950,8 @@ public class BuildMetadataFromXmlTest extends TestCase {
         generalDesc, territoryElement, "fixedLine");
     // No possible lengths should be present, because they match the general description.
     assertEquals(0, phoneNumberDesc.getPossibleLengthCount());
-    // No local-only lengths should be present for child elements such as fixed-line.
-    assertEquals(0, phoneNumberDesc.getPossibleLengthLocalOnlyCount());
+    // Local-only lengths should be present for child elements such as fixed-line.
+    assertEquals(1, phoneNumberDesc.getPossibleLengthLocalOnlyCount());
   }
 
   public void testProcessPhoneNumberDescElement_InvalidNumber() throws Exception {

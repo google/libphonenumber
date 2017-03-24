@@ -20,9 +20,9 @@
  * Functionality includes formatting, parsing and validation.
  * (based on the java implementation).
  *
- * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
- * CLDR two-letter region-code format. These should be in upper-case. The list of the codes
- * can be found here:
+ * NOTE: A lot of methods in this class require Region Code strings. These must
+ * be provided using CLDR two-letter region-code format. These should be in
+ * upper-case. The list of the codes can be found here:
  * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
  *
  * Credits to Nikolaos Trogkanis for original implementation.
@@ -978,6 +978,9 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
    * The number is longer than the shortest valid numbers for this region,
    * shorter than the longest valid numbers for this region, and does not itself
    * have a number length that matches valid numbers for this region.
+   * This can also be returned in the case where
+   * isPossibleNumberForTypeWithReason was called, and there are no numbers of
+   * this type at all for this region.
    */
   INVALID_LENGTH: 5,
   /** The number is longer than all valid numbers for this region. */
@@ -1318,9 +1321,10 @@ i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
 
 
 /**
- * Convenience method to get a list of what regions the library has metadata
- * for.
- * @return {!Array.<string>} region codes supported by the library.
+ * Returns all regions the library has metadata for.
+ *
+ * @return {!Array.<string>} the two-letter region codes for every geographical
+ *     region the library supports.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
   return goog.array.filter(
@@ -1332,10 +1336,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
 
 
 /**
- * Convenience method to get a list of what global network calling codes the
- * library has metadata for.
- * @return {!Array.<number>} global network calling codes supported by the
- *     library.
+ * Returns all global network calling codes the library has metadata for.
+ *
+ * @return {!Array.<number>} the country calling codes for every
+ *   non-geographical entity the library supports.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     getSupportedGlobalNetworkCallingCodes = function() {
@@ -1348,6 +1352,124 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
       function(callingCode) {
         return parseInt(callingCode, 10);
       });
+};
+
+
+/**
+ * Returns true if there is any possibleLength data set for a particular
+ * PhoneNumberDesc.
+ *
+ * @param {i18n.phonenumbers.PhoneNumberDesc} desc
+ * @return {boolean}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.descHasPossibleNumberData_ = function(desc) {
+  // If this is empty, it means numbers of this type inherit from the "general
+  // desc" -> the value "-1" means that no numbers exist for this type.
+  return desc != null &&
+      (desc.possibleLengthCount() != 1 || desc.possibleLengthArray()[0] != -1);
+};
+
+
+/**
+ * Returns true if there is any data set for a particular PhoneNumberDesc.
+ *
+ * @param {i18n.phonenumbers.PhoneNumberDesc} desc
+ * @return {boolean}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.descHasData_ = function(desc) {
+  // Checking most properties since we don't know what's present, since a
+  // custom build may have stripped just one of them (e.g. liteBuild strips
+  // exampleNumber). We don't bother checking the possibleLengthsLocalOnly,
+  // since if this is the only thing that's present we don't really support the
+  // type at all: no type-specific methods will work with only this data.
+  return desc != null && (desc.hasExampleNumber() ||
+      i18n.phonenumbers.PhoneNumberUtil.descHasPossibleNumberData_(desc) ||
+      (desc.hasNationalNumberPattern &&
+       desc.getNationalNumberPatternOrDefault() != 'NA'));
+};
+
+
+/**
+ * Returns the types we have metadata for based on the PhoneMetadata object
+ * passed in.
+ *
+ * @param {!i18n.phonenumbers.PhoneMetadata} metadata
+ * @return {!Array.<i18n.phonenumbers.PhoneNumberType>} the types supported
+ *     based on the metadata object passed in.
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.getSupportedTypesForMetadata_ =
+    function(metadata) {
+  /** @type {!Array.<i18n.phonenumbers.PhoneNumberType>} */
+  var types = [];
+  goog.object.forEach(i18n.phonenumbers.PhoneNumberType,
+      function(type) {
+        if (type == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
+            type == i18n.phonenumbers.PhoneNumberType.UNKNOWN) {
+          // Never return FIXED_LINE_OR_MOBILE (it is a convenience type, and
+          // represents that a particular number type can't be determined) or
+          // UNKNOWN (the non-type).
+          return;
+        }
+        /** @type {i18n.phonenumbers.PhoneNumberDesc} */
+        var desc = i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_(
+            metadata, type);
+        if (i18n.phonenumbers.PhoneNumberUtil.descHasData_(desc)) {
+          types.push(type);
+        }
+      });
+  return types;
+};
+
+
+/**
+ * Returns the types for a given region which the library has metadata for.
+ * Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
+ * entity could be classified as FIXED_LINE_OR_MOBILE, both FIXED_LINE and
+ * MOBILE would be present) and UNKNOWN.
+ *
+ * No types will be returned for invalid or unknown region codes.
+ *
+ * @param {?string} regionCode
+ * @return {!Array.<i18n.phonenumbers.PhoneNumberType>} the types for every
+ *     region the library supports.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedTypesForRegion =
+    function(regionCode) {
+  if (!this.isValidRegionCode_(regionCode)) {
+    return [];
+  }
+  return i18n.phonenumbers.PhoneNumberUtil.getSupportedTypesForMetadata_(
+      /** @type {!i18n.phonenumbers.PhoneMetadata} */ (
+          this.getMetadataForRegion(regionCode)));
+};
+
+
+/**
+ * Returns the types for a country-code belonging to a non-geographical entity
+ * which the library has metadata for. Will not include FIXED_LINE_OR_MOBILE
+ * (instead both FIXED_LINE and FIXED_LINE_OR_MOBILE (if numbers for this
+ * non-geographical entity could be classified as FIXED_LINE_OR_MOBILE, both
+ * FIXED_LINE and MOBILE would be present) and UNKNOWN.
+ *
+ * No types will be returned for country calling codes that do not map to a
+ * known non-geographical entity.
+ *
+ * @param {number} countryCallingCode
+ * @return {!Array.<i18n.phonenumbers.PhoneNumberType>} the types for every
+ *   non-geographical entity the library supports.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedTypesForNonGeoEntity =
+    function(countryCallingCode) {
+  /** @type {i18n.phonenumbers.PhoneMetadata} */
+  var metadata = this.getMetadataForNonGeographicalRegion(countryCallingCode);
+  if (metadata == null) {
+    return [];
+  }
+  return i18n.phonenumbers.PhoneNumberUtil.getSupportedTypesForMetadata_(
+      /** @type {!i18n.phonenumbers.PhoneMetadata} */ (metadata));
 };
 
 
@@ -1806,7 +1928,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
       var regionMetadata = this.getMetadataForRegion(regionCallingFrom);
       if (this.canBeInternationallyDialled(numberNoExt) &&
           this.testNumberLength_(this.getNationalSignificantNumber(numberNoExt),
-              regionMetadata.getGeneralDesc()) !=
+              regionMetadata) !=
           i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
         formattedNumber = this.format(
             numberNoExt, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL);
@@ -1962,9 +2084,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
  * is parsed from. The original format is embedded in the country_code_source
  * field of the PhoneNumber object passed in. If such information is missing,
  * the number will be formatted into the NATIONAL format by default. When the
- * number contains a leading zero and this is unexpected for this country, or we
- * don't have a formatting pattern for the number, the method returns the raw
- * input when it is available.
+ * number contains a leading zero and this is unexpected for this country, or
+ * we don't have a formatting pattern for the number, the method returns the
+ * raw input when it is available.
  *
  * Note this method guarantees no digit will be inserted, removed or modified as
  * a result of formatting.
@@ -2558,7 +2680,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForType =
     return null;
   }
   /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-  var desc = this.getNumberDescByType_(
+  var desc = i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_(
       this.getMetadataForRegion(regionCode), type);
   try {
     if (desc.hasExampleNumber()) {
@@ -2649,7 +2771,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeGetFormattedExtension_ =
  * @return {i18n.phonenumbers.PhoneNumberDesc}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberDescByType_ =
+i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_ =
     function(metadata, type) {
 
   switch (type) {
@@ -3156,14 +3278,51 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isAlphaNumber = function(number) {
  * returning the reason for failure, this method returns a boolean value.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
- *     checked.
- * @return {boolean} true if the number is possible.
+ *     checked
+ * @return {boolean} true if the number is possible
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
     function(number) {
 
   return this.isPossibleNumberWithReason(number) ==
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+};
+
+
+/**
+ * Convenience wrapper around {@link #isPossibleNumberForTypeWithReason}.
+ * Instead of returning the reason for failure, this method returns a boolean
+ * value.
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
+ *     checked
+ * @param {i18n.phonenumbers.PhoneNumberType} type the type we are interested in
+ * @return {boolean} true if the number is possible for this particular type
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberForType =
+    function(number, type) {
+
+  return this.isPossibleNumberForTypeWithReason(number, type) ==
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+};
+
+
+/**
+ * Helper method to check a number against possible lengths for this region,
+ * based on the metadata being passed in, and determine whether it matches, or
+ * is too short or too long. Currently, if a number pattern suggests that
+ * numbers of length 7 and 10 are possible, and a number in between these
+ * possible lengths is entered, such as of length 8, this will return TOO_LONG.
+ *
+ * @param {string} number
+ * @param {i18n.phonenumbers.PhoneMetadata} metadata
+ * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
+    function(number, metadata) {
+  return this.testNumberLengthForType_(
+      number, metadata, i18n.phonenumbers.PhoneNumberType.UNKNOWN);
 };
 
 
@@ -3175,21 +3334,77 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
  * return TOO_LONG.
  *
  * @param {string} number
- * @param {i18n.phonenumbers.PhoneNumberDesc} phoneNumberDesc
+ * @param {i18n.phonenumbers.PhoneMetadata} metadata
+ * @param {i18n.phonenumbers.PhoneNumberType} type
  * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
-    function(number, phoneNumberDesc) {
-  var possibleLengths = phoneNumberDesc.possibleLengthArray();
-  var localLengths = phoneNumberDesc.possibleLengthLocalOnlyArray();
+i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
+    function(number, metadata, type) {
+  var descForType =
+      i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_(metadata, type);
+  // There should always be "possibleLengths" set for every element. This is
+  // declared in the XML schema which is verified by
+  // PhoneNumberMetadataSchemaTest.
+  // For size efficiency, where a sub-description (e.g. fixed-line) has the
+  // same possibleLengths as the parent, this is missing, so we fall back to
+  // the general desc (where no numbers of the type exist at all, there is one
+  // possible length (-1) which is guaranteed not to match the length of any
+  // real phone number).
+  var possibleLengths = descForType.possibleLengthCount() == 0 ?
+      metadata.getGeneralDesc().possibleLengthArray() :
+      descForType.possibleLengthArray();
+  var localLengths = descForType.possibleLengthLocalOnlyArray();
+
+  if (type == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE) {
+    if (!i18n.phonenumbers.PhoneNumberUtil.descHasPossibleNumberData_(
+             i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_(
+                 metadata, i18n.phonenumbers.PhoneNumberType.FIXED_LINE))) {
+      // The rare case has been encountered where no fixedLine data is
+      // available (true for some non-geographical entities), so we just check
+      // mobile.
+      return this.testNumberLengthForType_(
+          number, metadata, i18n.phonenumbers.PhoneNumberType.MOBILE);
+    } else {
+      var mobileDesc = i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_(
+          metadata, i18n.phonenumbers.PhoneNumberType.MOBILE);
+      if (i18n.phonenumbers.PhoneNumberUtil.descHasPossibleNumberData_(
+              mobileDesc)) {
+        // Merge the mobile data in if there was any. "Concat" creates a new
+        // array, it doesn't edit possibleLengths in place, so we don't need a
+        // copy.
+        // Note that when adding the possible lengths from mobile, we have
+        // to again check they aren't empty since if they are this indicates they
+        // are the same as the general desc and should be obtained from there.
+        possibleLengths = possibleLengths.concat(
+            mobileDesc.possibleLengthCount() == 0 ?
+                metadata.getGeneralDesc().possibleLengthArray() :
+                mobileDesc.possibleLengthArray());
+        // The current list is sorted; we need to merge in the new list and
+        // re-sort (duplicates are okay). Sorting isn't so expensive because the
+        // lists are very small.
+        goog.array.sort(possibleLengths);
+
+        if (localLengths.length == 0) {
+          localLengths = mobileDesc.possibleLengthLocalOnlyArray();
+        } else {
+          localLengths = localLengths.concat(
+              mobileDesc.possibleLengthLocalOnlyArray());
+          goog.array.sort(localLengths);
+        }
+      }
+    }
+  }
+  // If the type is not supported at all (indicated by the possible lengths
+  // containing -1 at this point) we return invalid length.
+  if (possibleLengths[0] == -1) {
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH;
+  }
+
   var actualLength = number.length;
   if (goog.array.indexOf(localLengths, actualLength) > -1) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
   }
-  // There should always be "possibleLengths" set for every element. This will
-  // be a build-time check once ShortNumberMetadata.xml is migrated to contain
-  // this information as well.
   var minimumLength = possibleLengths[0];
   if (minimumLength == actualLength) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
@@ -3221,7 +3436,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
  * is much faster than isValidNumber.
  * <li>For fixed line numbers, many regions have the concept of area code, which
  * together with subscriber number constitute the national significant number.
- * It is sometimes okay to dial the subscriber number only when dialing in the
+ * It is sometimes okay to dial only the subscriber number when dialing in the
  * same area. This function will return true if the subscriber-number-only
  * version is passed in. On the other hand, because isValidNumber validates
  * using information on both starting digits (for fixed line numbers, that would
@@ -3231,22 +3446,55 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
  * </ol>
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
- *     checked.
+ *     checked
  * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult} a
- *     ValidationResult object which indicates whether the number is possible.
+ *     ValidationResult object which indicates whether the number is possible
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
     function(number) {
+  return this.isPossibleNumberForTypeWithReason(
+      number, i18n.phonenumbers.PhoneNumberType.UNKNOWN);
+};
+
+
+/**
+ * Check whether a phone number is a possible number. It provides a more lenient
+ * check than {@link #isValidNumber} in the following sense:
+ * <ol>
+ * <li>It only checks the length of phone numbers. In particular, it doesn't
+ * check starting digits of the number.
+ * <li>For fixed line numbers, many regions have the concept of area code, which
+ * together with subscriber number constitute the national significant number.
+ * It is sometimes okay to dial only the subscriber number when dialing in the
+ * same area. This function will return true if the subscriber-number-only
+ * version is passed in. On the other hand, because isValidNumber validates
+ * using information on both starting digits (for fixed line numbers, that would
+ * most likely be area codes) and length (obviously includes the length of area
+ * codes for fixed line numbers), it will return false for the
+ * subscriber-number-only version.
+ * </ol>
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
+ *     checked
+ * @param {i18n.phonenumbers.PhoneNumberType} type the type we are interested in
+ * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult} a
+ *     ValidationResult object which indicates whether the number is possible
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberForTypeWithReason =
+    function(number, type) {
 
   /** @type {string} */
   var nationalNumber = this.getNationalSignificantNumber(number);
   /** @type {number} */
   var countryCode = number.getCountryCodeOrDefault();
-  // Note: For Russian Fed and NANPA numbers, we just use the rules from the
-  // default region (US or Russia) since the getRegionCodeForNumber will not
-  // work if the number is possible but not valid. This would need to be
-  // revisited if the possible number pattern ever differed between various
-  // regions within those plans.
+  // Note: For regions that share a country calling code, like NANPA numbers,
+  // we just use the rules from the default region (US in this case) since the
+  // getRegionCodeForNumber will not work if the number is possible but not
+  // valid. There is in fact one country calling code (290) where the possible
+  // number pattern differs between various regions (Saint Helena and Tristan
+  // da Cuñha), but this is handled by putting all possible lengths for any
+  // country with this country calling code in the metadata for the default
+  // region in this case.
   if (!this.hasValidCountryCallingCode_(countryCode)) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult
         .INVALID_COUNTRY_CODE;
@@ -3257,7 +3505,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
   /** @type {i18n.phonenumbers.PhoneMetadata} */
   var metadata =
       this.getMetadataForRegionOrCallingCode_(countryCode, regionCode);
-  return this.testNumberLength_(nationalNumber, metadata.getGeneralDesc());
+  return this.testNumberLengthForType_(nationalNumber, metadata, type);
 };
 
 
@@ -3475,11 +3723,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
       // long before, we consider the number with the country calling code
       // stripped to be a better result and keep that instead.
       if ((!i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-              validNumberPattern, fullNumber.toString()) &&
+                validNumberPattern, fullNumber.toString()) &&
           i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
               validNumberPattern, potentialNationalNumberStr)) ||
-          this.testNumberLength_(fullNumber.toString(), generalDesc) ==
-              i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG) {
+          this.testNumberLength_(
+              fullNumber.toString(), defaultRegionMetadata) ==
+                  i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG) {
         nationalNumber.append(potentialNationalNumberStr);
         if (keepRawInput) {
           phoneNumber.setCountryCodeSource(
@@ -3809,7 +4058,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput =
  *     buffer to fill in.
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.setItalianLeadingZerosForPhoneNumber_ =
+i18n.phonenumbers.PhoneNumberUtil.setItalianLeadingZerosForPhoneNumber_ =
     function(nationalNumber, phoneNumber) {
   if (nationalNumber.length > 1 && nationalNumber.charAt(0) == '0') {
     phoneNumber.setItalianLeadingZero(true);
@@ -3959,7 +4208,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     // Otherwise, we don't do the stripping, since the original number could be
     // a valid short number.
     if (this.testNumberLength_(potentialNationalNumber.toString(),
-            regionMetadata.getGeneralDesc()) !=
+            regionMetadata) !=
         i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
       normalizedNationalNumber = potentialNationalNumber;
       if (keepRawInput && carrierCode.toString().length > 0) {
@@ -3979,7 +4228,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
       i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_) {
     throw new Error(i18n.phonenumbers.Error.TOO_LONG);
   }
-  this.setItalianLeadingZerosForPhoneNumber_(
+  i18n.phonenumbers.PhoneNumberUtil.setItalianLeadingZerosForPhoneNumber_(
       normalizedNationalNumberStr, phoneNumber);
   phoneNumber.setNationalNumber(parseInt(normalizedNationalNumberStr, 10));
   return phoneNumber;

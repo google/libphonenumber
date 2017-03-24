@@ -463,12 +463,7 @@ public class BuildMetadataFromXml {
         TreeSet<Integer> lengths = new TreeSet<Integer>();
         TreeSet<Integer> localOnlyLengths = new TreeSet<Integer>();
         populatePossibleLengthSets(element, lengths, localOnlyLengths);
-        // NOTE: We don't use the localOnlyLengths for specific number types yet, since they aren't
-        // used in the API and won't be until a method that assesses whether a number is possible
-        // for a certain type or not is available. To ensure binary size is small, we don't set them
-        // outside the general desc at this time. If we want this data later, the empty set here
-        // should be replaced with the localOnlyLengths set above.
-        setPossibleLengths(lengths, new TreeSet<Integer>(), parentDesc, numberDesc);
+        setPossibleLengths(lengths, localOnlyLengths, parentDesc, numberDesc);
       }
 
       NodeList validPattern = element.getElementsByTagName(NATIONAL_NUMBER_PATTERN);
