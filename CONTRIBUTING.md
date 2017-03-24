@@ -46,30 +46,46 @@ If the evidence is publicly available online, please provide the link.
 
 If the evidence is not publicly available online, make sure that you have the
 rights to share this with us, and confirm this by reading and signing the
-appropriate Contributor License Agreement (CLA):
+appropriate Contributor License Agreement (CLA).
 
-*   If you are contributing as an individual, sign the [individual
-    CLA](http://cla.developers.google.com/about/google-individual?csw=1).
-    **N.B. Use an email address associated with the GitHub username used to file
-    the corresponding issue.**
-*   If you are contributing as part of a corporation, sign the [corporate
-    CLA](http://developers.google.com/open-source/cla/corporate?csw=1).
+See https://cla.developers.google.com/about to determine whether you need to
+sign a Corporate or Individual CLA.
 
 **By signing the CLA, you confirm that you have the rights to share the
 information with us, and that we may use, modify, reproduce, publicly display,
 and distribute the information in accordance with the library's [open source
 license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
 
-Once you have signed the CLA:
+*   [Corporate CLA](http://developers.google.com/open-source/cla/corporate?csw=1):
+    *   See https://cla.developers.google.com/about and follow the instructions.
+    *   Once you are all set up, either create a validation issue for your
+        request, or go to the relevant open issue.
+    *   Comment on the issue, using the GitHub account that's already set up for
+        your Corporate CLA, with "I signed the CLA."
+    *   If you're set up correctly, someone from the team will update you on the
+        issue, with instructions for sending private documentation to our closed
+        mailing list. Only the core libphonenumber team has access to view
+        emails sent to this address.
 
-*   If there is no open validation issue for your request, create one.
-*   Comment on the open issue, e.g. "I signed the CLA, please whitelist me to
-    send private documentation to libphonenumber-supporting-docs".
-*   Someone from the team will whitelist you and update you on the issue.
-
-Once whitelisted, you will be able to email
-libphonenumber-supporting-docs@googlegroups.com. Only the core libphonenumber
-team has access to view emails sent to this address.
+*   [Individual CLA](http://cla.developers.google.com/about/google-individual?csw=1):
+    *   See https://cla.developers.google.com/about to ensure that an Individual
+        CLA is what you need to sign, and for help with troubleshooting.
+    *   When signing the Individual CLA, use the same GitHub username you used
+        (or will use) to file the corresponding issue.
+    *   If the email address you use in the Individual CLA is not already
+        associated with that GitHub account, [add
+        it](https://help.github.com/articles/adding-an-email-address-to-your-github-account/).
+    *   If you need to modify an Individual CLA signature, such as to change the
+        GitHub username, go to https://cla.developers.google.com/clas and click
+        on "Edit Contact Information".
+    *   Once you are all set up, either create a validation issue for your
+        request, or go to the relevant open issue.
+    *   Comment on the issue, using the GitHub account that's already set up for
+        your Individual CLA, with "I signed the CLA."
+    *   If you're set up correctly, someone from the team will update you on the
+        issue, with instructions for sending private documentation to our closed
+        mailing list. Only the core libphonenumber team has access to view
+        emails sent to this address.
 
 ## Filing a code issue
 
