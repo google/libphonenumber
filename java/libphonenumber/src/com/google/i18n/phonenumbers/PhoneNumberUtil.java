@@ -981,6 +981,10 @@ public class PhoneNumberUtil {
     return desc.getPossibleLengthCount() != 1 || desc.getPossibleLength(0) != -1;
   }
 
+  // Note: descHasData must account for any of MetadataFilter's excludableChildFields potentially
+  // being absent from the metadata. It must check them all. For any changes in descHasData, ensure
+  // that all the excludableChildFields are still being checked. If your change is safe simply
+  // mention why during a review without needing to change MetadataFilter.
   /**
    * Returns true if there is any data set for a particular PhoneNumberDesc.
    */
