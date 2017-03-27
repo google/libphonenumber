@@ -84,7 +84,8 @@ final class MetadataFilter {
   private final TreeMap<String, TreeSet<String>> blacklist;
 
   // Note: If changing the blacklist here or the name of the method, update documentation about
-  // affected methods at the same time.
+  // affected methods at the same time:
+  // https://github.com/googlei18n/libphonenumber/blob/master/FAQ.md#what-is-the-metadatalitejsmetadata_lite-option
   static MetadataFilter forLiteBuild() {
     // "exampleNumber" is a blacklist.
     return new MetadataFilter(parseFieldMapFromString("exampleNumber"));
