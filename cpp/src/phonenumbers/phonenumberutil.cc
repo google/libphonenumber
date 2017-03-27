@@ -270,6 +270,11 @@ bool DescHasPossibleNumberData(const PhoneNumberDesc& desc) {
   return desc.possible_length_size() != 1 || desc.possible_length(0) != -1;
 }
 
+// Note: DescHasData must account for any of MetadataFilter's
+// excludableChildFields potentially being absent from the metadata. It must
+// check them all. For any changes in DescHasData, ensure that all the
+// excludableChildFields are still being checked. If your change is safe simply
+// mention why during a review without needing to change MetadataFilter.
 // Returns true if there is any data set for a particular PhoneNumberDesc.
 bool DescHasData(const PhoneNumberDesc& desc) {
   // Checking most properties since we don't know what's present, since a custom
