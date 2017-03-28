@@ -13,13 +13,11 @@
 # limitations under the License.
 
 # http://www.itu.int/oth/T0202000021/en
+# ITU doc has Telemob, but their home-page refers to them as Telmob
+# (www.telmob.bf)
 
-226550|Airtel
-226551|Airtel
-226552|Airtel
-226553|Airtel
-226554|Airtel
-226555|Airtel
+22651|Telmob
+22655|Airtel
 22660|Telmob
 22661|Telmob
 22662|Telmob

@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-509281|Digicel
-50929|Digicel
+50930|Digicel
 50931|Digicel
 50934|Digicel
 50936|Digicel
