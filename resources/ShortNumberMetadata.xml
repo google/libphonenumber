@@ -1590,8 +1590,11 @@
         <!-- For unsubscribing to SMS short code campaigns: 457 is Vivo, 4112 is Tim, 55555 is Oi,
              4040 is Claro. For example, see
              http://www.tim.com.br/sp/sobre-a-tim/regulatorio/mensagens-publicitarias. Note this
-             also mentions 4111 as the TIM short-code to sign up. -->
+             also mentions 4111 as the TIM short-code to sign up.
+             151 is listed here since it isn't available throughout the country; e.g. not in Rio
+             Grande do Sul. -->
         <nationalNumberPattern>
+          151|
           27878|
           4(?:
             0404?|
@@ -5390,17 +5393,51 @@
     <!-- India -->
     <!-- http://www.itu.int/oth/T0202000063/en -->
     <!-- http://en.wikipedia.org/wiki/%2B91 -->
+    <!-- http://www.dot.gov.in/access-services/national-numbering-plan-2003 -->
     <territory id="IN">
       <generalDesc>
         <nationalNumberPattern>[125]\d{2,6}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,7}</possibleNumberPattern>
       </generalDesc>
+      <!-- 1802 - Virtual Card calling (VCC) codes are actually access codes for making VCC calls as
+           per http://www.cdothelpline.ernet.in/documents/C-DOT_IN/INS&FDES.PDF. Not adding them to
+           phone or short number metadata as there are no valid numbers online. Same is the case
+           with 1804 Account Card Calling (ACC) numbers. -->
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[0128]|
-            12|
-            298
+            0(?:
+              [01248]|
+              5(?:
+                010|
+                6|
+                902
+              )|
+              7(?:
+                [07]|
+                80
+              )|
+              9[0157]
+            )|
+            1(?:
+              [289]|
+              [67][0-2]\d{3}
+            )|
+            2(?:
+              1|
+              98
+            )|
+            39|
+            4[01]|
+            55[23]\d{2}|
+            7000|
+            9(?:
+              0[019]|
+              47|
+              50|
+              6[1347]|
+              [89]
+            )
           )|
           2611|
           5(?:
@@ -5412,9 +5449,16 @@
             757555
           )
         </nationalNumberPattern>
-        <possibleLengths national="[3-5],7"/>
+        <possibleLengths national="[3-7]"/>
         <exampleNumber>108</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          1\d{2,5}
+        </nationalNumberPattern>
+        <possibleLengths national="[3-6]"/>
+        <exampleNumber>105010</exampleNumber>
+      </tollFree>
       <standardRate>
         <!-- Cost of SMS to 5142[5-9], 514[34]\d and 5757555 is of standard rate. -->
         <nationalNumberPattern>
@@ -5430,11 +5474,37 @@
         <possibleLengths national="5,7"/>
         <exampleNumber>5757555</exampleNumber>
       </standardRate>
+      <premiumRate>
+        <!-- As per DOT's doc 116 is for "Wakeup call Registration" and 117 for "Wakeup call
+             Cancellation". Dialling format 11[67] + <hours_in_24_hours_format> + <minutes>. This
+             service costs double the standard rate.
+             http://delhi.mtnl.net.in/services/phonewakeup.htm -->
+        <nationalNumberPattern>
+          11[67][0-2]\d{3}
+        </nationalNumberPattern>
+        <possibleLengths national="7"/>
+        <exampleNumber>1160530</exampleNumber>
+      </premiumRate>
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <nationalNumberPattern>53000</nationalNumberPattern>
-        <possibleNumberPattern>\d{5}</possibleNumberPattern>
-        <possibleLengths national="5"/>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              [67][0-2]\d{3}|
+              [89]
+            )|
+            21|
+            4[01]|
+            55330|
+            7\d{3}|
+            9(?:
+              [89]|
+              09
+            )
+          )|
+          53000
+        </nationalNumberPattern>
+        <possibleLengths national="[3-7]"/>
         <exampleNumber>53000</exampleNumber>
       </carrierSpecific>
       <emergency>
@@ -5450,8 +5520,25 @@
         <possibleLengths national="3,4"/>
         <exampleNumber>108</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          1(?:
+            0(?:
+              56|
+              9[01]
+            )|
+            55200
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="4,6"/>
+        <exampleNumber>1090</exampleNumber>
+      </expandedEmergency>
       <smsServices>
         <nationalNumberPattern>
+          1(?:
+            39|
+            90[019]
+          )|
           5(?:
             14(?:
               2[5-9]|
@@ -5460,8 +5547,7 @@
             757555
           )
         </nationalNumberPattern>
-        <possibleNumberPattern>\d{5,7}</possibleNumberPattern>
-        <possibleLengths national="5,7"/>
+        <possibleLengths national="[3-5],7"/>
         <exampleNumber>51431</exampleNumber>
       </smsServices>
     </territory>
@@ -8935,22 +9021,36 @@
 
     <!-- Romania -->
     <!-- http://www.itu.int/oth/T02020000AC/en -->
+    <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
     <territory id="RO">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[18]\d{2,5}</nationalNumberPattern>
         <possibleNumberPattern>\d{3,6}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          11(?:
-            2|
-            6(?:
-              000|
-              111
+          1(?:
+            1(?:
+              2|
+              6(?:
+                000|
+                111
+              )|
+              8(?:
+                300|
+                932
+              )
+            )|
+            [24]\d{2}|
+            9(?:
+              21|
+              3[02]|
+              5[178]
             )
-          )
+          )|
+          8[48]\d{2}
         </nationalNumberPattern>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
@@ -8964,6 +9064,23 @@
         <possibleLengths national="6"/>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>
+          (?:
+            1(?:
+              18(?:
+                300|
+                932
+              )|
+              [24]\d{2}
+            )|
+            8[48]\d{2}
+          )
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4,6}</possibleNumberPattern>
+        <possibleLengths national="4,6"/>
+        <exampleNumber>8844</exampleNumber>
+      </premiumRate>
       <emergency>
         <nationalNumberPattern>112</nationalNumberPattern>
         <possibleLengths national="3"/>
@@ -8980,6 +9097,17 @@
         <possibleLengths national="6"/>
         <exampleNumber>116000</exampleNumber>
       </expandedEmergency>
+      <smsServices>
+        <nationalNumberPattern>
+          (?:
+            1[24]|
+            8[48]
+          )\d{2}
+        </nationalNumberPattern>
+        <possibleNumberPattern>\d{4}</possibleNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>8844</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Serbia -->
@@ -10238,19 +10366,28 @@
     <!-- http://www.itu.int/oth/T02020000D6/en -->
     <territory id="TR">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
-        <possibleNumberPattern>\d{3}</possibleNumberPattern>
+        <nationalNumberPattern>[15]\d{2,3}</nationalNumberPattern>
+        <possibleNumberPattern>\d{3,4}</possibleNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
             1[02]|
             55
-          )
+          )|
+          5420
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <standardRate>
+        <!-- As per Vodafone's article http://www.vodafone.com.tr/Net/vodafonenet-basvuru.php#sms,
+             5420 is an SMS only service and its cost is based on the end user's carrier. However it
+             is charged at standard rate as per above article. -->
+        <nationalNumberPattern>5420</nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>5420</exampleNumber>
+      </standardRate>
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -10261,6 +10398,11 @@
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <smsServices>
+        <nationalNumberPattern>5420</nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>5420</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Trinidad and Tobago -->

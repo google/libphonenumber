@@ -18,7 +18,7 @@
 
 822|Seul
 8231|Gyeonggi
-8232|Daejeon
+8232|İncheon
 8233|Gangwon
 8241|Güney Chungcheong
 8242|Daejeon
