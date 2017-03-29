@@ -3013,6 +3013,7 @@
     <!-- Czech Rep. -->
     <!-- http://www.itu.int/oth/T0202000035/en -->
     <!-- http://en.wikipedia.org/wiki/%2B420 -->
+    <!-- http://www.mvcr.cz/mvcren/article/emergency-numbers.aspx -->
     <territory id="CZ">
       <generalDesc>
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
@@ -3029,7 +3030,7 @@
             2\d{2,3}|
             3\d{3,4}|
             4\d{3}|
-            5[058]|
+            5[0568]|
             99
           )
         </nationalNumberPattern>
@@ -3052,7 +3053,7 @@
         <nationalNumberPattern>
           1(?:
             12|
-            5[058]
+            5[0568]
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
