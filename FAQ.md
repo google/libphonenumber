@@ -268,10 +268,12 @@ version of libphonenumber, follow these steps:
     https://github.com/googlei18n/libphonenumber/find/v8.3.3
 *   Type `pom.xml`. This will surface all the `pom.xml` files as they were
     released at the chosen tag.
-*   Find the version you care about in the corresponding `pom.xml` file. For
-    example, to find the version of the carrier jar corresponding to
-    libphonenumber 8.3.3, open `java/carrier/pom.xml` at v8.3.3's search
-    results. This is `1.56`.
+*   Find the version you care about in the corresponding `pom.xml` file. Look
+    for `<version>` in the top-level `project` element. For example, to find the
+    version of the carrier jar corresponding to libphonenumber 8.3.3, open
+    `java/carrier/pom.xml` at v8.3.3's search results. This is `1.56`.
+*   If you depend on the carrier or geocoder jar, you also need to depend on
+        the prefixmapper jar.
 
 ### How do I load libphonenumber resources in my Android app?
 
