@@ -255,6 +255,24 @@ The metadata binary files can be generated using the ant build rules
 file](https://github.com/googlei18n/libphonenumber/blob/master/java/build.xml)
 itself.
 
+### Which versions of the Maven jars should I use?
+
+When possible, use the [latest
+version](https://github.com/googlei18n/libphonenumber/releases) of
+libphonenumber.
+
+For the other Maven artifacts, to find the version corresponding to a given
+version of libphonenumber, follow these steps:
+
+*   Go to the versioned GitHub tag, e.g.
+    https://github.com/googlei18n/libphonenumber/find/v8.3.3
+*   Type `pom.xml`. This will surface all the `pom.xml` files as they were
+    released at the chosen tag.
+*   Find the version you care about in the corresponding `pom.xml` file. For
+    example, to find the version of the carrier jar corresponding to
+    libphonenumber 8.3.3, open `java/carrier/pom.xml` at v8.3.3's search
+    results. This is `1.56`.
+
 ### How do I load libphonenumber resources in my Android app?
 
 #### System considerations
