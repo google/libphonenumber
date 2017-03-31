@@ -452,7 +452,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& region_code) const;
 
   // Returns the region where a phone number is from. This could be used for
-  // geo-coding at the region level.
+  // geocoding at the region level. Only guarantees correct results for valid,
+  // full numbers (not short-codes, or invalid numbers).
   void GetRegionCodeForNumber(const PhoneNumber& number,
                               string* region_code) const;
 
