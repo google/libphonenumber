@@ -29,15 +29,20 @@ Please copy this template into your report and answer the questions to the best 
 For acceptable evidence, [see below](#provide-supporting-evidence).
 
 ``` nomarkdown
-*   Country/region affected (e.g., "US"):
-*   Example number(s) affected ("+1 555 555-1234"):
-*   The phone number range(s) to which the issue applies ("+1 555 555-XXXX"):
-*   The type of the number(s) ("fixed-line", "mobile", "short code", etc.):
-*   The cost, if applicable ("toll-free", "premium rate", "shared cost"):
-*   Supporting evidence (for example, national numbering plan, announcement from mobile carrier, news article):
+*   Country:
+*   Example number(s) and/or range(s):
+*   Number type ("fixed-line", "mobile", "short code", etc.):
+*   For short codes, cost and dialing restrictions:
+*   Where or whom did you get the number(s) from:
+*   Authoritative evidence (e.g. national numbering plan, operator announcement):
+*   Link from demo (http://libphonenumber.appspot.com) showing error:
 ```
 
-### Provide supporting evidence
+For issues affecting validation, formatting, or other aspects covered by the metadata,
+we invite you to file issues in Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347),
+which we're currently testing.
+
+### Provide authoritative evidence
 
 Ideally, change requests for ranges should be accompanied by authoritative
 evidence such as official government or public carrier documents.
