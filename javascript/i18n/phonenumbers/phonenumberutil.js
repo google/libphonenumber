@@ -36,6 +36,7 @@ goog.provide('i18n.phonenumbers.PhoneNumberUtil.MatchType');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 goog.require('goog.array');
+goog.require('goog.object');
 goog.require('goog.proto2.PbLiteSerializer');
 goog.require('goog.string');
 goog.require('goog.string.StringBuffer');

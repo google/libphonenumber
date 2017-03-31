@@ -26,7 +26,12 @@
  */
 
 goog.require('goog.array');
+goog.require('goog.string.StringBuffer');
 goog.require('goog.testing.jsunit');
+goog.require('i18n.phonenumbers.NumberFormat');
+goog.require('i18n.phonenumbers.PhoneMetadata');
+goog.require('i18n.phonenumbers.PhoneNumberDesc');
+goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.RegionCode');
 
