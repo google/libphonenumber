@@ -39,7 +39,7 @@ For acceptable evidence, [see below](#provide-supporting-evidence).
 ```
 
 For issues affecting validation, formatting, or other aspects covered by the metadata,
-we invite you to file issues in Google's new [Issue Tracker](issuetracker.google.com/issues/new?component=192347),
+we invite you to file issues in Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347),
 which we're currently testing.
 
 ### Provide authoritative evidence
