@@ -31,14 +31,15 @@ For acceptable evidence, [see below](#provide-supporting-evidence).
 ``` nomarkdown
 *   Country:
 *   Example number(s) and/or range(s):
+*   Number type ("fixed-line", "mobile", "short code", etc.):
 *   For short codes, cost and dialing restrictions:
 *   Where or whom did you get the number(s) from:
-*   Authoritative evidence (e.g. national numbering plan, operator annoucement):
+*   Authoritative evidence (e.g. national numbering plan, operator announcement):
 *   Link from demo (http://libphonenumber.appspot.com) showing error:
 ```
 
 For issues affecting validation, formatting, or other aspects covered by the metadata,
-we invite you to file issues in Google new [Issue Tracker](issuetracker.google.com/issues/new?component=192347),
+we invite you to file issues in Google's new [Issue Tracker](issuetracker.google.com/issues/new?component=192347),
 which we're currently testing.
 
 ### Provide authoritative evidence
