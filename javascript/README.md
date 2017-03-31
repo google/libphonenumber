@@ -69,9 +69,7 @@ project:
 
 4. Run the Closure Compiler to get your changes syntax and type checked. This will also generate `demo-compiled.js` used by `demo-compiler.html`
 
-  (TODO: Use target "compile" rather than "compile-demo" once visibility issues for getExtractedNationalPrefix_ have been resolved):
-
-  `ant -f javascript/build.xml compile-demo`
+  `ant -f javascript/build.xml compile`
 
 5. Run the Closure Linter to lint the JavaScript files:
 

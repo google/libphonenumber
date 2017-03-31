@@ -35,12 +35,7 @@ goog.provide('i18n.phonenumbers.AsYouTypeFormatter');
 goog.require('goog.string.StringBuffer');
 goog.require('i18n.phonenumbers.NumberFormat');
 goog.require('i18n.phonenumbers.PhoneMetadata');
-goog.require('i18n.phonenumbers.PhoneMetadataCollection');
-goog.require('i18n.phonenumbers.PhoneNumber');
-goog.require('i18n.phonenumbers.PhoneNumber.CountryCodeSource');
-goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
-goog.require('i18n.phonenumbers.metadata');
 
 
 
