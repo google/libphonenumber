@@ -2286,7 +2286,8 @@ public class PhoneNumberUtil {
 
   /**
    * Returns the region where a phone number is from. This could be used for geocoding at the region
-   * level.
+   * level. Only guarantees correct results for valid, full numbers (not short-codes, or invalid
+   * numbers).
    *
    * @param number  the phone number whose origin we want to know
    * @return  the region where the phone number is from, or null if no region matches this calling

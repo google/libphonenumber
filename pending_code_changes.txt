@@ -1,1 +1,3 @@
-
+Code changes:
+ - Doc updates for getRegionCodeForNumber to clarify that it does not
+  work for short-codes or invalid numbers.
