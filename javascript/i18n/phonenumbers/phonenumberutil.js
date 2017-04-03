@@ -3025,7 +3025,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumberForRegion =
 
 /**
  * Returns the region where a phone number is from. This could be used for
- * geocoding at the region level.
+ * geocoding at the region level. Only guarantees correct results for valid,
+ * full numbers (not short-codes, or invalid numbers).
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number whose origin
  *     we want to know.
