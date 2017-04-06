@@ -1,4 +1,4 @@
-# Copyright (C) 2012 The Libphonenumber Authors
+# Copyright (C) 2016 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,9 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# http://www.itu.int/oth/T0202000066/en [2012-07-24]
-# Numbering Plan received from Sony Ericsson [2012-04]
-# Some prefixes were changed/removed based on http://www.tct.ir/?siteid=1&pageid=195
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000660002PDFE.pdf [2015-8-8]
 # Some names were changed to the more common English spelling.
 
 9811|Mazandaran
