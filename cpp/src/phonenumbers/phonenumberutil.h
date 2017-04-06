@@ -499,20 +499,26 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //   2. It doesn't attempt to figure out the type of the number, but uses
   //      general rules which applies to all types of phone numbers in a
   //      region. Therefore, it is much faster than IsValidNumber().
-  //   3. For fixed line numbers, many regions have the concept of area code,
-  //      which together with subscriber number constitute the national
-  //      significant number. It is sometimes okay to dial only the subscriber
-  //      number when dialing in the same area. This function will return
-  //      true if the subscriber-number-only version is passed in. On the other
-  //      hand, because IsValidNumber() validates using information on both
-  //      starting digits (for fixed line numbers, that would most likely be
-  //      area codes) and length (obviously includes the length of area codes
-  //      for fixed line numbers), it will return false for the
-  //      subscriber-number-only version.
+  //   3. For some numbers (particularly fixed-line), many regions have the
+  //      concept of area code, which together with subscriber number constitute
+  //      the national significant number. It is sometimes okay to dial only the
+  //      subscriber number when dialing in the same area. This function will
+  //      return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+  //      passed in. On the other hand, because IsValidNumber() validates using
+  //      information on both starting digits (for fixed line numbers, that
+  //      would most likely be area codes) and length (obviously includes the
+  //      length of area codes for fixed line numbers), it will return false for
+  //      the subscriber-number-only version.
   ValidationResult IsPossibleNumberWithReason(const PhoneNumber& number) const;
 
   // Convenience wrapper around IsPossibleNumberWithReason(). Instead of
-  // returning the reason for failure, this method returns a boolean value.
+  // returning the reason for failure, this method returns true if the number is
+  // either a possible fully-qualified number (containing the area code and
+  // country code), or if the number could be a possible local number (with a
+  // country code, but missing an area code). Local numbers are considered
+  // possible if they could be possibly dialled in this format: if the area code
+  // is needed for a call to connect, the number is not considered possible
+  // without it.
   bool IsPossibleNumber(const PhoneNumber& number) const;
 
   // Check whether a phone number is a possible number of a particular type. For
@@ -525,22 +531,29 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // This provides a more lenient check than IsValidNumber() in the following
   // sense:
   //
-  // * It only checks the length of phone numbers. In particular, it doesn't
-  //   check starting digits of the number.
-  // * For fixed line numbers, many regions have the concept of area code, which
-  //   together with subscriber number constitute the national significant
-  //   number. It is sometimes okay to dial only the subscriber number when
-  //   dialing in the same area. This function will return true if the
-  //   subscriber-number-only version is passed in. On the other hand, because
-  //   IsValidNumber() validates using information on both starting digits (for
-  //   fixed line numbers, that would most likely be area codes) and length
-  //   (obviously includes the length of area codes for fixed line numbers), it
-  //   will return false for the subscriber-number-only version.
+  //   1. It only checks the length of phone numbers. In particular, it doesn't
+  //      check starting digits of the number.
+  //   2. For some numbers (particularly fixed-line), many regions have the
+  //      concept of area code, which together with subscriber number constitute
+  //      the national significant number. It is sometimes okay to dial only the
+  //      subscriber number when dialing in the same area. This function will
+  //      return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+  //      passed in. On the other hand, because IsValidNumber() validates using
+  //      information on both starting digits (for fixed line numbers, that
+  //      would most likely be area codes) and length (obviously includes the
+  //      length of area codes for fixed line numbers), it will return false for
+  //      the subscriber-number-only version.
   ValidationResult IsPossibleNumberForTypeWithReason(
       const PhoneNumber& number, PhoneNumberType type) const;
 
   // Convenience wrapper around IsPossibleNumberForTypeWithReason(). Instead of
-  // returning the reason for failure, this method returns a boolean value.
+  // returning the reason for failure, this method returns true if the number is
+  // either a possible fully-qualified number (containing the area code and
+  // country code), or if the number could be a possible local number (with a
+  // country code, but missing an area code). Local numbers are considered
+  // possible if they could be possibly dialled in this format: if the area code
+  // is needed for a call to connect, the number is not considered possible
+  // without it.
   bool IsPossibleNumberForType(const PhoneNumber& number,
                                PhoneNumberType type) const;
 

@@ -369,9 +369,11 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
   }
 
   int actual_length = number.length();
+  // This is safe because there is never an overlap beween the possible lengths
+  // and the local-only lengths; this is checked at build time.
   if (std::find(local_lengths.begin(), local_lengths.end(), actual_length) !=
       local_lengths.end()) {
-    return PhoneNumberUtil::IS_POSSIBLE;
+    return PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY;
   }
   int minimum_length = possible_lengths.Get(0);
   if (minimum_length == actual_length) {
@@ -381,16 +383,11 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
   } else if (*(possible_lengths.end() - 1) < actual_length) {
     return PhoneNumberUtil::TOO_LONG;
   }
-  // Note that actually the number is not too long if possible_lengths does not
-  // contain the length: we know it is less than the highest possible number
-  // length, and higher than the lowest possible number length. However, we
-  // don't currently have an enum to express this, so we return TOO_LONG in the
-  // short-term.
   // We skip the first element; we've already checked it.
   return std::find(possible_lengths.begin() + 1, possible_lengths.end(),
                    actual_length) != possible_lengths.end()
              ? PhoneNumberUtil::IS_POSSIBLE
-             : PhoneNumberUtil::TOO_LONG;
+             : PhoneNumberUtil::INVALID_LENGTH;
 }
 
 // Helper method to check a number against possible lengths for this region,
@@ -2251,12 +2248,14 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
 }
 
 bool PhoneNumberUtil::IsPossibleNumber(const PhoneNumber& number) const {
-  return IsPossibleNumberWithReason(number) == IS_POSSIBLE;
+  ValidationResult result = IsPossibleNumberWithReason(number);
+  return result == IS_POSSIBLE || result == IS_POSSIBLE_LOCAL_ONLY;
 }
 
 bool PhoneNumberUtil::IsPossibleNumberForType(
     const PhoneNumber& number, const PhoneNumberType type) const {
-  return IsPossibleNumberForTypeWithReason(number, type) == IS_POSSIBLE;
+  ValidationResult result = IsPossibleNumberForTypeWithReason(number, type);
+  return result == IS_POSSIBLE || result == IS_POSSIBLE_LOCAL_ONLY;
 }
 
 bool PhoneNumberUtil::IsPossibleNumberForString(

@@ -2468,24 +2468,37 @@ public class PhoneNumberUtil {
 
   /**
    * Convenience wrapper around {@link #isPossibleNumberWithReason}. Instead of returning the reason
-   * for failure, this method returns a boolean value.
+   * for failure, this method returns true if the number is either a possible fully-qualified number
+   * (containing the area code and country code), or if the number could be a possible local number
+   * (with a country code, but missing an area code). Local numbers are considered possible if they
+   * could be possibly dialled in this format: if the area code is needed for a call to connect, the
+   * number is not considered possible without it.
+   *
    * @param number  the number that needs to be checked
    * @return  true if the number is possible
    */
   public boolean isPossibleNumber(PhoneNumber number) {
-    return isPossibleNumberWithReason(number) == ValidationResult.IS_POSSIBLE;
+    ValidationResult result = isPossibleNumberWithReason(number);
+    return result == ValidationResult.IS_POSSIBLE
+        || result == ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
   }
 
   /**
    * Convenience wrapper around {@link #isPossibleNumberForTypeWithReason}. Instead of returning the
-   * reason for failure, this method returns a boolean value.
+   * reason for failure, this method returns true if the number is either a possible fully-qualified
+   * number (containing the area code and country code), or if the number could be a possible local
+   * number (with a country code, but missing an area code). Local numbers are considered possible
+   * if they could be possibly dialled in this format: if the area code is needed for a call to
+   * connect, the number is not considered possible without it.
    *
    * @param number  the number that needs to be checked
    * @param type  the type we are interested in
    * @return  true if the number is possible for this particular type
    */
   public boolean isPossibleNumberForType(PhoneNumber number, PhoneNumberType type) {
-    return isPossibleNumberForTypeWithReason(number, type) == ValidationResult.IS_POSSIBLE;
+    ValidationResult result = isPossibleNumberForTypeWithReason(number, type);
+    return result == ValidationResult.IS_POSSIBLE
+        || result == ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
   }
 
   /**
@@ -2556,8 +2569,10 @@ public class PhoneNumberUtil {
     }
 
     int actualLength = number.length();
+    // This is safe because there is never an overlap beween the possible lengths and the local-only
+    // lengths; this is checked at build time.
     if (localLengths.contains(actualLength)) {
-      return ValidationResult.IS_POSSIBLE;
+      return ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
     }
 
     int minimumLength = possibleLengths.get(0);
@@ -2568,32 +2583,28 @@ public class PhoneNumberUtil {
     } else if (possibleLengths.get(possibleLengths.size() - 1) < actualLength) {
       return ValidationResult.TOO_LONG;
     }
-    // Note that actually the number is not too long if possibleLengths does not contain the length:
-    // we know it is less than the highest possible number length, and higher than the lowest
-    // possible number length. However, we don't currently have an enum to express this, so we
-    // return TOO_LONG in the short-term.
     // We skip the first element; we've already checked it.
     return possibleLengths.subList(1, possibleLengths.size()).contains(actualLength)
-        ? ValidationResult.IS_POSSIBLE : ValidationResult.TOO_LONG;
+        ? ValidationResult.IS_POSSIBLE : ValidationResult.INVALID_LENGTH;
   }
 
   /**
    * Check whether a phone number is a possible number. It provides a more lenient check than
    * {@link #isValidNumber} in the following sense:
-   *<ol>
-   * <li> It only checks the length of phone numbers. In particular, it doesn't check starting
-   *      digits of the number.
-   * <li> It doesn't attempt to figure out the type of the number, but uses general rules which
-   *      applies to all types of phone numbers in a region. Therefore, it is much faster than
-   *      isValidNumber.
-   * <li> For fixed line numbers, many regions have the concept of area code, which together with
-   *      subscriber number constitute the national significant number. It is sometimes okay to dial
-   *      only the subscriber number when dialing in the same area. This function will return
-   *      true if the subscriber-number-only version is passed in. On the other hand, because
-   *      isValidNumber validates using information on both starting digits (for fixed line
-   *      numbers, that would most likely be area codes) and length (obviously includes the
-   *      length of area codes for fixed line numbers), it will return false for the
-   *      subscriber-number-only version.
+   * <ol>
+   *   <li> It only checks the length of phone numbers. In particular, it doesn't check starting
+   *        digits of the number.
+   *   <li> It doesn't attempt to figure out the type of the number, but uses general rules which
+   *        applies to all types of phone numbers in a region. Therefore, it is much faster than
+   *        isValidNumber.
+   *   <li> For some numbers (particularly fixed-line), many regions have the concept of area code,
+   *        which together with subscriber number constitute the national significant number. It is
+   *        sometimes okay to dial only the subscriber number when dialing in the same area. This
+   *        function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+   *        passed in. On the other hand, because isValidNumber validates using information on both
+   *        starting digits (for fixed line numbers, that would most likely be area codes) and
+   *        length (obviously includes the length of area codes for fixed line numbers), it will
+   *        return false for the subscriber-number-only version.
    * </ol>
    * @param number  the number that needs to be checked
    * @return  a ValidationResult object which indicates whether the number is possible
@@ -2613,15 +2624,15 @@ public class PhoneNumberUtil {
    *
    * <ol>
    *   <li> It only checks the length of phone numbers. In particular, it doesn't check starting
-   *       digits of the number.
-   *   <li> For fixed line numbers, many regions have the concept of area code, which together with
-   *       subscriber number constitute the national significant number. It is sometimes okay to
-   *       dial the subscriber number only when dialing in the same area. This function will return
-   *       true if the subscriber-number-only version is passed in. On the other hand, because
-   *       isValidNumber validates using information on both starting digits (for fixed line
-   *       numbers, that would most likely be area codes) and length (obviously includes the length
-   *       of area codes for fixed line numbers), it will return false for the
-   *       subscriber-number-only version.
+   *        digits of the number.
+   *   <li> For some numbers (particularly fixed-line), many regions have the concept of area code,
+   *        which together with subscriber number constitute the national significant number. It is
+   *        sometimes okay to dial only the subscriber number when dialing in the same area. This
+   *        function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+   *        passed in. On the other hand, because isValidNumber validates using information on both
+   *        starting digits (for fixed line numbers, that would most likely be area codes) and
+   *        length (obviously includes the length of area codes for fixed line numbers), it will
+   *        return false for the subscriber-number-only version.
    * </ol>
    *
    * @param number  the number that needs to be checked
