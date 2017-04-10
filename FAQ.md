@@ -228,6 +228,14 @@ We only support a country if:
     have a region code assigned to it, so we could not support it until it was
     assigned XK by [CLDR](http://cldr.unicode.org/).
 
+We support non-geographical entities that have been assigned country calling
+codes by the ITU where a numbering plan is available, e.g. "800" (International
+Freephone Service) and 870 (Inmarsat SNAC). However we do not support country
+calling codes that are only "reserved", or that no data is available for (namely
+388 - listed as "Group of countries, shared code" and 991 - listed as "Trial of
+a proposed new international telecommunication public correspondence service,
+shared code".)
+
 ## Misc
 
 ### <a name="reduced_metadata"></a>What is the metadatalite.js/METADATA_LITE option?
