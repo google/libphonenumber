@@ -30,8 +30,8 @@ goog.require('goog.string.StringBuffer');
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.NumberFormat');
 goog.require('i18n.phonenumbers.PhoneMetadata');
-goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.PhoneNumber');
+goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.RegionCode');
 
@@ -1930,7 +1930,7 @@ function testIsPossibleNumberWithReason() {
   assertEquals(VR.IS_POSSIBLE,
       phoneUtil.isPossibleNumberWithReason(US_NUMBER));
 
-  assertEquals(VR.IS_POSSIBLE,
+  assertEquals(VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberWithReason(US_LOCAL_NUMBER));
 
   assertEquals(VR.TOO_LONG,
@@ -2049,9 +2049,9 @@ function testIsPossibleNumberForTypeWithReason_LocalOnly() {
   // Here we test a number length which matches a local-only length.
   number.setCountryCode(49);
   number.setNationalNumber(12);
-  assertEquals(VR.IS_POSSIBLE,
+  assertEquals(VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
-  assertEquals(VR.IS_POSSIBLE,
+  assertEquals(VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
   // Mobile numbers must be 10 or 11 digits, and there are no local-only
   // lengths.
@@ -2071,10 +2071,10 @@ function testIsPossibleNumberForTypeWithReason_DataMissingForSizeReasons() {
   number.setCountryCode(55);
   number.setNationalNumber(12345678);
   assertEquals(
-      VR.IS_POSSIBLE,
+      VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
   assertEquals(
-      VR.IS_POSSIBLE,
+      VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
 
   // Normal-length number.
@@ -2101,7 +2101,7 @@ function testIsPossibleNumberForTypeWithReason_NumberTypeNotSupportedForRegion()
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
   // This matches a fixed-line length though.
   assertEquals(
-      VR.IS_POSSIBLE,
+      VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberForTypeWithReason(
           number, PNT.FIXED_LINE_OR_MOBILE));
   // This is too short for fixed-line, and no mobile numbers exist.
@@ -2178,10 +2178,8 @@ function testIsPossibleNumberForTypeWithReason_FixedLineOrMobile() {
   assertEquals(
       VR.TOO_LONG,
       phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
-  // This will change to INVALID_LENGTH once we start returning this type in the
-  // main isPossibleNumberWithReason API.
   assertEquals(
-      VR.TOO_LONG,
+      VR.INVALID_LENGTH,
       phoneUtil.isPossibleNumberForTypeWithReason(
           number, PNT.FIXED_LINE_OR_MOBILE));
 

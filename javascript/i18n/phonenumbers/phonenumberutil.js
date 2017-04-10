@@ -3277,7 +3277,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isAlphaNumber = function(number) {
 
 /**
  * Convenience wrapper around {@link #isPossibleNumberWithReason}. Instead of
- * returning the reason for failure, this method returns a boolean value.
+ * returning the reason for failure, this method returns true if the number is
+ * either a possible fully-qualified number (containing the area code and
+ * country code), or if the number could be a possible local number (with a
+ * country code, but missing an area code). Local numbers are considered
+ * possible if they could be possibly dialled in this format: if the area code
+ * is needed for a call to connect, the number is not considered possible
+ * without it.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
@@ -3285,16 +3291,24 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isAlphaNumber = function(number) {
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
     function(number) {
-
-  return this.isPossibleNumberWithReason(number) ==
-      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+  /** @type {!i18n.phonenumbers.PhoneNumberUtil.ValidationResult} */
+  var result = this.isPossibleNumberWithReason(number);
+  return result ==
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE ||
+      result ==
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
 };
 
 
 /**
  * Convenience wrapper around {@link #isPossibleNumberForTypeWithReason}.
- * Instead of returning the reason for failure, this method returns a boolean
- * value.
+ * Instead of returning the reason for failure, this method returns true if the
+ * number is either a possible fully-qualified number (containing the area code
+ * and country code), or if the number could be a possible local number (with a
+ * country code, but missing an area code). Local numbers are considered
+ * possible if they could be possibly dialled in this format: if the area code
+ * is needed for a call to connect, the number is not considered possible
+ * without it.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
@@ -3303,9 +3317,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumber =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberForType =
     function(number, type) {
-
-  return this.isPossibleNumberForTypeWithReason(number, type) ==
-      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+  /** @type {!i18n.phonenumbers.PhoneNumberUtil.ValidationResult} */
+  var result = this.isPossibleNumberForTypeWithReason(number, type);
+  return result ==
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE ||
+      result ==
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
 };
 
 
@@ -3376,8 +3393,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
         // array, it doesn't edit possibleLengths in place, so we don't need a
         // copy.
         // Note that when adding the possible lengths from mobile, we have
-        // to again check they aren't empty since if they are this indicates they
-        // are the same as the general desc and should be obtained from there.
+        // to again check they aren't empty since if they are this indicates
+        // they are the same as the general desc and should be obtained from
+        // there.
         possibleLengths = possibleLengths.concat(
             mobileDesc.possibleLengthCount() == 0 ?
                 metadata.getGeneralDesc().possibleLengthArray() :
@@ -3404,8 +3422,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
   }
 
   var actualLength = number.length;
+  // This is safe because there is never an overlap beween the possible lengths
+  // and the local-only lengths; this is checked at build time.
   if (goog.array.indexOf(localLengths, actualLength) > -1) {
-    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE;
+    return i18n.phonenumbers.PhoneNumberUtil.ValidationResult
+        .IS_POSSIBLE_LOCAL_ONLY;
   }
   var minimumLength = possibleLengths[0];
   if (minimumLength == actualLength) {
@@ -3415,15 +3436,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
   } else if (possibleLengths[possibleLengths.length - 1] < actualLength) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
   }
-  // Note that actually the number is not too long if possible_lengths does not
-  // contain the length: we know it is less than the highest possible number
-  // length, and higher than the lowest possible number length. However, we
-  // don't currently have an enum to express this, so we return TOO_LONG in the
-  // short-term.
   // We skip the first element since we've already checked it.
   return (goog.array.indexOf(possibleLengths, actualLength, 1) > -1) ?
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
-      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
+      i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH;
 };
 
 
@@ -3436,15 +3452,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
  * <li>It doesn't attempt to figure out the type of the number, but uses general
  * rules which applies to all types of phone numbers in a region. Therefore, it
  * is much faster than isValidNumber.
- * <li>For fixed line numbers, many regions have the concept of area code, which
- * together with subscriber number constitute the national significant number.
- * It is sometimes okay to dial only the subscriber number when dialing in the
- * same area. This function will return true if the subscriber-number-only
- * version is passed in. On the other hand, because isValidNumber validates
- * using information on both starting digits (for fixed line numbers, that would
- * most likely be area codes) and length (obviously includes the length of area
- * codes for fixed line numbers), it will return false for the
- * subscriber-number-only version.
+ * <li>For some numbers (particularly fixed-line), many regions have the concept
+ * of area code, which together with subscriber number constitute the national
+ * significant number.  It is sometimes okay to dial only the subscriber number
+ * when dialing in the same area. This function will return
+ * IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is passed in. On
+ * the other hand, because isValidNumber validates using information on both
+ * starting digits (for fixed line numbers, that would most likely be area
+ * codes) and length (obviously includes the length of area codes for fixed line
+ * numbers), it will return false for the subscriber-number-only version.
  * </ol>
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
@@ -3465,15 +3481,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  * <ol>
  * <li>It only checks the length of phone numbers. In particular, it doesn't
  * check starting digits of the number.
- * <li>For fixed line numbers, many regions have the concept of area code, which
- * together with subscriber number constitute the national significant number.
- * It is sometimes okay to dial only the subscriber number when dialing in the
- * same area. This function will return true if the subscriber-number-only
- * version is passed in. On the other hand, because isValidNumber validates
- * using information on both starting digits (for fixed line numbers, that would
- * most likely be area codes) and length (obviously includes the length of area
- * codes for fixed line numbers), it will return false for the
- * subscriber-number-only version.
+ * <li>For some numbers (particularly fixed-line), many regions have the concept
+ * of area code, which together with subscriber number constitute the national
+ * significant number.  It is sometimes okay to dial only the subscriber number
+ * when dialing in the same area. This function will return
+ * IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is passed in. On
+ * the other hand, because isValidNumber validates using information on both
+ * starting digits (for fixed line numbers, that would most likely be area
+ * codes) and length (obviously includes the length of area codes for fixed line
+ * numbers), it will return false for the subscriber-number-only version.
  * </ol>
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be

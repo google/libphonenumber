@@ -1,3 +1,6 @@
 Code changes:
+ - Changing isPossibleWithReason to return the enums INVALID_LENGTH and
+   IS_POSSIBLE_LOCAL_ONLY, where these apply. isPossibleNumber continues to
+   consider IS_POSSIBLE or IS_POSSIBLE_LOCAL_ONLY numbers as possible to dial.
  - Doc updates for getRegionCodeForNumber to clarify that it does not
   work for short-codes or invalid numbers.

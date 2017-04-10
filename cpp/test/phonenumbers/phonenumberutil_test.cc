@@ -1780,18 +1780,18 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumber) {
                                                     RegionCode::US()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("(650) 253-0000",
                                                     RegionCode::US()));
-  EXPECT_TRUE(phone_util_.IsPossibleNumberForString("253-0000",
-                                                    RegionCode::US()));
+  EXPECT_TRUE(
+      phone_util_.IsPossibleNumberForString("253-0000", RegionCode::US()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("+1 650 253 0000",
                                                     RegionCode::GB()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("+44 20 7031 3000",
                                                     RegionCode::GB()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("(020) 7031 300",
                                                     RegionCode::GB()));
-  EXPECT_TRUE(phone_util_.IsPossibleNumberForString("7031 3000",
-                                                    RegionCode::GB()));
-  EXPECT_TRUE(phone_util_.IsPossibleNumberForString("3331 6005",
-                                                    RegionCode::NZ()));
+  EXPECT_TRUE(
+      phone_util_.IsPossibleNumberForString("7031 3000", RegionCode::GB()));
+  EXPECT_TRUE(
+      phone_util_.IsPossibleNumberForString("3331 6005", RegionCode::NZ()));
   EXPECT_TRUE(phone_util_.IsPossibleNumberForString("+800 1234 5678",
                                                     RegionCode::UN001()));
 }
@@ -1930,7 +1930,7 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumberWithReason) {
 
   number.set_country_code(1);
   number.set_national_number(2530000ULL);
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY,
             phone_util_.IsPossibleNumberWithReason(number));
 
   number.set_country_code(0);
@@ -2050,10 +2050,10 @@ TEST_F(PhoneNumberUtilTest, IsPossibleNumberForTypeWithReason_LocalOnly) {
   // Here we test a number length which matches a local-only length.
   number.set_country_code(49);
   number.set_national_number(12ULL);
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::UNKNOWN));
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::FIXED_LINE));
   // Mobile numbers must be 10 or 11 digits, and there are no local-only
@@ -2072,10 +2072,10 @@ TEST_F(PhoneNumberUtilTest,
   // Local-only number.
   number.set_country_code(55);
   number.set_national_number(12345678ULL);
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::UNKNOWN));
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::FIXED_LINE));
   // Normal-length number.
@@ -2099,7 +2099,7 @@ TEST_F(PhoneNumberUtilTest,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::MOBILE));
   // This matches a fixed-line length though.
-  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE,
+  EXPECT_EQ(PhoneNumberUtil::IS_POSSIBLE_LOCAL_ONLY,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::FIXED_LINE_OR_MOBILE));
   // This is too short for fixed-line, and no mobile numbers exist.
@@ -2168,9 +2168,7 @@ TEST_F(PhoneNumberUtilTest,
   EXPECT_EQ(PhoneNumberUtil::TOO_LONG,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::MOBILE));
-  // This will change to INVALID_LENGTH once we start returning this type in the
-  // main isPossibleNumberWithReason API.
-  EXPECT_EQ(PhoneNumberUtil::TOO_LONG,
+  EXPECT_EQ(PhoneNumberUtil::INVALID_LENGTH,
             phone_util_.IsPossibleNumberForTypeWithReason(
                 number, PhoneNumberUtil::FIXED_LINE_OR_MOBILE));
 
