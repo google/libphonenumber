@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistics data (2017-02-15).
+# Internal statistics data (2017-04-05).
 
 1|America/Anguilla&America/Antigua&America/Barbados&America/Cayman&America/Chicago&America/Denver&America/Dominica&America/Edmonton&America/Grand_Turk&America/Grenada&America/Halifax&America/Jamaica&America/Juneau&America/Los_Angeles&America/Lower_Princes&America/Montserrat&America/Nassau&America/New_York&America/Phoenix&America/Port_of_Spain&America/Puerto_Rico&America/Santo_Domingo&America/St_Johns&America/St_Kitts&America/St_Lucia&America/St_Thomas&America/St_Vincent&America/Toronto&America/Tortola&America/Vancouver&America/Winnipeg&Atlantic/Bermuda&Pacific/Guam&Pacific/Honolulu&Pacific/Pago_Pago&Pacific/Saipan
 1201|America/New_York
@@ -23,6 +23,7 @@
 1205|America/Chicago
 1206|America/Los_Angeles
 1207|America/New_York
+1208201|America/Denver
 1208226|America/Denver
 1208227|America/Denver
 1208232|America/Denver
@@ -69,6 +70,7 @@
 1208336|America/Denver
 1208337|America/Denver
 1208338|America/Denver
+1208340|America/Denver
 1208342|America/Denver
 1208343|America/Denver
 1208344|America/Denver
@@ -81,6 +83,7 @@
 1208356|America/Denver
 1208357|America/Denver
 1208359|America/Denver
+1208360|America/Denver
 1208362|America/Denver
 1208365|America/Denver
 1208366|America/Denver
@@ -209,8 +212,10 @@
 1208686|America/Los_Angeles
 1208687|America/Los_Angeles
 1208691|America/Los_Angeles
+1208695|America/Denver
 1208699|America/Los_Angeles
 1208703|America/Denver
+1208704|America/Los_Angeles
 1208706|America/Denver
 1208713|America/Denver
 1208720|America/Denver
@@ -419,6 +424,7 @@
 1219949|America/Chicago
 1219956|America/Chicago
 1219962|America/Chicago
+1219963|America/Chicago
 1219972|America/Chicago
 1219977|America/Chicago
 1219980|America/Chicago
@@ -538,6 +544,7 @@
 1250479|America/Vancouver
 1250480|America/Vancouver
 1250483|America/Vancouver
+1250486|America/Vancouver
 1250487|America/Vancouver
 1250488|America/Vancouver
 1250489|America/Edmonton
@@ -561,6 +568,7 @@
 1250546|America/Vancouver
 1250547|America/Vancouver
 1250549|America/Vancouver
+1250550|America/Vancouver
 1250551|America/Vancouver
 1250554|America/Vancouver
 1250558|America/Vancouver
@@ -619,6 +627,7 @@
 1250703|America/Vancouver
 1250707|America/Vancouver
 1250709|America/Vancouver
+1250710|America/Vancouver
 1250712|America/Vancouver
 1250714|America/Vancouver
 1250715|America/Vancouver
@@ -686,6 +695,7 @@
 1250845|America/Vancouver
 1250847|America/Vancouver
 1250851|America/Vancouver
+1250857|America/Vancouver
 1250858|America/Vancouver
 1250860|America/Vancouver
 1250861|America/Vancouver
@@ -709,6 +719,7 @@
 1250897|America/Vancouver
 1250920|America/Vancouver
 1250923|America/Vancouver
+1250933|America/Vancouver
 1250949|America/Vancouver
 1250951|America/Vancouver
 1250952|America/Vancouver
@@ -739,6 +750,7 @@
 1270234|America/New_York
 1270236|America/Chicago
 1270237|America/Chicago
+1270240|America/Chicago
 1270242|America/Chicago
 1270247|America/Chicago
 1270251|America/Chicago
@@ -893,6 +905,7 @@
 1306222|America/Winnipeg
 1306228|America/Winnipeg
 1306232|America/Winnipeg
+1306233|America/Winnipeg
 1306236|America/Winnipeg
 1306242|America/Winnipeg
 1306244|America/Winnipeg
@@ -943,6 +956,7 @@
 1306585|America/Winnipeg
 1306586|America/Winnipeg
 1306628|America/Winnipeg
+1306631|America/Winnipeg
 1306634|America/Winnipeg
 1306642|America/Winnipeg
 1306648|America/Winnipeg
@@ -1025,6 +1039,7 @@
 1306978|America/Winnipeg
 1306979|America/Winnipeg
 1307|America/Denver
+1308221|America/Chicago
 1308233|America/Chicago
 1308234|America/Chicago
 1308235|America/Denver
@@ -1116,6 +1131,7 @@
 1385|America/Denver
 1386|America/New_York
 1401|America/New_York
+1402201|America/Chicago
 1402202|America/Chicago
 1402208|America/Chicago
 1402210|America/Chicago
@@ -1193,6 +1209,7 @@
 1402399|America/Chicago
 1402403|America/Chicago
 1402408|America/Chicago
+1402413|America/Chicago
 1402416|America/Chicago
 1402420|America/Chicago
 1402421|America/Chicago
@@ -1285,8 +1302,10 @@
 1402645|America/Chicago
 1402650|America/Chicago
 1402652|America/Chicago
+1402660|America/Chicago
 1402677|America/Chicago
 1402680|America/Chicago
+1402681|America/Chicago
 1402684|America/Chicago
 1402685|America/Chicago
 1402691|America/Chicago
@@ -1430,6 +1449,7 @@
 1423396|America/New_York
 1423421|America/New_York
 1423422|America/New_York
+1423425|America/New_York
 1423431|America/New_York
 1423434|America/New_York
 1423439|America/New_York
@@ -1476,6 +1496,7 @@
 1423586|America/New_York
 1423587|America/New_York
 1423595|America/New_York
+1423602|America/New_York
 1423610|America/New_York
 1423613|America/New_York
 1423614|America/New_York
@@ -1545,6 +1566,7 @@
 1423876|America/New_York
 1423877|America/New_York
 1423878|America/New_York
+1423881|America/Chicago
 1423884|America/New_York
 1423886|America/New_York
 1423892|America/New_York
@@ -1617,6 +1639,7 @@
 1541225|America/Los_Angeles
 1541226|America/Los_Angeles
 1541228|America/Los_Angeles
+1541229|America/Los_Angeles
 1541231|America/Los_Angeles
 1541241|America/Los_Angeles
 1541242|America/Los_Angeles
@@ -1768,6 +1791,7 @@
 1541617|America/Los_Angeles
 1541618|America/Los_Angeles
 1541621|America/Los_Angeles
+1541632|America/Los_Angeles
 1541633|America/Los_Angeles
 1541636|America/Los_Angeles
 1541639|America/Los_Angeles
@@ -1832,6 +1856,7 @@
 1541773|America/Los_Angeles
 1541774|America/Los_Angeles
 1541776|America/Los_Angeles
+1541778|America/Los_Angeles
 1541779|America/Los_Angeles
 1541782|America/Los_Angeles
 1541783|America/Los_Angeles
@@ -1977,6 +2002,7 @@
 1574535|America/New_York
 1574537|America/New_York
 1574546|America/New_York
+1574551|America/New_York
 1574583|America/New_York
 1574586|America/New_York
 1574594|America/New_York
@@ -2021,6 +2047,7 @@
 1602|America/Denver
 1603|America/New_York
 1604|America/Vancouver
+1605209|America/Denver
 1605217|America/Chicago
 1605221|America/Chicago
 1605223|America/Denver
@@ -2037,6 +2064,7 @@
 1605274|America/Chicago
 1605275|America/Chicago
 1605279|America/Denver
+1605284|America/Chicago
 1605297|America/Chicago
 1605310|America/Chicago
 1605312|America/Chicago
@@ -2128,6 +2156,7 @@
 1605692|America/Chicago
 1605693|America/Chicago
 1605695|America/Chicago
+1605696|America/Chicago
 1605697|America/Chicago
 1605698|America/Chicago
 1605716|America/Denver
@@ -2352,6 +2381,7 @@
 1620384|America/Denver
 1620397|America/Chicago
 1620421|America/Chicago
+1620423|America/Chicago
 1620429|America/Chicago
 1620431|America/Chicago
 1620441|America/Chicago
@@ -2442,6 +2472,7 @@
 1701226|America/Chicago
 1701227|America/Denver
 1701228|America/Chicago
+1701231|America/Chicago
 1701232|America/Chicago
 1701234|America/Chicago
 1701235|America/Chicago
@@ -2485,10 +2516,14 @@
 1701364|America/Chicago
 1701365|America/Chicago
 1701371|America/Chicago
+1701373|America/Chicago
 1701385|America/Chicago
 1701388|America/Chicago
+1701391|America/Chicago
 1701400|America/Chicago
 170142|America/Chicago
+1701426|America/Chicago
+1701428|America/Chicago
 1701437|America/Chicago
 1701446|America/Chicago
 1701448|America/Chicago
@@ -2513,6 +2548,7 @@
 1701575|America/Denver
 1701577|America/Chicago
 1701584|America/Denver
+1701609|America/Chicago
 1701627|America/Chicago
 1701628|America/Chicago
 1701636|America/Chicago
@@ -2689,6 +2725,7 @@
 1785282|America/Chicago
 1785284|America/Chicago
 1785286|America/Chicago
+1785292|America/Chicago
 1785295|America/Chicago
 1785296|America/Chicago
 1785309|America/Chicago
@@ -2851,6 +2888,7 @@
 1812247|America/New_York
 1812254|America/New_York
 1812256|America/New_York
+1812257|America/New_York
 1812265|America/New_York
 1812268|America/New_York
 1812273|America/New_York
@@ -2871,6 +2909,7 @@
 1812320|America/New_York
 1812323|America/New_York
 1812325|America/New_York
+1812327|America/New_York
 1812330|America/New_York
 1812331|America/New_York
 1812332|America/New_York
@@ -2890,6 +2929,7 @@
 1812354|America/New_York
 1812355|America/New_York
 1812358|America/New_York
+1812364|America/New_York
 1812365|America/New_York
 1812367|America/New_York
 1812372|America/New_York
@@ -3037,12 +3077,14 @@
 1843|America/New_York
 1845|America/New_York
 1847|America/Chicago
+1848|America/New_York
 1849|America/Halifax
 1850200|America/Chicago
 1850201|America/New_York
 1850206|America/Chicago
 1850210|America/New_York
 1850212|America/New_York
+1850213|America/Chicago
 1850215|America/Chicago
 1850216|America/New_York
 1850217|America/Chicago
@@ -3095,7 +3137,9 @@
 1850329|America/New_York
 1850332|America/Chicago
 1850362|America/Chicago
+1850368|America/Chicago
 1850376|America/Chicago
+1850380|America/Chicago
 1850383|America/New_York
 1850385|America/New_York
 1850386|America/New_York
@@ -3107,6 +3151,7 @@
 1850402|America/New_York
 1850416|America/Chicago
 1850417|America/Chicago
+1850420|America/Chicago
 1850421|America/New_York
 1850422|America/New_York
 1850423|America/Chicago
@@ -3173,9 +3218,11 @@
 1850545|America/New_York
 1850547|America/Chicago
 185055|America/New_York
+1850556|America/New_York
 1850561|America/New_York
 1850562|America/New_York
 1850566|America/New_York
+1850567|America/New_York
 1850574|America/New_York
 1850575|America/New_York
 1850576|America/New_York
@@ -3523,6 +3570,7 @@
 34860|Europe/Madrid
 34864|Europe/Madrid
 34865|Europe/Madrid
+34867|Europe/Madrid
 34868|Europe/Madrid
 34869|Atlantic/Canary&Europe/Madrid
 3487|Europe/Madrid
@@ -3748,9 +3796,9 @@
 521321|America/Mexico_City
 521322|America/Mexico_City
 521323|America/Mazatlan
-521324|America/Mazatlan&America/Mexico_City
+521324|America/Mazatlan
 521325|America/Mazatlan
-521327|America/Mazatlan&America/Mexico_City
+521327|America/Mazatlan
 521328|America/Mexico_City
 521329|America/Mexico_City
 52133|America/Mexico_City
@@ -4011,7 +4059,7 @@
 521828|America/Mexico_City
 521829|America/Mexico_City
 521831|America/Mexico_City
-521832|America/Mexico_City&America/New_York
+521832|America/Mexico_City
 521833|America/Mexico_City
 521834|America/Mexico_City
 521836|America/Mexico_City
@@ -4143,7 +4191,7 @@
 52326|America/Mexico_City
 52327|America/Mazatlan
 52328|America/Mexico_City
-52329|America/Mazatlan&America/Mexico_City
+52329|America/Mexico_City
 5233|America/Mexico_City
 52341|America/Mexico_City
 52342|America/Mexico_City
@@ -6063,7 +6111,7 @@
 62827|Asia/Jakarta
 62828|Asia/Jakarta
 62829|Asia/Jakarta&Asia/Makassar
-62830|Asia/Jakarta&Asia/Makassar
+62830|Asia/Jakarta
 62831|Asia/Jakarta&Asia/Makassar
 62832|Asia/Jakarta
 62833|Asia/Jakarta
@@ -6078,7 +6126,7 @@
 62852|Asia/Jakarta
 62853|Asia/Jakarta
 62854|Asia/Jakarta
-62855|Asia/Jakarta&Asia/Makassar
+62855|Asia/Jakarta
 62856|Asia/Jakarta
 62857|Asia/Jakarta
 62858|Asia/Jakarta
@@ -6117,7 +6165,7 @@
 62891|Asia/Jakarta
 62892|Asia/Jakarta
 62893|Asia/Jakarta
-62894|Asia/Jakarta&Asia/Makassar
+62894|Asia/Jakarta
 62895|Asia/Jakarta
 62896|Asia/Jakarta
 62897|Asia/Jakarta
@@ -6133,7 +6181,7 @@
 62916|Asia/Jayapura
 62917|Asia/Jayapura
 62918|Asia/Jayapura
-62920|Asia/Jakarta
+62920|Asia/Jakarta&Asia/Jayapura
 62921|Asia/Jayapura
 62922|Asia/Jayapura
 62923|Asia/Jayapura
@@ -6152,7 +6200,7 @@
 62967|Asia/Jayapura
 62969|Asia/Jayapura
 62971|Asia/Jayapura
-62975|Asia/Jayapura
+62975|Asia/Jakarta&Asia/Jayapura
 62979|Asia/Jakarta
 62980|Asia/Jayapura
 62981|Asia/Jayapura
@@ -6207,9 +6255,11 @@
 691350|Pacific/Truk
 691370|Pacific/Kosrae
 691920|Pacific/Ponape
+691921|Pacific/Ponape
 691922|Pacific/Ponape
 691924|Pacific/Ponape
 691925|Pacific/Ponape
+691926|Pacific/Ponape
 691933|Pacific/Truk
 691950|Pacific/Truk
 692|Pacific/Majuro
@@ -6703,6 +6753,7 @@
 9765000|Asia/Ulaanbaatar
 9765001|Asia/Ulaanbaatar
 9765002|Asia/Ulaanbaatar
+9765006|Asia/Ulaanbaatar
 9765008|Asia/Ulaanbaatar
 9765011|Asia/Ulaanbaatar
 9765037|Asia/Ulaanbaatar
@@ -6711,6 +6762,7 @@
 9765099|Asia/Ulaanbaatar
 9765515|Asia/Ulaanbaatar
 9765525|Asia/Ulaanbaatar
+9765526|Asia/Ulaanbaatar
 977|Asia/Katmandu
 98|Asia/Tehran
 992|Asia/Dushanbe

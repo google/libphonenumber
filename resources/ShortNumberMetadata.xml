@@ -3029,7 +3029,7 @@
             2\d{2,3}|
             3\d{3,4}|
             4\d{3}|
-            5[058]|
+            5[0568]|
             99
           )
         </nationalNumberPattern>
@@ -3052,7 +3052,7 @@
         <nationalNumberPattern>
           1(?:
             12|
-            5[058]
+            5[0568]
           )
         </nationalNumberPattern>
         <possibleNumberPattern>\d{3}</possibleNumberPattern>
@@ -3099,15 +3099,7 @@
         <exampleNumber>115</exampleNumber>
       </shortCode>
       <tollFree>
-        <nationalNumberPattern>
-          116(?:
-            00[06]|
-            1(?:
-              1[17]|
-              23
-            )
-          )
-        </nationalNumberPattern>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
         <possibleNumberPattern>\d{6}</possibleNumberPattern>
         <possibleLengths national="6"/>
         <exampleNumber>116000</exampleNumber>
