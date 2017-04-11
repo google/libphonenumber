@@ -2031,7 +2031,7 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
     const string& number_to_parse, string* national_number) const {
   size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
   if (index_of_phone_context != string::npos) {
-    int phone_context_start =
+    size_t phone_context_start =
         index_of_phone_context + strlen(kRfc3966PhoneContext);
     // If the phone context contains a phone number prefix, we need to capture
     // it, whereas domains will be ignored.
