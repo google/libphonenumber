@@ -1,3 +1,19 @@
+Apr 11, 2017: v7.4.1
+Code changes:
+ - Changing isPossibleWithReason to return the enums INVALID_LENGTH and
+   IS_POSSIBLE_LOCAL_ONLY, where these apply. isPossibleNumber continues to
+   consider IS_POSSIBLE or IS_POSSIBLE_LOCAL_ONLY numbers as possible to dial.
+ - Doc updates for getRegionCodeForNumber to clarify that it does not
+  work for short-codes or invalid numbers.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AF, AL, CI, CL, DE, HT, IL, MP, VN
+ - Updated short number metadata for region code(s): CZ, DE
+ - Updated geocoding data for country calling code(s): 84 (en, vi)
+ - Updated carrier data for country calling code(s):
+   84 (en), 93 (en), 225 (en), 509 (en), 972 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 28, 2017: v8.4.0
 Code changes:
  - Doc changes to update references to ISO country codes to CLDR region codes,

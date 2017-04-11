@@ -16,6 +16,13 @@
 # http://vi.wikipedia.org/wiki/Mã_điện_thoại_Việt_Nam [4627778]
 
 8420|Lào Cai
+84203|Quảng Ninh
+84204|Bắc Giang
+84205|Lạng Sơn
+84206|Cao Bằng
+84207|Tuyên Quang
+84208|Thái Nguyên
+84209|Tỉnh Bắc Kạn
 84210|Phú Thọ
 84211|Vĩnh Phúc
 84212|Sơn La
@@ -26,6 +33,14 @@
 84218|Hòa Bình
 84219|Hà Giang
 8422|Sơn La
+84220|Hải Dương
+84221|Hưng Yên
+84222|Bắc Ninh
+84225|Thành phố Hải Phòng
+84226|Hà Nam
+84227|Thái Bình
+84228|Nam Định
+84229|Ninh Bình
 84230|Điện Biên
 84231|Lai Châu
 84232|Quảng Bình
@@ -44,6 +59,14 @@
 84280|Thái Nguyên
 84281|Bắc Kạn
 8429|Yên Bái
+84290|Cà Mau
+84291|Bạc Liêu
+84292|Thành phố Cần Thơ
+84293|Hậu Giang
+84294|Trà Vinh
+84296|An Giang
+84297|Kiên Giang
+84299|Sóc Trăng
 8430|Ninh Bình
 8431|TP Hải Phòng
 84320|Hải Dương
