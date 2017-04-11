@@ -4023,6 +4023,12 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
             phone_util_.Parse("tel:555-1234;phone-context=1-331",
                               RegionCode::ZZ(), &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  // Only the phone-context symbol is present, but no data.
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse(";phone-context=",
+                              RegionCode::ZZ(), &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
