@@ -2031,11 +2031,12 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
     const string& number_to_parse, string* national_number) const {
   size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
   if (index_of_phone_context != string::npos) {
-    int phone_context_start =
+    size_t phone_context_start =
         index_of_phone_context + strlen(kRfc3966PhoneContext);
     // If the phone context contains a phone number prefix, we need to capture
     // it, whereas domains will be ignored.
-    if (number_to_parse.at(phone_context_start) == kPlusSign[0]) {
+    if (phone_context_start < (number_to_parse.length() - 1) &&
+        number_to_parse.at(phone_context_start) == kPlusSign[0]) {
       // Additional parameters might follow the phone context. If so, we will
       // remove them here because the parameters after phone context are not
       // important for parsing the phone number.

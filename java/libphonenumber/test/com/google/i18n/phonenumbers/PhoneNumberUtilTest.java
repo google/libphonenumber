@@ -2508,6 +2508,17 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                    NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                    e.getErrorType());
     }
+    try {
+      // Only the phone-context symbol is present, but no data.
+      String invalidRfcPhoneContext = ";phone-context=";
+      phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
+      fail("No number is present: should fail.");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals("Wrong error type stored in exception.",
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
+                   e.getErrorType());
+    }
   }
 
   public void testParseNumbersWithPlusWithNoRegion() throws Exception {

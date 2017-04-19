@@ -3217,6 +3217,19 @@ function testFailedParseOnInvalidNumbers() {
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
                  e.message);
   }
+  try {
+    // Only the phone-context symbol is present, but no data.
+    /** @type {string} */
+    var invalidRfcPhoneContext = ';phone-context=';
+    phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
+    fail('Should have thrown an exception, no valid country calling code ' +
+         'present.');
+  } catch (e) {
+    // Expected.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e.message);
+  }
 }
 
 function testParseNumbersWithPlusWithNoRegion() {

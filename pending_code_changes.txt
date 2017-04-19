@@ -1,1 +1,3 @@
-
+Code changes:
+ - Small fix for possible out-of-bounds exception on RFC3966 input where no
+   phone context was actually provided.

@@ -4271,11 +4271,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
   /** @type {number} */
   var indexOfPhoneContext = numberToParse.indexOf(
       i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
-  if (indexOfPhoneContext > 0) {
+  if (indexOfPhoneContext >= 0) {
     var phoneContextStart = indexOfPhoneContext +
         i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_.length;
     // If the phone context contains a phone number prefix, we need to capture
     // it, whereas domains will be ignored.
+    // No length check is necessary, as per C++ or Java, since out-of-bounds
+    // requests to charAt return an empty string.
     if (numberToParse.charAt(phoneContextStart) ==
         i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
       // Additional parameters might follow the phone context. If so, we will

@@ -3270,11 +3270,12 @@ public class PhoneNumberUtil {
    */
   private void buildNationalNumberForParsing(String numberToParse, StringBuilder nationalNumber) {
     int indexOfPhoneContext = numberToParse.indexOf(RFC3966_PHONE_CONTEXT);
-    if (indexOfPhoneContext > 0) {
+    if (indexOfPhoneContext >= 0) {
       int phoneContextStart = indexOfPhoneContext + RFC3966_PHONE_CONTEXT.length();
       // If the phone context contains a phone number prefix, we need to capture it, whereas domains
       // will be ignored.
-      if (numberToParse.charAt(phoneContextStart) == PLUS_SIGN) {
+      if (phoneContextStart < (numberToParse.length() - 1)
+          && numberToParse.charAt(phoneContextStart) == PLUS_SIGN) {
         // Additional parameters might follow the phone context. If so, we will remove them here
         // because the parameters after phone context are not important for parsing the
         // phone number.
