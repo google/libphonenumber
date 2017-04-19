@@ -20,8 +20,9 @@
 84162|Viettel Mobile
 84199|G-Mobile
 84868|Viettel Mobile
-84888|Vinaphone
+8488|Vinaphone
 84898|MobiFone
+84899|MobiFone
 8490|MobiFone
 8491|Vinaphone
 8494|Vinaphone
