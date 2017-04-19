@@ -25,7 +25,7 @@ the guidelines [here](CONTRIBUTING.md) first.
   * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
 
-# Demo (v8.4.0)
+# Demo (v8.4.1)
 [Java](http://libphonenumber.appspot.com/)
 
 [JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
@@ -55,11 +55,13 @@ building, we publish a major release. For example, if the last release were
 7.7.3, the new one would be 8.0.0.
 
 If any of those changes *enable* clients to update their code to take advantage
-of new functionality, we publish a minor release. So we'd go from 7.7.3 to
-7.8.0.
+of new functionality, and if clients would have to roll-back these changes in
+the event that the release was marked as "bad", we publish a minor release. For
+example, we'd go from 7.7.3 to 7.8.0.
 
-Otherwise, including when a release contains only [metadata](FAQ.md#metadata_definition)
-changes, we publish a sub-minor release, e.g. 7.7.3 to 7.7.4.
+Otherwise, including when a release contains only
+[metadata](FAQ.md#metadata_definition) changes, we publish a sub-minor release,
+e.g. 7.7.3 to 7.7.4.
 
 Sometimes we make internal changes to the code or metadata that, while not
 affecting compatibility for clients, could affect compatibility for **porters**
@@ -168,8 +170,9 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/aidanbebbington/libphonenumber-csharp
-*   PHP: https://github.com/giggsey/libphonenumber-for-php
-*   Python: https://github.com/daviddrysdale/python-phonenumbers
-*   Ruby: https://github.com/mobi/telephone_number
 *   Javascript (stripped-down version): https://github.com/halt-hammerzeit/libphonenumber-js
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   PHP: https://github.com/giggsey/libphonenumber-for-php
+*   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
+*   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/mobi/telephone_number
