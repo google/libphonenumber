@@ -55,11 +55,13 @@ building, we publish a major release. For example, if the last release were
 7.7.3, the new one would be 8.0.0.
 
 If any of those changes *enable* clients to update their code to take advantage
-of new functionality, we publish a minor release. So we'd go from 7.7.3 to
-7.8.0.
+of new functionality, and if clients would have to roll-back these changes in
+the event that the release was marked as "bad", we publish a minor release. For
+example, we'd go from 7.7.3 to 7.8.0.
 
-Otherwise, including when a release contains only [metadata](FAQ.md#metadata_definition)
-changes, we publish a sub-minor release, e.g. 7.7.3 to 7.7.4.
+Otherwise, including when a release contains only
+[metadata](FAQ.md#metadata_definition) changes, we publish a sub-minor release,
+e.g. 7.7.3 to 7.7.4.
 
 Sometimes we make internal changes to the code or metadata that, while not
 affecting compatibility for clients, could affect compatibility for **porters**
