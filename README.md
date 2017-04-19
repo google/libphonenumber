@@ -170,8 +170,9 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/aidanbebbington/libphonenumber-csharp
-*   PHP: https://github.com/giggsey/libphonenumber-for-php
-*   Python: https://github.com/daviddrysdale/python-phonenumbers
-*   Ruby: https://github.com/mobi/telephone_number
 *   Javascript (stripped-down version): https://github.com/halt-hammerzeit/libphonenumber-js
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   PHP: https://github.com/giggsey/libphonenumber-for-php
+*   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
+*   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/mobi/telephone_number
