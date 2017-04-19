@@ -100,9 +100,9 @@ if (${USE_RE2} STREQUAL "ON")
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
 endif ()
 
-find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
+find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf-lite
                        "Google Protocol Buffers")
-check_library_version (PC_PROTOBUF protobuf>=2.4)
+check_library_version (PC_PROTOBUF protobuf-lite>=2.4)
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
 check_library_version (PC_ICU_UC icu-uc>=4.4)
