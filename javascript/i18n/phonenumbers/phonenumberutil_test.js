@@ -3219,8 +3219,7 @@ function testFailedParseOnInvalidNumbers() {
   }
   try {
     // Only the phone-context symbol is present, but no data.
-    /** @type {string} */
-    var invalidRfcPhoneContext = ';phone-context=';
+    invalidRfcPhoneContext = ';phone-context=';
     phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
     fail('Should have thrown an exception, no valid country calling code ' +
          'present.');
