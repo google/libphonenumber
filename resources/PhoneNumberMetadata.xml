@@ -21621,7 +21621,9 @@
     <territory id="RU" countryCode="7" mainCountryForCode="true" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8"
                nationalPrefixFormattingRule="$NP ($FG)"
-               nationalPrefixOptionalWhenFormatting="true" >
+               nationalPrefixOptionalWhenFormatting="true"
+               nationalPrefixForParsing="8?(\\d{10})"
+               nationalPrefixTransformRule="$1">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000AD/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B7</sourceUrl>
