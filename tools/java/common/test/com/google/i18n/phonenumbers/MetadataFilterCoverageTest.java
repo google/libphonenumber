@@ -30,7 +30,7 @@ import org.junit.runners.JUnit4;
 
 /**
  * Tests to ensure that the {@link MetadataFilter} logic over excludable fields cover all applicable
- * fields.
+ * fields. And some extra text.
  */
 @RunWith(JUnit4.class)
 public final class MetadataFilterCoverageTest {
