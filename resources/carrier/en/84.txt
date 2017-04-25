@@ -12,17 +12,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+84120|MobiFone
+84121|MobiFone
+84122|MobiFone
 84123|Vinaphone
 84124|Vinaphone
 84125|Vinaphone
+84126|MobiFone
 84127|Vinaphone
+84128|MobiFone
 84129|Vinaphone
 84162|Viettel Mobile
+84163|Viettel Mobile
+84164|Viettel Mobile
+84165|Viettel Mobile
+84166|Viettel Mobile
+84167|Viettel Mobile
+84168|Viettel Mobile
+84169|Viettel Mobile
+84186|Vietnamobile
+84188|Vietnamobile
 84199|G-Mobile
 84868|Viettel Mobile
 8488|Vinaphone
+8489|MobiFone
 84898|MobiFone
 84899|MobiFone
 8490|MobiFone
 8491|Vinaphone
+8492|Vietnamobile
+8493|MobiFone
 8494|Vinaphone
+8496|Viettel
+8497|Viettel
+8498|Viettel
+84992|VSAT
+84993|G-Mobile
+84994|G-Mobile
+84995|G-Mobile
+84996|G-Mobile
+84997|G-Mobile
+84998|Indochina Telecom
+84999|Indochina Telecom
