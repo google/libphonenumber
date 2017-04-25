@@ -1,3 +1,13 @@
+Apr 25, 2017: v8.4.2
+Code changes:
+ - Small fix for possible out-of-bounds exception on RFC3966 input where no
+   phone context was actually provided.
+Metadata changes:
+ - Updated phone metadata for region code(s): BF, ET, IN, KE, LU, VN
+ - Updated short number metadata for region code(s): KE
+ - Updated carrier data for country calling code(s):
+   84 (en), 91 (en), 226 (en), 251 (en), 254 (en), 352 (en)
+
 Apr 11, 2017: v8.4.1
 Code changes:
  - Changing isPossibleWithReason to return the enums INVALID_LENGTH and
