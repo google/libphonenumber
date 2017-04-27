@@ -38,7 +38,7 @@
         <arg line='-f "--jscomp_error=checkVars"' />
         <arg line='-f "--jscomp_error=const"' />
         <arg line='-f "--jscomp_error=constantProperty"' />
-        <arg line='-f "--jscomp_warning=deprecated"' />
+        <arg line='-f "--jscomp_error=deprecated"' />
         <arg line='-f "--jscomp_error=duplicate"' />
         <arg line='-f "--jscomp_error=duplicateMessage"' />
         <arg line='-f "--jscomp_error=es5Strict"' />
