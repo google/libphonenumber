@@ -36,7 +36,7 @@ class MatcherApi {
   // Returns whether the given national number (a string containing only decimal
   // digits) matches the national number pattern defined in the given
   // PhoneNumberDesc message.
-  virtual bool MatchesNationalNumber(const string& national_number,
+  virtual bool MatchesNationalNumber(const string& number,
                                      const PhoneNumberDesc& number_desc,
                                      bool allow_prefix_match) const = 0;
 };
