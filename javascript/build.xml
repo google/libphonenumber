@@ -4,7 +4,7 @@
   <property name="closure-compiler.dir"
             value="${basedir}/../../closure-compiler" />
   <property name="closure-compiler.jar"
-            value="${closure-compiler.dir}/target/closure-compiler-1.0-SNAPSHOT.jar" /> 
+            value="${closure-compiler.dir}/target/closure-compiler-1.0-SNAPSHOT.jar" />
   <property name="closure-library.dir"
             value="${basedir}/../../closure-library" />
   <property name="closure-linter.dir"
