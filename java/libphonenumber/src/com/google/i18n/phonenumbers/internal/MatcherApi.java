@@ -27,6 +27,6 @@ public interface MatcherApi {
    * Returns whether the given national number (a string containing only decimal digits) matches
    * the national number pattern defined in the given {@code PhoneNumberDesc} message.
    */
-  boolean matchesNationalNumber(String nationalNumber, PhoneNumberDesc numberDesc,
+  boolean matchesNationalNumber(String number, PhoneNumberDesc numberDesc,
       boolean allowPrefixMatch);
 }
