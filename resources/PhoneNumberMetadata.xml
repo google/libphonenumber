@@ -4240,8 +4240,7 @@
               73
             )|
             90[25]
-          )[2-9]\d{6}|
-          310\d{4}
+          )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>2042345678</exampleNumber>
@@ -4307,8 +4306,7 @@
             66|
             77|
             88
-          )[2-9]\d{6}|
-          310\d{4}
+          )[2-9]\d{6}
         </nationalNumberPattern>
         <possibleLengths national="7,10"/>
         <exampleNumber>8002123456</exampleNumber>
