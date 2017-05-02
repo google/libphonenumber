@@ -170,7 +170,11 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/aidanbebbington/libphonenumber-csharp
-*   Javascript (stripped-down version): https://github.com/halt-hammerzeit/libphonenumber-js
+*   Javascript: If you don't want to use our version, which depends on Closure,
+    there are several other options, including
+    https://github.com/halt-hammerzeit/libphonenumber-js (a stripped-down
+    version) and https://github.com/seegno/google-libphonenumber (installable
+    via npm, a browserify-compatible wrapper)
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
