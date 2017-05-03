@@ -66,8 +66,8 @@ e.g. 7.7.3 to 7.7.4.
 Sometimes we make internal changes to the code or metadata that, while not
 affecting compatibility for clients, could affect compatibility for **porters**
 of the library. For such changes we make announcements to
-[libphonenumber-discuss]
-(http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
+[libphonenumber-discuss](
+http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
 are not reflected in the version number, and we would publish a sub-minor
 release if there were no other changes.
 
