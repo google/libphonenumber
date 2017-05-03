@@ -24,10 +24,7 @@ List<String> timezones = timeZonesMapper.getTimeZonesForNumber(phoneNumber);
 
 The timezone metadata is auto-generated with few exceptions, so we cannot accept
 pull requests. If we have an error please file an issue and we can see if we
-can make a generic fix. Note that, due to our using CLDR timezone IDs which are
-stable, we cannot change the IDs for an existing timezone when the name of a
-region or subdivision changes. The library returns the *ID*, which you may use
-to get the localised name from CLDR.
+can make a generic fix.
 
 If making fixes in your own fork while you wait for this fix, build the metadata
 by running this command from the root of the repository:
@@ -35,3 +32,8 @@ by running this command from the root of the repository:
 ```
 ant -f java/build.xml build-timezones-data
 ```
+
+Note that, due to our using CLDR timezone IDs which are stable, we do not change
+the IDs for an existing timezone when the name of a region or subdivision
+changes. The library returns the *ID*, which you may use to get the localised
+name from CLDR.
