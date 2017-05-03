@@ -1,6 +1,6 @@
 # Timezone Mapper
 
-The timezone mapper allows one to get a likely timezone for a particular phone
+The timezone mapper allows a likely timezone to be obtained for a given phone
 number. The timezone returned is the canonical ID from [CLDR](
 http://www.unicode.org/cldr/charts/latest/supplemental/zone_tzid.html), not a
 localised name (or any other identifier). For mobile phones which are associated
@@ -34,7 +34,7 @@ installed):
 ant -f java/build.xml build-timezones-data
 ```
 
-Note that, due to our using CLDR timezone IDs which are stable, we do not change
-the ID for an existing timezone when the name of a region or subdivision
-changes. The library returns the *ID*, which you may use to get the localised
-name from CLDR.
+Note that, due to our using stable CLDR timezone IDs, we do not change the ID
+for an existing timezone when the name of a region or subdivision changes. The
+The library returns the *ID*, which you may use to get the localised name from
+CLDR.
