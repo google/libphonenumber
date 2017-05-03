@@ -236,6 +236,24 @@ calling codes that are only "reserved", or that no data is available for (namely
 a proposed new international telecommunication public correspondence service,
 shared code".)
 
+### Why are Indonesian toll-free numbers beginning with "00x 803" not supported?
+
+Although some numbers beginning with "001 803" or "007 803" do work in Indonesia
+to reach toll-free endpoints, these numbers are hard to support because they
+overlap with the international dialling prefix for Indonesia (IDD). It seems
+that since 803 is unassigned and not a valid country code, some local
+tel-companies in Indonesia hijack 803 and redirect it to their own services.
+
+We have also found evidence that reaching some "00x 803" numbers cost local or
+national tariff, rather than the call being toll-free.
+
+These numbers are not diallable from any other country using their IDD,
+and it's unclear whether all carriers in Indonesia support them. If we ever
+supported them, they would have to be added to the `noInternationalDialling`
+section, and it is likely some changes in the parsing code would have to be
+made to interpret the "00x" as something other than an IDD: this could have
+undesirable side-effects when parsing other numbers.
+
 ## Misc
 
 ### <a name="reduced_metadata"></a>What is the metadatalite.js/METADATA_LITE option?

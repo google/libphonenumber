@@ -24,6 +24,7 @@ the guidelines [here](CONTRIBUTING.md) first.
   * ` findNumbers ` - finds numbers in text input.
   * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
+  * ` PhoneNumberToTimeZonesMapper ` - provides timezone information related to a phone number.
 
 # Demo (v8.4.2)
 [Java](http://libphonenumber.appspot.com/)
@@ -66,8 +67,8 @@ e.g. 7.7.3 to 7.7.4.
 Sometimes we make internal changes to the code or metadata that, while not
 affecting compatibility for clients, could affect compatibility for **porters**
 of the library. For such changes we make announcements to
-[libphonenumber-discuss]
-(http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
+[libphonenumber-discuss](
+http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
 are not reflected in the version number, and we would publish a sub-minor
 release if there were no other changes.
 
