@@ -36,5 +36,4 @@ ant -f java/build.xml build-timezones-data
 
 Note that, due to our using stable CLDR timezone IDs, we do not change the ID
 for an existing timezone when the name of a region or subdivision changes. The
-The library returns the *ID*, which you may use to get the localised name from
-CLDR.
+library returns the *ID*, which you may use to get the localised name from CLDR.
