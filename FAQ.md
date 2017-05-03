@@ -201,6 +201,26 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
+### Why is this number from Argentina (AR) or Mexico (MX) not identified as the right number type?
+
+Certain countries' mobile and/or fixed line ranges may overlap, which may make
+accurate identification impossible without additional and explicit context.
+For example, when calling a mobile line from a fixed line in Argentina,
+you need to dial 15 before the subscriber number, or 9 if you're calling
+from another country. Without these additional digits, you may end up calling
+a different endpoint belonging to a fixed line!
+
+Similarly, Mexico has different mobile prefixes needed when calling from a fixed
+line such as 044 when calling locally, 045 when calling from another state, and
+1 when dialing from another country.
+
+Moreoever, these countries have different possible lengths for area codes and subscriber
+numbers depending on the city, which further complicate matters (e.g. Buenos Aires is 11
+followed by eight digits, but Río Gallegos is 2966 followed by six digits).
+
+Despite all the aforementioned complexity, users may not provide their phone number
+with all the additional context unless explicitly asked.
+
 ### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
 
 We only support a country if:
