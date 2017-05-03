@@ -347,3 +347,10 @@ group](https://groups.google.com/group/libphonenumber-discuss):
     readdir instead of readdir_r
 *   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
+
+### How to remove a specific example number?
+
+We aim to anonymize phone numbers we list as examples in our tests, but if we by chance have
+actually listed your real number and would like it removed, please report this through
+Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347). Only
+our internal team will have access to your identity (whereas GitHub usernames are public).
