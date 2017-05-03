@@ -24,6 +24,7 @@ the guidelines [here](CONTRIBUTING.md) first.
   * ` findNumbers ` - finds numbers in text input.
   * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
+  * ` PhoneNumberToTimeZonesMapper ` - provides timezone information related to a phone number.
 
 # Demo (v8.4.2)
 [Java](http://libphonenumber.appspot.com/)
