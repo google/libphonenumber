@@ -48,7 +48,7 @@ To use and compile the library in your own project, use the `javascript/i18n/pho
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 536).
+The JavaScript library is ported from the Java implementation.
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
