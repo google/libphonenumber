@@ -72,11 +72,11 @@ data errors.
 
 ### What types of phone numbers can SMSs be sent to?
 
-SMSs can be sent to `TYPE_MOBILE` or `TYPE_FIXED_LINE_OR_MOBILE` numbers. However,
+SMSs can be sent to `MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
 in some countries it is possible to configure other types, such as normal
 land-lines, to receive SMSs.
 
-### Why did I get `TYPE_FIXED_LINE_OR_MOBILE` as the type of my phone number?
+### <a name="fixed_line_or_mobile"></a>Why did I get `FIXED_LINE_OR_MOBILE` as the type of my phone number?
 
 Some number ranges are explicitly defined as being for fixed-line or mobile
 phones. We even represent ranges defined as being "Mostly land-line" in this
@@ -207,6 +207,32 @@ There is no RFC indicating where the data comes from, or what format they're in.
 We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
+
+### Why is this number from Argentina (AR) or Mexico (MX) not identified as the right number type?
+
+Certain countries' mobile and/or fixed line ranges may overlap, which may make
+accurate identification impossible without additional and explicit context
+such as a mobile prefix. We rely on this prefix being present to correctly identify
+the phone number type (rather than returning ['FIXED_LINE_OR_MOBILE'](#fixed_line_or_mobile)
+in ambiguous cases) until our metadata can be fine-grained enough to detect when a user has omitted it.
+
+For example, when calling a mobile line from a fixed line in Argentina,
+you need to dial 15 before the subscriber number, or 9 if you're calling
+from another country. Without these additional digits, your call may not
+connect at all!
+
+Similarly, Mexico has different mobile prefixes needed when calling from a fixed
+line such as 044 when calling locally, 045 when calling from another state, and
+1 when dialing from another country.
+
+Moreover, these countries have different possible lengths for area codes and subscriber
+numbers depending on the city, which further complicate matters (e.g. Buenos Aires is 11
+followed by eight digits, but Río Gallegos is 2966 followed by six digits).
+
+Despite all the aforementioned complexity, users may not provide their phone number
+with all the additional context unless explicitly asked. For instance,
+since SMS messages can be sent in Argentina from a mobile phone without a prefix,
+the user may not supply the mobile prefix.
 
 ### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
 
