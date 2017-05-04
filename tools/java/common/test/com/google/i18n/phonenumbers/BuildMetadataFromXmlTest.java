@@ -233,7 +233,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     assertFalse(BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                              nationalFormat.build()));
-    assertTrue(metadata.getIntlNumberFormat(0).isNationalPrefixOptionalWhenFormatting());
+    assertTrue(metadata.getIntlNumberFormat(0).getNationalPrefixOptionalWhenFormatting());
   }
 
   public void testLoadNationalFormat()
@@ -640,7 +640,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     // Should set sameMobileAndFixedPattern to true.
     BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
         false /* isShortNumberMetadata */);
-    assertTrue(metadata.isSameMobileAndFixedLinePattern());
+    assertTrue(metadata.getSameMobileAndFixedLinePattern());
   }
 
   public void testSetRelevantDescPatternsSetsAllDescriptionsForRegularLengthNumbers()
@@ -753,12 +753,12 @@ public class BuildMetadataFromXmlTest extends TestCase {
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata metadata = BuildMetadataFromXml.loadCountryMetadata("FR", territoryElement,
         false /* isShortNumberMetadata */, true /* isAlternateFormatsMetadata */).build();
-    assertTrue(metadata.getNumberFormat(0).isNationalPrefixOptionalWhenFormatting());
+    assertTrue(metadata.getNumberFormat(0).getNationalPrefixOptionalWhenFormatting());
     // This is inherited from the territory, with $NP replaced by the actual national prefix, and
     // $FG replaced with $1.
     assertEquals("0$1", metadata.getNumberFormat(0).getNationalPrefixFormattingRule());
     // Here it is explicitly set to false.
-    assertFalse(metadata.getNumberFormat(1).isNationalPrefixOptionalWhenFormatting());
+    assertFalse(metadata.getNumberFormat(1).getNationalPrefixOptionalWhenFormatting());
   }
 
   public void testProcessPhoneNumberDescElement_PossibleLengthsSetCorrectly() throws Exception {

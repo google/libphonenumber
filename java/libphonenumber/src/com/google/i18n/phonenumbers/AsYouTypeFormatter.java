@@ -182,7 +182,7 @@ public class AsYouTypeFormatter {
     for (NumberFormat format : formatList) {
       if (!nationalPrefixIsUsedByCountry
           || isCompleteNumber
-          || format.isNationalPrefixOptionalWhenFormatting()
+          || format.getNationalPrefixOptionalWhenFormatting()
           || PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
               format.getNationalPrefixFormattingRule())) {
         if (isFormatEligible(format.getFormat())) {

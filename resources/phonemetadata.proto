@@ -84,7 +84,7 @@ message NumberFormat {
   // inherited from the value set for the territory in the XML file, unless a
   // national_prefix_optional_when_formatting is defined specifically for this
   // NumberFormat.
-  optional bool national_prefix_optional_when_formatting = 6;
+  optional bool national_prefix_optional_when_formatting = 6 [default=false];
 
   // This field specifies how any carrier code ($CC) together with the first
   // group ($FG) in the national significant number should be formatted
