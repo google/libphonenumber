@@ -200,8 +200,7 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_formatting_rule = 4;
-    // TODO: Don't set in format if default to begin with, and replace this check with "has".
-    if (format.getNationalPrefixFormattingRule().length() > 0) {
+    if (format.hasNationalPrefixFormattingRule()) {
       jsArrayBuilder.append(format.getNationalPrefixFormattingRule());
     } else {
       jsArrayBuilder.append(null);
