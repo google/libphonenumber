@@ -105,7 +105,10 @@ call or send an SMS to.
 
 M2M numbers would violate this assumption and we'd have to evaluate the
 consequences for existing APIs and clients if M2M numbers would be considered
-valid by the library.
+valid by the library. Clients of libphonenumber expect `mobile` and `fixed-line`
+numbers to have certain affordances, such as: Reachable for voice calls 
+(and for mobile also SMS) as well as assuming standard cost. This expectation 
+is broken by the lack of M2M standardization today.
 
 Many people use this library for formatting the numbers of their contacts, for
 allowing people to sign up for services, for working out how to dial someone in
@@ -116,10 +119,14 @@ of those use-case, but we might be wrong.
 If you would like libphonenumber to support M2M numbers, please engage with the
 developer community at [Support M2M numbers #680](
 https://github.com/googlei18n/libphonenumber/issues/680) with further
-information to address our questions and concerns and please describe what
-kinds of use-cases fail because M2M numbers are not supported by the library.
+information to address our questions and concerns such as:
 
-More information on this issue would be very welcomed!
+*   **How to implement support?** e.g. new category, new library or method
+    to call - along with pros and cons, and impact on existing APIs
+*   **Authoritative and specific documentation** such as government sources since
+    we currently have less than a dozen sources, which have varied definitions
+
+More information and collabortation on this issue would be very welcomed!
 
 Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphonenumber/issues/680),
 [#930: JTGlobal - an MNO based in the UK](https://github.com/googlei18n/libphonenumber/issues/930),
