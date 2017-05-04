@@ -121,9 +121,9 @@ developer community at [Support M2M numbers #680](
 https://github.com/googlei18n/libphonenumber/issues/680) with further
 information to address our questions and concerns such as:
 
-*   **How to implement support?** e.g. new category, new library or method to
-    call - along with pros and cons, and impact on existing APIs
-*   **Authoritative and specific documentation** such as government sources since
+*   **How to implement support?** e.g. new category, new library or method
+    to call - along with pros and cons, and impact on existing APIs
+*   **Authoritative and specific documentation** such as government sources since
     we currently have less than a dozen sources, which have varied definitions
 
 More information and collabortation on this issue would be very welcomed!
