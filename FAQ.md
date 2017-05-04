@@ -401,7 +401,11 @@ group](https://groups.google.com/group/libphonenumber-discuss):
 
 ### How to remove a specific example number?
 
-We aim to anonymize phone numbers we list as examples in our tests, but if we by chance have
-actually listed your real number and would like it removed, please report this through
-Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347). Only
-our internal team will have access to your identity (whereas GitHub usernames are public).
+We supply example numbers as part of the library API. While we aim to have numbers
+that are either explicitly allocated by the country as a test number, or look
+fictitious (e.g. 1234567) we also need these numbers to validate correctly.
+This means we sometimes have numbers that do connect to a real person.
+
+If we by chance have actually listed your real number and would like it removed,
+please report this through Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347).
+Only our internal team will have access to your identity (whereas GitHub usernames are public).
