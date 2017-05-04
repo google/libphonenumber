@@ -72,7 +72,7 @@ data errors.
 
 ### What types of phone numbers can SMSs be sent to?
 
-SMSs can be sent to `TYPE_MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
+SMSs can be sent to `MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
 in some countries it is possible to configure other types, such as normal
 land-lines, to receive SMSs.
 
