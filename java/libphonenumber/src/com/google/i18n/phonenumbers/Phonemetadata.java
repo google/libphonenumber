@@ -65,7 +65,7 @@ public final class Phonemetadata {
           setDomesticCarrierCodeFormattingRule(other.getDomesticCarrierCodeFormattingRule());
         }
         if (other.hasNationalPrefixOptionalWhenFormatting()) {
-          setNationalPrefixOptionalWhenFormatting(other.isNationalPrefixOptionalWhenFormatting());
+          setNationalPrefixOptionalWhenFormatting(other.getNationalPrefixOptionalWhenFormatting());
         }
         return this;
       }
@@ -130,12 +130,12 @@ public final class Phonemetadata {
       return this;
     }
 
-    // optional bool national_prefix_optional_when_formatting = 6;
+    // optional bool national_prefix_optional_when_formatting = 6 [default = false];
     private boolean hasNationalPrefixOptionalWhenFormatting;
     private boolean nationalPrefixOptionalWhenFormatting_ = false;
     public boolean hasNationalPrefixOptionalWhenFormatting() {
       return hasNationalPrefixOptionalWhenFormatting; }
-    public boolean isNationalPrefixOptionalWhenFormatting() {
+    public boolean getNationalPrefixOptionalWhenFormatting() {
       return nationalPrefixOptionalWhenFormatting_; }
     public NumberFormat setNationalPrefixOptionalWhenFormatting(boolean value) {
       hasNationalPrefixOptionalWhenFormatting = true;
@@ -731,7 +731,7 @@ public final class Phonemetadata {
     private boolean hasSameMobileAndFixedLinePattern;
     private boolean sameMobileAndFixedLinePattern_ = false;
     public boolean hasSameMobileAndFixedLinePattern() { return hasSameMobileAndFixedLinePattern; }
-    public boolean isSameMobileAndFixedLinePattern() { return sameMobileAndFixedLinePattern_; }
+    public boolean getSameMobileAndFixedLinePattern() { return sameMobileAndFixedLinePattern_; }
     public PhoneMetadata setSameMobileAndFixedLinePattern(boolean value) {
       hasSameMobileAndFixedLinePattern = true;
       sameMobileAndFixedLinePattern_ = value;

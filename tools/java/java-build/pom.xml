@@ -38,6 +38,10 @@
       <testResource>
         <directory>${phonenumberutil.resources.dir}</directory>
       </testResource>
+      <testResource>
+        <directory>test/com/google/i18n/phonenumbers/buildtools/testdata</directory>
+        <targetPath>com/google/i18n/phonenumbers/buildtools/testdata</targetPath>
+      </testResource>
     </testResources>
     <plugins>
       <plugin>
