@@ -90,7 +90,10 @@ public class BuildMetadataJsonFromXml extends Command {
     String inputFile = args[1];
     String outputFile = args[2];
     boolean liteBuild = args.length > 3 && args[3].equals("true");
+    return start(inputFile, outputFile, liteBuild);
+  }
 
+  static boolean start(String inputFile, String outputFile, boolean liteBuild) {
     try {
       PhoneMetadataCollection metadataCollection =
           BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, false);
@@ -197,23 +200,20 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string national_prefix_formatting_rule = 4;
-    // TODO: Don't set in format if default to begin with, and replace this check with "has".
-    if (format.getNationalPrefixFormattingRule().length() > 0) {
+    if (format.hasNationalPrefixFormattingRule()) {
       jsArrayBuilder.append(format.getNationalPrefixFormattingRule());
     } else {
       jsArrayBuilder.append(null);
     }
     // optional string domestic_carrier_code_formatting_rule = 5;
-    // TODO: Don't set in format if default to begin with, and replace this check with "has".
-    if (format.getDomesticCarrierCodeFormattingRule().length() > 0) {
+    if (format.hasDomesticCarrierCodeFormattingRule()) {
       jsArrayBuilder.append(format.getDomesticCarrierCodeFormattingRule());
     } else {
       jsArrayBuilder.append(null);
     }
-    // optional bool national_prefix_optional_when_formatting = 6;
-    // TODO: Don't set in format if default to begin with, and replace this check with "has".
-    if (format.isNationalPrefixOptionalWhenFormatting()) {
-      jsArrayBuilder.append(format.isNationalPrefixOptionalWhenFormatting());
+    // optional bool national_prefix_optional_when_formatting = 6 [default = false];
+    if (format.hasNationalPrefixOptionalWhenFormatting()) {
+      jsArrayBuilder.append(format.getNationalPrefixOptionalWhenFormatting());
     } else {
       jsArrayBuilder.append(null);
     }
@@ -314,8 +314,7 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional string international_prefix = 11;
-    // TODO: Don't set in format if default to begin with, and replace this check with "has".
-    if (metadata.getInternationalPrefix().length() > 0) {
+    if (metadata.hasInternationalPrefix()) {
       jsArrayBuilder.append(metadata.getInternationalPrefix());
     } else {
       jsArrayBuilder.append(null);
@@ -354,8 +353,8 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional bool same_mobile_and_fixed_line_pattern = 18 [default=false];
-    if (metadata.isSameMobileAndFixedLinePattern()) {
-      jsArrayBuilder.append(1);
+    if (metadata.hasSameMobileAndFixedLinePattern()) {
+      jsArrayBuilder.append(metadata.getSameMobileAndFixedLinePattern());
     } else {
       jsArrayBuilder.append(null);
     }
