@@ -37,3 +37,19 @@ ant -f java/build.xml build-timezones-data
 Note that, due to our using stable CLDR timezone IDs, we do not change the ID
 for an existing timezone when the name of a region or subdivision changes. The
 library returns the *ID*, which you may use to get the localised name from CLDR.
+
+See CLDR's [documentation for timezone
+translations](http://cldr.unicode.org/translation/timezones). You can also
+browse [different languages'
+names](http://www.unicode.org/cldr/charts/latest/verify/zones/index.html); for
+example, the `Asia/Calcutta` timezone identifier has English names
+`Kolkata Time` and `India Standard Time`, and the [English
+file](http://www.unicode.org/cldr/charts/latest/verify/zones/en.html) links to
+a [view](http://st.unicode.org/cldr-apps/v#/en/SAsia/2dac3ef061238996) with
+other regions having the same timezone (including those with different IDs).
+
+Other relevant CLDR data:
+*   http://www.unicode.org/cldr/charts/latest/supplemental/zone_tzid.html
+*   http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml
+*   http://unicode.org/repos/cldr/trunk/common/supplemental/metaZones.xml
+*   http://unicode.org/repos/cldr/trunk/common/supplemental/windowsZones.xml
