@@ -72,11 +72,11 @@ data errors.
 
 ### What types of phone numbers can SMSs be sent to?
 
-SMSs can be sent to `TYPE_MOBILE` or `TYPE_FIXED_LINE_OR_MOBILE` numbers. However,
+SMSs can be sent to `TYPE_MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
 in some countries it is possible to configure other types, such as normal
 land-lines, to receive SMSs.
 
-### Why did I get `TYPE_FIXED_LINE_OR_MOBILE` as the type of my phone number?
+### <a name="fixed_line_or_mobile"></a>Why did I get `FIXED_LINE_OR_MOBILE` as the type of my phone number?
 
 Some number ranges are explicitly defined as being for fixed-line or mobile
 phones. We even represent ranges defined as being "Mostly land-line" in this
@@ -206,8 +206,8 @@ to achieve this, please do so. Thanks!
 Certain countries' mobile and/or fixed line ranges may overlap, which may make
 accurate identification impossible without additional and explicit context
 such as a mobile prefix. We rely on this prefix being present to correctly identify
-the type of phone number until our metadata can be fine-grained enough to detect
-when a user has omitted it.
+the phone number type (rather than returning ['FIXED_LINE_OR_MOBILE'](#fixed_line_or_mobile)
+in ambiguous cases) until our metadata can be fine-grained enough to detect when a user has omitted it.
 
 For example, when calling a mobile line from a fixed line in Argentina,
 you need to dial 15 before the subscriber number, or 9 if you're calling
