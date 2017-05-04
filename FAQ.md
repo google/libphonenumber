@@ -105,7 +105,10 @@ call or send an SMS to.
 
 M2M numbers would violate this assumption and we'd have to evaluate the
 consequences for existing APIs and clients if M2M numbers would be considered
-valid by the library.
+valid by the library. Clients of libphonenumber expect `mobile` and `fixed-line`
+numbers to have certain affordances, such as: Reachable for voice calls 
+(and for mobile also SMS) as well as assuming standard cost. This expectation 
+is broken by the lack of M2M standardization today.
 
 Many people use this library for formatting the numbers of their contacts, for
 allowing people to sign up for services, for working out how to dial someone in
