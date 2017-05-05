@@ -72,11 +72,11 @@ data errors.
 
 ### What types of phone numbers can SMSs be sent to?
 
-SMSs can be sent to `TYPE_MOBILE` or `TYPE_FIXED_LINE_OR_MOBILE` numbers. However,
+SMSs can be sent to `MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
 in some countries it is possible to configure other types, such as normal
 land-lines, to receive SMSs.
 
-### Why did I get `TYPE_FIXED_LINE_OR_MOBILE` as the type of my phone number?
+### <a name="fixed_line_or_mobile"></a>Why did I get `FIXED_LINE_OR_MOBILE` as the type of my phone number?
 
 Some number ranges are explicitly defined as being for fixed-line or mobile
 phones. We even represent ranges defined as being "Mostly land-line" in this
@@ -105,7 +105,10 @@ call or send an SMS to.
 
 M2M numbers would violate this assumption and we'd have to evaluate the
 consequences for existing APIs and clients if M2M numbers would be considered
-valid by the library.
+valid by the library. Clients of libphonenumber expect `mobile` and `fixed-line`
+numbers to have certain affordances, such as: Reachable for voice calls 
+(and for mobile also SMS) as well as assuming standard cost. This expectation 
+is broken by the lack of M2M standardization today.
 
 Many people use this library for formatting the numbers of their contacts, for
 allowing people to sign up for services, for working out how to dial someone in
@@ -116,10 +119,14 @@ of those use-case, but we might be wrong.
 If you would like libphonenumber to support M2M numbers, please engage with the
 developer community at [Support M2M numbers #680](
 https://github.com/googlei18n/libphonenumber/issues/680) with further
-information to address our questions and concerns and please describe what
-kinds of use-cases fail because M2M numbers are not supported by the library.
+information to address our questions and concerns such as:
 
-More information on this issue would be very welcomed!
+*   **How to implement support?** e.g. new category, new library or method
+    to call - along with pros and cons, and impact on existing APIs
+*   **Authoritative and specific documentation** such as government sources since
+    we currently have less than a dozen sources, which have varied definitions
+
+More information and collabortation on this issue would be very welcomed!
 
 Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphonenumber/issues/680),
 [#930: JTGlobal - an MNO based in the UK](https://github.com/googlei18n/libphonenumber/issues/930),
@@ -201,6 +208,32 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
+### Why is this number from Argentina (AR) or Mexico (MX) not identified as the right number type?
+
+Certain countries' mobile and/or fixed line ranges may overlap, which may make
+accurate identification impossible without additional and explicit context
+such as a mobile prefix. We rely on this prefix being present to correctly identify
+the phone number type (rather than returning ['FIXED_LINE_OR_MOBILE'](#fixed_line_or_mobile)
+in ambiguous cases) until our metadata can be fine-grained enough to detect when a user has omitted it.
+
+For example, when calling a mobile line from a fixed line in Argentina,
+you need to dial 15 before the subscriber number, or 9 if you're calling
+from another country. Without these additional digits, your call may not
+connect at all!
+
+Similarly, Mexico has different mobile prefixes needed when calling from a fixed
+line such as 044 when calling locally, 045 when calling from another state, and
+1 when dialing from another country.
+
+Moreover, these countries have different possible lengths for area codes and subscriber
+numbers depending on the city, which further complicate matters (e.g. Buenos Aires is 11
+followed by eight digits, but Río Gallegos is 2966 followed by six digits).
+
+Despite all the aforementioned complexity, users may not provide their phone number
+with all the additional context unless explicitly asked. For instance,
+since SMS messages can be sent in Argentina from a mobile phone without a prefix,
+the user may not supply the mobile prefix.
+
 ### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
 
 We only support a country if:
@@ -235,6 +268,24 @@ calling codes that are only "reserved", or that no data is available for (namely
 388 - listed as "Group of countries, shared code" and 991 - listed as "Trial of
 a proposed new international telecommunication public correspondence service,
 shared code".)
+
+### Why are Indonesian toll-free numbers beginning with "00x 803" not supported?
+
+Although some numbers beginning with "001 803" or "007 803" do work in Indonesia
+to reach toll-free endpoints, these numbers are hard to support because they
+overlap with the international dialling prefix for Indonesia (IDD). It seems
+that since 803 is unassigned and not a valid country code, some local
+tel-companies in Indonesia hijack 803 and redirect it to their own services.
+
+We have also found evidence that reaching some "00x 803" numbers cost local or
+national tariff, rather than the call being toll-free.
+
+These numbers are not diallable from any other country using their IDD,
+and it's unclear whether all carriers in Indonesia support them. If we ever
+supported them, they would have to be added to the `noInternationalDialling`
+section, and it is likely some changes in the parsing code would have to be
+made to interpret the "00x" as something other than an IDD: this could have
+undesirable side-effects when parsing other numbers.
 
 ## Misc
 
@@ -347,3 +398,14 @@ group](https://groups.google.com/group/libphonenumber-discuss):
     readdir instead of readdir_r
 *   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
+
+### How to remove a specific example number?
+
+We supply example numbers as part of the library API. While we aim to have numbers
+that are either explicitly allocated by the country as a test number, or look
+fictitious (e.g. 1234567) we also need these numbers to validate correctly.
+This means we sometimes have numbers that do connect to a real person.
+
+If we by chance have actually listed your real number and would like it removed,
+please report this through Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347).
+Only our internal team will have access to your identity (whereas GitHub usernames are public).

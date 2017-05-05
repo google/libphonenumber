@@ -669,7 +669,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     // To do this, we check that a national prefix formatting rule was present and that it wasn't
     // just the first-group symbol ($1) with punctuation.
     if ((formatRule != null) && formatRule.getNationalPrefixFormattingRule().length() > 0) {
-      if (formatRule.isNationalPrefixOptionalWhenFormatting()) {
+      if (formatRule.getNationalPrefixOptionalWhenFormatting()) {
         // The national-prefix is optional in these cases, so we don't need to check if it was
         // present.
         return true;

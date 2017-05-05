@@ -204,7 +204,9 @@ public class BuildMetadataFromXml {
     if (element.hasAttribute(LEADING_DIGITS)) {
       metadata.setLeadingDigits(validateRE(element.getAttribute(LEADING_DIGITS)));
     }
-    metadata.setInternationalPrefix(validateRE(element.getAttribute(INTERNATIONAL_PREFIX)));
+    if (element.hasAttribute(INTERNATIONAL_PREFIX)) {
+      metadata.setInternationalPrefix(validateRE(element.getAttribute(INTERNATIONAL_PREFIX)));
+    }
     if (element.hasAttribute(PREFERRED_INTERNATIONAL_PREFIX)) {
       metadata.setPreferredInternationalPrefix(
           element.getAttribute(PREFERRED_INTERNATIONAL_PREFIX));
@@ -329,21 +331,23 @@ public class BuildMetadataFromXml {
         if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_FORMATTING_RULE)) {
           format.setNationalPrefixFormattingRule(
               getNationalPrefixFormattingRuleFromElement(numberFormatElement, nationalPrefix));
-        } else {
+        } else if (!nationalPrefixFormattingRule.equals("")) {
           format.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
         }
         if (numberFormatElement.hasAttribute(NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)) {
           format.setNationalPrefixOptionalWhenFormatting(
               Boolean.valueOf(numberFormatElement.getAttribute(
                   NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING)));
-        } else {
+        } else if (format.getNationalPrefixOptionalWhenFormatting()
+            != nationalPrefixOptionalWhenFormatting) {
+          // Inherit from the parent field if it is not already the same as the default.
           format.setNationalPrefixOptionalWhenFormatting(nationalPrefixOptionalWhenFormatting);
         }
         if (numberFormatElement.hasAttribute(CARRIER_CODE_FORMATTING_RULE)) {
           format.setDomesticCarrierCodeFormattingRule(validateRE(
               getDomesticCarrierCodeFormattingRuleFromElement(numberFormatElement,
                                                               nationalPrefix)));
-        } else {
+        } else if (!carrierCodeFormattingRule.equals("")) {
           format.setDomesticCarrierCodeFormattingRule(carrierCodeFormattingRule);
         }
         loadNationalFormat(metadata, numberFormatElement, format);
@@ -506,8 +510,12 @@ public class BuildMetadataFromXml {
       metadata.setVoicemail(processPhoneNumberDescElement(generalDesc, element, VOICEMAIL));
       metadata.setNoInternationalDialling(processPhoneNumberDescElement(generalDesc, element,
           NO_INTERNATIONAL_DIALLING));
-      metadata.setSameMobileAndFixedLinePattern(metadata.getMobile().getNationalNumberPattern()
-          .equals(metadata.getFixedLine().getNationalNumberPattern()));
+      boolean mobileAndFixedAreSame = metadata.getMobile().getNationalNumberPattern()
+          .equals(metadata.getFixedLine().getNationalNumberPattern());
+      if (metadata.getSameMobileAndFixedLinePattern() != mobileAndFixedAreSame) {
+        // Set this if it is not the same as the default.
+        metadata.setSameMobileAndFixedLinePattern(mobileAndFixedAreSame);
+      }
       metadata.setTollFree(processPhoneNumberDescElement(generalDesc, element, TOLL_FREE));
       metadata.setPremiumRate(processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE));
     } else {
