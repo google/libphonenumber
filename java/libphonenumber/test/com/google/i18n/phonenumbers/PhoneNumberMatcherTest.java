@@ -443,6 +443,21 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     assertEquals(match2, matches.next());
   }
 
+  public void testMatchesPhoneNumberWithExtensionWithExtraPunctuation() throws Exception {
+    String text = "Call 650-253-4561x25,455";
+    String region = RegionCode.US;
+
+    PhoneNumber number1 = new PhoneNumber();
+    number1.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
+    number1.setNationalNumber(6502534561L);
+    number1.setExtension("25");
+    PhoneNumberMatch match1 = new PhoneNumberMatch(5, "650-253-4561x25", number1);
+
+    Iterator<PhoneNumberMatch> matches = phoneUtil.findNumbers(text, region).iterator();
+    assertEquals(match1, matches.next());
+    assertFalse(matches.hasNext());
+  }
+
 
   /**
    * Strings with number-like things that shouldn't be found under any level.

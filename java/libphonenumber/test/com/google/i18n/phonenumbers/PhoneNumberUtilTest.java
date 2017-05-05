@@ -632,6 +632,14 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.formatOutOfCountryCallingNumber(arNumberWithExtn, RegionCode.AU));
     assertEquals("011 15 8765-4321 ext. 1234",
                  phoneUtil.formatOutOfCountryCallingNumber(arNumberWithExtn, RegionCode.AR));
+
+    arNumberWithExtn = new PhoneNumber().mergeFrom(AR_MOBILE).setExtension("1;2,34");
+    assertEquals("011 54 9 11 8765 4321 ext. 1;2,34",
+                 phoneUtil.formatOutOfCountryCallingNumber(arNumberWithExtn, RegionCode.US));
+    assertEquals("0011 54 9 11 8765 4321 ext. 1;2,34",
+                 phoneUtil.formatOutOfCountryCallingNumber(arNumberWithExtn, RegionCode.AU));
+    assertEquals("011 15 8765-4321 ext. 1;2,34",
+                 phoneUtil.formatOutOfCountryCallingNumber(arNumberWithExtn, RegionCode.AR));
   }
 
   public void testFormatOutOfCountryWithInvalidRegion() {
@@ -2653,10 +2661,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Retry with the same number in a slightly different format.
     assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234 ext. 910#", RegionCode.US));
 
-    // Comma is allowed in extensions
+    // Comma and semicolon are allowed in extensions
     usWithExtension.clear();
     usWithExtension.setCountryCode(1).setNationalNumber(6451231234L).setExtension("91,0");
     assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234 ext: 91,0", RegionCode.US));
+    usWithExtension.clear();
+    usWithExtension.setCountryCode(1).setNationalNumber(6451231234L).setExtension("91;0");
+    assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234 ext: 91;0", RegionCode.US));
   }
 
   public void testParseAndKeepRaw() throws Exception {
@@ -2775,6 +2786,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.isNumberMatch("+64 3 331-6005 extn 1234", "+6433316005#1234"));
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005 ext. 1234", "+6433316005;1234"));
+    // Test numbers with extension with modem control characters in them
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("+64 3 331-6005 extn 1234", "+6433316005#1;23,4"));
+    assertEquals(PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+                 phoneUtil.isNumberMatch("+64 3 331-6005 ext. 1234", "+6433316005;1;2,,34"));
     // Test proto buffers.
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch(NZ_NUMBER, "+6403 331 6005"));

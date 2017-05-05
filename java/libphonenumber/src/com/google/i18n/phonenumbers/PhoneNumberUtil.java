@@ -305,8 +305,14 @@ public class PhoneNumberUtil {
   private static final String DEFAULT_EXTN_PREFIX = " ext. ";
 
   // Pattern to capture digits used in an extension. Places a maximum length of "7" for an
-  // extension. Commas are allowed, as long they are not the trailing symbol
-  private static final String CAPTURING_EXTN_DIGITS = "([\\p{Nd},]{0,6}\\p{Nd})";
+  // extension.
+  private static final String CAPTURING_EXTN_DIGITS = "(\\p{Nd}{1,7})";
+
+  // Pattern to capture digits and commands used in an extension. Places a maximum length of "7"
+  // for an entire extension. Comma and semicolon are allowed, as long as they are not the trailing symbol.
+  // They denote dialing commands to delay (comma) or wait for a tone (semicolon).
+  private static final String CAPTURING_EXTN_DIGITS_AND_COMMANDS = "([\\p{Nd},;]{0,6}\\p{Nd})";
+
   // Regexp of all possible ways to write extensions, for use when parsing. This will be run as a
   // case-insensitive regexp match. Wide character versions are also provided after each ASCII
   // version.
@@ -320,15 +326,16 @@ public class PhoneNumberUtil {
     // hardly ever used to indicate this.
     String singleExtnSymbolsForParsing = ",;" + singleExtnSymbolsForMatching;
 
-    EXTN_PATTERNS_FOR_PARSING = createExtnPattern(singleExtnSymbolsForParsing);
-    EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(singleExtnSymbolsForMatching);
+    EXTN_PATTERNS_FOR_PARSING = createExtnPattern(singleExtnSymbolsForParsing, CAPTURING_EXTN_DIGITS_AND_COMMANDS);
+    EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(singleExtnSymbolsForMatching, CAPTURING_EXTN_DIGITS);
   }
 
   /**
    * Helper initialiser method to create the regular-expression pattern to match extensions,
    * allowing the one-char extension symbols provided by {@code singleExtnSymbols}.
+   * {@code extensionPattern} allows to specify the extension capturing pattern.
    */
-  private static String createExtnPattern(String singleExtnSymbols) {
+  private static String createExtnPattern(String singleExtnSymbols, String extensionPattern) {
     // There are three regular expressions here. The first covers RFC 3966 format, where the
     // extension is added using ";ext=". The second more generic one starts with optional white
     // space and ends with an optional full stop (.), followed by zero or more spaces/tabs/commas
@@ -339,10 +346,10 @@ public class PhoneNumberUtil {
     // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
     // for representing the accented o - the character itself, and one in the unicode decomposed
     // form with the combining acute accent.
-    return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*"
+    return (RFC3966_EXTN_PREFIX + extensionPattern + "|" + "[ \u00A0\\t,]*"
         + "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|"
         + "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)"
-        + "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|"
+        + "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + extensionPattern + "#?|"
         + "[- ]+(" + DIGITS + "{1,5})#");
   }
 
@@ -741,6 +748,7 @@ public class PhoneNumberUtil {
   /**
    * Normalizes a string of characters representing a phone number. This strips all characters which
    * are not diallable on a mobile phone keypad (including all non-ASCII digits).
+   * Also strips out possible dialer commands from the extension (comma and seimcolon).
    *
    * @param number  a string of characters representing a phone number
    * @return  the normalized string version of the phone number
@@ -3337,7 +3345,7 @@ public class PhoneNumberUtil {
     PhoneNumber secondNumber = copyCoreFieldsOnly(secondNumberIn);
     // Early exit if both had extensions and these are different.
     if (firstNumber.hasExtension() && secondNumber.hasExtension()
-        && !firstNumber.getExtension().equals(secondNumber.getExtension())) {
+        && !extensionMatches(firstNumber.getExtension(), secondNumber.getExtension())) {
       return MatchType.NO_MATCH;
     }
     int firstNumberCountryCode = firstNumber.getCountryCode();
@@ -3367,6 +3375,16 @@ public class PhoneNumberUtil {
       return MatchType.SHORT_NSN_MATCH;
     }
     return MatchType.NO_MATCH;
+  }
+
+  // Return true if extension matches, possibly ignoring control characters
+  private boolean extensionMatches(String firstExtension, String secondExtension) {
+      if (firstExtension.equals(secondExtension)) {
+          return true;
+      }
+      String firstSanitized = firstExtension.replaceAll("[,;]", "");
+      String secondSanitized = secondExtension.replaceAll("[,;]", "");
+      return firstSanitized.equals(secondSanitized);
   }
 
   // Returns true when one national number is the suffix of the other or both are the same.
