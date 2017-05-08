@@ -1,4 +1,9 @@
 language: java
+before_install:
+- sudo apt-get -qq update
+# ant-optional is needed for ant junit. This used to be part of the default
+# Travis image.
+- sudo apt-get install ant-optional
 install:
 # Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
