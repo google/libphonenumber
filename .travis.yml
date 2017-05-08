@@ -1,4 +1,6 @@
 language: java
+before_install:
+- sudo apt-get install ant-optional
 install:
 # Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
