@@ -1,3 +1,12 @@
+May 10, 2017: v8.4.3
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AX, BF, CG, FI, GG, GH, GI, IM, IR, JE, JM, VN
+ - Updated short number metadata for region code(s): AX, BR, FI, GI, HK
+ - Updated geocoding data for country calling code(s): 84 (en), 233 (en)
+ - Updated carrier data for country calling code(s):
+   233 (en), 358 (en), 1876 (en)
+
 Apr 25, 2017: v8.4.2
 Code changes:
  - Small fix for possible out-of-bounds exception on RFC3966 input where no
