@@ -687,11 +687,20 @@
     <!-- Country calling code shared with Finland. -->
     <territory id="AX">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d{2}|
+          75[12]\d{2}
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>112</nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <!-- Most service numbers are included under UAN in PhoneNumberMetadata.xml (and also in
+             the no-international-dialling block) but prefixes 75[12] are always short and used for
+             directory services, hence we consider them to be short numbers. -->
+        <nationalNumberPattern>
+          112|
+          75[12]\d{2}
+        </nationalNumberPattern>
+        <possibleLengths national="3,5"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
@@ -1441,16 +1450,7 @@
           )|
           55555|
           6(?:
-            0(?:
-              5(?:
-                0(?:
-                  0[1-9]|
-                  [1-9]\d
-                )|
-                [1-9]\d{2}
-              )|
-              [6-9]\d{3}
-            )|
+            0\d{4}|
             10000
           )|
           911
@@ -1548,16 +1548,7 @@
             828
           )|
           6(?:
-            0(?:
-              5(?:
-                0(?:
-                  0[1-9]|
-                  [1-9]\d
-                )|
-                [1-9]\d{2}
-              )|
-              [6-9]\d{3}
-            )|
+            0\d{4}|
             10000
           )
         </nationalNumberPattern>
@@ -3522,16 +3513,23 @@
     <!-- https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html -->
     <territory id="FI">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d{2,5}|
+          75[12]\d{2}
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- Most service numbers are included under UAN in PhoneNumberMetadata.xml (and also in
+             the no-international-dialling block) but prefixes 75[12] are always short and used for
+             directory services, hence we consider them to be short numbers. -->
         <nationalNumberPattern>
           11(?:
             2|
             6111
-          )
+          )|
+          75[12]\d{2}
         </nationalNumberPattern>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
@@ -4263,7 +4261,7 @@
     </territory>
 
     <!-- Gibraltar -->
-    <!-- http://www.gra.gi/index.php?topic=numbering+plan&section=legislation&site=communications-->
+    <!-- http://www.gra.gi/communications/numbering-plan-->
     <territory id="GI">
       <generalDesc>
         <nationalNumberPattern>[158]\d{2,5}</nationalNumberPattern>
@@ -4293,9 +4291,16 @@
           )|
           555|
           8(?:
-            008?|
-            4[0-2]|
-            88
+            0(?:
+              0|
+              \d{2}
+            )|
+            [1-35-79]\d{2}|
+            4(?:
+              [0-2]|
+              \d{2}
+            )|
+            8[1-589]
           )
         </nationalNumberPattern>
         <possibleLengths national="[3-6]"/>
@@ -4307,20 +4312,35 @@
             00|
             16\d{3}|
             23|
-            47\d|
+            4(?:
+              1|
+              7\d
+            )|
             5[15]|
             9[2-4]
           )|
-          555
+          555|
+          80\d{2}
         </nationalNumberPattern>
         <possibleLengths national="3,4,6"/>
         <exampleNumber>100</exampleNumber>
       </tollFree>
       <standardRate>
-        <nationalNumberPattern>150</nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <nationalNumberPattern>
+          150|
+          87\d{2}
+        </nationalNumberPattern>
+        <possibleLengths national="3,4"/>
         <exampleNumber>150</exampleNumber>
       </standardRate>
+      <premiumRate>
+        <!-- Prefix 88 is not included here as it inconsistent in the doc provided by www.gra.gi.
+             Hence we will continue to treat it as 8 digit premiumRate number in
+             PhoneNumberMetadata.xml unless we hear otherwise. -->
+        <nationalNumberPattern>8[1-69]\d{2}</nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>8112</exampleNumber>
+      </premiumRate>
       <carrierSpecific>
         <nationalNumberPattern>
           1(?:
@@ -4349,8 +4369,11 @@
         <exampleNumber>112</exampleNumber>
       </emergency>
       <expandedEmergency>
-        <nationalNumberPattern>116111</nationalNumberPattern>
-        <possibleLengths national="6"/>
+        <nationalNumberPattern>
+          116\d{3}|
+          8008
+        </nationalNumberPattern>
+        <possibleLengths national="4,6"/>
         <exampleNumber>116111</exampleNumber>
       </expandedEmergency>
       <!-- Type B codes in the plan. -->
@@ -4641,18 +4664,94 @@
 
     <!-- Hong Kong -->
     <!-- http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html -->
+    <!-- http://www.ofca.gov.hk/filemanager/ofca/tc/content_311/no_plan.pdf -->
     <territory id="HK">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2,6}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- Short number ranges in the doc which have categories but have no assigned to/allocated
+             information have not been included here, such as 1819 and 1820x. 189 is assigned to
+             'Disaster recovery' and it is in the format 189+prefix
+             https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E9%9B%BB%E8%A9%B1%E8%99%9F%E7%A2%BC%E5%88%86%E9%A1%9Eas
+             As we do not have much information on the prefix that needs to be used we have not
+             included it. -->
         <nationalNumberPattern>
-          11[0-9]|
+          1(?:
+            0(?:
+              [0136]\d{0,4}|
+              2[14]\d{0,3}|
+              8[138]|
+              9
+            )|
+            12|
+            2(?:
+              [0-3]\d{0,4}|
+              58\d{0,3}|
+              8[13]\d{0,3}
+            )|
+            7(?:
+              [135-9]\d{0,4}|
+              21[89]\d{0,2}|
+              421\d{0,2}
+            )|
+            8(?:
+              0(?:
+                [13]\d|
+                60\d{2}|
+                8
+              )|
+              1(?:
+                0\d|
+                [2-8]
+              )|
+              2(?:
+                182|
+                3|
+                8[128]
+              )|
+              3\d{4}|
+              4(?:
+                1[1-5]|
+                [23]1|
+                6[12]
+              )|
+              50[138]|
+              6(?:
+                000|
+                1(?:
+                  [13]1|
+                  86
+                )|
+                8
+              )|
+              7(?:
+                13|
+                2[1-389]|
+                8[0235-9]|
+                93
+              )\d{2}|
+              8\d
+            )
+          )|
           99[29]
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="[3-7]"/>
         <exampleNumber>999</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <nationalNumberPattern>
+          1(?:
+            0(?:
+              8\d|
+              9
+            )|
+            850\d
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="[3-5]"/>
+        <exampleNumber>1088</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           112|

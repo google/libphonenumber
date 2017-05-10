@@ -15,7 +15,6 @@
 # Generated from:
 # http://en.wikipedia.org/wiki/+84 [429974200]
 
-8420|Lao Cai province
 84203|Quang Ninh Province
 84204|Bac Giang Province
 84205|Lang Son Province
@@ -32,7 +31,6 @@
 84216|Yen Bai province
 84218|Hoa Binh province
 84219|Ha Giang province
-8422|Son La province
 84220|Hai Duong Province
 84221|Hung Yen Province
 84222|Bac Ninh Province
@@ -41,8 +39,6 @@
 84227|Thai Binh Province
 84228|Nam Dinh Province
 84229|Ninh Binh Province
-84230|Dien Bien province
-84231|Lai Chau province
 84232|Quang Binh province
 84233|Quang Tri province
 84234|Thua Thien-Hue province
@@ -58,7 +54,6 @@
 8427|Tuyen Quang province
 84280|Thai Nguyen province
 84281|Bac Kan province
-8429|Yen Bai province
 84290|Ca Mau Province
 84291|Bac Lieu Province
 84292|Can Tho City
@@ -75,17 +70,9 @@
 84350|Nam Dinh province
 84351|Ha Nam province
 8436|Thai Binh province
-8437|Thanh Hoa province
-8438|Nghe An province
-8439|Ha Tinh province
 844|Hanoi
 84500|Dak Lak province
 84501|Dak Nong province
-84510|Quang Nam province
-84511|Da Nang
-8452|Quang Binh province
-8453|Quang Tri province
-8454|Thua Thien-Hue province
 8455|Quang Ngai province
 8456|Binh Dinh province
 8457|Phu Yen province

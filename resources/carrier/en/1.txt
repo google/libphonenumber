@@ -126,9 +126,6 @@
 175852|AT&T
 1758584|Cable & Wireless
 17587|Digicel
-1767315|Digicel
-1767316|Digicel
-1767317|Digicel
 1767225|Cable & Wireless
 1767235|Cable & Wireless
 1767245|Cable & Wireless
@@ -138,6 +135,9 @@
 1767277|Cable & Wireless
 1767285|Cable & Wireless
 1767295|Cable & Wireless
+1767315|Digicel
+1767316|Digicel
+1767317|Digicel
 1767612|Digicel
 1767613|Digicel
 1767614|Digicel
@@ -447,7 +447,40 @@
 186956|The Cable St. Kitts
 186966|Cable & Wireless
 186976|Digicel
+187624|Digicel
+187625|Digicel
 187626|Digicel
+1876275|Digicel
+1876276|Digicel
+1876277|Digicel
+1876278|Digicel
+1876279|Digicel
+187628|Digicel
+187629|Digicel
+187630|Digicel
+187635|Digicel
+187636|Digicel
+187637|Digicel
+187638|Digicel
+187639|Digicel
+187640|Digicel
+187641|Digicel
+187642|Digicel
+187643|Digicel
+1876440|Digicel
+1876441|Digicel
+1876442|Digicel
+1876443|Digicel
+1876445|Digicel
+1876446|Digicel
+1876447|Digicel
+1876448|Digicel
+1876449|Digicel
+187645|Digicel
+187646|Digicel
+187647|Digicel
+187648|Digicel
+187649|Digicel
 1876503|Digicel
 1876504|Digicel
 1876505|Digicel
@@ -455,14 +488,34 @@
 1876507|Digicel
 1876508|Digicel
 1876509|Digicel
-1876520|Digicel
-1876521|Digicel
-1876522|Digicel
-1876524|Digicel
-1876526|Digicel
-1876527|Digicel
-1876528|Digicel
-1876529|Digicel
+187652|Digicel
+1876550|Digicel
+1876551|Digicel
+1876552|Digicel
+1876553|Digicel
+1876554|Digicel
+1876556|Digicel
+1876557|Digicel
+1876558|Digicel
+1876559|Digicel
+1876560|Digicel
+1876561|Digicel
+1876562|Digicel
+1876564|Digicel
+1876565|Digicel
+1876566|Digicel
+1876567|Digicel
+1876568|Digicel
+1876569|Digicel
+187657|Digicel
+187658|Digicel
+187659|Digicel
+187684|Digicel
+187685|Digicel
+187686|Digicel
+187687|Digicel
+187688|Digicel
+187689|Digicel
 1939201|CENTENNIAL
 1939212|CENTENNIAL
 1939214|CENTENNIAL
