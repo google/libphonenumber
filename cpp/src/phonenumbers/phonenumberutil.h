@@ -579,6 +579,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& number,
       const string& region_dialing_from) const;
 
+  // Returns true if the number can be dialled from outside the region, or
+  // unknown. If the number can only be dialled from within the region, returns
+  // false. Does not check the number is a valid number. Note that, at the
+  // moment, this method does not handle short numbers (which are currently all
+  // presumed to not be diallable from outside their country).
+  bool CanBeInternationallyDialled(const PhoneNumber& number) const;
+
   // Tests whether a phone number has a geographical association. It checks if
   // the number is associated to a certain region in the country where it
   // belongs to. Note that this doesn't verify if the number is actually in use.
@@ -939,12 +946,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
                                          const string& number) const;
-
-  // Returns true if the number can be dialled from outside the region, or
-  // unknown. If the number can only be dialled from within the region, returns
-  // false. Does not check the number is a valid number. Note that, at the
-  // moment, this method does not handle short numbers.
-  bool CanBeInternationallyDialled(const PhoneNumber& number) const;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);
 };
