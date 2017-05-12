@@ -32,7 +32,7 @@ The example command lines below assume that you have a Debian-based GNU/Linux
 distribution. Other distributions and packaging systems will differ.
 
 Quickstart:
-  - In recent Debian-based distributions, it should be sufficent to run:
+  - In recent Debian-based distributions, it should be sufficient to run:
     $ sudo apt-get install \
       cmake cmake-curses-gui libprotobuf-dev libgtest-dev libre2-dev \
       libicu-dev libboost-dev libboost-thread-dev libboost-system-dev \
