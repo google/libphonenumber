@@ -26,11 +26,15 @@ import java.util.List;
 import java.util.Map;
 
 public class CountryCodeToRegionCodeMap {
-  // A mapping from a country code to the region codes which denote the
-  // country/region represented by that country code. In the case of multiple
-  // countries sharing a calling code, such as the NANPA countries, the one
-  // indicated with "isMainCountryForCode" in the metadata should be first.
-  static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {
+  /**
+   * A mapping from a country code to the region codes which denote the
+   * country/region represented by that country code. In the case of multiple
+   * countries sharing a calling code, such as the NANPA countries, the one
+   * indicated with "isMainCountryForCode" in the metadata should be first.
+   *
+   * @return mapping from a country code to the region codes
+   */
+  public static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {
     // The capacity is set to 285 as there are 214 different entries,
     // and this offers a load factor of roughly 0.75.
     Map<Integer, List<String>> countryCodeToRegionCodeMap =
