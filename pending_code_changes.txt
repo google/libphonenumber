@@ -1,5 +1,5 @@
 Code changes:
  - PhoneNumberUtil.canBeInternationallyDialled() API is made public (in
-   Java nad CPP) now as it is useful for clients if they want to make
+   Java and CPP) now as it is useful for clients if they want to make
    sure they only allow internationally-accessible numbers for a
    particular use-case. In JS this API is already public. 

@@ -4531,8 +4531,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNationalNumberSuffixOfTheOther_ =
  * Returns true if the number can be dialled from outside the region, or
  * unknown. If the number can only be dialled from within the region, returns
  * false. Does not check the number is a valid number.
- * TODO: Make this method public when we have enough metadata to make it
- * worthwhile. Currently visible for testing purposes only.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone-number for which we
  *     want to know whether it is diallable from outside the region.
