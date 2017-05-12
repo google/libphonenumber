@@ -67,10 +67,6 @@ class PhoneNumberUtilTest : public testing::Test {
     phone_util_.ExtractPossibleNumber(number, extracted_number);
   }
 
-  bool CanBeInternationallyDialled(const PhoneNumber& number) const {
-    return phone_util_.CanBeInternationallyDialled(number);
-  }
-
   bool IsViablePhoneNumber(const string& number) const {
     return phone_util_.IsViablePhoneNumber(number);
   }
@@ -4443,24 +4439,24 @@ TEST_F(PhoneNumberUtilTest, CanBeInternationallyDialled) {
   // We have no-international-dialling rules for the US in our test metadata
   // that say that toll-free numbers cannot be dialled internationally.
   test_number.set_national_number(8002530000ULL);
-  EXPECT_FALSE(CanBeInternationallyDialled(test_number));
+  EXPECT_FALSE(phone_util_.CanBeInternationallyDialled(test_number));
 
   // Normal US numbers can be internationally dialled.
   test_number.set_national_number(6502530000ULL);
-  EXPECT_TRUE(CanBeInternationallyDialled(test_number));
+  EXPECT_TRUE(phone_util_.CanBeInternationallyDialled(test_number));
 
   // Invalid number.
   test_number.set_national_number(2530000ULL);
-  EXPECT_TRUE(CanBeInternationallyDialled(test_number));
+  EXPECT_TRUE(phone_util_.CanBeInternationallyDialled(test_number));
 
   // We have no data for NZ - should return true.
   test_number.set_country_code(64);
   test_number.set_national_number(33316005ULL);
-  EXPECT_TRUE(CanBeInternationallyDialled(test_number));
+  EXPECT_TRUE(phone_util_.CanBeInternationallyDialled(test_number));
 
   test_number.set_country_code(800);
   test_number.set_national_number(12345678ULL);
-  EXPECT_TRUE(CanBeInternationallyDialled(test_number));
+  EXPECT_TRUE(phone_util_.CanBeInternationallyDialled(test_number));
 }
 
 TEST_F(PhoneNumberUtilTest, IsAlphaNumber) {

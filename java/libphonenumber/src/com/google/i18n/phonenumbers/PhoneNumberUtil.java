@@ -3491,14 +3491,13 @@ public class PhoneNumberUtil {
   /**
    * Returns true if the number can be dialled from outside the region, or unknown. If the number
    * can only be dialled from within the region, returns false. Does not check the number is a valid
-   * number. Note that, at the moment, this method does not handle short numbers.
-   * TODO: Make this method public when we have enough metadata to make it worthwhile.
+   * number. Note that, at the moment, this method does not handle short numbers (which are
+   * currently all presumed to not be diallable from outside their country).
    *
    * @param number  the phone-number for which we want to know whether it is diallable from
    *     outside the region
    */
-  // @VisibleForTesting
-  boolean canBeInternationallyDialled(PhoneNumber number) {
+  public boolean canBeInternationallyDialled(PhoneNumber number) {
     PhoneMetadata metadata = getMetadataForRegion(getRegionCodeForNumber(number));
     if (metadata == null) {
       // Note numbers belonging to non-geographical entities (e.g. +800 numbers) are always
