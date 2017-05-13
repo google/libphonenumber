@@ -232,7 +232,7 @@ public class PhoneNumberUtil {
     allPlusNumberGroupings.put('\u200E', ' ');
     allPlusNumberGroupings.put('\u205F', ' ');
     allPlusNumberGroupings.put('\u2061', ' ');
-    allPlusNumberGroupings.put("", "");
+    allPlusNumberGroupings.put('', "");
     allPlusNumberGroupings.put('\uFEFF', "");
     allPlusNumberGroupings.put('\u0001', "");
     allPlusNumberGroupings.put('\u0010', "");
