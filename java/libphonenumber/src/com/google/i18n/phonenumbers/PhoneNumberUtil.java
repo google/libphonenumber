@@ -202,6 +202,11 @@ public class PhoneNumberUtil {
     }
     allPlusNumberGroupings.putAll(asciiDigitMappings);
     // Put grouping symbols.
+    allPlusNumberGroupings.put(PLUS_SIGN, PLUS_SIGN);
+    allPlusNumberGroupings.put('\u208A', PLUS_SIGN);
+    allPlusNumberGroupings.put('\u5341', PLUS_SIGN);
+    allPlusNumberGroupings.put('\u2795', PLUS_SIGN);
+    allPlusNumberGroupings.put('\u2795', PLUS_SIGN);
     allPlusNumberGroupings.put('-', '-');
     allPlusNumberGroupings.put('\uFF0D', '-');
     allPlusNumberGroupings.put('\u2010', '-');
@@ -221,6 +226,10 @@ public class PhoneNumberUtil {
     allPlusNumberGroupings.put('\u30FC', '-');
     allPlusNumberGroupings.put('/', '/');
     allPlusNumberGroupings.put('\uFF0F', '/');
+    allPlusNumberGroupings.put('\u2044', '/');
+    allPlusNumberGroupings.put('\u2215', '/');
+    allPlusNumberGroupings.put('\u2571', '/');
+    allPlusNumberGroupings.put('\\', '/');
     allPlusNumberGroupings.put(' ', ' ');
     allPlusNumberGroupings.put('\u3000', ' ');
     allPlusNumberGroupings.put('\u2060', ' ');
