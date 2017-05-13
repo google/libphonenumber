@@ -72,9 +72,6 @@ public class PhoneNumberUtil {
   private static final String UNKNOWN_REGION = "ZZ";
 
   private static final int NANPA_COUNTRY_CODE = 1;
-  
-  // Replace bad empty chars to right empty char
-  private static final char[] EMPTY_CHAR = "".toCharArray();
 
   // The prefix that needs to be inserted in front of a Colombian landline number when dialed from
   // a mobile phone in Colombia.
@@ -235,19 +232,19 @@ public class PhoneNumberUtil {
     allPlusNumberGroupings.put('\u200E', ' ');
     allPlusNumberGroupings.put('\u205F', ' ');
     allPlusNumberGroupings.put('\u2061', ' ');
-    allPlusNumberGroupings.put(EMPTY_CHAR, EMPTY_CHAR);
-    allPlusNumberGroupings.put('\uFEFF', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0001', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0010', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0012', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u200B', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0019', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0011', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0004', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0006', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u001A', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\u0013', EMPTY_CHAR);
-    allPlusNumberGroupings.put('\uFE0F', EMPTY_CHAR);
+    allPlusNumberGroupings.put('\0', "");
+    allPlusNumberGroupings.put('\uFEFF', "");
+    allPlusNumberGroupings.put('\u0001', "");
+    allPlusNumberGroupings.put('\u0010', "");
+    allPlusNumberGroupings.put('\u0012', "");
+    allPlusNumberGroupings.put('\u200B', "");
+    allPlusNumberGroupings.put('\u0019', "");
+    allPlusNumberGroupings.put('\u0011', "");
+    allPlusNumberGroupings.put('\u0004', "");
+    allPlusNumberGroupings.put('\u0006', "");
+    allPlusNumberGroupings.put('\u001A', "");
+    allPlusNumberGroupings.put('\u0013', "");
+    allPlusNumberGroupings.put('\uFE0F', "");
     allPlusNumberGroupings.put('.', '.');
     allPlusNumberGroupings.put('\uFF0E', '.');
     ALL_PLUS_NUMBER_GROUPING_SYMBOLS = Collections.unmodifiableMap(allPlusNumberGroupings);
