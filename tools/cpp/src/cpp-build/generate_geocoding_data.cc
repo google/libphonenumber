@@ -16,7 +16,6 @@
 
 #include "cpp-build/generate_geocoding_data.h"
 
-#include <dirent.h>
 #include <locale>
 #include <sys/stat.h>
 #include <algorithm>
@@ -32,6 +31,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <boost/filesystem.hpp>
 
 #include "base/basictypes.h"
 
@@ -43,6 +43,8 @@ using std::string;
 using std::vector;
 using std::set;
 using std::pair;
+
+namespace fs = boost::filesystem;
 
 template <typename ResourceType> class AutoCloser {
  public:
@@ -80,7 +82,7 @@ enum DirEntryKinds {
 
 class DirEntry {
  public:
-  DirEntry(const char* n, DirEntryKinds k)
+  DirEntry(const std::string& n, DirEntryKinds k)
       : name_(n),
         kind_(k)
   {}
@@ -97,36 +99,26 @@ class DirEntry {
 // success.
 bool ListDirectory(const string& path, vector<DirEntry>* entries) {
   entries->clear();
-  DIR* dir = opendir(path.c_str());
-  if (!dir) {
+
+  try {
+    for (fs::directory_iterator it(path); it != fs::directory_iterator(); ++it) {
+      DirEntryKinds kind;
+
+      if (fs::is_directory(it->status())) {
+          kind = kDirectory;
+      } else if (fs::is_regular_file(it->status())) {
+          kind = kFile;
+      } else {
+          continue;
+      }
+
+      entries->push_back(DirEntry(it->path().filename().string(), kind));
+    }
+  } catch (const fs::filesystem_error& ex) {
     return false;
   }
-  AutoCloser<DIR> dir_closer(&dir, closedir);
-  struct dirent entry, *dir_result;
-  struct stat entry_stat;
-  while (true) {
-    const int res = readdir_r(dir, &entry, &dir_result);
-    if (res) {
-      return false;
-    }
-    if (dir_result == NULL) {
-      return true;
-    }
-    if (strcmp(entry.d_name, ".") == 0 || strcmp(entry.d_name, "..") == 0) {
-       continue;
-    }
-    const string entry_path = path + "/" + entry.d_name;
-    if (stat(entry_path.c_str(), &entry_stat)) {
-      return false;
-    }
-    DirEntryKinds kind = kFile;
-    if (S_ISDIR(entry_stat.st_mode)) {
-      kind = kDirectory;
-    } else if (!S_ISREG(entry_stat.st_mode)) {
-      continue;
-    }
-    entries->push_back(DirEntry(entry.d_name, kind));
-  }
+
+  return true;
 }
 
 // Returns true if s ends with suffix.
