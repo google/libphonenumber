@@ -479,7 +479,8 @@ public class PhoneNumberUtil {
     POSSIBLE {
       @Override
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        return util.isPossibleNumber(number);
+        ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+        return (util.isPossibleNumber(number) || shortInfo.isPossibleShortNumber(number));
       }
     },
     /**
@@ -491,7 +492,8 @@ public class PhoneNumberUtil {
     VALID {
       @Override
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number)
+        ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+        if (!(util.isValidNumber(number) || shortInfo.isValidShortNumber(number))
             || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
           return false;
         }
@@ -513,7 +515,8 @@ public class PhoneNumberUtil {
     STRICT_GROUPING {
       @Override
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number)
+        ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+        if (!(util.isValidNumber(number) || shortInfo.isValidShortNumber(number))
             || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
             || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
             || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
@@ -545,7 +548,8 @@ public class PhoneNumberUtil {
     EXACT_GROUPING {
       @Override
       boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number)
+        ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+        if (!(util.isValidNumber(number) || shortInfo.isValidShortNumber(number))
             || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
             || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
             || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
