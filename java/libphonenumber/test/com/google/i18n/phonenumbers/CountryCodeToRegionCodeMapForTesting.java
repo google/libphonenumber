@@ -150,6 +150,10 @@ public class CountryCodeToRegionCodeMapForTesting {
     countryCodeToRegionCodeMap.put(971, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode.add("IL");
+    countryCodeToRegionCodeMap.put(972, listWithRegionCode);
+
+    listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("001");
     countryCodeToRegionCodeMap.put(979, listWithRegionCode);
 
