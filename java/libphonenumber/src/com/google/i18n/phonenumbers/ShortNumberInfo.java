@@ -450,7 +450,7 @@ public class ShortNumberInfo {
     PhoneNumberDesc emergencyDesc = metadata.getEmergency();
     boolean allowPrefixMatchForRegion =
         allowPrefixMatch && !REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.contains(regionCode);
-    return matcherApi.matchesNationalNumber(normalizedNumber, emergencyDesc,
+    return matcherApi.matchNationalNumber(normalizedNumber, emergencyDesc,
         allowPrefixMatchForRegion);
   }
 
@@ -531,6 +531,6 @@ public class ShortNumberInfo {
         && !numberDesc.getPossibleLengthList().contains(number.length())) {
       return false;
     }
-    return matcherApi.matchesNationalNumber(number, numberDesc, false);
+    return matcherApi.matchNationalNumber(number, numberDesc, false);
   }
 }

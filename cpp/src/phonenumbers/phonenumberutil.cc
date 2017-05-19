@@ -34,11 +34,13 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
+#include "phonenumbers/matcher_api.h"
 #include "phonenumbers/metadata.h"
 #include "phonenumbers/normalize_utf8.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/regex_based_matcher.h"
 #include "phonenumbers/regexp_adapter.h"
 #include "phonenumbers/regexp_cache.h"
 #include "phonenumbers/regexp_factory.h"
@@ -419,6 +421,13 @@ void CopyCoreFieldsOnly(const PhoneNumber& number, PhoneNumber* pruned_number) {
   }
 }
 
+// Determines whether the given number is a national number match for the given
+// PhoneNumberDesc. Does not check against possible lengths!
+bool IsMatch(const MatcherApi& matcher_api,
+             const string& number, const PhoneNumberDesc& desc) {
+  return matcher_api.MatchNationalNumber(number, desc, false);
+}
+
 }  // namespace
 
 void PhoneNumberUtil::SetLogger(Logger* logger) {
@@ -736,6 +745,7 @@ class PhoneNumberRegExpsAndMappings {
 // Private constructor. Also takes care of initialisation.
 PhoneNumberUtil::PhoneNumberUtil()
     : logger_(Logger::set_logger_impl(new NullLogger())),
+      matcher_api_(new RegexBasedMatcher()),
       reg_exps_(new PhoneNumberRegExpsAndMappings),
       country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
       nanpa_regions_(new set<string>()),
@@ -2412,9 +2422,7 @@ bool PhoneNumberUtil::IsNumberMatchingDesc(
                 actual_length) == number_desc.possible_length().end()) {
     return false;
   }
-  return reg_exps_->regexp_cache_
-      ->GetRegExp(number_desc.national_number_pattern())
-      .FullMatch(national_number);
+  return IsMatch(*matcher_api_, national_number, number_desc);
 }
 
 PhoneNumberUtil::PhoneNumberType PhoneNumberUtil::GetNumberTypeHelper(
@@ -2737,10 +2745,10 @@ bool PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
       reg_exps_->regexp_factory_->CreateInput(*number));
   string number_string_copy(*number);
   string captured_part_of_prefix;
-  const RegExp& national_number_rule = reg_exps_->regexp_cache_->GetRegExp(
-      metadata.general_desc().national_number_pattern());
+  const PhoneNumberDesc& general_desc = metadata.general_desc();
   // Check if the original number is viable.
-  bool is_viable_original_number = national_number_rule.FullMatch(*number);
+  bool is_viable_original_number =
+      IsMatch(*matcher_api_, *number, general_desc);
   // Attempt to parse the first digits as a national prefix. We make a
   // copy so that we can revert to the original string if necessary.
   const string& transform_rule = metadata.national_prefix_transform_rule();
@@ -2759,7 +2767,7 @@ bool PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
     possible_national_prefix_pattern.Replace(&number_string_copy,
                                              transform_rule);
     if (is_viable_original_number &&
-        !national_number_rule.FullMatch(number_string_copy)) {
+        !IsMatch(*matcher_api_, number_string_copy, general_desc)) {
       return false;
     }
     number->assign(number_string_copy);
@@ -2777,7 +2785,7 @@ bool PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
     const string number_copy_as_string =
         number_copy_without_transform->ToString();
     if (is_viable_original_number &&
-        !national_number_rule.FullMatch(number_copy_as_string)) {
+        !IsMatch(*matcher_api_, number_copy_as_string, general_desc)) {
       return false;
     }
     number->assign(number_copy_as_string);
@@ -2924,9 +2932,6 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
                              &potential_national_number)) {
       const PhoneNumberDesc& general_num_desc =
           default_region_metadata->general_desc();
-      const RegExp& valid_number_pattern =
-          reg_exps_->regexp_cache_->GetRegExp(
-              general_num_desc.national_number_pattern());
       MaybeStripNationalPrefixAndCarrierCode(*default_region_metadata,
                                              &potential_national_number,
                                              NULL);
@@ -2935,8 +2940,9 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
       // If the number was not valid before but is valid now, or if it was too
       // long before, we consider the number with the country code stripped to
       // be a better result and keep that instead.
-      if ((!valid_number_pattern.FullMatch(*national_number) &&
-           valid_number_pattern.FullMatch(potential_national_number)) ||
+      if ((!IsMatch(*matcher_api_, *national_number, general_num_desc) &&
+          IsMatch(
+              *matcher_api_, potential_national_number, general_num_desc)) ||
           TestNumberLength(*national_number, *default_region_metadata) ==
               TOO_LONG) {
         national_number->assign(potential_national_number);

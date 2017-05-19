@@ -38,7 +38,7 @@ class RegexBasedMatcher : public MatcherApi {
   RegexBasedMatcher();
   ~RegexBasedMatcher();
 
-  bool MatchesNationalNumber(const string& national_number,
+  bool MatchNationalNumber(const string& national_number,
                              const PhoneNumberDesc& number_desc,
                              bool allow_prefix_match) const;
 
