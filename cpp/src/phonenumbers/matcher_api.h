@@ -37,8 +37,8 @@ class MatcherApi {
   // digits) matches the national number pattern defined in the given
   // PhoneNumberDesc message.
   virtual bool MatchNationalNumber(const string& number,
-                                     const PhoneNumberDesc& number_desc,
-                                     bool allow_prefix_match) const = 0;
+                                   const PhoneNumberDesc& number_desc,
+                                   bool allow_prefix_match) const = 0;
 };
 
 }  // namespace phonenumbers
