@@ -49,6 +49,7 @@ using google::protobuf::RepeatedPtrField;
 
 class AsYouTypeFormatter;
 class Logger;
+class MatcherApi;
 class NumberFormat;
 class PhoneMetadata;
 class PhoneNumberDesc;
@@ -773,6 +774,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // string preceding this is captured.
   // This corresponds to SECOND_NUMBER_START in the java version.
   static const char kCaptureUpToSecondNumberStart[];
+
+  // An API for validation checking.
+  scoped_ptr<MatcherApi> matcher_api_;
 
   // Helper class holding useful regular expressions and character mappings.
   scoped_ptr<PhoneNumberRegExpsAndMappings> reg_exps_;

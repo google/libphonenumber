@@ -21,6 +21,8 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
+import com.google.i18n.phonenumbers.internal.MatcherApi;
+import com.google.i18n.phonenumbers.internal.RegexBasedMatcher;
 import com.google.i18n.phonenumbers.internal.RegexCache;
 
 import java.util.ArrayList;
@@ -576,6 +578,9 @@ public class PhoneNumberUtil {
   // the NANPA regions, the one indicated with "isMainCountryForCode" in the metadata should be
   // first.
   private final Map<Integer, List<String>> countryCallingCodeToRegionCodeMap;
+
+  // An API for validation checking.
+  private final MatcherApi matcherApi = RegexBasedMatcher.create();
 
   // The set of regions that share country calling code 1.
   // There are roughly 26 regions.
@@ -2233,10 +2238,7 @@ public class PhoneNumberUtil {
     if (possibleLengths.size() > 0 && !possibleLengths.contains(actualLength)) {
       return false;
     }
-    Matcher nationalNumberPatternMatcher =
-        regexCache.getPatternForRegex(numberDesc.getNationalNumberPattern())
-            .matcher(nationalNumber);
-    return nationalNumberPatternMatcher.matches();
+    return matcherApi.matchNationalNumber(nationalNumber, numberDesc, false);
   }
 
   /**
@@ -2822,15 +2824,13 @@ public class PhoneNumberUtil {
         StringBuilder potentialNationalNumber =
             new StringBuilder(normalizedNumber.substring(defaultCountryCodeString.length()));
         PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
-        Pattern validNumberPattern =
-            regexCache.getPatternForRegex(generalDesc.getNationalNumberPattern());
         maybeStripNationalPrefixAndCarrierCode(
             potentialNationalNumber, defaultRegionMetadata, null /* Don't need the carrier code */);
         // If the number was not valid before but is valid now, or if it was too long before, we
         // consider the number with the country calling code stripped to be a better result and
         // keep that instead.
-        if ((!validNumberPattern.matcher(fullNumber).matches()
-                && validNumberPattern.matcher(potentialNationalNumber).matches())
+        if ((!matcherApi.matchNationalNumber(fullNumber, generalDesc, false)
+                && matcherApi.matchNationalNumber(potentialNationalNumber, generalDesc, false))
             || testNumberLength(fullNumber.toString(), defaultRegionMetadata)
                 == ValidationResult.TOO_LONG) {
           nationalNumber.append(potentialNationalNumber);
@@ -2926,10 +2926,9 @@ public class PhoneNumberUtil {
     // Attempt to parse the first digits as a national prefix.
     Matcher prefixMatcher = regexCache.getPatternForRegex(possibleNationalPrefix).matcher(number);
     if (prefixMatcher.lookingAt()) {
-      Pattern nationalNumberRule =
-          regexCache.getPatternForRegex(metadata.getGeneralDesc().getNationalNumberPattern());
+      PhoneNumberDesc generalDesc = metadata.getGeneralDesc();
       // Check if the original number is viable.
-      boolean isViableOriginalNumber = nationalNumberRule.matcher(number).matches();
+      boolean isViableOriginalNumber = matcherApi.matchNationalNumber(number, generalDesc, false);
       // prefixMatcher.group(numOfGroups) == null implies nothing was captured by the capturing
       // groups in possibleNationalPrefix; therefore, no transformation is necessary, and we just
       // remove the national prefix.
@@ -2939,7 +2938,8 @@ public class PhoneNumberUtil {
           || prefixMatcher.group(numOfGroups) == null) {
         // If the original number was viable, and the resultant number is not, we return.
         if (isViableOriginalNumber
-            && !nationalNumberRule.matcher(number.substring(prefixMatcher.end())).matches()) {
+            && !matcherApi.matchNationalNumber(
+                number.substring(prefixMatcher.end()), generalDesc, false)) {
           return false;
         }
         if (carrierCode != null && numOfGroups > 0 && prefixMatcher.group(numOfGroups) != null) {
@@ -2953,7 +2953,7 @@ public class PhoneNumberUtil {
         StringBuilder transformedNumber = new StringBuilder(number);
         transformedNumber.replace(0, numberLength, prefixMatcher.replaceFirst(transformRule));
         if (isViableOriginalNumber
-            && !nationalNumberRule.matcher(transformedNumber.toString()).matches()) {
+            && !matcherApi.matchNationalNumber(transformedNumber.toString(), generalDesc, false)) {
           return false;
         }
         if (carrierCode != null && numOfGroups > 1) {

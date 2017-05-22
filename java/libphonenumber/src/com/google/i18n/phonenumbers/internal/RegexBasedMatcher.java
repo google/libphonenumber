@@ -34,7 +34,7 @@ public final class RegexBasedMatcher implements MatcherApi {
   private RegexBasedMatcher() {}
 
   // @Override
-  public boolean matchesNationalNumber(String nationalNumber, PhoneNumberDesc numberDesc,
+  public boolean matchNationalNumber(CharSequence nationalNumber, PhoneNumberDesc numberDesc,
       boolean allowPrefixMatch) {
     Matcher nationalNumberPatternMatcher = regexCache.getPatternForRegex(
         numberDesc.getNationalNumberPattern()).matcher(nationalNumber);

@@ -36,7 +36,7 @@ RegexBasedMatcher::RegexBasedMatcher()
 
 RegexBasedMatcher::~RegexBasedMatcher() {}
 
-bool RegexBasedMatcher::MatchesNationalNumber(
+bool RegexBasedMatcher::MatchNationalNumber(
     const string& national_number, const PhoneNumberDesc& number_desc,
     bool allow_prefix_match) const {
   return Match(national_number, number_desc.national_number_pattern(),
