@@ -239,8 +239,9 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   // separately in the toll free element as well.
   EXPECT_EQ(0, metadata->toll_free().possible_length_size());
   EXPECT_EQ("900\\d{7}", metadata->premium_rate().national_number_pattern());
-  // No shared-cost data is available, so it should be initialised to "NA".
-  EXPECT_EQ("NA", metadata->shared_cost().national_number_pattern());
+  // No shared-cost data is available, so its national number data should not be
+  // set.
+  EXPECT_FALSE(metadata->shared_cost().has_national_number_pattern());
 }
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {

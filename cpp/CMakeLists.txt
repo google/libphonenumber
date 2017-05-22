@@ -459,6 +459,7 @@ endif ()
 set (TEST_SOURCES
   "test/phonenumbers/asyoutypeformatter_test.cc"
   "test/phonenumbers/logger_test.cc"
+  "test/phonenumbers/matcher_test.cc"
   "test/phonenumbers/phonenumberutil_test.cc"
   "test/phonenumbers/regexp_adapter_test.cc"
   "test/phonenumbers/regexp_cache_test.cc"

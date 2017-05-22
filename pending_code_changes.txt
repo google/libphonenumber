@@ -1,5 +1,6 @@
 Code changes:
- - PhoneNumberUtil.canBeInternationallyDialled() API is made public (in
-   Java and CPP) now as it is useful for clients if they want to make
-   sure they only allow internationally-accessible numbers for a
-   particular use-case. In JS this API is already public. 
+ - Add canBeInternationallyDialled() public API in Java and C++ PhoneNumberUtil.
+   This was already in JS.
+Build changes:
+ - When compiling binary metadata from XML metadata, we no longer set the
+   national number pattern  to "NA" for non-existent data.

@@ -263,8 +263,9 @@ function testGetInstanceLoadUSMetadata() {
                metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('900\\d{7}',
                metadata.getPremiumRate().getNationalNumberPattern());
-  // No shared-cost data is available, so it should be initialised to 'NA'.
-  assertEquals('NA', metadata.getSharedCost().getNationalNumberPattern());
+  // No shared-cost data is available, so its national number data should not be
+  // set.
+  assertFalse(metadata.getSharedCost().hasNationalNumberPattern());
 }
 
 function testGetInstanceLoadDEMetadata() {

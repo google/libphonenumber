@@ -285,8 +285,7 @@ bool DescHasData(const PhoneNumberDesc& desc) {
   // since if this is the only thing that's present we don't really support the
   // type at all: no type-specific methods will work with only this data.
   return desc.has_example_number() || DescHasPossibleNumberData(desc) ||
-         (desc.has_national_number_pattern() &&
-          !(desc.national_number_pattern() == "NA"));
+         desc.has_national_number_pattern();
 }
 
 // Returns the types we have metadata for based on the PhoneMetadata object
