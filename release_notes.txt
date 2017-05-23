@@ -8,8 +8,7 @@ Build changes:
 Metadata changes:
  - Updated phone metadata for region code(s): BF, GB, IL, IM, MQ, SL, US, VN
  - Updated short number metadata for region code(s): BO, BR
- - New geocoding data for country calling code(s): 1332 (en)
- - Updated geocoding data for country calling code(s): 84 (en, vi)
+ - Updated geocoding data for country calling code(s): 1 (en), 84 (en, vi)
  - New carrier data for country calling code(s): 596 (en)
  - Updated carrier data for country calling code(s): 232 (en), 972 (en)
 
