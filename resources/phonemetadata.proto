@@ -146,13 +146,10 @@ message PhoneMetadata {
   // The general_desc contains information which is a superset of descriptions
   // for all types of phone numbers. If any element is missing in the
   // description of a specific type in the XML file, the element will inherit
-  // from its counterpart in the general_desc. Every locale is assumed to have
-  // fixed line and mobile numbers - if these types are missing in the
-  // PhoneNumberMetadata XML file, they will inherit all fields from the
-  // general_desc. For all other types that are generally relevant to normal
-  // phone numbers, if the whole type is missing in the PhoneNumberMetadata XML
-  // file, it will be given a national_number_pattern of "NA" and a
-  // possible_number_pattern of "NA".
+  // from its counterpart in the general_desc. For all types that are generally
+  // relevant to normal phone numbers, if the whole type is missing in the
+  // PhoneNumberMetadata XML file, it will not have national number data, and
+  // the possible lengths will be [-1].
   optional PhoneNumberDesc general_desc = 1;
   optional PhoneNumberDesc fixed_line = 2;
   optional PhoneNumberDesc mobile = 3;

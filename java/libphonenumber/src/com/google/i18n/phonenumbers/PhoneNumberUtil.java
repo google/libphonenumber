@@ -1001,7 +1001,7 @@ public class PhoneNumberUtil {
     // support the type at all: no type-specific methods will work with only this data.
     return desc.hasExampleNumber()
         || descHasPossibleNumberData(desc)
-        || (desc.hasNationalNumberPattern() && !desc.getNationalNumberPattern().equals("NA"));
+        || desc.hasNationalNumberPattern();
   }
 
   /**

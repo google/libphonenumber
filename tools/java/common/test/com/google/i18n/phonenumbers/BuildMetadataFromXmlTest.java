@@ -443,7 +443,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "invalidType");
-    assertEquals("NA", phoneNumberDesc.getNationalNumberPattern());
+    assertFalse(phoneNumberDesc.hasNationalNumberPattern());
   }
 
   public void testProcessPhoneNumberDescElementOverridesGeneralDesc()

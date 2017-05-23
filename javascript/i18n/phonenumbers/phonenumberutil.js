@@ -1387,8 +1387,7 @@ i18n.phonenumbers.PhoneNumberUtil.descHasData_ = function(desc) {
   // type at all: no type-specific methods will work with only this data.
   return desc != null && (desc.hasExampleNumber() ||
       i18n.phonenumbers.PhoneNumberUtil.descHasPossibleNumberData_(desc) ||
-      (desc.hasNationalNumberPattern &&
-       desc.getNationalNumberPatternOrDefault() != 'NA'));
+      desc.hasNationalNumberPattern());
 };
 
 

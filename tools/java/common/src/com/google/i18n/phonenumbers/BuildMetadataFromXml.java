@@ -428,8 +428,9 @@ public class BuildMetadataFromXml {
    * missing. For all other types, the parent description will only be used to fill in missing
    * components if the type has a partial definition. For example, if no "tollFree" element exists,
    * we assume there are no toll free numbers for that locale, and return a phone number description
-   * with "NA" for both the national and possible number patterns. Note that the parent description
-   * must therefore already be processed before this method is called on any child elements.
+   * with no national number data and [-1] for the possible lengths. Note that the parent
+   * description must therefore already be processed before this method is called on any child
+   * elements.
    *
    * @param parentDesc  a generic phone number description that will be used to fill in missing
    *     parts of the description, or null if this is the root node. This must be processed before
@@ -446,7 +447,6 @@ public class BuildMetadataFromXml {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
     PhoneNumberDesc.Builder numberDesc = PhoneNumberDesc.newBuilder();
     if (phoneNumberDescList.getLength() == 0) {
-      numberDesc.setNationalNumberPattern("NA");
       // -1 will never match a possible phone number length, so is safe to use to ensure this never
       // matches. We don't leave it empty, since for compression reasons, we use the empty list to
       // mean that the generalDesc possible lengths apply.
