@@ -27,6 +27,34 @@
 namespace i18n {
 namespace phonenumbers {
 
+namespace {
+
+  void ExpectMatched(
+      const MatcherApi& matcher,
+      const string& number,
+      const PhoneNumberDesc& desc) {
+    EXPECT_TRUE(matcher.MatchNationalNumber(number, desc, false));
+    EXPECT_TRUE(matcher.MatchNationalNumber(number, desc, true));
+  }
+
+  void ExpectInvalid(
+      const MatcherApi& matcher,
+      const string& number,
+      const PhoneNumberDesc& desc) {
+    EXPECT_FALSE(matcher.MatchNationalNumber(number, desc, false));
+    EXPECT_FALSE(matcher.MatchNationalNumber(number, desc, true));
+  }
+
+  void ExpectTooLong(
+      const MatcherApi& matcher,
+      const string& number,
+      const PhoneNumberDesc& desc) {
+    EXPECT_FALSE(matcher.MatchNationalNumber(number, desc, false));
+    EXPECT_TRUE(matcher.MatchNationalNumber(number, desc, true));
+  }
+
+}  // namespace
+
 class MatcherTest : public testing::Test {
  protected:
   void CheckMatcherBehavesAsExpected(const MatcherApi& matcher) const {
@@ -69,30 +97,6 @@ class MatcherTest : public testing::Test {
       desc.set_national_number_pattern(national_number_pattern);
     }
     return desc;
-  }
-
-  void ExpectMatched(
-      const MatcherApi& matcher,
-      const string& number,
-      const PhoneNumberDesc& desc) const {
-    EXPECT_TRUE(matcher.MatchNationalNumber(number, desc, false));
-    EXPECT_TRUE(matcher.MatchNationalNumber(number, desc, true));
-  }
-
-  void ExpectInvalid(
-      const MatcherApi& matcher,
-      const string& number,
-      const PhoneNumberDesc& desc) const {
-    EXPECT_FALSE(matcher.MatchNationalNumber(number, desc, false));
-    EXPECT_FALSE(matcher.MatchNationalNumber(number, desc, true));
-  }
-
-  void ExpectTooLong(
-      const MatcherApi& matcher,
-      const string& number,
-      const PhoneNumberDesc& desc) const {
-    EXPECT_FALSE(matcher.MatchNationalNumber(number, desc, false));
-    EXPECT_TRUE(matcher.MatchNationalNumber(number, desc, true));
   }
 };
 
