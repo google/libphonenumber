@@ -1,6 +1,1 @@
-Code changes:
- - Add canBeInternationallyDialled() public API in Java and C++ PhoneNumberUtil.
-   This was already in JS.
-Build changes:
- - When compiling binary metadata from XML metadata, we no longer set the
-   national number pattern  to "NA" for non-existent data.
+
