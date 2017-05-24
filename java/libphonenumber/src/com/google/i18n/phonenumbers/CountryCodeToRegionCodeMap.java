@@ -593,6 +593,10 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("BA");
     countryCodeToRegionCodeMap.put(387, listWithRegionCode);
+    
+    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode.add("001");
+    countryCodeToRegionCodeMap.put(388, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("MK");
