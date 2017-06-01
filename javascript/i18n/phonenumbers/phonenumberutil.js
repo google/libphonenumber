@@ -2437,7 +2437,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 
 
 /**
- * Gets the national significant number of the a phone number. Note a national
+ * Gets the national significant number of a phone number. Note a national
  * significant number doesn't contain a national prefix or any formatting.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number for which the
