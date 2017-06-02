@@ -2860,10 +2860,7 @@
       <mobile>
         <nationalNumberPattern>
           (?:
-            5(?:
-              [15]\d|
-              6[0-4]
-            )|
+            5[156]\d|
             [67]\d{2}
           )\d{5}
         </nationalNumberPattern>
@@ -7996,31 +7993,25 @@
         <sourceUrl>http://www.numberingplans.com/?page=dialling&amp;sub=areacodes&amp;ac=GB</sourceUrl>
       </references>
       <availableFormats>
-        <!-- 7ddd (not 70, 76) with 10 digits. Includes 76242 for IM. -->
+        <!-- 7ddd (not 70, 76) with 10 digits. Includes 7624 for IM. -->
         <numberFormat pattern="(7\d{3})(\d{6})">
           <leadingDigits>
             7(?:
-              [1-5789]|
+              [1-57-9]|
               62
             )
           </leadingDigits>
           <leadingDigits>
             7(?:
-              [1-5789]|
+              [1-57-9]|
               624
-            )
-          </leadingDigits>
-          <leadingDigits>
-            7(?:
-              [1-5789]|
-              6242
             )
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- 2d, 55, 56, 70 and 76 pager numbers (excludes 76242) with 10 digits. We aren't
+        <!-- 2d, 55, 56, 70 and 76 pager numbers (excludes 7624) with 10 digits. We aren't
              fine-grained about 76 in the leading digits here for easier maintenance, and this works
-             because the above format applies to 76242 due to ordering. -->
+             because the above format applies to 7624 due to ordering. -->
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>
             2|
@@ -8491,18 +8482,15 @@
         <!-- 76 with 10 digits; excluding ranges used in IM. -->
         <nationalNumberPattern>
           76(?:
-            0[012]\d|
-            2(?:
-              [356]\d|
-              4[013-9]
-            )|
-            4[0134]\d|
-            5[49]\d|
-            6[0-369]\d|
-            77\d|
-            81\d|
-            9[39]\d
-          )\d{5}
+            0[012]|
+            2[356]|
+            4[0134]|
+            5[49]|
+            6[0-369]|
+            77|
+            81|
+            9[39]
+          )\d{6}
         </nationalNumberPattern>
         <possibleLengths national="10"/>
         <exampleNumber>7640123456</exampleNumber>
@@ -10776,7 +10764,7 @@
               3[2-4]|
               4[45]|
               5[5689]|
-              6[67]|
+              6[6-8]|
               7[0178]|
               8[6-9]|
               9[2-9]
@@ -10898,7 +10886,7 @@
         <exampleNumber>7924123456</exampleNumber>
       </mobile>
       <pager>
-        <nationalNumberPattern>76242\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>7624[0-4689]\d{5}</nationalNumberPattern>
         <possibleLengths national="10"/>
         <exampleNumber>7624212345</exampleNumber>
       </pager>
@@ -17211,12 +17199,13 @@
         <exampleNumber>596301234</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- 6965[2-4] were found in use online. -->
+        <!-- Ranges are updated based on below official page. Search using prefix 0696X. Ex: 06965
+             http://www.arcep.fr/index.php?id=2137&amp;bloc=0596&amp;CMD=RESULTS_NUMEROTATION -->
         <nationalNumberPattern>
           696(?:
-            [0-479]\d|
-            5[0-4]|
-            8[0-689]
+            [0-47-9]\d|
+            5[0-6]|
+            6[0-4]
           )\d{4}
         </nationalNumberPattern>
         <possibleLengths national="9"/>
@@ -22081,7 +22070,7 @@
             5[05]|
             66|
             7[6-9]|
-            88|
+            8[08]|
             99
           )\d{6}
         </nationalNumberPattern>
@@ -24114,7 +24103,7 @@
               0[1-57-9]|
               1[02-9]|
               2[0135]|
-              3[014679]|
+              3[0-24679]|
               4[67]|
               5[12]|
               6[014]|
@@ -24207,7 +24196,7 @@
               0[1-57-9]|
               1[02-9]|
               2[0135]|
-              3[014679]|
+              3[0-24679]|
               4[67]|
               5[12]|
               6[014]|
@@ -25262,7 +25251,12 @@
         </numberFormat>
         <numberFormat pattern="([235-7]\d{2})(\d{4})(\d{3})">
           <leadingDigits>
-            2[0-489]|
+            2(?:
+              [0-489]|
+              5[124-9]|
+              6[0-39]|
+              7[0-7]
+            )|
             3[25]|
             50|
             65|
@@ -25318,7 +25312,11 @@
       <!-- The fixed-line area codes include the new area codes assigned 2017-04-15 as per
            ITU notification 25.XI.2016, along with all the old area codes. The old area codes
            2[48][0], 2[5-7], 3[0136], 32[01], 35[01], 7[4679] and 7[18][01] will no longer be
-           operational as of 2017-05-14. -->
+           operational as of 2017-05-14.
+           The fixed-line area codes include the new area codes assigned 2017-06-17 as per
+           ITU notification 25.XI.2016, along with all the old area codes. The old area codes 4,
+           50[01], 5[5-9], 6[0-46-8], 65[01], 7[0235] and 8 will no longer be operational as of
+           2017-07-16. -->
       <fixedLine>
         <nationalNumberPattern>
           (?:
@@ -25327,8 +25325,10 @@
               1[0-689]|
               2[0-25-9]|
               3[2-9]|
-              [48][01]|
-              [5-7]|
+              [48]\d|
+              5[124-9]?|
+              6[0-39]?|
+              7[0-7]?|
               9[0-4679]
             )\d|
             3(?:
