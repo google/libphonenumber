@@ -1,3 +1,17 @@
+May 23, 2017: v8.5.0
+Code changes:
+ - Add canBeInternationallyDialled() public API in Java and C++ PhoneNumberUtil.
+   This was already in JS.
+Build changes:
+ - When compiling binary metadata from XML metadata, we no longer set the
+   national number pattern  to "NA" for non-existent data.
+Metadata changes:
+ - Updated phone metadata for region code(s): BF, GB, IL, IM, MQ, SL, US, VN
+ - Updated short number metadata for region code(s): BO, BR
+ - Updated geocoding data for country calling code(s): 1 (en), 84 (en, vi)
+ - New carrier data for country calling code(s): 596 (en)
+ - Updated carrier data for country calling code(s): 232 (en), 972 (en)
+
 May 10, 2017: v8.4.3
 Metadata changes:
  - Updated phone metadata for region code(s):

@@ -1329,8 +1329,11 @@
         <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>11[089]</nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <nationalNumberPattern>
+          11[089]|
+          40404
+        </nationalNumberPattern>
+        <possibleLengths national="3,5"/>
         <exampleNumber>110</exampleNumber>
       </shortCode>
       <emergency>
@@ -1423,7 +1426,7 @@
                 9[1359]
               )
             )|
-            1[5-8]|
+            1[25-8]|
             2[35789]|
             3(?:
               [024568]|
