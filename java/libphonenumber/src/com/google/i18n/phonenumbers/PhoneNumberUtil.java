@@ -307,8 +307,8 @@ public class PhoneNumberUtil {
   private static final String DEFAULT_EXTN_PREFIX = " ext. ";
 
   // Pattern to capture digits used in an extension. Places a maximum length of "7" for an
-  // extension.
-  private static final String CAPTURING_EXTN_DIGITS = "(" + DIGITS + "{1,7})";
+  // extension. Commas are allowed, as long they are not the trailing symbol
+  private static final String CAPTURING_EXTN_DIGITS = "([\\p{Nd},]{0,6}\\p{Nd})";
   // Regexp of all possible ways to write extensions, for use when parsing. This will be run as a
   // case-insensitive regexp match. Wide character versions are also provided after each ASCII
   // version.
