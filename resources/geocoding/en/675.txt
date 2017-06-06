@@ -12,8 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# http://nicta.gov.pg/component/simplefilemanager/?task=download&amp;id=233
-# TODO: Add complete geocoding details from above official doc.
+# Prefixes from National Numbering Plan for Papua New Guinea, found at
+# http://nicta.gov.pg, 2016 numbering scheme (page 21)
 
+# Note NCD refers to the national capital district (containing Port Moresby)
 
+6753|NCD
+67542|Madang
+67545|Sepik
 67547|Morobe
+67553|Highlands
+67554|Highlands
+67562|Oro
+67564|MP/Gulf/Tabubil/Kiunga
+6759|Islands

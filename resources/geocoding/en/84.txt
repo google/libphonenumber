@@ -49,7 +49,6 @@
 84239|Ha Tinh province
 8424|Ha Noi City
 84240|Bac Giang province
-84241|Bac Ninh province
 8425|Lang Son province
 84251|Dong Nai province
 84252|Binh Thuan province
@@ -76,7 +75,6 @@
 84277|Dong Thap province
 8428|Ho Chi Minh City
 84280|Thai Nguyen province
-84281|Bac Kan province
 84290|Ca Mau province
 84291|Bac Lieu province
 84292|Can Tho City

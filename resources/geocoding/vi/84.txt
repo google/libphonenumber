@@ -53,7 +53,6 @@
 84239|Hà Tĩnh
 8424|Thủ đô Hà Nội
 84240|Bắc Giang
-84241|Bắc Ninh
 8425|Lạng Sơn
 84251|Đồng Nai
 84252|Bình Thuận
@@ -80,7 +79,6 @@
 84277|Đồng Tháp
 8428|Thành phố Hồ Chí Minh
 84280|Thái Nguyên
-84281|Bắc Kạn
 8429|Yên Bái
 84290|Cà Mau
 84291|Bạc Liêu
