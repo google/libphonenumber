@@ -1803,7 +1803,7 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Gets the national significant number of the a phone number. Note a national significant number
+   * Gets the national significant number of a phone number. Note a national significant number
    * doesn't contain a national prefix or any formatting.
    *
    * @param number  the phone number for which the national significant number is needed
