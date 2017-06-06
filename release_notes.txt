@@ -7,7 +7,7 @@ Metadata changes:
    84 (en, vi), 263 (en), 675 (en)
  - New carrier data for country calling code(s): 262 (en), 590 (en), 594 (en)
  - Updated carrier data for country calling code(s):
-   48 (en), 387 (en), 675 (en), 1671 (en)
+   48 (en), 387 (en), 675 (en), 1 (en)
 
 May 23, 2017: v8.5.0
 Code changes:
