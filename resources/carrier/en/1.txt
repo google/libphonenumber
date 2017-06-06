@@ -12,6 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Sources:
+# American Samoa: http://www.itu.int/oth/T0202000004/en
+# Bahamas: http://www.itu.int/oth/T0202000010/en
+# Barbados: http://www.itu.int/oth/T0202000013/en
+# Bermuda: http://www.itu.int/oth/T0202000018/en
+# British Virgin Islands: http://www.itu.int/oth/T020200001E/en
+# Dominica: http://www.itu.int/oth/T020200003B/en
+# Dominican Rep.: http://www.itu.int/oth/T020200003C/en
+# Grenada: http://www.itu.int/oth/T0202000057/en
+# Guam: Carrier IR21 docs
+# Jamaica: http://www.itu.int/oth/T020200006C/en
+# Puerto Rico: http://www.itu.int/oth/T02020000AA/en
+# Saint Kitts & Nevis: https://www.itu.int/oth/T02020000B0/en
+# Saint Lucia: http://www.itu.int/oth/T02020000B1/en
+# Saint Vincent & the Grenadines: http://www.itu.int/oth/T02020000B3/en
+# Trinidad & Tobago: http://www.itu.int/oth/T02020000D4/en
+# Turks & Caicos: http://www.itu.int/oth/T02020000D8/en
+
 124235|BaTelCo
 124245|BaTelCo
 124255|BaTelCo
@@ -96,10 +114,18 @@
 164933|DIGICEL
 164934|DIGICEL
 164943|Islandcom
+1671480|GTA
+1671482|GTA
+1671483|GTA
+1671486|GTA
+1671487|GTA
+1671488|GTA
+1671489|GTA
 1671747|PTI PACIFICA
 1671838|i CAN_GSM
 1671848|i CAN_GSM
 1671858|i CAN_GSM
+1671864|GTA
 1671868|Choice Phone
 1671878|Choice Phone
 1671888|Choice Phone

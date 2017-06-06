@@ -1,3 +1,14 @@
+Jun 06, 2017: v8.5.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BA, BL, GB, GF, GP, GU, KW, MF, PG, PL, RE, VN, YT, ZW
+ - Updated short number metadata for region code(s): IR, PG
+ - Updated geocoding data for country calling code(s):
+   84 (en, vi), 263 (en), 675 (en)
+ - New carrier data for country calling code(s): 262 (en), 590 (en), 594 (en)
+ - Updated carrier data for country calling code(s):
+   48 (en), 387 (en), 675 (en), 1671 (en)
+
 May 23, 2017: v8.5.0
 Code changes:
  - Add canBeInternationallyDialled() public API in Java and C++ PhoneNumberUtil.

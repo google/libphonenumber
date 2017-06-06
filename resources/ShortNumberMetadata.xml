@@ -5393,30 +5393,110 @@
 
     <!-- Iran, Islamic Republic of -->
     <!-- http://www.itu.int/oth/T0202000066/en -->
+    <!-- https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=111 -->
+    <!-- http://118.tct.ir/necnum.htm -->
     <territory id="IR">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            1[025]|
-            25
+            1[0-68]|
+            2[0-59]|
+            3[346-8]|
+            4(?:
+              [0147]|
+              [289]0
+            )|
+            5(?:
+              0[14]|
+              1[02479]|
+              2[0-3]|
+              39|
+              [49]0|
+              65
+            )|
+            6(?:
+              [16]6|
+              [27]|
+              90
+            )|
+            8(?:
+              03|
+              1[18]|
+              22|
+              3[37]|
+              4[28]|
+              88|
+              99
+            )|
+            9[0-579]
+          )|
+          20(?:
+            00|
+            1(?:
+              [038]|
+              1[079]|
+              26|
+              9[69]
+            )|
+            2[01]|
+            90
+          )|
+          9(?:
+            11|
+            6(?:
+              0[12]|
+              2[16-8]|
+              3(?:
+                08|
+                [14]5|
+                [23]|
+                66
+              )|
+              4(?:
+                0|
+                80
+              )|
+              5[01]|
+              6[89]|
+              86|
+              9[19]
+            )
           )
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <tollFree>
+        <!-- 11X, 12X and 19X are toll-free as these are public and government services. -->
+        <nationalNumberPattern>1[129]\d</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>123</exampleNumber>
+      </tollFree>
       <emergency>
         <nationalNumberPattern>
           1(?:
             1[025]|
             25
-          )
+          )|
+          911
         </nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          1(?:
+            16|
+            2[03]|
+            47
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>116</exampleNumber>
+      </expandedEmergency>
     </territory>
 
     <!-- Iceland -->
@@ -8287,20 +8367,35 @@
     <!-- http://en.wikipedia.org/wiki/%2B675 -->
     <territory id="PG">
       <generalDesc>
-        <nationalNumberPattern>0\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>
+          0\d{2}|
+          1\d{2,6}
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>000</nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <nationalNumberPattern>
+          000|
+          1(?:
+            1[01]|
+            5\d{2}|
+            6\d{2,5}
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="[3-7]"/>
         <exampleNumber>000</exampleNumber>
       </shortCode>
       <emergency>
         <!-- http://www.pngbd.com/emergency.php has been used, excluding fixed-line phone-numbers.
              -->
-        <nationalNumberPattern>000</nationalNumberPattern>
+        <nationalNumberPattern>000|11[01]</nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>000</exampleNumber>
       </emergency>
+      <smsServices>
+        <nationalNumberPattern>16\d{2,5}</nationalNumberPattern>
+        <possibleLengths national="[4-7]"/>
+        <exampleNumber>1612</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Philippines -->
