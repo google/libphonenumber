@@ -25,86 +25,106 @@ option optimize_for = LITE_RUNTIME;
 package i18n.phonenumbers;
 
 message PhoneNumber {
-// The country calling code for this number, as defined by the International Telecommunication Union
-// (ITU). For example, this would be 1 for NANPA countries, and 33 for France.
+  // The country calling code for this number, as defined by the International
+  // Telecommunication Union (ITU). For example, this would be 1 for NANPA
+  // countries, and 33 for France.
   required int32 country_code = 1;
 
-// National (significant) Number is defined in International Telecommunication Union (ITU)
-// Recommendation E.164. It is a language/country-neutral representation of a phone number at a
-// country level. For countries which have the concept of an "area code" or "national destination
-// code", this is included in the National (significant) Number. Although the ITU says the maximum
-// length should be 15, we have found longer numbers in some countries e.g. Germany.
-// Note that the National (significant) Number does not contain the National(trunk) prefix.
-// Obviously, as a uint64, it will never contain any formatting (hyphens, spaces, parentheses), nor
-// any alphanumeric spellings.
+  // The National (significant) Number, as defined in International
+  // Telecommunication Union (ITU) Recommendation E.164, without any leading
+  // zero. The leading-zero is stored separately if required, since this is an
+  // uint64 and hence cannot store such information. Do not use this field
+  // directly: if you want the national significant number, call the
+  // getNationalSignificantNumber method of PhoneNumberUtil.
+  //
+  // For countries which have the concept of an "area code" or "national
+  // destination code", this is included in the National (significant) Number.
+  // Although the ITU says the maximum length should be 15, we have found longer
+  // numbers in some countries e.g. Germany.
+  // Note that the National (significant) Number does not contain the National
+  // (trunk) prefix. Obviously, as a uint64, it will never contain any
+  // formatting (hyphens, spaces, parentheses), nor any alphanumeric spellings.
   required uint64 national_number = 2;
 
-// Extension is not standardized in ITU recommendations, except for being defined as a series of
-// numbers with a maximum length of 40 digits. It is defined as a string here to accommodate for the
-// possible use of a leading zero in the extension (organizations have complete freedom to do so,
-// as there is no standard defined). However, only ASCII digits should be stored here.
+  // Extension is not standardized in ITU recommendations, except for being
+  // defined as a series of numbers with a maximum length of 40 digits. It is
+  // defined as a string here to accommodate for the possible use of a leading
+  // zero in the extension (organizations have complete freedom to do so, as
+  // there is no standard defined). Other than digits, some other dialling
+  // characters such as "," (indicating a wait) may be stored here.
   optional string extension = 3;
 
-// In some countries, the national (significant) number starts with one or more "0"s without this
-// being a national prefix or trunk code of some kind. For example, the leading zero in the national
-// (significant) number of an Italian phone number indicates the number is a fixed-line number.
-// There have been plans to migrate fixed-line numbers to start with the digit two since December
-// 2000, but it has not happened yet. See http://en.wikipedia.org/wiki/%2B39 for more details.
-//
-// These fields can be safely ignored (there is no need to set them) for most countries. Some
-// limited number of countries behave like Italy - for these cases, if the leading zero(s) of a
-// number would be retained even when dialling internationally, set this flag to true, and also
-// set the number of leading zeros.
-//
-// Clients who use the parsing functionality of the i18n phone number libraries
-// will have these fields set if necessary automatically.
+  // In some countries, the national (significant) number starts with one or
+  // more "0"s without this being a national prefix or trunk code of some kind.
+  // For example, the leading zero in the national (significant) number of an
+  // Italian phone number indicates the number is a fixed-line number.  There
+  // have been plans to migrate fixed-line numbers to start with the digit two
+  // since December 2000, but it has not happened yet. See
+  // http://en.wikipedia.org/wiki/%2B39 for more details.
+  //
+  // These fields can be safely ignored (there is no need to set them) for most
+  // countries. Some limited number of countries behave like Italy - for these
+  // cases, if the leading zero(s) of a number would be retained even when
+  // dialling internationally, set this flag to true, and also set the number of
+  // leading zeros.
+  //
+  // Clients who use the parsing or conversion functionality of the i18n phone
+  // number libraries will have these fields set if necessary automatically.
   optional bool italian_leading_zero = 4;
   optional int32 number_of_leading_zeros = 8 [ default = 1 ];
 
-// The next few fields are non-essential fields for a phone number. They retain extra information
-// about the form the phone number was in when it was provided to us to parse. They can be safely
-// ignored by most clients.
+  // The next few fields are non-essential fields for a phone number. They
+  // retain extra information about the form the phone number was in when it was
+  // provided to us to parse. They can be safely ignored by most clients. To
+  // populate them, call parseAndKeepRawInput on PhoneNumberUtil.
 
-// This field is used to store the raw input string containing phone numbers before it was
-// canonicalized by the library. For example, it could be used to store alphanumerical numbers
-// such as "1-800-GOOG-411".
+  // This field is used to store the raw input string containing phone numbers
+  // before it was canonicalized by the library. For example, it could be used
+  // to store alphanumerical numbers such as "1-800-GOOG-411".
   optional string raw_input = 5;
 
-// The source from which the country_code is derived. This is not set in the general parsing method,
-// but in the method that parses and keeps raw_input. New fields could be added upon request.
+  // The source from which the country_code is derived. This is not set in the
+  // general parsing method, but in the method that parses and keeps raw_input.
+  // New fields could be added upon request.
   enum CountryCodeSource {
-    // The country_code is derived based on a phone number with a leading "+", e.g. the French
-    // number "+33 1 42 68 53 00".
+    // The country_code is derived based on a phone number with a leading "+",
+    // e.g. the French number "+33 1 42 68 53 00".
     FROM_NUMBER_WITH_PLUS_SIGN = 1;
 
-    // The country_code is derived based on a phone number with a leading IDD, e.g. the French
-    // number "011 33 1 42 68 53 00", as it is dialled from US.
+    // The country_code is derived based on a phone number with a leading IDD,
+    // e.g. the French number "011 33 1 42 68 53 00", as it is dialled from US.
     FROM_NUMBER_WITH_IDD = 5;
 
-    // The country_code is derived based on a phone number without a leading "+", e.g. the French
-    // number "33 1 42 68 53 00" when defaultCountry is supplied as France.
+    // The country_code is derived based on a phone number without a leading
+    // "+", e.g. the French number "33 1 42 68 53 00" when defaultCountry is
+    // supplied as France.
     FROM_NUMBER_WITHOUT_PLUS_SIGN = 10;
 
-    // The country_code is derived NOT based on the phone number itself, but from the defaultCountry
-    // parameter provided in the parsing function by the clients. This happens mostly for numbers
-    // written in the national format (without country code). For example, this would be set when
-    // parsing the French number "01 42 68 53 00", when defaultCountry is supplied as France.
+    // The country_code is derived NOT based on the phone number itself, but
+    // from the defaultCountry parameter provided in the parsing function by the
+    // clients. This happens mostly for numbers written in the national format
+    // (without country code). For example, this would be set when parsing the
+    // French number "01 42 68 53 00", when defaultCountry is supplied as
+    // France.
     FROM_DEFAULT_COUNTRY = 20;
   }
 
-// The source from which the country_code is derived.
+  // The source from which the country_code is derived.
   optional CountryCodeSource country_code_source = 6;
 
-// The carrier selection code that is preferred when calling this phone number domestically. This
-// also includes codes that need to be dialed in some countries when calling from landlines to
-// mobiles or vice versa. For example, in Columbia, a "3" needs to be dialed before the phone number
-// itself when calling from a mobile phone to a domestic landline phone and vice versa.
-//
-// Note this is the "preferred" code, which means other codes may work as well.
+  // The carrier selection code that is preferred when calling this phone number
+  // domestically. This also includes codes that need to be dialed in some
+  // countries when calling from landlines to mobiles or vice versa. For
+  // example, in Columbia, a "3" needs to be dialed before the phone number
+  // itself when calling from a mobile phone to a domestic landline phone and
+  // vice versa.
+  //
+  // Note this is the "preferred" code, which means other codes may work as
+  // well.
   optional string preferred_domestic_carrier_code = 7;
 }
 
-// Examples
+// Examples:
 //
 // Google MTV, +1 650-253-0000, (650) 253-0000
 // country_code: 1
