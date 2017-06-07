@@ -104,7 +104,9 @@ public class PrefixFileReader {
    * Returns a text description in the given language for the given phone number.
    *
    * @param number  the phone number for which we want to get a text description
-   * @param lang  two or three-letter lowercase ISO language code as defined by ISO 639
+   * @param language  two or three-letter lowercase ISO language codes as defined by ISO 639. Note
+   *     that where two different language codes exist (e.g. 'he' and 'iw' for Hebrew) we use the
+   *     one that Java/Android canonicalized on ('iw' in this case).
    * @param script  four-letter titlecase (the first letter is uppercase and the rest of the letters
    *     are lowercase) ISO script code as defined in ISO 15924
    * @param region  two-letter uppercase ISO country code as defined by ISO 3166-1
@@ -112,18 +114,18 @@ public class PrefixFileReader {
    *     string if a description is not available
    */
   public String getDescriptionForNumber(
-      PhoneNumber number, String lang, String script, String region) {
+      PhoneNumber number, String language, String script, String region) {
     int countryCallingCode = number.getCountryCode();
     // As the NANPA data is split into multiple files covering 3-digit areas, use a phone number
     // prefix of 4 digits for NANPA instead, e.g. 1650.
     int phonePrefix = (countryCallingCode != 1)
         ? countryCallingCode : (1000 + (int) (number.getNationalNumber() / 10000000));
     PhonePrefixMap phonePrefixDescriptions =
-        getPhonePrefixDescriptions(phonePrefix, lang, script, region);
+        getPhonePrefixDescriptions(phonePrefix, language, script, region);
     String description = (phonePrefixDescriptions != null)
         ? phonePrefixDescriptions.lookup(number) : null;
     // When a location is not available in the requested language, fall back to English.
-    if ((description == null || description.length() == 0) && mayFallBackToEnglish(lang)) {
+    if ((description == null || description.length() == 0) && mayFallBackToEnglish(language)) {
       PhonePrefixMap defaultMap = getPhonePrefixDescriptions(phonePrefix, "en", "", "");
       if (defaultMap == null) {
         return "";
