@@ -145,7 +145,9 @@ public class MappingFileProvider implements Externalizable {
    *
    * @param countryCallingCode  the country calling code of phone numbers which the data file
    *     contains
-   * @param language  two-letter lowercase ISO language codes as defined by ISO 639-1
+   * @param language  two or three-letter lowercase ISO language codes as defined by ISO 639. Note
+   *     that where two different language codes exist (e.g. 'he' and 'iw' for Hebrew) we use the
+   *     one that Java/Android canonicalized on ('iw' in this case).
    * @param script  four-letter titlecase (the first letter is uppercase and the rest of the letters
    *     are lowercase) ISO script codes as defined in ISO 15924
    * @param region  two-letter uppercase ISO country codes as defined by ISO 3166-1

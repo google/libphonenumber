@@ -203,7 +203,7 @@ public class PhoneNumberOfflineGeocoder {
    * @param languageCode  the language code for which the description should be written
    * @param userRegion  the region code for a given user. This region will be omitted from the
    *     description if the phone number comes from this region. It should be a two-letter
-   *     uppercase CLDR region code.
+   *     upper-case CLDR region code.
    * @return  a text description for the given language code for the given phone number, or empty
    *     string if the number passed in is invalid or could belong to multiple countries
    */

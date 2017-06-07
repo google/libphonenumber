@@ -134,7 +134,9 @@ class PhoneNumberOfflineGeocoder {
   // Returns an area-level text description in the given language for the given
   // phone number, or an empty string.
   // lang is a two or three-letter lowercase ISO language code as defined by ISO
-  // 639.
+  // 639. Note that where two different language codes exist (e.g. 'he' and 'iw'
+  // for Hebrew) we use the one that Java/Android canonicalized on ('iw' in this
+  // case).
   // script is a four-letter titlecase (the first letter is uppercase and the
   // rest of the letters are lowercase) ISO script code as defined in ISO 15924.
   // region should be a two-letter uppercase ISO country code as defined by ISO
