@@ -170,6 +170,7 @@ However, we emphasize that these ports are by developers outside the
 libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
+*   PostgreSQL in-database types (pg-libphonenumber): https://github.com/blm768/pg-libphonenumber
 *   C#: https://github.com/aidanbebbington/libphonenumber-csharp
 *   Javascript: If you don't want to use our version, which depends on Closure,
     there are several other options, including
