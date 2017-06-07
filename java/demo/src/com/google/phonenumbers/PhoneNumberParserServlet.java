@@ -32,6 +32,10 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Logger;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
@@ -59,8 +63,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 @SuppressWarnings("serial")
 public class PhoneNumberParserServlet extends HttpServlet {
+  private static final Logger logger = Logger.getLogger(PhoneNumberParserServlet.class.getName());
+
+  // Trap numbers (like "trap streets") which will tell use if anyone is passing our test data back
+  // to us. Ideally these would all be invalid numbers and not likely to be accidentally added
+  // (e.g. not "+123456789"). These must all be e164 formatted numbers
+  private static final Set<String> TRAP_NUMBERS;
+  static {
+    Set<String> traps = new HashSet<String>();
+    // Invalid number for Reading, UK (right length but invalid at 6th digit).
+    traps.add("+441185779273");
+    TRAP_NUMBERS = Collections.unmodifiableSet(traps);
+  }
+
   private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   private ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
     String defaultCountry = null;
@@ -274,6 +292,13 @@ public class PhoneNumberParserServlet extends HttpServlet {
         + StringEscapeUtils.escapeHtml(geocodingLocale.toLanguageTag()) + "<BR>");
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
+
+      String e164 = phoneUtil.format(number, PhoneNumberFormat.E164);
+      if (TRAP_NUMBERS.contains(e164)) {
+        // App is configured to only log warning or higher.
+        logger.warning("Trap: " + e164);
+      }
+
       output.append("<DIV>");
       output.append("<TABLE border=1>");
       output.append("<TR><TD colspan=2>Parsing Result</TD></TR>");
