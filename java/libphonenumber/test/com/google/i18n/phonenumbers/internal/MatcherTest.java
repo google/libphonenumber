@@ -68,17 +68,33 @@ public class MatcherTest extends TestCase {
   }
 
   private void assertMatched(MatcherApi matcher, String number, PhoneNumberDesc desc) {
-    assertTrue(matcher.matchNationalNumber(number, desc, false));
-    assertTrue(matcher.matchNationalNumber(number, desc, true));
+    assertTrue(String.format("%s should have matched %s.", number, toString(desc)),
+        matcher.matchNationalNumber(number, desc, false));
+    assertTrue(String.format("%s should have matched %s.", number, toString(desc)),
+        matcher.matchNationalNumber(number, desc, true));
   }
 
   private void assertInvalid(MatcherApi matcher, String number, PhoneNumberDesc desc) {
-    assertFalse(matcher.matchNationalNumber(number, desc, false));
-    assertFalse(matcher.matchNationalNumber(number, desc, true));
+    assertFalse(String.format("%s should not have matched %s.", number, toString(desc)),
+        matcher.matchNationalNumber(number, desc, false));
+    assertFalse(String.format("%s should not have matched %s.", number, toString(desc)),
+        matcher.matchNationalNumber(number, desc, true));
   }
 
   private void assertTooLong(MatcherApi matcher, String number, PhoneNumberDesc desc) {
-    assertFalse(matcher.matchNationalNumber(number, desc, false));
-    assertTrue(matcher.matchNationalNumber(number, desc, true));
+    assertFalse(String.format("%s should have been too long for %s.", number, toString(desc)),
+        matcher.matchNationalNumber(number, desc, false));
+    assertTrue(String.format("%s should have been too long for %s.", number, toString(desc)),
+        matcher.matchNationalNumber(number, desc, true));
+  }
+
+  private String toString(PhoneNumberDesc desc) {
+    StringBuilder strBuilder = new StringBuilder("pattern: ");
+    if (desc.hasNationalNumberPattern()) {
+      strBuilder.append(desc.getNationalNumberPattern());
+    } else {
+      strBuilder.append("none");
+    }
+    return strBuilder.toString();
   }
 }
