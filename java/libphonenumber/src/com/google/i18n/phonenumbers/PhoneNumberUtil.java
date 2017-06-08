@@ -1155,7 +1155,7 @@ public class PhoneNumberUtil {
   /**
    * Helper function to check the country calling code is valid.
    */
-  private boolean hasValidCountryCallingCode(int countryCallingCode) {
+  public boolean hasValidCountryCallingCode(int countryCallingCode) {
     return countryCallingCodeToRegionCodeMap.containsKey(countryCallingCode);
   }
 
