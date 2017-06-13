@@ -775,14 +775,26 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "  <possibleLengths national=\"13,4\" localOnly=\"6\"/>"
         + "</fixedLine>"
         + "</territory>");
-    PhoneNumberDesc.Builder phoneNumberDesc;
 
-    phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
+    PhoneNumberDesc.Builder fixedLine;
+    PhoneNumberDesc.Builder mobile;
+
+    fixedLine = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, territoryElement, "fixedLine");
-    assertEquals(2, phoneNumberDesc.getPossibleLengthCount());
-    assertEquals(4, phoneNumberDesc.getPossibleLength(0));
-    assertEquals(13, phoneNumberDesc.getPossibleLength(1));
-    assertEquals(1, phoneNumberDesc.getPossibleLengthLocalOnlyCount());
+    mobile = BuildMetadataFromXml.processPhoneNumberDescElement(
+        generalDesc, territoryElement, "mobile");
+
+    assertEquals(2, fixedLine.getPossibleLengthCount());
+    assertEquals(4, fixedLine.getPossibleLength(0));
+    assertEquals(13, fixedLine.getPossibleLength(1));
+    assertEquals(1, fixedLine.getPossibleLengthLocalOnlyCount());
+
+    // We use [-1] to denote that there are no possible lengths; we don't leave it empty, since for
+    // compression reasons, we use the empty list to mean that the generalDesc possible lengths
+    // apply.
+    assertEquals(1, mobile.getPossibleLengthCount());
+    assertEquals(-1, mobile.getPossibleLength(0));
+    assertEquals(0, mobile.getPossibleLengthLocalOnlyCount());
   }
 
   public void testSetPossibleLengthsGeneralDesc_BuiltFromChildElements() throws Exception {
