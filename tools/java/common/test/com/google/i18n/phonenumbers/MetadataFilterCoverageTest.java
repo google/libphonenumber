@@ -16,24 +16,18 @@
 
 package com.google.i18n.phonenumbers;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import junit.framework.TestCase;
 
 /**
  * Tests to ensure that the {@link MetadataFilter} logic over excludable fields cover all applicable
  * fields.
  */
-@RunWith(JUnit4.class)
-public final class MetadataFilterCoverageTest {
+public final class MetadataFilterCoverageTest extends TestCase {
   private static final String CODE;
 
   static {
@@ -52,7 +46,6 @@ public final class MetadataFilterCoverageTest {
     }
   }
 
-  @Test
   public void testCoverageOfExcludableParentFields() {
     for (String field : MetadataFilter.excludableParentFields) {
       String capitalized = Character.toUpperCase(field.charAt(0)) + field.substring(1);
@@ -66,7 +59,6 @@ public final class MetadataFilterCoverageTest {
         MetadataFilter.excludableParentFields.size());
   }
 
-  @Test
   public void testCoverageOfExcludableChildFields() {
     for (String field : MetadataFilter.excludableChildFields) {
       String capitalized = Character.toUpperCase(field.charAt(0)) + field.substring(1);
@@ -79,7 +71,6 @@ public final class MetadataFilterCoverageTest {
         MetadataFilter.excludableChildFields.size());
   }
 
-  @Test
   public void testCoverageOfExcludableChildlessFields() {
     for (String field : MetadataFilter.excludableChildlessFields) {
       String capitalized = Character.toUpperCase(field.charAt(0)) + field.substring(1);
