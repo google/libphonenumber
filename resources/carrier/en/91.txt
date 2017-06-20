@@ -2466,6 +2466,7 @@
 9186374|Reliance Jio
 9186375|Reliance Jio
 9186376|Reliance Jio
+9186377|Idea
 9186378|Reliance Jio
 918638|Reliance Jio
 918639|Reliance Jio
@@ -2503,6 +2504,14 @@
 918668|Reliance Jio
 9186690|Reliance Jio
 9186691|Reliance Jio
+9186692|Idea
+9186693|Idea
+9186694|Idea
+9186695|Idea
+9186696|Idea
+9186697|Idea
+9186698|Idea
+9186699|Idea
 918670|Airtel
 918671|Aircel
 918672|Aircel

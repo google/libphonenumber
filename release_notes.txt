@@ -1,3 +1,13 @@
+Jun 20, 2017: v8.5.2
+Metadata changes:
+ - New alternate formatting data for country calling code(s): 64
+ - Updated phone metadata for region code(s):
+   AL, AX, BR, CM, FI, GE, GI, IE, IN, IR, JO, LA, LR, MK, NZ, PK, SI, TL, UA
+ - Updated short number metadata for region code(s): IR, TH, ZA
+ - New carrier data for country calling code(s): 503 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 213 (en), 386 (en), 389 (en), 509 (en), 995 (en)
+
 Jun 06, 2017: v8.5.1
 Metadata changes:
  - Updated phone metadata for region code(s):
