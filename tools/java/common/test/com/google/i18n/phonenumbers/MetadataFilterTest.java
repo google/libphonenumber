@@ -32,7 +32,7 @@ public class MetadataFilterTest extends TestCase {
   private static final int COUNTRY_CODE = 374;
   private static final String INTERNATIONAL_PREFIX = "0[01]";
   private static final String PREFERRED_INTERNATIONAL_PREFIX = "00";
-  private static final String NATIONAL_NUMBER_PATTERN = "[1-9]\\d{7}";
+  private static final String NATIONAL_NUMBER_PATTERN = "\\d{8}";
   private static final int[] possibleLengths = {8};
   private static final int[] possibleLengthsLocalOnly = {5, 6};
   private static final String EXAMPLE_NUMBER = "10123456";
