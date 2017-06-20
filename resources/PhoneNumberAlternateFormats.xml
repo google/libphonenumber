@@ -1445,7 +1445,7 @@
       </availableFormats>
     </territory>
 
-    <!-- Mexico -->
+    <!-- Mexico (MX) -->
     <territory countryCode="52">
       <availableFormats>
         <numberFormat pattern="([358]\d)(\d{2})(\d{2})(\d{2})(\d{2})">
@@ -1503,6 +1503,26 @@
             5[124679]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
+    <!-- New Zealand (NZ) -->
+    <territory countryCode="64">
+      <availableFormats>
+        <!-- Pattern for fixed-line formats. -->
+        <numberFormat pattern="(\d)(\d{4})(\d{3})">
+          <leadingDigits>
+            [346]|
+            7[2-57-9]|
+            9[1-9]
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <!-- Pattern for premium-rate numbers. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2})">
+          <leadingDigits>90</leadingDigits>
+          <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
     </territory>

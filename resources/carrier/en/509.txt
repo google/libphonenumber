@@ -19,6 +19,10 @@
 50937|Digicel
 50938|Digicel
 50939|Digicel
+50940|Natcom
+50941|Natcom
+50942|Natcom
+50943|Natcom
 50944|Digicel
 50946|Digicel
 50947|Digicel
