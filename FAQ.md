@@ -243,8 +243,8 @@ recommend the following workarounds to support affected users.
     follow these steps:
     *   For raw input strings:
         *   Parse a raw input string into a `PhoneNumber` and follow the next
-            instructions for `PhoneNumber` protos.
-    *   For `PhoneNumber` protos:
+            instructions for `PhoneNumber` objects.
+    *   For `PhoneNumber` objects:
         *   Check that the library validates a `PhoneNumber` as mobile, by
             calling `getNumberType`;
         *   If not, format it in national format and prepend a `9` for Argentina
@@ -255,7 +255,7 @@ recommend the following workarounds to support affected users.
 
 IMPORTANT: Do not add a leading 1 or 9 for displaying or formatting the numbers.
 Depending on the use case, other tokens may be needed. The library will do the
-right thing if the phone number proto is as intended.
+right thing if the phone number object is as intended.
 
 ### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
 
