@@ -153,7 +153,7 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ]
 ,[,,,,,,,,,[-1]
 ]
-,1,,[,,,,,,,,,[-1]
+,,,[,,,,,,,,,[-1]
 ]
 ]
 };

@@ -1537,9 +1537,8 @@ public class PhoneNumberUtil {
    * Formats a phone number using the original phone number format that the number is parsed from.
    * The original format is embedded in the country_code_source field of the PhoneNumber object
    * passed in. If such information is missing, the number will be formatted into the NATIONAL
-   * format by default. When the number contains a leading zero and this is unexpected for this
-   * country, or we don't have a formatting pattern for the number, the method returns the raw input
-   * when it is available.
+   * format by default. When we don't have a formatting pattern for the number, the method returns
+   * the raw input when it is available.
    *
    * Note this method guarantees no digit will be inserted, removed or modified as a result of
    * formatting.
@@ -1550,8 +1549,7 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number in its original number format
    */
   public String formatInOriginalFormat(PhoneNumber number, String regionCallingFrom) {
-    if (number.hasRawInput()
-        && (hasUnexpectedItalianLeadingZero(number) || !hasFormattingPatternForNumber(number))) {
+    if (number.hasRawInput() !hasFormattingPatternForNumber(number)) {
       // We check if we have the formatting pattern because without that, we might format the number
       // as a group without national prefix.
       return number.getRawInput();

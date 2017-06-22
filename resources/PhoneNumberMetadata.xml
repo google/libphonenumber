@@ -77,7 +77,6 @@
     <!ATTLIST territory preferredExtnPrefix CDATA #IMPLIED>
     <!ATTLIST territory nationalPrefixFormattingRule CDATA #IMPLIED>
     <!ATTLIST territory nationalPrefixOptionalWhenFormatting (true) #IMPLIED>
-    <!ATTLIST territory leadingZeroPossible (true) #IMPLIED>
     <!ATTLIST territory carrierCodeFormattingRule CDATA #IMPLIED>
     <!ATTLIST territory mobileNumberPortableRegion (true) #IMPLIED>
     <!ATTLIST possibleLengths national CDATA #REQUIRED>
@@ -4161,7 +4160,7 @@
     <!-- Belize -->
     <!-- The trunk prefix, formally 0, was dropped in the last reorganisation of the numbering plan.
          -->
-    <territory id="BZ" countryCode="501" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="BZ" countryCode="501" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000016/en</sourceUrl>
       </references>
@@ -4552,7 +4551,7 @@
     </territory>
 
     <!-- Congo (Rep. of the) (Brazzaville) -->
-    <territory id="CG" countryCode="242" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="CG" countryCode="242" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200002E/en</sourceUrl>
       </references>
@@ -4690,7 +4689,7 @@
     </territory>
 
     <!-- Côte d'Ivoire -->
-    <territory id="CI" countryCode="225" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="CI" countryCode="225" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000031/en</sourceUrl>
         <sourceUrl>http://fr.wikipedia.org/wiki/Liste_des_indicatifs_téléphoniques_en_Côte_d’Ivoire</sourceUrl>
@@ -7702,7 +7701,7 @@
 
     <!-- Fiji -->
     <territory id="FJ" countryCode="679" internationalPrefix="0(?:0|52)"
-               preferredInternationalPrefix="00" leadingZeroPossible="true">
+               preferredInternationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000048/en</sourceUrl>
         <sourceUrl>http://www.tfl.com.fj</sourceUrl>
@@ -7962,7 +7961,7 @@
     <!-- Gabon -->
     <!-- Note: We cannot set nationalPrefix="0" while fixed line numbers can start with a zero
          as this breaks parsing (it treats all leading zeros as national prefixes. -->
-    <territory id="GA" countryCode="241" internationalPrefix="00" leadingZeroPossible="true" >
+    <territory id="GA" countryCode="241" internationalPrefix="00" >
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200004E/en</sourceUrl>
         <sourceUrl>http://www.arcep.ga</sourceUrl>
@@ -10981,7 +10980,7 @@
 
    <!-- India -->
     <territory id="IN" countryCode="91" internationalPrefix="00" nationalPrefix="0"
-               leadingZeroPossible="true" nationalPrefixFormattingRule="$NP$FG"
+               nationalPrefixFormattingRule="$NP$FG"
                nationalPrefixOptionalWhenFormatting="true" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000063/en</sourceUrl>
@@ -12296,8 +12295,8 @@
 
     <!-- Italy -->
     <!-- Metadata shared with Vatican City (VA) -->
-    <territory id="IT" countryCode="39" internationalPrefix="00" leadingZeroPossible="true"
-               mobileNumberPortableRegion="true" mainCountryForCode="true">
+    <territory id="IT" countryCode="39" internationalPrefix="00" mobileNumberPortableRegion="true"
+        mainCountryForCode="true">
       <references>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B39</sourceUrl>
       </references>
@@ -13003,8 +13002,7 @@
 
     <!-- Japan -->
     <territory id="JP" countryCode="81" internationalPrefix="010" nationalPrefix="0"
-               nationalPrefixFormattingRule="$NP$FG" leadingZeroPossible="true"
-               mobileNumberPortableRegion="true">
+               nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html</sourceUrl>
         <sourceUrl>http://www.numberingplans.com/?page=dialling&amp;sub=areacodes&amp;ac=JP</sourceUrl>
@@ -14535,7 +14533,7 @@
                internationalPrefix="00(?:[124-68]|3\d{2}|7(?:[0-8]\d|9[0-79]))"
                nationalPrefix="0" nationalPrefixForParsing="0(8[1-46-8]|85\d{2})?"
                nationalPrefixFormattingRule="$NP$FG" carrierCodeFormattingRule="$NP$CC-$FG"
-               mobileNumberPortableRegion="true" leadingZeroPossible="true">
+               mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000072/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B82</sourceUrl>
@@ -17696,7 +17694,7 @@
                nationalPrefixTransformRule="1$1"
                nationalPrefixFormattingRule="$NP $FG"
                nationalPrefixOptionalWhenFormatting="true"
-               leadingZeroPossible="true" mobileNumberPortableRegion="true">
+               mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200008A/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B52</sourceUrl>
@@ -18280,7 +18278,7 @@
     </territory>
 
     <!-- Niger -->
-    <territory id="NE" countryCode="227" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="NE" countryCode="227" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200009B/en</sourceUrl>
       </references>
@@ -18773,7 +18771,7 @@
 
     <!-- Norway -->
     <!-- Metadata (excluding fixed-line) shared with Svalbard. -->
-    <territory id="NO" countryCode="47" internationalPrefix="00" leadingZeroPossible="true"
+    <territory id="NO" countryCode="47" internationalPrefix="00"
                mainCountryForCode="true" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.npt.no/npt/numsys/E.164.pdf</sourceUrl>
@@ -21090,8 +21088,7 @@
     <!-- According to ITU, there is no national prefix. However, this is still used. As of June 3rd
          2011, this was confirmed by a Rwandan local. It is also shown in this format on pages such
          as http://www.tigo.co.rw "Choose Your Number" service. -->
-    <territory id="RW" countryCode="250" internationalPrefix="00"
-               nationalPrefix="0" leadingZeroPossible="true">
+    <territory id="RW" countryCode="250" internationalPrefix="00" nationalPrefix="0">
       <references>
         <sourceUrl>http://www.rura.gov.rw/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/+250</sourceUrl>
@@ -21881,7 +21878,7 @@
 
     <!-- Svalbard -->
     <!-- Metadata shared with Norway. -->
-    <territory id="SJ" countryCode="47" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="SJ" countryCode="47" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.npt.no/pt_internet/numsys/E.164.pdf</sourceUrl>
       </references>
@@ -22148,7 +22145,7 @@
          are used to ensure that if the 0549 is not present, it will be added. -->
     <territory id="SM" countryCode="378" internationalPrefix="00"
                nationalPrefixForParsing="(?:0549)?([89]\d{5})" nationalPrefixTransformRule="0549$1"
-               leadingZeroPossible="true">
+              >
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000B5/en</sourceUrl>
         <!-- Information about Italy. -->
@@ -22706,7 +22703,7 @@
     </territory>
 
     <!-- Swaziland -->
-    <territory id="SZ" countryCode="268" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="SZ" countryCode="268" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000C6/en</sourceUrl>
       </references>
@@ -23347,7 +23344,7 @@
     </territory>
 
     <!-- Tonga -->
-    <territory id="TO" countryCode="676" internationalPrefix="00" leadingZeroPossible="true">
+    <territory id="TO" countryCode="676" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000D3/en</sourceUrl>
         <sourceUrl>http://www.wtng.info/wtng-676-to.html</sourceUrl>
@@ -24784,8 +24781,7 @@
          the Italian telephone numbering plan. Telephone numbers in the Vatican City are similar
          to telephone numbers in Rome, with "698" following the "06" for Rome.
          A Vatican telephone number is in the form of 06 698x xxxx. -->
-    <territory id="VA" countryCode="39" internationalPrefix="00"  leadingZeroPossible="true"
-               mobileNumberPortableRegion="true">
+    <territory id="VA" countryCode="39" internationalPrefix="00" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City</sourceUrl>
       </references>
@@ -26151,7 +26147,7 @@
     </territory>
 
     <!-- Universal International Toll Free Number -->
-    <territory id="001" countryCode="800" leadingZeroPossible="true">
+    <territory id="001" countryCode="800">
       <references>
         <sourceUrl>http://www.itu.int/en/ITU-T/inr/unum/Pages/uifn.aspx</sourceUrl>
       </references>
@@ -26171,7 +26167,7 @@
     </territory>
 
     <!-- Universal International Shared Cost Number -->
-    <territory id="001" countryCode="808" leadingZeroPossible="true">
+    <territory id="001" countryCode="808">
       <references>
         <sourceUrl>http://www.itu.int/rec/T-REC-E.169-200205-I/en</sourceUrl>
       </references>
@@ -26416,7 +26412,7 @@
     <!-- Numbers here are classified as UAN, as they are non-geographical and universally
          accessible. In addition, the end-user tariff to reach these numbers is lower or similar to
          the tariff of a national call. -->
-    <territory id="001" countryCode="888" leadingZeroPossible="true">
+    <territory id="001" countryCode="888">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000FA/en</sourceUrl>
       </references>
@@ -26436,7 +26432,7 @@
     </territory>
 
     <!-- Universal International Premium Rate Number -->
-    <territory id="001" countryCode="979" leadingZeroPossible="true">
+    <territory id="001" countryCode="979">
       <references>
         <sourceUrl>http://www.itu.int/rec/T-REC-E.169-200205-I/en</sourceUrl>
       </references>

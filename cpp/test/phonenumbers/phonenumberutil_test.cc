@@ -79,10 +79,6 @@ class PhoneNumberUtilTest : public testing::Test {
     return phone_util_.IsNumberGeographical(phone_number);
   }
 
-  bool IsLeadingZeroPossible(int country_calling_code) const {
-    return phone_util_.IsLeadingZeroPossible(country_calling_code);
-  }
-
   PhoneNumber::CountryCodeSource MaybeStripInternationalPrefixAndNormalize(
       const string& possible_idd_prefix,
       string* number) const {
@@ -2327,15 +2323,6 @@ TEST_F(PhoneNumberUtilTest, IsNumberGeographical) {
   number.set_national_number(15512345678ULL);
   EXPECT_TRUE(IsNumberGeographical(number));  // Mexico, another mobile phone
                                               // number.
-}
-
-TEST_F(PhoneNumberUtilTest, IsLeadingZeroPossible) {
-  EXPECT_TRUE(IsLeadingZeroPossible(39));  // Italy
-  EXPECT_FALSE(IsLeadingZeroPossible(1));  // USA
-  EXPECT_TRUE(IsLeadingZeroPossible(800));  // International toll free
-  EXPECT_FALSE(IsLeadingZeroPossible(979));  // International premium-rate
-  EXPECT_FALSE(IsLeadingZeroPossible(888));  // Not in metadata file, should
-                                             // return default value of false.
 }
 
 TEST_F(PhoneNumberUtilTest, FormatInOriginalFormat) {

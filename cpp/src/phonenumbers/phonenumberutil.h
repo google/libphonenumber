@@ -387,8 +387,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // number is parsed from. The original format is embedded in the
   // country_code_source field of the PhoneNumber object passed in. If such
   // information is missing, the number will be formatted into the NATIONAL
-  // format by default. When the number is an invalid number, the method returns
-  // the raw input when it is available.
+  // format by default. When we don't have a formatting pattern for the number,
+  // the method returns the raw input when it is available.
+  //
+  // Note this method guarantees no digit will be inserted, removed or modified
+  // as a result of formatting.
   void FormatInOriginalFormat(const PhoneNumber& number,
                               const string& region_calling_from,
                               string* formatted_number) const;
@@ -732,11 +735,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                                             TelephoneNumber* resulting_proto);
 
  protected:
-  // Check whether the country_calling_code is from a country whose national
-  // significant number could contain a leading zero. An example of such a
-  // country is Italy.
-  bool IsLeadingZeroPossible(int country_calling_code) const;
-
   bool IsNumberMatchingDesc(const string& national_number,
                             const PhoneNumberDesc& number_desc) const;
 
@@ -874,11 +872,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& raw_input,
       const string& national_prefix,
       const string& region_code) const;
-
-  // Returns true if a number is from a region whose national significant number
-  // couldn't contain a leading zero, but has the italian_leading_zero field set
-  // to true.
-  bool HasUnexpectedItalianLeadingZero(const PhoneNumber& number) const;
 
   bool HasFormattingPatternForNumber(const PhoneNumber& number) const;
 
