@@ -1,7 +1,7 @@
 Code changes:
  - Removing leading_zero_possible from the metadata and all the places it is
    referenced in the build and prod code. Will be removed from the metadata
-   proto itself in a subsequente release. This should not affect users of the
+   proto itself in a subsequent release. This should not affect users of the
    library - the only place it was used was FormatInOriginalFormat, and only
    initially to try and avoid modifying the input number by removing/adding
    digits inadvertently. Now this is checked at the end of the method anyway.
