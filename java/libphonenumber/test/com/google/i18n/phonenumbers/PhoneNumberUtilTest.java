@@ -253,15 +253,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE2));  // Mexico, another mobile phone number.
   }
 
-  public void testIsLeadingZeroPossible() {
-    assertTrue(phoneUtil.isLeadingZeroPossible(39));  // Italy
-    assertFalse(phoneUtil.isLeadingZeroPossible(1));  // USA
-    assertTrue(phoneUtil.isLeadingZeroPossible(800));  // International toll free
-    assertFalse(phoneUtil.isLeadingZeroPossible(979));  // International premium-rate
-    assertFalse(phoneUtil.isLeadingZeroPossible(888));  // Not in metadata file, just default to
-                                                        // false.
-  }
-
   public void testGetLengthOfGeographicalAreaCode() {
     // Google MTV, which has area code "650".
     assertEquals(3, phoneUtil.getLengthOfGeographicalAreaCode(US_NUMBER));

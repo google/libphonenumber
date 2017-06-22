@@ -59,7 +59,6 @@ public class BuildMetadataFromXml {
   private static final String INTERNATIONAL_PREFIX = "internationalPrefix";
   private static final String INTL_FORMAT = "intlFormat";
   private static final String LEADING_DIGITS = "leadingDigits";
-  private static final String LEADING_ZERO_POSSIBLE = "leadingZeroPossible";
   private static final String MAIN_COUNTRY_FOR_CODE = "mainCountryForCode";
   private static final String MOBILE = "mobile";
   private static final String MOBILE_NUMBER_PORTABLE_REGION = "mobileNumberPortableRegion";
@@ -230,9 +229,6 @@ public class BuildMetadataFromXml {
     }
     if (element.hasAttribute(MAIN_COUNTRY_FOR_CODE)) {
       metadata.setMainCountryForCode(true);
-    }
-    if (element.hasAttribute(LEADING_ZERO_POSSIBLE)) {
-      metadata.setLeadingZeroPossible(true);
     }
     if (element.hasAttribute(MOBILE_NUMBER_PORTABLE_REGION)) {
       metadata.setMobileNumberPortableRegion(true);

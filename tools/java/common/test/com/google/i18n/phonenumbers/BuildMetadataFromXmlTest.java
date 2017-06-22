@@ -130,7 +130,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("0", phoneMetadata.getNationalPrefix());
     assertEquals(" x", phoneMetadata.getPreferredExtnPrefix());
     assertTrue(phoneMetadata.getMainCountryForCode());
-    assertTrue(phoneMetadata.isLeadingZeroPossible());
     assertTrue(phoneMetadata.isMobileNumberPortableRegion());
   }
 
@@ -141,7 +140,6 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata.Builder phoneMetadata =
         BuildMetadataFromXml.loadTerritoryTagMetadata("33", territoryElement, "");
     assertFalse(phoneMetadata.getMainCountryForCode());
-    assertFalse(phoneMetadata.isLeadingZeroPossible());
     assertFalse(phoneMetadata.isMobileNumberPortableRegion());
   }
 

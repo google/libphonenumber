@@ -334,19 +334,6 @@ function testIsNumberGeographical() {
   assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE2));
 }
 
-function testIsLeadingZeroPossible() {
-  // Italy
-  assertTrue(phoneUtil.isLeadingZeroPossible(39));
-  // USA
-  assertFalse(phoneUtil.isLeadingZeroPossible(1));
-  // International toll free
-  assertTrue(phoneUtil.isLeadingZeroPossible(800));
-  // International premium-rate
-  assertFalse(phoneUtil.isLeadingZeroPossible(979));
-  // Not in metadata file, just default to false.
-  assertFalse(phoneUtil.isLeadingZeroPossible(888));
-}
-
 function testGetLengthOfGeographicalAreaCode() {
   // Google MTV, which has area code '650'.
   assertEquals(3, phoneUtil.getLengthOfGeographicalAreaCode(US_NUMBER));

@@ -291,13 +291,8 @@ message PhoneMetadata {
   // should not overlap.
   optional string leading_digits = 23;
 
-  // The leading zero in a phone number is meaningful in some countries (e.g.
-  // Italy). This means they cannot be dropped from the national number when
-  // converting into international format. If leading zeros are possible for
-  // valid international numbers for this region/country then set this to true.
-  // This only needs to be set for the region that is the main_country_for_code
-  // and all regions associated with that calling code will use the same
-  // setting.
+  // Deprecated: do not use. Will be deletd when there are no references to this
+  // later.
   optional bool leading_zero_possible = 26 [default=false];
 
   // This field is set when this country has implemented mobile number

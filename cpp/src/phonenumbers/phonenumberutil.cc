@@ -1334,9 +1334,7 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
                                              string* formatted_number) const {
   DCHECK(formatted_number);
 
-  if (number.has_raw_input() &&
-      (HasUnexpectedItalianLeadingZero(number) ||
-       !HasFormattingPatternForNumber(number))) {
+  if (number.has_raw_input() && !HasFormattingPatternForNumber(number)) {
     // We check if we have the formatting pattern because without that, we might
     // format the number as a group without national prefix.
     formatted_number->assign(number.raw_input());
@@ -1463,12 +1461,6 @@ bool PhoneNumberUtil::RawInputContainsNationalPrefix(
     }
   }
   return false;
-}
-
-bool PhoneNumberUtil::HasUnexpectedItalianLeadingZero(
-    const PhoneNumber& number) const {
-  return number.has_italian_leading_zero() &&
-      !IsLeadingZeroPossible(number.country_code());
 }
 
 bool PhoneNumberUtil::HasFormattingPatternForNumber(
@@ -2378,15 +2370,6 @@ bool PhoneNumberUtil::IsNumberGeographical(
       (reg_exps_->geo_mobile_countries_.find(country_calling_code)
            != reg_exps_->geo_mobile_countries_.end() &&
        number_type == PhoneNumberUtil::MOBILE);
-}
-
-bool PhoneNumberUtil::IsLeadingZeroPossible(int country_calling_code) const {
-  string region_code;
-  GetRegionCodeForCountryCode(country_calling_code, &region_code);
-  const PhoneMetadata* main_metadata_for_calling_code =
-      GetMetadataForRegionOrCallingCode(country_calling_code, region_code);
-  if (!main_metadata_for_calling_code) return false;
-  return main_metadata_for_calling_code->leading_zero_possible();
 }
 
 // A helper function to set the values related to leading zeros in a

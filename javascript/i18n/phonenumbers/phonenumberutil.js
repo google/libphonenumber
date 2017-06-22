@@ -2100,9 +2100,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
 i18n.phonenumbers.PhoneNumberUtil.prototype.formatInOriginalFormat =
     function(number, regionCallingFrom) {
 
-  if (number.hasRawInput() &&
-      (this.hasUnexpectedItalianLeadingZero_(number) ||
-       !this.hasFormattingPatternForNumber_(number))) {
+  if (number.hasRawInput() && !this.hasFormattingPatternForNumber_(number)) {
     // We check if we have the formatting pattern because without that, we might
     // format the number as a group without national prefix.
     return number.getRawInputOrDefault();
@@ -2255,22 +2253,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.rawInputContainsNationalPrefix_ =
     }
   }
   return false;
-};
-
-
-/**
- * Returns true if a number is from a region whose national significant number
- * couldn't contain a leading zero, but has the italian_leading_zero field set
- * to true.
- * @param {i18n.phonenumbers.PhoneNumber} number
- * @return {boolean}
- * @private
- */
-i18n.phonenumbers.PhoneNumberUtil.prototype.hasUnexpectedItalianLeadingZero_ =
-    function(number) {
-
-  return number.hasItalianLeadingZero() &&
-      !this.isLeadingZeroPossible(number.getCountryCodeOrDefault());
 };
 
 
@@ -3226,26 +3208,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
       i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[
           i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_],
       regionCode.toUpperCase());
-};
-
-
-/**
- * Checks whether countryCode represents the country calling code from a region
- * whose national significant number could contain a leading zero. An example of
- * such a region is Italy. Returns false if no metadata for the country is
- * found.
- *
- * @param {number} countryCallingCode the country calling code.
- * @return {boolean}
- */
-i18n.phonenumbers.PhoneNumberUtil.prototype.isLeadingZeroPossible =
-    function(countryCallingCode) {
-  /** @type {i18n.phonenumbers.PhoneMetadata} */
-  var mainMetadataForCallingCode = this.getMetadataForRegionOrCallingCode_(
-      countryCallingCode,
-      this.getRegionCodeForCountryCode(countryCallingCode));
-  return mainMetadataForCallingCode != null &&
-      mainMetadataForCallingCode.getLeadingZeroPossibleOrDefault();
 };
 
 
