@@ -1549,7 +1549,7 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number in its original number format
    */
   public String formatInOriginalFormat(PhoneNumber number, String regionCallingFrom) {
-    if (number.hasRawInput() !hasFormattingPatternForNumber(number)) {
+    if (number.hasRawInput() && !hasFormattingPatternForNumber(number)) {
       // We check if we have the formatting pattern because without that, we might format the number
       // as a group without national prefix.
       return number.getRawInput();
