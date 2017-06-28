@@ -433,7 +433,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
   }
 
   // Tests processPhoneNumberDescElement().
-  public void testProcessPhoneNumberDescElementWithInvalidInputWithRegex()
+  public void testProcessPhoneNumberDescElementWithInvalidInput()
       throws ParserConfigurationException, SAXException, IOException {
     PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     Element territoryElement = parseXmlString("<territory/>");
@@ -655,7 +655,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "  <uan><nationalNumberPattern>\\d{9}</nationalNumberPattern></uan>"
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    PhoneMetadata.Builder metadata;
+
+    metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
         false /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getFixedLine().getNationalNumberPattern());
@@ -681,7 +683,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "  </carrierSpecific>"
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
-    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    PhoneMetadata.Builder metadata;
+
+    metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.setRelevantDescPatterns(metadata, territoryElement,
         true /* isShortNumberMetadata */);
     assertEquals("\\d{1}", metadata.getTollFree().getNationalNumberPattern());
