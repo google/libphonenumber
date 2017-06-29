@@ -17,7 +17,6 @@
 #ifndef I18N_PHONENUMBERS_REGEX_BASED_MATCHER_H_
 #define I18N_PHONENUMBERS_REGEX_BASED_MATCHER_H_
 
-#include <memory>
 #include <string>
 
 #include "phonenumbers/base/basictypes.h"
