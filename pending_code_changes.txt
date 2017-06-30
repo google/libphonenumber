@@ -9,3 +9,5 @@ Code changes:
    starting with 0s may be noticed in some countries.
  - Bug fix for Javascript: getNationalSignificantNumber used to print the string
    "null" for empty phone number objects, now it returns an empty string.
+ - Added isNumberGeographical(phoneNumberType, countryCallingCode) API in JS and
+   updated the documentation for the isNumberGeographical API on all functions.

@@ -1529,26 +1529,39 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
           test(nationalPrefixFormattingRule);
 };
 
-
 /**
- * Tests whether a phone number has a geographical association. It checks if
- * the number is associated to a certain region in the country where it belongs
- * to. Note that this doesn't verify if the number is actually in use.
+ * Tests whether a phone number has a geographical association. It checks if the
+ * number is associated with a certain region in the country to which it
+ * belongs. Note that this doesn't verify if the number is actually in use.
  *
  * @param {i18n.phonenumbers.PhoneNumber} phoneNumber The phone number to test.
  * @return {boolean} true if the phone number has a geographical association.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
     function(phoneNumber) {
-  /** @type {i18n.phonenumbers.PhoneNumberType} */
-  var numberType = this.getNumberType(phoneNumber);
+  return isNumberGeographical(this.getNumberType(phoneNumber),
+      phoneNumber.getCountryCodeOrDefault());
+};
 
-  return numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
-      numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
+/**
+ * Overload of isNumberGeographical(phoneNumber), since calculating the phone
+ * number type is expensive; if we have already done this, we don't want to do
+ * it again.
+ *
+ * @param {i18n.phonenumbers.PhoneNumberType} phoneNumberType
+ *        The type of the phone number to test.
+ * @param {number} countryCallingCode The country calling code.
+ * @return {boolean} true if the phone number has a geographical association.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
+    function(phoneNumberType, countryCallingCode) {
+  return phoneNumberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
+      phoneNumberType ==
+          i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
       (goog.array.contains(
           i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_,
-          phoneNumber.getCountryCodeOrDefault()) &&
-       numberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
+          countryCallingCode) &&
+       phoneNumberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
 };
 
 
