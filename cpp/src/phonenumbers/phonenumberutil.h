@@ -661,7 +661,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // a particular region is not performed. This can be done separately with
   // IsValidNumber().
   //
-  // number_to_parse can also be provided in RFC3966 format.
+  // Note this method canonicalizes the phone number such that different
+  // representations can be easily compared, no matter what form it was
+  // originally entered in (e.g. national, international). If you want to record
+  // context about the number being parsed, such as the raw input that was
+  // entered, how the country code was derived etc. then call
+  // ParseAndKeepRawInput() instead.
+  //
+  // number_to_parse can contain formatting such as +, ( and -, as well as a
+  // phone number extension. It can also be provided in RFC3966 format.
   //
   // default_region represents the country that we are expecting the number to
   // be from. This is only used if the number being parsed is not written in
