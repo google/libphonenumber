@@ -7,3 +7,5 @@ Code changes:
    digits inadvertently. Now this is checked at the end of the method anyway.
    However slight formatting differences with this method on invalid numbers
    starting with 0s may be noticed in some countries.
+ - Bug fix for Javascript: getNationalSignificantNumber used to print the string
+   "null" for empty phone number objects, now it returns an empty string.
