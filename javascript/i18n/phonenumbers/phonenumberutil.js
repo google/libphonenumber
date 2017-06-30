@@ -1539,7 +1539,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
     function(phoneNumber) {
-  return isNumberGeographical(this.getNumberType(phoneNumber),
+  return this.isNumberGeographical(this.getNumberType(phoneNumber),
       phoneNumber.getCountryCodeOrDefault());
 };
 
