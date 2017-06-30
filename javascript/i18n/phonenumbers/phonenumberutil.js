@@ -1539,29 +1539,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
     function(phoneNumber) {
-  return this.isNumberGeographical(this.getNumberType(phoneNumber),
-      phoneNumber.getCountryCodeOrDefault());
-};
+  /** @type {i18n.phonenumbers.PhoneNumberType} */
+  var numberType = this.getNumberType(phoneNumber);
 
-/**
- * Overload of isNumberGeographical(phoneNumber), since calculating the phone
- * number type is expensive; if we have already done this, we don't want to do
- * it again.
- *
- * @param {i18n.phonenumbers.PhoneNumberType} phoneNumberType
- *        The type of the phone number to test.
- * @param {number} countryCallingCode The country calling code.
- * @return {boolean} true if the phone number has a geographical association.
- */
-i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
-    function(phoneNumberType, countryCallingCode) {
-  return phoneNumberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
-      phoneNumberType ==
-          i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
+  return numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
+      numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
       (goog.array.contains(
           i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_,
-          countryCallingCode) &&
-       phoneNumberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
+          phoneNumber.getCountryCodeOrDefault()) &&
+       numberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
 };
 
 
