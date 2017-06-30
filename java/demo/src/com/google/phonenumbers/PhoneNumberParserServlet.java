@@ -276,7 +276,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
       output.append("<DIV>");
       output.append("<TABLE border=1>");
-      output.append("<TR><TD colspan=2>Parsing Result</TD></TR>");
+      output.append("<TR><TD colspan=2>Parsing Result (parseAndKeepRawInput())</TD></TR>");
 
       appendLine("country_code", Integer.toString(number.getCountryCode()), output);
       appendLine("national_number", Long.toString(number.getNationalNumber()), output);
