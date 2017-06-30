@@ -1529,6 +1529,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formattingRuleHasFirstGroupOnly =
           test(nationalPrefixFormattingRule);
 };
 
+
 /**
  * Tests whether a phone number has a geographical association. It checks if the
  * number is associated with a certain region in the country to which it
