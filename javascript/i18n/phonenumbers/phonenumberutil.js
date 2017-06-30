@@ -2435,8 +2435,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
   }
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
-  // If leading zero(s) have been set, we prefix this now. Note these are not a
-  // national prefix.
+  // If leading zero(s) have been set, we prefix this now. Note that a single
+  // leading zero is not the same as a national prefix; leading zeros should be
+  // dialled no matter whether you are dialling from within or outside the
+  // country, national prefixes are added when formatting nationally if
+  // applicable.
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
       number.getNumberOfLeadingZerosOrDefault() > 0) {
     return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
