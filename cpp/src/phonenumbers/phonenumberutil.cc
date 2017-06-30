@@ -353,7 +353,7 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
             : mobile_desc->possible_length());
         std::sort(possible_lengths.begin(), possible_lengths.end());
 
-        if (local_lengths.empty()) {
+        if (local_lengths.size() == 0) {
           local_lengths = mobile_desc->possible_length_local_only();
         } else {
           local_lengths.MergeFrom(mobile_desc->possible_length_local_only());
