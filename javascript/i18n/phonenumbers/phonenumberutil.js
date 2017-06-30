@@ -2430,10 +2430,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
     function(number) {
 
-  // If leading zero(s) have been set, we prefix this now. Note this is not a
-  // national prefix.
+  if (!number.hasNationalNumber()) {
+    return '';
+  }
   /** @type {string} */
   var nationalNumber = '' + number.getNationalNumber();
+  // If leading zero(s) have been set, we prefix this now. Note these are not a
+  // national prefix.
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
       number.getNumberOfLeadingZerosOrDefault() > 0) {
     return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
