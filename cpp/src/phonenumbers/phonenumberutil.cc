@@ -2364,12 +2364,12 @@ bool PhoneNumberUtil::IsNumberGeographical(
 }
 
 bool PhoneNumberUtil::IsNumberGeographical(
-    PhoneNumberType number_type, int country_calling_code) const {
-  return number_type == PhoneNumberUtil::FIXED_LINE ||
-      number_type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE ||
+    PhoneNumberType phone_number_type, int country_calling_code) const {
+  return phone_number_type == PhoneNumberUtil::FIXED_LINE ||
+      phone_number_type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE ||
       (reg_exps_->geo_mobile_countries_.find(country_calling_code)
            != reg_exps_->geo_mobile_countries_.end() &&
-       number_type == PhoneNumberUtil::MOBILE);
+       phone_number_type == PhoneNumberUtil::MOBILE);
 }
 
 // A helper function to set the values related to leading zeros in a
