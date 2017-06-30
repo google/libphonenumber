@@ -492,6 +492,11 @@ function testGetNationalSignificantNumber() {
 
   assertEquals('12345678',
       phoneUtil.getNationalSignificantNumber(INTERNATIONAL_TOLL_FREE));
+
+  // An empty number.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var emptyNumber = new i18n.phonenumbers.PhoneNumber();
+  assertEquals('', phoneUtil.getNationalSignificantNumber(emptyNumber));
 }
 
 function testGetNationalSignificantNumber_ManyLeadingZeros() {
