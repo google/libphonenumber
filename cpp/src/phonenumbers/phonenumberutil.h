@@ -591,14 +591,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   bool CanBeInternationallyDialled(const PhoneNumber& number) const;
 
   // Tests whether a phone number has a geographical association. It checks if
-  // the number is associated to a certain region in the country where it
-  // belongs to. Note that this doesn't verify if the number is actually in use.
+  // the number is associated with a certain region in the country to which it
+  // belongs. Note that this doesn't verify if the number is actually in use.
   bool IsNumberGeographical(const PhoneNumber& phone_number) const;
 
-  // Tests whether a phone number has a geographical association, as represented
-  // by its type and the country it belongs to.
-  //
-  // This version of IsNumberGeographical exists since calculating the phone
+  // Overload of IsNumberGeographical(PhoneNumber), since calculating the phone
   // number type is expensive; if we have already done this, we don't want to do
   // it again.
   bool IsNumberGeographical(PhoneNumberType phone_number_type,

@@ -37,12 +37,12 @@ class RegexBasedMatcher : public MatcherApi {
   RegexBasedMatcher();
   ~RegexBasedMatcher();
 
-  bool MatchNationalNumber(const string& national_number,
+  bool MatchNationalNumber(const string& number,
                            const PhoneNumberDesc& number_desc,
                            bool allow_prefix_match) const;
 
  private:
-  bool Match(const string& national_number, const string& number_pattern,
+  bool Match(const string& number, const string& number_pattern,
              bool allow_prefix_match) const;
 
   const scoped_ptr<const AbstractRegExpFactory> regexp_factory_;
