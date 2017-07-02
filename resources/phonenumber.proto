@@ -68,7 +68,7 @@ message PhoneNumber {
   // dialling internationally, set this flag to true, and also set the number of
   // leading zeros.
   //
-  // Clients who use the parsing or conversion functionality of the i18n phone
+  // Clients who use the parsing functionality of the i18n phone
   // number libraries will have these fields set if necessary automatically.
   optional bool italian_leading_zero = 4;
   optional int32 number_of_leading_zeros = 8 [ default = 1 ];
@@ -87,6 +87,11 @@ message PhoneNumber {
   // general parsing method, but in the method that parses and keeps raw_input.
   // New fields could be added upon request.
   enum CountryCodeSource {
+    // Default value returned if this is not set, because the phone number was
+    // created using parse, not parseAndKeepRawInput. hasCountryCodeSource will
+    // return false if this is the case.
+    UNSPECIFIED = 0;
+
     // The country_code is derived based on a phone number with a leading "+",
     // e.g. the French number "+33 1 42 68 53 00".
     FROM_NUMBER_WITH_PLUS_SIGN = 1;

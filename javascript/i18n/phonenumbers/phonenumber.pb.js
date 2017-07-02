@@ -461,6 +461,7 @@ i18n.phonenumbers.PhoneNumber.prototype.clearPreferredDomesticCarrierCode = func
  * @enum {number}
  */
 i18n.phonenumbers.PhoneNumber.CountryCodeSource = {
+  UNSPECIFIED: 0;
   FROM_NUMBER_WITH_PLUS_SIGN: 1,
   FROM_NUMBER_WITH_IDD: 5,
   FROM_NUMBER_WITHOUT_PLUS_SIGN: 10,
@@ -513,7 +514,7 @@ i18n.phonenumbers.PhoneNumber.prototype.getDescriptor = function() {
       6: {
         name: 'country_code_source',
         fieldType: goog.proto2.Message.FieldType.ENUM,
-        defaultValue: i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN,
+        defaultValue: i18n.phonenumbers.PhoneNumber.CountryCodeSource.UNSPECIFIED,
         type: i18n.phonenumbers.PhoneNumber.CountryCodeSource
       },
       7: {
