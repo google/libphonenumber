@@ -3492,6 +3492,10 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("033316005", RegionCode::NZ(), &test_number));
   EXPECT_EQ(nz_number, test_number);
+  // Some fields are not filled in by Parse, but only by ParseAndKeepRawInput.
+  EXPECT_FALSE(nz_number.has_country_code_source());
+  EXPECT_EQ(PhoneNumber::UNSPECIFIED, nz_number.country_code_source());
+
   // National prefix missing.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("33316005", RegionCode::NZ(), &test_number));
