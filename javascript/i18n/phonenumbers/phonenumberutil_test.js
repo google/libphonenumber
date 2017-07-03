@@ -2649,8 +2649,9 @@ function testParseNationalNumber() {
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('033316005', RegionCode.NZ)));
   // Some fields are not filled in by parse, but only by parseAndKeepRawInput.
   assertFalse(NZ_NUMBER.hasCountryCodeSource());
+  assertNull(NZ_NUMBER.getCountryCodeSource());
   assertEquals(i18n.phonenumbers.PhoneNumber.CountryCodeSource.UNSPECIFIED,
-      NZ_NUMBER.getCountryCodeSource());
+      NZ_NUMBER.getCountryCodeSourceOrDefault());
 
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('33316005', RegionCode.NZ)));
   // National prefix attached and some formatting present.
