@@ -15,5 +15,5 @@ Code changes:
  - Added a new enum for CountryCodeSource called UNSPECIFIED. This is used as a
    default value, and will be returned if someone calls parse() and then
    getCountryCodeSource() on the result. If users want an actual value for this
-   then they should call parseAndKeepRawInput() instead; the stored value after
-   calling this method will not change.
+   then they should call parseAndKeepRawInput() instead; the values that were
+   previously returned after calling this method will not change.
