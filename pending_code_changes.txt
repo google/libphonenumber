@@ -12,3 +12,5 @@ Code changes:
  - Updated the documentation for the isNumberGeographical API.
  - Small comment improvements for parse() method to point users at
    parseAndKeepRawInput().
+ - Deletion of the possible number pattern in the phonemetadata.proto file and
+   all generated code. This has not been used for a long time.
