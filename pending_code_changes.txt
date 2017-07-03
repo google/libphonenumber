@@ -10,3 +10,5 @@ Code changes:
  - Bug fix for Javascript: getNationalSignificantNumber used to print the string
    "null" for empty phone number objects, now it returns an empty string.
  - Updated the documentation for the isNumberGeographical API.
+ - Small comment improvements for parse() method to point users at
+   parseAndKeepRawInput().
