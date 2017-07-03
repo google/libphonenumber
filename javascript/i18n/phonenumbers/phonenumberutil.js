@@ -3977,6 +3977,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
  * convert any alpha characters into digits if it thinks this is a vanity number
  * of the type "1800 MICROSOFT".
  *
+ * Note this method canonicalizes the phone number such that different
+ * representations can be easily compared, no matter what form it was originally
+ * entered in (e.g. national, international). If you want to record context
+ * about the number being parsed, such as the raw input that was entered, how
+ * the country code was derived etc. then call parseAndKeepRawInput() instead.
+ *
  * This method will throw a {@link i18n.phonenumbers.Error} if the number is not
  * considered to be a possible number. Note that validation of whether the
  * number is actually a valid number for a particular region is not performed.

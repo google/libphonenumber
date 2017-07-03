@@ -75,10 +75,6 @@ class PhoneNumberUtilTest : public testing::Test {
     phone_util_.Normalize(number);
   }
 
-  bool IsNumberGeographical(const PhoneNumber& phone_number) const {
-    return phone_util_.IsNumberGeographical(phone_number);
-  }
-
   PhoneNumber::CountryCodeSource MaybeStripInternationalPrefixAndNormalize(
       const string& possible_idd_prefix,
       string* number) const {
@@ -2295,34 +2291,38 @@ TEST_F(PhoneNumberUtilTest, TruncateTooLongNumber) {
 TEST_F(PhoneNumberUtilTest, IsNumberGeographical) {
   PhoneNumber number;
 
+  // Bahamas, mobile phone number.
   number.set_country_code(1);
   number.set_national_number(2423570000ULL);
-  EXPECT_FALSE(IsNumberGeographical(number));  // Bahamas, mobile phone number.
+  EXPECT_FALSE(phone_util_.IsNumberGeographical(number));
 
+  // Australian fixed line number.
   number.set_country_code(61);
   number.set_national_number(236618300ULL);
-  EXPECT_TRUE(IsNumberGeographical(number));  // Australian fixed line number.
+  EXPECT_TRUE(phone_util_.IsNumberGeographical(number));
 
+  // International toll free number.
   number.set_country_code(800);
   number.set_national_number(12345678ULL);
-  EXPECT_FALSE(IsNumberGeographical(number));  // International toll free
-                                               // number.
+  EXPECT_FALSE(phone_util_.IsNumberGeographical(number));
 
   // We test that mobile phone numbers in relevant regions are indeed considered
   // geographical.
 
+  // Argentina, mobile phone number.
   number.set_country_code(54);
   number.set_national_number(91187654321ULL);
-  EXPECT_TRUE(IsNumberGeographical(number));  // Argentina, mobile phone number.
+  EXPECT_TRUE(phone_util_.IsNumberGeographical(number));
 
+  // Mexico, mobile phone number.
   number.set_country_code(52);
   number.set_national_number(12345678900ULL);
-  EXPECT_TRUE(IsNumberGeographical(number));  // Mexico, mobile phone number.
+  EXPECT_TRUE(phone_util_.IsNumberGeographical(number));
 
+  // Mexico, another mobile phone number.
   number.set_country_code(52);
   number.set_national_number(15512345678ULL);
-  EXPECT_TRUE(IsNumberGeographical(number));  // Mexico, another mobile phone
-                                              // number.
+  EXPECT_TRUE(phone_util_.IsNumberGeographical(number));
 }
 
 TEST_F(PhoneNumberUtilTest, FormatInOriginalFormat) {

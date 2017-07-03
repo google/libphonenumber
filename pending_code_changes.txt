@@ -10,6 +10,8 @@ Code changes:
  - Bug fix for Javascript: getNationalSignificantNumber used to print the string
    "null" for empty phone number objects, now it returns an empty string.
  - Updated the documentation for the isNumberGeographical API.
+ - Small comment improvements for parse() method to point users at
+   parseAndKeepRawInput().
  - Added a new enum for CountryCodeSource called UNSPECIFIED. This is used as a
    default value, and will be returned if someone calls parse() and then
    getCountryCodeSource() on the result. If users want an actual value for this
