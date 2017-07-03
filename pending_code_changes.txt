@@ -12,5 +12,10 @@ Code changes:
  - Updated the documentation for the isNumberGeographical API.
  - Small comment improvements for parse() method to point users at
    parseAndKeepRawInput().
+ - Added a new enum for CountryCodeSource called UNSPECIFIED. This is used as a
+   default value, and will be returned if someone calls parse() and then
+   getCountryCodeSource() on the result. If users want an actual value for this
+   then they should call parseAndKeepRawInput() instead; the values that were
+   previously returned after calling this method will not change.
  - Deletion of the possible number pattern in the phonemetadata.proto file and
    all generated code. This has not been used for a long time.

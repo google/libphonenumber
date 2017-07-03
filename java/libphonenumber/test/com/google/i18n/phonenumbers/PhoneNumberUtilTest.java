@@ -2045,6 +2045,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testParseNationalNumber() throws Exception {
     // National prefix attached.
     assertEquals(NZ_NUMBER, phoneUtil.parse("033316005", RegionCode.NZ));
+    // Some fields are not filled in by parse, but only by parseAndKeepRawInput.
+    assertFalse(NZ_NUMBER.hasCountryCodeSource());
+    assertEquals(CountryCodeSource.UNSPECIFIED, NZ_NUMBER.getCountryCodeSource());
+
     assertEquals(NZ_NUMBER, phoneUtil.parse("33316005", RegionCode.NZ));
     // National prefix attached and some formatting present.
     assertEquals(NZ_NUMBER, phoneUtil.parse("03-331 6005", RegionCode.NZ));
