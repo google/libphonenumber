@@ -25,9 +25,10 @@ doesn't aim to verify whether the string is *only* a phone number.
 
 If the input looks like a vanity number to the library, `parse()` assumes this
 is intentional and converts alpha characters to digits. Please read the
-documentation for
-`parse()` in [PhoneNumberUtil](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java)
-for details. Also see `findNumbers()`.
+documentation for `PhoneNumber parse(String, String)` in
+[PhoneNumberUtil](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java)
+for details. Also see `Iterable<PhoneNumberMatch> findNumbers(CharSequence,
+String)`.
 
 Some examples:
 
