@@ -455,57 +455,6 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.clearNationalNumberPattern = functio
 
 
 /**
- * Gets the value of the possible_number_pattern field.
- * @return {?string} The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleNumberPattern = function() {
-  return /** @type {?string} */ (this.get$Value(3));
-};
-
-
-/**
- * Gets the value of the possible_number_pattern field or the default value if not set.
- * @return {string} The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.getPossibleNumberPatternOrDefault = function() {
-  return /** @type {string} */ (this.get$ValueOrDefault(3));
-};
-
-
-/**
- * Sets the value of the possible_number_pattern field.
- * @param {string} value The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.setPossibleNumberPattern = function(value) {
-  this.set$Value(3, value);
-};
-
-
-/**
- * @return {boolean} Whether the possible_number_pattern field has a value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.hasPossibleNumberPattern = function() {
-  return this.has$Value(3);
-};
-
-
-/**
- * @return {number} The number of values in the possible_number_pattern field.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.possibleNumberPatternCount = function() {
-  return this.count$Values(3);
-};
-
-
-/**
- * Clears the values in the possible_number_pattern field.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.clearPossibleNumberPattern = function() {
-  this.clear$Field(3);
-};
-
-
-/**
  * Gets the value of the possible_length field at the index given.
  * @param {number} index The index to lookup.
  * @return {?number} The value.
@@ -677,57 +626,6 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.exampleNumberCount = function() {
  */
 i18n.phonenumbers.PhoneNumberDesc.prototype.clearExampleNumber = function() {
   this.clear$Field(6);
-};
-
-
-/**
- * Gets the value of the national_number_matcher_data field.
- * @return {?string} The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.getNationalNumberMatcherData = function() {
-  return /** @type {?string} */ (this.get$Value(7));
-};
-
-
-/**
- * Gets the value of the national_number_matcher_data field or the default value if not set.
- * @return {string} The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.getNationalNumberMatcherDataOrDefault = function() {
-  return /** @type {string} */ (this.get$ValueOrDefault(7));
-};
-
-
-/**
- * Sets the value of the national_number_matcher_data field.
- * @param {string} value The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.setNationalNumberMatcherData = function(value) {
-  this.set$Value(7, value);
-};
-
-
-/**
- * @return {boolean} Whether the national_number_matcher_data field has a value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.hasNationalNumberMatcherData = function() {
-  return this.has$Value(7);
-};
-
-
-/**
- * @return {number} The number of values in the national_number_matcher_data field.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.nationalNumberMatcherDataCount = function() {
-  return this.count$Values(7);
-};
-
-
-/**
- * Clears the values in the national_number_matcher_data field.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.clearNationalNumberMatcherData = function() {
-  this.clear$Field(7);
 };
 
 
@@ -2320,11 +2218,6 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
         fieldType: goog.proto2.Message.FieldType.STRING,
         type: String
       },
-      3: {
-        name: 'possible_number_pattern',
-        fieldType: goog.proto2.Message.FieldType.STRING,
-        type: String
-      },
       9: {
         name: 'possible_length',
         repeated: true,
@@ -2340,11 +2233,6 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
       6: {
         name: 'example_number',
         fieldType: goog.proto2.Message.FieldType.STRING,
-        type: String
-      },
-      7: {
-        name: 'national_number_matcher_data',
-        fieldType: goog.proto2.Message.FieldType.BYTES,
         type: String
       }
     };

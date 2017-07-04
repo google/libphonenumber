@@ -101,15 +101,6 @@ message PhoneNumberDesc {
   // total length and leading digits.
   optional string national_number_pattern = 2;
 
-  // The possible_number_pattern represents what a potentially valid phone
-  // number for this region may be written as. This is a superset of the
-  // national_number_pattern above and includes numbers that have the area code
-  // omitted. Typically the only restrictions here are in the number of digits.
-  // This could be used to highlight tokens in a text that may be a phone
-  // number, or to quickly prune numbers that could not possibly be a phone
-  // number for this locale.
-  optional string possible_number_pattern = 3;
-
   // These represent the lengths a phone number from this region can be. They
   // will be sorted from smallest to biggest. Note that these lengths are for
   // the full number, without country calling code or national prefix. For
