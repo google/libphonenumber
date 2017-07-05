@@ -13,9 +13,6 @@
 // limitations under the License.
 
 // Utility for international phone numbers.
-//
-// Author: Shaopeng Jia
-// Open-sourced by: Philippe Liard
 
 #ifndef I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
 #define I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
