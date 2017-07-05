@@ -17,6 +17,40 @@ If you know that your numbers are always in the form &lt;country calling
 code&gt;&lt;national significant number&gt;, it is safe to put a "+" in front to
 indicate this to the library.
 
+### Why does the library treat some non-digit characters as digits?
+
+When parsing, the library does its best to extract a phone number out of the
+given input string. It looks for the phone number in the provided text; it
+doesn't aim to verify whether the string is *only* a phone number.
+
+If the input looks like a vanity number to the library, `parse()` assumes this
+is intentional and converts alpha characters to digits. Please read the
+documentation for `PhoneNumber parse(String, String)` in
+[PhoneNumberUtil](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java)
+for details. Also see `Iterable<PhoneNumberMatch> findNumbers(CharSequence,
+String)`.
+
+Some examples:
+
+*   `+1 412 535 abcd` is parsed the same as `+1 412 535 2223`.
+
+*   If someone fat-fingers and adds an extra alpha character in the *middle*,
+    then the library assumes this was a mistake and fixes it. E.g. the extra `c`
+    in `+1 412 535 c0000` is ignored, and this is parsed the same as `+1 412 535
+    0000`.
+
+*   If someone fat-fingers and *replaces* a digit in the middle with an alpha
+    character, and the remaining characters do not make up a valid number, this
+    alpha character is not converted and the resulting number is invalid, e.g.
+    with `+1 412 535 c000`.
+
+Other examples, in reports:
+
+*   [#328](http://github.com/googlei18n/libphonenumber/issues/328)
+*   [#1001](http://github.com/googlei18n/libphonenumber/issues/1001)
+*   [#1199](http://github.com/googlei18n/libphonenumber/issues/1199)
+*   [#1813](http://github.com/googlei18n/libphonenumber/issues/1813)
+
 ## Validation and types of numbers
 
 ### What is the difference between isPossibleNumber and isValidNumber?
