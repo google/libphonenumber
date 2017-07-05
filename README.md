@@ -26,7 +26,7 @@ the guidelines [here](CONTRIBUTING.md) first.
   * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
   * ` PhoneNumberToTimeZonesMapper ` - provides timezone information related to a phone number.
 
-# Demo (v8.5.2)
+# Demo (v8.6.0)
 [Java](http://libphonenumber.appspot.com/)
 
 [JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
