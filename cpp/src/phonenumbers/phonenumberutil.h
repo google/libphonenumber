@@ -13,9 +13,6 @@
 // limitations under the License.
 
 // Utility for international phone numbers.
-//
-// Author: Shaopeng Jia
-// Open-sourced by: Philippe Liard
 
 #ifndef I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
 #define I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
@@ -591,14 +588,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   bool CanBeInternationallyDialled(const PhoneNumber& number) const;
 
   // Tests whether a phone number has a geographical association. It checks if
-  // the number is associated to a certain region in the country where it
-  // belongs to. Note that this doesn't verify if the number is actually in use.
+  // the number is associated with a certain region in the country to which it
+  // belongs. Note that this doesn't verify if the number is actually in use.
   bool IsNumberGeographical(const PhoneNumber& phone_number) const;
 
-  // Tests whether a phone number has a geographical association, as represented
-  // by its type and the country it belongs to.
-  //
-  // This version of IsNumberGeographical exists since calculating the phone
+  // Overload of IsNumberGeographical(PhoneNumber), since calculating the phone
   // number type is expensive; if we have already done this, we don't want to do
   // it again.
   bool IsNumberGeographical(PhoneNumberType phone_number_type,
@@ -661,7 +655,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // a particular region is not performed. This can be done separately with
   // IsValidNumber().
   //
-  // number_to_parse can also be provided in RFC3966 format.
+  // Note this method canonicalizes the phone number such that different
+  // representations can be easily compared, no matter what form it was
+  // originally entered in (e.g. national, international). If you want to record
+  // context about the number being parsed, such as the raw input that was
+  // entered, how the country code was derived etc. then call
+  // ParseAndKeepRawInput() instead.
+  //
+  // number_to_parse can contain formatting such as +, ( and -, as well as a
+  // phone number extension. It can also be provided in RFC3966 format.
   //
   // default_region represents the country that we are expecting the number to
   // be from. This is only used if the number being parsed is not written in

@@ -433,7 +433,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
   }
 
   // Tests processPhoneNumberDescElement().
-  public void testProcessPhoneNumberDescElementWithInvalidInputWithRegex()
+  public void testProcessPhoneNumberDescElementWithInvalidInput()
       throws ParserConfigurationException, SAXException, IOException {
     PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     Element territoryElement = parseXmlString("<territory/>");

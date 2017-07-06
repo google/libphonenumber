@@ -1,3 +1,32 @@
+Jul 04, 2017: v8.6.0
+Code changes:
+ - Removing leading_zero_possible from the metadata and all the places it is
+   referenced in the build and prod code. Will be removed from the metadata
+   proto itself in a subsequent release. This should not affect users of the
+   library - the only place it was used was FormatInOriginalFormat, and only
+   initially to try and avoid modifying the input number by removing/adding
+   digits inadvertently. Now this is checked at the end of the method anyway.
+   However slight formatting differences with this method on invalid numbers
+   starting with 0s may be noticed in some countries.
+ - Bug fix for Javascript: getNationalSignificantNumber used to print the string
+   "null" for empty phone number objects, now it returns an empty string.
+ - Updated the documentation for the isNumberGeographical API.
+ - Small comment improvements for parse() method to point users at
+   parseAndKeepRawInput().
+ - Added a new enum for CountryCodeSource called UNSPECIFIED. This is used as a
+   default value, and will be returned if someone calls parse() and then
+   getCountryCodeSource() on the result. If users want an actual value for this
+   then they should call parseAndKeepRawInput() instead; the values that were
+   previously returned after calling this method will not change.
+ - Deletion of the possible number pattern in the phonemetadata.proto file and
+   all generated code. This has not been used for a long time.
+Metadata changes:
+ - Updated phone metadata for region code(s): AU, IL, IM, IN, KE, MM, PM, UA
+ - Updated geocoding data for country calling code(s): 95 (en)
+ - New carrier data for country calling code(s): 508 (en)
+ - Updated carrier data for country calling code(s):
+   95 (en), 254 (en), 972 (en)
+
 Jun 20, 2017: v8.5.2
 Metadata changes:
  - New alternate formatting data for country calling code(s): 64

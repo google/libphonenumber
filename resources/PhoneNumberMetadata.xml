@@ -1635,9 +1635,12 @@
     </territory>
 
     <!-- Australia -->
-    <!-- Metadata shared with Cocos Islands (CC) and Christmas Islands (CX) -->
+    <!-- Metadata shared with Cocos Islands (CC) and Christmas Islands (CX). International prefix
+         based on the wikipedia page, either being a combination of the "Provider override codes"
+         with the default IDD (0011) following, or the default IDD, or the other IDD codes for
+         non-default carriers. -->
     <territory id="AU" countryCode="61" mainCountryForCode="true"
-               internationalPrefix="(?:14(?:1[14]|34|4[17]|[56]6|7[47]|88))?001[14-689]"
+               internationalPrefix="(?:14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011)|001[14-689]"
                preferredInternationalPrefix="0011" nationalPrefix="0"
                mobileNumberPortableRegion="true">
       <references>
@@ -3398,19 +3401,51 @@
           (?:
             2(?:
               2\d{2}|
-              5(?:11|[258]\d|9[67])|
-              6(?:12|2\d|9[34])|
-              8(?:2[34]|39|62)
+              5(?:
+                11|
+                [258]\d|
+                9[67]
+              )|
+              6(?:
+                12|
+                2\d|
+                9[34]
+              )|
+              8(?:
+                2[34]|
+                39|
+                62
+              )
             )|
             3(?:
               3\d{2}|
-              4(?:6\d|8[24])|
-              8(?:25|42|5[257]|86|9[25])|
-              9(?:2\d|3[234]|4[248]|5[24]|6[2-6]|7\d)
+              4(?:
+                6\d|
+                8[24]
+              )|
+              8(?:
+                25|
+                42|
+                5[257]|
+                86|
+                9[25]
+              )|
+              9(?:
+                2\d|
+                3[234]|
+                4[248]|
+                5[24]|
+                6[2-6]|
+                7\d
+              )
             )|
             4(?:
               4\d{2}|
-              6(?:11|[24689]\d|72)
+              6(?:
+                11|
+                [24689]\d|
+                72
+              )
             )
           )\d{4}
         </nationalNumberPattern>
@@ -7961,7 +7996,7 @@
     <!-- Gabon -->
     <!-- Note: We cannot set nationalPrefix="0" while fixed line numbers can start with a zero
          as this breaks parsing (it treats all leading zeros as national prefixes. -->
-    <territory id="GA" countryCode="241" internationalPrefix="00" >
+    <territory id="GA" countryCode="241" internationalPrefix="00">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200004E/en</sourceUrl>
         <sourceUrl>http://www.arcep.ga</sourceUrl>
@@ -10734,8 +10769,13 @@
         </numberFormat>
         <!-- The following is for voicemail access. -->
         <numberFormat pattern="(1599)(\d{6})">
-          <leadingDigits>15</leadingDigits>
+          <leadingDigits>1599</leadingDigits>
           <format>$1-$2</format>
+        </numberFormat>
+        <!-- Format is from http://everything.explained.today/Telephone_numbers_in_Israel/ -->
+        <numberFormat pattern="(151)(\d{1,2})(\d{3})(\d{4})">
+          <leadingDigits>151</leadingDigits>
+          <format>$1-$2 $3-$4</format>
         </numberFormat>
         <!-- These are 4-digit star numbers which are only accessible within Israel and must be
              dialed with a star in front of the number. -->
@@ -10781,7 +10821,7 @@
              ranges belong to Telzar carrier as per confirmation from them. -->
         <nationalNumberPattern>
           5(?:
-            [02-47-9]\d{2}|
+            [0-47-9]\d{2}|
             5(?:
               01|
               2[23]|
@@ -10872,6 +10912,11 @@
         <possibleLengths national="4,10"/>
         <exampleNumber>1599123456</exampleNumber>
       </uan>
+      <voicemail>
+        <nationalNumberPattern>151\d{8,9}</nationalNumberPattern>
+        <possibleLengths national="11,12"/>
+        <exampleNumber>15112340000</exampleNumber>
+      </voicemail>
     </territory>
 
     <!-- Isle of Man -->
@@ -10900,19 +10945,21 @@
         <exampleNumber>1624756789</exampleNumber>
       </fixedLine>
       <mobile>
+        <!-- 7624[2-4] numbers could be mobile or paging. -->
         <nationalNumberPattern>
           7(?:
             4576|
-            [59]24\d
+            [59]24\d|
+            624[2-4]
           )\d{5}
         </nationalNumberPattern>
         <possibleLengths national="10"/>
         <exampleNumber>7924123456</exampleNumber>
       </mobile>
       <pager>
-        <nationalNumberPattern>7624[0-4689]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>7624[01689]\d{5}</nationalNumberPattern>
         <possibleLengths national="10"/>
-        <exampleNumber>7624212345</exampleNumber>
+        <exampleNumber>7624012345</exampleNumber>
       </pager>
       <tollFree>
         <!-- 808 162 with 10 digits. -->
@@ -10980,8 +11027,8 @@
 
    <!-- India -->
     <territory id="IN" countryCode="91" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixFormattingRule="$NP$FG"
-               nationalPrefixOptionalWhenFormatting="true" mobileNumberPortableRegion="true">
+               nationalPrefixFormattingRule="$NP$FG" nationalPrefixOptionalWhenFormatting="true"
+               mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000063/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B91</sourceUrl>
@@ -11016,7 +11063,7 @@
               )|
               3(?:
                 [025-9]|
-                1[07-9]|
+                1[017-9]|
                 [34][017-9]
               )|
               4(?:
@@ -11095,7 +11142,7 @@
               3(?:
                 [05-8]|
                 1(?:
-                  [089]|
+                  [0189]|
                   7[5-9]
                 )|
                 2(?:
@@ -11678,6 +11725,7 @@
                 [05-8]\d{2}|
                 1(?:
                   [089]\d|
+                  11|
                   7[5-8]
                 )|
                 2(?:
@@ -12296,9 +12344,10 @@
     <!-- Italy -->
     <!-- Metadata shared with Vatican City (VA) -->
     <territory id="IT" countryCode="39" internationalPrefix="00" mobileNumberPortableRegion="true"
-        mainCountryForCode="true">
+               mainCountryForCode="true">
       <references>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B39</sourceUrl>
+        <sourceUrl>https://www.agcom.it/piano-di-numerazione</sourceUrl>
       </references>
       <availableFormats>
         <!-- The leading zero for fixed numbers will be prepended before the matching of these
@@ -13981,7 +14030,7 @@
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true" nationalPrefixForParsing="005|0">
       <references>
-        <sourceUrl>http://www.ca.go.ke/images/downloads/NUMBERING/Telecommunication%20Numbering%20Plan%20For%20Kenya%20Feb%202016.Pdf</sourceUrl>
+        <sourceUrl>http://www.ca.go.ke/index.php/numbering</sourceUrl>
         <sourceUrl>https://www.itu.int/oth/T0202000070/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/+254</sourceUrl>
       </references>
@@ -14033,7 +14082,7 @@
         <nationalNumberPattern>
           7(?:
             [0-3679]\d|
-            4[0-479]|
+            4[0-4679]|
             5[0-6]|
             8[0-25-9]
           )\d{6}
@@ -16734,6 +16783,7 @@
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})">
           <leadingDigits>
+            432|
             67|
             81
           </leadingDigits>
@@ -16774,13 +16824,14 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [1478]\d{5,7}|
-          [256]\d{5,8}|
+          [178]\d{5,7}|
+          [24-6]\d{5,8}|
           9(?:
             [279]\d{0,2}|
-            [58]|
+            5|
             [34]\d{1,2}|
-            6\d?
+            6(?:\d{1,2})?|
+            8(?:\d{2})?
           )\d{6}
         </nationalNumberPattern>
       </generalDesc>
@@ -16788,7 +16839,12 @@
         <nationalNumberPattern>
           1(?:
             2\d{1,2}|
-            [3-5]\d|
+            [35]\d|
+            4(?:
+              \d|
+              2[236]|
+              39
+            )|
             6\d?|
             [89][0-6]\d
           )\d{4}|
@@ -16800,6 +16856,8 @@
             3\d{4}|
             4(?:
               0\d{5}|
+              26\d{4}|
+              39\d{4}|
               \d{4}
             )|
             5(?:
@@ -16811,7 +16869,8 @@
           4(?:
             2[245-8]|
             3(?:
-              [2-46]|
+              2(?:02)?|
+              [346]|
               56?
             )|
             [46][2-6]|
@@ -16852,7 +16911,10 @@
             6[2-8]|
             7(?:
               [2367]|
-              4\d|
+              4(?:
+                \d|
+                39
+              )|
               5\d?|
               8[145]\d
             )|
@@ -16918,12 +16980,19 @@
               88
             )|
             5[0-6]|
-            61?\d|
+            6(?:
+              1\d|
+              9\d{2}|
+              \d
+            )|
             7(?:
               3\d|
               [6-9]\d{2}
             )|
-            8\d|
+            8(?:
+              \d|
+              9\d{2}
+            )|
             9(?:
               1\d|
               [5-7]\d{2}|
@@ -20183,7 +20252,12 @@
         <exampleNumber>411234</exampleNumber>
       </fixedLine>
       <mobile>
-        <nationalNumberPattern>55\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            40|
+            55
+          )\d{4}
+        </nationalNumberPattern>
         <possibleLengths national="6"/>
         <exampleNumber>551234</exampleNumber>
       </mobile>
@@ -22144,8 +22218,7 @@
          and without this area code. The nationalPrefixForParsing and nationalPrefixTransformRule
          are used to ensure that if the 0549 is not present, it will be added. -->
     <territory id="SM" countryCode="378" internationalPrefix="00"
-               nationalPrefixForParsing="(?:0549)?([89]\d{5})" nationalPrefixTransformRule="0549$1"
-              >
+               nationalPrefixForParsing="(?:0549)?([89]\d{5})" nationalPrefixTransformRule="0549$1">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000B5/en</sourceUrl>
         <!-- Information about Italy. -->
@@ -23989,13 +24062,13 @@
         <exampleNumber>311234567</exampleNumber>
       </fixedLine>
       <mobile>
-        <!-- Added 71 prefix based on user report. -->
+        <!-- Added 71 prefix based on user report and 72 based on online numbers. -->
         <nationalNumberPattern>
           (?:
             39|
             50|
             6[36-8]|
-            7[13]|
+            7[1-3]|
             9[1-9]
           )\d{7}
         </nationalNumberPattern>

@@ -46,14 +46,12 @@ import java.util.regex.Pattern;
  * validation.
  *
  * <p>If you use this library, and want to be notified about important changes, please sign up to
- * our <a href="http://groups.google.com/group/libphonenumber-discuss/about">mailing list</a>.
+ * our <a href="https://groups.google.com/forum/#!aboutgroup/libphonenumber-discuss">mailing list</a>.
  *
  * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
  * CLDR two-letter region-code format. These should be in upper-case. The list of the codes
  * can be found here:
  * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
- *
- * @author Shaopeng Jia
  */
 public class PhoneNumberUtil {
   private static final Logger logger = Logger.getLogger(PhoneNumberUtil.class.getName());
@@ -223,17 +221,17 @@ public class PhoneNumberUtil {
     ALL_PLUS_NUMBER_GROUPING_SYMBOLS = Collections.unmodifiableMap(allPlusNumberGroupings);
   }
 
-  // Pattern that makes it easy to distinguish whether a region has a unique international dialing
-  // prefix or not. If a region has a unique international prefix (e.g. 011 in USA), it will be
-  // represented as a string that contains a sequence of ASCII digits. If there are multiple
-  // available international prefixes in a region, they will be represented as a regex string that
-  // always contains character(s) other than ASCII digits.
-  // Note this regex also includes tilde, which signals waiting for the tone.
-  private static final Pattern UNIQUE_INTERNATIONAL_PREFIX =
+  // Pattern that makes it easy to distinguish whether a region has a single international dialing
+  // prefix or not. If a region has a single international prefix (e.g. 011 in USA), it will be
+  // represented as a string that contains a sequence of ASCII digits, and possibly a tilde, which
+  // signals waiting for the tone. If there are multiple available international prefixes in a
+  // region, they will be represented as a regex string that always contains one or more characters
+  // that are not ASCII digits or a tilde.
+  private static final Pattern SINGLE_INTERNATIONAL_PREFIX =
       Pattern.compile("[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)?");
 
-  // Regular expression of acceptable punctuation found in phone numbers. This excludes punctuation
-  // found as a leading character only.
+  // Regular expression of acceptable punctuation found in phone numbers, used to find numbers in
+  // text and to decide what is a viable phone number. This excludes diallable characters.
   // This consists of dash characters, white space characters, full stops, slashes,
   // square brackets, parentheses and tildes. It also includes the letter 'x' as that is found as a
   // placeholder for carrier information in some phone numbers. Full-width variants are also
@@ -1124,7 +1122,7 @@ public class PhoneNumberUtil {
 
   /**
    * Tests whether a phone number has a geographical association. It checks if the number is
-   * associated to a certain region in the country where it belongs to. Note that this doesn't
+   * associated with a certain region in the country to which it belongs. Note that this doesn't
    * verify if the number is actually in use.
    */
   public boolean isNumberGeographical(PhoneNumber phoneNumber) {
@@ -1132,17 +1130,14 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Tests whether a phone number has a geographical association, as represented by its type and the
-   * country it belongs to.
-   *
-   * This version of isNumberGeographical exists since calculating the phone number type is
+   * Overload of isNumberGeographical(PhoneNumber), since calculating the phone number type is
    * expensive; if we have already done this, we don't want to do it again.
    */
-  public boolean isNumberGeographical(PhoneNumberType numberType, int countryCallingCode) {
-    return numberType == PhoneNumberType.FIXED_LINE
-        || numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
+  public boolean isNumberGeographical(PhoneNumberType phoneNumberType, int countryCallingCode) {
+    return phoneNumberType == PhoneNumberType.FIXED_LINE
+        || phoneNumberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
         || (GEO_MOBILE_COUNTRIES.contains(countryCallingCode)
-            && numberType == PhoneNumberType.MOBILE);
+            && phoneNumberType == PhoneNumberType.MOBILE);
   }
 
   /**
@@ -1506,7 +1501,7 @@ public class PhoneNumberUtil {
     // For regions that have multiple international prefixes, the international format of the
     // number is returned, unless there is a preferred international prefix.
     String internationalPrefixForFormatting = "";
-    if (UNIQUE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()) {
+    if (SINGLE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()) {
       internationalPrefixForFormatting = internationalPrefix;
     } else if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
       internationalPrefixForFormatting =
@@ -1771,7 +1766,7 @@ public class PhoneNumberUtil {
     if (metadataForRegionCallingFrom != null) {
       String internationalPrefix = metadataForRegionCallingFrom.getInternationalPrefix();
       internationalPrefixForFormatting =
-          UNIQUE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()
+          SINGLE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()
           ? internationalPrefix
           : metadataForRegionCallingFrom.getPreferredInternationalPrefix();
     }
@@ -3020,6 +3015,12 @@ public class PhoneNumberUtil {
    * number is not considered to be a possible number. Note that validation of whether the number
    * is actually a valid number for a particular region is not performed. This can be done
    * separately with {@link #isValidNumber}.
+   *
+   * <p> Note this method canonicalizes the phone number such that different representations can be
+   * easily compared, no matter what form it was originally entered in (e.g. national,
+   * international). If you want to record context about the number being parsed, such as the raw
+   * input that was entered, how the country code was derived etc. then call {@link
+   * #parseAndKeepRawInput} instead.
    *
    * @param numberToParse  number that we are attempting to parse. This can contain formatting such
    *     as +, ( and -, as well as a phone number extension. It can also be provided in RFC3966
