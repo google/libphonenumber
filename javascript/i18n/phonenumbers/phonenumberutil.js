@@ -24,8 +24,6 @@
  * be provided using CLDR two-letter region-code format. These should be in
  * upper-case. The list of the codes can be found here:
  * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
- *
- * Credits to Nikolaos Trogkanis for original implementation.
  */
 
 goog.provide('i18n.phonenumbers.Error');
@@ -524,30 +522,32 @@ i18n.phonenumbers.PhoneNumberUtil.ALL_PLUS_NUMBER_GROUPING_SYMBOLS_ = {
 };
 
 
+
 /**
- * Pattern that makes it easy to distinguish whether a region has a unique
- * international dialing prefix or not. If a region has a unique international
- * prefix (e.g. 011 in USA), it will be represented as a string that contains a
- * sequence of ASCII digits. If there are multiple available international
- * prefixes in a region, they will be represented as a regex string that always
- * contains character(s) other than ASCII digits. Note this regex also includes
- * tilde, which signals waiting for the tone.
+ * Pattern that makes it easy to distinguish whether a region has a single
+ * international dialing prefix or not. If a region has a single international
+ * prefix (e.g. 011 in USA), it will be represented as a string that contains
+ * a sequence of ASCII digits, and possibly a tilde, which signals waiting for
+ * the tone. If there are multiple available international prefixes in a
+ * region, they will be represented as a regex string that always contains one
+ * or more characters that are not ASCII digits or a tilde.
  *
  * @const
  * @type {!RegExp}
  * @private
  */
-i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_ =
+i18n.phonenumbers.PhoneNumberUtil.SINGLE_INTERNATIONAL_PREFIX_ =
     /[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?/;
 
 
 /**
- * Regular expression of acceptable punctuation found in phone numbers. This
- * excludes punctuation found as a leading character only. This consists of dash
- * characters, white space characters, full stops, slashes, square brackets,
- * parentheses and tildes. It also includes the letter 'x' as that is found as a
- * placeholder for carrier information in some phone numbers. Full-width
- * variants are also present.
+ * Regular expression of acceptable punctuation found in phone numbers, used to
+ * find numbers in text and to decide what is a viable phone number. This
+ * excludes diallable characters.
+ * This consists of dash characters, white space characters, full stops,
+ * slashes, square brackets, parentheses and tildes. It also includes the letter
+ * 'x' as that is found as a placeholder for carrier information in some phone
+ * numbers. Full-width variants are also present.
  *
  * @const
  * @type {string}
@@ -2049,7 +2049,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
   /** @type {string} */
   var internationalPrefixForFormatting = '';
   if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-      i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_,
+      i18n.phonenumbers.PhoneNumberUtil.SINGLE_INTERNATIONAL_PREFIX_,
       internationalPrefix)) {
     internationalPrefixForFormatting = internationalPrefix;
   } else if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
@@ -2389,7 +2389,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
         metadataForRegionCallingFrom.getInternationalPrefixOrDefault();
     internationalPrefixForFormatting =
         i18n.phonenumbers.PhoneNumberUtil.matchesEntirely_(
-            i18n.phonenumbers.PhoneNumberUtil.UNIQUE_INTERNATIONAL_PREFIX_,
+            i18n.phonenumbers.PhoneNumberUtil.SINGLE_INTERNATIONAL_PREFIX_,
             internationalPrefix) ?
         internationalPrefix :
         metadataForRegionCallingFrom.getPreferredInternationalPrefixOrDefault();

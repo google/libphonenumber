@@ -12,9 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Author: Shaopeng Jia
-// Open-sourced by: Philippe Liard
-
 #include "phonenumbers/phonenumberutil.h"
 
 #include <string.h>
@@ -63,6 +60,13 @@ const int PhoneNumberUtil::kNanpaCountryCode;
 
 // static
 const char PhoneNumberUtil::kPlusChars[] = "+\xEF\xBC\x8B";  /* "+＋" */
+// Regular expression of acceptable punctuation found in phone numbers, used to
+// find numbers in text and to decide what is a viable phone number. This
+// excludes diallable characters.
+// This consists of dash characters, white space characters, full stops,
+// slashes, square brackets, parentheses and tildes. It also includes the letter
+// 'x' as that is found as a placeholder for carrier information in some phone
+// numbers. Full-width variants are also present.
 // To find out the unicode code-point of the characters below in vim, highlight
 // the character and type 'ga'. Note that the - is used to express ranges of
 // full-width punctuation below, as well as being present in the expression
@@ -613,14 +617,14 @@ class PhoneNumberRegExpsAndMappings {
   // find geographical mobile numbers or hear from user reports.
   set<int> geo_mobile_countries_;
 
-  // Pattern that makes it easy to distinguish whether a region has a unique
-  // international dialing prefix or not. If a region has a unique international
+  // Pattern that makes it easy to distinguish whether a region has a single
+  // international dialing prefix or not. If a region has a single international
   // prefix (e.g. 011 in USA), it will be represented as a string that contains
-  // a sequence of ASCII digits. If there are multiple available international
-  // prefixes in a region, they will be represented as a regex string that
-  // always contains character(s) other than ASCII digits.
-  // Note this regex also includes tilde, which signals waiting for the tone.
-  scoped_ptr<const RegExp> unique_international_prefix_;
+  // a sequence of ASCII digits, and possibly a tilde, which signals waiting for
+  // the tone. If there are multiple available international prefixes in a
+  // region, they will be represented as a regex string that always contains one
+  // or more characters that are not ASCII digits or a tilde.
+  scoped_ptr<const RegExp> single_international_prefix_;
 
   scoped_ptr<const RegExp> digits_pattern_;
   scoped_ptr<const RegExp> capturing_digit_pattern_;
@@ -695,7 +699,7 @@ class PhoneNumberRegExpsAndMappings {
         mobile_token_mappings_(),
         geo_mobile_countries_without_mobile_area_codes_(),
         geo_mobile_countries_(),
-        unique_international_prefix_(regexp_factory_->CreateRegExp(
+        single_international_prefix_(regexp_factory_->CreateRegExp(
             /* "[\\d]+(?:[~⁓∼～][\\d]+)?" */
             "[\\d]+(?:[~\xE2\x81\x93\xE2\x88\xBC\xEF\xBD\x9E][\\d]+)?")),
         digits_pattern_(
@@ -1307,7 +1311,7 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
   // format of the number is returned, unless there is a preferred international
   // prefix.
   const string international_prefix_for_formatting(
-      reg_exps_->unique_international_prefix_->FullMatch(international_prefix)
+      reg_exps_->single_international_prefix_->FullMatch(international_prefix)
       ? international_prefix
       : metadata_calling_from->preferred_international_prefix());
 
@@ -1557,7 +1561,7 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
   if (metadata) {
     const string& international_prefix = metadata->international_prefix();
     international_prefix_for_formatting =
-        reg_exps_->unique_international_prefix_->FullMatch(international_prefix)
+        reg_exps_->single_international_prefix_->FullMatch(international_prefix)
         ? international_prefix
         : metadata->preferred_international_prefix();
   }
