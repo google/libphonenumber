@@ -1,3 +1,4 @@
 Code changes:
- - Documentation update for single_international_prefix_, also renaming it from
-   unique_international_prefix_.
+ - Documentation update for private variables VALID_PUNCTUATION and
+   SINGLE_INTERNATIONAL_PREFIX, also renaming the latter from
+   UNIQUE_INTERNATIONAL_PREFIX.
