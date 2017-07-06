@@ -16,7 +16,6 @@
 
 #include "phonenumbers/regex_based_matcher.h"
 
-#include <memory>
 #include <string>
 
 #include "phonenumbers/base/memory/scoped_ptr.h"
