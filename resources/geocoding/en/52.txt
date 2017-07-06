@@ -1,12 +1,13 @@
 # Copyright (C) 2017 Pindrop Security, Inc.
 
-# Licensed under the Apache License, Version 2.0 (the "License");
+# Licensed under the Google Software Grant and Corporate Contributor License Agreement (the "License");
 # You may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 
-# http://www.apache.org/licenses/LICENSE-2.0
+# https://cla.developers.google.com/clas/new?domain=DOMAIN_GOOGLE&kind=KIND_CORPORATE
 
 # Generated from:
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008A0002PDFS.pdf
 # Internal statistics data (2015-07-10).
 # In cases of multiple areas for same number:
 # 	If all areas in same state, default to state
