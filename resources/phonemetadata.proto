@@ -156,6 +156,7 @@ message PhoneMetadata {
   optional PhoneNumberDesc short_code = 29;
   optional PhoneNumberDesc standard_rate = 30;
   optional PhoneNumberDesc carrier_specific = 31;
+  optional PhoneNumberDesc sms_services = 33;
 
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.

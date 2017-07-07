@@ -679,6 +679,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "  <carrierSpecific>"
         + "    <nationalNumberPattern>\\d{5}</nationalNumberPattern>"
         + "  </carrierSpecific>"
+        + "  <smsServices>"
+        + "    <nationalNumberPattern>\\d{6}</nationalNumberPattern>"
+        + "  </smsServices>"
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
@@ -689,6 +692,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals("\\d{3}", metadata.getPremiumRate().getNationalNumberPattern());
     assertEquals("\\d{4}", metadata.getShortCode().getNationalNumberPattern());
     assertEquals("\\d{5}", metadata.getCarrierSpecific().getNationalNumberPattern());
+    assertEquals("\\d{6}", metadata.getSmsServices().getNationalNumberPattern());
   }
 
   public void testSetRelevantDescPatternsThrowsErrorIfTypePresentMultipleTimes()
@@ -852,6 +856,9 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "<tollFree>"
         + "  <possibleLengths national=\"15\"/>"
         + "</tollFree>"
+        + "<smsServices>"
+        + "  <possibleLengths national=\"5\"/>"
+        + "</smsServices>"
         + "</territory>");
     PhoneNumberDesc.Builder generalDesc = PhoneNumberDesc.newBuilder();
     BuildMetadataFromXml.setPossibleLengthsGeneralDesc(

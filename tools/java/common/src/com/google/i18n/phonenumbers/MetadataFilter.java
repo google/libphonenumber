@@ -57,6 +57,7 @@ final class MetadataFilter {
       "shortCode",
       "standardRate",
       "carrierSpecific",
+      "smsServices",
       "noInternationalDialling"));
 
   // Note: If this set changes, the descHasData implementation must change in PhoneNumberUtil.
@@ -166,6 +167,9 @@ final class MetadataFilter {
     }
     if (metadata.hasCarrierSpecific()) {
       metadata.setCarrierSpecific(getFiltered("carrierSpecific", metadata.getCarrierSpecific()));
+    }
+    if (metadata.hasSmsServices()) {
+      metadata.setSmsServices(getFiltered("smsServices", metadata.getSmsServices()));
     }
     if (metadata.hasNoInternationalDialling()) {
       metadata.setNoInternationalDialling(getFiltered("noInternationalDialling",
