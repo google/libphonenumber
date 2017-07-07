@@ -576,6 +576,20 @@ public final class Phonemetadata {
       return this;
     }
 
+    // optional PhoneNumberDesc sms_services = 33;
+    private boolean hasSmsServices;
+    private PhoneNumberDesc smsServices_ = null;
+    public boolean hasSmsServices() { return hasSmsServices; }
+    public PhoneNumberDesc getSmsServices() { return smsServices_; }
+    public PhoneMetadata setSmsServices(PhoneNumberDesc value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      hasSmsServices = true;
+      smsServices_ = value;
+      return this;
+    }
+
     // optional PhoneNumberDesc noInternationalDialling = 24;
     private boolean hasNoInternationalDialling;
     private PhoneNumberDesc noInternationalDialling_ = null;
@@ -877,6 +891,10 @@ public final class Phonemetadata {
       if (hasCarrierSpecific) {
         carrierSpecific_.writeExternal(objectOutput);
       }
+      objectOutput.writeBoolean(hasSmsServices);
+      if (hasSmsServices) {
+        smsServices_.writeExternal(objectOutput);
+      }
       objectOutput.writeBoolean(hasNoInternationalDialling);
       if (hasNoInternationalDialling) {
         noInternationalDialling_.writeExternal(objectOutput);
@@ -1027,6 +1045,12 @@ public final class Phonemetadata {
         PhoneNumberDesc desc = new PhoneNumberDesc();
         desc.readExternal(objectInput);
         setCarrierSpecific(desc);
+      }
+      hasDesc = objectInput.readBoolean();
+      if (hasDesc) {
+        PhoneNumberDesc desc = new PhoneNumberDesc();
+        desc.readExternal(objectInput);
+        setSmsServices(desc);
       }
       hasDesc = objectInput.readBoolean();
       if (hasDesc) {

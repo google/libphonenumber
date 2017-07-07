@@ -123,6 +123,16 @@ TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
       carrier_specific_number_for_some_region, RegionCode::BB()));
 }
 
+TEST_F(ShortNumberInfoTest, IsSmsService) {
+  PhoneNumber sms_service_number_for_some_region;
+  sms_service_number_for_some_region.set_country_code(1);
+  sms_service_number_for_some_region.set_national_number(21234ULL);
+  EXPECT_TRUE(short_info_.IsSmsServiceForRegion(
+      sms_service_number_for_some_region, RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsSmsServiceForRegion(
+      sms_service_number_for_some_region, RegionCode::BB()));
+}
+
 TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   uint64 national_number;
   const string& premium_rate_example =

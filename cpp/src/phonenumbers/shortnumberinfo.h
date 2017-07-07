@@ -162,6 +162,18 @@ class ShortNumberInfo {
       const PhoneNumber& number,
       const string& region_dialing_from) const;
 
+  // Given a valid short number, determines whether it is an SMS service
+  // (however, nothing is implied about its validity). An SMS service is where
+  // the primary or only intended usage is to receive and/or send text messages
+  // (SMSs). This includes MMS as MMS numbers downgrade to SMS if the other
+  // party isn't MMS-capable. If it is important that the number is valid, then
+  // its validity must first be checked using IsValidShortNumber or
+  // IsValidShortNumberForRegion. Returns false if the number doesn't match the
+  // region provided.
+  bool IsSmsServiceForRegion(
+      const PhoneNumber& number,
+      const string& region_dialing_from) const;
+
  private:
   const PhoneNumberUtil& phone_util_;
   const scoped_ptr<const MatcherApi> matcher_api_;
