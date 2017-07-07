@@ -395,5 +395,19 @@ bool ShortNumberInfo::IsCarrierSpecificForRegion(const PhoneNumber& number,
              phone_metadata->carrier_specific());
 }
 
+bool ShortNumberInfo::IsSmsServiceForRegion(const PhoneNumber& number,
+    const string& region_dialing_from) const {
+  if (!RegionDialingFromMatchesNumber(number, region_dialing_from)) {
+    return false;
+  }
+  string national_number;
+  phone_util_.GetNationalSignificantNumber(number, &national_number);
+  const PhoneMetadata* phone_metadata =
+      GetMetadataForRegion(region_dialing_from);
+  return phone_metadata &&
+         MatchesPossibleNumberAndNationalNumber(*matcher_api_, national_number,
+             phone_metadata->sms_services());
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n

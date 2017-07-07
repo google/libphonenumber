@@ -82,6 +82,7 @@ public class BuildMetadataFromXml {
   private static final String PREMIUM_RATE = "premiumRate";
   private static final String SHARED_COST = "sharedCost";
   private static final String SHORT_CODE = "shortCode";
+  private static final String SMS_SERVICES = "smsServices";
   private static final String STANDARD_RATE = "standardRate";
   private static final String TOLL_FREE = "tollFree";
   private static final String UAN = "uan";
@@ -523,6 +524,7 @@ public class BuildMetadataFromXml {
       metadata.setEmergency(processPhoneNumberDescElement(generalDesc, element, EMERGENCY));
       metadata.setTollFree(processPhoneNumberDescElement(generalDesc, element, TOLL_FREE));
       metadata.setPremiumRate(processPhoneNumberDescElement(generalDesc, element, PREMIUM_RATE));
+      metadata.setSmsServices(processPhoneNumberDescElement(generalDesc, element, SMS_SERVICES));
     }
   }
 

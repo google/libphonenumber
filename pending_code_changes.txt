@@ -1,4 +1,10 @@
 Code changes:
+ - Added isSmsServiceForRegion(PhoneNumber, RegionCode) API in C++ and Java
+   short number info libraries. An SMS service is where the primary or only
+   intended usage is to receive and/or send text messages (SMSs). This includes
+   MMS as MMS numbers downgrade to SMS if the other party isn't MMS-capable. The
+   is_sms_service metadata is also serialized for the first time.  JS is not
+   affected because it doesn't have short numbers.
  - Documentation update for private variables VALID_PUNCTUATION and
    SINGLE_INTERNATIONAL_PREFIX, also renaming the latter from
    UNIQUE_INTERNATIONAL_PREFIX.
