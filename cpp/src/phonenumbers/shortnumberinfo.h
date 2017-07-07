@@ -167,9 +167,9 @@ class ShortNumberInfo {
   // the primary or only intended usage is to receive and/or send text messages
   // (SMSs). This includes MMS as MMS numbers downgrade to SMS if the other
   // party isn't MMS-capable. If it is important that the number is valid, then
-  // its validity must first be checked using {@link #isValidShortNumber} or
-  // {@link #isValidShortNumberForRegion}. Returns false if the number doesn't
-  // match the region provided.
+  // its validity must first be checked using IsValidShortNumber or
+  // IsValidShortNumberForRegion. Returns false if the number doesn't match the
+  // region provided.
   bool IsSmsServiceForRegion(
       const PhoneNumber& number,
       const string& region_dialing_from) const;
