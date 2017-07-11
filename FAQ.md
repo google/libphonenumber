@@ -51,6 +51,26 @@ Other examples, in reports:
 *   [#1199](http://github.com/googlei18n/libphonenumber/issues/1199)
 *   [#1813](http://github.com/googlei18n/libphonenumber/issues/1813)
 
+### Why wasn't the national prefix removed when parsing?
+
+Usually, when parsing, we remove a country's national or trunk prefix, so we can
+store a normalized form of the number. This is usually, but not always, a
+leading zero. In some situations, we don't remove this, but instead keep it as
+part of the national number:
+
+1.  If a country does not use a national prefix, or does not use one anymore, we
+    don't remove a leading zero, since then if the user wanted to format the
+    number we would never know to prefix it with this leading zero.
+1.  If the leading zero is not a national prefix but is needed for dialling from
+    abroad (e.g. in the case of Italy) it is stored in the proto, not removed as
+    a national prefix.
+1.  If the number is too short to be a valid phone number in this country, we do
+    not remove the national prefix. For instance, although `0` is a national
+    prefix in Australia, we do not remove it from the number `000` which is the
+    emergency number; if we did we would not know that it needs a `0` re-added
+    when formatting since other short-codes do not, and we would be irreparably
+    changing the phone number.
+
 ## Validation and types of numbers
 
 ### What is the difference between isPossibleNumber and isValidNumber?
