@@ -8,3 +8,13 @@ Code changes:
  - Documentation update for private variables VALID_PUNCTUATION and
    SINGLE_INTERNATIONAL_PREFIX, also renaming the latter from
    UNIQUE_INTERNATIONAL_PREFIX.
+ - [Java only] Changing public APIs that take in strings representing phone
+   numbers or parts of phone numbers to take in CharSequence instead. Updating
+   some of the internal methods to do the same. This affects ShortNumberInfo and
+   PhoneNumberUtil, namely the following methods:
+   - parse & parseAndKeepRawInput
+   - formatWithCarrierCode & formatWithPreferredCarrierCode
+   - isNumberMatch
+   - isPossibleNumber
+   - isAlphaNumber
+   - normalizeDigitsOnly & normalizeDiallableCharsOnly
