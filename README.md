@@ -174,8 +174,7 @@ maintenance processes.
 *   Javascript: If you don't want to use our version, which depends on Closure,
     there are several other options, including
     https://github.com/halt-hammerzeit/libphonenumber-js (a stripped-down
-    version) and https://github.com/seegno/google-libphonenumber (installable
-    via npm, a browserify-compatible wrapper)
+    version, about 110 KiloBytes in size) and https://github.com/seegno/google-libphonenumber (a browserify-compatible wrapper installable via npm, genuine all-in-one build of the original library, includes Google Closure library, about 420 KiloBytes in size)
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
