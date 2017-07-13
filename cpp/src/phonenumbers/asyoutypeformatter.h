@@ -47,7 +47,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using std::list;
-using std::string;
 
 class PhoneNumberUtil;
 

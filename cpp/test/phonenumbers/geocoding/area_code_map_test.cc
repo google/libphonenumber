@@ -29,10 +29,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::map;
-using std::string;
-using std::vector;
-
 namespace {
 
 void MakeCodeMap(const PrefixDescriptions* descriptions,

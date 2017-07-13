@@ -13,4 +13,4 @@
 # limitations under the License.
 
 9607|Dhiraagu
-9609|Wataniya
+9609|Ooredoo

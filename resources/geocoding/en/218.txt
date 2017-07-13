@@ -1,0 +1,42 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Generated from:
+# https://www.itu.int/oth/T020200007A/en
+# Note that there was a large area-code change in Libya after this document was
+# published; details of the change can no longer be found online. We are
+# excluding from the geocoding data all prefixes that we no longer consider
+# valid, and are assuming that the other prefixes have not changed location.
+# Some of the new prefixes that we consider valid have no corresponding
+# geocoding information.
+
+21821|Tripoli
+21823|Zawia
+21824|Sabratha
+21825|Zuara
+218252|Zahra
+21851|Misratah
+21854|Sirt
+21857|Hun
+21861|Benghazi
+218623|Gmines
+218624|Elkuwaifia
+218625|Deriana
+218626|Kaalifa
+218627|Jerdina
+218628|Seluk
+218629|Elmagrun
+21863|Benina
+21867|Elmareg
+21871|Sebha

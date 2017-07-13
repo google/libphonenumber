@@ -17,8 +17,8 @@
 cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
-set (libphonenumber_VERSION_MAJOR 7)
-set (libphonenumber_VERSION_MINOR 0)
+set (libphonenumber_VERSION_MAJOR 8)
+set (libphonenumber_VERSION_MINOR 6)
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
@@ -126,6 +126,9 @@ find_required_program (JAVA java
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
+  set (CMAKE_MACOSX_RPATH "OFF")
+  set (CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS
+    "${CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS} -undefined dynamic_lookup")
 endif ()
 
 if (${USE_STD_MAP} STREQUAL "OFF")
@@ -338,6 +341,9 @@ include_directories ("src")
 
 # Build a static library (without -fPIC).
 add_library (phonenumber STATIC ${SOURCES})
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  add_dependencies (phonenumber generate_geocoding_data)
+endif ()
 if (${USE_ICU_REGEXP} STREQUAL "ON")
   if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
     add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
@@ -346,9 +352,11 @@ endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
   add_library (geocoding STATIC ${GEOCODING_SOURCES})
+  add_dependencies (geocoding generate_geocoding_data)
   # The geocoder doesn't use RE2 so there is no reason not to build a shared
   # library for it.
   add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
+  add_dependencies (geocoding-shared generate_geocoding_data)
   set_target_properties (geocoding-shared
     PROPERTIES
       OUTPUT_NAME "geocoding"
@@ -372,6 +380,9 @@ endif ()
 
 if (BUILD_SHARED_LIB)
   add_library (phonenumber-shared SHARED ${SOURCES})
+  if (${BUILD_GEOCODER} STREQUAL "ON")
+    add_dependencies (phonenumber-shared generate_geocoding_data)
+  endif ()
   if (${USE_ICU_REGEXP} STREQUAL "ON")
     if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
       add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
@@ -420,6 +431,9 @@ endif ()
 
 # Build a specific library for testing purposes.
 add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  add_dependencies (phonenumber_testing generate_geocoding_data)
+endif ()
 target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
@@ -445,6 +459,7 @@ endif ()
 set (TEST_SOURCES
   "test/phonenumbers/asyoutypeformatter_test.cc"
   "test/phonenumbers/logger_test.cc"
+  "test/phonenumbers/matcher_test.cc"
   "test/phonenumbers/phonenumberutil_test.cc"
   "test/phonenumbers/regexp_adapter_test.cc"
   "test/phonenumbers/regexp_cache_test.cc"
@@ -487,13 +502,13 @@ target_link_libraries (libphonenumber_test ${TEST_LIBS})
 # Unfortunately add_custom_target() can't accept a single command provided as a
 # list of commands.
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_custom_target (test
+  add_custom_target (tests
     COMMAND generate_geocoding_data_test
     COMMAND libphonenumber_test
     DEPENDS generate_geocoding_data_test libphonenumber_test
   )
 else ()
-  add_custom_target (test
+  add_custom_target (tests
     COMMAND libphonenumber_test
     DEPENDS libphonenumber_test
   )

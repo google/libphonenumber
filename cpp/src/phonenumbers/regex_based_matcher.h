@@ -17,7 +17,6 @@
 #ifndef I18N_PHONENUMBERS_REGEX_BASED_MATCHER_H_
 #define I18N_PHONENUMBERS_REGEX_BASED_MATCHER_H_
 
-#include <memory>
 #include <string>
 
 #include "phonenumbers/base/basictypes.h"
@@ -38,15 +37,12 @@ class RegexBasedMatcher : public MatcherApi {
   RegexBasedMatcher();
   ~RegexBasedMatcher();
 
-  bool MatchesNationalNumber(const string& national_number,
-                             const PhoneNumberDesc& number_desc,
-                             bool allow_prefix_match) const;
-
-  bool MatchesPossibleNumber(const string& national_number,
-                             const PhoneNumberDesc& number_desc) const;
+  bool MatchNationalNumber(const string& number,
+                           const PhoneNumberDesc& number_desc,
+                           bool allow_prefix_match) const;
 
  private:
-  bool Match(const string& national_number, const string& number_pattern,
+  bool Match(const string& number, const string& number_pattern,
              bool allow_prefix_match) const;
 
   const scoped_ptr<const AbstractRegExpFactory> regexp_factory_;

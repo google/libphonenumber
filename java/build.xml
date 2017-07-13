@@ -88,6 +88,7 @@
   </target>
 
   <target name="build-carrier-data">
+    <delete dir="carrier/src/com/google/i18n/phonenumbers/carrier/data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -98,6 +99,7 @@
   </target>
 
   <target name="build-carrier-test-data">
+    <delete dir="carrier/test/com/google/i18n/phonenumbers/carrier/testing_data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -108,6 +110,7 @@
   </target>
 
   <target name="build-geo-data">
+    <delete dir="geocoder/src/com/google/i18n/phonenumbers/geocoding/data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -118,6 +121,7 @@
   </target>
 
   <target name="build-geo-test-data">
+    <delete dir="geocoder/test/com/google/i18n/phonenumbers/geocoding/testing_data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -176,7 +180,7 @@
           depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data,build-timezones-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${libphonenumber.src.dir};${carrier.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
-           destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
+           destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false" encoding="UTF-8"/>
     <javac srcdir="${libphonenumber.test.dir};${carrier.test.dir};${geocoder.test.dir};${prefixmapper.test.dir}"
            destdir="${classes.dir}" classpathref="classpath" debug="on"
            includeAntRuntime="false"/>

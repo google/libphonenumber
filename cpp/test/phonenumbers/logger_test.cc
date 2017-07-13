@@ -25,8 +25,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
-
 // String logger implementation used for testing. Messages are output to a
 // string for convenience.
 class StringLogger : public Logger {

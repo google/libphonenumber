@@ -12,7 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# https://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Arab_Emirates
+
 97150|Etisalat
 97152|du
+97154|Etisalat
 97155|du
 97156|Etisalat
+97158|du

@@ -16,9 +16,9 @@
 # http://www.itu.int/oth/T02020000AF/en [2011-03-17]
 # http://en.wikipedia.org/wiki/Saint_Helena [439804774]
 
-2902|Jamestown
-2903|St. Helena
-2904|St. Helena
-2906|St. Helena
-2907|St. Helena
+29022|Jamestown
+29023|St. Helena
+29024|St. Helena
+29026|St. Helena
+29027|St. Helena
 2908|Tristan da Cunha

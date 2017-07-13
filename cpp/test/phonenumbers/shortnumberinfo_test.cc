@@ -97,6 +97,42 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_number));
 }
 
+TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
+  PhoneNumber carrier_specific_number;
+  carrier_specific_number.set_country_code(1);
+  carrier_specific_number.set_national_number(33669ULL);
+  EXPECT_TRUE(short_info_.IsCarrierSpecific(carrier_specific_number));
+  EXPECT_TRUE(short_info_.IsCarrierSpecificForRegion(
+      ParseNumberForTesting("33669", RegionCode::US()), RegionCode::US()));
+
+  PhoneNumber not_carrier_specific_number;
+  not_carrier_specific_number.set_country_code(1);
+  not_carrier_specific_number.set_national_number(911ULL);
+  EXPECT_FALSE(short_info_.IsCarrierSpecific(not_carrier_specific_number));
+  EXPECT_FALSE(short_info_.IsCarrierSpecificForRegion(
+      ParseNumberForTesting("911", RegionCode::US()), RegionCode::US()));
+
+  PhoneNumber carrier_specific_number_for_some_region;
+  carrier_specific_number_for_some_region.set_country_code(1);
+  carrier_specific_number_for_some_region.set_national_number(211ULL);
+  EXPECT_TRUE(short_info_.IsCarrierSpecific(
+      carrier_specific_number_for_some_region));
+  EXPECT_TRUE(short_info_.IsCarrierSpecificForRegion(
+      carrier_specific_number_for_some_region, RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsCarrierSpecificForRegion(
+      carrier_specific_number_for_some_region, RegionCode::BB()));
+}
+
+TEST_F(ShortNumberInfoTest, IsSmsService) {
+  PhoneNumber sms_service_number_for_some_region;
+  sms_service_number_for_some_region.set_country_code(1);
+  sms_service_number_for_some_region.set_national_number(21234ULL);
+  EXPECT_TRUE(short_info_.IsSmsServiceForRegion(
+      sms_service_number_for_some_region, RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsSmsServiceForRegion(
+      sms_service_number_for_some_region, RegionCode::BB()));
+}
+
 TEST_F(ShortNumberInfoTest, GetExpectedCost) {
   uint64 national_number;
   const string& premium_rate_example =
@@ -461,9 +497,22 @@ TEST_F(ShortNumberInfoTest, OverlappingNANPANumber) {
 
   EXPECT_FALSE(short_info_.IsEmergencyNumber("211", RegionCode::CA()));
   EXPECT_EQ(
-      ShortNumberInfo::UNKNOWN_COST,
+      ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCostForRegion(
           ParseNumberForTesting("211", RegionCode::CA()), RegionCode::CA()));
+}
+
+TEST_F(ShortNumberInfoTest, CountryCallingCodeIsNotIgnored) {
+  // +46 is the country calling code for Sweden (SE), and 40404 is a valid short
+  // number in the US.
+  EXPECT_FALSE(short_info_.IsPossibleShortNumberForRegion(
+      ParseNumberForTesting("+4640404", RegionCode::SE()), RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
+      ParseNumberForTesting("+4640404", RegionCode::SE()), RegionCode::US()));
+  EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
+            short_info_.GetExpectedCostForRegion(
+                ParseNumberForTesting("+4640404", RegionCode::SE()),
+                RegionCode::US()));
 }
 
 }  // namespace phonenumbers

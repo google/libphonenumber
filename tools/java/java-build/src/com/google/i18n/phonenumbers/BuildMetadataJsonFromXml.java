@@ -51,26 +51,26 @@ public class BuildMetadataJsonFromXml extends Command {
       "BuildMetadataJsonFromXml PhoneNumberMetadata.xml metadatalite.js true\n";
 
   private static final String FILE_OVERVIEW =
-      "/**\n" +
-      " * @fileoverview Generated metadata for file\n" +
-      " * %s\n" +
-      " * @author Nikolaos Trogkanis\n" +
-      " */\n\n";
+      "/**\n"
+      + " * @fileoverview Generated metadata for file\n"
+      + " * %s\n"
+      + " * @author Nikolaos Trogkanis\n"
+      + " */\n\n";
 
   private static final String COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT =
-      "/**\n" +
-      " * A mapping from a country calling code to the region codes which denote the\n" +
-      " * region represented by that country calling code. In the case of multiple\n" +
-      " * countries sharing a calling code, such as the NANPA regions, the one\n" +
-      " * indicated with \"isMainCountryForCode\" in the metadata should be first.\n" +
-      " * @type {!Object.<number, Array.<string>>}\n" +
-      " */\n";
+      "/**\n"
+      + " * A mapping from a country calling code to the region codes which denote the\n"
+      + " * region represented by that country calling code. In the case of multiple\n"
+      + " * countries sharing a calling code, such as the NANPA regions, the one\n"
+      + " * indicated with \"isMainCountryForCode\" in the metadata should be first.\n"
+      + " * @type {!Object.<number, Array.<string>>}\n"
+      + " */\n";
 
   private static final String COUNTRY_TO_METADATA_COMMENT =
-      "/**\n" +
-      " * A mapping from a region code to the PhoneMetadata for that region.\n" +
-      " * @type {!Object.<string, Array>}\n" +
-      " */\n";
+      "/**\n"
+      + " * A mapping from a region code to the PhoneMetadata for that region.\n"
+      + " * @type {!Object.<string, Array>}\n"
+      + " */\n";
 
   private static final int COPYRIGHT_YEAR = 2010;
 
@@ -90,10 +90,13 @@ public class BuildMetadataJsonFromXml extends Command {
     String inputFile = args[1];
     String outputFile = args[2];
     boolean liteBuild = args.length > 3 && args[3].equals("true");
+    return start(inputFile, outputFile, liteBuild);
+  }
 
+  static boolean start(String inputFile, String outputFile, boolean liteBuild) {
     try {
       PhoneMetadataCollection metadataCollection =
-          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, false);
       Map<Integer, List<String>> countryCodeToRegionCodeMap =
           BuildMetadataFromXml.buildCountryCodeToRegionCodeMap(metadataCollection);
 
@@ -208,9 +211,9 @@ public class BuildMetadataJsonFromXml extends Command {
     } else {
       jsArrayBuilder.append(null);
     }
-    // optional bool national_prefix_optional_when_formatting = 6;
+    // optional bool national_prefix_optional_when_formatting = 6 [default = false];
     if (format.hasNationalPrefixOptionalWhenFormatting()) {
-      jsArrayBuilder.append(format.isNationalPrefixOptionalWhenFormatting());
+      jsArrayBuilder.append(format.getNationalPrefixOptionalWhenFormatting());
     } else {
       jsArrayBuilder.append(null);
     }
@@ -238,12 +241,8 @@ public class BuildMetadataJsonFromXml extends Command {
     } else {
       jsArrayBuilder.append(null);
     }
-    // optional string possible_number_pattern = 3;
-    if (desc.hasPossibleNumberPattern()) {
-      jsArrayBuilder.append(desc.getPossibleNumberPattern());
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    // missing 3
+    jsArrayBuilder.append(null);
     // missing 4
     jsArrayBuilder.append(null);
     // missing 5
@@ -251,6 +250,32 @@ public class BuildMetadataJsonFromXml extends Command {
     // optional string example_number = 6;
     if (desc.hasExampleNumber()) {
       jsArrayBuilder.append(desc.getExampleNumber());
+    } else {
+      jsArrayBuilder.append(null);
+    }
+    // missing 7
+    jsArrayBuilder.append(null);
+    // missing 8
+    jsArrayBuilder.append(null);
+    // repeated int32 possible_length = 9;
+    int possibleLengthSize = desc.getPossibleLengthCount();
+    if (possibleLengthSize > 0) {
+      jsArrayBuilder.beginArray();
+      for (int i = 0; i < possibleLengthSize; i++) {
+        jsArrayBuilder.append(desc.getPossibleLength(i));
+      }
+      jsArrayBuilder.endArray();
+    } else {
+      jsArrayBuilder.append(null);
+    }
+    // repeated int32 possible_length = 10;
+    int possibleLengthLocalOnlySize = desc.getPossibleLengthLocalOnlyCount();
+    if (possibleLengthLocalOnlySize > 0) {
+      jsArrayBuilder.beginArray();
+      for (int i = 0; i < possibleLengthLocalOnlySize; i++) {
+        jsArrayBuilder.append(desc.getPossibleLengthLocalOnly(i));
+      }
+      jsArrayBuilder.endArray();
     } else {
       jsArrayBuilder.append(null);
     }
@@ -328,8 +353,8 @@ public class BuildMetadataJsonFromXml extends Command {
       jsArrayBuilder.append(null);
     }
     // optional bool same_mobile_and_fixed_line_pattern = 18 [default=false];
-    if (metadata.isSameMobileAndFixedLinePattern()) {
-      jsArrayBuilder.append(1);
+    if (metadata.hasSameMobileAndFixedLinePattern()) {
+      jsArrayBuilder.append(metadata.getSameMobileAndFixedLinePattern());
     } else {
       jsArrayBuilder.append(null);
     }

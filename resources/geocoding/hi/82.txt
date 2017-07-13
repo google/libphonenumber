@@ -1,0 +1,36 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations of the en/82.txt file from Wikipedia.
+# No translation for "Sejong City" could be found, so prefix 8244 has been
+# omitted.
+
+# https://hi.wikipedia.org/wiki/%E0%A4%A6%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%A3_%E0%A4%95%E0%A5%8B%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE_%E0%A4%95%E0%A5%87_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B6%E0%A4%BE%E0%A4%B8%E0%A4%A8%E0%A4%BF%E0%A4%95_%E0%A4%B5%E0%A4%BF%E0%A4%AD%E0%A4%BE%E0%A4%97
+
+822|सियोल
+8231|ग्येओंगगी-दो
+8232|इन्चेयोन
+8233|ग्वांगवोन-दो
+8241|चुंगचेओंगनाम-दो
+8242|डाएजेओन
+8243|चुंगचेओंगबुक-दो
+8251|बुसान
+8252|उलसान
+8253|डाएगू
+8254|ग्येओंगसांगबुक-दो
+8255|ग्येओंगसांगनाम-दो
+8261|जेओल्लानाम-दो
+8262|ग्वांगजू
+8263|जेओल्लाबुक-दो
+8264|जेजू-डो

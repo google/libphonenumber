@@ -12,23 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-99550|MagtiCom
-99551|MagtiCom
-99554|MagtiCom
-99555|Geocell
-99557|Geocell
-99558|Geocell
-99562|Geocell
-99570|Silknet
-99571|Beeline
-99577|Geocell
-99579|Beeline
-99590|MagtiCom
-99591|MagtiCom
-99592|Beeline
-99593|Geocell
-99595|MagtiCom
-99596|MagtiCom
-99597|Beeline
-99598|MagtiCom
-99599|MagtiCom
+# Veon was formerly known as Beeline/VimpelCom.
+
+995514|Geocell
+99554444|MagtiCom
+995550|MagtiCom
+995551|MagtiCom
+995554|MagtiCom
+995555|Geocell
+995557|Geocell
+995558|Geocell
+995559|Globalcell
+995562|Geocell
+995568|Veon
+995570|Silknet
+995571|Veon
+995574|Veon
+995577|Geocell
+995579|Veon
+995590|MagtiCom
+995591|Magticom
+995592|Veon
+995593|Geocell
+995595|Magticom
+995596|Magticom
+995597|Veon
+995598|Magticom
+995599|Magticom

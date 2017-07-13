@@ -57,6 +57,35 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
         new PhoneNumber().setCountryCode(44).setNationalNumber(18001L)));
   }
 
+  public void testIsCarrierSpecific() {
+    PhoneNumber carrierSpecificNumber = new PhoneNumber();
+    carrierSpecificNumber.setCountryCode(1).setNationalNumber(33669L);
+    assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumber));
+    assertTrue(
+        shortInfo.isCarrierSpecificForRegion(parse("33669", RegionCode.US), RegionCode.US));
+
+    PhoneNumber notCarrierSpecificNumber = new PhoneNumber();
+    notCarrierSpecificNumber.setCountryCode(1).setNationalNumber(911L);
+    assertFalse(shortInfo.isCarrierSpecific(notCarrierSpecificNumber));
+    assertFalse(
+        shortInfo.isCarrierSpecificForRegion(parse("911", RegionCode.US), RegionCode.US));
+
+    PhoneNumber carrierSpecificNumberForSomeRegion = new PhoneNumber();
+    carrierSpecificNumberForSomeRegion.setCountryCode(1).setNationalNumber(211L);
+    assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumberForSomeRegion));
+    assertTrue(
+        shortInfo.isCarrierSpecificForRegion(carrierSpecificNumberForSomeRegion, RegionCode.US));
+    assertFalse(
+        shortInfo.isCarrierSpecificForRegion(carrierSpecificNumberForSomeRegion, RegionCode.BB));
+  }
+
+  public void testIsSmsService() {
+    PhoneNumber smsServiceNumberForSomeRegion = new PhoneNumber();
+    smsServiceNumberForSomeRegion.setCountryCode(1).setNationalNumber(21234L);
+    assertTrue(shortInfo.isSmsServiceForRegion(smsServiceNumberForSomeRegion, RegionCode.US));
+    assertFalse(shortInfo.isSmsServiceForRegion(smsServiceNumberForSomeRegion, RegionCode.BB));
+  }
+
   public void testGetExpectedCost() {
     String premiumRateExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
         ShortNumberInfo.ShortNumberCost.PREMIUM_RATE);
@@ -329,8 +358,19 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
     assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
         shortInfo.getExpectedCostForRegion(parse("211", RegionCode.US), RegionCode.US));
     assertFalse(shortInfo.isEmergencyNumber("211", RegionCode.CA));
-    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+    assertEquals(ShortNumberInfo.ShortNumberCost.TOLL_FREE,
         shortInfo.getExpectedCostForRegion(parse("211", RegionCode.CA), RegionCode.CA));
+  }
+
+  public void testCountryCallingCodeIsNotIgnored() {
+    // +46 is the country calling code for Sweden (SE), and 40404 is a valid short number in the US.
+    assertFalse(shortInfo.isPossibleShortNumberForRegion(
+        parse("+4640404", RegionCode.SE), RegionCode.US));
+    assertFalse(shortInfo.isValidShortNumberForRegion(
+        parse("+4640404", RegionCode.SE), RegionCode.US));
+    assertEquals(ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+        shortInfo.getExpectedCostForRegion(
+            parse("+4640404", RegionCode.SE), RegionCode.US));
   }
 
   private PhoneNumber parse(String number, String regionCode) {

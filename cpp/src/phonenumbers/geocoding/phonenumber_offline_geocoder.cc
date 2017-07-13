@@ -166,8 +166,13 @@ string PhoneNumberOfflineGeocoder::GetDescriptionForValidNumber(
 
 string PhoneNumberOfflineGeocoder::GetDescriptionForNumber(
     const PhoneNumber& number, const Locale& locale) const {
-  if (!phone_util_->IsValidNumber(number)) {
+  PhoneNumberUtil::PhoneNumberType number_type =
+      phone_util_->GetNumberType(number);
+  if (number_type == PhoneNumberUtil::UNKNOWN) {
     return "";
+  } else if (!phone_util_->IsNumberGeographical(number_type,
+                                                number.country_code())) {
+    return GetCountryNameForNumber(number, locale);
   }
   return GetDescriptionForValidNumber(number, locale);
 }
@@ -175,8 +180,13 @@ string PhoneNumberOfflineGeocoder::GetDescriptionForNumber(
 string PhoneNumberOfflineGeocoder::GetDescriptionForNumber(
     const PhoneNumber& number, const Locale& language,
     const string& user_region) const {
-  if (!phone_util_->IsValidNumber(number)) {
+  PhoneNumberUtil::PhoneNumberType number_type =
+      phone_util_->GetNumberType(number);
+  if (number_type == PhoneNumberUtil::UNKNOWN) {
     return "";
+  } else if (!phone_util_->IsNumberGeographical(number_type,
+                                                number.country_code())) {
+    return GetCountryNameForNumber(number, language);
   }
   return GetDescriptionForValidNumber(number, language, user_region);
 }

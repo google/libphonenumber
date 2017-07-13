@@ -156,6 +156,40 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s9, const StringHolder& s10,
               const StringHolder& s11, const StringHolder& s12);
 
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14,
+              const StringHolder& s15);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14,
+              const StringHolder& s15, const StringHolder& s16);
+
 void StrAppend(string* dest, const StringHolder& s1);
 
 void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2);
