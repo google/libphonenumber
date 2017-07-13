@@ -418,33 +418,29 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testNormaliseRemovePunctuation() {
-    String inputNumber = "034-56&+#2\u00AD34";
+    StringBuilder inputNumber = new StringBuilder("034-56&+#2\u00AD34");
     String expectedOutput = "03456234";
     assertEquals("Conversion did not correctly remove punctuation",
-                 expectedOutput,
-                 PhoneNumberUtil.normalize(inputNumber));
+                 expectedOutput, PhoneNumberUtil.normalize(inputNumber).toString());
   }
 
   public void testNormaliseReplaceAlphaCharacters() {
-    String inputNumber = "034-I-am-HUNGRY";
+    StringBuilder inputNumber = new StringBuilder("034-I-am-HUNGRY");
     String expectedOutput = "034426486479";
     assertEquals("Conversion did not correctly replace alpha characters",
-                 expectedOutput,
-                 PhoneNumberUtil.normalize(inputNumber));
+                 expectedOutput, PhoneNumberUtil.normalize(inputNumber).toString());
   }
 
   public void testNormaliseOtherDigits() {
-    String inputNumber = "\uFF125\u0665";
+    StringBuilder inputNumber = new StringBuilder("\uFF125\u0665");
     String expectedOutput = "255";
     assertEquals("Conversion did not correctly replace non-latin digits",
-                 expectedOutput,
-                 PhoneNumberUtil.normalize(inputNumber));
+                 expectedOutput, PhoneNumberUtil.normalize(inputNumber).toString());
     // Eastern-Arabic digits.
-    inputNumber = "\u06F52\u06F0";
+    inputNumber = new StringBuilder("\u06F52\u06F0");
     expectedOutput = "520";
     assertEquals("Conversion did not correctly replace non-latin digits",
-                 expectedOutput,
-                 PhoneNumberUtil.normalize(inputNumber));
+                 expectedOutput, PhoneNumberUtil.normalize(inputNumber).toString());
   }
 
   public void testNormaliseStripAlphaCharacters() {

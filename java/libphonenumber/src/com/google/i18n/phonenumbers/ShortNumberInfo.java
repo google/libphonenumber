@@ -428,14 +428,14 @@ public class ShortNumberInfo {
    * @param regionCode the region where the phone number is being dialed
    * @return whether the number exactly matches an emergency services number in the given region
    */
-  public boolean isEmergencyNumber(String number, String regionCode) {
+  public boolean isEmergencyNumber(CharSequence number, String regionCode) {
     return matchesEmergencyNumberHelper(number, regionCode, false /* doesn't allow prefix match */);
   }
 
-  private boolean matchesEmergencyNumberHelper(String number, String regionCode,
+  private boolean matchesEmergencyNumberHelper(CharSequence number, String regionCode,
       boolean allowPrefixMatch) {
-    number = PhoneNumberUtil.extractPossibleNumber(number);
-    if (PhoneNumberUtil.PLUS_CHARS_PATTERN.matcher(number).lookingAt()) {
+    CharSequence possibleNumber = PhoneNumberUtil.extractPossibleNumber(number);
+    if (PhoneNumberUtil.PLUS_CHARS_PATTERN.matcher(possibleNumber).lookingAt()) {
       // Returns false if the number starts with a plus sign. We don't believe dialing the country
       // code before emergency numbers (e.g. +1911) works, but later, if that proves to work, we can
       // add additional logic here to handle it.
@@ -446,11 +446,10 @@ public class ShortNumberInfo {
       return false;
     }
 
-    String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(number);
-    PhoneNumberDesc emergencyDesc = metadata.getEmergency();
+    String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(possibleNumber);
     boolean allowPrefixMatchForRegion =
         allowPrefixMatch && !REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.contains(regionCode);
-    return matcherApi.matchNationalNumber(normalizedNumber, emergencyDesc,
+    return matcherApi.matchNationalNumber(normalizedNumber, metadata.getEmergency(),
         allowPrefixMatchForRegion);
   }
 

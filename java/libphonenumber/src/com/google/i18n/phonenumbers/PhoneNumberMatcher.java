@@ -326,15 +326,14 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     }
 
     // Try to come up with a valid match given the entire candidate.
-    String rawString = candidate.toString();
-    PhoneNumberMatch match = parseAndVerify(rawString, offset);
+    PhoneNumberMatch match = parseAndVerify(candidate, offset);
     if (match != null) {
       return match;
     }
 
     // If that failed, try to find an "inner match" - there might be a phone number within this
     // candidate.
-    return extractInnerMatch(rawString, offset);
+    return extractInnerMatch(candidate, offset);
   }
 
   /**
@@ -345,7 +344,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * @param offset  the current offset of {@code candidate} within {@link #text}
    * @return  the match found, null if none can be found
    */
-  private PhoneNumberMatch extractInnerMatch(String candidate, int offset) {
+  private PhoneNumberMatch extractInnerMatch(CharSequence candidate, int offset) {
     for (Pattern possibleInnerMatch : INNER_MATCHES) {
       Matcher groupMatcher = possibleInnerMatch.matcher(candidate);
       boolean isFirstMatch = true;
@@ -354,8 +353,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
           // We should handle any group before this one too.
           CharSequence group = trimAfterFirstMatch(
               PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN,
-              candidate.substring(0, groupMatcher.start()));
-          PhoneNumberMatch match = parseAndVerify(group.toString(), offset);
+              candidate.subSequence(0, groupMatcher.start()));
+          PhoneNumberMatch match = parseAndVerify(group, offset);
           if (match != null) {
             return match;
           }
@@ -364,7 +363,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         }
         CharSequence group = trimAfterFirstMatch(
             PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN, groupMatcher.group(1));
-        PhoneNumberMatch match = parseAndVerify(group.toString(), offset + groupMatcher.start(1));
+        PhoneNumberMatch match = parseAndVerify(group, offset + groupMatcher.start(1));
         if (match != null) {
           return match;
         }
@@ -383,7 +382,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
    * @param offset  the offset of {@code candidate} within {@link #text}
    * @return  the parsed and validated phone number match, or null
    */
-  private PhoneNumberMatch parseAndVerify(String candidate, int offset) {
+  private PhoneNumberMatch parseAndVerify(CharSequence candidate, int offset) {
     try {
       // Check the candidate doesn't contain any formatting which would indicate that it really
       // isn't a phone number.
@@ -440,7 +439,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         number.clearCountryCodeSource();
         number.clearRawInput();
         number.clearPreferredDomesticCarrierCode();
-        return new PhoneNumberMatch(offset, candidate, number);
+        return new PhoneNumberMatch(offset, candidate.toString(), number);
       }
     } catch (NumberParseException e) {
       // ignore and continue
@@ -572,7 +571,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   }
 
   static boolean checkNumberGroupingIsValid(
-      PhoneNumber number, String candidate, PhoneNumberUtil util, NumberGroupingChecker checker) {
+      PhoneNumber number, CharSequence candidate, PhoneNumberUtil util,
+      NumberGroupingChecker checker) {
     // TODO: Evaluate how this works for other locales (testing has been limited to NANPA regions)
     // and optimise if necessary.
     StringBuilder normalizedCandidate =
