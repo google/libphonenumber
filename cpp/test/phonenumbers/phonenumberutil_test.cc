@@ -3347,6 +3347,9 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchNonMatches) {
   EXPECT_EQ(PhoneNumberUtil::NO_MATCH,
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005 ext.1235",
                                                     "3 331 6005#1234"));
+  EXPECT_EQ(PhoneNumberUtil::NO_MATCH,
+            phone_util_.IsNumberMatchWithTwoStrings("+28909", "+13611361530"));
+
   // Invalid numbers that can't be parsed.
   EXPECT_EQ(PhoneNumberUtil::INVALID_NUMBER,
             phone_util_.IsNumberMatchWithTwoStrings("4", "3 331 6043"));
