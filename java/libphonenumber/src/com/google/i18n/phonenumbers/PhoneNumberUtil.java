@@ -202,6 +202,11 @@ public class PhoneNumberUtil {
     }
     allPlusNumberGroupings.putAll(asciiDigitMappings);
     // Put grouping symbols.
+    allPlusNumberGroupings.put(PLUS_SIGN, PLUS_SIGN);
+    allPlusNumberGroupings.put('\u208A', PLUS_SIGN);
+    allPlusNumberGroupings.put('\u5341', PLUS_SIGN);
+    allPlusNumberGroupings.put('\u2795', PLUS_SIGN);
+    allPlusNumberGroupings.put('\u2795', PLUS_SIGN);
     allPlusNumberGroupings.put('-', '-');
     allPlusNumberGroupings.put('\uFF0D', '-');
     allPlusNumberGroupings.put('\u2010', '-');
@@ -211,11 +216,44 @@ public class PhoneNumberUtil {
     allPlusNumberGroupings.put('\u2014', '-');
     allPlusNumberGroupings.put('\u2015', '-');
     allPlusNumberGroupings.put('\u2212', '-');
+    allPlusNumberGroupings.put('\u208B', '-');
+    allPlusNumberGroupings.put('\u2212', '-');
+    allPlusNumberGroupings.put('\u2500', '-');
+    allPlusNumberGroupings.put('\uFF70', '-');
+    allPlusNumberGroupings.put('\u2796', '-');
+    allPlusNumberGroupings.put('\u306F', '-');
+    allPlusNumberGroupings.put('\u0305', '-');
+    allPlusNumberGroupings.put('\u30FC', '-');
     allPlusNumberGroupings.put('/', '/');
     allPlusNumberGroupings.put('\uFF0F', '/');
+    allPlusNumberGroupings.put('\u2044', '/');
+    allPlusNumberGroupings.put('\u2215', '/');
+    allPlusNumberGroupings.put('\u2571', '/');
+    allPlusNumberGroupings.put('\\', '/');
     allPlusNumberGroupings.put(' ', ' ');
     allPlusNumberGroupings.put('\u3000', ' ');
     allPlusNumberGroupings.put('\u2060', ' ');
+    allPlusNumberGroupings.put('\u00A0', ' ');
+    allPlusNumberGroupings.put('\u007F', ' ');
+    allPlusNumberGroupings.put('\u2006', ' ');
+    allPlusNumberGroupings.put('\u2009', ' ');
+    allPlusNumberGroupings.put('\u200A', ' ');
+    allPlusNumberGroupings.put('\u200E', ' ');
+    allPlusNumberGroupings.put('\u205F', ' ');
+    allPlusNumberGroupings.put('\u2061', ' ');
+    // empty chars
+    allPlusNumberGroupings.put('\uFEFF', ' ');
+    allPlusNumberGroupings.put('\u0001', ' ');
+    allPlusNumberGroupings.put('\u0010', ' ');
+    allPlusNumberGroupings.put('\u0012', ' ');
+    allPlusNumberGroupings.put('\u200B', ' ');
+    allPlusNumberGroupings.put('\u0019', ' ');
+    allPlusNumberGroupings.put('\u0011', ' ');
+    allPlusNumberGroupings.put('\u0004', ' ');
+    allPlusNumberGroupings.put('\u0006', ' ');
+    allPlusNumberGroupings.put('\u001A', ' ');
+    allPlusNumberGroupings.put('\u0013', ' ');
+    allPlusNumberGroupings.put('\uFE0F', ' ');
     allPlusNumberGroupings.put('.', '.');
     allPlusNumberGroupings.put('\uFF0E', '.');
     ALL_PLUS_NUMBER_GROUPING_SYMBOLS = Collections.unmodifiableMap(allPlusNumberGroupings);
