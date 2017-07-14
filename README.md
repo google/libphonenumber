@@ -51,7 +51,7 @@ Cream Sandwich).
 
 # Demo
 
-The [Java demo](http://libphonenumber.appspot.com/) is update periodically,
+The [Java demo](http://libphonenumber.appspot.com/) is updated periodically,
 with a slight delay after the GitHub release. See the [latest release's version
 number](http://github.com/googlei18n/libphonenumber/releases).
 
@@ -59,10 +59,10 @@ The [JavaScript
 demo](http://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
 may be run at various tags; this link will take you to `master`.
 
-# Code
+# Java code
 
-To include the code in your application, either integrate with Maven (see
-[wiki](http://github.com/googlei18n/libphonenumber/wiki) or download the latest
+To include the Java code in your application, either integrate with Maven (see
+[wiki](http://github.com/googlei18n/libphonenumber/wiki)) or download the latest
 jars from the [Maven
 repository](http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
 
