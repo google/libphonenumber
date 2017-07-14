@@ -16,7 +16,7 @@
 # Generated on 2017-07-14 using https://github.com/giggsey/GBCarrierGenerator
 
 # Carrier names have been updated to friendlier trading/brand names.
-# The mapping of company names can be found in the project below:
+# The mapping of company names can be found below:
 #  - (aq) Limited trading as aql: aql
 #  - 08Direct Limited: 08Direct
 #  - 09 Mobile Ltd: 09 Mobile
