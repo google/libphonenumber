@@ -13,9 +13,108 @@
 # limitations under the License.
 
 # Carrier details updated from http://www.ofcom.org.uk/static/numbering/S7.xls
-# Carrier names have been updated to friendlier trading/brand names
-# The mapping of company names can be found in the project below.
-# Generated on 2017-07-14 via https://github.com/giggsey/GBCarrierGenerator
+# Generated on 2017-07-14.
+
+# Carrier names have been updated to friendlier trading/brand names.
+# The mapping of company names can be found in the project below:
+#  - (aq) Limited trading as aql: aql
+#  - 08Direct Limited: 08Direct
+#  - 09 Mobile Ltd: 09 Mobile
+#  - 24 Seven Communications Ltd: 24 Seven
+#  - AMSUK LTD: AMSUK
+#  - Ace Call Limited: Ace Call
+#  - Airwave Solutions Ltd: Airwave
+#  - Alliance Technologies LLC: Alliance
+#  - Andrews & Arnold Ltd: Andrews & Arnold
+#  - Anywhere Sim Limited: Anywhere Sim
+#  - BT OnePhone Limited: BT OnePhone
+#  - Bellingham Telecommunications Limited: Bellingham
+#  - CFL Communications Limited: CFL
+#  - Cheers International Sales Limited: Cheers
+#  - Citrus Telecommunications Ltd: Citrus
+#  - Cloud9 Communications Limited: Cloud9
+#  - Cloud9 Mobile Communications Ltd: Cloud9
+#  - Compatel Ltd: Compatel
+#  - Confabulate Limited: Confabulate
+#  - Core Communication Services Ltd: Core Communication
+#  - Core Telecom Limited: Core Telecom
+#  - Dynamic Mobile Billing Limited: Oxygen8
+#  - EE Limited ( TM): EE
+#  - EE Limited (Orange): Orange
+#  - Esendex Limited: Esendex
+#  - FleXtel Limited: FleXtel
+#  - Fogg Mobile AB: Fogg
+#  - Gamma Telecom Holdings Ltd: Gamma Telecom
+#  - Global Reach Networks Limited: GlobalReach
+#  - Globecom International Limited.: Globecom
+#  - Guernsey Airtel Limited: Airtel
+#  - HAY SYSTEMS LIMITED: HSL
+#  - Hanhaa Limited: Hanhaa
+#  - Hutchison 3G UK Ltd: Three
+#  - IPV6 Limited: IPV6
+#  - IV Response Limited: IV Response
+#  - Icron Network: Icron
+#  - Icron Network Limited: Icron Network
+#  - JT (Guernsey) Limited: JT
+#  - JT (Jersey) Limited: Jersey Telecom
+#  - Jersey Airtel  Limited: Airtel
+#  - Lanonyx Telecom Limited: Lanonyx
+#  - LegendTel LLC: LegendTel
+#  - Limitless Mobile Ltd: Limitless
+#  - Lleida.net Serveis Telematics Limited: Lleida.net
+#  - Lycamobile UK Limited: Lycamobile
+#  - M P Tanner Limited t/a FIO Telecom: FIO Telecom
+#  - MOBIWEB TELECOM LIMITED: Mobiweb
+#  - Magrathea Telecommunications Limited: Magrathea
+#  - Manx Telecom Trading Limited: Manx Telecom
+#  - Marathon Telecom Limited: Marathon Telecom
+#  - Mars Communications Limited: Mars
+#  - Media Telecom Ltd: Media
+#  - Nationwide Telephone Assistance Ltd: Nationwide Telephone
+#  - Nodemax Limited: Nodemax
+#  - PageOne Communications Ltd: PageOne
+#  - Plus Telecom Limited: Plus
+#  - Premium O Limited: Premium O
+#  - Premium Routing GmbH: Premium Routing
+#  - QX Telecom Ltd: QX Telecom
+#  - Relax Telecom Limited: Relax
+#  - Resilient Plc: Resilient
+#  - Simwood eSMS Limited: Simwood
+#  - Sky UK Limited: Sky
+#  - Sound Advertising Ltd: Mediatel
+#  - Spacetel UK Ltd: Spacetel
+#  - Stour Marine Limited: Stour Marine
+#  - Sure (Guernsey) Limited: Sure
+#  - Sure (Isle of Man) Limited: Sure
+#  - Sure (Jersey) Limited: Sure
+#  - Swiftnet Ltd: Swiftnet
+#  - Synectiv Ltd: Synectiv
+#  - Syntec Limited: Syntec
+#  - TGL Services (UK) Ltd: TGL
+#  - TalkTalk Communications Limited: TalkTalk
+#  - TeleWare PLC: TeleWare
+#  - Telecom 10 Ltd: Telecom 10
+#  - Telecom North America Mobile Inc: Telna
+#  - Telecom2 Ltd: Telecom2
+#  - Telecoms Cloud Networks Limited: Telecoms Cloud
+#  - Teleena UK Limited: Teleena
+#  - Telefonica UK Limited: O2
+#  - Telesign Mobile Limited: Telesign
+#  - Telsis Systems Ltd: Telsis
+#  - Test2date B.V: Test2date
+#  - Tismi BV: Tismi
+#  - Truphone Ltd: Truphone
+#  - UK Broadband Limited: UK Broadband
+#  - Vectone Mobile Limited: Vectone Mobile
+#  - Virgin Mobile Telecoms Limited: Virgin Mobile
+#  - Vodafone Uk Ltd: Vodafone
+#  - Voicetec Systems Ltd: Voicetec
+#  - Voxbone SA: Voxbone
+#  - Wavecrest (UK) Ltd: Wavecrest
+#  - Yim Siam Telecom: Yim Siam
+#  - Ziron (UK) Ltd: Ziron
+#  - aql Wholesale Limited: aql
+
 
 447106|O2
 447107|O2
