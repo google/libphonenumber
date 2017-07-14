@@ -23,7 +23,9 @@ We are happy to review and accept pull requests for the following:
 *   Bug fixes
 *   Documentation and code hygiene cleanups
 
-This list is not exhaustive.
+This list is not exhaustive. To clarify whether we'd accept a pull request, and
+especially before spending significant time on one such as for a bug fix, we
+strongly encourage that you bring up the question an an issue.
 
 To get your pull request merged, we need the following:
 
@@ -42,10 +44,6 @@ To get your pull request merged, we need the following:
         language to get approval on the approach.
 
 If this is not possible, please file an issue instead.
-
-Before spending significant time on a bug fix pull request, we strongly
-encourage that you file an issue so we can discuss whether this is something we
-think should be fixed, how to do it, and whether we'd accept a pull request.
 
 ## Checklist before filing an issue
 
