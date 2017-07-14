@@ -32,12 +32,12 @@ the right location for the appengine sdk.
 
 ### Get the phone number library jars
 
-Save the `libphonenumber`, `offline-geocoder`, `carrier`, and `prefixmapper`
-jars under `demo/war/WEB-INF/lib/`.
+Save the `libphonenumber`, `geocoder`, `carrier`, and `prefixmapper` jars under
+`demo/war/WEB-INF/lib/`.
 
-You can either download them from [Maven
-Central](http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/)
-or build them yourself by running:
+You can either download them from the  [Maven
+repository](http://repo1.maven.org/maven2/com/googlecode/libphonenumber/) or
+build them yourself by running:
 
 ```
 git clone https://github.com/google/libphonenumber.git
