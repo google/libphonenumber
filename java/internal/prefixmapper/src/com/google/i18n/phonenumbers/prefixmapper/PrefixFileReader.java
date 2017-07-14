@@ -44,13 +44,17 @@ public class PrefixFileReader {
       new HashMap<String, PhonePrefixMap>();
 
   public PrefixFileReader(String phonePrefixDataDirectory) {
-    this.phonePrefixDataDirectory = phonePrefixDataDirectory;
-    loadMappingFileProvider();
+    this(phonePrefixDataDirectory, PrefixFileReader.class);
   }
 
-  private void loadMappingFileProvider() {
+  public PrefixFileReader(String phonePrefixDataDirectory, Class<?> clazzForLoader) {
+    this.phonePrefixDataDirectory = phonePrefixDataDirectory;
+    loadMappingFileProvider(clazzForLoader);
+  }
+
+  private void loadMappingFileProvider(Class<?> clazzForLoader) {
     InputStream source =
-        PrefixFileReader.class.getResourceAsStream(phonePrefixDataDirectory + "config");
+            clazzForLoader.getResourceAsStream(phonePrefixDataDirectory + "config");
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);

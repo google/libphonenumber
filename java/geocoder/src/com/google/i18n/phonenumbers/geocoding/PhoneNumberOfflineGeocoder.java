@@ -40,7 +40,7 @@ public class PhoneNumberOfflineGeocoder {
 
   // @VisibleForTesting
   PhoneNumberOfflineGeocoder(String phonePrefixDataDirectory) {
-    prefixFileReader = new PrefixFileReader(phonePrefixDataDirectory);
+    prefixFileReader = new PrefixFileReader(phonePrefixDataDirectory, PhoneNumberOfflineGeocoder.class);
   }
 
   /**
