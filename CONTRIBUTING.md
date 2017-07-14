@@ -2,9 +2,48 @@
 
 Thanks for contributing to libphonenumber!
 
-Please read the following before filing an issue. **Note that we are _not_
-accepting pull requests for validation or formatting metadata updates at this
-time.**
+Please read the following before filing an issue or sending a pull request.
+
+We hope these guidelines will enhance your experience as a contributor to our
+library and know that we appreciate the time you put into making it better.
+
+## Pull requests
+
+We do not accept pull requests for validation, formatting, or timezone metadata
+updates.
+
+For changes specific to windows builds, see [Filing a code
+issue](#filing-a-code-issue) and make sure you have found a reviewer and tester
+before sending the pull request.
+
+We are happy to review and accept pull requests for the following:
+
+*   Carrier updates
+*   Geocoding updates
+*   Bug fixes
+*   Documentation and code hygiene cleanups
+
+This list is not exhaustive. To clarify whether we'd accept a pull request, and
+especially before spending significant time on one such as for a bug fix, we
+strongly encourage that you bring up the question on an issue.
+
+To get your pull request merged, we need the following:
+
+*   A CLA signature. See below.
+*   Responsiveness to back and forth review comments, because we will do a code
+    review.
+*   A link to a clear description of what the pull request intends to solve in a
+    [GitHub issue](https://github.com/googlei18n/libphonenumber/issues/new) or
+    Google's [Issue
+    Tracker](http://issuetracker.google.com/issues/new?component=192347).
+*   Tests that illustrate the issue, if applicable.
+*   Willingness and ability to implement the changes in C++, Java, and JS if
+    applicable. For example, changes to `PhoneNumberUtil.java` must be ported to
+    `phonenumberutil.cc` and `phonenumberutil.js`.
+    *   The initial pull request may contain the implementation in only one
+        language to get approval on the approach.
+
+If this is not possible, please file an issue instead.
 
 ## Checklist before filing an issue
 
