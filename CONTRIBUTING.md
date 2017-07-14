@@ -25,7 +25,7 @@ We are happy to review and accept pull requests for the following:
 
 This list is not exhaustive. To clarify whether we'd accept a pull request, and
 especially before spending significant time on one such as for a bug fix, we
-strongly encourage that you bring up the question an an issue.
+strongly encourage that you bring up the question on an issue.
 
 To get your pull request merged, we need the following:
 
