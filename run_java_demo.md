@@ -56,7 +56,7 @@ ant runserver
 ```
 
 This will start a server on your localhost, and you can try it out by pointing
-your browser to [http://localhost:8080/](http://localhost:8080/).
+your browser to http://localhost:8080/.
 
 ## Troubleshooting
 
@@ -73,8 +73,8 @@ Now run `ant runserver` to start the server on your localhost.
 ## Uploading your own demo App Engine application
 
 If you want to upload the demo to your own App Engine application, follow the
-steps to [register a application with App
-Engine](http://code.google.com/appengine/docs/java/gettingstarted/uploading.html).
+steps to [register an application with App
+Engine](http://cloud.google.com/appengine/docs/standard/java/gettingstarted/deploying-the-application).
 
 Then run:
 
