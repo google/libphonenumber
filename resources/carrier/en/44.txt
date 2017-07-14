@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Carrier details updated from http://www.ofcom.org.uk/static/numbering/S7.xls
-# Generated on 2017-07-14.
+# Generated on 2017-07-14 using https://github.com/giggsey/GBCarrierGenerator
 
 # Carrier names have been updated to friendlier trading/brand names.
 # The mapping of company names can be found in the project below:
@@ -56,7 +56,7 @@
 #  - Icron Network: Icron
 #  - Icron Network Limited: Icron Network
 #  - JT (Guernsey) Limited: JT
-#  - JT (Jersey) Limited: Jersey Telecom
+#  - JT (Jersey) Limited: JT
 #  - Jersey Airtel  Limited: Airtel
 #  - Lanonyx Telecom Limited: Lanonyx
 #  - LegendTel LLC: LegendTel
@@ -114,7 +114,6 @@
 #  - Yim Siam Telecom: Yim Siam
 #  - Ziron (UK) Ltd: Ziron
 #  - aql Wholesale Limited: aql
-
 
 447106|O2
 447107|O2
@@ -331,14 +330,14 @@
 447506|EE
 447507|EE
 447508|EE
-4475090|Jersey Telecom
-4475091|Jersey Telecom
-4475092|Jersey Telecom
-4475093|Jersey Telecom
-4475094|Jersey Telecom
-4475095|Jersey Telecom
-4475096|Jersey Telecom
-4475097|Jersey Telecom
+4475090|JT
+4475091|JT
+4475092|JT
+4475093|JT
+4475094|JT
+4475095|JT
+4475096|JT
+4475097|JT
 44751|O2
 4475200|Simwood
 4475201|BT OnePhone
@@ -580,9 +579,9 @@
 447794|Orange
 447795|Vodafone
 447796|Vodafone
-4477977|Jersey Telecom
-4477978|Jersey Telecom
-4477979|Jersey Telecom
+4477977|JT
+4477978|JT
+4477979|JT
 447798|Vodafone
 447799|Vodafone
 44780|O2
@@ -736,7 +735,7 @@
 447930|EE
 447931|EE
 447932|EE
-447937|Jersey Telecom
+447937|JT
 447939|EE
 44794|EE
 44795|EE
