@@ -21,7 +21,6 @@ We are happy to review and accept pull requests for the following:
 *   Carrier updates
 *   Geocoding updates
 *   Bug fixes
-*   API changes
 *   Documentation and code hygiene cleanups
 
 This list is not exhaustive.
@@ -31,7 +30,10 @@ To get your pull request merged, we need the following:
 *   A CLA signature. See below.
 *   Responsiveness to back and forth review comments, because we will do a code
     review.
-*   A clear description of the issue the pull request intends to solve.
+*   A link to a clear description of what the pull request intends to solve in a
+    [GitHub issue](https://github.com/googlei18n/libphonenumber/issues/new) or
+    Google's [Issue
+    Tracker](http://issuetracker.google.com/issues/new?component=192347).
 *   Tests that illustrate the issue, if applicable.
 *   Willingness and ability to implement the changes in C++, Java, and JS if
     applicable. For example, changes to `PhoneNumberUtil.java` must be ported to
@@ -39,12 +41,11 @@ To get your pull request merged, we need the following:
     *   The initial pull request may contain the implementation in only one
         language to get approval on the approach.
 
-If this is not possible, please file an issue.
+If this is not possible, please file an issue instead.
 
-Before spending significant time on a bug fix or API change pull request, we
-strongly encourage that you file an issue so we can discuss whether this is
-something we think should be fixed, how to do it, and whether we'd accept a pull
-request.
+Before spending significant time on a bug fix pull request, we strongly
+encourage that you file an issue so we can discuss whether this is something we
+think should be fixed, how to do it, and whether we'd accept a pull request.
 
 ## Checklist before filing an issue
 
