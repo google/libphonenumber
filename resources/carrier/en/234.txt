@@ -15,6 +15,9 @@
 # NITEL and Mtel are brand names of the same consortium. They are merged under
 # NATCOM, and as of Nov 2015 are known as Ntel.
 
+# Telephony number allocation is handled by the Nigerian Communiations Commission(NCC)
+# Updates are from NCC - http://www.ncc.gov.ng/technology/standards/numbering#mobile-telephony-number-allocation
+
 234173|Starcomms
 234174|Starcomms
 2341804|Starcomms
@@ -139,6 +142,7 @@
 2346987|Starcomms
 2346988|Starcomms
 2346989|Starcomms
+234700|Alpha Technologies
 234701|Airtel
 2347020|Smile
 2347021|Ntel
@@ -151,7 +155,13 @@
 2347028|Starcomms
 2347029|Starcomms
 234703|MTN
-234704|Visafone
+2347040|Visafone
+2347041|Visafone
+2347042|Visafone
+2347043|Visafone
+2347044|Visafone
+2347045|Visafone
+2347046|Visafone
 234705|Glo
 234706|MTN
 234707|Zoom
@@ -176,6 +186,7 @@
 2347782|Starcomms
 2347783|Starcomms
 2347784|Starcomms
+234800|Alpha Technologies
 2348010|Megatech
 2348011|Megatech
 234802|Airtel
