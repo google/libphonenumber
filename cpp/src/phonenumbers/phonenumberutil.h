@@ -177,6 +177,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   void GetSupportedGlobalNetworkCallingCodes(
       std::set<int>* calling_codes) const;
 
+  // Returns all country calling codes the library has metadata for, covering
+  // both non-geographical entities (global network calling codes) and those
+  // used for geographical entities. This could be used to populate a drop-down
+  // box of country calling codes for a phone-number widget, for instance.
+  void GetSupportedCallingCodes(std::set<int>* calling_codes) const;
+
   // Returns the types for a given region which the library has metadata for.
   // Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
   // entity could be classified as FIXED_LINE_OR_MOBILE, both FIXED_LINE and
