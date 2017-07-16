@@ -129,6 +129,19 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     }
   }
 
+  public void testGetSupportedCallingCodes() {
+    Set<Integer> callingCodes = phoneUtil.getSupportedCallingCodes();
+    assertTrue(callingCodes.size() > 0);
+    for (int callingCode : callingCodes) {
+      assertTrue(callingCode > 0);
+      assertTrue(phoneUtil.getRegionCodeForCountryCode(callingCode) != RegionCode.ZZ);
+    }
+    // There should be more than just the global network calling codes in this set.
+    assertTrue(callingCodes.size() > phoneUtil.getSupportedGlobalNetworkCallingCodes().size());
+    // But they should be included. Testing one of them.
+    assertTrue(callingCodes.contains(979));
+  }
+
   public void testGetInstanceLoadBadMetadata() {
     assertNull(phoneUtil.getMetadataForRegion("No Such Region"));
     assertNull(phoneUtil.getMetadataForNonGeographicalRegion(-1));
