@@ -78,7 +78,7 @@ Build a jar:
 ant -f java/build.xml jar
 ```
 
-Then [run your own demo](run_java_demo.md) and test your changes are as
+Then [run your own demo](run-java-demo.md) and test your changes are as
 expected.
 
 #### Javascript
