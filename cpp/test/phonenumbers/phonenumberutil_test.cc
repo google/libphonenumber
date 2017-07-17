@@ -160,8 +160,10 @@ TEST_F(PhoneNumberUtilTest, GetSupportedCallingCodes) {
   std::set<int> supported_global_network_calling_codes;
   phone_util_.GetSupportedGlobalNetworkCallingCodes(
       &supported_global_network_calling_codes);
-  // There should be more than just the global network calling codes in this set.
-  EXPECT_GT(calling_codes.size(), supported_global_network_calling_codes.size());
+  // There should be more than just the global network calling codes in this
+  // set.
+  EXPECT_GT(calling_codes.size(),
+            supported_global_network_calling_codes.size());
   // But they should be included. Testing one of them.
   EXPECT_NE(calling_codes.find(979), calling_codes.end());
 }
@@ -203,7 +205,7 @@ TEST_F(PhoneNumberUtilTest, GetSupportedTypesForNonGeoEntity) {
 }
 
 TEST_F(PhoneNumberUtilTest, GetRegionCodesForCountryCallingCode) {
-  list<string> regions;
+  std::list<string> regions;
 
   phone_util_.GetRegionCodesForCountryCallingCode(1, &regions);
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::US())
