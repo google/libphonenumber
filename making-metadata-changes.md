@@ -31,7 +31,7 @@ Edit the appropriate files:
 
 Note:
 
-*   To track provenance for your own maitenance needs, consider including
+*   To track provenance for your own maintenance needs, consider including
     sources for data where appropriate
 *   If multiple countries share a country calling code, check all of them are
     updated. Formatting rules will only be listed by the country with
