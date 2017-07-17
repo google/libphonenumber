@@ -522,7 +522,6 @@ i18n.phonenumbers.PhoneNumberUtil.ALL_PLUS_NUMBER_GROUPING_SYMBOLS_ = {
 };
 
 
-
 /**
  * Pattern that makes it easy to distinguish whether a region has a single
  * international dialing prefix or not. If a region has a single international
@@ -1340,7 +1339,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
  * Returns all global network calling codes the library has metadata for.
  *
  * @return {!Array.<number>} the country calling codes for every
- *   non-geographical entity the library supports.
+ *     non-geographical entity the library supports.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     getSupportedGlobalNetworkCallingCodes = function() {
@@ -1353,6 +1352,23 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
       function(callingCode) {
         return parseInt(callingCode, 10);
       });
+};
+
+
+/**
+  * Returns all country calling codes the library has metadata for, covering
+  * both non-geographical entities (global network calling codes) and those used
+  * for geographical entities. This could be used to populate a drop-down box of
+  * country calling codes for a phone-number widget, for instance.
+  *
+  * @return {!Array.<number>} the country calling codes for every geographical
+  *     and non-geographical entity the library supports.
+  */
+i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedCallingCodes =
+    function() {
+  return goog.array.join(
+      this.getSupportedGlobalNetworkCallingCodes(),
+      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap));
 };
 
 

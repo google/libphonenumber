@@ -840,11 +840,6 @@ void PhoneNumberUtil::GetSupportedGlobalNetworkCallingCodes(
 void PhoneNumberUtil::GetSupportedCallingCodes(
     std::set<int>* calling_codes) const {
   DCHECK(calling_codes);
-  for (std::map<int, PhoneMetadata>::const_iterator it =
-           country_code_to_non_geographical_metadata_map_->begin();
-       it != country_code_to_non_geographical_metadata_map_->end(); ++it) {
-    calling_codes->insert(it->first);
-  }
   for (std::vector<IntRegionsPair>::const_iterator it =
            country_calling_code_to_region_code_map_->begin();
        it != country_calling_code_to_region_code_map_->end(); ++it) {

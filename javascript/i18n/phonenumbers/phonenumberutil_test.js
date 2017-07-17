@@ -443,6 +443,23 @@ function testGetSupportedGlobalNetworkCallingCodes() {
       });
 }
 
+function testGetSupportedCallingCodes() {
+  assertTrue(phoneUtil.getSupportedCallingCodes().length > 0);
+  goog.array.forEach(
+      phoneUtil.getSupportedCallingCodes(),
+      function(callingCode) {
+        assertTrue(callingCode > 0);
+        assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode)
+            == RegionCode.ZZ);
+      });
+  // There should be more than just the global network calling codes in this set.
+  assertTrue(phoneUtil.getSupportedCallingCodes().length >
+      phoneUtil.getSupportedGlobalNetworkCallingCodes().length);
+  // But they should be included. Testing one of them.
+  assertTrue(goog.array.contains(
+      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 979));
+}
+
 function testGetSupportedTypesForRegion() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   var types = phoneUtil.getSupportedTypesForRegion(RegionCode.BR);

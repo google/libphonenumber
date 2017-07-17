@@ -980,9 +980,7 @@ public class PhoneNumberUtil {
    *     non-geographical entity the library supports
    */
   public Set<Integer> getSupportedCallingCodes() {
-    Set<Integer> countryCodes = new HashSet<Integer>(countryCodesForNonGeographicalRegion);
-    countryCodes.addAll(countryCallingCodeToRegionCodeMap.keySet());
-    return Collections.unmodifiableSet(countryCodes);
+    return Collections.unmodifiableSet(countryCallingCodeToRegionCodeMap.keySet());
   }
 
   /**
