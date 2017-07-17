@@ -35,14 +35,8 @@ class TelephoneNumber;
 namespace i18n {
 namespace phonenumbers {
 
-using std::list;
-using std::map;
-using std::pair;
-using std::set;
-using std::string;
-using std::vector;
-
 using google::protobuf::RepeatedPtrField;
+using std::string;
 
 class AsYouTypeFormatter;
 class Logger;
@@ -176,6 +170,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // non-geographical entity the library supports
   void GetSupportedGlobalNetworkCallingCodes(
       std::set<int>* calling_codes) const;
+
+  // Returns all country calling codes the library has metadata for, covering
+  // both non-geographical entities (global network calling codes) and those
+  // used for geographical entities. This could be used to populate a drop-down
+  // box of country calling codes for a phone-number widget, for instance.
+  void GetSupportedCallingCodes(std::set<int>* calling_codes) const;
 
   // Returns the types for a given region which the library has metadata for.
   // Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
@@ -478,7 +478,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // is left unchanged.
   void GetRegionCodesForCountryCallingCode(
       int country_calling_code,
-      list<string>* region_codes) const;
+      std::list<string>* region_codes) const;
 
   // Checks if this is a region under the North American Numbering Plan
   // Administration (NANPA).
@@ -746,7 +746,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
  private:
   scoped_ptr<Logger> logger_;
 
-  typedef pair<int, list<string>*> IntRegionsPair;
+  typedef std::pair<int, std::list<string>*> IntRegionsPair;
 
   // The minimum and maximum length of the national significant number.
   static const size_t kMinLengthForNsn = 2;
@@ -787,20 +787,21 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // country calling code 7. Under this map, 1 is mapped to region code "US" and
   // 7 is mapped to region code "RU". This is implemented as a sorted vector to
   // achieve better performance.
-  scoped_ptr<vector<IntRegionsPair> > country_calling_code_to_region_code_map_;
+  scoped_ptr<std::vector<IntRegionsPair> >
+      country_calling_code_to_region_code_map_;
 
   // The set of regions that share country calling code 1.
-  scoped_ptr<set<string> > nanpa_regions_;
+  scoped_ptr<std::set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  scoped_ptr<map<string, PhoneMetadata> > region_to_metadata_map_;
+  scoped_ptr<std::map<string, PhoneMetadata> > region_to_metadata_map_;
 
   // A mapping from a country calling code for a non-geographical entity to the
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
-  scoped_ptr<map<int, PhoneMetadata> >
+  scoped_ptr<std::map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();
@@ -898,7 +899,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   void GetRegionCodeForNumberFromRegionList(
       const PhoneNumber& number,
-      const list<string>& region_codes,
+      const std::list<string>& region_codes,
       string* region_code) const;
 
   // Strips the IDD from the start of the number if present. Helper function

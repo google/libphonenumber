@@ -1,4 +1,7 @@
 Code changes:
+ - New method getSupportedCallingCodes() API to return all the calling codes
+   that the library considers valid, both for geographical and non-geographical
+   entities.
  - Added isSmsServiceForRegion(PhoneNumber, RegionCode) API in C++ and Java
    short number info libraries. An SMS service is where the primary or only
    intended usage is to receive and/or send text messages (SMSs). This includes
@@ -18,3 +21,6 @@ Code changes:
    - isPossibleNumber
    - isAlphaNumber
    - normalizeDigitsOnly & normalizeDiallableCharsOnly
+ - [C++ only] Removing most of the "using std::*" statements in
+   phonenumberutil.h file, leaving only using std::string. Changing the .cc and
+   test files to prefix "std::" where this was missing.

@@ -125,24 +125,47 @@ TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
-  set<string> regions;
+  std::set<string> regions;
 
   phone_util_.GetSupportedRegions(&regions);
   EXPECT_GT(regions.size(), 0U);
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedGlobalNetworkCallingCodes) {
-  set<int> calling_codes;
+  std::set<int> calling_codes;
 
   phone_util_.GetSupportedGlobalNetworkCallingCodes(&calling_codes);
   EXPECT_GT(calling_codes.size(), 0U);
-  for (set<int>::const_iterator it = calling_codes.begin();
+  for (std::set<int>::const_iterator it = calling_codes.begin();
        it != calling_codes.end(); ++it) {
     EXPECT_GT(*it, 0);
     string region_code;
     phone_util_.GetRegionCodeForCountryCode(*it, &region_code);
     EXPECT_EQ(RegionCode::UN001(), region_code);
   }
+}
+
+TEST_F(PhoneNumberUtilTest, GetSupportedCallingCodes) {
+  std::set<int> calling_codes;
+
+  phone_util_.GetSupportedCallingCodes(&calling_codes);
+  EXPECT_GT(calling_codes.size(), 0U);
+  for (std::set<int>::const_iterator it = calling_codes.begin();
+       it != calling_codes.end(); ++it) {
+    EXPECT_GT(*it, 0);
+    string region_code;
+    phone_util_.GetRegionCodeForCountryCode(*it, &region_code);
+    EXPECT_NE(RegionCode::ZZ(), region_code);
+  }
+  std::set<int> supported_global_network_calling_codes;
+  phone_util_.GetSupportedGlobalNetworkCallingCodes(
+      &supported_global_network_calling_codes);
+  // There should be more than just the global network calling codes in this
+  // set.
+  EXPECT_GT(calling_codes.size(),
+            supported_global_network_calling_codes.size());
+  // But they should be included. Testing one of them.
+  EXPECT_NE(calling_codes.find(979), calling_codes.end());
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedTypesForRegion) {
@@ -182,7 +205,7 @@ TEST_F(PhoneNumberUtilTest, GetSupportedTypesForNonGeoEntity) {
 }
 
 TEST_F(PhoneNumberUtilTest, GetRegionCodesForCountryCallingCode) {
-  list<string> regions;
+  std::list<string> regions;
 
   phone_util_.GetRegionCodesForCountryCallingCode(1, &regions);
   EXPECT_TRUE(find(regions.begin(), regions.end(), RegionCode::US())

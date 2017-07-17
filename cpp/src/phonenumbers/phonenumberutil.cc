@@ -610,12 +610,12 @@ class PhoneNumberRegExpsAndMappings {
   // example, in China mobile numbers start with a carrier indicator, and beyond
   // that are geographically assigned: this carrier indicator is not considered
   // to be an area code.
-  set<int> geo_mobile_countries_without_mobile_area_codes_;
+  std::set<int> geo_mobile_countries_without_mobile_area_codes_;
 
   // Set of country calling codes that have geographically assigned mobile
   // numbers. This may not be complete; we add calling codes case by case, as we
   // find geographical mobile numbers or hear from user reports.
-  set<int> geo_mobile_countries_;
+  std::set<int> geo_mobile_countries_;
 
   // Pattern that makes it easy to distinguish whether a region has a single
   // international dialing prefix or not. If a region has a single international
@@ -750,11 +750,12 @@ PhoneNumberUtil::PhoneNumberUtil()
     : logger_(Logger::set_logger_impl(new NullLogger())),
       matcher_api_(new RegexBasedMatcher()),
       reg_exps_(new PhoneNumberRegExpsAndMappings),
-      country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
-      nanpa_regions_(new set<string>()),
-      region_to_metadata_map_(new map<string, PhoneMetadata>()),
+      country_calling_code_to_region_code_map_(
+          new std::vector<IntRegionsPair>()),
+      nanpa_regions_(new std::set<string>()),
+      region_to_metadata_map_(new std::map<string, PhoneMetadata>()),
       country_code_to_non_geographical_metadata_map_(
-          new map<int, PhoneMetadata>) {
+          new std::map<int, PhoneMetadata>) {
   Logger::set_logger_impl(logger_.get());
   // TODO: Update the java version to put the contents of the init
   // method inside the constructor as well to keep both in sync.
@@ -765,7 +766,7 @@ PhoneNumberUtil::PhoneNumberUtil()
   }
   // Storing data in a temporary map to make it easier to find other regions
   // that share a country calling code when inserting data.
-  std::map<int, list<string>* > country_calling_code_to_region_map;
+  std::map<int, std::list<string>* > country_calling_code_to_region_map;
   for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
            metadata_collection.metadata().begin();
        it != metadata_collection.metadata().end();
@@ -782,7 +783,7 @@ PhoneNumberUtil::PhoneNumberUtil()
     } else {
       region_to_metadata_map_->insert(std::make_pair(region_code, *it));
     }
-    std::map<int, list<string>* >::iterator calling_code_in_map =
+    std::map<int, std::list<string>* >::iterator calling_code_in_map =
         country_calling_code_to_region_map.find(country_calling_code);
     if (calling_code_in_map != country_calling_code_to_region_map.end()) {
       if (it->main_country_for_code()) {
@@ -817,9 +818,9 @@ PhoneNumberUtil::~PhoneNumberUtil() {
       country_calling_code_to_region_code_map_->end());
 }
 
-void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
+void PhoneNumberUtil::GetSupportedRegions(std::set<string>* regions) const {
   DCHECK(regions);
-  for (map<string, PhoneMetadata>::const_iterator it =
+  for (std::map<string, PhoneMetadata>::const_iterator it =
        region_to_metadata_map_->begin(); it != region_to_metadata_map_->end();
        ++it) {
     regions->insert(it->first);
@@ -827,11 +828,21 @@ void PhoneNumberUtil::GetSupportedRegions(set<string>* regions) const {
 }
 
 void PhoneNumberUtil::GetSupportedGlobalNetworkCallingCodes(
-    set<int>* calling_codes) const {
+    std::set<int>* calling_codes) const {
   DCHECK(calling_codes);
-  for (map<int, PhoneMetadata>::const_iterator it =
+  for (std::map<int, PhoneMetadata>::const_iterator it =
            country_code_to_non_geographical_metadata_map_->begin();
        it != country_code_to_non_geographical_metadata_map_->end(); ++it) {
+    calling_codes->insert(it->first);
+  }
+}
+
+void PhoneNumberUtil::GetSupportedCallingCodes(
+    std::set<int>* calling_codes) const {
+  DCHECK(calling_codes);
+  for (std::vector<IntRegionsPair>::const_iterator it =
+           country_calling_code_to_region_code_map_->begin();
+       it != country_calling_code_to_region_code_map_->end(); ++it) {
     calling_codes->insert(it->first);
   }
 }
@@ -968,7 +979,7 @@ bool PhoneNumberUtil::HasValidCountryCallingCode(
 // if the region code is invalid or unknown.
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
     const string& region_code) const {
-  map<string, PhoneMetadata>::const_iterator it =
+  std::map<string, PhoneMetadata>::const_iterator it =
       region_to_metadata_map_->find(region_code);
   if (it != region_to_metadata_map_->end()) {
     return &it->second;
@@ -978,7 +989,7 @@ const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
 
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForNonGeographicalRegion(
     int country_calling_code) const {
-  map<int, PhoneMetadata>::const_iterator it =
+  std::map<int, PhoneMetadata>::const_iterator it =
       country_code_to_non_geographical_metadata_map_->find(
           country_calling_code);
   if (it != country_code_to_non_geographical_metadata_map_->end()) {
@@ -1736,7 +1747,7 @@ bool PhoneNumberUtil::IsNANPACountry(const string& region_code) const {
 // the case of no region code being found, region_codes will be left empty.
 void PhoneNumberUtil::GetRegionCodesForCountryCallingCode(
     int country_calling_code,
-    list<string>* region_codes) const {
+    std::list<string>* region_codes) const {
   DCHECK(region_codes);
   // Create a IntRegionsPair with the country_code passed in, and use it to
   // locate the pair with the same country_code in the sorted vector.
@@ -1761,7 +1772,7 @@ void PhoneNumberUtil::GetRegionCodeForCountryCode(
     int country_calling_code,
     string* region_code) const {
   DCHECK(region_code);
-  list<string> region_codes;
+  std::list<string> region_codes;
 
   GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
   *region_code = (region_codes.size() > 0) ?
@@ -1772,7 +1783,7 @@ void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
                                              string* region_code) const {
   DCHECK(region_code);
   int country_calling_code = number.country_code();
-  list<string> region_codes;
+  std::list<string> region_codes;
   GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
   if (region_codes.size() == 0) {
     string number_string;
@@ -1791,12 +1802,12 @@ void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
 }
 
 void PhoneNumberUtil::GetRegionCodeForNumberFromRegionList(
-    const PhoneNumber& number, const list<string>& region_codes,
+    const PhoneNumber& number, const std::list<string>& region_codes,
     string* region_code) const {
   DCHECK(region_code);
   string national_number;
   GetNationalSignificantNumber(number, &national_number);
-  for (list<string>::const_iterator it = region_codes.begin();
+  for (std::list<string>::const_iterator it = region_codes.begin();
        it != region_codes.end(); ++it) {
     // Metadata cannot be NULL because the region codes come from the country
     // calling code map.
@@ -1925,9 +1936,9 @@ bool PhoneNumberUtil::GetExampleNumberForType(
     PhoneNumberUtil::PhoneNumberType type,
     PhoneNumber* number) const {
   DCHECK(number);
-  set<string> regions;
+  std::set<string> regions;
   GetSupportedRegions(&regions);
-  for (set<string>::const_iterator it = regions.begin();
+  for (std::set<string>::const_iterator it = regions.begin();
        it != regions.end(); ++it) {
     if (GetExampleNumberForType(*it, type, number)) {
       return true;
@@ -1935,9 +1946,9 @@ bool PhoneNumberUtil::GetExampleNumberForType(
   }
   // If there wasn't an example number for a region, try the non-geographical
   // entities.
-  set<int> global_network_calling_codes;
+  std::set<int> global_network_calling_codes;
   GetSupportedGlobalNetworkCallingCodes(&global_network_calling_codes);
-  for (set<int>::const_iterator it = global_network_calling_codes.begin();
+  for (std::set<int>::const_iterator it = global_network_calling_codes.begin();
        it != global_network_calling_codes.end(); ++it) {
     int country_calling_code = *it;
     const PhoneMetadata* metadata =
@@ -2568,7 +2579,7 @@ int PhoneNumberUtil::GetLengthOfNationalDestinationCode(
 void PhoneNumberUtil::GetCountryMobileToken(int country_calling_code,
                                             string* mobile_token) const {
   DCHECK(mobile_token);
-  map<int, char>::iterator it = reg_exps_->mobile_token_mappings_.find(
+  std::map<int, char>::iterator it = reg_exps_->mobile_token_mappings_.find(
       country_calling_code);
   if (it != reg_exps_->mobile_token_mappings_.end()) {
     *mobile_token = it->second;
