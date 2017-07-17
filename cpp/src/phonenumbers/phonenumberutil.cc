@@ -843,7 +843,7 @@ void PhoneNumberUtil::GetSupportedCallingCodes(set<int>* calling_codes) const {
        it != country_code_to_non_geographical_metadata_map_->end(); ++it) {
     calling_codes->insert(it->first);
   }
-  for (map<int, PhoneMetadata>::const_iterator it =
+  for (vector<IntRegionsPair>::const_iterator it =
            country_calling_code_to_region_code_map_->begin();
        it != country_calling_code_to_region_code_map_->end(); ++it) {
     calling_codes->insert(it->first);
