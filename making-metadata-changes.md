@@ -7,12 +7,11 @@ problems with validation or formatting.
 
 Note that we are currently not accepting validation, formatting, or timezone
 metadata pull requests, but you may use these guidelines to create changes in
-your own fork until we fix issues upstream.
-
-Please file an issue if we should make such fixes.
+your own fork until we fix issues upstream. Please [file a corresponding
+issue](CONTRIBUTING.md#checklist-before-filing-an-issue) with us.
 
 You can read more about the pull request [contribution
-guidelines](http://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md#pull-requests).
+guidelines](CONTRIBUTING.md#pull-requests).
 
 ## Details
 
