@@ -23,14 +23,14 @@ Cream Sandwich).
 
 # Highlights of functionality
 
-*   Parsing / formatting / validating phone numbers for all countries / regions
+*   Parsing, formatting, and validating phone numbers for all countries/regions
     of the world.
 *   `getNumberType` - gets the type of the number based on the number itself;
     able to distinguish Fixed-line, Mobile, Toll-free, Premium Rate, Shared
     Cost, VoIP, Personal Numbers, UAN, Pager, and Voicemail (whenever feasible).
 *   `isNumberMatch` - gets a confidence level on whether two numbers could be
     the same.
-*   `getExampleNumber` / `getExampleNumberByType` - provides valid example
+*   `getExampleNumber` and `getExampleNumberByType` - provide valid example
     numbers for all countries/regions, with the option of specifying which type
     of example phone number is needed.
 *   `isPossibleNumber` - quickly guesses whether a number is a possible
