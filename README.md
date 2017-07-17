@@ -18,8 +18,8 @@ Cream Sandwich).
 *   Look for
     [`README`s](http://github.com/googlei18n/libphonenumber/find/master) in
     directories relevant to the code you're interested in.
-*   For contributors and porters: [How to run the Java demo](run_java_demo.md)
-*   For porters: [How to make metadata changes](making_metadata_changes.md)
+*   For contributors and porters: [How to run the Java demo](run-java-demo.md)
+*   For porters: [How to make metadata changes](making-metadata-changes.md)
 
 # Highlights of functionality
 
