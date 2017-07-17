@@ -5,13 +5,14 @@
 These steps outline how to edit the metadata for the phone number library to fix
 problems with validation or formatting.
 
-Note that we are currently not accepting validation or formatting pull requests,
-but you may use these guidelines to create changes in your own fork until we fix
-issues upstream.
+Note that we are currently not accepting validation, formatting, or timezone
+metadata pull requests, but you may use these guidelines to create changes in
+your own fork until we fix issues upstream.
+
+Please file an issue if we should make such fixes.
 
 You can read more about the pull request [contribution
-guidelines](http://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md#pull-requests)
-and file an issue if we should make validation fixes!
+guidelines](http://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md#pull-requests).
 
 ## Details
 
@@ -30,7 +31,8 @@ Edit the appropriate files:
 
 Note:
 
-*   Include sources for data where appropriate
+*   To track provenance for your own maitenance needs, consider including
+    sources for data where appropriate
 *   If multiple countries share a country calling code, check all of them are
     updated. Formatting rules will only be listed by the country with
     `mainCountryForCode` set to `true`.

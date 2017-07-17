@@ -18,9 +18,8 @@ Cream Sandwich).
 *   Look for
     [`README`s](http://github.com/googlei18n/libphonenumber/find/master) in
     directories relevant to the code you're interested in.
-*   For porters:
-    *   [How to make metadata changes](making_metadata_changes.md)
-    *   [How to run the Java demo](run_java_demo.md)
+*   For contributors and porters: [How to run the Java demo](run_java_demo.md)
+*   For porters: [How to make metadata changes](making_metadata_changes.md)
 
 # Highlights of functionality
 
@@ -28,20 +27,20 @@ Cream Sandwich).
     of the world.
 *   `getNumberType` - gets the type of the number based on the number itself;
     able to distinguish Fixed-line, Mobile, Toll-free, Premium Rate, Shared
-    Cost, VoIP and Personal Numbers  (whenever feasible).
+    Cost, VoIP, Personal Numbers, UAN, Pager, and Voicemail (whenever feasible).
 *   `isNumberMatch` - gets a confidence level on whether two numbers could be
     the same.
 *   `getExampleNumber` / `getExampleNumberByType` - provides valid example
     numbers for all countries/regions, with the option of specifying which type
     of example phone number is needed.
-*   `isPossibleNumber` - quickly guessing whether a number is a possible
+*   `isPossibleNumber` - quickly guesses whether a number is a possible
     phone number by using only the length information, much faster than a full
     validation.
 *   `isValidNumber` - full validation of a phone number for a region using
     length and prefix information.
 *   `AsYouTypeFormatter` - formats phone numbers on-the-fly when users enter
     each digit.
-*   `findNumbers` - finds numbers in text input.
+*   `findNumbers` - finds numbers in text.
 *   `PhoneNumberOfflineGeocoder` - provides geographical information related to
     a phone number.
 *   `PhoneNumberToCarrierMapper` - provides carrier information related to a
@@ -51,9 +50,12 @@ Cream Sandwich).
 
 # Demo
 
-The [Java demo](http://libphonenumber.appspot.com/) is updated periodically,
-with a slight delay after the GitHub release. See the [latest release's version
-number](http://github.com/googlei18n/libphonenumber/releases).
+The [Java demo](http://libphonenumber.appspot.com/) is updated with a slight
+delay after the GitHub release.
+Last demo update: v8.6.0.
+If this number is lower than the [latest release's version
+number](http://github.com/googlei18n/libphonenumber/releases), we are between
+releases and the demo may be at either version.
 
 The [JavaScript
 demo](http://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
@@ -131,9 +133,9 @@ At this point, `swissNumberProto` contains:
 }
 ```
 
-`PhoneNumber` is a class that is auto-generated from `phonenumber.proto` with
-necessary modifications for efficiency. For details on the meaning of each
-field, refer to `resources/phonenumber.proto`.
+`PhoneNumber` is a class that was originally auto-generated from
+`phonenumber.proto` with necessary modifications for efficiency. For details on
+the meaning of each field, refer to `resources/phonenumber.proto`.
 
 Now let us validate whether the number is valid:
 
@@ -171,7 +173,7 @@ System.out.println(formatter.inputDigit('6'));  // Outputs "6"
 System.out.println(formatter.inputDigit('3'));  // Now outputs "650 253"
 ```
 
-## Geocoding Phone Numbers offline
+## Geocoding Phone Numbers
 
 ```java
 PhoneNumberOfflineGeocoder geocoder = PhoneNumberOfflineGeocoder.getInstance();
@@ -183,7 +185,11 @@ System.out.println(geocoder.getDescriptionForNumber(swissNumberProto, Locale.GER
 System.out.println(geocoder.getDescriptionForNumber(swissNumberProto, Locale.ITALIAN));
 ```
 
-## Mapping Phone Numbers to carriers
+## Mapping Phone Numbers to original carriers
+
+Caveat: We do not provide data about the current carrier of a phone number, only
+the original carrier who is assigned the corresponding range. Read about [number
+portability](FAQ.md#what-is-mobile-number-portability).
 
 ```java
 PhoneNumber swissMobileNumber =
