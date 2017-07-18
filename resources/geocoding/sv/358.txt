@@ -22,7 +22,6 @@
 35815|St Michel
 35816|Lappland
 35817|Kuopio
-35818|Åland
 35819|Nyland
 35821|Åbo/Björneborg
 35822|Åbo/Björneborg
