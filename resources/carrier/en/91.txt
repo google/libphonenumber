@@ -390,6 +390,15 @@
 917353|Idea
 917354|Idea
 917355|Videocon
+9173550|Reliance Jio
+9173551|Reliance Jio
+9173552|Reliance Jio
+9173553|Reliance Jio
+9173554|Reliance Jio
+9173555|Reliance Jio
+9173556|Reliance Jio
+9173557|Reliance Jio
+9173559|Reliance Jio
 917356|Aircel
 917357|Hexacom
 917358|Aircel
@@ -2119,6 +2128,11 @@
 9183538|Idea
 9183539|Telewings
 918354|Telewings
+9183558|Reliance Jio
+9183559|Reliance Jio
+9183560|Reliance Jio
+9183568|Reliance Jio
+9183569|Reliance Jio
 918357|Vodafone
 918358|Vodafone
 918359|Vodafone
@@ -2151,6 +2165,7 @@
 9183839|Reliance Jio
 918384|Aircel
 9183840|Reliance Jio
+9183848|Reliance Jio
 918385|Aircel
 918386|Aircel
 918387|Aircel
@@ -2215,6 +2230,7 @@
 9184330|Reliance Jio
 9184331|Reliance Jio
 9184332|Reliance Jio
+9184334|Reliance Jio
 918434|Telewings
 918435|Idea
 918436|Uninor
@@ -2946,7 +2962,7 @@
 919061|Idea
 919062|Idea
 919063|Telewings
-919064|Videocon
+919064|Reliance Jio
 919065|Videocon
 919066|Aircel
 919067|Videocon
@@ -2964,8 +2980,7 @@
 919079|Reliance Jio
 9190794|Idea
 9190795|Idea
-919080|Videocon
-9190805|Reliance Jio
+919080|Reliance Jio
 919081|Videocon
 919082|Reliance Jio
 919083|Vodafone
@@ -3017,13 +3032,7 @@
 9191127|Idea
 9191128|Idea
 9191129|Idea
-919113|Loop Mobile
-9191130|Reliance Jio
-9191132|Reliance Jio
-9191135|Reliance Jio
-9191136|Reliance Jio
-9191138|Reliance Jio
-9191139|Reliance Jio
+919113|Reliance Jio
 919114|Idea
 9191160|Hexacom
 9191161|Airtel
@@ -3050,6 +3059,14 @@
 919121|Telewings
 919122|Telewings
 919123|UNITECH
+9191230|Reliance Jio
+9191231|Reliance Jio
+9191232|Reliance Jio
+9191233|Reliance Jio
+9191234|Reliance Jio
+9191235|Reliance Jio
+9191236|Reliance Jio
+9191239|Reliance Jio
 919124|Tata Docomo
 919125|Telewings
 919126|Idea
@@ -3075,7 +3092,7 @@
 919146|Idea
 919147|Tata Docomo
 919148|Sistema
-919149|Sistema
+919149|Reliance Jio
 919150|Sistema
 919151|Tata Docomo
 919152|Sistema
@@ -3108,7 +3125,7 @@
 919179|Airtel
 919180|Cellone
 919181|Cellone
-919182|Cellone
+919182|Reliance Jio
 919183|Cellone
 919184|Cellone
 919185|Cellone
@@ -3230,7 +3247,7 @@
 919301|Reliance
 919302|Reliance
 919303|Reliance
-919304|Reliance
+919304|Reliance Jio
 919305|Reliance
 919306|Reliance
 919307|Reliance
@@ -3263,10 +3280,10 @@
 919334|Reliance
 919335|Reliance
 919336|Reliance
-919337|Reliance
+919337|Reliance Jio
 919338|Reliance
 919339|Reliance
-919340|Reliance
+919340|Reliance Jio
 919341|Reliance
 919342|Reliance
 919343|Reliance
@@ -3593,6 +3610,12 @@
 919651|Airtel
 919652|Airtel
 919653|Videocon
+9196530|Reliance Jio
+9196531|Reliance Jio
+9196532|Reliance Jio
+9196533|Reliance Jio
+9196534|Reliance Jio
+9196536|Reliance Jio
 919654|Vodafone
 919655|Vodafone
 919656|Idea
@@ -3622,6 +3645,10 @@
 919680|Hexacom
 919681|Reliance
 919682|Cellone
+9196821|Reliance Jio
+9196823|Reliance Jio
+9196825|Reliance Jio
+9196826|Reliance Jio
 919683|Cellone
 919684|Cellone
 919685|Airtel
@@ -3775,6 +3802,7 @@
 919831|Airtel
 919832|Reliance
 919833|Vodafone
+919834|Reliance Jio
 919835|Reliance
 919836|Vodafone
 919837|Idea
@@ -3812,11 +3840,19 @@
 919869|MTNL
 919870|Loop Mobile
 9198700|Reliance Jio
+9198706|Reliance Jio
+9198707|Reliance Jio
+9198708|Reliance Jio
+9198709|Reliance Jio
 919871|Airtel
 919872|Airtel
 919873|Vodafone
 919874|Vodafone
 919875|Sistema
+9198753|Reliance Jio
+9198754|Reliance Jio
+9198755|Reliance Jio
+9198756|Reliance Jio
 919876|Airtel
 919877|Reliance Jio
 919878|Airtel

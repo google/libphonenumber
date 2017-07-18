@@ -1399,6 +1399,25 @@
       </availableFormats>
     </territory>
 
+   <!-- Lao People's Dem. Rep. (LA) -->
+    <territory countryCode="856">
+      <availableFormats>
+        <!-- Alternate widely-used patterns for mobile numbers. -->
+        <numberFormat pattern="(20\d)(\d{3})(\d{4})">
+          <leadingDigits>20</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(20)(\d{4})(\d{4})">
+          <leadingDigits>20</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(20)(\d{8})">
+          <leadingDigits>20</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+    </territory>
+
     <!-- Sri Lanka (LK) -->
     <territory countryCode="94">
       <availableFormats>

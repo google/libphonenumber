@@ -1,3 +1,43 @@
+Jul 18, 2017: v8.7.0
+Code changes:
+ - New method getSupportedCallingCodes() API to return all the calling codes
+   that the library considers valid, both for geographical and non-geographical
+   entities.
+ - Added isSmsServiceForRegion(PhoneNumber, RegionCode) API in C++ and Java
+   short number info libraries. An SMS service is where the primary or only
+   intended usage is to receive and/or send text messages (SMSs). This includes
+   MMS as MMS numbers downgrade to SMS if the other party isn't MMS-capable. The
+   is_sms_service metadata is also serialized for the first time.  JS is not
+   affected because it doesn't have short numbers.
+ - Documentation update for private variables VALID_PUNCTUATION and
+   SINGLE_INTERNATIONAL_PREFIX, also renaming the latter from
+   UNIQUE_INTERNATIONAL_PREFIX.
+ - [Java only] Changing public APIs that take in strings representing phone
+   numbers or parts of phone numbers to take in CharSequence instead. Updating
+   some of the internal methods to do the same. This affects ShortNumberInfo and
+   PhoneNumberUtil, namely the following methods:
+   - parse & parseAndKeepRawInput
+   - formatWithCarrierCode & formatWithPreferredCarrierCode
+   - isNumberMatch
+   - isPossibleNumber
+   - isAlphaNumber
+   - normalizeDigitsOnly & normalizeDiallableCharsOnly
+ - [C++ only] Removing most of the "using std::*" statements in
+   phonenumberutil.h file, leaving only using std::string. Changing the .cc and
+   test files to prefix "std::" where this was missing.
+Metadata changes:
+ - New alternate formatting data for country calling code(s): 856
+ - Updated phone metadata for region code(s):
+   BF, FI, GG, HK, IM, JE, KG, LA, MX, MY, PS, SA, VN, ZW
+ - New short number metadata for region code(s): PS
+ - Updated short number metadata for region code(s): TR, ZA
+ - New geocoding data for country calling code(s): 52 (en), 976 (en)
+ - Updated geocoding data for country calling code(s):
+   84 (en, vi), 223 (en), 358 (en, fi, sv)
+ - Updated carrier data for country calling code(s):
+   40 (en), 44 (en), 91 (en), 226 (en), 966 (en), 996 (en)
+ - Updated / refreshed time zone meta data.
+
 Jul 04, 2017: v8.6.0
 Code changes:
  - Removing leading_zero_possible from the metadata and all the places it is
