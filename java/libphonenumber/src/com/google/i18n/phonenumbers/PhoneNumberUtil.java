@@ -2138,10 +2138,10 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Gets the type of a phone number.
+   * Gets the type of a valid phone number.
    *
    * @param number  the phone number that we want to know the type
-   * @return  the type of the phone number
+   * @return  the type of the phone number, or UNKNOWN if it is invalid
    */
   public PhoneNumberType getNumberType(PhoneNumber number) {
     String regionCode = getRegionCodeForNumber(number);
