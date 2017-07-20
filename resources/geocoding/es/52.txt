@@ -1,10 +1,16 @@
-# Copyright (C) 2017 Pindrop Security, Inc.
+# Copyright (C) 2017 The Libphonenumber Authors
 
-# Licensed under the Google Software Grant and Corporate Contributor License Agreement (the "License");
-# You may not use this file except in compliance with the License.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 
-# https://cla.developers.google.com/clas/new?domain=DOMAIN_GOOGLE&kind=KIND_CORPORATE
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 # Generated from:
 # https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008A0002PDFS.pdf
@@ -17,7 +23,11 @@
 #    p^!q: state
 #   !p^ q: list short names, both states
 #   !p^!q: list short names, state
+#
+# Also, as per online search results and user reports, 52221 area code belongs to
+# Puebla area.
 
+52221|Puebla
 52223|Puebla
 52224|Puebla
 52225|Tlapacoyan, VER
