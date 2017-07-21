@@ -476,7 +476,7 @@ group](https://groups.google.com/group/libphonenumber-discuss):
 *   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
 
-### <a name="#remove_example_number"/>How to remove a specific example number?
+### <a name="#remove_example_number"/>How to remove a specific example number
 
 We supply example numbers as part of the library API. While we aim to have numbers
 that are either explicitly allocated by the country as a test number, or look
