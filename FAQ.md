@@ -1,8 +1,8 @@
 # Frequently Asked Questions (FAQ)
 
-## Parsing
+## <a href="#parsing"/>Parsing
 
-### Why wasn't the country code removed when parsing?
+### <a href="#country_code_not_removed"/>Why wasn't the country code removed when parsing?
 
 In some cases, the library cannot tell if the leading digits of a phone number
 are intended to be the country calling code, or the start of the national
@@ -17,7 +17,7 @@ If you know that your numbers are always in the form &lt;country calling
 code&gt;&lt;national significant number&gt;, it is safe to put a "+" in front to
 indicate this to the library.
 
-### Why does the library treat some non-digit characters as digits?
+### <a href="#non_digits"/>Why does the library treat some non-digit characters as digits?
 
 When parsing, the library does its best to extract a phone number out of the
 given input string. It looks for the phone number in the provided text; it
@@ -34,12 +34,12 @@ Some examples:
 
 *   `+1 412 535 abcd` is parsed the same as `+1 412 535 2223`.
 
-*   If someone fat-fingers and adds an extra alpha character in the *middle*,
+*   If someone mistypes and adds an extra alpha character in the *middle*,
     then the library assumes this was a mistake and fixes it. E.g. the extra `c`
     in `+1 412 535 c0000` is ignored, and this is parsed the same as `+1 412 535
     0000`.
 
-*   If someone fat-fingers and *replaces* a digit in the middle with an alpha
+*   If someone mistypes and *replaces* a digit in the middle with an alpha
     character, and the remaining characters do not make up a valid number, this
     alpha character is not converted and the resulting number is invalid, e.g.
     with `+1 412 535 c000`.
@@ -51,7 +51,7 @@ Other examples, in reports:
 *   [#1199](http://github.com/googlei18n/libphonenumber/issues/1199)
 *   [#1813](http://github.com/googlei18n/libphonenumber/issues/1813)
 
-### Why wasn't the national prefix removed when parsing?
+### <a href="#prefix_not_removed"/>Why wasn't the national prefix removed when parsing?
 
 Usually, when parsing, we remove a country's national or trunk prefix, so we can
 store a normalized form of the number. This is usually, but not always, a
@@ -71,22 +71,22 @@ part of the national number:
     when formatting since other short-codes do not, and we would be irreparably
     changing the phone number.
 
-## Validation and types of numbers
+## <a href="#validation"/>Validation and types of numbers
 
-### What is the difference between isPossibleNumber and isValidNumber?
+### <a href="#possible_vs_valid"/>What is the difference between isPossibleNumber and isValidNumber?
 
 To understand the behavior of functions, please refer to the documentation in
 the Javadoc/C++ header files. For example, see `isPossibleNumberWithReason` in
 [`PhoneNumberUtil`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
 
-### Why does PhoneNumberUtil return false for valid short numbers?
+### <a href="#short_numbers"/>Why does PhoneNumberUtil return false for valid short numbers?
 
 Short numbers are out of scope of
 [`PhoneNumberUtil`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
 For short numbers, use
 [`ShortNumberInfo`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/ShortNumberInfo.java).
 
-### What does it mean for a phone number to be valid?
+### <a href="#what_is_valid"/>What does it mean for a phone number to be valid?
 
 Our phone number library can tell that a number range is valid when there is
 sufficient official documentation, with some latency after this fact is brought
@@ -102,7 +102,7 @@ phone call with a verification code). This is not technically feasible without
 such a verification step given the complicated international world we live in,
 with varying standardization practices in different regions.
 
-#### But my dialled number connected, so isn't it valid?
+#### <a href="#why_not_valid"/>But my dialled number connected, so isn't it valid?
 
 Not necessarily. In some countries extra digits at the end are ignored. For
 example, dialling `1800 MICROSOFT` in the US connects to `+1 (800) MIC-ROSO`.
@@ -110,7 +110,7 @@ Moreover, during renumbering transitions, e.g. when all numbers are getting an
 extra `9` added to the front, some carriers will "fix" old numbers long after
 they're no longer working for the majority.
 
-### When should I use isValidNumberForRegion?
+### <a href="#isvalidnumberforregion"/>When should I use isValidNumberForRegion?
 
 Rarely! Many people have phone numbers that do not belong to the country they
 live in. This applies particularly to mobile numbers, but may also be true
@@ -124,27 +124,27 @@ One use-case where this method may be useful is if you want to see if a
 `FIXED_LINE` number for a business matches the country it is in, to try and spot
 data errors.
 
-### What types of phone numbers can SMSs be sent to?
+### <a href="#sms_sending"/>What types of phone numbers can SMSs be sent to?
 
 SMSs can be sent to `MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
 in some countries it is possible to configure other types, such as normal
 land-lines, to receive SMSs.
 
-### <a name="fixed_line_or_mobile"></a>Why did I get `FIXED_LINE_OR_MOBILE` as the type of my phone number?
+### <a name="#fixed_line_or_mobile"/>Why did I get `FIXED_LINE_OR_MOBILE` as the type of my phone number?
 
 Some number ranges are explicitly defined as being for fixed-line or mobile
 phones. We even represent ranges defined as being "Mostly land-line" in this
 way.
 
-### What is mobile number portability?
+### <a name="#portability"/>What is mobile number portability?
 
 The ability to keep your mobile phone number when changing carriers. To see whether a region supports mobile number portability use [isMobileNumberPortableRegion](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java#L3275).
 
-### Since it's possible to change the carrier for a phone number, how is the data kept up-to-date?
+### <a name="#carrier_changes"/>Since it's possible to change the carrier for a phone number, how is the data kept up-to-date?
 
 Not all regions support mobile number portability. For those that don't, we return the carrier when available. For those that do, we return the original carrier for the supplied number.
 
-### What about M2M (machine to machine) numbers?
+### <a name="#m2m"/>What about M2M (machine to machine) numbers?
 
 libphonenumber does not support M2M numbers at the moment, but might in the
 future.
@@ -192,9 +192,9 @@ Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphon
 [#351: Norway](https://github.com/googlei18n/libphonenumber/issues/351),
 [#332: Netherlands](https://github.com/googlei18n/libphonenumber/issues/332)
 
-## Representation
+## <a name="#representation"/>Representation
 
-### What is the maximum and minimum length of a phone number?
+### <a name="#max_length"/>What is the maximum and minimum length of a phone number?
 
 We support parsing and storing numbers from a minimum length of two digits to a
 maximum length of 17 digits currently (excluding country calling code). The ITU
@@ -202,9 +202,9 @@ standard says the national significant number should not be longer than
 fifteen digits, but empirically this has been proven not to be followed by all
 countries.
 
-## Formatting
+## <a name="#formatting"/>Formatting
 
-### Can / should we format phone numbers in a language-specific way?
+### <a name="#language_specific_format"/>Can / should we format phone numbers in a language-specific way?
 
 No, phone number formatting is country-specific and language-independent. E.g.
 formatting a US number in a French way (e.g. the way a France number is
@@ -214,7 +214,7 @@ It is true that in some countries phone numbers are typically written using
 native, not ASCII, digits; our phone number library supports parsing these but
 doesn't support it at formatting time at the moment.
 
-### Why does formatNumberForMobileDialing return an empty string for my number?
+### <a name="#empty_format_result"/>Why does formatNumberForMobileDialing return an empty string for my number?
 
 If we don't think we can guarantee that the number is diallable from the user's
 mobile phone, we won't return anything. This means that for numbers that we
@@ -225,9 +225,9 @@ time then we will return an empty string. If you get an empty string and are
 okay providing a number that may not be diallable, you can call another of our
 formatting numbers instead.
 
-## Metadata
+## <a name="#metadata"/>Metadata
 
-### <a name="metadata_definition"></a>What do we mean by "metadata"?
+### <a name="#metadata_definition"/>What do we mean by "metadata"?
 
 We use the word "metadata" to refer to all information about phone numbering in
 a particular country - what the country code, international and national
@@ -235,7 +235,7 @@ dialling prefixes are, what carrier codes are operational, which phone numbers
 are possible or valid for a particular country, how to optimally format them,
 which prefixes represent a particular geographical area, etc.
 
-### Where do we get information from to determine if a number range is valid?
+### <a name="#metadata_sources"/>Where do we get information from to determine if a number range is valid?
 
 In theory, phone numbering plans are all supposed to be administered through the
 ITU. Many countries' phone numbering plans may be found on the [ITU website](
@@ -262,7 +262,7 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
-### Why is this number from Argentina (AR) or Mexico (MX) not identified as the right number type?
+### <a name="#mx_and_ar"/>Why is this number from Argentina (AR) or Mexico (MX) not identified as the right number type?
 
 Certain countries' mobile and/or fixed line ranges may overlap, which may make
 accurate identification impossible without additional and explicit context such
@@ -311,7 +311,7 @@ IMPORTANT: Do not add a leading 1 or 9 for displaying or formatting the numbers.
 Depending on the use case, other tokens may be needed. The library will do the
 right thing if the phone number object is as intended.
 
-### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
+### <a name="#unsupported"/>Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
 
 We only support a country if:
 
@@ -346,7 +346,7 @@ calling codes that are only "reserved", or that no data is available for (namely
 a proposed new international telecommunication public correspondence service,
 shared code".)
 
-### Why are Indonesian toll-free numbers beginning with "00x 803" not supported?
+### <a name="#indonesia_tollfree"/>Why are Indonesian toll-free numbers beginning with "00x 803" not supported?
 
 Although some numbers beginning with "001 803" or "007 803" do work in Indonesia
 to reach toll-free endpoints, these numbers are hard to support because they
@@ -364,9 +364,9 @@ section, and it is likely some changes in the parsing code would have to be
 made to interpret the "00x" as something other than an IDD: this could have
 undesirable side-effects when parsing other numbers.
 
-## Misc
+## <a name="#misc"/>Misc
 
-### <a name="reduced_metadata"></a>What is the metadatalite.js/METADATA_LITE option?
+### <a name="#reduced_metadata"/>What is the metadatalite.js/METADATA_LITE option?
 
 For JavaScript, Java and C++ there is the option to use a stripped-down version
 of the metadata. Currently this only removes the example number metadata, so the
@@ -391,7 +391,7 @@ The metadata binary files can be generated using the ant build rules
 file](https://github.com/googlei18n/libphonenumber/blob/master/java/build.xml)
 itself.
 
-### Which versions of the Maven jars should I use?
+### <a name="#maven"/>Which versions of the Maven jars should I use?
 
 When possible, use the [latest
 version](https://github.com/googlei18n/libphonenumber/releases) of
@@ -411,7 +411,7 @@ version of libphonenumber, follow these steps:
 *   If you depend on the carrier or geocoder jar, you also need to depend on
         the prefixmapper jar.
 
-### How do I load libphonenumber resources in my Android app?
+### <a name="#android"/>How do I load libphonenumber resources in my Android app?
 
 #### System considerations
 
@@ -454,7 +454,7 @@ You also need to copy the binary metadata files into your app's asset directory,
 automate updating them from upstream. To avoid net increase of app size, remove them
 from libphonenumber.
 
-### What about Windows?
+### <a name="#windows"/>What about Windows?
 
 The libphonenumber team's support of the C++ library on Windows is primarily to
 support Chromium's build environment, and we depend on the community to support
@@ -476,7 +476,7 @@ group](https://groups.google.com/group/libphonenumber-discuss):
 *   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
 
-### How to remove a specific example number?
+### <a name="#remove_example_number"/>How to remove a specific example number?
 
 We supply example numbers as part of the library API. While we aim to have numbers
 that are either explicitly allocated by the country as a test number, or look
