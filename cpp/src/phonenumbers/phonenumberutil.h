@@ -422,7 +422,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // be successfully extracted.
   bool TruncateTooLongNumber(PhoneNumber* number) const;
 
-  // Gets the type of a phone number.
+  // Gets the type of a valid phone number, or UNKNOWN if it is invalid.
   PhoneNumberType GetNumberType(const PhoneNumber& number) const;
 
   // Tests whether a phone number matches a valid pattern. Note this doesn't

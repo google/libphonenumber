@@ -2807,11 +2807,12 @@ i18n.phonenumbers.PhoneNumberUtil.getNumberDescByType_ =
 
 
 /**
- * Gets the type of a phone number.
+ * Gets the type of a valid phone number.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the phone number that we want
  *     to know the type.
- * @return {i18n.phonenumbers.PhoneNumberType} the type of the phone number.
+ * @return {i18n.phonenumbers.PhoneNumberType} the type of the phone number, or
+ *     UNKNOWN if it is invalid.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberType =
     function(number) {

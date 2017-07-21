@@ -1,1 +1,2 @@
-
+Code changes:
+ - Documentation fix for getNumberType
