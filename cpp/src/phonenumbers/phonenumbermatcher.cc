@@ -53,7 +53,7 @@
 
 #ifdef I18N_PHONENUMBERS_USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"
-#endif  // I18N_PHONENUMBERS_USE_RE2_AND_ICU
+#endif  // I18N_PHONENUMBERS_USE_RE2
 
 using std::map;
 using std::numeric_limits;
