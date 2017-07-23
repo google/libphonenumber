@@ -12,17 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+421901|Telekom
+421902|Telekom
 421903|Telekom
 421904|Telekom
 421905|Orange
 421906|Orange
 421907|Orange
 421908|Orange
+421910|Telekom
+421911|Telekom
+421912|Telekom
+421914|Telekom
 421915|Orange
 421916|Orange
 421917|Orange
 421918|Orange
+421919|Orange
 421940|O2
 421944|O2
 421948|O2
 421949|O2
+421950|4ka of SWAN

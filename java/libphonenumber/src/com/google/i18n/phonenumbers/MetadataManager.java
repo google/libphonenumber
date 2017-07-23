@@ -16,16 +16,16 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
+import com.google.protobuf.nano.CodedInputByteBufferNano;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -71,16 +71,35 @@ class MetadataManager {
     }
   }
 
+  // The size of the byte buffer used for deserializing the alternate formats and short number
+  // metadata files for each region.
+  private static final int BUFFER_SIZE = 16 * 1024;
+
+  static CodedInputByteBufferNano convertStreamToByteBuffer(ObjectInputStream in, int bufferSize)
+      throws IOException {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    int nRead;
+    byte[] data = new byte[bufferSize];
+
+    while ((nRead = in.read(data, 0, bufferSize)) != -1) {
+      outputStream.write(data, 0, nRead);
+    }
+
+    outputStream.flush();
+    return CodedInputByteBufferNano.newInstance(outputStream.toByteArray());
+  }
+
   private static void loadAlternateFormatsMetadataFromFile(int countryCallingCode) {
     InputStream source = PhoneNumberMatcher.class.getResourceAsStream(
         ALTERNATE_FORMATS_FILE_PREFIX + "_" + countryCallingCode);
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
+      CodedInputByteBufferNano byteBuffer = convertStreamToByteBuffer(in, BUFFER_SIZE);
       PhoneMetadataCollection alternateFormats = new PhoneMetadataCollection();
-      alternateFormats.readExternal(in);
-      for (PhoneMetadata metadata : alternateFormats.getMetadataList()) {
-        callingCodeToAlternateFormatsMap.put(metadata.getCountryCode(), metadata);
+      alternateFormats.mergeFrom(byteBuffer);
+      for (PhoneMetadata metadata : alternateFormats.metadata) {
+        callingCodeToAlternateFormatsMap.put(metadata.countryCode, metadata);
       }
     } catch (IOException e) {
       LOGGER.log(Level.WARNING, e.toString());
@@ -107,9 +126,10 @@ class MetadataManager {
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
+      CodedInputByteBufferNano byteBuffer = convertStreamToByteBuffer(in, BUFFER_SIZE);
       PhoneMetadataCollection shortNumberMetadata = new PhoneMetadataCollection();
-      shortNumberMetadata.readExternal(in);
-      for (PhoneMetadata metadata : shortNumberMetadata.getMetadataList()) {
+      shortNumberMetadata.mergeFrom(byteBuffer);
+      for (PhoneMetadata metadata : shortNumberMetadata.metadata) {
         regionCodeToShortNumberMetadataMap.put(regionCode, metadata);
       }
     } catch (IOException e) {

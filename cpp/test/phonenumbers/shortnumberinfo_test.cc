@@ -36,8 +36,10 @@ class ShortNumberInfoTest : public testing::Test {
   PhoneNumber ParseNumberForTesting(const string& number,
                                     const string& region_code) {
     PhoneNumber phone_number;
-    CHECK_EQ(phone_util_.Parse(number, region_code, &phone_number),
-             PhoneNumberUtil::NO_PARSING_ERROR);
+    PhoneNumberUtil::ErrorType error_type = phone_util_.Parse(
+                                           number, region_code, &phone_number);
+    CHECK_EQ(error_type, PhoneNumberUtil::NO_PARSING_ERROR);
+    IGNORE_UNUSED(error_type);
     return phone_number;
   }
 
@@ -462,6 +464,19 @@ TEST_F(ShortNumberInfoTest, OverlappingNANPANumber) {
       ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCostForRegion(
           ParseNumberForTesting("211", RegionCode::CA()), RegionCode::CA()));
+}
+
+TEST_F(ShortNumberInfoTest, CountryCallingCodeIsNotIgnored) {
+  // +46 is the country calling code for Sweden (SE), and 40404 is a valid short
+  // number in the US.
+  EXPECT_FALSE(short_info_.IsPossibleShortNumberForRegion(
+      ParseNumberForTesting("+4640404", RegionCode::SE()), RegionCode::US()));
+  EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
+      ParseNumberForTesting("+4640404", RegionCode::SE()), RegionCode::US()));
+  EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
+            short_info_.GetExpectedCostForRegion(
+                ParseNumberForTesting("+4640404", RegionCode::SE()),
+                RegionCode::US()));
 }
 
 }  // namespace phonenumbers

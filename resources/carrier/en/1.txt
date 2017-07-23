@@ -22,10 +22,19 @@
 1246252|LIME
 1246253|LIME
 1246254|LIME
+1246255|LIME
+1246256|Digicel
+1246257|Digicel
 1246258|Digicel
+1246259|Digicel
 124626|Digicel
+124628|LIME
 124645|Sunbeach Communications
 124682|Digicel
+124683|Digicel
+124684|Digicel
+124685|Digicel
+1246883|Digicel
 1264536|Weblinks Limited
 1264537|Weblinks Limited
 1264538|Weblinks Limited
@@ -65,6 +74,7 @@
 1684254|Blue Sky
 1684256|Blue Sky
 1684258|Blue Sky
+1684272|Blue Sky
 1684731|ASTCA
 1684733|ASTCA
 1684770|ASTCA
@@ -388,6 +398,7 @@
 180997|Orange
 180998|Orange
 180999|Tricom
+186827|Digicel
 186828|Digicel
 186829|Digicel
 18683|Digicel
@@ -398,6 +409,7 @@
 186956|The Cable St. Kitts
 186966|Cable & Wireless
 186976|Digicel
+187626|Digicel
 1876503|Digicel
 1876504|Digicel
 1876505|Digicel

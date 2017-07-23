@@ -12,5 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-24205|Airtel
-24206|Libertis Telecom
+24201|Equateur Telecom
+24204|Warid
+24205|Celtel
+24206|MTN
+2428001|Hightech Pro

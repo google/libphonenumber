@@ -17,8 +17,8 @@
 package com.google.i18n.phonenumbers;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
-import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
 
 import junit.framework.TestCase;
 
@@ -142,10 +142,10 @@ public class ExampleNumbersTest extends TestCase {
     for (String regionCode : phoneNumberUtil.getSupportedRegions()) {
       PhoneNumber exampleNumber = null;
       PhoneNumberDesc desc =
-          phoneNumberUtil.getMetadataForRegion(regionCode).getNoInternationalDialling();
+          phoneNumberUtil.getMetadataForRegion(regionCode).noInternationalDialling;
       try {
-        if (desc.hasExampleNumber()) {
-          exampleNumber = phoneNumberUtil.parse(desc.getExampleNumber(), regionCode);
+        if (!desc.exampleNumber.equals("")) {
+          exampleNumber = phoneNumberUtil.parse(desc.exampleNumber, regionCode);
         }
       } catch (NumberParseException e) {
         LOGGER.log(Level.SEVERE, e.toString());
@@ -216,9 +216,9 @@ public class ExampleNumbersTest extends TestCase {
     int wrongTypeCounter = 0;
     for (String regionCode : shortNumberInfo.getSupportedRegions()) {
       PhoneNumberDesc desc =
-          MetadataManager.getShortNumberMetadataForRegion(regionCode).getEmergency();
-      if (desc.hasExampleNumber()) {
-        String exampleNumber = desc.getExampleNumber();
+          MetadataManager.getShortNumberMetadataForRegion(regionCode).emergency;
+      if (!desc.exampleNumber.equals("")) {
+        String exampleNumber = desc.exampleNumber;
         PhoneNumber phoneNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
         if (!shortNumberInfo.isPossibleShortNumberForRegion(phoneNumber, regionCode)
             || !shortNumberInfo.isEmergencyNumber(exampleNumber, regionCode)) {
@@ -239,9 +239,9 @@ public class ExampleNumbersTest extends TestCase {
     for (String regionCode : shortNumberInfo.getSupportedRegions()) {
       // Test the carrier-specific tag.
       PhoneNumberDesc desc =
-          MetadataManager.getShortNumberMetadataForRegion(regionCode).getCarrierSpecific();
-      if (desc.hasExampleNumber()) {
-        String exampleNumber = desc.getExampleNumber();
+          MetadataManager.getShortNumberMetadataForRegion(regionCode).carrierSpecific;
+      if (!desc.exampleNumber.equals("")) {
+        String exampleNumber = desc.exampleNumber;
         PhoneNumber carrierSpecificNumber = phoneNumberUtil.parse(exampleNumber, regionCode);
         if (!shortNumberInfo.isPossibleShortNumberForRegion(carrierSpecificNumber, regionCode)
             || !shortNumberInfo.isCarrierSpecific(carrierSpecificNumber)) {

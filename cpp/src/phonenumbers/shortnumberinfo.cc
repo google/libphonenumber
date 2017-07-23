@@ -16,6 +16,7 @@
 
 #include "phonenumbers/shortnumberinfo.h"
 
+#include <algorithm>
 #include <string.h>
 #include <iterator>
 #include <map>
@@ -93,6 +94,18 @@ bool MatchesPossibleNumberAndNationalNumber(
 }
 }  // namespace
 
+// Helper method to check that the country calling code of the number matches
+// the region it's being dialed from.
+bool ShortNumberInfo::RegionDialingFromMatchesNumber(const PhoneNumber& number,
+    const string& region_dialing_from) const {
+  list<string> region_codes;
+  phone_util_.GetRegionCodesForCountryCallingCode(number.country_code(),
+                                                  &region_codes);
+  return std::find(region_codes.begin(),
+                   region_codes.end(),
+                   region_dialing_from) != region_codes.end();
+}
+
 bool ShortNumberInfo::IsPossibleShortNumberForRegion(
     const string& short_number, const string& region_dialing_from) const {
   const PhoneMetadata* phone_metadata =
@@ -106,6 +119,9 @@ bool ShortNumberInfo::IsPossibleShortNumberForRegion(
 
 bool ShortNumberInfo::IsPossibleShortNumberForRegion(const PhoneNumber& number,
     const string& region_dialing_from) const {
+  if (!RegionDialingFromMatchesNumber(number, region_dialing_from)) {
+    return false;
+  }
   const PhoneMetadata* phone_metadata =
       GetMetadataForRegion(region_dialing_from);
   if (!phone_metadata) {
@@ -126,6 +142,9 @@ bool ShortNumberInfo::IsPossibleShortNumber(const PhoneNumber& number) const {
   for (list<string>::const_iterator it = region_codes.begin();
        it != region_codes.end(); ++it) {
     const PhoneMetadata* phone_metadata = GetMetadataForRegion(*it);
+    if (!phone_metadata) {
+      continue;
+    }
     if (matcher_api_->MatchesPossibleNumber(short_number,
                                             phone_metadata->general_desc())) {
       return true;
@@ -153,6 +172,9 @@ bool ShortNumberInfo::IsValidShortNumberForRegion(
 
 bool ShortNumberInfo::IsValidShortNumberForRegion(
     const PhoneNumber& number, const string& region_dialing_from) const {
+  if (!RegionDialingFromMatchesNumber(number, region_dialing_from)) {
+    return false;
+  }
   const PhoneMetadata* phone_metadata =
       GetMetadataForRegion(region_dialing_from);
   if (!phone_metadata) {
@@ -214,6 +236,9 @@ ShortNumberInfo::ShortNumberCost ShortNumberInfo::GetExpectedCostForRegion(
 
 ShortNumberInfo::ShortNumberCost ShortNumberInfo::GetExpectedCostForRegion(
     const PhoneNumber& number, const string& region_dialing_from) const {
+  if (!RegionDialingFromMatchesNumber(number, region_dialing_from)) {
+    return ShortNumberInfo::UNKNOWN_COST;
+  }
   const PhoneMetadata* phone_metadata =
       GetMetadataForRegion(region_dialing_from);
   if (!phone_metadata) {

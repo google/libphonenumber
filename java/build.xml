@@ -45,6 +45,21 @@
     </exec>
   </target>
 
+  <target name="build-single-file-phone-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadata.xml"/>
+      <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/SingleFilePhoneNumberMetadataProto"/>
+      <arg value="--single-file=true"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
   <target name="build-short-metadata">
     <exec executable="java">
       <arg value="-jar" />
@@ -73,6 +88,21 @@
     </exec>
   </target>
 
+  <target name="build-single-file-test-metadata">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
+      <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/SingleFilePhoneNumberMetadataProtoForTesting"/>
+      <arg value="--single-file=true"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
   <target name="build-alternate-metadata">
     <exec executable="java">
       <arg value="-jar" />
@@ -88,6 +118,7 @@
   </target>
 
   <target name="build-carrier-data">
+    <delete dir="carrier/src/com/google/i18n/phonenumbers/carrier/data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -98,6 +129,7 @@
   </target>
 
   <target name="build-carrier-test-data">
+    <delete dir="carrier/test/com/google/i18n/phonenumbers/carrier/testing_data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -108,6 +140,7 @@
   </target>
 
   <target name="build-geo-data">
+    <delete dir="geocoder/src/com/google/i18n/phonenumbers/geocoding/data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
@@ -118,6 +151,7 @@
   </target>
 
   <target name="build-geo-test-data">
+    <delete dir="geocoder/test/com/google/i18n/phonenumbers/geocoding/testing_data"/>
     <exec executable="java">
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>

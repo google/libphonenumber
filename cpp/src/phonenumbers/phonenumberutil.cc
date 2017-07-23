@@ -1061,9 +1061,8 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
     string* formatted_number) const {
   DCHECK(formatted_number);
   if (!IsValidRegionCode(calling_from)) {
-    LOG(WARNING) << "Trying to format number from invalid region "
-                 << calling_from
-                 << ". International formatting applied.";
+    VLOG(1) << "Trying to format number from invalid region " << calling_from
+            << ". International formatting applied.";
     Format(number, INTERNATIONAL, formatted_number);
     return;
   }
@@ -1377,9 +1376,10 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
     // Invalid region entered as country-calling-from (so no metadata was found
     // for it) or the region chosen has multiple international dialling
     // prefixes.
-    LOG(WARNING) << "Trying to format number from invalid region "
-                 << calling_from
-                 << ". International formatting applied.";
+    if (!IsValidRegionCode(calling_from)) {
+      VLOG(1) << "Trying to format number from invalid region " << calling_from
+              << ". International formatting applied.";
+    }
     formatted_number->assign(raw_input_copy);
     PrefixNumberWithCountryCallingCode(country_code, INTERNATIONAL,
                                        formatted_number);
@@ -1581,9 +1581,9 @@ void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
   if (region_codes.size() == 0) {
     string number_string;
     GetNationalSignificantNumber(number, &number_string);
-    LOG(WARNING) << "Missing/invalid country calling code ("
-                 << country_calling_code
-                 << ") for number " << number_string;
+    VLOG(1) << "Missing/invalid country calling code ("
+            << country_calling_code
+            << ") for number " << number_string;
     *region_code = RegionCode::GetUnknown();
     return;
   }

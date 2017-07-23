@@ -129,14 +129,14 @@ Requirements:
     Note: Boost Thread is the only library needed at link time.
 
 
-Building the library
---------------------
+Building and testing the library
+--------------------------------
   $ cd libphonenumber/cpp
   $ mkdir build
   $ cd build
   $ cmake ..
   $ make
-
+  $ ./libphonenumber_test
 
 Troubleshooting CMake via ccmake
 --------------------------------

@@ -18,6 +18,9 @@
 
 package com.google.phonenumbers;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.util.Locale.ENGLISH;
+
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
@@ -26,6 +29,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 
 import org.apache.commons.fileupload.FileItemIterator;
@@ -34,9 +38,12 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
@@ -53,6 +60,7 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class PhoneNumberParserServlet extends HttpServlet {
   private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+  private ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
     String defaultCountry = null;
@@ -69,7 +77,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         if (item.isFormField()) {
           String fieldName = item.getFieldName();
           if (fieldName.equals("phoneNumber")) {
-            phoneNumber = Streams.asString(in, "UTF-8");
+            phoneNumber = Streams.asString(in, UTF_8.name());
           } else if (fieldName.equals("defaultCountry")) {
             defaultCountry = Streams.asString(in).toUpperCase();
           } else if (fieldName.equals("languageCode")) {
@@ -93,31 +101,44 @@ public class PhoneNumberParserServlet extends HttpServlet {
     }
 
     StringBuilder output;
-    if (fileContents.length() == 0) {
-      output = getOutputForSingleNumber(phoneNumber, defaultCountry, languageCode, regionCode);
-      resp.setContentType("text/html");
-      resp.setCharacterEncoding("UTF-8");
-      resp.getWriter().println("<html><head>");
-      resp.getWriter().println(
-          "<link type=\"text/css\" rel=\"stylesheet\" href=\"/stylesheets/main.css\" />");
-      resp.getWriter().println("</head>");
-      resp.getWriter().println("<body>");
-      resp.getWriter().println("Phone Number entered: " + phoneNumber + "<br>");
-      resp.getWriter().println("defaultCountry entered: " + defaultCountry + "<br>");
-      resp.getWriter().println(
-          "Language entered: " + languageCode +
-              (regionCode.length() == 0 ? "" : " (" + regionCode + ")" + "<br>"));
+    resp.setContentType("text/html");
+    resp.setCharacterEncoding(UTF_8.name());
+    if (fileContents == null || fileContents.length() == 0) {
+      // Redirect to a URL with the given input encoded in the query parameters.
+      Locale geocodingLocale = new Locale(languageCode, regionCode);
+      resp.sendRedirect(getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale,
+          false /* absoluteURL */));
     } else {
-      output = getOutputForFile(defaultCountry, fileContents);
-      resp.setContentType("text/html");
+      resp.getWriter().println(getOutputForFile(defaultCountry, fileContents));
     }
-    resp.getWriter().println(output);
-    resp.getWriter().println("</body></html>");
+  }
+
+  /**
+   * Handle the get request to get information about a number based on query parameters.
+   */
+  public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    String phoneNumber = req.getParameter("number");
+    if (phoneNumber == null) {
+      phoneNumber = "";
+    }
+    String defaultCountry = req.getParameter("country");
+    if (defaultCountry == null) {
+      defaultCountry = "";
+    }
+    String geocodingParam = req.getParameter("geocodingLocale");
+    Locale geocodingLocale;
+    if (geocodingParam == null) {
+      geocodingLocale = ENGLISH;  // Default languageCode to English if nothing is entered.
+    } else {
+      geocodingLocale = Locale.forLanguageTag(geocodingParam);
+    }
+    resp.getWriter().println(
+        getOutputForSingleNumber(phoneNumber, defaultCountry, geocodingLocale));
   }
 
   private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
-    StringBuilder output = new StringBuilder();
-    output.append("<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:"
+    StringBuilder output = new StringBuilder(
+        "<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:"
         + "</TITLE></HEAD><BODY>");
     output.append("<TABLE align=center border=1>");
     output.append("<TH align=center>ID</TH>");
@@ -132,7 +153,8 @@ public class PhoneNumberParserServlet extends HttpServlet {
       phoneNumberId++;
       output.append("<TR>");
       output.append("<TD align=center>").append(phoneNumberId).append(" </TD> \n");
-      output.append("<TD align=center>").append(numberStr).append(" </TD> \n");
+      output.append("<TD align=center>").append(
+          StringEscapeUtils.escapeHtml(numberStr)).append(" </TD> \n");
       try {
         PhoneNumber number = phoneUtil.parseAndKeepRawInput(numberStr, defaultCountry);
         boolean isNumberValid = phoneUtil.isValidNumber(number);
@@ -143,10 +165,13 @@ public class PhoneNumberParserServlet extends HttpServlet {
             ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL)
             : "invalid";
 
-        output.append("<TD align=center>").append(prettyFormat).append(" </TD> \n");
-        output.append("<TD align=center>").append(internationalFormat).append(" </TD> \n");
+        output.append("<TD align=center>").append(
+            StringEscapeUtils.escapeHtml(prettyFormat)).append(" </TD> \n");
+        output.append("<TD align=center>").append(
+            StringEscapeUtils.escapeHtml(internationalFormat)).append(" </TD> \n");
       } catch (NumberParseException e) {
-        output.append("<TD align=center colspan=2>").append(e.toString()).append(" </TD> \n");
+        output.append("<TD align=center colspan=2>").append(
+            StringEscapeUtils.escapeHtml(e.toString())).append(" </TD> \n");
       }
       output.append("</TR>");
     }
@@ -162,13 +187,89 @@ public class PhoneNumberParserServlet extends HttpServlet {
   }
 
   /**
-   * The defaultCountry here is used for parsing phoneNumber. The languageCode and regionCode are
-   * used to specify the language used for displaying the area descriptions generated from phone
-   * number geocoding.
+   * Returns a stable URL pointing to the result page for the given input.
+   */
+  private String getPermaLinkURL(
+      String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
+    // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
+    StringBuilder permaLink = new StringBuilder(
+        absoluteURL ? "http://libphonenumber.appspot.com/phonenumberparser" : "/phonenumberparser");
+    try {
+      permaLink.append(
+          "?number=" + URLEncoder.encode(phoneNumber != null ? phoneNumber : "", UTF_8.name()));
+      if (defaultCountry != null && !defaultCountry.isEmpty()) {
+        permaLink.append("&country=" + URLEncoder.encode(defaultCountry, UTF_8.name()));
+      }
+      if (!geocodingLocale.getLanguage().equals(ENGLISH.getLanguage()) ||
+          !geocodingLocale.getCountry().isEmpty()) {
+        permaLink.append("&geocodingLocale=" +
+            URLEncoder.encode(geocodingLocale.toLanguageTag(), UTF_8.name()));
+      }
+    } catch(UnsupportedEncodingException e) {
+      // UTF-8 is guaranteed in Java, so this should be impossible.
+      throw new AssertionError(e);
+    }
+    return permaLink.toString();
+  }
+
+  /**
+   * Returns a link to create a new github issue with the relevant information.
+   */
+  private String getNewIssueLink(
+      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
+    boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
+    String issueTitle = "Validation issue with " + phoneNumber
+        + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
+
+    // Issue template. This must be kept in sync with the template in
+    // https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md.
+    StringBuilder issueTemplate = new StringBuilder(
+        "Please read the \"guidelines for contributing\" (linked above) and fill "
+        + "in the template below.\n\n");
+    issueTemplate.append("Country/region affected (e.g., \"US\"): ")
+        .append(defaultCountry).append("\n\n");
+    issueTemplate.append("Example number(s) affected (\"+1 555 555-1234\"): ")
+        .append(phoneNumber).append("\n\n");
+    issueTemplate.append(
+        "The phone number range(s) to which the issue applies (\"+1 555 555-XXXX\"): \n\n");
+    issueTemplate.append(
+        "The type of the number(s) (\"fixed-line\", \"mobile\", \"short code\", etc.): \n\n");
+    issueTemplate.append(
+        "The cost, if applicable (\"toll-free\", \"premium rate\", \"shared cost\"): \n\n");
+    issueTemplate.append(
+        "Supporting evidence (for example, national numbering plan, announcement from mobile "
+        + "carrier, news article): **IMPORTANT - anything posted here is made public. "
+        + "Read the guidelines first!** \n\n");
+    issueTemplate.append("[link to demo]("
+        + getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale, true /* absoluteURL */)
+        + ")\n\n");
+    String newIssueLink = "https://github.com/googlei18n/libphonenumber/issues/new?title=";
+    try {
+      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name()) + "&body="
+        + URLEncoder.encode(issueTemplate.toString(), UTF_8.name());
+    } catch(UnsupportedEncodingException e) {
+      // UTF-8 is guaranteed in Java, so this should be impossible.
+      throw new AssertionError(e);
+    }
+    return newIssueLink;
+  }
+
+  /**
+   * The defaultCountry here is used for parsing phoneNumber. The geocodingLocale is used to specify
+   * the language used for displaying the area descriptions generated from phone number geocoding.
    */
   private StringBuilder getOutputForSingleNumber(
-      String phoneNumber, String defaultCountry, String languageCode, String regionCode) {
-    StringBuilder output = new StringBuilder();
+      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
+    StringBuilder output = new StringBuilder("<HTML><HEAD>");
+    output.append(
+        "<LINK type=\"text/css\" rel=\"stylesheet\" href=\"/stylesheets/main.css\" />");
+    output.append("</HEAD>");
+    output.append("<BODY>");
+    output.append("Phone Number entered: " + StringEscapeUtils.escapeHtml(phoneNumber) + "<BR>");
+    output.append("defaultCountry entered: " + StringEscapeUtils.escapeHtml(defaultCountry)
+        + "<BR>");
+    output.append("Language entered: "
+        + StringEscapeUtils.escapeHtml(geocodingLocale.toLanguageTag()) + "<BR>");
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
       output.append("<DIV>");
@@ -187,6 +288,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       boolean isPossible = phoneUtil.isPossibleNumber(number);
       boolean isNumberValid = phoneUtil.isValidNumber(number);
       PhoneNumberType numberType = phoneUtil.getNumberType(number);
+      boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
@@ -200,7 +302,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       } else {
         appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
         if (isNumberValid) {
-          if (!defaultCountry.isEmpty() && defaultCountry != "ZZ") {
+          if (hasDefaultCountry) {
             appendLine(
                 "Result from isValidNumberForRegion()",
                 Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
@@ -213,6 +315,32 @@ public class PhoneNumberParserServlet extends HttpServlet {
       }
       output.append("</TABLE>");
       output.append("</DIV>");
+
+      if (!isNumberValid) {
+        output.append("<DIV>");
+        output.append("<TABLE border=1>");
+        output.append("<TR><TD colspan=2>Short Number Results</TD></TR>");
+        boolean isPossibleShort = shortInfo.isPossibleShortNumber(number);
+        appendLine("Result from isPossibleShortNumber()",
+            Boolean.toString(isPossibleShort), output);
+        if (isPossibleShort) {
+          appendLine("Result from isValidShortNumber()",
+              Boolean.toString(shortInfo.isValidShortNumber(number)), output);
+          if (hasDefaultCountry) {
+            boolean isPossibleShortForRegion =
+                shortInfo.isPossibleShortNumberForRegion(number, defaultCountry);
+            appendLine("Result from isPossibleShortNumberForRegion()",
+                Boolean.toString(isPossibleShortForRegion), output);
+            if (isPossibleShortForRegion) {
+              appendLine("Result from isValidShortNumberForRegion()",
+                  Boolean.toString(shortInfo.isValidShortNumberForRegion(number,
+                      defaultCountry)), output);
+            }
+          }
+        }
+        output.append("</TABLE>");
+        output.append("</DIV>");
+      }
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
@@ -260,7 +388,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         appendLine(
             "Location",
             PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(
-                number, new Locale(languageCode, regionCode)),
+                number, geocodingLocale),
             output);
         output.append("</TABLE>");
         output.append("</DIV>");
@@ -283,16 +411,24 @@ public class PhoneNumberParserServlet extends HttpServlet {
           output.append("<TR><TD colspan=2>PhoneNumberToCarrierMapper Results</TD></TR>");
           appendLine(
               "Carrier",
-              PhoneNumberToCarrierMapper.getInstance().getNameForNumber(
-                  number, new Locale(languageCode, regionCode)),
+              PhoneNumberToCarrierMapper.getInstance().getNameForNumber(number, geocodingLocale),
               output);
           output.append("</TABLE>");
           output.append("</DIV>");
         }
       }
+
+      String newIssueLink = getNewIssueLink(phoneNumber, defaultCountry, geocodingLocale);
+      String guidelinesLink =
+          "https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md";
+      output.append("<b style=\"color:red\">File an issue</b>: by clicking on "
+          + "<a target=\"_blank\" href=\"" + newIssueLink + "\">this link</a>, I confirm that I "
+          + "have read the <a target=\"_blank\" href=\"" + guidelinesLink
+          + "\">contributor's guidelines</a>.");
     } catch (NumberParseException e) {
-      output.append(e.toString());
+      output.append(StringEscapeUtils.escapeHtml(e.toString()));
     }
+    output.append("</BODY></HTML>");
     return output;
   }
 }

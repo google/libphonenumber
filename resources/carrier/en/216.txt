@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000D50001PDFE.pdf
-# +216 5 from Wikipedia
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000D50002PDFE.pdf
 # Wikipedia also suggests 2164 may be in fact better mapped Elissa, which
 # appears to be a subsidiary of Tunisie Telecom.
 
@@ -21,6 +20,9 @@
 21640|Tunisie Telecom
 21641|Tunisie Telecom
 21642|Tunisie Telecom
+21643|Lyca Mobile
 21644|Tunisie Telecom
+21645|Watany Ettisalat
+21646|Ooredoo
 2165|Orange
 2169|Tunisie Telecom

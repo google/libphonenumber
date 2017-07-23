@@ -13,17 +13,18 @@
 # limitations under the License.
 
 # http://www.itu.int/oth/T02020000A4/en
-#
-# bmobile changed its name in 2009 to bemobile,
-# which is the name used in the ITU document,
-# but most online sources including the company's own web site still refer to bmobile.
+# bmobile changed its name in 2009 to bemobile, which is the name used in the
+# ITU document, but most online sources including the company's own web site
+# still refer to bmobile.
 
 67520150|bmobile/Telikom
 67570|Digicel
 67571|Digicel
 67572|Digicel
 67573|Digicel
+67574|Digicel
+67575|bmobile
 67576|bmobile
 675775|Telikom
+67578|Telikom
 67579|Digicel
-
