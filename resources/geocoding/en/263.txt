@@ -36,11 +36,15 @@
 263225|Rusape
 263227|Chipinge
 263228|Hauna
+263229|Bulawayo
+2632312|Chiredzi
+2632512|Zvishavane
 263248|Birchenough Bridge
 26324|Chipangayi
 2632582|Headlands
 2632583|Nyazura
 26325|Rusape
+2632542|Gweru
 263261|Kariba
 263264|Karoi
 26326|Chimanimani

@@ -3,7 +3,7 @@ Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
 Uploaders: Daniel Pocock <daniel@pocock.pro>, Fredrik Roubert <roubert@google.com>
 Build-Depends: cdbs,
-               cmake,
+               cmake (>= 2.8),
                debhelper (>= 9),
                default-jdk | java-sdk,
                libboost-dev (>= 1.40),

@@ -21,7 +21,6 @@
 
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/stringpiece.h"
-//#include "utf/stringprintf.h"
 #include "phonenumbers/utf/utf.h"
 #include "phonenumbers/utf/unilib.h"
 

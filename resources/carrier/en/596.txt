@@ -1,0 +1,68 @@
+# Copyright (C) 2017 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Source: http://www.arcep.fr/index.php?id=interactivenumeros&no_cache=1
+# Search using prefix 0696X. Ex: 06965
+
+# Ranges that are assigned to Outremer Telecom are mentioned as "SFR/Rife" as
+# there is no information on which Outremer Telecom brand the ranges are
+# assigned to. http://www.outremer-telecom.fr/fr/activites-et-services
+
+5966960|SFR/Rife
+59669610|Digicel
+59669611|Digicel
+59669612|Martinique Telephone Mobile
+59669613|Martinique Telephone Mobile
+59669614|Martinique Telephone Mobile
+59669615|Martinique Telephone Mobile
+59669616|Digicel
+59669617|Digicel
+59669618|Digicel
+59669619|Digicel
+5966962|Orange
+5966963|Orange
+5966964|Orange
+59669650|Orange
+59669651|Orange
+59669652|Orange
+59669653|Orange
+59669654|Orange
+59669655|Orange
+59669656|Orange
+59669660|SFR/Rife
+59669661|SFR/Rife
+59669662|SFR/Rife
+59669663|SFR/Rife
+59669664|SFR/Rife
+5966967|Digicel
+59669680|Orange
+59669681|Orange
+59669682|Orange
+59669683|Orange
+59669684|Orange
+59669685|Orange
+59669686|Orange
+59669687|SFR/Rife
+59669688|SFR/Rife
+59669689|SFR/Rife
+59669690|Digicel
+59669691|Digicel
+59669692|Digicel
+59669693|Digicel
+59669694|Digicel
+59669695|Digicel
+59669696|Digicel
+59669697|Digicel
+59669698|Digicel
+59669699|Orange

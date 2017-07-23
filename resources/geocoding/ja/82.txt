@@ -1,0 +1,35 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations of the en/82.txt file from Wikipedia.
+
+# https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9B%BD%E3%81%AE%E5%9C%B0%E6%96%B9%E8%A1%8C%E6%94%BF%E5%8C%BA%E7%94%BB
+
+822|ソウル特別市
+8231|京畿道
+8232|仁川広域市
+8233|江原道
+8241|忠清南道
+8242|大田広域市
+8243|忠清北道
+8244|世宗特別自治市
+8251|釜山広域市
+8252|蔚山広域市
+8253|大邱広域市
+8254|慶尚北道
+8255|慶尚南道
+8261|全羅南道
+8262|光州広域市
+8263|全羅北道
+8264|済州特別自治道

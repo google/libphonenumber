@@ -21,7 +21,6 @@ import com.google.i18n.phonenumbers.prefixmapper.PhonePrefixMap;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -32,9 +31,11 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,29 +53,29 @@ import java.util.regex.Pattern;
  * <p> The text files must be located in sub-directories of the provided input path. For each input
  * file inputPath/lang/countryCallingCode.txt the corresponding binary file is generated as
  * outputPath/countryCallingCode_lang.
- *
- * @author Philippe Liard
  */
 public class GeneratePhonePrefixData {
   // The path to the input directory containing the languages directories.
   private final File inputPath;
   private static final int NANPA_COUNTRY_CODE = 1;
-  // Pattern used to match the two-letter-long language code contained in the input text file path.
+  // Pattern used to match the language code contained in the input text file path. This may be a
+  // two-letter code like fr, or a three-letter code like ban, or a code containing script
+  // information like zh_Hans (simplified Chinese).
   private static final Pattern LANGUAGE_IN_FILE_PATH_PATTERN =
-      Pattern.compile("(.*)(?:[a-z]{2})(/\\d+\\.txt)");
+      Pattern.compile("(.*/)(?:[a-zA-Z_]+)(/\\d+\\.txt)");
   // Map used to store the English mappings to avoid reading the English text files multiple times.
   private final Map<Integer /* country code */, SortedMap<Integer, String>> englishMaps =
       new HashMap<Integer, SortedMap<Integer, String>>();
   // The IO Handler used to output the generated binary files.
   private final AbstractPhonePrefixDataIOHandler ioHandler;
 
-  private static final Logger LOGGER = Logger.getLogger(GeneratePhonePrefixData.class.getName());
+  private static final Logger logger = Logger.getLogger(GeneratePhonePrefixData.class.getName());
 
   public GeneratePhonePrefixData(File inputPath, AbstractPhonePrefixDataIOHandler ioHandler)
       throws IOException {
     if (!inputPath.isDirectory()) {
-      throw new IOException("The provided input path does not exist: " +
-                             inputPath.getAbsolutePath());
+      throw new IOException("The provided input path does not exist: "
+          + inputPath.getAbsolutePath());
     }
     this.inputPath = inputPath;
     this.ioHandler = ioHandler;
@@ -138,7 +139,7 @@ public class GeneratePhonePrefixData {
   /**
    * Reads the mappings contained in the provided input stream pointing to a text file.
    *
-   * @return  a map containing the mappings that were read.
+   * @return  a map containing the mappings that were read
    */
   // @VisibleForTesting
   static SortedMap<Integer, String> readMappingsFromTextFile(InputStream input)
@@ -230,14 +231,17 @@ public class GeneratePhonePrefixData {
    * @throws IOException
    */
   private Map<File, List<File>> createInputOutputMappings() throws IOException {
-    Map<File, List<File>> mappings = new HashMap<File, List<File>>();
+    Map<File, List<File>> mappings = new LinkedHashMap<File, List<File>>();
     File[] languageDirectories = inputPath.listFiles();
+    // Make sure that filenames are processed in the same order build-to-build.
+    Arrays.sort(languageDirectories);
 
     for (File languageDirectory : languageDirectories) {
       if (!languageDirectory.isDirectory() || languageDirectory.isHidden()) {
         continue;
       }
       File[] countryCodeFiles = languageDirectory.listFiles();
+      Arrays.sort(countryCodeFiles);
 
       for (File countryCodeFile : countryCodeFiles) {
         if (countryCodeFile.isHidden()) {
@@ -302,7 +306,7 @@ public class GeneratePhonePrefixData {
   static Map<File, SortedMap<Integer, String>> splitMap(
       SortedMap<Integer, String> mappings, List<File> outputBinaryFiles) {
     Map<File, SortedMap<Integer, String>> mappingsForFiles =
-        new HashMap<File, SortedMap<Integer, String>>();
+        new LinkedHashMap<File, SortedMap<Integer, String>>();
     for (Map.Entry<Integer, String> mapping : mappings.entrySet()) {
       String prefix = String.valueOf(mapping.getKey());
       File targetFile = null;
@@ -384,8 +388,8 @@ public class GeneratePhonePrefixData {
   private void makeDataFallbackToEnglish(File inputTextFile, SortedMap<Integer, String> mappings)
       throws IOException {
     File englishTextFile = new File(getEnglishDataPath(inputTextFile.getAbsolutePath()));
-    if (inputTextFile.getAbsolutePath().equals(englishTextFile.getAbsolutePath()) ||
-        !englishTextFile.exists()) {
+    if (inputTextFile.getAbsolutePath().equals(englishTextFile.getAbsolutePath())
+        || !englishTextFile.exists()) {
       return;
     }
     int countryCode = getCountryCodeFromTextFileName(inputTextFile.getName());
@@ -457,11 +461,11 @@ public class GeneratePhonePrefixData {
           }
         }
       } catch (RuntimeException e) {
-        LOGGER.log(Level.SEVERE,
+        logger.log(Level.SEVERE,
                    "Error processing file " + inputOutputMapping.getKey().getAbsolutePath());
         throw e;
       } catch (IOException e) {
-        LOGGER.log(Level.SEVERE, e.getMessage());
+        logger.log(Level.SEVERE, e.getMessage());
       } finally {
         ioHandler.closeFile(fileInputStream);
         ioHandler.closeFile(fileOutputStream);
@@ -478,6 +482,6 @@ public class GeneratePhonePrefixData {
       ioHandler.closeFile(fileOutputStream);
       ioHandler.close();
     }
-    LOGGER.log(Level.INFO, "Phone prefix data successfully generated.");
+    logger.log(Level.INFO, "Phone prefix data successfully generated.");
   }
 }

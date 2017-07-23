@@ -43,6 +43,12 @@
 68647|Nikunau
 68648|Tamana
 68649|Arorae
+686727|Gilbert Islands
+686750|South Tarawa
+686751|South Tarawa
+686752|South Tarawa
+686753|Line Islands
+686754|Phoenix Islands
 68681|Kiritimati
 68682|Kiritimati
 68683|Fanning

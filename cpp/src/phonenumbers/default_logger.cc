@@ -21,8 +21,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
-
 void StdoutLogger::WriteMessage(const string& msg) {
   std::cout << " " << msg;
 }

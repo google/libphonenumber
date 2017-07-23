@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+8210|Mobile prefix, should not be geocoded.
 822|Seoul
 8231|Gyeonggi
 8232|Incheon

@@ -16,8 +16,9 @@
 # bmobile changed its name in 2009 to bemobile, which is the name used in the
 # ITU document, but most online sources including the company's own web site
 # still refer to bmobile.
+# The ITU document also refers to Telikom as trading under Citifon, but it seems
+# to use Telikom Mobile at least on the internet.
 
-67520150|bmobile/Telikom
 67570|Digicel
 67571|Digicel
 67572|Digicel

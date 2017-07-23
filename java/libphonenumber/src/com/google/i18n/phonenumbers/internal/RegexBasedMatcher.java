@@ -16,10 +16,10 @@
 
 package com.google.i18n.phonenumbers.internal;
 
-import com.google.i18n.phonenumbers.RegexCache;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Implementation of the matcher API using the regular expressions in the PhoneNumberDesc
@@ -35,18 +35,23 @@ public final class RegexBasedMatcher implements MatcherApi {
   private RegexBasedMatcher() {}
 
   // @Override
-  public boolean matchesNationalNumber(String nationalNumber, PhoneNumberDesc numberDesc,
+  public boolean matchNationalNumber(CharSequence number, PhoneNumberDesc numberDesc,
       boolean allowPrefixMatch) {
-    Matcher nationalNumberPatternMatcher = regexCache.getPatternForRegex(
-        numberDesc.nationalNumberPattern).matcher(nationalNumber);
-    return nationalNumberPatternMatcher.matches()
-        || (allowPrefixMatch && nationalNumberPatternMatcher.lookingAt());
+    String nationalNumberPattern = numberDesc.getNationalNumberPattern();
+    // We don't want to consider it a prefix match when matching non-empty input against an empty
+    // pattern.
+    if (nationalNumberPattern.length() == 0) {
+      return false;
+    }
+    return match(number, regexCache.getPatternForRegex(nationalNumberPattern), allowPrefixMatch);
   }
 
-  // @Override
-  public boolean matchesPossibleNumber(String nationalNumber, PhoneNumberDesc numberDesc) {
-    Matcher possibleNumberPatternMatcher = regexCache.getPatternForRegex(
-        numberDesc.possibleNumberPattern).matcher(nationalNumber);
-    return possibleNumberPatternMatcher.matches();
+  private static boolean match(CharSequence number, Pattern pattern, boolean allowPrefixMatch) {
+    Matcher matcher = pattern.matcher(number);
+    if (!matcher.lookingAt()) {
+      return false;
+    } else {
+      return (matcher.matches()) ? true : allowPrefixMatch;
+    }
   }
 }

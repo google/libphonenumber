@@ -117,8 +117,8 @@ public class PhoneNumberToCarrierMapper {
    * Checks if the supplied number type supports carrier lookup.
    */
   private boolean isMobile(PhoneNumberType numberType) {
-    return (numberType == PhoneNumberType.MOBILE ||
-            numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE ||
-            numberType == PhoneNumberType.PAGER);
+    return (numberType == PhoneNumberType.MOBILE
+        || numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
+        || numberType == PhoneNumberType.PAGER);
   }
 }

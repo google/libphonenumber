@@ -16,9 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadataCollection;
-import com.google.protobuf.nano.CodedOutputByteBufferNano;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -39,6 +38,7 @@ import java.util.regex.Pattern;
 /**
  * Tool to convert phone number metadata from the XML format to protocol buffer format.
  *
+ * <p>
  * Based on the name of the {@code inputFile}, some optimization and removal of unnecessary metadata
  * is carried out to reduce the size of the output file.
  *
@@ -56,6 +56,9 @@ public class BuildMetadataProtoFromXml extends Command {
   private static final String COPYRIGHT = "copyright";
   private static final String SINGLE_FILE = "single-file";
   private static final String LITE_BUILD = "lite-build";
+  // Only supported for clients who have consulted with the libphonenumber team, and the behavior is
+  // subject to change without notice.
+  private static final String SPECIAL_BUILD = "special-build";
 
   private static final String HELP_MESSAGE =
       "Usage: " + CLASS_NAME + " [OPTION]...\n" +
@@ -111,6 +114,7 @@ public class BuildMetadataProtoFromXml extends Command {
     String copyright = null;
     boolean singleFile = false;
     boolean liteBuild = false;
+    boolean specialBuild = false;
 
     for (int i = 1; i < getArgs().length; i++) {
       String key = null;
@@ -137,6 +141,9 @@ public class BuildMetadataProtoFromXml extends Command {
       } else if (LITE_BUILD.equals(key) &&
                  ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
         liteBuild = "true".equalsIgnoreCase(value);
+      } else if (SPECIAL_BUILD.equals(key) &&
+                 ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value))) {
+        specialBuild = "true".equalsIgnoreCase(value);
       } else {
         System.err.println(HELP_MESSAGE);
         System.err.println("Illegal command line parameter: " + getArgs()[i]);
@@ -157,39 +164,26 @@ public class BuildMetadataProtoFromXml extends Command {
 
     try {
       PhoneMetadataCollection metadataCollection =
-          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild);
+          BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, specialBuild);
 
       if (singleFile) {
-        int SINGLE_FILE_BUFFER_SIZE = 256 * 1024;
         FileOutputStream output = new FileOutputStream(filePrefix);
         ObjectOutputStream out = new ObjectOutputStream(output);
-        byte[] outputArray = new byte[SINGLE_FILE_BUFFER_SIZE];
-        CodedOutputByteBufferNano outputByteBuffer =
-            CodedOutputByteBufferNano.newInstance(outputArray);
-        metadataCollection.writeTo(outputByteBuffer);
-        out.write(outputArray, 0, outputByteBuffer.position());
-        out.flush();
+        metadataCollection.writeExternal(out);
         out.close();
       } else {
-        int MULTI_FILE_BUFFER_SIZE = 16 * 1024;
-        for (PhoneMetadata metadata : metadataCollection.metadata) {
-          String regionCode = metadata.id;
-          // For non-geographical country calling codes (e.g. +800), or for alternate formats, use
-          // the country calling codes instead of the region code to form the file name.
+        for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
+          String regionCode = metadata.getId();
+          // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
+          // country calling codes instead of the region code to form the file name.
           if (regionCode.equals("001") || regionCode.isEmpty()) {
-            regionCode = Integer.toString(metadata.countryCode);
+            regionCode = Integer.toString(metadata.getCountryCode());
           }
           PhoneMetadataCollection outMetadataCollection = new PhoneMetadataCollection();
-          outMetadataCollection.metadata = new PhoneMetadata[1];
-          outMetadataCollection.metadata[0] = metadata;
+          outMetadataCollection.addMetadata(metadata);
           FileOutputStream outputForRegion = new FileOutputStream(filePrefix + "_" + regionCode);
           ObjectOutputStream out = new ObjectOutputStream(outputForRegion);
-          byte[] outputArray = new byte[MULTI_FILE_BUFFER_SIZE];
-          CodedOutputByteBufferNano outputBufferNano =
-              CodedOutputByteBufferNano.newInstance(outputArray);
-          outMetadataCollection.writeTo(outputBufferNano);
-          out.write(outputArray, 0, outputBufferNano.position());
-          out.flush();
+          outMetadataCollection.writeExternal(out);
           out.close();
         }
       }

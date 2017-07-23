@@ -1,0 +1,37 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations of the en/82.txt file from Wikipedia.
+
+# https://he.wikipedia.org/wiki/%D7%9E%D7%97%D7%95%D7%96%D7%95%D7%AA_%D7%A7%D7%95%D7%A8%D7%99%D7%90%D7%94_%D7%94%D7%93%D7%A8%D7%95%D7%9E%D7%99%D7%AA
+
+# No translation for "Sejong City" could be found, so prefix 8244 has been
+# omitted.
+
+822|סאול
+8231|מחוז קיאנגי
+8232|אינצ'און
+8233|מחוז קאנגוואן
+8241|מחוז דרום צ'הונגצ'האנג
+8242|טג'אן
+8243|מחוז צפון צְ'הוּ‏נגצְ'הַ‏א‏נג
+8251|פוסאן
+8252|אורסן
+8253|טגו
+8254|מחוז צפון קיאנגסאנג
+8255|מחוז דרום קיאנגסאנג
+8261|מחוז דרום צ'אלה
+8262|קוואנגג'ו
+8263|מחוז צפון צַ‏'אלּ‏ַ‏ה
+8264|מחוז ג'ג'ו

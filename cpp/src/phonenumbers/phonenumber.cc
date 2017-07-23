@@ -41,6 +41,12 @@ bool ExactlySameAs(const PhoneNumber& first_number,
       second_number.italian_leading_zero()) {
     return false;
   }
+  if (first_number.has_number_of_leading_zeros() !=
+      second_number.has_number_of_leading_zeros() ||
+      first_number.number_of_leading_zeros() !=
+      second_number.number_of_leading_zeros()) {
+    return false;
+  }
   if (first_number.has_raw_input() != second_number.has_raw_input() ||
       first_number.raw_input() != second_number.raw_input()) {
     return false;
@@ -68,17 +74,34 @@ bool ExactlySameAs(const PhoneNumberDesc& first_number_desc,
       second_number_desc.national_number_pattern()) {
     return false;
   }
-  if (first_number_desc.has_possible_number_pattern() !=
-      second_number_desc.has_possible_number_pattern() ||
-      first_number_desc.possible_number_pattern() !=
-      second_number_desc.possible_number_pattern()) {
-    return false;
-  }
   if (first_number_desc.has_example_number() !=
       second_number_desc.has_example_number() ||
       first_number_desc.example_number() !=
       second_number_desc.example_number()) {
     return false;
+  }
+  if (first_number_desc.possible_length_size() !=
+      second_number_desc.possible_length_size()) {
+    return false;
+  } else {
+    for (int i = 0; i < first_number_desc.possible_length_size(); ++i) {
+      if (first_number_desc.possible_length(i) !=
+          second_number_desc.possible_length(i)) {
+        return false;
+      }
+    }
+  }
+  if (first_number_desc.possible_length_local_only_size() !=
+      second_number_desc.possible_length_local_only_size()) {
+    return false;
+  } else {
+    for (int i = 0; i < first_number_desc.possible_length_local_only_size();
+        ++i) {
+      if (first_number_desc.possible_length_local_only(i) !=
+          second_number_desc.possible_length_local_only(i)) {
+        return false;
+      }
+    }
   }
   return true;
 }

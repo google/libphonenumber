@@ -1,37 +1,127 @@
+<p align="right">
+<img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
+</p>
+
 # What is it?
 
-Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers. The Java version is optimized for running on smartphones, and is used by the Android framework since 4.0 (Ice Cream Sandwich).
+Google's common Java, C++ and JavaScript library for parsing, formatting, and
+validating international phone numbers. The Java version is optimized for
+running on smartphones, and is used by the Android framework since 4.0 (Ice
+Cream Sandwich).
 
-# Want to report an issue?
-If you want to report an issue, or to contribute to the project, please read the guidelines [here] (https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md) first.
+# Quick links
+
+*   Reporting an issue? Want to send a pull request? See the [contribution
+    guidelines](CONTRIBUTING.md)
+*   Check the [frequently asked questions](FAQ.md)
+*   Fun! [Falsehoods Programmers Believe About Phone Numbers](FALSEHOODS.md)
+*   Look for
+    [`README`s](http://github.com/googlei18n/libphonenumber/find/master) in
+    directories relevant to the code you're interested in.
+*   For contributors and porters: [How to run the Java demo](run-java-demo.md)
+*   For porters: [How to make metadata changes](making-metadata-changes.md)
 
 # Highlights of functionality
-  * Parsing/formatting/validating phone numbers for all countries/regions of the world.
-  * ` getNumberType ` - gets the type of the number based on the number itself; able to distinguish Fixed-line, Mobile, Toll-free, Premium Rate, Shared Cost, VoIP and Personal Numbers  (whenever feasible).
-  * ` isNumberMatch ` - gets a confidence level on whether two numbers could be the same.
-  * ` getExampleNumber `/` getExampleNumberByType ` - provides valid example numbers for all countries/regions, with the option of specifying which type of example phone number is needed.
-  * ` isPossibleNumber ` - quickly guessing whether a number is a possible phonenumber by using only the length information, much faster than a full validation.
-  * ` isValidNumber ` - full validation of a phone number for a region using length and prefix information.
-  * ` AsYouTypeFormatter ` - formats phone numbers on-the-fly when users enter each digit.
-  * ` findNumbers ` - finds numbers in text input.
-  * ` PhoneNumberOfflineGeocoder ` - provides geographical information related to a phone number.
-  * ` PhoneNumberToCarrierMapper ` - provides carrier information related to a phone number.
 
-# Demo (v7.2.5)
-[Java](http://libphonenumber.appspot.com/)
+*   Parsing, formatting, and validating phone numbers for all countries/regions
+    of the world.
+*   `getNumberType` - gets the type of the number based on the number itself;
+    able to distinguish Fixed-line, Mobile, Toll-free, Premium Rate, Shared
+    Cost, VoIP, Personal Numbers, UAN, Pager, and Voicemail (whenever feasible).
+*   `isNumberMatch` - gets a confidence level on whether two numbers could be
+    the same.
+*   `getExampleNumber` and `getExampleNumberByType` - provide valid example
+    numbers for all countries/regions, with the option of specifying which type
+    of example phone number is needed.
+*   `isPossibleNumber` - quickly guesses whether a number is a possible
+    phone number by using only the length information, much faster than a full
+    validation.
+*   `isValidNumber` - full validation of a phone number for a region using
+    length and prefix information.
+*   `AsYouTypeFormatter` - formats phone numbers on-the-fly when users enter
+    each digit.
+*   `findNumbers` - finds numbers in text.
+*   `PhoneNumberOfflineGeocoder` - provides geographical information related to
+    a phone number.
+*   `PhoneNumberToCarrierMapper` - provides carrier information related to a
+    phone number.
+*   `PhoneNumberToTimeZonesMapper` - provides timezone information related to a
+    phone number.
 
-[JavaScript](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
+# Demo
 
-# Code
-To include the code in your application, either integrate with Maven or download the latest Jars from the Maven repository:
+## Java
 
-http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/
+The [Java demo](http://libphonenumber.appspot.com/) is updated with a slight
+delay after the GitHub release.
+
+Last demo update: v8.7.0.
+
+If this number is lower than the [latest release's version
+number](http://github.com/googlei18n/libphonenumber/releases), we are between
+releases and the demo may be at either version.
+
+## JavaScript
+
+The [JavaScript
+demo](http://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
+may be run at various tags; this link will take you to `master`.
+
+# Java code
+
+To include the Java code in your application, either integrate with Maven (see
+[wiki](http://github.com/googlei18n/libphonenumber/wiki)) or download the latest
+jars from the [Maven
+repository](http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
+
+# Javadoc
+
+Javadoc is automatically updated to reflect the latest release at
+http://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/.
+
+# Versioning and Announcements
+
+We generally choose the release number following these guidelines.
+
+If any of the changes pushed to master since the last release are incompatible
+with the intent / specification of an existing libphonenumber API or may cause
+libphonenumber (Java, C++, or JS) clients to have to change their code to keep
+building, we publish a major release. For example, if the last release were
+7.7.3, the new one would be 8.0.0.
+
+If any of those changes *enable* clients to update their code to take advantage
+of new functionality, and if clients would have to roll-back these changes in
+the event that the release was marked as "bad", we publish a minor release. For
+example, we'd go from 7.7.3 to 7.8.0.
+
+Otherwise, including when a release contains only
+[metadata](FAQ.md#metadata_definition) changes, we publish a sub-minor release,
+e.g. 7.7.3 to 7.7.4.
+
+Sometimes we make internal changes to the code or metadata that, while not
+affecting compatibility for clients, could affect compatibility for **porters**
+of the library. For such changes we make announcements to
+[libphonenumber-discuss](
+http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
+are not reflected in the version number, and we would publish a sub-minor
+release if there were no other changes.
+
+Want to get notified of new releases? During most of the year, excepting
+holidays and extenuating circumstances, we release fortnightly. We update
+[release tags](http://github.com/googlei18n/libphonenumber/releases) and
+document detailed [release notes](
+http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
+We also send an announcement to [libphonenumber-discuss](
+http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
+release.
 
 # Quick Examples
-Let's say you have a string representing a phone number from Switzerland. This is how you parse/normalize it into a ` PhoneNumber ` object:
+
+Let's say you have a string representing a phone number from Switzerland. This
+is how you parse/normalize it into a `PhoneNumber` object:
 
 ```java
-String swissNumberStr = "044 668 18 00"
+String swissNumberStr = "044 668 18 00";
 PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 try {
   PhoneNumber swissNumberProto = phoneUtil.parse(swissNumberStr, "CH");
@@ -40,7 +130,8 @@ try {
 }
 ```
 
-At this point, swissNumberProto contains:
+At this point, `swissNumberProto` contains:
+
 ```json
 {
   "country_code": 41,
@@ -48,14 +139,19 @@ At this point, swissNumberProto contains:
 }
 ```
 
-` PhoneNumber ` is a class that is auto-generated from the phonenumber.proto with necessary modifications for efficiency. For details on the meaning of each field, refer to https://github.com/googlei18n/test/blob/master/resources/phonenumber.proto
+`PhoneNumber` is a class that was originally auto-generated from
+`phonenumber.proto` with necessary modifications for efficiency. For details on
+the meaning of each field, refer to `resources/phonenumber.proto`.
 
 Now let us validate whether the number is valid:
+
 ```java
 boolean isValid = phoneUtil.isValidNumber(swissNumberProto); // returns true
 ```
 
-There are a few formats supported by the formatting method, as illustrated below:
+There are a few formats supported by the formatting method, as illustrated
+below:
+
 ```java
 // Produces "+41 44 668 18 00"
 System.out.println(phoneUtil.format(swissNumberProto, PhoneNumberFormat.INTERNATIONAL));
@@ -65,14 +161,16 @@ System.out.println(phoneUtil.format(swissNumberProto, PhoneNumberFormat.NATIONAL
 System.out.println(phoneUtil.format(swissNumberProto, PhoneNumberFormat.E164));
 ```
 
-You could also choose to format the number in the way it is dialed from another country:
+You could also choose to format the number in the way it is dialed from another
+country:
 
 ```java
 // Produces "011 41 44 668 1800", the number when it is dialed in the United States.
 System.out.println(phoneUtil.formatOutOfCountryCallingNumber(swissNumberProto, "US"));
 ```
 
-### Formatting Phone Numbers 'as you type'
+## Formatting Phone Numbers 'as you type'
+
 ```java
 PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter("US");
@@ -81,7 +179,8 @@ System.out.println(formatter.inputDigit('6'));  // Outputs "6"
 System.out.println(formatter.inputDigit('3'));  // Now outputs "650 253"
 ```
 
-### Geocoding Phone Numbers offline
+## Geocoding Phone Numbers
+
 ```java
 PhoneNumberOfflineGeocoder geocoder = PhoneNumberOfflineGeocoder.getInstance();
 // Outputs "Zurich"
@@ -92,7 +191,12 @@ System.out.println(geocoder.getDescriptionForNumber(swissNumberProto, Locale.GER
 System.out.println(geocoder.getDescriptionForNumber(swissNumberProto, Locale.ITALIAN));
 ```
 
-### Mapping Phone Numbers to carrier
+## Mapping Phone Numbers to original carriers
+
+Caveat: We do not provide data about the current carrier of a phone number, only
+the original carrier who is assigned the corresponding range. Read about [number
+portability](FAQ.md#what-is-mobile-number-portability).
+
 ```java
 PhoneNumber swissMobileNumber =
     new PhoneNumber().setCountryCode(41).setNationalNumber(798765432L);
@@ -101,16 +205,27 @@ PhoneNumberToCarrierMapper carrierMapper = PhoneNumberToCarrierMapper.getInstanc
 System.out.println(carrierMapper.getNameForNumber(swissMobileNumber, Locale.ENGLISH));
 ```
 
+More examples on how to use the library can be found in the [unit
+tests](http://github.com/googlei18n/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
 
----
+# Third-party Ports
 
+Several third-party ports of the phone number library are known to us. We share
+them here in case they're useful for developers.
 
-More examples on how to use the library can be found in the unittests at https://github.com/googlei18n/test/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers
+However, we emphasize that these ports are by developers outside the
+libphonenumber project. We do not evaluate their quality or influence their
+maintenance processes.
 
-# Known Ports
-Several people are porting the phone number library to other languages. Here are some we know about. Note that they are done on voluntary basis by developers outside our project, so we cannot guarantee their quality.
-  * C#: https://github.com/erezak/libphonenumber-csharp
-  * objective-c: https://github.com/iziz/libPhoneNumber-iOS
-  * Python: https://github.com/daviddrysdale/python-phonenumbers
-  * Ruby: https://github.com/sstephenson/global_phone
-  * PHP: https://github.com/giggsey/libphonenumber-for-php
+*   C#: https://github.com/aidanbebbington/libphonenumber-csharp
+*   Javascript: If you don't want to use our version, which depends on Closure,
+    there are several other options, including
+    https://github.com/halt-hammerzeit/libphonenumber-js (a stripped-down
+    rewrite, about 110 KB in size) and https://github.com/seegno/google-libphonenumber
+    (a browserify-compatible wrapper around the original unmodified library
+    installable via npm, packs Google Closure library, about 420 KB in size)
+*   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   PHP: https://github.com/giggsey/libphonenumber-for-php
+*   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
+*   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/mobi/telephone_number

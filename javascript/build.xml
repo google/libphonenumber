@@ -4,7 +4,7 @@
   <property name="closure-compiler.dir"
             value="${basedir}/../../closure-compiler" />
   <property name="closure-compiler.jar"
-            value="${closure-compiler.dir}/build/compiler.jar" /> 
+            value="${closure-compiler.dir}/target/closure-compiler-1.0-SNAPSHOT.jar" />
   <property name="closure-library.dir"
             value="${basedir}/../../closure-library" />
   <property name="closure-linter.dir"
@@ -43,12 +43,15 @@
         <arg line='-f "--jscomp_error=duplicateMessage"' />
         <arg line='-f "--jscomp_error=es5Strict"' />
         <arg line='-f "--jscomp_error=externsValidation"' />
+        <arg line='-f "--jscomp_error=extraRequire"' />
         <arg line='-f "--jscomp_error=fileoverviewTags"' />
         <arg line='-f "--jscomp_error=globalThis"' />
         <arg line='-f "--jscomp_error=internetExplorerChecks"' />
         <arg line='-f "--jscomp_error=invalidCasts"' />
         <arg line='-f "--jscomp_error=misplacedTypeAnnotation"' />
         <arg line='-f "--jscomp_error=missingProperties"' />
+        <arg line='-f "--jscomp_error=missingRequire"' />
+        <arg line='-f "--jscomp_error=strictMissingRequire"' />
         <arg line='-f "--jscomp_error=nonStandardJsDocs"' />
         <arg line='-f "--jscomp_error=strictModuleDepCheck"' />
         <arg line='-f "--jscomp_error=suspiciousCode"' />

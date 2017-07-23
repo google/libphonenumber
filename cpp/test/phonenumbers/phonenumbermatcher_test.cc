@@ -253,6 +253,10 @@ class PhoneNumberMatcherTest : public testing::Test {
     // With trailing numbers after a comma. The 45 should not be considered an
     // extension.
     context_pairs.push_back(NumberContext("", ", 45 days a year"));
+    // When matching we don't consider semicolon along with legitimate extension
+    // symbol to indicate an extension. The 7246433 should not be considered an
+    // extension.
+    context_pairs.push_back(NumberContext("", ";x 7246433"));
     // With a postfix stripped off as it looks like the start of another number.
     context_pairs.push_back(NumberContext("Call ", "/x12 more"));
 
@@ -864,11 +868,15 @@ static const NumberTest kStrictGroupingCases[] = {
   // Should be found by strict grouping but not exact grouping, as the last two
   // groups are formatted together as a block.
   NumberTest("0800-2491234", RegionCode::DE()),
+  // If the user is using alternate formats, test that numbers formatted in
+  // that way are found.
+#ifdef I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
   // Doesn't match any formatting in the test file, but almost matches an
   // alternate format (the last two groups have been squashed together here).
   NumberTest("0900-1 123123", RegionCode::DE()),
   NumberTest("(0)900-1 123123", RegionCode::DE()),
   NumberTest("0 900-1 123123", RegionCode::DE()),
+#endif  // I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
   // NDC also found as part of the country calling code; this shouldn't ruin the
   // grouping expectations.
   NumberTest("+33 3 34 2312", RegionCode::FR()),
@@ -903,13 +911,17 @@ static const NumberTest kExactGroupingCases[] = {
   NumberTest("0494949 ext. 49", RegionCode::DE()),
   NumberTest("01 (33) 3461 2234", RegionCode::MX()),  // Optional NP present
   NumberTest("(33) 3461 2234", RegionCode::MX()),  // Optional NP omitted
-  // Breakdown assistance number with normal formatting.
+  // If the user is using alternate formats, test that numbers formatted in
+  // that way are found.
+#ifdef I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
+  // Breakdown assistance number using alternate formatting pattern.
   NumberTest("1800-10-10 22", RegionCode::AU()),
   // Doesn't match any formatting in the test file, but matches an alternate
   // format exactly.
   NumberTest("0900-1 123 123", RegionCode::DE()),
   NumberTest("(0)900-1 123 123", RegionCode::DE()),
   NumberTest("0 900-1 123 123", RegionCode::DE()),
+#endif  // I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
   NumberTest("+33 3 34 23 12", RegionCode::FR()),
 };
 

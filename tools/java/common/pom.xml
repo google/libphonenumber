@@ -17,10 +17,17 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
+    <testResources>
+      <testResource>
+        <directory>src/com/google/i18n/phonenumbers</directory>
+        <targetPath>com/google/i18n/phonenumbers</targetPath>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
@@ -31,6 +38,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
         <executions>
           <execution>
             <id>add-source</id>
@@ -49,23 +57,12 @@
     </plugins>
   </build>
 
-  <repositories>
-    <repository>
-      <id>protobuf-java-lib</id>
-      <url>file://${project.basedir}/../../../java/lib</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.8.1</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.6.1</version>
     </dependency>
   </dependencies>
 

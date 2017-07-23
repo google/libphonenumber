@@ -14,12 +14,12 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 3.1)
+cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
-set (libphonenumber_VERSION_MAJOR 7)
-set (libphonenumber_VERSION_MINOR 0)
-set (libphonenumber_VERSION_PATCH 2)
+set (libphonenumber_VERSION_MAJOR 8)
+set (libphonenumber_VERSION_MINOR 7)
+set (libphonenumber_VERSION_PATCH 0)
 
 if (32BIT)
   set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
@@ -136,6 +136,7 @@ find_required_program (JAVA java
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
+  set (CMAKE_MACOSX_RPATH "OFF")
   set (CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS
     "${CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS} -undefined dynamic_lookup")
 endif ()
@@ -474,6 +475,7 @@ endif ()
 set (TEST_SOURCES
   "test/phonenumbers/asyoutypeformatter_test.cc"
   "test/phonenumbers/logger_test.cc"
+  "test/phonenumbers/matcher_test.cc"
   "test/phonenumbers/phonenumberutil_test.cc"
   "test/phonenumbers/regexp_adapter_test.cc"
   "test/phonenumbers/regexp_cache_test.cc"
@@ -539,6 +541,7 @@ install (FILES
   "src/phonenumbers/phonenumberutil.h"
   "src/phonenumbers/regexp_adapter.h"
   "src/phonenumbers/regexp_cache.h"
+  "src/phonenumbers/region_code.h"
   "src/phonenumbers/shortnumberinfo.h"
   "src/phonenumbers/unicodestring.h"
   DESTINATION include/phonenumbers/
@@ -581,6 +584,7 @@ install (FILES
 )
 
 install (FILES "src/phonenumbers/base/synchronization/lock.h"
+         "src/phonenumbers/base/synchronization/lock_posix.h"
          DESTINATION include/phonenumbers/base/synchronization/)
 
 get_property (LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)

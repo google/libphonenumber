@@ -12,11 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Digicel prefix from ITU doc. Vodafone prefixes from Wikipedia and open-source
-# bug reports, e.g.
+# Digicel prefixes from ITU and other authoritative docs. Vodafone prefixes from
+# Wikipedia, authoritative docs, and open-source bug reports, e.g.
 # https://github.com/googlei18n/libphonenumber/issues/476
 # https://github.com/googlei18n/libphonenumber/issues/386
 
+67950|Digicel
+67951|Digicel
+67958|Vodafone
 6797|Digicel
 67984|Vodafone
 67989|Vodafone

@@ -27,6 +27,7 @@
 212606|Inwi
 212607|Inwi
 212608|Inwi
+212609|Inwi
 212610|Maroc Telecom
 212611|Maroc Telecom
 212612|Méditel
@@ -99,13 +100,25 @@
 212679|Méditel
 212680|Inwi
 212681|Inwi
+212682|Maroc Telecom
+212684|Méditel
 212687|Inwi
+212688|Méditel
+212689|Maroc Telecom
 212690|Inwi
-212691|Inwi
-212692|GlobalStar
+212691|Méditel
+2126921|Al Hourria Telecom
+2126922|Al Hourria Telecom
+212693|Méditel
 212694|Méditel
 212695|Inwi
-212696|Inwi
+212696|Maroc Telecom
 212697|Maroc Telecom
 212698|Inwi
 212699|Inwi
+212700|Inwi
+212707|Inwi
+212761|Maroc Telecom
+212762|Maroc Telecom
+212770|Méditel
+212777|Méditel

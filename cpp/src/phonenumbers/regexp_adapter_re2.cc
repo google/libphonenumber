@@ -30,8 +30,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using re2::StringPiece;
-
 // Implementation of RegExpInput abstract class.
 class RE2RegExpInput : public RegExpInput {
  public:
@@ -63,16 +61,10 @@ bool DispatchRE2Call(Function regex_function,
                      string* out1,
                      string* out2,
                      string* out3) {
-  if (out3) {
-    return regex_function(input, regexp, out1, out2, out3);
-  }
-  if (out2) {
-    return regex_function(input, regexp, out1, out2);
-  }
-  if (out1) {
-    return regex_function(input, regexp, out1);
-  }
-  return regex_function(input, regexp);
+  const RE2::Arg outs[] = { out1, out2, out3, };
+  const RE2::Arg* const args[] = { &outs[0], &outs[1], &outs[2], };
+  const int argc = out3 ? 3 : out2 ? 2 : out1 ? 1 : 0;
+  return regex_function(input, regexp, args, argc);
 }
 
 // Replaces unescaped dollar-signs with backslashes. Backslashes are deleted
@@ -108,11 +100,11 @@ class RE2RegExp : public RegExp {
         static_cast<RE2RegExpInput*>(input_string)->Data();
 
     if (anchor_at_start) {
-      return DispatchRE2Call(RE2::Consume, utf8_input, utf8_regexp_,
+      return DispatchRE2Call(RE2::ConsumeN, utf8_input, utf8_regexp_,
                              matched_string1, matched_string2,
                              matched_string3);
     } else {
-      return DispatchRE2Call(RE2::FindAndConsume, utf8_input, utf8_regexp_,
+      return DispatchRE2Call(RE2::FindAndConsumeN, utf8_input, utf8_regexp_,
                              matched_string1, matched_string2,
                              matched_string3);
     }
@@ -122,10 +114,10 @@ class RE2RegExp : public RegExp {
                      bool full_match,
                      string* matched_string) const {
     if (full_match) {
-      return DispatchRE2Call(RE2::FullMatch, input_string, utf8_regexp_,
+      return DispatchRE2Call(RE2::FullMatchN, input_string, utf8_regexp_,
                              matched_string, NULL, NULL);
     } else {
-      return DispatchRE2Call(RE2::PartialMatch, input_string, utf8_regexp_,
+      return DispatchRE2Call(RE2::PartialMatchN, input_string, utf8_regexp_,
                              matched_string, NULL, NULL);
     }
   }
