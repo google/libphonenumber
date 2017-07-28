@@ -28,7 +28,7 @@
 52232|La Vigueta/Martínez de la Torre, VER
 52233|Puebla
 52235|Veracruz
-52236|OAX/PUE
+52236|Oaxaca/Puebla
 52237|Puebla
 52238|Santiago Miahuatlán/Tehuacán, PUE
 52241|Tlaxcala
@@ -48,7 +48,7 @@
 52278|Veracruz
 52279|Veracruz
 52281|Loma Bonita, OAX
-52282|PUE/VER
+52282|Puebla/Veracruz
 52283|Veracruz
 52284|Ángel Rosario Cabada/Lerdo de Tejada, VER
 52285|Veracruz
@@ -64,7 +64,7 @@
 52315|Jalisco
 52316|Jalisco
 52317|Autlán/El Chante, JAL
-52318|COL/JAL
+52318|Colima/Jalisco
 52319|Nayarit
 52321|El Grullo/El Limon, JAL
 52322|Jalisco
@@ -81,7 +81,7 @@
 52343|Jalisco
 52344|Mexticacan/Yahualica, JAL
 52345|Jalisco
-52346|JAL/ZAC
+52346|Jalisco/Zacatecas
 52347|Jalisco
 52348|Jalisco
 52349|Jalisco
@@ -101,7 +101,7 @@
 52376|Jalisco
 52377|Cocula/Estipac, JAL
 52378|Jalisco
-52379|JAL/MICH
+52379|Jalisco/Michoacán
 52381|Cojumatlan/San Jose de Gracia, MICH
 52382|Jalisco
 52383|Michoacán
@@ -130,7 +130,7 @@
 52424|Michoacán
 52425|Michoacán
 52426|Michoacán
-52427|MEX/QRO
+52427|México/QRO
 52428|Ocampo/San Felipe, GTO
 52429|Guanajuato
 52431|Jalostotitlán/Villa Obregón, JAL
@@ -139,7 +139,7 @@
 52434|Michoacán
 52435|Huetamo/San Lucas, MICH
 52436|Zacapu, MICH
-52437|JAL/ZAC
+52437|Jalisco/Zacatecas
 52438|Michoacán
 52441|Querétaro
 52442|Querétaro
@@ -155,7 +155,7 @@
 52454|Michoacán
 52455|Michoacán
 52456|Valle de Santiago, GTO
-52457|JAL/ZAC
+52457|Jalisco/Zacatecas
 52458|Zacatecas
 52459|Michoacán
 52461|Guanajuato
@@ -186,10 +186,10 @@
 52492|Zacatecas
 52493|Fresnillo, ZAC
 52494|Jerez de García Salinas, ZAC
-52495|AGS/JAL
+52495|Aguascalientes/Jalisco
 52496|Zacatecas
 52498|Zacatecas
-52499|JAL/ZAC
+52499|Jalisco/Zacatecas
 5255|Cuidad de México, CDMX
 52586|Tlalmanalco, MEX
 52587|Amecameca, MEX
@@ -234,7 +234,7 @@
 52646|Baja California
 52647|Sonora
 52648|Boquilla/Ciudad Camargo, CHIH
-52649|CHIH/DGO
+52649|Chihuahua/Durango
 52651|Sonoita, SON
 52652|Chihuahua
 52653|Luis B. Sánchez/San Luis Río Colorado, SON
@@ -262,7 +262,7 @@
 52696|Sinoloa
 52697|Sinoloa
 52698|Sinoloa
-52711|MEX/MICH
+52711|México/Michoacán
 52712|Estado de Mexico
 52713|Santiago Tianguistenco, MEX
 52714|Estado de Mexico
@@ -294,7 +294,7 @@
 52743|Hidalgo
 52744|Acapulco/Xaltianguis, GRO
 52745|Guerrero
-52746|PUE/VER
+52746|Puebla/Veracruz
 52747|Guerrero
 52748|Hidalgo
 52749|Calpulalpan, TLAX
@@ -358,11 +358,11 @@
 52862|Coahuila
 52864|Coahuila
 52866|Castaños/Monclova, COAH
-52867|NL/TAMPS
+52867|Nuevo León/TAMPS
 52868|Tamaulipas
 52869|Cuatro Ciénegas/San Buenaventura, COAH
 52871|Coahuila
-52872|COAH/DGO
+52872|Coahuila/Durango
 52873|Nuevo León
 52877|Ciudad Acuña, COAH
 52878|Piedras Negras, COAH
@@ -379,9 +379,9 @@
 52919|Chiapas
 52921|Coatzacoalcos/Ixhuatlán del Sureste, VER
 52922|Veracruz
-52923|TAB/VER
+52923|Tabasco/Veracruz
 52924|Veracruz
-52932|CHIS/TAB
+52932|Chiapas/Tabasco
 52933|Tabasco
 52934|Tabasco
 52936|Tabasco
