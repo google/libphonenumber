@@ -186,7 +186,7 @@
 52492|Zacatecas
 52493|Fresnillo, ZAC
 52494|Jerez de Garcia Salinas, ZAC
-52495|Aguascalients/Jalisco
+52495|Aguascalientes/Jalisco
 52496|Zacatecas
 52498|Zacatecas
 52499|Jalisco/Zacatecas
