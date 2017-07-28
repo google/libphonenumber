@@ -13,8 +13,9 @@
 # limitations under the License.
 
 # Generated from:
-# https://sns.ift.org.mx:8081/sns-frontend/planes-numeracion/descarga-publica.xhtml
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008A0002PDFS.pdf
 
+52221|Puebla
 52222|Puebla
 52223|Puebla
 52224|Puebla
@@ -24,7 +25,7 @@
 52228|Jalapa/Tuzamapan, VER
 52229|Veracruz, VER
 52231|Teteles/Teziutlan, PUE
-52232|La Vigueta/Martinez De La Torre, VER
+52232|La Vigueta/Martinez de la Torre, VER
 52233|Puebla
 52235|Veracruz
 52236|OAX/PUE
@@ -49,7 +50,7 @@
 52281|Loma Bonita, OAX
 52282|PUE/VER
 52283|Veracruz
-52284|Angel Rosario Cabada/Lerdo De Tejada, VER
+52284|Angel Rosario Cabada/Lerdo de Tejada, VER
 52285|Veracruz
 52287|Oaxaca
 52288|Veracruz
@@ -84,7 +85,7 @@
 52347|Jalisco
 52348|Jalisco
 52349|Jalisco
-52351|Ario De Rayon/Zamora, MICH
+52351|Ario de Rayon/Zamora, MICH
 52352|La Piedad, MICH
 52353|Michoacan
 52354|Michoacan
@@ -101,7 +102,7 @@
 52377|Cocula/Estipac, JAL
 52378|Jalisco
 52379|JAL/MICH
-52381|Cojumatlan/San Jose De Gracia, MICH
+52381|Cojumatlan/San Jose de Gracia, MICH
 52382|Jalisco
 52383|Michoacan
 52384|Tala/Teuchitlan, JAL
@@ -113,15 +114,15 @@
 52391|Jalisco
 52392|Jamay/Ocotlan, JAL
 52393|Jalisco
-52394|Cotija De La Paz, MICH
+52394|Cotija de la Paz, MICH
 52395|Jalisco
 52411|Guanajuato
 52412|Guanajuato
-52413|Apaseo El Alto/Apaseo El Grande, GTO
+52413|Apaseo el Alto/Apaseo el Grande, GTO
 52414|Tequisquiapan, QRO
 52415|San Miguel Allende, GTO
 52417|Guanajuato
-52418|Dolores Hidalgo/San Diego De La Union, GTO
+52418|Dolores Hidalgo/San Diego de la Union, GTO
 52419|Guanajuato
 52421|Guanajuato
 52422|Michoacan
@@ -153,7 +154,7 @@
 52453|Apatzingan, MICH
 52454|Michoacan
 52455|Michoacan
-52456|Valle De Santiago, GTO
+52456|Valle de Santiago, GTO
 52457|JAL/ZAC
 52458|Zacatecas
 52459|Michoacan
@@ -164,13 +165,13 @@
 52465|Aguascalientes
 52466|Guanajuato
 52467|Zacatecas
-52468|San Luis De La Paz, GTO
-52469|Buenavista De Cortez/Penjamo, GTO
+52468|San Luis de la Paz, GTO
+52469|Buenavista de Cortez/Penjamo, GTO
 52471|Purepero/Tlazazalca, MICH
 52472|Silao, GTO
 52473|Guanajuato, GTO
-52474|Lagos De Moreno/Paso De Cuarenta, JAL
-52475|Bajio De San Jose/Encarnacion De Diaz, JAL
+52474|Lagos de Moreno/Paso de Cuarenta, JAL
+52475|Bajio de San Jose/Encarnacion de Diaz, JAL
 52476|San Francisco Del Rincon, GTO
 52477|Leon, GTO
 52478|Calera Victor Rosales, ZAC
@@ -184,7 +185,7 @@
 52489|San Luis Potosi
 52492|Zacatecas
 52493|Fresnillo, ZAC
-52494|Jerez De Garcia Salinas, ZAC
+52494|Jerez de Garcia Salinas, ZAC
 52495|AGS/JAL
 52496|Zacatecas
 52498|Zacatecas
@@ -260,11 +261,11 @@
 52717|Estado de Mexico
 52718|Estado de Mexico
 52719|San Francisco Xonacatlan/Temoaya, MEX
-52721|Ixtapan De La Sal, MEX
+52721|Ixtapan de la Sal, MEX
 52722|Estado de Mexico
 52723|Coatepec Harinas, MEX
-52724|Luvianos/Tejupilco De Hidalgo, MEX
-52725|Almoloya De Juarez/Santa Maria Del Monte, MEX
+52724|Luvianos/Tejupilco de Hidalgo, MEX
+52725|Almoloya de Juarez/Santa Maria Del Monte, MEX
 52726|Estado de Mexico
 52727|Guerrero
 52728|Lerma/Santa Maria Atarasquillo, MEX
@@ -293,12 +294,12 @@
 52754|Guerrero
 52755|Ixtapa/Zihuatanejo, GRO
 52756|Chilapa/Olinala, GRO
-52757|Huamuxtitlan/Tlapa De Comonfort, GRO
+52757|Huamuxtitlan/Tlapa de Comonfort, GRO
 52758|Petatlan/San Jeronimito, GRO
 52759|Hidalgo
 52761|Hidalgo
 52762|Taxco, GRO
-52763|Tezontepec De Aldama/Tlahuelilpan, HGO
+52763|Tezontepec de Aldama/Tlahuelilpan, HGO
 52764|Puebla
 52765|Alamo Temapache/Alazan Potrero Del Llano, VER
 52766|Gutierrez Zamora/Tecolutla, VER
@@ -314,7 +315,7 @@
 52777|Morelos
 52778|Hidalgo
 52779|Tizayuca, HGO
-52781|Coyuca De Benitez/San Jeronimo De Juarez, GRO
+52781|Coyuca de Benitez/San Jeronimo de Juarez, GRO
 52782|Poza Rica, VER
 52783|Tuxpan, VER
 52784|Veracruz
@@ -383,7 +384,7 @@
 52964|Chiapas
 52965|Chiapas
 52966|Arriaga/Tonala, CHIS
-52967|San Cristobal De Las Casas, CHIS
+52967|San Cristobal de las Casas, CHIS
 52968|Chiapas
 52969|Flamboyanes/Yucalpeten, YUC
 5297|Oaxaca
