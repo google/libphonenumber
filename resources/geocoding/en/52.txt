@@ -130,7 +130,7 @@
 52424|Michoacan
 52425|Michoacan
 52426|Michoacan
-52427|Mexico/QRO
+52427|Mexico/Quintana Roo
 52428|Ocampo/San Felipe, GTO
 52429|Guanajuato
 52431|Jalostotitlan/Villa Obregon, JAL
@@ -186,7 +186,7 @@
 52492|Zacatecas
 52493|Fresnillo, ZAC
 52494|Jerez de Garcia Salinas, ZAC
-52495|AGS/Jalisco
+52495|Aguascalients/Jalisco
 52496|Zacatecas
 52498|Zacatecas
 52499|Jalisco/Zacatecas
