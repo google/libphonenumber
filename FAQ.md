@@ -71,6 +71,25 @@ part of the national number:
     when formatting since other short-codes do not, and we would be irreparably
     changing the phone number.
 
+### Why wasn't `00` parsed the same as `+`?
+
+`00` is not an international prefix (IDD) in every region, so it's not
+equivalent to `+`.
+
+For example, if [parsing `0015417540000` as if dialled from the
+US](http://libphonenumber.appspot.com/phonenumberparser?number=0015417540000&country=US),
+the national number is `15417540000` because `00` is not an international prefix
+in the US.
+
+Ascension Island, however, does have `00` as an international prefix, so `00`
+there works the same as `+` and [`0015417540000` as if dialled from
+`AC`](http://libphonenumber.appspot.com/phonenumberparser?number=0015417540000&country=AC)
+gives `5417540000` for the national number.
+
+You can try [the demo](http://libphonenumber.appspot.com/) for more regions.
+Also see `internationalPrefix` in
+[`resources/PhoneNumberMetadata.xml`](http://github.com/googlei18n/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml).
+
 ## Validation and types of numbers
 
 ### What is the difference between isPossibleNumber and isValidNumber?
