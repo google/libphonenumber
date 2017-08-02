@@ -84,6 +84,25 @@
 1264584|Digicel
 1264729|Cable & Wireless
 1264772|Cable & Wireless
+1268713|Digicel
+1268714|Digicel
+1268715|Digicel
+1268716|Digicel
+1268717|Digicel
+1268718|Digicel
+1268719|Digicel
+1268720|Digicel
+1268721|Digicel
+1268722|Digicel
+1268724|Digicel
+1268725|Digicel
+1268726|Digicel
+1268732|Digicel
+1268734|Digicel
+1268736|Digicel
+1268783|Digicel
+1268785|Digicel
+1268788|Digicel
 1284300|Digicel
 1284340|Digicel
 1284341|Digicel
@@ -105,6 +124,11 @@
 1473402|Affordable Island Communications
 147341|Digicel Grenada
 1473420|Digicel Grenada
+1473421|Digicel Grenada
+1473422|Digicel Grenada
+1473423|Digicel Grenada
+1473424|Digicel Grenada
+1473425|Digicel Grenada
 1473520|Affordable Island Communications
 1473521|Affordable Island Communications
 147353|AWS Grenada
