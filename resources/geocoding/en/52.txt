@@ -195,7 +195,13 @@
 52587|Amecameca, MEX
 52588|Estado de Mexico
 52589|Juchitepec/Ozumba, MEX
-5259|Estado de Mexico
+52591|Estado de Mexico
+52592|Estado de Mexico
+52593|Estado de Mexico
+52594|Estado de Mexico
+52595|Estado de Mexico
+52596|Estado de Mexico
+52599|Estado de Mexico
 52612|La Paz/Todos Santos, BCS
 52613|Baja California Sur
 52614|Chihuahua
@@ -251,7 +257,11 @@
 52677|Durango
 52686|Baja California
 52687|Sinoloa
-5269|Sinoloa
+52694|Sinoloa
+52695|Sinoloa
+52696|Sinoloa
+52697|Sinoloa
+52698|Sinoloa
 52711|Mexico/Michoacan
 52712|Estado de Mexico
 52713|Santiago Tianguistenco, MEX
@@ -301,7 +311,7 @@
 52762|Taxco, GRO
 52763|Tezontepec de Aldama/Tlahuelilpan, HGO
 52764|Puebla
-52765|Alamo Temapache/Alazan Potrero Del Llano, VER
+52765|Alamo Temapache/Alazan/Potrero Del Llano, VER
 52766|Gutierrez Zamora/Tecolutla, VER
 52767|Guerrero
 52768|Veracruz
@@ -394,7 +404,7 @@
 52984|Quintana Roo
 52985|Yucatan
 52986|Yucatan
-52987|Cozumel, QROO
+52987|Cozumel, QRO
 52988|Yucatan
 52991|Yucatan
 52992|Chiapas

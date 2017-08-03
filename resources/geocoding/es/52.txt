@@ -130,7 +130,7 @@
 52424|Michoacán
 52425|Michoacán
 52426|Michoacán
-52427|México/QRO
+52427|México/Quintana Roo
 52428|Ocampo/San Felipe, GTO
 52429|Guanajuato
 52431|Jalostotitlán/Villa Obregón, JAL
@@ -358,7 +358,7 @@
 52862|Coahuila
 52864|Coahuila
 52866|Castaños/Monclova, COAH
-52867|Nuevo León/TAMPS
+52867|Nuevo León/Tamaulipas
 52868|Tamaulipas
 52869|Cuatro Ciénegas/San Buenaventura, COAH
 52871|Coahuila
@@ -404,7 +404,7 @@
 52984|Quintana Roo
 52985|Yucatán
 52986|Yucatán
-52987|Cozumel, QROO
+52987|Cozumel, QRO
 52988|Yucatán
 52991|Yucatán
 52992|Chiapas
