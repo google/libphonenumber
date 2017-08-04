@@ -14,6 +14,9 @@
 
 # Translations of en/852.txt from each carrier's wikipedia page and in
 # some cases the carrier's own home page.
+# We found no Chinese name for operator "Tai Tung" and referred to the Chinese
+# name of Taitung City from https://en.wikipedia.org/wiki/Taitung_City,
+# transliterating it to Simplified Chinese using Google Translate.
 
 852510|中国移动
 852511|新移动通讯
@@ -75,6 +78,7 @@
 852566|3
 852568|1O1O / One2Free
 852569|3
+8525730|台东
 8525900|香港移动通讯
 8525901|香港移动通讯
 8525902|香港移动通讯
