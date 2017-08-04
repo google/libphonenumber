@@ -30,7 +30,7 @@ Cream Sandwich).
     Cost, VoIP, Personal Numbers, UAN, Pager, and Voicemail (whenever feasible).
 *   `isNumberMatch` - gets a confidence level on whether two numbers could be
     the same.
-*   `getExampleNumber` and `getExampleNumberByType` - provide valid example
+*   `getExampleNumber` and `getExampleNumberForType` - provide valid example
     numbers for all countries/regions, with the option of specifying which type
     of example phone number is needed.
 *   `isPossibleNumber` - quickly guesses whether a number is a possible
