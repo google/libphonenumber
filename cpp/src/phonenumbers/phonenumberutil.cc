@@ -2184,8 +2184,11 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     // and carrier code be long enough to be a possible length for the region.
     // Otherwise, we don't do the stripping, since the original number could be
     // a valid short number.
-    if (TestNumberLength(potential_national_number, *country_metadata) !=
-        TOO_SHORT) {
+    ValidationResult validation_result =
+        TestNumberLength(potential_national_number, *country_metadata);
+    if (validation_result != TOO_SHORT &&
+        validation_result != IS_POSSIBLE_LOCAL_ONLY &&
+        validation_result != INVALID_LENGTH) {
       normalized_national_number.assign(potential_national_number);
       if (keep_raw_input && !carrier_code.empty()) {
         temp_number.set_preferred_domestic_carrier_code(carrier_code);

@@ -4215,9 +4215,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     // carrier code be long enough to be a possible length for the region.
     // Otherwise, we don't do the stripping, since the original number could be
     // a valid short number.
-    if (this.testNumberLength_(potentialNationalNumber.toString(),
-            regionMetadata) !=
-        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
+    var validatonResult = this.testNumberLength_(
+        potentialNationalNumber.toString(), regionMetadata);
+    if (validatonResult !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT &&
+	validatonResult !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE_LOCAL_ONLY &&
+	validatonResult !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH) {
       normalizedNationalNumber = potentialNationalNumber;
       if (keepRawInput && carrierCode.toString().length > 0) {
         phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
