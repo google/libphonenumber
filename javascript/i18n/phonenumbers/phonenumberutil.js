@@ -3313,9 +3313,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberForType =
 /**
  * Helper method to check a number against possible lengths for this region,
  * based on the metadata being passed in, and determine whether it matches, or
- * is too short or too long. Currently, if a number pattern suggests that
- * numbers of length 7 and 10 are possible, and a number in between these
- * possible lengths is entered, such as of length 8, this will return TOO_LONG.
+ * is too short or too long.
  *
  * @param {string} number
  * @param {i18n.phonenumbers.PhoneMetadata} metadata
@@ -3331,10 +3329,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
 
 /**
  * Helper method to check a number against a particular pattern and determine
- * whether it matches, or is too short or too long. Currently, if a number
- * pattern suggests that numbers of length 7 and 10 are possible, and a number
- * in between these possible lengths is entered, such as of length 8, this will
- * return TOO_LONG.
+ * whether it matches, or is too short or too long.
  *
  * @param {string} number
  * @param {i18n.phonenumbers.PhoneMetadata} metadata
