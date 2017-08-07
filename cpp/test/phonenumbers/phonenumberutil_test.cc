@@ -3662,6 +3662,17 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("12", RegionCode::NZ(), &test_number));
   EXPECT_EQ(short_number, test_number);
+
+  // Test for short-code with leading zero for a country which has 0 as
+  // national prefix. Ensure it's not interpreted as national prefix if the
+  // remaining number length is local-only in terms of length. Example: In GB,
+  // length 6-7 are only possible local-only.
+  short_number.set_country_code(44);
+  short_number.set_national_number(123456);
+  short_number.set_italian_leading_zero(true);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("0123456", RegionCode::GB(), &test_number));
+  EXPECT_EQ(short_number, test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, ParseNumberWithAlphaCharacters) {

@@ -2121,6 +2121,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     PhoneNumber shortNumber = new PhoneNumber();
     shortNumber.setCountryCode(64).setNationalNumber(12L);
     assertEquals(shortNumber, phoneUtil.parse("12", RegionCode.NZ));
+
+    // Test for short-code with leading zero for a country which has 0 as national prefix. Ensure
+    // it's not interpreted as national prefix if the remaining number length is local-only in
+    // terms of length. Example: In GB, length 6-7 are only possible local-only.
+    shortNumber.setCountryCode(44).setNationalNumber(123456)
+        .setItalianLeadingZero(true);
+    assertEquals(shortNumber, phoneUtil.parse("0123456", RegionCode.GB));
   }
 
   public void testParseNumberWithAlphaCharacters() throws Exception {

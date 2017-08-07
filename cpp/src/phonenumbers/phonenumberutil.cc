@@ -316,9 +316,6 @@ void GetSupportedTypesForMetadata(
 
 // Helper method to check a number against possible lengths for this number
 // type, and determine whether it matches, or is too short or too long.
-// Currently, if a number pattern suggests that numbers of length 7 and 10 are
-// possible, and a number in between these possible lengths is entered, such as
-// of length 8, this will return TOO_LONG.
 PhoneNumberUtil::ValidationResult TestNumberLength(
     const string& number, const PhoneMetadata& metadata,
     PhoneNumberUtil::PhoneNumberType type) {
@@ -397,9 +394,7 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
 
 // Helper method to check a number against possible lengths for this region,
 // based on the metadata being passed in, and determine whether it matches, or
-// is too short or too long. Currently, if a number pattern suggests that
-// numbers of length 7 and 10 are possible, and a number in between these
-// possible lengths is entered, such as of length 8, this will return TOO_LONG.
+// is too short or too long.
 PhoneNumberUtil::ValidationResult TestNumberLength(
     const string& number, const PhoneMetadata& metadata) {
   return TestNumberLength(number, metadata, PhoneNumberUtil::UNKNOWN);
@@ -2184,8 +2179,11 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     // and carrier code be long enough to be a possible length for the region.
     // Otherwise, we don't do the stripping, since the original number could be
     // a valid short number.
-    if (TestNumberLength(potential_national_number, *country_metadata) !=
-        TOO_SHORT) {
+    ValidationResult validation_result =
+        TestNumberLength(potential_national_number, *country_metadata);
+    if (validation_result != TOO_SHORT &&
+        validation_result != IS_POSSIBLE_LOCAL_ONLY &&
+        validation_result != INVALID_LENGTH) {
       normalized_national_number.assign(potential_national_number);
       if (keep_raw_input && !carrier_code.empty()) {
         temp_number.set_preferred_domestic_carrier_code(carrier_code);
