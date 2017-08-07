@@ -4215,13 +4215,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     // carrier code be long enough to be a possible length for the region.
     // Otherwise, we don't do the stripping, since the original number could be
     // a valid short number.
-    var validatonResult = this.testNumberLength_(
+    var validationResult = this.testNumberLength_(
         potentialNationalNumber.toString(), regionMetadata);
-    if (validatonResult !=
+    if (validationResult !=
         i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT &&
-	validatonResult !=
+	validationResult !=
         i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE_LOCAL_ONLY &&
-	validatonResult !=
+	validationResult !=
         i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH) {
       normalizedNationalNumber = potentialNationalNumber;
       if (keepRawInput && carrierCode.toString().length > 0) {
