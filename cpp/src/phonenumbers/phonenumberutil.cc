@@ -1786,11 +1786,8 @@ void PhoneNumberUtil::GetRegionCodeForNumber(const PhoneNumber& number,
   std::list<string> region_codes;
   GetRegionCodesForCountryCallingCode(country_calling_code, &region_codes);
   if (region_codes.size() == 0) {
-    string number_string;
-    GetNationalSignificantNumber(number, &number_string);
     VLOG(1) << "Missing/invalid country calling code ("
-            << country_calling_code
-            << ") for number " << number_string;
+            << country_calling_code << ")";
     *region_code = RegionCode::GetUnknown();
     return;
   }
@@ -2256,9 +2253,6 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
     return;
   }
 
-  VLOG(3) << "After stripping starting and trailing characters, left with: "
-          << *extracted_number;
-
   // Now remove any extra numbers at the end.
   reg_exps_->capture_up_to_second_number_start_pattern_->
       PartialMatch(*extracted_number, extracted_number);
@@ -2649,7 +2643,6 @@ void PhoneNumberUtil::Normalize(string* number) const {
 // method ExtractPossibleNumber.
 bool PhoneNumberUtil::IsViablePhoneNumber(const string& number) const {
   if (number.length() < kMinLengthForNsn) {
-    VLOG(2) << "Number too short to be viable:" << number;
     return false;
   }
   return reg_exps_->valid_phone_number_pattern_->FullMatch(number);
@@ -2817,11 +2810,6 @@ bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension)
                             &possible_extension_three)) {
     // Replace the extensions in the original string here.
     reg_exps_->extn_pattern_->Replace(&number_copy, "");
-    VLOG(4) << "Found an extension. Possible extension one: "
-            << possible_extension_one
-            << ". Possible extension two: " << possible_extension_two
-            << ". Possible extension three: " << possible_extension_three
-            << ". Remaining number: " << number_copy;
     // If we find a potential extension, and the number preceding this is a
     // viable number, we assume it is an extension.
     if ((!possible_extension_one.empty() || !possible_extension_two.empty() ||
@@ -2932,8 +2920,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
       MaybeStripNationalPrefixAndCarrierCode(*default_region_metadata,
                                              &potential_national_number,
                                              NULL);
-      VLOG(4) << "Number without country calling code prefix: "
-              << potential_national_number;
+      VLOG(4) << "Number without country calling code prefix";
       // If the number was not valid before but is valid now, or if it was too
       // long before, we consider the number with the country code stripped to
       // be a better result and keep that instead.
