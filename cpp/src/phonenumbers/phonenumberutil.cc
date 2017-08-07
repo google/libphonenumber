@@ -2918,6 +2918,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::MaybeExtractCountryCode(
       MaybeStripNationalPrefixAndCarrierCode(*default_region_metadata,
                                              &potential_national_number,
                                              NULL);
+      VLOG(4) << "Number without country calling code prefix";
       // If the number was not valid before but is valid now, or if it was too
       // long before, we consider the number with the country code stripped to
       // be a better result and keep that instead.

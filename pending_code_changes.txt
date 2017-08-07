@@ -3,3 +3,4 @@ Code changes:
    stripping based on possible-lengths (IS_POSSIBLE_LOCAL_ONLY and
    INVALID_LENGTH). Enables e.g. adding Iran short-codes starting with "096"
    without the need to hack IR's national prefix parsing config.
+ - Logging changes: Don't log client-provided phone numbers.
