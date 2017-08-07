@@ -3663,8 +3663,8 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
             phone_util_.Parse("12", RegionCode::NZ(), &test_number));
   EXPECT_EQ(short_number, test_number);
 
-  // Test for b/64235606. short-code with leading zero for a country which has 0
-  // as national prefix. Ensure it's not interpreted as national prefix if the
+  // Test for short-code with leading zero for a country which has 0 as
+  // national prefix. Ensure it's not interpreted as national prefix if the
   // remaining number length is local-only in terms of length. Example: In GB,
   // length 6-7 are only possible local-only.
   short_number.set_country_code(44);
