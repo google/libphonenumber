@@ -656,7 +656,6 @@ public class PhoneNumberUtil {
       Matcher trailingCharsMatcher = UNWANTED_END_CHAR_PATTERN.matcher(number);
       if (trailingCharsMatcher.find()) {
         number = number.subSequence(0, trailingCharsMatcher.start());
-        logger.log(Level.FINER, "Stripped trailing characters: " + number);
       }
       // Check for extra numbers at the end.
       Matcher secondNumber = SECOND_NUMBER_START_PATTERN.matcher(number);
@@ -2290,9 +2289,7 @@ public class PhoneNumberUtil {
     int countryCode = number.getCountryCode();
     List<String> regions = countryCallingCodeToRegionCodeMap.get(countryCode);
     if (regions == null) {
-      String numberString = getNationalSignificantNumber(number);
-      logger.log(Level.INFO,
-                 "Missing/invalid country_code (" + countryCode + ") for number " + numberString);
+      logger.log(Level.INFO, "Missing/invalid country_code (" + countryCode + ")");
       return null;
     }
     if (regions.size() == 1) {
