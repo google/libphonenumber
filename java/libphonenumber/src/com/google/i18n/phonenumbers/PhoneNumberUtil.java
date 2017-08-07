@@ -3218,10 +3218,10 @@ public class PhoneNumberUtil {
       // We require that the NSN remaining after stripping the national prefix and carrier code be
       // long enough to be a possible length for the region. Otherwise, we don't do the stripping,
       // since the original number could be a valid short number.
-      ValidationResult validatonResult = testNumberLength(potentialNationalNumber, regionMetadata);
-      if (validatonResult != ValidationResult.TOO_SHORT
-          && validatonResult != ValidationResult.IS_POSSIBLE_LOCAL_ONLY
-          && validatonResult != ValidationResult.INVALID_LENGTH) {
+      ValidationResult validationResult = testNumberLength(potentialNationalNumber, regionMetadata);
+      if (validationResult != ValidationResult.TOO_SHORT
+          && validationResult != ValidationResult.IS_POSSIBLE_LOCAL_ONLY
+          && validationResult != ValidationResult.INVALID_LENGTH) {
         normalizedNationalNumber = potentialNationalNumber;
         if (keepRawInput && carrierCode.length() > 0) {
           phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
