@@ -316,9 +316,6 @@ void GetSupportedTypesForMetadata(
 
 // Helper method to check a number against possible lengths for this number
 // type, and determine whether it matches, or is too short or too long.
-// Currently, if a number pattern suggests that numbers of length 7 and 10 are
-// possible, and a number in between these possible lengths is entered, such as
-// of length 8, this will return TOO_LONG.
 PhoneNumberUtil::ValidationResult TestNumberLength(
     const string& number, const PhoneMetadata& metadata,
     PhoneNumberUtil::PhoneNumberType type) {
@@ -397,9 +394,7 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
 
 // Helper method to check a number against possible lengths for this region,
 // based on the metadata being passed in, and determine whether it matches, or
-// is too short or too long. Currently, if a number pattern suggests that
-// numbers of length 7 and 10 are possible, and a number in between these
-// possible lengths is entered, such as of length 8, this will return TOO_LONG.
+// is too short or too long.
 PhoneNumberUtil::ValidationResult TestNumberLength(
     const string& number, const PhoneMetadata& metadata) {
   return TestNumberLength(number, metadata, PhoneNumberUtil::UNKNOWN);
