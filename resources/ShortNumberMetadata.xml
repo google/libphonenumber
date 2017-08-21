@@ -762,20 +762,49 @@
     </territory>
 
     <!-- Bosnia and Herzegovina -->
+    <!-- https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200001B0001PDFE.pdf -->
     <!-- http://www.rak.ba/eng/index.php?uid=1272016657 (accessible from
          http://www.cra.ba/en/telecom/numbering/) -->
     <!-- http://en.wikipedia.org/wiki/+387 -->
     <territory id="BA">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>12[234]</nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              6(?:
+                00[06]|
+                1(?:
+                  1[17]|
+                  23
+                )
+              )|
+              8\d{1,2}
+            )|
+            2(?:
+              0[0-7]|
+              [2-5]|
+              6[0-26]|
+              [78]\d{1,2}
+            )|
+            [3-5]\d{2}|
+            7\d{3}
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>122</exampleNumber>
       </shortCode>
+       <tollFree>
+        <!-- All 116XXX, "European harmonized services of social" value are toll-free.
+             See: https://ec.europa.eu/digital-single-market/116-helplines.-->
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="6"/>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
       <emergency>
-        <nationalNumberPattern>12[234]</nationalNumberPattern>
+        <nationalNumberPattern>12[2-4]</nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>122</exampleNumber>
       </emergency>
@@ -5815,10 +5844,31 @@
     <!-- http://118.tct.ir/necnum.htm -->
     <territory id="IR">
       <generalDesc>
-        <nationalNumberPattern>[129]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[0-29]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- As per http://118.tct.ir/necnum.htm and http://www.ictna.ir/id/030363/ 096XX and 096XXX
+             short codes are valid. Note: '0' is part of shortcode and not national prefix here.
+             Able to connect to 09691 but not to 9691.-->
         <nationalNumberPattern>
+          096(?:
+            0[12]|
+            2[16-8]|
+            3(?:
+              08|
+              [14]5|
+              [23]|
+              66
+            )|
+            4(?:
+              0|
+              80
+            )|
+            5[01]|
+            6[89]|
+            86|
+            9[19]
+          )|
           1(?:
             1[0-68]|
             2[0-59]|
@@ -5864,24 +5914,6 @@
           )|
           9(?:
             11|
-            6(?:
-              0[12]|
-              2[16-8]|
-              3(?:
-                08|
-                [14]5|
-                [23]|
-                66
-              )|
-              4(?:
-                0|
-                80
-              )|
-              5[01]|
-              6[89]|
-              86|
-              9[19]
-            )|
             9(?:
               90|
               0009
@@ -5897,8 +5929,24 @@
         <possibleLengths national="3"/>
         <exampleNumber>123</exampleNumber>
       </tollFree>
-      <carrierSpecific>
+      <standardRate>
+        <!-- 15XX, 18XX and 096XX are supported as standard rate because the cost depends only on
+             calling device as per http://www.ictna.ir/id/030363/. -->
         <nationalNumberPattern>
+          (?:
+            096|
+            1[58]
+          )\d{2}
+        </nationalNumberPattern>
+        <possibleLengths national="4,5"/>
+        <exampleNumber>1512</exampleNumber>
+      </standardRate>
+      <carrierSpecific>
+        <!-- As per http://www.ictna.ir/id/030363/, 15XX and 18XX are region specific short codes as
+             the organizations either need to have office / permission code in order to be
+             accessible in specific regions. -->
+        <nationalNumberPattern>
+          1[58]\d{2}|
           99(?:
             90|
             0009
@@ -5919,11 +5967,14 @@
         <exampleNumber>112</exampleNumber>
       </emergency>
       <expandedEmergency>
+        <!-- As per http://www.ictna.ir/id/030363/, 121, 122 and 194 are emergency service numbers.
+             -->
         <nationalNumberPattern>
           1(?:
             16|
-            2[03]|
-            47
+            2[0-3]|
+            47|
+            94
           )
         </nationalNumberPattern>
         <possibleLengths national="3"/>
@@ -8898,43 +8949,49 @@
     <!-- Poland -->
     <!-- http://en.wikipedia.org/wiki/%2B48 -->
     <!-- http://www.itu.int/oth/T02020000A8/en -->
+    <!-- http://www.uke.gov.pl/tablice/home.do?execution=e1s1 -->
     <territory id="PL">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{2}(?:\d{3})?|
+          1\d{2}(?:\d{2,3})?|
           9\d{2}
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
+        <!-- 19XXX short codes are mentioned as customer service numbers in the ITU doc. These are
+             probably the same numbers as the verified "+48 <area-code> 19XXX" numbers. We follow
+             the ITU doc here, but it could be wrong (we may need to remove 19XXX here or we may
+             need to move it to PhoneNumberMetadata.xml (e.g. with possibleLengths localOnly=5). -->
         <nationalNumberPattern>
-          11(?:
-            2|
-            6(?:
-              000|
-              1(?:
-                11|
-                23
+          1(?:
+            1(?:
+              2|
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8(?:
+                000|
+                91[23]
               )
-            )
+            )|
+            9\d{3}
           )|
           9(?:
             8[4-7]|
             9[1-9]
           )
         </nationalNumberPattern>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
-        <nationalNumberPattern>
-          116(?:
-            000|
-            1(?:
-              11|
-              23
-            )
-          )
-        </nationalNumberPattern>
+        <!-- All 116XXX, "European harmonized services of social" value are toll-free.
+             See: https://ec.europa.eu/digital-single-market/116-helplines.-->
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
         <possibleLengths national="6"/>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
@@ -9292,16 +9349,22 @@
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          0[123]|
-          112
+          0[1-4]|
+          1(?:
+            0[1-4]|
+            12
+          )
         </nationalNumberPattern>
         <possibleLengths national="2,3"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <emergency>
         <nationalNumberPattern>
-          0[123]|
-          112
+          0[1-3]|
+          1(?:
+            0[1-3]|
+            12
+          )
         </nationalNumberPattern>
         <possibleLengths national="2,3"/>
         <exampleNumber>112</exampleNumber>
@@ -10246,41 +10309,152 @@
           1(?:
             0[0-2]|
             1(?:
-              00|
-              12|
-              25|
-              33|
-              4[89]|
-              5[05]|
-              7[58]|
-              9[37]
+              0[03]|
+              1[1-35]|
+              2[0358]|
+              3[03-79]|
+              4[02-489]|
+              5[04-9]|
+              6[04-79]|
+              7[03-9]|
+              8[027-9]|
+              9[02-79]
+            )|
+            2(?:
+              22|
+              3[89]
             )|
             3(?:
               18|
-              31|
-              56|
+              2[23]|
+              3[013]|
+              5[56]|
+              6[45]|
               73
             )|
+            477|
             5(?:
-              5[45]|
-              66|
-              72|
-              8[01]|
-              9[59]
+              0\d|
+              4[0-37-9]|
+              5[1-8]|
+              6[01679]|
+              7[12568]|
+              8[0-24589]|
+              9[013589]
             )|
             6(?:
-              00|
-              69|
-              7[28]|
-              9[01]
+              0[0-29]|
+              20|
+              4[3-6]|
+              6[1-9]|
+              7[0257-9]|
+              8[0158]|
+              9[014-9]
             )|
-            790|
+            7(?:
+              19|
+              7[27]|
+              90
+            )|
+            888|
             9[19]
           )
         </nationalNumberPattern>
         <possibleLengths national="3,4"/>
         <exampleNumber>191</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+        1(?:
+          1(?:
+            00|
+            2[03]|
+            3[3479]|
+            55|
+            7[67]|
+            9[0246]
+          )|
+          5(?:
+            55|
+            78
+          )|
+          6(?:
+            44|
+            6[79]|
+            88|
+            9[16]
+          )|
+          888
+        )
+        </nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>1669</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <nationalNumberPattern>
+          1(?:
+            1(?:
+              03|
+              1[15]|
+              2[58]|
+              3[056]|
+              4[02-49]|
+              5[046-9]|
+              6[04-79]|
+              7[03-589]|
+              8[02789]|
+              9[579]
+            )|
+            3(?:
+              18|
+              2[23]|
+              3[013]|
+              5[4-6]
+            )|
+            5(?:
+              0[0-8]|
+              4[0-378]|
+              5[1-478]|
+              6[01679]|
+              7[156]|
+              8[0-24589]|
+              9[013589]
+            )|
+            6(?:
+              0[0-29]|
+              20|
+              4[356]|
+              6[1-68]|
+              7[05789]|
+              8[015]|
+              9[0457-9]
+            )|
+            7(?:
+              19|
+              7[27]
+            )
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>1149</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <nationalNumberPattern>
+          1(?:
+            113|
+            2(?:
+              22|
+              3[89]
+            )|
+            5(?:
+              09|
+              56
+            )
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>1509</exampleNumber>
+      </premiumRate>
       <carrierSpecific>
         <nationalNumberPattern>114[89]</nationalNumberPattern>
         <possibleLengths national="4"/>
@@ -10299,10 +10473,7 @@
       <expandedEmergency>
         <nationalNumberPattern>
           1(?:
-            1(?:
-              50|
-              93
-            )|
+            193|
             691
           )
         </nationalNumberPattern>
@@ -11198,8 +11369,8 @@
         <exampleNumber>10111</exampleNumber>
       </shortCode>
       <standardRate>
-        <!-- 37064 and 43699 are charged at standard rate w.r.t carrier as per confirmation from
-             smsportal.co.za. -->
+        <!-- 37064, 43699 and 43946 are charged at standard rate w.r.t carrier as per confirmation
+             from smsportal.co.za. -->
         <nationalNumberPattern>
           3(?:
             7(?:
@@ -11209,7 +11380,10 @@
             8126
           )|
           4(?:
-            3699|
+            3(?:
+              699|
+              946
+            )|
             7751
           )
         </nationalNumberPattern>

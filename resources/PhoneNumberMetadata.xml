@@ -1974,7 +1974,9 @@
              are not added here as we could not find any online working numbers. Instead of prefix
              39, the more detailed 393 prefix has been added based on https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/businessnumbers/nationwidebusinessnumbersgrantedtotelecomsoperators.html
              As per ITU doc prefix 306 is of 8 to 10 digits but we found 6 digit online working
-             number. -->
+             number. As per phone numbering plan in viestintavirasto.fi, 29X 'Nationwide Subscriber
+             Numbers' are of length 8 to 10 digits. Also found few valid numbers online which are of
+             7 digits. -->
         <nationalNumberPattern>
           10(?:
             0\d{4,6}|
@@ -1993,7 +1995,7 @@
                 [89]\d{1,6}
               )
             )|
-            9\d{6,8}
+            9\d{5,8}
           )|
           3(?:
             0(?:
@@ -2235,7 +2237,6 @@
       <mobile>
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>2462501234</exampleNumber>
-        <!-- Prefix 256 was added from bug report. -->
         <nationalNumberPattern>
           246(?:
             2(?:
@@ -2874,9 +2875,9 @@
         <exampleNumber>70123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            5[1568]\d|
-            [67]\d{2}
-          )\d{5}
+            5[15-8]|
+            [67]\d
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
     </territory>
@@ -2919,7 +2920,7 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>999</leadingDigits>
+          <leadingDigits>99[69]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2,3})">
@@ -2972,8 +2973,9 @@
           )\d{4,5}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- The range 99\d{7} is marked as mobile in the ITU doc, but only prefix 999 seems to be in
-           use, based on the wikipedia page and information received from MAX telecom. -->
+      <!-- The range 99\d{7} is marked as mobile in the ITU doc, but only 996 and 999 seem to be in
+           use, the former based on user reports and online numbers, and the latter based on
+           wikipedia and information received from MAX telecom. -->
       <mobile>
         <possibleLengths national="8,9"/>
         <exampleNumber>48123456</exampleNumber>
@@ -2982,7 +2984,7 @@
             8[7-9]\d|
             9(?:
               8\d|
-              99
+              9[69]
             )
           )\d{6}|
           4(?:
@@ -6605,7 +6607,7 @@
               7[5-7]
             )|
             31[5-7]|
-            61[2-7]
+            61[1-7]
           )\d{4}
         </nationalNumberPattern>
       </mobile>
@@ -7082,6 +7084,10 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{3})(\d{3})">
+          <leadingDigits>155</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
@@ -7141,12 +7147,14 @@
         <exampleNumber>1001234567</exampleNumber>
         <!-- Adding the extra prefixes 102 and 121 from user reports that Vodafone and Mobinil have
              started allocating numbers beginning with these prefixes, along with 115 from numbers
-             found online. Etisalat is using 110. -->
+             found online. Etisalat is using 110. According to ITU, only 1550 and 1555 are assigned,
+             but we support all of 155 to keep the regex simple. -->
         <nationalNumberPattern>
           1(?:
             0[0-269]|
             1[0-245]|
-            2[0-278]
+            2[0-278]|
+            55
           )\d{7}
         </nationalNumberPattern>
       </mobile>
@@ -7654,7 +7662,9 @@
              are not added here as we could not find any online working numbers. Instead of prefix
              39, the more detailed 393 prefix has been added based on https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/businessnumbers/nationwidebusinessnumbersgrantedtotelecomsoperators.html
              As per ITU doc prefix 306 is of 8 to 10 digits but we found 6 digit online working
-             number. -->
+             number. As per phone numbering plan in viestintavirasto.fi, 29X 'Nationwide Subscriber
+             Numbers' are of length 8 to 10 digits. Also found few valid numbers online which are of
+             7 digits. -->
         <nationalNumberPattern>
           10(?:
             0\d{4,6}|
@@ -7673,7 +7683,7 @@
                 [89]\d{1,6}
               )
             )|
-            9\d{6,8}
+            9\d{5,8}
           )|
           3(?:
             0(?:
@@ -11495,7 +11505,8 @@
              Not all operator codes are available in all areas, but we don't maintain that
              distinction here.
              Area codes starting with a 7 are listed separately, since the prefixes need to be more
-             detailed so they clash less with mobile phone prefixes. -->
+             detailed so they clash less with mobile phone prefixes. 3880 is area code of Sadarhills
+             (Kangpokai). Found working number in this range. -->
         <nationalNumberPattern>
           (?:
             11|
@@ -11504,6 +11515,7 @@
             4[04]|
             79
           )[2-7]\d{7}|
+          3880\d{6}|
           80[2-467]\d{7}|
           (?:
             1(?:
@@ -12056,6 +12068,11 @@
         <numberFormat pattern="(\d{2})(\d{4,5})">
           <leadingDigits>[1-8]</leadingDigits>
           <format>$1 $2</format>
+        </numberFormat>
+        <!-- Format for short codes 096XX and 096XXX. -->
+        <numberFormat pattern="(\d{4,5})">
+          <leadingDigits>96</leadingDigits>
+          <format>$1</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
           <leadingDigits>9</leadingDigits>
@@ -14953,7 +14970,7 @@
       <mobile>
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>3453231234</exampleNumber>
-        <!-- Adding central office codes 321, 322, 328, 576, 923 and 936 from numbers found online.
+        <!-- Adding central office codes 576, 923 and 936 from numbers found online.
              Most central office codes that were surrendered have not been included, with the
              exception of 546 where numbers have been found. -->
         <nationalNumberPattern>
@@ -14961,10 +14978,12 @@
             32[1-9]|
             5(?:
               1[67]|
-              2[5-7]|
-              4[6-8]|
+              2[5-79]|
+              4[6-9]|
+              50|
               76
             )|
+            649|
             9(?:
               1[67]|
               2[2-9]|
@@ -15034,7 +15053,7 @@
           (?:
             33\d|
             7\d{2}|
-            80[09]
+            80[089]
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
@@ -15174,6 +15193,12 @@
         <exampleNumber>8091234567</exampleNumber>
         <nationalNumberPattern>809\d{7}</nationalNumberPattern>
       </premiumRate>
+      <!-- These are referred to as UPT numbers in the plan. -->
+      <personalNumber>
+        <possibleLengths national="10"/>
+        <exampleNumber>8081234567</exampleNumber>
+        <nationalNumberPattern>808\d{7}</nationalNumberPattern>
+      </personalNumber>
       <voip>
         <possibleLengths national="10"/>
         <exampleNumber>7511234567</exampleNumber>
@@ -15372,7 +15397,8 @@
             )|
             7(?:
               1[2-9]|
-              2[0-8]
+              2\d|
+              3[01]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -17407,7 +17433,7 @@
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000084/en</sourceUrl>
         <!-- Numbering link in the LHS menu - has more up-to-date allocations -->
-        <sourceUrl>http://www.mca.org.mt</sourceUrl>
+        <sourceUrl>http://www.mca.org.mt/regulatory/numbering/numbering-plans</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
@@ -17423,9 +17449,8 @@
         <nationalNumberPattern>
           2(?:
             0(?:
-              1[0-6]|
-              3[1-4]|
-              [69]\d
+              [169]\d|
+              3[1-4]
             )|
             [1-357]\d{2}
           )\d{4}
@@ -17434,8 +17459,6 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>96961234</exampleNumber>
-        <!-- 7210 and 92XX come from the allocations listed on http://www.mca.org.mt, but they are
-             not listed in the latest ITU document. -->
         <nationalNumberPattern>
           (?:
             7(?:
@@ -17447,7 +17470,7 @@
                 1[01]|
                 31
               )|
-              696|
+              69[67]|
               8(?:
                 1[1-3]|
                 89|
@@ -18647,7 +18670,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[12578]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[125-8]\d{7}</nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="8"/>
@@ -18659,12 +18682,23 @@
         <exampleNumber>81234567</exampleNumber>
         <!-- 55[0-7], 57, 58 and 7[5-8] were added from bug reports/numbers found online. -->
         <nationalNumberPattern>
-          5(?:
-            5[0-7]\d{5}|
-            [78]\d{6}
-          )|
-          7[5-8]\d{6}|
-          8\d{7}
+          (?:
+            5(?:
+              5[0-7]|
+              [78]\d
+            )|
+            6(?:
+              20|
+              3[035]|
+              4[045]|
+              5[05]|
+              77|
+              8[1-9]|
+              9[059]
+            )|
+            7[5-8]\d|
+            8\d{2}
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -20086,10 +20120,41 @@
         <sourceUrl>http://en.wikipedia.org/wiki/%2B48</sourceUrl>
         <sourceUrl>http://www.itu.int/oth/T02020000A8/en</sourceUrl>
         <!-- Source is in Polish. -->
-        <sourceUrl>http://www.uke.gov.pl/uke/index.jsp?place=Lead24&amp;news_cat_id=277&amp;news_id=3791&amp;layout=9&amp;page=text</sourceUrl>
+        <sourceUrl>http://www.uke.gov.pl/tablice/home.do?execution=e1s1</sourceUrl>
         <sourceUrl>http://www.sgwp.wp.mil.pl/pl/1_1225.html</sourceUrl>
       </references>
       <availableFormats>
+        <!-- Formats for short codes. -->
+        <numberFormat pattern="(\d{3})(\d{3})">
+          <leadingDigits>
+            11[68]|
+            64
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{5})">
+          <leadingDigits>19</leadingDigits>
+          <format>$1</format>
+        </numberFormat>
+        <!-- Format for 7 digit fixed-line numbers. -->
+        <numberFormat pattern="(\d{2})(\d{2})(\d{3})">
+          <leadingDigits>
+            1[2-8]|
+            2[2-69]|
+            3[2-4]|
+            4[1-468]|
+            5[24-689]|
+            6[1-3578]|
+            7[14-7]|
+            8[1-79]|
+            9[145]
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2,3})">
+          <leadingDigits>64</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
         <!-- We are formatting 70 numbers as per mobile numbers, based on information from some
              Poles that this is more usual. -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
@@ -20117,34 +20182,22 @@
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{1})(\d{4})">
-          <leadingDigits>[12]2</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-        <!-- Additional patterns for shorter pager numbers. -->
-        <numberFormat pattern="(\d{3})(\d{2})(\d{2,3})">
-          <leadingDigits>64</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})">
-          <leadingDigits>64</leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [12]\d{6,8}|
-          [3-57-9]\d{8}|
+          [1-57-9]\d{6,8}|
           6\d{5,8}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="7,9"/>
         <exampleNumber>123456789</exampleNumber>
-        <!-- The plan says all geographical numbers are 9 digits; but in at least Warsaw (22) and
-             Krakow (12) we have found internationally diallable numbers that are 7
-             digits instead, so we support those numbers too. Numbers which start with
-             26 are allocated for the militrary, see: http://www.sgwp.wp.mil.pl/pl/1_1225.html. -->
+        <!-- The plan says all geographical numbers are 9 digits; but we found customer service
+             numbers 19XXX that can be diallable along with valid area code and are 7 digits
+             instead, so we support those numbers too. See:
+             http://www.polskasiectaxi.pl/pst/pst-partnerzy.
+             Numbers which start with 26 are allocated for the military, see:
+             http://www.sgwp.wp.mil.pl/pl/1_1225.html. -->
         <nationalNumberPattern>
           (?:
             1[2-8]|
@@ -20156,8 +20209,10 @@
             7[14-7]|
             8[1-79]|
             9[145]
-          )\d{7}|
-          [12]2\d{5}
+          )(?:
+            \d{7}|
+            19\d{3}
+          )
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -20186,7 +20241,7 @@
       <premiumRate>
         <possibleLengths national="9"/>
         <exampleNumber>701234567</exampleNumber>
-        <nationalNumberPattern>70\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>70[01346-8]\d{6}</nationalNumberPattern>
       </premiumRate>
       <sharedCost>
         <possibleLengths national="9"/>
@@ -20198,6 +20253,11 @@
         <exampleNumber>391234567</exampleNumber>
         <nationalNumberPattern>39\d{7}</nationalNumberPattern>
       </voip>
+      <uan>
+        <possibleLengths national="9"/>
+        <exampleNumber>804123456</exampleNumber>
+        <nationalNumberPattern>804\d{6}</nationalNumberPattern>
+      </uan>
     </territory>
 
     <!-- Saint Pierre and Miquelon (Collectivité territoriale de la République française) -->
@@ -21101,6 +21161,12 @@
         <!-- Covers tele-voting numbers as well. -->
         <nationalNumberPattern>80[39]\d{7}</nationalNumberPattern>
       </premiumRate>
+      <!-- These are referred to as UPT numbers in the plan. -->
+      <personalNumber>
+        <possibleLengths national="10"/>
+        <exampleNumber>8081234567</exampleNumber>
+        <nationalNumberPattern>808\d{7}</nationalNumberPattern>
+      </personalNumber>
     </territory>
 
     <!-- Rwanda -->
@@ -22738,12 +22804,12 @@
       <fixedLine>
         <possibleLengths national="8"/>
         <exampleNumber>22171234</exampleNumber>
-        <nationalNumberPattern>2[2-5]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>2[2-9]\d{6}</nationalNumberPattern>
       </fixedLine>
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>76123456</exampleNumber>
-        <nationalNumberPattern>7[6-8]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>7[6-9]\d{6}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="8"/>
@@ -22960,17 +23026,10 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [2-9]\d{7,8}|
-          1\d{3}(?:
-            \d{5,6}
-          )?
+          1\d{8,9}|
+          [2-9]\d{7,8}
         </nationalNumberPattern>
       </generalDesc>
-      <noInternationalDialling>
-        <possibleLengths national="4"/>
-        <exampleNumber>1100</exampleNumber>
-        <nationalNumberPattern>1\d{3}</nationalNumberPattern>
-      </noInternationalDialling>
       <fixedLine>
         <possibleLengths national="8"/>
         <exampleNumber>21234567</exampleNumber>
@@ -23019,13 +23078,6 @@
              online to suggest they are actually used as mobile numbers. -->
         <nationalNumberPattern>6[08]\d{7}</nationalNumberPattern>
       </voip>
-      <uan>
-        <possibleLengths national="4"/>
-        <exampleNumber>1100</exampleNumber>
-        <!-- 4-digit numbers are classified under UAN. Most of these are commercial numbers, and
-             their costs range from free to 6 Baht/min. -->
-        <nationalNumberPattern>1\d{3}</nationalNumberPattern>
-      </uan>
     </territory>
 
     <!-- Tajikistan -->
@@ -24242,7 +24294,7 @@
               4[0179]|
               5[12469]|
               7[0-3589]|
-              8[0459]
+              8[04-69]
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
@@ -24335,7 +24387,7 @@
               4[0179]|
               5[12469]|
               7[0-3589]|
-              8[0459]
+              8[04-69]
             )
           )[2-9]\d{6}
         </nationalNumberPattern>
@@ -24937,7 +24989,7 @@
         <nationalNumberPattern>
           784(?:
             4(?:
-              3[0-4]|
+              3[0-5]|
               5[45]|
               89|
               9[0-58]

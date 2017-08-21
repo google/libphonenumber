@@ -1,3 +1,22 @@
+Aug 21, 2017: v8.8.0
+Code changes:
+ - Improve parsing logic to be smarter about national-prefix detection &
+   stripping based on possible-lengths (IS_POSSIBLE_LOCAL_ONLY and
+   INVALID_LENGTH). Enables e.g. adding Iran short-codes starting with "096"
+   without the need to hack IR's national prefix parsing config.
+ - Logging changes: Don't log client-provided phone numbers.
+ - Add constants for C++ PhoneNumberUtil enums' max values.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AX, BF, BG, DM, EG, FI, IN, IR, KY, KZ, LC, MT, NI, PL, RU, SZ, TH, US, VC
+ - Updated short number metadata for region code(s): BA, IR, PL, RU, TH, ZA
+ - New geocoding data for country calling code(s): 52 (es), 1986 (en)
+ - Updated geocoding data for country calling code(s): 52 (en), 268 (en)
+ - New carrier data for country calling code(s): 1345 (en)
+ - Updated carrier data for country calling code(s):
+   20 (en), 226 (en), 268 (en), 356 (en), 505 (en), 1441 (en), 1758 (en),
+   1767 (en), 1784 (en)
+
 Aug 02, 2017: v8.7.1
 Code changes:
  - Documentation fix for getNumberType
