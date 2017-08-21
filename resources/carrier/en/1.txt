@@ -115,11 +115,33 @@
 1284368|Digicel
 1284393|Digicel
 1284394|Digicel
+1345321|Digicel
+1345322|Digicel
+1345323|Digicel
+1345324|Digicel
+1345325|Digicel
+1345326|Digicel
+1345327|Digicel
+1345328|Digicel
+1345329|Digicel
+1345516|Digicel
+1345517|Digicel
+1345525|Digicel
+1345526|Digicel
+1345527|Digicel
+1345529|Digicel
+1345546|Digicel
+1345547|Digicel
+1345548|Digicel
+1345549|Digicel
+1345550|Digicel
+1345649|Digicel
 14413|Mobility
-1441500|Digicel Bermuda
-1441539|Digicel Bermuda
-1441590|Digicel Bermuda
-1441599|Digicel Bermuda
+144150|Digicel Bermuda
+144151|Digicel Bermuda
+144152|Digicel Bermuda
+144153|Digicel Bermuda
+144159|Digicel Bermuda
 14417|Cellular One
 1473402|Affordable Island Communications
 147341|Digicel Grenada
@@ -173,7 +195,10 @@
 1758488|Cable & Wireless
 1758489|Cable & Wireless
 175851|AT&T
+1758518|Digicel
+1758519|Digicel
 175852|AT&T
+1758520|Digicel
 1758584|Cable & Wireless
 17587|Digicel
 1767225|Cable & Wireless
@@ -188,6 +213,7 @@
 1767315|Digicel
 1767316|Digicel
 1767317|Digicel
+1767611|Digicel
 1767612|Digicel
 1767613|Digicel
 1767614|Digicel
@@ -199,6 +225,7 @@
 1784432|AT&T
 1784433|Digicel
 1784434|Digicel
+1784435|Digicel
 1784454|Cable & Wireless
 1784455|Cable & Wireless
 1784489|Cable & Wireless

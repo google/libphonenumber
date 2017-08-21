@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# TE is the brand name for Telecom Egypt.
+
 2010|Vodafone
 2011|Etisalat
 2012|Mobinil
+201550|TE
+201555|TE
