@@ -57,6 +57,7 @@
 84245|Thủ đô Hà Nội
 84246|Thủ đô Hà Nội
 84247|Thủ đô Hà Nội
+84248|Thủ đô Hà Nội
 84251|Đồng Nai
 84252|Bình Thuận
 84254|Bà Rịa-Vũng Tàu

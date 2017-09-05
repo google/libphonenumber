@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2017 Google Inc.
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,20 +15,30 @@
 # Data taken from:
 # https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000DB0004PDFE.pdf
 
-# Telesystems of Ukraine is commonly known as PEOPLEnet.
-
-38050|MTS
-38063|Life
-38066|MTS
-38067|Kyivstar
-38068|Kyivstar
-38073|Life
-38091|TryMob
-38092|PEOPLEnet
-38093|Life
-38094|Intertelecom
-38095|MTS
-38096|Kyivstar
-38097|Kyivstar
-38098|Kyivstar
-38099|MTS
+38031|Zakarpattia
+38032|Lviv
+38033|Volyn
+38034|Ivano-Frankivsk
+38035|Ternopil
+38036|Rivne
+38037|Chernivtsi
+38038|Khmelnytskyi
+38041|Zhytomyr
+38043|Vinnytsia
+38044|Kyiv city
+38045|Kyiv
+38046|Chernihiv
+38047|Cherkasy
+38048|Odesa
+38051|Mykolayiv
+38052|Kirovohrad
+38053|Poltava
+38054|Sumy
+38055|Kherson
+38056|Dnipropetrovsk
+38057|Kharkiv
+38061|Zaporizhzhia
+38062|Donetsk
+38064|Luhansk
+38065|Crimea
+38069|Sevastopol city

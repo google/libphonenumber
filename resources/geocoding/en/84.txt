@@ -53,6 +53,7 @@
 84245|Ha Noi City
 84246|Ha Noi City
 84247|Ha Noi City
+84248|Ha Noi City
 84251|Dong Nai province
 84252|Binh Thuan province
 84254|Ba Ria Vung Tau province
