@@ -6783,7 +6783,7 @@
         <nationalNumberPattern>
          1(?:
            0[01]|
-           1[027-9]|
+           1[0247-9]|
            2[01389]|
            3(?:
              2|
@@ -6812,7 +6812,12 @@
         <exampleNumber>118</exampleNumber>
       </tollFree>
       <carrierSpecific>
-        <nationalNumberPattern>10[01]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            0[01]|
+            14
+          )
+        </nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
       </carrierSpecific>

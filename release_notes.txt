@@ -1,3 +1,15 @@
+Sep 05, 2017: v8.8.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AL, AR, AT, AU, AX, AZ, BO, BR, CN, CO, DE, EG, FI, GB, GL, GW, ID, IE, IL,
+   IM, IN, JP, KI, KR, KW, LB, LI, LU, MV, MW, NA, NE, NG, PK, PY, SE, SI, SK,
+   SO, SR, TJ, TW, UA, UG, US, VN, ZW
+ - Updated short number metadata for region code(s): KR
+ - New geocoding data for country calling code(s): 380 (en), 1838 (en)
+ - Updated geocoding data for country calling code(s): 84 (en, vi), 686 (en)
+ - Updated carrier data for country calling code(s):
+   60 (en), 380 (en), 597 (en), 686 (en)
+
 Aug 21, 2017: v8.8.0
 Code changes:
  - Improve parsing logic to be smarter about national-prefix detection &

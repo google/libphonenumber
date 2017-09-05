@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Information about carries obtained from:
-# http://www.skmm.gov.my/Sectors/Celco/Numbering-Management/Numbering-Management/Numbers-Assignment/Mobile-Numbers.aspx
+# https://www.mcmc.gov.my/sectors/celco/numbering-management/numbering-management/numbers-assignment
 
 60102|DiGi
 601030|Celcom
@@ -21,7 +21,7 @@
 601032|Celcom
 601033|Celcom
 601034|Celcom
-601035|Packet One
+601035|Webe
 601036|DiGi
 601037|DiGi
 601038|DiGi
@@ -30,15 +30,15 @@
 601041|Celcom
 601042|Maxis
 601043|Maxis
-601044|Packet One
-601045|Packet One
+601044|Webe
+601045|Webe
 601046|DiGi
 601050|Tune Talk
 601051|Tune Talk
 601052|Tune Talk
 601053|Tune Talk
 601054|Tune Talk
-601055|Packet One
+601055|Webe
 601056|DiGi
 601057|Celcom
 601058|Celcom
@@ -75,16 +75,16 @@
 601096|DiGi
 601097|DiGi
 601098|DiGi
-6011100|Packet One
-6011101|Packet One
-6011102|Packet One
-6011103|Packet One
-6011104|Packet One
-6011105|REDtone
-6011106|REDtone
-6011107|REDtone
-6011108|REDtone
-6011109|REDtone
+6011100|Webe
+6011101|Webe
+6011102|Webe
+6011103|Webe
+6011104|Webe
+6011105|red ONE
+6011106|red ONE
+6011107|red ONE
+6011108|red ONE
+6011109|red ONE
 601111|U Mobile
 601112|Maxis
 6011130|XOX
@@ -152,7 +152,16 @@
 601121|U Mobile
 601122|Clixster
 601123|Maxis
-601124|Maxis
+6011240|Maxis
+6011241|Maxis
+6011242|Maxis
+6011243|Maxis
+6011244|Maxis
+6011245|Celcom
+6011246|Celcom
+6011247|Celcom
+6011248|Celcom
+6011249|Celcom
 601125|Maxis
 601126|DiGi
 6011270|U Mobile
@@ -181,7 +190,57 @@
 601141|Celcom
 601142|Telekomunikasi Indonesia
 601150|Talk Focus
+601151|DiGi
 601152|Altel
+601153|Tune Talk
+601154|Celcom
+601155|red ONE
+6011560|Celcom
+6011561|Celcom
+6011562|Celcom
+6011563|Celcom
+6011564|Celcom
+6011565|XOX
+6011566|XOX
+6011567|XOX
+6011568|XOX
+6011569|XOX
+6011570|YTL
+6011571|YTL
+6011572|YTL
+6011573|YTL
+6011574|YTL
+6011575|XOX
+6011576|XOX
+6011577|XOX
+6011578|XOX
+6011579|XOX
+6011580|YTL
+6011581|YTL
+6011582|YTL
+6011583|YTL
+6011584|YTL
+6011585|XOX
+6011586|XOX
+6011587|XOX
+6011588|XOX
+6011589|XOX
+6011595|XOX
+6011596|XOX
+6011597|XOX
+6011598|XOX
+6011599|XOX
+6011605|U Mobile
+6011606|U Mobile
+6011607|U Mobile
+6011608|U Mobile
+6011609|U Mobile
+601161|U Mobile
+6011620|U Mobile
+6011621|U Mobile
+6011622|U Mobile
+6011623|U Mobile
+6011624|U Mobile
 6012|Maxis
 6013|Celcom
 60142|Maxis
@@ -203,30 +262,30 @@
 6015481|Jaring
 60154821|TT dotCom
 60154830|EB Technologies
-60154840|REDtone
+60154840|red ONE
 60154841|Bizsurf
 60154845|Fristor
-60154848|Packet One
-60154849|Packet One
+60154848|Webe
+60154849|Webe
 60154850|MyKris
 60154851|Maxis
 60154854|GITN
 60154860|TM Net
 60154862|TM Net
 60154870|Optical Communication
-60154871|REDtone
-60154872|REDtone
-60154873|REDtone
-60154874|REDtone
+60154871|red ONE
+60154872|red ONE
+60154873|red ONE
+60154874|red ONE
 60154875|PP International
-60154876|REDtone
-60154877|REDtone
+60154876|red ONE
+60154877|red ONE
 60154878|Tg Agas
-60154879|REDtone
+60154879|red ONE
 60154888|Asian Broadcasting Network
 6015632|Majlis Keselamatan Negara
 6015678|Eletcoms
-6015881|Packet One
+6015881|Webe
 6015882|Asiaspace
 60158850|IP Mobility
 60158860|Izzinet
