@@ -141,7 +141,8 @@ surprising how many false assumptions programmers continue to make about them.
 
     In Israel, certain advertising numbers start with a `*`. In New Zealand,
     non-urgent traffic incidents can be reported by calling `*555` from a mobile
-    phone.
+    phone. Alpha characters may also be used in phone numbers, such as in
+    `1-800-Flowers`.
 
 1.  **Phone numbers are always written in ASCII**
 
