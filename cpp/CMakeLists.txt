@@ -350,6 +350,8 @@ if (${USE_ICU_REGEXP} STREQUAL "ON")
   endif ()
 endif ()
 
+set(symbol_map "${CMAKE_SOURCE_DIR}/symbols.map")
+
 if (${BUILD_GEOCODER} STREQUAL "ON")
   add_library (geocoding STATIC ${GEOCODING_SOURCES})
   add_dependencies (geocoding generate_geocoding_data)
@@ -363,6 +365,8 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
       PREFIX "lib"
       SOVERSION ${libphonenumber_VERSION_MAJOR}
       VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
+  set_target_properties(geocoding-shared PROPERTIES LINK_FLAGS "${ldflags} -Wl,--version-script,${symbol_map}")
+  set_target_properties(geocoding-shared PROPERTIES LINK_DEPENDS ${symbol_map})
 endif ()
 
 # Build a shared library (with -fPIC).
@@ -394,6 +398,8 @@ if (BUILD_SHARED_LIB)
       PREFIX "lib"
       SOVERSION ${libphonenumber_VERSION_MAJOR}
       VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
+  set_target_properties(phonenumber-shared PROPERTIES LINK_FLAGS "${ldflags} -Wl,--version-script,${symbol_map}")
+  set_target_properties(phonenumber-shared PROPERTIES LINK_DEPENDS ${symbol_map})
 endif ()
 
 # Libraries used by both libphonenumber and libgeocoding.

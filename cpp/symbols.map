@@ -1,0 +1,15 @@
+{
+global:
+    extern "C++" {
+        i18n::phonenumbers::*;
+        typeinfo?for?i18n::phonenumbers::*;
+        typeinfo?name?for?i18n::phonenumbers::*;
+        VTT?for?i18n::phonenumbers::*;
+        virtual?thunk?to?i18n::phonenumbers::*;
+        vtable?for?i18n::phonenumbers::*;
+    };
+local:
+    extern "C++" {
+        *;
+    };
+};
