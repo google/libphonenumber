@@ -52,3 +52,7 @@
 2682528|Malkerns, Manzini district
 2682538|Mankayane, Manzini district
 2682548|Ludzeludze, Manzini district
+26826|Hhohho
+26827|Manzini
+26828|Lubombo
+26829|Shiselweni

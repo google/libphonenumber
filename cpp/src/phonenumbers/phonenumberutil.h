@@ -84,6 +84,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     RFC3966
   };
 
+  static const PhoneNumberFormat kMaxNumberFormat = RFC3966;
+
   // Type of phone numbers.
   enum PhoneNumberType {
     FIXED_LINE,
@@ -116,6 +118,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     UNKNOWN
   };
 
+  static const PhoneNumberType kMaxNumberType = UNKNOWN;
+
   // Types of phone number matches. See detailed description beside the
   // IsNumberMatch() method.
   enum MatchType {
@@ -126,6 +130,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     EXACT_MATCH,
   };
 
+  static const MatchType kMaxMatchType = EXACT_MATCH;
+
   enum ErrorType {
     NO_PARSING_ERROR,
     INVALID_COUNTRY_CODE_ERROR,  // INVALID_COUNTRY_CODE in the java version.
@@ -134,6 +140,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     TOO_SHORT_NSN,
     TOO_LONG_NSN,  // TOO_LONG in the java version.
   };
+
+  static const ErrorType kMaxErrorType = TOO_LONG_NSN;
 
   // Possible outcomes when testing if a PhoneNumber is possible.
   enum ValidationResult {
@@ -158,6 +166,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     // The number is longer than all valid numbers for this region.
     TOO_LONG,
   };
+
+  static const ValidationResult kMaxValidationResult = TOO_LONG;
 
   // Returns all regions the library has metadata for.
   // @returns an unordered set of the two-letter region codes for every

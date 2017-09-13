@@ -3313,9 +3313,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberForType =
 /**
  * Helper method to check a number against possible lengths for this region,
  * based on the metadata being passed in, and determine whether it matches, or
- * is too short or too long. Currently, if a number pattern suggests that
- * numbers of length 7 and 10 are possible, and a number in between these
- * possible lengths is entered, such as of length 8, this will return TOO_LONG.
+ * is too short or too long.
  *
  * @param {string} number
  * @param {i18n.phonenumbers.PhoneMetadata} metadata
@@ -3331,10 +3329,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLength_ =
 
 /**
  * Helper method to check a number against a particular pattern and determine
- * whether it matches, or is too short or too long. Currently, if a number
- * pattern suggests that numbers of length 7 and 10 are possible, and a number
- * in between these possible lengths is entered, such as of length 8, this will
- * return TOO_LONG.
+ * whether it matches, or is too short or too long.
  *
  * @param {string} number
  * @param {i18n.phonenumbers.PhoneMetadata} metadata
@@ -4215,9 +4210,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
     // carrier code be long enough to be a possible length for the region.
     // Otherwise, we don't do the stripping, since the original number could be
     // a valid short number.
-    if (this.testNumberLength_(potentialNationalNumber.toString(),
-            regionMetadata) !=
-        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT) {
+    var validationResult = this.testNumberLength_(
+        potentialNationalNumber.toString(), regionMetadata);
+    if (validationResult !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_SHORT &&
+	validationResult !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE_LOCAL_ONLY &&
+	validationResult !=
+        i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH) {
       normalizedNationalNumber = potentialNationalNumber;
       if (keepRawInput && carrierCode.toString().length > 0) {
         phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());

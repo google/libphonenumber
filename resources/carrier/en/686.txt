@@ -12,9 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# According to Wikipedia, the only carrier is TSKL (Telecom Services Kiribati Limited)
-# http://en.wikipedia.org/wiki/TSKL
-
-6866|TSKL
+6866|Ocean Link
 6867|ATHKL
-6869|TSKL
