@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.resources = "java/libphonenumber/src/main/java/com/google/i18n/phonenumbers/data/*"
   s.public_header_files = 'java/gen/objc/**/*.h'
   s.header_mappings_dir = 'java/gen/objc'
+  s.compiler_flags = '-Wno-nullability-completeness'
 
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
 end
