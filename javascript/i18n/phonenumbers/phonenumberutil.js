@@ -1368,7 +1368,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedCallingCodes =
     function() {
   return goog.array.join(
       this.getSupportedGlobalNetworkCallingCodes(),
-      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap));
+      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap)
+          .map(key => parseInt(key, 10)));
 };
 
 
