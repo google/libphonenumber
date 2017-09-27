@@ -5454,26 +5454,31 @@
     </territory>
 
     <!-- Ireland -->
+    <!-- https://www.comreg.ie/csv/downloads/ComReg15136.pdf -->
     <territory id="IE">
       <generalDesc>
         <nationalNumberPattern>[159]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          11(?:
-            2|
-            6(?:
-              00[06]|
-              1(?:
-                11|
-                23
-              )
-            )
+          1(?:
+            1(?:
+              2|
+              6(?:
+                00[06]|
+                1(?:
+                  1[17]|
+                  23
+                )
+              )|
+              8\d{2}
+            )|
+            9\d{2}
           )|
-          51210|
+          5[0137]\d{3}|
           999
         </nationalNumberPattern>
-        <possibleLengths national="3,5,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
@@ -5481,6 +5486,16 @@
         <possibleLengths national="6"/>
         <exampleNumber>116000</exampleNumber>
       </tollFree>
+      <standardRate>
+        <nationalNumberPattern>51\d{3}</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>51012</exampleNumber>
+      </standardRate>
+      <premiumRate>
+        <nationalNumberPattern>5[37]\d{3}</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>53012</exampleNumber>
+      </premiumRate>
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
         <nationalNumberPattern>51210</nationalNumberPattern>
@@ -5500,7 +5515,7 @@
           116(?:
             00[06]|
             1(?:
-              11|
+              1[17]|
               23
             )
           )
@@ -5510,7 +5525,13 @@
       </expandedEmergency>
       <smsServices>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <nationalNumberPattern>51210</nationalNumberPattern>
+        <nationalNumberPattern>
+          118\d{2}|
+          5(?:
+            [037]\d{3}|
+            1210
+          )
+        </nationalNumberPattern>
         <possibleLengths national="5"/>
         <exampleNumber>51210</exampleNumber>
       </smsServices>
@@ -5939,7 +5960,7 @@
           )\d{2}
         </nationalNumberPattern>
         <possibleLengths national="4,5"/>
-        <exampleNumber>1512</exampleNumber>
+        <exampleNumber>09612</exampleNumber>
       </standardRate>
       <carrierSpecific>
         <!-- As per http://www.ictna.ir/id/030363/, 15XX and 18XX are region specific short codes as
@@ -6405,7 +6426,7 @@
           1(?:
             0(?:
               [07-9]|
-              1[125]|
+              1[0-25]|
               400
             )|
             1(?:
@@ -6414,13 +6435,15 @@
             )|
             2[123]|
             3[01]|
+            4[14]|
             5(?:
               [01][01]|
               2[0-24-79]|
               33|
-              40|
-              55|
+              4[05]|
+              5[59]|
               6(?:
+                00|
                 29|
                 6[67]
               )
@@ -6489,6 +6512,7 @@
           1(?:
             0400|
             3[01]|
+            4[14]|
             5(?:
               1[01]|
               2[25]
@@ -6542,6 +6566,7 @@
         <nationalNumberPattern>
           1(?:
             0400|
+            4[14]|
             5(?:
               01|
               55|
@@ -6556,7 +6581,7 @@
           8988|
           909\d{2}
         </nationalNumberPattern>
-        <possibleLengths national="4,5"/>
+        <possibleLengths national="3,4,5"/>
         <exampleNumber>8988</exampleNumber>
       </smsServices>
       <carrierSelectionCodes>
@@ -10622,20 +10647,125 @@
     <!-- Turkey -->
     <territory id="TR">
       <generalDesc>
-        <nationalNumberPattern>[125]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[1-9]\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <!-- Since we can find no official docs, we use a granularity of 2 digits for the
-             commercial short codes based on those we have found online. -->
+        <!-- We use a granularity of 2 digits for 28XX and 5[4-6]XX short codes based on those we
+             have found online. Added support to individual short codes based on this doc:
+             http://www.avea.com.tr/web/media/Files/Bagisservisleri/bagisservisleri.pdf?noredir=1
+             No official short code numbering plan found for Turkey to support complete ranges. -->
         <nationalNumberPattern>
           1(?:
             1[02]|
-            55
+            3(?:
+              37|
+              [58]6|
+              65
+            )|
+            471|
+            5(?:
+              07|
+              5|
+              78
+            )|
+            6(?:
+              [02]6|
+              99
+            )|
+            8(?:
+              63|
+              95
+            )
           )|
-          (?:
-            28|
-            5[4-6]
-          )\d{2}
+          2(?:
+            077|
+            268|
+            4(?:
+              17|
+              23
+            )|
+            5(?:
+              7[26]|
+              82
+            )|
+            6[14]4|
+            8\d{2}|
+            9(?:
+              30|
+              89
+            )
+          )|
+          3(?:
+            0(?:
+              05|
+              72
+            )|
+            353|
+            4(?:
+              06|
+              30|
+              64
+            )|
+            502|
+            674|
+            747|
+            851|
+            9(?:
+              1[29]|
+              60
+            )
+          )|
+          4(?:
+            0(?:
+              25|
+              3[12]|
+              [47]2
+            )|
+            3(?:
+              3[13]|
+              [89]1
+            )|
+            439|
+            5(?:
+              43|
+              55
+            )|
+            717|
+            832
+          )|
+          5(?:
+            145|
+            290|
+            [4-6]\d{2}|
+            772|
+            833|
+            9(?:
+              [06]1|
+              92
+            )
+          )|
+          6(?:
+            236|
+            6(?:
+              12|
+              39|
+              8[59]
+            )|
+            769
+          )|
+          7890|
+          8(?:
+            688|
+            7(?:
+              28|
+              65
+            )|
+            85[06]
+          )|
+          9(?:
+            159|
+            290
+          )
         </nationalNumberPattern>
         <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
@@ -10665,10 +10795,115 @@
         <!-- All 28XX and 5XXX numbers found online are used for sms services. Ex: 2850, 2868, 5420,
              5560, 5664. -->
         <nationalNumberPattern>
-          (?:
-            28|
-            5[4-6]
-          )\d{2}
+          1(?:
+            3(?:
+              37|
+              [58]6|
+              65
+            )|
+            471|
+            5(?:
+              07|
+              78
+            )|
+            6(?:
+              [02]6|
+              99
+            )|
+            8(?:
+              63|
+              95
+            )
+          )|
+          2(?:
+            077|
+            268|
+            4(?:
+              17|
+              23
+            )|
+            5(?:
+              7[26]|
+              82
+            )|
+            6[14]4|
+            8\d{2}|
+            9(?:
+              30|
+              89
+            )
+          )|
+          3(?:
+            0(?:
+              05|
+              72
+            )|
+            353|
+            4(?:
+              06|
+              30|
+              64
+            )|
+            502|
+            674|
+            747|
+            851|
+            9(?:
+              1[29]|
+              60
+            )
+          )|
+          4(?:
+            0(?:
+              25|
+              3[12]|
+              [47]2
+            )|
+            3(?:
+              3[13]|
+              [89]1
+            )|
+            439|
+            5(?:
+              43|
+              55
+            )|
+            717|
+            832
+          )|
+          5(?:
+            145|
+            290|
+            [4-6]\d{2}|
+            772|
+            833|
+            9(?:
+              [06]1|
+              92
+            )
+          )|
+          6(?:
+            236|
+            6(?:
+              12|
+              39|
+              8[59]
+            )|
+            769
+          )|
+          7890|
+          8(?:
+            688|
+            7(?:
+              28|
+              65
+            )|
+            85[06]
+          )|
+          9(?:
+            159|
+            290
+          )
         </nationalNumberPattern>
         <possibleLengths national="4"/>
         <exampleNumber>5420</exampleNumber>

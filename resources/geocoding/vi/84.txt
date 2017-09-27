@@ -15,7 +15,6 @@
 # Generated from:
 # http://vi.wikipedia.org/wiki/Mã_điện_thoại_Việt_Nam [4627778]
 
-8420|Lào Cai
 84203|Quảng Ninh
 84204|Bắc Giang
 84205|Lạng Sơn
@@ -32,7 +31,6 @@
 84216|Yên Bái
 84218|Hòa Bình
 84219|Hà Giang
-8422|Sơn La
 84220|Hải Dương
 84221|Hưng Yên
 84222|Bắc Ninh
@@ -41,8 +39,6 @@
 84227|Thái Bình
 84228|Nam Định
 84229|Ninh Bình
-84230|Điện Biên
-84231|Lai Châu
 84232|Quảng Bình
 84233|Quảng Trị
 84234|Thừa Thiên-Huế
@@ -85,7 +81,6 @@
 84285|Thành phố Hồ Chí Minh
 84286|Thành phố Hồ Chí Minh
 84287|Thành phố Hồ Chí Minh
-8429|Yên Bái
 84290|Cà Mau
 84291|Bạc Liêu
 84292|Thành phố Cần Thơ
@@ -94,42 +89,3 @@
 84296|An Giang
 84297|Kiên Giang
 84299|Sóc Trăng
-8437|Thanh Hóa
-8438|Nghệ An
-8439|Hà Tĩnh
-844|Thủ đô Hà Nội
-84500|Đăk Lăk
-84501|Đăk Nông
-84510|Quảng Nam
-84511|TP Đà Nẵng
-8452|Quảng Bình
-8453|Quảng Trị
-8454|Thừa Thiên-Huế
-8455|Quảng Ngãi
-8456|Bình Định
-8457|Phú Yên
-8458|Khánh Hòa
-8459|Gia Lai
-8460|Kon Tum
-8461|Đồng Nai
-8462|Bình Thuận
-8463|Lâm Đồng
-8464|Bà Rịa-Vũng Tàu
-84650|Bình Dương
-84651|Bình Phước
-8466|Tây Ninh
-8467|Đồng Tháp
-8468|Ninh Thuận
-8470|Vĩnh Long
-8472|Long An
-8473|Tiền Giang
-8475|Bến Tre
-8482|Thành phố Hồ Chí Minh
-8483|Thành phố Hồ Chí Minh
-8484|Thành phố Hồ Chí Minh
-8485|Thành phố Hồ Chí Minh
-84862|Thành phố Hồ Chí Minh
-84863|Thành phố Hồ Chí Minh
-84866|Thành phố Hồ Chí Minh
-84871|Thành phố Hồ Chí Minh
-84873|Thành phố Hồ Chí Minh

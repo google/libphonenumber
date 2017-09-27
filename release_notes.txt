@@ -1,3 +1,12 @@
+Sep 19, 2017: v8.8.2
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, CR, EG, FI, HN, IS, KM, KR, LU, MV, PA, TW, UG, US, VN
+ - Updated short number metadata for region code(s): IE, IR, KE, TR
+ - New geocoding data for country calling code(s): 1223 (en)
+ - Updated geocoding data for country calling code(s): 84 (en, vi)
+ - Updated carrier data for country calling code(s): 20 (en)
+
 Sep 05, 2017: v8.8.1
 Metadata changes:
  - Updated phone metadata for region code(s):

@@ -2235,6 +2235,7 @@
 1219989|Hammond, IN
 1219996|Hebron, IN
 1220|Ohio
+1223|Pennsylvania
 1224|Illinois
 1224610|North Chicago, IL
 1224653|Schaumburg, IL
