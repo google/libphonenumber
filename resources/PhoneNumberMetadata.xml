@@ -3752,8 +3752,10 @@
             461|
             502|
             6(?:
-              0[1-3]|
+              0[1-4]|
               12|
+              2[013]|
+              [45]0|
               7[67]|
               8[78]|
               9[89]
@@ -3798,7 +3800,7 @@
               0[1-9]|
               1[02-9]|
               2\d|
-              99
+              [89]9
             )
           )\d{4}
         </nationalNumberPattern>
@@ -7746,7 +7748,7 @@
       </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[35-9]</leadingDigits>
+          <leadingDigits>[235-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{3})(\d{4})">
@@ -7756,7 +7758,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [35-9]\d{6}|
+          [235-9]\d{6}|
           0\d{10}
         </nationalNumberPattern>
       </generalDesc>
@@ -7777,12 +7779,10 @@
       <mobile>
         <possibleLengths national="7"/>
         <exampleNumber>7012345</exampleNumber>
-        <!-- Adding 8[03679] and 9[034678] from numbers found online and numbers from which SMSs
-             have been received. -->
         <nationalNumberPattern>
           (?:
-            5[018]|
-            [79]\d|
+            [279]\d|
+            5[01568]|
             8[034679]
           )\d{5}
         </nationalNumberPattern>
@@ -12150,7 +12150,12 @@
              86 Markazi
              87 Kurdistan
              As per user reports and test results [16]\d{3} and [289]\d{3,4} shortcodes can be
-             dialled by prefixing area codes. Regular fixed-line numbers are 10 digits long. -->
+             dialled by prefixing area codes. ITU mentions the length of Fixed Phone numbers are of
+             5 to 10 digits. However, no valid numbers were found online are less than 10 digits,
+             so there's only support for 10 digits. ITU mentions another two "Fixed Phone"
+             categories called "Fixed wireless Access" and "Fixed Non geographical" along with plain
+             "Fixed Phone" with geocoding details. As no more details are provided, they are
+             supported as fixed-line numbers. -->
         <nationalNumberPattern>
           (?:
             (?:
@@ -12171,11 +12176,12 @@
             )
           )|
           94(?:
-            000|
-            11[1-7]|
-            2\d{2}|
-            440
-          )\d{5}
+            000\d|
+            11[0-7]\d|
+            2\d{3}|
+            3016|
+            440\d
+          )\d{4}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -12183,26 +12189,25 @@
         <exampleNumber>9123456789</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            0[1-3]\d{2}|
-            [1-3]\d{3}|
+            0(?:
+              [1-3]\d{2}|
+              44\d
+            )|
+            [13]\d{3}|
+            2[0-2]\d{2}|
             9(?:
               0\d{2}|
               44\d|
               810|
               9(?:
                 00|
-                11|
+                1[13]|
                 9[89]
               )
             )
           )\d{5}
         </nationalNumberPattern>
       </mobile>
-      <pager>
-        <possibleLengths national="10"/>
-        <exampleNumber>9432123456</exampleNumber>
-        <nationalNumberPattern>943\d{7}</nationalNumberPattern>
-      </pager>
       <!-- No tollFree or premiumRate information can be found. -->
       <voip>
         <possibleLengths national="10"/>
@@ -14604,13 +14609,15 @@
     <!-- Korea (Rep. of) -->
     <!-- Exceptions :
          internationalPrefix
-             0031, 0033, 0071, 0073 - Special services of KT and DACOM, ignorable
+             0031, 0033, 0071, 0073 - Special services of KT and DACOM, ignorable.
+             Supporting prefixes that are only in use. For prefixes like 003XX and 007XX, the
+             service provider can make arbitrary service + numbers.
          nationalPrefix
              1[4-6]XX-YYYY - Country-wide common number services, display as it is without hyphens.
          00798 is an ITFS range. So it doesn't appear here as internationalPrefix. -->
     <territory id="KR" countryCode="82"
-               internationalPrefix="00(?:[124-68]|3\d{2}|7(?:[0-8]\d|9[0-79]))" nationalPrefix="0"
-               nationalPrefixForParsing="0(8[1-46-8]|85\d{2})?"
+               internationalPrefix="00(?:[1259]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))"
+               nationalPrefix="0" nationalPrefixForParsing="0(8[1-46-8]|85\d{2})?"
                nationalPrefixFormattingRule="$NP$FG" carrierCodeFormattingRule="$NP$CC-$FG"
                mobileNumberPortableRegion="true">
       <references>
@@ -14704,11 +14711,29 @@
           <leadingDigits>[57]0</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
+        <!-- Toll-free numbers with 11 digits. -->
+        <numberFormat pattern="(\d{5})(\d{3})(\d{3})" nationalPrefixFormattingRule="$FG">
+          <leadingDigits>003</leadingDigits>
+          <leadingDigits>0030</leadingDigits>
+          <leadingDigits>00308</leadingDigits>
+          <format>$1 $2 $3</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <!-- Toll-free numbers with 12-13 digits. -->
         <numberFormat pattern="(\d{5})(\d{3,4})(\d{4})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>007</leadingDigits>
-          <leadingDigits>0079</leadingDigits>
-          <leadingDigits>00798</leadingDigits>
+          <leadingDigits>00[37]</leadingDigits>
+          <leadingDigits>
+            00(?:
+              36|
+              79
+            )
+          </leadingDigits>
+          <leadingDigits>
+            00(?:
+              36|
+              79
+            )8
+          </leadingDigits>
           <format>$1 $2 $3</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
@@ -14723,16 +14748,29 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          007\d{9,11}|
+          00(?:
+            3\d{8,9}|
+            7\d{9,11}
+          )|
           [1-7]\d{4,9}|
           8\d{8}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
-        <possibleLengths national="[12-14]"/>
+        <possibleLengths national="[11-14]"/>
         <exampleNumber>007981234567</exampleNumber>
         <!-- 00798 ITFS numbers can't be dialled internationally. -->
-        <nationalNumberPattern>00798\d{7,9}</nationalNumberPattern>
+        <!-- Based on online results, supporting 00308 and 00368 toll-free numbers that are
+             diallable only within the country. -->
+        <nationalNumberPattern>
+          00(?:
+            3(?:
+              08|
+              68\d
+            )|
+            798\d{1,3}
+          )\d{6}
+        </nationalNumberPattern>
       </noInternationalDialling>
       <fixedLine>
         <possibleLengths national="5,6,[8-10]" localOnly="3,7"/>
@@ -14763,13 +14801,19 @@
         <nationalNumberPattern>15\d{7,8}</nationalNumberPattern>
       </pager>
       <tollFree>
-        <possibleLengths national="9,[12-14]"/>
+        <possibleLengths national="9,[11-14]"/>
         <exampleNumber>801234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            00798\d{0,2}|
-            80
-          )\d{7}
+            00(?:
+              3(?:
+                08|
+                68\d
+              )|
+              798\d{1,3}
+            )|
+            80\d
+          )\d{6}
         </nationalNumberPattern>
       </tollFree>
       <!-- The information below is provided by a Korean person. -->
@@ -14789,15 +14833,11 @@
         <nationalNumberPattern>70\d{8}</nationalNumberPattern>
       </voip>
       <uan>
-        <possibleLengths national="5,8"/>
+        <possibleLengths national="8"/>
         <exampleNumber>15441234</exampleNumber>
-        <!-- Prefixes 18 and 1522 are added from numbers found online. As per
-             https://www.uplus.co.kr/com/main/pemain/PeMain.hpi, <Mobile carrier prefix> + 114
-             connects to respective carrier customer care. Ex: 19114 for LGU+. Mobile carrier
-             prefixes are taken from Wikipedia. -->
+        <!-- Prefixes 18 and 1522 are added from numbers found online. -->
         <nationalNumberPattern>
           1(?:
-            [0179]114|
             5(?:
               22|
               44|
@@ -14805,28 +14845,22 @@
               77|
               88|
               99
-            )\d{4}|
+            )|
             6(?:
-              (?:
-                00|
-                44|
-                6[16]|
-                70|
-                88
-              )\d{4}|
-              114
+              00|
+              44|
+              6[16]|
+              70|
+              88
             )|
             8(?:
-              (?:
-                00|
-                33|
-                55|
-                77|
-                99
-              )\d{4}|
-              114
+              00|
+              33|
+              55|
+              77|
+              99
             )
-          )
+          )\d{4}
         </nationalNumberPattern>
       </uan>
     </territory>

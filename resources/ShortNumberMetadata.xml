@@ -6802,13 +6802,19 @@
     <!-- http://en.wikipedia.org/wiki/%2B82 -->
     <territory id="KR">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
          1(?:
-           0[01]|
-           1[0247-9]|
+           0(?:
+             [01]|
+             114
+           )|
+           1(?:
+             [0247-9]|
+             114
+           )|
            2[01389]|
            3(?:
              2|
@@ -6818,10 +6824,14 @@
              88|
              9[18]
            )|
-           82
+           [679]114|
+           8(?:
+             114|
+             2
+           )
           )
         </nationalNumberPattern>
-        <possibleLengths national="3,4"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
       <tollFree>
@@ -6837,13 +6847,23 @@
         <exampleNumber>118</exampleNumber>
       </tollFree>
       <carrierSpecific>
+        <!-- As per https://www.uplus.co.kr/com/main/pemain/PeMain.hpi, <Mobile carrier prefix> +
+             114 connects to respective carrier customer care. Ex: 19114 for LGU+. Mobile carrier
+             prefixes are taken from Wikipedia. -->
         <nationalNumberPattern>
           1(?:
-            0[01]|
-            14
+            0(?:
+              [01]|
+              114
+            )|
+            1(?:
+              114|
+              4
+            )|
+            [6-9]114
           )
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,5"/>
         <exampleNumber>100</exampleNumber>
       </carrierSpecific>
       <emergency>
