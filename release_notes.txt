@@ -1,3 +1,10 @@
+Oct 03, 2017: v8.8.3
+Metadata changes:
+ - Updated phone metadata for region code(s): BS, FJ, IR, KR
+ - Updated short number metadata for region code(s): KR
+ - Updated carrier data for country calling code(s):
+   380 (en), 381 (en), 679 (en), 1242 (en)
+
 Sep 19, 2017: v8.8.2
 Metadata changes:
  - Updated phone metadata for region code(s):
