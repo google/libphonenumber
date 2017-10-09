@@ -1,1 +1,2 @@
-
+Build changes:
+ - C++ geocoding build tools now use readdir, since readdir_r is deprecated.

@@ -102,20 +102,21 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
     return false;
   }
   AutoCloser<DIR> dir_closer(&dir, closedir);
-  struct dirent entry, *dir_result;
+  struct dirent *entry;
   struct stat entry_stat;
   while (true) {
-    const int res = readdir_r(dir, &entry, &dir_result);
-    if (res) {
+    errno = 0;
+    entry = readdir(dir);
+    if (errno) {
       return false;
     }
-    if (dir_result == NULL) {
+    if (entry == NULL) {
       return true;
     }
-    if (strcmp(entry.d_name, ".") == 0 || strcmp(entry.d_name, "..") == 0) {
+    if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
        continue;
     }
-    const string entry_path = path + "/" + entry.d_name;
+    const string entry_path = path + "/" + entry->d_name;
     if (stat(entry_path.c_str(), &entry_stat)) {
       return false;
     }
@@ -125,7 +126,7 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
     } else if (!S_ISREG(entry_stat.st_mode)) {
       continue;
     }
-    entries->push_back(DirEntry(entry.d_name, kind));
+    entries->push_back(DirEntry(entry->d_name, kind));
   }
 }
 
