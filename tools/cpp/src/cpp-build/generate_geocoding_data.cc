@@ -17,6 +17,7 @@
 #include "cpp-build/generate_geocoding_data.h"
 
 #include <dirent.h>
+#include <errno.h>
 #include <locale>
 #include <sys/stat.h>
 #include <algorithm>
@@ -105,15 +106,10 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
   struct dirent *entry;
   struct stat entry_stat;
   while (true) {
-    int errno_last = errno;
     errno = 0;
     entry = readdir(dir);
-    if (errno) {
-      return false;
-    }
-    errno = errno_last;
     if (entry == NULL) {
-      return true;
+      return errno == 0;
     }
     if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
        continue;
