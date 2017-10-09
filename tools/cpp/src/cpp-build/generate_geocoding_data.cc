@@ -105,11 +105,13 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
   struct dirent *entry;
   struct stat entry_stat;
   while (true) {
+    int errno_last = errno;
     errno = 0;
     entry = readdir(dir);
     if (errno) {
       return false;
     }
+    errno = errno_last;
     if (entry == NULL) {
       return true;
     }
