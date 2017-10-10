@@ -490,8 +490,6 @@ group](https://groups.google.com/group/libphonenumber-discuss):
 *   PR [#1090](https://github.com/googlei18n/libphonenumber/pull/1090) /
     [#824](https://github.com/googlei18n/libphonenumber/issues/824) to "Replace
     POSIX directory operations by Boost Filesystem"
-*   [#1307](https://github.com/googlei18n/libphonenumber/issues/1307) to use
-    readdir instead of readdir_r
 *   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
 
