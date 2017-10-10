@@ -111,7 +111,7 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
     // stream is reached or when an error occurs, and the errno check is the
     // only thing that helps us distinguish between the two cases. See
     // documentation at
-    // http://pubs.opengroup.org/onlinepubs/009695399/functions/readdir.html.
+    // http://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html
     errno = 0;
     entry = readdir(dir);
     if (entry == NULL) {
