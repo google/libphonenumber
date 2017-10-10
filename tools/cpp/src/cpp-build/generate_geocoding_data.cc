@@ -106,6 +106,10 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
   struct dirent *entry;
   struct stat entry_stat;
   while (true) {
+    // Set errno to 0 to be able to check if an error occurs during the
+    // readdir() call. NULL is the return value when the end of the directory
+    // stream is reached or when an error occurs, and the errno check is the
+    // only thing that helps us distinguish between the two cases.
     errno = 0;
     entry = readdir(dir);
     if (entry == NULL) {
