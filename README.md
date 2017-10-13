@@ -217,20 +217,28 @@ However, we emphasize that these ports are by developers outside the
 libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
-*   Android: Java version of libphonenumber can be used on Android as is.
-    https://github.com/MichaelRocks/libphonenumber-android is a repackaged
-    port optimized for Android by using `AssetManager#open()` instead of
-    `Class#getResourcesAsStream()` to load metadata. See [FAQ](https://github.com/googlei18n/libphonenumber/blob/master/FAQ.md#optimize-loads)
-    for why this is better
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
-*   Javascript: If you don't want to use our version, which depends on Closure,
-    there are several other options, including
-    https://github.com/halt-hammerzeit/libphonenumber-js (a stripped-down
-    rewrite, about 110 KB in size) and https://github.com/seegno/google-libphonenumber
-    (a browserify-compatible wrapper around the original unmodified library
-    installable via npm, packs Google Closure library, about 420 KB in size)
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
 *   Ruby: https://github.com/mobi/telephone_number
+
+Alternatives to our own versions:
+
+*   Android-optimized: Our Java version loads the metadata from
+    `Class#getResourcesAsStream` and asks that Android apps follow the Android
+    loading best practices of repackaging the metadata and loading from
+    `AssetManager#open()` themselves
+    ([FAQ](https://github.com/googlei18n/libphonenumber/blob/master/FAQ.md#optimize-loads)).
+    If you don't want to do this, check out the port at
+    https://github.com/MichaelRocks/libphonenumber-android, which does repackage
+    the metadata and use `AssetManager#open()`, and may be depended on without
+    needing those specific loading optimizations from clients.
+*   Javascript: If you don't want to use our version, which depends on Closure,
+    there are several other options, including
+    https://github.com/halt-hammerzeit/libphonenumber-js - a stripped-down
+    rewrite, about 110 KB in size - and
+    https://github.com/seegno/google-libphonenumber - a browserify-compatible
+    wrapper around the original unmodified library installable via npm, which
+    packs the Google Closure library, about 420 KB in size.
