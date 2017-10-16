@@ -160,6 +160,7 @@
           [37-9]\d{5}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>18000000</exampleNumber>
@@ -526,63 +527,13 @@
         <exampleNumber>22345678</exampleNumber>
         <nationalNumberPattern>
           (?:
-            2(?:
-              1(?:
-                0[2-9]|
-                [1-9]\d
-              )|
-              [247]\d{2}|
-              [35][2-9]\d|
-              [68](?:
-                0[2-9]|
-                [1-9]\d
-              )|
-              9(?:
-                [089][2-9]|
-                [1-7]\d
-              )
+            [2358](?:
+              [16-9]\d[2-9]|
+              [2-5][2-9]\d
             )|
-            3(?:
-              1(?:
-                [04-9][2-9]|
-                [1-3]\d
-              )|
-              [2-6]\d{2}|
-              [79](?:
-                [09][2-9]|
-                [1-8]\d
-              )|
-              8(?:
-                0[2-9]|
-                [1-9]\d
-              )
-            )|
-            4\d{3}|
-            5(?:
-              1(?:
-                [05-9][2-9]|
-                [1-4]\d
-              )|
-              [2-578]\d{2}|
-              6(?:
-                [06-9][2-9]|
-                [1-5]\d
-              )|
-              9(?:
-                [089][2-9]|
-                [1-7]\d
-              )
-            )|
-            8(?:
-              [19](?:
-                [06-9][2-9]|
-                [1-5]\d
-              )|
-              [2-6]\d{2}|
-              [78](?:
-                [089][2-9]|
-                [1-7]\d
-              )
+            4(?:
+              [2-57-9][2-9]\d|
+              6\d{2}
             )
           )\d{4}
         </nationalNumberPattern>
@@ -1227,6 +1178,7 @@
           9\d{10}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="10"/>
         <exampleNumber>8101234567</exampleNumber>
@@ -1712,6 +1664,7 @@
           [2-578]\d{8}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[6-8],10"/>
         <exampleNumber>1300123456</exampleNumber>
@@ -1914,6 +1867,7 @@
           8\d{7,8}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[5-10]"/>
         <exampleNumber>1001234</exampleNumber>
@@ -3635,6 +3589,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>40041234</exampleNumber>
@@ -3726,9 +3681,12 @@
 
     <!-- Bahamas -->
     <!-- Country calling code and formatting shared with 'US' -->
+    <!-- ITU and Verizon doc says dial "01 + country code + city code + number" for operator
+         assisted international calls. Hence it is supported as international prefix.
+         https://www.verizon.com/support/residential/phone/homephone/general+support/long+distance+calling/general/98762.htm -->
     <!-- Calling code and formatting shared with 'US' -->
-    <territory id="BS" countryCode="1" leadingDigits="242" internationalPrefix="011"
-               nationalPrefix="1">
+    <territory id="BS" countryCode="1" leadingDigits="242" preferredInternationalPrefix="011"
+               internationalPrefix="011?" nationalPrefix="1">
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000010/en</sourceUrl>
       </references>
@@ -3745,7 +3703,7 @@
               [236][1-9]|
               4[0-24-9]|
               5[0-68]|
-              7[3467]|
+              7[347]|
               8[0-4]|
               9[2-467]
             )|
@@ -3774,10 +3732,12 @@
           242(?:
             3(?:
               5[79]|
-              [79]5
+              7[56]|
+              95
             )|
             4(?:
-              [2-4][1-9]|
+              [23][1-9]|
+              4[1-35-9]|
               5[1-8]|
               6[2-8]|
               7\d|
@@ -3787,7 +3747,7 @@
               2[45]|
               3[35]|
               44|
-              5[1-9]|
+              5[1-46-9]|
               65|
               77
             )|
@@ -3843,6 +3803,14 @@
           )[2-9]\d{6}
         </nationalNumberPattern>
       </personalNumber>
+      <uan>
+        <possibleLengths national="10"/>
+        <exampleNumber>2422250123</exampleNumber>
+        <!-- 225[0-46-9] ranges are mentioned as DID (Direct Inward Dialing) numbers in ITU doc.
+             http://whatis.techtarget.com/definition/Direct-Inward-Dialing-DID. Found valid numbers
+             online. -->
+        <nationalNumberPattern>242225[0-46-9]\d{3}</nationalNumberPattern>
+      </uan>
     </territory>
 
     <!-- Bhutan -->
@@ -4109,6 +4077,7 @@
         </nationalNumberPattern>
       </generalDesc>
       <!-- Toll-free and premium rate numbers are not available from abroad. -->
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[6-11]"/>
         <exampleNumber>82012345678</exampleNumber>
@@ -4909,6 +4878,7 @@
           )\d{7,8}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="10,11"/>
         <exampleNumber>6001234567</exampleNumber>
@@ -5279,6 +5249,7 @@
           9\d{7,10}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[10-12]"/>
         <exampleNumber>4001234567</exampleNumber>
@@ -7007,6 +6978,7 @@
           800\d{6,7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="7"/>
         <exampleNumber>8002123</exampleNumber>
@@ -7619,6 +7591,7 @@
           9\d{4,8}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[5-10]"/>
         <exampleNumber>1001234</exampleNumber>
@@ -7748,7 +7721,7 @@
       </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[235-9]</leadingDigits>
+          <leadingDigits>[2-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{3})(\d{4})">
@@ -7758,7 +7731,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [235-9]\d{6}|
+          [2-9]\d{6}|
           0\d{10}
         </nationalNumberPattern>
       </generalDesc>
@@ -7782,6 +7755,7 @@
         <nationalNumberPattern>
           (?:
             [279]\d|
+            45|
             5[01568]|
             8[034679]
           )\d{5}
@@ -8756,6 +8730,7 @@
       <generalDesc>
         <nationalNumberPattern>[34578]\d{8}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="9"/>
         <exampleNumber>706123456</exampleNumber>
@@ -9003,6 +8978,7 @@
           8\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>80012345</exampleNumber>
@@ -10240,6 +10216,7 @@
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{7,8}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>80123456</exampleNumber>
@@ -10360,6 +10337,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="10"/>
         <exampleNumber>8071123456</exampleNumber>
@@ -10644,6 +10622,7 @@
       <generalDesc>
         <nationalNumberPattern>[124-9]\d{6,9}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="10"/>
         <exampleNumber>1850123456</exampleNumber>
@@ -10813,6 +10792,7 @@
           7\d{6,9}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="4,10"/>
         <exampleNumber>1700123456</exampleNumber>
@@ -11486,6 +11466,7 @@
           [2-9]\d{9,10}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[8-13]"/>
         <exampleNumber>1800123456</exampleNumber>
@@ -12098,6 +12079,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="10"/>
         <exampleNumber>9411110000</exampleNumber>
@@ -12449,6 +12431,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="9"/>
         <exampleNumber>848123456</exampleNumber>
@@ -12772,7 +12755,7 @@
     <!-- Country calling code and formatting shared with 'US' -->
     <!-- Calling code and formatting shared with 'US' -->
     <territory id="JM" countryCode="1" leadingDigits="876" internationalPrefix="011"
-               nationalPrefix="1">
+               nationalPrefix="1" mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200006C/en</sourceUrl>
       </references>
@@ -13905,6 +13888,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[8-17]"/>
         <exampleNumber>00777012</exampleNumber>
@@ -14573,6 +14557,7 @@
           [28]\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>23821234</exampleNumber>
@@ -14756,6 +14741,7 @@
           8\d{8}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="[11-14]"/>
         <exampleNumber>007981234567</exampleNumber>
@@ -15109,6 +15095,7 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="10"/>
         <exampleNumber>7511234567</exampleNumber>
@@ -16294,6 +16281,7 @@
       <generalDesc>
         <nationalNumberPattern>[34689]\d{7,8}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>87012345</exampleNumber>
@@ -16764,6 +16752,7 @@
       <generalDesc>
         <nationalNumberPattern>[246-9]\d{7}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>80012345</exampleNumber>
@@ -18811,6 +18800,7 @@
           [89]\d{6,9}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="5,6"/>
         <exampleNumber>14123</exampleNumber>
@@ -19581,6 +19571,7 @@
           8\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="6"/>
         <exampleNumber>441234</exampleNumber>
@@ -19798,9 +19789,11 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          1\d{10,12}|
           2\d{5,7}|
-          [3-9]\d{7,9}|
-          1800\d{7,9}
+          [3-7]\d{8}|
+          8\d{7,9}|
+          9\d{9}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -22124,6 +22117,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="7,9"/>
         <exampleNumber>800123456</exampleNumber>
@@ -22842,6 +22836,7 @@
       <generalDesc>
         <nationalNumberPattern>[027]\d{7}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="8"/>
         <exampleNumber>08001234</exampleNumber>
@@ -23557,6 +23552,7 @@
           444\d{4}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="7"/>
         <exampleNumber>4441444</exampleNumber>
@@ -23906,6 +23902,7 @@
       <generalDesc>
         <nationalNumberPattern>\d{9}</nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="9"/>
         <exampleNumber>800123456</exampleNumber>
@@ -24360,7 +24357,7 @@
             7(?:
               0[1-46-8]|
               1[02-9]|
-              2[0457]|
+              2[04-7]|
               3[1247]|
               4[037]|
               5[47]|
@@ -24453,7 +24450,7 @@
             7(?:
               0[1-46-8]|
               1[02-9]|
-              2[0457]|
+              2[04-7]|
               3[1247]|
               4[037]|
               5[47]|
@@ -24949,6 +24946,7 @@
           )
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="9"/>
         <exampleNumber>848123456</exampleNumber>
@@ -25485,6 +25483,7 @@
           9\d{8}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
       <noInternationalDialling>
         <possibleLengths national="7,8"/>
         <exampleNumber>1992000</exampleNumber>

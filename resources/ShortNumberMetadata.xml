@@ -6946,7 +6946,7 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[123]|
+            0[1-4]|
             12
           )|
           30400|

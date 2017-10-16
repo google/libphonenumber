@@ -1,5 +1,1 @@
-Build changes:
- - C++ geocoding build tools now use readdir, since readdir_r is deprecated.
- - Update the protobuf-java dependency used to build the C++ metadata from 2.5.0
-   to 3.0.0. This is an internal change and does not affect the users of the
-   library.
+

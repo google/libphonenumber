@@ -2731,7 +2731,7 @@
 1242326|New Providence
 1242327|New Providence
 1242328|New Providence
-1242329|North Andros
+1242329|Andros
 1242331|Rum Cay & San Sal
 1242332|Eleuthera
 1242333|Eleuthera
@@ -2744,7 +2744,7 @@
 1242340|New Providence
 1242341|New Providence
 1242342|Cat Island
-1242344|Acklins
+1242344|Ragged Island/Crooked Island/Acklins
 1242345|Exuma
 1242346|Grand Bahama
 1242347|Bimini and Cat Cay
@@ -2782,14 +2782,15 @@
 1242396|New Providence
 1242397|New Providence
 1242461|New Providence
+1242502|New Providence
 1242601|New Providence
 1242602|Grand Bahama
 1242676|New Providence
 1242677|New Providence
 1242687|Grand Bahama
 1242688|Grand Bahama
-1242698|Abaco
-1242699|Abaco
+1242698|New Providence
+1242699|Abaco/Eleuthera
 1242702|New Providence
 1248|Michigan
 1248208|Southfield, MI
@@ -24765,6 +24766,7 @@
 1724966|Carmichaels, PA
 1724981|Hermitage, PA
 1725|Nevada
+1726|San Antonio, TX
 1727|Florida
 1727298|Clearwater, FL
 1727321|St. Petersburg, FL
