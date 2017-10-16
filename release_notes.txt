@@ -1,3 +1,17 @@
+Oct 16, 2017: v8.8.4
+Build changes:
+ - C++ geocoding build tools now use readdir, since readdir_r is deprecated.
+ - Update the protobuf-java dependency used to build the C++ metadata from 2.5.0
+   to 3.0.0. This is an internal change and does not affect the users of the
+   library.
+Metadata changes:
+ - Updated phone metadata for region code(s): AL, BS, FJ, JM, PH, US
+ - Updated short number metadata for region code(s): KZ
+ - New geocoding data for country calling code(s): 1726 (en)
+ - Updated geocoding data for country calling code(s): 1242 (en)
+ - Updated carrier data for country calling code(s):
+   20 (en), 679 (en), 1242 (en)
+
 Oct 03, 2017: v8.8.3
 Metadata changes:
  - Updated phone metadata for region code(s): BS, FJ, IR, KR
