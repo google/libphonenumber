@@ -123,11 +123,16 @@ with varying standardization practices in different regions.
 
 #### But my dialled number connected, so isn't it valid?
 
-Not necessarily. In some countries extra digits at the end are ignored. For
-example, dialling `1800 MICROSOFT` in the US connects to `+1 (800) MIC-ROSO`.
-Moreover, during renumbering transitions, e.g. when all numbers are getting an
-extra `9` added to the front, some carriers will "fix" old numbers long after
-they're no longer working for the majority.
+Not necessarily.
+
+*   In some countries extra digits at the end are ignored. For example, dialling
+    `1800 MICROSOFT` in the US connects to `+1 (800) MIC-ROSO`.
+*   During renumbering transitions, e.g. when all numbers are getting an extra
+    `9` added to the front, some operators will "fix" old numbers long after
+    they're no longer working for the majority.
+*   Numbers that are only locally-diallable e.g. a 7-digit number dialled in the
+    US are not valid, because without the rest of the number it is impossible
+    for the library to canonicalize this.
 
 ### When should I use isValidNumberForRegion?
 
