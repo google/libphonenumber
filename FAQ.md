@@ -216,6 +216,21 @@ Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphon
 [#351: Norway](https://github.com/googlei18n/libphonenumber/issues/351),
 [#332: Netherlands](https://github.com/googlei18n/libphonenumber/issues/332)
 
+### What about numbers that are only valid for a set of subscribers?
+
+There are some numbers that only work for the subcribers of certain operators
+for special operator-specific services. These differ from carrierSpecific since
+they're not shortcodes. We don't support these numbers due to their limited use
+scope, few examples (only the [area code 700](https://en.wikipedia.org/wiki/Area_code_700)
+in the US), and lack of authoritative evidence.
+
+Until there are more examples with authoritative evidence and a proposal on how
+the library should handle these numbers, we won't be able to support these
+similar to our prerequisites for supporting M2M.
+
+Please see [this issue](https://issuetracker.google.com/issues/65238929) for more
+context, and file a new issue if you're able to provide more information than this.
+
 ## Representation
 
 ### What is the maximum and minimum length of a phone number?
