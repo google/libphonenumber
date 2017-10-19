@@ -343,12 +343,15 @@ Metadata changes:
 
 Dec 07, 2016: v8.0.0
 Code changes:
- - Deleting deprecated methods in ShortNumberInfo that work on strings, instead
+ - Deleted deprecated methods in ShortNumberInfo that work on strings, instead
    of phone number objects. These have been marked deprecated for months. Any
    users of these methods should call PhoneNumberUtil.parse first to create a
    PhoneNumber object, and pass this in.
  - Support semicolon as extension character while parsing phone numbers. This
    is not applicable when you are trying to find the phone numbers.
+ - Updated JavaScript to throw an error rather than a string. As a result, users
+   doing custom behavior depending on the value of the error must now compare
+   to the value of e.message.
 Metadata changes:
  - Updated phone metadata for region code(s):
    AM, BD, BR, CI, ES, IN, KI, KR, LI, MC, MM, TZ
