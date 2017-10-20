@@ -298,7 +298,7 @@ void GetSupportedTypesForMetadata(
     const PhoneMetadata& metadata,
     std::set<PhoneNumberUtil::PhoneNumberType>* types) {
   DCHECK(types);
-  for (int i = 0; i < static_cast<int>(PhoneNumberUtil::kMaxNumberType); ++i) {
+  for (int i = 0; i <= static_cast<int>(PhoneNumberUtil::kMaxNumberType); ++i) {
     PhoneNumberUtil::PhoneNumberType type =
         static_cast<PhoneNumberUtil::PhoneNumberType>(i);
     if (type == PhoneNumberUtil::FIXED_LINE_OR_MOBILE ||
