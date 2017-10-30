@@ -10667,25 +10667,199 @@
     <!-- Turkey -->
     <territory id="TR">
       <generalDesc>
-        <nationalNumberPattern>[1-9]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[1-9]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <!-- We use a granularity of 2 digits for 28XX and 5[4-6]XX short codes based on those we
-             have found online. Added support to individual short codes based on this doc:
+             have found online. Added support to individual short codes based on these docs:
              http://www.avea.com.tr/web/media/Files/Bagisservisleri/bagisservisleri.pdf?noredir=1
+             and http://www.ttrehber.turktelekom.com.tr/trk-web/ozelservisnumaralari.html.
              No official short code numbering plan found for Turkey to support complete ranges. -->
         <nationalNumberPattern>
           1(?:
+            1(?:
+              [0239]|
+              811
+            )|
+            2[16]|
+            3(?:
+              37?|
+              [58]6|
+              65
+            )|
+            4(?:
+              [14]|
+              71
+            )|
+            5(?:
+              [3568]|
+              07|
+              78
+            )|
+            6(?:
+              [02]6|
+              [389]|
+              99
+            )|
+            7[0-79]|
+            8(?:
+              \d|
+              63|
+              95
+            )
+          )|
+          2(?:
+            077|
+            268|
+            4(?:
+              17|
+              23
+            )|
+            5(?:
+              7[26]|
+              82
+            )|
+            6[14]4|
+            8\d{2}|
+            9(?:
+              30|
+              89
+            )
+          )|
+          3(?:
+            0(?:
+              05|
+              72
+            )|
+            353|
+            4(?:
+              06|
+              30|
+              64
+            )|
+            502|
+            674|
+            747|
+            851|
+            9(?:
+              1[29]|
+              60
+            )
+          )|
+          4(?:
+            0(?:
+              25|
+              3[12]|
+              [47]2
+            )|
+            3(?:
+              3[13]|
+              [89]1
+            )|
+            439|
+            5(?:
+              43|
+              55
+            )|
+            717|
+            832
+          )|
+          5(?:
+            145|
+            290|
+            [4-6]\d{2}|
+            772|
+            833|
+            9(?:
+              [06]1|
+              92
+            )
+          )|
+          6(?:
+            236|
+            6(?:
+              12|
+              39|
+              8[59]
+            )|
+            769
+          )|
+          7890|
+          8(?:
+            688|
+            7(?:
+              28|
+              65
+            )|
+            85[06]
+          )|
+          9(?:
+            159|
+            290
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="[3-5]"/>
+        <exampleNumber>112</exampleNumber>
+      </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          1(?:
+            44|
+            58|
+            83
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>183</exampleNumber>
+      </tollFree>
+      <standardRate>
+        <!-- As per Vodafone's article http://www.vodafone.com.tr/Net/vodafonenet-basvuru.php#sms,
+             5420 is an SMS only service and its cost is based on the end user's carrier. However it
+             is charged at standard rate as per above article. -->
+        <nationalNumberPattern>
+          2850|
+          5420
+        </nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>5420</exampleNumber>
+      </standardRate>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
             1[02]|
+            55
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>
+          1(?:
+            53|
+            77|
+            87
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>187</exampleNumber>
+      </expandedEmergency>
+      <smsServices>
+        <!-- All 28XX and 5XXX numbers found online are used for sms services. Ex: 2850, 2868, 5420,
+             5560, 5664. -->
+        <nationalNumberPattern>
+          1(?:
             3(?:
               37|
               [58]6|
               65
             )|
-            471|
+            4(?:
+              4|
+              71
+            )|
             5(?:
               07|
-              5|
               78
             )|
             6(?:
@@ -10693,6 +10867,7 @@
               99
             )|
             8(?:
+              3|
               63|
               95
             )
@@ -10788,144 +10963,6 @@
           )
         </nationalNumberPattern>
         <possibleLengths national="3,4"/>
-        <exampleNumber>112</exampleNumber>
-      </shortCode>
-      <standardRate>
-        <!-- As per Vodafone's article http://www.vodafone.com.tr/Net/vodafonenet-basvuru.php#sms,
-             5420 is an SMS only service and its cost is based on the end user's carrier. However it
-             is charged at standard rate as per above article. -->
-        <nationalNumberPattern>
-          2850|
-          5420
-        </nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>5420</exampleNumber>
-      </standardRate>
-      <emergency>
-        <nationalNumberPattern>
-          1(?:
-            1[02]|
-            55
-          )
-        </nationalNumberPattern>
-        <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-      </emergency>
-      <smsServices>
-        <!-- All 28XX and 5XXX numbers found online are used for sms services. Ex: 2850, 2868, 5420,
-             5560, 5664. -->
-        <nationalNumberPattern>
-          1(?:
-            3(?:
-              37|
-              [58]6|
-              65
-            )|
-            471|
-            5(?:
-              07|
-              78
-            )|
-            6(?:
-              [02]6|
-              99
-            )|
-            8(?:
-              63|
-              95
-            )
-          )|
-          2(?:
-            077|
-            268|
-            4(?:
-              17|
-              23
-            )|
-            5(?:
-              7[26]|
-              82
-            )|
-            6[14]4|
-            8\d{2}|
-            9(?:
-              30|
-              89
-            )
-          )|
-          3(?:
-            0(?:
-              05|
-              72
-            )|
-            353|
-            4(?:
-              06|
-              30|
-              64
-            )|
-            502|
-            674|
-            747|
-            851|
-            9(?:
-              1[29]|
-              60
-            )
-          )|
-          4(?:
-            0(?:
-              25|
-              3[12]|
-              [47]2
-            )|
-            3(?:
-              3[13]|
-              [89]1
-            )|
-            439|
-            5(?:
-              43|
-              55
-            )|
-            717|
-            832
-          )|
-          5(?:
-            145|
-            290|
-            [4-6]\d{2}|
-            772|
-            833|
-            9(?:
-              [06]1|
-              92
-            )
-          )|
-          6(?:
-            236|
-            6(?:
-              12|
-              39|
-              8[59]
-            )|
-            769
-          )|
-          7890|
-          8(?:
-            688|
-            7(?:
-              28|
-              65
-            )|
-            85[06]
-          )|
-          9(?:
-            159|
-            290
-          )
-        </nationalNumberPattern>
-        <possibleLengths national="4"/>
         <exampleNumber>5420</exampleNumber>
       </smsServices>
     </territory>
