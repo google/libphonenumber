@@ -13,7 +13,9 @@
 # limitations under the License.
 
 # Note 86170 is used by virtual operators, and their individual assignments are
-# not clear.
+# not clear. Similar case for 86171, ITU says it is assigned to China Unicom and
+# 'virtual operators dedicated'. As there are no details about further
+# assignments to virtual operators, mapped whole range to China Unicom.
 
 86130|China Unicom
 86131|China Unicom
@@ -44,11 +46,19 @@
 86157|China Mobile
 86158|China Mobile
 86159|China Mobile
+86166|China Unicom
 861703|China Mobile
 861705|China Mobile
 861706|China Mobile
+86171|China Unicom
 86172|China Mobile
 86173|China Telecom
+8617400|China Telecom
+8617401|China Telecom
+8617402|China Telecom
+8617403|China Telecom
+8617404|China Telecom
+8617405|China Telecom
 86175|China Unicom
 86176|China Unicom
 86177|China Telecom
@@ -63,3 +73,4 @@
 86187|China Mobile
 86188|China Mobile
 86189|China Telecom
+86199|China Telecom

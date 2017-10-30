@@ -1,3 +1,10 @@
+Oct 30, 2017: v8.8.5
+Metadata changes:
+ - Updated phone metadata for region code(s): AW, CA, CN, MV, NL, TR, UG
+ - Updated short number metadata for region code(s): TR
+ - Updated carrier data for country calling code(s):
+   86 (en, zh, zh_Hant), 297 (en)
+
 Oct 16, 2017: v8.8.4
 Build changes:
  - C++ geocoding build tools now use readdir, since readdir_r is deprecated.
