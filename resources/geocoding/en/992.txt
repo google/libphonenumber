@@ -49,7 +49,7 @@
 9923316|Parkhar
 992331700|Khovaling
 9923318|Muminobod
-9923322|Kulyab 
+9923322|Kulyab
 9923422|Khujand
 9923441|Spitamen
 9923442|Gafurov
