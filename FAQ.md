@@ -123,11 +123,16 @@ with varying standardization practices in different regions.
 
 #### But my dialled number connected, so isn't it valid?
 
-Not necessarily. In some countries extra digits at the end are ignored. For
-example, dialling `1800 MICROSOFT` in the US connects to `+1 (800) MIC-ROSO`.
-Moreover, during renumbering transitions, e.g. when all numbers are getting an
-extra `9` added to the front, some carriers will "fix" old numbers long after
-they're no longer working for the majority.
+Not necessarily.
+
+*   In some countries extra digits at the end are ignored. For example, dialling
+    `1800 MICROSOFT` in the US connects to `+1 (800) MIC-ROSO`.
+*   During renumbering transitions, e.g. when all numbers are getting an extra
+    `9` added to the front, some operators will "fix" old numbers long after
+    they're no longer working for the majority.
+*   Numbers that are only locally-diallable e.g. a 7-digit number dialled in the
+    US are not valid, because without the rest of the number it is impossible
+    for the library to canonicalize this.
 
 ### When should I use isValidNumberForRegion?
 
@@ -210,6 +215,21 @@ Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphon
 [#550: Belgium](https://github.com/googlei18n/libphonenumber/issues/550),
 [#351: Norway](https://github.com/googlei18n/libphonenumber/issues/351),
 [#332: Netherlands](https://github.com/googlei18n/libphonenumber/issues/332)
+
+### What about numbers that are only valid for a set of subscribers?
+
+There are some numbers that only work for the subcribers of certain operators
+for special operator-specific services. These differ from carrierSpecific since
+they're not shortcodes. We don't support these numbers due to their limited use
+scope, few examples (only the [area code 700](https://en.wikipedia.org/wiki/Area_code_700)
+in the US), and lack of authoritative evidence.
+
+Until there are more examples with authoritative evidence and a proposal on how
+the library should handle these numbers, we won't be able to support these
+similar to our prerequisites for supporting M2M.
+
+Please see [this issue](https://issuetracker.google.com/issues/65238929) for more
+context, and file a new issue if you're able to provide more information than this.
 
 ## Representation
 
@@ -490,8 +510,6 @@ group](https://groups.google.com/group/libphonenumber-discuss):
 *   PR [#1090](https://github.com/googlei18n/libphonenumber/pull/1090) /
     [#824](https://github.com/googlei18n/libphonenumber/issues/824) to "Replace
     POSIX directory operations by Boost Filesystem"
-*   [#1307](https://github.com/googlei18n/libphonenumber/issues/1307) to use
-    readdir instead of readdir_r
 *   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
 

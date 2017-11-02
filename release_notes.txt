@@ -1,3 +1,40 @@
+Oct 30, 2017: v8.8.5
+Metadata changes:
+ - Updated phone metadata for region code(s): AW, CA, CN, MV, NL, TR, UG
+ - Updated short number metadata for region code(s): TR
+ - Updated carrier data for country calling code(s):
+   86 (en, zh, zh_Hant), 297 (en)
+
+Oct 16, 2017: v8.8.4
+Build changes:
+ - C++ geocoding build tools now use readdir, since readdir_r is deprecated.
+ - Update the protobuf-java dependency used to build the C++ metadata from 2.5.0
+   to 3.0.0. This is an internal change and does not affect the users of the
+   library.
+Metadata changes:
+ - Updated phone metadata for region code(s): AL, BS, FJ, JM, PH, US
+ - Updated short number metadata for region code(s): KZ
+ - New geocoding data for country calling code(s): 1726 (en)
+ - Updated geocoding data for country calling code(s): 1242 (en)
+ - Updated carrier data for country calling code(s):
+   20 (en), 679 (en), 1242 (en)
+
+Oct 03, 2017: v8.8.3
+Metadata changes:
+ - Updated phone metadata for region code(s): BS, FJ, IR, KR
+ - Updated short number metadata for region code(s): KR
+ - Updated carrier data for country calling code(s):
+   380 (en), 381 (en), 679 (en), 1242 (en)
+
+Sep 19, 2017: v8.8.2
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, CR, EG, FI, HN, IS, KM, KR, LU, MV, PA, TW, UG, US, VN
+ - Updated short number metadata for region code(s): IE, IR, KE, TR
+ - New geocoding data for country calling code(s): 1223 (en)
+ - Updated geocoding data for country calling code(s): 84 (en, vi)
+ - Updated carrier data for country calling code(s): 20 (en)
+
 Sep 05, 2017: v8.8.1
 Metadata changes:
  - Updated phone metadata for region code(s):
@@ -313,12 +350,15 @@ Metadata changes:
 
 Dec 07, 2016: v8.0.0
 Code changes:
- - Deleting deprecated methods in ShortNumberInfo that work on strings, instead
+ - Deleted deprecated methods in ShortNumberInfo that work on strings, instead
    of phone number objects. These have been marked deprecated for months. Any
    users of these methods should call PhoneNumberUtil.parse first to create a
    PhoneNumber object, and pass this in.
  - Support semicolon as extension character while parsing phone numbers. This
    is not applicable when you are trying to find the phone numbers.
+ - Updated JavaScript to throw an error rather than a string. As a result, users
+   doing custom behavior depending on the value of the error must now compare
+   to the value of e.message.
 Metadata changes:
  - Updated phone metadata for region code(s):
    AM, BD, BR, CI, ES, IN, KI, KR, LI, MC, MM, TZ

@@ -1366,9 +1366,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedCallingCodes =
     function() {
+  var countryCodesAsStrings =
+      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap);
   return goog.array.join(
       this.getSupportedGlobalNetworkCallingCodes(),
-      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap));
+      goog.array.map(countryCodesAsStrings,
+      function(callingCode) {
+        return parseInt(callingCode, 10);
+      }));
 };
 
 
