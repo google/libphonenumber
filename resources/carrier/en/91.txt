@@ -15,6 +15,20 @@
 916001|Reliance Jio
 916002|Reliance Jio
 916003|Reliance Jio
+916280|Reliance Jio
+916281|Reliance Jio
+916282|Reliance Jio
+9163500|Reliance Jio
+9163501|Reliance Jio
+9163502|Reliance Jio
+9163503|Reliance Jio
+9163504|Reliance Jio
+9163505|Reliance Jio
+9163506|Reliance Jio
+916351|Reliance Jio
+916380|Reliance Jio
+916390|Vodafone
+916900|Airtel
 91700|Reliance Jio
 91701|Reliance Jio
 917020|Reliance Jio
@@ -211,6 +225,10 @@
 9172849|Idea
 9172850|Idea
 9172858|Idea
+9172859|Idea
+9172860|Idea
+9172868|Idea
+9172869|Idea
 9172870|Idea
 9172871|Airtel
 9172872|Airtel
@@ -344,16 +362,7 @@
 9173377|Airtel
 9173378|Airtel
 917338|Airtel
-9173390|Airtel
-9173391|Airtel
-9173392|Airtel
-9173393|Airtel
-9173394|Airtel
-9173395|Airtel
-9173396|Airtel
-9173397|Airtel
-9173398|Airtel
-9173399|Airtel
+917339|Airtel
 917340|Airtel
 9173411|Airtel
 9173470|Airtel
@@ -1730,57 +1739,32 @@
 918082|Loop Mobile
 9180830|Dishnet
 918083|Aircel
-9180840|Airtel
 918084|Airtel
-9180850|Airtel
 918085|Airtel
-9180860|Vodafone
 918086|Vodafone
-9180870|Tata Docomo
 918087|Tata Docomo
-9180880|Reliance
 918088|Reliance
-9180890|Tata Docomo
 918089|Tata Docomo
-9180900|Tata Docomo
 918090|Tata Docomo
-9180910|Tata Docomo
 918091|Tata Docomo
-9180920|Tata Docomo
 918092|Tata Docomo
-9180930|Tata Docomo
 918093|Tata Docomo
-9180940|Vodafone
 918094|Vodafone
-9180950|Vodafone
 918095|Vodafone
-9180960|Idea
 918096|Idea
-9180970|Tata Docomo
 918097|Tata Docomo
-9180980|Vodafone
 918098|Vodafone
-9180990|Reliance
 918099|Reliance
-9181000|Reliance
 918100|Reliance
-9181010|Reliance
 918101|Reliance
-9181020|Reliance
 918102|Reliance
-9181030|Reliance
 918103|Reliance
-9181040|Sistema
 918104|Sistema
-9181050|Airtel
 918105|Airtel
-9181060|Airtel
 918106|Airtel
 9181070|Hexacom
 918107|Airtel
-9181080|Idea
 918108|Idea
-9181090|Tata Docomo
 918109|Tata Docomo
 9181100|Vodafone
 9181108|Vodafone
@@ -2105,6 +2089,7 @@
 918337|Vodafone
 918338|Vodafone
 918339|Vodafone
+9183400|Idea
 9183401|Reliance Jio
 9183402|Reliance Jio
 9183403|Reliance Jio
@@ -2112,6 +2097,8 @@
 9183405|Reliance Jio
 9183406|Reliance Jio
 9183407|Reliance Jio
+9183408|Idea
+9183409|Idea
 918341|Telewings
 918342|Vodafone
 918343|Idea
