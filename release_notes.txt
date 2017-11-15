@@ -1,3 +1,19 @@
+Nov 14, 2017: v8.8.6
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s):
+   34, 62, 91, 94, 971, 972
+ - Updated phone metadata for region code(s):
+   AE, AR, AU, BB, BN, BR, BW, BY, BZ, CC, CL, CW, CX, DE, EC, EG, ET, GB, GE,
+   GG, GP, HK, HR, ID, IE, IL, IN, JO, KH, LK, LU, LV, LY, MG, MO, MR, MY, NL,
+   NR, OM, PH, PK, PM, PS, RE, RU, RW, SA, SE, SG, SH, SK, SM, TH, TJ, UZ, VN,
+   ZM, ZW
+ - New geocoding data for country calling code(s): 61 (en)
+ - Updated geocoding data for country calling code(s): 20 (en)
+ - New carrier data for country calling code(s): 674 (en)
+ - Updated carrier data for country calling code(s):
+   61 (en), 91 (en), 234 (en), 593 (en), 1246 (en)
+ - Updated / refreshed time zone meta data.
+
 Oct 30, 2017: v8.8.5
 Metadata changes:
  - Updated phone metadata for region code(s): AW, CA, CN, MV, NL, TR, UG
