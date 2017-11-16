@@ -253,6 +253,29 @@ It is true that in some countries phone numbers are typically written using
 native, not ASCII, digits; our phone number library supports parsing these but
 doesn't support it at formatting time at the moment.
 
+### When does formatting in a country change?
+
+The formatting within a country changes sparingly, but may be announced explicitly
+or noted implicitly in a national numbering plan update that introduces a new number
+length, number type, or other significant change. This may include the grouping and
+punctuation used (e.g. parentheses versus hyphens).
+
+In the event of lack of evidence and/or enforcement by a central government
+regulatory or telecommunication authority, we'll stick with the status quo
+since the community prefers to bias towards stability and avoid flip-flopping
+between formats over time. If the silent majority becomes vocal to support
+new formatting with authoritative evidence, then we'll collaborate with
+community stakeholders on a transition.
+
+An example of this is the shift from using parentheses to hyphens to separate
+area codes within North America. Hyphens may indicate that the area code is
+optional in local circumstances, but this is shifting to become mandatory
+in areas that have had more area code splits. However, the usage of
+parentheses persists and both methods are acceptable.
+
+See [GitHub issue #1996](https://github.com/googlei18n/libphonenumber/issues/1996)
+for some additional discussion.
+
 ### Why does formatNumberForMobileDialing return an empty string for my number?
 
 If we don't think we can guarantee that the number is diallable from the user's
