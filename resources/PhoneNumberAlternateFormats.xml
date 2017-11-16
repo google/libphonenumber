@@ -49,6 +49,7 @@
     <!ELEMENT intlFormat (#PCDATA)>
 
     <!ATTLIST territory countryCode CDATA #REQUIRED>
+    <!ATTLIST territory nationalPrefix CDATA #IMPLIED>
     <!ATTLIST numberFormat nationalPrefixFormattingRule CDATA #IMPLIED>
     <!ATTLIST numberFormat pattern CDATA #REQUIRED>
 ]>
@@ -59,7 +60,7 @@
     <territory countryCode="971">
       <availableFormats>
         <numberFormat pattern="(5[0256])(\d{4})(\d{3})">
-          <leadingDigits>5</leadingDigits>
+          <leadingDigits>5[0256]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -1052,9 +1053,11 @@
     <territory countryCode="34" >
       <availableFormats>
         <numberFormat pattern="([5-9]\d{2})(\d{3})(\d{3})">
+          <leadingDigits>[5-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(9\d)(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -1196,7 +1199,7 @@
     </territory>
 
     <!-- Indonesia (ID) -->
-    <territory countryCode="62">
+    <territory countryCode="62" nationalPrefix="0">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="($NP$FG)"
           pattern="(\d{2})(\d{3,4})(\d{4})">
@@ -1226,7 +1229,7 @@
     </territory>
 
     <!-- Israel (IL) -->
-    <territory countryCode="972">
+    <territory countryCode="972" nationalPrefix="0">
       <availableFormats>
         <numberFormat nationalPrefixFormattingRule="$NP$FG"
           pattern="([2-489])(\d{3})(\d{2})(\d{2})">
@@ -1237,7 +1240,7 @@
     </territory>
 
     <!-- India (IN) -->
-    <territory countryCode="91">
+    <territory countryCode="91" nationalPrefix="0">
       <availableFormats>
         <!-- Mobile numbers. These are typically written XXXXX-XXXXX but other formats have
              been seen online. Some common ones are listed below. Note we don't go into
@@ -1421,6 +1424,14 @@
     <!-- Sri Lanka (LK) -->
     <territory countryCode="94">
       <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{1})(\d{6})">
+          <leadingDigits>[1-689]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{6})">
+          <leadingDigits>[1-689]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>7</leadingDigits>
           <format>$1 $2 $3</format>
