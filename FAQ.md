@@ -273,7 +273,7 @@ optional in local circumstances, but this is shifting to become mandatory
 in areas that have had more area code splits. However, the usage of
 parentheses persists and both methods are acceptable.
 
-See [GitHub issue #1996](https://github.com/googlei18n/libphonenumber/issues/1996)
+See [issue #1996](https://github.com/googlei18n/libphonenumber/issues/1996)
 for some additional discussion.
 
 ### Why does formatNumberForMobileDialing return an empty string for my number?
