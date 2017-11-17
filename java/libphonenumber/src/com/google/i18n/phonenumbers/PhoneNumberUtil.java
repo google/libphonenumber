@@ -389,7 +389,7 @@ public class PhoneNumberUtil {
    * will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
    *
    * Note: If you are considering storing the number in a neutral format, you are highly advised to
-   * use the phonenumber.proto. For details, see http://go/phone-pb
+   * use the PhoneNumber class.
    */
   public enum PhoneNumberFormat {
     E164,
