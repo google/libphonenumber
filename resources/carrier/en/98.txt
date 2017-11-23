@@ -29,10 +29,10 @@
 98939|Irancell
 98990|IR-MCI
 98991|IR-MCI
-9899810|Shatel Mobile(Full MVNO)
-989944|Ansarestan(Light MVNO)
-9899900|LotusTel(Full MVNO)
-9899911|ApTel(Light MVNO)
-9899914|AzarTel(Light MVNO)
-9899999|SamanTel(Full MVNO)
-9899998|SamanTel(Full MVNO)
+9899810|Shatel Mobile
+989944|Ansarestan
+9899900|LOTUSTEL
+9899911|ApTel
+9899914|Azartel
+9899999|SamanTel
+9899998|SamanTel
