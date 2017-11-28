@@ -54,6 +54,14 @@
 27645|Cell C
 27646|Vodacom
 27647|Vodacom
+27648|Vodacom
+27649|Vodacom
+27660|Vodacom
+27661|Vodacom
+27662|Vodacom
+27663|Vodacom
+27664|Vodacom
+27665|Vodacom
 27710|MTN
 27711|Vodacom
 27712|Vodacom
