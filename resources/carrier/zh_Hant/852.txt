@@ -17,6 +17,7 @@
 # We found no Chinese name for operator "Tai Tung" and used the Chinese name of
 # Taitung City from https://en.wikipedia.org/wiki/Taitung_City.
 
+8524649|中信國際電訊
 852510|中國移動
 852511|新移動通訊
 852512|中國移動

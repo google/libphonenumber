@@ -1,2 +1,1 @@
-Build changes:
- - C++ library can now be built as 32- and 64-bit RPMs (#643).
+
