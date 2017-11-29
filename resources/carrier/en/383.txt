@@ -21,7 +21,7 @@
 # Telekomi i Kosovës sh.a. - kosovotelecom.com: vala
 # IPKO Telecommunications LLC - ipko.com: IPKO
 # Dardafon.Net LLC - zmobileonline.com: Z Mobile
-# mts D.O.O.: mts
+# mts D.O.O. - mtsdoo.com: mts
 
 
 383435|IPKO
