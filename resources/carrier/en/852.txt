@@ -14,6 +14,8 @@
 
 # Prefixes from http://www.ofca.gov.hk/mobile/en/industry_focus/telecommunications/portability/numbering/index.html
 
+8524647|Sun Mobile
+8524649|CITIC
 852510|China Mobile
 852511|New World Mobility
 852512|China Mobile
@@ -74,6 +76,7 @@
 852566|3
 852568|1O1O / One2Free
 852569|3
+8525730|Tai Tung
 8525900|PCCW Mobile
 8525901|PCCW Mobile
 8525902|PCCW Mobile

@@ -1,0 +1,44 @@
+# Copyright (C) 2017 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Data taken from:
+# https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000DB0004PDFE.pdf
+
+38031|Zakarpattia
+38032|Lviv
+38033|Volyn
+38034|Ivano-Frankivsk
+38035|Ternopil
+38036|Rivne
+38037|Chernivtsi
+38038|Khmelnytskyi
+38041|Zhytomyr
+38043|Vinnytsia
+38044|Kyiv city
+38045|Kyiv
+38046|Chernihiv
+38047|Cherkasy
+38048|Odesa
+38051|Mykolayiv
+38052|Kirovohrad
+38053|Poltava
+38054|Sumy
+38055|Kherson
+38056|Dnipropetrovsk
+38057|Kharkiv
+38061|Zaporizhzhia
+38062|Donetsk
+38064|Luhansk
+38065|Crimea
+38069|Sevastopol city

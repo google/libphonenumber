@@ -20,18 +20,26 @@ import junit.framework.TestCase;
 
 /**
  * Unit tests for SingleFileMetadataSourceImpl.java.
+ *
+ * <p>
+ * We do not package single file metadata files, so it is only possible to test failures here.
  */
 public class SingleFileMetadataSourceImplTest extends TestCase {
-  public SingleFileMetadataSourceImplTest() {}
+  private static final SingleFileMetadataSourceImpl MISSING_FILE_SOURCE =
+      new SingleFileMetadataSourceImpl("no/such/file", MetadataManager.DEFAULT_METADATA_LOADER);
 
-  public void testMissingMetadataFileThrowsRuntimeException() {
-    SingleFileMetadataSourceImpl singleFileMetadataSource = new SingleFileMetadataSourceImpl(
-        "no/such/file", PhoneNumberUtil.DEFAULT_METADATA_LOADER);
-    // In normal usage we should never get a state where we are asking to load metadata that doesn't
-    // exist. However if the library is packaged incorrectly in the jar, this could happen and the
-    // best we can do is make sure the exception has the file name in it.
+  public void testGeoPhoneNumberMetadataLoadFromMissingFileThrowsException() throws Exception {
     try {
-      singleFileMetadataSource.loadMetadataFromFile();
+      MISSING_FILE_SOURCE.getMetadataForRegion("AE");
+      fail("expected exception");
+    } catch (RuntimeException e) {
+      assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file"));
+    }
+  }
+
+  public void testNonGeoPhoneNumberMetadataLoadFromMissingFileThrowsException() throws Exception {
+    try {
+      MISSING_FILE_SOURCE.getMetadataForNonGeographicalRegion(800);
       fail("expected exception");
     } catch (RuntimeException e) {
       assertTrue("Unexpected error: " + e, e.getMessage().contains("no/such/file"));

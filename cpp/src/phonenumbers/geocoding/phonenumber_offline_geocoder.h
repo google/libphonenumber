@@ -65,10 +65,13 @@ class PhoneNumberOfflineGeocoder {
   // Returns a text description for the given phone number, in the language
   // provided. The description might consist of the name of the country where
   // the phone number is from, or the name of the geographical area the phone
-  // number is from if more detailed information is available.
+  // number is from if more detailed information is available. Returns an empty
+  // string if the number could come from multiple countries, or the country
+  // code is in fact invalid.
   //
   // This method assumes the validity of the number passed in has already been
-  // checked.
+  // checked, and that the number is suitable for geocoding. We consider
+  // fixed-line and mobile numbers possible candidates for geocoding.
   string GetDescriptionForValidNumber(const PhoneNumber& number,
                                       const Locale& language) const;
 
@@ -85,11 +88,12 @@ class PhoneNumberOfflineGeocoder {
   // "United States".
   //
   // This method assumes the validity of the number passed in has already been
-  // checked.
+  // checked, and that the number is suitable for geocoding. We consider
+  // fixed-line and mobile numbers possible candidates for geocoding.
   //
   // user_region is the region code for a given user. This region will be
   // omitted from the description if the phone number comes from this region. It
-  // is a two-letter uppercase ISO country code as defined by ISO 3166-1.
+  // should be a two-letter uppercase CLDR region code.
   string GetDescriptionForValidNumber(const PhoneNumber& number,
       const Locale& language, const string& user_region) const;
 
@@ -129,11 +133,13 @@ class PhoneNumberOfflineGeocoder {
 
   // Returns an area-level text description in the given language for the given
   // phone number, or an empty string.
-  // lang is a two-letter lowercase ISO language codes as defined by ISO 639-1.
+  // lang is a two or three-letter lowercase ISO language code as defined by ISO
+  // 639. Note that where two different language codes exist (e.g. 'he' and 'iw'
+  // for Hebrew) we use the one that Java/Android canonicalized on ('iw' in this
+  // case).
   // script is a four-letter titlecase (the first letter is uppercase and the
-  // rest of the letters are lowercase) ISO script codes as defined in ISO
-  // 15924.
-  // region is a two-letter uppercase ISO country codes as defined by ISO
+  // rest of the letters are lowercase) ISO script code as defined in ISO 15924.
+  // region should be a two-letter uppercase ISO country code as defined by ISO
   // 3166-1.
   const char* GetAreaDescription(const PhoneNumber& number, const string& lang,
                                  const string& script,

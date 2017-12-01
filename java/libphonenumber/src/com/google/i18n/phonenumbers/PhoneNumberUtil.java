@@ -16,22 +16,26 @@
 
 package com.google.i18n.phonenumbers;
 
+import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
+import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.NumberFormat;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneMetadata;
-import com.google.i18n.phonenumbers.nano.Phonemetadata.PhoneNumberDesc;
+import com.google.i18n.phonenumbers.internal.MatcherApi;
+import com.google.i18n.phonenumbers.internal.RegexBasedMatcher;
+import com.google.i18n.phonenumbers.internal.RegexCache;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -42,24 +46,14 @@ import java.util.regex.Pattern;
  * validation.
  *
  * <p>If you use this library, and want to be notified about important changes, please sign up to
- * our <a href="http://groups.google.com/group/libphonenumber-discuss/about">mailing list</a>.
+ * our <a href="https://groups.google.com/forum/#!aboutgroup/libphonenumber-discuss">mailing list</a>.
  *
  * NOTE: A lot of methods in this class require Region Code strings. These must be provided using
- * ISO 3166-1 two-letter country-code format. These should be in upper-case. The list of the codes
+ * CLDR two-letter region-code format. These should be in upper-case. The list of the codes
  * can be found here:
- * http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm
- *
- * @author Shaopeng Jia
+ * http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
  */
 public class PhoneNumberUtil {
-  // @VisibleForTesting
-  static final MetadataLoader DEFAULT_METADATA_LOADER = new MetadataLoader() {
-    @Override
-    public InputStream loadMetadata(String metadataFileName) {
-      return PhoneNumberUtil.class.getResourceAsStream(metadataFileName);
-    }
-  };
-
   private static final Logger logger = Logger.getLogger(PhoneNumberUtil.class.getName());
 
   /** Flags to use when compiling regular expressions for phone numbers. */
@@ -88,9 +82,17 @@ public class PhoneNumberUtil {
   // be the length of the area code plus the length of the mobile token.
   private static final Map<Integer, String> MOBILE_TOKEN_MAPPINGS;
 
+  // Set of country codes that have geographically assigned mobile numbers (see GEO_MOBILE_COUNTRIES
+  // below) which are not based on *area codes*. For example, in China mobile numbers start with a
+  // carrier indicator, and beyond that are geographically assigned: this carrier indicator is not
+  // considered to be an area code.
+  private static final Set<Integer> GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES;
+
   // Set of country calling codes that have geographically assigned mobile numbers. This may not be
   // complete; we add calling codes case by case, as we find geographical mobile numbers or hear
-  // from user reports.
+  // from user reports. Note that countries like the US, where we can't distinguish between
+  // fixed-line or mobile numbers, are not listed here, since we consider FIXED_LINE_OR_MOBILE to be
+  // a possibly geographically-related type anyway (like FIXED_LINE).
   private static final Set<Integer> GEO_MOBILE_COUNTRIES;
 
   // The PLUS_SIGN signifies the international prefix.
@@ -124,10 +126,17 @@ public class PhoneNumberUtil {
     mobileTokenMap.put(54, "9");
     MOBILE_TOKEN_MAPPINGS = Collections.unmodifiableMap(mobileTokenMap);
 
+    HashSet<Integer> geoMobileCountriesWithoutMobileAreaCodes = new HashSet<Integer>();
+    geoMobileCountriesWithoutMobileAreaCodes.add(86);  // China
+    GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES =
+        Collections.unmodifiableSet(geoMobileCountriesWithoutMobileAreaCodes);
+
     HashSet<Integer> geoMobileCountries = new HashSet<Integer>();
     geoMobileCountries.add(52);  // Mexico
     geoMobileCountries.add(54);  // Argentina
     geoMobileCountries.add(55);  // Brazil
+    geoMobileCountries.add(62);  // Indonesia: some prefixes only (fixed CMDA wireless)
+    geoMobileCountries.addAll(geoMobileCountriesWithoutMobileAreaCodes);
     GEO_MOBILE_COUNTRIES = Collections.unmodifiableSet(geoMobileCountries);
 
     // Simple ASCII digits map used to populate ALPHA_PHONE_MAPPINGS and
@@ -182,6 +191,7 @@ public class PhoneNumberUtil {
     diallableCharMap.putAll(asciiDigitMappings);
     diallableCharMap.put(PLUS_SIGN, PLUS_SIGN);
     diallableCharMap.put('*', '*');
+    diallableCharMap.put('#', '#');
     DIALLABLE_CHAR_MAPPINGS = Collections.unmodifiableMap(diallableCharMap);
 
     HashMap<Character, Character> allPlusNumberGroupings = new HashMap<Character, Character>();
@@ -211,29 +221,30 @@ public class PhoneNumberUtil {
     ALL_PLUS_NUMBER_GROUPING_SYMBOLS = Collections.unmodifiableMap(allPlusNumberGroupings);
   }
 
-  // Pattern that makes it easy to distinguish whether a region has a unique international dialing
-  // prefix or not. If a region has a unique international prefix (e.g. 011 in USA), it will be
-  // represented as a string that contains a sequence of ASCII digits. If there are multiple
-  // available international prefixes in a region, they will be represented as a regex string that
-  // always contains character(s) other than ASCII digits.
-  // Note this regex also includes tilde, which signals waiting for the tone.
-  private static final Pattern UNIQUE_INTERNATIONAL_PREFIX =
+  // Pattern that makes it easy to distinguish whether a region has a single international dialing
+  // prefix or not. If a region has a single international prefix (e.g. 011 in USA), it will be
+  // represented as a string that contains a sequence of ASCII digits, and possibly a tilde, which
+  // signals waiting for the tone. If there are multiple available international prefixes in a
+  // region, they will be represented as a regex string that always contains one or more characters
+  // that are not ASCII digits or a tilde.
+  private static final Pattern SINGLE_INTERNATIONAL_PREFIX =
       Pattern.compile("[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)?");
 
-  // Regular expression of acceptable punctuation found in phone numbers. This excludes punctuation
-  // found as a leading character only.
+  // Regular expression of acceptable punctuation found in phone numbers, used to find numbers in
+  // text and to decide what is a viable phone number. This excludes diallable characters.
   // This consists of dash characters, white space characters, full stops, slashes,
   // square brackets, parentheses and tildes. It also includes the letter 'x' as that is found as a
   // placeholder for carrier information in some phone numbers. Full-width variants are also
   // present.
-  static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F " +
-      "\u00A0\u00AD\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
+  static final String VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\u30FC\uFF0D-\uFF0F "
+      + "\u00A0\u00AD\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E";
 
   private static final String DIGITS = "\\p{Nd}";
   // We accept alpha characters in phone numbers, ASCII only, upper and lower case.
   private static final String VALID_ALPHA =
-      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "") +
-      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).toLowerCase().replaceAll("[, \\[\\]]", "");
+      Arrays.toString(ALPHA_MAPPINGS.keySet().toArray()).replaceAll("[, \\[\\]]", "")
+      + Arrays.toString(ALPHA_MAPPINGS.keySet().toArray())
+          .toLowerCase().replaceAll("[, \\[\\]]", "");
   static final String PLUS_CHARS = "+\uFF0B";
   static final Pattern PLUS_CHARS_PATTERN = Pattern.compile("[" + PLUS_CHARS + "]+");
   private static final Pattern SEPARATOR_PATTERN = Pattern.compile("[" + VALID_PUNCTUATION + "]+");
@@ -283,9 +294,9 @@ public class PhoneNumberUtil {
   //
   // Note VALID_PUNCTUATION starts with a -, so must be the first in the range.
   private static final String VALID_PHONE_NUMBER =
-      DIGITS + "{" + MIN_LENGTH_FOR_NSN + "}" + "|" +
-      "[" + PLUS_CHARS + "]*+(?:[" + VALID_PUNCTUATION + STAR_SIGN + "]*" + DIGITS + "){3,}[" +
-      VALID_PUNCTUATION + STAR_SIGN + VALID_ALPHA + DIGITS + "]*";
+      DIGITS + "{" + MIN_LENGTH_FOR_NSN + "}" + "|"
+      + "[" + PLUS_CHARS + "]*+(?:[" + VALID_PUNCTUATION + STAR_SIGN + "]*" + DIGITS + "){3,}["
+      + VALID_PUNCTUATION + STAR_SIGN + VALID_ALPHA + DIGITS + "]*";
 
   // Default extension prefix to use when formatting. This will be put in front of any extension
   // component of the number, after the main national number is formatted. For example, if you wish
@@ -305,9 +316,9 @@ public class PhoneNumberUtil {
     // One-character symbols that can be used to indicate an extension.
     String singleExtnSymbolsForMatching = "x\uFF58#\uFF03~\uFF5E";
     // For parsing, we are slightly more lenient in our interpretation than for matching. Here we
-    // allow a "comma" as a possible extension indicator. When matching, this is hardly ever used to
-    // indicate this.
-    String singleExtnSymbolsForParsing = "," + singleExtnSymbolsForMatching;
+    // allow "comma" and "semicolon" as possible extension indicators. When matching, these are
+    // hardly ever used to indicate this.
+    String singleExtnSymbolsForParsing = ",;" + singleExtnSymbolsForMatching;
 
     EXTN_PATTERNS_FOR_PARSING = createExtnPattern(singleExtnSymbolsForParsing);
     EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(singleExtnSymbolsForMatching);
@@ -320,19 +331,19 @@ public class PhoneNumberUtil {
   private static String createExtnPattern(String singleExtnSymbols) {
     // There are three regular expressions here. The first covers RFC 3966 format, where the
     // extension is added using ";ext=". The second more generic one starts with optional white
-    // space and ends with an optional full stop (.), followed by zero or more spaces/tabs and then
-    // the numbers themselves. The other one covers the special case of American numbers where the
-    // extension is written with a hash at the end, such as "- 503#".
+    // space and ends with an optional full stop (.), followed by zero or more spaces/tabs/commas
+    // and then the numbers themselves. The other one covers the special case of American numbers
+    // where the extension is written with a hash at the end, such as "- 503#"
     // Note that the only capturing groups should be around the digits that you want to capture as
     // part of the extension, or else parsing will fail!
     // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
     // for representing the accented o - the character itself, and one in the unicode decomposed
     // form with the combining acute accent.
-    return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*" +
-            "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|" +
-            "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)" +
-            "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|" +
-            "[- ]+(" + DIGITS + "{1,5})#");
+    return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*"
+        + "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|"
+        + "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)"
+        + "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|"
+        + "[- ]+(" + DIGITS + "{1,5})#");
   }
 
   // Regexp of all known extension prefixes used by different regions followed by 1 or more valid
@@ -352,9 +363,11 @@ public class PhoneNumberUtil {
   // correctly.  Therefore, we use \d, so that the first group actually used in the pattern will be
   // matched.
   private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$\\d)");
-  private static final Pattern NP_PATTERN = Pattern.compile("\\$NP");
-  private static final Pattern FG_PATTERN = Pattern.compile("\\$FG");
-  private static final Pattern CC_PATTERN = Pattern.compile("\\$CC");
+  // Constants used in the formatting rules to represent the national prefix, first group and
+  // carrier code respectively.
+  private static final String NP_STRING = "$NP";
+  private static final String FG_STRING = "$FG";
+  private static final String CC_STRING = "$CC";
 
   // A pattern that is used to determine if the national prefix formatting rule has the first group
   // only, i.e., does not start with the national prefix. Note that the pattern explicitly allows
@@ -367,12 +380,13 @@ public class PhoneNumberUtil {
 
   /**
    * INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
-   * E123. For example, the number of the Google Switzerland office will be written as
-   * "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format.
-   * E164 format is as per INTERNATIONAL format but with no formatting applied, e.g.
-   * "+41446681800". RFC3966 is as per INTERNATIONAL format, but with all spaces and other
-   * separating symbols replaced with a hyphen, and with any phone number extension appended with
-   * ";ext=". It also will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
+   * E.123. However we follow local conventions such as using '-' instead of whitespace as
+   * separators. For example, the number of the Google Switzerland office will be written as
+   * "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format. E164
+   * format is as per INTERNATIONAL format but with no formatting applied, e.g. "+41446681800".
+   * RFC3966 is as per INTERNATIONAL format, but with all spaces and other separating symbols
+   * replaced with a hyphen, and with any phone number extension appended with ";ext=". It also
+   * will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
    *
    * Note: If you are considering storing the number in a neutral format, you are highly advised to
    * use the PhoneNumber class.
@@ -432,9 +446,27 @@ public class PhoneNumberUtil {
    * Possible outcomes when testing if a PhoneNumber is possible.
    */
   public enum ValidationResult {
+    /** The number length matches that of valid numbers for this region. */
     IS_POSSIBLE,
+    /**
+     * The number length matches that of local numbers for this region only (i.e. numbers that may
+     * be able to be dialled within an area, but do not have all the information to be dialled from
+     * anywhere inside or outside the country).
+     */
+    IS_POSSIBLE_LOCAL_ONLY,
+    /** The number has an invalid country calling code. */
     INVALID_COUNTRY_CODE,
+    /** The number is shorter than all valid numbers for this region. */
     TOO_SHORT,
+    /**
+     * The number is longer than the shortest valid numbers for this region, shorter than the
+     * longest valid numbers for this region, and does not itself have a number length that matches
+     * valid numbers for this region. This can also be returned in the case where
+     * isPossibleNumberForTypeWithReason was called, and there are no numbers of this type at all
+     * for this region.
+     */
+    INVALID_LENGTH,
+    /** The number is longer than all valid numbers for this region. */
     TOO_LONG,
   }
 
@@ -449,7 +481,7 @@ public class PhoneNumberUtil {
      */
     POSSIBLE {
       @Override
-      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
+      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
         return util.isPossibleNumber(number);
       }
     },
@@ -461,9 +493,9 @@ public class PhoneNumberUtil {
      */
     VALID {
       @Override
-      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number) ||
-            !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
+      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+        if (!util.isValidNumber(number)
+            || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate.toString(), util)) {
           return false;
         }
         return PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util);
@@ -483,11 +515,12 @@ public class PhoneNumberUtil {
      */
     STRICT_GROUPING {
       @Override
-      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number) ||
-            !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util) ||
-            PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate) ||
-            !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
+      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+        String candidateString = candidate.toString();
+        if (!util.isValidNumber(number)
+            || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidateString, util)
+            || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidateString)
+            || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
         return PhoneNumberMatcher.checkNumberGroupingIsValid(
@@ -515,11 +548,12 @@ public class PhoneNumberUtil {
      */
     EXACT_GROUPING {
       @Override
-      boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util) {
-        if (!util.isValidNumber(number) ||
-            !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util) ||
-            PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate) ||
-            !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
+      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+        String candidateString = candidate.toString();
+        if (!util.isValidNumber(number)
+            || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidateString, util)
+            || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidateString)
+            || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
         return PhoneNumberMatcher.checkNumberGroupingIsValid(
@@ -536,7 +570,7 @@ public class PhoneNumberUtil {
     };
 
     /** Returns true if {@code number} is a verified number according to this leniency. */
-    abstract boolean verify(PhoneNumber number, String candidate, PhoneNumberUtil util);
+    abstract boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util);
   }
 
   // A source of metadata for different regions.
@@ -547,6 +581,9 @@ public class PhoneNumberUtil {
   // the NANPA regions, the one indicated with "isMainCountryForCode" in the metadata should be
   // first.
   private final Map<Integer, List<String>> countryCallingCodeToRegionCodeMap;
+
+  // An API for validation checking.
+  private final MatcherApi matcherApi = RegexBasedMatcher.create();
 
   // The set of regions that share country calling code 1.
   // There are roughly 26 regions.
@@ -591,28 +628,10 @@ public class PhoneNumberUtil {
     // there are entries that list the non-geo entity alongside normal regions (which is wrong).
     // If we discover this, remove the non-geo entity from the set of supported regions and log.
     if (supportedRegions.remove(REGION_CODE_FOR_NON_GEO_ENTITY)) {
-      logger.log(Level.WARNING, "invalid metadata " +
-          "(country calling code was mapped to the non-geo entity as well as specific region(s))");
+      logger.log(Level.WARNING, "invalid metadata (country calling code was mapped to the non-geo "
+          + "entity as well as specific region(s))");
     }
     nanpaRegions.addAll(countryCallingCodeToRegionCodeMap.get(NANPA_COUNTRY_CODE));
-  }
-
-  /**
-   * Returns a copy of the given NumberFormat object.
-   */
-  static NumberFormat copyNumberFormat(NumberFormat other) {
-    NumberFormat copy = new NumberFormat();
-    copy.pattern = other.pattern;
-    copy.format = other.format;
-    int leadingDigitsPatternSize = other.leadingDigitsPattern.length;
-    copy.leadingDigitsPattern = new String[leadingDigitsPatternSize];
-    for (int i = 0; i < leadingDigitsPatternSize; i++) {
-      copy.leadingDigitsPattern[i] = other.leadingDigitsPattern[i];
-    }
-    copy.nationalPrefixFormattingRule = other.nationalPrefixFormattingRule;
-    copy.domesticCarrierCodeFormattingRule = other.domesticCarrierCodeFormattingRule;
-    copy.nationalPrefixOptionalWhenFormatting = other.nationalPrefixOptionalWhenFormatting;
-    return copy;
   }
 
   /**
@@ -626,24 +645,23 @@ public class PhoneNumberUtil {
    * number is parsed correctly.
    *
    * @param number  the string that might contain a phone number
-   * @return        the number, stripped of any non-phone-number prefix (such as "Tel:") or an empty
-   *                string if no character used to start phone numbers (such as + or any digit) is
-   *                found in the number
+   * @return  the number, stripped of any non-phone-number prefix (such as "Tel:") or an empty
+   *     string if no character used to start phone numbers (such as + or any digit) is found in the
+   *     number
    */
-  static String extractPossibleNumber(String number) {
+  static CharSequence extractPossibleNumber(CharSequence number) {
     Matcher m = VALID_START_CHAR_PATTERN.matcher(number);
     if (m.find()) {
-      number = number.substring(m.start());
+      number = number.subSequence(m.start(), number.length());
       // Remove trailing non-alpha non-numerical characters.
       Matcher trailingCharsMatcher = UNWANTED_END_CHAR_PATTERN.matcher(number);
       if (trailingCharsMatcher.find()) {
-        number = number.substring(0, trailingCharsMatcher.start());
-        logger.log(Level.FINER, "Stripped trailing characters: " + number);
+        number = number.subSequence(0, trailingCharsMatcher.start());
       }
       // Check for extra numbers at the end.
       Matcher secondNumber = SECOND_NUMBER_START_PATTERN.matcher(number);
       if (secondNumber.find()) {
-        number = number.substring(0, secondNumber.start());
+        number = number.subSequence(0, secondNumber.start());
       }
       return number;
     } else {
@@ -659,10 +677,10 @@ public class PhoneNumberUtil {
    * leading non-number symbols have been removed, such as by the method extractPossibleNumber.
    *
    * @param number  string to be checked for viability as a phone number
-   * @return        true if the number could be a phone number of some sort, otherwise false
+   * @return  true if the number could be a phone number of some sort, otherwise false
    */
   // @VisibleForTesting
-  static boolean isViablePhoneNumber(String number) {
+  static boolean isViablePhoneNumber(CharSequence number) {
     if (number.length() < MIN_LENGTH_FOR_NSN) {
       return false;
     }
@@ -673,38 +691,27 @@ public class PhoneNumberUtil {
   /**
    * Normalizes a string of characters representing a phone number. This performs the following
    * conversions:
-   *   Punctuation is stripped.
+   *   - Punctuation is stripped.
    *   For ALPHA/VANITY numbers:
-   *   Letters are converted to their numeric representation on a telephone keypad. The keypad
-   *       used here is the one defined in ITU Recommendation E.161. This is only done if there are
-   *       3 or more letters in the number, to lessen the risk that such letters are typos.
+   *   - Letters are converted to their numeric representation on a telephone keypad. The keypad
+   *     used here is the one defined in ITU Recommendation E.161. This is only done if there are 3
+   *     or more letters in the number, to lessen the risk that such letters are typos.
    *   For other numbers:
-   *   Wide-ascii digits are converted to normal ASCII (European) digits.
-   *   Arabic-Indic numerals are converted to European numerals.
-   *   Spurious alpha characters are stripped.
-   *
-   * @param number  a string of characters representing a phone number
-   * @return        the normalized string version of the phone number
-   */
-  static String normalize(String number) {
-    Matcher m = VALID_ALPHA_PHONE_PATTERN.matcher(number);
-    if (m.matches()) {
-      return normalizeHelper(number, ALPHA_PHONE_MAPPINGS, true);
-    } else {
-      return normalizeDigitsOnly(number);
-    }
-  }
-
-  /**
-   * Normalizes a string of characters representing a phone number. This is a wrapper for
-   * normalize(String number) but does in-place normalization of the StringBuilder provided.
+   *   - Wide-ascii digits are converted to normal ASCII (European) digits.
+   *   - Arabic-Indic numerals are converted to European numerals.
+   *   - Spurious alpha characters are stripped.
    *
    * @param number  a StringBuilder of characters representing a phone number that will be
    *     normalized in place
    */
-  static void normalize(StringBuilder number) {
-    String normalizedNumber = normalize(number.toString());
-    number.replace(0, number.length(), normalizedNumber);
+  static StringBuilder normalize(StringBuilder number) {
+    Matcher m = VALID_ALPHA_PHONE_PATTERN.matcher(number);
+    if (m.matches()) {
+      number.replace(0, number.length(), normalizeHelper(number, ALPHA_PHONE_MAPPINGS, true));
+    } else {
+      number.replace(0, number.length(), normalizeDigitsOnly(number));
+    }
+    return number;
   }
 
   /**
@@ -712,15 +719,16 @@ public class PhoneNumberUtil {
    * arabic-indic numerals to European numerals, and strips punctuation and alpha characters.
    *
    * @param number  a string of characters representing a phone number
-   * @return        the normalized string version of the phone number
+   * @return  the normalized string version of the phone number
    */
-  public static String normalizeDigitsOnly(String number) {
+  public static String normalizeDigitsOnly(CharSequence number) {
     return normalizeDigits(number, false /* strip non-digits */).toString();
   }
 
-  static StringBuilder normalizeDigits(String number, boolean keepNonDigits) {
+  static StringBuilder normalizeDigits(CharSequence number, boolean keepNonDigits) {
     StringBuilder normalizedDigits = new StringBuilder(number.length());
-    for (char c : number.toCharArray()) {
+    for (int i = 0; i < number.length(); i++) {
+      char c = number.charAt(i);
       int digit = Character.digit(c, 10);
       if (digit != -1) {
         normalizedDigits.append(digit);
@@ -736,9 +744,9 @@ public class PhoneNumberUtil {
    * are not diallable on a mobile phone keypad (including all non-ASCII digits).
    *
    * @param number  a string of characters representing a phone number
-   * @return        the normalized string version of the phone number
+   * @return  the normalized string version of the phone number
    */
-  static String normalizeDiallableCharsOnly(String number) {
+  public static String normalizeDiallableCharsOnly(CharSequence number) {
     return normalizeHelper(number, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
   }
 
@@ -746,7 +754,7 @@ public class PhoneNumberUtil {
    * Converts all alpha characters in a number to their respective digits on a keypad, but retains
    * existing formatting.
    */
-  public static String convertAlphaCharactersInNumber(String number) {
+  public static String convertAlphaCharactersInNumber(CharSequence number) {
     return normalizeHelper(number, ALPHA_PHONE_MAPPINGS, false);
   }
 
@@ -787,9 +795,9 @@ public class PhoneNumberUtil {
    *  <li> some geographical numbers have no area codes.
    * </ul>
    * @param number  the PhoneNumber object for which clients
-   *     want to know the length of the area code.
+   *     want to know the length of the area code
    * @return  the length of area code of the PhoneNumber object
-   *     passed in.
+   *     passed in
    */
   public int getLengthOfGeographicalAreaCode(PhoneNumber number) {
     PhoneMetadata metadata = getMetadataForRegion(getRegionCodeForNumber(number));
@@ -798,11 +806,21 @@ public class PhoneNumberUtil {
     }
     // If a country doesn't use a national prefix, and this number doesn't have an Italian leading
     // zero, we assume it is a closed dialling plan with no area codes.
-    if (metadata.nationalPrefix.equals("") && !number.isItalianLeadingZero()) {
+    if (!metadata.hasNationalPrefix() && !number.isItalianLeadingZero()) {
       return 0;
     }
 
-    if (!isNumberGeographical(number)) {
+    PhoneNumberType type = getNumberType(number);
+    int countryCallingCode = number.getCountryCode();
+    if (type == PhoneNumberType.MOBILE
+        // Note this is a rough heuristic; it doesn't cover Indonesia well, for example, where area
+        // codes are present for some mobile phones but not for others. We have no better way of
+        // representing this in the metadata at this point.
+        && GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES.contains(countryCallingCode)) {
+      return 0;
+    }
+
+    if (!isNumberGeographical(type, countryCallingCode)) {
       return 0;
     }
 
@@ -839,9 +857,9 @@ public class PhoneNumberUtil {
    * {@link #getLengthOfGeographicalAreaCode}.
    *
    * @param number  the PhoneNumber object for which clients
-   *     want to know the length of the NDC.
+   *     want to know the length of the NDC
    * @return  the length of NDC of the PhoneNumber object
-   *     passed in.
+   *     passed in
    */
   public int getLengthOfNationalDestinationCode(PhoneNumber number) {
     PhoneNumber copiedProto;
@@ -899,15 +917,14 @@ public class PhoneNumberUtil {
    * in the accompanying map with the values therein, and stripping all other characters if
    * removeNonMatches is true.
    *
-   * @param number                     a string of characters representing a phone number
+   * @param number  a string of characters representing a phone number
    * @param normalizationReplacements  a mapping of characters to what they should be replaced by in
-   *                                   the normalized version of the phone number
-   * @param removeNonMatches           indicates whether characters that are not able to be replaced
-   *                                   should be stripped from the number. If this is false, they
-   *                                   will be left unchanged in the number.
+   *     the normalized version of the phone number
+   * @param removeNonMatches  indicates whether characters that are not able to be replaced should
+   *     be stripped from the number. If this is false, they will be left unchanged in the number.
    * @return  the normalized string version of the phone number
    */
-  private static String normalizeHelper(String number,
+  private static String normalizeHelper(CharSequence number,
                                         Map<Character, Character> normalizationReplacements,
                                         boolean removeNonMatches) {
     StringBuilder normalizedNumber = new StringBuilder(number.length());
@@ -934,24 +951,121 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Convenience method to get a list of what regions the library has metadata for.
+   * Returns all regions the library has metadata for.
+   *
+   * @return  an unordered set of the two-letter region codes for every geographical region the
+   *     library supports
    */
   public Set<String> getSupportedRegions() {
     return Collections.unmodifiableSet(supportedRegions);
   }
 
   /**
-   * Convenience method to get a list of what global network calling codes the library has metadata
-   * for.
+   * Returns all global network calling codes the library has metadata for.
+   *
+   * @return  an unordered set of the country calling codes for every non-geographical entity the
+   *     library supports
    */
   public Set<Integer> getSupportedGlobalNetworkCallingCodes() {
     return Collections.unmodifiableSet(countryCodesForNonGeographicalRegion);
   }
 
+ /**
+   * Returns all country calling codes the library has metadata for, covering both non-geographical
+   * entities (global network calling codes) and those used for geographical entities. This could be
+   * used to populate a drop-down box of country calling codes for a phone-number widget, for
+   * instance.
+   *
+   * @return  an unordered set of the country calling codes for every geographical and
+   *     non-geographical entity the library supports
+   */
+  public Set<Integer> getSupportedCallingCodes() {
+    return Collections.unmodifiableSet(countryCallingCodeToRegionCodeMap.keySet());
+  }
+
+  /**
+   * Returns true if there is any possible number data set for a particular PhoneNumberDesc.
+   */
+  private static boolean descHasPossibleNumberData(PhoneNumberDesc desc) {
+    // If this is empty, it means numbers of this type inherit from the "general desc" -> the value
+    // "-1" means that no numbers exist for this type.
+    return desc.getPossibleLengthCount() != 1 || desc.getPossibleLength(0) != -1;
+  }
+
+  // Note: descHasData must account for any of MetadataFilter's excludableChildFields potentially
+  // being absent from the metadata. It must check them all. For any changes in descHasData, ensure
+  // that all the excludableChildFields are still being checked. If your change is safe simply
+  // mention why during a review without needing to change MetadataFilter.
+  /**
+   * Returns true if there is any data set for a particular PhoneNumberDesc.
+   */
+  private static boolean descHasData(PhoneNumberDesc desc) {
+    // Checking most properties since we don't know what's present, since a custom build may have
+    // stripped just one of them (e.g. liteBuild strips exampleNumber). We don't bother checking the
+    // possibleLengthsLocalOnly, since if this is the only thing that's present we don't really
+    // support the type at all: no type-specific methods will work with only this data.
+    return desc.hasExampleNumber()
+        || descHasPossibleNumberData(desc)
+        || desc.hasNationalNumberPattern();
+  }
+
+  /**
+   * Returns the types we have metadata for based on the PhoneMetadata object passed in, which must
+   * be non-null.
+   */
+  private Set<PhoneNumberType> getSupportedTypesForMetadata(PhoneMetadata metadata) {
+    Set<PhoneNumberType> types = new TreeSet<PhoneNumberType>();
+    for (PhoneNumberType type : PhoneNumberType.values()) {
+      if (type == PhoneNumberType.FIXED_LINE_OR_MOBILE || type == PhoneNumberType.UNKNOWN) {
+        // Never return FIXED_LINE_OR_MOBILE (it is a convenience type, and represents that a
+        // particular number type can't be determined) or UNKNOWN (the non-type).
+        continue;
+      }
+      if (descHasData(getNumberDescByType(metadata, type))) {
+        types.add(type);
+      }
+    }
+    return Collections.unmodifiableSet(types);
+  }
+
+  /**
+   * Returns the types for a given region which the library has metadata for. Will not include
+   * FIXED_LINE_OR_MOBILE (if numbers in this region could be classified as FIXED_LINE_OR_MOBILE,
+   * both FIXED_LINE and MOBILE would be present) and UNKNOWN.
+   *
+   * No types will be returned for invalid or unknown region codes.
+   */
+  public Set<PhoneNumberType> getSupportedTypesForRegion(String regionCode) {
+    if (!isValidRegionCode(regionCode)) {
+      logger.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
+      return Collections.unmodifiableSet(new TreeSet<PhoneNumberType>());
+    }
+    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    return getSupportedTypesForMetadata(metadata);
+  }
+
+  /**
+   * Returns the types for a country-code belonging to a non-geographical entity which the library
+   * has metadata for. Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
+   * entity could be classified as FIXED_LINE_OR_MOBILE, both FIXED_LINE and MOBILE would be
+   * present) and UNKNOWN.
+   *
+   * No types will be returned for country calling codes that do not map to a known non-geographical
+   * entity.
+   */
+  public Set<PhoneNumberType> getSupportedTypesForNonGeoEntity(int countryCallingCode) {
+    PhoneMetadata metadata = getMetadataForNonGeographicalRegion(countryCallingCode);
+    if (metadata == null) {
+      logger.log(Level.WARNING, "Unknown country calling code for a non-geographical entity "
+          + "provided: " + countryCallingCode);
+      return Collections.unmodifiableSet(new TreeSet<PhoneNumberType>());
+    }
+    return getSupportedTypesForMetadata(metadata);
+  }
+
   /**
    * Gets a {@link PhoneNumberUtil} instance to carry out international phone number formatting,
-   * parsing, or validation. The instance is loaded with phone number metadata for a number of most
-   * commonly used regions.
+   * parsing, or validation. The instance is loaded with all phone number metadata.
    *
    * <p>The {@link PhoneNumberUtil} is implemented as a singleton. Therefore, calling getInstance
    * multiple times will only result in one instance being created.
@@ -960,7 +1074,7 @@ public class PhoneNumberUtil {
    */
   public static synchronized PhoneNumberUtil getInstance() {
     if (instance == null) {
-      setInstance(createInstance(DEFAULT_METADATA_LOADER));
+      setInstance(createInstance(MetadataManager.DEFAULT_METADATA_LOADER));
     }
     return instance;
   }
@@ -968,34 +1082,14 @@ public class PhoneNumberUtil {
   /**
    * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
    * formatting, parsing, or validation. The instance is loaded with all metadata by
-   * using the metadataSource specified.
-   *
-   * This method should only be used in the rare case in which you want to manage your own
-   * metadata loading. Calling this method multiple times is very expensive, as each time
-   * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
-   *
-   * @param metadataSource Customized metadata source. This should not be null.
-   * @return a PhoneNumberUtil instance
-   */
-  public static PhoneNumberUtil createInstance(MetadataSource metadataSource) {
-    if (metadataSource == null) {
-      throw new IllegalArgumentException("metadataSource could not be null.");
-    }
-    return new PhoneNumberUtil(metadataSource,
-        CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap());
-  }
-
-  /**
-   * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
-   * formatting, parsing, or validation. The instance is loaded with all metadata by
    * using the metadataLoader specified.
    *
-   * This method should only be used in the rare case in which you want to manage your own
+   * <p>This method should only be used in the rare case in which you want to manage your own
    * metadata loading. Calling this method multiple times is very expensive, as each time
    * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
    *
-   * @param metadataLoader Customized metadata loader. This should not be null.
-   * @return a PhoneNumberUtil instance
+   * @param metadataLoader  customized metadata loader. This should not be null
+   * @return  a PhoneNumberUtil instance
    */
   public static PhoneNumberUtil createInstance(MetadataLoader metadataLoader) {
     if (metadataLoader == null) {
@@ -1005,31 +1099,52 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Create a new {@link PhoneNumberUtil} instance to carry out international phone number
+   * formatting, parsing, or validation. The instance is loaded with all metadata by
+   * using the metadataSource specified.
+   *
+   * <p>This method should only be used in the rare case in which you want to manage your own
+   * metadata loading. Calling this method multiple times is very expensive, as each time
+   * a new instance is created from scratch. When in doubt, use {@link #getInstance}.
+   *
+   * @param metadataSource  customized metadata source. This should not be null
+   * @return  a PhoneNumberUtil instance
+   */
+  private static PhoneNumberUtil createInstance(MetadataSource metadataSource) {
+    if (metadataSource == null) {
+      throw new IllegalArgumentException("metadataSource could not be null.");
+    }
+    return new PhoneNumberUtil(metadataSource,
+        CountryCodeToRegionCodeMap.getCountryCodeToRegionCodeMap());
+  }
+
+  /**
    * Helper function to check if the national prefix formatting rule has the first group only, i.e.,
    * does not start with the national prefix.
    */
   static boolean formattingRuleHasFirstGroupOnly(String nationalPrefixFormattingRule) {
-    return nationalPrefixFormattingRule.length() == 0 ||
-        FIRST_GROUP_ONLY_PREFIX_PATTERN.matcher(nationalPrefixFormattingRule).matches();
+    return nationalPrefixFormattingRule.length() == 0
+        || FIRST_GROUP_ONLY_PREFIX_PATTERN.matcher(nationalPrefixFormattingRule).matches();
   }
 
   /**
    * Tests whether a phone number has a geographical association. It checks if the number is
-   * associated to a certain region in the country where it belongs to. Note that this doesn't
+   * associated with a certain region in the country to which it belongs. Note that this doesn't
    * verify if the number is actually in use.
-   *
-   * A similar method is implemented as PhoneNumberOfflineGeocoder.canBeGeocoded, which performs a
-   * looser check, since it only prevents cases where prefixes overlap for geocodable and
-   * non-geocodable numbers. Also, if new phone number types were added, we should check if this
-   * other method should be updated too.
    */
-  boolean isNumberGeographical(PhoneNumber phoneNumber) {
-    PhoneNumberType numberType = getNumberType(phoneNumber);
+  public boolean isNumberGeographical(PhoneNumber phoneNumber) {
+    return isNumberGeographical(getNumberType(phoneNumber), phoneNumber.getCountryCode());
+  }
 
-    return numberType == PhoneNumberType.FIXED_LINE
-        || numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
-        || (GEO_MOBILE_COUNTRIES.contains(phoneNumber.getCountryCode())
-            && numberType == PhoneNumberType.MOBILE);
+  /**
+   * Overload of isNumberGeographical(PhoneNumber), since calculating the phone number type is
+   * expensive; if we have already done this, we don't want to do it again.
+   */
+  public boolean isNumberGeographical(PhoneNumberType phoneNumberType, int countryCallingCode) {
+    return phoneNumberType == PhoneNumberType.FIXED_LINE
+        || phoneNumberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
+        || (GEO_MOBILE_COUNTRIES.contains(countryCallingCode)
+            && phoneNumberType == PhoneNumberType.MOBILE);
   }
 
   /**
@@ -1056,8 +1171,8 @@ public class PhoneNumberUtil {
    * which formatting rules to apply so we return the national significant number with no formatting
    * applied.
    *
-   * @param number         the phone number to be formatted
-   * @param numberFormat   the format the phone number should be formatted into
+   * @param number  the phone number to be formatted
+   * @param numberFormat  the format the phone number should be formatted into
    * @return  the formatted phone number
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
@@ -1066,7 +1181,7 @@ public class PhoneNumberUtil {
       // This is the only case where a number can be formatted as E164 without a
       // leading '+' symbol (but the original number wasn't parseable anyway).
       // TODO: Consider removing the 'if' above so that unparseable
-      // strings without raw input format to the empty string instead of "+00"
+      // strings without raw input format to the empty string instead of "+00".
       String rawInput = number.getRawInput();
       if (rawInput.length() > 0) {
         return rawInput;
@@ -1119,9 +1234,9 @@ public class PhoneNumberUtil {
    * code, we cannot work out things like whether there should be a national prefix applied, or how
    * to format extensions, so we return the national significant number with no formatting applied.
    *
-   * @param number                        the phone number to be formatted
-   * @param numberFormat                  the format the phone number should be formatted into
-   * @param userDefinedFormats            formatting rules specified by clients
+   * @param number  the phone number to be formatted
+   * @param numberFormat  the format the phone number should be formatted into
+   * @param userDefinedFormats  formatting rules specified by clients
    * @return  the formatted phone number
    */
   public String formatByPattern(PhoneNumber number,
@@ -1136,36 +1251,35 @@ public class PhoneNumberUtil {
     // share a country calling code is contained by only one region for performance reasons. For
     // example, for NANPA regions it will be contained in the metadata for US.
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
-    // Metadata cannot be null because the country calling code is valid
+    // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata =
         getMetadataForRegionOrCallingCode(countryCallingCode, regionCode);
 
     StringBuilder formattedNumber = new StringBuilder(20);
 
     NumberFormat formattingPattern =
-        chooseFormattingPatternForNumber(userDefinedFormats.toArray(
-            new NumberFormat[userDefinedFormats.size()]), nationalSignificantNumber);
+        chooseFormattingPatternForNumber(userDefinedFormats, nationalSignificantNumber);
     if (formattingPattern == null) {
       // If no pattern above is matched, we format the number as a whole.
       formattedNumber.append(nationalSignificantNumber);
     } else {
+      NumberFormat.Builder numFormatCopy = NumberFormat.newBuilder();
       // Before we do a replacement of the national prefix pattern $NP with the national prefix, we
       // need to copy the rule so that subsequent replacements for different numbers have the
       // appropriate national prefix.
-      NumberFormat numFormatCopy = copyNumberFormat(formattingPattern);
-      String nationalPrefixFormattingRule = formattingPattern.nationalPrefixFormattingRule;
+      numFormatCopy.mergeFrom(formattingPattern);
+      String nationalPrefixFormattingRule = formattingPattern.getNationalPrefixFormattingRule();
       if (nationalPrefixFormattingRule.length() > 0) {
-        String nationalPrefix = metadata.nationalPrefix;
+        String nationalPrefix = metadata.getNationalPrefix();
         if (nationalPrefix.length() > 0) {
           // Replace $NP with national prefix and $FG with the first group ($1).
           nationalPrefixFormattingRule =
-              NP_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst(nationalPrefix);
-          nationalPrefixFormattingRule =
-              FG_PATTERN.matcher(nationalPrefixFormattingRule).replaceFirst("\\$1");
-          numFormatCopy.nationalPrefixFormattingRule = nationalPrefixFormattingRule;
+              nationalPrefixFormattingRule.replace(NP_STRING, nationalPrefix);
+          nationalPrefixFormattingRule = nationalPrefixFormattingRule.replace(FG_STRING, "$1");
+          numFormatCopy.setNationalPrefixFormattingRule(nationalPrefixFormattingRule);
         } else {
           // We don't want to have a rule for how to format the national prefix if there isn't one.
-          numFormatCopy.nationalPrefixFormattingRule = "";
+          numFormatCopy.clearNationalPrefixFormattingRule();
         }
       }
       formattedNumber.append(
@@ -1185,9 +1299,9 @@ public class PhoneNumberUtil {
    * @param number  the phone number to be formatted
    * @param carrierCode  the carrier selection code to be used
    * @return  the formatted phone number in national format for dialing using the carrier as
-   *          specified in the {@code carrierCode}
+   *     specified in the {@code carrierCode}
    */
-  public String formatNationalNumberWithCarrierCode(PhoneNumber number, String carrierCode) {
+  public String formatNationalNumberWithCarrierCode(PhoneNumber number, CharSequence carrierCode) {
     int countryCallingCode = number.getCountryCode();
     String nationalSignificantNumber = getNationalSignificantNumber(number);
     if (!hasValidCountryCallingCode(countryCallingCode)) {
@@ -1235,10 +1349,14 @@ public class PhoneNumberUtil {
    *     none is found
    */
   public String formatNationalNumberWithPreferredCarrierCode(PhoneNumber number,
-                                                             String fallbackCarrierCode) {
-    return formatNationalNumberWithCarrierCode(number, number.hasPreferredDomesticCarrierCode()
-                                                       ? number.getPreferredDomesticCarrierCode()
-                                                       : fallbackCarrierCode);
+                                                             CharSequence fallbackCarrierCode) {
+    return formatNationalNumberWithCarrierCode(number,
+        // Historically, we set this to an empty string when parsing with raw input if none was
+        // found in the input string. However, this doesn't result in a number we can dial. For this
+        // reason, we treat the empty string the same as if it isn't set at all.
+        number.getPreferredDomesticCarrierCode().length() > 0
+        ? number.getPreferredDomesticCarrierCode()
+        : fallbackCarrierCode);
   }
 
   /**
@@ -1268,14 +1386,17 @@ public class PhoneNumberUtil {
     boolean isValidNumber = (numberType != PhoneNumberType.UNKNOWN);
     if (regionCallingFrom.equals(regionCode)) {
       boolean isFixedLineOrMobile =
-          (numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE) ||
-          (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
+          (numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE)
+          || (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
       // Carrier codes may be needed in some countries. We handle this here.
       if (regionCode.equals("CO") && numberType == PhoneNumberType.FIXED_LINE) {
         formattedNumber =
             formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
       } else if (regionCode.equals("BR") && isFixedLineOrMobile) {
-        formattedNumber = numberNoExt.hasPreferredDomesticCarrierCode()
+        // Historically, we set this to an empty string when parsing with raw input if none was
+        // found in the input string. However, this doesn't result in a number we can dial. For this
+        // reason, we treat the empty string the same as if it isn't set at all.
+        formattedNumber = numberNoExt.getPreferredDomesticCarrierCode().length() > 0
             ? formattedNumber = formatNationalNumberWithPreferredCarrierCode(numberNoExt, "")
             // Brazilian fixed line and mobile numbers need to be dialed with a carrier code when
             // called within Brazil. Without that, most of the carriers won't connect the call.
@@ -1287,16 +1408,16 @@ public class PhoneNumberUtil {
         // dialing from a mobile phone, except for short numbers. As a result, we add it back here
         // if it is a valid regular length phone number.
         formattedNumber =
-            getNddPrefixForRegion(regionCode, true /* strip non-digits */) +
-            " " + format(numberNoExt, PhoneNumberFormat.NATIONAL);
+            getNddPrefixForRegion(regionCode, true /* strip non-digits */) + " "
+            + format(numberNoExt, PhoneNumberFormat.NATIONAL);
       } else if (countryCallingCode == NANPA_COUNTRY_CODE) {
         // For NANPA countries, we output international format for numbers that can be dialed
         // internationally, since that always works, except for numbers which might potentially be
         // short numbers, which are always dialled in national format.
         PhoneMetadata regionMetadata = getMetadataForRegion(regionCallingFrom);
-        if (canBeInternationallyDialled(numberNoExt) &&
-            !isShorterThanPossibleNormalNumber(regionMetadata,
-                getNationalSignificantNumber(numberNoExt))) {
+        if (canBeInternationallyDialled(numberNoExt)
+            && testNumberLength(getNationalSignificantNumber(numberNoExt), regionMetadata)
+                != ValidationResult.TOO_SHORT) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
         } else {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
@@ -1305,18 +1426,18 @@ public class PhoneNumberUtil {
         // For non-geographical countries, and Mexican and Chilean fixed line and mobile numbers, we
         // output international format for numbers that can be dialed internationally as that always
         // works.
-        if ((regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY) ||
-            // MX fixed line and mobile numbers should always be formatted in international format,
-            // even when dialed within MX. For national format to work, a carrier code needs to be
-            // used, and the correct carrier code depends on if the caller and callee are from the
-            // same local area. It is trickier to get that to work correctly than using
-            // international format, which is tested to work fine on all carriers.
-            // CL fixed line numbers need the national prefix when dialing in the national format,
-            // but don't have it when used for display. The reverse is true for mobile numbers.
-            // As a result, we output them in the international format to make it work.
-            ((regionCode.equals("MX") || regionCode.equals("CL")) &&
-             isFixedLineOrMobile)) &&
-            canBeInternationallyDialled(numberNoExt)) {
+        if ((regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY)
+             // MX fixed line and mobile numbers should always be formatted in international format,
+             // even when dialed within MX. For national format to work, a carrier code needs to be
+             // used, and the correct carrier code depends on if the caller and callee are from the
+             // same local area. It is trickier to get that to work correctly than using
+             // international format, which is tested to work fine on all carriers.
+             // CL fixed line numbers need the national prefix when dialing in the national format,
+             // but don't have it when used for display. The reverse is true for mobile numbers.  As
+             // a result, we output them in the international format to make it work.
+             || ((regionCode.equals("MX") || regionCode.equals("CL"))
+             && isFixedLineOrMobile))
+            && canBeInternationallyDialled(numberNoExt)) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
         } else {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
@@ -1346,8 +1467,8 @@ public class PhoneNumberUtil {
    * is used. For regions which have multiple international prefixes, the number in its
    * INTERNATIONAL format will be returned instead.
    *
-   * @param number               the phone number to be formatted
-   * @param regionCallingFrom    the region where the call is being placed
+   * @param number  the phone number to be formatted
+   * @param regionCallingFrom  the region where the call is being placed
    * @return  the formatted phone number
    */
   public String formatOutOfCountryCallingNumber(PhoneNumber number,
@@ -1381,16 +1502,16 @@ public class PhoneNumberUtil {
     }
     // Metadata cannot be null because we checked 'isValidRegionCode()' above.
     PhoneMetadata metadataForRegionCallingFrom = getMetadataForRegion(regionCallingFrom);
-    String internationalPrefix = metadataForRegionCallingFrom.internationalPrefix;
+    String internationalPrefix = metadataForRegionCallingFrom.getInternationalPrefix();
 
     // For regions that have multiple international prefixes, the international format of the
     // number is returned, unless there is a preferred international prefix.
     String internationalPrefixForFormatting = "";
-    if (UNIQUE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()) {
+    if (SINGLE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()) {
       internationalPrefixForFormatting = internationalPrefix;
-    } else if (!metadataForRegionCallingFrom.preferredInternationalPrefix.equals("")) {
+    } else if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
       internationalPrefixForFormatting =
-          metadataForRegionCallingFrom.preferredInternationalPrefix;
+          metadataForRegionCallingFrom.getPreferredInternationalPrefix();
     }
 
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
@@ -1417,9 +1538,8 @@ public class PhoneNumberUtil {
    * Formats a phone number using the original phone number format that the number is parsed from.
    * The original format is embedded in the country_code_source field of the PhoneNumber object
    * passed in. If such information is missing, the number will be formatted into the NATIONAL
-   * format by default. When the number contains a leading zero and this is unexpected for this
-   * country, or we don't have a formatting pattern for the number, the method returns the raw input
-   * when it is available.
+   * format by default. When we don't have a formatting pattern for the number, the method returns
+   * the raw input when it is available.
    *
    * Note this method guarantees no digit will be inserted, removed or modified as a result of
    * formatting.
@@ -1430,8 +1550,7 @@ public class PhoneNumberUtil {
    * @return  the formatted phone number in its original number format
    */
   public String formatInOriginalFormat(PhoneNumber number, String regionCallingFrom) {
-    if (number.hasRawInput() &&
-        (hasUnexpectedItalianLeadingZero(number) || !hasFormattingPatternForNumber(number))) {
+    if (number.hasRawInput() && !hasFormattingPatternForNumber(number)) {
       // We check if we have the formatting pattern because without that, we might format the number
       // as a group without national prefix.
       return number.getRawInput();
@@ -1476,7 +1595,7 @@ public class PhoneNumberUtil {
         PhoneMetadata metadata = getMetadataForRegion(regionCode);
         String nationalNumber = getNationalSignificantNumber(number);
         NumberFormat formatRule =
-            chooseFormattingPatternForNumber(metadata.numberFormat, nationalNumber);
+            chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
         // The format rule could still be null here if the national number was 0 and there was no
         // raw input (this should not be possible for numbers generated by the phonenumber library
         // as they would also not have a country calling code and we would have exited earlier).
@@ -1488,7 +1607,7 @@ public class PhoneNumberUtil {
         // return the national format.
         // TODO: Refactor the code below with the code in
         // isNationalPrefixPresentIfRequired.
-        String candidateNationalPrefixRule = formatRule.nationalPrefixFormattingRule;
+        String candidateNationalPrefixRule = formatRule.getNationalPrefixFormattingRule();
         // We assume that the first-group symbol will never be _before_ the national prefix.
         int indexOfFirstGroup = candidateNationalPrefixRule.indexOf("$1");
         if (indexOfFirstGroup <= 0) {
@@ -1504,8 +1623,9 @@ public class PhoneNumberUtil {
           break;
         }
         // Otherwise, we need to remove the national prefix from our output.
-        NumberFormat numFormatCopy = copyNumberFormat(formatRule);
-        numFormatCopy.nationalPrefixFormattingRule = "";
+        NumberFormat.Builder numFormatCopy =  NumberFormat.newBuilder();
+        numFormatCopy.mergeFrom(formatRule);
+        numFormatCopy.clearNationalPrefixFormattingRule();
         List<NumberFormat> numberFormats = new ArrayList<NumberFormat>(1);
         numberFormats.add(numFormatCopy);
         formattedNumber = formatByPattern(number, PhoneNumberFormat.NATIONAL, numberFormats);
@@ -1544,14 +1664,6 @@ public class PhoneNumberUtil {
     return false;
   }
 
-  /**
-   * Returns true if a number is from a region whose national significant number couldn't contain a
-   * leading zero, but has the italian_leading_zero field set to true.
-   */
-  private boolean hasUnexpectedItalianLeadingZero(PhoneNumber number) {
-    return number.isItalianLeadingZero() && !isLeadingZeroPossible(number.getCountryCode());
-  }
-
   private boolean hasFormattingPatternForNumber(PhoneNumber number) {
     int countryCallingCode = number.getCountryCode();
     String phoneNumberRegion = getRegionCodeForCountryCode(countryCallingCode);
@@ -1562,7 +1674,7 @@ public class PhoneNumberUtil {
     }
     String nationalNumber = getNationalSignificantNumber(number);
     NumberFormat formatRule =
-        chooseFormattingPatternForNumber(metadata.numberFormat, nationalNumber);
+        chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
     return formatRule != null;
   }
 
@@ -1623,20 +1735,21 @@ public class PhoneNumberUtil {
       if (isNANPACountry(regionCallingFrom)) {
         return countryCode + " " + rawInput;
       }
-    } else if (metadataForRegionCallingFrom != null &&
-               countryCode == getCountryCodeForValidRegion(regionCallingFrom)) {
+    } else if (metadataForRegionCallingFrom != null
+        && countryCode == getCountryCodeForValidRegion(regionCallingFrom)) {
       NumberFormat formattingPattern =
-          chooseFormattingPatternForNumber(metadataForRegionCallingFrom.numberFormat,
+          chooseFormattingPatternForNumber(metadataForRegionCallingFrom.numberFormats(),
                                            nationalNumber);
       if (formattingPattern == null) {
         // If no pattern above is matched, we format the original input.
         return rawInput;
       }
-      NumberFormat newFormat = copyNumberFormat(formattingPattern);
+      NumberFormat.Builder newFormat = NumberFormat.newBuilder();
+      newFormat.mergeFrom(formattingPattern);
       // The first group is the first group of digits that the user wrote together.
-      newFormat.pattern = "(\\d+)(.*)";
+      newFormat.setPattern("(\\d+)(.*)");
       // Here we just concatenate them back together after the national prefix has been fixed.
-      newFormat.format = "$1$2";
+      newFormat.setFormat("$1$2");
       // Now we format using this pattern instead of the default pattern, but with the national
       // prefix prefixed if necessary.
       // This will not work in the cases where the pattern (and not the leading digits) decide
@@ -1649,11 +1762,11 @@ public class PhoneNumberUtil {
     // prefixes, the international format of the number is returned, unless there is a preferred
     // international prefix.
     if (metadataForRegionCallingFrom != null) {
-      String internationalPrefix = metadataForRegionCallingFrom.internationalPrefix;
+      String internationalPrefix = metadataForRegionCallingFrom.getInternationalPrefix();
       internationalPrefixForFormatting =
-          UNIQUE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()
+          SINGLE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()
           ? internationalPrefix
-          : metadataForRegionCallingFrom.preferredInternationalPrefix;
+          : metadataForRegionCallingFrom.getPreferredInternationalPrefix();
     }
     StringBuilder formattedNumber = new StringBuilder(rawInput);
     String regionCode = getRegionCodeForCountryCode(countryCode);
@@ -1681,7 +1794,7 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Gets the national significant number of the a phone number. Note a national significant number
+   * Gets the national significant number of a phone number. Note a national significant number
    * doesn't contain a national prefix or any formatting.
    *
    * @param number  the phone number for which the national significant number is needed
@@ -1690,7 +1803,7 @@ public class PhoneNumberUtil {
   public String getNationalSignificantNumber(PhoneNumber number) {
     // If leading zero(s) have been set, we prefix this now. Note this is not a national prefix.
     StringBuilder nationalNumber = new StringBuilder();
-    if (number.isItalianLeadingZero()) {
+    if (number.isItalianLeadingZero() && number.getNumberOfLeadingZeros() > 0) {
       char[] zeros = new char[number.getNumberOfLeadingZeros()];
       Arrays.fill(zeros, '0');
       nationalNumber.append(new String(zeros));
@@ -1734,28 +1847,28 @@ public class PhoneNumberUtil {
   private String formatNsn(String number,
                            PhoneMetadata metadata,
                            PhoneNumberFormat numberFormat,
-                           String carrierCode) {
-    NumberFormat[] intlNumberFormats = metadata.intlNumberFormat;
+                           CharSequence carrierCode) {
+    List<NumberFormat> intlNumberFormats = metadata.intlNumberFormats();
     // When the intlNumberFormats exists, we use that to format national number for the
     // INTERNATIONAL format instead of using the numberDesc.numberFormats.
-    NumberFormat[] availableFormats =
-        (intlNumberFormats.length == 0 || numberFormat == PhoneNumberFormat.NATIONAL)
-        ? metadata.numberFormat
-        : metadata.intlNumberFormat;
+    List<NumberFormat> availableFormats =
+        (intlNumberFormats.size() == 0 || numberFormat == PhoneNumberFormat.NATIONAL)
+        ? metadata.numberFormats()
+        : metadata.intlNumberFormats();
     NumberFormat formattingPattern = chooseFormattingPatternForNumber(availableFormats, number);
     return (formattingPattern == null)
         ? number
         : formatNsnUsingPattern(number, formattingPattern, numberFormat, carrierCode);
   }
 
-  NumberFormat chooseFormattingPatternForNumber(NumberFormat[] availableFormats,
+  NumberFormat chooseFormattingPatternForNumber(List<NumberFormat> availableFormats,
                                                 String nationalNumber) {
     for (NumberFormat numFormat : availableFormats) {
-      int size = numFormat.leadingDigitsPattern.length;
+      int size = numFormat.leadingDigitsPatternSize();
       if (size == 0 || regexCache.getPatternForRegex(
               // We always use the last leading_digits_pattern, as it is the most detailed.
-              numFormat.leadingDigitsPattern[size - 1]).matcher(nationalNumber).lookingAt()) {
-        Matcher m = regexCache.getPatternForRegex(numFormat.pattern).matcher(nationalNumber);
+              numFormat.getLeadingDigitsPattern(size - 1)).matcher(nationalNumber).lookingAt()) {
+        Matcher m = regexCache.getPatternForRegex(numFormat.getPattern()).matcher(nationalNumber);
         if (m.matches()) {
           return numFormat;
         }
@@ -1776,18 +1889,17 @@ public class PhoneNumberUtil {
   private String formatNsnUsingPattern(String nationalNumber,
                                        NumberFormat formattingPattern,
                                        PhoneNumberFormat numberFormat,
-                                       String carrierCode) {
-    String numberFormatRule = formattingPattern.format;
+                                       CharSequence carrierCode) {
+    String numberFormatRule = formattingPattern.getFormat();
     Matcher m =
-        regexCache.getPatternForRegex(formattingPattern.pattern).matcher(nationalNumber);
+        regexCache.getPatternForRegex(formattingPattern.getPattern()).matcher(nationalNumber);
     String formattedNationalNumber = "";
-    if (numberFormat == PhoneNumberFormat.NATIONAL &&
-        carrierCode != null && carrierCode.length() > 0 &&
-        formattingPattern.domesticCarrierCodeFormattingRule.length() > 0) {
+    if (numberFormat == PhoneNumberFormat.NATIONAL
+        && carrierCode != null && carrierCode.length() > 0
+        && formattingPattern.getDomesticCarrierCodeFormattingRule().length() > 0) {
       // Replace the $CC in the formatting rule with the desired carrier code.
-      String carrierCodeFormattingRule = formattingPattern.domesticCarrierCodeFormattingRule;
-      carrierCodeFormattingRule =
-          CC_PATTERN.matcher(carrierCodeFormattingRule).replaceFirst(carrierCode);
+      String carrierCodeFormattingRule = formattingPattern.getDomesticCarrierCodeFormattingRule();
+      carrierCodeFormattingRule = carrierCodeFormattingRule.replace(CC_STRING, carrierCode);
       // Now replace the $FG in the formatting rule with the first group and the carrier code
       // combined in the appropriate way.
       numberFormatRule = FIRST_GROUP_PATTERN.matcher(numberFormatRule)
@@ -1795,10 +1907,10 @@ public class PhoneNumberUtil {
       formattedNationalNumber = m.replaceAll(numberFormatRule);
     } else {
       // Use the national prefix formatting rule instead.
-      String nationalPrefixFormattingRule = formattingPattern.nationalPrefixFormattingRule;
-      if (numberFormat == PhoneNumberFormat.NATIONAL &&
-          nationalPrefixFormattingRule != null &&
-          nationalPrefixFormattingRule.length() > 0) {
+      String nationalPrefixFormattingRule = formattingPattern.getNationalPrefixFormattingRule();
+      if (numberFormat == PhoneNumberFormat.NATIONAL
+          && nationalPrefixFormattingRule != null
+          && nationalPrefixFormattingRule.length() > 0) {
         Matcher firstGroupMatcher = FIRST_GROUP_PATTERN.matcher(numberFormatRule);
         formattedNationalNumber =
             m.replaceAll(firstGroupMatcher.replaceFirst(nationalPrefixFormattingRule));
@@ -1852,11 +1964,11 @@ public class PhoneNumberUtil {
     // invalid number.
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode),
         PhoneNumberType.FIXED_LINE);
-    if (desc.exampleNumber.equals("")) {
+    if (!desc.hasExampleNumber()) {
       // This shouldn't happen; we have a test for this.
       return null;
     }
-    String exampleNumber = desc.exampleNumber;
+    String exampleNumber = desc.getExampleNumber();
     // Try and make the number invalid. We do this by changing the length. We try reducing the
     // length of the number, since currently no region has a number that is the same length as
     // MIN_LENGTH_FOR_NSN. This is probably quicker than making the number longer, which is another
@@ -1904,8 +2016,8 @@ public class PhoneNumberUtil {
     }
     PhoneNumberDesc desc = getNumberDescByType(getMetadataForRegion(regionCode), type);
     try {
-      if (!desc.exampleNumber.equals("")) {
-        return parse(desc.exampleNumber, regionCode);
+      if (desc.hasExampleNumber()) {
+        return parse(desc.getExampleNumber(), regionCode);
       }
     } catch (NumberParseException e) {
       logger.log(Level.SEVERE, e.toString());
@@ -1933,8 +2045,8 @@ public class PhoneNumberUtil {
       PhoneNumberDesc desc = getNumberDescByType(
           getMetadataForNonGeographicalRegion(countryCallingCode), type);
       try {
-        if (!desc.exampleNumber.equals("")) {
-          return parse("+" + countryCallingCode + desc.exampleNumber, UNKNOWN_REGION);
+        if (desc.hasExampleNumber()) {
+          return parse("+" + countryCallingCode + desc.getExampleNumber(), UNKNOWN_REGION);
         }
       } catch (NumberParseException e) {
         logger.log(Level.SEVERE, e.toString());
@@ -1955,13 +2067,20 @@ public class PhoneNumberUtil {
   public PhoneNumber getExampleNumberForNonGeoEntity(int countryCallingCode) {
     PhoneMetadata metadata = getMetadataForNonGeographicalRegion(countryCallingCode);
     if (metadata != null) {
-      PhoneNumberDesc desc = metadata.generalDesc;
-      try {
-        if (!desc.exampleNumber.equals("")) {
-          return parse("+" + countryCallingCode + desc.exampleNumber, UNKNOWN_REGION);
+      // For geographical entities, fixed-line data is always present. However, for non-geographical
+      // entities, this is not the case, so we have to go through different types to find the
+      // example number. We don't check fixed-line or personal number since they aren't used by
+      // non-geographical entities (if this changes, a unit-test will catch this.)
+      for (PhoneNumberDesc desc : Arrays.asList(metadata.getMobile(), metadata.getTollFree(),
+               metadata.getSharedCost(), metadata.getVoip(), metadata.getVoicemail(),
+               metadata.getUan(), metadata.getPremiumRate())) {
+        try {
+          if (desc != null && desc.hasExampleNumber()) {
+            return parse("+" + countryCallingCode + desc.getExampleNumber(), UNKNOWN_REGION);
+          }
+        } catch (NumberParseException e) {
+          logger.log(Level.SEVERE, e.toString());
         }
-      } catch (NumberParseException e) {
-        logger.log(Level.SEVERE, e.toString());
       }
     } else {
       logger.log(Level.WARNING,
@@ -1981,8 +2100,8 @@ public class PhoneNumberUtil {
       if (numberFormat == PhoneNumberFormat.RFC3966) {
         formattedNumber.append(RFC3966_EXTN_PREFIX).append(number.getExtension());
       } else {
-        if (!metadata.preferredExtnPrefix.equals("")) {
-          formattedNumber.append(metadata.preferredExtnPrefix).append(number.getExtension());
+        if (metadata.hasPreferredExtnPrefix()) {
+          formattedNumber.append(metadata.getPreferredExtnPrefix()).append(number.getExtension());
         } else {
           formattedNumber.append(DEFAULT_EXTN_PREFIX).append(number.getExtension());
         }
@@ -1993,36 +2112,36 @@ public class PhoneNumberUtil {
   PhoneNumberDesc getNumberDescByType(PhoneMetadata metadata, PhoneNumberType type) {
     switch (type) {
       case PREMIUM_RATE:
-        return metadata.premiumRate;
+        return metadata.getPremiumRate();
       case TOLL_FREE:
-        return metadata.tollFree;
+        return metadata.getTollFree();
       case MOBILE:
-        return metadata.mobile;
+        return metadata.getMobile();
       case FIXED_LINE:
       case FIXED_LINE_OR_MOBILE:
-        return metadata.fixedLine;
+        return metadata.getFixedLine();
       case SHARED_COST:
-        return metadata.sharedCost;
+        return metadata.getSharedCost();
       case VOIP:
-        return metadata.voip;
+        return metadata.getVoip();
       case PERSONAL_NUMBER:
-        return metadata.personalNumber;
+        return metadata.getPersonalNumber();
       case PAGER:
-        return metadata.pager;
+        return metadata.getPager();
       case UAN:
-        return metadata.uan;
+        return metadata.getUan();
       case VOICEMAIL:
-        return metadata.voicemail;
+        return metadata.getVoicemail();
       default:
-        return metadata.generalDesc;
+        return metadata.getGeneralDesc();
     }
   }
 
   /**
-   * Gets the type of a phone number.
+   * Gets the type of a valid phone number.
    *
    * @param number  the phone number that we want to know the type
-   * @return  the type of the phone number
+   * @return  the type of the phone number, or UNKNOWN if it is invalid
    */
   public PhoneNumberType getNumberType(PhoneNumber number) {
     String regionCode = getRegionCodeForNumber(number);
@@ -2035,48 +2154,48 @@ public class PhoneNumberUtil {
   }
 
   private PhoneNumberType getNumberTypeHelper(String nationalNumber, PhoneMetadata metadata) {
-    if (!isNumberMatchingDesc(nationalNumber, metadata.generalDesc)) {
+    if (!isNumberMatchingDesc(nationalNumber, metadata.getGeneralDesc())) {
       return PhoneNumberType.UNKNOWN;
     }
 
-    if (isNumberMatchingDesc(nationalNumber, metadata.premiumRate)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getPremiumRate())) {
       return PhoneNumberType.PREMIUM_RATE;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.tollFree)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getTollFree())) {
       return PhoneNumberType.TOLL_FREE;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.sharedCost)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getSharedCost())) {
       return PhoneNumberType.SHARED_COST;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.voip)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getVoip())) {
       return PhoneNumberType.VOIP;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.personalNumber)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getPersonalNumber())) {
       return PhoneNumberType.PERSONAL_NUMBER;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.pager)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getPager())) {
       return PhoneNumberType.PAGER;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.uan)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getUan())) {
       return PhoneNumberType.UAN;
     }
-    if (isNumberMatchingDesc(nationalNumber, metadata.voicemail)) {
+    if (isNumberMatchingDesc(nationalNumber, metadata.getVoicemail())) {
       return PhoneNumberType.VOICEMAIL;
     }
 
-    boolean isFixedLine = isNumberMatchingDesc(nationalNumber, metadata.fixedLine);
+    boolean isFixedLine = isNumberMatchingDesc(nationalNumber, metadata.getFixedLine());
     if (isFixedLine) {
-      if (metadata.sameMobileAndFixedLinePattern) {
+      if (metadata.getSameMobileAndFixedLinePattern()) {
         return PhoneNumberType.FIXED_LINE_OR_MOBILE;
-      } else if (isNumberMatchingDesc(nationalNumber, metadata.mobile)) {
+      } else if (isNumberMatchingDesc(nationalNumber, metadata.getMobile())) {
         return PhoneNumberType.FIXED_LINE_OR_MOBILE;
       }
       return PhoneNumberType.FIXED_LINE;
     }
     // Otherwise, test to see if the number is mobile. Only do this if certain that the patterns for
     // mobile and fixed line aren't the same.
-    if (!metadata.sameMobileAndFixedLinePattern &&
-        isNumberMatchingDesc(nationalNumber, metadata.mobile)) {
+    if (!metadata.getSameMobileAndFixedLinePattern()
+        && isNumberMatchingDesc(nationalNumber, metadata.getMobile())) {
       return PhoneNumberType.MOBILE;
     }
     return PhoneNumberType.UNKNOWN;
@@ -2100,26 +2219,27 @@ public class PhoneNumberUtil {
     return metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
   }
 
-  boolean isNumberPossibleForDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
-    Matcher possibleNumberPatternMatcher =
-        regexCache.getPatternForRegex(numberDesc.possibleNumberPattern)
-            .matcher(nationalNumber);
-    return possibleNumberPatternMatcher.matches();
-  }
-
   boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
-    Matcher nationalNumberPatternMatcher =
-        regexCache.getPatternForRegex(numberDesc.nationalNumberPattern)
-            .matcher(nationalNumber);
-    return isNumberPossibleForDesc(nationalNumber, numberDesc) &&
-        nationalNumberPatternMatcher.matches();
+    // Check if any possible number lengths are present; if so, we use them to avoid checking the
+    // validation pattern if they don't match. If they are absent, this means they match the general
+    // description, which we have already checked before checking a specific number type.
+    int actualLength = nationalNumber.length();
+    List<Integer> possibleLengths = numberDesc.getPossibleLengthList();
+    if (possibleLengths.size() > 0 && !possibleLengths.contains(actualLength)) {
+      return false;
+    }
+    return matcherApi.matchNationalNumber(nationalNumber, numberDesc, false);
   }
 
   /**
    * Tests whether a phone number matches a valid pattern. Note this doesn't verify the number
-   * is actually in use, which is impossible to tell by just looking at a number itself.
+   * is actually in use, which is impossible to tell by just looking at a number itself. It only
+   * verifies whether the parsed, canonicalised number is valid: not whether a particular series of
+   * digits entered by the user is diallable from the region provided when parsing. For example, the
+   * number +41 (0) 78 927 2696 can be parsed into a number with country code "41" and national
+   * significant number "789272696". This is valid, while the original string is not diallable.
    *
-   * @param number       the phone number that we want to validate
+   * @param number  the phone number that we want to validate
    * @return  a boolean that indicates whether the number is of a valid pattern
    */
   public boolean isValidNumber(PhoneNumber number) {
@@ -2139,16 +2259,16 @@ public class PhoneNumberUtil {
    * the region "GB" (United Kingdom), since it has its own region code, "IM", which may be
    * undesirable.
    *
-   * @param number       the phone number that we want to validate
-   * @param regionCode   the region that we want to validate the phone number for
+   * @param number  the phone number that we want to validate
+   * @param regionCode  the region that we want to validate the phone number for
    * @return  a boolean that indicates whether the number is of a valid pattern
    */
   public boolean isValidNumberForRegion(PhoneNumber number, String regionCode) {
     int countryCode = number.getCountryCode();
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    if ((metadata == null) ||
-        (!REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode) &&
-         countryCode != getCountryCodeForValidRegion(regionCode))) {
+    if ((metadata == null)
+        || (!REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode)
+         && countryCode != getCountryCodeForValidRegion(regionCode))) {
       // Either the region code was invalid, or the country calling code for this number does not
       // match that of the region code.
       return false;
@@ -2159,7 +2279,8 @@ public class PhoneNumberUtil {
 
   /**
    * Returns the region where a phone number is from. This could be used for geocoding at the region
-   * level.
+   * level. Only guarantees correct results for valid, full numbers (not short-codes, or invalid
+   * numbers).
    *
    * @param number  the phone number whose origin we want to know
    * @return  the region where the phone number is from, or null if no region matches this calling
@@ -2169,9 +2290,7 @@ public class PhoneNumberUtil {
     int countryCode = number.getCountryCode();
     List<String> regions = countryCallingCodeToRegionCodeMap.get(countryCode);
     if (regions == null) {
-      String numberString = getNationalSignificantNumber(number);
-      logger.log(Level.INFO,
-                 "Missing/invalid country_code (" + countryCode + ") for number " + numberString);
+      logger.log(Level.INFO, "Missing/invalid country_code (" + countryCode + ")");
       return null;
     }
     if (regions.size() == 1) {
@@ -2188,8 +2307,8 @@ public class PhoneNumberUtil {
       // If leadingDigits is present, use this. Otherwise, do full validation.
       // Metadata cannot be null because the region codes come from the country calling code map.
       PhoneMetadata metadata = getMetadataForRegion(regionCode);
-      if (!metadata.leadingDigits.equals("")) {
-        if (regexCache.getPatternForRegex(metadata.leadingDigits)
+      if (metadata.hasLeadingDigits()) {
+        if (regexCache.getPatternForRegex(metadata.getLeadingDigits())
                 .matcher(nationalNumber).lookingAt()) {
           return regionCode;
         }
@@ -2255,7 +2374,7 @@ public class PhoneNumberUtil {
     if (metadata == null) {
       throw new IllegalArgumentException("Invalid region code: " + regionCode);
     }
-    return metadata.countryCode;
+    return metadata.getCountryCode();
   }
 
   /**
@@ -2281,7 +2400,7 @@ public class PhoneNumberUtil {
                   + ") provided.");
       return null;
     }
-    String nationalPrefix = metadata.nationalPrefix;
+    String nationalPrefix = metadata.getNationalPrefix();
     // If no national prefix was found, we return null.
     if (nationalPrefix.length() == 0) {
       return null;
@@ -2304,21 +2423,6 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Checks whether the country calling code is from a region whose national significant number
-   * could contain a leading zero. An example of such a region is Italy. Returns false if no
-   * metadata for the country is found.
-   */
-  boolean isLeadingZeroPossible(int countryCallingCode) {
-    PhoneMetadata mainMetadataForCallingCode =
-        getMetadataForRegionOrCallingCode(countryCallingCode,
-                                          getRegionCodeForCountryCode(countryCallingCode));
-    if (mainMetadataForCallingCode == null) {
-      return false;
-    }
-    return mainMetadataForCallingCode.leadingZeroPossible;
-  }
-
-  /**
    * Checks if the number is a valid vanity (alpha) number such as 800 MICROSOFT. A valid vanity
    * number will start with at least 3 digits and will have three or more alpha characters. This
    * does not do region-specific checks - to work out if this number is actually valid for a region,
@@ -2328,7 +2432,7 @@ public class PhoneNumberUtil {
    * @param number  the number that needs to be checked
    * @return  true if the number is a valid vanity number
    */
-  public boolean isAlphaNumber(String number) {
+  public boolean isAlphaNumber(CharSequence number) {
     if (!isViablePhoneNumber(number)) {
       // Number is too short, or doesn't match the basic phone number pattern.
       return false;
@@ -2340,80 +2444,190 @@ public class PhoneNumberUtil {
 
   /**
    * Convenience wrapper around {@link #isPossibleNumberWithReason}. Instead of returning the reason
-   * for failure, this method returns a boolean value.
+   * for failure, this method returns true if the number is either a possible fully-qualified number
+   * (containing the area code and country code), or if the number could be a possible local number
+   * (with a country code, but missing an area code). Local numbers are considered possible if they
+   * could be possibly dialled in this format: if the area code is needed for a call to connect, the
+   * number is not considered possible without it.
+   *
    * @param number  the number that needs to be checked
    * @return  true if the number is possible
    */
   public boolean isPossibleNumber(PhoneNumber number) {
-    return isPossibleNumberWithReason(number) == ValidationResult.IS_POSSIBLE;
+    ValidationResult result = isPossibleNumberWithReason(number);
+    return result == ValidationResult.IS_POSSIBLE
+        || result == ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
   }
 
   /**
-   * Helper method to check a number against a particular pattern and determine whether it matches,
-   * or is too short or too long. Currently, if a number pattern suggests that numbers of length 7
-   * and 10 are possible, and a number in between these possible lengths is entered, such as of
-   * length 8, this will return TOO_LONG.
+   * Convenience wrapper around {@link #isPossibleNumberForTypeWithReason}. Instead of returning the
+   * reason for failure, this method returns true if the number is either a possible fully-qualified
+   * number (containing the area code and country code), or if the number could be a possible local
+   * number (with a country code, but missing an area code). Local numbers are considered possible
+   * if they could be possibly dialled in this format: if the area code is needed for a call to
+   * connect, the number is not considered possible without it.
+   *
+   * @param number  the number that needs to be checked
+   * @param type  the type we are interested in
+   * @return  true if the number is possible for this particular type
    */
-  private ValidationResult testNumberLengthAgainstPattern(Pattern numberPattern, String number) {
-    Matcher numberMatcher = numberPattern.matcher(number);
-    if (numberMatcher.matches()) {
+  public boolean isPossibleNumberForType(PhoneNumber number, PhoneNumberType type) {
+    ValidationResult result = isPossibleNumberForTypeWithReason(number, type);
+    return result == ValidationResult.IS_POSSIBLE
+        || result == ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
+  }
+
+  /**
+   * Helper method to check a number against possible lengths for this region, based on the metadata
+   * being passed in, and determine whether it matches, or is too short or too long.
+   */
+  private ValidationResult testNumberLength(CharSequence number, PhoneMetadata metadata) {
+    return testNumberLength(number, metadata, PhoneNumberType.UNKNOWN);
+  }
+
+  /**
+   * Helper method to check a number against possible lengths for this number type, and determine
+   * whether it matches, or is too short or too long.
+   */
+  private ValidationResult testNumberLength(
+      CharSequence number, PhoneMetadata metadata, PhoneNumberType type) {
+    PhoneNumberDesc descForType = getNumberDescByType(metadata, type);
+    // There should always be "possibleLengths" set for every element. This is declared in the XML
+    // schema which is verified by PhoneNumberMetadataSchemaTest.
+    // For size efficiency, where a sub-description (e.g. fixed-line) has the same possibleLengths
+    // as the parent, this is missing, so we fall back to the general desc (where no numbers of the
+    // type exist at all, there is one possible length (-1) which is guaranteed not to match the
+    // length of any real phone number).
+    List<Integer> possibleLengths = descForType.getPossibleLengthList().isEmpty()
+        ? metadata.getGeneralDesc().getPossibleLengthList() : descForType.getPossibleLengthList();
+
+    List<Integer> localLengths = descForType.getPossibleLengthLocalOnlyList();
+
+    if (type == PhoneNumberType.FIXED_LINE_OR_MOBILE) {
+      if (!descHasPossibleNumberData(getNumberDescByType(metadata, PhoneNumberType.FIXED_LINE))) {
+        // The rare case has been encountered where no fixedLine data is available (true for some
+        // non-geographical entities), so we just check mobile.
+        return testNumberLength(number, metadata, PhoneNumberType.MOBILE);
+      } else {
+        PhoneNumberDesc mobileDesc = getNumberDescByType(metadata, PhoneNumberType.MOBILE);
+        if (descHasPossibleNumberData(mobileDesc)) {
+          // Merge the mobile data in if there was any. We have to make a copy to do this.
+          possibleLengths = new ArrayList<Integer>(possibleLengths);
+          // Note that when adding the possible lengths from mobile, we have to again check they
+          // aren't empty since if they are this indicates they are the same as the general desc and
+          // should be obtained from there.
+          possibleLengths.addAll(mobileDesc.getPossibleLengthList().size() == 0
+              ? metadata.getGeneralDesc().getPossibleLengthList()
+              : mobileDesc.getPossibleLengthList());
+          // The current list is sorted; we need to merge in the new list and re-sort (duplicates
+          // are okay). Sorting isn't so expensive because the lists are very small.
+          Collections.sort(possibleLengths);
+
+          if (localLengths.isEmpty()) {
+            localLengths = mobileDesc.getPossibleLengthLocalOnlyList();
+          } else {
+            localLengths = new ArrayList<Integer>(localLengths);
+            localLengths.addAll(mobileDesc.getPossibleLengthLocalOnlyList());
+            Collections.sort(localLengths);
+          }
+        }
+      }
+    }
+
+    // If the type is not supported at all (indicated by the possible lengths containing -1 at this
+    // point) we return invalid length.
+    if (possibleLengths.get(0) == -1) {
+      return ValidationResult.INVALID_LENGTH;
+    }
+
+    int actualLength = number.length();
+    // This is safe because there is never an overlap beween the possible lengths and the local-only
+    // lengths; this is checked at build time.
+    if (localLengths.contains(actualLength)) {
+      return ValidationResult.IS_POSSIBLE_LOCAL_ONLY;
+    }
+
+    int minimumLength = possibleLengths.get(0);
+    if (minimumLength == actualLength) {
       return ValidationResult.IS_POSSIBLE;
-    }
-    if (numberMatcher.lookingAt()) {
-      return ValidationResult.TOO_LONG;
-    } else {
+    } else if (minimumLength > actualLength) {
       return ValidationResult.TOO_SHORT;
+    } else if (possibleLengths.get(possibleLengths.size() - 1) < actualLength) {
+      return ValidationResult.TOO_LONG;
     }
-  }
-
-  /**
-   * Helper method to check whether a number is too short to be a regular length phone number in a
-   * region.
-   */
-  private boolean isShorterThanPossibleNormalNumber(PhoneMetadata regionMetadata, String number) {
-    Pattern possibleNumberPattern = regexCache.getPatternForRegex(
-        regionMetadata.generalDesc.possibleNumberPattern);
-    return testNumberLengthAgainstPattern(possibleNumberPattern, number) ==
-        ValidationResult.TOO_SHORT;
+    // We skip the first element; we've already checked it.
+    return possibleLengths.subList(1, possibleLengths.size()).contains(actualLength)
+        ? ValidationResult.IS_POSSIBLE : ValidationResult.INVALID_LENGTH;
   }
 
   /**
    * Check whether a phone number is a possible number. It provides a more lenient check than
    * {@link #isValidNumber} in the following sense:
-   *<ol>
-   * <li> It only checks the length of phone numbers. In particular, it doesn't check starting
-   *      digits of the number.
-   * <li> It doesn't attempt to figure out the type of the number, but uses general rules which
-   *      applies to all types of phone numbers in a region. Therefore, it is much faster than
-   *      isValidNumber.
-   * <li> For fixed line numbers, many regions have the concept of area code, which together with
-   *      subscriber number constitute the national significant number. It is sometimes okay to dial
-   *      the subscriber number only when dialing in the same area. This function will return
-   *      true if the subscriber-number-only version is passed in. On the other hand, because
-   *      isValidNumber validates using information on both starting digits (for fixed line
-   *      numbers, that would most likely be area codes) and length (obviously includes the
-   *      length of area codes for fixed line numbers), it will return false for the
-   *      subscriber-number-only version.
+   * <ol>
+   *   <li> It only checks the length of phone numbers. In particular, it doesn't check starting
+   *        digits of the number.
+   *   <li> It doesn't attempt to figure out the type of the number, but uses general rules which
+   *        applies to all types of phone numbers in a region. Therefore, it is much faster than
+   *        isValidNumber.
+   *   <li> For some numbers (particularly fixed-line), many regions have the concept of area code,
+   *        which together with subscriber number constitute the national significant number. It is
+   *        sometimes okay to dial only the subscriber number when dialing in the same area. This
+   *        function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+   *        passed in. On the other hand, because isValidNumber validates using information on both
+   *        starting digits (for fixed line numbers, that would most likely be area codes) and
+   *        length (obviously includes the length of area codes for fixed line numbers), it will
+   *        return false for the subscriber-number-only version.
    * </ol>
    * @param number  the number that needs to be checked
    * @return  a ValidationResult object which indicates whether the number is possible
    */
   public ValidationResult isPossibleNumberWithReason(PhoneNumber number) {
+    return isPossibleNumberForTypeWithReason(number, PhoneNumberType.UNKNOWN);
+  }
+
+  /**
+   * Check whether a phone number is a possible number of a particular type. For types that don't
+   * exist in a particular region, this will return a result that isn't so useful; it is recommended
+   * that you use {@link #getSupportedTypesForRegion} or {@link #getSupportedTypesForNonGeoEntity}
+   * respectively before calling this method to determine whether you should call it for this number
+   * at all.
+   *
+   * This provides a more lenient check than {@link #isValidNumber} in the following sense:
+   *
+   * <ol>
+   *   <li> It only checks the length of phone numbers. In particular, it doesn't check starting
+   *        digits of the number.
+   *   <li> For some numbers (particularly fixed-line), many regions have the concept of area code,
+   *        which together with subscriber number constitute the national significant number. It is
+   *        sometimes okay to dial only the subscriber number when dialing in the same area. This
+   *        function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+   *        passed in. On the other hand, because isValidNumber validates using information on both
+   *        starting digits (for fixed line numbers, that would most likely be area codes) and
+   *        length (obviously includes the length of area codes for fixed line numbers), it will
+   *        return false for the subscriber-number-only version.
+   * </ol>
+   *
+   * @param number  the number that needs to be checked
+   * @param type  the type we are interested in
+   * @return  a ValidationResult object which indicates whether the number is possible
+   */
+  public ValidationResult isPossibleNumberForTypeWithReason(
+      PhoneNumber number, PhoneNumberType type) {
     String nationalNumber = getNationalSignificantNumber(number);
     int countryCode = number.getCountryCode();
-    // Note: For Russian Fed and NANPA numbers, we just use the rules from the default region (US or
-    // Russia) since the getRegionCodeForNumber will not work if the number is possible but not
-    // valid. This would need to be revisited if the possible number pattern ever differed between
-    // various regions within those plans.
+    // Note: For regions that share a country calling code, like NANPA numbers, we just use the
+    // rules from the default region (US in this case) since the getRegionCodeForNumber will not
+    // work if the number is possible but not valid. There is in fact one country calling code (290)
+    // where the possible number pattern differs between various regions (Saint Helena and Tristan
+    // da Cuñha), but this is handled by putting all possible lengths for any country with this
+    // country calling code in the metadata for the default region in this case.
     if (!hasValidCountryCallingCode(countryCode)) {
       return ValidationResult.INVALID_COUNTRY_CODE;
     }
     String regionCode = getRegionCodeForCountryCode(countryCode);
     // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadata = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    Pattern possibleNumberPattern =
-        regexCache.getPatternForRegex(metadata.generalDesc.possibleNumberPattern);
-    return testNumberLengthAgainstPattern(possibleNumberPattern, nationalNumber);
+    return testNumberLength(nationalNumber, metadata, type);
   }
 
   /**
@@ -2424,7 +2638,7 @@ public class PhoneNumberUtil {
    * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber)}
    * with the resultant PhoneNumber object.
    *
-   * @param number  the number that needs to be checked, in the form of a string
+   * @param number  the number that needs to be checked
    * @param regionDialingFrom  the region that we are expecting the number to be dialed from.
    *     Note this is different from the region where the number belongs.  For example, the number
    *     +1 650 253 0000 is a number that belongs to US. When written in this form, it can be
@@ -2435,7 +2649,7 @@ public class PhoneNumberUtil {
    *     specific).
    * @return  true if the number is possible
    */
-  public boolean isPossibleNumber(String number, String regionDialingFrom) {
+  public boolean isPossibleNumber(CharSequence number, String regionDialingFrom) {
     try {
       return isPossibleNumber(parse(number, regionDialingFrom));
     } catch (NumberParseException e) {
@@ -2447,8 +2661,8 @@ public class PhoneNumberUtil {
    * Attempts to extract a valid number from a phone number that is too long to be valid, and resets
    * the PhoneNumber object passed in to that valid version. If no valid number could be extracted,
    * the PhoneNumber object passed in will not be modified.
-   * @param number a PhoneNumber object which contains a number that is too long to be valid.
-   * @return  true if a valid phone number can be successfully extracted.
+   * @param number  a PhoneNumber object which contains a number that is too long to be valid
+   * @return  true if a valid phone number can be successfully extracted
    */
   public boolean truncateTooLongNumber(PhoneNumber number) {
     if (isValidNumber(number)) {
@@ -2460,8 +2674,8 @@ public class PhoneNumberUtil {
     do {
       nationalNumber /= 10;
       numberCopy.setNationalNumber(nationalNumber);
-      if (isPossibleNumberWithReason(numberCopy) == ValidationResult.TOO_SHORT ||
-          nationalNumber == 0) {
+      if (isPossibleNumberWithReason(numberCopy) == ValidationResult.TOO_SHORT
+          || nationalNumber == 0) {
         return false;
       }
     } while (!isValidNumber(numberCopy));
@@ -2533,7 +2747,7 @@ public class PhoneNumberUtil {
    * @return  the country calling code extracted or 0 if none could be extracted
    */
   // @VisibleForTesting
-  int maybeExtractCountryCode(String number, PhoneMetadata defaultRegionMetadata,
+  int maybeExtractCountryCode(CharSequence number, PhoneMetadata defaultRegionMetadata,
                               StringBuilder nationalNumber, boolean keepRawInput,
                               PhoneNumber phoneNumber)
       throws NumberParseException {
@@ -2544,7 +2758,7 @@ public class PhoneNumberUtil {
     // Set the default prefix to be something that will never match.
     String possibleCountryIddPrefix = "NonMatch";
     if (defaultRegionMetadata != null) {
-      possibleCountryIddPrefix = defaultRegionMetadata.internationalPrefix;
+      possibleCountryIddPrefix = defaultRegionMetadata.getInternationalPrefix();
     }
 
     CountryCodeSource countryCodeSource =
@@ -2572,26 +2786,21 @@ public class PhoneNumberUtil {
       // Check to see if the number starts with the country calling code for the default region. If
       // so, we remove the country calling code, and do some checks on the validity of the number
       // before and after.
-      int defaultCountryCode = defaultRegionMetadata.countryCode;
+      int defaultCountryCode = defaultRegionMetadata.getCountryCode();
       String defaultCountryCodeString = String.valueOf(defaultCountryCode);
       String normalizedNumber = fullNumber.toString();
       if (normalizedNumber.startsWith(defaultCountryCodeString)) {
         StringBuilder potentialNationalNumber =
             new StringBuilder(normalizedNumber.substring(defaultCountryCodeString.length()));
-        PhoneNumberDesc generalDesc = defaultRegionMetadata.generalDesc;
-        Pattern validNumberPattern =
-            regexCache.getPatternForRegex(generalDesc.nationalNumberPattern);
+        PhoneNumberDesc generalDesc = defaultRegionMetadata.getGeneralDesc();
         maybeStripNationalPrefixAndCarrierCode(
             potentialNationalNumber, defaultRegionMetadata, null /* Don't need the carrier code */);
-        Pattern possibleNumberPattern =
-            regexCache.getPatternForRegex(generalDesc.possibleNumberPattern);
         // If the number was not valid before but is valid now, or if it was too long before, we
         // consider the number with the country calling code stripped to be a better result and
         // keep that instead.
-        if ((!validNumberPattern.matcher(fullNumber).matches() &&
-             validNumberPattern.matcher(potentialNationalNumber).matches()) ||
-             testNumberLengthAgainstPattern(possibleNumberPattern, fullNumber.toString())
-                  == ValidationResult.TOO_LONG) {
+        if ((!matcherApi.matchNationalNumber(fullNumber, generalDesc, false)
+                && matcherApi.matchNationalNumber(potentialNationalNumber, generalDesc, false))
+            || testNumberLength(fullNumber, defaultRegionMetadata) == ValidationResult.TOO_LONG) {
           nationalNumber.append(potentialNationalNumber);
           if (keepRawInput) {
             phoneNumber.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
@@ -2634,12 +2843,12 @@ public class PhoneNumberUtil {
    * the resulting number, and indicates if an international prefix was present.
    *
    * @param number  the non-normalized telephone number that we wish to strip any international
-   *     dialing prefix from.
+   *     dialing prefix from
    * @param possibleIddPrefix  the international direct dialing prefix from the region we
    *     think this number may be dialed in
    * @return  the corresponding CountryCodeSource if an international dialing prefix could be
    *     removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the number did
-   *     not seem to be in international format.
+   *     not seem to be in international format
    */
   // @VisibleForTesting
   CountryCodeSource maybeStripInternationalPrefixAndNormalize(
@@ -2671,13 +2880,13 @@ public class PhoneNumberUtil {
    *     dialing prefix from
    * @param metadata  the metadata for the region that we think this number is from
    * @param carrierCode  a place to insert the carrier code if one is extracted
-   * @return true if a national prefix or carrier code (or both) could be extracted.
+   * @return true if a national prefix or carrier code (or both) could be extracted
    */
   // @VisibleForTesting
   boolean maybeStripNationalPrefixAndCarrierCode(
       StringBuilder number, PhoneMetadata metadata, StringBuilder carrierCode) {
     int numberLength = number.length();
-    String possibleNationalPrefix = metadata.nationalPrefixForParsing;
+    String possibleNationalPrefix = metadata.getNationalPrefixForParsing();
     if (numberLength == 0 || possibleNationalPrefix.length() == 0) {
       // Early return for numbers of zero length.
       return false;
@@ -2685,20 +2894,20 @@ public class PhoneNumberUtil {
     // Attempt to parse the first digits as a national prefix.
     Matcher prefixMatcher = regexCache.getPatternForRegex(possibleNationalPrefix).matcher(number);
     if (prefixMatcher.lookingAt()) {
-      Pattern nationalNumberRule =
-          regexCache.getPatternForRegex(metadata.generalDesc.nationalNumberPattern);
+      PhoneNumberDesc generalDesc = metadata.getGeneralDesc();
       // Check if the original number is viable.
-      boolean isViableOriginalNumber = nationalNumberRule.matcher(number).matches();
+      boolean isViableOriginalNumber = matcherApi.matchNationalNumber(number, generalDesc, false);
       // prefixMatcher.group(numOfGroups) == null implies nothing was captured by the capturing
       // groups in possibleNationalPrefix; therefore, no transformation is necessary, and we just
       // remove the national prefix.
       int numOfGroups = prefixMatcher.groupCount();
-      String transformRule = metadata.nationalPrefixTransformRule;
-      if (transformRule == null || transformRule.length() == 0 ||
-          prefixMatcher.group(numOfGroups) == null) {
+      String transformRule = metadata.getNationalPrefixTransformRule();
+      if (transformRule == null || transformRule.length() == 0
+          || prefixMatcher.group(numOfGroups) == null) {
         // If the original number was viable, and the resultant number is not, we return.
-        if (isViableOriginalNumber &&
-            !nationalNumberRule.matcher(number.substring(prefixMatcher.end())).matches()) {
+        if (isViableOriginalNumber
+            && !matcherApi.matchNationalNumber(
+                number.substring(prefixMatcher.end()), generalDesc, false)) {
           return false;
         }
         if (carrierCode != null && numOfGroups > 0 && prefixMatcher.group(numOfGroups) != null) {
@@ -2711,8 +2920,8 @@ public class PhoneNumberUtil {
         // the string buffer and making the transformation on the copy first.
         StringBuilder transformedNumber = new StringBuilder(number);
         transformedNumber.replace(0, numberLength, prefixMatcher.replaceFirst(transformRule));
-        if (isViableOriginalNumber &&
-            !nationalNumberRule.matcher(transformedNumber.toString()).matches()) {
+        if (isViableOriginalNumber
+            && !matcherApi.matchNationalNumber(transformedNumber.toString(), generalDesc, false)) {
           return false;
         }
         if (carrierCode != null && numOfGroups > 1) {
@@ -2730,7 +2939,7 @@ public class PhoneNumberUtil {
    * usually indicated with extn, ext, x or similar) from the end of the number, and returns it.
    *
    * @param number  the non-normalized telephone number that we wish to strip the extension from
-   * @return        the phone extension
+   * @return  the phone extension
    */
   // @VisibleForTesting
   String maybeStripExtension(StringBuilder number) {
@@ -2757,11 +2966,11 @@ public class PhoneNumberUtil {
    * parse starts with a + symbol so that we can attempt to infer the region from the number.
    * Returns false if it cannot use the region provided and the region cannot be inferred.
    */
-  private boolean checkRegionForParsing(String numberToParse, String defaultRegion) {
+  private boolean checkRegionForParsing(CharSequence numberToParse, String defaultRegion) {
     if (!isValidRegionCode(defaultRegion)) {
       // If the number is null or empty, we can't infer the region.
-      if ((numberToParse == null) || (numberToParse.length() == 0) ||
-          !PLUS_CHARS_PATTERN.matcher(numberToParse).lookingAt()) {
+      if ((numberToParse == null) || (numberToParse.length() == 0)
+          || !PLUS_CHARS_PATTERN.matcher(numberToParse).lookingAt()) {
         return false;
       }
     }
@@ -2772,7 +2981,7 @@ public class PhoneNumberUtil {
    * Parses a string and returns it as a phone number in proto buffer format. The method is quite
    * lenient and looks for a number in the input text (raw input) and does not check whether the
    * string is definitely only a phone number. To do this, it ignores punctuation and white-space,
-   * as well as any text before the number (e.g. a leading “Tel: ”) and trims the non-number bits.
+   * as well as any text before the number (e.g. a leading "Tel: ") and trims the non-number bits.
    * It will accept a number in any format (E164, national, international etc), assuming it can be
    * interpreted with the defaultRegion supplied. It also attempts to convert any alpha characters
    * into digits if it thinks this is a vanity number of the type "1800 MICROSOFT".
@@ -2782,22 +2991,26 @@ public class PhoneNumberUtil {
    * is actually a valid number for a particular region is not performed. This can be done
    * separately with {@link #isValidNumber}.
    *
-   * @param numberToParse     number that we are attempting to parse. This can contain formatting
-   *                          such as +, ( and -, as well as a phone number extension. It can also
-   *                          be provided in RFC3966 format.
-   * @param defaultRegion     region that we are expecting the number to be from. This is only used
-   *                          if the number being parsed is not written in international format.
-   *                          The country_code for the number in this case would be stored as that
-   *                          of the default region supplied. If the number is guaranteed to
-   *                          start with a '+' followed by the country calling code, then
-   *                          "ZZ" or null can be supplied.
-   * @return                  a phone number proto buffer filled with the parsed number
+   * <p> Note this method canonicalizes the phone number such that different representations can be
+   * easily compared, no matter what form it was originally entered in (e.g. national,
+   * international). If you want to record context about the number being parsed, such as the raw
+   * input that was entered, how the country code was derived etc. then call {@link
+   * #parseAndKeepRawInput} instead.
+   *
+   * @param numberToParse  number that we are attempting to parse. This can contain formatting such
+   *     as +, ( and -, as well as a phone number extension. It can also be provided in RFC3966
+   *     format.
+   * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+   *     the number being parsed is not written in international format. The country_code for the
+   *     number in this case would be stored as that of the default region supplied. If the number
+   *     is guaranteed to start with a '+' followed by the country calling code, then RegionCode.ZZ
+   *     or null can be supplied.
+   * @return  a phone number proto buffer filled with the parsed number
    * @throws NumberParseException  if the string is not considered to be a viable phone number (e.g.
-   *                               too few or too many digits) or if no default region was supplied
-   *                               and the number is not in international format (does not start
-   *                               with +)
+   *     too few or too many digits) or if no default region was supplied and the number is not in
+   *     international format (does not start with +)
    */
-  public PhoneNumber parse(String numberToParse, String defaultRegion)
+  public PhoneNumber parse(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
     parse(numberToParse, defaultRegion, phoneNumber);
@@ -2805,10 +3018,10 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Same as {@link #parse(String, String)}, but accepts mutable PhoneNumber as a parameter to
-   * decrease object creation when invoked many times.
+   * Same as {@link #parse(CharSequence, String)}, but accepts mutable PhoneNumber as a
+   * parameter to decrease object creation when invoked many times.
    */
-  public void parse(String numberToParse, String defaultRegion, PhoneNumber phoneNumber)
+  public void parse(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, false, true, phoneNumber);
   }
@@ -2818,17 +3031,16 @@ public class PhoneNumberUtil {
    * in that it always populates the raw_input field of the protocol buffer with numberToParse as
    * well as the country_code_source field.
    *
-   * @param numberToParse     number that we are attempting to parse. This can contain formatting
-   *                          such as +, ( and -, as well as a phone number extension.
-   * @param defaultRegion     region that we are expecting the number to be from. This is only used
-   *                          if the number being parsed is not written in international format.
-   *                          The country calling code for the number in this case would be stored
-   *                          as that of the default region supplied.
-   * @return                  a phone number proto buffer filled with the parsed number
+   * @param numberToParse  number that we are attempting to parse. This can contain formatting such
+   *     as +, ( and -, as well as a phone number extension.
+   * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+   *     the number being parsed is not written in international format. The country calling code
+   *     for the number in this case would be stored as that of the default region supplied.
+   * @return  a phone number proto buffer filled with the parsed number
    * @throws NumberParseException  if the string is not considered to be a viable phone number or if
-   *                               no default region was supplied
+   *     no default region was supplied
    */
-  public PhoneNumber parseAndKeepRawInput(String numberToParse, String defaultRegion)
+  public PhoneNumber parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
     parseAndKeepRawInput(numberToParse, defaultRegion, phoneNumber);
@@ -2836,10 +3048,10 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Same as{@link #parseAndKeepRawInput(String, String)}, but accepts a mutable PhoneNumber as
-   * a parameter to decrease object creation when invoked many times.
+   * Same as{@link #parseAndKeepRawInput(CharSequence, String)}, but accepts a mutable
+   * PhoneNumber as a parameter to decrease object creation when invoked many times.
    */
-  public void parseAndKeepRawInput(String numberToParse, String defaultRegion,
+  public void parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion,
                                    PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, true, true, phoneNumber);
@@ -2850,12 +3062,11 @@ public class PhoneNumberUtil {
    * is a shortcut for {@link #findNumbers(CharSequence, String, Leniency, long)
    * getMatcher(text, defaultRegion, Leniency.VALID, Long.MAX_VALUE)}.
    *
-   * @param text              the text to search for phone numbers, null for no text
-   * @param defaultRegion     region that we are expecting the number to be from. This is only used
-   *                          if the number being parsed is not written in international format. The
-   *                          country_code for the number in this case would be stored as that of
-   *                          the default region supplied. May be null if only international
-   *                          numbers are expected.
+   * @param text  the text to search for phone numbers, null for no text
+   * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+   *     the number being parsed is not written in international format. The country_code for the
+   *     number in this case would be stored as that of the default region supplied. May be null if
+   *     only international numbers are expected.
    */
   public Iterable<PhoneNumberMatch> findNumbers(CharSequence text, String defaultRegion) {
     return findNumbers(text, defaultRegion, Leniency.VALID, Long.MAX_VALUE);
@@ -2864,16 +3075,15 @@ public class PhoneNumberUtil {
   /**
    * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}.
    *
-   * @param text              the text to search for phone numbers, null for no text
-   * @param defaultRegion     region that we are expecting the number to be from. This is only used
-   *                          if the number being parsed is not written in international format. The
-   *                          country_code for the number in this case would be stored as that of
-   *                          the default region supplied. May be null if only international
-   *                          numbers are expected.
-   * @param leniency          the leniency to use when evaluating candidate phone numbers
-   * @param maxTries          the maximum number of invalid numbers to try before giving up on the
-   *                          text. This is to cover degenerate cases where the text has a lot of
-   *                          false positives in it. Must be {@code >= 0}.
+   * @param text  the text to search for phone numbers, null for no text
+   * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+   *     the number being parsed is not written in international format. The country_code for the
+   *     number in this case would be stored as that of the default region supplied. May be null if
+   *     only international numbers are expected.
+   * @param leniency  the leniency to use when evaluating candidate phone numbers
+   * @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
+   *     This is to cover degenerate cases where the text has a lot of false positives in it. Must
+   *     be {@code >= 0}.
    */
   public Iterable<PhoneNumberMatch> findNumbers(
       final CharSequence text, final String defaultRegion, final Leniency leniency,
@@ -2891,14 +3101,15 @@ public class PhoneNumberUtil {
   /**
    * A helper function to set the values related to leading zeros in a PhoneNumber.
    */
-  static void setItalianLeadingZerosForPhoneNumber(String nationalNumber, PhoneNumber phoneNumber) {
+  static void setItalianLeadingZerosForPhoneNumber(CharSequence nationalNumber,
+      PhoneNumber phoneNumber) {
     if (nationalNumber.length() > 1 && nationalNumber.charAt(0) == '0') {
       phoneNumber.setItalianLeadingZero(true);
       int numberOfLeadingZeros = 1;
       // Note that if the national number is all "0"s, the last "0" is not counted as a leading
       // zero.
-      while (numberOfLeadingZeros < nationalNumber.length() - 1 &&
-             nationalNumber.charAt(numberOfLeadingZeros) == '0') {
+      while (numberOfLeadingZeros < nationalNumber.length() - 1
+          && nationalNumber.charAt(numberOfLeadingZeros) == '0') {
         numberOfLeadingZeros++;
       }
       if (numberOfLeadingZeros != 1) {
@@ -2912,9 +3123,12 @@ public class PhoneNumberUtil {
    * parse() method, with the exception that it allows the default region to be null, for use by
    * isNumberMatch(). checkRegion should be set to false if it is permitted for the default region
    * to be null or unknown ("ZZ").
+   *
+   * Note if any new field is added to this method that should always be filled in, even when
+   * keepRawInput is false, it should also be handled in the copyCoreFieldsOnly() method.
    */
-  private void parseHelper(String numberToParse, String defaultRegion, boolean keepRawInput,
-                           boolean checkRegion, PhoneNumber phoneNumber)
+  private void parseHelper(CharSequence numberToParse, String defaultRegion,
+      boolean keepRawInput, boolean checkRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
     if (numberToParse == null) {
       throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
@@ -2925,22 +3139,23 @@ public class PhoneNumberUtil {
     }
 
     StringBuilder nationalNumber = new StringBuilder();
-    buildNationalNumberForParsing(numberToParse, nationalNumber);
+    String numberBeingParsed = numberToParse.toString();
+    buildNationalNumberForParsing(numberBeingParsed, nationalNumber);
 
-    if (!isViablePhoneNumber(nationalNumber.toString())) {
+    if (!isViablePhoneNumber(nationalNumber)) {
       throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
                                      "The string supplied did not seem to be a phone number.");
     }
 
     // Check the region supplied is valid, or that the extracted number starts with some sort of +
     // sign so the number's region can be determined.
-    if (checkRegion && !checkRegionForParsing(nationalNumber.toString(), defaultRegion)) {
+    if (checkRegion && !checkRegionForParsing(nationalNumber, defaultRegion)) {
       throw new NumberParseException(NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
                                      "Missing or invalid default region.");
     }
 
     if (keepRawInput) {
-      phoneNumber.setRawInput(numberToParse);
+      phoneNumber.setRawInput(numberBeingParsed);
     }
     // Attempt to parse extension first, since it doesn't require region-specific data and we want
     // to have the non-normalised number here.
@@ -2958,12 +3173,12 @@ public class PhoneNumberUtil {
       // TODO: This method should really just take in the string buffer that has already
       // been created, and just remove the prefix, rather than taking in a string and then
       // outputting a string buffer.
-      countryCode = maybeExtractCountryCode(nationalNumber.toString(), regionMetadata,
+      countryCode = maybeExtractCountryCode(nationalNumber, regionMetadata,
                                             normalizedNationalNumber, keepRawInput, phoneNumber);
     } catch (NumberParseException e) {
-      Matcher matcher = PLUS_CHARS_PATTERN.matcher(nationalNumber.toString());
-      if (e.getErrorType() == NumberParseException.ErrorType.INVALID_COUNTRY_CODE &&
-          matcher.lookingAt()) {
+      Matcher matcher = PLUS_CHARS_PATTERN.matcher(nationalNumber);
+      if (e.getErrorType() == NumberParseException.ErrorType.INVALID_COUNTRY_CODE
+          && matcher.lookingAt()) {
         // Strip the plus-char, and try again.
         countryCode = maybeExtractCountryCode(nationalNumber.substring(matcher.end()),
                                               regionMetadata, normalizedNationalNumber,
@@ -2985,10 +3200,9 @@ public class PhoneNumberUtil {
     } else {
       // If no extracted country calling code, use the region supplied instead. The national number
       // is just the normalized version of the number we were given to parse.
-      normalize(nationalNumber);
-      normalizedNationalNumber.append(nationalNumber);
+      normalizedNationalNumber.append(normalize(nationalNumber));
       if (defaultRegion != null) {
-        countryCode = regionMetadata.countryCode;
+        countryCode = regionMetadata.getCountryCode();
         phoneNumber.setCountryCode(countryCode);
       } else if (keepRawInput) {
         phoneNumber.clearCountryCodeSource();
@@ -3003,11 +3217,14 @@ public class PhoneNumberUtil {
       StringBuilder potentialNationalNumber = new StringBuilder(normalizedNationalNumber);
       maybeStripNationalPrefixAndCarrierCode(potentialNationalNumber, regionMetadata, carrierCode);
       // We require that the NSN remaining after stripping the national prefix and carrier code be
-      // of a possible length for the region. Otherwise, we don't do the stripping, since the
-      // original number could be a valid short number.
-      if (!isShorterThanPossibleNormalNumber(regionMetadata, potentialNationalNumber.toString())) {
+      // long enough to be a possible length for the region. Otherwise, we don't do the stripping,
+      // since the original number could be a valid short number.
+      ValidationResult validationResult = testNumberLength(potentialNationalNumber, regionMetadata);
+      if (validationResult != ValidationResult.TOO_SHORT
+          && validationResult != ValidationResult.IS_POSSIBLE_LOCAL_ONLY
+          && validationResult != ValidationResult.INVALID_LENGTH) {
         normalizedNationalNumber = potentialNationalNumber;
-        if (keepRawInput) {
+        if (keepRawInput && carrierCode.length() > 0) {
           phoneNumber.setPreferredDomesticCarrierCode(carrierCode.toString());
         }
       }
@@ -3021,7 +3238,7 @@ public class PhoneNumberUtil {
       throw new NumberParseException(NumberParseException.ErrorType.TOO_LONG,
                                      "The string supplied is too long to be a phone number.");
     }
-    setItalianLeadingZerosForPhoneNumber(normalizedNationalNumber.toString(), phoneNumber);
+    setItalianLeadingZerosForPhoneNumber(normalizedNationalNumber, phoneNumber);
     phoneNumber.setNationalNumber(Long.parseLong(normalizedNationalNumber.toString()));
   }
 
@@ -3031,11 +3248,12 @@ public class PhoneNumberUtil {
    */
   private void buildNationalNumberForParsing(String numberToParse, StringBuilder nationalNumber) {
     int indexOfPhoneContext = numberToParse.indexOf(RFC3966_PHONE_CONTEXT);
-    if (indexOfPhoneContext > 0) {
+    if (indexOfPhoneContext >= 0) {
       int phoneContextStart = indexOfPhoneContext + RFC3966_PHONE_CONTEXT.length();
       // If the phone context contains a phone number prefix, we need to capture it, whereas domains
       // will be ignored.
-      if (numberToParse.charAt(phoneContextStart) == PLUS_SIGN) {
+      if (phoneContextStart < (numberToParse.length() - 1)
+          && numberToParse.charAt(phoneContextStart) == PLUS_SIGN) {
         // Additional parameters might follow the phone context. If so, we will remove them here
         // because the parameters after phone context are not important for parsing the
         // phone number.
@@ -3052,8 +3270,8 @@ public class PhoneNumberUtil {
       // handle the case when "tel:" is missing, as we have seen in some of the phone number inputs.
       // In that case, we append everything from the beginning.
       int indexOfRfc3966Prefix = numberToParse.indexOf(RFC3966_PREFIX);
-      int indexOfNationalNumber = (indexOfRfc3966Prefix >= 0) ?
-          indexOfRfc3966Prefix + RFC3966_PREFIX.length() : 0;
+      int indexOfNationalNumber = (indexOfRfc3966Prefix >= 0)
+          ? indexOfRfc3966Prefix + RFC3966_PREFIX.length() : 0;
       nationalNumber.append(numberToParse.substring(indexOfNationalNumber, indexOfPhoneContext));
     } else {
       // Extract a possible number from the string passed in (this strips leading characters that
@@ -3071,6 +3289,26 @@ public class PhoneNumberUtil {
     // parameters are left in nationalNumber. This is because we are concerned about deleting
     // content from a potential number string when there is no strong evidence that the number is
     // actually written in RFC3966.
+  }
+
+  /**
+   * Returns a new phone number containing only the fields needed to uniquely identify a phone
+   * number, rather than any fields that capture the context in which the phone number was created.
+   * These fields correspond to those set in parse() rather than parseAndKeepRawInput().
+   */
+  private static PhoneNumber copyCoreFieldsOnly(PhoneNumber phoneNumberIn) {
+    PhoneNumber phoneNumber = new PhoneNumber();
+    phoneNumber.setCountryCode(phoneNumberIn.getCountryCode());
+    phoneNumber.setNationalNumber(phoneNumberIn.getNationalNumber());
+    if (phoneNumberIn.getExtension().length() > 0) {
+      phoneNumber.setExtension(phoneNumberIn.getExtension());
+    }
+    if (phoneNumberIn.isItalianLeadingZero()) {
+      phoneNumber.setItalianLeadingZero(true);
+      // This field is only relevant if there are leading zeros at all.
+      phoneNumber.setNumberOfLeadingZeros(phoneNumberIn.getNumberOfLeadingZeros());
+    }
+    return phoneNumber;
   }
 
   /**
@@ -3094,30 +3332,13 @@ public class PhoneNumberUtil {
    *     of the two numbers, described in the method definition.
    */
   public MatchType isNumberMatch(PhoneNumber firstNumberIn, PhoneNumber secondNumberIn) {
-    // Make copies of the phone number so that the numbers passed in are not edited.
-    PhoneNumber firstNumber = new PhoneNumber();
-    firstNumber.mergeFrom(firstNumberIn);
-    PhoneNumber secondNumber = new PhoneNumber();
-    secondNumber.mergeFrom(secondNumberIn);
-    // First clear raw_input, country_code_source and preferred_domestic_carrier_code fields and any
-    // empty-string extensions so that we can use the proto-buffer equality method.
-    firstNumber.clearRawInput();
-    firstNumber.clearCountryCodeSource();
-    firstNumber.clearPreferredDomesticCarrierCode();
-    secondNumber.clearRawInput();
-    secondNumber.clearCountryCodeSource();
-    secondNumber.clearPreferredDomesticCarrierCode();
-    if (firstNumber.hasExtension() &&
-        firstNumber.getExtension().length() == 0) {
-        firstNumber.clearExtension();
-    }
-    if (secondNumber.hasExtension() &&
-        secondNumber.getExtension().length() == 0) {
-        secondNumber.clearExtension();
-    }
+    // We only care about the fields that uniquely define a number, so we copy these across
+    // explicitly.
+    PhoneNumber firstNumber = copyCoreFieldsOnly(firstNumberIn);
+    PhoneNumber secondNumber = copyCoreFieldsOnly(secondNumberIn);
     // Early exit if both had extensions and these are different.
-    if (firstNumber.hasExtension() && secondNumber.hasExtension() &&
-        !firstNumber.getExtension().equals(secondNumber.getExtension())) {
+    if (firstNumber.hasExtension() && secondNumber.hasExtension()
+        && !firstNumber.getExtension().equals(secondNumber.getExtension())) {
       return MatchType.NO_MATCH;
     }
     int firstNumberCountryCode = firstNumber.getCountryCode();
@@ -3126,8 +3347,8 @@ public class PhoneNumberUtil {
     if (firstNumberCountryCode != 0 && secondNumberCountryCode != 0) {
       if (firstNumber.exactlySameAs(secondNumber)) {
         return MatchType.EXACT_MATCH;
-      } else if (firstNumberCountryCode == secondNumberCountryCode &&
-                 isNationalNumberSuffixOfTheOther(firstNumber, secondNumber)) {
+      } else if (firstNumberCountryCode == secondNumberCountryCode
+          && isNationalNumberSuffixOfTheOther(firstNumber, secondNumber)) {
         // A SHORT_NSN_MATCH occurs if there is a difference because of the presence or absence of
         // an 'Italian leading zero', the presence or absence of an extension, or one NSN being a
         // shorter variant of the other.
@@ -3155,8 +3376,8 @@ public class PhoneNumberUtil {
     String firstNumberNationalNumber = String.valueOf(firstNumber.getNationalNumber());
     String secondNumberNationalNumber = String.valueOf(secondNumber.getNationalNumber());
     // Note that endsWith returns true if the numbers are equal.
-    return firstNumberNationalNumber.endsWith(secondNumberNationalNumber) ||
-           secondNumberNationalNumber.endsWith(firstNumberNationalNumber);
+    return firstNumberNationalNumber.endsWith(secondNumberNationalNumber)
+        || secondNumberNationalNumber.endsWith(firstNumberNationalNumber);
   }
 
   /**
@@ -3170,7 +3391,7 @@ public class PhoneNumberUtil {
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
    *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
    */
-  public MatchType isNumberMatch(String firstNumber, String secondNumber) {
+  public MatchType isNumberMatch(CharSequence firstNumber, CharSequence secondNumber) {
     try {
       PhoneNumber firstNumberAsProto = parse(firstNumber, UNKNOWN_REGION);
       return isNumberMatch(firstNumberAsProto, secondNumber);
@@ -3202,13 +3423,13 @@ public class PhoneNumberUtil {
    * Takes two phone numbers and compares them for equality. This is a convenience wrapper for
    * {@link #isNumberMatch(PhoneNumber, PhoneNumber)}. No default region is known.
    *
-   * @param firstNumber  first number to compare in proto buffer format.
+   * @param firstNumber  first number to compare in proto buffer format
    * @param secondNumber  second number to compare. Can contain formatting, and can have country
    *     calling code specified with + at the start.
    * @return  NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
    *     {@link #isNumberMatch(PhoneNumber, PhoneNumber)} for more details.
    */
-  public MatchType isNumberMatch(PhoneNumber firstNumber, String secondNumber) {
+  public MatchType isNumberMatch(PhoneNumber firstNumber, CharSequence secondNumber) {
     // First see if the second number has an implicit country calling code, by attempting to parse
     // it.
     try {
@@ -3247,14 +3468,13 @@ public class PhoneNumberUtil {
   /**
    * Returns true if the number can be dialled from outside the region, or unknown. If the number
    * can only be dialled from within the region, returns false. Does not check the number is a valid
-   * number. Note that, at the moment, this method does not handle short numbers.
-   * TODO: Make this method public when we have enough metadata to make it worthwhile.
+   * number. Note that, at the moment, this method does not handle short numbers (which are
+   * currently all presumed to not be diallable from outside their country).
    *
    * @param number  the phone-number for which we want to know whether it is diallable from
    *     outside the region
    */
-  // @VisibleForTesting
-  boolean canBeInternationallyDialled(PhoneNumber number) {
+  public boolean canBeInternationallyDialled(PhoneNumber number) {
     PhoneMetadata metadata = getMetadataForRegion(getRegionCodeForNumber(number));
     if (metadata == null) {
       // Note numbers belonging to non-geographical entities (e.g. +800 numbers) are always
@@ -3262,7 +3482,7 @@ public class PhoneNumberUtil {
       return true;
     }
     String nationalSignificantNumber = getNationalSignificantNumber(number);
-    return !isNumberMatchingDesc(nationalSignificantNumber, metadata.noInternationalDialling);
+    return !isNumberMatchingDesc(nationalSignificantNumber, metadata.getNoInternationalDialling());
   }
 
   /**
@@ -3270,7 +3490,7 @@ public class PhoneNumberUtil {
    * invalid, unknown or regions that don't support mobile number portability.
    *
    * @param regionCode  the region for which we want to know whether it supports mobile number
-   *                    portability or not.
+   *     portability or not
    */
   public boolean isMobileNumberPortableRegion(String regionCode) {
     PhoneMetadata metadata = getMetadataForRegion(regionCode);
@@ -3278,6 +3498,6 @@ public class PhoneNumberUtil {
       logger.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
       return false;
     }
-    return metadata.mobileNumberPortableRegion;
+    return metadata.isMobileNumberPortableRegion();
   }
 }

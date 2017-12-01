@@ -16,7 +16,6 @@
 
 #include "phonenumbers/regex_based_matcher.h"
 
-#include <memory>
 #include <string>
 
 #include "phonenumbers/base/memory/scoped_ptr.h"
@@ -28,8 +27,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
-
 // Same implementations of AbstractRegExpFactory and RegExpCache in
 // PhoneNumberUtil (copy from phonenumberutil.cc).
 RegexBasedMatcher::RegexBasedMatcher()
@@ -38,30 +35,33 @@ RegexBasedMatcher::RegexBasedMatcher()
 
 RegexBasedMatcher::~RegexBasedMatcher() {}
 
-bool RegexBasedMatcher::MatchesNationalNumber(
-    const string& national_number, const PhoneNumberDesc& number_desc,
+bool RegexBasedMatcher::MatchNationalNumber(
+    const string& number,
+    const PhoneNumberDesc& number_desc,
     bool allow_prefix_match) const {
-  return Match(national_number, number_desc.national_number_pattern(),
-               allow_prefix_match);
+  const string& national_number_pattern = number_desc.national_number_pattern();
+  // We don't want to consider it a prefix match when matching non-empty input
+  // against an empty pattern.
+  if (national_number_pattern.empty()) {
+    return false;
+  }
+  return Match(number, national_number_pattern, allow_prefix_match);
 }
 
-bool RegexBasedMatcher::MatchesPossibleNumber(
-    const string& national_number, const PhoneNumberDesc& number_desc) const {
-  return Match(national_number, number_desc.possible_number_pattern(), false);
-}
-
-bool RegexBasedMatcher::Match(const string& national_number,
-                              const string& number_pattern,
-                              bool allow_prefix_match) const {
+bool RegexBasedMatcher::Match(
+    const string& number,
+    const string& number_pattern,
+    bool allow_prefix_match) const {
   const RegExp& regexp(regexp_cache_->GetRegExp(number_pattern));
 
-  if (allow_prefix_match) {
-    const scoped_ptr<RegExpInput> normalized_number_input(
-        regexp_factory_->CreateInput(national_number));
-    return regexp.Consume(normalized_number_input.get());
-  } else {
-    return regexp.FullMatch(national_number);
+  if (regexp.FullMatch(number)) {
+    return true;
   }
+  const scoped_ptr<RegExpInput> normalized_number_input(
+      regexp_factory_->CreateInput(number));
+  return regexp.Consume(normalized_number_input.get())
+      ? allow_prefix_match
+      : false;
 }
 
 }  // namespace phonenumbers

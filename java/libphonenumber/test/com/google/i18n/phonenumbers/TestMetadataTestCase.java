@@ -23,25 +23,37 @@ import junit.framework.TestCase;
  * <p>
  * Note since tests that extend this class do not use the normal metadata file, they should not be
  * used for regression test purposes.
+ * <p>
+ * Ideally the {@code phoneUtil} field (which uses test metadata) would be the only way that tests
+ * need to interact with a PhoneNumberUtil instance. However as some static methods in the library
+ * invoke "getInstance()" internally, we must also inject the test instance as the PhoneNumberUtil
+ * singleton. This means it is unsafe to run tests derived from this class in parallel with each
+ * other or at the same time as other tests which might require the singleton instance.
  *
  * @author Shaopeng Jia
  */
 public class TestMetadataTestCase extends TestCase {
-  private static final String TEST_META_DATA_FILE_PREFIX =
+  private static final String TEST_METADATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
+  /** An instance of PhoneNumberUtil that uses test metadata. */
   protected final PhoneNumberUtil phoneUtil;
 
   public TestMetadataTestCase() {
-    phoneUtil = initializePhoneUtilForTesting();
+    phoneUtil = new PhoneNumberUtil(new MultiFileMetadataSourceImpl(TEST_METADATA_FILE_PREFIX,
+        MetadataManager.DEFAULT_METADATA_LOADER),
+        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
   }
 
-  static PhoneNumberUtil initializePhoneUtilForTesting() {
-    PhoneNumberUtil phoneUtil = new PhoneNumberUtil(
-        new MultiFileMetadataSourceImpl(TEST_META_DATA_FILE_PREFIX,
-            PhoneNumberUtil.DEFAULT_METADATA_LOADER),
-        CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
     PhoneNumberUtil.setInstance(phoneUtil);
-    return phoneUtil;
+  }
+
+  @Override
+  protected void tearDown() throws Exception {
+    PhoneNumberUtil.setInstance(null);
+    super.tearDown();
   }
 }

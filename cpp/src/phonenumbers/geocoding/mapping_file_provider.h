@@ -46,11 +46,14 @@ class MappingFileProvider {
 
   // Returns the name of the file that contains the mapping data for the
   // country_calling_code in the language specified, or an empty string if no
-  // such file can be found. language is a two-letter lowercase ISO language
-  // codes as defined by ISO 639-1. script is a four-letter titlecase (the first
-  // letter is uppercase and the rest of the letters are lowercase) ISO script
-  // codes as defined in ISO 15924. region is a two-letter uppercase ISO country
-  // codes as defined by ISO 3166-1.
+  // such file can be found.
+  // language is a two or three-letter lowercase language code as defined by ISO
+  // 639. Note that where two different language codes exist (e.g. 'he' and 'iw'
+  // for Hebrew) we use the one that Java/Android canonicalized on ('iw' in this
+  // case).
+  // script is a four-letter titlecase (the first letter is uppercase and the
+  // rest of the letters are lowercase) ISO script code as defined in ISO 15924.
+  // region is a two-letter uppercase ISO country code as defined by ISO 3166-1.
   const string& GetFileName(int country_calling_code, const string& language,
                             const string& script, const string& region, string*
                             filename) const;

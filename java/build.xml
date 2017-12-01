@@ -45,21 +45,6 @@
     </exec>
   </target>
 
-  <target name="build-single-file-phone-metadata">
-    <exec executable="java">
-      <arg value="-jar" />
-      <arg value="${build.tools.jar}"/>
-      <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="--input-file=${resources.dir}/PhoneNumberMetadata.xml"/>
-      <arg value="--output-dir=${libphonenumber.src.dir}/com/google/i18n/phonenumbers"/>
-      <arg value="--data-prefix=data/SingleFilePhoneNumberMetadataProto"/>
-      <arg value="--single-file=true"/>
-      <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
-      <arg value="--copyright=2010"/>
-      <arg value="--lite-build=false"/>
-    </exec>
-  </target>
-
   <target name="build-short-metadata">
     <exec executable="java">
       <arg value="-jar" />
@@ -82,21 +67,6 @@
       <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
       <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
       <arg value="--data-prefix=data/PhoneNumberMetadataProtoForTesting"/>
-      <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
-      <arg value="--copyright=2010"/>
-      <arg value="--lite-build=false"/>
-    </exec>
-  </target>
-
-  <target name="build-single-file-test-metadata">
-    <exec executable="java">
-      <arg value="-jar" />
-      <arg value="${build.tools.jar}"/>
-      <arg value="BuildMetadataProtoFromXml"/>
-      <arg value="--input-file=${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
-      <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
-      <arg value="--data-prefix=data/SingleFilePhoneNumberMetadataProtoForTesting"/>
-      <arg value="--single-file=true"/>
       <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
       <arg value="--copyright=2010"/>
       <arg value="--lite-build=false"/>
@@ -210,7 +180,7 @@
           depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data,build-timezones-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${libphonenumber.src.dir};${carrier.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
-           destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false"/>
+           destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false" encoding="UTF-8"/>
     <javac srcdir="${libphonenumber.test.dir};${carrier.test.dir};${geocoder.test.dir};${prefixmapper.test.dir}"
            destdir="${classes.dir}" classpathref="classpath" debug="on"
            includeAntRuntime="false"/>

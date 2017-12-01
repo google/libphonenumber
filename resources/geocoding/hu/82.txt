@@ -1,0 +1,35 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations of the en/82.txt file from Wikipedia.
+
+# https://hu.wikipedia.org/wiki/D%C3%A9l-Korea_k%C3%B6zigazgat%C3%A1sa
+
+822|Szöul
+8231|Kjonggi
+8232|Incshon
+8233|Kangvon
+8241|Dél-Cshungcshong
+8242|Tedzson
+8243|Észak-Cshungcshong
+8244|Szedzsong
+8251|Puszan
+8252|Ulszan
+8253|Tegu
+8254|Észak-Kjongszang
+8255|Dél-Kjongszang
+8261|Dél-Csolla
+8262|Kvangdzsu
+8263|Észak-Csolla
+8264|Csedzsu

@@ -72,9 +72,9 @@ public class PhoneNumberOfflineGeocoder {
       String regionWhereNumberIsValid = "ZZ";
       for (String regionCode : regionCodes) {
         if (phoneUtil.isValidNumberForRegion(number, regionCode)) {
+          // If the number has already been found valid for one region, then we don't know which
+          // region it belongs to so we return nothing.
           if (!regionWhereNumberIsValid.equals("ZZ")) {
-            // If we can't assign the phone number as definitely belonging to only one territory,
-            // then we return nothing.
             return "";
           }
           regionWhereNumberIsValid = regionCode;
@@ -88,8 +88,8 @@ public class PhoneNumberOfflineGeocoder {
    * Returns the customary display name in the given language for the given region.
    */
   private String getRegionDisplayName(String regionCode, Locale language) {
-    return (regionCode == null || regionCode.equals("ZZ") ||
-            regionCode.equals(PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY))
+    return (regionCode == null || regionCode.equals("ZZ")
+        || regionCode.equals(PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY))
         ? "" : new Locale("", regionCode).getDisplayCountry(language);
   }
 
@@ -105,7 +105,9 @@ public class PhoneNumberOfflineGeocoder {
    *
    * @param number  a valid phone number for which we want to get a text description
    * @param languageCode  the language code for which the description should be written
-   * @return  a text description for the given language code for the given phone number
+   * @return  a text description for the given language code for the given phone number, or an
+   *     empty string if the number could come from multiple countries, or the country code is
+   *     in fact invalid
    */
   public String getDescriptionForValidNumber(PhoneNumber number, Locale languageCode) {
     String langStr = languageCode.getLanguage();
@@ -153,10 +155,11 @@ public class PhoneNumberOfflineGeocoder {
    * @param number  the phone number for which we want to get a text description
    * @param languageCode  the language code for which the description should be written
    * @param userRegion  the region code for a given user. This region will be omitted from the
-   *     description if the phone number comes from this region. It is a two-letter uppercase ISO
-   *     country code as defined by ISO 3166-1.
-   * @return  a text description for the given language code for the given phone number, or empty
-   *     string if the number passed in is invalid
+   *     description if the phone number comes from this region. It should be a two-letter
+   *     upper-case CLDR region code.
+   * @return  a text description for the given language code for the given phone number, or an
+   *     empty string if the number could come from multiple countries, or the country code is
+   *     in fact invalid
    */
   public String getDescriptionForValidNumber(PhoneNumber number, Locale languageCode,
                                              String userRegion) {
@@ -180,13 +183,13 @@ public class PhoneNumberOfflineGeocoder {
    * @param number  the phone number for which we want to get a text description
    * @param languageCode  the language code for which the description should be written
    * @return  a text description for the given language code for the given phone number, or empty
-   *     string if the number passed in is invalid
+   *     string if the number passed in is invalid or could belong to multiple countries
    */
   public String getDescriptionForNumber(PhoneNumber number, Locale languageCode) {
     PhoneNumberType numberType = phoneUtil.getNumberType(number);
     if (numberType == PhoneNumberType.UNKNOWN) {
       return "";
-    } else if (!canBeGeocoded(numberType)) {
+    } else if (!phoneUtil.isNumberGeographical(numberType, number.getCountryCode())) {
       return getCountryNameForNumber(number, languageCode);
     }
     return getDescriptionForValidNumber(number, languageCode);
@@ -199,30 +202,19 @@ public class PhoneNumberOfflineGeocoder {
    * @param number  the phone number for which we want to get a text description
    * @param languageCode  the language code for which the description should be written
    * @param userRegion  the region code for a given user. This region will be omitted from the
-   *     description if the phone number comes from this region. It is a two-letter uppercase ISO
-   *     country code as defined by ISO 3166-1.
+   *     description if the phone number comes from this region. It should be a two-letter
+   *     upper-case CLDR region code.
    * @return  a text description for the given language code for the given phone number, or empty
-   *     string if the number passed in is invalid
+   *     string if the number passed in is invalid or could belong to multiple countries
    */
   public String getDescriptionForNumber(PhoneNumber number, Locale languageCode,
                                         String userRegion) {
     PhoneNumberType numberType = phoneUtil.getNumberType(number);
     if (numberType == PhoneNumberType.UNKNOWN) {
       return "";
-    } else if (!canBeGeocoded(numberType)) {
+    } else if (!phoneUtil.isNumberGeographical(numberType, number.getCountryCode())) {
       return getCountryNameForNumber(number, languageCode);
     }
     return getDescriptionForValidNumber(number, languageCode, userRegion);
-  }
-
-  /**
-   * A similar method is implemented as PhoneNumberUtil.isNumberGeographical, which performs a
-   * stricter check, as it determines if a number has a geographical association. Also, if new
-   * phone number types were added, we should check if this other method should be updated too.
-   */
-  private boolean canBeGeocoded(PhoneNumberType numberType) {
-    return (numberType == PhoneNumberType.FIXED_LINE ||
-            numberType == PhoneNumberType.MOBILE ||
-            numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
   }
 }

@@ -32,11 +32,12 @@ public final class Phonenumber {
       FROM_NUMBER_WITH_PLUS_SIGN,
       FROM_NUMBER_WITH_IDD,
       FROM_NUMBER_WITHOUT_PLUS_SIGN,
-      FROM_DEFAULT_COUNTRY
+      FROM_DEFAULT_COUNTRY,
+      UNSPECIFIED
     }
 
     public PhoneNumber() {
-      countryCodeSource_ = CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN;
+      countryCodeSource_ = CountryCodeSource.UNSPECIFIED;
     }
 
     // required int32 country_code = 1;
@@ -156,7 +157,7 @@ public final class Phonenumber {
     }
     public PhoneNumber clearCountryCodeSource() {
       hasCountryCodeSource = false;
-      countryCodeSource_ = CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN;
+      countryCodeSource_ = CountryCodeSource.UNSPECIFIED;
       return this;
     }
 

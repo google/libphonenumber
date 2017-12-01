@@ -31,7 +31,7 @@
 25453|Eldoret/Turbo/Kapsabet/Iten/Kabarnet
 25454|Kitale/Moi's Bridge/Kapenguria/Lodwar
 25455|Bungoma/Busia
-25456|Kakamega/Mbale/Butere/Mumias
+25456|Kakamega/Mbale/Butere/Mumias/Vihiga
 25457|Kisumu/Siaya/Maseno
 25458|Kisii/Kilgoris/Oyugis/Nyamira
 25459|Homabay/Migori
@@ -40,7 +40,7 @@
 25462|Nanyuki
 25464|Meru/Maua/Chuka
 25465|Nyahururu/Maralal
-25466|Kiambu/Kikuyu
-25467|Thika/Ruiru
+25466|Thika/Ruiru
+25467|Kiambu/Kikuyu
 25468|Embu
 25469|Marsabit/Moyale

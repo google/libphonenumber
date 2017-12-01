@@ -106792,7 +106792,34 @@
 861772437|Heyuan, Guangdong
 861772438|Meizhou, Guangdong
 861772439|Zhaoqing, Guangdong
-8617726|Chongqing
+86177260|Tianjin
+861772610|Changde, Hunan
+861772611|Changde, Hunan
+861772612|Xiangtan, Hunan
+861772613|Xiangtan, Hunan
+861772614|Hengyang, Hunan
+861772615|Hengyang, Hunan
+861772616|Hengyang, Hunan
+861772617|Yiyang, Hunan
+861772618|Yiyang, Hunan
+861772619|Yiyang, Hunan
+86177262|Chongqing
+86177263|Nanchong, Sichuan
+86177264|Chengdu, Sichuan
+861772650|Deyang, Sichuan
+861772651|Deyang, Sichuan
+861772652|Deyang, Sichuan
+861772653|Deyang, Sichuan
+861772654|Deyang, Sichuan
+861772655|Bazhong, Sichuan
+861772656|Neijiang, Sichuan
+861772657|Leshan, Sichuan
+861772658|Leshan, Sichuan
+861772659|Leshan, Sichuan
+86177266|Chongqing
+86177267|Urumchi, Xinjiang
+86177268|Urumchi, Xinjiang
+86177269|Lanzhou, Gansu
 861772700|Jiangmen, Guangdong
 861772701|Jiangmen, Guangdong
 861772702|Jiangmen, Guangdong

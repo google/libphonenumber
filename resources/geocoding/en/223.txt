@@ -30,7 +30,7 @@
 223214|Mopti
 223215|Kayes
 223216|Sikasso
-223218|Gao and Kidal
+223218|Gao/Kidal
 223219|Tombouctou
 223442|Bamako
 223443|Bamako

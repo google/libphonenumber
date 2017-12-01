@@ -154,6 +154,7 @@
 234704|Visafone
 234705|Glo
 234706|MTN
+234707|Zoom
 234708|Airtel
 234709|Multilinks
 2347380|Starcomms
@@ -184,7 +185,7 @@
 234806|MTN
 234807|Glo
 234808|Airtel
-234809|Etisalat
+234809|9mobile
 234810|MTN
 234811|Glo
 234812|Airtel
@@ -192,8 +193,8 @@
 234814|MTN
 234815|Glo
 234816|MTN
-234817|Etisalat
-234818|Etisalat
+234817|9mobile
+234818|9mobile
 2348190|Starcomms
 2348191|Starcomms
 2348283|Starcomms
@@ -251,7 +252,9 @@
 234902|Airtel
 234903|MTN
 234905|Glo
-234908|Etisalat
-234909|Etisalat
+234906|MTN
+234907|Airtel
+234908|9mobile
+234909|9mobile
 234980|Starcomms
 234987|Starcomms

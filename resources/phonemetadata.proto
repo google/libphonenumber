@@ -84,7 +84,7 @@ message NumberFormat {
   // inherited from the value set for the territory in the XML file, unless a
   // national_prefix_optional_when_formatting is defined specifically for this
   // NumberFormat.
-  optional bool national_prefix_optional_when_formatting = 6;
+  optional bool national_prefix_optional_when_formatting = 6 [default=false];
 
   // This field specifies how any carrier code ($CC) together with the first
   // group ($FG) in the national significant number should be formatted
@@ -93,37 +93,54 @@ message NumberFormat {
   optional string domestic_carrier_code_formatting_rule = 5;
 }
 
+// If you add, remove, or rename fields, or change their semantics, check if you
+// should change the excludable field sets or the behavior in MetadataFilter.
 message PhoneNumberDesc {
   // The national_number_pattern is the pattern that a valid national
   // significant number would match. This specifies information such as its
   // total length and leading digits.
   optional string national_number_pattern = 2;
 
-  // The possible_number_pattern represents what a potentially valid phone
-  // number for this region may be written as. This is a superset of the
-  // national_number_pattern above and includes numbers that have the area code
-  // omitted. Typically the only restrictions here are in the number of digits.
+  // These represent the lengths a phone number from this region can be. They
+  // will be sorted from smallest to biggest. Note that these lengths are for
+  // the full number, without country calling code or national prefix. For
+  // example, for the Swiss number +41789270000, in local format 0789270000,
+  // this would be 9.
   // This could be used to highlight tokens in a text that may be a phone
   // number, or to quickly prune numbers that could not possibly be a phone
   // number for this locale.
-  optional string possible_number_pattern = 3;
+  repeated int32 possible_length = 9;
+
+  // These represent the lengths that only local phone numbers (without an area
+  // code) from this region can be. They will be sorted from smallest to
+  // biggest. For example, since the American number 456-1234 may be locally
+  // diallable, although not diallable from outside the area, 7 could be a
+  // possible value.
+  // This could be used to highlight tokens in a text that may be a phone
+  // number.
+  // To our knowledge, area codes are usually only relevant for some fixed-line
+  // and mobile numbers, so this field should only be set for those types of
+  // numbers (and the general description) - however there are exceptions for
+  // NANPA countries.
+  // This data is used to calculate whether a number could be a possible number
+  // for a particular type.
+  repeated int32 possible_length_local_only = 10;
 
   // An example national significant number for the specific type. It should
   // not contain any formatting information.
   optional string example_number = 6;
 }
 
+// If you add, remove, or rename fields, or change their semantics, check if you
+// should change the excludable field sets or the behavior in MetadataFilter.
 message PhoneMetadata {
   // The general_desc contains information which is a superset of descriptions
   // for all types of phone numbers. If any element is missing in the
   // description of a specific type in the XML file, the element will inherit
-  // from its counterpart in the general_desc. Every locale is assumed to have
-  // fixed line and mobile numbers - if these types are missing in the
-  // PhoneNumberMetadata XML file, they will inherit all fields from the
-  // general_desc. For all other types that are generally relevant to normal
-  // phone numbers, if the whole type is missing in the PhoneNumberMetadata XML
-  // file, it will be given a national_number_pattern of "NA" and a
-  // possible_number_pattern of "NA".
+  // from its counterpart in the general_desc. For all types that are generally
+  // relevant to normal phone numbers, if the whole type is missing in the
+  // PhoneNumberMetadata XML file, it will not have national number data, and
+  // the possible lengths will be [-1].
   optional PhoneNumberDesc general_desc = 1;
   optional PhoneNumberDesc fixed_line = 2;
   optional PhoneNumberDesc mobile = 3;
@@ -139,16 +156,17 @@ message PhoneMetadata {
   optional PhoneNumberDesc short_code = 29;
   optional PhoneNumberDesc standard_rate = 30;
   optional PhoneNumberDesc carrier_specific = 31;
+  optional PhoneNumberDesc sms_services = 33;
 
   // The rules here distinguish the numbers that are only able to be dialled
   // nationally.
   optional PhoneNumberDesc no_international_dialling = 24;
 
-  // The ISO 3166-1 alpha-2 representation of a country/region, with the
-  // exception of "country calling codes" used for non-geographical entities,
-  // such as Universal International Toll Free Number (+800). These are all
-  // given the ID "001", since this is the numeric region code for the world
-  // according to UN M.49: http://en.wikipedia.org/wiki/UN_M.49
+  // The CLDR 2-letter representation of a country/region, with the exception of
+  // "country calling codes" used for non-geographical entities, such as
+  // Universal International Toll Free Number (+800). These are all given the ID
+  // "001", since this is the numeric region code for the world according to UN
+  // M.49: http://en.wikipedia.org/wiki/UN_M.49
   required string id = 9;
 
   // The country calling code that one would dial from overseas when trying to
@@ -255,19 +273,18 @@ message PhoneMetadata {
 
   // This field is populated only for countries or regions that share a country
   // calling code. If a number matches this pattern, it could belong to this
-  // region. This is not intended as a replacement for IsValidForRegion, and
-  // does not mean the number must come from this region (for example, 800
-  // numbers are valid for all NANPA countries.) This field should be a regular
-  // expression of the expected prefix match.
+  // region. This is not intended as a replacement for IsValidForRegion since a
+  // matching prefix is insufficient for a number to be valid. Furthermore, it
+  // does not contain all the prefixes valid for a region - for example, 800
+  // numbers are valid for all NANPA countries and are hence not listed here.
+  // This field should be a regular expression of the expected prefix match.
+  // It is used merely as a short-cut for working out which region a number
+  // comes from in the case that there is only one, so leading_digit prefixes
+  // should not overlap.
   optional string leading_digits = 23;
 
-  // The leading zero in a phone number is meaningful in some countries (e.g.
-  // Italy). This means they cannot be dropped from the national number when
-  // converting into international format. If leading zeros are possible for
-  // valid international numbers for this region/country then set this to true.
-  // This only needs to be set for the region that is the main_country_for_code
-  // and all regions associated with that calling code will use the same
-  // setting.
+  // Deprecated: do not use. Will be deletd when there are no references to this
+  // later.
   optional bool leading_zero_possible = 26 [default=false];
 
   // This field is set when this country has implemented mobile number

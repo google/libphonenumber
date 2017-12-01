@@ -1,0 +1,122 @@
+# Copyright (C) 2017 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Source: http://www.arcep.fr/index.php?id=interactivenumeros&no_cache=1
+
+26263900|Orange
+26263901|Orange
+26263902|Orange
+26263903|Only
+26263904|Only
+26263905|Only
+26263906|Only
+26263907|Only
+26263909|SFR
+26263910|SFR
+26263911|SFR
+26263919|Only
+2626392|SFR
+26263926|Only
+26263930|BJT
+26263939|Only
+26263940|SFR
+26263950|BJT
+26263960|Orange
+26263961|Orange
+26263962|Orange
+26263963|Orange
+26263964|Orange
+26263965|SFR
+26263966|SFR
+26263967|SFR
+26263968|SFR
+26263969|SFR
+26263970|BJT
+26263976|Orange
+26263990|BJT
+26263994|Only
+26263995|Only
+26263996|Only
+26263997|Only
+26263999|Orange
+2626920|Orange
+26269206|SFR
+2626921|SFR
+2626922|Orange
+2626923|Orange
+26269240|Orange
+26269241|Orange
+26269242|Orange
+26269243|Orange
+26269244|Orange
+26269245|SFR
+26269246|SFR
+26269247|SFR
+26269248|SFR
+26269249|SFR
+2626925|SFR
+2626926|SFR
+2626927|SFR
+2626928|SFR
+26269290|SFR
+26269291|SFR
+26269292|Only
+26269293|Only
+26269294|Only
+26269295|SFR
+26269296|SFR
+26269297|SFR
+26269298|SFR
+26269299|SFR
+26269300|Orange
+26269301|SFR
+26269302|SFR
+26269303|SFR
+26269304|SFR
+26269306|Orange
+26269310|SFR
+26269311|Orange
+26269313|SFR
+26269320|SFR
+26269321|Orange
+26269322|Orange
+26269330|Only
+26269333|Orange
+26269339|Orange
+26269340|Only
+26269341|Only
+26269342|Only
+26269343|Only
+26269344|Only
+26269345|Only
+26269346|Only
+26269347|Only
+26269350|Only
+26269355|Orange
+26269360|Only
+26269366|Orange
+26269370|Only
+26269377|Orange
+26269380|Only
+26269381|Only
+26269382|Only
+26269383|Only
+26269388|Orange
+26269390|Orange
+26269391|Orange
+26269392|Orange
+26269393|Orange
+26269394|SFR
+26269397|SFR
+26269399|Orange

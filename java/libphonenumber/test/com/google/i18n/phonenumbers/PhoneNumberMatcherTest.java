@@ -119,8 +119,8 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     // Using a full-width plus sign.
     doTestFindInContext("\uFF0B1 (650) 333-6000", RegionCode.SG);
     // The whole number, including punctuation, is here represented in full-width form.
-    doTestFindInContext("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09" +
-        "\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10",
+    doTestFindInContext("\uFF0B\uFF11\u3000\uFF08\uFF16\uFF15\uFF10\uFF09"
+        + "\u3000\uFF13\uFF13\uFF13\uFF0D\uFF16\uFF10\uFF10\uFF10",
         RegionCode.SG);
   }
 
@@ -611,8 +611,8 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
       } else {
         if (!test.rawString.equals(match.rawString())) {
           wrongMatchFoundCount++;
-          System.err.println("Found wrong match in test " + test.toString() +
-                             ". Found " + match.rawString());
+          System.err.println("Found wrong match in test " + test.toString()
+              + ". Found " + match.rawString());
         }
       }
     }
@@ -981,6 +981,9 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
         "As I said on 03/10/2011, you may call me at ", ""));
     // With trailing numbers after a comma. The 45 should not be considered an extension.
     contextPairs.add(new NumberContext("", ", 45 days a year"));
+    // When matching we don't consider semicolon along with legitimate extension symbol to indicate
+    // an extension. The 7246433 should not be considered an extension.
+    contextPairs.add(new NumberContext("", ";x 7246433"));
      // With a postfix stripped off as it looks like the start of another number.
     contextPairs.add(new NumberContext("Call ", "/x12 more"));
 

@@ -633,7 +633,7 @@
 1205991|Birmingham, AL
 1205995|Birmingham, AL
 1205996|Birmingham, AL
-1206|Washington
+1206|Washington State
 1206215|Seattle, WA
 1206217|Seattle, WA
 1206223|Seattle, WA
@@ -2235,6 +2235,7 @@
 1219989|Hammond, IN
 1219996|Hebron, IN
 1220|Ohio
+1223|Pennsylvania
 1224|Illinois
 1224610|North Chicago, IL
 1224653|Schaumburg, IL
@@ -2730,7 +2731,7 @@
 1242326|New Providence
 1242327|New Providence
 1242328|New Providence
-1242329|North Andros
+1242329|Andros
 1242331|Rum Cay & San Sal
 1242332|Eleuthera
 1242333|Eleuthera
@@ -2743,7 +2744,7 @@
 1242340|New Providence
 1242341|New Providence
 1242342|Cat Island
-1242344|Acklins
+1242344|Ragged Island/Crooked Island/Acklins
 1242345|Exuma
 1242346|Grand Bahama
 1242347|Bimini and Cat Cay
@@ -2781,14 +2782,15 @@
 1242396|New Providence
 1242397|New Providence
 1242461|New Providence
+1242502|New Providence
 1242601|New Providence
 1242602|Grand Bahama
 1242676|New Providence
 1242677|New Providence
 1242687|Grand Bahama
 1242688|Grand Bahama
-1242698|Abaco
-1242699|Abaco
+1242698|New Providence
+1242699|Abaco/Eleuthera
 1242702|New Providence
 1248|Michigan
 1248208|Southfield, MI
@@ -2914,6 +2916,7 @@
 1248987|Farmington Hills, MI
 1248994|Farmington Hills, MI
 1248996|Southfield, MI
+1249|Ontario
 1250|British Columbia
 1250212|Kelowna, BC
 1250215|Kelowna, BC
@@ -3354,7 +3357,7 @@
 1252977|Rocky Mount, NC
 1252985|Rocky Mount, NC
 1252986|Hatteras, NC
-1253|Washington
+1253|Washington State
 1253200|Puyallup, WA
 1253236|Kent, WA
 1253265|Gig Harbor, WA
@@ -4469,6 +4472,7 @@
 1281997|Pearland, TX
 1281998|Pasadena, TX
 1281999|Houston, TX
+1283|Ohio
 1289|Ontario
 1289240|Oshawa, ON
 1289296|Niagara Falls, ON
@@ -7588,6 +7592,7 @@
 1330971|Cuyahoga Falls, OH
 1330995|Aurora, OH
 1331|Illinois
+1332|New York, NY
 1334|Alabama
 1334209|Auburn, AL
 1334213|Montgomery, AL
@@ -8022,6 +8027,7 @@
 1337991|Lafayette, LA
 1337993|Lafayette, LA
 1339|Massachusetts
+1343|Ontario
 1345949|George Town
 1346|Texas
 1347|New York
@@ -8210,7 +8216,7 @@
 1352872|Gainesville, FL
 1352873|Ocala, FL
 1352955|Gainesville, FL
-1360|Washington
+1360|Washington State
 1360210|Camas, WA
 1360213|Vancouver, WA
 1360221|Langley, WA
@@ -11890,7 +11896,7 @@
 1423979|Johnson City, TN
 1423989|Bristol, TN
 1424|California
-1425|Washington
+1425|Washington State
 1425204|Renton, WA
 1425212|Everett, WA
 1425222|Fall City, WA
@@ -12350,6 +12356,7 @@
 1440998|Ashtabula, OH
 1441292|Hamilton
 1441295|Hamilton
+1442|California
 1443|Maryland
 1443394|Owings Mills, MD
 1443438|Baltimore, MD
@@ -12534,6 +12541,8 @@
 1450968|Terrebonne, QC
 1450974|Saint-Eustache, QC
 1450991|Granby, QC
+1458|Oregon
+1463|Indiana
 1469|Texas
 1469232|Dallas, TX
 1469241|Plano, TX
@@ -12546,6 +12555,8 @@
 1469752|Plano, TX
 1469916|Dallas, TX
 1469952|McKinney, TX
+1470|Georgia
+1475|Connecticut
 1478|Georgia
 1478218|Perry, GA
 1478225|Warner Robins, GA
@@ -14110,7 +14121,7 @@
 1508997|New Bedford, MA
 1508998|New Bedford, MA
 1508999|New Bedford, MA
-1509|Washington
+1509|Washington State
 1509216|Spokane, WA
 1509225|Yakima, WA
 1509226|Newman Lake, WA
@@ -16047,6 +16058,9 @@
 1530934|Willows, CA
 1530938|Weed, CA
 1530993|Loyalton, CA
+1531|Nebraska
+1534|Wisconsin
+1539|Oklahoma
 1540|Virginia
 1540206|Roanoke, VA
 1540213|Staunton, VA
@@ -16921,6 +16935,7 @@
 1563927|Manchester, IA
 1563928|Edgewood, IA
 1563933|Strawberry Point, IA
+1564|Washington State
 1567|Ohio
 1570|Pennsylvania
 1570207|Scranton, PA
@@ -17400,6 +17415,7 @@
 1575887|Carlsbad, NM
 1575894|Truth Or Cnsqncs, NM
 1575935|Clovis, NM
+1579|Quebec
 1580|Oklahoma
 1580223|Ardmore, OK
 1580224|Ardmore, OK
@@ -17498,6 +17514,7 @@
 1580933|Valliant, OK
 1580938|Shattuck, OK
 1580994|Mooreland, OK
+1581|Quebec
 1585|New York
 1585218|Pittsford, NY
 1585223|Fairport, NY
@@ -21534,6 +21551,8 @@
 1678973|Atlanta, GA
 1678974|Atlanta, GA
 1678985|Lawrenceville, GA
+1680|New York
+1681|West Virginia
 1682|Texas
 1682518|Mansfield, TX
 1682622|Mansfield, TX
@@ -24747,6 +24766,7 @@
 1724966|Carmichaels, PA
 1724981|Hermitage, PA
 1725|Nevada
+1726|San Antonio, TX
 1727|Florida
 1727298|Clearwater, FL
 1727321|St. Petersburg, FL
@@ -25171,7 +25191,6 @@
 1734998|Ann Arbor, MI
 1737|Texas
 1740|Ohio
-1743|North Carolina
 1740223|Marion, OH
 1740246|Thornville, OH
 1740259|Lucasville, OH
@@ -25321,6 +25340,8 @@
 1740984|Beverly, OH
 1740992|Pomeroy, OH
 1740998|Frankfort, OH
+1743|North Carolina
+1747|California
 1754|Florida
 1757|Virginia
 1757220|Williamsburg, VA
@@ -25703,6 +25724,7 @@
 1760966|Oceanside, CA
 1760967|Oceanside, CA
 1760995|Hesperia, CA
+1762|Georgia
 1763|Minnesota
 1763205|Minneapolis, MN
 1763208|Minneapolis, MN
@@ -26665,7 +26687,7 @@
 1781963|Randolph, MA
 1781979|Melrose, MA
 1781986|Randolph, MA
-1782|Nova Scotia
+1782|Nova Scotia/Prince Edward Island
 1785|Kansas
 1785215|Topeka, KS
 1785222|La Crosse, KS
@@ -29495,6 +29517,7 @@
 1832826|Houston, TX
 1832912|Houston, TX
 1832934|Magnolia, TX
+1838|New York
 1843|South Carolina
 1843207|North Charleston, SC
 1843208|Hardeeville, SC
@@ -31044,6 +31067,7 @@
 1865992|Maynardville, TN
 1865993|Bean Station, TN
 1865995|Friendsville, TN
+1867|Northwest Territories/Nunavut/Yukon
 1867393|Whitehorse, YT
 1867456|Whitehorse, YT
 1867536|Watson Lake Hospital
@@ -31339,7 +31363,7 @@
 1901946|Memphis, TN
 1901947|Memphis, TN
 1901948|Memphis, TN
-1902|Nova Scotia
+1902|Nova Scotia/Prince Edward Island
 1902224|Chéticamp, NS
 1902245|Digby, NS
 1902254|Parrsboro, NS
@@ -34222,6 +34246,7 @@
 1931946|Spencer, TN
 1931962|Winchester, TN
 1931967|Winchester, TN
+1934|New York, NY
 1936|Texas
 1936231|Conroe, TX
 1936254|Timpson, TX
@@ -36109,6 +36134,7 @@
 1985892|Covington, LA
 1985893|Covington, LA
 1985898|Covington, LA
+1986|Idaho
 1989|Michigan
 1989224|St. Johns, MI
 1989227|St. Johns, MI

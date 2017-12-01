@@ -33,7 +33,7 @@ If you don't checkout the dependencies next to libphonenumber:
 How to compile:
 ===============
 1. Build Closure's compiler.jar:
-  `ant -f ~/src/closure-compiler/build.xml`
+  `mvn -DskipTests`
 
 2. Compile the demo.js and all its dependencies to one file: `demo-compiled.js`:
   `ant -f javascript/build.xml compile-demo`
@@ -48,7 +48,7 @@ To use and compile the library in your own project, use the `javascript/i18n/pho
 
 How to update:
 ==============
-The JavaScript library is ported from the Java implementation (revision 536).
+The JavaScript library is ported from the Java implementation.
 When the Java project gets updated follow these steps to update the JavaScript
 project:
 
@@ -69,9 +69,7 @@ project:
 
 4. Run the Closure Compiler to get your changes syntax and type checked. This will also generate `demo-compiled.js` used by `demo-compiler.html`
 
-  (TODO: Use target "compile" rather than "compile-demo" once visibility issues for getExtractedNationalPrefix_ have been resolved):
-
-  `ant -f javascript/build.xml compile-demo`
+  `ant -f javascript/build.xml compile`
 
 5. Run the Closure Linter to lint the JavaScript files:
 

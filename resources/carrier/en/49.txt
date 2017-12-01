@@ -15,25 +15,27 @@
 # O2 is run by Telefónica (the name listed in the ITU doc). The ITU doc also
 # lists Telekom Deutschland for T-Mobile, but these are the same company.
 
-491502|Interactive digital media
-491505|NAKA AG
-491508|Easy World
+4915020|Interactive digital media
+4915050|NAKA AG
+4915080|Easy World
 49151|T-Mobile
 491520|Vodafone
 491521|Vodafone/Lycamobile
 491522|Vodafone
 491523|Vodafone
 491525|Vodafone
+491526|Vodafone
 491529|Vodafone/Truphone
-491555|Tismi BV
-491567|Argon Networks
+4915555|Tismi BV
+4915630|Multiconnect
+4915678|Argon Networks
 491570|Eplus/Telogic
 491573|Eplus
 491575|Eplus
 491577|Eplus
 491578|Eplus
 491579|Eplus/Sipgate
-491588|TelcoVillage
+4915888|TelcoVillage
 491590|O2
 49160|T-Mobile
 49162|Vodafone

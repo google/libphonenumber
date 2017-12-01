@@ -26,7 +26,12 @@
  */
 
 goog.require('goog.array');
+goog.require('goog.string.StringBuffer');
 goog.require('goog.testing.jsunit');
+goog.require('i18n.phonenumbers.NumberFormat');
+goog.require('i18n.phonenumbers.PhoneMetadata');
+goog.require('i18n.phonenumbers.PhoneNumber');
+goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.RegionCode');
 
@@ -254,16 +259,13 @@ function testGetInstanceLoadUSMetadata() {
   assertEquals('$1 $2 $3', metadata.getNumberFormat(1).getFormat());
   assertEquals('[13-689]\\d{9}|2[0-35-9]\\d{8}',
                metadata.getGeneralDesc().getNationalNumberPattern());
-  assertEquals('\\d{7}(?:\\d{3})?',
-               metadata.getGeneralDesc().getPossibleNumberPattern());
-  assertTrue(metadata.getGeneralDesc().equals(metadata.getFixedLine()));
-  assertEquals('\\d{10}',
-               metadata.getTollFree().getPossibleNumberPattern());
+  assertEquals('[13-689]\\d{9}|2[0-35-9]\\d{8}',
+               metadata.getFixedLine().getNationalNumberPattern());
   assertEquals('900\\d{7}',
                metadata.getPremiumRate().getNationalNumberPattern());
-  // No shared-cost data is available, so it should be initialised to 'NA'.
-  assertEquals('NA', metadata.getSharedCost().getNationalNumberPattern());
-  assertEquals('NA', metadata.getSharedCost().getPossibleNumberPattern());
+  // No shared-cost data is available, so its national number data should not be
+  // set.
+  assertFalse(metadata.getSharedCost().hasNationalNumberPattern());
 }
 
 function testGetInstanceLoadDEMetadata() {
@@ -279,11 +281,9 @@ function testGetInstanceLoadDEMetadata() {
   assertEquals('(\\d{3})(\\d{3,4})(\\d{4})',
                metadata.getNumberFormat(5).getPattern());
   assertEquals('$1 $2 $3', metadata.getNumberFormat(5).getFormat());
-  assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:[1-9]\\d|0[2-9]))\\d{1,8}',
+  assertEquals('(?:[24-6]\\d{2}|3[03-9]\\d|[789](?:0[2-9]|[1-9]\\d))\\d{1,8}',
                metadata.getFixedLine().getNationalNumberPattern());
-  assertEquals('\\d{2,14}', metadata.getFixedLine().getPossibleNumberPattern());
   assertEquals('30123456', metadata.getFixedLine().getExampleNumber());
-  assertEquals('\\d{10}', metadata.getTollFree().getPossibleNumberPattern());
   assertEquals('900([135]\\d{6}|9\\d{7})',
                metadata.getPremiumRate().getNationalNumberPattern());
 }
@@ -312,7 +312,8 @@ function testGetInstanceLoadInternationalTollFreeMetadata() {
   assertEquals(800, metadata.getCountryCode());
   assertEquals('$1 $2', metadata.getNumberFormat(0).getFormat());
   assertEquals('(\\d{4})(\\d{4})', metadata.getNumberFormat(0).getPattern());
-  assertEquals('12345678', metadata.getGeneralDesc().getExampleNumber());
+  assertEquals(0, metadata.getGeneralDesc().possibleLengthLocalOnlyCount());
+  assertEquals(1, metadata.getGeneralDesc().possibleLengthCount());
   assertEquals('12345678', metadata.getTollFree().getExampleNumber());
 }
 
@@ -331,19 +332,6 @@ function testIsNumberGeographical() {
   assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE1));
   // Mexico, another mobile phone number.
   assertTrue(phoneUtil.isNumberGeographical(MX_MOBILE2));
-}
-
-function testIsLeadingZeroPossible() {
-  // Italy
-  assertTrue(phoneUtil.isLeadingZeroPossible(39));
-  // USA
-  assertFalse(phoneUtil.isLeadingZeroPossible(1));
-  // International toll free
-  assertTrue(phoneUtil.isLeadingZeroPossible(800));
-  // International premium-rate
-  assertFalse(phoneUtil.isLeadingZeroPossible(979));
-  // Not in metadata file, just default to false.
-  assertFalse(phoneUtil.isLeadingZeroPossible(888));
 }
 
 function testGetLengthOfGeographicalAreaCode() {
@@ -455,6 +443,58 @@ function testGetSupportedGlobalNetworkCallingCodes() {
       });
 }
 
+function testGetSupportedCallingCodes() {
+  assertTrue(phoneUtil.getSupportedCallingCodes().length > 0);
+  goog.array.forEach(
+      phoneUtil.getSupportedCallingCodes(),
+      function(callingCode) {
+        assertTrue(callingCode > 0);
+        assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode)
+            == RegionCode.ZZ);
+      });
+  // There should be more than just the global network calling codes in this set.
+  assertTrue(phoneUtil.getSupportedCallingCodes().length >
+      phoneUtil.getSupportedGlobalNetworkCallingCodes().length);
+  // But they should be included. Testing one of them.
+  assertTrue(goog.array.contains(
+      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 979));
+}
+
+function testGetSupportedTypesForRegion() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  var types = phoneUtil.getSupportedTypesForRegion(RegionCode.BR);
+  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  // Our test data has no mobile numbers for Brazil.
+  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  // UNKNOWN should never be returned.
+  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+
+  // In the US, many numbers are classified as FIXED_LINE_OR_MOBILE; but we
+  // don't want to expose this as a supported type, instead we say FIXED_LINE
+  // and MOBILE are both present.
+  types = phoneUtil.getSupportedTypesForRegion(RegionCode.US);
+  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  assertTrue(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(goog.array.contains(types, PNT.FIXED_LINE_OR_MOBILE));
+
+  types = phoneUtil.getSupportedTypesForRegion(RegionCode.ZZ);
+  assertTrue(types.length == 0);
+}
+
+function testGetSupportedTypesForNonGeoEntity() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  var types = phoneUtil.getSupportedTypesForNonGeoEntity(999);
+  // No data exists for 999 at all, no types should be returned.
+  assertTrue(types.length == 0);
+
+  types = phoneUtil.getSupportedTypesForNonGeoEntity(979);
+  assertTrue(goog.array.contains(types, PNT.PREMIUM_RATE));
+  // Our test data has no mobile numbers for Brazil.
+  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  // UNKNOWN should never be returned.
+  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+}
+
 function testGetNationalSignificantNumber() {
   assertEquals('6502530000',
       phoneUtil.getNationalSignificantNumber(US_NUMBER));
@@ -469,6 +509,26 @@ function testGetNationalSignificantNumber() {
 
   assertEquals('12345678',
       phoneUtil.getNationalSignificantNumber(INTERNATIONAL_TOLL_FREE));
+
+  // An empty number.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var emptyNumber = new i18n.phonenumbers.PhoneNumber();
+  assertEquals('', phoneUtil.getNationalSignificantNumber(emptyNumber));
+}
+
+function testGetNationalSignificantNumber_ManyLeadingZeros() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(1);
+  number.setNationalNumber(650);
+  number.setItalianLeadingZero(true);
+  number.setNumberOfLeadingZeros(2);
+  assertEquals('00650', phoneUtil.getNationalSignificantNumber(number));
+
+  // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros
+  // at all.
+  number.setNumberOfLeadingZeros(-3);
+  assertEquals('650', phoneUtil.getNationalSignificantNumber(number));
 }
 
 function testGetExampleNumber() {
@@ -477,10 +537,15 @@ function testGetExampleNumber() {
 
   assertTrue(DE_NUMBER.equals(
       phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.FIXED_LINE)));
-  assertNull(phoneUtil.getExampleNumberForType(RegionCode.DE, PNT.MOBILE));
-  // For the US, the example number is placed under general description, and
-  // hence should be used for both fixed line and mobile, so neither of these
-  // should return null.
+
+  // Should return the same response if asked for FIXED_LINE_OR_MOBILE too.
+  assertTrue(DE_NUMBER.equals(
+      phoneUtil.getExampleNumberForType(
+          RegionCode.DE, PNT.FIXED_LINE_OR_MOBILE)));
+  // We have data for the US, but no data for VOICEMAIL.
+  assertNull(
+      phoneUtil.getExampleNumberForType(RegionCode.US, PNT.VOICEMAIL));
+
   assertNotNull(
       phoneUtil.getExampleNumberForType(RegionCode.US, PNT.FIXED_LINE));
   assertNotNull(phoneUtil.getExampleNumberForType(RegionCode.US, PNT.MOBILE));
@@ -552,6 +617,17 @@ function testNormaliseStripAlphaCharacters() {
   assertEquals('Conversion did not correctly remove alpha character',
       expectedOutput,
       i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(inputNumber));
+}
+
+function testNormaliseStripNonDiallableCharacters() {
+  /** @type {string} */
+  var inputNumber = '03*4-56&+1a#234';
+  /** @type {string} */
+  var expectedOutput = '03*456+1#234';
+  assertEquals('Conversion did not correctly remove non-diallable characters',
+               expectedOutput,
+               i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+                   inputNumber));
 }
 
 function testFormatUSNumber() {
@@ -971,10 +1047,15 @@ function testFormatWithPreferredCarrierCode() {
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
   assertEquals('01234 19 12-5678',
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, ''));
-  // When the preferred_domestic_carrier_code is present (even when it contains
-  // an empty string), use it instead of the default carrier code passed in.
+  // When the preferred_domestic_carrier_code is present (even when it is just a
+  // space), use it instead of the default carrier code passed in.
+  arNumber.setPreferredDomesticCarrierCode(' ');
+  assertEquals('01234   12-5678',
+      phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
+  // When the preferred_domestic_carrier_code is present but empty, treat it as
+  // unset and use instead the default carrier code passed in.
   arNumber.setPreferredDomesticCarrierCode('');
-  assertEquals('01234 12-5678',
+  assertEquals('01234 15 12-5678',
       phoneUtil.formatNationalNumberWithPreferredCarrierCode(arNumber, '15'));
   // We don't support this for the US so there should be no change.
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -1752,6 +1833,106 @@ function testIsPossibleNumber() {
       phoneUtil.isPossibleNumberString('+800 1234 5678', RegionCode.UN001));
 }
 
+function testIsPossibleNumberForType_DifferentTypeLengths() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  // We use Argentinian numbers since they have different possible lengths for
+  // different types.
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(54);
+  number.setNationalNumber(12345);
+  // Too short for any Argentinian number, including fixed-line.
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+
+  // 6-digit numbers are okay for fixed-line.
+  number.setNationalNumber(123456);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  // But too short for mobile.
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+  // And too short for toll-free.
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.TOLL_FREE));
+
+  // The same applies to 9-digit numbers.
+  number.setNationalNumber(123456789);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.TOLL_FREE));
+
+  // 10-digit numbers are universally possible.
+  number.setNationalNumber(1234567890);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.TOLL_FREE));
+
+  // 11-digit numbers are only possible for mobile numbers. Note we don't
+  // require the leading 9, which all mobile numbers start with, and would be
+  // required for a valid mobile number.
+  number.setNationalNumber(12345678901);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.TOLL_FREE));
+}
+
+function testIsPossibleNumberForType_LocalOnly() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // Here we test a number length which matches a local-only length.
+  number.setCountryCode(49);
+  number.setNationalNumber(12);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  // Mobile numbers must be 10 or 11 digits, and there are no local-only
+  // lengths.
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+}
+
+function testIsPossibleNumberForType_DataMissingForSizeReasons() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // Here we test something where the possible lengths match the possible
+  // lengths of the country as a whole, and hence aren't present in the .js file
+  // for size reasons - this should still work.
+  // Local-only number.
+  number.setCountryCode(55);
+  number.setNationalNumber(12345678);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  number.setNationalNumber(1234567890);
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.UNKNOWN));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+}
+
+function testIsPossibleNumberForType_NumberTypeNotSupportedForRegion() {
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // There are *no* mobile numbers for this region at all, so we return false.
+  number.setCountryCode(55);
+  number.setNationalNumber(12345678);
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+  // This matches a fixed-line length though.
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  assertTrue(
+      phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE_OR_MOBILE));
+
+  // There are *no* fixed-line OR mobile numbers for this country calling code
+  // at all, so we return false for these.
+  number.setCountryCode(979);
+  number.setNationalNumber(123456789);
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.MOBILE));
+  assertFalse(phoneUtil.isPossibleNumberForType(number, PNT.FIXED_LINE));
+  assertFalse(phoneUtil.isPossibleNumberForType(
+      number, PNT.FIXED_LINE_OR_MOBILE));
+  assertTrue(phoneUtil.isPossibleNumberForType(number, PNT.PREMIUM_RATE));
+}
+
 function testIsPossibleNumberWithReason() {
   var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
   // National numbers for country calling code +1 that are within 7 to 10 digits
@@ -1759,7 +1940,7 @@ function testIsPossibleNumberWithReason() {
   assertEquals(VR.IS_POSSIBLE,
       phoneUtil.isPossibleNumberWithReason(US_NUMBER));
 
-  assertEquals(VR.IS_POSSIBLE,
+  assertEquals(VR.IS_POSSIBLE_LOCAL_ONLY,
       phoneUtil.isPossibleNumberWithReason(US_LOCAL_NUMBER));
 
   assertEquals(VR.TOO_LONG,
@@ -1786,6 +1967,265 @@ function testIsPossibleNumberWithReason() {
 
   assertEquals(VR.TOO_LONG,
       phoneUtil.isPossibleNumberWithReason(INTERNATIONAL_TOLL_FREE_TOO_LONG));
+}
+
+function testIsPossibleNumberForTypeWithReason_DifferentTypeLengths() {
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // We use Argentinian numbers since they have different possible lengths for
+  // different types.
+  number.setCountryCode(54);
+  number.setNationalNumber(12345);
+  // Too short for any Argentinian number.
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+
+  // 6-digit numbers are okay for fixed-line.
+  number.setNationalNumber(123456);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  // But too short for mobile.
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  // And too short for toll-free.
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.TOLL_FREE));
+
+  // The same applies to 9-digit numbers.
+  number.setNationalNumber(123456789);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.TOLL_FREE));
+
+  // 10-digit numbers are universally possible.
+  number.setNationalNumber(1234567890);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.TOLL_FREE));
+
+  // 11-digit numbers are only possible for mobile numbers. Note we don't
+  // require the leading 9, which all mobile numbers start with, and would be
+  // required for a valid mobile number.
+  number.setNationalNumber(12345678901);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.TOLL_FREE));
+}
+
+function testIsPossibleNumberForTypeWithReason_LocalOnly() {
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // Here we test a number length which matches a local-only length.
+  number.setCountryCode(49);
+  number.setNationalNumber(12);
+  assertEquals(VR.IS_POSSIBLE_LOCAL_ONLY,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(VR.IS_POSSIBLE_LOCAL_ONLY,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  // Mobile numbers must be 10 or 11 digits, and there are no local-only
+  // lengths.
+  assertEquals(VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+}
+
+function testIsPossibleNumberForTypeWithReason_DataMissingForSizeReasons() {
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // Here we test something where the possible lengths match the possible
+  // lengths of the country as a whole, and hence aren't present in the binary
+  // for size reasons - this should still work.
+  // Local-only number.
+  number.setCountryCode(55);
+  number.setNationalNumber(12345678);
+  assertEquals(
+      VR.IS_POSSIBLE_LOCAL_ONLY,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.IS_POSSIBLE_LOCAL_ONLY,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+
+  // Normal-length number.
+  number.setNationalNumber(1234567890);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.UNKNOWN));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+}
+
+function testIsPossibleNumberForTypeWithReason_NumberTypeNotSupportedForRegion() {
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // There are *no* mobile numbers for this region at all, so we return
+  // INVALID_LENGTH.
+  number.setCountryCode(55);
+  number.setNationalNumber(12345678);
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  // This matches a fixed-line length though.
+  assertEquals(
+      VR.IS_POSSIBLE_LOCAL_ONLY,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+  // This is too short for fixed-line, and no mobile numbers exist.
+  number.setCountryCode(55);
+  number.setNationalNumber(1234567);
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+
+  // This is too short for mobile, and no fixed-line numbers exist.
+  number.setCountryCode(882);
+  number.setNationalNumber(1234567);
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+
+  // There are *no* fixed-line OR mobile numbers for this country calling code
+  // at all, so we return INVALID_LENGTH.
+  number.setCountryCode(979);
+  number.setNationalNumber(123456789);
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.PREMIUM_RATE));
+}
+
+function testIsPossibleNumberForTypeWithReason_FixedLineOrMobile() {
+  var VR = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+  var PNT = i18n.phonenumbers.PhoneNumberType;
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  // For FIXED_LINE_OR_MOBILE, a number should be considered valid if it matches
+  // the possible lengths for mobile *or* fixed-line numbers.
+  number.setCountryCode(290);
+  number.setNationalNumber(1234);
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+
+  number.setNationalNumber(12345);
+  assertEquals(
+      VR.TOO_SHORT,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.INVALID_LENGTH,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+
+  number.setNationalNumber(123456);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+
+  number.setNationalNumber(1234567);
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.FIXED_LINE));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.MOBILE));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
+
+  // 8-digit numbers are possible for toll-free and premium-rate numbers only.
+  number.setNationalNumber(12345678);
+  assertEquals(
+      VR.IS_POSSIBLE,
+      phoneUtil.isPossibleNumberForTypeWithReason(number, PNT.TOLL_FREE));
+  assertEquals(
+      VR.TOO_LONG,
+      phoneUtil.isPossibleNumberForTypeWithReason(
+          number, PNT.FIXED_LINE_OR_MOBILE));
 }
 
 function testIsNotPossibleNumber() {
@@ -2154,7 +2594,7 @@ function testMaybeExtractCountryCode() {
     // Expected.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   number = new i18n.phonenumbers.PhoneNumber();
   try {
@@ -2224,6 +2664,12 @@ function testMaybeExtractCountryCode() {
 function testParseNationalNumber() {
   // National prefix attached.
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('033316005', RegionCode.NZ)));
+  // Some fields are not filled in by parse, but only by parseAndKeepRawInput.
+  assertFalse(NZ_NUMBER.hasCountryCodeSource());
+  assertNull(NZ_NUMBER.getCountryCodeSource());
+  assertEquals(i18n.phonenumbers.PhoneNumber.CountryCodeSource.UNSPECIFIED,
+      NZ_NUMBER.getCountryCodeSourceOrDefault());
+
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('33316005', RegionCode.NZ)));
   // National prefix attached and some formatting present.
   assertTrue(NZ_NUMBER.equals(phoneUtil.parse('03-331 6005', RegionCode.NZ)));
@@ -2313,6 +2759,15 @@ function testParseNationalNumber() {
   shortNumber.setCountryCode(64);
   shortNumber.setNationalNumber(12);
   assertTrue(shortNumber.equals(phoneUtil.parse('12', RegionCode.NZ)));
+
+  // Test for short-code with leading zero for a country which has 0 as
+  // national prefix. Ensure it's not interpreted as national prefix if the
+  // remaining number length is local-only in terms of length. Example: In GB,
+  // length 6-7 are only possible local-only.
+  shortNumber.setCountryCode(44);
+  shortNumber.setNationalNumber(123456);
+  shortNumber.setItalianLeadingZero(true);
+  assertTrue(shortNumber.equals(phoneUtil.parse('0123456', RegionCode.GB)));
 }
 
 function testParseNumberWithAlphaCharacters() {
@@ -2357,7 +2812,7 @@ function testParseMaliciousInput() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
   /** @type {!goog.string.StringBuffer} */
   var maliciousNumberWithAlmostExt = new goog.string.StringBuffer();
@@ -2373,7 +2828,7 @@ function testParseMaliciousInput() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
 }
 
@@ -2543,7 +2998,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '1 Still not a number';
@@ -2554,7 +3009,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '1 MICROSOFT';
@@ -2565,7 +3020,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     sentencePhoneNumber = '12 MICROSOFT';
@@ -2576,7 +3031,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2588,7 +3043,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_LONG,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2600,7 +3055,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2611,7 +3066,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2623,7 +3078,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2635,7 +3090,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_NSN,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2647,7 +3102,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2659,7 +3114,7 @@ function testFailedParseOnInvalidNumbers() {
     // country code.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2670,7 +3125,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '123 456 7890';
@@ -2680,7 +3135,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '123 456 7890';
@@ -2690,7 +3145,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0044------';
@@ -2700,7 +3155,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0044';
@@ -2710,7 +3165,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '011';
@@ -2720,7 +3175,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     someNumber = '0119';
@@ -2730,7 +3185,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.TOO_SHORT_AFTER_IDD,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2742,7 +3197,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     // Invalid region.
@@ -2752,7 +3207,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     phoneUtil.parse(null, RegionCode.US);
@@ -2761,7 +3216,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.NOT_A_NUMBER,
-                 e);
+                 e.message);
   }
   try {
     /** @type {string} */
@@ -2772,7 +3227,7 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
   try {
     // This is invalid because no '+' sign is present as part of phone-context.
@@ -2785,7 +3240,19 @@ function testFailedParseOnInvalidNumbers() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
+  }
+  try {
+    // Only the phone-context symbol is present, but no data.
+    invalidRfcPhoneContext = ';phone-context=';
+    phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
+    fail('Should have thrown an exception, no valid country calling code ' +
+         'present.');
+  } catch (e) {
+    // Expected.
+    assertEquals('Wrong error type stored in exception.',
+                 i18n.phonenumbers.Error.NOT_A_NUMBER,
+                 e.message);
   }
 }
 
@@ -2816,14 +3283,11 @@ function testParseNumbersWithPlusWithNoRegion() {
       phoneUtil.parse('tel:03-331-6005;isub=12345;phone-context=+64',
                       RegionCode.ZZ)));
 
-  // It is important that we set the carrier code to an empty string, since we
-  // used ParseAndKeepRawInput and no carrier code was found.
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var nzNumberWithRawInput = NZ_NUMBER.clone();
   nzNumberWithRawInput.setRawInput('+64 3 331 6005');
   nzNumberWithRawInput.setCountryCodeSource(i18n.phonenumbers.PhoneNumber
       .CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
-  nzNumberWithRawInput.setPreferredDomesticCarrierCode('');
   assertTrue(nzNumberWithRawInput.equals(
       phoneUtil.parseAndKeepRawInput('+64 3 331 6005', RegionCode.ZZ)));
   // Null is also allowed for the region code in these cases.
@@ -2935,6 +3399,11 @@ function testParseExtensions() {
   assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 , ext 7246433', RegionCode.US)));
   assertTrue(usWithExtension.equals(
+      phoneUtil.parse('(800) 901-3355 ; 7246433', RegionCode.US)));
+  // To test an extension character without surrounding spaces.
+  assertTrue(usWithExtension.equals(
+      phoneUtil.parse('(800) 901-3355;7246433', RegionCode.US)));
+  assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 ,extension 7246433', RegionCode.US)));
   assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 ,extensi\u00F3n 7246433',
@@ -2981,7 +3450,6 @@ function testParseAndKeepRaw() {
   var alphaNumericNumber = ALPHA_NUMERIC_NUMBER.clone();
   alphaNumericNumber.setRawInput('800 six-flags');
   alphaNumericNumber.setCountryCodeSource(CCS.FROM_DEFAULT_COUNTRY);
-  alphaNumericNumber.setPreferredDomesticCarrierCode('');
   assertTrue(alphaNumericNumber.equals(
       phoneUtil.parseAndKeepRawInput('800 six-flags', RegionCode.US)));
 
@@ -2991,7 +3459,6 @@ function testParseAndKeepRaw() {
   shorterAlphaNumber.setNationalNumber(8007493524);
   shorterAlphaNumber.setRawInput('1800 six-flag');
   shorterAlphaNumber.setCountryCodeSource(CCS.FROM_NUMBER_WITHOUT_PLUS_SIGN);
-  shorterAlphaNumber.setPreferredDomesticCarrierCode('');
   assertTrue(shorterAlphaNumber.equals(
       phoneUtil.parseAndKeepRawInput('1800 six-flag', RegionCode.US)));
 
@@ -3015,7 +3482,7 @@ function testParseAndKeepRaw() {
     // Expected this exception.
     assertEquals('Wrong error type stored in exception.',
                  i18n.phonenumbers.Error.INVALID_COUNTRY_CODE,
-                 e);
+                 e.message);
   }
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -3128,6 +3595,9 @@ function testIsNumberMatchMatches() {
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005 extn 1234',
                                        '+6433316005#1234'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch('+64 3 331-6005 ext. 1234',
+                                       '+6433316005;1234'));
   // Test proto buffers.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch(NZ_NUMBER, '+6403 331 6005'));
@@ -3145,7 +3615,82 @@ function testIsNumberMatchMatches() {
   assertEquals('Numbers did not match',
                i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch(nzNumber, NZ_NUMBER));
+}
 
+function testIsNumberMatchShortMatchIfDiffNumLeadingZeros() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberOne = new i18n.phonenumbers.PhoneNumber();
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberTwo = new i18n.phonenumbers.PhoneNumber();
+
+  nzNumberOne.setCountryCode(64);
+  nzNumberOne.setNationalNumber(33316005);
+  nzNumberOne.setItalianLeadingZero(true);
+
+  nzNumberTwo.setCountryCode(64);
+  nzNumberTwo.setNationalNumber(33316005);
+  nzNumberTwo.setItalianLeadingZero(true);
+  nzNumberTwo.setNumberOfLeadingZeros(2);
+
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+
+  nzNumberOne.setItalianLeadingZero(false);
+  nzNumberOne.setNumberOfLeadingZeros(1);
+  nzNumberTwo.setItalianLeadingZero(true);
+  nzNumberTwo.setNumberOfLeadingZeros(1);
+  // Since one doesn't have the "italian_leading_zero" set to true, we ignore
+  // the number of leading zeros present (1 is in any case the default value).
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.SHORT_NSN_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+}
+
+function testIsNumberMatchAcceptsProtoDefaultsAsMatch() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberOne = new i18n.phonenumbers.PhoneNumber();
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberTwo = new i18n.phonenumbers.PhoneNumber();
+
+  nzNumberOne.setCountryCode(64);
+  nzNumberOne.setNationalNumber(33316005);
+  nzNumberOne.setItalianLeadingZero(true);
+
+  // The default for number_of_leading_zeros is 1, so it shouldn't normally be
+  // set, however if it is it should be considered equivalent.
+  nzNumberTwo.setCountryCode(64);
+  nzNumberTwo.setNationalNumber(33316005);
+  nzNumberTwo.setItalianLeadingZero(true);
+  nzNumberTwo.setNumberOfLeadingZeros(1);
+
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+}
+
+function testIsNumberMatchMatchesDiffLeadingZerosIfItalianLeadingZeroFalse() {
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberOne = new i18n.phonenumbers.PhoneNumber();
+  /** @type {i18n.phonenumbers.PhoneNumber} */
+  var nzNumberTwo = new i18n.phonenumbers.PhoneNumber();
+
+  nzNumberOne.setCountryCode(64);
+  nzNumberOne.setNationalNumber(33316005);
+
+  // The default for number_of_leading_zeros is 1, so it shouldn't normally be
+  // set, however if it is it should be considered equivalent.
+  nzNumberTwo.setCountryCode(64);
+  nzNumberTwo.setNationalNumber(33316005);
+  nzNumberTwo.setNumberOfLeadingZeros(1);
+
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+
+  // Even if it is set to ten, it is still equivalent because in both cases
+  // italian_leading_zero is not true.
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+               phoneUtil.isNumberMatch(nzNumberOne, nzNumberTwo));
+}
+
+function testIsNumberMatchIgnoresSomeFields() {
   var CCS = i18n.phonenumbers.PhoneNumber.CountryCodeSource;
   // Check raw_input, country_code_source and preferred_domestic_carrier_code
   // are ignored.

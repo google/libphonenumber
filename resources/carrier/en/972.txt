@@ -13,6 +13,7 @@
 # limitations under the License.
 
 97250|Pelephone
+97251|Xphone
 97252|Cellcom
 97253|Hot Mobile
 97254|Orange
@@ -23,11 +24,14 @@
 9725533|Free Telecom
 9725566|Rami Levy
 9725567|Rami Levy
+9725568|Rami Levy
 9725570|Cellact
 9725571|Cellact
 9725587|Alon
 9725588|Alon
 9725589|Alon
+9725592|Telzar
+9725593|Telzar
 9725594|Telzar
 9725595|Telzar
 9725596|Telzar

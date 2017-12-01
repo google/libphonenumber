@@ -38,7 +38,7 @@ import java.util.logging.Logger;
  */
 public class MappingFileProviderTest extends TestCase {
   private final MappingFileProvider mappingProvider = new MappingFileProvider();
-  private static final Logger LOGGER = Logger.getLogger(MappingFileProviderTest.class.getName());
+  private static final Logger logger = Logger.getLogger(MappingFileProviderTest.class.getName());
 
   public MappingFileProviderTest() {
     SortedMap<Integer, Set<String>> mapping = new TreeMap<Integer, Set<String>>();
@@ -68,7 +68,7 @@ public class MappingFileProviderTest extends TestCase {
           new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
       assertEquals(mappingProvider.toString(), newMappingProvider.toString());
     } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, e.getMessage());
+      logger.log(Level.SEVERE, e.getMessage());
       fail();
     }
   }

@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>7.4.3-SNAPSHOT</version>
+  <version>8.8.8-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>https://github.com/googlei18n/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>7.4.3-SNAPSHOT</version>
+    <version>8.8.8-SNAPSHOT</version>
   </parent>
 
   <build>
@@ -30,51 +30,66 @@
     </testResources>
     <plugins>
       <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>3.2.0</version>
         <configuration>
-          <excludes>
-            <exclude>com/google/i18n/phonenumbers/SingleFileMetadataSourceImpl.class</exclude>
-            <exclude>com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto</exclude>
-          </excludes>
+          <instructions>
+            <Export-Package>com.google.i18n.phonenumbers</Export-Package>
+          </instructions>
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.2</version>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
         <executions>
           <execution>
+            <id>default-jar</id>
+            <configuration>
+              <archive>
+                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+              </archive>
+            </configuration>
+          </execution>
+          <execution>
+            <id>no-metadata</id>
             <phase>package</phase>
             <goals>
-              <goal>shade</goal>
+              <goal>jar</goal>
             </goals>
             <configuration>
-              <relocations>
-                <relocation>
-                  <pattern>com.google.protobuf</pattern>
-                  <shadedPattern>
-                    com.google.i18n.phonenumbers.repackaged.com.google.protobuf
-                  </shadedPattern>
-                </relocation>
-              </relocations>
+              <classifier>no-metadata</classifier>
+              <archive>
+                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+              </archive>
+              <excludes>
+                <exclude>com/google/i18n/phonenumbers/data/*</exclude>
+              </excludes>
             </configuration>
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>animal-sniffer-maven-plugin</artifactId>
+        <version>1.15</version>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <signature>
+            <groupId>org.codehaus.mojo.signature</groupId>
+            <artifactId>java15</artifactId>
+            <version>1.0</version>
+          </signature>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
-
-  <repositories>
-    <repository>
-      <id>protobuf-java-lib</id>
-      <url>file://${project.basedir}/../lib</url>
-    </repository>
-  </repositories>
-  <dependencies>
-    <dependency>
-      <groupId>com.google.protobuf</groupId>
-      <artifactId>protobuf-java</artifactId>
-      <version>2.6.1</version>
-    </dependency>
-  </dependencies>
 
 </project>
