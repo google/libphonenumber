@@ -563,10 +563,7 @@
               )
             )|
             555|
-            9(?:
-              [13-5]\d{3}|
-              [679]\d{5}
-            )
+            9[13-5]\d{3}
           )|
           225|
           7(?:
@@ -608,10 +605,10 @@
               34|
               456
             )|
-            9\d{4,6}
+            9\d{4}
           )
         </nationalNumberPattern>
-        <possibleLengths national="[4-8]"/>
+        <possibleLengths national="[4-6]"/>
         <exampleNumber>191123</exampleNumber>
       </premiumRate>
       <carrierSpecific>
@@ -5244,7 +5241,7 @@
                   23
                 )
               )|
-              8\d{2}?
+              8\d{2}
             )|
             3977|
             9(?:
