@@ -117,8 +117,11 @@
 212698|Inwi
 212699|Inwi
 212700|Inwi
+212706|Inwi
 212707|Inwi
 212761|Maroc Telecom
 212762|Maroc Telecom
+212766|Maroc Telecom
+212767|Maroc Telecom
 212770|Méditel
 212777|Méditel

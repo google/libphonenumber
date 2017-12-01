@@ -1870,10 +1870,10 @@
       <!-- The general desc and fixed line number patterns are different from Finland metadata. -->
       <generalDesc>
         <nationalNumberPattern>
-          [15]\d{6,9}|
+          [13]\d{5,9}|
           2\d{4,9}|
-          3\d{5,9}|
-          4\d{7,10}|
+          4\d{6,10}|
+          5\d{6,9}|
           [67]\d{7,9}|
           8\d{7,8}
         </nationalNumberPattern>
@@ -1910,11 +1910,11 @@
       </fixedLine>
       <!-- The mobile, toll free, premium rate and UAN numbers are copied from Finland. -->
       <mobile>
-        <possibleLengths national="[8-11]"/>
+        <possibleLengths national="[7-10]"/>
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
           4(?:
-            [0-8]\d{6,8}|
+            [0-8]\d{5,8}|
             9\d{9}
           )|
           50\d{6,8}
@@ -1937,16 +1937,12 @@
              assigned to institutions such as universities, the national post, etc, where they are
              not otherwise classified as toll-free or premium-rate numbers. Prefixes 70[78] and 7099
              are not added here as we could not find any online working numbers. Instead of prefix
-             39, the more detailed 393 prefix has been added based on https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/businessnumbers/nationwidebusinessnumbersgrantedtotelecomsoperators.html
-             As per ITU doc prefix 306 is of 8 to 10 digits but we found 6 digit online working
-             number. As per phone numbering plan in viestintavirasto.fi, 29X 'Nationwide Subscriber
-             Numbers' are of length 8 to 10 digits. Also found few valid numbers online which are of
-             7 digits. Added support to 105XXXX, 205XXX and 344XXX ranges based on user report. The
-             length of these numbers are shorter when compared with official plan. -->
+             39, the more detailed 393 prefix has been added based on https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/businessnumbers/nationwidebusinessnumbersgrantedtotelecomsoperators.html -->
         <nationalNumberPattern>
           10(?:
             0\d{4,6}|
-            [1-46-9]\d{5,7}|
+            [1-37-9]\d{5,7}|
+            [46]\d{3,7}|
             5\d{4,7}
           )|
           2(?:
@@ -4443,8 +4439,7 @@
             71
           )\d{5}|
           4(?:
-            [0-2]\d|
-            3[0-57-9]|
+            [0-3]\d|
             4[047-9]|
             5[0-25-9]|
             6[6-9]|
@@ -4465,9 +4460,14 @@
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
-        <possibleLengths national="10"/>
+        <possibleLengths national="8,10"/>
         <exampleNumber>1900123456</exampleNumber>
-        <nationalNumberPattern>190[0126]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          19(?:
+            0[0126]\d|
+            [679]
+          )\d{5}
+        </nationalNumberPattern>
       </premiumRate>
       <sharedCost>
         <possibleLengths national="6,10"/>
@@ -5883,8 +5883,7 @@
             71
           )\d{5}|
           4(?:
-            [0-2]\d|
-            3[0-57-9]|
+            [0-3]\d|
             4[047-9]|
             5[0-25-9]|
             6[6-9]|
@@ -5905,9 +5904,14 @@
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
-        <possibleLengths national="10"/>
+        <possibleLengths national="8,10"/>
         <exampleNumber>1900123456</exampleNumber>
-        <nationalNumberPattern>190[0126]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          19(?:
+            0[0126]\d|
+            [679]
+          )\d{5}
+        </nationalNumberPattern>
       </premiumRate>
       <sharedCost>
         <possibleLengths national="6,8,10"/>
@@ -7222,8 +7226,9 @@
               8[0-247-9]
             )|
             7(?:
-              [07][07]|
-              6[12]
+              0[067]|
+              6[1267]|
+              7[07]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -7616,10 +7621,11 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [16]\d{6,9}|
+          1\d{5,9}|
           2\d{4,9}|
           [35]\d{5,9}|
-          4\d{7,10}|
+          4\d{5,10}|
+          6\d{6,9}|
           7\d{7,9}|
           8\d{6,8}|
           9\d{4,8}
@@ -7654,9 +7660,7 @@
         <possibleLengths national="[5-9]"/>
         <exampleNumber>131234567</exampleNumber>
         <!-- This is limited to geographic numbers - non-geographic nationwide subscriber numbers
-             are listed under UAN. It also excludes Åland numbers. As per official numbering plan
-             from viestintavirasto.fi, 9[1-8] fixed-line numbers can be of only 7, 8 and 9 digits in
-             length. Added support to 5 and 6 digits as per valid numbers found online. -->
+             are listed under UAN. It also excludes Åland numbers. -->
         <nationalNumberPattern>
           1[3-79][1-8]\d{4,6}|
           [23568][1-8]\d{5,7}|
@@ -7666,10 +7670,8 @@
       <mobile>
         <possibleLengths national="[6-11]"/>
         <exampleNumber>412345678</exampleNumber>
-        <!-- 50\d{4,5} is not mentioned in the ITU doc, but there are online working numbers with
-             these lengths, which users have reported as being issued by Radiolinja Finland. -->
         <nationalNumberPattern>
-          4[0-8]\d{6,8}|
+          4[0-8]\d{5,8}|
           50\d{4,8}
         </nationalNumberPattern>
       </mobile>
@@ -7690,16 +7692,12 @@
              assigned to institutions such as universities, the national post, etc, where they are
              not otherwise classified as toll-free or premium-rate numbers. Prefixes 70[78] and 7099
              are not added here as we could not find any online working numbers. Instead of prefix
-             39, the more detailed 393 prefix has been added based on https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/businessnumbers/nationwidebusinessnumbersgrantedtotelecomsoperators.html
-             As per ITU doc prefix 306 is of 8 to 10 digits but we found 6 digit online working
-             number. As per phone numbering plan in viestintavirasto.fi, 29X 'Nationwide Subscriber
-             Numbers' are of length 8 to 10 digits. Also found few valid numbers online which are of
-             7 digits. Added support to 105XXXX, 205XXX and 344XXX ranges based on user report. The
-             length of these numbers are shorter when compared with official plan. -->
+             39, the more detailed 393 prefix has been added based on https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/businessnumbers/nationwidebusinessnumbersgrantedtotelecomsoperators.html -->
         <nationalNumberPattern>
           10(?:
             0\d{4,6}|
-            [1-46-9]\d{5,7}|
+            [1-37-9]\d{5,7}|
+            [46]\d{3,7}|
             5\d{4,7}
           )|
           2(?:
@@ -9574,7 +9572,7 @@
       <fixedLine>
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>6713001234</exampleNumber>
-        <!-- Added 671 489/555/720/721 based on information from
+        <!-- Added 671 400/489/555/68[23]/720/721/972 based on information from
              http://www.area-codes.com/area-code/area-code-671.asp -->
         <nationalNumberPattern>
           671(?:
@@ -9586,6 +9584,7 @@
               6[26]
             )|
             4(?:
+              00|
               56|
               7[1-9]|
               8[0236-9]
@@ -9600,24 +9599,24 @@
               4[24-9]|
               5[34]|
               78|
-              8[5-9]
+              8[235-9]
             )|
             7(?:
               [079]7|
               2[0167]|
               3[45]|
               47|
-              8[789]
+              8[7-9]
             )|
             8(?:
-              [2-5789]8|
+              [2-57-9]8|
               6[48]
             )|
             9(?:
               2[29]|
               6[79]|
-              7[179]|
-              8[789]|
+              7[1279]|
+              8[7-9]|
               9[78]
             )
           )\d{4}
@@ -9637,6 +9636,7 @@
               6[26]
             )|
             4(?:
+              00|
               56|
               7[1-9]|
               8[0236-9]
@@ -9651,24 +9651,24 @@
               4[24-9]|
               5[34]|
               78|
-              8[5-9]
+              8[235-9]
             )|
             7(?:
               [079]7|
               2[0167]|
               3[45]|
               47|
-              8[789]
+              8[7-9]
             )|
             8(?:
-              [2-5789]8|
+              [2-57-9]8|
               6[48]
             )|
             9(?:
               2[29]|
               6[79]|
-              7[179]|
-              8[789]|
+              7[1279]|
+              8[7-9]|
               9[78]
             )
           )\d{4}
@@ -9843,7 +9843,7 @@
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
-            [235-7]|
+            [2-7]|
             [89](?:
               0[1-9]|
               [1-9]
@@ -9866,7 +9866,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [235-7]\d{7}|
+          [2-7]\d{7}|
           8[0-3]\d{6,7}|
           9\d{4,10}
         </nationalNumberPattern>
@@ -9900,6 +9900,7 @@
         <exampleNumber>51234567</exampleNumber>
         <nationalNumberPattern>
           (?:
+            464|
             5(?:
               [1-59][0-46-9]|
               6[0-4689]|
@@ -11859,9 +11860,8 @@
               7(?:
                 0(?:
                   0[02-9]|
-                  [13-6][089]|
-                  [289]\d|
-                  7[89]
+                  [13-7][089]|
+                  [289]\d
                 )|
                 [1-9]\d{2}
               )|
@@ -12187,7 +12187,7 @@
              As per user reports and test results [16]\d{3} and [289]\d{3,4} shortcodes can be
              dialled by prefixing area codes. ITU mentions the length of Fixed Phone numbers are of
              5 to 10 digits. However, no valid numbers were found online are less than 10 digits,
-             so there's only support for 10 digits. ITU mentions another two "Fixed Phone"
+             so there's only support for 10 digits. ITU mentions multiple "Fixed Phone"
              categories called "Fixed wireless Access" and "Fixed Non geographical" along with plain
              "Fixed Phone" with geocoding details. As no more details are provided, they are
              supported as fixed-line numbers. -->
@@ -12211,12 +12211,12 @@
             )
           )|
           94(?:
-            000\d|
-            11[0-7]\d|
-            2\d{3}|
-            3016|
-            440\d
-          )\d{4}
+            000|
+            11[0-7]|
+            2\d{2}|
+            30[01]|
+            440
+          )\d{5}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -12231,12 +12231,13 @@
             [13]\d{3}|
             2[0-2]\d{2}|
             9(?:
-              0\d{2}|
+              [01]\d{2}|
               44\d|
               810|
               9(?:
-                00|
-                1[13]|
+                0[013]|
+                1[134]|
+                21|
                 9[89]
               )
             )
@@ -16172,7 +16173,8 @@
       <references>
         <sourceUrl>http://www.itu.int/oth/T0202000090/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/+212</sourceUrl>
-        <sourceUrl>https://www.anrt.ma/sites/default/files/blocs_de_numeros_par_operateur_juillet_2016.pdf</sourceUrl>
+        <sourceUrl>https://www.anrt.ma/content/plan-de-numerotation</sourceUrl>
+        <sourceUrl>https://www.anrt.ma/en/missions/gestion-des-ressources/numerotation</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="([5-7]\d{2})(\d{6})">
@@ -16284,8 +16286,9 @@
               8[0-247-9]
             )|
             7(?:
-              [07][07]|
-              6[12]
+              0[067]|
+              6[1267]|
+              7[07]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -22404,7 +22407,7 @@
          and without this area code. The nationalPrefixForParsing and nationalPrefixTransformRule
          are used to ensure that if the 0549 is not present, it will be added. -->
     <territory id="SM" countryCode="378" internationalPrefix="00"
-               nationalPrefixForParsing="(?:0549)?([89]\d{5})" nationalPrefixTransformRule="0549$1">
+               nationalPrefixForParsing="([89]\d{5})" nationalPrefixTransformRule="0549$1">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000B5/en</sourceUrl>
         <!-- Information about Italy. -->
@@ -26067,6 +26070,7 @@
                nationalPrefixFormattingRule="$NP$FG">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000E8/en</sourceUrl>
+        <sourceUrl>https://www.zicta.zm/Downloads/Numbering%20Plan.pdf</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="([29]\d)(\d{7})">
@@ -26089,17 +26093,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>955123456</exampleNumber>
-        <!-- Adding extra prefixes 50 and 6[1-57-9] since SMS messages have been successfully
-             delivered to these numbers, and numbers like this can be found on the Internet. Adding
-             prefix 960 based on information received from MTN Zambia. The 97 range has been
-             expanded based on their IR21 document, which states the range 97[1-9] is used.
-             Added 95[3489] and 970 prefixes based on numbers found online. -->
-        <nationalNumberPattern>
-          9(?:
-            5[034589]|
-            [67]\d
-          )\d{6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>9[4-9]\d{7}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="9"/>
