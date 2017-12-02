@@ -13181,7 +13181,7 @@
         <!-- Some leading digits are explicitly reserved for a particular purpose.
              We handle them first in this rule, and let the following rules ignore those exceptions.
              Note: The rule here is not in the files we rely on when creating the other rules.
-                   We would need to manually modify it if the Japanese goverment
+                   We would need to manually modify it if the Japanese government
                    decided to change the rule.
 
              (prefix): purpose
@@ -21262,7 +21262,7 @@
         <sourceUrl>http://en.wikipedia.org/wiki/%2B7</sourceUrl>
       </references>
       <availableFormats>
-        <!-- Formatting from wikipedia, confirmed on Goverment websites such as
+        <!-- Formatting from wikipedia, confirmed on government websites such as
              http://www.minjust.ru/ru/structure/contact/. Contains formatting instructions for
              Kazakhstan as well. -->
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$FG">
