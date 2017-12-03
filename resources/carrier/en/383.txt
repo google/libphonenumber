@@ -21,9 +21,13 @@
 # Telekomi i Kosovës sh.a. - kosovotelecom.com: vala
 # IPKO Telecommunications LLC - ipko.com: IPKO
 # Dardafon.Net LLC - zmobileonline.com: Z Mobile
-# mts D.O.O. - mtsdoo.com: mts
+# mts D.O.O. - mtsdoo.com: mts d.o.o.
+# Dukagjini Telecommunication SH.P.K. - d3-mobile.com: D3 Mobile
 
 
+383432|D3 Mobile
+383433|D3 Mobile
+383434|D3 Mobile
 383435|IPKO
 383436|IPKO
 383437|IPKO
@@ -40,12 +44,12 @@
 383458|vala
 383459|vala
 383461|Z Mobile
-3834710|mts
-3834711|mts
-3834712|mts
-3834713|mts
-3834714|mts
-3834715|mts
+3834710|mts d.o.o.
+3834711|mts d.o.o.
+3834712|mts d.o.o.
+3834713|mts d.o.o.
+3834714|mts d.o.o.
+3834715|mts d.o.o.
 383491|IPKO
 383492|IPKO
 383493|IPKO
