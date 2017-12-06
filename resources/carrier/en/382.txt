@@ -12,18 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# We are using this instead of ITU:
-# https://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro#Mobile_Telephony
+# Source:
+# Assigned numbers, EKIP: http://www.ekip.me/eng/numbering/assigned.php
 #
-# Mtel changed their branding to m:tel as you can see here:
-# http://mtel.me
-# Crnogorski Telekom brands themselves as Telekom only (http://telekom.me),
-# as does Deutsche Telekom and Magyar Telekom, a group which
-# Crnogorski Telekom is part of.
+# Carriers:
+# m:tel d.o.o. - mtel.me: m:tel
+# Telenor Crna Gora d.o.o. - telenor.me: telenor
+# Crnogorski Telekom a.d. - telekom.me: Telekom
+
+# Last check: 6/12/2017
+# Last update: 6/16/2017
 
 38260|m:tel
-38263|Telenor
+38263|telenor
 38266|Telekom
 38267|Telekom
 38268|m:tel
-38269|Telenor
+38269|telenor
