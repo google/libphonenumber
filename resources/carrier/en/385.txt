@@ -12,11 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-38591|Vip
-38592|Vip
+# Source:
+# Assigned numbers, HAKOM: https://www.hakom.hr/default.aspx?id=817
+
+# Carriers:
+# Hrvatski Telekom: hrvatskitelekom.hr - Hrvatski Telekom d.d.
+# vip: vipnet.hr - VIPnet d.o.o.
+# Tele2: tele2.hr - Tele2 d.o.o.
+# bonbon: bonbon.hr - Hrvatski Telekom d.d.
+# Telefocus: telefocus.hr - TELEFOCUS d.o.o.
+
+# Last check: 6/12/2017
+# Last update: 6/12/2017
+
+38591|vip
+38592|vip
 38595|Tele2
+385970|Hrvatski Telekom
+3859751|Telefocus
 385976|Bonbon
 385977|Bonbon
-385979|MultiPlus
-38598|T-Mobile
-38599|T-Mobile
+385979|Hrvatski Telekom
+38598|Hrvatski Telekom
+38599|Hrvatski Telekom
