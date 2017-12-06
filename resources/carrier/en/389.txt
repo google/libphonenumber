@@ -12,26 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-38970|T-Mobile
-38971|T-Mobile
-38972|T-Mobile
-389732|Albafone
-3897421|Mobik Telekomunikacii
-38975|one.Vip
-38976|one.Vip
-38977|one.Vip
-38978|one.Vip
-389792|one.Vip
-3897930|one.Vip
-3897931|one.Vip
-3897932|one.Vip
-3897933|one.Vip
-3897934|one.Vip
-3897935|one.Vip
-3897936|one.Vip
-38979370|one.Vip
-38979371|one.Vip
-38979372|one.Vip
-38979373|one.Vip
-38979374|one.Vip
-38979375|one.Vip
+# Source:
+# Allocated numbers, AEK: https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries
+
+# Carriers:
+# Makedonski Telekom AD - Skopje - telekom.mk: Telekom
+# one.Vip DOOEL Skopje - vip.mk: Vip
+# Lycamobile DOOEL Skopje - lycamobile.mk: Lycamobile
+# Mobik Telekomunikacii DOOEL - mobik.mk: Mobik
+
+# Last check: 6/12/2017
+# Last update: 6/12/2017
+
+38970|Telekom
+38971|Telekom
+38972|Telekom
+389732|Vip
+389733|Telekom
+389734|Vip
+3897421|Mobik
+38975|Vip
+38976|Vip
+38977|Vip
+38978|Vip
+38979|Lycamobile
