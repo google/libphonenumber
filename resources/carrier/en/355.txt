@@ -20,6 +20,9 @@
 # Telekom Albania sh.a. - telekom.com.al: Telekom
 # Vodafone Albania sh.a. - vodafone.al: Vodafone
 
+# Last check: 5/12/2017
+# Last update: 5/12/2017
+
 35567|ALBtelecom
 35568|Telekom
 35569|Vodafone
