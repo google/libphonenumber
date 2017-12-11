@@ -18,6 +18,7 @@
 # name of Taitung City from https://en.wikipedia.org/wiki/Taitung_City,
 # transliterating it to Simplified Chinese using Google Translate.
 
+8524649|中信国际电讯
 852510|中国移动
 852511|新移动通讯
 852512|中国移动

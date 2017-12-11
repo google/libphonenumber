@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](http://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.8.6.
+Last demo update: v8.8.8.
 
 If this number is lower than the [latest release's version
 number](http://github.com/googlei18n/libphonenumber/releases), we are between
@@ -223,6 +223,7 @@ maintenance processes.
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
 *   Ruby: https://github.com/mobi/telephone_number
+*   Rust: https://github.com/1aim/rust-phonenumber
 
 Alternatives to our own versions:
 
