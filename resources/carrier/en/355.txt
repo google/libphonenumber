@@ -12,7 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-35566|Plus Communication
-35567|Eagle Mobile
-35568|AMC
+
+# 355 - Albania
+
+# Source(s):
+# -----------------------
+# AKEP: https://akep.al/images/stories/AKEP/plani-numracionit/1.NumraAlokuar.rar
+# -----------------------
+
+# Carriers:
+# -----------------------
+# ALBtelecom: albtelecom.al - ALBtelecom sh.a.
+# Telekom: telekom.com.al - Telekom Albania sh.a.
+# Vodafone: vodafone.al - Vodafone Albania sh.a.
+# -----------------------
+
+# -----------------------
+# Last checked: 5/12/2017
+# Last updated: 5/12/2017
+# -----------------------
+
+35567|ALBtelecom
+35568|Telekom
 35569|Vodafone
