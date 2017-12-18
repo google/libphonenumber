@@ -12,19 +12,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Source: http://registar.ratel.rs/en/reg202?action=table&vrsta=2000&filter=&operator=&broj=
 
-# Mobile Telephony of Serbia (mts) is mobile telephone subdivision of Telekom
-# Srbija. https://en.wikipedia.org/wiki/Telekom_Srbija
+# 381 - Serbia
 
-38160|VIP
-38161|VIP
+# Source(s):
+# -----------------------
+# RATEL: http://registar.ratel.rs/en/reg202?action=table&vrsta=2000&filter=&operator=&broj=
+# -----------------------
+
+# Carriers:
+# -----------------------
+# mts: mts.rs - Telekom Srbija a.d. Beograd
+# Vip: vipmobile.rs - Vip Mobile d.o.o.
+# Telenor: telenor.rs - Telenor d.o.o.
+# Globaltel: globaltel.rs - Globaltel d.o.o.
+# Vectone Mobile: vectonemobile.rs - Mundio Mobile d.o.o.
+# -----------------------
+
+# -----------------------
+# Last checked: 6/12/2017
+# Last updated: 6/12/2017
+# -----------------------
+
+38160|Vip
+38161|Vip
 38162|Telenor
 38163|Telenor
-38164|MTS Telekom Srbija
-38165|MTS Telekom Srbija
-38166|MTS Telekom Srbija
-381677|GLOBALTEL
-381678|Mundio Mobile
-38168|VIP
+38164|mts
+38165|mts
+38166|mts
+381677|Globaltel
+381678|Vectone Mobile
+38168|Vip
 38169|Telenor
