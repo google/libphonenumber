@@ -12,14 +12,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-38630|Si.mobil
-38631|Mobitel
-38640|Si.mobil
-38641|Mobitel
-38649|Mobitel
-38651|Mobitel
+
+# 386 - Slovenia
+
+# Source(s):
+# -----------------------
+# AKOS: http://www.akos-rs.si/numbering-space
+# -----------------------
+
+# Carriers:
+# -----------------------
+# Telekom Slovenije: telekom.si - Telekom Slovenije d.d.
+# A1: a1.si - A1 Slovenija d.d.
+# T-2: t-2.net - T-2 d.o.o.
+# telemach: telemach.si - Telemach širokopasovne komunikacije d.o.o.
+# HoT: hot.si - HoT mobil, telekomunikacije in storitve d.o.o.
+# Me2: me2.si - Mega M d.o.o.
+# SoftNET mobil: softnet.si/mobilna_telefonija - SoftNET informacijske infrastrukture d.o.o.
+# novatelmobil: mobil.novatel.si - Novatel d.o.o.
+# Compatel: compatel.com - Compatel Ltd.
+# SŽ - Infrastruktura: slo-zeleznice.si/sl/infrastruktura - SŽ - Infrastruktura d.o.o.
+# IPKO: ipko.com - IPKO Telecommunications l.l.c.
+# -----------------------
+
+# -----------------------
+# Last checked: 6/12/2017
+# Last updated: 6/12/2017
+# -----------------------
+
+38630|A1
+38631|Telekom Slovenije
+38640|A1
+38641|Telekom Slovenije
+38643|IPKO
+38649|IPKO
+38651|Telekom Slovenije
 38664|T-2
+386651|SŽ - Infrastruktura
+3866555|Me2
+3866560|SoftNET mobil
+3866570|novatelmobil
+38668|A1
+3866910|Compatel
 386696|HoT
 386699|HoT
-38670|Tušmobil
-38671|Mobitel
+38670|telemach
+38671|Telekom Slovenije
