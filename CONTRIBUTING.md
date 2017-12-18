@@ -10,19 +10,19 @@ library and know that we appreciate the time you put into making it better.
 ## Checklist before filing an issue
 
 Please check the following:
-*   Has the issue already been discussed in the
-    [issues](http://github.com/googlei18n/libphonenumber/issues) or [discussion
-    group](https://groups.google.com/group/libphonenumber-discuss)? If so, you
-    may want to comment on an existing discussion.
 *   Is the issue reproducible using the
     [demo](http://libphonenumber.appspot.com/)? If not:
     *   Your issue may be resolved by upgrading to the latest version of the
-        library.
+        library. (Reach out to the product/app team if you're not the developer!)
     *   If you are using a
         [port](http://github.com/googlei18n/libphonenumber#third-party-ports),
         issues should be reported against that project.
     *   If you are using the library through a front-end or wrapper, issues
         should be reported against that project.
+*   Has the issue already been discussed in the
+    [issues](http://issuetracker.google.com/issues/new?component=192347) or [discussion
+    group](https://groups.google.com/group/libphonenumber-discuss)? If so, you
+    may want to comment on an existing discussion.
 
 ## Filing a metadata issue
 
@@ -39,9 +39,12 @@ For acceptable evidence, [see below](#provide-supporting-evidence).
 *   Link from demo (http://libphonenumber.appspot.com) showing error:
 ```
 
-For issues affecting validation, formatting, or other aspects covered by the metadata,
-we invite you to file issues in Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347),
-which we're currently testing.
+From mid December to early January, we kindly request that you use Google's [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347)
+to report issues with the library. During this period we'll turn off the "Issues" tab here
+on GitHub. We apologize for any inconvenience (e.g. accessing old report) while we test this system!
+
+Alternatively, if you have a particular issue with a Google product handling phone numbers (e.g. signup),
+you may also use the [Google Product Forums](https://productforums.google.com/forum).
 
 ### Provide authoritative evidence
 
