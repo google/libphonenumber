@@ -12,10 +12,59 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# 40 - Romania
+
+# Source(s):
+# -----------------------
+# ANCOM: http://www.ancom.org.ro/Resurse-de-numerotatie_218
+# -----------------------
+
+# Carriers:
+# -----------------------
+# Vodafone: vodafone.ro - Vodafone Romania S.A.
+# Orange: orange.ro - Orange Romania S.A.
+# Telekom: telekom.ro - Telekom Romania Mobile Communications S.A.
+# Lycamobile: lycamobile.ro - Lycamobile S.A.
+# Digi Mobil: rcs-rds.ro - RCS & RDS S.A.
+# 2K Telecom: 2ktelecom.ro - 2K TELECOM S.R.L.
+# Enigma-System: enigma-system.net - ENIGMA-SYSTEM.NET S.R.L.
+# Iristel: iristel.ro - Iristel Romania S.R.L
+# -----------------------
+
+# -----------------------
+# Last checked: 7/12/2017
+# Last updated: 7/12/2017
+# -----------------------
+
+407000|Enigma-System
 40701|Lycamobile
+407020|Lycamobile
+40705|Iristel
+40711|Telekom
+407120|2K Telecom
 4072|Vodafone
-4073|Vodafone
+40730|Vodafone
+40731|Vodafone
+40732|Vodafone
+40733|Vodafone
+40734|Vodafone
+40735|Vodafone
+40736|Vodafone
+40737|Vodafone
+40738|Vodafone
 4074|Orange
 4075|Orange
 4076|Telekom
-4077|Digi.Mobil
+40770|Digi Mobil
+40771|Digi Mobil
+40772|Digi Mobil
+40773|Digi Mobil
+40774|Digi Mobil
+40775|Digi Mobil
+40776|Digi Mobil
+40784|Telekom
+40785|Telekom
+40786|Telekom
+40787|Telekom
+40799|Vodafone
