@@ -167,6 +167,17 @@
         <possibleLengths national="10"/>
         <exampleNumber>5002345678</exampleNumber>
       </personalNumber>
+      <shortCode>
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>911</exampleNumber>
+      </shortCode>
+      <emergency>
+        <!-- http://www.justice.gov.gu/compileroflaws/gca/10gca/10gc084.PDF -->
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
     </territory>
 
     <!-- Universal International Premium Rate Number -->
