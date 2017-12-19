@@ -454,57 +454,6 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.clearNationalNumberPattern = functio
 
 
 /**
- * Gets the value of the national_number_matcher_data field.
- * @return {?string} The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.getNationalNumberMatcherData = function() {
-  return /** @type {?string} */ (this.get$Value(7));
-};
-
-
-/**
- * Gets the value of the national_number_matcher_data field or the default value if not set.
- * @return {string} The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.getNationalNumberMatcherDataOrDefault = function() {
-  return /** @type {string} */ (this.get$ValueOrDefault(7));
-};
-
-
-/**
- * Sets the value of the national_number_matcher_data field.
- * @param {string} value The value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.setNationalNumberMatcherData = function(value) {
-  this.set$Value(7, value);
-};
-
-
-/**
- * @return {boolean} Whether the national_number_matcher_data field has a value.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.hasNationalNumberMatcherData = function() {
-  return this.has$Value(7);
-};
-
-
-/**
- * @return {number} The number of values in the national_number_matcher_data field.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.nationalNumberMatcherDataCount = function() {
-  return this.count$Values(7);
-};
-
-
-/**
- * Clears the values in the national_number_matcher_data field.
- */
-i18n.phonenumbers.PhoneNumberDesc.prototype.clearNationalNumberMatcherData = function() {
-  this.clear$Field(7);
-};
-
-
-/**
  * Gets the value of the possible_length field at the index given.
  * @param {number} index The index to lookup.
  * @return {?number} The value.
@@ -2522,11 +2471,6 @@ i18n.phonenumbers.PhoneNumberDesc.prototype.getDescriptor = function() {
       2: {
         name: 'national_number_pattern',
         fieldType: goog.proto2.Message.FieldType.STRING,
-        type: String
-      },
-      7: {
-        name: 'national_number_matcher_data',
-        fieldType: goog.proto2.Message.FieldType.BYTES,
         type: String
       },
       9: {
