@@ -116,12 +116,12 @@ public class BuildMetadataJsonFromXml extends Command {
       writer.write("goog.provide('" + namespace + "');\n\n");
 
       writer.write(COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT);
-      writer.write(NAMESPACE + ".countryCodeToRegionCodeMap = ");
+      writer.write(namespace + ".countryCodeToRegionCodeMap = ");
       writeCountryCodeToRegionCodeMap(countryCodeToRegionCodeMap, writer);
       writer.write(";\n\n");
 
       writer.write(COUNTRY_TO_METADATA_COMMENT);
-      writer.write(NAMESPACE + ".countryToMetadata = ");
+      writer.write(namespace + ".countryToMetadata = ");
       writeCountryToMetadataMap(metadataCollection, writer);
       writer.write(";\n");
 

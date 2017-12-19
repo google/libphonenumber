@@ -30,7 +30,7 @@ goog.provide('i18n.phonenumbers.goldenmetadata');
  * indicated with "isMainCountryForCode" in the metadata should be first.
  * @type {!Object.<number, Array.<string>>}
  */
-i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
+i18n.phonenumbers.goldenmetadata.countryCodeToRegionCodeMap = {
 1:["GU"]
 ,54:["AR"]
 ,247:["AC"]
@@ -41,7 +41,7 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
  * A mapping from a region code to the PhoneMetadata for that region.
  * @type {!Object.<string, Array>}
  */
-i18n.phonenumbers.metadata.countryToMetadata = {
+i18n.phonenumbers.goldenmetadata.countryToMetadata = {
 "AC":[,[,,"[46]\\d{4}|[01589]\\d{5}",,,,,,,[5,6]
 ]
 ,[,,"6[2-467]\\d{3}",,,,"62889",,,[5]
