@@ -422,11 +422,8 @@ public class BuildMetadataJsonFromXml extends Command {
     // optional PhoneNumberDesc carrier_specific = 31;
     toJsArray(metadata.getCarrierSpecific(), jsArrayBuilder);
     // optional bool mobile_number_portable_region = 32 [default=false];
-    if (metadata.hasMobileNumberPortableRegion()) {
-      jsArrayBuilder.append(metadata.isMobileNumberPortableRegion());
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    // left as null because this data is not used in the current JS API's.
+    jsArrayBuilder.append(null);
     // optional PhoneNumberDesc sms_services = 33;
     toJsArray(metadata.getSmsServices(), jsArrayBuilder);
 
