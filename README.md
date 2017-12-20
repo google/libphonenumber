@@ -11,7 +11,7 @@ Cream Sandwich).
 
 # Quick links
 
-*   Reporting an issue? Want to send a pull request? See the [contribution
+*   **Reporting an issue?** Want to send a pull request? See the [contribution
     guidelines](CONTRIBUTING.md)
 *   Check the [frequently asked questions](FAQ.md)
 *   Fun! [Falsehoods Programmers Believe About Phone Numbers](FALSEHOODS.md)
