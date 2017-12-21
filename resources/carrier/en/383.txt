@@ -1,0 +1,62 @@
+# Copyright (C) 2017 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+# 383 - Kosovo
+
+# Source(s):
+# ------------------------
+# ARKEP: http://www.arkep-rks.org/?cid=1,50
+# ------------------------
+
+# Carriers:
+# ------------------------
+# vala: kosovotelecom.com - Telekomi i Kosovës Sh.A.
+# IPKO: ipko.com - IPKO Telecommunications Sh.P.K.
+# Z Mobile: zmobileonline.com - Dardafon.Net Sh.P.K.
+# mts d.o.o.: mtsdoo.com - mts D.O.O.
+# D3 Mobile: d3-mobile.com - Dukagjini Telecommunication Sh.P.K.
+# ------------------------
+
+# ------------------------
+# Last checked: 18/12/2017
+# Last updated: 18/12/2017
+# ------------------------
+
+383432|D3 Mobile
+383433|D3 Mobile
+383434|D3 Mobile
+383435|IPKO
+383436|IPKO
+383437|IPKO
+383438|IPKO
+383439|IPKO
+38344|vala
+383451|vala
+383452|vala
+383453|vala
+383454|vala
+383455|Z Mobile
+383456|Z Mobile
+383457|vala
+383458|vala
+383459|vala
+383461|Z Mobile
+3834710|mts d.o.o.
+3834711|mts d.o.o.
+3834712|mts d.o.o.
+3834713|mts d.o.o.
+3834714|mts d.o.o.
+3834715|mts d.o.o.
+38349|IPKO
