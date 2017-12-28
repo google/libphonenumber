@@ -1,3 +1,10 @@
+Dec 06, 2017: v8.8.8
+Metadata changes:
+ - Updated phone metadata for region code(s): JM, MY
+ - Updated short number metadata for region code(s): US, ZA
+ - Updated carrier data for country calling code(s):
+   86 (en, zh, zh_Hant), 98 (en, fa)
+
 Nov 28, 2017: v8.8.7
 Build changes:
  - C++ library can now be built as 32- and 64-bit RPMs (#643).

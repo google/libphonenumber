@@ -11144,13 +11144,15 @@
         <exampleNumber>611</exampleNumber>
       </tollFree>
       <standardRate>
+        <!-- 29002 is standard rate as per test results. -->
         <nationalNumberPattern>
           2(?:
             3333|
             42242|
             56447|
             6688|
-            75622
+            75622|
+            9002
           )|
           3(?:
             1010|
@@ -11664,9 +11666,10 @@
       </shortCode>
       <standardRate>
         <!-- 37064, 43699 and 43946 are charged at standard rate w.r.t carrier as per confirmation
-             from smsportal.co.za. -->
+             from smsportal.co.za. 3078[23] are standard rate as per test results. -->
         <nationalNumberPattern>
           3(?:
+            078[23]|
             7(?:
               064|
               567

@@ -7,60 +7,22 @@ Please read the following before filing an issue or sending a pull request.
 We hope these guidelines will enhance your experience as a contributor to our
 library and know that we appreciate the time you put into making it better.
 
-## Pull requests
-
-We do not accept pull requests for validation, formatting, or timezone metadata
-updates.
-
-For changes specific to windows builds, see [Filing a code
-issue](#filing-a-code-issue) and make sure you have found a reviewer and tester
-before sending the pull request.
-
-We are happy to review and accept pull requests for the following:
-
-*   Carrier updates
-*   Geocoding updates
-*   Bug fixes
-*   Documentation and code hygiene cleanups
-
-This list is not exhaustive. To clarify whether we'd accept a pull request, and
-especially before spending significant time on one such as for a bug fix, we
-strongly encourage that you bring up the question on an issue.
-
-To get your pull request merged, we need the following:
-
-*   A CLA signature. See below.
-*   Responsiveness to back and forth review comments, because we will do a code
-    review.
-*   A link to a clear description of what the pull request intends to solve in a
-    [GitHub issue](https://github.com/googlei18n/libphonenumber/issues/new) or
-    Google's [Issue
-    Tracker](http://issuetracker.google.com/issues/new?component=192347).
-*   Tests that illustrate the issue, if applicable.
-*   Willingness and ability to implement the changes in C++, Java, and JS if
-    applicable. For example, changes to `PhoneNumberUtil.java` must be ported to
-    `phonenumberutil.cc` and `phonenumberutil.js`.
-    *   The initial pull request may contain the implementation in only one
-        language to get approval on the approach.
-
-If this is not possible, please file an issue instead.
-
 ## Checklist before filing an issue
 
 Please check the following:
-*   Has the issue already been discussed in the
-    [issues](http://github.com/googlei18n/libphonenumber/issues) or [discussion
-    group](https://groups.google.com/group/libphonenumber-discuss)? If so, you
-    may want to comment on an existing discussion.
 *   Is the issue reproducible using the
     [demo](http://libphonenumber.appspot.com/)? If not:
     *   Your issue may be resolved by upgrading to the latest version of the
-        library.
+        library. (Reach out to the product/app team if you're not the developer!)
     *   If you are using a
         [port](http://github.com/googlei18n/libphonenumber#third-party-ports),
         issues should be reported against that project.
     *   If you are using the library through a front-end or wrapper, issues
         should be reported against that project.
+*   Has the issue already been discussed in the
+    [issues](http://issuetracker.google.com/issues/new?component=192347) or [discussion
+    group](https://groups.google.com/group/libphonenumber-discuss)? If so, you
+    may want to comment on an existing discussion.
 
 ## Filing a metadata issue
 
@@ -77,9 +39,12 @@ For acceptable evidence, [see below](#provide-supporting-evidence).
 *   Link from demo (http://libphonenumber.appspot.com) showing error:
 ```
 
-For issues affecting validation, formatting, or other aspects covered by the metadata,
-we invite you to file issues in Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347),
-which we're currently testing.
+From mid December to early January, we kindly request that you use Google's [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347)
+to report issues with the library. During this period we'll turn off the "Issues" tab here
+on GitHub. We apologize for any inconvenience (e.g. accessing old report) while we test this system!
+
+Alternatively, if you have a particular issue with a Google product handling phone numbers (e.g. signup),
+you may also use the [Google Product Forums](https://productforums.google.com/forum).
 
 ### Provide authoritative evidence
 
@@ -130,6 +95,44 @@ license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
         issue, with instructions for sending private documentation to our closed
         mailing list. Only the core libphonenumber team has access to view
         emails sent to this address.
+
+## Pull requests
+
+We do not accept pull requests for validation, formatting, or timezone metadata
+updates.
+
+For changes specific to windows builds, see [Filing a code
+issue](#filing-a-code-issue) and make sure you have found a reviewer and tester
+before sending the pull request.
+
+We are happy to review and accept pull requests for the following:
+
+*   Carrier updates
+*   Geocoding updates
+*   Bug fixes
+*   Documentation and code hygiene cleanups
+
+This list is not exhaustive. To clarify whether we'd accept a pull request, and
+especially before spending significant time on one such as for a bug fix, we
+strongly encourage that you bring up the question on an issue.
+
+To get your pull request merged, we need the following:
+
+*   A CLA signature. See below.
+*   Responsiveness to back and forth review comments, because we will do a code
+    review.
+*   A link to a clear description of what the pull request intends to solve in a
+    [GitHub issue](https://github.com/googlei18n/libphonenumber/issues/new) or
+    Google's [Issue
+    Tracker](http://issuetracker.google.com/issues/new?component=192347).
+*   Tests that illustrate the issue, if applicable.
+*   Willingness and ability to implement the changes in C++, Java, and JS if
+    applicable. For example, changes to `PhoneNumberUtil.java` must be ported to
+    `phonenumberutil.cc` and `phonenumberutil.js`.
+    *   The initial pull request may contain the implementation in only one
+        language to get approval on the approach.
+
+If this is not possible, please file an issue instead.
 
 ## Filing a code issue
 
