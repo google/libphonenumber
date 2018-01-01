@@ -12,9 +12,115 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-30690|Wind
-30693|Wind
+
+# 30 - Greece
+
+# Source(s):
+# -----------------------
+# EETT: http://www.eett.gr/opencms/opencms/EETT_EN/Electronic_Communications/Telecoms/Numbering/search.html?cat=esa_non
+# -----------------------
+
+# Carriers:
+# -----------------------
+# COSMOTE: cosmote.gr - COSMOTE MOBILE TELECOMMUNICATIONS S.A.
+# Vodafone: vodafone.gr - Vodafone-Panafon Hellenic Telecommunications Company S.A.
+# WIND: wind.gr - WIND HELLAS TELECOMMUNICATIONS S.A.
+# Cyta: cyta.gr - Cyta Hellas S.A.
+# Inter Telecom: intertelecom.gr - Inter Telecom O.E.
+# Nova: nova.gr - Forthnet S.A.
+# OTEGLOBE: oteglobe.gr - OTEGLOBE S.A.
+# OTE: cosmote.gr/otegroup - OTE S.A.
+# OSE: ose.gr - OSE S.A.
+# BWS: marketing.gr - Business Web Solutions Ε.Π.Ε.
+# AMD Telecom: amdtelecom.net - AMD Telecom S.A.
+# M-STAT: m-stat.gr - M-STAT S.A.
+# Apifon: apifon.com - Apifon S.M.P.C.
+# Yuboto: yuboto.com - Yuboto Ltd.
+# Compatel: compatel.com - Compatel Ltd.
+# MI Carrier Services: [http://www.solidinfo.se/foretag/mi-carrier-services-ab] MI CARRIER SERVICES AB
+# Premium Net International: premiumnetinternational.com - SC PREMIUM NET INTERNATIONAL SRL
+# -----------------------
+
+# -----------------------
+# Last checked: 7/12/2017
+# Last updated: 7/12/2017
+# -----------------------
+
+30685185|Cyta
+3068519|Cyta
+30685500|Cyta
+30685501|BWS
+30685505|Cyta
+30685550|Cyta
+30685555|Cyta
+30685585|Cyta
+30687500|BWS
+30688500|BWS
+30689900|OTEGLOBE
+30690000|BWS
+30690100|MI Carrier Services
+30690199|BWS
+30690200|MI Carrier Services
+30690299|BWS
+30690300|MI Carrier Services
+30690399|BWS
+30690400|MI Carrier Services
+30690499|BWS
+30690500|MI Carrier Services
+30690555|AMD Telecom
+30690574|BWS
+30690599|BWS
+306906|WIND
+306907|WIND
+306908|WIND
+306909|WIND
+30691000|BWS
+30691234|M-STAT
+30691345|Nova
+30691400|AMD Telecom
+30691600|Compatel
+30691700|Inter Telecom
+30691888|OSE
+30692354|Premium Net International
+30692428|Premium Net International
+30693|WIND
 30694|Vodafone
-30695|Vodafone
-30697|Cosmote
-30698|Cosmote
+306950|Vodafone
+306951|Vodafone
+30695200|Compatel
+30695210|MI Carrier Services
+3069522|Vodafone
+3069523|Vodafone
+30695290|MI Carrier Services
+30695299|BWS
+3069530|Cyta
+30695310|MI Carrier Services
+30695328|Premium Net International
+30695330|Apifon
+30695340|AMD Telecom
+30695355|Cyta
+30695400|AMD Telecom
+30695410|MI Carrier Services
+30695490|MI Carrier Services
+30695499|M-STAT
+306955|Vodafone
+306956|Vodafone
+306957|Vodafone
+306958|Vodafone
+306959|Vodafone
+3069601|OTE
+30697|COSMOTE
+30698|COSMOTE
+3069900|WIND
+30699022|Yuboto
+30699046|Premium Net International
+30699048|AMD Telecom
+306991|WIND
+306992|WIND
+306993|WIND
+306994|WIND
+306995|WIND
+306996|WIND
+306997|WIND
+306998|WIND
+306999|WIND
