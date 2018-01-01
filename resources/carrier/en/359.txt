@@ -12,8 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-35987|Vivacom
-35988|M-Tel
-35989|GLOBUL
-35998|GLOBUL
-359999|MAX
+# 359 - Bulgaria
+
+# Source(s):
+# -----------------------
+# CRC: http://crc.bg:8080/dpls/apex/f?p=923:1512:3529024143652469::NO::P1512_ADV,P1512_REGION_CONTROL,P1512_X:1,1,1
+# -----------------------
+
+# Carriers:
+# -----------------------
+# VIVACOM: vivacom.bg - Bulgarian Telecommunication Company EAD [Българска телекомуникационна компания ЕАД]
+# Mtel: mtel.bg - Mobiltel EAD [Мобилтел ЕАД]
+# Telenor: telenor.bg - Telenor Bulgaria EAD [ТЕЛЕНОР БЪЛГАРИЯ ЕАД]
+# Bulsatcom: bulsat.com - Bulsatcom EAD [БУЛСАТКОМ ЕАД]
+# Max: maxtelecom.bg - Max Telecom Ltd. [МАКС ТЕЛЕКОМ ООД]
+# bob: bob.bg - Mobiltel EAD [Мобилтел ЕАД]
+# -----------------------
+
+# -----------------------
+# Last checked: 7/12/2017
+# Last updated: 7/12/2017
+# -----------------------
+
+35987|VIVACOM
+35988|Mtel
+35989|Telenor
+359988|bob
+359989|Mtel
+359996|Bulsatcom
+359999|Max
