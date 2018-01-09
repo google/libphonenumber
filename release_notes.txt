@@ -1,3 +1,19 @@
+Jan 09, 2018: v8.8.9
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, AX, BA, BB, BL, BM, BS, CA, CC, CN, CX, DM, DO, FI, FJ, GD, GF,
+   GP, GR, GU, HK, ID, IN, IS, JM, KN, KY, LC, MF, MK, MP, MQ, MS, NL, NP, NZ,
+   PM, PR, RE, RO, SX, TC, TG, TT, US, VC, VG, VI, YT, ZM, ZW
+ - Updated short number metadata for region code(s): GB, GG, JE, ZW
+ - New geocoding data for country calling code(s): 387 (bs, en, hr, sr)
+ - Updated geocoding data for country calling code(s):
+   31 (en, nl), 61 (en), 263 (en), 381 (sr)
+ - New carrier data for country calling code(s): 502 (en)
+ - Updated carrier data for country calling code(s):
+   30 (en), 40 (en), 86 (en, zh, zh_Hant), 91 (en), 228 (en), 262 (en),
+   354 (en), 355 (en), 359 (en), 386 (en), 387 (en), 389 (en), 508 (en),
+   590 (en), 594 (en), 596 (en), 977 (en)
+
 Dec 06, 2017: v8.8.8
 Metadata changes:
  - Updated phone metadata for region code(s): JM, MY
