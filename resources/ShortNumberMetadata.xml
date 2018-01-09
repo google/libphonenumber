@@ -4331,7 +4331,7 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[01]|
+            0[015]|
             1(?:
               [12]|
               6(?:
@@ -4412,6 +4412,7 @@
       <tollFree>
         <nationalNumberPattern>
           1(?:
+            05|
             16\d{3}|
             7[56]0|
             8000
@@ -4455,11 +4456,14 @@
       </emergency>
       <expandedEmergency>
         <nationalNumberPattern>
-          116(?:
-            000|
-            1(?:
-              11|
-              23
+          1(?:
+            01|
+            16(?:
+              000|
+              1(?:
+                11|
+                23
+              )
             )
           )
         </nationalNumberPattern>
@@ -4614,7 +4618,7 @@
             )|
             55|
             800\d|
-            95
+            9[05]
           )|
           999
         </nationalNumberPattern>
@@ -6268,7 +6272,7 @@
               35?
             )|
             808|
-            9[135]
+            9[0135]
           )|
           23[234]|
           999
@@ -11765,18 +11769,52 @@
     <!-- http://www.itu.int/oth/T02020000E9/en -->
     <territory id="ZW">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[139]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          (?:
-            11[249]|
-            99[3-59]
+          11[2469]|
+          9(?:
+            5[023]|
+            6[0-25]|
+            9[3-59]
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3,5"/>
+        <exampleNumber>999</exampleNumber>
+      </shortCode>
+      <tollFree>
+        <!-- 95[023] and 961 are toll-free as per official articles. -->
+        <nationalNumberPattern>
+          9(?:
+            5[023]|
+            61
           )
         </nationalNumberPattern>
         <possibleLengths national="3"/>
-        <exampleNumber>999</exampleNumber>
-      </shortCode>
+        <exampleNumber>961</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>3\d{4}</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>30123</exampleNumber>
+      </premiumRate>
+      <carrierSpecific>
+        <!-- 114 emergency short code works only for NetOne subscribers. 95[023] and 96[0-25] short
+             codes can be dialled only from fixed-line. So adding here to alarm that they do not
+             work for all. -->
+        <nationalNumberPattern>
+          (?:
+            114|
+            9(?:
+              5[023]|
+              6[0-25]
+            )
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>114</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           (?:

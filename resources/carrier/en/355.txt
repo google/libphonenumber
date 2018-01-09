@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-35566|Plus Communication
-35567|Eagle Mobile
-35568|AMC
+# Plus (owner of mobile range 66) discontinued its activity of providing mobile
+# services to its subscribers on 01.01.2018. The existing subscribers are
+# advised to port to other networks. http://www.plus.al/
+
+35567|ALBtelecom
+35568|Telekom
 35569|Vodafone
