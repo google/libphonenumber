@@ -12,10 +12,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-40701|Lycamobile
+# Prefixes 78[08] were previously assigned to zapp.ro (TELEMOBIL S.A.) but they
+# are no longer operational and we are not aware to which operator it is
+# currently assigned.
+
+407000|Enigma-System
+407013|Lycamobile
+407014|Lycamobile
+407015|Lycamobile
+407016|Lycamobile
+407017|Lycamobile
+407018|Lycamobile
+407019|Lycamobile
+407020|Lycamobile
+407050|Iristel
+40711|Telekom
+407120|2K Telecom
 4072|Vodafone
 4073|Vodafone
 4074|Orange
 4075|Orange
 4076|Telekom
-4077|Digi.Mobil
+40770|Digi Mobil
+40771|Digi Mobil
+40772|Digi Mobil
+40773|Digi Mobil
+40774|Digi Mobil
+40775|Digi Mobil
+40776|Digi Mobil
+40783|Telekom
+40784|Telekom
+40785|Telekom
+40786|Telekom
+40787|Telekom
+40799|Vodafone

@@ -12,8 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Prefix 988 is assigned to Bob which is a subsidiary of Mtel.
+
 35987|Vivacom
-35988|M-Tel
-35989|GLOBUL
-35998|GLOBUL
+35988|Mtel
+35989|Telenor
+359988|Bob
+359989|Mtel
+359996|Bulsatcom
 359999|MAX

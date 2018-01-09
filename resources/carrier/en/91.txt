@@ -12,12 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+916000|Reliance Jio
 916001|Reliance Jio
 916002|Reliance Jio
 916003|Reliance Jio
+916200|Reliance Jio
+916201|Reliance Jio
+916239|Reliance Jio
+916260|Reliance Jio
 916280|Reliance Jio
 916281|Reliance Jio
 916282|Reliance Jio
+916290|Reliance Jio
+916294|Reliance Jio
+916300|Reliance Jio
+916301|Reliance Jio
 9163500|Reliance Jio
 9163501|Reliance Jio
 9163502|Reliance Jio
@@ -26,8 +35,16 @@
 9163505|Reliance Jio
 9163506|Reliance Jio
 916351|Reliance Jio
+916352|Reliance Jio
+916360|Reliance Jio
+916370|Reliance Jio
+916375|Reliance Jio
 916380|Reliance Jio
+916381|Reliance Jio
 916390|Vodafone
+916393|Reliance Jio
+916394|Reliance Jio
+916395|Reliance Jio
 916900|Airtel
 91700|Reliance Jio
 91701|Reliance Jio

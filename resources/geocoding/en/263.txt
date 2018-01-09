@@ -12,9 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from the ITU plan published 12th December 2012. The Wikipedia page
+# Generated from the ITU plan published 26th August 2016. The Wikipedia page
 # has many errors since it is based on the area codes before 2009.
 # The spelling of "Shanagani" has been corrected to "Shangani".
+
+# ITU provided geocoding details at more granular level (i.e areas within the
+# city like Airport and Hillside for Harare). Simplified the mappings as the
+# ITU does not list all the fixed-line ranges.
 
 26313|Victoria Falls
 26314|Rutenga
@@ -25,36 +29,47 @@
 26319|Plumtree
 263204|Odzi
 263205|Pengalonga
-26320|Mutare
-263213284|Victoria Falls
+263206|Mutare
+26321|Murambinda
 263213|Victoria Falls
 263219|Plumtree
-26321|Murambinda
-263220|Mutare
+263220201|Chikanga/Mutare
+263220202|Mutare
+263220203|Dangamvura
 263221|Murambinda
 263222|Wedza
 263225|Rusape
 263227|Chipinge
 263228|Hauna
-263229|Bulawayo
-2632312|Chiredzi
-2632512|Zvishavane
-263248|Birchenough Bridge
+263229|Juliasdale
+263231|Chiredzi
 26324|Chipangayi
+263248|Birchenough Bridge
+26325|Rusape
+263251|Zvishavane
+263254|Gweru
 2632582|Headlands
 2632583|Nyazura
-26325|Rusape
-2632542|Gweru
+26326|Chimanimani
 263261|Kariba
 263264|Karoi
-26326|Chimanimani
 263270|Chitungwiza
 263271|Bindura
 263272|Mutoko
 263273|Ruwa
 263274|Arcturus
-263275|Mazowe
-263276|Mt. Darwin
+263275219|Mazowe
+26327522|Mt. Darwin
+26327523|Mt. Darwin
+26327524|Mt. Darwin
+26327525|Mt. Darwin
+26327526|Mt. Darwin
+26327527|Mt. Darwin
+26327528|Mt. Darwin
+26327529|Mt. Darwin
+2632753|Mt. Darwin
+26327540|Mt. Darwin
+26327541|Mt. Darwin
 263277|Mvurwi
 263278|Murewa
 263279|Marondera
@@ -64,21 +79,23 @@
 263284|Gwanda
 263285|Turkmine
 263286|Beitbridge
-263287|Nyamandhlovu
+263287|Tsholotsho
 263288|Esigodini
 263289|Jotsholo
+26329|Bulawayo
+263292320|Bulawayo
+263292321|Bulawayo
 26329246|Bellevue
-263298|Nyanga
-26329|Juliasdale
+26329252|Luveve
+26330|Gutu
 263308|Chatsworth
-26330|Luveve
-263317|Checheche
 26331|Chiredzi
-263329|Nyanga
+263317|Checheche
 26332|Mvuma
+263329|Nyanga
+26333|Triangle
 263337|Nyaningwe
 263338|Nyika
-26333|Triangle
 26334|Jerera
 26335|Mashava
 26336|Ngundu
@@ -87,52 +104,85 @@
 263376|Glendale
 263379|Macheke
 263383|Matopose
-263387|Tsholotsho
-263398|Lupane
+263387|Nyamandhlovu
 26339|Masvingo
+263398|Lupane
+2634|Harare
+263420085|Selous
+263420086|Selous
+263420087|Selous
+263420088|Selous
+263420089|Selous
+26342009|Selous
+263420100|Selous
+263420101|Selous
+263420102|Selous
+263420103|Selous
+263420104|Selous
+263420105|Selous
+263420106|Norton
+263420107|Norton
+263420108|Norton
+263420109|Norton
+263420110|Norton
 26342722|Chitungwiza
 26342723|Chitungwiza
 26342728|Marondera
 26342729|Marondera
-2634|Harare
 26350|Shanagani
+26351|Zvishavane
 263517|Mataga
 263518|Mberengwa
-26351|Zvishavane
 26352|Shurugwi
 26353|Chegutu
-2635483|Lalapanzi
 26354|Gweru
+2635483|Lalapanzi
+26355|Kwekwe
 263557|Munyati
 263558|Nkayi
-26355|Kwekwe
 26356|Chivhu
 26357|Centenary
 26358|Guruve
 26359|Gokwe
 26360|Mhangura
 26361|Kariba
-263628|Selous
 26362|Norton
-263637|Chirundu
+263628|Selous
 26363|Makuti
+263637|Chirundu
 26364|Karoi
 26365|Beatrice
+26366|Banket
 263667|Raffingora
 263668|Mutorashanga
-26366|Banket
-263675|Murombedzi
 26367|Chinhoyi
+263675|Murombedzi
+26368|Kadoma
 263687|Sanyati
 263688|Chakari
-26368|Kadoma
-263698|Trelawney
 26369|Darwendale
+263698|Trelawney
+2639|Bulawayo
 263920|Northend
-263922|Queensdale
+263921|Northend
+2639226|Queensdale
+2639228|Queensdale
 263924|Hillside
+263929|Killarney
 263940|Mabutewni
+263941|Mabutewni
+263942|Mabutewni
+263943|Mabutewni
+263946|Bellevue
 263947|Bellevue
 263948|Nkulumane
+2639490|Nkulumane
+2639491|Nkulumane
+2639492|Nkulumane
+2639493|Nkulumane
+2639494|Nkulumane
+2639495|Nkulumane
+2639496|Nkulumane
+2639497|Nkulumane
 263952|Luveve
-2639|Bulawayo
+263956|Luveve
