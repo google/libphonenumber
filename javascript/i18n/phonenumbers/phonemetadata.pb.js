@@ -2260,58 +2260,6 @@ i18n.phonenumbers.PhoneMetadata.prototype.clearLeadingZeroPossible = function() 
 
 
 /**
- * Gets the value of the mobile_number_portable_region field.
- * @return {?boolean} The value.
- */
-i18n.phonenumbers.PhoneMetadata.prototype.getMobileNumberPortableRegion = function() {
-  return /** @type {?boolean} */ (this.get$Value(32));
-};
-
-
-/**
- * Gets the value of the mobile_number_portable_region field or the default value if not set.
- * @return {boolean} The value.
- */
-i18n.phonenumbers.PhoneMetadata.prototype.getMobileNumberPortableRegionOrDefault = function() {
-  return /** @type {boolean} */ (this.get$ValueOrDefault(32));
-};
-
-
-/**
- * Sets the value of the mobile_number_portable_region field.
- * @param {boolean} value The value.
- */
-i18n.phonenumbers.PhoneMetadata.prototype.setMobileNumberPortableRegion = function(value) {
-  this.set$Value(32, value);
-};
-
-
-/**
- * @return {boolean} Whether the mobile_number_portable_region field has a value.
- */
-i18n.phonenumbers.PhoneMetadata.prototype.hasMobileNumberPortableRegion = function() {
-  return this.has$Value(32);
-};
-
-
-/**
- * @return {number} The number of values in the mobile_number_portable_region field.
- */
-i18n.phonenumbers.PhoneMetadata.prototype.mobileNumberPortableRegionCount = function() {
-  return this.count$Values(32);
-};
-
-
-/**
- * Clears the values in the mobile_number_portable_region field.
- */
-i18n.phonenumbers.PhoneMetadata.prototype.clearMobileNumberPortableRegion = function() {
-  this.clear$Field(32);
-};
-
-
-
-/**
  * Message PhoneMetadataCollection.
  * @constructor
  * @extends {goog.proto2.Message}
@@ -2671,12 +2619,6 @@ i18n.phonenumbers.PhoneMetadata.prototype.getDescriptor = function() {
       },
       26: {
         name: 'leading_zero_possible',
-        fieldType: goog.proto2.Message.FieldType.BOOL,
-        defaultValue: false,
-        type: Boolean
-      },
-      32: {
-        name: 'mobile_number_portable_region',
         fieldType: goog.proto2.Message.FieldType.BOOL,
         defaultValue: false,
         type: Boolean
