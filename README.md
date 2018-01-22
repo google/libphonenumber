@@ -238,7 +238,7 @@ Alternatives to our own versions:
     needing those specific loading optimizations from clients.
 *   Javascript: If you don't want to use our version, which depends on Closure,
     there are several other options, including
-    https://github.com/halt-hammerzeit/libphonenumber-js - a stripped-down
+    https://github.com/catamphetamine/libphonenumber-js - a stripped-down
     rewrite, about 110 KB in size - and
     https://github.com/seegno/google-libphonenumber - a browserify-compatible
     wrapper around the original unmodified library installable via npm, which
