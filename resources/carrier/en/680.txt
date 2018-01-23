@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2017 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,22 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-38630|A1
-38631|Telekom Slovenije
-38640|A1
-38641|Telekom Slovenije
-38643|Telekom Slovenije
-38649|Telekom Slovenije
-38651|Telekom Slovenije
-38664|T-2
-386651|SŽ - Infrastruktura
-3866555|Telekom Slovenije
-3866560|Telekom Slovenije
-3866570|Novatel
-386681|A1
-386686|A1
-386689|A1
-386696|HoT
-386699|HoT
-38670|Telemach
-38671|Telekom Slovenije
+# Source: http://www.itu.int/oth/T02020000A2/en
+
+68077|PalauCel
+680880|PalauTel
+680881|PalauTel
+680882|PalauTel
+680883|PalauTel
+680884|PalauTel

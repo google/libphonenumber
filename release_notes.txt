@@ -1,3 +1,14 @@
+Jan 23, 2018: v8.8.10
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BJ, DE, HK, IN, IR, MM, MY, PW, SA, SI
+ - New geocoding data for country calling code(s): 680 (en)
+ - Updated geocoding data for country calling code(s): 966 (ar, en)
+ - New carrier data for country calling code(s): 34 (en), 680 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 91 (en), 95 (en), 98 (en, fa), 229 (en), 250 (en), 381 (en),
+   386 (en), 852 (en, zh, zh_Hant)
+
 Jan 09, 2018: v8.8.9
 Metadata changes:
  - Updated phone metadata for region code(s):
