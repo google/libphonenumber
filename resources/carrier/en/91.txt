@@ -18,6 +18,7 @@
 916003|Reliance Jio
 916200|Reliance Jio
 916201|Reliance Jio
+916202|Reliance Jio
 916239|Reliance Jio
 916260|Reliance Jio
 916280|Reliance Jio
@@ -25,6 +26,7 @@
 916282|Reliance Jio
 916290|Reliance Jio
 916294|Reliance Jio
+916295|Reliance Jio
 916300|Reliance Jio
 916301|Reliance Jio
 9163500|Reliance Jio
@@ -42,6 +44,7 @@
 916380|Reliance Jio
 916381|Reliance Jio
 916390|Vodafone
+916392|Reliance Jio
 916393|Reliance Jio
 916394|Reliance Jio
 916395|Reliance Jio

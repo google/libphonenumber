@@ -13,6 +13,8 @@
 # limitations under the License.
 
 # Prefixes from http://en.wikipedia.org/wiki/%2B98.
+# MVNOs ranges are listed if the assignments are clear. Ex: 9991 range is
+# assigned to Irancell which is further assigned to respective MVNOs.
 
 9890|Irancell
 9891|IR-MCI
@@ -32,6 +34,7 @@
 989944|Anarestan
 9899810|Shatel Mobile
 9899900|LOTUSTEL
+989991|Irancell
 9899911|ApTel
 9899914|Azartel
 9899998|SamanTel
