@@ -102,6 +102,8 @@ i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_ = 1;
  */
 i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 2;
 
+/** Flags to use when compiling regular expressions for phone numbers. */
+i18n.phonenumbers.PhoneNumberUtil.REGEX_FLAGS = 'i'; // XXX: need ES6 regex for 'u' flag
 
 /**
  * The ITU says the maximum length should be 15, but we have found longer
@@ -785,6 +787,18 @@ i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ =
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
     '[- ]+([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,5})#';
 
+// For parsing, we are slightly more lenient in our interpretation than for matching. Here we
+// allow "comma" and "semicolon" as possible extension indicators. When matching, these are
+// hardly ever used to indicate this.
+i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING =
+    i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
+    i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
+    '[ \u00A0\\t,]*' +
+    '(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|' +
+    '[x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
+    '[:\\.\uFF0E]?[ \u00A0\\t,-]*' + 
+    i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
+    '[- ]+(' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + '{1,5})#';
 
 /**
  * Regexp of all known extension prefixes used by different regions followed by
@@ -4248,6 +4262,21 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   return phoneNumber;
 };
 
+/**
+ * Parses a string and returns it in proto buffer format. This method differs from {@link #parse}
+ * in that it always populates the raw_input field of the protocol buffer with numberToParse as
+ * well as the country_code_source field.
+ *
+ * @param numberToParse  number that we are attempting to parse. This can contain formatting such
+ *     as +, ( and -, as well as a phone number extension.
+ * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+ *     the number being parsed is not written in international format. The country calling code
+ *     for the number in this case would be stored as that of the default region supplied.
+ * @return  a phone number proto buffer filled with the parsed number
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput = function(numberToParse, defaultRegion) {
+  return this.parseHelper_(numberToParse, defaultRegion, true, true);
+};
 
 /**
  * Converts numberToParse to a form that we can parse and write it to
@@ -4522,6 +4551,27 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNationalNumberSuffixOfTheOther_ =
                               firstNumberNationalNumber);
 };
 
+/**
+ * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}. This
+ * is a shortcut for {@link #findNumbers(CharSequence, String, Leniency, long)
+ * getMatcher(text, defaultRegion, Leniency.VALID, Long.MAX_VALUE)}.
+ *
+ * @param text  the text to search for phone numbers, null for no text
+ * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+ *     the number being parsed is not written in international format. The country_code for the
+ *     number in this case would be stored as that of the default region supplied. May be null if
+ *     only international numbers are expected.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, defaultRegion) {
+  if (!this.isValidRegionCode_(defaultRegion)) {
+    throw new Error('Invalid region code: ' + defaultRegion);
+  }
+
+  var maxTries = 9223372036854775807; // Long.MAX_VALUE is 9,223,372,036,854,775,807
+  var leniency = function(){};
+
+  return new PhoneNumberMatcher(this, text, defaultRegion, /*Leniency.VALID*/ leniency, maxTries);
+};
 
 /**
  * Returns true if the number can be dialled from outside the region, or
