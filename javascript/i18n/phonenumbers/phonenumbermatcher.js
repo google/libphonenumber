@@ -265,15 +265,7 @@ i18n.phonenumbers.PhoneNumberMatcher = function(util, text, country, leniency, m
      */
     this.preferredRegion = country;
     /** The degree of validation requested. NOTE: Java `findNumbers` always uses VALID, so we hard code that here */
-    this.leniency = {
-        verify: function(number, candidate, util) {
-            if (!util.isValidNumber(number)
-                || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
-              return false;
-            }
-            return i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util);
-        }
-    };
+    this.leniency = leniency;
 
     /** The maximum number of retries after matching an invalid number. */
     this.maxTries = maxTries;
@@ -508,25 +500,27 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
             return null;
         }
 
-        // If leniency is set to VALID (always is in Java code) or stricter, we also want to skip numbers that are surrounded
+        // If leniency is set to VALID or stricter, we also want to skip numbers that are surrounded
         // by Latin alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
         // If the candidate is not at the start of the text, and does not start with phone-number
         // punctuation, check the previous character.
-        if (offset > 0) {
-            var leadClassMatches = (new RegExp("^" + LEAD_CLASS)).exec(candidate);
-            if(leadClassMatches && leadClassMatches.index !== 0) {
-                var previousChar = this.text.charAt(offset - 1);
-                // We return null if it is a latin letter or an invalid punctuation symbol.
-                if (isInvalidPunctuationSymbol(previousChar) || i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(previousChar)) {
-                    return null;
+        if(this.leniency >= i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID) {
+            if (offset > 0) {
+                var leadClassMatches = (new RegExp("^" + LEAD_CLASS)).exec(candidate);
+                if(leadClassMatches && leadClassMatches.index !== 0) {
+                    var previousChar = this.text.charAt(offset - 1);
+                    // We return null if it is a latin letter or an invalid punctuation symbol.
+                    if (isInvalidPunctuationSymbol(previousChar) || i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(previousChar)) {
+                        return null;
+                    }
                 }
             }
-        }
-        var lastCharIndex = offset + candidate.length;
-        if (lastCharIndex < this.text.length) {
-            var nextChar = this.text.charAt(lastCharIndex);
-            if (isInvalidPunctuationSymbol(nextChar) || i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(nextChar)) {
-                return null;
+            var lastCharIndex = offset + candidate.length;
+            if (lastCharIndex < this.text.length) {
+                var nextChar = this.text.charAt(lastCharIndex);
+                if (isInvalidPunctuationSymbol(nextChar) || i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(nextChar)) {
+                    return null;
+                }
             }
         }
 
@@ -551,7 +545,8 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
             return null;
         }
 
-        if (this.leniency.verify(number, candidate, phoneUtil)) {
+        var leniencyVerifyFn = i18n.phonenumbers.PhoneNumberUtil.Leniency.verifyFns[this.leniency];
+        if (leniencyVerifyFn(number, candidate, phoneUtil)) {
             // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
             // values parsed. TODO: stop clearing all values here and switch all users over
             // to using rawInput() rather than the rawString() of PhoneNumberMatch.
@@ -609,3 +604,58 @@ i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired = functio
     }
     return true;
 };
+
+i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid = function(
+    number, candidate, util, checker) {
+  // TODO: Evaluate how this works for other locales (testing has been limited to NANPA regions)
+  // and optimise if necessary.
+  var normalizedCandidate =
+      PhoneNumberUtil.normalizeDigits(candidate, true /* keep non-digits */);
+  var formattedNumberGroups = getNationalNumberGroups(util, number, null);
+  if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
+    return true;
+  }
+  // If this didn't pass, see if there are any alternate formats, and try them instead.
+  var alternateFormats =
+      MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
+  if (alternateFormats != null) {
+      var formats = alternateFormats.numberFormats();
+      var alternateFormat;
+    for (var i = 0; i < formats.length; i++) {
+        alternateFormat = formats[i];
+        formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
+        if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
+            return true;
+        }
+    }
+  }
+  return false;
+}
+
+/**
+ * Helper method to get the national-number part of a number, formatted without any national
+ * prefix, and return it as a set of digit blocks that would be formatted together.
+ */
+function getNationalNumberGroups(util, number, formattingPattern) {
+    if (formattingPattern == null) {
+        // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
+        var rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
+        // We remove the extension part from the formatted string before splitting it into different
+        // groups.
+        var endIndex = rfc3966Format.indexOf(';');
+        if (endIndex < 0) {
+            endIndex = rfc3966Format.length;
+        }
+        // The country-code will have a '-' following it.
+        var startIndex = rfc3966Format.indexOf('-') + 1;
+        return rfc3966Format.substring(startIndex, endIndex).split("-");
+    } else {
+        // We format the NSN only, and split that according to the separator.
+        var nationalSignificantNumber = util.getNationalSignificantNumber(number);
+        return util.formatNsnUsingPattern(
+            nationalSignificantNumber,
+            formattingPattern,
+            PhoneNumberFormat.RFC3966
+        ).split("-");
+    }
+}

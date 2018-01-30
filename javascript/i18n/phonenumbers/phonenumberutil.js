@@ -1002,6 +1002,98 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
   TOO_LONG: 3
 };
 
+/**
+ * Leniency when {@linkplain PhoneNumberUtil#findNumbers finding} potential phone numbers in text
+ * segments. The levels here are ordered in increasing strictness.
+ */
+ i18n.phonenumbers.PhoneNumberUtil.Leniency = {
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
+   * possible}, but not necessarily {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}.
+   */
+  POSSIBLE: 0,
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
+   * possible} and {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}. Numbers written
+   * in national format must have their national-prefix present if it is usually written for a
+   * number of this type.
+   */
+  VALID: 1,
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+   * are grouped in a possible way for this locale. For example, a US number written as
+   * "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
+   * "650 253 0000", "650 2530000" or "6502530000" are.
+   * Numbers with more than one '/' symbol in the national significant number are also dropped at
+   * this level.
+   * <p>
+   * Warning: This level might result in lower coverage especially for regions outside of country
+   * code "+1". If you are not sure about which level to use, email the discussion group
+   * libphonenumber-discuss@googlegroups.com.
+   */
+  STRICT_GROUPING: 2,
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+   * are grouped in the same way that we would have formatted it, or as a single block. For
+   * example, a US number written as "650 2530000" is not accepted at this leniency level, whereas
+   * "650 253 0000" or "6502530000" are.
+   * Numbers with more than one '/' symbol are also dropped at this level.
+   * <p>
+   * Warning: This level might result in lower coverage especially for regions outside of country
+   * code "+1". If you are not sure about which level to use, email the discussion group
+   * libphonenumber-discuss@googlegroups.com.
+   */
+  EXACT_GROUPING: 3,
+
+  // Verification functions for each of the above.
+  verifyFns: [
+    // POSSIBLE
+    function(number, candidate, util) {
+      return util.isPossibleNumber(number);
+    },
+    // VALID
+    function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
+        return false;
+      }
+      return PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util);
+    },
+    // STRICT_GROUPING
+    function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
+        return false;
+      }
+      return PhoneNumberMatcher.checkNumberGroupingIsValid(
+          number, candidate, util, {
+            checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
+              return PhoneNumberMatcher.allNumberGroupsRemainGrouped(
+                  util, number, normalizedCandidate, expectedNumberGroups);
+            }
+          });
+    },
+    // EXACT_GROUPING
+    function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
+        return false;
+      }
+      return PhoneNumberMatcher.checkNumberGroupingIsValid(
+          number, candidate, util, {
+            checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
+              return PhoneNumberMatcher.allNumberGroupsAreExactlyPresent(
+                  util, number, normalizedCandidate, expectedNumberGroups);
+            }
+          }
+      );
+    }
+  ]
+};
 
 /**
  * Attempts to extract a possible number from the string passed in. This
@@ -4568,9 +4660,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, default
   }
 
   var maxTries = 9223372036854775807; // Long.MAX_VALUE is 9,223,372,036,854,775,807
-  var leniency = function(){};
-
-  return new PhoneNumberMatcher(this, text, defaultRegion, /*Leniency.VALID*/ leniency, maxTries);
+  return new PhoneNumberMatcher(this, text, defaultRegion, i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID, maxTries);
 };
 
 /**
