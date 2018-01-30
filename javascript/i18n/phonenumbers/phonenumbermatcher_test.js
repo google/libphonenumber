@@ -172,3 +172,122 @@ function testMatchesMultiplePhoneNumbersSeparatedByPhoneNumberPunctuation() {
     assertTrue(match1.equals(matches.next()));
     assertTrue(match2.equals(matches.next()));
 }
+
+
+/**
+ * Tests numbers found by {@link PhoneNumberUtil#findNumbers(CharSequence, String)} in various
+ * textual contexts.
+ *
+ * @param number the number to test and the corresponding region code to use
+ */
+function doTestFindInContext(number, defaultCountry) {
+    findPossibleInContext(number, defaultCountry);
+
+    var parsed = phoneUtil.parse(number, defaultCountry);
+    if (phoneUtil.isValidNumber(parsed)) {
+        findValidInContext(number, defaultCountry);
+    }
+}
+
+/**
+ * Tests valid numbers in contexts that should pass for {@link Leniency#POSSIBLE}.
+ */
+function findPossibleInContext(number, defaultCountry) {
+    var contextPairs = [];
+    contextPairs.push(new NumberContext("", ""));  // no context
+    contextPairs.push(new NumberContext("   ", "\t"));  // whitespace only
+    contextPairs.push(new NumberContext("Hello ", ""));  // no context at end
+    contextPairs.push(new NumberContext("", " to call me!"));  // no context at start
+    contextPairs.push(new NumberContext("Hi there, call ", " to reach me!"));  // no context at start
+    contextPairs.push(new NumberContext("Hi there, call ", ", or don't"));  // with commas
+    // Three examples without whitespace around the number.
+    contextPairs.push(new NumberContext("Hi call", ""));
+    contextPairs.push(new NumberContext("", "forme"));
+    contextPairs.push(new NumberContext("Hi call", "forme"));
+    // With other small numbers.
+    contextPairs.push(new NumberContext("It's cheap! Call ", " before 6:30"));
+    // With a second number later.
+    contextPairs.push(new NumberContext("Call ", " or +1800-123-4567!"));
+    contextPairs.push(new NumberContext("Call me on June 2 at", ""));  // with a Month-Day date
+    // With publication pages.
+    contextPairs.push(new NumberContext(
+        "As quoted by Alfonso 12-15 (2009), you may call me at ", ""));
+    contextPairs.push(new NumberContext(
+        "As quoted by Alfonso et al. 12-15 (2009), you may call me at ", ""));
+    // With dates, written in the American style.
+    contextPairs.push(new NumberContext(
+        "As I said on 03/10/2011, you may call me at ", ""));
+    // With trailing numbers after a comma. The 45 should not be considered an extension.
+    contextPairs.push(new NumberContext("", ", 45 days a year"));
+    // When matching we don't consider semicolon along with legitimate extension symbol to indicate
+    // an extension. The 7246433 should not be considered an extension.
+    contextPairs.push(new NumberContext("", ";x 7246433"));
+        // With a postfix stripped off as it looks like the start of another number.
+    contextPairs.push(new NumberContext("Call ", "/x12 more"));
+
+    doTestInContext(number, defaultCountry, contextPairs, Leniency.POSSIBLE);
+}
+
+function doTestInContext(number, defaultCountry,contextPairs, leniency) {
+    contextPairs.forEach(function(context) {
+        var prefix = context.leadingText;
+        var text = prefix + number + context.trailingText;
+    
+        var start = prefix.length;
+        var end = start + number.length;
+        var iterator =
+            phoneUtil.findNumbers(text, defaultCountry, leniency, Long.MAX_VALUE).iterator();
+    
+        var match = iterator.hasNext() ? iterator.next() : null;
+        assertNotNull("Did not find a number in '" + text + "'; expected '" + number + "'", match);
+    
+        var extracted = text.substrig(match.start, match.end);
+        assertTrue("Unexpected phone region in '" + text + "'; extracted '" + extracted + "'",
+            start == match.start() && end == match.end());
+        assertTrue(number.equals(extracted)); // XXX: need to figure out equals vs. contentEquals
+        assertEquals(match.rawString, extracted); // XXX: need to figure out equals vs. contentEquals
+    
+        ensureTermination(text, defaultCountry, leniency);    
+    });
+}
+
+/**
+ * Tests valid numbers in contexts that fail for {@link Leniency#POSSIBLE} but are valid for
+ * {@link Leniency#VALID}.
+ */
+function findValidInContext(number, defaultCountry) {
+    var contextPairs = [];
+    // With other small numbers.
+    contextPairs.push(new NumberContext("It's only 9.99! Call ", " to buy"));
+    // With a number Day.Month.Year date.
+    contextPairs.push(new NumberContext("Call me on 21.6.1984 at ", ""));
+    // With a number Month/Day date.
+    contextPairs.push(new NumberContext("Call me on 06/21 at ", ""));
+    // With a number Day.Month date.
+    contextPairs.push(new NumberContext("Call me on 21.6. at ", ""));
+    // With a number Month/Day/Year date.
+    contextPairs.push(new NumberContext("Call me on 06/21/84 at ", ""));
+
+    doTestInContext(number, defaultCountry, contextPairs, Leniency.VALID);
+}
+
+
+/**
+ * Small class that holds the context of the number we are testing against. The test will
+ * insert the phone number to be found between leadingText and trailingText.
+ */
+function NumberContext(leadingText, trailingText) {
+    this.leadingText = leadingText;
+    this.trailingText = trailingText;
+}
+
+/**
+ * Small class that holds the number we want to test and the region for which it should be valid.
+ */
+function NumberTest (rawString, region) {
+    this.rawString = rawString;
+    this.region = regionCode;
+}
+NumberTest.prototype.toString = function() {
+    return this.rawString + " (" + this.region.toString() + ")";
+};

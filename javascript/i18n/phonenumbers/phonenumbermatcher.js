@@ -100,25 +100,25 @@ var IS_LATIN = /[\u0000-~\u0080-þĀ-žƀ-Ɏ\u0300-\u036eḀ-Ỿ]/;
 // XXX: need to confirm that adding `g` flag is correct here, appears to be necessary
 var INNER_MATCHES = [
     // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
-    /\/+(.*)/g,
+    '\\/+(.*)',
     // Note that the bracket here is inside the capturing group, since we consider it part of the
     // phone number. Will match a pattern like "(650) 223 3345 (754) 223 3321".
-    /(\([^(]*)/g,
+    '(\\([^(]*)',
     // Breaks on a hyphen - e.g. "12345 - 332-445-1234 is my number."
     // We require a space on either side of the hyphen for it to be considered a separator.
     // orginal was --> /(?:\p{Z}-|-\p{Z})\p{Z}*(.+)/,
-    /(?:[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]\-|\-[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000])[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g,
+    '(?:[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]\\-|\\-[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000])[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]*((?:[\\0-\\t\\x0B\\f\\x0E-\\u2027\\u202A-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)',
     // Various types of wide hyphens. Note we have decided not to enforce a space here, since it's
     // possible that it's supposed to be used to break two numbers without spaces, and we haven't
     // seen many instances of it used within a number.
     // original was --> /[\u2012-\u2015\uFF0D]\p{Z}*(.+)/,
-    /[\u2012-\u2015\uFF0D][ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g,
+    '[\\u2012-\\u2015\\uFF0D][ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]*((?:[\\0-\\t\\x0B\\f\\x0E-\\u2027\\u202A-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)',
     // Breaks on a full stop - e.g. "12345. 332-445-1234 is my number."
     // original was --> /\.+\p{Z}*([^.]+)/,
-    /\.+[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\-\/-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g,
+    '\\.+[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]*((?:[\\0-\\-\\/-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)',
     // Breaks on space - e.g. "3324451234 8002341234"
     // original was --> /\p{Z}+(\P{Z}+)/
-    /[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]+((?:[\0-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g
+    '[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]+((?:[\\0-\\x1F!-\\x9F\\xA1-\\u167F\\u1681-\\u1FFF\\u200B-\\u2027\\u202A-\\u202E\\u2030-\\u205E\\u2060-\\u2FFF\\u3001-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)'
 ];
 
 /**
@@ -197,19 +197,20 @@ var LEAD_CLASS; // built dynamically below
     var punctuation = "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]" + punctuationLimit;
     /* A digits block without punctuation. */
     // XXX: can't use \p{Nd} in es5, so here's a transpiled version via https://mothereff.in/regexpu
-    var es5DigitSequence = '(?:[0-9\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0BE6-\u0BEF\u0C66-\u0C6F\u0CE6-\u0CEF\u0D66-\u0D6F\u0DE6-\u0DEF\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F29\u1040-\u1049\u1090-\u1099\u17E0-\u17E9\u1810-\u1819\u1946-\u194F\u19D0-\u19D9\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\uA620-\uA629\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uA9F0-\uA9F9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19]|\uD801[\uDCA0-\uDCA9]|\uD804[\uDC66-\uDC6F\uDCF0-\uDCF9\uDD36-\uDD3F\uDDD0-\uDDD9\uDEF0-\uDEF9]|[\uD805\uD807][\uDC50-\uDC59\uDCD0-\uDCD9\uDE50-\uDE59\uDEC0-\uDEC9\uDF30-\uDF39]|\uD806[\uDCE0-\uDCE9]|\uD81A[\uDE60-\uDE69\uDF50-\uDF59]|\uD835[\uDFCE-\uDFFF]|\uD83A[\uDD50-\uDD59])';
+    var es5DigitSequence = '(?:[0-9\\u0660-\\u0669\\u06F0-\\u06F9\\u07C0-\\u07C9\\u0966-\\u096F\\u09E6-\\u09EF\\u0A66-\\u0A6F\\u0AE6-\\u0AEF\\u0B66-\\u0B6F\\u0BE6-\\u0BEF\\u0C66-\\u0C6F\\u0CE6-\\u0CEF\\u0D66-\\u0D6F\\u0DE6-\\u0DEF\\u0E50-\\u0E59\\u0ED0-\\u0ED9\\u0F20-\\u0F29\\u1040-\\u1049\\u1090-\\u1099\\u17E0-\\u17E9\\u1810-\\u1819\\u1946-\\u194F\\u19D0-\\u19D9\\u1A80-\\u1A89\\u1A90-\\u1A99\\u1B50-\\u1B59\\u1BB0-\\u1BB9\\u1C40-\\u1C49\\u1C50-\\u1C59\\uA620-\\uA629\\uA8D0-\\uA8D9\\uA900-\\uA909\\uA9D0-\\uA9D9\\uA9F0-\\uA9F9\\uAA50-\\uAA59\\uABF0-\\uABF9\\uFF10-\\uFF19]|\\uD801[\\uDCA0-\\uDCA9]|\\uD804[\\uDC66-\\uDC6F\\uDCF0-\\uDCF9\\uDD36-\\uDD3F\\uDDD0-\\uDDD9\\uDEF0-\\uDEF9]|[\\uD805\\uD807][\\uDC50-\\uDC59\\uDCD0-\\uDCD9\\uDE50-\\uDE59\\uDEC0-\\uDEC9\\uDF30-\\uDF39]|\\uD806[\\uDCE0-\\uDCE9]|\\uD81A[\\uDE60-\\uDE69\\uDF50-\\uDF59]|\\uD835[\\uDFCE-\\uDFFF]|\\uD83A[\\uDD50-\\uDD59])';
     var digitSequence = es5DigitSequence + limit(1, digitBlockLimit);
 
     var leadClassChars = openingParens + PhoneNumberUtil.PLUS_CHARS_;
-    var leadClass = "[" + leadClassChars + "]";
-    LEAD_CLASS = new RegExp(leadClass);
+    LEAD_CLASS = "[" + leadClassChars + "]";
 
     /* Phone number pattern allowing optional punctuation. */
-    PATTERN = new RegExp(
-        "(?:" + leadClass + punctuation + ")" + leadLimit
+    // XXX: not sure if I should make this a regex now or later...
+//    PATTERN = new RegExp(
+      
+      PATTERN = "(?:" + LEAD_CLASS + punctuation + ")" + leadLimit
         + digitSequence + "(?:" + punctuation + digitSequence + ")" + blockLimit
-        + "(?:" + PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING + ")?",
-        PhoneNumberUtil.REGEX_FLAGS);
+        + "(?:" + PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING + ")?"; //,
+//        PhoneNumberUtil.REGEX_FLAGS);
 }());
 
 /**
@@ -308,11 +309,12 @@ i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter = function(letter) {
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.find = function(index) {
     var matches;
-//    var text = this.text.substring(index);
+    var patternRegex = new RegExp(PATTERN, 'ig');
+    patternRegex.lastIndex = index;
 
-    while((this.maxTries > 0) && ((matches = PATTERN.exec(this.text)))) {
-        var candidate = matches[0];
+    while((this.maxTries > 0) && ((matches = patternRegex.exec(this.text)))) {
         var start = matches.index;
+        var candidate = matches[0];
         
         // Check for extra numbers at the end.
         // TODO: This is the place to start when trying to support extraction of multiple phone number
@@ -325,6 +327,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.find = function(index) {
         }
 
         this.maxTries--;
+        patternRegex.lastIndex = start + candidate.length + 1;
     }
 
     return null;
@@ -463,7 +466,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.extractInnerMatch = function(cand
 
     for (var i = 0; i < INNER_MATCHES.length; i++) {
         var isFirstMatch = true;
-        innerMatchRegex = INNER_MATCHES[i];
+        innerMatchRegex = new RegExp(INNER_MATCHES[i], 'g');
         while ((groupMatch = innerMatchRegex.exec(candidate)) && this.maxTries > 0) {
             if (isFirstMatch) {
                 // We should handle any group before this one too.
@@ -510,7 +513,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
         // If the candidate is not at the start of the text, and does not start with phone-number
         // punctuation, check the previous character.
         if (offset > 0) {
-            var leadClassMatches = LEAD_CLASS.exec(candidate);
+            var leadClassMatches = (new RegExp("^" + LEAD_CLASS)).exec(candidate);
             if(leadClassMatches && leadClassMatches.index !== 0) {
                 var previousChar = this.text.charAt(offset - 1);
                 // We return null if it is a latin letter or an invalid punctuation symbol.

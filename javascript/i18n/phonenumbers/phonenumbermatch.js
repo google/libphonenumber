@@ -73,20 +73,6 @@ i18n.phonenumbers.PhoneNumberMatch.prototype.toString = function() {
   return 'PhoneNumberMatch [' + this.start + ',' + this.end + ') ' + this.rawString;
 };
 
-/** XXX: do I care about this?
-   public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (!(obj instanceof PhoneNumberMatch)) {
-      return false;
-    }
-    PhoneNumberMatch other = (PhoneNumberMatch) obj;
-    return rawString.equals(other.rawString) && (start == other.start)
-        && number.equals(other.number);
-  }
-**/
-
 i18n.phonenumbers.PhoneNumberMatch.prototype.equals = function(obj) {
   if(this === obj) {
     return true;
