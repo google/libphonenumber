@@ -29,24 +29,6 @@ var PhoneNumberMatcher = i18n.phonenumbers.PhoneNumberMatcher;
 var CountryCodeSource = i18n.phonenumbers.PhoneNumber.CountryCodeSource;
 var RegionCode = i18n.phonenumbers.RegionCode;
 
-console.log('phoneUtil', phoneUtil);
-console.log('PhoneNumberMatcher', PhoneNumberMatcher);
-
-/**
- * Tests numbers found by {@link PhoneNumberUtil#findNumbers(CharSequence, String)} in various
- * textual contexts.
- *
- * @param number the number to test and the corresponding region code to use
- */
-function doTestFindInContext(number, defaultCountry) {
-    findPossibleInContext(number, defaultCountry);
-
-    var parsed = phoneUtil.parse(number, defaultCountry);
-    if (phoneUtil.isValidNumber(parsed)) {
-        findValidInContext(number, defaultCountry);
-    }
-}
-
 /**
  * Asserts that the expected match is non-null, and that the raw string and expected
  * proto buffer are set appropriately.
@@ -115,4 +97,25 @@ function testMatchesFoundWithMultipleSpaces() {
 
     match = iterator.hasNext() ? iterator.next() : null;
     assertMatchProperties(match, text, number2, RegionCode.US);
+}
+
+function testFourMatchesInARow() {
+    var number1 = "415-666-7777";
+    var number2 = "800-443-1223";
+    var number3 = "212-443-1223";
+    var number4 = "650-443-1223";
+    var text = number1 + " - " + number2 + " - " + number3 + " - " + number4;
+
+    var iterator = phoneUtil.findNumbers(text, RegionCode.US);
+    var match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number1, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number2, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number3, RegionCode.US);
+
+    match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, text, number4, RegionCode.US);
 }
