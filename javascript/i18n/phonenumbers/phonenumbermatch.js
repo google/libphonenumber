@@ -86,3 +86,15 @@ i18n.phonenumbers.PhoneNumberMatch.prototype.toString = function() {
         && number.equals(other.number);
   }
 **/
+
+i18n.phonenumbers.PhoneNumberMatch.prototype.equals = function(obj) {
+  if(this === obj) {
+    return true;
+  }
+  if(!(obj instanceof i18n.phonenumbers.PhoneNumberMatch)) {
+    return false;
+  }
+  return this.rawString == obj.rawString &&
+         this.start == obj.start         &&
+         this.number.equals(obj.number);
+};

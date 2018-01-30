@@ -99,6 +99,7 @@ function testMatchesFoundWithMultipleSpaces() {
     assertMatchProperties(match, text, number2, RegionCode.US);
 }
 
+/*
 function testFourMatchesInARow() {
     var number1 = "415-666-7777";
     var number2 = "800-443-1223";
@@ -118,4 +119,56 @@ function testFourMatchesInARow() {
 
     match = iterator.hasNext() ? iterator.next() : null;
     assertMatchProperties(match, text, number4, RegionCode.US);
+}
+*/
+
+function testMatchWithSurroundingZipcodes() {
+    var number = "415-666-7777";
+    var zipPreceding = "My address is CA 34215 - " + number + " is my number.";
+
+    var iterator = phoneUtil.findNumbers(zipPreceding, RegionCode.US);
+    var match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, zipPreceding, number, RegionCode.US);
+
+    // Now repeat, but this time the phone number has spaces in it. It should still be found.
+    number = "(415) 666 7777";
+
+    var zipFollowing = "My number is " + number + ". 34215 is my zip-code.";
+    iterator = phoneUtil.findNumbers(zipFollowing, RegionCode.US);
+    var matchWithSpaces = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(matchWithSpaces, zipFollowing, number, RegionCode.US);
+}
+
+function testIsLatinLetter() {
+    assertTrue(PhoneNumberMatcher.isLatinLetter('c'));
+    assertTrue(PhoneNumberMatcher.isLatinLetter('C'));
+    assertTrue(PhoneNumberMatcher.isLatinLetter('\u00C9'));
+    assertTrue(PhoneNumberMatcher.isLatinLetter('\u0301'));  // Combining acute accent
+    // Punctuation, digits and white-space are not considered "latin letters".
+    assertFalse(PhoneNumberMatcher.isLatinLetter(':'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('5'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('-'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('.'));
+    assertFalse(PhoneNumberMatcher.isLatinLetter(' '));
+    assertFalse(PhoneNumberMatcher.isLatinLetter('\u6211'));  // Chinese character
+    assertFalse(PhoneNumberMatcher.isLatinLetter('\u306E'));  // Hiragana letter no
+}
+
+function testMatchesMultiplePhoneNumbersSeparatedByPhoneNumberPunctuation() {
+    var text = "Call 650-253-4561 -- 455-234-3451";
+    var region = RegionCode.US;
+
+    var number1 = new PhoneNumber();
+    number1.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
+    number1.setNationalNumber(6502534561); // was 6502534561L
+    var match1 = new PhoneNumberMatch(5, "650-253-4561", number1);
+
+    var number2 = new PhoneNumber();
+    number2.setCountryCode(phoneUtil.getCountryCodeForRegion(region));
+    number2.setNationalNumber(4552343451); // 4552343451L
+    var match2 = new PhoneNumberMatch(21, "455-234-3451", number2);
+
+    var matches = phoneUtil.findNumbers(text, region);
+    assertTrue(match1.equals(matches.next()));
+    assertTrue(match2.equals(matches.next()));
 }

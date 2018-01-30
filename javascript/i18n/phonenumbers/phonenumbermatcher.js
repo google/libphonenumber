@@ -97,27 +97,28 @@ var IS_LATIN = /[\u0000-~\u0080-þĀ-žƀ-Ɏ\u0300-\u036eḀ-Ỿ]/;
  * Note that if there is a match, we will always check any text found up to the first match as
  * well.
  */
+// XXX: need to confirm that adding `g` flag is correct here, appears to be necessary
 var INNER_MATCHES = [
     // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
-    /\/+(.*)/,
+    /\/+(.*)/g,
     // Note that the bracket here is inside the capturing group, since we consider it part of the
     // phone number. Will match a pattern like "(650) 223 3345 (754) 223 3321".
-    /(\([^(]*)/,
+    /(\([^(]*)/g,
     // Breaks on a hyphen - e.g. "12345 - 332-445-1234 is my number."
     // We require a space on either side of the hyphen for it to be considered a separator.
     // orginal was --> /(?:\p{Z}-|-\p{Z})\p{Z}*(.+)/,
-    /(?:[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]\-|\-[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000])[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/,
+    /(?:[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]\-|\-[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000])[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g,
     // Various types of wide hyphens. Note we have decided not to enforce a space here, since it's
     // possible that it's supposed to be used to break two numbers without spaces, and we haven't
     // seen many instances of it used within a number.
     // original was --> /[\u2012-\u2015\uFF0D]\p{Z}*(.+)/,
-    /[\u2012-\u2015\uFF0D][ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/,
+    /[\u2012-\u2015\uFF0D][ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g,
     // Breaks on a full stop - e.g. "12345. 332-445-1234 is my number."
     // original was --> /\.+\p{Z}*([^.]+)/,
-    /\.+[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\-\/-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/,
+    /\.+[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]*((?:[\0-\-\/-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g,
     // Breaks on space - e.g. "3324451234 8002341234"
     // original was --> /\p{Z}+(\P{Z}+)/
-    /[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]+((?:[\0-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/
+    /[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]+((?:[\0-\x1F!-\x9F\xA1-\u167F\u1681-\u1FFF\u200B-\u2027\u202A-\u202E\u2030-\u205E\u2060-\u2FFF\u3001-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])+)/g
 ];
 
 /**
@@ -223,20 +224,6 @@ function trimAfterFirstMatch(pattern, candidate) {
     return candidate;
 }
 
-/**
- * Helper method to determine if a character is a Latin-script letter or not. For our purposes,
- * combining marks should also return true since we assume they have been added to a preceding
- * Latin character.
- */
-function isLatinLetter(letter) {
-    // Combining marks are a subset of non-spacing-mark.
-    if (!IS_LETTER.test(letter) && !NON_SPACING_MARK.test(letter)) {
-        return false;
-    }
-
-    return IS_LATIN.test(letter);
-}
-
 function isInvalidPunctuationSymbol(character) {
     return character == '%' || CURRENCY_SYMBOL.test(character);
 }
@@ -299,6 +286,20 @@ i18n.phonenumbers.PhoneNumberMatcher = function(util, text, country, leniency, m
 };
 
 /**
+ * Helper method to determine if a character is a Latin-script letter or not. For our purposes,
+ * combining marks should also return true since we assume they have been added to a preceding
+ * Latin character.
+ */
+i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter = function(letter) {
+    // Combining marks are a subset of non-spacing-mark.
+    if (!IS_LETTER.test(letter) && !NON_SPACING_MARK.test(letter)) {
+        return false;
+    }
+
+    return IS_LATIN.test(letter);
+}
+
+/**
  * Attempts to find the next subsequence in the searched sequence on or after {@code searchIndex}
  * that represents a phone number. Returns the next match, null if none was found.
  *
@@ -307,9 +308,9 @@ i18n.phonenumbers.PhoneNumberMatcher = function(util, text, country, leniency, m
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.find = function(index) {
     var matches;
-    var text = this.text.substring(index);
+//    var text = this.text.substring(index);
 
-    while((this.maxTries > 0) && ((matches = PATTERN.exec(text)) !== null)) {
+    while((this.maxTries > 0) && ((matches = PATTERN.exec(this.text)))) {
         var candidate = matches[0];
         var start = matches.index;
         
@@ -323,7 +324,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.find = function(index) {
             return match;
         }
 
-        maxTries--;
+        this.maxTries--;
     }
 
     return null;
@@ -455,13 +456,15 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.extractMatch = function(candidate
  * @return  the match found, null if none can be found
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.extractInnerMatch = function(candidate, offset) {
+    var groupMatch;
+    var innerMatchRegex;
     var group;
     var match;
 
     for (var i = 0; i < INNER_MATCHES.length; i++) {
-        var groupMatch = INNER_MATCHES[i].exec(candidate);
         var isFirstMatch = true;
-        while (groupMatch && this.maxTries > 0) {
+        innerMatchRegex = INNER_MATCHES[i];
+        while ((groupMatch = innerMatchRegex.exec(candidate)) && this.maxTries > 0) {
             if (isFirstMatch) {
                 // We should handle any group before this one too.
                 group = trimAfterFirstMatch(PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_,
@@ -511,7 +514,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
             if(leadClassMatches && leadClassMatches.index !== 0) {
                 var previousChar = this.text.charAt(offset - 1);
                 // We return null if it is a latin letter or an invalid punctuation symbol.
-                if (isInvalidPunctuationSymbol(previousChar) || isLatinLetter(previousChar)) {
+                if (isInvalidPunctuationSymbol(previousChar) || i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(previousChar)) {
                     return null;
                 }
             }
@@ -519,7 +522,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
         var lastCharIndex = offset + candidate.length;
         if (lastCharIndex < this.text.length) {
             var nextChar = this.text.charAt(lastCharIndex);
-            if (isInvalidPunctuationSymbol(nextChar) || isLatinLetter(nextChar)) {
+            if (isInvalidPunctuationSymbol(nextChar) || i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(nextChar)) {
                 return null;
             }
         }

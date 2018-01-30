@@ -103,7 +103,7 @@ i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_ = 1;
 i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 2;
 
 /** Flags to use when compiling regular expressions for phone numbers. */
-i18n.phonenumbers.PhoneNumberUtil.REGEX_FLAGS = 'i'; // XXX: need ES6 regex for 'u' flag
+i18n.phonenumbers.PhoneNumberUtil.REGEX_FLAGS = 'i'; // XXX: need ES6 regex for 'u' flag.  Not sure about g...
 
 /**
  * The ITU says the maximum length should be 15, but we have found longer
