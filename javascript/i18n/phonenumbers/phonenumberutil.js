@@ -1046,6 +1046,7 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
   EXACT_GROUPING: 3,
 
   // Verification functions for each of the above.
+  // XXX: this feels overly "clever", and probably I should refactor.  Tried to follow Java's pattern here.
   verifyFns: [
     // POSSIBLE
     function(number, candidate, util) {
@@ -4653,13 +4654,18 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNationalNumberSuffixOfTheOther_ =
  *     the number being parsed is not written in international format. The country_code for the
  *     number in this case would be stored as that of the default region supplied. May be null if
  *     only international numbers are expected.
+ * @param leniency  the leniency to use when evaluating candidate phone numbers
+ * @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
+ *     This is to cover degenerate cases where the text has a lot of false positives in it. Must
+ *     be {@code >= 0}.
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, defaultRegion) {
+i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, defaultRegion, leniency, maxTries) {
   if (!this.isValidRegionCode_(defaultRegion)) {
     throw new Error('Invalid region code: ' + defaultRegion);
   }
 
-  var maxTries = 9223372036854775807; // Long.MAX_VALUE is 9,223,372,036,854,775,807
+  leniency = leniency || i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID;
+  maxTries = maxTries || 9223372036854775807; // Long.MAX_VALUE is 9,223,372,036,854,775,807
   return new PhoneNumberMatcher(this, text, defaultRegion, i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID, maxTries);
 };
 

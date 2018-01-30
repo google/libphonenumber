@@ -591,7 +591,7 @@ i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired = functio
         // present.
         return true;
       }
-      if (PhoneNumberUtil.formattingRuleHasFirstGroupOnly(nationalPrefixFormattingRule)) {
+      if (util.formattingRuleHasFirstGroupOnly(nationalPrefixFormattingRule)) {
         // National Prefix not needed for this number.
         return true;
       }
