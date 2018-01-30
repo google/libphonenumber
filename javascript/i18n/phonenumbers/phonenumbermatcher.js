@@ -17,6 +17,7 @@
 goog.provide('i18n.phonenumbers.PhoneNumberMatcher');
 
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
+goog.require('i18n.phonenumbers.NumberFormat');
 
 var PhoneNumberUtil = i18n.phonenumbers.PhoneNumberUtil;
 
@@ -208,7 +209,6 @@ var LEAD_CLASS; // built dynamically below
         + digitSequence + "(?:" + punctuation + digitSequence + ")" + blockLimit
         + "(?:" + PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING + ")?",
         PhoneNumberUtil.REGEX_FLAGS);
-    console.log(PATTERN);
 }());
 
 /**
@@ -496,7 +496,6 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.extractInnerMatch = function(cand
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candidate, offset) {
     try {
-        debugger;
         // Check the candidate doesn't contain any formatting which would indicate that it really
         // isn't a phone number.
         if (!MATCHING_BRACKETS.test(candidate) || PUB_PAGES.test(candidate)) {
@@ -562,7 +561,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
     return null;
 };
 
-i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util) {
+i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired = function(number, util) {
     // First, check how we deduced the country code. If it was written in international format, then
     // the national prefix is not required.
     if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
@@ -576,24 +575,28 @@ i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, u
     }
     // Check if a national prefix should be present when formatting this number.
     var nationalNumber = util.getNationalSignificantNumber(number);
-    NumberFormat formatRule =
-        util.chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+    var formatRule = util.chooseFormattingPatternForNumber_(
+        // XXX: I'm unclear if this is right. Basing it on https://github.com/googlei18n/libphonenumber/blob/3db7670b42c4c03c3d69d9ed43cfe15fde978c5e/javascript/i18n/phonenumbers/phonenumberutil.js#L2528-L2544
+        metadata.numberFormatArray(), // was `metadata.numberFormats(),`
+        nationalNumber
+    );
     // To do this, we check that a national prefix formatting rule was present and that it wasn't
     // just the first-group symbol ($1) with punctuation.
-    if ((formatRule != null) && formatRule.getNationalPrefixFormattingRule().length() > 0) {
+    // XXX: not sure about this, as this seems to be null sometimes, which the code doesn't deal with
+    var nationalPrefixFormattingRule = formatRule && formatRule.getNationalPrefixFormattingRule(); 
+    if (nationalPrefixFormattingRule && nationalPrefixFormattingRule.length > 0) {
       if (formatRule.getNationalPrefixOptionalWhenFormatting()) {
         // The national-prefix is optional in these cases, so we don't need to check if it was
         // present.
         return true;
       }
-      if (PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
-          formatRule.getNationalPrefixFormattingRule())) {
+      if (PhoneNumberUtil.formattingRuleHasFirstGroupOnly(nationalPrefixFormattingRule)) {
         // National Prefix not needed for this number.
         return true;
       }
       // Normalize the remainder.
-      String rawInputCopy = PhoneNumberUtil.normalizeDigitsOnly(number.getRawInput());
-      StringBuilder rawInput = new StringBuilder(rawInputCopy);
+      rawInputCopy = PhoneNumberUtil.normalizeDigitsOnly(number.getRawInput());
+      var rawInput = new goog.string.StringBuffer(rawInputCopy);
       // Check if we found a national prefix and/or carrier code at the start of the raw input, and
       // return the result.
       return util.maybeStripNationalPrefixAndCarrierCode(rawInput, metadata, null);
