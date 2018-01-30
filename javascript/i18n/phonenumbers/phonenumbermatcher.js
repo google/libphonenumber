@@ -218,7 +218,7 @@ var LEAD_CLASS; // built dynamically below
 function trimAfterFirstMatch(pattern, candidate) {
     var trailingCharsMatcher = pattern.exec(candidate);
     if (trailingCharsMatcher && trailingCharsMatcher.length) {
-        candidate = candidate.substring(0, trailingCharsMatcher[0].index);
+        candidate = candidate.substring(0, trailingCharsMatcher.index);
     }
     return candidate;
 }

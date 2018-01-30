@@ -54,7 +54,7 @@ function doTestFindInContext(number, defaultCountry) {
 function assertMatchProperties(match, text, number, region) {
   var expectedResult = phoneUtil.parse(number, region);
   assertNotNull("Did not find a number in '" + text + "'; expected " + number, match);
-  assertEquals(expectedResult, match.number);
+  assertTrue(expectedResult.equals(match.number));
   assertEquals(number, match.rawString);
 }
 
