@@ -99,7 +99,6 @@ function testMatchesFoundWithMultipleSpaces() {
     assertMatchProperties(match, text, number2, RegionCode.US);
 }
 
-/*
 function testFourMatchesInARow() {
     var number1 = "415-666-7777";
     var number2 = "800-443-1223";
@@ -120,7 +119,6 @@ function testFourMatchesInARow() {
     match = iterator.hasNext() ? iterator.next() : null;
     assertMatchProperties(match, text, number4, RegionCode.US);
 }
-*/
 
 function testMatchWithSurroundingZipcodes() {
     var number = "415-666-7777";
