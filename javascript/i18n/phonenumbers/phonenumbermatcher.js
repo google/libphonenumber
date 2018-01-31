@@ -104,7 +104,6 @@ var IS_LATIN = /[\u0000-~\u0080-þĀ-žƀ-Ɏ\u0300-\u036eḀ-Ỿ]/;
  * Note that if there is a match, we will always check any text found up to the first match as
  * well.
  */
-// XXX: need to confirm that adding `g` flag is correct here, appears to be necessary
 var INNER_MATCHES = [
     // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
     '\\/+(.*)',
@@ -113,18 +112,18 @@ var INNER_MATCHES = [
     '(\\([^(]*)',
     // Breaks on a hyphen - e.g. "12345 - 332-445-1234 is my number."
     // We require a space on either side of the hyphen for it to be considered a separator.
-    // orginal was --> /(?:\p{Z}-|-\p{Z})\p{Z}*(.+)/,
+    // Java uses /(?:\p{Z}-|-\p{Z})\p{Z}*(.+)/, and this regex is es5 compatible
     '(?:[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]\\-|\\-[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000])[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]*((?:[\\0-\\t\\x0B\\f\\x0E-\\u2027\\u202A-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)',
     // Various types of wide hyphens. Note we have decided not to enforce a space here, since it's
     // possible that it's supposed to be used to break two numbers without spaces, and we haven't
     // seen many instances of it used within a number.
-    // original was --> /[\u2012-\u2015\uFF0D]\p{Z}*(.+)/,
+    // Java uses /[\u2012-\u2015\uFF0D]\p{Z}*(.+)/, and this regex is es5 compatible
     '[\\u2012-\\u2015\\uFF0D][ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]*((?:[\\0-\\t\\x0B\\f\\x0E-\\u2027\\u202A-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)',
     // Breaks on a full stop - e.g. "12345. 332-445-1234 is my number."
-    // original was --> /\.+\p{Z}*([^.]+)/,
+    // Java uses /\.+\p{Z}*([^.]+)/, and this regex is es5 compatible
     '\\.+[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]*((?:[\\0-\\-\\/-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)',
     // Breaks on space - e.g. "3324451234 8002341234"
-    // original was --> /\p{Z}+(\P{Z}+)/
+    // Java uses /\p{Z}+(\P{Z}+)/ and this regex is es5 compatible
     '[ \\xA0\\u1680\\u2000-\\u200A\\u2028\\u2029\\u202F\\u205F\\u3000]+((?:[\\0-\\x1F!-\\x9F\\xA1-\\u167F\\u1681-\\u1FFF\\u200B-\\u2027\\u202A-\\u202E\\u2030-\\u205E\\u2060-\\u2FFF\\u3001-\\uD7FF\\uE000-\\uFFFF]|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF])+)'
 ];
 
@@ -331,6 +330,8 @@ PhoneNumberMatcher.prototype.find = function(index) {
     return null;
 };
 
+// XXX: do I care about doing iterator() to wrap these?  And/or
+// should this have some more JS-like interface?
 PhoneNumberMatcher.prototype.hasNext = function() {
     if (this.state == State.NOT_READY) {
         this.lastMatch = this.find(this.searchIndex);
@@ -517,7 +518,7 @@ PhoneNumberMatcher.prototype.parseAndVerify = function(candidate, offset) {
         // by Latin alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
         // If the candidate is not at the start of the text, and does not start with phone-number
         // punctuation, check the previous character.
-        if(this.leniency >= PhoneNumberUtil.Leniency.VALID) {
+        if(this.leniency.value >= PhoneNumberUtil.Leniency.VALID.value) {
             if (offset > 0) {
                 var leadClassRe = new RegExp("^" + LEAD_CLASS);
                 var leadClassMatches = leadClassRe.exec(candidate);
@@ -564,9 +565,7 @@ PhoneNumberMatcher.prototype.parseAndVerify = function(candidate, offset) {
             return null;
         }
 
-        // XXX: simplify this
-        var leniencyVerifyFn = PhoneNumberUtil.Leniency.verifyFns[this.leniency];
-        if (leniencyVerifyFn(number, candidate, this.phoneUtil)) {
+        if (this.leniency.verify(number, candidate, this.phoneUtil)) {
             // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
             // values parsed. TODO: stop clearing all values here and switch all users over
             // to using rawInput() rather than the rawString() of PhoneNumberMatch.

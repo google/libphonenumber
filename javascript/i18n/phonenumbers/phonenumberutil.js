@@ -1011,14 +1011,28 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
    * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
    * possible}, but not necessarily {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}.
    */
-  POSSIBLE: 0,
+  POSSIBLE: {
+    value: 0,
+    verify: function(number, candidate, util) {
+      return util.isPossibleNumber(number);
+    }
+  },
   /**
    * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
    * possible} and {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}. Numbers written
    * in national format must have their national-prefix present if it is usually written for a
    * number of this type.
    */
-  VALID: 1,
+  VALID: {
+    value: 1,
+    verify: function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
+        return false;
+      }
+      return PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util);
+    }
+  },
   /**
    * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
    * are grouped in a possible way for this locale. For example, a US number written as
@@ -1031,7 +1045,26 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
    * code "+1". If you are not sure about which level to use, email the discussion group
    * libphonenumber-discuss@googlegroups.com.
    */
-  STRICT_GROUPING: 2,
+  STRICT_GROUPING: {
+    value: 2,
+    verify: function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util))
+      {
+        return false;
+      }
+      return PhoneNumberMatcher.checkNumberGroupingIsValid(
+        number, candidate, util, {
+          checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
+            return PhoneNumberMatcher.allNumberGroupsRemainGrouped(
+              util, number, normalizedCandidate, expectedNumberGroups);
+          }
+        }
+      );
+    }
+  },
   /**
    * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
    * are grouped in the same way that we would have formatted it, or as a single block. For
@@ -1043,41 +1076,9 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
    * code "+1". If you are not sure about which level to use, email the discussion group
    * libphonenumber-discuss@googlegroups.com.
    */
-  EXACT_GROUPING: 3,
-
-  // Verification functions for each of the above.
-  // XXX: this feels overly "clever", and probably I should refactor.  Tried to follow Java's pattern here.
-  verifyFns: [
-    // POSSIBLE
-    function(number, candidate, util) {
-      return util.isPossibleNumber(number);
-    },
-    // VALID
-    function(number, candidate, util) {
-      if (!util.isValidNumber(number)
-          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
-        return false;
-      }
-      return PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util);
-    },
-    // STRICT_GROUPING
-    function(number, candidate, util) {
-      if (!util.isValidNumber(number)
-          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
-          || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
-          || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
-        return false;
-      }
-      return PhoneNumberMatcher.checkNumberGroupingIsValid(
-          number, candidate, util, {
-            checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
-              return PhoneNumberMatcher.allNumberGroupsRemainGrouped(
-                  util, number, normalizedCandidate, expectedNumberGroups);
-            }
-          });
-    },
-    // EXACT_GROUPING
-    function(number, candidate, util) {
+  EXACT_GROUPING: {
+    value: 3,
+    verify: function(number, candidate, util) {
       if (!util.isValidNumber(number)
           || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
           || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
@@ -1093,7 +1094,7 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
           }
       );
     }
-  ]
+  }
 };
 
 /**
@@ -4665,8 +4666,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, default
   }
 
   leniency = leniency || i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID;
-  maxTries = maxTries || 9223372036854775807; // Long.MAX_VALUE is 9,223,372,036,854,775,807
-  return new PhoneNumberMatcher(this, text, defaultRegion, i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID, maxTries);
+  maxTries = maxTries || 9223372036854775807; // Java Long.MAX_VALUE = 9,223,372,036,854,775,807
+  return new PhoneNumberMatcher(this, text, defaultRegion, PhoneNumberUtil.Leniency.VALID, maxTries);
 };
 
 /**
