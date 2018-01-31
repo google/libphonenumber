@@ -150,64 +150,65 @@ var LEAD_CLASS; // built dynamically below
 
 (function () {
 
-    /** Returns a regular expression quantifier with an upper and lower limit. */
-    function limit(lower, upper) {
-        if ((lower < 0) || (upper <= 0) || (upper < lower)) {
-            throw new Error('invalid lower or upper limit');
-        }
-        return '{' + lower + ',' + upper + '}';
-    }
+  /** Returns a regular expression quantifier with an upper and lower limit. */
+  function limit(lower, upper) {
+      if ((lower < 0) || (upper <= 0) || (upper < lower)) {
+          throw new Error('invalid lower or upper limit');
+      }
+      return '{' + lower + ',' + upper + '}';
+  }
 
-    /* Builds the MATCHING_BRACKETS and PATTERN regular expressions. The building blocks below exist
-     * to make the pattern more easily understood. */
+  /* Builds the MATCHING_BRACKETS and PATTERN regular expressions. The building blocks below exist
+   * to make the pattern more easily understood. */
 
-    var openingParens = '(\\[\uFF08\uFF3B';
-    var closingParens = ')\\]\uFF09\uFF3D';
-    var nonParens = '[^' + openingParens + closingParens + ']';
+  var openingParens = '(\\[\uFF08\uFF3B';
+  var closingParens = ')\\]\uFF09\uFF3D';
+  var nonParens = '[^' + openingParens + closingParens + ']';
 
-    /* Limit on the number of pairs of brackets in a phone number. */
-    var bracketPairLimit = limit(0, 3);
-    /*
-     * An opening bracket at the beginning may not be closed, but subsequent ones should be.  It's
-     * also possible that the leading bracket was dropped, so we shouldn't be surprised if we see a
-     * closing bracket first. We limit the sets of brackets in a phone number to four.
-     */
-    MATCHING_BRACKETS = new RegExp(
-        '(?:[' + openingParens + '])?' + '(?:' + nonParens + '+' + '[' + closingParens + '])?'
-        + nonParens + '+'
-        + '(?:[' + openingParens + ']' + nonParens + '+[' + closingParens + '])' + bracketPairLimit
-        + nonParens + '*');
+  /* Limit on the number of pairs of brackets in a phone number. */
+  var bracketPairLimit = limit(0, 3);
+  /*
+    * An opening bracket at the beginning may not be closed, but subsequent ones should be.  It's
+    * also possible that the leading bracket was dropped, so we shouldn't be surprised if we see a
+    * closing bracket first. We limit the sets of brackets in a phone number to four.
+    */
+  MATCHING_BRACKETS = new RegExp(
+      '(?:[' + openingParens + '])?' + '(?:' + nonParens + '+' +
+      '[' + closingParens + '])?' + nonParens + '+'
+      + '(?:[' + openingParens + ']' + nonParens + '+[' +
+      closingParens + '])' + bracketPairLimit + nonParens + '*');
 
-    /* Limit on the number of leading (plus) characters. */
-    var leadLimit = limit(0, 2);
-    /* Limit on the number of consecutive punctuation characters. */
-    var punctuationLimit = limit(0, 4);
-    /* The maximum number of digits allowed in a digit-separated block. As we allow all digits in a
-     * single block, set high enough to accommodate the entire national number and the international
-     * country code. */
-    var digitBlockLimit = i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ +
-      i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE_;
-    /* Limit on the number of blocks separated by punctuation. Uses digitBlockLimit since some
-     * formats use spaces to separate each digit. */
-    var blockLimit = limit(0, digitBlockLimit);
+  /* Limit on the number of leading (plus) characters. */
+  var leadLimit = limit(0, 2);
+  /* Limit on the number of consecutive punctuation characters. */
+  var punctuationLimit = limit(0, 4);
+  /* The maximum number of digits allowed in a digit-separated block. As we allow all digits in a
+    * single block, set high enough to accommodate the entire national number and the international
+    * country code. */
+  var digitBlockLimit = i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ +
+    i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE_;
+  /* Limit on the number of blocks separated by punctuation. Uses digitBlockLimit since some
+    * formats use spaces to separate each digit. */
+  var blockLimit = limit(0, digitBlockLimit);
 
-    /* A punctuation sequence allowing white space. */
-    var punctuation = '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION +
-      ']' + punctuationLimit;
-    /* A digits block without punctuation. */
-    // XXX: can't use \p{Nd} in es5, so here's a transpiled version via https://mothereff.in/regexpu
-    var es5DigitSequence = '(?:[0-9\\u0660-\\u0669\\u06F0-\\u06F9\\u07C0-\\u07C9\\u0966-\\u096F\\u09E6-\\u09EF\\u0A66-\\u0A6F\\u0AE6-\\u0AEF\\u0B66-\\u0B6F\\u0BE6-\\u0BEF\\u0C66-\\u0C6F\\u0CE6-\\u0CEF\\u0D66-\\u0D6F\\u0DE6-\\u0DEF\\u0E50-\\u0E59\\u0ED0-\\u0ED9\\u0F20-\\u0F29\\u1040-\\u1049\\u1090-\\u1099\\u17E0-\\u17E9\\u1810-\\u1819\\u1946-\\u194F\\u19D0-\\u19D9\\u1A80-\\u1A89\\u1A90-\\u1A99\\u1B50-\\u1B59\\u1BB0-\\u1BB9\\u1C40-\\u1C49\\u1C50-\\u1C59\\uA620-\\uA629\\uA8D0-\\uA8D9\\uA900-\\uA909\\uA9D0-\\uA9D9\\uA9F0-\\uA9F9\\uAA50-\\uAA59\\uABF0-\\uABF9\\uFF10-\\uFF19]|\\uD801[\\uDCA0-\\uDCA9]|\\uD804[\\uDC66-\\uDC6F\\uDCF0-\\uDCF9\\uDD36-\\uDD3F\\uDDD0-\\uDDD9\\uDEF0-\\uDEF9]|[\\uD805\\uD807][\\uDC50-\\uDC59\\uDCD0-\\uDCD9\\uDE50-\\uDE59\\uDEC0-\\uDEC9\\uDF30-\\uDF39]|\\uD806[\\uDCE0-\\uDCE9]|\\uD81A[\\uDE60-\\uDE69\\uDF50-\\uDF59]|\\uD835[\\uDFCE-\\uDFFF]|\\uD83A[\\uDD50-\\uDD59])';
-    var digitSequence = es5DigitSequence + limit(1, digitBlockLimit);
+  /* A punctuation sequence allowing white space. */
+  var punctuation = '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION +
+    ']' + punctuationLimit;
+  /* A digits block without punctuation. */
+  // XXX: can't use \p{Nd} in es5, so here's a transpiled version via https://mothereff.in/regexpu
+  var es5DigitSequence = '(?:[0-9\\u0660-\\u0669\\u06F0-\\u06F9\\u07C0-\\u07C9\\u0966-\\u096F\\u09E6-\\u09EF\\u0A66-\\u0A6F\\u0AE6-\\u0AEF\\u0B66-\\u0B6F\\u0BE6-\\u0BEF\\u0C66-\\u0C6F\\u0CE6-\\u0CEF\\u0D66-\\u0D6F\\u0DE6-\\u0DEF\\u0E50-\\u0E59\\u0ED0-\\u0ED9\\u0F20-\\u0F29\\u1040-\\u1049\\u1090-\\u1099\\u17E0-\\u17E9\\u1810-\\u1819\\u1946-\\u194F\\u19D0-\\u19D9\\u1A80-\\u1A89\\u1A90-\\u1A99\\u1B50-\\u1B59\\u1BB0-\\u1BB9\\u1C40-\\u1C49\\u1C50-\\u1C59\\uA620-\\uA629\\uA8D0-\\uA8D9\\uA900-\\uA909\\uA9D0-\\uA9D9\\uA9F0-\\uA9F9\\uAA50-\\uAA59\\uABF0-\\uABF9\\uFF10-\\uFF19]|\\uD801[\\uDCA0-\\uDCA9]|\\uD804[\\uDC66-\\uDC6F\\uDCF0-\\uDCF9\\uDD36-\\uDD3F\\uDDD0-\\uDDD9\\uDEF0-\\uDEF9]|[\\uD805\\uD807][\\uDC50-\\uDC59\\uDCD0-\\uDCD9\\uDE50-\\uDE59\\uDEC0-\\uDEC9\\uDF30-\\uDF39]|\\uD806[\\uDCE0-\\uDCE9]|\\uD81A[\\uDE60-\\uDE69\\uDF50-\\uDF59]|\\uD835[\\uDFCE-\\uDFFF]|\\uD83A[\\uDD50-\\uDD59])';
+  var digitSequence = es5DigitSequence + limit(1, digitBlockLimit);
 
-    var leadClassChars = openingParens +
-      i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_;
-    LEAD_CLASS = '[' + leadClassChars + ']';
+  var leadClassChars = openingParens +
+    i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_;
 
-    /* Phone number pattern allowing optional punctuation. */
-      PATTERN = '(?:' + LEAD_CLASS + punctuation + ')' + leadLimit
-        + digitSequence + '(?:' + punctuation + digitSequence + ')' + blockLimit
-        + '(?:' + i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING +
-        ')?';
+  LEAD_CLASS = '[' + leadClassChars + ']';
+
+  /* Phone number pattern allowing optional punctuation. */
+  PATTERN = '(?:' + LEAD_CLASS + punctuation + ')' + leadLimit
+    + digitSequence + '(?:' + punctuation + digitSequence + ')' + blockLimit
+    + '(?:' + i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING +
+    ')?';
 
 }());
 
@@ -216,15 +217,15 @@ var LEAD_CLASS; // built dynamically below
  * returning the trimmed version.
  */
 function trimAfterFirstMatch(pattern, candidate) {
-    var trailingCharsMatcher = pattern.exec(candidate);
-    if (trailingCharsMatcher && trailingCharsMatcher.length) {
-        candidate = candidate.substring(0, trailingCharsMatcher.index);
-    }
-    return candidate;
+  var trailingCharsMatcher = pattern.exec(candidate);
+  if (trailingCharsMatcher && trailingCharsMatcher.length) {
+    candidate = candidate.substring(0, trailingCharsMatcher.index);
+  }
+  return candidate;
 }
 
 function isInvalidPunctuationSymbol(character) {
-    return character == '%' || CURRENCY_SYMBOL.test(character);
+  return character == '%' || CURRENCY_SYMBOL.test(character);
 }
 
 /**
@@ -243,37 +244,37 @@ function isInvalidPunctuationSymbol(character) {
  *     be {@code >= 0}.
  */
 i18n.phonenumbers.PhoneNumberMatcher = function(util, text, country, leniency, maxTries) {
-    if (util == null) {
-        throw new Error('util can not be null');
-    }
-    if (leniency == null) {
-        throw new Error('leniency can not be null');
-    }
-    if (maxTries < 0) {
-        throw new Error('maxTries must be greater than 0');
-    }
+  if (util == null) {
+    throw new Error('util can not be null');
+  }
+  if (leniency == null) {
+    throw new Error('leniency can not be null');
+  }
+  if (maxTries < 0) {
+    throw new Error('maxTries must be greater than 0');
+  }
 
-     /** The phone number utility. */
-    this.phoneUtil = util;
-    /** The text searched for phone numbers. */
-    this.text = text || '';
-    /**
-     * The region (country) to assume for phone numbers without an international prefix, possibly
-     * null.
-     */
-    this.preferredRegion = country;
-    /** The degree of validation requested. NOTE: Java `findNumbers` always uses VALID, so we hard code that here */
-    this.leniency = leniency;
+    /** The phone number utility. */
+  this.phoneUtil = util;
+  /** The text searched for phone numbers. */
+  this.text = text || '';
+  /**
+   * The region (country) to assume for phone numbers without an international prefix, possibly
+   * null.
+   */
+  this.preferredRegion = country;
+  /** The degree of validation requested. NOTE: Java `findNumbers` always uses VALID, so we hard code that here */
+  this.leniency = leniency;
 
-    /** The maximum number of retries after matching an invalid number. */
-    this.maxTries = maxTries;
+  /** The maximum number of retries after matching an invalid number. */
+  this.maxTries = maxTries;
 
-    /** The iteration tristate. */
-    this.state = State.NOT_READY;
-    /** The last successful match, null unless in {@link State#READY}. */
-    this.lastMatch = null;
-    /** The next index to start searching at. Undefined in {@link State#DONE}. */
-    this.searchIndex = 0;
+  /** The iteration tristate. */
+  this.state = State.NOT_READY;
+  /** The last successful match, null unless in {@link State#READY}. */
+  this.lastMatch = null;
+  /** The next index to start searching at. Undefined in {@link State#DONE}. */
+  this.searchIndex = 0;
 };
 
 /**
@@ -282,12 +283,12 @@ i18n.phonenumbers.PhoneNumberMatcher = function(util, text, country, leniency, m
  * Latin character.
  */
 i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter = function(letter) {
-    // Combining marks are a subset of non-spacing-mark.
-    if (!IS_LETTER.test(letter) && !NON_SPACING_MARK.test(letter)) {
-        return false;
-    }
+  // Combining marks are a subset of non-spacing-mark.
+  if (!IS_LETTER.test(letter) && !NON_SPACING_MARK.test(letter)) {
+    return false;
+  }
 
-    return IS_LATIN.test(letter);
+  return IS_LATIN.test(letter);
 };
 
 /**
@@ -298,121 +299,120 @@ i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter = function(letter) {
  * @return  the phone number match found, null if none can be found
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.find = function(index) {
-    var matches;
-    var patternRegex = new RegExp(PATTERN, 'ig');
-    patternRegex.lastIndex = index;
+  var matches;
+  var patternRegex = new RegExp(PATTERN, 'ig');
+  patternRegex.lastIndex = index;
 
-    while((this.maxTries > 0) && ((matches = patternRegex.exec(this.text)))) {
-        var start = matches.index;
-        var candidate = matches[0];
-        
-        // Check for extra numbers at the end.
-        // TODO: This is the place to start when trying to support extraction of multiple phone number
-        // from split notations (+41 79 123 45 67 / 68).
-        candidate = trimAfterFirstMatch(
-          i18n.phonenumbers.PhoneNumberUtil.SECOND_NUMBER_START_PATTERN_,
-          candidate
-        );
+  while((this.maxTries > 0) && ((matches = patternRegex.exec(this.text)))) {
+    var start = matches.index;
+    var candidate = matches[0];
+    
+    // Check for extra numbers at the end.
+    // TODO: This is the place to start when trying to support extraction of multiple phone number
+    // from split notations (+41 79 123 45 67 / 68).
+    candidate = trimAfterFirstMatch(
+      i18n.phonenumbers.PhoneNumberUtil.SECOND_NUMBER_START_PATTERN_,
+      candidate
+    );
 
-        var match = this.extractMatch(candidate, start);
-        if (match != null) {
-            return match;
-        }
-
-        this.maxTries--;
-        patternRegex.lastIndex = start + candidate.length + 1;
+    var match = this.extractMatch(candidate, start);
+    if (match != null) {
+      return match;
     }
 
-    return null;
+    this.maxTries--;
+    patternRegex.lastIndex = start + candidate.length + 1;
+  }
+
+  return null;
 };
 
 // XXX: do I care about doing iterator() to wrap these?  And/or
 // should this have some more JS-like interface?
 i18n.phonenumbers.PhoneNumberMatcher.prototype.hasNext = function() {
-    if (this.state == State.NOT_READY) {
-        this.lastMatch = this.find(this.searchIndex);
-        if (this.lastMatch == null) {
-          this.state = State.DONE;
-        } else {
-          this.searchIndex = this.lastMatch.end;
-          this.state = State.READY;
-        }
+  if (this.state == State.NOT_READY) {
+    this.lastMatch = this.find(this.searchIndex);
+    if (this.lastMatch == null) {
+      this.state = State.DONE;
+    } else {
+      this.searchIndex = this.lastMatch.end;
+      this.state = State.READY;
     }
-    return this.state == State.READY;
+  }
+  return this.state == State.READY;
 };
 
 i18n.phonenumbers.PhoneNumberMatcher.prototype.next = function() {
-    // Check the state and find the next match as a side-effect if necessary.
-    if (!this.hasNext()) {
-      throw new Error('no element');
-    }
+  // Check the state and find the next match as a side-effect if necessary.
+  if (!this.hasNext()) {
+    throw new Error('no element');
+  }
 
-    // Don't retain that memory any longer than necessary.
-    var result = this.lastMatch;
-    this.lastMatch = null;
-    this.state = State.NOT_READY;
-    return result;
+  // Don't retain that memory any longer than necessary.
+  var result = this.lastMatch;
+  this.lastMatch = null;
+  this.state = State.NOT_READY;
+  return result;
 };
 
 i18n.phonenumbers.PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber = function(number, candidate) {
-    var firstSlashInBodyIndex = candidate.indexOf('/');
-    if (firstSlashInBodyIndex < 0) {
-      // No slashes, this is okay.
-      return false;
-    }
-    // Now look for a second one.
-    var secondSlashInBodyIndex = candidate.indexOf('/', firstSlashInBodyIndex + 1);
-    if (secondSlashInBodyIndex < 0) {
-      // Only one slash, this is okay.
-      return false;
-    }
+  var firstSlashInBodyIndex = candidate.indexOf('/');
+  if (firstSlashInBodyIndex < 0) {
+    // No slashes, this is okay.
+    return false;
+  }
+  // Now look for a second one.
+  var secondSlashInBodyIndex = candidate.indexOf('/', firstSlashInBodyIndex + 1);
+  if (secondSlashInBodyIndex < 0) {
+    // Only one slash, this is okay.
+    return false;
+  }
 
-    // If the first slash is after the country calling code, this is permitted.
-    var candidateHasCountryCode =
-        (number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN
-         || number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
-    if (candidateHasCountryCode &&
-      i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(
-        candidate.substring(0, firstSlashInBodyIndex)) == number.getCountryCode())
-    {
-      // Any more slashes and this is illegal.
-      return candidate.substring(secondSlashInBodyIndex + 1).indexOf('/') > -1;
-    }
-    return true;
+  // If the first slash is after the country calling code, this is permitted.
+  var candidateHasCountryCode =
+      (number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN ||
+       number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
+  if (candidateHasCountryCode && i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(
+    candidate.substring(0, firstSlashInBodyIndex)) == number.getCountryCode())
+  {
+    // Any more slashes and this is illegal.
+    return candidate.substring(secondSlashInBodyIndex + 1).indexOf('/') > -1;
+  }
+  return true;
 };
 
 i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars = function(number, candidate, util) {
-    var charAtIndex;
-    var charAtNextIndex;
+  var charAtIndex;
+  var charAtNextIndex;
 
-    // The characters 'x' and 'X' can be (1) a carrier code, in which case they always precede the
-    // national significant number or (2) an extension sign, in which case they always precede the
-    // extension number. We assume a carrier code is more than 1 digit, so the first case has to
-    // have more than 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1 'x'
-    // or 'X'. We ignore the character if it appears as the last character of the string.
-    for (var index = 0; index < candidate.length - 1; index++) {
-        charAtIndex = candidate.charAt(index);
-        if (charAtIndex == 'x' || charAtIndex == 'X') {
-            charAtNextIndex = candidate.charAt(index + 1);
-            if (charAtNextIndex == 'x' || charAtNextIndex == 'X') {
-                // This is the carrier code case, in which the 'X's always precede the national
-                // significant number.
-                index++;
-                if (util.isNumberMatch(number, candidate.substring(index)) !=
-                i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH
-                ) {
-                    return false;
-                }
-            // This is the extension sign case, in which the 'x' or 'X' should always precede the
-            // extension number.
-            } else if (!i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(
-              candidate.substring(index)) == number.getExtension()
-            ) {
-                return false;
-            }
+  // The characters 'x' and 'X' can be (1) a carrier code, in which case they always precede the
+  // national significant number or (2) an extension sign, in which case they always precede the
+  // extension number. We assume a carrier code is more than 1 digit, so the first case has to
+  // have more than 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1 'x'
+  // or 'X'. We ignore the character if it appears as the last character of the string.
+  for (var index = 0; index < candidate.length - 1; index++) {
+    charAtIndex = candidate.charAt(index);
+    if (charAtIndex == 'x' || charAtIndex == 'X') {
+      charAtNextIndex = candidate.charAt(index + 1);
+      if (charAtNextIndex == 'x' || charAtNextIndex == 'X') {
+        // This is the carrier code case, in which the 'X's always precede the national
+        // significant number.
+        index++;
+        if (util.isNumberMatch(number, candidate.substring(index)) !=
+          i18n.phonenumbers.PhoneNumberUtil.MatchType.NSN_MATCH
+        ) {
+          return false;
         }
+      // This is the extension sign case, in which the 'x' or 'X' should always precede the
+      // extension number.
+      } else if (!i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(
+        candidate.substring(index)) == number.getExtension()
+      ) {
+        return false;
+      }
     }
-    return true;
+  }
+  return true;
 };
 
 /**
@@ -423,28 +423,28 @@ i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars = function(number, 
  * @return  the match found, null if none can be found
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.extractMatch = function(candidate, offset) {
-    // Skip a match that is more likely to be a date.
-    if (SLASH_SEPARATED_DATES.test(candidate)) {
-        return null;
-    }
+  // Skip a match that is more likely to be a date.
+  if (SLASH_SEPARATED_DATES.test(candidate)) {
+    return null;
+  }
 
-    // Skip potential time-stamps.
-    if (TIME_STAMPS.test(candidate)) {
-        var followingText = this.text.substring(offset + candidate.length);
-        if (TIME_STAMPS_SUFFIX.test(followingText)) {
-            return null;
-        }
+  // Skip potential time-stamps.
+  if (TIME_STAMPS.test(candidate)) {
+    var followingText = this.text.substring(offset + candidate.length);
+    if (TIME_STAMPS_SUFFIX.test(followingText)) {
+      return null;
     }
+  }
 
-    // Try to come up with a valid match given the entire candidate.
-    var match = this.parseAndVerify(candidate, offset);
-    if (match != null) {
-        return match;
-    }
+  // Try to come up with a valid match given the entire candidate.
+  var match = this.parseAndVerify(candidate, offset);
+  if (match != null) {
+    return match;
+  }
 
-    // If that failed, try to find an "inner match" - there might be a phone number within this
-    // candidate.
-    return this.extractInnerMatch(candidate, offset);
+  // If that failed, try to find an "inner match" - there might be a phone number within this
+  // candidate.
+  return this.extractInnerMatch(candidate, offset);
 };
 
 /**
@@ -456,42 +456,41 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.extractMatch = function(candidate
  * @return  the match found, null if none can be found
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.extractInnerMatch = function(candidate, offset) {
-    var groupMatch;
-    var innerMatchRegex;
-    var group;
-    var match;
+  var groupMatch;
+  var innerMatchRegex;
+  var group;
+  var match;
+  var i;
 
-    for (var i = 0; i < INNER_MATCHES.length; i++) {
-        var isFirstMatch = true;
-        innerMatchRegex = new RegExp(INNER_MATCHES[i], 'g');
-        while ((groupMatch = innerMatchRegex.exec(candidate)) &&
-               this.maxTries > 0)
-        {
-            if (isFirstMatch) {
-                // We should handle any group before this one too.
-                group = trimAfterFirstMatch(
-                  i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_,
-                    candidate.substring(0, groupMatch.index)
-                );
-                match = this.parseAndVerify(group, offset);
-                if (match != null) {
-                    return match;
-                }
-                this.maxTries--;
-                isFirstMatch = false;
-            }
-            group = trimAfterFirstMatch(
-              i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_,
-                groupMatch[1]
-            );
-            match = this.parseAndVerify(group, offset + groupMatch.index);
-            if (match != null) {
-                return match;
-            }
-            this.maxTries--;
+  for (i = 0; i < INNER_MATCHES.length; i++) {
+    var isFirstMatch = true;
+    innerMatchRegex = new RegExp(INNER_MATCHES[i], 'ig');
+    while ((groupMatch = innerMatchRegex.exec(candidate)) && this.maxTries > 0) {
+      if (isFirstMatch) {
+        // We should handle any group before this one too.
+        group = trimAfterFirstMatch(
+          i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_,
+          candidate.substring(0, groupMatch.index)
+        );
+        match = this.parseAndVerify(group, offset);
+        if (match != null) {
+          return match;
         }
+        this.maxTries--;
+        isFirstMatch = false;
+      }
+      group = trimAfterFirstMatch(
+        i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_,
+          groupMatch[1]
+      );
+      match = this.parseAndVerify(group, offset + groupMatch.index);
+      if (match != null) {
+        return match;
+      }
+      this.maxTries--;
     }
-    return null;
+  }
+  return null;
 };
 
 /**
@@ -504,121 +503,121 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.extractInnerMatch = function(cand
  * @return  the parsed and validated phone number match, or null
  */
 i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candidate, offset) {
-    try {
-        // Check the candidate doesn't contain any formatting which would indicate that it really
-        // isn't a phone number.
-        if (!MATCHING_BRACKETS.test(candidate) || PUB_PAGES.test(candidate)) {
-            return null;
-        }
-
-        // If leniency is set to VALID or stricter, we also want to skip numbers that are surrounded
-        // by Latin alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
-        // If the candidate is not at the start of the text, and does not start with phone-number
-        // punctuation, check the previous character.
-        if(this.leniency.value >= i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID.value) {
-            if (offset > 0) {
-                var leadClassRe = new RegExp('^' + LEAD_CLASS);
-                var leadClassMatches = leadClassRe.exec(candidate);
-                if(leadClassMatches && leadClassMatches.index !== 0) {
-                    var previousChar = this.text.charAt(offset - 1);
-                    // We return null if it is a latin letter or an invalid punctuation symbol.
-                    if (isInvalidPunctuationSymbol(previousChar) ||
-                      i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(previousChar))
-                    {
-                        return null;
-                    }
-                }
-            }
-            var lastCharIndex = offset + candidate.length;
-            if (lastCharIndex < this.text.length) {
-                var nextChar = this.text.charAt(lastCharIndex);
-                if (isInvalidPunctuationSymbol(nextChar) ||
-                  i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(nextChar))
-                {
-                    return null;
-                }
-            }
-        }
-
-        var number = this.phoneUtil.parseAndKeepRawInput(candidate, this.preferredRegion);
-
-        // Check Israel * numbers: these are a special case in that they are four-digit numbers that
-        // our library supports, but they can only be dialled with a leading *. Since we don't
-        // actually store or detect the * in our phone number library, this means in practice we
-        // detect most four digit numbers as being valid for Israel. We are considering moving these
-        // numbers to ShortNumberInfo instead, in which case this problem would go away, but in the
-        // meantime we want to restrict the false matches so we only allow these numbers if they are
-        // preceded by a star. We enforce this for all leniency levels even though these numbers are
-        // technically accepted by isPossibleNumber and isValidNumber since we consider it to be a
-        // deficiency in those methods that they accept these numbers without the *.
-        // TODO: Remove this or make it significantly less hacky once we've decided how to
-        // handle these short codes going forward in ShortNumberInfo. We could use the formatting
-        // rules for instance, but that would be slower.
-        if (this.phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()) == 'IL'
-            && this.phoneUtil.getNationalSignificantNumber(number).length == 4
-            && (offset == 0 || (offset > 0 && this.text.charAt(offset - 1) != '*')))
-        {
-            // No match.
-            return null;
-        }
-
-        if (this.leniency.verify(number, candidate, this.phoneUtil)) {
-            // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
-            // values parsed. TODO: stop clearing all values here and switch all users over
-            // to using rawInput() rather than the rawString() of PhoneNumberMatch.
-            number.clearCountryCodeSource();
-            number.clearRawInput();
-            number.clearPreferredDomesticCarrierCode();
-            return new i18n.phonenumbers.PhoneNumberMatch(offset, candidate, number);
-        }
-    } catch (e) {
-        // XXX: remove this
-        console.log(e);
-        // ignore and continue
+  try {
+    // Check the candidate doesn't contain any formatting which would indicate that it really
+    // isn't a phone number.
+    if (!MATCHING_BRACKETS.test(candidate) || PUB_PAGES.test(candidate)) {
+      return null;
     }
-    return null;
+
+    // If leniency is set to VALID or stricter, we also want to skip numbers that are surrounded
+    // by Latin alphabetic characters, to skip cases like abc8005001234 or 8005001234def.
+    // If the candidate is not at the start of the text, and does not start with phone-number
+    // punctuation, check the previous character.
+    if(this.leniency.value >= i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID.value) {
+      if (offset > 0) {
+        var leadClassRe = new RegExp('^' + LEAD_CLASS);
+        var leadClassMatches = leadClassRe.exec(candidate);
+        if(leadClassMatches && leadClassMatches.index !== 0) {
+          var previousChar = this.text.charAt(offset - 1);
+          // We return null if it is a latin letter or an invalid punctuation symbol.
+          if (isInvalidPunctuationSymbol(previousChar) ||
+            i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(previousChar))
+          {
+            return null;
+          }
+        }
+      }
+      var lastCharIndex = offset + candidate.length;
+      if (lastCharIndex < this.text.length) {
+        var nextChar = this.text.charAt(lastCharIndex);
+        if (isInvalidPunctuationSymbol(nextChar) ||
+          i18n.phonenumbers.PhoneNumberMatcher.isLatinLetter(nextChar))
+        {
+          return null;
+        }
+      }
+    }
+
+    var number = this.phoneUtil.parseAndKeepRawInput(candidate, this.preferredRegion);
+
+    // Check Israel * numbers: these are a special case in that they are four-digit numbers that
+    // our library supports, but they can only be dialled with a leading *. Since we don't
+    // actually store or detect the * in our phone number library, this means in practice we
+    // detect most four digit numbers as being valid for Israel. We are considering moving these
+    // numbers to ShortNumberInfo instead, in which case this problem would go away, but in the
+    // meantime we want to restrict the false matches so we only allow these numbers if they are
+    // preceded by a star. We enforce this for all leniency levels even though these numbers are
+    // technically accepted by isPossibleNumber and isValidNumber since we consider it to be a
+    // deficiency in those methods that they accept these numbers without the *.
+    // TODO: Remove this or make it significantly less hacky once we've decided how to
+    // handle these short codes going forward in ShortNumberInfo. We could use the formatting
+    // rules for instance, but that would be slower.
+    if (this.phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()) == 'IL'
+        && this.phoneUtil.getNationalSignificantNumber(number).length == 4
+        && (offset == 0 || (offset > 0 && this.text.charAt(offset - 1) != '*')))
+    {
+      // No match.
+      return null;
+    }
+
+    if (this.leniency.verify(number, candidate, this.phoneUtil)) {
+      // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
+      // values parsed. TODO: stop clearing all values here and switch all users over
+      // to using rawInput() rather than the rawString() of PhoneNumberMatch.
+      number.clearCountryCodeSource();
+      number.clearRawInput();
+      number.clearPreferredDomesticCarrierCode();
+      return new i18n.phonenumbers.PhoneNumberMatch(offset, candidate, number);
+    }
+  } catch (e) {
+    // XXX: remove this
+    console.log(e);
+    // ignore and continue
+  }
+  return null;
 };
 
 i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired = function(number, util) {
-    // First, check how we deduced the country code. If it was written in international format, then
-    // the national prefix is not required.
-    if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
-      return true;
-    }
-    var phoneNumberRegion =
-        util.getRegionCodeForCountryCode(number.getCountryCode());
-    var metadata = util.getMetadataForRegion(phoneNumberRegion);
-    if (metadata == null) {
-      return true;
-    }
-    // Check if a national prefix should be present when formatting this number.
-    var nationalNumber = util.getNationalSignificantNumber(number);
-    var formatRule = util.chooseFormattingPatternForNumber_(
-        metadata.numberFormatArray(),
-        nationalNumber
-    );
-    // To do this, we check that a national prefix formatting rule was present and that it wasn't
-    // just the first-group symbol ($1) with punctuation.
-    var nationalPrefixFormattingRule = formatRule &&
-                                       formatRule.getNationalPrefixFormattingRule(); 
-    if (nationalPrefixFormattingRule && nationalPrefixFormattingRule.length > 0) {
-      if (formatRule.getNationalPrefixOptionalWhenFormatting()) {
-        // The national-prefix is optional in these cases, so we don't need to check if it was
-        // present.
-        return true;
-      }
-      if (util.formattingRuleHasFirstGroupOnly(nationalPrefixFormattingRule)) {
-        // National Prefix not needed for this number.
-        return true;
-      }
-      // Normalize the remainder.
-      var rawInputCopy = i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(number.getRawInput());
-      var rawInput = new goog.string.StringBuffer(rawInputCopy);
-      // Check if we found a national prefix and/or carrier code at the start of the raw input, and
-      // return the result.
-      return util.maybeStripNationalPrefixAndCarrierCode(rawInput, metadata, null);
-    }
+  // First, check how we deduced the country code. If it was written in international format, then
+  // the national prefix is not required.
+  if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
     return true;
+  }
+  var phoneNumberRegion =
+    util.getRegionCodeForCountryCode(number.getCountryCode());
+  var metadata = util.getMetadataForRegion(phoneNumberRegion);
+  if (metadata == null) {
+    return true;
+  }
+  // Check if a national prefix should be present when formatting this number.
+  var nationalNumber = util.getNationalSignificantNumber(number);
+  var formatRule = util.chooseFormattingPatternForNumber_(
+    metadata.numberFormatArray(),
+    nationalNumber
+  );
+  // To do this, we check that a national prefix formatting rule was present and that it wasn't
+  // just the first-group symbol ($1) with punctuation.
+  var nationalPrefixFormattingRule = formatRule &&
+                                     formatRule.getNationalPrefixFormattingRule(); 
+  if (nationalPrefixFormattingRule && nationalPrefixFormattingRule.length > 0) {
+    if (formatRule.getNationalPrefixOptionalWhenFormatting()) {
+      // The national-prefix is optional in these cases, so we don't need to check if it was
+      // present.
+      return true;
+    }
+    if (util.formattingRuleHasFirstGroupOnly(nationalPrefixFormattingRule)) {
+      // National Prefix not needed for this number.
+      return true;
+    }
+    // Normalize the remainder.
+    var rawInputCopy = i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly(number.getRawInput());
+    var rawInput = new goog.string.StringBuffer(rawInputCopy);
+    // Check if we found a national prefix and/or carrier code at the start of the raw input, and
+    // return the result.
+    return util.maybeStripNationalPrefixAndCarrierCode(rawInput, metadata, null);
+  }
+  return true;
 };
 
 i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid = function(number, candidate, util, checker) {
@@ -636,16 +635,16 @@ i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid = function(numbe
 
   // If this didn't pass, see if there are any alternate formats, and try them instead.
   var alternateFormats =
-      MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
+    MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
   if (alternateFormats != null) {
-      var formats = alternateFormats.numberFormats();
-      var alternateFormat;
+    var formats = alternateFormats.numberFormats();
+    var alternateFormat;
     for (var i = 0; i < formats.length; i++) {
-        alternateFormat = formats[i];
-        formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
-        if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
-            return true;
-        }
+      alternateFormat = formats[i];
+      formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
+      if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
+        return true;
+      }
     }
   }
 
@@ -659,25 +658,25 @@ i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid = function(numbe
  * prefix, and return it as a set of digit blocks that would be formatted together.
  */
 function getNationalNumberGroups(util, number, formattingPattern) {
-    if (formattingPattern == null) {
-        // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
-        var rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
-        // We remove the extension part from the formatted string before splitting it into different
-        // groups.
-        var endIndex = rfc3966Format.indexOf(';');
-        if (endIndex < 0) {
-            endIndex = rfc3966Format.length;
-        }
-        // The country-code will have a '-' following it.
-        var startIndex = rfc3966Format.indexOf('-') + 1;
-        return rfc3966Format.substring(startIndex, endIndex).split('-');
-    } else {
-        // We format the NSN only, and split that according to the separator.
-        var nationalSignificantNumber = util.getNationalSignificantNumber(number);
-        return util.formatNsnUsingPattern(
-            nationalSignificantNumber,
-            formattingPattern,
-            PhoneNumberFormat.RFC3966
-        ).split('-');
+  if (formattingPattern == null) {
+    // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
+    var rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
+    // We remove the extension part from the formatted string before splitting it into different
+    // groups.
+    var endIndex = rfc3966Format.indexOf(';');
+    if (endIndex < 0) {
+      endIndex = rfc3966Format.length;
     }
+    // The country-code will have a '-' following it.
+    var startIndex = rfc3966Format.indexOf('-') + 1;
+    return rfc3966Format.substring(startIndex, endIndex).split('-');
+  } else {
+    // We format the NSN only, and split that according to the separator.
+    var nationalSignificantNumber = util.getNationalSignificantNumber(number);
+    return util.formatNsnUsingPattern(
+      nationalSignificantNumber,
+      formattingPattern,
+      PhoneNumberFormat.RFC3966
+    ).split('-');
+  }
 }
