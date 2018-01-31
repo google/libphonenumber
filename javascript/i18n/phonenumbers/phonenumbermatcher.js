@@ -481,7 +481,7 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.extractInnerMatch = function(cand
       }
       group = trimAfterFirstMatch(
         i18n.phonenumbers.PhoneNumberUtil.UNWANTED_END_CHAR_PATTERN_,
-          groupMatch[1]
+        groupMatch[1]
       );
       match = this.parseAndVerify(group, offset + groupMatch.index);
       if (match != null) {
