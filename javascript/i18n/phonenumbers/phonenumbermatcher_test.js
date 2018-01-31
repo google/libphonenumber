@@ -845,6 +845,128 @@ function testMaxMatchesMixed() {
     }
 }
 
+// XXX_FAILING: ZZ region not valid?
+/**
+function testNonPlusPrefixedNumbersNotFoundForInvalidRegion() {
+    // Does not start with a "+", we won't match it.
+    var iterator = phoneUtil.findNumbers("1 456 764 156", RegionCode.ZZ);
+
+    assertFalse(iterator.hasNext());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (e) {
+        // Success
+    }
+    assertFalse(iterator.hasNext());
+  }
+
+function testEmptyIteration() {
+    var iterator = phoneUtil.findNumbers("", RegionCode.ZZ);
+
+    assertFalse(iterator.hasNext());
+    assertFalse(iterator.hasNext());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (e) {
+        // Success
+    }
+    assertFalse(iterator.hasNext());
+}
+
+public void testSingleIteration() {
+    var iterator = phoneUtil.findNumbers("+14156667777", RegionCode.ZZ);
+
+    // With hasNext() -> next().
+    // Double hasNext() to ensure it does not advance.
+    assertTrue(iterator.hasNext());
+    assertTrue(iterator.hasNext());
+    assertNotNull(iterator.next());
+    assertFalse(iterator.hasNext());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (e) {
+        // Success
+    }
+    assertFalse(iterator.hasNext());
+
+    // With next() only.
+    assertNotNull(iterator.next());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (e) {
+        // Success
+    }
+}
+
+function testDoubleIteration() {
+    var iterator =
+        phoneUtil.findNumbers("+14156667777 foobar +14156667777 ", RegionCode.ZZ);
+
+    // With hasNext() -> next().
+    // Double hasNext() to ensure it does not advance.
+    assertTrue(iterator.hasNext());
+    assertTrue(iterator.hasNext());
+    assertNotNull(iterator.next());
+    assertTrue(iterator.hasNext());
+    assertTrue(iterator.hasNext());
+    assertNotNull(iterator.next());
+    assertFalse(iterator.hasNext());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (e) { 
+        // Success
+    }
+    assertFalse(iterator.hasNext());
+
+    // With next() only.
+    assertNotNull(iterator.next());
+    assertNotNull(iterator.next());
+    try {
+      iterator.next();
+      fail("Violation of the Iterator contract.");
+    } catch (e) {
+        // Success
+    }
+}
+
+function testRemovalNotSupported() {
+    var = phoneUtil.findNumbers("+14156667777", RegionCode.ZZ);
+
+    try {
+      iterator.remove();
+      fail("Iterator must not support remove.");
+    } catch (e) {
+        // success
+    }
+
+    assertTrue(iterator.hasNext());
+
+    try {
+      iterator.remove();
+      fail("Iterator must not support remove.");
+    } catch (e) {
+        // success
+    }
+
+    assertNotNull(iterator.next());
+
+    try {
+      iterator.remove();
+      fail("Iterator must not support remove.");
+    } catch (e) { 
+        // success
+    }
+
+    assertFalse(iterator.hasNext());
+}
+
+*/
+
 /**
  * Tests numbers found by {@link PhoneNumberUtil#findNumbers(CharSequence, String)} in various
  * textual contexts.
