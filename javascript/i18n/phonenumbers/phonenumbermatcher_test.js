@@ -557,8 +557,7 @@ var STRICT_GROUPING_CASES = [
     new NumberTest("0 900-1 123123", RegionCode.DE),
     // NDC also found as part of the country calling code; this shouldn't ruin the grouping
     // expectations.
-// XXX_FAILING: FR is missing
-//    new NumberTest("+33 3 34 2312", RegionCode.FR)
+    new NumberTest("+33 3 34 2312", RegionCode.FR)
 ];
 
 /**
@@ -590,8 +589,7 @@ var EXACT_GROUPING_CASES = [
     new NumberTest("0900-1 123 123", RegionCode.DE),
     new NumberTest("(0)900-1 123 123", RegionCode.DE),
     new NumberTest("0 900-1 123 123", RegionCode.DE),
-// XXX_FAILING: FR is missing
-//    new NumberTest("+33 3 34 23 12", RegionCode.FR)
+    new NumberTest("+33 3 34 23 12", RegionCode.FR)
 ];
 
 function testMatchesWithPossibleLeniency() {
