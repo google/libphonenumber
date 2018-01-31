@@ -44,8 +44,8 @@ goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumber.CountryCodeSource');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.metadata');
-
-
+// XXX: closure wants this, but the tests fail with it. Circular ref?
+//goog.require('i18n.phonenumbers.PhoneNumberMatcher');
 
 /**
  * @constructor
@@ -1027,10 +1027,14 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
     value: 1,
     verify: function(number, candidate, util) {
       if (!util.isValidNumber(number)
-          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)) {
+          || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(
+            number, candidate, util))
+      {
         return false;
       }
-      return PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util);
+      return i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(
+        number, util
+      );
     }
   },
   /**
@@ -1049,16 +1053,16 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
     value: 2,
     verify: function(number, candidate, util) {
       if (!util.isValidNumber(number)
-          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
-          || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
-          || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util))
+          || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || i18n.phonenumbers.PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util))
       {
         return false;
       }
-      return PhoneNumberMatcher.checkNumberGroupingIsValid(
+      return i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid(
         number, candidate, util, {
           checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
-            return PhoneNumberMatcher.allNumberGroupsRemainGrouped(
+            return i18n.phonenumbers.PhoneNumberMatcher.allNumberGroupsRemainGrouped(
               util, number, normalizedCandidate, expectedNumberGroups);
           }
         }
@@ -1080,15 +1084,15 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
     value: 3,
     verify: function(number, candidate, util) {
       if (!util.isValidNumber(number)
-          || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
-          || PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
-          || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
+          || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || i18n.phonenumbers.PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
         return false;
       }
-      return PhoneNumberMatcher.checkNumberGroupingIsValid(
+      return i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid(
           number, candidate, util, {
             checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
-              return PhoneNumberMatcher.allNumberGroupsAreExactlyPresent(
+              return i18n.phonenumbers.PhoneNumberMatcher.allNumberGroupsAreExactlyPresent(
                   util, number, normalizedCandidate, expectedNumberGroups);
             }
           }
@@ -4667,7 +4671,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, default
 
   leniency = leniency || i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID;
   maxTries = maxTries || 9223372036854775807; // Java Long.MAX_VALUE = 9,223,372,036,854,775,807
-  return new PhoneNumberMatcher(this, text, defaultRegion, PhoneNumberUtil.Leniency.VALID, maxTries);
+  return new i18n.phonenumbers.PhoneNumberMatcher(
+    this,
+    text,
+    defaultRegion,
+    i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID,
+    maxTries
+  );
 };
 
 /**
