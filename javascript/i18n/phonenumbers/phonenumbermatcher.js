@@ -254,7 +254,7 @@ i18n.phonenumbers.PhoneNumberMatcher = function(util, text, country, leniency, m
     throw new Error('maxTries must be greater than 0');
   }
 
-    /** The phone number utility. */
+  /** The phone number utility. */
   this.phoneUtil = util;
   /** The text searched for phone numbers. */
   this.text = text || '';
