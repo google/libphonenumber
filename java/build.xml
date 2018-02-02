@@ -173,7 +173,7 @@
       <arg value="BuildMetadataJsonFromXml"/>
       <arg value="${resources.dir}/ShortNumberMetadata.xml"/>
       <arg value="${javascript.dir}/i18n/phonenumbers/shortnumbermetadata.js"/>
-      <arg value="true"/> <!-- Lite metadata. -->
+      <arg value="false"/> <!-- Lite metadata. -->
       <arg value="i18n.phonenumbers.shortnumbermetadata" /> <!-- namespace to provide -->
     </exec>
     <exec executable="java">

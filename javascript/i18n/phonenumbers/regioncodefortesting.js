@@ -43,6 +43,7 @@ i18n.phonenumbers.RegionCode = {
   BY: 'BY',
   CA: 'CA',
   CH: 'CH',
+  CL: 'CL',
   CN: 'CN',
   CS: 'CS',
   CX: 'CX',

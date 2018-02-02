@@ -135,6 +135,7 @@
     <gjslint inputfile="i18n/phonenumbers/asyoutypeformatter*.js" />
     <gjslint inputfile="i18n/phonenumbers/demo.js" />
     <gjslint inputfile="i18n/phonenumbers/phonenumberutil*.js" />
+    <gjslint inputfile="i18n/phonenumbers/shortnumberinfo*.js" />
   </target>
 
 </project>
