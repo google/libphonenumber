@@ -1225,6 +1225,19 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly = function(number) {
       i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS, true);
 };
 
+i18n.phonenumbers.PhoneNumberUtil.normalizeDigits = function(number, keepNonDigits) {
+  var normalizedDigits = "";
+  for (var i = 0; i < number.length; i++) {
+    var c = number.charAt(i);
+    var digit = parseInt(c, 10);
+    if (!isNaN(digit)) {
+      normalizedDigits += c;
+    } else if (keepNonDigits) {
+      normalizedDigits += c;
+    }
+  }
+  return normalizedDigits;
+}
 
 /**
  * Normalizes a string of characters representing a phone number. This strips
@@ -4675,7 +4688,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, default
     this,
     text,
     defaultRegion,
-    i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID,
+    leniency,
     maxTries
   );
 };

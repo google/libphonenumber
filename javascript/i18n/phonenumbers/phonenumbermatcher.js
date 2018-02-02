@@ -228,6 +228,11 @@ function isInvalidPunctuationSymbol(character) {
   return character == '%' || CURRENCY_SYMBOL.test(character);
 }
 
+// Character.isDigit() equiv from Java
+function isDigit(character) {
+  return (new RegExp(i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_)).test(character);
+}
+
 /**
  * Creates a new instance. See the factory methods in {@link PhoneNumberUtil} on how to obtain a
  * new instance.
@@ -382,18 +387,15 @@ i18n.phonenumbers.PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber = 
 };
 
 i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars = function(number, candidate, util) {
-  var charAtIndex;
-  var charAtNextIndex;
-
   // The characters 'x' and 'X' can be (1) a carrier code, in which case they always precede the
   // national significant number or (2) an extension sign, in which case they always precede the
   // extension number. We assume a carrier code is more than 1 digit, so the first case has to
   // have more than 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1 'x'
   // or 'X'. We ignore the character if it appears as the last character of the string.
   for (var index = 0; index < candidate.length - 1; index++) {
-    charAtIndex = candidate.charAt(index);
+    var charAtIndex = candidate.charAt(index);
     if (charAtIndex == 'x' || charAtIndex == 'X') {
-      charAtNextIndex = candidate.charAt(index + 1);
+      var charAtNextIndex = candidate.charAt(index + 1);
       if (charAtNextIndex == 'x' || charAtNextIndex == 'X') {
         // This is the carrier code case, in which the 'X's always precede the national
         // significant number.
@@ -571,8 +573,10 @@ i18n.phonenumbers.PhoneNumberMatcher.prototype.parseAndVerify = function(candida
       return new i18n.phonenumbers.PhoneNumberMatch(offset, candidate, number);
     }
   } catch (e) {
-    // XXX: remove this
-    console.log(e);
+    // XXX: remove this, just filtering errors for easier debugging of tests...
+    if(e.message.indexOf("hone number") == -1) {
+      console.log(e);
+    }
     // ignore and continue
   }
   return null;
@@ -653,6 +657,85 @@ i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid = function(numbe
   return false;
 }
 
+i18n.phonenumbers.PhoneNumberMatcher.allNumberGroupsRemainGrouped = function(
+  util,number, normalizedCandidate, formattedNumberGroups) {
+
+  var fromIndex = 0;
+  if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
+    // First skip the country code if the normalized candidate contained it.
+    var countryCode = number.getCountryCode();
+    fromIndex = normalizedCandidate.indexOf(countryCode) + countryCode.length;
+  }
+  // Check each group of consecutive digits are not broken into separate groupings in the
+  // {@code normalizedCandidate} string.
+  for (var i = 0; i < formattedNumberGroups.length; i++) {
+    // Fails if the substring of {@code normalizedCandidate} starting from {@code fromIndex}
+    // doesn't contain the consecutive digits in formattedNumberGroups[i].
+    fromIndex = normalizedCandidate.indexOf(formattedNumberGroups[i], fromIndex);
+    if (fromIndex < 0) {
+      return false;
+    }
+    // Moves {@code fromIndex} forward.
+    fromIndex += formattedNumberGroups[i].length;
+    if (i == 0 && fromIndex < normalizedCandidate.length) {
+      // We are at the position right after the NDC. We get the region used for formatting
+      // information based on the country code in the phone number, rather than the number itself,
+      // as we do not need to distinguish between different countries with the same country
+      // calling code and this is faster.
+      var region = util.getRegionCodeForCountryCode(number.getCountryCode());
+      if (util.getNddPrefixForRegion(region, true) != null
+          && isDigit(normalizedCandidate.charAt(fromIndex)))
+      {
+        // This means there is no formatting symbol after the NDC. In this case, we only
+        // accept the number if there is no formatting symbol at all in the number, except
+        // for extensions. This is only important for countries with national prefixes.
+        var nationalSignificantNumber = util.getNationalSignificantNumber(number);
+        return normalizedCandidate.substring(fromIndex - formattedNumberGroups[i].length)
+          .startsWith(nationalSignificantNumber);
+      }
+    }
+  }
+  // The check here makes sure that we haven't mistakenly already used the extension to
+  // match the last group of the subscriber number. Note the extension cannot have
+  // formatting in-between digits.
+  return normalizedCandidate.substring(fromIndex).indexOf(number.getExtension()) > -1;
+}
+
+i18n.phonenumbers.PhoneNumberMatcher.allNumberGroupsAreExactlyPresent = function(
+  util, number, normalizedCandidate, formattedNumberGroups) {
+
+  var candidateGroups = normalizedCandidate.split(
+    i18n.phonenumbers.PhoneNumberUtil.NON_DIGITS_PATTERN_);
+  // Set this to the last group, skipping it if the number has an extension.
+  var candidateNumberGroupIndex =
+    number.hasExtension() ? candidateGroups.length - 2 : candidateGroups.length - 1;
+  // First we check if the national significant number is formatted as a block.
+  // We use contains and not equals, since the national significant number may be present with
+  // a prefix such as a national number prefix, or the country code itself.
+  if (candidateGroups.length == 1 ||
+      candidateGroups[candidateNumberGroupIndex].indexOf(
+        util.getNationalSignificantNumber(number)) > -1)
+  {
+    return true;
+  }
+  // Starting from the end, go through in reverse, excluding the first group, and check the
+  // candidate and number groups are the same.
+  for (var formattedNumberGroupIndex = (formattedNumberGroups.length - 1);
+       formattedNumberGroupIndex > 0 && candidateNumberGroupIndex >= 0;
+       formattedNumberGroupIndex--, candidateNumberGroupIndex--)
+  {
+    if (!candidateGroups[candidateNumberGroupIndex] ==
+      formattedNumberGroups[formattedNumberGroupIndex])
+    {
+      return false;
+    }
+  }
+  // Now check the first group. There may be a national prefix at the start, so we only check
+  // that the candidate group ends with the formatted number group.
+  return (candidateNumberGroupIndex >= 0
+    && candidateGroups[candidateNumberGroupIndex].endsWith(formattedNumberGroups[0]));
+}
+
 /**
  * Helper method to get the national-number part of a number, formatted without any national
  * prefix, and return it as a set of digit blocks that would be formatted together.
@@ -660,7 +743,7 @@ i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid = function(numbe
 function getNationalNumberGroups(util, number, formattingPattern) {
   if (formattingPattern == null) {
     // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
-    var rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
+    var rfc3966Format = util.format(number, i18n.phonenumbers.PhoneNumberFormat.RFC3966);
     // We remove the extension part from the formatted string before splitting it into different
     // groups.
     var endIndex = rfc3966Format.indexOf(';');
@@ -676,7 +759,7 @@ function getNationalNumberGroups(util, number, formattingPattern) {
     return util.formatNsnUsingPattern(
       nationalSignificantNumber,
       formattingPattern,
-      PhoneNumberFormat.RFC3966
+      i18n.phonenumbers.PhoneNumberFormat.RFC3966
     ).split('-');
   }
 }
