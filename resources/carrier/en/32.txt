@@ -11,11 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# Proximus is also known as Belgacom Mobile. The Proximus brand was created in 1994 by Belgacom, following the launch of the first mobile network.Proximus is a subsidiary of Belgacom.
+# Proximus is also known as Belgacom Mobile. The Proximus brand was created in
+# 1994 by Belgacom, following the launch of the first mobile network.Proximus is
+# a subsidiary of Belgacom.
+# Mobistar has re-branded as Orange on 9 May 2016.
+# Unleashed has 3 brands Mobile Vikings, JIM Mobile and Stievie. Prefix 456
+# phone numbers are mentioned in contact-us page of JIM mobile carrier. So it is
+# more likely that it is assigned to 'JIM Mobile'
 
+32456|JIM Mobile
 32460|Proximus
 324618|N.M.B.S.
 324630|TISMI BV
+324651|Lycamobile
+324652|Lycamobile
+324653|Lycamobile
 324654|Lycamobile
 324655|Lycamobile
 324656|Lycamobile
@@ -26,11 +36,26 @@
 324662|Lycamobile
 324663|Lycamobile
 324664|Lycamobile
+324665|Vectone
+324666|Vectone
+324667|Vectone
 324669|Voxbone SA
 324671|Join Experience Belgium
+324672|Join Experience Belgium
+324676|Lycamobile
 324681|Telenet
 324682|Telenet
 324683|Telenet
+324684|Telenet
+324685|Telenet
+324687|Premium Routing GmbH
+324688|Premium Routing GmbH
 3247|Proximus
-3248|BASE
-3249|Mobistar
+32483|Telenet
+32484|Telenet
+32485|Telenet
+32486|Telenet
+32487|Telenet
+32488|Telenet
+32489|Telenet
+3249|Orange
