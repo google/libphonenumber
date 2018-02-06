@@ -6010,15 +6010,12 @@
     </territory>
 
     <!-- Iceland -->
-    <!-- http://www.pta.is/default.aspx?cat_id=85 -->
-    <!-- http://www.pfs.is/default.aspx?cat_id=14&module_id=210&element_id=4 -->
+    <!-- https://www.pfs.is/english/telecom-affairs/numbering/ -->
     <territory id="IS">
       <generalDesc>
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-      <!-- 1808 short code might belong to "Directory Services". As we are not sure, just added
-           to short codes.-->
         <nationalNumberPattern>
           1(?:
             1(?:
@@ -6042,11 +6039,9 @@
               7[07-9]
             )|
             8(?:
-              0[08]|
-              1[016-9]|
-              20|
-              48|
-              8[018]
+              [02]0|
+              1[16-9]|
+              88
             )|
             900
           )
@@ -6059,13 +6054,13 @@
         <possibleLengths national="4"/>
         <exampleNumber>1717</exampleNumber>
       </tollFree>
-      <premiumRate>
-        <nationalNumberPattern>1848</nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>1848</exampleNumber>
-      </premiumRate>
       <carrierSpecific>
-        <nationalNumberPattern>1441</nationalNumberPattern>
+        <nationalNumberPattern>
+          14(?:
+            00|
+            41
+          )
+        </nationalNumberPattern>
         <possibleLengths national="4"/>
         <exampleNumber>1441</exampleNumber>
       </carrierSpecific>
@@ -6093,7 +6088,6 @@
         <nationalNumberPattern>
           1(?:
             415|
-            848|
             900
           )
         </nationalNumberPattern>
@@ -6105,8 +6099,7 @@
           1(?:
             0(?:
               01|
-              10|
-              20
+              [12]0
             )|
             100
           )
@@ -11583,6 +11576,34 @@
       </emergency>
     </territory>
 
+    <!-- Kosovo -->
+    <!-- https://www.itu.int/oth/T02020000FD/en -->
+    <territory id="XK">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            9[2-4]
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>112</exampleNumber>
+      </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            9[2-4]
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
+    </territory>
+
     <!-- Yemen -->
     <!-- http://www.itu.int/oth/T02020000E7/en -->
     <territory id="YE">
@@ -11669,8 +11690,9 @@
         <exampleNumber>10111</exampleNumber>
       </shortCode>
       <standardRate>
-        <!-- 37064, 43699 and 43946 are charged at standard rate w.r.t carrier as per confirmation
-             from smsportal.co.za. 3078[23] are standard rate as per test results. -->
+        <!-- 37064, 42699, 43699, 43941, 43946 and 48837 are charged at standard rate w.r.t carrier
+             as per confirmation from smsportal.co.za. 3078[23] are standard rate as per test
+             results. -->
         <nationalNumberPattern>
           3(?:
             078[23]|
@@ -11681,11 +11703,13 @@
             8126
           )|
           4(?:
+            2699|
             3(?:
               699|
-              946
+              94[16]
             )|
-            7751
+            7751|
+            8837
           )
         </nationalNumberPattern>
         <possibleLengths national="5"/>
