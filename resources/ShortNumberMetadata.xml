@@ -563,10 +563,7 @@
               )
             )|
             555|
-            9(?:
-              [13-5]\d{3}|
-              [679]\d{5}
-            )
+            9[13-5]\d{3}
           )|
           225|
           7(?:
@@ -608,10 +605,10 @@
               34|
               456
             )|
-            9\d{4,6}
+            9\d{4}
           )
         </nationalNumberPattern>
-        <possibleLengths national="[4-8]"/>
+        <possibleLengths national="[4-6]"/>
         <exampleNumber>191123</exampleNumber>
       </premiumRate>
       <carrierSpecific>
@@ -4334,7 +4331,7 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[01]|
+            0[015]|
             1(?:
               [12]|
               6(?:
@@ -4415,6 +4412,7 @@
       <tollFree>
         <nationalNumberPattern>
           1(?:
+            05|
             16\d{3}|
             7[56]0|
             8000
@@ -4458,11 +4456,14 @@
       </emergency>
       <expandedEmergency>
         <nationalNumberPattern>
-          116(?:
-            000|
-            1(?:
-              11|
-              23
+          1(?:
+            01|
+            16(?:
+              000|
+              1(?:
+                11|
+                23
+              )
             )
           )
         </nationalNumberPattern>
@@ -4617,7 +4618,7 @@
             )|
             55|
             800\d|
-            95
+            9[05]
           )|
           999
         </nationalNumberPattern>
@@ -5244,7 +5245,7 @@
                   23
                 )
               )|
-              8\d{2}?
+              8\d{2}
             )|
             3977|
             9(?:
@@ -6009,15 +6010,12 @@
     </territory>
 
     <!-- Iceland -->
-    <!-- http://www.pta.is/default.aspx?cat_id=85 -->
-    <!-- http://www.pfs.is/default.aspx?cat_id=14&module_id=210&element_id=4 -->
+    <!-- https://www.pfs.is/english/telecom-affairs/numbering/ -->
     <territory id="IS">
       <generalDesc>
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-      <!-- 1808 short code might belong to "Directory Services". As we are not sure, just added
-           to short codes.-->
         <nationalNumberPattern>
           1(?:
             1(?:
@@ -6041,11 +6039,9 @@
               7[07-9]
             )|
             8(?:
-              0[08]|
-              1[016-9]|
-              20|
-              48|
-              8[018]
+              [02]0|
+              1[16-9]|
+              88
             )|
             900
           )
@@ -6058,13 +6054,13 @@
         <possibleLengths national="4"/>
         <exampleNumber>1717</exampleNumber>
       </tollFree>
-      <premiumRate>
-        <nationalNumberPattern>1848</nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>1848</exampleNumber>
-      </premiumRate>
       <carrierSpecific>
-        <nationalNumberPattern>1441</nationalNumberPattern>
+        <nationalNumberPattern>
+          14(?:
+            00|
+            41
+          )
+        </nationalNumberPattern>
         <possibleLengths national="4"/>
         <exampleNumber>1441</exampleNumber>
       </carrierSpecific>
@@ -6092,7 +6088,6 @@
         <nationalNumberPattern>
           1(?:
             415|
-            848|
             900
           )
         </nationalNumberPattern>
@@ -6104,8 +6099,7 @@
           1(?:
             0(?:
               01|
-              10|
-              20
+              [12]0
             )|
             100
           )
@@ -6271,7 +6265,7 @@
               35?
             )|
             808|
-            9[135]
+            9[0135]
           )|
           23[234]|
           999
@@ -11147,13 +11141,15 @@
         <exampleNumber>611</exampleNumber>
       </tollFree>
       <standardRate>
+        <!-- 29002 is standard rate as per test results. -->
         <nationalNumberPattern>
           2(?:
             3333|
             42242|
             56447|
             6688|
-            75622
+            75622|
+            9002
           )|
           3(?:
             1010|
@@ -11580,6 +11576,34 @@
       </emergency>
     </territory>
 
+    <!-- Kosovo -->
+    <!-- https://www.itu.int/oth/T02020000FD/en -->
+    <territory id="XK">
+      <generalDesc>
+        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            9[2-4]
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>112</exampleNumber>
+      </shortCode>
+      <emergency>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            9[2-4]
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>112</exampleNumber>
+      </emergency>
+    </territory>
+
     <!-- Yemen -->
     <!-- http://www.itu.int/oth/T02020000E7/en -->
     <territory id="YE">
@@ -11666,10 +11690,12 @@
         <exampleNumber>10111</exampleNumber>
       </shortCode>
       <standardRate>
-        <!-- 37064, 43699 and 43946 are charged at standard rate w.r.t carrier as per confirmation
-             from smsportal.co.za. -->
+        <!-- 37064, 42699, 43699, 43941, 43946 and 48837 are charged at standard rate w.r.t carrier
+             as per confirmation from smsportal.co.za. 3078[23] are standard rate as per test
+             results. -->
         <nationalNumberPattern>
           3(?:
+            078[23]|
             7(?:
               064|
               567
@@ -11677,11 +11703,13 @@
             8126
           )|
           4(?:
+            2699|
             3(?:
               699|
-              946
+              94[16]
             )|
-            7751
+            7751|
+            8837
           )
         </nationalNumberPattern>
         <possibleLengths national="5"/>
@@ -11765,18 +11793,52 @@
     <!-- http://www.itu.int/oth/T02020000E9/en -->
     <territory id="ZW">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[139]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          (?:
-            11[249]|
-            99[3-59]
+          11[2469]|
+          9(?:
+            5[023]|
+            6[0-25]|
+            9[3-59]
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3,5"/>
+        <exampleNumber>999</exampleNumber>
+      </shortCode>
+      <tollFree>
+        <!-- 95[023] and 961 are toll-free as per official articles. -->
+        <nationalNumberPattern>
+          9(?:
+            5[023]|
+            61
           )
         </nationalNumberPattern>
         <possibleLengths national="3"/>
-        <exampleNumber>999</exampleNumber>
-      </shortCode>
+        <exampleNumber>961</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>3\d{4}</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>30123</exampleNumber>
+      </premiumRate>
+      <carrierSpecific>
+        <!-- 114 emergency short code works only for NetOne subscribers. 95[023] and 96[0-25] short
+             codes can be dialled only from fixed-line. So adding here to alarm that they do not
+             work for all. -->
+        <nationalNumberPattern>
+          (?:
+            114|
+            9(?:
+              5[023]|
+              6[0-25]
+            )
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>114</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           (?:
