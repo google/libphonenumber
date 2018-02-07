@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (C) 2010 The Libphonenumber Authors.
+ * Copyright (C) 2018 The Libphonenumber Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,159 +40,183 @@ goog.require('i18n.phonenumbers.ShortNumberInfo');
 /** @type {i18n.phonenumbers.ShortNumberInfo} */
 var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
 
+
 /** @type {i18n.phonenumbers.PhoneNumberUtil} */
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 
 var RegionCode = i18n.phonenumbers.RegionCode;
 
 function testIsPossibleShortNumber() {
-    var possibleNumber = new i18n.phonenumbers.PhoneNumber();
-    possibleNumber.setCountryCode(33);
-    possibleNumber.setNationalNumber(123456);
-    assertTrue(shortInfo.isPossibleShortNumber(possibleNumber));
-    assertTrue(
-        shortInfo.isPossibleShortNumberForRegion(phoneUtil.parse("123456", RegionCode.FR), RegionCode.FR));
+  var possibleNumber = new i18n.phonenumbers.PhoneNumber();
+  possibleNumber.setCountryCode(33);
+  possibleNumber.setNationalNumber(123456);
+  assertTrue(shortInfo.isPossibleShortNumber(possibleNumber));
+  assertTrue(shortInfo.isPossibleShortNumberForRegion(
+      phoneUtil.parse('123456', RegionCode.FR),
+      RegionCode.FR));
 
-    var impossibleNumber = new i18n.phonenumbers.PhoneNumber();
-    impossibleNumber.setCountryCode(33);
-    impossibleNumber.setNationalNumber(9);
-    assertFalse(shortInfo.isPossibleShortNumber(impossibleNumber));
+  var impossibleNumber = new i18n.phonenumbers.PhoneNumber();
+  impossibleNumber.setCountryCode(33);
+  impossibleNumber.setNationalNumber(9);
+  assertFalse(shortInfo.isPossibleShortNumber(impossibleNumber));
 
-    // Note that GB and GG share the country calling code 44, and that this number is possible but
-    // not valid.
-    var impossibleUkNumber = new i18n.phonenumbers.PhoneNumber();
-    impossibleUkNumber.setCountryCode(44);
-    impossibleUkNumber.setNationalNumber(11001);
-    assertTrue(shortInfo.isPossibleShortNumber(impossibleUkNumber));
+  // Note that GB and GG share the country calling code 44, and that this number
+  // is possible but not valid.
+  var impossibleUkNumber = new i18n.phonenumbers.PhoneNumber();
+  impossibleUkNumber.setCountryCode(44);
+  impossibleUkNumber.setNationalNumber(11001);
+  assertTrue(shortInfo.isPossibleShortNumber(impossibleUkNumber));
 }
 
 function testIsValidShortNumber() {
-    var shortNumber1 = new i18n.phonenumbers.PhoneNumber();
-    shortNumber1.setCountryCode(33);
-    shortNumber1.setNationalNumber(1010);
-    assertTrue(shortInfo.isValidShortNumber(shortNumber1));
-    assertTrue(shortInfo.isValidShortNumberForRegion(phoneUtil.parse("1010", RegionCode.FR), RegionCode.FR));
-    var shortNumber2 = new i18n.phonenumbers.PhoneNumber();
-    shortNumber2.setCountryCode(33);
-    shortNumber2.setNationalNumber(123456);
-    assertFalse(shortInfo.isValidShortNumber(shortNumber2));
-    assertFalse(
-        shortInfo.isValidShortNumberForRegion(phoneUtil.parse("123456", RegionCode.FR), RegionCode.FR));
+  var shortNumber1 = new i18n.phonenumbers.PhoneNumber();
+  shortNumber1.setCountryCode(33);
+  shortNumber1.setNationalNumber(1010);
+  assertTrue(shortInfo.isValidShortNumber(shortNumber1));
+  assertTrue(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse('1010', RegionCode.FR),
+      RegionCode.FR));
+  var shortNumber2 = new i18n.phonenumbers.PhoneNumber();
+  shortNumber2.setCountryCode(33);
+  shortNumber2.setNationalNumber(123456);
+  assertFalse(shortInfo.isValidShortNumber(shortNumber2));
+  assertFalse(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse('123456', RegionCode.FR),
+      RegionCode.FR));
 
-    // Note that GB and GG share the country calling code 44.
-    var shortNumber3 = new i18n.phonenumbers.PhoneNumber();
-    shortNumber3.setCountryCode(44);
-    shortNumber3.setNationalNumber(18001);
-    assertTrue(shortInfo.isValidShortNumber(shortNumber3));
+  // Note that GB and GG share the country calling code 44.
+  var shortNumber3 = new i18n.phonenumbers.PhoneNumber();
+  shortNumber3.setCountryCode(44);
+  shortNumber3.setNationalNumber(18001);
+  assertTrue(shortInfo.isValidShortNumber(shortNumber3));
 }
 
 function testIsCarrierSpecific() {
-    var carrierSpecificNumber = new i18n.phonenumbers.PhoneNumber();
-    carrierSpecificNumber.setCountryCode(1);
-    carrierSpecificNumber.setNationalNumber(33669);
-    assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumber));
-    assertTrue(
-        shortInfo.isCarrierSpecificForRegion(phoneUtil.parse("33669", RegionCode.US), RegionCode.US));
+  var carrierSpecificNumber = new i18n.phonenumbers.PhoneNumber();
+  carrierSpecificNumber.setCountryCode(1);
+  carrierSpecificNumber.setNationalNumber(33669);
+  assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumber));
+  assertTrue(shortInfo.isCarrierSpecificForRegion(
+      phoneUtil.parse('33669', RegionCode.US),
+      RegionCode.US));
 
-    var notCarrierSpecificNumber = new i18n.phonenumbers.PhoneNumber();
-    notCarrierSpecificNumber.setCountryCode(1);
-    notCarrierSpecificNumber.setNationalNumber(911);
-    assertFalse(shortInfo.isCarrierSpecific(notCarrierSpecificNumber));
-    assertFalse(
-        shortInfo.isCarrierSpecificForRegion(phoneUtil.parse("911", RegionCode.US), RegionCode.US));
+  var notCarrierSpecificNumber = new i18n.phonenumbers.PhoneNumber();
+  notCarrierSpecificNumber.setCountryCode(1);
+  notCarrierSpecificNumber.setNationalNumber(911);
+  assertFalse(shortInfo.isCarrierSpecific(notCarrierSpecificNumber));
+  assertFalse(shortInfo.isCarrierSpecificForRegion(
+      phoneUtil.parse('911', RegionCode.US),
+      RegionCode.US));
 
-    var carrierSpecificNumberForSomeRegion = new i18n.phonenumbers.PhoneNumber();
-    carrierSpecificNumberForSomeRegion.setCountryCode(1);
-    carrierSpecificNumberForSomeRegion.setNationalNumber(211);
-    assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumberForSomeRegion));
-    assertTrue(
-        shortInfo.isCarrierSpecificForRegion(carrierSpecificNumberForSomeRegion, RegionCode.US));
-    assertFalse(
-        shortInfo.isCarrierSpecificForRegion(carrierSpecificNumberForSomeRegion, RegionCode.BB));
+  var carrierSpecificNumberForSomeRegion = new i18n.phonenumbers.PhoneNumber();
+  carrierSpecificNumberForSomeRegion.setCountryCode(1);
+  carrierSpecificNumberForSomeRegion.setNationalNumber(211);
+  assertTrue(shortInfo.isCarrierSpecific(carrierSpecificNumberForSomeRegion));
+  assertTrue(shortInfo.isCarrierSpecificForRegion(
+      carrierSpecificNumberForSomeRegion, RegionCode.US));
+  assertFalse(shortInfo.isCarrierSpecificForRegion(
+      carrierSpecificNumberForSomeRegion, RegionCode.BB));
 }
 
 function testIsSmsService() {
-    var smsServiceNumberForSomeRegion = new i18n.phonenumbers.PhoneNumber();
-    smsServiceNumberForSomeRegion.setCountryCode(1);
-    smsServiceNumberForSomeRegion.setNationalNumber(21234);
-    assertTrue(shortInfo.isSmsServiceForRegion(smsServiceNumberForSomeRegion, RegionCode.US));
-    assertFalse(shortInfo.isSmsServiceForRegion(smsServiceNumberForSomeRegion, RegionCode.BB));
+  var smsServiceNumberForSomeRegion = new i18n.phonenumbers.PhoneNumber();
+  smsServiceNumberForSomeRegion.setCountryCode(1);
+  smsServiceNumberForSomeRegion.setNationalNumber(21234);
+  assertTrue(shortInfo.isSmsServiceForRegion(smsServiceNumberForSomeRegion,
+      RegionCode.US));
+  assertFalse(shortInfo.isSmsServiceForRegion(smsServiceNumberForSomeRegion,
+      RegionCode.BB));
 }
 
 function testGetExpectedCost() {
-    var premiumRateExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE);
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE, shortInfo.getExpectedCostForRegion(
-        phoneUtil.parse(premiumRateExample, RegionCode.FR), RegionCode.FR));
-    var premiumRateNumber = new i18n.phonenumbers.PhoneNumber();
-    premiumRateNumber.setCountryCode(33);
-    premiumRateNumber.setNationalNumber(parseInt(premiumRateExample, 10));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
-        shortInfo.getExpectedCost(premiumRateNumber));
+  var premiumRateExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE);
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(premiumRateExample, RegionCode.FR),
+          RegionCode.FR));
+  var premiumRateNumber = new i18n.phonenumbers.PhoneNumber();
+  premiumRateNumber.setCountryCode(33);
+  premiumRateNumber.setNationalNumber(parseInt(premiumRateExample, 10));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
+      shortInfo.getExpectedCost(premiumRateNumber));
 
-    var standardRateExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE);
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE, shortInfo.getExpectedCostForRegion(
-        phoneUtil.parse(standardRateExample, RegionCode.FR), RegionCode.FR));
-    var standardRateNumber = new i18n.phonenumbers.PhoneNumber();
-    standardRateNumber.setCountryCode(33);
-    standardRateNumber.setNationalNumber(parseInt(standardRateExample, 10));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
-        shortInfo.getExpectedCost(standardRateNumber));
+  var standardRateExample = shortInfo.getExampleShortNumberForCost(
+      RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE);
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(standardRateExample, RegionCode.FR),
+          RegionCode.FR));
+  var standardRateNumber = new i18n.phonenumbers.PhoneNumber();
+  standardRateNumber.setCountryCode(33);
+  standardRateNumber.setNationalNumber(parseInt(standardRateExample, 10));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
+      shortInfo.getExpectedCost(standardRateNumber));
 
-    var tollFreeExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE);
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse(tollFreeExample, RegionCode.FR), RegionCode.FR));
-    var tollFreeNumber = new i18n.phonenumbers.PhoneNumber();
-    tollFreeNumber.setCountryCode(33);
-    tollFreeNumber.setNationalNumber(parseInt(tollFreeExample, 10));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCost(tollFreeNumber));
+  var tollFreeExample = shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE);
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(tollFreeExample, RegionCode.FR),
+          RegionCode.FR));
+  var tollFreeNumber = new i18n.phonenumbers.PhoneNumber();
+  tollFreeNumber.setCountryCode(33);
+  tollFreeNumber.setNationalNumber(parseInt(tollFreeExample, 10));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCost(tollFreeNumber));
 
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("12345", RegionCode.FR), RegionCode.FR));
-    var unknownCostNumber = new i18n.phonenumbers.PhoneNumber();
-    unknownCostNumber.setCountryCode(33);
-    unknownCostNumber.setNationalNumber(12345);
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
-        shortInfo.getExpectedCost(unknownCostNumber));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse('12345', RegionCode.FR),
+          RegionCode.FR));
+  var unknownCostNumber = new i18n.phonenumbers.PhoneNumber();
+  unknownCostNumber.setCountryCode(33);
+  unknownCostNumber.setNationalNumber(12345);
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCost(unknownCostNumber));
 
-    // Test that an invalid number may nevertheless have a cost other than UNKNOWN_COST.
-    assertFalse(
-        shortInfo.isValidShortNumberForRegion(phoneUtil.parse("116123", RegionCode.FR), RegionCode.FR));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("116123", RegionCode.FR), RegionCode.FR));
-    var invalidNumber = new i18n.phonenumbers.PhoneNumber();
-    invalidNumber.setCountryCode(33);
-    invalidNumber.setNationalNumber(116123);
-    assertFalse(shortInfo.isValidShortNumber(invalidNumber));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCost(invalidNumber));
+  // Test that an invalid number may nevertheless have a cost other than
+  // UNKNOWN_COST.
+  assertFalse(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse('116123', RegionCode.FR),
+      RegionCode.FR));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse('116123', RegionCode.FR),
+          RegionCode.FR));
+  var invalidNumber = new i18n.phonenumbers.PhoneNumber();
+  invalidNumber.setCountryCode(33);
+  invalidNumber.setNationalNumber(116123);
+  assertFalse(shortInfo.isValidShortNumber(invalidNumber));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCost(invalidNumber));
 
-    // Test a nonexistent country code.
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("911", RegionCode.US), RegionCode.ZZ));
-    unknownCostNumber = new i18n.phonenumbers.PhoneNumber();
-    unknownCostNumber.setCountryCode(123);
-    unknownCostNumber.setNationalNumber(911);
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
-        shortInfo.getExpectedCost(unknownCostNumber));
+  // Test a nonexistent country code.
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(phoneUtil.parse('911', RegionCode.US),
+      RegionCode.ZZ));
+  unknownCostNumber = new i18n.phonenumbers.PhoneNumber();
+  unknownCostNumber.setCountryCode(123);
+  unknownCostNumber.setNationalNumber(911);
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCost(unknownCostNumber));
 }
 
 function testGetExpectedCostForSharedCountryCallingCode() {
-  // Test some numbers which have different costs in countries sharing the same country calling
-  // code. In Australia, 1234 is premium-rate, 1194 is standard-rate, and 733 is toll-free. These
-  // are not known to be valid numbers in the Christmas Islands.
-  var ambiguousPremiumRateString = "1234";
+  // Test some numbers which have different costs in countries sharing the same
+  // country calling code. In Australia, 1234 is premium-rate, 1194 is
+  // standard-rate, and 733 is toll-free. These are not known to be valid
+  // numbers in the Christmas Islands.
+  var ambiguousPremiumRateString = '1234';
   var ambiguousPremiumRateNumber = new i18n.phonenumbers.PhoneNumber();
   ambiguousPremiumRateNumber.setCountryCode(61);
   ambiguousPremiumRateNumber.setNationalNumber(1234);
-  var ambiguousStandardRateString = "1194";
+  var ambiguousStandardRateString = '1194';
   var ambiguousStandardRateNumber = new i18n.phonenumbers.PhoneNumber();
   ambiguousStandardRateNumber.setCountryCode(61);
   ambiguousStandardRateNumber.setNationalNumber(1194);
-  var ambiguousTollFreeString = "733";
+  var ambiguousTollFreeString = '733';
   var ambiguousTollFreeNumber = new i18n.phonenumbers.PhoneNumber();
   ambiguousTollFreeNumber.setCountryCode(61);
   ambiguousTollFreeNumber.setNationalNumber(733);
@@ -200,54 +224,72 @@ function testGetExpectedCostForSharedCountryCallingCode() {
   assertTrue(shortInfo.isValidShortNumber(ambiguousStandardRateNumber));
   assertTrue(shortInfo.isValidShortNumber(ambiguousTollFreeNumber));
   assertTrue(shortInfo.isValidShortNumberForRegion(
-      phoneUtil.parse(ambiguousPremiumRateString, RegionCode.AU), RegionCode.AU));
-  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE, shortInfo.getExpectedCostForRegion(
-      phoneUtil.parse(ambiguousPremiumRateString, RegionCode.AU), RegionCode.AU));
+      phoneUtil.parse(ambiguousPremiumRateString, RegionCode.AU),
+      RegionCode.AU));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(ambiguousPremiumRateString, RegionCode.AU),
+          RegionCode.AU));
   assertFalse(shortInfo.isValidShortNumberForRegion(
-      phoneUtil.parse(ambiguousPremiumRateString, RegionCode.CX), RegionCode.CX));
-  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST, shortInfo.getExpectedCostForRegion(
-      phoneUtil.parse(ambiguousPremiumRateString, RegionCode.CX), RegionCode.CX));
+      phoneUtil.parse(ambiguousPremiumRateString, RegionCode.CX),
+      RegionCode.CX));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(ambiguousPremiumRateString, RegionCode.CX),
+          RegionCode.CX));
   // PREMIUM_RATE takes precedence over UNKNOWN_COST.
   assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE,
       shortInfo.getExpectedCost(ambiguousPremiumRateNumber));
   assertTrue(shortInfo.isValidShortNumberForRegion(
-      phoneUtil.parse(ambiguousStandardRateString, RegionCode.AU), RegionCode.AU));
-  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE, shortInfo.getExpectedCostForRegion(
-      phoneUtil.parse(ambiguousStandardRateString, RegionCode.AU), RegionCode.AU));
+      phoneUtil.parse(ambiguousStandardRateString, RegionCode.AU),
+      RegionCode.AU));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(ambiguousStandardRateString, RegionCode.AU),
+          RegionCode.AU));
   assertFalse(shortInfo.isValidShortNumberForRegion(
-      phoneUtil.parse(ambiguousStandardRateString, RegionCode.CX), RegionCode.CX));
-  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST, shortInfo.getExpectedCostForRegion(
-      phoneUtil.parse(ambiguousStandardRateString, RegionCode.CX), RegionCode.CX));
+      phoneUtil.parse(ambiguousStandardRateString, RegionCode.CX),
+      RegionCode.CX));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(ambiguousStandardRateString, RegionCode.CX),
+          RegionCode.CX));
   assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
       shortInfo.getExpectedCost(ambiguousStandardRateNumber));
-  assertTrue(shortInfo.isValidShortNumberForRegion(phoneUtil.parse(ambiguousTollFreeString, RegionCode.AU),
+  assertTrue(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse(ambiguousTollFreeString, RegionCode.AU),
       RegionCode.AU));
-  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE, shortInfo.getExpectedCostForRegion(
-      phoneUtil.parse(ambiguousTollFreeString, RegionCode.AU), RegionCode.AU));
-  assertFalse(shortInfo.isValidShortNumberForRegion(phoneUtil.parse(ambiguousTollFreeString, RegionCode.CX),
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(ambiguousTollFreeString, RegionCode.AU),
+          RegionCode.AU));
+  assertFalse(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse(ambiguousTollFreeString, RegionCode.CX),
       RegionCode.CX));
-  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST, shortInfo.getExpectedCostForRegion(
-      phoneUtil.parse(ambiguousTollFreeString, RegionCode.CX), RegionCode.CX));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse(ambiguousTollFreeString, RegionCode.CX),
+          RegionCode.CX));
   assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
       shortInfo.getExpectedCost(ambiguousTollFreeNumber));
 }
 
 function testGetExampleShortNumber() {
-    assertEquals("8711", shortInfo.getExampleShortNumber(RegionCode.AM));
-    assertEquals("1010", shortInfo.getExampleShortNumber(RegionCode.FR));
-    assertEquals("", shortInfo.getExampleShortNumber(RegionCode.UN001));
-    assertEquals("", shortInfo.getExampleShortNumber(null));
+  assertEquals('8711', shortInfo.getExampleShortNumber(RegionCode.AM));
+  assertEquals('1010', shortInfo.getExampleShortNumber(RegionCode.FR));
+  assertEquals('', shortInfo.getExampleShortNumber(RegionCode.UN001));
+  assertEquals('', shortInfo.getExampleShortNumber(null));
 }
 
 function testGetExampleShortNumberForCost() {
-    assertEquals("3010", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE));
-    assertEquals("1023", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE));
-    assertEquals("42000", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE));
-    assertEquals("", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST));
+  assertEquals('3010', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE));
+  assertEquals('1023', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE));
+  assertEquals('42000', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE));
+  assertEquals('', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
+      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST));
 }
 
 function testConnectsToEmergencyNumber_US() {
@@ -372,44 +414,58 @@ function testIsEmergencyNumber_ZW() {
 }
 
 function testEmergencyNumberForSharedCountryCallingCode() {
-    // Test the emergency number 112, which is valid in both Australia and the Christmas Islands.
-    assertTrue(shortInfo.isEmergencyNumber("112", RegionCode.AU));
-    assertTrue(shortInfo.isValidShortNumberForRegion(phoneUtil.parse("112", RegionCode.AU), RegionCode.AU));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("112", RegionCode.AU), RegionCode.AU));
-    assertTrue(shortInfo.isEmergencyNumber("112", RegionCode.CX));
-    assertTrue(shortInfo.isValidShortNumberForRegion(phoneUtil.parse("112", RegionCode.CX), RegionCode.CX));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("112", RegionCode.CX), RegionCode.CX));
-    var sharedEmergencyNumber = new i18n.phonenumbers.PhoneNumber();
-    sharedEmergencyNumber.setCountryCode(61);
-    sharedEmergencyNumber.setNationalNumber(112);
-    assertTrue(shortInfo.isValidShortNumber(sharedEmergencyNumber));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCost(sharedEmergencyNumber));
-  }
+  // Test the emergency number 112, which is valid in both Australia and the
+  // Christmas Islands.
+  assertTrue(shortInfo.isEmergencyNumber('112', RegionCode.AU));
+  assertTrue(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse('112', RegionCode.AU),
+      RegionCode.AU));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(phoneUtil.parse('112', RegionCode.AU),
+          RegionCode.AU));
+  assertTrue(shortInfo.isEmergencyNumber('112', RegionCode.CX));
+  assertTrue(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse('112', RegionCode.CX),
+      RegionCode.CX));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(phoneUtil.parse('112', RegionCode.CX),
+          RegionCode.CX));
+  var sharedEmergencyNumber = new i18n.phonenumbers.PhoneNumber();
+  sharedEmergencyNumber.setCountryCode(61);
+  sharedEmergencyNumber.setNationalNumber(112);
+  assertTrue(shortInfo.isValidShortNumber(sharedEmergencyNumber));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCost(sharedEmergencyNumber));
+}
 
-  function testOverlappingNANPANumber() {
-    // 211 is an emergency number in Barbados, while it is a toll-free information line in Canada
-    // and the USA.
-    assertTrue(shortInfo.isEmergencyNumber("211", RegionCode.BB));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("211", RegionCode.BB), RegionCode.BB));
-    assertFalse(shortInfo.isEmergencyNumber("211", RegionCode.US));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("211", RegionCode.US), RegionCode.US));
-    assertFalse(shortInfo.isEmergencyNumber("211", RegionCode.CA));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
-        shortInfo.getExpectedCostForRegion(phoneUtil.parse("211", RegionCode.CA), RegionCode.CA));
-  }
+function testOverlappingNANPANumber() {
+  // 211 is an emergency number in Barbados, while it is a toll-free information
+  // line in Canada and the USA.
+  assertTrue(shortInfo.isEmergencyNumber('211', RegionCode.BB));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(phoneUtil.parse('211', RegionCode.BB),
+          RegionCode.BB));
+  assertFalse(shortInfo.isEmergencyNumber('211', RegionCode.US));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(phoneUtil.parse('211', RegionCode.US),
+          RegionCode.US));
+  assertFalse(shortInfo.isEmergencyNumber('211', RegionCode.CA));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE,
+      shortInfo.getExpectedCostForRegion(phoneUtil.parse('211', RegionCode.CA),
+          RegionCode.CA));
+}
 
-  function testCountryCallingCodeIsNotIgnored() {
-    // +46 is the country calling code for Sweden (SE), and 40404 is a valid short number in the US.
-    assertFalse(shortInfo.isPossibleShortNumberForRegion(
-        phoneUtil.parse("+4640404", RegionCode.SE), RegionCode.US));
-    assertFalse(shortInfo.isValidShortNumberForRegion(
-        phoneUtil.parse("+4640404", RegionCode.SE), RegionCode.US));
-    assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
-        shortInfo.getExpectedCostForRegion(
-            phoneUtil.parse("+4640404", RegionCode.SE), RegionCode.US));
-  }
+function testCountryCallingCodeIsNotIgnored() {
+  // +46 is the country calling code for Sweden (SE), and 40404 is a valid short
+  // number in the US.
+  assertFalse(shortInfo.isPossibleShortNumberForRegion(
+      phoneUtil.parse('+4640404', RegionCode.SE),
+      RegionCode.US));
+  assertFalse(shortInfo.isValidShortNumberForRegion(
+      phoneUtil.parse('+4640404', RegionCode.SE),
+      RegionCode.US));
+  assertEquals(i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST,
+      shortInfo.getExpectedCostForRegion(
+          phoneUtil.parse('+4640404', RegionCode.SE),
+          RegionCode.US));
+}
