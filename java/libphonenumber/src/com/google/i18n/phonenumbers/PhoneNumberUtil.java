@@ -2691,7 +2691,7 @@ public class PhoneNumberUtil {
    *     to format phone numbers in the specific region "as you type"
    */
   public AsYouTypeFormatter getAsYouTypeFormatter(String regionCode) {
-    return new AsYouTypeFormatter(regionCode);
+    return new AsYouTypeFormatter(this, regionCode);
   }
 
   // Extracts country calling code from fullNumber, returns it and places the remaining number in

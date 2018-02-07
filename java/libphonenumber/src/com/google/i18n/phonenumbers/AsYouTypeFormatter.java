@@ -56,7 +56,7 @@ public class AsYouTypeFormatter {
   // true, we will no longer use local number formatting patterns.
   private boolean isCompleteNumber = false;
   private boolean isExpectingCountryCallingCode = false;
-  private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+  private final PhoneNumberUtil phoneUtil;
   private String defaultCountry;
 
   // Character used when appropriate to separate a prefix, such as a long NDD or a country calling
@@ -123,9 +123,11 @@ public class AsYouTypeFormatter {
    * Constructs an as-you-type formatter. Should be obtained from {@link
    * PhoneNumberUtil#getAsYouTypeFormatter}.
    *
+   * @param phoneUtil   instance of {@link PhoneNumberUtil}.
    * @param regionCode  the country/region where the phone number is being entered
    */
-  AsYouTypeFormatter(String regionCode) {
+  AsYouTypeFormatter(PhoneNumberUtil phoneUtil, String regionCode) {
+    this.phoneUtil = phoneUtil;
     defaultCountry = regionCode;
     currentMetadata = getMetadataForRegion(defaultCountry);
     defaultMetadata = currentMetadata;
