@@ -38,6 +38,7 @@ goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.shortnumbermetadata');
+goog.require('i18n.phonenumbers.metadata');
 
 
 
@@ -87,6 +88,198 @@ i18n.phonenumbers.ShortNumberInfo.ShortNumberCost = {
   UNKNOWN_COST: 3
 };
 
+i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodesForCountryCode = function(countryCallingCode) {
+  var regionCodes = i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCallingCode];
+  return regionCodes ? regionCodes : [];
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.regionDialingFromMatchesNumber_ = function(number, regionDialingFrom) {
+  var regionCodes = this.getRegionCodesForCountryCode(number.getCountryCode());
+  return goog.array.contains(regionCodes, regionDialingFrom);
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumberForRegion = function(number, regionDialingFrom) {
+  if (!this.regionDialingFromMatchesNumber_(number, regionDialingFrom)) {
+    return false;
+  }
+  var phoneMetadata = this.getMetadataForRegion_(regionDialingFrom);
+  if (!phoneMetadata) {
+    return false;
+  }
+  var numberLength = this.getNationalSignificantNumber_(number).length;
+  return goog.array.contains(phoneMetadata.getGeneralDesc().possibleLengthArray(), numberLength);
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumber = function(number) {
+  var regionCodes = this.getRegionCodesForCountryCode(number.getCountryCode());
+  var shortNumberLength = this.getNationalSignificantNumber_(number).length;
+  for (var i = 0; i < regionCodes.length; i++) {
+    var region = regionCodes[i];
+    var phoneMetadata = this.getMetadataForRegion_(region);
+    if (!phoneMetadata) {
+      continue;
+    }
+    if (goog.array.contains(phoneMetadata.getGeneralDesc().possibleLengthArray(), shortNumberLength)) {
+      return true;
+    }
+  }
+  return false;
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isValidShortNumberForRegion = function(number, regionDialingFrom) {
+  if (!this.regionDialingFromMatchesNumber_(number, regionDialingFrom)) {
+    return false;
+  }
+  var phoneMetadata = this.getMetadataForRegion_(regionDialingFrom);
+  if (!phoneMetadata) {
+    return false;
+  }
+  var shortNumber = this.getNationalSignificantNumber_(number);
+  var generalDesc = phoneMetadata.getGeneralDesc();
+  if (!this.matchesPossibleNumberAndNationalNumber_(shortNumber, generalDesc)) {
+    return false;
+  }
+  var shortNumberDesc = phoneMetadata.getShortCode();
+  return this.matchesPossibleNumberAndNationalNumber_(shortNumber, shortNumberDesc);
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isValidShortNumber = function(number) {
+  var regionCodes = this.getRegionCodesForCountryCode(number.getCountryCode());
+  var regionCode = this.getRegionCodeForShortNumberFromRegionList_(number, regionCodes);
+  if (regionCodes.length > 1 && regionCode != null) {
+    // If a matching region had been found for the phone number from among two
+    // or more regions, then we have already implicitly verified its validity
+    // for that region.
+    return true;
+  }
+  return this.isValidShortNumberForRegion(number, regionCode);
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCostForRegion = function(number, regionDialingFrom) {
+  var ShortNumberCost = i18n.phonenumbers.ShortNumberInfo.ShortNumberCost;
+  if (!this.regionDialingFromMatchesNumber_(number, regionDialingFrom)) {
+    return ShortNumberCost.UNKNOWN_COST;
+  }
+  var phoneMetadata = this.getMetadataForRegion_(regionDialingFrom);
+  if (!phoneMetadata) {
+    return ShortNumberCost.UNKNOWN_COST;
+  }
+  var shortNumber = this.getNationalSignificantNumber_(number);
+
+  if (!goog.array.contains(phoneMetadata.getGeneralDesc().possibleLengthArray(), shortNumber.length)) {
+    return ShortNumberCost.UNKNOWN_COST;
+  }
+  if (this.matchesPossibleNumberAndNationalNumber_(shortNumber, phoneMetadata.getPremiumRate())) {
+    return ShortNumberCost.PREMIUM_RATE;
+  }
+  if (this.matchesPossibleNumberAndNationalNumber_(shortNumber, phoneMetadata.getStandardRate())) {
+    return ShortNumberCost.STANDARD_RATE;
+  }
+  if (this.matchesPossibleNumberAndNationalNumber_(shortNumber, phoneMetadata.getTollFree())) {
+    return ShortNumberCost.TOLL_FREE;
+  }
+  if (this.isEmergencyNumber(shortNumber, regionDialingFrom)) {
+    // Emergency numbers are implicitly toll-free
+    return ShortNumberCost.TOLL_FREE;
+  }
+  return ShortNumberCost.UNKNOWN_COST;
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCost = function(number) {
+  var ShortNumberCost = i18n.phonenumbers.ShortNumberInfo.ShortNumberCost;
+  var regionCodes = this.getRegionCodesForCountryCode(number.getCountryCode());
+  if (regionCodes.length === 0) {
+    return ShortNumberCost.UNKNOWN_COST;
+  }
+  if (regionCodes.length === 1) {
+    return this.getExpectedCostForRegion(number, regionCodes[0]);
+  }
+  var cost = ShortNumberCost.TOLL_FREE;
+  for (var i=0; i<regionCodes.length; i++) {
+    var regionCode = regionCodes[i];
+    var costForRegion = this.getExpectedCostForRegion(number, regionCode);
+    switch (costForRegion) {
+      case ShortNumberCost.PREMIUM_RATE:
+        return ShortNumberCost.PREMIUM_RATE;
+      case ShortNumberCost.UNKNOWN_COST:
+        cost = ShortNumberCost.UNKNOWN_COST;
+        break;
+      case ShortNumberCost.STANDARD_RATE:
+        if (cost !== ShortNumberCost.UNKNOWN_COST) {
+          cost = ShortNumberCost.STANDARD_RATE;
+        }
+        break;
+      case ShortNumberCost.TOLL_FREE:
+        // Do nothing.
+        break;
+      default:
+        throw new Error("Unrecognized cost for region: " + costForRegion);
+    }
+  }
+  return cost;
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodeForShortNumberFromRegionList_ = function(number, regionCodes) {
+  if (regionCodes.length === 0) {
+    return null;
+  } else if (regionCodes.length === 1) {
+    return regionCodes[0];
+  }
+  var nationalNumber = this.getNationalSignificantNumber_(number);
+  for (var i = 0; i < regionCodes.length; i++) {
+    var regionCode = regionCodes[i];
+    var phoneMetadata = this.getMetadataForRegion_(regionCode);
+    if (phoneMetadata && this.matchesPossibleNumberAndNationalNumber_(nationalNumber, phoneMetadata.getShortCode())) {
+      return regionCode;
+    }
+  }
+  return null;
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
+  return goog.array.filter(Object.keys(i18n.phonenumbers.shortnumbermetadata.countryToMetadata), function(regionCode) {
+    return isNaN(regionCode);
+  });
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumber = function(regionCode) {
+  var phoneMetadata = this.getMetadataForRegion_(regionCode);
+  if (!phoneMetadata) {
+    return '';
+  }
+  var desc = phoneMetadata.getShortCode();
+  if (desc.hasExampleNumber()) {
+    return desc.getExampleNumber();
+  }
+  return "";
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumberForCost = function(regionCode, cost) {
+  var phoneMetadata = this.getMetadataForRegion_(regionCode);
+  if (!phoneMetadata) {
+    return "";
+  }
+  var ShortNumberCost = i18n.phonenumbers.ShortNumberInfo.ShortNumberCost;
+  var desc = null;
+  switch (cost) {
+    case ShortNumberCost.TOLL_FREE:
+      desc = phoneMetadata.getTollFree();
+      break;
+    case ShortNumberCost.STANDARD_RATE:
+      desc = phoneMetadata.getStandardRate();
+      break;
+    case ShortNumberCost.PREMIUM_RATE:
+      desc = phoneMetadata.getPremiumRate();
+      break;
+    default:
+      // UNKNOWN_COST numbers are computed by the process of elimination from
+      // the other cost categories.
+  }
+  if (desc && desc.hasExampleNumber()) {
+    return desc.getExampleNumber();
+  }
+  return "";
+};
 
 /**
    * Returns true if the given number, exactly as dialed, might be used to
@@ -199,4 +392,68 @@ i18n.phonenumbers.ShortNumberInfo.prototype.matchesEmergencyNumberHelper_ =
          (allowPrefixMatchForRegion &&
           i18n.phonenumbers.PhoneNumberUtil
               .matchesPrefix(emergencyNumberPattern, normalizedNumber));
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isCarrierSpecific = function(number) {
+  var regionCodes = this.getRegionCodesForCountryCode(number.getCountryCode());
+  var regionCode = this.getRegionCodeForShortNumberFromRegionList_(number, regionCodes);
+  var nationalNumber = this.getNationalSignificantNumber_(number);
+  var phoneMetadata = this.getMetadataForRegion_(regionCode);
+  return !!phoneMetadata && this.matchesPossibleNumberAndNationalNumber_(nationalNumber, phoneMetadata.getCarrierSpecific());
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isCarrierSpecificForRegion = function(number, regionDialingFrom) {
+  if (!this.regionDialingFromMatchesNumber_(number, regionDialingFrom)) {
+    return false;
+  }
+  var nationalNumber = this.getNationalSignificantNumber_(number);
+  var phoneMetadata = this.getMetadataForRegion_(regionDialingFrom);
+  return !!phoneMetadata && this.matchesPossibleNumberAndNationalNumber_(nationalNumber, phoneMetadata.getCarrierSpecific());
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.isSmsServiceForRegion = function(number, regionDialingFrom) {
+  if (!this.regionDialingFromMatchesNumber_(number, regionDialingFrom)) {
+    return false;
+  }
+  var phoneMetadata = this.getMetadataForRegion_(regionDialingFrom);
+  return !!phoneMetadata && this.matchesPossibleNumberAndNationalNumber_(this.getNationalSignificantNumber_(number), phoneMetadata.getSmsServices());
+};
+
+/**
+ * Gets the national significant number of a phone number. Note a national
+ * significant number doesn't contain a national prefix or any formatting.
+ * <p>
+ * This is a temporary duplicate of the {@code getNationalSignificantNumber} method from
+ * {@code PhoneNumberUtil}. Ultimately a canonical static version should exist in a separate
+ * utility class (to prevent {@code ShortNumberInfo} needing to depend on PhoneNumberUtil).
+ *
+ * @param {i18n.phonenumbers.PhoneNumber} number the phone number for which the
+ *     national significant number is needed.
+ * @return {string} the national significant number of the PhoneNumber object
+ *     passed in.
+ */
+i18n.phonenumbers.ShortNumberInfo.prototype.getNationalSignificantNumber_ = function(number) {
+  if (!number.hasNationalNumber()) {
+    return '';
+  }
+  /** @type {string} */
+  var nationalNumber = '' + number.getNationalNumber();
+  // If leading zero(s) have been set, we prefix this now. Note that a single
+  // leading zero is not the same as a national prefix; leading zeros should be
+  // dialled no matter whether you are dialling from within or outside the
+  // country, national prefixes are added when formatting nationally if
+  // applicable.
+  if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
+      number.getNumberOfLeadingZerosOrDefault() > 0) {
+    return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
+        nationalNumber;
+  }
+  return nationalNumber;
+};
+
+i18n.phonenumbers.ShortNumberInfo.prototype.matchesPossibleNumberAndNationalNumber_ = function(number, numberDesc) {
+  if (numberDesc.possibleLengthArray().length > 0 && !goog.array.contains(numberDesc.possibleLengthArray(), number.length)) {
+    return false;
+  }
+  return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(numberDesc.getNationalNumberPatternOrDefault(), number);
 };
