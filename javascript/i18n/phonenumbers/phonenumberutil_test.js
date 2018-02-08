@@ -452,7 +452,7 @@ function testGetSupportedCallingCodes() {
         assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode) ==
             RegionCode.ZZ);
       });
-  // There should be more than just the global network calling codes in this set
+  // There should be more than just the global network calling codes in this set.
   assertTrue(phoneUtil.getSupportedCallingCodes().length >
       phoneUtil.getSupportedGlobalNetworkCallingCodes().length);
   // But they should be included. Testing one of them.

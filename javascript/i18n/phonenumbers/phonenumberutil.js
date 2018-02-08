@@ -2571,7 +2571,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.chooseFormattingPatternForNumber_ =
       /** @type {!RegExp} */
       var patternToMatch = new RegExp(numFormat.getPattern());
       if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(patternToMatch,
-          nationalNumber)) {
+                                                            nationalNumber)) {
         return numFormat;
       }
     }
@@ -4556,6 +4556,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
  * @param {!RegExp|string} regex the regular expression to match against.
  * @param {string} str the string to test.
  * @return {boolean} true if str can be matched entirely against regex.
+ * @package
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesEntirely = function(regex, str) {
   /** @type {Array.<string>} */
@@ -4576,6 +4577,7 @@ i18n.phonenumbers.PhoneNumberUtil.matchesEntirely = function(regex, str) {
  * @param {string} str the string to test
  * @return {boolean} true if a prefix of the string can be matched with this
  *     regex.
+ * @package
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesPrefix = function(regex, str) {
   /** @type {Array.<string>} */

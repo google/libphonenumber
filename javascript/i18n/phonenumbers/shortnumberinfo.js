@@ -258,7 +258,9 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isValidShortNumber =
  *     category for that region of the short number. Returns UNKNOWN_COST if the
  *     number does not match a cost category. Note that an invalid number may
  *     match any cost category.
+ * @package
  */
+// @VisibleForTesting
 i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCostForRegion =
     function(number, regionDialingFrom) {
   var ShortNumberCost = i18n.phonenumbers.ShortNumberInfo.ShortNumberCost;
@@ -320,7 +322,9 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCostForRegion =
  * @return {i18n.phonenumbers.ShortNumberInfo.ShortNumberCost} the highest
  *     expected cost category of the short number in the region(s) with the
  *     given country calling code
+ * @package
  */
+// @VisibleForTesting
 i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCost = function(number) {
   var ShortNumberCost = i18n.phonenumbers.ShortNumberInfo.ShortNumberCost;
   var regionCodes = this.getRegionCodesForCountryCode_(number.getCountryCode());
@@ -388,6 +392,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodeForShortNumberFromRegio
 /**
  * Convenience method to get a list of what regions the library has metadata for
  * @return {Array<string>} the list of region codes
+ * @package
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
   return goog.array.filter(
@@ -405,6 +410,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
  *     needed
  * @return {string} a valid short number for the specified region. Returns an
  *     empty string when the metadata does not contain such information.
+ * @package
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumber =
     function(regionCode) {
@@ -461,22 +467,22 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumberForCost =
 
 
 /**
-   * Returns true if the given number, exactly as dialed, might be used to
-   * connect to an emergency service in the given region.
-   * <p>
-   * This method accepts a string, rather than a PhoneNumber, because it needs
-   * to distinguish cases such as "+1 911" and "911", where the former may not
-   * connect to an emergency service in all cases but the latter would. This
-   * method takes into account cases where the number might contain formatting,
-   * or might have additional digits appended (when it is okay to do that in
-   * the specified region).
-   *
-   * @param {number} number the phone number to test
-   * @param {string} regionCode the region where the phone number is being
-   *     dialed
-   * @return {boolean} whether the number might be used to connect to an
-   *     emergency service in the given region
-   */
+ * Returns true if the given number, exactly as dialed, might be used to
+ * connect to an emergency service in the given region.
+ * <p>
+ * This method accepts a string, rather than a PhoneNumber, because it needs
+ * to distinguish cases such as "+1 911" and "911", where the former may not
+ * connect to an emergency service in all cases but the latter would. This
+ * method takes into account cases where the number might contain formatting,
+ * or might have additional digits appended (when it is okay to do that in
+ * the specified region).
+ *
+ * @param {number} number the phone number to test
+ * @param {string} regionCode the region where the phone number is being
+ *     dialed
+ * @return {boolean} whether the number might be used to connect to an
+ *     emergency service in the given region
+ */
 i18n.phonenumbers.ShortNumberInfo.prototype.connectsToEmergencyNumber =
     function(number, regionCode) {
   return this.matchesEmergencyNumberHelper_(number, regionCode,
@@ -485,20 +491,20 @@ i18n.phonenumbers.ShortNumberInfo.prototype.connectsToEmergencyNumber =
 
 
 /**
-   * Returns true if the given number exactly matches an emergency service
-   * number in the given region.
-   * <p>
-   * This method takes into account cases where the number might contain
-   * formatting, but doesn't allow additional digits to be appended. Note that
-   * {@code isEmergencyNumber(number, region)} implies
-   * {@code connectsToEmergencyNumber(number, region)}.
-   *
-   * @param {number} number the phone number to test
-   * @param {string} regionCode the region where the phone number is being
-   *     dialed
-   * @return {boolean} whether the number exactly matches an emergency services
-   *     number in the given region.
-   */
+ * Returns true if the given number exactly matches an emergency service
+ * number in the given region.
+ * <p>
+ * This method takes into account cases where the number might contain
+ * formatting, but doesn't allow additional digits to be appended. Note that
+ * {@code isEmergencyNumber(number, region)} implies
+ * {@code connectsToEmergencyNumber(number, region)}.
+ *
+ * @param {number} number the phone number to test
+ * @param {string} regionCode the region where the phone number is being
+ *     dialed
+ * @return {boolean} whether the number exactly matches an emergency services
+ *     number in the given region.
+ */
 i18n.phonenumbers.ShortNumberInfo.prototype.isEmergencyNumber =
     function(number, regionCode) {
   return this.matchesEmergencyNumberHelper_(number, regionCode,
