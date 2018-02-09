@@ -37,8 +37,7 @@ public final class BuildMetadataJsonFromXmlGoldenTest extends TestCase {
     File golden = new File(srcDir, "expected_metadata.js");
 
     BuildMetadataJsonFromXml.start(
-        inputXml.getAbsolutePath(), outputFile.getAbsolutePath(), false /* not liteBuild */,
-        "i18n.phonenumbers.goldenmetadata" /* namespace */);
+        inputXml.getAbsolutePath(), outputFile.getAbsolutePath(), false /* not liteBuild */);
     BufferedReader outputReader =
         new BufferedReader(new InputStreamReader(new FileInputStream(outputFile), "UTF-8"));
     BufferedReader goldenReader =

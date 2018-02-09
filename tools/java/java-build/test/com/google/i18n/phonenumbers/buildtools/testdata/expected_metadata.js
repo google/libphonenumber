@@ -21,7 +21,7 @@
  * @author Nikolaos Trogkanis
  */
 
-goog.provide('i18n.phonenumbers.goldenmetadata');
+goog.provide('i18n.phonenumbers.metadata');
 
 /**
  * A mapping from a country calling code to the region codes which denote the
@@ -30,7 +30,7 @@ goog.provide('i18n.phonenumbers.goldenmetadata');
  * indicated with "isMainCountryForCode" in the metadata should be first.
  * @type {!Object.<number, Array.<string>>}
  */
-i18n.phonenumbers.goldenmetadata.countryCodeToRegionCodeMap = {
+i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
 1:["GU"]
 ,54:["AR"]
 ,247:["AC"]
@@ -41,7 +41,7 @@ i18n.phonenumbers.goldenmetadata.countryCodeToRegionCodeMap = {
  * A mapping from a region code to the PhoneMetadata for that region.
  * @type {!Object.<string, Array>}
  */
-i18n.phonenumbers.goldenmetadata.countryToMetadata = {
+i18n.phonenumbers.metadata.countryToMetadata = {
 "AC":[,[,,"[46]\\d{4}|[01589]\\d{5}",,,,,,,[5,6]
 ]
 ,[,,"6[2-467]\\d{3}",,,,"62889",,,[5]
@@ -107,23 +107,18 @@ i18n.phonenumbers.goldenmetadata.countryToMetadata = {
 ,,,[,,,,,,,,,[-1]
 ]
 ]
-,"GU":[,[,,"[5689]\\d{9}",,,,,,,[3,10]
+,"GU":[,[,,"[5689]\\d{9}",,,,,,,[10]
 ,[7]
 ]
-,[,,"671(?:3(?:00|3[39]|4[349]|55|6[26])|4(?:56|7[1-9]|8[236-9]))\\d{4}",,,,"6713001234",,,[10]
-,[7]
+,[,,"671(?:3(?:00|3[39]|4[349]|55|6[26])|4(?:56|7[1-9]|8[236-9]))\\d{4}",,,,"6713001234",,,,[7]
 ]
-,[,,"671(?:3(?:00|3[39]|4[349]|55|6[26])|4(?:56|7[1-9]|8[236-9]))\\d{4}",,,,"6713001234",,,[10]
-,[7]
+,[,,"671(?:3(?:00|3[39]|4[349]|55|6[26])|4(?:56|7[1-9]|8[236-9]))\\d{4}",,,,"6713001234",,,,[7]
 ]
-,[,,"8(?:00|33|44|55|66|77|88)[2-9]\\d{6}",,,,"8002123456",,,[10]
-]
-,[,,"900[2-9]\\d{6}",,,,"9002123456",,,[10]
-]
+,[,,"8(?:00|33|44|55|66|77|88)[2-9]\\d{6}",,,,"8002123456"]
+,[,,"900[2-9]\\d{6}",,,,"9002123456"]
 ,[,,,,,,,,,[-1]
 ]
-,[,,"5(?:00|22|33|44|66|77|88)[2-9]\\d{6}",,,,"5002345678",,,[10]
-]
+,[,,"5(?:00|22|33|44|66|77|88)[2-9]\\d{6}",,,,"5002345678"]
 ,[,,,,,,,,,[-1]
 ]
 ,"GU",1,"011","1",,,"1",,,1,,,[,,,,,,,,,[-1]
