@@ -598,9 +598,9 @@ i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_PATTERN =
 /**
  * @const
  * @type {!RegExp}
- * @private
+ * @package
  */
-i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_ =
+i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN =
     new RegExp('^[' + i18n.phonenumbers.PhoneNumberUtil.PLUS_CHARS_ + ']+');
 
 
@@ -3812,10 +3812,10 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
     return i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY;
   }
   // Check to see if the number begins with one or more plus signs.
-  if (i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
+  if (i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN
       .test(numberStr)) {
     numberStr = numberStr.replace(
-        i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_, '');
+        i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN, '');
     // Can now normalize the rest of the number since we've consumed the '+'
     // sign at the start.
     number.clear();
@@ -3979,7 +3979,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
   // If the number is null or empty, we can't infer the region.
   return this.isValidRegionCode_(defaultRegion) ||
       (numberToParse != null && numberToParse.length > 0 &&
-          i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_.test(
+          i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN.test(
               numberToParse));
 };
 
@@ -4164,11 +4164,11 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
         regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
   } catch (e) {
     if (e.message == i18n.phonenumbers.Error.INVALID_COUNTRY_CODE &&
-        i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
+        i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN
             .test(nationalNumberStr)) {
       // Strip the plus-char, and try again.
       nationalNumberStr = nationalNumberStr.replace(
-          i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_, '');
+          i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN, '');
       countryCode = this.maybeExtractCountryCode(nationalNumberStr,
           regionMetadata, normalizedNationalNumber, keepRawInput, phoneNumber);
       if (countryCode == 0) {

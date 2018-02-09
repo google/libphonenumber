@@ -31,10 +31,7 @@
 goog.provide('i18n.phonenumbers.ShortNumberInfo');
 
 goog.require('goog.array');
-goog.require('goog.object');
 goog.require('goog.proto2.PbLiteSerializer');
-goog.require('goog.string');
-goog.require('goog.string.StringBuffer');
 goog.require('i18n.phonenumbers.PhoneMetadata');
 goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
@@ -49,13 +46,6 @@ goog.require('i18n.phonenumbers.shortnumbermetadata');
  * @private
  */
 i18n.phonenumbers.ShortNumberInfo = function() {
-  /**
-   * A reference to the PhoneNumberUtil
-   *
-   * @const
-   * @type {!PhoneNumberUtil}
-   */
-  this.phoneNumberUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
   /**
    * A mapping from region code to the short-number metadata for that region.
    * @type {Object.<string, i18n.phonenumbers.PhoneMetadata>}
@@ -112,13 +102,14 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodesForCountryCode_ =
  * Helper method to check that the country calling code of the number matches
  * the region it's being dialed from.
  * @param {i18n.phonenumbers.PhoneNumber} number
- * @param {string} regionDialingFrom
+ * @param {?string} regionDialingFrom
  * @return {boolean}
  * @private
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.regionDialingFromMatchesNumber_ =
     function(number, regionDialingFrom) {
-  var regionCodes = this.getRegionCodesForCountryCode_(number.getCountryCode());
+  var regionCodes = this.getRegionCodesForCountryCode_(
+      number.getCountryCodeOrDefault());
   return goog.array.contains(regionCodes, regionDialingFrom);
 };
 
@@ -158,7 +149,8 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumberForRegion =
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumber =
     function(number) {
-  var regionCodes = this.getRegionCodesForCountryCode_(number.getCountryCode());
+  var regionCodes = this.getRegionCodesForCountryCode_(
+      number.getCountryCodeOrDefault());
   var shortNumberLength = this.getNationalSignificantNumber_(number).length;
   for (var i = 0; i < regionCodes.length; i++) {
     var region = regionCodes[i];
@@ -180,9 +172,9 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumber =
  * this doesn't verify the number is actually in use, which is impossible to
  * tell by just looking at the number itself.
  *
- * @param {i18n.phonenumber.PhoneNumber} number the short number for which we
+ * @param {i18n.phonenumbers.PhoneNumber} number the short number for which we
  *     want to test the validity
- * @param {string} regionDialingFrom the region from which the number is dialed
+ * @param {?string} regionDialingFrom the region from which the number is dialed
  * @return {boolean} whether the short number matches a valid pattern
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.isValidShortNumberForRegion =
@@ -212,13 +204,14 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isValidShortNumberForRegion =
  * impossible to tell by just looking at the number itself. See
  * {@link #isValidShortNumberForRegion(PhoneNumber, String)} for details.
  *
- * @param {i18n.phonenumber.PhoneNumber} number the short number for which we
+ * @param {i18n.phonenumbers.PhoneNumber} number the short number for which we
  *     want to test the validity
  * @return {boolean} whether the short number matches a valid pattern
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.isValidShortNumber =
     function(number) {
-  var regionCodes = this.getRegionCodesForCountryCode_(number.getCountryCode());
+  var regionCodes = this.getRegionCodesForCountryCode_(
+      number.getCountryCodeOrDefault());
   var regionCode = this.getRegionCodeForShortNumberFromRegionList_(number,
                                                                    regionCodes);
   if (regionCodes.length > 1 && regionCode != null) {
@@ -327,7 +320,8 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCostForRegion =
 // @VisibleForTesting
 i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCost = function(number) {
   var ShortNumberCost = i18n.phonenumbers.ShortNumberInfo.ShortNumberCost;
-  var regionCodes = this.getRegionCodesForCountryCode_(number.getCountryCode());
+  var regionCodes = this.getRegionCodesForCountryCode_(
+      number.getCountryCodeOrDefault());
   if (regionCodes.length === 0) {
     return ShortNumberCost.UNKNOWN_COST;
   }
@@ -420,7 +414,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumber =
   }
   var desc = phoneMetadata.getShortCode();
   if (desc.hasExampleNumber()) {
-    return desc.getExampleNumber();
+    return desc.getExampleNumber() || '';
   }
   return '';
 };
@@ -433,9 +427,9 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumber =
  *     needed
  * @param {i18n.phonenumbers.ShortNumberInfo.ShortNumberCost} cost the cost
  *     category of number that is needed
- * @return {i18n.phonenumbers.PhoneNumber} a valid short number for the
- *     specified region and cost category. Returns an empty string when the
- *     metadata does not contain such information, or the cost is UNKNOWN_COST.
+ * @return {string} a valid short number for the specified region and cost
+ *     category. Returns an empty string when the metadata does not contain such
+ *     information, or the cost is UNKNOWN_COST.
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumberForCost =
     function(regionCode, cost) {
@@ -460,7 +454,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumberForCost =
       // the other cost categories.
   }
   if (desc && desc.hasExampleNumber()) {
-    return desc.getExampleNumber();
+    return desc.getExampleNumber() || '';
   }
   return '';
 };
@@ -477,7 +471,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExampleShortNumberForCost =
  * or might have additional digits appended (when it is okay to do that in
  * the specified region).
  *
- * @param {number} number the phone number to test
+ * @param {string} number the phone number to test
  * @param {string} regionCode the region where the phone number is being
  *     dialed
  * @return {boolean} whether the number might be used to connect to an
@@ -499,7 +493,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.connectsToEmergencyNumber =
  * {@code isEmergencyNumber(number, region)} implies
  * {@code connectsToEmergencyNumber(number, region)}.
  *
- * @param {number} number the phone number to test
+ * @param {string} number the phone number to test
  * @param {string} regionCode the region where the phone number is being
  *     dialed
  * @return {boolean} whether the number exactly matches an emergency services
@@ -513,20 +507,20 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isEmergencyNumber =
 
 
 /**
- * @param {string} regionCode The region code to get metadata for
+ * @param {?string} regionCode The region code to get metadata for
  * @return {?i18n.phonenumbers.PhoneMetadata} The region code's metadata, or
  *     null if it is not available or the region code is invalid.
  * @private
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getMetadataForRegion_ =
     function(regionCode) {
-  if (regionCode == null) {
+  if (!regionCode) {
     return null;
   }
   regionCode = regionCode.toUpperCase();
   var metadata = this.regionToMetadataMap[regionCode];
   if (metadata == null) {
-    /** @type {i18n.phonenumbers.PhoneMetadata} */
+    /** @type {goog.proto2.PbLiteSerializer} */
     var serializer = new goog.proto2.PbLiteSerializer();
     var metadataSerialized =
         i18n.phonenumbers.shortnumbermetadata.countryToMetadata[regionCode];
@@ -554,7 +548,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.matchesEmergencyNumberHelper_ =
     function(number, regionCode, allowPrefixMatch) {
   var possibleNumber = i18n.phonenumbers.PhoneNumberUtil
       .extractPossibleNumber(number);
-  if (i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN_
+  if (i18n.phonenumbers.PhoneNumberUtil.LEADING_PLUS_CHARS_PATTERN
       .test(possibleNumber)) {
     return false;
   }
@@ -595,7 +589,8 @@ i18n.phonenumbers.ShortNumberInfo.prototype.matchesEmergencyNumberHelper_ =
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.isCarrierSpecific =
     function(number) {
-  var regionCodes = this.getRegionCodesForCountryCode_(number.getCountryCode());
+  var regionCodes = this.getRegionCodesForCountryCode_(
+      number.getCountryCodeOrDefault());
   var regionCode = this.getRegionCodeForShortNumberFromRegionList_(number,
                                                                    regionCodes);
   var nationalNumber = this.getNationalSignificantNumber_(number);
@@ -700,7 +695,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getNationalSignificantNumber_ =
  * Helper method to add in a performance optimization.
  * TODO: Once we have benchmarked ShortNumberInfo, consider if it is worth
  * keeping this performance optimization.
- * @param {i18n.phonenumbers.PhoneNumber} number
+ * @param {string} number
  * @param {i18n.phonenumbers.PhoneNumberDesc} numberDesc
  * @return {boolean}
  * @private
@@ -712,5 +707,5 @@ i18n.phonenumbers.ShortNumberInfo.prototype.matchesPossibleNumberAndNationalNumb
     return false;
   }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(
-      numberDesc.getNationalNumberPatternOrDefault(), number);
+      numberDesc.getNationalNumberPatternOrDefault(), number.toString());
 };
