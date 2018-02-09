@@ -28,13 +28,14 @@ import junit.framework.TestCase;
 public final class BuildMetadataJsonFromXmlGoldenTest extends TestCase {
 
   private static final String INPUT_FILE_NAME = "PhoneNumberMetadataForGoldenTests.xml";
+  private static final String GOLDEN_FILE_NAME = "expected_metadata.js";
 
   public void testBuildMetadataJsonFromXmlGolden() throws Exception {
     File srcDir = new File("target/test-classes/com/google/i18n/phonenumbers/buildtools/testdata");
     File inputXml = new File(srcDir, INPUT_FILE_NAME);
     File outputFile = File.createTempFile("testOutput", "");
     outputFile.deleteOnExit();
-    File golden = new File(srcDir, "expected_metadata.js");
+    File golden = new File(srcDir, GOLDEN_FILE_NAME);
 
     BuildMetadataJsonFromXml.start(
         inputXml.getAbsolutePath(), outputFile.getAbsolutePath(), false /* not liteBuild */);
