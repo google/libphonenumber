@@ -28,8 +28,8 @@
 
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.PhoneNumber');
-goog.require('i18n.phonenumbers.RegionCode');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
+goog.require('i18n.phonenumbers.RegionCode');
 goog.require('i18n.phonenumbers.ShortNumberInfo');
 
 
