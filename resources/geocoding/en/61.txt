@@ -36035,6 +36035,8 @@
 61756998|Southport
 61756999|Southport
 61851000|Broome
+61851001|Christmas Island
+61851002|Cocos Island
 61851003|Dampier
 61851004|De Grey
 61851005|Derby
@@ -36062,6 +36064,8 @@
 61851027|Wittenoom
 61851028|Wyndham
 61851029|Broome
+61851030|Christmas Island
+61851031|Cocos Island
 61851032|Dampier
 61851033|De Grey
 61851034|Derby
@@ -36089,6 +36093,8 @@
 61851056|Wittenoom
 61851057|Wyndham
 61851058|Broome
+61851059|Christmas Island
+61851060|Cocos Island
 61851061|Dampier
 61851062|De Grey
 61851063|Derby
@@ -36116,6 +36122,8 @@
 61851085|Wittenoom
 61851086|Wyndham
 61851116|Broome
+61851117|Christmas Island
+61851118|Cocos Island
 61851119|Dampier
 61851120|De Grey
 61851121|Derby
@@ -44182,6 +44190,13 @@
 61891003|Broome
 61891004|Broome
 61891005|Broome
+61891006|Christmas Island
+61891007|Christmas Island
+61891008|Christmas Island
+61891009|Christmas Island
+61891010|Cocos Island
+61891011|Cocos Island
+61891012|Cocos Island
 61891013|Dampier
 61891014|Dampier
 61891015|Dampier
@@ -44198,6 +44213,7 @@
 61891026|Great Sandy
 61891027|Great Sandy
 61891028|Great Sandy
+61891029|Cocos Island
 61891030|Hall's Creek
 61891031|Hall's Creek
 61891032|Hall's Creek
@@ -44289,6 +44305,7 @@
 61891118|Tom Price
 61891119|Whaleback
 61891120|Wittenoom
+61891122|Cocos Island
 61891123|Broome
 61891124|Derby
 61891125|Fitzroy Crossing
@@ -44315,6 +44332,8 @@
 61891146|Tom Price
 61891147|Whaleback
 61891148|Wittenoom
+61891149|Christmas Island
+61891150|Cocos Island
 61891151|Broome
 61891152|Derby
 61891153|Fitzroy Crossing
@@ -44342,6 +44361,10 @@
 61891175|Tom Price
 61891176|Whaleback
 61891177|Wittenoom
+61891178|Christmas Island
+61891179|Cocos Island
+61891181|Christmas Island
+61891182|Cocos Island
 61891180|Broome
 61891183|Derby
 61891184|Fitzroy Crossing
@@ -44369,6 +44392,8 @@
 61891206|Whaleback
 61891207|Wittenoom
 61891208|Port Hedland
+61891209|Christmas Island
+61891210|Cocos Island
 61891211|Derby
 61891212|Fitzroy Crossing
 61891213|Hall's Creek
@@ -44421,6 +44446,8 @@
 61891260|Tom Price
 61891261|Whaleback
 61891262|Wittenoom
+61891263|Christmas Island
+61891264|Cocos Island
 61891265|Broome
 61891266|Port Hedland
 61891267|Broome
@@ -44464,9 +44491,11 @@
 61891305|Port Hedland
 61891306|Leopold
 61891307|Newman
+61891308|Cocos Island
 61891309|Newman
 61891310|Paraburdoo
 61891311|Broome
+61891312|Christmas Island
 61891313|Mitchell
 61891314|Hall's Creek
 61891315|Karratha
@@ -44476,9 +44505,11 @@
 61891319|Port Hedland
 61891320|Port Hedland
 61891321|Whaleback
+61891322|Cocos Island
 61891323|Millstream
 61891324|Telfer
 61891325|Marble Bar
+61891326|Christmas Island
 61891327|Dampier
 61891328|Derby
 61891329|Port Hedland
@@ -44520,10 +44551,12 @@
 61891365|Sandfire
 61891366|Whaleback
 61891367|Leopold
+61891368|Cocos Island
 61891371|Millstream
 61891372|Telfer
 61891373|Derby
 61891374|Marble Bar
+61891375|Christmas Island
 61891376|Dampier
 61891377|Derby
 61891378|Port Hedland
@@ -44562,6 +44595,7 @@
 61891425|Roebuck
 61891426|Sandfire
 61891427|Whaleback
+61891428|Cocos Island
 61891429|Broome
 61891430|Karratha
 61891431|Karratha
@@ -44589,6 +44623,7 @@
 61891453|Millstream
 61891454|Telfer
 61891455|Marble Bar
+61891456|Christmas Island
 61891457|Dampier
 61891458|Derby
 6189146|De Grey
@@ -44616,6 +44651,8 @@
 61891494|Fitzroy Crossing
 61891495|Pannawonica
 61891496|Ord
+61891497|Christmas Island
+61891498|Cocos Island
 61891511|Karratha
 61891512|Kununurra
 61891513|Kununurra
@@ -44680,6 +44717,7 @@
 61891617|Derby
 61891618|Derby
 61891619|Derby
+6189162|Cocos Island
 61891630|Mitchell
 61891631|Dampier
 61891632|Dampier
@@ -44690,6 +44728,7 @@
 61891637|Hall's Creek
 61891638|Fitzroy Crossing
 61891639|Fitzroy Crossing
+61891640|Christmas Island
 61891650|De Grey
 61891651|De Grey
 61891652|Mount Bruce
@@ -44722,12 +44761,18 @@
 61891688|Ord
 61891689|Ord
 6189169|Kununurra
+61891700|Christmas Island
+61891701|Christmas Island
+61891702|Cocos Island
 61891704|Fitzroy Crossing
 61891705|Fitzroy Crossing
 61891706|Great Sandy
 61891707|Great Sandy
 61891708|Hall's Creek
 61891709|Hall's Creek
+61891710|Christmas Island
+61891711|Christmas Island
+61891712|Christmas Island
 61891713|Mitchell
 61891714|Hall's Creek
 61891715|Hall's Creek
@@ -44899,6 +44944,7 @@
 61891955|Broome
 61891956|Broome
 61891957|Broome
+61891959|Cocos Island
 61891960|Broome
 61891961|Derby
 61891962|Fitzroy Crossing

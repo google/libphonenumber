@@ -22,10 +22,6 @@
 5966960|SFR/Rife
 59669610|Digicel
 59669611|Digicel
-59669612|Martinique Telephone Mobile
-59669613|Martinique Telephone Mobile
-59669614|Martinique Telephone Mobile
-59669615|Martinique Telephone Mobile
 59669616|Digicel
 59669617|Digicel
 59669618|Digicel
@@ -33,11 +29,11 @@
 5966962|Orange
 5966963|Orange
 5966964|Orange
-59669650|Orange
-59669651|Orange
-59669652|Orange
-59669653|Orange
-59669654|Orange
+59669650|Digicel
+59669651|Digicel
+59669652|Digicel
+59669653|Digicel
+59669654|Digicel
 59669655|Orange
 59669656|Orange
 59669660|SFR/Rife
@@ -56,13 +52,6 @@
 59669687|SFR/Rife
 59669688|SFR/Rife
 59669689|SFR/Rife
-59669690|Digicel
-59669691|Digicel
-59669692|Digicel
-59669693|Digicel
-59669694|Digicel
-59669695|Digicel
-59669696|Digicel
-59669697|Digicel
-59669698|Digicel
+5966969|Digicel
 59669699|Orange
+59669727|Digicel

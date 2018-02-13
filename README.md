@@ -11,7 +11,7 @@ Cream Sandwich).
 
 # Quick links
 
-*   Reporting an issue? Want to send a pull request? See the [contribution
+*   **Reporting an issue?** Want to send a pull request? See the [contribution
     guidelines](CONTRIBUTING.md)
 *   Check the [frequently asked questions](FAQ.md)
 *   Fun! [Falsehoods Programmers Believe About Phone Numbers](FALSEHOODS.md)
@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](http://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.8.8.
+Last demo update: v8.8.11.
 
 If this number is lower than the [latest release's version
 number](http://github.com/googlei18n/libphonenumber/releases), we are between

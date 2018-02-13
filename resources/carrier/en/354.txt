@@ -43,6 +43,11 @@
 354659|Vodafone
 35466|Vodafone
 35467|Vodafone
+354680|Vodafone
+354686|Vodafone
+354687|Vodafone
+354688|Vodafone
+354689|Vodafone
 35469|Vodafone
 354750|Síminn
 354755|Síminn

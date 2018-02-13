@@ -43,6 +43,9 @@
 95951|ZTE
 95955|ZTE
 95969|MNTC
+959750|Telenor
+959751|Telenor
+959752|Telenor
 95976|Telenor
 95977|Telenor
 95978|Telenor
