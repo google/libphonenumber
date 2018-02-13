@@ -400,7 +400,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
 /**
  * Gets a valid short number for the specified region.
  *
- * @param {string} regionCode the region for which an example short number is
+ * @param {?string} regionCode the region for which an example short number is
  *     needed
  * @return {string} a valid short number for the specified region. Returns an
  *     empty string when the metadata does not contain such information.
