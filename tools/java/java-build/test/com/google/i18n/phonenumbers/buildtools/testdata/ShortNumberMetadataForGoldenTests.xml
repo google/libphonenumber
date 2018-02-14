@@ -1,0 +1,117 @@
+<phoneNumberMetadata>
+  <territories>
+    <!-- Ascension Island -->
+    <!-- www.itu.int/oth/T02020000AF -->
+    <territory id="AC">
+      <generalDesc>
+        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>911</exampleNumber>
+      </shortCode>
+      <emergency>
+        <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf
+             http://www.noonsite.com/Countries/AscensionIsland/?rc=GeneralInfo
+             Note the 4-digit emergency numbers fit the fixed-line pattern, therefore are not
+             included. This is consistent with how we handle such numbers in other countries. -->
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
+    </territory>
+
+    <!-- Argentina -->
+    <!-- http://www.itu.int/oth/T0202000009/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
+    <territory id="AR">
+      <generalDesc>
+        <nationalNumberPattern>[01389]\d{1,4}</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>
+          000|
+          1(?:
+            0[0-35-7]|
+            1[02-5]|
+            2[15]|
+            9
+          )|
+          3372|
+          89338|
+          911
+        </nationalNumberPattern>
+        <possibleLengths national="[2-5]"/>
+        <exampleNumber>121</exampleNumber>
+      </shortCode>
+      <tollFree>
+        <!-- According to http://wikitravel.org/en/Argentina all 2 and 3 digit numbers are free,
+             except for 113. -->
+        <nationalNumberPattern>
+          [09]\d{2}|
+          1(?:
+            [02-9]\d?|
+            1[0-24-9]?
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="2,3"/>
+        <exampleNumber>111</exampleNumber>
+      </tollFree>
+      <!-- 911 is only available in select cities. Since it's not available everywhere
+           and is location specific adding this number here. -->
+      <carrierSpecific>
+        <!-- https://support.twitter.com/articles/20170024 -->
+        <nationalNumberPattern>
+          89338|
+          911
+        </nationalNumberPattern>
+        <possibleLengths national="3,5"/>
+        <exampleNumber>89338</exampleNumber>
+      </carrierSpecific>
+      <emergency>
+        <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
+        <!-- 911 is only available in some places. -->
+        <nationalNumberPattern>
+          10[017]|
+          911
+        </nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>101</exampleNumber>
+      </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>10[356]</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>103</exampleNumber>
+      </expandedEmergency>
+      <smsServices>
+        <!-- https://support.twitter.com/articles/20170024 -->
+        <nationalNumberPattern>
+          3372|
+          89338
+        </nationalNumberPattern>
+        <possibleLengths national="4,5"/>
+        <exampleNumber>3372</exampleNumber>
+      </smsServices>
+    </territory>
+
+    <!-- Guam -->
+    <!-- http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel -->
+    <territory id="GU">
+      <generalDesc>
+        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>911</exampleNumber>
+      </shortCode>
+      <emergency>
+        <!-- http://www.justice.gov.gu/compileroflaws/gca/10gca/10gc084.PDF -->
+        <nationalNumberPattern>911</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>911</exampleNumber>
+      </emergency>
+    </territory>
+  </territories>
+</phoneNumberMetadata>

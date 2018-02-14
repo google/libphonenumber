@@ -30,6 +30,7 @@ goog.require('i18n.phonenumbers.PhoneNumberFormat');
 goog.require('i18n.phonenumbers.PhoneNumberType');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
+goog.require('i18n.phonenumbers.ShortNumberInfo');
 
 
 function phoneNumberParser() {
@@ -114,6 +115,17 @@ function phoneNumberParser() {
           break;
       }
     }
+    var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
+    output.append('\n\n****ShortNumberInfo Results:****');
+    output.append('\nResult from isPossibleShortNumber: ');
+    output.append(shortInfo.isPossibleShortNumber(number));
+    output.append('\nResult from isValidShortNumber: ');
+    output.append(shortInfo.isValidShortNumber(number));
+    output.append('\nResult from isPossibleShortNumberForRegion: ');
+    output.append(shortInfo.isPossibleShortNumberForRegion(number, regionCode));
+    output.append('\nResult from isValidShortNumberForRegion: ');
+    output.append(shortInfo.isValidShortNumberForRegion(number, regionCode));
+
     var PNF = i18n.phonenumbers.PhoneNumberFormat;
     output.append('\n\n****Formatting Results:**** ');
     output.append('\nE164 format: ');

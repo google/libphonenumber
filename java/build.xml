@@ -171,6 +171,15 @@
       <arg value="-jar" />
       <arg value="${build.tools.jar}"/>
       <arg value="BuildMetadataJsonFromXml"/>
+      <arg value="${resources.dir}/ShortNumberMetadata.xml"/>
+      <arg value="${javascript.dir}/i18n/phonenumbers/shortnumbermetadata.js"/>
+      <arg value="false"/> <!-- Lite metadata. -->
+      <arg value="i18n.phonenumbers.shortnumbermetadata" /> <!-- namespace to provide -->
+    </exec>
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataJsonFromXml"/>
       <arg value="${resources.dir}/PhoneNumberMetadataForTesting.xml"/>
       <arg value="${javascript.dir}/i18n/phonenumbers/metadatafortesting.js"/>
     </exec>
