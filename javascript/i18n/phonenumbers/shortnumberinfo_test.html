@@ -20,45 +20,20 @@ limitations under the License.
   Author: Nikolaos Trogkanis
 -->
 <head>
-<title>Phone Number Parser Demo</title>
+<title>libphonenumber Unit Tests - i18n.phonenumbers - shortnumberinfo.js</title>
 <script src="../../../../closure-library/closure/goog/base.js"></script>
 <script>
   goog.require('goog.proto2.Message');
 </script>
 <script src="phonemetadata.pb.js"></script>
 <script src="phonenumber.pb.js"></script>
-<script src="metadata.js"></script>
+<script src="metadatafortesting.js"></script>
 <script src="shortnumbermetadata.js"></script>
+<script src="regioncodefortesting.js"></script>
 <script src="phonenumberutil.js"></script>
-<script src="asyoutypeformatter.js"></script>
 <script src="shortnumberinfo.js"></script>
-<script src="demo.js"></script>
+<script src="shortnumberinfo_test.js"></script>
 </head>
 <body>
-
-<h2>Phone Number Parser Demo</h2>
-
-<form>
-  <p>
-  Specify a Phone Number:
-  <input type="text" name="phoneNumber" id="phoneNumber" size="25" />
-  </p>
-  <p>
-  Specify a Default Country:
-  <input type="text" name="defaultCountry" id="defaultCountry" size="2" />
-  (CLDR two-letter region code)
-  </p>
-  <p>
-  Specify a Carrier Code:
-  <input type="text" name="carrierCode" id="carrierCode" size="2" />
-  (optional, only valid for some countries)
-  </p>
-  <input type="submit" value="Submit" onclick="return phoneNumberParser();" />
-  <input type="reset" value="Reset" />
-  <p>
-  <textarea id="output" rows="30" cols="80"></textarea>
-  </p>
-</form>
-
 </body>
 </html>

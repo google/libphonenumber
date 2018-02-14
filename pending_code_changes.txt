@@ -1,1 +1,2 @@
-
+ Code changes:
+ - Ported ShortNumberInfo to Javascript.

@@ -38,7 +38,7 @@ public class BuildMetadataJsonFromXml extends Command {
 
   private static final String HELP_MESSAGE =
       "Usage:\n" +
-      "BuildMetadataJsonFromXml <inputFile> <outputFile> [<liteBuild>]\n" +
+      "BuildMetadataJsonFromXml <inputFile> <outputFile> [<liteBuild>] [<namespace>]\n" +
       "\n" +
       "where:\n" +
       "  inputFile    The input file containing phone number metadata in XML format.\n" +
@@ -46,9 +46,11 @@ public class BuildMetadataJsonFromXml extends Command {
       "  liteBuild    Whether to generate the lite-version of the metadata (default:\n" +
       "               false). When set to true certain metadata will be omitted.\n" +
       "               At this moment, example numbers information is omitted.\n" +
+      "  namespace    If present, the namespace to provide the metadata with (default:\n" +
+      "               " + NAMESPACE + ").\n" +
       "\n" +
       "Example command line invocation:\n" +
-      "BuildMetadataJsonFromXml PhoneNumberMetadata.xml metadatalite.js true\n";
+      "BuildMetadataJsonFromXml PhoneNumberMetadata.xml metadatalite.js true i18n.phonenumbers.testmetadata\n";
 
   private static final String FILE_OVERVIEW =
       "/**\n"
@@ -83,17 +85,22 @@ public class BuildMetadataJsonFromXml extends Command {
   public boolean start() {
     String[] args = getArgs();
 
-    if (args.length != 3 && args.length != 4) {
+    if (args.length != 3 && args.length != 4 && args.length != 5) {
       System.err.println(HELP_MESSAGE);
       return false;
     }
     String inputFile = args[1];
     String outputFile = args[2];
     boolean liteBuild = args.length > 3 && args[3].equals("true");
-    return start(inputFile, outputFile, liteBuild);
+    String namespace = args.length > 4 ? args[4] : NAMESPACE;
+    return start(inputFile, outputFile, liteBuild, namespace);
   }
 
   static boolean start(String inputFile, String outputFile, boolean liteBuild) {
+    return start(inputFile, outputFile, liteBuild, NAMESPACE);
+  }
+
+  static boolean start(String inputFile, String outputFile, boolean liteBuild, String namespace) {
     try {
       PhoneMetadataCollection metadataCollection =
           BuildMetadataFromXml.buildPhoneMetadataCollection(inputFile, liteBuild, false);
@@ -106,15 +113,15 @@ public class BuildMetadataJsonFromXml extends Command {
       Formatter formatter = new Formatter(writer);
       formatter.format(FILE_OVERVIEW, inputFile);
 
-      writer.write("goog.provide('" + NAMESPACE + "');\n\n");
+      writer.write("goog.provide('" + namespace + "');\n\n");
 
       writer.write(COUNTRY_CODE_TO_REGION_CODE_MAP_COMMENT);
-      writer.write(NAMESPACE + ".countryCodeToRegionCodeMap = ");
+      writer.write(namespace + ".countryCodeToRegionCodeMap = ");
       writeCountryCodeToRegionCodeMap(countryCodeToRegionCodeMap, writer);
       writer.write(";\n\n");
 
       writer.write(COUNTRY_TO_METADATA_COMMENT);
-      writer.write(NAMESPACE + ".countryToMetadata = ");
+      writer.write(namespace + ".countryToMetadata = ");
       writeCountryToMetadataMap(metadataCollection, writer);
       writer.write(";\n");
 
@@ -408,14 +415,17 @@ public class BuildMetadataJsonFromXml extends Command {
     toJsArray(metadata.getEmergency(), jsArrayBuilder);
     // optional PhoneNumberDesc voicemail = 28;
     toJsArray(metadata.getVoicemail(), jsArrayBuilder);
-    // Fields 29-31 are omitted due to space increase.
     // optional PhoneNumberDesc short_code = 29;
+    toJsArray(metadata.getShortCode(), jsArrayBuilder);
     // optional PhoneNumberDesc standard_rate = 30;
+    toJsArray(metadata.getStandardRate(), jsArrayBuilder);
     // optional PhoneNumberDesc carrier_specific = 31;
+    toJsArray(metadata.getCarrierSpecific(), jsArrayBuilder);
     // optional bool mobile_number_portable_region = 32 [default=false];
-    // Omit since the JS API doesn't expose this data.
-    // Note: Need to add null for each of the above fields when a subsequent
-    // field is being populated.
+    // left as null because this data is not used in the current JS API's.
+    jsArrayBuilder.append(null);
+    // optional PhoneNumberDesc sms_services = 33;
+    toJsArray(metadata.getSmsServices(), jsArrayBuilder);
 
     jsArrayBuilder.endArray();
   }

@@ -449,8 +449,8 @@ function testGetSupportedCallingCodes() {
       phoneUtil.getSupportedCallingCodes(),
       function(callingCode) {
         assertTrue(callingCode > 0);
-        assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode)
-            == RegionCode.ZZ);
+        assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode) ==
+            RegionCode.ZZ);
       });
   // There should be more than just the global network calling codes in this set.
   assertTrue(phoneUtil.getSupportedCallingCodes().length >

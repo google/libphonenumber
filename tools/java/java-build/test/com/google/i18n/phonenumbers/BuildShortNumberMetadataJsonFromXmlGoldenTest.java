@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Libphonenumber Authors
+ * Copyright (C) 2018 The Libphonenumber Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,10 @@ import junit.framework.TestCase;
 /**
  * Tests for the output of the JSON metadata producer.
  */
-public final class BuildMetadataJsonFromXmlGoldenTest extends TestCase {
+public final class BuildShortNumberMetadataJsonFromXmlGoldenTest extends TestCase {
 
-  private static final String INPUT_FILE_NAME = "PhoneNumberMetadataForGoldenTests.xml";
-  private static final String GOLDEN_FILE_NAME = "expected_metadata.js";
+  private static final String INPUT_FILE_NAME = "ShortNumberMetadataForGoldenTests.xml";
+  private static final String GOLDEN_FILE_NAME = "expected_shortnumbermetadata.js";
 
   public void testBuildMetadataJsonFromXmlGolden() throws Exception {
     File srcDir = new File("target/test-classes/com/google/i18n/phonenumbers/buildtools/testdata");
@@ -38,14 +38,15 @@ public final class BuildMetadataJsonFromXmlGoldenTest extends TestCase {
     File golden = new File(srcDir, GOLDEN_FILE_NAME);
 
     BuildMetadataJsonFromXml.start(
-        inputXml.getAbsolutePath(), outputFile.getAbsolutePath(), false /* not liteBuild */);
+        inputXml.getAbsolutePath(), outputFile.getAbsolutePath(), false /* not liteBuild */,
+        "i18n.phonenumbers.shortnumbergoldenmetadata" /* namespace */);
     BufferedReader outputReader =
         new BufferedReader(new InputStreamReader(new FileInputStream(outputFile), "UTF-8"));
     BufferedReader goldenReader =
         new BufferedReader(new InputStreamReader(new FileInputStream(golden), "UTF-8"));
     while (outputReader.ready() && goldenReader.ready()) {
       String goldenLine = goldenReader.readLine();
-      if (goldenLine.contains("PhoneNumberMetadata.xml")) {
+      if (goldenLine.contains("ShortNumberMetadata.xml")) {
         // The full path of the input file is contained in the output and these lines will be
         // different, so we just check the output file name is present and continue.
         assertTrue(outputReader.readLine().contains(INPUT_FILE_NAME));
