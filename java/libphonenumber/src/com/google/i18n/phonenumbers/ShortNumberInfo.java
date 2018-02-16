@@ -431,6 +431,15 @@ public class ShortNumberInfo {
   public boolean isEmergencyNumber(CharSequence number, String regionCode) {
     return matchesEmergencyNumberHelper(number, regionCode, false /* doesn't allow prefix match */);
   }
+  
+  /**
+   * @see ShortNumberInfo#isEmergencyNumber(java.lang.CharSequence, java.lang.String) 
+   * @deprecated
+   */
+  @Deprecated
+  public boolean isEmergencyNumber(String number, String regionCode) {
+    return isEmergencyNumber((CharSequence)number, regionCode);
+  }
 
   private boolean matchesEmergencyNumberHelper(CharSequence number, String regionCode,
       boolean allowPrefixMatch) {

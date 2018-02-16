@@ -724,6 +724,13 @@ public class PhoneNumberUtil {
   public static String normalizeDigitsOnly(CharSequence number) {
     return normalizeDigits(number, false /* strip non-digits */).toString();
   }
+  
+  /**
+   * @see PhoneNumberUtil#normalizeDigitsOnly(java.lang.CharSequence) 
+   */
+  public static String normalizeDigitsOnly(String number) {
+    return normalizeDigitsOnly((CharSequence) number);
+  }
 
   static StringBuilder normalizeDigits(CharSequence number, boolean keepNonDigits) {
     StringBuilder normalizedDigits = new StringBuilder(number.length());
@@ -749,6 +756,13 @@ public class PhoneNumberUtil {
   public static String normalizeDiallableCharsOnly(CharSequence number) {
     return normalizeHelper(number, DIALLABLE_CHAR_MAPPINGS, true /* remove non matches */);
   }
+  
+  /**
+   * @see PhoneNumberUtil#normalizeDiallableCharsOnly(java.lang.CharSequence) 
+   */
+  public static String normalizeDiallableCharsOnly(String number) {
+    return normalizeDiallableCharsOnly((CharSequence) number);
+  }
 
   /**
    * Converts all alpha characters in a number to their respective digits on a keypad, but retains
@@ -756,6 +770,14 @@ public class PhoneNumberUtil {
    */
   public static String convertAlphaCharactersInNumber(CharSequence number) {
     return normalizeHelper(number, ALPHA_PHONE_MAPPINGS, false);
+  }
+  
+  /**
+   * @see PhoneNumberUtil#convertAlphaCharactersInNumber(java.lang.CharSequence) 
+   */
+  @Deprecated
+  public static String convertAlphaCharactersInNumber(String number) {
+    return convertAlphaCharactersInNumber((CharSequence)number);
   }
 
   /**
@@ -1323,6 +1345,13 @@ public class PhoneNumberUtil {
                                        formattedNumber);
     return formattedNumber.toString();
   }
+  
+  /**
+   * @see PhoneNumberUtil#formatNationalNumberWithCarrierCode(com.google.i18n.phonenumbers.Phonenumber.PhoneNumber, java.lang.CharSequence) 
+   */
+  public String formatNationalNumberWithCarrierCode(PhoneNumber number, String carrierCode) {
+    return formatNationalNumberWithCarrierCode(number, (CharSequence) carrierCode);
+  }
 
   private PhoneMetadata getMetadataForRegionOrCallingCode(
       int countryCallingCode, String regionCode) {
@@ -1357,6 +1386,14 @@ public class PhoneNumberUtil {
         number.getPreferredDomesticCarrierCode().length() > 0
         ? number.getPreferredDomesticCarrierCode()
         : fallbackCarrierCode);
+  }
+  
+  /**
+   * @see PhoneNumberUtil#formatNationalNumberWithPreferredCarrierCode(com.google.i18n.phonenumbers.Phonenumber.PhoneNumber, java.lang.CharSequence) 
+   */
+  public String formatNationalNumberWithPreferredCarrierCode(PhoneNumber number,
+                                                             String fallbackCarrierCode) {
+    return formatNationalNumberWithPreferredCarrierCode(number, (CharSequence) fallbackCarrierCode);
   }
 
   /**
@@ -2441,6 +2478,13 @@ public class PhoneNumberUtil {
     maybeStripExtension(strippedNumber);
     return VALID_ALPHA_PHONE_PATTERN.matcher(strippedNumber).matches();
   }
+  
+  /**
+   * @see PhoneNumberUtil#isAlphaNumber(java.lang.CharSequence) 
+   */
+  public boolean isAlphaNumber(String number) {
+    return isAlphaNumber((CharSequence)number);
+  }
 
   /**
    * Convenience wrapper around {@link #isPossibleNumberWithReason}. Instead of returning the reason
@@ -2655,6 +2699,13 @@ public class PhoneNumberUtil {
     } catch (NumberParseException e) {
       return false;
     }
+  }
+  
+  /**
+   * @see PhoneNumberUtil#isPossibleNumber(java.lang.CharSequence, java.lang.String) 
+   */
+  public boolean isPossibleNumber(String number, String regionDialingFrom) {
+    return isPossibleNumber((CharSequence)number, regionDialingFrom);
   }
 
   /**
@@ -3016,6 +3067,14 @@ public class PhoneNumberUtil {
     parse(numberToParse, defaultRegion, phoneNumber);
     return phoneNumber;
   }
+  
+  /**
+   * @see PhoneNumberUtil#parse(java.lang.CharSequence, java.lang.String) 
+   */
+  public PhoneNumber parse(String numberToParse, String defaultRegion) 
+      throws NumberParseException {
+    return parse((CharSequence) numberToParse, defaultRegion);
+  }
 
   /**
    * Same as {@link #parse(CharSequence, String)}, but accepts mutable PhoneNumber as a
@@ -3024,6 +3083,14 @@ public class PhoneNumberUtil {
   public void parse(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, false, true, phoneNumber);
+  }
+  
+  /**
+   * @see PhoneNumberUtil#parse(java.lang.CharSequence, java.lang.String, com.google.i18n.phonenumbers.Phonenumber.PhoneNumber) 
+   */
+  public void parse(String numberToParse, String defaultRegion, PhoneNumber phoneNumber)
+      throws NumberParseException {
+    parse((CharSequence)numberToParse, defaultRegion, phoneNumber);
   }
 
   /**
@@ -3046,6 +3113,14 @@ public class PhoneNumberUtil {
     parseAndKeepRawInput(numberToParse, defaultRegion, phoneNumber);
     return phoneNumber;
   }
+  
+  /**
+   * @see PhoneNumberUtil#parseAndKeepRawInput(java.lang.CharSequence, java.lang.String) 
+   */
+  public PhoneNumber parseAndKeepRawInput(String numberToParse, String defaultRegion)
+      throws NumberParseException {
+    return parseAndKeepRawInput((CharSequence)numberToParse, defaultRegion);
+  }
 
   /**
    * Same as{@link #parseAndKeepRawInput(CharSequence, String)}, but accepts a mutable
@@ -3055,6 +3130,15 @@ public class PhoneNumberUtil {
                                    PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, true, true, phoneNumber);
+  }
+  
+  /**
+   * @see PhoneNumberUtil#parseAndKeepRawInput(java.lang.CharSequence, java.lang.String, com.google.i18n.phonenumbers.Phonenumber.PhoneNumber) 
+   */
+  public void parseAndKeepRawInput(String numberToParse, String defaultRegion,
+                                   PhoneNumber phoneNumber) 
+      throws NumberParseException {
+    parseAndKeepRawInput((CharSequence)numberToParse, defaultRegion, phoneNumber);
   }
 
   /**
@@ -3417,6 +3501,14 @@ public class PhoneNumberUtil {
     }
     // One or more of the phone numbers we are trying to match is not a viable phone number.
     return MatchType.NOT_A_NUMBER;
+  }
+  
+  /**
+   * @see PhoneNumberUtil#isNumberMatch(java.lang.CharSequence, java.lang.CharSequence) 
+   */
+  @Deprecated
+  public MatchType isNumberMatch(String firstNumber, String secondNumber) {
+      return isNumberMatch((CharSequence)firstNumber, (CharSequence)secondNumber);
   }
 
   /**
