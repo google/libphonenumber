@@ -55,7 +55,9 @@ If the evidence is publicly available online, please provide the link.
 
 If the evidence is not publicly available online, make sure that you have the
 rights to share this with us, and confirm this by reading and signing the
-appropriate Contributor License Agreement (CLA).
+appropriate Contributor License Agreement (CLA). Then we can accept this
+on GitHub, or we can invite you to a private Google Group archive if you
+prefer not to share on GitHub.
 
 See https://cla.developers.google.com/about to determine whether you need to
 sign a Corporate or Individual CLA.
