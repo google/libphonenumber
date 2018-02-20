@@ -16,10 +16,12 @@
 916001|Reliance Jio
 916002|Reliance Jio
 916003|Reliance Jio
+916005|Reliance Jio
 9161279|Idea
 916200|Reliance Jio
 916201|Reliance Jio
 916202|Reliance Jio
+916203|Reliance Jio
 916239|Reliance Jio
 916260|Reliance Jio
 916262|Idea
@@ -40,6 +42,7 @@
 9163506|Reliance Jio
 916351|Reliance Jio
 916352|Reliance Jio
+916353|Reliance Jio
 916360|Reliance Jio
 916370|Reliance Jio
 916375|Reliance Jio
@@ -50,6 +53,7 @@
 916393|Reliance Jio
 916394|Reliance Jio
 916395|Reliance Jio
+916396|Reliance Jio
 9167479|Idea
 916900|Airtel
 91700|Reliance Jio
@@ -2315,7 +2319,7 @@
 918456|Airtel
 918457|Airtel
 918458|Idea
-918459|Sistema
+918459|Reliance Jio
 918460|Tata Docomo
 918461|Idea
 918462|Idea
@@ -2709,6 +2713,8 @@
 918764|CellOne
 918765|CellOne
 918766|Reliance
+9187662|Reliance Jio
+9187663|Reliance Jio
 918767|Reliance
 918768|Vodafone
 918769|Hexacom
@@ -2744,6 +2750,7 @@
 918797|Tata Docomo
 918798|Reliance
 918799|Reliance
+9187997|Reliance Jio
 918800|Airtel
 918801|Aircel
 918802|Aircel
@@ -2755,6 +2762,11 @@
 918808|Idea
 918809|Airtel
 918810|Reliance
+9188102|Reliance Jio
+9188103|Reliance Jio
+9188104|Reliance Jio
+9188105|Reliance Jio
+9188106|Reliance Jio
 918811|Airtel
 918812|Airtel
 918813|Vodafone
@@ -3141,7 +3153,7 @@
 919134|Idea
 919135|Idea
 919136|Sistema
-919137|Sistema
+919137|Reliance Jio
 919138|Airtel
 919139|Sistema
 919140|Reliance Jio
@@ -3323,6 +3335,8 @@
 919316|Reliance
 919317|Reliance
 919318|Reliance
+9193183|Reliance Jio
+9193184|Reliance Jio
 919319|Reliance
 919320|Reliance
 919321|Reliance
