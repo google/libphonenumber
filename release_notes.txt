@@ -1,5 +1,5 @@
 Feb 20, 2018: v8.9.0
- Code changes:
+Code changes:
  - Ported ShortNumberInfo to Javascript.
 Metadata changes:
  - Updated phone metadata for region code(s):
