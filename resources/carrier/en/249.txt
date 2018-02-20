@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+24990|Zain
 24991|Zain
 24992|MTN
 24993|MTN
