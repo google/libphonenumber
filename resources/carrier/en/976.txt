@@ -25,5 +25,6 @@
 97694|Mobicom
 97695|Mobicom
 97696|Skytel
+97697|G-Mobile
 97698|G-Mobile
 97699|Mobicom

@@ -2302,7 +2302,9 @@
           <leadingDigits>[3-79]1</leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
-        <!-- Mobile numbers, VOIP, and four-digit fixed-line area codes. -->
+        <!-- Mobile numbers, VOIP, and four-digit fixed-line area codes. We use the same format for
+             all VOIP numbers as they are not consistent and these ranges are assigned at 4 digit
+             granularity. -->
         <numberFormat pattern="(\d{4})(\d{3,6})">
           <leadingDigits>
             1|
@@ -2332,7 +2334,7 @@
             9(?:
               [02][23]|
               [458]2|
-              6[016]
+              6[01367]
             )
           </leadingDigits>
           <format>$1-$2</format>
@@ -2689,9 +2691,11 @@
         <exampleNumber>9604123456</exampleNumber>
         <nationalNumberPattern>
           96(?:
-            0[49]|
+            0[469]|
             1[0-4]|
-            6[69]
+            3[389]|
+            6[69]|
+            7[78]
           )\d{6}
         </nationalNumberPattern>
       </voip>
@@ -3156,12 +3160,11 @@
         <exampleNumber>90011234</exampleNumber>
         <!-- We have restricted the pattern here to the first two digits, as beyond this the data
              seems to be no longer accurate. The latest ITU doc (2005) lists 9[0357] and lists
-             other 9x and the complete 6x range as reserved. The prefixes 9[46] have also been
-             added, along with 6[1267] (seemingly prefixes for Mobile MTN), and 6[3-5] for Moov.
-             Glo Mobile has been reported as having prefixes 68 and 9[89]. -->
+             other 9x and the complete 6x range as reserved. The prefixes 96 have also been added,
+             along with 6[1267] (seemingly prefixes for Mobile MTN). -->
         <nationalNumberPattern>
           (?:
-            6[1-9]|
+            6\d|
             9[03-9]
           )\d{6}
         </nationalNumberPattern>
@@ -4814,10 +4817,10 @@
         <nationalNumberPattern>
           (?:
             0[1-9]|
-            4\d|
-            5[14-9]|
-            6[015-79]|
-            [78][4-9]
+            [45]\d|
+            6[014-9]|
+            7[124-9]|
+            8[4-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -5070,10 +5073,10 @@
 
     <!-- China -->
     <!-- The international/national prefix patterns must not collide with valid prefixes such
-         as 170, 176, 177 and 178. 179XX00 is a valid calling prefix, see: www.chahaoba.com/179 -->
+         as 17[0678] and 19[89]. 179XX00 is a valid calling prefix, see: www.chahaoba.com/179 -->
     <territory id="CN" countryCode="86" preferredInternationalPrefix="00"
-               internationalPrefix="(1(?:[129]\d{3}|79\d{2}))?00" nationalPrefix="0"
-               nationalPrefixForParsing="(1(?:[129]\d{3}|79\d{2}))|0">
+               internationalPrefix="(1(?:[12]\d{3}|79\d{2}|9[0-7]\d{2}))?00" nationalPrefix="0"
+               nationalPrefixForParsing="(1(?:[12]\d{3}|79\d{2}|9[0-7]\d{2}))|0">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200002B/en</sourceUrl>
       </references>
@@ -11076,7 +11079,7 @@
               [09]0|
               127|
               2(?:
-                0[01]|
+                0[013]|
                 39|
                 6[02]|
                 8[0-2]|
@@ -11084,11 +11087,11 @@
               )|
               3(?:
                 0[01]|
-                5[0-2]|
+                5[0-3]|
                 60|
                 7[05]|
                 81|
-                9[02-5]
+                9[02-6]
               )
             )|
             7(?:
@@ -11168,7 +11171,7 @@
               [09]0|
               1279|
               2(?:
-                0[01]|
+                0[013]|
                 39|
                 6[02]|
                 8[0-2]|
@@ -11176,11 +11179,11 @@
               )|
               3(?:
                 0[01]|
-                5[0-2]|
+                5[0-3]|
                 60|
                 7[05]|
                 81|
-                9[02-5]
+                9[02-6]
               )
             )|
             7(?:
@@ -11722,10 +11725,10 @@
         <nationalNumberPattern>
           (?:
             6(?:
-              00[0-3]\d|
+              00[0-35]\d|
               1279|
               2(?:
-                0[0-2]|
+                0[0-3]|
                 39|
                 6[02]|
                 8[0-2]|
@@ -11735,12 +11738,12 @@
                 0[01]\d|
                 5(?:
                   0[0-6]|
-                  [12]\d
+                  [1-3]\d
                 )|
                 60\d|
                 7[05]\d|
                 8[01]\d|
-                9[023-5]\d
+                9[023-6]\d
               )|
               900\d
             )|
@@ -14915,7 +14918,7 @@
               4[0-35-9]
             )|
             52[25]|
-            9[024-9]
+            9[0-24-9]
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -14988,6 +14991,7 @@
             )|
             9(?:
               0[09]\d|
+              11[01]|
               22\d|
               4[01479]\d|
               55\d|
@@ -16308,9 +16312,10 @@
     </territory>
 
     <!-- Monaco -->
-    <!-- We support Kosovo mobile numbers (044, 045) with a Monaco country-code here, as we do not
-         support Kosovo at the moment. Kosovo seems to use a variety of country codes currently. It
-         also seems that the national prefix is only used for mobile numbers, not fixed-line. -->
+    <!-- We support Kosovo mobile numbers (044, 045) with a Monaco calling code here, while Kosovo
+         numbers all move over to the +383 plan. Kosovo numbers are still under several calling
+         codes. It also seems that the national prefix is only used for mobile numbers, not
+         fixed-line. -->
     <territory id="MC" countryCode="377" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
       <references>
@@ -17143,6 +17148,7 @@
                nationalPrefixFormattingRule="$NP$FG">
       <references>
         <sourceUrl>http://www.itu.int/oth/T020200008E/en</sourceUrl>
+        <sourceUrl>http://www.crc.gov.mn/k/4L/36</sourceUrl>
       </references>
       <availableFormats>
         <numberFormat pattern="([12]\d)(\d{2})(\d{4})">
@@ -22968,11 +22974,13 @@
       <fixedLine>
         <possibleLengths national="9"/>
         <exampleNumber>121231234</exampleNumber>
-        <!-- Retaining previous prefix as 18 since it seems still to be used. Adding 11 from numbers
-             found online. -->
+        <!-- Retaining previous prefix as 18 since it seems still to be used. Adding 10 and 11 from
+             numbers found online. Looks like these are fixed-line numbers as per Wikipedia page
+             https://en.wikipedia.org/wiki/Telephone_numbers_in_Sudan. No official evidence
+             found for these ranges. -->
         <nationalNumberPattern>
           1(?:
-            [125]\d|
+            [0-25]\d|
             8[3567]
           )\d{6}
         </nationalNumberPattern>
@@ -22980,7 +22988,6 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>911231234</exampleNumber>
-        <!-- Adding 90X as online numbers have been found with this prefix. -->
         <nationalNumberPattern>9[0-3569]\d{7}</nationalNumberPattern>
       </mobile>
     </territory>
@@ -24523,11 +24530,11 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>90112345</exampleNumber>
-        <!-- Prefixes 93, 96 and 97 are from open-source bug reports. 70 mobile range is assigned
+        <!-- Prefixes 79, 93, 96 and 97 are from open-source bug reports. 70 mobile range is assigned
              to TOGOCEL as per their web portal http://www.togocel.tg/. -->
         <nationalNumberPattern>
           (?:
-            70|
+            7[09]|
             9[0-36-9]
           )\d{6}
         </nationalNumberPattern>
@@ -25022,7 +25029,12 @@
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>5[02-69]</leadingDigits>
+          <leadingDigits>
+            5(?:
+              [02-69]|
+              16
+            )
+          </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
@@ -25090,6 +25102,7 @@
               5[1-59]|
               9[246]
             )\d{2}|
+            1616|
             6161
           )\d{5}
         </nationalNumberPattern>
@@ -25812,7 +25825,7 @@
               4[08]|
               5[1-46]|
               6[0279]|
-              7[026]|
+              7[0269]|
               8[13]
             )|
             3(?:
@@ -25905,7 +25918,7 @@
               4[08]|
               5[1-46]|
               6[0279]|
-              7[026]|
+              7[0269]|
               8[13]
             )|
             3(?:
