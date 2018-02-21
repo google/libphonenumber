@@ -218,6 +218,7 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
+*   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
