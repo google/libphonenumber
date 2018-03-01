@@ -224,8 +224,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
         + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
     String newIssueLink = "https://issuetracker.google.com/issues/new?component=192347&title=";
     try {
-      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name())
-        + "&customFields=84950:" +defaultCountry;
+      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
     } catch(UnsupportedEncodingException e) {
       // UTF-8 is guaranteed in Java, so this should be impossible.
       throw new AssertionError(e);
