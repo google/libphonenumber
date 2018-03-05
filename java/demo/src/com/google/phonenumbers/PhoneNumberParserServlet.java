@@ -214,18 +214,21 @@ public class PhoneNumberParserServlet extends HttpServlet {
     return permaLink.toString();
   }
 
+  private static final String NEW_ISSUE_BASE_URL =
+    "https://issuetracker.google.com/issues/new?component=192347&title=";
+
   /**
    * Returns a link to create a new github issue with the relevant information.
    */
   private String getNewIssueLink(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
     boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
-    final String newIssueLink = "https://issuetracker.google.com/issues/new?component=192347&title=";
     String issueTitle = "Validation issue with " + phoneNumber
         + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
+
+    String newIssueLink = NEW_ISSUE_BASE_URL;
     try {
-      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name())
-        + "&customFields=84950:" +defaultCountry;
+      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
     } catch(UnsupportedEncodingException e) {
       // UTF-8 is guaranteed in Java, so this should be impossible.
       throw new AssertionError(e);
