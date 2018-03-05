@@ -214,6 +214,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
     return permaLink.toString();
   }
 
+  private static final String NEW_ISSUE_BASE_URL =
+    "https://issuetracker.google.com/issues/new?component=192347&title=";
+
   /**
    * Returns a link to create a new github issue with the relevant information.
    */
@@ -223,32 +226,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
     String issueTitle = "Validation issue with " + phoneNumber
         + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
 
-    // Issue template. This must be kept in sync with the template in
-    // https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md.
-    StringBuilder issueTemplate = new StringBuilder(
-        "Please read the \"guidelines for contributing\" (linked above) and fill "
-        + "in the template below.\n\n");
-    issueTemplate.append("Country/region affected (e.g., \"US\"): ")
-        .append(defaultCountry).append("\n\n");
-    issueTemplate.append("Example number(s) affected (\"+1 555 555-1234\"): ")
-        .append(phoneNumber).append("\n\n");
-    issueTemplate.append(
-        "The phone number range(s) to which the issue applies (\"+1 555 555-XXXX\"): \n\n");
-    issueTemplate.append(
-        "The type of the number(s) (\"fixed-line\", \"mobile\", \"short code\", etc.): \n\n");
-    issueTemplate.append(
-        "The cost, if applicable (\"toll-free\", \"premium rate\", \"shared cost\"): \n\n");
-    issueTemplate.append(
-        "Supporting evidence (for example, national numbering plan, announcement from mobile "
-        + "carrier, news article): **IMPORTANT - anything posted here is made public. "
-        + "Read the guidelines first!** \n\n");
-    issueTemplate.append("[link to demo]("
-        + getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale, true /* absoluteURL */)
-        + ")\n\n");
-    String newIssueLink = "https://github.com/googlei18n/libphonenumber/issues/new?title=";
+    String newIssueLink = NEW_ISSUE_BASE_URL;
     try {
-      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name()) + "&body="
-        + URLEncoder.encode(issueTemplate.toString(), UTF_8.name());
+      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
     } catch(UnsupportedEncodingException e) {
       // UTF-8 is guaranteed in Java, so this should be impossible.
       throw new AssertionError(e);
