@@ -220,9 +220,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
   private String getNewIssueLink(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
     boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
+    final String newIssueLink = "https://issuetracker.google.com/issues/new?component=192347&title=";
     String issueTitle = "Validation issue with " + phoneNumber
         + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
-    String newIssueLink = "https://issuetracker.google.com/issues/new?component=192347&title=";
     try {
       newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
     } catch(UnsupportedEncodingException e) {
