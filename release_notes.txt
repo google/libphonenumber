@@ -1,3 +1,9 @@
+Mar 06, 2018: v8.9.1
+Metadata changes:
+ - Updated phone metadata for region code(s): CL, FR, HK, IN, MU, MY
+ - Updated carrier data for country calling code(s):
+   91 (en), 225 (en), 230 (en)
+
 Feb 20, 2018: v8.9.0
 Code changes:
  - Ported ShortNumberInfo to Javascript.
