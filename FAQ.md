@@ -195,8 +195,8 @@ a number in an advert, etc. We don't think the lack of M2M support hinders any
 of those use-case, but we might be wrong.
 
 If you would like libphonenumber to support M2M numbers, please engage with the
-developer community at [Support M2M numbers #680](
-https://github.com/googlei18n/libphonenumber/issues/680) with further
+developer community at [Support M2M numbers](
+https://issuetracker.google.com/issues/74493346) with further
 information to address our questions and concerns such as:
 
 *   **How to implement support?** e.g. new category, new library or method
@@ -205,16 +205,6 @@ information to address our questions and concerns such as:
     we currently have less than a dozen sources, which have varied definitions
 
 More information and collabortation on this issue would be very welcomed!
-
-Related issues: [Support M2M numbers #680](https://github.com/googlei18n/libphonenumber/issues/680),
-[#930: JTGlobal - an MNO based in the UK](https://github.com/googlei18n/libphonenumber/issues/930),
-[#976: Norway](https://github.com/googlei18n/libphonenumber/issues/976),
-[#985: South Africa, Vodacom](https://github.com/googlei18n/libphonenumber/issues/985),
-[#910: Sweden](https://github.com/googlei18n/libphonenumber/issues/910),
-[#657: Canada](https://github.com/googlei18n/libphonenumber/issues/657),
-[#550: Belgium](https://github.com/googlei18n/libphonenumber/issues/550),
-[#351: Norway](https://github.com/googlei18n/libphonenumber/issues/351),
-[#332: Netherlands](https://github.com/googlei18n/libphonenumber/issues/332)
 
 ### What about numbers that are only valid for a set of subscribers?
 
