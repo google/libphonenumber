@@ -22,6 +22,7 @@
 916201|Reliance Jio
 916202|Reliance Jio
 916203|Reliance Jio
+916235|Idea
 916239|Reliance Jio
 916260|Reliance Jio
 916261|Reliance Jio
@@ -34,6 +35,8 @@
 916295|Reliance Jio
 916300|Reliance Jio
 916301|Reliance Jio
+916302|Reliance Jio
+916309|Airtel
 9163500|Reliance Jio
 9163501|Reliance Jio
 9163502|Reliance Jio
@@ -58,6 +61,7 @@
 916394|Reliance Jio
 916395|Reliance Jio
 916396|Reliance Jio
+916399|Reliance Jio
 9167479|Idea
 916900|Airtel
 91700|Reliance Jio
@@ -3348,7 +3352,7 @@
 919323|Reliance
 919324|Reliance
 919325|Reliance
-919326|Reliance
+919326|Reliance Jio
 919327|Reliance
 919328|Reliance
 919329|Reliance
