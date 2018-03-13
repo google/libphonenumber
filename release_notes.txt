@@ -1,3 +1,9 @@
+Mar 13, 2018: v8.9.2
+Metadata changes:
+ - Updated phone metadata for region code(s): CA, IN, KG, PA, SL
+ - Updated carrier data for country calling code(s):
+   91 (en), 232 (en), 996 (en)
+
 Mar 06, 2018: v8.9.1
 Metadata changes:
  - Updated phone metadata for region code(s): CL, FR, HK, IN, MU, MY
