@@ -43,7 +43,8 @@ As of March 2018, we kindly request that you use Google's [Issue Tracker](http:/
 to report issues with the library. Using Issue Tracker will enable to us to
 get back to you more efficiently as we align GitHub user issues with ones
 reported at Google. Note that we transitioned active GitHub issues to Issue Tracker,
-but anything inactive for over a year must be filed again.
+but anything inactive for over a year must be filed again. To check if your issue
+was transitioned, see this [list of issues](https://issuetracker.google.com/hotlists/886952).
 
 Alternatively, if you have a particular issue with a Google product handling phone numbers (e.g. signup),
 you may also use the [Google Product Forums](https://productforums.google.com/forum).
