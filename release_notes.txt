@@ -1,3 +1,48 @@
+Mar 13, 2018: v8.9.2
+Metadata changes:
+ - Updated phone metadata for region code(s): CA, IN, KG, PA, SL
+ - Updated carrier data for country calling code(s):
+   91 (en), 232 (en), 996 (en)
+
+Mar 06, 2018: v8.9.1
+Metadata changes:
+ - Updated phone metadata for region code(s): CL, FR, HK, IN, MU, MY
+ - Updated carrier data for country calling code(s):
+   91 (en), 225 (en), 230 (en)
+
+Feb 20, 2018: v8.9.0
+Code changes:
+ - Ported ShortNumberInfo to Javascript.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BD, BJ, CI, CN, IN, KW, SD, TG, TR, US
+ - New geocoding data for country calling code(s): 1279 (en)
+ - Updated carrier data for country calling code(s):
+   90 (en), 91 (en), 225 (en), 228 (en), 229 (en), 249 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
+Feb 06, 2018: v8.8.11
+Metadata changes:
+ - New phone metadata for region code(s): XK
+ - Updated phone metadata for region code(s): BE, CV, ET, GW, HK, IN, MW, TT
+ - New short number metadata for region code(s): XK
+ - Updated short number metadata for region code(s): IS, ZA
+ - New geocoding data for country calling code(s): 383 (en, sq, sr)
+ - New carrier data for country calling code(s): 383 (en)
+ - Updated carrier data for country calling code(s):
+   32 (en), 91 (en), 238 (en), 245 (en), 251 (en)
+
+Jan 23, 2018: v8.8.10
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BJ, DE, HK, IN, IR, MM, MY, PW, SA, SI
+ - New geocoding data for country calling code(s): 680 (en)
+ - Updated geocoding data for country calling code(s): 966 (ar, en)
+ - New carrier data for country calling code(s): 34 (en), 680 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 91 (en), 95 (en), 98 (en, fa), 229 (en), 250 (en), 381 (en),
+   386 (en), 852 (en, zh, zh_Hant)
+
 Jan 09, 2018: v8.8.9
 Metadata changes:
  - Updated phone metadata for region code(s):

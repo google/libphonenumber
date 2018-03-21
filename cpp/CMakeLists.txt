@@ -14,15 +14,14 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 2.8.5)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
-set (libphonenumber_VERSION_MINOR 8)
+set (libphonenumber_VERSION_MINOR 9)
 set (libphonenumber_VERSION_PATCH 0)
 
 if (32BIT)
-  set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
   set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32")
@@ -32,6 +31,7 @@ endif ()
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
+include (GNUInstallDirs)
 include (../tools/cpp/gtest.cmake)
 
 function (print_error DESCRIPTION FILE)
@@ -587,13 +587,7 @@ install (FILES "src/phonenumbers/base/synchronization/lock.h"
          "src/phonenumbers/base/synchronization/lock_posix.h"
          DESTINATION include/phonenumbers/base/synchronization/)
 
-get_property (LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
-
-if ("${LIB64}" STREQUAL "TRUE")
-    set (LIBDIR lib64)
-else ()
-    set (LIBDIR lib)
-endif ()
+set (LIBDIR ${CMAKE_INSTALL_LIBDIR})
 
 if (${BUILD_STATIC_LIB} STREQUAL "ON")
   install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})

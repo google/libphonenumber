@@ -16,7 +16,7 @@ Cream Sandwich).
 *   Check the [frequently asked questions](FAQ.md)
 *   Fun! [Falsehoods Programmers Believe About Phone Numbers](FALSEHOODS.md)
 *   Look for
-    [`README`s](http://github.com/googlei18n/libphonenumber/find/master) in
+    [`README`s](https://github.com/googlei18n/libphonenumber/find/master) in
     directories relevant to the code you're interested in.
 *   For contributors and porters: [How to run the Java demo](run-java-demo.md)
 *   For porters: [How to make metadata changes](making-metadata-changes.md)
@@ -52,32 +52,32 @@ Cream Sandwich).
 
 ## Java
 
-The [Java demo](http://libphonenumber.appspot.com/) is updated with a slight
+The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.8.9.
+Last demo update: v8.9.2.
 
 If this number is lower than the [latest release's version
-number](http://github.com/googlei18n/libphonenumber/releases), we are between
+number](https://github.com/googlei18n/libphonenumber/releases), we are between
 releases and the demo may be at either version.
 
 ## JavaScript
 
 The [JavaScript
-demo](http://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
+demo](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
 may be run at various tags; this link will take you to `master`.
 
 # Java code
 
 To include the Java code in your application, either integrate with Maven (see
-[wiki](http://github.com/googlei18n/libphonenumber/wiki)) or download the latest
+[wiki](https://github.com/googlei18n/libphonenumber/wiki)) or download the latest
 jars from the [Maven
-repository](http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
+repository](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
 
 # Javadoc
 
 Javadoc is automatically updated to reflect the latest release at
-http://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/.
+https://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/.
 
 # Versioning and Announcements
 
@@ -102,17 +102,17 @@ Sometimes we make internal changes to the code or metadata that, while not
 affecting compatibility for clients, could affect compatibility for **porters**
 of the library. For such changes we make announcements to
 [libphonenumber-discuss](
-http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
+https://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
 are not reflected in the version number, and we would publish a sub-minor
 release if there were no other changes.
 
 Want to get notified of new releases? During most of the year, excepting
 holidays and extenuating circumstances, we release fortnightly. We update
-[release tags](http://github.com/googlei18n/libphonenumber/releases) and
+[release tags](https://github.com/googlei18n/libphonenumber/releases) and
 document detailed [release notes](
-http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
+https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
 We also send an announcement to [libphonenumber-discuss](
-http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
+https://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
 release.
 
 # Quick Examples
@@ -206,7 +206,7 @@ System.out.println(carrierMapper.getNameForNumber(swissMobileNumber, Locale.ENGL
 ```
 
 More examples on how to use the library can be found in the [unit
-tests](http://github.com/googlei18n/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
+tests](https://github.com/googlei18n/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
 
 # Third-party Ports
 
@@ -218,6 +218,7 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
+*   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber

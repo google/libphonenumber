@@ -39,9 +39,12 @@ For acceptable evidence, [see below](#provide-supporting-evidence).
 *   Link from demo (http://libphonenumber.appspot.com) showing error:
 ```
 
-From mid December to early January, we kindly request that you use Google's [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347)
-to report issues with the library. During this period we'll turn off the "Issues" tab here
-on GitHub. We apologize for any inconvenience (e.g. accessing old report) while we test this system!
+As of March 2018, we kindly request that you use Google's [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347)
+to report issues with the library. Using Issue Tracker will enable to us to
+get back to you more efficiently as we align GitHub user issues with ones
+reported at Google. Note that we transitioned active GitHub issues to Issue Tracker,
+but anything inactive for over a year must be filed again. To check if your issue
+was transitioned, see this [list of issues](https://issuetracker.google.com/hotlists/886952).
 
 Alternatively, if you have a particular issue with a Google product handling phone numbers (e.g. signup),
 you may also use the [Google Product Forums](https://productforums.google.com/forum).
@@ -55,7 +58,9 @@ If the evidence is publicly available online, please provide the link.
 
 If the evidence is not publicly available online, make sure that you have the
 rights to share this with us, and confirm this by reading and signing the
-appropriate Contributor License Agreement (CLA).
+appropriate Contributor License Agreement (CLA). Then we can accept this
+on GitHub, or we can invite you to a private Google Group archive if you
+prefer not to share on GitHub.
 
 See https://cla.developers.google.com/about to determine whether you need to
 sign a Corporate or Individual CLA.
@@ -121,9 +126,7 @@ To get your pull request merged, we need the following:
 *   A CLA signature. See below.
 *   Responsiveness to back and forth review comments, because we will do a code
     review.
-*   A link to a clear description of what the pull request intends to solve in a
-    [GitHub issue](https://github.com/googlei18n/libphonenumber/issues/new) or
-    Google's [Issue
+*   A link to a clear description of what the pull request intends to solve in [Issue
     Tracker](http://issuetracker.google.com/issues/new?component=192347).
 *   Tests that illustrate the issue, if applicable.
 *   Willingness and ability to implement the changes in C++, Java, and JS if
