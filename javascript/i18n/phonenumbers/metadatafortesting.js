@@ -24,13 +24,13 @@
 goog.provide('i18n.phonenumbers.metadata');
 
 /**
- * A mapping from a country calling code to the region codes which denote the
+ * Returns a mapping from a country calling code to the region codes which denote the
  * region represented by that country calling code. In the case of multiple
  * countries sharing a calling code, such as the NANPA regions, the one
  * indicated with "isMainCountryForCode" in the metadata should be first.
- * @type {!Object.<number, Array.<string>>}
+ * @return {!Object.<number, Array.<string>>}
  */
-i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
+i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = function() { return {
 1:["US","BB","BS","CA"]
 ,33:["FR"]
 ,36:["HU"]
@@ -58,13 +58,13 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
 ,882:["001"]
 ,971:["AE"]
 ,979:["001"]
-};
+};};
 
 /**
- * A mapping from a region code to the PhoneMetadata for that region.
- * @type {!Object.<string, Array>}
+ * Returns a mapping from a region code to the PhoneMetadata for that region.
+ * @return {!Object.<string, Array>}
  */
-i18n.phonenumbers.metadata.countryToMetadata = {
+i18n.phonenumbers.metadata.countryToMetadata = function() { return {
 "AD":[,[,,"\\d{6}",,,,,,,[6]
 ]
 ,[,,"\\d{6}",,,,"123456"]
@@ -1063,4 +1063,4 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,,[,,,,,,,,,[-1]
 ]
 ]
-};
+};};
