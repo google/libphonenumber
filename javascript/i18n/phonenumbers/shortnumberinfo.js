@@ -93,7 +93,7 @@ i18n.phonenumbers.ShortNumberInfo.ShortNumberCost = {
 i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodesForCountryCode_ =
     function(countryCallingCode) {
   var regionCodes = i18n.phonenumbers.metadata
-          .countryCodeToRegionCodeMap[countryCallingCode];
+          .countryCodeToRegionCodeMap()[countryCallingCode];
   return regionCodes ? regionCodes : [];
 };
 
@@ -390,7 +390,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodeForShortNumberFromRegio
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
   return goog.array.filter(
-      Object.keys(i18n.phonenumbers.shortnumbermetadata.countryToMetadata),
+      Object.keys(i18n.phonenumbers.shortnumbermetadata.countryToMetadata()),
       function(regionCode) {
         return isNaN(regionCode);
       });
@@ -523,7 +523,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getMetadataForRegion_ =
     /** @type {goog.proto2.PbLiteSerializer} */
     var serializer = new goog.proto2.PbLiteSerializer();
     var metadataSerialized =
-        i18n.phonenumbers.shortnumbermetadata.countryToMetadata[regionCode];
+        i18n.phonenumbers.shortnumbermetadata.countryToMetadata()[regionCode];
     if (metadataSerialized == null) {
       return null;
     }

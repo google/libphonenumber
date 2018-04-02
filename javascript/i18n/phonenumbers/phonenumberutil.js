@@ -1329,7 +1329,7 @@ i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
   return goog.array.filter(
-      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
+      Object.keys(i18n.phonenumbers.metadata.countryToMetadata()),
       function(regionCode) {
         return isNaN(regionCode);
       });
@@ -1345,7 +1345,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     getSupportedGlobalNetworkCallingCodes = function() {
   var callingCodesAsStrings = goog.array.filter(
-      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
+      Object.keys(i18n.phonenumbers.metadata.countryToMetadata()),
       function(regionCode) {
         return !isNaN(regionCode);
       });
@@ -1368,7 +1368,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedCallingCodes =
     function() {
   var countryCodesAsStrings =
-      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap);
+      Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap());
   return goog.array.join(
       this.getSupportedGlobalNetworkCallingCodes(),
       goog.array.map(countryCodesAsStrings,
@@ -1594,7 +1594,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidRegionCode_ =
   // returning true for non-geographical country calling codes.
   return regionCode != null &&
       isNaN(regionCode) &&
-      regionCode.toUpperCase() in i18n.phonenumbers.metadata.countryToMetadata;
+      regionCode.toUpperCase() in i18n.phonenumbers.metadata.countryToMetadata();
 };
 
 
@@ -1609,7 +1609,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.hasValidCountryCallingCode_ =
     function(countryCallingCode) {
 
   return countryCallingCode in
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
+      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap();
 };
 
 
@@ -2917,9 +2917,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getMetadataForRegion =
   if (metadata == null) {
     /** @type {goog.proto2.PbLiteSerializer} */
     var serializer = new goog.proto2.PbLiteSerializer();
+    var countryToMetaData = i18n.phonenumbers.metadata.countryToMetadata();
     /** @type {Array} */
-    var metadataSerialized =
-        i18n.phonenumbers.metadata.countryToMetadata[regionCode];
+    var metadataSerialized = countryToMetaData[regionCode];
     if (metadataSerialized == null) {
       return null;
     }
@@ -3053,7 +3053,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForNumber =
   var countryCode = number.getCountryCodeOrDefault();
   /** @type {Array.<string>} */
   var regions =
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCode];
+      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap()[countryCode];
   if (regions == null) {
     return null;
   }
@@ -3114,7 +3114,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForCountryCode =
 
   /** @type {Array.<string>} */
   var regionCodes =
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCallingCode];
+      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap()[countryCallingCode];
   return regionCodes == null ?
       i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ : regionCodes[0];
 };
@@ -3134,7 +3134,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodesForCountryCode =
 
   /** @type {Array.<string>} */
   var regionCodes =
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCallingCode];
+      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap()[countryCallingCode];
   return regionCodes == null ? [] : regionCodes;
 };
 
@@ -3234,7 +3234,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
     function(regionCode) {
 
   return regionCode != null && goog.array.contains(
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[
+      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap()[
           i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_],
       regionCode.toUpperCase());
 };
@@ -3607,7 +3607,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.extractCountryCode =
       i <= numberLength; ++i) {
     potentialCountryCode = parseInt(fullNumberStr.substring(0, i), 10);
     if (potentialCountryCode in
-        i18n.phonenumbers.metadata.countryCodeToRegionCodeMap) {
+        i18n.phonenumbers.metadata.countryCodeToRegionCodeMap()) {
       nationalNumber.append(fullNumberStr.substring(i));
       return potentialCountryCode;
     }

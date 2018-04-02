@@ -24,13 +24,13 @@
 goog.provide('i18n.phonenumbers.metadata');
 
 /**
- * A mapping from a country calling code to the region codes which denote the
+ * Returns a mapping from a country calling code to the region codes which denote the
  * region represented by that country calling code. In the case of multiple
  * countries sharing a calling code, such as the NANPA regions, the one
  * indicated with "isMainCountryForCode" in the metadata should be first.
- * @type {!Object.<number, Array.<string>>}
+ * @return {!Object.<number, Array.<string>>}
  */
-i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
+i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = function() { return {
 1:["US","AG","AI","AS","BB","BM","BS","CA","DM","DO","GD","GU","JM","KN","KY","LC","MP","MS","PR","SX","TC","TT","VC","VG","VI"]
 ,7:["RU","KZ"]
 ,20:["EG"]
@@ -246,13 +246,13 @@ i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = {
 ,995:["GE"]
 ,996:["KG"]
 ,998:["UZ"]
-};
+};};
 
 /**
- * A mapping from a region code to the PhoneMetadata for that region.
- * @type {!Object.<string, Array>}
+ * Returns a mapping from a region code to the PhoneMetadata for that region.
+ * @return {!Object.<string, Array>}
  */
-i18n.phonenumbers.metadata.countryToMetadata = {
+i18n.phonenumbers.metadata.countryToMetadata = function() { return {
 "AC":[,[,,"[46]\\d{4}|[01589]\\d{5}",,,,,,,[5,6]
 ]
 ,[,,"6[2-467]\\d{3}",,,,"62889",,,[5]
@@ -8009,4 +8009,4 @@ i18n.phonenumbers.metadata.countryToMetadata = {
 ,,,[,,,,,,,,,[-1]
 ]
 ]
-};
+};};

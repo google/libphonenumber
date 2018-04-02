@@ -24,21 +24,21 @@
 goog.provide('i18n.phonenumbers.shortnumbermetadata');
 
 /**
- * A mapping from a country calling code to the region codes which denote the
+ * Returns a mapping from a country calling code to the region codes which denote the
  * region represented by that country calling code. In the case of multiple
  * countries sharing a calling code, such as the NANPA regions, the one
  * indicated with "isMainCountryForCode" in the metadata should be first.
- * @type {!Object.<number, Array.<string>>}
+ * @return {!Object.<number, Array.<string>>}
  */
-i18n.phonenumbers.shortnumbermetadata.countryCodeToRegionCodeMap = {
+i18n.phonenumbers.shortnumbermetadata.countryCodeToRegionCodeMap = function () { return {
 0:["AC","AD","AE","AF","AG","AI","AL","AM","AO","AR","AS","AT","AU","AW","AX","AZ","BA","BB","BD","BE","BF","BG","BH","BI","BJ","BL","BM","BN","BO","BQ","BR","BS","BT","BW","BY","BZ","CA","CC","CD","CF","CG","CH","CI","CK","CL","CM","CN","CO","CR","CU","CV","CW","CX","CY","CZ","DE","DJ","DK","DM","DO","DZ","EC","EE","EG","EH","ER","ES","ET","FI","FJ","FK","FM","FO","FR","GA","GB","GD","GE","GF","GG","GH","GI","GL","GM","GN","GP","GR","GT","GU","GW","GY","HK","HN","HR","HT","HU","ID","IE","IL","IM","IN","IQ","IR","IS","IT","JE","JM","JO","JP","KE","KG","KH","KI","KM","KN","KP","KR","KW","KY","KZ","LA","LB","LC","LI","LK","LR","LS","LT","LU","LV","LY","MA","MC","MD","ME","MF","MG","MH","MK","ML","MM","MN","MO","MP","MQ","MR","MS","MT","MU","MV","MW","MX","MY","MZ","NA","NC","NE","NF","NG","NI","NL","NO","NP","NR","NU","NZ","OM","PA","PE","PF","PG","PH","PK","PL","PM","PS","PR","PT","PW","PY","QA","RE","RO","RS","RU","RW","SA","SB","SC","SD","SE","SG","SH","SI","SJ","SK","SL","SM","SN","SO","SR","ST","SV","SX","SY","SZ","TC","TD","TG","TH","TJ","TL","TM","TN","TO","TR","TT","TV","TW","TZ","UA","UG","US","UY","UZ","VA","VC","VE","VG","VI","VN","VU","WF","WS","XK","YE","YT","ZA","ZM","ZW"]
-};
+};};
 
 /**
- * A mapping from a region code to the PhoneMetadata for that region.
- * @type {!Object.<string, Array>}
+ * Returns a mapping from a region code to the PhoneMetadata for that region.
+ * @return {!Object.<string, Array>}
  */
-i18n.phonenumbers.shortnumbermetadata.countryToMetadata = {
+i18n.phonenumbers.shortnumbermetadata.countryToMetadata = function() { return {
 "AC":[,[,,"9\\d{2}",,,,,,,[3]
 ]
 ,,,[,,,,,,,,,[-1]
@@ -3734,4 +3734,4 @@ i18n.phonenumbers.shortnumbermetadata.countryToMetadata = {
 ,,[,,,,,,,,,[-1]
 ]
 ]
-};
+};};
