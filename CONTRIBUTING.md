@@ -74,7 +74,7 @@ license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
     *   See https://cla.developers.google.com/about and follow the instructions.
     *   Once you are all set up, either create a validation issue for your
         request, or go to the relevant open issue.
-    *   Comment on the issue, using the GitHub account that's already set up for
+    *   Comment on the issue, using the email that's already set up for
         your Corporate CLA, with "I signed the CLA."
     *   If you're set up correctly, someone from the team will update you on the
         issue, with instructions for sending private documentation to our closed
@@ -84,18 +84,11 @@ license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
 *   [Individual CLA](http://cla.developers.google.com/about/google-individual?csw=1):
     *   See https://cla.developers.google.com/about to ensure that an Individual
         CLA is what you need to sign, and for help with troubleshooting.
-    *   When signing the Individual CLA, use the same GitHub username you used
-        (or will use) to file the corresponding issue.
-    *   If the email address you use in the Individual CLA is not already
-        associated with that GitHub account, [add
-        it](https://help.github.com/articles/adding-an-email-address-to-your-github-account/).
-    *   If you need to modify an Individual CLA signature, such as to change the
-        GitHub username, go to https://cla.developers.google.com/clas and click
-        on "Edit Contact Information".
+    *   When signing the Individual CLA, use the same email you used
+        (or will use) to file the corresponding issue, so that we may check
+        and you don't have to post your correct email in public.
     *   Once you are all set up, either create a validation issue for your
         request, or go to the relevant open issue.
-    *   Comment on the issue, using the GitHub account that's already set up for
-        your Individual CLA, with "I signed the CLA."
     *   If you're set up correctly, someone from the team will update you on the
         issue, with instructions for sending private documentation to our closed
         mailing list. Only the core libphonenumber team has access to view
@@ -123,7 +116,12 @@ strongly encourage that you bring up the question on an issue.
 
 To get your pull request merged, we need the following:
 
-*   A CLA signature. See below.
+*   A CLA signature. See the previous section.
+*   If the email address you use in the Individual CLA is not already
+    associated with that GitHub account, [add it](https://help.github.com/articles/adding-an-email-address-to-your-github-account/).
+*   If you need to modify an Individual CLA signature, such as to change the
+        GitHub username, go to https://cla.developers.google.com/clas and click
+        on "Edit Contact Information".
 *   Responsiveness to back and forth review comments, because we will do a code
     review.
 *   A link to a clear description of what the pull request intends to solve in [Issue
