@@ -13,10 +13,12 @@
 # limitations under the License.
 
 # http://www.itu.int/oth/T0202000021/en
-# ITU doc has Telemob, but their home-page refers to them as Telmob
-# (www.telmob.bf)
+# ITU doc has Telemob, but it is mentioned as Telmob in ONATEL's home page.
+# Telmob operates as a subsidiary of ONATEL (http://www.onatel.bf/)
 
 22651|Telmob
+22652|Telmob
+22654|Orange
 22655|Airtel
 22656|Airtel
 22657|Orange
