@@ -11,16 +11,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Source: https://de.wikipedia.org/wiki/Telefonvorwahl_(%C3%96sterreich)#Mobilfunknetze
 
 43650|tele.ring
 43660|Hutchison Drei Austria
-43664|A1 TA
+43663|Saturn Mobil / Media Markt Mobil
+43664|A1 Telekom Austria
+43665|eety
+43670|Spusu
 43676|T-Mobile AT
-436770|T-Mobile AT
-436771|T-Mobile AT
-436772|T-Mobile AT
-436778|T-Mobile AT
-436779|T-Mobile AT
-4368183|Orange AT
-43688|Orange AT
-43699|Orange AT
+43677|HoT
+43678|UPC Mobile
+43680|bob
+43681|Yesss
+43683|eety
+436886|Lycamobile Austria
+436888|Tele2 C-Cube
+436889|delightmobile / Vectone
+43690|Tele2 Mobil
+43699|Hutchison Drei Austria
+436991599|eTel
