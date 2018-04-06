@@ -219,6 +219,18 @@ US_SPOOF_WITH_RAW_INPUT.setRawInput('000-000-0000');
 
 
 /** @type {i18n.phonenumbers.PhoneNumber} */
+var UZ_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
+UZ_FIXED_LINE.setCountryCode(998);
+UZ_FIXED_LINE.setNationalNumber(612201234);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
+var UZ_MOBILE = new i18n.phonenumbers.PhoneNumber();
+UZ_MOBILE.setCountryCode(998);
+UZ_MOBILE.setNationalNumber(950123456);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
 var INTERNATIONAL_TOLL_FREE = new i18n.phonenumbers.PhoneNumber();
 INTERNATIONAL_TOLL_FREE.setCountryCode(800);
 INTERNATIONAL_TOLL_FREE.setNationalNumber(12345678);
@@ -1148,6 +1160,20 @@ function testFormatNumberForMobileDialing() {
                                              false));
   assertEquals('+523312345678',
       phoneUtil.formatNumberForMobileDialing(MX_NUMBER1, RegionCode.US,
+                                             false));
+
+  // Test whether Uzbek phone numbers are returned in international format even
+  // when dialled from same region or other regions.
+  // Fixed-line number
+  assertEquals('+998612201234',
+      phoneUtil.formatNumberForMobileDialing(UZ_FIXED_LINE, RegionCode.UZ,
+                                             false));
+  // Mobile number
+  assertEquals('+998950123456',
+      phoneUtil.formatNumberForMobileDialing(UZ_MOBILE, RegionCode.UZ,
+                                             false));
+  assertEquals('+998950123456',
+      phoneUtil.formatNumberForMobileDialing(UZ_MOBILE, RegionCode.US,
                                              false));
 
   // Non-geographical numbers should always be dialed in international format.

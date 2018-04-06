@@ -62,6 +62,7 @@ i18n.phonenumbers.RegionCode = {
   SE: 'SE',
   SG: 'SG',
   US: 'US',
+  UZ: 'UZ',
   YT: 'YT',
   ZW: 'ZW',
   // Official code for the unknown region.

@@ -1226,9 +1226,9 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         Format(number_no_extension, NATIONAL, formatted_number);
       }
     } else {
-      // For non-geographical countries, and Mexican and Chilean fixed line and
-      // mobile numbers, we output international format for numbers that can be
-      // dialed internationally as that always works.
+      // For non-geographical countries, and Mexican, Chilean and Uzbek fixed
+      // line and mobile numbers, we output international format for numbers
+      // that can be dialed internationally as that always works.
       if ((region_code == kRegionCodeForNonGeoEntity ||
            // MX fixed line and mobile numbers should always be formatted in
            // international format, even when dialed within MX. For national
@@ -1241,8 +1241,15 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
            // national format, but don't have it when used for display. The
            // reverse is true for mobile numbers. As a result, we output them in
            // the international format to make it work.
+	   // UZ mobile and fixed-line numbers have to be formatted in
+           // international format or prefixed with special codes like 03, 04
+           // (for fixed-line) and 05 (for mobile) for dialling successfully
+           // from mobile devices. As we do not have complete information on
+           // special codes and to be consistent with formatting across all
+           // phone types returning number in international format here.
            ((region_code == "MX" ||
-             region_code == "CL") &&
+             region_code == "CL" ||
+             region_code == "UZ") &&
             is_fixed_line_or_mobile)) &&
           CanBeInternationallyDialled(number_no_extension)) {
         Format(number_no_extension, INTERNATIONAL, formatted_number);
