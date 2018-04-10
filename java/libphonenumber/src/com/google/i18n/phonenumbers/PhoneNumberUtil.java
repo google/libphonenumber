@@ -1438,8 +1438,8 @@ public class PhoneNumberUtil {
              // UZ mobile and fixed-line numbers have to be formatted in international format or
              // prefixed with special codes like 03, 04 (for fixed-line) and 05 (for mobile) for
              // dialling successfully from mobile devices. As we do not have complete information on
-             // special codes and to be consistent with formatting across all phone types returning
-             // number in international format here.
+             // special codes and to be consistent with formatting across all phone types we return
+             // the number in international format here.
              || ((regionCode.equals("MX") || regionCode.equals("CL")
                  || regionCode.equals("UZ")) && isFixedLineOrMobile))
             && canBeInternationallyDialled(numberNoExt)) {

@@ -1246,7 +1246,7 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
            // (for fixed-line) and 05 (for mobile) for dialling successfully
            // from mobile devices. As we do not have complete information on
            // special codes and to be consistent with formatting across all
-           // phone types returning number in international format here.
+           // phone types we return the number in international format here.
            ((region_code == "MX" ||
              region_code == "CL" ||
              region_code == "UZ") &&
