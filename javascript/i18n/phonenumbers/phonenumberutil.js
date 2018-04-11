@@ -1959,9 +1959,9 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
             numberNoExt, i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
       }
     } else {
-      // For non-geographical countries, Mexican and Chilean fixed line and
-      // mobile numbers, we output international format for numbers that can be
-      // dialed internationally, as that always works.
+      // For non-geographical countries, and Mexican, Chilean and Uzbek fixed
+      // line and mobile numbers, we output international format for numbers
+      // that can be dialed internationally as that always works.
       if ((regionCode ==
            i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY ||
           // MX fixed line and mobile numbers should always be formatted in
@@ -1975,7 +1975,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           // national format, but don't have it when used for display. The
           // reverse is true for mobile numbers. As a result, we output them in
           // the international format to make it work.
-          ((regionCode == 'MX' || regionCode == 'CL') &&
+	  // UZ mobile and fixed-line numbers have to be formatted in
+          // international format or prefixed with special codes like 03, 04
+          // (for fixed-line) and 05 (for mobile) for dialling successfully
+          // from mobile devices. As we do not have complete information on
+          // special codes and to be consistent with formatting across all
+          // phone types we return the number in international format here.
+          ((regionCode == 'MX' || regionCode == 'CL' || regionCode == 'UZ') &&
               isFixedLineOrMobile)) &&
           this.canBeInternationallyDialled(numberNoExt)) {
         formattedNumber = this.format(
