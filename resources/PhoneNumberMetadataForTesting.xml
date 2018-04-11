@@ -1090,6 +1090,30 @@
       </premiumRate>
     </territory>
 
+    <!-- Uzbekistan -->
+    <territory id="UZ" countryCode="998" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="$NP $FG">
+      <availableFormats>
+        <numberFormat pattern="([679]\d)(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>[679]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[69]\d{8}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <possibleLengths national="9" localOnly="7"/>
+        <exampleNumber>662345678</exampleNumber>
+        <nationalNumberPattern>6122\d{5}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <possibleLengths national="9"/>
+        <exampleNumber>912345678</exampleNumber>
+        <nationalNumberPattern>9[0-57-9]\d{7}</nationalNumberPattern>
+      </mobile>
+    </territory>
+
     <!-- Mayotte -->
     <territory id="YT" countryCode="262" leadingDigits="269|639"
                internationalPrefix="00" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">

@@ -103,6 +103,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L)
           .setRawInput("000-000-0000");
+  private static final PhoneNumber UZ_FIXED_LINE =
+      new PhoneNumber().setCountryCode(998).setNationalNumber(612201234L);
+  private static final PhoneNumber UZ_MOBILE =
+      new PhoneNumber().setCountryCode(998).setNationalNumber(950123456L);
   private static final PhoneNumber INTERNATIONAL_TOLL_FREE =
       new PhoneNumber().setCountryCode(800).setNationalNumber(12345678L);
   // We set this to be the same length as numbers for the other non-geographical country prefix that
@@ -851,6 +855,15 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.formatNumberForMobileDialing(MX_NUMBER1, RegionCode.MX, false));
     assertEquals("+523312345678",
         phoneUtil.formatNumberForMobileDialing(MX_NUMBER1, RegionCode.US, false));
+
+    // Test whether Uzbek phone numbers are returned in international format even when dialled from
+    // same region or other regions.
+    assertEquals("+998612201234",
+        phoneUtil.formatNumberForMobileDialing(UZ_FIXED_LINE, RegionCode.UZ, false));
+    assertEquals("+998950123456",
+        phoneUtil.formatNumberForMobileDialing(UZ_MOBILE, RegionCode.UZ, false));
+    assertEquals("+998950123456",
+        phoneUtil.formatNumberForMobileDialing(UZ_MOBILE, RegionCode.US, false));
 
     // Non-geographical numbers should always be dialed in international format.
     assertEquals("+80012345678",

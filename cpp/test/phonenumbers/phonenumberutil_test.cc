@@ -1175,6 +1175,24 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
       test_number, RegionCode::US(), false, &formatted_number);
   EXPECT_EQ("+523312345678", formatted_number);
 
+  // Test whether Uzbek phone numbers are returned in international format even
+  // when dialled from same region or other regions.
+  // Fixed-line number
+  test_number.set_country_code(998);
+  test_number.set_national_number(612201234ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::UZ(), false, &formatted_number);
+  EXPECT_EQ("+998612201234", formatted_number);
+  // Mobile number
+  test_number.set_country_code(998);
+  test_number.set_national_number(950123456ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::UZ(), false, &formatted_number);
+  EXPECT_EQ("+998950123456", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("+998950123456", formatted_number);
+
   // Non-geographical numbers should always be dialed in international format.
   test_number.set_country_code(800);
   test_number.set_national_number(12345678ULL);

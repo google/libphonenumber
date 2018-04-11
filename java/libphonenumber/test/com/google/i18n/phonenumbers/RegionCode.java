@@ -54,6 +54,7 @@ final class RegionCode {
   static final String SE = "SE";
   static final String SG = "SG";
   static final String US = "US";
+  static final String UZ = "UZ";
   static final String YT = "YT";
   static final String ZW = "ZW";
   // Official code for the unknown region.
