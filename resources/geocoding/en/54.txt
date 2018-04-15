@@ -32,6 +32,9 @@
 54114259|Quilmes, Buenos Aires
 54114278|Quilmes, Buenos Aires
 54114350|Quilmes, Buenos Aires
+54114546|Autonomous City of Buenos Aires
+54114858|Autonomous City of Buenos Aires
+54114919|Autonomous City of Buenos Aires
 54220|Merlo, Buenos Aires
 542202|La Matanza, Buenos Aires
 54221|La Plata, Buenos Aires
