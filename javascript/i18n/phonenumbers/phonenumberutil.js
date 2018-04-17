@@ -3868,8 +3868,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.
   // Attempt to parse the first digits as a national prefix.
   /** @type {!RegExp} */
   var prefixPattern = new RegExp('^(?:' + possibleNationalPrefix + ')');
-  /** @type {Array.<string>} */
-  var prefixMatcher = prefixPattern.exec(numberStr);
+  var prefixMatcher = /** @type {?Array<string>} */ (
+      prefixPattern.exec(numberStr));
   if (prefixMatcher) {
     /** @type {!RegExp} */
     var nationalNumberRule = new RegExp(

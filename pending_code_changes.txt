@@ -1,1 +1,2 @@
-
+Code changes:
+ - Add typecast for prefixMatcher in JS library.
