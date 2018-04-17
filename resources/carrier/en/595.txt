@@ -12,8 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-59521|Personal
-59596|Personal
-59597|Personal
-59598|Personal
-59599|Personal
+595951|VOX
+595961|VOX
+595962|VOX
+595969|VOX
+595971|Personal
+595972|Personal
+595973|Personal
+595974|Personal
+595975|Personal
+595976|Personal
+595981|Tigo
+595982|Tigo
+595983|Tigo
+595984|Tigo
+595985|Tigo
+595986|Tigo
+595991|Claro
+595992|Claro
+595993|Claro
+595994|Claro
+595995|Claro
