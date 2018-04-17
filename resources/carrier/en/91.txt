@@ -364,6 +364,8 @@
 917308|Reliance
 917309|Idea
 917310|Vodafone
+9173172|Vodafone
+9173174|Vodafone
 9173175|Airtel
 9173176|Airtel
 9173177|Airtel
@@ -2162,6 +2164,7 @@
 9183175|Reliance Jio
 9183176|Reliance Jio
 9183177|Idea
+9183178|Vodafone
 918318|Reliance Jio
 918319|Reliance Jio
 918320|Reliance Jio
@@ -2235,6 +2238,7 @@
 9183675|Idea
 9183676|Idea
 9183677|Idea
+9183678|Vodafone
 918368|Reliance Jio
 918369|Reliance Jio
 918370|Vodafone

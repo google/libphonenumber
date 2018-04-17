@@ -36,7 +36,7 @@
 354644|Nova
 354646|IMC
 354647|IMC
-354649|Nova
+354649|Vodafone
 354650|IMC
 354651|IMC
 354655|Vodafone
@@ -55,10 +55,15 @@
 35476|Nova
 35477|Nova
 35478|Nova
+354790|Nova
+354791|Nova
+354792|Nova
+354793|Nova
 35482|Vodafone
 35483|Síminn
 35484|Síminn
 35485|Síminn
 35486|Síminn
+354882|Síminn
 354888|Síminn
 35489|Síminn
