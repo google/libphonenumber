@@ -19,33 +19,16 @@
 # ITU file published 2011-12-16 here: http://www.itu.int/oth/T0202000009/en
 
 5411|Buenos Aires
-54114200|Quilmes, Buenos Aires
-54114224|Quilmes, Buenos Aires
-54114250|Quilmes, Buenos Aires
-54114251|Quilmes, Buenos Aires
-54114252|Quilmes, Buenos Aires
-54114253|Quilmes, Buenos Aires
-54114254|Quilmes, Buenos Aires
-54114255|Florencio Varela, Buenos Aires
-54114256|Berazategui, Buenos Aires
-54114257|Quilmes, Buenos Aires
-54114258|Berazategui, Buenos Aires
-54114259|Quilmes, Buenos Aires
-54114278|Quilmes, Buenos Aires
-54114350|Quilmes, Buenos Aires
-54114546|Ciudad Autónoma de Buenos Aires
-54114858|Ciudad Autónoma de Buenos Aires
-54114919|Ciudad Autónoma de Buenos Aires
 54220|Merlo, Buenos Aires
-542202|La Matanza, Buenos Aires
+542202|González Catán/Virrey del Pino, Buenos Aires
 54221|La Plata, Buenos Aires
-542221|Magdalena/Punta Indio, Buenos Aires
+542221|Magdalena/Verónica, Buenos Aires
 542223|Brandsen, Buenos Aires
-542224|Almirante Brown, Buenos Aires
+542224|Glew/Guernica, Buenos Aires
 542225|San Vicente, Buenos Aires
 542226|Cañuelas, Buenos Aires
 542227|Lobos, Buenos Aires
-542229|Berazategui, Buenos Aires
+542229|Juan María Gutiérrez/El Pato, Buenos Aires
 54223|Mar del Plata, Buenos Aires
 542241|Chascomús, Buenos Aires
 542242|Lezama, Buenos Aires
@@ -93,9 +76,9 @@
 542333|Quemú Quemú, La Pampa
 542334|Eduardo Castex, La Pampa
 542335|Dpto. Realicó/Rancul, La Pampa
-542336|Dpto. General Roca, Córdoba
+542336|Huinca Renancó/Villa Huidobro, Córdoba
 542337|América/Rivadavia, Buenos Aires
-542338|Dpto. Loventué, La Pampa
+542338|Victorica, La Pampa
 542342|Bragado, Buenos Aires
 542343|Norberto de La Riestra, Buenos Aires
 542344|Saladillo, Buenos Aires
@@ -136,8 +119,8 @@
 542648|Calingasta, San Juan
 542651|San Francisco del Monte de Oro, San Luis
 542652|Provincia de San Luis
-542655|Dpto. Coronel Pringles, San Luis
-542656|Concarán/Merlo, San Luis
+542655|La Toma, San Luis
+542656|Merlo, San Luis
 542657|Villa Mercedes, San Luis
 542658|Buena Esperanza, San Luis
 54266|San Luis, Capital
