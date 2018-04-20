@@ -829,7 +829,7 @@
     <!-- http://www.itu.int/oth/T0202000012/en -->
     <territory id="BD">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[179]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
@@ -840,14 +840,14 @@
                 0\d|
                 [1-4]
               )|
-              6\d{2}|
+              6(\d{2})?|
               7[0-4]|
               8[0-29]
             )|
-            1[6-9]|
+            1[16-9]|
             2(?:
-              2[0-5]|
-              [34]
+              [134]|
+              2[0-5]
             )|
             3(?:
               1\d?|
@@ -858,8 +858,11 @@
               0\d|
               1\d{2}
             )|
-            5[2-9]
+            5[2-9]|
+            99
           )|
+          786|
+          5012|
           9(?:
             594|
             99
@@ -868,15 +871,31 @@
         <possibleLengths national="[3-5]"/>
         <exampleNumber>103</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>106</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>106</exampleNumber>
+      </tollFree>
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <nationalNumberPattern>9594</nationalNumberPattern>
-        <possibleLengths national="4"/>
+        <nationalNumberPattern>
+          1(?:
+            11|
+            2[13]
+          )|
+          786|
+          5012|
+          9594
+        </nationalNumberPattern>
+        <possibleLengths national="3,4"/>
         <exampleNumber>9594</exampleNumber>
       </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
-          10[0-2]|
+          1(?:
+            0[0-2]|
+            99
+          )|
           999
         </nationalNumberPattern>
         <possibleLengths national="3"/>
