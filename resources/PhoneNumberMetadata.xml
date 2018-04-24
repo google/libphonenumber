@@ -767,7 +767,7 @@
                          5[2-4]|
                          6[2-46]|
                          72?|
-                         8[23]?
+                         8[1-3]?
                        )
                      )|
                      3(?:
@@ -876,20 +876,37 @@
                are decided by comparing usage counts. Any manual edits to these expressions not
                reflected in the XLS spreadsheet must be clearly called out below:
 
-               Added Manually as 3-3-4 format:
-               * 2981 (General Roca, Río Negro) : Numbers found online suggest 3-3-4
+               Added manually as national prefix for parsing:
+               * 2981 (General Roca, Río Negro) : Numbers found online don't match any pattern, it
+                                                  will be treated as 4-2-4.
 
                See also:
                https://github.com/googlei18n/libphonenumber/issues/611
                https://github.com/googlei18n/libphonenumber/issues/559 -->
+          <!-- Note that some patterns appear as both 3 and 4 digit area codes. In these cases
+               (to avoid going to 4 digits of discrimination) we simply pick the one with the
+               highest amount of valid phone numbers under the pattern. Patterns excluded from
+               this expression will be treated as 4-2-4:
+               - XX (valid numbers as 3-digit code:valid numbers as 4-digit code)
+               - 23 (1645300:4830100)  - excluded
+               - 24 ( 556000: 977400)  - excluded
+               - 33 ( 636000: 938500)  - excluded
+               - 37 (3812400:4658200)  - excluded -->
           <!-- Do NOT copy this into the section below. Removing the leading '9' will make it match
                only 2 digits and the first <leadingDigits> section must always match 3 digits. -->
           <leadingDigits>
             9(?:
-              2[2-4689]|
-              3[3-8]
+              2[2689]|
+              3[4-68]
             )
           </leadingDigits>
+          <!-- Note that some patterns appear as both 3 and 4 digit area codes. In these cases
+               (to avoid going to 5 digits of discrimination) we simply pick the one with the
+               highest amount of valid phone numbers under the pattern. Patterns excluded from
+               this expression will be treated as 4-2-4:
+               - XXX (valid numbers as 3-digit code:valid numbers as 4-digit code)
+               - 294 (969400:1018200)  - excluded
+               - 348 (604100:1600900)  - excluded -->
           <!-- If modified, copy this expression into the section below, minus the leading '9' -->
           <leadingDigits>
             9(?:
@@ -899,11 +916,11 @@
                 49|
                 6[01346]|
                 8|
-                9[147-9]
+                9[17-9]
               )|
               3(?:
                 36|
-                4[1-358]|
+                4[1-35]|
                 5[138]|
                 6|
                 7[069]|
@@ -913,44 +930,39 @@
           </leadingDigits>
           <!-- Note that some patterns appear as both 3 and 4 digit area codes. In these cases
                (to avoid going to 6 digits of discrimination) we simply pick the one with the
-               most uses. Patterns excluded from this expression will be treated as 4-2-4:
-               - XXXX (usage count as 3-digit code:usage count as 4-digit code)
-               - 2646 (7:15)   - excluded
-               - 3435 (39:63)  - excluded
-               - 3454 (90:48)
-               - 3455 (13:94)  - excluded
-               - 3456 (3:93)   - excluded
-               - 3584 (143:65)
-               - 3585 (21:42)  - excluded
-               - 3854 (115:73)
-               - 3855 (76:40)
-               - 3856 (19:44)  - excluded
-               - 3876 (56:99)  - excluded
-               - 3885 (120:45)
-               - 3886 (3:137)  - excluded -->
+               highest amount of valid phone numbers under the pattern. Patterns excluded from
+               this expression will be treated as 4-2-4:
+               - XXXX (valid numbers as 3-digit code:valid numbers as 4-digit code)
+               - 2945 (125000:369700)  - excluded
+               - 3454 (484000:484000)
+               - 3455 (120000:138000)  - excluded
+               - 3456 ( 30000:170200)  - excluded
+               - 3835 ( 60000:153500)  - excluded
+               - 3885 (680000: 58300)
+               - 3886 (230000:264400)  - excluded -->
           <!-- If modified, copy this expression into the section below, minus the leading '9' -->
           <leadingDigits>
             9(?:
               2(?:
                 2(?:
-                  0[013-9]|
+                  0[45]|
                   [13]
                 )|
                 3(?:
-                  0[013-9]|
+                  04|
                   [67]
                 )|
                 49|
                 6(?:
                   [0136]|
-                  4[0-59]
+                  4[4-6]
                 )|
                 8|
                 9(?:
                   [19]|
                   44|
-                  7[013-9]|
-                  8[14]
+                  7[4-6]|
+                  8[45]
                 )
               )|
               3(?:
@@ -962,44 +974,51 @@
                 )|
                 5(?:
                   1|
-                  3[0-24-689]|
-                  8[46]
+                  [38][4-6]
                 )|
                 6|
                 7[069]|
                 8(?:
                   [01]|
                   34|
-                  [578][45]
+                  5[4-6]|
+                  7[24-6]|
+                  8[3-5]
                 )
               )
             )
           </leadingDigits>
           <!-- If modified, copy this expression into the section below, minus the leading '9'. -->
           <!-- We go to 6-digit on a case-by-case basis. Below are the prefixes we have added
-               support up to 6-digit: 9343. -->
+               support up to 6-digit: 9264, 9294, 9343, 9348, 9358, 9383, 9385, 9387, 9388. -->
           <leadingDigits>
             9(?:
               2(?:
                 2(?:
-                  0[013-9]|
+                  0[45]|
                   [13]
                 )|
                 3(?:
-                  0[013-9]|
+                  04|
                   [67]
                 )|
                 49|
                 6(?:
                   [0136]|
-                  4[0-59]
+                  4(?:
+                    [45]|
+                    6[0-36-8]
+                  )
                 )|
                 8|
                 9(?:
                   [19]|
-                  44|
-                  7[013-9]|
-                  8[14]
+                  4(?:
+                    4|
+                    5[09]
+                  )|
+                  7[4-6]|
+                  8[45]
                 )
               )|
               3(?:
@@ -1008,22 +1027,147 @@
                   [12]|
                   3(?:
                     4|
-                    5[014]|
+                    5[0-3]|
                     6[1-39]
                   )|
-                  [58]4
+                  5(?:
+                    4[0-39]|
+                    [56][02]
+                  )|
+                  84
                 )|
                 5(?:
                   1|
-                  3[0-24-689]|
-                  8[46]
+                  3[4-6]|
+                  8(?:
+                    4[0-36-9]|
+                    5[0136]|
+                    6
+                  )
                 )|
                 6|
                 7[069]|
                 8(?:
                   [01]|
-                  34|
-                  [578][45]
+                  3(?:
+                    4|
+                    51
+                  )|
+                  5(?:
+                    4[0-36-9]|
+                    5[0-37-9]|
+                    6[0-27-9]
+                  )|
+                  7(?:
+                    [245]|
+                    6[0-37-9]
+                  )|
+                  8(?:
+                    [34]|
+                    5[0-37-9]|
+                    6[018]
+                  )
+                )
+              )
+            )
+          </leadingDigits>
+          <!-- If modified, copy this expression into the section below, minus the leading '9'. -->
+          <!-- We go to 7-digit on a case-by-case basis. At this level all 3-4-3 numbers are
+               matched univocally. Below are the prefixes we have added support up to 7-digit:
+               92945, 93435, 93584, 93585, 93854. -->
+          <leadingDigits>
+            9(?:
+              2(?:
+                2(?:
+                  0[45]|
+                  [13]
+                )|
+                3(?:
+                  04|
+                  [67]
+                )|
+                49|
+                6(?:
+                  [0136]|
+                  4(?:
+                    [45]|
+                    6[0-36-8]
+                  )
+                )|
+                8|
+                9(?:
+                  [19]|
+                  4(?:
+                    4|
+                    5(?:
+                      [09]|
+                      36
+                    )
+                  )|
+                  7[4-6]|
+                  8[45]
+                )
+              )|
+              3(?:
+                36|
+                4(?:
+                  [12]|
+                  3(?:
+                    4|
+                    5(?:
+                      [0-3]|
+                      4[34]
+                    )|
+                    6[1-39]
+                  )|
+                  5(?:
+                    4[0-39]|
+                    [56][02]
+                  )|
+                  84
+                )|
+                5(?:
+                  1|
+                  3[4-6]|
+                  8(?:
+                    4(?:
+                      [0-37-9]|
+                      6[2-8]
+                    )|
+                    5(?:
+                      [013]|
+                      48|
+                      6[0-2]
+                    )|
+                    6
+                  )
+                )|
+                6|
+                7[069]|
+                8(?:
+                  [01]|
+                  3(?:
+                    4|
+                    51
+                  )|
+                  5(?:
+                    4(?:
+                      [0-37-9]|
+                      50|
+                      6[01]
+                    )|
+                    5[0-37-9]|
+                    6[0-27-9]
+                  )|
+                  7(?:
+                    [245]|
+                    6[0-37-9]
+                  )|
+                  8(?:
+                    [34]|
+                    5[0-37-9]|
+                    6[018]
+                  )
                 )
               )
             )
@@ -1052,11 +1196,11 @@
               49|
               6[01346]|
               8|
-              9[147-9]
+              9[17-9]
             )|
             3(?:
               36|
-              4[1-358]|
+              4[1-35]|
               5[138]|
               6|
               7[069]|
@@ -1067,24 +1211,24 @@
           <leadingDigits>
             2(?:
               2(?:
-                0[013-9]|
+                0[45]|
                 [13]
               )|
               3(?:
-                0[013-9]|
+                04|
                 [67]
               )|
               49|
               6(?:
                 [0136]|
-                4[0-59]
+                4[4-6]
               )|
               8|
               9(?:
                 [19]|
                 44|
-                7[013-9]|
-                8[14]
+                7[4-6]|
+                8[45]
               )
             )|
             3(?:
@@ -1096,39 +1240,47 @@
               )|
               5(?:
                 1|
-                3[0-24-689]|
-                8[46]
+                [38][4-6]
               )|
               6|
               7[069]|
               8(?:
                 [01]|
                 34|
-                [578][45]
+                5[4-6]|
+                7[24-6]|
+                8[3-5]
               )
             )
           </leadingDigits>
+          <!-- Never modify this manually, always copy from above and remove leading '9' -->
           <leadingDigits>
             2(?:
               2(?:
-                0[013-9]|
+                0[45]|
                 [13]
               )|
               3(?:
-                0[013-9]|
+                04|
                 [67]
               )|
               49|
               6(?:
                 [0136]|
-                4[0-59]
+                4(?:
+                  [45]|
+                  6[0-36-8]
+                )
               )|
               8|
               9(?:
                 [19]|
-                44|
-                7[013-9]|
-                8[14]
+                4(?:
+                  4|
+                  5[09]
+                )|
+                7[4-6]|
+                8[45]
               )
             )|
             3(?:
@@ -1137,22 +1289,142 @@
                 [12]|
                 3(?:
                   4|
-                  5[014]|
+                  5[0-3]|
                   6[1-39]
                 )|
-                [58]4
+                5(?:
+                  4[0-39]|
+                  [56][02]
+                )|
+                84
               )|
               5(?:
                 1|
-                3[0-24-689]|
-                8[46]
+                3[4-6]|
+                8(?:
+                  4[0-36-9]|
+                  5[0136]|
+                  6
+                )
               )|
               6|
               7[069]|
               8(?:
                 [01]|
-                34|
-                [578][45]
+                3(?:
+                  4|
+                  51
+                )|
+                5(?:
+                  4[0-36-9]|
+                  5[0-37-9]|
+                  6[0-27-9]
+                )|
+                7(?:
+                  [245]|
+                  6[0-37-9]
+                )|
+                8(?:
+                  [34]|
+                  5[0-37-9]|
+                  6[018]
+                )
+              )
+            )
+          </leadingDigits>
+          <!-- Never modify this manually, always copy from above and remove leading '9' -->
+          <leadingDigits>
+            2(?:
+              2(?:
+                0[45]|
+                [13]
+              )|
+              3(?:
+                04|
+                [67]
+              )|
+              49|
+              6(?:
+                [0136]|
+                4(?:
+                  [45]|
+                  6[0-36-8]
+                )
+              )|
+              8|
+              9(?:
+                [19]|
+                4(?:
+                  4|
+                  5(?:
+                    [09]|
+                    36
+                  )
+                )|
+                7[4-6]|
+                8[45]
+              )
+            )|
+            3(?:
+              36|
+              4(?:
+                [12]|
+                3(?:
+                  4|
+                  5(?:
+                    [0-3]|
+                    4[34]
+                  )|
+                  6[1-39]
+                )|
+                5(?:
+                  4[0-39]|
+                  [56][02]
+                )|
+                84
+              )|
+              5(?:
+                1|
+                3[4-6]|
+                8(?:
+                  4(?:
+                    [0-37-9]|
+                    6[2-8]
+                  )|
+                  5(?:
+                    [013]|
+                    48|
+                    6[0-2]
+                  )|
+                  6
+                )
+              )|
+              6|
+              7[069]|
+              8(?:
+                [01]|
+                3(?:
+                  4|
+                  51
+                )|
+                5(?:
+                  4(?:
+                    [0-37-9]|
+                    50|
+                    6[01]
+                  )|
+                  5[0-37-9]|
+                  6[0-27-9]
+                )|
+                7(?:
+                  [245]|
+                  6[0-37-9]
+                )|
+                8(?:
+                  [34]|
+                  5[0-37-9]|
+                  6[018]
+                )
               )
             )
           </leadingDigits>
