@@ -25,7 +25,7 @@
 542221|Magdalena/Verónica, Buenos Aires
 542223|Brandsen, Buenos Aires
 542224|Glew/Guernica, Buenos Aires
-542225|San Vicente, Buenos Aires
+542225|Alejandro Korn, Buenos Aires
 542226|Cañuelas, Buenos Aires
 542227|Lobos, Buenos Aires
 542229|Juan María Gutiérrez/El Pato, Buenos Aires
@@ -52,8 +52,6 @@
 542273|Carmen de Areco, Buenos Aires
 542274|Carlos Spegazzini, Buenos Aires
 542281|Azul, Buenos Aires
-54228148|Cacharí, Buenos Aires
-54228149|Chillar, Buenos Aires
 542283|Tapalqué, Buenos Aires
 542284|Olavarría, Buenos Aires
 542285|Laprida, Buenos Aires
@@ -104,16 +102,14 @@
 542477|Pergamino, Buenos Aires
 542478|Arrecifes, Buenos Aires
 54249|Tandil, Buenos Aires
-542494491|María Ignacia (Vela), Buenos Aires
-542494493|Gardey, Buenos Aires
 54260|San Rafael, Mendoza
-54261|Mendoza, Capital
+54261|Mendoza, Mendoza
 542622|Tunuyán, Mendoza
 542624|Uspallata, Mendoza
 542625|General Alvear, Mendoza
 542626|La Paz, Mendoza
 54263|San Martín, Mendoza
-54264|San Juan, Capital
+54264|San Juan, San Juan
 542646|Villa San Agustín, San Juan
 542647|San José de Jáchal, San Juan
 542648|Calingasta, San Juan
@@ -123,7 +119,7 @@
 542656|Merlo, San Luis
 542657|Villa Mercedes, San Luis
 542658|Buena Esperanza, San Luis
-54266|San Luis, Capital
+54266|San Luis, San Luis
 54280|Trelew/Rawson, Chubut
 542901|Ushuaia, Tierra del Fuego
 542902|Río Turbio, Santa Cruz
@@ -166,7 +162,7 @@
 54298242|Orense, Buenos Aires
 542982497|San Francisco de Bellocq, Buenos Aires
 542983|Tres Arroyos, Buenos Aires
-54299|Neuquén, Capital
+54299|Neuquén, Neuquén
 543327|Benavídez, Buenos Aires
 543329|San Pedro, Buenos Aires
 54336|San Nicolás, Buenos Aires
@@ -184,7 +180,7 @@
 543408|San Cristóbal, Santa Fe
 543409|Moisés Ville, Santa Fe
 54341|Rosario, Santa Fe
-54342|Santa Fe, Capital
+54342|Santa Fe, Santa Fe
 54343|Paraná, Entre Ríos
 543435|Nogoyá, Entre Ríos
 543436|Victoria, Entre Ríos
@@ -223,7 +219,7 @@
 543496|Esperanza, Santa Fe
 543497|Llambi Campbell, Santa Fe
 543498|San Justo, Santa Fe
-54351|Córdoba, Capital
+54351|Córdoba, Córdoba
 543521|Deán Funes, Córdoba
 543522|Villa de María, Córdoba
 543524|Villa del Totoral, Córdoba
@@ -256,7 +252,7 @@
 543585|Adelia María, Córdoba
 54362|Resistencia, Chaco
 54364|Presidencia Roque Sáenz Peña, Chaco
-54370|Formosa, Capital
+54370|Formosa, Formosa
 543711|Ingeniero Juárez, Formosa
 543715|Las Lomitas, Formosa
 543716|Comandante Fontana, Formosa
@@ -283,8 +279,8 @@
 543781|Caá Catí, Corrientes
 543782|Saladas, Corrientes
 543786|Ituzaingó, Corrientes
-54379|Corrientes, Capital
-54380|La Rioja, Capital
+54379|Corrientes, Corrientes
+54380|La Rioja, La Rioja
 54381|San Miguel de Tucumán, Tucumán
 543821|Chepes, La Rioja
 543825|Chilecito, La Rioja
@@ -300,7 +296,7 @@
 543844|Añatuya, Santiago del Estero
 543845|Loreto, Santiago del Estero
 543846|Tintina, Santiago del Estero
-54385|Santiago del Estero, Capital
+54385|Santiago del Estero, Santiago del Estero
 543854|Frías, Santiago del Estero
 543855|Suncho Corral, Santiago del Estero
 543856|Villa Ojo de Agua, Santiago del Estero
@@ -313,7 +309,7 @@
 543867|Tafí del Valle, Tucumán
 543868|Cafayate, Salta
 543869|Ranchillos y San Miguel, Tucumán
-54387|Salta, Capital
+54387|Salta, Salta
 543873|Tartagal, Salta
 543876|San José de Metán, Salta
 543877|Joaquín Víctor González, Salta
