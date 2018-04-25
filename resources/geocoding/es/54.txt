@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Generated from:
+# Historically generated from:
 # http://www.cnc.gov.ar/infotecnica/numeracion/indicativosinter.asp (2011-07-11)
-# https://es.wikipedia.org/wiki/N%C3%BAmeros_telef%C3%B3nicos_en_Argentina
+# http://en.wikipedia.org/wiki/+54 [431727225]
 # Some manual edits were made after the file was generated, according to the
 # ITU file published 2011-12-16 here: http://www.itu.int/oth/T0202000009/en
+# Recently updated by consulting
+# https://es.wikipedia.org/wiki/N%C3%BAmeros_telef%C3%B3nicos_en_Argentina
 
 5411|Buenos Aires
 54220|Merlo, Buenos Aires
