@@ -20,6 +20,10 @@
 # Recently updated by consulting
 # https://es.wikipedia.org/wiki/N%C3%BAmeros_telef%C3%B3nicos_en_Argentina
 
+# 2335 belongs to Caleufú, but it is a city in Rancul department and Ingeniero
+# Luiggi is a city in Realicó department.
+# 3404 belongs to San Carlos Centro a city in Las Colonias.
+
 5411|Buenos Aires
 54220|Merlo, Buenos Aires
 542202|González Catán/Virrey del Pino, Buenos Aires
