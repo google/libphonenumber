@@ -17,14 +17,16 @@
 # Mobile Telephony of Serbia (mts) is mobile telephone subdivision of Telekom
 # Srbija. https://en.wikipedia.org/wiki/Telekom_Srbija
 
+# Mundio Mobile operates under the brand name Vectone Mobile https://en.wikipedia.org/wiki/Vectone_Mobile
+
 38160|VIP
 38161|VIP
 38162|Telenor
 38163|Telenor
-38164|MTS Telekom Srbija
-38165|MTS Telekom Srbija
-38166|MTS Telekom Srbija
+38164|mts
+38165|mts
+38166|mts
 381677|GLOBALTEL
-381678|Mundio Mobile
+381678|Vectone Mobile
 38168|VIP
 38169|Telenor
