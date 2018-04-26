@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Carrier details updated from http://static.ofcom.org.uk/static/numbering/index.htm#pers
-# Generated on 2018-02-06 using https://github.com/giggsey/GBCarrierGenerator
+# Generated on 2018-04-26 using https://github.com/giggsey/GBCarrierGenerator
 
 # Carrier names have been updated to friendlier trading/brand names.
 # The mapping of company names can be found below:
@@ -54,7 +54,6 @@
 #  - JT (Jersey) Limited: JT
 #  - Jersey Airtel  Limited: Airtel
 #  - Lanonyx Telecom Limited: Lanonyx
-#  - LegendTel LLC: LegendTel
 #  - Limitless Mobile Ltd: Limitless
 #  - Lleida.net Serveis Telematics Limited: Lleida.net
 #  - Lycamobile UK Limited: Lycamobile
@@ -69,7 +68,6 @@
 #  - Nodemax Limited: Nodemax
 #  - PageOne Communications Ltd: PageOne
 #  - Plus Telecom Limited: Plus
-#  - Premium O Limited: Premium O
 #  - Premium Routing GmbH: Premium Routing
 #  - QX Telecom Ltd: QX Telecom
 #  - Relax Telecom Limited: Relax
@@ -295,8 +293,8 @@
 4474584|Airwave
 4474585|Marathon Telecom
 4474586|Three
-4474587|Limitless
-4474588|Limitless
+4474587|Simetric Telecom Ltd
+4474588|Simetric Telecom Ltd
 4474589|Three
 447459|Lycamobile
 44746|Three
@@ -401,7 +399,6 @@
 4475580|Mobile FX Services Ltd
 4475588|Cloud9
 4475590|Mars
-4475591|LegendTel
 4475592|IPV6
 4475593|Globecom
 4475594|Truphone
@@ -450,6 +447,7 @@
 4476242|Sure
 4476243|Manx Telecom
 4476244|Manx Telecom
+44762456|Sure
 4476246|Manx Telecom
 4476248|Manx Telecom
 4476249|Manx Telecom
@@ -478,14 +476,14 @@
 4476596|Vodafone
 4476598|Vodafone
 4476599|PageOne
-447660|PageOne
 4476600|Plus
+4476601|PageOne
+4476602|PageOne
+4476603|PageOne
+4476604|PageOne
+4476605|PageOne
 4476606|24 Seven
-4476607|Premium O
-4476608|Premium O
-4476609|Premium O
 447661|PageOne
-4476620|Premium O
 4476633|Syntec
 4476636|Relax
 4476637|Vodafone
