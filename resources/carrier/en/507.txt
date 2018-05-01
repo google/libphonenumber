@@ -30,6 +30,7 @@
 507630|Claro
 507631|Claro
 507632|Claro
+507633|Cable & Wireless
 507634|Cable & Wireless
 507635|Telefónica Móviles
 507636|Telefónica Móviles
