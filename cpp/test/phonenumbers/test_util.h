@@ -177,6 +177,10 @@ class RegionCode {
     return "US";
   }
 
+  static const char* UZ() {
+    return "UZ";
+  }
+
   static const char* YT() {
     return "YT";
   }

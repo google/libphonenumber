@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2018 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,30 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Veon was formerly known as Beeline/VimpelCom.
-
-995514|Geocell
-99554444|MagtiCom
-995550|MagtiCom
-995551|MagtiCom
-995554|MagtiCom
-995555|Geocell
-995557|Geocell
-995558|Geocell
-995559|Globalcell
-995562|Geocell
-995568|Veon
-995570|Silknet
-995571|Veon
-995574|Veon
-995577|Geocell
-995579|Veon
-995591|Magticom
-995592|Veon
-995593|Geocell
-995595|Magticom
-995596|Magticom
-995597|Veon
-995598|Magticom
-995599|Magticom
-995790|MagtiCom
+68870|Tuvalu Telecom
+68871|Tuvalu Telecom
+68890|Tuvalu Telecom

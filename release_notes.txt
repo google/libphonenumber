@@ -1,3 +1,24 @@
+Apr 17, 2018: v8.9.4
+Code changes:
+ - Update formatNumberForMobileDialing() to return international format instead of national format for Uzbek phone numbers.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AM, BR, CN, EC, GE, IN, IS, MX, MY, NE, PA, PY, SZ, TO, VC, ZW
+ - Updated short number metadata for region code(s): BD
+ - Updated geocoding data for country calling code(s): 268 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 354 (en), 507 (en), 593 (en), 595 (en), 995 (en), 1268 (en),
+   1284 (en)
+
+Apr 04, 2018: v8.9.3
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AF, AM, BE, BF, CG, DE, EH, GP, IN, IR, KE, MA, ML, MV, TG, TR, TV
+ - Updated short number metadata for region code(s): BE
+ - New carrier data for country calling code(s): 688 (en)
+ - Updated carrier data for country calling code(s):
+   91 (en), 93 (en), 212 (en), 223 (en), 226 (en), 254 (en), 385 (en)
+
 Mar 13, 2018: v8.9.2
 Metadata changes:
  - Updated phone metadata for region code(s): CA, IN, KG, PA, SL
