@@ -14,11 +14,7 @@
 
 2232079|Sotelma
 223217|Sotelma
-223500|Atel
-223501|Atel
-223502|Atel
-223503|Atel
-223504|Atel
+22350|Atel
 2236|Sotelma
 2237|Orange
 22382|Orange

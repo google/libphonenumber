@@ -5133,7 +5133,7 @@
       </generalDesc>
       <shortCode>
         <!-- Short number ranges in the doc which have categories but have no assigned to/allocated
-             information have not been included here, such as 1819 and 1820x. 189 is assigned to
+             information have not been included here, such as 1819 and 1820[0-4]. 189 is assigned to
              'Disaster recovery' and it is in the format 189+prefix
              https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E9%9B%BB%E8%A9%B1%E8%99%9F%E7%A2%BC%E5%88%86%E9%A1%9Eas
              As we do not have much information on the prefix that needs to be used we have not
@@ -5168,7 +5168,9 @@
                 [2-8]
               )|
               2(?:
+                0[5-9]|
                 182|
+                22|
                 3|
                 8[128]
               )|
@@ -5222,6 +5224,17 @@
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
       </emergency>
+      <expandedEmergency>
+        <nationalNumberPattern>1820[5-9]</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>18205</exampleNumber>
+      </expandedEmergency>
+      <smsServices>
+        <!-- 992 is an SMS service short code for emergency. -->
+        <nationalNumberPattern>992</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>992</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Honduras -->
@@ -11592,16 +11605,38 @@
     <!-- http://www.itu.int/oth/T02020000B4/en -->
     <territory id="WS">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>99[4-6]</nationalNumberPattern>
+        <!-- 608 is assigned to Adaway Publication centre, but it seems to be expired
+             http://www.adaway.ws/ -->
+        <nationalNumberPattern>
+          1(?:
+            1[12]|
+            2[0-6]
+          )|
+          9(?:
+            11|
+            9[4-79]
+          )
+        </nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>994</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <nationalNumberPattern>12[0-6]</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>121</exampleNumber>
+      </carrierSpecific>
       <emergency>
-        <!-- http://www.blueskysamoa.ws/?page_id=509 -->
-        <nationalNumberPattern>99[4-6]</nationalNumberPattern>
+        <!-- 911 and 99[4-6] numbers re-route to 999. Also 999 will be the only emergency numbers
+             after 2 years. -->
+        <nationalNumberPattern>
+          9(?:
+            11|
+            9[4-69]
+          )
+        </nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>994</exampleNumber>
       </emergency>
