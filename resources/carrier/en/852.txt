@@ -28,6 +28,11 @@
 8524605|China Mobile
 8524606|China Mobile
 8524640|China Mobile
+8524641|SmarTone
+8524642|SmarTone
+8524643|SmarTone
+8524644|SmarTone
+8524645|SmarTone
 8524647|Sun Mobile
 8524648|Multibyte
 8524649|CITIC
@@ -241,6 +246,12 @@
 852695|China Mobile
 852697|HKT
 852699|China Mobile
+8527071|SmarTone
+8527072|SmarTone
+8527073|SmarTone
+8527074|SmarTone
+8527075|SmarTone
+8528480|Handy
 852901|SmarTone
 852902|HKT
 852903|HKT

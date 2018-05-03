@@ -15,8 +15,9 @@
 23221|Sierratel
 23225|Sierratel
 23230|Africell
+23231|QCELL
 23233|Comium
-23234|Comium
+23234|QCELL
 23235|IPTEL
 23240|Datatel/Cellcom
 23244|Intergroup
