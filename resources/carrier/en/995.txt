@@ -30,12 +30,12 @@
 995574|Veon
 995577|Geocell
 995579|Veon
-995591|Magticom
+995591|MagtiCom
 995592|Veon
 995593|Geocell
-995595|Magticom
-995596|Magticom
+995595|MagtiCom
+995596|MagtiCom
 995597|Veon
-995598|Magticom
-995599|Magticom
+995598|MagtiCom
+995599|MagtiCom
 995790|MagtiCom
