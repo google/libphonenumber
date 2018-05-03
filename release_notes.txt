@@ -1,3 +1,14 @@
+May 02, 2018: v8.9.5
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AD, AR, EC, FR, HK, IN, KG, LA, ML, PA, SD, SL, TH, TN, US, VI, WS
+ - Updated short number metadata for region code(s): HK, WS
+ - New geocoding data for country calling code(s): 1820 (en)
+ - Updated geocoding data for country calling code(s): 54 (en, es)
+ - Updated carrier data for country calling code(s):
+   30 (en), 91 (en), 93 (fa), 223 (en), 232 (en), 249 (en), 374 (ru), 685 (en),
+   852 (en, zh, zh_Hant), 995 (en), 996 (en), 1649 (en)
+
 Apr 17, 2018: v8.9.4
 Code changes:
  - Update formatNumberForMobileDialing() to return international format instead of national format for Uzbek phone numbers.

@@ -208,7 +208,7 @@
 543464|Casilda, Santa Fe
 543465|Firmat, Santa Fe
 543466|Barrancas, Santa Fe
-543467|Cruz Alta, Córdoba / San José de la Esquina, Santa Fe
+543467|Cruz Alta, Córdoba/San José de la Esquina, Santa Fe
 543468|Corral de Bustos, Córdoba
 543469|Acebal, Santa Fe
 543471|Cañada de Gómez, Santa Fe
