@@ -23,6 +23,7 @@
 916202|Reliance Jio
 916203|Reliance Jio
 916204|Reliance Jio
+916209|Idea
 916235|Idea
 916238|Reliance Jio
 916239|Reliance Jio
@@ -35,6 +36,7 @@
 916281|Reliance Jio
 916282|Reliance Jio
 916283|Reliance Jio
+916289|Reliance Jio
 916290|Reliance Jio
 916291|Reliance Jio
 916292|Vodafone
@@ -68,12 +70,16 @@
 916371|Reliance Jio
 916375|Reliance Jio
 916376|Reliance Jio
+916377|Reliance Jio
+916379|Reliance Jio
 916380|Reliance Jio
 916381|Reliance Jio
 916382|Reliance Jio
 916383|Reliance Jio
+916384|Vodafone
 916385|Airtel
 916386|Reliance Jio
+916387|Reliance Jio
 916389|Vodafone
 916390|Vodafone
 916391|Vodafone
@@ -87,6 +93,7 @@
 9167479|Idea
 916900|Airtel
 916901|Airtel
+916909|Airtel
 91700|Reliance Jio
 91701|Reliance Jio
 917020|Reliance Jio
@@ -518,7 +525,7 @@
 9173750|Idea
 9173758|Idea
 9173759|Idea
-917376|Cellone
+917376|CellOne
 917377|Idea
 9173780|Idea
 9173781|Idea
@@ -1749,9 +1756,9 @@
 918002|Airtel
 9180030|Hexacom
 918003|Airtel
-9180040|Cellone
+9180040|CellOne
 918004|CellOne
-9180050|Cellone
+9180050|CellOne
 9180051|CellOne
 9180052|CellOne
 9180053|CellOne
@@ -2129,7 +2136,7 @@
 918287|Reliance
 918288|Airtel
 9182890|Airtel
-9182898|Cellone
+9182898|CellOne
 918290|Hexacom
 918291|UNITECH
 918292|Airtel
@@ -2186,10 +2193,10 @@
 9183288|Reliance Jio
 9183289|Reliance Jio
 918329|Reliance Jio
-918330|Cellone
-918331|Cellone
-918332|Cellone
-918333|Cellone
+918330|CellOne
+918331|CellOne
+918332|CellOne
+918333|CellOne
 918334|Vodafone
 918335|Vodafone
 918336|Vodafone
@@ -2933,7 +2940,7 @@
 918925|Sistema
 918926|Sistema
 918927|Reliance
-918928|Reliance
+918928|Reliance Jio
 918929|Vodafone
 918930|Vodafone
 918931|Telewings
@@ -3230,24 +3237,24 @@
 919177|Airtel
 919178|Airtel
 919179|Airtel
-919180|Cellone
-919181|Cellone
+919180|CellOne
+919181|CellOne
 919182|Reliance Jio
-919183|Cellone
-919184|Cellone
-919185|Cellone
-919186|Cellone
-919187|Cellone
-919188|Cellone
-919189|Cellone
-919190|Cellone
-919191|Cellone
-919192|Cellone
-919193|Cellone
-919194|Cellone
-919195|Cellone
-919196|Cellone
-919197|Cellone
+919183|CellOne
+919184|CellOne
+919185|CellOne
+919186|CellOne
+919187|CellOne
+919188|CellOne
+919189|CellOne
+919190|CellOne
+919191|CellOne
+919192|CellOne
+919193|CellOne
+919194|CellOne
+919195|CellOne
+919196|CellOne
+919197|CellOne
 919198|Airtel
 919199|Airtel
 919200|Tata Docomo
@@ -3600,7 +3607,7 @@
 919527|Idea
 919528|Reliance
 919529|Reliance
-919530|Cellone
+919530|CellOne
 919531|CellOne
 919532|CellOne
 919533|Reliance
@@ -3753,13 +3760,13 @@
 919679|Airtel
 919680|Hexacom
 919681|Reliance
-919682|Cellone
+919682|CellOne
 9196821|Reliance Jio
 9196823|Reliance Jio
 9196825|Reliance Jio
 9196826|Reliance Jio
-919683|Cellone
-919684|Cellone
+919683|CellOne
+919684|CellOne
 919685|Airtel
 919686|Airtel
 919687|Vodafone
