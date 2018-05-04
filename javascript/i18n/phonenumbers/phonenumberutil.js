@@ -1975,7 +1975,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           // national format, but don't have it when used for display. The
           // reverse is true for mobile numbers. As a result, we output them in
           // the international format to make it work.
-	  // UZ mobile and fixed-line numbers have to be formatted in
+          // UZ mobile and fixed-line numbers have to be formatted in
           // international format or prefixed with special codes like 03, 04
           // (for fixed-line) and 05 (for mobile) for dialling successfully
           // from mobile devices. As we do not have complete information on
