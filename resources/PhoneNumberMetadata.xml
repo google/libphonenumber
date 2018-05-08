@@ -22728,7 +22728,7 @@
     <!-- Main region for 'KZ' -->
     <territory id="RU" mainCountryForCode="true" countryCode="7" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="$NP ($FG)"
-               nationalPrefixOptionalWhenFormatting="true">
+               nationalPrefixOptionalWhenFormatting="true" preferredExtnPrefix=", доб. ">
       <references>
         <sourceUrl>http://www.itu.int/oth/T02020000AD/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B7</sourceUrl>
