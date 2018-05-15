@@ -22,14 +22,18 @@
 9725523|Home Cellular
 9725532|Free Telecom
 9725533|Free Telecom
+9725550|Annatel
+9725551|Annatel
 9725566|Rami Levy
 9725567|Rami Levy
 9725568|Rami Levy
 9725570|Cellact
 9725571|Cellact
+9725572|Cellact
 9725587|Alon
 9725588|Alon
 9725589|Alon
+9725591|Telzar
 9725592|Telzar
 9725593|Telzar
 9725594|Telzar
