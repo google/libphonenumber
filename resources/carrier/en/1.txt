@@ -607,10 +607,27 @@
 18684|bmobile
 18686|bmobile
 18687|bmobile
-186955|CariGlobe St. Kitts
-186956|The Cable St. Kitts
-186966|Cable & Wireless
-186976|Digicel
+1869556|CariGlobe St. Kitts
+1869557|CariGlobe St. Kitts
+1869558|CariGlobe St. Kitts
+1869565|The Cable St. Kitts
+1869566|The Cable St. Kitts
+1869567|The Cable St. Kitts
+1869660|Cable & Wireless
+1869661|Cable & Wireless
+1869662|Cable & Wireless
+1869663|Cable & Wireless
+1869664|Cable & Wireless
+1869665|Cable & Wireless
+1869667|Cable & Wireless
+1869668|Cable & Wireless
+1869669|Cable & Wireless
+1869760|Digicel
+1869762|Digicel
+1869763|Digicel
+1869764|Digicel
+1869765|Digicel
+1869766|Digicel
 187624|Digicel
 187625|Digicel
 187626|Digicel
