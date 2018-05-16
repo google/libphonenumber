@@ -14,7 +14,10 @@
 
 # Generated from:
 # http://www.itu.int/oth/T02020000D6/en [2009-07-07]
-# http://en.wikipedia.org/wiki/+90 [428576481]
+# Here we have added mappings of additionally allocated area codes that are
+# mentioned in ITU doc dated 7.VII.2009. These are not mentioned in other
+# official docs such as the new ITU doc dated 2.III.2018. It might be that these
+# are not yet assigned / live in respective areas (e.g. 213, 217, 223).
 
 90212|Istanbul (Europe)
 90213|Istanbul (Europe)
