@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Data taken from:
-# https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000DB0005PDFE.pdf
+# https://www.itu.int/oth/T02020000DB/en
 # http://www.ukrtelecom.ua/reference/trunkline_code/code
 
 # Ukrainian names for prefixes 31, 65 and 69 are taken from Wikipedia.
