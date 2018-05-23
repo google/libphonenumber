@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2018 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +23,13 @@
 38067|Kyivstar
 38068|Kyivstar
 38073|Lifecell
+380891|Datagroup
+380892|Ukrtelecom
+380893|T.R. Communicatio
+380894|Atlantic Telecom
+380895|Lincom-300
+380897|Kyivstar
+380899|Velton Telecom
 38091|TriMob
 38092|Telesystems
 38093|Lifecell
@@ -32,10 +39,3 @@
 38097|Kyivstar
 38098|Kyivstar
 38099|Vodafone
-380891|Datagroup
-380892|Ukrtelecom
-380893|T.R. Communicatio
-380894|Atlantic Telecom
-380895|Lincom-300
-380897|Kyivstar
-380899|Velton Telecom
