@@ -10937,26 +10937,25 @@
       </fixedLine>
       <mobile>
         <possibleLengths national="9"/>
-        <exampleNumber>501234567</exampleNumber>
+        <exampleNumber>502345678</exampleNumber>
         <!-- The ITU document has only some of these prefixes - wikipedia lists more. We are fairly
              sure wikipedia is accurate based on news coverage of the launch of these numbers. Also
              added 5570, 5571, and 5594 prefixes based on confirmations from the carriers. 559[23]
              ranges belong to Telzar carrier as per confirmation from them. -->
         <nationalNumberPattern>
           5(?:
-            [0-47-9]\d{2}|
+            [0-489][2-9]\d|
             5(?:
               01|
-              2[23]|
-              3[2-4]|
+              [23][23]|
               4[45]|
-              5[5689]|
+              5[015689]|
               6[6-8]|
-              7[0178]|
-              8[6-9]|
-              9[2-9]
+              7[0-267]|
+              8[7-9]|
+              9[1-9]
             )|
-            6[2-9]\d
+            6\d{2}
           )\d{5}
         </nationalNumberPattern>
       </mobile>
@@ -11160,7 +11159,7 @@
         <numberFormat pattern="(\d{5})(\d{5})">
           <leadingDigits>
             6(?:
-              00|
+              0[02]|
               12|
               2[03689]|
               3[05-9]|
@@ -11179,7 +11178,10 @@
           </leadingDigits>
           <leadingDigits>
             6(?:
-              00|
+              0(?:
+                0|
+                26
+              )|
               127|
               2(?:
                 0[0-49]|
@@ -11270,7 +11272,10 @@
           </leadingDigits>
           <leadingDigits>
             6(?:
-              00|
+              0(?:
+                0|
+                26
+              )|
               1279|
               2(?:
                 0[0-49]|
@@ -11826,19 +11831,22 @@
         <nationalNumberPattern>
           (?:
             6(?:
-              00[0-35]\d|
+              0(?:
+                0[0-35]|
+                26
+              )\d|
               1279|
               2(?:
                 0[0-49]|
                 3[589]|
-                [68][0-39]|
+                [68][0-49]|
                 9[0-6]
               )\d|
               3(?:
                 0[0-39]\d|
                 5(?:
                   0[0-6]|
-                  [1-46-9]\d
+                  [1-9]\d
                 )|
                 6[0-2]\d|
                 7[015-79]\d|
@@ -20507,15 +20515,12 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>40612345</exampleNumber>
-        <!-- Note: Consider adding one more digit for stricter validation
-             (e.g. for 87[89] and 580).
-             TETRA (TErrestrial Trunked RAdio) and GSM - R (Global System for Mobile
-             communications – Railway or GSM-Railway) is included under mobile. -->
+        <!-- Consider adding one more digit for stricter validation (e.g. for 580). TETRA and GSM-R
+             numbers are not supported as they are not reachable for all. -->
         <nationalNumberPattern>
           (?:
             4[015-8]|
             5[89]|
-            87|
             9\d
           )\d{6}
         </nationalNumberPattern>
@@ -25163,6 +25168,7 @@
       <references>
         <sourceUrl>http://en.wikipedia.org/wiki/%2B90</sourceUrl>
         <sourceUrl>http://www.itu.int/oth/T02020000D6/en</sourceUrl>
+        <sourceUrl>https://eng.btk.gov.tr/en-US/Pages/National-Numbering-Plan</sourceUrl>
         <sourceUrl>https://www.btk.gov.tr/tr-TR/Sayfalar/Isletmecilere-Tahsisli-Numaralar</sourceUrl>
       </references>
       <availableFormats>
@@ -25183,7 +25189,7 @@
           <leadingDigits>
             5(?:
               [02-69]|
-              16
+              1[06]
             )
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
@@ -25215,7 +25221,9 @@
       <fixedLine>
         <possibleLengths national="10"/>
         <exampleNumber>2123456789</exampleNumber>
-        <!-- Includes numbers starting with 392 for Northern Cyprus. -->
+        <!-- Includes numbers starting with 392 for Northern Cyprus. Not supporting additionally
+             allocated area codes that are mentioned in ITU doc dated 7.VII.2009 as these are not
+             mentioned in new ITU doc dated 2.III.2018. -->
         <nationalNumberPattern>
           (?:
             2(?:
@@ -25247,13 +25255,13 @@
         <nationalNumberPattern>
           5(?:
             (?:
-              0[1-7]|
-              22|
+              0[15-7]|
+              1[06]|
+              24|
               [34]\d|
               5[1-59]|
-              9[246]
+              9[46]
             )\d{2}|
-            1616|
             6161
           )\d{5}
         </nationalNumberPattern>
@@ -25261,6 +25269,8 @@
       <pager>
         <possibleLengths national="10"/>
         <exampleNumber>5123456789</exampleNumber>
+        <!-- 512 range is mentioned as call services number in eng.btk.gov.tr's doc. As we not sure
+             of the category, supporting them as pager based on Wikipedia. -->
         <nationalNumberPattern>512\d{7}</nationalNumberPattern>
       </pager>
       <tollFree>
@@ -25278,10 +25288,24 @@
           )\d{7}
         </nationalNumberPattern>
       </premiumRate>
+      <personalNumber>
+        <possibleLengths national="10"/>
+        <exampleNumber>5922121234</exampleNumber>
+        <!-- All 592 numbers are GMPCS numbers (personal satellite numbers) as per ITU doc. We do
+             support only the ranges that are assigned (max 6 digit granularity) based on
+             eng.btk.gov.tr's doc. -->
+        <nationalNumberPattern>
+          592(?:
+            21[12]|
+            461
+          )\d{4}
+        </nationalNumberPattern>
+      </personalNumber>
       <uan>
         <possibleLengths national="7,10"/>
         <exampleNumber>4441444</exampleNumber>
-        <!-- http://www.turktelekom.com.tr/tt/portal/News/Archive/7-digit-special-service-number-starting-with-444 -->
+        <!-- 850 is mentioned as nomadic numbers in ITU and location independent numbers in
+             eng.btk.gov.tr's doc. http://www.turktelekom.com.tr/tt/portal/News/Archive/7-digit-special-service-number-starting-with-444 -->
         <nationalNumberPattern>
           444\d{4}|
           850\d{7}

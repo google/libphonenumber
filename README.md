@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.9.4.
+Last demo update: v8.9.6.
 
 If this number is lower than the [latest release's version
 number](https://github.com/googlei18n/libphonenumber/releases), we are between
@@ -225,6 +225,7 @@ maintenance processes.
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
+*   Erlang: https://github.com/marinakr/libphonenumber_erlang
 
 Alternatives to our own versions:
 
