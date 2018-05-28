@@ -11115,6 +11115,7 @@
     <!-- Ukraine -->
     <!-- http://www.itu.int/oth/T02020000DB/en -->
     <!-- http://en.wikipedia.org/wiki/%2B380 -->
+    <!-- http://zakon3.rada.gov.ua/laws/show/z0620-10 -->
     <territory id="UA">
       <generalDesc>
         <nationalNumberPattern>1\d{2}</nationalNumberPattern>
@@ -11122,23 +11123,49 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[123]|
-            12
+            0[1-49]|
+            1[0-9]|
+            16(?:
+               000|
+               111|
+               123
+             )|
+            2[0-9]|
+            [34]\d{3}|
+            [56]\d{2}|
+            [7-9][0-9]
           )
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
+        <possibleLengths national="[3-6]"/>
+        <exampleNumber>1551</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            111|
+            123
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="6"/>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
       <emergency>
         <nationalNumberPattern>
           1(?:
-            0[123]|
+            0[1-4]|
             12
           )
         </nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>
       </emergency>
+      <smsServices>
+        <!-- https://support.twitter.com/articles/20170024 -->
+        <nationalNumberPattern>40404</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>40404</exampleNumber>
+      </smsServices>
     </territory>
 
     <!-- Uganda -->
