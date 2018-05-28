@@ -11118,7 +11118,7 @@
     <!-- http://zakon3.rada.gov.ua/laws/show/z0620-10 -->
     <territory id="UA">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
