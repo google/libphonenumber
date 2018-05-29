@@ -1870,10 +1870,14 @@
 
     <!-- Åland Islands. -->
     <!-- Adding all international carrier access codes in below doc that we found corroborating
-         evidence for. https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/internationalcalls/internationalcarrieraccesscodes.html -->
+         evidence for. Considering these are available in AX region as well.
+         https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/internationalcalls/internationalcarrieraccesscodes.html -->
+    <!-- Not supporting national long distance carrier codes as these are overlapping with UAN
+         ranges mentioned in ITU doc. -->
     <!-- Calling code and formatting shared with 'FI' -->
     <territory id="AX" countryCode="358" preferredInternationalPrefix="00"
-               internationalPrefix="00|99(?:[02469]|5(?:11|33|5[59]|88|9[09]))" nationalPrefix="0">
+               internationalPrefix="00|99(?:[01469]|5(?:11|3[23]|41|5[59]|77|88|9[09]))"
+               nationalPrefix="0">
       <references>
         <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
       </references>
@@ -3118,7 +3122,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[267]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[2367]\d{7}</nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="8"/>
@@ -3132,17 +3136,15 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>79561234</exampleNumber>
-        <!-- Extra online mobile number prefixes found: 74.
-             The 29 prefix is listed as a mobile prefix, but many people list it as their fixed home
-             number. We will keep it as mobile for now, but it may actually be a prefix for fixed
-             satellite phones.
-             78 is officially not in operation (since 17.IX.2015 (cl/106680153). Remove after about
-             a year and verifying it's not working / used anymore. -->
+        <!-- Previous ITU doc (version: 11.IX.2013) says 29 range is assigned to
+             "UCOM CDMA network". As there is valid number online continuing support to this range
+             eventhough it is not listed in new ITU doc (version: 12.IV.2018). -->
         <nationalNumberPattern>
           (?:
             29|
+            31|
             6[189]|
-            7[124-9]
+            7[125-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -7689,9 +7691,12 @@
     <!-- Main region for 'AX', except fixed-line all other phone number ranges are shared. -->
     <!-- Adding all international carrier access codes in below doc that we found corroborating
          evidence for. https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/internationalcalls/internationalcarrieraccesscodes.html -->
+    <!-- Not supporting national long distance carrier codes as these are overlapping with UAN
+         ranges mentioned in ITU doc. -->
     <territory id="FI" mainCountryForCode="true" countryCode="358" preferredInternationalPrefix="00"
-               internationalPrefix="00|99(?:[02469]|5(?:11|33|5[59]|88|9[09]))" nationalPrefix="0"
-               nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
+               internationalPrefix="00|99(?:[01469]|5(?:11|3[23]|41|5[59]|77|88|9[09]))"
+               nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
+               mobileNumberPortableRegion="true">
       <references>
         <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
       </references>
@@ -9942,20 +9947,18 @@
             )|
             6(?:
               0[1-9]\d|
-              [145]\d{2}|
+              [1459]\d{2}|
               2(?:
-                [0-357-9]\d|
+                [0-57-9]\d|
                 6[01]
               )|
-              [36][0-57-9]\d|
-              7[0-79]\d|
-              8[0-2457-9]\d|
-              9[0-579]\d
+              [368][0-57-9]\d|
+              7[0-79]\d
             )|
             707[1-5]|
             8480|
             9(?:
-              0[1-46-9]\d|
+              0[1-9]\d|
               1[02-9]\d|
               2(?:
                 [0-8]\d|
@@ -12360,12 +12363,7 @@
         <possibleLengths national="10"/>
         <exampleNumber>9932123456</exampleNumber>
         <!-- Includes VSAT and Boomehen Satellite numbers. -->
-        <nationalNumberPattern>
-          (?:
-            [2-6]0\d|
-            993
-          )\d{7}
-        </nationalNumberPattern>
+        <nationalNumberPattern>993\d{7}</nationalNumberPattern>
       </voip>
     </territory>
 
@@ -16605,7 +16603,7 @@
         <sourceUrl>http://www.ekip.me/numeracija/dodijeljena.php</sourceUrl>
       </references>
       <availableFormats>
-        <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})">
           <leadingDigits>
             [2-57-9]|
             6[036-9]
@@ -16626,18 +16624,16 @@
           (?:
             20[2-8]|
             3(?:
-              0[2-7]|
-              [12][235-7]|
+              [0-2][2-7]|
               3[24-7]
             )|
             4(?:
               0[2-467]|
-              1[267]
+              1[2467]
             )|
             5(?:
-              0[2467]|
-              1[267]|
-              2[2367]
+              [01][2467]|
+              2[2-467]
             )
           )\d{5}
         </nationalNumberPattern>
@@ -16660,9 +16656,14 @@
         </nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="8"/>
+        <possibleLengths national="8,9"/>
         <exampleNumber>80080002</exampleNumber>
-        <nationalNumberPattern>80[0-258]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          80(?:
+            [0-2578]|
+            9\d
+          )\d{5}
+        </nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="8"/>
@@ -17404,13 +17405,15 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>66123456</exampleNumber>
-        <!-- The 6[23] prefixes are added as SMS messages have been successfully delivered to these
-             numbers, and they are also widely present on the Internet. -->
         <nationalNumberPattern>
           6(?:
-            [2356]\d|
-            8[158]
-          )\d{5}
+            [2356]\d{2}|
+            8(?:
+              [02][5-9]|
+              [1478]\d|
+              [356][0-4]
+            )
+          )\d{4}
         </nationalNumberPattern>
       </mobile>
     </territory>
@@ -20405,8 +20408,7 @@
               6[126]|
               7[0-3578]
             )|
-            7\d{2}|
-            8[478]\d
+            7\d{2}
           )\d{6}
         </nationalNumberPattern>
       </fixedLine>
@@ -20441,10 +20443,13 @@
         </nationalNumberPattern>
       </voip>
       <uan>
-        <possibleLengths national="5,6"/>
+        <possibleLengths national="5,6,9"/>
         <exampleNumber>14020</exampleNumber>
         <!-- These numbers are used for local government. They are formed by the appending the local
-             dialling code (including the national prefix 0) after the leading digits "14". -->
+             dialling code (including the national prefix 0) after the leading digits "14".
+             government.nl's doc says 88 range is for premium rate services but only for a period of
+             6 months after its enforcement. Online results and Wikipedia says these are of standard
+             cost to end users. -->
         <nationalNumberPattern>
           140(?:
             1(?:
@@ -20469,7 +20474,8 @@
             )|
             7\d|
             8[458]
-          )
+          )|
+          8[478]\d{7}
         </nationalNumberPattern>
       </uan>
     </territory>
@@ -22456,8 +22462,8 @@
               0[0-46]|
               1[013]|
               2[0-2]|
-              3[0139]|
-              4[0-7]|
+              3[0-39]|
+              4\d|
               5[05]|
               6[0-26]|
               7[0-27]|
@@ -25934,18 +25940,14 @@
         <exampleNumber>712345678</exampleNumber>
         <nationalNumberPattern>
           7(?:
-            0[0-7]\d|
+            [09][0-7]\d|
             [1578]\d{2}|
             2(?:
               [03]\d|
               60
             )|
             30\d|
-            4[0-4]\d|
-            9(?:
-              [0-6]\d|
-              74
-            )
+            4[0-4]\d
           )\d{5}
         </nationalNumberPattern>
       </mobile>
@@ -27570,10 +27572,9 @@
           639(?:
             0[0-79]|
             1[019]|
-            [26]\d|
+            [267]\d|
             3[09]|
             [45]0|
-            7[06-9]|
             9[04-79]
           )\d{4}
         </nationalNumberPattern>

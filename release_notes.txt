@@ -1,3 +1,14 @@
+May 29, 2018: v8.9.7
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AX, BI, FI, HK, IR, ME, MO, NL, RE, UG, YT
+ - Updated short number metadata for region code(s): AR, ME, PM, ZA
+ - New geocoding data for country calling code(s): 60 (en), 380 (uk), 382 (en)
+ - Updated geocoding data for country calling code(s):
+   267 (en), 380 (en), 504 (en)
+ - Updated carrier data for country calling code(s):
+   257 (en), 262 (en), 380 (en), 852 (en, zh, zh_Hant), 853 (en)
+
 May 15, 2018: v8.9.6
 Metadata changes:
  - Updated phone metadata for region code(s): IL, IN, NO, TR
