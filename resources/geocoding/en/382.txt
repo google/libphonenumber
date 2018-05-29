@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2018 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Leo is the brand name for Ucom in the ITU doc & Smart Mobile for LA Cell.
-# Tempo is the brand name for Africell.
-
-25729|Leo
-25731|Viettel
-25761|Viettel
-25768|Viettel
-25769|Viettel
-25771|Leo
-25772|Leo
-25775|Smart Mobile
-25776|Leo
-25777|Onatel
-25778|Smart Mobile
-25779|Leo
+38220|Danilovgad/Kolasin/Podgorica
+38230|Bar/Ulcinj
+38231|Herceg Novi
+38232|Kotor/Tivat
+38233|Budva
+38240|Niksic/Pluzine/Savnik
+38241|Cetinje
+38250|Bijelo Polje/Mojkovac
+38251|Andrijevica/Berane/Blue/Gusinje/Petnitsa/Rožaje
+38252|Pljevlja/Zabljak
