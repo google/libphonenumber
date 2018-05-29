@@ -396,14 +396,9 @@
         <possibleLengths national="2,3"/>
         <exampleNumber>111</exampleNumber>
       </tollFree>
-      <!-- 911 is only available in select cities. Since it's not available everywhere
-           and is location specific adding this number here. -->
       <carrierSpecific>
         <!-- https://support.twitter.com/articles/20170024 -->
-        <nationalNumberPattern>
-          89338|
-          911
-        </nationalNumberPattern>
+        <nationalNumberPattern>89338</nationalNumberPattern>
         <possibleLengths national="3,5"/>
         <exampleNumber>89338</exampleNumber>
       </carrierSpecific>
@@ -4499,7 +4494,7 @@
             )
           )
         </nationalNumberPattern>
-        <possibleLengths national="6"/>
+        <possibleLengths national="3,6"/>
         <exampleNumber>116000</exampleNumber>
       </expandedEmergency>
       <!-- http://www.short-codes.com/codes/browse/70000-70999/100_1 says that the service is not
@@ -7575,14 +7570,25 @@
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            [035]\d{2}|
+            [03]\d{2}|
             1(?:
               [013-57-9]\d|
               2|
               6\d{3}
             )|
-            2\d{1,2}|
+            2\d{1,3}|
             4\d{2,3}|
+            5(?:
+              \d{2}|
+              999
+            )|
+            60[06]|
+            700|
+            8(?:
+              0[089]|
+              1[0-8]|
+              888
+            )|
             9\d{3}
           )
         </nationalNumberPattern>
@@ -9115,13 +9121,24 @@
     <!-- http://www.itu.int/oth/T02020000B2/en -->
     <territory id="PM">
       <generalDesc>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d|
+          3103
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
-        <possibleLengths national="2"/>
+        <nationalNumberPattern>
+          1[578]|
+          3103
+        </nationalNumberPattern>
+        <possibleLengths national="2,4"/>
         <exampleNumber>17</exampleNumber>
       </shortCode>
+      <carrierSpecific>
+        <nationalNumberPattern>3103</nationalNumberPattern>
+        <possibleLengths national="4"/>
+        <exampleNumber>3103</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>1[578]</nationalNumberPattern>
         <possibleLengths national="2"/>
@@ -11800,13 +11817,8 @@
         <exampleNumber>41851</exampleNumber>
       </premiumRate>
       <carrierSpecific>
-        <!-- 107 seems to be Capetown only, and 111 is a vodafone customer service number. -->
-        <nationalNumberPattern>
-          1(?:
-            07|
-            11
-          )
-        </nationalNumberPattern>
+        <!-- 111 is a vodafone customer service number. -->
+        <nationalNumberPattern>111</nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>111</exampleNumber>
       </carrierSpecific>
