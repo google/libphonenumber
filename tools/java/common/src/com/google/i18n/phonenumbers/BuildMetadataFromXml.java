@@ -450,33 +450,31 @@ public class BuildMetadataFromXml {
       numberDesc.addPossibleLength(-1);
       return numberDesc;
     }
-    if (phoneNumberDescList.getLength() > 0) {
-      if (phoneNumberDescList.getLength() > 1) {
-        throw new RuntimeException(
-            String.format("Multiple elements with type %s found.", numberType));
-      }
-      Element element = (Element) phoneNumberDescList.item(0);
-      if (parentDesc != null) {
-        // New way of handling possible number lengths. We don't do this for the general
-        // description, since these tags won't be present; instead we will calculate its values
-        // based on the values for all the other number type descriptions (see
-        // setPossibleLengthsGeneralDesc).
-        TreeSet<Integer> lengths = new TreeSet<Integer>();
-        TreeSet<Integer> localOnlyLengths = new TreeSet<Integer>();
-        populatePossibleLengthSets(element, lengths, localOnlyLengths);
-        setPossibleLengths(lengths, localOnlyLengths, parentDesc, numberDesc);
-      }
+    if (phoneNumberDescList.getLength() > 1) {
+      throw new RuntimeException(
+          String.format("Multiple elements with type %s found.", numberType));
+    }
+    Element element = (Element) phoneNumberDescList.item(0);
+    if (parentDesc != null) {
+      // New way of handling possible number lengths. We don't do this for the general
+      // description, since these tags won't be present; instead we will calculate its values
+      // based on the values for all the other number type descriptions (see
+      // setPossibleLengthsGeneralDesc).
+      TreeSet<Integer> lengths = new TreeSet<Integer>();
+      TreeSet<Integer> localOnlyLengths = new TreeSet<Integer>();
+      populatePossibleLengthSets(element, lengths, localOnlyLengths);
+      setPossibleLengths(lengths, localOnlyLengths, parentDesc, numberDesc);
+    }
 
-      NodeList validPattern = element.getElementsByTagName(NATIONAL_NUMBER_PATTERN);
-      if (validPattern.getLength() > 0) {
-        numberDesc.setNationalNumberPattern(
-            validateRE(validPattern.item(0).getFirstChild().getNodeValue(), true));
-      }
+    NodeList validPattern = element.getElementsByTagName(NATIONAL_NUMBER_PATTERN);
+    if (validPattern.getLength() > 0) {
+      numberDesc.setNationalNumberPattern(
+          validateRE(validPattern.item(0).getFirstChild().getNodeValue(), true));
+    }
 
-      NodeList exampleNumber = element.getElementsByTagName(EXAMPLE_NUMBER);
-      if (exampleNumber.getLength() > 0) {
-        numberDesc.setExampleNumber(exampleNumber.item(0).getFirstChild().getNodeValue());
-      }
+    NodeList exampleNumber = element.getElementsByTagName(EXAMPLE_NUMBER);
+    if (exampleNumber.getLength() > 0) {
+      numberDesc.setExampleNumber(exampleNumber.item(0).getFirstChild().getNodeValue());
     }
     return numberDesc;
   }
