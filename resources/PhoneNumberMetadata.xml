@@ -20330,12 +20330,17 @@
           <leadingDigits>[89]0</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat pattern="(97[0-8])(\d{8})">
+          <leadingDigits>97[0-8]</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           1\d{4,8}|
           [2-7]\d{8}|
-          [89]\d{6,9}
+          [89]\d{6,9}|
+          97[0-8]\d{8}
         </nationalNumberPattern>
       </generalDesc>
       <!-- DO NOT USE <exampleNumber> : TO BE DELETED -->
@@ -20413,9 +20418,12 @@
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
-        <possibleLengths national="9"/>
+        <possibleLengths national="9,11"/>
         <exampleNumber>612345678</exampleNumber>
-        <nationalNumberPattern>6[1-58]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          6[1-58]\d{7}|
+          97[0-8]\d{8}
+        </nationalNumberPattern>
       </mobile>
       <pager>
         <possibleLengths national="9"/>
