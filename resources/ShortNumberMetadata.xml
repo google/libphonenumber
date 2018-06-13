@@ -28,7 +28,7 @@
     <!ELEMENT phoneNumberMetadata (territories)>
     <!ELEMENT territories (territory+)>
     <!ELEMENT territory (generalDesc, shortCode, tollFree?, standardRate?, premiumRate?,
-        carrierSpecific?, emergency?, expandedEmergency?, smsServices?, carrierSelectionCodes?)>
+        carrierSpecific?, emergency?, expandedEmergency?, smsServices?)>
     <!ELEMENT generalDesc (nationalNumberPattern)>
     <!ELEMENT shortCode (nationalNumberPattern, possibleLengths, exampleNumber)>
 
@@ -52,11 +52,6 @@
     <!-- Used for numbers where the primary or only intended usage is to receive and/or send text
          messages (SMSs). -->
     <!ELEMENT smsServices (nationalNumberPattern, possibleLengths, exampleNumber)>
-
-    <!-- Numbers dialled to select a particular carrier before making a phone call. These should be
-         included in the generalDesc pattern if they connect by themselves. However, they should be
-         excluded if they are dialled as a prefix only. -->
-    <!ELEMENT carrierSelectionCodes (nationalNumberPattern, possibleLengths, exampleNumber)>
 
     <!ELEMENT nationalNumberPattern (#PCDATA)>
     <!ELEMENT exampleNumber (#PCDATA)>
@@ -266,7 +261,7 @@
         <nationalNumberPattern>
           1(?:
             1(?:
-              2|
+              \d|
               6(?:
                 000|
                 1(?:
@@ -274,20 +269,48 @@
                   11|
                   23
                 )
-              )
+              )|
+              8\d{2}
             )|
-            2[5-9]
+            2[2-9]|
+            [349]\d|
+            65\d|
+            89[12]
           )|
           5\d{4}
         </nationalNumberPattern>
         <possibleLengths national="3,5,6"/>
         <exampleNumber>129</exampleNumber>
       </shortCode>
+      <tollFree>
+        <!-- All 116XXX, "European harmonized services of social" value are toll-free.
+             See: https://ec.europa.eu/digital-single-market/116-helplines.-->
+        <nationalNumberPattern>
+          1(?:
+            3[15]|
+            41|
+            16\d{3}
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3,6"/>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>5\d{4}</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>50123</exampleNumber>
+      </premiumRate>
+      <carrierSpecific>
+        <!-- 123 is a ALBtelecom customer service number. -->
+        <nationalNumberPattern>123</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>123</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
             12|
-            2[789]
+            2[7-9]
           )
         </nationalNumberPattern>
         <possibleLengths national="3"/>
@@ -295,14 +318,22 @@
       </emergency>
       <expandedEmergency>
         <!-- According to http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx this is for
-             sea emergencies. -->
-        <nationalNumberPattern>125</nationalNumberPattern>
-        <possibleLengths national="3"/>
+             sea emergencies and 126 for traffic emergencies. -->
+        <nationalNumberPattern>
+          1(?:
+            2[56]|
+            16\d{3}
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3,6"/>
         <exampleNumber>125</exampleNumber>
       </expandedEmergency>
       <smsServices>
-        <nationalNumberPattern>5\d{4}</nationalNumberPattern>
-        <possibleLengths national="5"/>
+        <nationalNumberPattern>
+          131|
+          5\d{4}
+        </nationalNumberPattern>
+        <possibleLengths national="3,5"/>
         <exampleNumber>51234</exampleNumber>
       </smsServices>
     </territory>
@@ -558,7 +589,7 @@
               )
             )|
             555|
-            9[13-5]\d{3}
+            9\d{4,6}
           )|
           225|
           7(?:
@@ -1040,28 +1071,6 @@
         <possibleLengths national="4"/>
         <exampleNumber>2787</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <nationalNumberPattern>
-          1(?:
-            5(?:
-              1[05]|
-              2[25]|
-              5[15]|
-              66|
-              88|
-              9[59]
-            )|
-            6(?:
-              02|
-              1[167]|
-              36|
-              6[156]
-            )
-          )
-        </nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>1510</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Burkina Faso -->
@@ -1627,18 +1636,6 @@
         <possibleLengths national="[4-6]"/>
         <exampleNumber>27878</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <!-- http://en.wikipedia.org/wiki/Brazilian_Carrier_Selection_Code -->
-        <nationalNumberPattern>
-          1[245]|
-          2[135]|
-          31|
-          4[13]|
-          65
-        </nationalNumberPattern>
-        <possibleLengths national="2"/>
-        <exampleNumber>15</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Bahamas -->
@@ -2121,12 +2118,6 @@
         <possibleLengths national="[3-5]"/>
         <exampleNumber>600</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <!-- https://www.eofcom.admin.ch/eofcom/public/listEofcom_cscAllocated.do -->
-        <nationalNumberPattern>10[78]\d{2}</nationalNumberPattern>
-        <possibleLengths national="5"/>
-        <exampleNumber>10742</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Côte d'Ivoire -->
@@ -2438,20 +2429,6 @@
         <possibleLengths national="4,5"/>
         <exampleNumber>5577</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <nationalNumberPattern>
-          1(?:
-            1[0-69]|
-            2[0-57]|
-            5[13-58]|
-            69|
-            7[0167]|
-            8[018]
-          )
-        </nationalNumberPattern>
-        <possibleLengths national="3"/>
-        <exampleNumber>154</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Cameroon -->
@@ -3919,11 +3896,6 @@
         <possibleLengths national="5,6"/>
         <exampleNumber>23456</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <nationalNumberPattern>10[3-57]\d{1,3}</nationalNumberPattern>
-        <possibleLengths national="[4-6]"/>
-        <exampleNumber>103123</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Ethiopia -->
@@ -4190,8 +4162,7 @@
             )|
             1(?:
               [0459]|
-              6\d{3}|
-              871[03]
+              [68]\d{3}
             )|
             9[167]
           )|
@@ -4230,22 +4201,9 @@
         <exampleNumber>1023</exampleNumber>
       </standardRate>
       <premiumRate>
-        <!-- 118XYZ numbers are supposed to be tollfree by 2015 according to
-             http://www.arcep.fr/uploads/tx_gspublication/guide-operateurs-editeurs-sva-sept2012.pdf
-             but their current prices vary: according to http://www.appel118.fr/detail.php
-             only two numbers are free at the moment.
-             SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
+        <!-- SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
              prefix - we consider these all premium rate for now. -->
         <nationalNumberPattern>
-          118(?:
-            [0-68]\d{2}|
-            7(?:
-              0\d|
-              1[1-9]|
-              [2-9]\d
-            )|
-            918
-          )|
           36665|
           [4-8]\d{4}
         </nationalNumberPattern>
@@ -4311,12 +4269,6 @@
         <possibleLengths national="3,5"/>
         <exampleNumber>33700</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <!-- The specific carrier selection codes have not yet been assigned. -->
-        <nationalNumberPattern>16\d{2}</nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>1600</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Gabon -->
@@ -4834,12 +4786,6 @@
         <possibleLengths national="4,6"/>
         <exampleNumber>116111</exampleNumber>
       </expandedEmergency>
-      <!-- Type B codes in the plan. -->
-      <carrierSelectionCodes>
-        <nationalNumberPattern>88[467]</nationalNumberPattern>
-        <possibleLengths national="3"/>
-        <exampleNumber>884</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Greenland -->
@@ -6134,19 +6080,6 @@
         <possibleLengths national="4"/>
         <exampleNumber>1415</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <nationalNumberPattern>
-          1(?:
-            0(?:
-              01|
-              [12]0
-            )|
-            100
-          )
-        </nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>1010</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Italy -->
@@ -6268,12 +6201,6 @@
         <possibleLengths national="[5-7]"/>
         <exampleNumber>43000</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <nationalNumberPattern>10\d{2,3}</nationalNumberPattern>
-        <possibleLengths national="4,5"/>
-        <!-- http://www.carrieritalia.it/EN/Carrier-Selection-10164.aspx -->
-        <exampleNumber>10164</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Jersey -->
@@ -6531,7 +6458,7 @@
             )
           )
         </nationalNumberPattern>
-        <possibleLengths national="4,5"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>1501</exampleNumber>
       </tollFree>
       <premiumRate>
@@ -6618,11 +6545,6 @@
         <possibleLengths national="3,4,5"/>
         <exampleNumber>8988</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <nationalNumberPattern>1[78]\d</nationalNumberPattern>
-        <possibleLengths national="3"/>
-        <exampleNumber>171</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Kyrgyzstan -->
@@ -8833,28 +8755,59 @@
     <!-- New Zealand -->
     <!-- http://www.itu.int/oth/T0202000099/en -->
     <!-- Includes Ross Dependency, Antarctica -->
+    <!-- https://www.skinny.co.nz/assets/pdf/skinny-premium-SMS-prices-Sheet14.pdf -->
+    <!-- https://www.vodafone.co.nz/cms/documents/premium-txt-codes.pdf -->
     <territory id="NZ">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>\d{3,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
-          111|
-          4098
+          018|
+          1(?:
+            11|
+            234|
+            371|
+            7[03]7|
+            944
+          )|
+          [2-57-9]\d{2,3}|
+          6(?:
+            161|
+            26[0-3]|
+            742
+          )
         </nationalNumberPattern>
         <possibleLengths national="3,4"/>
         <exampleNumber>111</exampleNumber>
       </shortCode>
+      <premiumRate>
+        <nationalNumberPattern>018</nationalNumberPattern>
+        <possibleLengths national="3"/>
+        <exampleNumber>018</exampleNumber>
+      </premiumRate>
       <emergency>
         <nationalNumberPattern>111</nationalNumberPattern>
         <possibleLengths national="3"/>
         <exampleNumber>111</exampleNumber>
       </emergency>
       <smsServices>
-        <!-- 4098 is a commercial SMS only short code as per Skinny Mobile carrier doc.
-             https://www.skinny.co.nz/assets/pdf/skinny-premium-SMS-prices-Sheet14.pdf -->
-        <nationalNumberPattern>4098</nationalNumberPattern>
-        <possibleLengths national="4"/>
+        <nationalNumberPattern>
+          018|
+          1(?:
+            234|
+            371|
+            7[03]7|
+            944
+          )|
+          [2-57-9]\d{2,3}|
+          6(?:
+            161|
+            26[0-3]|
+            742
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="3,4"/>
         <exampleNumber>4098</exampleNumber>
       </smsServices>
     </territory>
@@ -10140,14 +10093,6 @@
         <possibleLengths national="5"/>
         <exampleNumber>24123</exampleNumber>
       </smsServices>
-      <carrierSelectionCodes>
-        <!-- Carrier selection codes 19xx are added here just for categorization. As there is no
-             valid evidence for specific carrier selection codes, we do not add this range as a
-             valid short code at this time. -->
-        <nationalNumberPattern>19\d{2}</nationalNumberPattern>
-        <possibleLengths national="4"/>
-        <exampleNumber>1900</exampleNumber>
-      </carrierSelectionCodes>
     </territory>
 
     <!-- Somalia -->
@@ -10450,7 +10395,7 @@
             )|
             6(?:
               0[0-29]|
-              20|
+              2[03]|
               4[3-6]|
               6[1-9]|
               7[0257-9]|
@@ -11134,22 +11079,66 @@
     <!-- http://en.wikipedia.org/wiki/%2B380 -->
     <territory id="UA">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[189]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <nationalNumberPattern>
           1(?:
-            0[123]|
-            12
-          )
+            0(?:
+              [1-49]|
+              6\d{2}
+            )|
+            1(?:
+              2|
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8\d{1,2}
+            )|
+            [278]\d|
+            4\d{3}|
+            5(?:
+              1|
+              \d{2}
+            )|
+            6\d{2}
+          )|
+          [89]00\d{1,2}
         </nationalNumberPattern>
-        <possibleLengths national="3"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
       </shortCode>
+      <tollFree>
+        <nationalNumberPattern>
+          116(?:
+            000|
+            1(?:
+              11|
+              23
+            )
+          )
+        </nationalNumberPattern>
+        <possibleLengths national="6"/>
+        <exampleNumber>116000</exampleNumber>
+      </tollFree>
+      <carrierSpecific>
+        <nationalNumberPattern>
+          (?:
+            118|
+            [89]00
+          )\d{1,2}
+        </nationalNumberPattern>
+        <possibleLengths national="4,5"/>
+        <exampleNumber>11812</exampleNumber>
+      </carrierSpecific>
       <emergency>
         <nationalNumberPattern>
           1(?:
-            0[123]|
+            0[1-3]|
             12
           )
         </nationalNumberPattern>
@@ -11822,6 +11811,10 @@
         <possibleLengths national="3"/>
         <exampleNumber>111</exampleNumber>
       </carrierSpecific>
+      <!-- 107 is a harmonized number for emergency call services. Online articles say that it
+           cannot be dialled from mobile and is available only in Cape Town, such as
+           https://www.westerncape.gov.za/service/calling-help-emergency and
+           https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers so we omit it here. -->
       <emergency>
         <nationalNumberPattern>
           1(?:
@@ -11829,8 +11822,7 @@
               1(?:
                 11|
                 77
-              )|
-              7
+              )
             )|
             12
           )

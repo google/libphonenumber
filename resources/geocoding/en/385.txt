@@ -1,4 +1,4 @@
-# Copyright (C) 2011 The Libphonenumber Authors
+# Copyright (C) 2018 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Translated from fr/225.txt using Freebase and Wikipedia.
-
-22520|Plateau, Abidjan
-22521|Abidjan (southeast)
-22522|Cocody, Abidjan
-22523|Banco, Abidjan
-22524|Abobo, Abidjan
-22530|Yamoussoukro
-22531|Bouaké
-22532|Daloa
-22533|Man
-22534|San-Pédro
-22535|Abengourou
-22536|Korhogo
+3851|Zagreb
+38520|Dubrovnik-Neretva
+38521|Split-Dalmatia
+38522|Šibenik-Knin
+38523|Zadar
+38531|Osijek-Baranja
+38532|Vukovar-Srijem
+38533|Virovitica-Podravina
+38534|Požega-Slavonia
+38535|Brod-Posavina
+38540|Međimurje
+38542|Varaždin
+38543|Bjelovar-Bilogora
+38544|Sisak-Moslavina
+38547|Karlovac
+38548|Koprivnica-Križevci
+38549|Krapina-Zagorje
+38551|Primorsko-goranska
+38552|Istra
+38553|Lika-Senj
