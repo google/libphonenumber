@@ -1,3 +1,15 @@
+Jun 13, 2018: v8.9.8
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BL, BM, BS, CA, CI, DM, DO, GD, GF, GP, GU, IL, JM, KN, KY,
+   LC, MF, MP, MQ, MS, PR, SE, SX, TC, TT, US, VC, VG, VI, VN
+ - Updated short number metadata for region code(s):
+   AL, AU, FR, KE, NZ, TH, UA, ZA
+ - New geocoding data for country calling code(s): 385 (en), 880 (en)
+ - Updated geocoding data for country calling code(s): 27 (en), 225 (en)
+ - Updated carrier data for country calling code(s):
+   84 (en), 225 (en), 380 (en), 385 (en), 886 (en), 972 (en)
+
 May 29, 2018: v8.9.7
 Metadata changes:
  - Updated phone metadata for region code(s):

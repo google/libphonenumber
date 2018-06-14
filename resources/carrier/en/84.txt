@@ -33,7 +33,9 @@
 84186|Vietnamobile
 84188|Vietnamobile
 84199|G-Mobile
+84866|Viettel Mobile
 84868|Viettel Mobile
+84869|Viettel Mobile
 8488|Vinaphone
 8489|MobiFone
 84898|MobiFone
