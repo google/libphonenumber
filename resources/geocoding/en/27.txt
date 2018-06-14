@@ -13,44 +13,46 @@
 # limitations under the License.
 
 # Generated from:
-# Internal statistical data (2013-11-28).
-# The following prefixes from http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf:
-# 2710, 2711, 2712, 2713, 2715, 2716, 2718, 2721, 2731, 2732, 2735, 2739, 2741, 2743, 2744, 2751
+# Internal statistical data (2013-11-28) and
+# http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf
+# https://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa
+# Mentioned the popular area/city name and specific parts of that region
+# eventhough both overlap geographically as it gives more coverage.
 
 2710|Johannesburg
 2711|Johannesburg
-2712|Tshwane
-2713|Middelburg/Witbank/Nelspruit
-2714|Rustenburg
-2715|Polokwane
+2712|Brits/Tshwane
+2713|Bronkhorstspruit/Eastern Gauteng/Middelburg/Nelspruit/Northern and Western Mpumalanga/Witbank
+2714|Modimolle/Northern North West and Southwestern Limpopo/Rustenburg
+2715|Northern and Eastern Limpopo/Polokwane
 2716|Vaal Triangle
-2717|Ermelo/Secunda
-2718|Potchefstroom/Klerksdorp
-2721|Cape Town
-2722|Malmesbury/Vredenburg
-2723|Worcester/Robertson
-2727|Vredendal/Springbok
-2728|Hermanus/Swellendam
+2717|Ermelo/Secunda/Southern Mpumalanga
+2718|Klerksdorp/Lichtenburg/Potchefstroom
+2721|Cape Town/Gordons Bay/Somerset West/Stellenbosch
+2722|Boland/Malmesbury/Vredenburg/Western coast of Western Cape
+2723|Beaufort West/Karoo/Robertson/Worcester
+2727|Alexander Bay/Calvinia/Clanwilliam/Namaqualand/Port Nolloth/Springbok/Vredendal
+2728|Caledon/Hermanus/Southern coast of Western Cape/Swellendam
 2731|Durban
-2732|Stanger
-2733|Pietermaritzburg
-2734|Newcastle/Vryheid
-2735|Zululand
-2736|Ladysmith
-2739|Eastern Pondoland/Port Shepstone
-2740|Bisho/Alice
-2741|Port Elizabeth
-2742|Jeffreys Bay/Humansdorp
+2732|Ballito/KwaZulu Natal coast/Stanger/Tongaat/Verulam
+2733|KwaZulu Natal Midlands/Pietermaritzburg
+2734|Newcastle/Northern KwaZulu Natal/Vryheid
+2735|Richards Bay/St. Lucia/Ulundi/Zululand
+2736|Drakensberg/Ladysmith
+2739|Eastern Pondoland/Port Shepstone/Southern coast of KwaZulu Natal
+2740|Alice/Bhisho
+2741|Port Elizabeth/Uitenhage
+2742|Jeffreys Bay/Humansdorp/Southern and central Eastern Cape
 2743|East London
-2744|Garden Route
-2745|Queenstown
-2746|Grahamstown
-2747|Mthatha/Butterworth
-2748|Cradock
-2749|Graaff-Reinet
-2751|Bloemfontein/Aliwal North
-2753|Kimberley/Kuruman
-2754|Upington
-2756|Parys
-2757|Voorspoed, Welkom/Welkom Central, Welkom
-2758|Bethlehem
+2744|Garden Route/George/Knysna/Mossel Bay/Oudtshoorn/Plettenberg Bay
+2745|Northern and eastern parts of Eastern Cape/Queenstown
+2746|Bathurst/Southern and eastern parts of Eastern Cape/Grahamstown/Kenton-on-Sea/Port Alfred
+2747|Butterworth/Eastern part of Eastern Cape/Mthatha
+2748|Cradock/Northern part of Eastern Cape/Steynsburg
+2749|Graaff-Reinet/Western part of Eastern Cape
+2751|Aliwal North/Bloemfontein/Far eastern part of Eastern Cape/Southern and Central Free State
+2753|Eastern part of Northern Cape/Far western part of North West/Kimberley/Kuruman
+2754|Upington/Gordonia
+2756|Kroonstad/Parys/Northern Free State
+2757|Northern Free State Goldfields/Welkom
+2758|Bethlehem/Eastern Free State
