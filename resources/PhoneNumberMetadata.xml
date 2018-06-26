@@ -14240,7 +14240,7 @@
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
-            [25-7]|
+            [25-79]|
             31[25]
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -14260,7 +14260,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[235-8]\d{8,9}</nationalNumberPattern>
+        <nationalNumberPattern>[235-9]\d{8,9}</nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="9" localOnly="5,6"/>
@@ -14329,7 +14329,8 @@
             7(?:
               [07]\d|
               55
-            )
+            )|
+            99[69]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -20662,20 +20663,25 @@
         <sourceUrl>http://www.itu.int/oth/T02020000EC/en</sourceUrl>
         <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Niue</sourceUrl>
       </references>
-      <!-- Numbers are always formatted as a block. -->
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{4})">
+          <leadingDigits>888</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+      <!-- All other numbers are always formatted as a block. -->
       <generalDesc>
-        <nationalNumberPattern>[1-5]\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>[478]\d{3,7}</nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="4"/>
-        <exampleNumber>4002</exampleNumber>
-        <!-- Putting FWT (fixed-wireless-terminals) numbers here too. -->
-        <nationalNumberPattern>[34]\d{3}</nationalNumberPattern>
+        <exampleNumber>7012</exampleNumber>
+        <nationalNumberPattern>[47]\d{3}</nationalNumberPattern>
       </fixedLine>
       <mobile>
-        <possibleLengths national="4"/>
-        <exampleNumber>1234</exampleNumber>
-        <nationalNumberPattern>[125]\d{3}</nationalNumberPattern>
+        <possibleLengths national="7"/>
+        <exampleNumber>8884012</exampleNumber>
+        <nationalNumberPattern>888[4-9]\d{3}</nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -23090,6 +23096,17 @@
       <availableFormats>
         <!-- Formatting patterns are from the numbering plan and from the Swedish yellow pages
              http://gulasidorna.eniro.se -->
+        <numberFormat pattern="([1-469]\d)(\d{3})(\d{2})">
+          <leadingDigits>
+            [12][136]|
+            3[356]|
+            4[0246]|
+            6[03]|
+            90[1-9]
+          </leadingDigits>
+          <format>$1-$2 $3</format>
+          <intlFormat>$1 $2 $3</intlFormat>
+        </numberFormat>
         <numberFormat pattern="(9[034]\d)(\d{4})">
           <leadingDigits>
             9(?:
@@ -23114,21 +23131,10 @@
             4[0246]|
             54|
             6[03]|
-            90[1-9]
+            90
           </leadingDigits>
           <format>$1-$2 $3 $4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
-        </numberFormat>
-        <numberFormat pattern="([1-469]\d)(\d{3})(\d{2})">
-          <leadingDigits>
-            [12][136]|
-            3[356]|
-            4[0246]|
-            6[03]|
-            90[1-9]
-          </leadingDigits>
-          <format>$1-$2 $3</format>
-          <intlFormat>$1 $2 $3</intlFormat>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
@@ -27193,18 +27199,21 @@
              unable to receive SMS so for now supporting in both Mobile and Fixed-line -->
         <nationalNumberPattern>
           (?:
-            9\d|
+            9(?:
+              [0-8]\d|
+              9[013-9]
+            )|
             1(?:
               2\d|
               6[2-9]|
               8[68]|
               99
+            )\d|
+            8(?:
+              6[689]|
+              8\d|
+              9[89]
             )
-          )\d{7}|
-          8(?:
-            6[689]|
-            8\d|
-            9[89]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -27218,6 +27227,12 @@
         <exampleNumber>1900123456</exampleNumber>
         <nationalNumberPattern>1900\d{4,6}</nationalNumberPattern>
       </premiumRate>
+      <!-- 992 is a VSAT numbering range as per ITU doc. -->
+      <voip>
+        <possibleLengths national="9"/>
+        <exampleNumber>992012345</exampleNumber>
+        <nationalNumberPattern>992\d{6}</nationalNumberPattern>
+      </voip>
       <uan>
         <possibleLengths national="7,8"/>
         <exampleNumber>1992000</exampleNumber>
