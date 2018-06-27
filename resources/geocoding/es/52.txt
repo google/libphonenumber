@@ -190,7 +190,7 @@
 52496|Zacatecas
 52498|Zacatecas
 52499|Jalisco/Zacatecas
-5255|Cuidad de México, CDMX
+5255|Ciudad de México, CDMX
 52586|Tlalmanalco, MEX
 52587|Amecameca, MEX
 52588|Estado de Mexico
