@@ -961,6 +961,24 @@
       </premiumRate>
     </territory>
 
+    <!-- Russian Federation -->
+    <territory id="RU" countryCode="7" internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="$NP ($FG)" nationalPrefixOptionalWhenFormatting="true">
+      <generalDesc>
+        <nationalNumberPattern>[347-9]\d{9}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <possibleLengths national="10"/>
+        <exampleNumber>3011234567</exampleNumber>
+        <nationalNumberPattern>[348]\d{9}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <possibleLengths national="10"/>
+        <exampleNumber>9123456789</exampleNumber>
+        <nationalNumberPattern>9\d{9}</nationalNumberPattern>
+      </mobile>
+    </territory>
+
     <!-- Sweden -->
     <territory id="SE" countryCode="46" internationalPrefix="00">
       <generalDesc>

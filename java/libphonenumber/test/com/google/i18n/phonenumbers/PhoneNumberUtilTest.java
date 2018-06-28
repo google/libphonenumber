@@ -2647,6 +2647,19 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.parse("(800) 901-3355 ,extensio\u0301n 7246433", RegionCode.US));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 , 7246433", RegionCode.US));
     assertEquals(usWithExtension, phoneUtil.parse("(800) 901-3355 ext: 7246433", RegionCode.US));
+    // Testing russian extension character \u0434\u043E\u0431 in variants found online.
+    PhoneNumber ruWithExtension = new PhoneNumber();
+    ruWithExtension.setCountryCode(7).setNationalNumber(4232022511L).setExtension("100");
+    assertEquals(ruWithExtension,
+		 phoneUtil.parse("8 (423) 202-25-11, \u0434\u043E\u0431. 100", RegionCode.RU));
+    assertEquals(ruWithExtension,
+		 phoneUtil.parse("8 (423) 202-25-11 \u0434\u043E\u0431. 100", RegionCode.RU));
+    assertEquals(ruWithExtension,
+		 phoneUtil.parse("8 (423) 202-25-11, \u0434\u043E\u0431 100", RegionCode.RU));
+    assertEquals(ruWithExtension,
+		 phoneUtil.parse("8 (423) 202-25-11 \u0434\u043E\u0431 100", RegionCode.RU));
+    assertEquals(ruWithExtension,
+		 phoneUtil.parse("8 (423) 202-25-11\u0434\u043E\u0431100", RegionCode.RU));
 
     // Test that if a number has two extensions specified, we ignore the second.
     PhoneNumber usWithTwoExtensionsNumber = new PhoneNumber();
@@ -2783,6 +2796,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.isNumberMatch("+64 3 331-6005 extn 1234", "+6433316005#1234"));
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch("+64 3 331-6005 ext. 1234", "+6433316005;1234"));
+    assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch("+7 423 202-25-11 ext 100",
+					 "+7 4232022511 \u0434\u043E\u0431. 100"));
     // Test proto buffers.
     assertEquals(PhoneNumberUtil.MatchType.EXACT_MATCH,
                  phoneUtil.isNumberMatch(NZ_NUMBER, "+6403 331 6005"));
