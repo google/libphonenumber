@@ -3255,8 +3255,9 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchMatches) {
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005 extn 1234",
                                                     "+6433316005;1234"));
   EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
-            phone_util_.IsNumberMatchWithTwoStrings("+7 423 202-25-11 ext 100",
-                                                    "+7 4232022511 доб. 100"));
+            phone_util_.IsNumberMatchWithTwoStrings(
+		"+7 423 202-25-11 ext 100",
+		"+7 4232022511 \xd0\x94\xd0\x9e\xd0\xb1. 100"));
 
   // Test proto buffers.
   PhoneNumber nz_number;
@@ -4354,24 +4355,32 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   ru_with_extension.set_national_number(4232022511L);
   ru_with_extension.set_extension("100");
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("8 (423) 202-25-11, доб. 100", RegionCode::RU(),
-                              &test_number));
+            phone_util_.Parse(
+                "8 (423) 202-25-11, \xd0\x94\xd0\x9e\xd0\xb1. 100",
+                RegionCode::RU(), &test_number));
   EXPECT_EQ(ru_with_extension, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("8 (423) 202-25-11 доб. 100", RegionCode::RU(),
-                              &test_number));
+            phone_util_.Parse(
+                "8 (423) 202-25-11 \xd0\x94\xd0\x9e\xd0\xb1. 100",
+                RegionCode::RU(), &test_number));
   EXPECT_EQ(ru_with_extension, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("8 (423) 202-25-11, доб 100", RegionCode::RU(),
-                              &test_number));
+            phone_util_.Parse(
+                "8 (423) 202-25-11, \xd0\x94\xd0\x9e\xd0\xb1 100",
+                RegionCode::RU(), &test_number));
   EXPECT_EQ(ru_with_extension, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("8 (423) 202-25-11 доб 100", RegionCode::RU(),
-                              &test_number));
+            phone_util_.Parse(
+                "8 (423) 202-25-11 \xd0\x94\xd0\x9e\xd0\xb1 100",
+                RegionCode::RU(), &test_number));
   EXPECT_EQ(ru_with_extension, test_number);
+  // We are suppose to test input without spaces before and after this extension
+  // character. As hex escape sequence becomes out of range, postfixed a space
+  // to extension character here.
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("8 (423) 202-25-11доб100", RegionCode::RU(),
-                              &test_number));
+            phone_util_.Parse(
+                "8 (423) 202-25-11\xd0\x94\xd0\x9e\xd0\xb1 100",
+                RegionCode::RU(), &test_number));
   EXPECT_EQ(ru_with_extension, test_number);
 
   // Test that if a number has two extensions specified, we ignore the second.
