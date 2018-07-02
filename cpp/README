@@ -167,6 +167,8 @@ Build and test the library:
   $ mkdir build
   $ cd build
   Replace XXX in the commands below with the appropriate version number:
+  $ PKG_CONFIG_PATH=/usr/local/Cellar/icu4c/XXX/lib/pkgconfig/
+  $ export PKG_CONFIG_PATH
   $ cmake \
     -DGTEST_SOURCE_DIR=~/googletest_clone/googletest/googletest/ \
     -DGTEST_INCLUDE_DIR=~/googletest_clone/googletest/googletest/include/ \
