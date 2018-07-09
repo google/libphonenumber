@@ -101,7 +101,9 @@ updates.
 
 For changes specific to windows builds, see [Filing a code
 issue](#filing-a-code-issue) and make sure you have found a reviewer and tester
-before sending the pull request.
+before sending the pull request. If the issue wasn’t reproducible and seems to be
+specific to your build/setup, please prefer [creating a code bug](#filing-a-code-issue) or email the
+[discussion group](https://groups.google.com/group/libphonenumber-discuss) than creating a pull request.
 
 We are happy to review and accept pull requests for the following:
 
