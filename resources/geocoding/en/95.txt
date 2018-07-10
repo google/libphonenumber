@@ -14,8 +14,13 @@
 
 951422|Yangon
 951423|Yangon
+951424|Yangon
 951426|Yangon
+951429|Yangon
 951439|Yangon
+951462|Yangon
+951465|Yangon
+951470|Yangon
 951550|Bahan
 951551|Bahan
 951552|Bahan
@@ -30,18 +35,30 @@
 951687|Bayintnaung
 951688|Bayintnaung
 9522000|Mingalar Mandalay
+952422|Mandalay
+952424|Mandalay
 952426|Mandalay
 952439|Mandalay
+952462|Mandalay
+952470|Yangon
 95256|Amarapura
+9542480|Pathein
 9543202|Rakhine
+9543470|Sittwe
 954353|Buthidaung
 9543565|Palatwa
+9545470|Pyapon
 95522221|Bago
 95522222|Bago
 95522223|Bago
 95522224|Bago
 95522230|Oathar Myothit
+9552470|Bago
+9554470|Taungoo
 955645|Tandar
+9557480|Mawlamyine/Thanbyuzayat
+9558470|Hpa-An
+9559470|Dawei
 9561200|Chauk
 956124620|Chauk
 956124621|Chauk
@@ -56,13 +73,20 @@
 956260|Kanma
 956323|Magway
 956324|Magway
+9563470|Magway
 95642487|Shawpin
 956525|Ngape
 9567439|Naypyidaw
+9567460|Naypyitaw
+9567470|Naypyitaw
 9567550|Naypyidaw
 9569200|Aunglan
 956940|Sinpaungwae
+9570470|Hakha
 95712032|Ohbotaung
+9571470|Monywa
+9574470|Myitkyinar/Bahmaw
+9575470|Shwebo
 95812820|Moenae
 95812821|Moenae
 95812822|Moenae
@@ -71,9 +95,11 @@
 958130|Pinlon
 958131|Loilem
 958141|Naungtayar
+9581470|Taunggyi
 958149|Sesin
 9582320|Manton
 958238|Tantyan
+9583470|Loikaw
 958521|Pyinoolwin
 958522|Pyinoolwin
 958523|Pyinoolwin
