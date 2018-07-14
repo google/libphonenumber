@@ -18,7 +18,8 @@
 # New World Mobility is known as Sun Mobile now.
 # Prefix 5549 is assigned for Government use, no information on the carrier.
 # Prefix 624, 683, 69[68] and 905 which were previously assigned to CM Mobile is
-# now on hold, so carrier details are removed for these prefixes.
+# now on hold, so carrier details are removed for these prefixes. Prefix 9057 is
+# assigned to HKT based on user report.
 
 8524600|China Mobile
 8524601|China Mobile
@@ -256,6 +257,7 @@
 852902|HKT
 852903|HKT
 852904|3
+8529057|HKT
 852906|China Mobile
 852907|HKT
 852908|HKT

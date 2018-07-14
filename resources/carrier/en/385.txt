@@ -13,15 +13,26 @@
 # limitations under the License.
 
 # Source: https://www.hakom.hr/default.aspx?id=817
-# bonbon is a virtual network operator. https://www.bonbon.hr/
+# Prefixes 89, 90 and 97 are updated based on IR 21 docs.
 
+38589091|Vip
+38589098|Hrvatski Telekom
+385901|Tele2
+385902|Tele2
+385903|Tele2
+385904|Tele2
+385905|Tele2
+385906|Tele2
+385907|Tele2
+385908|Tele2
+385909|Tele2
 38591|Vip
 38592|Vip
 38595|Tele2
 385970|Hrvatski Telekom
 3859751|Telefocus
-385976|bonbon
-385977|bonbon
+385976|Hrvatski Telekom
+385977|Hrvatski Telekom
 385979|Hrvatski Telekom
 38598|Hrvatski Telekom
 38599|Hrvatski Telekom
