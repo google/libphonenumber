@@ -205,8 +205,8 @@ public class ShortNumbersRegionCodeSet {
     regionCodeSet.add("PK");
     regionCodeSet.add("PL");
     regionCodeSet.add("PM");
-    regionCodeSet.add("PS");
     regionCodeSet.add("PR");
+    regionCodeSet.add("PS");
     regionCodeSet.add("PT");
     regionCodeSet.add("PW");
     regionCodeSet.add("PY");
