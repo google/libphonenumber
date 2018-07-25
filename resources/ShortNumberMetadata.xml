@@ -68,7 +68,7 @@
     <!-- www.itu.int/oth/T02020000AF -->
     <territory id="AC">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -90,7 +90,7 @@
     <!-- http://www.itu.int/oth/T0202000005/en -->
     <territory id="AD">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -140,7 +140,11 @@
     <!-- http://www.itu.int/oth/T0202000001/en -->
     <territory id="AF">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -181,7 +185,7 @@
     <!-- http://www.itu.int/oth/T0202000008/en -->
     <territory id="AG">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -223,7 +227,7 @@
     <!-- http://www.itu.int/oth/T0202000007/en -->
     <territory id="AI">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -375,7 +379,7 @@
     <!-- http://www.itu.int/oth/T0202000006/en -->
     <territory id="AO">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -462,7 +466,11 @@
     <!-- http://www.itu.int/oth/T0202000004/en -->
     <territory id="AS">
       <generalDesc>
-        <nationalNumberPattern>[49]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [49]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -492,7 +500,11 @@
     <!-- http://www.rtr.at/en/tk/E129 -->
     <territory id="AT">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -563,10 +575,7 @@
          they actually are. -->
     <territory id="AU">
       <generalDesc>
-        <nationalNumberPattern>
-          [027]\d{2}|
-          1\d{2,7}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[0-27]\d{2,7}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-8]"/>
@@ -669,7 +678,7 @@
     <!-- http://www.itu.int/oth/T020200000B/en -->
     <territory id="AW">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -710,8 +719,9 @@
     <territory id="AX">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{2}|
-          75[12]\d{2}
+          [17]\d\d(?:
+            \d{2}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <!-- Most service numbers are included under UAN in PhoneNumberMetadata.xml (and also in
@@ -836,7 +846,7 @@
     <!-- http://www.itu.int/oth/T0202000013/en -->
     <territory id="BB">
       <generalDesc>
-        <nationalNumberPattern>[2-689]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[2-689]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -854,7 +864,7 @@
     <!-- http://www.itu.int/oth/T0202000012/en -->
     <territory id="BD">
       <generalDesc>
-        <nationalNumberPattern>[179]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[1579]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
@@ -942,8 +952,11 @@
     <territory id="BE">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{2,5}|
-          [2-9]\d{3}
+          [1-9]\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
@@ -1098,7 +1111,11 @@
     <!-- http://www.itu.int/oth/T0202000020/en -->
     <territory id="BG">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -1155,7 +1172,11 @@
     <!-- http://www.tra.org.bh/media/document/National%20Numbering%20Plan.pdf -->
     <territory id="BH">
       <generalDesc>
-        <nationalNumberPattern>[0189]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [0189]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- As per official numbering plan, 85xxx shortcodes are shared cost numbers. As the cost
            details are not clear, categorized them as unknown cost numbers. -->
@@ -1351,7 +1372,7 @@
     <!-- http://www.itu.int/oth/T0202000018/en -->
     <territory id="BM">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -1385,7 +1406,7 @@
     <!-- http://www.itu.int/oth/T020200001F/en -->
     <territory id="BN">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -1405,7 +1426,11 @@
     <!-- http://www.bolivia.com/Servicios/Plandenumeracion.pdf -->
     <territory id="BO">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -1432,7 +1457,7 @@
     <!-- http://www.itu.int/oth/T02020000F8/en -->
     <territory id="BQ">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -1474,7 +1499,7 @@
     <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
     <territory id="BR">
       <generalDesc>
-        <nationalNumberPattern>[12469]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[124-69]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-6]"/>
@@ -1643,7 +1668,7 @@
     <!-- http://www.itu.int/oth/T0202000010/en -->
     <territory id="BS">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -1662,7 +1687,11 @@
     <!-- http://www.itu.int/oth/T0202000019/en -->
     <territory id="BT">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -1691,7 +1720,11 @@
     <!-- http://www.itu.int/oth/T020200001C/en -->
     <territory id="BW">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [19]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -1726,7 +1759,7 @@
     <!-- http://www.eng.beltelecom.by/en/subscribers/phone-codes -->
     <territory id="BY">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <!-- Wikipedia notes not all numbers are active everywhere. -->
       <shortCode>
@@ -1761,7 +1794,7 @@
     <!-- http://www.itu.int/oth/T0202000016/en -->
     <territory id="BZ">
       <generalDesc>
-        <nationalNumberPattern>9\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -1793,11 +1826,13 @@
     <territory id="CA">
       <generalDesc>
         <nationalNumberPattern>
-          [124-9]\d{2,5}|
-          3(?:
-            \d{2,5}|
-            \d{7}
-          )
+          [1-9]\d\d(?:
+            \d\d(?:
+              \d(?:
+                \d{2}
+              )?
+            )?
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
@@ -1862,7 +1897,7 @@
     <!-- Country calling code shared with Australia. -->
     <territory id="CC">
       <generalDesc>
-        <nationalNumberPattern>[01]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[01]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -1888,7 +1923,11 @@
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=47&pg_size=50 -->
     <territory id="CD">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -1970,7 +2009,7 @@
     <!-- Congo (Rep. of the) (Brazzaville) -->
     <territory id="CG">
       <generalDesc>
-        <nationalNumberPattern>11\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -2167,7 +2206,7 @@
     <!-- http://www.itu.int/oth/T020200002F/en -->
     <territory id="CK">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -2471,7 +2510,11 @@
     <!-- http://www.itu.int/oth/T020200002B/en -->
     <territory id="CN">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [19]\d\d(?:
+            \d{2,3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- 100xx numbers are mainly used for carrier services. They can be dialed nationwide and
            are always routed to the local provider.  Note they can also be used with area codes
@@ -2548,7 +2591,11 @@
          Information:         195 -->
     <territory id="CO">
       <generalDesc>
-        <nationalNumberPattern>[148]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [148]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -2708,7 +2755,11 @@
     <!-- www.itu.int/oth/T0202000033/en -->
     <territory id="CU">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -2735,7 +2786,7 @@
     <!-- http://www.itu.int/oth/T0202000026/en -->
     <territory id="CV">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -2754,7 +2805,7 @@
     <!-- http://www.itu.int/oth/T02020000F5/en -->
     <territory id="CW">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -2794,7 +2845,7 @@
     <!-- Country calling code shared with Australia. -->
     <territory id="CX">
       <generalDesc>
-        <nationalNumberPattern>[01]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[01]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -2820,7 +2871,11 @@
     <!-- http://www.itu.int/oth/T0202000034/en -->
     <territory id="CY">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -2934,7 +2989,11 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- Public Service Number for German administration: 115. -->
       <shortCode>
@@ -3000,7 +3059,13 @@
     <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,4,6"/>
@@ -3056,7 +3121,7 @@
     <!-- http://www.itu.int/oth/T020200003B/en -->
     <territory id="DM">
       <generalDesc>
-        <nationalNumberPattern>[39]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[39]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -3088,7 +3153,7 @@
     <!-- http://www.itu.int/oth/T020200003C/en -->
     <territory id="DO">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -3113,7 +3178,7 @@
     <!-- www.arpt.dz -->
     <territory id="DZ">
       <generalDesc>
-        <nationalNumberPattern>[17]\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>[17]\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -3148,7 +3213,7 @@
     <!-- http://www.itu.int/oth/T020200003D/en -->
     <territory id="EC">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -3596,7 +3661,11 @@
     <!-- http://www.itu.int/oth/T020200003E/en -->
     <territory id="EG">
       <generalDesc>
-        <nationalNumberPattern>[13]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [13]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -3639,7 +3708,7 @@
     <!-- http://www.itu.int/oth/T0202000090/en -->
     <territory id="EH">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -3666,7 +3735,11 @@
     <!-- Eritrea -->
     <territory id="ER">
       <generalDesc>
-        <nationalNumberPattern>[12]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [12]\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -3893,7 +3966,7 @@
     <!-- http://www.itu.int/oth/T0202000044/en -->
     <territory id="ET">
       <generalDesc>
-        <nationalNumberPattern>9\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -3930,8 +4003,9 @@
     <territory id="FI">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{2,5}|
-          75[12]\d{2}
+          [17]\d\d(?:
+            \d{2,3}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <!-- Most service numbers are included under UAN in PhoneNumberMetadata.xml (and also in
@@ -3970,7 +4044,13 @@
     <!-- www.tfl.com.fj -->
     <territory id="FJ">
       <generalDesc>
-        <nationalNumberPattern>[0-579]\d{1,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [0-579]\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- From the Emergency Numbers page on the Telecom Fiji website:
            http://www.tfl.com.fj/index.cfm?go=tfl.support&id=B5B4EDF6-05EC-069A-38162D21274B90BC&category=support -->
@@ -4014,7 +4094,7 @@
     <!-- http://www.itu.int/oth/T0202000046/en -->
     <territory id="FK">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <!-- Service numbers use 3 digit short codes -->
       <shortCode>
@@ -4038,8 +4118,9 @@
     <territory id="FM">
       <generalDesc>
         <nationalNumberPattern>
-          3\d{5}|
-          9\d{2}
+          [39]\d\d(?:
+            \d{3}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
@@ -4092,12 +4173,7 @@
     <!-- http://fr.wikipedia.org/wiki/Num%C3%A9ro_d'appel_d'urgence -->
     <territory id="FR">
       <generalDesc>
-        <nationalNumberPattern>
-          1\d{1,5}|
-          [267]\d{2,4}|
-          3\d{3,4}|
-          [458]\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[1-8]\d{1,5}</nationalNumberPattern>
       </generalDesc>
       <!-- 110 is a number used for different campaigns such as Sidaction for a limited time only. -->
       <shortCode>
@@ -4265,7 +4341,11 @@
     <!-- www.arcep.ga -->
     <territory id="GA">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,3}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,4"/>
@@ -4294,7 +4374,7 @@
     <!-- United Kingdom -->
     <territory id="GB">
       <generalDesc>
-        <nationalNumberPattern>[1-467-9]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1-46-9]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-6]"/>
@@ -4465,7 +4545,7 @@
     <!-- http://www.itu.int/oth/T0202000057/en -->
     <territory id="GD">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -4497,7 +4577,11 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia. -->
     <territory id="GE">
       <generalDesc>
-        <nationalNumberPattern>[041]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [014]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -4785,7 +4869,7 @@
     <!-- http://www.itu.int/oth/T0202000056/en -->
     <territory id="GL">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -4803,7 +4887,7 @@
     <!-- http://www.itu.int/oth/T020200004F/en -->
     <territory id="GM">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -4868,7 +4952,11 @@
     <!-- http://en.wikipedia.org/wiki/%2B30 -->
     <territory id="GR">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -4971,7 +5059,7 @@
     <!-- http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel -->
     <territory id="GU">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -4990,7 +5078,7 @@
     <!-- http://www.itu.int/oth/T020200005C/en -->
     <territory id="GW">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -5067,15 +5155,18 @@
            'Disaster recovery' and it is in the format 189+prefix
            https://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E9%9B%BB%E8%A9%B1%E8%99%9F%E7%A2%BC%E5%88%86%E9%A1%9Eas
            As we do not have much information on the prefix that needs to be used we have not
-           included it. -->
+           included it. Generally all withdrawn short codes mentioned in 'Change History' section of
+           ca.gov.hk's doc are not supported unless the range is is mentiond as assigned in main
+           table. -->
       <shortCode>
         <possibleLengths national="[3-7]"/>
         <exampleNumber>999</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0(?:
-              [0136]\d{0,4}|
+              [013]\d{0,4}|
               2[14]\d{0,3}|
+              6\d{1,4}|
               8[138]|
               9
             )|
@@ -5087,8 +5178,7 @@
             )|
             7(?:
               [135-9]\d{0,4}|
-              21[89]\d{0,2}|
-              421\d{0,2}
+              219\d{0,2}
             )|
             8(?:
               0(?:
@@ -5107,23 +5197,16 @@
                 3|
                 8[128]
               )|
-              3\d{4}|
-              4(?:
-                1[1-5]|
-                [23]1|
-                6[12]
-              )|
+              3[0-689]\d{3}|
               50[138]|
               6(?:
-                000|
                 1(?:
-                  [13]1|
+                  11|
                   86
                 )|
                 8
               )|
               7(?:
-                13|
                 2[1-389]|
                 8[0235-9]|
                 93
@@ -5172,7 +5255,11 @@
     <!-- http://www.itu.int/oth/T020200005F/en -->
     <territory id="HN">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -5295,7 +5382,11 @@
     <!-- http://www.itu.int/oth/T020200005E/en -->
     <territory id="HT">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -5329,7 +5420,11 @@
     <!-- http://www.itu.int/oth/T0202000061/en -->
     <territory id="HU">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -5392,7 +5487,11 @@
     <!-- http://en.wikipedia.org/wiki/%2B62 -->
     <territory id="ID">
       <generalDesc>
-        <nationalNumberPattern>[178]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [178]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -5566,7 +5665,11 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="IM">
       <generalDesc>
-        <nationalNumberPattern>[189]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [189]\d\d(?:
+            \d{2,3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5,6"/>
@@ -6162,7 +6265,13 @@
     <!-- https://www.pfs.is/english/telecom-affairs/numbering/ -->
     <territory id="IS">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,4,6"/>
@@ -6371,7 +6480,13 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="JE">
       <generalDesc>
-        <nationalNumberPattern>[129]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [129]\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&childID=1036 -->
       <shortCode>
@@ -6418,7 +6533,7 @@
     <!-- http://www.itu.int/oth/T020200006C/en -->
     <territory id="JM">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -6460,7 +6575,11 @@
     <!-- http://en.wikipedia.org/wiki/%2B962 -->
     <territory id="JO">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [19]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -6524,7 +6643,7 @@
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <territory id="JP">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -6749,7 +6868,11 @@
     <!-- http://en.wikipedia.org/wiki/+855 -->
     <territory id="KH">
       <generalDesc>
-        <nationalNumberPattern>[146]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [146]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -6858,7 +6981,7 @@
     <!-- http://www.itu.int/oth/T02020000B0/en -->
     <territory id="KN">
       <generalDesc>
-        <nationalNumberPattern>[39]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[39]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -6890,7 +7013,7 @@
     <!-- http://north-korea.emergencynumbers.org/ -->
     <territory id="KP">
       <generalDesc>
-        <nationalNumberPattern>[18]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[18]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7015,7 +7138,11 @@
     <!-- http://www.itu.int/oth/T0202000073/en -->
     <territory id="KW">
       <generalDesc>
-        <nationalNumberPattern>[18]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [18]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -7042,7 +7169,7 @@
     <!-- http://www.itu.int/oth/T0202000027/en -->
     <territory id="KY">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7111,7 +7238,7 @@
     <!-- http://en.wikipedia.org/wiki/+856 -->
     <territory id="LA">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7131,7 +7258,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B961 -->
     <territory id="LB">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7163,7 +7290,7 @@
     <!-- http://www.itu.int/oth/T02020000B1/en -->
     <territory id="LC">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7231,7 +7358,7 @@
     <!-- http://www.itu.int/oth/T02020000C3/en -->
     <territory id="LK">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7304,7 +7431,7 @@
     <!-- http://www.itu.int/oth/T0202000078/en -->
     <territory id="LS">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7324,7 +7451,13 @@
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <territory id="LT">
       <generalDesc>
-        <nationalNumberPattern>[01]\d{1,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [01]\d(?:
+            \d(?:
+              \d{3}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3,6"/>
@@ -7392,7 +7525,7 @@
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>12123</exampleNumber>
         <nationalNumberPattern>
           1(?:
@@ -7401,9 +7534,11 @@
               6(?:
                 000|
                 111
-              )
+              )|
+              8\d{2}
             )|
-            2\d{3}
+            [25]\d{3}|
+            3\d{2}
           )
         </nationalNumberPattern>
       </shortCode>
@@ -7433,11 +7568,7 @@
     <!-- http://en.wikipedia.org/wiki/+371 -->
     <territory id="LV">
       <generalDesc>
-        <nationalNumberPattern>
-          0\d|
-          1\d{2,6}|
-          8\d{3,4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[018]\d{1,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[2-6]"/>
@@ -7514,7 +7645,7 @@
     <!-- Libya (Soc. People’s Libyan Arab Jamahiriya) -->
     <territory id="LY">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7538,7 +7669,7 @@
     <!-- http://en.wikipedia.org/wiki/+212 -->
     <territory id="MA">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -7566,7 +7697,7 @@
     <!-- http://www.itu.int/oth/T020200008D/en -->
     <territory id="MC">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -7716,7 +7847,7 @@
     <!-- http://www.itu.int/oth/T020200007F/en -->
     <territory id="MG">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -7735,7 +7866,7 @@
     <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_964.html -->
     <territory id="MH">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7756,7 +7887,7 @@
     <!-- http://www.itu.int/oth/T02020000CE/en -->
     <territory id="MK">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7786,7 +7917,7 @@
     <!-- http://www.orangemali.com/service-clients/service-clients-orange.php -->
     <territory id="ML">
       <generalDesc>
-        <nationalNumberPattern>[13678]\d{1,4}</nationalNumberPattern>
+        <nationalNumberPattern>[136-8]\d{1,4}</nationalNumberPattern>
       </generalDesc>
       <!-- Numbers have come from the pages listed above, along with the short-codes to find your
            voting location published in Mali newspapers such as www.malijet.com. These begin with
@@ -7924,7 +8055,7 @@
     <!-- http://www.itu.int/oth/T0202000092/en -->
     <territory id="MM">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7942,7 +8073,7 @@
     <!-- http://www.itu.int/oth/T020200008E/en -->
     <territory id="MN">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7960,7 +8091,7 @@
     <!-- http://www.itu.int/oth/T020200007E/en -->
     <territory id="MO">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7979,7 +8110,7 @@
     <!-- www.cnmiphonebook.com/ -->
     <territory id="MP">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -7999,7 +8130,7 @@
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="MQ">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -8048,7 +8179,7 @@
     <!-- http://www.itu.int/oth/T020200008F/en -->
     <territory id="MS">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -8077,7 +8208,11 @@
     <!-- www.itu.int/oth/T0202000084/en -->
     <territory id="MT">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -8207,7 +8342,11 @@
     <!-- http://www.itu.int/oth/T0202000080/en -->
     <territory id="MW">
       <generalDesc>
-        <nationalNumberPattern>[189]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [189]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -8450,11 +8589,7 @@
     <!-- http://www.opt.nc -->
     <territory id="NC">
       <generalDesc>
-        <nationalNumberPattern>
-          1\d{1,3}|
-          3\d{3}|
-          5\d{2}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[135]\d{1,3}</nationalNumberPattern>
       </generalDesc>
       <!-- OPT: Office des Postes et Télécommunications de Nouvelle Calédonie -->
       <!-- 3631 is listed as a short number for caller ID services by OPT and explicitly mentioned
@@ -8531,8 +8666,11 @@
     <territory id="NE">
       <generalDesc>
         <nationalNumberPattern>
-          [1-358]\d{1,2}|
-          723141
+          [1-3578]\d(?:
+            \d(?:
+              \d{3}
+            )?
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
@@ -8590,7 +8728,7 @@
     <!-- http://www.itu.int/oth/T020200009D/en -->
     <territory id="NF">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -8621,7 +8759,11 @@
     <!-- http://www.itu.int/oth/T020200009C/en -->
     <territory id="NG">
       <generalDesc>
-        <nationalNumberPattern>[14]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -8700,7 +8842,13 @@
     <!-- http://wetten.overheid.nl/BWBR0010198 -->
     <territory id="NL">
       <generalDesc>
-        <nationalNumberPattern>[1349]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [1349]\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,4,6"/>
@@ -8786,7 +8934,13 @@
     <!-- http://www.nkom.no/npt/numsys/E.1643sifret_en.pdf -->
     <territory id="NO">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- 143 is assigned but not visible to end users, no other online evidence
            found, hence not included -->
@@ -8847,7 +9001,7 @@
     <!-- http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php -->
     <territory id="NP">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -8876,7 +9030,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Nauru -->
     <territory id="NR">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -8901,7 +9055,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Niue -->
     <territory id="NU">
       <generalDesc>
-        <nationalNumberPattern>[019]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[019]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9006,7 +9160,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B507 -->
     <territory id="PA">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9028,7 +9182,7 @@
     <!-- http://en.wikipedia.org/wiki/+51 -->
     <territory id="PE">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9076,10 +9230,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B675 -->
     <territory id="PG">
       <generalDesc>
-        <nationalNumberPattern>
-          0\d{2}|
-          1\d{2,6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[01]\d{2,6}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-7]"/>
@@ -9110,7 +9261,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B63 -->
     <territory id="PH">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9172,10 +9323,9 @@
     <territory id="PL">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{2}(?:
+          [19]\d\d(?:
             \d{2,3}
-          )?|
-          9\d{2}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <!-- 19XXX short codes are mentioned as customer service numbers in the ITU doc. These are
@@ -9248,8 +9398,9 @@
     <territory id="PM">
       <generalDesc>
         <nationalNumberPattern>
-          1\d|
-          3103
+          [13]\d(?:
+            \d{2}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
@@ -9276,7 +9427,7 @@
     <!-- http://www.itu.int/oth/T02020000AA/en -->
     <territory id="PR">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9297,7 +9448,7 @@
     <!-- http://www.paltel.ps/ -->
     <territory id="PS">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9327,7 +9478,11 @@
     <!-- http://www.anacom.pt/render.jsp?categoryId=279098 -->
     <territory id="PT">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -9373,7 +9528,7 @@
     <!-- http://www.itu.int/oth/T02020000A2/en -->
     <territory id="PW">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9390,7 +9545,7 @@
     <!-- Paraguay -->
     <territory id="PY">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9438,7 +9593,7 @@
     <!-- http://www.itu.int/oth/T020200004B/en -->
     <territory id="RE">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -9468,7 +9623,13 @@
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
     <territory id="RO">
       <generalDesc>
-        <nationalNumberPattern>[18]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [18]\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,4,6"/>
@@ -9577,7 +9738,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B7 -->
     <territory id="RU">
       <generalDesc>
-        <nationalNumberPattern>[01]\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>[01]\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -9607,7 +9768,7 @@
     <!-- http://en.wikipedia.org/wiki/+250 -->
     <territory id="RW">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9722,7 +9883,7 @@
     <!-- Solomon Islands -->
     <territory id="SB">
       <generalDesc>
-        <nationalNumberPattern>[127-9]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[127-9]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9795,7 +9956,7 @@
     <!-- http://www.itu.int/oth/T02020000C4/en -->
     <territory id="SD">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -9997,7 +10158,11 @@
     <!-- http://www.itu.int/oth/T02020000BE/en -->
     <territory id="SI">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d{3}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,6"/>
@@ -10053,7 +10218,7 @@
     <!-- http://www.npt.no/pt_internet/numsys/E.164.pdf -->
     <territory id="SJ">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10127,7 +10292,11 @@
     <!-- http://www.itu.int/oth/T02020000BB/en -->
     <territory id="SL">
       <generalDesc>
-        <nationalNumberPattern>[069]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [069]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -10168,7 +10337,7 @@
     <!-- http://www.itu.int/oth/T02020000B5/en -->
     <territory id="SM">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10272,7 +10441,7 @@
     <!-- Somalia -->
     <territory id="SO">
       <generalDesc>
-        <nationalNumberPattern>[5789]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[57-9]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10321,7 +10490,7 @@
     <!-- http://www.itu.int/oth/T02020000B6/en -->
     <territory id="ST">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10343,7 +10512,11 @@
     <!-- http://www.itu.int/oth/T020200003F/en -->
     <territory id="SV">
       <generalDesc>
-        <nationalNumberPattern>[49]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [49]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -10377,7 +10550,7 @@
     <!-- http://www.itu.int/oth/T02020000F7/en -->
     <territory id="SX">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10397,7 +10570,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B963 -->
     <territory id="SY">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10415,7 +10588,7 @@
     <!-- http://www.itu.int/oth/T02020000C6/en -->
     <territory id="SZ">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10435,7 +10608,7 @@
     <!-- http://www.itu.int/oth/T02020000D8/en -->
     <territory id="TC">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10710,7 +10883,7 @@
     <!-- http://www.itu.int/oth/T02020000CA/en -->
     <territory id="TJ">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10737,7 +10910,7 @@
     <!-- Timor-Leste (East Timor) -->
     <territory id="TL">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10785,7 +10958,7 @@
     <!-- http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf -->
     <territory id="TN">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -10804,7 +10977,7 @@
     <!-- http://www.wtng.info/wtng-676-to.html -->
     <territory id="TO">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11147,7 +11320,7 @@
     <!-- http://www.itu.int/oth/T02020000D4/en -->
     <territory id="TT">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11166,7 +11339,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu -->
     <territory id="TV">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11189,7 +11362,7 @@
          chosen as the preferred extension prefix. -->
     <territory id="TW">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11207,7 +11380,11 @@
     <!-- http://www.itu.int/oth/T02020000CB/en -->
     <territory id="TZ">
       <generalDesc>
-        <nationalNumberPattern>[149]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [149]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
@@ -11320,7 +11497,7 @@
     <!-- http://www.ucc.co.ug/licensing/ugandaNumberingPlan.pdf -->
     <territory id="UG">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11552,7 +11729,13 @@
     <!-- http://www.itu.int/oth/T02020000E1/en -->
     <territory id="UZ">
       <generalDesc>
-        <nationalNumberPattern>[04]\d{1,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [04]\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3,5"/>
@@ -11601,7 +11784,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City -->
     <territory id="VA">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11619,7 +11802,7 @@
     <!-- http://www.itu.int/oth/T02020000B3/en -->
     <territory id="VC">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11651,7 +11834,7 @@
     <!-- http://wikitravel.org/en/Venezuela -->
     <territory id="VE">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11681,7 +11864,7 @@
     <!-- http://www.itu.int/oth/T020200001E/en -->
     <territory id="VG">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11711,7 +11894,7 @@
     <!-- http://www.itu.int/oth/T02020000DF/en -->
     <territory id="VI">
       <generalDesc>
-        <nationalNumberPattern>9\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11731,7 +11914,7 @@
     <!-- http://en.wikipedia.org/wiki/%2B84 -->
     <territory id="VN">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11749,7 +11932,7 @@
     <!-- http://www.itu.int/oth/T02020000E2/en -->
     <territory id="VU">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11786,7 +11969,7 @@
     <!-- http://www.itu.int/oth/T02020000B4/en -->
     <territory id="WS">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <!-- 608 is assigned to Adaway Publication centre, but it seems to be expired
            http://www.adaway.ws/ -->
@@ -11827,7 +12010,7 @@
     <!-- https://www.itu.int/oth/T02020000FD/en -->
     <territory id="XK">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11855,7 +12038,7 @@
     <!-- http://www.itu.int/oth/T02020000E7/en -->
     <territory id="YE">
       <generalDesc>
-        <nationalNumberPattern>1\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -11875,7 +12058,7 @@
     <!-- Mayotte -->
     <territory id="YT">
       <generalDesc>
-        <nationalNumberPattern>1\d{1,2}</nationalNumberPattern>
+        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
@@ -12010,7 +12193,7 @@
     <!-- http://www.itu.int/oth/T02020000E8/en -->
     <territory id="ZM">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
@@ -12038,7 +12221,11 @@
     <!-- http://www.itu.int/oth/T02020000E9/en -->
     <territory id="ZW">
       <generalDesc>
-        <nationalNumberPattern>[139]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [139]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>

@@ -1,3 +1,33 @@
+Jul 25, 2018: v8.9.11
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   878, 882, AC, AD, AE, AG, AI, AL, AM, AR, AS, AT, AU, AW, AX, AZ, BA, BB, BD,
+   BE, BG, BI, BL, BM, BO, BQ, BR, BS, BT, BW, BY, BZ, CA, CC, CD, CF, CG, CH,
+   CL, CM, CN, CO, CR, CU, CW, CX, CY, CZ, DE, DJ, DM, DO, DZ, EC, EE, EG, EH,
+   ES, ET, FI, FJ, FO, GA, GB, GD, GE, GF, GG, GH, GI, GL, GN, GP, GQ, GR, GT,
+   GU, GW, GY, HK, HR, HU, ID, IE, IL, IM, IN, IQ, IR, IS, IT, JE, JM, JO, JP,
+   KE, KG, KH, KI, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU,
+   LV, LY, MA, MC, MD, ME, MF, MH, ML, MM, MN, MO, MP, MQ, MR, MS, MT, MU, MV,
+   MW, MX, MY, MZ, NG, NI, NL, NO, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK,
+   PL, PM, PR, PS, PT, PW, PY, QA, RE, RO, RS, RW, SA, SB, SC, SE, SG, SH, SI,
+   SJ, SK, SL, SM, SN, SO, SR, ST, SV, SX, SY, SZ, TC, TD, TH, TJ, TL, TN, TO,
+   TR, TT, TV, TW, TZ, UG, UY, UZ, VA, VC, VE, VG, VI, VN, VU, WF, WS, XK, YE,
+   YT, ZA, ZM, ZW
+ - Updated short number metadata for region code(s):
+   AC, AD, AF, AG, AI, AO, AS, AT, AU, AW, AX, BB, BD, BE, BG, BH, BM, BN, BO,
+   BQ, BR, BS, BT, BW, BY, BZ, CA, CC, CD, CG, CK, CN, CO, CU, CV, CW, CX, CY,
+   DE, DK, DM, DO, DZ, EC, EG, EH, ER, ET, FI, FJ, FK, FM, FR, GA, GB, GD, GE,
+   GL, GM, GR, GU, GW, HK, HN, HT, HU, ID, IM, IS, JE, JM, JO, JP, KH, KN, KP,
+   KW, KY, LA, LB, LC, LK, LS, LT, LU, LV, LY, MA, MC, MG, MH, MK, ML, MM, MN,
+   MO, MP, MQ, MS, MT, MW, NC, NE, NF, NG, NL, NO, NP, NR, NU, PA, PE, PG, PH,
+   PL, PM, PR, PS, PT, PW, PY, RE, RO, RU, RW, SB, SD, SI, SJ, SL, SM, SO, ST,
+   SV, SX, SY, SZ, TC, TJ, TL, TN, TO, TT, TV, TW, TZ, UG, UZ, VA, VC, VE, VG,
+   VI, VN, VU, WS, XK, YE, YT, ZM, ZW
+ - New geocoding data for country calling code(s): 1975 (en)
+ - Updated geocoding data for country calling code(s): 39 (en, it)
+ - Updated carrier data for country calling code(s):
+   254 (en), 351 (en), 852 (en, zh, zh_Hant)
+
 Jul 10, 2018: v8.9.10
 Metadata changes:
  - Updated phone metadata for region code(s): AT, GB, IN, KE, MM, VN

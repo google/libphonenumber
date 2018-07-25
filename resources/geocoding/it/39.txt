@@ -151,6 +151,7 @@
 390588|Volterra
 39059|Modena
 3906|Roma
+3906698|Città del Vaticano
 39070|Cagliari
 39071|Ancona
 390721|Pesaro
