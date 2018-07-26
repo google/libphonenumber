@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 # Source: https://www.anacom.pt/pnn/pesquisa.do
 # Results of mobile ranges: https://anacom.pt/pnn/pnnSearch.do?channel=&jscript=on&languageId=0&ssl=false&dataInicioDia=dd&dataInicioMes=mm&dataInicioAno=yyyy&dataFimDia=dd&dataFimMes=mm&dataFimAno=yyyy&assunto=&estado=NON&css=143&css=144&css=145&css=150
 

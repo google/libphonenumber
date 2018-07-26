@@ -1,3 +1,14 @@
+Jul 25, 2018: v8.9.11
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, CC, CX, HK, IT, KE, KW, MM, NL, LU, VA
+ - Updated short number metadata for region code(s):
+   HK
+ - New geocoding data for country calling code(s): 1975 (en)
+ - Updated geocoding data for country calling code(s): 39 (en, it)
+ - Updated carrier data for country calling code(s):
+   254 (en), 351 (en), 852 (en, zh, zh_Hant)
+
 Jul 10, 2018: v8.9.10
 Metadata changes:
  - Updated phone metadata for region code(s): AT, GB, IN, KE, MM, VN
