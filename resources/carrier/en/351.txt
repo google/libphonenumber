@@ -12,15 +12,40 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Source: https://www.anacom.pt/pnn/pesquisa.do
+# Results of mobile ranges: https://anacom.pt/pnn/pnnSearch.do?channel=&jscript=on&languageId=0&ssl=false&dataInicioDia=dd&dataInicioMes=mm&dataInicioAno=yyyy&dataFimDia=dd&dataFimMes=mm&dataFimAno=yyyy&assunto=&estado=NON&css=143&css=144&css=145&css=150
+
 35191|Vodafone
-351922|TMN
-3519240|TMN
-3519241|TMN
-3519242|TMN
-3519243|TMN
-3519244|TMN
-351925|TMN
-351926|TMN
-351927|TMN
-35193|Optimus
-35196|TMN
+3519200|Lycamobile
+3519201|Lycamobile
+3519202|Lycamobile
+3519203|Lycamobile
+3519204|Lycamobile
+3519205|Lycamobile
+351921|Vodafone
+3519220|CTT
+3519221|CTT
+3519222|CTT
+3519230|Vectone
+3519231|Vectone
+3519232|Vectone
+3519233|Vectone
+3519234|Vectone
+3519240|MEO
+3519241|MEO
+3519242|MEO
+3519243|MEO
+3519244|MEO
+351925|MEO
+351926|MEO
+351927|MEO
+3519280|NOWO
+3519281|NOWO
+3519285|ONITELECOM
+3519290|NOS
+3519291|NOS
+3519292|NOS
+3519293|NOS
+3519294|NOS
+35193|NOS
+35196|MEO
