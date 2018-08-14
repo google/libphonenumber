@@ -69,9 +69,7 @@ class RegExpAdapterTest : public testing::Test {
 #endif  // I18N_PHONENUMBERS_USE_RE2
   }
 
-  ~RegExpAdapterTest() {
-    STLDeleteElements(&contexts_);
-  }
+  ~RegExpAdapterTest() { gtl::STLDeleteElements(&contexts_); }
 
   static string ErrorMessage(const RegExpTestContext& context) {
     return StrCat("Test failed with ", context.name, " implementation.");

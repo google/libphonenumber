@@ -17,7 +17,6 @@
 #include "phonenumbers/geocoding/phonenumber_offline_geocoder.h"
 
 #include <algorithm>
-#include <map>
 #include <string>
 
 #include <unicode/unistr.h>  // NOLINT(build/include_order)
@@ -32,7 +31,6 @@ namespace i18n {
 namespace phonenumbers {
 
 using icu::UnicodeString;
-using std::map;
 using std::string;
 
 namespace {
@@ -77,7 +75,7 @@ void PhoneNumberOfflineGeocoder::Init(
 }
 
 PhoneNumberOfflineGeocoder::~PhoneNumberOfflineGeocoder() {
-  STLDeleteContainerPairSecondPointers(
+  gtl::STLDeleteContainerPairSecondPointers(
       available_maps_.begin(), available_maps_.end());
 }
 
