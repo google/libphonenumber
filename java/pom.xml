@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.9.12-SNAPSHOT</version>
+  <version>8.9.11-SNAPSHOT</version>
   <packaging>pom</packaging>
   <url>https://github.com/googlei18n/libphonenumber/</url>
 
@@ -158,6 +158,16 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>sonatype-nexus-staging</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <stagingProfileId>23ed8fbc71e875</stagingProfileId>
         </configuration>
       </plugin>
     </plugins>
