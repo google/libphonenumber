@@ -2847,7 +2847,7 @@
         <exampleNumber>470123456</exampleNumber>
         <nationalNumberPattern>
           4(?:
-            56|
+            5[56]|
             6[0135-8]|
             [79]\d|
             8[3-9]
