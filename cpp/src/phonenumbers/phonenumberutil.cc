@@ -51,6 +51,7 @@ namespace i18n {
 namespace phonenumbers {
 
 using google::protobuf::RepeatedField;
+using gtl::OrderByFirst;
 
 // static constants
 const size_t PhoneNumberUtil::kMinLengthForNsn;
@@ -808,7 +809,7 @@ PhoneNumberUtil::PhoneNumberUtil()
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {
-  STLDeleteContainerPairSecondPointers(
+  gtl::STLDeleteContainerPairSecondPointers(
       country_calling_code_to_region_code_map_->begin(),
       country_calling_code_to_region_code_map_->end());
 }
