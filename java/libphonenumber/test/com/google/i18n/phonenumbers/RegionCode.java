@@ -51,6 +51,7 @@ final class RegionCode {
   static final String PG = "PG";
   static final String PL = "PL";
   static final String RE = "RE";
+  static final String RU = "RU";
   static final String SE = "SE";
   static final String SG = "SG";
   static final String US = "US";

@@ -227,7 +227,7 @@ string CreateExtnPattern(const string& single_extn_symbols) {
           "[:\\.．]?[  \\t,-]*", capturing_extn_digits, "#?|" */
       "[ \xC2\xA0\\t,]*(?:e?xt(?:ensi(?:o\xCC\x81?|\xC3\xB3))?n?|"
       "(?:\xEF\xBD\x85)?\xEF\xBD\x98\xEF\xBD\x94(?:\xEF\xBD\x8E)?|"
-      "[", single_extn_symbols, "]|int|"
+      "доб|[", single_extn_symbols, "]|int|"
       "\xEF\xBD\x89\xEF\xBD\x8E\xEF\xBD\x94|anexo)"
       "[:\\.\xEF\xBC\x8E]?[ \xC2\xA0\\t,-]*", capturing_extn_digits,
       "#?|[- ]+([", kDigits, "]{1,5})#"));
