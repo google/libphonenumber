@@ -59,6 +59,7 @@ i18n.phonenumbers.RegionCode = {
   NZ: 'NZ',
   PL: 'PL',
   RE: 'RE',
+  RU: 'RU',
   SE: 'SE',
   SG: 'SG',
   US: 'US',
