@@ -8444,7 +8444,7 @@
     <!-- http://www.skmm.gov.my -->
     <territory id="MY">
       <generalDesc>
-        <nationalNumberPattern>[139]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[1369]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
@@ -8497,9 +8497,17 @@
             )
           )|
           3[23679]\d{3}|
+          66628|
           99[1-469]
         </nationalNumberPattern>
       </shortCode>
+      <!-- Maybank mentions end user pays standard SMS charges for messaging 66628:
+           https://www.maybank2u.com.my/iwov-resources/pdf/personal/promotions/MUCards_TnC.pdf -->
+      <standardRate>
+        <possibleLengths national="5"/>
+        <exampleNumber>66628</exampleNumber>
+        <nationalNumberPattern>66628</nationalNumberPattern>
+      </standardRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
@@ -8513,11 +8521,16 @@
         <exampleNumber>991</exampleNumber>
         <nationalNumberPattern>99[1-46]</nationalNumberPattern>
       </expandedEmergency>
-      <!-- http://www.skmm.gov.my/FAQs/Mobile-Content-Services/What-is-a-common-short-code.aspx -->
+      <!-- http://www.skmm.gov.my/FAQs/Mobile-Content-Services/What-is-a-common-short-code.aspx
+           66628: https://www.maybank2u.com.my/iwov-resources/pdf/personal/promotions/MUCards_TnC.pdf
+           -->
       <smsServices>
         <possibleLengths national="5"/>
         <exampleNumber>36000</exampleNumber>
-        <nationalNumberPattern>3[23679]\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>
+          3[23679]\d{3}|
+          66628
+        </nationalNumberPattern>
       </smsServices>
     </territory>
 

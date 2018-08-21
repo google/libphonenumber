@@ -33,6 +33,16 @@
 84186|Vietnamobile
 84188|Vietnamobile
 84199|G-Mobile
+843|Viettel Mobile
+84522|Vietnamobile
+84523|Vietnamobile
+8456|Vietnamobile
+8458|Vietnamobile
+8481|Vinaphone
+8482|Vinaphone
+8483|Vinaphone
+8484|Vinaphone
+8485|Vinaphone
 84866|Viettel Mobile
 84868|Viettel Mobile
 84869|Viettel Mobile
