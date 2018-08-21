@@ -101,10 +101,8 @@
 <phoneNumberMetadata>
   <territories>
     <!-- Ascension Island -->
+    <!-- http://www.itu.int/oth/T02020000AF/en -->
     <territory id="AC" countryCode="247" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AF/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -132,10 +130,8 @@
     </territory>
 
     <!-- Andorra -->
+    <!-- http://www.itu.int/oth/T0202000005/en -->
     <territory id="AD" countryCode="376" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000005/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})">
           <leadingDigits>[136-9]</leadingDigits>
@@ -202,11 +198,9 @@
     </territory>
 
     <!-- United Arab Emirates -->
+    <!-- http://www.itu.int/oth/T02020000DC/en -->
     <territory id="AE" countryCode="971" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000DC/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2-4679])(\d{3})(\d{4})">
           <leadingDigits>[2-4679][2-8]</leadingDigits>
@@ -273,11 +267,9 @@
     </territory>
 
     <!-- Afghanistan -->
+    <!-- http://www.itu.int/oth/T0202000001/en -->
     <territory id="AF" countryCode="93" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000001/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting based primarily on ITU document. -->
         <numberFormat pattern="([2-7]\d)(\d{3})(\d{4})">
@@ -315,11 +307,9 @@
 
     <!-- Antigua and Barbuda -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000008/en -->
     <territory id="AG" countryCode="1" leadingDigits="268" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000008/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -413,11 +403,9 @@
 
     <!-- Anguilla -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000007/en -->
     <territory id="AI" countryCode="1" leadingDigits="264" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000007/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -494,11 +482,9 @@
     </territory>
 
     <!-- Albania -->
+    <!-- http://www.itu.int/oth/T0202000002/en -->
     <territory id="AL" countryCode="355" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000002/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formats mostly follow http://tirana.usembassy.gov/list_of_doctors.html -->
         <numberFormat pattern="(4)(\d{3})(\d{4})">
@@ -596,13 +582,11 @@
     <!-- We think the national dialling prefix is 0 - it seems this was a change in 2005 (or 2008)
          along with the new city codes. However, their official document makes no mention of it,
          websites disagree, and we are not sure if the change has actually been made. -->
+    <!-- http://www.itu.int/oth/T020200000A/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B374 -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Nagorno-Karabakh_Republic -->
     <territory id="AM" countryCode="374" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200000A/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B374</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Nagorno-Karabakh_Republic</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{6})">
           <leadingDigits>
@@ -709,10 +693,8 @@
     </territory>
 
     <!-- Angola -->
+    <!-- http://www.itu.int/oth/T0202000006/en -->
     <territory id="AO" countryCode="244" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000006/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <format>$1 $2 $3</format>
@@ -746,6 +728,10 @@
          which will be stripped if present. We expect the following combinations: 0AC15 and AC15
          (where the 0 and 15 will be stripped, and it will be transformed into 9AC), 0, and 15 (in
          the latter two cases we just strip the 0 or 15 as appropriate and leave the number as is.) -->
+    <!-- http://www.itu.int/oth/T0202000009/en -->
+    <!-- https://www.enacom.gob.ar/indicativos-de-servicio_p141 -->
+    <!-- https://www.enacom.gob.ar/indicativos-interurbanos_p143 -->
+    <!-- http://en.wikipedia.org/wiki/+54 -->
     <territory id="AR" countryCode="54" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixForParsing="
                  0?(?:
@@ -848,12 +834,6 @@
                  )?"
                nationalPrefixTransformRule="9$1" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000009/en</sourceUrl>
-        <sourceUrl>https://www.enacom.gob.ar/indicativos-de-servicio_p141</sourceUrl>
-        <sourceUrl>https://www.enacom.gob.ar/indicativos-interurbanos_p143</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+54</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([68]\d{2})(\d{3})(\d{4})">
           <leadingDigits>[68]</leadingDigits>
@@ -1350,11 +1330,9 @@
 
     <!-- American Samoa -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000004/en -->
     <territory id="AS" countryCode="1" leadingDigits="684" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000004/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -1435,11 +1413,9 @@
     </territory>
 
     <!-- Austria -->
+    <!-- http://www.rtr.at/en/tk/E129 -->
     <territory id="AT" countryCode="43" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.rtr.at/en/tk/E129</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(116\d{3})" nationalPrefixFormattingRule="$FG">
           <leadingDigits>116</leadingDigits>
@@ -1651,15 +1627,13 @@
          "Provider override codes" with the default IDD (0011) following, or the default IDD,
          or the other IDD codes for non-default carriers. -->
     <!-- Main region for 'CC,CX' -->
+    <!-- http://www.itu.int/oth/T020200000D/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia -->
+    <!-- https://www.thenumberingsystem.com.au/#/number-register/search -->
     <territory id="AU" mainCountryForCode="true" countryCode="61"
                preferredInternationalPrefix="0011"
                internationalPrefix="(?:14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011)|001[14-689]"
                nationalPrefix="0" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200000D/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia</sourceUrl>
-        <sourceUrl>https://www.thenumberingsystem.com.au/#/number-register/search</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2378])(\d{4})(\d{4})" nationalPrefixFormattingRule="($NP$FG)">
           <leadingDigits>[2378]</leadingDigits>
@@ -1711,7 +1685,10 @@
       <generalDesc>
         <nationalNumberPattern>
           1\d{4,9}|
-          [2-578]\d{8}
+          (?:
+            [2-478]\d\d|
+            550
+          )\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
@@ -1763,17 +1740,12 @@
           )\d{3}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- Includes MobileSat and Thuraya satellite services. According to the wikipedia page,
-           other ranges 14[1-3] are not currently used. Note CC and CX should be updated as well
-           if this pattern changes. Prefix 472 and 480 is added based on user report. -->
+      <!-- Note CC and CX should be updated as well if this pattern changes. Prefix 472 and 480 is
+           added based on user report. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
-          14(?:
-            5\d|
-            71
-          )\d{5}|
           4(?:
             [0-3]\d|
             4[047-9]|
@@ -1824,26 +1796,27 @@
           )\d{3}
         </nationalNumberPattern>
       </sharedCost>
-      <!-- Wikipedia was the source for these types of numbers, and number allocation search here
-           http://web.acma.gov.au/numb/openAccess/inquiry/allocationSearch.do confirms this. (Search
-           from 0500000000 to 0590000000) -->
-      <personalNumber>
-        <possibleLengths national="9"/>
-        <exampleNumber>500123456</exampleNumber>
-        <nationalNumberPattern>500\d{6}</nationalNumberPattern>
-      </personalNumber>
+      <!-- Includes MobileSat and Thuraya satellite services. According to the wikipedia page,
+           other ranges 14[1-3] are not currently used. Supporting them here as VOIP is the closest
+           match. -->
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>550123456</exampleNumber>
-        <nationalNumberPattern>550\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            14(?:
+              5\d|
+              71
+            )|
+            550\d
+          )\d{5}
+        </nationalNumberPattern>
       </voip>
     </territory>
 
     <!-- Aruba -->
+    <!-- http://www.itu.int/oth/T020200000B/en -->
     <territory id="AW" countryCode="297" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200000B/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -1920,12 +1893,10 @@
     <!-- Not supporting national long distance carrier codes as these are overlapping with UAN
          ranges mentioned in ITU doc. -->
     <!-- Calling code and formatting shared with 'FI' -->
+    <!-- https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html -->
     <territory id="AX" countryCode="358" preferredInternationalPrefix="00"
                internationalPrefix="00|99(?:[01469]|5(?:11|3[23]|41|5[59]|77|88|9[09]))"
                nationalPrefix="0">
-      <references>
-        <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           1\d{5,11}|
@@ -2015,11 +1986,9 @@
     </territory>
 
     <!-- Azerbaijan -->
+    <!-- http://www.itu.int/oth/T020200000F/en -->
     <territory id="AZ" countryCode="994" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200000F/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
           <leadingDigits>
@@ -2116,12 +2085,10 @@
 
     <!-- Bosnia and Herzegovina -->
     <!-- accessible from http://www.cra.ba/en/telecom/numbering/ -->
+    <!-- http://www.rak.ba/eng/index.php?uid=1272016657 -->
+    <!-- http://en.wikipedia.org/wiki/+387 -->
     <territory id="BA" countryCode="387" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.rak.ba/eng/index.php?uid=1272016657</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+387</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
           <leadingDigits>[3-5]</leadingDigits>
@@ -2225,11 +2192,9 @@
 
     <!-- Barbados -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000013/en -->
     <territory id="BB" countryCode="1" leadingDigits="246" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000013/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -2361,13 +2326,11 @@
     <!-- As per official evidence, 001 and 002 can be used for International dialing covering toll
          quality and non-toll quality services. But these are not in use according to our tests
          (see b/29552679). -->
+    <!-- http://www.itu.int/oth/T0202000012/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Bangladesh -->
+    <!-- http://www.btrc.gov.bd/national-numbering-plan -->
     <territory id="BD" countryCode="880" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000012/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Bangladesh</sourceUrl>
-        <sourceUrl>http://www.btrc.gov.bd/national-numbering-plan</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(2)(\d{7,8})">
           <leadingDigits>2</leadingDigits>
@@ -2442,8 +2405,8 @@
            2, others do not - both are allowed for now. For some area codes, the subscriber number
            length described in our source documentation doesn't match numbers online (e.g. 05222)
            so we allow both for now. (This applies to 0431, 04329, 04623, 05327 as well). We have
-           also added 04452 and 04923 from numbers found online. Included prefixes 2778, 2841 and
-           2989 as per user report. 9-digit 24 and 25 prefix numbers were added based on user
+           also added 04452 and 04923 from numbers found online. Included prefixes 2778, 2841, 2989
+           and 4462 as per user report. 9-digit 24 and 25 prefix numbers were added based on user
            reports, although a doc from BRTC mentions that they are 10-digit numbers, which we
            think might be a typo. -->
       <fixedLine>
@@ -2590,14 +2553,15 @@
                 [57]\d{1,2}|
                 6\d{2}|
                 8
-              )
+              )|
+              62\d{2}
             )|
             71\d{2}|
             8(?:
-              [18]\d{2}|
-              23\d{2}|
-              54\d{2}
-            )|
+              [18]|
+              23|
+              54
+            )\d{2}|
             9(?:
               [18]\d{2}|
               2[2-5]\d{2}|
@@ -2778,13 +2742,11 @@
     </territory>
 
     <!-- Belgium -->
+    <!-- http://www.bipt.be/en/operators/telecommunication/Numbering/Database -->
+    <!-- http://www.bipt.be/public/files/en/474/20140829153659_Belgian_numbering_plan -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Belgium -->
     <territory id="BE" countryCode="32" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.bipt.be/en/operators/telecommunication/Numbering/Database</sourceUrl>
-        <sourceUrl>http://www.bipt.be/public/files/en/474/20140829153659_Belgian_numbering_plan</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Belgium</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>4[5-9]</leadingDigits>
@@ -2896,11 +2858,9 @@
     </territory>
 
     <!-- Burkina Faso -->
+    <!-- http://www.itu.int/oth/T0202000021/en -->
+    <!-- http://www.onatel.bf/plan-national-de-numerotation.aspx -->
     <territory id="BF" countryCode="226" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000021/en</sourceUrl>
-        <sourceUrl>http://www.onatel.bf/plan-national-de-numerotation.aspx</sourceUrl>
-      </references>
       <availableFormats>
         <!-- The national numbering plan from ITU suggests grouping of 2, 2 and 4, but we have
              chosen to use the standard from numbers found on the internet instead. -->
@@ -2949,12 +2909,10 @@
     </territory>
 
     <!-- Bulgaria -->
+    <!-- http://www.itu.int/oth/T0202000020/en -->
+    <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Bulgaria -->
     <territory id="BG" countryCode="359" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000020/en</sourceUrl>
-        <sourceUrl>https://en.wikipedia.org/wiki/Telephone_numbers_in_Bulgaria</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting rules follow the conventions seen in web-search results. A space has been
              used to separate the area code from the rest of the number, based on sites like
@@ -3078,12 +3036,10 @@
     </territory>
 
     <!-- Bahrain -->
+    <!-- http://www.itu.int/oth/T0202000011/en -->
+    <!-- http://www.tra.org.bh/en/marketNumbering.aspx -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Bahrain -->
     <territory id="BH" countryCode="973" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000011/en</sourceUrl>
-        <sourceUrl>http://www.tra.org.bh/en/marketNumbering.aspx</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Bahrain</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -3182,10 +3138,8 @@
     </territory>
 
     <!-- Burundi -->
+    <!-- http://www.itu.int/oth/T0202000022/en -->
     <territory id="BI" countryCode="257" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000022/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -3226,11 +3180,9 @@
     </territory>
 
     <!-- Benin -->
+    <!-- http://www.itu.int/oth/T0202000017/en -->
+    <!-- http://arcep.bj/textes-juridiques/nos-decisions/ -->
     <territory id="BJ" countryCode="229" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000017/en</sourceUrl>
-        <sourceUrl>http://arcep.bj/textes-juridiques/nos-decisions/</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[2689]</leadingDigits>
@@ -3289,12 +3241,10 @@
          available in these regions are used. In these cases, if getRegionCodeForNumber is used, one
          of these region codes will be returned, although numbers will be valid for both regions. -->
     <!-- Calling code and formatting shared with 'GP' -->
+    <!-- http://www.itu.int/oth/T0202000058/en -->
+    <!-- https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx -->
     <territory id="BL" countryCode="590" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000058/en</sourceUrl>
-        <sourceUrl>https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -3337,11 +3287,9 @@
 
     <!-- Bermuda -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000018/en -->
     <territory id="BM" countryCode="1" leadingDigits="441" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000018/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -3421,11 +3369,9 @@
     </territory>
 
     <!-- Brunei Darussalam -->
+    <!-- http://www.itu.int/oth/T020200001F/en -->
+    <!-- Format is from http://aiti.gov.bn/contact.html -->
     <territory id="BN" countryCode="673" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200001F/en</sourceUrl>
-      </references>
-      <!-- Format is from http://aiti.gov.bn/contact.html -->
       <availableFormats>
         <numberFormat pattern="([2-578]\d{2})(\d{4})">
           <leadingDigits>[2-578]</leadingDigits>
@@ -3457,12 +3403,10 @@
     </territory>
 
     <!-- Bolivia -->
+    <!-- http://www.itu.int/oth/T020200001A/en -->
+    <!-- http://www.bolivia.com/Servicios/Plandenumeracion.pdf -->
     <territory id="BO" countryCode="591" internationalPrefix="00(1\d)?" nationalPrefix="0"
                nationalPrefixForParsing="0(1\d)?" carrierCodeFormattingRule="$NP$CC $FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200001A/en</sourceUrl>
-        <sourceUrl>http://www.bolivia.com/Servicios/Plandenumeracion.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([234])(\d{7})">
           <leadingDigits>[2-4]</leadingDigits>
@@ -3556,10 +3500,8 @@
 
     <!-- Bonaire, Sint Eustatius and Saba -->
     <!-- Calling code and formatting shared with 'CW' -->
+    <!-- http://www.itu.int/oth/T02020000F8/en -->
     <territory id="BQ" countryCode="599" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000F8/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -3610,6 +3552,12 @@
     </territory>
 
     <!-- Brazil -->
+    <!-- http://en.wikipedia.org/wiki/%2B55 -->
+    <!-- http://www.itu.int/oth/T020200001D/en -->
+    <!-- The national prefix for parsing here also contains a capturing group for the main number,
+         since the carrier codes here may also be area codes, so we want to check the length of
+         the number after capturing. We also need a nationalTransformRule to repopulate with the
+         number without the carrier code. -->
     <territory id="BR" countryCode="55" internationalPrefix="00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)"
                nationalPrefix="0"
                nationalPrefixForParsing="
@@ -3626,14 +3574,6 @@
                    )
                  )?"
                nationalPrefixTransformRule="$2" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B55</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T020200001D/en</sourceUrl>
-      </references>
-      <!-- The national prefix for parsing here also contains a capturing group for the main number,
-           since the carrier codes here may also be area codes, so we want to check the length of
-           the number after capturing. We also need a nationalTransformRule to repopulate with the
-           number without the carrier code. -->
       <availableFormats>
         <!-- First handle X00, 4020 and 4370, i.e. all phone numbers other than fixed-line or
              mobile; this simplifies the fixed-line and mobile formatting patterns so they don't
@@ -3834,11 +3774,9 @@
 
     <!-- Bahamas -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000010/en -->
     <territory id="BS" countryCode="1" leadingDigits="242" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000010/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -3973,10 +3911,8 @@
          added as there is no information on length of numbers. -->
     <!-- Pager service prefix 91 is not added as there is no information on
          length of numbers. -->
+    <!-- http://www.itu.int/oth/T0202000019/en -->
     <territory id="BT" countryCode="975" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000019/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Format is from
              http://www.tourism.gov.bt/tour-operators/bhutan-abbot-tours-and-travels.html -->
@@ -4028,10 +3964,8 @@
     </territory>
 
     <!-- Botswana -->
+    <!-- http://www.itu.int/oth/T020200001C/en -->
     <territory id="BW" countryCode="267" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200001C/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[2-6]</leadingDigits>
@@ -4122,12 +4056,10 @@
 
     <!-- Belarus -->
     <!-- Information on national prefix provided by a Belarussian person. -->
+    <!-- http://www.eng.beltelecom.by/en/subscribers/phone-codes -->
     <territory id="BY" countryCode="375" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" nationalPrefixForParsing="8?0?"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.eng.beltelecom.by/en/subscribers/phone-codes</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP 0$FG">
           <leadingDigits>
@@ -4356,10 +4288,8 @@
 
     <!-- Belize -->
     <!-- The trunk prefix, formally 0, was dropped in the last reorganisation of the numbering plan. -->
+    <!-- http://www.itu.int/oth/T0202000016/en -->
     <territory id="BZ" countryCode="501" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000016/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Adding hyphen following the Belize Telemedia formatting rules. -->
         <numberFormat pattern="(\d{3})(\d{4})">
@@ -4422,11 +4352,9 @@
 
     <!-- Canada -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.cnac.ca/canadian_dial_plan/canadian_dial_plan.htm -->
     <territory id="CA" countryCode="1" internationalPrefix="011" nationalPrefix="1"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.cnac.ca/canadian_dial_plan/canadian_dial_plan.htm</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -4586,18 +4514,19 @@
     <!-- Cocos Islands -->
     <!-- References state Cocos Islands have fixed line numbers starting +61 8 9162. -->
     <!-- Calling code and formatting shared with 'AU' -->
+    <!-- http://en.wikipedia.org/wiki/List_of_country_calling_codes -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia -->
+    <!-- https://www.thenumberingsystem.com.au/#/number-register/search -->
     <territory id="CC" countryCode="61" preferredInternationalPrefix="0011"
                internationalPrefix="(?:14(?:1[14]|34|4[17]|[56]6|7[47]|88))?001[14-689]"
                nationalPrefix="0">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/List_of_country_calling_codes</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia</sourceUrl>
-        <sourceUrl>https://www.thenumberingsystem.com.au/#/number-register/search</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           1\d{5,9}|
-          [458]\d{8}
+          (?:
+            [48]\d\d|
+            550
+          )\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -4640,15 +4569,11 @@
           )\d{3}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- Mobile, toll free, premium rate, personal number and VOIP copied from Australia. -->
+      <!-- Mobile, toll free, premium rate and VOIP copied from Australia. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
-          14(?:
-            5\d|
-            71
-          )\d{5}|
           4(?:
             [0-3]\d|
             4[047-9]|
@@ -4684,32 +4609,35 @@
            although they charge a small local call connect fee (around 25c). These start with 13
            or 1300. -->
       <sharedCost>
-        <possibleLengths national="6,10"/>
+        <possibleLengths national="6,8,10"/>
         <exampleNumber>1300123456</exampleNumber>
         <nationalNumberPattern>
           13(?:
-            00\d{2}
-          )?\d{4}
+            00\d{3}|
+            45[0-4]|
+            \d
+          )\d{3}
         </nationalNumberPattern>
       </sharedCost>
-      <personalNumber>
-        <possibleLengths national="9"/>
-        <exampleNumber>500123456</exampleNumber>
-        <nationalNumberPattern>500\d{6}</nationalNumberPattern>
-      </personalNumber>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>550123456</exampleNumber>
-        <nationalNumberPattern>550\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            14(?:
+              5\d|
+              71
+            )|
+            550\d
+          )\d{5}
+        </nationalNumberPattern>
       </voip>
     </territory>
 
     <!-- Congo, Dem. Rep. of the (formerly Zaire) -->
+    <!-- http://www.itu.int/oth/T0202000037/en -->
     <territory id="CD" countryCode="243" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000037/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <leadingDigits>12</leadingDigits>
@@ -4768,10 +4696,8 @@
     </territory>
 
     <!-- Central African Republic -->
+    <!-- http://www.itu.int/oth/T0202000028/en -->
     <territory id="CF" countryCode="236" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000028/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -4803,10 +4729,8 @@
     </territory>
 
     <!-- Congo (Rep. of the) (Brazzaville) -->
+    <!-- http://www.itu.int/oth/T020200002E/en -->
     <territory id="CG" countryCode="242" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200002E/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>801</leadingDigits>
@@ -4858,11 +4782,9 @@
 
     <!-- Switzerland -->
     <!-- Under Technical prescriptions: Numbering plan for international carriers. -->
+    <!-- http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en -->
     <territory id="CH" countryCode="41" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2-9]\d)(\d{3})(\d{2})(\d{2})">
           <leadingDigits>
@@ -4948,11 +4870,9 @@
     </territory>
 
     <!-- Côte d'Ivoire -->
+    <!-- http://www.itu.int/oth/T0202000031/en -->
+    <!-- http://fr.wikipedia.org/wiki/Liste_des_indicatifs_téléphoniques_en_Côte_d’Ivoire -->
     <territory id="CI" countryCode="225" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000031/en</sourceUrl>
-        <sourceUrl>http://fr.wikipedia.org/wiki/Liste_des_indicatifs_téléphoniques_en_Côte_d’Ivoire</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Using format from online yellow pages over format implied in national numbering plan. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
@@ -5003,10 +4923,8 @@
     </territory>
 
     <!-- Cook Islands -->
+    <!-- http://www.itu.int/oth/T020200002F/en -->
     <territory id="CK" countryCode="682" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200002F/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})">
           <format>$1 $2</format>
@@ -5038,17 +4956,15 @@
          nationalNumberPatterns are maintained in both fixed-line and mobile categories. -->
     <!-- According to subtel.gob.cl as of August 2014, nationalPrefix(0) and carrier codes are not
          required to make a call between fixed-line and mobile in Chile. -->
+    <!-- http://www.itu.int/oth/T020200002A/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B56 -->
+    <!-- http://www.subtel.gob.cl/base_numeracion/tabla_numeracion_ido_idd.xlsx -->
+    <!-- When dialling mobile numbers from landlines, or vice versa, you need a prefix of 0, which
+         we strip here. National destinations may be dialled with a carrier if they are not local
+         so we extract these carrier codes as well. -->
     <territory id="CL" countryCode="56"
                internationalPrefix="(?:0|1(?:1[0-69]|2[0-57]|5[13-58]|69|7[0167]|8[018]))0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200002A/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B56</sourceUrl>
-        <sourceUrl>http://www.subtel.gob.cl/base_numeracion/tabla_numeracion_ido_idd.xlsx</sourceUrl>
-      </references>
-      <!-- When dialling mobile numbers from landlines, or vice versa, you need a prefix of 0, which
-           we strip here. National destinations may be dialled with a carrier if they are not local
-           so we extract these carrier codes as well. -->
       <availableFormats>
         <numberFormat pattern="(\d)(\d{4})(\d{4})" nationalPrefixFormattingRule="($FG)">
           <leadingDigits>2[23]</leadingDigits>
@@ -5122,8 +5038,8 @@
            already numbers with the prefix "23" are being added.
            See: http://www.gob.cl/especiales/informate-de-la-nueva-forma-de-marcar/
                 http://www.subtel.cl/index.php?option=com_content&view=article&id=3081:&catid=3:noticias
-           Added prefixes 2323 and 2326 range based on online evidence. Added prefixes 2324 and
-           2327 based on user reports. -->
+           Added prefixes 2323 and 2326 range based on online evidence. Added prefixes 2324, 2327
+           and 2328 based on user reports. -->
       <fixedLine>
         <possibleLengths national="9"/>
         <exampleNumber>221234567</exampleNumber>
@@ -5131,7 +5047,7 @@
           2(?:
             1962\d{4}|
             2\d{7}|
-            32[0-467]\d{5}
+            32[0-46-8]\d{5}
           )|
           (?:
             3[2-5]\d|
@@ -5154,7 +5070,7 @@
           2(?:
             1962\d{4}|
             2\d{7}|
-            32[0-467]\d{5}
+            32[0-46-8]\d{5}
           )|
           (?:
             3[2-5]\d|
@@ -5194,11 +5110,9 @@
     </territory>
 
     <!-- Cameroon -->
+    <!-- http://www.itu.int/oth/T0202000024/en -->
+    <!-- http://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-OB.1063-2014-OAS-PDF-E.pdf -->
     <territory id="CM" countryCode="237" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000024/en</sourceUrl>
-        <sourceUrl>http://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-OB.1063-2014-OAS-PDF-E.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting in the ITU update document aligns with formatting online (all 2 digit
              groups). For the new number format with 9 digits the first digit has it's own group. -->
@@ -5254,12 +5168,11 @@
     <!-- China -->
     <!-- The international/national prefix patterns must not collide with valid prefixes such
          as 17[0678] and 19[89]. 179XX00 is a valid calling prefix, see: www.chahaoba.com/179 -->
+    <!-- http://www.itu.int/oth/T020200002B/en -->
+    <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_China -->
     <territory id="CN" countryCode="86" preferredInternationalPrefix="00"
                internationalPrefix="(?:1(?:[12]\d{3}|79\d{2}|9[0-7]\d{2}))?00" nationalPrefix="0"
                nationalPrefixForParsing="(1(?:[12]\d{3}|79\d{2}|9[0-7]\d{2}))|0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200002B/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([48]00)(\d{3})(\d{4})">
           <leadingDigits>[48]00</leadingDigits>
@@ -5739,13 +5652,11 @@
     <!-- Extra international dialling prefixes from http://www.claro.com.co and
          http://www.tigo.com.co. -->
     <!-- 05 and 005 are for Orbitel: co.orbitel.com -->
+    <!-- http://www.itu.int/oth/T020200002C/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia -->
     <territory id="CO" countryCode="57" internationalPrefix="00(?:4(?:[14]4|56)|[579])"
                nationalPrefix="0" nationalPrefixForParsing="0([3579]|4(?:44|56))?"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200002C/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{7})" nationalPrefixFormattingRule="($FG)"
                       carrierCodeFormattingRule="$NP$CC $FG">
@@ -5839,13 +5750,11 @@
     </territory>
 
     <!-- Costa Rica -->
+    <!-- http://www.itu.int/oth/T0202000030/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Costa_Rica -->
     <territory id="CR" countryCode="506" internationalPrefix="00"
                nationalPrefixForParsing="(19(?:0[012468]|1[09]|20|66|77|99))"
                carrierCodeFormattingRule="$CC $FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000030/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Costa_Rica</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
@@ -5927,11 +5836,9 @@
     </territory>
 
     <!-- Cuba -->
+    <!-- http://www.itu.int/oth/T0202000033/en -->
     <territory id="CU" countryCode="53" internationalPrefix="119" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000033/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{6,7})">
           <leadingDigits>7</leadingDigits>
@@ -5978,10 +5885,8 @@
     </territory>
 
     <!-- Cape Verde -->
+    <!-- http://www.itu.int/oth/T0202000026/en -->
     <territory id="CV" countryCode="238" internationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000026/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})">
           <format>$1 $2 $3</format>
@@ -6024,11 +5929,9 @@
 
     <!-- Curaçao -->
     <!-- Main region for 'BQ' -->
+    <!-- http://www.itu.int/oth/T02020000F5/en -->
+    <!-- All the formatting patterns for country-code 599 are here. -->
     <territory id="CW" mainCountryForCode="true" countryCode="599" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000F5/en</sourceUrl>
-      </references>
-      <!-- All the formatting patterns for country-code 599 are here. -->
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[13-7]</leadingDigits>
@@ -6101,18 +6004,19 @@
     <!-- Christmas Islands -->
     <!-- References state Christmas Islands have fixed line numbers starting +61 8 9164. -->
     <!-- Calling code and formatting shared with 'AU' -->
+    <!-- http://en.wikipedia.org/wiki/List_of_country_calling_codes -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia -->
+    <!-- https://www.thenumberingsystem.com.au/#/number-register/search -->
     <territory id="CX" countryCode="61" preferredInternationalPrefix="0011"
                internationalPrefix="(?:14(?:1[14]|34|4[17]|[56]6|7[47]|88))?001[14-689]"
                nationalPrefix="0">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/List_of_country_calling_codes</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia</sourceUrl>
-        <sourceUrl>https://www.thenumberingsystem.com.au/#/number-register/search</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           1\d{5,9}|
-          [458]\d{8}
+          (?:
+            [48]\d\d|
+            550
+          )\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -6159,15 +6063,11 @@
           )\d{3}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- Mobile, toll free, premium rate, personal number and VOIP copied from Australia. -->
+      <!-- Mobile, toll free, premium rate and VOIP copied from Australia. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
-          14(?:
-            5\d|
-            71
-          )\d{5}|
           4(?:
             [0-3]\d|
             4[047-9]|
@@ -6207,27 +6107,30 @@
         <exampleNumber>1300123456</exampleNumber>
         <nationalNumberPattern>
           13(?:
-            00\d{2}
-          )?\d{4}
+            00\d{3}|
+            45[0-4]|
+            \d
+          )\d{3}
         </nationalNumberPattern>
       </sharedCost>
-      <personalNumber>
-        <possibleLengths national="9"/>
-        <exampleNumber>500123456</exampleNumber>
-        <nationalNumberPattern>500\d{6}</nationalNumberPattern>
-      </personalNumber>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>550123456</exampleNumber>
-        <nationalNumberPattern>550\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            14(?:
+              5\d|
+              71
+            )|
+            550\d
+          )\d{5}
+        </nationalNumberPattern>
       </voip>
     </territory>
 
     <!-- Cyprus -->
+    <!-- http://www.itu.int/oth/T0202000034/en -->
     <territory id="CY" countryCode="357" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000034/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Format from http://www.cyprusyellowpages.com -->
         <numberFormat pattern="(\d{2})(\d{6})">
@@ -6287,11 +6190,9 @@
     </territory>
 
     <!-- Czech Rep. -->
+    <!-- http://www.itu.int/oth/T0202000035/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B420 -->
     <territory id="CZ" countryCode="420" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000035/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B420</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2-9]\d{2})(\d{3})(\d{3})">
           <leadingDigits>
@@ -6401,12 +6302,10 @@
     </territory>
 
     <!-- Germany -->
+    <!-- http://www.itu.int/oth/T0202000051/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE" countryCode="49" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000051/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_germany</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Mobile number formatting rules. We follow the ITU document here for guidance on how
              these should best be formatted, even though actual usage varies. -->
@@ -6840,10 +6739,8 @@
     </territory>
 
     <!-- Djibouti -->
+    <!-- http://www.itu.int/oth/T020200003A/en -->
     <territory id="DJ" countryCode="253" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200003A/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -6876,10 +6773,8 @@
     </territory>
 
     <!-- Denmark -->
+    <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK" countryCode="45" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.dba.erhvervsstyrelsen.dk/numbering-lists</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -6926,11 +6821,9 @@
 
     <!-- Dominica -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T020200003B/en -->
     <territory id="DM" countryCode="1" leadingDigits="767" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200003B/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -7013,11 +6906,9 @@
 
     <!-- Dominican Rep. -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T020200003C/en -->
     <territory id="DO" countryCode="1" leadingDigits="8[024]9" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200003C/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -7128,12 +7019,10 @@
     </territory>
 
     <!-- Algeria -->
+    <!-- http://www.itu.int/oth/T0202000003/en -->
+    <!-- http://www.arpt.dz -->
     <territory id="DZ" countryCode="213" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000003/en</sourceUrl>
-        <sourceUrl>http://www.arpt.dz</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting from http://www.pagesjaunes-dz.com. -->
         <numberFormat pattern="([1-4]\d)(\d{2})(\d{2})(\d{2})">
@@ -7216,13 +7105,11 @@
     </territory>
 
     <!-- Ecuador -->
+    <!-- http://en.wikipedia.org/wiki/+593 -->
+    <!-- http://www.arcotel.gob.ec/plan-tecnico-fundamental-de-numeracion-series-numericas/ -->
+    <!-- http://www.itu.int/oth/T020200003D/en -->
     <territory id="EC" countryCode="593" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/+593</sourceUrl>
-        <sourceUrl>http://www.arcotel.gob.ec/plan-tecnico-fundamental-de-numeracion-series-numericas/</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T020200003D/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{4})">
           <leadingDigits>
@@ -7288,10 +7175,8 @@
     </territory>
 
     <!-- Estonia -->
+    <!-- http://www.itu.int/oth/T0202000043/en -->
     <territory id="EE" countryCode="372" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000043/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([3-79]\d{2})(\d{4})">
           <leadingDigits>
@@ -7432,11 +7317,9 @@
     </territory>
 
     <!-- Egypt -->
+    <!-- http://www.itu.int/oth/T020200003E/en -->
     <territory id="EG" countryCode="20" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200003E/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{7,8})">
           <leadingDigits>[23]</leadingDigits>
@@ -7537,11 +7420,9 @@
     <!-- Country calling code shared with Morocco (MA). -->
     <!-- Two area codes are defined in the Morocco ITU document; 05288 XXXXX and 05289 XXXXX -->
     <!-- Calling code and formatting shared with 'MA' -->
+    <!-- http://www.itu.int/oth/T0202000090/en -->
     <territory id="EH" countryCode="212" leadingDigits="528[89]" internationalPrefix="00"
                nationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000090/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>[5-8]\d{8}</nationalNumberPattern>
       </generalDesc>
@@ -7588,11 +7469,9 @@
     </territory>
 
     <!-- Eritrea -->
+    <!-- http://www.itu.int/oth/T0202000042/en -->
     <territory id="ER" countryCode="291" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000042/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3})">
           <format>$1 $2 $3</format>
@@ -7629,10 +7508,8 @@
     </territory>
 
     <!-- Spain -->
+    <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/14-10_Descripcion_PNN.pdf -->
     <territory id="ES" countryCode="34" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/14-10_Descripcion_PNN.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([89]00)(\d{3})(\d{3})">
           <leadingDigits>[89]00</leadingDigits>
@@ -7742,11 +7619,9 @@
     </territory>
 
     <!-- Ethiopia -->
+    <!-- http://www.itu.int/oth/T0202000044/en -->
     <territory id="ET" countryCode="251" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000044/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([1-59]\d)(\d{3})(\d{4})">
           <leadingDigits>[1-59]</leadingDigits>
@@ -7899,13 +7774,11 @@
          evidence for. https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/internationalcalls/internationalcarrieraccesscodes.html -->
     <!-- Not supporting national long distance carrier codes as these are overlapping with UAN
          ranges mentioned in ITU doc. -->
+    <!-- https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html -->
     <territory id="FI" mainCountryForCode="true" countryCode="358" preferredInternationalPrefix="00"
                internationalPrefix="00|99(?:[01469]|5(?:11|3[23]|41|5[59]|77|88|9[09]))"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3,7})">
           <leadingDigits>
@@ -8046,12 +7919,10 @@
     </territory>
 
     <!-- Fiji -->
+    <!-- http://www.itu.int/oth/T0202000048/en -->
+    <!-- http://www.tfl.com.fj -->
     <territory id="FJ" countryCode="679" preferredInternationalPrefix="00"
                internationalPrefix="0(?:0|52)">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000048/en</sourceUrl>
-        <sourceUrl>http://www.tfl.com.fj</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[2-9]</leadingDigits>
@@ -8112,10 +7983,8 @@
     </territory>
 
     <!-- Falkland Islands (Malvinas) -->
+    <!-- http://www.itu.int/oth/T0202000046/en -->
     <territory id="FK" countryCode="500" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000046/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>[2-7]\d{4}</nationalNumberPattern>
       </generalDesc>
@@ -8132,10 +8001,8 @@
     </territory>
 
     <!-- Micronesia, Federated States of -->
+    <!-- http://www.itu.int/oth/T020200008B/en -->
     <territory id="FM" countryCode="691" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200008B/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -8165,12 +8032,10 @@
     </territory>
 
     <!-- Faroe Islands -->
+    <!-- http://www.itu.int/oth/T0202000047/en -->
+    <!-- All numbers are formatted together, as a block. -->
     <territory id="FO" countryCode="298" internationalPrefix="00"
                nationalPrefixForParsing="(10(?:01|[12]0|88))" carrierCodeFormattingRule="$CC $FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000047/en</sourceUrl>
-      </references>
-      <!-- All numbers are formatted together, as a block. -->
       <availableFormats>
         <numberFormat pattern="(\d{6})">
           <format>$1</format>
@@ -8234,15 +8099,13 @@
     </territory>
 
     <!-- France -->
+    <!-- http://www.itu.int/oth/T020200004A/en -->
+    <!-- http://www.arcep.fr/index.php?id=8146 -->
+    <!-- http://en.wikipedia.org/wiki/%2B33 -->
+    <!-- https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx -->
+    <!-- Short numbers will be formatted as a block without a national prefix. -->
     <territory id="FR" countryCode="33" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200004A/en</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/index.php?id=8146</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B33</sourceUrl>
-        <sourceUrl>https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx</sourceUrl>
-      </references>
-      <!-- Short numbers will be formatted as a block without a national prefix. -->
       <availableFormats>
         <numberFormat pattern="([1-79])(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[1-79]</leadingDigits>
@@ -8266,14 +8129,21 @@
         <exampleNumber>123456789</exampleNumber>
         <nationalNumberPattern>[1-5]\d{8}</nationalNumberPattern>
       </fixedLine>
+      <!-- 700 numbers are mobile phone services as per https://www.arcep.fr/index.php?id=8146
+           where length is mentioned as 'extended length numbers'. As we are not sure, supporting
+           it as regular 9 digit range. Sub ranges are assigned to mobile operators as per:
+           https://www.arcep.fr/index.php?id=interactivenumeros&no_cache=1 -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>612345678</exampleNumber>
         <nationalNumberPattern>
           (?:
-            6\d|
-            7[3-9]
-          )\d{7}
+            6\d{2}|
+            7(?:
+              00|
+              [3-9]\d
+            )
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -8309,11 +8179,9 @@
     <!-- Gabon -->
     <!-- Note: We cannot set nationalPrefix="0" while fixed line numbers can start with a zero
          as this breaks parsing (it treats all leading zeros as national prefixes. -->
+    <!-- http://www.itu.int/oth/T020200004E/en -->
+    <!-- http://www.arcep.ga -->
     <territory id="GA" countryCode="241" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200004E/en</sourceUrl>
-        <sourceUrl>http://www.arcep.ga</sourceUrl>
-      </references>
       <availableFormats>
         <!-- If no leading zero was supplied, format with the national prefix. -->
         <numberFormat pattern="(\d)(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="0$FG">
@@ -8357,15 +8225,13 @@
          validation, although the formatting rules are shared. Also numbers are fine-grained where
          needed in order to disambiguate between the 4 regions. -->
     <!-- Main region for 'GG,IM,JE' -->
+    <!-- http://static.ofcom.org.uk/static/numbering/ -->
+    <!-- http://stakeholders.ofcom.org.uk/telecoms/numbering/ -->
+    <!-- http://en.wikipedia.org/wiki/List_of_United_Kingdom_dialling_codes -->
+    <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=GB -->
     <territory id="GB" mainCountryForCode="true" countryCode="44" internationalPrefix="00"
                nationalPrefix="0" preferredExtnPrefix=" x" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://static.ofcom.org.uk/static/numbering/</sourceUrl>
-        <sourceUrl>http://stakeholders.ofcom.org.uk/telecoms/numbering/</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/List_of_United_Kingdom_dialling_codes</sourceUrl>
-        <sourceUrl>http://www.numberingplans.com/?page=dialling&amp;sub=areacodes&amp;ac=GB</sourceUrl>
-      </references>
       <availableFormats>
         <!-- 7ddd (not 70, 76) with 10 digits. Includes 7624 for IM. -->
         <numberFormat pattern="(7\d{3})(\d{6})">
@@ -8882,11 +8748,9 @@
 
     <!-- Grenada -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000057/en -->
     <territory id="GD" countryCode="1" leadingDigits="473" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000057/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -8988,12 +8852,10 @@
     <!-- Georgia -->
     <!-- It seems there may be special 6 digit numbers beginning with 91, but we are not sure, so
          these are omitted for now. -->
+    <!-- http://www.itu.int/oth/T0202000050/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia_(country) -->
     <territory id="GE" countryCode="995" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000050/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia_(country)</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Format isn't very strictly defined - the yellow pages omits area code and does 2 2 2,
              the communications commission uses 2 3 3. Wikipedia says 3 2 3. Some use 2 6. -->
@@ -9085,14 +8947,12 @@
     <!-- The 876 prefix is mentioned in the plan, but the plan is from 2006 and in France VOIP
          numbers were changed from 087 to the 09 prefix in 2009. It is likely this occurred here
          too. -->
+    <!-- http://www.itu.int/oth/T020200004C/en -->
+    <!-- http://www.arcep.fr/index.php?id=2137&bloc=0594&CMD=RESULTS_NUMEROTATION -->
+    <!-- http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf -->
+    <!-- https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx -->
     <territory id="GF" countryCode="594" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200004C/en</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/index.php?id=2137&amp;bloc=0594&amp;CMD=RESULTS_NUMEROTATION</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf</sourceUrl>
-        <sourceUrl>https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -9134,11 +8994,9 @@
     <!-- Note that the numbers are fine-grained where needed in order to disambiguate between the
          4 regions i.e UK, Isle of Man, Jersey and Guernsey. -->
     <!-- Calling code and formatting shared with 'GB' -->
+    <!-- http://static.ofcom.org.uk/static/numbering/ -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="GG" countryCode="44" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://static.ofcom.org.uk/static/numbering/</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -9248,12 +9106,10 @@
 
     <!-- Ghana -->
     <!-- No premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T0202000052/en -->
+    <!-- http://www.nca.org.gh/index.php?option=com_content&view=article&id=90&Itemid=65 -->
     <territory id="GH" countryCode="233" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000052/en</sourceUrl>
-        <sourceUrl>http://www.nca.org.gh/index.php?option=com_content&amp;view=article&amp;id=90&amp;Itemid=65</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <leadingDigits>[235]</leadingDigits>
@@ -9346,10 +9202,8 @@
     </territory>
 
     <!-- Gibraltar -->
-    <territory id="GI" countryCode="350" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.gra.gi/communications/numbering-plan</sourceUrl>
-      </references>
+    <!-- http://www.gra.gi/communications/numbering-plan -->
+    <territory id="GI" countryCode="350" internationalPrefix="00" mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- Most numbers are formatted as a block -->
         <numberFormat pattern="(\d{3})(\d{5})">
@@ -9360,9 +9214,9 @@
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            [25]\d|
-            62
-          )\d{6}
+            [25]\d\d|
+            629
+          )\d{5}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -9376,9 +9230,9 @@
               90[0-2]
             )|
             2(?:
-              2[2457]\d|
-              50[0-2]
-            )
+              2[2457]|
+              50
+            )\d
           )\d{3}
         </nationalNumberPattern>
       </fixedLine>
@@ -9387,18 +9241,16 @@
         <exampleNumber>57123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            5[46-8]|
-            62
-          )\d{6}
+            5[46-8]\d|
+            629
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
     </territory>
 
     <!-- Greenland -->
+    <!-- http://www.itu.int/oth/T0202000056/en -->
     <territory id="GL" countryCode="299" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000056/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3</format>
@@ -9449,10 +9301,8 @@
     </territory>
 
     <!-- Gambia -->
+    <!-- http://www.itu.int/oth/T020200004F/en -->
     <territory id="GM" countryCode="220" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200004F/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -9497,10 +9347,8 @@
     </territory>
 
     <!-- Guinea -->
+    <!-- http://www.itu.int/oth/T020200005B/en -->
     <territory id="GN" countryCode="224" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200005B/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>3</leadingDigits>
@@ -9554,14 +9402,12 @@
     <!-- Guadeloupe -->
     <!-- Main region for 'BL,MF' -->
     <!-- Linked from http://www.arcep.fr/index.php?id=interactivenumeros -->
+    <!-- http://www.itu.int/oth/T0202000058/en -->
+    <!-- http://www.arcep.fr/fileadmin/reprise/dossiers/numero/ZABPQ-ZNE.xls -->
+    <!-- https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx -->
     <territory id="GP" mainCountryForCode="true" countryCode="590" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000058/en</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/fileadmin/reprise/dossiers/numero/ZABPQ-ZNE.xls</sourceUrl>
-        <sourceUrl>https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([56]\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
@@ -9618,10 +9464,8 @@
     </territory>
 
     <!-- Equatorial Guinea -->
+    <!-- http://www.itu.int/oth/T0202000041/en -->
     <territory id="GQ" countryCode="240" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000041/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>[235]</leadingDigits>
@@ -9683,12 +9527,10 @@
     </territory>
 
     <!-- Greece -->
+    <!-- http://www.itu.int/oth/T0202000055/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B30 -->
+    <!-- http://www.eett.gr/opencms/opencms/EETT_EN/Electronic_Communications/Telecoms/Numbering/NumberAssignments.html -->
     <territory id="GR" countryCode="30" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000055/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B30</sourceUrl>
-        <sourceUrl>http://www.eett.gr/opencms/opencms/EETT_EN/Electronic_Communications/Telecoms/Numbering/NumberAssignments.html</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([27]\d)(\d{4})(\d{4})">
           <leadingDigits>
@@ -9824,12 +9666,10 @@
     </territory>
 
     <!-- Guatemala -->
+    <!-- http://www.itu.int/oth/T020200005A/en -->
+    <!-- http://www.sit.gob.gt/index.php?page=plan-de-numeracion -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Guatemala -->
     <territory id="GT" countryCode="502" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200005A/en</sourceUrl>
-        <sourceUrl>http://www.sit.gob.gt/index.php?page=plan-de-numeracion</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Guatemala</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>[2-7]</leadingDigits>
@@ -9872,11 +9712,9 @@
 
     <!-- Guam -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel -->
     <territory id="GU" countryCode="1" leadingDigits="671" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -10030,10 +9868,8 @@
     </territory>
 
     <!-- Guinea-Bissau -->
+    <!-- http://www.itu.int/oth/T020200005C/en -->
     <territory id="GW" countryCode="245" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200005C/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
@@ -10077,10 +9913,8 @@
     </territory>
 
     <!-- Guyana -->
+    <!-- http://www.itu.int/oth/T020200005D/en -->
     <territory id="GY" countryCode="592" internationalPrefix="001">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200005D/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -10151,11 +9985,9 @@
     </territory>
 
     <!-- Hong Kong -->
+    <!-- http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html -->
     <territory id="HK" countryCode="852" preferredInternationalPrefix="00"
                internationalPrefix="00(?:[126-9]|30|5[09])?" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
@@ -10371,10 +10203,8 @@
     <!-- It seems there is no longer a trunk prefix in use, based on websites like
          http://www.howtocallabroad.com/codes.html and on seeing how locals write their numbers in
          national format. -->
+    <!-- http://www.itu.int/oth/T020200005F/en -->
     <territory id="HN" countryCode="504" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200005F/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1-$2</format>
@@ -10443,12 +10273,10 @@
     </territory>
 
     <!-- Croatia -->
+    <!-- http://www.itu.int/oth/T0202000032/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B385 -->
     <territory id="HR" countryCode="385" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000032/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B385</sourceUrl>
-      </references>
       <availableFormats>
         <!-- The plan says 1 XXX XXXX but the government and local telecom websites are formatted 1
              XXXX XXX, so we prefer that formatting here. These same sources prefer XXX XXX to XX
@@ -10559,11 +10387,9 @@
     </territory>
 
     <!-- Haiti -->
+    <!-- http://www.itu.int/oth/T020200005E/en -->
+    <!-- http://www.numberingplans.com/ -->
     <territory id="HT" countryCode="509" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200005E/en</sourceUrl>
-        <sourceUrl>http://www.numberingplans.com/</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{4})">
           <format>$1 $2 $3</format>
@@ -10619,14 +10445,12 @@
     </territory>
 
     <!-- Hungary -->
+    <!-- http://www.itu.int/oth/T0202000061/en -->
+    <!-- Although the national prefix is necessary for dialling, the preferred format (confirmed
+         by a Hungarian person and following the yellow pages) is to omit this when formatting.
+         Yellow pages: http://www.aranyoldalak.hu -->
     <territory id="HU" countryCode="36" internationalPrefix="00" nationalPrefix="06"
                nationalPrefixFormattingRule="($FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000061/en</sourceUrl>
-      </references>
-      <!-- Although the national prefix is necessary for dialling, the preferred format (confirmed
-           by a Hungarian person and following the yellow pages) is to omit this when formatting.
-           Yellow pages: http://www.aranyoldalak.hu -->
       <availableFormats>
         <numberFormat pattern="(1)(\d{3})(\d{4})">
           <leadingDigits>1</leadingDigits>
@@ -10701,12 +10525,10 @@
 
     <!-- Indonesia -->
     <!-- From 2001, very out of date. -->
+    <!-- http://www.itu.int/oth/T0202000064/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B62 -->
     <territory id="ID" countryCode="62" internationalPrefix="0(?:0[1789]|10(?:00|1[67]))"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000064/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B62</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{5,8})" nationalPrefixFormattingRule="($NP$FG)">
           <leadingDigits>
@@ -10966,12 +10788,10 @@
     </territory>
 
     <!-- Ireland -->
+    <!-- http://www.comreg.ie/licensing_and_services/numbering_plan_for_ireland.552.440.html -->
+    <!-- http://www.comreg.ie/_fileupload/publications/ComReg1119.pdf -->
     <territory id="IE" countryCode="353" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.comreg.ie/licensing_and_services/numbering_plan_for_ireland.552.440.html</sourceUrl>
-        <sourceUrl>http://www.comreg.ie/_fileupload/publications/ComReg1119.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(1)(\d{3,4})(\d{4})">
           <leadingDigits>1</leadingDigits>
@@ -11154,13 +10974,11 @@
     <!-- Israel -->
     <!-- Formatting practice following wikipedia, and government sites. -->
     <!-- in Hebrew -->
+    <!-- http://www.itu.int/oth/T020200006A/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B972 -->
+    <!-- http://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%93%D7%95%D7%9E%D7%AA_%D7%98%D7%9C%D7%A4%D7%95%D7%9F_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C -->
     <territory id="IL" countryCode="972" internationalPrefix="0(?:0|1[2-9])" nationalPrefix="0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200006A/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B972</sourceUrl>
-        <sourceUrl>http://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%93%D7%95%D7%9E%D7%AA_%D7%98%D7%9C%D7%A4%D7%95%D7%9F_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2-489])(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>[2-489]</leadingDigits>
@@ -11352,11 +11170,9 @@
     <!-- Note that the numbers are fine-grained where needed in order to disambiguate between the
          4 regions i.e UK, Isle of Man, Jersey and Guernsey. -->
     <!-- Calling code and formatting shared with 'GB' -->
+    <!-- http://static.ofcom.org.uk/static/numbering/ -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="IM" countryCode="44" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://static.ofcom.org.uk/static/numbering/</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -11453,16 +11269,14 @@
     </territory>
 
     <!-- India -->
+    <!-- http://www.itu.int/oth/T0202000063/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B91 -->
+    <!-- http://www.bsnl.co.in -->
+    <!-- http://dq.ndc.bsnl.co.in/bsnl-web/stdSearch.seam -->
+    <!-- http://www.dot.gov.in/access-services/allotment-msc-codes -->
     <territory id="IN" countryCode="91" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" nationalPrefixOptionalWhenFormatting="true"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000063/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B91</sourceUrl>
-        <sourceUrl>http://www.bsnl.co.in</sourceUrl>
-        <sourceUrl>http://dq.ndc.bsnl.co.in/bsnl-web/stdSearch.seam</sourceUrl>
-        <sourceUrl>http://www.dot.gov.in/access-services/allotment-msc-codes</sourceUrl>
-      </references>
       <availableFormats>
         <!-- 8-digit short numbers. Leading digits are more granular to ensure that fixed-line
              numbers, which should not be formatted this way, fall to the correct formatting rule. -->
@@ -11476,7 +11290,7 @@
         <numberFormat pattern="(\d{5})(\d{5})">
           <leadingDigits>
             6(?:
-              0[02]|
+              0[023]|
               12|
               2[03689]|
               3[05-9]|
@@ -11497,22 +11311,22 @@
             6(?:
               0(?:
                 0|
-                26
+                26|
+                33
               )|
               127|
               2(?:
-                [06][0-59]|
-                3[0589]|
-                8[0-39]|
+                [06]|
+                3[02589]|
+                8[0-379]|
                 9[0-46]
               )|
               3(?:
-                0[0-39]|
+                0[0-469]|
                 5[0-46-9]|
-                6[0-3]|
+                6[0-49]|
                 7[015-9]|
-                8|
-                9[0-79]
+                [89]
               )|
               9[019]
             )|
@@ -11592,22 +11406,22 @@
             6(?:
               0(?:
                 0|
-                26
+                26|
+                33
               )|
               1279|
               2(?:
-                [06][0-59]|
-                3[0589]|
-                8[0-39]|
+                [06]|
+                3[02589]|
+                8[0-379]|
                 9[0-46]
               )|
               3(?:
-                0[0-39]|
+                0[0-469]|
                 5[0-46-9]|
-                6[0-3]|
+                6[0-49]|
                 7[015-9]|
-                8|
-                9[0-79]
+                [89]
               )|
               9[019]
             )|
@@ -12143,28 +11957,31 @@
           (?:
             6(?:
               0(?:
-                0[0-359]|
-                26
+                0[0-3569]|
+                26|
+                33
               )\d|
               1279|
               2(?:
-                [06][0-59]|
-                3[0589]|
-                8[0-49]|
+                [06]\d|
+                3[02589]|
+                8[0-479]|
                 9[0-6]
               )\d|
               3(?:
-                0[0-39]\d|
+                0[0-469]\d|
                 5(?:
                   0[0-6]|
                   [1-9]\d
                 )|
-                6[0-3]\d|
+                6[0-49]\d|
                 7[015-9]\d|
-                8\d{2}|
-                9[0-79]\d
+                [89]\d{2}
               )|
-              90[019]\d
+              9(?:
+                0[019]|
+                13
+              )\d
             )|
             7(?:
               0\d{3}|
@@ -12435,10 +12252,8 @@
     </territory>
 
     <!-- British Indian Ocean Territory / Diego Garcia -->
+    <!-- http://www.itu.int/oth/T0202000039/en -->
     <territory id="IO" countryCode="246" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000039/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -12461,13 +12276,11 @@
 
     <!-- Iraq -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- https://www.itu.int/oth/T0202000067/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B964 -->
+    <!-- http://wtng.info/wtng-964-ik.html -->
     <territory id="IQ" countryCode="964" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>https://www.itu.int/oth/T0202000067/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B964</sourceUrl>
-        <sourceUrl>http://wtng.info/wtng-964-ik.html</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(1)(\d{3})(\d{4})">
           <leadingDigits>1</leadingDigits>
@@ -12513,14 +12326,12 @@
     </territory>
 
     <!-- Iran, Islamic Republic of -->
+    <!-- http://en.wikipedia.org/wiki/%2B98 -->
+    <!-- http://www.itu.int/oth/T0202000066/en -->
+    <!-- http://www.tct.ir/?siteid=1&pageid=195 -->
+    <!-- http://118.tct.ir/citycode.htm -->
     <territory id="IR" countryCode="98" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B98</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T0202000066/en</sourceUrl>
-        <sourceUrl>http://www.tct.ir/?siteid=1&amp;pageid=195</sourceUrl>
-        <sourceUrl>http://118.tct.ir/citycode.htm</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting follows wikipedia. -->
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
@@ -12674,13 +12485,11 @@
 
     <!-- Iceland -->
     <!-- As per new update from Iceland added carrier selection codes as international prefixes. -->
+    <!-- http://www.pta.is/default.aspx?cat_id=85 -->
+    <!-- http://www.pfs.is/default.aspx?cat_id=14&module_id=210&element_id=4 -->
+    <!-- http://www.pfs.is/english/telecom-affairs/numbering/ -->
     <territory id="IS" countryCode="354" preferredInternationalPrefix="00"
                internationalPrefix="1(?:0(?:01|10|20)|100)|00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.pta.is/default.aspx?cat_id=85</sourceUrl>
-        <sourceUrl>http://www.pfs.is/default.aspx?cat_id=14&amp;module_id=210&amp;element_id=4</sourceUrl>
-        <sourceUrl>http://www.pfs.is/english/telecom-affairs/numbering/</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[4-9]</leadingDigits>
@@ -12801,12 +12610,10 @@
 
     <!-- Italy -->
     <!-- Main region for 'VA' -->
+    <!-- http://en.wikipedia.org/wiki/%2B39 -->
+    <!-- https://www.agcom.it/piano-di-numerazione -->
     <territory id="IT" mainCountryForCode="true" countryCode="39" internationalPrefix="00"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B39</sourceUrl>
-        <sourceUrl>https://www.agcom.it/piano-di-numerazione</sourceUrl>
-      </references>
       <availableFormats>
         <!-- The leading zero for fixed numbers will be prepended before the matching of these
              regular expressions. -->
@@ -13068,12 +12875,10 @@
     <!-- Note that the numbers are fine-grained where needed in order to disambiguate between the
          4 regions i.e UK, Isle of Man, Jersey and Guernsey. -->
     <!-- Calling code and formatting shared with 'GB' -->
+    <!-- http://static.ofcom.org.uk/static/numbering/ -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
+    <!-- http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&childID=1036 -->
     <territory id="JE" countryCode="44" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://static.ofcom.org.uk/static/numbering/</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom</sourceUrl>
-        <sourceUrl>http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&amp;childID=1036</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -13234,11 +13039,9 @@
 
     <!-- Jamaica -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T020200006C/en -->
     <territory id="JM" countryCode="1" leadingDigits="876" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200006C/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -13354,13 +13157,11 @@
     </territory>
 
     <!-- Jordan -->
+    <!-- http://www.trc.gov.jo/images/stories/pdf/NNP_ver200[1].pdf?lang=english -->
+    <!-- http://www.itu.int/oth/T020200006E/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B962 -->
     <territory id="JO" countryCode="962" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.trc.gov.jo/images/stories/pdf/NNP_ver200[1].pdf?lang=english</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T020200006E/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B962</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{4})" nationalPrefixFormattingRule="($NP$FG)">
           <leadingDigits>
@@ -13536,13 +13337,11 @@
     </territory>
 
     <!-- Japan -->
+    <!-- http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html -->
+    <!-- https://www.itu.int/oth/T020200006D/en -->
+    <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <territory id="JP" countryCode="81" internationalPrefix="010" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html</sourceUrl>
-        <sourceUrl>https://www.itu.int/oth/T020200006D/en</sourceUrl>
-        <sourceUrl>http://www.numberingplans.com/?page=dialling&amp;sub=areacodes&amp;ac=JP</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Toll-free, premium-rate and UAN numbers -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
@@ -14509,14 +14308,12 @@
     </territory>
 
     <!-- Kenya -->
+    <!-- http://www.ca.go.ke/index.php/numbering -->
+    <!-- https://www.itu.int/oth/T0202000070/en -->
+    <!-- http://en.wikipedia.org/wiki/+254 -->
     <territory id="KE" countryCode="254" internationalPrefix="000" nationalPrefix="0"
                nationalPrefixForParsing="005|0" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.ca.go.ke/index.php/numbering</sourceUrl>
-        <sourceUrl>https://www.itu.int/oth/T0202000070/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+254</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{5,7})">
           <leadingDigits>[24-6]</leadingDigits>
@@ -14595,11 +14392,9 @@
 
     <!-- Kyrgyzstan -->
     <!-- No premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T0202000074/en -->
     <territory id="KG" countryCode="996" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000074/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
@@ -14713,11 +14508,9 @@
     </territory>
 
     <!-- Cambodia -->
+    <!-- http://www.itu.int/oth/T0202000023/en -->
+    <!-- http://en.wikipedia.org/wiki/+855 -->
     <territory id="KH" countryCode="855" internationalPrefix="00[14-9]" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000023/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+855</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
@@ -14836,10 +14629,8 @@
     <!-- We include the national prefix for parsing here just in case numbers can be dialled with a
          leading 0 - no numbers online have been found formatted this way, but the ITU document
          lists it as a national dialling prefix. -->
+    <!-- http://www.itu.int/oth/T0202000071/en -->
     <territory id="KI" countryCode="686" internationalPrefix="00" nationalPrefixForParsing="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000071/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -14931,10 +14722,8 @@
     </territory>
 
     <!-- Comoros -->
+    <!-- http://www.itu.int/oth/T020200002D/en -->
     <territory id="KM" countryCode="269" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200002D/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})">
           <format>$1 $2 $3</format>
@@ -14966,11 +14755,9 @@
 
     <!-- Saint Kitts and Nevis -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000B0/en -->
     <territory id="KN" countryCode="1" leadingDigits="869" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B0/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -15053,11 +14840,9 @@
     </territory>
 
     <!-- Korea, Dem. People's Rep. of -->
+    <!-- http://en.wikipedia.org/wiki/%2B850 -->
     <territory id="KP" countryCode="850" internationalPrefix="00|99" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B850</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>1</leadingDigits>
@@ -15124,18 +14909,16 @@
          nationalPrefix
              1[4-6]XX-YYYY - Country-wide common number services, display as it is without hyphens.
          00798 is an ITFS range. So it doesn't appear here as internationalPrefix. -->
+    <!-- http://www.itu.int/oth/T0202000072/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B82 -->
+    <!-- http://www.kcc.go.kr/user.do?mode=view&page=P02030300&dc=K02030300&boardId=1074&boardSeq=2349 -->
+    <!-- http://www.kcc.go.kr/user.do?mode=view&page=P02030300&dc=K02030300&boardId=1074&boardSeq=2240 -->
+    <!-- http://www.telecentro.co.kr/sub/index.php?job=detail&ebcf_id=faq&page=1&mid=0503&eb_seq=36 -->
     <territory id="KR" countryCode="82"
                internationalPrefix="00(?:[1259]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))"
                nationalPrefix="0" nationalPrefixForParsing="0(8[1-46-8]|85\d{2})?"
                nationalPrefixFormattingRule="$NP$FG" carrierCodeFormattingRule="$NP$CC-$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000072/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B82</sourceUrl>
-        <sourceUrl>http://www.kcc.go.kr/user.do?mode=view&amp;page=P02030300&amp;dc=K02030300&amp;boardId=1074&amp;boardSeq=2349</sourceUrl>
-        <sourceUrl>http://www.kcc.go.kr/user.do?mode=view&amp;page=P02030300&amp;dc=K02030300&amp;boardId=1074&amp;boardSeq=2240</sourceUrl>
-        <sourceUrl>http://www.telecentro.co.kr/sub/index.php?job=detail&amp;ebcf_id=faq&amp;page=1&amp;mid=0503&amp;eb_seq=36</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Fixed-line number ranges with 5-6 digits. -->
         <numberFormat pattern="(\d{2})(\d{3,4})">
@@ -15383,10 +15166,8 @@
 
     <!-- Kuwait -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T0202000073/en -->
     <territory id="KW" countryCode="965" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000073/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Format is from ITU. -->
         <numberFormat pattern="(\d{4})(\d{3,4})">
@@ -15500,11 +15281,9 @@
 
     <!-- Cayman Islands -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T0202000027/en -->
     <territory id="KY" countryCode="1" leadingDigits="345" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000027/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -15624,12 +15403,10 @@
 
     <!-- Kazakhstan -->
     <!-- Calling code and formatting shared with 'RU' -->
+    <!-- http://www.itu.int/oth/T020200006F/en -->
+    <!-- https://telecom.kz/en/catalog/kazahstan.171777/5 -->
     <territory id="KZ" countryCode="7" preferredInternationalPrefix="8~10" internationalPrefix="810"
                nationalPrefix="8">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200006F/en</sourceUrl>
-        <sourceUrl>https://telecom.kz/en/catalog/kazahstan.171777/5</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -15791,12 +15568,10 @@
 
     <!-- Lao People's Dem. Rep. -->
     <!-- Seems incomplete -->
+    <!-- http://www.itu.int/oth/T0202000075/en -->
+    <!-- http://en.wikipedia.org/wiki/+856 -->
     <territory id="LA" countryCode="856" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000075/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+856</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(20)(\d{2})(\d{3})(\d{3})">
           <leadingDigits>20</leadingDigits>
@@ -15861,11 +15636,9 @@
     </territory>
 
     <!-- Lebanon -->
+    <!-- http://www.itu.int/oth/T0202000077/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B961 -->
     <territory id="LB" countryCode="961" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000077/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B961</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
@@ -15948,11 +15721,9 @@
 
     <!-- Saint Lucia -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000B1/en -->
     <territory id="LC" countryCode="1" leadingDigits="758" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B1/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -16044,12 +15815,10 @@
     <!-- Liechtenstein -->
     <!-- The national prefix of "0" is only used for 0800 and 0900 numbers. Three carrier-selection
          codes are in use. -->
+    <!-- http://www.llv.li/#/11193 -->
+    <!-- https://www.itu.int/oth/T020200007B/en -->
     <territory id="LI" countryCode="423" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixForParsing="0|10(?:01|20|66)">
-      <references>
-        <sourceUrl>http://www.llv.li/#/11193</sourceUrl>
-        <sourceUrl>https://www.itu.int/oth/T020200007B/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Some different patterns for tollfree and shared cost numbers may be found by searching
              for "Mehrwertnummer" at http://www.telecom.li. -->
@@ -16175,12 +15944,10 @@
     </territory>
 
     <!-- Sri Lanka -->
+    <!-- http://en.wikipedia.org/wiki/%2B94 -->
+    <!-- http://www.itu.int/oth/T02020000C3/en -->
     <territory id="LK" countryCode="94" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B94</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000C3/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>[1-689]</leadingDigits>
@@ -16229,11 +15996,9 @@
     </territory>
 
     <!-- Liberia -->
+    <!-- http://www.itu.int/oth/T0202000079/en -->
     <territory id="LR" countryCode="231" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000079/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting from Ministry of Agriculture,
              http://www.moa.gov.lr/content.php?sub=Email&?related=Contacts -->
@@ -16304,10 +16069,8 @@
     </territory>
 
     <!-- Lesotho -->
+    <!-- http://www.itu.int/oth/T0202000078/en -->
     <territory id="LS" countryCode="266" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000078/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting following yellow pages: http://www.yellowpages.co.ls -->
         <numberFormat pattern="(\d{4})(\d{4})">
@@ -16342,13 +16105,11 @@
     <!-- Lithuania -->
     <!-- Note that Lithuania is switching to a national prefix of 0. We support
          both 0 and 8 when parsing until this switch is complete. -->
+    <!-- http://www.itu.int/oth/T020200007C/en -->
+    <!-- National Prefix formatting rule from http://www.yellowpages.lt -->
     <territory id="LT" countryCode="370" internationalPrefix="00" nationalPrefix="8"
                nationalPrefixForParsing="[08]" nationalPrefixFormattingRule="($NP-$FG)"
                nationalPrefixOptionalWhenFormatting="true" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200007C/en</sourceUrl>
-      </references>
-      <!-- National Prefix formatting rule from http://www.yellowpages.lt -->
       <availableFormats>
         <!-- Two-digit area codes -->
         <numberFormat pattern="([34]\d)(\d{6})">
@@ -16443,13 +16204,11 @@
     </territory>
 
     <!-- Luxembourg -->
+    <!-- https://web.ilr.lu/FR/Professionnels/Communications-electroniques/Pages/HomePage.aspx -->
+    <!-- http://legilux.public.lu/eli/etat/leg/rilr/2014/07/14/n2/jo -->
     <territory id="LU" countryCode="352" internationalPrefix="00"
                nationalPrefixForParsing="(15(?:0[06]|1[12]|35|4[04]|55|6[26]|77|88|99)\d)"
                carrierCodeFormattingRule="$CC $FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>https://web.ilr.lu/FR/Professionnels/Communications-electroniques/Pages/HomePage.aspx</sourceUrl>
-        <sourceUrl>http://legilux.public.lu/eli/etat/leg/rilr/2014/07/14/n2/jo</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Patterns overlap because of variable number length. -->
         <numberFormat pattern="(\d{2})(\d{3})">
@@ -16626,11 +16385,9 @@
     </territory>
 
     <!-- Latvia -->
+    <!-- http://www.itu.int/oth/T0202000076/en -->
+    <!-- http://en.wikipedia.org/wiki/+371 -->
     <territory id="LV" countryCode="371" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000076/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+371</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2689]\d)(\d{3})(\d{3})">
           <leadingDigits>[2689]</leadingDigits>
@@ -16678,11 +16435,9 @@
          operator (Hatef Libya). A new mobile operator Aljeel Aljadeed for Technology will start
          using 096 (they are allowing customers to register numbers currently), so their code has
          also been added. -->
+    <!-- http://hlc.ly/price.php -->
     <territory id="LY" countryCode="218" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://hlc.ly/price.php</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([25-79]\d)(\d{7})">
           <leadingDigits>[25-79]</leadingDigits>
@@ -16720,15 +16475,13 @@
 
     <!-- Morocco -->
     <!-- Main region for 'EH' -->
+    <!-- http://www.itu.int/oth/T0202000090/en -->
+    <!-- http://en.wikipedia.org/wiki/+212 -->
+    <!-- https://www.anrt.ma/content/plan-de-numerotation -->
+    <!-- https://www.anrt.ma/en/missions/gestion-des-ressources/numerotation -->
     <territory id="MA" mainCountryForCode="true" countryCode="212" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000090/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+212</sourceUrl>
-        <sourceUrl>https://www.anrt.ma/content/plan-de-numerotation</sourceUrl>
-        <sourceUrl>https://www.anrt.ma/en/missions/gestion-des-ressources/numerotation</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([5-7]\d{2})(\d{6})">
           <leadingDigits>
@@ -16868,11 +16621,9 @@
          numbers all move over to the +383 plan. Kosovo numbers are still under several calling
          codes. It also seems that the national prefix is only used for mobile numbers, not
          fixed-line. -->
+    <!-- http://www.itu.int/oth/T020200008D/en -->
     <territory id="MC" countryCode="377" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200008D/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Following formatting found online rather than in the ITU document example.
              For the mobile prefix 3, we could not get authoritative information, so following
@@ -16943,13 +16694,11 @@
          of their usage, such as whether they're used for national or international calls. -->
     <!-- Announcements -->
     <!-- Mobile ranges -->
+    <!-- http://www.itu.int/oth/T020200008C/en -->
+    <!-- http://anrceti.md/fileupload/58 -->
+    <!-- http://en.anrceti.md/resurse_numerotare_tel_mobila -->
     <territory id="MD" countryCode="373" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200008C/en</sourceUrl>
-        <sourceUrl>http://anrceti.md/fileupload/58</sourceUrl>
-        <sourceUrl>http://en.anrceti.md/resurse_numerotare_tel_mobila</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
           <leadingDigits>
@@ -17042,13 +16791,11 @@
          website (regulation:
          http://www.ekip.me/download/Law%20on%20Electronic%20Communications%20(updated)%204.9.2013%20(1)nova%20verzija.pdf
          ). Thus ITU updates always need to be combined with the information at the below ekip.me source URL. -->
+    <!-- http://www.itu.int/oth/T02020000DA/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro -->
+    <!-- http://www.ekip.me/numeracija/dodijeljena.php -->
     <territory id="ME" countryCode="382" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000DA/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro</sourceUrl>
-        <sourceUrl>http://www.ekip.me/numeracija/dodijeljena.php</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})">
           <leadingDigits>
@@ -17146,13 +16893,11 @@
     <!-- Saint-Martin, French Antilles -->
     <!-- Calling code and formatting shared with 'GP' -->
     <!-- Linked from http://www.arcep.fr/index.php?id=interactivenumeros -->
+    <!-- http://www.itu.int/oth/T0202000058/en -->
+    <!-- http://www.arcep.fr/fileadmin/reprise/dossiers/numero/ZABPQ-ZNE.xls -->
+    <!-- https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx -->
     <territory id="MF" countryCode="590" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000058/en</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/fileadmin/reprise/dossiers/numero/ZABPQ-ZNE.xls</sourceUrl>
-        <sourceUrl>https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -17199,11 +16944,9 @@
     </territory>
 
     <!-- Madagascar -->
+    <!-- http://www.itu.int/oth/T020200007F/en -->
     <territory id="MG" countryCode="261" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200007F/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([23]\d)(\d{2})(\d{3})(\d{2})">
           <leadingDigits>[23]</leadingDigits>
@@ -17250,10 +16993,8 @@
     </territory>
 
     <!-- Marshall Islands -->
+    <!-- http://www.itu.int/oth/T0202000085/en -->
     <territory id="MH" countryCode="692" internationalPrefix="011" nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000085/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1-$2</format>
@@ -17302,12 +17043,10 @@
     </territory>
 
     <!-- Macedonia, Former Yugoslav Rep. of -->
+    <!-- http://www.itu.int/oth/T02020000CE/en -->
+    <!-- https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries -->
     <territory id="MK" countryCode="389" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000CE/en</sourceUrl>
-        <sourceUrl>https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formats follow wikipedia. -->
         <numberFormat pattern="(2)(\d{3})(\d{4})">
@@ -17393,11 +17132,9 @@
     </territory>
 
     <!-- Mali -->
+    <!-- http://www.itu.int/oth/T0202000083/en -->
+    <!-- http://crt-mali.org/pdf/plan_num -->
     <territory id="ML" countryCode="223" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000083/en</sourceUrl>
-        <sourceUrl>http://crt-mali.org/pdf/plan_num</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[24-9]</leadingDigits>
@@ -17472,11 +17209,9 @@
     </territory>
 
     <!-- Myanmar -->
+    <!-- http://www.itu.int/oth/T0202000092/en -->
     <territory id="MM" countryCode="95" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000092/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- This format is for 'Single digit area codes' where SN length is 6 or 7 digits. Below
              two formats are also added for single digit area codes but for different SN
@@ -17812,12 +17547,10 @@
     </territory>
 
     <!-- Mongolia -->
+    <!-- http://www.itu.int/oth/T020200008E/en -->
+    <!-- http://www.crc.gov.mn/k/4L/36 -->
     <territory id="MN" countryCode="976" internationalPrefix="001" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200008E/en</sourceUrl>
-        <sourceUrl>http://www.crc.gov.mn/k/4L/36</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([12]\d)(\d{2})(\d{4})">
           <leadingDigits>[12]1</leadingDigits>
@@ -17918,11 +17651,9 @@
 
     <!-- Macao, China -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T020200007E/en -->
+    <!-- http://www.dsrt.gov.mo/web/en/generalinfo/allocatednum -->
     <territory id="MO" countryCode="853" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200007E/en</sourceUrl>
-        <sourceUrl>http://www.dsrt.gov.mo/web/en/generalinfo/allocatednum</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([268]\d{3})(\d{4})">
           <leadingDigits>[268]</leadingDigits>
@@ -17970,12 +17701,10 @@
 
     <!-- Northern Mariana Islands -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000EE/en -->
+    <!-- http://www.cnmiphonebook.com/ -->
     <territory id="MP" countryCode="1" leadingDigits="670" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000EE/en</sourceUrl>
-        <sourceUrl>http://www.cnmiphonebook.com/</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -18095,12 +17824,10 @@
     <!-- The 876 prefix is mentioned in the plan, but the plan is from 2006 and in France VOIP
          numbers were changed from 087 to the 09 prefix in 2009. It is likely this occurred here
          too. -->
+    <!-- http://www.itu.int/oth/T0202000086/en -->
+    <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="MQ" countryCode="596" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000086/en</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/index.php?id=2137&amp;bloc=0596&amp;CMD=RESULTS_NUMEROTATION</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -18149,11 +17876,9 @@
     </territory>
 
     <!-- Mauritania -->
+    <!-- http://www.itu.int/oth/T0202000087/en -->
+    <!-- http://are.mr/pdfs/pnn2010.pdf -->
     <territory id="MR" countryCode="222" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000087/en</sourceUrl>
-        <sourceUrl>http://are.mr/pdfs/pnn2010.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2-48]\d)(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[2-48]</leadingDigits>
@@ -18194,11 +17919,9 @@
 
     <!-- Montserrat -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T020200008F/en -->
     <territory id="MS" countryCode="1" leadingDigits="664" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200008F/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -18260,11 +17983,9 @@
 
     <!-- Malta -->
     <!-- Numbering link in the LHS menu - has more up-to-date allocations -->
+    <!-- http://www.itu.int/oth/T0202000084/en -->
+    <!-- http://www.mca.org.mt/regulatory/numbering/numbering-plans -->
     <territory id="MT" countryCode="356" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000084/en</sourceUrl>
-        <sourceUrl>http://www.mca.org.mt/regulatory/numbering/numbering-plans</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -18363,11 +18084,9 @@
 
     <!-- Mauritius -->
     <!-- Preferred international prefix is expected to standardize on just '00' -->
+    <!-- http://www.icta.mu/telecommunications/numbering.htm -->
     <territory id="MU" countryCode="230" preferredInternationalPrefix="020"
                internationalPrefix="0(?:0|[2-7]0|33)">
-      <references>
-        <sourceUrl>http://www.icta.mu/telecommunications/numbering.htm</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2-46-9]\d{2})(\d{4})">
           <leadingDigits>[2-46-9]</leadingDigits>
@@ -18456,12 +18175,10 @@
     </territory>
 
     <!-- Maldives -->
+    <!-- http://www.itu.int/oth/T0202000082/en -->
+    <!-- http://www.dhiraagu.com.mv -->
     <territory id="MV" countryCode="960" preferredInternationalPrefix="00"
                internationalPrefix="0(?:0|19)">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000082/en</sourceUrl>
-        <sourceUrl>http://www.dhiraagu.com.mv</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>
@@ -18545,11 +18262,9 @@
     <!-- Malawi -->
     <!-- The plan doesn't state that a national prefix exists, but numbers found on the internet are
          consistent in having one. -->
+    <!-- http://www.itu.int/oth/T0202000080/en -->
     <territory id="MW" countryCode="265" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000080/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3})">
           <leadingDigits>1</leadingDigits>
@@ -18614,20 +18329,18 @@
     </territory>
 
     <!-- Mexico -->
+    <!-- http://www.itu.int/oth/T020200008A/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B52 -->
+    <!-- http://en.wikipedia.org/wiki/Premium-rate_telephone_number#Mexico -->
+    <!-- http://en.wikipedia.org/wiki/Toll-free_telephone_number -->
+    <!-- When a number starts with 01 or 02, we remove the prefixes; when a number starts with 044
+         or 045 followed by 10 digits, we replace the prefixes with 1. This way all the mobile
+         numbers, regardless of whether they are written in international format (leading 1) or
+         national format (leading 044/045), will be parsed into the same form. -->
     <territory id="MX" countryCode="52" internationalPrefix="0[09]" nationalPrefix="01"
                nationalPrefixForParsing="0[12]|04[45](\d{10})" nationalPrefixTransformRule="1$1"
                nationalPrefixFormattingRule="$NP $FG" nationalPrefixOptionalWhenFormatting="true"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200008A/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B52</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Premium-rate_telephone_number#Mexico</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Toll-free_telephone_number</sourceUrl>
-      </references>
-      <!-- When a number starts with 01 or 02, we remove the prefixes; when a number starts with 044
-           or 045 followed by 10 digits, we replace the prefixes with 1. This way all the mobile
-           numbers, regardless of whether they are written in international format (leading 1) or
-           national format (leading 044/045), will be parsed into the same form. -->
       <availableFormats>
         <numberFormat pattern="([358]\d)(\d{4})(\d{4})">
           <leadingDigits>
@@ -18857,12 +18570,10 @@
     </territory>
 
     <!-- Malaysia -->
+    <!-- http://en.wikipedia.org/wiki/%2B60 -->
+    <!-- https://www.mcmc.gov.my/sectors/celco/numbering-management/numbering-management/numbers-assignment -->
     <territory id="MY" countryCode="60" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B60</sourceUrl>
-        <sourceUrl>https://www.mcmc.gov.my/sectors/celco/numbering-management/numbering-management/numbers-assignment</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([4-79])(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>[4-79]</leadingDigits>
@@ -18902,7 +18613,8 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
-      <!-- Prefixes 39108 and 82266 are added based on user report. -->
+      <!-- Prefixes 32778, 39108, 6795, 82266, 905[79], 9075, 9132 and 9206 are added based on user
+           reports. -->
       <fixedLine>
         <possibleLengths national="8,9" localOnly="6,7"/>
         <exampleNumber>323856789</exampleNumber>
@@ -18949,7 +18661,7 @@
                   2[0-7]|
                   3[0-3]|
                   42|
-                  7[0-356]|
+                  7[0-3568]|
                   8[0-35-8]
                 )|
                 8(?:
@@ -19525,7 +19237,7 @@
                 6\d|
                 7[0156]|
                 8[12]|
-                9[0-47-9]
+                9[0-57-9]
               )\d|
               85[0-26]\d|
               9(?:
@@ -20039,8 +19751,13 @@
               )
             )|
             9(?:
+              0(?:
+                5[79]|
+                75
+              )\d|
+              132\d|
               2(?:
-                0[458]\d|
+                0[4-68]\d|
                 1[2-57]\d|
                 2[0-589]\d|
                 [39]\d{2}|
@@ -20264,10 +19981,8 @@
     <!-- The plan suggests 801 and 802 numbers are shared-cost numbers, and numbers beginning with
          a 9 are premium rate, but no online examples can be found of any of these so they are
          omitted for the time-being. -->
+    <!-- http://www.itu.int/oth/T0202000091/en -->
     <territory id="MZ" countryCode="258" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000091/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([28]\d)(\d{3})(\d{3,4})">
           <leadingDigits>
@@ -20316,11 +20031,9 @@
     </territory>
 
     <!-- Namibia -->
+    <!-- http://www.itu.int/oth/T0202000093/en -->
     <territory id="NA" countryCode="264" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000093/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(8\d)(\d{3})(\d{4})">
           <leadingDigits>8[1-35]</leadingDigits>
@@ -20470,11 +20183,9 @@
     </territory>
 
     <!-- New Caledonia (Territoire français d'outre-mer) -->
+    <!-- http://www.itu.int/oth/T0202000098/en -->
+    <!-- http://www.opt.nc -->
     <territory id="NC" countryCode="687" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000098/en</sourceUrl>
-        <sourceUrl>http://www.opt.nc</sourceUrl>
-      </references>
       <availableFormats>
         <!-- From http://www.1012.nc, the local yellow pages. -->
         <!-- We exclude short-codes here so they are formatted as a block -->
@@ -20524,10 +20235,8 @@
     </territory>
 
     <!-- Niger -->
+    <!-- http://www.itu.int/oth/T020200009B/en -->
     <territory id="NE" countryCode="227" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200009B/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
@@ -20595,10 +20304,8 @@
 
     <!-- Norfolk Island -->
     <!-- Including numbers for Australian Antarctic stations. -->
+    <!-- http://www.itu.int/oth/T020200009D/en -->
     <territory id="NF" countryCode="672" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200009D/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{4})">
           <leadingDigits>1</leadingDigits>
@@ -20638,15 +20345,13 @@
     </territory>
 
     <!-- Nigeria -->
+    <!-- http://www.itu.int/oth/T020200009C/en -->
+    <!-- https://www.ncc.gov.ng/technology/standards/numbering -->
+    <!-- This pattern is for fixed-line ranges and overlaps with the pattern for mobile ranges
+         below it. It is ordered above that one as its numbers are shorter, to reduce switching
+         back and forth between the two formats as one is typing. -->
     <territory id="NG" countryCode="234" internationalPrefix="009" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200009C/en</sourceUrl>
-        <sourceUrl>http://www.ncc.gov.ng/index.php/index.php?option=com_content&amp;view=article&amp;id=113&amp;Itemid=102</sourceUrl>
-      </references>
-      <!-- This pattern is for fixed-line ranges and overlaps with the pattern for mobile ranges
-           below it. It is ordered above that one as its numbers are shorter, to reduce switching
-           back and forth between the two formats as one is typing. -->
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3,4})">
           <leadingDigits>
@@ -20838,10 +20543,8 @@
     </territory>
 
     <!-- Nicaragua -->
+    <!-- http://www.itu.int/oth/T020200009A/en -->
     <territory id="NI" countryCode="505" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200009A/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -20892,12 +20595,10 @@
     </territory>
 
     <!-- Netherlands -->
+    <!-- http://en.wikipedia.org/wiki/%2B31 -->
+    <!-- http://wetten.overheid.nl/BWBR0010198 -->
     <territory id="NL" countryCode="31" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B31</sourceUrl>
-        <sourceUrl>http://wetten.overheid.nl/BWBR0010198</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([1-57-9]\d)(\d{3})(\d{4})">
           <leadingDigits>
@@ -20946,12 +20647,9 @@
             3(?:
               [02-9]\d|
               1[0-8]
-            )
+            )|
+            [89]\d{0,3}
           )\d{6}|
-          (?:
-            8\d|
-            9[01]
-          )\d{5,8}|
           1\d{4,5}
         </nationalNumberPattern>
       </generalDesc>
@@ -21027,6 +20725,10 @@
           )\d{6}
         </nationalNumberPattern>
       </fixedLine>
+      <!-- As per this government.nl's doc some sub ranges of existing 06[1-58] mobile numbers are
+           used for M2M purposes (that use mobile networks). But there is no information about these
+           sub ranges. Now 12 digit 097 are introduced for M2M which we do not support yet in any
+           category. https://www.government.nl/binaries/government/documents/annual-reports/2016/02/16/decree-change-of-telephone-and-isdn-services-numbering-plan-for-m2m-applications/decree-change-of-telephone-and-isdn-services-numbering-plan-for-m2m-applications.pdf -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>612345678</exampleNumber>
@@ -21101,11 +20803,9 @@
     <!-- Norway -->
     <!-- Metadata (excluding fixed-line) should be duplicated in 'SJ'. -->
     <!-- Main region for 'SJ' -->
+    <!-- http://www.npt.no/npt/numsys/E.164.pdf -->
     <territory id="NO" mainCountryForCode="true" countryCode="47" internationalPrefix="00"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.npt.no/npt/numsys/E.164.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([489]\d{2})(\d{2})(\d{3})">
           <leadingDigits>[489]</leadingDigits>
@@ -21204,13 +20904,11 @@
     </territory>
 
     <!-- Nepal -->
+    <!-- http://www.itu.int/oth/T0202000095/en -->
+    <!-- http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php -->
+    <!-- http://www.nta.gov.np/en/2012-06-01-11-45-17/2012-06-04-04-26-59/numbering-plan -->
     <territory id="NP" countryCode="977" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000095/en</sourceUrl>
-        <sourceUrl>http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php</sourceUrl>
-        <sourceUrl>http://www.nta.gov.np/en/2012-06-01-11-45-17/2012-06-04-04-26-59/numbering-plan</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting patterns taken from pages like http://www.nepalgov.gov.np -->
         <numberFormat pattern="(1)(\d{7})">
@@ -21279,11 +20977,9 @@
     </territory>
 
     <!-- Nauru -->
+    <!-- http://www.itu.int/oth/T0202000094/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Nauru -->
     <territory id="NR" countryCode="674" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000094/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Nauru</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -21316,11 +21012,9 @@
     </territory>
 
     <!-- Niue -->
+    <!-- http://www.itu.int/oth/T02020000EC/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Niue -->
     <territory id="NU" countryCode="683" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000EC/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Niue</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>888</leadingDigits>
@@ -21351,12 +21045,10 @@
     <!-- Includes Ross Dependency, Antarctica -->
     <!-- Does not currently support 083 "Enhanced voice services", New Zealand direct service
          numbers and 050 "Nation-Wide Service". -->
+    <!-- http://www.itu.int/oth/T0202000099/en -->
     <territory id="NZ" countryCode="64" preferredInternationalPrefix="00"
                internationalPrefix="0(?:0|161)" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000099/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Pattern for fixed-line formats, including Ross Dependency. -->
         <numberFormat pattern="(\d)(\d{3})(\d{4})">
@@ -21480,10 +21172,8 @@
     </territory>
 
     <!-- Oman -->
+    <!-- http://www.itu.int/oth/T020200009F/en -->
     <territory id="OM" countryCode="968" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200009F/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(2\d)(\d{6})">
           <leadingDigits>2</leadingDigits>
@@ -21547,11 +21237,9 @@
     <!-- Panama -->
     <!-- Last read July 9, 2014. -->
     <!-- Omits the fact that mobile phones are 8 digits long. -->
+    <!-- http://www.asep.gob.pa/telecom/pnn/default.asp -->
+    <!-- http://en.wikipedia.org/wiki/%2B507 -->
     <territory id="PA" countryCode="507" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.asep.gob.pa/telecom/pnn/default.asp</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B507</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[1-57-9]</leadingDigits>
@@ -21702,14 +21390,12 @@
     </territory>
 
     <!-- Peru -->
+    <!-- http://www.itu.int/oth/T02020000A6/en -->
+    <!-- http://en.wikipedia.org/wiki/+51 -->
+    <!-- http://www.assistbook.com/South%20America/Peru/widecodes -->
     <territory id="PE" countryCode="51" internationalPrefix="19(?:1[124]|77|90)00"
                nationalPrefix="0" preferredExtnPrefix=" Anexo "
                nationalPrefixFormattingRule="($NP$FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000A6/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+51</sourceUrl>
-        <sourceUrl>http://www.assistbook.com/South%20America/Peru/widecodes</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(1)(\d{7})">
           <leadingDigits>1</leadingDigits>
@@ -21782,10 +21468,8 @@
     </territory>
 
     <!-- French Polynesia (Tahiti) (Territoire français d'outre-mer) -->
+    <!-- http://www.itu.int/oth/T020200004D/en -->
     <territory id="PF" countryCode="689" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200004D/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
@@ -21828,13 +21512,11 @@
     </territory>
 
     <!-- Papua New Guinea -->
+    <!-- http://www.itu.int/oth/T02020000A4/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B675 -->
+    <!-- http://nicta.gov.pg/search?searchword=numbering%20plan -->
     <territory id="PG" countryCode="675" preferredInternationalPrefix="00"
                internationalPrefix="140[1-3]|00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000A4/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B675</sourceUrl>
-        <sourceUrl>http://nicta.gov.pg/search?searchword=numbering%20plan</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>
@@ -21914,10 +21596,8 @@
     </territory>
 
     <!-- Philippines -->
+    <!-- http://en.wikipedia.org/wiki/%2B63 -->
     <territory id="PH" countryCode="63" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B63</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Area code separated from number. Area codes found here:
              http://en.wikipedia.org/wiki/Telecommunications_in_the_Philippines#Area_Codes -->
@@ -22099,12 +21779,10 @@
     </territory>
 
     <!-- Pakistan -->
+    <!-- http://www.itu.int/oth/T02020000A1/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B92 -->
     <territory id="PK" countryCode="92" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000A1/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B92</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Toll-free and premium-rate numbers. -->
         <numberFormat pattern="([89]00)(\d{3})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
@@ -22416,13 +22094,11 @@
 
     <!-- Poland -->
     <!-- Source is in Polish. -->
+    <!-- http://en.wikipedia.org/wiki/%2B48 -->
+    <!-- http://www.itu.int/oth/T02020000A8/en -->
+    <!-- http://www.uke.gov.pl/tablice/home.do?execution=e1s1 -->
+    <!-- http://www.sgwp.wp.mil.pl/pl/1_1225.html -->
     <territory id="PL" countryCode="48" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B48</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000A8/en</sourceUrl>
-        <sourceUrl>http://www.uke.gov.pl/tablice/home.do?execution=e1s1</sourceUrl>
-        <sourceUrl>http://www.sgwp.wp.mil.pl/pl/1_1225.html</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formats for short codes. -->
         <numberFormat pattern="(\d{3})(\d{3})">
@@ -22565,11 +22241,9 @@
     </territory>
 
     <!-- Saint Pierre and Miquelon (Collectivité territoriale de la République française) -->
+    <!-- http://www.itu.int/oth/T02020000B2/en -->
     <territory id="PM" countryCode="508" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B2/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([45]\d)(\d{2})(\d{2})">
           <leadingDigits>[45]</leadingDigits>
@@ -22610,11 +22284,9 @@
 
     <!-- Puerto Rico -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000AA/en -->
     <territory id="PR" countryCode="1" leadingDigits="787|939" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AA/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -22685,13 +22357,11 @@
     <!-- Palestinian phone numbers can be reached through the Israeli country code (972) in addition
          to the Palestinian country code (970) and so Palestinian landlines and mobile lines are a
          subset of the Israeli formats. -->
+    <!-- http://en.wikipedia.org/wiki/%2B970 -->
+    <!-- http://www.wtng.info/wtng-970-ps.html -->
+    <!-- http://www.paltel.ps -->
     <territory id="PS" countryCode="970" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B970</sourceUrl>
-        <sourceUrl>http://www.wtng.info/wtng-970-ps.html</sourceUrl>
-        <sourceUrl>http://www.paltel.ps</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([2489])(2\d{2})(\d{4})">
           <leadingDigits>[2489]2</leadingDigits>
@@ -22748,10 +22418,8 @@
     </territory>
 
     <!-- Portugal -->
+    <!-- http://www.anacom.pt/render.jsp?categoryId=279098 -->
     <territory id="PT" countryCode="351" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.anacom.pt/render.jsp?categoryId=279098</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Note: the wikipedia page suggests that mobile numbers may also be formatted with only
              two digits in the first group; however, this doesn't seem to be majority usage based on
@@ -22864,10 +22532,8 @@
     </territory>
 
     <!-- Palau -->
+    <!-- http://www.itu.int/oth/T02020000A2/en -->
     <territory id="PW" countryCode="680" internationalPrefix="01[12]">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000A2/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -22934,14 +22600,12 @@
     </territory>
 
     <!-- Paraguay -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Paraguay -->
+    <!-- http://www.itu.int/oth/T02020000A5/en -->
+    <!-- http://www.copaco.com.py/portal/index.php/component/content/article/8-empresa/74-codigos-de-area.html -->
+    <!-- Number formats of landline numbers are based on online references. -->
     <territory id="PY" countryCode="595" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Paraguay</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000A5/en</sourceUrl>
-        <sourceUrl>http://www.copaco.com.py/portal/index.php/component/content/article/8-empresa/74-codigos-de-area.html</sourceUrl>
-      </references>
-      <!-- Number formats of landline numbers are based on online references. -->
       <availableFormats>
         <!-- CONATEL plan begin. -->
         <numberFormat pattern="(\d{2})(\d{5})" nationalPrefixFormattingRule="($NP$FG)">
@@ -23076,11 +22740,9 @@
 
     <!-- Qatar -->
     <!-- No premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T02020000AB/en -->
+    <!-- http://wtng.info/wtng-qq.html -->
     <territory id="QA" countryCode="974" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AB/en</sourceUrl>
-        <sourceUrl>http://wtng.info/wtng-qq.html</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([28]\d{2})(\d{4})">
           <leadingDigits>[28]</leadingDigits>
@@ -23132,12 +22794,10 @@
 
     <!-- Réunion (French Departments and Territories in the Indian Ocean) -->
     <!-- Main region for 'YT' -->
+    <!-- http://www.itu.int/oth/T020200004B/en -->
+    <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="RE" mainCountryForCode="true" countryCode="262" leadingDigits="262|69|8"
                internationalPrefix="00" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200004B/en</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/index.php?id=2137&amp;bloc=0596&amp;CMD=RESULTS_NUMEROTATION</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([268]\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[268]</leadingDigits>
@@ -23206,14 +22866,12 @@
 
     <!-- Romania -->
     <!-- Extension prefix found online, confirmed by a Romanian. -->
+    <!-- http://www.itu.int/oth/T02020000AC/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
+    <!-- http://www.ancom.org.ro/en/presentation-of-romanian-national-numbering-plan-according-to-itu-t-recommendation-e129-_5523 -->
     <territory id="RO" countryCode="40" internationalPrefix="00" nationalPrefix="0"
                preferredExtnPrefix=" int " nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AC/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Romania</sourceUrl>
-        <sourceUrl>http://www.ancom.org.ro/en/presentation-of-romanian-national-numbering-plan-according-to-itu-t-recommendation-e129-_5523</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <leadingDigits>[23]1</leadingDigits>
@@ -23322,12 +22980,10 @@
     </territory>
 
     <!-- Serbia -->
+    <!-- http://www.itu.int/oth/T02020000B9/en -->
+    <!-- http://registar.ratel.rs/en/reg202 -->
     <territory id="RS" countryCode="381" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B9/en</sourceUrl>
-        <sourceUrl>http://registar.ratel.rs/en/reg202</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([23]\d{2})(\d{4,9})">
           <leadingDigits>
@@ -23447,13 +23103,11 @@
 
     <!-- Russian Federation -->
     <!-- Main region for 'KZ' -->
+    <!-- http://www.itu.int/oth/T02020000AD/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B7 -->
     <territory id="RU" mainCountryForCode="true" countryCode="7" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="$NP ($FG)"
                nationalPrefixOptionalWhenFormatting="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AD/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B7</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting from wikipedia, confirmed on government websites such as
              http://www.minjust.ru/ru/structure/contact/. Contains formatting instructions for
@@ -23543,11 +23197,9 @@
     <!-- According to ITU, there is no national prefix. However, this is still used. As of June 3rd
          2011, this was confirmed by a Rwandan local. It is also shown in this format on pages such
          as http://www.tigo.co.rw "Choose Your Number" service. -->
+    <!-- http://www.rura.gov.rw/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf -->
+    <!-- http://en.wikipedia.org/wiki/+250 -->
     <territory id="RW" countryCode="250" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.rura.gov.rw/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+250</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(2\d{2})(\d{3})(\d{3})">
           <leadingDigits>2</leadingDigits>
@@ -23601,12 +23253,10 @@
     </territory>
 
     <!-- Saudi Arabia -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia -->
+    <!-- http://www.itu.int/oth/T02020000B7/en -->
     <territory id="SA" countryCode="966" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000B7/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(1\d)(\d{3})(\d{4})">
           <leadingDigits>1[1-467]</leadingDigits>
@@ -23656,19 +23306,13 @@
           )\d{6}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- Including "Nomadic" numbers from the Telecom Company "Go". The ITU document now says
-           they are 11 digits long; however all online numbers are 10, and it used to say 10, so
-           until we find evidence that this is an error, leaving them at 10 for now. -->
       <mobile>
-        <possibleLengths national="9,10"/>
+        <possibleLengths national="9"/>
         <exampleNumber>512345678</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            5(?:
-              [013-689]\d|
-              7[0-36-8]
-            )|
-            811\d
+          5(?:
+            [013-689]\d|
+            7[0-36-8]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -23677,21 +23321,33 @@
         <exampleNumber>8001234567</exampleNumber>
         <nationalNumberPattern>800\d{7}</nationalNumberPattern>
       </tollFree>
-      <!-- Including shared revenue with shared cost here. -->
+      <!-- Contains shared revenue range 925, as calling these numbers involve charges from carrier
+           and the organization that you are calling. -->
+      <premiumRate>
+        <possibleLengths national="9"/>
+        <exampleNumber>925012345</exampleNumber>
+        <nationalNumberPattern>925\d{6}</nationalNumberPattern>
+      </premiumRate>
       <sharedCost>
         <possibleLengths national="9"/>
         <exampleNumber>920012345</exampleNumber>
-        <nationalNumberPattern>92[05]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>920\d{6}</nationalNumberPattern>
       </sharedCost>
+      <!-- Including "Nomadic" numbers from the Telecom Company "Go". "Go" says these are fixed-line
+           that can be moved with no further setup. As these are mobile in nature and UAN is the
+           closest match, adding it here. -->
+      <uan>
+        <possibleLengths national="9,10"/>
+        <exampleNumber>8110123456</exampleNumber>
+        <nationalNumberPattern>811\d{7}</nationalNumberPattern>
+      </uan>
     </territory>
 
     <!-- Solomon Islands -->
+    <!-- http://www.itu.int/oth/T02020000BF/en -->
+    <!-- A single group is used to format 5-digit numbers. This formatting pattern follows
+         the guidelines in the ITU document. -->
     <territory id="SB" countryCode="677" internationalPrefix="0[01]">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000BF/en</sourceUrl>
-      </references>
-      <!-- A single group is used to format 5-digit numbers. This formatting pattern follows
-           the guidelines in the ITU document. -->
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{5})">
           <leadingDigits>[7-9]</leadingDigits>
@@ -23760,12 +23416,10 @@
     </territory>
 
     <!-- Seychelles -->
+    <!-- http://www.itu.int/oth/T02020000BA/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Seychelles -->
     <territory id="SC" countryCode="248" preferredInternationalPrefix="00"
                internationalPrefix="0(?:[02]|10?)">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000BA/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Seychelles</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{3})">
           <leadingDigits>[246]</leadingDigits>
@@ -23819,11 +23473,9 @@
     </territory>
 
     <!-- Sudan -->
+    <!-- http://www.itu.int/oth/T02020000C4/en -->
     <territory id="SD" countryCode="249" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000C4/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
           <format>$1 $2 $3</format>
@@ -23858,11 +23510,9 @@
     </territory>
 
     <!-- Sweden -->
+    <!-- https://www.pts.se/en/english-b/telephony/national-numbering-and-addressing-plans/ -->
     <territory id="SE" countryCode="46" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>https://www.pts.se/en/english-b/telephony/national-numbering-and-addressing-plans/</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting patterns are from the numbering plan and from the Swedish yellow pages
              http://gulasidorna.eniro.se -->
@@ -24138,11 +23788,9 @@
     </territory>
 
     <!-- Singapore -->
+    <!-- http://www.ida.gov.sg/Policies-and-Regulations/Industry-and-Licensees/Numbering/National-Numbering-Plan-and-Allocation-Process.aspx -->
     <territory id="SG" countryCode="65" internationalPrefix="0[0-3]\d"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.ida.gov.sg/Policies-and-Regulations/Industry-and-Licensees/Numbering/National-Numbering-Plan-and-Allocation-Process.aspx</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([3689]\d{3})(\d{4})">
           <leadingDigits>
@@ -24219,10 +23867,8 @@
 
     <!-- Saint Helena -->
     <!-- Main region for 'TA' -->
+    <!-- http://www.itu.int/oth/T02020000AF/en -->
     <territory id="SH" mainCountryForCode="true" countryCode="290" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AF/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -24264,12 +23910,10 @@
     </territory>
 
     <!-- Slovenia -->
+    <!-- http://www.itu.int/oth/T02020000BE/en -->
+    <!-- http://www.akos-rs.si/numbering-space -->
     <territory id="SI" countryCode="386" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000BE/en</sourceUrl>
-        <sourceUrl>http://www.akos-rs.si/numbering-space</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="($NP$FG)">
           <leadingDigits>
@@ -24369,10 +24013,8 @@
 
     <!-- Svalbard -->
     <!-- Calling code and formatting shared with 'NO' -->
+    <!-- http://www.npt.no/pt_internet/numsys/E.164.pdf -->
     <territory id="SJ" countryCode="47" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.npt.no/pt_internet/numsys/E.164.pdf</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -24454,12 +24096,10 @@
     </territory>
 
     <!-- Slovakia -->
+    <!-- http://www.itu.int/oth/T02020000BD/en -->
+    <!-- http://www.teleoff.gov.sk/data/files/25211.pdf -->
     <territory id="SK" countryCode="421" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000BD/en</sourceUrl>
-        <sourceUrl>http://www.teleoff.gov.sk/data/files/25211.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(2)(1[67])(\d{3,4})">
           <leadingDigits>21[67]</leadingDigits>
@@ -24595,11 +24235,9 @@
     </territory>
 
     <!-- Sierra Leone -->
+    <!-- http://www.itu.int/oth/T02020000BB/en -->
     <territory id="SL" countryCode="232" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="($NP$FG)">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000BB/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Following formatting of online yellow pages http://www.leonedirect.com -->
         <numberFormat pattern="(\d{2})(\d{6})">
@@ -24644,13 +24282,11 @@
          and without this area code. The nationalPrefixForParsing and nationalPrefixTransformRule
          are used to ensure that if the 0549 is not present, it will be added. -->
     <!-- Information about Italy. -->
+    <!-- http://www.itu.int/oth/T02020000B5/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B39 -->
+    <!-- http://en.wikipedia.org/wiki/%2B378 -->
     <territory id="SM" countryCode="378" internationalPrefix="00"
                nationalPrefixForParsing="([89]\d{5})" nationalPrefixTransformRule="0549$1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B5/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B39</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B378</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[5-7]</leadingDigits>
@@ -24711,11 +24347,9 @@
     </territory>
 
     <!-- Senegal -->
+    <!-- http://www.itu.int/oth/T02020000B8/en -->
+    <!-- http://www.artpsenegal.net/index.php?option=com_content&view=article&id=50 -->
     <territory id="SN" countryCode="221" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B8/en</sourceUrl>
-        <sourceUrl>http://www.artpsenegal.net/index.php?option=com_content&amp;view=article&amp;id=50</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Using yellow pages and online telecom company formatting, rather than that implied in
              the national numbering plan. -->
@@ -24800,11 +24434,9 @@
          the countries main telecom operators. We also have received information that a national
          prefix of "0" is required when dialling from different regions (e.g. Puntland, Somaliland)
          for some operators, so that is included here although we do not use it when formatting. -->
+    <!-- http://www.itu.int/oth/T02020000C0/en -->
+    <!-- http://en.wikipedia.org/wiki/+252 -->
     <territory id="SO" countryCode="252" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000C0/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+252</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{6})">
           <leadingDigits>[134]</leadingDigits>
@@ -24913,10 +24545,8 @@
     </territory>
 
     <!-- Suriname -->
+    <!-- http://www.itu.int/oth/T02020000C5/en -->
     <territory id="SR" countryCode="597" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000C5/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Following conventions used in the Suriname Yellow Pages. -->
         <numberFormat pattern="(\d{3})(\d{3})">
@@ -24976,11 +24606,9 @@
     </territory>
 
     <!-- South Sudan -->
+    <!-- http://www.itu.int/oth/T02020000F9/en -->
+    <!-- http://en.wikipedia.org/wiki/+211 -->
     <territory id="SS" countryCode="211" internationalPrefix="00" nationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000F9/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+211</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
           <format>$1 $2 $3</format>
@@ -25007,10 +24635,8 @@
     </territory>
 
     <!-- Sao Tome and Principe -->
+    <!-- http://www.itu.int/oth/T02020000B6/en -->
     <territory id="ST" countryCode="239" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B6/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
@@ -25046,11 +24672,9 @@
     </territory>
 
     <!-- El Salvador -->
+    <!-- http://www.itu.int/oth/T020200003F/en -->
+    <!-- http://www.siget.gob.sv/BusquedaPublica.aspx?pagina=3&tipo=27&titulo=t8&sector=2&ordenar=&dir=DESC -->
     <territory id="SV" countryCode="503" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200003F/en</sourceUrl>
-        <sourceUrl>http://www.siget.gob.sv/BusquedaPublica.aspx?pagina=3&amp;tipo=27&amp;titulo=t8&amp;sector=2&amp;ordenar=&amp;dir=DESC</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>[267]</leadingDigits>
@@ -25100,12 +24724,10 @@
 
     <!-- Sint Maarten -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.nanpa.com/pdf/PL_429.pdf -->
+    <!-- http://www.itu.int/oth/T02020000F7/en -->
     <territory id="SX" countryCode="1" leadingDigits="721" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.nanpa.com/pdf/PL_429.pdf</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000F7/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -25182,12 +24804,10 @@
 
     <!-- Syrian Arab Republic -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T02020000C9/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B963 -->
     <territory id="SY" countryCode="963" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" nationalPrefixOptionalWhenFormatting="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000C9/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B963</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})">
           <leadingDigits>[1-5]</leadingDigits>
@@ -25244,10 +24864,8 @@
     </territory>
 
     <!-- Swaziland -->
+    <!-- http://www.itu.int/oth/T02020000C6/en -->
     <territory id="SZ" countryCode="268" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000C6/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>[0237]</leadingDigits>
@@ -25302,10 +24920,8 @@
 
     <!-- Tristan da Cunha -->
     <!-- Calling code and formatting shared with 'SH' -->
+    <!-- http://www.itu.int/oth/T02020000AF/en -->
     <territory id="TA" countryCode="290" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000AF/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>8\d{3}</nationalNumberPattern>
       </generalDesc>
@@ -25318,11 +24934,9 @@
 
     <!-- Turks and Caicos Islands -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000D8/en -->
     <territory id="TC" countryCode="1" leadingDigits="649" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D8/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -25408,11 +25022,9 @@
 
     <!-- Chad -->
     <!-- The international prefix includes 16 as the international manual exchange. -->
+    <!-- http://www.itu.int/oth/T0202000029/en -->
     <territory id="TD" countryCode="235" preferredInternationalPrefix="00"
                internationalPrefix="00|16">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000029/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
@@ -25456,10 +25068,8 @@
     </territory>
 
     <!-- Togo -->
+    <!-- http://www.itu.int/oth/T02020000D1/en -->
     <territory id="TG" countryCode="228" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D1/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Added leading digits so that the shortcodes do not pick this format during AYTF. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
@@ -25499,12 +25109,11 @@
     <!-- Thailand -->
     <!-- Subscribers can use respective carrier's IDD when calling abroad. We have not configured
          any preferredInternationalPrefix as there is no official evidence for it. -->
+    <!-- http://www.itu.int/oth/T02020000CD/en -->
+    <!-- http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf -->
+    <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Thailand -->
     <territory id="TH" countryCode="66" internationalPrefix="00[1-9]" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000CD/en</sourceUrl>
-        <sourceUrl>http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting patterns from wikipedia and the document itself -
              http://en.wikipedia.org/wiki/%2B66 -->
@@ -25586,12 +25195,10 @@
 
     <!-- Tajikistan -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T02020000CA/en -->
     <territory id="TJ" countryCode="992" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8"
                nationalPrefixOptionalWhenFormatting="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000CA/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([349]\d{2})(\d{2})(\d{4})">
           <leadingDigits>
@@ -25682,10 +25289,8 @@
     </territory>
 
     <!-- Tokelau -->
+    <!-- http://www.itu.int/oth/T02020000D2/en -->
     <territory id="TK" countryCode="690" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D2/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>[2-47]\d{3,6}</nationalNumberPattern>
       </generalDesc>
@@ -25711,10 +25316,8 @@
     </territory>
 
     <!-- Timor-Leste (East Timor) -->
+    <!-- http://www.itu.int/oth/T02020000D0/en -->
     <territory id="TL" countryCode="670" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D0/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>
@@ -25778,12 +25381,10 @@
 
     <!-- Turkmenistan -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T02020000D7/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Turkmenistan -->
     <territory id="TM" countryCode="993" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="($NP $FG)">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D7/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Turkmenistan</sourceUrl>
-      </references>
       <availableFormats>
         <!-- There doesn't seem to be a standardized format. The format below is based on the
              Turkmenistan embassy at
@@ -25853,12 +25454,10 @@
     </territory>
 
     <!-- Tunisia -->
+    <!-- http://www.itu.int/oth/T02020000D5/en -->
+    <!-- http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf -->
+    <!-- http://www.tunisietelecom.tn/tt/internet/fr/pme/fixe/numeros_acceuil -->
     <territory id="TN" countryCode="216" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D5/en</sourceUrl>
-        <sourceUrl>http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&amp;TYPE=personalization&amp;ID=NONE&amp;KEY=NONE&amp;LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&amp;FOLDER=%2F&amp;DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf</sourceUrl>
-        <sourceUrl>http://www.tunisietelecom.tn/tt/internet/fr/pme/fixe/numeros_acceuil</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
           <format>$1 $2 $3</format>
@@ -25927,11 +25526,9 @@
     </territory>
 
     <!-- Tonga -->
+    <!-- http://www.itu.int/oth/T02020000D3/en -->
+    <!-- http://www.wtng.info/wtng-676-to.html -->
     <territory id="TO" countryCode="676" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D3/en</sourceUrl>
-        <sourceUrl>http://www.wtng.info/wtng-676-to.html</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})">
           <leadingDigits>
@@ -26001,14 +25598,12 @@
     </territory>
 
     <!-- Turkey -->
+    <!-- http://en.wikipedia.org/wiki/%2B90 -->
+    <!-- http://www.itu.int/oth/T02020000D6/en -->
+    <!-- https://eng.btk.gov.tr/en-US/Pages/National-Numbering-Plan -->
+    <!-- https://www.btk.gov.tr/tr-TR/Sayfalar/Isletmecilere-Tahsisli-Numaralar -->
     <territory id="TR" countryCode="90" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixOptionalWhenFormatting="true" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B90</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000D6/en</sourceUrl>
-        <sourceUrl>https://eng.btk.gov.tr/en-US/Pages/National-Numbering-Plan</sourceUrl>
-        <sourceUrl>https://www.btk.gov.tr/tr-TR/Sayfalar/Isletmecilere-Tahsisli-Numaralar</sourceUrl>
-      </references>
       <availableFormats>
         <!-- In online references we see both these formats for mobile and fixed-line numbers:
              (\d{3})(\d{3})(\d{2})(\d{2}) and (\d{3})(\d{3})(\d{4}). However the former seems to be
@@ -26154,11 +25749,9 @@
 
     <!-- Trinidad and Tobago -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000D4/en -->
     <territory id="TT" countryCode="1" leadingDigits="868" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D4/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -26265,11 +25858,9 @@
     </territory>
 
     <!-- Tuvalu -->
+    <!-- http://www.itu.int/oth/T02020000D9/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu -->
     <territory id="TV" countryCode="688" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000D9/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -26302,13 +25893,11 @@
     <!-- Taiwan, China -->
     <!-- Extension symbols found on the internet so far have been #, X and Ext - so # has been
          chosen as the preferred extension prefix. -->
+    <!-- http://www.itu.int/oth/T02020000EB/en -->
+    <!-- https://www.ncc.gov.tw/chinese/files/07080/265_1037_070808_1.doc -->
     <territory id="TW" countryCode="886" internationalPrefix="0(?:0[25679]|19)" nationalPrefix="0"
                preferredExtnPrefix="#" nationalPrefixFormattingRule="$NP$FG"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000EB/en</sourceUrl>
-        <sourceUrl>https://www.ncc.gov.tw/chinese/files/07080/265_1037_070808_1.doc</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(20)(\d)(\d{4})">
           <leadingDigits>202</leadingDigits>
@@ -26420,11 +26009,9 @@
     </territory>
 
     <!-- Tanzania -->
+    <!-- http://www.itu.int/oth/T02020000CB/en -->
     <territory id="TZ" countryCode="255" internationalPrefix="00[056]" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000CB/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([24]\d)(\d{3})(\d{4})">
           <leadingDigits>[24]</leadingDigits>
@@ -26504,12 +26091,10 @@
     </territory>
 
     <!-- Ukraine -->
+    <!-- http://www.itu.int/oth/T02020000DB/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B380 -->
     <territory id="UA" countryCode="380" preferredInternationalPrefix="0~0" internationalPrefix="00"
                nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000DB/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B380</sourceUrl>
-      </references>
       <availableFormats>
         <!-- City codes separated out. No definitive list has been found of what constitutes the
              area code - http://www.ua.all-biz.info/guide/phonecodes is useful but not error-free.
@@ -26712,12 +26297,10 @@
     </territory>
 
     <!-- Uganda -->
+    <!-- http://www.itu.int/oth/T02020000F1/en -->
+    <!-- http://www.ucc.co.ug/licensing/ugandaNumberingPlan.pdf -->
     <territory id="UG" countryCode="256" internationalPrefix="00[057]" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000F1/en</sourceUrl>
-        <sourceUrl>http://www.ucc.co.ug/licensing/ugandaNumberingPlan.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{6})">
           <leadingDigits>
@@ -26835,13 +26418,11 @@
          when formatting, but is set here so that users who are calling formatByPattern can specify
          NationalPrefixFormattingRule if they want to. -->
     <!-- Main region for 'AG,AI,AS,BB,BM,BS,CA,DM,DO,GD,GU,JM,KN,KY,LC,MP,MS,PR,SX,TC,TT,VC,VG,VI' -->
+    <!-- http://www.nanpa.com/reports/reports_npa.html -->
+    <!-- http://en.wikipedia.org/wiki/North_American_Numbering_Plan -->
     <territory id="US" mainCountryForCode="true" countryCode="1" internationalPrefix="011"
                nationalPrefix="1" nationalPrefixOptionalWhenFormatting="true"
                mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.nanpa.com/reports/reports_npa.html</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/North_American_Numbering_Plan</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1-$2</format>
@@ -26909,8 +26490,7 @@
               0[1-35-9]|
               1[024-9]|
               2[03689]|
-              3[016]|
-              4[16]|
+              [34][016]|
               5[017]|
               6[0-279]|
               78|
@@ -26931,7 +26511,7 @@
               0[1-68]|
               1[02-8]|
               2[08]|
-              3[0-258]|
+              3[0-28]|
               4[3578]|
               5[046-9]|
               6[02-5]|
@@ -26944,7 +26524,7 @@
               3[014678]|
               4[0179]|
               5[12469]|
-              7[0-3589]|
+              7[0-389]|
               8[04-69]
             )
           )[2-9]\d{6}
@@ -27002,8 +26582,7 @@
               0[1-35-9]|
               1[024-9]|
               2[03689]|
-              3[016]|
-              4[16]|
+              [34][016]|
               5[017]|
               6[0-279]|
               78|
@@ -27024,7 +26603,7 @@
               0[1-68]|
               1[02-8]|
               2[08]|
-              3[0-258]|
+              3[0-28]|
               4[3578]|
               5[046-9]|
               6[02-5]|
@@ -27037,7 +26616,7 @@
               3[014678]|
               4[0179]|
               5[12469]|
-              7[0-3589]|
+              7[0-389]|
               8[04-69]
             )
           )[2-9]\d{6}
@@ -27091,13 +26670,11 @@
     <!-- Uruguay -->
     <!-- International long-distance providers can be dialled by dialling 01 followed by a carrier
          code JK, where J = [3-9] and K is any digit. -->
+    <!-- http://www.itu.int/oth/T02020000E0/en -->
+    <!-- http://www.ursec.gub.uy -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay -->
     <territory id="UY" countryCode="598" preferredInternationalPrefix="00"
                internationalPrefix="0(?:1[3-9]\d|0)" nationalPrefix="0" preferredExtnPrefix=" int. ">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E0/en</sourceUrl>
-        <sourceUrl>http://www.ursec.gub.uy</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Following paginasamarillas.com.uy formatting. -->
         <numberFormat pattern="(\d{4})(\d{4})">
@@ -27150,12 +26727,10 @@
 
     <!-- Uzbekistan -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng -->
+    <!-- http://www.itu.int/oth/T02020000E1/en -->
     <territory id="UZ" countryCode="998" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="$NP $FG">
-      <references>
-        <sourceUrl>http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000E1/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([679]\d)(\d{3})(\d{2})(\d{2})">
           <leadingDigits>[679]</leadingDigits>
@@ -27502,10 +27077,8 @@
          to telephone numbers in Rome, with "698" following the "06" for Rome.
          A Vatican telephone number is in the form of 06 698x xxxx. -->
     <!-- Calling code and formatting shared with 'IT' -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City -->
     <territory id="VA" countryCode="39" internationalPrefix="00" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           0\d{6}(?:
@@ -27614,11 +27187,9 @@
 
     <!-- Saint Vincent and the Grenadines -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000B3/en -->
     <territory id="VC" countryCode="1" leadingDigits="784" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B3/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -27716,12 +27287,10 @@
     <!-- Venezuela -->
     <!-- 1XX specifies a particular carrier to route a call to, but none of these have been
          implemented. -->
+    <!-- http://www.itu.int/oth/T02020000E3/en -->
+    <!-- http://en.wikipedia.org/wiki/+58 -->
     <territory id="VE" countryCode="58" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" carrierCodeFormattingRule="$CC $FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E3/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/+58</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{7})">
           <format>$1-$2</format>
@@ -27781,11 +27350,9 @@
 
     <!-- Virgin Islands, British -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T020200001E/en -->
     <territory id="VG" countryCode="1" leadingDigits="284" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T020200001E/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -27883,11 +27450,9 @@
 
     <!-- Virgin Islands, United States -->
     <!-- Calling code and formatting shared with 'US' -->
+    <!-- http://www.itu.int/oth/T02020000DF/en -->
     <territory id="VI" countryCode="1" leadingDigits="340" internationalPrefix="011"
                nationalPrefix="1">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000DF/en</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -28019,12 +27584,10 @@
     </territory>
 
     <!-- Viet Nam (Vietnam) -->
+    <!-- http://www.itu.int/oth/T02020000E4/en -->
+    <!-- http://en.wikipedia.org/wiki/%2B84 -->
     <territory id="VN" countryCode="84" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" nationalPrefixOptionalWhenFormatting="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E4/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/%2B84</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([17]99)(\d{4})">
           <leadingDigits>[17]99</leadingDigits>
@@ -28046,14 +27609,9 @@
           <leadingDigits>2[0-35-79]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- Format for old mobile ranges. -->
         <numberFormat pattern="([89]\d)(\d{3})(\d{2})(\d{2})">
-          <leadingDigits>
-            8(?:
-              8|
-              9[89]
-            )|
-            9
-          </leadingDigits>
+          <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(1[2689]\d)(\d{3})(\d{4})">
@@ -28066,8 +27624,12 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(86[689])(\d{3})(\d{3})">
-          <leadingDigits>86[689]</leadingDigits>
+        <!-- Format for new mobile ranges. -->
+        <numberFormat pattern="([358]\d{2})(\d{3})(\d{3})">
+          <leadingDigits>
+            [35]|
+            8[1-9]
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(1[89]00)(\d{4,6})" nationalPrefixFormattingRule="$FG">
@@ -28079,15 +27641,14 @@
       <generalDesc>
         <nationalNumberPattern>
           [12]\d{9}|
+          [13589]\d{8}|
           (?:
-            [19]\d|
-            8[0-35-9]
-          )\d{7}|
-          1\d{7}|
-          69\d{5,6}|
-          (?:
-            [18]\d\d|
-            799
+            (?:
+              1\d|
+              69
+            )\d\d?|
+            799|
+            8\d\d
           )\d{4}
         </nationalNumberPattern>
       </generalDesc>
@@ -28133,10 +27694,14 @@
               8[68]|
               99
             )\d|
+            3\d{2}|
+            5(?:
+              2[23]|
+              [68]\d
+            )|
             8(?:
-              6[689]|
-              8\d|
-              9[89]
+              [1-58]\d|
+              [69][689]
             )|
             9(?:
               [0-8]\d|
@@ -28176,11 +27741,9 @@
     </territory>
 
     <!-- Vanuatu -->
+    <!-- http://www.itu.int/oth/T02020000E2/en -->
+    <!-- Should be formatted in one block, apart from the mobile numbers. -->
     <territory id="VU" countryCode="678" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E2/en</sourceUrl>
-      </references>
-      <!-- Should be formatted in one block, apart from the mobile numbers. -->
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>[579]</leadingDigits>
@@ -28240,10 +27803,8 @@
     </territory>
 
     <!-- Wallis and Futuna (Territoire français d'outre-mer) -->
+    <!-- http://www.itu.int/oth/T02020000E6/en -->
     <territory id="WF" countryCode="681" internationalPrefix="00">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E6/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3</format>
@@ -28292,10 +27853,8 @@
     </territory>
 
     <!-- Samoa -->
+    <!-- http://www.itu.int/oth/T02020000B4/en -->
     <territory id="WS" countryCode="685" internationalPrefix="0">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000B4/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(8\d{2})(\d{3,7})">
           <leadingDigits>8</leadingDigits>
@@ -28358,12 +27917,10 @@
     </territory>
 
     <!-- Kosovo -->
+    <!-- https://www.itu.int/oth/T02020000FD/en -->
+    <!-- http://arkep-rks.org/?cid=1,50 -->
     <territory id="XK" countryCode="383" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>https://www.itu.int/oth/T02020000FD/en</sourceUrl>
-        <sourceUrl>http://arkep-rks.org/?cid=1,50</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
           <leadingDigits>
@@ -28421,11 +27978,9 @@
 
     <!-- Yemen -->
     <!-- No tollFree or premiumRate information can be found. -->
+    <!-- http://www.itu.int/oth/T02020000E7/en -->
     <territory id="YE" countryCode="967" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E7/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="([1-7])(\d{3})(\d{3,4})">
           <leadingDigits>
@@ -28478,13 +28033,11 @@
     <!-- Calling code and formatting shared with 'RE' -->
     <!-- Some information at the following source, but most from collection of internet data. -->
     <!-- Verifies the fixed-line prefixes, but the mobile prefixes listed here seem out of date. -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_France -->
+    <!-- http://www.comores-online.com/mwezinet/internet/262 -->
+    <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="YT" countryCode="262" leadingDigits="269|63" internationalPrefix="00"
                nationalPrefix="0">
-      <references>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_France</sourceUrl>
-        <sourceUrl>http://www.comores-online.com/mwezinet/internet/262</sourceUrl>
-        <sourceUrl>http://www.arcep.fr/index.php?id=2137&amp;bloc=0596&amp;CMD=RESULTS_NUMEROTATION</sourceUrl>
-      </references>
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -28531,13 +28084,11 @@
     </territory>
 
     <!-- South Africa -->
+    <!-- http://www.itu.int/oth/T02020000C1/en -->
+    <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa -->
+    <!-- https://www.icasa.org.za/Portals/0/Regulations/Regulations/NumberingPlanReg.pdf -->
     <territory id="ZA" countryCode="27" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG" mobileNumberPortableRegion="true">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000C1/en</sourceUrl>
-        <sourceUrl>http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa</sourceUrl>
-        <sourceUrl>https://www.icasa.org.za/Portals/0/Regulations/Regulations/NumberingPlanReg.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(860)(\d{3})(\d{3})">
           <leadingDigits>860</leadingDigits>
@@ -28636,12 +28187,10 @@
     </territory>
 
     <!-- Zambia -->
+    <!-- http://www.itu.int/oth/T02020000E8/en -->
+    <!-- https://www.zicta.zm/Downloads/Numbering%20Plan.pdf -->
     <territory id="ZM" countryCode="260" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E8/en</sourceUrl>
-        <sourceUrl>https://www.zicta.zm/Downloads/Numbering%20Plan.pdf</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Format for local dialling of fixed-line numbers. -->
         <numberFormat pattern="(\d{2})(\d{4})" nationalPrefixFormattingRule="$FG">
@@ -28694,11 +28243,9 @@
     </territory>
 
     <!-- Zimbabwe -->
+    <!-- http://www.itu.int/oth/T02020000E9/en -->
     <territory id="ZW" countryCode="263" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixFormattingRule="$NP$FG">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E9/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- One-digit area codes -->
         <numberFormat pattern="([49])(\d{3})(\d{2,4})">
@@ -28976,10 +28523,8 @@
     </territory>
 
     <!-- Universal International Toll Free Number -->
+    <!-- http://www.itu.int/en/ITU-T/inr/unum/Pages/uifn.aspx -->
     <territory id="001" countryCode="800">
-      <references>
-        <sourceUrl>http://www.itu.int/en/ITU-T/inr/unum/Pages/uifn.aspx</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -28996,10 +28541,8 @@
     </territory>
 
     <!-- Universal International Shared Cost Number -->
+    <!-- http://www.itu.int/rec/T-REC-E.169-200205-I/en -->
     <territory id="001" countryCode="808">
-      <references>
-        <sourceUrl>http://www.itu.int/rec/T-REC-E.169-200205-I/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <format>$1 $2</format>
@@ -29016,11 +28559,9 @@
     </territory>
 
     <!-- Inmarsat Global Limited -->
+    <!-- http://www.itu.int/oth/T0202000065/en -->
+    <!-- http://www.inmarsat.com -->
     <territory id="001" countryCode="870">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T0202000065/en</sourceUrl>
-        <sourceUrl>http://www.inmarsat.com</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <format>$1 $2 $3</format>
@@ -29044,10 +28585,8 @@
 
     <!-- VISIONng -->
     <!-- Number length has been derived from examples found online. -->
+    <!-- http://www.itu.int/oth/T02020000E5/en -->
     <territory id="001" countryCode="878">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000E5/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting chosen based on online examples. -->
         <numberFormat pattern="(\d{2})(\d{5})(\d{5})">
@@ -29068,11 +28607,9 @@
     <!-- Globalstar also reports using this prefix, but we cannot find any online numbers with the
          Globalstar prefixes, so are not sure how exactly these work, and what length the numbers
          are. For this reason, we only support Iridium numbers at the moment. -->
+    <!-- http://www.iridium.com -->
+    <!-- http://www.itu.int/oth/T0202000069/en -->
     <territory id="001" countryCode="881">
-      <references>
-        <sourceUrl>http://www.iridium.com</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T0202000069/en</sourceUrl>
-      </references>
       <availableFormats>
         <!-- Formatting chosen based on ITU document and Iridium website FAQ. -->
         <numberFormat pattern="(\d)(\d{3})(\d{5})">
@@ -29096,17 +28633,15 @@
     <!-- Oration Technologies +88237 -->
     <!-- Telespazio S.p.A. +88213 -->
     <!-- Thuraya +88216 -->
+    <!-- https://www.itu.int/net/itu-t/inrdb/e164_intlsharedcc.aspx?cc=-1 -->
+    <!-- http://www.itu.int/oth/T0202000054/en -->
+    <!-- http://www.gsm.aq/numberplan.php -->
+    <!-- http://www.global.aq -->
+    <!-- http://www.itu.int/oth/T02020000F4/en -->
+    <!-- http://www.itu.int/oth/T02020000A0/en -->
+    <!-- http://www.itu.int/oth/T02020000CC/en -->
+    <!-- http://www.itu.int/oth/T02020000CF/en -->
     <territory id="001" countryCode="882">
-      <references>
-        <sourceUrl>https://www.itu.int/net/itu-t/inrdb/e164_intlsharedcc.aspx?cc=-1</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T0202000054/en</sourceUrl>
-        <sourceUrl>http://www.gsm.aq/numberplan.php</sourceUrl>
-        <sourceUrl>http://www.global.aq</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000F4/en</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000A0/en</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000CC/en</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000CF/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{4})(\d{3})">
           <leadingDigits>3[23]</leadingDigits>
@@ -29203,12 +28738,10 @@
     <!-- bandwidth.com -->
     <!-- SipMe -->
     <!-- Voxbone -->
+    <!-- http://www.itu.int/oth/T02020000FB/en -->
+    <!-- http://www.itu.int/oth/T02020000FC/en -->
+    <!-- http://www.itu.int/oth/T02020000F3/en -->
     <territory id="001" countryCode="883">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000FB/en</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000FC/en</sourceUrl>
-        <sourceUrl>http://www.itu.int/oth/T02020000F3/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>510</leadingDigits>
@@ -29250,10 +28783,8 @@
     <!-- Numbers here are classified as UAN, as they are non-geographical and universally
          accessible. In addition, the end-user tariff to reach these numbers is lower or similar to
          the tariff of a national call. -->
+    <!-- http://www.itu.int/oth/T02020000FA/en -->
     <territory id="001" countryCode="888">
-      <references>
-        <sourceUrl>http://www.itu.int/oth/T02020000FA/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{3})(\d{5})">
           <format>$1 $2 $3</format>
@@ -29270,10 +28801,8 @@
     </territory>
 
     <!-- Universal International Premium Rate Number -->
+    <!-- http://www.itu.int/rec/T-REC-E.169-200205-I/en -->
     <territory id="001" countryCode="979">
-      <references>
-        <sourceUrl>http://www.itu.int/rec/T-REC-E.169-200205-I/en</sourceUrl>
-      </references>
       <availableFormats>
         <numberFormat pattern="(\d)(\d{4})(\d{4})">
           <format>$1 $2 $3</format>
