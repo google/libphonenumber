@@ -19,6 +19,7 @@
 # phone numbers are mentioned in contact-us page of JIM mobile carrier. So it is
 # more likely that it is assigned to 'JIM Mobile'
 
+32455|VOO Mobile (Nethys SA)
 32456|JIM Mobile
 32460|Proximus
 324618|N.M.B.S.
