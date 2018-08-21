@@ -3463,9 +3463,16 @@ function testParseExtensions() {
   assertTrue(ruWithExtension.equals(
       phoneUtil.parse('8 (423) 202-25-11доб100',
 		      RegionCode.RU)));
+  // Testing in unicode format
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11, \u0434\u043E\u0431. 100',
+                      RegionCode.RU)));
   // In upper case
   assertTrue(ruWithExtension.equals(
-    phoneUtil.parse('8 (423) 202-25-11\u0414\u041E\u0431100',
+    phoneUtil.parse('8 (423) 202-25-11ДОБ100',
+	               RegionCode.RU)));
+  assertTrue(ruWithExtension.equals(
+    phoneUtil.parse('8 (423) 202-25-11\u0414\u041E\u0411100',
 	               RegionCode.RU)));
 
   // Test that if a number has two extensions specified, we ignore the second.
