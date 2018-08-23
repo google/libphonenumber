@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.9.11.
+Last demo update: v8.9.12.
 
 If this number is lower than the [latest release's version
 number](https://github.com/googlei18n/libphonenumber/releases), we are between
