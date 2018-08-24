@@ -1,3 +1,16 @@
+Aug 21, 2018: v8.9.12
+Code changes:
+ - Support Russian extension character "доб" as a valid one while parsing
+   the numbers.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BD, CC, CL, CX, FR, GI, IN, MY, NL, SA, US, VN
+ - Updated short number metadata for region code(s): MY
+ - New geocoding data for country calling code(s): 1640 (en)
+ - Updated geocoding data for country calling code(s): 880 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 84 (en), 91 (en), 350 (en), 880 (en)
+
 Jul 25, 2018: v8.9.11
 Metadata changes:
  - Updated phone metadata for region code(s):

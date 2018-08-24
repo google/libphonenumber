@@ -161,6 +161,10 @@ class RegionCode {
     return "RE";
   }
 
+  static const char* RU() {
+    return "RU";
+  }
+
   static const char* SE() {
     return "SE";
   }

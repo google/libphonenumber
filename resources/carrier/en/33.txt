@@ -70,3 +70,8 @@
 33696|Bouygues
 33698|Bouygues
 33699|Bouygues
+33700000|Orange France
+33700001|SFR
+33700002|Mobiquithings
+33700003|Bouygues
+33700004|Afone
