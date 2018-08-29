@@ -20639,6 +20639,10 @@
           <leadingDigits>[89]0</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat pattern="(970)(\d{8})"> 
+          <leadingDigits>970</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
@@ -20650,7 +20654,8 @@
             )|
             [89]\d{0,3}
           )\d{6}|
-          1\d{4,5}
+          1\d{4,5}|
+          970\d{8}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
@@ -20750,16 +20755,18 @@
         <nationalNumberPattern>90[069]\d{4,7}</nationalNumberPattern>
       </premiumRate>
       <voip>
-        <possibleLengths national="9"/>
+        <possibleLengths national="[9-11]"/>
         <exampleNumber>851234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            6760|
             (?:
-              85|
-              91
-            )\d{2}
-          )\d{5}
+              6760|
+              (?:
+                85|
+                91
+              )\d{2}
+            )\d{5}
+          )|970\d{8}
         </nationalNumberPattern>
       </voip>
       <!-- These numbers are used for local government. They are formed by the appending the local
