@@ -778,11 +778,11 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ =
 i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ =
     i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
-    '[ \u00A0\\t,]*' +
+    '[ \xA0\\t,]*' +
     '(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|' +
-    'доб|\u0434\u043E\u0431|ДОБ|' +
+    '\u0434\u043E\u0431|\u0414\u041E\u0411|' +
     '[;,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
-    '[:\\.\uFF0E]?[ \u00A0\\t,-]*' +
+    '[:\\.\uFF0E]?[ \xA0\\t,-]*' +
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
     '[- ]+([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,5})#';
 
