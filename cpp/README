@@ -218,7 +218,7 @@ Troubleshooting CMake via ccmake
 
     You should set the following values:
       PROTOBUF_INCLUDE_DIR         /usr/local/include
-      PROTOBUF_LIB                 /usr/local/lib/libprotobuf.so
+      PROTOBUF_LIB                 /usr/local/lib/libprotobuf.dylib
       PROTOC_BIN                   /usr/local/bin/protoc
 
     Now press 'c' then 'g' to configure the new parameters and exit ccmake.
