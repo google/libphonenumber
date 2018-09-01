@@ -2662,7 +2662,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 		 phoneUtil.parse("8 (423) 202-25-11\u0434\u043E\u0431100", RegionCode.RU));
     // In upper case
     assertEquals(ruWithExtension,
-                 phoneUtil.parse("8 (423) 202-25-11, \u0414\u041E\u0431. 100", RegionCode.RU));
+                 phoneUtil.parse("8 (423) 202-25-11, \u0414\u041E\u0411. 100", RegionCode.RU));
 
     // Test that if a number has two extensions specified, we ignore the second.
     PhoneNumber usWithTwoExtensionsNumber = new PhoneNumber();
