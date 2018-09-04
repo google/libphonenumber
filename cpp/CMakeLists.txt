@@ -28,6 +28,9 @@ if (32BIT)
   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
 endif ()
 
+# Enable C++11 features to sucessfully compile latest versions of protobuf.
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
