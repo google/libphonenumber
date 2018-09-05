@@ -23,8 +23,6 @@
 678573|Digicel
 678574|Digicel
 678575|Digicel
-678576|Digicel
-678577|Digicel
 67858|Digicel
 67859|Digicel
 67870|SMILE
