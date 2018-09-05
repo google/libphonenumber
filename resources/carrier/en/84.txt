@@ -38,6 +38,12 @@
 84523|Vietnamobile
 8456|Vietnamobile
 8458|Vietnamobile
+8459|G-Mobile
+8470|MobiFone
+8476|MobiFone
+8477|MobiFone
+8478|MobiFone
+8479|MobiFone
 8481|Vinaphone
 8482|Vinaphone
 8483|Vinaphone

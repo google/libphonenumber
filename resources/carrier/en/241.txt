@@ -16,8 +16,6 @@
 24105|Moov
 24106|Libertis
 24107|Airtel
-24110|Libertis
-24111|Libertis
 24120|Libertis
 24121|Libertis
 24122|Libertis
@@ -31,5 +29,3 @@
 2415|Moov
 2416|Libertis
 2417|Airtel
-24195|Libertis
-24197|Libertis
