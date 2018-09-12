@@ -168,6 +168,7 @@
           <serverId>sonatype-nexus-staging</serverId>
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
           <stagingProfileId>23ed8fbc71e875</stagingProfileId>
+	  <skipStagingRepositoryClose>true</skipStagingRepositoryClose>
         </configuration>
       </plugin>
     </plugins>
