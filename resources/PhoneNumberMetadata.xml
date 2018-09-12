@@ -26414,7 +26414,7 @@
         <exampleNumber>712345678</exampleNumber>
         <nationalNumberPattern>
           7(?:
-            [09][0-7]\d|
+            [09][0-8]\d|
             [1578]\d{2}|
             2(?:
               [03]\d|
