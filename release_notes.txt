@@ -1,3 +1,33 @@
+Sep 18, 2018: v8.9.14
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   870, 878, 882, 883, AD, AO, AW, BE, BF, BH, BI, BL, BN, BQ, BW, BZ, CD, CF,
+   CG, CH, CI, CK, CM, CV, CW, CY, CZ, DJ, DK, DZ, EE, EH, ES, FJ, FM, GA, GF,
+   GI, GL, GM, GP, GR, GT, GW, GY, HK, HN, HT, IL, IN, IO, IS, IT, JO, JP, KM,
+   KW, LB, LR, LS, LV, MA, MC, MD, MF, MH, MO, MQ, MR, MT, MV, MW, MY, MZ, NA,
+   NC, NI, NL, NR, NU, OM, PA, PM, PT, PW, QA, RE, RO, RW, SB, SG, SH, SK, SN,
+   SR, SS, ST, SV, SZ, TA, TD, TH, TL, TM, TN, TO, TZ, UG, VA, VN, VU, WF, WS,
+   XK, YT, ZA
+ - Updated short number metadata for region code(s):
+   AD, AW, BE, BF, BH, BI, BJ, BL, BN, BQ, BW, BZ, CD, CF, CG, CH, CI, CK, CM,
+   CV, CW, CY, CZ, DJ, DK, DZ, EE, EH, ES, FJ, FK, FM, GA, GF, GI, GL, GM, GN,
+   GP, GR, GT, GW, GY, HK, HN, HT, IS, IT, JO, JP, KM, KW, LB, LR, LS, LV, MA,
+   MC, MD, MF, MH, MO, MQ, MR, MT, MV, MW, MZ, NA, NC, NI, NL, NR, NU, OM, PA,
+   PM, PT, PW, QA, RE, RO, RW, SB, SC, SG, SH, SK, SN, SR, ST, SV, SZ, TD, TG,
+   TH, TL, TM, TN, TO, TV, TZ, VA, VN, VU, WF, WS, XK, YT, ZA
+ - Updated geocoding data for country calling code(s):
+   39 (en, it), 81 (en, ja), 84 (en, vi), 212 (en), 220 (en), 224 (en),
+   226 (en), 258 (en), 264 (en), 267 (en), 373 (en, ru), 504 (en), 599 (en),
+   680 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 32 (en), 34 (en), 40 (en), 45 (en), 65 (en), 66 (en), 84 (en),
+   91 (en), 212 (en), 213 (en), 231 (en), 235 (en), 245 (en), 253 (en),
+   255 (en), 257 (en), 262 (en), 265 (en), 267 (en), 297 (en), 350 (en),
+   354 (en), 356 (en), 373 (en), 502 (en), 503 (en), 505 (en), 507 (en),
+   590 (en), 594 (en), 596 (en), 599 (en), 677 (en), 678 (en), 679 (en),
+   680 (en), 688 (en), 852 (en, zh, zh_Hant), 853 (en)
+ - Updated / refreshed time zone meta data.
+
 Sep 05, 2018: v8.9.13
 Metadata changes:
  - Updated phone metadata for region code(s):
