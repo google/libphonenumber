@@ -1,3 +1,11 @@
+Sep 18, 2018: v8.9.14
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AO, EE, HN, IL, IN, MY, SB, UG, VN
+ - Updated carrier data for country calling code(s):
+   IN, RO, SB, TZ
+ - Updated / refreshed time zone meta data.
+
 Sep 05, 2018: v8.9.13
 Metadata changes:
  - Updated phone metadata for region code(s):
