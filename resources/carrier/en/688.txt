@@ -12,6 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-68870|Tuvalu Telecom
-68871|Tuvalu Telecom
-68890|Tuvalu Telecom
+6887|Tuvalu Telecom
+6889|Tuvalu Telecom

@@ -18,15 +18,7 @@
 
 212520|Casablanca
 212521|Casablanca/Central Morocco
-2125220|Casablanca
-2125222|Casablanca
-2125223|Casablanca
-2125224|Casablanca
-2125225|Casablanca
-2125226|Casablanca
-2125227|Casablanca
-2125228|Casablanca
-2125229|Casablanca
+212522|Casablanca
 2125232|Mohammedia
 2125233|El Jedida/Mohammedia
 2125234|Settai

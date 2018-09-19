@@ -15,8 +15,4 @@
 # Source: http://www.itu.int/oth/T02020000A2/en
 
 68077|PalauCel
-680880|PalauTel
-680881|PalauTel
-680882|PalauTel
-680883|PalauTel
-680884|PalauTel
+68088|PalauTel

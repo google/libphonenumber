@@ -20,12 +20,7 @@
 507218|Telefónica Móviles
 507219|Telefónica Móviles
 50760|Digicel
-507610|Digicel
-507611|Digicel
-507612|Digicel
-507613|Digicel
-507614|Digicel
-507615|Digicel
+50761|Digicel
 50762|Claro
 507630|Claro
 507631|Claro
@@ -38,12 +33,7 @@
 507638|Telefónica Móviles
 507639|Telefónica Móviles
 50764|Telefónica Móviles
-507650|Cable & Wireless
-507651|Cable & Wireless
-507652|Cable & Wireless
-507653|Cable & Wireless
-507654|Cable & Wireless
-507655|Cable & Wireless
+50765|Cable & Wireless
 507656|Telefónica Móviles
 507657|Telefónica Móviles
 507658|Telefónica Móviles
@@ -59,27 +49,15 @@
 507668|Cable & Wireless
 507669|Cable & Wireless
 50767|Cable & Wireless
+50768|Telefónica Móviles
 507680|Cable & Wireless
-507681|Telefónica Móviles
-507682|Telefónica Móviles
-507683|Telefónica Móviles
 507684|Cable & Wireless
-507685|Telefónica Móviles
-507686|Telefónica Móviles
 507687|Cable & Wireless
 507688|Cable & Wireless
-507689|Telefónica Móviles
-507690|Cable & Wireless
-507691|Cable & Wireless
+50769|Cable & Wireless
 507692|Telefónica Móviles
 507693|Telefónica Móviles
-507694|Cable & Wireless
-507695|Cable & Wireless
-507696|Cable & Wireless
 507697|Telefónica Móviles
-507698|Cable & Wireless
-507699|Cable & Wireless
-507810|Mobilphone
-507811|Mobilphone
+50781|Mobilphone
 507872|Cable & Wireless
 507873|Cable & Wireless

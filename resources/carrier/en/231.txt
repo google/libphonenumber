@@ -15,5 +15,5 @@
 23120|LIBTELCO
 231330|West Africa Telecom
 231555|Novafone
-23177|Cellcom
-23188|Lonestar Cell
+2317|Cellcom
+2318|Lonestar Cell
