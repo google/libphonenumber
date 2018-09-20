@@ -18,7 +18,10 @@
 # Unleashed has 3 brands Mobile Vikings, JIM Mobile and Stievie. Prefix 456
 # phone numbers are mentioned in contact-us page of JIM mobile carrier. So it is
 # more likely that it is assigned to 'JIM Mobile'
+# VOO is brand name of mobile network of Nethys:
+# http://www.voo.be/en/gsm/abonnement-gsm/
 
+32455|VOO
 32456|JIM Mobile
 32460|Proximus
 324618|N.M.B.S.
@@ -51,11 +54,5 @@
 324687|Premium Routing GmbH
 324688|Premium Routing GmbH
 3247|Proximus
-32483|Telenet
-32484|Telenet
-32485|Telenet
-32486|Telenet
-32487|Telenet
-32488|Telenet
-32489|Telenet
+3248|Telenet
 3249|Orange

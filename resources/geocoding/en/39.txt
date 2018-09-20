@@ -19,7 +19,7 @@
 39011|Turin
 390122|Turin
 390125|Turin
-390131|Alessandria
+39013|Alessandria
 390141|Asti
 39015|Biella
 390161|Vercelli
@@ -35,8 +35,7 @@
 390321|Novara
 390322|Novara
 390324|Verbano-Cusio-Ossola
-390331|Varese
-390332|Varese
+39033|Varese
 390341|Lecco
 390342|Sondrio
 390343|Sondrio
@@ -67,7 +66,7 @@
 39045|Verona
 390461|Trento
 390471|Bolzano/Bozen
-390481|Gorizia
+39048|Gorizia
 39049|Padova
 39050|Pisa
 39051|Bologna

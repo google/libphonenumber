@@ -1,3 +1,19 @@
+Sep 18, 2018: v8.9.14
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AO, EE, HN, IL, IN, MY, SB, UG, VN
+ - Updated carrier data for country calling code(s):
+   IN, RO, SB, TZ
+ - Updated / refreshed time zone meta data.
+
+Sep 05, 2018: v8.9.13
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BD, BE, CZ, KR, MU, NA, NL, PG, VN
+ - Updated carrier data for country calling code(s):
+   32 (en), 60 (en), 62 (en), 84 (en), 241 (en), 264 (en), 357 (en), 675 (en),
+   678 (en), 973 (en)
+
 Aug 21, 2018: v8.9.12
 Code changes:
  - Support Russian extension character "доб" as a valid one while parsing

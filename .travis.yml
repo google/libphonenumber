@@ -4,6 +4,7 @@ before_install:
 # ant-optional is needed for ant junit. This used to be part of the default
 # Travis image.
 - sudo apt-get install ant-optional
+- npm install -g is-ascii-safe-cli
 install:
 # Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
@@ -16,3 +17,4 @@ script:
 - mvn -P travis test
 - ant clean -f java/build.xml && ant jar -f java/build.xml
 - ant junit -f java/build.xml
+- find . -name '*.js' ! -name '*_test.js' | xargs is-ascii-safe

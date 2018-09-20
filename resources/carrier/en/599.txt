@@ -32,14 +32,10 @@
 5994167|WIC
 5994168|WIC
 5994169|Satel
-599700|Digicel
-599701|Digicel
-599770|Kla
-599777|Kla
+59970|Digicel
+59977|Kla
 59978|Digicel
-599790|Chippie
-599795|Chippie
-599796|Chippie
+59979|Chippie
 599951|Chippie
 599952|Chippie
 599953|Chippie

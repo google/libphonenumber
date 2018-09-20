@@ -778,11 +778,11 @@ i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ =
 i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_PARSING_ =
     i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
-    '[ \xA0\\t,]*' +
+    '[ \u00A0\\t,]*' +
     '(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|' +
-    '\u0434\u043E\u0431|\u0414\u041E\u0411|' +
+    '\u0434\u043E\u0431|' +
     '[;,x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
-    '[:\\.\uFF0E]?[ \xA0\\t,-]*' +
+    '[:\\.\uFF0E]?[ \u00A0\\t,-]*' +
     i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
     '[- ]+([' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']{1,5})#';
 
@@ -3502,7 +3502,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberForTypeWithReason =
   // getRegionCodeForNumber will not work if the number is possible but not
   // valid. There is in fact one country calling code (290) where the possible
   // number pattern differs between various regions (Saint Helena and Tristan
-  // da Cuñha), but this is handled by putting all possible lengths for any
+  // da Cunha), but this is handled by putting all possible lengths for any
   // country with this country calling code in the metadata for the default
   // region in this case.
   if (!this.hasValidCountryCallingCode_(countryCode)) {
@@ -3996,7 +3996,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
  * method is quite lenient and looks for a number in the input text (raw input)
  * and does not check whether the string is definitely only a phone number. To
  * do this, it ignores punctuation and white-space, as well as any text before
- * the number (e.g. a leading “Tel: ”) and trims the non-number bits.  It will
+ * the number (e.g. a leading "Tel: ") and trims the non-number bits.  It will
  * accept a number in any format (E164, national, international etc), assuming
  * it can be interpreted with the defaultRegion supplied. It also attempts to
  * convert any alpha characters into digits if it thinks this is a vanity number

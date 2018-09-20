@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-62199|Esia
 6221317|Esia
 62213430|Esia
 62213431|Esia
@@ -343,13 +342,6 @@
 62298922|Esia
 62298923|Esia
 62298924|Esia
-622990|Esia
-622991|Esia
-622992|Esia
-622993|Esia
-622994|Esia
-622995|Esia
-622996|Esia
 623191|Esia
 623192|Esia
 6231930|Esia
@@ -470,13 +462,6 @@
 62380997|Esia
 62380998|Esia
 62380999|Esia
-623990|Esia
-623991|Esia
-623992|Esia
-623993|Esia
-623994|Esia
-623995|Esia
-623996|Esia
 62401700|Esia
 62401701|Esia
 62401702|Esia

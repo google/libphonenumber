@@ -47,13 +47,7 @@
 84237|Thanh Hoa province
 84238|Nghe An province
 84239|Ha Tinh province
-84242|Hanoi City
-84243|Hanoi City
-84244|Hanoi City
-84245|Hanoi City
-84246|Hanoi City
-84247|Hanoi City
-84248|Hanoi City
+8424|Hanoi City
 84251|Dong Nai province
 84252|Binh Thuan province
 84254|Ba Ria Vung Tau province
@@ -75,12 +69,7 @@
 84275|Ben Tre province
 84276|Tay Ninh province
 84277|Dong Thap province
-84282|Ho Chi Minh City
-84283|Ho Chi Minh City
-84284|Ho Chi Minh City
-84285|Ho Chi Minh City
-84286|Ho Chi Minh City
-84287|Ho Chi Minh City
+8428|Ho Chi Minh City
 84290|Ca Mau province
 84291|Bac Lieu province
 84292|Can Tho City

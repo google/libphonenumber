@@ -14,18 +14,18 @@
 
 # Source: http://www.itu.int/oth/T02020000A2/en
 
-680255|Sonsorol State and Hatohobei State
-680277|Angaur State
-680345|Peleliu State
-680488|Koror State
-680535|Ngatpang State
-680544|Aimeliik State
-680587|Airai State
+68025|Sonsorol State and Hatohobei State
+68027|Angaur State
+6803|Peleliu State
+6804|Koror State
+68053|Ngatpang State
+68054|Aimeliik State
+68058|Airai State
 680622|Ngchesar State
-680654|Melekeok State
-680679|Ngiwal State
-680733|Ngaremlengui State
-680747|Ngardmau State
-680824|Ngaraard State
-680855|Ngarchelong State
-680876|Kayangel State
+68065|Melekeok State
+68067|Ngiwal State
+68073|Ngaremlengui State
+68074|Ngardmau State
+68082|Ngaraard State
+68085|Ngarchelong State
+68087|Kayangel State

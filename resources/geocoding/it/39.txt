@@ -22,7 +22,7 @@
 390123|Lanzo Torinese
 390124|Rivarolo Canavese
 390125|Ivrea
-390131|Alessandria
+39013|Alessandria
 390141|Asti
 390142|Casale Monferrato
 390143|Novi Ligure
@@ -110,7 +110,7 @@
 390472|Bressanone
 390473|Merano
 390474|Brunico
-390481|Gorizia
+39048|Gorizia
 39049|Padova
 39050|Pisa
 39051|Bologna
