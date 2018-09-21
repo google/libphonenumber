@@ -1537,7 +1537,6 @@ function testIsPremiumRate() {
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var premiumRateNumber = new i18n.phonenumbers.PhoneNumber();
-  premiumRateNumber = new i18n.phonenumbers.PhoneNumber();
   premiumRateNumber.setCountryCode(39);
   premiumRateNumber.setNationalNumber(892123);
   assertEquals(PNT.PREMIUM_RATE, phoneUtil.getNumberType(premiumRateNumber));
