@@ -36,7 +36,7 @@ goog.require('i18n.phonenumbers.ShortNumberInfo');
 function phoneNumberParser() {
   var $ = goog.dom.getElement;
   var phoneNumber = $('phoneNumber').value;
-  var regionCode = $('defaultCountry').value;
+  var regionCode = $('defaultCountry').value.toUpperCase();
   var carrierCode = $('carrierCode').value;
   var output = new goog.string.StringBuffer();
   try {
