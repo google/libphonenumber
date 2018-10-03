@@ -195,7 +195,7 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
   }
 
   public void testGetExampleShortNumber() {
-    assertEquals("8711", shortInfo.getExampleShortNumber(RegionCode.AM));
+    assertEquals("110", shortInfo.getExampleShortNumber(RegionCode.AD));
     assertEquals("1010", shortInfo.getExampleShortNumber(RegionCode.FR));
     assertEquals("", shortInfo.getExampleShortNumber(RegionCode.UN001));
     assertEquals("", shortInfo.getExampleShortNumber(null));
