@@ -37,9 +37,7 @@
 8483|Vinaphone
 8484|Vinaphone
 8485|Vinaphone
-84866|Viettel Mobile
-84868|Viettel Mobile
-84869|Viettel Mobile
+8486|Viettel Mobile
 8488|Vinaphone
 8489|MobiFone
 8490|MobiFone
