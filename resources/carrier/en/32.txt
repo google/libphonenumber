@@ -15,14 +15,13 @@
 # 1994 by Belgacom, following the launch of the first mobile network.Proximus is
 # a subsidiary of Belgacom.
 # Mobistar has re-branded as Orange on 9 May 2016.
-# Unleashed has 3 brands Mobile Vikings, JIM Mobile and Stievie. Prefix 456
-# phone numbers are mentioned in contact-us page of JIM mobile carrier. So it is
-# more likely that it is assigned to 'JIM Mobile'
+# Unleashed has 2 mobile brands: Mobile Vikings and JIM Mobile. Both of these
+# brands distribute numbers with prefix 456.
 # VOO is brand name of mobile network of Nethys:
 # http://www.voo.be/en/gsm/abonnement-gsm/
 
 32455|VOO
-32456|JIM Mobile
+32456|Mobile Vikings/JIM Mobile
 32460|Proximus
 324618|N.M.B.S.
 324630|TISMI BV
