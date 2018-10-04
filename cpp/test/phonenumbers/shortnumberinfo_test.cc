@@ -299,7 +299,7 @@ TEST_F(ShortNumberInfoTest, GetExpectedCostForSharedCountryCallingCode) {
 }
 
 TEST_F(ShortNumberInfoTest, GetExampleShortNumber) {
-  EXPECT_EQ("8711", short_info_.GetExampleShortNumber(RegionCode::AM()));
+  EXPECT_EQ("110", short_info_.GetExampleShortNumber(RegionCode::AD()));
   EXPECT_EQ("1010", short_info_.GetExampleShortNumber(RegionCode::FR()));
   EXPECT_EQ("", short_info_.GetExampleShortNumber(RegionCode::UN001()));
   EXPECT_EQ("", short_info_.GetExampleShortNumber(RegionCode::GetUnknown()));
