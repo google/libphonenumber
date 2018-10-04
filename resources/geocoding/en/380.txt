@@ -431,7 +431,7 @@
 3805650|Sofiyivka, Dnipro
 3805652|Yellow Waters, Dnipro
 3805653|Volnogirsk, Dnipro
-3805654|Кринички, Dnipro
+3805654|Krynychky, Dnipro
 3805656|Apostolove, Dnipro
 3805657|Broad, Dnipro
 3805658|Verhnedneprovsk, Dnipro

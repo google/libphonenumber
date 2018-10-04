@@ -1,3 +1,14 @@
+Oct 03, 2018: v8.9.15
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AE, AF, AL, AM, AX, AZ, BE, CD, CH, CL, EH, FI, GQ, HN, JO, JP, LB, LR, MW,
+   NL, OM, RE, RO, SE, TZ, VA, YT, ZA, ZW
+ - Updated short number metadata for region code(s): AE, AF, AL, AM, AZ
+ - Updated geocoding data for country calling code(s):
+   263 (en), 355 (en), 374 (en, hy, ru), 380 (en)
+ - Updated carrier data for country calling code(s):
+   32 (en), 84 (en), 240 (en), 374 (en, ru), 994 (en)
+
 Sep 18, 2018: v8.9.14
 Metadata changes:
  - Updated phone metadata for region code(s):

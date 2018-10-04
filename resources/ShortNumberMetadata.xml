@@ -122,22 +122,30 @@
         <nationalNumberPattern>
           112|
           445[16]|
-          99[789]
+          99[7-9]
         </nationalNumberPattern>
       </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>112</exampleNumber>
+        <nationalNumberPattern>
+          112|
+          99[7-9]
+        </nationalNumberPattern>
+      </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           112|
-          99[789]
+          99[7-9]
         </nationalNumberPattern>
       </emergency>
       <!-- As per online evidences, 4451 and 4456 are SMS-able short codes. -->
       <smsServices>
         <possibleLengths national="4"/>
-        <exampleNumber>4451</exampleNumber>
-        <nationalNumberPattern>445[16]</nationalNumberPattern>
+        <exampleNumber>4450</exampleNumber>
+        <nationalNumberPattern>445\d</nationalNumberPattern>
       </smsServices>
     </territory>
 
@@ -153,7 +161,7 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
-        <exampleNumber>119</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           1(?:
             02|
@@ -162,15 +170,25 @@
           40404
         </nationalNumberPattern>
       </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>102</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            02|
+            19
+          )
+        </nationalNumberPattern>
+      </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
         <possibleLengths national="5"/>
-        <exampleNumber>40404</exampleNumber>
-        <nationalNumberPattern>40404</nationalNumberPattern>
+        <exampleNumber>40400</exampleNumber>
+        <nationalNumberPattern>404\d\d</nationalNumberPattern>
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>119</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           1(?:
             02|
@@ -181,8 +199,8 @@
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="5"/>
-        <exampleNumber>40404</exampleNumber>
-        <nationalNumberPattern>40404</nationalNumberPattern>
+        <exampleNumber>40400</exampleNumber>
+        <nationalNumberPattern>404\d\d</nationalNumberPattern>
       </smsServices>
     </territory>
 
@@ -267,11 +285,10 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-6]"/>
-        <exampleNumber>129</exampleNumber>
+        <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
           1(?:
             1(?:
-              \d|
               6(?:
                 000|
                 1(?:
@@ -280,32 +297,38 @@
                   23
                 )
               )|
-              8\d{2}
+              8\d\d
             )|
-            2[2-9]|
-            [349]\d|
             65\d|
             89[12]
           )|
-          5\d{4}
+          5\d{4}|
+          1(?:
+            [1349]\d|
+            2[2-9]
+          )
         </nationalNumberPattern>
       </shortCode>
       <!-- All 116XXX, "European harmonized services of social" value are toll-free.
            See: https://ec.europa.eu/digital-single-market/116-helplines. -->
       <tollFree>
         <possibleLengths national="3,6"/>
-        <exampleNumber>116000</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
+            1(?:
+              2|
+              6[01]\d\d
+            )|
+            2[7-9]|
             3[15]|
-            41|
-            16\d{3}
+            41
           )
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="5"/>
-        <exampleNumber>50123</exampleNumber>
+        <exampleNumber>50000</exampleNumber>
         <nationalNumberPattern>5\d{4}</nationalNumberPattern>
       </premiumRate>
       <!-- 123 is a ALBtelecom customer service number. -->
@@ -316,7 +339,7 @@
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>129</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
             12|
@@ -331,14 +354,14 @@
         <exampleNumber>125</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            2[56]|
-            16\d{3}
+            16[01]\d\d|
+            2[56]
           )
         </nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
         <possibleLengths national="3,5"/>
-        <exampleNumber>51234</exampleNumber>
+        <exampleNumber>131</exampleNumber>
         <nationalNumberPattern>
           131|
           5\d{4}
@@ -354,29 +377,36 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
-        <exampleNumber>8711</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
-          1\d{2}|
-          40404|
-          8[1-7]\d{2}
+          (?:
+            1|
+            8[1-7]
+          )\d\d|
+          40404
         </nationalNumberPattern>
       </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>101</exampleNumber>
+        <nationalNumberPattern>10[1-3]</nationalNumberPattern>
+      </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
         <possibleLengths national="5"/>
-        <exampleNumber>40404</exampleNumber>
-        <nationalNumberPattern>40404</nationalNumberPattern>
+        <exampleNumber>40400</exampleNumber>
+        <nationalNumberPattern>404\d\d</nationalNumberPattern>
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>102</exampleNumber>
-        <nationalNumberPattern>10[123]</nationalNumberPattern>
+        <exampleNumber>101</exampleNumber>
+        <nationalNumberPattern>10[1-3]</nationalNumberPattern>
       </emergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="5"/>
-        <exampleNumber>40404</exampleNumber>
-        <nationalNumberPattern>40404</nationalNumberPattern>
+        <exampleNumber>40400</exampleNumber>
+        <nationalNumberPattern>404\d\d</nationalNumberPattern>
       </smsServices>
     </territory>
 
@@ -767,20 +797,34 @@
         <exampleNumber>101</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[123]|
+            0[1-3]|
             12
           )|
-          4040|
-          8800
+          (?:
+            404|
+            880
+          )0
         </nationalNumberPattern>
       </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>101</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[1-3]|
+            12
+          )
+        </nationalNumberPattern>
+      </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
         <possibleLengths national="4"/>
         <exampleNumber>4040</exampleNumber>
         <nationalNumberPattern>
-          4040|
-          8800
+          (?:
+            404|
+            880
+          )\d
         </nationalNumberPattern>
       </carrierSpecific>
       <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_978.html
@@ -790,7 +834,7 @@
         <exampleNumber>101</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[123]|
+            0[1-3]|
             12
           )
         </nationalNumberPattern>
@@ -800,8 +844,10 @@
         <possibleLengths national="4"/>
         <exampleNumber>4040</exampleNumber>
         <nationalNumberPattern>
-          4040|
-          8800
+          (?:
+            404|
+            880
+          )\d
         </nationalNumberPattern>
       </smsServices>
     </territory>
