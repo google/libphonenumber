@@ -1065,14 +1065,13 @@
     <!-- For testing purposes, numbers starting with 24 are not considered US numbers.-->
     <territory id="US" countryCode="1" internationalPrefix="011"
                preferredExtnPrefix=" extn. " nationalPrefix="1"
-               mainCountryForCode="true" nationalPrefixOptionalWhenFormatting="true"
-               mobileNumberPortableRegion="true">
+               mainCountryForCode="true" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
           <intlFormat>NA</intlFormat>
        </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
