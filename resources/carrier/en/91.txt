@@ -19,7 +19,7 @@
 916005|Reliance Jio
 916006|Reliance Jio
 916009|Reliance Jio
-916033|BSNL Mobile
+916033|BSNL MOBILE
 9161279|Idea
 916200|Reliance Jio
 916201|Reliance Jio
@@ -2061,7 +2061,7 @@
 918303|Reliance Jio
 918304|BSNL MOBILE
 918305|Reliance Jio
-918306|Reliance Jio
+918306|Airtel
 918307|Reliance Jio
 918308|Idea
 918309|Reliance Jio
@@ -2557,7 +2557,7 @@
 918687|Reliance Jio
 918688|Reliance Jio
 918689|Idea
-918690|Reliance Jio
+918690|Airtel
 918691|Idea
 918692|Idea
 9186930|Idea
@@ -2793,7 +2793,7 @@
 918899|Airtel
 91890|BSNL MOBILE
 918904|Tata Docomo
-918905|Reliance Jio
+918905|Airtel
 918906|Aircel
 918907|Aircel
 918908|Aircel
@@ -3211,6 +3211,9 @@
 919355|Idea
 919358|Airtel
 919371|Idea
+919374|Vodafone
+919375|Vodafone
+919376|Vodafone
 919385|BSNL MOBILE
 9194|BSNL MOBILE
 919500|Airtel
