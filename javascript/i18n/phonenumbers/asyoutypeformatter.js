@@ -346,7 +346,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
   // First decide whether we should use international or national number rules.
   /** @type {boolean} */
   var isInternationalNumber = this.isCompleteNumber_ &&
-        this.extractedNationalPrefix_.length == 0;
+      this.extractedNationalPrefix_.length == 0;
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var formatList =
       (isInternationalNumber &&
@@ -372,10 +372,10 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
       // between these when extracting it in the AYTF.
       continue;
     } else if (this.extractedNationalPrefix_.length == 0 &&
-      !this.isCompleteNumnber_ &&
-      !this.phoneUtil_.formattingRuleHasFirstGroupOnly(
-          format.getNationalPrefixFormattingRuleOrDefault()) &&
-      !format.getNationalPrefixOptionalWhenFormatting()) {
+        !this.isCompleteNumber_ &&
+        !this.phoneUtil_.formattingRuleHasFirstGroupOnly(
+            format.getNationalPrefixFormattingRuleOrDefault()) &&
+        !format.getNationalPrefixOptionalWhenFormatting()) {
       // This number was entered without a national prefix, and this formatting
       // rule requires one, so we discard it.
       continue;
