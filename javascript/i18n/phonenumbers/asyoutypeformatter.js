@@ -380,23 +380,12 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
       // rule requires one, so we discard it.
       continue;
     }
-    if (this.isFormatEligible_(format.getFormatOrDefault())) {
+    if (i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_.test(
+            format.getFormatOrDefault())) {
       this.possibleFormats_.push(format);
     }
   }
   this.narrowDownPossibleFormats_(leadingDigits);
-};
-
-
-/**
- * @param {string} format
- * @return {boolean}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.isFormatEligible_ =
-    function(format) {
-  return i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_
-      .test(format);
 };
 
 
