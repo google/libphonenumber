@@ -195,22 +195,40 @@ bool AsYouTypeFormatter::MaybeCreateNewTemplate() {
 }
 
 void AsYouTypeFormatter::GetAvailableFormats(const string& leading_digits) {
+  // First decide whether we should use international or national number rules.
+  bool is_international_number =
+      is_complete_number_ && extracted_national_prefix_.empty();
   const RepeatedPtrField<NumberFormat>& format_list =
-      (is_complete_number_ &&
+      (is_international_number &&
        current_metadata_->intl_number_format().size() > 0)
           ? current_metadata_->intl_number_format()
           : current_metadata_->number_format();
-  bool national_prefix_used_by_country =
-      current_metadata_->has_national_prefix();
   for (RepeatedPtrField<NumberFormat>::const_iterator it = format_list.begin();
        it != format_list.end(); ++it) {
-    if (!national_prefix_used_by_country || is_complete_number_ ||
-        it->national_prefix_optional_when_formatting() ||
+    // Discard a few formats that we know are not relevant based on the presence
+    // of the national prefix.
+    if (!extracted_national_prefix_.empty() &&
         phone_util_.FormattingRuleHasFirstGroupOnly(
-            it->national_prefix_formatting_rule())) {
-      if (phone_util_.IsFormatEligibleForAsYouTypeFormatter(it->format())) {
-        possible_formats_.push_back(&*it);
-      }
+            it->national_prefix_formatting_rule()) &&
+        !it->national_prefix_optional_when_formatting() &&
+        !it->has_domestic_carrier_code_formatting_rule()) {
+      // If it is a national number that had a national prefix, any rules that
+      // aren't valid with a national prefix should be excluded. A rule that has
+      // a carrier-code formatting rule is kept since the national prefix might
+      // actually be an extracted carrier code - we don't distinguish between
+      // these when extracting it in the AYTF.
+      continue;
+    } else if (extracted_national_prefix_.empty() &&
+               !is_complete_number_ &&
+               !phone_util_.FormattingRuleHasFirstGroupOnly(
+                    it->national_prefix_formatting_rule()) &&
+               !it->national_prefix_optional_when_formatting()) {
+      // This number was entered without a national prefix, and this formatting
+      // rule requires one, so we discard it.
+      continue;
+    }
+    if (phone_util_.IsFormatEligibleForAsYouTypeFormatter(it->format())) {
+      possible_formats_.push_back(&*it);
     }
   }
   NarrowDownPossibleFormats(leading_digits);

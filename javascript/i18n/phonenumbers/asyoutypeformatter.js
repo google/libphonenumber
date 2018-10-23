@@ -343,9 +343,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.maybeCreateNewTemplate_ =
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
     function(leadingDigits) {
 
+  // First decide whether we should use international or national number rules.
+  /** @type {boolean} */
+  var isInternationalNumber = this.isCompleteNumber_ &&
+      this.extractedNationalPrefix_.length == 0;
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var formatList =
-      (this.isCompleteNumber_ &&
+      (isInternationalNumber &&
            this.currentMetadata_.intlNumberFormatCount() > 0) ?
       this.currentMetadata_.intlNumberFormatArray() :
       this.currentMetadata_.numberFormatArray();
@@ -354,31 +358,34 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
   for (var i = 0; i < formatListLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
     var format = formatList[i];
-    /** @type {boolean} */
-    var nationalPrefixIsUsedByCountry =
-        this.currentMetadata_.hasNationalPrefix();
-    if (!nationalPrefixIsUsedByCountry || this.isCompleteNumber_ ||
-        format.getNationalPrefixOptionalWhenFormatting() ||
+    // Discard a few formats that we know are not relevant based on the
+    // presence of the national prefix.
+    if (this.extractedNationalPrefix_.length > 0 &&
         this.phoneUtil_.formattingRuleHasFirstGroupOnly(
-            format.getNationalPrefixFormattingRuleOrDefault())) {
-      if (this.isFormatEligible_(format.getFormatOrDefault())) {
-        this.possibleFormats_.push(format);
-      }
+            format.getNationalPrefixFormattingRuleOrDefault()) &&
+        !format.getNationalPrefixOptionalWhenFormatting() &&
+        !format.hasDomesticCarrierCodeFormattingRule()) {
+      // If it is a national number that had a national prefix, any rules that
+      // aren't valid with a national prefix should be excluded. A rule that
+      // has a carrier-code formatting rule is kept since the national prefix
+      // might actually be an extracted carrier code - we don't distinguish
+      // between these when extracting it in the AYTF.
+      continue;
+    } else if (this.extractedNationalPrefix_.length == 0 &&
+        !this.isCompleteNumber_ &&
+        !this.phoneUtil_.formattingRuleHasFirstGroupOnly(
+            format.getNationalPrefixFormattingRuleOrDefault()) &&
+        !format.getNationalPrefixOptionalWhenFormatting()) {
+      // This number was entered without a national prefix, and this formatting
+      // rule requires one, so we discard it.
+      continue;
+    }
+    if (i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_.test(
+            format.getFormatOrDefault())) {
+      this.possibleFormats_.push(format);
     }
   }
   this.narrowDownPossibleFormats_(leadingDigits);
-};
-
-
-/**
- * @param {string} format
- * @return {boolean}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.isFormatEligible_ =
-    function(format) {
-  return i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_
-      .test(format);
 };
 
 

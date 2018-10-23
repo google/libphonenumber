@@ -1,1 +1,6 @@
-
+Code changes:
+ - AsYouTypeFormatter changed to better choose between rules when dialling
+   locally; previously we used the international rules when the national prefix
+   was present since this would exclude the local-only rules. However, there are
+   some numbers that are not internationally diallable that *do* use the
+   national prefix, and this logic precluded formatting them correctly.
