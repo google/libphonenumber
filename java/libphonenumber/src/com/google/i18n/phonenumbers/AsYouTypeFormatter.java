@@ -19,7 +19,6 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.internal.RegexCache;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -174,27 +173,39 @@ public class AsYouTypeFormatter {
   }
 
   private void getAvailableFormats(String leadingDigits) {
+    // First decide whether we should use international or national number rules.
+    boolean isInternationalNumber = isCompleteNumber && extractedNationalPrefix.length() == 0;
     List<NumberFormat> formatList =
-        (isCompleteNumber && currentMetadata.intlNumberFormatSize() > 0)
-        ? currentMetadata.intlNumberFormats()
-        : currentMetadata.numberFormats();
-    boolean nationalPrefixIsUsedByCountry = currentMetadata.hasNationalPrefix();
+        (isInternationalNumber && currentMetadata.intlNumberFormatSize() > 0)
+            ? currentMetadata.intlNumberFormats()
+            : currentMetadata.numberFormats();
     for (NumberFormat format : formatList) {
-      if (!nationalPrefixIsUsedByCountry
-          || isCompleteNumber
-          || format.getNationalPrefixOptionalWhenFormatting()
-          || PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
-              format.getNationalPrefixFormattingRule())) {
-        if (isFormatEligible(format.getFormat())) {
-          possibleFormats.add(format);
-        }
+      // Discard a few formats that we know are not relevant based on the presence of the national
+      // prefix.
+      if (extractedNationalPrefix.length() > 0
+          && PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+              format.getNationalPrefixFormattingRule())
+          && !format.getNationalPrefixOptionalWhenFormatting()
+          && !format.hasDomesticCarrierCodeFormattingRule()) {
+        // If it is a national number that had a national prefix, any rules that aren't valid with a
+        // national prefix should be excluded. A rule that has a carrier-code formatting rule is
+        // kept since the national prefix might actually be an extracted carrier code - we don't
+        // distinguish between these when extracting it in the AYTF.
+        continue;
+      } else if (extractedNationalPrefix.length() == 0
+          && !isCompleteNumber
+          && !PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+              format.getNationalPrefixFormattingRule())
+          && !format.getNationalPrefixOptionalWhenFormatting()) {
+        // This number was entered without a national prefix, and this formatting rule requires one,
+        // so we discard it.
+        continue;
+      }
+      if (ELIGIBLE_FORMAT_PATTERN.matcher(format.getFormat()).matches()) {
+        possibleFormats.add(format);
       }
     }
     narrowDownPossibleFormats(leadingDigits);
-  }
-
-  private boolean isFormatEligible(String format) {
-    return ELIGIBLE_FORMAT_PATTERN.matcher(format).matches();
   }
 
   private void narrowDownPossibleFormats(String leadingDigits) {
