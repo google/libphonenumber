@@ -29,13 +29,5 @@
 25279|Somtel
 25280|Somali Networks
 25288|Somali Networks
-252906|Golis Telecom
-252907|Golis Telecom
-25292|STG
-25293|STG
-25294|STG
-25295|STG
-25296|STG
-25297|STG
-25298|STG
-25299|STG
+2529|STG
+25290|Golis Telecom

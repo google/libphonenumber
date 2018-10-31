@@ -182,26 +182,13 @@
 441383|Dunfermline
 441384|Dudley
 441386|Evesham
-4413870|Dumfries
-4413871|Dumfries
-4413872|Dumfries
+441387|Dumfries
 4413873|Langholm
-4413874|Dumfries
-4413875|Dumfries
-4413876|Dumfries
-4413877|Dumfries
-4413878|Dumfries
-4413879|Dumfries
+441388|Bishop Auckland
 4413880|Bishop Auckland/Stanhope (Eastgate)
 4413881|Bishop Auckland/Stanhope (Eastgate)
 4413882|Stanhope (Eastgate)
-4413883|Bishop Auckland
-4413884|Bishop Auckland
 4413885|Stanhope (Eastgate)
-4413886|Bishop Auckland
-4413887|Bishop Auckland
-4413888|Bishop Auckland
-4413889|Bishop Auckland
 441389|Dumbarton
 441392|Exeter
 441394|Felixstowe
@@ -305,25 +292,13 @@
 441476|Grantham
 441477|Holmes Chapel
 441478|Isle of Skye - Portree
-4414790|Grantown-on-Spey
-4414791|Grantown-on-Spey
-4414792|Grantown-on-Spey
-4414793|Grantown-on-Spey
-4414794|Grantown-on-Spey
-4414795|Grantown-on-Spey
-4414796|Grantown-on-Spey
-4414797|Grantown-on-Spey
-44147980|Grantown-on-Spey
+441479|Grantown-on-Spey
 44147981|Aviemore
 44147982|Nethy Bridge
 44147983|Boat of Garten
 44147984|Carrbridge
 44147985|Dulnain Bridge
 44147986|Cairngorm
-44147987|Grantown-on-Spey
-44147988|Grantown-on-Spey
-44147989|Grantown-on-Spey
-4414799|Grantown-on-Spey
 441480|Huntingdon
 441481|Guernsey
 441482|Kingston-upon-Hull
@@ -362,16 +337,8 @@
 44151|Liverpool
 441520|Lochcarron
 441522|Lincoln
-4415240|Lancaster
-4415241|Lancaster
+441524|Lancaster
 4415242|Hornby
-4415243|Lancaster
-4415244|Lancaster
-4415245|Lancaster
-4415246|Lancaster
-4415247|Lancaster
-4415248|Lancaster
-4415249|Lancaster
 441525|Leighton Buzzard
 441526|Martin
 441527|Redditch
@@ -383,16 +350,10 @@
 441535|Keighley
 441536|Kettering
 441538|Ipstones
-4415390|Kendal
-4415391|Kendal
-4415392|Kendal
-4415393|Kendal
+441539|Kendal
 4415394|Hawkshead
 4415395|Grange-over-Sands
 4415396|Sedbergh
-4415397|Kendal
-4415398|Kendal
-4415399|Kendal
 441540|Kingussie
 441542|Keith
 441543|Cannock
@@ -524,16 +485,9 @@
 441692|North Walsham
 441694|Church Stretton
 441695|Skelmersdale
-4416970|Brampton
-4416971|Brampton
-4416972|Brampton
+441697|Brampton
 4416973|Wigton
 4416974|Raughton Head
-4416975|Brampton
-4416976|Brampton
-4416977|Brampton
-4416978|Brampton
-4416979|Brampton
 441698|Motherwell
 441700|Rothesay
 441702|Southend-on-Sea
@@ -582,16 +536,10 @@
 441765|Ripon
 441766|Porthmadog
 441767|Sandy
-4417680|Penrith
-4417681|Penrith
-4417682|Penrith
+441768|Penrith
 4417683|Appleby
 4417684|Pooley Bridge
-4417685|Penrith
-4417686|Penrith
 4417687|Keswick
-4417688|Penrith
-4417689|Penrith
 441769|South Molton
 441770|Isle of Arran
 441771|Maud
@@ -750,16 +698,8 @@
 441943|Guiseley
 441944|West Heslerton
 441945|Wisbech
-4419460|Whitehaven
-4419461|Whitehaven
-4419462|Whitehaven
-4419463|Whitehaven
-4419464|Whitehaven
-4419465|Whitehaven
-4419466|Whitehaven
+441946|Whitehaven
 4419467|Gosforth
-4419468|Whitehaven
-4419469|Whitehaven
 441947|Whitby
 441948|Whitchurch
 441949|Whatton
@@ -817,11 +757,7 @@
 441994|St Clears
 441995|Garstang
 441997|Strathpeffer
-44200|London
-44201|London
-44203|London
-44207|London
-44208|London
+4420|London
 442310|Portsmouth
 442311|Southampton
 44238|Southampton
