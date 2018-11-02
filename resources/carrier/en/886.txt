@@ -79,7 +79,11 @@
 886955|FarEasTone
 886956|Taiwan Mobile
 886958|Taiwan Mobile
-886960|Taiwan Mobile
+8869600|Taiwan Mobile
+8869601|Taiwan Mobile
+8869602|Taiwan Mobile
+8869603|Taiwan Mobile
+8869604|Taiwan Mobile
 8869605|FarEasTone
 8869606|FarEasTone
 8869607|FarEasTone

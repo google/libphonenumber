@@ -18,7 +18,7 @@ cmake_minimum_required (VERSION 2.8.5)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
-set (libphonenumber_VERSION_MINOR 9)
+set (libphonenumber_VERSION_MINOR 10)
 set (libphonenumber_VERSION_PATCH 0)
 
 if (32BIT)

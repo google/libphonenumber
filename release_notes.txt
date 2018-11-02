@@ -1,3 +1,35 @@
+Oct 31, 2018: v8.10.0
+Code changes:
+ - AsYouTypeFormatter changed to better choose between rules when dialling
+   locally; previously we used the international rules when the national prefix
+   was present since this would exclude the local-only rules. However, there are
+   some numbers that are not internationally diallable that *do* use the
+   national prefix, and this logic precluded formatting them correctly.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BB, BD, BO, CC, CO, CR, CU, CX, EC, EG, ER, ET, FO, GB, GE, GG, GH, GQ,
+   HR, HU, IE, IL, IM, IN, IQ, JE, KE, KG, KH, KI, KP, KZ, LA, LI, LK, LR, LU,
+   LY, MC, ME, MK, ML, MM, MU, NE, NF, NG, NO, NP, PE, PF, PG, PH, PL, PS, PY,
+   RS, RU, SA, SD, SE, SI, SJ, SL, SO, SY, TJ, TM, TR, TW, UA, UG, UY, VA, VE,
+   VN, VU, YE, ZM
+ - Updated short number metadata for region code(s):
+   AU, BB, BD, BO, CC, CO, CR, CU, CX, EC, EG, ER, ET, FO, GB, GE, GG, GH, HR,
+   HU, IE, IL, IM, IQ, JE, KE, KG, KH, KI, KP, KZ, LA, LK, LU, LY, ME, MK, ML,
+   MU, NE, NF, NG, NO, NP, PE, PF, PG, PH, PL, PS, PY, RS, RU, SA, SD, SI, SJ,
+   SL, SO, SY, TJ, TR, TW, UA, UG, UY, VE, YE
+ - Updated geocoding data for country calling code(s):
+   7 (en, ru), 44 (en), 47 (en), 58 (en, es), 61 (en), 90 (en, tr), 94 (en),
+   218 (en), 223 (en), 227 (en), 230 (en), 233 (en), 240 (en), 249 (en),
+   251 (en), 252 (en), 254 (en), 352 (de, en, fr), 380 (en, uk), 382 (en),
+   675 (en), 880 (en), 886 (en, zh, zh_Hant), 992 (en), 996 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en, ru), 44 (en), 51 (en), 57 (en), 61 (en), 63 (en), 90 (en), 223 (en),
+   230 (en), 232 (en), 233 (en), 234 (en), 240 (en), 252 (en), 254 (en),
+   256 (en), 260 (en), 352 (en), 385 (en), 386 (en), 389 (en), 506 (en),
+   593 (en), 595 (en), 886 (en), 963 (en), 972 (en), 992 (en), 995 (en),
+   996 (en)
+ - Updated / refreshed time zone meta data.
+
 Oct 16, 2018: v8.9.16
 Metadata changes:
  - Updated phone metadata for region code(s):
