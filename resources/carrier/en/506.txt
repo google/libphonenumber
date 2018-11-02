@@ -12,12 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-506500|OMV
-506501|OMV
-506570|OMV
-506571|OMV
-506572|OMV
-506573|OMV
+50650|OMV
+50657|OMV
 5066|Movistar
 50670010|Claro
 50670011|Claro

@@ -14,16 +14,14 @@
 
 # Translated from fr/352.txt using Freebase and Wikipedia.
 
-35221|Weicherdingen
 35222|Luxemburg
 35223|Bad Mondorf
-35224|Luxemburg
+352240|Luxemburg
+352241|Luxemburg
+352242|Luxemburg
 3522421|Weicherdingen
-3522422|Luxemburg
 3522423|Bad Mondorf
-3522425|Luxemburg
 3522427|Belair, Luxemburg
-3522428|Luxemburg
 3522429|Luxemburg/Kockelscheuer
 3522430|Kanton Capellen/Kehlen
 3522431|Bartringen
@@ -33,11 +31,15 @@
 3522435|Sandweiler/Mutfort/Roodt-sur-Syre
 3522436|Hesperingen/Kockelscheuer/Roeser
 3522437|Leudelingen/Ehlingen/Monnerich
+3522438|Luxemburg
 3522439|Windhof/Steinfort
 3522440|Howald
+3522441|Luxemburg
 3522442|Plateau de Kirchberg
 3522443|Findel/Kirchberg
+3522444|Luxemburg
 3522445|Diedrich
+3522446|Luxemburg
 3522447|Lintgen
 3522448|Contern/Foetz
 3522449|Howald
@@ -51,22 +53,29 @@
 3522457|Esch-sur-Alzette/Schifflingen
 3522458|Soleuvre/Differdingen
 3522459|Soleuvre
+352246|Luxemburg
 3522467|Düdelingen
+3522470|Luxemburg
 3522471|Betzdorf
 3522472|Echternach
 3522473|Rosport
 3522474|Wasserbillig
 3522475|Distrikt Grevenmacher-sur-Moselle
 3522476|Wormeldingen
+3522477|Luxemburg
 3522478|Junglinster
 3522479|Berdorf/Consdorf
 3522480|Diekirch
 3522481|Ettelbrück/Reckange-sur-Mess
+3522482|Luxemburg
 3522483|Vianden
 3522484|Han/Lesse
 3522485|Bissen/Roost
+3522486|Luxemburg
 3522487|Fels
 3522488|Mertzig/Wahl
+3522489|Luxemburg
+352249|Luxemburg
 3522492|Kanton Clerf/Fischbach/Hosingen
 3522495|Wiltz
 3522497|Huldingen
@@ -189,11 +198,13 @@
 35236|Hesperingen/Kockelscheuer/Roeser
 35237|Leudelingen/Ehlingen/Monnerich
 35239|Windhof/Steinfort
-3524|Luxemburg
 35240|Howald
+35241|Luxemburg
 35242|Plateau de Kirchberg
 35243|Findel/Kirchberg
+35244|Luxemburg
 35245|Diedrich
+35246|Luxemburg
 35247|Lintgen
 35248|Contern/Foetz
 35249|Howald
