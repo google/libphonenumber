@@ -23,7 +23,7 @@
 9963137|Kayndy, Chuy region
 9963138|Tokmok, Chuy region
 9963139|Lebedinovka, Chuy region
-9963222|Osh
+996322|Osh
 9963230|Eski-Nookat, Osh region
 9963231|Aravan, Osh region
 9963232|Kara-Suu, Osh region
@@ -31,22 +31,22 @@
 9963234|Gulcha, Osh region
 9963237|Daroot-Korgon, Osh region
 9963239|Kara-Kulja, Osh region
-9963422|Talas
+996342|Talas
 9963456|Kyzyl-Adyr, Talas region
 9963457|Bakay-Ata, Talas region
 9963458|Kokoy, Talas region
 9963459|Pokrovka, Talas region
-9963522|Naryn
+996352|Naryn
 9963534|At-Bashy, Naryn region
 9963535|Kochkor, Naryn region
 9963536|Chaek/Minkush, Naryn region
 9963537|Baetov, Naryn region
-9963622|Batken, Naryn region
+996362|Batken, Naryn region
 9963653|Sulukta, Naryn region
 9963655|Pulgon, Naryn region
 9963656|Isfana, Naryn region
 9963657|Kyzylkia, Naryn region
-9963722|Jalal-Abat
+996372|Jalal-Abat
 9963734|Massy/Kochkor-Ata, Jalal-Abat region
 9963736|Bazarkorgon, Jalal-Abat region
 9963738|Kazarman, Jalal-Abat region
@@ -58,7 +58,7 @@
 9963747|Toktogul, Jalal-Abat region
 9963748|Kok-Jangak/Suzak, Jalal-Abat region
 9963749|Kanysh-Kya (Chatkal), Jalal-Abat region
-9963922|Karakol, Issyk-Ko region
+996392|Karakol, Issyk-Ko region
 9963942|Ananyevo, Issyk-Ko region
 9963943|Cholpon-Ata, Issyk-Ko region
 9963944|Balykchy, Issyk-Ko region

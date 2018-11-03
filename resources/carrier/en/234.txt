@@ -176,8 +176,7 @@
 2347782|Starcomms
 2347783|Starcomms
 2347784|Starcomms
-2348010|Megatech
-2348011|Megatech
+234801|Megatech
 234802|Airtel
 234803|MTN
 234804|Ntel
@@ -195,8 +194,7 @@
 234816|MTN
 234817|9mobile
 234818|9mobile
-2348190|Starcomms
-2348191|Starcomms
+234819|Starcomms
 2348283|Starcomms
 2348284|Starcomms
 2348285|Starcomms
