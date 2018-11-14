@@ -277,17 +277,6 @@ function testExampleShortNumberPresence() {
   assertEquals('', shortInfo.getExampleShortNumber(null));
 }
 
-function testGetExampleShortNumberForCost() {
-  assertEquals('3010', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE));
-  assertEquals('1023', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE));
-  assertEquals('42000', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE));
-  assertEquals('', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST));
-}
-
 function testConnectsToEmergencyNumber_US() {
   assertTrue(shortInfo.connectsToEmergencyNumber('911', RegionCode.US));
   assertTrue(shortInfo.connectsToEmergencyNumber('112', RegionCode.US));
