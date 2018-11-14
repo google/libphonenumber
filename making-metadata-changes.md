@@ -5,7 +5,7 @@
 These steps outline how to edit the metadata for the phone number library to fix
 problems with validation or formatting.
 
-Note that cannot accept pull requests to modify metadata directly, but you may
+Note that we cannot accept pull requests to modify metadata directly, but you may
 use these guidelines to create changes in your own fork until we fix issues
 upstream. Please [file a corresponding issue](CONTRIBUTING.md#checklist-before-filing-an-issue)
 with us.
