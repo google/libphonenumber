@@ -15,7 +15,7 @@
 # Sources: https://en.wikipedia.org/wiki/Telephone_numbers_in_Zambia and
 # http://www.itu.int/oth/T02020000E8/en
 
-26076|MTN
+2607|MTN
 26095|ZAMTEL
 26096|MTN
 26097|Airtel

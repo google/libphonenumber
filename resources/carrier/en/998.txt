@@ -12,12 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-99861|MTS
-99862|MTS
-99865|MTS
-99866|MTS
-99867|MTS
-99869|MTS
+9986|MTS
 99870|MTS
 99872|MTS
 99873|MTS

@@ -12,124 +12,47 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-916000|Reliance Jio
-916001|Reliance Jio
-916002|Reliance Jio
-916003|Reliance Jio
-916005|Reliance Jio
-916006|Reliance Jio
-916009|Reliance Jio
-916033|BSNL MOBILE
+91600|Reliance Jio
+91602|BSNL MOBILE
+91603|BSNL MOBILE
 9161279|Idea
-916200|Reliance Jio
-916201|Reliance Jio
-916202|Reliance Jio
-916203|Reliance Jio
-916204|Reliance Jio
-916205|Reliance Jio
-916206|Reliance Jio
-916207|Reliance Jio
+91620|Reliance Jio
 916208|Vodafone
-916026|BSNL MOBILE
 916209|Idea
 916230|Airtel
 916232|Airtel
 916235|Idea
 916238|Reliance Jio
 916239|Reliance Jio
-916260|Reliance Jio
-916261|Reliance Jio
+91626|Reliance Jio
 916262|Idea
-916263|Reliance Jio
-916264|Reliance Jio
-916265|Reliance Jio
-916266|Reliance Jio
-916267|Reliance Jio
-916268|Reliance Jio
 916269|Idea
-916280|Reliance Jio
-916281|Reliance Jio
-916282|Reliance Jio
-916283|Reliance Jio
-916284|Reliance Jio
+91628|Reliance Jio
 916287|Airtel
-916289|Reliance Jio
-916290|Reliance Jio
-916291|Reliance Jio
+91629|Reliance Jio
 916292|Vodafone
 916293|Idea
-916294|Reliance Jio
-916295|Reliance Jio
-916296|Reliance Jio
-916297|Reliance Jio
-916299|Reliance Jio
-916300|Reliance Jio
-916301|Reliance Jio
-916302|Reliance Jio
-916303|Reliance Jio
-916304|Reliance Jio
-916305|Reliance Jio
-916306|Reliance Jio
-916307|Reliance Jio
+91630|Reliance Jio
 916309|Airtel
-9163500|Reliance Jio
-9163501|Reliance Jio
-9163502|Reliance Jio
-9163503|Reliance Jio
-9163504|Reliance Jio
-9163505|Reliance Jio
-9163506|Reliance Jio
-916351|Reliance Jio
-916352|Reliance Jio
-916353|Reliance Jio
-916354|Reliance Jio
-916355|Reliance Jio
+91635|Reliance Jio
 916356|Idea
 916357|Vodafone
 916358|Airtel
 916359|Vodafone
-916360|Reliance Jio
-916361|Reliance Jio
-916362|Reliance Jio
-916363|Reliance Jio
+91636|Reliance Jio
 916364|Airtel
 916366|Airtel
-916367|Reliance Jio
-916369|Reliance Jio
-916370|Reliance Jio
-916371|Reliance Jio
-916372|Reliance Jio
-916374|Reliance Jio
-916375|Reliance Jio
-916376|Reliance Jio
-916377|Reliance Jio
-916378|Reliance Jio
-916379|Reliance Jio
-916380|Reliance Jio
-916381|Reliance Jio
-916382|Reliance Jio
-916383|Reliance Jio
+91637|Reliance Jio
+91638|Reliance Jio
 916384|Vodafone
 916385|Airtel
-916386|Reliance Jio
-916387|Reliance Jio
-916388|Reliance Jio
 916389|Vodafone
+91639|Reliance Jio
 916390|Vodafone
 916391|Vodafone
-916392|Reliance Jio
-916393|Reliance Jio
-916394|Reliance Jio
-916395|Reliance Jio
-916396|Reliance Jio
-916397|Reliance Jio
-916398|Reliance Jio
-916399|Reliance Jio
 9167479|Idea
-916900|Airtel
-916901|Airtel
-916909|Airtel
-916913|Vodafone
+91690|Airtel
+91691|Vodafone
 91700|Reliance Jio
 91701|Reliance Jio
 917020|Reliance Jio
@@ -218,16 +141,10 @@
 917193|Airtel
 917194|Airtel
 917195|Airtel
-917200|Tata Docomo
+91720|Tata Docomo
 917201|Idea
 917202|Idea
 917203|Idea
-917204|Tata Docomo
-917205|Tata Docomo
-917206|Tata Docomo
-917207|Tata Docomo
-917208|Tata Docomo
-917209|Tata Docomo
 917210|Aircel
 917211|Idea
 917217|Tata Docomo
@@ -247,12 +164,7 @@
 9172290|Airtel
 9172298|Vodafone
 9172299|Vodafone
-917230|Vodafone
-917231|Vodafone
-917232|Vodafone
-917233|Vodafone
-917234|Vodafone
-917235|Vodafone
+91723|Vodafone
 917236|Idea
 917237|Idea
 917238|Idea
@@ -262,15 +174,7 @@
 917247|Idea
 917248|Idea
 9172489|Telewings
-9172490|Telewings
-9172491|Telewings
-9172492|Telewings
-9172493|Telewings
-9172494|Telewings
-9172495|Telewings
-9172496|Telewings
-9172497|Telewings
-9172498|Telewings
+917249|Telewings
 9172499|Vodafone
 917250|Airtel
 917251|Vodafone
@@ -304,14 +208,7 @@
 917280|Vodafone
 917281|Vodafone
 917282|Vodafone
-9172830|Vodafone
-9172831|Vodafone
-9172832|Vodafone
-9172833|Vodafone
-9172834|Vodafone
-9172835|Vodafone
-9172836|Vodafone
-9172837|Vodafone
+917283|Vodafone
 9172838|Idea
 9172839|Idea
 9172840|Idea
@@ -323,27 +220,15 @@
 9172860|Idea
 9172868|Idea
 9172869|Idea
+917287|Airtel
 9172870|Idea
-9172871|Airtel
-9172872|Airtel
-9172873|Airtel
-9172874|Airtel
-9172875|Airtel
-9172876|Airtel
-9172877|Airtel
 9172878|Idea
 9172879|Idea
 9172880|Idea
 9172888|Idea
 9172889|Idea
+917289|Airtel
 9172890|Vodafone
-9172891|Airtel
-9172892|Airtel
-9172893|Airtel
-9172894|Airtel
-9172895|Airtel
-9172896|Airtel
-9172897|Airtel
 9172898|Vodafone
 9172899|Vodafone
 9172900|Vodafone
@@ -431,12 +316,7 @@
 9173290|Aircel
 9173298|Aircel
 9173299|Aircel
-9173300|Aircel
-9173301|Aircel
-9173302|Aircel
-9173303|Aircel
-9173304|Aircel
-9173305|Aircel
+917330|Aircel
 9173306|Airtel
 9173307|Airtel
 9173308|Airtel
@@ -453,7 +333,7 @@
 917338|Airtel
 917339|Airtel
 917340|Airtel
-9173411|Airtel
+917341|Airtel
 9173470|Airtel
 9173472|Airtel
 9173473|Airtel
@@ -462,24 +342,10 @@
 9173476|Airtel
 9173477|Idea
 9173478|Idea
-9173480|Idea
-9173481|Idea
-9173482|Idea
-9173483|Idea
-9173484|Idea
-9173485|Idea
-9173486|Idea
-9173487|Idea
+917348|Idea
 9173488|Airtel
 9173489|Airtel
-9173490|Airtel
-9173491|Airtel
-9173492|Airtel
-9173493|Airtel
-9173494|Airtel
-9173495|Airtel
-9173496|Airtel
-9173497|Airtel
+917349|Airtel
 9173498|Vodafone
 9173499|Vodafone
 917350|Idea
@@ -548,27 +414,15 @@
 9173759|Idea
 917376|BSNL MOBILE
 917377|Idea
+917378|Vodafone
 9173780|Idea
 9173781|Idea
 9173782|Idea
-9173783|Vodafone
-9173784|Vodafone
-9173785|Vodafone
-9173786|Vodafone
-9173787|Vodafone
-9173788|Vodafone
-9173789|Vodafone
 917379|Vodafone
+917380|Airtel
 9173800|Vodafone
 9173801|Vodafone
 9173802|Vodafone
-9173803|Airtel
-9173804|Airtel
-9173805|Airtel
-9173806|Airtel
-9173807|Airtel
-9173808|Airtel
-9173809|Airtel
 917381|Vodafone
 917382|BSNL MOBILE
 917383|Telewings
@@ -619,14 +473,7 @@
 917407|Vodafone
 917408|Vodafone
 917409|Vodafone
-9174100|Airtel
-9174101|Airtel
-9174102|Airtel
-9174103|Airtel
-9174104|Airtel
-9174105|Airtel
-9174106|Airtel
-9174107|Airtel
+917410|Airtel
 9174108|Vodafone
 9174109|Vodafone
 917411|Tata Docomo
@@ -698,17 +545,10 @@
 9174388|Vodafone
 9174389|Vodafone
 917439|Reliance Jio
+917440|Idea
 9174400|Vodafone
 9174401|Vodafone
-9174402|Idea
-9174403|Idea
-9174404|Idea
-9174405|Idea
-9174406|Idea
-9174407|Idea
-9174408|Idea
-9174409|Idea
-9174411|Idea
+917441|Idea
 9174470|Idea
 9174472|Idea
 9174473|Idea
@@ -779,17 +619,11 @@
 9174690|Aircel
 9174698|Aircel
 9174699|Aircel
+917470|Airtel
 9174700|Aircel
 9174701|Aircel
 9174702|Aircel
-9174703|Airtel
-9174704|Airtel
-9174705|Airtel
-9174706|Airtel
-9174707|Airtel
-9174708|Airtel
-9174709|Airtel
-9174711|Airtel
+917471|Airtel
 9174770|Airtel
 9174772|Airtel
 9174773|Airtel
@@ -798,26 +632,16 @@
 9174776|Airtel
 9174777|Airtel
 9174778|Airtel
+917478|Vodafone
 9174780|Airtel
 9174781|Airtel
 9174782|Airtel
 9174783|Airtel
-9174784|Vodafone
-9174785|Vodafone
-9174786|Vodafone
-9174787|Vodafone
-9174788|Vodafone
-9174789|Vodafone
+917479|Telenor
 9174790|Vodafone
 9174791|Vodafone
 9174792|Vodafone
 9174793|Vodafone
-9174794|Telenor
-9174795|Telenor
-9174796|Telenor
-9174797|Telenor
-9174798|Telenor
-9174799|Telenor
 9174800|Telenor
 9174808|Telenor
 9174809|Telenor
@@ -878,27 +702,10 @@
 917507|Vodafone
 917508|Vodafone
 917509|Vodafone
+917510|Idea
 9175100|Airtel
-9175101|Idea
-9175102|Idea
-9175103|Idea
-9175104|Idea
-9175105|Idea
-9175106|Idea
-9175107|Idea
-9175108|Idea
-9175109|Idea
-9175111|Idea
-9175170|Idea
-9175171|Idea
-9175172|Idea
-9175173|Idea
-9175174|Idea
-9175175|Idea
-9175176|Idea
-9175177|Idea
-9175178|Idea
-9175179|Idea
+917511|Idea
+917517|Idea
 917518|Airtel
 917519|Aircel
 9175210|Airtel
@@ -973,26 +780,15 @@
 9175575|Aircel
 9175576|Aircel
 9175578|Vodafone
+917558|Airtel
 9175580|Idea
-9175581|Airtel
-9175582|Airtel
-9175583|Airtel
-9175584|Airtel
-9175585|Airtel
-9175586|Airtel
-9175587|Airtel
 9175588|Idea
 9175589|Idea
-9175590|Idea
+917559|Idea
 9175591|Airtel
 9175592|Airtel
 9175593|Airtel
 9175594|Airtel
-9175595|Idea
-9175596|Idea
-9175597|Idea
-9175598|Idea
-9175599|Idea
 917560|Idea
 917561|Idea
 917562|Idea
@@ -1023,16 +819,8 @@
 9175788|Vodafone
 9175789|Vodafone
 917579|BSNL MOBILE
+917580|Vodafone
 9175800|Idea
-9175801|Vodafone
-9175802|Vodafone
-9175803|Vodafone
-9175804|Vodafone
-9175805|Vodafone
-9175806|Vodafone
-9175807|Vodafone
-9175808|Vodafone
-9175809|Vodafone
 917581|Vodafone
 917582|Vodafone
 9175830|Vodafone
@@ -1092,54 +880,25 @@
 9176090|Airtel
 9176098|Airtel
 9176099|Airtel
+917610|Idea
 9176100|Aircel
-9176101|Idea
-9176102|Idea
-9176103|Idea
-9176104|Idea
-9176105|Idea
-9176106|Idea
-9176107|Idea
 9176108|Aircel
 9176109|Aircel
-9176110|Aircel
+917611|Aircel
 9176111|Idea
-9176112|Aircel
-9176113|Aircel
-9176114|Aircel
-9176115|Aircel
-9176116|Aircel
-9176117|Aircel
-9176118|Aircel
-9176119|Aircel
 917615|Aircel
-9176170|Idea
-9176171|Idea
-9176172|Idea
-9176173|Idea
+917617|Idea
 9176174|Vodafone
 9176175|Vodafone
 9176176|Vodafone
 9176177|Vodafone
-9176178|Idea
-9176179|Idea
+917618|Vodafone
 9176180|Idea
-9176181|Vodafone
-9176182|Vodafone
-9176183|Vodafone
-9176184|Vodafone
-9176185|Vodafone
-9176186|Vodafone
 9176187|Airtel
 9176188|Idea
 9176189|Idea
+917619|Airtel
 9176190|Idea
-9176191|Airtel
-9176192|Airtel
-9176193|Airtel
-9176194|Airtel
-9176195|Airtel
-9176196|Airtel
 9176197|Aircel
 9176198|Idea
 9176199|Idea
@@ -1147,14 +906,7 @@
 917621|Idea
 917622|Idea
 917623|Idea
-9176240|Idea
-9176241|Idea
-9176242|Idea
-9176243|Idea
-9176244|Idea
-9176245|Idea
-9176246|Idea
-9176247|Idea
+917624|Idea
 9176248|Airtel
 9176249|Airtel
 9176250|Airtel
@@ -1298,16 +1050,9 @@
 9176888|Idea
 9176889|Idea
 917689|Idea
-917690|Idea
-917691|Idea
-917692|Idea
-917693|Idea
-917694|Idea
+91769|Idea
 917695|Reliance Jio
 917696|Tata Docomo
-917697|Idea
-917698|Idea
-917699|Idea
 9177000|Airtel
 9177008|Airtel
 9177009|Airtel
@@ -1332,14 +1077,10 @@
 9177079|Idea
 917708|Airtel
 917709|Airtel
-917710|Airtel
-9177101|Idea
-9177102|Idea
-9177103|Idea
-9177104|Idea
-9177105|Idea
-9177106|Idea
-9177107|Idea
+917710|Idea
+9177100|Airtel
+9177108|Airtel
+9177109|Airtel
 9177110|Aircel
 9177118|Aircel
 9177119|Aircel
@@ -1367,15 +1108,11 @@
 9177177|Reliance Jio
 9177178|Airtel
 9177179|Airtel
-917718|Airtel
-9177181|Vodafone
-9177182|Vodafone
-9177183|Vodafone
-9177184|Vodafone
-9177185|Vodafone
-9177186|Vodafone
-9177187|Vodafone
-917719|Idea
+917718|Vodafone
+9177180|Airtel
+9177188|Airtel
+9177189|Airtel
+9177190|Idea
 9177191|Vodafone
 9177192|Vodafone
 9177193|Vodafone
@@ -1383,6 +1120,8 @@
 9177195|Reliance Jio
 9177196|Reliance Jio
 9177197|Reliance Jio
+9177198|Idea
+9177199|Idea
 917720|Idea
 917721|Idea
 9177220|Idea
@@ -1416,7 +1155,6 @@
 917737|Tata Docomo
 917738|Airtel
 917739|Airtel
-
 9177400|Reliance Jio
 9177408|Idea
 9177409|Idea
@@ -1617,16 +1355,10 @@
 917877|Reliance Jio
 917878|Reliance Jio
 917879|Reliance Jio
+917880|Airtel
 9178800|Tata Docomo
 9178801|Tata Docomo
 9178802|Tata Docomo
-9178803|Airtel
-9178804|Airtel
-9178805|Airtel
-9178806|Airtel
-9178807|Airtel
-9178808|Airtel
-9178809|Airtel
 9178811|Airtel
 9178870|Airtel
 9178872|Airtel
@@ -1637,51 +1369,28 @@
 9178877|Idea
 9178878|Idea
 9178879|Idea
+917888|Reliance Jio
 9178880|Idea
 9178881|Idea
 9178882|Idea
-9178883|Reliance Jio
-9178884|Reliance Jio
-9178885|Reliance Jio
-9178886|Reliance Jio
-9178887|Reliance Jio
-9178888|Reliance Jio
-9178889|Reliance Jio
 917889|Reliance Jio
+91789|Airtel
 917890|Idea
 917891|Idea
 917892|Reliance Jio
-917893|Airtel
-917894|Airtel
-917895|Airtel
-917896|Airtel
-917897|Airtel
-917898|Airtel
 917899|Idea
+91790|Reliance Jio
 917900|Idea
 9179000|Airtel
 9179001|Airtel
 917901|BSNL MOBILE
 917902|Idea
-917903|Reliance Jio
-917904|Reliance Jio
-917905|Reliance Jio
-917906|Reliance Jio
-917907|Reliance Jio
-917908|Reliance Jio
 917909|Idea
-9179090|Reliance Jio
 9179313|Reliance Jio
+917970|Airtel
 9179700|Idea
 9179701|Idea
 9179702|Idea
-9179703|Airtel
-9179704|Airtel
-9179705|Airtel
-9179706|Airtel
-9179707|Airtel
-9179708|Airtel
-9179709|Airtel
 917972|Reliance Jio
 917973|Reliance Jio
 917974|Reliance Jio
@@ -1719,7 +1428,11 @@
 918002|Airtel
 918003|Airtel
 918004|BSNL MOBILE
-918005|BSNL MOBILE
+9180050|BSNL MOBILE
+9180051|BSNL MOBILE
+9180052|BSNL MOBILE
+9180053|BSNL MOBILE
+9180054|BSNL MOBILE
 9180055|Reliance Jio
 9180056|Reliance Jio
 9180057|Reliance Jio
@@ -1806,16 +1519,11 @@
 9181130|Idea
 9181138|Idea
 9181139|Idea
+918114|Airtel
 9181140|Idea
 9181141|Idea
 9181142|Idea
-9181143|Airtel
 9181144|Reliance Jio
-9181145|Airtel
-9181146|Airtel
-9181147|Airtel
-9181148|Airtel
-9181149|Airtel
 9181150|Telewings
 918116|Airtel
 9181170|Airtel
@@ -1898,7 +1606,6 @@
 918169|Reliance Jio
 9181700|Airtel
 9181708|Airtel
-
 918171|Airtel
 9181720|Airtel
 9181728|Airtel
@@ -1926,16 +1633,8 @@
 9181879|Tata Docomo
 918188|Tata Docomo
 918189|Tata Docomo
-918190|Idea
-918191|Idea
-918192|Idea
-918193|Idea
-918194|Idea
-918195|Idea
-918196|Idea
+91819|Idea
 918197|Airtel
-918198|Idea
-918199|Idea
 918200|Reliance Jio
 9182070|Airtel
 9182072|Airtel
@@ -1992,12 +1691,7 @@
 9182478|Reliance Jio
 918248|Reliance Jio
 918249|Reliance Jio
-918250|Reliance Jio
-918251|Reliance Jio
-918252|Reliance Jio
-918253|Reliance Jio
-918254|Reliance Jio
-918255|Reliance Jio
+91825|Reliance Jio
 918256|Vodafone
 918257|Vodafone
 918258|Vodafone
@@ -2011,15 +1705,18 @@
 9182658|Tata Docomo
 9182659|Tata Docomo
 918266|Tata Docomo
-9182668|Tata Docomo
 918267|Tata Docomo
 918268|Aircel
-918270|Vodafone
 9182700|Telewings
 9182701|Telewings
 9182702|Telewings
 9182703|Telewings
 9182704|Telewings
+9182705|Vodafone
+9182706|Vodafone
+9182707|Vodafone
+9182708|Vodafone
+9182709|Vodafone
 918271|Telewings
 918272|Tata Docomo
 918273|Telewings
@@ -2049,22 +1746,15 @@
 918297|Vodafone
 918298|Vodafone
 918299|Reliance Jio
-918300|BSNL MOBILE
-9183004|Reliance Jio
-9183005|Reliance Jio
-9183006|Reliance Jio
-9183007|Reliance Jio
-9183008|Reliance Jio
-9183009|Reliance Jio
+91830|Reliance Jio
+9183000|BSNL MOBILE
+9183001|BSNL MOBILE
+9183002|BSNL MOBILE
+9183003|BSNL MOBILE
 918301|BSNL MOBILE
-918302|Reliance Jio
-918303|Reliance Jio
 918304|BSNL MOBILE
-918305|Reliance Jio
 918306|Airtel
-918307|Reliance Jio
 918308|Idea
-918309|Reliance Jio
 918310|Reliance Jio
 9183170|Reliance Jio
 9183172|Idea
@@ -2085,35 +1775,16 @@
 9183276|Vodafone
 9183277|Reliance Jio
 9183278|Vodafone
-9183280|Reliance Jio
-9183281|Reliance Jio
-9183282|Reliance Jio
-9183283|Reliance Jio
-9183284|Reliance Jio
-9183285|Reliance Jio
-9183286|Reliance Jio
+918328|Reliance Jio
 9183287|Vodafone
-9183288|Reliance Jio
-9183289|Reliance Jio
 918329|Reliance Jio
+91833|Vodafone
 918330|BSNL MOBILE
 918331|BSNL MOBILE
 918332|BSNL MOBILE
 918333|BSNL MOBILE
-918334|Vodafone
-918335|Vodafone
-918336|Vodafone
-918337|Vodafone
-918338|Vodafone
-918339|Vodafone
+918340|Reliance Jio
 9183400|Idea
-9183401|Reliance Jio
-9183402|Reliance Jio
-9183403|Reliance Jio
-9183404|Reliance Jio
-9183405|Reliance Jio
-9183406|Reliance Jio
-9183407|Reliance Jio
 9183408|Idea
 9183409|Idea
 918341|Telewings
@@ -2151,14 +1822,8 @@
 9183678|Vodafone
 918368|Reliance Jio
 918369|Reliance Jio
-918370|Vodafone
-918371|Vodafone
-918372|Vodafone
-918373|Vodafone
+91837|Vodafone
 918374|Airtel
-918375|Vodafone
-918376|Vodafone
-918377|Vodafone
 918378|Idea
 918379|Idea
 918380|Idea
@@ -2178,16 +1843,8 @@
 918389|Reliance Jio
 918390|Vodafone
 918391|Reliance Jio
+918392|Vodafone
 9183920|Reliance Jio
-9183921|Vodafone
-9183922|Vodafone
-9183923|Vodafone
-9183924|Vodafone
-9183925|Vodafone
-9183926|Vodafone
-9183927|Vodafone
-9183928|Vodafone
-9183929|Vodafone
 918393|Vodafone
 918394|Vodafone
 918395|Vodafone
@@ -2197,15 +1854,9 @@
 918397|Vodafone
 918398|Vodafone
 918399|Vodafone
+91840|Vodafone
 918400|Airtel
 918401|Telewings
-918402|Vodafone
-918403|Vodafone
-918404|Vodafone
-918405|Vodafone
-918406|Vodafone
-918407|Vodafone
-918408|Vodafone
 918409|Telewings
 9184100|Aircel
 9184118|Vodafone
@@ -2263,13 +1914,8 @@
 918457|Airtel
 918458|Idea
 918459|Reliance Jio
+91846|Idea
 918460|Tata Docomo
-918461|Idea
-918462|Idea
-918463|Idea
-918464|Idea
-918465|Idea
-918466|Idea
 918467|Reliance Jio
 918468|Reliance Jio
 918469|Vodafone
@@ -2296,23 +1942,13 @@
 918487|Telewings
 918488|Telewings
 918489|Vodafone
+91849|Idea
 918490|Telewings
 918491|Airtel
 918492|Airtel
 918493|Airtel
-918494|Idea
-918495|Idea
-918496|Idea
-918497|Idea
-918498|Idea
-918499|Idea
+91850|Idea
 918500|BSNL MOBILE
-918501|Idea
-918502|Idea
-918503|Idea
-918504|Idea
-918505|Idea
-918506|Idea
 918507|Aircel
 918508|Aircel
 918509|Reliance Jio
@@ -2377,16 +2013,7 @@
 9185599|Aircel
 918560|Aircel
 918561|Aircel
-9185620|Aircel
-9185621|Aircel
-9185622|Aircel
-9185623|Aircel
-9185624|Aircel
-9185625|Aircel
-9185626|Aircel
-9185627|Aircel
-9185628|Aircel
-9185629|Aircel
+918562|Aircel
 918563|Aircel
 918564|Aircel
 918565|Aircel
@@ -2461,16 +2088,8 @@
 918623|Telewings
 918624|Telewings
 918625|Telewings
+918626|Airtel
 9186260|Telewings
-9186261|Airtel
-9186262|Airtel
-9186263|Airtel
-9186264|Airtel
-9186265|Airtel
-9186266|Airtel
-9186267|Airtel
-9186268|Airtel
-9186269|Airtel
 918627|Airtel
 918628|Airtel
 9186290|Airtel
@@ -2507,56 +2126,28 @@
 9186677|Reliance Jio
 9186678|Reliance Jio
 918668|Reliance Jio
+918669|Idea
 9186690|Reliance Jio
 9186691|Reliance Jio
-9186692|Idea
-9186693|Idea
-9186694|Idea
-9186695|Idea
-9186696|Idea
-9186697|Idea
-9186698|Idea
-9186699|Idea
 918670|Airtel
 918671|Aircel
 918672|Aircel
 918673|Aircel
-9186740|Aircel
-9186741|Aircel
-9186742|Aircel
-9186743|Aircel
-9186744|Aircel
-9186745|Aircel
-9186746|Aircel
-9186747|Aircel
+918674|Aircel
 9186748|Vodafone
 9186749|Vodafone
 918675|Aircel
-9186760|Vodafone
-9186761|Vodafone
-9186762|Vodafone
+918676|Vodafone
 9186763|Reliance Jio
-9186764|Vodafone
-9186765|Vodafone
-9186766|Vodafone
-9186767|Vodafone
-9186768|Vodafone
-9186769|Vodafone
 918677|Vodafone
 9186780|Vodafone
 9186788|Vodafone
 9186789|Idea
 918679|Aircel
-918680|Idea
-918681|Idea
-918682|Idea
-918683|Idea
-918684|Idea
-918685|Idea
+91868|Idea
 918686|Aircel
 918687|Reliance Jio
 918688|Reliance Jio
-918689|Idea
 918690|Airtel
 918691|Idea
 918692|Idea
@@ -2568,8 +2159,15 @@
 918698|Vodafone
 918699|Tata Docomo
 918700|Reliance Jio
-918707|Reliance Jio
+9187070|Reliance Jio
 9187071|Idea
+9187072|Reliance Jio
+9187073|Reliance Jio
+9187074|Reliance Jio
+9187075|Reliance Jio
+9187076|Reliance Jio
+9187077|Reliance Jio
+9187078|Reliance Jio
 9187079|Idea
 918708|Reliance Jio
 918709|Reliance Jio
@@ -2672,7 +2270,6 @@
 918797|Tata Docomo
 918798|Reliance Jio
 918799|Reliance Jio
-9187997|Reliance Jio
 918800|Airtel
 918801|Aircel
 918802|Aircel
@@ -2684,11 +2281,6 @@
 918808|Idea
 918809|Airtel
 918810|Reliance Jio
-9188102|Reliance Jio
-9188103|Reliance Jio
-9188104|Reliance Jio
-9188105|Reliance Jio
-9188106|Reliance Jio
 918811|Airtel
 918812|Airtel
 918813|Vodafone
@@ -2751,26 +2343,16 @@
 918857|Telewings
 918858|Telewings
 918859|Vodafone
+91886|Telewings
 918860|Vodafone
 918861|Airtel
-918862|Telewings
-918863|Telewings
-918864|Telewings
-918865|Telewings
 918866|Tata Docomo
 918867|Tata Docomo
-918868|Telewings
-918869|Telewings
+91887|Vodafone
 918870|Airtel
 918871|Tata Docomo
 918872|Idea
 918873|Idea
-918874|Vodafone
-918875|Vodafone
-918876|Vodafone
-918877|Vodafone
-918878|Vodafone
-918879|Vodafone
 918880|Reliance Jio
 918881|Vodafone
 918882|Reliance Jio
@@ -2791,7 +2373,10 @@
 918897|Airtel
 918898|Aircel
 918899|Airtel
-91890|BSNL MOBILE
+918900|BSNL MOBILE
+918901|BSNL MOBILE
+918902|BSNL MOBILE
+918903|BSNL MOBILE
 918904|Tata Docomo
 918905|Airtel
 918906|Aircel
@@ -2886,46 +2471,18 @@
 918990|Reliance Jio
 9189911|BSNL MOBILE
 918999|Reliance Jio
-919000|Airtel
-919001|Airtel
-919002|Airtel
-919003|Airtel
-919004|Airtel
-919005|Airtel
-919006|Airtel
-919007|Airtel
-919008|Airtel
+91900|Airtel
 919009|Idea
+91901|Reliance Jio
 919010|Idea
 919011|Idea
 919012|Idea
 919013|MTNL
-919014|Reliance Jio
-919015|Reliance Jio
-919016|Reliance Jio
-919017|Reliance Jio
-919018|Reliance Jio
-919019|Reliance Jio
 91902|Reliance Jio
 919028|Tata Docomo
 919029|Tata Docomo
-919030|Tata Docomo
-919031|Tata Docomo
-919032|Tata Docomo
-919033|Tata Docomo
-919034|Tata Docomo
-919035|Tata Docomo
-919036|Tata Docomo
-919037|Tata Docomo
-919038|Tata Docomo
-919039|Tata Docomo
-919040|Tata Docomo
-919041|Tata Docomo
-919042|Tata Docomo
-919043|Tata Docomo
-919044|Tata Docomo
-919045|Tata Docomo
-919046|Tata Docomo
+91903|Tata Docomo
+91904|Tata Docomo
 919047|Vodafone
 919048|Vodafone
 919049|Vodafone
@@ -2996,8 +2553,6 @@
 919108|Airtel
 919109|Airtel
 919110|Reliance Jio
-9191101|Reliance Jio
-9191109|Reliance Jio
 919111|Idea
 9191120|Vodafone
 9191121|Vodafone
@@ -3084,130 +2639,18 @@
 919177|Airtel
 919178|Airtel
 919179|Airtel
-919180|BSNL MOBILE
-919181|BSNL MOBILE
+91918|BSNL MOBILE
 919182|Reliance Jio
-919183|BSNL MOBILE
-919184|BSNL MOBILE
-919185|BSNL MOBILE
-919186|BSNL MOBILE
-919187|BSNL MOBILE
-919188|BSNL MOBILE
-919189|BSNL MOBILE
-919190|BSNL MOBILE
-919191|BSNL MOBILE
-919192|BSNL MOBILE
-919193|BSNL MOBILE
-919194|BSNL MOBILE
-919195|BSNL MOBILE
-919196|BSNL MOBILE
-919197|BSNL MOBILE
+91919|BSNL MOBILE
 919198|Airtel
 919199|Airtel
-919200|Tata Docomo
-919201|Tata Docomo
-919202|Tata Docomo
-919203|Tata Docomo
-919204|Tata Docomo
+9192|Tata Docomo
 919205|Airtel
 919206|Aircel
 919207|Idea
-919208|Tata Docomo
-919209|Tata Docomo
-919210|Tata Docomo
-919211|Tata Docomo
-919212|Tata Docomo
-919213|Tata Docomo
-919214|Tata Docomo
-919215|Tata Docomo
-919216|Tata Docomo
-919217|Tata Docomo
-919218|Tata Docomo
-919219|Tata Docomo
-919220|Tata Docomo
-919221|Tata Docomo
-919222|Tata Docomo
-919223|Tata Docomo
-919224|Tata Docomo
-919225|Tata Docomo
-919226|Tata Docomo
-919227|Tata Docomo
-919228|Tata Docomo
-919229|Tata Docomo
-919230|Tata Docomo
-919231|Tata Docomo
-919232|Tata Docomo
-919233|Tata Docomo
-919234|Tata Docomo
-919235|Tata Docomo
-919236|Tata Docomo
-919237|Tata Docomo
-919238|Tata Docomo
-919239|Tata Docomo
-919240|Tata Docomo
-919241|Tata Docomo
-919242|Tata Docomo
-919243|Tata Docomo
-919244|Tata Docomo
-919245|Tata Docomo
-919246|Tata Docomo
-919247|Tata Docomo
-919248|Tata Docomo
-919249|Tata Docomo
-919250|Tata Docomo
-919251|Tata Docomo
-919252|Tata Docomo
-919253|Tata Docomo
-919254|Tata Docomo
-919255|Tata Docomo
-919256|Tata Docomo
-919257|Tata Docomo
-919258|Tata Docomo
-919259|Tata Docomo
-919260|Tata Docomo
-919261|Tata Docomo
-919262|Tata Docomo
-919263|Tata Docomo
-919264|Tata Docomo
-919265|Tata Docomo
-919266|Tata Docomo
-919267|Tata Docomo
-919268|Tata Docomo
-919269|Tata Docomo
-919270|Tata Docomo
-919271|Tata Docomo
-919272|Tata Docomo
-919273|Tata Docomo
-919274|Tata Docomo
-919275|Tata Docomo
-919276|Tata Docomo
-919277|Tata Docomo
-919278|Tata Docomo
-919279|Tata Docomo
-919280|Tata Docomo
-919281|Tata Docomo
-919282|Tata Docomo
-919283|Tata Docomo
-919284|Tata Docomo
-919285|Tata Docomo
-919286|Tata Docomo
-919287|Tata Docomo
-919288|Tata Docomo
-919289|Tata Docomo
-919290|Tata Docomo
-919291|Tata Docomo
-919292|Tata Docomo
-919293|Tata Docomo
-919294|Tata Docomo
-919295|Tata Docomo
-919296|Tata Docomo
-919297|Tata Docomo
-919298|Tata Docomo
-919299|Tata Docomo
 9193|Reliance Jio
 919319|Airtel
 919341|Airtel
-919354|Reliance Jio
 919355|Idea
 919358|Airtel
 919371|Idea
@@ -3227,8 +2670,11 @@
 919508|Reliance Jio
 919509|Reliance Jio
 919510|Reliance Jio
-919511|Airtel
+9195110|Airtel
+9195111|Airtel
 9195112|Reliance Jio
+9195113|Airtel
+9195114|Airtel
 9195115|Reliance Jio
 9195116|Reliance Jio
 9195117|Reliance Jio
@@ -3308,14 +2754,8 @@
 919577|Aircel
 919578|Aircel
 919579|Reliance Jio
+91958|Vodafone
 919580|Reliance Jio
-919581|Vodafone
-919582|Vodafone
-919583|Vodafone
-919584|Vodafone
-919585|Vodafone
-919586|Vodafone
-919587|Vodafone
 919588|Reliance Jio
 919589|Airtel
 919590|Reliance Jio
@@ -3397,12 +2837,7 @@
 919666|Idea
 919668|Airtel
 919669|Idea
-919670|Vodafone
-919671|Vodafone
-919672|Vodafone
-919673|Vodafone
-919674|Vodafone
-919675|Vodafone
+91967|Vodafone
 919676|Airtel
 919677|Airtel
 919678|Airtel
@@ -3460,16 +2895,11 @@
 919727|Vodafone
 919728|Idea
 919729|Airtel
+91973|Vodafone
 919730|Airtel
 919731|Airtel
-919732|Vodafone
-919733|Vodafone
-919734|Vodafone
-919735|Vodafone
-919736|Vodafone
 919737|Idea
 919738|Aircel
-919739|Vodafone
 919740|Airtel
 919741|Airtel
 919742|Vodafone
@@ -3537,16 +2967,10 @@
 919797|Airtel
 919798|Reliance Jio
 919799|Airtel
+91980|Aircel
 919800|Airtel
 919801|Airtel
-919802|Aircel
-919803|Aircel
-919804|Aircel
 919805|Airtel
-919806|Aircel
-919807|Aircel
-919808|Aircel
-919809|Aircel
 919810|Airtel
 919811|Vodafone
 919812|Idea
@@ -3587,16 +3011,9 @@
 919847|Idea
 919848|Idea
 919849|Airtel
+91985|Aircel
 919850|Idea
-919851|Aircel
-919852|Aircel
-919853|Aircel
-919854|Aircel
 919855|Idea
-919856|Aircel
-919857|Aircel
-919858|Aircel
-919859|Aircel
 919860|Airtel
 919861|Reliance Jio
 919862|Airtel
@@ -3639,25 +3056,13 @@
 919887|Idea
 919888|Vodafone
 919889|Idea
-919890|Airtel
+91989|Airtel
 919891|Idea
-919892|Airtel
-919893|Airtel
-919894|Airtel
-919895|Airtel
-919896|Airtel
-919897|Airtel
-919898|Airtel
 919899|Vodafone
-919900|Airtel
-919901|Airtel
-919902|Airtel
-919903|Airtel
+91990|Airtel
 919904|Idea
 919905|Reliance Jio
-919906|Airtel
 919907|Reliance Jio
-919908|Airtel
 919909|Vodafone
 919910|Airtel
 919911|Idea
@@ -3679,16 +3084,8 @@
 919927|Idea
 919928|Airtel
 919929|Airtel
+91993|Airtel
 919930|Vodafone
-919931|Airtel
-919932|Airtel
-919933|Airtel
-919934|Airtel
-919935|Airtel
-919936|Airtel
-919937|Airtel
-919938|Airtel
-919939|Airtel
 919940|Airtel
 919941|Aircel
 919942|Aircel
@@ -3699,16 +3096,9 @@
 919947|Idea
 919948|Idea
 919949|Airtel
-919950|Airtel
+91995|Airtel
 919951|Idea
-919952|Airtel
 919953|Vodafone
-919954|Airtel
-919955|Airtel
-919956|Airtel
-919957|Airtel
-919958|Airtel
-919959|Airtel
 919960|Airtel
 919961|Idea
 919962|Vodafone
@@ -3719,25 +3109,15 @@
 919967|Airtel
 919968|MTNL
 919969|MTNL
-919970|Airtel
-919971|Airtel
-919972|Airtel
-919973|Airtel
-919974|Airtel
-919975|Airtel
+91997|Airtel
 919976|Aircel
 919977|Idea
 919978|Vodafone
 919979|Vodafone
+91998|Vodafone
 919980|Airtel
 919981|Airtel
-919982|Vodafone
-919983|Vodafone
-919984|Vodafone
-919985|Vodafone
-919986|Vodafone
 919987|Airtel
-919988|Vodafone
 919989|Airtel
 919990|Idea
 919991|Vodafone

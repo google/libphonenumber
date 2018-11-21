@@ -34,7 +34,7 @@
 263204|Odzi
 263205|Pengalonga
 263206|Mutare
-26321|Murambinda
+263212|Murambinda
 263213|Victoria Falls
 263219|Plumtree
 263220201|Chikanga/Mutare
@@ -46,8 +46,7 @@
 263227|Chipinge
 263228|Hauna
 263229|Juliasdale
-263231|Chiredzi
-26324|Chipangayi
+26323|Chiredzi
 263242|Harare
 2632421|Chitungwiza
 26324213|Ruwa
@@ -57,7 +56,6 @@
 263248|Birchenough Bridge
 26325|Rusape
 263251|Zvishavane
-26325205|Rusape
 263252055|Nyazura
 26325206|Murambinda
 26325207|Headlands
@@ -105,8 +103,6 @@
 263288|Esigodini
 263289|Jotsholo
 26329|Bulawayo
-263292320|Bulawayo
-263292321|Bulawayo
 26329246|Bellevue
 26329252|Luveve
 263292800|Esigodini
@@ -156,12 +152,7 @@
 263420088|Selous
 263420089|Selous
 26342009|Selous
-263420100|Selous
-263420101|Selous
-263420102|Selous
-263420103|Selous
-263420104|Selous
-263420105|Selous
+26342010|Selous
 263420106|Norton
 263420107|Norton
 263420108|Norton
@@ -172,7 +163,9 @@
 26342728|Marondera
 26342729|Marondera
 26350|Shanagani
-26351|Zvishavane
+263512|Zvishavane
+263513|Zvishavane
+263514|Zvishavane
 263517|Mataga
 263518|Mberengwa
 26352|Shurugwi
@@ -196,7 +189,6 @@
 26359|Gokwe
 26360|Mhangura
 26361|Kariba
-26361214|Kariba
 263612140|Chirundu
 263612141|Makuti
 26361215|Karoi
@@ -222,7 +214,6 @@
 263667|Raffingora
 263668|Mutorashanga
 26367|Chinhoyi
-2636721|Chinhoyi
 263672136|Trelawney
 26367214|Banket/Mhangura
 26367215|Murombedzi
@@ -244,12 +235,12 @@
 263812847|Binga
 263812856|Lupane
 263812875|Jotsholo
-2638328|Victoria Falls
+26383|Victoria Falls
 2638428|Gwanda
 263842801|Filabusi
 263842808|West Nicholson
 263842835|Collen Bawn
-2638523|BeitBridge
+26385|BeitBridge
 26389280|Plumtree
 2639|Bulawayo
 263920|Northend
@@ -265,13 +256,6 @@
 263946|Bellevue
 263947|Bellevue
 263948|Nkulumane
-2639490|Nkulumane
-2639491|Nkulumane
-2639492|Nkulumane
-2639493|Nkulumane
-2639494|Nkulumane
-2639495|Nkulumane
-2639496|Nkulumane
-2639497|Nkulumane
+263949|Nkulumane
 263952|Luveve
 263956|Luveve

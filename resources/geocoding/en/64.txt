@@ -15,45 +15,61 @@
 # Originally sourced from:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_New_Zealand#Landlines
 
-642409|Scott Base
-643|South Island
+6424|Scott Base
 64320|Gore/Edendale
 64321|Invercargill/Stewart Island/Rakiura
 64322|Otautau
 64323|Riverton/Winton
 64324|Tokanui/Lumsden/Te Anau
+64325|South Island
+64326|South Island
+64327|South Island
+64328|South Island
+64329|South Island
 64330|Ashburton/Akaroa/Chatham Islands
 64331|Rangiora/Amberley/Culverden/Darfield/Cheviot/Kaikoura
 64332|Christchurch
 64333|Christchurch
 64334|Christchurch/Rolleston
 64335|Christchurch
+64336|South Island
 64337|Christchurch
 64338|Christchurch
+64339|South Island
+64340|South Island
 643409|Queenstown
 64341|Balclutha/Milton
+64342|South Island
 64343|Oamaru/Mount Cook/Twizel/Kurow
 64344|Queenstown/Cromwell/Alexandra/Wanaka/Ranfurly/Roxburgh
 64345|Dunedin/Queenstown
 64346|Dunedin/Palmerston
 64347|Dunedin
 64348|Dunedin/Lawrence/Mosgiel
+64349|South Island
+6435|South Island
 64352|Murchison/Takaka/Motueka
 64354|Nelson
 64357|Blenheim
+6436|South Island
 64361|Timaru
 64368|Timaru/Waimate/Fairlie
 64369|Geraldine
+6437|South Island
 64373|Greymouth
 64375|Hokitika/Franz Josef Glacier/Fox Glacier/Haast
 64376|Greymouth
 64378|Westport
 64390|Ashburton
+64391|South Island
+64392|South Island
+64393|South Island
 64394|Christchurch/Invercargill
 64395|Dunedin/Timaru
 64396|Christchurch
 64397|Christchurch
 64398|Christchurch/Blenheim/Nelson
+64399|South Island
 64423|Wellington/Porirua/Tawa
 64429|Paraparaumu
 6443|Wellington
