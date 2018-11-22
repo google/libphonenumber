@@ -24,9 +24,6 @@
 
 # Changed 'Nasikcity' to 'Nasik City' and
 # 'Jodhpur Jodhpur, Rajasthan' to 'Jodhpur, Rajasthan'
-# Added '7265|Nandura, Maharashtra' based on online results.
-# Eg. http://allcodesindia.in/stdcode/mh/nandura.php
-
 9111|New Delhi
 91120|Ghaziabad/Dadri, Uttar Pradesh
 91121|Meerut, Uttar Pradesh
@@ -219,7 +216,12 @@
 911594|Udaipurwati, Rajasthan
 911595|Jhunjhunu/Bissau, Rajasthan
 911596|Chirawa, Rajasthan
-91160|Kharar, Punjab
+911602|Kharar, Punjab
+911603|Kharar, Punjab
+911604|Kharar, Punjab
+911605|Kharar, Punjab
+911606|Kharar, Punjab
+911607|Kharar, Punjab
 91161|Ludhiana, Punjab
 911624|Jagraon, Punjab
 911628|Samrala, Punjab
@@ -289,7 +291,12 @@
 911795|Nalagarh, Himachal Pradesh
 911796|Arki, Himachal Pradesh
 911799|Rajgarh, Himachal Pradesh
-91180|Panipat, Haryana
+911802|Panipat, Haryana
+911803|Panipat, Haryana
+911804|Panipat, Haryana
+911805|Panipat, Haryana
+911806|Panipat, Haryana
+911807|Panipat, Haryana
 91181|Jallandhar, Punjab
 911821|Nakodar, Punjab
 911822|Kapurthala, Punjab

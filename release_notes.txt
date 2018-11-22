@@ -1,3 +1,20 @@
+Nov 21, 2018: v8.10.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AE, AL, AT, AX, BW, BY, CC, CL, CN, CX, DE, FI, FR, GB, GG, HN, IM, IN, IR,
+   JE, LA, LI, LT, MM, MN, MY, NZ, PK, SE, SK, SM, UZ, VN, ZM, ZW
+ - Updated short number metadata for region code(s):
+   AT, AX, BY, CF, CL, DE, ER, FI, FM, FR, GA, IN, IR, LI, LT, MM, MN, MY, NE,
+   NZ, OM, PK, SE, SM, UZ, ZA, ZM, ZW
+ - Updated geocoding data for country calling code(s):
+   33 (en), 43 (de, en), 49 (en), 52 (en), 60 (en), 64 (en), 91 (en), 263 (en),
+   358 (en, sv), 370 (en)
+ - Updated carrier data for country calling code(s):
+   44 (en), 56 (en), 60 (en), 64 (en), 84 (en), 91 (en), 92 (en), 95 (en),
+   98 (en, fa), 260 (en), 267 (en), 358 (en), 370 (en), 423 (en), 976 (en),
+   998 (en)
+ - Updated / refreshed time zone meta data.
+
 Oct 31, 2018: v8.10.0
 Code changes:
  - AsYouTypeFormatter changed to better choose between rules when dialling
