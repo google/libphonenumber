@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Generated from:
-# https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008A0002PDFS.pdf
+# https://www.itu.int/oth/T020200008A/en
 
 52221|Puebla
 52222|Puebla
@@ -245,23 +245,23 @@
 52662|Sonora
 52665|Tecate, BCN
 52666|Tijuana, BCN
-52667|Sinoloa
-52668|Sinoloa
-52669|Sinoloa
+52667|Sinaloa
+52668|Sinaloa
+52669|Sinaloa
 52671|Durango
-52672|Sinoloa
-52673|Sinoloa
+52672|Sinaloa
+52673|Sinaloa
 52674|Durango
 52675|Durango
 52676|Durango
 52677|Durango
 52686|Baja California
-52687|Sinoloa
-52694|Sinoloa
-52695|Sinoloa
-52696|Sinoloa
-52697|Sinoloa
-52698|Sinoloa
+52687|Sinaloa
+52694|Sinaloa
+52695|Sinaloa
+52696|Sinaloa
+52697|Sinaloa
+52698|Sinaloa
 52711|Mexico/Michoacan
 52712|Estado de Mexico
 52713|Santiago Tianguistenco, MEX

@@ -19,23 +19,18 @@
 9890|Irancell
 9891|IR-MCI
 9892|Rightel
-98930|Irancell
+9893|Irancell
 98931|MTCE
 98932|Taliya
-98933|Irancell
 98934|TeleKish
-98935|Irancell
-98936|Irancell
-98937|Irancell
-98938|Irancell
-98939|Irancell
 98990|IR-MCI
 98991|IR-MCI
-989944|Anarestan
-9899810|Shatel Mobile
+98994|Anarestan
+989981|Shatel Mobile
 9899900|LOTUSTEL
-989991|Irancell
+9899910|Irancell
 9899911|ApTel
+9899913|Irancell
 9899914|Azartel
 9899998|SamanTel
 9899999|SamanTel

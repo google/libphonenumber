@@ -24,7 +24,7 @@
 4236627|Datamobile
 4236628|Datamobile
 4236629|Datamobile
-4236639|Emnify
+423663|Emnify
 42373|Telecom Liechtenstein
 42374|First Mobile
 42377|Swisscom
