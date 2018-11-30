@@ -1,26 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.google.i18n.phonenumbers</groupId>
-  <artifactId>libphonenumber-build-parent</artifactId>
-  <packaging>pom</packaging>
-  <version>1.0-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.google.i18n.phonenumbers.payclip</groupId>
+	<artifactId>libphonenumber-build-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.1</version>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-  <licenses>
-    <license>
-      <name>Apache 2</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <comments>Copyright (C) 2011 The Libphonenumber Authors</comments>
-    </license>
-  </licenses>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<comments>Copyright (C) 2011 The Libphonenumber Authors</comments>
+		</license>
+	</licenses>
 
-  <modules>
-    <module>tools/java</module>
-    <module>java</module>
-  </modules>
+	<modules>
+		<module>tools/java</module>
+		<module>java</module>
+	</modules>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.springframework.build</groupId>
+				<artifactId>aws-maven</artifactId>
+				<version>5.0.0.RELEASE</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>com.github.os72</groupId>
+				<artifactId>protoc-jar-maven-plugin</artifactId>
+				<version>3.1.0.2</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<protocVersion>3.3.0.1</protocVersion> <!-- 2.4.1, 2.5.0, 2.6.1, 3.1.0 -->
+							<inputDirectories>
+								<include>src/main/protobuf</include>
+							</inputDirectories>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>maven-s3-release-repo</id>
+			<url>s3://payclip-maven-repo/releases</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>maven-s3-release-repo-rw</id>
+			<url>s3://payclip-maven-repo/releases</url>
+		</repository>
+	</distributionManagement>
+	<scm>
+		<url>scm:git:git@github.com:ClipMX/libphonenumber.git</url>
+		<connection>scm:git:git@github.com:ClipMX/libphonenumber.git</connection>
+		<developerConnection>scm:git:git@github.com:ClipMX/libphonenumber.git</developerConnection>
+	</scm>
 </project>
