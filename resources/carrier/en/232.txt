@@ -23,12 +23,11 @@
 23244|Intergroup
 23250|Datatel/Cellcom
 23255|AFCOM
-23266|Onlime
+2326|Onlime
 23275|Orange
 23276|Airtel
 23277|Africell
 23278|Airtel
 23279|Airtel
-23280|Africell
-23288|Africell
-23299|Africell
+2328|Africell
+2329|Africell

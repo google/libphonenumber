@@ -299,24 +299,11 @@ TEST_F(ShortNumberInfoTest, GetExpectedCostForSharedCountryCallingCode) {
 }
 
 TEST_F(ShortNumberInfoTest, GetExampleShortNumber) {
-  EXPECT_EQ("8711", short_info_.GetExampleShortNumber(RegionCode::AM()));
-  EXPECT_EQ("1010", short_info_.GetExampleShortNumber(RegionCode::FR()));
-  EXPECT_EQ("", short_info_.GetExampleShortNumber(RegionCode::UN001()));
-  EXPECT_EQ("", short_info_.GetExampleShortNumber(RegionCode::GetUnknown()));
-}
-
-TEST_F(ShortNumberInfoTest, GetExampleShortNumberForCost) {
-  EXPECT_EQ("3010",
-      short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
-      ShortNumberInfo::TOLL_FREE));
-  EXPECT_EQ("1023",
-      short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
-      ShortNumberInfo::STANDARD_RATE));
-  EXPECT_EQ("42000",
-      short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
-      ShortNumberInfo::PREMIUM_RATE));
-  EXPECT_EQ("", short_info_.GetExampleShortNumberForCost(RegionCode::FR(),
-      ShortNumberInfo::UNKNOWN_COST));
+  EXPECT_FALSE(short_info_.GetExampleShortNumber(RegionCode::AD()).empty());
+  EXPECT_FALSE(short_info_.GetExampleShortNumber(RegionCode::FR()).empty());
+  EXPECT_TRUE(short_info_.GetExampleShortNumber(RegionCode::UN001()).empty());
+  EXPECT_TRUE(
+      short_info_.GetExampleShortNumber(RegionCode::GetUnknown()).empty());
 }
 
 TEST_F(ShortNumberInfoTest, ConnectsToEmergencyNumber_US) {

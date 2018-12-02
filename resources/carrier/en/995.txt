@@ -14,17 +14,15 @@
 
 # Veon was formerly known as Beeline/VimpelCom.
 
-995514|Geocell
+99551|Geocell
 99554444|MagtiCom
 995550|MagtiCom
 995551|MagtiCom
-995554|MagtiCom
 995555|Geocell
 995557|Geocell
 995558|Geocell
 995559|Globalcell
-995562|Geocell
-995568|Veon
+99556|Veon
 995570|Silknet
 995571|Veon
 995574|Veon
@@ -38,4 +36,4 @@
 995597|Veon
 995598|MagtiCom
 995599|MagtiCom
-995790|MagtiCom
+99579|MagtiCom

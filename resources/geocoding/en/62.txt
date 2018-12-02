@@ -25,7 +25,6 @@
 62252|Rangkasbitung
 62253|Pandeglang
 62254|Serang/Merak
-62257|Serang
 62260|Subang
 62261|Sumedang
 62262|Garut
@@ -57,7 +56,6 @@
 62296|Blora
 62297|Karimun Jawa
 62298|Salatiga/Ambarawa
-62299|Nusakambangan
 6231|Surabaya
 62321|Mojokerto/Jombang
 62322|Lamongan
@@ -88,7 +86,6 @@
 62361|Denpasar
 62362|Singaraja
 62363|Amlapura
-62364|Mataram
 62365|Negara/Gilimanuk
 62366|Klungkung/Bangli
 62368|Baturiti
@@ -134,14 +131,10 @@
 62434|Kotamobagu
 62435|Gorontalo
 62438|Bitung
-62443|Marisa
-62445|Buol
-62450|Parigi
+6244|Marisa
 62451|Palu
 62452|Poso
 62453|Tolitoli
-62454|Tinombo
-62455|Kotaraya/Moutong
 62457|Donggala
 62458|Tentena
 62461|Luwuk
@@ -150,10 +143,8 @@
 62464|Ampana
 62465|Kolonedale
 62471|Palopo
-62472|Pitumpanua
 62473|Masamba
 62474|Malili
-62475|Soroako
 62481|Watampone
 62482|Sinjai
 62484|Watansoppeng
@@ -204,7 +195,6 @@
 62627|Subulussalam/Sidikalang/Salak
 62628|Kabanjahe/Sibolangit
 62629|Kutacane
-62630|Teluk Dalam
 62631|Sibolga/Pandan
 62632|Balige
 62633|Tarutung/Dolok Sanggul
@@ -228,7 +218,7 @@
 62657|Bakongan
 62658|Singkil
 62659|Blangpidie
-62702|Tebing Tinggi
+6270|Tebing Tinggi
 62711|Palembang
 62712|Kayu Agung/Tanjung Raja
 62713|Prabumulih/Talang Ubi
@@ -257,7 +247,6 @@
 62737|Arga Makmur/Mukomuko
 62738|Muara Aman
 62739|Bintuhan/Manna
-62740|Mendahara/Muara Sabak
 62741|Jambi City
 62742|Kualatungkal/Tebing Tinggi
 62743|Muara Bulian
@@ -306,7 +295,6 @@
 62924|Tobelo
 62927|Labuha
 62929|Sanana
-62931|Saparua
 62951|Sorong
 62952|Teminabuan
 62955|Bintuni
@@ -321,5 +309,4 @@
 62981|Biak
 62983|Serui
 62984|Nabire
-62985|Nabire
 62986|Manokwari

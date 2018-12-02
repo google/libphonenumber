@@ -31,16 +31,8 @@
 45236|TDC
 45237|TDC
 45238|TDC
-452390|TDC
-452391|TDC
-452392|TDC
-452393|TDC
-452394|TDC
+45239|TDC
 452395|Telia
-452396|TDC
-452397|TDC
-452398|TDC
-452399|TDC
 4524|TDC
 45251|Telenor
 45252|Telenor
@@ -76,25 +68,8 @@
 4530|TDC
 45311|3
 45312|3
-453130|3
-4531310|3
-4531311|3
+45313|3
 4531312|MI Carrier Services
-4531313|3
-4531314|3
-4531315|3
-4531316|3
-4531317|3
-4531318|3
-4531319|3
-453132|3
-453133|3
-453134|3
-453135|3
-453136|3
-453137|3
-453138|3
-453139|3
 45314|3
 45315|3
 45316|3
@@ -124,16 +99,8 @@
 45423|Telia
 45424|BiBoB
 45425|BiBoB
+45426|3
 454260|BiBoB
-454261|3
-454262|3
-454263|3
-454264|3
-454265|3
-454266|3
-454267|3
-454268|3
-454269|3
 454270|BiBoB
 454271|3
 454272|3
@@ -144,16 +111,11 @@
 454277|Telia
 454278|Telia
 454279|Telia
+45428|CBB Mobil
 454280|BiBoB
-454281|CBB Mobil
 454282|Telia
 454283|3
-454284|CBB Mobil
-454285|CBB Mobil
 454286|Telia
-454287|CBB Mobil
-454288|CBB Mobil
-454289|CBB Mobil
 454290|Mundio Mobile
 454291|3
 454292|3
@@ -192,57 +154,25 @@
 45515|TDC
 45516|TDC
 45517|TDC
-455180|TDC
-455181|TDC
-455182|TDC
-455183|TDC
-455184|TDC
-455185|TDC
-455186|TDC
-455187|TDC
+45518|TDC
 455188|Telia
 455189|Telia
 45519|TDC
+45521|Telia
 455210|Firstcom
 455211|3
 455212|3
-455213|Telia
-455214|Telia
-455215|Telia
-455216|Telia
-455217|Telia
-455218|Telia
-455219|Telia
+45522|Telia
 455220|CoolTEL
-455221|Telia
 455222|Lebara Limited
-455223|Telia
-455224|Telia
 455225|CBB Mobil
-455226|Telia
-455227|Telia
-455228|Telia
-455229|Telia
+45523|Telia
 455230|YouSee
-455231|Telia
-455232|Telia
 455233|CBB Mobil
-455234|Telia
-455235|Telia
-455236|Telia
-455237|Telia
-455238|Telia
-455239|Telia
+45524|Telia
 455240|YouSee
-455241|Telia
 455242|CBB Mobil
-455243|Telia
 455244|CBB Mobil
-455245|Telia
-455246|Telia
-455247|Telia
-455248|Telia
-455249|Telia
 455250|YouSee
 455251|Jay.net
 455252|Lebara Limited
@@ -253,96 +183,35 @@
 455257|SimService
 455258|YouSee
 455259|42 Telecom AB
-455260|Lebara Limited
-455261|Lebara Limited
+45526|Lebara Limited
 455262|CBB Mobil
-455263|Lebara Limited
-455264|Lebara Limited
-455265|Lebara Limited
 455266|CBB Mobil
-455267|Lebara Limited
-455268|Lebara Limited
-455269|Lebara Limited
-455270|Lebara Limited
-455271|Lebara Limited
-455272|Lebara Limited
-455273|Lebara Limited
-455274|Lebara Limited
-455275|Lebara Limited
-455276|Lebara Limited
+45527|Lebara Limited
 455277|CBB Mobil
-455278|Lebara Limited
-455279|Lebara Limited
+45528|CBB Mobil
 455280|Lebara Limited
 455281|Lebara Limited
 455282|Lebara Limited
-455283|CBB Mobil
-455284|CBB Mobil
-455285|CBB Mobil
-455286|CBB Mobil
-455287|CBB Mobil
-455288|CBB Mobil
-455289|CBB Mobil
+45529|CBB Mobil
 455290|Lebara Limited
-455291|CBB Mobil
-455292|CBB Mobil
-455293|CBB Mobil
-455294|CBB Mobil
-455295|CBB Mobil
-455296|CBB Mobil
-455297|CBB Mobil
-455298|CBB Mobil
-455299|CBB Mobil
-455310|CBB Mobil
-455311|CBB Mobil
-455312|CBB Mobil
-455313|CBB Mobil
-455314|CBB Mobil
-455315|CBB Mobil
-455316|CBB Mobil
-455317|CBB Mobil
-455318|CBB Mobil
+45531|CBB Mobil
 455319|Telia
 45532|Telia
-455330|Telia
-455331|Telia
-455332|Telia
+45533|Telia
 455333|Lebara Limited
-455334|Telia
-455335|Telia
-455336|Telia
-455337|Telia
-455338|Telia
-455339|Telia
 45534|Telia
 45535|3
 45536|3
 45537|3
 45538|3
-455390|CBB Mobil
-455391|CBB Mobil
-455392|CBB Mobil
-455393|CBB Mobil
-455394|CBB Mobil
-455395|CBB Mobil
-455396|CBB Mobil
-455397|CBB Mobil
+45539|CBB Mobil
 455398|NextGen Mobile Ldt T/A CardBoardFish
-455399|CBB Mobil
 45601|Telia
 45602|Telia
 45603|Telia
 45604|Telia
+45605|3
 456050|Telenor
-456051|3
-456052|3
-456053|3
-456054|3
-456055|3
-456056|3
-456057|3
-456058|3
-456059|3
 45606|CBB Mobil
 45607|CBB Mobil
 45608|CBB Mobil
@@ -359,16 +228,8 @@
 45611|TDC
 45612|TDC
 45613|TDC
-456140|TDC
-456141|TDC
-456142|TDC
-456143|TDC
-456144|TDC
-456145|TDC
+45614|TDC
 456146|Telia
-456147|TDC
-456148|TDC
-456149|TDC
 45615|TDC
 45616|TDC
 45617|TDC
@@ -400,16 +261,9 @@
 457197|Mundio Mobile
 457198|Mundio Mobile
 457199|Firmafon
+45811|CBB Mobil
 458110|ipvision
 458111|Evercall
-458112|CBB Mobil
-458113|CBB Mobil
-458114|CBB Mobil
-458115|CBB Mobil
-458116|CBB Mobil
-458117|CBB Mobil
-458118|CBB Mobil
-458119|CBB Mobil
 45812|CBB Mobil
 458130|CBB Mobil
 458131|CBB Mobil
@@ -431,16 +285,8 @@
 458148|Mundio Mobile
 458149|Mundio Mobile
 45815|CBB Mobil
-458160|CBB Mobil
+45816|CBB Mobil
 458161|YouSee
-458162|CBB Mobil
-458163|CBB Mobil
-458164|CBB Mobil
-458165|CBB Mobil
-458166|CBB Mobil
-458167|CBB Mobil
-458168|CBB Mobil
-458169|CBB Mobil
 458170|CBB Mobil
 458171|YouSee
 458172|Fullrate
@@ -451,16 +297,11 @@
 458177|ipvision
 458178|CBB Mobil
 458179|CBB Mobil
+45818|CBB Mobil
 458180|ipvision
 458181|Maxtel.dk
 458182|Polperro
-458183|CBB Mobil
-458184|CBB Mobil
-458185|CBB Mobil
-458186|CBB Mobil
-458187|CBB Mobil
 458188|ipvision
-458189|CBB Mobil
 458190|Lebara Limited
 458191|Lebara Limited
 458192|Lebara Limited
@@ -491,16 +332,8 @@
 459127|Mundio Mobile
 459128|Mundio Mobile
 459129|Mundio Mobile
+45913|Telenor
 459130|MobiWeb Limited
-459131|Telenor
-459132|Telenor
-459133|Telenor
-459134|Telenor
-459135|Telenor
-459136|Telenor
-459137|Telenor
-459138|Telenor
-459139|Telenor
 45914|Lycamobile Denmark Ltd
 459150|Telenor Connexion AB
 459151|Telenor Connexion AB
@@ -514,33 +347,12 @@
 459159|SimService
 45916|Lycamobile Denmark Ltd
 45917|Lycamobile Denmark Ltd
-459180|Lebara Limited
-459181|Lebara Limited
-459182|Lebara Limited
-459183|Lebara Limited
-459184|Lebara Limited
-459185|Lebara Limited
-459186|Lebara Limited
-459187|Lebara Limited
-459188|Lebara Limited
+45918|Lebara Limited
 459189|Uni-tel
+45919|Lebara Limited
 459190|Interactive digital media GmbH
 459191|Maxtel.dk
-459192|Lebara Limited
-459193|Lebara Limited
-459194|Lebara Limited
-459195|Lebara Limited
-459196|Lebara Limited
-459197|Lebara Limited
-459198|Lebara Limited
-459199|Lebara Limited
-459210|Companymobile
-459211|Companymobile
-459212|Companymobile
-459213|Companymobile
-459214|Companymobile
-459215|Companymobile
-459216|Companymobile
+45921|Companymobile
 459217|Interactive digital media GmbH
 459218|Telenor Connexion AB
 459219|Telenor Connexion AB
@@ -563,16 +375,10 @@
 459249|Telenor Connexion AB
 45925|Telenor Connexion AB
 45926|Telenor Connexion AB
+45927|Telenor Connexion AB
 459270|Ice Danmark
 459271|Naka AG
 459272|Thyfon
-459273|Telenor Connexion AB
-459274|Telenor Connexion AB
-459275|Telenor Connexion AB
-459276|Telenor Connexion AB
-459277|Telenor Connexion AB
-459278|Telenor Connexion AB
-459279|Telenor Connexion AB
 459280|Voxbone
 459282|Flexfone
 459290|Justfone

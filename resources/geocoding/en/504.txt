@@ -32,7 +32,7 @@
 5042245|La Vega, Tegucigalpa
 5042246|La Vega, Tegucigalpa
 5042255|El Hato
-5042407|Roatán, Bay Islands
+504240|Roatán, Bay Islands
 5042423|La Ceiba
 5042424|Sabá
 5042425|Utila, Bay Islands
@@ -53,7 +53,7 @@
 5042451|Sonaguera
 5042452|Coyoles Central
 5042453|Guanaja
-5042516|San Pedro Sula, Cortés
+504251|San Pedro Sula, Cortés
 5042540|San Pedro Sula, Cortés
 5042545|San Pedro Sula, Cortés
 5042550|San Pedro Sula, Cortés
@@ -67,8 +67,8 @@
 5042564|San Pedro Sula, Cortés
 5042565|Chamelecón
 5042566|Jardines Del Valle
-5042574|Búfalo
-5042617|Choloma, Cortés
+504257|Búfalo
+504261|Choloma, Cortés
 5042643|Santa Bárbara
 5042647|Progreso
 5042648|Progreso/Santa Cruz

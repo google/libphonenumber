@@ -270,22 +270,11 @@ function testGetExpectedCostForSharedCountryCallingCode() {
       shortInfo.getExpectedCost(ambiguousTollFreeNumber));
 }
 
-function testGetExampleShortNumber() {
-  assertEquals('8711', shortInfo.getExampleShortNumber(RegionCode.AM));
-  assertEquals('1010', shortInfo.getExampleShortNumber(RegionCode.FR));
+function testExampleShortNumberPresence() {
+  assertNonEmptyString(shortInfo.getExampleShortNumber(RegionCode.AD));
+  assertNonEmptyString(shortInfo.getExampleShortNumber(RegionCode.FR));
   assertEquals('', shortInfo.getExampleShortNumber(RegionCode.UN001));
   assertEquals('', shortInfo.getExampleShortNumber(null));
-}
-
-function testGetExampleShortNumberForCost() {
-  assertEquals('3010', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.TOLL_FREE));
-  assertEquals('1023', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.STANDARD_RATE));
-  assertEquals('42000', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.PREMIUM_RATE));
-  assertEquals('', shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-      i18n.phonenumbers.ShortNumberInfo.ShortNumberCost.UNKNOWN_COST));
 }
 
 function testConnectsToEmergencyNumber_US() {

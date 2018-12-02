@@ -194,22 +194,11 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
         shortInfo.getExpectedCost(ambiguousTollFreeNumber));
   }
 
-  public void testGetExampleShortNumber() {
-    assertEquals("8711", shortInfo.getExampleShortNumber(RegionCode.AM));
-    assertEquals("1010", shortInfo.getExampleShortNumber(RegionCode.FR));
-    assertEquals("", shortInfo.getExampleShortNumber(RegionCode.UN001));
-    assertEquals("", shortInfo.getExampleShortNumber(null));
-  }
-
-  public void testGetExampleShortNumberForCost() {
-    assertEquals("3010", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        ShortNumberInfo.ShortNumberCost.TOLL_FREE));
-    assertEquals("1023", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        ShortNumberInfo.ShortNumberCost.STANDARD_RATE));
-    assertEquals("42000", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        ShortNumberInfo.ShortNumberCost.PREMIUM_RATE));
-    assertEquals("", shortInfo.getExampleShortNumberForCost(RegionCode.FR,
-        ShortNumberInfo.ShortNumberCost.UNKNOWN_COST));
+  public void testExampleShortNumberPresence() {
+    assertFalse(shortInfo.getExampleShortNumber(RegionCode.AD).isEmpty());
+    assertFalse(shortInfo.getExampleShortNumber(RegionCode.FR).isEmpty());
+    assertTrue(shortInfo.getExampleShortNumber(RegionCode.UN001).isEmpty());
+    assertTrue(shortInfo.getExampleShortNumber(null).isEmpty());
   }
 
   public void testConnectsToEmergencyNumber_US() {

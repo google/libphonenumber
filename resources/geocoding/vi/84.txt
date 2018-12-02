@@ -47,13 +47,7 @@
 84237|Thanh Hóa
 84238|Nghệ An
 84239|Hà Tĩnh
-84242|Thủ đô Hà Nội
-84243|Thủ đô Hà Nội
-84244|Thủ đô Hà Nội
-84245|Thủ đô Hà Nội
-84246|Thủ đô Hà Nội
-84247|Thủ đô Hà Nội
-84248|Thủ đô Hà Nội
+8424|Thủ đô Hà Nội
 84251|Đồng Nai
 84252|Bình Thuận
 84254|Bà Rịa-Vũng Tàu
@@ -75,12 +69,7 @@
 84275|Bến Tre
 84276|Tây Ninh
 84277|Đồng Tháp
-84282|Thành phố Hồ Chí Minh
-84283|Thành phố Hồ Chí Minh
-84284|Thành phố Hồ Chí Minh
-84285|Thành phố Hồ Chí Minh
-84286|Thành phố Hồ Chí Minh
-84287|Thành phố Hồ Chí Minh
+8428|Thành phố Hồ Chí Minh
 84290|Cà Mau
 84291|Bạc Liêu
 84292|Thành phố Cần Thơ

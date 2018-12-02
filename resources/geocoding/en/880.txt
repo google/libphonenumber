@@ -49,7 +49,6 @@
 8803172|Chittagong
 8803174|Chittagong
 8803175|Chittagong
-8803181|Chittagong
 88032151|Noakhali
 88032152|Noakhali
 88032153|Noakhali
@@ -188,7 +187,6 @@
 880462674|Nazirpur, Pirojpur
 88046268|Nazirpur, Bagerhat
 88046278|Swarupkhati, Bagerhat
-88046528|Chitalmari, Bagerhat
 88046532|Fakirhat, Bagerhat
 88046533|Fakirhat, Bagerhat
 88046534|Fakirhat, Bagerhat
@@ -408,28 +406,12 @@
 88069268|Tongibari
 88070222|Bheramara, Kushtia
 88070223|Bheramara, Kushtia
-8807153|Kushtia
-8807154|Kushtia
-8807155|Kushtia
-8807161|Kushtia
-8807162|Kushtia
-8807171|Kushtia
-8807175|Daulatpur, Kushtia
-8807176|Kumarkhali, Kushtia
-8807189|Kushtia
 88072175|Rajshahi
 88072176|Rajshahi
 88072177|Rajshahi
 88072180|Rajshahi
 88072181|Rajshahi
 88072186|Rajshahi
-880722556|Godagari, Rajshahi
-88072258|Godagari
-88072278|Paba
-880722856|Putia, Rajshahi
-88072288|Baneswar
-880722956|Tanore, Rajshahi
-88072298|Tanore
 88073162|Pabna
 88073163|Pabna
 88073164|Pabna
@@ -454,39 +436,17 @@
 88074163|Nagoan
 88074169|Santahar, Nagoan
 88074189|Nagoan
-88074258|Manda
-880742675|Mohadevpur, Nagoan
-88074268|Mahadevpur
 88075162|Sirajganj
 88075163|Sirajganj
 88075172|Sirajganj
 88075173|Sirajganj
 88075189|Sirajganj
-880752256|Belkuchi, Sirajganj
-88075228|Belkuchi, Sirajganj
-88075238|Chouhali, Sirajganj
-88075248|Kamarkhand, Sirajganj
-880752556|Kazipur, Sirajganj
-88075258|Kazipur, Sirajganj
-880752656|Raiganj, Sirajganj
-88075268|Raigonj, Sirajganj
-88075278|Shajatpur, Sirajganj
-880752856|Tarash, Sirajganj
-88075288|Tarash, Sirajganj
-880752956|Ullapara, Sirajganj
-88075298|Ullapara, Sirajganj
 88076162|Chuadanga
 88076163|Chuadanga
 88076164|Chuadanga
 88076189|Chuadanga
 88076222|Alamdanga, Chuadanga
 88076223|Alamdanga, Chuadanga
-88077161|Natore
-88077162|Natore
-88077166|Natore
-88077167|Natore
-88077175|Lalpur, Natore
-88077189|Natore
 880772474|Gurudashpur, Natore
 88078155|Chapai Nobabganj
 88078156|Chapai Nobabganj
@@ -496,11 +456,8 @@
 88078174|Rahanpur, Chapai Nobabganj
 88078175|Shibganj, Chapai Nobabganj
 88078189|Chapai Nobabganj
-88078238|Rohanpur
-88078258|Shibgonj
 88079162|Meherpur
 88079163|Meherpur
-880792374|Mujibnagar, Meherpur
 880802056|Chauddagram, Comilla
 88080208|Chauddagram, Comilla
 880802256|Chandina, Comilla
@@ -534,17 +491,6 @@
 88082171|Sylhet MEA
 88082172|Sylhet MEA
 88082176|Sylhet MEA
-88082181|Sylhet MEA
-88082208|Kanaighat
-88082228|Balagonj
-88082238|Bianibazar
-88082248|Biswanath
-880822556|Companiganj, Sylhet
-88082268|Fenchugonj
-88082278|Golapgonj
-880822956|Jaintapur, Sylhet
-88082298|Jaintapur
-880823256|Jokiganj, Sylhet
 88083152|Habiganj
 88083153|Habiganj
 88083161|Habiganj
@@ -554,10 +500,6 @@
 88083278|Madabpur
 880832856|Nabiganj, Habiganj
 88083288|Nabigonj
-88083326|Sayestaganj, Habiganj
-88083327|Sayestaganj, Habiganj
-88083328|Sayestaganj, Habiganj
-88083329|Sayestaganj, Habiganj
 88084163|Chandpur
 88084164|Chandpur
 88084165|Chandpur
@@ -630,8 +572,6 @@
 880902756|Iswarganj, Mymensingh
 88090278|Ishwargonj
 88090288|Muktagacha
-880903256|Trisal, Mymensingh
-880903356|Phulpur, Mymensingh
 8809151|Mymensingh
 8809152|Mymensingh
 8809153|Mymensingh
@@ -660,9 +600,6 @@
 880922856|Modhupur, Tangail
 88092288|Modhupur
 88092298|Mirzapur
-880923256|Shakhipur, Tangail
-88092328|Shakhipur
-880923373|Nagarpur, Tangail
 88093161|Sherpur
 88093173|Nalitabari, Sherpur
 88093175|Nakla, Sherpur
@@ -687,10 +624,6 @@
 88095161|Netrokona
 88095162|Netrokona
 88095189|Netrokona
-880952456|Mohanganj, Netrokona
-880952556|Durgapur, Netrokona
-880952856|Kendua, Netrokona
-880952956|Madan, Netrokona
 88098162|Jamalpur
 88098163|Jamalpur
 88098164|Jamalpur
@@ -698,6 +631,3 @@
 88098174|Islampur, Jamalpur
 88098175|Dewanganj, Jamalpur
 88098189|Jamalpur
-88098248|Islampur
-880982756|Sarishabari, Jamalpur
-88098278|Sarishabari

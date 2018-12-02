@@ -63,11 +63,4 @@
 35886|Oulu
 35887|Oulu
 35888|Oulu
-35891|Helsinki
-35892|Helsinki
-35893|Helsinki
-35894|Helsinki
-35895|Helsinki
-35896|Helsinki
-35897|Helsinki
-35898|Helsinki
+3589|Helsinki

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.9.13-SNAPSHOT</version>
+  <version>8.10.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <url>https://github.com/googlei18n/libphonenumber/</url>
 
@@ -168,6 +168,7 @@
           <serverId>sonatype-nexus-staging</serverId>
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
           <stagingProfileId>23ed8fbc71e875</stagingProfileId>
+	  <skipStagingRepositoryClose>true</skipStagingRepositoryClose>
         </configuration>
       </plugin>
     </plugins>

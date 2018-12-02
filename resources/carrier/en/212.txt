@@ -18,25 +18,11 @@
 # This last file refers to Méditel as Medi Telecom, Maroc Telecom as Itissalat
 # Al-Maghrib and Inwi as WANA Corporate (its old name, according to wikipedia).
 
-212600|Inwi
-212601|Inwi
-212602|Inwi
-212603|Inwi
-212604|Inwi
-212605|Inwi
-212606|Inwi
-212607|Inwi
-212608|Inwi
-212609|Inwi
-212610|Maroc Telecom
-212611|Maroc Telecom
+21260|Inwi
+21261|Maroc Telecom
 212612|Méditel
-212613|Maroc Telecom
 212614|Méditel
-212615|Maroc Telecom
-212616|Maroc Telecom
 212617|Méditel
-212618|Maroc Telecom
 212619|Méditel
 212620|Méditel
 212621|Méditel
@@ -68,16 +54,9 @@
 212647|Inwi
 212648|Maroc Telecom
 212649|Méditel
-212650|Maroc Telecom
-212651|Maroc Telecom
-212652|Maroc Telecom
-212653|Maroc Telecom
-212654|Maroc Telecom
-212655|Maroc Telecom
+21265|Maroc Telecom
 212656|Méditel
 212657|Méditel
-212658|Maroc Telecom
-212659|Maroc Telecom
 212660|Méditel
 212661|Maroc Telecom
 212662|Maroc Telecom
@@ -88,15 +67,9 @@
 212667|Maroc Telecom
 212668|Maroc Telecom
 212669|Méditel
-212670|Maroc Telecom
-212671|Maroc Telecom
-212672|Maroc Telecom
-212673|Maroc Telecom
+21267|Maroc Telecom
 212674|Méditel
 212675|Méditel
-212676|Maroc Telecom
-212677|Maroc Telecom
-212678|Maroc Telecom
 212679|Méditel
 212680|Inwi
 212681|Inwi
@@ -116,13 +89,6 @@
 212697|Maroc Telecom
 212698|Inwi
 212699|Inwi
-212700|Inwi
-212706|Inwi
-212707|Inwi
-212761|Maroc Telecom
-212762|Maroc Telecom
-212766|Maroc Telecom
-212767|Maroc Telecom
-212770|Méditel
-212771|Méditel
-212777|Méditel
+21270|Inwi
+21276|Maroc Telecom
+21277|Méditel
