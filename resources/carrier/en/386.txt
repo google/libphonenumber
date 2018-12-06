@@ -21,12 +21,12 @@
 38651|Telekom Slovenije
 38664|T-2
 386651|SŽ - Infrastruktura
-3866555|Telekom Slovenije
-3866560|Telekom Slovenije
-3866570|Novatel
-386681|A1
-386686|A1
-386689|A1
-38669|HoT
+386655|Telekom Slovenije
+386656|Telekom Slovenije
+386657|Novatel
+38668|A1
+386691|Compatel
+386696|HoT
+386699|HoT
 38670|Telemach
 38671|Telekom Slovenije
