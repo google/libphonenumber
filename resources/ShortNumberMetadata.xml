@@ -6337,6 +6337,7 @@
       <!-- As per telenor.in doc supporting only specific ones with length less than 5 digits.
            Simplified the ranges when short code is more than 5 digits. Not adding these short codes
            to respective categories because of maintainability. -->
+      <!-- 5902XXXX short codes were supported based on user report. -->
       <shortCode>
         <possibleLengths national="[3-9]"/>
         <exampleNumber>100</exampleNumber>
@@ -6531,7 +6532,10 @@
             )|
             9(?:
               (?:
-                00|
+                0(?:
+                  0|
+                  2\d{3}
+                )|
                 55|
                 77|
                 88
@@ -8742,14 +8746,34 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="2,3"/>
-        <exampleNumber>117</exampleNumber>
-        <nationalNumberPattern>11?[78]</nationalNumberPattern>
+        <exampleNumber>17</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[78]|
+            [78]
+          )
+        </nationalNumberPattern>
       </shortCode>
+      <tollFree>
+        <possibleLengths national="2,3"/>
+        <exampleNumber>17</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[78]|
+            [78]
+          )
+        </nationalNumberPattern>
+      </tollFree>
       <!-- http://www.commerce.gov.mg/index.php/infos-services -->
       <emergency>
         <possibleLengths national="2,3"/>
-        <exampleNumber>117</exampleNumber>
-        <nationalNumberPattern>11?[78]</nationalNumberPattern>
+        <exampleNumber>17</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[78]|
+            [78]
+          )
+        </nationalNumberPattern>
       </emergency>
     </territory>
 
@@ -9358,36 +9382,52 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
-        <exampleNumber>030</exampleNumber>
+        <exampleNumber>010</exampleNumber>
         <nationalNumberPattern>
-          0(?:
-            [249]0|
-            3[01]|
-            5[015]|
-            6[01568]|
-            7[0-578]|
-            8[089]
-          )|
+          0[1-9]\d|
           53053|
           7766|
           911
         </nationalNumberPattern>
       </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>060</exampleNumber>
+        <nationalNumberPattern>
+          0(?:
+            6[0568]|
+            80
+          )|
+          911
+        </nationalNumberPattern>
+      </tollFree>
       <!-- We have received information that 7766 is a premium rate number used to buy various
            types of services or media. -->
       <premiumRate>
         <possibleLengths national="4,5"/>
-        <exampleNumber>7766</exampleNumber>
+        <exampleNumber>7760</exampleNumber>
         <nationalNumberPattern>
-          53053|
-          7766
+          (?:
+            530\d|
+            776
+          )\d
         </nationalNumberPattern>
       </premiumRate>
+      <carrierSpecific>
+        <possibleLengths national="3"/>
+        <exampleNumber>020</exampleNumber>
+        <nationalNumberPattern>
+          0(?:
+            [249]0|
+            [35][01]
+          )
+        </nationalNumberPattern>
+      </carrierSpecific>
       <!-- http://en.wikipedia.org/wiki/%2B52#Other_service_numbers -->
       <!-- http://en.wikipedia.org/wiki/Emergency_telephone_number -->
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>066</exampleNumber>
+        <exampleNumber>060</exampleNumber>
         <nationalNumberPattern>
           0(?:
             6[0568]|
@@ -11368,36 +11408,63 @@
     <!-- http://www.itu.int/oth/T02020000BE/en -->
     <territory id="SI">
       <generalDesc>
-        <nationalNumberPattern>
-          1\d\d(?:
-            \d{3}
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11(?:
-            [23]|
-            6(?:
-              000|
+          1(?:
+            1(?:
+              00[146]|
+              [23]|
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8(?:
+                [08]|
+                99
+              )
+            )|
+            9(?:
+              0(?:
+                59|
+                8[09]
+              )|
               1(?:
-                11|
-                23
+                0[12]|
+                16
+              )|
+              5|
+              70|
+              8(?:
+                1[09]|
+                7
+              )|
+              9(?:
+                00|
+                [149]
               )
             )
           )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           11(?:
-            [23]|
-            6\d{3}
-          )
+            (?:
+              [08]|
+              6\d
+            )\d\d|
+            [23]
+          )|
+          118\d
         </nationalNumberPattern>
       </tollFree>
       <emergency>
@@ -11406,9 +11473,15 @@
         <nationalNumberPattern>11[23]</nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="[4-6]"/>
+        <exampleNumber>1180</exampleNumber>
+        <nationalNumberPattern>
+          11(?:
+            [08]|
+            6\d
+          )\d\d|
+          118\d
+        </nationalNumberPattern>
       </expandedEmergency>
     </territory>
 

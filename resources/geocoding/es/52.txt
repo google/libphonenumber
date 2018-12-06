@@ -64,7 +64,6 @@
 52315|Jalisco
 52316|Jalisco
 52317|Autlán/El Chante, JAL
-52318|Colima/Jalisco
 52319|Nayarit
 52321|El Grullo/El Limon, JAL
 52322|Jalisco
@@ -93,15 +92,9 @@
 52356|Tanhuato/Yurécuaro, MICH
 52357|Jalisco
 52358|Tamazula/Zapotiltic, JAL
-52371|Jalisco
-52372|Jalisco
-52373|Jalisco
-52374|Jalisco
+5237|Jalisco
 52375|Ameca, JAL
-52376|Jalisco
 52377|Cocula/Estipac, JAL
-52378|Jalisco
-52379|Jalisco/Michoacán
 52381|Cojumatlan/San Jose de Gracia, MICH
 52382|Jalisco
 52383|Michoacán
@@ -175,14 +168,8 @@
 52476|San Francisco del Rincón, GTO
 52477|León, GTO
 52478|Calera Victor Rosales, ZAC
+5248|San Luis Potosí
 52481|Ciudad Valles, SLP
-52482|San Luis Potosí
-52483|San Luis Potosí
-52485|San Luis Potosí
-52486|San Luis Potosí
-52487|San Luis Potosí
-52488|San Luis Potosí
-52489|San Luis Potosí
 52492|Zacatecas
 52493|Fresnillo, ZAC
 52494|Jerez de García Salinas, ZAC
@@ -191,10 +178,7 @@
 52498|Zacatecas
 52499|Jalisco/Zacatecas
 5255|Ciudad de México, CDMX
-52586|Tlalmanalco, MEX
-52587|Amecameca, MEX
-52588|Estado de Mexico
-52589|Juchitepec/Ozumba, MEX
+5258|Estado de Mexico
 52591|Estado de Mexico
 52592|Estado de Mexico
 52593|Estado de Mexico
@@ -244,7 +228,6 @@
 52661|Primo Tapia/Rosarito, BCN
 52662|Sonora
 52665|Tecate, BCN
-52666|Tijuana, BCN
 52667|Sinaloa
 52668|Sinaloa
 52669|Sinaloa
@@ -257,11 +240,7 @@
 52677|Durango
 52686|Baja California
 52687|Sinaloa
-52694|Sinaloa
-52695|Sinaloa
-52696|Sinaloa
-52697|Sinaloa
-52698|Sinaloa
+5269|Sinaloa
 52711|México/Michoacán
 52712|Estado de Mexico
 52713|Santiago Tianguistenco, MEX
@@ -299,7 +278,6 @@
 52748|Hidalgo
 52749|Calpulalpan, TLAX
 52751|Morelos
-52752|Morelos
 52753|Michoacán
 52754|Guerrero
 52755|Ixtapa/Zihuatanejo, GRO
@@ -340,7 +318,6 @@
 52824|Sabinas Hidalgo, NL
 52825|Nuevo León
 52826|Nuevo León
-52827|Santiago, NL
 52828|Cadereyta, NL
 52829|Nuevo León
 52831|Ciudad Mante/Los Aztecas, TAMPS
@@ -388,14 +365,9 @@
 52937|Cárdenas, TAB
 52938|Ciudad del Carmen, CAMP
 5295|Oaxaca
-52961|Chiapas
-52962|Chiapas
-52963|Chiapas
-52964|Chiapas
-52965|Chiapas
+5296|Chiapas
 52966|Arriaga/Tonalá, CHIS
 52967|San Cristóbal de las Casas, CHIS
-52968|Chiapas
 52969|Flamboyanes/Yucalpeten, YUC
 5297|Oaxaca
 52981|Campeche, CAMP
