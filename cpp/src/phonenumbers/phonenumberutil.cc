@@ -1426,7 +1426,7 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
       // We assume that the first-group symbol will never be _before_ the
       // national prefix.
       if (!candidate_national_prefix_rule.empty()) {
-	size_t index_of_first_group = candidate_national_prefix_rule.find("$1");
+        size_t index_of_first_group = candidate_national_prefix_rule.find("$1");
         if (index_of_first_group == string::npos) {
           LOG(ERROR) << "First group missing in national prefix rule: "
               << candidate_national_prefix_rule;
