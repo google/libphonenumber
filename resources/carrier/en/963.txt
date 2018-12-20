@@ -14,7 +14,7 @@
 
 # Taken from https://en.wikipedia.org/wiki/Telephone_numbers_in_Syria
 
-963922|Syriatel
+96392|Syriatel
 96393|Syriatel
 96394|MTN
 963950|MTN

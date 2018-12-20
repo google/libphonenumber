@@ -20,7 +20,6 @@
 4731|Buskerud
 4732|Buskerud
 4733|Vestfold
-4734|Vestfold
 4735|Telemark
 4737|Aust-Agder
 4738|Vest-Agder
@@ -30,7 +29,6 @@
 4755|Hordaland
 4756|Hordaland
 4757|Sogn og Fjordane
-4760|Oppland
 4761|Oppland
 4762|Hedmark
 4763|Akershus

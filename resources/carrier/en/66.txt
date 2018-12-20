@@ -15,6 +15,8 @@
 # http://en.wikipedia.org/wiki/+66
 
 6661|AIS
+6662|AIS
+6663|AIS
 6664|Penguin SIM
 6665|AIS
 6666|DTAC
@@ -41,5 +43,23 @@
 6689|DTAC
 6690|DTAC
 66901|AIS
-66909|True Move
-6691|DTAC
+66909|True Move/AIS
+6691|True Move
+6692|AIS
+6693|True Move/AIS
+66931|AIS
+66935|AIS
+66936|AIS
+6694|True Move/DTAC
+66940|True Move
+66941|True Move
+669422|True Move
+669423|True Move
+6695|True Move/DTAC/AIS
+66956|True Move
+66958|True Move
+6696|True Move
+6697|True Move/AIS
+6698|AIS
+6699|True Move/AIS
+66995|True Move

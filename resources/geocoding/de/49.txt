@@ -2351,7 +2351,7 @@
 494643|Gelting Angeln
 494644|Karby
 494646|Mohrkirch
-494651|Sylt
+49465|Sylt
 494661|Niebüll
 494662|Leck
 494663|Süderlügum
@@ -4039,7 +4039,7 @@
 497585|Ostrach
 497586|Herbertingen
 497587|Hosskirch
-497602|Oberried Breisgau
+49760|Oberried Breisgau
 49761|Freiburg im Breisgau
 497620|Schopfheim-Gersbach
 497621|Lörrach

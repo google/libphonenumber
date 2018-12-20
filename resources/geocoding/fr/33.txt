@@ -340,16 +340,9 @@
 3314193|Vincennes
 3314194|Créteil
 3314195|Fontenay-sous-Bois
-3314200|Paris
-3314201|Paris
-3314202|Paris
-3314203|Paris
+331420|Paris
 3314204|Suresnes
-3314205|Paris
-3314206|Paris
 3314207|Créteil
-3314208|Paris
-3314209|Paris
 3314211|Villejuif
 3314212|Paris
 3314215|Paris
@@ -373,16 +366,8 @@
 3314246|Paris
 3314247|Paris
 3314249|Paris
-3314250|Paris
-3314251|Paris
-3314252|Paris
+331425|Paris
 3314253|Montrouge
-3314254|Paris
-3314255|Paris
-3314256|Paris
-3314257|Paris
-3314258|Paris
-3314259|Paris
 331426|Paris
 3314270|Clichy
 3314271|Paris
@@ -393,16 +378,9 @@
 3314277|Paris
 3314278|Paris
 3314279|Paris
-3314280|Paris
-3314281|Paris
-3314282|Paris
+331428|Paris
 3314283|Saint-Maur-des-Fossés
-3314284|Paris
-3314285|Paris
-3314286|Paris
 3314287|Montreuil
-3314288|Paris
-3314289|Paris
 331429|Paris
 3314300|Neuilly-Plaisance
 3314301|Gagny
@@ -440,16 +418,11 @@
 3314338|Paris
 3314339|Créteil
 331434|Paris
+331435|Paris
 3314350|Sceaux
 3314351|Montfermeil
 3314352|Aubervilliers
 3314353|Alfortville
-3314354|Paris
-3314355|Paris
-3314356|Paris
-3314357|Paris
-3314358|Paris
-3314359|Paris
 3314360|Bagnolet
 3314361|Paris
 3314362|Bagnolet
@@ -487,15 +460,9 @@
 3314398|Vincennes
 3314399|Créteil
 33144|Paris
-3314500|Paris
-3314501|Paris
-3314502|Paris
-3314503|Paris
-3314504|Paris
-3314505|Paris
+331450|Paris
 3314506|Suresnes
 3314507|Meudon
-3314508|Paris
 3314509|Montfermeil
 3314510|Boissy-Saint-Léger
 3314511|Saint-Maur-des-Fossés
@@ -505,36 +472,17 @@
 3314516|Champigny-sur-Marne
 3314517|Créteil
 3314518|Maisons-Alfort
-3314520|Paris
+331452|Paris
 3314521|Ivry-sur-Seine
-3314522|Paris
-3314523|Paris
-3314524|Paris
-3314525|Paris
-3314526|Paris
-3314527|Paris
 3314528|Rosny-Sous-Bois
 3314529|Issy-les-Moulineaux
-3314530|Paris
-3314531|Paris
-3314532|Paris
-3314533|Paris
+331453|Paris
 3314534|Meudon
-3314535|Paris
 3314536|Bagneux
 3314537|Clamart
-3314538|Paris
-3314539|Paris
-3314540|Paris
-3314541|Paris
-3314542|Paris
-3314543|Paris
-3314544|Paris
-3314545|Paris
+331454|Paris
 3314546|Cachan
 3314547|Cachan
-3314548|Paris
-3314549|Paris
 331455|Paris
 3314560|Rungis Complexe
 3314561|Paris
@@ -544,16 +492,9 @@
 3314566|Paris
 3314567|Paris
 3314569|Boissy-Saint-Léger
-3314570|Paris
-3314571|Paris
-3314572|Paris
+331457|Paris
 3314573|Vitry-sur-Seine
-3314574|Paris
-3314575|Paris
 3314576|Chennevières-sur-Marne
-3314577|Paris
-3314578|Paris
-3314579|Paris
 331458|Paris
 3314590|Sucy-en-Brie
 3314591|Le Blanc Mesnil
@@ -728,14 +669,8 @@
 3314797|Paris
 3314798|Gennevilliers
 3314799|Gennevilliers
-3314800|Paris
-3314801|Paris
+331480|Paris
 3314802|Bondy
-3314803|Paris
-3314804|Paris
-3314805|Paris
-3314806|Paris
-3314807|Paris
 3314808|Vincennes
 3314809|Saint-Denis
 3314811|Aubervilliers
@@ -898,16 +833,8 @@
 3315357|Paris
 3315358|Paris
 3315359|Paris
-3315360|Paris
-3315361|Paris
-3315362|Paris
-3315363|Paris
-3315364|Paris
-3315365|Paris
+331536|Paris
 3315366|Vincennes
-3315367|Paris
-3315368|Paris
-3315369|Paris
 331537|Paris
 331538|Paris
 331539|Paris
@@ -1451,16 +1378,8 @@
 3323536|Canteleu
 3323537|Duclair
 3323538|Lillebonne
+332354|Le Havre
 3323540|Dieppe
-3323541|Le Havre
-3323542|Le Havre
-3323543|Le Havre
-3323544|Le Havre
-3323545|Le Havre
-3323546|Le Havre
-3323547|Le Havre
-3323548|Le Havre
-3323549|Le Havre
 3323550|Eu
 3323551|Le Havre
 3323552|Rouen
@@ -2181,16 +2100,9 @@
 3329837|Plabennec
 3329838|Ploudalmézeau
 3329839|Bannalec
+332984|Brest
 3329840|Plougastel-Daoulas
-3329841|Brest
-3329842|Brest
-3329843|Brest
-3329844|Brest
-3329845|Brest
-3329846|Brest
-3329847|Brest
 3329848|Ploudalmézeau
-3329849|Brest
 3329850|Concarneau
 3329851|Fouesnant
 3329852|Quimper
@@ -2851,16 +2763,11 @@
 3338046|Quetigny
 3338048|Quetigny
 3338049|Dijon
-3338050|Dijon
+333805|Dijon
 3338051|Chenôve
 3338052|Chenôve
-3338053|Dijon
-3338054|Dijon
-3338055|Dijon
 3338056|Fontaine-lès-Dijon
 3338057|Talant
-3338058|Dijon
-3338059|Dijon
 3338060|Dijon
 3338061|Nuits-Saint-Georges
 3338062|Nuits-Saint-Georges
@@ -3138,16 +3045,8 @@
 3338727|Sarreguemines
 3338728|Sarreguemines
 3338729|Saint-Avold
-3338730|Metz
-3338731|Metz
-3338732|Metz
-3338733|Metz
-3338734|Metz
-3338735|Metz
-3338736|Metz
-3338737|Metz
+333873|Metz
 3338738|Augny
-3338739|Metz
 3338750|Metz
 3338751|Maizières-lès-Metz
 3338753|Amanvillers
@@ -3203,26 +3102,11 @@
 3338816|Strasbourg
 3338818|Schiltigheim
 3338819|Schiltigheim
+333882|Strasbourg
 3338820|Souffelweyersheim
-3338821|Strasbourg
-3338822|Strasbourg
-3338823|Strasbourg
-3338824|Strasbourg
-3338825|Strasbourg
-3338826|Strasbourg
-3338827|Strasbourg
-3338828|Strasbourg
-3338829|Strasbourg
-3338830|Strasbourg
-3338831|Strasbourg
-3338832|Strasbourg
+333883|Strasbourg
 3338833|Schiltigheim
-3338834|Strasbourg
-3338835|Strasbourg
-3338836|Strasbourg
-3338837|Strasbourg
 3338838|Molsheim
-3338839|Strasbourg
 333884|Strasbourg
 3338851|Brumath
 3338852|Strasbourg
@@ -3478,16 +3362,9 @@
 3344287|Rognac
 3344288|Marignane
 3344289|Vitrolles
-3344290|Aix-en-Provence
-3344291|Aix-en-Provence
-3344292|Aix-en-Provence
-3344293|Aix-en-Provence
+334429|Aix-en-Provence
 3344294|Bouc-Bel-air
-3344295|Aix-en-Provence
-3344296|Aix-en-Provence
-3344297|Aix-en-Provence
 3344298|La Ciotat
-3344299|Aix-en-Provence
 3345001|Rumilly
 3345002|Thônes
 3345003|La Roche sur Foron
@@ -3566,16 +3443,11 @@
 3346603|Uzès
 3346604|Nîmes
 3346605|Nîmes
+334662|Nîmes
 3346620|Bouillargues
-3346621|Nîmes
 3346622|Uzès
-3346623|Nîmes
 3346624|Saint-Ambroix
 3346625|Bessèges
-3346626|Nîmes
-3346627|Nîmes
-3346628|Nîmes
-3346629|Nîmes
 3346630|Alès
 3346631|Saint-Chély-d'Apcher
 3346632|Marvejols
@@ -3670,16 +3542,9 @@
 3346756|La Grande Motte
 3346757|Gignac
 3346758|Montpellier
-3346760|Montpellier
-3346761|Montpellier
+334676|Montpellier
 3346762|Béziers
-3346763|Montpellier
-3346764|Montpellier
-3346765|Montpellier
-3346766|Montpellier
-3346767|Montpellier
 3346768|Palavas-les-Flots
-3346769|Montpellier
 3346771|Lunel
 3346772|Montpellier
 3346773|Ganges
@@ -3732,13 +3597,8 @@
 3346847|Carcassonne
 3346848|Sigean
 3346849|Gruissan
-3346850|Perpignan
-3346851|Perpignan
-3346852|Perpignan
+334685|Perpignan
 3346853|Thuir
-3346854|Perpignan
-3346855|Perpignan
-3346856|Perpignan
 3346857|Millas
 3346858|Narbonne
 3346859|Saint-Paul-de-Fenouillet
@@ -3876,15 +3736,7 @@
 3347267|Saint-Genis-Laval
 3347268|Lyon
 3347269|Lyon
-3347270|Lyon
-3347271|Lyon
-3347272|Lyon
-3347273|Lyon
-3347274|Lyon
-3347275|Lyon
-3347276|Lyon
-3347277|Lyon
-3347278|Lyon
+334727|Lyon
 3347279|Saint-Priest
 3347280|Lyon
 3347281|Bron
@@ -4261,15 +4113,9 @@
 3347867|Saint-Fons
 3347868|Villeurbanne
 3347869|Lyon
+334787|Lyon
 3347870|Saint-Fons
-3347871|Lyon
-3347872|Lyon
 3347873|Givors
-3347874|Lyon
-3347875|Lyon
-3347876|Lyon
-3347877|Lyon
-3347878|Lyon
 3347879|Vaulx-en-Velin
 3347880|Vaulx-en-Velin
 3347883|Lyon
@@ -4433,16 +4279,8 @@
 3349077|Cucuron
 3349078|Cavaillon
 3349079|Pertuis
-3349080|Avignon
-3349081|Avignon
-3349082|Avignon
+334908|Avignon
 3349083|Sorgues
-3349084|Avignon
-3349085|Avignon
-3349086|Avignon
-3349087|Avignon
-3349088|Avignon
-3349089|Avignon
 3349090|Châteaurenard
 3349091|Tarascon
 3349092|Saint-Rémy-de-Provence
@@ -4465,16 +4303,8 @@
 334913|Marseille
 334914|Marseille
 334915|Marseille
-3349160|Marseille
-3349161|Marseille
-3349162|Marseille
-3349163|Marseille
-3349164|Marseille
-3349165|Marseille
-3349166|Marseille
-3349167|Marseille
+334916|Marseille
 3349168|Allauch
-3349169|Marseille
 334917|Marseille
 334918|Marseille
 334919|Marseille
@@ -5149,16 +4979,9 @@
 3355687|Villenave-d'Ornon
 3355688|Salles
 3355689|Gradignan
-3355690|Bordeaux
-3355691|Bordeaux
-3355692|Bordeaux
-3355693|Bordeaux
-3355694|Bordeaux
+335569|Bordeaux
 3355695|Blanquefort
-3355696|Bordeaux
 3355697|Mérignac
-3355698|Bordeaux
-3355699|Bordeaux
 3355701|Bordeaux
 3355710|Bordeaux
 3355712|Gradignan
@@ -5335,16 +5158,10 @@
 3356136|Toulouse
 3356139|Saint-Orens-de-Gameville
 335614|Toulouse
+335615|Toulouse
 3356150|Auterive
 3356151|Muret
-3356152|Toulouse
-3356153|Toulouse
-3356154|Toulouse
-3356155|Toulouse
 3356156|Muret
-3356157|Toulouse
-3356158|Toulouse
-3356159|Toulouse
 3356160|Pamiers
 3356161|Toulouse
 3356162|Toulouse
@@ -5581,13 +5398,8 @@
 3359667|Gros-Morne
 3359668|Rivière-Salée
 3359669|Sainte Marie
-3359670|Fort de France
-3359671|Fort de France
-3359672|Fort de France
-3359673|Fort de France
+335967|Fort de France
 3359674|Le Vauclin
-3359675|Fort de France
 3359676|Sainte-Anne
 3359677|Ducos
 3359678|Basse-Pointe
-3359679|Fort de France

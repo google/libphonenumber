@@ -25,8 +25,7 @@
 2232076|Bamako
 2232077|Bamako
 2232078|Bamako
-2232126|Koulikoro
-2232127|Koulikoro
+223212|Koulikoro
 223214|Mopti
 223215|Kayes
 223216|Sikasso

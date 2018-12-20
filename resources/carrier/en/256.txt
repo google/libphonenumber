@@ -16,8 +16,8 @@
 25671|UTL
 256720|Smile
 256723|Afrimax
-2567260|Tangerine
-256730|K2
+256726|Tangerine
+25673|K2
 25674|Sure Telecom
 25675|Airtel
 25677|MTN
