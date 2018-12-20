@@ -833,7 +833,11 @@ public class PhoneNumberUtil {
    * to split a national significant number into NDC and subscriber number. The NDC of a phone
    * number is normally the first group of digit(s) right after the country calling code when the
    * number is formatted in the international format, if there is a subscriber number part that
-   * follows. An example of how this could be used:
+   * follows.
+   *
+   * N.B.: similar to an area code, not all numbers have an NDC!
+   *
+   * An example of how this could be used:
    *
    * <pre>{@code
    * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
@@ -859,7 +863,7 @@ public class PhoneNumberUtil {
    * @param number  the PhoneNumber object for which clients
    *     want to know the length of the NDC
    * @return  the length of NDC of the PhoneNumber object
-   *     passed in
+   *     passed in, which could be zero
    */
   public int getLengthOfNationalDestinationCode(PhoneNumber number) {
     PhoneNumber copiedProto;

@@ -108,12 +108,12 @@
           <leadingDigits>1[02-9]|[23]</leadingDigits>
           <format>$1 $2-$3</format>
         </numberFormat>
-        <numberFormat pattern="(9)(11)(\d{4})(\d{4})">
+        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})">
           <leadingDigits>911</leadingDigits>
           <format>$2 15 $3-$4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <numberFormat pattern="(9)(\d{4})(\d{2})(\d{4})"
+        <numberFormat pattern="(\d)(\d{4})(\d{2})(\d{4})"
           carrierCodeFormattingRule="$NP$FG $CC">
           <leadingDigits>9(?:1[02-9]|[23])</leadingDigits>
           <format>$2 $3-$4</format>
@@ -160,7 +160,7 @@
           <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{1})(\d{4})(\d{4})">
+        <numberFormat pattern="(\d)(\d{4})(\d{4})">
           <leadingDigits>[2-478]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -405,12 +405,12 @@
         <!-- Extra fictional pattern for shorter numbers with the same prefixes as the following
              pattern, to illustrate the problem the AYTF has with real patterns that share this
              property. -->
-        <numberFormat pattern="([4-9]\d)(\d{2})">
+        <numberFormat pattern="(\d{2})(\d{2})">
           <leadingDigits>[4-9]</leadingDigits>
           <leadingDigits>[4-6]|[7-9](?:\d[1-9]|[1-9]\d)</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="([4-9]\d{3})(\d{2,7})">
+        <numberFormat pattern="(\d{4})(\d{2,7})">
           <leadingDigits>[4-9]</leadingDigits>
           <leadingDigits>[4-6]|[7-9](?:\d[1-9]|[1-9]\d)</leadingDigits>
           <format>$1 $2</format>
@@ -812,12 +812,12 @@
           <leadingDigits>[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(1)(\d{2})(\d{4})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d)(\d{2})(\d{4})(\d{4})">
           <leadingDigits>1(?:33|55|81)</leadingDigits>
           <format>045 $2 $3 $4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(1)(\d{3})(\d{3})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d)(\d{3})(\d{3})(\d{4})">
           <leadingDigits>1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])</leadingDigits>
           <format>045 $2 $3 $4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
@@ -929,7 +929,7 @@
     <territory id="RE" countryCode="262" leadingDigits="262|6(?:9[23]|47)|8"
                internationalPrefix="00" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
-        <numberFormat pattern="([268]\d{2})(\d{2})(\d{2})(\d{2})">
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -1111,7 +1111,7 @@
     <territory id="UZ" countryCode="998" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="$NP $FG">
       <availableFormats>
-        <numberFormat pattern="([679]\d)(\d{3})(\d{2})(\d{2})">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
           <leadingDigits>[679]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>

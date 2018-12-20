@@ -241,9 +241,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("0(?:(11|343|3715)15)?", metadata.getNationalPrefixForParsing());
     assertEquals("9$1", metadata.getNationalPrefixTransformRule());
     assertEquals("$2 15 $3-$4", metadata.getNumberFormat(2).getFormat());
-    assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
+    assertEquals("(\\d)(\\d{4})(\\d{2})(\\d{4})",
                  metadata.getNumberFormat(3).getPattern());
-    assertEquals("(9)(\\d{4})(\\d{2})(\\d{4})",
+    assertEquals("(\\d)(\\d{4})(\\d{2})(\\d{4})",
                  metadata.getIntlNumberFormat(3).getPattern());
     assertEquals("$1 $2 $3 $4", metadata.getIntlNumberFormat(3).getFormat());
   }
