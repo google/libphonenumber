@@ -295,9 +295,9 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadARMetadata) {
   EXPECT_EQ("9$1", metadata->national_prefix_transform_rule());
   ASSERT_EQ(5, metadata->number_format_size());
   EXPECT_EQ("$2 15 $3-$4", metadata->number_format(2).format());
-  EXPECT_EQ("(9)(\\d{4})(\\d{2})(\\d{4})",
+  EXPECT_EQ("(\\d)(\\d{4})(\\d{2})(\\d{4})",
             metadata->number_format(3).pattern());
-  EXPECT_EQ("(9)(\\d{4})(\\d{2})(\\d{4})",
+  EXPECT_EQ("(\\d)(\\d{4})(\\d{2})(\\d{4})",
             metadata->intl_number_format(3).pattern());
   EXPECT_EQ("$1 $2 $3 $4", metadata->intl_number_format(3).format());
 }
