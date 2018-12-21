@@ -66,16 +66,6 @@ public class AsYouTypeFormatter {
   private PhoneMetadata defaultMetadata;
   private PhoneMetadata currentMetadata;
 
-  // A pattern that is used to match character classes in regular expressions. An example of a
-  // character class is [1-4].
-  private static final Pattern CHARACTER_CLASS_PATTERN = Pattern.compile("\\[([^\\[\\]])*\\]");
-  // Any digit in a regular expression that actually denotes a digit. For example, in the regular
-  // expression 80[0-2]\d{6,10}, the first 2 digits (8 and 0) are standalone digits, but the rest
-  // are not.
-  // Two look-aheads are needed because the number following \\d could be a two-digit number, since
-  // the phone number can be as long as 15 digits.
-  private static final Pattern STANDALONE_DIGIT_PATTERN = Pattern.compile("\\d(?=[^,}][^,}])");
-
   // A pattern that is used to determine if a numberFormat under availableFormats is eligible to be
   // used by the AYTF. It is eligible when the format element under numberFormat contains groups of
   // the dollar sign followed by a single digit, separated by valid phone number punctuation. This
@@ -230,18 +220,6 @@ public class AsYouTypeFormatter {
 
   private boolean createFormattingTemplate(NumberFormat format) {
     String numberPattern = format.getPattern();
-
-    // The formatter doesn't format numbers when numberPattern contains "|", e.g.
-    // (20|3)\d{4}. In those cases we quickly return.
-    if (numberPattern.indexOf('|') != -1) {
-      return false;
-    }
-
-    // Replace anything in the form of [..] with \d
-    numberPattern = CHARACTER_CLASS_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
-
-    // Replace any standalone digit (not the one in d{}) with \d
-    numberPattern = STANDALONE_DIGIT_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
     formattingTemplate.setLength(0);
     String tempTemplate = getFormattingTemplate(numberPattern, format.getFormat());
     if (tempTemplate.length() > 0) {

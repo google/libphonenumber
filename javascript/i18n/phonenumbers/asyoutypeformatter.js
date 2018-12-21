@@ -207,31 +207,6 @@ i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_
 
 
 /**
- * A pattern that is used to match character classes in regular expressions.
- * An example of a character class is [1-4].
- * @const
- * @type {RegExp}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.CHARACTER_CLASS_PATTERN_ =
-    /\[([^\[\]])*\]/g;
-
-
-/**
- * Any digit in a regular expression that actually denotes a digit. For
- * example, in the regular expression 80[0-2]\d{6,10}, the first 2 digits
- * (8 and 0) are standalone digits, but the rest are not.
- * Two look-aheads are needed because the number following \\d could be a
- * two-digit number, since the phone number can be as long as 15 digits.
- * @const
- * @type {RegExp}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_ =
-    /\d(?=[^,}][^,}])/g;
-
-
-/**
  * A pattern that is used to determine if a numberFormat under availableFormats
  * is eligible to be used by the AYTF. It is eligible when the format element
  * under numberFormat contains groups of the dollar sign followed by a single
@@ -437,19 +412,6 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
   /** @type {string} */
   var numberPattern = format.getPatternOrDefault();
 
-  // The formatter doesn't format numbers when numberPattern contains '|', e.g.
-  // (20|3)\d{4}. In those cases we quickly return.
-  if (numberPattern.indexOf('|') != -1) {
-    return false;
-  }
-
-  // Replace anything in the form of [..] with \d
-  numberPattern = numberPattern.replace(
-      i18n.phonenumbers.AsYouTypeFormatter.CHARACTER_CLASS_PATTERN_, '\\d');
-
-  // Replace any standalone digit (not the one in d{}) with \d
-  numberPattern = numberPattern.replace(
-      i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_, '\\d');
   this.formattingTemplate_.clear();
   /** @type {string} */
   var tempTemplate = this.getFormattingTemplate_(numberPattern,
