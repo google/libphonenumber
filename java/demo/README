@@ -14,3 +14,8 @@ How to run the webapp locally?
 
 How to deploy the webapp to Appengine?
   $ mvn gae:update
+
+If you have made any changes to the code or pom.xml file of demo here,
+you may need to run Maven commands like ```mvn clean install -U```
+(especially one hierarchy above i.e at java/ folder) to resolve any
+dependency issues w.r.t new developement version.
