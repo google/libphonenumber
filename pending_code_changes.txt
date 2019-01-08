@@ -1,5 +1,1 @@
-Code changes:
- - Better documentation for getLengthOfNationalDestinationCode to emphasise that
-   not every number has one.
- - Removed unused code in the AsYouTypeFormatter: We no longer have numbers in
-   formatting matching patterns, only \d.
+
