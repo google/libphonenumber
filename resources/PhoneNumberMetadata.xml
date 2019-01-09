@@ -7608,7 +7608,7 @@
             [189]\d?|
             [24-6]
           )\d{8}|
-          [13]\d{7}
+          [135]\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Subscriber numbers starting with 5 are also permitted for the area codes 040, with 5, 6
@@ -7618,11 +7618,11 @@
         <possibleLengths national="8,9" localOnly="6,7"/>
         <exampleNumber>234567890</exampleNumber>
         <nationalNumberPattern>
+          1(?:
+            3[23]\d{6}|
+            5\d{6,7}
+          )|
           (?:
-            1(?:
-              3[23]|
-              5\d?
-            )|
             (?:
               2[2-4]|
               3
@@ -7631,11 +7631,6 @@
               0[2-5]|
               [578][23]|
               64
-            )|
-            5(?:
-              0[2-7]|
-              5\d|
-              7[23]
             )|
             6[24-689]3|
             8(?:
@@ -7651,7 +7646,14 @@
               6[2356]|
               7[2-4]
             )
-          )\d{6}
+          )\d{6}|
+          5(?:
+            (?:
+              0[2-7]|
+              5\d
+            )\d{6}|
+            7[23]\d{5,6}
+          )
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -9688,7 +9690,12 @@
       <mobile>
         <possibleLengths national="7"/>
         <exampleNumber>3012345</exampleNumber>
-        <nationalNumberPattern>[23679]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [23679]\d|
+            5[01]
+          )\d{5}
+        </nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -10410,7 +10417,7 @@
           (?:
             46(?:
               0[0-6]|
-              10|
+              1[01]|
               4[0-57-9]
             )|
             5(?:
@@ -10436,7 +10443,7 @@
               )
             )|
             707[1-5]|
-            8480|
+            848[01]|
             9(?:
               (?:
                 0[1-9]|
@@ -10957,6 +10964,8 @@
            http://cms.binus.edu/datapage/file/io/Spring2014SE/International_Student_Handbook_BINUS.pdf
            There seem to be numbers of this length for area code 22 as well based on numbers found
            online. -->
+      <!-- The ITU doc is outdated (2001), and many numbers of different lengths were supported
+           here based on valid numbers found and user report. -->
       <fixedLine>
         <possibleLengths national="[7-11]" localOnly="5,6"/>
         <exampleNumber>218350123</exampleNumber>
@@ -16552,22 +16561,20 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[23578]</leadingDigits>
+          <leadingDigits>[3578]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            [25]\d|
+            2|
             33|
+            5\d|
             77|
             88
           )\d{7}|
-          (?:
-            2\d|
-            [45]
-          )\d{6}
+          [45]\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -16587,13 +16594,12 @@
         <nationalNumberPattern>
           (?:
             (?:
+              330|
+              555|
               (?:
-                20|
                 77|
                 88
-              )\d|
-              330|
-              555
+              )\d
             )\d|
             4[67]
           )\d{5}|
@@ -18069,17 +18075,17 @@
             9(?:
               2(?:
                 [0-4]|
-                (?:
-                  5\d|
-                  6[0-5]
-                )\d
+                [56]\d\d
               )|
               (?:
                 3(?:
                   [0-36]|
-                  4[069]
+                  4\d
                 )|
-                [68]9\d|
+                (?:
+                  6[89]|
+                  89
+                )\d|
                 7(?:
                   3|
                   5[0-2]|
@@ -18088,10 +18094,8 @@
               )\d|
               4(?:
                 (?:
-                  0[0-4]|
-                  [1379]|
-                  [25]\d|
-                  4[0-589]
+                  [0245]\d|
+                  [1379]
                 )\d|
                 88
               )|
@@ -19725,7 +19729,7 @@
           <leadingDigits>78</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- Fixed line, but includes some "fixed or mobile" ranges (this might indicate bad data). -->
+        <!-- Fixed line format for 1 digit area code -->
         <numberFormat pattern="(\d)(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             [12]|
@@ -19736,7 +19740,7 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- Fixed line, but includes some "fixed or mobile" ranges (this might indicate bad data). -->
+        <!-- Fixed line format for 2 digit area code -->
         <numberFormat pattern="(\d{2})(\d{3})(\d{2,3})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             [3-7]|
@@ -19795,99 +19799,26 @@
       <!-- Added 906 and 907 mobile prefixes based on reports. Prefix 707 is withdrawn as per few
            websites, however 707[0-3] is added based on bug report and online search. -->
       <mobile>
-        <possibleLengths national="8,10" localOnly="6,7"/>
+        <possibleLengths national="10"/>
         <exampleNumber>8021234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            1(?:
-              (?:
-                7[34]|
-                95
-              )\d|
-              8(?:
-                04|
-                [124579]\d|
-                8[0-3]
-              )
-            )|
-            287[0-7]|
-            3(?:
-              18[1-8]|
-              88[0-7]|
-              9(?:
-                6[1-5]|
-                8[5-9]
-              )
-            )|
-            4(?:
-              [28]8[0-2]|
-              6(?:
-                7[1-9]|
-                8[02-47]
-              )
-            )|
-            5(?:
-              2(?:
-                7[7-9]|
-                8\d
-              )|
-              38[1-79]|
-              48[0-7]|
-              68[4-7]
-            )|
-            6(?:
-              2(?:
-                7[7-9]|
-                8\d
-              )|
-              4(?:
-                3[7-9]|
-                [68][129]|
-                7[04-69]|
-                9[1-8]
-              )|
-              58[0-2]|
-              98[7-9]
-            )|
-            7(?:
-              0(?:
-                [1-689]\d|
-                7[0-3]
-              )\d\d|
-              38[0-7]|
-              69[1-8]|
-              78[2-4]
+            70(?:
+              [1-689]\d|
+              7[0-3]
             )|
             8(?:
-              (?:
-                0(?:
-                  1[01]|
-                  [2-9]\d
-                )|
-                1(?:
-                  [0-8]\d|
-                  9[01]
-                )
-              )\d\d|
-              28[3-9]|
-              38[0-2]|
-              4(?:
-                2[12]|
-                3[147-9]|
-                5[346]|
-                7[4-9]|
-                8[014-689]|
-                90
+              0(?:
+                1[01]|
+                [2-9]\d
               )|
-              58[1-8]|
-              78[2-9]|
-              88[5-7]
+              1(?:
+                [0-8]\d|
+                9[01]
+              )
             )|
-            9(?:
-              0[235-9]\d\d|
-              8[07]
-            )\d
-          )\d{4}
+            90[235-9]\d
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
       <!-- Info on these numbers from http://www.alphatechnologieslimited.com. -->
@@ -22839,6 +22770,7 @@
 
     <!-- Sudan -->
     <!-- http://www.itu.int/oth/T02020000C4/en -->
+    <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Sudan -->
     <territory id="SD" countryCode="249" internationalPrefix="00" nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
@@ -22852,12 +22784,14 @@
       <!-- Retaining previous prefix as 18 since it seems still to be used. ITU doc says 12 is a
            fixed-line range but we are supporting 1[0-2] under mobile as Sudatel mentions that
            these mobile ranges are assigned to them. -->
+      <!-- The third digit here is an area code as per Wikipedia. Added 154 range based on valid
+           numbers found online. -->
       <fixedLine>
         <possibleLengths national="9"/>
-        <exampleNumber>151231234</exampleNumber>
+        <exampleNumber>153123456</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            5\d|
+            5[3-7]|
             8[35-7]
           )\d{6}
         </nationalNumberPattern>
@@ -26097,7 +26031,7 @@
       <!-- Adding 711 from numbers found online, such as the US embassy, and 6922, which seems to
            be used in Namangan. -->
       <fixedLine>
-        <possibleLengths national="9" localOnly="7"/>
+        <possibleLengths national="9"/>
         <exampleNumber>669050123</exampleNumber>
         <nationalNumberPattern>
           (?:
@@ -27061,7 +26995,7 @@
             )|
             8(?:
               [1-58]\d|
-              6[5689]|
+              6[5-9]|
               9[689]
             )|
             9(?:
@@ -27081,16 +27015,11 @@
         <exampleNumber>1900123456</exampleNumber>
         <nationalNumberPattern>1900\d{4,6}</nationalNumberPattern>
       </premiumRate>
-      <!-- 992 is a VSAT numbering range as per ITU doc. -->
+      <!-- 672 is a VSAT numbering range as per ITU doc. -->
       <voip>
         <possibleLengths national="9"/>
-        <exampleNumber>992012345</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            67|
-            99
-          )2\d{6}
-        </nationalNumberPattern>
+        <exampleNumber>672012345</exampleNumber>
+        <nationalNumberPattern>672\d{6}</nationalNumberPattern>
       </voip>
       <!-- These include non-geographic fixed numbers, such as for government ministries. While
            listed as "private networks", they may actually be callable from within Vietnam. (They
@@ -27142,7 +27071,7 @@
               88
             )\d|
             3(?:
-              [5-7]\d|
+              [4-7]\d|
               8[0-8]
             )|
             48[4-9]

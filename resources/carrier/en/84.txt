@@ -18,6 +18,7 @@
 8456|Vietnamobile
 8458|Vietnamobile
 8459|G-Mobile
+8467|VSAT
 847|MobiFone
 8481|Vinaphone
 8482|Vinaphone
@@ -35,7 +36,6 @@
 8496|Viettel
 8497|Viettel
 8498|Viettel
-84992|VSAT
 84993|G-Mobile
 84994|G-Mobile
 84995|G-Mobile
