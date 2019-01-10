@@ -1,3 +1,17 @@
+Jan 08, 2019: v8.10.3
+Code changes:
+ - Better documentation for getLengthOfNationalDestinationCode to emphasise that
+   not every number has one.
+ - Removed unused code in the AsYouTypeFormatter: We no longer have numbers in
+   formatting matching patterns, only \d.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   EG, GM, HK, LR, MM, NG, SD, UZ, VN, VU
+ - Updated geocoding data for country calling code(s): 249 (en)
+ - Updated carrier data for country calling code(s):
+   84 (en), 95 (en), 220 (en), 231 (en), 852 (en, zh, zh_Hant), 965 (ar)
+ - Updated / refreshed time zone meta data.
+
 Dec 06, 2018: v8.10.2
 Metadata changes:
  - Updated phone metadata for region code(s):

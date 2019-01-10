@@ -922,7 +922,7 @@
 1475|America/New_York
 1478|America/New_York
 1479|America/Chicago
-1480|America/Denver
+1480|America/Denver&America/Phoenix
 1484|America/New_York
 1501|America/Chicago
 1502|America/New_York
@@ -942,7 +942,7 @@
 1517|America/New_York
 1518|America/New_York
 1519|America/Toronto
-1520|America/Denver
+1520|America/Denver&America/Phoenix
 1530|America/Los_Angeles
 1531|America/Chicago
 1534|America/Chicago
@@ -975,7 +975,7 @@
 1586|America/New_York
 1587|America/Edmonton
 1601|America/Chicago
-1602|America/Denver
+1602|America/Denver&America/Phoenix
 1603|America/New_York
 1604|America/Vancouver
 1605|America/Denver&America/North_Dakota/Center
@@ -1952,7 +1952,7 @@
 1919|America/New_York
 1920|America/Chicago
 1925|America/Los_Angeles
-1928|America/Denver
+1928|America/Denver&America/Phoenix
 1929|America/New_York
 1930|America/New_York
 1931|America/Chicago
