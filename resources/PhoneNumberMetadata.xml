@@ -25714,7 +25714,7 @@
              longer optional and should not be in brackets. -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>[2-9]</leadingDigits>
-          <format>($1) $2-$3</format>
+          <format>$1-$2-$3</format>
           <intlFormat>$1-$2-$3</intlFormat>
         </numberFormat>
       </availableFormats>
