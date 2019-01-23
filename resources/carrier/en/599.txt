@@ -42,10 +42,4 @@
 599954|Chippie
 599956|Chippie
 599957|Chippie
-599961|CSC
-599963|GSM Caribbean
-599965|Digicel
-599966|Digicel
-599967|Digicel
-599968|Digicel
-599969|Digicel
+59996|Digicel

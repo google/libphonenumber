@@ -24,9 +24,10 @@
 # Luiggi is a city in Realicó department.
 # 3404 belongs to San Carlos Centro a city in Las Colonias.
 
-5411|Buenos Aires
-54220|Merlo, Buenos Aires
+541|Buenos Aires
 542202|González Catán/Virrey del Pino, Buenos Aires
+542204|Merlo, Buenos Aires
+542205|Merlo, Buenos Aires
 54221|La Plata, Buenos Aires
 542221|Magdalena/Verónica, Buenos Aires
 542223|Brandsen, Buenos Aires
@@ -66,8 +67,8 @@
 542292|Benito Juárez, Buenos Aires
 542296|Ayacucho, Buenos Aires
 542297|Rauch, Buenos Aires
-54230|Pilar, Buenos Aires
 542302|General Pico, La Pampa
+542304|Pilar, Buenos Aires
 542314|Bolívar, Buenos Aires
 542316|Daireaux, Buenos Aires
 542317|9 de Julio, Buenos Aires
@@ -115,18 +116,18 @@
 542625|General Alvear, Mendoza
 542626|La Paz, Mendoza
 54263|San Martín, Mendoza
-54264|San Juan, San Juan
+542644|San Juan, San Juan
+542645|San Juan, San Juan
 542646|Villa San Agustín, San Juan
 542647|San José de Jáchal, San Juan
 542648|Calingasta, San Juan
 542651|San Francisco del Monte de Oro, San Luis
-542652|Provincia de San Luis
 542655|La Toma, San Luis
 542656|Merlo, San Luis
 542657|Villa Mercedes, San Luis
 542658|Buena Esperanza, San Luis
 54266|San Luis, San Luis
-54280|Trelew/Rawson, Chubut
+5428|Trelew/Rawson, Chubut
 542901|Ushuaia, Tierra del Fuego
 542902|Río Turbio, Santa Cruz
 542903|Río Mayo, Chubut
@@ -147,9 +148,9 @@
 542934|San Antonio Oeste, Río Negro
 542935|Rivera, Buenos Aires
 542936|Carhué, Buenos Aires
-54294|San Carlos de Bariloche, Río Negro
 542940|Ingeniero Jacobacci, Río Negro
 542942|Zapala, Neuquén
+542944|San Carlos de Bariloche, Río Negro
 542945|Esquel, Chubut
 542946|Choele Choel, Río Negro
 542948|Chos Malal, Neuquén
@@ -160,14 +161,17 @@
 542963|Perito Moreno, Santa Cruz
 542964|Río Grande, Tierra del Fuego
 542966|Río Gallegos, Santa Cruz
-54297|Comodoro Rivadavia, Chubut
 542972|San Martín de los Andes, Neuquén
-54298|General Roca, Río Negro
-542982|Claromecó, Buenos Aires
+542974|Comodoro Rivadavia, Chubut
+542975|Comodoro Rivadavia, Chubut
+542976|Comodoro Rivadavia, Chubut
+5429824|Claromecó, Buenos Aires
 54298240|Orense, Buenos Aires
 54298242|Orense, Buenos Aires
 542982497|San Francisco de Bellocq, Buenos Aires
 542983|Tres Arroyos, Buenos Aires
+542984|General Roca, Río Negro
+542985|General Roca, Río Negro
 54299|Neuquén, Neuquén
 543327|Benavídez, Buenos Aires
 543329|San Pedro, Buenos Aires
@@ -187,7 +191,7 @@
 543409|Moisés Ville, Santa Fe
 54341|Rosario, Santa Fe
 54342|Santa Fe, Santa Fe
-54343|Paraná, Entre Ríos
+543434|Paraná, Entre Ríos
 543435|Nogoyá, Entre Ríos
 543436|Victoria, Entre Ríos
 543437|La Paz, Entre Ríos
@@ -197,7 +201,6 @@
 543445|Rosario del Tala, Entre Ríos
 543446|Gualeguaychú, Entre Ríos
 543447|Colón, Entre Ríos
-54345|Concordia, Entre Ríos
 543454|Federal, Entre Ríos
 543455|Villaguay, Entre Ríos
 543456|Chajarí, Entre Ríos
@@ -214,9 +217,9 @@
 543471|Cañada de Gómez, Santa Fe
 543472|Marcos Juárez, Córdoba
 543476|San Lorenzo, Santa Fe
-54348|Escobar, Buenos Aires
 543482|Reconquista, Santa Fe
 543483|Vera, Santa Fe
+543484|Escobar, Buenos Aires
 543487|Zárate, Buenos Aires
 543489|Campana, Buenos Aires
 543491|Ceres, Santa Fe
@@ -230,9 +233,11 @@
 543522|Villa de María, Córdoba
 543524|Villa del Totoral, Córdoba
 543525|Jesús María, Córdoba
-54353|Villa María, Córdoba
 543532|Oliva, Córdoba
 543533|Las Varillas, Córdoba
+543534|Villa María, Córdoba
+543535|Villa María, Córdoba
+543536|Villa María, Córdoba
 543537|Bell Ville, Córdoba
 543541|Villa Carlos Paz, Córdoba
 543542|Salsacate, Córdoba
@@ -251,11 +256,11 @@
 543574|Río Primero, Córdoba
 543575|La Puerta, Córdoba
 543576|Arroyito, Córdoba
-54358|Río Cuarto, Córdoba
 543582|Sampacho, Córdoba
 543583|Vicuña Mackenna, Córdoba
 543584|La Carlota, Córdoba
 543585|Adelia María, Córdoba
+543586|Río Cuarto, Córdoba
 54362|Resistencia, Chaco
 54364|Presidencia Roque Sáenz Peña, Chaco
 54370|Formosa, Formosa
@@ -292,8 +297,8 @@
 543825|Chilecito, La Rioja
 543826|Chamical, La Rioja
 543827|Aimogasta, La Rioja
-54383|San Fernando del Valle de Catamarca, Catamarca
 543832|Recreo, Catamarca
+543834|San Fernando del Valle de Catamarca, Catamarca
 543835|Andalgalá, Catamarca
 543837|Tinogasta, Catamarca
 543838|Santa María, Catamarca
@@ -302,7 +307,7 @@
 543844|Añatuya, Santiago del Estero
 543845|Loreto, Santiago del Estero
 543846|Tintina, Santiago del Estero
-54385|Santiago del Estero, Santiago del Estero
+543853|Santiago del Estero, Santiago del Estero
 543854|Frías, Santiago del Estero
 543855|Suncho Corral, Santiago del Estero
 543856|Villa Ojo de Agua, Santiago del Estero
@@ -315,12 +320,15 @@
 543867|Tafí del Valle, Tucumán
 543868|Cafayate, Salta
 543869|Ranchillos y San Miguel, Tucumán
-54387|Salta, Salta
+543872|Salta, Salta
 543873|Tartagal, Salta
+543874|Salta, Salta
+543875|Salta, Salta
 543876|San José de Metán, Salta
 543877|Joaquín Víctor González, Salta
 543878|Orán, Salta
-54388|San Salvador de Jujuy, Jujuy
+543883|San Salvador de Jujuy, Jujuy
+543884|San Salvador de Jujuy, Jujuy
 543885|La Quiaca, Jujuy
 543886|Libertador General San Martín, Jujuy
 543887|Humahuaca, Jujuy
