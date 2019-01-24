@@ -839,83 +839,301 @@
                          9[124]
                        )
                      )
-                   )?15
+                   )15
                  )?"
-               nationalPrefixTransformRule="9$1" nationalPrefixFormattingRule="$NP$FG"
-               mobileNumberPortableRegion="true">
+               nationalPrefixTransformRule="9$1" mobileNumberPortableRegion="true">
       <availableFormats>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
+        <!-- Format short numbers as a block. -->
+        <numberFormat pattern="(\d{3})">
+          <leadingDigits>[019]</leadingDigits>
+          <format>$1</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{4})">
+          <leadingDigits>
+            [2-7]|
+            8[0-7]
+          </leadingDigits>
+          <format>$1-$2</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{4})">
+          <leadingDigits>
+            [2-7]|
+            8[013-8]
+          </leadingDigits>
+          <format>$1-$2</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <numberFormat pattern="(\d{4})(\d{4})">
+          <leadingDigits>[2-7]</leadingDigits>
+          <format>$1-$2</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <!-- Various non-geographic numbers, including UAN, premium rate but also some mobile
+             ranges. We assume no local dialling is possible for these ranges. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>[68]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
-        <!-- Format local numbers in two groups. The leading digits are 2-9 since the ITU document
-             says that the digit zero and one will not be present at the start of the subscriber
-             number (which starts with an "Exchange characteristic"). -->
-        <numberFormat pattern="(\d{2})(\d{4})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>[2-9]</leadingDigits>
-          <format>$1-$2</format>
-          <intlFormat>NA</intlFormat>
+        <!-- Formatting for geographic numbers (including those which can be dialled with a mobile
+             token). -->
+        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      nationalPrefixOptionalWhenFormatting="true">
+          <leadingDigits>1</leadingDigits>
+          <format>$1 $2-$3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>[2-9]</leadingDigits>
-          <format>$1-$2</format>
-          <intlFormat>NA</intlFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      nationalPrefixOptionalWhenFormatting="true">
+          <leadingDigits>
+            2(?:
+              2[013]|
+              3[067]|
+              49|
+              6[01346]|
+              8|
+              9[147-9]
+            )|
+            3(?:
+              36|
+              4[1-358]|
+              5[138]|
+              6|
+              7[069]|
+              8[013578]
+            )
+          </leadingDigits>
+          <leadingDigits>
+            2(?:
+              2(?:
+                0[45]|
+                [13]
+              )|
+              3(?:
+                04|
+                [67]
+              )|
+              49|
+              6(?:
+                [0136]|
+                4[4-6]
+              )|
+              8|
+              9(?:
+                [19]|
+                [48][45]|
+                7[4-6]
+              )
+            )|
+            3(?:
+              36|
+              4(?:
+                [12]|
+                [35][4-6]|
+                84
+              )|
+              5(?:
+                1|
+                [38][4-6]
+              )|
+              6|
+              7[069]|
+              8(?:
+                [01]|
+                3[45]|
+                [58][3-6]|
+                7[24-6]
+              )
+            )
+          </leadingDigits>
+          <leadingDigits>
+            2(?:
+              2(?:
+                0[45]|
+                [13]
+              )|
+              3(?:
+                04|
+                [67]
+              )|
+              49|
+              6(?:
+                [0136]|
+                4(?:
+                  [45]|
+                  6[0-36-9]
+                )
+              )|
+              8|
+              9(?:
+                [19]|
+                4(?:
+                  4|
+                  5[039]
+                )|
+                7[4-6]|
+                8[45]
+              )
+            )|
+            3(?:
+              36|
+              4(?:
+                [12]|
+                3(?:
+                  4|
+                  5[0-47]|
+                  6[1-39]
+                )|
+                5(?:
+                  4[0-379]|
+                  [56][02]
+                )|
+                84
+              )|
+              5(?:
+                1|
+                3[4-6]|
+                8(?:
+                  4[0-36-9]|
+                  5[013467]|
+                  6
+                )
+              )|
+              6|
+              7[069]|
+              8(?:
+                [01]|
+                3(?:
+                  4|
+                  5[12]
+                )|
+                5(?:
+                  3|
+                  4[0-35-9]|
+                  5[0-37-9]|
+                  6[0-27-9]
+                )|
+                7(?:
+                  [245]|
+                  6[0-37-9]
+                )|
+                8(?:
+                  [34]|
+                  5[0-37-9]|
+                  6[0-28]
+                )
+              )
+            )
+          </leadingDigits>
+          <leadingDigits>
+            2(?:
+              2(?:
+                0[45]|
+                [13]
+              )|
+              3(?:
+                04|
+                [67]
+              )|
+              49|
+              6(?:
+                [0136]|
+                4(?:
+                  [45]|
+                  6[0-36-9]
+                )
+              )|
+              8|
+              9(?:
+                [19]|
+                4(?:
+                  4|
+                  5(?:
+                    [09]|
+                    3[016-9]
+                  )
+                )|
+                7[4-6]|
+                8[45]
+              )
+            )|
+            3(?:
+              36|
+              4(?:
+                [12]|
+                3(?:
+                  4|
+                  5(?:
+                    [0-37]|
+                    4[347]
+                  )|
+                  6[1-39]
+                )|
+                5(?:
+                  4[0-379]|
+                  [56][02]
+                )|
+                84
+              )|
+              5(?:
+                1|
+                3[4-6]|
+                8(?:
+                  4(?:
+                    [0-37-9]|
+                    6[1-9]
+                  )|
+                  5(?:
+                    [0137]|
+                    4[4-8]|
+                    6[0-35-9]
+                  )|
+                  6
+                )
+              )|
+              6|
+              7[069]|
+              8(?:
+                [01]|
+                3(?:
+                  4|
+                  5[12]
+                )|
+                5(?:
+                  3|
+                  4(?:
+                    [0-37-9]|
+                    5[0289]|
+                    6[0-7]
+                  )|
+                  5[0-37-9]|
+                  6[0-27-9]
+                )|
+                7(?:
+                  [245]|
+                  6[0-37-9]
+                )|
+                8(?:
+                  [34]|
+                  5[0-37-9]|
+                  6[0-28]
+                )
+              )
+            )
+          </leadingDigits>
+          <format>$1 $2-$3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{4})(\d{4})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>[2-9]</leadingDigits>
-          <format>$1-$2</format>
-          <intlFormat>NA</intlFormat>
+        <numberFormat pattern="(\d{4})(\d{2})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      nationalPrefixOptionalWhenFormatting="true">
+          <leadingDigits>[23]</leadingDigits>
+          <format>$1 $2-$3</format>
         </numberFormat>
-        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})">
-          <leadingDigits>911</leadingDigits>
+        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>91</leadingDigits>
           <format>$2 15-$3-$4</format>
           <intlFormat>$1 $2 $3-$4</intlFormat>
         </numberFormat>
-        <!-- The regular expressions below were generated semi-automatically from data extracted
-             from the XLS spreadsheet downloaded from the "Númeración Geográfica" link cited
-             above. Each pattern captures all 3-3-4 prefixes for its length, but may also capture
-             some 4-2-4 cases.
-
-             In cases where a range contains both 3-3-4 and 4-2-4 prefixes, the most commonly used
-             one should be considered the default.
-             * If there are more distinct 4-2-4 prefixes, then the regular expression should
-               INCLUDE only the explicitly mentioned 3-3-4 prefixes.
-             * If there are more distinct 3-3-4 prefixes, then the regular expression should
-               EXCLUDE only the explicitly mentioned 4-2-4 prefixes.
-             This should help maximize the chances of new ranges automatically being assigned to
-             the right form.
-
-             In the final (most specific) regular expression, the few remaining ambiguous cases
-             are decided by comparing usage counts. Any manual edits to these expressions not
-             reflected in the XLS spreadsheet must be clearly called out below:
-
-             Added Manually as 3-3-4 format:
-             * 2981 (General Roca, Río Negro) : Numbers found online suggest 3-3-4
-
-             See also:
-             https://github.com/googlei18n/libphonenumber/issues/611
-             https://github.com/googlei18n/libphonenumber/issues/559 -->
-        <!-- Note that some patterns appear as both 3 and 4 digit area codes. In these cases
-             (to avoid going to 6 digits of discrimination) we simply pick the one with the
-             most uses. Patterns excluded from this expression will be treated as 4-2-4:
-             - XXXX (usage count as 3-digit code:usage count as 4-digit code)
-             - 2646 (7:15)   - excluded
-             - 3435 (39:63)  - excluded
-             - 3454 (90:48)
-             - 3455 (13:94)  - excluded
-             - 3456 (3:93)   - excluded
-             - 3584 (143:65)
-             - 3585 (21:42)  - excluded
-             - 3854 (115:73)
-             - 3855 (76:40)
-             - 3856 (19:44)  - excluded
-             - 3876 (56:99)  - excluded
-             - 3885 (120:45)
-             - 3886 (3:137)  - excluded -->
-        <!-- If the leading digits below are modified, copy the most specific expression into the
-             section below, minus the leading '9' (everything else is auto-generated). We go to
-             6-digit precision on a case-by-case basis (e.g. 9343). -->
-        <numberFormat pattern="(\d)(\d{3})(\d{3})(\d{4})">
+        <numberFormat pattern="(\d)(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             9(?:
               2[2-4689]|
@@ -946,44 +1164,43 @@
             9(?:
               2(?:
                 2(?:
-                  0[013-9]|
+                  0[45]|
                   [13]
                 )|
                 3(?:
-                  0[013-9]|
+                  04|
                   [67]
                 )|
                 49|
                 6(?:
                   [0136]|
-                  4[0-59]
+                  4[4-6]
                 )|
                 8|
                 9(?:
                   [19]|
-                  44|
-                  7[013-9]|
-                  8[14]
+                  [48][45]|
+                  7[4-6]
                 )
               )|
               3(?:
                 36|
                 4(?:
                   [12]|
-                  3[4-6]|
-                  [58]4
+                  [35][4-6]|
+                  84
                 )|
                 5(?:
                   1|
-                  3[0-24-689]|
-                  8[46]
+                  [38][4-6]
                 )|
                 6|
                 7[069]|
                 8(?:
                   [01]|
-                  34|
-                  [578][45]
+                  3[45]|
+                  [58][3-6]|
+                  7[24-6]
                 )
               )
             )
@@ -992,24 +1209,30 @@
             9(?:
               2(?:
                 2(?:
-                  0[013-9]|
+                  0[45]|
                   [13]
                 )|
                 3(?:
-                  0[013-9]|
+                  04|
                   [67]
                 )|
                 49|
                 6(?:
                   [0136]|
-                  4[0-59]
+                  4(?:
+                    [45]|
+                    6[0-36-9]
+                  )
                 )|
                 8|
                 9(?:
                   [19]|
-                  44|
-                  7[013-9]|
-                  8[14]
+                  4(?:
+                    4|
+                    5[039]
+                  )|
+                  7[4-6]|
+                  8[45]
                 )
               )|
               3(?:
@@ -1018,22 +1241,145 @@
                   [12]|
                   3(?:
                     4|
-                    5[014]|
+                    5[0-47]|
                     6[1-39]
                   )|
-                  [58]4
+                  5(?:
+                    4[0-379]|
+                    [56][02]
+                  )|
+                  84
                 )|
                 5(?:
                   1|
-                  3[0-24-689]|
-                  8[46]
+                  3[4-6]|
+                  8(?:
+                    4[0-36-9]|
+                    5[013467]|
+                    6
+                  )
                 )|
                 6|
                 7[069]|
                 8(?:
                   [01]|
-                  34|
-                  [578][45]
+                  3(?:
+                    4|
+                    5[12]
+                  )|
+                  5(?:
+                    3|
+                    4[0-35-9]|
+                    5[0-37-9]|
+                    6[0-27-9]
+                  )|
+                  7(?:
+                    [245]|
+                    6[0-37-9]
+                  )|
+                  8(?:
+                    [34]|
+                    5[0-37-9]|
+                    6[0-28]
+                  )
+                )
+              )
+            )
+          </leadingDigits>
+          <leadingDigits>
+            9(?:
+              2(?:
+                2(?:
+                  0[45]|
+                  [13]
+                )|
+                3(?:
+                  04|
+                  [67]
+                )|
+                49|
+                6(?:
+                  [0136]|
+                  4(?:
+                    [45]|
+                    6[0-36-9]
+                  )
+                )|
+                8|
+                9(?:
+                  [19]|
+                  4(?:
+                    4|
+                    5(?:
+                      [09]|
+                      3[016-9]
+                    )
+                  )|
+                  7[4-6]|
+                  8[45]
+                )
+              )|
+              3(?:
+                36|
+                4(?:
+                  [12]|
+                  3(?:
+                    4|
+                    5(?:
+                      [0-37]|
+                      4[347]
+                    )|
+                    6[1-39]
+                  )|
+                  5(?:
+                    4[0-379]|
+                    [56][02]
+                  )|
+                  84
+                )|
+                5(?:
+                  1|
+                  3[4-6]|
+                  8(?:
+                    4(?:
+                      [0-37-9]|
+                      6[1-9]
+                    )|
+                    5(?:
+                      [0137]|
+                      4[4-8]|
+                      6[0-35-9]
+                    )|
+                    6
+                  )
+                )|
+                6|
+                7[069]|
+                8(?:
+                  [01]|
+                  3(?:
+                    4|
+                    5[12]
+                  )|
+                  5(?:
+                    3|
+                    4(?:
+                      [0-37-9]|
+                      5[0289]|
+                      6[0-7]
+                    )|
+                    5[0-37-9]|
+                    6[0-27-9]
+                  )|
+                  7(?:
+                    [245]|
+                    6[0-37-9]
+                  )|
+                  8(?:
+                    [34]|
+                    5[0-37-9]|
+                    6[0-28]
+                  )
                 )
               )
             )
@@ -1041,145 +1387,10 @@
           <format>$2 15-$3-$4</format>
           <intlFormat>$1 $2 $3-$4</intlFormat>
         </numberFormat>
-        <!-- Both 4-3-3 and 4-2-4 have been seen online; we prefer the latter since it matches the
-             Argentinian ITU doc and wikipedia. -->
-        <numberFormat pattern="(\d)(\d{4})(\d{2})(\d{4})">
-          <leadingDigits>9[23]</leadingDigits>
+        <numberFormat pattern="(\d)(\d{4})(\d{2})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>9</leadingDigits>
           <format>$2 15-$3-$4</format>
           <intlFormat>$1 $2 $3-$4</intlFormat>
-        </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>11</leadingDigits>
-          <format>$1 $2-$3</format>
-        </numberFormat>
-        <!-- These patterns are a copy of the mobile patterns with the leading 9 removed. The most
-             specific pattern below should be a copy of the most specific mobile pattern (with the
-             leading 9 -->
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>
-            2(?:
-              2[013]|
-              3[067]|
-              49|
-              6[01346]|
-              8|
-              9[147-9]
-            )|
-            3(?:
-              36|
-              4[1-358]|
-              5[138]|
-              6|
-              7[069]|
-              8[013578]
-            )
-          </leadingDigits>
-          <leadingDigits>
-            2(?:
-              2(?:
-                0[013-9]|
-                [13]
-              )|
-              3(?:
-                0[013-9]|
-                [67]
-              )|
-              49|
-              6(?:
-                [0136]|
-                4[0-59]
-              )|
-              8|
-              9(?:
-                [19]|
-                44|
-                7[013-9]|
-                8[14]
-              )
-            )|
-            3(?:
-              36|
-              4(?:
-                [12]|
-                3[4-6]|
-                [58]4
-              )|
-              5(?:
-                1|
-                3[0-24-689]|
-                8[46]
-              )|
-              6|
-              7[069]|
-              8(?:
-                [01]|
-                34|
-                [578][45]
-              )
-            )
-          </leadingDigits>
-          <leadingDigits>
-            2(?:
-              2(?:
-                0[013-9]|
-                [13]
-              )|
-              3(?:
-                0[013-9]|
-                [67]
-              )|
-              49|
-              6(?:
-                [0136]|
-                4[0-59]
-              )|
-              8|
-              9(?:
-                [19]|
-                44|
-                7[013-9]|
-                8[14]
-              )
-            )|
-            3(?:
-              36|
-              4(?:
-                [12]|
-                3(?:
-                  4|
-                  5[014]|
-                  6[1-39]
-                )|
-                [58]4
-              )|
-              5(?:
-                1|
-                3[0-24-689]|
-                8[46]
-              )|
-              6|
-              7[069]|
-              8(?:
-                [01]|
-                34|
-                [578][45]
-              )
-            )
-          </leadingDigits>
-          <format>$1 $2-$3</format>
-        </numberFormat>
-        <numberFormat pattern="(\d{4})(\d{2})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>[23]</leadingDigits>
-          <format>$1 $2-$3</format>
-        </numberFormat>
-        <!-- Format short numbers as a block. -->
-        <numberFormat pattern="(\d{3})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>
-            1[0-2]|
-            911
-          </leadingDigits>
-          <format>$1</format>
-          <intlFormat>NA</intlFormat>
         </numberFormat>
       </availableFormats>
       <generalDesc>
@@ -1202,197 +1413,653 @@
         <possibleLengths national="10" localOnly="[6-8]"/>
         <exampleNumber>1123456789</exampleNumber>
         <nationalNumberPattern>
-          11\d{8}|
           (?:
+            (?:
+              11[2-7]|
+              670
+            )\d\d|
             2(?:
               2(?:
-                [013]\d|
-                2[13-79]|
-                4[1-6]|
-                5[2457]|
-                6[124-8]|
-                7[1-4]|
-                8[13-6]|
-                9[1267]
+                0(?:
+                  2[4-6]|
+                  [45]\d
+                )|
+                (?:
+                  1[2-6]|
+                  3[3-6]
+                )\d|
+                2(?:
+                  14|
+                  [3467][4-6]|
+                  [59][45]
+                )|
+                4(?:
+                  [156][4-6]|
+                  [23]4|
+                  4[45]
+                )|
+                5(?:
+                  2[45]|
+                  [45][4-6]|
+                  7[3-6]
+                )|
+                6(?:
+                  [145]4|
+                  2[2-6]|
+                  [6-8][4-6]
+                )|
+                7[1-4]4|
+                8(?:
+                  1[3-6]|
+                  [356]4|
+                  4[2-7]
+                )|
+                9(?:
+                  1[4-6]|
+                  [267]4
+                )
               )|
               3(?:
-                [07]\d|
-                1[467]|
-                2[03-6]|
-                3[13-8]|
-                [49][2-6]|
-                5[2-8]|
-                6[013-9]
+                0(?:
+                  2[2-6]|
+                  4\d
+                )|
+                1(?:
+                  [47][4-6]|
+                  64
+                )|
+                2(?:
+                  [03][2-6]|
+                  4[3-6]|
+                  5[4-6]|
+                  6[45]
+                )|
+                3[13-8]4|
+                4(?:
+                  [24][45]|
+                  34|
+                  5[4-6]|
+                  6[3-6]
+                )|
+                5(?:
+                  [25][4-6]|
+                  [346-8]4
+                )|
+                (?:
+                  64|
+                  7[45]
+                )\d|
+                9(?:
+                  2[3-6]|
+                  [3-5]4|
+                  6[4-6]
+                )
               )|
               4(?:
-                7[3-8]|
-                9\d
+                7(?:
+                  3[45]|
+                  [48][4-6]|
+                  54|
+                  7[2-6]
+                )|
+                94\d
               )|
               6(?:
-                [01346]\d|
-                2[24-6]|
-                5[15-8]
+                (?:
+                  04|
+                  1[2-7]|
+                  [36][45]
+                )\d|
+                2(?:
+                  2[2-6]|
+                  [46]4|
+                  5[4-6]
+                )|
+                4(?:
+                  [45]\d|
+                  6[0-46-9]|
+                  [78]4
+                )|
+                5(?:
+                  [1568]4|
+                  7[2-7]
+                )
               )|
-              80\d|
+              80[45]\d|
               9(?:
-                [012789]\d|
-                3[1-6]|
-                4[02-9]|
-                5[234]|
-                6[2-46]
+                0(?:
+                  1[3-6]|
+                  2[45]|
+                  34
+                )|
+                (?:
+                  1[4-6]|
+                  9[3-6]
+                )\d|
+                2(?:
+                  0[2-7]|
+                  [1457-9]4|
+                  [26][45]|
+                  3[3-6]
+                )|
+                3(?:
+                  [1356]4|
+                  2[4-6]|
+                  4[45]
+                )|
+                4(?:
+                  [08]4|
+                  2[2-6]|
+                  4\d|
+                  5[02-69]|
+                  6[45]
+                )|
+                5(?:
+                  [23]4|
+                  4[2-8]
+                )|
+                6(?:
+                  [23]4|
+                  4[3-6]|
+                  6[2-7]
+                )|
+                7(?:
+                  2[45]|
+                  [4-6]\d
+                )|
+                8(?:
+                  24|
+                  3[2-6]|
+                  [45]\d
+                )
               )
             )|
             3(?:
               3(?:
-                2[79]|
-                6\d|
-                8[2578]
+                2(?:
+                  7[45]|
+                  9[3-6]
+                )|
+                64\d|
+                8[2578][4-6]
               )|
               4(?:
-                0[0124-9]|
-                [1-357]\d|
-                4[24-7]|
-                6[02-9]|
-                8[0-79]|
-                9[1236-8]
+                0[0-24-9][4-6]|
+                (?:
+                  1[2-7]|
+                  2[4-6]
+                )\d|
+                3(?:
+                  4\d|
+                  5[0-7]|
+                  6[1-69]|
+                  [78][4-6]
+                )|
+                4(?:
+                  2[3-6]|
+                  [457][4-6]|
+                  6[2-6]
+                )|
+                5(?:
+                  4[0-4679]|
+                  [56][024-6]|
+                  8[4-6]
+                )|
+                6(?:
+                  [03-9][4-6]|
+                  2[2-6]
+                )|
+                7(?:
+                  1[3-6]|
+                  2[4-6]|
+                  6[2-6]
+                )|
+                8(?:
+                  [27][2-7]|
+                  3[4-6]|
+                  4\d|
+                  9[2-6]
+                )|
+                9(?:
+                  [136-8][4-6]|
+                  2[2-7]
+                )
               )|
               5(?:
-                [138]\d|
-                2[1245]|
-                4[1-9]|
-                6[2-4]|
-                7[1-6]
+                1[2-8]\d|
+                2(?:
+                  [124][4-6]|
+                  5[3-6]
+                )|
+                3(?:
+                  [23][4-6]|
+                  [4-6]\d|
+                  7[3-6]
+                )|
+                4(?:
+                  1[2-6]|
+                  [2689][4-6]|
+                  [347][3-6]
+                )|
+                6(?:
+                  [23][4-6]|
+                  4[2-6]
+                )|
+                7(?:
+                  1[3-6]|
+                  [2-6][4-6]
+                )|
+                8(?:
+                  [23][4-6]|
+                  [46]\d|
+                  5[013-7]
+                )
               )|
-              6[24]\d|
+              6(?:
+                2[45]|
+                44
+              )\d|
               7(?:
-                [069]\d|
-                1[1568]|
-                2[013-9]|
-                3[145]|
-                4[0-35-9]|
-                5[14-8]|
-                7[2-57]|
-                8[0-24-9]
+                [069][45]\d|
+                1(?:
+                  [15][46]|
+                  6[4-6]|
+                  8[3-6]
+                )|
+                (?:
+                  2[15]|
+                  3[145]|
+                  4[13]
+                )[4-6]|
+                5(?:
+                  [17][3-6]|
+                  [468][4-6]|
+                  5[2-7]
+                )|
+                7(?:
+                  [2-5][4-6]|
+                  7[2-8]
+                )|
+                8(?:
+                  1[46]|
+                  [26][4-6]
+                )
               )|
               8(?:
-                [01578]\d|
-                2[15-7]|
-                3[0-24-9]|
-                4[13-6]|
-                6[1-357-9]|
-                9[124]
+                (?:
+                  0[45]|
+                  1[2-6]
+                )\d|
+                2(?:
+                  1[46]|
+                  [5-7][4-6]
+                )|
+                3(?:
+                  [278][4-6]|
+                  4\d|
+                  5[124-6]
+                )|
+                4(?:
+                  [16][46]|
+                  [3-5][4-6]
+                )|
+                5(?:
+                  [34]\d|
+                  5[0-46-9]|
+                  6[0-246-9]|
+                  [78][4-6]
+                )|
+                6(?:
+                  [1-378][4-6]|
+                  5[2-8]|
+                  9[46]
+                )|
+                7(?:
+                  [24-6]\d|
+                  3[2-6]|
+                  7[4-6]|
+                  8[2-7]
+                )|
+                8(?:
+                  [3-5]\d|
+                  6[0-68]|
+                  7[4-6]|
+                  8[3-6]
+                )|
+                9(?:
+                  [12][46]|
+                  4[4-6]
+                )
               )
-            )|
-            670\d
-          )\d{6}
+            )
+          )\d{5}
         </nationalNumberPattern>
       </fixedLine>
       <!-- Also covers mobile satellite services (675 numbers). -->
-      <!-- 4-digit area codes are not covered here in detail - we only check the digit after the
-           area code is in the range 2-9. The four-digit area-code checking is done in detail if
-           we attempt to strip the caller-pays token (15) from the number. -->
       <mobile>
         <possibleLengths national="10,11" localOnly="[6-8]"/>
         <exampleNumber>91123456789</exampleNumber>
         <nationalNumberPattern>
-          675\d{7}|
-          9(?:
-            11[2-9]\d{7}|
-            (?:
-              2(?:
-                2[013]|
-                3[067]|
-                49|
-                6[01346]|
-                80|
-                9[147-9]
-              )|
-              3(?:
-                36|
-                4[1-358]|
-                5[138]|
-                6[24]|
-                7[069]|
-                8[013578]
-              )
-            )[2-9]\d{6}|
-            (?:
+          (?:
+            675\d\d|
+            9(?:
+              11[2-7]\d\d|
               2(?:
                 2(?:
-                  02|
-                  2[13-79]|
-                  4[1-6]|
-                  5[2457]|
-                  6[124-8]|
-                  7[1-4]|
-                  8[13-6]|
-                  9[1267]
+                  0(?:
+                    2[4-6]|
+                    [45]\d
+                  )|
+                  (?:
+                    1[2-6]|
+                    3[3-6]
+                  )\d|
+                  2(?:
+                    14|
+                    [3467][4-6]|
+                    [59][45]
+                  )|
+                  4(?:
+                    [156][4-6]|
+                    [23]4|
+                    4[45]
+                  )|
+                  5(?:
+                    2[45]|
+                    [45][4-6]|
+                    7[3-6]
+                  )|
+                  6(?:
+                    [145]4|
+                    2[2-6]|
+                    [6-8][4-6]
+                  )|
+                  7[1-4]4|
+                  8(?:
+                    1[3-6]|
+                    [356]4|
+                    4[2-7]
+                  )|
+                  9(?:
+                    1[4-6]|
+                    [267]4
+                  )
                 )|
                 3(?:
-                  02|
-                  1[467]|
-                  2[03-6]|
-                  3[13-8]|
-                  [49][2-6]|
-                  5[2-8]
+                  0(?:
+                    2[2-6]|
+                    4\d
+                  )|
+                  1(?:
+                    [47][4-6]|
+                    64
+                  )|
+                  2(?:
+                    [03][2-6]|
+                    4[3-6]|
+                    5[4-6]|
+                    6[45]
+                  )|
+                  3[13-8]4|
+                  4(?:
+                    [24][45]|
+                    34|
+                    5[4-6]|
+                    6[3-6]
+                  )|
+                  5(?:
+                    [25][4-6]|
+                    [346-8]4
+                  )|
+                  (?:
+                    64|
+                    7[45]
+                  )\d|
+                  9(?:
+                    2[3-6]|
+                    [3-5]4|
+                    6[4-6]
+                  )
                 )|
-                47[3-578]|
+                4(?:
+                  7(?:
+                    3[45]|
+                    [48][4-6]|
+                    54|
+                    7[2-6]
+                  )|
+                  94\d
+                )|
                 6(?:
-                  2[24-6]|
-                  4[6-8]|
-                  5[15-8]
+                  (?:
+                    04|
+                    1[2-7]|
+                    [36][45]
+                  )\d|
+                  2(?:
+                    2[2-6]|
+                    [46]4|
+                    5[4-6]
+                  )|
+                  4(?:
+                    [45]\d|
+                    6[0-46-9]|
+                    [78]4
+                  )|
+                  5(?:
+                    [1568]4|
+                    7[2-7]
+                  )
                 )|
+                80[45]\d|
                 9(?:
-                  0[1-3]|
-                  2\d|
-                  3[1-6]|
-                  4[02568]|
-                  5[2-4]|
-                  6[2-46]|
-                  72|
-                  8[23]
+                  0(?:
+                    1[3-6]|
+                    2[45]|
+                    34
+                  )|
+                  (?:
+                    1[4-6]|
+                    9[3-6]
+                  )\d|
+                  2(?:
+                    0[2-7]|
+                    [1457-9]4|
+                    [26][45]|
+                    3[3-6]
+                  )|
+                  3(?:
+                    [1356]4|
+                    2[4-6]|
+                    4[45]
+                  )|
+                  4(?:
+                    [08]4|
+                    2[2-6]|
+                    4\d|
+                    5[02-69]|
+                    6[45]
+                  )|
+                  5(?:
+                    [23]4|
+                    4[2-8]
+                  )|
+                  6(?:
+                    [23]4|
+                    4[3-6]|
+                    6[2-7]
+                  )|
+                  7(?:
+                    2[45]|
+                    [4-6]\d
+                  )|
+                  8(?:
+                    24|
+                    3[2-6]|
+                    [45]\d
+                  )
                 )
               )|
               3(?:
                 3(?:
-                  2[79]|
-                  8[2578]
+                  2(?:
+                    7[45]|
+                    9[3-6]
+                  )|
+                  64\d|
+                  8[2578][4-6]
                 )|
                 4(?:
-                  0[0-24-9]|
-                  4[24-7]|
-                  6[02-9]|
-                  7[126]|
-                  9[1-36-8]
+                  0[0-24-9][4-6]|
+                  (?:
+                    1[2-7]|
+                    2[4-6]
+                  )\d|
+                  3(?:
+                    4\d|
+                    5[0-7]|
+                    6[1-69]|
+                    [78][4-6]
+                  )|
+                  4(?:
+                    2[3-6]|
+                    [457][4-6]|
+                    6[2-6]
+                  )|
+                  5(?:
+                    4[0-4679]|
+                    [56][024-6]|
+                    8[4-6]
+                  )|
+                  6(?:
+                    [03-9][4-6]|
+                    2[2-6]
+                  )|
+                  7(?:
+                    1[3-6]|
+                    2[4-6]|
+                    6[2-6]
+                  )|
+                  8(?:
+                    [27][2-7]|
+                    3[4-6]|
+                    4\d|
+                    9[2-6]
+                  )|
+                  9(?:
+                    [136-8][4-6]|
+                    2[2-7]
+                  )
                 )|
                 5(?:
-                  2[1245]|
-                  3[237]|
-                  4[1-46-9]|
-                  6[2-4]|
-                  7[1-6]|
-                  8[2-5]
+                  1[2-8]\d|
+                  2(?:
+                    [124][4-6]|
+                    5[3-6]
+                  )|
+                  3(?:
+                    [23][4-6]|
+                    [4-6]\d|
+                    7[3-6]
+                  )|
+                  4(?:
+                    1[2-6]|
+                    [2689][4-6]|
+                    [347][3-6]
+                  )|
+                  6(?:
+                    [23][4-6]|
+                    4[2-6]
+                  )|
+                  7(?:
+                    1[3-6]|
+                    [2-6][4-6]
+                  )|
+                  8(?:
+                    [23][4-6]|
+                    [46]\d|
+                    5[013-7]
+                  )
                 )|
+                6(?:
+                  2[45]|
+                  44
+                )\d|
                 7(?:
-                  1[1568]|
-                  2[15]|
-                  3[145]|
-                  4[13]|
-                  5[14-8]|
-                  7[2-57]|
-                  8[126]
+                  [069][45]\d|
+                  1(?:
+                    [15][46]|
+                    6[4-6]|
+                    8[3-6]
+                  )|
+                  (?:
+                    2[15]|
+                    3[145]|
+                    4[13]
+                  )[4-6]|
+                  5(?:
+                    [17][3-6]|
+                    [468][4-6]|
+                    5[2-7]
+                  )|
+                  7(?:
+                    [2-5][4-6]|
+                    7[2-8]
+                  )|
+                  8(?:
+                    1[46]|
+                    [26][4-6]
+                  )
                 )|
                 8(?:
-                  2[15-7]|
-                  3[2578]|
-                  4[13-6]|
-                  5[4-8]|
-                  6[1-357-9]|
-                  9[124]
+                  (?:
+                    0[45]|
+                    1[2-6]
+                  )\d|
+                  2(?:
+                    1[46]|
+                    [5-7][4-6]
+                  )|
+                  3(?:
+                    [278][4-6]|
+                    4\d|
+                    5[124-6]
+                  )|
+                  4(?:
+                    [16][46]|
+                    [3-5][4-6]
+                  )|
+                  5(?:
+                    [34]\d|
+                    5[0-46-9]|
+                    6[0-246-9]|
+                    [78][4-6]
+                  )|
+                  6(?:
+                    [1-378][4-6]|
+                    5[2-8]|
+                    9[46]
+                  )|
+                  7(?:
+                    [24-6]\d|
+                    3[2-6]|
+                    7[4-6]|
+                    8[2-7]
+                  )|
+                  8(?:
+                    [3-5]\d|
+                    6[0-68]|
+                    7[4-6]|
+                    8[3-6]
+                  )|
+                  9(?:
+                    [12][46]|
+                    4[4-6]
+                  )
                 )
               )
-            )[2-9]\d{5}
-          )
+            )
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -1501,6 +2168,12 @@
     <territory id="AT" countryCode="43" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
       <availableFormats>
+        <!-- Shortcode format -->
+        <numberFormat pattern="(\d{6})">
+          <leadingDigits>11</leadingDigits>
+          <format>$1</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <!-- Vienna (Wien) fixed line format (1-digit area code). -->
         <numberFormat pattern="(\d)(\d{3,12})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
@@ -3163,9 +3836,8 @@
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
-            [1367]|
-            8[047]|
-            9[014578]
+            [13679]|
+            8[047]
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -3267,11 +3939,7 @@
     <territory id="BI" countryCode="257" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>
-            [23]|
-            6[189]|
-            7[125-9]
-          </leadingDigits>
+          <leadingDigits>[2367]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -5097,18 +5765,7 @@
              ranges are maintained in both fixed-line and mobile categories. Formats are based
              on original phone number type. -->
         <numberFormat pattern="(\d)(\d{4})(\d{4})" nationalPrefixFormattingRule="($FG)">
-          <leadingDigits>
-            2(?:
-              2|
-              32
-            )
-          </leadingDigits>
-          <leadingDigits>
-            2(?:
-              2|
-              32[0-46-8]
-            )
-          </leadingDigits>
+          <leadingDigits>2[23]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- Format for all other fixed-line numbers. -->
@@ -5532,7 +6189,7 @@
           <leadingDigits>
             1(?:
               [3-57-9]|
-              6[267]
+              6[25-7]
             )
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -5695,10 +6352,11 @@
           )
         </nationalNumberPattern>
       </fixedLine>
-      <!-- 170, 176 and 177 prefixes are introduced in early 2014 for 4G networks. ITU mentions
-           146 range as "Non-geographic number, Mobile (IoT dedicated)". Library does not support
-           "Internet of things (IoT)" numbers which are generally used for communication between
-           the devices. So we don't include 146 here at this time. -->
+      <!-- 170, 176 and 177 prefixes are introduced in early 2014 for 4G networks. ITU mentions 13
+           digit 10647, 1440 and 10 digit 14[68] ranges as "Non-geographic number, Mobile (IoT
+           dedicated)". Library does not support "Internet of things (IoT)" numbers which are
+           generally used for communication between the devices. So we don't include 146 here at
+           this time. -->
       <mobile>
         <possibleLengths national="11"/>
         <exampleNumber>13123456789</exampleNumber>
@@ -5707,7 +6365,7 @@
             [38]\d{3}|
             4[57]\d{2}|
             5[0-35-9]\d{2}|
-            6[267]\d{2}|
+            6[25-7]\d{2}|
             7(?:
               [0-35-8]\d{2}|
               40[0-5]
@@ -6097,19 +6755,28 @@
       </generalDesc>
       <fixedLine>
         <possibleLengths national="7,8"/>
-        <exampleNumber>94151234</exampleNumber>
+        <exampleNumber>94351234</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            (?:
-              [48]\d|
-              50
-            )\d|
+            4(?:
+              3[0-5]|
+              4[14]|
+              6\d
+            )|
+            50\d|
             7(?:
-              2[0-24]|
-              [34]\d|
-              6[35-7]|
+              2[014]|
+              3[02-9]|
+              4[4-9]|
+              6[357]|
               77|
               8[7-9]
+            )|
+            8(?:
+              3[39]|
+              [46]\d|
+              7[01]|
+              8[57-9]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -6123,10 +6790,7 @@
               [12467]\d|
               3[01]
             )|
-            6(?:
-              [15-9]\d|
-              3[01]
-            )
+            6[5-9]\d
           )\d{4}
         </nationalNumberPattern>
       </mobile>
@@ -6341,11 +7005,11 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>9[36]</leadingDigits>
+          <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>96</leadingDigits>
+          <leadingDigits>9</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -6641,12 +7305,7 @@
         </numberFormat>
         <!-- Mobile/pager format (from ITU document). Actual usage varies. -->
         <numberFormat pattern="(\d{3})(\d{7,8})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>
-            1(?:
-              6[02-489]|
-              7
-            )
-          </leadingDigits>
+          <leadingDigits>1[67]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <!-- Toll free (800) numbers. -->
@@ -8064,6 +8723,12 @@
           <format>$1</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
+        <!-- Format for 6 digit short codes. -->
+        <numberFormat pattern="(\d{6})">
+          <leadingDigits>11</leadingDigits>
+          <format>$1</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <!-- General format for 1-digit prefix (5-10 digit numbers). -->
         <numberFormat pattern="(\d)(\d{4,9})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
@@ -8081,8 +8746,7 @@
           <leadingDigits>
             1(?:
               0[1-9]|
-              [3-79][1-8]|
-              8
+              [3-9]
             )|
             2(?:
               0[1-9]|
@@ -8296,20 +8960,7 @@
     <territory id="FM" countryCode="691" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>
-            3(?:
-              20|
-              [357]
-            )|
-            9
-          </leadingDigits>
-          <leadingDigits>
-            3(?:
-              20[1-9]|
-              [357]
-            )|
-            9
-          </leadingDigits>
+          <leadingDigits>[39]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
@@ -10417,7 +11068,7 @@
           (?:
             46(?:
               0[0-6]|
-              1[01]|
+              1[0-2]|
               4[0-57-9]
             )|
             5(?:
@@ -15162,8 +15813,7 @@
          leading 0 - no numbers online have been found formatted this way, but the ITU document
          lists it as a national dialling prefix. -->
     <!-- http://www.itu.int/oth/T0202000071/en -->
-    <territory id="KI" countryCode="686" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixOptionalWhenFormatting="true">
+    <territory id="KI" countryCode="686" internationalPrefix="00" nationalPrefix="0">
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -15449,12 +16099,18 @@
     <!-- http://www.telecentro.co.kr/sub/index.php?job=detail&ebcf_id=faq&page=1&mid=0503&eb_seq=36 -->
     <territory id="KR" countryCode="82"
                internationalPrefix="00(?:[125689]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))"
-               nationalPrefix="0" nationalPrefixForParsing="0(8[1-46-8]|85\d{2})?"
-               nationalPrefixFormattingRule="$NP$FG" carrierCodeFormattingRule="$NP$CC-$FG"
+               nationalPrefix="0" nationalPrefixForParsing="0(8(?:[1-46-8]|5\d\d))?"
                mobileNumberPortableRegion="true">
       <availableFormats>
+        <!-- Format for 5 digit short codes. -->
+        <numberFormat pattern="(\d{5})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>1</leadingDigits>
+          <format>$1</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <!-- Fixed-line number ranges with 5-6 digits. -->
-        <numberFormat pattern="(\d{2})(\d{3,4})">
+        <numberFormat pattern="(\d{2})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG"
+                      carrierCodeFormattingRule="$NP$CC-$FG">
           <leadingDigits>
             (?:
               3[1-3]|
@@ -15465,7 +16121,7 @@
           <format>$1-$2</format>
         </numberFormat>
         <!-- UAN numbers. -->
-        <numberFormat pattern="(\d{4})(\d{4})" nationalPrefixFormattingRule="$FG">
+        <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
             1(?:
               5[246-9]|
@@ -15500,78 +16156,58 @@
           </leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
-        <numberFormat pattern="(\d{5})">
-          <leadingDigits>1[016-9]1</leadingDigits>
-          <leadingDigits>1[016-9]11</leadingDigits>
-          <leadingDigits>1[016-9]114</leadingDigits>
-          <format>$1</format>
-        </numberFormat>
         <!-- Fixed-line number ranges with 8-9 digits. -->
-        <numberFormat pattern="(\d)(\d{3,4})(\d{4})">
-          <leadingDigits>2[1-9]</leadingDigits>
+        <numberFormat pattern="(\d)(\d{3,4})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      carrierCodeFormattingRule="$NP$CC-$FG">
+          <leadingDigits>2</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <!-- Premium-rate and 9-digit toll-free numbers. -->
-        <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      carrierCodeFormattingRule="$NP$CC-$FG">
           <leadingDigits>
-            60[2-9]|
-            80
+            60|
+            8
           </leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <!-- Mobile, pager, and fixed-line number ranges with 9-10 digits. -->
-        <numberFormat pattern="(\d{2})(\d{3,4})(\d{4})">
+        <numberFormat pattern="(\d{2})(\d{3,4})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      carrierCodeFormattingRule="$NP$CC-$FG">
           <leadingDigits>
-            1[0-25-9]|
-            (?:
-              3[1-3]|
-              [46][1-4]|
-              5[1-5]
-            )[1-9]
+            [1346]|
+            5[1-5]
           </leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <!-- 10 digit personal and VOIP numbers. -->
-        <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
-          <leadingDigits>[57]0</leadingDigits>
+        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      carrierCodeFormattingRule="$NP$CC-$FG">
+          <leadingDigits>[57]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <!-- 11 digit personal numbers. -->
-        <numberFormat pattern="(\d{2})(\d{5})(\d{4})">
-          <leadingDigits>50</leadingDigits>
+        <numberFormat pattern="(\d{2})(\d{5})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
+                      carrierCodeFormattingRule="$NP$CC-$FG">
+          <leadingDigits>5</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <!-- Toll-free numbers with 11 digits. -->
-        <numberFormat pattern="(\d{5})(\d{3})(\d{3})" nationalPrefixFormattingRule="$FG">
+        <numberFormat pattern="(\d{5})(\d{3})(\d{3})">
           <leadingDigits>003</leadingDigits>
           <leadingDigits>0030</leadingDigits>
-          <leadingDigits>00308</leadingDigits>
           <format>$1 $2 $3</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- Toll-free numbers with 12-13 digits. -->
-        <numberFormat pattern="(\d{5})(\d{3,4})(\d{4})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>00[37]</leadingDigits>
-          <leadingDigits>
-            00(?:
-              36|
-              79
-            )
-          </leadingDigits>
-          <leadingDigits>
-            00(?:
-              36|
-              79
-            )8
-          </leadingDigits>
+        <numberFormat pattern="(\d{5})(\d{3,4})(\d{4})">
+          <leadingDigits>0</leadingDigits>
           <format>$1 $2 $3</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- Toll-free numbers with 14 digits. -->
-        <numberFormat pattern="(\d{5})(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$FG">
-          <leadingDigits>007</leadingDigits>
-          <leadingDigits>0079</leadingDigits>
-          <leadingDigits>00798</leadingDigits>
+        <numberFormat pattern="(\d{5})(\d{2})(\d{3})(\d{4})">
+          <leadingDigits>0</leadingDigits>
           <format>$1 $2 $3 $4</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
@@ -15614,20 +16250,24 @@
       </noInternationalDialling>
       <!-- We omit 049, supposedly for Kaesong Industrial Region, since real numbers can't be
            found, and it is in North Korea anyway. We support 7-8 digits long subscriber numbers
-           starting with 1 based on evidence of real numbers found online. -->
+           starting with 1 based on evidence of real numbers found online. Some short codes
+           (1\d{2,3}) can be dialled with area codes. So we are supporting them when they are
+           prefixed with valid area codes. -->
       <fixedLine>
-        <possibleLengths national="5,6,[8-10]" localOnly="3,7"/>
+        <possibleLengths national="5,6,[8-10]" localOnly="3,4,7"/>
         <exampleNumber>22123456</exampleNumber>
         <nationalNumberPattern>
-          2[1-9]\d{6,7}|
+          (?:
+            2|
+            3[1-3]|
+            [46][1-4]|
+            5[1-5]
+          )[1-9]\d{6,7}|
           (?:
             3[1-3]|
             [46][1-4]|
             5[1-5]
-          )(?:
-            1\d{2,3}|
-            [1-9]\d{6,7}
-          )
+          )1\d{2,3}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -15688,10 +16328,9 @@
               99
             )|
             6(?:
-              00|
+              [07]0|
               44|
               6[16]|
-              70|
               88
             )|
             8(?:
@@ -16165,10 +16804,9 @@
         <exampleNumber>2023123456</exampleNumber>
         <nationalNumberPattern>
           20(?:
-            2[2389]|
+            [29]\d|
             5[24-689]|
-            7[6-8]|
-            9[1-35-9]
+            7[6-8]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -16761,11 +17399,7 @@
               0[2-689]|
               [2-9]
             )|
-            3(?:
-              [0-46-9]|
-              5[013-9]
-            )|
-            [457]|
+            [3-57]|
             8(?:
               0[2-9]|
               [13-9]
@@ -16785,11 +17419,7 @@
               0[2-689]|
               [2-9]
             )|
-            3(?:
-              [0-46-9]|
-              5[013-9]
-            )|
-            [457]|
+            [3-57]|
             8(?:
               0[2-9]|
               [13-9]
@@ -16810,8 +17440,7 @@
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{1,2})" carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
             2(?:
-              0[1-689]|
-              [367]|
+              [0367]|
               4[3-8]
             )
           </leadingDigits>
@@ -16827,7 +17456,7 @@
         </numberFormat>
         <!-- This format is for 9 digit fixed-line ranges. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{3})" carrierCodeFormattingRule="$CC $FG">
-          <leadingDigits>20[2-689]</leadingDigits>
+          <leadingDigits>20</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <!-- Format for mobile numbers. -->
@@ -16840,8 +17469,7 @@
                       carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
             2(?:
-              0[2-689]|
-              [367]|
+              [0367]|
               4[3-8]
             )
           </leadingDigits>
@@ -16853,19 +17481,7 @@
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{1,5})" carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
             2[2-9]|
-            3(?:
-              [0-46-9]|
-              5[013-9]
-            )|
-            [457]|
-            8(?:
-              0[2-9]|
-              [13-9]
-            )|
-            9(?:
-              0[89]|
-              [2-579]
-            )
+            [3-57-9]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -17729,10 +18345,7 @@
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>
-            [24-79]|
-            8[0239]
-          </leadingDigits>
+          <leadingDigits>[24-9]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -19562,8 +20175,7 @@
              We exclude short-codes here so they are formatted as a block -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
-            [247-9]|
-            3[0-6]|
+            [2-47-9]|
             5[0-4]
           </leadingDigits>
           <format>$1.$2.$3</format>
@@ -19614,8 +20226,7 @@
           <leadingDigits>
             09|
             2[01]|
-            8[04589]|
-            9
+            [89]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -20633,7 +21244,7 @@
             21[89]|
             6(?:
               [02-9]\d|
-              1[0-5]
+              1[0-6]
             )\d|
             8(?:
               1[01]|
@@ -22635,7 +23246,7 @@
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{5})">
           <leadingDigits>
-            7[1-9]|
+            7|
             8[4-9]|
             9(?:
               1[2-9]|
@@ -25112,6 +25723,7 @@
           868(?:
             2(?:
               01|
+              1[89]|
               [23]\d
             )|
             6(?:
@@ -27672,8 +28284,7 @@
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             29|
-            3|
-            54
+            [35]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
