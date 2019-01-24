@@ -377,7 +377,14 @@
         <exampleNumber>125</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            16[01]\d\d|
+            16(?:
+              000|
+              1(?:
+                06|
+                11|
+                23
+              )
+            )|
             2[56]
           )
         </nationalNumberPattern>
@@ -466,7 +473,7 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="[2-5]"/>
-        <exampleNumber>121</exampleNumber>
+        <exampleNumber>19</exampleNumber>
         <nationalNumberPattern>
           000|
           1(?:
@@ -484,26 +491,29 @@
            except for 113. -->
       <tollFree>
         <possibleLengths national="2,3"/>
-        <exampleNumber>111</exampleNumber>
+        <exampleNumber>19</exampleNumber>
         <nationalNumberPattern>
-          [09]\d{2}|
+          000|
           1(?:
-            [02-9]\d?|
-            1[0-24-9]?
-          )
+            0[0-35-7]|
+            1[0245]|
+            2[15]|
+            9
+          )|
+          911
         </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
         <possibleLengths national="5"/>
-        <exampleNumber>89338</exampleNumber>
-        <nationalNumberPattern>89338</nationalNumberPattern>
+        <exampleNumber>89300</exampleNumber>
+        <nationalNumberPattern>893\d\d</nationalNumberPattern>
       </carrierSpecific>
       <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
       <!-- 911 is only available in some places. -->
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>101</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           10[017]|
           911
@@ -517,10 +527,12 @@
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="4,5"/>
-        <exampleNumber>3372</exampleNumber>
+        <exampleNumber>3370</exampleNumber>
         <nationalNumberPattern>
-          3372|
-          89338
+          (?:
+            337|
+            893\d
+          )\d
         </nationalNumberPattern>
       </smsServices>
     </territory>
@@ -7801,18 +7813,10 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
-        <exampleNumber>112</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0(?:
-              [01]|
-              114
-            )|
-            1(?:
-              [0247-9]|
-              114
-            )|
-            2[01389]|
+            [016-9]114|
             3(?:
               2|
               3[039]|
@@ -7820,21 +7824,22 @@
               66|
               88|
               9[18]
-            )|
-            [679]114|
-            8(?:
-              114|
-              2
             )
+          )|
+          1(?:
+            0[01]|
+            1[0247-9]|
+            2[01389]|
+            82
           )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3,4"/>
-        <exampleNumber>118</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[78]|
+            1[27-9]|
             28|
             330|
             82
@@ -7848,16 +7853,10 @@
         <possibleLengths national="3,5"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
+          1[016-9]1\d\d|
           1(?:
-            0(?:
-              [01]|
-              114
-            )|
-            1(?:
-              114|
-              4
-            )|
-            [6-9]114
+            0[01]|
+            14
           )
         </nationalNumberPattern>
       </carrierSpecific>
@@ -7870,16 +7869,14 @@
            https://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea -->
       <expandedEmergency>
         <possibleLengths national="3,4"/>
-        <exampleNumber>1339</exampleNumber>
+        <exampleNumber>117</exampleNumber>
         <nationalNumberPattern>
           1(?:
             17|
             2[139]|
             3(?:
               3[09]|
-              66|
-              88|
-              9[18]
+              [689]\d
             )|
             82
           )
