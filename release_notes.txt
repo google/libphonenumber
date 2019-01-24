@@ -1,3 +1,13 @@
+Jan 24, 2019: v8.10.4
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, AT, BH, BI, CL, CN, CW, CZ, DE, FI, FM, HK, KR, LA, LU, ML, NC, NE, PA,
+   SB, TT, ZW
+ - Updated short number metadata for region code(s): AR, KR
+ - Updated geocoding data for country calling code(s): 54 (en, es), 686 (en)
+ - Updated carrier data for country calling code(s):
+   254 (en), 507 (en), 599 (en), 880 (en)
+
 Jan 08, 2019: v8.10.3
 Code changes:
  - Better documentation for getLengthOfNationalDestinationCode to emphasise that
