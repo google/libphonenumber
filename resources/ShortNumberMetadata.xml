@@ -1672,7 +1672,7 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-6]"/>
-        <exampleNumber>168</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0(?:
@@ -1702,16 +1702,16 @@
               )
             )|
             1[25-8]|
-            2[35789]|
+            2[357-9]|
             3(?:
-              [024568]|
+              [024-68]|
               3[12]
             )|
             4[12568]|
             5\d|
             6[0-8]|
             8[015]|
-            9[0-4789]
+            9[0-47-9]
           )|
           2(?:
             7(?:
@@ -1739,24 +1739,28 @@
            numbering plan. -->
       <tollFree>
         <possibleLengths national="3,4"/>
-        <exampleNumber>181</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             00|
-            [89]\d
+            12|
+            28|
+            8[015]|
+            9[0-47-9]
           )|
           4(?:
             57|
-            828
-          )
+            82\d
+          )|
+          911
         </nationalNumberPattern>
       </tollFree>
       <standardRate>
         <possibleLengths national="3,5"/>
-        <exampleNumber>27330</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           102|
-          27330
+          273\d\d
         </nationalNumberPattern>
       </standardRate>
       <!-- https://support.twitter.com/articles/20170024 -->
@@ -1768,21 +1772,23 @@
            Grande do Sul. -->
       <carrierSpecific>
         <possibleLengths national="[3-5]"/>
-        <exampleNumber>27878</exampleNumber>
+        <exampleNumber>151</exampleNumber>
         <nationalNumberPattern>
           151|
-          27878|
+          (?:
+            278|
+            555
+          )\d\d|
           4(?:
-            0404?|
-            11[12]|
+            04\d\d?|
+            11\d|
             57
-          )|
-          55555
+          )
         </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>190</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
             12|
@@ -1796,14 +1802,14 @@
            Paulo. -->
       <expandedEmergency>
         <possibleLengths national="3"/>
-        <exampleNumber>168</exampleNumber>
+        <exampleNumber>116</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[06]|
+            16|
             23|
             68|
             8[015]|
-            9[145789]
+            9[147-9]
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -1812,23 +1818,20 @@
            services. We can't find range-related information, despite emailing Anatel. -->
       <smsServices>
         <possibleLengths national="[4-6]"/>
-        <exampleNumber>27878</exampleNumber>
+        <exampleNumber>4820</exampleNumber>
         <nationalNumberPattern>
           2(?:
-            7(?:
-              330|
-              878
-            )|
-            85959?
+            7[38]\d\d|
+            85\d{2,3}
           )|
           4(?:
             0404|
-            828
+            82\d
           )|
           6(?:
-            0\d{4}|
-            10000
-          )
+            0\d|
+            10
+          )\d{3}
         </nationalNumberPattern>
       </smsServices>
     </territory>
@@ -12113,7 +12116,7 @@
               9[014-9]
             )|
             7(?:
-              19|
+              [14]9|
               7[27]|
               90
             )|
