@@ -38,10 +38,6 @@ namespace {
 
 const char kPlusSign = '+';
 
-// A pattern that is used to match character classes in regular expressions.
-// An example of a character class is [1-4].
-const char kCharacterClassPattern[] = "\\[([^\\[\\]])*\\]";
-
 // This is the minimum length of national number accrued that is required to
 // trigger the formatter. The first element of the leading_digits_pattern of
 // each number_format contains a regular expression that matches up to this
@@ -60,39 +56,6 @@ const char kSeparatorBeforeNationalNumber = ' ';
 // an indicator to us that we should separate the national prefix from the
 // number when formatting.
 const char kNationalPrefixSeparatorsPattern[] = "[- ]";
-
-// Replaces any standalone digit in the pattern (not any inside a {} grouping)
-// with \d. This function replaces the standalone digit regex used in the Java
-// version which is currently not supported by RE2 because it uses a special
-// construct (?=).
-void ReplacePatternDigits(string* pattern) {
-  DCHECK(pattern);
-  string new_pattern;
-  // This is needed since sometimes there is more than one digit in between the
-  // curly braces.
-  bool is_in_braces = false;
-
-  for (string::const_iterator it = pattern->begin(); it != pattern->end();
-       ++it) {
-    const char current_char = *it;
-
-    if (isdigit(current_char)) {
-      if (is_in_braces) {
-        new_pattern += current_char;
-      } else {
-        new_pattern += "\\d";
-      }
-    } else {
-      new_pattern += current_char;
-      if (current_char == '{') {
-        is_in_braces = true;
-      } else if (current_char == '}') {
-        is_in_braces = false;
-      }
-    }
-  }
-  pattern->assign(new_pattern);
-}
 
 // Matches all the groups contained in 'input' against 'pattern'.
 void MatchAllGroups(const string& pattern,
@@ -273,20 +236,6 @@ void AsYouTypeFormatter::SetShouldAddSpaceAfterNationalPrefix(
 
 bool AsYouTypeFormatter::CreateFormattingTemplate(const NumberFormat& format) {
   string number_pattern = format.pattern();
-
-  // The formatter doesn't format numbers when numberPattern contains "|", e.g.
-  // (20|3)\d{4}. In those cases we quickly return.
-  if (number_pattern.find('|') != string::npos) {
-    return false;
-  }
-  // Replace anything in the form of [..] with \d.
-  static const scoped_ptr<const RegExp> character_class_pattern(
-      regexp_factory_->CreateRegExp(kCharacterClassPattern));
-  character_class_pattern->GlobalReplace(&number_pattern, "\\\\d");
-
-  // Replace any standalone digit (not the one in d{}) with \d.
-  ReplacePatternDigits(&number_pattern);
-
   string number_format = format.format();
   formatting_template_.remove();
   UnicodeString temp_template;

@@ -292,8 +292,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // significant number into NDC and subscriber number. The NDC of a phone
   // number is normally the first group of digit(s) right after the country
   // calling code when the number is formatted in the international format, if
-  // there is a subscriber number part that follows. An example of how this
-  // could be used:
+  // there is a subscriber number part that follows.
+  //
+  // N.B.: similar to an area code, not all numbers have an NDC!
+  //
+  // An example of how this could be used:
   //
   // const PhoneNumberUtil& phone_util(*PhoneNumberUtil::GetInstance());
   // PhoneNumber number;

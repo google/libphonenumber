@@ -1,3 +1,51 @@
+Feb 06, 2019: v8.10.5
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AE, AG, AI, AM, AR, AS, AT, AU, AZ, BA, BB, BE, BG, BM, BO, BR, BS, BT, BW,
+   BY, CG, CH, CL, CO, DE, DM, DZ, ES, FI, FR, GB, GD, GE, GR, GU, HN, HR, IE,
+   IL, IN, IT, JM, JO, JP, KG, KN, KP, KR, KY, LC, LI, LK, LT, LU, MA, MC, MD,
+   MG, MM, MP, MS, MU, MV, MW, MX, MY, NA, NC, NE, NF, NL, NO, NZ, PE, PH, PL,
+   PY, RO, RU, SA, SB, SC, SE, SG, SI, SK, SM, SN, SO, SR, SX, TC, TJ, TM, TO,
+   TR, TT, TZ, UG, UY, VC, VG, VI, VN, XK, ZM, ZW
+ - Updated short number metadata for region code(s): BR, TH
+ - Updated geocoding data for country calling code(s): 54 (en), 55 (en, pt)
+ - Updated carrier data for country calling code(s): 55 (en)
+ - Updated / refreshed time zone meta data.
+
+Jan 24, 2019: v8.10.4
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, AT, BH, BI, CL, CN, CW, CZ, DE, FI, FM, HK, KR, LA, LU, ML, NC, NE, PA,
+   SB, TT, ZW
+ - Updated short number metadata for region code(s): AR, KR
+ - Updated geocoding data for country calling code(s): 54 (en, es), 686 (en)
+ - Updated carrier data for country calling code(s):
+   254 (en), 507 (en), 599 (en), 880 (en)
+
+Jan 08, 2019: v8.10.3
+Code changes:
+ - Better documentation for getLengthOfNationalDestinationCode to emphasise that
+   not every number has one.
+ - Removed unused code in the AsYouTypeFormatter: We no longer have numbers in
+   formatting matching patterns, only \d.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   EG, GM, HK, LR, MM, NG, SD, UZ, VN, VU
+ - Updated geocoding data for country calling code(s): 249 (en)
+ - Updated carrier data for country calling code(s):
+   84 (en), 95 (en), 220 (en), 231 (en), 852 (en, zh, zh_Hant), 965 (ar)
+ - Updated / refreshed time zone meta data.
+
+Dec 06, 2018: v8.10.2
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   882, AE, AL, AR, BD, BR, CN, ID, IN, JM, LK, MG, MU, MX, OM, SI, UA, ZW
+ - Updated short number metadata for region code(s): IN, MG, MX, SI
+ - Updated geocoding data for country calling code(s): 52 (en, es), 261 (en)
+ - Updated carrier data for country calling code(s):
+   66 (en), 91 (en), 386 (en), 968 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 21, 2018: v8.10.1
 Metadata changes:
  - Updated phone metadata for region code(s):
