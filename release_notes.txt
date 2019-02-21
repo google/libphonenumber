@@ -1,17 +1,7 @@
 Feb 21, 2019: v8.10.6
 Metadata changes:
  - Updated phone metadata for region code(s):
-   882, AL, AR, AT, AU, AX, AZ, BA, BD, BE, BG, BN, BR, BS, BW, BY, BZ, CC, CD,
-   CG, CL, CN, CO, CR, CU, CW, CX, CZ, DE, DZ, EC, EG, ES, FI, FJ, FR, GB, GH,
-   GI, GQ, GY, HK, HR, ID, IE, IL, IM, IN, IQ, IR, IT, JE, JM, JO, JP, KE, KH,
-   KI, KP, KR, KW, KZ, LI, LU, MC, ME, MG, MH, ML, MM, MN, MP, MS, MT, MU, MV,
-   MW, MY, NG, NL, NO, NP, NZ, OM, PG, PH, PK, PL, PS, PY, QA, RO, RS, RU, SA,
-   SB, SC, SE, SG, SI, SJ, SK, SN, SO, ST, SX, SY, SZ, TH, TJ, TL, TN, TO, TR,
-   TW, UA, UG, VA, VE, VG, VI, VN, VU, WS, XK, YT, ZA, ZM, ZW
- - Updated short number metadata for region code(s):
-   BA, BD, BE, BH, BR, CH, CL, CN, CZ, EE, ER, ES, FO, FR, GA, GE, GG, GH, GI,
-   GT, HK, HR, IE, IN, IT, LU, MD, ML, MU, MY, NI, PL, QA, RO, RU, SE, SI, TH,
-   TR, UA, US, ZA
+   CN, IR, JM, KE, KR, KZ, LI, VN
  - Updated geocoding data for country calling code(s): 86 (en, zh)
  - Updated carrier data for country calling code(s):
    84 (en), 86 (en, zh, zh_Hant), 423 (en)
