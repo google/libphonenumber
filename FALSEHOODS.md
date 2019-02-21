@@ -48,6 +48,9 @@ surprising how many false assumptions programmers continue to make about them.
 
 1.  **Each country has only one country calling code**
 
+    Réunion Island, a French department in the Indian Ocean, uses +262 as prefix
+    instead of the +33 of Metropolitan France.
+    
     As of this present moment (in Mar. 2016), phones in the disputed territory
     and partially recognised state of Kosovo may be reached by dialing the
     country calling code for Serbia (+381), Slovenia (+386), or Monaco (+377),
