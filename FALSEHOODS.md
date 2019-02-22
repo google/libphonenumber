@@ -9,7 +9,7 @@ surprising how many false assumptions programmers continue to make about them.
 
     Some people do not own phones, or do not wish to provide you with their
     telephone number when asked. Do not require a user to provide a phone number
-    unless it is essential, and whenever possible try and provide a fallback
+    unless it is essential, and whenever possible try to provide a fallback
     to accommodate these users.
 
 1.  **An individual has only one phone number**
@@ -69,7 +69,7 @@ surprising how many false assumptions programmers continue to make about them.
     A lot of people still only have a fixed-line telephone, which typically cannot
     send or receive text messages.
 
-    **Tip:** Whenever possible, try and accommodate these users by calling them
+    **Tip:** Whenever possible, try to accommodate these users by calling them
     with a voice message or voice prompts. Alternatively, if your service
     requires sending text messages, verify that the number can receive text
     messages after the user provides it.
