@@ -12,6 +12,18 @@ surprising how many false assumptions programmers continue to make about them.
     unless it is essential, and whenever possible try to provide a fallback
     to accommodate these users.
 
+1. **You can make a call to any phone number**
+  
+    Some devices such as EFTPOS terminals, fax machines and mobile internet
+    dongles may not support receiving calls. In addition, some people can not
+    use their phones for phone calls. This may be permanent (such as a hearing
+    disability), temporary (temporary hearing loss) or situational (when the
+    user is in a noisy environment).
+  
+    **Tip:** Make how you use phone numbers apparent to the user and give them
+    the option to set their preference. Ensure that you look up this preference
+    before attempting to communicate with the user.
+
 1.  **An individual has only one phone number**
 
     Obviously, this isn't necessarily true.
