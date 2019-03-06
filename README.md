@@ -48,7 +48,7 @@ Cream Sandwich).
 *   `PhoneNumberToTimeZonesMapper` - provides timezone information related to a
     phone number.
 
-# Demo
+# Demo:
 
 ## Java
 
