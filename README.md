@@ -2,7 +2,7 @@
 <img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
 </p>
 
-# What is it?
+# What is it for?
 
 Google's common Java, C++ and JavaScript library for parsing, formatting, and
 validating international phone numbers. The Java version is optimized for
