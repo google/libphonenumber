@@ -1,3 +1,9 @@
+Mar 06, 2019: v8.10.7
+Metadata changes:
+ - Updated phone metadata for region code(s): BD, BH, HN, MM, PH, ZW
+ - Updated geocoding data for country calling code(s): 90 (en, tr), 95 (en)
+ - Updated carrier data for country calling code(s): 63 (en), 64 (en)
+
 Feb 21, 2019: v8.10.6
 Metadata changes:
  - Updated phone metadata for region code(s):

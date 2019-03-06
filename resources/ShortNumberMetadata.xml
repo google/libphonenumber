@@ -12655,7 +12655,6 @@
           999
         </nationalNumberPattern>
       </tollFree>
-      <!-- https://support.google.com/plus/answer/1304917 -->
       <carrierSpecific>
         <possibleLengths national="5"/>
         <exampleNumber>46400</exampleNumber>
@@ -12671,7 +12670,6 @@
           999
         </nationalNumberPattern>
       </emergency>
-      <!-- https://support.google.com/plus/answer/1304917 -->
       <smsServices>
         <possibleLengths national="5"/>
         <exampleNumber>46400</exampleNumber>
@@ -12754,7 +12752,6 @@
 
     <!-- Uganda -->
     <!-- http://www.itu.int/oth/T02020000F1/en -->
-    <!-- http://www.ucc.co.ug/licensing/ugandaNumberingPlan.pdf -->
     <territory id="UG">
       <generalDesc>
         <nationalNumberPattern>9\d\d</nationalNumberPattern>
