@@ -3088,10 +3088,10 @@
            2, others do not - both are allowed for now. For some area codes, the subscriber number
            length described in our source documentation doesn't match numbers online (e.g. 05222)
            so we allow both for now. (This applies to 0431, 04329, 04623, 05327 as well). We have
-           also added 04452 and 04923 from numbers found online. Included prefixes 2778, 2841, 2963
-           2989 and 4462 as per user report. 9-digit 24 and 25 prefix numbers were added based on
-           user reports, although a doc from BRTC mentions that they are 10-digit numbers, which we
-           think might be a typo. -->
+           also added 04452 and 04923 from numbers found online. Included prefixes 2778, 2841, 2893,
+           2963, 2989 and 4462 as per user report. 9-digit 24 and 25 prefix numbers were added based
+           on user reports, although a doc from BRTC mentions that they are 10-digit numbers, which
+           we think might be a typo. -->
       <fixedLine>
         <possibleLengths national="[6-10]"/>
         <exampleNumber>27111234</exampleNumber>
@@ -3173,8 +3173,9 @@
               )|
               8(?:
                 0[125]|
-                [13][1-6]|
+                1[1-6]|
                 2[0157-9]|
+                3[1-69]|
                 41|
                 6[1-35]|
                 7[1-5]|
@@ -3698,7 +3699,8 @@
                 0\d|
                 3[12]|
                 44|
-                7[7-9]
+                7[7-9]|
+                88
               )|
               9[69][69]
             )|
@@ -11390,7 +11392,8 @@
         <nationalNumberPattern>[237-9]\d{7}</nationalNumberPattern>
       </generalDesc>
       <!-- Extra prefixes 2244, 226[24], 227[0135689], 228X, 2292, 2407, 2508, 2516, 2540, 2564,
-           2580, 260X, 2617, 263[04] and 2780 were added from numbers found online and user reports. -->
+           2580, 260X, 2617, 2620, 263[04] and 2780 were added from numbers found online and user
+           reports. -->
       <fixedLine>
         <possibleLengths national="8"/>
         <exampleNumber>22123456</exampleNumber>
@@ -11426,6 +11429,7 @@
             6(?:
               [056]\d|
               17|
+              20|
               3[04]|
               4[0-378]|
               [78][0-8]|
@@ -13699,7 +13703,6 @@
     </territory>
 
     <!-- Iceland -->
-    <!-- As per new update from Iceland added carrier selection codes as international prefixes. -->
     <!-- http://www.pta.is/default.aspx?cat_id=85 -->
     <!-- http://www.pfs.is/default.aspx?cat_id=14&module_id=210&element_id=4 -->
     <!-- http://www.pfs.is/english/telecom-affairs/numbering/ -->
@@ -18383,8 +18386,9 @@
               4(?:
                 2[2-469]|
                 39|
+                46|
                 6[25]|
-                7[01]
+                7[0-2]
               )|
               6
             )|
@@ -18397,15 +18401,16 @@
                 0\d|
                 2[246]|
                 39|
+                46|
                 62|
-                7[01]
+                7[0-2]
               )|
               51\d\d
             )|
             4(?:
               2(?:
                 2\d\d|
-                480
+                48[0-2]
               )|
               [34]20\d
             )|
@@ -18417,9 +18422,13 @@
               (?:
                 124|
                 320|
-                42[04]|
                 [56]2\d
               )\d|
+              247[23]|
+              4(?:
+                2[04]\d|
+                47[23]
+              )|
               7(?:
                 (?:
                   3\d|
@@ -18427,28 +18436,41 @@
                 )\d|
                 4(?:
                   39|
-                  [67]0
+                  60|
+                  7[01]
                 )
               )
             )|
-            8[1-35]2\d\d
+            8(?:
+              [1-3]2\d|
+              5(?:
+                2\d|
+                4[1-9]
+              )
+            )\d
           )\d{4}|
           5(?:
-            22\d{5,6}|
+            2(?:
+              2\d{5,6}|
+              47[023]\d{4}
+            )|
             (?:
-              3[2-68]|
+              347[23]|
               42(?:
                 1|
                 86
               )|
               (?:
                 522|
-                [89]20
+                820
               )\d|
-              6[2-4]|
               7(?:
                 20\d|
-                480
+                48[0-2]
+              )|
+              9(?:
+                20\d|
+                47[01]
               )
             )\d{4}
           )|
@@ -18472,12 +18494,13 @@
                 5[35]
               )|
               5(?:
-                2[235-8]|
+                [27][2-8]|
+                3[2-68]|
                 4[25-8]|
                 5[23]|
-                7[2-8]|
+                6[2-4]|
                 8[25-7]|
-                9[235-7]
+                9[2-7]
               )|
               6(?:
                 [19]20|
@@ -18527,19 +18550,18 @@
           )\d{4}|
           (?:
             4[35]|
-            5[2489]|
+            5[48]|
             63|
             7[0145]|
             8[13]
-          )4(?:
-            [0-689]\d{3}|
-            7(?:
-              0\d\d(?:
-                \d{2}
-              )?|
-              [1-9]\d\d
-            )
-          )
+          )470\d{4}|
+          (?:
+            4[35]|
+            5[48]|
+            63|
+            7[0145]|
+            8[13]
+          )4\d{4}
         </nationalNumberPattern>
       </fixedLine>
       <!-- Added 99[089] (8 digits), 961 (9 digits), 996 and 997 (10 digits) from bug
@@ -21399,6 +21421,10 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
+        <numberFormat pattern="(\d)(\d{4})(\d{4})" nationalPrefixFormattingRule="($NP$FG)">
+          <leadingDigits>2</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="($NP$FG)">
           <leadingDigits>
             [3-7]|
@@ -21422,42 +21448,41 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          1800\d{7,9}|
           (?:
-            1800|
-            8
-          )\d{7,9}|
-          2\d{5}(?:
-            \d{2}
-          )?|
-          (?:
-            [3-7]|
-            9\d
-          )\d{8}
+            2|
+            [89]\d{4}
+          )\d{5}|
+          [2-8]\d{8}|
+          [28]\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Evidence on number length is hard to come by. We have found diallable numbers in Manila
            that have only 5 digits after the area code; plus it seems the 8822 area code is
-           followed by 6 digits, and 8842 by only 4. -->
+           followed by 6 digits, and 8842 by only 4. Subscriber Numbers of area code 02 are migrated
+           from 7 digits to 8 digits since 18th March 2019. -->
       <fixedLine>
         <possibleLengths national="6,[8-10]" localOnly="4,5,7"/>
         <exampleNumber>21234567</exampleNumber>
         <nationalNumberPattern>
+          (?:
+            (?:
+              2[3-8]|
+              3[2-68]|
+              4[2-9]|
+              5[2-6]|
+              6[2-58]|
+              7[24578]
+            )\d{3}|
+            88(?:
+              22\d\d|
+              42
+            )
+          )\d{4}|
           2\d{5}(?:
             \d{2}
           )?|
-          88(?:
-            22\d\d|
-            42
-          )\d{4}|
-          88\d{7}|
-          (?:
-            3[2-68]|
-            4[2-9]|
-            5[2-6]|
-            6[2-58]|
-            7[24578]|
-            8[2-7]
-          )\d{7}
+          8[2-8]\d{7}
         </nationalNumberPattern>
       </fixedLine>
       <!-- 950 added based on info received from Smart. 96[5-7] added based on user report. -->
@@ -21471,12 +21496,11 @@
               0[5-9]|
               1[024-9]|
               2[0-35-9]|
-              3[02-9]|
+              [35]\d|
               4[235-9]|
-              5[056]|
-              6[5-7]|
-              7[3-79]|
-              89|
+              6[0-25-8]|
+              7[1-9]|
+              8[19]|
               9[4-9]
             )
           )\d{7}
@@ -26032,7 +26056,6 @@
 
     <!-- Uganda -->
     <!-- http://www.itu.int/oth/T02020000F1/en -->
-    <!-- http://www.ucc.co.ug/licensing/ugandaNumberingPlan.pdf -->
     <territory id="UG" countryCode="256" internationalPrefix="00[057]" nationalPrefix="0">
       <availableFormats>
         <!-- 4-digit area codes -->
@@ -28288,21 +28311,14 @@
           )\d{3}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- The ITU document list 8644 as VoIP, but an open-source reporter was in touch with the
-           issuing company (Africom) who said they were using them for SMS-capable devices, so we
-           support it as mobile. -->
       <mobile>
-        <possibleLengths national="9,10"/>
+        <possibleLengths national="9"/>
         <exampleNumber>712345678</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            7(?:
-              1\d|
-              3[2-9]|
-              7[1-9]|
-              8[2-5]
-            )|
-            8644
+          7(?:
+            [13][2-9]|
+            7[1-9]|
+            8[2-7]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -28324,7 +28340,9 @@
         <nationalNumberPattern>
           86(?:
             1[12]|
+            22|
             30|
+            44|
             55|
             77|
             8[368]
