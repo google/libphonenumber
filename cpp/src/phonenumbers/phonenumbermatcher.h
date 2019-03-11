@@ -135,7 +135,17 @@ class PhoneNumberMatcher {
     ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
                     const string&, const vector<string>&>* checker) const;
 
+  // Helper method to get the national-number part of a number, formatted
+  // without any national prefix, and return it as a set of digit blocks that
+  // would be formatted together following standard formatting rules.
   void GetNationalNumberGroups(
+      const PhoneNumber& number,
+      vector<string>* digit_blocks) const;
+
+  // Helper method to get the national-number part of a number, formatted
+  // without any national prefix, and return it as a set of digit blocks that
+  // should be formatted together according to the formatting pattern passed in.
+  void GetNationalNumberGroupsForPattern(
       const PhoneNumber& number,
       const NumberFormat* formatting_pattern,
       vector<string>* digit_blocks) const;
