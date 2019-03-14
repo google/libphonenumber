@@ -26,6 +26,7 @@
 8484|Vinaphone
 8485|Vinaphone
 8486|Viettel Mobile
+8487|I-Telecom
 8488|Vinaphone
 8489|MobiFone
 8490|MobiFone

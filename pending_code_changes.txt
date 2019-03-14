@@ -1,1 +1,6 @@
-
+* Code changes
+  - Making the application of alternate formats when finding phone numbers in
+    text in strict-grouping and exact-match mode depend on the leading digits
+    for each rule. This was always assumed but never actually done. This means
+    that the false positive rate will decrease but also that more valid numbers
+    are skipped. A subsequent CL will update patterns to increase recall.
