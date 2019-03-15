@@ -162,7 +162,7 @@ way.
 
 ### What is mobile number portability?
 
-The ability to keep your mobile phone number when changing carriers. To see whether a region supports mobile number portability use [isMobileNumberPortableRegion](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java#L3275).
+The ability to keep your mobile phone number when changing carriers. To see whether a region supports mobile number portability use [isMobileNumberPortableRegion](https://github.com/googlei18n/libphonenumber/blob/58247207903f917839001bc62525a5b48a475b7e/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java#L3524).
 
 ### Since it's possible to change the carrier for a phone number, how is the data kept up-to-date?
 
