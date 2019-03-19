@@ -1,3 +1,22 @@
+Mar 19, 2019: v8.10.8
+* Code changes
+  - Making the application of alternate formats when finding phone numbers in
+    text in strict-grouping and exact-match mode depend on the leading digits
+    for each rule. This was always assumed but never actually done. This means
+    that the false positive rate will decrease but also that more valid numbers
+    are skipped. A subsequent CL will update patterns to increase recall.
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s):
+   255, 27, 31, 34, 351, 352, 358, 359, 36, 372, 380, 381, 385, 39, 43, 44, 49,
+   506, 52, 54, 55, 595, 61, 62, 64, 66, 675, 676, 679, 7, 81, 84, 856, 90, 91,
+   94, 95, 971, 972, 995
+ - Updated phone metadata for region code(s):
+   AC, AU, CC, CN, CX, EH, GE, JM, JP, KE, KG, MA, NO, PH, SJ, UA, UZ, ZW
+ - Updated short number metadata for region code(s): TW
+ - New carrier data for country calling code(s): 1658 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 380 (en, uk), 996 (en), 1876 (en)
+
 Mar 06, 2019: v8.10.7
 Metadata changes:
  - Updated phone metadata for region code(s): BD, BH, HN, MM, PH, ZW
