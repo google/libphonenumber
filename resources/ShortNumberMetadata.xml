@@ -64,7 +64,7 @@
 
 <phoneNumberMetadata>
   <territories>
-    <!-- Ascension Island -->
+    <!-- Ascension Island (AC) -->
     <!-- www.itu.int/oth/T02020000AF -->
     <territory id="AC">
       <generalDesc>
@@ -91,7 +91,7 @@
       </emergency>
     </territory>
 
-    <!-- Andorra -->
+    <!-- Andorra (AD) -->
     <!-- http://www.itu.int/oth/T0202000005/en -->
     <territory id="AD">
       <generalDesc>
@@ -115,7 +115,7 @@
       </emergency>
     </territory>
 
-    <!-- United Arab Emirates -->
+    <!-- United Arab Emirates (AE) -->
     <!-- http://www.itu.int/oth/T02020000DC/en -->
     <territory id="AE">
       <generalDesc>
@@ -154,7 +154,7 @@
       </smsServices>
     </territory>
 
-    <!-- Afghanistan -->
+    <!-- Afghanistan (AF) -->
     <!-- http://www.itu.int/oth/T0202000001/en -->
     <territory id="AF">
       <generalDesc>
@@ -209,7 +209,7 @@
       </smsServices>
     </territory>
 
-    <!-- Antigua and Barbuda -->
+    <!-- Antigua & Barbuda (AG) -->
     <!-- http://www.itu.int/oth/T0202000008/en -->
     <territory id="AG">
       <generalDesc>
@@ -261,7 +261,7 @@
       </smsServices>
     </territory>
 
-    <!-- Anguilla -->
+    <!-- Anguilla (AI) -->
     <!-- http://www.itu.int/oth/T0202000007/en -->
     <territory id="AI">
       <generalDesc>
@@ -300,7 +300,7 @@
       </smsServices>
     </territory>
 
-    <!-- Albania -->
+    <!-- Albania (AL) -->
     <!-- http://www.itu.int/oth/T0202000002/en -->
     <territory id="AL">
       <generalDesc>
@@ -399,7 +399,7 @@
       </smsServices>
     </territory>
 
-    <!-- Armenia -->
+    <!-- Armenia (AM) -->
     <!-- http://www.itu.int/oth/T020200000A/en -->
     <territory id="AM">
       <generalDesc>
@@ -440,7 +440,7 @@
       </smsServices>
     </territory>
 
-    <!-- Angola -->
+    <!-- Angola (AO) -->
     <!-- http://www.itu.int/oth/T0202000006/en -->
     <territory id="AO">
       <generalDesc>
@@ -464,7 +464,7 @@
       </emergency>
     </territory>
 
-    <!-- Argentina -->
+    <!-- Argentina (AR) -->
     <!-- http://www.itu.int/oth/T0202000009/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
     <territory id="AR">
@@ -537,7 +537,7 @@
       </smsServices>
     </territory>
 
-    <!-- American Samoa -->
+    <!-- American Samoa (AS) -->
     <!-- http://www.itu.int/oth/T0202000004/en -->
     <territory id="AS">
       <generalDesc>
@@ -576,7 +576,7 @@
       </smsServices>
     </territory>
 
-    <!-- Austria -->
+    <!-- Austria (AT) -->
     <!-- http://www.rtr.at/en/tk/E129 -->
     <territory id="AT">
       <generalDesc>
@@ -634,8 +634,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Australia -->
-    <!-- Country calling code shared with Cocos Islands (CC) and Christmas Islands (CX) -->
+    <!-- Australia (AU) -->
     <!-- http://www.itu.int/oth/T020200000D/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia -->
     <!-- Note 200[1-3] are ignored, despite being mentioned in the ITU document, because no
@@ -747,7 +746,7 @@
       </smsServices>
     </territory>
 
-    <!-- Aruba -->
+    <!-- Aruba (AW) -->
     <!-- http://www.itu.int/oth/T020200000B/en -->
     <territory id="AW">
       <generalDesc>
@@ -795,8 +794,7 @@
       </smsServices>
     </territory>
 
-    <!-- Åland Islands. -->
-    <!-- Country calling code shared with Finland. -->
+    <!-- Åland Islands (AX) -->
     <territory id="AX">
       <generalDesc>
         <nationalNumberPattern>
@@ -829,7 +827,7 @@
       </emergency>
     </territory>
 
-    <!-- Azerbaijan -->
+    <!-- Azerbaijan (AZ) -->
     <!-- http://www.itu.int/oth/T020200000F/en -->
     <territory id="AZ">
       <generalDesc>
@@ -895,7 +893,7 @@
       </smsServices>
     </territory>
 
-    <!-- Bosnia and Herzegovina -->
+    <!-- Bosnia & Herzegovina (BA) -->
     <!-- https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200001B0001PDFE.pdf -->
     <!-- http://www.rak.ba/eng/index.php?uid=1272016657 (accessible from
          http://www.cra.ba/en/telecom/numbering/) -->
@@ -951,7 +949,7 @@
       </emergency>
     </territory>
 
-    <!-- Barbados -->
+    <!-- Barbados (BB) -->
     <!-- http://www.itu.int/oth/T0202000013/en -->
     <territory id="BB">
       <generalDesc>
@@ -979,7 +977,7 @@
       </emergency>
     </territory>
 
-    <!-- Bangladesh -->
+    <!-- Bangladesh (BD) -->
     <!-- http://www.itu.int/oth/T0202000012/en -->
     <territory id="BD">
       <generalDesc>
@@ -1064,7 +1062,7 @@
       </smsServices>
     </territory>
 
-    <!-- Belgium -->
+    <!-- Belgium (BE) -->
     <!-- http://www.bipt.be/en/161/ShowContent/502/Database/Databases.aspx -->
     <!-- http://www.mobileweb.be/en/mobileweb/sms-numberplan.asp -->
     <territory id="BE">
@@ -1197,7 +1195,7 @@
       </smsServices>
     </territory>
 
-    <!-- Burkina Faso -->
+    <!-- Burkina Faso (BF) -->
     <!-- http://www.itu.int/oth/T0202000021/en -->
     <!-- http://www.onatel.bf/onatelsa/plandenumerotation_burkina.pdf -->
     <territory id="BF">
@@ -1222,7 +1220,7 @@
       </emergency>
     </territory>
 
-    <!-- Bulgaria -->
+    <!-- Bulgaria (BG) -->
     <!-- http://www.itu.int/oth/T0202000020/en -->
     <territory id="BG">
       <generalDesc>
@@ -1281,7 +1279,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Bahrain -->
+    <!-- Bahrain (BH) -->
     <!-- http://www.itu.int/oth/T0202000011/en -->
     <!-- http://www.tra.org.bh/media/document/National%20Numbering%20Plan.pdf -->
     <territory id="BH">
@@ -1364,7 +1362,7 @@
       </smsServices>
     </territory>
 
-    <!-- Burundi -->
+    <!-- Burundi (BI) -->
     <!-- http://www.itu.int/oth/T0202000022/en -->
     <territory id="BI">
       <generalDesc>
@@ -1434,7 +1432,7 @@
       </smsServices>
     </territory>
 
-    <!-- Benin -->
+    <!-- Benin (BJ) -->
     <!-- http://www.itu.int/oth/T0202000017/en -->
     <territory id="BJ">
       <generalDesc>
@@ -1472,7 +1470,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Barthélemy, French Antilles -->
+    <!-- St. Barthélemy (BL) -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <territory id="BL">
       <generalDesc>
@@ -1496,7 +1494,7 @@
       </emergency>
     </territory>
 
-    <!-- Bermuda -->
+    <!-- Bermuda (BM) -->
     <!-- http://www.itu.int/oth/T0202000018/en -->
     <territory id="BM">
       <generalDesc>
@@ -1535,7 +1533,7 @@
       </smsServices>
     </territory>
 
-    <!-- Brunei Darussalam -->
+    <!-- Brunei (BN) -->
     <!-- http://www.itu.int/oth/T020200001F/en -->
     <territory id="BN">
       <generalDesc>
@@ -1559,7 +1557,7 @@
       </emergency>
     </territory>
 
-    <!-- Bolivia -->
+    <!-- Bolivia (BO) -->
     <!-- http://www.itu.int/oth/T020200001A/en -->
     <!-- http://www.bolivia.com/Servicios/Plandenumeracion.pdf -->
     <territory id="BO">
@@ -1596,7 +1594,7 @@
       </smsServices>
     </territory>
 
-    <!-- Bonaire, Sint Eustatius and Saba -->
+    <!-- Caribbean Netherlands (BQ) -->
     <!-- http://www.itu.int/oth/T02020000F8/en -->
     <territory id="BQ">
       <generalDesc>
@@ -1644,7 +1642,7 @@
       </smsServices>
     </territory>
 
-    <!-- Brazil -->
+    <!-- Brazil (BR) -->
     <!-- http://en.wikipedia.org/wiki/%2B55#Public_utility -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=32 -->
     <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
@@ -1816,7 +1814,7 @@
       </smsServices>
     </territory>
 
-    <!-- Bahamas -->
+    <!-- Bahamas (BS) -->
     <!-- http://www.itu.int/oth/T0202000010/en -->
     <territory id="BS">
       <generalDesc>
@@ -1840,7 +1838,7 @@
       </emergency>
     </territory>
 
-    <!-- Bhutan -->
+    <!-- Bhutan (BT) -->
     <!-- http://www.itu.int/oth/T0202000019/en -->
     <territory id="BT">
       <generalDesc>
@@ -1878,7 +1876,7 @@
       </smsServices>
     </territory>
 
-    <!-- Botswana -->
+    <!-- Botswana (BW) -->
     <!-- http://www.itu.int/oth/T020200001C/en -->
     <territory id="BW">
       <generalDesc>
@@ -1922,7 +1920,7 @@
       </smsServices>
     </territory>
 
-    <!-- Belarus -->
+    <!-- Belarus (BY) -->
     <!-- http://www.eng.beltelecom.by/en/subscribers/phone-codes -->
     <territory id="BY">
       <generalDesc>
@@ -1967,7 +1965,7 @@
       </emergency>
     </territory>
 
-    <!-- Belize -->
+    <!-- Belize (BZ) -->
     <!-- http://www.itu.int/oth/T0202000016/en -->
     <territory id="BZ">
       <generalDesc>
@@ -2006,7 +2004,7 @@
       </emergency>
     </territory>
 
-    <!-- Canada -->
+    <!-- Canada (CA) -->
     <!-- http://www.cnac.ca/canadian_dial_plan/canadian_dial_plan.htm -->
     <!-- Excluding local normal numbers from the general description (and indeed from being possible
          short numbers, since they definitely are not). -->
@@ -2070,8 +2068,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cocos Islands -->
-    <!-- Country calling code shared with Australia. -->
+    <!-- Cocos (Keeling) Islands (CC) -->
     <territory id="CC">
       <generalDesc>
         <nationalNumberPattern>[01]\d\d</nationalNumberPattern>
@@ -2104,7 +2101,7 @@
       </emergency>
     </territory>
 
-    <!-- Congo, Dem. Rep. of the (formerly Zaire) -->
+    <!-- Congo - Kinshasa (CD) -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=47&pg_size=50 -->
     <territory id="CD">
       <generalDesc>
@@ -2169,7 +2166,7 @@
       </smsServices>
     </territory>
 
-    <!-- Central African Republic -->
+    <!-- Central African Republic (CF) -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=37&pg_size=50 -->
     <territory id="CF">
       <generalDesc>
@@ -2212,7 +2209,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Congo (Rep. of the) (Brazzaville) -->
+    <!-- Congo - Brazzaville (CG) -->
     <territory id="CG">
       <generalDesc>
         <nationalNumberPattern>1\d\d</nationalNumberPattern>
@@ -2239,7 +2236,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Switzerland -->
+    <!-- Switzerland (CH) -->
     <!-- http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Switzerland#Short_numbers -->
     <!-- http://csi.sunrise.ch/smartzone/_privat -->
@@ -2368,7 +2365,7 @@
       </smsServices>
     </territory>
 
-    <!-- Côte d'Ivoire -->
+    <!-- Côte d’Ivoire (CI) -->
     <!-- http://www.itu.int/oth/T0202000031/en -->
     <territory id="CI">
       <generalDesc>
@@ -2420,7 +2417,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cook Islands -->
+    <!-- Cook Islands (CK) -->
     <!-- http://www.itu.int/oth/T020200002F/en -->
     <territory id="CK">
       <generalDesc>
@@ -2445,7 +2442,7 @@
       </emergency>
     </territory>
 
-    <!-- Chile -->
+    <!-- Chile (CL) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Chile -->
     <!-- http://www.clarochile.cl/wps/portal/cl/pc/personas/movil/sms-premium -->
     <territory id="CL">
@@ -2729,7 +2726,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cameroon -->
+    <!-- Cameroon (CM) -->
     <!-- http://www.itu.int/oth/T0202000024/en -->
     <territory id="CM">
       <generalDesc>
@@ -2782,7 +2779,7 @@
       </smsServices>
     </territory>
 
-    <!-- China -->
+    <!-- China (CN) -->
     <!-- http://www.itu.int/oth/T020200002B/en -->
     <territory id="CN">
       <generalDesc>
@@ -2846,7 +2843,7 @@
       </emergency>
     </territory>
 
-    <!-- Colombia -->
+    <!-- Colombia (CO) -->
     <!-- Information primarily obtained from:
            http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia
          and:
@@ -2965,7 +2962,7 @@
       </smsServices>
     </territory>
 
-    <!-- Costa Rica -->
+    <!-- Costa Rica (CR) -->
     <!-- http://www.itu.int/oth/T0202000030/en -->
     <territory id="CR">
       <generalDesc>
@@ -3060,7 +3057,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cuba -->
+    <!-- Cuba (CU) -->
     <!-- www.itu.int/oth/T0202000033/en -->
     <territory id="CU">
       <generalDesc>
@@ -3096,7 +3093,7 @@
       </emergency>
     </territory>
 
-    <!-- Cape Verde -->
+    <!-- Cape Verde (CV) -->
     <!-- http://www.itu.int/oth/T0202000026/en -->
     <territory id="CV">
       <generalDesc>
@@ -3120,7 +3117,7 @@
       </emergency>
     </territory>
 
-    <!-- Curaçao -->
+    <!-- Curaçao (CW) -->
     <!-- http://www.itu.int/oth/T02020000F5/en -->
     <territory id="CW">
       <generalDesc>
@@ -3168,8 +3165,7 @@
       </smsServices>
     </territory>
 
-    <!-- Christmas Islands -->
-    <!-- Country calling code shared with Australia. -->
+    <!-- Christmas Island (CX) -->
     <territory id="CX">
       <generalDesc>
         <nationalNumberPattern>[01]\d\d</nationalNumberPattern>
@@ -3202,7 +3198,7 @@
       </emergency>
     </territory>
 
-    <!-- Cyprus -->
+    <!-- Cyprus (CY) -->
     <!-- http://www.itu.int/oth/T0202000034/en -->
     <territory id="CY">
       <generalDesc>
@@ -3258,7 +3254,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Czech Rep. -->
+    <!-- Czechia (CZ) -->
     <!-- http://www.itu.int/oth/T0202000035/en -->
     <!-- http://en.wikipedia.org/wiki/%2B420 -->
     <territory id="CZ">
@@ -3331,7 +3327,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Germany -->
+    <!-- Germany (DE) -->
     <!-- http://www.itu.int/oth/T0202000051/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE">
@@ -3380,7 +3376,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Djibouti -->
+    <!-- Djibouti (DJ) -->
     <!-- http://www.itu.int/oth/T020200003A/en -->
     <territory id="DJ">
       <generalDesc>
@@ -3403,7 +3399,7 @@
       </emergency>
     </territory>
 
-    <!-- Denmark -->
+    <!-- Denmark (DK) -->
     <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK">
       <generalDesc>
@@ -3459,7 +3455,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Dominica -->
+    <!-- Dominica (DM) -->
     <!-- http://www.itu.int/oth/T020200003B/en -->
     <territory id="DM">
       <generalDesc>
@@ -3502,7 +3498,7 @@
       </emergency>
     </territory>
 
-    <!-- Dominican Rep. -->
+    <!-- Dominican Republic (DO) -->
     <!-- http://www.itu.int/oth/T020200003C/en -->
     <territory id="DO">
       <generalDesc>
@@ -3534,7 +3530,7 @@
       </emergency>
     </territory>
 
-    <!-- Algeria -->
+    <!-- Algeria (DZ) -->
     <!-- http://www.itu.int/oth/T0202000003/en -->
     <!-- www.arpt.dz -->
     <territory id="DZ">
@@ -3573,7 +3569,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ecuador -->
+    <!-- Ecuador (EC) -->
     <!-- http://en.wikipedia.org/wiki/+593 -->
     <!-- http://www.conatel.gob.ec/site_conatel/index.php?option=com_content&view=category&layout=blog&id=52&Itemid=153 -->
     <!-- http://www.itu.int/oth/T020200003D/en -->
@@ -3616,7 +3612,7 @@
       </emergency>
     </territory>
 
-    <!-- Estonia -->
+    <!-- Estonia (EE) -->
     <!-- http://www.itu.int/oth/T0202000043/en -->
     <territory id="EE">
       <generalDesc>
@@ -4012,7 +4008,7 @@
       </smsServices>
     </territory>
 
-    <!-- Egypt -->
+    <!-- Egypt (EG) -->
     <!-- http://www.itu.int/oth/T020200003E/en -->
     <territory id="EG">
       <generalDesc>
@@ -4068,8 +4064,7 @@
       </smsServices>
     </territory>
 
-    <!-- Western Sahara -->
-    <!-- Country calling code shared with Morocco (MA). -->
+    <!-- Western Sahara (EH) -->
     <!-- http://www.itu.int/oth/T0202000090/en -->
     <territory id="EH">
       <generalDesc>
@@ -4107,7 +4102,7 @@
       </emergency>
     </territory>
 
-    <!-- Eritrea -->
+    <!-- Eritrea (ER) -->
     <territory id="ER">
       <generalDesc>
         <nationalNumberPattern>
@@ -4176,7 +4171,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Spain -->
+    <!-- Spain (ES) -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/2012_09_10_Presentation_E164_Numbering_plan_Spain.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Descripcion_plan_20101216.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/13-01-11_Gu%C3%ADa_Numeracion.pdf -->
@@ -4341,7 +4336,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ethiopia -->
+    <!-- Ethiopia (ET) -->
     <!-- http://www.itu.int/oth/T0202000044/en -->
     <territory id="ET">
       <generalDesc>
@@ -4387,8 +4382,7 @@
       </emergency>
     </territory>
 
-    <!-- Finland -->
-    <!-- Country calling code shared with Åland (AX) -->
+    <!-- Finland (FI) -->
     <!-- https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html -->
     <territory id="FI">
       <generalDesc>
@@ -4434,7 +4428,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Fiji -->
+    <!-- Fiji (FJ) -->
     <!-- http://www.itu.int/oth/T0202000048/en -->
     <!-- www.tfl.com.fj -->
     <territory id="FJ">
@@ -4487,7 +4481,7 @@
       </smsServices>
     </territory>
 
-    <!-- Falkland Islands (Malvinas) -->
+    <!-- Falkland Islands (Islas Malvinas) (FK) -->
     <!-- http://www.itu.int/oth/T0202000046/en -->
     <territory id="FK">
       <generalDesc>
@@ -4515,7 +4509,7 @@
       </emergency>
     </territory>
 
-    <!-- Micronesia, Federated States of -->
+    <!-- Micronesia (FM) -->
     <!-- http://www.itu.int/oth/T020200008B/en -->
     <territory id="FM">
       <generalDesc>
@@ -4556,7 +4550,7 @@
       </emergency>
     </territory>
 
-    <!-- Faroe Islands -->
+    <!-- Faroe Islands (FO) -->
     <!-- http://www.itu.int/oth/T0202000047/en -->
     <territory id="FO">
       <generalDesc>
@@ -4587,7 +4581,7 @@
       </emergency>
     </territory>
 
-    <!-- France -->
+    <!-- France (FR) -->
     <!-- http://www.arcep.fr/index.php?id=8146 -->
     <!-- http://fr.wikipedia.org/wiki/Num%C3%A9ro_d'appel_d'urgence -->
     <territory id="FR">
@@ -4755,7 +4749,7 @@
       </smsServices>
     </territory>
 
-    <!-- Gabon -->
+    <!-- Gabon (GA) -->
     <!-- http://www.itu.int/oth/T020200004E/en -->
     <!-- www.arcep.ga -->
     <territory id="GA">
@@ -4801,7 +4795,7 @@
       </emergency>
     </territory>
 
-    <!-- United Kingdom -->
+    <!-- United Kingdom (GB) -->
     <territory id="GB">
       <generalDesc>
         <nationalNumberPattern>[1-46-9]\d{2,5}</nationalNumberPattern>
@@ -4963,7 +4957,7 @@
       </smsServices>
     </territory>
 
-    <!-- Grenada -->
+    <!-- Grenada (GD) -->
     <!-- http://www.itu.int/oth/T0202000057/en -->
     <territory id="GD">
       <generalDesc>
@@ -5002,7 +4996,7 @@
       </smsServices>
     </territory>
 
-    <!-- Georgia -->
+    <!-- Georgia (GE) -->
     <!-- http://www.itu.int/oth/T0202000050/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia. -->
     <territory id="GE">
@@ -5066,7 +5060,7 @@
       </smsServices>
     </territory>
 
-    <!-- French Guiana (French Dept. of) -->
+    <!-- French Guiana (GF) -->
     <!-- http://www.itu.int/oth/T020200004C/en -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0594&CMD=RESULTS_NUMEROTATION -->
     <!-- http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf -->
@@ -5091,8 +5085,7 @@
       </emergency>
     </territory>
 
-    <!-- Guernsey -->
-    <!-- Country calling code shared with the UK. -->
+    <!-- Guernsey (GG) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="GG">
       <generalDesc>
@@ -5139,7 +5132,7 @@
       </emergency>
     </territory>
 
-    <!-- Ghana -->
+    <!-- Ghana (GH) -->
     <!-- http://www.itu.int/oth/T0202000052/en -->
     <!-- http://www.nca.org.gh/index.php?option=com_content&view=article&id=90&Itemid=65 -->
     <territory id="GH">
@@ -5202,7 +5195,7 @@
       </smsServices>
     </territory>
 
-    <!-- Gibraltar -->
+    <!-- Gibraltar (GI) -->
     <!-- http://www.gra.gi/communications/numbering-plan -->
     <territory id="GI">
       <generalDesc>
@@ -5324,7 +5317,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Greenland -->
+    <!-- Greenland (GL) -->
     <!-- http://www.itu.int/oth/T0202000056/en -->
     <territory id="GL">
       <generalDesc>
@@ -5347,7 +5340,7 @@
       </emergency>
     </territory>
 
-    <!-- Gambia -->
+    <!-- Gambia (GM) -->
     <!-- http://www.itu.int/oth/T020200004F/en -->
     <territory id="GM">
       <generalDesc>
@@ -5387,7 +5380,7 @@
       </emergency>
     </territory>
 
-    <!-- Guinea -->
+    <!-- Guinea (GN) -->
     <territory id="GN">
       <generalDesc>
         <nationalNumberPattern>4\d{4}</nationalNumberPattern>
@@ -5412,7 +5405,7 @@
       </smsServices>
     </territory>
 
-    <!-- Guadeloupe -->
+    <!-- Guadeloupe (GP) -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <!-- http://www.guadeloupe.franceantilles.fr/pratique/urgences/numeros-urgence-guadeloupe-14950.php -->
     <territory id="GP">
@@ -5436,7 +5429,7 @@
       </emergency>
     </territory>
 
-    <!-- Greece -->
+    <!-- Greece (GR) -->
     <!-- http://www.itu.int/oth/T0202000055/en -->
     <!-- http://en.wikipedia.org/wiki/%2B30 -->
     <territory id="GR">
@@ -5502,7 +5495,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Guatemala -->
+    <!-- Guatemala (GT) -->
     <!-- http://www.itu.int/oth/T020200005A/en -->
     <!-- http://www.sit.gob.gt/index.php?page=plan-de-numeracion -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Guatemala -->
@@ -5556,7 +5549,7 @@
       </smsServices>
     </territory>
 
-    <!-- Guam -->
+    <!-- Guam (GU) -->
     <!-- http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel -->
     <territory id="GU">
       <generalDesc>
@@ -5580,7 +5573,7 @@
       </emergency>
     </territory>
 
-    <!-- Guinea-Bissau -->
+    <!-- Guinea-Bissau (GW) -->
     <!-- http://www.itu.int/oth/T020200005C/en -->
     <territory id="GW">
       <generalDesc>
@@ -5604,7 +5597,7 @@
       </emergency>
     </territory>
 
-    <!-- Guyana -->
+    <!-- Guyana (GY) -->
     <!-- http://www.itu.int/oth/T020200005D/en -->
     <territory id="GY">
       <generalDesc>
@@ -5661,7 +5654,7 @@
       </smsServices>
     </territory>
 
-    <!-- Hong Kong -->
+    <!-- Hong Kong (HK) -->
     <!-- http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html -->
     <!-- http://www.ofca.gov.hk/filemanager/ofca/tc/content_311/no_plan.pdf -->
     <territory id="HK">
@@ -5786,7 +5779,7 @@
       </smsServices>
     </territory>
 
-    <!-- Honduras -->
+    <!-- Honduras (HN) -->
     <!-- http://www.itu.int/oth/T020200005F/en -->
     <territory id="HN">
       <generalDesc>
@@ -5828,7 +5821,7 @@
       </smsServices>
     </territory>
 
-    <!-- Croatia -->
+    <!-- Croatia (HR) -->
     <!-- http://www.itu.int/oth/T0202000032/en -->
     <!-- http://en.wikipedia.org/wiki/%2B385 -->
     <territory id="HR">
@@ -5921,7 +5914,7 @@
       </smsServices>
     </territory>
 
-    <!-- Haiti -->
+    <!-- Haiti (HT) -->
     <!-- http://www.itu.int/oth/T020200005E/en -->
     <territory id="HT">
       <generalDesc>
@@ -5964,7 +5957,7 @@
       </smsServices>
     </territory>
 
-    <!-- Hungary -->
+    <!-- Hungary (HU) -->
     <!-- http://www.itu.int/oth/T0202000061/en -->
     <territory id="HU">
       <generalDesc>
@@ -6023,7 +6016,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Indonesia -->
+    <!-- Indonesia (ID) -->
     <!-- http://en.wikipedia.org/wiki/%2B62 -->
     <territory id="ID">
       <generalDesc>
@@ -6075,7 +6068,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ireland -->
+    <!-- Ireland (IE) -->
     <!-- https://www.comreg.ie/csv/downloads/ComReg15136.pdf -->
     <territory id="IE">
       <generalDesc>
@@ -6159,7 +6152,7 @@
       </smsServices>
     </territory>
 
-    <!-- Israel -->
+    <!-- Israel (IL) -->
     <!-- http://www.itu.int/oth/T020200006A/en -->
     <!-- http://en.wikipedia.org/wiki/%2B972 -->
     <territory id="IL">
@@ -6217,8 +6210,7 @@
       </smsServices>
     </territory>
 
-    <!-- Isle of Man -->
-    <!-- Country calling code shared with the UK. -->
+    <!-- Isle of Man (IM) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="IM">
       <generalDesc>
@@ -6266,7 +6258,7 @@
       </smsServices>
     </territory>
 
-    <!-- India -->
+    <!-- India (IN) -->
     <!-- http://www.itu.int/oth/T0202000063/en -->
     <!-- http://en.wikipedia.org/wiki/%2B91 -->
     <!-- http://www.dot.gov.in/access-services/national-numbering-plan-2003 -->
@@ -6658,7 +6650,7 @@
       </smsServices>
     </territory>
 
-    <!-- Iraq -->
+    <!-- Iraq (IQ) -->
     <territory id="IQ">
       <generalDesc>
         <nationalNumberPattern>[1479]\d{2,4}</nationalNumberPattern>
@@ -6726,7 +6718,7 @@
       </smsServices>
     </territory>
 
-    <!-- Iran, Islamic Republic of -->
+    <!-- Iran (IR) -->
     <!-- http://www.itu.int/oth/T0202000066/en -->
     <!-- https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=111 -->
     <!-- http://118.tct.ir/necnum.htm -->
@@ -6866,7 +6858,7 @@
       </smsServices>
     </territory>
 
-    <!-- Iceland -->
+    <!-- Iceland (IS) -->
     <!-- https://www.pfs.is/english/telecom-affairs/numbering/ -->
     <territory id="IS">
       <generalDesc>
@@ -6957,7 +6949,7 @@
       </smsServices>
     </territory>
 
-    <!-- Italy -->
+    <!-- Italy (IT) -->
     <!-- http://www.itu.int/oth/T020200006B/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Italy -->
     <territory id="IT">
@@ -7093,8 +7085,7 @@
       </smsServices>
     </territory>
 
-    <!-- Jersey -->
-    <!-- Country calling code shared with the UK. -->
+    <!-- Jersey (JE) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="JE">
       <generalDesc>
@@ -7155,7 +7146,7 @@
       </emergency>
     </territory>
 
-    <!-- Jamaica -->
+    <!-- Jamaica (JM) -->
     <!-- http://www.itu.int/oth/T020200006C/en -->
     <territory id="JM">
       <generalDesc>
@@ -7203,7 +7194,7 @@
       </smsServices>
     </territory>
 
-    <!-- Jordan -->
+    <!-- Jordan (JO) -->
     <!-- http://www.trc.gov.jo/images/stories/pdf/NNP_ver200[1].pdf?lang=english -->
     <!-- http://www.itu.int/oth/T020200006E/en -->
     <!-- http://en.wikipedia.org/wiki/%2B962 -->
@@ -7283,7 +7274,7 @@
       </smsServices>
     </territory>
 
-    <!-- Japan -->
+    <!-- Japan (JP) -->
     <!-- http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html -->
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <territory id="JP">
@@ -7307,7 +7298,7 @@
       </emergency>
     </territory>
 
-    <!-- Kenya -->
+    <!-- Kenya (KE) -->
     <!-- http://www.ca.go.ke/images/downloads/NUMBERING/Telecommunication%20Numbering%20Plan%20For%20Kenya%20Feb%202016.Pdf -->
     <!-- http://en.wikipedia.org/wiki/+254 -->
     <territory id="KE">
@@ -7473,7 +7464,7 @@
       </smsServices>
     </territory>
 
-    <!-- Kyrgyzstan -->
+    <!-- Kyrgyzstan (KG) -->
     <!-- http://www.itu.int/oth/T0202000074/en -->
     <!-- http://www.iru-nelti.org/index/info-app/id.216 -->
     <territory id="KG">
@@ -7512,7 +7503,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cambodia -->
+    <!-- Cambodia (KH) -->
     <!-- http://www.itu.int/oth/T0202000023/en -->
     <!-- http://en.wikipedia.org/wiki/+855 -->
     <territory id="KH">
@@ -7563,7 +7554,7 @@
       </smsServices>
     </territory>
 
-    <!-- Kiribati -->
+    <!-- Kiribati (KI) -->
     <!-- http://www.itu.int/oth/T0202000071/en -->
     <!-- http://tskl.net.ki/services has others. -->
     <territory id="KI">
@@ -7621,7 +7612,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Comoros -->
+    <!-- Comoros (KM) -->
     <!-- http://www.itu.int/oth/T020200002D/en -->
     <territory id="KM">
       <generalDesc>
@@ -7645,7 +7636,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Kitts and Nevis -->
+    <!-- St. Kitts & Nevis (KN) -->
     <!-- http://www.itu.int/oth/T02020000B0/en -->
     <territory id="KN">
       <generalDesc>
@@ -7688,7 +7679,7 @@
       </emergency>
     </territory>
 
-    <!-- Korea, Dem. People's Rep. of -->
+    <!-- North Korea (KP) -->
     <!-- http://north-korea.emergencynumbers.org/ -->
     <territory id="KP">
       <generalDesc>
@@ -7720,7 +7711,7 @@
       </emergency>
     </territory>
 
-    <!-- Korea (Rep. of) -->
+    <!-- South Korea (KR) -->
     <!-- http://www.itu.int/oth/T0202000072/en -->
     <!-- http://en.wikipedia.org/wiki/%2B82 -->
     <territory id="KR">
@@ -7800,7 +7791,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Kuwait -->
+    <!-- Kuwait (KW) -->
     <!-- http://www.itu.int/oth/T0202000073/en -->
     <territory id="KW">
       <generalDesc>
@@ -7836,7 +7827,7 @@
       </emergency>
     </territory>
 
-    <!-- Cayman Islands -->
+    <!-- Cayman Islands (KY) -->
     <!-- http://www.itu.int/oth/T0202000027/en -->
     <territory id="KY">
       <generalDesc>
@@ -7859,7 +7850,7 @@
       </emergency>
     </territory>
 
-    <!-- Kazakhstan -->
+    <!-- Kazakhstan (KZ) -->
     <!-- http://www.itu.int/oth/T020200006F/en -->
     <territory id="KZ">
       <generalDesc>
@@ -7925,7 +7916,7 @@
       </smsServices>
     </territory>
 
-    <!-- Lao People's Dem. Rep. -->
+    <!-- Laos (LA) -->
     <!-- http://www.itu.int/oth/T0202000075/en (Seems incomplete) -->
     <!-- http://en.wikipedia.org/wiki/+856 -->
     <territory id="LA">
@@ -7950,7 +7941,7 @@
       </emergency>
     </territory>
 
-    <!-- Lebanon -->
+    <!-- Lebanon (LB) -->
     <!-- http://www.itu.int/oth/T0202000077/en -->
     <!-- http://en.wikipedia.org/wiki/%2B961 -->
     <territory id="LB">
@@ -7995,7 +7986,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Lucia -->
+    <!-- St. Lucia (LC) -->
     <!-- http://www.itu.int/oth/T02020000B1/en -->
     <territory id="LC">
       <generalDesc>
@@ -8037,7 +8028,7 @@
       </emergency>
     </territory>
 
-    <!-- Liechtenstein -->
+    <!-- Liechtenstein (LI) -->
     <!-- http://www.llv.li/amtsstellen/llv-ak-nummerierung.htm -->
     <!-- http://www.llv.li/pdf-llv-ak-shortnumbers_20110331.pdf -->
     <territory id="LI">
@@ -8082,7 +8073,7 @@
       </emergency>
     </territory>
 
-    <!-- Sri Lanka -->
+    <!-- Sri Lanka (LK) -->
     <!-- http://en.wikipedia.org/wiki/%2B94 -->
     <!-- http://www.itu.int/oth/T02020000C3/en -->
     <territory id="LK">
@@ -8106,7 +8097,7 @@
       </emergency>
     </territory>
 
-    <!-- Liberia -->
+    <!-- Liberia (LR) -->
     <!-- http://www.itu.int/oth/T0202000079/en -->
     <territory id="LR">
       <generalDesc>
@@ -8173,7 +8164,7 @@
       </smsServices>
     </territory>
 
-    <!-- Lesotho -->
+    <!-- Lesotho (LS) -->
     <!-- http://www.itu.int/oth/T0202000078/en -->
     <territory id="LS">
       <generalDesc>
@@ -8198,7 +8189,7 @@
       </emergency>
     </territory>
 
-    <!-- Lithuania -->
+    <!-- Lithuania (LT) -->
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <territory id="LT">
       <generalDesc>
@@ -8274,7 +8265,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Luxembourg -->
+    <!-- Luxembourg (LU) -->
     <!-- http://www.ilr.public.lu/communications_electroniques/numerotation/index.html -->
     <territory id="LU">
       <generalDesc>
@@ -8320,7 +8311,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Latvia -->
+    <!-- Latvia (LV) -->
     <!-- http://en.wikipedia.org/wiki/+371 -->
     <territory id="LV">
       <generalDesc>
@@ -8400,7 +8391,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Libya (Soc. People’s Libyan Arab Jamahiriya) -->
+    <!-- Libya (LY) -->
     <territory id="LY">
       <generalDesc>
         <nationalNumberPattern>1\d\d</nationalNumberPattern>
@@ -8426,7 +8417,7 @@
       </emergency>
     </territory>
 
-    <!-- Morocco -->
+    <!-- Morocco (MA) -->
     <!-- Shares formatting and some metadata with Western Sahara. -->
     <!-- http://www.itu.int/oth/T0202000090/en -->
     <!-- http://en.wikipedia.org/wiki/+212 -->
@@ -8466,7 +8457,7 @@
       </emergency>
     </territory>
 
-    <!-- Monaco -->
+    <!-- Monaco (MC) -->
     <!-- http://www.itu.int/oth/T020200008D/en -->
     <territory id="MC">
       <generalDesc>
@@ -8505,7 +8496,7 @@
       </emergency>
     </territory>
 
-    <!-- Moldova, Rep. of -->
+    <!-- Moldova (MD) -->
     <!-- http://www.itu.int/oth/T020200008C/en -->
     <!-- http://en.anrceti.md -->
     <territory id="MD">
@@ -8564,7 +8555,7 @@
       </emergency>
     </territory>
 
-    <!-- Montenegro -->
+    <!-- Montenegro (ME) -->
     <!-- http://www.itu.int/oth/T02020000DA/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro -->
     <!-- http://www.ekip.me/numeracija/dodijeljena.php -->
@@ -8622,7 +8613,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint-Martin, French Antilles -->
+    <!-- St. Martin (MF) -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <!-- http://www.arcep.fr/index.php?id=interactivenumeros - ZABPQ-ZNE.xls -->
     <territory id="MF">
@@ -8647,7 +8638,7 @@
       </emergency>
     </territory>
 
-    <!-- Madagascar -->
+    <!-- Madagascar (MG) -->
     <!-- http://www.itu.int/oth/T020200007F/en -->
     <territory id="MG">
       <generalDesc>
@@ -8686,7 +8677,7 @@
       </emergency>
     </territory>
 
-    <!-- Marshall Islands -->
+    <!-- Marshall Islands (MH) -->
     <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_964.html -->
     <territory id="MH">
       <generalDesc>
@@ -8712,7 +8703,7 @@
       </emergency>
     </territory>
 
-    <!-- Macedonia, Former Yugoslav Rep. of -->
+    <!-- Macedonia (FYROM) (MK) -->
     <!-- http://www.itu.int/oth/T02020000CE/en -->
     <territory id="MK">
       <generalDesc>
@@ -8750,7 +8741,7 @@
       </emergency>
     </territory>
 
-    <!-- Mali -->
+    <!-- Mali (ML) -->
     <!-- http://crt-mali.org/pdf/plan_num -->
     <!-- http://www.orangemali.com/mobile/offrespostpayees.php -->
     <!-- http://www.orangemali.com/service-clients/service-clients-orange.php -->
@@ -8888,7 +8879,7 @@
       </smsServices>
     </territory>
 
-    <!-- Myanmar -->
+    <!-- Myanmar (Burma) (MM) -->
     <!-- http://www.itu.int/oth/T0202000092/en -->
     <territory id="MM">
       <generalDesc>
@@ -8911,7 +8902,7 @@
       </emergency>
     </territory>
 
-    <!-- Mongolia -->
+    <!-- Mongolia (MN) -->
     <!-- http://www.itu.int/oth/T020200008E/en -->
     <territory id="MN">
       <generalDesc>
@@ -8934,7 +8925,7 @@
       </emergency>
     </territory>
 
-    <!-- Macao, China -->
+    <!-- Macau (MO) -->
     <!-- http://www.itu.int/oth/T020200007E/en -->
     <territory id="MO">
       <generalDesc>
@@ -8957,7 +8948,7 @@
       </emergency>
     </territory>
 
-    <!-- Northern Mariana Islands -->
+    <!-- Northern Mariana Islands (MP) -->
     <!-- http://www.itu.int/oth/T02020000EE/en -->
     <!-- www.cnmiphonebook.com/ -->
     <territory id="MP">
@@ -8982,7 +8973,7 @@
       </emergency>
     </territory>
 
-    <!-- Martinique (French Dept. of) -->
+    <!-- Martinique (MQ) -->
     <!-- http://www.itu.int/oth/T0202000086/en -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="MQ">
@@ -9022,7 +9013,7 @@
       </emergency>
     </territory>
 
-    <!-- Mauritania -->
+    <!-- Mauritania (MR) -->
     <!-- http://www.itu.int/oth/T0202000087/en -->
     <!-- http://www.are.mr/com-1-4-1.html -->
     <territory id="MR">
@@ -9047,7 +9038,7 @@
       </emergency>
     </territory>
 
-    <!-- Montserrat -->
+    <!-- Montserrat (MS) -->
     <!-- http://www.itu.int/oth/T020200008F/en -->
     <territory id="MS">
       <generalDesc>
@@ -9086,7 +9077,7 @@
       </emergency>
     </territory>
 
-    <!-- Malta -->
+    <!-- Malta (MT) -->
     <!-- www.itu.int/oth/T0202000084/en -->
     <territory id="MT">
       <generalDesc>
@@ -9134,7 +9125,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Mauritius -->
+    <!-- Mauritius (MU) -->
     <!-- http://www.icta.mu/telecommunications/numbering.htm -->
     <territory id="MU">
       <generalDesc>
@@ -9169,7 +9160,7 @@
       </emergency>
     </territory>
 
-    <!-- Maldives -->
+    <!-- Maldives (MV) -->
     <territory id="MV">
       <generalDesc>
         <nationalNumberPattern>[14]\d{2,3}</nationalNumberPattern>
@@ -9226,7 +9217,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Malawi -->
+    <!-- Malawi (MW) -->
     <!-- http://www.itu.int/oth/T0202000080/en -->
     <territory id="MW">
       <generalDesc>
@@ -9277,7 +9268,7 @@
       </smsServices>
     </territory>
 
-    <!-- Mexico -->
+    <!-- Mexico (MX) -->
     <!-- http://en.wikipedia.org/wiki/%2B52 -->
     <territory id="MX">
       <generalDesc>
@@ -9351,7 +9342,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Malaysia -->
+    <!-- Malaysia (MY) -->
     <!-- http://en.wikipedia.org/wiki/%2B60 -->
     <!-- http://www.skmm.gov.my -->
     <territory id="MY">
@@ -9454,7 +9445,7 @@
       </smsServices>
     </territory>
 
-    <!-- Mozambique -->
+    <!-- Mozambique (MZ) -->
     <!-- http://www.itu.int/oth/T0202000091/en -->
     <territory id="MZ">
       <generalDesc>
@@ -9496,7 +9487,7 @@
       </emergency>
     </territory>
 
-    <!-- Namibia -->
+    <!-- Namibia (NA) -->
     <!-- http://www.itu.int/oth/T0202000093/en -->
     <territory id="NA">
       <generalDesc>
@@ -9530,7 +9521,7 @@
       </emergency>
     </territory>
 
-    <!-- New Caledonia (Territoire français d'outre-mer) -->
+    <!-- New Caledonia (NC) -->
     <!-- As there seems to be only one carrier (OPT) in New Caledonia so for now we are not
          distinguishing carrier specific numbers. -->
     <!-- http://www.itu.int/oth/T0202000098/en -->
@@ -9613,7 +9604,7 @@
       </emergency>
     </territory>
 
-    <!-- Niger -->
+    <!-- Niger (NE) -->
     <territory id="NE">
       <generalDesc>
         <nationalNumberPattern>
@@ -9680,7 +9671,7 @@
       </emergency>
     </territory>
 
-    <!-- Norfolk Island -->
+    <!-- Norfolk Island (NF) -->
     <!-- http://www.itu.int/oth/T020200009D/en -->
     <territory id="NF">
       <generalDesc>
@@ -9722,7 +9713,7 @@
       </emergency>
     </territory>
 
-    <!-- Nigeria -->
+    <!-- Nigeria (NG) -->
     <!-- http://www.itu.int/oth/T020200009C/en -->
     <territory id="NG">
       <generalDesc>
@@ -9764,7 +9755,7 @@
       </smsServices>
     </territory>
 
-    <!-- Nicaragua -->
+    <!-- Nicaragua (NI) -->
     <!-- http://www.itu.int/oth/T020200009A/en -->
     <territory id="NI">
       <generalDesc>
@@ -9813,7 +9804,7 @@
       </emergency>
     </territory>
 
-    <!-- Netherlands -->
+    <!-- Netherlands (NL) -->
     <!-- http://en.wikipedia.org/wiki/%2B31 -->
     <!-- http://wetten.overheid.nl/BWBR0010198 -->
     <territory id="NL">
@@ -9894,8 +9885,7 @@
       </smsServices>
     </territory>
 
-    <!-- Norway -->
-    <!-- Country calling code shared with Svalbard. -->
+    <!-- Norway (NO) -->
     <!-- http://www.npt.no/npt/numsys/E.164.pdf -->
     <!-- http://www.nkom.no/npt/numsys/E.1643sifret_en.pdf -->
     <territory id="NO">
@@ -9959,7 +9949,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Nepal -->
+    <!-- Nepal (NP) -->
     <!-- http://www.itu.int/oth/T0202000095/en -->
     <!-- http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php -->
     <territory id="NP">
@@ -9998,7 +9988,7 @@
       </emergency>
     </territory>
 
-    <!-- Nauru -->
+    <!-- Nauru (NR) -->
     <!-- http://www.itu.int/oth/T0202000094/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Nauru -->
     <territory id="NR">
@@ -10028,7 +10018,7 @@
       </emergency>
     </territory>
 
-    <!-- Niue -->
+    <!-- Niue (NU) -->
     <!-- http://www.itu.int/oth/T02020000EC/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Niue -->
     <territory id="NU">
@@ -10061,7 +10051,7 @@
       </emergency>
     </territory>
 
-    <!-- New Zealand -->
+    <!-- New Zealand (NZ) -->
     <!-- http://www.itu.int/oth/T0202000099/en -->
     <!-- Includes Ross Dependency, Antarctica -->
     <!-- https://www.skinny.co.nz/assets/pdf/skinny-premium-SMS-prices-Sheet14.pdf -->
@@ -10131,7 +10121,7 @@
       </smsServices>
     </territory>
 
-    <!-- Oman -->
+    <!-- Oman (OM) -->
     <!-- http://www.itu.int/oth/T020200009F/en -->
     <territory id="OM">
       <generalDesc>
@@ -10154,7 +10144,7 @@
       </emergency>
     </territory>
 
-    <!-- Panama -->
+    <!-- Panama (PA) -->
     <!-- http://en.wikipedia.org/wiki/%2B507 -->
     <territory id="PA">
       <generalDesc>
@@ -10180,7 +10170,7 @@
       </emergency>
     </territory>
 
-    <!-- Peru -->
+    <!-- Peru (PE) -->
     <!-- http://www.itu.int/oth/T02020000A6/en -->
     <!-- http://en.wikipedia.org/wiki/+51 -->
     <territory id="PE">
@@ -10219,7 +10209,7 @@
       </emergency>
     </territory>
 
-    <!-- French Polynesia (Tahiti) (Territoire français d'outre-mer) -->
+    <!-- French Polynesia (PF) -->
     <!-- http://www.itu.int/oth/T020200004D/en -->
     <territory id="PF">
       <generalDesc>
@@ -10243,7 +10233,7 @@
       </emergency>
     </territory>
 
-    <!-- Papua New Guinea -->
+    <!-- Papua New Guinea (PG) -->
     <!-- http://www.itu.int/oth/T02020000A4/en -->
     <!-- http://en.wikipedia.org/wiki/%2B675 -->
     <territory id="PG">
@@ -10286,7 +10276,7 @@
       </smsServices>
     </territory>
 
-    <!-- Philippines -->
+    <!-- Philippines (PH) -->
     <!-- http://en.wikipedia.org/wiki/%2B63 -->
     <territory id="PH">
       <generalDesc>
@@ -10318,7 +10308,7 @@
       </emergency>
     </territory>
 
-    <!-- Pakistan -->
+    <!-- Pakistan (PK) -->
     <!-- http://www.itu.int/oth/T02020000A1/en -->
     <!-- http://en.wikipedia.org/wiki/%2B92 -->
     <territory id="PK">
@@ -10366,7 +10356,7 @@
       </emergency>
     </territory>
 
-    <!-- Poland -->
+    <!-- Poland (PL) -->
     <!-- http://en.wikipedia.org/wiki/%2B48 -->
     <!-- http://www.itu.int/oth/T02020000A8/en -->
     <!-- http://www.uke.gov.pl/tablice/home.do?execution=e1s1 -->
@@ -10438,7 +10428,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Saint Pierre and Miquelon (Collectivité territoriale de la République française) -->
+    <!-- St. Pierre & Miquelon (PM) -->
     <!-- http://www.itu.int/oth/T02020000B2/en -->
     <territory id="PM">
       <generalDesc>
@@ -10473,7 +10463,7 @@
       </emergency>
     </territory>
 
-    <!-- Puerto Rico -->
+    <!-- Puerto Rico (PR) -->
     <!-- http://www.itu.int/oth/T02020000AA/en -->
     <territory id="PR">
       <generalDesc>
@@ -10498,7 +10488,7 @@
       </emergency>
     </territory>
 
-    <!-- Palestinian Authority -->
+    <!-- Palestine (PS) -->
     <!-- http://en.wikipedia.org/wiki/%2B970 -->
     <!-- http://www.paltel.ps/ -->
     <territory id="PS">
@@ -10534,7 +10524,7 @@
       </emergency>
     </territory>
 
-    <!-- Portugal -->
+    <!-- Portugal (PT) -->
     <!-- http://www.anacom.pt/render.jsp?categoryId=279098 -->
     <territory id="PT">
       <generalDesc>
@@ -10579,7 +10569,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Palau -->
+    <!-- Palau (PW) -->
     <!-- http://www.itu.int/oth/T02020000A2/en -->
     <territory id="PW">
       <generalDesc>
@@ -10602,7 +10592,7 @@
       </emergency>
     </territory>
 
-    <!-- Paraguay -->
+    <!-- Paraguay (PY) -->
     <territory id="PY">
       <generalDesc>
         <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
@@ -10633,7 +10623,7 @@
       </emergency>
     </territory>
 
-    <!-- Qatar -->
+    <!-- Qatar (QA) -->
     <territory id="QA">
       <generalDesc>
         <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
@@ -10662,7 +10652,7 @@
       </emergency>
     </territory>
 
-    <!-- Réunion (French Departments and Territories in the Indian Ocean) -->
+    <!-- Réunion (RE) -->
     <!-- http://www.itu.int/oth/T020200004B/en -->
     <territory id="RE">
       <generalDesc>
@@ -10701,7 +10691,7 @@
       </emergency>
     </territory>
 
-    <!-- Romania -->
+    <!-- Romania (RO) -->
     <!-- http://www.itu.int/oth/T02020000AC/en -->
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
     <territory id="RO">
@@ -10783,7 +10773,7 @@
       </smsServices>
     </territory>
 
-    <!-- Serbia -->
+    <!-- Serbia (RS) -->
     <territory id="RS">
       <generalDesc>
         <nationalNumberPattern>[19]\d{1,5}</nationalNumberPattern>
@@ -10814,7 +10804,7 @@
       </emergency>
     </territory>
 
-    <!-- Russian Federation -->
+    <!-- Russia (RU) -->
     <!-- http://www.itu.int/oth/T02020000AD/en -->
     <!-- http://en.wikipedia.org/wiki/%2B7 -->
     <territory id="RU">
@@ -10856,7 +10846,7 @@
       </emergency>
     </territory>
 
-    <!-- Rwanda -->
+    <!-- Rwanda (RW) -->
     <!-- http://en.wikipedia.org/wiki/+250 -->
     <territory id="RW">
       <generalDesc>
@@ -10879,7 +10869,7 @@
       </emergency>
     </territory>
 
-    <!-- Saudi Arabia -->
+    <!-- Saudi Arabia (SA) -->
     <!-- http://www.itu.int/oth/T02020000B7/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia -->
     <territory id="SA">
@@ -10982,7 +10972,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Solomon Islands -->
+    <!-- Solomon Islands (SB) -->
     <territory id="SB">
       <generalDesc>
         <nationalNumberPattern>[127-9]\d\d</nationalNumberPattern>
@@ -11026,7 +11016,7 @@
       </emergency>
     </territory>
 
-    <!-- Seychelles -->
+    <!-- Seychelles (SC) -->
     <territory id="SC">
       <generalDesc>
         <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
@@ -11064,7 +11054,7 @@
       </emergency>
     </territory>
 
-    <!-- Sudan -->
+    <!-- Sudan (SD) -->
     <!-- http://www.itu.int/oth/T02020000C4/en -->
     <territory id="SD">
       <generalDesc>
@@ -11087,7 +11077,7 @@
       </emergency>
     </territory>
 
-    <!-- Sweden -->
+    <!-- Sweden (SE) -->
     <!-- http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Nrplansammanst%C3%A4llning-2013-07-05.pdf -->
     <!-- http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx -->
     <territory id="SE">
@@ -11217,7 +11207,7 @@
       </smsServices>
     </territory>
 
-    <!-- Singapore -->
+    <!-- Singapore (SG) -->
     <territory id="SG">
       <generalDesc>
         <nationalNumberPattern>[179]\d{2,4}</nationalNumberPattern>
@@ -11256,7 +11246,7 @@
       </smsServices>
     </territory>
 
-    <!-- Saint Helena and Tristan da Cunha -->
+    <!-- St. Helena (SH) -->
     <territory id="SH">
       <generalDesc>
         <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
@@ -11295,7 +11285,7 @@
       </emergency>
     </territory>
 
-    <!-- Slovenia -->
+    <!-- Slovenia (SI) -->
     <!-- http://www.itu.int/oth/T02020000BE/en -->
     <territory id="SI">
       <generalDesc>
@@ -11374,8 +11364,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Svalbard -->
-    <!-- Country calling code shared with Norway. -->
+    <!-- Svalbard & Jan Mayen (SJ) -->
     <!-- http://www.npt.no/pt_internet/numsys/E.164.pdf -->
     <territory id="SJ">
       <generalDesc>
@@ -11399,7 +11388,7 @@
       </emergency>
     </territory>
 
-    <!-- Slovakia -->
+    <!-- Slovakia (SK) -->
     <!-- http://www.itu.int/oth/T02020000BD/en -->
     <!-- http://www.teleoff.gov.sk/data/files/25211.pdf -->
     <territory id="SK">
@@ -11461,7 +11450,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Sierra Leone -->
+    <!-- Sierra Leone (SL) -->
     <!-- http://www.itu.int/oth/T02020000BB/en -->
     <territory id="SL">
       <generalDesc>
@@ -11516,7 +11505,7 @@
       </smsServices>
     </territory>
 
-    <!-- San Marino -->
+    <!-- San Marino (SM) -->
     <!-- http://www.itu.int/oth/T02020000B5/en -->
     <territory id="SM">
       <generalDesc>
@@ -11539,7 +11528,7 @@
       </emergency>
     </territory>
 
-    <!-- Senegal -->
+    <!-- Senegal (SN) -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000B80001PDFE.pdf -->
     <!-- http://www.artpsenegal.net/images/documents/document_Structure_plan_national_de_numerotation_PNN_2012_231.pdf -->
     <territory id="SN">
@@ -11628,7 +11617,7 @@
       </smsServices>
     </territory>
 
-    <!-- Somalia -->
+    <!-- Somalia (SO) -->
     <territory id="SO">
       <generalDesc>
         <nationalNumberPattern>[57-9]\d\d</nationalNumberPattern>
@@ -11668,7 +11657,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Suriname -->
+    <!-- Suriname (SR) -->
     <territory id="SR">
       <generalDesc>
         <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
@@ -11690,7 +11679,7 @@
       </emergency>
     </territory>
 
-    <!-- Sao Tome and Principe -->
+    <!-- São Tomé & Príncipe (ST) -->
     <!-- http://www.itu.int/oth/T02020000B6/en -->
     <territory id="ST">
       <generalDesc>
@@ -11717,7 +11706,7 @@
       </emergency>
     </territory>
 
-    <!-- El Salvador -->
+    <!-- El Salvador (SV) -->
     <!-- http://www.itu.int/oth/T020200003F/en -->
     <territory id="SV">
       <generalDesc>
@@ -11759,7 +11748,7 @@
       </smsServices>
     </territory>
 
-    <!-- Sint Maarten -->
+    <!-- Sint Maarten (SX) -->
     <!-- http://www.nanpa.com/pdf/PL_429.pdf -->
     <!-- http://www.itu.int/oth/T02020000F7/en -->
     <territory id="SX">
@@ -11784,7 +11773,7 @@
       </emergency>
     </territory>
 
-    <!-- Syrian Arab Republic -->
+    <!-- Syria (SY) -->
     <!-- http://www.itu.int/oth/T02020000C9/en -->
     <!-- http://en.wikipedia.org/wiki/%2B963 -->
     <territory id="SY">
@@ -11808,7 +11797,7 @@
       </emergency>
     </territory>
 
-    <!-- Swaziland -->
+    <!-- Swaziland (SZ) -->
     <!-- http://www.itu.int/oth/T02020000C6/en -->
     <territory id="SZ">
       <generalDesc>
@@ -11833,7 +11822,7 @@
       </emergency>
     </territory>
 
-    <!-- Turks and Caicos Islands -->
+    <!-- Turks & Caicos Islands (TC) -->
     <!-- http://www.itu.int/oth/T02020000D8/en -->
     <territory id="TC">
       <generalDesc>
@@ -11873,7 +11862,7 @@
       </emergency>
     </territory>
 
-    <!-- Chad -->
+    <!-- Chad (TD) -->
     <!-- http://www.itu.int/oth/T0202000029/en -->
     <territory id="TD">
       <generalDesc>
@@ -11896,7 +11885,7 @@
       </emergency>
     </territory>
 
-    <!-- Togo -->
+    <!-- Togo (TG) -->
     <!-- http://www.itu.int/oth/T02020000D1/en -->
     <!-- https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=212 -->
     <territory id="TG">
@@ -11946,7 +11935,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Thailand -->
+    <!-- Thailand (TH) -->
     <!-- http://www.itu.int/oth/T02020000CD/en -->
     <!-- http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf -->
     <!-- http://en.wikipedia.org/wiki/+66 -->
@@ -12119,7 +12108,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Tajikistan -->
+    <!-- Tajikistan (TJ) -->
     <!-- http://www.itu.int/oth/T02020000CA/en -->
     <territory id="TJ">
       <generalDesc>
@@ -12157,7 +12146,7 @@
       </emergency>
     </territory>
 
-    <!-- Timor-Leste (East Timor) -->
+    <!-- Timor-Leste (TL) -->
     <territory id="TL">
       <generalDesc>
         <nationalNumberPattern>1\d\d</nationalNumberPattern>
@@ -12187,7 +12176,7 @@
       </emergency>
     </territory>
 
-    <!-- Turkmenistan -->
+    <!-- Turkmenistan (TM) -->
     <!-- http://www.itu.int/oth/T02020000D7/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Turkmenistan -->
     <territory id="TM">
@@ -12213,7 +12202,7 @@
       </emergency>
     </territory>
 
-    <!-- Tunisia -->
+    <!-- Tunisia (TN) -->
     <!-- http://www.itu.int/oth/T02020000D5/en -->
     <!-- http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf -->
     <territory id="TN">
@@ -12237,7 +12226,7 @@
       </emergency>
     </territory>
 
-    <!-- Tonga -->
+    <!-- Tonga (TO) -->
     <!-- http://www.itu.int/oth/T02020000D3/en -->
     <!-- http://www.wtng.info/wtng-676-to.html -->
     <territory id="TO">
@@ -12283,7 +12272,7 @@
       </emergency>
     </territory>
 
-    <!-- Turkey -->
+    <!-- Turkey (TR) -->
     <territory id="TR">
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{2,4}</nationalNumberPattern>
@@ -12553,7 +12542,7 @@
       </smsServices>
     </territory>
 
-    <!-- Trinidad and Tobago -->
+    <!-- Trinidad & Tobago (TT) -->
     <!-- http://www.itu.int/oth/T02020000D4/en -->
     <territory id="TT">
       <generalDesc>
@@ -12576,7 +12565,7 @@
       </emergency>
     </territory>
 
-    <!-- Tuvalu -->
+    <!-- Tuvalu (TV) -->
     <!-- http://www.itu.int/oth/T02020000D9/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu -->
     <territory id="TV">
@@ -12603,24 +12592,63 @@
       </emergency>
     </territory>
 
-    <!-- Taiwan, China -->
+    <!-- Taiwan (TW) -->
     <!-- http://www.itu.int/oth/T02020000EB/en -->
     <!-- Extension symbols found on the internet so far have been #, X and Ext - so # has been
          chosen as the preferred extension prefix. -->
     <territory id="TW">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
-        <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[029]</nationalNumberPattern>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>104</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[4-6]|
+            1[02389]|
+            6[5-8]|
+            9(?:
+              1[0-29]|
+              22|
+              5[057]|
+              68|
+              8[05]|
+              9[15689]
+            )
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[029]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[0289]|
+            92\d
+          )
+        </nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>165</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            65|
+            9(?:
+              19|
+              50|
+              85|
+              98
+            )
+          )
+        </nationalNumberPattern>
+      </standardRate>
+      <premiumRate>
+        <possibleLengths national="3"/>
+        <exampleNumber>105</exampleNumber>
+        <nationalNumberPattern>10[56]</nationalNumberPattern>
+      </premiumRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>110</exampleNumber>
@@ -12628,7 +12656,7 @@
       </emergency>
     </territory>
 
-    <!-- Tanzania -->
+    <!-- Tanzania (TZ) -->
     <!-- http://www.itu.int/oth/T02020000CB/en -->
     <territory id="TZ">
       <generalDesc>
@@ -12677,7 +12705,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ukraine -->
+    <!-- Ukraine (UA) -->
     <!-- http://www.itu.int/oth/T02020000DB/en -->
     <!-- http://en.wikipedia.org/wiki/%2B380 -->
     <territory id="UA">
@@ -12750,7 +12778,7 @@
       </emergency>
     </territory>
 
-    <!-- Uganda -->
+    <!-- Uganda (UG) -->
     <!-- http://www.itu.int/oth/T02020000F1/en -->
     <territory id="UG">
       <generalDesc>
@@ -12773,7 +12801,7 @@
       </emergency>
     </territory>
 
-    <!-- United States -->
+    <!-- United States (US) -->
     <!-- http://en.wikipedia.org/wiki/North_American_Numbering_Plan#Special_numbers_and_codes -->
     <!-- http://en.wikipedia.org/wiki/Vertical_service_code -->
     <!-- http://www.call811.com/how-811-works/default.aspx -->
@@ -12949,7 +12977,7 @@
       </smsServices>
     </territory>
 
-    <!-- Uruguay -->
+    <!-- Uruguay (UY) -->
     <!-- http://www.itu.int/oth/T02020000E0/en -->
     <!-- http://www.ursec.gub.uy -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay -->
@@ -12993,7 +13021,7 @@
       </emergency>
     </territory>
 
-    <!-- Uzbekistan -->
+    <!-- Uzbekistan (UZ) -->
     <!-- http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng -->
     <!-- http://www.itu.int/oth/T02020000E1/en -->
     <territory id="UZ">
@@ -13060,7 +13088,7 @@
       </smsServices>
     </territory>
 
-    <!-- Vatican City -->
+    <!-- Vatican City (VA) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City -->
     <territory id="VA">
       <generalDesc>
@@ -13083,7 +13111,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Vincent and the Grenadines -->
+    <!-- St. Vincent & Grenadines (VC) -->
     <!-- http://www.itu.int/oth/T02020000B3/en -->
     <territory id="VC">
       <generalDesc>
@@ -13123,7 +13151,7 @@
       </emergency>
     </territory>
 
-    <!-- Venezuela -->
+    <!-- Venezuela (VE) -->
     <!-- http://www.itu.int/oth/T02020000E3/en -->
     <!-- http://en.wikipedia.org/wiki/+58 -->
     <!-- http://wikitravel.org/en/Venezuela -->
@@ -13166,7 +13194,7 @@
       </emergency>
     </territory>
 
-    <!-- Virgin Islands, British -->
+    <!-- British Virgin Islands (VG) -->
     <!-- http://www.itu.int/oth/T020200001E/en -->
     <territory id="VG">
       <generalDesc>
@@ -13206,7 +13234,7 @@
       </emergency>
     </territory>
 
-    <!-- Virgin Islands, United States -->
+    <!-- U.S. Virgin Islands (VI) -->
     <!-- http://www.itu.int/oth/T02020000DF/en -->
     <territory id="VI">
       <generalDesc>
@@ -13230,7 +13258,7 @@
       </emergency>
     </territory>
 
-    <!-- Viet Nam (Vietnam) -->
+    <!-- Vietnam (VN) -->
     <!-- http://www.itu.int/oth/T02020000E4/en -->
     <!-- http://en.wikipedia.org/wiki/%2B84 -->
     <territory id="VN">
@@ -13254,7 +13282,7 @@
       </emergency>
     </territory>
 
-    <!-- Vanuatu -->
+    <!-- Vanuatu (VU) -->
     <!-- http://www.itu.int/oth/T02020000E2/en -->
     <territory id="VU">
       <generalDesc>
@@ -13277,7 +13305,7 @@
       </emergency>
     </territory>
 
-    <!-- Wallis and Futuna (Territoire français d'outre-mer) -->
+    <!-- Wallis & Futuna (WF) -->
     <!-- http://www.itu.int/oth/T02020000E6/en -->
     <territory id="WF">
       <generalDesc>
@@ -13301,7 +13329,7 @@
       </emergency>
     </territory>
 
-    <!-- Samoa -->
+    <!-- Samoa (WS) -->
     <!-- http://www.itu.int/oth/T02020000B4/en -->
     <territory id="WS">
       <generalDesc>
@@ -13352,7 +13380,7 @@
       </emergency>
     </territory>
 
-    <!-- Kosovo -->
+    <!-- Kosovo (XK) -->
     <!-- https://www.itu.int/oth/T02020000FD/en -->
     <territory id="XK">
       <generalDesc>
@@ -13390,7 +13418,7 @@
       </emergency>
     </territory>
 
-    <!-- Yemen -->
+    <!-- Yemen (YE) -->
     <!-- http://www.itu.int/oth/T02020000E7/en -->
     <territory id="YE">
       <generalDesc>
@@ -13416,7 +13444,7 @@
       </emergency>
     </territory>
 
-    <!-- Mayotte -->
+    <!-- Mayotte (YT) -->
     <territory id="YT">
       <generalDesc>
         <nationalNumberPattern>1\d\d?</nationalNumberPattern>
@@ -13455,7 +13483,7 @@
       </emergency>
     </territory>
 
-    <!-- South Africa -->
+    <!-- South Africa (ZA) -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa -->
     <!-- https://www.icasa.org.za/Portals/0/Regulations/Regulations/NumberingPlanReg.pdf -->
@@ -13565,7 +13593,7 @@
       </smsServices>
     </territory>
 
-    <!-- Zambia -->
+    <!-- Zambia (ZM) -->
     <!-- http://www.itu.int/oth/T02020000E8/en -->
     <territory id="ZM">
       <generalDesc>
@@ -13597,7 +13625,7 @@
       </emergency>
     </territory>
 
-    <!-- Zimbabwe -->
+    <!-- Zimbabwe (ZW) -->
     <!-- http://www.itu.int/oth/T02020000E9/en -->
     <territory id="ZW">
       <generalDesc>
