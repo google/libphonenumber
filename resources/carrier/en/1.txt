@@ -125,6 +125,7 @@
 16492|C&W
 16493|Digicel
 164943|Islandcom
+1658295|Cable & Wireless
 167148|GTA
 167174|PTI PACIFICA
 167183|i CAN_GSM
@@ -457,6 +458,7 @@
 1869764|Digicel
 1869765|Digicel
 1869766|Digicel
+1876210|Cable & Wireless
 187624|Digicel
 187625|Digicel
 187626|Digicel
@@ -468,6 +470,18 @@
 187628|Digicel
 187629|Digicel
 187630|Digicel
+1876310|Cable & Wireless
+1876312|Cable & Wireless
+1876313|Cable & Wireless
+1876314|Cable & Wireless
+1876315|Cable & Wireless
+1876316|Cable & Wireless
+1876317|Cable & Wireless
+1876318|Cable & Wireless
+1876319|Cable & Wireless
+187632|Cable & Wireless
+187633|Cable & Wireless
+187634|Cable & Wireless
 187635|Digicel
 187636|Digicel
 187637|Digicel
@@ -491,6 +505,7 @@
 187647|Digicel
 187648|Digicel
 187649|Digicel
+1876501|Cable & Wireless
 1876503|Digicel
 1876504|Digicel
 1876505|Digicel
@@ -498,7 +513,10 @@
 1876507|Digicel
 1876508|Digicel
 1876509|Digicel
+1876517|Cable & Wireless
 187652|Digicel
+187653|Cable & Wireless
+187654|Cable & Wireless
 1876550|Digicel
 1876551|Digicel
 1876552|Digicel
@@ -520,12 +538,48 @@
 187657|Digicel
 187658|Digicel
 187659|Digicel
+1876700|Cable & Wireless
+1876707|Cable & Wireless
+187677|Cable & Wireless
+1876781|Cable & Wireless
+1876782|Cable & Wireless
+1876783|Cable & Wireless
+1876784|Cable & Wireless
+1876787|Cable & Wireless
+1876788|Cable & Wireless
+1876789|Cable & Wireless
+1876790|Cable & Wireless
+1876791|Cable & Wireless
+1876792|Cable & Wireless
+1876793|Cable & Wireless
+1876796|Cable & Wireless
+1876797|Cable & Wireless
+1876798|Cable & Wireless
+1876799|Cable & Wireless
+187680|Cable & Wireless
+1876810|Cable & Wireless
+1876812|Cable & Wireless
+1876813|Cable & Wireless
+1876814|Cable & Wireless
+1876815|Cable & Wireless
+1876816|Cable & Wireless
+1876817|Cable & Wireless
+1876818|Cable & Wireless
+1876819|Cable & Wireless
+187682|Cable & Wireless
+187683|Cable & Wireless
 187684|Digicel
 187685|Digicel
 187686|Digicel
 187687|Digicel
 187688|Digicel
 187689|Digicel
+1876909|Cable & Wireless
+1876919|Cable & Wireless
+1876990|Cable & Wireless
+1876995|Cable & Wireless
+1876997|Cable & Wireless
+1876999|Cable & Wireless
 1939201|CENTENNIAL
 1939212|CENTENNIAL
 1939214|CENTENNIAL
