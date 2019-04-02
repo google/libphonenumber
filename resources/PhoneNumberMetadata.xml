@@ -2306,7 +2306,8 @@
     <territory id="AU" mainCountryForCode="true" countryCode="61"
                preferredInternationalPrefix="0011"
                internationalPrefix="001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011"
-               nationalPrefix="0" mobileNumberPortableRegion="true">
+               nationalPrefix="0" nationalPrefixForParsing="0|(183[12])"
+               mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- Pager (5-6 digits) -->
         <numberFormat pattern="(\d{2})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG">
@@ -2352,7 +2353,8 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- Fixed line -->
-        <numberFormat pattern="(\d)(\d{4})(\d{4})" nationalPrefixFormattingRule="($NP$FG)">
+        <numberFormat pattern="(\d)(\d{4})(\d{4})" nationalPrefixFormattingRule="($NP$FG)"
+                      carrierCodeFormattingRule="$CC ($FG)">
           <leadingDigits>[2378]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -2369,11 +2371,15 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          1\d{4,9}|
+          1(?:
+            [0-79]\d{7,8}|
+            8[0-24-9]\d{7}
+          )|
           (?:
             [2-478]\d\d|
             550
-          )\d{6}
+          )\d{6}|
+          1\d{4,7}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
@@ -3100,9 +3106,9 @@
            length described in our source documentation doesn't match numbers online (e.g. 05222)
            so we allow both for now. (This applies to 0431, 04329, 04623, 05327 as well). We have
            also added 04452 and 04923 from numbers found online. Included prefixes 2778, 2841, 2893,
-           2963, 2989 and 4462 as per user report. 9-digit 24 and 25 prefix numbers were added based
-           on user reports, although a doc from BRTC mentions that they are 10-digit numbers, which
-           we think might be a typo. -->
+           2963, 298[59] and 4462 as per user report. 9-digit 24 and 25 prefix numbers were added
+           based on user reports, although a doc from BRTC mentions that they are 10-digit numbers,
+           which we think might be a typo. -->
       <fixedLine>
         <possibleLengths national="[6-10]"/>
         <exampleNumber>27111234</exampleNumber>
@@ -3201,7 +3207,7 @@
                 5[5-7]|
                 6[01367]|
                 7[15]|
-                8[0146-9]
+                8[014-9]
               )
             )|
             3(?:
@@ -5132,11 +5138,15 @@
                nationalPrefixTransformRule="8$1">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{5,9}|
+          1(?:
+            [0-79]\d|
+            8[0-24-9]
+          )\d{7}|
           (?:
-            [48]\d\d|
+            [148]\d\d|
             550
-          )\d{6}
+          )\d{6}|
+          1\d{5,7}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -6361,26 +6371,6 @@
           <format>$1 $2</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
-        <!-- 100xx and 9[56]xxx(x) numbers with four-digit area codes. -->
-        <numberFormat pattern="(\d{4})(\d{5,6})" nationalPrefixFormattingRule="$NP$FG"
-                      carrierCodeFormattingRule="$CC $FG">
-          <leadingDigits>807</leadingDigits>
-          <leadingDigits>8078</leadingDigits>
-          <leadingDigits>8078[19]</leadingDigits>
-          <leadingDigits>
-            8078(?:
-              10|
-              95
-            )
-          </leadingDigits>
-          <leadingDigits>
-            8078(?:
-              100|
-              95
-            )
-          </leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
         <!-- 10 digit toll free or shared cost range -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>
@@ -6560,9 +6550,12 @@
           )\d{5}|
           (?:
             43[35]|
-            754|
-            851
+            754
           )\d{7,8}|
+          8(?:
+            078\d{7}|
+            51\d{7,8}
+          )|
           (?:
             10|
             (?:
@@ -6665,7 +6658,6 @@
               9[02-9]
             )|
             8(?:
-              078|
               1[236-8]|
               2[5-7]|
               3\d|
@@ -7163,11 +7155,15 @@
                nationalPrefixTransformRule="8$1">
       <generalDesc>
         <nationalNumberPattern>
-          1\d{5,9}|
+          1(?:
+            [0-79]\d|
+            8[0-24-9]
+          )\d{7}|
           (?:
-            [48]\d\d|
+            [148]\d\d|
             550
-          )\d{6}
+          )\d{6}|
+          1\d{5,7}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -8379,11 +8375,11 @@
         <possibleLengths national="9"/>
         <exampleNumber>991234567</exampleNumber>
         <nationalNumberPattern>
-          9630\d{5}|
+          964[0-2]\d{5}|
           9(?:
             39|
             [57][89]|
-            6[0-27-9]|
+            6[0-37-9]|
             [89]\d
           )\d{6}
         </nationalNumberPattern>
@@ -11727,8 +11723,7 @@
     <!-- From 2001, very out of date. -->
     <!-- http://www.itu.int/oth/T0202000064/en -->
     <!-- http://en.wikipedia.org/wiki/%2B62 -->
-    <territory id="ID" countryCode="62" internationalPrefix="0(?:0[17-9]|10(?:00|1[67]))"
-               nationalPrefix="0">
+    <territory id="ID" countryCode="62" internationalPrefix="00[189]" nationalPrefix="0">
       <availableFormats>
         <!-- Short UAN numbers -->
         <numberFormat pattern="(\d)(\d{3})(\d{3})">
@@ -11779,20 +11774,36 @@
           <leadingDigits>8</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
+        <!-- Format for 13 digit ITFS numbers. -->
+        <numberFormat pattern="(\d{2})(\d{4})(\d{3})(\d{4})">
+          <leadingDigits>0</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            [1-36]|
-            8\d{5}
+            (?:
+              007803|
+              8\d{4}
+            )\d|
+            [1-36]
           )\d{6}|
           [1-9]\d{8,10}|
           [2-9]\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- 00798 ITFS numbers can't be dialled internationally. Source:
+           https://support.twilio.com/hc/en-us/articles/115007579027-Toll-free-phone-number-restrictions-and-limitations -->
       <noInternationalDialling>
-        <possibleLengths national="10"/>
-        <nationalNumberPattern>8071\d{6}</nationalNumberPattern>
+        <possibleLengths national="10,13"/>
+        <nationalNumberPattern>
+          (?:
+            007803\d|
+            8071
+          )\d{6}
+        </nationalNumberPattern>
       </noInternationalDialling>
       <!-- Area codes taken from wikipedia, with missing ones added from
            http://www.telkom.co.id/customer-services/area-and-country-code/?type=area.
@@ -11885,9 +11896,10 @@
         <nationalNumberPattern>8[1-35-9]\d{7,10}</nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="[8-11]"/>
+        <possibleLengths national="[8-11],13"/>
         <exampleNumber>8001234567</exampleNumber>
         <nationalNumberPattern>
+          007803\d{7}|
           (?:
             177\d|
             800
@@ -21202,12 +21214,21 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- Looks like not all 1X numbers are land-line numbers in Lima, some of them are allotted
+           as IDDs. As it affects parsing of these numbers and no valid numbers found online, not
+           supporting 8 digit 191[124], 1977 and 1990 ranges. -->
       <fixedLine>
         <possibleLengths national="8" localOnly="6,7"/>
         <exampleNumber>11234567</exampleNumber>
         <nationalNumberPattern>
+          19(?:
+            [02-68]\d|
+            1[035-9]|
+            7[0-689]|
+            9[1-9]
+          )\d{4}|
           (?:
-            1\d|
+            1[0-8]|
             4[1-4]|
             5[1-46]|
             6[1-7]|
