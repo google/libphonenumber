@@ -148,6 +148,24 @@ One use-case where this method may be useful is if you want to see if a
 `FIXED_LINE` number for a business matches the country it is in, to try and spot
 data errors.
 
+### Some "valid" numbers are not formatting correctly.
+
+This could be due to number simplification. In order to keep the size of the XML
+files to a reasonable level, it's necessary in some regions (e.g. "DE" or "AT")
+to simplify number ranges. This results in a relatively small amount of false
+positive numbers (i.e. numbers that should be reported as invalid, but which are
+now shown as valid).
+
+This issue here is that (for simplicity) only the number validity information is
+simplified; the formatting information in the XML (leading digits) retains its
+full accuracy and so doesn't cover these numbers.
+
+Note that while it is probably possible to address this and expand the format
+information to cover these numbers as well, it's a rather non-trivial task
+(since the leading digits must not be over simplified so as to capture other
+valid ranges with different formats). Note that this also applies to attributes
+like "national only" or geocoding information.
+
 ### What types of phone numbers can SMSs be sent to?
 
 SMSs can be sent to `MOBILE` or `FIXED_LINE_OR_MOBILE` numbers. However,
