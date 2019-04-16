@@ -91,7 +91,7 @@
 25111552|Filwha VI, Addis Ababa
 25111553|Filwha V, Addis Ababa
 25111554|Filwha VII, Addis Ababa
-2511161|Bole I, Addis Ababa
+25111618|Bole I, Addis Ababa
 25111626|Bole Michael, Addis Ababa
 25111629|Gerji, Addis Ababa
 25111645|Yeka I, Addis Ababa

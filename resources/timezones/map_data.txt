@@ -3220,6 +3220,7 @@
 689|Pacific/Gambier&Pacific/Marquesas&Pacific/Tahiti
 6894|Pacific/Tahiti
 68987|Pacific/Gambier&Pacific/Marquesas&Pacific/Tahiti
+68988|Pacific/Tahiti
 68989|Pacific/Tahiti
 690|Pacific/Fakaofo
 691|Pacific/Kosrae&Pacific/Ponape&Pacific/Truk
