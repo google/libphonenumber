@@ -25,7 +25,8 @@
 267319|Gaborone
 26735|Gaborone
 26736|Gaborone
-26737|Gaborone
+267370|Gaborone
+267371|Gaborone
 267390|Gaborone
 267391|Gaborone
 267392|Gaborone

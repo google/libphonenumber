@@ -4638,6 +4638,7 @@
           )\d{6}
         </nationalNumberPattern>
       </generalDesc>
+      <!-- Number range 373 is been supported based on user report and online evidence. -->
       <fixedLine>
         <possibleLengths national="7"/>
         <exampleNumber>2401234</exampleNumber>
@@ -4652,7 +4653,7 @@
               1[0-35-9]|
               55|
               [69]\d|
-              7[01]
+              7[013]
             )|
             4(?:
               6[03]|
@@ -5650,7 +5651,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          1230\d{7}|
+          12300\d{6}|
           6\d{9,10}|
           [2-9]\d{8}
         </nationalNumberPattern>
@@ -5721,9 +5722,9 @@
         <exampleNumber>800123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            1230\d|
-            800
-          )\d{6}
+            123|
+            8
+          )00\d{6}
         </nationalNumberPattern>
       </tollFree>
       <!-- http://empresa.movistar.cl/nuestros_productos/soluciones_telefonia_ip/servicios/servicio_600.php -->
@@ -7509,13 +7510,8 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- Short shared cost numbers. -->
-        <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>138</leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
-        <!-- Fixed line, 4 digit area codes. -->
-        <numberFormat pattern="(\d{4})(\d{3,11})" nationalPrefixFormattingRule="$NP$FG">
+        <!-- Fixed line, 4 digit area codes. Only area code 5361 has two digit subscriber numbers. -->
+        <numberFormat pattern="(\d{4})(\d{2,11})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             [24-6]|
             3(?:
@@ -7605,6 +7601,11 @@
             )[1246]|
             3[4579]3[1357]
           </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <!-- Short shared cost numbers. -->
+        <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>138</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <!-- UAN (181) numbers. -->
@@ -7731,7 +7732,8 @@
            lengths for number ranges. This would (if taken literally) result in 1 or 2 length
            subscriber numbers (e.g. 5-digit area code for 6 digit number).
            A contact of the German numbering authority confirmed that subscriber numbers
-           are never shorter than 3-digits, and we've adopted this in the range data. -->
+           are never shorter than 3-digits, and we've adopted this in the range data. Exception
+           to this rule is 5361 range, where two digit subscriber numbers are possible. -->
       <!-- Maximum lengths of German numbers are generally undefined, since any subscriber
            number can connect to a private exchange (PABX), which can consume additionally
            dialled digits (e.g. for calling individual rooms in a hotel directly). This means that in
@@ -7740,7 +7742,7 @@
            This needs to be shorter to avoid range lengths overlapping which would otherwise
            cause issues in parsing (since 49 is both an area code and the country calling code). -->
       <fixedLine>
-        <possibleLengths national="[5-15]" localOnly="3,4"/>
+        <possibleLengths national="[5-15]" localOnly="[2-4]"/>
         <exampleNumber>30123456</exampleNumber>
         <nationalNumberPattern>
           (?:
@@ -7821,7 +7823,11 @@
               3[14]|
               [4-9]1
             )|
-            [57][1-9]1|
+            5(?:
+              [124-9]1|
+              3[16]
+            )|
+            7[1-9]1|
             9(?:
               06|
               [1-9]1
@@ -8859,7 +8865,7 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
-      <!-- Found valid fixed-line numbers online that starts with prefix 11 639 -->
+      <!-- Found valid fixed-line numbers online that starts with prefix 11 617 and 11 639. -->
       <fixedLine>
         <possibleLengths national="9" localOnly="7"/>
         <exampleNumber>111112345</exampleNumber>
@@ -8899,7 +8905,7 @@
                 5[0-4]
               )|
               6(?:
-                18|
+                1[78]|
                 2[69]|
                 39|
                 4[5-7]|
@@ -12950,8 +12956,7 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- 12-digit toll free numbers -->
-        <numberFormat pattern="(\d{2})(\d{3})(\d{4})(\d{3})" nationalPrefixFormattingRule="$NP$FG"
-                      nationalPrefixOptionalWhenFormatting="true">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{4})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>0</leadingDigits>
           <format>$1 $2 $3 $4</format>
           <intlFormat>NA</intlFormat>
@@ -20335,7 +20340,7 @@
               0[2-9]|
               1[0-8]
             )|
-            90[235-9]
+            90[1-35-9]
           )\d{7}
         </nationalNumberPattern>
       </mobile>
@@ -21215,7 +21220,7 @@
         </nationalNumberPattern>
       </generalDesc>
       <!-- Looks like not all 1X numbers are land-line numbers in Lima, some of them are allotted
-           as IDDs. As it affects parsing of these numbers and no valid numbers found online, not
+           as IDDs. As it effects parsing of these numbers and no valid numbers found online, not
            supporting 8 digit 191[124], 1977 and 1990 ranges. -->
       <fixedLine>
         <possibleLengths national="8" localOnly="6,7"/>
@@ -21301,7 +21306,7 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>87123456</exampleNumber>
-        <nationalNumberPattern>8[79]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>8[7-9]\d{6}</nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -25778,7 +25783,7 @@
             [25][2-8]|
             [346]|
             7[1-9]|
-            8[27-9]
+            8[237-9]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -25818,9 +25823,12 @@
         <exampleNumber>221234567</exampleNumber>
         <nationalNumberPattern>
           24\d{6,7}|
-          82(?:
-            3\d|
-            66
+          8(?:
+            2(?:
+              3\d|
+              66
+            )|
+            36[24-9]
           )\d{4}|
           (?:
             2[235-8]\d|
@@ -27523,10 +27531,18 @@
           )\d{6}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per the user and update from carrier it seems that numbers starting with 1800 are
+           renumbered to 1228. Because we don't have complete update,supporting both the ranges
+           at present. -->
       <tollFree>
         <possibleLengths national="[8-10]"/>
         <exampleNumber>1800123456</exampleNumber>
-        <nationalNumberPattern>1800\d{4,6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            228\d{4}|
+            800\d{4,6}
+          )
+        </nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="[8-10]"/>

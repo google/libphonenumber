@@ -7559,7 +7559,7 @@
     <!-- http://tskl.net.ki/services has others. -->
     <territory id="KI">
       <generalDesc>
-        <nationalNumberPattern>[179]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[17]\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <!-- http://tskl.net.ki/services/3g-4g-rates-offpeaks/quick-dial-credit-checking-codes/
            lists 777 as voicemail access. -->
@@ -7573,17 +7573,13 @@
             9[2-5]
           )|
           777|
-          99[2-49]|
           10[0-8]
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>192</exampleNumber>
-        <nationalNumberPattern>
-          19[2-5]|
-          99[2-49]
-        </nationalNumberPattern>
+        <nationalNumberPattern>19[2-5]</nationalNumberPattern>
       </tollFree>
       <!-- http://www.tskl.net.ki/910_operator.php - charged at $0.20 per call. -->
       <standardRate>
@@ -7591,18 +7587,10 @@
         <exampleNumber>103</exampleNumber>
         <nationalNumberPattern>103</nationalNumberPattern>
       </standardRate>
-      <!-- ITU 30.VIII.2013 still listed 9XX emergency numbers (not yet 1XX).
-           Newer ITU updates (2016) no longer mention 9XX but list 1XX.
-           9XX might no longer be in use, but some websites (Wikipedia) still
-           list them.
-           TODO(b/33193822): Remove after confirming with government. -->
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>192</exampleNumber>
-        <nationalNumberPattern>
-          19[2-5]|
-          99[2-49]
-        </nationalNumberPattern>
+        <nationalNumberPattern>19[2-5]</nationalNumberPattern>
       </emergency>
       <!-- See comment for emergency section. -->
       <expandedEmergency>

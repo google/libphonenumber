@@ -1,3 +1,13 @@
+Apr 15, 2019: v8.10.10
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BW, CL, DE, ET, IN, NG, PF, TW, VN
+ - Updated short number metadata for region code(s): KI
+ - Updated geocoding data for country calling code(s):
+   251 (en), 267 (en), 886 (en, zh, zh_Hant)
+ - Updated carrier data for country calling code(s): 234 (en), 689 (en)
+ - Updated / refreshed time zone meta data.
+
 Apr 02, 2019: v8.10.9
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 380, 44, 49
