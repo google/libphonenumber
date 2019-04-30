@@ -3062,35 +3062,53 @@
     <territory id="CU">
       <generalDesc>
         <nationalNumberPattern>
-          1\d\d(?:
-            \d{3}
+          [12]\d\d(?:
+            \d{3,4}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,6,7"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[4-6]|
+            0[4-7]|
             1(?:
               6111|
               8
             )|
             40
-          )
+          )|
+          2045252
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,6,7"/>
         <exampleNumber>104</exampleNumber>
-        <nationalNumberPattern>10[4-6]</nationalNumberPattern>
+        <nationalNumberPattern>
+          10[4-7]|
+          (?:
+            116|
+            204\d
+          )\d{3}
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>10[4-6]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3,6,7"/>
+        <exampleNumber>107</exampleNumber>
+        <nationalNumberPattern>
+          107|
+          (?:
+            116|
+            204\d
+          )\d{3}
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Cape Verde (CV) -->
@@ -8691,7 +8709,7 @@
       </emergency>
     </territory>
 
-    <!-- Macedonia (FYROM) (MK) -->
+    <!-- North Macedonia (MK) -->
     <!-- http://www.itu.int/oth/T02020000CE/en -->
     <territory id="MK">
       <generalDesc>
@@ -8913,7 +8931,7 @@
       </emergency>
     </territory>
 
-    <!-- Macau (MO) -->
+    <!-- Macao (MO) -->
     <!-- http://www.itu.int/oth/T020200007E/en -->
     <territory id="MO">
       <generalDesc>
@@ -11785,7 +11803,7 @@
       </emergency>
     </territory>
 
-    <!-- Swaziland (SZ) -->
+    <!-- Eswatini (SZ) -->
     <!-- http://www.itu.int/oth/T02020000C6/en -->
     <territory id="SZ">
       <generalDesc>

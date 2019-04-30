@@ -6974,7 +6974,10 @@
     <territory id="CU" countryCode="53" internationalPrefix="119" nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{4,6})" nationalPrefixFormattingRule="($NP$FG)">
-          <leadingDigits>[2-4]</leadingDigits>
+          <leadingDigits>
+            2[1-4]|
+            [34]
+          </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d)(\d{6,7})" nationalPrefixFormattingRule="($NP$FG)">
@@ -6999,7 +7002,7 @@
         <nationalNumberPattern>
           (?:
             3[23]|
-            4[78]
+            48
           )\d{4,6}|
           (?:
             31|
@@ -7007,7 +7010,7 @@
           )\d{6}|
           (?:
             2[1-4]|
-            4[125]|
+            4[1257]|
             7\d
           )\d{5,6}
         </nationalNumberPattern>
@@ -8665,7 +8668,7 @@
             7(?:
               0[06-8]|
               6[1267]|
-              7[017]
+              7[0-27]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -17707,7 +17710,7 @@
             7(?:
               0[06-8]|
               6[1267]|
-              7[017]
+              7[0-27]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -18154,7 +18157,7 @@
       </voip>
     </territory>
 
-    <!-- Macedonia (FYROM) (MK) -->
+    <!-- North Macedonia (MK) -->
     <!-- http://www.itu.int/oth/T02020000CE/en -->
     <!-- https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries -->
     <territory id="MK" countryCode="389" internationalPrefix="00" nationalPrefix="0"
@@ -18781,7 +18784,7 @@
       </voip>
     </territory>
 
-    <!-- Macau (MO) -->
+    <!-- Macao (MO) -->
     <!-- No tollFree or premiumRate information can be found. -->
     <!-- http://www.itu.int/oth/T020200007E/en -->
     <!-- http://www.dsrt.gov.mo/web/en/generalinfo/allocatednum -->
@@ -24749,7 +24752,7 @@
       </mobile>
     </territory>
 
-    <!-- Swaziland (SZ) -->
+    <!-- Eswatini (SZ) -->
     <!-- http://www.itu.int/oth/T02020000C6/en -->
     <territory id="SZ" countryCode="268" internationalPrefix="00">
       <availableFormats>

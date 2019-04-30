@@ -1,3 +1,9 @@
+Apr 30, 2019: v8.10.11
+Metadata changes:
+ - Updated phone metadata for region code(s): CU, EH, MA
+ - Updated short number metadata for region code(s): CU
+ - Updated geocoding data for country calling code(s): 53 (en)
+
 Apr 15, 2019: v8.10.10
 Metadata changes:
  - Updated phone metadata for region code(s):
