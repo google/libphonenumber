@@ -5671,15 +5671,14 @@
            already numbers with the prefix "23" are being added.
            See: http://www.gob.cl/especiales/informate-de-la-nueva-forma-de-marcar/
                 http://www.subtel.cl/index.php?option=com_content&view=article&id=3081:&catid=3:noticias
-           Added prefixes 2323 and 2326 range based on online evidence. Added prefixes 2324, 2327
-           and 2328 based on user reports. -->
+           Added 232[3-8] ranges based on online evidence. -->
       <fixedLine>
         <possibleLengths national="9"/>
         <exampleNumber>221234567</exampleNumber>
         <nationalNumberPattern>
           21962\d{4}|
           (?:
-            232[0-46-8]|
+            232[0-8]|
             80[1-9]\d
           )\d{5}|
           (?:
@@ -5700,7 +5699,7 @@
         <nationalNumberPattern>
           21962\d{4}|
           (?:
-            232[0-46-8]|
+            232[0-8]|
             80[1-9]\d
           )\d{5}|
           (?:
@@ -11242,7 +11241,7 @@
         <exampleNumber>21234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            384[04]|
+            384[014]|
             58(?:
               0[1-8]|
               1[2-9]
@@ -19260,7 +19259,7 @@
               2[4-7]
             )|
             54(?:
-              4\d|
+              [34]\d|
               71
             )|
             6\d\d|
@@ -19284,7 +19283,7 @@
           )\d{4}|
           5(?:
             2[589]|
-            4[489]|
+            4[3489]|
             7\d|
             8[0-689]|
             9[0-8]
@@ -20160,7 +20159,7 @@
           2(?:
             0(?:
               20|
-              3[1-7]|
+              3[1-8]|
               4[13-5]|
               5[14]|
               6[14578]|
