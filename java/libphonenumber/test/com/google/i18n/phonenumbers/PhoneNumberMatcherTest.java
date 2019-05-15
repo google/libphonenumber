@@ -486,6 +486,8 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     new NumberTest("0 3 0 -3 2 23 12 34", RegionCode.DE),
     // Fits an alternate pattern, but the leading digits don't match.
     new NumberTest("+52 332 123 23 23", RegionCode.MX),
+    // Test norwegian machine to machine
+    //new NumberTest("+47581234567890", RegionCode.NO),
   };
 
   /**
