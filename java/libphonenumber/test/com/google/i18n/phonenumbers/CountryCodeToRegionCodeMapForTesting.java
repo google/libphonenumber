@@ -31,10 +31,10 @@ public class CountryCodeToRegionCodeMapForTesting {
   // countries sharing a calling code, such as the NANPA countries, the one
   // indicated with "isMainCountryForCode" in the metadata should be first.
   static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {
-    // The capacity is set to 38 as there are 29 different entries,
+    // The capacity is set to 40 as there are 30 different entries,
     // and this offers a load factor of roughly 0.75.
     Map<Integer, List<String>> countryCodeToRegionCodeMap =
-        new HashMap<Integer, List<String>>(38);
+        new HashMap<Integer, List<String>>(40);
 
     ArrayList<String> listWithRegionCode;
 
@@ -69,6 +69,10 @@ public class CountryCodeToRegionCodeMapForTesting {
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("SE");
     countryCodeToRegionCodeMap.put(46, listWithRegionCode);
+
+    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode.add("NO");
+    countryCodeToRegionCodeMap.put(47, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("PL");

@@ -20617,12 +20617,17 @@
     <!-- Metadata (excluding fixed-line) should be duplicated in 'SJ'. -->
     <!-- http://www.npt.no/npt/numsys/E.164.pdf -->
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Norway -->
+    <!-- https://eng.nkom.no/market/numbering/e.164-numbering-plan/general-norwegian-numbering-plan-for-telephony-etc.e.164 -->
     <territory id="NO" mainCountryForCode="true" countryCode="47" leadingDigits="[02-689]|7[0-8]"
                internationalPrefix="00" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{3})">
           <leadingDigits>[489]</leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(58)(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>58</leadingDigits>
+          <format>$1 $2 $3 $4 $5 $6</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>[235-7]</leadingDigits>
@@ -20654,12 +20659,13 @@
       <!-- Consider adding one more digit for stricter validation (e.g. for 580). TETRA and GSM-R
            numbers are not supported as they are not reachable for all. -->
       <mobile>
-        <possibleLengths national="8"/>
+        <possibleLengths national="8,12"/>
         <exampleNumber>40612345</exampleNumber>
         <nationalNumberPattern>
           (?:
             4[015-8]|
-            5[89]|
+            58\d{4}|
+            59|
             9\d
           )\d{6}
         </nationalNumberPattern>

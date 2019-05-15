@@ -48,6 +48,7 @@ final class RegionCode {
   static final String KR = "KR";
   static final String MX = "MX";
   static final String NZ = "NZ";
+  static final String NO = "NO";
   static final String PG = "PG";
   static final String PL = "PL";
   static final String RE = "RE";

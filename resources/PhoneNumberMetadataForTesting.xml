@@ -990,6 +990,40 @@
       </fixedLine>
     </territory>
 
+    <!-- Norway -->
+    <territory id="NO" countryCode="47" internationalPrefix="00">
+      <generalDesc>
+        <nationalNumberPattern>\d{12}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <possibleLengths national="8"/>
+        <exampleNumber>21234567</exampleNumber>
+        <nationalNumberPattern>
+          (?:
+            2[1-4]|
+            3[1-3578]|
+            5[1-35-7]|
+            6[1-4679]|
+            7[0-8]
+          )\d{6}
+        </nationalNumberPattern>
+      </fixedLine>
+      <!-- Consider adding one more digit for stricter validation (e.g. for 580). TETRA and GSM-R
+           numbers are not supported as they are not reachable for all. -->
+      <mobile>
+        <possibleLengths national="8,12"/>
+        <exampleNumber>40612345</exampleNumber>
+        <nationalNumberPattern>
+          (?:
+            4[015-8]|
+            58\d{4}|
+            59|
+            9\d
+          )\d{6}
+        </nationalNumberPattern>
+      </mobile>
+    </territory>
+
     <!-- Singapore -->
     <!-- http://www.ida.gov.sg/policies%20and%20regulation/20060508120124.aspx -->
     <!-- For testing the AYTF with long NDDs, "777777" is added as a possible national prefix. -->
