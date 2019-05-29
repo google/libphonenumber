@@ -1,3 +1,8 @@
+May 29, 2019: v8.10.13
+Metadata changes:
+ - Updated phone metadata for region code(s): AU, CC, CI, CX, DE, HK
+ - Updated carrier data for country calling code(s): 61 (en), 225 (en)
+
 May 10, 2019: v8.10.12
 Metadata changes:
  - Updated phone metadata for region code(s): CL, HK, MU, NE
