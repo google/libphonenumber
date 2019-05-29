@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.10.13</version>
+  <version>8.10.14-SNAPSHOT</version>
   <packaging>pom</packaging>
   <url>https://github.com/googlei18n/libphonenumber/</url>
 
@@ -34,7 +34,7 @@
     <connection>scm:git:https://github.com/googlei18n/libphonenumber.git</connection>
     <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git</developerConnection>
     <url>https://github.com/googlei18n/libphonenumber/</url>
-    <tag>v8.10.13</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
