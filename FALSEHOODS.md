@@ -181,7 +181,7 @@ surprising how many false assumptions programmers continue to make about them.
 
     In some countries, people write the national prefix in brackets (typically
     `(0)`) after the country calling code to indicate that it should be
-    discarded when dialing internationally. In Italy, since 1988, the prefix was
+    discarded when dialing internationally. In Italy, since 1998, the prefix was
     "fixed" to the phone numbers, so that `(01) 2345` became `012345` and should
     be dialed (internationally) as `+39012345` (including the leading zero).
 
