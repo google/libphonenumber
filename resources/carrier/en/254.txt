@@ -17,6 +17,8 @@
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Kenya
 # https://www.itu.int/oth/T0202000070/en
 
+25410|Airtel
+25411|Safaricom
 25470|Safaricom
 25471|Safaricom
 25472|Safaricom
