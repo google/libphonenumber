@@ -12,50 +12,56 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# https://www.viestintavirasto.fi/en/internettelephone/numberingoftelecommunicationsnetworks/mobilenetworks/mobilenetworkareacodes.html
+# https://www.traficom.fi/en/communications/broadband-and-telephone/mobile-network-area-codes
 
 # Sonera and Tele Finland carriers are now Telia.
 
-35840|Telia
-35841|DNA
-35842|Telia
-3584320|Cuuma
-3584321|Cuuma
-358436|DNA
-358438|DNA
-35844|DNA
-358450|Telia
-358451|Elisa
-358452|Elisa
-358453|Elisa
-3584540|MobiWeb
-3584541|AinaCom
-3584542|Nokia
-3584543|Nokia
-3584544|Nokia
-3584545|Interactive Digital Media
-3584546|NextGen Mobile / CardBoardFish
-3584547|SMS Provider Corp
-3584548|Voxbone
-3584549|Beepsend
-3584550|Suomen Virveverkko
-3584552|Suomen Virveverkko
-3584554|Suomen Virveverkko
-3584555|Nokia Solutions and Networks
-3584556|Liikennevirasto
-3584557|Compatel
-3584558|Suomen Virveverkko
-3584559|MI
-358456|Elisa
-3584570|AMT
-3584571|Tismi
-3584573|AMT
-3584574|DNA
-3584575|AMT
-3584576|DNA
-3584577|DNA
-3584578|DNA
-3584579|DNA
-358458|Elisa
-35846|Elisa
-35850|Elisa
+35840|Telia Finland Oyj
+35841|DNA Oyj
+35842|Telia Finland Oyj
+3584320|Cuuma Communications Oy
+3584321|Cuuma Communications Oy
+3584322|Benemen Oy
+3584323|Top Connect OÜ
+3584324|Nord Connect SIA
+358436|DNA Oyj
+358438|DNA Oyj
+35844|DNA Oyj
+358450|Telia Finland Oyj
+358451|Elisa Oyj
+358452|Elisa Oyj
+358453|Elisa Oyj
+3584540|MobiWeb Limited
+3584541|Telia Communication Oy
+3584542|Nokia Solutions and Networks Oy 
+3584543|Nokia Solutions and Networks Oy 
+3584544|Nokia Solutions and Networks Oy 
+3584545|Interactive Digital Media GmbH
+3584546|IPIFY Limited
+3584547|SMS Provider Corp.
+3584548|Voxbone S.A.
+3584549|Twilio Sweden AB
+3584550|Suomen Virveverkko Oy
+3584552|Suomen Virveverkko Oy
+3584554|Suomen Virveverkko Oy
+3584555|Nokia Solutions and Networks Oy 
+3584556|Väylävirasto
+3584557|Compatel Limited
+3584558|Suomen Virveverkko Oy
+3584559|MI Carrier Services AB
+358456|Elisa Oyj
+3584570|Ålands Telekommunikation Ab
+3584571|Tismi BV
+3584572|Telavox AB / Telavox OY
+3584573|Ålands Telekommunikation Ab
+3584574|DNA Oyj
+3584575|Ålands Telekommunikation Ab
+3584576|DNA Oyj
+3584577|DNA Oyj
+3584578|DNA Oyj
+3584579|DNA Oyj
+358458|Elisa Oyj
+35846|Elisa Oyj
+3584941|Ukkoverkot Oy
+3584944|DNA Oyj
+35850|Elisa Oyj
