@@ -3313,7 +3313,7 @@
 55283560|Alegre - ES
 55283562|Bom Jesus do Norte - ES
 55283569|Ibitirama - ES
-5531|Minas Gerais
+55312|Minas Gerais
 55312101|Belo Horizonte - MG
 55312102|Belo Horizonte - MG
 55312103|Belo Horizonte - MG
@@ -3339,6 +3339,7 @@
 55312572|Betim - MG
 55312586|Contagem - MG
 55312591|Betim - MG
+553130|Minas Gerais
 55313014|Belo Horizonte - MG
 55313026|Sete Lagoas - MG
 55313029|Belo Horizonte - MG
@@ -3360,6 +3361,7 @@
 55313090|Belo Horizonte - MG
 55313094|Ipatinga - MG
 55313096|Ipatinga - MG
+553131|Minas Gerais
 55313107|Sete Lagoas - MG
 55313111|São Joaquim de Bicas - MG
 55313116|Belo Horizonte - MG
@@ -3380,11 +3382,23 @@
 55313166|Belo Horizonte - MG
 55313184|Itaguara - MG
 55313194|Belo Horizonte - MG
+5531320|Minas Gerais
 55313201|Belo Horizonte - MG
 55313202|Belo Horizonte - MG
 55313207|Belo Horizonte - MG
 5531321|Belo Horizonte - MG
+55313210|Minas Gerais
+55313211|Minas Gerais
+55313215|Minas Gerais
+55313216|Minas Gerais
 5531322|Belo Horizonte - MG
+55313220|Minas Gerais
+55313229|Minas Gerais
+55313230|Minas Gerais
+55313231|Minas Gerais
+55313232|Minas Gerais
+55313233|Minas Gerais
+55313234|Minas Gerais
 55313235|Belo Horizonte - MG
 55313236|Belo Horizonte - MG
 55313237|Belo Horizonte - MG
@@ -3392,93 +3406,173 @@
 55313239|Belo Horizonte - MG
 55313240|Perpétuo Socorro - MG
 55313241|Belo Horizonte - MG
+55313242|Minas Gerais
+55313243|Minas Gerais
+55313244|Minas Gerais
 55313245|Belo Horizonte - MG
+55313246|Minas Gerais
 55313247|Belo Horizonte - MG
 55313248|Belo Horizonte - MG
 55313249|Belo Horizonte - MG
+5531325|Minas Gerais
 55313251|Santana do Paraíso - MG
 55313253|Belo Horizonte - MG
 55313254|Belo Horizonte - MG
+55313260|Minas Gerais
 55313261|Belo Horizonte - MG
 55313262|Belo Horizonte - MG
 55313263|Belo Horizonte - MG
+55313264|Minas Gerais
+55313265|Minas Gerais
+55313266|Minas Gerais
 55313267|Belo Horizonte - MG
+55313268|Minas Gerais
 55313269|Belo Horizonte - MG
 5531327|Belo Horizonte - MG
+55313276|Minas Gerais
+55313277|Minas Gerais
 5531328|Belo Horizonte - MG
+55313289|Minas Gerais
+5531329|Minas Gerais
 55313291|Belo Horizonte - MG
 55313292|Belo Horizonte - MG
 55313295|Belo Horizonte - MG
+5531330|Minas Gerais
 55313303|Belo Horizonte - MG
 55313305|Belo Horizonte - MG
 55313309|Belo Horizonte - MG
+5531331|Minas Gerais
 55313312|Belo Horizonte - MG
 55313318|Belo Horizonte - MG
 55313320|Ipaba - MG
+55313321|Minas Gerais
+55313322|Minas Gerais
 55313323|Belo Horizonte - MG
 55313324|Belo Horizonte - MG
+55313325|Minas Gerais
 55313326|Belo Horizonte - MG
 55313327|Belo Horizonte - MG
+55313328|Minas Gerais
+55313329|Minas Gerais
 55313330|Belo Horizonte - MG
+55313331|Minas Gerais
+55313332|Minas Gerais
+55313333|Minas Gerais
+55313334|Minas Gerais
 55313335|Belo Horizonte - MG
+55313336|Minas Gerais
 55313337|Belo Horizonte - MG
 55313338|Nova Lima - MG
 55313339|Belo Horizonte - MG
+5531334|Minas Gerais
 55313342|Belo Horizonte - MG
 55313346|Belo Horizonte - MG
+5531335|Minas Gerais
 55313351|Contagem - MG
 55313356|Contagem - MG
 55313357|Contagem - MG
 55313358|Contagem - MG
+5531336|Minas Gerais
+55313370|Minas Gerais
+55313371|Minas Gerais
+55313372|Minas Gerais
 55313373|Belo Horizonte - MG
+55313374|Minas Gerais
 55313375|Belo Horizonte - MG
 55313376|Belo Horizonte - MG
 55313377|Belo Horizonte - MG
 55313378|Belo Horizonte - MG
+55313379|Minas Gerais
+55313380|Minas Gerais
 55313381|Belo Horizonte - MG
+55313382|Minas Gerais
 55313383|Belo Horizonte - MG
 55313384|Belo Horizonte - MG
+55313385|Minas Gerais
+55313386|Minas Gerais
+55313387|Minas Gerais
 55313388|Belo Horizonte - MG
 55313389|Belo Horizonte - MG
+55313390|Minas Gerais
 55313391|Contagem - MG
 55313392|Contagem - MG
+55313393|Minas Gerais
 55313394|Belo Horizonte - MG
 55313395|Contagem - MG
+55313396|Minas Gerais
 55313397|Contagem - MG
+55313398|Minas Gerais
+55313399|Minas Gerais
+5531340|Minas Gerais
 55313402|Nova Lima - MG
 55313408|Belo Horizonte - MG
 55313409|Belo Horizonte - MG
 5531341|Belo Horizonte - MG
+55313410|Minas Gerais
+55313411|Minas Gerais
+55313414|Minas Gerais
+55313419|Minas Gerais
+5531342|Minas Gerais
 55313424|Belo Horizonte - MG
 55313426|Belo Horizonte - MG
 55313428|Belo Horizonte - MG
+55313430|Minas Gerais
 55313431|Belo Horizonte - MG
 55313432|Belo Horizonte - MG
 55313433|Belo Horizonte - MG
 55313434|Belo Horizonte - MG
 55313435|Belo Horizonte - MG
+55313436|Minas Gerais
+55313437|Minas Gerais
+55313438|Minas Gerais
+55313439|Minas Gerais
+55313440|Minas Gerais
+55313441|Minas Gerais
+55313442|Minas Gerais
+55313443|Minas Gerais
 55313444|Belo Horizonte - MG
 55313445|Belo Horizonte - MG
 55313446|Belo Horizonte - MG
 55313447|Belo Horizonte - MG
+55313448|Minas Gerais
 55313449|Belo Horizonte - MG
 5531345|Belo Horizonte - MG
+55313456|Minas Gerais
+55313459|Minas Gerais
+5531346|Minas Gerais
 55313462|Belo Horizonte - MG
 55313464|Belo Horizonte - MG
 55313466|Belo Horizonte - MG
 5531347|Belo Horizonte - MG
+55313470|Minas Gerais
+55313472|Minas Gerais
+55313479|Minas Gerais
 5531348|Belo Horizonte - MG
+55313480|Minas Gerais
+55313482|Minas Gerais
+55313488|Minas Gerais
+55313489|Minas Gerais
 5531349|Belo Horizonte - MG
+55313490|Minas Gerais
+55313491|Minas Gerais
+55313499|Minas Gerais
+5531350|Minas Gerais
 55313504|Belo Horizonte - MG
 55313507|Belo Horizonte - MG
 55313508|Belo Horizonte - MG
+5531351|Minas Gerais
 55313511|Betim - MG
 55313512|Betim - MG
 55313515|Belo Horizonte - MG
 55313519|Belo Horizonte - MG
+55313520|Minas Gerais
 55313521|Ibirité - MG
+55313522|Minas Gerais
 55313523|Sítio Novo - MG
 55313524|Belo Horizonte - MG
+55313525|Minas Gerais
+55313526|Minas Gerais
+55313527|Minas Gerais
 55313528|Belo Horizonte - MG
 55313529|Betim - MG
 55313530|Betim - MG
@@ -3491,34 +3585,48 @@
 55313537|Serra Azul - MG
 55313538|Esmeraldas - MG
 55313539|Betim - MG
+55313540|Minas Gerais
 55313541|Nova Lima - MG
 55313542|Nova Lima - MG
 55313543|Raposos - MG
 55313544|Betim - MG
 55313545|Rio Acima - MG
+55313546|Minas Gerais
+55313547|Minas Gerais
+55313548|Minas Gerais
+55313549|Minas Gerais
+55313550|Minas Gerais
 55313551|Ouro Preto - MG
 55313552|Ouro Preto - MG
 55313553|Cachoeira do Campo - MG
 55313554|Lavras Novas - MG
+55313555|Minas Gerais
 55313556|Mariana - MG
 55313557|Mariana - MG
 55313558|Mariana - MG
 55313559|Ouro Preto - MG
+5531356|Minas Gerais
 55313561|Itabirito - MG
 55313562|Itabirito - MG
 55313563|Itabirito - MG
+55313570|Minas Gerais
 55313571|Brumadinho - MG
 55313572|Itatiaiuçu - MG
 55313573|Rio Manso - MG
 55313574|Crucilândia - MG
 55313575|Moeda - MG
 55313576|Bonfim - MG
+55313577|Minas Gerais
 55313578|Piedade dos Gerais - MG
 55313579|Aranha - MG
+5531358|Minas Gerais
 55313581|Nova Lima - MG
 55313589|Nova Lima - MG
 5531359|Betim - MG
+55313590|Minas Gerais
+55313598|Minas Gerais
 55313599|Ibirité - MG
+553136|Minas Gerais
 55313611|Viçosa - MG
 55313615|Belo Horizonte - MG
 55313621|Vespasiano - MG
@@ -3549,6 +3657,8 @@
 55313686|Confins - MG
 55313694|Nova Lima - MG
 55313697|Bairro Eldorado - Sete Lagoas MG
+5531370|Minas Gerais
+55313710|Minas Gerais
 55313711|Prudente de Morais - MG
 55313712|Matozinhos - MG
 55313713|Capim Branco - MG
@@ -3557,6 +3667,8 @@
 55313716|Inhaúma - MG
 55313717|Santana de Pirapama - MG
 55313718|Baldim - MG
+55313719|Minas Gerais
+55313720|Minas Gerais
 55313721|Conselheiro Lafaiete - MG
 55313722|Queluzito - MG
 55313723|Casa Grande - MG
@@ -3565,36 +3677,59 @@
 55313726|Santana dos Montes - MG
 55313727|Capela Nova - MG
 55313728|Buarque de Macedo - MG
+55313729|Minas Gerais
+55313730|Minas Gerais
 55313731|Congonhas - MG
 55313732|Congonhas - MG
 55313733|Joaquim Murtinho - MG
 55313734|Belo Vale - MG
 55313735|Jeceaba - MG
 55313736|Desterro de Entre Rios - MG
+55313737|Minas Gerais
 55313738|São Brás do Suaçuí - MG
+55313739|Minas Gerais
+5531374|Minas Gerais
 55313741|Ouro Branco - MG
 55313742|Ouro Branco - MG
 55313746|Piranga - MG
 55313749|Ouro Branco - MG
+55313750|Minas Gerais
 55313751|Entre Rios de Minas - MG
 55313752|Catas Altas da Noruega - MG
 55313753|Rio Espera - MG
 55313754|Lamim - MG
 55313755|Senhora de Oliveira - MG
+55313756|Minas Gerais
 55313757|Itaverava - MG
+55313758|Minas Gerais
+55313759|Minas Gerais
+55313760|Minas Gerais
 55313761|Conselheiro Lafaiete - MG
 55313762|Conselheiro Lafaiete - MG
 55313763|Conselheiro Lafaiete - MG
 55313764|Conselheiro Lafaiete - MG
+55313765|Minas Gerais
+55313766|Minas Gerais
+55313767|Minas Gerais
 55313768|Contagem - MG
 55313769|Conselheiro Lafaiete - MG
+5531377|Minas Gerais
 55313771|Sete Lagoas - MG
 55313775|Sete Lagoas - MG
 55313779|Sete Lagoas - MG
+5531378|Minas Gerais
+5531379|Minas Gerais
+5531380|Minas Gerais
 55313809|Santa Bárbara - MG
+5531381|Minas Gerais
 55313817|Ponte Nova - MG
 55313819|Ponte Nova - MG
 5531382|Ipatinga - MG
+55313820|Minas Gerais
+55313826|Minas Gerais
+55313827|Minas Gerais
+55313828|Minas Gerais
+55313830|Minas Gerais
 55313831|Itabira - MG
 55313832|Santa Bárbara - MG
 55313833|São Gonçalo do Rio Abaixo - MG
@@ -3604,13 +3739,17 @@
 55313837|Barão de Cocais - MG
 55313838|Santa Maria de Itabira - MG
 55313839|Itabira - MG
+55313840|Minas Gerais
 55313841|Coronel Fabriciano - MG
 55313842|Coronel Fabriciano - MG
 55313843|Antônio Dias - MG
 55313844|Cava Grande - MG
 55313845|Jaguaraçu - MG
 55313846|Coronel Fabriciano - MG
+55313847|Minas Gerais
+55313848|Minas Gerais
 55313849|Timóteo - MG
+55313850|Minas Gerais
 55313851|João Monlevade - MG
 55313852|João Monlevade - MG
 55313853|Bela Vista de Minas - MG
@@ -3620,6 +3759,7 @@
 55313857|Dom Silvério - MG
 55313858|Dionísio - MG
 55313859|João Monlevade - MG
+55313860|Minas Gerais
 55313861|Nova Era - MG
 55313862|Alvorada de Minas - MG
 55313863|Ferros - MG
@@ -3629,20 +3769,27 @@
 55313867|São Sebastião do Rio Preto - MG
 55313868|Conceição do Mato Dentro - MG
 55313869|Congonhas do Norte - MG
+55313870|Minas Gerais
 55313871|Rio Casca - MG
 55313872|Abre Campo - MG
 55313873|Matipó - MG
+55313874|Minas Gerais
 55313875|Santa Margarida - MG
 55313876|Urucânia - MG
 55313877|Jequeri - MG
 55313878|Contagem - MG
 55313879|Belo Horizonte - MG
+55313880|Minas Gerais
 55313881|Ponte Nova - MG
+55313882|Minas Gerais
 55313883|Rio Doce - MG
+55313884|Minas Gerais
 55313885|Viçosa - MG
 55313886|Diogo de Vasconcelos - MG
 55313887|Acaiaca - MG
+55313888|Minas Gerais
 55313889|Belo Horizonte - MG
+55313890|Minas Gerais
 55313891|Viçosa - MG
 55313892|Viçosa - MG
 55313893|Porto Firme - MG
@@ -3652,6 +3799,7 @@
 55313897|São Miguel do Anta - MG
 55313898|Cajuri - MG
 55313899|Viçosa - MG
+553139|Minas Gerais
 55313911|Contagem - MG
 55313912|Contagem - MG
 55313913|Contagem - MG
@@ -3659,6 +3807,7 @@
 55313916|Belo Horizonte - MG
 55313939|Conselheiro Lafaiete - MG
 55313956|Contagem - MG
+55314|Minas Gerais
 55314002|Belo Horizonte - MG
 55314003|Belo Horizonte - MG
 55314004|Belo Horizonte - MG
@@ -3673,6 +3822,9 @@
 55314133|Belo Horizonte - MG
 55314136|Belo Horizonte - MG
 55314138|Vespasiano - MG
+55315|Minas Gerais
+55317|Minas Gerais
+55319|Minas Gerais
 5532|Minas Gerais
 55322101|Juiz de Fora - MG
 55322102|Juiz de Fora - MG
@@ -6294,7 +6446,7 @@
 55493907|Lages - SC
 55493908|Fraiburgo - SC
 55494101|Chapecó - SC
-5551|Rio Grande do Sul
+55512|Rio Grande do Sul
 55512101|Porto Alegre - RS
 55512104|Porto Alegre - RS
 55512106|Santa Cruz do Sul - RS
@@ -6306,6 +6458,7 @@
 55512126|Porto Alegre - RS
 55512131|Porto Alegre - RS
 55512139|Porto Alegre - RS
+555130|Rio Grande do Sul
 55513011|Lajeado - RS
 55513018|Porto Alegre - RS
 55513031|Canoas - RS
@@ -6342,6 +6495,7 @@
 55513088|Lajeado - RS
 55513097|Novo Hamburgo - RS
 55513099|São Leopoldo - RS
+555131|Rio Grande do Sul
 55513101|Alvorada - RS
 55513111|Cachoeirinha - RS
 55513114|Guaíba - RS
@@ -6360,32 +6514,94 @@
 55513191|Portão - RS
 55513192|Novo Hamburgo - RS
 555132|Porto Alegre - RS
+5551320|Rio Grande do Sul
+55513210|Rio Grande do Sul
+55513215|Rio Grande do Sul
+55513218|Rio Grande do Sul
+55513229|Rio Grande do Sul
+55513234|Rio Grande do Sul
+55513236|Rio Grande do Sul
+55513237|Rio Grande do Sul
+55513238|Rio Grande do Sul
+55513239|Rio Grande do Sul
+55513243|Rio Grande do Sul
+55513252|Rio Grande do Sul
+55513253|Rio Grande do Sul
+55513255|Rio Grande do Sul
+55513256|Rio Grande do Sul
+55513260|Rio Grande do Sul
+55513263|Rio Grande do Sul
+55513264|Rio Grande do Sul
+55513266|Rio Grande do Sul
+55513267|Rio Grande do Sul
+55513270|Rio Grande do Sul
 55513271|Novo Hamburgo - RS
+55513274|Rio Grande do Sul
+55513279|Rio Grande do Sul
 55513283|Novo Hamburgo - RS
+55513285|Rio Grande do Sul
+55513288|Rio Grande do Sul
+55513289|Rio Grande do Sul
+5551329|Rio Grande do Sul
 555133|Porto Alegre - RS
+5551330|Rio Grande do Sul
+55513310|Rio Grande do Sul
 55513313|Nova Santa Rita - RS
+5551332|Rio Grande do Sul
+55513337|Rio Grande do Sul
+55513345|Rio Grande do Sul
+55513348|Rio Grande do Sul
+55513354|Rio Grande do Sul
+55513362|Rio Grande do Sul
+55513363|Rio Grande do Sul
+55513368|Rio Grande do Sul
+55513370|Rio Grande do Sul
+55513372|Rio Grande do Sul
+55513375|Rio Grande do Sul
+55513379|Rio Grande do Sul
+55513380|Rio Grande do Sul
+55513381|Rio Grande do Sul
+55513382|Rio Grande do Sul
+55513387|Rio Grande do Sul
+55513389|Rio Grande do Sul
+55513394|Rio Grande do Sul
+55513396|Rio Grande do Sul
+55513399|Rio Grande do Sul
+55513400|Rio Grande do Sul
 55513401|Guaíba - RS
 55513402|Guaíba - RS
 55513403|Guaíba - RS
+55513404|Rio Grande do Sul
+55513405|Rio Grande do Sul
+55513406|Rio Grande do Sul
 55513407|Porto Alegre - RS
+55513408|Rio Grande do Sul
 55513409|Miraguaia - RS
+5551341|Rio Grande do Sul
 55513411|Alvorada - RS
 55513415|Canoas - RS
 55513416|Capão da Canoa - RS
+55513420|Rio Grande do Sul
 55513421|Gravataí - RS
 55513422|Barro Vermelho - RS
 55513423|Gravataí - RS
+55513424|Rio Grande do Sul
 55513425|Canoas - RS
 55513426|Canoas - RS
 55513427|Canoas - RS
+55513428|Rio Grande do Sul
 55513429|Canoas - RS
 55513430|Gravataí - RS
 55513431|Gravataí - RS
 55513432|Gravataí - RS
+55513433|Rio Grande do Sul
 55513434|Viamão - RS
+55513435|Rio Grande do Sul
 55513436|Viamão - RS
+55513437|Rio Grande do Sul
 55513438|Cachoeirinha - RS
 55513439|Cachoeirinha - RS
+55513440|Rio Grande do Sul
 55513441|Cachoeirinha - RS
 55513442|Alvorada - RS
 55513443|Alvorada - RS
@@ -6393,19 +6609,29 @@
 55513445|Presidente Lucena - RS
 55513446|Viamão - RS
 55513447|Alvorada - RS
+55513448|Rio Grande do Sul
+55513449|Rio Grande do Sul
+55513450|Rio Grande do Sul
+55513451|Rio Grande do Sul
 55513452|Sapucaia do Sul - RS
+55513453|Rio Grande do Sul
 55513454|Esteio - RS
+55513455|Rio Grande do Sul
 55513456|Canoas - RS
+55513457|Rio Grande do Sul
 55513458|Esteio - RS
 55513459|Esteio - RS
 55513460|Esteio - RS
 55513461|Esteio - RS
 55513462|Canoas - RS
+55513463|Rio Grande do Sul
 55513464|Canoas - RS
 55513465|Canoas - RS
 55513466|Canoas - RS
 55513467|Canoas - RS
+55513468|Rio Grande do Sul
 55513469|Cachoeirinha - RS
+55513470|Rio Grande do Sul
 55513471|Cachoeirinha - RS
 55513472|Canoas - RS
 55513473|Esteio - RS
@@ -6413,6 +6639,7 @@
 55513475|Canoas - RS
 55513476|Canoas - RS
 55513477|Canoas - RS
+55513478|Rio Grande do Sul
 55513479|Nova Santa Rita - RS
 55513480|Guaíba - RS
 55513481|Eldorado do Sul - RS
@@ -6432,18 +6659,24 @@
 55513495|Sertão Santana - RS
 55513496|Gravataí - RS
 55513497|Gravataí - RS
+55513498|Rio Grande do Sul
 55513499|Eldorado do Sul - RS
+5551350|Rio Grande do Sul
 55513502|Capão da Canoa - RS
 55513509|São Leopoldo - RS
+5551351|Rio Grande do Sul
 55513515|Porto Alegre - RS
+5551352|Rio Grande do Sul
 55513522|Morro da Pedra - RS
 55513523|Parobé - RS
 55513524|Novo Hamburgo - RS
 55513529|Sapiranga - RS
+5551353|Rio Grande do Sul
 55513536|Conceição - RS
 55513537|Porto Alegre - RS
 55513538|Canoas - RS
 55513539|Novo Hamburgo - RS
+55513540|Rio Grande do Sul
 55513541|Taquara - RS
 55513542|Taquara - RS
 55513543|Parobé - RS
@@ -6453,10 +6686,15 @@
 55513547|Rolante - RS
 55513548|Riozinho - RS
 55513549|Igrejinha - RS
+55513550|Rio Grande do Sul
 55513551|Estância Velha - RS
 55513552|Lindolfo Collor - RS
 55513553|Novo Hamburgo - RS
 55513554|São Leopoldo - RS
+55513555|Rio Grande do Sul
+55513556|Rio Grande do Sul
+55513557|Rio Grande do Sul
+55513558|Rio Grande do Sul
 55513559|Sapiranga - RS
 55513560|Araricá - RS
 55513561|Estância Velha - RS
@@ -6468,14 +6706,17 @@
 55513567|Santa Maria do Herval - RS
 55513568|São Leopoldo - RS
 55513569|Morro Reuter - RS
+5551357|Rio Grande do Sul
 55513571|São José do Hortêncio - RS
 55513575|São Leopoldo - RS
 55513579|São Leopoldo - RS
 55513580|Novo Hamburgo - RS
 55513581|Novo Hamburgo - RS
 55513582|Novo Hamburgo - RS
+55513583|Rio Grande do Sul
 55513584|Novo Hamburgo - RS
 55513585|Campo Bom - RS
+55513586|Rio Grande do Sul
 55513587|Novo Hamburgo - RS
 55513588|São Leopoldo - RS
 55513589|São Leopoldo - RS
@@ -6489,32 +6730,47 @@
 55513597|Campo Bom - RS
 55513598|Campo Bom - RS
 55513599|Sapiranga - RS
+55513600|Rio Grande do Sul
 55513601|Osório - RS
 55513602|Caraá - RS
 55513603|Rainha do Mar - RS
+55513604|Rio Grande do Sul
 55513605|Torres - RS
 55513606|Rondinha Velha - RS
+55513607|Rio Grande do Sul
+55513608|Rio Grande do Sul
+55513609|Rio Grande do Sul
+55513610|Rio Grande do Sul
 55513611|Chuvisca - RS
 55513612|Doutor Ricardo - RS
 55513613|Fazenda Vilanova - RS
 55513614|Maratá - RS
 55513615|Caraá - RS
+55513616|Rio Grande do Sul
+55513617|Rio Grande do Sul
 55513618|Barão - RS
+55513619|Rio Grande do Sul
+55513620|Rio Grande do Sul
 55513621|Capão Novo - RS
 55513622|Arroio Teixeira - RS
+55513623|Rio Grande do Sul
 55513624|Santa Terezinha - RS
 55513625|Capão da Canoa - RS
 55513626|Torres - RS
 55513627|Imbé - RS
 55513628|Maquiné - RS
+55513629|Rio Grande do Sul
+55513630|Rio Grande do Sul
 55513631|Escadinhas - RS
 55513632|Montenegro - RS
 55513633|Pareci Novo - RS
 55513634|Bom Princípio - RS
 55513635|São Sebastião do Caí - RS
+55513636|Rio Grande do Sul
 55513637|Feliz - RS
 55513638|Salvador do Sul - RS
 55513639|São Vendelino - RS
+5551364|Rio Grande do Sul
 55513645|São Pedro da Serra - RS
 55513647|Vendinha - RS
 55513649|Montenegro - RS
@@ -6527,6 +6783,8 @@
 55513656|Arroio dos Ratos - RS
 55513657|Vendinha - RS
 55513658|Charqueadas - RS
+55513659|Rio Grande do Sul
+55513660|Rio Grande do Sul
 55513661|Tramandaí - RS
 55513662|Santo Antônio da Patrulha - RS
 55513663|Osório - RS
@@ -6549,19 +6807,30 @@
 55513680|Quintão - RS
 55513681|Cidreira - RS
 55513682|Balneário Pinhal - RS
+55513683|Rio Grande do Sul
 55513684|Tramandaí - RS
 55513685|Capivari do Sul - RS
 55513686|Magistério - RS
 55513687|Arroio do Sal - RS
+55513688|Rio Grande do Sul
 55513689|Xangri-Lá - RS
+55513690|Rio Grande do Sul
+55513691|Rio Grande do Sul
 55513692|Camaquã - RS
+55513693|Rio Grande do Sul
 55513694|Minas do Leão - RS
 55513695|Harmonia - RS
 55513696|Barão - RS
 55513697|Brochier - RS
 55513698|Capela de Santana - RS
+55513699|Rio Grande do Sul
+55513700|Rio Grande do Sul
+55513701|Rio Grande do Sul
+55513702|Rio Grande do Sul
+55513703|Rio Grande do Sul
 55513704|Monte Alverne - RS
 55513705|Marques de Souza - RS
+55513706|Rio Grande do Sul
 55513707|Lajeado - RS
 55513708|Sinimbu - RS
 55513709|Lajeado - RS
@@ -6582,20 +6851,26 @@
 55513724|Cachoeira do Sul - RS
 55513725|Cerro Branco - RS
 55513726|Lajeado - RS
+55513727|Rio Grande do Sul
+55513728|Rio Grande do Sul
 55513729|Lajeado - RS
 55513730|Passo do Sobrado - RS
 55513731|Rio Pardo - RS
+55513732|Rio Grande do Sul
 55513733|Encruzilhada do Sul - RS
 55513734|Pantano Grande - RS
 55513735|Várzea do Capivarita - RS
 55513736|Estrêla - RS
+55513737|Rio Grande do Sul
 55513738|Venâncio Aires - RS
+55513739|Rio Grande do Sul
 55513740|Santa Cruz do Sul - RS
 55513741|Venâncio Aires - RS
 55513742|Sobradinho - RS
 55513743|Candelária - RS
 55513744|Ibarama - RS
 55513745|Segredo - RS
+55513746|Rio Grande do Sul
 55513747|Arroio do Tigre - RS
 55513748|Lajeado - RS
 55513749|Palanque - RS
@@ -6611,28 +6886,42 @@
 55513759|Travesseiro - RS
 55513760|Colinas - RS
 55513761|Paverama - RS
+55513762|Rio Grande do Sul
+55513763|Rio Grande do Sul
 55513764|Cruzeiro do Sul - RS
 55513765|Lagoão - RS
 55513766|Bom Retiro do Sul - RS
 55513767|Tunas - RS
+55513768|Rio Grande do Sul
+55513769|Rio Grande do Sul
 55513770|Sério - RS
+55513771|Rio Grande do Sul
 55513772|Arvorezinha - RS
 55513773|Poço das Antas - RS
 55513774|Ilópolis - RS
 55513775|Pouso Novo - RS
 55513776|Relvado - RS
 55513777|Putinga - RS
+55513778|Rio Grande do Sul
+55513779|Rio Grande do Sul
+55513780|Rio Grande do Sul
+55513781|Rio Grande do Sul
 55513782|Santa Clara do Sul - RS
 55513783|Esteio - RS
 55513784|Mato Leitão - RS
+55513785|Rio Grande do Sul
+55513786|Rio Grande do Sul
 55513787|Pinheiral - RS
 55513788|Progresso - RS
 55513789|Boqueirão do Leão - RS
+5551379|Rio Grande do Sul
 55513792|Costão - RS
 55513793|Venâncio Aires - RS
+555138|Rio Grande do Sul
 55513822|Gravataí - RS
 55513883|Montenegro - RS
 55513898|Porto Alegre - RS
+555139|Rio Grande do Sul
 55513902|Santa Cruz do Sul - RS
 55513930|Porto Alegre - RS
 55513931|Porto Alegre - RS
@@ -6645,6 +6934,7 @@
 55513959|Sapiranga - RS
 55513982|Lajeado - RS
 55513983|Venâncio Aires - RS
+55514|Rio Grande do Sul
 55514001|Porto Alegre - RS
 55514003|Porto Alegre - RS
 55514007|Porto Alegre - RS
@@ -6654,6 +6944,9 @@
 55514109|Gravataí - RS
 55514112|Novo Hamburgo - RS
 55514116|Porto Alegre - RS
+55515|Rio Grande do Sul
+55517|Rio Grande do Sul
+55519|Rio Grande do Sul
 5553|Rio Grande do Sul
 55532123|Pelotas - RS
 55532125|Rio Grande - RS
