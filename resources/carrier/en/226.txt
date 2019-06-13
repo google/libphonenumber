@@ -16,6 +16,8 @@
 # ITU doc has Telemob, but it is mentioned as Telmob in ONATEL's home page.
 # Telmob operates as a subsidiary of ONATEL (http://www.onatel.bf/)
 
+22601|Onatel
+22607|Orange
 22651|Telmob
 22652|Telmob
 22654|Orange
