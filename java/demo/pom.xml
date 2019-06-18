@@ -26,7 +26,8 @@
         <version>2.3.2</version>
         <configuration>
           <source>1.6</source>
-          <target>1.6</target>
+	  <target>1.6</target>
+	  <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
