@@ -10,7 +10,7 @@ whether it is likely to be a good time to ring a user based on their provided
 number.
 
 Code Location:
-[java/geocoder/src/com/google/i18n/phonenumbers/PhoneNumberToTimeZonesMapper.java](https://github.com/googlei18n/libphonenumber/blob/master/java/geocoder/src/com/google/i18n/phonenumbers/PhoneNumberToTimeZonesMapper.java)
+[java/geocoder/src/com/google/i18n/phonenumbers/PhoneNumberToTimeZonesMapper.java](https://github.com/google/libphonenumber/blob/master/java/geocoder/src/com/google/i18n/phonenumbers/PhoneNumberToTimeZonesMapper.java)
 
 Example usage:
 

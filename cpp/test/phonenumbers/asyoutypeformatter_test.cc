@@ -94,7 +94,7 @@ TEST_F(AsYouTypeFormatterTest, InvalidPlusSign) {
 }
 
 TEST_F(AsYouTypeFormatterTest, TooLongNumberMatchingMultipleLeadingDigits) {
-  // See https://github.com/googlei18n/libphonenumber/issues/36
+  // See https://github.com/google/libphonenumber/issues/36
   // The bug occurred last time for countries which have two formatting rules
   // with exactly the same leading digits pattern but differ in length.
   formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::GetUnknown()));
@@ -1226,7 +1226,7 @@ TEST_F(AsYouTypeFormatterTest,
   // leading digit patterns; when we try again to extract a country code we
   // should ensure we use the last leading digit pattern, rather than the first
   // one such that it *thinks* it's found a valid formatting rule again.
-  // https://github.com/googlei18n/libphonenumber/issues/437
+  // https://github.com/google/libphonenumber/issues/437
   EXPECT_EQ("+8698812", formatter_->InputDigit('2', &result_));
   EXPECT_EQ("+86988123", formatter_->InputDigit('3', &result_));
   EXPECT_EQ("+869881234", formatter_->InputDigit('4', &result_));
