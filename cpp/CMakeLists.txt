@@ -86,6 +86,7 @@ option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
+option ("USE_PROTOBUF_LITE" "Link to protobuf-lite" "OFF")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -110,9 +111,15 @@ if (${USE_RE2} STREQUAL "ON")
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
 endif ()
 
-find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
-                       "Google Protocol Buffers")
-check_library_version (PC_PROTOBUF protobuf>=2.4)
+if (${USE_PROTOBUF_LITE} STREQUAL "ON")
+  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf-lite
+                         "Google Protocol Buffers")
+  check_library_version (PC_PROTOBUF protobuf-lite>=2.4)
+else ()
+  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
+                         "Google Protocol Buffers")
+  check_library_version (PC_PROTOBUF protobuf>=2.4)
+endif ()
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
 check_library_version (PC_ICU_UC icu-uc>=4.4)
