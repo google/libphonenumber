@@ -87,6 +87,7 @@ option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
 option ("USE_PROTOBUF_LITE" "Link to protobuf-lite" "OFF")
+option ("REGENERATE_METADATA" "Regenerate metadata instead of using it from the source tree" "ON")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -137,8 +138,10 @@ endif ()
 find_required_program (PROTOC protoc
                        "Google Protocol Buffers compiler (protoc)")
 
-find_required_program (JAVA java
-                       "Java Runtime Environment")
+if (${REGENERATE_METADATA} STREQUAL "ON")
+  find_required_program (JAVA java
+                         "Java Runtime Environment")
+endif ()
 
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
@@ -278,14 +281,26 @@ function (add_metadata_gen_target TARGET_NAME
   set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
-  add_custom_command (
-    COMMAND ${JAVA_BIN} -jar
-      ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
-      ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+  if (${REGENERATE_METADATA} STREQUAL "ON")
+    add_custom_command (
+      COMMAND ${JAVA_BIN} -jar
+        ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
+        ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
 
-    OUTPUT ${GEN_OUTPUT}
-    DEPENDS ${XML_FILE}
-  )
+      OUTPUT ${GEN_OUTPUT}
+      DEPENDS ${XML_FILE}
+    )
+  else ()
+    add_custom_command (
+      COMMAND echo "skip metadata generation from"
+        ${XML_FILE} "to"
+        ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+
+      OUTPUT ${GEN_OUTPUT}
+      DEPENDS ${XML_FILE}
+    )
+  endif ()
+  
   add_custom_target (
     ${TARGET_NAME}
     DEPENDS ${GEN_OUTPUT}
