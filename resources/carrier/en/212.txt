@@ -80,8 +80,7 @@
 212689|Maroc Telecom
 212690|Inwi
 212691|Méditel
-2126921|Al Hourria Telecom
-2126922|Al Hourria Telecom
+212692|Al Hourria Telecom
 212693|Méditel
 212694|Méditel
 212695|Inwi

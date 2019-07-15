@@ -65,11 +65,13 @@
 9553472|Pyay
 9553473|Pyay
 9554470|Taungoo
+955620|Mandalay
 955645|Tandar
 9557480|Mawlamyine/Thanbyuzayat
 9557481|Mawlamyine
 9557482|Mon
 9558470|Hpa-An
+955851|Myawaddy
 9559470|Dawei
 9559471|Tanintharyi
 9561200|Chauk
@@ -86,6 +88,7 @@
 9562472|Pakokku
 9562473|Magway
 956260|Kanma
+956320|Magway
 956323|Magway
 956324|Magway
 9563470|Magway
@@ -133,6 +136,7 @@
 958547|Pyinoolwin
 958548|Pyinoolwin
 958549|Pyinoolwin
+958551|Yangon
 958620|Mogoke
 958621|Mogoke
 958625|Kyatpyin
