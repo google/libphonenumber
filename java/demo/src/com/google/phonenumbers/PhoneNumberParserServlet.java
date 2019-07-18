@@ -402,7 +402,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
 
       String newIssueLink = getNewIssueLink(phoneNumber, defaultCountry, geocodingLocale);
       String guidelinesLink =
-          "https://github.com/googlei18n/libphonenumber/blob/master/CONTRIBUTING.md";
+          "https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md";
       output.append("<b style=\"color:red\">File an issue</b>: by clicking on "
           + "<a target=\"_blank\" href=\"" + newIssueLink + "\">this link</a>, I confirm that I "
           + "have read the <a target=\"_blank\" href=\"" + guidelinesLink

@@ -8,7 +8,7 @@ How to setup:
 =============
 1.  Checkout closure-library, closure-compiler, closure-linter and python-gflags next to libphonenumber:
 
-* `git clone https://github.com/googlei18n/libphonenumber/`
+* `git clone https://github.com/google/libphonenumber/`
 
 * `git clone https://github.com/google/closure-library/`
 

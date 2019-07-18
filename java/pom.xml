@@ -5,7 +5,7 @@
   <artifactId>libphonenumber-parent</artifactId>
   <version>8.10.16-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <url>https://github.com/googlei18n/libphonenumber/</url>
+  <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -31,9 +31,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:https://github.com/googlei18n/libphonenumber.git</connection>
+    <connection>scm:git:https://github.com/google/libphonenumber.git</connection>
     <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git</developerConnection>
-    <url>https://github.com/googlei18n/libphonenumber/</url>
+    <url>https://github.com/google/libphonenumber/</url>
     <tag>HEAD</tag>
   </scm>
 

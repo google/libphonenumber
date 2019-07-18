@@ -26,7 +26,7 @@ doesn't aim to verify whether the string is *only* a phone number.
 If the input looks like a vanity number to the library, `parse()` assumes this
 is intentional and converts alpha characters to digits. Please read the
 documentation for `PhoneNumber parse(String, String)` in
-[PhoneNumberUtil](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java)
+[PhoneNumberUtil](http://github.com/google/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java)
 for details. Also see `Iterable<PhoneNumberMatch> findNumbers(CharSequence,
 String)`.
 
@@ -46,10 +46,10 @@ Some examples:
 
 Other examples, in reports:
 
-*   [#328](http://github.com/googlei18n/libphonenumber/issues/328)
-*   [#1001](http://github.com/googlei18n/libphonenumber/issues/1001)
-*   [#1199](http://github.com/googlei18n/libphonenumber/issues/1199)
-*   [#1813](http://github.com/googlei18n/libphonenumber/issues/1813)
+*   [#328](http://github.com/google/libphonenumber/issues/328)
+*   [#1001](http://github.com/google/libphonenumber/issues/1001)
+*   [#1199](http://github.com/google/libphonenumber/issues/1199)
+*   [#1813](http://github.com/google/libphonenumber/issues/1813)
 
 ### Why wasn't the national prefix removed when parsing?
 
@@ -88,7 +88,7 @@ gives `5417540000` for the national number.
 
 You can try [the demo](http://libphonenumber.appspot.com/) for more regions.
 Also see `internationalPrefix` in
-[`resources/PhoneNumberMetadata.xml`](http://github.com/googlei18n/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml).
+[`resources/PhoneNumberMetadata.xml`](http://github.com/google/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml).
 
 ## Validation and types of numbers
 
@@ -96,14 +96,14 @@ Also see `internationalPrefix` in
 
 To understand the behavior of functions, please refer to the documentation in
 the Javadoc/C++ header files. For example, see `isPossibleNumberWithReason` in
-[`PhoneNumberUtil`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
+[`PhoneNumberUtil`](https://github.com/google/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
 
 ### Why does PhoneNumberUtil return false for valid short numbers?
 
 Short numbers are out of scope of
-[`PhoneNumberUtil`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
+[`PhoneNumberUtil`](https://github.com/google/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java).
 For short numbers, use
-[`ShortNumberInfo`](https://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/ShortNumberInfo.java).
+[`ShortNumberInfo`](https://github.com/google/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/ShortNumberInfo.java).
 
 ### What does it mean for a phone number to be valid?
 
@@ -180,7 +180,7 @@ way.
 
 ### What is mobile number portability?
 
-The ability to keep your mobile phone number when changing carriers. To see whether a region supports mobile number portability use [isMobileNumberPortableRegion](https://github.com/googlei18n/libphonenumber/blob/58247207903f917839001bc62525a5b48a475b7e/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java#L3524).
+The ability to keep your mobile phone number when changing carriers. To see whether a region supports mobile number portability use [isMobileNumberPortableRegion](https://github.com/google/libphonenumber/blob/58247207903f917839001bc62525a5b48a475b7e/java/libphonenumber/src/com/google/i18n/phonenumbers/PhoneNumberUtil.java#L3524).
 
 ### Since it's possible to change the carrier for a phone number, how is the data kept up-to-date?
 
@@ -281,7 +281,7 @@ optional in local circumstances, but this is shifting to become mandatory
 in areas that have had more area code splits. However, the usage of
 parentheses persists and both methods are acceptable.
 
-See [issue #1996](https://github.com/googlei18n/libphonenumber/issues/1996)
+See [issue #1996](https://github.com/google/libphonenumber/issues/1996)
 for some additional discussion.
 
 ### Why does formatNumberForMobileDialing return an empty string for my number?
@@ -458,20 +458,20 @@ Set the compiler flag `USE_METADATA_LITE` to `ON` using ccmake or similar.
 The metadata binary files can be generated using the ant build rules
 `build-phone-metadata` and `build-short-metadata` with `lite-build` set to
 `true`. This can be set in the [build
-file](https://github.com/googlei18n/libphonenumber/blob/master/java/build.xml)
+file](https://github.com/google/libphonenumber/blob/master/java/build.xml)
 itself.
 
 ### Which versions of the Maven jars should I use?
 
 When possible, use the [latest
-version](https://github.com/googlei18n/libphonenumber/releases) of
+version](https://github.com/google/libphonenumber/releases) of
 libphonenumber.
 
 For the other Maven artifacts, to find the version corresponding to a given
 version of libphonenumber, follow these steps:
 
 *   Go to the versioned GitHub tag, e.g.
-    https://github.com/googlei18n/libphonenumber/find/v8.3.3
+    https://github.com/google/libphonenumber/find/v8.3.3
 *   Type `pom.xml`. This will surface all the `pom.xml` files as they were
     released at the chosen tag.
 *   Find the version you care about in the corresponding `pom.xml` file. Look
@@ -496,14 +496,14 @@ loading resources in the main thread is the suggested best practice at the
 [Android developer
 guide](http://developer.android.com/guide/components/processes-and-threads.html),
 and will prevent the issue reported in
-[#265](https://github.com/googlei18n/libphonenumber/issues/265),
-[#528](https://github.com/googlei18n/libphonenumber/issues/528), and
-[#819](https://github.com/googlei18n/libphonenumber/issues/819).
+[#265](https://github.com/google/libphonenumber/issues/265),
+[#528](https://github.com/google/libphonenumber/issues/528), and
+[#819](https://github.com/google/libphonenumber/issues/819).
 
 #### Optimize loads
 
 You can manage your own resources by supplying your own
-[`MetadataLoader`](http://github.com/googlei18n/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/MetadataLoader.java)
+[`MetadataLoader`](http://github.com/google/libphonenumber/blob/master/java/libphonenumber/src/com/google/i18n/phonenumbers/MetadataLoader.java)
 implementation to the `PhoneNumberUtil` instance. It is thus possible for your
 app to load the resources as Android assets, while libphonenumber loads Java
 resources by default. The result is that the files are read as native Android assets
@@ -534,14 +534,14 @@ or review and test out someone else's PR, please chime in on these links, or
 email the [discussion
 group](https://groups.google.com/group/libphonenumber-discuss):
 
-*   [#1000](https://github.com/googlei18n/libphonenumber/issues/1000) to provide
+*   [#1000](https://github.com/google/libphonenumber/issues/1000) to provide
     a Windows DLL.
-*   [#1010](https://github.com/googlei18n/libphonenumber/issues/1010) to require
+*   [#1010](https://github.com/google/libphonenumber/issues/1010) to require
     Visual Studio 2015 update 2 or later on Windows
-*   PR [#1090](https://github.com/googlei18n/libphonenumber/pull/1090) /
-    [#824](https://github.com/googlei18n/libphonenumber/issues/824) to "Replace
+*   PR [#1090](https://github.com/google/libphonenumber/pull/1090) /
+    [#824](https://github.com/google/libphonenumber/issues/824) to "Replace
     POSIX directory operations by Boost Filesystem"
-*   [#1555](https://github.com/googlei18n/libphonenumber/issues/1555) to allow
+*   [#1555](https://github.com/google/libphonenumber/issues/1555) to allow
     Windows to build cpp library with pthreads for multi-threading
 
 ### How to remove a specific example number?
