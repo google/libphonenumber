@@ -160,7 +160,7 @@ gtest. We don't need to install gtest, we only copy sources. For example:
 Get the libphonenumber source. For example:
   $ mkdir ~/libphonenumber_clone
   $ cd ~/libphonenumber_clone
-  $ git clone https://github.com/googlei18n/libphonenumber.git
+  $ git clone https://github.com/google/libphonenumber.git
 
 Build and test the library:
   $ cd libphonenumber/cpp

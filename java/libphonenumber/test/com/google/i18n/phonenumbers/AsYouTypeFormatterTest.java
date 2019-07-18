@@ -66,7 +66,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
   }
 
   public void testTooLongNumberMatchingMultipleLeadingDigits() {
-    // See https://github.com/googlei18n/libphonenumber/issues/36
+    // See https://github.com/google/libphonenumber/issues/36
     // The bug occurred last time for countries which have two formatting rules with exactly the
     // same leading digits pattern but differ in length.
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);
@@ -1164,7 +1164,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     // when we try again to extract a country code we should ensure we use the last leading digit
     // pattern, rather than the first one such that it *thinks* it's found a valid formatting rule
     // again.
-    // https://github.com/googlei18n/libphonenumber/issues/437
+    // https://github.com/google/libphonenumber/issues/437
     assertEquals("+8698812", formatter.inputDigit('2'));
     assertEquals("+86988123", formatter.inputDigit('3'));
     assertEquals("+869881234", formatter.inputDigit('4'));
