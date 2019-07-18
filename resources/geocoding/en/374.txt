@@ -24,6 +24,7 @@
 37410|Yerevan/Jrvezh
 37411|Yerevan
 37412|Yerevan
+37415|Yerevan
 3742220|Abovyan/Akunk/Byureghavan/Nor Gyugh/Verin Ptghni, Kotayk
 3742221|Abovyan/Akunk/Byureghavan/Nor Gyugh/Verin Ptghni, Kotayk
 3742222|Abovyan, Kotayk

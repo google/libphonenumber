@@ -1,3 +1,14 @@
+Jul 15, 2019: v8.10.15
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 676
+ - Updated phone metadata for region code(s):
+   AM, BG, EH, IR, IT, MA, MM, MT, SL, TO, UG, VA, VN
+ - New geocoding data for country calling code(s): 676 (en)
+ - Updated geocoding data for country calling code(s):
+   95 (en), 212 (en, fr), 232 (en), 374 (en, hy, ru)
+ - Updated carrier data for country calling code(s):
+   95 (en), 212 (en), 232 (en), 256 (en), 356 (en)
+
 Jun 13, 2019: v8.10.14
 Metadata changes:
  - Updated phone metadata for region code(s):
