@@ -184,6 +184,38 @@ public class BuildMetadataCppFromXml extends Command {
     return false;
   }
 
+  /**
+   * Generates .pb files to represent the metadata specified by this command's
+   * arguments. The metadata XML file is read, built into a 
+   * PhoneMetaDataCollection object and its bytes are written to a .pb file.
+   *
+   * @return  true if the generation succeeded.
+   */
+  @Override
+  public boolean startPb() {
+    try {
+      Options opt = Options.parse(getCommandName(), getArgs());
+      byte[] data = loadMetadataBytes(opt.getInputFilePath(), opt.getVariant() == Variant.LITE);
+
+      // TODO: Consider adding checking for correctness of file paths and access.
+      OutputStream outputStream = null;
+      try {
+        File dir = new File(opt.getOutputDir());
+        outputStream = openSourceStream(dir, opt.getType(), opt.getVariant());
+        outputStream.write(data);
+        outputStream.flush();
+      } finally {
+        FileUtils.closeFiles(outputStream);
+      }
+      return true;
+    } catch (IOException e) {
+      System.err.println(e.getMessage());
+    } catch (RuntimeException e) {
+      System.err.println(e.getMessage());
+    }
+    return false;
+  }
+
   /** Loads the metadata XML file and converts its contents to a byte array. */
   private byte[] loadMetadataBytes(String inputFilePath, boolean liteMetadata) {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -213,6 +245,10 @@ public class BuildMetadataCppFromXml extends Command {
   // @VisibleForTesting
   OutputStream openSourceStream(File dir, Type type, Variant variant) throws FileNotFoundException {
     return new FileOutputStream(new File(dir, variant.getBasename(type) + ".cc"));
+  }
+
+  OutputStream openOutputStream(File dir, Type type, Variant variant) throws FileNotFoundException {
+      return new FileOutputStream(new File(dir, variant.getBasename(type) + ".pb"));  }
   }
 
   /** The charset in which our source and header files will be written. */
