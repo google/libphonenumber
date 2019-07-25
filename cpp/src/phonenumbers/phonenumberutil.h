@@ -218,6 +218,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // The PhoneNumberUtil is implemented as a singleton. Therefore, calling
   // GetInstance multiple times will only result in one instance being created.
   static PhoneNumberUtil* GetInstance();
+  static PhoneNumberUtil* GetInstance(std::string raw_metadata);
 
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will
@@ -819,6 +820,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();
+  PhoneNumberUtil(std::string raw_metadata);
 
   // Returns a regular expression for the possible extensions that may be found
   // in a number, for use when matching.

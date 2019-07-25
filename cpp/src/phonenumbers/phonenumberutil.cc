@@ -126,6 +126,15 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   return true;
 }
 
+bool LoadMetadataFromString(PhoneMetadataCollection* metadata, std::string data) {
+  if (!metadata->ParseFromString(data)) {
+    LOG(ERROR) << "Could not parse binary data string.";
+    return false;
+  }
+
+  return true;
+}
+
 // Returns a pointer to the description inside the metadata of the appropriate
 // type.
 const PhoneNumberDesc* GetNumberDescByType(
@@ -808,6 +817,71 @@ PhoneNumberUtil::PhoneNumberUtil()
             country_calling_code_to_region_code_map_->end(), OrderByFirst());
 }
 
+// Private constructor from string. Also takes care of initialisation.
+PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
+    : logger_(Logger::set_logger_impl(new NullLogger())),
+      reg_exps_(new PhoneNumberRegExpsAndMappings),
+      country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
+      nanpa_regions_(new set<string>()),
+      region_to_metadata_map_(new map<string, PhoneMetadata>()),
+      country_code_to_non_geographical_metadata_map_(
+          new map<int, PhoneMetadata>) {
+  Logger::set_logger_impl(logger_.get());
+
+  PhoneMetadataCollection metadata_collection;
+  if (!LoadMetadataFromString(&metadata_collection, raw_metadata)) {
+    LOG(DFATAL) << "Could not parse metadata string.";
+    return;
+  }
+  // Storing data in a temporary map to make it easier to find other regions
+  // that share a country calling code when inserting data.
+  map<int, list<string>* > country_calling_code_to_region_map;
+  for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
+           metadata_collection.metadata().begin();
+       it != metadata_collection.metadata().end();
+       ++it) {
+    const string& region_code = it->id();
+    if (region_code == RegionCode::GetUnknown()) {
+      continue;
+    }
+
+    int country_calling_code = it->country_code();
+    if (kRegionCodeForNonGeoEntity == region_code) {
+      country_code_to_non_geographical_metadata_map_->insert(
+          std::make_pair(country_calling_code, *it));
+    } else {
+      region_to_metadata_map_->insert(std::make_pair(region_code, *it));
+    }
+    map<int, list<string>* >::iterator calling_code_in_map =
+        country_calling_code_to_region_map.find(country_calling_code);
+    if (calling_code_in_map != country_calling_code_to_region_map.end()) {
+      if (it->main_country_for_code()) {
+        calling_code_in_map->second->push_front(region_code);
+      } else {
+        calling_code_in_map->second->push_back(region_code);
+      }
+    } else {
+      // For most country calling codes, there will be only one region code.
+      list<string>* list_with_region_code = new list<string>();
+      list_with_region_code->push_back(region_code);
+      country_calling_code_to_region_map.insert(
+          std::make_pair(country_calling_code, list_with_region_code));
+    }
+    if (country_calling_code == kNanpaCountryCode) {
+        nanpa_regions_->insert(region_code);
+    }
+  }
+
+  country_calling_code_to_region_code_map_->insert(
+      country_calling_code_to_region_code_map_->begin(),
+      country_calling_code_to_region_map.begin(),
+      country_calling_code_to_region_map.end());
+  // Sort all the pairs in ascending order according to country calling code.
+  std::sort(country_calling_code_to_region_code_map_->begin(),
+            country_calling_code_to_region_code_map_->end(),
+            OrderByFirst());
+}
+
 PhoneNumberUtil::~PhoneNumberUtil() {
   gtl::STLDeleteContainerPairSecondPointers(
       country_calling_code_to_region_code_map_->begin(),
@@ -875,6 +949,13 @@ void PhoneNumberUtil::GetSupportedTypesForNonGeoEntity(
 // static
 PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
   return Singleton<PhoneNumberUtil>::GetInstance();
+}
+
+// Public wrapper function to get a PhoneNumberUtil instance with a passed in
+// string with the raw bytes of a metadata proto file.
+// static
+PhoneNumberUtil* PhoneNumberUtil::GetInstance(std::string raw_metadata) {
+  return Singleton<PhoneNumberUtil>::GetInstance(raw_metadata);
 }
 
 const string& PhoneNumberUtil::GetExtnPatternsForMatching() const {

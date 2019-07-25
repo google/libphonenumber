@@ -34,15 +34,29 @@ class Singleton {
     return instance_;
   }
 
+  static T* GetInstance(std::string raw_metadata) {
+    raw_metadata_ = raw_metadata;
+    const int ret = pthread_once(&once_control_, &InitWithMetadata);
+    (void) ret;
+    DCHECK_EQ(0, ret);
+    return instance_;
+  }
+
  private:
   static void Init() {
     instance_ = new T();
   }
 
+  static void InitWithMetadata() {
+    instance_ = new T(raw_metadata_);
+  }
+
+  static std::string raw_metadata_;
   static T* instance_;  // Leaky singleton.
   static pthread_once_t once_control_;
 };
 
+template <class T> std::string Singleton<T>::raw_metadata_;
 template <class T> T* Singleton<T>::instance_;
 template <class T> pthread_once_t Singleton<T>::once_control_ =
     PTHREAD_ONCE_INIT;
