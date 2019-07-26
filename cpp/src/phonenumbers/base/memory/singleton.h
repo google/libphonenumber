@@ -36,27 +36,15 @@ class Singleton : private boost::noncopyable {
     return instance.get();
   }
 
-  static T* GetInstance(std::string raw_metadata) {
-    raw_metadata_ = raw_metadata;
-    boost::call_once(InitWithMetadata, flag);
-    return instance.get();
-  }
-
  private:
   static void Init() {
     instance.reset(new T());
   }
 
-  static void InitWithMetadata() {
-    instance.reset(new T(raw_metadata_));
-  }
-
-  static std::string raw_metadata_;
   static boost::scoped_ptr<T> instance;
   static boost::once_flag flag;
 };
 
-template <class T> std::string Singleton<T>::raw_metadata_;
 template <class T> boost::scoped_ptr<T> Singleton<T>::instance;
 template <class T> boost::once_flag Singleton<T>::flag = BOOST_ONCE_INIT;
 
@@ -87,15 +75,6 @@ class Singleton {
     static T* instance = NULL;
     if (!instance) {
       instance = new T();
-    }
-    DCHECK(instance->thread_checker_.CalledOnValidThread());
-    return instance;
-  }
-
-  static T* GetInstance(std::string raw_metadata) {
-    static T* instance = NULL;
-    if (!instance) {
-      instance = new T(raw_metadata);
     }
     DCHECK(instance->thread_checker_.CalledOnValidThread());
     return instance;

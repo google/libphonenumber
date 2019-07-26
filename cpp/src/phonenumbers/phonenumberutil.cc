@@ -126,7 +126,7 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   return true;
 }
 
-bool LoadMetadataFromString(PhoneMetadataCollection* metadata, std::string data) {
+bool LoadMetadataFromString(PhoneMetadataCollection* metadata, std::string& data) {
   if (!metadata->ParseFromString(data)) {
     LOG(ERROR) << "Could not parse binary data string.";
     return false;
@@ -750,7 +750,7 @@ class PhoneNumberRegExpsAndMappings {
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberRegExpsAndMappings);
 };
 
-// Private constructor. Also takes care of initialisation.
+// Private constructor.
 PhoneNumberUtil::PhoneNumberUtil()
     : logger_(Logger::set_logger_impl(new NullLogger())),
       matcher_api_(new RegexBasedMatcher()),
@@ -762,131 +762,65 @@ PhoneNumberUtil::PhoneNumberUtil()
       country_code_to_non_geographical_metadata_map_(
           new std::map<int, PhoneMetadata>) {
   Logger::set_logger_impl(logger_.get());
-  // TODO: Update the java version to put the contents of the init
-  // method inside the constructor as well to keep both in sync.
-  PhoneMetadataCollection metadata_collection;
-  if (!LoadCompiledInMetadata(&metadata_collection)) {
-    LOG(DFATAL) << "Could not parse compiled-in metadata.";
-    return;
-  }
-  // Storing data in a temporary map to make it easier to find other regions
-  // that share a country calling code when inserting data.
-  std::map<int, std::list<string>* > country_calling_code_to_region_map;
-  for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
-           metadata_collection.metadata().begin();
-       it != metadata_collection.metadata().end();
-       ++it) {
-    const string& region_code = it->id();
-    if (region_code == RegionCode::GetUnknown()) {
-      continue;
-    }
-
-    int country_calling_code = it->country_code();
-    if (kRegionCodeForNonGeoEntity == region_code) {
-      country_code_to_non_geographical_metadata_map_->insert(
-          std::make_pair(country_calling_code, *it));
-    } else {
-      region_to_metadata_map_->insert(std::make_pair(region_code, *it));
-    }
-    std::map<int, std::list<string>* >::iterator calling_code_in_map =
-        country_calling_code_to_region_map.find(country_calling_code);
-    if (calling_code_in_map != country_calling_code_to_region_map.end()) {
-      if (it->main_country_for_code()) {
-        calling_code_in_map->second->push_front(region_code);
-      } else {
-        calling_code_in_map->second->push_back(region_code);
-      }
-    } else {
-      // For most country calling codes, there will be only one region code.
-      std::list<string>* list_with_region_code = new std::list<string>();
-      list_with_region_code->push_back(region_code);
-      country_calling_code_to_region_map.insert(
-          std::make_pair(country_calling_code, list_with_region_code));
-    }
-    if (country_calling_code == kNanpaCountryCode) {
-        nanpa_regions_->insert(region_code);
-    }
-  }
-
-  country_calling_code_to_region_code_map_->insert(
-      country_calling_code_to_region_code_map_->begin(),
-      country_calling_code_to_region_map.begin(),
-      country_calling_code_to_region_map.end());
-  // Sort all the pairs in ascending order according to country calling code.
-  std::sort(country_calling_code_to_region_code_map_->begin(),
-            country_calling_code_to_region_code_map_->end(), OrderByFirst());
-}
-
-PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
-    : logger_(Logger::set_logger_impl(new NullLogger())),
-      matcher_api_(new RegexBasedMatcher()),
-      reg_exps_(new PhoneNumberRegExpsAndMappings),
-      country_calling_code_to_region_code_map_(
-          new std::vector<IntRegionsPair>()),
-      nanpa_regions_(new std::set<string>()),
-      region_to_metadata_map_(new std::map<string, PhoneMetadata>()),
-      country_code_to_non_geographical_metadata_map_(
-          new std::map<int, PhoneMetadata>) {
-  Logger::set_logger_impl(logger_.get());
-
-  // Creates metadata_collection from input string
-  PhoneMetadataCollection metadata_collection;
-  if (!LoadMetadataFromString(&metadata_collection, raw_metadata)) {
-    LOG(DFATAL) << "Could not parse metadata string.";
-    return;
-  }
-  // Storing data in a temporary map to make it easier to find other regions
-  // that share a country calling code when inserting data.
-  std::map<int, std::list<string>* > country_calling_code_to_region_map;
-  for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
-           metadata_collection.metadata().begin();
-       it != metadata_collection.metadata().end();
-       ++it) {
-    const string& region_code = it->id();
-    if (region_code == RegionCode::GetUnknown()) {
-      continue;
-    }
-
-    int country_calling_code = it->country_code();
-    if (kRegionCodeForNonGeoEntity == region_code) {
-      country_code_to_non_geographical_metadata_map_->insert(
-          std::make_pair(country_calling_code, *it));
-    } else {
-      region_to_metadata_map_->insert(std::make_pair(region_code, *it));
-    }
-    std::map<int, std::list<string>* >::iterator calling_code_in_map =
-        country_calling_code_to_region_map.find(country_calling_code);
-    if (calling_code_in_map != country_calling_code_to_region_map.end()) {
-      if (it->main_country_for_code()) {
-        calling_code_in_map->second->push_front(region_code);
-      } else {
-        calling_code_in_map->second->push_back(region_code);
-      }
-    } else {
-      // For most country calling codes, there will be only one region code.
-      std::list<string>* list_with_region_code = new std::list<string>();
-      list_with_region_code->push_back(region_code);
-      country_calling_code_to_region_map.insert(
-          std::make_pair(country_calling_code, list_with_region_code));
-    }
-    if (country_calling_code == kNanpaCountryCode) {
-        nanpa_regions_->insert(region_code);
-    }
-  }
-
-  country_calling_code_to_region_code_map_->insert(
-      country_calling_code_to_region_code_map_->begin(),
-      country_calling_code_to_region_map.begin(),
-      country_calling_code_to_region_map.end());
-  // Sort all the pairs in ascending order according to country calling code.
-  std::sort(country_calling_code_to_region_code_map_->begin(),
-            country_calling_code_to_region_code_map_->end(), OrderByFirst());
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {
   gtl::STLDeleteContainerPairSecondPointers(
       country_calling_code_to_region_code_map_->begin(),
       country_calling_code_to_region_code_map_->end());
+}
+
+// Initializes PhoneNumberUtil fields by using data from PhoneMetadataCollection.
+void PhoneNumberUtil::InitializeFromMetadata(PhoneMetadataCollection& metadata_collection){
+  // Storing data in a temporary map to make it easier to find other regions
+  // that share a country calling code when inserting data.
+  std::map<int, std::list<string>* > country_calling_code_to_region_map;
+  for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
+          metadata_collection.metadata().begin();
+      it != metadata_collection.metadata().end();
+      ++it) {
+    const string& region_code = it->id();
+    if (region_code == RegionCode::GetUnknown()) {
+      continue;
+    }
+
+    int country_calling_code = it->country_code();
+    if (kRegionCodeForNonGeoEntity == region_code) {
+      country_code_to_non_geographical_metadata_map_->insert(
+          std::make_pair(country_calling_code, *it));
+    } else {
+      region_to_metadata_map_->insert(std::make_pair(region_code, *it));
+    }
+    std::map<int, std::list<string>* >::iterator calling_code_in_map =
+        country_calling_code_to_region_map.find(country_calling_code);
+    if (calling_code_in_map != country_calling_code_to_region_map.end()) {
+      if (it->main_country_for_code()) {
+        calling_code_in_map->second->push_front(region_code);
+      } else {
+        calling_code_in_map->second->push_back(region_code);
+      }
+    } else {
+      // For most country calling codes, there will be only one region code.
+      std::list<string>* list_with_region_code = new std::list<string>();
+      list_with_region_code->push_back(region_code);
+      country_calling_code_to_region_map.insert(
+          std::make_pair(country_calling_code, list_with_region_code));
+    }
+    if (country_calling_code == kNanpaCountryCode) {
+        nanpa_regions_->insert(region_code);
+    }
+  }
+
+  country_calling_code_to_region_code_map_->insert(
+      country_calling_code_to_region_code_map_->begin(),
+      country_calling_code_to_region_map.begin(),
+      country_calling_code_to_region_map.end());
+  // Sort all the pairs in ascending order according to country calling code.
+  std::sort(country_calling_code_to_region_code_map_->begin(),
+            country_calling_code_to_region_code_map_->end(), OrderByFirst());
+
+  // Sets has_used_metadata_ to true for GetInstance()
+  has_used_metadata_ = true;
 }
 
 void PhoneNumberUtil::GetSupportedRegions(std::set<string>* regions) const {
@@ -949,14 +883,39 @@ void PhoneNumberUtil::GetSupportedTypesForNonGeoEntity(
 // metadata file.
 // static
 PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
-  return Singleton<PhoneNumberUtil>::GetInstance();
+  PhoneNumberUtil* phone_number_util = Singleton<PhoneNumberUtil>::GetInstance();
+  // Initializes with metadata if not initialized.
+  if(!phone_number_util->has_used_metadata_){
+    PhoneMetadataCollection metadata_collection;
+    if (!LoadCompiledInMetadata(&metadata_collection)) {
+      LOG(DFATAL) << "Could not parse compiled-in metadata.";
+      return nullptr;
+    }
+    phone_number_util->InitializeFromMetadata(metadata_collection);
+  }
+
+  return phone_number_util;
 }
 
-// Public wrapper function to get a PhoneNumberUtil instance with a passed in
-// string with the raw bytes of a metadata proto file.
+// Public wrapper function to get a PhoneNumberUtil instance with a string of
+// bytes. Takes as input a function that returns the processed metadata as a 
+// string. Most common use case for this function is to decompress metadata.
 // static
-PhoneNumberUtil* PhoneNumberUtil::GetInstance(std::string raw_metadata) {
-  return Singleton<PhoneNumberUtil>::GetInstance(raw_metadata);
+PhoneNumberUtil* PhoneNumberUtil::GetInstanceWithRawMetadata(
+    std::function<std::string ()> process_data){
+  PhoneNumberUtil* phone_number_util = Singleton<PhoneNumberUtil>::GetInstance();
+  // Initializes with metadata if not initialized.
+  if(!phone_number_util->has_used_metadata_){
+    std::string data = process_data();
+    PhoneMetadataCollection metadata_collection;
+    if (!LoadMetadataFromString(&metadata_collection, data)) {
+      LOG(DFATAL) << "Could not parse processed metadata string.";
+      return nullptr;
+    }
+    phone_number_util->InitializeFromMetadata(metadata_collection);
+  }
+
+  return phone_number_util;
 }
 
 const string& PhoneNumberUtil::GetExtnPatternsForMatching() const {

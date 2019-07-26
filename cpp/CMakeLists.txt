@@ -271,7 +271,6 @@ function (add_metadata_gen_target TARGET_NAME
                   "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
   if(CREATE_PB_FILES STREQUAL "ON")
     list(APPEND GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.pb")
-    set (CREATE_PB_FILES "TRUE")
   endif()
   set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")

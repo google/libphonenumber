@@ -99,7 +99,7 @@ public class BuildMetadataCppFromXml extends Command {
         String inputXmlFilePath = args[1];
         String outputDirPath = args[2];
         Matcher basenameMatcher = BASENAME_PATTERN.matcher(args[3]);
-        boolean createPbFiles = Boolean.parseBoolean(args[4]);
+        boolean createPbFiles = args[4].equals("ON") ? true : false;
         if (basenameMatcher.matches()) {
           Variant variant = Variant.parse(basenameMatcher.group(1));
           Type type = Type.parse(basenameMatcher.group(2));
@@ -209,7 +209,7 @@ public class BuildMetadataCppFromXml extends Command {
       OutputStream outputStream = null;
       try {
         File dir = new File(opt.getOutputDir());
-        outputStream = openOutputStream(dir, opt.getType(), opt.getVariant());
+        outputStream = openRawProtoStream(dir, opt.getType(), opt.getVariant());
         outputStream.write(data);
         outputStream.flush();
       } finally {
@@ -248,8 +248,8 @@ public class BuildMetadataCppFromXml extends Command {
     return new FileOutputStream(new File(dir, variant.getBasename(type) + ".cc"));
   }
 
-  OutputStream openOutputStream(File dir, Type type, Variant variant) throws FileNotFoundException {
-      return new FileOutputStream(new File(dir, variant.getBasename(type) + ".pb"));  
+  OutputStream openRawProtoStream(File dir, Type type, Variant variant) throws FileNotFoundException {
+    return new FileOutputStream(new File(dir, variant.getBasename(type) + ".pb"));  
   }
 
   /** The charset in which our source and header files will be written. */
