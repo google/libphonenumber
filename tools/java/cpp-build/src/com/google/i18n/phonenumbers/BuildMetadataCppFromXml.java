@@ -111,7 +111,7 @@ public class BuildMetadataCppFromXml extends Command {
       throw new IllegalArgumentException(String.format(
           "Usage: %s <inputXmlFile> <outputDir> ( <type> | test_<type> | lite_<type> ) <createPbFiles>\n" +
           "       where <type> is one of: %s\n" +
-          "       where <createPbFiles> when set to true outputs metadata bytes into a .pb file as well.\n",
+          "       where <createPbFiles> when set to true outputs metadata bytes into a .pb file as well.",
           commandName, Arrays.asList(Type.values())));
     }
 
