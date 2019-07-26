@@ -206,14 +206,14 @@ public class BuildMetadataCppFromXml extends Command {
    * @param (data) Metadata byte array to write.
    */
   private void writeByteData(Options opt, byte[] data) throws IOException, RuntimeException{
-      OutputStream outputStream = null;
+      OutputStream rawProtoStream = null;
       try {
         File dir = new File(opt.getOutputDir());
-        outputStream = openRawProtoStream(dir, opt.getType(), opt.getVariant());
-        outputStream.write(data);
-        outputStream.flush();
+        rawProtoStream = openRawProtoStream(dir, opt.getType(), opt.getVariant());
+        rawProtoStream.write(data);
+        rawProtoStream.flush();
       } finally {
-        FileUtils.closeFiles(outputStream);
+        FileUtils.closeFiles(rawProtoStream);
       }
   }
 
