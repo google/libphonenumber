@@ -84,6 +84,7 @@ option ("USE_BOOST" "Use Boost" "ON")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
+option ("CREATE_PB_FILES" "Create .pb binary metadata files" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
 
@@ -268,14 +269,17 @@ function (add_metadata_gen_target TARGET_NAME
   set (METADATA_SOURCE_DIR "${CMAKE_SOURCE_DIR}/src/phonenumbers")
   set (GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.cc"
                   "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
+  if(CREATE_PB_FILES STREQUAL "ON")
+    list(APPEND GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.pb")
+    set (CREATE_PB_FILES "TRUE")
+  endif()
   set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
   add_custom_command (
     COMMAND ${JAVA_BIN} -jar
       ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
-      ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
-
+      ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE} ${CREATE_PB_FILES}
     OUTPUT ${GEN_OUTPUT}
     DEPENDS ${XML_FILE}
   )

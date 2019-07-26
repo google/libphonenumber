@@ -95,21 +95,23 @@ public class BuildMetadataCppFromXml extends Command {
         Pattern.compile("(?:(test|lite)_)?([a-z_]+)");
 
     public static Options parse(String commandName, String[] args) {
-      if (args.length == 4) {
+      if (args.length == 5) {
         String inputXmlFilePath = args[1];
         String outputDirPath = args[2];
         Matcher basenameMatcher = BASENAME_PATTERN.matcher(args[3]);
+        boolean createPbFiles = Boolean.parseBoolean(args[4]);
         if (basenameMatcher.matches()) {
           Variant variant = Variant.parse(basenameMatcher.group(1));
           Type type = Type.parse(basenameMatcher.group(2));
           if (type != null && variant != null) {
-            return new Options(inputXmlFilePath, outputDirPath, type, variant);
+            return new Options(inputXmlFilePath, outputDirPath, type, variant, createPbFiles);
           }
         }
       }
       throw new IllegalArgumentException(String.format(
-          "Usage: %s <inputXmlFile> <outputDir> ( <type> | test_<type> | lite_<type> )\n" +
-          "       where <type> is one of: %s",
+          "Usage: %s <inputXmlFile> <outputDir> ( <type> | test_<type> | lite_<type> ) <createPbFiles>\n" +
+          "       where <type> is one of: %s\n" +
+          "       where <createPbFiles> when set to true outputs metadata bytes into a .pb file as well.\n",
           commandName, Arrays.asList(Type.values())));
     }
 
@@ -119,12 +121,14 @@ public class BuildMetadataCppFromXml extends Command {
     private final String outputDirPath;
     private final Type type;
     private final Variant variant;
+    private final boolean createPbFiles;
 
-    private Options(String inputXmlFilePath, String outputDirPath, Type type, Variant variant) {
+    private Options(String inputXmlFilePath, String outputDirPath, Type type, Variant variant, Boolean createPbFiles) {
       this.inputXmlFilePath = inputXmlFilePath;
       this.outputDirPath = outputDirPath;
       this.type = type;
       this.variant = variant;
+      this.createPbFiles = createPbFiles;
     }
 
     public String getInputFilePath() {
@@ -142,6 +146,10 @@ public class BuildMetadataCppFromXml extends Command {
     public Variant getVariant() {
       return variant;
     }
+
+    public Boolean getCreatePbFiles() {
+      return createPbFiles;
+    }
   }
 
   @Override
@@ -152,7 +160,8 @@ public class BuildMetadataCppFromXml extends Command {
   /**
    * Generates C++ header and source files to represent the metadata specified by this command's
    * arguments. The metadata XML file is read and converted to a byte array before being written
-   * into a C++ source file as a static data array.
+   * into a C++ source file as a static data array. If CreatePbFiles is set, the converted bytes
+   * are also written into a .pb file.
    *
    * @return  true if the generation succeeded.
    */
@@ -161,6 +170,12 @@ public class BuildMetadataCppFromXml extends Command {
     try {
       Options opt = Options.parse(getCommandName(), getArgs());
       byte[] data = loadMetadataBytes(opt.getInputFilePath(), opt.getVariant() == Variant.LITE);
+
+      // Write bytes to a .pb file as well.
+      if(opt.getCreatePbFiles()){
+        writeByteData(opt, data);
+      }
+
       CppMetadataGenerator metadata = CppMetadataGenerator.create(opt.getType(), data);
 
       // TODO: Consider adding checking for correctness of file paths and access.
@@ -185,35 +200,21 @@ public class BuildMetadataCppFromXml extends Command {
   }
 
   /**
-   * Generates .pb files to represent the metadata specified by this command's
-   * arguments. The metadata XML file is read, built into a 
-   * PhoneMetaDataCollection object and its bytes are written to a .pb file.
+   * Writes the passed in byte array to a .pb file in the appropriate directory.
    *
-   * @return  true if the generation succeeded.
+   * @param (opt) Options object representing this command's arguments.
+   * @param (data) Metadata byte array to write.
    */
-  @Override
-  public boolean startPb() {
-    try {
-      Options opt = Options.parse(getCommandName(), getArgs());
-      byte[] data = loadMetadataBytes(opt.getInputFilePath(), opt.getVariant() == Variant.LITE);
-
-      // TODO: Consider adding checking for correctness of file paths and access.
+  private void writeByteData(Options opt, byte[] data) throws IOException, RuntimeException{
       OutputStream outputStream = null;
       try {
         File dir = new File(opt.getOutputDir());
-        outputStream = openSourceStream(dir, opt.getType(), opt.getVariant());
+        outputStream = openOutputStream(dir, opt.getType(), opt.getVariant());
         outputStream.write(data);
         outputStream.flush();
       } finally {
         FileUtils.closeFiles(outputStream);
       }
-      return true;
-    } catch (IOException e) {
-      System.err.println(e.getMessage());
-    } catch (RuntimeException e) {
-      System.err.println(e.getMessage());
-    }
-    return false;
   }
 
   /** Loads the metadata XML file and converts its contents to a byte array. */
@@ -248,7 +249,7 @@ public class BuildMetadataCppFromXml extends Command {
   }
 
   OutputStream openOutputStream(File dir, Type type, Variant variant) throws FileNotFoundException {
-      return new FileOutputStream(new File(dir, variant.getBasename(type) + ".pb"));  }
+      return new FileOutputStream(new File(dir, variant.getBasename(type) + ".pb"));  
   }
 
   /** The charset in which our source and header files will be written. */

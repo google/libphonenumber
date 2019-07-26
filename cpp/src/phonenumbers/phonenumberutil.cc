@@ -817,17 +817,19 @@ PhoneNumberUtil::PhoneNumberUtil()
             country_calling_code_to_region_code_map_->end(), OrderByFirst());
 }
 
-// Private constructor from string. Also takes care of initialisation.
 PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
     : logger_(Logger::set_logger_impl(new NullLogger())),
+      matcher_api_(new RegexBasedMatcher()),
       reg_exps_(new PhoneNumberRegExpsAndMappings),
-      country_calling_code_to_region_code_map_(new vector<IntRegionsPair>()),
-      nanpa_regions_(new set<string>()),
-      region_to_metadata_map_(new map<string, PhoneMetadata>()),
+      country_calling_code_to_region_code_map_(
+          new std::vector<IntRegionsPair>()),
+      nanpa_regions_(new std::set<string>()),
+      region_to_metadata_map_(new std::map<string, PhoneMetadata>()),
       country_code_to_non_geographical_metadata_map_(
-          new map<int, PhoneMetadata>) {
+          new std::map<int, PhoneMetadata>) {
   Logger::set_logger_impl(logger_.get());
 
+  // Creates metadata_collection from input string
   PhoneMetadataCollection metadata_collection;
   if (!LoadMetadataFromString(&metadata_collection, raw_metadata)) {
     LOG(DFATAL) << "Could not parse metadata string.";
@@ -835,7 +837,7 @@ PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
   }
   // Storing data in a temporary map to make it easier to find other regions
   // that share a country calling code when inserting data.
-  map<int, list<string>* > country_calling_code_to_region_map;
+  std::map<int, std::list<string>* > country_calling_code_to_region_map;
   for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
            metadata_collection.metadata().begin();
        it != metadata_collection.metadata().end();
@@ -852,7 +854,7 @@ PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
     } else {
       region_to_metadata_map_->insert(std::make_pair(region_code, *it));
     }
-    map<int, list<string>* >::iterator calling_code_in_map =
+    std::map<int, std::list<string>* >::iterator calling_code_in_map =
         country_calling_code_to_region_map.find(country_calling_code);
     if (calling_code_in_map != country_calling_code_to_region_map.end()) {
       if (it->main_country_for_code()) {
@@ -862,7 +864,7 @@ PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
       }
     } else {
       // For most country calling codes, there will be only one region code.
-      list<string>* list_with_region_code = new list<string>();
+      std::list<string>* list_with_region_code = new std::list<string>();
       list_with_region_code->push_back(region_code);
       country_calling_code_to_region_map.insert(
           std::make_pair(country_calling_code, list_with_region_code));
@@ -878,8 +880,7 @@ PhoneNumberUtil::PhoneNumberUtil(std::string raw_metadata)
       country_calling_code_to_region_map.end());
   // Sort all the pairs in ascending order according to country calling code.
   std::sort(country_calling_code_to_region_code_map_->begin(),
-            country_calling_code_to_region_code_map_->end(),
-            OrderByFirst());
+            country_calling_code_to_region_code_map_->end(), OrderByFirst());
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {

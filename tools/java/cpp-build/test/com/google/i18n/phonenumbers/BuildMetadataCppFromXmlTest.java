@@ -70,7 +70,7 @@ public class BuildMetadataCppFromXmlTest {
   @Test
   public void parseGoodOptions() {
     Options opt = BuildMetadataCppFromXml.Options.parse("MyCommand",
-        new String[] { IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "test_alternate_format" });
+        new String[] { IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "test_alternate_format", "false" });
     assertEquals(Type.ALTERNATE_FORMAT, opt.getType());
     assertEquals(Variant.TEST, opt.getVariant());
     assertEquals(INPUT_PATH_XML, opt.getInputFilePath());
@@ -80,7 +80,7 @@ public class BuildMetadataCppFromXmlTest {
   @Test
   public void generateMetadata() {
     String[] args = new String[] {
-        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "metadata" };
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "metadata", "false" };
     // Most of the useful asserts are done in the mock class.
     MockedCommand command = new MockedCommand(
         INPUT_PATH_XML, false, OUTPUT_DIR, Type.METADATA, Variant.FULL);
@@ -99,7 +99,7 @@ public class BuildMetadataCppFromXmlTest {
   @Test
   public void generateLiteMetadata() {
     String[] args = new String[] {
-        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "lite_metadata" };
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "lite_metadata", "false" };
     // Most of the useful asserts are done in the mock class.
     MockedCommand command = new MockedCommand(
         INPUT_PATH_XML, true, OUTPUT_DIR, Type.METADATA, Variant.LITE);
@@ -118,7 +118,7 @@ public class BuildMetadataCppFromXmlTest {
   @Test
   public void generateAlternateFormat() {
     String[] args = new String[] {
-        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "alternate_format" };
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "alternate_format", "false" };
     // Most of the useful asserts are done in the mock class.
     MockedCommand command = new MockedCommand(
         INPUT_PATH_XML, false, OUTPUT_DIR, Type.ALTERNATE_FORMAT, Variant.FULL);
