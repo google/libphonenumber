@@ -19,8 +19,6 @@ package com.google.i18n.phonenumbers;
 /**
  * Entry point class for C++ build tools.
  *
- * Note: Can change start() to startPb() to generate binary files.
- *
  * @author Philippe Liard
  */
 public class EntryPoint {
