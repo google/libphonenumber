@@ -776,9 +776,9 @@ void PhoneNumberUtil::InitializeFromMetadata(PhoneMetadataCollection& metadata_c
   // that share a country calling code when inserting data.
   std::map<int, std::list<string>* > country_calling_code_to_region_map;
   for (RepeatedPtrField<PhoneMetadata>::const_iterator it =
-          metadata_collection.metadata().begin();
-      it != metadata_collection.metadata().end();
-      ++it) {
+           metadata_collection.metadata().begin();
+       it != metadata_collection.metadata().end();
+       ++it) {
     const string& region_code = it->id();
     if (region_code == RegionCode::GetUnknown()) {
       continue;
@@ -819,7 +819,8 @@ void PhoneNumberUtil::InitializeFromMetadata(PhoneMetadataCollection& metadata_c
   std::sort(country_calling_code_to_region_code_map_->begin(),
             country_calling_code_to_region_code_map_->end(), OrderByFirst());
 
-  // Sets has_used_metadata_ to true for GetInstance()
+  // Sets has_used_metadata_ to prevent metadata from being read two times in 
+  // GetInstace().
   has_used_metadata_ = true;
 }
 
@@ -899,7 +900,7 @@ PhoneNumberUtil* PhoneNumberUtil::GetInstance() {
 
 // Public wrapper function to get a PhoneNumberUtil instance with a string of
 // bytes. Takes as input a function that returns the processed metadata as a 
-// string. Most common use case for this function is to decompress metadata.
+// string. One possible use case for this function is to decompress metadata.
 // static
 PhoneNumberUtil* PhoneNumberUtil::GetInstanceWithRawMetadata(
     std::function<std::string ()> process_data){
