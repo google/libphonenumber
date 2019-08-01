@@ -1,3 +1,11 @@
+Aug 01, 2019: v8.10.16
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 676
+ - Updated phone metadata for region code(s):
+   AU, CC, CL, CX, GB, IL, KW, MK, NE, TJ, TT, TW, VI
+ - Updated carrier data for country calling code(s):
+   56 (en), 61 (en), 65 (en), 227 (en), 972 (en), 992 (en), 1868 (en)
+
 Jul 15, 2019: v8.10.15
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 676
