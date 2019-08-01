@@ -3323,9 +3323,9 @@
     <!-- Tonga (TO) -->
     <territory countryCode="676">
       <availableFormats>
-        <!-- Mobile numbers  -->
+        <!-- Mobile numbers -->
         <numberFormat pattern="(\d{2})(\d{5})">
-          <leadingDigits>[6-8]</leadingDigits>
+          <leadingDigits>[5-8]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
