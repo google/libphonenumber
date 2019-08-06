@@ -72,7 +72,7 @@ endfunction ()
 function (find_required_program NAME FILENAME DESCRIPTION)
   find_program (${NAME}_BIN NAMES ${FILENAME})
 
-  if (${NAME}_BIN STREQUAL "${${NAME}_BIN}-NOTFOUND")
+  if (${NAME}_BIN STREQUAL "${NAME}_BIN-NOTFOUND")
     print_error (${DESCRIPTION} ${FILENAME})
   endif ()
 endfunction (find_required_program)
