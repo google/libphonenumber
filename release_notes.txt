@@ -1,3 +1,10 @@
+Aug 15, 2019: v8.10.17
+Metadata changes:
+ - Updated phone metadata for region code(s): AM, MM, MX
+ - Updated short number metadata for region code(s): TH
+ - Updated carrier data for country calling code(s):
+   86 (en, zh, zh_Hant), 95 (en), 374 (en, ru)
+
 Aug 01, 2019: v8.10.16
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 676

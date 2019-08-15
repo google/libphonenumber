@@ -604,7 +604,10 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{5})" nationalPrefixFormattingRule="($NP$FG)">
-          <leadingDigits>[23]</leadingDigits>
+          <leadingDigits>
+            2|
+            3[12]
+          </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{6})" nationalPrefixFormattingRule="($NP$FG)">
@@ -615,7 +618,7 @@
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{6})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[4-9]</leadingDigits>
+          <leadingDigits>[3-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
@@ -658,6 +661,7 @@
         <exampleNumber>77123456</exampleNumber>
         <nationalNumberPattern>
           (?:
+            33|
             4[1349]|
             55|
             77|
@@ -18636,14 +18640,15 @@
                   [0-36]|
                   4\d
                 )|
-                (?:
-                  6[7-9]|
-                  89
-                )\d|
+                6[7-9]\d|
                 7(?:
                   3|
                   5[0-2]|
                   [6-9]\d
+                )|
+                8(?:
+                  8[7-9]|
+                  9\d
                 )
               )\d|
               4(?:
@@ -19508,8 +19513,7 @@
          national format (leading 044/045), will be parsed into the same form. -->
     <territory id="MX" countryCode="52" preferredInternationalPrefix="00"
                internationalPrefix="0[09]" nationalPrefix="01"
-               nationalPrefixForParsing="0[12]|04[45]([2-9]\d{9})$"
-               nationalPrefixTransformRule="1$1" mobileNumberPortableRegion="true">
+               nationalPrefixForParsing="0(?:[12]|4[45])|1" mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- 5-digit shortcodes (very rare). -->
         <numberFormat pattern="(\d{5})">
@@ -19518,8 +19522,7 @@
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- Fixed line (2-digit area codes). -->
-        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="$NP $FG"
-                      nationalPrefixOptionalWhenFormatting="true">
+        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>
             33|
             5[56]|
@@ -19528,13 +19531,13 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- Fixed line (3-digit area codes) and other non-mobile numbers. -->
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP $FG"
-                      nationalPrefixOptionalWhenFormatting="true">
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>[2-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- Mobile version of fixed line 2-digit area codes (prepends mobile token). -->
-        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="044 $FG">
+        <!-- Mobile version of fixed line 2-digit area codes and removing former mobile token 1. -->
+        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})"
+                      nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>
             1(?:
               33|
@@ -19543,21 +19546,24 @@
             )
           </leadingDigits>
           <format>$2 $3 $4</format>
-          <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <!-- Mobile version of fixed line 3-digit area codes (prepends mobile token). -->
-        <numberFormat pattern="(\d)(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="044 $FG">
+        <!-- Mobile version of fixed line 3-digit area codes and removing former mobile token 1. -->
+        <numberFormat pattern="(\d)(\d{3})(\d{3})(\d{4})"
+                      nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>1</leadingDigits>
           <format>$2 $3 $4</format>
-          <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            1\d|
-            [2-9]
-          )\d{9}
+            1(?:
+              [01467]\d|
+              [2359][1-9]|
+              8[1-79]
+            )|
+            [2-9]\d
+          )\d{8}
         </nationalNumberPattern>
       </generalDesc>
       <!-- http://en.wikipedia.org/wiki/Area_codes_in_Mexico_by_code -->
