@@ -1541,9 +1541,9 @@ TEST_F(PhoneNumberUtilTest, GetCountryMobileToken) {
   int country_calling_code;
   string mobile_token;
 
-  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::MX());
+  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::AR());
   phone_util_.GetCountryMobileToken(country_calling_code, &mobile_token);
-  EXPECT_EQ("1", mobile_token);
+  EXPECT_EQ("9", mobile_token);
 
   // Country calling code for Sweden, which has no mobile token.
   country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::SE());

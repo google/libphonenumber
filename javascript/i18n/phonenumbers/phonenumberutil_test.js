@@ -424,8 +424,8 @@ function testGetLengthOfNationalDestinationCode() {
 }
 
 function testGetCountryMobileToken() {
-  assertEquals('1', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
-      phoneUtil.getCountryCodeForRegion(RegionCode.MX)));
+  assertEquals('9', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
+      phoneUtil.getCountryCodeForRegion(RegionCode.AR)));
 
   // Country calling code for Sweden, which has no mobile token.
   assertEquals('', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
