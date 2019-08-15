@@ -734,12 +734,12 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
       // in that way.
       var fullOutput = this.appendNationalNumber_(formattedNumber);
       var formattedNumberDigitsOnly =
-		i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(fullOutput);
+	  i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(fullOutput);
       if (formattedNumberDigitsOnly == this.accruedInputWithoutFormatting_) {
           // If it's the same (i.e entered number and format is same), then it's
           // safe to return this in formatted number as nothing is lost / added.
           return fullOutput;
-        }
+      }
       return fullOutput;
     }
   }
