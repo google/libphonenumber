@@ -536,7 +536,6 @@ class PhoneNumberRegExpsAndMappings {
       all_plus_number_grouping_symbols_.insert(std::make_pair(c, c));
     }
 
-    mobile_token_mappings_.insert(std::make_pair(52, '1'));
     mobile_token_mappings_.insert(std::make_pair(54, '9'));
     geo_mobile_countries_without_mobile_area_codes_.insert(86);  // China
     geo_mobile_countries_.insert(52);  // Mexico
