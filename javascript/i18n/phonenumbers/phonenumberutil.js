@@ -167,7 +167,6 @@ i18n.phonenumbers.PhoneNumberUtil.COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_ = '3';
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.MOBILE_TOKEN_MAPPINGS_ = {
-  52: '1',
   54: '9'
 };
 

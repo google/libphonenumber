@@ -479,8 +479,24 @@ void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
       DCHECK(status);
       IGNORE_UNUSED(status);
 
-      AppendNationalNumber(formatted_number, formatted_result);
-      return;
+      string full_output(*formatted_result);
+      // Check that we didn't remove nor add any extra digits when we matched
+      // this formatting pattern. This usually happens after we entered the last
+      // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
+      // formatted but AYTF should retain all the number entered and not change
+      // in order to match a format (of same leading digits and length) display
+      // in that way.
+      AppendNationalNumber(formatted_number, &full_output);
+      phone_util_.NormalizeDiallableCharsOnly(&full_output);
+      string accrued_input_without_formatting_stdstring;
+      accrued_input_without_formatting_.toUTF8String(
+          accrued_input_without_formatting_stdstring);
+      if (full_output == accrued_input_without_formatting_stdstring) {
+        // If it's the same (i.e entered number and format is same), then it's
+        // safe to return this in formatted number as nothing is lost / added.
+        AppendNationalNumber(formatted_number, formatted_result);
+        return;
+      }
     }
   }
 }
