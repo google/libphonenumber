@@ -15,6 +15,7 @@
 # Data from Wikipedia:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Armenia#Mobile_network_codes
 
+37433|Beeline
 37441|Ucom
 37443|Beeline
 37444|Ucom
