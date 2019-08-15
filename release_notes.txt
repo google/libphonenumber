@@ -1,5 +1,11 @@
 Aug 15, 2019: v8.10.17
 Metadata changes:
+ - MX numbering authority has changed dialling patterns to be more
+   uniform i.e additional doemstic (01 and 044) and international
+   mobile tokens (1) are abolished now. The parsing and formating
+   changes were done as part of this release. We recommend to
+   follow the steps mentioned in our announcement for same:
+   https://groups.google.com/forum/#!topic/libphonenumber-discuss/pecTIo_HpVE
  - Updated phone metadata for region code(s): AM, MM, MX
  - Updated short number metadata for region code(s): TH
  - Updated carrier data for country calling code(s):
