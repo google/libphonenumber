@@ -426,7 +426,7 @@ public class AsYouTypeFormatter {
             NATIONAL_PREFIX_SEPARATORS_PATTERN.matcher(
                 numberFormat.getNationalPrefixFormattingRule()).find();
         String formattedNumber = m.replaceAll(numberFormat.getFormat());
-        // Check that we didn't remove nor add any extra digits when we matched
+        // Check that we did not remove nor add any extra digits when we matched
         // this formatting pattern. This usually happens after we entered the last
         // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
         // formatted but AYTF should retain all the number entered and not change
