@@ -740,7 +740,6 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
           // safe to return this in formatted number as nothing is lost / added.
           return fullOutput;
       }
-      return fullOutput;
     }
   }
   return '';
