@@ -10,6 +10,9 @@ Metadata changes:
  - Updated short number metadata for region code(s): TH
  - Updated carrier data for country calling code(s):
    86 (en, zh, zh_Hant), 95 (en), 374 (en, ru)
+For users who depend on JavaScript port:
+ - Please patch in PR #2380 to fix AYTF output that otherwise
+   swallows the entered old mobile token (1) at the last step.
 
 Aug 01, 2019: v8.10.16
 Metadata changes:
