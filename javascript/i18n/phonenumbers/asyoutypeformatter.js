@@ -726,7 +726,21 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
       /** @type {string} */
       var formattedNumber = nationalNumber.replace(new RegExp(pattern, 'g'),
                                                    numberFormat.getFormat());
-      return this.appendNationalNumber_(formattedNumber);
+      // Check that we didn't remove nor add any extra digits when we matched
+      // this formatting pattern. This usually happens after we entered the last
+      // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
+      // formatted but AYTF should retain all the number entered and not change
+      // in order to match a format (of same leading digits and length) display
+      // in that way.
+      var fullOutput = this.appendNationalNumber_(formattedNumber);
+      var formattedNumberDigitsOnly =
+          i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+              fullOutput);
+      if (formattedNumberDigitsOnly == this.accruedInputWithoutFormatting_) {
+          // If it's the same (i.e entered number and format is same), then it's
+          // safe to return this in formatted number as nothing is lost / added.
+          return fullOutput;
+      }
     }
   }
   return '';

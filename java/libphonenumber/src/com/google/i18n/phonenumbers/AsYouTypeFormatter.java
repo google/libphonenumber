@@ -426,7 +426,19 @@ public class AsYouTypeFormatter {
             NATIONAL_PREFIX_SEPARATORS_PATTERN.matcher(
                 numberFormat.getNationalPrefixFormattingRule()).find();
         String formattedNumber = m.replaceAll(numberFormat.getFormat());
-        return appendNationalNumber(formattedNumber);
+        // Check that we did not remove nor add any extra digits when we matched
+        // this formatting pattern. This usually happens after we entered the last
+        // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
+        // formatted but AYTF should retain all the number entered and not change
+        // in order to match a format (of same leading digits and length) display
+        // in that way.
+        String fullOutput = appendNationalNumber(formattedNumber);
+        String formattedNumberDigitsOnly = PhoneNumberUtil.normalizeDiallableCharsOnly(fullOutput);
+        if (formattedNumberDigitsOnly.contentEquals(accruedInputWithoutFormatting)) {
+          // If it's the same (i.e entered number and format is same), then it's
+          // safe to return this in formatted number as nothing is lost / added.
+          return fullOutput;
+        }
       }
     }
     return "";

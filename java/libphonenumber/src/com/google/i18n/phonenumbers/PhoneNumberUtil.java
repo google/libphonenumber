@@ -122,7 +122,6 @@ public class PhoneNumberUtil {
 
   static {
     HashMap<Integer, String> mobileTokenMap = new HashMap<Integer, String>();
-    mobileTokenMap.put(52, "1");
     mobileTokenMap.put(54, "9");
     MOBILE_TOKEN_MAPPINGS = Collections.unmodifiableMap(mobileTokenMap);
 
