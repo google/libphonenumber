@@ -15,7 +15,7 @@ For users who depend on JavaScript port:
    swallows the entered old mobile token (1) at the last step.
 Code changes:
  - AsYouTypeFormatter changed to ensure that the output never adds new digits or swallows digits.
- - MX mobile token no longer removed by getCountryMobileToken
+ - MX mobile token no longer returned by getCountryMobileToken
 
 Aug 01, 2019: v8.10.16
 Metadata changes:
