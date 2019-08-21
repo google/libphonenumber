@@ -188,14 +188,14 @@ TEST_F(PhoneNumberUtilTest, GetSupportedTypesForRegion) {
   types.clear();
   phone_util_.GetSupportedTypesForRegion(RegionCode::ZZ(), &types);
   // Test the invalid region code.
-  EXPECT_EQ(0, types.size());
+  EXPECT_EQ(0u, types.size());
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedTypesForNonGeoEntity) {
   std::set<PhoneNumberUtil::PhoneNumberType> types;
   // No data exists for 999 at all, no types should be returned.
   phone_util_.GetSupportedTypesForNonGeoEntity(999, &types);
-  EXPECT_EQ(0, types.size());
+  EXPECT_EQ(0u, types.size());
 
   types.clear();
   phone_util_.GetSupportedTypesForNonGeoEntity(979, &types);
@@ -436,7 +436,7 @@ TEST_F(PhoneNumberUtilTest, GetInvalidExampleNumber) {
                                                   &test_number));
   // At least the country calling code should be set correctly.
   EXPECT_EQ(1, test_number.country_code());
-  EXPECT_NE(0, test_number.national_number());
+  EXPECT_NE(0u, test_number.national_number());
 }
 
 TEST_F(PhoneNumberUtilTest, GetExampleNumberForNonGeoEntity) {
