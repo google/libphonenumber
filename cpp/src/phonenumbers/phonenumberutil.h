@@ -29,6 +29,7 @@
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/phonemetadata.pb.h"
 
 class TelephoneNumber;
 
@@ -218,6 +219,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // The PhoneNumberUtil is implemented as a singleton. Therefore, calling
   // GetInstance multiple times will only result in one instance being created.
   static PhoneNumberUtil* GetInstance();
+  static PhoneNumberUtil* GetInstanceWithRawMetadata(std::function<std::string ()> process_data);
 
   // Returns true if the number is a valid vanity (alpha) number such as 800
   // MICROSOFT. A valid vanity number will start with at least 3 digits and will
@@ -818,7 +820,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   scoped_ptr<std::map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
+  // Used to check if IntializeFromMetadata has been called for an instance.
+  bool has_used_metadata_ = false;
+
   PhoneNumberUtil();
+
+  void InitializeFromMetadata(PhoneMetadataCollection& metadata_collection);
 
   // Returns a regular expression for the possible extensions that may be found
   // in a number, for use when matching.
