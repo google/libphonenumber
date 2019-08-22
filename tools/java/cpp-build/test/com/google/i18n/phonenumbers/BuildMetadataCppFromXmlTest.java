@@ -70,17 +70,18 @@ public class BuildMetadataCppFromXmlTest {
   @Test
   public void parseGoodOptions() {
     Options opt = BuildMetadataCppFromXml.Options.parse("MyCommand",
-        new String[] { IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "test_alternate_format" });
+        new String[] { IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "test_alternate_format", "OFF" });
     assertEquals(Type.ALTERNATE_FORMAT, opt.getType());
     assertEquals(Variant.TEST, opt.getVariant());
     assertEquals(INPUT_PATH_XML, opt.getInputFilePath());
     assertEquals(OUTPUT_DIR, opt.getOutputDir());
+    assertEquals(false, opt.getCreatePbFiles());
   }
 
   @Test
   public void generateMetadata() {
     String[] args = new String[] {
-        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "metadata" };
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "metadata", "OFF" };
     // Most of the useful asserts are done in the mock class.
     MockedCommand command = new MockedCommand(
         INPUT_PATH_XML, false, OUTPUT_DIR, Type.METADATA, Variant.FULL);
@@ -99,7 +100,7 @@ public class BuildMetadataCppFromXmlTest {
   @Test
   public void generateLiteMetadata() {
     String[] args = new String[] {
-        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "lite_metadata" };
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "lite_metadata", "OFF" };
     // Most of the useful asserts are done in the mock class.
     MockedCommand command = new MockedCommand(
         INPUT_PATH_XML, true, OUTPUT_DIR, Type.METADATA, Variant.LITE);
@@ -116,9 +117,32 @@ public class BuildMetadataCppFromXmlTest {
   }
 
   @Test
+  public void generateRawProtoMetadata() {
+    String[] args = new String[] {
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "metadata", "ON" };
+    // Most of the useful asserts are done in the mock class.
+    MockedCommand command = new MockedCommand(
+        INPUT_PATH_XML, false, OUTPUT_DIR, Type.METADATA, Variant.FULL);
+    command.setArgs(args);
+    command.start();
+    // Ensure that header and source files are still being written correctly when createPbFiles is set to "ON".
+    String headerString = command.capturedHeaderFile();
+    assertTrue(headerString.contains("const void* metadata_get()"));
+    assertTrue(headerString.contains("int metadata_size()"));
+    String sourceString = command.capturedSourceFile();
+    assertTrue(sourceString.contains("const void* metadata_get()"));
+    assertTrue(sourceString.contains("int metadata_size()"));
+    assertTrue(sourceString.contains(CPP_TEST_DATA));
+    // Check that captured raw proto data that is going to be written is as expected.
+    String rawProtoString = command.capturedRawProtoFile();
+    String testDataByteString = new String(TEST_DATA);
+    assertEquals(rawProtoString, testDataByteString);
+  }
+
+  @Test
   public void generateAlternateFormat() {
     String[] args = new String[] {
-        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "alternate_format" };
+        IGNORED, INPUT_PATH_XML, OUTPUT_DIR, "alternate_format", "OFF" };
     // Most of the useful asserts are done in the mock class.
     MockedCommand command = new MockedCommand(
         INPUT_PATH_XML, false, OUTPUT_DIR, Type.ALTERNATE_FORMAT, Variant.FULL);
@@ -148,6 +172,7 @@ public class BuildMetadataCppFromXmlTest {
     private final Variant expectedVariant;
     private final ByteArrayOutputStream headerOut = new ByteArrayOutputStream();
     private final ByteArrayOutputStream sourceOut = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream rawProtoOut = new ByteArrayOutputStream();
 
     public MockedCommand(String expectedInputFilePath, boolean expectedLiteMetadata,
         String expectedOutputDirPath, Type expectedType, Variant expectedVariant) {
@@ -175,11 +200,20 @@ public class BuildMetadataCppFromXmlTest {
       assertEquals(expectedVariant, variant);
       return sourceOut;
     }
+    @Override OutputStream openRawProtoStream(File dir, Type type, Variant variant) {
+      assertEquals(expectedOutputDirPath, dir.getPath());
+      assertEquals(expectedType, type);
+      assertEquals(expectedVariant, variant);
+      return rawProtoOut;
+    }
     String capturedHeaderFile() {
       return new String(headerOut.toByteArray(), UTF_8);
     }
     String capturedSourceFile() {
       return new String(sourceOut.toByteArray(), UTF_8);
+    }
+    String capturedRawProtoFile() {
+      return new String(rawProtoOut.toByteArray(), UTF_8);
     }
   }
 }
