@@ -561,19 +561,6 @@
       </fixedLine>
     </territory>
 
-    <!-- Hungary -->
-    <!-- This country has special logic in formatNumberForMobileDialing which must be tested. -->
-    <territory id="HU" countryCode="36" internationalPrefix="00" nationalPrefix="06">
-      <generalDesc>
-        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
-      </generalDesc>
-      <mobile>
-        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
-        <possibleLengths national="9"/>
-        <exampleNumber>301234567</exampleNumber>
-      </mobile>
-    </territory>
-
     <!-- Italy -->
     <!-- http://en.wikipedia.org/wiki/%2B39 -->
     <territory id="IT" countryCode="39" internationalPrefix="00">
