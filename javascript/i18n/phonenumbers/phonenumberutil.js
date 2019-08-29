@@ -1935,16 +1935,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
           // carriers won't connect the call. Because of that, we return an
           // empty string here.
           '';
-    } else if (isValidNumber && regionCode == 'HU') {
-      // The national format for HU numbers doesn't contain the national prefix,
-      // because that is how numbers are normally written down. However, the
-      // national prefix is obligatory when dialing from a mobile phone. As a
-      // result, we add it back here if it is a valid regular length phone
-      // number.
-      formattedNumber =
-          this.getNddPrefixForRegion(regionCode, true /* strip non-digits */) +
-          ' ' + this.format(numberNoExt,
-              i18n.phonenumbers.PhoneNumberFormat.NATIONAL);
     } else if (countryCallingCode ==
                i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_) {
       // For NANPA countries, we output international format for numbers that

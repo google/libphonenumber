@@ -1196,28 +1196,6 @@ function testFormatNumberForMobileDialing() {
       phoneUtil.formatNumberForMobileDialing(deShortNumber,
                                              RegionCode.IT, false));
 
-  // Test the special logic for Hungary, where the national prefix must be added
-  // before dialing from a mobile phone for regular length numbers, but not for
-  // short numbers.
-  var huRegularNumber = new i18n.phonenumbers.PhoneNumber();
-  huRegularNumber.setCountryCode(36);
-  huRegularNumber.setNationalNumber(301234567);
-  assertEquals('06301234567',
-      phoneUtil.formatNumberForMobileDialing(huRegularNumber,
-                                             RegionCode.HU, false));
-  assertEquals('+36301234567',
-      phoneUtil.formatNumberForMobileDialing(huRegularNumber,
-                                             RegionCode.JP, false));
-  var huShortNumber = new i18n.phonenumbers.PhoneNumber();
-  huShortNumber.setCountryCode(36);
-  huShortNumber.setNationalNumber(104);
-  assertEquals('104',
-      phoneUtil.formatNumberForMobileDialing(huShortNumber,
-                                             RegionCode.HU, false));
-  assertEquals('',
-      phoneUtil.formatNumberForMobileDialing(huShortNumber,
-                                             RegionCode.JP, false));
-
   // Test the special logic for NANPA countries, for which regular length phone
   // numbers are always output in international format, but short numbers are in
   // national format.
