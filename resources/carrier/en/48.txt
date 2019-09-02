@@ -12,50 +12,338 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-48450|Play
-4850|Orange
-4851|Orange
-48530|Play
-48531|Play
-48532|T-Mobile
-48533|Play
-48535|Play
-4857|Play
-48600|T-Mobile
-48601|Plus
-48602|T-Mobile
-48603|Plus
-48604|T-Mobile
-48605|Plus
-48606|T-Mobile
-48607|Plus
-48608|T-Mobile
-48609|Plus
-48660|T-Mobile
-48661|Plus
-48662|T-Mobile
-48663|Plus
-48664|T-Mobile
-48665|Plus
-486666|Play
-48667|Plus
-48668|T-Mobile
-48669|Plus
+# Carrier details updated from the published list of
+# the Office of Electronic Communication:
+# https://numeracja.uke.gov.pl/en/plmn_tables
+
+48500|Orange
+48501|Orange
+48502|Orange
+48503|Orange
+48504|Orange
+48505|Orange
+48506|Orange
+48507|Orange
+48508|Orange
+48509|Orange
+48510|Orange
+48511|Orange
+48512|Orange
+48513|Orange
+48514|Orange
+48515|Orange
+48516|Orange
+48517|Orange
+48518|Orange
+48519|Orange
+485710|Orange
+485715|Orange
+485716|Orange
+485711|Orange
+485712|Orange
+485713|Orange
+485714|Orange
+485717|Orange
+485718|Orange
+485719|Orange
+48572|Orange
+485730|Orange
+485731|Orange
+485732|Orange
+485733|Orange
+485734|Orange
+485739|Orange
+4857357|Orange
 486901|Orange
 486902|Orange
 486903|Orange
 486904|Orange
 486905|Orange
 486906|Orange
-486907|CenterNet
+487800|Orange
+487801|Orange
+487805|Orange
+487806|Orange
+487863|Orange
+487864|Orange
+487865|Orange
+487866|Orange
+487868|Orange
+487869|Orange
+487890|Orange
+487891|Orange
+487892|Orange
+487893|Orange
+487894|Orange
+48797|Orange
+48798|Orange
+487990|Orange
+487996|Orange
+4878678|CLUDO
+4857950|Klucz Telekomunikacja
+4873990|VikingCo
+4873997|VikingCo
+4873998|VikingCo
+4845910|UPC
+4845911|UPC
+4845912|UPC
+4845913|UPC
+4845914|UPC
+4857971|UPC
+4857972|UPC
+4857973|UPC
+4857974|UPC
+4857975|UPC
+4878025|Interactive Digital Media
+4873726|Fundacja Nasza Wizja
+4873727|Fundacja Nasza Wizja
+4873728|Fundacja Nasza Wizja
+4873729|Fundacja Nasza Wizja
+4857942|SIA NetBalt
+4857953|SIA NetBalt
+4873993|SIA NetBalt
+4878026|SIA NetBalt
+4873992|MobiWeb Telecom
+4857978|Ez Phone Mobile
+4857979|Ez Phone Mobile
+4872986|Netia
+4872987|Premium Mobile
+4872988|Premium Mobile
+4872989|Premium Mobile
+4872991|Premium Mobile
+4872992|Premium Mobile
+4872994|Premium Mobile
+4872995|Premium Mobile
+4872996|Premium Mobile
+4872997|Premium Mobile
+4872998|Premium Mobile
+4872999|Premium Mobile
+4878029|Smshighway
+4869922|e-Telko
+4873991|Agile Telecom
+4845909|Benemen Poland
+4857941|Messagebird
+4869959|Move Telecom
+4857958|Nimbusfive
+4845920|SIA Ntel Solutions
+4845950|SIA Ntel Solutions
+4857948|SIA Ntel Solutions
+4869957|Softelnet
+4869951|Mobiledata
+4869952|Mobiledata
+4869953|Mobiledata
+4869954|Mobiledata
+4869955|Mobiledata
+4845945|NAU Profit
+4845905|Next Mobile
+4845956|Next Mobile
+4872990|Telco Leaders
+4873918|Polvoice
+4845957|BSG Estonia
+4869956|Twilio Ireland
+4857977|I.M. Consulting Izabela Miłosz
+4869958|I.M. Consulting Izabela Miłosz
+4873910|I.M. Consulting Izabela Miłosz
+4878608|TOYA
+4872773|Multimedia
+4872774|Multimedia
+4872775|Multimedia
+4872776|Multimedia
+4872778|Multimedia
+4873995|Multimedia
+4873996|Multimedia
+4873994|Multimedia
+4878601|Multimedia
+4878602|Multimedia
+4878603|Multimedia
+4878604|Multimedia
+4878605|Multimedia
+4878606|Multimedia
+4878020|TOYA
+4878021|INEA
+4878022|INEA
+4878023|INEA
+4878024|INEA
+4878027|INEA
+48601|Plus
+48603|Plus
+48605|Plus
+48607|Plus
+48609|Plus
+48661|Plus
+48663|Plus
+48665|Plus
+48667|Plus
+48669|Plus
 48691|Plus
-48692|T-Mobile
 48693|Plus
-48694|T-Mobile
 48695|Plus
-48696|T-Mobile
 48697|Plus
+48721|Plus
+48722|Plus
+48723|Plus
+48724|Plus
+48725|Plus
+48726|Plus
+487270|Plus
+487274|Plus
+487275|Plus
+487276|Plus
+487278|Plus
+487279|Plus
+4872770|Plus
+4872771|Plus
+4872772|Plus
+4872777|Plus
+4872779|Plus
+487370|Plus
+487371|Plus
+4873720|Plus
+4873721|Plus
+4873722|Plus
+4873723|Plus
+4873724|Plus
+4873725|Plus
+4878040|Plus
+48781|Plus
+48782|Plus
+48783|Plus
+48785|Plus
+487895|Polkomtel
+487896|Polkomtel
+487897|Polkomtel
+487898|Polkomtel
+487899|Polkomtel
+48885|Plus
+48887|Plus
+4872977|Internetia
+4873247|Internetia
+4857970|TELGAM
+48532|T-Mobile
+48538|T-Mobile
+48539|T-Mobile
+48600|T-Mobile
+48602|T-Mobile
+48604|T-Mobile
+48606|T-Mobile
+48608|T-Mobile
+48660|T-Mobile
+48662|T-Mobile
+48664|T-Mobile
+486660|T-Mobile
+486661|T-Mobile
+486662|T-Mobile
+486663|T-Mobile
+486664|T-Mobile
+486665|T-Mobile
+486667|T-Mobile
+486668|T-Mobile
+486669|T-Mobile
+48668|T-Mobile
+48692|T-Mobile
+48694|T-Mobile
+48696|T-Mobile
 48698|T-Mobile
+487272|T-Mobile
+487273|T-Mobile
+487281|T-Mobile
+487282|T-Mobile
+487283|T-Mobile
+487284|T-Mobile
+487285|T-Mobile
+487286|T-Mobile
+487287|T-Mobile
+487288|T-Mobile
+487289|T-Mobile
+48734|T-Mobile
+48735|T-Mobile
+487361|T-Mobile
+487362|T-Mobile
+487363|T-Mobile
+487364|T-Mobile
+487365|T-Mobile
+487366|T-Mobile
+487803|T-Mobile
+48784|T-Mobile
+48787|T-Mobile
+48788|T-Mobile
+487951|T-Mobile
+487952|T-Mobile
+487953|T-Mobile
+487954|T-Mobile
+487955|T-Mobile
+48880|T-Mobile
+488810|T-Mobile
+488818|T-Mobile
+488819|T-Mobile
+48882|T-Mobile
+488833|T-Mobile
+488838|T-Mobile
+488841|T-Mobile
+488842|T-Mobile
+48886|T-Mobile
+48888|T-Mobile
+48889|T-Mobile
+4845958|Telestrada
+4845959|Telestrada
+4857957|3S
+4869960|3S
+486998|Netia
+486999|Netia
+4872973|Vectra
+4872974|Vectra
+4872978|Vectra
+4872979|Vectra
+4872981|Vectra
+4872982|Vectra
+4873916|Vectra
+4873917|Vectra
+4873911|Vectra
+4873912|Vectra
+4873913|Vectra
+4873914|Vectra
+4873915|Vectra
+4873930|Vectra
+4878607|Vectra
+4872980|Netia
+4873919|Netia
+487938|Netia
+487271|Nordisk
+4845900|ITI Neovision
+4845901|ITI Neovision
+4845902|ITI Neovision
+4845903|ITI Neovision
+4845904|ITI Neovision
+4857943|ITI Neovision
+4857944|ITI Neovision
+4857945|ITI Neovision
+4857940|ITI Neovision
+4857959|ITI Neovision
+4869970|ITI Neovision
+4869979|ITI Neovision
+4857949|SGT
+4869978|VOXBONE
+487200|AERO 2
+487201|AERO 2
+487202|AERO 2
+487203|AERO 2
+487204|AERO 2
+487205|AERO 2
+487206|AERO 2
+487207|AERO 2
+487209|AERO 2
+487280|AERO 2
+488811|AERO 2
+4869971|Sat Film
+4872971|Sat Film
+4872976|Sat Film
+4845951|Cyfrowy Polsat
+4845952|Cyfrowy Polsat
+4845953|Cyfrowy Polsat
+4845954|Cyfrowy Polsat
+4845955|Cyfrowy Polsat
+484598|Cyfrowy Polsat
+4869900|Cyfrowy Polsat
 4869902|Cyfrowy Polsat
 4869903|Cyfrowy Polsat
 4869904|Cyfrowy Polsat
@@ -64,6 +352,16 @@
 4869907|Cyfrowy Polsat
 4869908|Cyfrowy Polsat
 4869909|Cyfrowy Polsat
+4869910|Cyfrowy Polsat
+4869911|Cyfrowy Polsat
+4869912|Cyfrowy Polsat
+4869913|Cyfrowy Polsat
+4869914|Cyfrowy Polsat
+4869915|Cyfrowy Polsat
+4869916|Cyfrowy Polsat
+4869917|Cyfrowy Polsat
+4869918|Cyfrowy Polsat
+4869919|Cyfrowy Polsat
 4869920|Cyfrowy Polsat
 4869921|Cyfrowy Polsat
 4869923|Cyfrowy Polsat
@@ -73,47 +371,185 @@
 4869927|Cyfrowy Polsat
 4869928|Cyfrowy Polsat
 4869929|Cyfrowy Polsat
+486993|Cyfrowy Polsat
+486994|Cyfrowy Polsat
 4869961|Cyfrowy Polsat
 4869962|Cyfrowy Polsat
 4869963|Cyfrowy Polsat
 4869964|Cyfrowy Polsat
 4869965|Cyfrowy Polsat
 4869966|Cyfrowy Polsat
-4869967|Plus
 4869968|Cyfrowy Polsat
-4869969|Plus
-486998|Plus
-486999|Plus
-487200|CenterNet
-487201|CenterNet
-487202|CenterNet
-487203|CenterNet
-487204|CenterNet
-487205|CenterNet
-487206|CenterNet
-487207|CenterNet
-487209|CenterNet
-48721|Plus
-48722|Plus
-48723|Plus
-48724|Plus
-48725|Plus
-48726|Plus
-487270|Plus
-487272|T-Mobile
-487273|T-Mobile
-487274|Plus
-487275|Plus
-487276|Plus
-487277|Plus
-487278|Plus
-487279|Plus
-487280|Mobyland
-487281|T-Mobile
-487282|T-Mobile
-487283|T-Mobile
-487284|T-Mobile
-487285|T-Mobile
-487286|T-Mobile
-487287|T-Mobile
-487288|T-Mobile
+4869969|Cyfrowy Polsat
+487397|Cyfrowy Polsat
+487398|Cyfrowy Polsat
+4873931|Cyfrowy Polsat
+4873932|Cyfrowy Polsat
+4873933|Cyfrowy Polsat
+4873934|Cyfrowy Polsat
+4873935|Cyfrowy Polsat
+4873936|Cyfrowy Polsat
+4873937|Cyfrowy Polsat
+4873938|Cyfrowy Polsat
+4873939|Cyfrowy Polsat
+4878028|Metroport
+48738|PKP Polskie Linie Kolejowe
+485366|Polskie Sieci Cyfrowe
+4869901|AMD Telecom
+4869950|AMD Telecom
+4872970|AMD Telecom
+484501|Play
+484502|Play
+484503|Play
+484504|Play
+484505|Play
+484506|Play
+484507|Play
+484508|Play
+484509|Play
+484500|Play
+48530|Play
+48531|Play
+48533|Play
+48534|Play
+48535|Play
+485360|Play
+485361|Play
+485362|Play
+485363|Play
+485364|Play
+485365|Play
+485367|Play
+485368|Play
+485369|Play
+48537|Play
+48570|Play
+48574|Play
+48575|Play
+48576|Play
+48577|Play
+48578|Play
+486666|Play
+486900|Play
+486908|Play
+486909|Play
+486907|Play
+487208|Play
+487290|Play
+487291|Play
+48730|Play
+48731|Play
+487320|Play
+487321|Play
+487322|Play
+487323|Play
+487325|Play
+487326|Play
+487327|Play
+487328|Play
+487329|Play
+4873240|Play
+4873241|Play
+4873242|Play
+4873243|Play
+4873244|Play
+4873245|Play
+4873246|Play
+4873249|Play
+4873248|Play
+48733|Play
+487390|Play
+487392|Play
+487807|Play
+487808|Play
+487861|Play
+487862|Play
+48790|Play
+48791|Play
+48792|Play
+487930|Play
+487931|Play
+487932|Play
+487933|Play
+487934|Play
+487935|Play
+487936|Play
+487937|Play
+487939|Play
+48794|Play
+487950|Play
+487956|Play
+487957|Play
+487958|Play
+487959|Play
+48796|Play
+487991|Play
+487992|Play
+487993|Play
+487994|Play
+487995|Play
+488812|Play
+488813|Play
+488814|Play
+488815|Play
+488816|Play
+488817|Play
+488830|Play
+488831|Play
+488832|Play
+488834|Play
+488835|Play
+488836|Play
+488837|Play
+488839|Play
+488840|Play
+488843|Play
+488846|Play
+488847|Play
+488848|Play
+488849|Play
+4869972|Novum
+4869973|Novum
+4869975|Novum
+4869976|Novum
+4869977|Novum
+485791|Lycamobile
+485792|Lycamobile
+485793|Lycamobile
+487292|Lycamobile
+487293|Lycamobile
+487294|Lycamobile
+487295|Lycamobile
+487296|Lycamobile
+487394|Lycamobile
+487395|Lycamobile
+487396|Lycamobile
+4869974|Compatel
+4872972|Compatel
+4857947|Nowa Telefonia
+4869967|Nowa Telefonia
+4873999|AHMES
+484593|Virgin Mobile
+485790|Virgin Mobile
+485798|Virgin Mobile
+485799|Virgin Mobile
+4857951|Virgin Mobile
+4857952|Virgin Mobile
+4857954|Virgin Mobile
+4857955|Virgin Mobile
+4857956|Virgin Mobile
+485796|Virgin Mobile
+487360|Virgin Mobile
+487367|Virgin Mobile
+487368|Virgin Mobile
+487369|Virgin Mobile
+487373|Virgin Mobile
+487374|Virgin Mobile
+487375|Virgin Mobile
+487376|Virgin Mobile
+487377|Virgin Mobile
+487378|Virgin Mobile
+487379|Virgin Mobile
+487997|Virgin Mobile
+487998|Virgin Mobile
+487999|Virgin Mobile
