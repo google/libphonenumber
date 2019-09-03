@@ -1,3 +1,9 @@
+Sep 03, 2019: v8.10.18
+Metadata changes:
+ - Updated phone metadata for region code(s): BR, HU, KG, KR, MV, SG, VN
+ - Updated short number metadata for region code(s): BR, IL
+ - Updated carrier data for country calling code(s): 65 (en), 996 (en)
+
 Aug 15, 2019: v8.10.17
 Metadata changes:
  - MX numbering authority has changed dialling patterns to be more
