@@ -25,4 +25,10 @@
 99670|Nur Telecom
 99675|ALFA Telecom
 99677|Sky mobile
-9969|Sky mobile
+99688|ALFA Telecom
+996990|ALFA Telecom
+996995|ALFA Telecom
+996996|Sky mobile
+996997|ALFA Telecom
+996998|ALFA Telecom
+996999|Sky mobile
