@@ -878,19 +878,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         false));
     assertEquals("", phoneUtil.formatNumberForMobileDialing(deShortNumber, RegionCode.IT, false));
 
-    // Test the special logic for Hungary, where the national prefix must be added before dialing
-    // from a mobile phone for regular length numbers, but not for short numbers.
-    PhoneNumber huRegularNumber = new PhoneNumber().setCountryCode(36)
-        .setNationalNumber(301234567L);
-    assertEquals("06301234567", phoneUtil.formatNumberForMobileDialing(huRegularNumber,
-        RegionCode.HU, false));
-    assertEquals("+36301234567", phoneUtil.formatNumberForMobileDialing(huRegularNumber,
-        RegionCode.JP, false));
-    PhoneNumber huShortNumber = new PhoneNumber().setCountryCode(36).setNationalNumber(104L);
-    assertEquals("104", phoneUtil.formatNumberForMobileDialing(huShortNumber, RegionCode.HU,
-        false));
-    assertEquals("", phoneUtil.formatNumberForMobileDialing(huShortNumber, RegionCode.JP, false));
-
     // Test the special logic for NANPA countries, for which regular length phone numbers are always
     // output in international format, but short numbers are in national format.
     assertEquals("+16502530000", phoneUtil.formatNumberForMobileDialing(US_NUMBER,

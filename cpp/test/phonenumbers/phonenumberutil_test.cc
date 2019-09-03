@@ -188,14 +188,14 @@ TEST_F(PhoneNumberUtilTest, GetSupportedTypesForRegion) {
   types.clear();
   phone_util_.GetSupportedTypesForRegion(RegionCode::ZZ(), &types);
   // Test the invalid region code.
-  EXPECT_EQ(0, types.size());
+  EXPECT_EQ(0u, types.size());
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedTypesForNonGeoEntity) {
   std::set<PhoneNumberUtil::PhoneNumberType> types;
   // No data exists for 999 at all, no types should be returned.
   phone_util_.GetSupportedTypesForNonGeoEntity(999, &types);
-  EXPECT_EQ(0, types.size());
+  EXPECT_EQ(0u, types.size());
 
   types.clear();
   phone_util_.GetSupportedTypesForNonGeoEntity(979, &types);
@@ -436,7 +436,7 @@ TEST_F(PhoneNumberUtilTest, GetInvalidExampleNumber) {
                                                   &test_number));
   // At least the country calling code should be set correctly.
   EXPECT_EQ(1, test_number.country_code());
-  EXPECT_NE(0, test_number.national_number());
+  EXPECT_NE(0u, test_number.national_number());
 }
 
 TEST_F(PhoneNumberUtilTest, GetExampleNumberForNonGeoEntity) {
@@ -1212,25 +1212,6 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   EXPECT_EQ("123", formatted_number);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::IT(), false, &formatted_number);
-  EXPECT_EQ("", formatted_number);
-
-  // Test the special logic for Hungary, where the national prefix must be
-  // added before dialing from a mobile phone for regular length numbers, but
-  // not for short numbers.
-  test_number.set_country_code(36);
-  test_number.set_national_number(301234567ULL);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::HU(), false, &formatted_number);
-  EXPECT_EQ("06301234567", formatted_number);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::JP(), false, &formatted_number);
-  EXPECT_EQ("+36301234567", formatted_number);
-  test_number.set_national_number(104L);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::HU(), false, &formatted_number);
-  EXPECT_EQ("104", formatted_number);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::JP(), false, &formatted_number);
   EXPECT_EQ("", formatted_number);
 
   // Test the special logic for NANPA countries, for which regular length phone
