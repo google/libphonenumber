@@ -4248,6 +4248,7 @@
               8[015]|
               9[0-47-9]
             )|
+            321|
             610
           </leadingDigits>
           <format>$1</format>
@@ -11627,17 +11628,16 @@
 
     <!-- Hungary (HU) -->
     <!-- http://www.itu.int/oth/T0202000061/en -->
-    <!-- Although the national prefix is necessary for dialling, the preferred format (confirmed
-         by a Hungarian person and following the yellow pages) is to omit this when formatting.
-         Yellow pages: http://www.aranyoldalak.hu -->
+    <!-- As per Wikipedia https://en.wikipedia.org/wiki/Telephone_numbers_in_Hungary format
+         for both fixed line and mobile number should be preceded with national prefix "06". -->
     <territory id="HU" countryCode="36" internationalPrefix="00" nationalPrefix="06"
                mobileNumberPortableRegion="true">
       <availableFormats>
-        <numberFormat pattern="(\d)(\d{3})(\d{4})" nationalPrefixFormattingRule="($FG)">
+        <numberFormat pattern="(\d)(\d{3})(\d{4})" nationalPrefixFormattingRule="($NP $FG)">
           <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="($FG)">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP $FG">
           <leadingDigits>[2-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -15588,7 +15588,10 @@
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[235-79]</leadingDigits>
+          <leadingDigits>
+            [235-79]|
+            88
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d)(\d{2,3})" nationalPrefixFormattingRule="$NP$FG">
@@ -15598,11 +15601,11 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          8\d{9}|
           (?:
-            [235-7]\d|
+            [235-8]\d|
             99
-          )\d{7}|
-          800\d{6,7}
+          )\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Extra area codes found on Web Search: 3147. -->
@@ -15663,6 +15666,7 @@
         <possibleLengths national="9"/>
         <exampleNumber>700123456</exampleNumber>
         <nationalNumberPattern>
+          8801\d{5}|
           (?:
             2(?:
               0[0-35]|
@@ -15676,7 +15680,7 @@
               [07]\d|
               55
             )|
-            99[69]
+            99[05-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -16229,8 +16233,14 @@
       </fixedLine>
       <mobile>
         <possibleLengths national="9,10"/>
-        <exampleNumber>1000000000</exampleNumber>
-        <nationalNumberPattern>1[0-26-9]\d{7,8}</nationalNumberPattern>
+        <exampleNumber>1020000000</exampleNumber>
+        <nationalNumberPattern>
+          10[01]\d{6}|
+          1(?:
+            0[2-9]|
+            [126-9]\d
+          )\d{6,7}
+        </nationalNumberPattern>
       </mobile>
       <pager>
         <possibleLengths national="9,10"/>
@@ -19361,7 +19371,7 @@
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>
             [3467]|
-            9[14-9]
+            9[13-9]
           </leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
@@ -19411,7 +19421,7 @@
           46[46]\d{4}|
           (?:
             7[2-9]|
-            9[14-9]
+            9[13-9]
           )\d{5}
         </nationalNumberPattern>
       </mobile>
@@ -23764,7 +23774,7 @@
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
             [369]|
-            8[1-8]
+            8[1-9]
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -23802,6 +23812,7 @@
         <possibleLengths national="8"/>
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
+          89[01]\d{5}|
           (?:
             8[1-8]|
             9[0-8]
@@ -27610,7 +27621,8 @@
       </noInternationalDialling>
       <!-- While 24 and 28 are the new area codes for Hanoi and Ho Chi Minh respectively, currently
            only 24[2-8] and 28[2-7] are in use. Reporter mentioned prefix 866 is Mobile but was
-           unable to receive SMS so for now supporting in both Mobile and Fixed-line -->
+           unable to receive SMS so for now supporting in both Mobile and Fixed-line. Range 289 is
+           added based on user report. -->
       <fixedLine>
         <possibleLengths national="10"/>
         <exampleNumber>2101234567</exampleNumber>
@@ -27624,7 +27636,7 @@
             5[124-9]|
             6[0-39]|
             7[0-7]|
-            8[2-7]|
+            8[2-79]|
             9[0-4679]
           )\d{7}
         </nationalNumberPattern>

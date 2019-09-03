@@ -1648,7 +1648,7 @@
     <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
     <territory id="BR">
       <generalDesc>
-        <nationalNumberPattern>[124-69]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1-69]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-6]"/>
@@ -1697,6 +1697,10 @@
             )|
             85959?
           )|
+          (?:
+            32|
+            91
+          )1|
           4(?:
             0404?|
             57|
@@ -1707,7 +1711,6 @@
             0\d{4}|
             10000
           )|
-          911|
           (?:
             133|
             411
@@ -1740,7 +1743,8 @@
         <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           102|
-          273\d\d
+          273\d\d|
+          321
         </nationalNumberPattern>
       </standardRate>
       <!-- https://support.twitter.com/articles/20170024 -->
@@ -1797,10 +1801,11 @@
       <!-- Added short codes 28595, 285959 and 4828 after a report that it is used for SMS
            services. We can't find range-related information, despite emailing Anatel. -->
       <smsServices>
-        <possibleLengths national="[4-6]"/>
-        <exampleNumber>4820</exampleNumber>
+        <possibleLengths national="[3-6]"/>
+        <exampleNumber>321</exampleNumber>
         <nationalNumberPattern>
           285\d{2,3}|
+          321|
           40404|
           (?:
             27[38]\d|
@@ -6175,23 +6180,25 @@
     <!-- http://en.wikipedia.org/wiki/%2B972 -->
     <territory id="IL">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[12]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0(?:
-              [0-2]|
-              400
-            )|
+            0[0-2]|
             1(?:
               [013-9]\d|
               2
             )|
             [2-9]\d\d
-          )
+          )|
+          2407|
+          (?:
+            104|
+            27
+          )00
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
