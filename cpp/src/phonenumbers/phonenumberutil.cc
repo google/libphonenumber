@@ -1199,18 +1199,6 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         // string here.
         formatted_number->assign("");
       }
-    } else if (is_valid_number && region_code == "HU") {
-      // The national format for HU numbers doesn't contain the national prefix,
-      // because that is how numbers are normally written down. However, the
-      // national prefix is obligatory when dialing from a mobile phone, except
-      // for short numbers. As a result, we add it back here if it is a valid
-      // regular length phone number.
-      Format(number_no_extension, NATIONAL, formatted_number);
-      string hu_national_prefix;
-      GetNddPrefixForRegion(region_code, true /* strip non-digits */,
-                            &hu_national_prefix);
-      formatted_number->assign(
-          StrCat(hu_national_prefix, " ", *formatted_number));
     } else if (country_calling_code == kNanpaCountryCode) {
       // For NANPA countries, we output international format for numbers that
       // can be dialed internationally, since that always works, except for

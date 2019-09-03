@@ -1214,25 +1214,6 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
       test_number, RegionCode::IT(), false, &formatted_number);
   EXPECT_EQ("", formatted_number);
 
-  // Test the special logic for Hungary, where the national prefix must be
-  // added before dialing from a mobile phone for regular length numbers, but
-  // not for short numbers.
-  test_number.set_country_code(36);
-  test_number.set_national_number(301234567ULL);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::HU(), false, &formatted_number);
-  EXPECT_EQ("06301234567", formatted_number);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::JP(), false, &formatted_number);
-  EXPECT_EQ("+36301234567", formatted_number);
-  test_number.set_national_number(104L);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::HU(), false, &formatted_number);
-  EXPECT_EQ("104", formatted_number);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::JP(), false, &formatted_number);
-  EXPECT_EQ("", formatted_number);
-
   // Test the special logic for NANPA countries, for which regular length phone
   // numbers are always output in international format, but short numbers are
   // in national format.
