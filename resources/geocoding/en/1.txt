@@ -18906,6 +18906,7 @@
 1682622|Mansfield, TX
 1682647|Fort Worth, TX
 1682885|Fort Worth, TX
+1689|Florida
 1701|North Dakota
 1701221|Bismarck, ND
 1701222|Bismarck, ND
