@@ -34,6 +34,7 @@
 31633|Telfort
 31634|T-Mobile
 316351|Intercity Zakelijk
+316352|Tismi
 316359|ASPIDER Solutions Nederland B.V.
 31636|Tele2
 31637|Teleena (MVNE)

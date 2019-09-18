@@ -1,3 +1,11 @@
+Sep 17, 2019: v8.10.19
+Metadata changes:
+ - Updated phone metadata for region code(s): EH, GE, GR, HU, IL, IR, MA, US
+ - Updated short number metadata for region code(s): ET
+ - New geocoding data for country calling code(s): 1689 (en)
+ - Updated carrier data for country calling code(s): 31 (en), 995 (en)
+ - Updated / refreshed time zone meta data.
+
 Sep 03, 2019: v8.10.18
 Metadata changes:
  - Updated phone metadata for region code(s): BR, HU, KG, KR, MV, SG, VN
