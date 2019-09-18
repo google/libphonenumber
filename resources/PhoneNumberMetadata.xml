@@ -8656,7 +8656,7 @@
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>592401234</exampleNumber>
-        <nationalNumberPattern>5924[01]\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>5924[0-2]\d{4}</nationalNumberPattern>
       </voip>
     </territory>
 
@@ -10119,6 +10119,24 @@
         <possibleLengths national="9"/>
         <exampleNumber>555123456</exampleNumber>
         <nationalNumberPattern>
+          5(?:
+            0(?:
+              0[05]|
+              55
+            )\d|
+            1111|
+            2222|
+            3333|
+            5200|
+            75(?:
+              00|
+              7[78]
+            )|
+            8(?:
+              58[89]|
+              888
+            )
+          )\d{4}|
           (?:
             5(?:
               [14]4|
@@ -10848,8 +10866,13 @@
       </sharedCost>
       <personalNumber>
         <possibleLengths national="10"/>
-        <exampleNumber>7012345678</exampleNumber>
-        <nationalNumberPattern>70\d{8}</nationalNumberPattern>
+        <exampleNumber>7003000123</exampleNumber>
+        <nationalNumberPattern>
+          70(?:
+            0[3-8]0|
+            707
+          )\d{5}
+        </nationalNumberPattern>
       </personalNumber>
     </territory>
 
@@ -11637,8 +11660,20 @@
           <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3})" nationalPrefixFormattingRule="($NP $FG)">
+          <leadingDigits>
+            [27][2-9]|
+            3[2-7]|
+            4[24-9]|
+            5[2-79]|
+            6|
+            8[2-57-9]|
+            9[2-69]
+          </leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP $FG">
-          <leadingDigits>[2-9]</leadingDigits>
+          <leadingDigits>[2-57-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -12178,7 +12213,8 @@
         <nationalNumberPattern>
           5(?:
             (?:
-              [0-489][2-9]|
+              [0-389][2-9]|
+              4[1-9]|
               6\d
             )\d|
             5(?:
@@ -13674,7 +13710,7 @@
               )\d|
               5[15]0|
               8(?:
-                1[0-2]|
+                1\d|
                 88
               )|
               9(?:
@@ -17740,7 +17776,7 @@
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>592401234</exampleNumber>
-        <nationalNumberPattern>5924[01]\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>5924[0-2]\d{4}</nationalNumberPattern>
       </voip>
     </territory>
 
@@ -26433,7 +26469,7 @@
               5[017]|
               6[0-279]|
               78|
-              8[0-2]
+              8[0-29]
             )|
             7(?:
               0[1-46-8]|
@@ -26525,7 +26561,7 @@
               5[017]|
               6[0-279]|
               78|
-              8[0-2]
+              8[0-29]
             )|
             7(?:
               0[1-46-8]|

@@ -4359,7 +4359,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ethiopia (ET) -->
+     <!-- Ethiopia (ET) -->
     <!-- http://www.itu.int/oth/T0202000044/en -->
     <territory id="ET">
       <generalDesc>
@@ -4370,8 +4370,11 @@
         <exampleNumber>91</exampleNumber>
         <nationalNumberPattern>
           9(?:
+            07|
             11?|
-            [23]|
+            2|
+            39?|
+            45|
             9[17]
           )
         </nationalNumberPattern>
@@ -4382,7 +4385,8 @@
         <nationalNumberPattern>
           9(?:
             11?|
-            [23]|
+            2|
+            39?|
             9[17]
           )
         </nationalNumberPattern>
@@ -4398,11 +4402,22 @@
         <nationalNumberPattern>
           9(?:
             11?|
-            [23]|
+            2|
+            39?|
             9[17]
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>907</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            07|
+            45
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Finland (FI) -->
