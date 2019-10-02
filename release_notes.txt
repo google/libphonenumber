@@ -1,3 +1,11 @@
+Oct 02, 2019: v8.10.20
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BO, CC, CX, DM, GM, HN, PH, US
+ - New geocoding data for country calling code(s): 1341 (en)
+ - Updated carrier data for country calling code(s): 220 (en)
+ - Updated / refreshed time zone meta data.
+
 Sep 17, 2019: v8.10.19
 Metadata changes:
  - Updated phone metadata for region code(s): EH, GE, GR, HU, IL, IR, MA, US

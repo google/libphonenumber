@@ -689,6 +689,7 @@
 1337|America/Chicago
 1339|America/New_York
 1340|America/St_Thomas
+1341|America/Los_Angeles
 1343|America/Toronto
 1345|America/Cayman
 1346|America/Chicago
