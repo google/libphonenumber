@@ -53,14 +53,14 @@ Requirements:
 
   - Protocol Buffers
     http://github.com/google/protobuf/
-    Version 2.4 or more recent is required (this is available by default for
+    Version 3.6.1 or more recent is required (this is available by default for
     recent Debian-based GNU/Linux distributions).
 
     You can check which version is available:
     $ apt-cache show libprotobuf-dev
     Package: libprotobuf-dev
     Source: protobuf
-    Version: 2.5.0-9ubuntu1   <-- This must be >= 2.4.0
+    Version: 3.6.1-9ubuntu1   <-- This must be >= 3.6.1
     ...
 
     Installation:
@@ -68,9 +68,8 @@ Requirements:
 
     Note: if your GNU/Linux distribution doesn't provide the needed package,
           please download and install it manually:
-    $ tar xjf protobuf-2.4.tar.bz2
-    $ cd protobuf-2.4
-    $ ./configure && make && sudo make install
+    More details can be found at its official page:
+    https://github.com/protocolbuffers/protobuf
 
   - Google Test
     http://github.com/google/googletest
@@ -324,9 +323,9 @@ ICU_I18N_LIB              C:/icu/lib/icuin.lib
 ICU_UC_INCLUDE_DIR        C:/icu/include
 ICU_UC_LIB                C:/icu/lib/icuuc.lib
 
-PROTOBUF_INCLUDE_DIR      C:/protobuf-2.4.1/src
-PROTOBUF_LIB              C:/protobuf-2.4.1/vsprojects/Release/libprotobuf.lib
-PROTOC_BIN                C:/protobuf-2.4.1/vsprojects/Release/protoc.exe
+PROTOBUF_INCLUDE_DIR      C:/protobuf-3.6.1/src
+PROTOBUF_LIB              C:/protobuf-3.6.1/vsprojects/Release/libprotobuf.lib
+PROTOC_BIN                C:/protobuf-3.6.1/vsprojects/Release/protoc.exe
 
 Then you can click on "Configure" again. CMake should have located all the
 dependencies.
