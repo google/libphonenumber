@@ -18,78 +18,16 @@
 #define I18N_PHONENUMBERS_BASE_MEMORY_SINGLETON_H_
 
 #if defined(I18N_PHONENUMBERS_USE_BOOST)
-
-#include <boost/scoped_ptr.hpp>
-#include <boost/thread/once.hpp>
-#include <boost/utility.hpp>
-
-namespace i18n {
-namespace phonenumbers {
-
-template <class T>
-class Singleton : private boost::noncopyable {
- public:
-  virtual ~Singleton() {}
-
-  static T* GetInstance() {
-    boost::call_once(Init, flag);
-    return instance.get();
-  }
-
- private:
-  static void Init() {
-    instance.reset(new T());
-  }
-
-  static boost::scoped_ptr<T> instance;
-  static boost::once_flag flag;
-};
-
-template <class T> boost::scoped_ptr<T> Singleton<T>::instance;
-template <class T> boost::once_flag Singleton<T>::flag = BOOST_ONCE_INIT;
-
-}  // namespace phonenumbers
-}  // namespace i18n
-
-#else  // !I18N_PHONENUMBERS_USE_BOOST
-
-#include "phonenumbers/base/logging.h"
-#include "phonenumbers/base/thread_checker.h"
-
-#if !defined(__linux__) && !defined(__APPLE__)
-
-namespace i18n {
-namespace phonenumbers {
-
-// Note that this implementation is not thread-safe. For a thread-safe
-// implementation on non-POSIX platforms, please compile with
-// -DI18N_PHONENUMBERS_USE_BOOST.
-template <class T>
-class Singleton {
- public:
-  Singleton() : thread_checker_() {}
-
-  virtual ~Singleton() {}
-
-  static T* GetInstance() {
-    static T* instance = NULL;
-    if (!instance) {
-      instance = new T();
-    }
-    DCHECK(instance->thread_checker_.CalledOnValidThread());
-    return instance;
-  }
-
- private:
-  const ThreadChecker thread_checker_;
-};
-
-}  // namespace phonenumbers
-}  // namespace i18n
-
-#else
+#include "phonenumbers/base/memory/singleton_boost.h"
+#elif (__cplusplus >= 201103L) && defined(I18N_PHONENUMBERS_USE_STDMUTEX)
+// C++11 Lock implementation based on std::mutex.
+#include "phonenumbers/base/memory/singleton_stdmutex.h"
+#elif defined(__linux__) || defined(__APPLE__) || defined(I18N_PHONENUMBERS_HAVE_POSIX_THREAD)
 #include "phonenumbers/base/memory/singleton_posix.h"
-#endif  // !defined(__linux__) && !defined(__APPLE__)
-
+#elif defined(WIN32)
+#include "phonenumbers/base/memory/singleton_win32.h"
+#else
+#include "phonenumbers/base/memory/singleton_unsafe.h"
 #endif  // !I18N_PHONENUMBERS_USE_BOOST
+
 #endif  // I18N_PHONENUMBERS_BASE_MEMORY_SINGLETON_H_
