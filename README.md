@@ -161,11 +161,11 @@ System.out.println(phoneUtil.format(swissNumberProto, PhoneNumberFormat.NATIONAL
 System.out.println(phoneUtil.format(swissNumberProto, PhoneNumberFormat.E164));
 ```
 
-You could also choose to format the number in the way it is dialed from another
+You could also choose to format the number in the way it is dialled from another
 country:
 
 ```java
-// Produces "011 41 44 668 1800", the number when it is dialed in the United States.
+// Produces "011 41 44 668 1800", the number when it is dialled in the United States.
 System.out.println(phoneUtil.formatOutOfCountryCallingNumber(swissNumberProto, "US"));
 ```
 
