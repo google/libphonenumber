@@ -23887,7 +23887,7 @@
         <nationalNumberPattern>
           89[01]\d{5}|
           (?:
-            8[1-8]|
+            8[1-9]|
             9[0-8]
           )\d{6}
         </nationalNumberPattern>
