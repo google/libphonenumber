@@ -22,6 +22,10 @@
 951462|Yangon
 951465|Yangon
 951470|Yangon
+951471|Yangon
+951472|Yangon
+951473|Yangon
+951483|Yangon
 951550|Bahan
 951551|Bahan
 951552|Bahan
@@ -45,12 +49,16 @@
 952470|Yangon
 952471|Mandalay
 952472|Mandalay
+952473|Mandalay
+952483|Mandalay
 95256|Amarapura
 9542480|Pathein
 9542481|Pathein
 9542482|Ayeyarwaddy
+9542483|Ayeyarwaddy/Pathein
 9543202|Rakhine
 9543470|Sittwe
+9543483|Sittwe/Thandwe
 954353|Buthidaung
 9543565|Palatwa
 9545470|Pyapon
@@ -67,10 +75,12 @@
 9554470|Taungoo
 955620|Mandalay
 955645|Tandar
+9556483|Thanlyin
 9557480|Mawlamyine/Thanbyuzayat
 9557481|Mawlamyine
 9557482|Mon
 9558470|Hpa-An
+9558472|Hpa-An
 955851|Myawaddy
 9559470|Dawei
 9559471|Tanintharyi
@@ -100,12 +110,14 @@
 9567460|Naypyitaw
 9567470|Naypyitaw
 9567471|Naypyitaw
+9567473|Naypyitaw
 9567550|Naypyidaw
 9569200|Aunglan
 956940|Sinpaungwae
 9570470|Hakha
 95712032|Ohbotaung
 9571470|Monywa
+9571483|Monywa
 9574470|Myitkyinar/Bahmaw
 9575470|Shwebo
 95812820|Moenae
@@ -117,9 +129,11 @@
 958131|Loilem
 958141|Naungtayar
 9581470|Taunggyi
+9581471|Shan (South)
 958149|Sesin
 9582320|Manton
 958238|Tantyan
+9582490|Shan (North)
 9583470|Loikaw
 958521|Pyinoolwin
 958522|Pyinoolwin
