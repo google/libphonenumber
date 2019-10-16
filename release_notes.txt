@@ -1,3 +1,6 @@
+Oct 16, 2019: v8.10.22
+Metadata changes:
+
 Oct 16, 2019: v8.10.21
 Metadata changes:
  - Updated phone metadata for region code(s):
