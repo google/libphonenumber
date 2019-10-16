@@ -25,8 +25,7 @@
 386656|Telekom Slovenije
 386657|Novatel
 38668|A1
-386691|Compatel
-386696|HoT
-386699|HoT
+38669|A1
+3866910|Compatel
 38670|Telemach
 38671|Telekom Slovenije

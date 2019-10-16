@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+9920|Megafon
 99241|Megafon
 99250|Tcell
 99255|Megafon
