@@ -5474,18 +5474,19 @@
       <generalDesc>
         <nationalNumberPattern>
           1\d\d(?:
-            \d{3}
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             00|
             1(?:
               2|
+              320|
               6(?:
                 000|
                 1(?:
@@ -5514,6 +5515,11 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="5"/>
+        <exampleNumber>11300</exampleNumber>
+        <nationalNumberPattern>113\d\d</nationalNumberPattern>
+      </standardRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
