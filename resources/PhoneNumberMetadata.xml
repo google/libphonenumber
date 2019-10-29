@@ -8029,11 +8029,9 @@
     </territory>
 
     <!-- Dominica (DM) -->
-    <!-- 8001 is placed along with official leading digit as this region specific ITFS numbers
-         start with this prefix. -->
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T020200003B/en -->
-    <territory id="DM" countryCode="1" leadingDigits="767|8001" internationalPrefix="011"
+    <territory id="DM" countryCode="1" leadingDigits="767" internationalPrefix="011"
                nationalPrefix="1" nationalPrefixForParsing="1|([2-7]\d{6})$"
                nationalPrefixTransformRule="767$1">
       <generalDesc>
@@ -8045,10 +8043,6 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
-      <noInternationalDialling>
-        <possibleLengths national="10"/>
-        <nationalNumberPattern>80014\d{5}</nationalNumberPattern>
-      </noInternationalDialling>
       <fixedLine>
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>7674201234</exampleNumber>
@@ -8082,25 +8076,19 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
-      <!-- 800 14X XXXX is a domestic Toll Free service (ITFS) based on user report. -->
       <tollFree>
         <possibleLengths national="10"/>
         <exampleNumber>8002123456</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            00(?:
-              14|
-              [2-9]\d
-            )|
-            (?:
-              33|
-              44|
-              55|
-              66|
-              77|
-              88
-            )[2-9]\d
-          )\d{5}
+            00|
+            33|
+            44|
+            55|
+            66|
+            77|
+            88
+          )[2-9]\d{6}
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -8129,7 +8117,9 @@
     <!-- Dominican Republic (DO) -->
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T020200003C/en -->
-    <territory id="DO" countryCode="1" leadingDigits="8[024]9" internationalPrefix="011"
+    <!-- 8001 is placed along with official leading digit as this region specific ITFS numbers
+         start with this prefix. -->
+    <territory id="DO" countryCode="1" leadingDigits="8001|8[024]9" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -8139,6 +8129,10 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
+      <noInternationalDialling>
+        <possibleLengths national="10"/>
+        <nationalNumberPattern>80014\d{5}</nationalNumberPattern>
+      </noInternationalDialling>
       <!-- The ITU data seems to be somewhat incomplete. We ensure that the fully-specified mobile
            prefixes in the document are classified as such by excluding them from the fixed-line
            ranges, but other than this have a generic rule. -->
@@ -8202,19 +8196,25 @@
         <exampleNumber>8092345678</exampleNumber>
         <nationalNumberPattern>8[024]9[2-9]\d{6}</nationalNumberPattern>
       </mobile>
+      <!-- 800 14X XXXX is a domestic Toll Free service (ITFS) based on user report. -->
       <tollFree>
         <possibleLengths national="10"/>
         <exampleNumber>8002123456</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            00|
-            33|
-            44|
-            55|
-            66|
-            77|
-            88
-          )[2-9]\d{6}
+            00(?:
+              14|
+              [2-9]\d
+            )|
+            (?:
+              33|
+              44|
+              55|
+              66|
+              77|
+              88
+            )[2-9]\d
+          )\d{5}
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -13567,7 +13567,7 @@
     <!-- http://www.itu.int/oth/T0202000066/en -->
     <!-- http://www.tct.ir/?siteid=1&pageid=195 -->
     <!-- http://118.tct.ir/citycode.htm -->
-    <!-- Prefix 9950 is mentioned as Public trunk with variable length 5 to 10 digits in ITU doc.
+    <!-- Prefix 9950 is mentioned as Public trunk with variable length 5 to 10 digits in ITU doc. 
          As we are unaware of the exact usage of this range and no online references we are not
          adding it. -->
     <territory id="IR" countryCode="98" internationalPrefix="00" nationalPrefix="0">
@@ -18761,7 +18761,7 @@
                   [5-9]\d
                 )|
                 8(?:
-                  8[7-9]|
+                  8[4-9]|
                   9\d
                 )
               )\d|
@@ -21231,7 +21231,7 @@
         <nationalNumberPattern>
           90[1-9]\d{5}|
           (?:
-            7[129]|
+            7[1289]|
             9[1-9]
           )\d{6}
         </nationalNumberPattern>
@@ -25361,7 +25361,8 @@
         </nationalNumberPattern>
       </fixedLine>
       <!-- Adding 90 prefix as SMS messages could be successfully delivered to these mobile
-           numbers and 55 for Megafon from bug reports. -->
+           numbers and 55 for Megafon from bug reports. 00 mobile range is assigned to
+           Megafon as per their confirmation. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>917123456</exampleNumber>
@@ -27781,15 +27782,19 @@
       </mobile>
       <!-- As per the user and update from carrier it seems that numbers starting with 1800 are
            renumbered to 1228. Because we don't have complete update,supporting both the ranges
-           at present. -->
+           at present.
+           Prefix 1203 is toll free number and is diallable from Orange Business Services based on
+           user report. As we do not have official document mentioning the cost of the range, we
+           have added it here for now. -->
       <tollFree>
         <possibleLengths national="[8-10]"/>
         <exampleNumber>1800123456</exampleNumber>
         <nationalNumberPattern>
-          1(?:
-            228\d{4}|
-            800\d{4,6}
-          )
+          1800\d{4,6}|
+          12(?:
+            03|
+            28
+          )\d{4}
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -28278,8 +28283,7 @@
           800\d{6}|
           (?:
             21|
-            76|
-            9\d
+            [79]\d
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
@@ -28297,7 +28301,7 @@
         <exampleNumber>955123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            76|
+            7[67]|
             9[5-8]
           )\d{7}
         </nationalNumberPattern>

@@ -1,3 +1,10 @@
+Oct 29, 2019: v8.10.22
+Metadata changes:
+ - Updated phone metadata for region code(s): DM, DO, MM, OM, VN, ZM
+ - Updated short number metadata for region code(s): GR
+ - Updated carrier data for country calling code(s):
+   95 (en), 260 (en), 968 (en)
+
 Oct 16, 2019: v8.10.21
 Metadata changes:
  - Updated phone metadata for region code(s):
