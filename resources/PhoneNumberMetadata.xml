@@ -553,16 +553,14 @@
           )\d{4}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- More specific prefixes from the 1.NumraAlokuar.rar file linked from the ITU doc. -->
+      <!-- More specific prefixes from the 1.NumraAlokuar.rar file linked from the ITU doc.
+           Though 677 is mentioned as unallocated in
+           http://akep.al/images/stories/AKEP/plani-numracionit/1.NumraAlokuar.rar,
+           adding support for 67[7-9] based on carrier doc. -->
       <mobile>
         <possibleLengths national="9"/>
-        <exampleNumber>662123456</exampleNumber>
-        <nationalNumberPattern>
-          6(?:
-            [689][2-9]|
-            7[2-6]
-          )\d{6}
-        </nationalNumberPattern>
+        <exampleNumber>672123456</exampleNumber>
+        <nationalNumberPattern>6[7-9][2-9]\d{6}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="7"/>
@@ -880,7 +878,7 @@
         <numberFormat pattern="(\d{4})(\d{4})">
           <leadingDigits>
             2[0-8]|
-            [3-7]
+            [3-8]
           </leadingDigits>
           <format>$1-$2</format>
           <intlFormat>NA</intlFormat>
@@ -1495,7 +1493,7 @@
           )[2-6]\d{5}|
           (?:
             (?:
-              11[2-7]|
+              11[2-8]|
               670
             )\d|
             2(?:
@@ -1798,7 +1796,7 @@
           (?:
             675\d|
             9(?:
-              11[2-7]\d|
+              11[2-8]\d|
               2(?:
                 2(?:
                   0[45]|
@@ -28045,7 +28043,7 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>43201234</exampleNumber>
-        <nationalNumberPattern>4[3-79]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>4[3-9]\d{6}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="8"/>
