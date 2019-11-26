@@ -243,6 +243,7 @@
 25134773|Edaga-Hamus, North Region
 25134774|Alemata, North Region
 25134775|Axum, North Region
+251461|Shasemene
 25146220|Awassa I, South Region
 25146221|Awassa II, South Region
 25146222|Wonda Basha, South Region
@@ -365,9 +366,3 @@
 25158777|Amanuel, North-West Region
 25158778|Debre Markos II, North-West Region
 25158779|Jiga, North-West Region
-251911|Addis Ababa Region
-251914|North Region
-251915|East Region
-251916|South Region
-251917|West Region
-251918|North-West Region

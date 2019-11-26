@@ -14,9 +14,10 @@
 
 99620|Aktel
 99622|Sky mobile
+99631258|Sky mobile
+996312973|Nur Telecom
 99650|Nur Telecom
-996503|7 Mobile
-996504|7 Mobile
+996506|Winline
 99651|Katel
 99654|Aktel
 99655|ALFA Telecom
