@@ -1,0 +1,89 @@
+# Copyright (C) 2019 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+821020|SK 텔링크
+821021|SK 텔링크
+821022|데이콤
+821023|데이콤
+821024|데이콤
+821025|KT
+821026|KT
+821027|KT
+821028|KT
+821029|KT
+821030|KT
+821031|SK 텔링크
+821032|KT
+821033|KT
+821034|KT
+821035|SK 텔링크
+821036|SK 텔링크
+821037|SK 텔링크
+821038|SK 텔링크
+821039|데이콤
+82104|SK 텔링크
+821042|KT
+821043|KT
+821044|KT
+821050|SK 텔링크
+821051|KT
+821052|SK 텔링크
+821053|SK 텔링크
+821054|SK 텔링크
+821055|데이콤
+821056|데이콤
+821057|데이콤
+821058|데이콤
+821059|SK 텔링크
+821062|SK 텔링크
+821063|SK 텔링크
+821064|SK 텔링크
+821065|KT
+821066|KT
+821067|KT
+821068|KT
+821071|SK 텔링크
+821072|KT
+821073|KT
+821074|KT
+821075|데이콤
+821076|데이콤
+821077|데이콤
+821079|데이콤
+821080|데이콤
+821081|데이콤
+821082|데이콤
+821083|데이콤
+821084|데이콤
+821085|SK 텔링크
+821086|SK 텔링크
+821087|SK 텔링크
+821088|SK 텔링크
+821089|SK 텔링크
+821090|SK 텔링크
+821091|SK 텔링크
+821092|SK 텔링크
+821093|SK 텔링크
+821094|SK 텔링크
+821095|KT
+821096|KT
+821097|KT
+821098|KT
+821099|KT
+8211|SK 텔링크
+82122|KT
+8216|KT
+8217|SK 텔링크
+8218|KT
+8219|데이콤

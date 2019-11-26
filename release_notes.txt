@@ -1,3 +1,29 @@
+Nov 26, 2019: v8.11.0
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 91
+ - Updated phone metadata for region code(s):
+   AF, AL, AR, AX, AZ, BA, BE, BH, BI, BL, BN, CK, CO, CU, CV, DK, EH, ET, FI,
+   FR, GA, GB, GF, GH, GI, GP, GR, HR, IE, IN, IR, IS, JO, KG, KM, KR, KW, LI,
+   LY, MA, MD, MF, MM, MQ, NO, PT, QA, RE, SG, TW, YT, ZM, ZW
+ - Updated short number metadata for region code(s):
+   AF, AW, BE, CN, CO, DE, ET, GR, KR, MD, NO, PT, SG, TW
+ - New geocoding data for country calling code(s):
+   386 (en), 673 (en), 679 (en), 682 (en), 971 (en)
+ - Updated geocoding data for country calling code(s):
+   34 (en, es), 46 (en), 47 (en), 91 (en), 216 (en), 218 (en), 241 (en),
+   251 (en), 353 (en), 354 (en), 886 (en, zh), 996 (en)
+ - New carrier data for country calling code(s):
+   46 (en), 82 (en, ko), 218 (en), 501 (en), 682 (en)
+ - Updated carrier data for country calling code(s):
+   30 (en), 31 (en), 32 (en), 34 (en), 39 (en), 41 (en), 44 (en), 45 (en),
+   47 (en), 49 (en), 53 (en), 55 (en), 57 (en), 65 (en), 66 (en), 91 (en),
+   95 (en), 98 (en, fa), 212 (en), 226 (en), 233 (en), 235 (en), 237 (en),
+   241 (en), 242 (en), 243 (en), 262 (en), 297 (en), 350 (en), 351 (en),
+   353 (en), 354 (en), 358 (en), 359 (en), 373 (en), 385 (en), 386 (en),
+   420 (en), 423 (en), 508 (en), 590 (en), 673 (en), 855 (en), 886 (en),
+   966 (en), 973 (en), 974 (en), 994 (en), 996 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 13, 2019: v8.10.23
 Metadata changes:
  - Updated phone metadata for region code(s): AL, AR, XK
