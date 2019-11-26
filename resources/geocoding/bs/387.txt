@@ -27,6 +27,8 @@
 38738|Bosansko-podrinjski kanton Goražde
 38739|Zapadnohercegovački kanton
 3874|Brčko Distrikt
+38750|Mrkonjić Grad
+38751|Banja Luka
 38752|Prijedor
 38753|Doboj
 38754|Šamac

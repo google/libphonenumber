@@ -15,6 +15,10 @@
 # Source: https://www.anacom.pt/pnn/pesquisa.do
 # Results of mobile ranges: https://anacom.pt/pnn/pnnSearch.do?channel=&jscript=on&languageId=0&ssl=false&dataInicioDia=dd&dataInicioMes=mm&dataInicioAno=yyyy&dataFimDia=dd&dataFimMes=mm&dataFimAno=yyyy&assunto=&estado=NON&css=143&css=144&css=145&css=150
 
+351609|NOS
+35163|NOS
+35165|NOS
+35166|NOS
 35191|Vodafone
 3519200|Lycamobile
 3519201|Lycamobile
@@ -23,14 +27,14 @@
 3519204|Lycamobile
 3519205|Lycamobile
 351921|Vodafone
-3519220|CTT
-3519221|CTT
-3519222|CTT
-3519230|Vectone
-3519231|Vectone
-3519232|Vectone
-3519233|Vectone
-3519234|Vectone
+3519220|Vodafone
+3519221|MEO
+3519222|MEO
+3519230|NOS
+3519231|NOS
+3519232|NOS
+3519233|NOS
+3519234|NOS
 3519240|MEO
 3519241|MEO
 3519242|MEO

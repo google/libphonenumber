@@ -22,27 +22,27 @@
 22652|Telmob
 22653|Onatel
 22654|Orange
-22655|Airtel
-22656|Airtel
+22655|Orange
+22656|Orange
 22657|Orange
 22658|Telecel Faso
 22660|Telmob
 22661|Telmob
 22662|Telmob
 22663|Telmob
-22664|Airtel
-22665|Airtel
-22666|Airtel
-22667|Airtel
+22664|Orange
+22665|Orange
+22666|Orange
+22667|Orange
 22668|Telecel Faso
 22669|Telecel Faso
 22670|Telmob
 22671|Telmob
 22672|Telmob
 22673|Telmob
-22674|Airtel
-22675|Airtel
-22676|Airtel
-22677|Airtel
+22674|Orange
+22675|Orange
+22676|Orange
+22677|Orange
 22678|Telecel Faso
 22679|Telecel Faso

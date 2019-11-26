@@ -195,7 +195,7 @@
 46589|Arboga
 46590|Filipstad
 46591|Hällefors-Grythyttan
-4660|Sundsval-Timrå
+4660|Sundsvall-Timrå
 46611|Härnösand
 46612|Kramfors
 46613|Ullånger
@@ -234,7 +234,15 @@
 46695|Stugun
 46696|Hammarstrand
 468|Stockholm
-4690|Umeå
+46901|Umeå
+46902|Umeå
+46903|Umeå
+46904|Umeå
+46905|Umeå
+46906|Umeå
+46907|Umeå
+46908|Umeå
+46909|Umeå
 46910|Skellefteå
 46911|Piteå
 46912|Byske
