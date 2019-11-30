@@ -347,7 +347,7 @@ if (NOT WIN32)
   add_definitions ("-Wall -Werror")
 endif ()
 
-include_directories ("src")
+include_directories (BEFORE "src")
 
 if (${BUILD_STATIC_LIB} STREQUAL "ON")
   # Build a static library (without -fPIC).
