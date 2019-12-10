@@ -1,3 +1,12 @@
+Dec 10, 2019: v8.11.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, DO, DZ, FR, GA, GE, GI, KW, LB, RO, SG, ZA
+ - Updated short number metadata for region code(s): FR
+ - Updated geocoding data for country calling code(s): 33 (en, fr), 54 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 33 (en), 36 (en), 65 (en), 213 (en), 961 (en), 995 (en)
+
 Nov 26, 2019: v8.11.0
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 91

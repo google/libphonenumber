@@ -22,17 +22,13 @@
 99552|MagtiCom
 99553|MagtiCom
 99554444|MagtiCom
-99555000|Gimobile
-99555001|Gimobile
-99555002|Gimobile
-99555003|Gimobile
-99555055|Datacom
+995550|MagtiCom
 995551|MagtiCom
 995552|Premium Net International SRL
 995555|Geocell
 995557|Geocell
 995558|Geocell
-99555900|Globalcell
+995559|Globalcell
 99556|Veon
 995570|Silknet
 995571|Veon

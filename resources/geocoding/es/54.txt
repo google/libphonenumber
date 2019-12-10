@@ -165,11 +165,9 @@
 542974|Comodoro Rivadavia, Chubut
 542975|Comodoro Rivadavia, Chubut
 542976|Comodoro Rivadavia, Chubut
+5429824|Claromecó, Buenos Aires
 54298240|Orense, Buenos Aires
-54298241|Claromecó, Buenos Aires
 54298242|Orense, Buenos Aires
-54298248|Claromecó, Buenos Aires
-54298249|Claromecó, Buenos Aires
 542982497|San Francisco de Bellocq, Buenos Aires
 542983|Tres Arroyos, Buenos Aires
 542984|General Roca, Río Negro
