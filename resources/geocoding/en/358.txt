@@ -22,6 +22,7 @@
 35815|Mikkeli
 35816|Lapland
 35817|Kuopio
+35818|Åland Islands
 35819|Uusimaa
 35821|Turku/Pori
 35822|Turku/Pori
