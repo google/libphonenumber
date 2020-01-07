@@ -31,22 +31,18 @@
         <arg line='-f "--compilation_level=@{compilationlevel}"' />
         <arg line='-f "--warning_level=VERBOSE"' />
         <arg line='-f "--jscomp_error=accessControls"' />
-        <arg line='-f "--jscomp_error=ambiguousFunctionDecl"' />
         <arg line='-f "--jscomp_error=checkDebuggerStatement"' />
         <arg line='-f "--jscomp_error=checkRegExp"' />
         <arg line='-f "--jscomp_error=checkTypes"' />
         <arg line='-f "--jscomp_error=checkVars"' />
         <arg line='-f "--jscomp_error=const"' />
         <arg line='-f "--jscomp_error=constantProperty"' />
-        <arg line='-f "--jscomp_error=deprecated"' />
         <arg line='-f "--jscomp_error=duplicate"' />
         <arg line='-f "--jscomp_error=duplicateMessage"' />
         <arg line='-f "--jscomp_error=es5Strict"' />
         <arg line='-f "--jscomp_error=externsValidation"' />
         <arg line='-f "--jscomp_error=extraRequire"' />
-        <arg line='-f "--jscomp_error=fileoverviewTags"' />
         <arg line='-f "--jscomp_error=globalThis"' />
-        <arg line='-f "--jscomp_error=internetExplorerChecks"' />
         <arg line='-f "--jscomp_error=invalidCasts"' />
         <arg line='-f "--jscomp_error=misplacedTypeAnnotation"' />
         <arg line='-f "--jscomp_error=missingProperties"' />
