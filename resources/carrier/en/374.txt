@@ -15,12 +15,13 @@
 # Data from Wikipedia:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Armenia#Mobile_network_codes
 
+37433|Beeline
 37441|Ucom
 37443|Beeline
 37444|Ucom
 37449|VivaCell-MTS
-37455|Ucom
-37477|VivaCell-MTS
+3745|Ucom
+3747|VivaCell-MTS
 37488|VivaCell-MTS
 37491|Beeline
 37493|VivaCell-MTS

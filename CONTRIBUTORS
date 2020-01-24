@@ -6,19 +6,30 @@
 # Core team:
 #
 # These people were responsible for the initial implementations in Java and
-# C++, and carry out the bulk of metadata maintenance, bug fixes & feature
-# requests, and porting new features to Javascript.
+# C++.
 
 Shaopeng Jia
 Lara Rennie
 David Yonge-Mallo
 David Beaumont
 
+# Team carrying out the bulk of metadata maintenance, bug fixes & feature
+# requests, and porting new features to Javascript.
+
+Andy Staudacher
+Aravind Penmetsa
+David Beaumont
+Kavitha Keshava
+Keghani Kristelle Kouzoujian
+Sumathi Sundara Murthy
+
 # Additional contributions:
 
 # Javascript
 Nikolaos Tronikos
     -- Initial implementation, some subsequent maintenance.
+James Wright
+    -- Short number info port to Javascript.
 
 # Java:
 Walter Erquínigo
@@ -50,6 +61,7 @@ Fredrik Roubert
 # Metadata:
 Alec McTurk
 Alexandru Manea
+Amir Farsi
 András Eisenberger
 Anssi Hannula
 Boshi Lian -- Maintains Chinese geocoding data

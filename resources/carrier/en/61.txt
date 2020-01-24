@@ -56,6 +56,7 @@
 61437|Telstra
 61438|Telstra
 61439|Telstra
+61440|MessageBird
 614444|Telstra
 61447|Telstra
 61448|Telstra
@@ -68,6 +69,7 @@
 61457|Telstra
 61458|Telstra
 61459|Telstra
+61460|Telstra
 61466|Optus
 61467|Telstra
 61468|Optus
@@ -83,13 +85,12 @@
 614790|Optus
 614791|Optus
 61481|Optus
+61482|Optus
+61483|Telstra
 61484|Telstra
+61485|TravelSIM
 61487|Telstra
 61488|Telstra
 614888|My Number
 6148984|Victorian Rail Track
-61490|Telstra
-61491|Telstra
-61497|Telstra
-61498|Telstra
-61499|Telstra
+6149|Telstra

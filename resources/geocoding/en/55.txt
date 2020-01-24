@@ -19,222 +19,26 @@
 # the two-digit state-level fallbacks.
 # Translations applied: Distrito Federal -> Federal District
 
-5511|São Paulo
-55112010|São Paulo - SP
-55112011|São Paulo - SP
-55112013|São Paulo - SP
-55112015|São Paulo - SP
-55112018|São Paulo - SP
-55112019|São Paulo - SP
-55112021|São Paulo - SP
-55112023|São Paulo - SP
-55112024|São Paulo - SP
-55112025|São Paulo - SP
-55112027|São Paulo - SP
-55112028|São Paulo - SP
-55112031|São Paulo - SP
-55112032|São Paulo - SP
-55112033|São Paulo - SP
-55112036|São Paulo - SP
-55112037|São Paulo - SP
-55112038|São Paulo - SP
-55112040|São Paulo - SP
-55112048|São Paulo - SP
-55112049|São Paulo - SP
-55112056|São Paulo - SP
-55112057|São Paulo - SP
-55112058|São Paulo - SP
-55112059|São Paulo - SP
-55112060|São Paulo - SP
-55112061|São Paulo - SP
-55112062|São Paulo - SP
-55112063|São Paulo - SP
-55112064|São Paulo - SP
-55112065|São Paulo - SP
-55112066|São Paulo - SP
-55112067|São Paulo - SP
-55112068|São Paulo - SP
-55112069|São Paulo - SP
-55112070|São Paulo - SP
-55112071|São Paulo - SP
-55112072|São Paulo - SP
-55112073|São Paulo - SP
-55112074|São Paulo - SP
+551|São Paulo
+551120|São Paulo - SP
 55112078|Barueri - SP
-55112079|São Paulo - SP
-55112081|São Paulo - SP
-55112084|São Paulo - SP
 55112085|Guarulhos - SP
 55112086|Guarulhos - SP
 55112087|Guarulhos - SP
 55112088|Guarulhos - SP
-55112089|São Paulo - SP
-55112090|São Paulo - SP
-55112091|São Paulo - SP
-55112092|São Paulo - SP
-55112093|São Paulo - SP
-55112094|São Paulo - SP
-55112095|São Paulo - SP
-55112097|São Paulo - SP
-55112098|São Paulo - SP
-55112099|São Paulo - SP
-55112102|São Paulo - SP
-55112103|São Paulo - SP
-55112104|São Paulo - SP
-55112105|São Paulo - SP
-55112106|São Paulo - SP
-55112107|São Paulo - SP
-55112108|São Paulo - SP
-55112111|São Paulo - SP
-55112112|São Paulo - SP
-55112113|São Paulo - SP
-55112114|São Paulo - SP
-55112115|São Paulo - SP
-55112117|São Paulo - SP
+551121|São Paulo - SP
 55112118|Itu - SP
 55112119|Atibaia - SP
-55112121|São Paulo - SP
-55112123|São Paulo - SP
-55112124|São Paulo - SP
-55112125|São Paulo - SP
-55112126|São Paulo - SP
-55112127|São Paulo - SP
-55112131|São Paulo - SP
-55112132|São Paulo - SP
-55112133|São Paulo - SP
-55112134|São Paulo - SP
-55112135|São Paulo - SP
 55112136|Jundiaí - SP
-55112137|São Paulo - SP
-55112138|São Paulo - SP
-55112139|São Paulo - SP
-55112141|São Paulo - SP
-55112142|São Paulo - SP
-55112144|São Paulo - SP
-55112145|São Paulo - SP
-55112146|São Paulo - SP
-55112147|São Paulo - SP
-55112148|São Paulo - SP
-55112149|São Paulo - SP
-55112151|São Paulo - SP
 55112152|Jundiaí - SP
-55112154|São Paulo - SP
-55112155|São Paulo - SP
-55112156|São Paulo - SP
-55112157|São Paulo - SP
-55112158|São Paulo - SP
-55112159|São Paulo - SP
-55112161|São Paulo - SP
-55112162|São Paulo - SP
-55112163|São Paulo - SP
-55112164|São Paulo - SP
-55112165|São Paulo - SP
 55112166|Barueri - SP
-55112167|São Paulo - SP
-55112168|São Paulo - SP
-55112169|São Paulo - SP
-55112171|São Paulo - SP
-55112172|São Paulo - SP
-55112173|São Paulo - SP
-55112174|São Paulo - SP
-55112175|São Paulo - SP
-55112176|São Paulo - SP
-55112177|São Paulo - SP
-55112178|São Paulo - SP
-55112179|São Paulo - SP
-55112182|São Paulo - SP
-55112183|São Paulo - SP
-55112184|São Paulo - SP
-55112185|São Paulo - SP
-55112186|São Paulo - SP
-55112187|São Paulo - SP
-55112188|São Paulo - SP
-55112189|São Paulo - SP
-55112192|São Paulo - SP
-55112193|São Paulo - SP
-55112195|São Paulo - SP
-55112196|São Paulo - SP
-55112197|São Paulo - SP
-55112198|São Paulo - SP
-55112201|São Paulo - SP
-55112203|São Paulo - SP
-55112204|São Paulo - SP
-55112205|São Paulo - SP
-55112206|São Paulo - SP
-55112207|São Paulo - SP
-55112211|São Paulo - SP
-55112213|São Paulo - SP
-55112214|São Paulo - SP
-55112215|São Paulo - SP
-55112216|São Paulo - SP
-55112217|São Paulo - SP
-55112218|São Paulo - SP
-55112219|São Paulo - SP
-55112221|São Paulo - SP
-55112223|São Paulo - SP
-55112224|São Paulo - SP
-55112225|São Paulo - SP
-55112226|São Paulo - SP
-55112227|São Paulo - SP
+551122|São Paulo - SP
 55112228|Santo André - SP
 55112229|Guarulhos - SP
-55112231|São Paulo - SP
-55112232|São Paulo - SP
-55112233|São Paulo - SP
-55112234|São Paulo - SP
-55112235|São Paulo - SP
-55112236|São Paulo - SP
-55112238|São Paulo - SP
-55112239|São Paulo - SP
-55112240|São Paulo - SP
-55112241|São Paulo - SP
-55112242|São Paulo - SP
-55112243|São Paulo - SP
 55112245|Guarulhos - SP
-55112246|São Paulo - SP
-55112247|São Paulo - SP
-55112248|São Paulo - SP
-55112249|São Paulo - SP
-55112251|São Paulo - SP
-55112252|São Paulo - SP
-55112253|São Paulo - SP
-55112255|São Paulo - SP
-55112256|São Paulo - SP
-55112257|São Paulo - SP
-55112258|São Paulo - SP
-55112259|São Paulo - SP
-55112261|São Paulo - SP
-55112262|São Paulo - SP
-55112263|São Paulo - SP
-55112264|São Paulo - SP
-55112265|São Paulo - SP
-55112267|São Paulo - SP
-55112271|São Paulo - SP
-55112272|São Paulo - SP
-55112273|São Paulo - SP
-55112274|São Paulo - SP
-55112275|São Paulo - SP
-55112276|São Paulo - SP
 55112277|Bragança Paulista - SP
-55112278|São Paulo - SP
 55112279|Guarulhos - SP
-55112280|São Paulo - SP
-55112281|São Paulo - SP
-55112282|São Paulo - SP
-55112283|São Paulo - SP
 55112284|Osasco - SP
-55112285|São Paulo - SP
-55112286|São Paulo - SP
-55112287|São Paulo - SP
-55112288|São Paulo - SP
-55112289|São Paulo - SP
-55112291|São Paulo - SP
-55112292|São Paulo - SP
-55112293|São Paulo - SP
-55112294|São Paulo - SP
-55112295|São Paulo - SP
-55112296|São Paulo - SP
-55112297|São Paulo - SP
 55112301|São Paulo - SP
 55112303|Guarulhos - SP
 55112304|Guarulhos - SP
@@ -257,75 +61,13 @@
 55112378|Mogi das Cruzes - SP
 55112392|São Paulo - SP
 55112396|Itu - SP
-55112401|Guarulhos - SP
-55112405|Guarulhos - SP
-55112406|Guarulhos - SP
-55112407|Guarulhos - SP
-55112408|Guarulhos - SP
-55112409|Guarulhos - SP
-55112411|Guarulhos - SP
-55112412|Guarulhos - SP
-55112413|Guarulhos - SP
-55112414|Guarulhos - SP
+551124|Guarulhos - SP
 55112419|Bragança Paulista - SP
-55112421|Guarulhos - SP
-55112422|Guarulhos - SP
-55112425|Guarulhos - SP
 55112427|Atibaia - SP
 55112429|Itu - SP
-55112431|Guarulhos - SP
-55112432|Guarulhos - SP
-55112433|Guarulhos - SP
-55112436|Guarulhos - SP
-55112437|Guarulhos - SP
-55112438|Guarulhos - SP
-55112439|Guarulhos - SP
-55112440|Guarulhos - SP
-55112441|Guarulhos - SP
-55112442|Guarulhos - SP
-55112443|Guarulhos - SP
-55112444|Guarulhos - SP
-55112445|Guarulhos - SP
-55112446|Guarulhos - SP
-55112447|Guarulhos - SP
-55112451|Guarulhos - SP
-55112452|Guarulhos - SP
-55112453|Guarulhos - SP
-55112455|Guarulhos - SP
-55112456|Guarulhos - SP
-55112458|Guarulhos - SP
-55112460|Guarulhos - SP
-55112461|Guarulhos - SP
-55112462|Guarulhos - SP
-55112463|Guarulhos - SP
-55112464|Guarulhos - SP
-55112465|Guarulhos - SP
-55112466|Guarulhos - SP
-55112467|Guarulhos - SP
-55112468|Guarulhos - SP
-55112469|Guarulhos - SP
-55112471|Guarulhos - SP
-55112472|Guarulhos - SP
 55112473|Bragança Paulista - SP
-55112475|Guarulhos - SP
-55112479|Guarulhos - SP
-55112480|Guarulhos - SP
-55112481|Guarulhos - SP
-55112482|Guarulhos - SP
-55112483|Guarulhos - SP
-55112484|Guarulhos - SP
-55112485|Guarulhos - SP
-55112486|Guarulhos - SP
-55112487|Guarulhos - SP
-55112488|Guarulhos - SP
-55112489|Guarulhos - SP
 55112490|Bragança Paulista - SP
-55112492|Guarulhos - SP
 55112493|Atibaia - SP
-55112496|Guarulhos - SP
-55112497|Guarulhos - SP
-55112498|Guarulhos - SP
-55112499|Guarulhos - SP
 55112501|São Paulo - SP
 55112503|São Paulo - SP
 55112504|São Paulo - SP
@@ -343,49 +85,16 @@
 55112536|São Paulo - SP
 55112547|São Paulo - SP
 55112549|São Paulo - SP
-55112551|São Paulo - SP
-55112552|São Paulo - SP
-55112553|São Paulo - SP
-55112554|São Paulo - SP
-55112555|São Paulo - SP
-55112556|São Paulo - SP
-55112557|São Paulo - SP
-55112558|São Paulo - SP
-55112559|São Paulo - SP
-55112561|São Paulo - SP
-55112562|São Paulo - SP
-55112565|São Paulo - SP
-55112566|São Paulo - SP
-55112567|São Paulo - SP
-55112568|São Paulo - SP
-55112569|São Paulo - SP
-55112571|São Paulo - SP
-55112572|São Paulo - SP
-55112573|São Paulo - SP
-55112574|São Paulo - SP
-55112575|São Paulo - SP
-55112577|São Paulo - SP
-55112578|São Paulo - SP
-55112579|São Paulo - SP
-55112581|São Paulo - SP
-55112582|São Paulo - SP
-55112583|São Paulo - SP
-55112586|São Paulo - SP
-55112588|São Paulo - SP
-55112589|São Paulo - SP
+5511255|São Paulo - SP
+5511256|São Paulo - SP
+5511257|São Paulo - SP
+5511258|São Paulo - SP
 55112591|São Paulo - SP
 55112592|São Paulo - SP
 55112594|São Paulo - SP
 55112597|São Paulo - SP
 55112599|São Paulo - SP
-55112601|São Paulo - SP
-55112602|São Paulo - SP
-55112603|São Paulo - SP
-55112604|São Paulo - SP
-55112605|São Paulo - SP
-55112606|São Paulo - SP
-55112607|São Paulo - SP
-55112609|São Paulo - SP
+5511260|São Paulo - SP
 55112610|Mogi das Cruzes - SP
 55112612|São Paulo - SP
 55112618|São Paulo - SP
@@ -394,12 +103,7 @@
 55112623|São Paulo - SP
 55112625|São Paulo - SP
 55112628|São Paulo - SP
-55112631|São Paulo - SP
-55112632|São Paulo - SP
-55112633|São Paulo - SP
-55112634|São Paulo - SP
-55112635|São Paulo - SP
-55112636|São Paulo - SP
+5511263|São Paulo - SP
 55112641|São Paulo - SP
 55112642|São Paulo - SP
 55112643|São Paulo - SP
@@ -417,27 +121,14 @@
 55112663|São Paulo - SP
 55112664|Barueri - SP
 55112668|Mogi das Cruzes - SP
-55112671|São Paulo - SP
-55112672|São Paulo - SP
-55112673|São Paulo - SP
-55112674|São Paulo - SP
-55112675|São Paulo - SP
-55112676|São Paulo - SP
-55112678|São Paulo - SP
-55112679|São Paulo - SP
+5511267|São Paulo - SP
 55112682|São Paulo - SP
 55112683|São Paulo - SP
 55112684|São Paulo - SP
 55112685|São Paulo - SP
 55112687|São Paulo - SP
 55112688|Guarulhos - SP
-55112692|São Paulo - SP
-55112693|São Paulo - SP
-55112694|São Paulo - SP
-55112695|São Paulo - SP
-55112696|São Paulo - SP
-55112697|São Paulo - SP
-55112698|São Paulo - SP
+5511269|São Paulo - SP
 55112703|São Paulo - SP
 55112704|São Paulo - SP
 55112705|São Paulo - SP
@@ -446,27 +137,9 @@
 55112715|Itu - SP
 55112717|São Paulo - SP
 55112719|São Paulo - SP
-55112721|São Paulo - SP
-55112722|São Paulo - SP
-55112724|São Paulo - SP
-55112725|São Paulo - SP
-55112726|São Paulo - SP
-55112727|São Paulo - SP
-55112728|São Paulo - SP
-55112730|São Paulo - SP
-55112731|São Paulo - SP
-55112734|São Paulo - SP
-55112735|São Paulo - SP
-55112736|São Paulo - SP
-55112739|São Paulo - SP
-55112741|São Paulo - SP
-55112742|São Paulo - SP
-55112743|São Paulo - SP
-55112745|São Paulo - SP
-55112746|São Paulo - SP
-55112747|São Paulo - SP
-55112748|São Paulo - SP
-55112749|São Paulo - SP
+5511272|São Paulo - SP
+5511273|São Paulo - SP
+5511274|São Paulo - SP
 55112751|São Paulo - SP
 55112752|São Paulo - SP
 55112753|São Paulo - SP
@@ -479,13 +152,7 @@
 55112784|São Paulo - SP
 55112785|São Paulo - SP
 55112787|São Paulo - SP
-55112790|São Paulo - SP
-55112791|São Paulo - SP
-55112793|São Paulo - SP
-55112795|São Paulo - SP
-55112796|São Paulo - SP
-55112797|São Paulo - SP
-55112798|São Paulo - SP
+5511279|São Paulo - SP
 55112803|Carapicuíba - SP
 55112805|Diadema - SP
 55112806|Diadema - SP
@@ -513,12 +180,7 @@
 55112843|São Paulo - SP
 55112848|São Paulo - SP
 55112849|São Paulo - SP
-55112851|São Paulo - SP
-55112852|São Paulo - SP
-55112854|São Paulo - SP
-55112855|São Paulo - SP
-55112856|São Paulo - SP
-55112858|São Paulo - SP
+5511285|São Paulo - SP
 55112861|São Paulo - SP
 55112862|São Paulo - SP
 55112864|São Paulo - SP
@@ -536,156 +198,11 @@
 55112895|São Paulo - SP
 55112896|Santo André - SP
 55112897|São Bernardo do Campo - SP
-55112900|São Paulo - SP
-55112901|São Paulo - SP
-55112902|São Paulo - SP
-55112903|São Paulo - SP
-55112904|São Paulo - SP
-55112905|São Paulo - SP
-55112906|São Paulo - SP
-55112908|São Paulo - SP
-55112909|São Paulo - SP
-55112910|São Paulo - SP
-55112911|São Paulo - SP
-55112912|São Paulo - SP
-55112914|São Paulo - SP
-55112915|São Paulo - SP
-55112916|São Paulo - SP
-55112917|São Paulo - SP
-55112918|São Paulo - SP
-55112919|São Paulo - SP
-55112921|São Paulo - SP
+551129|São Paulo - SP
 55112923|Jundiaí - SP
-55112928|São Paulo - SP
-55112931|São Paulo - SP
-55112933|São Paulo - SP
-55112934|São Paulo - SP
-55112940|São Paulo - SP
-55112941|São Paulo - SP
-55112942|São Paulo - SP
-55112943|São Paulo - SP
-55112944|São Paulo - SP
-55112945|São Paulo - SP
-55112946|São Paulo - SP
-55112947|São Paulo - SP
-55112948|São Paulo - SP
-55112949|São Paulo - SP
-55112950|São Paulo - SP
-55112951|São Paulo - SP
-55112952|São Paulo - SP
-55112953|São Paulo - SP
-55112954|São Paulo - SP
-55112955|São Paulo - SP
-55112956|São Paulo - SP
-55112957|São Paulo - SP
-55112958|São Paulo - SP
-55112959|São Paulo - SP
-55112960|São Paulo - SP
-55112961|São Paulo - SP
-55112962|São Paulo - SP
-55112963|São Paulo - SP
-55112964|São Paulo - SP
-55112965|São Paulo - SP
-55112966|São Paulo - SP
-55112967|São Paulo - SP
-55112969|São Paulo - SP
 55112970|Barueri - SP
-55112971|São Paulo - SP
-55112972|São Paulo - SP
-55112973|São Paulo - SP
-55112974|São Paulo - SP
-55112975|São Paulo - SP
-55112976|São Paulo - SP
-55112977|São Paulo - SP
-55112978|São Paulo - SP
-55112979|São Paulo - SP
-55112980|São Paulo - SP
-55112981|São Paulo - SP
-55112982|São Paulo - SP
-55112983|São Paulo - SP
-55112986|São Paulo - SP
-55112987|São Paulo - SP
-55112989|São Paulo - SP
-55112990|São Paulo - SP
-55112991|São Paulo - SP
-55112992|São Paulo - SP
-55112993|São Paulo - SP
-55112994|São Paulo - SP
-55112995|São Paulo - SP
-55112996|São Paulo - SP
-55112997|São Paulo - SP
-55112998|São Paulo - SP
-55113011|São Paulo - SP
-55113014|São Paulo - SP
-55113015|São Paulo - SP
-55113016|São Paulo - SP
-55113021|São Paulo - SP
-55113022|São Paulo - SP
-55113023|São Paulo - SP
-55113024|São Paulo - SP
-55113025|São Paulo - SP
-55113026|São Paulo - SP
-55113027|São Paulo - SP
-55113028|São Paulo - SP
-55113030|São Paulo - SP
-55113031|São Paulo - SP
-55113032|São Paulo - SP
-55113034|São Paulo - SP
-55113035|São Paulo - SP
-55113037|São Paulo - SP
-55113039|São Paulo - SP
-55113041|São Paulo - SP
-55113044|São Paulo - SP
-55113045|São Paulo - SP
-55113046|São Paulo - SP
-55113049|São Paulo - SP
-55113050|São Paulo - SP
-55113051|São Paulo - SP
-55113052|São Paulo - SP
-55113054|São Paulo - SP
-55113057|São Paulo - SP
-55113059|São Paulo - SP
-55113060|São Paulo - SP
-55113061|São Paulo - SP
-55113062|São Paulo - SP
-55113063|São Paulo - SP
-55113064|São Paulo - SP
-55113065|São Paulo - SP
-55113066|São Paulo - SP
-55113067|São Paulo - SP
-55113068|São Paulo - SP
-55113071|São Paulo - SP
-55113073|São Paulo - SP
-55113074|São Paulo - SP
-55113075|São Paulo - SP
-55113076|São Paulo - SP
-55113077|São Paulo - SP
-55113078|São Paulo - SP
-55113079|São Paulo - SP
-55113081|São Paulo - SP
-55113082|São Paulo - SP
-55113083|São Paulo - SP
-55113084|São Paulo - SP
-55113085|São Paulo - SP
-55113086|São Paulo - SP
-55113087|São Paulo - SP
-55113088|São Paulo - SP
-55113089|São Paulo - SP
-55113091|São Paulo - SP
-55113092|São Paulo - SP
-55113093|São Paulo - SP
-55113094|São Paulo - SP
-55113095|São Paulo - SP
-55113096|São Paulo - SP
-55113097|São Paulo - SP
-55113098|São Paulo - SP
-55113100|São Paulo - SP
-55113101|São Paulo - SP
-55113103|São Paulo - SP
-55113104|São Paulo - SP
-55113105|São Paulo - SP
-55113106|São Paulo - SP
-55113107|São Paulo - SP
+551130|São Paulo - SP
+5511310|São Paulo - SP
 55113109|Jundiaí - SP
 55113112|São Paulo - SP
 55113113|São Paulo - SP
@@ -697,26 +214,13 @@
 55113133|São Paulo - SP
 55113135|São Bernardo do Campo - SP
 55113138|São Paulo - SP
-55113141|São Paulo - SP
-55113142|São Paulo - SP
-55113144|São Paulo - SP
-55113145|São Paulo - SP
-55113146|São Paulo - SP
-55113147|São Paulo - SP
-55113148|São Paulo - SP
-55113149|São Paulo - SP
+5511314|São Paulo - SP
 55113151|São Paulo - SP
 55113152|São Paulo - SP
 55113153|São Paulo - SP
 55113158|São Paulo - SP
 55113159|São Paulo - SP
-55113161|São Paulo - SP
-55113163|São Paulo - SP
-55113164|São Paulo - SP
-55113165|São Paulo - SP
-55113167|São Paulo - SP
-55113168|São Paulo - SP
-55113169|São Paulo - SP
+5511316|São Paulo - SP
 55113170|São Paulo - SP
 55113171|São Paulo - SP
 55113175|São Paulo - SP
@@ -729,119 +233,19 @@
 55113191|São Paulo - SP
 55113192|São Paulo - SP
 55113198|São Paulo - SP
-55113201|São Paulo - SP
-55113202|São Paulo - SP
-55113203|São Paulo - SP
-55113205|São Paulo - SP
-55113206|São Paulo - SP
-55113207|São Paulo - SP
-55113208|São Paulo - SP
-55113209|São Paulo - SP
-55113210|São Paulo - SP
-55113211|São Paulo - SP
-55113212|São Paulo - SP
-55113213|São Paulo - SP
-55113214|São Paulo - SP
-55113215|São Paulo - SP
-55113219|São Paulo - SP
-55113220|São Paulo - SP
-55113221|São Paulo - SP
-55113222|São Paulo - SP
-55113223|São Paulo - SP
-55113225|São Paulo - SP
-55113226|São Paulo - SP
-55113227|São Paulo - SP
-55113228|São Paulo - SP
-55113229|São Paulo - SP
-55113231|São Paulo - SP
-55113234|São Paulo - SP
-55113235|São Paulo - SP
-55113237|São Paulo - SP
+551132|São Paulo - SP
 55113240|Salvador - BA
-55113241|São Paulo - SP
-55113242|São Paulo - SP
-55113243|São Paulo - SP
-55113244|São Paulo - SP
-55113245|São Paulo - SP
-55113246|São Paulo - SP
-55113248|São Paulo - SP
-55113249|São Paulo - SP
-55113251|São Paulo - SP
-55113252|São Paulo - SP
-55113253|São Paulo - SP
-55113254|São Paulo - SP
-55113255|São Paulo - SP
-55113256|São Paulo - SP
-55113257|São Paulo - SP
-55113258|São Paulo - SP
-55113259|São Paulo - SP
-55113262|São Paulo - SP
-55113263|São Paulo - SP
 55113264|Salvador - BA
-55113265|São Paulo - SP
-55113266|São Paulo - SP
-55113268|São Paulo - SP
-55113269|São Paulo - SP
-55113271|São Paulo - SP
-55113272|São Paulo - SP
-55113273|São Paulo - SP
-55113275|São Paulo - SP
-55113276|São Paulo - SP
-55113277|São Paulo - SP
-55113278|São Paulo - SP
-55113281|São Paulo - SP
-55113283|São Paulo - SP
-55113284|São Paulo - SP
-55113285|São Paulo - SP
-55113286|São Paulo - SP
-55113287|São Paulo - SP
-55113288|São Paulo - SP
-55113289|São Paulo - SP
-55113291|São Paulo - SP
-55113292|São Paulo - SP
-55113293|São Paulo - SP
-55113294|São Paulo - SP
-55113295|São Paulo - SP
-55113296|São Paulo - SP
-55113297|São Paulo - SP
-55113299|São Paulo - SP
 55113301|São Paulo - SP
 55113303|São Bernardo do Campo - SP
 55113304|São Paulo - SP
 55113305|São Paulo - SP
 55113307|São Paulo - SP
 55113308|Jundiaí - SP
-55113311|São Paulo - SP
-55113312|São Paulo - SP
-55113313|São Paulo - SP
-55113314|São Paulo - SP
-55113315|São Paulo - SP
-55113316|São Paulo - SP
-55113318|São Paulo - SP
-55113319|São Paulo - SP
-55113321|São Paulo - SP
-55113322|São Paulo - SP
-55113323|São Paulo - SP
-55113325|São Paulo - SP
-55113326|São Paulo - SP
-55113327|São Paulo - SP
-55113328|São Paulo - SP
-55113329|São Paulo - SP
-55113331|São Paulo - SP
-55113332|São Paulo - SP
-55113333|São Paulo - SP
-55113334|São Paulo - SP
-55113335|São Paulo - SP
-55113336|São Paulo - SP
-55113337|São Paulo - SP
-55113338|São Paulo - SP
-55113339|São Paulo - SP
-55113341|São Paulo - SP
-55113342|São Paulo - SP
-55113343|São Paulo - SP
-55113345|São Paulo - SP
-55113348|São Paulo - SP
-55113349|São Paulo - SP
+5511331|São Paulo - SP
+5511332|São Paulo - SP
+5511333|São Paulo - SP
+5511334|São Paulo - SP
 55113353|São Paulo - SP
 55113354|São Paulo - SP
 55113357|São Paulo - SP
@@ -901,46 +305,11 @@
 55113447|Osasco - SP
 55113448|Osasco - SP
 55113449|Osasco - SP
-55113451|São Paulo - SP
-55113452|São Paulo - SP
-55113453|São Paulo - SP
-55113454|São Paulo - SP
-55113455|São Paulo - SP
-55113457|São Paulo - SP
-55113459|São Paulo - SP
-55113461|São Paulo - SP
-55113462|São Paulo - SP
-55113463|São Paulo - SP
-55113464|São Paulo - SP
-55113465|São Paulo - SP
-55113466|São Paulo - SP
-55113467|São Paulo - SP
-55113471|São Paulo - SP
-55113472|São Paulo - SP
-55113473|São Paulo - SP
-55113474|São Paulo - SP
-55113475|São Paulo - SP
-55113476|São Paulo - SP
-55113477|São Paulo - SP
-55113478|São Paulo - SP
-55113479|São Paulo - SP
-55113481|São Paulo - SP
-55113482|São Paulo - SP
-55113483|São Paulo - SP
-55113484|São Paulo - SP
-55113485|São Paulo - SP
-55113486|São Paulo - SP
-55113487|São Paulo - SP
-55113488|São Paulo - SP
-55113491|São Paulo - SP
-55113492|São Paulo - SP
-55113493|São Paulo - SP
-55113494|São Paulo - SP
-55113495|São Paulo - SP
-55113496|São Paulo - SP
-55113497|São Paulo - SP
-55113498|São Paulo - SP
-55113499|São Paulo - SP
+5511345|São Paulo - SP
+5511346|São Paulo - SP
+5511347|São Paulo - SP
+5511348|São Paulo - SP
+5511349|São Paulo - SP
 55113501|São Paulo - SP
 55113502|São Paulo - SP
 55113505|São Paulo - SP
@@ -950,44 +319,16 @@
 55113514|São Paulo - SP
 55113515|São Paulo - SP
 55113518|São Paulo - SP
-55113521|São Paulo - SP
-55113523|São Paulo - SP
-55113524|São Paulo - SP
-55113525|São Paulo - SP
-55113526|São Paulo - SP
-55113527|São Paulo - SP
-55113528|São Paulo - SP
-55113529|São Paulo - SP
-55113531|São Paulo - SP
-55113532|São Paulo - SP
-55113533|São Paulo - SP
-55113534|São Paulo - SP
-55113535|São Paulo - SP
-55113536|São Paulo - SP
-55113537|São Paulo - SP
-55113538|São Paulo - SP
-55113539|São Paulo - SP
-55113541|São Paulo - SP
-55113542|São Paulo - SP
-55113543|São Paulo - SP
-55113544|São Paulo - SP
-55113545|São Paulo - SP
-55113546|São Paulo - SP
-55113548|São Paulo - SP
-55113549|São Paulo - SP
+5511352|São Paulo - SP
+5511353|São Paulo - SP
+5511354|São Paulo - SP
 55113552|São Paulo - SP
 55113554|São Paulo - SP
 55113555|São Paulo - SP
 55113556|São Paulo - SP
 55113559|São Paulo - SP
-55113562|São Paulo - SP
-55113563|São Paulo - SP
-55113564|São Paulo - SP
+5511356|São Paulo - SP
 55113565|São Caetano do Sul - SP
-55113566|São Paulo - SP
-55113567|São Paulo - SP
-55113568|São Paulo - SP
-55113569|São Paulo - SP
 55113571|São Paulo - SP
 55113572|São Paulo - SP
 55113576|São Paulo - SP
@@ -1005,294 +346,31 @@
 55113603|Osasco - SP
 55113607|Osasco - SP
 55113608|Osasco - SP
-55113611|São Paulo - SP
-55113612|São Paulo - SP
-55113613|São Paulo - SP
-55113614|São Paulo - SP
-55113615|São Paulo - SP
-55113616|São Paulo - SP
-55113617|São Paulo - SP
-55113618|São Paulo - SP
-55113619|São Paulo - SP
-55113621|São Paulo - SP
-55113622|São Paulo - SP
-55113623|São Paulo - SP
-55113624|São Paulo - SP
-55113625|São Paulo - SP
-55113628|São Paulo - SP
+5511361|São Paulo - SP
+5511362|São Paulo - SP
 55113633|São Paulo - SP
 55113636|São Paulo - SP
 55113637|São Paulo - SP
 55113638|São Paulo - SP
-55113641|São Paulo - SP
-55113642|São Paulo - SP
-55113643|São Paulo - SP
-55113644|São Paulo - SP
-55113645|São Paulo - SP
-55113646|São Paulo - SP
-55113647|São Paulo - SP
-55113648|São Paulo - SP
-55113649|São Paulo - SP
+5511364|São Paulo - SP
 55113651|Osasco - SP
 55113652|Osasco - SP
 55113653|Osasco - SP
 55113654|Osasco - SP
 55113659|Osasco - SP
-55113661|São Paulo - SP
-55113662|São Paulo - SP
-55113663|São Paulo - SP
-55113664|São Paulo - SP
-55113665|São Paulo - SP
-55113666|São Paulo - SP
-55113667|São Paulo - SP
-55113668|São Paulo - SP
-55113670|São Paulo - SP
-55113672|São Paulo - SP
-55113673|São Paulo - SP
-55113674|São Paulo - SP
-55113675|São Paulo - SP
-55113676|São Paulo - SP
-55113678|São Paulo - SP
-55113679|São Paulo - SP
-55113681|Osasco - SP
-55113682|Osasco - SP
-55113683|Osasco - SP
-55113684|Osasco - SP
-55113685|Osasco - SP
-55113686|Osasco - SP
-55113687|Osasco - SP
-55113688|Osasco - SP
-55113689|Osasco - SP
-55113692|Osasco - SP
-55113693|Osasco - SP
-55113694|Osasco - SP
-55113695|Osasco - SP
-55113696|Osasco - SP
-55113697|Osasco - SP
-55113698|Osasco - SP
-55113699|Osasco - SP
-55113701|São Paulo - SP
-55113704|São Paulo - SP
+5511366|São Paulo - SP
+5511367|São Paulo - SP
+5511368|Osasco - SP
+5511369|Osasco - SP
+551137|São Paulo - SP
 55113705|Santo André - SP
-55113706|São Paulo - SP
-55113707|São Paulo - SP
-55113708|São Paulo - SP
-55113709|São Paulo - SP
-55113712|São Paulo - SP
-55113713|São Paulo - SP
-55113714|São Paulo - SP
-55113715|São Paulo - SP
-55113716|São Paulo - SP
-55113718|São Paulo - SP
-55113719|São Paulo - SP
-55113721|São Paulo - SP
-55113722|São Paulo - SP
-55113723|São Paulo - SP
-55113724|São Paulo - SP
-55113725|São Paulo - SP
-55113726|São Paulo - SP
-55113727|São Paulo - SP
-55113729|São Paulo - SP
-55113731|São Paulo - SP
-55113732|São Paulo - SP
-55113733|São Paulo - SP
-55113735|São Paulo - SP
-55113736|São Paulo - SP
-55113737|São Paulo - SP
-55113739|São Paulo - SP
-55113740|São Paulo - SP
-55113741|São Paulo - SP
-55113742|São Paulo - SP
-55113743|São Paulo - SP
-55113744|São Paulo - SP
-55113745|São Paulo - SP
-55113746|São Paulo - SP
-55113747|São Paulo - SP
-55113748|São Paulo - SP
-55113749|São Paulo - SP
-55113750|São Paulo - SP
-55113751|São Paulo - SP
-55113752|São Paulo - SP
-55113753|São Paulo - SP
 55113754|Arujá - SP
-55113755|São Paulo - SP
-55113756|São Paulo - SP
-55113757|São Paulo - SP
-55113758|São Paulo - SP
-55113759|São Paulo - SP
-55113760|São Paulo - SP
-55113761|São Paulo - SP
-55113762|São Paulo - SP
-55113763|São Paulo - SP
-55113765|São Paulo - SP
-55113766|São Paulo - SP
-55113768|São Paulo - SP
-55113771|São Paulo - SP
-55113772|São Paulo - SP
-55113773|São Paulo - SP
-55113774|São Paulo - SP
-55113775|São Paulo - SP
-55113776|São Paulo - SP
-55113779|São Paulo - SP
-55113781|São Paulo - SP
-55113782|São Paulo - SP
-55113783|São Paulo - SP
-55113784|São Paulo - SP
-55113785|São Paulo - SP
-55113787|São Paulo - SP
-55113788|São Paulo - SP
-55113791|São Paulo - SP
-55113793|São Paulo - SP
-55113794|São Paulo - SP
-55113795|São Paulo - SP
-55113796|São Paulo - SP
-55113797|São Paulo - SP
-55113798|São Paulo - SP
-55113801|São Paulo - SP
-55113803|São Paulo - SP
-55113804|São Paulo - SP
-55113805|São Paulo - SP
-55113806|São Paulo - SP
-55113807|São Paulo - SP
-55113808|São Paulo - SP
-55113809|São Paulo - SP
-55113811|São Paulo - SP
-55113812|São Paulo - SP
-55113813|São Paulo - SP
-55113814|São Paulo - SP
-55113815|São Paulo - SP
-55113816|São Paulo - SP
-55113817|São Paulo - SP
-55113819|São Paulo - SP
+551138|São Paulo - SP
 55113820|Guarulhos - SP
-55113822|São Paulo - SP
-55113823|São Paulo - SP
-55113824|São Paulo - SP
-55113825|São Paulo - SP
-55113826|São Paulo - SP
-55113828|São Paulo - SP
-55113829|São Paulo - SP
-55113831|São Paulo - SP
-55113832|São Paulo - SP
-55113833|São Paulo - SP
-55113834|São Paulo - SP
-55113835|São Paulo - SP
-55113836|São Paulo - SP
-55113837|São Paulo - SP
-55113838|São Paulo - SP
-55113839|São Paulo - SP
-55113841|São Paulo - SP
-55113842|São Paulo - SP
-55113844|São Paulo - SP
-55113845|São Paulo - SP
-55113846|São Paulo - SP
-55113847|São Paulo - SP
-55113848|São Paulo - SP
-55113849|São Paulo - SP
-55113851|São Paulo - SP
-55113852|São Paulo - SP
-55113853|São Paulo - SP
-55113854|São Paulo - SP
-55113855|São Paulo - SP
-55113856|São Paulo - SP
-55113857|São Paulo - SP
-55113858|São Paulo - SP
-55113859|São Paulo - SP
-55113861|São Paulo - SP
-55113862|São Paulo - SP
-55113863|São Paulo - SP
-55113864|São Paulo - SP
-55113865|São Paulo - SP
-55113866|São Paulo - SP
-55113867|São Paulo - SP
-55113868|São Paulo - SP
-55113869|São Paulo - SP
-55113871|São Paulo - SP
-55113872|São Paulo - SP
-55113873|São Paulo - SP
-55113874|São Paulo - SP
-55113875|São Paulo - SP
-55113876|São Paulo - SP
-55113877|São Paulo - SP
-55113881|São Paulo - SP
-55113882|São Paulo - SP
-55113883|São Paulo - SP
-55113884|São Paulo - SP
-55113885|São Paulo - SP
-55113886|São Paulo - SP
-55113887|São Paulo - SP
-55113888|São Paulo - SP
-55113889|São Paulo - SP
-55113891|São Paulo - SP
-55113892|São Paulo - SP
-55113895|São Paulo - SP
-55113896|São Paulo - SP
-55113897|São Paulo - SP
-55113898|São Paulo - SP
-55113899|São Paulo - SP
-55113901|São Paulo - SP
-55113902|São Paulo - SP
-55113903|São Paulo - SP
-55113904|São Paulo - SP
-55113905|São Paulo - SP
-55113906|São Paulo - SP
+551139|São Paulo - SP
 55113907|São Bernardo do Campo - SP
-55113909|São Paulo - SP
-55113911|São Paulo - SP
-55113915|São Paulo - SP
-55113916|São Paulo - SP
-55113917|São Paulo - SP
-55113918|São Paulo - SP
-55113919|São Paulo - SP
-55113921|São Paulo - SP
-55113924|São Paulo - SP
-55113926|São Paulo - SP
-55113929|São Paulo - SP
-55113931|São Paulo - SP
-55113932|São Paulo - SP
-55113934|São Paulo - SP
-55113935|São Paulo - SP
-55113936|São Paulo - SP
-55113938|São Paulo - SP
-55113941|São Paulo - SP
-55113942|São Paulo - SP
-55113943|São Paulo - SP
-55113946|São Paulo - SP
-55113947|São Paulo - SP
-55113948|São Paulo - SP
-55113949|São Paulo - SP
-55113951|São Paulo - SP
-55113952|São Paulo - SP
-55113953|São Paulo - SP
-55113955|São Paulo - SP
-55113959|São Paulo - SP
-55113961|São Paulo - SP
-55113962|São Paulo - SP
 55113964|Jundiaí - SP
-55113965|São Paulo - SP
-55113966|São Paulo - SP
-55113969|São Paulo - SP
-55113971|São Paulo - SP
-55113972|São Paulo - SP
-55113973|São Paulo - SP
-55113974|São Paulo - SP
-55113975|São Paulo - SP
-55113976|São Paulo - SP
-55113978|São Paulo - SP
-55113982|São Paulo - SP
-55113985|São Paulo - SP
-55113986|São Paulo - SP
-55113987|São Paulo - SP
 55113988|Guarulhos - SP
-55113989|São Paulo - SP
-55113990|São Paulo - SP
-55113991|São Paulo - SP
-55113992|São Paulo - SP
-55113993|São Paulo - SP
-55113994|São Paulo - SP
-55113997|São Paulo - SP
-55113998|São Paulo - SP
-55113999|São Paulo - SP
 55114000|Arujá - SP
 55114005|São Paulo - SP
 55114007|São Paulo - SP
@@ -1329,25 +407,14 @@
 55114047|Diadema - SP
 55114048|Diadema - SP
 55114049|Diadema - SP
-55114051|Diadema - SP
+5511405|Diadema - SP
 55114052|São Paulo - SP
-55114053|Diadema - SP
-55114054|Diadema - SP
-55114055|Diadema - SP
-55114056|Diadema - SP
-55114057|Diadema - SP
-55114059|Diadema - SP
 55114061|Diadema - SP
 55114062|São Paulo - SP
 55114066|Diadema - SP
 55114067|Diadema - SP
 55114069|Diadema - SP
-55114071|Diadema - SP
-55114072|Diadema - SP
-55114075|Diadema - SP
-55114076|Diadema - SP
-55114077|Diadema - SP
-55114079|Diadema - SP
+5511407|Diadema - SP
 55114081|São Paulo - SP
 55114082|São Paulo - SP
 55114083|São Paulo - SP
@@ -1362,15 +429,7 @@
 55114103|São Bernardo do Campo - SP
 55114104|São Bernardo do Campo - SP
 55114109|São Bernardo do Campo - SP
-55114121|São Bernardo do Campo - SP
-55114122|São Bernardo do Campo - SP
-55114123|São Bernardo do Campo - SP
-55114124|São Bernardo do Campo - SP
-55114125|São Bernardo do Campo - SP
-55114126|São Bernardo do Campo - SP
-55114127|São Bernardo do Campo - SP
-55114128|São Bernardo do Campo - SP
-55114129|São Bernardo do Campo - SP
+5511412|São Bernardo do Campo - SP
 55114130|São Roque - SP
 55114131|Pirapora do Bom Jesus - SP
 55114132|Pirapora do Bom Jesus - SP
@@ -1387,13 +446,7 @@
 55114145|Itapevi - SP
 55114147|Itapecerica da Serra - SP
 55114148|Cotia - SP
-55114151|Santana de Parnaíba - SP
-55114152|Santana de Parnaíba - SP
-55114153|Santana de Parnaíba - SP
-55114154|Santana de Parnaíba - SP
-55114155|Santana de Parnaíba - SP
-55114156|Santana de Parnaíba - SP
-55114157|Santana de Parnaíba - SP
+5511415|Santana de Parnaíba - SP
 55114158|Vargem Grande Paulista - SP
 55114159|Vargem Grande Paulista - SP
 55114161|Barueri - SP
@@ -1409,19 +462,8 @@
 55114176|São Bernardo do Campo - SP
 55114177|São Bernardo do Campo - SP
 55114178|São Bernardo do Campo - SP
-55114181|Carapicuíba - SP
-55114182|Carapicuíba - SP
-55114183|Carapicuíba - SP
-55114184|Carapicuíba - SP
-55114185|Carapicuíba - SP
-55114186|Carapicuíba - SP
-55114191|Barueri - SP
-55114192|Barueri - SP
-55114193|Barueri - SP
-55114194|Barueri - SP
-55114195|Barueri - SP
-55114196|Barueri - SP
-55114198|Barueri - SP
+5511418|Carapicuíba - SP
+5511419|Barueri - SP
 55114201|Barueri - SP
 55114202|Carapicuíba - SP
 55114204|Araçariguama - SP
@@ -1429,15 +471,7 @@
 55114206|Jandira - SP
 55114209|Barueri - SP
 55114217|Atibaia - SP
-55114220|São Caetano do Sul - SP
-55114222|São Caetano do Sul - SP
-55114223|São Caetano do Sul - SP
-55114224|São Caetano do Sul - SP
-55114225|São Caetano do Sul - SP
-55114226|São Caetano do Sul - SP
-55114227|São Caetano do Sul - SP
-55114228|São Caetano do Sul - SP
-55114229|São Caetano do Sul - SP
+5511422|São Caetano do Sul - SP
 55114230|Itupeva - SP
 55114233|São Caetano do Sul - SP
 55114234|São Caetano do Sul - SP
@@ -1462,76 +496,27 @@
 55114308|Diadema - SP
 55114312|Mogi das Cruzes - SP
 55114317|São Bernardo do Campo - SP
-55114330|São Bernardo do Campo - SP
-55114331|São Bernardo do Campo - SP
-55114332|São Bernardo do Campo - SP
-55114334|São Bernardo do Campo - SP
-55114335|São Bernardo do Campo - SP
-55114337|São Bernardo do Campo - SP
-55114338|São Bernardo do Campo - SP
-55114339|São Bernardo do Campo - SP
-55114341|São Bernardo do Campo - SP
-55114342|São Bernardo do Campo - SP
-55114343|São Bernardo do Campo - SP
-55114344|São Bernardo do Campo - SP
-55114345|São Bernardo do Campo - SP
-55114346|São Bernardo do Campo - SP
-55114347|São Bernardo do Campo - SP
-55114348|São Bernardo do Campo - SP
+5511433|São Bernardo do Campo - SP
+5511434|São Bernardo do Campo - SP
 55114349|São Paulo - SP
-55114351|São Bernardo do Campo - SP
-55114352|São Bernardo do Campo - SP
-55114354|São Bernardo do Campo - SP
-55114355|São Bernardo do Campo - SP
-55114356|São Bernardo do Campo - SP
-55114357|São Bernardo do Campo - SP
-55114358|São Bernardo do Campo - SP
-55114359|São Bernardo do Campo - SP
-55114360|São Bernardo do Campo - SP
-55114361|São Bernardo do Campo - SP
-55114362|São Bernardo do Campo - SP
-55114363|São Bernardo do Campo - SP
-55114365|São Bernardo do Campo - SP
-55114366|São Bernardo do Campo - SP
-55114367|São Bernardo do Campo - SP
-55114368|São Bernardo do Campo - SP
+5511435|São Bernardo do Campo - SP
+5511436|São Bernardo do Campo - SP
 55114373|São Paulo - SP
 55114374|Carapicuíba - SP
-55114390|São Bernardo do Campo - SP
-55114391|São Bernardo do Campo - SP
-55114393|São Bernardo do Campo - SP
-55114394|São Bernardo do Campo - SP
-55114396|São Bernardo do Campo - SP
-55114397|São Bernardo do Campo - SP
-55114398|São Bernardo do Campo - SP
-55114399|São Bernardo do Campo - SP
+5511439|São Bernardo do Campo - SP
 55114402|Atibaia - SP
 55114403|Itu - SP
 55114405|Piracaia - SP
 55114408|Cajamar - SP
 55114409|Jacaré - SP
-55114411|Atibaia - SP
-55114412|Atibaia - SP
-55114413|Atibaia - SP
-55114414|Atibaia - SP
-55114415|Atibaia - SP
-55114416|Atibaia - SP
-55114417|Atibaia - SP
-55114418|Atibaia - SP
+5511441|Atibaia - SP
 55114419|Mairiporã - SP
 55114421|Santo André - SP
 55114424|Santo André - SP
 55114427|Santo André - SP
 55114428|Santo André - SP
+5511443|Santo André - SP
 55114431|Jundiaí - SP
-55114432|Santo André - SP
-55114433|Santo André - SP
-55114434|Santo André - SP
-55114435|Santo André - SP
-55114436|Santo André - SP
-55114437|Santo André - SP
-55114438|Santo André - SP
-55114439|Santo André - SP
 55114441|Caieiras - SP
 55114442|Caieiras - SP
 55114443|Franco da Rocha - SP
@@ -1565,24 +550,14 @@
 55114495|Itatiba - SP
 55114496|Itupeva - SP
 55114497|Jundiaí - SP
-55114501|São Paulo - SP
-55114502|São Paulo - SP
-55114504|São Paulo - SP
-55114505|São Paulo - SP
-55114506|São Paulo - SP
-55114508|São Paulo - SP
+5511450|São Paulo - SP
 55114509|Santo André - SP
 55114511|Mauá - SP
 55114513|Mauá - SP
 55114518|Mauá - SP
 55114519|Mauá - SP
-55114521|Jundiaí - SP
-55114522|Jundiaí - SP
-55114523|Jundiaí - SP
+5511452|Jundiaí - SP
 55114524|Itatiba - SP
-55114525|Jundiaí - SP
-55114526|Jundiaí - SP
-55114527|Jundiaí - SP
 55114528|Cabreúva - SP
 55114529|Jacaré - SP
 55114531|Jundiaí - SP
@@ -1593,12 +568,7 @@
 55114537|Jundiaí - SP
 55114538|Itatiba - SP
 55114539|Joanópolis - SP
-55114543|Mauá - SP
-55114545|Mauá - SP
-55114546|Mauá - SP
-55114547|Mauá - SP
-55114548|Mauá - SP
-55114549|Mauá - SP
+5511454|Mauá - SP
 55114555|Mauá - SP
 55114566|Mogi das Cruzes - SP
 55114571|São Paulo - SP
@@ -1606,14 +576,7 @@
 55114576|Mauá - SP
 55114577|Mauá - SP
 55114578|Mauá - SP
-55114581|Jundiaí - SP
-55114582|Jundiaí - SP
-55114583|Jundiaí - SP
-55114584|Jundiaí - SP
-55114585|Jundiaí - SP
-55114586|Jundiaí - SP
-55114587|Jundiaí - SP
-55114588|Jundiaí - SP
+5511458|Jundiaí - SP
 55114591|Itupeva - SP
 55114592|Itupeva - SP
 55114593|Itupeva - SP
@@ -1632,12 +595,7 @@
 55114607|Jundiaí - SP
 55114608|Francisco Morato - SP
 55114609|Francisco Morato - SP
-55114611|Cotia - SP
-55114612|Cotia - SP
-55114614|Cotia - SP
-55114615|Cotia - SP
-55114616|Cotia - SP
-55114617|Cotia - SP
+5511461|Cotia - SP
 55114618|Jandira - SP
 55114619|Jandira - SP
 55114620|Osasco - SP
@@ -1668,12 +626,7 @@
 55114667|Itapecerica da Serra - SP
 55114668|Itapecerica da Serra - SP
 55114669|Itapecerica da Serra - SP
-55114674|Ferraz de Vasconcelos - SP
-55114675|Ferraz de Vasconcelos - SP
-55114676|Ferraz de Vasconcelos - SP
-55114677|Ferraz de Vasconcelos - SP
-55114678|Ferraz de Vasconcelos - SP
-55114679|Ferraz de Vasconcelos - SP
+5511467|Ferraz de Vasconcelos - SP
 55114680|Santa Isabel - SP
 55114681|Juquitiba - SP
 55114682|Juquitiba - SP
@@ -1696,34 +649,17 @@
 55114706|Barueri - SP
 55114707|Jandira - SP
 55114708|Mairinque - SP
-55114711|São Roque - SP
-55114712|São Roque - SP
-55114713|São Roque - SP
-55114714|São Roque - SP
+5511471|São Roque - SP
 55114715|Alumínio - SP
 55114716|São João Novo - SP
-55114717|São Roque - SP
 55114718|Mairinque - SP
-55114719|São Roque - SP
-55114722|Mogi das Cruzes - SP
-55114723|Mogi das Cruzes - SP
-55114725|Mogi das Cruzes - SP
-55114726|Mogi das Cruzes - SP
-55114727|Mogi das Cruzes - SP
-55114728|Mogi das Cruzes - SP
-55114729|Mogi das Cruzes - SP
+5511472|Mogi das Cruzes - SP
 55114731|Suzano - SP
 55114735|Mogi das Cruzes - SP
 55114736|Mogi das Cruzes - SP
 55114738|Mogi das Cruzes - SP
 55114739|Mogi das Cruzes - SP
-55114741|Suzano - SP
-55114742|Suzano - SP
-55114743|Suzano - SP
-55114744|Suzano - SP
-55114746|Suzano - SP
-55114747|Suzano - SP
-55114748|Suzano - SP
+5511474|Suzano - SP
 55114751|Suzano - SP
 55114755|Itaquaquecetuba - SP
 55114759|Suzano - SP
@@ -1742,15 +678,7 @@
 55114786|Taboão da Serra - SP
 55114787|Taboão da Serra - SP
 55114789|Jandira - SP
-55114790|Mogi das Cruzes - SP
-55114791|Mogi das Cruzes - SP
-55114792|Mogi das Cruzes - SP
-55114794|Mogi das Cruzes - SP
-55114795|Mogi das Cruzes - SP
-55114796|Mogi das Cruzes - SP
-55114797|Mogi das Cruzes - SP
-55114798|Mogi das Cruzes - SP
-55114799|Mogi das Cruzes - SP
+5511479|Mogi das Cruzes - SP
 55114805|Jundiaí - SP
 55114806|Jundiaí - SP
 55114808|Jundiaí - SP
@@ -1762,15 +690,10 @@
 55114817|Jundiaí - SP
 55114818|Terra Preta - SP
 55114819|Franco da Rocha - SP
+5511482|Ribeirão Pires - SP
 55114820|Rio Grande da Serra - SP
 55114821|Rio Grande da Serra - SP
-55114823|Ribeirão Pires - SP
-55114824|Ribeirão Pires - SP
-55114825|Ribeirão Pires - SP
 55114826|Rio Grande da Serra - SP
-55114827|Ribeirão Pires - SP
-55114828|Ribeirão Pires - SP
-55114829|Ribeirão Pires - SP
 55114837|São Paulo - SP
 55114850|Itu - SP
 55114852|Santo André - SP
@@ -1798,23 +721,8 @@
 55114976|Santo André - SP
 55114978|Santo André - SP
 55114979|Santo André - SP
-55114990|Santo André - SP
-55114991|Santo André - SP
-55114992|Santo André - SP
-55114993|Santo André - SP
-55114994|Santo André - SP
-55114995|Santo André - SP
-55114996|Santo André - SP
-55114998|Santo André - SP
-55115010|São Paulo - SP
-55115011|São Paulo - SP
-55115012|São Paulo - SP
-55115013|São Paulo - SP
-55115014|São Paulo - SP
-55115015|São Paulo - SP
-55115016|São Paulo - SP
-55115017|São Paulo - SP
-55115018|São Paulo - SP
+5511499|Santo André - SP
+5511501|São Paulo - SP
 55115021|São Paulo - SP
 55115029|São Paulo - SP
 55115031|São Paulo - SP
@@ -1824,33 +732,14 @@
 55115042|São Paulo - SP
 55115044|São Paulo - SP
 55115049|São Paulo - SP
-55115051|São Paulo - SP
-55115052|São Paulo - SP
-55115053|São Paulo - SP
-55115054|São Paulo - SP
-55115055|São Paulo - SP
-55115056|São Paulo - SP
+5511505|São Paulo - SP
 55115061|São Paulo - SP
 55115062|São Paulo - SP
 55115063|São Paulo - SP
 55115066|São Paulo - SP
 55115068|São Paulo - SP
-55115071|São Paulo - SP
-55115072|São Paulo - SP
-55115073|São Paulo - SP
-55115074|São Paulo - SP
-55115077|São Paulo - SP
-55115078|São Paulo - SP
-55115080|São Paulo - SP
-55115081|São Paulo - SP
-55115082|São Paulo - SP
-55115083|São Paulo - SP
-55115084|São Paulo - SP
-55115085|São Paulo - SP
-55115086|São Paulo - SP
-55115087|São Paulo - SP
-55115088|São Paulo - SP
-55115089|São Paulo - SP
+5511507|São Paulo - SP
+5511508|São Paulo - SP
 55115090|São Paulo - SP
 55115092|São Paulo - SP
 55115094|São Paulo - SP
@@ -1861,97 +750,18 @@
 55115105|São Paulo - SP
 55115111|São Paulo - SP
 55115112|São Paulo - SP
-55115181|São Paulo - SP
-55115182|São Paulo - SP
-55115183|São Paulo - SP
-55115184|São Paulo - SP
-55115187|São Paulo - SP
-55115189|São Paulo - SP
+5511518|São Paulo - SP
 55115212|São Paulo - SP
 55115213|São Paulo - SP
 55115477|Mogi das Cruzes - SP
 55115486|São Paulo - SP
-55115489|São Paulo
-55115501|São Paulo - SP
-55115502|São Paulo - SP
-55115504|São Paulo - SP
-55115505|São Paulo - SP
-55115506|São Paulo - SP
-55115507|São Paulo - SP
-55115508|São Paulo - SP
-55115509|São Paulo - SP
-55115510|São Paulo - SP
-55115511|São Paulo - SP
-55115512|São Paulo - SP
-55115513|São Paulo - SP
-55115514|São Paulo - SP
-55115515|São Paulo - SP
-55115516|São Paulo - SP
-55115517|São Paulo - SP
-55115521|São Paulo - SP
-55115522|São Paulo - SP
-55115523|São Paulo - SP
-55115524|São Paulo - SP
-55115525|São Paulo - SP
-55115526|São Paulo - SP
-55115528|São Paulo - SP
-55115531|São Paulo - SP
-55115532|São Paulo - SP
-55115533|São Paulo - SP
-55115534|São Paulo - SP
-55115535|São Paulo - SP
-55115536|São Paulo - SP
-55115537|São Paulo - SP
-55115538|São Paulo - SP
-55115539|São Paulo - SP
-55115541|São Paulo - SP
-55115542|São Paulo - SP
-55115543|São Paulo - SP
-55115545|São Paulo - SP
-55115546|São Paulo - SP
-55115547|São Paulo - SP
-55115548|São Paulo - SP
-55115549|São Paulo - SP
-55115555|São Paulo - SP
-55115560|São Paulo - SP
-55115561|São Paulo - SP
-55115562|São Paulo - SP
-55115563|São Paulo - SP
-55115564|São Paulo - SP
-55115566|São Paulo - SP
-55115571|São Paulo - SP
-55115572|São Paulo - SP
-55115573|São Paulo - SP
-55115574|São Paulo - SP
-55115575|São Paulo - SP
-55115576|São Paulo - SP
-55115579|São Paulo - SP
-55115581|São Paulo - SP
-55115582|São Paulo - SP
-55115583|São Paulo - SP
-55115584|São Paulo - SP
-55115585|São Paulo - SP
-55115587|São Paulo - SP
-55115588|São Paulo - SP
-55115589|São Paulo - SP
-55115591|São Paulo - SP
-55115592|São Paulo - SP
-55115593|São Paulo - SP
-55115594|São Paulo - SP
-55115595|São Paulo - SP
-55115599|São Paulo - SP
+551155|São Paulo - SP
 55115611|São Paulo - SP
 55115612|São Paulo - SP
 55115614|São Paulo - SP
 55115615|São Paulo - SP
 55115616|São Paulo - SP
-55115620|São Paulo - SP
-55115621|São Paulo - SP
-55115622|São Paulo - SP
-55115623|São Paulo - SP
-55115624|São Paulo - SP
-55115625|São Paulo - SP
-55115626|São Paulo - SP
+5511562|São Paulo - SP
 55115631|São Paulo - SP
 55115632|São Paulo - SP
 55115634|São Paulo - SP
@@ -1961,27 +771,9 @@
 55115643|São Paulo - SP
 55115645|São Paulo - SP
 55115646|São Paulo - SP
-55115660|São Paulo - SP
-55115661|São Paulo - SP
-55115663|São Paulo - SP
-55115665|São Paulo - SP
-55115666|São Paulo - SP
-55115667|São Paulo - SP
-55115668|São Paulo - SP
-55115669|São Paulo - SP
-55115670|São Paulo - SP
-55115671|São Paulo - SP
-55115674|São Paulo - SP
-55115675|São Paulo - SP
-55115676|São Paulo - SP
-55115678|São Paulo - SP
-55115679|São Paulo - SP
-55115681|São Paulo - SP
-55115682|São Paulo - SP
-55115683|São Paulo - SP
-55115685|São Paulo - SP
-55115686|São Paulo - SP
-55115687|São Paulo - SP
+5511566|São Paulo - SP
+5511567|São Paulo - SP
+5511568|São Paulo - SP
 55115691|São Paulo - SP
 55115693|São Paulo - SP
 55115695|São Paulo - SP
@@ -2002,42 +794,18 @@
 55115853|São Paulo - SP
 55115854|São Paulo - SP
 55115855|São Paulo - SP
-55115870|São Paulo - SP
-55115871|São Paulo - SP
-55115872|São Paulo - SP
-55115873|São Paulo - SP
-55115874|São Paulo - SP
-55115875|São Paulo - SP
-55115891|São Paulo - SP
-55115892|São Paulo - SP
-55115895|São Paulo - SP
-55115896|São Paulo - SP
-55115897|São Paulo - SP
-55115899|São Paulo - SP
+5511587|São Paulo - SP
+5511589|São Paulo - SP
 55115904|São Paulo - SP
 55115906|São Paulo - SP
 55115907|São Paulo - SP
 55115908|São Paulo - SP
-55115920|São Paulo - SP
-55115921|São Paulo - SP
-55115922|São Paulo - SP
-55115924|São Paulo - SP
-55115926|São Paulo - SP
-55115927|São Paulo - SP
-55115928|São Paulo - SP
-55115929|São Paulo - SP
+5511592|São Paulo - SP
 55115931|São Paulo - SP
 55115932|São Paulo - SP
 55115933|São Paulo - SP
 55115934|São Paulo - SP
-55115971|São Paulo - SP
-55115972|São Paulo - SP
-55115973|São Paulo - SP
-55115975|São Paulo - SP
-55115976|São Paulo - SP
-55115978|São Paulo - SP
-55115979|São Paulo - SP
-5512|São Paulo
+5511597|São Paulo - SP
 55122123|Taubaté - SP
 55122124|Lorena - SP
 55122125|Taubaté - SP
@@ -2077,12 +845,7 @@
 55123116|Bananal - SP
 55123117|São José do Barreiro - SP
 55123119|Campos de Cunha - SP
-55123122|Guaratinguetá - SP
-55123123|Guaratinguetá - SP
-55123125|Guaratinguetá - SP
-55123126|Guaratinguetá - SP
-55123127|Guaratinguetá - SP
-55123128|Guaratinguetá - SP
+5512312|Guaratinguetá - SP
 55123131|São José dos Campos - SP
 55123132|Guaratinguetá - SP
 55123133|Guaratinguetá - SP
@@ -2101,12 +864,7 @@
 55123184|Cruzeiro - SP
 55123185|Lorena - SP
 55123186|Cachoeira Paulista - SP
-55123201|São José dos Campos - SP
-55123202|São José dos Campos - SP
-55123203|São José dos Campos - SP
-55123204|São José dos Campos - SP
-55123206|São José dos Campos - SP
-55123207|São José dos Campos - SP
+5512320|São José dos Campos - SP
 55123211|Cruzeiro - SP
 55123221|Caçapava - SP
 55123224|Caçapava - SP
@@ -2136,28 +894,16 @@
 55123607|Tremembé - SP
 55123608|Taubaté - SP
 55123609|Taubaté - SP
-55123621|Taubaté - SP
-55123622|Taubaté - SP
-55123623|Taubaté - SP
-55123624|Taubaté - SP
-55123625|Taubaté - SP
-55123626|Taubaté - SP
-55123627|Taubaté - SP
-55123629|Taubaté - SP
+5512362|Taubaté - SP
 55123631|Taubaté - SP
 55123632|Taubaté - SP
 55123633|Taubaté - SP
 55123634|Taubaté - SP
 55123635|Taubaté - SP
 55123637|Moreira César - SP
-55123641|Pindamonhangaba - SP
-55123642|Pindamonhangaba - SP
-55123643|Pindamonhangaba - SP
-55123644|Pindamonhangaba - SP
-55123645|Pindamonhangaba - SP
+5512364|Pindamonhangaba - SP
 55123646|Roseira - SP
 55123647|Lagoinha - SP
-55123648|Pindamonhangaba - SP
 55123652|Caçapava - SP
 55123653|Caçapava - SP
 55123654|Caçapava - SP
@@ -2195,13 +941,7 @@
 55123867|Maresias - SP
 55123876|São José dos Campos - SP
 55123878|São José dos Campos - SP
-55123881|Caraguatatuba - SP
-55123882|Caraguatatuba - SP
-55123883|Caraguatatuba - SP
-55123884|Caraguatatuba - SP
-55123885|Caraguatatuba - SP
-55123886|Caraguatatuba - SP
-55123889|Caraguatatuba - SP
+5512388|Caraguatatuba - SP
 55123891|São Sebastião - SP
 55123892|São Sebastião - SP
 55123893|São Sebastião - SP
@@ -2209,51 +949,13 @@
 55123895|Ilhabela - SP
 55123896|Ilhabela - SP
 55123897|Caraguatatuba - SP
-55123902|São José dos Campos - SP
-55123903|São José dos Campos - SP
-55123904|São José dos Campos - SP
-55123905|São José dos Campos - SP
-55123907|São José dos Campos - SP
-55123908|São José dos Campos - SP
-55123911|São José dos Campos - SP
-55123912|São José dos Campos - SP
-55123913|São José dos Campos - SP
-55123916|São José dos Campos - SP
-55123917|São José dos Campos - SP
-55123919|São José dos Campos - SP
-55123921|São José dos Campos - SP
-55123922|São José dos Campos - SP
-55123923|São José dos Campos - SP
-55123924|São José dos Campos - SP
-55123926|São José dos Campos - SP
-55123927|São José dos Campos - SP
-55123928|São José dos Campos - SP
-55123929|São José dos Campos - SP
-55123931|São José dos Campos - SP
-55123933|São José dos Campos - SP
-55123934|São José dos Campos - SP
-55123935|São José dos Campos - SP
-55123936|São José dos Campos - SP
-55123937|São José dos Campos - SP
-55123938|São José dos Campos - SP
-55123939|São José dos Campos - SP
-55123941|São José dos Campos - SP
-55123942|São José dos Campos - SP
-55123943|São José dos Campos - SP
-55123944|São José dos Campos - SP
-55123945|São José dos Campos - SP
-55123946|São José dos Campos - SP
-55123948|São José dos Campos - SP
-55123949|São José dos Campos - SP
-55123951|Jacareí - SP
-55123952|Jacareí - SP
-55123953|Jacareí - SP
-55123954|Jacareí - SP
-55123955|Jacareí - SP
-55123956|Jacareí - SP
+5512390|São José dos Campos - SP
+5512391|São José dos Campos - SP
+5512392|São José dos Campos - SP
+5512393|São José dos Campos - SP
+5512394|São José dos Campos - SP
+5512395|Jacareí - SP
 55123957|São Silvestre - SP
-55123958|Jacareí - SP
-55123959|Jacareí - SP
 55123961|Jacareí - SP
 55123962|Jacareí - SP
 55123965|Jacareí - SP
@@ -2276,7 +978,6 @@
 55124448|Cajamar - SP
 55124611|Cotia - SP
 55124715|Alumínio - SP
-5513|São Paulo
 55132101|Santos - SP
 55132105|Santos - SP
 55132138|Santos - SP
@@ -2295,12 +996,7 @@
 55133219|Santos - SP
 55133224|Santos - SP
 55133227|Santos - SP
-55133231|Santos - SP
-55133232|Santos - SP
-55133236|Santos - SP
-55133237|Santos - SP
-55133238|Santos - SP
-55133239|Santos - SP
+5513323|Santos - SP
 55133251|Santos - SP
 55133258|Santos - SP
 55133261|Santos - SP
@@ -2311,12 +1007,7 @@
 55133273|Santos - SP
 55133278|Santos - SP
 55133279|Santos - SP
-55133281|Santos - SP
-55133284|Santos - SP
-55133285|Santos - SP
-55133286|Santos - SP
-55133288|Santos - SP
-55133289|Santos - SP
+5513328|Santos - SP
 55133291|Santos - SP
 55133295|Santos - SP
 55133296|Santos - SP
@@ -2324,12 +1015,7 @@
 55133299|Santos - SP
 55133302|Praia Grande - SP
 55133305|Guarujá - SP
-55133311|Bertioga - SP
-55133312|Bertioga - SP
-55133313|Bertioga - SP
-55133316|Bertioga - SP
-55133317|Bertioga - SP
-55133319|Bertioga - SP
+5513331|Bertioga - SP
 55133321|Santos - SP
 55133323|Santos - SP
 55133324|Santos - SP
@@ -2338,20 +1024,8 @@
 55133343|Guarujá - SP
 55133347|Guarujá - SP
 55133348|Guarujá - SP
-55133351|Guarujá - SP
-55133352|Guarujá - SP
-55133353|Guarujá - SP
-55133354|Guarujá - SP
-55133355|Guarujá - SP
-55133358|Guarujá - SP
-55133359|Guarujá - SP
-55133361|Cubatão - SP
-55133362|Cubatão - SP
-55133363|Cubatão - SP
-55133364|Cubatão - SP
-55133365|Cubatão - SP
-55133367|Cubatão - SP
-55133369|Cubatão - SP
+5513335|Guarujá - SP
+5513336|Cubatão - SP
 55133372|Cubatão - SP
 55133375|Cubatão - SP
 55133377|Cubatão - SP
@@ -2368,39 +1042,13 @@
 55133416|Ana Dias - SP
 55133418|Itariri - SP
 55133419|Pedro de Toledo - SP
-55133421|Itanhaém - SP
-55133422|Itanhaém - SP
-55133424|Itanhaém - SP
-55133425|Itanhaém - SP
-55133426|Itanhaém - SP
-55133427|Itanhaém - SP
-55133429|Itanhaém - SP
+5513342|Itanhaém - SP
 55133445|Mongaguá - SP
 55133446|Mongaguá - SP
 55133448|Mongaguá - SP
-55133451|Peruíbe - SP
-55133453|Peruíbe - SP
-55133454|Peruíbe - SP
-55133455|Peruíbe - SP
-55133456|Peruíbe - SP
-55133457|Peruíbe - SP
-55133458|Peruíbe - SP
-55133461|São Vicente - SP
-55133462|São Vicente - SP
-55133463|São Vicente - SP
-55133464|São Vicente - SP
-55133465|São Vicente - SP
-55133466|São Vicente - SP
-55133467|São Vicente - SP
-55133468|São Vicente - SP
-55133469|São Vicente - SP
-55133471|Praia Grande - SP
-55133472|Praia Grande - SP
-55133473|Praia Grande - SP
-55133474|Praia Grande - SP
-55133477|Praia Grande - SP
-55133478|Praia Grande - SP
-55133479|Praia Grande - SP
+5513345|Peruíbe - SP
+5513346|São Vicente - SP
+5513347|Praia Grande - SP
 55133481|Praia Grande - SP
 55133491|Praia Grande - SP
 55133493|Praia Grande - SP
@@ -2413,14 +1061,7 @@
 55133507|Mongaguá - SP
 55133513|Santos - SP
 55133519|Santos - SP
-55133561|São Vicente - SP
-55133563|São Vicente - SP
-55133564|São Vicente - SP
-55133565|São Vicente - SP
-55133566|São Vicente - SP
-55133567|São Vicente - SP
-55133568|São Vicente - SP
-55133569|São Vicente - SP
+5513356|São Vicente - SP
 55133576|São Vicente - SP
 55133579|São Vicente - SP
 55133591|Praia Grande - SP
@@ -2456,7 +1097,6 @@
 55134010|Santos - SP
 55134102|Guarujá - SP
 55134104|São Vicente - SP
-5514|São Paulo
 55142104|Jaú - SP
 55142105|Marília - SP
 55142106|Bauru - SP
@@ -2489,14 +1129,7 @@
 55143224|Bauru - SP
 55143226|Bauru - SP
 55143227|Bauru - SP
-55143231|Bauru - SP
-55143232|Bauru - SP
-55143233|Bauru - SP
-55143234|Bauru - SP
-55143236|Bauru - SP
-55143237|Bauru - SP
-55143238|Bauru - SP
-55143239|Bauru - SP
+5514323|Bauru - SP
 55143252|Pederneiras - SP
 55143261|Agudos - SP
 55143262|Agudos - SP
@@ -2641,12 +1274,7 @@
 55143601|Jaú - SP
 55143602|Jaú - SP
 55143604|Barra Bonita - SP
-55143621|Jaú - SP
-55143622|Jaú - SP
-55143623|Jaú - SP
-55143624|Jaú - SP
-55143625|Jaú - SP
-55143626|Jaú - SP
+5514362|Jaú - SP
 55143629|Potunduva - SP
 55143632|Dois Córregos - SP
 55143641|Barra Bonita - SP
@@ -2705,7 +1333,6 @@
 55144009|Bauru - SP
 55144103|Jaú - SP
 55144104|Garça - SP
-5515|São Paulo
 55152101|Sorocaba - SP
 55152102|Sorocaba - SP
 55152104|Sorocaba - SP
@@ -2713,12 +1340,7 @@
 55152107|Porto Feliz - SP
 55152108|Tietê - SP
 55153003|Sorocaba - SP
-55153011|Sorocaba - SP
-55153012|Sorocaba - SP
-55153013|Sorocaba - SP
-55153014|Sorocaba - SP
-55153016|Sorocaba - SP
-55153017|Sorocaba - SP
+5515301|Sorocaba - SP
 55153022|Tatuí - SP
 55153026|Sorocaba - SP
 55153115|Boituva - SP
@@ -2726,30 +1348,9 @@
 55153202|Sorocaba - SP
 55153205|Tatuí - SP
 55153207|Gramadinho - SP
-55153211|Sorocaba - SP
-55153212|Sorocaba - SP
-55153213|Sorocaba - SP
-55153217|Sorocaba - SP
-55153218|Sorocaba - SP
-55153219|Sorocaba - SP
-55153221|Sorocaba - SP
-55153222|Sorocaba - SP
-55153223|Sorocaba - SP
-55153224|Sorocaba - SP
-55153225|Sorocaba - SP
-55153226|Sorocaba - SP
-55153227|Sorocaba - SP
-55153228|Sorocaba - SP
-55153229|Sorocaba - SP
-55153231|Sorocaba - SP
-55153232|Sorocaba - SP
-55153233|Sorocaba - SP
-55153234|Sorocaba - SP
-55153235|Sorocaba - SP
-55153236|Sorocaba - SP
-55153237|Sorocaba - SP
-55153238|Sorocaba - SP
-55153239|Sorocaba - SP
+5515321|Sorocaba - SP
+5515322|Sorocaba - SP
+5515323|Sorocaba - SP
 55153241|Ibiúna - SP
 55153242|Votorantim - SP
 55153243|Votorantim - SP
@@ -2798,7 +1399,6 @@
 55153294|Ibiúna - SP
 55153297|Araçoiaba da Serra - SP
 55153298|Pilar do Sul - SP
-55153299|São Paulo
 55153302|Sorocaba - SP
 55153305|Tatuí - SP
 55153307|Itapetininga - SP
@@ -2831,13 +1431,8 @@
 55153388|Sorocaba - SP
 55153392|Itapetininga - SP
 55153394|Ibiúna - SP
-55153411|Sorocaba - SP
-55153412|Sorocaba - SP
-55153414|Sorocaba - SP
-55153415|Sorocaba - SP
+5515341|Sorocaba - SP
 55153416|Votorantim - SP
-55153417|Sorocaba - SP
-55153418|Sorocaba - SP
 55153431|Itararé - SP
 55153451|Tatuí - SP
 55153459|Iperó - SP
@@ -2888,7 +1483,6 @@
 55153646|Buri - SP
 55153653|Capão Bonito - SP
 55154009|Sorocaba - SP
-5516|São Paulo
 55162101|Ribeirão Preto - SP
 55162102|Ribeirão Preto - SP
 55162105|Sertãozinho - SP
@@ -2967,15 +1561,8 @@
 55163323|Ribeirão Preto - SP
 55163324|Araraquara - SP
 55163326|Boa Esperança do Sul - SP
-55163331|Araraquara - SP
-55163332|Araraquara - SP
-55163333|Araraquara - SP
-55163334|Araraquara - SP
-55163335|Araraquara - SP
-55163336|Araraquara - SP
-55163337|Araraquara - SP
+5516333|Araraquara - SP
 55163338|Gavião Peixoto - SP
-55163339|Araraquara - SP
 55163341|Ibitinga - SP
 55163342|Ibitinga - SP
 55163343|Ibaté - SP
@@ -2991,21 +1578,8 @@
 55163354|Guarapiranga - SP
 55163357|Araraquara - SP
 55163358|Araraquara - SP
-55163361|São Carlos - SP
-55163362|São Carlos - SP
-55163363|São Carlos - SP
-55163364|São Carlos - SP
-55163366|São Carlos - SP
-55163367|São Carlos - SP
-55163368|São Carlos - SP
-55163371|São Carlos - SP
-55163372|São Carlos - SP
-55163373|São Carlos - SP
-55163374|São Carlos - SP
-55163375|São Carlos - SP
-55163376|São Carlos - SP
-55163377|São Carlos - SP
-55163378|São Carlos - SP
+5516336|São Carlos - SP
+5516337|São Carlos - SP
 55163379|Fazenda Babilônia - SP
 55163382|Matão - SP
 55163383|Matão - SP
@@ -3060,30 +1634,9 @@
 55163604|Ribeirão Preto - SP
 55163605|Ribeirão Preto - SP
 55163607|Ribeirão Preto - SP
-55163610|Ribeirão Preto - SP
-55163611|Ribeirão Preto - SP
-55163612|Ribeirão Preto - SP
-55163615|Ribeirão Preto - SP
-55163617|Ribeirão Preto - SP
-55163618|Ribeirão Preto - SP
-55163620|Ribeirão Preto - SP
-55163621|Ribeirão Preto - SP
-55163622|Ribeirão Preto - SP
-55163623|Ribeirão Preto - SP
-55163624|Ribeirão Preto - SP
-55163625|Ribeirão Preto - SP
-55163626|Ribeirão Preto - SP
-55163627|Ribeirão Preto - SP
-55163628|Ribeirão Preto - SP
-55163629|Ribeirão Preto - SP
-55163630|Ribeirão Preto - SP
-55163632|Ribeirão Preto - SP
-55163633|Ribeirão Preto - SP
-55163635|Ribeirão Preto - SP
-55163636|Ribeirão Preto - SP
-55163637|Ribeirão Preto - SP
-55163638|Ribeirão Preto - SP
-55163639|Ribeirão Preto - SP
+5516361|Ribeirão Preto - SP
+5516362|Ribeirão Preto - SP
+5516363|Ribeirão Preto - SP
 55163659|Brodowski - SP
 55163660|Batatais - SP
 55163661|Batatais - SP
@@ -3137,12 +1690,7 @@
 55163878|Ribeirão Preto - SP
 55163902|Ribeirão Preto - SP
 55163904|Ribeirão Preto - SP
-55163911|Ribeirão Preto - SP
-55163913|Ribeirão Preto - SP
-55163914|Ribeirão Preto - SP
-55163916|Ribeirão Preto - SP
-55163917|Ribeirão Preto - SP
-55163919|Ribeirão Preto - SP
+5516391|Ribeirão Preto - SP
 55163931|Ribeirão Preto - SP
 55163934|Ribeirão Preto - SP
 55163941|Ribeirão Preto - SP
@@ -3160,15 +1708,7 @@
 55163956|Pontal - SP
 55163957|Ibitiúva - SP
 55163958|Taquaral - SP
-55163961|Ribeirão Preto - SP
-55163962|Ribeirão Preto - SP
-55163963|Ribeirão Preto - SP
-55163964|Ribeirão Preto - SP
-55163965|Ribeirão Preto - SP
-55163966|Ribeirão Preto - SP
-55163967|Ribeirão Preto - SP
-55163968|Ribeirão Preto - SP
-55163969|Ribeirão Preto - SP
+5516396|Ribeirão Preto - SP
 55163972|Bonfim Paulista - SP
 55163973|Guatapará - SP
 55163974|Ribeirão Preto - SP
@@ -3186,7 +1726,6 @@
 55163995|Ribeirão Preto - SP
 55163996|Ribeirão Preto - SP
 55164003|Ribeirão Preto - SP
-5517|São Paulo
 55172136|São José do Rio Preto - SP
 55172137|São José do Rio Preto - SP
 55173011|São José do Rio Preto - SP
@@ -3202,30 +1741,9 @@
 55173202|São José do Rio Preto - SP
 55173203|São José do Rio Preto - SP
 55173209|São José do Rio Preto - SP
-55173211|São José do Rio Preto - SP
-55173212|São José do Rio Preto - SP
-55173213|São José do Rio Preto - SP
-55173214|São José do Rio Preto - SP
-55173215|São José do Rio Preto - SP
-55173216|São José do Rio Preto - SP
-55173217|São José do Rio Preto - SP
-55173218|São José do Rio Preto - SP
-55173219|São José do Rio Preto - SP
-55173222|São José do Rio Preto - SP
-55173223|São José do Rio Preto - SP
-55173224|São José do Rio Preto - SP
-55173225|São José do Rio Preto - SP
-55173226|São José do Rio Preto - SP
-55173227|São José do Rio Preto - SP
-55173229|São José do Rio Preto - SP
-55173231|São José do Rio Preto - SP
-55173232|São José do Rio Preto - SP
-55173233|São José do Rio Preto - SP
-55173234|São José do Rio Preto - SP
-55173235|São José do Rio Preto - SP
-55173236|São José do Rio Preto - SP
-55173237|São José do Rio Preto - SP
-55173238|São José do Rio Preto - SP
+5517321|São José do Rio Preto - SP
+5517322|São José do Rio Preto - SP
+5517323|São José do Rio Preto - SP
 55173242|Mirassol - SP
 55173243|Mirassol - SP
 55173245|José Bonifácio - SP
@@ -3267,13 +1785,7 @@
 55173302|São José do Rio Preto - SP
 55173311|Catanduva - SP
 55173312|Barretos - SP
-55173321|Barretos - SP
-55173322|Barretos - SP
-55173323|Barretos - SP
-55173324|Barretos - SP
-55173325|Barretos - SP
-55173326|Barretos - SP
-55173328|Barretos - SP
+5517332|Barretos - SP
 55173329|Alberto Moreira - SP
 55173330|Guaíra - SP
 55173331|Guaíra - SP
@@ -3423,7 +1935,6 @@
 55174003|São José do Rio Preto - SP
 55174004|São José do Rio Preto - SP
 55174009|São José do Rio Preto - SP
-5518|São Paulo
 55182101|Presidente Prudente - SP
 55182102|Araçatuba - SP
 55182103|Araçatuba - SP
@@ -3599,14 +2110,7 @@
 55183872|Ouro Verde - SP
 55183875|Santa Mercedes - SP
 55183876|Paulicéia - SP
-55183901|Presidente Prudente - SP
-55183902|Presidente Prudente - SP
-55183903|Presidente Prudente - SP
-55183905|Presidente Prudente - SP
-55183906|Presidente Prudente - SP
-55183907|Presidente Prudente - SP
-55183908|Presidente Prudente - SP
-55183909|Presidente Prudente - SP
+5518390|Presidente Prudente - SP
 55183911|Eneida - SP
 55183913|Montalvão - SP
 55183916|Presidente Prudente - SP
@@ -3630,7 +2134,6 @@
 55185821|Dracena - SP
 55185841|Junqueirópolis - SP
 55185871|Panorama - SP
-5519|São Paulo
 55192101|Campinas - SP
 55192102|Campinas - SP
 55192103|Campinas - SP
@@ -3681,76 +2184,7 @@
 55193181|Floresta Escura - SP
 55193186|Charqueada - SP
 55193187|Santa Maria da Serra - SP
-55193201|Campinas - SP
-55193202|Campinas - SP
-55193203|Campinas - SP
-55193206|Campinas - SP
-55193207|Campinas - SP
-55193208|Campinas - SP
-55193209|Campinas - SP
-55193211|Campinas - SP
-55193212|Campinas - SP
-55193213|Campinas - SP
-55193216|Campinas - SP
-55193221|Campinas - SP
-55193223|Campinas - SP
-55193224|Campinas - SP
-55193225|Campinas - SP
-55193226|Campinas - SP
-55193227|Campinas - SP
-55193228|Campinas - SP
-55193229|Campinas - SP
-55193231|Campinas - SP
-55193232|Campinas - SP
-55193233|Campinas - SP
-55193234|Campinas - SP
-55193235|Campinas - SP
-55193236|Campinas - SP
-55193237|Campinas - SP
-55193238|Campinas - SP
-55193239|Campinas - SP
-55193241|Campinas - SP
-55193243|Campinas - SP
-55193245|Campinas - SP
-55193246|Campinas - SP
-55193249|Campinas - SP
-55193251|Campinas - SP
-55193252|Campinas - SP
-55193253|Campinas - SP
-55193254|Campinas - SP
-55193255|Campinas - SP
-55193256|Campinas - SP
-55193257|Campinas - SP
-55193258|Campinas - SP
-55193259|Campinas - SP
-55193262|Campinas - SP
-55193263|Campinas - SP
-55193265|Campinas - SP
-55193266|Campinas - SP
-55193267|Campinas - SP
-55193268|Campinas - SP
-55193269|Campinas - SP
-55193271|Campinas - SP
-55193272|Campinas - SP
-55193273|Campinas - SP
-55193274|Campinas - SP
-55193275|Campinas - SP
-55193276|Campinas - SP
-55193277|Campinas - SP
-55193278|Campinas - SP
-55193279|Campinas - SP
-55193281|Campinas - SP
-55193282|Campinas - SP
-55193283|Campinas - SP
-55193284|Campinas - SP
-55193285|Campinas - SP
-55193287|Campinas - SP
-55193288|Campinas - SP
-55193289|Campinas - SP
-55193294|Campinas - SP
-55193295|Campinas - SP
-55193296|Campinas - SP
-55193298|Campinas - SP
+551932|Campinas - SP
 55193301|Piracicaba - SP
 55193302|Piracicaba - SP
 55193304|Campinas - SP
@@ -3795,37 +2229,12 @@
 55193406|Americana - SP
 55193407|Americana - SP
 55193408|Americana - SP
-55193411|Piracicaba - SP
-55193412|Piracicaba - SP
-55193413|Piracicaba - SP
-55193414|Piracicaba - SP
-55193415|Piracicaba - SP
-55193417|Piracicaba - SP
-55193418|Piracicaba - SP
-55193421|Piracicaba - SP
-55193422|Piracicaba - SP
-55193423|Piracicaba - SP
-55193424|Piracicaba - SP
-55193425|Piracicaba - SP
-55193426|Piracicaba - SP
-55193427|Piracicaba - SP
-55193428|Piracicaba - SP
-55193429|Piracicaba - SP
-55193430|Piracicaba - SP
+5519341|Piracicaba - SP
+5519342|Piracicaba - SP
+5519343|Piracicaba - SP
 55193431|Tanquinho - SP
-55193432|Piracicaba - SP
-55193433|Piracicaba - SP
-55193434|Piracicaba - SP
-55193435|Piracicaba - SP
-55193436|Piracicaba - SP
-55193437|Piracicaba - SP
 55193439|Saltinho - SP
-55193441|Limeira - SP
-55193442|Limeira - SP
-55193443|Limeira - SP
-55193444|Limeira - SP
-55193445|Limeira - SP
-55193446|Limeira - SP
+5519344|Limeira - SP
 55193447|Piracicaba - SP
 55193448|Ibitiruna - SP
 55193451|Limeira - SP
@@ -3836,15 +2245,10 @@
 55193456|Iracemápolis - SP
 55193457|Santa Bárbara D'Oeste - SP
 55193458|Santa Bárbara D'Oeste - SP
-55193461|Americana - SP
-55193462|Americana - SP
+5519346|Americana - SP
 55193463|Santa Bárbara D'Oeste - SP
 55193464|Santa Bárbara D'Oeste - SP
-55193465|Americana - SP
 55193466|Nova Odessa - SP
-55193467|Americana - SP
-55193468|Americana - SP
-55193469|Americana - SP
 55193473|Santa Bárbara D'Oeste - SP
 55193476|Nova Odessa - SP
 55193477|Americana - SP
@@ -3859,7 +2263,6 @@
 55193491|Capivari - SP
 55193492|Capivari - SP
 55193493|Rio das Pedras - SP
-55193494|São Paulo
 55193495|Limeira - SP
 55193496|Rafard - SP
 55193497|Limeira - SP
@@ -3874,19 +2277,9 @@
 55193513|Limeira - SP
 55193516|Campinas - SP
 55193519|Campinas - SP
+5519352|Rio Claro - SP
 55193521|Campinas - SP
-55193522|Rio Claro - SP
-55193523|Rio Claro - SP
-55193524|Rio Claro - SP
-55193525|Rio Claro - SP
-55193526|Rio Claro - SP
-55193527|Rio Claro - SP
-55193531|Rio Claro - SP
-55193532|Rio Claro - SP
-55193533|Rio Claro - SP
-55193534|Rio Claro - SP
-55193535|Rio Claro - SP
-55193536|Rio Claro - SP
+5519353|Rio Claro - SP
 55193537|Ipeúna - SP
 55193538|Ajapi - SP
 55193539|Ajapi - SP
@@ -3943,13 +2336,7 @@
 55193626|Santa Bárbara D'Oeste - SP
 55193628|Santa Bárbara D'Oeste - SP
 55193629|Santa Bárbara D'Oeste - SP
-55193631|São João da Boa Vista - SP
-55193632|São João da Boa Vista - SP
-55193633|São João da Boa Vista - SP
-55193634|São João da Boa Vista - SP
-55193635|São João da Boa Vista - SP
-55193636|São João da Boa Vista - SP
-55193638|São João da Boa Vista - SP
+5519363|São João da Boa Vista - SP
 55193641|Vargem Grande do Sul - SP
 55193642|Águas da Prata - SP
 55193643|Vargem Grande do Sul - SP
@@ -3974,7 +2361,6 @@
 55193674|Casa Branca - SP
 55193675|Tambaú - SP
 55193678|Canoas - SP
-55193679|São Paulo
 55193681|São José do Rio Pardo - SP
 55193682|São José do Rio Pardo - SP
 55193683|Santa Cruz das Palmeiras - SP
@@ -3991,32 +2377,13 @@
 55193713|Limeira - SP
 55193716|Campinas - SP
 55193717|Limeira - SP
-55193721|Campinas - SP
-55193722|Campinas - SP
-55193723|Campinas - SP
-55193725|Campinas - SP
-55193726|Campinas - SP
-55193728|Campinas - SP
-55193731|Campinas - SP
-55193732|Campinas - SP
-55193733|Campinas - SP
-55193734|Campinas - SP
-55193735|Campinas - SP
-55193736|Campinas - SP
-55193737|Campinas - SP
-55193738|Campinas - SP
-55193739|Campinas - SP
+5519372|Campinas - SP
+5519373|Campinas - SP
 55193743|Campinas - SP
 55193744|Campinas - SP
 55193746|Campinas - SP
 55193749|Campinas - SP
-55193751|Campinas - SP
-55193753|Campinas - SP
-55193754|Campinas - SP
-55193755|Campinas - SP
-55193756|Campinas - SP
-55193757|Campinas - SP
-55193758|Campinas - SP
+5519375|Campinas - SP
 55193761|Campinas - SP
 55193765|Campinas - SP
 55193768|Campinas - SP
@@ -4026,13 +2393,7 @@
 55193775|Campinas - SP
 55193778|Campinas - SP
 55193779|Campinas - SP
-55193781|Campinas - SP
-55193782|Campinas - SP
-55193783|Campinas - SP
-55193785|Campinas - SP
-55193787|Campinas - SP
-55193788|Campinas - SP
-55193789|Campinas - SP
+5519378|Campinas - SP
 55193792|Limeira - SP
 55193794|Campinas - SP
 55193795|Campinas - SP
@@ -4170,297 +2531,22 @@
 55212153|Rio de Janeiro - RJ
 55212173|Rio de Janeiro - RJ
 55212186|Nilópolis - RJ
-55212201|Rio de Janeiro - RJ
-55212203|Rio de Janeiro - RJ
-55212204|Rio de Janeiro - RJ
-55212205|Rio de Janeiro - RJ
-55212206|Rio de Janeiro - RJ
-55212208|Rio de Janeiro - RJ
-55212209|Rio de Janeiro - RJ
-55212210|Rio de Janeiro - RJ
-55212211|Rio de Janeiro - RJ
-55212212|Rio de Janeiro - RJ
-55212213|Rio de Janeiro - RJ
-55212214|Rio de Janeiro - RJ
-55212215|Rio de Janeiro - RJ
-55212216|Rio de Janeiro - RJ
-55212217|Rio de Janeiro - RJ
-55212219|Rio de Janeiro - RJ
-55212220|Rio de Janeiro - RJ
-55212221|Rio de Janeiro - RJ
-55212222|Rio de Janeiro - RJ
-55212223|Rio de Janeiro - RJ
-55212224|Rio de Janeiro - RJ
-55212225|Rio de Janeiro - RJ
-55212226|Rio de Janeiro - RJ
-55212227|Rio de Janeiro - RJ
-55212228|Rio de Janeiro - RJ
-55212230|Rio de Janeiro - RJ
-55212231|Rio de Janeiro - RJ
-55212232|Rio de Janeiro - RJ
-55212233|Rio de Janeiro - RJ
-55212234|Rio de Janeiro - RJ
-55212235|Rio de Janeiro - RJ
-55212236|Rio de Janeiro - RJ
-55212237|Rio de Janeiro - RJ
-55212238|Rio de Janeiro - RJ
-55212239|Rio de Janeiro - RJ
-55212240|Rio de Janeiro - RJ
-55212241|Rio de Janeiro - RJ
-55212242|Rio de Janeiro - RJ
-55212243|Rio de Janeiro - RJ
-55212244|Rio de Janeiro - RJ
-55212246|Rio de Janeiro - RJ
-55212247|Rio de Janeiro - RJ
-55212249|Rio de Janeiro - RJ
+552122|Rio de Janeiro - RJ
 55212251|São Gonçalo - RJ
-55212252|Rio de Janeiro - RJ
-55212253|Rio de Janeiro - RJ
-55212254|Rio de Janeiro - RJ
-55212255|Rio de Janeiro - RJ
-55212256|Rio de Janeiro - RJ
-55212257|Rio de Janeiro - RJ
-55212258|Rio de Janeiro - RJ
-55212259|Rio de Janeiro - RJ
-55212260|Rio de Janeiro - RJ
-55212261|Rio de Janeiro - RJ
-55212262|Rio de Janeiro - RJ
-55212263|Rio de Janeiro - RJ
-55212264|Rio de Janeiro - RJ
-55212265|Rio de Janeiro - RJ
-55212266|Rio de Janeiro - RJ
-55212267|Rio de Janeiro - RJ
-55212268|Rio de Janeiro - RJ
-55212270|Rio de Janeiro - RJ
-55212272|Rio de Janeiro - RJ
-55212273|Rio de Janeiro - RJ
-55212274|Rio de Janeiro - RJ
-55212275|Rio de Janeiro - RJ
-55212276|Rio de Janeiro - RJ
-55212277|Rio de Janeiro - RJ
-55212278|Rio de Janeiro - RJ
-55212280|Rio de Janeiro - RJ
-55212282|Rio de Janeiro - RJ
-55212283|Rio de Janeiro - RJ
-55212284|Rio de Janeiro - RJ
-55212285|Rio de Janeiro - RJ
-55212286|Rio de Janeiro - RJ
-55212287|Rio de Janeiro - RJ
-55212288|Rio de Janeiro - RJ
-55212289|Rio de Janeiro - RJ
-55212290|Rio de Janeiro - RJ
-55212291|Rio de Janeiro - RJ
-55212292|Rio de Janeiro - RJ
-55212293|Rio de Janeiro - RJ
-55212294|Rio de Janeiro - RJ
-55212295|Rio de Janeiro - RJ
-55212296|Rio de Janeiro - RJ
-55212298|Rio de Janeiro - RJ
-55212299|Rio de Janeiro - RJ
 55212301|Rio de Janeiro - RJ
 55212303|Rio de Janeiro - RJ
 55212380|Rio de Janeiro - RJ
 55212391|Rio de Janeiro - RJ
 55212394|Rio de Janeiro - RJ
 55212397|Duque de Caxias - RJ
-55212401|Rio de Janeiro - RJ
-55212402|Rio de Janeiro - RJ
-55212403|Rio de Janeiro - RJ
-55212404|Rio de Janeiro - RJ
-55212405|Rio de Janeiro - RJ
-55212406|Rio de Janeiro - RJ
-55212407|Rio de Janeiro - RJ
-55212408|Rio de Janeiro - RJ
-55212409|Rio de Janeiro - RJ
-55212410|Rio de Janeiro - RJ
-55212411|Rio de Janeiro - RJ
-55212412|Rio de Janeiro - RJ
-55212413|Rio de Janeiro - RJ
-55212414|Rio de Janeiro - RJ
-55212415|Rio de Janeiro - RJ
-55212416|Rio de Janeiro - RJ
-55212417|Rio de Janeiro - RJ
-55212418|Rio de Janeiro - RJ
-55212419|Rio de Janeiro - RJ
-55212421|Rio de Janeiro - RJ
-55212422|Rio de Janeiro - RJ
-55212423|Rio de Janeiro - RJ
-55212424|Rio de Janeiro - RJ
-55212425|Rio de Janeiro - RJ
-55212426|Rio de Janeiro - RJ
-55212427|Rio de Janeiro - RJ
-55212428|Rio de Janeiro - RJ
-55212429|Rio de Janeiro - RJ
-55212430|Rio de Janeiro - RJ
-55212431|Rio de Janeiro - RJ
-55212432|Rio de Janeiro - RJ
-55212433|Rio de Janeiro - RJ
-55212434|Rio de Janeiro - RJ
-55212435|Rio de Janeiro - RJ
-55212436|Rio de Janeiro - RJ
-55212437|Rio de Janeiro - RJ
-55212438|Rio de Janeiro - RJ
-55212439|Rio de Janeiro - RJ
-55212440|Rio de Janeiro - RJ
-55212441|Rio de Janeiro - RJ
-55212442|Rio de Janeiro - RJ
-55212444|Rio de Janeiro - RJ
-55212445|Rio de Janeiro - RJ
-55212446|Rio de Janeiro - RJ
-55212447|Rio de Janeiro - RJ
-55212448|Rio de Janeiro - RJ
-55212450|Rio de Janeiro - RJ
-55212452|Rio de Janeiro - RJ
-55212453|Rio de Janeiro - RJ
-55212454|Rio de Janeiro - RJ
-55212455|Rio de Janeiro - RJ
-55212456|Rio de Janeiro - RJ
-55212457|Rio de Janeiro - RJ
-55212458|Rio de Janeiro - RJ
-55212460|Rio de Janeiro - RJ
-55212462|Rio de Janeiro - RJ
-55212463|Rio de Janeiro - RJ
-55212464|Rio de Janeiro - RJ
-55212465|Rio de Janeiro - RJ
-55212466|Rio de Janeiro - RJ
-55212467|Rio de Janeiro - RJ
-55212470|Rio de Janeiro - RJ
-55212471|Rio de Janeiro - RJ
-55212473|Rio de Janeiro - RJ
-55212474|Rio de Janeiro - RJ
-55212475|Rio de Janeiro - RJ
+552124|Rio de Janeiro - RJ
 55212479|São Gonçalo - RJ
-55212480|Rio de Janeiro - RJ
-55212481|Rio de Janeiro - RJ
-55212482|Rio de Janeiro - RJ
-55212483|Rio de Janeiro - RJ
-55212484|Rio de Janeiro - RJ
-55212486|Rio de Janeiro - RJ
-55212487|Rio de Janeiro - RJ
-55212488|Rio de Janeiro - RJ
-55212489|Rio de Janeiro - RJ
-55212490|Rio de Janeiro - RJ
-55212491|Rio de Janeiro - RJ
-55212492|Rio de Janeiro - RJ
-55212493|Rio de Janeiro - RJ
-55212494|Rio de Janeiro - RJ
-55212495|Rio de Janeiro - RJ
-55212496|Rio de Janeiro - RJ
-55212497|Rio de Janeiro - RJ
-55212498|Rio de Janeiro - RJ
-55212499|Rio de Janeiro - RJ
-55212501|Rio de Janeiro - RJ
-55212502|Rio de Janeiro - RJ
-55212503|Rio de Janeiro - RJ
-55212504|Rio de Janeiro - RJ
-55212505|Rio de Janeiro - RJ
-55212506|Rio de Janeiro - RJ
-55212507|Rio de Janeiro - RJ
-55212508|Rio de Janeiro - RJ
-55212509|Rio de Janeiro - RJ
-55212510|Rio de Janeiro - RJ
-55212511|Rio de Janeiro - RJ
-55212512|Rio de Janeiro - RJ
-55212513|Rio de Janeiro - RJ
-55212514|Rio de Janeiro - RJ
-55212515|Rio de Janeiro - RJ
-55212516|Rio de Janeiro - RJ
-55212517|Rio de Janeiro - RJ
-55212518|Rio de Janeiro - RJ
-55212519|Rio de Janeiro - RJ
-55212520|Rio de Janeiro - RJ
-55212521|Rio de Janeiro - RJ
-55212522|Rio de Janeiro - RJ
-55212523|Rio de Janeiro - RJ
-55212524|Rio de Janeiro - RJ
-55212525|Rio de Janeiro - RJ
-55212526|Rio de Janeiro - RJ
-55212527|Rio de Janeiro - RJ
-55212528|Rio de Janeiro - RJ
-55212529|Rio de Janeiro - RJ
-55212530|Rio de Janeiro - RJ
-55212531|Rio de Janeiro - RJ
-55212532|Rio de Janeiro - RJ
-55212533|Rio de Janeiro - RJ
-55212534|Rio de Janeiro - RJ
-55212535|Rio de Janeiro - RJ
-55212537|Rio de Janeiro - RJ
-55212538|Rio de Janeiro - RJ
-55212539|Rio de Janeiro - RJ
-55212540|Rio de Janeiro - RJ
-55212541|Rio de Janeiro - RJ
-55212542|Rio de Janeiro - RJ
-55212543|Rio de Janeiro - RJ
-55212544|Rio de Janeiro - RJ
-55212545|Rio de Janeiro - RJ
-55212546|Rio de Janeiro - RJ
-55212547|Rio de Janeiro - RJ
-55212548|Rio de Janeiro - RJ
-55212549|Rio de Janeiro - RJ
-55212550|Rio de Janeiro - RJ
-55212551|Rio de Janeiro - RJ
-55212552|Rio de Janeiro - RJ
-55212553|Rio de Janeiro - RJ
-55212554|Rio de Janeiro - RJ
-55212555|Rio de Janeiro - RJ
-55212556|Rio de Janeiro - RJ
-55212557|Rio de Janeiro - RJ
-55212558|Rio de Janeiro - RJ
-55212560|Rio de Janeiro - RJ
-55212561|Rio de Janeiro - RJ
-55212562|Rio de Janeiro - RJ
-55212563|Rio de Janeiro - RJ
-55212564|Rio de Janeiro - RJ
-55212565|Rio de Janeiro - RJ
-55212566|Rio de Janeiro - RJ
-55212567|Rio de Janeiro - RJ
-55212568|Rio de Janeiro - RJ
-55212569|Rio de Janeiro - RJ
-55212570|Rio de Janeiro - RJ
-55212571|Rio de Janeiro - RJ
-55212572|Rio de Janeiro - RJ
-55212573|Rio de Janeiro - RJ
-55212574|Rio de Janeiro - RJ
-55212575|Rio de Janeiro - RJ
-55212576|Rio de Janeiro - RJ
-55212577|Rio de Janeiro - RJ
-55212578|Rio de Janeiro - RJ
-55212579|Rio de Janeiro - RJ
-55212580|Rio de Janeiro - RJ
-55212584|Rio de Janeiro - RJ
-55212585|Rio de Janeiro - RJ
-55212586|Rio de Janeiro - RJ
-55212587|Rio de Janeiro - RJ
-55212588|Rio de Janeiro - RJ
-55212589|Rio de Janeiro - RJ
-55212590|Rio de Janeiro - RJ
-55212591|Rio de Janeiro - RJ
-55212592|Rio de Janeiro - RJ
-55212593|Rio de Janeiro - RJ
-55212594|Rio de Janeiro - RJ
-55212595|Rio de Janeiro - RJ
-55212601|São Gonçalo - RJ
-55212602|São Gonçalo - RJ
-55212603|São Gonçalo - RJ
-55212604|São Gonçalo - RJ
-55212605|São Gonçalo - RJ
-55212606|São Gonçalo - RJ
+552125|Rio de Janeiro - RJ
+5521260|São Gonçalo - RJ
 55212608|Niterói - RJ
 55212609|Niterói - RJ
-55212610|Niterói - RJ
-55212611|Niterói - RJ
-55212612|Niterói - RJ
-55212613|Niterói - RJ
-55212616|Niterói - RJ
-55212618|Niterói - RJ
-55212619|Niterói - RJ
-55212620|Niterói - RJ
-55212621|Niterói - RJ
-55212622|Niterói - RJ
-55212625|Niterói - RJ
-55212626|Niterói - RJ
-55212627|Niterói - RJ
-55212629|Niterói - RJ
+5521261|Niterói - RJ
+5521262|Niterói - RJ
 55212630|Magé - RJ
 55212631|Magé - RJ
 55212632|Guapimirim - RJ
@@ -4509,14 +2595,9 @@
 55212705|Niterói - RJ
 55212707|Niterói - RJ
 55212709|Niterói - RJ
-55212710|Niterói - RJ
-55212711|Niterói - RJ
+5521271|Niterói - RJ
 55212712|São Gonçalo - RJ
 55212713|São Gonçalo - RJ
-55212714|Niterói - RJ
-55212715|Niterói - RJ
-55212717|Niterói - RJ
-55212719|Niterói - RJ
 55212721|Niterói - RJ
 55212722|Niterói - RJ
 55212728|São Gonçalo - RJ
@@ -4525,7 +2606,6 @@
 55212741|Teresópolis - RJ
 55212742|Teresópolis - RJ
 55212743|Teresópolis - RJ
-55212745|Rio de Janeiro
 55212747|Tanguá - RJ
 55212751|São João de Meriti - RJ
 55212752|São João de Meriti - RJ
@@ -4551,15 +2631,7 @@
 55212882|Nova Iguaçu - RJ
 55212886|Nova Iguaçu - RJ
 55213002|Rio de Janeiro - RJ
-55213010|Rio de Janeiro - RJ
-55213012|Rio de Janeiro - RJ
-55213013|Rio de Janeiro - RJ
-55213014|Rio de Janeiro - RJ
-55213015|Rio de Janeiro - RJ
-55213016|Rio de Janeiro - RJ
-55213017|Rio de Janeiro - RJ
-55213018|Rio de Janeiro - RJ
-55213019|Rio de Janeiro - RJ
+5521301|Rio de Janeiro - RJ
 55213020|Rio de Janeiro - RJ
 55213030|Rio de Janeiro - RJ
 55213032|Rio de Janeiro - RJ
@@ -4572,13 +2644,8 @@
 55213089|Rio de Janeiro - RJ
 55213097|Teresópolis - RJ
 55213099|Teresópolis - RJ
+5521310|Rio de Janeiro - RJ
 55213103|Nova Iguaçu - RJ
-55213104|Rio de Janeiro - RJ
-55213105|Rio de Janeiro - RJ
-55213106|Rio de Janeiro - RJ
-55213107|Rio de Janeiro - RJ
-55213108|Rio de Janeiro - RJ
-55213109|Rio de Janeiro - RJ
 55213113|Rio de Janeiro - RJ
 55213114|Rio de Janeiro - RJ
 55213116|Rio de Janeiro - RJ
@@ -4590,16 +2657,7 @@
 55213138|Rio de Janeiro - RJ
 55213139|Rio de Janeiro - RJ
 55213142|Itaboraí - RJ
-55213150|Rio de Janeiro - RJ
-55213151|Rio de Janeiro - RJ
-55213152|Rio de Janeiro - RJ
-55213153|Rio de Janeiro - RJ
-55213154|Rio de Janeiro - RJ
-55213155|Rio de Janeiro - RJ
-55213156|Rio de Janeiro - RJ
-55213157|Rio de Janeiro - RJ
-55213158|Rio de Janeiro - RJ
-55213159|Rio de Janeiro - RJ
+5521315|Rio de Janeiro - RJ
 55213162|Nilópolis - RJ
 55213167|Duque de Caxias - RJ
 55213171|Rio de Janeiro - RJ
@@ -4618,144 +2676,30 @@
 55213224|Rio de Janeiro - RJ
 55213227|Rio de Janeiro - RJ
 55213229|Rio de Janeiro - RJ
-55213231|Rio de Janeiro - RJ
-55213232|Rio de Janeiro - RJ
-55213233|Rio de Janeiro - RJ
-55213234|Rio de Janeiro - RJ
-55213235|Rio de Janeiro - RJ
+5521323|Rio de Janeiro - RJ
 55213236|Nilópolis - RJ
-55213237|Rio de Janeiro - RJ
-55213238|Rio de Janeiro - RJ
-55213239|Rio de Janeiro - RJ
 55213252|Rio de Janeiro - RJ
 55213263|Rio de Janeiro - RJ
 55213267|Rio de Janeiro - RJ
 55213274|Rio de Janeiro - RJ
 55213279|Rio de Janeiro - RJ
 55213288|Rio de Janeiro - RJ
-55213291|Rio de Janeiro - RJ
-55213292|Rio de Janeiro - RJ
-55213293|Rio de Janeiro - RJ
-55213294|Rio de Janeiro - RJ
-55213295|Rio de Janeiro - RJ
-55213296|Rio de Janeiro - RJ
+5521329|Rio de Janeiro - RJ
+552133|Rio de Janeiro - RJ
 55213303|Duque de Caxias - RJ
 55213304|Belford Roxo - RJ
-55213305|Rio de Janeiro - RJ
-55213309|Rio de Janeiro - RJ
 55213311|Macaé - RJ
-55213312|Rio de Janeiro - RJ
-55213313|Rio de Janeiro - RJ
-55213314|Rio de Janeiro - RJ
-55213316|Rio de Janeiro - RJ
-55213317|Rio de Janeiro - RJ
-55213321|Rio de Janeiro - RJ
-55213322|Rio de Janeiro - RJ
-55213323|Rio de Janeiro - RJ
-55213324|Rio de Janeiro - RJ
-55213325|Rio de Janeiro - RJ
-55213326|Rio de Janeiro - RJ
-55213328|Rio de Janeiro - RJ
-55213329|Rio de Janeiro - RJ
-55213331|Rio de Janeiro - RJ
-55213332|Rio de Janeiro - RJ
-55213333|Rio de Janeiro - RJ
-55213335|Rio de Janeiro - RJ
-55213336|Rio de Janeiro - RJ
-55213337|Rio de Janeiro - RJ
-55213338|Rio de Janeiro - RJ
-55213339|Rio de Janeiro - RJ
-55213340|Rio de Janeiro - RJ
-55213341|Rio de Janeiro - RJ
-55213342|Rio de Janeiro - RJ
-55213346|Rio de Janeiro - RJ
-55213347|Rio de Janeiro - RJ
-55213348|Rio de Janeiro - RJ
-55213350|Rio de Janeiro - RJ
-55213351|Rio de Janeiro - RJ
-55213353|Rio de Janeiro - RJ
-55213354|Rio de Janeiro - RJ
-55213355|Rio de Janeiro - RJ
-55213356|Rio de Janeiro - RJ
-55213357|Rio de Janeiro - RJ
-55213358|Rio de Janeiro - RJ
-55213359|Rio de Janeiro - RJ
-55213361|Rio de Janeiro - RJ
-55213362|Rio de Janeiro - RJ
-55213363|Rio de Janeiro - RJ
-55213364|Rio de Janeiro - RJ
-55213365|Rio de Janeiro - RJ
-55213369|Rio de Janeiro - RJ
-55213371|Rio de Janeiro - RJ
-55213372|Rio de Janeiro - RJ
-55213373|Rio de Janeiro - RJ
-55213375|Rio de Janeiro - RJ
-55213376|Rio de Janeiro - RJ
-55213377|Rio de Janeiro - RJ
-55213378|Rio de Janeiro - RJ
-55213380|Rio de Janeiro - RJ
-55213381|Rio de Janeiro - RJ
-55213382|Rio de Janeiro - RJ
-55213383|Rio de Janeiro - RJ
-55213384|Rio de Janeiro - RJ
-55213385|Rio de Janeiro - RJ
-55213386|Rio de Janeiro - RJ
-55213387|Rio de Janeiro - RJ
-55213388|Rio de Janeiro - RJ
-55213389|Rio de Janeiro - RJ
-55213390|Rio de Janeiro - RJ
-55213391|Rio de Janeiro - RJ
-55213392|Rio de Janeiro - RJ
-55213393|Rio de Janeiro - RJ
-55213394|Rio de Janeiro - RJ
-55213395|Rio de Janeiro - RJ
-55213397|Rio de Janeiro - RJ
-55213398|Rio de Janeiro - RJ
-55213400|Rio de Janeiro - RJ
-55213401|Rio de Janeiro - RJ
-55213402|Rio de Janeiro - RJ
-55213403|Rio de Janeiro - RJ
-55213404|Rio de Janeiro - RJ
-55213405|Rio de Janeiro - RJ
-55213406|Rio de Janeiro - RJ
-55213407|Rio de Janeiro - RJ
-55213408|Rio de Janeiro - RJ
-55213409|Rio de Janeiro - RJ
-55213410|Rio de Janeiro - RJ
-55213411|Rio de Janeiro - RJ
-55213412|Rio de Janeiro - RJ
-55213413|Rio de Janeiro - RJ
-55213417|Rio de Janeiro - RJ
-55213418|Rio de Janeiro - RJ
-55213419|Rio de Janeiro - RJ
-55213421|Rio de Janeiro - RJ
-55213422|Rio de Janeiro - RJ
-55213423|Rio de Janeiro - RJ
-55213424|Rio de Janeiro - RJ
-55213425|Rio de Janeiro - RJ
-55213426|Rio de Janeiro - RJ
-55213427|Rio de Janeiro - RJ
+5521340|Rio de Janeiro - RJ
+5521341|Rio de Janeiro - RJ
+5521342|Rio de Janeiro - RJ
 55213431|Rio de Janeiro - RJ
 55213432|Rio de Janeiro - RJ
 55213433|Rio de Janeiro - RJ
 55213434|Rio de Janeiro - RJ
 55213445|Rio de Janeiro - RJ
 55213448|Rio de Janeiro - RJ
-55213450|Rio de Janeiro - RJ
-55213451|Rio de Janeiro - RJ
-55213452|Rio de Janeiro - RJ
-55213453|Rio de Janeiro - RJ
-55213454|Rio de Janeiro - RJ
-55213455|Rio de Janeiro - RJ
-55213458|Rio de Janeiro - RJ
-55213462|Rio de Janeiro - RJ
-55213463|Rio de Janeiro - RJ
-55213464|Rio de Janeiro - RJ
-55213465|Rio de Janeiro - RJ
-55213466|Rio de Janeiro - RJ
-55213467|Rio de Janeiro - RJ
-55213468|Rio de Janeiro - RJ
-55213469|Rio de Janeiro - RJ
+5521345|Rio de Janeiro - RJ
+5521346|Rio de Janeiro - RJ
 55213481|Rio de Janeiro - RJ
 55213483|Rio de Janeiro - RJ
 55213484|Rio de Janeiro - RJ
@@ -4819,12 +2763,7 @@
 55213746|Mesquita - RJ
 55213747|Rio de Janeiro - RJ
 55213748|Belford Roxo - RJ
-55213752|São João de Meriti - RJ
-55213753|São João de Meriti - RJ
-55213754|São João de Meriti - RJ
-55213755|São João de Meriti - RJ
-55213756|São João de Meriti - RJ
-55213757|São João de Meriti - RJ
+5521375|São João de Meriti - RJ
 55213760|Nilópolis - RJ
 55213761|Nilópolis - RJ
 55213762|Nilópolis - RJ
@@ -4868,26 +2807,9 @@
 55213855|Rio de Janeiro - RJ
 55213856|São Gonçalo - RJ
 55213857|São Gonçalo - RJ
-55213860|Rio de Janeiro - RJ
-55213861|Rio de Janeiro - RJ
-55213865|Rio de Janeiro - RJ
-55213867|Rio de Janeiro - RJ
-55213868|Rio de Janeiro - RJ
-55213869|Rio de Janeiro - RJ
-55213870|Rio de Janeiro - RJ
-55213872|Rio de Janeiro - RJ
-55213873|Rio de Janeiro - RJ
-55213874|Rio de Janeiro - RJ
-55213875|Rio de Janeiro - RJ
-55213878|Rio de Janeiro - RJ
-55213879|Rio de Janeiro - RJ
-55213882|Rio de Janeiro - RJ
-55213884|Rio de Janeiro - RJ
-55213885|Rio de Janeiro - RJ
-55213886|Rio de Janeiro - RJ
-55213887|Rio de Janeiro - RJ
-55213888|Rio de Janeiro - RJ
-55213889|Rio de Janeiro - RJ
+5521386|Rio de Janeiro - RJ
+5521387|Rio de Janeiro - RJ
+5521388|Rio de Janeiro - RJ
 55213890|Rio de Janeiro - RJ
 55213891|Rio de Janeiro - RJ
 55213895|Rio de Janeiro - RJ
@@ -4930,16 +2852,7 @@
 55222134|Iguaba Grande - RJ
 55222222|Nova Friburgo - RJ
 55222519|Nova Friburgo - RJ
-55222520|Nova Friburgo - RJ
-55222521|Nova Friburgo - RJ
-55222522|Nova Friburgo - RJ
-55222523|Nova Friburgo - RJ
-55222524|Nova Friburgo - RJ
-55222525|Nova Friburgo - RJ
-55222526|Nova Friburgo - RJ
-55222527|Nova Friburgo - RJ
-55222528|Nova Friburgo - RJ
-55222529|Nova Friburgo - RJ
+5522252|Nova Friburgo - RJ
 55222531|Sumidouro - RJ
 55222533|Nova Friburgo - RJ
 55222534|Duas Barras - RJ
@@ -4986,12 +2899,7 @@
 55222668|Silva Jardim - RJ
 55222673|Araruama - RJ
 55222674|Araruama - RJ
-55222720|Campos dos Goytacazes - RJ
-55222721|Campos dos Goytacazes - RJ
-55222722|Campos dos Goytacazes - RJ
-55222723|Campos dos Goytacazes - RJ
-55222724|Campos dos Goytacazes - RJ
-55222726|Campos dos Goytacazes - RJ
+5522272|Campos dos Goytacazes - RJ
 55222727|São Francisco de Itabapoana - RJ
 55222732|Campos dos Goytacazes - RJ
 55222733|Campos dos Goytacazes - RJ
@@ -5050,12 +2958,7 @@
 55223717|Macaé - RJ
 55223723|Macaé - RJ
 55223811|Itaperuna - RJ
-55223820|Itaperuna - RJ
-55223822|Itaperuna - RJ
-55223823|Itaperuna - RJ
-55223824|Itaperuna - RJ
-55223826|Itaperuna - RJ
-55223827|Itaperuna - RJ
+5522382|Itaperuna - RJ
 55223828|Boaventura - RJ
 55223829|Laje do Muriaé - RJ
 55223831|Bom Jesus do Itabapoana - RJ
@@ -5072,7 +2975,6 @@
 55223852|Miracema - RJ
 55223853|Santo Antônio de Pádua - RJ
 55223854|Santo Antônio de Pádua - RJ
-55223855|Rio de Janeiro
 55223861|Itaocara - RJ
 55223862|Portela - RJ
 55223863|Jaguarembé - RJ
@@ -5097,20 +2999,8 @@
 55242224|São José do Vale do Rio Preto - RJ
 55242225|Petrópolis - RJ
 55242228|Secretário - RJ
-55242231|Petrópolis - RJ
-55242232|Petrópolis - RJ
-55242233|Petrópolis - RJ
-55242235|Petrópolis - RJ
-55242236|Petrópolis - RJ
-55242237|Petrópolis - RJ
-55242242|Petrópolis - RJ
-55242243|Petrópolis - RJ
-55242244|Petrópolis - RJ
-55242245|Petrópolis - RJ
-55242246|Petrópolis - RJ
-55242247|Petrópolis - RJ
-55242248|Petrópolis - RJ
-55242249|Petrópolis - RJ
+5524223|Petrópolis - RJ
+5524224|Petrópolis - RJ
 55242251|Três Rios - RJ
 55242252|Três Rios - RJ
 55242254|Comendador Levy Gasparian - RJ
@@ -5168,13 +3058,7 @@
 55243333|Arrozal - RJ
 55243334|Rio Claro - RJ
 55243335|Rio Claro - RJ
-55243342|Volta Redonda - RJ
-55243343|Volta Redonda - RJ
-55243344|Volta Redonda - RJ
-55243345|Volta Redonda - RJ
-55243346|Volta Redonda - RJ
-55243347|Volta Redonda - RJ
-55243348|Volta Redonda - RJ
+5524334|Volta Redonda - RJ
 55243351|Itatiaia - RJ
 55243352|Itatiaia - RJ
 55243353|Porto Real - RJ
@@ -5183,13 +3067,7 @@
 55243356|Pinheiral - RJ
 55243357|Resende - RJ
 55243358|Resende - RJ
-55243363|Angra dos Reis - RJ
-55243364|Angra dos Reis - RJ
-55243365|Angra dos Reis - RJ
-55243366|Angra dos Reis - RJ
-55243367|Angra dos Reis - RJ
-55243368|Angra dos Reis - RJ
-55243369|Angra dos Reis - RJ
+5524336|Angra dos Reis - RJ
 55243370|Angra dos Reis - RJ
 55243371|Paraty - RJ
 55243372|Paraty - RJ
@@ -5437,7 +3315,7 @@
 55283560|Alegre - ES
 55283562|Bom Jesus do Norte - ES
 55283569|Ibitirama - ES
-5531|Minas Gerais
+55312|Minas Gerais
 55312101|Belo Horizonte - MG
 55312102|Belo Horizonte - MG
 55312103|Belo Horizonte - MG
@@ -5463,6 +3341,7 @@
 55312572|Betim - MG
 55312586|Contagem - MG
 55312591|Betim - MG
+553130|Minas Gerais
 55313014|Belo Horizonte - MG
 55313026|Sete Lagoas - MG
 55313029|Belo Horizonte - MG
@@ -5484,6 +3363,7 @@
 55313090|Belo Horizonte - MG
 55313094|Ipatinga - MG
 55313096|Ipatinga - MG
+553131|Minas Gerais
 55313107|Sete Lagoas - MG
 55313111|São Joaquim de Bicas - MG
 55313116|Belo Horizonte - MG
@@ -5504,23 +3384,23 @@
 55313166|Belo Horizonte - MG
 55313184|Itaguara - MG
 55313194|Belo Horizonte - MG
+5531320|Minas Gerais
 55313201|Belo Horizonte - MG
 55313202|Belo Horizonte - MG
 55313207|Belo Horizonte - MG
-55313212|Belo Horizonte - MG
-55313213|Belo Horizonte - MG
-55313214|Belo Horizonte - MG
-55313217|Belo Horizonte - MG
-55313218|Belo Horizonte - MG
-55313219|Belo Horizonte - MG
-55313221|Belo Horizonte - MG
-55313222|Belo Horizonte - MG
-55313223|Belo Horizonte - MG
-55313224|Belo Horizonte - MG
-55313225|Belo Horizonte - MG
-55313226|Belo Horizonte - MG
-55313227|Belo Horizonte - MG
-55313228|Belo Horizonte - MG
+5531321|Belo Horizonte - MG
+55313210|Minas Gerais
+55313211|Minas Gerais
+55313215|Minas Gerais
+55313216|Minas Gerais
+5531322|Belo Horizonte - MG
+55313220|Minas Gerais
+55313229|Minas Gerais
+55313230|Minas Gerais
+55313231|Minas Gerais
+55313232|Minas Gerais
+55313233|Minas Gerais
+55313234|Minas Gerais
 55313235|Belo Horizonte - MG
 55313236|Belo Horizonte - MG
 55313237|Belo Horizonte - MG
@@ -5528,137 +3408,173 @@
 55313239|Belo Horizonte - MG
 55313240|Perpétuo Socorro - MG
 55313241|Belo Horizonte - MG
+55313242|Minas Gerais
+55313243|Minas Gerais
+55313244|Minas Gerais
 55313245|Belo Horizonte - MG
+55313246|Minas Gerais
 55313247|Belo Horizonte - MG
 55313248|Belo Horizonte - MG
 55313249|Belo Horizonte - MG
+5531325|Minas Gerais
 55313251|Santana do Paraíso - MG
 55313253|Belo Horizonte - MG
 55313254|Belo Horizonte - MG
+55313260|Minas Gerais
 55313261|Belo Horizonte - MG
 55313262|Belo Horizonte - MG
 55313263|Belo Horizonte - MG
+55313264|Minas Gerais
+55313265|Minas Gerais
+55313266|Minas Gerais
 55313267|Belo Horizonte - MG
+55313268|Minas Gerais
 55313269|Belo Horizonte - MG
-55313270|Belo Horizonte - MG
-55313271|Belo Horizonte - MG
-55313272|Belo Horizonte - MG
-55313273|Belo Horizonte - MG
-55313274|Belo Horizonte - MG
-55313275|Belo Horizonte - MG
-55313278|Belo Horizonte - MG
-55313279|Belo Horizonte - MG
-55313280|Belo Horizonte - MG
-55313281|Belo Horizonte - MG
-55313282|Belo Horizonte - MG
-55313283|Belo Horizonte - MG
-55313284|Belo Horizonte - MG
-55313285|Belo Horizonte - MG
-55313286|Belo Horizonte - MG
-55313287|Belo Horizonte - MG
-55313288|Belo Horizonte - MG
+5531327|Belo Horizonte - MG
+55313276|Minas Gerais
+55313277|Minas Gerais
+5531328|Belo Horizonte - MG
+55313289|Minas Gerais
+5531329|Minas Gerais
 55313291|Belo Horizonte - MG
 55313292|Belo Horizonte - MG
 55313295|Belo Horizonte - MG
+5531330|Minas Gerais
 55313303|Belo Horizonte - MG
 55313305|Belo Horizonte - MG
 55313309|Belo Horizonte - MG
+5531331|Minas Gerais
 55313312|Belo Horizonte - MG
 55313318|Belo Horizonte - MG
 55313320|Ipaba - MG
+55313321|Minas Gerais
+55313322|Minas Gerais
 55313323|Belo Horizonte - MG
 55313324|Belo Horizonte - MG
+55313325|Minas Gerais
 55313326|Belo Horizonte - MG
 55313327|Belo Horizonte - MG
+55313328|Minas Gerais
+55313329|Minas Gerais
 55313330|Belo Horizonte - MG
+55313331|Minas Gerais
+55313332|Minas Gerais
+55313333|Minas Gerais
+55313334|Minas Gerais
 55313335|Belo Horizonte - MG
+55313336|Minas Gerais
 55313337|Belo Horizonte - MG
 55313338|Nova Lima - MG
 55313339|Belo Horizonte - MG
+5531334|Minas Gerais
 55313342|Belo Horizonte - MG
 55313346|Belo Horizonte - MG
+5531335|Minas Gerais
 55313351|Contagem - MG
 55313356|Contagem - MG
 55313357|Contagem - MG
 55313358|Contagem - MG
+5531336|Minas Gerais
+55313370|Minas Gerais
+55313371|Minas Gerais
+55313372|Minas Gerais
 55313373|Belo Horizonte - MG
+55313374|Minas Gerais
 55313375|Belo Horizonte - MG
 55313376|Belo Horizonte - MG
 55313377|Belo Horizonte - MG
 55313378|Belo Horizonte - MG
+55313379|Minas Gerais
+55313380|Minas Gerais
 55313381|Belo Horizonte - MG
+55313382|Minas Gerais
 55313383|Belo Horizonte - MG
 55313384|Belo Horizonte - MG
+55313385|Minas Gerais
+55313386|Minas Gerais
+55313387|Minas Gerais
 55313388|Belo Horizonte - MG
 55313389|Belo Horizonte - MG
+55313390|Minas Gerais
 55313391|Contagem - MG
 55313392|Contagem - MG
+55313393|Minas Gerais
 55313394|Belo Horizonte - MG
 55313395|Contagem - MG
+55313396|Minas Gerais
 55313397|Contagem - MG
+55313398|Minas Gerais
+55313399|Minas Gerais
+5531340|Minas Gerais
 55313402|Nova Lima - MG
 55313408|Belo Horizonte - MG
 55313409|Belo Horizonte - MG
-55313412|Belo Horizonte - MG
-55313413|Belo Horizonte - MG
-55313415|Belo Horizonte - MG
-55313416|Belo Horizonte - MG
-55313417|Belo Horizonte - MG
-55313418|Belo Horizonte - MG
+5531341|Belo Horizonte - MG
+55313410|Minas Gerais
+55313411|Minas Gerais
+55313414|Minas Gerais
+55313419|Minas Gerais
+5531342|Minas Gerais
 55313424|Belo Horizonte - MG
 55313426|Belo Horizonte - MG
 55313428|Belo Horizonte - MG
+55313430|Minas Gerais
 55313431|Belo Horizonte - MG
 55313432|Belo Horizonte - MG
 55313433|Belo Horizonte - MG
 55313434|Belo Horizonte - MG
 55313435|Belo Horizonte - MG
+55313436|Minas Gerais
+55313437|Minas Gerais
+55313438|Minas Gerais
+55313439|Minas Gerais
+55313440|Minas Gerais
+55313441|Minas Gerais
+55313442|Minas Gerais
+55313443|Minas Gerais
 55313444|Belo Horizonte - MG
 55313445|Belo Horizonte - MG
 55313446|Belo Horizonte - MG
 55313447|Belo Horizonte - MG
+55313448|Minas Gerais
 55313449|Belo Horizonte - MG
-55313450|Belo Horizonte - MG
-55313451|Belo Horizonte - MG
-55313452|Belo Horizonte - MG
-55313453|Belo Horizonte - MG
-55313454|Belo Horizonte - MG
-55313455|Belo Horizonte - MG
-55313457|Belo Horizonte - MG
-55313458|Belo Horizonte - MG
+5531345|Belo Horizonte - MG
+55313456|Minas Gerais
+55313459|Minas Gerais
+5531346|Minas Gerais
 55313462|Belo Horizonte - MG
 55313464|Belo Horizonte - MG
 55313466|Belo Horizonte - MG
-55313471|Belo Horizonte - MG
-55313473|Belo Horizonte - MG
-55313474|Belo Horizonte - MG
-55313475|Belo Horizonte - MG
-55313476|Belo Horizonte - MG
-55313477|Belo Horizonte - MG
-55313478|Belo Horizonte - MG
-55313481|Belo Horizonte - MG
-55313483|Belo Horizonte - MG
-55313484|Belo Horizonte - MG
-55313485|Belo Horizonte - MG
-55313486|Belo Horizonte - MG
-55313487|Belo Horizonte - MG
-55313492|Belo Horizonte - MG
-55313493|Belo Horizonte - MG
-55313494|Belo Horizonte - MG
-55313495|Belo Horizonte - MG
-55313496|Belo Horizonte - MG
-55313497|Belo Horizonte - MG
-55313498|Belo Horizonte - MG
+5531347|Belo Horizonte - MG
+55313470|Minas Gerais
+55313472|Minas Gerais
+55313479|Minas Gerais
+5531348|Belo Horizonte - MG
+55313480|Minas Gerais
+55313482|Minas Gerais
+55313488|Minas Gerais
+55313489|Minas Gerais
+5531349|Belo Horizonte - MG
+55313490|Minas Gerais
+55313491|Minas Gerais
+55313499|Minas Gerais
+5531350|Minas Gerais
 55313504|Belo Horizonte - MG
 55313507|Belo Horizonte - MG
 55313508|Belo Horizonte - MG
+5531351|Minas Gerais
 55313511|Betim - MG
 55313512|Betim - MG
 55313515|Belo Horizonte - MG
 55313519|Belo Horizonte - MG
+55313520|Minas Gerais
 55313521|Ibirité - MG
+55313522|Minas Gerais
 55313523|Sítio Novo - MG
 55313524|Belo Horizonte - MG
+55313525|Minas Gerais
+55313526|Minas Gerais
+55313527|Minas Gerais
 55313528|Belo Horizonte - MG
 55313529|Betim - MG
 55313530|Betim - MG
@@ -5671,40 +3587,48 @@
 55313537|Serra Azul - MG
 55313538|Esmeraldas - MG
 55313539|Betim - MG
+55313540|Minas Gerais
 55313541|Nova Lima - MG
 55313542|Nova Lima - MG
 55313543|Raposos - MG
 55313544|Betim - MG
 55313545|Rio Acima - MG
+55313546|Minas Gerais
+55313547|Minas Gerais
+55313548|Minas Gerais
+55313549|Minas Gerais
+55313550|Minas Gerais
 55313551|Ouro Preto - MG
 55313552|Ouro Preto - MG
 55313553|Cachoeira do Campo - MG
 55313554|Lavras Novas - MG
+55313555|Minas Gerais
 55313556|Mariana - MG
 55313557|Mariana - MG
 55313558|Mariana - MG
 55313559|Ouro Preto - MG
+5531356|Minas Gerais
 55313561|Itabirito - MG
 55313562|Itabirito - MG
 55313563|Itabirito - MG
+55313570|Minas Gerais
 55313571|Brumadinho - MG
 55313572|Itatiaiuçu - MG
 55313573|Rio Manso - MG
 55313574|Crucilândia - MG
 55313575|Moeda - MG
 55313576|Bonfim - MG
+55313577|Minas Gerais
 55313578|Piedade dos Gerais - MG
 55313579|Aranha - MG
+5531358|Minas Gerais
 55313581|Nova Lima - MG
 55313589|Nova Lima - MG
-55313591|Betim - MG
-55313592|Betim - MG
-55313593|Betim - MG
-55313594|Betim - MG
-55313595|Betim - MG
-55313596|Betim - MG
-55313597|Betim - MG
+5531359|Betim - MG
+55313590|Minas Gerais
+55313598|Minas Gerais
 55313599|Ibirité - MG
+553136|Minas Gerais
 55313611|Viçosa - MG
 55313615|Belo Horizonte - MG
 55313621|Vespasiano - MG
@@ -5727,12 +3651,7 @@
 55313663|Pedro Leopoldo - MG
 55313665|Pedro Leopoldo - MG
 55313667|Coronel Fabriciano - MG
-55313671|Sabará - MG
-55313672|Sabará - MG
-55313673|Sabará - MG
-55313674|Sabará - MG
-55313675|Sabará - MG
-55313679|Sabará - MG
+5531367|Sabará - MG
 55313681|Lagoa Santa - MG
 55313683|Jaboticatubas - MG
 55313684|Taquaraçu de Minas - MG
@@ -5740,6 +3659,8 @@
 55313686|Confins - MG
 55313694|Nova Lima - MG
 55313697|Bairro Eldorado - Sete Lagoas MG
+5531370|Minas Gerais
+55313710|Minas Gerais
 55313711|Prudente de Morais - MG
 55313712|Matozinhos - MG
 55313713|Capim Branco - MG
@@ -5748,6 +3669,8 @@
 55313716|Inhaúma - MG
 55313717|Santana de Pirapama - MG
 55313718|Baldim - MG
+55313719|Minas Gerais
+55313720|Minas Gerais
 55313721|Conselheiro Lafaiete - MG
 55313722|Queluzito - MG
 55313723|Casa Grande - MG
@@ -5756,41 +3679,59 @@
 55313726|Santana dos Montes - MG
 55313727|Capela Nova - MG
 55313728|Buarque de Macedo - MG
+55313729|Minas Gerais
+55313730|Minas Gerais
 55313731|Congonhas - MG
 55313732|Congonhas - MG
 55313733|Joaquim Murtinho - MG
 55313734|Belo Vale - MG
 55313735|Jeceaba - MG
 55313736|Desterro de Entre Rios - MG
+55313737|Minas Gerais
 55313738|São Brás do Suaçuí - MG
+55313739|Minas Gerais
+5531374|Minas Gerais
 55313741|Ouro Branco - MG
 55313742|Ouro Branco - MG
 55313746|Piranga - MG
 55313749|Ouro Branco - MG
+55313750|Minas Gerais
 55313751|Entre Rios de Minas - MG
 55313752|Catas Altas da Noruega - MG
 55313753|Rio Espera - MG
 55313754|Lamim - MG
 55313755|Senhora de Oliveira - MG
+55313756|Minas Gerais
 55313757|Itaverava - MG
+55313758|Minas Gerais
+55313759|Minas Gerais
+55313760|Minas Gerais
 55313761|Conselheiro Lafaiete - MG
 55313762|Conselheiro Lafaiete - MG
 55313763|Conselheiro Lafaiete - MG
 55313764|Conselheiro Lafaiete - MG
+55313765|Minas Gerais
+55313766|Minas Gerais
+55313767|Minas Gerais
 55313768|Contagem - MG
 55313769|Conselheiro Lafaiete - MG
+5531377|Minas Gerais
 55313771|Sete Lagoas - MG
 55313775|Sete Lagoas - MG
 55313779|Sete Lagoas - MG
+5531378|Minas Gerais
+5531379|Minas Gerais
+5531380|Minas Gerais
 55313809|Santa Bárbara - MG
+5531381|Minas Gerais
 55313817|Ponte Nova - MG
 55313819|Ponte Nova - MG
-55313821|Ipatinga - MG
-55313822|Ipatinga - MG
-55313823|Ipatinga - MG
-55313824|Ipatinga - MG
-55313825|Ipatinga - MG
-55313829|Ipatinga - MG
+5531382|Ipatinga - MG
+55313820|Minas Gerais
+55313826|Minas Gerais
+55313827|Minas Gerais
+55313828|Minas Gerais
+55313830|Minas Gerais
 55313831|Itabira - MG
 55313832|Santa Bárbara - MG
 55313833|São Gonçalo do Rio Abaixo - MG
@@ -5800,13 +3741,17 @@
 55313837|Barão de Cocais - MG
 55313838|Santa Maria de Itabira - MG
 55313839|Itabira - MG
+55313840|Minas Gerais
 55313841|Coronel Fabriciano - MG
 55313842|Coronel Fabriciano - MG
 55313843|Antônio Dias - MG
 55313844|Cava Grande - MG
 55313845|Jaguaraçu - MG
 55313846|Coronel Fabriciano - MG
+55313847|Minas Gerais
+55313848|Minas Gerais
 55313849|Timóteo - MG
+55313850|Minas Gerais
 55313851|João Monlevade - MG
 55313852|João Monlevade - MG
 55313853|Bela Vista de Minas - MG
@@ -5816,6 +3761,7 @@
 55313857|Dom Silvério - MG
 55313858|Dionísio - MG
 55313859|João Monlevade - MG
+55313860|Minas Gerais
 55313861|Nova Era - MG
 55313862|Alvorada de Minas - MG
 55313863|Ferros - MG
@@ -5825,20 +3771,27 @@
 55313867|São Sebastião do Rio Preto - MG
 55313868|Conceição do Mato Dentro - MG
 55313869|Congonhas do Norte - MG
+55313870|Minas Gerais
 55313871|Rio Casca - MG
 55313872|Abre Campo - MG
 55313873|Matipó - MG
+55313874|Minas Gerais
 55313875|Santa Margarida - MG
 55313876|Urucânia - MG
 55313877|Jequeri - MG
 55313878|Contagem - MG
 55313879|Belo Horizonte - MG
+55313880|Minas Gerais
 55313881|Ponte Nova - MG
+55313882|Minas Gerais
 55313883|Rio Doce - MG
+55313884|Minas Gerais
 55313885|Viçosa - MG
 55313886|Diogo de Vasconcelos - MG
 55313887|Acaiaca - MG
+55313888|Minas Gerais
 55313889|Belo Horizonte - MG
+55313890|Minas Gerais
 55313891|Viçosa - MG
 55313892|Viçosa - MG
 55313893|Porto Firme - MG
@@ -5848,6 +3801,7 @@
 55313897|São Miguel do Anta - MG
 55313898|Cajuri - MG
 55313899|Viçosa - MG
+553139|Minas Gerais
 55313911|Contagem - MG
 55313912|Contagem - MG
 55313913|Contagem - MG
@@ -5855,6 +3809,7 @@
 55313916|Belo Horizonte - MG
 55313939|Conselheiro Lafaiete - MG
 55313956|Contagem - MG
+55314|Minas Gerais
 55314002|Belo Horizonte - MG
 55314003|Belo Horizonte - MG
 55314004|Belo Horizonte - MG
@@ -5869,6 +3824,9 @@
 55314133|Belo Horizonte - MG
 55314136|Belo Horizonte - MG
 55314138|Vespasiano - MG
+55315|Minas Gerais
+55317|Minas Gerais
+55319|Minas Gerais
 5532|Minas Gerais
 55322101|Juiz de Fora - MG
 55322102|Juiz de Fora - MG
@@ -5889,26 +3847,12 @@
 55323084|Juiz de Fora - MG
 55323201|Cataguases - MG
 55323202|Cataguases - MG
-55323211|Juiz de Fora - MG
-55323212|Juiz de Fora - MG
-55323213|Juiz de Fora - MG
-55323214|Juiz de Fora - MG
-55323215|Juiz de Fora - MG
-55323216|Juiz de Fora - MG
-55323217|Juiz de Fora - MG
-55323218|Juiz de Fora - MG
+5532321|Juiz de Fora - MG
 55323222|Juiz de Fora - MG
 55323224|Juiz de Fora - MG
 55323228|Juiz de Fora - MG
 55323229|Juiz de Fora - MG
-55323231|Juiz de Fora - MG
-55323232|Juiz de Fora - MG
-55323233|Juiz de Fora - MG
-55323234|Juiz de Fora - MG
-55323235|Juiz de Fora - MG
-55323236|Juiz de Fora - MG
-55323237|Juiz de Fora - MG
-55323239|Juiz de Fora - MG
+5532323|Juiz de Fora - MG
 55323241|Juiz de Fora - MG
 55323250|Juiz de Fora - MG
 55323251|Santos Dumont - MG
@@ -6116,14 +4060,7 @@
 55333266|Quatituba - MG
 55333267|Aimorés - MG
 55333268|Aimorés - MG
-55333271|Governador Valadares - MG
-55333272|Governador Valadares - MG
-55333274|Governador Valadares - MG
-55333275|Governador Valadares - MG
-55333276|Governador Valadares - MG
-55333277|Governador Valadares - MG
-55333278|Governador Valadares - MG
-55333279|Governador Valadares - MG
+5533327|Governador Valadares - MG
 55333284|Frei Inocêncio - MG
 55333291|Coroaci - MG
 55333292|Marilac - MG
@@ -6427,14 +4364,9 @@
 55353225|Carmo da Cachoeira - MG
 55353226|Luminárias - MG
 55353229|Varginha - MG
-55353231|Três Corações - MG
-55353232|Três Corações - MG
-55353233|Três Corações - MG
-55353234|Três Corações - MG
-55353235|Três Corações - MG
+5535323|Três Corações - MG
 55353236|São Bento Abade - MG
 55353237|São Thomé das Letras - MG
-55353239|Três Corações - MG
 55353241|São Gonçalo do Sapucaí - MG
 55353242|Turvolândia - MG
 55353244|Cordislândia - MG
@@ -6490,14 +4422,9 @@
 55353409|Lavras - MG
 55353411|São Sebastião do Paraíso - MG
 55353413|Passos - MG
-55353421|Pouso Alegre - MG
-55353422|Pouso Alegre - MG
-55353423|Pouso Alegre - MG
+5535342|Pouso Alegre - MG
 55353424|Congonhal - MG
-55353425|Pouso Alegre - MG
 55353426|Senador José Bento - MG
-55353427|Pouso Alegre - MG
-55353429|Pouso Alegre - MG
 55353431|Cambuí - MG
 55353432|Córrego do Bom Jesus - MG
 55353433|Camanducaia - MG
@@ -6939,156 +4866,27 @@
 55413150|Fazenda Rio Grande - PR
 55413157|Quatro Barras - PR
 55413158|Campina Grande do Sul - PR
-55413200|Curitiba - PR
-55413202|Curitiba - PR
-55413208|Curitiba - PR
-55413210|Curitiba - PR
-55413212|Curitiba - PR
-55413217|Curitiba - PR
-55413219|Curitiba - PR
-55413221|Curitiba - PR
-55413222|Curitiba - PR
-55413223|Curitiba - PR
-55413224|Curitiba - PR
-55413225|Curitiba - PR
-55413226|Curitiba - PR
-55413227|Curitiba - PR
-55413228|Curitiba - PR
-55413229|Curitiba - PR
-55413232|Curitiba - PR
-55413233|Curitiba - PR
-55413234|Curitiba - PR
-55413235|Curitiba - PR
-55413236|Curitiba - PR
-55413238|Curitiba - PR
-55413239|Curitiba - PR
-55413240|Curitiba - PR
-55413241|Curitiba - PR
-55413242|Curitiba - PR
-55413243|Curitiba - PR
-55413244|Curitiba - PR
-55413245|Curitiba - PR
-55413246|Curitiba - PR
-55413247|Curitiba - PR
-55413248|Curitiba - PR
-55413249|Curitiba - PR
-55413251|Curitiba - PR
-55413254|Curitiba - PR
-55413255|Curitiba - PR
-55413256|Curitiba - PR
-55413257|Curitiba - PR
-55413258|Curitiba - PR
-55413259|Curitiba - PR
-55413261|Curitiba - PR
-55413263|Curitiba - PR
-55413264|Curitiba - PR
-55413265|Curitiba - PR
-55413266|Curitiba - PR
-55413267|Curitiba - PR
-55413268|Curitiba - PR
-55413269|Curitiba - PR
-55413270|Curitiba - PR
-55413271|Curitiba - PR
-55413272|Curitiba - PR
-55413273|Curitiba - PR
-55413274|Curitiba - PR
-55413275|Curitiba - PR
-55413276|Curitiba - PR
-55413277|Curitiba - PR
-55413278|Curitiba - PR
-55413279|Curitiba - PR
-55413281|Curitiba - PR
+554132|Curitiba - PR
 55413282|São José dos Pinhais - PR
 55413283|São José dos Pinhais - PR
-55413284|Curitiba - PR
-55413285|Curitiba - PR
-55413286|Curitiba - PR
-55413287|Curitiba - PR
-55413288|Curitiba - PR
-55413289|Curitiba - PR
 55413291|Campo Largo - PR
 55413292|Campo Largo - PR
-55413296|Curitiba - PR
-55413297|Curitiba - PR
-55413298|Curitiba - PR
-55413304|Curitiba - PR
-55413310|Curitiba - PR
-55413312|Curitiba - PR
-55413314|Curitiba - PR
-55413315|Curitiba - PR
-55413316|Curitiba - PR
-55413317|Curitiba - PR
-55413320|Curitiba - PR
-55413321|Curitiba - PR
-55413322|Curitiba - PR
-55413323|Curitiba - PR
-55413324|Curitiba - PR
-55413326|Curitiba - PR
-55413327|Curitiba - PR
-55413329|Curitiba - PR
-55413330|Curitiba - PR
-55413332|Curitiba - PR
-55413333|Curitiba - PR
-55413334|Curitiba - PR
-55413335|Curitiba - PR
-55413336|Curitiba - PR
-55413337|Curitiba - PR
-55413338|Curitiba - PR
-55413339|Curitiba - PR
-55413340|Curitiba - PR
-55413342|Curitiba - PR
-55413343|Curitiba - PR
-55413344|Curitiba - PR
-55413345|Curitiba - PR
-55413346|Curitiba - PR
-55413347|Curitiba - PR
-55413348|Curitiba - PR
-55413349|Curitiba - PR
-55413354|Curitiba - PR
-55413355|Curitiba - PR
-55413356|Curitiba - PR
-55413357|Curitiba - PR
+554133|Curitiba - PR
 55413358|São José dos Pinhais - PR
-55413360|Curitiba - PR
-55413361|Curitiba - PR
-55413364|Curitiba - PR
-55413365|Curitiba - PR
-55413366|Curitiba - PR
-55413367|Curitiba - PR
-55413369|Curitiba - PR
-55413370|Curitiba - PR
-55413371|Curitiba - PR
-55413372|Curitiba - PR
-55413373|Curitiba - PR
-55413374|Curitiba - PR
 55413375|São José dos Pinhais - PR
-55413376|Curitiba - PR
-55413377|Curitiba - PR
-55413378|Curitiba - PR
-55413379|Curitiba - PR
 55413382|São José dos Pinhais - PR
 55413383|São José dos Pinhais - PR
 55413384|São José dos Pinhais - PR
 55413385|São José dos Pinhais - PR
-55413386|Curitiba - PR
-55413389|Curitiba - PR
 55413391|Campo Largo - PR
 55413392|Campo Largo - PR
 55413393|Campo Largo - PR
-55413395|Curitiba - PR
-55413396|Curitiba - PR
 55413398|São José dos Pinhais - PR
 55413399|Campo Largo - PR
 55413404|Curitiba - PR
 55413405|São José dos Pinhais - PR
 55413414|Tagaçaba - PR
-55413420|Paranaguá - PR
-55413422|Paranaguá - PR
-55413423|Paranaguá - PR
-55413424|Paranaguá - PR
-55413425|Paranaguá - PR
-55413426|Paranaguá - PR
-55413427|Paranaguá - PR
+5541342|Paranaguá - PR
 55413432|Antonina - PR
 55413442|Guaratuba - PR
 55413443|Guaratuba - PR
@@ -7114,14 +4912,8 @@
 55413554|Quatro Barras - PR
 55413555|Campo Largo - PR
 55413556|São José dos Pinhais - PR
+5541356|Curitiba - PR
 55413562|Colombo - PR
-55413563|Curitiba - PR
-55413564|Curitiba - PR
-55413565|Curitiba - PR
-55413566|Curitiba - PR
-55413567|Curitiba - PR
-55413568|Curitiba - PR
-55413569|Curitiba - PR
 55413573|Curitiba - PR
 55413575|Curitiba - PR
 55413576|Curitiba - PR
@@ -7153,7 +4945,6 @@
 55413628|Campo do Tenente - PR
 55413629|Tijucas do Sul - PR
 55413632|Piên - PR
-55413633|Paraná
 55413634|São José dos Pinhais - PR
 55413635|São José dos Pinhais - PR
 55413636|Balsa Nova - PR
@@ -7188,7 +4979,6 @@
 55413678|Adrianópolis - PR
 55413679|Campina Grande do Sul - PR
 55413685|Paiol de Baixo - PR
-55413695|Paraná
 55413698|Almirante Tamandaré - PR
 55413699|Almirante Tamandaré - PR
 55413721|Paranaguá - PR
@@ -7229,16 +5019,8 @@
 55423122|Ponta Grossa - PR
 55423132|Irati - PR
 55423219|Ponta Grossa - PR
-55423220|Ponta Grossa - PR
+5542322|Ponta Grossa - PR
 55423221|Telêmaco Borba - PR
-55423222|Ponta Grossa - PR
-55423223|Ponta Grossa - PR
-55423224|Ponta Grossa - PR
-55423225|Ponta Grossa - PR
-55423226|Ponta Grossa - PR
-55423227|Ponta Grossa - PR
-55423228|Ponta Grossa - PR
-55423229|Ponta Grossa - PR
 55423231|Carambeí - PR
 55423232|Castro - PR
 55423233|Castro - PR
@@ -7312,13 +5094,8 @@
 55423573|Porto Vitória - PR
 55423617|Santa Maria do Oeste - PR
 55423618|Virmond - PR
-55423621|Guarapuava - PR
-55423622|Guarapuava - PR
-55423623|Guarapuava - PR
-55423624|Guarapuava - PR
+5542362|Guarapuava - PR
 55423625|Entre Rios - PR
-55423626|Guarapuava - PR
-55423627|Guarapuava - PR
 55423630|Guarapuava - PR
 55423631|Guarapuava - PR
 55423632|Jordãozinho - PR
@@ -7380,13 +5157,8 @@
 55433015|Rolândia - PR
 55433016|Rolândia - PR
 55433017|Londrina - PR
+5543302|Londrina - PR
 55433020|Rolândia - PR
-55433024|Londrina - PR
-55433025|Londrina - PR
-55433026|Londrina - PR
-55433027|Londrina - PR
-55433028|Londrina - PR
-55433029|Londrina - PR
 55433031|Londrina - PR
 55433032|Londrina - PR
 55433033|Apucarana - PR
@@ -7453,13 +5225,7 @@
 55433312|Arapongas - PR
 55433315|Londrina - PR
 55433316|Arapongas - PR
-55433321|Londrina - PR
-55433322|Londrina - PR
-55433323|Londrina - PR
-55433324|Londrina - PR
-55433325|Londrina - PR
-55433326|Londrina - PR
-55433329|Londrina - PR
+5543332|Londrina - PR
 55433334|Londrina - PR
 55433336|Londrina - PR
 55433337|Londrina - PR
@@ -7473,25 +5239,12 @@
 55433355|Londrina - PR
 55433356|Londrina - PR
 55433367|Londrina - PR
-55433371|Londrina - PR
-55433372|Londrina - PR
-55433373|Londrina - PR
-55433374|Londrina - PR
-55433375|Londrina - PR
-55433376|Londrina - PR
-55433378|Londrina - PR
-55433379|Londrina - PR
+5543337|Londrina - PR
 55433398|Tamarana - PR
 55433399|Tamarana - PR
 55433401|Cornélio Procópio - PR
 55433417|Ribeirão Bonito - PR
-55433420|Apucarana - PR
-55433422|Apucarana - PR
-55433423|Apucarana - PR
-55433424|Apucarana - PR
-55433425|Apucarana - PR
-55433426|Apucarana - PR
-55433427|Apucarana - PR
+5543342|Apucarana - PR
 55433428|Marilândia do Sul - PR
 55433429|Califórnia - PR
 55433432|Jandaia do Sul - PR
@@ -7633,16 +5386,7 @@
 55443209|Nova Esperança - PR
 55443218|Maringá - PR
 55443219|Maringá - PR
-55443220|Maringá - PR
-55443221|Maringá - PR
-55443222|Maringá - PR
-55443223|Maringá - PR
-55443224|Maringá - PR
-55443225|Maringá - PR
-55443226|Maringá - PR
-55443227|Maringá - PR
-55443228|Maringá - PR
-55443229|Maringá - PR
+5544322|Maringá - PR
 55443231|Itambé - PR
 55443232|Marialva - PR
 55443233|Mandaguari - PR
@@ -7668,16 +5412,8 @@
 55443257|Flórida - PR
 55443258|Munhoz de Melo - PR
 55443259|Maringá - PR
-55443260|Maringá - PR
-55443261|Maringá - PR
-55443262|Maringá - PR
-55443263|Maringá - PR
+5544326|Maringá - PR
 55443264|Sarandi - PR
-55443265|Maringá - PR
-55443266|Maringá - PR
-55443267|Maringá - PR
-55443268|Maringá - PR
-55443269|Maringá - PR
 55443270|Uniflor - PR
 55443272|Fênix - PR
 55443273|Ivatuba - PR
@@ -7879,15 +5615,7 @@
 55453211|Santa Maria - PR
 55453218|Cascavel - PR
 55453219|Cascavel - PR
-55453220|Cascavel - PR
-55453222|Cascavel - PR
-55453223|Cascavel - PR
-55453224|Cascavel - PR
-55453225|Cascavel - PR
-55453226|Cascavel - PR
-55453227|Cascavel - PR
-55453228|Cascavel - PR
-55453229|Cascavel - PR
+5545322|Cascavel - PR
 55453230|Diamante do Sul - PR
 55453231|Santa Tereza do Oeste - PR
 55453232|Guaraniaçu - PR
@@ -7965,14 +5693,7 @@
 55453379|Toledo - PR
 55453411|Cascavel - PR
 55453421|Toledo - PR
-55453520|Foz do Iguaçu - PR
-55453521|Foz do Iguaçu - PR
-55453522|Foz do Iguaçu - PR
-55453523|Foz do Iguaçu - PR
-55453524|Foz do Iguaçu - PR
-55453527|Foz do Iguaçu - PR
-55453528|Foz do Iguaçu - PR
-55453529|Foz do Iguaçu - PR
+5545352|Foz do Iguaçu - PR
 55453540|São Miguel do Iguaçu - PR
 55453541|Santa Terezinha de Itaipu - PR
 55453543|Vila Ipiranga - PR
@@ -7980,13 +5701,7 @@
 55453550|São Jorge - PR
 55453559|Itaipulândia - PR
 55453565|São Miguel do Iguaçu - PR
-55453572|Foz do Iguaçu - PR
-55453573|Foz do Iguaçu - PR
-55453574|Foz do Iguaçu - PR
-55453575|Foz do Iguaçu - PR
-55453576|Foz do Iguaçu - PR
-55453577|Foz do Iguaçu - PR
-55453578|Foz do Iguaçu - PR
+5545357|Foz do Iguaçu - PR
 55453902|Cascavel - PR
 55454001|Cascavel - PR
 55454003|Foz do Iguaçu - PR
@@ -8144,13 +5859,7 @@
 55473317|Indaial - SC
 55473318|Gaspar - SC
 55473319|Navegantes - SC
-55473322|Blumenau - SC
-55473323|Blumenau - SC
-55473324|Blumenau - SC
-55473325|Blumenau - SC
-55473326|Blumenau - SC
-55473328|Blumenau - SC
-55473329|Blumenau - SC
+5547332|Blumenau - SC
 55473330|Blumenau - SC
 55473332|Gaspar - SC
 55473333|Indaial - SC
@@ -8220,13 +5929,7 @@
 55473426|Joinville - SC
 55473427|Joinville - SC
 55473428|Dona Francisca SC 301 - SC
-55473431|Joinville - SC
-55473432|Joinville - SC
-55473433|Joinville - SC
-55473434|Joinville - SC
-55473436|Joinville - SC
-55473437|Joinville - SC
-55473439|Joinville - SC
+5547343|Joinville - SC
 55473442|São Francisco do Sul - SC
 55473443|Itapoá - SC
 55473444|São Francisco do Sul - SC
@@ -8367,14 +6070,7 @@
 55483214|São José - SC
 55483215|Florianópolis - SC
 55483216|Florianópolis - SC
-55483221|Florianópolis - SC
-55483222|Florianópolis - SC
-55483223|Florianópolis - SC
-55483224|Florianópolis - SC
-55483225|Florianópolis - SC
-55483226|Florianópolis - SC
-55483228|Florianópolis - SC
-55483229|Florianópolis - SC
+5548322|Florianópolis - SC
 55483231|Florianópolis - SC
 55483232|Florianópolis - SC
 55483236|Florianópolis - SC
@@ -8556,15 +6252,8 @@
 55493198|Maravilha - SC
 55493199|Chapecó - SC
 55493202|Joaçaba - SC
-55493221|Lages - SC
-55493222|Lages - SC
-55493223|Lages - SC
-55493224|Lages - SC
-55493225|Lages - SC
-55493226|Lages - SC
-55493227|Lages - SC
+5549322|Lages - SC
 55493228|Bocaina do Sul - SC
-55493229|Lages - SC
 55493232|Bom Jardim da Serra - SC
 55493233|São Joaquim - SC
 55493235|Painel - SC
@@ -8759,7 +6448,7 @@
 55493907|Lages - SC
 55493908|Fraiburgo - SC
 55494101|Chapecó - SC
-5551|Rio Grande do Sul
+55512|Rio Grande do Sul
 55512101|Porto Alegre - RS
 55512104|Porto Alegre - RS
 55512106|Santa Cruz do Sul - RS
@@ -8771,6 +6460,7 @@
 55512126|Porto Alegre - RS
 55512131|Porto Alegre - RS
 55512139|Porto Alegre - RS
+555130|Rio Grande do Sul
 55513011|Lajeado - RS
 55513018|Porto Alegre - RS
 55513031|Canoas - RS
@@ -8807,6 +6497,7 @@
 55513088|Lajeado - RS
 55513097|Novo Hamburgo - RS
 55513099|São Leopoldo - RS
+555131|Rio Grande do Sul
 55513101|Alvorada - RS
 55513111|Cachoeirinha - RS
 55513114|Guaíba - RS
@@ -8824,154 +6515,95 @@
 55513179|Taquara - RS
 55513191|Portão - RS
 55513192|Novo Hamburgo - RS
-55513203|Porto Alegre - RS
-55513205|Porto Alegre - RS
-55513206|Porto Alegre - RS
-55513209|Porto Alegre - RS
-55513211|Porto Alegre - RS
-55513212|Porto Alegre - RS
-55513213|Porto Alegre - RS
-55513214|Porto Alegre - RS
-55513216|Porto Alegre - RS
-55513217|Porto Alegre - RS
-55513219|Porto Alegre - RS
-55513220|Porto Alegre - RS
-55513221|Porto Alegre - RS
-55513222|Porto Alegre - RS
-55513223|Porto Alegre - RS
-55513224|Porto Alegre - RS
-55513225|Porto Alegre - RS
-55513226|Porto Alegre - RS
-55513227|Porto Alegre - RS
-55513228|Porto Alegre - RS
-55513230|Porto Alegre - RS
-55513231|Porto Alegre - RS
-55513232|Porto Alegre - RS
-55513233|Porto Alegre - RS
-55513235|Porto Alegre - RS
-55513240|Porto Alegre - RS
-55513241|Porto Alegre - RS
-55513242|Porto Alegre - RS
-55513244|Porto Alegre - RS
-55513245|Porto Alegre - RS
-55513246|Porto Alegre - RS
-55513247|Porto Alegre - RS
-55513248|Porto Alegre - RS
-55513249|Porto Alegre - RS
-55513250|Porto Alegre - RS
-55513251|Porto Alegre - RS
-55513254|Porto Alegre - RS
-55513257|Porto Alegre - RS
-55513258|Porto Alegre - RS
-55513259|Porto Alegre - RS
-55513261|Porto Alegre - RS
-55513262|Porto Alegre - RS
-55513265|Porto Alegre - RS
-55513268|Porto Alegre - RS
-55513269|Porto Alegre - RS
+555132|Porto Alegre - RS
+5551320|Rio Grande do Sul
+55513210|Rio Grande do Sul
+55513215|Rio Grande do Sul
+55513218|Rio Grande do Sul
+55513229|Rio Grande do Sul
+55513234|Rio Grande do Sul
+55513236|Rio Grande do Sul
+55513237|Rio Grande do Sul
+55513238|Rio Grande do Sul
+55513239|Rio Grande do Sul
+55513243|Rio Grande do Sul
+55513252|Rio Grande do Sul
+55513253|Rio Grande do Sul
+55513255|Rio Grande do Sul
+55513256|Rio Grande do Sul
+55513260|Rio Grande do Sul
+55513263|Rio Grande do Sul
+55513264|Rio Grande do Sul
+55513266|Rio Grande do Sul
+55513267|Rio Grande do Sul
+55513270|Rio Grande do Sul
 55513271|Novo Hamburgo - RS
-55513272|Porto Alegre - RS
-55513273|Porto Alegre - RS
-55513275|Porto Alegre - RS
-55513276|Porto Alegre - RS
-55513277|Porto Alegre - RS
-55513278|Porto Alegre - RS
-55513280|Porto Alegre - RS
-55513281|Porto Alegre - RS
-55513282|Porto Alegre - RS
+55513274|Rio Grande do Sul
+55513279|Rio Grande do Sul
 55513283|Novo Hamburgo - RS
-55513284|Porto Alegre - RS
-55513286|Porto Alegre - RS
-55513287|Porto Alegre - RS
-55513295|Porto Alegre - RS
-55513307|Porto Alegre - RS
-55513308|Porto Alegre - RS
-55513311|Porto Alegre - RS
-55513312|Porto Alegre - RS
+55513285|Rio Grande do Sul
+55513288|Rio Grande do Sul
+55513289|Rio Grande do Sul
+5551329|Rio Grande do Sul
+555133|Porto Alegre - RS
+5551330|Rio Grande do Sul
+55513310|Rio Grande do Sul
 55513313|Nova Santa Rita - RS
-55513314|Porto Alegre - RS
-55513315|Porto Alegre - RS
-55513316|Porto Alegre - RS
-55513317|Porto Alegre - RS
-55513318|Porto Alegre - RS
-55513319|Porto Alegre - RS
-55513320|Porto Alegre - RS
-55513323|Porto Alegre - RS
-55513325|Porto Alegre - RS
-55513329|Porto Alegre - RS
-55513330|Porto Alegre - RS
-55513331|Porto Alegre - RS
-55513332|Porto Alegre - RS
-55513333|Porto Alegre - RS
-55513334|Porto Alegre - RS
-55513335|Porto Alegre - RS
-55513336|Porto Alegre - RS
-55513338|Porto Alegre - RS
-55513339|Porto Alegre - RS
-55513340|Porto Alegre - RS
-55513341|Porto Alegre - RS
-55513342|Porto Alegre - RS
-55513343|Porto Alegre - RS
-55513344|Porto Alegre - RS
-55513346|Porto Alegre - RS
-55513347|Porto Alegre - RS
-55513349|Porto Alegre - RS
-55513350|Porto Alegre - RS
-55513351|Porto Alegre - RS
-55513352|Porto Alegre - RS
-55513353|Porto Alegre - RS
-55513355|Porto Alegre - RS
-55513356|Porto Alegre - RS
-55513357|Porto Alegre - RS
-55513358|Porto Alegre - RS
-55513359|Porto Alegre - RS
-55513360|Porto Alegre - RS
-55513361|Porto Alegre - RS
-55513364|Porto Alegre - RS
-55513365|Porto Alegre - RS
-55513366|Porto Alegre - RS
-55513367|Porto Alegre - RS
-55513369|Porto Alegre - RS
-55513371|Porto Alegre - RS
-55513373|Porto Alegre - RS
-55513374|Porto Alegre - RS
-55513376|Porto Alegre - RS
-55513377|Porto Alegre - RS
-55513378|Porto Alegre - RS
-55513383|Porto Alegre - RS
-55513384|Porto Alegre - RS
-55513385|Porto Alegre - RS
-55513386|Porto Alegre - RS
-55513388|Porto Alegre - RS
-55513390|Porto Alegre - RS
-55513391|Porto Alegre - RS
-55513392|Porto Alegre - RS
-55513393|Porto Alegre - RS
-55513395|Porto Alegre - RS
-55513397|Porto Alegre - RS
-55513398|Porto Alegre - RS
+5551332|Rio Grande do Sul
+55513337|Rio Grande do Sul
+55513345|Rio Grande do Sul
+55513348|Rio Grande do Sul
+55513354|Rio Grande do Sul
+55513362|Rio Grande do Sul
+55513363|Rio Grande do Sul
+55513368|Rio Grande do Sul
+55513370|Rio Grande do Sul
+55513372|Rio Grande do Sul
+55513375|Rio Grande do Sul
+55513379|Rio Grande do Sul
+55513380|Rio Grande do Sul
+55513381|Rio Grande do Sul
+55513382|Rio Grande do Sul
+55513387|Rio Grande do Sul
+55513389|Rio Grande do Sul
+55513394|Rio Grande do Sul
+55513396|Rio Grande do Sul
+55513399|Rio Grande do Sul
+55513400|Rio Grande do Sul
 55513401|Guaíba - RS
 55513402|Guaíba - RS
 55513403|Guaíba - RS
+55513404|Rio Grande do Sul
+55513405|Rio Grande do Sul
+55513406|Rio Grande do Sul
 55513407|Porto Alegre - RS
+55513408|Rio Grande do Sul
 55513409|Miraguaia - RS
+5551341|Rio Grande do Sul
 55513411|Alvorada - RS
 55513415|Canoas - RS
 55513416|Capão da Canoa - RS
+55513420|Rio Grande do Sul
 55513421|Gravataí - RS
 55513422|Barro Vermelho - RS
 55513423|Gravataí - RS
+55513424|Rio Grande do Sul
 55513425|Canoas - RS
 55513426|Canoas - RS
 55513427|Canoas - RS
+55513428|Rio Grande do Sul
 55513429|Canoas - RS
 55513430|Gravataí - RS
 55513431|Gravataí - RS
 55513432|Gravataí - RS
+55513433|Rio Grande do Sul
 55513434|Viamão - RS
+55513435|Rio Grande do Sul
 55513436|Viamão - RS
+55513437|Rio Grande do Sul
 55513438|Cachoeirinha - RS
 55513439|Cachoeirinha - RS
+55513440|Rio Grande do Sul
 55513441|Cachoeirinha - RS
 55513442|Alvorada - RS
 55513443|Alvorada - RS
@@ -8979,8 +6611,14 @@
 55513445|Presidente Lucena - RS
 55513446|Viamão - RS
 55513447|Alvorada - RS
+55513448|Rio Grande do Sul
+55513449|Rio Grande do Sul
+55513450|Rio Grande do Sul
+55513451|Rio Grande do Sul
 55513452|Sapucaia do Sul - RS
+55513453|Rio Grande do Sul
 55513454|Esteio - RS
+55513455|Rio Grande do Sul
 55513456|Canoas - RS
 55513457|Rio Grande do Sul
 55513458|Esteio - RS
@@ -8988,11 +6626,14 @@
 55513460|Esteio - RS
 55513461|Esteio - RS
 55513462|Canoas - RS
+55513463|Rio Grande do Sul
 55513464|Canoas - RS
 55513465|Canoas - RS
 55513466|Canoas - RS
 55513467|Canoas - RS
+55513468|Rio Grande do Sul
 55513469|Cachoeirinha - RS
+55513470|Rio Grande do Sul
 55513471|Cachoeirinha - RS
 55513472|Canoas - RS
 55513473|Esteio - RS
@@ -9000,6 +6641,7 @@
 55513475|Canoas - RS
 55513476|Canoas - RS
 55513477|Canoas - RS
+55513478|Rio Grande do Sul
 55513479|Nova Santa Rita - RS
 55513480|Guaíba - RS
 55513481|Eldorado do Sul - RS
@@ -9019,19 +6661,24 @@
 55513495|Sertão Santana - RS
 55513496|Gravataí - RS
 55513497|Gravataí - RS
+55513498|Rio Grande do Sul
 55513499|Eldorado do Sul - RS
+5551350|Rio Grande do Sul
 55513502|Capão da Canoa - RS
 55513509|São Leopoldo - RS
+5551351|Rio Grande do Sul
 55513515|Porto Alegre - RS
+5551352|Rio Grande do Sul
 55513522|Morro da Pedra - RS
 55513523|Parobé - RS
 55513524|Novo Hamburgo - RS
 55513529|Sapiranga - RS
-55513534|Rio Grande do Sul
+5551353|Rio Grande do Sul
 55513536|Conceição - RS
 55513537|Porto Alegre - RS
 55513538|Canoas - RS
 55513539|Novo Hamburgo - RS
+55513540|Rio Grande do Sul
 55513541|Taquara - RS
 55513542|Taquara - RS
 55513543|Parobé - RS
@@ -9041,10 +6688,15 @@
 55513547|Rolante - RS
 55513548|Riozinho - RS
 55513549|Igrejinha - RS
+55513550|Rio Grande do Sul
 55513551|Estância Velha - RS
 55513552|Lindolfo Collor - RS
 55513553|Novo Hamburgo - RS
 55513554|São Leopoldo - RS
+55513555|Rio Grande do Sul
+55513556|Rio Grande do Sul
+55513557|Rio Grande do Sul
+55513558|Rio Grande do Sul
 55513559|Sapiranga - RS
 55513560|Araricá - RS
 55513561|Estância Velha - RS
@@ -9056,14 +6708,17 @@
 55513567|Santa Maria do Herval - RS
 55513568|São Leopoldo - RS
 55513569|Morro Reuter - RS
+5551357|Rio Grande do Sul
 55513571|São José do Hortêncio - RS
 55513575|São Leopoldo - RS
 55513579|São Leopoldo - RS
 55513580|Novo Hamburgo - RS
 55513581|Novo Hamburgo - RS
 55513582|Novo Hamburgo - RS
+55513583|Rio Grande do Sul
 55513584|Novo Hamburgo - RS
 55513585|Campo Bom - RS
+55513586|Rio Grande do Sul
 55513587|Novo Hamburgo - RS
 55513588|São Leopoldo - RS
 55513589|São Leopoldo - RS
@@ -9077,32 +6732,47 @@
 55513597|Campo Bom - RS
 55513598|Campo Bom - RS
 55513599|Sapiranga - RS
+55513600|Rio Grande do Sul
 55513601|Osório - RS
 55513602|Caraá - RS
 55513603|Rainha do Mar - RS
+55513604|Rio Grande do Sul
 55513605|Torres - RS
 55513606|Rondinha Velha - RS
+55513607|Rio Grande do Sul
+55513608|Rio Grande do Sul
+55513609|Rio Grande do Sul
+55513610|Rio Grande do Sul
 55513611|Chuvisca - RS
 55513612|Doutor Ricardo - RS
 55513613|Fazenda Vilanova - RS
 55513614|Maratá - RS
 55513615|Caraá - RS
+55513616|Rio Grande do Sul
+55513617|Rio Grande do Sul
 55513618|Barão - RS
+55513619|Rio Grande do Sul
+55513620|Rio Grande do Sul
 55513621|Capão Novo - RS
 55513622|Arroio Teixeira - RS
+55513623|Rio Grande do Sul
 55513624|Santa Terezinha - RS
 55513625|Capão da Canoa - RS
 55513626|Torres - RS
 55513627|Imbé - RS
 55513628|Maquiné - RS
+55513629|Rio Grande do Sul
+55513630|Rio Grande do Sul
 55513631|Escadinhas - RS
 55513632|Montenegro - RS
 55513633|Pareci Novo - RS
 55513634|Bom Princípio - RS
 55513635|São Sebastião do Caí - RS
+55513636|Rio Grande do Sul
 55513637|Feliz - RS
 55513638|Salvador do Sul - RS
 55513639|São Vendelino - RS
+5551364|Rio Grande do Sul
 55513645|São Pedro da Serra - RS
 55513647|Vendinha - RS
 55513649|Montenegro - RS
@@ -9115,6 +6785,8 @@
 55513656|Arroio dos Ratos - RS
 55513657|Vendinha - RS
 55513658|Charqueadas - RS
+55513659|Rio Grande do Sul
+55513660|Rio Grande do Sul
 55513661|Tramandaí - RS
 55513662|Santo Antônio da Patrulha - RS
 55513663|Osório - RS
@@ -9137,19 +6809,30 @@
 55513680|Quintão - RS
 55513681|Cidreira - RS
 55513682|Balneário Pinhal - RS
+55513683|Rio Grande do Sul
 55513684|Tramandaí - RS
 55513685|Capivari do Sul - RS
 55513686|Magistério - RS
 55513687|Arroio do Sal - RS
+55513688|Rio Grande do Sul
 55513689|Xangri-Lá - RS
+55513690|Rio Grande do Sul
+55513691|Rio Grande do Sul
 55513692|Camaquã - RS
+55513693|Rio Grande do Sul
 55513694|Minas do Leão - RS
 55513695|Harmonia - RS
 55513696|Barão - RS
 55513697|Brochier - RS
 55513698|Capela de Santana - RS
+55513699|Rio Grande do Sul
+55513700|Rio Grande do Sul
+55513701|Rio Grande do Sul
+55513702|Rio Grande do Sul
+55513703|Rio Grande do Sul
 55513704|Monte Alverne - RS
 55513705|Marques de Souza - RS
+55513706|Rio Grande do Sul
 55513707|Lajeado - RS
 55513708|Sinimbu - RS
 55513709|Lajeado - RS
@@ -9170,20 +6853,26 @@
 55513724|Cachoeira do Sul - RS
 55513725|Cerro Branco - RS
 55513726|Lajeado - RS
+55513727|Rio Grande do Sul
+55513728|Rio Grande do Sul
 55513729|Lajeado - RS
 55513730|Passo do Sobrado - RS
 55513731|Rio Pardo - RS
+55513732|Rio Grande do Sul
 55513733|Encruzilhada do Sul - RS
 55513734|Pantano Grande - RS
 55513735|Várzea do Capivarita - RS
 55513736|Estrêla - RS
+55513737|Rio Grande do Sul
 55513738|Venâncio Aires - RS
+55513739|Rio Grande do Sul
 55513740|Santa Cruz do Sul - RS
 55513741|Venâncio Aires - RS
 55513742|Sobradinho - RS
 55513743|Candelária - RS
 55513744|Ibarama - RS
 55513745|Segredo - RS
+55513746|Rio Grande do Sul
 55513747|Arroio do Tigre - RS
 55513748|Lajeado - RS
 55513749|Palanque - RS
@@ -9199,29 +6888,42 @@
 55513759|Travesseiro - RS
 55513760|Colinas - RS
 55513761|Paverama - RS
+55513762|Rio Grande do Sul
+55513763|Rio Grande do Sul
 55513764|Cruzeiro do Sul - RS
 55513765|Lagoão - RS
 55513766|Bom Retiro do Sul - RS
 55513767|Tunas - RS
+55513768|Rio Grande do Sul
+55513769|Rio Grande do Sul
 55513770|Sério - RS
+55513771|Rio Grande do Sul
 55513772|Arvorezinha - RS
 55513773|Poço das Antas - RS
 55513774|Ilópolis - RS
 55513775|Pouso Novo - RS
 55513776|Relvado - RS
 55513777|Putinga - RS
+55513778|Rio Grande do Sul
+55513779|Rio Grande do Sul
+55513780|Rio Grande do Sul
+55513781|Rio Grande do Sul
 55513782|Santa Clara do Sul - RS
 55513783|Esteio - RS
 55513784|Mato Leitão - RS
+55513785|Rio Grande do Sul
+55513786|Rio Grande do Sul
 55513787|Pinheiral - RS
 55513788|Progresso - RS
 55513789|Boqueirão do Leão - RS
+5551379|Rio Grande do Sul
 55513792|Costão - RS
 55513793|Venâncio Aires - RS
-55513798|Rio Grande do Sul
+555138|Rio Grande do Sul
 55513822|Gravataí - RS
 55513883|Montenegro - RS
 55513898|Porto Alegre - RS
+555139|Rio Grande do Sul
 55513902|Santa Cruz do Sul - RS
 55513930|Porto Alegre - RS
 55513931|Porto Alegre - RS
@@ -9234,6 +6936,7 @@
 55513959|Sapiranga - RS
 55513982|Lajeado - RS
 55513983|Venâncio Aires - RS
+55514|Rio Grande do Sul
 55514001|Porto Alegre - RS
 55514003|Porto Alegre - RS
 55514007|Porto Alegre - RS
@@ -9243,7 +6946,9 @@
 55514109|Gravataí - RS
 55514112|Novo Hamburgo - RS
 55514116|Porto Alegre - RS
-5552|Rio Grande do Sul
+55515|Rio Grande do Sul
+55517|Rio Grande do Sul
+55519|Rio Grande do Sul
 5553|Rio Grande do Sul
 55532123|Pelotas - RS
 55532125|Rio Grande - RS
@@ -9261,24 +6966,11 @@
 55533045|Rio Grande - RS
 55533201|Rio Grande - RS
 55533204|Rio Grande - RS
-55533221|Pelotas - RS
-55533222|Pelotas - RS
-55533223|Pelotas - RS
+5553322|Pelotas - RS
 55533224|Morro Redondo - RS
-55533225|Pelotas - RS
-55533226|Pelotas - RS
-55533227|Pelotas - RS
-55533228|Pelotas - RS
-55533229|Pelotas - RS
-55533231|Rio Grande - RS
-55533232|Rio Grande - RS
-55533233|Rio Grande - RS
-55533234|Rio Grande - RS
-55533235|Rio Grande - RS
-55533236|Rio Grande - RS
+5553323|Rio Grande - RS
 55533237|Povo Novo - RS
 55533238|São José do Norte - RS
-55533239|Rio Grande - RS
 55533240|Bagé - RS
 55533241|Bagé - RS
 55533242|Bagé - RS
@@ -9301,26 +6993,15 @@
 55533264|Praia do Hermenegildo - RS
 55533265|Chuí - RS
 55533267|Herval - RS
-55533271|Pelotas - RS
-55533272|Pelotas - RS
-55533273|Pelotas - RS
-55533274|Pelotas - RS
+5553327|Pelotas - RS
 55533275|Capão do Leão - RS
-55533278|Pelotas - RS
-55533279|Pelotas - RS
 55533281|Pelotas - RS
 55533282|Pelotas - RS
 55533283|Pelotas - RS
 55533284|Pelotas - RS
 55533293|Rio Grande - RS
-55533301|Pelotas - RS
-55533302|Pelotas - RS
-55533303|Pelotas - RS
+5553330|Pelotas - RS
 55533304|Santa Maria - RS
-55533305|Pelotas - RS
-55533306|Pelotas - RS
-55533307|Pelotas - RS
-55533309|Pelotas - RS
 55533310|Pelotas - RS
 55533311|Bagé - RS
 55533312|Bagé - RS
@@ -9357,12 +7038,7 @@
 55543011|Farroupilha - RS
 55543015|Erechim - RS
 55543017|Veranópolis - RS
-55543021|Caxias do Sul - RS
-55543025|Caxias do Sul - RS
-55543026|Caxias do Sul - RS
-55543027|Caxias do Sul - RS
-55543028|Caxias do Sul - RS
-55543029|Caxias do Sul - RS
+5554302|Caxias do Sul - RS
 55543031|Canela - RS
 55543032|Flores da Cunha - RS
 55543033|Nova Petrópolis - RS
@@ -9379,32 +7055,11 @@
 55543055|Bento Gonçalves - RS
 55543056|Farroupilha - RS
 55543057|Bento Gonçalves - RS
-55543201|Caxias do Sul - RS
-55543202|Caxias do Sul - RS
-55543203|Caxias do Sul - RS
-55543204|Caxias do Sul - RS
-55543205|Caxias do Sul - RS
-55543206|Caxias do Sul - RS
+5554320|Caxias do Sul - RS
 55543207|São Brás - RS
-55543208|Caxias do Sul - RS
-55543209|Caxias do Sul - RS
+5554321|Caxias do Sul - RS
 55543210|Passo Fundo - RS
-55543211|Caxias do Sul - RS
-55543212|Caxias do Sul - RS
-55543213|Caxias do Sul - RS
-55543214|Caxias do Sul - RS
-55543215|Caxias do Sul - RS
-55543217|Caxias do Sul - RS
-55543219|Caxias do Sul - RS
-55543220|Caxias do Sul - RS
-55543221|Caxias do Sul - RS
-55543222|Caxias do Sul - RS
-55543223|Caxias do Sul - RS
-55543225|Caxias do Sul - RS
-55543226|Caxias do Sul - RS
-55543227|Caxias do Sul - RS
-55543228|Caxias do Sul - RS
-55543229|Caxias do Sul - RS
+5554322|Caxias do Sul - RS
 55543231|Vacaria - RS
 55543232|Vacaria - RS
 55543233|Ipê - RS
@@ -9446,13 +7101,7 @@
 55543295|Gramado - RS
 55543296|Nova Pádua - RS
 55543297|Flores da Cunha - RS
-55543311|Passo Fundo - RS
-55543312|Passo Fundo - RS
-55543313|Passo Fundo - RS
-55543314|Passo Fundo - RS
-55543316|Passo Fundo - RS
-55543317|Passo Fundo - RS
-55543318|Passo Fundo - RS
+5554331|Passo Fundo - RS
 55543319|Montauri - RS
 55543321|Erechim - RS
 55543322|Quinze de Novembro - RS
@@ -9549,7 +7198,6 @@
 55543459|Bento Gonçalves - RS
 55543461|Carlos Barbosa - RS
 55543462|Garibaldi - RS
-55543463|Rio Grande do Sul
 55543464|Garibaldi - RS
 55543468|Pinto Bandeira - RS
 55543471|Dois Lajeados - RS
@@ -9619,20 +7267,9 @@
 55553032|Santa Maria - RS
 55553033|Santa Maria - RS
 55553201|Santo Ângelo - RS
-55553211|Santa Maria - RS
-55553212|Santa Maria - RS
-55553213|Santa Maria - RS
-55553214|Santa Maria - RS
-55553217|Santa Maria - RS
-55553218|Santa Maria - RS
-55553219|Santa Maria - RS
-55553220|Santa Maria - RS
-55553221|Santa Maria - RS
-55553222|Santa Maria - RS
-55553223|Santa Maria - RS
+5555321|Santa Maria - RS
+5555322|Santa Maria - RS
 55553224|Silveira Martins - RS
-55553225|Santa Maria - RS
-55553226|Santa Maria - RS
 55553227|Itaara - RS
 55553228|Boca do Monte - RS
 55553231|Rosário do Sul - RS
@@ -9823,31 +7460,12 @@
 55554052|Santa Maria - RS
 55554062|Santa Maria - RS
 5561|Federal District
-55612020|Brasília - DF
-55612022|Brasília - DF
-55612023|Brasília - DF
-55612024|Brasília - DF
-55612027|Brasília - DF
-55612028|Brasília - DF
-55612029|Brasília - DF
+5561202|Brasília - DF
 55612030|Brasília - DF
 55612099|Brasília - DF
-55612101|Brasília - DF
-55612102|Brasília - DF
-55612103|Brasília - DF
-55612104|Brasília - DF
-55612105|Brasília - DF
-55612106|Brasília - DF
-55612107|Brasília - DF
-55612108|Brasília - DF
-55612109|Brasília - DF
+5561210|Brasília - DF
 55612141|Brasília - DF
-55612191|Brasília - DF
-55612192|Brasília - DF
-55612193|Brasília - DF
-55612194|Brasília - DF
-55612195|Brasília - DF
-55612196|Brasília - DF
+5561219|Brasília - DF
 55612323|Brasília - DF
 55612328|Brasília - DF
 55613003|Brasília - DF
@@ -9858,15 +7476,7 @@
 55613024|Brasília - DF
 55613026|Brasília - DF
 55613027|Taguatinga - DF
-55613031|Brasília - DF
-55613032|Brasília - DF
-55613033|Brasília - DF
-55613034|Brasília - DF
-55613035|Brasília - DF
-55613036|Brasília - DF
-55613037|Brasília - DF
-55613038|Brasília - DF
-55613039|Brasília - DF
+5561303|Brasília - DF
 55613041|Brasília - DF
 55613043|Brasília - DF
 55613044|Taguatinga - DF
@@ -9882,40 +7492,18 @@
 55613108|Brasília - DF
 55613114|Brasília - DF
 55613190|Brasília - DF
-55613201|Brasília - DF
-55613202|Brasília - DF
-55613203|Brasília - DF
-55613204|Brasília - DF
-55613207|Brasília - DF
-55613208|Brasília - DF
-55613209|Brasília - DF
+5561320|Brasília - DF
 55613212|Brasília - DF
 55613213|Brasília - DF
 55613214|Brasília - DF
 55613217|Brasília - DF
 55613218|Brasília - DF
-55613221|Brasília - DF
-55613222|Brasília - DF
-55613223|Brasília - DF
-55613224|Brasília - DF
-55613225|Brasília - DF
-55613226|Brasília - DF
+5561322|Brasília - DF
 55613233|Guará - DF
 55613234|Guará - DF
+5561324|Brasília - DF
 55613241|Olinda - PE
-55613242|Brasília - DF
-55613243|Brasília - DF
-55613244|Brasília - DF
-55613245|Brasília - DF
-55613246|Brasília - DF
-55613247|Brasília - DF
-55613248|Brasília - DF
-55613251|Brasília - DF
-55613252|Brasília - DF
-55613253|Brasília - DF
-55613254|Brasília - DF
-55613255|Brasília - DF
-55613257|Brasília - DF
+5561325|Brasília - DF
 55613261|Brasília - DF
 55613262|Brasília - DF
 55613263|Brasília - DF
@@ -9935,21 +7523,8 @@
 55613306|Brasília - DF
 55613307|Brasília - DF
 55613308|Planaltina - DF
-55613311|Brasília - DF
-55613312|Brasília - DF
-55613313|Brasília - DF
-55613314|Brasília - DF
-55613315|Brasília - DF
-55613316|Brasília - DF
-55613319|Brasília - DF
-55613321|Brasília - DF
-55613322|Brasília - DF
-55613323|Brasília - DF
-55613325|Brasília - DF
-55613326|Brasília - DF
-55613327|Brasília - DF
-55613328|Brasília - DF
-55613329|Brasília - DF
+5561331|Brasília - DF
+5561332|Brasília - DF
 55613331|Recanto das Emas - DF
 55613332|Recanto das Emas - DF
 55613333|Recanto das Emas - DF
@@ -9958,16 +7533,8 @@
 55613336|Taguatinga - DF
 55613338|Brasília - DF
 55613339|Brasília - DF
-55613340|Brasília - DF
+5561334|Brasília - DF
 55613341|Cruzeiro - DF
-55613342|Brasília - DF
-55613343|Brasília - DF
-55613344|Brasília - DF
-55613345|Brasília - DF
-55613346|Brasília - DF
-55613347|Brasília - DF
-55613348|Brasília - DF
-55613349|Brasília - DF
 55613351|Taguatinga - DF
 55613352|Taguatinga - DF
 55613353|Taguatinga - DF
@@ -9986,20 +7553,11 @@
 55613367|Brasília - DF
 55613368|Brasília - DF
 55613369|Paranoá - DF
-55613371|Ceilândia - DF
-55613372|Ceilândia - DF
-55613374|Ceilândia - DF
-55613375|Ceilândia - DF
-55613376|Ceilândia - DF
-55613377|Ceilândia - DF
-55613378|Ceilândia - DF
-55613379|Ceilândia - DF
+5561337|Ceilândia - DF
 55613380|Núcleo Bandeirante - DF
 55613381|Guará - DF
 55613382|Guará - DF
 55613383|Brasília - DF
-55613384|Federal District
-55613385|Federal District
 55613386|Núcleo Bandeirante - DF
 55613387|Sobradinho - DF
 55613388|Planaltina - DF
@@ -10014,23 +7572,13 @@
 55613408|Brasília - DF
 55613411|Brasília - DF
 55613415|Brasília - DF
-55613421|Brasília - DF
-55613424|Brasília - DF
-55613425|Brasília - DF
-55613426|Brasília - DF
-55613427|Brasília - DF
-55613429|Brasília - DF
+5561342|Brasília - DF
 55613432|Formosa - GO
 55613433|Brasília - DF
 55613434|Recanto das Emas - DF
 55613435|Brasília - DF
 55613436|Brasília - DF
-55613441|Brasília - DF
-55613442|Brasília - DF
-55613443|Brasília - DF
-55613445|Brasília - DF
-55613447|Brasília - DF
-55613448|Brasília - DF
+5561344|Brasília - DF
 55613453|Sobradinho - DF
 55613454|Sobradinho - DF
 55613456|Taguatinga - DF
@@ -10045,7 +7593,6 @@
 55613478|Sobradinho - DF
 55613479|Brazlândia - DF
 55613483|Sobradinho - DF
-55613484|Federal District
 55613485|Sobradinho - DF
 55613486|Brasília - DF
 55613487|Sobradinho - DF
@@ -10068,18 +7615,12 @@
 55613533|Brasília - DF
 55613535|Brasília - DF
 55613536|Brasília - DF
+5561354|Brasília - DF
 55613540|Brazlândia - DF
-55613541|Brasília - DF
-55613542|Brasília - DF
-55613543|Brasília - DF
-55613546|Brasília - DF
-55613547|Brasília - DF
-55613548|Brasília - DF
 55613551|Brasília - DF
 55613552|Núcleo Bandeirante - DF
 55613553|Brasília - DF
 55613554|Brasília - DF
-55613556|Federal District
 55613559|Samambaia Sul - DF
 55613561|Taguatinga - DF
 55613562|Taguatinga - DF
@@ -10183,98 +7724,24 @@
 55623098|Anápolis - GO
 55623099|Anápolis - GO
 55623142|Goiânia - GO
-55623201|Goiânia - GO
-55623202|Goiânia - GO
-55623204|Goiânia - GO
-55623205|Goiânia - GO
-55623206|Goiânia - GO
-55623207|Goiânia - GO
-55623208|Goiânia - GO
-55623210|Goiânia - GO
-55623211|Goiânia - GO
-55623212|Goiânia - GO
-55623213|Goiânia - GO
-55623214|Goiânia - GO
-55623215|Goiânia - GO
-55623217|Goiânia - GO
-55623218|Goiânia - GO
-55623220|Goiânia - GO
-55623221|Goiânia - GO
-55623222|Goiânia - GO
-55623223|Goiânia - GO
-55623224|Goiânia - GO
-55623225|Goiânia - GO
-55623227|Goiânia - GO
-55623228|Goiânia - GO
-55623229|Goiânia - GO
-55623232|Goiânia - GO
-55623233|Goiânia - GO
-55623234|Goiânia - GO
-55623237|Goiânia - GO
-55623238|Goiânia - GO
-55623241|Goiânia - GO
-55623243|Goiânia - GO
-55623245|Goiânia - GO
-55623246|Goiânia - GO
-55623247|Goiânia - GO
+556232|Goiânia - GO
 55623248|Aparecida de Goiânia - GO
-55623249|Goiânia - GO
-55623251|Goiânia - GO
-55623252|Goiânia - GO
-55623253|Goiânia - GO
-55623255|Goiânia - GO
-55623256|Goiânia - GO
-55623258|Goiânia - GO
-55623259|Goiânia - GO
-55623261|Goiânia - GO
-55623264|Goiânia - GO
-55623265|Goiânia - GO
-55623267|Goiânia - GO
-55623268|Goiânia - GO
-55623272|Goiânia - GO
-55623273|Goiânia - GO
-55623274|Goiânia - GO
-55623275|Goiânia - GO
 55623277|Aparecida de Goiânia - GO
 55623280|Aparecida de Goiânia - GO
-55623281|Goiânia - GO
 55623282|Aparecida de Goiânia - GO
 55623283|Aparecida de Goiânia - GO
-55623284|Goiânia - GO
-55623285|Goiânia - GO
-55623286|Goiânia - GO
-55623287|Goiânia - GO
 55623288|Aparecida de Goiânia - GO
-55623289|Goiânia - GO
-55623290|Goiânia - GO
-55623291|Goiânia - GO
-55623292|Goiânia - GO
-55623293|Goiânia - GO
-55623296|Goiânia - GO
-55623297|Goiânia - GO
-55623298|Goiânia - GO
-55623299|Goiânia - GO
 55623301|Leopoldo de Bulhões - GO
 55623302|Jussara - GO
 55623303|Montes Claros de Goiás - GO
 55623305|São Francisco de Goiás - GO
 55623307|Ceres - GO
-55623310|Anápolis - GO
-55623311|Anápolis - GO
+5562331|Anápolis - GO
 55623312|Itapuranga - GO
-55623314|Anápolis - GO
-55623316|Anápolis - GO
-55623317|Anápolis - GO
-55623319|Anápolis - GO
-55623320|Anápolis - GO
-55623321|Anápolis - GO
+5562332|Anápolis - GO
 55623323|Ceres - GO
-55623324|Anápolis - GO
 55623325|Rubiataba - GO
 55623326|Jaraguá - GO
-55623327|Anápolis - GO
-55623328|Anápolis - GO
-55623329|Anápolis - GO
 55623331|Pirenópolis - GO
 55623332|Silvânia - GO
 55623334|Petrolina de Goiás - GO
@@ -10478,13 +7945,7 @@
 55623997|Goiânia - GO
 55623998|Goiânia - GO
 55623999|Goiânia - GO
-55624001|Goiânia - GO
-55624003|Goiânia - GO
-55624005|Goiânia - GO
-55624006|Goiânia - GO
-55624007|Goiânia - GO
-55624008|Goiânia - GO
-55624009|Goiânia - GO
+5562400|Goiânia - GO
 55624011|Goiânia - GO
 55624012|Goiânia - GO
 55624014|Anápolis - GO
@@ -10508,30 +7969,13 @@
 55633025|Palmas - TO
 55633026|Palmas - TO
 55633028|Palmas - TO
-55633212|Palmas - TO
-55633213|Palmas - TO
-55633214|Palmas - TO
-55633215|Palmas - TO
-55633216|Palmas - TO
-55633217|Palmas - TO
-55633218|Palmas - TO
-55633219|Palmas - TO
-55633221|Palmas - TO
-55633223|Palmas - TO
-55633224|Palmas - TO
-55633225|Palmas - TO
-55633228|Palmas - TO
-55633229|Palmas - TO
+5563321|Palmas - TO
+5563322|Palmas - TO
 55633232|Palmas - TO
 55633233|Palmas - TO
 55633234|Palmas - TO
 55633301|Gurupi - TO
-55633311|Gurupi - TO
-55633312|Gurupi - TO
-55633313|Gurupi - TO
-55633314|Gurupi - TO
-55633315|Gurupi - TO
-55633316|Gurupi - TO
+5563331|Gurupi - TO
 55633321|Araguaína - TO
 55633322|Palmas - TO
 55633344|Carrasco Bonito - TO
@@ -10576,12 +8020,7 @@
 55633397|Pugmil - TO
 55633399|Sucupira - TO
 55633402|Araguaína - TO
-55633411|Araguaína - TO
-55633412|Araguaína - TO
-55633413|Araguaína - TO
-55633414|Araguaína - TO
-55633415|Araguaína - TO
-55633416|Araguaína - TO
+5563341|Araguaína - TO
 55633421|Araguaína - TO
 55633422|Bernardo Sayão - TO
 55633423|Darcinópolis - TO
@@ -10692,92 +8131,8 @@
 55643087|Itumbiara - GO
 55643088|Itumbiara - GO
 55643089|Itumbiara - GO
-55643091|Itumbiara - GO
-55643092|Itumbiara - GO
-55643093|Itumbiara - GO
-55643094|Itumbiara - GO
-55643095|Itumbiara - GO
-55643096|Itumbiara - GO
-55643097|Itumbiara - GO
-55643202|Itumbiara - GO
-55643203|Itumbiara - GO
-55643204|Itumbiara - GO
-55643205|Itumbiara - GO
-55643206|Itumbiara - GO
-55643207|Itumbiara - GO
-55643208|Itumbiara - GO
-55643209|Itumbiara - GO
-55643210|Itumbiara - GO
-55643211|Itumbiara - GO
-55643212|Itumbiara - GO
-55643213|Itumbiara - GO
-55643214|Itumbiara - GO
-55643215|Itumbiara - GO
-55643216|Itumbiara - GO
-55643217|Itumbiara - GO
-55643218|Itumbiara - GO
-55643219|Itumbiara - GO
-55643221|Itumbiara - GO
-55643223|Itumbiara - GO
-55643224|Itumbiara - GO
-55643225|Itumbiara - GO
-55643226|Itumbiara - GO
-55643229|Itumbiara - GO
-55643231|Itumbiara - GO
-55643232|Itumbiara - GO
-55643233|Itumbiara - GO
-55643234|Itumbiara - GO
-55643236|Itumbiara - GO
-55643237|Itumbiara - GO
-55643238|Itumbiara - GO
-55643239|Itumbiara - GO
-55643240|Itumbiara - GO
-55643241|Itumbiara - GO
-55643242|Itumbiara - GO
-55643245|Itumbiara - GO
-55643246|Itumbiara - GO
-55643247|Itumbiara - GO
-55643248|Itumbiara - GO
-55643249|Itumbiara - GO
-55643250|Itumbiara - GO
-55643251|Itumbiara - GO
-55643252|Itumbiara - GO
-55643253|Itumbiara - GO
-55643254|Itumbiara - GO
-55643255|Itumbiara - GO
-55643256|Itumbiara - GO
-55643257|Itumbiara - GO
-55643258|Itumbiara - GO
-55643259|Itumbiara - GO
-55643261|Itumbiara - GO
-55643264|Itumbiara - GO
-55643265|Itumbiara - GO
-55643269|Itumbiara - GO
-55643271|Itumbiara - GO
-55643272|Itumbiara - GO
-55643273|Itumbiara - GO
-55643274|Itumbiara - GO
-55643275|Itumbiara - GO
-55643278|Itumbiara - GO
-55643280|Itumbiara - GO
-55643281|Itumbiara - GO
-55643282|Itumbiara - GO
-55643284|Itumbiara - GO
-55643285|Itumbiara - GO
-55643286|Itumbiara - GO
-55643287|Itumbiara - GO
-55643288|Itumbiara - GO
-55643289|Itumbiara - GO
-55643290|Itumbiara - GO
-55643291|Itumbiara - GO
-55643292|Itumbiara - GO
-55643293|Itumbiara - GO
-55643294|Itumbiara - GO
-55643295|Itumbiara - GO
-55643296|Itumbiara - GO
-55643297|Itumbiara - GO
-55643298|Itumbiara - GO
-55643299|Itumbiara - GO
+5564309|Itumbiara - GO
+556432|Itumbiara - GO
 55643377|Mossâmedes - GO
 55643404|Itumbiara - GO
 55643405|Piracanjuba - GO
@@ -10949,12 +8304,7 @@
 55643698|Nova Aurora - GO
 55643699|Buriti de Goiás - GO
 55643901|Itumbiara - GO
-55643920|Itumbiara - GO
-55643921|Itumbiara - GO
-55643922|Itumbiara - GO
-55643923|Itumbiara - GO
-55643924|Itumbiara - GO
-55643926|Itumbiara - GO
+5564392|Itumbiara - GO
 55643931|Itumbiara - GO
 55643932|Itumbiara - GO
 55643933|Itumbiara - GO
@@ -10969,13 +8319,7 @@
 55643997|Itumbiara - GO
 55643998|Itumbiara - GO
 55643999|Itumbiara - GO
-55644001|Itumbiara - GO
-55644003|Itumbiara - GO
-55644005|Itumbiara - GO
-55644006|Itumbiara - GO
-55644007|Itumbiara - GO
-55644008|Itumbiara - GO
-55644009|Itumbiara - GO
+5564400|Itumbiara - GO
 55644012|Itumbiara - GO
 55644052|Itumbiara - GO
 55644141|Itumbiara - GO
@@ -11041,7 +8385,6 @@
 55653329|Tangará da Serra - MT
 55653331|Barão de Melgaço - MT
 55653332|Nova Olímpia - MT
-55653334|Mato Grosso
 55653335|Agrovila das Palmeiras - MT
 55653336|Diamantino - MT
 55653337|Diamantino - MT
@@ -11058,7 +8401,6 @@
 55653351|Nossa Senhora do Livramento - MT
 55653352|Nova Marilândia - MT
 55653353|Acorizal - MT
-55653354|Mato Grosso
 55653356|Rosário Oeste - MT
 55653361|Barra do Bugres - MT
 55653362|Várzea Grande - MT
@@ -11097,27 +8439,9 @@
 55653626|Cuiabá - MT
 55653631|Cuiabá - MT
 55653637|Cuiabá - MT
-55653641|Cuiabá - MT
-55653642|Cuiabá - MT
-55653644|Cuiabá - MT
-55653645|Cuiabá - MT
-55653646|Cuiabá - MT
-55653648|Cuiabá - MT
-55653649|Cuiabá - MT
-55653661|Cuiabá - MT
-55653663|Cuiabá - MT
-55653664|Cuiabá - MT
-55653665|Cuiabá - MT
-55653666|Cuiabá - MT
-55653667|Cuiabá - MT
-55653668|Cuiabá - MT
-55653669|Cuiabá - MT
-55653681|Várzea Grande - MT
-55653682|Várzea Grande - MT
-55653684|Várzea Grande - MT
-55653685|Várzea Grande - MT
-55653686|Várzea Grande - MT
-55653688|Várzea Grande - MT
+5565364|Cuiabá - MT
+5565366|Cuiabá - MT
+5565368|Várzea Grande - MT
 55653691|Várzea Grande - MT
 55653692|Várzea Grande - MT
 55653694|Várzea Grande - MT
@@ -11249,7 +8573,6 @@
 55663557|Tabaporã - MT
 55663558|Santa Terezinha - MT
 55663559|Novo Horizonte do Norte - MT
-55663560|Mato Grosso
 55663561|Itaúba - MT
 55663562|Santa Carmem - MT
 55663563|Paranaíta - MT
@@ -11346,59 +8669,7 @@
 55673292|Rio Verde de Mato Grosso - MS
 55673295|São Gabriel do Oeste - MS
 55673297|Chapadão do Baús - MS
-55673302|Campo Grande - MS
-55673303|Campo Grande - MS
-55673304|Campo Grande - MS
-55673306|Campo Grande - MS
-55673311|Campo Grande - MS
-55673312|Campo Grande - MS
-55673313|Campo Grande - MS
-55673314|Campo Grande - MS
-55673315|Campo Grande - MS
-55673316|Campo Grande - MS
-55673317|Campo Grande - MS
-55673318|Campo Grande - MS
-55673320|Campo Grande - MS
-55673321|Campo Grande - MS
-55673322|Campo Grande - MS
-55673323|Campo Grande - MS
-55673324|Campo Grande - MS
-55673325|Campo Grande - MS
-55673331|Campo Grande - MS
-55673342|Campo Grande - MS
-55673344|Campo Grande - MS
-55673345|Campo Grande - MS
-55673346|Campo Grande - MS
-55673347|Campo Grande - MS
-55673349|Campo Grande - MS
-55673351|Campo Grande - MS
-55673352|Campo Grande - MS
-55673354|Campo Grande - MS
-55673356|Campo Grande - MS
-55673357|Campo Grande - MS
-55673358|Campo Grande - MS
-55673361|Campo Grande - MS
-55673362|Campo Grande - MS
-55673363|Campo Grande - MS
-55673364|Campo Grande - MS
-55673365|Campo Grande - MS
-55673366|Campo Grande - MS
-55673368|Campo Grande - MS
-55673373|Campo Grande - MS
-55673378|Campo Grande - MS
-55673380|Campo Grande - MS
-55673381|Campo Grande - MS
-55673382|Campo Grande - MS
-55673383|Campo Grande - MS
-55673384|Campo Grande - MS
-55673385|Campo Grande - MS
-55673386|Campo Grande - MS
-55673387|Campo Grande - MS
-55673388|Campo Grande - MS
-55673391|Campo Grande - MS
-55673393|Campo Grande - MS
-55673397|Campo Grande - MS
-55673398|Campo Grande - MS
+556733|Campo Grande - MS
 55673405|Vista Alegre - MS
 55673409|Naviraí - MS
 55673410|Dourados - MS
@@ -11409,15 +8680,7 @@
 55673416|Dourados - MS
 55673418|Itaum - MS
 55673419|Angélica - MS
-55673420|Dourados - MS
-55673421|Dourados - MS
-55673422|Dourados - MS
-55673423|Dourados - MS
-55673424|Dourados - MS
-55673425|Dourados - MS
-55673426|Dourados - MS
-55673427|Dourados - MS
-55673428|Dourados - MS
+5567342|Dourados - MS
 55673429|Vila Macaúba - MS
 55673431|Ponta Porã - MS
 55673432|Ponta Porã - MS
@@ -11524,15 +8787,7 @@
 55683213|Rio Branco - AC
 55683214|Rio Branco - AC
 55683216|Rio Branco - AC
-55683221|Rio Branco - AC
-55683222|Rio Branco - AC
-55683223|Rio Branco - AC
-55683224|Rio Branco - AC
-55683225|Rio Branco - AC
-55683226|Rio Branco - AC
-55683227|Rio Branco - AC
-55683228|Rio Branco - AC
-55683229|Rio Branco - AC
+5568322|Rio Branco - AC
 55683231|Bujari - AC
 55683232|Senador Guiomard - AC
 55683233|Porto Acre - AC
@@ -11669,23 +8924,12 @@
 55694009|Porto Velho - RO
 55694062|Porto Velho - RO
 5571|Bahia
-55712101|Salvador - BA
-55712102|Salvador - BA
-55712104|Salvador - BA
-55712105|Salvador - BA
-55712106|Salvador - BA
-55712108|Salvador - BA
-55712109|Salvador - BA
+5571210|Salvador - BA
 55712136|Salvador - BA
 55712203|Salvador - BA
 55712223|Salvador - BA
 55713003|Salvador - BA
-55713011|Salvador - BA
-55713012|Salvador - BA
-55713013|Salvador - BA
-55713014|Salvador - BA
-55713015|Salvador - BA
-55713017|Salvador - BA
+5571301|Salvador - BA
 55713025|Salvador - BA
 55713026|Lauro de Freitas - BA
 55713029|Lauro de Freitas - BA
@@ -11713,34 +8957,13 @@
 55713203|Salvador - BA
 55713204|Salvador - BA
 55713205|Salvador - BA
-55713212|Salvador - BA
-55713213|Salvador - BA
-55713214|Salvador - BA
-55713215|Salvador - BA
+5571321|Salvador - BA
 55713216|Simões Filho - BA
-55713217|Salvador - BA
-55713218|Salvador - BA
-55713219|Salvador - BA
 55713221|Salvador - BA
 55713225|Feira de Santana - BA
-55713230|Salvador - BA
-55713231|Salvador - BA
-55713232|Salvador - BA
-55713236|Salvador - BA
-55713238|Salvador - BA
-55713239|Salvador - BA
-55713240|Salvador - BA
-55713241|Salvador - BA
-55713242|Salvador - BA
-55713243|Salvador - BA
-55713248|Salvador - BA
-55713249|Salvador - BA
-55713251|Salvador - BA
-55713252|Salvador - BA
-55713253|Salvador - BA
-55713254|Salvador - BA
-55713257|Salvador - BA
-55713259|Salvador - BA
+5571323|Salvador - BA
+5571324|Salvador - BA
+5571325|Salvador - BA
 55713261|Salvador - BA
 55713264|Salvador - BA
 55713267|Salvador - BA
@@ -11759,87 +8982,13 @@
 55713296|Simões Filho - BA
 55713297|Salvador - BA
 55713298|Simões Filho - BA
-55713301|Salvador - BA
-55713302|Salvador - BA
-55713303|Salvador - BA
-55713304|Salvador - BA
-55713305|Salvador - BA
-55713306|Salvador - BA
-55713307|Salvador - BA
-55713308|Salvador - BA
-55713309|Salvador - BA
-55713310|Salvador - BA
-55713311|Salvador - BA
-55713315|Salvador - BA
-55713316|Salvador - BA
-55713319|Salvador - BA
-55713321|Salvador - BA
-55713323|Salvador - BA
-55713325|Salvador - BA
-55713326|Salvador - BA
-55713327|Salvador - BA
-55713328|Salvador - BA
-55713329|Salvador - BA
-55713330|Salvador - BA
-55713334|Salvador - BA
-55713335|Salvador - BA
-55713336|Salvador - BA
-55713337|Salvador - BA
-55713340|Salvador - BA
-55713341|Salvador - BA
-55713342|Salvador - BA
-55713344|Salvador - BA
-55713345|Salvador - BA
-55713346|Salvador - BA
-55713347|Salvador - BA
-55713350|Salvador - BA
-55713351|Salvador - BA
-55713352|Salvador - BA
-55713353|Salvador - BA
-55713354|Salvador - BA
-55713355|Salvador - BA
-55713356|Salvador - BA
-55713357|Salvador - BA
-55713358|Salvador - BA
-55713359|Salvador - BA
-55713362|Salvador - BA
-55713363|Salvador - BA
-55713364|Salvador - BA
-55713365|Salvador - BA
-55713367|Salvador - BA
-55713368|Salvador - BA
+557133|Salvador - BA
 55713369|Lauro de Freitas - BA
-55713370|Salvador - BA
-55713371|Salvador - BA
-55713374|Salvador - BA
-55713375|Salvador - BA
-55713376|Salvador - BA
-55713377|Salvador - BA
 55713378|Lauro de Freitas - BA
 55713379|Lauro de Freitas - BA
-55713380|Salvador - BA
-55713384|Salvador - BA
-55713385|Salvador - BA
-55713386|Salvador - BA
-55713387|Salvador - BA
-55713388|Salvador - BA
-55713390|Salvador - BA
-55713393|Salvador - BA
 55713394|Aratu - BA
-55713395|Salvador - BA
 55713396|Simões Filho - BA
-55713397|Salvador - BA
-55713398|Salvador - BA
-55713399|Salvador - BA
-55713401|Salvador - BA
-55713402|Salvador - BA
-55713403|Salvador - BA
-55713404|Salvador - BA
-55713405|Salvador - BA
-55713406|Salvador - BA
-55713407|Salvador - BA
-55713408|Salvador - BA
-55713409|Salvador - BA
+5571340|Salvador - BA
 55713412|Salvador - BA
 55713414|Salvador - BA
 55713417|Salvador - BA
@@ -11855,20 +9004,9 @@
 55713462|Salvador - BA
 55713472|Salvador - BA
 55713473|Salvador - BA
-55713480|Salvador - BA
-55713481|Salvador - BA
-55713483|Salvador - BA
-55713484|Salvador - BA
-55713486|Salvador - BA
-55713487|Salvador - BA
-55713489|Salvador - BA
-55713491|Salvador - BA
-55713492|Salvador - BA
+5571348|Salvador - BA
+5571349|Salvador - BA
 55713493|Camaçari - BA
-55713495|Salvador - BA
-55713496|Salvador - BA
-55713497|Salvador - BA
-55713499|Salvador - BA
 55713500|Salvador - BA
 55713501|Salvador - BA
 55713504|Lauro de Freitas - BA
@@ -11912,7 +9050,6 @@
 55713667|Mata de São João - BA
 55713669|Palmares - BA
 55713671|Camaçari - BA
-55713674|Bahia
 55713676|Mata de São João - BA
 55713677|Mata de São João - BA
 55713681|Vera Cruz - BA
@@ -12095,7 +9232,6 @@
 55733672|Santa Cruz Cabrália - BA
 55733673|Arataca - BA
 55733674|Barra de Caravelas - BA
-55733675|Bahia
 55733676|Barrolândia - BA
 55733677|Coroa Vermelha - BA
 55733678|Monte Pascoal - BA
@@ -12106,7 +9242,6 @@
 55733684|Itamaraty - BA
 55733687|Caravelas - BA
 55733688|Piraí do Norte - BA
-55733689|Bahia
 55733692|Camacan - BA
 55733694|São José da Vitória - BA
 55733697|Travessão - BA
@@ -12141,12 +9276,7 @@
 55743552|Campo Formoso - BA
 55743553|Campo Formoso - BA
 55743559|Pindobaçu - BA
-55743611|Juazeiro - BA
-55743612|Juazeiro - BA
-55743613|Juazeiro - BA
-55743614|Juazeiro - BA
-55743617|Juazeiro - BA
-55743618|Juazeiro - BA
+5574361|Juazeiro - BA
 55743619|Jaguarari - BA
 55743620|São Gabriel - BA
 55743621|Jacobina - BA
@@ -12230,12 +9360,7 @@
 55753213|Banzaê - BA
 55753217|Santo Amaro - BA
 55753218|Salgadália - BA
-55753221|Feira de Santana - BA
-55753223|Feira de Santana - BA
-55753224|Feira de Santana - BA
-55753225|Feira de Santana - BA
-55753226|Feira de Santana - BA
-55753229|Feira de Santana - BA
+5575322|Feira de Santana - BA
 55753230|Antônio Cardoso - BA
 55753234|Nova Fátima - BA
 55753235|Candeal - BA
@@ -12356,12 +9481,7 @@
 55753471|Feira de Santana - BA
 55753475|Porto de Sauipe - BA
 55753477|Chorrochó - BA
-55753481|Feira de Santana - BA
-55753483|Feira de Santana - BA
-55753484|Feira de Santana - BA
-55753485|Feira de Santana - BA
-55753486|Feira de Santana - BA
-55753487|Feira de Santana - BA
+5575348|Feira de Santana - BA
 55753491|Feira de Santana - BA
 55753494|Canudos - BA
 55753496|Adustina - BA
@@ -12441,13 +9561,7 @@
 55772101|Vitória da Conquista - BA
 55772102|Vitória da Conquista - BA
 55773021|Barreiras - BA
-55773081|Vitória da Conquista - BA
-55773082|Vitória da Conquista - BA
-55773083|Vitória da Conquista - BA
-55773084|Vitória da Conquista - BA
-55773086|Vitória da Conquista - BA
-55773087|Vitória da Conquista - BA
-55773088|Vitória da Conquista - BA
+5577308|Vitória da Conquista - BA
 55773201|Vitória da Conquista - BA
 55773202|Vitória da Conquista - BA
 55773221|Itapetinga - BA
@@ -12467,15 +9581,7 @@
 55773415|Ituaçu - BA
 55773416|Contendas do Sincorá - BA
 55773417|Guajeru - BA
-55773420|Vitória da Conquista - BA
-55773421|Vitória da Conquista - BA
-55773422|Vitória da Conquista - BA
-55773423|Vitória da Conquista - BA
-55773424|Vitória da Conquista - BA
-55773425|Vitória da Conquista - BA
-55773426|Vitória da Conquista - BA
-55773427|Vitória da Conquista - BA
-55773429|Vitória da Conquista - BA
+5577342|Vitória da Conquista - BA
 55773430|Caatiba - BA
 55773431|Poções - BA
 55773432|Itambé - BA
@@ -12615,12 +9721,7 @@
 55793224|Aracaju - SE
 55793227|Aracaju - SE
 55793236|Aracaju - SE
-55793241|Aracaju - SE
-55793243|Aracaju - SE
-55793245|Aracaju - SE
-55793246|Aracaju - SE
-55793248|Aracaju - SE
-55793249|Aracaju - SE
+5579324|Aracaju - SE
 55793251|Aracaju - SE
 55793252|Aracaju - SE
 55793254|Nossa Senhora do Socorro - SE
@@ -12757,15 +9858,7 @@
 55813204|Recife - PE
 55813212|Recife - PE
 55813217|Recife - PE
-55813221|Recife - PE
-55813222|Recife - PE
-55813223|Recife - PE
-55813224|Recife - PE
-55813225|Recife - PE
-55813226|Recife - PE
-55813227|Recife - PE
-55813228|Recife - PE
-55813229|Recife - PE
+5581322|Recife - PE
 55813231|Recife - PE
 55813236|Recife - PE
 55813252|Recife - PE
@@ -12783,13 +9876,7 @@
 55813314|Recife - PE
 55813316|Recife - PE
 55813319|São Lourenço da Mata - PE
-55813320|Recife - PE
-55813321|Recife - PE
-55813323|Recife - PE
-55813325|Recife - PE
-55813326|Recife - PE
-55813327|Recife - PE
-55813328|Recife - PE
+5581332|Recife - PE
 55813338|Recife - PE
 55813339|Recife - PE
 55813341|Recife - PE
@@ -12809,12 +9896,7 @@
 55813412|Recife - PE
 55813413|Recife - PE
 55813419|Recife - PE
-55813421|Recife - PE
-55813422|Recife - PE
-55813423|Recife - PE
-55813424|Recife - PE
-55813425|Recife - PE
-55813428|Recife - PE
+5581342|Recife - PE
 55813431|Olinda - PE
 55813433|Paulista - PE
 55813434|Paulista - PE
@@ -12829,13 +9911,7 @@
 55813454|Recife - PE
 55813457|Paulista - PE
 55813459|Aldeia - PE
-55813461|Recife - PE
-55813462|Recife - PE
-55813463|Recife - PE
-55813464|Recife - PE
-55813465|Recife - PE
-55813466|Recife - PE
-55813467|Recife - PE
+5581346|Recife - PE
 55813468|Jaboatão dos Guararapes - PE
 55813469|Jaboatão dos Guararapes - PE
 55813471|Recife - PE
@@ -12866,7 +9942,6 @@
 55813524|Cabo de Santo Agostinho - PE
 55813525|São Lourenço da Mata - PE
 55813526|Vitória de Santo Antão - PE
-55813527|Pernambuco
 55813533|Gravatá - PE
 55813534|Escada - PE
 55813535|Moreno - PE
@@ -13083,15 +10158,7 @@
 55823311|Maceió - AL
 55823312|Maceió - AL
 55823314|Maceió - AL
-55823320|Maceió - AL
-55823321|Maceió - AL
-55823322|Maceió - AL
-55823323|Maceió - AL
-55823324|Maceió - AL
-55823325|Maceió - AL
-55823326|Maceió - AL
-55823327|Maceió - AL
-55823328|Maceió - AL
+5582332|Maceió - AL
 55823332|Maceió - AL
 55823334|Maceió - AL
 55823336|Maceió - AL
@@ -13102,23 +10169,8 @@
 55823343|Maceió - AL
 55823344|Maceió - AL
 55823346|Maceió - AL
-55823350|Maceió - AL
-55823352|Maceió - AL
-55823353|Maceió - AL
-55823354|Maceió - AL
-55823355|Maceió - AL
-55823356|Maceió - AL
-55823357|Maceió - AL
-55823358|Maceió - AL
-55823359|Maceió - AL
-55823371|Maceió - AL
-55823372|Maceió - AL
-55823373|Maceió - AL
-55823374|Maceió - AL
-55823375|Maceió - AL
-55823376|Maceió - AL
-55823377|Maceió - AL
-55823378|Maceió - AL
+5582335|Maceió - AL
+5582337|Maceió - AL
 55823420|Palmeira dos Índios - AL
 55823421|Palmeira dos Índios - AL
 55823422|Cacimbinhas - AL
@@ -13206,33 +10258,13 @@
 55833213|João Pessoa - PB
 55833215|João Pessoa - PB
 55833217|Santa Rita - PB
-55833220|João Pessoa - PB
-55833221|João Pessoa - PB
-55833222|João Pessoa - PB
-55833223|João Pessoa - PB
-55833224|João Pessoa - PB
-55833225|João Pessoa - PB
-55833226|João Pessoa - PB
-55833227|João Pessoa - PB
+5583322|João Pessoa - PB
 55833228|Cabedelo - PB
 55833229|Santa Rita - PB
-55833231|João Pessoa - PB
+5583323|João Pessoa - PB
 55833232|Bayeux - PB
-55833233|João Pessoa - PB
-55833235|João Pessoa - PB
-55833236|João Pessoa - PB
-55833237|João Pessoa - PB
-55833238|João Pessoa - PB
-55833239|João Pessoa - PB
-55833241|João Pessoa - PB
-55833242|João Pessoa - PB
-55833243|João Pessoa - PB
-55833244|João Pessoa - PB
-55833245|João Pessoa - PB
-55833246|João Pessoa - PB
-55833247|João Pessoa - PB
+5583324|João Pessoa - PB
 55833248|Cabedelo - PB
-55833249|João Pessoa - PB
 55833251|João Pessoa - PB
 55833252|João Pessoa - PB
 55833253|Bayeux - PB
@@ -13291,14 +10323,7 @@
 55833317|Galante - PB
 55833321|Campina Grande - PB
 55833322|Campina Grande - PB
-55833332|Campina Grande - PB
-55833333|Campina Grande - PB
-55833334|Campina Grande - PB
-55833335|Campina Grande - PB
-55833336|Campina Grande - PB
-55833337|Campina Grande - PB
-55833338|Campina Grande - PB
-55833339|Campina Grande - PB
+5583333|Campina Grande - PB
 55833341|Campina Grande - PB
 55833342|Campina Grande - PB
 55833343|Campina Grande - PB
@@ -13485,20 +10510,8 @@
 55843087|Natal - RN
 55843133|Natal - RN
 55843198|Natal - RN
-55843201|Natal - RN
-55843202|Natal - RN
-55843204|Natal - RN
-55843205|Natal - RN
-55843206|Natal - RN
-55843207|Natal - RN
-55843208|Natal - RN
-55843211|Natal - RN
-55843212|Natal - RN
-55843213|Natal - RN
-55843214|Natal - RN
-55843217|Natal - RN
-55843218|Natal - RN
-55843219|Natal - RN
+5584320|Natal - RN
+5584321|Natal - RN
 55843220|Natal - RN
 55843221|Natal - RN
 55843222|Natal - RN
@@ -13573,12 +10586,7 @@
 55843298|São Bento do Trairí - RN
 55843299|Coronel Ezequiel - RN
 55843301|Natal - RN
-55843312|Mossoró - RN
-55843314|Mossoró - RN
-55843315|Mossoró - RN
-55843316|Mossoró - RN
-55843317|Mossoró - RN
-55843318|Mossoró - RN
+5584331|Mossoró - RN
 55843320|Baraúna - RN
 55843321|Mossoró - RN
 55843323|Mossoró - RN
@@ -13741,77 +10749,9 @@
 55853181|Fortaleza - CE
 55853182|Fortaleza - CE
 55853198|Fortaleza - CE
-55853201|Fortaleza - CE
-55853204|Fortaleza - CE
-55853205|Fortaleza - CE
-55853206|Fortaleza - CE
-55853207|Fortaleza - CE
-55853208|Fortaleza - CE
-55853209|Fortaleza - CE
-55853211|Fortaleza - CE
-55853212|Fortaleza - CE
+558532|Fortaleza - CE
 55853213|Caucaia - CE
-55853216|Fortaleza - CE
-55853217|Fortaleza - CE
-55853218|Fortaleza - CE
-55853219|Fortaleza - CE
-55853221|Fortaleza - CE
-55853224|Fortaleza - CE
-55853225|Fortaleza - CE
-55853226|Fortaleza - CE
-55853228|Fortaleza - CE
-55853229|Fortaleza - CE
-55853231|Fortaleza - CE
-55853233|Fortaleza - CE
-55853234|Fortaleza - CE
-55853235|Fortaleza - CE
-55853236|Fortaleza - CE
-55853238|Fortaleza - CE
-55853241|Fortaleza - CE
-55853242|Fortaleza - CE
-55853244|Fortaleza - CE
-55853245|Fortaleza - CE
-55853246|Fortaleza - CE
-55853248|Fortaleza - CE
-55853249|Fortaleza - CE
-55853250|Fortaleza - CE
-55853251|Fortaleza - CE
-55853252|Fortaleza - CE
-55853253|Fortaleza - CE
-55853254|Fortaleza - CE
-55853255|Fortaleza - CE
-55853256|Fortaleza - CE
-55853258|Fortaleza - CE
-55853259|Fortaleza - CE
 55853260|Eusébio - CE
-55853261|Fortaleza - CE
-55853262|Fortaleza - CE
-55853263|Fortaleza - CE
-55853264|Fortaleza - CE
-55853265|Fortaleza - CE
-55853267|Fortaleza - CE
-55853268|Fortaleza - CE
-55853269|Fortaleza - CE
-55853271|Fortaleza - CE
-55853273|Fortaleza - CE
-55853274|Fortaleza - CE
-55853275|Fortaleza - CE
-55853276|Fortaleza - CE
-55853278|Fortaleza - CE
-55853279|Fortaleza - CE
-55853282|Fortaleza - CE
-55853284|Fortaleza - CE
-55853285|Fortaleza - CE
-55853286|Fortaleza - CE
-55853287|Fortaleza - CE
-55853289|Fortaleza - CE
-55853290|Fortaleza - CE
-55853291|Fortaleza - CE
-55853292|Fortaleza - CE
-55853293|Fortaleza - CE
-55853294|Fortaleza - CE
-55853295|Fortaleza - CE
-55853297|Fortaleza - CE
 55853301|Beberibe - CE
 55853302|Apuiarés - CE
 55853304|Fortaleza - CE
@@ -13870,39 +10810,16 @@
 55853387|Caucaia - CE
 55853403|Fortaleza - CE
 55853404|Fortaleza - CE
-55853453|Fortaleza - CE
-55853454|Fortaleza - CE
-55853455|Fortaleza - CE
-55853456|Fortaleza - CE
-55853457|Fortaleza - CE
-55853458|Fortaleza - CE
+5585345|Fortaleza - CE
 55853461|Fortaleza - CE
 55853462|Fortaleza - CE
 55853463|Fortaleza - CE
 55853464|Fortaleza - CE
 55853468|Fortaleza - CE
-55853471|Fortaleza - CE
-55853473|Fortaleza - CE
-55853474|Fortaleza - CE
+5585347|Fortaleza - CE
 55853475|Caucaia - CE
-55853476|Fortaleza - CE
-55853477|Fortaleza - CE
-55853478|Fortaleza - CE
-55853479|Fortaleza - CE
-55853482|Fortaleza - CE
-55853483|Fortaleza - CE
-55853485|Fortaleza - CE
-55853486|Fortaleza - CE
-55853488|Fortaleza - CE
-55853489|Fortaleza - CE
-55853491|Fortaleza - CE
-55853492|Fortaleza - CE
-55853493|Fortaleza - CE
-55853494|Fortaleza - CE
-55853495|Fortaleza - CE
-55853496|Fortaleza - CE
-55853497|Fortaleza - CE
-55853498|Fortaleza - CE
+5585348|Fortaleza - CE
+5585349|Fortaleza - CE
 55853650|Carnaubal - CE
 55853667|Itarema - CE
 55853813|São Paulo - SP
@@ -13932,14 +10849,7 @@
 55863214|Teresina - PI
 55863216|Teresina - PI
 55863219|Teresina - PI
-55863220|Teresina - PI
-55863221|Teresina - PI
-55863222|Teresina - PI
-55863223|Teresina - PI
-55863224|Teresina - PI
-55863226|Teresina - PI
-55863227|Teresina - PI
-55863228|Teresina - PI
+5586322|Teresina - PI
 55863239|Santo Antônio dos Milagres - PI
 55863240|Cabeceiras do Piauí - PI
 55863241|Boa Hora - PI
@@ -14084,14 +10994,8 @@
 55873857|Flores - PE
 55873858|Pedra - PE
 55873859|Santa Terezinha - PE
-55873860|Petrolina - PE
-55873861|Petrolina - PE
-55873862|Petrolina - PE
-55873863|Petrolina - PE
-55873864|Petrolina - PE
+5587386|Petrolina - PE
 55873865|Dormentes - PE
-55873866|Petrolina - PE
-55873867|Petrolina - PE
 55873868|Afrânio - PE
 55873869|Santa Maria da Boa Vista - PE
 55873870|Trindade - PE
@@ -14443,80 +11347,12 @@
 55913181|Belém - PA
 55913182|Belém - PA
 55913184|Belém - PA
-55913201|Belém - PA
-55913202|Belém - PA
-55913204|Belém - PA
-55913207|Belém - PA
-55913210|Belém - PA
-55913212|Belém - PA
-55913213|Belém - PA
-55913214|Belém - PA
-55913216|Belém - PA
-55913218|Belém - PA
-55913221|Belém - PA
-55913222|Belém - PA
-55913223|Belém - PA
-55913224|Belém - PA
-55913225|Belém - PA
-55913226|Belém - PA
-55913227|Belém - PA
-55913228|Belém - PA
-55913229|Belém - PA
-55913230|Belém - PA
-55913231|Belém - PA
-55913232|Belém - PA
-55913233|Belém - PA
-55913235|Belém - PA
-55913236|Belém - PA
-55913237|Belém - PA
-55913238|Belém - PA
-55913239|Belém - PA
-55913241|Belém - PA
-55913242|Belém - PA
-55913243|Belém - PA
-55913244|Belém - PA
-55913245|Belém - PA
-55913246|Belém - PA
-55913248|Belém - PA
-55913249|Belém - PA
-55913250|Belém - PA
-55913251|Belém - PA
-55913252|Belém - PA
-55913254|Belém - PA
-55913255|Belém - PA
-55913256|Belém - PA
-55913257|Belém - PA
-55913258|Belém - PA
-55913259|Belém - PA
-55913262|Belém - PA
-55913263|Belém - PA
-55913264|Belém - PA
+559132|Belém - PA
 55913265|Ananindeua - PA
-55913266|Belém - PA
-55913267|Belém - PA
-55913268|Belém - PA
-55913269|Belém - PA
-55913271|Belém - PA
-55913272|Belém - PA
-55913273|Belém - PA
-55913274|Belém - PA
 55913275|Ananindeua - PA
-55913276|Belém - PA
-55913277|Belém - PA
-55913278|Belém - PA
-55913279|Belém - PA
-55913281|Belém - PA
-55913283|Belém - PA
 55913284|Ananindeua - PA
-55913285|Belém - PA
 55913286|Ananindeua - PA
 55913287|Ananindeua - PA
-55913288|Belém - PA
-55913289|Belém - PA
-55913292|Belém - PA
-55913295|Belém - PA
-55913297|Belém - PA
-55913298|Belém - PA
 55913311|Castanhal - PA
 55913322|Barcarena - PA
 55913323|Belém - PA
@@ -14657,14 +11493,7 @@
 55923221|Manaus - AM
 55923223|Manaus - AM
 55923228|Manaus - AM
-55923231|Manaus - AM
-55923232|Manaus - AM
-55923233|Manaus - AM
-55923234|Manaus - AM
-55923235|Manaus - AM
-55923236|Manaus - AM
-55923238|Manaus - AM
-55923239|Manaus - AM
+5592323|Manaus - AM
 55923245|Manaus - AM
 55923247|Manaus - AM
 55923249|Manaus - AM
@@ -14701,40 +11530,11 @@
 55923581|Manaus - AM
 55923582|Manaus - AM
 55923584|Manaus - AM
-55923611|Manaus - AM
-55923612|Manaus - AM
-55923613|Manaus - AM
-55923614|Manaus - AM
-55923615|Manaus - AM
-55923616|Manaus - AM
-55923617|Manaus - AM
-55923618|Manaus - AM
-55923621|Manaus - AM
-55923622|Manaus - AM
-55923623|Manaus - AM
-55923624|Manaus - AM
-55923625|Manaus - AM
-55923627|Manaus - AM
-55923629|Manaus - AM
-55923633|Manaus - AM
-55923634|Manaus - AM
-55923635|Manaus - AM
-55923636|Manaus - AM
-55923637|Manaus - AM
-55923639|Manaus - AM
-55923641|Manaus - AM
-55923642|Manaus - AM
-55923643|Manaus - AM
-55923645|Manaus - AM
-55923646|Manaus - AM
-55923648|Manaus - AM
-55923649|Manaus - AM
-55923651|Manaus - AM
-55923652|Manaus - AM
-55923656|Manaus - AM
-55923657|Manaus - AM
-55923658|Manaus - AM
-55923659|Manaus - AM
+5592361|Manaus - AM
+5592362|Manaus - AM
+5592363|Manaus - AM
+5592364|Manaus - AM
+5592365|Manaus - AM
 55923663|Manaus - AM
 55923664|Manaus - AM
 55923667|Manaus - AM
@@ -14777,7 +11577,6 @@
 55933536|Juruti - PA
 55933537|Mujuí dos Campos - PA
 55933538|Terra Santa - PA
-55933541|Pará
 55933542|Jacareacanga - PA
 55933543|Rurópolis - PA
 55933544|Oriximiná - PA
@@ -14794,7 +11593,6 @@
 55933596|São José - PA
 55933597|Tabocal - PA
 55933598|Jamanchizinho - PA
-55933603|Pará
 55933735|Monte Dourado - PA
 55933736|Munguba - PA
 55933737|Almeirim - PA
@@ -14907,12 +11705,7 @@
 55963212|Macapá - AP
 55963214|Macapá - AP
 55963217|Macapá - AP
-55963222|Macapá - AP
-55963223|Macapá - AP
-55963224|Macapá - AP
-55963225|Macapá - AP
-55963227|Macapá - AP
-55963229|Macapá - AP
+5596322|Macapá - AP
 55963234|Porto Grande - AP
 55963242|Macapá - AP
 55963243|Macapá - AP
@@ -14996,13 +11789,7 @@
 55983013|São Luís - MA
 55983014|São Luís - MA
 55983015|São Luís - MA
-55983081|São Luís - MA
-55983082|São Luís - MA
-55983083|São Luís - MA
-55983084|São Luís - MA
-55983087|São Luís - MA
-55983088|São Luís - MA
-55983089|São Luís - MA
+5598308|São Luís - MA
 55983181|São Luís - MA
 55983182|São Luís - MA
 55983194|São Luís - MA
@@ -15012,39 +11799,12 @@
 55983214|São Luís - MA
 55983217|São Luís - MA
 55983218|São Luís - MA
-55983221|São Luís - MA
-55983222|São Luís - MA
-55983223|São Luís - MA
+5598322|São Luís - MA
 55983224|São José de Ribamar - MA
-55983226|São Luís - MA
-55983227|São Luís - MA
-55983228|São Luís - MA
 55983229|Raposa - MA
-55983231|São Luís - MA
-55983232|São Luís - MA
-55983233|São Luís - MA
-55983234|São Luís - MA
-55983235|São Luís - MA
-55983236|São Luís - MA
-55983237|São Luís - MA
-55983241|São Luís - MA
-55983242|São Luís - MA
-55983243|São Luís - MA
-55983244|São Luís - MA
-55983245|São Luís - MA
-55983246|São Luís - MA
-55983247|São Luís - MA
-55983248|São Luís - MA
-55983249|São Luís - MA
-55983251|São Luís - MA
-55983252|São Luís - MA
-55983253|São Luís - MA
-55983254|São Luís - MA
-55983255|São Luís - MA
-55983256|São Luís - MA
-55983257|São Luís - MA
-55983258|São Luís - MA
-55983259|São Luís - MA
+5598323|São Luís - MA
+5598324|São Luís - MA
+5598325|São Luís - MA
 55983262|São Luís - MA
 55983264|São Luís - MA
 55983268|São Luís - MA
@@ -15182,15 +11942,9 @@
 55993425|Jenipapo dos Vieiras - MA
 55993427|Barra do Corda - MA
 55993492|Lagoa do Mato - MA
+5599352|Imperatriz - MA
 55993521|Caxias - MA
 55993522|Tuntum - MA
-55993523|Imperatriz - MA
-55993524|Imperatriz - MA
-55993525|Imperatriz - MA
-55993526|Imperatriz - MA
-55993527|Imperatriz - MA
-55993528|Imperatriz - MA
-55993529|Imperatriz - MA
 55993531|Estreito - MA
 55993533|Buritirana - MA
 55993534|Davinópolis - MA

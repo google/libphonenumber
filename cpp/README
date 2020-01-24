@@ -52,15 +52,15 @@ Requirements:
     $ sudo apt-get install cmake-curses-gui
 
   - Protocol Buffers
-    http://code.google.com/p/protobuf/
-    Version 2.4 or more recent is required (this is available by default for
+    http://github.com/google/protobuf/
+    Version 3.6.1 or more recent is required (this is available by default for
     recent Debian-based GNU/Linux distributions).
 
     You can check which version is available:
     $ apt-cache show libprotobuf-dev
     Package: libprotobuf-dev
     Source: protobuf
-    Version: 2.5.0-9ubuntu1   <-- This must be >= 2.4.0
+    Version: 3.6.1-9ubuntu1   <-- This must be >= 3.6.1
     ...
 
     Installation:
@@ -68,18 +68,17 @@ Requirements:
 
     Note: if your GNU/Linux distribution doesn't provide the needed package,
           please download and install it manually:
-    $ tar xjf protobuf-2.4.tar.bz2
-    $ cd protobuf-2.4
-    $ ./configure && make && sudo make install
+    More details can be found at its official page:
+    https://github.com/protocolbuffers/protobuf
 
   - Google Test
-    http://code.google.com/p/googletest/
+    http://github.com/google/googletest
 
     Installation:
     $ sudo apt-get install libgtest-dev
 
   - RE2
-    http://code.google.com/p/re2/
+    http://github.com/google/re2
 
     Installation:
     $ sudo apt-get install libre2-dev
@@ -160,7 +159,7 @@ gtest. We don't need to install gtest, we only copy sources. For example:
 Get the libphonenumber source. For example:
   $ mkdir ~/libphonenumber_clone
   $ cd ~/libphonenumber_clone
-  $ git clone https://github.com/googlei18n/libphonenumber.git
+  $ git clone https://github.com/google/libphonenumber.git
 
 Build and test the library:
   $ cd libphonenumber/cpp
@@ -218,7 +217,7 @@ Troubleshooting CMake via ccmake
 
     You should set the following values:
       PROTOBUF_INCLUDE_DIR         /usr/local/include
-      PROTOBUF_LIB                 /usr/local/lib/libprotobuf.so
+      PROTOBUF_LIB                 /usr/local/lib/libprotobuf.dylib
       PROTOC_BIN                   /usr/local/bin/protoc
 
     Now press 'c' then 'g' to configure the new parameters and exit ccmake.
@@ -324,9 +323,9 @@ ICU_I18N_LIB              C:/icu/lib/icuin.lib
 ICU_UC_INCLUDE_DIR        C:/icu/include
 ICU_UC_LIB                C:/icu/lib/icuuc.lib
 
-PROTOBUF_INCLUDE_DIR      C:/protobuf-2.4.1/src
-PROTOBUF_LIB              C:/protobuf-2.4.1/vsprojects/Release/libprotobuf.lib
-PROTOC_BIN                C:/protobuf-2.4.1/vsprojects/Release/protoc.exe
+PROTOBUF_INCLUDE_DIR      C:/protobuf-3.6.1/src
+PROTOBUF_LIB              C:/protobuf-3.6.1/vsprojects/Release/libprotobuf.lib
+PROTOC_BIN                C:/protobuf-3.6.1/vsprojects/Release/protoc.exe
 
 Then you can click on "Configure" again. CMake should have located all the
 dependencies.

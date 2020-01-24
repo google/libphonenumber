@@ -8,7 +8,7 @@ How to setup:
 =============
 1.  Checkout closure-library, closure-compiler, closure-linter and python-gflags next to libphonenumber:
 
-* `git clone https://github.com/googlei18n/libphonenumber/`
+* `git clone https://github.com/google/libphonenumber/`
 
 * `git clone https://github.com/google/closure-library/`
 
@@ -76,9 +76,8 @@ project:
   `ant -f javascript/build.xml lint`
 
 
-TODO:
+Missing functionality:
 =====
-1. Port functionality to extract phone-numbers from text (findNumbers).
-2. Port offline phone number geocoder.
-3. Enable PhoneNumberUtil to handle all digits, rather than a subset (JavaScript has no equivalent to the Java Character.digit).
-4. Port ShortNumberInfo.
+1. JS port does not support extracting phone-numbers from text (findNumbers).
+2. JS port does not have an offline phone number geocoder.
+3. JS port of PhoneNumberUtil does not handle all digits, only a subset (JavaScript has no equivalent to the Java Character.digit).

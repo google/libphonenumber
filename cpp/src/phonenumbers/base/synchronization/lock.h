@@ -34,10 +34,36 @@ typedef boost::mutex::scoped_lock AutoLock;
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/base/thread_checker.h"
 
+// C++11 Lock implementation based on std::mutex.
+#if  __cplusplus>=201103L
+#include <mutex>
+
+namespace i18n {
+namespace phonenumbers {
+
+class Lock {
+public:
+  Lock() = default;
+
+  void Acquire() const {
+    mutex_.lock();
+  }
+
+  void Release() const {
+    mutex_.unlock();
+  }
+
+private:
+  mutable std::mutex mutex_;
+};
+
+}  // namespace phonenumbers
+}  // namespace i18n
+
 // Dummy lock implementation on non-POSIX platforms. If you are running on a
 // different platform and care about thread-safety, please compile with
 // -DI18N_PHONENUMBERS_USE_BOOST.
-#if !defined(__linux__) && !defined(__APPLE__)
+#elif !defined(__linux__) && !defined(__APPLE__)
 
 namespace i18n {
 namespace phonenumbers {

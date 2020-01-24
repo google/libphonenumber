@@ -63,7 +63,7 @@ changes, as per the instructions in `javascript/README`.
 #### C++
 
 See the [C++
-README](http://github.com/googlei18n/libphonenumber/blob/master/cpp/README)
+README](http://github.com/google/libphonenumber/blob/master/cpp/README)
 instructions for how to build and run C++. You should build it with
 `USE_LITE_METADATA` set to `ON` as well as `OFF`, which will generate both a
 `metadata.cc` and a `metadata_lite.cc` file.

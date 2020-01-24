@@ -122,7 +122,6 @@ public class PhoneNumberUtil {
 
   static {
     HashMap<Integer, String> mobileTokenMap = new HashMap<Integer, String>();
-    mobileTokenMap.put(52, "1");
     mobileTokenMap.put(54, "9");
     MOBILE_TOKEN_MAPPINGS = Collections.unmodifiableMap(mobileTokenMap);
 
@@ -341,7 +340,7 @@ public class PhoneNumberUtil {
     // form with the combining acute accent.
     return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*"
         + "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|"
-        + "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)"
+        + "\u0434\u043E\u0431|" + "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)"
         + "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|"
         + "[- ]+(" + DIGITS + "{1,5})#");
   }
@@ -380,12 +379,13 @@ public class PhoneNumberUtil {
 
   /**
    * INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
-   * E123. For example, the number of the Google Switzerland office will be written as
-   * "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format.
-   * E164 format is as per INTERNATIONAL format but with no formatting applied, e.g.
-   * "+41446681800". RFC3966 is as per INTERNATIONAL format, but with all spaces and other
-   * separating symbols replaced with a hyphen, and with any phone number extension appended with
-   * ";ext=". It also will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
+   * E.123. However we follow local conventions such as using '-' instead of whitespace as
+   * separators. For example, the number of the Google Switzerland office will be written as
+   * "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format. E164
+   * format is as per INTERNATIONAL format but with no formatting applied, e.g. "+41446681800".
+   * RFC3966 is as per INTERNATIONAL format, but with all spaces and other separating symbols
+   * replaced with a hyphen, and with any phone number extension appended with ";ext=". It also
+   * will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
    *
    * Note: If you are considering storing the number in a neutral format, you are highly advised to
    * use the PhoneNumber class.
@@ -480,7 +480,11 @@ public class PhoneNumberUtil {
      */
     POSSIBLE {
       @Override
-      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+      boolean verify(
+          PhoneNumber number,
+          CharSequence candidate,
+          PhoneNumberUtil util,
+          PhoneNumberMatcher matcher) {
         return util.isPossibleNumber(number);
       }
     },
@@ -492,7 +496,11 @@ public class PhoneNumberUtil {
      */
     VALID {
       @Override
-      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+      boolean verify(
+          PhoneNumber number,
+          CharSequence candidate,
+          PhoneNumberUtil util,
+          PhoneNumberMatcher matcher) {
         if (!util.isValidNumber(number)
             || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidate.toString(), util)) {
           return false;
@@ -514,7 +522,11 @@ public class PhoneNumberUtil {
      */
     STRICT_GROUPING {
       @Override
-      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+      boolean verify(
+          PhoneNumber number,
+          CharSequence candidate,
+          PhoneNumberUtil util,
+          PhoneNumberMatcher matcher) {
         String candidateString = candidate.toString();
         if (!util.isValidNumber(number)
             || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidateString, util)
@@ -522,7 +534,7 @@ public class PhoneNumberUtil {
             || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
-        return PhoneNumberMatcher.checkNumberGroupingIsValid(
+        return matcher.checkNumberGroupingIsValid(
             number, candidate, util, new PhoneNumberMatcher.NumberGroupingChecker() {
               @Override
               public boolean checkGroups(PhoneNumberUtil util, PhoneNumber number,
@@ -547,7 +559,11 @@ public class PhoneNumberUtil {
      */
     EXACT_GROUPING {
       @Override
-      boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util) {
+      boolean verify(
+          PhoneNumber number,
+          CharSequence candidate,
+          PhoneNumberUtil util,
+          PhoneNumberMatcher matcher) {
         String candidateString = candidate.toString();
         if (!util.isValidNumber(number)
             || !PhoneNumberMatcher.containsOnlyValidXChars(number, candidateString, util)
@@ -555,7 +571,7 @@ public class PhoneNumberUtil {
             || !PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
           return false;
         }
-        return PhoneNumberMatcher.checkNumberGroupingIsValid(
+        return matcher.checkNumberGroupingIsValid(
             number, candidate, util, new PhoneNumberMatcher.NumberGroupingChecker() {
               @Override
               public boolean checkGroups(PhoneNumberUtil util, PhoneNumber number,
@@ -569,7 +585,11 @@ public class PhoneNumberUtil {
     };
 
     /** Returns true if {@code number} is a verified number according to this leniency. */
-    abstract boolean verify(PhoneNumber number, CharSequence candidate, PhoneNumberUtil util);
+    abstract boolean verify(
+        PhoneNumber number,
+        CharSequence candidate,
+        PhoneNumberUtil util,
+        PhoneNumberMatcher matcher);
   }
 
   // A source of metadata for different regions.
@@ -832,7 +852,11 @@ public class PhoneNumberUtil {
    * to split a national significant number into NDC and subscriber number. The NDC of a phone
    * number is normally the first group of digit(s) right after the country calling code when the
    * number is formatted in the international format, if there is a subscriber number part that
-   * follows. An example of how this could be used:
+   * follows.
+   *
+   * N.B.: similar to an area code, not all numbers have an NDC!
+   *
+   * An example of how this could be used:
    *
    * <pre>{@code
    * PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
@@ -858,7 +882,7 @@ public class PhoneNumberUtil {
    * @param number  the PhoneNumber object for which clients
    *     want to know the length of the NDC
    * @return  the length of NDC of the PhoneNumber object
-   *     passed in
+   *     passed in, which could be zero
    */
   public int getLengthOfNationalDestinationCode(PhoneNumber number) {
     PhoneNumber copiedProto;
@@ -969,7 +993,7 @@ public class PhoneNumberUtil {
     return Collections.unmodifiableSet(countryCodesForNonGeographicalRegion);
   }
 
- /**
+  /**
    * Returns all country calling codes the library has metadata for, covering both non-geographical
    * entities (global network calling codes) and those used for geographical entities. This could be
    * used to populate a drop-down box of country calling codes for a phone-number widget, for
@@ -1401,14 +1425,6 @@ public class PhoneNumberUtil {
             // called within Brazil. Without that, most of the carriers won't connect the call.
             // Because of that, we return an empty string here.
             : "";
-      } else if (isValidNumber && regionCode.equals("HU")) {
-        // The national format for HU numbers doesn't contain the national prefix, because that is
-        // how numbers are normally written down. However, the national prefix is obligatory when
-        // dialing from a mobile phone, except for short numbers. As a result, we add it back here
-        // if it is a valid regular length phone number.
-        formattedNumber =
-            getNddPrefixForRegion(regionCode, true /* strip non-digits */) + " "
-            + format(numberNoExt, PhoneNumberFormat.NATIONAL);
       } else if (countryCallingCode == NANPA_COUNTRY_CODE) {
         // For NANPA countries, we output international format for numbers that can be dialed
         // internationally, since that always works, except for numbers which might potentially be
@@ -1422,9 +1438,9 @@ public class PhoneNumberUtil {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.NATIONAL);
         }
       } else {
-        // For non-geographical countries, and Mexican and Chilean fixed line and mobile numbers, we
-        // output international format for numbers that can be dialed internationally as that always
-        // works.
+        // For non-geographical countries, and Mexican, Chilean, and Uzbek fixed line and mobile
+        // numbers, we output international format for numbers that can be dialed internationally as
+        // that always works.
         if ((regionCode.equals(REGION_CODE_FOR_NON_GEO_ENTITY)
              // MX fixed line and mobile numbers should always be formatted in international format,
              // even when dialed within MX. For national format to work, a carrier code needs to be
@@ -1434,8 +1450,13 @@ public class PhoneNumberUtil {
              // CL fixed line numbers need the national prefix when dialing in the national format,
              // but don't have it when used for display. The reverse is true for mobile numbers.  As
              // a result, we output them in the international format to make it work.
-             || ((regionCode.equals("MX") || regionCode.equals("CL"))
-             && isFixedLineOrMobile))
+             // UZ mobile and fixed-line numbers have to be formatted in international format or
+             // prefixed with special codes like 03, 04 (for fixed-line) and 05 (for mobile) for
+             // dialling successfully from mobile devices. As we do not have complete information on
+             // special codes and to be consistent with formatting across all phone types we return
+             // the number in international format here.
+             || ((regionCode.equals("MX") || regionCode.equals("CL")
+                 || regionCode.equals("UZ")) && isFixedLineOrMobile))
             && canBeInternationallyDialled(numberNoExt)) {
           formattedNumber = format(numberNoExt, PhoneNumberFormat.INTERNATIONAL);
         } else {

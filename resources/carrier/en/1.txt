@@ -35,40 +35,10 @@
 1242375|BaTelCo
 1242376|BaTelCo
 1242395|BaTelCo
-1242421|BaTelCo
-1242422|BaTelCo
-1242423|BaTelCo
-1242424|BaTelCo
-1242425|BaTelCo
-1242426|BaTelCo
-1242427|BaTelCo
-1242428|BaTelCo
-1242429|BaTelCo
-1242431|BaTelCo
-1242432|BaTelCo
-1242433|BaTelCo
-1242434|BaTelCo
-1242435|BaTelCo
-1242436|BaTelCo
-1242437|BaTelCo
-1242438|BaTelCo
-1242439|BaTelCo
-1242441|BaTelCo
-1242442|BaTelCo
-1242443|BaTelCo
-1242445|BaTelCo
-1242446|BaTelCo
-1242447|BaTelCo
-1242448|BaTelCo
-1242449|BaTelCo
-1242451|BaTelCo
-1242452|BaTelCo
-1242453|BaTelCo
-1242454|BaTelCo
-1242455|BaTelCo
-1242456|BaTelCo
-1242457|BaTelCo
-1242458|BaTelCo
+124242|BaTelCo
+124243|BaTelCo
+124244|BaTelCo
+124245|BaTelCo
 1242462|BaTelCo
 1242463|BaTelCo
 1242464|BaTelCo
@@ -77,55 +47,21 @@
 1242467|BaTelCo
 1242468|BaTelCo
 124247|BaTelCo
-1242481|BaTelCo
-1242524|BaTelCo
-1242525|BaTelCo
-1242533|BaTelCo
-1242535|BaTelCo
-1242544|BaTelCo
-1242551|BaTelCo
-1242552|BaTelCo
-1242553|BaTelCo
-1242554|BaTelCo
-1242556|BaTelCo
-1242557|BaTelCo
-1242558|BaTelCo
-1242559|BaTelCo
-1242565|BaTelCo
-1242577|BaTelCo
-1242636|BaTelCo
+124248|BaTelCo
+124252|BaTelCo
+124253|BaTelCo
+124254|BaTelCo
+124255|BaTelCo
+124256|BaTelCo
+124257|BaTelCo
+124263|BaTelCo
 1242646|BaTelCo
-1242727|BaTelCo
-1242738|aliv
-1242801|aliv
-1242802|aliv
-1242803|aliv
-1242804|aliv
-1242805|aliv
-1242806|aliv
-1242807|aliv
-1242808|aliv
-1242809|aliv
-1242810|aliv
-1242812|aliv
-1242813|aliv
-1242814|aliv
-1242815|aliv
-1242816|aliv
-1242817|aliv
-1242818|aliv
-1242819|aliv
-124282|aliv
-1242889|aliv
-1242899|aliv
+124272|BaTelCo
+124273|aliv
+12428|aliv
 124623|LIME
 124624|LIME
-1246250|LIME
-1246251|LIME
-1246252|LIME
-1246253|LIME
-1246254|LIME
-1246255|LIME
+124625|LIME
 1246256|Digicel
 1246257|Digicel
 1246258|Digicel
@@ -133,72 +69,45 @@
 124626|Digicel
 124628|LIME
 124645|Sunbeach Communications
-124682|Digicel
-124683|Digicel
-124684|Digicel
-124685|Digicel
-1246883|Digicel
-1264536|Weblinks Limited
-1264537|Weblinks Limited
-1264538|Weblinks Limited
-1264539|Weblinks Limited
-1264581|Digicel
-1264582|Digicel
-1264583|Digicel
-1264584|Digicel
-1264729|Cable & Wireless
-1264772|Cable & Wireless
-1268713|Digicel
-1268714|Digicel
-1268715|Digicel
-1268716|Digicel
-1268717|Digicel
-1268718|Digicel
-1268719|Digicel
+124669|Ozone
+12468|Digicel
+126453|Weblinks Limited
+126458|Digicel
+12647|Cable & Wireless
+126871|Digicel
 1268720|Digicel
 1268721|Digicel
 1268722|Digicel
 1268724|Digicel
 1268725|Digicel
 1268726|Digicel
-1268732|Digicel
-1268734|Digicel
-1268736|Digicel
+1268727|APUA
+1268729|APUA
+126873|Digicel
+1268773|APUA
+1268774|APUA
+1268775|APUA
+1268780|APUA
+1268781|APUA
 1268783|Digicel
 1268785|Digicel
 1268788|Digicel
 1284300|Digicel
-1284340|Digicel
-1284341|Digicel
-1284342|Digicel
-1284343|Digicel
-1284344|Digicel
-1284345|Digicel
-1284346|Digicel
-1284347|Digicel
-1284368|Digicel
-1284393|Digicel
-1284394|Digicel
-1345321|Digicel
-1345322|Digicel
-1345323|Digicel
-1345324|Digicel
-1345325|Digicel
-1345326|Digicel
-1345327|Digicel
-1345328|Digicel
-1345329|Digicel
-1345516|Digicel
-1345517|Digicel
-1345525|Digicel
-1345526|Digicel
-1345527|Digicel
-1345529|Digicel
-1345546|Digicel
-1345547|Digicel
-1345548|Digicel
-1345549|Digicel
-1345550|Digicel
+128434|Digicel
+128436|Digicel
+128439|Digicel
+128444|CCT
+12844689|CCT
+12844966|CCT
+12844967|CCT
+12844968|CCT
+12844969|CCT
+1284499|CCT
+13453|Digicel
+134551|Digicel
+134552|Digicel
+134554|Digicel
+134555|Digicel
 1345649|Digicel
 14413|Mobility
 144150|Digicel Bermuda
@@ -209,47 +118,28 @@
 14417|Cellular One
 1473402|Affordable Island Communications
 147341|Digicel Grenada
-1473420|Digicel Grenada
-1473421|Digicel Grenada
-1473422|Digicel Grenada
-1473423|Digicel Grenada
-1473424|Digicel Grenada
-1473425|Digicel Grenada
-1473520|Affordable Island Communications
-1473521|Affordable Island Communications
+147342|Digicel Grenada
+147352|Affordable Island Communications
 147353|AWS Grenada
-1473901|Affordable Island Communications
-164923|C&W
-164924|C&W
-164933|DIGICEL
-164934|DIGICEL
+147390|Affordable Island Communications
+16492|C&W
+16493|Digicel
 164943|Islandcom
-1671480|GTA
-1671482|GTA
-1671483|GTA
-1671486|GTA
-1671487|GTA
-1671488|GTA
-1671489|GTA
-1671747|PTI PACIFICA
-1671838|i CAN_GSM
-1671848|i CAN_GSM
-1671858|i CAN_GSM
+1658295|Cable & Wireless
+167148|GTA
+167174|PTI PACIFICA
+167183|i CAN_GSM
+167184|i CAN_GSM
+167185|i CAN_GSM
 1671864|GTA
 1671868|Choice Phone
-1671878|Choice Phone
-1671888|Choice Phone
-1671898|Choice Phone
-1684252|Blue Sky
-1684254|Blue Sky
-1684256|Blue Sky
-1684258|Blue Sky
-1684272|Blue Sky
-1684731|ASTCA
-1684733|ASTCA
-1684770|ASTCA
-175828|Cable & Wireless
-1758384|Cable & Wireless
+167187|Choice Phone
+167188|Choice Phone
+167189|Choice Phone
+16842|Blue Sky
+16847|ASTCA
+17582|Cable & Wireless
+17583|Cable & Wireless
 1758460|Cable & Wireless
 1758461|Cable & Wireless
 1758484|Cable & Wireless
@@ -258,32 +148,19 @@
 1758487|Cable & Wireless
 1758488|Cable & Wireless
 1758489|Cable & Wireless
-175851|AT&T
-1758518|Digicel
-1758519|Digicel
-175852|AT&T
-1758520|Digicel
-1758584|Cable & Wireless
+175851|Digicel
+175852|Digicel
+175858|Cable & Wireless
 17587|Digicel
-1767225|Cable & Wireless
-1767235|Cable & Wireless
-1767245|Cable & Wireless
+176722|Cable & Wireless
+176723|Cable & Wireless
+176724|Cable & Wireless
 1767265|Cable & Wireless
-1767275|Cable & Wireless
-1767276|Cable & Wireless
-1767277|Cable & Wireless
-1767285|Cable & Wireless
-1767295|Cable & Wireless
-1767315|Digicel
-1767316|Digicel
-1767317|Digicel
-1767611|Digicel
-1767612|Digicel
-1767613|Digicel
-1767614|Digicel
-1767615|Digicel
-1767616|Digicel
-1767617|Digicel
+176727|Cable & Wireless
+176728|Cable & Wireless
+176729|Cable & Wireless
+17673|Digicel
+17676|Digicel
 1784430|AT&T
 1784431|AT&T
 1784432|AT&T
@@ -299,15 +176,8 @@
 1784493|Cable & Wireless
 1784494|Cable & Wireless
 1784495|Cable & Wireless
-1784526|Digicel
-1784527|Digicel
-1784528|Digicel
-1784529|Digicel
-1784530|Digicel
-1784531|Digicel
-1784532|Digicel
-1784533|Digicel
-1784534|Digicel
+178452|Digicel
+178453|Digicel
 1787203|Claro
 1787210|SunCom Wireless Puerto Rico
 1787212|Claro
@@ -519,16 +389,11 @@
 180927|Claro
 180928|Claro
 180929|Tricom
+18093|Claro
 180930|Viva
 180931|Tricom
 180932|Tricom
-180933|Claro
 180934|Tricom
-180935|Claro
-180936|Claro
-180937|Claro
-180938|Claro
-180939|Claro
 180941|Viva
 180942|Claro
 180943|Viva
@@ -555,16 +420,11 @@
 180977|Viva
 180978|Claro
 180979|Claro
-180980|Orange
+18098|Orange
 180981|Viva
 180982|Claro
 180983|Claro
-180984|Orange
-180985|Orange
-180986|Orange
 180987|Tricom
-180988|Orange
-180989|Orange
 180991|Orange
 180992|Tricom
 180993|Tricom
@@ -573,6 +433,9 @@
 180997|Orange
 180998|Orange
 180999|Tricom
+186824|Digicel
+1868263|Digicel
+1868264|Digicel
 1868266|bmobile
 1868267|bmobile
 1868268|bmobile
@@ -586,8 +449,22 @@
 18687|bmobile
 186955|CariGlobe St. Kitts
 186956|The Cable St. Kitts
-186966|Cable & Wireless
-186976|Digicel
+1869660|Cable & Wireless
+1869661|Cable & Wireless
+1869662|Cable & Wireless
+1869663|Cable & Wireless
+1869664|Cable & Wireless
+1869665|Cable & Wireless
+1869667|Cable & Wireless
+1869668|Cable & Wireless
+1869669|Cable & Wireless
+1869760|Digicel
+1869762|Digicel
+1869763|Digicel
+1869764|Digicel
+1869765|Digicel
+1869766|Digicel
+1876210|Cable & Wireless
 187624|Digicel
 187625|Digicel
 187626|Digicel
@@ -599,6 +476,18 @@
 187628|Digicel
 187629|Digicel
 187630|Digicel
+1876310|Cable & Wireless
+1876312|Cable & Wireless
+1876313|Cable & Wireless
+1876314|Cable & Wireless
+1876315|Cable & Wireless
+1876316|Cable & Wireless
+1876317|Cable & Wireless
+1876318|Cable & Wireless
+1876319|Cable & Wireless
+187632|Cable & Wireless
+187633|Cable & Wireless
+187634|Cable & Wireless
 187635|Digicel
 187636|Digicel
 187637|Digicel
@@ -622,6 +511,7 @@
 187647|Digicel
 187648|Digicel
 187649|Digicel
+1876501|Cable & Wireless
 1876503|Digicel
 1876504|Digicel
 1876505|Digicel
@@ -629,7 +519,10 @@
 1876507|Digicel
 1876508|Digicel
 1876509|Digicel
+1876517|Cable & Wireless
 187652|Digicel
+187653|Cable & Wireless
+187654|Cable & Wireless
 1876550|Digicel
 1876551|Digicel
 1876552|Digicel
@@ -651,12 +544,48 @@
 187657|Digicel
 187658|Digicel
 187659|Digicel
+1876700|Cable & Wireless
+1876707|Cable & Wireless
+187677|Cable & Wireless
+1876781|Cable & Wireless
+1876782|Cable & Wireless
+1876783|Cable & Wireless
+1876784|Cable & Wireless
+1876787|Cable & Wireless
+1876788|Cable & Wireless
+1876789|Cable & Wireless
+1876790|Cable & Wireless
+1876791|Cable & Wireless
+1876792|Cable & Wireless
+1876793|Cable & Wireless
+1876796|Cable & Wireless
+1876797|Cable & Wireless
+1876798|Cable & Wireless
+1876799|Cable & Wireless
+187680|Cable & Wireless
+1876810|Cable & Wireless
+1876812|Cable & Wireless
+1876813|Cable & Wireless
+1876814|Cable & Wireless
+1876815|Cable & Wireless
+1876816|Cable & Wireless
+1876817|Cable & Wireless
+1876818|Cable & Wireless
+1876819|Cable & Wireless
+187682|Cable & Wireless
+187683|Cable & Wireless
 187684|Digicel
 187685|Digicel
 187686|Digicel
 187687|Digicel
 187688|Digicel
 187689|Digicel
+1876909|Cable & Wireless
+1876919|Cable & Wireless
+1876990|Cable & Wireless
+1876995|Cable & Wireless
+1876997|Cable & Wireless
+1876999|Cable & Wireless
 1939201|CENTENNIAL
 1939212|CENTENNIAL
 1939214|CENTENNIAL
@@ -683,16 +612,8 @@
 1939247|Claro
 1939248|Claro
 1939249|Claro
-1939250|Claro
-1939251|Claro
+193925|Claro
 1939252|CENTENNIAL
-1939253|Claro
-1939254|Claro
-1939255|Claro
-1939256|Claro
-1939257|Claro
-1939258|Claro
-1939259|Claro
 1939307|CENTENNIAL
 1939325|SunCom Wireless Puerto Rico
 1939329|CENTENNIAL

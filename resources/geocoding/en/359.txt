@@ -40,8 +40,12 @@
 3593038|Chokmanovo
 3593039|Polkovnik Serafimovo
 3593040|Trigrad
-3593041|Devin
 35930410|Breze, Smol.
+35930411|Devin
+35930412|Devin
+35930413|Devin
+35930414|Devin
+35930415|Devin
 35930416|Gyovren
 35930417|Grohotno
 35930418|Buynovo, Smol.
@@ -472,7 +476,9 @@
 3594107|Sredets, St. Zagora
 3594108|Vasil Levski, St. Zagora
 3594109|Trakia
-3594111|Starozagorski bani
+35941110|Starozagorski bani
+35941111|Starozagorski bani
+35941112|Starozagorski bani
 35941113|Pryaporets, St. Zagora
 35941114|Lozen, St. Zagora
 35941115|Borilovo
@@ -1156,16 +1162,18 @@
 3596147|Ivancha, V. Tarnovo
 3596148|Pavel
 3596149|Kutsina
-359615|Zlataritsa
+3596150|Zlataritsa
 35961502|Gorsko Novo Selo
 35961503|Chakali
 3596151|Elena, V. Tarnovo
 3596152|Bebrovo
+3596153|Zlataritsa
 3596154|Buynovtsi
 3596155|Konstantin
 3596156|Rodina
 3596157|Slivovitsa
 3596158|Sredni kolibi
+3596159|Zlataritsa
 35961602|Tsarski izvor
 35961603|Lozen, V. Tarnovo
 35961604|Mirovo, V. Tarnovo
@@ -1210,9 +1218,9 @@
 3596328|Oresh
 3596329|Tsarevets, V. Tarnovo
 3596352|Dolni Lukovit
-3596356|Komarevo, Pleven
 35963560|Radishevo
 35963561|Grivitsa
+35963562|Komarevo, Pleven
 35963563|Borislav
 35963564|Bivolare
 35963565|Mechka, Pleven
@@ -1220,9 +1228,9 @@
 35963567|Gradina, Pleven
 35963568|Bukovlak
 35963569|Kamenets, Pleven
-3596357|Yasen, Pleven
 35963570|Staroseltsi
 35963571|Brestovets
+35963572|Yasen, Pleven
 35963573|Disevitsa
 35963574|Todorovo, Pleven
 35963575|Bohot
@@ -1305,9 +1313,13 @@
 3596577|Breste
 3596578|Reselets
 3596579|Ruptsi, Pleven
-359658|Belene
 3596580|Tatari
 3596581|Byala voda, Pleven
+3596582|Belene
+3596583|Belene
+3596584|Belene
+3596585|Belene
+3596586|Belene
 3596587|Petokladentsi
 3596588|Dekov
 3596589|Kulina voda
@@ -1849,7 +1861,10 @@
 35984778|Bogdantsi, Razgrad
 35984779|Zdravets, Razgrad
 359848|Kubrat
-35986|Silistra
+359860|Silistra
+359861|Silistra
+3598620|Silistra
+3598621|Silistra
 3598622|Alekovo, Silistra
 3598623|Golesh, Silistra
 3598624|Kalipetrovo
@@ -1858,6 +1873,8 @@
 3598627|Babuk
 3598628|Tsar Asen, Silistra
 3598629|Smilets, Silistra
+3598630|Silistra
+3598631|Silistra
 3598632|Zafirovo
 3598633|Staro selo, Silistra
 3598634|Nova Cherna
@@ -1866,9 +1883,9 @@
 3598637|Malak Preslavets
 3598638|Bogdantsi, Silistra
 3598639|Kolarovo, Silistra
-359864|Dulovo
 3598640|Pravda, Silistra
 3598641|Okorsh
+3598642|Dulovo
 3598643|Zlatoklas
 3598644|Chernolik
 3598645|Mezhden
@@ -1876,14 +1893,19 @@
 3598647|Paisievo
 3598648|Sekulovo
 3598649|Yarebitsa
-359866|Tutrakan
+359865|Silistra
+3598660|Tutrakan
+3598661|Tutrakan
 3598662|Dobrotitsa, Silistra
 3598663|Sitovo, Silistra
 3598664|Polyana, Silistra
 3598665|Iskra, Silistra
+3598666|Tutrakan
 3598667|Belitsa, Silistra
 3598668|Popina
 3598669|Garvan, Silistra
+3598670|Silistra
+3598671|Silistra
 3598672|Bradvari
 3598673|Alfatar
 3598674|Profesor Ishirkovo
@@ -1892,6 +1914,9 @@
 3598677|Srebarna
 3598678|Sratsimir, Silistra
 3598679|Kaynardzha
+359868|Silistra
+3598690|Silistra
+3598691|Silistra
 3598692|Stefan Karadzha, Silistra
 3598693|Zvenimir
 3598694|Zebil

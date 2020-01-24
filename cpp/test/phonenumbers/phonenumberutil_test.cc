@@ -188,14 +188,14 @@ TEST_F(PhoneNumberUtilTest, GetSupportedTypesForRegion) {
   types.clear();
   phone_util_.GetSupportedTypesForRegion(RegionCode::ZZ(), &types);
   // Test the invalid region code.
-  EXPECT_EQ(0, types.size());
+  EXPECT_EQ(0u, types.size());
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedTypesForNonGeoEntity) {
   std::set<PhoneNumberUtil::PhoneNumberType> types;
   // No data exists for 999 at all, no types should be returned.
   phone_util_.GetSupportedTypesForNonGeoEntity(999, &types);
-  EXPECT_EQ(0, types.size());
+  EXPECT_EQ(0u, types.size());
 
   types.clear();
   phone_util_.GetSupportedTypesForNonGeoEntity(979, &types);
@@ -295,9 +295,9 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadARMetadata) {
   EXPECT_EQ("9$1", metadata->national_prefix_transform_rule());
   ASSERT_EQ(5, metadata->number_format_size());
   EXPECT_EQ("$2 15 $3-$4", metadata->number_format(2).format());
-  EXPECT_EQ("(9)(\\d{4})(\\d{2})(\\d{4})",
+  EXPECT_EQ("(\\d)(\\d{4})(\\d{2})(\\d{4})",
             metadata->number_format(3).pattern());
-  EXPECT_EQ("(9)(\\d{4})(\\d{2})(\\d{4})",
+  EXPECT_EQ("(\\d)(\\d{4})(\\d{2})(\\d{4})",
             metadata->intl_number_format(3).pattern());
   EXPECT_EQ("$1 $2 $3 $4", metadata->intl_number_format(3).format());
 }
@@ -436,7 +436,7 @@ TEST_F(PhoneNumberUtilTest, GetInvalidExampleNumber) {
                                                   &test_number));
   // At least the country calling code should be set correctly.
   EXPECT_EQ(1, test_number.country_code());
-  EXPECT_NE(0, test_number.national_number());
+  EXPECT_NE(0u, test_number.national_number());
 }
 
 TEST_F(PhoneNumberUtilTest, GetExampleNumberForNonGeoEntity) {
@@ -1175,6 +1175,24 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
       test_number, RegionCode::US(), false, &formatted_number);
   EXPECT_EQ("+523312345678", formatted_number);
 
+  // Test whether Uzbek phone numbers are returned in international format even
+  // when dialled from same region or other regions.
+  // Fixed-line number
+  test_number.set_country_code(998);
+  test_number.set_national_number(612201234ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::UZ(), false, &formatted_number);
+  EXPECT_EQ("+998612201234", formatted_number);
+  // Mobile number
+  test_number.set_country_code(998);
+  test_number.set_national_number(950123456ULL);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::UZ(), false, &formatted_number);
+  EXPECT_EQ("+998950123456", formatted_number);
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::US(), false, &formatted_number);
+  EXPECT_EQ("+998950123456", formatted_number);
+
   // Non-geographical numbers should always be dialed in international format.
   test_number.set_country_code(800);
   test_number.set_national_number(12345678ULL);
@@ -1194,25 +1212,6 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   EXPECT_EQ("123", formatted_number);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::IT(), false, &formatted_number);
-  EXPECT_EQ("", formatted_number);
-
-  // Test the special logic for Hungary, where the national prefix must be
-  // added before dialing from a mobile phone for regular length numbers, but
-  // not for short numbers.
-  test_number.set_country_code(36);
-  test_number.set_national_number(301234567ULL);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::HU(), false, &formatted_number);
-  EXPECT_EQ("06301234567", formatted_number);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::JP(), false, &formatted_number);
-  EXPECT_EQ("+36301234567", formatted_number);
-  test_number.set_national_number(104L);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::HU(), false, &formatted_number);
-  EXPECT_EQ("104", formatted_number);
-  phone_util_.FormatNumberForMobileDialing(
-      test_number, RegionCode::JP(), false, &formatted_number);
   EXPECT_EQ("", formatted_number);
 
   // Test the special logic for NANPA countries, for which regular length phone
@@ -1523,9 +1522,9 @@ TEST_F(PhoneNumberUtilTest, GetCountryMobileToken) {
   int country_calling_code;
   string mobile_token;
 
-  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::MX());
+  country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::AR());
   phone_util_.GetCountryMobileToken(country_calling_code, &mobile_token);
-  EXPECT_EQ("1", mobile_token);
+  EXPECT_EQ("9", mobile_token);
 
   // Country calling code for Sweden, which has no mobile token.
   country_calling_code = phone_util_.GetCountryCodeForRegion(RegionCode::SE());
@@ -3236,6 +3235,11 @@ TEST_F(PhoneNumberUtilTest, IsNumberMatchMatches) {
   EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
             phone_util_.IsNumberMatchWithTwoStrings("+64 3 331-6005 extn 1234",
                                                     "+6433316005;1234"));
+  EXPECT_EQ(PhoneNumberUtil::EXACT_MATCH,
+            phone_util_.IsNumberMatchWithTwoStrings(
+		"+7 423 202-25-11 ext 100",
+		"+7 4232022511 \xd0\xb4\xd0\xbe\xd0\xb1. 100"));
+
   // Test proto buffers.
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
@@ -4326,6 +4330,44 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
             phone_util_.Parse("(800) 901-3355 ext: 7246433", RegionCode::US(),
                               &test_number));
   EXPECT_EQ(us_with_extension, test_number);
+  // Testing Russian extension "доб" with variants found onli
+  PhoneNumber ru_with_extension;
+  ru_with_extension.set_country_code(7);
+  ru_with_extension.set_national_number(4232022511L);
+  ru_with_extension.set_extension("100");
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse(
+                "8 (423) 202-25-11, \xd0\xb4\xd0\xbe\xd0\xb1. 100",
+                RegionCode::RU(), &test_number));
+  EXPECT_EQ(ru_with_extension, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse(
+                "8 (423) 202-25-11 \xd0\xb4\xd0\xbe\xd0\xb1. 100",
+                RegionCode::RU(), &test_number));
+  EXPECT_EQ(ru_with_extension, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse(
+                "8 (423) 202-25-11, \xd0\xb4\xd0\xbe\xd0\xb1 100",
+                RegionCode::RU(), &test_number));
+  EXPECT_EQ(ru_with_extension, test_number);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse(
+                "8 (423) 202-25-11 \xd0\xb4\xd0\xbe\xd0\xb1 100",
+                RegionCode::RU(), &test_number));
+  EXPECT_EQ(ru_with_extension, test_number);
+  // We are suppose to test input without spaces before and after this extension
+  // character. As hex escape sequence becomes out of range, postfixed a space
+  // to extension character here.
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse(
+                "8 (423) 202-25-11\xd0\xb4\xd0\xbe\xd0\xb1 100",
+                RegionCode::RU(), &test_number));
+  // In upper case
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse(
+                "8 (423) 202-25-11 \xd0\x94\xd0\x9e\xd0\x91 100",
+                RegionCode::RU(), &test_number));
+  EXPECT_EQ(ru_with_extension, test_number);
 
   // Test that if a number has two extensions specified, we ignore the second.
   PhoneNumber us_with_two_extensions_number;

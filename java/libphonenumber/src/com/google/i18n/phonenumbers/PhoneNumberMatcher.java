@@ -23,7 +23,7 @@ import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
-
+import com.google.i18n.phonenumbers.internal.RegexCache;
 import java.lang.Character.UnicodeBlock;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -206,6 +206,12 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
   private PhoneNumberMatch lastMatch = null;
   /** The next index to start searching at. Undefined in {@link State#DONE}. */
   private int searchIndex = 0;
+
+  // A cache for frequently used country-specific regular expressions. Set to 32 to cover ~2-3
+  // countries being used for the same doc with ~10 patterns for each country. Some pages will have
+  // a lot more countries in use, but typically fewer numbers for each so expanding the cache for
+  // that use-case won't have a lot of benefit.
+  private final RegexCache regexCache = new RegexCache(32);
 
   /**
    * Creates a new instance. See the factory methods in {@link PhoneNumberUtil} on how to obtain a
@@ -413,26 +419,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(candidate, preferredRegion);
 
-      // Check Israel * numbers: these are a special case in that they are four-digit numbers that
-      // our library supports, but they can only be dialled with a leading *. Since we don't
-      // actually store or detect the * in our phone number library, this means in practice we
-      // detect most four digit numbers as being valid for Israel. We are considering moving these
-      // numbers to ShortNumberInfo instead, in which case this problem would go away, but in the
-      // meantime we want to restrict the false matches so we only allow these numbers if they are
-      // preceded by a star. We enforce this for all leniency levels even though these numbers are
-      // technically accepted by isPossibleNumber and isValidNumber since we consider it to be a
-      // deficiency in those methods that they accept these numbers without the *.
-      // TODO: Remove this or make it significantly less hacky once we've decided how to
-      // handle these short codes going forward in ShortNumberInfo. We could use the formatting
-      // rules for instance, but that would be slower.
-      if (phoneUtil.getRegionCodeForCountryCode(number.getCountryCode()).equals("IL")
-          && phoneUtil.getNationalSignificantNumber(number).length() == 4
-          && (offset == 0 || (offset > 0 && text.charAt(offset - 1) != '*'))) {
-        // No match.
-        return null;
-      }
-
-      if (leniency.verify(number, candidate, phoneUtil)) {
+      if (leniency.verify(number, candidate, phoneUtil, this)) {
         // We used parseAndKeepRawInput to create this number, but for now we don't return the extra
         // values parsed. TODO: stop clearing all values here and switch all users over
         // to using rawInput() rather than the rawString() of PhoneNumberMatch.
@@ -546,46 +533,61 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
   /**
    * Helper method to get the national-number part of a number, formatted without any national
-   * prefix, and return it as a set of digit blocks that would be formatted together.
+   * prefix, and return it as a set of digit blocks that would be formatted together following
+   * standard formatting rules.
+   */
+  private static String[] getNationalNumberGroups(PhoneNumberUtil util, PhoneNumber number) {
+    // This will be in the format +CC-DG1-DG2-DGX;ext=EXT where DG1..DGX represents groups of
+    // digits.
+    String rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
+    // We remove the extension part from the formatted string before splitting it into different
+    // groups.
+    int endIndex = rfc3966Format.indexOf(';');
+    if (endIndex < 0) {
+      endIndex = rfc3966Format.length();
+    }
+    // The country-code will have a '-' following it.
+    int startIndex = rfc3966Format.indexOf('-') + 1;
+    return rfc3966Format.substring(startIndex, endIndex).split("-");
+  }
+
+  /**
+   * Helper method to get the national-number part of a number, formatted without any national
+   * prefix, and return it as a set of digit blocks that should be formatted together according to
+   * the formatting pattern passed in.
    */
   private static String[] getNationalNumberGroups(PhoneNumberUtil util, PhoneNumber number,
                                                   NumberFormat formattingPattern) {
-    if (formattingPattern == null) {
-      // This will be in the format +CC-DG;ext=EXT where DG represents groups of digits.
-      String rfc3966Format = util.format(number, PhoneNumberFormat.RFC3966);
-      // We remove the extension part from the formatted string before splitting it into different
-      // groups.
-      int endIndex = rfc3966Format.indexOf(';');
-      if (endIndex < 0) {
-        endIndex = rfc3966Format.length();
-      }
-      // The country-code will have a '-' following it.
-      int startIndex = rfc3966Format.indexOf('-') + 1;
-      return rfc3966Format.substring(startIndex, endIndex).split("-");
-    } else {
-      // We format the NSN only, and split that according to the separator.
-      String nationalSignificantNumber = util.getNationalSignificantNumber(number);
-      return util.formatNsnUsingPattern(nationalSignificantNumber,
-                                        formattingPattern, PhoneNumberFormat.RFC3966).split("-");
-    }
+    // If a format is provided, we format the NSN only, and split that according to the separator.
+    String nationalSignificantNumber = util.getNationalSignificantNumber(number);
+    return util.formatNsnUsingPattern(nationalSignificantNumber,
+                                      formattingPattern, PhoneNumberFormat.RFC3966).split("-");
   }
 
-  static boolean checkNumberGroupingIsValid(
+  boolean checkNumberGroupingIsValid(
       PhoneNumber number, CharSequence candidate, PhoneNumberUtil util,
       NumberGroupingChecker checker) {
-    // TODO: Evaluate how this works for other locales (testing has been limited to NANPA regions)
-    // and optimise if necessary.
     StringBuilder normalizedCandidate =
         PhoneNumberUtil.normalizeDigits(candidate, true /* keep non-digits */);
-    String[] formattedNumberGroups = getNationalNumberGroups(util, number, null);
+    String[] formattedNumberGroups = getNationalNumberGroups(util, number);
     if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
       return true;
     }
-    // If this didn't pass, see if there are any alternate formats, and try them instead.
+    // If this didn't pass, see if there are any alternate formats that match, and try them instead.
     PhoneMetadata alternateFormats =
         MetadataManager.getAlternateFormatsForCountry(number.getCountryCode());
+    String nationalSignificantNumber = util.getNationalSignificantNumber(number);
     if (alternateFormats != null) {
       for (NumberFormat alternateFormat : alternateFormats.numberFormats()) {
+        if (alternateFormat.leadingDigitsPatternSize() > 0) {
+          // There is only one leading digits pattern for alternate formats.
+          Pattern pattern =
+              regexCache.getPatternForRegex(alternateFormat.getLeadingDigitsPattern(0));
+          if (!pattern.matcher(nationalSignificantNumber).lookingAt()) {
+            // Leading digits don't match; try another one.
+            continue;
+          }
+        }
         formattedNumberGroups = getNationalNumberGroups(util, number, alternateFormat);
         if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
           return true;

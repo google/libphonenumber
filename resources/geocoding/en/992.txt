@@ -49,7 +49,7 @@
 9923316|Parkhar
 992331700|Khovaling
 9923318|Muminobod
-9923322|Kulyab 
+9923322|Kulyab
 9923422|Khujand
 9923441|Spitamen
 9923442|Gafurov
@@ -74,4 +74,4 @@
 9923554|Murgab
 9923555|Roshtkala
 9923556|Rushan
-992372|Dushanbe
+99237|Dushanbe

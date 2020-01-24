@@ -219,6 +219,18 @@ US_SPOOF_WITH_RAW_INPUT.setRawInput('000-000-0000');
 
 
 /** @type {i18n.phonenumbers.PhoneNumber} */
+var UZ_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
+UZ_FIXED_LINE.setCountryCode(998);
+UZ_FIXED_LINE.setNationalNumber(612201234);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
+var UZ_MOBILE = new i18n.phonenumbers.PhoneNumber();
+UZ_MOBILE.setCountryCode(998);
+UZ_MOBILE.setNationalNumber(950123456);
+
+
+/** @type {i18n.phonenumbers.PhoneNumber} */
 var INTERNATIONAL_TOLL_FREE = new i18n.phonenumbers.PhoneNumber();
 INTERNATIONAL_TOLL_FREE.setCountryCode(800);
 INTERNATIONAL_TOLL_FREE.setNationalNumber(12345678);
@@ -298,9 +310,9 @@ function testGetInstanceLoadARMetadata() {
   assertEquals('0(?:(11|343|3715)15)?', metadata.getNationalPrefixForParsing());
   assertEquals('9$1', metadata.getNationalPrefixTransformRule());
   assertEquals('$2 15 $3-$4', metadata.getNumberFormat(2).getFormat());
-  assertEquals('(9)(\\d{4})(\\d{2})(\\d{4})',
+  assertEquals('(\\d)(\\d{4})(\\d{2})(\\d{4})',
                metadata.getNumberFormat(3).getPattern());
-  assertEquals('(9)(\\d{4})(\\d{2})(\\d{4})',
+  assertEquals('(\\d)(\\d{4})(\\d{2})(\\d{4})',
                metadata.getIntlNumberFormat(3).getPattern());
   assertEquals('$1 $2 $3 $4', metadata.getIntlNumberFormat(3).getFormat());
 }
@@ -412,8 +424,8 @@ function testGetLengthOfNationalDestinationCode() {
 }
 
 function testGetCountryMobileToken() {
-  assertEquals('1', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
-      phoneUtil.getCountryCodeForRegion(RegionCode.MX)));
+  assertEquals('9', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
+      phoneUtil.getCountryCodeForRegion(RegionCode.AR)));
 
   // Country calling code for Sweden, which has no mobile token.
   assertEquals('', i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken(
@@ -449,8 +461,8 @@ function testGetSupportedCallingCodes() {
       phoneUtil.getSupportedCallingCodes(),
       function(callingCode) {
         assertTrue(callingCode > 0);
-        assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode)
-            == RegionCode.ZZ);
+        assertFalse(phoneUtil.getRegionCodeForCountryCode(callingCode) ==
+            RegionCode.ZZ);
       });
   // There should be more than just the global network calling codes in this set.
   assertTrue(phoneUtil.getSupportedCallingCodes().length >
@@ -1150,6 +1162,20 @@ function testFormatNumberForMobileDialing() {
       phoneUtil.formatNumberForMobileDialing(MX_NUMBER1, RegionCode.US,
                                              false));
 
+  // Test whether Uzbek phone numbers are returned in international format even
+  // when dialled from same region or other regions.
+  // Fixed-line number
+  assertEquals('+998612201234',
+      phoneUtil.formatNumberForMobileDialing(UZ_FIXED_LINE, RegionCode.UZ,
+                                             false));
+  // Mobile number
+  assertEquals('+998950123456',
+      phoneUtil.formatNumberForMobileDialing(UZ_MOBILE, RegionCode.UZ,
+                                             false));
+  assertEquals('+998950123456',
+      phoneUtil.formatNumberForMobileDialing(UZ_MOBILE, RegionCode.US,
+                                             false));
+
   // Non-geographical numbers should always be dialed in international format.
   assertEquals('+80012345678',
       phoneUtil.formatNumberForMobileDialing(INTERNATIONAL_TOLL_FREE,
@@ -1169,28 +1195,6 @@ function testFormatNumberForMobileDialing() {
   assertEquals('',
       phoneUtil.formatNumberForMobileDialing(deShortNumber,
                                              RegionCode.IT, false));
-
-  // Test the special logic for Hungary, where the national prefix must be added
-  // before dialing from a mobile phone for regular length numbers, but not for
-  // short numbers.
-  var huRegularNumber = new i18n.phonenumbers.PhoneNumber();
-  huRegularNumber.setCountryCode(36);
-  huRegularNumber.setNationalNumber(301234567);
-  assertEquals('06301234567',
-      phoneUtil.formatNumberForMobileDialing(huRegularNumber,
-                                             RegionCode.HU, false));
-  assertEquals('+36301234567',
-      phoneUtil.formatNumberForMobileDialing(huRegularNumber,
-                                             RegionCode.JP, false));
-  var huShortNumber = new i18n.phonenumbers.PhoneNumber();
-  huShortNumber.setCountryCode(36);
-  huShortNumber.setNationalNumber(104);
-  assertEquals('104',
-      phoneUtil.formatNumberForMobileDialing(huShortNumber,
-                                             RegionCode.HU, false));
-  assertEquals('',
-      phoneUtil.formatNumberForMobileDialing(huShortNumber,
-                                             RegionCode.JP, false));
 
   // Test the special logic for NANPA countries, for which regular length phone
   // numbers are always output in international format, but short numbers are in
@@ -1511,7 +1515,6 @@ function testIsPremiumRate() {
 
   /** @type {i18n.phonenumbers.PhoneNumber} */
   var premiumRateNumber = new i18n.phonenumbers.PhoneNumber();
-  premiumRateNumber = new i18n.phonenumbers.PhoneNumber();
   premiumRateNumber.setCountryCode(39);
   premiumRateNumber.setNationalNumber(892123);
   assertEquals(PNT.PREMIUM_RATE, phoneUtil.getNumberType(premiumRateNumber));
@@ -3417,6 +3420,30 @@ function testParseExtensions() {
       phoneUtil.parse('(800) 901-3355 , 7246433', RegionCode.US)));
   assertTrue(usWithExtension.equals(
       phoneUtil.parse('(800) 901-3355 ext: 7246433', RegionCode.US)));
+  // Testing Russian extension "доб" with variants found online.
+  var ruWithExtension = new i18n.phonenumbers.PhoneNumber();
+  ruWithExtension.setCountryCode(7);
+  ruWithExtension.setNationalNumber(4232022511);
+  ruWithExtension.setExtension('100');
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11, доб. 100', RegionCode.RU)));
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11 доб. 100', RegionCode.RU)));
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11, доб 100', RegionCode.RU)));
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11 доб 100', RegionCode.RU)));
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11доб100', RegionCode.RU)));
+  // Testing in unicode format
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11, \u0434\u043E\u0431. 100',
+                      RegionCode.RU)));
+  // In upper case
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11ДОБ100', RegionCode.RU)));
+  assertTrue(ruWithExtension.equals(
+      phoneUtil.parse('8 (423) 202-25-11\u0414\u041E\u0411100', RegionCode.RU)));
 
   // Test that if a number has two extensions specified, we ignore the second.
   /** @type {i18n.phonenumbers.PhoneNumber} */
@@ -3598,6 +3625,9 @@ function testIsNumberMatchMatches() {
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch('+64 3 331-6005 ext. 1234',
                                        '+6433316005;1234'));
+  assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
+                 phoneUtil.isNumberMatch('+7 423 202-25-11 ext 100',
+                                         '+7 4232022511 доб. 100'));
   // Test proto buffers.
   assertEquals(i18n.phonenumbers.PhoneNumberUtil.MatchType.EXACT_MATCH,
                phoneUtil.isNumberMatch(NZ_NUMBER, '+6403 331 6005'));

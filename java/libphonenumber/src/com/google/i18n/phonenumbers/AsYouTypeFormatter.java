@@ -19,7 +19,6 @@ package com.google.i18n.phonenumbers;
 import com.google.i18n.phonenumbers.Phonemetadata.NumberFormat;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.internal.RegexCache;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -66,16 +65,6 @@ public class AsYouTypeFormatter {
       new PhoneMetadata().setInternationalPrefix("NA");
   private PhoneMetadata defaultMetadata;
   private PhoneMetadata currentMetadata;
-
-  // A pattern that is used to match character classes in regular expressions. An example of a
-  // character class is [1-4].
-  private static final Pattern CHARACTER_CLASS_PATTERN = Pattern.compile("\\[([^\\[\\]])*\\]");
-  // Any digit in a regular expression that actually denotes a digit. For example, in the regular
-  // expression 80[0-2]\d{6,10}, the first 2 digits (8 and 0) are standalone digits, but the rest
-  // are not.
-  // Two look-aheads are needed because the number following \\d could be a two-digit number, since
-  // the phone number can be as long as 15 digits.
-  private static final Pattern STANDALONE_DIGIT_PATTERN = Pattern.compile("\\d(?=[^,}][^,}])");
 
   // A pattern that is used to determine if a numberFormat under availableFormats is eligible to be
   // used by the AYTF. It is eligible when the format element under numberFormat contains groups of
@@ -174,27 +163,39 @@ public class AsYouTypeFormatter {
   }
 
   private void getAvailableFormats(String leadingDigits) {
+    // First decide whether we should use international or national number rules.
+    boolean isInternationalNumber = isCompleteNumber && extractedNationalPrefix.length() == 0;
     List<NumberFormat> formatList =
-        (isCompleteNumber && currentMetadata.intlNumberFormatSize() > 0)
-        ? currentMetadata.intlNumberFormats()
-        : currentMetadata.numberFormats();
-    boolean nationalPrefixIsUsedByCountry = currentMetadata.hasNationalPrefix();
+        (isInternationalNumber && currentMetadata.intlNumberFormatSize() > 0)
+            ? currentMetadata.intlNumberFormats()
+            : currentMetadata.numberFormats();
     for (NumberFormat format : formatList) {
-      if (!nationalPrefixIsUsedByCountry
-          || isCompleteNumber
-          || format.getNationalPrefixOptionalWhenFormatting()
-          || PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
-              format.getNationalPrefixFormattingRule())) {
-        if (isFormatEligible(format.getFormat())) {
-          possibleFormats.add(format);
-        }
+      // Discard a few formats that we know are not relevant based on the presence of the national
+      // prefix.
+      if (extractedNationalPrefix.length() > 0
+          && PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+              format.getNationalPrefixFormattingRule())
+          && !format.getNationalPrefixOptionalWhenFormatting()
+          && !format.hasDomesticCarrierCodeFormattingRule()) {
+        // If it is a national number that had a national prefix, any rules that aren't valid with a
+        // national prefix should be excluded. A rule that has a carrier-code formatting rule is
+        // kept since the national prefix might actually be an extracted carrier code - we don't
+        // distinguish between these when extracting it in the AYTF.
+        continue;
+      } else if (extractedNationalPrefix.length() == 0
+          && !isCompleteNumber
+          && !PhoneNumberUtil.formattingRuleHasFirstGroupOnly(
+              format.getNationalPrefixFormattingRule())
+          && !format.getNationalPrefixOptionalWhenFormatting()) {
+        // This number was entered without a national prefix, and this formatting rule requires one,
+        // so we discard it.
+        continue;
+      }
+      if (ELIGIBLE_FORMAT_PATTERN.matcher(format.getFormat()).matches()) {
+        possibleFormats.add(format);
       }
     }
     narrowDownPossibleFormats(leadingDigits);
-  }
-
-  private boolean isFormatEligible(String format) {
-    return ELIGIBLE_FORMAT_PATTERN.matcher(format).matches();
   }
 
   private void narrowDownPossibleFormats(String leadingDigits) {
@@ -219,18 +220,6 @@ public class AsYouTypeFormatter {
 
   private boolean createFormattingTemplate(NumberFormat format) {
     String numberPattern = format.getPattern();
-
-    // The formatter doesn't format numbers when numberPattern contains "|", e.g.
-    // (20|3)\d{4}. In those cases we quickly return.
-    if (numberPattern.indexOf('|') != -1) {
-      return false;
-    }
-
-    // Replace anything in the form of [..] with \d
-    numberPattern = CHARACTER_CLASS_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
-
-    // Replace any standalone digit (not the one in d{}) with \d
-    numberPattern = STANDALONE_DIGIT_PATTERN.matcher(numberPattern).replaceAll("\\\\d");
     formattingTemplate.setLength(0);
     String tempTemplate = getFormattingTemplate(numberPattern, format.getFormat());
     if (tempTemplate.length() > 0) {
@@ -437,7 +426,19 @@ public class AsYouTypeFormatter {
             NATIONAL_PREFIX_SEPARATORS_PATTERN.matcher(
                 numberFormat.getNationalPrefixFormattingRule()).find();
         String formattedNumber = m.replaceAll(numberFormat.getFormat());
-        return appendNationalNumber(formattedNumber);
+        // Check that we did not remove nor add any extra digits when we matched
+        // this formatting pattern. This usually happens after we entered the last
+        // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
+        // formatted but AYTF should retain all the number entered and not change
+        // in order to match a format (of same leading digits and length) display
+        // in that way.
+        String fullOutput = appendNationalNumber(formattedNumber);
+        String formattedNumberDigitsOnly = PhoneNumberUtil.normalizeDiallableCharsOnly(fullOutput);
+        if (formattedNumberDigitsOnly.contentEquals(accruedInputWithoutFormatting)) {
+          // If it's the same (i.e entered number and format is same), then it's
+          // safe to return this in formatted number as nothing is lost / added.
+          return fullOutput;
+        }
       }
     }
     return "";
