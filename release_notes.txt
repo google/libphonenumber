@@ -1,3 +1,10 @@
+Jan 28, 2020: v8.11.3
+Metadata changes:
+ - Updated phone metadata for region code(s): GB, GG, JE, MM, MU, US
+ - New geocoding data for country calling code(s): 1659 (en)
+ - Updated carrier data for country calling code(s): 95 (en)
+ - Updated / refreshed time zone meta data.
+
 Jan 14, 2020: v8.11.2
 Metadata changes:
  - Updated phone metadata for region code(s):
