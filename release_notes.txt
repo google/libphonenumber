@@ -1,3 +1,11 @@
+Feb 12, 2020: v8.11.4
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AZ, BJ, CL, ET, GB, MA, MM, PW, RE, SG
+ - Updated geocoding data for country calling code(s): 680 (en)
+ - Updated carrier data for country calling code(s):
+   56 (en), 95 (en), 229 (en), 262 (en), 680 (en), 994 (en)
+
 Jan 28, 2020: v8.11.3
 Metadata changes:
  - Updated phone metadata for region code(s): GB, GG, JE, MM, MU, US
