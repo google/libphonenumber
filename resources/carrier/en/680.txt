@@ -14,5 +14,6 @@
 
 # Source: http://www.itu.int/oth/T02020000A2/en
 
+68045|PMCI
 68077|PalauCel
 68088|PalauTel
