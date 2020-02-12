@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+99410|Azercell
 99436554|Nakhtel
 99440|FONEX
 99444|Aztelekom
