@@ -14,10 +14,20 @@
 
 # Translated from fr/225.txt using Freebase and Wikipedia.
 
-22520|Plateau, Abidjan
-22521|Abidjan (southeast)
-22522|Cocody, Abidjan
-22523|Banco, Abidjan
+225200|Plateau, Abidjan
+225202|Plateau, Abidjan
+225203|Plateau, Abidjan
+225210|Abidjan (southeast)
+225212|Abidjan (southeast)
+225213|Abidjan (southeast)
+225215|Abidjan (southeast)
+225217|Abidjan (southeast)
+225220|Cocody, Abidjan
+225224|Cocody, Abidjan
+225225|Cocody, Abidjan
+225230|Banco, Abidjan
+225234|Banco, Abidjan
+225235|Banco, Abidjan
 22524|Abobo, Abidjan
 22530|Yamoussoukro
 22531|Bouaké

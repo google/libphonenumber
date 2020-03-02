@@ -16,27 +16,28 @@
 # http://en.wikipedia.org/wiki/+421 [433624401]
 
 4212|Bratislava
-42131|Dunajská Streda
-42132|Trenčín
+42131|Dunajska Streda
+42132|Trencin
 42133|Trnava
 42134|Senica
-42135|Nové Zámky
+42135|Nove Zamky
 42136|Levice
 42137|Nitra
-42138|Topoľčany
-42141|Žilina
-42142|Považská Bystrica
+42138|Topolcany
+42141|Zilina
+42142|Povazska Bystrica
 42143|Martin
-42144|Liptovský Mikuláš
+42144|Liptovsky Mikulas
 42145|Zvolen
 42146|Prievidza
-42147|Lučenec
-42148|Banská Bystrica
-42151|Prešov
+42147|Lucenec
+42148|Banska Bystrica
+42151|Presov
 42152|Poprad
-42153|Spišská Nová Ves
+42153|Spisska Nova Ves
 42154|Bardejov
-42155|Košice
+42155|Kosice
 42156|Michalovce
-42157|Humenné
-42158|Rožňava
+42157|Humenne
+42158|Roznava
+421601|Roznava

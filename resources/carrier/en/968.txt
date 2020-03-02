@@ -12,10 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+9681|Ooredoo
 96871|Omantel
 96872|Omantel
 96878|Ooredoo
-96879|Ooredoo
+968790|Ooredoo
+968791|Ooredoo
+968792|Ooredoo
+968793|Ooredoo
+968794|Ooredoo
+968795|Ooredoo
+968796|Ooredoo
 968901|Omantel
 968902|Omantel
 968903|Omantel
