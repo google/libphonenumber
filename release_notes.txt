@@ -1,3 +1,31 @@
+Mar 02, 2020: v8.11.5
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 595
+ - Updated phone metadata for region code(s):
+   AD, BE, BQ, BW, CA, CI, CM, CR, EC, EE, EG, FM, FO, GL, GN, IL, KI, LK, LT,
+   ME, MO, MT, MW, NE, NF, NR, OM, PA, PF, PG, PK, PY, RO, RW, SC, SD, SG, SK,
+   SL, SO, TL, TM, TO, TV, UG, VE, VU, WS, ZM
+ - Updated short number metadata for region code(s):
+   GN, KI, LK, LT, OM, PK, RO, RW, SH, TM, TR, WS
+ - New geocoding data for country calling code(s):
+   92 (en), 236 (en), 593 (en), 595 (en), 598 (en), 670 (en), 672 (en),
+   678 (en), 685 (en), 689 (en), 690 (en), 993 (en), 1367 (en)
+ - Updated geocoding data for country calling code(s):
+   43 (en), 58 (en, es), 94 (en), 221 (en), 224 (en), 225 (en), 233 (en),
+   252 (en), 264 (en), 290 (en, fr), 352 (de, en), 370 (en), 374 (en, hy, ru),
+   421 (en), 599 (en), 686 (en)
+ - New carrier data for country calling code(s):
+   246 (en), 266 (en), 290 (en), 291 (en), 377 (en), 378 (en), 672 (en),
+   676 (en), 681 (en), 683 (en), 687 (en), 690 (en), 691 (en), 692 (en)
+ - Updated carrier data for country calling code(s):
+   40 (en), 43 (en), 48 (en), 65 (en), 92 (en), 222 (en), 225 (en), 227 (en),
+   229 (en), 230 (en), 232 (en), 233 (en), 236 (en), 256 (en), 265 (en),
+   267 (en), 268 (en), 298 (en), 370 (en), 372 (en), 376 (en), 381 (en),
+   383 (en), 421 (en), 502 (en), 506 (en), 507 (en), 592 (en), 593 (en),
+   598 (en), 599 (en), 670 (en), 674 (en), 675 (en), 678 (en), 685 (en),
+   686 (en), 853 (en), 968 (en), 972 (en), 993 (en)
+ - Updated / refreshed time zone meta data.
+
 Feb 12, 2020: v8.11.4
 Metadata changes:
  - Updated phone metadata for region code(s):
