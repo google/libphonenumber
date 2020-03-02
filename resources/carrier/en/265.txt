@@ -12,5 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+26511|Malawi Telecom-munications Ltd (MTL)
+2653|TNM
+2657|Globally Advanced Integrated Networks Ltd
 2658|TNM
 2659|Airtel

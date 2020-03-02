@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+  # Copyright (C) 2013 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+22723|Orange
 22780|Orange
 22781|Orange
 22788|Airtel
@@ -19,6 +20,7 @@
 22790|Orange
 22791|Orange
 22792|Orange
+22793|SahelCom
 22794|Moov
 22795|Moov
 22796|Airtel

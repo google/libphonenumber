@@ -5427,12 +5427,19 @@
     <!-- Guinea (GN) -->
     <territory id="GN">
       <generalDesc>
-        <nationalNumberPattern>4\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="5"/>
-        <exampleNumber>40404</exampleNumber>
-        <nationalNumberPattern>40404</nationalNumberPattern>
+        <possibleLengths national="3,5"/>
+        <exampleNumber>120</exampleNumber>
+        <nationalNumberPattern>
+          12\d|
+          40404
+        </nationalNumberPattern>
       </shortCode>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -7619,7 +7626,7 @@
     <!-- http://tskl.net.ki/services has others. -->
     <territory id="KI">
       <generalDesc>
-        <nationalNumberPattern>[17]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[179]\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <!-- http://tskl.net.ki/services/3g-4g-rates-offpeaks/quick-dial-credit-checking-codes/
            lists 777 as voicemail access. -->
@@ -7633,13 +7640,17 @@
             9[2-5]
           )|
           777|
+          99[2-4]|
           10[0-8]
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>192</exampleNumber>
-        <nationalNumberPattern>19[2-5]</nationalNumberPattern>
+        <nationalNumberPattern>
+          19[2-5]|
+          99[2-4]
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://www.tskl.net.ki/910_operator.php - charged at $0.20 per call. -->
       <standardRate>
@@ -7650,7 +7661,10 @@
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>192</exampleNumber>
-        <nationalNumberPattern>19[2-5]</nationalNumberPattern>
+        <nationalNumberPattern>
+          19[2-5]|
+          99[2-4]
+        </nationalNumberPattern>
       </emergency>
       <!-- See comment for emergency section. -->
       <expandedEmergency>
@@ -8136,12 +8150,39 @@
     <!-- http://www.itu.int/oth/T02020000C3/en -->
     <territory id="LK">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[024-9]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[024-9]|
+            3(?:
+              00|
+              1[2-49]|
+              2[23]|
+              3[1-3]|
+              44|
+              5[07]|
+              [67]9|
+              88|
+              9[039]
+            )|
+            9(?:
+              0[0-2589]|
+              1[0-357-9]|
+              2[0-25689]|
+              3[0389]|
+              4[0489]|
+              5[014-69]|
+              6[0-2689]|
+              7[03579]|
+              8[02457-9]|
+              9[0-2569]
+            )
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
@@ -8271,11 +8312,11 @@
           1(?:
             0[1-3]|
             1(?:
-              2|
+              [27-9]|
               6(?:
                 000|
                 1(?:
-                  11|
+                  1[17]|
                   23
                 )
               )
@@ -8296,9 +8337,13 @@
             0[1-3]|
             1(?:
               2|
-              6\d{3}
+              6111
             )
-          )
+          )|
+          116(?:
+            0\d|
+            12
+          )\d
         </nationalNumberPattern>
       </tollFree>
       <emergency>
@@ -10200,22 +10245,46 @@
     <!-- http://www.itu.int/oth/T020200009F/en -->
     <territory id="OM">
       <generalDesc>
-        <nationalNumberPattern>9\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="4"/>
-        <exampleNumber>9999</exampleNumber>
-        <nationalNumberPattern>9999</nationalNumberPattern>
+        <exampleNumber>1111</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            111|
+            222|
+            4(?:
+              4[0-5]|
+              50|
+              66|
+              7[7-9]
+            )|
+            51[0-8]
+          )|
+          9999|
+          1(?:
+            2[3-5]|
+            3[0-2]|
+            50
+          )\d
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="4"/>
-        <exampleNumber>9990</exampleNumber>
-        <nationalNumberPattern>999\d</nationalNumberPattern>
+        <exampleNumber>1444</exampleNumber>
+        <nationalNumberPattern>
+          1444|
+          999\d
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="4"/>
-        <exampleNumber>9999</exampleNumber>
-        <nationalNumberPattern>9999</nationalNumberPattern>
+        <exampleNumber>1444</exampleNumber>
+        <nationalNumberPattern>
+          1444|
+          9999
+        </nationalNumberPattern>
       </emergency>
     </territory>
 
@@ -10395,12 +10464,11 @@
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1(?:
-              22?|
-              5
-            )|
+            122|
+            3[014]|
             [56]
-          )
+          )|
+          11[2457-9]
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -10801,36 +10869,45 @@
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
     <territory id="RO">
       <generalDesc>
-        <nationalNumberPattern>
-          [18]\d\d(?:
-            \d(?:
-              \d{2}
-            )?
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>[18]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
             1(?:
               2|
-              6111|
-              8932
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8(?:
+                (?:
+                  01|
+                  8[18]
+                )1|
+                119|
+                [23]00|
+                932
+              )
             )|
             [24]\d\d|
             9(?:
+              0(?:
+                00|
+                19
+              )|
+              1[19]|
               21|
               3[02]|
               5[178]
             )
           )|
-          8[48]\d\d|
-          11(?:
-            60|
-            83
-          )00
+          8[48]\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -10849,7 +10926,7 @@
         <nationalNumberPattern>
           (?:
             1(?:
-              18\d|
+              18[39]|
               [24]
             )|
             8[48]
@@ -10955,23 +11032,37 @@
     <!-- http://en.wikipedia.org/wiki/+250 -->
     <territory id="RW">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>[14]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>100</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[0-2]|
+            1[0-24-6]|
+            2[13]|
+            70|
+            99
+          )|
+          456
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>11[1245]</nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>11[12]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>114</exampleNumber>
+        <nationalNumberPattern>11[45]</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Saudi Arabia (SA) -->
@@ -11358,13 +11449,14 @@
     <!-- St. Helena (SH) -->
     <territory id="SH">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1\d{2,3}|
+          26[01]\d\d|
           9(?:
             11|
             99
@@ -12297,12 +12389,12 @@
       <shortCode>
         <possibleLengths national="2"/>
         <exampleNumber>01</exampleNumber>
-        <nationalNumberPattern>0[1-3]</nationalNumberPattern>
+        <nationalNumberPattern>0[1-49]</nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="2"/>
         <exampleNumber>01</exampleNumber>
-        <nationalNumberPattern>0[1-3]</nationalNumberPattern>
+        <nationalNumberPattern>0[1-49]</nationalNumberPattern>
       </tollFree>
       <!-- http://www.netglobers.com/asia/turkmenistan-emergency-numbers-in-turkmenistan.html
            http://www.voyage.gc.ca/countries_pays/report_rapport-eng.asp?id=301000 -->
@@ -12399,35 +12491,36 @@
         <nationalNumberPattern>
           1(?:
             1(?:
-              [0239]|
-              811
+              [02-79]|
+              8(?:
+                1[018]|
+                2[0245]|
+                3[2-4]|
+                42|
+                5[058]|
+                6[06]|
+                7[07]|
+                8[01389]|
+                9[089]
+              )
             )|
-            2[126]|
             3(?:
-              [12]|
-              37?|
+              37|
               [58]6|
-              65?
+              65
             )|
-            4(?:
-              [014]|
-              71
-            )|
+            471|
             5(?:
               07|
-              [135689]|
-              78?
+              78
             )|
             6(?:
               [02]6|
-              [138]|
-              99?
+              99
             )|
-            7[0-79]|
             8(?:
-              [0-578]|
-              63?|
-              95?
+              63|
+              95
             )
           )|
           2(?:
@@ -12518,7 +12611,8 @@
           9(?:
             159|
             290
-          )
+          )|
+          1[2-9]\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -12582,11 +12676,21 @@
           1(?:
             3(?:
               37|
+              [58]6|
               65
             )|
-            44|
-            578|
-            699|
+            4(?:
+              4|
+              71
+            )|
+            5(?:
+              07|
+              78
+            )|
+            6(?:
+              [02]6|
+              99
+            )|
             8(?:
               3|
               63|
@@ -12594,12 +12698,6 @@
             )
           )|
           (?:
-            1(?:
-              3[58]|
-              47|
-              50|
-              6[02]
-            )|
             2(?:
               07|
               26|
@@ -13461,7 +13559,8 @@
         <nationalNumberPattern>
           1(?:
             1[12]|
-            2[0-6]
+            2[0-6]|
+            [39]0
           )|
           9(?:
             11|

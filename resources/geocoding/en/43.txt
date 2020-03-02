@@ -249,6 +249,8 @@
 432841|Vitis
 432842|Waidhofen an der Thaya
 432843|Dobersberg
+432844|Karlstein an der Thaya
+432845|Weikertschlag an der Thaya
 432846|Raabs an der Thaya
 432847|Gross-Siegharts
 432848|Pfaffenschlag bei Waidhofen
