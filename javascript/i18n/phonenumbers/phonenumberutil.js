@@ -2904,7 +2904,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNumberTypeHelper_ =
  * code is invalid or unknown.
  *
  * @param {?string} regionCode
- * @return {i18n.phonenumbers.PhoneMetadata}
+ * @return {?i18n.phonenumbers.PhoneMetadata}
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getMetadataForRegion =
     function(regionCode) {
@@ -2935,7 +2935,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getMetadataForRegion =
 
 /**
  * @param {number} countryCallingCode
- * @return {i18n.phonenumbers.PhoneMetadata}
+ * @return {?i18n.phonenumbers.PhoneMetadata}
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.
     getMetadataForNonGeographicalRegion = function(countryCallingCode) {
@@ -2978,7 +2978,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
  * number "789272696". This is valid, while the original string is not
  * diallable.
  *
- * @param {i18n.phonenumbers.PhoneNumber} number the phone number that we want
+ * @param {!i18n.phonenumbers.PhoneNumber} number the phone number that we want
  *     to validate.
  * @return {boolean} a boolean that indicates whether the number is of a valid
  *     pattern.
@@ -3003,7 +3003,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumber = function(number) {
  * as the Isle of Man as invalid for the region "GB" (United Kingdom), since it
  * has its own region code, "IM", which may be undesirable.
  *
- * @param {i18n.phonenumbers.PhoneNumber} number the phone number that we want
+ * @param {!i18n.phonenumbers.PhoneNumber} number the phone number that we want
  *     to validate.
  * @param {?string} regionCode the region that we want to validate the phone
  *     number for.
@@ -3039,7 +3039,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isValidNumberForRegion =
  * geocoding at the region level. Only guarantees correct results for valid,
  * full numbers (not short-codes, or invalid numbers).
  *
- * @param {i18n.phonenumbers.PhoneNumber} number the phone number whose origin
+ * @param {?i18n.phonenumbers.PhoneNumber} number the phone number whose origin
  *     we want to know.
  * @return {?string} the region where the phone number is from, or null
  *     if no region matches this calling code.
@@ -3067,7 +3067,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForNumber =
 
 
 /**
- * @param {i18n.phonenumbers.PhoneNumber} number
+ * @param {!i18n.phonenumbers.PhoneNumber} number
  * @param {Array.<string>} regionCodes
  * @return {?string}
  * @private
@@ -3128,7 +3128,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodeForCountryCode =
  * returned.
  *
  * @param {number} countryCallingCode the country calling code.
- * @return {Array.<string>}
+ * @return {!Array.<string>}
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getRegionCodesForCountryCode =
     function(countryCallingCode) {
@@ -3552,7 +3552,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberString =
  * valid, and resets the PhoneNumber object passed in to that valid version. If
  * no valid number could be extracted, the PhoneNumber object passed in will not
  * be modified.
- * @param {i18n.phonenumbers.PhoneNumber} number a PhoneNumber object which
+ * @param {!i18n.phonenumbers.PhoneNumber} number a PhoneNumber object which
  *     contains a number that is too long to be valid.
  * @return {boolean} true if a valid phone number can be successfully extracted.
  */
@@ -4016,7 +4016,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.checkRegionForParsing_ = function(
  *     be stored as that of the default region supplied. If the number is
  *     guaranteed to start with a '+' followed by the country calling code, then
  *     'ZZ' or null can be supplied.
- * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
+ * @return {!i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {Error} if the string is not considered to be a
  *     viable phone number (e.g. too few or too many digits) or if no default
@@ -4041,7 +4041,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parse = function(numberToParse,
  *     from. This is only used if the number being parsed is not written in
  *     international format. The country calling code for the number in this
  *     case would be stored as that of the default region supplied.
- * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
+ * @return {!i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {Error} if the string is not considered to be a
  *     viable phone number or if no default region was supplied.
@@ -4106,7 +4106,7 @@ i18n.phonenumbers.PhoneNumberUtil.setItalianLeadingZerosForPhoneNumber_ =
  *     phoneNumber with numberToParse.
  * @param {boolean} checkRegion should be set to false if it is permitted for
  *     the default coregion to be null or unknown ('ZZ').
- * @return {i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
+ * @return {!i18n.phonenumbers.PhoneNumber} a phone number proto buffer filled
  *     with the parsed number.
  * @throws {Error}
  * @private
