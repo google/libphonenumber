@@ -171,3 +171,50 @@ function phoneNumberParser() {
 }
 
 goog.exportSymbol('phoneNumberParser', phoneNumberParser);
+
+let savedValue = "";
+let formatter = null;
+
+function phoneNumberFormatter() {
+  const $ = goog.dom.getElement;
+  
+  const formatAsYouType = $('formatAsYouType').checked;
+  if (!formatAsYouType) {
+    savedValue = "";
+    formatter = null;
+    return;
+  }
+
+  const phoneNumber = $('phoneNumber').value;
+  const regionCode = $('defaultCountry').value.toUpperCase();
+  
+  if (!formatter) {
+    savedValue = phoneNumber;
+    formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+
+    for (const char of phoneNumber) {
+      formatter.inputDigit(char);
+    }
+  }
+
+  if (phoneNumber.startsWith(savedValue)) {
+    // User appended characters to the input.
+    // Add newly typed characters to formatter.
+    const newChars = phoneNumber.substring(savedValue.length);
+    for (const char of newChars) {
+      savedValue = formatter.inputDigit(char);
+    }
+  } else {
+    // User changed the input in a different way than appending characters.
+    // Clear the formatter and add all characters.
+    savedValue = "";
+    formatter.clear();
+    for (const char of phoneNumber) {
+      savedValue = formatter.inputDigit(char);
+    }
+  }
+  
+  $('phoneNumber').value = savedValue;
+}
+
+goog.exportSymbol('phoneNumberFormatter', phoneNumberFormatter);
