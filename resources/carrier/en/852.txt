@@ -21,8 +21,14 @@
 # now on hold, so carrier details are removed for these prefixes. Prefix 9057 is
 # assigned to HKT based on user report.
 
-852460|China Mobile
-852461|Sun Mobile
+852460|China Unicom
+8524610|Sun Mobile
+8524611|Sun Mobile
+8524612|Sun Mobile
+8524613|HKT
+8524614|Sun Mobile
+8524615|China Unicom
+8524616|China Unicom
 8524640|China Mobile
 8524641|SmarTone
 8524642|SmarTone
@@ -67,7 +73,7 @@
 8525286|SmarTone
 8525287|SmarTone
 8525288|SmarTone
-8525289|263.net
+8525289|3
 852529|HKT
 852530|China Mobile
 852531|China Mobile
@@ -118,7 +124,7 @@
 8525703|Sun Mobile
 8525704|Multibyte
 8525705|Multibyte
-8525706|HKT
+8525706|Hong Kong Broadband Network
 8525707|China Mobile
 8525708|China Mobile
 8525709|CITIC
@@ -173,7 +179,7 @@
 852622|China Mobile
 852623|China Mobile
 852625|HKT
-8526260|Easco
+8526260|3
 8526261|Webbing
 852627|3
 852628|HKT
@@ -185,6 +191,8 @@
 852634|3
 852635|China Mobile
 8526360|Sun Mobile
+8526361|China Unicom
+8526362|China Telecom Global Limited (CTG)
 852637|HKT
 852638|HKT
 852639|HKT
@@ -193,7 +201,7 @@
 852642|HKT
 852643|China Mobile
 852644|HKT
-852645|CITIC
+852645|China Mobile
 852646|SmarTone
 852647|3
 852648|China Mobile

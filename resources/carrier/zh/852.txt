@@ -1,5 +1,28 @@
-852460|中国移动
-852461|新移动通讯
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations of en/852.txt from each carrier's wikipedia page and in
+# some cases the carrier's own home page.
+
+852460|中国联通
+8524610|新移动通讯
+8524611|新移动通讯
+8524612|新移动通讯
+8524613|香港移动通讯
+8524614|新移动通讯
+8524615|中国联通
+8524616|中国联通
 8524640|中国移动
 8524641|数码通
 8524642|数码通
@@ -44,7 +67,7 @@
 8525286|数码通
 8525287|数码通
 8525288|数码通
-8525289|263.net
+8525289|3
 852529|香港移动通讯
 852530|中国移动
 852531|中国移动
@@ -95,7 +118,7 @@
 8525703|新移动通讯
 8525704|Multibyte
 8525705|Multibyte
-8525706|香港移动通讯
+8525706|香港寬頻企業方案有限公司
 8525707|中国移动
 8525708|中国移动
 8525709|中信国际电讯
@@ -150,7 +173,7 @@
 852622|中国移动
 852623|中国移动
 852625|香港移动通讯
-8526260|Easco
+8526260|3
 8526261|Webbing
 852627|3
 852628|香港移动通讯
@@ -162,6 +185,8 @@
 852634|3
 852635|中国移动
 8526360|新移动通讯
+8526361|中国联通
+8526362|中國電信國際有限公司
 852637|香港移动通讯
 852638|香港移动通讯
 852639|香港移动通讯
@@ -170,7 +195,7 @@
 852642|香港移动通讯
 852643|中国移动
 852644|香港移动通讯
-852645|中信国际电讯
+852645|中国移动
 852646|数码通
 852647|3
 852648|中国移动
