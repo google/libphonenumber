@@ -1922,6 +1922,11 @@
 606981|Bakri
 606983|Bakri
 606984|Bukit Gambir
+606985|Muar
+606986|Bakri
+606987|Bakri
+606988|Bakri
+606989|Bakri
 607207|Johor Bahru
 607208|Johor Bahru
 607209|Johor Bahru
@@ -2651,6 +2656,7 @@
 6084610|Rejang
 6084612|Rejang
 6084613|Selalang
+6084614|Rejang
 6084620|Sarikei
 6084631|Selalang
 6084632|Selalang
@@ -3162,6 +3168,7 @@
 6087885|Kuala Penyu
 6087887|Membakut
 6087888|Membakut
+6087889|Membakut
 6088201|Kota Kinabalu
 6088203|Kota Kinabalu
 6088204|Kota Kinabalu
@@ -3704,15 +3711,8 @@
 609417|Nenasi
 609418|Nenasi
 609419|Kuala Rompin
-609421|Pekan
-609422|Pekan
+60942|Pekan
 609423|Chini
-609424|Pekan
-609425|Pekan
-609426|Pekan
-609427|Pekan
-609428|Pekan
-609429|Pekan
 609430|Pekan
 6094310|Pekan
 6094311|Pekan
@@ -3918,6 +3918,7 @@
 609821|Sri Gading
 609822|Al Muktafi Billa H Shah
 609823|Al Muktafi Billa H Shah
+609824|Kerteh
 609825|Kerteh
 609826|Kerteh
 609827|Paka

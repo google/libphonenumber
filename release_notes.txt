@@ -1,3 +1,24 @@
+Mar 18, 2020: v8.12.0
+Code changes:
+ - [JS only] Updates some closure annotations in `phonenumberutil.js` to indicate non-nullable parameters
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   800, 808, 881, 882, 979, AR, AZ, CL, CN, HK, HN, JO, JP, KE, KP, LA, LR, MK,
+   ML, MN, MV, MY, MZ, NP, NZ, PS, SV, SY, TT, TZ, UZ, YE
+ - Updated short number metadata for region code(s): AC, JO, MK, MN, NP, SV, TZ
+ - New geocoding data for country calling code(s):
+   850 (en), 963 (en), 967 (en), 970 (en)
+ - Updated geocoding data for country calling code(s):
+   60 (en), 389 (en), 504 (en), 962 (en)
+ - New carrier data for country calling code(s):
+   247 (en), 500 (en), 504 (en), 850 (en), 881 (en), 882 (en)
+ - Updated carrier data for country calling code(s):
+   56 (en), 60 (en), 64 (en), 86 (en, zh), 223 (en), 231 (en), 258 (en),
+   267 (en), 389 (en), 503 (en), 852 (en, zh, zh_Hant), 856 (en), 960 (en),
+   962 (en), 963 (en), 964 (en), 970 (en), 992 (en), 994 (en), 998 (en),
+   1868 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 02, 2020: v8.11.5
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 595
