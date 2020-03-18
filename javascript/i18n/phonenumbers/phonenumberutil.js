@@ -4334,7 +4334,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
  *
  * @param {i18n.phonenumbers.PhoneNumber} numberIn number that we want to copy
  *     fields from.
- * @return {i18n.phonenumbers.PhoneNumber} number with core fields only.
+ * @return {!i18n.phonenumbers.PhoneNumber} number with core fields only.
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.copyCoreFieldsOnly_ = function(numberIn) {

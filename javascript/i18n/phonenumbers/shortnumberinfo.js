@@ -385,7 +385,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodeForShortNumberFromRegio
 
 /**
  * Convenience method to get a list of what regions the library has metadata for
- * @return {Array<string>} the list of region codes
+ * @return {!Array<string>} the list of region codes
  * @package
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
