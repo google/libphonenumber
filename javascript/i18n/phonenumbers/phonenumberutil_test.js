@@ -3903,4 +3903,3 @@ function testIsAlphaNumber() {
   assertFalse(phoneUtil.isAlphaNumber('1800 123-1234 extension: 1234'));
   assertFalse(phoneUtil.isAlphaNumber('+800 1234-1234'));
 }
-
