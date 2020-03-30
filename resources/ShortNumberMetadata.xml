@@ -11943,6 +11943,28 @@
       </emergency>
     </territory>
 
+    <!-- South Sudan (SS) -->
+    <territory id="SS">
+      <generalDesc>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <possibleLengths national="3"/>
+        <exampleNumber>999</exampleNumber>
+        <nationalNumberPattern>999</nationalNumberPattern>
+      </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>999</exampleNumber>
+        <nationalNumberPattern>999</nationalNumberPattern>
+      </tollFree>
+      <emergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>999</exampleNumber>
+        <nationalNumberPattern>999</nationalNumberPattern>
+      </emergency>
+    </territory>
+
     <!-- São Tomé & Príncipe (ST) -->
     <!-- http://www.itu.int/oth/T02020000B6/en -->
     <territory id="ST">
