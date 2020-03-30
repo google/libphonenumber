@@ -30,7 +30,15 @@
 441207|Consett
 441208|Bodmin
 441209|Redruth
-44121|Birmingham
+441210|Birmingham
+441211|Birmingham
+441212|Birmingham
+441213|Birmingham
+441214|Birmingham
+441215|Birmingham
+441216|Birmingham
+441217|Birmingham
+4412180|Birmingham
 441223|Cambridge
 441224|Aberdeen
 441225|Bath

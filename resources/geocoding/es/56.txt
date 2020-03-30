@@ -19,6 +19,8 @@
 # digit here to distinguish from the prefix 2196 which is assigned to the rural
 # company CTR.
 
+56211|Santiago, Región Metropolitana
+562198|Santiago, Región Metropolitana
 5622|Santiago, Región Metropolitana
 5623|Santiago, Región Metropolitana
 5632|Valparaíso
@@ -31,7 +33,41 @@
 5645|Temuco, Araucanía
 5651|La Serena, Coquimbo
 5652|Copiapó, Atacama
-5653|Ovalle, Coquimbo
+56530|Ovalle, Coquimbo
+56531|Ovalle, Coquimbo
+565320|Ovalle, Coquimbo
+565321|Ovalle, Coquimbo
+565322|Ovalle, Coquimbo
+565323|Ovalle, Coquimbo
+5653240|Ovalle, Coquimbo
+5653241|Ovalle, Coquimbo
+5653242|Ovalle, Coquimbo
+5653243|Ovalle, Coquimbo
+5653244|Ovalle, Coquimbo
+56532452|Ovalle, Coquimbo
+56532453|Ovalle, Coquimbo
+56532454|Ovalle, Coquimbo
+56532455|Ovalle, Coquimbo
+56532456|Ovalle, Coquimbo
+56532457|Ovalle, Coquimbo
+56532458|Ovalle, Coquimbo
+56532459|Ovalle, Coquimbo
+5653246|Ovalle, Coquimbo
+5653247|Ovalle, Coquimbo
+5653248|Ovalle, Coquimbo
+5653249|Ovalle, Coquimbo
+565325|Ovalle, Coquimbo
+565326|Ovalle, Coquimbo
+565327|Ovalle, Coquimbo
+565328|Ovalle, Coquimbo
+565329|Ovalle, Coquimbo
+56533|Ovalle, Coquimbo
+56534|Ovalle, Coquimbo
+56535|Ovalle, Coquimbo
+56536|Ovalle, Coquimbo
+56537|Ovalle, Coquimbo
+56538|Ovalle, Coquimbo
+56539|Ovalle, Coquimbo
 5655|Antofagasta
 5657|Iquique, Tarapacá
 5658|Arica, Arica y Parinacota
