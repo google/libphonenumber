@@ -1,3 +1,23 @@
+Mar 30, 2020: v8.12.1
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BD, BM, BS, BW, CA, CL, DM, DO, GB, GD, GU, IL, IR, JM, JO,
+   KN, KY, KZ, LC, MA, MC, MN, MP, MS, NG, NZ, PE, PH, PR, PW, SG, SS, SX, TC,
+   TT, US, VC, VG, VI, VN
+ - New short number metadata for region code(s): SS
+ - New geocoding data for country calling code(s): 63 (en), 1340 (en)
+ - Updated geocoding data for country calling code(s):
+   7 (en, ru), 44 (en), 56 (en, es), 212 (en, fr), 234 (en), 880 (en),
+   1242 (en), 1345 (en), 1659 (en)
+ - New carrier data for country calling code(s):
+   1340 (en), 1659 (en), 1664 (en), 1670 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en, ru), 51 (en), 56 (en), 63 (en), 84 (en), 98 (en, fa), 211 (en),
+   234 (en), 267 (en), 972 (en), 976 (en), 1246 (en), 1264 (en), 1268 (en),
+   1284 (en), 1345 (en), 1441 (en), 1649 (en), 1684 (en), 1758 (en), 1767 (en),
+   1784 (en), 1868 (en), 1869 (en), 1876 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 18, 2020: v8.12.0
 Code changes:
  - [JS only] Updates some closure annotations in `phonenumberutil.js` to indicate non-nullable parameters
