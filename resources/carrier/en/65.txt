@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+65801|TPG
 6581|StarHub
 65810|M1
 65812|SingTel

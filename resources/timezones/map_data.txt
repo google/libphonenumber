@@ -3031,11 +3031,16 @@
 6298|Asia/Jayapura
 63|Asia/Manila
 64|Pacific/Auckland&Pacific/Chatham
+641|Pacific/Auckland
+642|Pacific/Auckland
 643|Pacific/Auckland
-643305|Pacific/Chatham
+64330|Pacific/Chatham
 644|Pacific/Auckland
+645|Pacific/Auckland
 646|Pacific/Auckland
 647|Pacific/Auckland
+6480|Pacific/Auckland
+6486|Pacific/Auckland
 649|Pacific/Auckland
 65|Asia/Singapore
 66|Asia/Bangkok
