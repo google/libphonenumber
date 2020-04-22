@@ -23,12 +23,22 @@
 99553|MagtiCom
 99554444|MagtiCom
 995550|MagtiCom
+99555000|Geocell
+99555005|Geocell
+99555050|Geocell
+99555055|Datacom
 995551|MagtiCom
-995552|Premium Net International SRL
+9955520|Premium Net International SRL
+9955522|Asanet
 995555|Geocell
 995557|Geocell
 995558|Geocell
 995559|Globalcell
+995559995|DataHouse Global
+995559996|DataHouse Global
+995559997|DataHouse Global
+995559998|DataHouse Global
+995559999|DataHouse Global
 99556|Veon
 995570|Silknet
 995571|Veon
