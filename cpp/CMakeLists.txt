@@ -86,6 +86,7 @@ option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
+option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "OFF")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -104,7 +105,9 @@ if (${USE_BOOST} STREQUAL "ON")
   include_directories (${Boost_INCLUDE_DIRS})
 endif ()
 
-find_or_build_gtest ()
+if (BUILD_UNIT_TESTS)
+  find_or_build_gtest ()
+endif()
 
 if (${USE_RE2} STREQUAL "ON")
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
@@ -150,7 +153,7 @@ if (${USE_STD_MAP} STREQUAL "OFF")
 endif ()
 
 # Add protoc (Protocol Buffers compiler) target.
-set (RESOURCES_DIR "${CMAKE_SOURCE_DIR}/../resources")
+set (RESOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../resources")
 
 set (
   PROTOBUF_SOURCES "${RESOURCES_DIR}/phonemetadata.proto"
@@ -158,14 +161,14 @@ set (
 )
 
 set (
-  PROTOBUF_OUTPUT "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.cc"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.h"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.cc"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.h"
+  PROTOBUF_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.cc"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.h"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.cc"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.h"
 )
 
 add_custom_command (
-  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_SOURCE_DIR}/src/phonenumbers/
+  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/
     --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
@@ -175,13 +178,13 @@ add_custom_command (
 if (${BUILD_GEOCODER} STREQUAL "ON")
   # Geocoding data cpp file generation
   set (TOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
-  add_subdirectory("${CMAKE_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
+  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
 
   set (GEOCODING_DIR "${RESOURCES_DIR}/geocoding")
   file (GLOB_RECURSE GEOCODING_SOURCES "${GEOCODING_DIR}/*.txt")
 
   set (GEOCODING_DATA_OUTPUT
-    "${CMAKE_SOURCE_DIR}/src/phonenumbers/geocoding/geocoding_data.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/geocoding/geocoding_data.cc"
   )
 
   add_custom_command (
@@ -265,16 +268,16 @@ function (add_metadata_gen_target TARGET_NAME
                                   XML_FILE
                                   METADATA_TYPE
                                   METADATA_HEADER)
-  set (METADATA_SOURCE_DIR "${CMAKE_SOURCE_DIR}/src/phonenumbers")
+  set (METADATA_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers")
   set (GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.cc"
                   "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
-  set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
+  set (JAR_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
   add_custom_command (
     COMMAND ${JAVA_BIN} -jar
       ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
-      ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
 
     OUTPUT ${GEN_OUTPUT}
     DEPENDS ${XML_FILE}
@@ -458,7 +461,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   file (GLOB_RECURSE GEOCODING_TEST_SOURCES "${GEOCODING_TEST_DIR}/*.txt")
 
   set (GEOCODING_TEST_DATA_OUTPUT
-    "${CMAKE_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
   )
 
   add_custom_command (
@@ -505,30 +508,32 @@ if (${USE_ICU_REGEXP} STREQUAL "ON")
 endif ()
 
 # Build the testing binary.
-include_directories ("test")
-add_executable (libphonenumber_test ${TEST_SOURCES})
-set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
+if (BUILD_UNIT_TESTS)
+  include_directories ("test")
+  add_executable (libphonenumber_test ${TEST_SOURCES})
+  set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
 
-if (NOT WIN32)
-  list (APPEND TEST_LIBS pthread)
-endif ()
+  if (NOT WIN32)
+    list (APPEND TEST_LIBS pthread)
+  endif ()
 
-target_link_libraries (libphonenumber_test ${TEST_LIBS})
+  target_link_libraries (libphonenumber_test ${TEST_LIBS})
 
-# Unfortunately add_custom_target() can't accept a single command provided as a
-# list of commands.
-if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_custom_target (tests
-    COMMAND generate_geocoding_data_test
-    COMMAND libphonenumber_test
-    DEPENDS generate_geocoding_data_test libphonenumber_test
-  )
-else ()
-  add_custom_target (tests
-    COMMAND libphonenumber_test
-    DEPENDS libphonenumber_test
-  )
-endif ()
+  # Unfortunately add_custom_target() can't accept a single command provided as a
+  # list of commands.
+  if (${BUILD_GEOCODER} STREQUAL "ON")
+    add_custom_target (tests
+      COMMAND generate_geocoding_data_test
+      COMMAND libphonenumber_test
+      DEPENDS generate_geocoding_data_test libphonenumber_test
+    )
+  else ()
+    add_custom_target (tests
+      COMMAND libphonenumber_test
+      DEPENDS libphonenumber_test
+    )
+  endif ()
+endif()
 
 # Install rules.
 install (FILES
