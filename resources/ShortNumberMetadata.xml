@@ -494,7 +494,9 @@
           1(?:
             0[0-35-7]|
             1[02-5]|
-            2[15]|
+            2[015]|
+            34|
+            4[78]|
             9
           )|
           3372|
@@ -512,7 +514,9 @@
           1(?:
             0[0-35-7]|
             1[0245]|
-            2[15]|
+            2[015]|
+            34|
+            4[78]|
             9
           )|
           911
@@ -537,7 +541,14 @@
       <expandedEmergency>
         <possibleLengths national="3"/>
         <exampleNumber>103</exampleNumber>
-        <nationalNumberPattern>10[356]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            0[356]|
+            20|
+            34|
+            4[78]
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
