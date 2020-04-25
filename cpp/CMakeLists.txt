@@ -367,23 +367,25 @@ endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
   if (${BUILD_STATIC_LIB} STREQUAL "ON")
-    add_library (geocoding STATIC ${GEOCODING_SOURCES})
-    add_dependencies (geocoding generate_geocoding_data)
+     add_library (geocoding STATIC ${GEOCODING_SOURCES})
+     add_dependencies (geocoding generate_geocoding_data)
   endif ()
-  # The geocoder doesn't use RE2 so there is no reason not to build a shared
-  # library for it.
-  add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
-  add_dependencies (geocoding-shared generate_geocoding_data)
-  set_target_properties (geocoding-shared
-    PROPERTIES
-      OUTPUT_NAME "geocoding"
-      PREFIX "lib"
-      SOVERSION ${libphonenumber_VERSION_MAJOR}
-      VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
+  if (BUILD_SHARED_LIB)
+      # The geocoder doesn't use RE2 so there is no reason not to build a shared
+      # library for it.
+      add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
+      add_dependencies (geocoding-shared generate_geocoding_data)
+      set_target_properties (geocoding-shared
+        PROPERTIES
+          OUTPUT_NAME "geocoding"
+          PREFIX "lib"
+          SOVERSION ${libphonenumber_VERSION_MAJOR}
+          VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
+  endif ()
 endif ()
 
 # Build a shared library (with -fPIC).
-set (BUILD_SHARED_LIB true)
+set (BUILD_SHARED_LIB false)
 
 if (${USE_RE2} STREQUAL "ON")
   # RE2 is not always available as a shared library (e.g: package provided by
@@ -445,7 +447,9 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   # Note that the subset of base/ on which the geocoder relies is implemented
   # on top of Boost header-only libraries (e.g. scoped_ptr.hpp).
   target_link_libraries (geocoding ${LIBRARY_DEPS})
-  target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
+  if (BUILD_SHARED_LIB)
+    target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
+  endif ()
 endif ()
 
 # Build a specific library for testing purposes.
@@ -605,8 +609,10 @@ endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
   install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
-  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+  if (BUILD_SHARED_LIB)
+    install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
            DESTINATION ${LIBDIR})
+  endif ()
 endif ()
 
 # Build an example program using geocoding, mainly to make sure that both
