@@ -80,7 +80,7 @@ endfunction (find_required_program)
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
 option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
 option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
-option ("USE_BOOST" "Use Boost" "ON")
+option ("USE_BOOST" "Use Boost" "OFF")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
