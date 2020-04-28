@@ -28,11 +28,28 @@ if (32BIT)
   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
 endif ()
 
+# Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
+option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
+option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
+option ("USE_BOOST" "Use Boost" "OFF")
+option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
+option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
+option ("USE_RE2" "Use RE2" "OFF")
+option ("USE_STD_MAP" "Force the use of std::map" "OFF")
+option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
+option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "OFF")
+
+if (ANDROID)
+  set (BUILD_GEOCODER OFF)
+endif()
+
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
 include (GNUInstallDirs)
-include (../tools/cpp/gtest.cmake)
+if (BUILD_UNIT_TESTS)
+  include (../tools/cpp/gtest.cmake)
+endif ()
 
 function (print_error DESCRIPTION FILE)
   message (FATAL_ERROR
@@ -76,17 +93,6 @@ function (find_required_program NAME FILENAME DESCRIPTION)
     print_error (${DESCRIPTION} ${FILENAME})
   endif ()
 endfunction (find_required_program)
-
-# Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
-option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
-option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
-option ("USE_BOOST" "Use Boost" "OFF")
-option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
-option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
-option ("USE_RE2" "Use RE2" "OFF")
-option ("USE_STD_MAP" "Force the use of std::map" "OFF")
-option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
-option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "OFF")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")

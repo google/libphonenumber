@@ -20,10 +20,10 @@ project (generate_geocoding_data)
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
-
-include (gtest.cmake)
-
-find_or_build_gtest ()
+if (BUILD_UNIT_TESTS)
+  include (gtest.cmake)
+  find_or_build_gtest ()
+endif()
 
 set (
   SOURCES
@@ -39,19 +39,21 @@ include_directories ("src")
 
 add_executable (generate_geocoding_data ${SOURCES})
 
-set (TEST_SOURCES
-  "src/cpp-build/generate_geocoding_data.cc"
-  "test/cpp-build/generate_geocoding_data_test.cc"
-  "test/cpp-build/run_tests.cc"
-)
+if (BUILD_UNIT_TESTS)
+  set (TEST_SOURCES
+    "src/cpp-build/generate_geocoding_data.cc"
+    "test/cpp-build/generate_geocoding_data_test.cc"
+    "test/cpp-build/run_tests.cc"
+  )
 
-set (TEST_LIBS ${GTEST_LIB})
+  set (TEST_LIBS ${GTEST_LIB})
 
-if (NOT WIN32)
-  list (APPEND TEST_LIBS pthread)
-endif ()
+  if (NOT WIN32)
+    list (APPEND TEST_LIBS pthread)
+  endif ()
 
-# Build the testing binary.
-include_directories ("test")
-add_executable (generate_geocoding_data_test ${TEST_SOURCES})
-target_link_libraries (generate_geocoding_data_test ${TEST_LIBS})
+  # Build the testing binary.
+  include_directories ("test")
+  add_executable (generate_geocoding_data_test ${TEST_SOURCES})
+  target_link_libraries (generate_geocoding_data_test ${TEST_LIBS})
+endif()
