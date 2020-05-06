@@ -1,3 +1,13 @@
+May 06, 2020: v8.12.3
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, AU, CC, CX, GB, GG, GR, JE, MY, SG, SL, SR, TH
+ - Updated short number metadata for region code(s): AR, AU
+ - Updated geocoding data for country calling code(s): 61 (en), 66 (en, th)
+ - Updated carrier data for country calling code(s):
+   60 (en), 61 (en), 65 (en), 232 (en), 597 (en)
+ - Updated / refreshed time zone meta data.
+
 Apr 22, 2020: v8.12.2
 Metadata changes:
  - Updated phone metadata for region code(s):
