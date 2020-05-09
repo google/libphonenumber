@@ -116,6 +116,7 @@
 542625|General Alvear, Mendoza
 542626|La Paz, Mendoza
 54263|San Martín, Mendoza
+542643|San Juan, San Juan
 542644|San Juan, San Juan
 542645|San Juan, San Juan
 542646|Villa San Agustín, San Juan
@@ -239,7 +240,12 @@
 543535|Villa María, Córdoba
 543536|Villa María, Córdoba
 543537|Bell Ville, Córdoba
-543541|Villa Carlos Paz, Córdoba
+5435412|Villa Carlos Paz, Córdoba
+5435413|Villa Carlos Paz, Córdoba
+5435414|Villa Carlos Paz, Córdoba
+5435415|Villa Carlos Paz, Córdoba
+5435416|Villa Carlos Paz, Córdoba
+5435417|Cosquin/Córdoba
 543542|Salsacate, Córdoba
 543543|Córdoba (Argüello), Córdoba
 543544|Villa Dolores, Córdoba
@@ -321,7 +327,13 @@
 543868|Cafayate, Salta
 543869|Ranchillos y San Miguel, Tucumán
 543872|Salta, Salta
-543873|Tartagal, Salta
+5438730|Tartagal, Salta
+5438731|Tartagal, Salta
+5438732|Tartagal, Salta
+5438733|Tartagal, Salta
+5438734|Tartagal, Salta
+5438735|Tartagal, Salta
+5438736|Tartagal, Salta
 543874|Salta, Salta
 543875|Salta, Salta
 543876|San José de Metán, Salta
@@ -332,7 +344,10 @@
 543885|La Quiaca, Jujuy
 543886|Libertador General San Martín, Jujuy
 543887|Humahuaca, Jujuy
-543888|San Pedro de Jujuy, Jujuy
+5438883|San Pedro de Jujuy, Jujuy
+5438884|San Pedro de Jujuy, Jujuy
+5438885|San Pedro de Jujuy, Jujuy
+5438886|San Pedro de Jujuy, Jujuy
 543891|Graneros, Tucumán
 543892|Amaicha del Valle, Tucumán
 543894|Burruyacú, Tucumán
