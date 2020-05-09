@@ -37,7 +37,7 @@ option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
-option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "OFF")
+option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "ON")
 
 if (ANDROID)
   set (BUILD_GEOCODER OFF)
