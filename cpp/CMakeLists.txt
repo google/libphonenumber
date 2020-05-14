@@ -41,6 +41,8 @@ option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "OFF")
 
 if (ANDROID)
   set (BUILD_GEOCODER OFF)
+elseif (IOS)
+  set (BUILD_GEOCODER OFF)
 endif()
 
 # Helper functions dealing with finding libraries and programs this library
@@ -149,7 +151,9 @@ find_required_program (PROTOC protoc
 find_required_program (JAVA java
                        "Java Runtime Environment")
 
-if (APPLE)
+if (ANDROID)
+elseif (IOS)
+elseif (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
   set (CMAKE_MACOSX_RPATH "OFF")
