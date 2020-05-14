@@ -123,11 +123,9 @@ find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
                        "Google Protocol Buffers")
 check_library_version (PC_PROTOBUF protobuf>=2.4)
 
-find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
-check_library_version (PC_ICU_UC icu-uc>=4.4)
+set (ICU_INCLUDE_DIR "")
+set (ICU_LIB "")
 
-set (ICU_INCLUDE_DIR ${ICU_UC_INCLUDE_DIR})
-set (ICU_LIB ${ICU_UC_LIB})
 # If ICU regexp engine is used or if the geocoder is built, use icui18n as well.
 if (${USE_ICU_REGEXP} STREQUAL "ON" OR ${BUILD_GEOCODER} STREQUAL "ON")
   find_required_library (ICU_I18N unicode/regex.h icui18n "ICU")
@@ -135,6 +133,15 @@ if (${USE_ICU_REGEXP} STREQUAL "ON" OR ${BUILD_GEOCODER} STREQUAL "ON")
   list (APPEND ICU_INCLUDE_DIR ${ICU_I18N_INCLUDE_DIR})
   list (APPEND ICU_LIB ${ICU_I18N_LIB})
 endif ()
+
+find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
+check_library_version (PC_ICU_UC icu-uc>=4.4)
+list (APPEND ICU_INCLUDE_DIR ${ICU_UC_INCLUDE_DIR})
+list (APPEND ICU_LIB ${ICU_UC_LIB})
+
+find_required_library (ICU_DATA unicode/uchar.h icudata "ICU")
+list (APPEND ICU_INCLUDE_DIR ${ICU_DATA_INCLUDE_DIR})
+list (APPEND ICU_LIB ${ICU_DATA_LIB})
 
 find_required_program (PROTOC protoc
                        "Google Protocol Buffers compiler (protoc)")
