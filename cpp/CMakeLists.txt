@@ -39,9 +39,7 @@ option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
 option ("BUILD_UNIT_TESTS" "Build unit tests (gtest sources are needed)" "OFF")
 
-if (ANDROID)
-  set (BUILD_GEOCODER OFF)
-elseif (IOS)
+if (ANDROID OR IOS)
   set (BUILD_GEOCODER OFF)
 endif()
 
@@ -151,9 +149,7 @@ find_required_program (PROTOC protoc
 find_required_program (JAVA java
                        "Java Runtime Environment")
 
-if (ANDROID)
-elseif (IOS)
-elseif (APPLE)
+if (APPLE AND NOT IOS)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
   set (CMAKE_MACOSX_RPATH "OFF")
