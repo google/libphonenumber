@@ -27,6 +27,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+using std::string;
 using std::stringstream;
 using std::max;
 using std::hex;
@@ -171,14 +172,14 @@ void UnicodeText::Repr::append(const char* bytes, int byte_length) {
   size_ += byte_length;
 }
 
-std::string UnicodeText::Repr::DebugString() const {
+string UnicodeText::Repr::DebugString() const {
   stringstream ss;
 
   ss << "{Repr " << hex << this << " data=" << data_ << " size=" << dec
      << size_ << " capacity=" << capacity_ << " "
      << (ours_ ? "Owned" : "Alias") << "}";
 
-  std::string result;
+  string result;
   ss >> result;
 
   return result;
@@ -206,10 +207,10 @@ UnicodeText::UnicodeText(const UnicodeText::const_iterator& first,
   repr_.append(first.it_, last.it_ - first.it_);
 }
 
-std::string UnicodeText::UTF8Substring(const const_iterator& first,
+string UnicodeText::UTF8Substring(const const_iterator& first,
                                   const const_iterator& last) {
   assert(first <= last && "Incompatible iterators");
-  return std::string(first.it_, last.it_ - first.it_);
+  return string(first.it_, last.it_ - first.it_);
 }
 
 
@@ -385,7 +386,7 @@ bool operator==(const UnicodeText& lhs, const UnicodeText& rhs) {
   return memcmp(lhs.repr_.data_, rhs.repr_.data_, lhs.repr_.size_) == 0;
 }
 
-std::string UnicodeText::DebugString() const {
+string UnicodeText::DebugString() const {
   stringstream ss;
 
   ss << "{UnicodeText " << hex << this << dec << " chars="
@@ -396,7 +397,7 @@ std::string UnicodeText::DebugString() const {
                       size(),
                       repr_.DebugString().c_str());
 #endif
-  std::string result;
+  string result;
   ss >> result;
 
   return result;
@@ -505,11 +506,11 @@ UnicodeText::const_iterator UnicodeText::MakeIterator(const char* p) const {
   return const_iterator(p);
 }
 
-std::string UnicodeText::const_iterator::DebugString() const {
+string UnicodeText::const_iterator::DebugString() const {
   stringstream ss;
 
   ss << "{iter " << hex << it_ << "}";
-  std::string result;
+  string result;
   ss >> result;
 
   return result;
