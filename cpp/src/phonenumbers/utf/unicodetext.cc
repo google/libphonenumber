@@ -171,14 +171,14 @@ void UnicodeText::Repr::append(const char* bytes, int byte_length) {
   size_ += byte_length;
 }
 
-string UnicodeText::Repr::DebugString() const {
+std::string UnicodeText::Repr::DebugString() const {
   stringstream ss;
 
   ss << "{Repr " << hex << this << " data=" << data_ << " size=" << dec
      << size_ << " capacity=" << capacity_ << " "
      << (ours_ ? "Owned" : "Alias") << "}";
 
-  string result;
+  std::string result;
   ss >> result;
 
   return result;
@@ -206,10 +206,10 @@ UnicodeText::UnicodeText(const UnicodeText::const_iterator& first,
   repr_.append(first.it_, last.it_ - first.it_);
 }
 
-string UnicodeText::UTF8Substring(const const_iterator& first,
+std::string UnicodeText::UTF8Substring(const const_iterator& first,
                                   const const_iterator& last) {
   assert(first <= last && "Incompatible iterators");
-  return string(first.it_, last.it_ - first.it_);
+  return std::string(first.it_, last.it_ - first.it_);
 }
 
 
@@ -385,7 +385,7 @@ bool operator==(const UnicodeText& lhs, const UnicodeText& rhs) {
   return memcmp(lhs.repr_.data_, rhs.repr_.data_, lhs.repr_.size_) == 0;
 }
 
-string UnicodeText::DebugString() const {
+std::string UnicodeText::DebugString() const {
   stringstream ss;
 
   ss << "{UnicodeText " << hex << this << dec << " chars="
@@ -396,7 +396,7 @@ string UnicodeText::DebugString() const {
                       size(),
                       repr_.DebugString().c_str());
 #endif
-  string result;
+  std::string result;
   ss >> result;
 
   return result;
@@ -505,11 +505,11 @@ UnicodeText::const_iterator UnicodeText::MakeIterator(const char* p) const {
   return const_iterator(p);
 }
 
-string UnicodeText::const_iterator::DebugString() const {
+std::string UnicodeText::const_iterator::DebugString() const {
   stringstream ss;
 
   ss << "{iter " << hex << it_ << "}";
-  string result;
+  std::string result;
   ss >> result;
 
   return result;
