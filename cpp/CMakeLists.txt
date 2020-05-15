@@ -377,7 +377,6 @@ if (${BUILD_STATIC_LIB} STREQUAL "ON")
     endif ()
   endif ()
 else ()
-    # Build a shared library (without -fPIC).
     add_library (phonenumber SHARED ${SOURCES})
     if (${BUILD_GEOCODER} STREQUAL "ON")
       add_dependencies (phonenumber generate_geocoding_data)
@@ -387,6 +386,12 @@ else ()
         add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
       endif ()
     endif ()
+    set_target_properties (phonenumber
+      PROPERTIES
+        OUTPUT_NAME "phonenumber"
+        PREFIX "lib"
+        SOVERSION ${libphonenumber_VERSION_MAJOR}
+        VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
@@ -422,16 +427,16 @@ if (${USE_RE2} STREQUAL "ON")
 endif ()
 
 if (BUILD_SHARED_LIB)
-  add_library (phonenumber-shared SHARED ${SOURCES})
+  add_library (phonenumber SHARED ${SOURCES})
   if (${BUILD_GEOCODER} STREQUAL "ON")
-    add_dependencies (phonenumber-shared generate_geocoding_data)
+    add_dependencies (phonenumber generate_geocoding_data)
   endif ()
   if (${USE_ICU_REGEXP} STREQUAL "ON")
     if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-      add_dependencies (phonenumber-shared ${ALT_FORMAT_METADATA_TARGET})
+      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
     endif ()
   endif ()
-  set_target_properties (phonenumber-shared
+  set_target_properties (phonenumber
     PROPERTIES
       OUTPUT_NAME "phonenumber"
       PREFIX "lib"
@@ -458,13 +463,7 @@ endif ()
 
 list (APPEND LIBRARY_DEPS ${COMMON_DEPS})
 
-if (${BUILD_STATIC_LIB} STREQUAL "ON")
-  target_link_libraries (phonenumber ${LIBRARY_DEPS})
-endif ()
-
-if (BUILD_SHARED_LIB)
-  target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
-endif ()
+target_link_libraries (phonenumber ${LIBRARY_DEPS})
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
   list (APPEND GEOCODER_DEPS ${COMMON_DEPS})
@@ -627,7 +626,7 @@ if (${BUILD_STATIC_LIB} STREQUAL "ON")
 endif ()
 
 if (BUILD_SHARED_LIB)
-  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+  install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE
            DESTINATION ${LIBDIR})
 endif ()
 
