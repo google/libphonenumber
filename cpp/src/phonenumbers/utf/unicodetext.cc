@@ -27,6 +27,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+using std::string;
 using std::stringstream;
 using std::max;
 using std::hex;
