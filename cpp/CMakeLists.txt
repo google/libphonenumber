@@ -457,6 +457,10 @@ if (${USE_RE2} STREQUAL "ON")
   list (APPEND LIBRARY_DEPS ${RE2_LIB})
 endif ()
 
+if (ANDROID)
+  list (APPEND LIBRARY_DEPS log z)
+endif()
+
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
 endif ()
