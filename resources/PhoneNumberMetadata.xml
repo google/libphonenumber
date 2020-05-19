@@ -2448,7 +2448,7 @@
         <nationalNumberPattern>
           4(?:
             83[0-38]|
-            93[01]
+            93[0-4]
           )\d{5}|
           4(?:
             [0-3]\d|
@@ -2456,7 +2456,7 @@
             5[0-25-9]|
             6[06-9]|
             7[02-9]|
-            8[0-2457-9]|
+            8[0-24-9]|
             9[0-27-9]
           )\d{6}
         </nationalNumberPattern>
@@ -4345,10 +4345,16 @@
          since the carrier codes here may also be area codes, so we want to check the length of
          the number after capturing. We also need a nationalTransformRule to repopulate with the
          number without the carrier code. -->
+    <!-- 90 is an additional dialling token used in place of national prefix (0), under scheme
+         "Collect Call" in Brazil. Local dialling under this prefix is not supported.
+         https://www.anatel.gov.br/Portal/verificaDocumentos/documento.asp?numeroPublicacao=346146&pub=original&filtro=1&documentoPath=346146.pdf -->
     <territory id="BR" countryCode="55" internationalPrefix="00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)"
                nationalPrefix="0"
                nationalPrefixForParsing="
-                 0(?:
+                 (?:
+                   0|
+                   90
+                 )(?:
                    (
                      1[245]|
                      2[1-35]|
@@ -5359,7 +5365,7 @@
         <nationalNumberPattern>
           4(?:
             83[0-38]|
-            93[01]
+            93[0-4]
           )\d{5}|
           4(?:
             [0-3]\d|
@@ -5367,7 +5373,7 @@
             5[0-25-9]|
             6[06-9]|
             7[02-9]|
-            8[0-2457-9]|
+            8[0-24-9]|
             9[0-27-9]
           )\d{6}
         </nationalNumberPattern>
@@ -7521,7 +7527,7 @@
         <nationalNumberPattern>
           4(?:
             83[0-38]|
-            93[01]
+            93[0-4]
           )\d{5}|
           4(?:
             [0-3]\d|
@@ -7529,7 +7535,7 @@
             5[0-25-9]|
             6[06-9]|
             7[02-9]|
-            8[0-2457-9]|
+            8[0-24-9]|
             9[0-27-9]
           )\d{6}
         </nationalNumberPattern>
@@ -11850,14 +11856,13 @@
           (?:
             46(?:
               [01][0-6]|
+              2[5-9]|
               4[0-57-9]
             )|
             5730|
-            (?:
-              626|
-              848
-            )[01]|
+            626[01]|
             707[1-5]|
+            848[015-9]|
             929[03-9]
           )\d{4}|
           (?:
@@ -19563,37 +19568,41 @@
           (?:
             17[01]|
             9(?:
-              2[0-4]|
+              2(?:
+                [0-4]|
+                [56]\d\d
+              )|
               (?:
-                3[0-36]|
+                3(?:
+                  [0-36]|
+                  4\d
+                )|
                 (?:
                   6\d|
                   8[89]|
-                  98
-                )\d
+                  9[4-8]
+                )\d|
+                7(?:
+                  3|
+                  40|
+                  [5-9]\d
+                )
               )\d|
               4(?:
-                [1379]\d|
+                (?:
+                  [0245]\d|
+                  [1379]
+                )\d|
                 88
               )|
               5[0-6]
             )\d
           )\d{4}|
-          9(?:
-            [69]1|
-            73
-          )\d{6}|
+          9[69]1\d{6}|
           9(?:
             [68]\d|
             9[089]
-          )\d{5}|
-          9(?:
-            2[56]|
-            34|
-            4[0245]|
-            7[5-9]|
-            9[4-7]
-          )\d{7}
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -22737,7 +22746,7 @@
               2[0-35-9]|
               [35]\d|
               4[235-9]|
-              6[0-25-8]|
+              6[0-35-8]|
               7[1-9]|
               8[189]|
               9[4-9]
@@ -23102,7 +23111,10 @@
             5[0137]|
             6[0469]|
             7[02389]|
-            8[08]
+            8(?:
+              0[14]|
+              8
+            )
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -23110,18 +23122,27 @@
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
           <leadingDigits>
             1[2-8]|
-            [2-8]|
+            [2-7]|
+            8[1-79]|
             9[145]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <!-- 9-10 digit Toll Free number -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [1-57-9]\d{6}(?:
+          6\d{5}(?:
             \d{2}
           )?|
-          6\d{5,8}
+          8\d{9}|
+          [1-9]\d{6}(?:
+            \d{2}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <!-- The plan says all geographical numbers are 9 digits; but we found customer service
@@ -23173,10 +23194,11 @@
         <exampleNumber>641234567</exampleNumber>
         <nationalNumberPattern>64\d{4,7}</nationalNumberPattern>
       </pager>
+      <!-- Prefix 800 with 10 digits added based on user report. -->
       <tollFree>
-        <possibleLengths national="9"/>
+        <possibleLengths national="9,10"/>
         <exampleNumber>800123456</exampleNumber>
-        <nationalNumberPattern>800\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>800\d{6,7}</nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="9"/>
@@ -26703,7 +26725,7 @@
           (?:
             (?:
               [259]\d|
-              4[0-6]
+              4[0-7]
             )\d|
             3(?:
               1[1-35]|

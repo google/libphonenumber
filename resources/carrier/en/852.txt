@@ -29,6 +29,7 @@
 8524614|Sun Mobile
 8524615|China Unicom
 8524616|China Unicom
+852462|SmarTone
 8524640|China Mobile
 8524641|SmarTone
 8524642|SmarTone
@@ -253,6 +254,11 @@
 85270|SmarTone
 8528480|Handy
 8528481|Sun Mobile
+8528485|SmarTone
+8528486|SmarTone
+8528487|SmarTone
+8528488|SmarTone
+8528489|SmarTone
 852901|SmarTone
 852902|HKT
 852903|HKT

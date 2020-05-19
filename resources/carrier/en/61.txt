@@ -107,6 +107,7 @@
 61484|Telstra
 61485|TravelSIM
 614858|Pivotel Satellite
+61486|Telstra
 61487|Telstra
 61488|Telstra
 614888|My Number
