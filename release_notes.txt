@@ -1,3 +1,12 @@
+May 19, 2020: v8.12.4
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BR, CC, CX, HK, MM, PH, PL, TN
+ - Updated short number metadata for region code(s): FI, GB, TH
+ - Updated geocoding data for country calling code(s): 1242 (en), 1867 (en)
+ - Updated carrier data for country calling code(s):
+   61 (en), 63 (en), 95 (en), 216 (en), 852 (en, zh)
+
 May 06, 2020: v8.12.3
 Metadata changes:
  - Updated phone metadata for region code(s):
