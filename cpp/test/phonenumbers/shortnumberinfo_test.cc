@@ -30,7 +30,6 @@
 
 namespace i18n {
 namespace phonenumbers {
-
 class ShortNumberInfoTest : public testing::Test {
  protected:
   PhoneNumber ParseNumberForTesting(const string& number,
@@ -57,35 +56,35 @@ class ShortNumberInfoTest : public testing::Test {
 TEST_F(ShortNumberInfoTest, IsPossibleShortNumber) {
   PhoneNumber possible_number;
   possible_number.set_country_code(33);
-  possible_number.set_national_number(123456ULL);
+  possible_number.set_national_number(uint64{123456});
   EXPECT_TRUE(short_info_.IsPossibleShortNumber(possible_number));
   EXPECT_TRUE(short_info_.IsPossibleShortNumberForRegion(
       ParseNumberForTesting("123456", RegionCode::FR()), RegionCode::FR()));
 
   PhoneNumber impossible_number;
   impossible_number.set_country_code(33);
-  impossible_number.set_national_number(9ULL);
+  impossible_number.set_national_number(uint64{9});
   EXPECT_FALSE(short_info_.IsPossibleShortNumber(impossible_number));
 
   // Note that GB and GG share the country calling code 44, and that this
   // number is possible but not valid.
   PhoneNumber shared_number;
   shared_number.set_country_code(44);
-  shared_number.set_national_number(11001ULL);
+  shared_number.set_national_number(uint64{11001});
   EXPECT_TRUE(short_info_.IsPossibleShortNumber(shared_number));
 }
 
 TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   PhoneNumber valid_number;
   valid_number.set_country_code(33);
-  valid_number.set_national_number(1010ULL);
+  valid_number.set_national_number(uint64{1010});
   EXPECT_TRUE(short_info_.IsValidShortNumber(valid_number));
   EXPECT_TRUE(short_info_.IsValidShortNumberForRegion(
       ParseNumberForTesting("1010", RegionCode::FR()), RegionCode::FR()));
 
   PhoneNumber invalid_number;
   invalid_number.set_country_code(33);
-  invalid_number.set_national_number(123456ULL);
+  invalid_number.set_national_number(uint64{123456});
   EXPECT_FALSE(short_info_.IsValidShortNumber(invalid_number));
   EXPECT_FALSE(short_info_.IsValidShortNumberForRegion(
       ParseNumberForTesting("123456", RegionCode::FR()), RegionCode::FR()));
@@ -93,28 +92,28 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   // Note that GB and GG share the country calling code 44.
   PhoneNumber shared_number;
   shared_number.set_country_code(44);
-  shared_number.set_national_number(18001ULL);
+  shared_number.set_national_number(uint64{18001});
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_number));
 }
 
 TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
   PhoneNumber carrier_specific_number;
   carrier_specific_number.set_country_code(1);
-  carrier_specific_number.set_national_number(33669ULL);
+  carrier_specific_number.set_national_number(uint64{33669});
   EXPECT_TRUE(short_info_.IsCarrierSpecific(carrier_specific_number));
   EXPECT_TRUE(short_info_.IsCarrierSpecificForRegion(
       ParseNumberForTesting("33669", RegionCode::US()), RegionCode::US()));
 
   PhoneNumber not_carrier_specific_number;
   not_carrier_specific_number.set_country_code(1);
-  not_carrier_specific_number.set_national_number(911ULL);
+  not_carrier_specific_number.set_national_number(uint64{911});
   EXPECT_FALSE(short_info_.IsCarrierSpecific(not_carrier_specific_number));
   EXPECT_FALSE(short_info_.IsCarrierSpecificForRegion(
       ParseNumberForTesting("911", RegionCode::US()), RegionCode::US()));
 
   PhoneNumber carrier_specific_number_for_some_region;
   carrier_specific_number_for_some_region.set_country_code(1);
-  carrier_specific_number_for_some_region.set_national_number(211ULL);
+  carrier_specific_number_for_some_region.set_national_number(uint64{211});
   EXPECT_TRUE(short_info_.IsCarrierSpecific(
       carrier_specific_number_for_some_region));
   EXPECT_TRUE(short_info_.IsCarrierSpecificForRegion(
@@ -126,7 +125,7 @@ TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
 TEST_F(ShortNumberInfoTest, IsSmsService) {
   PhoneNumber sms_service_number_for_some_region;
   sms_service_number_for_some_region.set_country_code(1);
-  sms_service_number_for_some_region.set_national_number(21234ULL);
+  sms_service_number_for_some_region.set_national_number(uint64{21234});
   EXPECT_TRUE(short_info_.IsSmsServiceForRegion(
       sms_service_number_for_some_region, RegionCode::US()));
   EXPECT_FALSE(short_info_.IsSmsServiceForRegion(
@@ -183,7 +182,7 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
           ParseNumberForTesting("12345", RegionCode::FR()), RegionCode::FR()));
   PhoneNumber unknown_cost_number;
   unknown_cost_number.set_country_code(33);
-  unknown_cost_number.set_national_number(12345ULL);
+  unknown_cost_number.set_national_number(uint64{12345});
   EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
      short_info_.GetExpectedCost(unknown_cost_number));
 
@@ -197,7 +196,7 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
           ParseNumberForTesting("116123", RegionCode::FR()), RegionCode::FR()));
   PhoneNumber invalid_number;
   invalid_number.set_country_code(33);
-  invalid_number.set_national_number(116123ULL);
+  invalid_number.set_national_number(uint64{116123});
   EXPECT_FALSE(short_info_.IsValidShortNumber(invalid_number));
   EXPECT_EQ(ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCost(invalid_number));
@@ -209,7 +208,7 @@ TEST_F(ShortNumberInfoTest, GetExpectedCost) {
           ParseNumberForTesting("911", RegionCode::US()), RegionCode::ZZ()));
   unknown_cost_number.Clear();
   unknown_cost_number.set_country_code(123);
-  unknown_cost_number.set_national_number(911ULL);
+  unknown_cost_number.set_national_number(uint64{911});
   EXPECT_EQ(ShortNumberInfo::UNKNOWN_COST,
       short_info_.GetExpectedCost(unknown_cost_number));
 }
@@ -222,15 +221,15 @@ TEST_F(ShortNumberInfoTest, GetExpectedCostForSharedCountryCallingCode) {
   string ambiguous_premium_rate_string("1234");
   PhoneNumber ambiguous_premium_rate_number;
   ambiguous_premium_rate_number.set_country_code(61);
-  ambiguous_premium_rate_number.set_national_number(1234ULL);
+  ambiguous_premium_rate_number.set_national_number(uint64{1234});
   string ambiguous_standard_rate_string("1194");
   PhoneNumber ambiguous_standard_rate_number;
   ambiguous_standard_rate_number.set_country_code(61);
-  ambiguous_standard_rate_number.set_national_number(1194ULL);
+  ambiguous_standard_rate_number.set_national_number(uint64{1194});
   string ambiguous_toll_free_string("733");
   PhoneNumber ambiguous_toll_free_number;
   ambiguous_toll_free_number.set_country_code(61);
-  ambiguous_toll_free_number.set_national_number(733ULL);
+  ambiguous_toll_free_number.set_national_number(uint64{733});
 
   EXPECT_TRUE(short_info_.IsValidShortNumber(ambiguous_premium_rate_number));
   EXPECT_TRUE(short_info_.IsValidShortNumber(ambiguous_standard_rate_number));
@@ -461,7 +460,7 @@ TEST_F(ShortNumberInfoTest, EmergencyNumberForSharedCountryCallingCode) {
 
   PhoneNumber shared_emergency_number;
   shared_emergency_number.set_country_code(61);
-  shared_emergency_number.set_national_number(112ULL);
+  shared_emergency_number.set_national_number(uint64{112});
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_emergency_number));
   EXPECT_EQ(ShortNumberInfo::TOLL_FREE,
       short_info_.GetExpectedCost(shared_emergency_number));
