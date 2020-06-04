@@ -9112,12 +9112,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>
-          (?:
-            51|
-            [6-9]\d
-          )\d{7}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[5-9]\d{8}</nationalNumberPattern>
       </generalDesc>
       <!-- The pattern is complex because the Lleida Networks mobile ranges are inside the
            fixed-line ranges. As per official announcement, 919 prefix is assigned to
@@ -9162,12 +9157,15 @@
         <possibleLengths national="9"/>
         <exampleNumber>612345678</exampleNumber>
         <nationalNumberPattern>
-          9(?:
-            6906(?:
-              09|
-              10
-            )|
-            7390\d\d
+          (?:
+            590[16]00\d|
+            9(?:
+              6906(?:
+                09|
+                10
+              )|
+              7390\d\d
+            )
           )\d\d|
           (?:
             6\d|
@@ -10359,7 +10357,8 @@
           )\d{6}
         </nationalNumberPattern>
       </mobile>
-      <!-- 76 with 10 digits; excluding ranges used in IM. -->
+      <!-- 76 with 10 digits; excluding ranges used in IM. Prefix 7691 is been supported based on
+           user report. -->
       <pager>
         <possibleLengths national="10"/>
         <exampleNumber>7640123456</exampleNumber>
@@ -10373,7 +10372,7 @@
             6[0-369]|
             77|
             81|
-            9[39]
+            9[139]
           )\d{6}
         </nationalNumberPattern>
       </pager>
@@ -10796,7 +10795,7 @@
             6[0-369]|
             77|
             81|
-            9[39]
+            9[139]
           )\d{6}
         </nationalNumberPattern>
       </pager>
@@ -14870,7 +14869,7 @@
             6[0-369]|
             77|
             81|
-            9[39]
+            9[139]
           )\d{6}
         </nationalNumberPattern>
       </pager>
@@ -16989,6 +16988,7 @@
           )1\d{2,3}
         </nationalNumberPattern>
       </fixedLine>
+      <!-- Prefix 10596 added based on user report -->
       <mobile>
         <possibleLengths national="9,10"/>
         <exampleNumber>1020000000</exampleNumber>
@@ -16996,7 +16996,7 @@
           1(?:
             05(?:
               [0-8]\d|
-              9[0-5]
+              9[0-6]
             )|
             22[13]\d
           )\d{4,5}|
@@ -23862,7 +23862,7 @@
                 3[0-39]|
                 4\d|
                 5[05]|
-                6[0-26]|
+                6[0-36]|
                 7[0-27]|
                 8[0-8]|
                 9[0-479]
@@ -26475,8 +26475,7 @@
           (?:
             00|
             11|
-            [3-579]\d|
-            88
+            [3-57-9]\d
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
@@ -26510,7 +26509,7 @@
         <nationalNumberPattern>
           41[18]\d{6}|
           (?:
-            00|
+            [04]0|
             11|
             5[05]|
             7[07]|
@@ -26519,6 +26518,11 @@
           )\d{7}
         </nationalNumberPattern>
       </mobile>
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800123456</exampleNumber>
+        <nationalNumberPattern>800\d{6}</nationalNumberPattern>
+      </tollFree>
     </territory>
 
     <!-- Tokelau (TK) -->
@@ -28092,12 +28096,13 @@
                internationalPrefix="810" nationalPrefix="8">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP $FG">
-          <leadingDigits>[6-9]</leadingDigits>
+          <leadingDigits>[5-9]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          55501\d{4}|
           (?:
             [679]\d|
             88
@@ -28189,12 +28194,13 @@
       </fixedLine>
       <!-- Adding 9[45] as suggested by http://www.ucell.uz/en/for_subscribers/how_to_call.html
            Adding other prefixes from http://www.weltvorwahlen.de/99861353.html, and any other
-           prefixes Tyntec has a carrier mapped to. -->
+           prefixes Tyntec has a carrier mapped to. Adding 55501 based on user report. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
           (?:
+            55501|
             6(?:
               1(?:
                 2(?:
