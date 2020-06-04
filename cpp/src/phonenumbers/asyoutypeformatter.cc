@@ -211,9 +211,11 @@ void AsYouTypeFormatter::NarrowDownPossibleFormats(
       ++it;
       continue;
     }
-    int last_leading_digits_pattern =
-        std::min(index_of_leading_digits_pattern,
-                 format.leading_digits_pattern_size() - 1);
+    // We don't use std::min because there is stange symbol conflict
+    // with including <windows.h> and protobuf symbols
+    int last_leading_digits_pattern = format.leading_digits_pattern_size() - 1;
+    if (last_leading_digits_pattern > index_of_leading_digits_pattern)
+      last_leading_digits_pattern = index_of_leading_digits_pattern;
     const scoped_ptr<RegExpInput> input(
         regexp_factory_->CreateInput(leading_digits));
     if (!regexp_cache_.GetRegExp(format.leading_digits_pattern().Get(

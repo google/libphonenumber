@@ -86,6 +86,8 @@ option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
 option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
+option ("USE_STDMUTEX" "Use C++ 2011 std::mutex for multi-threading" "OFF")
+option ("USE_POSIX_THREAD" "Use Posix api for multi-threading" "OFF")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -103,6 +105,19 @@ if (${USE_BOOST} STREQUAL "ON")
   endif ()
   include_directories (${Boost_INCLUDE_DIRS})
 endif ()
+
+if (${USE_STDMUTEX} STREQUAL "ON")
+  add_definitions ("-DI18N_PHONENUMBERS_USE_STDMUTEX")
+endif ()
+
+if (${USE_POSIX_THREAD} STREQUAL "ON")
+  add_definitions ("-DI18N_PHONENUMBERS_HAVE_POSIX_THREAD")
+  find_package (Threads REQUIRED)
+endif ()
+
+if (${USE_BOOST} STREQUAL "OFF" AND ${USE_STDMUTEX} STREQUAL "OFF")
+  find_package (Threads)
+endif()
 
 find_or_build_gtest ()
 
@@ -423,6 +438,15 @@ if (${USE_RE2} STREQUAL "ON")
   list (APPEND LIBRARY_DEPS ${RE2_LIB})
 endif ()
 
+if (${USE_POSIX_THREAD} STREQUAL "ON" OR ((APPLE OR UNIX) AND ${USE_BOOST} STREQUAL "OFF" AND ${USE_STDMUTEX} STREQUAL "OFF"))
+  if(CMAKE_USE_PTHREADS_INIT)
+    list (APPEND CMAKE_C_FLAGS "-pthread")
+  endif()
+  if(CMAKE_THREAD_LIBS_INIT)
+    list (APPEND LIBRARY_DEPS ${CMAKE_THREAD_LIBS_INIT})
+  endif()
+endif ()
+
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
 endif ()
@@ -579,13 +603,22 @@ install (
 install (FILES
   "src/phonenumbers/base/memory/scoped_ptr.h"
   "src/phonenumbers/base/memory/singleton.h"
+  "src/phonenumbers/base/memory/singleton_boost.h"
   "src/phonenumbers/base/memory/singleton_posix.h"
+  "src/phonenumbers/base/memory/singleton_stdmutex.h"
+  "src/phonenumbers/base/memory/singleton_unsafe.h"
+  "src/phonenumbers/base/memory/singleton_win32.h"
   DESTINATION include/phonenumbers/base/memory/
 )
 
-install (FILES "src/phonenumbers/base/synchronization/lock.h"
-         "src/phonenumbers/base/synchronization/lock_posix.h"
-         DESTINATION include/phonenumbers/base/synchronization/)
+install (FILES
+  "src/phonenumbers/base/synchronization/lock.h"
+  "src/phonenumbers/base/synchronization/lock_boost.h"
+  "src/phonenumbers/base/synchronization/lock_posix.h"
+  "src/phonenumbers/base/synchronization/lock_stdmutex.h"
+  "src/phonenumbers/base/synchronization/lock_unsafe.h"
+  "src/phonenumbers/base/synchronization/lock_win32.h"
+  DESTINATION include/phonenumbers/base/synchronization/)
 
 set (LIBDIR ${CMAKE_INSTALL_LIBDIR})
 
