@@ -365,3 +365,12 @@ Supported build parameters
   USE_RE2               = ON | OFF [OFF] -- Use RE2.
   USE_STD_MAP           = ON | OFF [OFF] -- Force the use of std::map.
   USE_STDMUTEX          = ON | OFF [OFF] -- Detect and use C++2011 for multi-threading.
+  REGENERATE_METADATA   = ON | OFF [ON]  -- When this is set to OFF it will skip
+                                            regenerating the metadata with
+                                            BuildMetadataCppFromXml. Since the
+                                            metadata is included in the source
+                                            tree anyway, it is beneficial for
+                                            packagers to turn this OFF: it saves
+                                            some time, and it also makes it
+                                            unnecessary to have java in the build
+                                            environment. 

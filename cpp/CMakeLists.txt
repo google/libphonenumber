@@ -79,6 +79,7 @@ endfunction (find_required_program)
 
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
 option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
+option ("REGENERATE_METADATA" "Regenerate metadata instead of using it from the source tree" "ON")
 option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
 option ("USE_BOOST" "Use Boost" "ON")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
@@ -145,8 +146,10 @@ endif ()
 find_required_program (PROTOC protoc
                        "Google Protocol Buffers compiler (protoc)")
 
-find_required_program (JAVA java
-                       "Java Runtime Environment")
+if (${REGENERATE_METADATA} STREQUAL "ON")
+  find_required_program (JAVA java
+                         "Java Runtime Environment")
+endif ()
 
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
@@ -286,14 +289,26 @@ function (add_metadata_gen_target TARGET_NAME
   set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
-  add_custom_command (
-    COMMAND ${JAVA_BIN} -jar
-      ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
-      ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+  if (${REGENERATE_METADATA} STREQUAL "ON")
+    add_custom_command (
+      COMMAND ${JAVA_BIN} -jar
+        ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
+        ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
 
-    OUTPUT ${GEN_OUTPUT}
-    DEPENDS ${XML_FILE}
-  )
+      OUTPUT ${GEN_OUTPUT}
+      DEPENDS ${XML_FILE}
+    )
+  else ()
+    add_custom_command (
+      COMMAND echo "skip metadata generation from"
+        ${XML_FILE} "to"
+        ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+
+      OUTPUT ${GEN_OUTPUT}
+      DEPENDS ${XML_FILE}
+    )
+  endif ()
+
   add_custom_target (
     ${TARGET_NAME}
     DEPENDS ${GEN_OUTPUT}
