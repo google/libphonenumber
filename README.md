@@ -65,7 +65,7 @@ releases and the demo may be at either version.
 
 The [JavaScript
 demo](https://rawgit.com/google/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
-may be run at various tags; this link will take you to `master`. [JS demo link not working as RawGit is depricated.]
+may be run at various tags; this link will take you to `master`. [JS demo link not working as RawGit is deprecated.]
 TODO to host in alternative platform.
 
 # Java code
@@ -227,6 +227,7 @@ maintenance processes.
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
+*   Clojure: https://github.com/randomseed-io/phone-number
 
 Alternatives to our own versions:
 
