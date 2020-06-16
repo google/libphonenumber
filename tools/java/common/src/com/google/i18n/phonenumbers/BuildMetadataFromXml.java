@@ -129,7 +129,7 @@ public class BuildMetadataFromXml {
       PhoneMetadata.Builder metadata = loadCountryMetadata(regionCode, territoryElement,
           isShortNumberMetadata, isAlternateFormatsMetadata);
       metadataFilter.filterMetadata(metadata);
-      metadataCollection.addMetadata(metadata);
+      metadataCollection.addMetadata(metadata.build());
     }
     return metadataCollection.build();
   }
@@ -272,7 +272,7 @@ public class BuildMetadataFromXml {
     }
 
     if (intlFormat.hasFormat()) {
-      metadata.addIntlNumberFormat(intlFormat);
+      metadata.addIntlNumberFormat(intlFormat.build());
     }
     return hasExplicitIntlFormatDefined;
   }
@@ -438,7 +438,7 @@ public class BuildMetadataFromXml {
    * @return  complete description of that phone number type
    */
   // @VisibleForTesting
-  static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc parentDesc,
+  static PhoneNumberDesc.Builder processPhoneNumberDescElement(PhoneNumberDesc.Builder parentDesc,
                                                                Element countryElement,
                                                                String numberType) {
     NodeList phoneNumberDescList = countryElement.getElementsByTagName(numberType);
@@ -464,7 +464,7 @@ public class BuildMetadataFromXml {
         TreeSet<Integer> lengths = new TreeSet<Integer>();
         TreeSet<Integer> localOnlyLengths = new TreeSet<Integer>();
         populatePossibleLengthSets(element, lengths, localOnlyLengths);
-        setPossibleLengths(lengths, localOnlyLengths, parentDesc, numberDesc);
+        setPossibleLengths(lengths, localOnlyLengths, parentDesc.build(), numberDesc);
       }
 
       NodeList validPattern = element.getElementsByTagName(NATIONAL_NUMBER_PATTERN);
@@ -484,15 +484,12 @@ public class BuildMetadataFromXml {
   // @VisibleForTesting
   static void setRelevantDescPatterns(PhoneMetadata.Builder metadata, Element element,
       boolean isShortNumberMetadata) {
-    PhoneNumberDesc.Builder generalDescBuilder = processPhoneNumberDescElement(null, element,
+    PhoneNumberDesc.Builder generalDesc = processPhoneNumberDescElement(null, element,
         GENERAL_DESC);
     // Calculate the possible lengths for the general description. This will be based on the
     // possible lengths of the child elements.
-    setPossibleLengthsGeneralDesc(
-        generalDescBuilder, metadata.getId(), element, isShortNumberMetadata);
-    metadata.setGeneralDesc(generalDescBuilder);
-
-    PhoneNumberDesc generalDesc = metadata.getGeneralDesc();
+    setPossibleLengthsGeneralDesc(generalDesc, metadata.getId(), element, isShortNumberMetadata);
+    metadata.setGeneralDesc(generalDesc);
 
     if (!isShortNumberMetadata) {
       // Set fields used by regular length phone numbers.

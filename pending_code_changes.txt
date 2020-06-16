@@ -1,1 +1,1 @@
-
+- [Java only] Use protobuf API v2 for PhoneMetadata only, mark old methods as deprecated.
