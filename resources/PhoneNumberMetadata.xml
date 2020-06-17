@@ -12038,7 +12038,7 @@
               5[1-35]
             )|
             5(?:
-              0[78]|
+              0[7-9]|
               16|
               4[03-5]|
               5\d|
@@ -16264,7 +16264,7 @@
           (?:
             1(?:
               0[0-2]|
-              1[01]
+              1[0-5]
             )|
             7\d\d
           )\d{6}
@@ -20915,8 +20915,7 @@
                 [1-9]\d
               )|
               7(?:
-                0\d|
-                1[01]|
+                [01]\d|
                 2[2-6]
               )
             )|
@@ -23128,7 +23127,7 @@
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
-        <!-- 9-10 digit Toll Free number -->
+        <!-- 9-10 digit toll free numbers. -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3,4})">
           <leadingDigits>8</leadingDigits>
           <format>$1 $2 $3</format>
@@ -29562,11 +29561,16 @@
           <leadingDigits>[1-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- 10-digit uan numbers. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [1-9]\d{8}|
-          8\d{4,7}
+          [1-79]\d{8}|
+          8\d{4,9}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -29692,11 +29696,12 @@
         </nationalNumberPattern>
       </voip>
       <!-- MaxiCall numbers cost as much as national long distance, so they are classified as UAN
-           numbers. -->
+           numbers.
+           Prefix 861 with 10 digits is added based on user report. -->
       <uan>
-        <possibleLengths national="9"/>
+        <possibleLengths national="9,10"/>
         <exampleNumber>861123456</exampleNumber>
-        <nationalNumberPattern>861\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>861\d{6,7}</nationalNumberPattern>
       </uan>
     </territory>
 

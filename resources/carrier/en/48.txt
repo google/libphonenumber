@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-4845|Rezerwa Prezesa UKE
 48450|Play
 484590|Play
 4845910|Play
@@ -36,30 +35,58 @@
 485366|Plus
 48538|T-Mobile
 48539|T-Mobile
-4857|Play
+48570|Play
 48571|Orange
-485717|Rezerwa Prezesa UKE
-485718|Rezerwa Prezesa UKE
-485719|Rezerwa Prezesa UKE
 48572|Orange
-48573|Orange
-485735|Rezerwa Prezesa UKE
-485736|Rezerwa Prezesa UKE
-485737|Rezerwa Prezesa UKE
-485738|Rezerwa Prezesa UKE
+485730|Orange
+485731|Orange
+485732|Orange
+485733|Orange
+485734|Orange
+4857350|Plus
+4857351|UPC Polska
+4857352|UPC Polska
+4857353|UPC Polska
+4857354|UPC Polska
+4857355|UPC Polska
+4857357|Orange
+485739|Orange
+48574|Play
+48575|Play
+48576|Play
+48577|Play
+48578|Play
+485790|Play
 485791|Plus
 485792|Plus
 485793|Plus
+4857940|Play
 4857941|Messagebird B.V.
 4857942|SIA NetBalt
+4857943|Play
+4857944|Play
+4857945|Play
 4857946|Plus
 4857947|Plus
 4857948|SIA Ntel Solutions
 4857949|Plus
+485795|Play
 4857950|Plus
 4857953|SIA NetBalt
 4857958|NIMBUSFIVE GmbH
-485797|Plus
+485796|Play
+4857970|Play
+4857971|UPC Polska
+4857972|UPC Polska
+4857973|UPC Polska
+4857974|UPC Polska
+4857975|UPC Polska
+4857976|TELENABLER
+4857977|IM Consulting Izabela
+4857978|EZ PHONE MOBILE
+4857979|EZ PHONE MOBILE
+485798|Play
+485799|Play
 48600|T-Mobile
 48601|Plus
 48602|T-Mobile
@@ -105,40 +132,50 @@
 4869955|Mobiledata Sp. z o.o.
 4869956|Twilio Ireland Limited
 4869957|Softelnet S.A. Sp. k.
-4869958|Rezerwa Prezesa UKE
+4869958|IM Consulting Izabela
 4869959|Move Telecom S.A.
 4869960|Play
 4869970|Play
 4869974|Compatel Limited
 4869978|VOXBONE SA
 4869979|Play
-486998|Play
-4872|Plus
+48720|Plus
 487208|Play
-487271|Nordisk
+48721|Plus
+48722|Plus
+48723|Plus
+48724|Plus
+48725|Plus
+48726|Plus
+48727|Plus
 487272|T-Mobile
 487273|T-Mobile
 48728|T-Mobile
+487280|Plus
 487290|Play
 487291|Play
+487292|Plus
+487293|Plus
+487294|Plus
+487295|Plus
+487296|Plus
 4872970|AMD Telecom S.A.
+4872971|Plus
 4872972|Compatel Limited
 4872973|Play
 4872974|Play
-4872975|Rezerwa Prezesa UKE
-4872977|INTERNETIA Sp. o.o.
+4872976|Plus
+4872977|Plus
 4872978|Play
 4872979|Play
-4872980|Play
+4872980|Plus
 4872981|Play
 4872982|Play
-4872983|Rezerwa Prezesa UKE
-4872984|Rezerwa Prezesa UKE
-4872985|Rezerwa Prezesa UKE
-4872986|Rezerwa Prezesa UKE
-4872987|Premium Mobile SA
-4872988|Premium Mobile SA
-4872989|Premium Mobile SA
+4872986|Plus
+4872987|Plus
+4872988|Plus
+4872989|Plus
+487299|Plus
 4872990|TELCO LEADERS LTD
 48730|Play
 48731|Play
@@ -176,28 +213,26 @@
 4878026|SIA NetBalt
 4878029|SMSHIGHWAY LIMITED
 487803|T-Mobile
-487804|Rezerwa Prezesa UKE
 4878040|Plus
 487805|Orange
 487806|Orange
 487807|Play
 487808|Play
-487809|Rezerwa Prezesa UKE
 48781|Plus
 48782|Plus
 48783|Plus
 48784|T-Mobile
 48785|Plus
 487860|Plus
+4878600|JMDI
 4878607|Play
 4878608|Play
 487861|Play
 487862|Play
-487863|Play
-487864|Play
-487865|Rezerwa Prezesa UKE
-487866|Rezerwa Prezesa UKE
-487867|Rezerwa Prezesa UKE
+487863|Orange
+487864|Orange
+487865|Orange
+487866|Orange
 4878678|Play
 487868|Orange
 487869|Orange
@@ -233,11 +268,15 @@
 48883|Play
 488833|T-Mobile
 488838|T-Mobile
-48884|Play
+488840|Play
 488841|T-Mobile
 488842|T-Mobile
-488844|Plus
-488845|Rezerwa Prezesa UKE
+488843|Play
+4888444|CARITAS
+488846|Play
+488847|Play
+488848|Play
+488849|Play
 48885|Plus
 48886|T-Mobile
 48887|Plus
