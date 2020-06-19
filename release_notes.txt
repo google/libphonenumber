@@ -1,5 +1,7 @@
 Jun 17, 2020: v8.12.6
-- [Java only] Use protobuf API v2 for PhoneMetadata only, mark old methods as deprecated.
+Code changes:
+ - [Java only] Use protobuf API v2 for PhoneMetadata only, mark old methods as deprecated.
+
 Metadata changes:
  - Updated phone metadata for region code(s): HN, KE, MY, ZA
  - Updated carrier data for country calling code(s): 48 (en), 60 (en), 65 (en)
