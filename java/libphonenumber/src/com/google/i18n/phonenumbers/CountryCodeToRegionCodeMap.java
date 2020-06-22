@@ -34,7 +34,7 @@ public class CountryCodeToRegionCodeMap {
     // The capacity is set to 286 as there are 215 different entries,
     // and this offers a load factor of roughly 0.75.
     Map<Integer, List<String>> countryCodeToRegionCodeMap =
-        new HashMap<Integer, List<String>>(286);
+        new HashMap<Integer, List<String>>(287);
 
     ArrayList<String> listWithRegionCode;
 
@@ -135,9 +135,10 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("SE");
     countryCodeToRegionCodeMap.put(46, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(2);
+    listWithRegionCode = new ArrayList<String>(3);
     listWithRegionCode.add("NO");
     listWithRegionCode.add("SJ");
+    listWithRegionCode.add("BV");
     countryCodeToRegionCodeMap.put(47, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
@@ -198,8 +199,9 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("PH");
     countryCodeToRegionCodeMap.put(63, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("NZ");
+    listWithRegionCode.add("PN");
     countryCodeToRegionCodeMap.put(64, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
@@ -431,8 +433,9 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("MZ");
     countryCodeToRegionCodeMap.put(258, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("ZM");
+    listWithRegionCode.add("TF");
     countryCodeToRegionCodeMap.put(260, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
@@ -614,8 +617,9 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("LI");
     countryCodeToRegionCodeMap.put(423, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("FK");
+    listWithRegionCode.add("GS");
     countryCodeToRegionCodeMap.put(500, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
@@ -653,6 +657,10 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("HT");
     countryCodeToRegionCodeMap.put(509, listWithRegionCode);
+
+    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode.add("UM");
+    countryCodeToRegionCodeMap.put(581, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(3);
     listWithRegionCode.add("GP");
@@ -692,17 +700,20 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("UY");
     countryCodeToRegionCodeMap.put(598, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(2);
+    listWithRegionCode = new ArrayList<String>(3);
     listWithRegionCode.add("CW");
     listWithRegionCode.add("BQ");
+    listWithRegionCode.add("AN");
     countryCodeToRegionCodeMap.put(599, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
     listWithRegionCode.add("TL");
     countryCodeToRegionCodeMap.put(670, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(3);
     listWithRegionCode.add("NF");
+    listWithRegionCode.add("AQ");
+    listWithRegionCode.add("HM");
     countryCodeToRegionCodeMap.put(672, listWithRegionCode);
 
     listWithRegionCode = new ArrayList<String>(1);
