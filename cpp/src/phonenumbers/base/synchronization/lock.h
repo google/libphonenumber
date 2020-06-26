@@ -18,81 +18,20 @@
 #define I18N_PHONENUMBERS_BASE_SYNCHRONIZATION_LOCK_H_
 
 #if defined(I18N_PHONENUMBERS_USE_BOOST)
-#include <boost/thread/mutex.hpp>
-
-namespace i18n {
-namespace phonenumbers {
-
-typedef boost::mutex Lock;
-typedef boost::mutex::scoped_lock AutoLock;
-
-}  // namespace phonenumbers
-}  // namespace i18n
-
-#else  // I18N_PHONENUMBERS_USE_BOOST
-
-#include "phonenumbers/base/logging.h"
-#include "phonenumbers/base/thread_checker.h"
-
+#include "phonenumbers/base/synchronization/lock_boost.h"
+#elif (__cplusplus >= 201103L) && defined(I18N_PHONENUMBERS_USE_STDMUTEX)
 // C++11 Lock implementation based on std::mutex.
-#if  __cplusplus>=201103L
-#include <mutex>
-
-namespace i18n {
-namespace phonenumbers {
-
-class Lock {
-public:
-  Lock() = default;
-
-  void Acquire() const {
-    mutex_.lock();
-  }
-
-  void Release() const {
-    mutex_.unlock();
-  }
-
-private:
-  mutable std::mutex mutex_;
-};
-
-}  // namespace phonenumbers
-}  // namespace i18n
-
-// Dummy lock implementation on non-POSIX platforms. If you are running on a
-// different platform and care about thread-safety, please compile with
-// -DI18N_PHONENUMBERS_USE_BOOST.
-#elif !defined(__linux__) && !defined(__APPLE__)
-
-namespace i18n {
-namespace phonenumbers {
-
-class Lock {
- public:
-  Lock() {}
-
-  void Acquire() const {
-    DCHECK(thread_checker_.CalledOnValidThread());
-    IGNORE_UNUSED(thread_checker_);
-  }
-
-  void Release() const {
-    DCHECK(thread_checker_.CalledOnValidThread());
-    IGNORE_UNUSED(thread_checker_);
-  }
-
- private:
-  const ThreadChecker thread_checker_;
-};
-
-}  // namespace phonenumbers
-}  // namespace i18n
-
-#else
+#include "phonenumbers/base/synchronization/lock_stdmutex.h"
+#elif defined(__linux__) || defined(__APPLE__) || defined(I18N_PHONENUMBERS_HAVE_POSIX_THREAD)
 #include "phonenumbers/base/synchronization/lock_posix.h"
+#elif defined(WIN32)
+#include "phonenumbers/base/synchronization/lock_win32.h"
+#else
+#include "phonenumbers/base/synchronization/lock_unsafe.h"
 #endif
 
+// lock_boost.h comes with its own AutoLock.
+#if !defined(I18N_PHONENUMBERS_USE_BOOST)
 namespace i18n {
 namespace phonenumbers {
 
@@ -112,6 +51,6 @@ class AutoLock {
 
 }  // namespace phonenumbers
 }  // namespace i18n
+#endif  // !I18N_PHONENUMBERS_USE_BOOST
 
-#endif  // I18N_PHONENUMBERS_USE_BOOST
 #endif  // I18N_PHONENUMBERS_BASE_SYNCHRONIZATION_LOCK_H_

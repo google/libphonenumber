@@ -340,7 +340,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
     BuildMetadataFromXml.loadAvailableFormats(
         metadata, element, "0", "($1)", false /* NP not optional */);
-    assertEquals(0, metadata.intlNumberFormatSize());
+    assertEquals(0, metadata.getIntlNumberFormatCount());
   }
 
   public void testLoadAvailableFormatsHandlesMultipleNumberFormats()
@@ -369,7 +369,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
 
     BuildMetadataFromXml.loadInternationalFormat(metadata, numberFormatElement,
                                                  nationalFormat.build());
-    assertEquals(0, metadata.intlNumberFormatSize());
+    assertEquals(0, metadata.getIntlNumberFormatCount());
   }
 
   // Tests setLeadingDigitsPatterns().
@@ -619,9 +619,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "  <nationalNumberPattern>\t \\d { 6 } </nationalNumberPattern>"
         + "</fixedLine></territory>";
     Element countryElement = parseXmlString(xmlInput);
-    PhoneNumberDesc.Builder phoneNumberDesc;
-
-    phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
+    PhoneNumberDesc.Builder phoneNumberDesc = BuildMetadataFromXml.processPhoneNumberDescElement(
         generalDesc, countryElement, "fixedLine");
     assertEquals("\\d{6}", phoneNumberDesc.getNationalNumberPattern());
   }

@@ -28,7 +28,7 @@ public class MetadataManagerTest extends TestCase {
     // We should have some data for Germany.
     PhoneMetadata germanyMetadata = MetadataManager.getAlternateFormatsForCountry(49);
     assertNotNull(germanyMetadata);
-    assertTrue(germanyMetadata.numberFormats().size() > 0);
+    assertTrue(germanyMetadata.getNumberFormatCount() > 0);
   }
 
   public void testAlternateFormatsFailsGracefully() throws Exception {

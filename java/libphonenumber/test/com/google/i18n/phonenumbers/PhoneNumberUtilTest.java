@@ -189,7 +189,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(1, metadata.getCountryCode());
     assertEquals("011", metadata.getInternationalPrefix());
     assertTrue(metadata.hasNationalPrefix());
-    assertEquals(2, metadata.numberFormatSize());
+    assertEquals(2, metadata.getNumberFormatCount());
     assertEquals("(\\d{3})(\\d{3})(\\d{4})",
                  metadata.getNumberFormat(1).getPattern());
     assertEquals("$1 $2 $3", metadata.getNumberFormat(1).getFormat());
@@ -213,8 +213,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(49, metadata.getCountryCode());
     assertEquals("00", metadata.getInternationalPrefix());
     assertEquals("0", metadata.getNationalPrefix());
-    assertEquals(6, metadata.numberFormatSize());
-    assertEquals(1, metadata.getNumberFormat(5).leadingDigitsPatternSize());
+    assertEquals(6, metadata.getNumberFormatCount());
+    assertEquals(1, metadata.getNumberFormat(5).getLeadingDigitsPatternCount());
     assertEquals("900", metadata.getNumberFormat(5).getLeadingDigitsPattern(0));
     assertEquals("(\\d{3})(\\d{3,4})(\\d{4})",
                  metadata.getNumberFormat(5).getPattern());
@@ -900,11 +900,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testFormatByPattern() {
-    NumberFormat newNumFormat = new NumberFormat();
+    NumberFormat.Builder newNumFormat = NumberFormat.newBuilder();
     newNumFormat.setPattern("(\\d{3})(\\d{3})(\\d{4})");
     newNumFormat.setFormat("($1) $2-$3");
     List<NumberFormat> newNumberFormats = new ArrayList<NumberFormat>();
-    newNumberFormats.add(newNumFormat);
+    newNumberFormats.add(newNumFormat.build());
 
     assertEquals("(650) 253-0000", phoneUtil.formatByPattern(US_NUMBER, PhoneNumberFormat.NATIONAL,
                                                              newNumberFormats));
@@ -919,6 +919,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // followed.
     newNumFormat.setNationalPrefixFormattingRule("$NP ($FG)");
     newNumFormat.setFormat("$1 $2-$3");
+    newNumberFormats.set(0, newNumFormat.build());
     assertEquals("1 (242) 365-1234",
                  phoneUtil.formatByPattern(BS_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
@@ -928,7 +929,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     newNumFormat.setPattern("(\\d{2})(\\d{5})(\\d{3})");
     newNumFormat.setFormat("$1-$2 $3");
-    newNumberFormats.set(0, newNumFormat);
+    newNumberFormats.set(0, newNumFormat.build());
 
     assertEquals("02-36618 300",
                  phoneUtil.formatByPattern(IT_NUMBER, PhoneNumberFormat.NATIONAL,
@@ -940,17 +941,19 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     newNumFormat.setNationalPrefixFormattingRule("$NP$FG");
     newNumFormat.setPattern("(\\d{2})(\\d{4})(\\d{4})");
     newNumFormat.setFormat("$1 $2 $3");
-    newNumberFormats.set(0, newNumFormat);
+    newNumberFormats.set(0, newNumFormat.build());
     assertEquals("020 7031 3000",
                  phoneUtil.formatByPattern(GB_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
 
     newNumFormat.setNationalPrefixFormattingRule("($NP$FG)");
+    newNumberFormats.set(0, newNumFormat.build());
     assertEquals("(020) 7031 3000",
                  phoneUtil.formatByPattern(GB_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
 
     newNumFormat.setNationalPrefixFormattingRule("");
+    newNumberFormats.set(0, newNumFormat.build());
     assertEquals("20 7031 3000",
                  phoneUtil.formatByPattern(GB_NUMBER, PhoneNumberFormat.NATIONAL,
                                            newNumberFormats));
@@ -1814,29 +1817,32 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testMaybeStripNationalPrefix() {
-    PhoneMetadata metadata = new PhoneMetadata();
+    PhoneMetadata.Builder metadata = PhoneMetadata.newBuilder();
+    metadata.setId("ignored");
     metadata.setNationalPrefixForParsing("34");
-    metadata.setGeneralDesc(new PhoneNumberDesc().setNationalNumberPattern("\\d{4,8}"));
+    metadata
+        .getGeneralDescBuilder()
+        .setNationalNumberPattern("\\d{4,8}");
     StringBuilder numberToStrip = new StringBuilder("34356778");
     String strippedNumber = "356778";
-    assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
+    assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
     assertEquals("Should have had national prefix stripped.",
                  strippedNumber, numberToStrip.toString());
     // Retry stripping - now the number should not start with the national prefix, so no more
     // stripping should occur.
-    assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
+    assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
     assertEquals("Should have had no change - no national prefix present.",
                  strippedNumber, numberToStrip.toString());
     // Some countries have no national prefix. Repeat test with none specified.
     metadata.setNationalPrefixForParsing("");
-    assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
+    assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
     assertEquals("Should not strip anything with empty national prefix.",
                  strippedNumber, numberToStrip.toString());
     // If the resultant number doesn't match the national rule, it shouldn't be stripped.
     metadata.setNationalPrefixForParsing("3");
     numberToStrip = new StringBuilder("3123");
     strippedNumber = "3123";
-    assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
+    assertFalse(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
     assertEquals("Should have had no change - after stripping, it wouldn't have matched "
         + "the national rule.",
         strippedNumber, numberToStrip.toString());
@@ -1845,8 +1851,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     numberToStrip = new StringBuilder("08122123456");
     strippedNumber = "22123456";
     StringBuilder carrierCode = new StringBuilder();
-    assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(
-        numberToStrip, metadata, carrierCode));
+    assertTrue(
+        phoneUtil.maybeStripNationalPrefixAndCarrierCode(
+            numberToStrip, metadata.build(), carrierCode));
     assertEquals("81", carrierCode.toString());
     assertEquals("Should have had national prefix and carrier code stripped.",
                  strippedNumber, numberToStrip.toString());
@@ -1856,7 +1863,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     metadata.setNationalPrefixForParsing("0(\\d{2})");
     numberToStrip = new StringBuilder("031123");
     String transformedNumber = "5315123";
-    assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata, null));
+    assertTrue(
+        phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
     assertEquals("Should transform the 031 to a 5315.",
                  transformedNumber, numberToStrip.toString());
   }

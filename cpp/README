@@ -117,11 +117,17 @@ Requirements:
     $ cd icu/source
     $ ./configure && make && sudo make install
 
-  - Boost
-    Version 1.40 or more recent is required if you need libphonenumber to be
-    thread-safe. If you access libphonenumber from a single thread, you can
-    avoid the Boost dependency by disabling the USE_BOOST CMake option (see
-    Troubleshooting section below for information about ccmake).
+  - A thread synchronization solution or more recent is required if you need
+    libphonenumber to be thread-safe. Supported solution are:
+	- Boost Version 1.40 or more recent
+	- Posix Thread. Linux or Apple (ios/mac) detection is automatic. On other
+        Posix environnement, uses -DUSE_POSIX_THREAD = ON
+    - C++ 2011 (and later) std::mutex. Uses -DUSE_STDMUTEX = ON to enable
+        automatic C++ 2011 detection (if you prefer Posix or Win32 solution).
+    - Windows Win32 synchronization API.		
+
+	If you access libphonenumber from a single thread, you don't need one of
+    these solution.
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install libboost-dev libboost-thread-dev libboost-system-dev
@@ -350,10 +356,21 @@ Supported build parameters
                                             multi-threaded environments that
                                             are not Linux and Mac.
                                             Libphonenumber relies on Boost for
-                                            non-POSIX (e.g. Windows)
+                                            non-POSIX, non-Windows and non-C++ 2011
                                             multi-threading.
   USE_ICU_REGEXP        = ON | OFF [ON]  -- Use ICU regexp engine.
   USE_LITE_METADATA     = ON | OFF [OFF] -- Generates smaller metadata that
                                             doesn't include example numbers.
+  USE_POSIX_THREAD      = ON | OFF [OFF] -- Use Posix thread for multi-threading.
   USE_RE2               = ON | OFF [OFF] -- Use RE2.
   USE_STD_MAP           = ON | OFF [OFF] -- Force the use of std::map.
+  USE_STDMUTEX          = ON | OFF [OFF] -- Detect and use C++2011 for multi-threading.
+  REGENERATE_METADATA   = ON | OFF [ON]  -- When this is set to OFF it will skip
+                                            regenerating the metadata with
+                                            BuildMetadataCppFromXml. Since the
+                                            metadata is included in the source
+                                            tree anyway, it is beneficial for
+                                            packagers to turn this OFF: it saves
+                                            some time, and it also makes it
+                                            unnecessary to have java in the build
+                                            environment. 
