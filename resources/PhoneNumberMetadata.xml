@@ -11855,7 +11855,6 @@
           (?:
             46(?:
               [01][0-6]|
-              2[5-9]|
               4[0-57-9]
             )|
             5730|
@@ -11865,6 +11864,7 @@
             929[03-9]
           )\d{4}|
           (?:
+            462|
             5(?:
               [1-59][0-46-9]|
               6[0-4689]|
@@ -14334,7 +14334,7 @@
             (?:
               0(?:
                 [1-35]\d|
-                44
+                4[4-6]
               )|
               (?:
                 [13]\d|
@@ -14344,6 +14344,7 @@
             9(?:
               (?:
                 [0-2]\d|
+                3[01]|
                 4[45]
               )\d|
               5[15]0|
@@ -14353,7 +14354,7 @@
               )|
               9(?:
                 0[013]|
-                1[0134]|
+                1\d|
                 21|
                 77|
                 9[6-9]
@@ -14367,7 +14368,7 @@
       <voip>
         <possibleLengths national="10"/>
         <exampleNumber>9932123456</exampleNumber>
-        <nationalNumberPattern>993\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>993[2-9]\d{6}</nationalNumberPattern>
       </voip>
       <!-- UAN ranges from http://118.tct.ir/necnum.htm ("096" numbers are not shortcodes since
            they require the national prefix). -->
@@ -17818,14 +17819,14 @@
             2(?:
               01|
               1[27]|
-              22|
+              2[02]|
               3\d|
               6[02-578]|
               96
             )|
             3(?:
+              [24]0|
               33|
-              40|
               7[0135-7]|
               8[048]|
               9[0269]
@@ -17840,15 +17841,15 @@
           (?:
             6(?:
               4(?:
-                89|
-                9\d
+                79|
+                [89]\d
               )|
-              5[0-3]\d|
+              5[0-4]\d|
               6(?:
-                0[0-7]|
+                0\d|
                 10|
-                2[06-9]|
-                39
+                2[0-26-9]|
+                3[7-9]
               )
             )\d|
             7(?:
@@ -20282,7 +20283,7 @@
               2[4-7]
             )|
             54(?:
-              [34]\d|
+              [3-5]\d|
               71
             )|
             6\d\d|
@@ -20306,7 +20307,7 @@
           )\d{4}|
           5(?:
             2[589]|
-            4[3489]|
+            4[3-589]|
             7\d|
             8[0-689]|
             9[0-8]
@@ -27005,17 +27006,18 @@
           )\d{4}
         </nationalNumberPattern>
       </personalNumber>
-      <!-- 850 is mentioned as nomadic numbers in ITU and location independent numbers in
-           eng.btk.gov.tr's doc. http://www.turktelekom.com.tr/tt/portal/News/Archive/7-digit-special-service-number-starting-with-444 -->
+      <!-- Prefix 850 was earlier supported as UAN but after user report and other sources, found
+           that they belong to VOIP. -->
+      <voip>
+        <possibleLengths national="10"/>
+        <exampleNumber>8500123456</exampleNumber>
+        <nationalNumberPattern>850\d{7}</nationalNumberPattern>
+      </voip>
+      <!-- http://www.turktelekom.com.tr/tt/portal/News/Archive/7-digit-special-service-number-starting-with-444 -->
       <uan>
-        <possibleLengths national="7,10"/>
+        <possibleLengths national="7"/>
         <exampleNumber>4441444</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            444|
-            850\d{3}
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>444\d{4}</nationalNumberPattern>
       </uan>
     </territory>
 
@@ -29140,7 +29142,10 @@
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
           (?:
-            52[238]|
+            5(?:
+              2[238]|
+              59
+            )|
             89[689]|
             99[013-9]
           )\d{6}|
