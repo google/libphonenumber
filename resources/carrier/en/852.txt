@@ -29,7 +29,16 @@
 8524614|Sun Mobile
 8524615|China Unicom
 8524616|China Unicom
-852462|SmarTone
+8524620|China Mobile
+8524621|China Mobile
+8524622|China Mobile
+8524623|China Mobile
+8524624|China Mobile
+8524625|SmarTone
+8524626|SmarTone
+8524627|SmarTone
+8524628|SmarTone
+8524629|SmarTone
 8524640|China Mobile
 8524641|SmarTone
 8524642|SmarTone

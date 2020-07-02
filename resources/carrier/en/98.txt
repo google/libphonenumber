@@ -28,8 +28,5 @@
 989944|Anarestan
 989981|Shatel Mobile
 9899900|LOTUSTEL
-9899910|Irancell
-9899911|ApTel
-9899913|Irancell
-9899914|Azartel
+989991|Irancell
 989999|Rightel

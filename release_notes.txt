@@ -1,3 +1,9 @@
+Jul 02, 2020: v8.12.7
+Metadata changes:
+ - Updated phone metadata for region code(s): HK, IR, LI, MU, TR, VN
+ - Updated carrier data for country calling code(s):
+   98 (en, fa), 243 (en), 423 (en), 852 (en, zh)
+
 Jun 17, 2020: v8.12.6
 Code changes:
  - [Java only] Use protobuf API v2 for PhoneMetadata only, mark old methods as deprecated.
