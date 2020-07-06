@@ -24,6 +24,5 @@ inevitable.
 
 Patches and pull requests cannot be accepted directly on this codebase, so if
 you find an issue with these libraries, please open a new issue for it. However
-we do not accept feature requests, or provide answeres or technical support for
+we do not accept feature requests, or provide answers or technical support for
 anything in this directory at this time.
-
