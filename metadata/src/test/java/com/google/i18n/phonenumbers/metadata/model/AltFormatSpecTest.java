@@ -17,7 +17,7 @@ package com.google.i18n.phonenumbers.metadata.model;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
-import static org.junit.Assert.assertThrows;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.model.FormatSpec.FormatTemplate;

@@ -32,7 +32,7 @@ import static com.google.i18n.phonenumbers.metadata.table.CsvTable.DiffMode.ALL;
 import static com.google.i18n.phonenumbers.metadata.table.CsvTable.DiffMode.CHANGES;
 import static com.google.i18n.phonenumbers.metadata.table.CsvTable.DiffMode.LHS;
 import static com.google.i18n.phonenumbers.metadata.table.CsvTable.DiffMode.RHS;
-import static org.junit.Assert.assertThrows;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
