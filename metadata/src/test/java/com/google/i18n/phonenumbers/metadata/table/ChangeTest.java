@@ -18,7 +18,7 @@ package com.google.i18n.phonenumbers.metadata.table;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.testing.RangeTreeSubject.assertThat;
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertThrows;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;

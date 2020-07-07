@@ -18,7 +18,7 @@ package com.google.i18n.phonenumbers.metadata.table;
 import static com.google.common.collect.ImmutableList.toImmutableList;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.table.CsvParser.rowMapper;
-import static org.junit.Assert.assertThrows;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.table.CsvParser.RowMapper;

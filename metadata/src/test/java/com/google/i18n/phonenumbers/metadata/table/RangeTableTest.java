@@ -26,7 +26,7 @@ import static com.google.i18n.phonenumbers.metadata.proto.Types.ValidNumberType.
 import static com.google.i18n.phonenumbers.metadata.testing.RangeTableSubject.assertThat;
 import static com.google.i18n.phonenumbers.metadata.testing.RangeTreeSubject.assertThat;
 import static java.util.stream.IntStream.rangeClosed;
-import static org.junit.Assert.assertThrows;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Table;
