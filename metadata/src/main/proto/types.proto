@@ -1,0 +1,82 @@
+// Copyright (C) 2017 The Libphonenumber Authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package i18n.phonenumbers.metadata;
+
+option java_package = "com.google.i18n.phonenumbers.metadata.proto";
+
+// Enum names must match the element names in the XML metadata modulo casing.
+enum XmlNumberType {
+  // Having a distinct default/unknown enum with a zero value is a proto3 thing.
+  // No data should actually ever have this value.
+  XML_UNKNOWN = 0;
+
+  XML_NO_INTERNATIONAL_DIALLING = 1;
+  XML_FIXED_LINE = 2;
+  XML_MOBILE = 3;
+  XML_PAGER = 4;
+  XML_TOLL_FREE = 5;
+  XML_PREMIUM_RATE = 6;
+  XML_SHARED_COST = 7;
+  XML_PERSONAL_NUMBER = 8;
+  XML_VOIP = 9;
+  XML_UAN = 10;
+  XML_VOICEMAIL = 11;
+}
+
+// Validation types for phone number ranges. Each valid range is categorized as
+// exactly one of these types. This does not include NO_INTERNATIONAL_DIALLING
+// since it is an attribute of ranges rather than their fundamental type.
+enum ValidNumberType {
+  // Having a distinct default/unknown enum with a zero value is a proto3 thing.
+  // No data should actually ever have this value.
+  UNKNOWN = 0;
+
+  FIXED_LINE = 1;
+  MOBILE = 2;
+  FIXED_LINE_OR_MOBILE = 3;
+  PAGER = 4;
+  TOLL_FREE = 5;
+  PREMIUM_RATE = 6;
+  SHARED_COST = 7;
+  PERSONAL_NUMBER = 8;
+  VOIP = 9;
+  UAN = 10;
+  VOICEMAIL = 11;
+}
+
+// Enum names must match the element names in the XML metadata modulo casing.
+// Unlike main metadata, these types are not required to be exclusive a number.
+enum XmlShortcodeType {
+  // Having a distinct default/unknown enum with a zero value is a proto3 thing.
+  // No data should actually ever have this value.
+  SC_UNKNOWN = 0;
+
+  // General short codes without a more specific representation (unlike
+  // generalDesc, which can just be the leading digits, this must be precise).
+  SC_SHORT_CODE = 1;
+
+  // Mutually exclusive sub-set of types for tariff.
+  SC_TOLL_FREE = 2;
+  SC_STANDARD_RATE = 3;
+  SC_PREMIUM_RATE = 4;
+
+  // Use-case types.
+  SC_CARRIER_SPECIFIC = 5;
+  SC_EMERGENCY = 6;
+  SC_EXPANDED_EMERGENCY = 7;
+  SC_SMS_SERVICES = 8;
+}
