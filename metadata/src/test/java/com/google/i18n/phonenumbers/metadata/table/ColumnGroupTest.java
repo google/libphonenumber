@@ -16,7 +16,7 @@
 package com.google.i18n.phonenumbers.metadata.table;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.junit.Assert.assertThrows;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
