@@ -24,7 +24,6 @@ import static com.google.common.collect.ImmutableList.toImmutableList;
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Streams;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -73,14 +72,19 @@ public final class CsvParser {
             }
           } else {
             ImmutableMap.Builder<String, String> map = ImmutableMap.builder();
-            int i = 0;
-            for (String v : Streams.iterating(row)) {
-              checkArgument(i < header.size(),
-                  "too many columns (expected %s): %s", header.size(), map);
-              if (!v.isEmpty()) {
-                map.put(header.get(i++), v);
+            // Not a pure lambda due to the need to index columns.
+            row.forEach(new Consumer<String>() {
+              private int i = 0;
+
+              @Override
+              public void accept(String v) {
+                checkArgument(i < header.size(),
+                    "too many columns (expected %s): %s", header.size(), map);
+                if (!v.isEmpty()) {
+                  map.put(header.get(i++), v);
+                }
               }
-            }
+            });
             handler.accept(map.build());
           }
         }
