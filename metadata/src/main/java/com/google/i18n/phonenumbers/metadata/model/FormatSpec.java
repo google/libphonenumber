@@ -240,15 +240,6 @@ public abstract class FormatSpec {
     // formatting around the first group (i.e. never "(XXX) XXX XXX") which makes sense since
     // international formats cannot be assumed to be read by people with local knowledge.
 
-    // TODO: To reactivate this check after we are sure that first digit of
-    // SN of MX is no more 1 and need not to be swallowed when formatting i.e after parsing change.
-    // Context: We have disabled the following check to fix a MX formatting issue i.e using this
-    // logic {X>} to remove the mobile token(1) in international format, which is the first digit of
-    // the mobile subscriber number. More details in b/111967450. In general, international
-    // format should not have such special formatting. Can be fixed as part of b/138727490.
-
-    // checkArgument(!intl.getXmlPrefix().isPresent(),
-    //    "international format specifier must not have separate prefix: %s", spec);
     checkArgument(
         !intl.hasNationalPrefix(),
         "international format specifier must not contain national prefix: %s",
@@ -471,10 +462,10 @@ public abstract class FormatSpec {
      *
      * <p>For example given the following templates:
      * <ul>
-     *   <li>{@code "XXX XXX-XXX"} ==> {@code "$1 $2-$3"}
-     *   <li>{@code "(#XXX) XXX-XXX"} ==> {@code "$1 $2-$3"} (the prefix is hoisted)
-     *   <li>{@code "#{XXX>123} XXX-XXX"} ==> {@code "$2-$3"} ($1 was replaced and hoisted)
-     *   <li>{@code "{X>}XXX-XXX"} ==> {@code "$2-$3"} ($1 was removed)
+     *   <li>{@code "XXX XXX-XXX"} ⟹ {@code "$1 $2-$3"}
+     *   <li>{@code "(#XXX) XXX-XXX"} ⟹ {@code "$1 $2-$3"} (the prefix is hoisted)
+     *   <li>{@code "#{XXX>123} XXX-XXX"} ⟹ {@code "$2-$3"} ($1 was replaced and hoisted)
+     *   <li>{@code "{X>}XXX-XXX"} ⟹ {@code "$2-$3"} ($1 was removed)
      * </ul>
      */
     public String getXmlFormat() {
@@ -500,10 +491,10 @@ public abstract class FormatSpec {
      *
      * <p>For example given the following templates:
      * <ul>
-     *   <li>{@code "XXX XXX-XXX"} ==> XML prefix is empty
-     *   <li>{@code "(#XXX) XXX-XXX"} ==> {@code "($NP$FG)"}
-     *   <li>{@code "#{XXX>123} XXX-XXX"} ==> {@code "$NP123 $FG"}
-     *   <li>{@code "{X>}XXX-XXX"} ==> XML prefix is empty (but the format will not contain $1)
+     *   <li>{@code "XXX XXX-XXX"} ⟹ XML prefix is empty
+     *   <li>{@code "(#XXX) XXX-XXX"} ⟹ {@code "($NP$FG)"}
+     *   <li>{@code "#{XXX>123} XXX-XXX"} ⟹ {@code "$NP123 $FG"}
+     *   <li>{@code "{X>}XXX-XXX"} ⟹ XML prefix is empty (but the format will not contain $1)
      * </ul>
      */
     public Optional<String> getXmlPrefix() {
