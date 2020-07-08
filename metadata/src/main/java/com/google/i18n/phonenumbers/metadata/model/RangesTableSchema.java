@@ -204,7 +204,7 @@ public final class RangesTableSchema {
   /** The ID of the format assigned to a range. */
   public static final Column<String> FORMAT = Column.ofString("Format");
 
-  /** An '&'-separated list of timezone IDs associated with this range. */
+  /** An '&amp;'-separated list of timezone IDs associated with this range. */
   public static final Column<Timezones> TIMEZONE = Timezones.column("Timezone");
 
   /** The "Region:XX" column group in the range table. */
