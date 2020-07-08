@@ -425,7 +425,7 @@ public final class RangeSpecification implements Comparable<RangeSpecification> 
   }
 
   /**
-   * Returns the bitmask of the Nth range in this specification. Bit-X (0<= X <= 9) corresponds to
+   * Returns the bitmask of the Nth range in this specification. Bit-X (0 ≤ X ≤ 9) corresponds to
    * the digit with value X. As every range in a specification must match at least one digit, this
    * mask can never be zero.
    */
