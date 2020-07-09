@@ -613,7 +613,7 @@ public final class RangeTable {
    *
    * <p>An example of an "impossible" prefix would be if "123" has value A, "1234" has value B and
    * "12345" has value A again. In this case there is no prefix which can distinguish A and B
-   * (the calculated map would be { "123" => A, "1234" => B }). In this situation, testing for the
+   * (the calculated map would be { "123" ⟹ A, "1234" ⟹ B }). In this situation, testing for the
    * longer prefix would help preserve as much of the original mapping as possible, but it would
    * never be possible to correctly distinguish all inputs.
    */

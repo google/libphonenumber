@@ -88,13 +88,14 @@ public abstract class Schema {
    * is just the column name. For group columns, the key takes the form "prefix:suffix", where the
    * prefix is the name of the "prototype" column, and the "suffix" is an ID of a value within the
    * group. For example:
-   * <p> {@oode
+   *
+   * <pre> {@code
    * // Schema has a plain column called "Type" in it.
    * typeCol = table.getColumn("Type");
    *
    * // Schema has a group called "Region" in it which can parse RegionCodes.
    * usRegionCol = table.getColumn("Region:US");
-   * }</p>
+   * }</pre>
    */
   public Column<?> getColumn(String key) {
     int split = key.indexOf(':');
