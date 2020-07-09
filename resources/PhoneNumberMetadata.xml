@@ -21519,8 +21519,8 @@
     </territory>
 
     <!-- Netherlands (NL) -->
-    <!-- http://en.wikipedia.org/wiki/%2B31 -->
-    <!-- http://wetten.overheid.nl/BWBR0010198 -->
+    <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_the_Netherlands -->
+    <!-- https://wetten.overheid.nl/BWBR0010198/2020-04-04 -->
     <territory id="NL" countryCode="31" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
       <availableFormats>
@@ -21652,8 +21652,10 @@
       </fixedLine>
       <!-- As per this government.nl's doc some sub ranges of existing 06[1-58] mobile numbers are
            used for M2M purposes (that use mobile networks). But there is no information about these
-           sub ranges. Now 12 digit 097 are introduced for M2M which we do not support yet in any
-           category. https://www.government.nl/binaries/government/documents/annual-reports/2016/02/16/decree-change-of-telephone-and-isdn-services-numbering-plan-for-m2m-applications/decree-change-of-telephone-and-isdn-services-numbering-plan-for-m2m-applications.pdf -->
+           sub ranges. 
+           065[6-9] was used for pagers but is used for mobiles since 2006
+           https://www.acm.nl/nl/onderwerpen/telecommunicatie/telefoonnummers/telefoonnummers-gebruiken/06--en-097-nummers-voor-spraak-en-data https://www.government.nl/documents/annual-reports/2016/02/16/decree-change-of-telephone-and-isdn-services-numbering-plan-for-m2m-applications 
+           https://wetten.overheid.nl/BWBR0010198/2020-04-04#Bijlage1 -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>612345678</exampleNumber>
@@ -21664,6 +21666,11 @@
         <exampleNumber>662345678</exampleNumber>
         <nationalNumberPattern>66\d{7}</nationalNumberPattern>
       </pager>
+      <!-- According to footnote * of https://wetten.overheid.nl/BWBR0010198/2020-04-04#Bijlage1
+           - 067[0-5] Videotex and access to data services: 6 or 10 digits. 
+             "The numbers have 6 digits except the numbers starting with 067-281, 067-284 and 067-364 which consist of 10 digits.", 
+           - 06760 Access to Internet Protocol based networks and services: 10 digits.
+           These numbers are not included at this time. Videotex has been shutdown in 1997 -->
       <tollFree>
         <possibleLengths national="[7-10]"/>
         <exampleNumber>8001234</exampleNumber>
@@ -21674,6 +21681,16 @@
         <exampleNumber>9061234</exampleNumber>
         <nationalNumberPattern>90[069]\d{4,7}</nationalNumberPattern>
       </premiumRate>
+      <!-- 0970 numbers (12 digits) are used for (location independent) mobile numbers.
+           This is an extension to 06 numbers (10 digits). 
+           These are used for Human to Human (H2H), Human to Machine (H2M), Machine to Human (M2H)
+           and Machine to Machine (M2M) communication.
+           There is no information about the type of usage available. -->
+      <mobile>
+        <possibleLengths national="11"/>
+        <exampleNumber>97012345678</exampleNumber>
+        <nationalNumberPattern>970\d{8}</nationalNumberPattern>
+      </mobile>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>851234567</exampleNumber>
