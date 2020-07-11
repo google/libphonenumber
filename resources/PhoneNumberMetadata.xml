@@ -6010,7 +6010,7 @@
     <!-- Cameroon (CM) -->
     <!-- http://www.itu.int/oth/T0202000024/en -->
     <!-- http://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-OB.1063-2014-OAS-PDF-E.pdf -->
-    <territory id="CM" countryCode="237" internationalPrefix="00">
+    <territory id="CM" countryCode="237" internationalPrefix="00" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>88</leadingDigits>
