@@ -1,3 +1,12 @@
+Jul 20, 2020: v8.12.7
+Metadata changes:
+ - Updated phone metadata for region code(s): ET, HN, KN, NA, SG, US
+ - New geocoding data for country calling code(s): 1326 (en), 1839 (en)
+ - Updated geocoding data for country calling code(s): 380 (en), 504 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 234 (en), 1869 (en)
+ - Updated / refreshed time zone meta data.
+
 Jul 02, 2020: v8.12.7
 Metadata changes:
  - Updated phone metadata for region code(s): HK, IR, LI, MU, TR, VN
