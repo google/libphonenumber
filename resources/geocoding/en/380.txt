@@ -295,7 +295,7 @@
 3804742|Katerinopil, Cherkasy
 3804744|Uman, Cherkasy
 3804745|Khrystynivka, Cherkasy
-3804746|Monastir, Cherkasy
+3804746|Monastyrysche, Cherkasy
 3804747|Zhashkiv, Cherkasy
 3804748|Mankivka, Cherkasy
 3804749|Lysyanka, Cherkasy
