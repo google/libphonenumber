@@ -1,17 +1,20 @@
 Jul 20, 2020: v8.12.7
 Metadata changes:
- - Updated phone metadata for region code(s): ET, HN, KN, NA, SG, US
+ - Updated phone metadata for region code(s): ET, HN, KN, NA, SG, US,
+   HK, IR, LI, MU, TR, VN
  - New geocoding data for country calling code(s): 1326 (en), 1839 (en)
  - Updated geocoding data for country calling code(s): 380 (en), 504 (en)
  - Updated carrier data for country calling code(s):
-   65 (en), 234 (en), 1869 (en)
+   65 (en), 234 (en), 1869 (en), 98 (en, fa), 243 (en), 423 (en), 852 (en, zh)
  - Updated / refreshed time zone meta data.
+ - Note: You will find commit with same release tag on Jul 02, 2020.
+   As that release blocked immediately, we started over new release with same tag.
+ 
+Code changes:
+ - [Java only] Added metadata/ folder to only GitHub devleopment version; this
+   will not be part of the release artifacts untill it is complete and ready
+   for usage. More details in its README file.
 
-Jul 02, 2020: v8.12.7
-Metadata changes:
- - Updated phone metadata for region code(s): HK, IR, LI, MU, TR, VN
- - Updated carrier data for country calling code(s):
-   98 (en, fa), 243 (en), 423 (en), 852 (en, zh)
 
 Jun 17, 2020: v8.12.6
 Code changes:
