@@ -14,28 +14,14 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
-        <configuration>
-          <source>8</source>
-          <target>8</target>
-          <annotationProcessorPaths>
-            <annotationProcessorPath>
-              <groupId>com.google.auto.value</groupId>
-              <artifactId>auto-value</artifactId>
-              <version>1.7.3</version>
-            </annotationProcessorPath>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
+
       <plugin>
         <groupId>com.github.os72</groupId>
         <artifactId>protoc-jar-maven-plugin</artifactId>
         <version>3.11.4</version>
         <executions>
           <execution>
+            <id>generate-proto</id>
             <phase>generate-sources</phase>
             <goals>
               <goal>run</goal>
@@ -45,10 +31,50 @@
               <inputDirectories>
                 <include>src/main/proto</include>
               </inputDirectories>
+              <outputDirectorySuffix>proto</outputDirectorySuffix>
+              <addSources>main</addSources>
             </configuration>
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+        <executions>
+          <execution>
+            <id>process-annotations</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <compilerArgs>
+                <arg>-proc:only</arg>
+              </compilerArgs>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- using an id of default-compile will override the default execution -->
+            <id>default-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <compilerArgs>
+                <arg>-proc:none</arg>
+              </compilerArgs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -89,7 +115,7 @@
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value</artifactId>
-      <version>1.7.3</version>
+      <version>1.7.4</version>
       <scope>provided</scope>
     </dependency>
 
@@ -97,7 +123,7 @@
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value-annotations</artifactId>
-      <version>1.7.3</version>
+      <version>1.7.4</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.github.os72/protoc-jar-maven-plugin -->
