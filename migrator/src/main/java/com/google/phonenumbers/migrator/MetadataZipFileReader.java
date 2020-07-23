@@ -30,8 +30,8 @@ import java.util.zip.ZipFile;
 
 /**
  * Represents a standard compliant metadata zip file where each {@link MetadataZipFileReader} zip
- * file contains {@link CsvTable}'s that can be imported based on specified BCP47 version region
- * codes without the need to extract the whole zip file.
+ * file contains {@link CsvTable}'s that can be imported based on specified BCP-47 format numerical
+ * country codes without the need to extract the whole zip file.
  */
 public final class MetadataZipFileReader {
 
@@ -58,10 +58,10 @@ public final class MetadataZipFileReader {
   }
 
   /**
-   * Returns the {@link CsvTable} for the given BCP47 region code (e.g. "44") if present.
+   * Returns the {@link CsvTable} for the given BCP-47 numerical country code (e.g. "44") if present.
    */
-  public Optional<CsvTable<RangeKey>> importCsvTable(String regionCode) throws IOException {
-    String csvTableLocation = zipName + "/" + regionCode + "/ranges.csv";
+  public Optional<CsvTable<RangeKey>> importCsvTable(String countryCode) throws IOException {
+    String csvTableLocation = zipName + "/" + countryCode + "/ranges.csv";
     ZipEntry csvFile = metadataZipFile.getEntry(csvTableLocation);
 
     if (csvFile == null) {
@@ -73,7 +73,7 @@ public final class MetadataZipFileReader {
 
   public static void main(String[] args) throws Exception {
     String fileLocation;
-    String regionCode;
+    String countryCode;
 
     if (args.length < 2) {
       Scanner scanner = new Scanner(System.in);
@@ -82,16 +82,16 @@ public final class MetadataZipFileReader {
       System.out.print("\tPlease enter a zip file location of metadata csv files: ");
       fileLocation = scanner.next();
 
-      System.out.print("\tPlease enter the region code of the ranges you want to import: ");
-      regionCode = scanner.next();
+      System.out.print("\tPlease enter the country code of the ranges you want to import: ");
+      countryCode = scanner.next();
     } else {
       fileLocation = args[0];
-      regionCode = args[1];
+      countryCode = args[1];
     }
 
     MetadataZipFileReader m = MetadataZipFileReader.of(fileLocation);
-    Optional<CsvTable<RangeKey>> ranges = m.importCsvTable(regionCode);
-    ranges.orElseThrow(() -> new Exception("Region code not supported in zipfile"));
+    Optional<CsvTable<RangeKey>> ranges = m.importCsvTable(countryCode);
+    ranges.orElseThrow(() -> new Exception("Country code not supported in zipfile"));
 
     System.out.println("Table imported!");
     ImmutableSet<RangeKey> columns = ranges.get().getKeys();

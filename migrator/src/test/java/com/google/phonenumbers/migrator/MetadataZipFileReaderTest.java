@@ -44,17 +44,17 @@ public class MetadataZipFileReaderTest {
 
   @Test
   public void testValidCsvTable() throws IOException {
-    String fileLocation = testDataPath + "valid-metadata-structure.zip";
+    String fileLocation = testDataPath + "testMetadataZip.zip";
     MetadataZipFileReader validZip = MetadataZipFileReader.of(fileLocation);
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable("1");
     assertThat(regionTable.isPresent()).isEqualTo(true);
   }
 
   @Test
-  public void testInvalidCsvTable() throws IOException {
-    String fileLocation = testDataPath + "invalid-metadata-structure.zip/";
+  public void testUnsupportedCsvTable() throws IOException {
+    String fileLocation = testDataPath + "testMetadataZip.zip/";
     MetadataZipFileReader validZip = MetadataZipFileReader.of(fileLocation);
-    Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable("1");
+    Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable("2");
     assertThat(regionTable.isPresent()).isEqualTo(false);
   }
 }
