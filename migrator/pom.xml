@@ -52,5 +52,11 @@
             <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
+      <dependency>
+        <groupId>com.google.truth.extensions</groupId>
+        <artifactId>truth-java8-extension</artifactId>
+        <version>1.0.1</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
 </project>

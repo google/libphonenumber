@@ -15,7 +15,7 @@
  */
 package com.google.phonenumbers.migrator;
 
-import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth8.assertThat;
 import static com.google.phonenumbers.migrator.testing.testUtils.AssertUtil.assertThrows;
 
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
@@ -30,7 +30,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class MetadataZipFileReaderTest {
-  private String testDataPath = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
+  private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
   public void testInvalidFileLocation() {
@@ -46,17 +46,17 @@ public class MetadataZipFileReaderTest {
 
   @Test
   public void testValidCsvTable() throws IOException {
-    String fileLocation = testDataPath + "testMetadataZip.zip";
+    String fileLocation = TEST_DATA_PATH + "testMetadataZip.zip";
     MetadataZipFileReader validZip = MetadataZipFileReader.of(Paths.get(fileLocation));
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable(DigitSequence.of("1"));
-    assertThat(regionTable.isPresent()).isEqualTo(true);
+    assertThat(regionTable).isPresent();
   }
 
   @Test
   public void testUnsupportedCsvTable() throws IOException {
-    String fileLocation = testDataPath + "testMetadataZip.zip/";
+    String fileLocation = TEST_DATA_PATH + "testMetadataZip.zip/";
     MetadataZipFileReader validZip = MetadataZipFileReader.of(Paths.get(fileLocation));
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable(DigitSequence.of("2"));
-    assertThat(regionTable.isPresent()).isEqualTo(false);
+    assertThat(regionTable).isEmpty();
   }
 }
