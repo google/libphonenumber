@@ -15,12 +15,12 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.common.collect.ImmutableSet;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-import com.google.common.base.Preconditions;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
@@ -29,7 +29,6 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import org.apache.commons.io.FilenameUtils;
 
 /**
  * Represents a standard libphonenumber metadata zip file where each {@link MetadataZipFileReader}
@@ -39,29 +38,25 @@ import org.apache.commons.io.FilenameUtils;
 public final class MetadataZipFileReader {
 
   private final ZipFile metadataZipFile;
-  private final String zipName;
 
-  private MetadataZipFileReader(Path fileLocation) throws IOException {
-    this.metadataZipFile = new ZipFile(fileLocation.toString());
-    this.zipName = FilenameUtils.getBaseName(fileLocation.getFileName().toString());
+  private MetadataZipFileReader(ZipFile metadataZipFile) {
+    this.metadataZipFile = checkNotNull(metadataZipFile);
   }
 
   /**
    * Returns a MetadataZipFileReader for the given Path (e.g. "./metadata.zip").
    */
   public static MetadataZipFileReader of(Path fileLocation) throws IOException {
-    Preconditions.checkNotNull(fileLocation);
-    Preconditions.checkArgument(fileLocation.toFile().exists(),
-        "Invalid zip file location: ", fileLocation);
+    checkNotNull(fileLocation);
 
-    return new MetadataZipFileReader(fileLocation);
+    return new MetadataZipFileReader(new ZipFile(fileLocation.toString()));
   }
 
   /**
    * Returns the {@link CsvTable} for the given BCP-47 numerical country code (e.g. "44") if present.
    */
   public Optional<CsvTable<RangeKey>> importCsvTable(DigitSequence countryCode) throws IOException {
-    String csvTableLocation = zipName + "/" + countryCode + "/ranges.csv";
+    String csvTableLocation = "metadata/" + countryCode + "/ranges.csv";
     ZipEntry csvFile = metadataZipFile.getEntry(csvTableLocation);
 
     if (csvFile == null) {
@@ -71,7 +66,15 @@ public final class MetadataZipFileReader {
         new InputStreamReader(metadataZipFile.getInputStream(csvFile))));
   }
 
-  public static void main(String[] args) throws Exception {
+  /**
+   * Method used as an example of how to instantiate a MetadataReader object for a given zip file
+   * and import the {@link CsvTable} corresponding to a given BCP-47 numerical country code.
+   *
+   * @param args which expects two command line arguments;
+   *  fileLocation: the path of the zipfile to be read
+   *  countryCode: numerical code relating to the CSV table that is to be imported
+   */
+  public static void main(String[] args) throws IOException, RuntimeException {
     String fileLocation;
     String countryCode;
 
@@ -92,7 +95,7 @@ public final class MetadataZipFileReader {
     MetadataZipFileReader m = MetadataZipFileReader.of(Paths.get(fileLocation));
     Optional<CsvTable<RangeKey>> ranges = Optional.ofNullable(
         m.importCsvTable(DigitSequence.of(countryCode))
-            .orElseThrow(() -> new Exception("Country code not supported in zipfile")));
+            .orElseThrow(() -> new RuntimeException("Country code not supported in zipfile")));
 
     System.out.println("Table imported!");
     ranges.get().getKeys().forEach(System.out::println);
