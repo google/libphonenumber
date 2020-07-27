@@ -16,14 +16,19 @@
 package com.google.phonenumbers.migrator;
 
 import static com.google.common.truth.Truth8.assertThat;
+import static com.google.common.truth.Truth.assertThat;
 import static com.google.phonenumbers.migrator.testing.testUtils.AssertUtil.assertThrows;
 
+import com.google.common.truth.Truth;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Optional;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -35,13 +40,13 @@ public class MetadataZipFileReaderTest {
   @Test
   public void testInvalidFileLocation() {
     String fileLocation = "invalid-zipfile-location";
-    assertThrows(IllegalArgumentException.class, () -> {
       try {
         MetadataZipFileReader.of(Paths.get(fileLocation));
+        Assert.fail("Expected IOException and did not receive");
       } catch (IOException e) {
-        e.printStackTrace();
+        assertThat(e).isInstanceOf(NoSuchFileException.class);
+        assertThat(e).hasMessageThat().contains(fileLocation);
       }
-    });
   }
 
   @Test
