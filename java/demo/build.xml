@@ -30,7 +30,7 @@
       </fileset>
     </copy>
     <javac srcdir="src" destdir="war/WEB-INF/classes" classpathref="project.classpath" debug="on"
-           includeAntRuntime="false"/>
+           includeAntRuntime="false" source="1.8" target="1.8"/>
   </target>
 
   <target name="runserver" depends="compile" description="Starts the development server.">

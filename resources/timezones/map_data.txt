@@ -681,6 +681,7 @@
 1321|America/New_York
 1323|America/Los_Angeles
 1325|America/Chicago
+1326|America/New_York
 1330|America/New_York
 1331|America/Chicago
 1332|America/New_York
@@ -1607,6 +1608,7 @@
 1831|America/Los_Angeles
 1832|America/Chicago
 1838|America/New_York
+1839|America/New_York
 1843|America/New_York
 1845|America/New_York
 1847|America/Chicago

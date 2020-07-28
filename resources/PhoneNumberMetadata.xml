@@ -9218,12 +9218,13 @@
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
-      <!-- Found valid fixed-line numbers online that starts with prefix 11 617, 11 639 and 11 6671. -->
+      <!-- Found valid fixed-line numbers online that starts with prefix 11 617, 11 639 and
+           11 667[01]. -->
       <fixedLine>
         <possibleLengths national="9" localOnly="7"/>
         <exampleNumber>111112345</exampleNumber>
         <nationalNumberPattern>
-          116671\d{3}|
+          11667[01]\d{3}|
           (?:
             11(?:
               1(?:
@@ -11855,7 +11856,6 @@
           (?:
             46(?:
               [01][0-6]|
-              2[5-9]|
               4[0-57-9]
             )|
             5730|
@@ -11865,6 +11865,7 @@
             929[03-9]
           )\d{4}|
           (?:
+            462|
             5(?:
               [1-59][0-46-9]|
               6[0-4689]|
@@ -12025,13 +12026,13 @@
               [23]\d|
               4[04-6]|
               5[57]|
-              6[24]|
+              6[245]|
               7[0135689]|
               8[01346-9]|
               9[0-2]
             )|
             4(?:
-              07|
+              0[78]|
               2[3-59]|
               3[13-689]|
               4[0-68]|
@@ -14334,7 +14335,7 @@
             (?:
               0(?:
                 [1-35]\d|
-                44
+                4[4-6]
               )|
               (?:
                 [13]\d|
@@ -14344,6 +14345,7 @@
             9(?:
               (?:
                 [0-2]\d|
+                3[01]|
                 4[45]
               )\d|
               5[15]0|
@@ -14353,7 +14355,7 @@
               )|
               9(?:
                 0[013]|
-                1[0134]|
+                1\d|
                 21|
                 77|
                 9[6-9]
@@ -14367,7 +14369,7 @@
       <voip>
         <possibleLengths national="10"/>
         <exampleNumber>9932123456</exampleNumber>
-        <nationalNumberPattern>993\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>993[2-9]\d{6}</nationalNumberPattern>
       </voip>
       <!-- UAN ranges from http://118.tct.ir/necnum.htm ("096" numbers are not shortcodes since
            they require the national prefix). -->
@@ -16687,7 +16689,8 @@
             4(?:
               6[015-9]|
               70
-            )
+            )|
+            56[5-7]
           )\d{4}
         </nationalNumberPattern>
       </fixedLine>
@@ -16699,10 +16702,7 @@
         <nationalNumberPattern>
           869(?:
             48[89]|
-            5(?:
-              5[6-8]|
-              6[5-7]
-            )|
+            55[6-8]|
             66\d|
             76[02-7]
           )\d{4}
@@ -17818,14 +17818,14 @@
             2(?:
               01|
               1[27]|
-              22|
+              2[02]|
               3\d|
               6[02-578]|
               96
             )|
             3(?:
+              [24]0|
               33|
-              40|
               7[0135-7]|
               8[048]|
               9[0269]
@@ -17840,15 +17840,15 @@
           (?:
             6(?:
               4(?:
-                89|
-                9\d
+                79|
+                [89]\d
               )|
-              5[0-3]\d|
+              5[0-4]\d|
               6(?:
-                0[0-7]|
+                0\d|
                 10|
-                2[06-9]|
-                39
+                2[0-26-9]|
+                3[7-9]
               )
             )\d|
             7(?:
@@ -20282,7 +20282,7 @@
               2[4-7]
             )|
             54(?:
-              [34]\d|
+              [3-5]\d|
               71
             )|
             6\d\d|
@@ -20306,7 +20306,7 @@
           )\d{4}|
           5(?:
             2[589]|
-            4[3489]|
+            4[3-589]|
             7\d|
             8[0-689]|
             9[0-8]
@@ -21053,25 +21053,54 @@
       <generalDesc>
         <nationalNumberPattern>[68]\d{7,8}</nationalNumberPattern>
       </generalDesc>
-      <!-- Includes VSAT service. Added 6768 prefix based on user report. -->
+      <!-- Includes VSAT service. Added 6768 and 64426 prefix based on user
+           report. -->
       <fixedLine>
         <possibleLengths national="8,9"/>
         <exampleNumber>61221234</exampleNumber>
         <nationalNumberPattern>
+          64426\d{3}|
           6(?:
             1(?:
-              [02-4]\d\d|
-              17
+              2[2-7]|
+              3[01378]|
+              4[0-4]
+            )|
+            254|
+            32[0237]|
+            4(?:
+              27|
+              41|
+              5[25]
+            )|
+            52[236-8]|
+            626|
+            7(?:
+              2[2-4]|
+              30
+            )
+          )\d{4,5}|
+          6(?:
+            1(?:
+              (?:
+                0\d|
+                2[0189]|
+                3[24-69]|
+                4[5-9]
+              )\d|
+              17|
+              69|
+              7[014]
             )|
             2(?:
               17|
-              54\d|
+              5[0-36-8]|
               69|
               70
             )|
             3(?:
               17|
-              2[0237]\d|
+              2[14-689]|
               34|
               6[289]|
               7[01]|
@@ -21079,23 +21108,21 @@
             )|
             4(?:
               17|
-              (?:
-                27|
-                41|
-                5[25]
-              )\d|
+              2[0-2]|
+              4[06]|
+              5[0137]|
               69|
               7[01]
             )|
             5(?:
               17|
-              2[236-8]\d|
+              2[0459]|
               69|
               7[01]
             )|
             6(?:
               17|
-              26\d|
+              25|
               38|
               42|
               69|
@@ -21103,34 +21130,10 @@
             )|
             7(?:
               17|
-              (?:
-                2[2-4]|
-                30
-              )\d|
+              2[569]|
+              3[13]|
               6[89]|
               7[01]
-            )
-          )\d{4}|
-          6(?:
-            1(?:
-              2[2-7]|
-              3[01378]|
-              4[0-4]|
-              69|
-              7[014]
-            )|
-            25[0-46-8]|
-            32\d|
-            4(?:
-              2[0-27]|
-              4[016]|
-              5[0-357]
-            )|
-            52[02-9]|
-            62[56]|
-            7(?:
-              2[2-69]|
-              3[013]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -24998,8 +25001,7 @@
               01[0-7]|
               [1-8]\d\d|
               9(?:
-                [014]\d|
-                2[1-9]|
+                [0-24]\d|
                 3[0-489]|
                 5[0-2]
               )
@@ -27005,17 +27007,18 @@
           )\d{4}
         </nationalNumberPattern>
       </personalNumber>
-      <!-- 850 is mentioned as nomadic numbers in ITU and location independent numbers in
-           eng.btk.gov.tr's doc. http://www.turktelekom.com.tr/tt/portal/News/Archive/7-digit-special-service-number-starting-with-444 -->
+      <!-- Prefix 850 was earlier supported as UAN but after user report and other sources, found
+           that they belong to VOIP. -->
+      <voip>
+        <possibleLengths national="10"/>
+        <exampleNumber>8500123456</exampleNumber>
+        <nationalNumberPattern>850\d{7}</nationalNumberPattern>
+      </voip>
+      <!-- http://www.turktelekom.com.tr/tt/portal/News/Archive/7-digit-special-service-number-starting-with-444 -->
       <uan>
-        <possibleLengths national="7,10"/>
+        <possibleLengths national="7"/>
         <exampleNumber>4441444</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            444|
-            850\d{3}
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>444\d{4}</nationalNumberPattern>
       </uan>
     </territory>
 
@@ -27801,7 +27804,7 @@
             3(?:
               0[1-57-9]|
               1[02-9]|
-              2[0135]|
+              2[01356]|
               3[0-24679]|
               4[167]|
               5[12]|
@@ -27855,7 +27858,7 @@
               0[1-68]|
               1[02-8]|
               2[08]|
-              3[0-28]|
+              3[0-289]|
               4[3578]|
               5[046-9]|
               6[02-5]|
@@ -27893,7 +27896,7 @@
             3(?:
               0[1-57-9]|
               1[02-9]|
-              2[0135]|
+              2[01356]|
               3[0-24679]|
               4[167]|
               5[12]|
@@ -27947,7 +27950,7 @@
               0[1-68]|
               1[02-8]|
               2[08]|
-              3[0-28]|
+              3[0-289]|
               4[3578]|
               5[046-9]|
               6[02-5]|
@@ -29140,7 +29143,10 @@
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
           (?:
-            52[238]|
+            5(?:
+              2[238]|
+              59
+            )|
             89[689]|
             99[013-9]
           )\d{6}|
