@@ -228,6 +228,7 @@ maintenance processes.
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
 *   Clojure: https://github.com/randomseed-io/phone-number
+*   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
 
 Alternatives to our own versions:
 
