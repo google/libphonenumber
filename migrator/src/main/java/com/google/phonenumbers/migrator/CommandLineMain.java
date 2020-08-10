@@ -1,78 +1,79 @@
 package com.google.phonenumbers.migrator;
 
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.metadata.DigitSequence;
-import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
-import com.google.i18n.phonenumbers.metadata.table.CsvTable;
-import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-import com.google.i18n.phonenumbers.metadata.table.RangeTable;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Optional;
+import java.util.Scanner;
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Help.Ansi;
+import picocli.CommandLine.Option;
 
+@Command(name = "Migrator Tool", description = "Command line phone number migration tool.\n"
+    + "Please enter a path to a text file containing E.164 phone numbers from the same region or a "
+    + "single E.164 number as well as the corresponding region code to begin migrations.\n")
 public class CommandLineMain {
 
-  public static void main(String[] args) throws NumberParseException, IOException {
+  @Option(names = {"-n", "--number"}, description = "Single E.164 phone number to migrate")
+  String numberInput;
 
-    // FileInputStream re = new FileInputStream(new File("../recipes.csv"));
-    // CsvTable<RangeKey> h = CsvTable.importCsv(RecipesTableSchema.SCHEMA, );
+  @Option(names = {"-f",
+      "--file"}, description = "Text file containing E.164 phone numbers to migrate")
+  String fileInput;
 
-    // System.out.println(RecipesTableSchema.toRangeTable(h));
-    // RangeTable t = RecipesTableSchema.toRangeTable(h);
-    //
-    // System.out.println(RecipesTableSchema.toCsv(t));
-    // RangeTree op = t.getRanges(RecipesTableSchema.IS_FINAL_MIGRATION, true);
-    // RangeTree up = t.getRanges(RecipesTableSchema.NEW_FORMAT, "xx898x");
-    // System.out.println(op.intersect(up));
-    // System.out.println(op.contains(DigitSequence.of("1233212345")));
+  @Option(names = {"-r",
+      "--region"}, description = "The two digit BCP-47 region code the given phone number(s) belong to")
+  String regionCode;
 
-    MigrationJob b = MigrationJob.from(" + 7789780946130  ", "GB");
-    MigrationJob a = MigrationJob.from(Paths.get("../numbers.txt"), "GB");
+  @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
+  boolean help;
 
-    // System.out.println(a.getNumberRanges());
-    // System.out.println(a.getRegionCode());
-    System.out.println(b.getNumberRanges());
-    System.out.println(b.getRegionCode());
-    System.out.println(b.getRecipes());
 
-    // runZipTest();
+  public boolean argumentsValid() {
+    return regionCode != null && (numberInput != null || fileInput != null);
   }
 
 
+  public static void main(String[] args) throws IOException {
+    CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
+    if (clm.help) {
+      CommandLine.usage(clm, System.out, Ansi.AUTO);
+    } else {
+      MigrationJob migrationJob;
 
+      if (!clm.argumentsValid()) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Missing argument(s)");
+        if (clm.regionCode == null) {
+          System.out.print("Enter two digit BCP-47 region code: ");
+          clm.regionCode = scanner.next();
+        }
+        if (clm.numberInput == null && clm.fileInput == null) {
+          String migrationType = "";
+          do {
+            System.out
+                .print("Are you performing a file migration or single number migration? (f/n): ");
+            migrationType = scanner.next().toLowerCase();
+          } while (!migrationType.equals("f") && !migrationType.equals("n"));
 
-
-
-
-
-
-
-  public static void runZipTest() throws IOException {
-    DigitSequence test = DigitSequence.of(sanitizeString("+447780946130"));
-    System.out.println(test.last(test.length()-2));
-    MetadataZipFileReader m = MetadataZipFileReader.of(Paths.get("../metadata.zip"));
-    Optional<CsvTable<RangeKey>> ranges = Optional.ofNullable(
-        m.importCsvTable(DigitSequence.of("44"))
-            .orElseThrow(() -> new RuntimeException("Country code not supported in zipfile")));
-
-    System.out.println("Table imported!");
-    RangeTable x = RangesTableSchema.toRangeTable(ranges.get());
-    // RangeTree o = x.getRanges(RangesTableSchema.TYPE, ExtType.MOBILE);
-    // System.out.println(o);
-    // System.out.println(x);
-    System.out.println(ranges.get());
-    for (RangeKey rangeKey : ranges.get().getKeys()) {
-
-      if (rangeKey.contains(test.last(test.length()-2), test.length()-2)) {
-        System.out.println(rangeKey);
-        System.out.println("\tHERE " + test);
+          if (migrationType.equals("f")) {
+            System.out.print("Enter file location: ");
+            clm.fileInput = scanner.next();
+          } else {
+            System.out.print("Enter single E.164 number input: ");
+            clm.numberInput = scanner.next();
+          }
+        }
       }
-    }
-  }
 
-  private static String sanitizeString(String number) {
-    return number.replace('+', ' ')
-        .replaceAll("[\\s]", "");
+      if (clm.numberInput != null) {
+        migrationJob = MigrationJob.from(clm.numberInput, clm.regionCode);
+      } else {
+        migrationJob = MigrationJob.from(Paths.get(clm.fileInput), clm.regionCode);
+      }
+
+      System.out.println(migrationJob.getRecipesTable());
+      System.out.println(migrationJob.getNumberRange());
+      System.out.println(migrationJob.getRegionCode());
+    }
   }
 }
