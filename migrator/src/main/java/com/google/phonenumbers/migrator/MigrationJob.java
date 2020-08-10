@@ -5,7 +5,6 @@ import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,20 +20,32 @@ public final class MigrationJob {
 
   private final static String DEFAULT_RECIPES_PATH = "../recipes.csv";
 
-  private final CsvTable<RangeKey> recipes;
-  private final RangeTree numberRanges;
+  private final CsvTable<RangeKey> recipesTable;
+  private final RangeTree numberRange;
   private final PhoneRegion regionCode;
 
-  public CsvTable<RangeKey> getRecipes() {
-    return recipes;
+  public CsvTable<RangeKey> getRecipesTable() {
+    return recipesTable;
   }
 
-  public RangeTree getNumberRanges() {
-    return numberRanges;
+  public RangeTree getNumberRange() {
+    return numberRange;
   }
 
   public PhoneRegion getRegionCode() {
     return regionCode;
+  }
+
+  public RangeTree getAllMigratableNumbers() {
+    return RecipesTableSchema.toRangeTable(recipesTable).getAllRanges().intersect(numberRange);
+  }
+
+  public RangeTree getMigratableNumbers(RangeKey recipe) {
+    if (!recipesTable.containsRow(recipe)) {
+      throw new IllegalArgumentException(
+          recipe + " does not match any recipe row in the given recipes table");
+    }
+    return recipe.asRangeTree().intersect(numberRange);
   }
 
   public static MigrationJob from(String numberInput, String regionCodeInput) throws IOException {
@@ -69,9 +80,9 @@ public final class MigrationJob {
     return CsvTable.importCsv(RecipesTableSchema.SCHEMA, reader);
   }
 
-  private MigrationJob(RangeTree numberRanges, PhoneRegion regionCode, CsvTable<RangeKey> recipes) {
-    this.numberRanges = numberRanges;
+  private MigrationJob(RangeTree numberRange, PhoneRegion regionCode, CsvTable<RangeKey> recipesTable) {
+    this.numberRange = numberRange;
     this.regionCode = regionCode;
-    this.recipes = recipes;
+    this.recipesTable = recipesTable;
   }
 }
