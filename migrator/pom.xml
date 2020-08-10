@@ -14,7 +14,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.google.phonenumbers.migrator.MetadataZipFileReader</mainClass>
+                            <mainClass>com.google.phonenumbers.migrator.CommandLineMain</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
