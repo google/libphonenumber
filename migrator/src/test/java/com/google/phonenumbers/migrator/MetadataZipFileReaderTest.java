@@ -15,15 +15,12 @@
  */
 package com.google.phonenumbers.migrator;
 
-import static com.google.common.truth.Truth8.assertThat;
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.phonenumbers.migrator.testing.testUtils.AssertUtil.assertThrows;
+import static com.google.common.truth.Truth8.assertThat;
 
-import com.google.common.truth.Truth;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
@@ -35,18 +32,19 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class MetadataZipFileReaderTest {
+
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
   public void testInvalidFileLocation() {
     String fileLocation = "invalid-zipfile-location";
-      try {
-        MetadataZipFileReader.of(Paths.get(fileLocation));
-        Assert.fail("Expected IOException and did not receive");
-      } catch (IOException e) {
-        assertThat(e).isInstanceOf(NoSuchFileException.class);
-        assertThat(e).hasMessageThat().contains(fileLocation);
-      }
+    try {
+      MetadataZipFileReader.of(Paths.get(fileLocation));
+      Assert.fail("Expected IOException and did not receive");
+    } catch (IOException e) {
+      assertThat(e).isInstanceOf(NoSuchFileException.class);
+      assertThat(e).hasMessageThat().contains(fileLocation);
+    }
   }
 
   @Test
