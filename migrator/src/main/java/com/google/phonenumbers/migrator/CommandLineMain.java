@@ -27,22 +27,33 @@ public class CommandLineMain {
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
   boolean help;
 
+  public String getNumberInput() {
+    return numberInput;
+  }
 
-  public boolean argumentsValid() {
-    return regionCode != null && (numberInput != null || fileInput != null);
+  public String getFileInput() {
+    return fileInput;
+  }
+
+  public String getRegionCode() {
+    return regionCode;
+  }
+
+  public boolean insufficientArguments() {
+    return regionCode == null || (numberInput == null && fileInput == null);
   }
 
 
   /**
-   * Runs the command line migrator tool with functionality specified by then given user's
-   * command line arguments
+   * Runs the command line migrator tool with functionality specified by then given user's command
+   * line arguments
    *
-   * @param args which expects two command line arguments;
-   *  numberInput: single E.164 number string to be potentially migrated
-   *       OR
-   *  fileInput: path to text file holding comma separated E.164 numbers to be potentially migrated
+   * @param args which expects two command line arguments; numberInput: single E.164 number string
+   * to be potentially migrated OR fileInput: path to text file holding comma separated E.164
+   * numbers to be potentially migrated
    *
-   *  regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate (e.g. GB)
+   * regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate (e.g.
+   * GB)
    */
   public static void main(String[] args) throws IOException {
     CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
@@ -51,7 +62,7 @@ public class CommandLineMain {
     } else {
       MigrationJob migrationJob;
 
-      if (!clm.argumentsValid()) {
+      if (clm.insufficientArguments()) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Missing argument(s)");
         if (clm.regionCode == null) {

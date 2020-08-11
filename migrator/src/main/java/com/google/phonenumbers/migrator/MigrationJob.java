@@ -71,6 +71,25 @@ public final class MigrationJob {
   }
 
   /**
+   * Removes spaces and '+' characters expected in E.164 numbers and returns the
+   * {@link RangeSpecification} representation of a given number. The method will not remove other
+   * letters or special characters from strings to enable users to receive error messages in
+   * cases where invalid numbers are inputted.
+   */
+  private static RangeSpecification sanitizeNumberString(String number) {
+    String sanitizedString = number.replaceAll("[+]|[\\s]", "");
+    return RangeSpecification.parse(sanitizedString);
+  }
+
+  /**
+   * Returns the {@link CsvTable} for a given recipes file path if present.
+   */
+  private static CsvTable<RangeKey> importRecipes(Path recipesPath) throws IOException {
+    InputStreamReader reader = new InputStreamReader(Files.newInputStream(recipesPath));
+    return CsvTable.importCsv(RecipesTableSchema.SCHEMA, reader);
+  }
+
+  /**
    * Returns a MigrationJob instance for a given single E.164 number input (e.g. +4477...) and its
    * corresponding BCP-47 region code (e.g. GB).
    */
@@ -78,6 +97,19 @@ public final class MigrationJob {
     PhoneRegion regionCode = PhoneRegion.of(regionCodeInput);
     RangeTree numberRanges = RangeTree.from(sanitizeNumberString(numberInput));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_PATH));
+
+    return new MigrationJob(numberRanges, regionCode, recipes);
+  }
+
+  /**
+   * Returns a MigrationJob instance for a given single E.164 number input, corresponding BCP-47
+   * region code (e.g. GB), and custom user recipes.csv file.
+   */
+  public static MigrationJob from(String numberInput, String regionCodeInput, String customRecipesPath)
+      throws IOException {
+    PhoneRegion regionCode = PhoneRegion.of(regionCodeInput);
+    RangeTree numberRanges = RangeTree.from(sanitizeNumberString(numberInput));
+    CsvTable<RangeKey> recipes = importRecipes(Paths.get(customRecipesPath));
 
     return new MigrationJob(numberRanges, regionCode, recipes);
   }
@@ -102,22 +134,22 @@ public final class MigrationJob {
   }
 
   /**
-   * Removes spaces and '+' characters expected in E.164 numbers and returns the
-   * {@link RangeSpecification} representation of a given number. The method will not remove other
-   * letters or special characters from strings to enable users to receive error messages in
-   * cases where invalid numbers are inputted.
+   * Returns a MigrationJob instance for a given file path containing comma separated E.164 numbers,
+   * corresponding BCP-47 region code, and custom user recipes.csv file.
    */
-  private static RangeSpecification sanitizeNumberString(String number) {
-    String sanitizedString = number.replaceAll("[+]|[\\s]", "");
-    return RangeSpecification.parse(sanitizedString);
-  }
+  public static MigrationJob from(Path fileInput, String regionCodeInput, String customRecipesPath)
+      throws IOException {
+    Scanner scanner = new Scanner(new FileReader(fileInput.toString()));
+    List<String> numbers = new ArrayList<>();
+    while (scanner.hasNext()) {
+      numbers.addAll(Arrays.asList(scanner.nextLine().split(",")));
+    }
 
-  /**
-   * Returns the {@link CsvTable} for a given recipes file path if present.
-   */
-  private static CsvTable<RangeKey> importRecipes(Path recipesPath) throws IOException {
-    InputStreamReader reader = new InputStreamReader(Files.newInputStream(recipesPath));
-    return CsvTable.importCsv(RecipesTableSchema.SCHEMA, reader);
+    PhoneRegion regionCode = PhoneRegion.of(regionCodeInput);
+    RangeTree numberRanges = RangeTree.from(numbers.stream().map(MigrationJob::sanitizeNumberString));
+    CsvTable<RangeKey> recipes = importRecipes(Paths.get(customRecipesPath));
+
+    return new MigrationJob(numberRanges, regionCode, recipes);
   }
 
   private MigrationJob(RangeTree numberRange, PhoneRegion regionCode, CsvTable<RangeKey> recipesTable) {
