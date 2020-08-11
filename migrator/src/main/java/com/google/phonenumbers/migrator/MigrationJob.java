@@ -43,7 +43,7 @@ public final class MigrationJob {
   }
 
   /**
-   * Returns the range of numbers within the numberRange that can be migrated using any recipe from
+   * Returns the sub range of numbers within numberRange that can be migrated using any recipe from
    * the {@link CsvTable} recipesTable that matches the specified BCP-47 region code. This method will
    * not perform migrations and as a result, the validity of migrations using the given recipesTable
    * cannot be verified.
@@ -55,8 +55,8 @@ public final class MigrationJob {
   }
 
   /**
-   * Returns the range of numbers within the numberRange that can be migrated using the given recipe.
-   * This method will not perform migration and as a result, the validity of migrations using the
+   * Returns the sub range of numbers within numberRange that can be migrated using the given recipe.
+   * This method will not perform migrations and as a result, the validity of migrations using the
    * given recipe cannot be verified.
    *
    * @param recipeKey: the key of the recipe that is being checked

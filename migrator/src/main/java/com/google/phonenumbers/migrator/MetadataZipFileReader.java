@@ -100,5 +100,4 @@ public final class MetadataZipFileReader {
     System.out.println("Table imported!");
     ranges.get().getKeys().forEach(System.out::println);
   }
-
 }
