@@ -2,7 +2,6 @@ package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
-import com.google.i18n.phonenumbers.metadata.model.MetadataTableSchema.Regions;
 import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.Change;
 import com.google.i18n.phonenumbers.metadata.table.Column;
@@ -17,19 +16,45 @@ import com.google.i18n.phonenumbers.metadata.table.Schema;
 import java.util.Optional;
 import java.util.TreeSet;
 
+/**
+ * The schema of the standard "Recipes" table with rows keyed by {@link RangeKey} and columns:
+ * <ol>
+ *   <li>{@link #OLD_FORMAT}: The original format of the represented range in the row to be changed.
+ *       'x' characters represent indexes that do not need to be changed in a number within the range
+ *       and actual digits in the string are values that need to be removed or replaced. (e.g. xx98xx).
+ *       The length of this string must match the lengths of (DigitSequence)'s produced by the Row Key.
+ *   <li>{@link #NEW_FORMAT}: The migrated format of the represented range in the row. 'x' characters
+ *       represent indexes that do not need to be changed in a number within the range and actual
+ *       digits in the string are values that need to be added at that given index.
+ *   <li>{@link #IS_FINAL_MIGRATION}: A boolean indicating whether the given recipe row would result
+ *       in the represented range being migrated into up to date, dialable formats. Recipes which
+ *       do not will require the newly formatted range to be migrated again using another matching
+ *       recipe.
+ *   <li>{@link #REGION_CODE}: The BCP-47 region code in which a given recipe corresponds to.
+ * </ol>
+ *
+ * <p>Rows keys are serialized via the marshaller and produce leading columns:
+ * <ol>
+ *   <li>{@code "Old Prefix"}: The prefix (RangeSpecification) for the original ranges in a row (e.g. "12[3-6]").
+ *   <li>{@code "Old Length"}: The length for the original ranges in a row (e.g. "9", "8" or "5").
+ * </ol>
+ */
 public abstract class RecipesTableSchema {
 
-  public static final Column<Regions> CSV_REGION = Regions.column("Region");
-
-  public static final ColumnGroup<PhoneRegion, Boolean> RANGE_REGION =
-      ColumnGroup.byRegion(Column.ofBoolean("Region"));
-
+  /** The format of the original numbers in a given range. */
   public static final Column<String> OLD_FORMAT = Column.ofString("Old Format");
 
+  /** The new format of the migrated numbers in a given range. */
   public static final Column<String> NEW_FORMAT = Column.ofString("New Format");
 
+  /** The BCP-47 region code the given recipe belongs to. */
+  public static final Column<PhoneRegion> REGION_CODE =
+      Column.create(PhoneRegion.class, "Region", PhoneRegion.getUnknown(), PhoneRegion::of);
+
+  /** Indicates whether a given recipe will result in a valid, dialable range */
   public static final Column<Boolean> IS_FINAL_MIGRATION = Column.ofBoolean("Is Final Migration");
 
+  /** Marshaller for constructing CsvTable from RangeTable. */
   private static final CsvKeyMarshaller<RangeKey> MARSHALLER = new CsvKeyMarshaller<>(
       RangesTableSchema::write,
       RangesTableSchema::read,
@@ -37,66 +62,53 @@ public abstract class RecipesTableSchema {
       "Old Prefix",
       "Old Length");
 
+  /** The columns for the serialized CSV table. */
   private static final Schema CSV_COLUMNS =
       Schema.builder()
-          .add(CSV_REGION)
+          .add(REGION_CODE)
           .add(OLD_FORMAT)
           .add(NEW_FORMAT)
           .add(IS_FINAL_MIGRATION)
           .build();
 
+  /** Schema instance defining the ranges CSV table. */
   public static final CsvSchema<RangeKey> SCHEMA = CsvSchema.of(MARSHALLER, CSV_COLUMNS);
 
+  /** The non-key columns of a range table. */
   private static final Schema RANGE_COLUMNS =
       Schema.builder()
-          .add(RANGE_REGION)
+          .add(REGION_CODE)
           .add(OLD_FORMAT)
           .add(NEW_FORMAT)
           .add(IS_FINAL_MIGRATION)
           .build();
 
+  /**
+   * Converts a {@link RangeKey} based {@link CsvTable} to a {@link RangeTable}, preserving the
+   * original table columns. The {@link CsvSchema} of the returned table is not guaranteed to be
+   * the {@link #SCHEMA} instance if the given table had different columns.
+   */
   public static RangeTable toRangeTable(CsvTable<RangeKey> csv) {
     RangeTable.Builder out = RangeTable.builder(RANGE_COLUMNS);
     for (RangeKey k : csv.getKeys()) {
       Change.Builder change = Change.builder(k.asRangeTree());
-      csv.getRow(k).forEach((c, v) -> {
-        // We special case the regions column, converting a comma separated list of region codes
-        // into a series of boolean column assignments.
-        if (c.equals(CSV_REGION)) {
-          CSV_REGION.cast(v).getValues().forEach(r -> change.assign(RANGE_REGION.getColumn(r), true));
-        } else {
-          change.assign(c, v);
-        }
-      });
+      csv.getRow(k).forEach(change::assign);
       out.apply(change.build(), OverwriteMode.NEVER);
     }
     return out.build();
   }
 
+  /**
+   * Converts a {@link RangeTable} to a {@link CsvTable}, using {@link RangeKey}s as row keys and
+   * preserving the original table columns. The {@link CsvSchema} of the returned table is not
+   * guaranteed to be the {@link #SCHEMA} instance if the given table had different columns.
+   */
   @SuppressWarnings("unchecked")
   public static CsvTable<RangeKey> toCsv(RangeTable table) {
     CsvTable.Builder<RangeKey> csv = CsvTable.builder(SCHEMA);
-    ImmutableSet<Column<Boolean>> regionColumns =
-        RANGE_REGION.extractGroupColumns(table.getColumns()).values();
-    TreeSet<PhoneRegion> regions = new TreeSet<>();
     for (Change c : table.toChanges()) {
       for (RangeKey k : RangeKey.decompose(c.getRanges())) {
-        regions.clear();
-        c.getAssignments().forEach(a -> {
-          // We special case the regions column, converting a group of boolean columns into a
-          // multi-value of region codes. If the column is in the group, it must hold Booleans.
-          if (regionColumns.contains(a.column())) {
-            if (a.value().map(((Column<Boolean>) a.column())::cast).orElse(Boolean.FALSE)) {
-              regions.add(RANGE_REGION.getKey(a.column()));
-            }
-          } else {
-            csv.put(k, a);
-          }
-        });
-        // We can do this out-of-sequence because the table will order its columns.
-        if (!regions.isEmpty()) {
-          csv.put(k, CSV_REGION, Regions.of(regions));
-        }
+        c.getAssignments().forEach(a -> csv.put(k, a));
       }
     }
     return csv.build();

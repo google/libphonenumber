@@ -33,6 +33,17 @@ public class CommandLineMain {
   }
 
 
+  /**
+   * Runs the command line migrator tool with functionality specified by then given user's
+   * command line arguments
+   *
+   * @param args which expects two command line arguments;
+   *  numberInput: single E.164 number string to be potentially migrated
+   *       OR
+   *  fileInput: path to text file holding comma separated E.164 numbers to be potentially migrated
+   *
+   *  regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate (e.g. GB)
+   */
   public static void main(String[] args) throws IOException {
     CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
     if (clm.help) {
@@ -74,6 +85,7 @@ public class CommandLineMain {
       System.out.println(migrationJob.getRecipesTable());
       System.out.println(migrationJob.getNumberRange());
       System.out.println(migrationJob.getRegionCode());
+      System.out.println(migrationJob.getAllMigratableNumbers());
     }
   }
 }
