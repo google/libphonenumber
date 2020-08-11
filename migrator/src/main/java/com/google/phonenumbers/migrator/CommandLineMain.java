@@ -8,20 +8,22 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Help.Ansi;
 import picocli.CommandLine.Option;
 
-@Command(name = "Migrator Tool", description = "Command line phone number migration tool.\n"
-    + "Please enter a path to a text file containing E.164 phone numbers from the same region or a "
-    + "single E.164 number as well as the corresponding region code to begin migrations.\n")
+@Command(name = "Command Line Migrator Tool: (numberInput | fileInput) regionCode\n",
+    description =  "Please enter a path to a text file containing E.164 phone numbers "
+      + "(e.g. +12 (345) 67-890, +1234568890) from the same region or a single E.164 number as "
+      + "well as the corresponding two digit BCP-47 region code (e.g. GB, US) to begin migrations.\n")
 public class CommandLineMain {
 
-  @Option(names = {"-n", "--number"}, description = "Single E.164 phone number to migrate")
+  @Option(names = {"-n", "--number"},
+      description = "Single E.164 phone number to migrate (e.g. +12 (345) 67-890 | +1234567890)")
   String numberInput;
 
-  @Option(names = {"-f",
-      "--file"}, description = "Text file containing E.164 phone numbers to migrate")
+  @Option(names = {"-f", "--file"},
+      description = "Text file containing comma separated E.164 phone numbers to migrate")
   String fileInput;
 
-  @Option(names = {"-r",
-      "--region"}, description = "The two digit BCP-47 region code the given phone number(s) belong to")
+  @Option(names = {"-r", "--region"},
+      description = "The two digit BCP-47 region code the given phone number(s) belong to (e.g. GB)")
   String regionCode;
 
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
@@ -48,12 +50,13 @@ public class CommandLineMain {
    * Runs the command line migrator tool with functionality specified by then given user's command
    * line arguments
    *
-   * @param args which expects two command line arguments; numberInput: single E.164 number string
-   * to be potentially migrated OR fileInput: path to text file holding comma separated E.164
-   * numbers to be potentially migrated
+   * @param args which expects two command line arguments;
+   *    numberInput: single E.164 number string to be potentially migrated
+   *            OR
+   *    fileInput: path to text file holding comma separated E.164 numbers to be migrated
    *
-   * regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate (e.g.
-   * GB)
+   *    regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate
+   *                (e.g. GB)
    */
   public static void main(String[] args) throws IOException {
     CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
