@@ -1,11 +1,9 @@
 package com.google.phonenumbers.migrator;
 
-import com.google.common.collect.ImmutableSet;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.Change;
 import com.google.i18n.phonenumbers.metadata.table.Column;
-import com.google.i18n.phonenumbers.metadata.table.ColumnGroup;
 import com.google.i18n.phonenumbers.metadata.table.CsvKeyMarshaller;
 import com.google.i18n.phonenumbers.metadata.table.CsvSchema;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
@@ -14,7 +12,6 @@ import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable.OverwriteMode;
 import com.google.i18n.phonenumbers.metadata.table.Schema;
 import java.util.Optional;
-import java.util.TreeSet;
 
 /**
  * The schema of the standard "Recipes" table with rows keyed by {@link RangeKey} and columns:
@@ -39,7 +36,7 @@ import java.util.TreeSet;
  *   <li>{@code "Old Length"}: The length for the original ranges in a row (e.g. "9", "8" or "5").
  * </ol>
  */
-public abstract class RecipesTableSchema {
+public class RecipesTableSchema {
 
   /** The format of the original numbers in a given range. */
   public static final Column<String> OLD_FORMAT = Column.ofString("Old Format");

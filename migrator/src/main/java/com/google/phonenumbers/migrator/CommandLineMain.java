@@ -19,7 +19,8 @@ public class CommandLineMain {
   String numberInput;
 
   @Option(names = {"-f", "--file"},
-      description = "Text file containing comma separated E.164 phone numbers to migrate")
+      description = "Text file to be migrated which contains one E.164 phone "
+          + "number per line")
   String fileInput;
 
   @Option(names = {"-r", "--region"},
@@ -53,7 +54,8 @@ public class CommandLineMain {
    * @param args which expects two command line arguments;
    *    numberInput: single E.164 number string to be potentially migrated
    *            OR
-   *    fileInput: path to text file holding comma separated E.164 numbers to be migrated
+   *    fileInput: path to a given text file to be migrated which holds one
+   *               E.164 number per line
    *
    *    regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate
    *                (e.g. GB)
@@ -85,15 +87,16 @@ public class CommandLineMain {
             clm.fileInput = scanner.next();
           } else {
             System.out.print("Enter single E.164 number input: ");
-            clm.numberInput = scanner.next();
+            scanner.nextLine();
+            clm.numberInput = scanner.nextLine();
           }
         }
       }
 
       if (clm.numberInput != null) {
-        migrationJob = MigrationJob.from(clm.numberInput, clm.regionCode);
+        migrationJob = MigrationFactory.createMigration(clm.numberInput, clm.regionCode);
       } else {
-        migrationJob = MigrationJob.from(Paths.get(clm.fileInput), clm.regionCode);
+        migrationJob = MigrationFactory.createMigration(Paths.get(clm.fileInput), clm.regionCode);
       }
 
       System.out.println(migrationJob.getRecipesTable());
