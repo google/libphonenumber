@@ -6122,17 +6122,18 @@
       <generalDesc>
         <nationalNumberPattern>
           [178]\d\d(?:
-            \d{2}
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
           1(?:
             1[02389]|
-            40\d\d
+            40\d\d|
+            50264
           )|
           71400|
           89887
@@ -9802,7 +9803,7 @@
         <nationalNumberPattern>
           1(?:
             0[01]|
-            1[12]|
+            1[128]|
             2[034]|
             3[013]|
             [46]0|
@@ -9817,10 +9818,13 @@
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2,6"/>
+        <possibleLengths national="2,3,6"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
-          1[578]|
+          1(?:
+            18|
+            [578]
+          )|
           723\d{3}
         </nationalNumberPattern>
       </tollFree>
@@ -9843,10 +9847,13 @@
         </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
-        <possibleLengths national="2,6"/>
+        <possibleLengths national="2,3,6"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
-          1[578]|
+          1(?:
+            18|
+            [578]
+          )|
           723141
         </nationalNumberPattern>
       </emergency>

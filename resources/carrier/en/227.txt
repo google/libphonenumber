@@ -13,8 +13,16 @@
 # limitations under the License.
 
 22723|Orange
+22770|Orange
+22774|Moov
 22780|Orange
 22781|Orange
+22782|Orange
+22783|SahelCom
+22784|Moov
+22785|Moov
+22786|Airtel
+22787|Airtel
 22788|Airtel
 22789|Airtel
 22790|Orange

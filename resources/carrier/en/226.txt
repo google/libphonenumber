@@ -19,28 +19,28 @@
 22601|Onatel
 22602|Onatel
 22607|Orange
-22651|Telmob
-22652|Telmob
+22651|Onatel
+22652|Onatel
 22653|Onatel
 22654|Orange
 22655|Orange
 22656|Orange
 22657|Orange
 22658|Telecel Faso
-22660|Telmob
-22661|Telmob
-22662|Telmob
-22663|Telmob
+22660|Onatel
+22661|Onatel
+22662|Onatel
+22663|Onatel
 22664|Orange
 22665|Orange
 22666|Orange
 22667|Orange
 22668|Telecel Faso
 22669|Telecel Faso
-22670|Telmob
-22671|Telmob
-22672|Telmob
-22673|Telmob
+22670|Onatel
+22671|Onatel
+22672|Onatel
+22673|Onatel
 22674|Orange
 22675|Orange
 22676|Orange

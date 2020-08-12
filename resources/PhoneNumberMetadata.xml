@@ -12273,19 +12273,24 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP $FG">
-          <leadingDigits>[2-57-9]</leadingDigits>
+          <leadingDigits>[2-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [2357]\d{8}|
+          [235-7]\d{8}|
           [1-9]\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
-        <possibleLengths national="8"/>
-        <nationalNumberPattern>[48]0\d{6}</nationalNumberPattern>
+        <possibleLengths national="8,9"/>
+        <nationalNumberPattern>
+          (?:
+            [48]0\d|
+            6802
+          )\d{5}
+        </nationalNumberPattern>
       </noInternationalDialling>
       <fixedLine>
         <possibleLengths national="8" localOnly="6,7"/>
@@ -12313,11 +12318,17 @@
           )\d{7}
         </nationalNumberPattern>
       </mobile>
-      <!-- The prefix 40 which was earlier sharedcost is changed to toll free as of Jul. 2016. -->
+      <!-- The prefix 40 which was earlier sharedcost is changed to toll free as of Jul. 2016.
+           Toll free prefix 6802 supported based on user report. -->
       <tollFree>
-        <possibleLengths national="8"/>
+        <possibleLengths national="8,9"/>
         <exampleNumber>80123456</exampleNumber>
-        <nationalNumberPattern>[48]0\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [48]0\d|
+            6802
+          )\d{5}
+        </nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="8"/>
@@ -21237,13 +21248,14 @@
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
             [089]|
-            2[013]
+            2[013]|
+            7[04]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[0289]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[027-9]\d{7}</nationalNumberPattern>
       </generalDesc>
       <!-- Adding 20 61 from online numbers. -->
       <fixedLine>
@@ -21278,8 +21290,8 @@
         <nationalNumberPattern>
           (?:
             23|
-            8[014589]|
-            9\d
+            7[04]|
+            [89]\d
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -23152,11 +23164,14 @@
            instead, so we support those numbers too. See:
            http://www.polskasiectaxi.pl/pst/pst-partnerzy.
            Numbers which start with 26 are allocated for the military, see:
-           http://www.sgwp.wp.mil.pl/pl/1_1225.html. -->
+           http://www.sgwp.wp.mil.pl/pl/1_1225.html.
+           Numbers which start with 47 are allocated for police, see:
+           https://policja.pl/pol/aktualnosci/185570,Uwaga-Zmieniaja-sie-numery-telefonow-do-jednostek-Policji-w-calym-kraju.html -->
       <fixedLine>
         <possibleLengths national="7,9"/>
         <exampleNumber>123456789</exampleNumber>
         <nationalNumberPattern>
+          47\d{7}|
           (?:
             1[2-8]|
             2[2-69]|
@@ -24949,7 +24964,7 @@
           <leadingDigits>
             [369]|
             8(?:
-              01|
+              0[13]|
               [1-9]
             )
           </leadingDigits>
@@ -24998,7 +25013,10 @@
         <nationalNumberPattern>
           (?:
             8(?:
-              01[0-7]|
+              0(?:
+                1[0-7]|
+                3[01]
+              )|
               [1-8]\d\d|
               9(?:
                 [0-24]\d|
@@ -25187,11 +25205,11 @@
             8(?:
               1(?:
                 [67]\d|
-                8[01389]
+                8[0-489]
               )|
               2(?:
                 0\d|
-                2[0378]|
+                2[0-37-9]|
                 8[0-2489]
               )|
               3[389]\d
@@ -26865,7 +26883,7 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- Mobile and "personal" numbers. -->
+        <!-- Mobile and personal numbers. -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG"
                       nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>
@@ -26899,8 +26917,8 @@
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
-        <!-- 12 digit toll free numbers -->
-        <numberFormat pattern="(\d{3})(\d{3})(\d{6})" nationalPrefixFormattingRule="$NP$FG"
+        <!-- 12 -13 digit toll free numbers -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{6,7})" nationalPrefixFormattingRule="$NP$FG"
                       nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>80</leadingDigits>
           <format>$1 $2 $3</format>
@@ -26908,10 +26926,8 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          (?:
-            4|
-            8\d{5}
-          )\d{6}|
+          4\d{6}|
+          8\d{11,12}|
           (?:
             [2-58]\d\d|
             900
@@ -26975,12 +26991,13 @@
         <exampleNumber>5123456789</exampleNumber>
         <nationalNumberPattern>512\d{7}</nationalNumberPattern>
       </pager>
+      <!-- Toll free range 800 of length 13 digits supported based on user report. -->
       <tollFree>
-        <possibleLengths national="10,12"/>
+        <possibleLengths national="10,12,13"/>
         <exampleNumber>8001234567</exampleNumber>
         <nationalNumberPattern>
           800\d{7}(?:
-            \d{2}
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </tollFree>
