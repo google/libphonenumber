@@ -13,23 +13,29 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
  * Represents a migration operation for a given region where each {@link MigrationJob} contains
- * a {@link RangeTree} of E.164 numbers to be migrated as well as the {@link CsvTable} which will
- * hold the available recipes that can be performed on the range. Only recipes from the given
- * two digit BCP-47 regionCode will be used.
+ * a map of E.164 numbers to be migrated as well as the {@link CsvTable} which will
+ * hold the available recipes that can be performed on the range. The number range map is a key value
+ * pair of the E.164 {@link RangeSpecification} representation of a number along with the raw input
+ * String originally entered. Only recipes from the given two digit BCP-47 regionCode will be used.
  */
 public final class MigrationJob {
 
   private final CsvTable<RangeKey> recipesTable;
-  private final RangeTree numberRange;
+  private final Map<RangeSpecification, String> numberRangeMap;
   private final PhoneRegion regionCode;
 
-  public MigrationJob(RangeTree numberRange, PhoneRegion regionCode, CsvTable<RangeKey> recipesTable) {
-    this.numberRange = numberRange;
+  public MigrationJob(Map<RangeSpecification,
+      String> numberRangeMap,
+      PhoneRegion regionCode,
+      CsvTable<RangeKey> recipesTable) {
+    this.numberRangeMap = numberRangeMap;
     this.regionCode = regionCode;
     this.recipesTable = recipesTable;
   }
@@ -38,8 +44,22 @@ public final class MigrationJob {
     return recipesTable;
   }
 
+  public Map<RangeSpecification, String> getNumberRangeMap() {
+    return numberRangeMap;
+  }
+
+  /**
+   * Returns the formatted version of the number range inputted for migration
+   */
   public RangeTree getNumberRange() {
-    return numberRange;
+    return RangeTree.from(numberRangeMap.keySet());
+  }
+
+  /**
+   * Returns a list of the raw number range inputted for migration
+   */
+  public Collection<String> getRawNumberRange() {
+    return numberRangeMap.values();
   }
 
   public PhoneRegion getRegionCode() {
@@ -55,7 +75,7 @@ public final class MigrationJob {
   public RangeTree getAllMigratableNumbers() {
     return RecipesTableSchema.toRangeTable(recipesTable)
         .getRanges(RecipesTableSchema.REGION_CODE, regionCode)
-        .intersect(numberRange);
+        .intersect(getNumberRange());
   }
 
   /**
@@ -71,7 +91,7 @@ public final class MigrationJob {
       throw new IllegalArgumentException(
           recipeKey + " does not match any recipe row in the given recipes table");
     }
-    return recipeKey.asRangeTree().intersect(numberRange);
+    return recipeKey.asRangeTree().intersect(getNumberRange());
   }
 
 

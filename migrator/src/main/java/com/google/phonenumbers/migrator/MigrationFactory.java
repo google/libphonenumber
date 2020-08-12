@@ -10,7 +10,10 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MigrationFactory {
 
@@ -22,7 +25,8 @@ public class MigrationFactory {
    */
   public static MigrationJob createMigration(String number, String region) throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    RangeTree numberRanges = RangeTree.from(sanitizeNumberString(number));
+    Map<RangeSpecification, String> numberRanges =
+        Collections.singletonMap(sanitizeNumberString(number), number);
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -35,7 +39,8 @@ public class MigrationFactory {
   public static MigrationJob createMigration(String number, String region, Path customRecipesFile)
       throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    RangeTree numberRanges = RangeTree.from(sanitizeNumberString(number));
+    Map<RangeSpecification, String> numberRanges =
+        Collections.singletonMap(sanitizeNumberString(number), number);
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -49,9 +54,10 @@ public class MigrationFactory {
    */
   public static MigrationJob createMigration(Path file, String region) throws IOException {
     List<String> numbers = Files.readAllLines(file);
-
     PhoneRegion regionCode = PhoneRegion.of(region);
-    RangeTree numberRanges = RangeTree.from(numbers.stream().map(MigrationFactory::sanitizeNumberString));
+    Map<RangeSpecification, String> numberRanges = new HashMap<>();
+
+    numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -64,22 +70,23 @@ public class MigrationFactory {
   public static MigrationJob createMigration(Path file, String region, Path customRecipesFile)
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
-
     PhoneRegion regionCode = PhoneRegion.of(region);
-    RangeTree numberRanges = RangeTree.from(numbers.stream().map(MigrationFactory::sanitizeNumberString));
+    Map<RangeSpecification, String> numberRanges = new HashMap<>();
+
+    numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
     return new MigrationJob(numberRanges, regionCode, recipes);
   }
 
   /**
-   * Removes spaces and '+' characters expected in E.164 numbers and returns the
+   * Removes spaces and '+' '(' ')' '-' characters expected in E.164 numbers then returns the
    * {@link RangeSpecification} representation of a given number. The method will not remove other
    * letters or special characters from strings to enable users to receive error messages in
    * cases where invalid numbers are inputted.
    */
   private static RangeSpecification sanitizeNumberString(String number) {
-    String sanitizedString = number.replaceAll("[+]|[\\s]", "");
+    String sanitizedString = number.replaceAll("[+]|[\\s]|[(]|[)]|[-]", "");
     return RangeSpecification.parse(sanitizedString);
   }
 
