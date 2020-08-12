@@ -1,5 +1,6 @@
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
@@ -25,8 +26,8 @@ public class MigrationFactory {
    */
   public static MigrationJob createMigration(String number, String region) throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    Map<RangeSpecification, String> numberRanges =
-        Collections.singletonMap(sanitizeNumberString(number), number);
+    ImmutableMap<RangeSpecification, String> numberRanges =
+        ImmutableMap.of(sanitizeNumberString(number), number);
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -39,8 +40,8 @@ public class MigrationFactory {
   public static MigrationJob createMigration(String number, String region, Path customRecipesFile)
       throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    Map<RangeSpecification, String> numberRanges =
-        Collections.singletonMap(sanitizeNumberString(number), number);
+    ImmutableMap<RangeSpecification, String> numberRanges =
+        ImmutableMap.of(sanitizeNumberString(number), number);
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -60,7 +61,7 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
-    return new MigrationJob(numberRanges, regionCode, recipes);
+    return new MigrationJob(ImmutableMap.copyOf(numberRanges), regionCode, recipes);
   }
 
   /**
@@ -76,7 +77,7 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
-    return new MigrationJob(numberRanges, regionCode, recipes);
+    return new MigrationJob(ImmutableMap.copyOf(numberRanges), regionCode, recipes);
   }
 
   /**

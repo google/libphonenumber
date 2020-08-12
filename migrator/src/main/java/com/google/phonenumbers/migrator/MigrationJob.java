@@ -1,5 +1,6 @@
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
@@ -28,10 +29,10 @@ import java.util.Scanner;
 public final class MigrationJob {
 
   private final CsvTable<RangeKey> recipesTable;
-  private final Map<RangeSpecification, String> numberRangeMap;
+  private final ImmutableMap<RangeSpecification, String> numberRangeMap;
   private final PhoneRegion regionCode;
 
-  public MigrationJob(Map<RangeSpecification,
+  public MigrationJob(ImmutableMap<RangeSpecification,
       String> numberRangeMap,
       PhoneRegion regionCode,
       CsvTable<RangeKey> recipesTable) {
@@ -93,8 +94,4 @@ public final class MigrationJob {
     }
     return recipeKey.asRangeTree().intersect(getNumberRange());
   }
-
-
-
-
 }
