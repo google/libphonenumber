@@ -2,7 +2,6 @@ package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
@@ -11,10 +10,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MigrationFactory {
 
@@ -56,12 +52,12 @@ public class MigrationFactory {
   public static MigrationJob createMigration(Path file, String region) throws IOException {
     List<String> numbers = Files.readAllLines(file);
     PhoneRegion regionCode = PhoneRegion.of(region);
-    Map<RangeSpecification, String> numberRanges = new HashMap<>();
+    ImmutableMap.Builder<RangeSpecification, String> numberRanges = ImmutableMap.builder();
 
     numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
-    return new MigrationJob(ImmutableMap.copyOf(numberRanges), regionCode, recipes);
+    return new MigrationJob(numberRanges.build(), regionCode, recipes);
   }
 
   /**
@@ -72,12 +68,12 @@ public class MigrationFactory {
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     PhoneRegion regionCode = PhoneRegion.of(region);
-    Map<RangeSpecification, String> numberRanges = new HashMap<>();
+    ImmutableMap.Builder<RangeSpecification, String> numberRanges = ImmutableMap.builder();
 
     numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
-    return new MigrationJob(ImmutableMap.copyOf(numberRanges), regionCode, recipes);
+    return new MigrationJob(numberRanges.build(), regionCode, recipes);
   }
 
   /**
