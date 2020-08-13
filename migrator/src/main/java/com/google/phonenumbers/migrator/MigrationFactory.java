@@ -85,8 +85,8 @@ public class MigrationFactory {
   /**
    * Removes spaces and '+' '(' ')' '-' characters expected in E.164 numbers then returns the
    * {@link RangeSpecification} representation of a given number. The method will not remove other
-   * letters or special characters from strings to enable error messages in
-   * cases where invalid numbers are inputted.
+   * letters or special characters from strings to enable error messages in cases where invalid
+   * numbers are inputted.
    */
   private static RangeSpecification sanitizeNumberString(String number) {
     String sanitizedString = number.replaceAll("[+]|[\\s]|[(]|[)]|[-]", "");
