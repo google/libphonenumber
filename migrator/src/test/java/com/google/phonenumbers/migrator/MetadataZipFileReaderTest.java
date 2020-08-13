@@ -36,7 +36,7 @@ public class MetadataZipFileReaderTest {
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
-  public void createInstance_invalidFileLocation_expectError() {
+  public void createInstance_invalidFileLocation_expectException() {
     String fileLocation = "invalid-zipfile-location";
     try {
       MetadataZipFileReader.of(Paths.get(fileLocation));
