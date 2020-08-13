@@ -12,6 +12,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Factory class to instantiate {@link MigrationJob} objects. To create a Migration Job, a two digit
+ * BCP-47 region code is required as well as a number input (either a single E.164 number or a file
+ * path containing one E.164 number per line). There is also the option for specifying a custom
+ * recipes file as a third parameter to use for migrations instead of the default recipes file.
+ */
 public class MigrationFactory {
 
   private final static String DEFAULT_RECIPES_FILE = "../recipes.csv";
@@ -79,7 +85,7 @@ public class MigrationFactory {
   /**
    * Removes spaces and '+' '(' ')' '-' characters expected in E.164 numbers then returns the
    * {@link RangeSpecification} representation of a given number. The method will not remove other
-   * letters or special characters from strings to enable users to receive error messages in
+   * letters or special characters from strings to enable error messages in
    * cases where invalid numbers are inputted.
    */
   private static RangeSpecification sanitizeNumberString(String number) {
