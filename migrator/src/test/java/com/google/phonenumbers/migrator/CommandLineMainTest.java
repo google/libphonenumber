@@ -14,14 +14,14 @@ public class CommandLineMainTest {
   private static final String TEST_FILE_INPUT = "../test-file-path.txt";
 
   @Test
-  public void testInsufficientArguments() {
+  public void createFromPath_noPathSpecified_expectInsufficientArguments() {
     String[] args = ("--region="+TEST_REGION_CODE).split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
     assertThat(p.insufficientArguments()).isTrue();
   }
 
   @Test
-  public void testAcceptableNumberInputArguments() {
+  public void createFromNumberString_expectSufficientArguments() {
     String[] args = ("--region="+TEST_REGION_CODE+" --number="+TEST_NUMBER_INPUT).split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
     assertThat(p.getRegionCode()).matches(TEST_REGION_CODE);
@@ -31,7 +31,7 @@ public class CommandLineMainTest {
   }
 
   @Test
-  public void testAcceptableFileInputArguments() {
+  public void createFromPath_expectSufficientArguments() {
     String[] args = ("--region="+TEST_REGION_CODE+" --file="+TEST_FILE_INPUT).split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
     assertThat(p.getRegionCode()).matches(TEST_REGION_CODE);

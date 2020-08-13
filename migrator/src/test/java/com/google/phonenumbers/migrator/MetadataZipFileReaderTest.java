@@ -36,7 +36,7 @@ public class MetadataZipFileReaderTest {
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
-  public void testInvalidFileLocation() {
+  public void createInstance_invalidFileLocation_expectError() {
     String fileLocation = "invalid-zipfile-location";
     try {
       MetadataZipFileReader.of(Paths.get(fileLocation));
@@ -48,7 +48,7 @@ public class MetadataZipFileReaderTest {
   }
 
   @Test
-  public void testValidCsvTable() throws IOException {
+  public void importTable_countryCodeInZip_expectCsvTable() throws IOException {
     String fileLocation = TEST_DATA_PATH + "testMetadataZip.zip";
     MetadataZipFileReader validZip = MetadataZipFileReader.of(Paths.get(fileLocation));
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable(DigitSequence.of("1"));
@@ -56,7 +56,7 @@ public class MetadataZipFileReaderTest {
   }
 
   @Test
-  public void testUnsupportedCsvTable() throws IOException {
+  public void importTable_countryCodeNotInZip_expectEmptyCsvTable() throws IOException {
     String fileLocation = TEST_DATA_PATH + "testMetadataZip.zip/";
     MetadataZipFileReader validZip = MetadataZipFileReader.of(Paths.get(fileLocation));
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable(DigitSequence.of("2"));
