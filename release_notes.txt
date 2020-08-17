@@ -1,3 +1,8 @@
+Aug 17, 2020: v8.12.9
+Metadata changes:
+ - Updated phone metadata for region code(s): GB
+ - Updated short number metadata for region code(s): SA
+
 Aug 12, 2020: v8.12.8
 Metadata changes:
  - Updated phone metadata for region code(s): HU, NE, PL, SG, SI, TR
