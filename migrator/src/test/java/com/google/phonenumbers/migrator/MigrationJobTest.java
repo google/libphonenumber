@@ -17,9 +17,9 @@ package com.google.phonenumbers.migrator;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -35,35 +35,40 @@ public class MigrationJobTest {
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
-  public void getAllMigratableNumbers_expectNoMatches() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
-    MigrationJob job = MigrationFactory.createMigration("34", "GB", Paths.get(recipesPath));
-
-    RangeTree noMatchesRange = job.getAllMigratableNumbers();
-    assertThat(noMatchesRange.asRangeSpecifications()).isEmpty();
-  }
-
-  @Test
-  public void getAllMigratableNumbers_expectMatches() throws IOException {
+  public void performAllMigrations_expectMigrations() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    RangeTree noMatchesRange = job.getAllMigratableNumbers();
-    assertThat(noMatchesRange.asRangeSpecifications())
-        .containsExactlyElementsIn(job.getNumberRange().asRangeSpecifications());
+    ImmutableMap<RangeSpecification, String> migratedNums = job.performAllMigrations();
+    assertThat(migratedNums).isNotEmpty();
+    assertThat(job.getRawNumberRange()).containsAtLeastElementsIn(migratedNums.values());
   }
 
   @Test
-  public void getMigratableNumbers_invalidKey_expectException() throws IOException {
+  public void performAllMigrations_noRecipesFromRegion_expectNoMigrations() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
+    String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
+    MigrationJob job = MigrationFactory
+        .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
+
+    ImmutableMap<RangeSpecification, String> migratedNums = job.performAllMigrations();
+    assertThat(migratedNums).isEmpty();
+  }
+
+  @Test
+  public void performSingleMigration_unsupportedRecipeKey_expectException() throws IOException {
+    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
+    String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
+    MigrationJob job = MigrationFactory
+        .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
+
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("123"));
     RangeKey invalidKey = RangeKey.create(testRangeSpec, Collections.singleton(3));
 
-    MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
     try {
-      job.getMigratableNumbers(invalidKey);
+      job.performSingleRecipeMigration(invalidKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -72,12 +77,70 @@ public class MigrationJobTest {
   }
 
   @Test
-  public void getMigratableNumbers_validKey_expectNoExceptionAndNoMatches() throws IOException {
+  public void performSingleMigration_validKey_expectMigration() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
+    String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
+    MigrationJob job = MigrationFactory
+        .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
+
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("12"));
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
-    MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
-    assertThat(job.getMigratableNumbers(validKey).asRangeSpecifications()).isEmpty();
+    ImmutableMap<RangeSpecification, String> migratedNums = job.performSingleRecipeMigration(validKey);
+    assertThat(migratedNums).isNotEmpty();
+    assertThat(job.getRawNumberRange()).containsAtLeastElementsIn(migratedNums.values());
+  }
+
+  @Test
+  public void performMigration_invalidOldFormatValue_expectException() throws IOException {
+    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
+    MigrationJob job = MigrationFactory
+        .createMigration("13321", "GB", Paths.get(recipesPath));
+
+    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("13"));
+    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+
+    try {
+      job.performSingleRecipeMigration(recipeKey);
+      Assert.fail("Expected RuntimeException and did not receive");
+    } catch (RuntimeException e) {
+      assertThat(e).isInstanceOf(IllegalArgumentException.class);
+      assertThat(e).hasMessageThat().contains("Old Format");
+    }
+  }
+
+  @Test
+  public void performMultipleMigration_nextRecipeNotFound_expectException() throws IOException {
+    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
+    String staleNumber = "10321";
+    MigrationJob job = MigrationFactory
+        .createMigration(staleNumber, "GB", Paths.get(recipesPath));
+
+    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("10"));
+    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+
+    try {
+      job.performSingleRecipeMigration(recipeKey);
+      Assert.fail("Expected RuntimeException and did not receive");
+    } catch (RuntimeException e) {
+      assertThat(e).isInstanceOf(RuntimeException.class);
+      assertThat(e).hasMessageThat().contains("multiple migration");
+      assertThat(e).hasMessageThat().contains(staleNumber);
+    }
+  }
+
+  @Test
+  public void performMultipleMigration_expectMigration() throws IOException {
+    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
+    String staleNumber = "15321";
+    MigrationJob job = MigrationFactory
+        .createMigration(staleNumber, "GB", Paths.get(recipesPath));
+
+    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("15"));
+    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+
+    ImmutableMap<RangeSpecification, String> migratedNums = job.performSingleRecipeMigration(recipeKey);
+    assertThat(migratedNums).isNotEmpty();
+    assertThat(migratedNums.keySet()).containsExactly(RangeSpecification.parse("130211"));
   }
 }
