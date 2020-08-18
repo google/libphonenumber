@@ -86,7 +86,7 @@ public final class MigrationJob {
     ImmutableMap.Builder<RangeSpecification, String> migratedToStaleMap = ImmutableMap.builder();
 
     for (RangeSpecification staleMinimalRange : MigrationUtils
-        .getFullMigratableRange(getRecipesRangeTable(), regionCode, getNumberRange())
+        .getMigratableRegionRange(getRecipesRangeTable(), regionCode, getNumberRange())
         .asRangeSpecifications()) {
       ImmutableMap<Column<?>, Object> matchingRecipe = MigrationUtils
           .findMatchingRecipe(getRecipesRangeTable(), regionCode, staleMinimalRange)
@@ -110,9 +110,9 @@ public final class MigrationJob {
   public ImmutableMap<RangeSpecification, String> performSingleRecipeMigration(RangeKey recipeKey) {
     ImmutableMap.Builder<RangeSpecification, String> migratedToStaleMap = ImmutableMap.builder();
     RangeTree migratableRange = MigrationUtils
-        .getMigratableRange(getRecipesCsvTable(), recipeKey, getNumberRange())
+        .getMigratableRecipeRange(getRecipesCsvTable(), recipeKey, getNumberRange())
         .intersect(MigrationUtils
-            .getFullMigratableRange(getRecipesRangeTable(), regionCode, getNumberRange()));
+            .getMigratableRegionRange(getRecipesRangeTable(), regionCode, getNumberRange()));
 
     for (RangeSpecification staleMinimalRange : migratableRange.asRangeSpecifications()) {
       ImmutableMap<Column<?>, Object> matchingRecipe = MigrationUtils

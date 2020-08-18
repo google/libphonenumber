@@ -39,7 +39,7 @@ public class MigrationUtils {
    * @throws IllegalArgumentException if there is no row in the recipesTable with the given
    * recipeKey
    */
-  public static RangeTree getMigratableRange(CsvTable<RangeKey> recipesTable, RangeKey recipeKey,
+  public static RangeTree getMigratableRecipeRange(CsvTable<RangeKey> recipesTable, RangeKey recipeKey,
       RangeTree numberRange) {
     if (!recipesTable.containsRow(recipeKey)) {
       throw new IllegalArgumentException(
@@ -54,7 +54,7 @@ public class MigrationUtils {
    * will not perform migrations and as a result, the validity of migrations using the given
    * recipesTable cannot be verified.
    */
-  public static RangeTree getFullMigratableRange(RangeTable recipesTable, PhoneRegion regionCode,
+  public static RangeTree getMigratableRegionRange(RangeTable recipesTable, PhoneRegion regionCode,
       RangeTree numberRange) {
     return recipesTable
         .getRanges(RecipesTableSchema.REGION_CODE, regionCode)

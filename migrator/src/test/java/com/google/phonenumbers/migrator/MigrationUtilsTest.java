@@ -40,25 +40,25 @@ public class MigrationUtilsTest {
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
-  public void getAllMigratableNumbers_expectNoMatches() throws IOException {
+  public void getRegionalMigratableNumbers_expectNoMatches() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory.createMigration("34", "GB", Paths.get(recipesPath));
 
     RangeTree noMatchesRange = MigrationUtils
-        .getFullMigratableRange(job.getRecipesRangeTable(), job.getRegionCode(),
+        .getMigratableRegionRange(job.getRecipesRangeTable(), job.getRegionCode(),
             job.getNumberRange());
     assertThat(noMatchesRange.asRangeSpecifications()).isEmpty();
   }
 
   @Test
-  public void getAllMigratableNumbers_expectMatches() throws IOException {
+  public void getRegionalMigratableNumbers_expectMatches() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
     RangeTree noMatchesRange = MigrationUtils
-        .getFullMigratableRange(job.getRecipesRangeTable(), job.getRegionCode(),
+        .getMigratableRegionRange(job.getRecipesRangeTable(), job.getRegionCode(),
             job.getNumberRange());
     assertThat(noMatchesRange.asRangeSpecifications())
         .containsExactlyElementsIn(job.getNumberRange().asRangeSpecifications());
@@ -73,7 +73,7 @@ public class MigrationUtilsTest {
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
     try {
       MigrationUtils
-          .getMigratableRange(job.getRecipesCsvTable(), invalidKey, job.getNumberRange());
+          .getMigratableRecipeRange(job.getRecipesCsvTable(), invalidKey, job.getNumberRange());
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -89,7 +89,7 @@ public class MigrationUtilsTest {
 
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
     assertThat(MigrationUtils
-        .getMigratableRange(job.getRecipesCsvTable(), validKey, job.getNumberRange())
+        .getMigratableRecipeRange(job.getRecipesCsvTable(), validKey, job.getNumberRange())
         .asRangeSpecifications()).isEmpty();
   }
 
