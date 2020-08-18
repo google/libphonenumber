@@ -15,8 +15,12 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.i18n.phonenumbers.metadata.DigitSequence;
+import com.google.i18n.phonenumbers.metadata.RangeSpecification;
+import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.Scanner;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -114,10 +118,13 @@ public class CommandLineMain {
         migrationJob = MigrationFactory.createMigration(Paths.get(clm.fileInput), clm.regionCode);
       }
 
-      System.out.println(migrationJob.getRecipesTable());
+      System.out.println(migrationJob.getRecipesCsvTable());
       System.out.println(migrationJob.getNumberRange());
-      System.out.println(migrationJob.getRegionCode());
-      System.out.println(migrationJob.getAllMigratableNumbers());
+      System.out.println("");
+      RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")), Collections.singleton(12));
+      System.out.println(key);
+      System.out.println(migrationJob.performSingleRecipeMigration(key));
+      System.out.println(migrationJob.performAllMigrations());
     }
   }
 }

@@ -98,6 +98,7 @@ public final class MetadataZipFileReader {
             .orElseThrow(() -> new RuntimeException("Country code not supported in zipfile")));
 
     System.out.println("Table imported!");
-    ranges.get().getKeys().forEach(System.out::println);
+    System.out.println(ranges.get());
+    // ranges.get().getKeys().forEach(System.out::println);
   }
 }
