@@ -17,13 +17,16 @@ package com.google.phonenumbers.migrator;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.google.common.collect.Range;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,8 +42,8 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory.createMigration("34", "GB", Paths.get(recipesPath));
 
-    RangeTree noMatchesRange = job.getAllMigratableNumbers();
-    assertThat(noMatchesRange.asRangeSpecifications()).isEmpty();
+    Stream<DigitSequence> noMatchesRange = job.getAllMigratableNumbers();
+    assertThat(noMatchesRange.collect(Collectors.toList())).isEmpty();
   }
 
   @Test
@@ -50,9 +53,11 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    RangeTree noMatchesRange = job.getAllMigratableNumbers();
-    assertThat(noMatchesRange.asRangeSpecifications())
-        .containsExactlyElementsIn(job.getNumberRange().asRangeSpecifications());
+    List<DigitSequence> noMatchesRange = job.getAllMigratableNumbers().collect(Collectors.toList());
+    assertThat(noMatchesRange)
+        .containsExactlyElementsIn(job.getNumberRange().asRanges().stream()
+            .map(Range::lowerEndpoint)
+            .collect(Collectors.toList()));
   }
 
   @Test
@@ -78,6 +83,6 @@ public class MigrationJobTest {
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
-    assertThat(job.getMigratableNumbers(validKey).asRangeSpecifications()).isEmpty();
+    assertThat(job.getMigratableNumbers(validKey).collect(Collectors.toList())).isEmpty();
   }
 }

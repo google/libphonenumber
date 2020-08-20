@@ -23,6 +23,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import picocli.CommandLine;
 import picocli.CommandLine.MissingParameterException;
+import picocli.CommandLine.MutuallyExclusiveArgsException;
 
 @RunWith(JUnit4.class)
 public class CommandLineMainTest {
@@ -32,7 +33,7 @@ public class CommandLineMainTest {
 
   @Test
   public void createMigrationJob_noNumberInputSpecified_expectException() {
-    String[] args = ("--region="+TEST_REGION_CODE).split(" ");
+    String[] args = ("--region=" + TEST_REGION_CODE).split(" ");
     try {
       CommandLine.populateCommand(new CommandLineMain(), args);
       Assert.fail("Expected RuntimeException and did not receive");
@@ -42,8 +43,20 @@ public class CommandLineMainTest {
   }
 
   @Test
+  public void createMigrationJob_numberAndFile_expectException() {
+    String[] args = ("--region=" + TEST_REGION_CODE + " --number=" + TEST_NUMBER_INPUT + " --file="
+        + TEST_FILE_INPUT).split(" ");
+    try {
+      CommandLine.populateCommand(new CommandLineMain(), args);
+      Assert.fail("Expected RuntimeException and did not receive");
+    } catch (RuntimeException e) {
+      assertThat(e).isInstanceOf(MutuallyExclusiveArgsException.class);
+    }
+  }
+
+  @Test
   public void createFromNumberString_expectSufficientArguments() {
-    String[] args = ("--region="+TEST_REGION_CODE+" --number="+TEST_NUMBER_INPUT).split(" ");
+    String[] args = ("--region=" + TEST_REGION_CODE + " --number=" + TEST_NUMBER_INPUT).split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
     assertThat(p.regionCode).matches(TEST_REGION_CODE);
     assertThat(p.numberInput.number).matches(TEST_NUMBER_INPUT);
