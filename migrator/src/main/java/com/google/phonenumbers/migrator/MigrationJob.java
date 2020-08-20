@@ -21,18 +21,7 @@ import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Represents a migration operation for a given region where each {@link MigrationJob} contains
@@ -47,7 +36,7 @@ public final class MigrationJob {
   private final ImmutableMap<RangeSpecification, String> numberRangeMap;
   private final PhoneRegion regionCode;
 
-  public MigrationJob(ImmutableMap<RangeSpecification,
+  MigrationJob(ImmutableMap<RangeSpecification,
       String> numberRangeMap,
       PhoneRegion regionCode,
       CsvTable<RangeKey> recipesTable) {
@@ -60,19 +49,19 @@ public final class MigrationJob {
     return recipesTable;
   }
 
-  public Map<RangeSpecification, String> getNumberRangeMap() {
+  public ImmutableMap<RangeSpecification, String> getNumberRangeMap() {
     return numberRangeMap;
   }
 
   /**
-   * Returns the formatted version of the number range inputted for migration
+   * Returns the formatted version of the number range for migration
    */
   public RangeTree getNumberRange() {
     return RangeTree.from(numberRangeMap.keySet());
   }
 
   /**
-   * Returns a list of the raw number range inputted for migration
+   * Returns a list of the raw number range for migration
    */
   public Collection<String> getRawNumberRange() {
     return numberRangeMap.values();
