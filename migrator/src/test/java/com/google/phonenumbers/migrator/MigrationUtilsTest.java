@@ -19,16 +19,17 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Range;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,10 +45,10 @@ public class MigrationUtilsTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory.createMigration("34", "GB", Paths.get(recipesPath));
 
-    RangeTree noMatchesRange = MigrationUtils
+    Stream<DigitSequence> noMatchesRange = MigrationUtils
         .getMigratableRegionRange(job.getRecipesRangeTable(), job.getRegionCode(),
             job.getNumberRange());
-    assertThat(noMatchesRange.asRangeSpecifications()).isEmpty();
+    assertThat(noMatchesRange.collect(Collectors.toSet())).isEmpty();
   }
 
   @Test
@@ -57,11 +58,14 @@ public class MigrationUtilsTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    RangeTree noMatchesRange = MigrationUtils
+    Stream<DigitSequence> noMatchesRange = MigrationUtils
         .getMigratableRegionRange(job.getRecipesRangeTable(), job.getRegionCode(),
             job.getNumberRange());
-    assertThat(noMatchesRange.asRangeSpecifications())
-        .containsExactlyElementsIn(job.getNumberRange().asRangeSpecifications());
+
+    assertThat(noMatchesRange.collect(Collectors.toSet()))
+        .containsExactlyElementsIn(job.getNumberRange().asRanges().stream()
+            .map(Range::lowerEndpoint)
+            .collect(Collectors.toList()));
   }
 
   @Test
@@ -88,9 +92,11 @@ public class MigrationUtilsTest {
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
+
     assertThat(MigrationUtils
         .getMigratableRecipeRange(job.getRecipesCsvTable(), validKey, job.getNumberRange())
-        .asRangeSpecifications()).isEmpty();
+        .collect(Collectors.toSet()))
+        .isEmpty();
   }
 
   @Test
@@ -98,7 +104,7 @@ public class MigrationUtilsTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
 
-    RangeSpecification testNumberToMatch = RangeSpecification.from(DigitSequence.of("12"));
+    DigitSequence testNumberToMatch = DigitSequence.of("12");
     assertThat(MigrationUtils
         .findMatchingRecipe(job.getRecipesRangeTable(), job.getRegionCode(), testNumberToMatch))
         .isEmpty();
@@ -111,27 +117,11 @@ public class MigrationUtilsTest {
     DigitSequence testNumberToMatch = DigitSequence.of("12345");
 
     Optional<ImmutableMap<Column<?>, Object>> foundRecipe = MigrationUtils
-        .findMatchingRecipe(job.getRecipesRangeTable(), job.getRegionCode(),
-            RangeSpecification.from(testNumberToMatch));
+        .findMatchingRecipe(job.getRecipesRangeTable(), job.getRegionCode(), testNumberToMatch);
     assertThat(foundRecipe).isPresent();
 
     RangeSpecification oldFormat = RangeSpecification
         .parse((String) foundRecipe.get().get(RecipesTableSchema.OLD_FORMAT));
     assertThat(oldFormat.matches(testNumberToMatch)).isTrue();
-  }
-
-  @Test
-  public void getNumbersFromMinimalRange_expectIndividualNumber() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
-    String individualNumber = "12345";
-    RangeSpecification minimalRange = RangeSpecification.parse("1xxxx");
-    MigrationJob job = MigrationFactory
-        .createMigration(individualNumber, "GB", Paths.get(recipesPath));
-
-    ImmutableSet<RangeSpecification> numberSet = MigrationUtils
-        .getNumbersFromMinimalRange(job.getNumberRangeMap(), minimalRange);
-
-    assertThat(numberSet).isNotEmpty();
-    assertThat(numberSet).containsExactly(RangeSpecification.parse(individualNumber));
   }
 }

@@ -41,7 +41,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    ImmutableMap<RangeSpecification, String> migratedNums = job.performAllMigrations();
+    ImmutableMap<DigitSequence, String> migratedNums = job.performAllMigrations();
     assertThat(migratedNums).isNotEmpty();
     assertThat(job.getRawNumberRange()).containsAtLeastElementsIn(migratedNums.values());
   }
@@ -53,7 +53,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
 
-    ImmutableMap<RangeSpecification, String> migratedNums = job.performAllMigrations();
+    ImmutableMap<DigitSequence, String> migratedNums = job.performAllMigrations();
     assertThat(migratedNums).isEmpty();
   }
 
@@ -86,7 +86,7 @@ public class MigrationJobTest {
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("12"));
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
-    ImmutableMap<RangeSpecification, String> migratedNums = job.performSingleRecipeMigration(validKey);
+    ImmutableMap<DigitSequence, String> migratedNums = job.performSingleRecipeMigration(validKey);
     assertThat(migratedNums).isNotEmpty();
     assertThat(job.getRawNumberRange()).containsAtLeastElementsIn(migratedNums.values());
   }
@@ -139,8 +139,8 @@ public class MigrationJobTest {
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("15"));
     RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
-    ImmutableMap<RangeSpecification, String> migratedNums = job.performSingleRecipeMigration(recipeKey);
+    ImmutableMap<DigitSequence, String> migratedNums = job.performSingleRecipeMigration(recipeKey);
     assertThat(migratedNums).isNotEmpty();
-    assertThat(migratedNums.keySet()).containsExactly(RangeSpecification.parse("130211"));
+    assertThat(migratedNums.keySet()).containsExactly(DigitSequence.of("130211"));
   }
 }

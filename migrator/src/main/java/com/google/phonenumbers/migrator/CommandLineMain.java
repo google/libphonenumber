@@ -32,6 +32,9 @@ import picocli.CommandLine.Option;
       + "(e.g. +1234567891, +1234568890) from the same region or a single E.164 number as "
       + "well as the corresponding two digit BCP-47 region code (e.g. GB, US) to begin migrations.\n")
 public final class CommandLineMain {
+  /**
+   * Fields cannot be private or final to allow for @Command annotation to set and retrieve values.
+   */
 
   @ArgGroup(multiplicity = "1")
   NumberInputType numberInput;
@@ -71,11 +74,9 @@ public final class CommandLineMain {
     }
 
     System.out.println(migrationJob.getRecipesCsvTable());
-    System.out.println(migrationJob.getNumberRange());
-    System.out.println("");
+    migrationJob.getNumberRange().asRanges().forEach(num-> System.out.print(num.lowerEndpoint() + " "));
     RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")), Collections.singleton(12));
-    System.out.println(key);
-    System.out.println(migrationJob.performSingleRecipeMigration(key));
-    System.out.println(migrationJob.performAllMigrations());
+    System.out.println("\n\n" + key + " -> " + migrationJob.performSingleRecipeMigration(key));
+    System.out.println("All migrations for region -> " + migrationJob.performAllMigrations());
   }
 }

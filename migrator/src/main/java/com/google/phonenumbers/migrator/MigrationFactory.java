@@ -15,8 +15,9 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableMap;
-import com.google.i18n.phonenumbers.metadata.RangeSpecification;
+import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
@@ -43,7 +44,7 @@ public class MigrationFactory {
    */
   public static MigrationJob createMigration(String number, String region) throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap<RangeSpecification, String> numberRanges =
+    ImmutableMap<DigitSequence, String> numberRanges =
         ImmutableMap.of(sanitizeNumberString(number), number);
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
@@ -57,7 +58,7 @@ public class MigrationFactory {
   public static MigrationJob createMigration(String number, String region, Path customRecipesFile)
       throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap<RangeSpecification, String> numberRanges =
+    ImmutableMap<DigitSequence, String> numberRanges =
         ImmutableMap.of(sanitizeNumberString(number), number);
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
@@ -73,7 +74,7 @@ public class MigrationFactory {
   public static MigrationJob createMigration(Path file, String region) throws IOException {
     List<String> numbers = Files.readAllLines(file);
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap.Builder<RangeSpecification, String> numberRanges = ImmutableMap.builder();
+    ImmutableMap.Builder<DigitSequence, String> numberRanges = ImmutableMap.builder();
 
     numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
@@ -89,7 +90,7 @@ public class MigrationFactory {
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap.Builder<RangeSpecification, String> numberRanges = ImmutableMap.builder();
+    ImmutableMap.Builder<DigitSequence, String> numberRanges = ImmutableMap.builder();
 
     numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
@@ -99,13 +100,13 @@ public class MigrationFactory {
 
   /**
    * Removes spaces and '+' '(' ')' '-' characters expected in E.164 numbers then returns the
-   * {@link RangeSpecification} representation of a given number. The method will not remove other
+   * {@link DigitSequence} representation of a given number. The method will not remove other
    * letters or special characters from strings to enable error messages in cases where invalid
    * numbers are inputted.
    */
-  private static RangeSpecification sanitizeNumberString(String number) {
-    String sanitizedString = number.replaceAll("[+]|[\\s]|[(]|[)]|[-]", "");
-    return RangeSpecification.parse(sanitizedString);
+  private static DigitSequence sanitizeNumberString(String number) {
+    CharMatcher matcher = CharMatcher.anyOf("-+()[]").or(CharMatcher.whitespace());
+    return DigitSequence.of(matcher.removeFrom(number));
   }
 
   /**

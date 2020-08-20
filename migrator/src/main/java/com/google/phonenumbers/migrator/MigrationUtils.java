@@ -16,7 +16,8 @@
 package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Range;
+import com.google.common.collect.RangeSet;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
@@ -27,8 +28,15 @@ import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.stream.Stream;
 
-public class MigrationUtils {
+/**
+ * Utilities for migration tool. Functionality includes lookup of migratable E.164 numbers in a
+ * given range based on a given BCP-47 region code, lookup of migratable E.164 numbers in a range
+ * based on a specified recipe, and also lookup for the corresponding recipe in a given recipes
+ * table which can be used to migrate a given E.164 number.
+ */
+public final class MigrationUtils {
 
   /**
    * Returns the sub range of numbers within numberRange that can be migrated using the given
@@ -39,13 +47,15 @@ public class MigrationUtils {
    * @throws IllegalArgumentException if there is no row in the recipesTable with the given
    * recipeKey
    */
-  public static RangeTree getMigratableRecipeRange(CsvTable<RangeKey> recipesTable, RangeKey recipeKey,
-      RangeTree numberRange) {
+  public static Stream<DigitSequence> getMigratableRecipeRange(CsvTable<RangeKey> recipesTable,
+      RangeKey recipeKey,
+      RangeSet<DigitSequence> numberRange) {
     if (!recipesTable.containsRow(recipeKey)) {
       throw new IllegalArgumentException(
           recipeKey + " does not match any recipe row in the given recipes table");
     }
-    return recipeKey.asRangeTree().intersect(numberRange);
+    return recipeKey.asRangeTree().asRangeSet().intersection(numberRange).asRanges().stream()
+        .map(Range::lowerEndpoint);
   }
 
   /**
@@ -54,48 +64,35 @@ public class MigrationUtils {
    * will not perform migrations and as a result, the validity of migrations using the given
    * recipesTable cannot be verified.
    */
-  public static RangeTree getMigratableRegionRange(RangeTable recipesTable, PhoneRegion regionCode,
-      RangeTree numberRange) {
+  public static Stream<DigitSequence> getMigratableRegionRange(RangeTable recipesTable,
+      PhoneRegion regionCode,
+      RangeSet<DigitSequence> numberRange) {
+
     return recipesTable
-        .getRanges(RecipesTableSchema.REGION_CODE, regionCode)
-        .intersect(numberRange);
+        .getRanges(RecipesTableSchema.REGION_CODE, regionCode).asRangeSet()
+        .intersection(numberRange).asRanges().stream().map(Range::lowerEndpoint);
   }
 
   /**
    * Returns the {@link CsvTable} row for the given recipe in a recipes table that can be used to
-   * migrate the given {@link RangeSpecification}. The found recipe must also be linked to the given
+   * migrate the given {@link DigitSequence}. The found recipe must also be linked to the given
    * region code to ensure that recipes from incorrect regions are not used to migrated a given
    * number.
    */
   public static Optional<ImmutableMap<Column<?>, Object>> findMatchingRecipe(
       RangeTable recipesTable,
       PhoneRegion regionCode,
-      RangeSpecification number) {
+      DigitSequence number) {
+
     RangeTable subRangeTable = recipesTable.subTable(recipesTable
         .getRanges(RecipesTableSchema.REGION_CODE, regionCode)
-        .intersect(RangeTree.from(number)), RecipesTableSchema.RANGE_COLUMNS);
+        .intersect(RangeTree.from(RangeSpecification.from(number))), RecipesTableSchema.RANGE_COLUMNS);
 
     CsvTable<RangeKey> subCsvTable = RecipesTableSchema.toCsv(subRangeTable);
     if (subCsvTable.isEmpty()) {
       return Optional.empty();
     }
     return Optional
-        .of(subCsvTable.getRow(RangeKey.create(number, Collections.singleton(number.length()))));
-  }
-
-  /**
-   * Returns a set of individual numbers from the map of numbers inputted for migration
-   * that can be represented in the given minimal {@link RangeSpecification}. The method expects all
-   * RangeSpecification keys from the map to only match a single number.
-   */
-  public static ImmutableSet<RangeSpecification> getNumbersFromMinimalRange(
-      ImmutableMap<RangeSpecification, String> numberRangeMap,
-      RangeSpecification minimalRange) {
-    ImmutableSet<RangeSpecification> allNumbers = numberRangeMap.keySet();
-
-    return allNumbers.stream()
-        .filter(num -> minimalRange
-        .matches(DigitSequence.of(num.toString())))
-        .collect(ImmutableSet.toImmutableSet());
+        .of(subCsvTable.getRow(RangeKey.create(RangeSpecification.from(number), Collections.singleton(number.length()))));
   }
 }
