@@ -22,10 +22,7 @@ import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-<<<<<<< HEAD
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
-=======
->>>>>>> entry-point
 import java.util.Collection;
 
 /**
@@ -58,13 +55,10 @@ public final class MigrationJob {
     return recipesTable;
   }
 
-<<<<<<< HEAD
   public RangeTable getRecipesRangeTable() {
     return RecipesTableSchema.toRangeTable(recipesTable);
   }
 
-=======
->>>>>>> entry-point
   public ImmutableMap<RangeSpecification, String> getNumberRangeMap() {
     return numberRangeMap;
   }
