@@ -17,10 +17,12 @@ package com.google.phonenumbers.migrator;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import picocli.CommandLine;
+import picocli.CommandLine.MissingParameterException;
 
 @RunWith(JUnit4.class)
 public class CommandLineMainTest {
@@ -29,29 +31,31 @@ public class CommandLineMainTest {
   private static final String TEST_FILE_INPUT = "../test-file-path.txt";
 
   @Test
-  public void createFromPath_noPathSpecified_expectInsufficientArguments() {
+  public void createMigrationJob_noNumberInputSpecified_expectException() {
     String[] args = ("--region="+TEST_REGION_CODE).split(" ");
-    CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
-    assertThat(p.insufficientArguments()).isTrue();
+    try {
+      CommandLine.populateCommand(new CommandLineMain(), args);
+      Assert.fail("Expected RuntimeException and did not receive");
+    } catch (RuntimeException e) {
+      assertThat(e).isInstanceOf(MissingParameterException.class);
+    }
   }
 
   @Test
   public void createFromNumberString_expectSufficientArguments() {
     String[] args = ("--region="+TEST_REGION_CODE+" --number="+TEST_NUMBER_INPUT).split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
-    assertThat(p.getRegionCode()).matches(TEST_REGION_CODE);
-    assertThat(p.getNumberInput()).matches(TEST_NUMBER_INPUT);
-    assertThat(p.getFileInput()).isNull();
-    assertThat(p.insufficientArguments()).isFalse();
+    assertThat(p.regionCode).matches(TEST_REGION_CODE);
+    assertThat(p.numberInput.number).matches(TEST_NUMBER_INPUT);
+    assertThat(p.numberInput.file).isNull();
   }
 
   @Test
   public void createFromPath_expectSufficientArguments() {
     String[] args = ("--region="+TEST_REGION_CODE+" --file="+TEST_FILE_INPUT).split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
-    assertThat(p.getRegionCode()).matches(TEST_REGION_CODE);
-    assertThat(p.getFileInput()).matches(TEST_FILE_INPUT);
-    assertThat(p.getNumberInput()).isNull();
-    assertThat(p.insufficientArguments()).isFalse();
+    assertThat(p.regionCode).matches(TEST_REGION_CODE);
+    assertThat(p.numberInput.file).matches(TEST_FILE_INPUT);
+    assertThat(p.numberInput.number).isNull();
   }
 }

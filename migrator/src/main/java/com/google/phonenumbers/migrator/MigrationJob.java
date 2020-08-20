@@ -22,7 +22,10 @@ import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
+<<<<<<< HEAD
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
+=======
+>>>>>>> entry-point
 import java.util.Collection;
 
 /**
@@ -38,7 +41,7 @@ public final class MigrationJob {
   private final ImmutableMap<RangeSpecification, String> numberRangeMap;
   private final PhoneRegion regionCode;
 
-  public MigrationJob(ImmutableMap<RangeSpecification,
+  MigrationJob(ImmutableMap<RangeSpecification,
       String> numberRangeMap,
       PhoneRegion regionCode,
       CsvTable<RangeKey> recipesTable) {
@@ -55,23 +58,26 @@ public final class MigrationJob {
     return recipesTable;
   }
 
+<<<<<<< HEAD
   public RangeTable getRecipesRangeTable() {
     return RecipesTableSchema.toRangeTable(recipesTable);
   }
 
+=======
+>>>>>>> entry-point
   public ImmutableMap<RangeSpecification, String> getNumberRangeMap() {
     return numberRangeMap;
   }
 
   /**
-   * Returns the formatted version of the number range inputted for migration
+   * Returns the formatted version of the number range for migration
    */
   public RangeTree getNumberRange() {
     return RangeTree.from(numberRangeMap.keySet());
   }
 
   /**
-   * Returns a list of the raw number range inputted for migration
+   * Returns a list of the raw number range for migration
    */
   public Collection<String> getRawNumberRange() {
     return numberRangeMap.values();

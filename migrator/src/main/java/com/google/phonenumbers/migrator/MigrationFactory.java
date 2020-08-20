@@ -38,7 +38,7 @@ public class MigrationFactory {
   private final static String DEFAULT_RECIPES_FILE = "../recipes.csv";
 
   /**
-   * Returns a MigrationJob instance for a given single E.164 number input (e.g. +4477...) and its
+   * Creates a new MigrationJob for a given single E.164 number input (e.g. +4477...) and its
    * corresponding BCP-47 region code (e.g. GB).
    */
   public static MigrationJob createMigration(String number, String region) throws IOException {

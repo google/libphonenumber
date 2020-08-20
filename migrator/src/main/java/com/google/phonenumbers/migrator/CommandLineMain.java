@@ -21,110 +21,61 @@ import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
-import java.util.Scanner;
 import picocli.CommandLine;
+import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Help.Ansi;
 import picocli.CommandLine.Option;
 
-@Command(name = "Command Line Migrator Tool: (numberInput | fileInput) regionCode\n",
+@Command(name = "Command Line Migrator Tool:",
     description =  "Please enter a path to a text file containing E.164 phone numbers "
-      + "(e.g. +12 (345) 67-890, +1234568890) from the same region or a single E.164 number as "
+      + "(e.g. +1234567891, +1234568890) from the same region or a single E.164 number as "
       + "well as the corresponding two digit BCP-47 region code (e.g. GB, US) to begin migrations.\n")
-public class CommandLineMain {
+public final class CommandLineMain {
 
-  @Option(names = {"-n", "--number"},
-      description = "Single E.164 phone number to migrate (e.g. +12 (345) 67-890 | +1234567890)")
-  String numberInput;
+  @ArgGroup(multiplicity = "1")
+  NumberInputType numberInput;
 
-  @Option(names = {"-f", "--file"},
-      description = "Text file to be migrated which contains one E.164 phone "
-          + "number per line")
-  String fileInput;
+  static class NumberInputType {
+    @Option(names = {"-n", "--number"},
+        description = "Single E.164 phone number to migrate (e.g. \"+1234567890\") or an internationally formatted "
+            + "number starting with '+' (e.g. \"+12 (345) 67-890\") which will have any non-digit characters after "
+            + "the leading '+' removed for processing.")
+    String number;
+
+    @Option(names = {"-f", "--file"},
+        description = "Text file to be migrated which contains one E.164 phone "
+            + "number per line")
+    String file;
+  }
 
   @Option(names = {"-r", "--region"},
+      required = true,
       description = "The two digit BCP-47 region code the given phone number(s) belong to (e.g. GB)")
   String regionCode;
 
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
   boolean help;
 
-  public String getNumberInput() {
-    return numberInput;
-  }
-
-  public String getFileInput() {
-    return fileInput;
-  }
-
-  public String getRegionCode() {
-    return regionCode;
-  }
-
-  public boolean insufficientArguments() {
-    return regionCode == null || (numberInput == null && fileInput == null);
-  }
-
-
-  /**
-   * Runs the command line migrator tool with functionality specified by then given user's command
-   * line arguments
-   *
-   * @param args which expects two command line arguments;
-   *    numberInput: single E.164 number string to be potentially migrated
-   *            OR
-   *    fileInput: path to a given text file to be migrated which holds one
-   *               E.164 number per line
-   *
-   *    regionCode: two digit BCP-47 code relating to the region the inputted number(s) originate
-   *                (e.g. GB)
-   */
   public static void main(String[] args) throws IOException {
     CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
     if (clm.help) {
       CommandLine.usage(clm, System.out, Ansi.AUTO);
-    } else {
-      MigrationJob migrationJob;
-
-      if (clm.insufficientArguments()) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Missing argument(s)");
-        if (clm.regionCode == null) {
-          System.out.print("Enter two digit BCP-47 region code: ");
-          clm.regionCode = scanner.next();
-        }
-        if (clm.numberInput == null && clm.fileInput == null) {
-          String migrationType = "";
-          do {
-            System.out
-                .print("Are you performing a file migration or single number migration? (f/n): ");
-            migrationType = scanner.next().toLowerCase();
-          } while (!migrationType.equals("f") && !migrationType.equals("n"));
-
-          if (migrationType.equals("f")) {
-            System.out.print("Enter file location: ");
-            clm.fileInput = scanner.next();
-          } else {
-            System.out.print("Enter single E.164 number input: ");
-            scanner.nextLine();
-            clm.numberInput = scanner.nextLine();
-          }
-        }
-      }
-
-      if (clm.numberInput != null) {
-        migrationJob = MigrationFactory.createMigration(clm.numberInput, clm.regionCode);
-      } else {
-        migrationJob = MigrationFactory.createMigration(Paths.get(clm.fileInput), clm.regionCode);
-      }
-
-      System.out.println(migrationJob.getRecipesCsvTable());
-      System.out.println(migrationJob.getNumberRange());
-      System.out.println("");
-      RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")), Collections.singleton(12));
-      System.out.println(key);
-      System.out.println(migrationJob.performSingleRecipeMigration(key));
-      System.out.println(migrationJob.performAllMigrations());
     }
+
+    MigrationJob migrationJob;
+    if (clm.numberInput.number != null) {
+      migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
+    } else {
+      migrationJob = MigrationFactory.createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
+    }
+
+    System.out.println(migrationJob.getRecipesCsvTable());
+    System.out.println(migrationJob.getNumberRange());
+    System.out.println("");
+    RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")), Collections.singleton(12));
+    System.out.println(key);
+    System.out.println(migrationJob.performSingleRecipeMigration(key));
+    System.out.println(migrationJob.performAllMigrations());
   }
 }
