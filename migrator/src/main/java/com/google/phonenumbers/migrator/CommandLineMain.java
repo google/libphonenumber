@@ -25,7 +25,7 @@ import picocli.CommandLine.Option;
 
 @Command(name = "Command Line Migrator Tool:",
     description =  "Please enter a path to a text file containing E.164 phone numbers "
-      + "(e.g. +12 (345) 67-890, +1234568890) from the same region or a single E.164 number as "
+      + "(e.g. +1234567891, +1234568890) from the same region or a single E.164 number as "
       + "well as the corresponding two digit BCP-47 region code (e.g. GB, US) to begin migrations.\n")
 public final class CommandLineMain {
 
