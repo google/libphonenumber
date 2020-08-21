@@ -37,7 +37,7 @@ public class CommandLineMainTest {
     try {
       CommandLine.populateCommand(new CommandLineMain(), args);
       Assert.fail("Expected RuntimeException and did not receive");
-    } catch (RuntimeException e) {
+    } catch (MissingParameterException e) {
       assertThat(e).isInstanceOf(MissingParameterException.class);
     }
   }
@@ -49,7 +49,7 @@ public class CommandLineMainTest {
     try {
       CommandLine.populateCommand(new CommandLineMain(), args);
       Assert.fail("Expected RuntimeException and did not receive");
-    } catch (RuntimeException e) {
+    } catch (MutuallyExclusiveArgsException e) {
       assertThat(e).isInstanceOf(MutuallyExclusiveArgsException.class);
     }
   }

@@ -70,7 +70,7 @@ public class MigrationJobTest {
     try {
       job.getMigratableNumbers(invalidKey);
       Assert.fail("Expected RuntimeException and did not receive");
-    } catch (RuntimeException e) {
+    } catch (IllegalArgumentException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
       assertThat(e).hasMessageThat().contains(invalidKey.toString());
     }
