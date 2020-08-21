@@ -16,6 +16,7 @@
 package com.google.phonenumbers.migrator;
 
 import com.google.common.base.CharMatcher;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
@@ -44,8 +45,8 @@ public class MigrationFactory {
    */
   public static MigrationJob createMigration(String number, String region) throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap<DigitSequence, String> numberRanges =
-        ImmutableMap.of(sanitizeNumberString(number), number);
+    ImmutableList<MigrationEntry> numberRanges =
+        ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -58,8 +59,8 @@ public class MigrationFactory {
   public static MigrationJob createMigration(String number, String region, Path customRecipesFile)
       throws IOException {
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap<DigitSequence, String> numberRanges =
-        ImmutableMap.of(sanitizeNumberString(number), number);
+    ImmutableList<MigrationEntry> numberRanges =
+        ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
     return new MigrationJob(numberRanges, regionCode, recipes);
@@ -74,9 +75,9 @@ public class MigrationFactory {
   public static MigrationJob createMigration(Path file, String region) throws IOException {
     List<String> numbers = Files.readAllLines(file);
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap.Builder<DigitSequence, String> numberRanges = ImmutableMap.builder();
+    ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
-    numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
+    numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
     return new MigrationJob(numberRanges.build(), regionCode, recipes);
@@ -90,9 +91,9 @@ public class MigrationFactory {
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     PhoneRegion regionCode = PhoneRegion.of(region);
-    ImmutableMap.Builder<DigitSequence, String> numberRanges = ImmutableMap.builder();
+    ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
-    numbers.forEach(num -> numberRanges.put(sanitizeNumberString(num), num));
+    numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
     return new MigrationJob(numberRanges.build(), regionCode, recipes);
@@ -105,7 +106,7 @@ public class MigrationFactory {
    * numbers are inputted.
    */
   private static DigitSequence sanitizeNumberString(String number) {
-    CharMatcher matcher = CharMatcher.anyOf("-+()[]").or(CharMatcher.whitespace());
+    CharMatcher matcher = CharMatcher.anyOf("-+()").or(CharMatcher.whitespace());
     return DigitSequence.of(matcher.removeFrom(number));
   }
 

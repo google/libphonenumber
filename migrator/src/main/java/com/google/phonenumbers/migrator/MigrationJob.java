@@ -15,33 +15,31 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
-import java.util.Collection;
 import java.util.stream.Stream;
 
 /**
  * Represents a migration operation for a given region where each {@link MigrationJob} contains
- * a map of E.164 numbers to be migrated as well as the {@link CsvTable} which will
- * hold the available recipes that can be performed on the range. The number range map is a key value
- * pair of the E.164 {@link DigitSequence} representation of a number along with the raw input
+ * a list of {@link MigrationEntry}'s to be migrated as well as the {@link CsvTable} which will
+ * hold the available recipes that can be performed on the range. Each MigrationEntry has
+ * the E.164 {@link DigitSequence} representation of a number along with the raw input
  * String originally entered. Only recipes from the given two digit BCP-47 regionCode will be used.
  */
 public final class MigrationJob {
 
   private final CsvTable<RangeKey> recipesTable;
-  private final ImmutableMap<DigitSequence, String> numberRangeMap;
+  private final ImmutableList<MigrationEntry> migrationEntries;
   private final PhoneRegion regionCode;
 
-  MigrationJob(ImmutableMap<DigitSequence,
-      String> numberRangeMap,
+  MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
       PhoneRegion regionCode,
       CsvTable<RangeKey> recipesTable) {
-    this.numberRangeMap = numberRangeMap;
+    this.migrationEntries = migrationEntries;
     this.regionCode = regionCode;
     this.recipesTable = recipesTable;
   }
@@ -50,22 +48,22 @@ public final class MigrationJob {
     return recipesTable;
   }
 
-  public ImmutableMap<DigitSequence, String> getNumberRangeMap() {
-    return numberRangeMap;
+  public ImmutableList<MigrationEntry> getMigrationEntries() {
+    return migrationEntries;
   }
 
   /**
    * Returns the formatted version of the number range for migration
    */
   public Stream<DigitSequence> getNumberRange() {
-    return numberRangeMap.keySet().stream();
+    return migrationEntries.stream().map(MigrationEntry::getSanitizedNumber);
   }
 
   /**
    * Returns a list of the raw number range for migration
    */
-  public Collection<String> getRawNumberRange() {
-    return numberRangeMap.values();
+  public Stream<String> getRawNumberRange() {
+    return migrationEntries.stream().map(MigrationEntry::getOriginalNumber);
   }
 
   public PhoneRegion getRegionCode() {

@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,7 +52,8 @@ public class MigrationFactoryTest {
     String region = "GB";
     MigrationJob mj = MigrationFactory.createMigration(fileLocation, region, recipesPath);
 
-    assertThat(mj.getRawNumberRange()).containsExactlyElementsIn(Files.readAllLines(fileLocation));
+    assertThat(mj.getRawNumberRange().collect(Collectors.toList()))
+        .containsExactlyElementsIn(Files.readAllLines(fileLocation));
     assertThat(mj.getRegionCode().toString()).matches(region);
   }
 
@@ -79,7 +81,8 @@ public class MigrationFactoryTest {
     String region = "US";
     MigrationJob mj = MigrationFactory.createMigration(numberString, region, recipesPath);
 
-    assertThat(mj.getRawNumberRange()).containsExactly(numberString);
+    assertThat(mj.getRawNumberRange().collect(Collectors.toList()))
+        .containsExactly(numberString);
     assertThat(mj.getRegionCode().toString()).matches(region);
   }
 
