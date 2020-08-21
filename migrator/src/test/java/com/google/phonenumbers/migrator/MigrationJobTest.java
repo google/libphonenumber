@@ -53,10 +53,9 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    List<DigitSequence> noMatchesRange = job.getAllMigratableNumbers().collect(Collectors.toList());
-    assertThat(noMatchesRange)
-        .containsExactlyElementsIn(job.getNumberRange().asRanges().stream()
-            .map(Range::lowerEndpoint)
+    List<DigitSequence> matchesRange = job.getAllMigratableNumbers().collect(Collectors.toList());
+    assertThat(matchesRange)
+        .containsExactlyElementsIn(job.getNumberRange()
             .collect(Collectors.toList()));
   }
 

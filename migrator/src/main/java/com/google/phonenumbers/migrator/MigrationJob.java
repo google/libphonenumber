@@ -16,15 +16,12 @@
 package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Range;
-import com.google.common.collect.RangeSet;
-import com.google.common.collect.TreeRangeSet;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
+import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.util.Collection;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -60,10 +57,8 @@ public final class MigrationJob {
   /**
    * Returns the formatted version of the number range for migration
    */
-  public RangeSet<DigitSequence> getNumberRange() {
-    RangeSet<DigitSequence> range = TreeRangeSet.create();
-    range.addAll(numberRangeMap.keySet().stream().map(Range::singleton).collect(Collectors.toSet()));
-    return range;
+  public Stream<DigitSequence> getNumberRange() {
+    return numberRangeMap.keySet().stream();
   }
 
   /**
@@ -84,9 +79,11 @@ public final class MigrationJob {
    * recipesTable cannot be verified.
    */
   public Stream<DigitSequence> getAllMigratableNumbers() {
-    return RecipesTableSchema.toRangeTable(recipesTable)
-        .getRanges(RecipesTableSchema.REGION_CODE, regionCode).asRangeSet()
-        .intersection(getNumberRange()).asRanges().stream().map(Range::lowerEndpoint);
+    RangeTree regionalRecipes = RecipesTableSchema.toRangeTable(recipesTable)
+        .getRanges(RecipesTableSchema.REGION_CODE, regionCode);
+
+    return getNumberRange()
+        .filter(regionalRecipes::contains);
   }
 
   /**
@@ -103,7 +100,7 @@ public final class MigrationJob {
       throw new IllegalArgumentException(
           recipeKey + " does not match any recipe row in the given recipes table");
     }
-    return recipeKey.asRangeTree().asRangeSet().intersection(getNumberRange()).asRanges().stream()
-        .map(Range::lowerEndpoint);
+    return getNumberRange()
+        .filter(recipeKey.asRangeTree()::contains);
   }
 }

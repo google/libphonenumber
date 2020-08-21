@@ -17,6 +17,7 @@ package com.google.phonenumbers.migrator;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
@@ -70,8 +71,8 @@ public final class CommandLineMain {
     }
 
     System.out.println(migrationJob.getRecipesTable());
-    System.out.println(migrationJob.getNumberRange());
+    System.out.println(migrationJob.getNumberRange().collect(Collectors.toSet()));
     System.out.println(migrationJob.getRegionCode());
-    migrationJob.getAllMigratableNumbers().forEach(number -> System.out.print(number + " "));
+    System.out.println(migrationJob.getAllMigratableNumbers().collect(Collectors.toSet()));
   }
 }
