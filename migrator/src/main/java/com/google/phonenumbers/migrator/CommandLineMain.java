@@ -71,8 +71,8 @@ public final class CommandLineMain {
     }
 
     System.out.println(migrationJob.getRecipesTable());
-    System.out.println(migrationJob.getNumberRange().collect(Collectors.toSet()));
+    System.out.println(migrationJob.getNumberRange().collect(Collectors.toList()));
     System.out.println(migrationJob.getRegionCode());
-    System.out.println(migrationJob.getAllMigratableNumbers().collect(Collectors.toSet()));
+    System.out.println(migrationJob.getAllMigratableNumbers().collect(Collectors.toList()));
   }
 }
