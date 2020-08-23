@@ -61,18 +61,18 @@ public final class CommandLineMain {
     CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
     if (clm.help) {
       CommandLine.usage(clm, System.out, Ansi.AUTO);
-    }
-
-    MigrationJob migrationJob;
-    if (clm.numberInput.number != null) {
-      migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
     } else {
-      migrationJob = MigrationFactory.createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
-    }
+      MigrationJob migrationJob;
+      if (clm.numberInput.number != null) {
+        migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
+      } else {
+        migrationJob = MigrationFactory.createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
+      }
 
-    System.out.println(migrationJob.getRecipesTable());
-    System.out.println(migrationJob.getNumberRange().collect(Collectors.toList()));
-    System.out.println(migrationJob.getRegionCode());
-    System.out.println(migrationJob.getAllMigratableNumbers().collect(Collectors.toList()));
+      System.out.println(migrationJob.getRecipesTable());
+      System.out.println(migrationJob.getNumberRange().collect(Collectors.toList()));
+      System.out.println(migrationJob.getRegionCode());
+      System.out.println(migrationJob.getAllMigratableNumbers().collect(Collectors.toList()));
+    }
   }
 }
