@@ -27,13 +27,13 @@ import picocli.CommandLine.MutuallyExclusiveArgsException;
 
 @RunWith(JUnit4.class)
 public class CommandLineMainTest {
-  private static final String TEST_REGION_CODE = "GB";
+  private static final String TEST_COUNTRY_CODE = "44";
   private static final String TEST_NUMBER_INPUT = "12345";
   private static final String TEST_FILE_INPUT = "../test-file-path.txt";
 
   @Test
   public void createMigrationJob_noNumberInputSpecified_expectException() {
-    String[] args = ("--region=" + TEST_REGION_CODE).split(" ");
+    String[] args = ("--countryCode=" + TEST_COUNTRY_CODE).split(" ");
     try {
       CommandLine.populateCommand(new CommandLineMain(), args);
       Assert.fail("Expected RuntimeException and did not receive");
@@ -44,8 +44,8 @@ public class CommandLineMainTest {
 
   @Test
   public void createMigrationJob_numberAndFile_expectException() {
-    String[] args = ("--region=" + TEST_REGION_CODE + " --number=" + TEST_NUMBER_INPUT + " --file="
-        + TEST_FILE_INPUT).split(" ");
+    String[] args = ("--countryCode=" + TEST_COUNTRY_CODE + " --number=" + TEST_NUMBER_INPUT +
+        " --file=" + TEST_FILE_INPUT).split(" ");
     try {
       CommandLine.populateCommand(new CommandLineMain(), args);
       Assert.fail("Expected RuntimeException and did not receive");
@@ -56,18 +56,20 @@ public class CommandLineMainTest {
 
   @Test
   public void createFromNumberString_expectSufficientArguments() {
-    String[] args = ("--region=" + TEST_REGION_CODE + " --number=" + TEST_NUMBER_INPUT).split(" ");
+    String[] args = ("--countryCode=" + TEST_COUNTRY_CODE + " --number=" + TEST_NUMBER_INPUT)
+        .split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
-    assertThat(p.regionCode).matches(TEST_REGION_CODE);
+    assertThat(p.countryCode).matches(TEST_COUNTRY_CODE);
     assertThat(p.numberInput.number).matches(TEST_NUMBER_INPUT);
     assertThat(p.numberInput.file).isNull();
   }
 
   @Test
   public void createFromPath_expectSufficientArguments() {
-    String[] args = ("--region="+TEST_REGION_CODE+" --file="+TEST_FILE_INPUT).split(" ");
+    String[] args = ("--countryCode="+ TEST_COUNTRY_CODE +" --file="+TEST_FILE_INPUT)
+        .split(" ");
     CommandLineMain p = CommandLine.populateCommand(new CommandLineMain(), args);
-    assertThat(p.regionCode).matches(TEST_REGION_CODE);
+    assertThat(p.countryCode).matches(TEST_COUNTRY_CODE);
     assertThat(p.numberInput.file).matches(TEST_FILE_INPUT);
     assertThat(p.numberInput.number).isNull();
   }

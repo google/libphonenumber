@@ -17,23 +17,18 @@ package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Range;
-import com.google.common.collect.RangeSet;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
-import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
-import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
  * Utilities for migration tool. Functionality includes lookup of migratable E.164 numbers in a
- * given range based on a given BCP-47 region code, lookup of migratable E.164 numbers in a range
+ * given range based on a given BCP-47 country code, lookup of migratable E.164 numbers in a range
  * based on a specified recipe, and also lookup for the corresponding recipe in a given recipes
  * table which can be used to migrate a given E.164 number.
  */
@@ -62,35 +57,35 @@ public final class MigrationUtils {
 
   /**
    * Returns the sub range of entries within migrationEntires that can be migrated using any recipe
-   * from the {@link CsvTable} recipesTable that matches the specified BCP-47 region code. This
+   * from the {@link CsvTable} recipesTable that matches the specified BCP-47 country code. This
    * method will not perform migrations and as a result, the validity of migrations using the given
    * recipesTable cannot be verified.
    */
-  public static Stream<MigrationEntry> getMigratableRangeByRegion(RangeTable recipesTable,
-      PhoneRegion regionCode,
+  public static Stream<MigrationEntry> getMigratableRangeByCountry(RangeTable recipesTable,
+      DigitSequence countryCode,
       ImmutableList<MigrationEntry> migrationEntries) {
 
-    RangeTree regionalRecipes = recipesTable
-        .getRanges(RecipesTableSchema.REGION_CODE, regionCode);
+    RangeTree countryRecipes = recipesTable
+        .getRanges(RecipesTableSchema.COUNTRY_CODE, countryCode);
 
     return migrationEntries.stream()
-        .filter(entry -> regionalRecipes.contains(entry.getSanitizedNumber()));
+        .filter(entry -> countryRecipes.contains(entry.getSanitizedNumber()));
   }
 
   /**
    * Returns the {@link CsvTable} row for the given recipe in a recipes table that can be used to
    * migrate the given {@link DigitSequence}. The found recipe must also be linked to the given
-   * region code to ensure that recipes from incorrect regions are not used to migrated a given
+   * country code to ensure that recipes from incorrect countries are not used to migrated a given
    * number.
    */
   public static Optional<ImmutableMap<Column<?>, Object>> findMatchingRecipe(
       CsvTable<RangeKey> recipesTable,
-      PhoneRegion regionCode,
+      DigitSequence countryCode,
       DigitSequence number) {
 
     for (RangeKey recipeKey : recipesTable.getKeys()) {
       if (recipeKey.contains(number, number.length()) && recipesTable.getRow(recipeKey)
-          .get(RecipesTableSchema.REGION_CODE).equals(regionCode)) {
+          .get(RecipesTableSchema.COUNTRY_CODE).equals(countryCode)) {
         return Optional.of(recipesTable.getRow(recipeKey));
       }
     }

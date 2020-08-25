@@ -40,18 +40,18 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
+        .createMigration(Paths.get(numbersPath), "44", Paths.get(recipesPath));
 
     ImmutableList<MigrationResult> migratedNums = job.performAllMigrations();
     assertThat(migratedNums).isNotEmpty();
   }
 
   @Test
-  public void performAllMigrations_noRecipesFromRegion_expectNoMigrations() throws IOException {
+  public void performAllMigrations_noRecipesFromCountry_expectNoMigrations() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
+        .createMigration(Paths.get(numbersPath), "1", Paths.get(recipesPath));
 
     ImmutableList<MigrationResult> migratedNums = job.performAllMigrations();
     assertThat(migratedNums).isEmpty();
@@ -62,7 +62,7 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
+        .createMigration(Paths.get(numbersPath), "1", Paths.get(recipesPath));
 
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("123"));
     RangeKey invalidKey = RangeKey.create(testRangeSpec, Collections.singleton(3));
@@ -81,7 +81,7 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
+        .createMigration(Paths.get(numbersPath), "44", Paths.get(recipesPath));
 
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("12"));
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
@@ -94,7 +94,7 @@ public class MigrationJobTest {
   public void performMigration_invalidOldFormatValue_expectException() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory
-        .createMigration("13321", "GB", Paths.get(recipesPath));
+        .createMigration("13321", "44", Paths.get(recipesPath));
 
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("13"));
     RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
@@ -113,7 +113,7 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "10321";
     MigrationJob job = MigrationFactory
-        .createMigration(staleNumber, "GB", Paths.get(recipesPath));
+        .createMigration(staleNumber, "44", Paths.get(recipesPath));
 
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("10"));
     RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
@@ -133,7 +133,7 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "15321";
     MigrationJob job = MigrationFactory
-        .createMigration(staleNumber, "GB", Paths.get(recipesPath));
+        .createMigration(staleNumber, "44", Paths.get(recipesPath));
 
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("15"));
     RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));

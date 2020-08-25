@@ -30,8 +30,8 @@ import picocli.CommandLine.Option;
 
 @Command(name = "Command Line Migrator Tool:",
     description =  "Please enter a path to a text file containing E.164 phone numbers "
-      + "(e.g. +1234567891, +1234568890) from the same region or a single E.164 number as "
-      + "well as the corresponding two digit BCP-47 region code (e.g. GB, US) to begin migrations.\n")
+      + "(e.g. +4434567891, +1234568890) from the same country or a single E.164 number as "
+      + "well as the corresponding two digit BCP-47 country code (e.g. 44, 1) to begin migrations.\n")
 public final class CommandLineMain {
   /**
    * Fields cannot be private or final to allow for @Command annotation to set and retrieve values.
@@ -53,10 +53,10 @@ public final class CommandLineMain {
     String file;
   }
 
-  @Option(names = {"-r", "--region"},
+  @Option(names = {"-c", "--countryCode"},
       required = true,
-      description = "The two digit BCP-47 region code the given phone number(s) belong to (e.g. GB)")
-  String regionCode;
+      description = "The two digit BCP-47 country code the given phone number(s) belong to (e.g. 44)")
+  String countryCode;
 
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
   boolean help;
@@ -68,10 +68,10 @@ public final class CommandLineMain {
     } else {
       MigrationJob migrationJob;
       if (clm.numberInput.number != null) {
-        migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
+        migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
       } else {
         migrationJob = MigrationFactory
-            .createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
+            .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
       }
 
       System.out.println(migrationJob.getRecipesCsvTable());
@@ -83,7 +83,7 @@ public final class CommandLineMain {
           Collections.singleton(12));
       System.out.println("\nAll migrations for key " + key + ":");
       migrationJob.performSingleRecipeMigration(key).forEach(res -> System.out.println("\t" + res));
-      System.out.println("\nAll migrations for region " + migrationJob.getRegionCode() + ":");
+      System.out.println("\nAll migrations for country code '" + migrationJob.getCountryCode() + "':");
       migrationJob.performAllMigrations().forEach(res -> System.out.println("\t" + res));
     }
   }
