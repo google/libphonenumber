@@ -114,7 +114,7 @@ public class RecipesTableSchema {
   public static final CsvSchema<RangeKey> SCHEMA = CsvSchema.of(MARSHALLER, CSV_COLUMNS);
 
   /** The non-key columns of a range table. */
-  public static final Schema RANGE_COLUMNS =
+  private static final Schema RANGE_COLUMNS =
       Schema.builder()
           .add(REGION_CODE)
           .add(OLD_FORMAT)
