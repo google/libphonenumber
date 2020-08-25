@@ -15,10 +15,8 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Range;
-import com.google.common.collect.RangeSet;
-import com.google.common.collect.TreeRangeSet;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
@@ -26,28 +24,26 @@ import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
-import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.Collections;
 import java.util.stream.Stream;
 
 /**
  * Represents a migration operation for a given region where each {@link MigrationJob} contains
- * a map of E.164 numbers to be migrated as well as the {@link CsvTable} which will
- * hold the available recipes that can be performed on the range. The number range map is a key value
- * pair of the E.164 {@link DigitSequence} representation of a number along with the raw input
+ * a list of {@link MigrationEntry}'s to be migrated as well as the {@link CsvTable} which will
+ * hold the available recipes that can be performed on the range. Each MigrationEntry has
+ * the E.164 {@link DigitSequence} representation of a number along with the raw input
  * String originally entered. Only recipes from the given two digit BCP-47 regionCode will be used.
  */
 public final class MigrationJob {
 
   private final CsvTable<RangeKey> recipesTable;
-  private final ImmutableMap<DigitSequence, String> numberRangeMap;
+  private final ImmutableList<MigrationEntry> migrationEntries;
   private final PhoneRegion regionCode;
 
-  MigrationJob(ImmutableMap<DigitSequence,
-      String> numberRangeMap,
+  MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
       PhoneRegion regionCode,
       CsvTable<RangeKey> recipesTable) {
-    this.numberRangeMap = numberRangeMap;
+    this.migrationEntries = migrationEntries;
     this.regionCode = regionCode;
     this.recipesTable = recipesTable;
   }
@@ -64,48 +60,30 @@ public final class MigrationJob {
     return RecipesTableSchema.toRangeTable(recipesTable);
   }
 
-  public ImmutableMap<DigitSequence, String> getNumberRangeMap() {
-    return numberRangeMap;
+  public ImmutableList<MigrationEntry> getMigrationEntries() {
+    return migrationEntries;
   }
-
-  /**
-   * Returns the formatted version of the number range for migration
-   */
-  public RangeSet<DigitSequence> getNumberRange() {
-    RangeSet<DigitSequence> range = TreeRangeSet.create();
-    range.addAll(numberRangeMap.keySet().stream().map(Range::singleton).collect(Collectors.toSet()));
-    return range;
-  }
-
-  /**
-   * Returns a list of the raw number range for migration
-   */
-  public Collection<String> getRawNumberRange() {
-    return numberRangeMap.values();
-  }
-
 
   /**
    * Retrieves all migratable numbers from the numberRange and attempts to migrate them with recipes
    * from the recipesTable that belong to the given region code.
    */
-  public ImmutableMap<DigitSequence, String> performAllMigrations() {
-    ImmutableMap.Builder<DigitSequence, String> migratedToStaleMap = ImmutableMap.builder();
-    Stream<DigitSequence> migratableRange = MigrationUtils
-        .getMigratableRegionRange(getRecipesRangeTable(), regionCode, getNumberRange());
+  public ImmutableList<MigrationResult> performAllMigrations() {
+    Stream<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByRegion(getRecipesRangeTable(), regionCode, getMigrationEntries());
 
-
-    migratableRange.forEach(staleNumber -> {
+    ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
+    migratableRange.forEach(entry -> {
       ImmutableMap<Column<?>, Object> matchingRecipe = MigrationUtils
-          .findMatchingRecipe(getRecipesRangeTable(), regionCode, staleNumber)
+          .findMatchingRecipe(getRecipesCsvTable(), regionCode, entry.getSanitizedNumber())
           // can never be thrown here because every staleNumber is from the migratableNumbers set
           .orElseThrow(RuntimeException::new);
 
-      migratedToStaleMap.putAll(migrate(staleNumber, matchingRecipe, staleNumber));
+       migratedResults.add(migrate(entry.getSanitizedNumber(), matchingRecipe, entry.getOriginalNumber()));
     });
 
     // TODO: create MigrationReport class holding details of migration and return it here instead
-    return migratedToStaleMap.build();
+    return migratedResults.build();
   }
 
   /**
@@ -113,29 +91,29 @@ public final class MigrationJob {
    * recipeKey and attempts to migrate them with recipes from the recipesTable that belong to the
    * given region code.
    */
-  public ImmutableMap<DigitSequence, String> performSingleRecipeMigration(RangeKey recipeKey) {
-    ImmutableMap.Builder<DigitSequence, String> migratedToStaleMap = ImmutableMap.builder();
-    Stream<DigitSequence> migratableRange = MigrationUtils
-        .getMigratableRecipeRange(getRecipesCsvTable(), recipeKey, getNumberRange());
+  public ImmutableList<MigrationResult> performSingleRecipeMigration(RangeKey recipeKey) {
+    Stream<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries());
+    ImmutableMap<Column<?>, Object> recipeRow = getRecipesCsvTable().getRow(recipeKey);
 
-    if (!getRecipesCsvTable().getRow(recipeKey).get(RecipesTableSchema.REGION_CODE).equals(regionCode)) {
-      return migratedToStaleMap.build();
+    ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
+    if (!recipeRow.get(RecipesTableSchema.REGION_CODE).equals(regionCode)) {
+      return migratedResults.build();
     }
-
-    migratableRange.forEach(staleNumber -> {
-      migratedToStaleMap.putAll(migrate(staleNumber, getRecipesCsvTable().getRow(recipeKey), staleNumber));
+    migratableRange.forEach(entry -> {
+        migratedResults.add(migrate(entry.getSanitizedNumber(), recipeRow, entry.getOriginalNumber()));
     });
 
     // TODO: create MigrationReport class holding details of migration and return it here instead
-    return migratedToStaleMap.build();
+    return migratedResults.build();
   }
 
   /**
    * Takes a given number and migrates it using the given matching recipe row. If the given recipe
    * is not a final migration, the method is recursively called with the recipe that matches the new
    * migrated number until a recipe that produces a final migration (a recipe that results in the
-   * new format being valid and dialable) has been used. Once this occurs, a Map containing the key
-   * value pair of migrated number to original stale number is returned.
+   * new format being valid and dialable) has been used. Once this occurs, the {@link MigrationResult}
+   * is returned.
    *
    * @throws IllegalArgumentException if the 'Old Format' value in the given recipe row does not
    * match the number to migrate. This means that the 'Old Format' value cannot be represented by
@@ -143,9 +121,9 @@ public final class MigrationJob {
    * @throws RuntimeException when the given recipe is not a final migration and a recipe cannot be
    * found in the recipesTable to match the resulting number from the initial migrating recipe.
    */
-  private ImmutableMap<DigitSequence, String> migrate(DigitSequence migratingNumber,
+  private MigrationResult migrate(DigitSequence migratingNumber,
       ImmutableMap<Column<?>, Object> recipeRow,
-      DigitSequence originalNumber) {
+      String originalNumber) {
     String oldFormat = (String) recipeRow.get(RecipesTableSchema.OLD_FORMAT);
     String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
 
@@ -179,7 +157,7 @@ public final class MigrationJob {
 
     if (!(boolean) recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION)) {
       ImmutableMap<Column<?>, Object> nextRecipeRow =
-          MigrationUtils.findMatchingRecipe(getRecipesRangeTable(), regionCode,
+          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), regionCode,
               DigitSequence.of(newString.toString()))
               .orElseThrow(() -> new RuntimeException(
                   "A multiple migration was required for the stale number '" + originalNumber
@@ -189,7 +167,6 @@ public final class MigrationJob {
       return migrate(DigitSequence.of(newString.toString()), nextRecipeRow, originalNumber);
     }
 
-    return ImmutableMap
-        .of(DigitSequence.of(newString.toString()), numberRangeMap.get(originalNumber));
+    return MigrationResult.create(DigitSequence.of(newString.toString()), originalNumber);
   }
 }

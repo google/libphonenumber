@@ -19,7 +19,6 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Range;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.table.Column;
@@ -45,9 +44,9 @@ public class MigrationUtilsTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory.createMigration("34", "GB", Paths.get(recipesPath));
 
-    Stream<DigitSequence> noMatchesRange = MigrationUtils
-        .getMigratableRegionRange(job.getRecipesRangeTable(), job.getRegionCode(),
-            job.getNumberRange());
+    Stream<MigrationEntry> noMatchesRange = MigrationUtils
+        .getMigratableRangeByRegion(job.getRecipesRangeTable(), job.getRegionCode(),
+            job.getMigrationEntries());
     assertThat(noMatchesRange.collect(Collectors.toSet())).isEmpty();
   }
 
@@ -58,14 +57,12 @@ public class MigrationUtilsTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    Stream<DigitSequence> noMatchesRange = MigrationUtils
-        .getMigratableRegionRange(job.getRecipesRangeTable(), job.getRegionCode(),
-            job.getNumberRange());
+    Stream<MigrationEntry> matchesRange = MigrationUtils
+        .getMigratableRangeByRegion(job.getRecipesRangeTable(), job.getRegionCode(),
+            job.getMigrationEntries());
 
-    assertThat(noMatchesRange.collect(Collectors.toSet()))
-        .containsExactlyElementsIn(job.getNumberRange().asRanges().stream()
-            .map(Range::lowerEndpoint)
-            .collect(Collectors.toList()));
+    assertThat(matchesRange.collect(Collectors.toSet()))
+        .containsExactlyElementsIn(job.getMigrationEntries());
   }
 
   @Test
@@ -77,7 +74,7 @@ public class MigrationUtilsTest {
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
     try {
       MigrationUtils
-          .getMigratableRecipeRange(job.getRecipesCsvTable(), invalidKey, job.getNumberRange());
+          .getMigratableRangeByRecipe(job.getRecipesCsvTable(), invalidKey, job.getMigrationEntries());
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -94,7 +91,7 @@ public class MigrationUtilsTest {
     MigrationJob job = MigrationFactory.createMigration("123", "GB", Paths.get(recipesPath));
 
     assertThat(MigrationUtils
-        .getMigratableRecipeRange(job.getRecipesCsvTable(), validKey, job.getNumberRange())
+        .getMigratableRangeByRecipe(job.getRecipesCsvTable(), validKey, job.getMigrationEntries())
         .collect(Collectors.toSet()))
         .isEmpty();
   }
@@ -106,7 +103,7 @@ public class MigrationUtilsTest {
 
     DigitSequence testNumberToMatch = DigitSequence.of("12");
     assertThat(MigrationUtils
-        .findMatchingRecipe(job.getRecipesRangeTable(), job.getRegionCode(), testNumberToMatch))
+        .findMatchingRecipe(job.getRecipesCsvTable(), job.getRegionCode(), testNumberToMatch))
         .isEmpty();
   }
 
@@ -117,7 +114,7 @@ public class MigrationUtilsTest {
     DigitSequence testNumberToMatch = DigitSequence.of("12345");
 
     Optional<ImmutableMap<Column<?>, Object>> foundRecipe = MigrationUtils
-        .findMatchingRecipe(job.getRecipesRangeTable(), job.getRegionCode(), testNumberToMatch);
+        .findMatchingRecipe(job.getRecipesCsvTable(), job.getRegionCode(), testNumberToMatch);
     assertThat(foundRecipe).isPresent();
 
     RangeSpecification oldFormat = RangeSpecification

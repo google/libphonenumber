@@ -21,6 +21,7 @@ import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.stream.Collectors;
 import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
@@ -64,19 +65,26 @@ public final class CommandLineMain {
     CommandLineMain clm = CommandLine.populateCommand(new CommandLineMain(), args);
     if (clm.help) {
       CommandLine.usage(clm, System.out, Ansi.AUTO);
-    }
-
-    MigrationJob migrationJob;
-    if (clm.numberInput.number != null) {
-      migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
     } else {
-      migrationJob = MigrationFactory.createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
-    }
+      MigrationJob migrationJob;
+      if (clm.numberInput.number != null) {
+        migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
+      } else {
+        migrationJob = MigrationFactory
+            .createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
+      }
 
-    System.out.println(migrationJob.getRecipesCsvTable());
-    migrationJob.getNumberRange().asRanges().forEach(num-> System.out.print(num.lowerEndpoint() + " "));
-    RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")), Collections.singleton(12));
-    System.out.println("\n\n" + key + " -> " + migrationJob.performSingleRecipeMigration(key));
-    System.out.println("All migrations for region -> " + migrationJob.performAllMigrations());
+      System.out.println(migrationJob.getRecipesCsvTable());
+      System.out.println(migrationJob.getMigrationEntries().stream()
+          .map(MigrationEntry::getOriginalNumber)
+          .collect(Collectors.toList()));
+
+      RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")),
+          Collections.singleton(12));
+      System.out.println("\nAll migrations for key " + key + ":");
+      migrationJob.performSingleRecipeMigration(key).forEach(res -> System.out.println("\t" + res));
+      System.out.println("\nAll migrations for region " + migrationJob.getRegionCode() + ":");
+      migrationJob.performAllMigrations().forEach(res -> System.out.println("\t" + res));
+    }
   }
 }

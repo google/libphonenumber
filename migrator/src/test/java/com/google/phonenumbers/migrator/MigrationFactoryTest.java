@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,7 +52,9 @@ public class MigrationFactoryTest {
     String region = "GB";
     MigrationJob mj = MigrationFactory.createMigration(fileLocation, region, recipesPath);
 
-    assertThat(mj.getRawNumberRange()).containsExactlyElementsIn(Files.readAllLines(fileLocation));
+    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+        .collect(Collectors.toList()))
+        .containsExactlyElementsIn(Files.readAllLines(fileLocation));
     assertThat(mj.getRegionCode().toString()).matches(region);
   }
 
@@ -62,7 +65,7 @@ public class MigrationFactoryTest {
     try {
       MigrationFactory.createMigration(numberInput, "GB");
       Assert.fail("Expected RuntimeException and did not receive");
-    } catch (RuntimeException e) {
+    } catch (IllegalArgumentException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
       assertThat(e).hasMessageThat().contains(sanitizedNumber);
     } catch (IOException e) {
@@ -79,7 +82,9 @@ public class MigrationFactoryTest {
     String region = "US";
     MigrationJob mj = MigrationFactory.createMigration(numberString, region, recipesPath);
 
-    assertThat(mj.getRawNumberRange()).containsExactly(numberString);
+    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+        .collect(Collectors.toList()))
+        .containsExactly(numberString);
     assertThat(mj.getRegionCode().toString()).matches(region);
   }
 

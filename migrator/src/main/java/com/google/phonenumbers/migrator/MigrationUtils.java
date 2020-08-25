@@ -15,6 +15,7 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Range;
 import com.google.common.collect.RangeSet;
@@ -39,38 +40,41 @@ import java.util.stream.Stream;
 public final class MigrationUtils {
 
   /**
-   * Returns the sub range of numbers within numberRange that can be migrated using the given
-   * recipe. This method will not perform migrations and as a result, the validity of migrations
-   * using the given recipe cannot be verified.
+   * Returns the entries within migrationEntries that can be migrated using the given recipe. This
+   * method will not perform migrations and as a result, the validity of migrations using the given
+   * recipe cannot be verified.
    *
    * @param recipeKey: the key of the recipe that is being checked
    * @throws IllegalArgumentException if there is no row in the recipesTable with the given
    * recipeKey
    */
-  public static Stream<DigitSequence> getMigratableRecipeRange(CsvTable<RangeKey> recipesTable,
+  public static Stream<MigrationEntry> getMigratableRangeByRecipe(CsvTable<RangeKey> recipesTable,
       RangeKey recipeKey,
-      RangeSet<DigitSequence> numberRange) {
+      ImmutableList<MigrationEntry> migrationEntries) {
     if (!recipesTable.containsRow(recipeKey)) {
       throw new IllegalArgumentException(
           recipeKey + " does not match any recipe row in the given recipes table");
     }
-    return recipeKey.asRangeTree().asRangeSet().intersection(numberRange).asRanges().stream()
-        .map(Range::lowerEndpoint);
+
+    return migrationEntries.stream()
+        .filter(entry -> recipeKey.asRangeTree().contains(entry.getSanitizedNumber()));
   }
 
   /**
-   * Returns the sub range of numbers within numberRange that can be migrated using any recipe from
-   * the {@link CsvTable} recipesTable that matches the specified BCP-47 region code. This method
-   * will not perform migrations and as a result, the validity of migrations using the given
+   * Returns the sub range of entries within migrationEntires that can be migrated using any recipe
+   * from the {@link CsvTable} recipesTable that matches the specified BCP-47 region code. This
+   * method will not perform migrations and as a result, the validity of migrations using the given
    * recipesTable cannot be verified.
    */
-  public static Stream<DigitSequence> getMigratableRegionRange(RangeTable recipesTable,
+  public static Stream<MigrationEntry> getMigratableRangeByRegion(RangeTable recipesTable,
       PhoneRegion regionCode,
-      RangeSet<DigitSequence> numberRange) {
+      ImmutableList<MigrationEntry> migrationEntries) {
 
-    return recipesTable
-        .getRanges(RecipesTableSchema.REGION_CODE, regionCode).asRangeSet()
-        .intersection(numberRange).asRanges().stream().map(Range::lowerEndpoint);
+    RangeTree regionalRecipes = recipesTable
+        .getRanges(RecipesTableSchema.REGION_CODE, regionCode);
+
+    return migrationEntries.stream()
+        .filter(entry -> regionalRecipes.contains(entry.getSanitizedNumber()));
   }
 
   /**
@@ -80,19 +84,16 @@ public final class MigrationUtils {
    * number.
    */
   public static Optional<ImmutableMap<Column<?>, Object>> findMatchingRecipe(
-      RangeTable recipesTable,
+      CsvTable<RangeKey> recipesTable,
       PhoneRegion regionCode,
       DigitSequence number) {
 
-    RangeTable subRangeTable = recipesTable.subTable(recipesTable
-        .getRanges(RecipesTableSchema.REGION_CODE, regionCode)
-        .intersect(RangeTree.from(RangeSpecification.from(number))), RecipesTableSchema.RANGE_COLUMNS);
-
-    CsvTable<RangeKey> subCsvTable = RecipesTableSchema.toCsv(subRangeTable);
-    if (subCsvTable.isEmpty()) {
-      return Optional.empty();
+    for (RangeKey recipeKey : recipesTable.getKeys()) {
+      if (recipeKey.contains(number, number.length()) && recipesTable.getRow(recipeKey)
+          .get(RecipesTableSchema.REGION_CODE).equals(regionCode)) {
+        return Optional.of(recipesTable.getRow(recipeKey));
+      }
     }
-    return Optional
-        .of(subCsvTable.getRow(RangeKey.create(RangeSpecification.from(number), Collections.singleton(number.length()))));
+    return Optional.empty();
   }
 }
