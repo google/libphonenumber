@@ -52,7 +52,7 @@ public class MigrationFactoryTest {
     String countryCode = "44";
     MigrationJob mj = MigrationFactory.createMigration(fileLocation, countryCode, recipesPath);
 
-    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+    assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
         .containsExactlyElementsIn(Files.readAllLines(fileLocation));
     assertThat(mj.getCountryCode().toString()).matches(countryCode);
@@ -82,7 +82,7 @@ public class MigrationFactoryTest {
     String countryCode = "1";
     MigrationJob mj = MigrationFactory.createMigration(numberString, countryCode, recipesPath);
 
-    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+    assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
         .containsExactly(numberString);
     assertThat(mj.getCountryCode().toString()).matches(countryCode);

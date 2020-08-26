@@ -36,6 +36,7 @@ import java.util.List;
 public class MigrationFactory {
 
   private final static String DEFAULT_RECIPES_FILE = "../recipes.csv";
+  final static String METADATA_ZIPFILE = "../metadata.zip";
 
   /**
    * Creates a new MigrationJob for a given single E.164 number input (e.g. +4477...) and its
@@ -47,7 +48,12 @@ public class MigrationFactory {
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
-    return new MigrationJob(numberRanges, countryCode, recipes);
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(Paths.get(METADATA_ZIPFILE));
+    CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
+        .orElseThrow(() -> new RuntimeException(
+            "Country code " + countryCode+ " not supported in metadata"));
+
+    return new MigrationJob(numberRanges, countryCode, recipes, ranges);
   }
 
   /**
@@ -61,7 +67,7 @@ public class MigrationFactory {
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
-    return new MigrationJob(numberRanges, countryCode, recipes);
+    return new MigrationJob(numberRanges, countryCode, recipes, null);
   }
 
   /**
@@ -78,7 +84,12 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes);
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(Paths.get(METADATA_ZIPFILE));
+    CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
+        .orElseThrow(() -> new RuntimeException(
+            "Country code " + countryCode+ " not supported in metadata"));
+
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges);
   }
 
   /**
@@ -94,7 +105,7 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, null);
   }
 
   /**

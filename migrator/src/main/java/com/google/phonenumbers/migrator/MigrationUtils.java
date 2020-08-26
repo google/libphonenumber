@@ -15,7 +15,6 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
@@ -45,13 +44,13 @@ public final class MigrationUtils {
    */
   public static Stream<MigrationEntry> getMigratableRangeByRecipe(CsvTable<RangeKey> recipesTable,
       RangeKey recipeKey,
-      ImmutableList<MigrationEntry> migrationEntries) {
+      Stream<MigrationEntry> migrationEntries) {
     if (!recipesTable.containsRow(recipeKey)) {
       throw new IllegalArgumentException(
           recipeKey + " does not match any recipe row in the given recipes table");
     }
 
-    return migrationEntries.stream()
+    return migrationEntries
         .filter(entry -> recipeKey.asRangeTree().contains(entry.getSanitizedNumber()));
   }
 
@@ -63,12 +62,12 @@ public final class MigrationUtils {
    */
   public static Stream<MigrationEntry> getMigratableRangeByCountry(RangeTable recipesTable,
       DigitSequence countryCode,
-      ImmutableList<MigrationEntry> migrationEntries) {
+      Stream<MigrationEntry> migrationEntries) {
 
     RangeTree countryRecipes = recipesTable
         .getRanges(RecipesTableSchema.COUNTRY_CODE, countryCode);
 
-    return migrationEntries.stream()
+    return migrationEntries
         .filter(entry -> countryRecipes.contains(entry.getSanitizedNumber()));
   }
 

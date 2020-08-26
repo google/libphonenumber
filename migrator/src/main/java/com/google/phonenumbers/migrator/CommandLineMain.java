@@ -15,12 +15,9 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.i18n.phonenumbers.metadata.DigitSequence;
-import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.table.RangeKey;
+import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
@@ -75,16 +72,32 @@ public final class CommandLineMain {
       }
 
       System.out.println(migrationJob.getRecipesCsvTable());
-      System.out.println(migrationJob.getMigrationEntries().stream()
+      System.out.println(migrationJob.getMigrationEntries()
           .map(MigrationEntry::getOriginalNumber)
           .collect(Collectors.toList()));
+      System.out.println("");
 
-      RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")),
-          Collections.singleton(12));
-      System.out.println("\nAll migrations for key " + key + ":");
-      migrationJob.performSingleRecipeMigration(key).forEach(res -> System.out.println("\t" + res));
-      System.out.println("\nAll migrations for country code '" + migrationJob.getCountryCode() + "':");
-      migrationJob.performAllMigrations().forEach(res -> System.out.println("\t" + res));
+      MigrationReport mr =  migrationJob.performAllMigrations();
+
+      if (clm.numberInput.file != null) {
+        mr.printMetrics();
+      } else {
+        if (mr.getValidMigrations().size() == 1) {
+          System.out.println("Successful migration into: +"
+              + mr.getValidMigrations().get(0).getMigratedNumber());
+        } else if (mr.getInvalidMigrations().size() == 1) {
+          System.out.println("The number was migrated into '+"
+              + mr.getInvalidMigrations().get(0).getMigratedNumber() + "' but this number was not "
+              + "seen as being valid and dialable when inspecting our data for the given country");
+        } else if (mr.getValidUntouchedEntries().size() == 1) {
+          System.out.println("This number was seen to already be valid and dialable based on "
+              + "our data for the given country");
+        } else {
+          System.out.println("This number was seen as being invalid based on our data for the "
+              + "given country but we could not migrate it into a valid format.");
+        }
+      }
+
     }
   }
 }

@@ -19,10 +19,13 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
+import com.google.i18n.phonenumbers.metadata.RangeTree;
+import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -34,16 +37,19 @@ import java.util.stream.Stream;
  */
 public final class MigrationJob {
 
+  private final CsvTable<RangeKey> rangesTable;
   private final CsvTable<RangeKey> recipesTable;
   private final ImmutableList<MigrationEntry> migrationEntries;
   private final DigitSequence countryCode;
 
   MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
       DigitSequence countryCode,
-      CsvTable<RangeKey> recipesTable) {
+      CsvTable<RangeKey> recipesTable,
+      CsvTable<RangeKey> rangesTable) {
     this.migrationEntries = migrationEntries;
     this.countryCode = countryCode;
     this.recipesTable = recipesTable;
+    this.rangesTable = rangesTable;
   }
 
   public DigitSequence getCountryCode() {
@@ -58,17 +64,18 @@ public final class MigrationJob {
     return RecipesTableSchema.toRangeTable(recipesTable);
   }
 
-  public ImmutableList<MigrationEntry> getMigrationEntries() {
-    return migrationEntries;
+  public Stream<MigrationEntry> getMigrationEntries() {
+    return migrationEntries.stream();
   }
 
   /**
    * Retrieves all migratable numbers from the numberRange and attempts to migrate them with recipes
    * from the recipesTable that belong to the given country code.
    */
-  public ImmutableList<MigrationResult> performAllMigrations() {
-    Stream<MigrationEntry> migratableRange = MigrationUtils
-        .getMigratableRangeByCountry(getRecipesRangeTable(), countryCode, getMigrationEntries());
+  public MigrationReport performAllMigrations() {
+    ImmutableList<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByCountry(getRecipesRangeTable(), countryCode, getMigrationEntries())
+        .collect(ImmutableList.toImmutableList());
 
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
     migratableRange.forEach(entry -> {
@@ -80,8 +87,17 @@ public final class MigrationJob {
        migratedResults.add(migrate(entry.getSanitizedNumber(), matchingRecipe, entry.getOriginalNumber()));
     });
 
-    // TODO: create MigrationReport class holding details of migration and return it here instead
-    return migratedResults.build();
+    // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
+    // TODO: this should have multiplicity with custom recipes due to it not being possible for it
+    Stream<MigrationEntry> untouchedEntries = getMigrationEntries()
+        .filter(entry -> !migratableRange.contains(entry));
+
+    if (rangesTable != null) {
+      return new MigrationReport(untouchedEntries, verifyMigratedNumbers(migratedResults.build()));
+    } else {
+      return new MigrationReport(untouchedEntries,
+          ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of()));
+    }
   }
 
   /**
@@ -89,21 +105,32 @@ public final class MigrationJob {
    * recipeKey and attempts to migrate them with recipes from the recipesTable that belong to the
    * given country code.
    */
-  public ImmutableList<MigrationResult> performSingleRecipeMigration(RangeKey recipeKey) {
-    Stream<MigrationEntry> migratableRange = MigrationUtils
-        .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries());
+  public Optional<MigrationReport> performSingleRecipeMigration(RangeKey recipeKey) {
     ImmutableMap<Column<?>, Object> recipeRow = getRecipesCsvTable().getRow(recipeKey);
+    ImmutableList<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries())
+        .collect(ImmutableList.toImmutableList());
 
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
     if (!recipeRow.get(RecipesTableSchema.COUNTRY_CODE).equals(countryCode)) {
-      return migratedResults.build();
+      return Optional.empty();
     }
     migratableRange.forEach(entry -> {
         migratedResults.add(migrate(entry.getSanitizedNumber(), recipeRow, entry.getOriginalNumber()));
     });
 
-    // TODO: create MigrationReport class holding details of migration and return it here instead
-    return migratedResults.build();
+    // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
+    // TODO: this should have multiplicity with custom recipes due to it not being possible for it
+    Stream<MigrationEntry> untouchedEntries = getMigrationEntries()
+        .filter(entry -> !migratableRange.contains(entry));
+
+    if (rangesTable != null) {
+      return Optional.of(new MigrationReport(untouchedEntries,
+          verifyMigratedNumbers(migratedResults.build())));
+    }
+    // TODO: fix MigrationJobTest
+    return Optional.of(new MigrationReport(untouchedEntries,
+        ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of())));
   }
 
   /**
@@ -164,7 +191,111 @@ public final class MigrationJob {
 
       return migrate(DigitSequence.of(newString.toString()), nextRecipeRow, originalNumber);
     }
-
     return MigrationResult.create(DigitSequence.of(newString.toString()), originalNumber);
+  }
+
+  // TODO: add method comment
+  // TODO: fix MigrationJobTest
+  private ImmutableMap<String, ImmutableList<MigrationResult>> verifyMigratedNumbers(
+      ImmutableList<MigrationResult> migrations) {
+    ImmutableList.Builder<MigrationResult> validMigrations = ImmutableList.builder();
+    ImmutableList.Builder<MigrationResult> invalidMigrations = ImmutableList.builder();
+
+    RangeTree validRanges = RangesTableSchema.toRangeTable(rangesTable).getAllRanges();
+    for (MigrationResult migration : migrations) {
+      DigitSequence migratedNum = migration.getMigratedNumber();
+      if (migratedNum.length() <= countryCode.length()) {
+        invalidMigrations.add(migration);
+        continue;
+      }
+      if(validRanges.contains(migratedNum.last(migratedNum.length() - countryCode.length()))) {
+        validMigrations.add(migration);
+      } else {
+        invalidMigrations.add(migration);
+      }
+    }
+    return ImmutableMap.of("Valid", validMigrations.build(), "Invalid", invalidMigrations.build());
+  }
+
+  final class MigrationReport {
+    private final ImmutableList<MigrationEntry> untouchedEntries;
+    private final ImmutableList<MigrationResult> validMigrations;
+    private final ImmutableList<MigrationResult> invalidMigrations;
+
+    private MigrationReport(Stream<MigrationEntry> untouchedEntries,
+        ImmutableMap<String, ImmutableList<MigrationResult>> migratedEntries) {
+      this.untouchedEntries = untouchedEntries.collect(ImmutableList.toImmutableList());
+      this.validMigrations = migratedEntries.get("Valid");
+      this.invalidMigrations = migratedEntries.get("Invalid");
+    }
+
+    public ImmutableList<MigrationResult> getValidMigrations() {
+      return validMigrations;
+    }
+
+    public ImmutableList<MigrationResult> getInvalidMigrations() {
+      return invalidMigrations;
+    }
+
+    public void printMetrics() {
+      int migratedCount = validMigrations.size() + invalidMigrations.size();
+      int totalCount = untouchedEntries.size() + migratedCount;
+
+      System.out.println("Metrics:");
+      System.out.println("* " + migratedCount + " out of the " + totalCount + " inputted numbers "
+          + "were/was migrated");
+
+      if (rangesTable == null) {
+        System.out.println("* Migrated numbers:");
+        validMigrations.forEach(val -> System.out.println("\t" + val));
+
+        System.out.println("\n* Untouched number(s):");
+        untouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "'"));
+      } else {
+        ImmutableList<MigrationEntry> validUntouchedEntries = getValidUntouchedEntries();
+        System.out.println("* " + validMigrations.size() + " out of the " + migratedCount +
+            " migrated numbers were/was verified as being in a valid, dialable format based on our "
+            + "data for the given country");
+        System.out.println("* " + validUntouchedEntries.size() + " out of the " + untouchedEntries.size()
+            + " non-migrated numbers were/was already in a valid, dialable format based on our data "
+            + "for the given country");
+
+        System.out.println("\n* Valid number(s):");
+        validMigrations.forEach(val -> System.out.println("\t" + val));
+        validUntouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "' (untouched)"));
+
+        System.out.println("\n* Invalid migrated number(s):");
+        invalidMigrations.forEach(val -> System.out.println("\t" + val));
+
+        System.out.println("\n* Untouched number(s):");
+        untouchedEntries.forEach(val -> {
+          if (validUntouchedEntries.contains(val)) {
+            System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
+          } else {
+            System.out.println("\t'" + val.getOriginalNumber() + "'");
+          }
+        });
+      }
+    }
+
+    public ImmutableList<MigrationEntry> getValidUntouchedEntries() {
+      ImmutableList.Builder<MigrationEntry> validEntries = ImmutableList.builder();
+      if (rangesTable == null) {
+        return validEntries.build();
+      }
+      RangeTree validRanges = RangesTableSchema.toRangeTable(rangesTable).getAllRanges();
+
+      for (MigrationEntry entry : untouchedEntries) {
+        DigitSequence sanitizedNum = entry.getSanitizedNumber();
+        if (sanitizedNum.length() <= countryCode.length() ||
+            !sanitizedNum.first(countryCode.length()).equals(countryCode)) {
+          continue;
+        }
+        if(validRanges.contains(sanitizedNum.last(sanitizedNum.length() - countryCode.length()))) {
+          validEntries.add(entry);
+        }
+      }
+      return validEntries.build();
+    }
   }
 }

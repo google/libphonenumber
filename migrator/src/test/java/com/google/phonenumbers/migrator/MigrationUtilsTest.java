@@ -61,8 +61,8 @@ public class MigrationUtilsTest {
         .getMigratableRangeByCountry(job.getRecipesRangeTable(), job.getCountryCode(),
             job.getMigrationEntries());
 
-    assertThat(matchesRange.collect(Collectors.toSet()))
-        .containsExactlyElementsIn(job.getMigrationEntries());
+    assertThat(matchesRange.collect(Collectors.toList()))
+        .containsExactlyElementsIn(job.getMigrationEntries().collect(Collectors.toList()));
   }
 
   @Test
