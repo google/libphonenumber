@@ -28,7 +28,7 @@ import picocli.CommandLine.Option;
 @Command(name = "Command Line Migrator Tool:",
     description =  "Please enter a path to a text file containing E.164 phone numbers "
       + "(e.g. +4434567891, +1234568890) from the same country or a single E.164 number as "
-      + "well as the corresponding two digit BCP-47 country code (e.g. 44, 1) to begin migrations.\n")
+      + "well as the corresponding BCP-47 country code (e.g. 44, 1) to begin migrations.\n")
 public final class CommandLineMain {
   /**
    * Fields cannot be private or final to allow for @Command annotation to set and retrieve values.
@@ -52,7 +52,7 @@ public final class CommandLineMain {
 
   @Option(names = {"-c", "--countryCode"},
       required = true,
-      description = "The two digit BCP-47 country code the given phone number(s) belong to (e.g. 44)")
+      description = "The BCP-47 country code the given phone number(s) belong to (e.g. 44)")
   String countryCode;
 
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
