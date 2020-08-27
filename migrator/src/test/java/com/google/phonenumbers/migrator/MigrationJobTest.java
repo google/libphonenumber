@@ -42,7 +42,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    ImmutableList<MigrationResult> migratedNums = job.performAllMigrations();
+    ImmutableList<MigrationResult> migratedNums = job.getMigratedNumbersForRegion();
     assertThat(migratedNums).isNotEmpty();
   }
 
@@ -53,7 +53,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
 
-    ImmutableList<MigrationResult> migratedNums = job.performAllMigrations();
+    ImmutableList<MigrationResult> migratedNums = job.getMigratedNumbersForRegion();
     assertThat(migratedNums).isEmpty();
   }
 
@@ -64,11 +64,12 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "US", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("123"));
-    RangeKey invalidKey = RangeKey.create(testRangeSpec, Collections.singleton(3));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("123"));
+    int testRecipeLength = 3;
+    RangeKey invalidKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
     try {
-      job.performSingleRecipeMigration(invalidKey);
+      job.getMigratedNumbersForRecipe(invalidKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (IllegalArgumentException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -83,10 +84,11 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), "GB", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("12"));
-    RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("12"));
+    int testRecipeLength = 5;
+    RangeKey validKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
-    ImmutableList<MigrationResult> migratedNums = job.performSingleRecipeMigration(validKey);
+    ImmutableList<MigrationResult> migratedNums = job.getMigratedNumbersForRecipe(validKey);
     assertThat(migratedNums).isNotEmpty();
   }
 
@@ -96,11 +98,12 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration("13321", "GB", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("13"));
-    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("13"));
+    int testRecipeLength = 5;
+    RangeKey recipeKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
     try {
-      job.performSingleRecipeMigration(recipeKey);
+      job.getMigratedNumbersForRecipe(recipeKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -115,11 +118,12 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(staleNumber, "GB", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("10"));
-    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("10"));
+    int testRecipeLength = 5;
+    RangeKey recipeKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
     try {
-      job.performSingleRecipeMigration(recipeKey);
+      job.getMigratedNumbersForRecipe(recipeKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(RuntimeException.class);
@@ -132,15 +136,17 @@ public class MigrationJobTest {
   public void performMultipleMigration_expectMigration() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "15321";
+    String migratedNumber = "130211";
     MigrationJob job = MigrationFactory
         .createMigration(staleNumber, "GB", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("15"));
-    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("15"));
+    int testRecipeLength = 5;
+    RangeKey recipeKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
-    ImmutableList<MigrationResult> migratedNums = job.performSingleRecipeMigration(recipeKey);
+    ImmutableList<MigrationResult> migratedNums = job.getMigratedNumbersForRecipe(recipeKey);
     assertThat(migratedNums.stream().map(MigrationResult::getMigratedNumber)
         .collect(Collectors.toList()))
-        .containsExactly(DigitSequence.of("130211"));
+        .containsExactly(DigitSequence.of(migratedNumber));
   }
 }

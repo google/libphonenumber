@@ -95,7 +95,7 @@ public class RecipesTableSchema {
     try {
       rangeKeyLength = Collections.singleton(Integer.parseInt(parts.get(1)));
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("Invalid number '" +parts.get(1)+ "' in column 'Old Length'");
+      throw new IllegalArgumentException("Invalid number '" + parts.get(1) + "' in column 'Old Length'");
     }
     return RangeKey.create(RangeSpecification.parse(parts.get(0)), rangeKeyLength);
   }

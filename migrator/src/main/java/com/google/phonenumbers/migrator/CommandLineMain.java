@@ -79,12 +79,14 @@ public final class CommandLineMain {
           .map(MigrationEntry::getOriginalNumber)
           .collect(Collectors.toList()));
 
-      RangeKey key = RangeKey.create(RangeSpecification.from(DigitSequence.of("84120")),
-          Collections.singleton(12));
+      DigitSequence demoRecipeOldPrefix = DigitSequence.of("84120");
+      int demoRecipeOldLength = 12;
+      RangeKey key = RangeKey.create(RangeSpecification.from(demoRecipeOldPrefix),
+          Collections.singleton(demoRecipeOldLength));
       System.out.println("\nAll migrations for key " + key + ":");
-      migrationJob.performSingleRecipeMigration(key).forEach(res -> System.out.println("\t" + res));
+      migrationJob.getMigratedNumbersForRecipe(key).forEach(res -> System.out.println("\t" + res));
       System.out.println("\nAll migrations for region " + migrationJob.getRegionCode() + ":");
-      migrationJob.performAllMigrations().forEach(res -> System.out.println("\t" + res));
+      migrationJob.getMigratedNumbersForRegion().forEach(res -> System.out.println("\t" + res));
     }
   }
 }

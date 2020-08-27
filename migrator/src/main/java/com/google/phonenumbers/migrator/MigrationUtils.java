@@ -17,26 +17,17 @@ package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Range;
-import com.google.common.collect.RangeSet;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
-import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-/**
- * Utilities for migration tool. Functionality includes lookup of migratable E.164 numbers in a
- * given range based on a given BCP-47 region code, lookup of migratable E.164 numbers in a range
- * based on a specified recipe, and also lookup for the corresponding recipe in a given recipes
- * table which can be used to migrate a given E.164 number.
- */
+/** Utilities for migration tool. */
 public final class MigrationUtils {
 
   /**
@@ -61,7 +52,7 @@ public final class MigrationUtils {
   }
 
   /**
-   * Returns the sub range of entries within migrationEntires that can be migrated using any recipe
+   * Returns the sub range of entries within migrationEntries that can be migrated using any recipe
    * from the {@link CsvTable} recipesTable that matches the specified BCP-47 region code. This
    * method will not perform migrations and as a result, the validity of migrations using the given
    * recipesTable cannot be verified.
