@@ -15,9 +15,13 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
@@ -71,33 +75,46 @@ public final class CommandLineMain {
             .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
       }
 
-      System.out.println(migrationJob.getRecipesCsvTable());
-      System.out.println(migrationJob.getMigrationEntries()
-          .map(MigrationEntry::getOriginalNumber)
-          .collect(Collectors.toList()));
-      System.out.println("");
-
       MigrationReport mr =  migrationJob.performAllMigrations();
-
       if (clm.numberInput.file != null) {
-        mr.printMetrics();
+        printFileReport(mr, Paths.get(clm.numberInput.file));
       } else {
-        if (mr.getValidMigrations().size() == 1) {
-          System.out.println("Successful migration into: +"
-              + mr.getValidMigrations().get(0).getMigratedNumber());
-        } else if (mr.getInvalidMigrations().size() == 1) {
-          System.out.println("The number was migrated into '+"
-              + mr.getInvalidMigrations().get(0).getMigratedNumber() + "' but this number was not "
-              + "seen as being valid and dialable when inspecting our data for the given country");
-        } else if (mr.getValidUntouchedEntries().size() == 1) {
-          System.out.println("This number was seen to already be valid and dialable based on "
-              + "our data for the given country");
-        } else {
-          System.out.println("This number was seen as being invalid based on our data for the "
-              + "given country but we could not migrate it into a valid format.");
-        }
+        printNumberReport(mr);
       }
+    }
+  }
 
+  private static void printFileReport(MigrationReport mr, Path originalFile) throws IOException {
+    String newFile = mr.exportToFile(originalFile.getFileName().toString());
+    Scanner scanner = new Scanner((System.in));
+    String response = "";
+
+    System.out.println("New numbers file created at: " + newFile);
+    while (!response.equals("0")) {
+      System.out.println("\n(0) Exit");
+      System.out.println("(1) Print Metrics");
+      System.out.print("Select from the above options: ");
+      response = scanner.nextLine();
+      if (response.equals("1")) {
+        mr.printMetrics();
+      }
+    }
+  }
+
+  private static void printNumberReport(MigrationReport mr) {
+    if (mr.getValidMigrations().size() == 1) {
+      System.out.println("Successful migration into: +"
+          + mr.getValidMigrations().get(0).getMigratedNumber());
+    } else if (mr.getInvalidMigrations().size() == 1) {
+      System.out.println("The number was migrated into '+"
+          + mr.getInvalidMigrations().get(0).getMigratedNumber() + "' but this number was not "
+          + "seen as being valid and dialable when inspecting our data for the given country");
+    } else if (mr.getValidUntouchedEntries().size() == 1) {
+      System.out.println("This number was seen to already be valid and dialable based on "
+          + "our data for the given country");
+    } else {
+      System.out.println("This number was seen as being invalid based on our data for the "
+          + "given country but we could not migrate it into a valid format.");
     }
   }
 }

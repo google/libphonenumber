@@ -25,6 +25,8 @@ import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -237,52 +239,29 @@ public final class MigrationJob {
       return invalidMigrations;
     }
 
-    public void printMetrics() {
-      int migratedCount = validMigrations.size() + invalidMigrations.size();
-      int totalCount = untouchedEntries.size() + migratedCount;
+    public String exportToFile(String originalFileName) throws IOException {
+      String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
+          originalFileName;
+      FileWriter fw = new FileWriter(newFileLocation);
 
-      System.out.println("Metrics:");
-      System.out.println("* " + migratedCount + " out of the " + totalCount + " inputted numbers "
-          + "were/was migrated");
-
-      if (rangesTable == null) {
-        System.out.println("* Migrated numbers:");
-        validMigrations.forEach(val -> System.out.println("\t" + val));
-
-        System.out.println("\n* Untouched number(s):");
-        untouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "'"));
-      } else {
-        ImmutableList<MigrationEntry> validUntouchedEntries = getValidUntouchedEntries();
-        System.out.println("* " + validMigrations.size() + " out of the " + migratedCount +
-            " migrated numbers were/was verified as being in a valid, dialable format based on our "
-            + "data for the given country");
-        System.out.println("* " + validUntouchedEntries.size() + " out of the " + untouchedEntries.size()
-            + " non-migrated numbers were/was already in a valid, dialable format based on our data "
-            + "for the given country");
-
-        System.out.println("\n* Valid number(s):");
-        validMigrations.forEach(val -> System.out.println("\t" + val));
-        validUntouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "' (untouched)"));
-
-        System.out.println("\n* Invalid migrated number(s):");
-        invalidMigrations.forEach(val -> System.out.println("\t" + val));
-
-        System.out.println("\n* Untouched number(s):");
-        untouchedEntries.forEach(val -> {
-          if (validUntouchedEntries.contains(val)) {
-            System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
-          } else {
-            System.out.println("\t'" + val.getOriginalNumber() + "'");
-          }
-        });
+      for (MigrationResult result : validMigrations) {
+        fw.write(result.getMigratedNumber() + "\n");
       }
+      for (MigrationResult result : invalidMigrations) {
+        fw.write(result.getOriginalNumber() + "\n");
+      }
+      for (MigrationEntry entry : untouchedEntries) {
+        fw.write(entry.getOriginalNumber() + "\n");
+      }
+      fw.close();
+      return newFileLocation;
     }
 
     public ImmutableList<MigrationEntry> getValidUntouchedEntries() {
-      ImmutableList.Builder<MigrationEntry> validEntries = ImmutableList.builder();
       if (rangesTable == null) {
-        return validEntries.build();
+        return ImmutableList.of();
       }
+      ImmutableList.Builder<MigrationEntry> validEntries = ImmutableList.builder();
       RangeTree validRanges = RangesTableSchema.toRangeTable(rangesTable).getAllRanges();
 
       for (MigrationEntry entry : untouchedEntries) {
@@ -296,6 +275,48 @@ public final class MigrationJob {
         }
       }
       return validEntries.build();
+    }
+
+    public void printMetrics() {
+      int migratedCount = validMigrations.size() + invalidMigrations.size();
+      int totalCount = untouchedEntries.size() + migratedCount;
+
+      System.out.println("\nMetrics:");
+      System.out.println("* " + migratedCount + " out of the " + totalCount + " inputted numbers "
+          + "were/was migrated");
+
+      if (rangesTable == null) {
+        System.out.println("* Migrated numbers:");
+        validMigrations.forEach(val -> System.out.println("\t" + val));
+        System.out.println("\n* Untouched number(s):");
+        untouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "'"));
+
+      } else {
+        ImmutableList<MigrationEntry> validUntouchedEntries = getValidUntouchedEntries();
+        System.out.println("* " + validMigrations.size() + " out of the " + migratedCount +
+            " migrated numbers were/was verified as being in a valid, dialable format based on our "
+            + "data for the given country");
+        System.out.println("* " + validUntouchedEntries.size() + " out of the " +
+            untouchedEntries.size() + " non-migrated numbers were/was already in a valid, dialable "
+            + "format based on our data for the given country");
+
+        System.out.println("\n* Valid number(s):");
+        validMigrations.forEach(val -> System.out.println("\t" + val));
+        validUntouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber()
+            + "' (untouched)"));
+
+        System.out.println("\n* Invalid migrated number(s):");
+        invalidMigrations.forEach(val -> System.out.println("\t" + val));
+
+        System.out.println("\n* Untouched number(s):");
+        untouchedEntries.forEach(val -> {
+          if (validUntouchedEntries.contains(val)) {
+            System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
+          } else {
+            System.out.println("\t'" + val.getOriginalNumber() + "'");
+          }
+        });
+      }
     }
   }
 }
