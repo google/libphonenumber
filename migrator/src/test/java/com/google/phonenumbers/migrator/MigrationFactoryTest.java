@@ -52,7 +52,8 @@ public class MigrationFactoryTest {
     String region = "GB";
     MigrationJob mj = MigrationFactory.createMigration(fileLocation, region, recipesPath);
 
-    assertThat(mj.getRawNumberRange().collect(Collectors.toList()))
+    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+        .collect(Collectors.toList()))
         .containsExactlyElementsIn(Files.readAllLines(fileLocation));
     assertThat(mj.getRegionCode().toString()).matches(region);
   }
@@ -81,7 +82,8 @@ public class MigrationFactoryTest {
     String region = "US";
     MigrationJob mj = MigrationFactory.createMigration(numberString, region, recipesPath);
 
-    assertThat(mj.getRawNumberRange().collect(Collectors.toList()))
+    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+        .collect(Collectors.toList()))
         .containsExactly(numberString);
     assertThat(mj.getRegionCode().toString()).matches(region);
   }

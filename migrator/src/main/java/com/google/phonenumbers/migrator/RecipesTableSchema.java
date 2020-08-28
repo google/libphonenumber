@@ -15,6 +15,8 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.base.Preconditions;
+import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.Change;
@@ -26,7 +28,10 @@ import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable.OverwriteMode;
 import com.google.i18n.phonenumbers.metadata.table.Schema;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * The schema of the standard "Recipes" table with rows keyed by {@link RangeKey} and columns:
@@ -43,6 +48,7 @@ import java.util.Optional;
  *       do not will require the newly formatted range to be migrated again using another matching
  *       recipe.
  *   <li>{@link #REGION_CODE}: The BCP-47 region code in which a given recipe corresponds to.
+ *   <li>{@link #DESCRIPTION}: TThe explanation of a migration recipe in words.
  * </ol>
  *
  * <p>Rows keys are serialized via the marshaller and produce leading columns:
@@ -66,13 +72,33 @@ public class RecipesTableSchema {
   /** Indicates whether a given recipe will result in a valid, dialable range */
   public static final Column<Boolean> IS_FINAL_MIGRATION = Column.ofBoolean("Is Final Migration");
 
+  /** The explanation of a migration recipe in words. */
+  public static final Column<String> DESCRIPTION = Column.ofString("Description");
+
   /** Marshaller for constructing CsvTable from RangeTable. */
   private static final CsvKeyMarshaller<RangeKey> MARSHALLER = new CsvKeyMarshaller<>(
       RangesTableSchema::write,
-      RangesTableSchema::read,
+      RecipesTableSchema::read,
       Optional.of(RangeKey.ORDERING),
       "Old Prefix",
       "Old Length");
+
+  /**
+   * Instantiates a {@link RangeKey} from the prefix and length columns of a given recipe
+   * row.
+   *
+   * @throws IllegalArgumentException when the 'Old Length' value is anything other than a number
+   */
+  public static RangeKey read(List<String> parts) {
+    Set<Integer> rangeKeyLength;
+
+    try {
+      rangeKeyLength = Collections.singleton(Integer.parseInt(parts.get(1)));
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException("Invalid number '" + parts.get(1) + "' in column 'Old Length'");
+    }
+    return RangeKey.create(RangeSpecification.parse(parts.get(0)), rangeKeyLength);
+  }
 
   /** The columns for the serialized CSV table. */
   private static final Schema CSV_COLUMNS =
@@ -81,6 +107,7 @@ public class RecipesTableSchema {
           .add(OLD_FORMAT)
           .add(NEW_FORMAT)
           .add(IS_FINAL_MIGRATION)
+          .add(DESCRIPTION)
           .build();
 
   /** Schema instance defining the ranges CSV table. */
@@ -93,6 +120,7 @@ public class RecipesTableSchema {
           .add(OLD_FORMAT)
           .add(NEW_FORMAT)
           .add(IS_FINAL_MIGRATION)
+          .add(DESCRIPTION)
           .build();
 
   /**

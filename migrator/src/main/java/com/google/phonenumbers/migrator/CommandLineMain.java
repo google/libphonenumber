@@ -15,8 +15,12 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.i18n.phonenumbers.metadata.DigitSequence;
+import com.google.i18n.phonenumbers.metadata.RangeSpecification;
+import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
@@ -66,13 +70,23 @@ public final class CommandLineMain {
       if (clm.numberInput.number != null) {
         migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.regionCode);
       } else {
-        migrationJob = MigrationFactory.createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
+        migrationJob = MigrationFactory
+            .createMigration(Paths.get(clm.numberInput.file), clm.regionCode);
       }
 
-      System.out.println(migrationJob.getRecipesTable());
-      System.out.println(migrationJob.getNumberRange().collect(Collectors.toList()));
-      System.out.println(migrationJob.getRegionCode());
-      System.out.println(migrationJob.getAllMigratableNumbers().collect(Collectors.toList()));
+      System.out.println(migrationJob.getRecipesCsvTable());
+      System.out.println(migrationJob.getMigrationEntries().stream()
+          .map(MigrationEntry::getOriginalNumber)
+          .collect(Collectors.toList()));
+
+      DigitSequence demoRecipeOldPrefix = DigitSequence.of("84120");
+      int demoRecipeOldLength = 12;
+      RangeKey key = RangeKey.create(RangeSpecification.from(demoRecipeOldPrefix),
+          Collections.singleton(demoRecipeOldLength));
+      System.out.println("\nAll migrations for key " + key + ":");
+      migrationJob.getMigratedNumbersForRecipe(key).forEach(res -> System.out.println("\t" + res));
+      System.out.println("\nAll migrations for region " + migrationJob.getRegionCode() + ":");
+      migrationJob.getMigratedNumbersForRegion().forEach(res -> System.out.println("\t" + res));
     }
   }
 }

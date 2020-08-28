@@ -16,11 +16,15 @@
 package com.google.phonenumbers.migrator;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
-import com.google.i18n.phonenumbers.metadata.RangeTree;
+import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
+import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
+import com.google.i18n.phonenumbers.metadata.table.RangeTable;
+import com.google.common.base.Preconditions;
 import java.util.stream.Stream;
 
 /**
@@ -44,8 +48,16 @@ public final class MigrationJob {
     this.recipesTable = recipesTable;
   }
 
-  public CsvTable<RangeKey> getRecipesTable() {
+  public PhoneRegion getRegionCode() {
+    return regionCode;
+  }
+
+  public CsvTable<RangeKey> getRecipesCsvTable() {
     return recipesTable;
+  }
+
+  public RangeTable getRecipesRangeTable() {
+    return RecipesTableSchema.toRangeTable(recipesTable);
   }
 
   public ImmutableList<MigrationEntry> getMigrationEntries() {
@@ -53,52 +65,106 @@ public final class MigrationJob {
   }
 
   /**
-   * Returns the formatted version of the number range for migration
+   * Retrieves all migratable numbers from the numberRange and attempts to migrate them with recipes
+   * from the recipesTable that belong to the given region code.
    */
-  public Stream<DigitSequence> getNumberRange() {
-    return migrationEntries.stream().map(MigrationEntry::getSanitizedNumber);
+  public ImmutableList<MigrationResult> getMigratedNumbersForRegion() {
+    Stream<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByRegion(getRecipesRangeTable(), regionCode, getMigrationEntries());
+
+    ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
+    migratableRange.forEach(entry -> {
+      MigrationUtils
+          .findMatchingRecipe(getRecipesCsvTable(), regionCode, entry.getSanitizedNumber())
+          .ifPresent(recipe -> migratedResults
+              .add(migrate(entry.getSanitizedNumber(), recipe, entry.getOriginalNumber())));
+    });
+
+    // TODO: create MigrationReport class holding details of migration and return it here instead
+    return migratedResults.build();
   }
 
   /**
-   * Returns a list of the raw number range for migration
+   * Retrieves all migratable numbers from the numberRange that can be migrated using the given
+   * recipeKey and attempts to migrate them with recipes from the recipesTable that belong to the
+   * given region code.
    */
-  public Stream<String> getRawNumberRange() {
-    return migrationEntries.stream().map(MigrationEntry::getOriginalNumber);
-  }
+  public ImmutableList<MigrationResult> getMigratedNumbersForRecipe(RangeKey recipeKey) {
+    Stream<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries());
+    ImmutableMap<Column<?>, Object> recipeRow = getRecipesCsvTable().getRow(recipeKey);
 
-  public PhoneRegion getRegionCode() {
-    return regionCode;
-  }
-
-  /**
-   * Returns the sub range of numbers within numberRange that can be migrated using any recipe from
-   * the {@link CsvTable} recipesTable that matches the specified BCP-47 region code. This method
-   * will not perform migrations and as a result, the validity of migrations using the given
-   * recipesTable cannot be verified.
-   */
-  public Stream<DigitSequence> getAllMigratableNumbers() {
-    RangeTree regionalRecipes = RecipesTableSchema.toRangeTable(recipesTable)
-        .getRanges(RecipesTableSchema.REGION_CODE, regionCode);
-
-    return getNumberRange()
-        .filter(regionalRecipes::contains);
-  }
-
-  /**
-   * Returns the sub range of numbers within numberRange that can be migrated using the given
-   * recipe. This method will not perform migrations and as a result, the validity of migrations
-   * using the given recipe cannot be verified.
-   *
-   * @param recipeKey: the key of the recipe that is being checked
-   * @throws IllegalArgumentException if there is no row in the recipesTable with the given
-   * recipeKey
-   */
-  public Stream<DigitSequence> getMigratableNumbers(RangeKey recipeKey) {
-    if (!recipesTable.containsRow(recipeKey)) {
-      throw new IllegalArgumentException(
-          recipeKey + " does not match any recipe row in the given recipes table");
+    ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
+    if (!recipeRow.get(RecipesTableSchema.REGION_CODE).equals(regionCode)) {
+      return migratedResults.build();
     }
-    return getNumberRange()
-        .filter(recipeKey.asRangeTree()::contains);
+    migratableRange.forEach(entry -> {
+        migratedResults.add(migrate(entry.getSanitizedNumber(), recipeRow, entry.getOriginalNumber()));
+    });
+
+    // TODO: create MigrationReport class holding details of migration and return it here instead
+    return migratedResults.build();
+  }
+
+  /**
+   * Takes a given number and migrates it using the given matching recipe row. If the given recipe
+   * is not a final migration, the method is recursively called with the recipe that matches the new
+   * migrated number until a recipe that produces a final migration (a recipe that results in the
+   * new format being valid and dialable) has been used. Once this occurs, the {@link MigrationResult}
+   * is returned.
+   *
+   * @throws IllegalArgumentException if the 'Old Format' value in the given recipe row does not
+   * match the number to migrate. This means that the 'Old Format' value cannot be represented by
+   * the given recipes 'Old Prefix' and 'Old Length'.
+   * @throws RuntimeException when the given recipe is not a final migration and a recipe cannot be
+   * found in the recipesTable to match the resulting number from the initial migrating recipe.
+   */
+  private MigrationResult migrate(DigitSequence migratingNumber,
+      ImmutableMap<Column<?>, Object> recipeRow,
+      String originalNumber) {
+    String oldFormat = (String) recipeRow.get(RecipesTableSchema.OLD_FORMAT);
+    String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
+
+    Preconditions.checkArgument(RangeSpecification.parse(oldFormat).matches(migratingNumber),
+        "value '%s' in column 'Old Format' cannot be represented by its given recipe "
+            + "key (Old Prefix + Old Length)", oldFormat);
+
+    DigitSequence migratedVal = getMigratedValue(migratingNumber.toString(), oldFormat, newFormat);
+
+    if (!Boolean.TRUE.equals(recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION))) {
+      ImmutableMap<Column<?>, Object> nextRecipeRow =
+          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), regionCode, migratedVal)
+              .orElseThrow(() -> new RuntimeException(
+                  "A multiple migration was required for the stale number '" + originalNumber
+                      + "' but no other recipe could be found after migrating the number into +"
+                      + migratedVal));
+
+      return migrate(migratedVal, nextRecipeRow, originalNumber);
+    }
+    return MigrationResult.create(migratedVal, originalNumber);
+  }
+
+  private DigitSequence getMigratedValue(String staleString, String oldFormat, String newFormat) {
+    StringBuilder migratedValue = new StringBuilder();
+    int newFormatPointer = 0;
+
+    for (int i = 0; i < oldFormat.length(); i++) {
+      if (!Character.isDigit(oldFormat.charAt(i))) {
+        migratedValue.append(staleString.charAt(i));
+      }
+    }
+    for (int i = 0; i < Math.max(oldFormat.length(), newFormat.length()); i++) {
+      if (i < newFormat.length() && i == newFormatPointer
+          && Character.isDigit(newFormat.charAt(i))) {
+        do {
+          migratedValue.insert(newFormatPointer, newFormat.charAt(newFormatPointer++));
+        } while (newFormatPointer < newFormat.length()
+            && Character.isDigit(newFormat.charAt(newFormatPointer)));
+      }
+      if (newFormatPointer == i) {
+        newFormatPointer++;
+      }
+    }
+    return DigitSequence.of(migratedValue.toString());
   }
 }
