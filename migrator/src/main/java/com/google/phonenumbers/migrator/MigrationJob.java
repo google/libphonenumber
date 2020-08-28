@@ -24,7 +24,7 @@ import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
-import java.util.Collections;
+import com.google.common.base.Preconditions;
 import java.util.stream.Stream;
 
 /**
@@ -74,12 +74,10 @@ public final class MigrationJob {
 
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
     migratableRange.forEach(entry -> {
-      ImmutableMap<Column<?>, Object> matchingRecipe = MigrationUtils
+      MigrationUtils
           .findMatchingRecipe(getRecipesCsvTable(), regionCode, entry.getSanitizedNumber())
-          // can never be thrown here because every staleNumber is from the migratableNumbers set
-          .orElseThrow(RuntimeException::new);
-
-       migratedResults.add(migrate(entry.getSanitizedNumber(), matchingRecipe, entry.getOriginalNumber()));
+          .ifPresent(recipe -> migratedResults
+              .add(migrate(entry.getSanitizedNumber(), recipe, entry.getOriginalNumber())));
     });
 
     // TODO: create MigrationReport class holding details of migration and return it here instead
@@ -127,41 +125,39 @@ public final class MigrationJob {
     String oldFormat = (String) recipeRow.get(RecipesTableSchema.OLD_FORMAT);
     String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
 
-    if (!RangeSpecification.parse(oldFormat).matches(migratingNumber)) {
-      throw new IllegalArgumentException(
-          "value '" + oldFormat + "' in column 'Old Format' cannot be"
-              + " represented by its given recipe key (Old Prefix + Old Length)");
-    }
-    String newString = getNewString(migratingNumber.toString(), oldFormat, newFormat);
+    Preconditions.checkArgument(RangeSpecification.parse(oldFormat).matches(migratingNumber),
+        "value '%s' in column 'Old Format' cannot be represented by its given recipe "
+            + "key (Old Prefix + Old Length)", oldFormat);
 
-    if (!(boolean) recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION)) {
+    DigitSequence migratedVal = getMigratedValue(migratingNumber.toString(), oldFormat, newFormat);
+
+    if (!Boolean.TRUE.equals(recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION))) {
       ImmutableMap<Column<?>, Object> nextRecipeRow =
-          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), regionCode,
-              DigitSequence.of(newString))
+          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), regionCode, migratedVal)
               .orElseThrow(() -> new RuntimeException(
                   "A multiple migration was required for the stale number '" + originalNumber
                       + "' but no other recipe could be found after migrating the number into +"
-                      + newString));
+                      + migratedVal));
 
-      return migrate(DigitSequence.of(newString), nextRecipeRow, originalNumber);
+      return migrate(migratedVal, nextRecipeRow, originalNumber);
     }
-    return MigrationResult.create(DigitSequence.of(newString), originalNumber);
+    return MigrationResult.create(migratedVal, originalNumber);
   }
 
-  private String getNewString(String staleString, String oldFormat, String newFormat) {
-    StringBuilder newString = new StringBuilder();
+  private DigitSequence getMigratedValue(String staleString, String oldFormat, String newFormat) {
+    StringBuilder migratedValue = new StringBuilder();
     int newFormatPointer = 0;
 
     for (int i = 0; i < oldFormat.length(); i++) {
       if (!Character.isDigit(oldFormat.charAt(i))) {
-        newString.append(staleString.charAt(i));
+        migratedValue.append(staleString.charAt(i));
       }
     }
     for (int i = 0; i < Math.max(oldFormat.length(), newFormat.length()); i++) {
       if (i < newFormat.length() && i == newFormatPointer
           && Character.isDigit(newFormat.charAt(i))) {
         do {
-          newString.insert(newFormatPointer, newFormat.charAt(newFormatPointer++));
+          migratedValue.insert(newFormatPointer, newFormat.charAt(newFormatPointer++));
         } while (newFormatPointer < newFormat.length()
             && Character.isDigit(newFormat.charAt(newFormatPointer)));
       }
@@ -169,6 +165,6 @@ public final class MigrationJob {
         newFormatPointer++;
       }
     }
-    return newString.toString();
+    return DigitSequence.of(migratedValue.toString());
   }
 }
