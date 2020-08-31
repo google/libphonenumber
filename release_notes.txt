@@ -1,3 +1,10 @@
+Aug 30, 2020: v8.12.9
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, GB, IL, SG
+ - Updated short number metadata for region code(s): SA
+ - Updated geocoding data for country calling code(s): 57 (en)
+ - Updated carrier data for country calling code(s): 65 (en), 972 (en)
+
 Aug 12, 2020: v8.12.8
 Metadata changes:
  - Updated phone metadata for region code(s): HU, NE, PL, SG, SI, TR
