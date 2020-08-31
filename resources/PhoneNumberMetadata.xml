@@ -7083,9 +7083,14 @@
         <numberFormat pattern="(\d)(\d{7})" nationalPrefixFormattingRule="($FG)"
                       carrierCodeFormattingRule="$NP$CC $FG">
           <leadingDigits>
-            [14][2-9]|
-            [25-8]
+            [146][2-9]|
+            [2578]
           </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)"
+                      carrierCodeFormattingRule="$NP$CC $FG">
+          <leadingDigits>6</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{7})" carrierCodeFormattingRule="$NP$CC $FG">
@@ -7102,15 +7107,18 @@
         <nationalNumberPattern>
           (?:
             1\d|
-            3
+            [36]
           )\d{9}|
           [124-8]\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
-        <possibleLengths national="8" localOnly="7"/>
-        <exampleNumber>12345678</exampleNumber>
-        <nationalNumberPattern>[124-8][2-9]\d{6}</nationalNumberPattern>
+        <possibleLengths national="8,10" localOnly="7"/>
+        <exampleNumber>6012345678</exampleNumber>
+        <nationalNumberPattern>
+          60[124-8][2-9]\d{6}|
+          [124-8][2-9]\d{6}
+        </nationalNumberPattern>
       </fixedLine>
       <!-- Added prefix 323 based on user report and online evidences. -->
       <mobile>
@@ -10095,7 +10103,7 @@
                   [0-7]\d\d|
                   8(?:
                     0\d|
-                    20
+                    2[0-35-9]
                   )
                 )
               )|
@@ -12848,7 +12856,7 @@
             5(?:
               01|
               1[79]|
-              2[2-8]|
+              2[2-9]|
               3[23]|
               44|
               5[05689]|
@@ -24964,7 +24972,7 @@
           <leadingDigits>
             [369]|
             8(?:
-              0[13]|
+              0[1-3]|
               [1-9]
             )
           </leadingDigits>
@@ -25014,7 +25022,8 @@
           (?:
             8(?:
               0(?:
-                1[0-7]|
+                1[0-8]|
+                2[7-9]|
                 3[01]
               )|
               [1-8]\d\d|
