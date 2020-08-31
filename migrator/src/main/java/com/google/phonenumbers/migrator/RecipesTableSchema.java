@@ -52,7 +52,8 @@ import java.util.Set;
  *
  * <p>Rows keys are serialized via the marshaller and produce leading columns:
  * <ol>
- *   <li>{@code "Old Prefix"}: The prefix (RangeSpecification) for the original ranges in a row (e.g. "12[3-6]").
+ *   <li>{@code "Old Prefix"}: The prefix (RangeSpecification) for the original ranges in a row
+ *   (e.g. "44123").
  *   <li>{@code "Old Length"}: The length for the original ranges in a row (e.g. "9", "8" or "5").
  * </ol>
  */
@@ -94,7 +95,7 @@ public class RecipesTableSchema {
     try {
       rangeKeyLength = Collections.singleton(Integer.parseInt(parts.get(1)));
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("Invalid number '" +parts.get(1)+ "' in column 'Old Length'");
+      throw new IllegalArgumentException("Invalid number '" + parts.get(1) + "' in column 'Old Length'");
     }
     return RangeKey.create(RangeSpecification.parse(parts.get(0)), rangeKeyLength);
   }

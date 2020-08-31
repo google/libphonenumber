@@ -25,12 +25,7 @@ import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-/**
- * Utilities for migration tool. Functionality includes lookup of migratable E.164 numbers in a
- * given range based on a given BCP-47 country code, lookup of migratable E.164 numbers in a range
- * based on a specified recipe, and also lookup for the corresponding recipe in a given recipes
- * table which can be used to migrate a given E.164 number.
- */
+/** Utilities for migration tool. */
 public final class MigrationUtils {
 
   /**

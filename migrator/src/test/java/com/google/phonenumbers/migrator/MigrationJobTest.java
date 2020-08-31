@@ -45,7 +45,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
-    MigrationReport report = job.performAllMigrations();
+    MigrationReport report = job.getMigrationReportForRegion();
     assertThat(report.getValidMigrations()).isNotEmpty();
   }
 
@@ -57,7 +57,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
-    MigrationReport report = job.performAllMigrations();
+    MigrationReport report = job.getMigrationReportForRegion();
     assertThat(report.getValidMigrations()).isEmpty();
   }
 
@@ -74,7 +74,7 @@ public class MigrationJobTest {
     RangeKey invalidKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
     try {
-      job.performSingleRecipeMigration(invalidKey);
+      job.getMigrationReportForRecipe(invalidKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (IllegalArgumentException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -94,7 +94,7 @@ public class MigrationJobTest {
     int testRecipeLength = 5;
     RangeKey validKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
-    Optional<MigrationReport> migratedNums = job.performSingleRecipeMigration(validKey);
+    Optional<MigrationReport> migratedNums = job.getMigrationReportForRecipe(validKey);
     assertThat(migratedNums).isPresent();
   }
 
@@ -104,11 +104,12 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration("13321", "44", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("13"));
-    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("13"));
+    int testRecipeLength = 5;
+    RangeKey recipeKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
     try {
-      job.performSingleRecipeMigration(recipeKey);
+      job.getMigrationReportForRecipe(recipeKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -123,11 +124,12 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory
         .createMigration(staleNumber, "44", Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("10"));
-    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("10"));
+    int testRecipeLength = 5;
+    RangeKey recipeKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
     try {
-      job.performSingleRecipeMigration(recipeKey);
+      job.getMigrationReportForRecipe(recipeKey);
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (RuntimeException e) {
       assertThat(e).isInstanceOf(RuntimeException.class);
@@ -141,16 +143,19 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "15321";
     String countryCode = "44";
+    String migratedNumber = "130211";
     MigrationJob job = MigrationFactory
         .createMigration(staleNumber, countryCode, Paths.get(recipesPath));
 
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("15"));
-    RangeKey recipeKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
+    RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("15"));
+    int testRecipeLength = 5;
+    RangeKey recipeKey = RangeKey.create(testRecipePrefix, Collections.singleton(testRecipeLength));
 
-    MigrationReport migratedNums = job.performSingleRecipeMigration(recipeKey)
+    MigrationReport migratedNums = job.getMigrationReportForRecipe(recipeKey)
         .orElseThrow(() -> new RuntimeException("Migration was expected but from found"));
+
     assertThat(migratedNums.getValidMigrations().stream().map(MigrationResult::getMigratedNumber)
         .collect(Collectors.toList()))
-        .containsExactly(DigitSequence.of("130211"));
+        .containsExactly(DigitSequence.of(migratedNumber));
   }
 }

@@ -28,6 +28,7 @@ import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
+import com.google.common.base.Preconditions;
 import java.util.stream.Stream;
 
 /**
@@ -74,20 +75,18 @@ public final class MigrationJob {
    * Retrieves all migratable numbers from the numberRange and attempts to migrate them with recipes
    * from the recipesTable that belong to the given country code.
    */
-  public MigrationReport performAllMigrations() {
+  public MigrationReport getMigrationReportForRegion() {
     ImmutableList<MigrationEntry> migratableRange = MigrationUtils
         .getMigratableRangeByCountry(getRecipesRangeTable(), countryCode, getMigrationEntries())
         .collect(ImmutableList.toImmutableList());
 
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
-    migratableRange.forEach(entry -> {
-      ImmutableMap<Column<?>, Object> matchingRecipe = MigrationUtils
+    for (MigrationEntry entry : migratableRange) {
+      MigrationUtils
           .findMatchingRecipe(getRecipesCsvTable(), countryCode, entry.getSanitizedNumber())
-          // can never be thrown here because every staleNumber is from the migratableNumbers set
-          .orElseThrow(RuntimeException::new);
-
-       migratedResults.add(migrate(entry.getSanitizedNumber(), matchingRecipe, entry.getOriginalNumber()));
-    });
+          .ifPresent(recipe -> migratedResults
+              .add(migrate(entry.getSanitizedNumber(), recipe, entry.getOriginalNumber())));
+    }
 
     // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
     // TODO: this should have multiplicity with custom recipes due to it not being possible for it
@@ -107,7 +106,7 @@ public final class MigrationJob {
    * recipeKey and attempts to migrate them with recipes from the recipesTable that belong to the
    * given country code.
    */
-  public Optional<MigrationReport> performSingleRecipeMigration(RangeKey recipeKey) {
+  public Optional<MigrationReport> getMigrationReportForRecipe(RangeKey recipeKey) {
     ImmutableMap<Column<?>, Object> recipeRow = getRecipesCsvTable().getRow(recipeKey);
     ImmutableList<MigrationEntry> migratableRange = MigrationUtils
         .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries())
@@ -154,26 +153,39 @@ public final class MigrationJob {
     String oldFormat = (String) recipeRow.get(RecipesTableSchema.OLD_FORMAT);
     String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
 
-    if (!RangeSpecification.parse(oldFormat).matches(migratingNumber)) {
-      throw new IllegalArgumentException(
-          "value '" + oldFormat + "' in column 'Old Format' cannot be"
-              + " represented by its given recipe key (Old Prefix + Old Length)");
+    Preconditions.checkArgument(RangeSpecification.parse(oldFormat).matches(migratingNumber),
+        "value '%s' in column 'Old Format' cannot be represented by its given recipe "
+            + "key (Old Prefix + Old Length)", oldFormat);
+
+    DigitSequence migratedVal = getMigratedValue(migratingNumber.toString(), oldFormat, newFormat);
+
+    if (!Boolean.TRUE.equals(recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION))) {
+      ImmutableMap<Column<?>, Object> nextRecipeRow =
+          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), countryCode, migratedVal)
+              .orElseThrow(() -> new RuntimeException(
+                  "A multiple migration was required for the stale number '" + originalNumber
+                      + "' but no other recipe could be found after migrating the number into +"
+                      + migratedVal));
+
+      return migrate(migratedVal, nextRecipeRow, originalNumber);
     }
-    String staleString = migratingNumber.toString();
-    StringBuilder newString = new StringBuilder();
+    return MigrationResult.create(migratedVal, originalNumber);
+  }
+
+  private DigitSequence getMigratedValue(String staleString, String oldFormat, String newFormat) {
+    StringBuilder migratedValue = new StringBuilder();
+    int newFormatPointer = 0;
 
     for (int i = 0; i < oldFormat.length(); i++) {
       if (!Character.isDigit(oldFormat.charAt(i))) {
-        newString.append(staleString.charAt(i));
+        migratedValue.append(staleString.charAt(i));
       }
     }
-
-    int newFormatPointer = 0;
     for (int i = 0; i < Math.max(oldFormat.length(), newFormat.length()); i++) {
       if (i < newFormat.length() && i == newFormatPointer
           && Character.isDigit(newFormat.charAt(i))) {
         do {
-          newString.insert(newFormatPointer, newFormat.charAt(newFormatPointer++));
+          migratedValue.insert(newFormatPointer, newFormat.charAt(newFormatPointer++));
         } while (newFormatPointer < newFormat.length()
             && Character.isDigit(newFormat.charAt(newFormatPointer)));
       }
@@ -181,19 +193,7 @@ public final class MigrationJob {
         newFormatPointer++;
       }
     }
-
-    if (!(boolean) recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION)) {
-      ImmutableMap<Column<?>, Object> nextRecipeRow =
-          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), countryCode,
-              DigitSequence.of(newString.toString()))
-              .orElseThrow(() -> new RuntimeException(
-                  "A multiple migration was required for the stale number '" + originalNumber
-                      + "' but no other recipe could be found after migrating the number into +"
-                      + newString));
-
-      return migrate(DigitSequence.of(newString.toString()), nextRecipeRow, originalNumber);
-    }
-    return MigrationResult.create(DigitSequence.of(newString.toString()), originalNumber);
+    return DigitSequence.of(migratedValue.toString());
   }
 
   // TODO: add method comment

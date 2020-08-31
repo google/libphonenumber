@@ -17,12 +17,10 @@ package com.google.phonenumbers.migrator;
 
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import picocli.CommandLine;
 import picocli.CommandLine.ArgGroup;
 import picocli.CommandLine.Command;
@@ -75,7 +73,7 @@ public final class CommandLineMain {
             .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
       }
 
-      MigrationReport mr =  migrationJob.performAllMigrations();
+      MigrationReport mr =  migrationJob.getMigrationReportForRegion();
       if (clm.numberInput.file != null) {
         printFileReport(mr, Paths.get(clm.numberInput.file));
       } else {
