@@ -95,10 +95,14 @@ public final class MigrationJob {
 
     if (rangesTable != null) {
       return new MigrationReport(untouchedEntries, verifyMigratedNumbers(migratedResults.build()));
-    } else {
-      return new MigrationReport(untouchedEntries,
-          ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of()));
     }
+    /*
+     * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
+     * concept of invalid migrations so all migrations can just be seen as valid.
+     */
+    return new MigrationReport(untouchedEntries,
+        ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of()));
+
   }
 
   /**
@@ -111,8 +115,8 @@ public final class MigrationJob {
     ImmutableList<MigrationEntry> migratableRange = MigrationUtils
         .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries())
         .collect(ImmutableList.toImmutableList());
-
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
+
     if (!recipeRow.get(RecipesTableSchema.COUNTRY_CODE).equals(countryCode)) {
       return Optional.empty();
     }
@@ -129,6 +133,10 @@ public final class MigrationJob {
       return Optional.of(new MigrationReport(untouchedEntries,
           verifyMigratedNumbers(migratedResults.build())));
     }
+    /*
+     * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
+     * concept of invalid migrations so all migrations can just be seen as valid.
+     */
     return Optional.of(new MigrationReport(untouchedEntries,
         ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of())));
   }
@@ -250,6 +258,10 @@ public final class MigrationJob {
       return invalidMigrations;
     }
 
+    public ImmutableList<MigrationEntry> getUntouchedEntries() {
+      return untouchedEntries;
+    }
+
     /**
      * Creates a text file of the new number list after a migration has been performed. Numbers that
      * were not migrated are added in their original format as well migrated numbers that were seen
@@ -262,7 +274,7 @@ public final class MigrationJob {
       FileWriter fw = new FileWriter(newFileLocation);
 
       for (MigrationResult result : validMigrations) {
-        fw.write(result.getMigratedNumber() + "\n");
+        fw.write("+" + result.getMigratedNumber() + "\n");
       }
       for (MigrationResult result : invalidMigrations) {
         fw.write(result.getOriginalNumber() + "\n");

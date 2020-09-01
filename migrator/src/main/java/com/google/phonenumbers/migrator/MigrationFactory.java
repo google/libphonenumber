@@ -21,10 +21,10 @@ import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -35,8 +35,8 @@ import java.util.List;
  */
 public class MigrationFactory {
 
-  private final static String DEFAULT_RECIPES_FILE = "../recipes.csv";
-  final static String METADATA_ZIPFILE = "../metadata.zip";
+  private final static String DEFAULT_RECIPES_FILE = "/recipes.csv";
+  private final static String METADATA_ZIPFILE ="/metadata.zip";
 
   /**
    * Creates a new MigrationJob for a given single E.164 number input (e.g. +4477...) and its
@@ -46,9 +46,11 @@ public class MigrationFactory {
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
-    CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
+    CsvTable<RangeKey> recipes = importRecipes(MigrationFactory.class
+        .getResourceAsStream(DEFAULT_RECIPES_FILE));
 
-    MetadataZipFileReader metadata = MetadataZipFileReader.of(Paths.get(METADATA_ZIPFILE));
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(MigrationFactory.class
+        .getResourceAsStream(METADATA_ZIPFILE));
     CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
@@ -65,7 +67,7 @@ public class MigrationFactory {
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
-    CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
+    CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
     return new MigrationJob(numberRanges, countryCode, recipes, null);
   }
@@ -82,9 +84,11 @@ public class MigrationFactory {
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
-    CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
+    CsvTable<RangeKey> recipes = importRecipes(MigrationFactory.class
+        .getResourceAsStream(DEFAULT_RECIPES_FILE));
 
-    MetadataZipFileReader metadata = MetadataZipFileReader.of(Paths.get(METADATA_ZIPFILE));
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(MigrationFactory.class
+        .getResourceAsStream(METADATA_ZIPFILE));
     CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
@@ -103,7 +107,7 @@ public class MigrationFactory {
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
-    CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
+    CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
     return new MigrationJob(numberRanges.build(), countryCode, recipes, null);
   }
@@ -122,8 +126,8 @@ public class MigrationFactory {
   /**
    * Returns the {@link CsvTable} for a given recipes file path if present.
    */
-  private static CsvTable<RangeKey> importRecipes(Path recipesFile) throws IOException {
-    InputStreamReader reader = new InputStreamReader(Files.newInputStream(recipesFile));
+  private static CsvTable<RangeKey> importRecipes(InputStream recipesFile) throws IOException {
+    InputStreamReader reader = new InputStreamReader(recipesFile);
     return CsvTable.importCsv(RecipesTableSchema.SCHEMA, reader);
   }
 }

@@ -22,13 +22,14 @@ import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Path;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 /**
  * Represents a standard libphonenumber metadata zip file where each {@link MetadataZipFileReader}
@@ -37,19 +38,19 @@ import java.util.zip.ZipFile;
  */
 public final class MetadataZipFileReader {
 
-  private final ZipFile metadataZipFile;
+  private final ZipInputStream metadataZipFile;
 
-  private MetadataZipFileReader(ZipFile metadataZipFile) {
+  private MetadataZipFileReader(ZipInputStream metadataZipFile) {
     this.metadataZipFile = checkNotNull(metadataZipFile);
   }
 
   /**
-   * Returns a MetadataZipFileReader for the given Path (e.g. "./metadata.zip").
+   * Returns a MetadataZipFileReader for the given zip stream.
    */
-  public static MetadataZipFileReader of(Path fileLocation) throws IOException {
-    checkNotNull(fileLocation);
+  public static MetadataZipFileReader of(InputStream file) throws IOException {
+    checkNotNull(file);
 
-    return new MetadataZipFileReader(new ZipFile(fileLocation.toString()));
+    return new MetadataZipFileReader(new ZipInputStream(file));
   }
 
   /**
@@ -57,13 +58,15 @@ public final class MetadataZipFileReader {
    */
   public Optional<CsvTable<RangeKey>> importCsvTable(DigitSequence countryCode) throws IOException {
     String csvTableLocation = "metadata/" + countryCode + "/ranges.csv";
-    ZipEntry csvFile = metadataZipFile.getEntry(csvTableLocation);
+    ZipEntry entry;
 
-    if (csvFile == null) {
-      return Optional.empty();
+    while ((entry = metadataZipFile.getNextEntry()) != null) {
+      if (entry.getName().equals(csvTableLocation)) {
+        return Optional.of(CsvTable.importCsv(RangesTableSchema.SCHEMA,
+            new InputStreamReader(metadataZipFile)));
+      }
     }
-    return Optional.of(CsvTable.importCsv(RangesTableSchema.SCHEMA,
-        new InputStreamReader(metadataZipFile.getInputStream(csvFile))));
+    return Optional.empty();
   }
 
   /**
@@ -92,7 +95,7 @@ public final class MetadataZipFileReader {
       countryCode = args[1];
     }
 
-    MetadataZipFileReader m = MetadataZipFileReader.of(Paths.get(fileLocation));
+    MetadataZipFileReader m = MetadataZipFileReader.of(Files.newInputStream(Paths.get(fileLocation)));
     Optional<CsvTable<RangeKey>> ranges = Optional.ofNullable(
         m.importCsvTable(DigitSequence.of(countryCode))
             .orElseThrow(() -> new RuntimeException("Country code not supported in zipfile")));

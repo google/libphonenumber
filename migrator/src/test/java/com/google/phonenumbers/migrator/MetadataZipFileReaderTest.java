@@ -22,6 +22,7 @@ import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -39,7 +40,7 @@ public class MetadataZipFileReaderTest {
   public void createInstance_invalidFileLocation_expectException() {
     String fileLocation = "invalid-zipfile-location";
     try {
-      MetadataZipFileReader.of(Paths.get(fileLocation));
+      MetadataZipFileReader.of(Files.newInputStream(Paths.get(fileLocation)));
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);
@@ -50,7 +51,7 @@ public class MetadataZipFileReaderTest {
   @Test
   public void importTable_countryCodeInZip_expectCsvTable() throws IOException {
     String fileLocation = TEST_DATA_PATH + "testMetadataZip.zip";
-    MetadataZipFileReader validZip = MetadataZipFileReader.of(Paths.get(fileLocation));
+    MetadataZipFileReader validZip = MetadataZipFileReader.of(Files.newInputStream(Paths.get(fileLocation)));
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable(DigitSequence.of("1"));
     assertThat(regionTable).isPresent();
   }
@@ -58,7 +59,7 @@ public class MetadataZipFileReaderTest {
   @Test
   public void importTable_countryCodeNotInZip_expectEmptyCsvTable() throws IOException {
     String fileLocation = TEST_DATA_PATH + "testMetadataZip.zip/";
-    MetadataZipFileReader validZip = MetadataZipFileReader.of(Paths.get(fileLocation));
+    MetadataZipFileReader validZip = MetadataZipFileReader.of(Files.newInputStream(Paths.get(fileLocation)));
     Optional<CsvTable<RangeKey>> regionTable = validZip.importCsvTable(DigitSequence.of("2"));
     assertThat(regionTable).isEmpty();
   }
