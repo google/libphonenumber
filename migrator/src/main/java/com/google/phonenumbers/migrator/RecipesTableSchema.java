@@ -78,6 +78,7 @@ public class RecipesTableSchema {
   /** Marshaller for constructing CsvTable from RangeTable. */
   private static final CsvKeyMarshaller<RangeKey> MARSHALLER = new CsvKeyMarshaller<>(
       RangesTableSchema::write,
+      // uses a read method that will only allow a single numerical value in the 'Old Length' column
       RecipesTableSchema::read,
       Optional.of(RangeKey.ORDERING),
       "Old Prefix",

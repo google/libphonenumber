@@ -38,31 +38,31 @@ public class MigrationJobTest {
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
 
   @Test
-  public void performAllMigrations_expectMigrations() throws IOException {
+  public void customRecipesMigration_expectMigrations() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "44";
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
-    MigrationReport report = job.getMigrationReportForRegion();
+    MigrationReport report = job.getMigrationReportForCountry();
     assertThat(report.getValidMigrations()).isNotEmpty();
   }
 
   @Test
-  public void performAllMigrations_noRecipesFromCountry_expectNoMigrations() throws IOException {
+  public void customRecipesMigration_noRecipesFromCountry_expectNoMigrations() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "1";
     MigrationJob job = MigrationFactory
         .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
-    MigrationReport report = job.getMigrationReportForRegion();
+    MigrationReport report = job.getMigrationReportForCountry();
     assertThat(report.getValidMigrations()).isEmpty();
   }
 
   @Test
-  public void performSingleMigration_unsupportedRecipeKey_expectException() throws IOException {
+  public void customRecipes_singleMigration_unsupportedRecipeKey_expectException() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "1";
@@ -83,7 +83,7 @@ public class MigrationJobTest {
   }
 
   @Test
-  public void performSingleMigration_validKey_expectMigration() throws IOException {
+  public void customRecipes_singleMigration_validKey_expectMigration() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "44";
@@ -99,7 +99,7 @@ public class MigrationJobTest {
   }
 
   @Test
-  public void performMigration_invalidOldFormatValue_expectException() throws IOException {
+  public void customRecipes_invalidOldFormatValue_expectException() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory
         .createMigration("13321", "44", Paths.get(recipesPath));
@@ -118,7 +118,7 @@ public class MigrationJobTest {
   }
 
   @Test
-  public void performMultipleMigration_nextRecipeNotFound_expectException() throws IOException {
+  public void customRecipe_multipleMigration_nextRecipeNotFound_expectException() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "10321";
     MigrationJob job = MigrationFactory
@@ -139,7 +139,7 @@ public class MigrationJobTest {
   }
 
   @Test
-  public void performMultipleMigration_expectMigration() throws IOException {
+  public void customRecipe_multipleMigration_expectMigration() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "15321";
     String countryCode = "44";
@@ -157,5 +157,40 @@ public class MigrationJobTest {
     assertThat(migratedNums.getValidMigrations().stream().map(MigrationResult::getMigratedNumber)
         .collect(Collectors.toList()))
         .containsExactly(DigitSequence.of(migratedNumber));
+  }
+
+  @Test
+  public void standardMigration_invalidNumberNoRecipe_expectNoMigration() throws IOException {
+    String invalidNumber = "1234567";
+    String countryCode = "44";
+    MigrationJob job = MigrationFactory.createMigration(invalidNumber, countryCode);
+
+    MigrationReport report = job.getMigrationReportForCountry();
+    assertThat(report.getValidUntouchedEntries()).isEmpty();
+    assertThat(report.getUntouchedEntries().stream().map(MigrationEntry::getOriginalNumber))
+        .containsExactly(invalidNumber);
+  }
+
+  @Test
+  public void standardMigration_numberAlreadyValid_expectNoMigration() throws IOException {
+    String alreadyValidNumber = "84701234567";
+    String countryCode = "84";
+    MigrationJob job = MigrationFactory.createMigration(alreadyValidNumber, countryCode);
+
+    MigrationReport report = job.getMigrationReportForCountry();
+    assertThat(report.getValidMigrations()).isEmpty();
+    assertThat(report.getValidUntouchedEntries().stream().map(MigrationEntry::getOriginalNumber))
+        .containsExactly(alreadyValidNumber);
+  }
+
+  @Test
+  public void standardMigration_migratableNumber_expectMigration() throws IOException {
+    String alreadyValidNumber = "841201234567";
+    String countryCode = "84";
+    MigrationJob job = MigrationFactory.createMigration(alreadyValidNumber, countryCode);
+
+    MigrationReport report = job.getMigrationReportForCountry();
+    assertThat(report.getValidMigrations().stream().map(MigrationResult::getOriginalNumber))
+        .containsExactly(alreadyValidNumber);
   }
 }

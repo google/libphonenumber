@@ -75,7 +75,7 @@ public final class MigrationJob {
    * Retrieves all migratable numbers from the numberRange and attempts to migrate them with recipes
    * from the recipesTable that belong to the given country code.
    */
-  public MigrationReport getMigrationReportForRegion() {
+  public MigrationReport getMigrationReportForCountry() {
     ImmutableList<MigrationEntry> migratableRange = MigrationUtils
         .getMigratableRangeByCountry(getRecipesRangeTable(), countryCode, getMigrationEntries())
         .collect(ImmutableList.toImmutableList());
@@ -129,7 +129,6 @@ public final class MigrationJob {
       return Optional.of(new MigrationReport(untouchedEntries,
           verifyMigratedNumbers(migratedResults.build())));
     }
-    // TODO: fix MigrationJobTest
     return Optional.of(new MigrationReport(untouchedEntries,
         ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of())));
   }
@@ -154,8 +153,8 @@ public final class MigrationJob {
     String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
 
     Preconditions.checkArgument(RangeSpecification.parse(oldFormat).matches(migratingNumber),
-        "value '%s' in column 'Old Format' cannot be represented by its given recipe "
-            + "key (Old Prefix + Old Length)", oldFormat);
+        "value '%s' in column 'Old Format' cannot be represented by its given"
+            + " recipe key (Old Prefix + Old Length)", oldFormat);
 
     DigitSequence migratedVal = getMigratedValue(migratingNumber.toString(), oldFormat, newFormat);
 
@@ -172,6 +171,10 @@ public final class MigrationJob {
     return MigrationResult.create(migratedVal, originalNumber);
   }
 
+  /**
+   * Converts a stale number into the new migrated format based on the information from the given
+   * oldFormat and newFormat values.
+   */
   private DigitSequence getMigratedValue(String staleString, String oldFormat, String newFormat) {
     StringBuilder migratedValue = new StringBuilder();
     int newFormatPointer = 0;
@@ -196,8 +199,12 @@ public final class MigrationJob {
     return DigitSequence.of(migratedValue.toString());
   }
 
-  // TODO: add method comment
-  // TODO: fix MigrationJobTest
+  /**
+   * Given a list of {@link MigrationResult}'s, returns a map detailing which migrations resulted in
+   * valid phone numbers based on the given rangesTable data. The map will contain to entries; an
+   * entry with the key 'Valid' with a list of the valid migrations and an entry with the key
+   * 'Invalid', with a list of the invalid migrations from the overall list.
+   */
   private ImmutableMap<String, ImmutableList<MigrationResult>> verifyMigratedNumbers(
       ImmutableList<MigrationResult> migrations) {
     ImmutableList.Builder<MigrationResult> validMigrations = ImmutableList.builder();
@@ -219,6 +226,10 @@ public final class MigrationJob {
     return ImmutableMap.of("Valid", validMigrations.build(), "Invalid", invalidMigrations.build());
   }
 
+  /**
+   * Represents the results of a migration when calling {@link #getMigrationReportForCountry()}
+   * or {@link #getMigrationReportForRecipe(RangeKey)}
+   */
   final class MigrationReport {
     private final ImmutableList<MigrationEntry> untouchedEntries;
     private final ImmutableList<MigrationResult> validMigrations;
@@ -239,6 +250,12 @@ public final class MigrationJob {
       return invalidMigrations;
     }
 
+    /**
+     * Creates a text file of the new number list after a migration has been performed. Numbers that
+     * were not migrated are added in their original format as well migrated numbers that were seen
+     * as being invalid based on the given rangesTable for the given countryCode. Successfully
+     * migrated numbers will be added in their new format.
+     */
     public String exportToFile(String originalFileName) throws IOException {
       String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
           originalFileName;
@@ -257,6 +274,10 @@ public final class MigrationJob {
       return newFileLocation;
     }
 
+    /**
+     * Queries the list of numbers that were not migrated and returns numbers from the list which are
+     * seen as valid based on the given rangesTable for the given countryCode.
+     */
     public ImmutableList<MigrationEntry> getValidUntouchedEntries() {
       if (rangesTable == null) {
         return ImmutableList.of();
@@ -277,6 +298,7 @@ public final class MigrationJob {
       return validEntries.build();
     }
 
+    /** Prints to console the details of the given migration. */
     public void printMetrics() {
       int migratedCount = validMigrations.size() + invalidMigrations.size();
       int totalCount = untouchedEntries.size() + migratedCount;
@@ -286,6 +308,10 @@ public final class MigrationJob {
           + "were/was migrated");
 
       if (rangesTable == null) {
+        /*
+         * MigrationJob's with no rangesTable are based on a custom recipe file. This means there
+         * is no concept of invalid/valid migrations so all migrations can just be listed.
+         */
         System.out.println("* Migrated numbers:");
         validMigrations.forEach(val -> System.out.println("\t" + val));
         System.out.println("\n* Untouched number(s):");

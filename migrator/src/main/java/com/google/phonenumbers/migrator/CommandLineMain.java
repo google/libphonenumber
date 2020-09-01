@@ -15,7 +15,6 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -73,7 +72,7 @@ public final class CommandLineMain {
             .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
       }
 
-      MigrationReport mr =  migrationJob.getMigrationReportForRegion();
+      MigrationReport mr =  migrationJob.getMigrationReportForCountry();
       if (clm.numberInput.file != null) {
         printFileReport(mr, Paths.get(clm.numberInput.file));
       } else {
