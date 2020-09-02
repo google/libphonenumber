@@ -92,13 +92,14 @@ public final class CommandLineMain {
           migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
         }
       } else {
-        if (clm.optionalParameter.customRecipe != null) {
+        if (clm.optionalParameter != null && clm.optionalParameter.customRecipe != null) {
           migrationJob = MigrationFactory
               .createCustomRecipeMigration(Paths.get(clm.numberInput.file), clm.countryCode,
                   Paths.get(clm.optionalParameter.customRecipe));
         } else {
           migrationJob = MigrationFactory
-              .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
+              .createMigration(Paths.get(clm.numberInput.file), clm.countryCode,
+                  clm.optionalParameter != null && clm.optionalParameter.lenientExport);
         }
       }
 

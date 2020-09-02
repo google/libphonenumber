@@ -37,7 +37,7 @@ public class MigrationFactoryTest {
   public void createFromFilePath_invalidPathLocation_expectException() {
     String fileLocation = "invalid-path-location";
     try {
-      MigrationFactory.createMigration(Paths.get(fileLocation), "44");
+      MigrationFactory.createMigration(Paths.get(fileLocation), "44", false);
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);

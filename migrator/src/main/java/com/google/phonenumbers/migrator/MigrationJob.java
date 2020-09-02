@@ -44,15 +44,18 @@ public final class MigrationJob {
   private final CsvTable<RangeKey> recipesTable;
   private final ImmutableList<MigrationEntry> migrationEntries;
   private final DigitSequence countryCode;
+  private final boolean lenientExport;
 
   MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
       DigitSequence countryCode,
       CsvTable<RangeKey> recipesTable,
-      CsvTable<RangeKey> rangesTable) {
+      CsvTable<RangeKey> rangesTable,
+      boolean lenientExport) {
     this.migrationEntries = migrationEntries;
     this.countryCode = countryCode;
     this.recipesTable = recipesTable;
     this.rangesTable = rangesTable;
+    this.lenientExport = lenientExport;
   }
 
   public DigitSequence getCountryCode() {
@@ -282,7 +285,8 @@ public final class MigrationJob {
         fw.write("+" + result.getMigratedNumber() + "\n");
       }
       for (MigrationResult result : invalidMigrations) {
-        fw.write(result.getOriginalNumber() + "\n");
+        String number = lenientExport ? "+" + result.getMigratedNumber() : result.getOriginalNumber();
+        fw.write(number + "\n");
       }
       for (MigrationEntry entry : untouchedEntries) {
         fw.write(entry.getOriginalNumber() + "\n");

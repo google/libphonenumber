@@ -55,7 +55,7 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, ranges);
+    return new MigrationJob(numberRanges, countryCode, recipes, ranges, false);
   }
 
   /**
@@ -71,7 +71,7 @@ public class MigrationFactory {
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, null);
+    return new MigrationJob(numberRanges, countryCode, recipes, null, false);
   }
 
   /**
@@ -80,7 +80,8 @@ public class MigrationFactory {
    * BCP-47 country code (e.g. 44) that numbers in the file belong to.
    * All numbers in the file should belong to the same region.
    */
-  public static MigrationJob createMigration(Path file, String country) throws IOException {
+  public static MigrationJob createMigration(Path file, String country, boolean lenientExport)
+      throws IOException {
     List<String> numbers = Files.readAllLines(file);
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
@@ -95,7 +96,7 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges, lenientExport);
   }
 
   /**
@@ -113,7 +114,7 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes, null);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, null, false);
   }
 
   /**
