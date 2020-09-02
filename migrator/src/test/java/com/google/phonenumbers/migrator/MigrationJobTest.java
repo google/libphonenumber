@@ -43,7 +43,7 @@ public class MigrationJobTest {
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "44";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
     MigrationReport report = job.getMigrationReportForCountry();
     assertThat(report.getValidMigrations()).isNotEmpty();
@@ -55,7 +55,7 @@ public class MigrationJobTest {
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "1";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
     MigrationReport report = job.getMigrationReportForCountry();
     assertThat(report.getValidMigrations()).isEmpty();
@@ -67,7 +67,7 @@ public class MigrationJobTest {
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "1";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("123"));
     int testRecipeLength = 3;
@@ -88,7 +88,7 @@ public class MigrationJobTest {
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String countryCode = "44";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), countryCode, Paths.get(recipesPath));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("12"));
     int testRecipeLength = 5;
@@ -102,7 +102,7 @@ public class MigrationJobTest {
   public void customRecipes_invalidOldFormatValue_expectException() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory
-        .createMigration("13321", "44", Paths.get(recipesPath));
+        .createCustomRecipeMigration("13321", "44", Paths.get(recipesPath));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("13"));
     int testRecipeLength = 5;
@@ -122,7 +122,7 @@ public class MigrationJobTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "10321";
     MigrationJob job = MigrationFactory
-        .createMigration(staleNumber, "44", Paths.get(recipesPath));
+        .createCustomRecipeMigration(staleNumber, "44", Paths.get(recipesPath));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("10"));
     int testRecipeLength = 5;
@@ -145,7 +145,7 @@ public class MigrationJobTest {
     String countryCode = "44";
     String migratedNumber = "130211";
     MigrationJob job = MigrationFactory
-        .createMigration(staleNumber, countryCode, Paths.get(recipesPath));
+        .createCustomRecipeMigration(staleNumber, countryCode, Paths.get(recipesPath));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("15"));
     int testRecipeLength = 5;

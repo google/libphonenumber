@@ -166,7 +166,12 @@ public final class MigrationJob {
 
     DigitSequence migratedVal = getMigratedValue(migratingNumber.toString(), oldFormat, newFormat);
 
-    if (!Boolean.TRUE.equals(recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION))) {
+    /*
+     * Only recursively migrate when the recipe explicitly states it is not a final migration.
+     * Custom recipes have no concept of an Is_Final_Migration column so their value will be seen
+     * as null here. In such cases, the tool should not look for another recipe after a migration.
+     */
+    if (Boolean.FALSE.equals(recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION))) {
       ImmutableMap<Column<?>, Object> nextRecipeRow =
           MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), countryCode, migratedVal)
               .orElseThrow(() -> new RuntimeException(

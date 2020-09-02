@@ -42,7 +42,7 @@ public class MigrationUtilsTest {
   @Test
   public void getCountryMigratableNumbers_expectNoMatches() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
-    MigrationJob job = MigrationFactory.createMigration("34", "44", Paths.get(recipesPath));
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration("34", "44", Paths.get(recipesPath));
 
     Stream<MigrationEntry> noMatchesRange = MigrationUtils
         .getMigratableRangeByCountry(job.getRecipesRangeTable(), job.getCountryCode(),
@@ -55,7 +55,7 @@ public class MigrationUtilsTest {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createMigration(Paths.get(numbersPath), "44", Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), "44", Paths.get(recipesPath));
 
     Stream<MigrationEntry> matchesRange = MigrationUtils
         .getMigratableRangeByCountry(job.getRecipesRangeTable(), job.getCountryCode(),
@@ -71,7 +71,7 @@ public class MigrationUtilsTest {
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("123"));
     RangeKey invalidKey = RangeKey.create(testRangeSpec, Collections.singleton(3));
 
-    MigrationJob job = MigrationFactory.createMigration("123", "44", Paths.get(recipesPath));
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", Paths.get(recipesPath));
     try {
       MigrationUtils
           .getMigratableRangeByRecipe(job.getRecipesCsvTable(), invalidKey, job.getMigrationEntries());
@@ -88,7 +88,7 @@ public class MigrationUtilsTest {
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("12"));
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
-    MigrationJob job = MigrationFactory.createMigration("123", "44", Paths.get(recipesPath));
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", Paths.get(recipesPath));
 
     assertThat(MigrationUtils
         .getMigratableRangeByRecipe(job.getRecipesCsvTable(), validKey, job.getMigrationEntries())
@@ -99,7 +99,7 @@ public class MigrationUtilsTest {
   @Test
   public void findMatchingRecipe_expectNoMatchingRecipe() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
-    MigrationJob job = MigrationFactory.createMigration("123", "44", Paths.get(recipesPath));
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", Paths.get(recipesPath));
 
     DigitSequence testNumberToMatch = DigitSequence.of("12");
     assertThat(MigrationUtils
@@ -110,7 +110,7 @@ public class MigrationUtilsTest {
   @Test
   public void findMatchingRecipe_expectMatchingRecipe() throws IOException {
     String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
-    MigrationJob job = MigrationFactory.createMigration("123", "44", Paths.get(recipesPath));
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", Paths.get(recipesPath));
     DigitSequence testNumberToMatch = DigitSequence.of("12345");
 
     Optional<ImmutableMap<Column<?>, Object>> foundRecipe = MigrationUtils

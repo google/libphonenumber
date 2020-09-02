@@ -62,7 +62,9 @@ public class MigrationFactory {
    * Returns a MigrationJob instance for a given single E.164 number input, corresponding BCP-47
    * country code (e.g. 1 for Canada), and custom user recipes.csv file.
    */
-  public static MigrationJob createMigration(String number, String country, Path customRecipesFile)
+  public static MigrationJob createCustomRecipeMigration(String number,
+      String country,
+      Path customRecipesFile)
       throws IOException {
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
@@ -100,7 +102,9 @@ public class MigrationFactory {
    * Returns a MigrationJob instance for a given file path containing one E.164
    * number per line, corresponding BCP-47 country code, and custom user recipes.csv file.
    */
-  public static MigrationJob createMigration(Path file, String country, Path customRecipesFile)
+  public static MigrationJob createCustomRecipeMigration(Path file,
+      String country,
+      Path customRecipesFile)
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     DigitSequence countryCode = DigitSequence.of(country);

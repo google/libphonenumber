@@ -56,6 +56,24 @@ public final class CommandLineMain {
       description = "The BCP-47 country code the given phone number(s) belong to (e.g. 44)")
   String countryCode;
 
+  @ArgGroup()
+  OptionalParameterType optionalParameter;
+
+  static class OptionalParameterType {
+    @Option(names = {"-l", "--lenientExport"},
+        description = "boolean flag specifying that text files created after the migration process"
+            + " for standard recipe --file migrations should contain the migrated version of a given"
+            + " phone number when a migration has taken place on it, regardless of whether the"
+            + " migration resulted in an invalid phone number. By default, a strict approach is used"
+            + " and when a migration is seen as invalid, the original phone number is written to file.")
+    boolean lenientExport;
+
+    @Option(names = {"-r", "--customRecipe"},
+        description = "Csv file containing a custom migration recipes table. When using custom recipes"
+            + ", validity checks on migrated numbers will not be performed.")
+    String customRecipe;
+  }
+
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
   boolean help;
 
@@ -66,10 +84,22 @@ public final class CommandLineMain {
     } else {
       MigrationJob migrationJob;
       if (clm.numberInput.number != null) {
-        migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
+        if (clm.optionalParameter.customRecipe != null) {
+          migrationJob = MigrationFactory
+              .createCustomRecipeMigration(clm.numberInput.number, clm.countryCode,
+                  Paths.get(clm.optionalParameter.customRecipe));
+        } else {
+          migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
+        }
       } else {
-        migrationJob = MigrationFactory
-            .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
+        if (clm.optionalParameter.customRecipe != null) {
+          migrationJob = MigrationFactory
+              .createCustomRecipeMigration(Paths.get(clm.numberInput.file), clm.countryCode,
+                  Paths.get(clm.optionalParameter.customRecipe));
+        } else {
+          migrationJob = MigrationFactory
+              .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
+        }
       }
 
       MigrationReport mr =  migrationJob.getMigrationReportForCountry();
@@ -110,8 +140,8 @@ public final class CommandLineMain {
       System.out.println("This number was seen to already be valid and dialable based on "
           + "our data for the given country");
     } else {
-      System.out.println("This number was seen as being invalid based on our data for the "
-          + "given country but we could not migrate it into a valid format.");
+      System.out.println("This number could not be migrated using any of the recipes from the given"
+          + " recipes file.");
     }
   }
 }
