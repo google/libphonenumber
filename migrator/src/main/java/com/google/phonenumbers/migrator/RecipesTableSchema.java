@@ -15,6 +15,7 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
@@ -153,5 +154,15 @@ public class RecipesTableSchema {
       }
     }
     return csv.build();
+  }
+
+  /** Converts recipe into format more human-friendly than the default ImmutableMap toString(). */
+  public static String formatRecipe(ImmutableMap<Column<?>, Object> recipe) {
+    StringBuilder formattedRecipe = new StringBuilder();
+    for (Column<?> column : recipe.keySet()) {
+      String columnValue = column.getName() + ": " + recipe.get(column) + "  |  ";
+      formattedRecipe.append(columnValue);
+    }
+    return formattedRecipe.toString();
   }
 }

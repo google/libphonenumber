@@ -190,7 +190,7 @@ public class MigrationJobTest {
     MigrationJob job = MigrationFactory.createMigration(alreadyValidNumber, countryCode);
 
     MigrationReport report = job.getMigrationReportForCountry();
-    assertThat(report.getValidMigrations().stream().map(MigrationResult::getOriginalNumber))
+    assertThat(report.getValidMigrations().stream().map(res -> res.getMigrationEntry().getOriginalNumber()))
         .containsExactly(alreadyValidNumber);
   }
 }

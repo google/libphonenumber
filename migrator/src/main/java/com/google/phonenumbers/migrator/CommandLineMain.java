@@ -15,6 +15,9 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
+import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -112,6 +115,7 @@ public final class CommandLineMain {
     }
   }
 
+  /** Details printed to console after a --file type migration. */
   private static void printFileReport(MigrationReport mr, Path originalFile) throws IOException {
     String newFile = mr.exportToFile(originalFile.getFileName().toString());
     Scanner scanner = new Scanner((System.in));
@@ -121,28 +125,44 @@ public final class CommandLineMain {
     while (!response.equals("0")) {
       System.out.println("\n(0) Exit");
       System.out.println("(1) Print Metrics");
+      System.out.println("(2) View All Recipes Used");
       System.out.print("Select from the above options: ");
       response = scanner.nextLine();
       if (response.equals("1")) {
         mr.printMetrics();
+      } else if (response.equals("2")) {
+        printUsedRecipes(mr);
       }
     }
   }
 
+  /** Details printed to console after a --number type migration. */
   private static void printNumberReport(MigrationReport mr) {
     if (mr.getValidMigrations().size() == 1) {
       System.out.println("Successful migration into: +"
           + mr.getValidMigrations().get(0).getMigratedNumber());
+      printUsedRecipes(mr);
     } else if (mr.getInvalidMigrations().size() == 1) {
       System.out.println("The number was migrated into '+"
           + mr.getInvalidMigrations().get(0).getMigratedNumber() + "' but this number was not "
           + "seen as being valid and dialable when inspecting our data for the given country");
+      printUsedRecipes(mr);
     } else if (mr.getValidUntouchedEntries().size() == 1) {
       System.out.println("This number was seen to already be valid and dialable based on "
           + "our data for the given country");
     } else {
       System.out.println("This number could not be migrated using any of the recipes from the given"
           + " recipes file.");
+    }
+  }
+
+  private static void printUsedRecipes(MigrationReport mr) {
+    Multimap<ImmutableMap<Column<?>, Object>, MigrationResult> recipeToNumbers = mr.getAllRecipesUsed();
+    System.out.println("\nRecipe(s) Used:");
+    for (ImmutableMap<Column<?>, Object> recipe : recipeToNumbers.keySet()) {
+      System.out.println("* " + RecipesTableSchema.formatRecipe(recipe));
+      recipeToNumbers.get(recipe).forEach(result -> System.out.println("\t" + result));
+      System.out.println("");
     }
   }
 }

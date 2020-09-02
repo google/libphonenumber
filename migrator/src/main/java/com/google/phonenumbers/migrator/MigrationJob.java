@@ -15,8 +15,10 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
@@ -87,25 +89,20 @@ public final class MigrationJob {
     for (MigrationEntry entry : migratableRange) {
       MigrationUtils
           .findMatchingRecipe(getRecipesCsvTable(), countryCode, entry.getSanitizedNumber())
-          .ifPresent(recipe -> migratedResults
-              .add(migrate(entry.getSanitizedNumber(), recipe, entry.getOriginalNumber())));
+          .ifPresent(recipe -> migratedResults.add(migrate(entry.getSanitizedNumber(), recipe, entry)));
     }
-
-    // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
-    // TODO: this should have multiplicity with custom recipes due to it not being possible for it
     Stream<MigrationEntry> untouchedEntries = getMigrationEntries()
         .filter(entry -> !migratableRange.contains(entry));
 
-    if (rangesTable != null) {
-      return new MigrationReport(untouchedEntries, verifyMigratedNumbers(migratedResults.build()));
+    if (rangesTable == null) {
+      /*
+       * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
+       * concept of invalid migrations so all migrations can just be seen as valid.
+       */
+      return new MigrationReport(untouchedEntries,
+          ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of()));
     }
-    /*
-     * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
-     * concept of invalid migrations so all migrations can just be seen as valid.
-     */
-    return new MigrationReport(untouchedEntries,
-        ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of()));
-
+    return new MigrationReport(untouchedEntries, verifyMigratedNumbers(migratedResults.build()));
   }
 
   /**
@@ -123,25 +120,21 @@ public final class MigrationJob {
     if (!recipeRow.get(RecipesTableSchema.COUNTRY_CODE).equals(countryCode)) {
       return Optional.empty();
     }
-    migratableRange.forEach(entry -> {
-        migratedResults.add(migrate(entry.getSanitizedNumber(), recipeRow, entry.getOriginalNumber()));
-    });
+    migratableRange.forEach(entry -> migratedResults
+        .add(migrate(entry.getSanitizedNumber(), recipeRow, entry)));
 
-    // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
-    // TODO: this should have multiplicity with custom recipes due to it not being possible for it
     Stream<MigrationEntry> untouchedEntries = getMigrationEntries()
         .filter(entry -> !migratableRange.contains(entry));
-
-    if (rangesTable != null) {
+    if (rangesTable == null) {
+      /*
+       * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
+       * concept of invalid migrations so all migrations can just be seen as valid.
+       */
       return Optional.of(new MigrationReport(untouchedEntries,
-          verifyMigratedNumbers(migratedResults.build())));
+          ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of())));
     }
-    /*
-     * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
-     * concept of invalid migrations so all migrations can just be seen as valid.
-     */
-    return Optional.of(new MigrationReport(untouchedEntries,
-        ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of())));
+    return Optional
+        .of(new MigrationReport(untouchedEntries, verifyMigratedNumbers(migratedResults.build())));
   }
 
   /**
@@ -159,7 +152,7 @@ public final class MigrationJob {
    */
   private MigrationResult migrate(DigitSequence migratingNumber,
       ImmutableMap<Column<?>, Object> recipeRow,
-      String originalNumber) {
+      MigrationEntry migrationEntry) {
     String oldFormat = (String) recipeRow.get(RecipesTableSchema.OLD_FORMAT);
     String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
 
@@ -178,13 +171,13 @@ public final class MigrationJob {
       ImmutableMap<Column<?>, Object> nextRecipeRow =
           MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), countryCode, migratedVal)
               .orElseThrow(() -> new RuntimeException(
-                  "A multiple migration was required for the stale number '" + originalNumber
-                      + "' but no other recipe could be found after migrating the number into +"
-                      + migratedVal));
+                  "A multiple migration was required for the stale number '" + migrationEntry
+                      .getOriginalNumber() + "' but no other recipe could be found after migrating "
+                      + "the number into +" + migratedVal));
 
-      return migrate(migratedVal, nextRecipeRow, originalNumber);
+      return migrate(migratedVal, nextRecipeRow, migrationEntry);
     }
-    return MigrationResult.create(migratedVal, originalNumber);
+    return MigrationResult.create(migratedVal, migrationEntry);
   }
 
   /**
@@ -285,7 +278,8 @@ public final class MigrationJob {
         fw.write("+" + result.getMigratedNumber() + "\n");
       }
       for (MigrationResult result : invalidMigrations) {
-        String number = lenientExport ? "+" + result.getMigratedNumber() : result.getOriginalNumber();
+        String number = lenientExport ? "+" + result.getMigratedNumber() :
+            result.getMigrationEntry().getOriginalNumber();
         fw.write(number + "\n");
       }
       for (MigrationEntry entry : untouchedEntries) {
@@ -317,6 +311,27 @@ public final class MigrationJob {
         }
       }
       return validEntries.build();
+    }
+
+    /**
+     * Maps all migrated numbers, whether invalid or valid, to the recipe from the recipesTable that
+     * was used to migrate them.
+     */
+    public Multimap<ImmutableMap<Column<?>, Object>, MigrationResult> getAllRecipesUsed() {
+      Multimap<ImmutableMap<Column<?>, Object>, MigrationResult> recipeToNumbers = ArrayListMultimap
+          .create();
+
+      for (MigrationResult migration : validMigrations) {
+        MigrationUtils.findMatchingRecipe(recipesTable, countryCode,
+            migration.getMigrationEntry().getSanitizedNumber())
+            .ifPresent(recipe -> recipeToNumbers.put(recipe, migration));
+      }
+      for (MigrationResult migration : invalidMigrations) {
+        MigrationUtils.findMatchingRecipe(recipesTable, countryCode,
+            migration.getMigrationEntry().getSanitizedNumber())
+            .ifPresent(recipe -> recipeToNumbers.put(recipe, migration));
+      }
+      return recipeToNumbers;
     }
 
     /** Prints to console the details of the given migration. */

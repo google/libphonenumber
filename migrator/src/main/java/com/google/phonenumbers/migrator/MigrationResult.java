@@ -19,20 +19,21 @@ import com.google.auto.value.AutoValue;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 
 /**
- * Representation of the result for a given MigrationEntry. Contains the original number
- * string as well as the migrated E.164 {@link DigitSequence} value.
+ * Representation of the result for a given MigrationEntry. Contains the {@link MigrationEntry} with
+ * its migrated E.164 {@link DigitSequence} value.
  */
 @AutoValue
 public abstract class MigrationResult {
   public abstract DigitSequence getMigratedNumber();
-  public abstract String getOriginalNumber();
+  public abstract MigrationEntry getMigrationEntry();
 
-  public static MigrationResult create(DigitSequence migratedNumber, String originalNumber) {
-    return new AutoValue_MigrationResult(migratedNumber, originalNumber);
+  public static MigrationResult create(DigitSequence migratedNumber,
+      MigrationEntry migrationEntry) {
+    return new AutoValue_MigrationResult(migratedNumber, migrationEntry);
   }
 
   @Override
   public String toString() {
-    return "'" + getOriginalNumber() + "' -> +" + getMigratedNumber();
+    return "'" + getMigrationEntry().getOriginalNumber() + "' -> +" + getMigratedNumber();
   }
 }
