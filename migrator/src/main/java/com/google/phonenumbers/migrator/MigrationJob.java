@@ -251,14 +251,33 @@ public final class MigrationJob {
       this.invalidMigrations = migratedEntries.get("Invalid");
     }
 
+    /**
+     * Returns the Migration results which were seen as valid when queried against the rangesTable
+     * containing valid number representations for the given countryCode.
+     *
+     * Note: for customRecipe migrations, there is no concept of invalid migrations so all
+     * {@link MigrationEntry}'s that were migrated will be seen as valid.
+     */
     public ImmutableList<MigrationResult> getValidMigrations() {
       return validMigrations;
     }
 
+    /**
+     * Returns the Migration results which were seen as invalid when queried against the given
+     * rangesTable.
+     *
+     * Note: for customRecipe migrations, there is no concept of invalid migrations so all
+     * {@link MigrationEntry}'s that were migrated will be seen as valid.
+     */
     public ImmutableList<MigrationResult> getInvalidMigrations() {
       return invalidMigrations;
     }
 
+    /**
+     * Returns the Migration entry's that were not migrated but were seen as being already valid
+     * when querying against the rangesTable. Custom recipe migrations do not have range tables so
+     * this list will be empty when called from such instance.
+     */
     public ImmutableList<MigrationEntry> getUntouchedEntries() {
       return untouchedEntries;
     }
@@ -266,12 +285,14 @@ public final class MigrationJob {
     /**
      * Creates a text file of the new number list after a migration has been performed. Numbers that
      * were not migrated are added in their original format as well migrated numbers that were seen
-     * as being invalid based on the given rangesTable for the given countryCode. Successfully
+     * as being invalid, unless the migration job is set to have a lenientExport. Successfully
      * migrated numbers will be added in their new format.
+     *
+     * @param fileName: the given suffix of the new file to be created.
      */
-    public String exportToFile(String originalFileName) throws IOException {
+    public String exportToFile(String fileName) throws IOException {
       String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
-          originalFileName;
+          fileName;
       FileWriter fw = new FileWriter(newFileLocation);
 
       for (MigrationResult result : validMigrations) {

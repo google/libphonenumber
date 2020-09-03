@@ -50,7 +50,7 @@ public final class MigrationUtils {
   }
 
   /**
-   * Returns the sub range of entries within migrationEntires that can be migrated using any recipe
+   * Returns the sub range of entries within migrationEntries that can be migrated using any recipe
    * from the {@link CsvTable} recipesTable that matches the specified BCP-47 country code. This
    * method will not perform migrations and as a result, the validity of migrations using the given
    * recipesTable cannot be verified.

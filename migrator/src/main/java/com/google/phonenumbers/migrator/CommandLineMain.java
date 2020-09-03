@@ -87,7 +87,7 @@ public final class CommandLineMain {
     } else {
       MigrationJob migrationJob;
       if (clm.numberInput.number != null) {
-        if (clm.optionalParameter.customRecipe != null) {
+        if (clm.optionalParameter != null && clm.optionalParameter.customRecipe != null) {
           migrationJob = MigrationFactory
               .createCustomRecipeMigration(clm.numberInput.number, clm.countryCode,
                   Paths.get(clm.optionalParameter.customRecipe));
@@ -107,6 +107,8 @@ public final class CommandLineMain {
       }
 
       MigrationReport mr =  migrationJob.getMigrationReportForCountry();
+      System.out.println("Migration of country code +" + migrationJob.getCountryCode() + " phone "
+          + "number(s):");
       if (clm.numberInput.file != null) {
         printFileReport(mr, Paths.get(clm.numberInput.file));
       } else {

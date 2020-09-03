@@ -36,7 +36,8 @@ import java.util.List;
 public class MigrationFactory {
 
   private final static String DEFAULT_RECIPES_FILE = "/recipes.csv";
-  private final static String METADATA_ZIPFILE ="/metadata.zip";
+  // made public for testing purposes
+  public final static String METADATA_ZIPFILE ="/metadata.zip";
 
   /**
    * Creates a new MigrationJob for a given single E.164 number input (e.g. +4477...) and its
@@ -130,8 +131,9 @@ public class MigrationFactory {
 
   /**
    * Returns the {@link CsvTable} for a given recipes file path if present.
+   * Made public for testing purposes.
    */
-  private static CsvTable<RangeKey> importRecipes(InputStream recipesFile) throws IOException {
+  public static CsvTable<RangeKey> importRecipes(InputStream recipesFile) throws IOException {
     InputStreamReader reader = new InputStreamReader(recipesFile);
     return CsvTable.importCsv(RecipesTableSchema.SCHEMA, reader);
   }
