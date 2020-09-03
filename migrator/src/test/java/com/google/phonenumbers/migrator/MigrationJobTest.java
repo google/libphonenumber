@@ -29,6 +29,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.junit.Assert;
@@ -196,9 +197,56 @@ public class MigrationJobTest {
 
   @Test
   public void standardMigration_invalidMigration_expectInvalidMigration() throws IOException {
-    Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     DigitSequence migratingNumber = DigitSequence.of("12345");
+    MigrationJob job = createMockJobFromTestRecipes(migratingNumber, DigitSequence.of(COUNTRY_CODE),
+        false);
 
+    MigrationReport report = job.getMigrationReportForCountry();
+    assertThat(report.getValidMigrations()).isEmpty();
+    assertThat(report.getInvalidMigrations().stream()
+        .map(result -> result.getMigrationEntry().getOriginalNumber()))
+        .containsExactly(migratingNumber.toString());
+  }
+
+  @Test
+  public void invalidMigration_strictExport_expectFileWithOriginalNumber() throws IOException {
+    DigitSequence migratingNumber = DigitSequence.of("12345");
+    boolean lenientExport = false;
+
+    MigrationJob job = createMockJobFromTestRecipes(migratingNumber, DigitSequence.of(COUNTRY_CODE),
+        lenientExport);
+    MigrationReport report = job.getMigrationReportForCountry();
+
+    Path createdFileLocation = Paths.get(report.exportToFile("strictTestFile"));
+    List<String> createdFileContent = Files.readAllLines(createdFileLocation);
+    Files.delete(createdFileLocation);
+
+    assertThat(createdFileContent).containsExactly(migratingNumber.toString());
+  }
+
+  @Test
+  public void invalidMigration_lenientExport_expectFileWithMigratedNumber() throws IOException {
+    DigitSequence migratingNumber = DigitSequence.of("12345");
+    // what the number is converted to after the matching recipe from testRecipesFile.csv is applied
+    String numberAfterMigration = "+213456";
+    boolean lenientExport = true;
+
+    MigrationJob job = createMockJobFromTestRecipes(migratingNumber, DigitSequence.of(COUNTRY_CODE),
+        lenientExport);
+    MigrationReport report = job.getMigrationReportForCountry();
+
+    Path createdFileLocation = Paths.get(report.exportToFile("lenientTestFile"));
+    List<String> createdFileContent = Files.readAllLines(createdFileLocation);
+    Files.delete(createdFileLocation);
+
+    assertThat(createdFileContent).containsExactly(numberAfterMigration);
+  }
+
+  private MigrationJob createMockJobFromTestRecipes(DigitSequence migratingNumber,
+      DigitSequence countryCode,
+      boolean lenientExport) throws IOException {
+
+    Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     ImmutableList<MigrationEntry> numberRanges = ImmutableList
         .of(MigrationEntry.create(migratingNumber, migratingNumber.toString()));
     CsvTable<RangeKey> recipes = MigrationFactory
@@ -209,13 +257,6 @@ public class MigrationJobTest {
     CsvTable<RangeKey> ranges = metadata.importCsvTable(DigitSequence.of(COUNTRY_CODE))
         .orElseThrow(RuntimeException::new);
 
-    MigrationJob job =
-        new MigrationJob(numberRanges, DigitSequence.of(COUNTRY_CODE), recipes, ranges, false);
-
-    MigrationReport report = job.getMigrationReportForCountry();
-    assertThat(report.getValidMigrations()).isEmpty();
-    assertThat(report.getInvalidMigrations().stream()
-        .map(result -> result.getMigrationEntry().getOriginalNumber()))
-        .containsExactly(migratingNumber.toString());
+    return new MigrationJob(numberRanges, countryCode, recipes, ranges, lenientExport);
   }
 }
