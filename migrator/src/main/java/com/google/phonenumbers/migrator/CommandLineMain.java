@@ -73,7 +73,8 @@ public final class CommandLineMain {
       }
 
       MigrationReport mr =  migrationJob.getMigrationReportForCountry();
-      System.out.println("Migration of +" + migrationJob.getCountryCode() + " phone numbers:");
+      System.out.println("Migration of country code +" + migrationJob.getCountryCode() + " phone "
+          + "number(s):");
       if (clm.numberInput.file != null) {
         printFileReport(mr, Paths.get(clm.numberInput.file));
       } else {
