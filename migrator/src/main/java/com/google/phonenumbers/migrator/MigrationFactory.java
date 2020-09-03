@@ -17,86 +17,100 @@ package com.google.phonenumbers.migrator;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
-import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Factory class to instantiate {@link MigrationJob} objects. To create a Migration Job, a two digit
- * BCP-47 region code is required as well as a number input (either a single E.164 number or a file
+ * Factory class to instantiate {@link MigrationJob} objects. To create a Migration Job, a BCP-47
+ * country code is required as well as a number input (either a single E.164 number or a file
  * path containing one E.164 number per line). There is also the option for specifying a custom
  * recipes file as a third parameter to use for migrations instead of the default recipes file.
  */
 public class MigrationFactory {
 
-  private final static String DEFAULT_RECIPES_FILE = "../recipes.csv";
+  private final static String DEFAULT_RECIPES_FILE = "/recipes.csv";
+  // made public for testing purposes
+  public final static String METADATA_ZIPFILE ="/metadata.zip";
 
   /**
    * Creates a new MigrationJob for a given single E.164 number input (e.g. +4477...) and its
-   * corresponding BCP-47 region code (e.g. GB).
+   * corresponding BCP-47 country code (e.g. 44 for United Kingdom).
    */
-  public static MigrationJob createMigration(String number, String region) throws IOException {
-    PhoneRegion regionCode = PhoneRegion.of(region);
+  public static MigrationJob createMigration(String number, String country) throws IOException {
+    DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
-    CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
+    CsvTable<RangeKey> recipes = importRecipes(MigrationFactory.class
+        .getResourceAsStream(DEFAULT_RECIPES_FILE));
 
-    return new MigrationJob(numberRanges, regionCode, recipes);
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(MigrationFactory.class
+        .getResourceAsStream(METADATA_ZIPFILE));
+    CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
+        .orElseThrow(() -> new RuntimeException(
+            "Country code " + countryCode+ " not supported in metadata"));
+
+    return new MigrationJob(numberRanges, countryCode, recipes, ranges);
   }
 
   /**
    * Returns a MigrationJob instance for a given single E.164 number input, corresponding BCP-47
-   * region code (e.g. GB), and custom user recipes.csv file.
+   * country code (e.g. 1 for Canada), and custom user recipes.csv file.
    */
-  public static MigrationJob createMigration(String number, String region, Path customRecipesFile)
+  public static MigrationJob createMigration(String number, String country, Path customRecipesFile)
       throws IOException {
-    PhoneRegion regionCode = PhoneRegion.of(region);
+    DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
-    CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
+    CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges, regionCode, recipes);
+    return new MigrationJob(numberRanges, countryCode, recipes, null);
   }
 
   /**
    * Returns a MigrationJob instance for a given file path containing one E.164
    * number per line (e.g. +4477..., +4478...) along with the corresponding
-   * BCP-47 region code (e.g. GB) that numbers in the file belong to.
+   * BCP-47 country code (e.g. 44) that numbers in the file belong to.
    * All numbers in the file should belong to the same region.
    */
-  public static MigrationJob createMigration(Path file, String region) throws IOException {
+  public static MigrationJob createMigration(Path file, String country) throws IOException {
     List<String> numbers = Files.readAllLines(file);
-    PhoneRegion regionCode = PhoneRegion.of(region);
+    DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
-    CsvTable<RangeKey> recipes = importRecipes(Paths.get(DEFAULT_RECIPES_FILE));
+    CsvTable<RangeKey> recipes = importRecipes(MigrationFactory.class
+        .getResourceAsStream(DEFAULT_RECIPES_FILE));
 
-    return new MigrationJob(numberRanges.build(), regionCode, recipes);
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(MigrationFactory.class
+        .getResourceAsStream(METADATA_ZIPFILE));
+    CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
+        .orElseThrow(() -> new RuntimeException(
+            "Country code " + countryCode+ " not supported in metadata"));
+
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges);
   }
 
   /**
    * Returns a MigrationJob instance for a given file path containing one E.164
-   * number per line, corresponding BCP-47 region code, and custom user recipes.csv file.
+   * number per line, corresponding BCP-47 country code, and custom user recipes.csv file.
    */
-  public static MigrationJob createMigration(Path file, String region, Path customRecipesFile)
+  public static MigrationJob createMigration(Path file, String country, Path customRecipesFile)
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
-    PhoneRegion regionCode = PhoneRegion.of(region);
+    DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
-    CsvTable<RangeKey> recipes = importRecipes(customRecipesFile);
+    CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges.build(), regionCode, recipes);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, null);
   }
 
   /**
@@ -112,9 +126,10 @@ public class MigrationFactory {
 
   /**
    * Returns the {@link CsvTable} for a given recipes file path if present.
+   * Made public for testing purposes.
    */
-  private static CsvTable<RangeKey> importRecipes(Path recipesFile) throws IOException {
-    InputStreamReader reader = new InputStreamReader(Files.newInputStream(recipesFile));
+  public static CsvTable<RangeKey> importRecipes(InputStream recipesFile) throws IOException {
+    InputStreamReader reader = new InputStreamReader(recipesFile);
     return CsvTable.importCsv(RecipesTableSchema.SCHEMA, reader);
   }
 }

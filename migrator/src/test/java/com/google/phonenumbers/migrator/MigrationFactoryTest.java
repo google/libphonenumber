@@ -37,7 +37,7 @@ public class MigrationFactoryTest {
   public void createFromFilePath_invalidPathLocation_expectException() {
     String fileLocation = "invalid-path-location";
     try {
-      MigrationFactory.createMigration(Paths.get(fileLocation), "GB");
+      MigrationFactory.createMigration(Paths.get(fileLocation), "44");
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);
@@ -49,13 +49,13 @@ public class MigrationFactoryTest {
   public void createFromFilePath_validPathLocation_expectValidFields() throws IOException {
     Path fileLocation = Paths.get(TEST_DATA_PATH + "testNumbersFile.txt");
     Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
-    String region = "GB";
-    MigrationJob mj = MigrationFactory.createMigration(fileLocation, region, recipesPath);
+    String countryCode = "44";
+    MigrationJob mj = MigrationFactory.createMigration(fileLocation, countryCode, recipesPath);
 
-    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+    assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
         .containsExactlyElementsIn(Files.readAllLines(fileLocation));
-    assertThat(mj.getRegionCode().toString()).matches(region);
+    assertThat(mj.getCountryCode().toString()).matches(countryCode);
   }
 
   @Test
@@ -63,7 +63,7 @@ public class MigrationFactoryTest {
     String numberInput = "+44 one2 34 56";
     String sanitizedNumber = "44one23456";
     try {
-      MigrationFactory.createMigration(numberInput, "GB");
+      MigrationFactory.createMigration(numberInput, "44");
       Assert.fail("Expected RuntimeException and did not receive");
     } catch (IllegalArgumentException e) {
       assertThat(e).isInstanceOf(IllegalArgumentException.class);
@@ -79,20 +79,20 @@ public class MigrationFactoryTest {
   public void createFromNumberString_validNumberFormat_expectValidFields() throws IOException {
     Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     String numberString = "12345";
-    String region = "US";
-    MigrationJob mj = MigrationFactory.createMigration(numberString, region, recipesPath);
+    String countryCode = "1";
+    MigrationJob mj = MigrationFactory.createMigration(numberString, countryCode, recipesPath);
 
-    assertThat(mj.getMigrationEntries().stream().map(MigrationEntry::getOriginalNumber)
+    assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
         .containsExactly(numberString);
-    assertThat(mj.getRegionCode().toString()).matches(region);
+    assertThat(mj.getCountryCode().toString()).matches(countryCode);
   }
 
   @Test
   public void createWithCustomRecipes_invalidPathLocation_expectException() {
     String fileLocation = "invalid-recipe-location";
     try {
-      MigrationFactory.createMigration("12345", "GB", Paths.get(fileLocation));
+      MigrationFactory.createMigration("12345", "44", Paths.get(fileLocation));
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);

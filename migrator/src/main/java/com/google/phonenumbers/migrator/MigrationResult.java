@@ -33,6 +33,6 @@ public abstract class MigrationResult {
 
   @Override
   public String toString() {
-    return "'" + getOriginalNumber() + "' -> '+" + getMigratedNumber() + "'";
+    return "'" + getOriginalNumber() + "' -> +" + getMigratedNumber();
   }
 }

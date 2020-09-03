@@ -15,9 +15,8 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.common.base.Preconditions;
+import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.Change;
 import com.google.i18n.phonenumbers.metadata.table.Column;
@@ -47,13 +46,14 @@ import java.util.Set;
  *       in the represented range being migrated into up to date, dialable formats. Recipes which
  *       do not will require the newly formatted range to be migrated again using another matching
  *       recipe.
- *   <li>{@link #REGION_CODE}: The BCP-47 region code in which a given recipe corresponds to.
+ *   <li>{@link #COUNTRY_CODE}: The BCP-47 country code in which a given recipe corresponds to.
  *   <li>{@link #DESCRIPTION}: TThe explanation of a migration recipe in words.
  * </ol>
  *
  * <p>Rows keys are serialized via the marshaller and produce leading columns:
  * <ol>
- *   <li>{@code "Old Prefix"}: The prefix (RangeSpecification) for the original ranges in a row (e.g. "12[3-6]").
+ *   <li>{@code "Old Prefix"}: The prefix (RangeSpecification) for the original ranges in a row
+ *   (e.g. "44123").
  *   <li>{@code "Old Length"}: The length for the original ranges in a row (e.g. "9", "8" or "5").
  * </ol>
  */
@@ -65,9 +65,9 @@ public class RecipesTableSchema {
   /** The new format of the migrated numbers in a given range. */
   public static final Column<String> NEW_FORMAT = Column.ofString("New Format");
 
-  /** The BCP-47 region code the given recipe belongs to. */
-  public static final Column<PhoneRegion> REGION_CODE =
-      Column.create(PhoneRegion.class, "Region", PhoneRegion.getUnknown(), PhoneRegion::of);
+  /** The BCP-47 country code the given recipe belongs to. */
+  public static final Column<DigitSequence> COUNTRY_CODE =
+      Column.create(DigitSequence.class, "Country Code", DigitSequence.empty(), DigitSequence::of);
 
   /** Indicates whether a given recipe will result in a valid, dialable range */
   public static final Column<Boolean> IS_FINAL_MIGRATION = Column.ofBoolean("Is Final Migration");
@@ -78,6 +78,7 @@ public class RecipesTableSchema {
   /** Marshaller for constructing CsvTable from RangeTable. */
   private static final CsvKeyMarshaller<RangeKey> MARSHALLER = new CsvKeyMarshaller<>(
       RangesTableSchema::write,
+      // uses a read method that will only allow a single numerical value in the 'Old Length' column
       RecipesTableSchema::read,
       Optional.of(RangeKey.ORDERING),
       "Old Prefix",
@@ -103,7 +104,7 @@ public class RecipesTableSchema {
   /** The columns for the serialized CSV table. */
   private static final Schema CSV_COLUMNS =
       Schema.builder()
-          .add(REGION_CODE)
+          .add(COUNTRY_CODE)
           .add(OLD_FORMAT)
           .add(NEW_FORMAT)
           .add(IS_FINAL_MIGRATION)
@@ -116,7 +117,7 @@ public class RecipesTableSchema {
   /** The non-key columns of a range table. */
   private static final Schema RANGE_COLUMNS =
       Schema.builder()
-          .add(REGION_CODE)
+          .add(COUNTRY_CODE)
           .add(OLD_FORMAT)
           .add(NEW_FORMAT)
           .add(IS_FINAL_MIGRATION)

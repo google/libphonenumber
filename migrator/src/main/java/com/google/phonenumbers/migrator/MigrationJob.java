@@ -19,37 +19,44 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
-import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
+import com.google.i18n.phonenumbers.metadata.RangeTree;
+import com.google.i18n.phonenumbers.metadata.model.RangesTableSchema;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Optional;
 import com.google.common.base.Preconditions;
 import java.util.stream.Stream;
 
 /**
- * Represents a migration operation for a given region where each {@link MigrationJob} contains
+ * Represents a migration operation for a given country where each {@link MigrationJob} contains
  * a list of {@link MigrationEntry}'s to be migrated as well as the {@link CsvTable} which will
  * hold the available recipes that can be performed on the range. Each MigrationEntry has
  * the E.164 {@link DigitSequence} representation of a number along with the raw input
- * String originally entered. Only recipes from the given two digit BCP-47 regionCode will be used.
+ * String originally entered. Only recipes from the given BCP-47 countryCode will be used.
  */
 public final class MigrationJob {
 
+  private final CsvTable<RangeKey> rangesTable;
   private final CsvTable<RangeKey> recipesTable;
   private final ImmutableList<MigrationEntry> migrationEntries;
-  private final PhoneRegion regionCode;
+  private final DigitSequence countryCode;
 
   MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
-      PhoneRegion regionCode,
-      CsvTable<RangeKey> recipesTable) {
+      DigitSequence countryCode,
+      CsvTable<RangeKey> recipesTable,
+      CsvTable<RangeKey> rangesTable) {
     this.migrationEntries = migrationEntries;
-    this.regionCode = regionCode;
+    this.countryCode = countryCode;
     this.recipesTable = recipesTable;
+    this.rangesTable = rangesTable;
   }
 
-  public PhoneRegion getRegionCode() {
-    return regionCode;
+  public DigitSequence getCountryCode() {
+    return countryCode;
   }
 
   public CsvTable<RangeKey> getRecipesCsvTable() {
@@ -60,50 +67,78 @@ public final class MigrationJob {
     return RecipesTableSchema.toRangeTable(recipesTable);
   }
 
-  public ImmutableList<MigrationEntry> getMigrationEntries() {
-    return migrationEntries;
+  public Stream<MigrationEntry> getMigrationEntries() {
+    return migrationEntries.stream();
   }
 
   /**
    * Retrieves all migratable numbers from the numberRange and attempts to migrate them with recipes
-   * from the recipesTable that belong to the given region code.
+   * from the recipesTable that belong to the given country code.
    */
-  public ImmutableList<MigrationResult> getMigratedNumbersForRegion() {
-    Stream<MigrationEntry> migratableRange = MigrationUtils
-        .getMigratableRangeByRegion(getRecipesRangeTable(), regionCode, getMigrationEntries());
+  public MigrationReport getMigrationReportForCountry() {
+    ImmutableList<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByCountry(getRecipesRangeTable(), countryCode, getMigrationEntries())
+        .collect(ImmutableList.toImmutableList());
 
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
-    migratableRange.forEach(entry -> {
+    for (MigrationEntry entry : migratableRange) {
       MigrationUtils
-          .findMatchingRecipe(getRecipesCsvTable(), regionCode, entry.getSanitizedNumber())
+          .findMatchingRecipe(getRecipesCsvTable(), countryCode, entry.getSanitizedNumber())
           .ifPresent(recipe -> migratedResults
               .add(migrate(entry.getSanitizedNumber(), recipe, entry.getOriginalNumber())));
-    });
+    }
 
-    // TODO: create MigrationReport class holding details of migration and return it here instead
-    return migratedResults.build();
+    // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
+    // TODO: this should have multiplicity with custom recipes due to it not being possible for it
+    Stream<MigrationEntry> untouchedEntries = getMigrationEntries()
+        .filter(entry -> !migratableRange.contains(entry));
+
+    if (rangesTable != null) {
+      return new MigrationReport(untouchedEntries, verifyMigratedNumbers(migratedResults.build()));
+    }
+    /*
+     * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
+     * concept of invalid migrations so all migrations can just be seen as valid.
+     */
+    return new MigrationReport(untouchedEntries,
+        ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of()));
+
   }
 
   /**
    * Retrieves all migratable numbers from the numberRange that can be migrated using the given
    * recipeKey and attempts to migrate them with recipes from the recipesTable that belong to the
-   * given region code.
+   * given country code.
    */
-  public ImmutableList<MigrationResult> getMigratedNumbersForRecipe(RangeKey recipeKey) {
-    Stream<MigrationEntry> migratableRange = MigrationUtils
-        .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries());
+  public Optional<MigrationReport> getMigrationReportForRecipe(RangeKey recipeKey) {
     ImmutableMap<Column<?>, Object> recipeRow = getRecipesCsvTable().getRow(recipeKey);
-
+    ImmutableList<MigrationEntry> migratableRange = MigrationUtils
+        .getMigratableRangeByRecipe(getRecipesCsvTable(), recipeKey, getMigrationEntries())
+        .collect(ImmutableList.toImmutableList());
     ImmutableList.Builder<MigrationResult> migratedResults = ImmutableList.builder();
-    if (!recipeRow.get(RecipesTableSchema.REGION_CODE).equals(regionCode)) {
-      return migratedResults.build();
+
+    if (!recipeRow.get(RecipesTableSchema.COUNTRY_CODE).equals(countryCode)) {
+      return Optional.empty();
     }
     migratableRange.forEach(entry -> {
         migratedResults.add(migrate(entry.getSanitizedNumber(), recipeRow, entry.getOriginalNumber()));
     });
 
-    // TODO: create MigrationReport class holding details of migration and return it here instead
-    return migratedResults.build();
+    // TODO: add strict/lenient flag to specify if invalid migrations should be rolled back or used anyway
+    // TODO: this should have multiplicity with custom recipes due to it not being possible for it
+    Stream<MigrationEntry> untouchedEntries = getMigrationEntries()
+        .filter(entry -> !migratableRange.contains(entry));
+
+    if (rangesTable != null) {
+      return Optional.of(new MigrationReport(untouchedEntries,
+          verifyMigratedNumbers(migratedResults.build())));
+    }
+    /*
+     * MigrationJob's with no rangesTable are based on a custom recipe file. This means there is no
+     * concept of invalid migrations so all migrations can just be seen as valid.
+     */
+    return Optional.of(new MigrationReport(untouchedEntries,
+        ImmutableMap.of("Valid", migratedResults.build(), "Invalid", ImmutableList.of())));
   }
 
   /**
@@ -126,14 +161,14 @@ public final class MigrationJob {
     String newFormat = (String) recipeRow.get(RecipesTableSchema.NEW_FORMAT);
 
     Preconditions.checkArgument(RangeSpecification.parse(oldFormat).matches(migratingNumber),
-        "value '%s' in column 'Old Format' cannot be represented by its given recipe "
-            + "key (Old Prefix + Old Length)", oldFormat);
+        "value '%s' in column 'Old Format' cannot be represented by its given"
+            + " recipe key (Old Prefix + Old Length)", oldFormat);
 
     DigitSequence migratedVal = getMigratedValue(migratingNumber.toString(), oldFormat, newFormat);
 
     if (!Boolean.TRUE.equals(recipeRow.get(RecipesTableSchema.IS_FINAL_MIGRATION))) {
       ImmutableMap<Column<?>, Object> nextRecipeRow =
-          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), regionCode, migratedVal)
+          MigrationUtils.findMatchingRecipe(getRecipesCsvTable(), countryCode, migratedVal)
               .orElseThrow(() -> new RuntimeException(
                   "A multiple migration was required for the stale number '" + originalNumber
                       + "' but no other recipe could be found after migrating the number into +"
@@ -144,6 +179,10 @@ public final class MigrationJob {
     return MigrationResult.create(migratedVal, originalNumber);
   }
 
+  /**
+   * Converts a stale number into the new migrated format based on the information from the given
+   * oldFormat and newFormat values.
+   */
   private DigitSequence getMigratedValue(String staleString, String oldFormat, String newFormat) {
     StringBuilder migratedValue = new StringBuilder();
     int newFormatPointer = 0;
@@ -166,5 +205,177 @@ public final class MigrationJob {
       }
     }
     return DigitSequence.of(migratedValue.toString());
+  }
+
+  /**
+   * Given a list of {@link MigrationResult}'s, returns a map detailing which migrations resulted in
+   * valid phone numbers based on the given rangesTable data. The map will contain to entries; an
+   * entry with the key 'Valid' with a list of the valid migrations and an entry with the key
+   * 'Invalid', with a list of the invalid migrations from the overall list.
+   */
+  private ImmutableMap<String, ImmutableList<MigrationResult>> verifyMigratedNumbers(
+      ImmutableList<MigrationResult> migrations) {
+    ImmutableList.Builder<MigrationResult> validMigrations = ImmutableList.builder();
+    ImmutableList.Builder<MigrationResult> invalidMigrations = ImmutableList.builder();
+
+    RangeTree validRanges = RangesTableSchema.toRangeTable(rangesTable).getAllRanges();
+    for (MigrationResult migration : migrations) {
+      DigitSequence migratedNum = migration.getMigratedNumber();
+      if (migratedNum.length() <= countryCode.length()) {
+        invalidMigrations.add(migration);
+        continue;
+      }
+      if(validRanges.contains(migratedNum.last(migratedNum.length() - countryCode.length()))) {
+        validMigrations.add(migration);
+      } else {
+        invalidMigrations.add(migration);
+      }
+    }
+    return ImmutableMap.of("Valid", validMigrations.build(), "Invalid", invalidMigrations.build());
+  }
+
+  /**
+   * Represents the results of a migration when calling {@link #getMigrationReportForCountry()}
+   * or {@link #getMigrationReportForRecipe(RangeKey)}
+   */
+  final class MigrationReport {
+    private final ImmutableList<MigrationEntry> untouchedEntries;
+    private final ImmutableList<MigrationResult> validMigrations;
+    private final ImmutableList<MigrationResult> invalidMigrations;
+
+    private MigrationReport(Stream<MigrationEntry> untouchedEntries,
+        ImmutableMap<String, ImmutableList<MigrationResult>> migratedEntries) {
+      this.untouchedEntries = untouchedEntries.collect(ImmutableList.toImmutableList());
+      this.validMigrations = migratedEntries.get("Valid");
+      this.invalidMigrations = migratedEntries.get("Invalid");
+    }
+
+    /**
+     * Returns the Migration results which were seen as valid when queried against the rangesTable
+     * containing valid number representations for the given countryCode.
+     *
+     * Note: for customRecipe migrations, there is no concept of invalid migrations so all
+     * {@link MigrationEntry}'s that were migrated will be seen as valid.
+     */
+    public ImmutableList<MigrationResult> getValidMigrations() {
+      return validMigrations;
+    }
+
+    /**
+     * Returns the Migration results which were seen as invalid when queried against the given
+     * rangesTable.
+     *
+     * Note: for customRecipe migrations, there is no concept of invalid migrations so all
+     * {@link MigrationEntry}'s that were migrated will be seen as valid.
+     */
+    public ImmutableList<MigrationResult> getInvalidMigrations() {
+      return invalidMigrations;
+    }
+
+    /**
+     * Returns the Migration entry's that were not migrated but were seen as being already valid
+     * when querying against the rangesTable. Custom recipe migrations do not have range tables so
+     * this list will be empty when called from such instance.
+     */
+    public ImmutableList<MigrationEntry> getUntouchedEntries() {
+      return untouchedEntries;
+    }
+
+    /**
+     * Creates a text file of the new number list after a migration has been performed. Numbers that
+     * were not migrated are added in their original format as well migrated numbers that were seen
+     * as being invalid, unless the migration job is set to have a lenientExport. Successfully
+     * migrated numbers will be added in their new format.
+     *
+     * @param fileName: the given suffix of the new file to be created.
+     */
+    public String exportToFile(String fileName) throws IOException {
+      String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
+          fileName;
+      FileWriter fw = new FileWriter(newFileLocation);
+
+      for (MigrationResult result : validMigrations) {
+        fw.write("+" + result.getMigratedNumber() + "\n");
+      }
+      for (MigrationResult result : invalidMigrations) {
+        fw.write(result.getOriginalNumber() + "\n");
+      }
+      for (MigrationEntry entry : untouchedEntries) {
+        fw.write(entry.getOriginalNumber() + "\n");
+      }
+      fw.close();
+      return newFileLocation;
+    }
+
+    /**
+     * Queries the list of numbers that were not migrated and returns numbers from the list which are
+     * seen as valid based on the given rangesTable for the given countryCode.
+     */
+    public ImmutableList<MigrationEntry> getValidUntouchedEntries() {
+      if (rangesTable == null) {
+        return ImmutableList.of();
+      }
+      ImmutableList.Builder<MigrationEntry> validEntries = ImmutableList.builder();
+      RangeTree validRanges = RangesTableSchema.toRangeTable(rangesTable).getAllRanges();
+
+      for (MigrationEntry entry : untouchedEntries) {
+        DigitSequence sanitizedNum = entry.getSanitizedNumber();
+        if (sanitizedNum.length() <= countryCode.length() ||
+            !sanitizedNum.first(countryCode.length()).equals(countryCode)) {
+          continue;
+        }
+        if(validRanges.contains(sanitizedNum.last(sanitizedNum.length() - countryCode.length()))) {
+          validEntries.add(entry);
+        }
+      }
+      return validEntries.build();
+    }
+
+    /** Prints to console the details of the given migration. */
+    public void printMetrics() {
+      int migratedCount = validMigrations.size() + invalidMigrations.size();
+      int totalCount = untouchedEntries.size() + migratedCount;
+
+      System.out.println("\nMetrics:");
+      System.out.println("* " + migratedCount + " out of the " + totalCount + " inputted numbers "
+          + "were/was migrated");
+
+      if (rangesTable == null) {
+        /*
+         * MigrationJob's with no rangesTable are based on a custom recipe file. This means there
+         * is no concept of invalid/valid migrations so all migrations can just be listed.
+         */
+        System.out.println("* Migrated numbers:");
+        validMigrations.forEach(val -> System.out.println("\t" + val));
+        System.out.println("\n* Untouched number(s):");
+        untouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "'"));
+
+      } else {
+        ImmutableList<MigrationEntry> validUntouchedEntries = getValidUntouchedEntries();
+        System.out.println("* " + validMigrations.size() + " out of the " + migratedCount +
+            " migrated numbers were/was verified as being in a valid, dialable format based on our "
+            + "data for the given country");
+        System.out.println("* " + validUntouchedEntries.size() + " out of the " +
+            untouchedEntries.size() + " non-migrated numbers were/was already in a valid, dialable "
+            + "format based on our data for the given country");
+
+        System.out.println("\n* Valid number(s):");
+        validMigrations.forEach(val -> System.out.println("\t" + val));
+        validUntouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber()
+            + "' (untouched)"));
+
+        System.out.println("\n* Invalid migrated number(s):");
+        invalidMigrations.forEach(val -> System.out.println("\t" + val));
+
+        System.out.println("\n* Untouched number(s):");
+        untouchedEntries.forEach(val -> {
+          if (validUntouchedEntries.contains(val)) {
+            System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
+          } else {
+            System.out.println("\t'" + val.getOriginalNumber() + "'");
+          }
+        });
+      }
+    }
   }
 }
