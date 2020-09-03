@@ -286,10 +286,12 @@ public final class MigrationJob {
      * were not migrated are added in their original format as well migrated numbers that were seen
      * as being invalid, unless the migration job is set to have a lenientExport. Successfully
      * migrated numbers will be added in their new format.
+     *
+     * @param fileName: the given suffix of the new file to be created.
      */
-    public String exportToFile(String originalFileName) throws IOException {
+    public String exportToFile(String fileName) throws IOException {
       String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
-          originalFileName;
+          fileName;
       FileWriter fw = new FileWriter(newFileLocation);
 
       for (MigrationResult result : validMigrations) {
