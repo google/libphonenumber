@@ -154,7 +154,7 @@ public final class CommandLineMain {
           + "our data for the given country");
     } else {
       System.out.println("This number could not be migrated using any of the recipes from the given"
-          + " recipes file.");
+          + " recipes file");
     }
   }
 
