@@ -56,7 +56,7 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, ranges, false);
+    return new MigrationJob(numberRanges, countryCode, recipes, ranges, /*lenientExport=*/false);
   }
 
   /**
@@ -72,7 +72,8 @@ public class MigrationFactory {
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, null, false);
+    return new MigrationJob(numberRanges, countryCode, recipes,
+        /*rangesTable=*/null, /*lenientExport=*/false);
   }
 
   /**
@@ -115,7 +116,8 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes, null, false);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes,
+        /*rangesTable=*/null, /*lenientExport=*/ false);
   }
 
   /**

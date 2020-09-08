@@ -66,14 +66,16 @@ public final class CommandLineMain {
     @Option(names = {"-l", "--lenientExport"},
         description = "boolean flag specifying that text files created after the migration process"
             + " for standard recipe --file migrations should contain the migrated version of a given"
-            + " phone number when a migration has taken place on it, regardless of whether the"
-            + " migration resulted in an invalid phone number. By default, a strict approach is used"
-            + " and when a migration is seen as invalid, the original phone number is written to file.")
+            + " phone number, regardless of whether the migration resulted in an invalid phone number."
+            + " By default, a strict approach is used and when a migration is seen as invalid, the"
+            + " original phone number is written to file. Invalid numbers will be printed at the"
+            + " bottom of the text file.")
     boolean lenientExport;
 
     @Option(names = {"-r", "--customRecipe"},
         description = "Csv file containing a custom migration recipes table. When using custom recipes"
-            + ", validity checks on migrated numbers will not be performed.")
+            + ", validity checks on migrated numbers will not be performed. Note: custom recipes must"
+            + " be run with the --lenientExport flag.")
     String customRecipe;
   }
 

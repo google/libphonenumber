@@ -239,7 +239,7 @@ public class MigrationJobTest {
     List<String> createdFileContent = Files.readAllLines(createdFileLocation);
     Files.delete(createdFileLocation);
 
-    assertThat(createdFileContent).containsExactly(numberAfterMigration);
+    assertThat(createdFileContent).contains(numberAfterMigration);
   }
 
   private MigrationJob createMockJobFromTestRecipes(DigitSequence migratingNumber,

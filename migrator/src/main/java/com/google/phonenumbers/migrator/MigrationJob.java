@@ -46,6 +46,12 @@ public final class MigrationJob {
   private final CsvTable<RangeKey> recipesTable;
   private final ImmutableList<MigrationEntry> migrationEntries;
   private final DigitSequence countryCode;
+  /**
+   * If lenientExport is true, when a {@link MigrationReport} is exported, the migrated version
+   * of numbers are written to file regardless of if the migrated number was seen as valid or invalid.
+   * By default, when a migration results in an invalid number for the given countryCode, the
+   * original number is written to file.
+   */
   private final boolean lenientExport;
 
   MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
@@ -298,13 +304,17 @@ public final class MigrationJob {
       for (MigrationResult result : validMigrations) {
         fw.write("+" + result.getMigratedNumber() + "\n");
       }
+      for (MigrationEntry entry : untouchedEntries) {
+        fw.write(entry.getOriginalNumber() + "\n");
+      }
+      if (lenientExport && invalidMigrations.size() > 0) {
+        fw.write("\nInvalid migrations due to an issue in either the used internal recipe or"
+            + " the internal +" + countryCode + " valid metadata range:\n");
+      }
       for (MigrationResult result : invalidMigrations) {
         String number = lenientExport ? "+" + result.getMigratedNumber() :
             result.getMigrationEntry().getOriginalNumber();
         fw.write(number + "\n");
-      }
-      for (MigrationEntry entry : untouchedEntries) {
-        fw.write(entry.getOriginalNumber() + "\n");
       }
       fw.close();
       return newFileLocation;
