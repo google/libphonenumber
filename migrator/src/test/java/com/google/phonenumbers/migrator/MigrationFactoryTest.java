@@ -37,7 +37,7 @@ public class MigrationFactoryTest {
   public void createFromFilePath_invalidPathLocation_expectException() {
     String fileLocation = "invalid-path-location";
     try {
-      MigrationFactory.createMigration(Paths.get(fileLocation), "44");
+      MigrationFactory.createMigration(Paths.get(fileLocation), "44", false);
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);
@@ -50,7 +50,7 @@ public class MigrationFactoryTest {
     Path fileLocation = Paths.get(TEST_DATA_PATH + "testNumbersFile.txt");
     Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     String countryCode = "44";
-    MigrationJob mj = MigrationFactory.createMigration(fileLocation, countryCode, recipesPath);
+    MigrationJob mj = MigrationFactory.createCustomRecipeMigration(fileLocation, countryCode, recipesPath);
 
     assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
@@ -80,7 +80,7 @@ public class MigrationFactoryTest {
     Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     String numberString = "12345";
     String countryCode = "1";
-    MigrationJob mj = MigrationFactory.createMigration(numberString, countryCode, recipesPath);
+    MigrationJob mj = MigrationFactory.createCustomRecipeMigration(numberString, countryCode, recipesPath);
 
     assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
@@ -92,7 +92,7 @@ public class MigrationFactoryTest {
   public void createWithCustomRecipes_invalidPathLocation_expectException() {
     String fileLocation = "invalid-recipe-location";
     try {
-      MigrationFactory.createMigration("12345", "44", Paths.get(fileLocation));
+      MigrationFactory.createCustomRecipeMigration("12345", "44", Paths.get(fileLocation));
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);

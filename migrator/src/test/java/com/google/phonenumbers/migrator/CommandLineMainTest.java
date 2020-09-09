@@ -73,4 +73,17 @@ public class CommandLineMainTest {
     assertThat(p.numberInput.file).matches(TEST_FILE_INPUT);
     assertThat(p.numberInput.number).isNull();
   }
+
+  @Test
+  public void createMigrationJob_exportInvalidMigrationsAndCustomRecipe_expectException() {
+    String[] args = ("--countryCode=" + TEST_COUNTRY_CODE + " --number=" + TEST_NUMBER_INPUT
+        + " --exportInvalidMigrations --customRecipe=" + TEST_FILE_INPUT).split(" ");
+    try {
+      CommandLine.populateCommand(new CommandLineMain(), args);
+      Assert.fail("Expected MutuallyExclusiveArgsException and did not receive");
+    } catch (MutuallyExclusiveArgsException e) {
+      assertThat(e.getMessage()).contains("mutually exclusive");
+      assertThat(e.getMessage()).contains("--exportInvalidMigrations, --customRecipe");
+    }
+  }
 }

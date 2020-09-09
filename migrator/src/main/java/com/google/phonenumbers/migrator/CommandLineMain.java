@@ -15,6 +15,9 @@
  */
 package com.google.phonenumbers.migrator;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
+import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -56,6 +59,26 @@ public final class CommandLineMain {
       description = "The BCP-47 country code the given phone number(s) belong to (e.g. 44)")
   String countryCode;
 
+  @ArgGroup()
+  OptionalParameterType optionalParameter;
+
+  static class OptionalParameterType {
+    @Option(names = {"-e", "--exportInvalidMigrations"},
+        description = "boolean flag specifying that text files created after the migration process"
+            + " for standard recipe --file migrations should contain the migrated version of a given"
+            + " phone number, regardless of whether the migration resulted in an invalid phone number."
+            + " By default, a strict approach is used and when a migration is seen as invalid, the"
+            + " original phone number is written to file. Invalid numbers will be printed at the"
+            + " bottom of the text file.")
+    boolean exportInvalidMigrations;
+
+    @Option(names = {"-r", "--customRecipe"},
+        description = "Csv file containing a custom migration recipes table. When using custom recipes"
+            + ", validity checks on migrated numbers will not be performed. Note: custom recipes must"
+            + " be run with the --exportInvalidMigrations flag.")
+    String customRecipe;
+  }
+
   @Option(names = {"-h", "--help"}, description = "Display help", usageHelp = true)
   boolean help;
 
@@ -66,10 +89,23 @@ public final class CommandLineMain {
     } else {
       MigrationJob migrationJob;
       if (clm.numberInput.number != null) {
-        migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
+        if (clm.optionalParameter != null && clm.optionalParameter.customRecipe != null) {
+          migrationJob = MigrationFactory
+              .createCustomRecipeMigration(clm.numberInput.number, clm.countryCode,
+                  Paths.get(clm.optionalParameter.customRecipe));
+        } else {
+          migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
+        }
       } else {
-        migrationJob = MigrationFactory
-            .createMigration(Paths.get(clm.numberInput.file), clm.countryCode);
+        if (clm.optionalParameter != null && clm.optionalParameter.customRecipe != null) {
+          migrationJob = MigrationFactory
+              .createCustomRecipeMigration(Paths.get(clm.numberInput.file), clm.countryCode,
+                  Paths.get(clm.optionalParameter.customRecipe));
+        } else {
+          migrationJob = MigrationFactory
+              .createMigration(Paths.get(clm.numberInput.file), clm.countryCode,
+                  clm.optionalParameter != null && clm.optionalParameter.exportInvalidMigrations);
+        }
       }
 
       MigrationReport mr =  migrationJob.getMigrationReportForCountry();
@@ -83,6 +119,7 @@ public final class CommandLineMain {
     }
   }
 
+  /** Details printed to console after a --file type migration. */
   private static void printFileReport(MigrationReport mr, Path originalFile) throws IOException {
     String newFile = mr.exportToFile(originalFile.getFileName().toString());
     Scanner scanner = new Scanner((System.in));
@@ -92,28 +129,44 @@ public final class CommandLineMain {
     while (!response.equals("0")) {
       System.out.println("\n(0) Exit");
       System.out.println("(1) Print Metrics");
+      System.out.println("(2) View All Recipes Used");
       System.out.print("Select from the above options: ");
       response = scanner.nextLine();
       if (response.equals("1")) {
         mr.printMetrics();
+      } else if (response.equals("2")) {
+        printUsedRecipes(mr);
       }
     }
   }
 
+  /** Details printed to console after a --number type migration. */
   private static void printNumberReport(MigrationReport mr) {
     if (mr.getValidMigrations().size() == 1) {
       System.out.println("Successful migration into: +"
           + mr.getValidMigrations().get(0).getMigratedNumber());
+      printUsedRecipes(mr);
     } else if (mr.getInvalidMigrations().size() == 1) {
       System.out.println("The number was migrated into '+"
           + mr.getInvalidMigrations().get(0).getMigratedNumber() + "' but this number was not "
           + "seen as being valid and dialable when inspecting our data for the given country");
+      printUsedRecipes(mr);
     } else if (mr.getValidUntouchedEntries().size() == 1) {
       System.out.println("This number was seen to already be valid and dialable based on "
           + "our data for the given country");
     } else {
-      System.out.println("This number was seen as being invalid based on our data for the "
-          + "given country but we could not migrate it into a valid format.");
+      System.out.println("This number could not be migrated using any of the recipes from the given"
+          + " recipes file");
+    }
+  }
+
+  private static void printUsedRecipes(MigrationReport mr) {
+    Multimap<ImmutableMap<Column<?>, Object>, MigrationResult> recipeToNumbers = mr.getAllRecipesUsed();
+    System.out.println("\nRecipe(s) Used:");
+    for (ImmutableMap<Column<?>, Object> recipe : recipeToNumbers.keySet()) {
+      System.out.println("* " + RecipesTableSchema.formatRecipe(recipe));
+      recipeToNumbers.get(recipe).forEach(result -> System.out.println("\t" + result));
+      System.out.println("");
     }
   }
 }

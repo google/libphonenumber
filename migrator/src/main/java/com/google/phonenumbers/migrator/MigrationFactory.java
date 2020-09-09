@@ -56,21 +56,25 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, ranges);
+    return new MigrationJob(numberRanges, countryCode, recipes,
+        ranges, /* exportInvalidMigrations= */false);
   }
 
   /**
    * Returns a MigrationJob instance for a given single E.164 number input, corresponding BCP-47
    * country code (e.g. 1 for Canada), and custom user recipes.csv file.
    */
-  public static MigrationJob createMigration(String number, String country, Path customRecipesFile)
+  public static MigrationJob createCustomRecipeMigration(String number,
+      String country,
+      Path customRecipesFile)
       throws IOException {
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, null);
+    return new MigrationJob(numberRanges, countryCode, recipes,
+        /* rangesTable= */null, /* exportInvalidMigrations= */false);
   }
 
   /**
@@ -79,7 +83,8 @@ public class MigrationFactory {
    * BCP-47 country code (e.g. 44) that numbers in the file belong to.
    * All numbers in the file should belong to the same region.
    */
-  public static MigrationJob createMigration(Path file, String country) throws IOException {
+  public static MigrationJob createMigration(Path file, String country, boolean exportInvalidMigrations)
+      throws IOException {
     List<String> numbers = Files.readAllLines(file);
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
@@ -94,14 +99,16 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges, exportInvalidMigrations);
   }
 
   /**
    * Returns a MigrationJob instance for a given file path containing one E.164
    * number per line, corresponding BCP-47 country code, and custom user recipes.csv file.
    */
-  public static MigrationJob createMigration(Path file, String country, Path customRecipesFile)
+  public static MigrationJob createCustomRecipeMigration(Path file,
+      String country,
+      Path customRecipesFile)
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     DigitSequence countryCode = DigitSequence.of(country);
@@ -110,7 +117,8 @@ public class MigrationFactory {
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes, null);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes,
+        /* rangesTable= */null, /* exportInvalidMigrations= */ false);
   }
 
   /**
