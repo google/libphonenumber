@@ -211,10 +211,10 @@ public class MigrationJobTest {
   @Test
   public void invalidMigration_strictExport_expectFileWithOriginalNumber() throws IOException {
     DigitSequence migratingNumber = DigitSequence.of("12345");
-    boolean lenientExport = false;
+    boolean exportInvalidMigrations = false;
 
     MigrationJob job = createMockJobFromTestRecipes(migratingNumber, DigitSequence.of(COUNTRY_CODE),
-        lenientExport);
+        exportInvalidMigrations);
     MigrationReport report = job.getMigrationReportForCountry();
 
     Path createdFileLocation = Paths.get(report.exportToFile("strictTestFile"));
@@ -225,14 +225,14 @@ public class MigrationJobTest {
   }
 
   @Test
-  public void invalidMigration_lenientExport_expectFileWithMigratedNumber() throws IOException {
+  public void invalidMigration_exportInvalidMigrations_expectFileWithMigratedNumber() throws IOException {
     DigitSequence migratingNumber = DigitSequence.of("12345");
     // what the number is converted to after the matching recipe from testRecipesFile.csv is applied
     String numberAfterMigration = "+213456";
-    boolean lenientExport = true;
+    boolean exportInvalidMigrations = true;
 
     MigrationJob job = createMockJobFromTestRecipes(migratingNumber, DigitSequence.of(COUNTRY_CODE),
-        lenientExport);
+        exportInvalidMigrations);
     MigrationReport report = job.getMigrationReportForCountry();
 
     Path createdFileLocation = Paths.get(report.exportToFile("lenientTestFile"));
@@ -244,7 +244,7 @@ public class MigrationJobTest {
 
   private MigrationJob createMockJobFromTestRecipes(DigitSequence migratingNumber,
       DigitSequence countryCode,
-      boolean lenientExport) throws IOException {
+      boolean exportInvalidMigrations) throws IOException {
 
     Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     ImmutableList<MigrationEntry> numberRanges = ImmutableList
@@ -257,6 +257,6 @@ public class MigrationJobTest {
     CsvTable<RangeKey> ranges = metadata.importCsvTable(DigitSequence.of(COUNTRY_CODE))
         .orElseThrow(RuntimeException::new);
 
-    return new MigrationJob(numberRanges, countryCode, recipes, ranges, lenientExport);
+    return new MigrationJob(numberRanges, countryCode, recipes, ranges, exportInvalidMigrations);
   }
 }

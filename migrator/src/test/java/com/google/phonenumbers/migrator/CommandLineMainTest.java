@@ -75,15 +75,15 @@ public class CommandLineMainTest {
   }
 
   @Test
-  public void createMigrationJob_lenientFlagAndCustomRecipe_expectException() {
+  public void createMigrationJob_exportInvalidMigrationsAndCustomRecipe_expectException() {
     String[] args = ("--countryCode=" + TEST_COUNTRY_CODE + " --number=" + TEST_NUMBER_INPUT
-        + " --lenientExport --customRecipe=" + TEST_FILE_INPUT).split(" ");
+        + " --exportInvalidMigrations --customRecipe=" + TEST_FILE_INPUT).split(" ");
     try {
       CommandLine.populateCommand(new CommandLineMain(), args);
       Assert.fail("Expected MutuallyExclusiveArgsException and did not receive");
     } catch (MutuallyExclusiveArgsException e) {
       assertThat(e.getMessage()).contains("mutually exclusive");
-      assertThat(e.getMessage()).contains("--lenientExport, --customRecipe");
+      assertThat(e.getMessage()).contains("--exportInvalidMigrations, --customRecipe");
     }
   }
 }

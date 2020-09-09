@@ -47,23 +47,23 @@ public final class MigrationJob {
   private final ImmutableList<MigrationEntry> migrationEntries;
   private final DigitSequence countryCode;
   /**
-   * If lenientExport is true, when a {@link MigrationReport} is exported, the migrated version
+   * If true, when a {@link MigrationReport} is exported, the migrated version
    * of numbers are written to file regardless of if the migrated number was seen as valid or invalid.
    * By default, when a migration results in an invalid number for the given countryCode, the
    * original number is written to file.
    */
-  private final boolean lenientExport;
+  private final boolean exportInvalidMigrations;
 
   MigrationJob(ImmutableList<MigrationEntry> migrationEntries,
       DigitSequence countryCode,
       CsvTable<RangeKey> recipesTable,
       CsvTable<RangeKey> rangesTable,
-      boolean lenientExport) {
+      boolean exportInvalidMigrations) {
     this.migrationEntries = migrationEntries;
     this.countryCode = countryCode;
     this.recipesTable = recipesTable;
     this.rangesTable = rangesTable;
-    this.lenientExport = lenientExport;
+    this.exportInvalidMigrations = exportInvalidMigrations;
   }
 
   public DigitSequence getCountryCode() {
@@ -291,7 +291,7 @@ public final class MigrationJob {
     /**
      * Creates a text file of the new number list after a migration has been performed. Numbers that
      * were not migrated are added in their original format as well migrated numbers that were seen
-     * as being invalid, unless the migration job is set to have a lenientExport. Successfully
+     * as being invalid, unless the migration job is set to exportInvalidMigrations. Successfully
      * migrated numbers will be added in their new format.
      *
      * @param fileName: the given suffix of the new file to be created.
@@ -307,12 +307,12 @@ public final class MigrationJob {
       for (MigrationEntry entry : untouchedEntries) {
         fw.write(entry.getOriginalNumber() + "\n");
       }
-      if (lenientExport && invalidMigrations.size() > 0) {
+      if (exportInvalidMigrations && invalidMigrations.size() > 0) {
         fw.write("\nInvalid migrations due to an issue in either the used internal recipe or"
             + " the internal +" + countryCode + " valid metadata range:\n");
       }
       for (MigrationResult result : invalidMigrations) {
-        String number = lenientExport ? "+" + result.getMigratedNumber() :
+        String number = exportInvalidMigrations ? "+" + result.getMigratedNumber() :
             result.getMigrationEntry().getOriginalNumber();
         fw.write(number + "\n");
       }

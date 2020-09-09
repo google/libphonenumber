@@ -56,7 +56,8 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges, countryCode, recipes, ranges, /*lenientExport=*/false);
+    return new MigrationJob(numberRanges, countryCode, recipes,
+        ranges, /* exportInvalidMigrations= */false);
   }
 
   /**
@@ -73,7 +74,7 @@ public class MigrationFactory {
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
     return new MigrationJob(numberRanges, countryCode, recipes,
-        /*rangesTable=*/null, /*lenientExport=*/false);
+        /* rangesTable= */null, /* exportInvalidMigrations= */false);
   }
 
   /**
@@ -82,7 +83,7 @@ public class MigrationFactory {
    * BCP-47 country code (e.g. 44) that numbers in the file belong to.
    * All numbers in the file should belong to the same region.
    */
-  public static MigrationJob createMigration(Path file, String country, boolean lenientExport)
+  public static MigrationJob createMigration(Path file, String country, boolean exportInvalidMigrations)
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     DigitSequence countryCode = DigitSequence.of(country);
@@ -98,7 +99,7 @@ public class MigrationFactory {
         .orElseThrow(() -> new RuntimeException(
             "Country code " + countryCode+ " not supported in metadata"));
 
-    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges, lenientExport);
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges, exportInvalidMigrations);
   }
 
   /**
@@ -117,7 +118,7 @@ public class MigrationFactory {
     CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
     return new MigrationJob(numberRanges.build(), countryCode, recipes,
-        /*rangesTable=*/null, /*lenientExport=*/ false);
+        /* rangesTable= */null, /* exportInvalidMigrations= */ false);
   }
 
   /**

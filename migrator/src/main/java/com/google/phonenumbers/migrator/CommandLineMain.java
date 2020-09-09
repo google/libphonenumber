@@ -63,19 +63,19 @@ public final class CommandLineMain {
   OptionalParameterType optionalParameter;
 
   static class OptionalParameterType {
-    @Option(names = {"-l", "--lenientExport"},
+    @Option(names = {"-e", "--exportInvalidMigrations"},
         description = "boolean flag specifying that text files created after the migration process"
             + " for standard recipe --file migrations should contain the migrated version of a given"
             + " phone number, regardless of whether the migration resulted in an invalid phone number."
             + " By default, a strict approach is used and when a migration is seen as invalid, the"
             + " original phone number is written to file. Invalid numbers will be printed at the"
             + " bottom of the text file.")
-    boolean lenientExport;
+    boolean exportInvalidMigrations;
 
     @Option(names = {"-r", "--customRecipe"},
         description = "Csv file containing a custom migration recipes table. When using custom recipes"
             + ", validity checks on migrated numbers will not be performed. Note: custom recipes must"
-            + " be run with the --lenientExport flag.")
+            + " be run with the --exportInvalidMigrations flag.")
     String customRecipe;
   }
 
@@ -104,7 +104,7 @@ public final class CommandLineMain {
         } else {
           migrationJob = MigrationFactory
               .createMigration(Paths.get(clm.numberInput.file), clm.countryCode,
-                  clm.optionalParameter != null && clm.optionalParameter.lenientExport);
+                  clm.optionalParameter != null && clm.optionalParameter.exportInvalidMigrations);
         }
       }
 
