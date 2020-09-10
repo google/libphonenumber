@@ -39,6 +39,12 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.i18n.libphonenumber</groupId>
+      <artifactId>migrator</artifactId>
+      <version>1.0.0</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
