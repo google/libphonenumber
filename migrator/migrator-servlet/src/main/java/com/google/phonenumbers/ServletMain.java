@@ -70,11 +70,4 @@ public class ServletMain extends HttpServlet {
     req.getRequestDispatcher("index.jsp").forward(req, resp);
 
   }
-
-  public static String getInfo() {
-    return "Version: " + System.getProperty("java.version")
-            + " OS: " + System.getProperty("os.name")
-            + " User: " + System.getProperty("user.name");
-  }
-
 }
