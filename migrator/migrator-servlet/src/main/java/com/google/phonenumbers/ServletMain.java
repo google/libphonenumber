@@ -18,21 +18,22 @@ package com.google.phonenumbers;
 import com.google.appengine.api.utils.SystemProperty;
 
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
-//import com.google.phonenumbers.migrator.MigrationFactory;
-//import com.google.phonenumbers.migrator.MigrationJob;
+import com.google.phonenumbers.migrator.MigrationFactory;
+import com.google.phonenumbers.migrator.MigrationJob;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "HelloWorld", value = "/hello")
-public class HelloWorld extends HttpServlet {
+@WebServlet(name = "Migrate", value = "/migrate")
+public class ServletMain extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,17 +55,20 @@ public class HelloWorld extends HttpServlet {
     String number = req.getParameter("number");
     String countryCode = req.getParameter("countryCode");
 
-    DigitSequence a = DigitSequence.of(number);
-//    MigrationJob m = MigrationFactory.createMigration(number, countryCode);
+    try {
+      MigrationJob m = MigrationFactory.createMigration(number, countryCode);
+      MigrationJob.MigrationReport r = m.getMigrationReportForCountry();
+    } catch (Exception e) {
+      req.setAttribute("Number", number);
+      req.setAttribute("numberCountryCode", countryCode);
+      req.setAttribute("numberError", e.getMessage());
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
+    }
 
-//    MigrationJob.MigrationReport r = m.getMigrationReportForCountry();
+    req.setAttribute("Number", number);
+    req.setAttribute("numberCountryCode", countryCode);
+    req.getRequestDispatcher("index.jsp").forward(req, resp);
 
-    out.println("<html><body>");
-    out.println("Number = " + number);
-    out.println("Country Code = " + countryCode);
-    out.println(a.toString());
-//    r.getValidMigrations().forEach(out::println);
-    out.println("</body></html>");
   }
 
   public static String getInfo() {

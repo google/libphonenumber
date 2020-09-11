@@ -245,7 +245,7 @@ public final class MigrationJob {
    * Represents the results of a migration when calling {@link #getMigrationReportForCountry()}
    * or {@link #getMigrationReportForRecipe(RangeKey)}
    */
-  final class MigrationReport {
+  public final class MigrationReport {
     private final ImmutableList<MigrationEntry> untouchedEntries;
     private final ImmutableList<MigrationResult> validMigrations;
     private final ImmutableList<MigrationResult> invalidMigrations;
