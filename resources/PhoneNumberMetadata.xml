@@ -27900,7 +27900,7 @@
               7[0-389]|
               8[04-69]
             )
-          )[2-9]\d{6}
+          )[2-9](?!11)\d{6}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -27992,7 +27992,7 @@
               7[0-389]|
               8[04-69]
             )
-          )[2-9]\d{6}
+          )[2-9](?!11)\d{6}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
