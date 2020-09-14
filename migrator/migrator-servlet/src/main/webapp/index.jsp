@@ -17,10 +17,10 @@
   <div class="page-heading">
     <h1>Phone Number Migrator</h1>
     <p>
-      Please enter a path to a text file containing <a href="<%=E164_NUMBERS_LINK%>" target="_blank">E.164 phone numbers</a>
+      Enter a path to a text file containing <a href="<%=E164_NUMBERS_LINK%>" target="_blank">E.164 phone numbers</a>
       from the same country or a single E.164 number as well as the corresponding BCP-47 <a href="<%=COUNTRY_CODE_LINK%>" target="_blank">country code</a>
-      to begin potentially migrate stale phone numbers to valid formats for the given country code. For more information
-      on the capabilities of this migrator tool and also instructions on how to install the command line tool, please
+      to potentially migrate stale phone numbers to valid formats based on the given country code. For more information
+      on the capabilities of the migrator as well as instructions on how to install the command line tool, please
       visit view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>.
     </p>
   </div>
