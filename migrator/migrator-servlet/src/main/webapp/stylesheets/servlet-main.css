@@ -1,6 +1,6 @@
 .page-heading {
     margin: 1rem;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .page-heading h1 {
@@ -8,7 +8,7 @@
 }
 
 .page-heading p {
-    max-width: 60rem;
+    max-width: 75rem;
     min-width: 25rem;
 }
 
@@ -23,7 +23,7 @@
     border-radius: 4px;
     margin: 1rem;
     max-width: 35rem;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .migration-form form {
@@ -50,11 +50,33 @@
     border: none;
     padding: 0.5rem;
     border-radius: 4px;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.migration-result {
+    margin: 1rem;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+    padding: 0 1rem;
+    max-width: 72rem;
+    min-width: 25rem;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.migration-result .valid {
+    color: green;
+}
+
+.migration-result .invalid-migration {
+    color: orange;
+}
+
+.migration-result .invalid-number {
+    color: red;
 }
 
 .error-message {
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin-top: -0.5rem;
     margin-bottom: 1rem;
     font-size: 12px;

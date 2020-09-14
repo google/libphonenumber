@@ -15,59 +15,63 @@
  */
 package com.google.phonenumbers;
 
-import com.google.appengine.api.utils.SystemProperty;
-
-import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.phonenumbers.migrator.MigrationFactory;
 import com.google.phonenumbers.migrator.MigrationJob;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Properties;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet(name = "Migrate", value = "/migrate")
 public class ServletMain extends HttpServlet {
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws IOException {
-
-    Properties properties = System.getProperties();
-
-    response.setContentType("text/plain");
-    response.getWriter().println("Hello App Engine - Standard using "
-            + SystemProperty.version.get() + " Java " + properties.get("java.specification.version"));
-  }
-
+  /**
+   * Retrieves the form data for either a single number migration or a file migration from the index.jsp file and calls
+   * the relevant method to perform the migration
+   */
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    resp.setContentType("text/html");
-
-
-    PrintWriter out = resp.getWriter();
     String number = req.getParameter("number");
-    String countryCode = req.getParameter("countryCode");
-
-    try {
-      MigrationJob m = MigrationFactory.createMigration(number, countryCode);
-      MigrationJob.MigrationReport r = m.getMigrationReportForCountry();
-    } catch (Exception e) {
-      req.setAttribute("Number", number);
+    String countryCode;
+    if (number != null) {
+      countryCode = req.getParameter("numberCountryCode");
+      req.setAttribute("number", number);
       req.setAttribute("numberCountryCode", countryCode);
+      handleSingleNumberMigration(number, countryCode, req, resp);
+    } else {
+      String file = req.getParameter("file");
+      countryCode = req.getParameter("fileCountryCode");
+    }
+  }
+
+  /**
+   * Performs a single number migration of a given number and country code and sends the details of the migration to the
+   * jsp file which outputs it to the user.
+   *
+   * @throws Exception, which can be any of the given exceptions when going through the process of creating a {@link
+   * MigrationJob} and running a migration.
+   */
+  public void handleSingleNumberMigration(String number, String countryCode, HttpServletRequest req, HttpServletResponse resp)
+          throws ServletException, IOException {
+    try {
+      MigrationJob mj = MigrationFactory.createMigration(number, countryCode);
+      MigrationJob.MigrationReport mr = mj.getMigrationReportForCountry();
+      if (mr.getValidMigrations().size() == 1) {
+        req.setAttribute("validMigration", mr.getValidMigrations().get(0).getMigratedNumber());
+      } else if (mr.getInvalidMigrations().size() == 1) {
+        req.setAttribute("invalidMigration", mr.getInvalidMigrations().get(0).getMigratedNumber());
+      } else if (mr.getValidUntouchedEntries().size() == 1) {
+        req.setAttribute("alreadyValidNumber", mr.getValidUntouchedEntries().get(0).getSanitizedNumber());
+      }
+
+    } catch (Exception e) {
       req.setAttribute("numberError", e.getMessage());
+
+    } finally {
       req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
-
-    req.setAttribute("Number", number);
-    req.setAttribute("numberCountryCode", countryCode);
-    req.getRequestDispatcher("index.jsp").forward(req, resp);
-
   }
 }
