@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.google.phonenumbers.ServletMain" %>
-<%@ page import="com.google.phonenumbers.migrator.MigrationJob" %>
-<%@ page import="java.io.IOException" %>
 <%
   final String E164_NUMBERS_LINK = "https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers";
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
@@ -17,11 +14,28 @@
   <div class="page-heading">
     <h1>Phone Number Migrator</h1>
     <p>
-      Enter a path to a text file containing <a href="<%=E164_NUMBERS_LINK%>" target="_blank">E.164 phone numbers</a>
-      from the same country or a single E.164 number as well as the corresponding BCP-47 <a href="<%=COUNTRY_CODE_LINK%>" target="_blank">country code</a>
-      to potentially migrate stale phone numbers to valid formats based on the given country code. For more information
-      on the capabilities of the migrator as well as instructions on how to install the command line tool, please
-      visit view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>.
+      The migrator is a tool which takes in a given <a href="<%=E164_NUMBERS_LINK%>" target="_blank">E.164 phone number(s)</a>
+      input as well as the corresponding BCP-47 <a href="<%=COUNTRY_CODE_LINK%>" target="_blank">country code</a>. The tool
+      will then check the validity of the phone number based on the country code and if possible, will convert the number
+      into a valid, dialable format.
+    </p>
+    <p>The following are the two available migration types that can be performed:</p>
+    <ul>
+      <li>
+        <strong>Single Number Migration:</strong> input a single E.164 phone number with its corresponding BCP-47 country
+        code. If there is an available migration that can be performed on the number, it will be converted to the new
+        format based on the specified migration rules.<br><br>
+      </li>
+      <li>
+        <strong>File Migration:</strong> input a text file containing one E.164 number per line along with the BCP-47
+        country code that corresponds to the numbers in the text file. All numbers in the text file that match available
+        migrations will be migrated and there will be the option of downloading a new text file containing the updated numbers.
+        <br><br>
+      </li>
+    </ul>
+    <p>
+      For more information on the capabilities of the migrator as well as instructions on how to install the command line
+      tool, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>. <%-- TODO: use README documentation link when uploaded --%>
     </p>
   </div>
 
@@ -36,19 +50,19 @@
           out.print("<h3 class='invalid-migration'>Invalid +" +request.getAttribute("numberCountryCode") + " Migration</h3>");
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was migrated into the phone number:" +
                   " +" + request.getAttribute("invalidMigration") + ". However this was not seen as valid using our internal" +
-                  " metadata for the given country.</p>");
+                  " metadata for country code +" +request.getAttribute("numberCountryCode") + ".</p>");
           // TODO: add link for users to file bugs
         } else if (request.getAttribute("alreadyValidNumber") != null) {
           out.print("<h3 class='valid'>Already Valid +" +request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
           out.print("<p>The entered phone number was already seen as being in a valid, dialable format based on our" +
-                  " metadata for the given country code. Here is the number in its clean E.164 format: +" +
-                  request.getAttribute("alreadyValidNumber") + "</p>");
+                  " metadata for country code +" +request.getAttribute("numberCountryCode") + ". Here is the number in" +
+                  " its clean E.164 format: +" + request.getAttribute("alreadyValidNumber") + "</p>");
         } else {
           out.print("<h3 class='invalid-number'>Non-migratable +" +request.getAttribute("numberCountryCode") + " Phone Number</h3>");
           out.print("<p>The phone number '" + request.getAttribute("number") + "' was not seen as a valid number and" +
-                  " no migration recipe could be found for the given country code to migrate it. This may be because you" +
-                  " have entered a country code which does not correctly correspond to the given phone number or the " +
-                  " specified number has never been valid.</p>");
+                  " no migration recipe could be found for country code +" +request.getAttribute("numberCountryCode") +
+                  " to migrate it. This may be because you have entered a country code which does not correctly correspond" +
+                  " to the given phone number or the specified number has never been valid.</p>");
           // TODO: add link for users to file bugs
         }
       }

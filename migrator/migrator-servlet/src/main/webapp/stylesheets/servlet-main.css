@@ -1,5 +1,7 @@
 .page-heading {
     margin: 1rem;
+    max-width: 75rem;
+    min-width: 25rem;
     font-family: 'Roboto', Arial, sans-serif;
 }
 
@@ -7,9 +9,8 @@
     color: #1a73e8;
 }
 
-.page-heading p {
-    max-width: 75rem;
-    min-width: 25rem;
+.page-heading li {
+    font-size: 14px;
 }
 
 .migration-forms {
