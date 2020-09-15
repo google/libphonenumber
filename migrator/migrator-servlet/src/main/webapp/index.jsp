@@ -30,6 +30,8 @@
         <strong>File Migration:</strong> input a text file containing one E.164 number per line along with the BCP-47
         country code that corresponds to the numbers in the text file. All numbers in the text file that match available
         migrations will be migrated and there will be the option of downloading a new text file containing the updated numbers.
+        By default, invalid migrations and numbers that did not go through a process of migration will be written to file
+        in their original text file format.
         <br><br>
       </li>
     </ul>
