@@ -78,6 +78,7 @@
 
 .error-message {
     font-family: 'Roboto', Arial, sans-serif;
+    word-break: break-all;
     margin-top: -0.5rem;
     margin-bottom: 1rem;
     font-size: 12px;

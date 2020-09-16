@@ -122,6 +122,28 @@ public class MigrationFactory {
   }
 
   /**
+   * Returns a MigrationJob instance for a given list of E.164 numbers. Method needed for file migrations using migrator
+   * servlet.
+   */
+  public static MigrationJob createMigration(ImmutableList<String> numbers, String country, boolean exportInvalidMigrations)
+          throws IOException {
+    DigitSequence countryCode = DigitSequence.of(country);
+    ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
+
+    numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
+    CsvTable<RangeKey> recipes = importRecipes(MigrationFactory.class
+            .getResourceAsStream(DEFAULT_RECIPES_FILE));
+
+    MetadataZipFileReader metadata = MetadataZipFileReader.of(MigrationFactory.class
+            .getResourceAsStream(METADATA_ZIPFILE));
+    CsvTable<RangeKey> ranges = metadata.importCsvTable(countryCode)
+            .orElseThrow(() -> new RuntimeException(
+                    "Country code " + countryCode+ " not supported in metadata"));
+
+    return new MigrationJob(numberRanges.build(), countryCode, recipes, ranges, exportInvalidMigrations);
+  }
+
+  /**
    * Removes spaces and '+' '(' ')' '-' characters expected in E.164 numbers then returns the
    * {@link DigitSequence} representation of a given number. The method will not remove other
    * letters or special characters from strings to enable error messages in cases where invalid

@@ -1,3 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.google.phonenumbers.migrator.MigrationResult" %>
+<%@ page import="com.google.common.collect.ImmutableList" %>
+<%@ page import="com.google.phonenumbers.migrator.MigrationEntry" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -9,6 +14,41 @@
 <head>
   <link type="text/css" rel="stylesheet" href="/stylesheets/servlet-main.css" />
   <title>Migrator</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      <%
+        ImmutableList<MigrationResult> m = (ImmutableList<MigrationResult>) request.getAttribute("validMigrations");
+        ImmutableList<MigrationResult> i = (ImmutableList<MigrationResult>) request.getAttribute("invalidMigrations");
+        ImmutableList<MigrationEntry> d = (ImmutableList<MigrationEntry>) request.getAttribute("validUntouchedNumbers");
+        ImmutableList<MigrationEntry> o = (ImmutableList<MigrationEntry>) request.getAttribute("invalidUntouchedNumbers");
+      %>
+
+      const data = google.visualization.arrayToDataTable([
+        ['Task', 'Frequency'],
+        ['Valid Migrations', <%= m != null ? m.size() : 0%>],
+        ['Invalid Migrations', <%= i != null ? i.size() : 0%>],
+        ['Already Valid Numbers', <%= d != null ? d.size() : 0%>],
+        ['Invalid Non-migratable Numbers', <%= o != null ? o.size() : 0%>]
+      ]);
+
+      const options = {
+        pieHole: 0.4,
+        colors: [<%=m != null && m.size() > 0%> ? '#277301' : '', <%=i != null && i.size() > 0%> ? '#ffbf36' : '',
+          <%=d != null && d.size() > 0%> ? '#90ee90' : '', <%=o != null && o.size() > 0%> ? '#ff472b' : ''],
+        chartArea: {
+          left: '0',
+          width: '90%',
+          height: '100%'
+        }
+      };
+
+      const chart = new google.visualization.PieChart(document.getElementById('migration-chart'));
+      chart.draw(data, options);
+    }
+  </script>
 </head>
 <body>
   <div class="page-heading">
@@ -45,28 +85,37 @@
     <%
       if (request.getAttribute("numberError") == null && request.getAttribute("number") != null) {
         if (request.getAttribute("validMigration") != null) {
-          out.print("<h3 class='valid'>Valid +" +request.getAttribute("numberCountryCode") + " Phone Number Produced!</h3>");
+          out.print("<h3 class='valid'>Valid +" + request.getAttribute("numberCountryCode") + " Phone Number Produced!</h3>");
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was successfully migrated into the" +
                   " phone number: +" + request.getAttribute("validMigration") + "</p>");
         } else if (request.getAttribute("invalidMigration") != null) {
-          out.print("<h3 class='invalid-migration'>Invalid +" +request.getAttribute("numberCountryCode") + " Migration</h3>");
+          out.print("<h3 class='invalid-migration'>Invalid +" + request.getAttribute("numberCountryCode") + " Migration</h3>");
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was migrated into the phone number:" +
                   " +" + request.getAttribute("invalidMigration") + ". However this was not seen as valid using our internal" +
                   " metadata for country code +" +request.getAttribute("numberCountryCode") + ".</p>");
           // TODO: add link for users to file bugs
         } else if (request.getAttribute("alreadyValidNumber") != null) {
-          out.print("<h3 class='valid'>Already Valid +" +request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
+          out.print("<h3 class='valid'>Already Valid +" + request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
           out.print("<p>The entered phone number was already seen as being in a valid, dialable format based on our" +
-                  " metadata for country code +" +request.getAttribute("numberCountryCode") + ". Here is the number in" +
+                  " metadata for country code +" + request.getAttribute("numberCountryCode") + ". Here is the number in" +
                   " its clean E.164 format: +" + request.getAttribute("alreadyValidNumber") + "</p>");
         } else {
-          out.print("<h3 class='invalid-number'>Non-migratable +" +request.getAttribute("numberCountryCode") + " Phone Number</h3>");
+          out.print("<h3 class='invalid-number'>Non-migratable +" + request.getAttribute("numberCountryCode") + " Phone Number</h3>");
           out.print("<p>The phone number '" + request.getAttribute("number") + "' was not seen as a valid number and" +
-                  " no migration recipe could be found for country code +" +request.getAttribute("numberCountryCode") +
+                  " no migration recipe could be found for country code +" + request.getAttribute("numberCountryCode") +
                   " to migrate it. This may be because you have entered a country code which does not correctly correspond" +
                   " to the given phone number or the specified number has never been valid.</p>");
           // TODO: add link for users to file bugs
         }
+      } else if (request.getAttribute("fileError") == null && request.getAttribute("file") != null) {
+        out.print("<h3>+" + request.getAttribute("fileCountryCode") + " " + request.getAttribute("file") + " Migration Report</h3>");
+        out.print("<div id='migration-chart' style='width: 500px; height: 300px;'></div>");
+        // TODO: <p> explaining what the pie chart is and telling users they can click on a segment to reveal more
+//        out.print(request.getAttribute("validMigrations"));
+//        out.print(request.getAttribute("invalidMigrations"));
+//        out.print(request.getAttribute("untouchedNumbers"));
+//        out.print(request.getAttribute("validUntouchedNumbers"));
+        // TODO: button to allow for text file to be exported
       }
     %>
   </div>
@@ -93,7 +142,7 @@
     <div class="migration-form">
       <h3>File Migration</h3>
       <div class="error-message"><%=request.getAttribute("fileError") == null ? "" : request.getAttribute("fileError")%></div>
-      <form action="${pageContext.request.contextPath}/migrate" method="post">
+      <form action="${pageContext.request.contextPath}/migrate" method="post" enctype="multipart/form-data">
         <label for="file">File:</label>
         <p>Upload a file containing one E.164 phone number per line. Numbers can include spaces, curved brackets and hyphens</p>
         <input type="file" name="file" id="file" accept="text/plain" required/>

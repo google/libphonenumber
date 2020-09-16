@@ -15,10 +15,7 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.*;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
@@ -257,6 +254,10 @@ public final class MigrationJob {
       this.invalidMigrations = migratedEntries.get("Invalid");
     }
 
+    public DigitSequence getCountryCode() {
+      return countryCode;
+    }
+
     /**
      * Returns the Migration results which were seen as valid when queried against the rangesTable
      * containing valid number representations for the given countryCode.
@@ -402,8 +403,12 @@ public final class MigrationJob {
         invalidMigrations.forEach(val -> System.out.println("\t" + val));
 
         System.out.println("\n* Untouched number(s):");
+        /* converted into a Set to allow for constant time contains() method. Can only be converted into a set once all its
+          numbers have been printed out above because duplicate numbers could have been entered for migration and users
+          should still receive all duplicates. */
+        ImmutableSet<MigrationEntry> validUntouchedEntriesSet = ImmutableSet.copyOf(validUntouchedEntries);
         untouchedEntries.forEach(val -> {
-          if (validUntouchedEntries.contains(val)) {
+          if (validUntouchedEntriesSet.contains(val)) {
             System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
           } else {
             System.out.println("\t'" + val.getOriginalNumber() + "'");

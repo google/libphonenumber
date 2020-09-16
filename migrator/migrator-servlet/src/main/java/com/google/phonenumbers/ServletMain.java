@@ -15,8 +15,17 @@
  */
 package com.google.phonenumbers;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.phonenumbers.migrator.MigrationEntry;
 import com.google.phonenumbers.migrator.MigrationFactory;
 import com.google.phonenumbers.migrator.MigrationJob;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.util.Streams;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +33,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Objects;
+import java.util.StringTokenizer;
 
 @WebServlet(name = "Migrate", value = "/migrate")
 public class ServletMain extends HttpServlet {
@@ -35,15 +48,13 @@ public class ServletMain extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String number = req.getParameter("number");
-    String countryCode;
     if (number != null) {
-      countryCode = req.getParameter("numberCountryCode");
+      String countryCode = req.getParameter("numberCountryCode");
       req.setAttribute("number", number);
       req.setAttribute("numberCountryCode", countryCode);
       handleSingleNumberMigration(number, countryCode, req, resp);
     } else {
-      String file = req.getParameter("file");
-      countryCode = req.getParameter("fileCountryCode");
+      handleFileMigration(req, resp);
     }
   }
 
@@ -73,5 +84,67 @@ public class ServletMain extends HttpServlet {
     } finally {
       req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
+  }
+
+  public void handleFileMigration(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    Map.Entry<String, MigrationJob.MigrationReport> result = Objects.requireNonNull(performFileMigration(req, resp))
+            .entrySet()
+            .iterator()
+            .next();
+    String fileName = result.getKey();
+    MigrationJob.MigrationReport report = result.getValue();
+    // List converted into a Set to allow for constant time contains() method below
+    ImmutableSet<MigrationEntry> validUntouchedEntriesSet = ImmutableSet.copyOf(report.getValidUntouchedEntries());
+
+    req.setAttribute("file", fileName);
+    req.setAttribute("fileCountryCode", report.getCountryCode());
+    req.setAttribute("validMigrations", report.getValidMigrations());
+    req.setAttribute("invalidMigrations", report.getInvalidMigrations());
+    req.setAttribute("validUntouchedNumbers", report.getValidUntouchedEntries());
+    req.setAttribute("invalidUntouchedNumbers", report.getUntouchedEntries().stream()
+            .filter(entry -> !validUntouchedEntriesSet.contains(entry)).collect(ImmutableList.toImmutableList()));
+
+    req.getRequestDispatcher("index.jsp").forward(req, resp);
+  }
+
+  private ImmutableMap<String, MigrationJob.MigrationReport> performFileMigration(HttpServletRequest req, HttpServletResponse resp)
+          throws ServletException, IOException {
+    String countryCode = "";
+    String file = "";
+    String fileName = "";
+    ServletFileUpload upload = new ServletFileUpload();
+    upload.setSizeMax(50000);
+
+    try {
+      FileItemIterator iterator = upload.getItemIterator(req);
+      while (iterator.hasNext()) {
+        FileItemStream item = iterator.next();
+        InputStream in = item.openStream();
+        if (item.isFormField()) {
+          countryCode = Streams.asString(in).toUpperCase();
+        } else {
+          fileName = item.getName();
+          try {
+            file = IOUtils.toString(in);
+          } finally {
+            IOUtils.closeQuietly(in);
+          }
+        }
+      }
+      ImmutableList.Builder<String> numbersFromFile = ImmutableList.builder();
+      StringTokenizer tokenizer = new StringTokenizer(file, "\n");
+      while (tokenizer.hasMoreTokens()) {
+        numbersFromFile.add(tokenizer.nextToken());
+      }
+      ImmutableList<String> res = numbersFromFile.build();
+      MigrationJob mj = MigrationFactory.createMigration(res, countryCode,
+              /* exportInvalidMigrations= */ false);
+      return ImmutableMap.of(fileName, mj.getMigrationReportForCountry());
+
+    } catch (Exception e) {
+      req.setAttribute("fileError", e.getMessage());
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
+    }
+    return null;
   }
 }
