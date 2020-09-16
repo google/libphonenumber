@@ -1,14 +1,30 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.google.phonenumbers.migrator.MigrationResult" %>
 <%@ page import="com.google.common.collect.ImmutableList" %>
 <%@ page import="com.google.phonenumbers.migrator.MigrationEntry" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.google.phonenumbers.migrator.MigrationResult" %>
+<%@ page import="com.google.common.collect.ImmutableMap" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   final String E164_NUMBERS_LINK = "https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers";
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
   final String DOCUMENTATION_LINK = "./"; // TODO: use README documentation link when uploaded
+
+  final String VALID_MIGRATIONS = "Valid Migrations";
+  final String INVALID_MIGRATIONS = "Invalid Migrations";
+  final String UNTOUCHED_VALID = "Already Valid Numbers";
+  final String UNTOUCHED_INVALID = "Invalid Non-migratable Numbers";
+  final ImmutableMap<String,String> chartDescriptions = ImmutableMap.of(
+          VALID_MIGRATIONS, "The following are numbers that were successfully migrated by the tool:",
+          INVALID_MIGRATIONS, "The following are numbers that were migrated by the tool but were not able to be verified" +
+                  " as valid numbers based on metadata for the given country code:",
+          UNTOUCHED_VALID, "The following are numbers that were already in valid formats:",
+          UNTOUCHED_INVALID, "The following numbers were not seen as valid and could not be migrated based on the given" +
+                  " country code:");
+
+  ImmutableList<MigrationResult> validMigrations = (ImmutableList<MigrationResult>) request.getAttribute("validMigrations");
+  ImmutableList<MigrationResult> invalidMigrations = (ImmutableList<MigrationResult>) request.getAttribute("invalidMigrations");
+  ImmutableList<MigrationEntry> validUntouchedNums = (ImmutableList<MigrationEntry>) request.getAttribute("validUntouchedNumbers");
+  ImmutableList<MigrationEntry> invalidUntouchedNums = (ImmutableList<MigrationEntry>) request.getAttribute("invalidUntouchedNumbers");
 %>
 <html>
 <head>
@@ -19,33 +35,30 @@
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      <%
-        ImmutableList<MigrationResult> m = (ImmutableList<MigrationResult>) request.getAttribute("validMigrations");
-        ImmutableList<MigrationResult> i = (ImmutableList<MigrationResult>) request.getAttribute("invalidMigrations");
-        ImmutableList<MigrationEntry> d = (ImmutableList<MigrationEntry>) request.getAttribute("validUntouchedNumbers");
-        ImmutableList<MigrationEntry> o = (ImmutableList<MigrationEntry>) request.getAttribute("invalidUntouchedNumbers");
-      %>
-
       const data = google.visualization.arrayToDataTable([
         ['Task', 'Frequency'],
-        ['Valid Migrations', <%= m != null ? m.size() : 0%>],
-        ['Invalid Migrations', <%= i != null ? i.size() : 0%>],
-        ['Already Valid Numbers', <%= d != null ? d.size() : 0%>],
-        ['Invalid Non-migratable Numbers', <%= o != null ? o.size() : 0%>]
+        ['<%=VALID_MIGRATIONS%>', <%= validMigrations != null ? validMigrations.size() : 0%>],
+        ['<%=INVALID_MIGRATIONS%>', <%= invalidMigrations != null ? invalidMigrations.size() : 0%>],
+        ['<%=UNTOUCHED_VALID%>', <%= validUntouchedNums != null ? validUntouchedNums.size() : 0%>],
+        ['<%=UNTOUCHED_INVALID%>', <%= invalidUntouchedNums != null ? invalidUntouchedNums.size() : 0%>]
       ]);
-
       const options = {
         pieHole: 0.4,
-        colors: [<%=m != null && m.size() > 0%> ? '#277301' : '', <%=i != null && i.size() > 0%> ? '#ffbf36' : '',
-          <%=d != null && d.size() > 0%> ? '#90ee90' : '', <%=o != null && o.size() > 0%> ? '#ff472b' : ''],
-        chartArea: {
-          left: '0',
-          width: '90%',
-          height: '100%'
-        }
+        colors: [
+          <%=validMigrations != null && !validMigrations.isEmpty()%> ? '#277301' : '',
+          <%=invalidMigrations != null && !invalidMigrations.isEmpty()%> ? '#ffbf36' : '',
+          <%=validUntouchedNums != null && !validUntouchedNums.isEmpty()%> ? '#90ee90' : '',
+          <%=invalidUntouchedNums != null && !invalidUntouchedNums.isEmpty()%> ? '#ff472b' : ''],
+        chartArea: { width: '90%', height: '100%' }
       };
-
       const chart = new google.visualization.PieChart(document.getElementById('migration-chart'));
+
+      function test() {
+        const selection = chart.getSelection()[0];
+        alert("You selected: " + data.getValue(selection.row, 0));
+      }
+
+      google.visualization.events.addListener(chart, 'select', test);
       chart.draw(data, options);
     }
   </script>
@@ -109,12 +122,10 @@
         }
       } else if (request.getAttribute("fileError") == null && request.getAttribute("file") != null) {
         out.print("<h3>+" + request.getAttribute("fileCountryCode") + " " + request.getAttribute("file") + " Migration Report</h3>");
-        out.print("<div id='migration-chart' style='width: 500px; height: 300px;'></div>");
-        // TODO: <p> explaining what the pie chart is and telling users they can click on a segment to reveal more
-//        out.print(request.getAttribute("validMigrations"));
-//        out.print(request.getAttribute("invalidMigrations"));
-//        out.print(request.getAttribute("untouchedNumbers"));
-//        out.print(request.getAttribute("validUntouchedNumbers"));
+        out.print("<p>Below is a chart showing the ratio of numbers from the entered file that were able to be migrated" +
+                " using +" + request.getAttribute("fileCountryCode") + " migration recipes. To understand more," +
+                " select a given segment from the below donut chart.</p>");
+        out.print("<div class='chart-wrap'><div id='migration-chart' class='chart'></div></div>");
         // TODO: button to allow for text file to be exported
       }
     %>

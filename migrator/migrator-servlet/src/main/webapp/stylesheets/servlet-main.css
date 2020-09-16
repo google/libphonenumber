@@ -85,3 +85,18 @@
     color: red;
     width: 90%;
 }
+
+.chart-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.chart {
+    width: 450px;
+    height: 300px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
