@@ -45,24 +45,24 @@
     <%
       if (request.getAttribute("numberError") == null && request.getAttribute("number") != null) {
         if (request.getAttribute("validMigration") != null) {
-          out.print("<h3 class='valid'>Valid +" +request.getAttribute("numberCountryCode") + " Phone Number Produced!</h3>");
+          out.print("<h3 class='valid'>Valid +" + request.getAttribute("numberCountryCode") + " Phone Number Produced!</h3>");
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was successfully migrated into the" +
                   " phone number: +" + request.getAttribute("validMigration") + "</p>");
         } else if (request.getAttribute("invalidMigration") != null) {
-          out.print("<h3 class='invalid-migration'>Invalid +" +request.getAttribute("numberCountryCode") + " Migration</h3>");
+          out.print("<h3 class='invalid-migration'>Invalid +" + request.getAttribute("numberCountryCode") + " Migration</h3>");
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was migrated into the phone number:" +
                   " +" + request.getAttribute("invalidMigration") + ". However this was not seen as valid using our internal" +
-                  " metadata for country code +" +request.getAttribute("numberCountryCode") + ".</p>");
+                  " metadata for country code +" + request.getAttribute("numberCountryCode") + ".</p>");
           // TODO: add link for users to file bugs
         } else if (request.getAttribute("alreadyValidNumber") != null) {
-          out.print("<h3 class='valid'>Already Valid +" +request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
+          out.print("<h3 class='valid'>Already Valid +" + request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
           out.print("<p>The entered phone number was already seen as being in a valid, dialable format based on our" +
-                  " metadata for country code +" +request.getAttribute("numberCountryCode") + ". Here is the number in" +
+                  " metadata for country code +" + request.getAttribute("numberCountryCode") + ". Here is the number in" +
                   " its clean E.164 format: +" + request.getAttribute("alreadyValidNumber") + "</p>");
         } else {
-          out.print("<h3 class='invalid-number'>Non-migratable +" +request.getAttribute("numberCountryCode") + " Phone Number</h3>");
+          out.print("<h3 class='invalid-number'>Non-migratable +" + request.getAttribute("numberCountryCode") + " Phone Number</h3>");
           out.print("<p>The phone number '" + request.getAttribute("number") + "' was not seen as a valid number and" +
-                  " no migration recipe could be found for country code +" +request.getAttribute("numberCountryCode") +
+                  " no migration recipe could be found for country code +" + request.getAttribute("numberCountryCode") +
                   " to migrate it. This may be because you have entered a country code which does not correctly correspond" +
                   " to the given phone number or the specified number has never been valid.</p>");
           // TODO: add link for users to file bugs
