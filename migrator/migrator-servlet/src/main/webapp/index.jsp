@@ -105,7 +105,7 @@
           out.print("<h3 class='invalid-migration'>Invalid +" + request.getAttribute("numberCountryCode") + " Migration</h3>");
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was migrated into the phone number:" +
                   " +" + request.getAttribute("invalidMigration") + ". However this was not seen as valid using our internal" +
-                  " metadata for country code +" +request.getAttribute("numberCountryCode") + ".</p>");
+                  " metadata for country code +" + request.getAttribute("numberCountryCode") + ".</p>");
           // TODO: add link for users to file bugs
         } else if (request.getAttribute("alreadyValidNumber") != null) {
           out.print("<h3 class='valid'>Already Valid +" + request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
