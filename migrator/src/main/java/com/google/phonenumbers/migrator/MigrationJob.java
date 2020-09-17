@@ -383,7 +383,7 @@ public final class MigrationJob {
         System.out.println("* Migrated numbers:");
         validMigrations.forEach(val -> System.out.println("\t" + val));
         System.out.println("\n* Untouched number(s):");
-        untouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "'"));
+        untouchedEntries.forEach(val -> System.out.println("\t" + val.getOriginalNumber()));
 
       } else {
         ImmutableList<MigrationEntry> validUntouchedEntries = getValidUntouchedEntries();
@@ -396,8 +396,8 @@ public final class MigrationJob {
 
         System.out.println("\n* Valid number(s):");
         validMigrations.forEach(val -> System.out.println("\t" + val));
-        validUntouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber()
-            + "' (untouched)"));
+        validUntouchedEntries.forEach(val -> System.out.println("\t" + val.getOriginalNumber()
+            + " (untouched)"));
 
         System.out.println("\n* Invalid migrated number(s):");
         invalidMigrations.forEach(val -> System.out.println("\t" + val));
@@ -409,9 +409,9 @@ public final class MigrationJob {
         ImmutableSet<MigrationEntry> validUntouchedEntriesSet = ImmutableSet.copyOf(validUntouchedEntries);
         untouchedEntries.forEach(val -> {
           if (validUntouchedEntriesSet.contains(val)) {
-            System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
+            System.out.println("\t" + val.getOriginalNumber() + " (already valid)");
           } else {
-            System.out.println("\t'" + val.getOriginalNumber() + "'");
+            System.out.println("\t" + val.getOriginalNumber());
           }
         });
       }

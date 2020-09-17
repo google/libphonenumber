@@ -2,6 +2,9 @@
 <%@ page import="com.google.phonenumbers.migrator.MigrationEntry" %>
 <%@ page import="com.google.phonenumbers.migrator.MigrationResult" %>
 <%@ page import="com.google.common.collect.ImmutableMap" %>
+<%@ page import="java.util.stream.Collectors" %>
+<%@ page import="com.google.phonenumbers.ServletMain" %>
+<%@ page import="com.google.appengine.repackaged.com.google.gson.Gson" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -9,18 +12,7 @@
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
   final String DOCUMENTATION_LINK = "./"; // TODO: use README documentation link when uploaded
 
-  final String VALID_MIGRATIONS = "Valid Migrations";
-  final String INVALID_MIGRATIONS = "Invalid Migrations";
-  final String UNTOUCHED_VALID = "Already Valid Numbers";
-  final String UNTOUCHED_INVALID = "Invalid Non-migratable Numbers";
-  final ImmutableMap<String,String> chartDescriptions = ImmutableMap.of(
-          VALID_MIGRATIONS, "The following are numbers that were successfully migrated by the tool:",
-          INVALID_MIGRATIONS, "The following are numbers that were migrated by the tool but were not able to be verified" +
-                  " as valid numbers based on metadata for the given country code:",
-          UNTOUCHED_VALID, "The following are numbers that were already in valid formats:",
-          UNTOUCHED_INVALID, "The following numbers were not seen as valid and could not be migrated based on the given" +
-                  " country code:");
-
+  final Gson gson = new Gson();
   ImmutableList<MigrationResult> validMigrations = (ImmutableList<MigrationResult>) request.getAttribute("validMigrations");
   ImmutableList<MigrationResult> invalidMigrations = (ImmutableList<MigrationResult>) request.getAttribute("invalidMigrations");
   ImmutableList<MigrationEntry> validUntouchedNums = (ImmutableList<MigrationEntry>) request.getAttribute("validUntouchedNumbers");
@@ -32,34 +24,87 @@
   <title>Migrator</title>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-    google.charts.load("current", {packages:["corechart"]});
+    const VALID_MIGRATIONS = 'Valid Migrations';
+    const INVALID_MIGRATIONS = 'Invalid Migrations';
+    const UNTOUCHED_VALID = 'Already Valid Numbers';
+    const UNTOUCHED_INVALID = 'Invalid Non-migratable Numbers';
+
+    const CHART_DESCRIPTIONS = new Map();
+    CHART_DESCRIPTIONS[VALID_MIGRATIONS] = 'The following are numbers that were successfully migrated by the tool:';
+    CHART_DESCRIPTIONS[INVALID_MIGRATIONS] = 'The following are numbers that were migrated by the tool but were not able' +
+            ' to be verified as valid numbers based on metadata for the given country code:';
+    CHART_DESCRIPTIONS[UNTOUCHED_VALID] = 'The following are numbers that were already in valid formats:';
+    CHART_DESCRIPTIONS[UNTOUCHED_INVALID] = 'The following numbers were not seen as valid and could not be migrated based' +
+            ' on the given country code:';
+
+    function getNumbersForSegment(selection) {
+      if (selection === VALID_MIGRATIONS) {
+        return <%=gson.toJson(ServletMain.getMigrationResultOutputList(validMigrations))%>;
+      } else if (selection === INVALID_MIGRATIONS) {
+        return <%=gson.toJson(ServletMain.getMigrationResultOutputList(invalidMigrations))%>;
+      } else if (selection === UNTOUCHED_VALID) {
+        return <%=gson.toJson(ServletMain.getMigrationEntryOutputList(validUntouchedNums))%>;
+      }
+      return <%=gson.toJson(ServletMain.getMigrationEntryOutputList(invalidUntouchedNums))%>;
+    }
+
+    google.charts.load('current', {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      const data = google.visualization.arrayToDataTable([
+      const chartData = google.visualization.arrayToDataTable([
         ['Task', 'Frequency'],
-        ['<%=VALID_MIGRATIONS%>', <%= validMigrations != null ? validMigrations.size() : 0%>],
-        ['<%=INVALID_MIGRATIONS%>', <%= invalidMigrations != null ? invalidMigrations.size() : 0%>],
-        ['<%=UNTOUCHED_VALID%>', <%= validUntouchedNums != null ? validUntouchedNums.size() : 0%>],
-        ['<%=UNTOUCHED_INVALID%>', <%= invalidUntouchedNums != null ? invalidUntouchedNums.size() : 0%>]
+        [VALID_MIGRATIONS, <%= validMigrations != null ? validMigrations.size() : 0%>],
+        [INVALID_MIGRATIONS, <%= invalidMigrations != null ? invalidMigrations.size() : 0%>],
+        [UNTOUCHED_VALID, <%= validUntouchedNums != null ? validUntouchedNums.size() : 0%>],
+        [UNTOUCHED_INVALID, <%= invalidUntouchedNums != null ? invalidUntouchedNums.size() : 0%>]
       ]);
-      const options = {
+
+      const chartProperties = {
         pieHole: 0.4,
+        chartArea: { width: '90%', height: '100%' },
         colors: [
           <%=validMigrations != null && !validMigrations.isEmpty()%> ? '#277301' : '',
           <%=invalidMigrations != null && !invalidMigrations.isEmpty()%> ? '#ffbf36' : '',
           <%=validUntouchedNums != null && !validUntouchedNums.isEmpty()%> ? '#90ee90' : '',
-          <%=invalidUntouchedNums != null && !invalidUntouchedNums.isEmpty()%> ? '#ff472b' : ''],
-        chartArea: { width: '90%', height: '100%' }
+          <%=invalidUntouchedNums != null && !invalidUntouchedNums.isEmpty()%> ? '#ff472b' : '']
       };
-      const chart = new google.visualization.PieChart(document.getElementById('migration-chart'));
 
-      function test() {
+      const modalBackdrop = document.getElementById("modalBackdrop");
+
+      document.getElementById("modalButton").onclick = function() {
+        document.getElementById("numbersList").innerHTML = '';
+        modalBackdrop.style.display = 'none';
+      };
+
+      window.onclick = function(event) {
+        if (event.target === modalBackdrop) {
+          document.getElementById("numbersList").innerHTML = '';
+          modalBackdrop.style.display = 'none';
+        }
+      };
+
+      function onSegmentClick() {
         const selection = chart.getSelection()[0];
-        alert("You selected: " + data.getValue(selection.row, 0));
+
+        if (selection) {
+          const selectionName = chartData.getValue(selection.row, 0);
+          const numbersList = document.getElementById("numbersList");
+          const segmentNumbers = getNumbersForSegment(selectionName);
+
+          segmentNumbers.forEach(number => {
+            const value = document.createElement('li');
+            value.appendChild(document.createTextNode(number));
+            numbersList.appendChild(value);
+          });
+          document.getElementById("modalTitle").innerHTML = selectionName;
+          document.getElementById("modalDescription").innerHTML = CHART_DESCRIPTIONS[selectionName];
+          modalBackdrop.style.display = 'block';
+        }
       }
 
-      google.visualization.events.addListener(chart, 'select', test);
-      chart.draw(data, options);
+      const chart = new google.visualization.PieChart(document.getElementById('migration-chart'));
+      google.visualization.events.addListener(chart, 'select', onSegmentClick);
+      chart.draw(chartData, chartProperties);
     }
   </script>
 </head>
@@ -146,7 +191,7 @@
         <input type="number" name="numberCountryCode" id="numberCountryCode" placeholder="84" required
                value="<%=request.getAttribute("numberCountryCode") == null ? "" : request.getAttribute("numberCountryCode")%>"/>
 
-        <input type="submit" value="Migrate Number" class="submit"/>
+        <input type="submit" value="Migrate Number" class="button"/>
       </form>
     </div>
 
@@ -162,8 +207,20 @@
         <p>Enter the BCP-47 country code in which the E.164 phone numbers from the specified file belong to</p>
         <input type="number" name="fileCountryCode" id="fileCountryCode" placeholder="84" required/>
 
-        <input type="submit" value="Migrate File" class="submit"/>
+        <input type="submit" value="Migrate File" class="button"/>
       </form>
+    </div>
+  </div>
+
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription" style="color: grey; font-size: 12px"></p>
+      <div class="body">
+        <ul id="numbersList" style="padding-left: 1.5rem"></ul>
+        <%--TODO: add link for users to file bugs in cases of invalid migrations and invalid numbers--%>
+      </div>
+      <button id="modalButton" class="button">Close</button>
     </div>
   </div>
 </body>
