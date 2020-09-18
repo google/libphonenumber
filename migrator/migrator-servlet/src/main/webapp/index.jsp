@@ -1,10 +1,8 @@
+<%@ page import="com.google.appengine.repackaged.com.google.gson.Gson" %>
 <%@ page import="com.google.common.collect.ImmutableList" %>
+<%@ page import="com.google.phonenumbers.ServletMain" %>
 <%@ page import="com.google.phonenumbers.migrator.MigrationEntry" %>
 <%@ page import="com.google.phonenumbers.migrator.MigrationResult" %>
-<%@ page import="com.google.common.collect.ImmutableMap" %>
-<%@ page import="java.util.stream.Collectors" %>
-<%@ page import="com.google.phonenumbers.ServletMain" %>
-<%@ page import="com.google.appengine.repackaged.com.google.gson.Gson" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -171,6 +169,7 @@
                 " using +" + request.getAttribute("fileCountryCode") + " migration recipes. To understand more," +
                 " select a given segment from the below donut chart.</p>");
         out.print("<div class='chart-wrap'><div id='migration-chart' class='chart'></div></div>");
+//        out.print("<button onclick= class='button'>Export to File</button>");
         // TODO: button to allow for text file to be exported
       }
     %>

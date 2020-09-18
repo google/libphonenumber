@@ -37,7 +37,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
 @WebServlet(name = "Migrate", value = "/migrate")
 public class ServletMain extends HttpServlet {
@@ -94,16 +93,12 @@ public class ServletMain extends HttpServlet {
   }
 
   public static ImmutableList<String> getMigrationEntryOutputList(ImmutableList<MigrationEntry> entryList) {
-    if (entryList == null) {
-      return ImmutableList.of();
-    }
+    if (entryList == null) return ImmutableList.of();
     return entryList.stream().map(MigrationEntry::getOriginalNumber).collect(ImmutableList.toImmutableList());
   }
 
   public static ImmutableList<String> getMigrationResultOutputList(ImmutableList<MigrationResult> resultList) {
-    if (resultList == null) {
-      return ImmutableList.of();
-    }
+    if (resultList == null) return ImmutableList.of();
     return resultList.stream().map(MigrationResult::toString).collect(ImmutableList.toImmutableList());
   }
 
@@ -122,6 +117,7 @@ public class ServletMain extends HttpServlet {
       req.setAttribute("validUntouchedNumbers", report.getValidUntouchedEntries());
       req.setAttribute("invalidUntouchedNumbers", report.getUntouchedEntries().stream()
               .filter(entry -> !validUntouchedEntriesSet.contains(entry)).collect(ImmutableList.toImmutableList()));
+      System.out.println("********     " + report.exportToFile(fileName));
 
     } catch (Exception e) {
       req.setAttribute("fileError", e.getMessage());
