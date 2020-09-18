@@ -38,8 +38,14 @@ public class ServletMain extends HttpServlet {
     String countryCode;
     if (number != null) {
       countryCode = req.getParameter("numberCountryCode");
+      /* number and country code are being set again to allow users to see their inputs after the http request has
+        re-rendered the page. */
       req.setAttribute("number", number);
       req.setAttribute("numberCountryCode", countryCode);
+      if (countryCode == null) {
+        req.setAttribute("numberError", "please specify a country code to perform a migration");
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
+      }
       handleSingleNumberMigration(number, countryCode, req, resp);
     } else {
       String file = req.getParameter("file");
@@ -51,23 +57,23 @@ public class ServletMain extends HttpServlet {
    * Performs a single number migration of a given number and country code and sends the details of the migration to the
    * jsp file which outputs it to the user.
    *
-   * @throws Exception, which can be any of the given exceptions when going through the process of creating a {@link
-   * MigrationJob} and running a migration.
+   * @throws RuntimeException, which can be any of the given exceptions when going through the process of creating a {@link
+   * MigrationJob} and running a migration which includes IllegalArgumentExceptions.
    */
   public void handleSingleNumberMigration(String number, String countryCode, HttpServletRequest req, HttpServletResponse resp)
           throws ServletException, IOException {
     try {
-      MigrationJob mj = MigrationFactory.createMigration(number, countryCode);
-      MigrationJob.MigrationReport mr = mj.getMigrationReportForCountry();
-      if (mr.getValidMigrations().size() == 1) {
-        req.setAttribute("validMigration", mr.getValidMigrations().get(0).getMigratedNumber());
-      } else if (mr.getInvalidMigrations().size() == 1) {
-        req.setAttribute("invalidMigration", mr.getInvalidMigrations().get(0).getMigratedNumber());
-      } else if (mr.getValidUntouchedEntries().size() == 1) {
-        req.setAttribute("alreadyValidNumber", mr.getValidUntouchedEntries().get(0).getSanitizedNumber());
+      MigrationJob job = MigrationFactory.createMigration(number, countryCode);
+      MigrationJob.MigrationReport report = job.getMigrationReportForCountry();
+      if (report.getValidMigrations().size() == 1) {
+        req.setAttribute("validMigration", report.getValidMigrations().get(0).getMigratedNumber());
+      } else if (report.getInvalidMigrations().size() == 1) {
+        req.setAttribute("invalidMigration", report.getInvalidMigrations().get(0).getMigratedNumber());
+      } else if (report.getValidUntouchedEntries().size() == 1) {
+        req.setAttribute("alreadyValidNumber", report.getValidUntouchedEntries().get(0).getSanitizedNumber());
       }
 
-    } catch (Exception e) {
+    } catch (RuntimeException | IOException e) {
       req.setAttribute("numberError", e.getMessage());
 
     } finally {
