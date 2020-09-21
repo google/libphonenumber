@@ -35,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -61,6 +62,25 @@ public class ServletMain extends HttpServlet {
       handleSingleNumberMigration(number, countryCode, req, resp);
     } else {
       handleFileMigration(req, resp);
+    }
+  }
+
+  /** Retrieves the form data for the numbers after a file migration and downloads them as a text file. */
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String fileName = "+" + req.getParameter("countryCode") + "_Migration_ " + req.getParameter("fileName");
+    String fileContent = req.getParameter("fileContent");
+
+    resp.setContentType("text/plain");
+    resp.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+    try {
+      OutputStream outputStream = resp.getOutputStream();
+      outputStream.write(fileContent.getBytes());
+      outputStream.flush();
+      outputStream.close();
+    } catch (IOException e) {
+      req.setAttribute("fileError", e.getMessage());
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
   }
 
@@ -110,14 +130,14 @@ public class ServletMain extends HttpServlet {
       // List converted into a Set to allow for constant time contains() method below
       ImmutableSet<MigrationEntry> validUntouchedEntriesSet = ImmutableSet.copyOf(report.getValidUntouchedEntries());
 
-      req.setAttribute("file", fileName);
+      req.setAttribute("fileName", fileName);
+      req.setAttribute("fileContent", report.toString());
       req.setAttribute("fileCountryCode", report.getCountryCode());
       req.setAttribute("validMigrations", report.getValidMigrations());
       req.setAttribute("invalidMigrations", report.getInvalidMigrations());
       req.setAttribute("validUntouchedNumbers", report.getValidUntouchedEntries());
       req.setAttribute("invalidUntouchedNumbers", report.getUntouchedEntries().stream()
               .filter(entry -> !validUntouchedEntriesSet.contains(entry)).collect(ImmutableList.toImmutableList()));
-      System.out.println("********     " + report.exportToFile(fileName));
 
     } catch (Exception e) {
       req.setAttribute("fileError", e.getMessage());

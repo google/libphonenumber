@@ -26,6 +26,7 @@ import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Optional;
 import com.google.common.base.Preconditions;
 import java.util.stream.Stream;
@@ -290,35 +291,41 @@ public final class MigrationJob {
     }
 
     /**
-     * Creates a text file of the new number list after a migration has been performed. Numbers that
-     * were not migrated are added in their original format as well migrated numbers that were seen
-     * as being invalid, unless the migration job is set to exportInvalidMigrations. Successfully
-     * migrated numbers will be added in their new format.
+     * Creates a text file of the new number list after a migration has been performed.
      *
      * @param fileName: the given suffix of the new file to be created.
      */
     public String exportToFile(String fileName) throws IOException {
-      String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
-          fileName;
+      String newFileLocation = "+" + countryCode + "_Migration_" + fileName;
       FileWriter fw = new FileWriter(newFileLocation);
+      fw.write(toString());
+      fw.close();
+      return newFileLocation;
+    }
 
+    /**
+     * Returns the content for the given migration. Numbers that were not migrated are added in their original format as
+     * well migrated numbers that were seen as being invalid, unless the migration job is set to exportInvalidMigrations.
+     * Successfully migrated numbers will be added in their new format.
+     */
+    public String toString() {
+      StringBuilder fileContent = new StringBuilder();
       for (MigrationResult result : validMigrations) {
-        fw.write("+" + result.getMigratedNumber() + "\n");
+        fileContent.append("+").append(result.getMigratedNumber()).append("\n");
       }
       for (MigrationEntry entry : untouchedEntries) {
-        fw.write(entry.getOriginalNumber() + "\n");
+        fileContent.append(entry.getOriginalNumber()).append("\n");
       }
       if (exportInvalidMigrations && invalidMigrations.size() > 0) {
-        fw.write("\nInvalid migrations due to an issue in either the used internal recipe or"
-            + " the internal +" + countryCode + " valid metadata range:\n");
+        fileContent.append("\nInvalid migrations due to an issue in either the used internal recipe or the internal +")
+                .append(countryCode).append(" valid metadata range:\n");
       }
       for (MigrationResult result : invalidMigrations) {
         String number = exportInvalidMigrations ? "+" + result.getMigratedNumber() :
-            result.getMigrationEntry().getOriginalNumber();
-        fw.write(number + "\n");
+                result.getMigrationEntry().getOriginalNumber();
+        fileContent.append(number).append("\n");
       }
-      fw.close();
-      return newFileLocation;
+      return fileContent.toString();
     }
 
     /**

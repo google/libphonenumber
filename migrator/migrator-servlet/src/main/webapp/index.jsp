@@ -83,7 +83,6 @@
 
       function onSegmentClick() {
         const selection = chart.getSelection()[0];
-
         if (selection) {
           const selectionName = chartData.getValue(selection.row, 0);
           const numbersList = document.getElementById("numbersList");
@@ -163,14 +162,19 @@
                   " to the given phone number or the specified number has never been valid.</p>");
           // TODO: add link for users to file bugs
         }
-      } else if (request.getAttribute("fileError") == null && request.getAttribute("file") != null) {
-        out.print("<h3>+" + request.getAttribute("fileCountryCode") + " " + request.getAttribute("file") + " Migration Report</h3>");
+      } else if (request.getAttribute("fileError") == null && request.getAttribute("fileName") != null) {
+        out.print("<h3>+" + request.getAttribute("fileCountryCode") + " " + request.getAttribute("fileName") + " Migration Report</h3>");
         out.print("<p>Below is a chart showing the ratio of numbers from the entered file that were able to be migrated" +
                 " using +" + request.getAttribute("fileCountryCode") + " migration recipes. To understand more," +
                 " select a given segment from the below donut chart.</p>");
         out.print("<div class='chart-wrap'><div id='migration-chart' class='chart'></div></div>");
-//        out.print("<button onclick= class='button'>Export to File</button>");
-        // TODO: button to allow for text file to be exported
+
+        out.print("<form action='" + request.getContextPath() + "/migrate' method='get' style='margin-bottom: 1rem'>");
+        out.print("<input type='hidden' name='countryCode' value='" + request.getAttribute("fileCountryCode") + "'/>");
+        out.print("<input type='hidden' name='fileName' value='" + request.getAttribute("fileName") + "'/>");
+        out.print("<input type='hidden' name='fileContent' value='" + request.getAttribute("fileContent") + "'/>");
+        out.print("<input type='submit' value='Export Results' class='button'/>");
+        out.print("</form>");
       }
     %>
   </div>

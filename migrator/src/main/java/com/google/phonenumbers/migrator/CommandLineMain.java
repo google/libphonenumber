@@ -125,7 +125,7 @@ public final class CommandLineMain {
     Scanner scanner = new Scanner((System.in));
     String response = "";
 
-    System.out.println("New numbers file created at: " + newFile);
+    System.out.println("New numbers file created at: " + System.getProperty("user.dir") + "/" + newFile);
     while (!response.equals("0")) {
       System.out.println("\n(0) Exit");
       System.out.println("(1) Print Metrics");
