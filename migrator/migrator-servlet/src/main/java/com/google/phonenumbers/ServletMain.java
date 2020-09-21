@@ -175,9 +175,9 @@ public class ServletMain extends HttpServlet {
     while (tokenizer.hasMoreTokens()) {
       numbersFromFile.add(tokenizer.nextToken());
     }
-    ImmutableList<String> res = numbersFromFile.build();
+    ImmutableList<String> nums = numbersFromFile.build();
 
-    MigrationJob mj = MigrationFactory.createMigration(res, countryCode, /* exportInvalidMigrations= */ false);
-    return ImmutableMap.of(fileName, mj.getMigrationReportForCountry());
+    MigrationJob job = MigrationFactory.createMigration(nums, countryCode, /* exportInvalidMigrations= */ false);
+    return ImmutableMap.of(fileName, job.getMigrationReportForCountry());
   }
 }
