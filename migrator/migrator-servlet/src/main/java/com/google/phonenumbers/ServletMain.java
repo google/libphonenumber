@@ -15,6 +15,7 @@
  */
 package com.google.phonenumbers;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -68,7 +69,9 @@ public class ServletMain extends HttpServlet {
   /** Retrieves the form data for the numbers after a file migration and downloads them as a text file. */
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String fileName = "+" + req.getParameter("countryCode") + "_Migration_ " + req.getParameter("fileName");
+    CharMatcher matcher = CharMatcher.anyOf("./\\");
+    String fileName = "+" + matcher.removeFrom(req.getParameter("countryCode")) + "_Migration_ " +
+            matcher.removeFrom(req.getParameter("fileName"));
     String fileContent = req.getParameter("fileContent");
 
     resp.setContentType("text/plain");
@@ -148,12 +151,13 @@ public class ServletMain extends HttpServlet {
   }
 
   private ImmutableMap<String, MigrationJob.MigrationReport> performFileMigration(HttpServletRequest req) throws Exception {
+    ServletFileUpload upload = new ServletFileUpload();
+    final int MAX_UPLOAD_SIZE = 50000;
     String countryCode = "";
     String file = "";
     String fileName = "";
-    ServletFileUpload upload = new ServletFileUpload();
-    upload.setSizeMax(50000);
 
+    upload.setSizeMax(MAX_UPLOAD_SIZE);
     FileItemIterator iterator = upload.getItemIterator(req);
     while (iterator.hasNext()) {
       FileItemStream item = iterator.next();

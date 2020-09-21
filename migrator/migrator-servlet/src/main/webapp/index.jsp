@@ -163,10 +163,10 @@
           // TODO: add link for users to file bugs
         }
       } else if (request.getAttribute("fileError") == null && request.getAttribute("fileName") != null) {
-        out.print("<h3>+" + request.getAttribute("fileCountryCode") + " " + request.getAttribute("fileName") + " Migration Report</h3>");
+        out.print("<h3>'" + request.getAttribute("fileName") + "' Migration Report for Country Code: +" + request.getAttribute("fileCountryCode") + "</h3>");
         out.print("<p>Below is a chart showing the ratio of numbers from the entered file that were able to be migrated" +
-                " using +" + request.getAttribute("fileCountryCode") + " migration recipes. To understand more," +
-                " select a given segment from the below donut chart.</p>");
+                " using '+" + request.getAttribute("fileCountryCode") + "' migration recipes. To understand more," +
+                " select a given segment from the chart below.</p>");
         out.print("<div class='chart-wrap'><div id='migration-chart' class='chart'></div></div>");
 
         out.print("<form action='" + request.getContextPath() + "/migrate' method='get' style='margin-bottom: 1rem'>");
