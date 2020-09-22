@@ -15,8 +15,19 @@
  */
 package com.google.phonenumbers;
 
+import com.google.common.base.CharMatcher;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.phonenumbers.migrator.MigrationEntry;
 import com.google.phonenumbers.migrator.MigrationFactory;
 import com.google.phonenumbers.migrator.MigrationJob;
+import com.google.phonenumbers.migrator.MigrationResult;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.util.Streams;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +35,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 @WebServlet(name = "Migrate", value = "/migrate")
 public class ServletMain extends HttpServlet {
@@ -35,9 +50,8 @@ public class ServletMain extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String number = req.getParameter("number");
-    String countryCode;
     if (number != null) {
-      countryCode = req.getParameter("numberCountryCode");
+      String countryCode = req.getParameter("numberCountryCode");
       /* number and country code are being set again to allow users to see their inputs after the http request has
         re-rendered the page. */
       req.setAttribute("number", number);
@@ -48,8 +62,28 @@ public class ServletMain extends HttpServlet {
       }
       handleSingleNumberMigration(number, countryCode, req, resp);
     } else {
-      String file = req.getParameter("file");
-      countryCode = req.getParameter("fileCountryCode");
+      handleFileMigration(req, resp);
+    }
+  }
+
+  /** Retrieves the form data for the numbers after a file migration and downloads them as a text file. */
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    CharMatcher matcher = CharMatcher.anyOf("./\\");
+    String fileName = "+" + matcher.removeFrom(req.getParameter("countryCode")) + "_Migration_ " +
+            matcher.removeFrom(req.getParameter("fileName"));
+    String fileContent = req.getParameter("fileContent");
+
+    resp.setContentType("text/plain");
+    resp.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+    try {
+      OutputStream outputStream = resp.getOutputStream();
+      outputStream.write(fileContent.getBytes());
+      outputStream.flush();
+      outputStream.close();
+    } catch (IOException e) {
+      req.setAttribute("fileError", e.getMessage());
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
   }
 
@@ -79,5 +113,75 @@ public class ServletMain extends HttpServlet {
     } finally {
       req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
+  }
+
+  public static ImmutableList<String> getMigrationEntryOutputList(ImmutableList<MigrationEntry> entryList) {
+    if (entryList == null) return ImmutableList.of();
+    return entryList.stream().map(MigrationEntry::getOriginalNumber).collect(ImmutableList.toImmutableList());
+  }
+
+  public static ImmutableList<String> getMigrationResultOutputList(ImmutableList<MigrationResult> resultList) {
+    if (resultList == null) return ImmutableList.of();
+    return resultList.stream().map(MigrationResult::toString).collect(ImmutableList.toImmutableList());
+  }
+
+  public void handleFileMigration(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    try {
+      Map.Entry<String, MigrationJob.MigrationReport> result = performFileMigration(req).entrySet().iterator().next();
+      String fileName = result.getKey();
+      MigrationJob.MigrationReport report = result.getValue();
+      // List converted into a Set to allow for constant time contains() method below
+      ImmutableSet<MigrationEntry> validUntouchedEntriesSet = ImmutableSet.copyOf(report.getValidUntouchedEntries());
+
+      req.setAttribute("fileName", fileName);
+      req.setAttribute("fileContent", report.toString());
+      req.setAttribute("fileCountryCode", report.getCountryCode());
+      req.setAttribute("validMigrations", report.getValidMigrations());
+      req.setAttribute("invalidMigrations", report.getInvalidMigrations());
+      req.setAttribute("validUntouchedNumbers", report.getValidUntouchedEntries());
+      req.setAttribute("invalidUntouchedNumbers", report.getUntouchedEntries().stream()
+              .filter(entry -> !validUntouchedEntriesSet.contains(entry)).collect(ImmutableList.toImmutableList()));
+
+    } catch (Exception e) {
+      req.setAttribute("fileError", e.getMessage());
+
+    } finally {
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
+    }
+  }
+
+  private ImmutableMap<String, MigrationJob.MigrationReport> performFileMigration(HttpServletRequest req) throws Exception {
+    ServletFileUpload upload = new ServletFileUpload();
+    final int MAX_UPLOAD_SIZE = 50000;
+    String countryCode = "";
+    String file = "";
+    String fileName = "";
+
+    upload.setSizeMax(MAX_UPLOAD_SIZE);
+    FileItemIterator iterator = upload.getItemIterator(req);
+    while (iterator.hasNext()) {
+      FileItemStream item = iterator.next();
+      InputStream in = item.openStream();
+      if (item.isFormField()) {
+        countryCode = Streams.asString(in).toUpperCase();
+      } else {
+        fileName = item.getName();
+        try {
+          file = IOUtils.toString(in);
+        } finally {
+          IOUtils.closeQuietly(in);
+        }
+      }
+    }
+
+    ImmutableList.Builder<String> numbersFromFile = ImmutableList.builder();
+    StringTokenizer tokenizer = new StringTokenizer(file, "\n");
+    while (tokenizer.hasMoreTokens()) {
+      numbersFromFile.add(tokenizer.nextToken());
+    }
+    ImmutableList<String> nums = numbersFromFile.build();
+
+    MigrationJob job = MigrationFactory.createMigration(nums, countryCode, /* exportInvalidMigrations= */ false);
+    return ImmutableMap.of(fileName, job.getMigrationReportForCountry());
   }
 }

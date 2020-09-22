@@ -34,6 +34,6 @@ public abstract class MigrationResult {
 
   @Override
   public String toString() {
-    return "'" + getMigrationEntry().getOriginalNumber() + "' -> +" + getMigratedNumber();
+    return getMigrationEntry().getOriginalNumber() + "  ->  +" + getMigratedNumber();
   }
 }

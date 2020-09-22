@@ -1,14 +1,109 @@
+<%@ page import="com.google.appengine.repackaged.com.google.gson.Gson" %>
+<%@ page import="com.google.common.collect.ImmutableList" %>
+<%@ page import="com.google.phonenumbers.ServletMain" %>
+<%@ page import="com.google.phonenumbers.migrator.MigrationEntry" %>
+<%@ page import="com.google.phonenumbers.migrator.MigrationResult" %>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   final String E164_NUMBERS_LINK = "https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers";
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
   final String DOCUMENTATION_LINK = "./"; // TODO: use README documentation link when uploaded
+
+  final Gson gson = new Gson();
+  ImmutableList<MigrationResult> validMigrations = (ImmutableList<MigrationResult>) request.getAttribute("validMigrations");
+  ImmutableList<MigrationResult> invalidMigrations = (ImmutableList<MigrationResult>) request.getAttribute("invalidMigrations");
+  ImmutableList<MigrationEntry> validUntouchedNums = (ImmutableList<MigrationEntry>) request.getAttribute("validUntouchedNumbers");
+  ImmutableList<MigrationEntry> invalidUntouchedNums = (ImmutableList<MigrationEntry>) request.getAttribute("invalidUntouchedNumbers");
 %>
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="/stylesheets/servlet-main.css" />
   <title>Migrator</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    const VALID_MIGRATIONS = 'Valid Migrations';
+    const INVALID_MIGRATIONS = 'Invalid Migrations';
+    const UNTOUCHED_VALID = 'Already Valid Numbers';
+    const UNTOUCHED_INVALID = 'Invalid Non-migratable Numbers';
+
+    const CHART_DESCRIPTIONS = new Map();
+    CHART_DESCRIPTIONS[VALID_MIGRATIONS] = 'The following are numbers that were successfully migrated by the tool:';
+    CHART_DESCRIPTIONS[INVALID_MIGRATIONS] = 'The following are numbers that were migrated by the tool but were not able' +
+            ' to be verified as valid numbers based on metadata for the given country code:';
+    CHART_DESCRIPTIONS[UNTOUCHED_VALID] = 'The following are numbers that were already in valid formats:';
+    CHART_DESCRIPTIONS[UNTOUCHED_INVALID] = 'The following numbers were not seen as valid and could not be migrated based' +
+            ' on the given country code:';
+
+    function getNumbersForSegment(selection) {
+      if (selection === VALID_MIGRATIONS) {
+        return <%=gson.toJson(ServletMain.getMigrationResultOutputList(validMigrations))%>;
+      } else if (selection === INVALID_MIGRATIONS) {
+        return <%=gson.toJson(ServletMain.getMigrationResultOutputList(invalidMigrations))%>;
+      } else if (selection === UNTOUCHED_VALID) {
+        return <%=gson.toJson(ServletMain.getMigrationEntryOutputList(validUntouchedNums))%>;
+      }
+      return <%=gson.toJson(ServletMain.getMigrationEntryOutputList(invalidUntouchedNums))%>;
+    }
+
+    google.charts.load('current', {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      const chartData = google.visualization.arrayToDataTable([
+        ['Task', 'Frequency'],
+        [VALID_MIGRATIONS, <%= validMigrations != null ? validMigrations.size() : 0%>],
+        [INVALID_MIGRATIONS, <%= invalidMigrations != null ? invalidMigrations.size() : 0%>],
+        [UNTOUCHED_VALID, <%= validUntouchedNums != null ? validUntouchedNums.size() : 0%>],
+        [UNTOUCHED_INVALID, <%= invalidUntouchedNums != null ? invalidUntouchedNums.size() : 0%>]
+      ]);
+
+      const chartProperties = {
+        pieHole: 0.4,
+        chartArea: { width: '90%', height: '100%' },
+        colors: [
+          <%=validMigrations != null && !validMigrations.isEmpty()%> ? '#277301' : '',
+          <%=invalidMigrations != null && !invalidMigrations.isEmpty()%> ? '#ffbf36' : '',
+          <%=validUntouchedNums != null && !validUntouchedNums.isEmpty()%> ? '#90ee90' : '',
+          <%=invalidUntouchedNums != null && !invalidUntouchedNums.isEmpty()%> ? '#ff472b' : '']
+      };
+
+      const modalBackdrop = document.getElementById("modalBackdrop");
+
+      document.getElementById("modalButton").onclick = function() {
+        document.getElementById("numbersList").innerHTML = '';
+        modalBackdrop.style.display = 'none';
+      };
+
+      window.onclick = function(event) {
+        if (event.target === modalBackdrop) {
+          document.getElementById("numbersList").innerHTML = '';
+          modalBackdrop.style.display = 'none';
+        }
+      };
+
+      function onSegmentClick() {
+        const selection = chart.getSelection()[0];
+        if (selection) {
+          const selectionName = chartData.getValue(selection.row, 0);
+          const numbersList = document.getElementById("numbersList");
+          const segmentNumbers = getNumbersForSegment(selectionName);
+
+          segmentNumbers.forEach(number => {
+            const value = document.createElement('li');
+            value.appendChild(document.createTextNode(number));
+            numbersList.appendChild(value);
+          });
+          document.getElementById("modalTitle").innerHTML = selectionName;
+          document.getElementById("modalDescription").innerHTML = CHART_DESCRIPTIONS[selectionName];
+          modalBackdrop.style.display = 'block';
+        }
+      }
+
+      const chart = new google.visualization.PieChart(document.getElementById('migration-chart'));
+      google.visualization.events.addListener(chart, 'select', onSegmentClick);
+      chart.draw(chartData, chartProperties);
+    }
+  </script>
 </head>
 <body>
   <div class="page-heading">
@@ -67,6 +162,19 @@
                   " to the given phone number or the specified number has never been valid.</p>");
           // TODO: add link for users to file bugs
         }
+      } else if (request.getAttribute("fileError") == null && request.getAttribute("fileName") != null) {
+        out.print("<h3>'" + request.getAttribute("fileName") + "' Migration Report for Country Code: +" + request.getAttribute("fileCountryCode") + "</h3>");
+        out.print("<p>Below is a chart showing the ratio of numbers from the entered file that were able to be migrated" +
+                " using '+" + request.getAttribute("fileCountryCode") + "' migration recipes. To understand more," +
+                " select a given segment from the chart below.</p>");
+        out.print("<div class='chart-wrap'><div id='migration-chart' class='chart'></div></div>");
+
+        out.print("<form action='" + request.getContextPath() + "/migrate' method='get' style='margin-bottom: 1rem'>");
+        out.print("<input type='hidden' name='countryCode' value='" + request.getAttribute("fileCountryCode") + "'/>");
+        out.print("<input type='hidden' name='fileName' value='" + request.getAttribute("fileName") + "'/>");
+        out.print("<input type='hidden' name='fileContent' value='" + request.getAttribute("fileContent") + "'/>");
+        out.print("<input type='submit' value='Export Results' class='button'/>");
+        out.print("</form>");
       }
     %>
   </div>
@@ -86,14 +194,14 @@
         <input type="number" name="numberCountryCode" id="numberCountryCode" placeholder="84" required
                value="<%=request.getAttribute("numberCountryCode") == null ? "" : request.getAttribute("numberCountryCode")%>"/>
 
-        <input type="submit" value="Migrate Number" class="submit"/>
+        <input type="submit" value="Migrate Number" class="button"/>
       </form>
     </div>
 
     <div class="migration-form">
       <h3>File Migration</h3>
       <div class="error-message"><%=request.getAttribute("fileError") == null ? "" : request.getAttribute("fileError")%></div>
-      <form action="${pageContext.request.contextPath}/migrate" method="post">
+      <form action="${pageContext.request.contextPath}/migrate" method="post" enctype="multipart/form-data">
         <label for="file">File:</label>
         <p>Upload a file containing one E.164 phone number per line. Numbers can include spaces, curved brackets and hyphens</p>
         <input type="file" name="file" id="file" accept="text/plain" required/>
@@ -102,8 +210,20 @@
         <p>Enter the BCP-47 country code in which the E.164 phone numbers from the specified file belong to</p>
         <input type="number" name="fileCountryCode" id="fileCountryCode" placeholder="84" required/>
 
-        <input type="submit" value="Migrate File" class="submit"/>
+        <input type="submit" value="Migrate File" class="button"/>
       </form>
+    </div>
+  </div>
+
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription" style="color: grey; font-size: 12px"></p>
+      <div class="body">
+        <ul id="numbersList" style="padding-left: 1.5rem"></ul>
+        <%--TODO: add link for users to file bugs in cases of invalid migrations and invalid numbers--%>
+      </div>
+      <button id="modalButton" class="button">Close</button>
     </div>
   </div>
 </body>

@@ -15,10 +15,7 @@
  */
 package com.google.phonenumbers.migrator;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.*;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
@@ -29,6 +26,7 @@ import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.i18n.phonenumbers.metadata.table.RangeTable;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Optional;
 import com.google.common.base.Preconditions;
 import java.util.stream.Stream;
@@ -257,6 +255,10 @@ public final class MigrationJob {
       this.invalidMigrations = migratedEntries.get("Invalid");
     }
 
+    public DigitSequence getCountryCode() {
+      return countryCode;
+    }
+
     /**
      * Returns the Migration results which were seen as valid when queried against the rangesTable
      * containing valid number representations for the given countryCode.
@@ -289,35 +291,41 @@ public final class MigrationJob {
     }
 
     /**
-     * Creates a text file of the new number list after a migration has been performed. Numbers that
-     * were not migrated are added in their original format as well migrated numbers that were seen
-     * as being invalid, unless the migration job is set to exportInvalidMigrations. Successfully
-     * migrated numbers will be added in their new format.
+     * Creates a text file of the new number list after a migration has been performed.
      *
      * @param fileName: the given suffix of the new file to be created.
      */
     public String exportToFile(String fileName) throws IOException {
-      String newFileLocation = System.getProperty("user.dir") + "/+" + countryCode + "_Migration_" +
-          fileName;
+      String newFileLocation = "+" + countryCode + "_Migration_" + fileName;
       FileWriter fw = new FileWriter(newFileLocation);
+      fw.write(toString());
+      fw.close();
+      return newFileLocation;
+    }
 
+    /**
+     * Returns the content for the given migration. Numbers that were not migrated are added in their original format as
+     * well migrated numbers that were seen as being invalid, unless the migration job is set to exportInvalidMigrations.
+     * Successfully migrated numbers will be added in their new format.
+     */
+    public String toString() {
+      StringBuilder fileContent = new StringBuilder();
       for (MigrationResult result : validMigrations) {
-        fw.write("+" + result.getMigratedNumber() + "\n");
+        fileContent.append("+").append(result.getMigratedNumber()).append("\n");
       }
       for (MigrationEntry entry : untouchedEntries) {
-        fw.write(entry.getOriginalNumber() + "\n");
+        fileContent.append(entry.getOriginalNumber()).append("\n");
       }
       if (exportInvalidMigrations && invalidMigrations.size() > 0) {
-        fw.write("\nInvalid migrations due to an issue in either the used internal recipe or"
-            + " the internal +" + countryCode + " valid metadata range:\n");
+        fileContent.append("\nInvalid migrations due to an issue in either the used internal recipe or the internal +")
+                .append(countryCode).append(" valid metadata range:\n");
       }
       for (MigrationResult result : invalidMigrations) {
         String number = exportInvalidMigrations ? "+" + result.getMigratedNumber() :
-            result.getMigrationEntry().getOriginalNumber();
-        fw.write(number + "\n");
+                result.getMigrationEntry().getOriginalNumber();
+        fileContent.append(number).append("\n");
       }
-      fw.close();
-      return newFileLocation;
+      return fileContent.toString();
     }
 
     /**
@@ -382,7 +390,7 @@ public final class MigrationJob {
         System.out.println("* Migrated numbers:");
         validMigrations.forEach(val -> System.out.println("\t" + val));
         System.out.println("\n* Untouched number(s):");
-        untouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber() + "'"));
+        untouchedEntries.forEach(val -> System.out.println("\t" + val.getOriginalNumber()));
 
       } else {
         ImmutableList<MigrationEntry> validUntouchedEntries = getValidUntouchedEntries();
@@ -395,18 +403,22 @@ public final class MigrationJob {
 
         System.out.println("\n* Valid number(s):");
         validMigrations.forEach(val -> System.out.println("\t" + val));
-        validUntouchedEntries.forEach(val -> System.out.println("\t'" + val.getOriginalNumber()
-            + "' (untouched)"));
+        validUntouchedEntries.forEach(val -> System.out.println("\t" + val.getOriginalNumber()
+            + " (untouched)"));
 
         System.out.println("\n* Invalid migrated number(s):");
         invalidMigrations.forEach(val -> System.out.println("\t" + val));
 
         System.out.println("\n* Untouched number(s):");
+        /* converted into a Set to allow for constant time contains() method. Can only be converted into a set once all its
+          numbers have been printed out above because duplicate numbers could have been entered for migration and users
+          should still receive all duplicates. */
+        ImmutableSet<MigrationEntry> validUntouchedEntriesSet = ImmutableSet.copyOf(validUntouchedEntries);
         untouchedEntries.forEach(val -> {
-          if (validUntouchedEntries.contains(val)) {
-            System.out.println("\t'" + val.getOriginalNumber() + "' (already valid)");
+          if (validUntouchedEntriesSet.contains(val)) {
+            System.out.println("\t" + val.getOriginalNumber() + " (already valid)");
           } else {
-            System.out.println("\t'" + val.getOriginalNumber() + "'");
+            System.out.println("\t" + val.getOriginalNumber());
           }
         });
       }
