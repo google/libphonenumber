@@ -69,7 +69,7 @@ public class ServletMain extends HttpServlet {
   /** Retrieves the form data for the numbers after a file migration and downloads them as a text file. */
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    CharMatcher matcher = CharMatcher.anyOf("./\\");
+    CharMatcher matcher = CharMatcher.anyOf("/\\");
     String fileName = "+" + matcher.removeFrom(req.getParameter("countryCode")) + "_Migration_ " +
             matcher.removeFrom(req.getParameter("fileName"));
     String fileContent = req.getParameter("fileContent");
