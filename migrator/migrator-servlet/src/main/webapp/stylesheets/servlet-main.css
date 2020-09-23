@@ -41,7 +41,7 @@
 .migration-form p {
     font-size: 12px;
     color: grey;
-    width: 90%;
+    width: 95%;
 }
 
 .button {
@@ -78,7 +78,7 @@
 
 .error-message {
     font-family: 'Roboto', Arial, sans-serif;
-    word-break: break-all;
+    word-break: break-word;
     margin-top: -0.5rem;
     margin-bottom: 1rem;
     font-size: 12px;

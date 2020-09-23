@@ -183,7 +183,7 @@
     <div class="migration-form">
       <h3>Single Number Migration</h3>
       <div class="error-message"><%=request.getAttribute("numberError") == null ? "" : request.getAttribute("numberError")%></div>
-      <form action="${pageContext.request.contextPath}/migrate" method="post">
+      <form action="${pageContext.request.contextPath}/migrate" method="post" enctype="multipart/form-data">
         <label for="number">Phone number:</label>
         <p>Enter a phone number in E.164 format. Inputted numbers can include spaces, curved brackets and hyphens</p>
         <input type="text" name="number" id="number" placeholder="+841205555555" required
@@ -193,6 +193,13 @@
         <p>Enter the BCP-47 country code in which the specified E.164 phone number belongs to</p>
         <input type="number" name="numberCountryCode" id="numberCountryCode" placeholder="84" required
                value="<%=request.getAttribute("numberCountryCode") == null ? "" : request.getAttribute("numberCountryCode")%>"/>
+
+        <label for="numberCustomRecipe">Custom Recipe:</label>
+        <p>
+          (Optional) Upload a csv file containing a custom recipes table to be used for migrations. To understand how to
+          create a custom recipe file, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>.
+        </p>
+        <input type="file" name="customRecipe" id="numberCustomRecipe" accept=".csv"/>
 
         <input type="submit" value="Migrate Number" class="button"/>
       </form>
@@ -209,6 +216,13 @@
         <label for="fileCountryCode">Country Code:</label>
         <p>Enter the BCP-47 country code in which the E.164 phone numbers from the specified file belong to</p>
         <input type="number" name="fileCountryCode" id="fileCountryCode" placeholder="84" required/>
+
+        <label for="fileCustomRecipe">Custom Recipe:</label>
+        <p>
+          (Optional) Upload a csv file containing a custom recipes table to be used for migrations. To understand how to
+          create a custom recipe file, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>.
+        </p>
+        <input type="file" name="customRecipe" id="fileCustomRecipe" accept=".csv"/>
 
         <input type="submit" value="Migrate File" class="button"/>
       </form>
