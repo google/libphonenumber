@@ -4470,7 +4470,7 @@ TEST_F(PhoneNumberUtilTest, TestParseHandlesLongExtensionsWithExplicitLabels) {
 
 TEST_F(PhoneNumberUtilTest,
        TestParseHandlesLongExtensionsWithAutoDiallingLabels) {
-  // Secondly, cases of auto-dialling and other standard extension labels,
+  // Secondly, cases of auto-dialling and other standard extension labels:
   // ext_limit_after_likely_label
   PhoneNumber us_number_user_input;
   us_number_user_input.set_country_code(1);
@@ -4504,13 +4504,12 @@ TEST_F(PhoneNumberUtilTest,
 }
 
 TEST_F(PhoneNumberUtilTest, TestParseHandlesShortExtensionsWithAmbiguousChar) {
-  // Thirdly, for single and non-standard cases
-  // ext_limit_after_ambiguous_char
+  // Thirdly, for single and non-standard cases: ext_limit_after_ambiguous_char
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
   nz_number.set_national_number(33316005ULL);
   PhoneNumber test_number;
-  nz_number.set_extension("123456789");
+  nz_number.set_extension("123456789");// 
 
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("03 3316005 x 123456789", RegionCode::NZ(),
@@ -4538,8 +4537,8 @@ TEST_F(PhoneNumberUtilTest, TestParseHandlesShortExtensionsWithAmbiguousChar) {
 }
 
 TEST_F(PhoneNumberUtilTest, TestParseHandlesShortExtensionsWhenNotSureOfLabel) {
-  // Lastly, for single and non-standard cases
-  // ext_limit_when_not_sure
+  // Thirdly, when no explicit extension label present, but denoted by
+  // tailing #: ext_limit_when_not_sure
   PhoneNumber us_number;
   us_number.set_country_code(1);
   us_number.set_national_number(1234567890ULL);

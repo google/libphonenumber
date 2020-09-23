@@ -312,6 +312,14 @@ public class PhoneNumberUtil {
     EXTN_PATTERNS_FOR_PARSING = createExtnPattern(true);
     EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(false);
   }
+  
+  /** 
+   * Helper method for constructing regular expressions for parsing. Creates an expression that
+   * captures up to maxLength digits.
+   */
+  private static String extnDigits(int maxLength) {
+    return "(" + DIGITS + "{1," + maxLength + "})";
+  }
 
   /**
    * Helper initialiser method to create the regular-expression pattern to match extensions.
@@ -328,14 +336,15 @@ public class PhoneNumberUtil {
     int extLimitAfterAmbiguousChar = 9;
     int extLimitWhenNotSure = 6;
 
-    // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
-    // for representing the accented o - the character itself, and one in the unicode decomposed
-    // form with the combining acute accent.
     String possibleSeparatorsBetweenNumberAndExtLabel = "[ \u00A0\\t,]*";
     // Optional full stop (.) or colon, followed by zero or more spaces/tabs/commas.
     String possibleCharsAfterExtLabel = "[:\\.\uFF0E]?[ \u00A0\\t,-]*";
+    String optionalExtnSuffix = "#?";
+
     // Here the extension is called out in more explicit way, i.e mentioning it obvious patterns
-    // like "ext.".
+    // like "ext.". Canonical-equivalence doesn't seem to be an option with Android java, so we
+    // allow two options for representing the accented o - the character itself, and one in the
+    // unicode decomposed form with the combining acute accent.
     String explicitExtLabels =
         "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|\u0434\u043E\u0431|anexo)";
     // One-character symbols that can be used to indicate an extension, and less commonly used
@@ -343,11 +352,6 @@ public class PhoneNumberUtil {
     String ambiguousExtLabels = "(?:[x\uFF58#\uFF03~\uFF5E]|int|\uFF49\uFF4E\uFF54)";
     // When extension is not separated clearly.
     String ambiguousSeparator = "[- ]+";
-    // ",," is commonly used for auto dialling the extension when connected. First comma is matched
-    // through possibleSeparatorsBetweenNumberAndExtLabel, so we do not repeat it here. Semi-colon
-    // works in Iphone and Android also to pop up a button with the extension number following.
-    String autoDiallingAndExtLabelsFound = "(?:,{2}|;)";
-    String optionalExtnSuffix = "#?";
 
     String rfcExtn = RFC3966_EXTN_PREFIX + extnDigits(extLimitAfterExplicitLabel);
     String explicitExtn = possibleSeparatorsBetweenNumberAndExtLabel + explicitExtLabels
@@ -357,14 +361,14 @@ public class PhoneNumberUtil {
         + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar) + optionalExtnSuffix;
     String americanStyleExtnWithSuffix = ambiguousSeparator + extnDigits(extLimitWhenNotSure) + "#";
 
-    // The first covers RFC 3966 format, where the
-    // extension is added using ";ext=". The second more generic where extension is mentioned with
-    // explicit labels like "ext:". In both the above cases we allow more numbers in extension
-    // than any other extension labels. The third one captures when single character extension
-    // labels or less commonly used labels are used. In such cases we capture fewer extension digits
-    // in order to reduce the chance of falsely interpreting two numbers beside each other as a
-    // number + extension. The fourth one covers the special case of American numbers
-    // where the extension is written with a hash at the end, such as "- 503#".
+    // The first regular expression covers RFC 3966 format, where the extension is added using
+    // ";ext=". The second more generic where extension is mentioned with explicit labels like
+    // "ext:". In both the above cases we allow more numbers in extension than any other extension
+    // labels. The third one captures when single character extension labels or less commonly used
+    // labels are used. In such cases we capture fewer extension digits in order to reduce the
+    // chance of falsely interpreting two numbers beside each other as a number + extension. The
+    // fourth one covers the special case of American numbers where the extension is written with a
+    // hash at the end, such as "- 503#".
     String extensionPattern =
         rfcExtn + "|"
         + explicitExtn + "|"
@@ -372,16 +376,20 @@ public class PhoneNumberUtil {
         + americanStyleExtnWithSuffix;
     // Additional pattern that is supported when parsing extensions, not when matching.
     if (forParsing) {
-    // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching comma as
-    // extension label may have it.
-    String possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
+      // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching comma as
+      // extension label may have it.
+      String possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
+      // ",," is commonly used for auto dialling the extension when connected. First comma is matched
+      // through possibleSeparatorsBetweenNumberAndExtLabel, so we do not repeat it here. Semi-colon
+      // works in Iphone and Android also to pop up a button with the extension number following.
+      String autoDiallingAndExtLabelsFound = "(?:,{2}|;)";
 
-    String autoDiallingExtn = possibleSeparatorsNumberExtLabelNoComma
-        + autoDiallingAndExtLabelsFound + possibleCharsAfterExtLabel
-        + extnDigits(extLimitAfterLikelyLabel) +  optionalExtnSuffix;
-    String onlyCommasExtn = possibleSeparatorsNumberExtLabelNoComma
-      + "(?:,)+" + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar)
-      + optionalExtnSuffix;
+      String autoDiallingExtn = possibleSeparatorsNumberExtLabelNoComma
+          + autoDiallingAndExtLabelsFound + possibleCharsAfterExtLabel
+          + extnDigits(extLimitAfterLikelyLabel) +  optionalExtnSuffix;
+      String onlyCommasExtn = possibleSeparatorsNumberExtLabelNoComma
+        + "(?:,)+" + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar)
+        + optionalExtnSuffix;
       // Here the first pattern is exclusive for extension autodialling formats which are used
       // when dialling and in this case we accept longer extensions. However, the second pattern
       // is more liberal on number of commas that acts as extension labels, so we have strict cap on
@@ -391,13 +399,6 @@ public class PhoneNumberUtil {
           + onlyCommasExtn;
     }
     return extensionPattern;
-  }
-
-  /**  Helper method for constructing regular expressions for parsing. Creates an expression that
-   *   captures up to max_length digits.
-   */
-  private static String extnDigits(int maxLength) {
-    return "(" + DIGITS + "{1," + maxLength + "})";
   }
 
   // Regexp of all known extension prefixes used by different regions followed by 1 or more valid
@@ -2708,7 +2709,6 @@ public class PhoneNumberUtil {
   /**
    * Check whether a phone number is a possible number given a number in the form of a string, and
    * the region where the number could be dialed from. It provides a more lenient check than
-   * {@link #isValidNumber}. See {@link #isPossibleNumber(PhoneNumber)} for details.
    *
    * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber)}
    * with the resultant PhoneNumber object.

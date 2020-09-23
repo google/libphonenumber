@@ -24,8 +24,6 @@
  *
  * @author Nikolaos Trogkanis
  */
-goog.provide('i18n.phonenumbers.PhoneNumberUtilTest');
-goog.setTestOnly();
 
 goog.require('goog.array');
 goog.require('goog.string.StringBuffer');

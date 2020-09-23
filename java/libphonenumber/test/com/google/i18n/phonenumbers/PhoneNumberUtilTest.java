@@ -2683,7 +2683,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     PhoneNumber nzNumber = new PhoneNumber();
     nzNumber.setCountryCode(64).setNationalNumber(33316005L);
 
-    // Firstly, when in RFC format: PhoneNumberUtil.CAPTURING_LONG_EXTN_DIGITS_WHEN_CLEAR
+    // Firstly, when in RFC format: PhoneNumberUtil.extLimitAfterExplicitLabel
     nzNumber.setExtension("0");
     assertEquals(nzNumber, phoneUtil.parse("tel:+6433316005;ext=0", RegionCode.NZ));
     nzNumber.setExtension("01234567890123456789");
@@ -2703,7 +2703,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
           e.getErrorType());
     }
 
-    // Explicit extension label: PhoneNumberUtil.CAPTURING_LONG_EXTN_DIGITS_WHEN_CLEAR
+    // Explicit extension label: PhoneNumberUtil.extLimitAfterExplicitLabel
     nzNumber.setExtension("1");
     assertEquals(nzNumber, phoneUtil.parse("03 3316005ext:1", RegionCode.NZ));
     nzNumber.setExtension("12345678901234567890");
@@ -2713,10 +2713,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals(
         nzNumber, phoneUtil.parse("03 3316005 xtensio:12345678901234567890", RegionCode.NZ));
     assertEquals(
-        nzNumber, phoneUtil.parse("03 3316005 xtensión, 12345678901234567890#", RegionCode.NZ));
+        nzNumber, phoneUtil.parse("03 3316005 xtensi\u00F3n, 12345678901234567890#", RegionCode.NZ));
     assertEquals(
         nzNumber, phoneUtil.parse("03 3316005extension.12345678901234567890", RegionCode.NZ));
-    assertEquals(nzNumber, phoneUtil.parse("03 3316005 доб:12345678901234567890", RegionCode.NZ));
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 \u0434\u043E\u0431:12345678901234567890", RegionCode.NZ));
     // Extension too long.
     try {
       phoneUtil.parse("03 3316005 extension 123456789012345678901", RegionCode.NZ);
@@ -2733,8 +2733,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testParseHandlesLongExtensionsWithAutoDiallingLabels() throws Exception {
-    // Lastly, cases of auto-dialling and other standard extension labels,
-    // PhoneNumberUtil.CAPTURING_DECENT_EXTN_DIGITS
+    // Secondly, cases of auto-dialling and other standard extension labels,
+    // PhoneNumberUtil.extLimitAfterLikelyLabel
     PhoneNumber usNumberUserInput = new PhoneNumber();
     usNumberUserInput.setCountryCode(1).setNationalNumber(2679000000L);
     usNumberUserInput.setExtension("123456789012345");
@@ -2764,8 +2764,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     PhoneNumber nzNumber = new PhoneNumber();
     nzNumber.setCountryCode(64).setNationalNumber(33316005L);
 
-    // Secondly, for single and non-standard cases:
-    // PhoneNumberUtil.CAPTURING_EXTN_DIGITS_BIT_CONSERVATIVELY
+    // Thirdly, for single and non-standard cases:
+    // PhoneNumberUtil.extLimitAfterAmbiguousChar
     nzNumber.setExtension("123456789");
     assertEquals(nzNumber, phoneUtil.parse("03 3316005 x 123456789", RegionCode.NZ));
     assertEquals(nzNumber, phoneUtil.parse("03 3316005 x. 123456789", RegionCode.NZ));
@@ -2787,8 +2787,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testParseHandlesShortExtensionsWhenNotSureOfLabel() throws Exception {
-    // Thirdly, when no explicit extension label present, but denoted by tailing #:
-    // PhoneNumberUtil.CAPTURING_EXTN_DIGITS_MORE_CONSERVATIVELY
+    // Lastly, when no explicit extension label present, but denoted by tailing #:
+    // PhoneNumberUtil.extLimitWhenNotSure
     PhoneNumber usNumber = new PhoneNumber();
     usNumber.setCountryCode(1).setNationalNumber(1234567890L).setExtension("666666");
     assertEquals(usNumber, phoneUtil.parse("+1123-456-7890 666666#", RegionCode.US));

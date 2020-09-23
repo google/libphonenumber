@@ -125,6 +125,7 @@ const char kPossibleSeparatorsBetweenNumberAndExtLabel[] =
 // spaces/tabs/commas.
 const char kPossibleCharsAfterExtLabel[] =
     "[:\\.\xEF\xBC\x8E]?[ \xC2\xA0\\t,-]*";
+const char kOptionalExtSuffix[] = "#?";
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
@@ -238,7 +239,7 @@ std::string CreateExtnPattern(bool for_parsing) {
   // itself, and one in the unicode decomposed form with the combining acute
   // accent.
 
-  // Here the extension is called out in more explicit way, i.e mentioning it
+  // Here the extension is called out in a more explicit way, i.e mentioning it
   // obvious patterns like "ext.".
   string explicit_ext_labels =
       "(?:e?xt(?:ensi(?:o\xCC\x81?|\xC3\xB3))?n?|(?:\xEF\xBD\x85)?"
@@ -251,7 +252,6 @@ std::string CreateExtnPattern(bool for_parsing) {
       "\xEF\xBD\x89\xEF\xBD\x8E\xEF\xBD\x94)";
   // When extension is not separated clearly.
   string ambiguous_separator = "[- ]+";
-  string optional_extn_suffix = "#?";
 
   string rfc_extn = StrCat(kRfc3966ExtnPrefix,
                            ExtnDigits(ext_limit_after_explicit_label));
@@ -259,12 +259,12 @@ std::string CreateExtnPattern(bool for_parsing) {
       kPossibleSeparatorsBetweenNumberAndExtLabel,
       explicit_ext_labels, kPossibleCharsAfterExtLabel,
       ExtnDigits(ext_limit_after_explicit_label),
-      optional_extn_suffix);
+      kOptionalExtSuffix);
   string ambiguous_extn = StrCat(
       kPossibleSeparatorsBetweenNumberAndExtLabel,
       ambiguous_ext_labels, kPossibleCharsAfterExtLabel,
       ExtnDigits(ext_limit_after_ambiguous_char),
-      optional_extn_suffix);
+      kOptionalExtSuffix);
   string american_style_extn_with_suffix = StrCat(
       ambiguous_separator, ExtnDigits(ext_limit_when_not_sure), "#");
 
@@ -298,12 +298,12 @@ std::string CreateExtnPattern(bool for_parsing) {
       possible_separators_number_extLabel_no_comma,
       auto_dialling_and_ext_labels_found, kPossibleCharsAfterExtLabel,
       ExtnDigits(ext_limit_after_likely_label),
-      optional_extn_suffix);
+      kOptionalExtSuffix);
     string only_commas_extn = StrCat(
       possible_separators_number_extLabel_no_comma,
       "(?:,)+", kPossibleCharsAfterExtLabel,
       ExtnDigits(ext_limit_after_ambiguous_char),
-      optional_extn_suffix);
+      kOptionalExtSuffix);
     // Here the first pattern is exclusive for extension autodialling formats
     // which are used when dialling and in this case we accept longer
     // extensions. However, the second pattern is more liberal on number of
