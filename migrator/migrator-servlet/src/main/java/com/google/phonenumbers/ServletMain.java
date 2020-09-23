@@ -17,7 +17,6 @@ package com.google.phonenumbers;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.phonenumbers.migrator.MigrationEntry;
 import com.google.phonenumbers.migrator.MigrationFactory;
@@ -38,13 +37,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 @WebServlet(name = "Migrate", value = "/migrate")
 public class ServletMain extends HttpServlet {
 
-  public static final ServletFileUpload upload = new ServletFileUpload();
   public static final int MAX_UPLOAD_SIZE = 50000;
 
   /**
@@ -53,6 +50,7 @@ public class ServletMain extends HttpServlet {
    */
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    ServletFileUpload upload = new ServletFileUpload();
     String countryCode = "";
     String number = "";
     String file = "";
@@ -173,6 +171,13 @@ public class ServletMain extends HttpServlet {
     }
   }
 
+  /**
+   * Performs a file migration of a given numbersList and country code and sends the details of the migration to the
+   * jsp file which outputs it to the user.
+   *
+   * @throws RuntimeException, which can be any of the given exceptions when going through the process of creating a {@link
+   * MigrationJob} and running a migration which includes IllegalArgumentExceptions.
+   */
   public void handleFileMigration(HttpServletRequest req, HttpServletResponse resp,
       ImmutableList<String> numbersList,
       String countryCode,
@@ -209,11 +214,19 @@ public class ServletMain extends HttpServlet {
     }
   }
 
+  /**
+   * Takes a list of {@link MigrationEntry}'s and returns a list with the corresponding strings to output for each value
+   * in the given entryList
+   */
   public static ImmutableList<String> getMigrationEntryOutputList(ImmutableList<MigrationEntry> entryList) {
     if (entryList == null) return ImmutableList.of();
     return entryList.stream().map(MigrationEntry::getOriginalNumber).collect(ImmutableList.toImmutableList());
   }
 
+  /**
+   * Takes a list of {@link MigrationResult}'s and returns a list with the corresponding strings to output for each value
+   * in the given resultList
+   */
   public static ImmutableList<String> getMigrationResultOutputList(ImmutableList<MigrationResult> resultList) {
     if (resultList == null) return ImmutableList.of();
     return resultList.stream().map(MigrationResult::toString).collect(ImmutableList.toImmutableList());
