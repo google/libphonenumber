@@ -32,6 +32,7 @@ import org.junit.runners.JUnit4;
 public class MigrationFactoryTest {
 
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
+  private static final Path RECIPES_PATH = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
 
   @Test
   public void createFromFilePath_invalidPathLocation_expectException() {
@@ -48,9 +49,9 @@ public class MigrationFactoryTest {
   @Test
   public void createFromFilePath_validPathLocation_expectValidFields() throws IOException {
     Path fileLocation = Paths.get(TEST_DATA_PATH + "testNumbersFile.txt");
-    Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     String countryCode = "44";
-    MigrationJob mj = MigrationFactory.createCustomRecipeMigration(fileLocation, countryCode, recipesPath);
+    MigrationJob mj = MigrationFactory.createCustomRecipeMigration(fileLocation, countryCode, MigrationFactory
+            .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
@@ -77,10 +78,10 @@ public class MigrationFactoryTest {
 
   @Test
   public void createFromNumberString_validNumberFormat_expectValidFields() throws IOException {
-    Path recipesPath = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
     String numberString = "12345";
     String countryCode = "1";
-    MigrationJob mj = MigrationFactory.createCustomRecipeMigration(numberString, countryCode, recipesPath);
+    MigrationJob mj = MigrationFactory.createCustomRecipeMigration(numberString, countryCode, MigrationFactory
+            .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     assertThat(mj.getMigrationEntries().map(MigrationEntry::getOriginalNumber)
         .collect(Collectors.toList()))
@@ -90,13 +91,14 @@ public class MigrationFactoryTest {
 
   @Test
   public void createWithCustomRecipes_invalidPathLocation_expectException() {
-    String fileLocation = "invalid-recipe-location";
+    Path fileLocation = Paths.get("invalid-recipe-location");
     try {
-      MigrationFactory.createCustomRecipeMigration("12345", "44", Paths.get(fileLocation));
+      MigrationFactory.createCustomRecipeMigration("12345", "44", MigrationFactory
+              .importRecipes(Files.newInputStream(fileLocation)));
       Assert.fail("Expected IOException and did not receive");
     } catch (IOException e) {
       assertThat(e).isInstanceOf(NoSuchFileException.class);
-      assertThat(e).hasMessageThat().contains(fileLocation);
+      assertThat(e).hasMessageThat().contains(fileLocation.toString());
     }
   }
 }
