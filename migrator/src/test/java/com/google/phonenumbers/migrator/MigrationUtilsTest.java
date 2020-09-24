@@ -42,10 +42,13 @@ public class MigrationUtilsTest {
 
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
   private static final Path RECIPES_PATH = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
+  private static final String COUNTRY_CODE = "44";
+  private static final String VALID_TEST_NUMBER = "123";
 
   @Test
   public void getCountryMigratableNumbers_expectNoMatches() throws IOException {
-    MigrationJob job = MigrationFactory.createCustomRecipeMigration("34", "44", MigrationFactory
+    String invalidTestNumber = "34";
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration(invalidTestNumber, COUNTRY_CODE, MigrationFactory
             .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     Stream<MigrationEntry> noMatchesRange = MigrationUtils
@@ -58,7 +61,7 @@ public class MigrationUtilsTest {
   public void getCountryMigratableNumbers_expectMatches() throws IOException {
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(Paths.get(numbersPath), "44", MigrationFactory
+        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, MigrationFactory
                 .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     Stream<MigrationEntry> matchesRange = MigrationUtils
@@ -71,10 +74,10 @@ public class MigrationUtilsTest {
 
   @Test
   public void getMigratableNumbers_invalidKey_expectException() throws IOException {
-    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("123"));
+    RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of(VALID_TEST_NUMBER));
     RangeKey invalidKey = RangeKey.create(testRangeSpec, Collections.singleton(3));
 
-    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", MigrationFactory
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration(VALID_TEST_NUMBER, COUNTRY_CODE, MigrationFactory
             .importRecipes(Files.newInputStream(RECIPES_PATH)));
     try {
       MigrationUtils
@@ -91,7 +94,7 @@ public class MigrationUtilsTest {
     RangeSpecification testRangeSpec = RangeSpecification.from(DigitSequence.of("12"));
     RangeKey validKey = RangeKey.create(testRangeSpec, Collections.singleton(5));
 
-    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", MigrationFactory
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration(VALID_TEST_NUMBER, COUNTRY_CODE, MigrationFactory
             .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     assertThat(MigrationUtils
@@ -102,7 +105,7 @@ public class MigrationUtilsTest {
 
   @Test
   public void findMatchingRecipe_expectNoMatchingRecipe() throws IOException {
-    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", MigrationFactory
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration(VALID_TEST_NUMBER, COUNTRY_CODE, MigrationFactory
             .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     DigitSequence testNumberToMatch = DigitSequence.of("12");
@@ -113,7 +116,7 @@ public class MigrationUtilsTest {
 
   @Test
   public void findMatchingRecipe_expectMatchingRecipe() throws IOException {
-    MigrationJob job = MigrationFactory.createCustomRecipeMigration("123", "44", MigrationFactory
+    MigrationJob job = MigrationFactory.createCustomRecipeMigration(VALID_TEST_NUMBER, COUNTRY_CODE, MigrationFactory
             .importRecipes(Files.newInputStream(RECIPES_PATH)));
     DigitSequence testNumberToMatch = DigitSequence.of("12345");
 
