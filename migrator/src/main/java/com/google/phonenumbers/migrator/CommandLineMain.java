@@ -20,6 +20,7 @@ import com.google.common.collect.Multimap;
 import com.google.i18n.phonenumbers.metadata.table.Column;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -92,7 +93,7 @@ public final class CommandLineMain {
         if (clm.optionalParameter != null && clm.optionalParameter.customRecipe != null) {
           migrationJob = MigrationFactory
               .createCustomRecipeMigration(clm.numberInput.number, clm.countryCode,
-                  Paths.get(clm.optionalParameter.customRecipe));
+                      MigrationFactory.importRecipes(Files.newInputStream(Paths.get(clm.optionalParameter.customRecipe))));
         } else {
           migrationJob = MigrationFactory.createMigration(clm.numberInput.number, clm.countryCode);
         }
@@ -100,7 +101,7 @@ public final class CommandLineMain {
         if (clm.optionalParameter != null && clm.optionalParameter.customRecipe != null) {
           migrationJob = MigrationFactory
               .createCustomRecipeMigration(Paths.get(clm.numberInput.file), clm.countryCode,
-                  Paths.get(clm.optionalParameter.customRecipe));
+                      MigrationFactory.importRecipes(Files.newInputStream(Paths.get(clm.optionalParameter.customRecipe))));
         } else {
           migrationJob = MigrationFactory
               .createMigration(Paths.get(clm.numberInput.file), clm.countryCode,

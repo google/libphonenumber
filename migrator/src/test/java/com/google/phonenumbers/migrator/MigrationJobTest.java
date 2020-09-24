@@ -42,13 +42,14 @@ public class MigrationJobTest {
 
   private static final String COUNTRY_CODE = "44";
   private static final String TEST_DATA_PATH = "./src/test/java/com/google/phonenumbers/migrator/testing/testData/";
+  private static final Path RECIPES_PATH = Paths.get(TEST_DATA_PATH + "testRecipesFile.csv");
 
   @Test
   public void customRecipesMigration_expectMigrations() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     MigrationReport report = job.getMigrationReportForCountry();
     assertThat(report.getValidMigrations()).isNotEmpty();
@@ -56,11 +57,11 @@ public class MigrationJobTest {
 
   @Test
   public void customRecipesMigration_noRecipesFromCountry_expectNoMigrations() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     String unsupportedCountry = "1";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(Paths.get(numbersPath), unsupportedCountry, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), unsupportedCountry, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     MigrationReport report = job.getMigrationReportForCountry();
     assertThat(report.getValidMigrations()).isEmpty();
@@ -68,10 +69,10 @@ public class MigrationJobTest {
 
   @Test
   public void customRecipes_singleMigration_unsupportedRecipeKey_expectException() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("123"));
     int testRecipeLength = 3;
@@ -88,10 +89,10 @@ public class MigrationJobTest {
 
   @Test
   public void customRecipes_singleMigration_validKey_expectMigration() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String numbersPath = TEST_DATA_PATH + "testNumbersFile.txt";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, Paths.get(recipesPath));
+        .createCustomRecipeMigration(Paths.get(numbersPath), COUNTRY_CODE, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("12"));
     int testRecipeLength = 5;
@@ -103,9 +104,9 @@ public class MigrationJobTest {
 
   @Test
   public void customRecipes_invalidOldFormatValue_expectException() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration("13321", COUNTRY_CODE, Paths.get(recipesPath));
+        .createCustomRecipeMigration("13321", COUNTRY_CODE, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("13"));
     int testRecipeLength = 5;
@@ -122,10 +123,10 @@ public class MigrationJobTest {
 
   @Test
   public void customRecipe_multipleMigration_nextRecipeNotFound_expectException() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "10321";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(staleNumber, COUNTRY_CODE, Paths.get(recipesPath));
+        .createCustomRecipeMigration(staleNumber, COUNTRY_CODE, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("10"));
     int testRecipeLength = 5;
@@ -143,11 +144,11 @@ public class MigrationJobTest {
 
   @Test
   public void customRecipe_multipleMigration_expectMigration() throws IOException {
-    String recipesPath = TEST_DATA_PATH + "testRecipesFile.csv";
     String staleNumber = "15321";
     String migratedNumber = "130211";
     MigrationJob job = MigrationFactory
-        .createCustomRecipeMigration(staleNumber, COUNTRY_CODE, Paths.get(recipesPath));
+        .createCustomRecipeMigration(staleNumber, COUNTRY_CODE, MigrationFactory
+                .importRecipes(Files.newInputStream(RECIPES_PATH)));
 
     RangeSpecification testRecipePrefix = RangeSpecification.from(DigitSequence.of("15"));
     int testRecipeLength = 5;
