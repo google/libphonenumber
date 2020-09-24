@@ -800,7 +800,7 @@ class PhoneNumberRegExpsAndMappings {
             StrCat("(?i)(?:", extn_patterns_for_parsing_, ")$"))),
         valid_phone_number_pattern_(regexp_factory_->CreateRegExp(
             StrCat("(?i)", valid_phone_number_,
-                         "(?:", extn_patterns_for_parsing_, ")?"))),
+                   "(?:", extn_patterns_for_parsing_, ")?"))),
         valid_alpha_phone_pattern_(regexp_factory_->CreateRegExp(
             StrCat("(?i)(?:.*?[", kValidAlpha, "]){3}"))),
         // The first_group_capturing_pattern was originally set to $1 but there
@@ -2871,18 +2871,18 @@ bool PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
 // Strips any extension (as in, the part of the number dialled after the call is
 // connected, usually indicated with extn, ext, x or similar) from the end of
 // the number, and returns it. The number passed in should be non-normalized.
-bool PhoneNumberUtil::MaybeStripExtension(std::string* number,
-                                          std::string* extension) const {
+bool PhoneNumberUtil::MaybeStripExtension(string* number,  std::string* extension)
+    const {
   DCHECK(number);
   DCHECK(extension);
   // There are six extension capturing groups in the regular expression.
-  std::string possible_extension_one;
-  std::string possible_extension_two;
-  std::string possible_extension_three;
-  std::string possible_extension_four;
-  std::string possible_extension_five;
-  std::string possible_extension_six;
-  std::string number_copy(*number);
+  string possible_extension_one;
+  string possible_extension_two;
+  string possible_extension_three;
+  string possible_extension_four;
+  string possible_extension_five;
+  string possible_extension_six;
+  string number_copy(*number);
   const std::unique_ptr<RegExpInput> number_copy_as_regexp_input(
       reg_exps_->regexp_factory_->CreateInput(number_copy));
   if (reg_exps_->extn_pattern_->Consume(

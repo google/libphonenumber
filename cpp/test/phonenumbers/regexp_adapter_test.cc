@@ -92,8 +92,9 @@ TEST_F(RegExpAdapterTest, TestConsumeNoMatch) {
 
     // When 'true' is passed to Consume(), the match occurs from the beginning
     // of the input.
-    ASSERT_FALSE(context.digits->Consume(input.get(), true, NULL, NULL, NULL,
-                                         NULL, NULL, NULL));
+    ASSERT_FALSE(context.digits->Consume(
+         input.get(), true, NULL, NULL, NULL, NULL, NULL, NULL))
+         << ErrorMessage(context);
     ASSERT_EQ("+1-123-456-789", input->ToString()) << ErrorMessage(context);
 
     string res1;
@@ -111,9 +112,8 @@ TEST_F(RegExpAdapterTest, TestConsumeWithNull) {
        ++it) {
     const RegExpTestContext& context = **it;
     const AbstractRegExpFactory& factory = *context.factory;
-    const std::unique_ptr<RegExpInput> input(factory.CreateInput("+123"));
-    const std::unique_ptr<const RegExp> plus_sign(
-        factory.CreateRegExp("(\\+)"));
+    const scoped_ptr<RegExpInput> input(factory.CreateInput("+123"));
+    const scoped_ptr<const RegExp> plus_sign(factory.CreateRegExp("(\\+)"));
 
     ASSERT_TRUE(plus_sign->Consume(input.get(), true, NULL, NULL, NULL, NULL,
                                    NULL, NULL))
@@ -126,10 +126,10 @@ TEST_F(RegExpAdapterTest, TestConsumeRetainsMatches) {
   for (TestContextIterator it = contexts_.begin(); it != contexts_.end();
        ++it) {
     const RegExpTestContext& context = **it;
-    const std::unique_ptr<RegExpInput> input(
+    const scoped_ptr<RegExpInput> input(
         context.factory->CreateInput("1-123-456-789"));
 
-    std::string res1, res2;
+    string res1, res2;
     ASSERT_TRUE(context.two_digit_groups->Consume(
         input.get(), true, &res1, &res2, NULL, NULL, NULL, NULL))
         << ErrorMessage(context);
@@ -143,9 +143,9 @@ TEST_F(RegExpAdapterTest, TestFindAndConsume) {
   for (TestContextIterator it = contexts_.begin(); it != contexts_.end();
        ++it) {
     const RegExpTestContext& context = **it;
-    const std::unique_ptr<RegExpInput> input(
+    const scoped_ptr<RegExpInput> input(
         context.factory->CreateInput("+1-123-456-789"));
-    const std::unique_ptr<RegExpInput> input_with_six_digit_groups(
+    const scoped_ptr<RegExpInput> input_with_six_digit_groups(
         context.factory->CreateInput("111-222-333-444-555-666"));
 
     // When 'false' is passed to Consume(), the match can occur from any place
@@ -165,7 +165,7 @@ TEST_F(RegExpAdapterTest, TestFindAndConsume) {
         << ErrorMessage(context);
     ASSERT_EQ("-456-789", input->ToString()) << ErrorMessage(context);
 
-    std::string res1, res2;
+    string res1, res2;
     ASSERT_TRUE(context.two_digit_groups->Consume(
         input.get(), false, &res1, &res2, NULL, NULL, NULL, NULL))
         << ErrorMessage(context);
@@ -175,7 +175,7 @@ TEST_F(RegExpAdapterTest, TestFindAndConsume) {
     ASSERT_EQ("789", res2) << ErrorMessage(context);
 
     // Testing maximum no of substrings that can be matched presently, six.
-    std::string mat1, mat2, res3, res4, res5, res6;
+    string mat1, mat2, res3, res4, res5, res6;
     ASSERT_TRUE(context.six_digit_groups->Consume(
         input_with_six_digit_groups.get(), false, &mat1, &mat2, &res3, &res4,
         &res5, &res6))
