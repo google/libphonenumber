@@ -66,12 +66,10 @@ public class MigrationFactory {
    */
   public static MigrationJob createCustomRecipeMigration(String number,
       String country,
-      Path customRecipesFile)
-      throws IOException {
+      CsvTable<RangeKey> recipes) {
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList<MigrationEntry> numberRanges =
         ImmutableList.of(MigrationEntry.create(sanitizeNumberString(number), number));
-    CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
     return new MigrationJob(numberRanges, countryCode, recipes,
         /* rangesTable= */null, /* exportInvalidMigrations= */false);
@@ -108,17 +106,31 @@ public class MigrationFactory {
    */
   public static MigrationJob createCustomRecipeMigration(Path file,
       String country,
-      Path customRecipesFile)
+      CsvTable<RangeKey> recipes)
       throws IOException {
     List<String> numbers = Files.readAllLines(file);
     DigitSequence countryCode = DigitSequence.of(country);
     ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
 
     numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
-    CsvTable<RangeKey> recipes = importRecipes(Files.newInputStream(customRecipesFile));
 
     return new MigrationJob(numberRanges.build(), countryCode, recipes,
         /* rangesTable= */null, /* exportInvalidMigrations= */ false);
+  }
+
+  /**
+   * Returns a MigrationJob instance for a given file path containing one E.164 number per line, corresponding BCP-47
+   * country code, and custom user recipes.csv file. Method needed for migrations using migrator-servlet.
+   */
+  public static MigrationJob createCustomRecipeMigration(ImmutableList<String> numbers,
+       String country,
+       CsvTable<RangeKey> recipes) throws IOException {
+    DigitSequence countryCode = DigitSequence.of(country);
+    ImmutableList.Builder<MigrationEntry> numberRanges = ImmutableList.builder();
+    numbers.forEach(num -> numberRanges.add(MigrationEntry.create(sanitizeNumberString(num), num)));
+
+    return new MigrationJob(numberRanges.build(), countryCode, recipes,
+            /* rangesTable= */null, /* exportInvalidMigrations= */ false);
   }
 
   /**
