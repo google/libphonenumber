@@ -19,8 +19,10 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
+import com.google.i18n.phonenumbers.metadata.RangeTree;
 import com.google.i18n.phonenumbers.metadata.table.CsvTable;
 import com.google.i18n.phonenumbers.metadata.table.RangeKey;
 import com.google.phonenumbers.migrator.MigrationJob.MigrationReport;
@@ -28,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -243,6 +246,29 @@ public class MigrationJobTest {
     assertThat(createdFileContent).contains(numberAfterMigration);
   }
 
+  @Test
+  public void standardMigrations_testingEveryInternalRecipe_expectValidMigrations() throws IOException {
+    ImmutableMap<String, ImmutableList<String>> sampleNumberLists = getSampleNumberListsForAllMigratableCountries();
+    MigrationJob job;
+
+    for (String countryCode : sampleNumberLists.keySet()) {
+      job = MigrationFactory.createMigration(sampleNumberLists.get(countryCode), countryCode, /* exportInvalidMigrations= */ false);
+      MigrationReport report = job.getMigrationReportForCountry();
+
+      try {
+        assertThat(report.getValidMigrations()).isNotEmpty();
+        assertThat(report.getInvalidMigrations()).isEmpty();
+        assertThat(report.getUntouchedEntries()).isEmpty();
+      } catch (AssertionError e) {
+        Assert.fail("Regarding country code '" + countryCode + "' recipes\n\n" + e.getMessage());
+      }
+    }
+  }
+
+  /**
+   * Creates a mock standard number migration from the test recipes csv file. Allows testing of standard (non-custom)
+   * migrations.
+   */
   private MigrationJob createMockJobFromTestRecipes(DigitSequence migratingNumber,
       DigitSequence countryCode,
       boolean exportInvalidMigrations) throws IOException {
@@ -259,5 +285,29 @@ public class MigrationJobTest {
         .orElseThrow(RuntimeException::new);
 
     return new MigrationJob(numberRanges, countryCode, recipes, ranges, exportInvalidMigrations);
+  }
+
+  /**
+   * Traverses through the internal recipes.csv file and creates sample number lists for every country code that has an
+   * available migration recipe. A single recipe can be used for a varying range of numbers so for each recipe, the
+   * smallest number it can migrate and the greatest number it can migrate are added to the given country code list.
+   */
+  private ImmutableMap<String, ImmutableList<String>> getSampleNumberListsForAllMigratableCountries() throws IOException {
+    ImmutableMap.Builder<String, ImmutableList<String>> sampleNumberLists = ImmutableMap.builder();
+    CsvTable<RangeKey> recipes = MigrationFactory.importRecipes(MigrationFactory.class
+            .getResourceAsStream(MigrationFactory.DEFAULT_RECIPES_FILE));
+
+    RangeTree ranges;
+    for (DigitSequence countryCode : recipes.getValues(RecipesTableSchema.COUNTRY_CODE)) {
+      ImmutableList.Builder<String>  numberList = ImmutableList.builder();
+      ranges = RecipesTableSchema.toRangeTable(recipes).getRanges(RecipesTableSchema.COUNTRY_CODE, countryCode);
+
+      ranges.asRangeSpecifications().forEach(rangeSpecification -> {
+        numberList.add(rangeSpecification.min().toString());
+        numberList.add(rangeSpecification.max().toString());
+      });
+      sampleNumberLists.put(countryCode.toString(), numberList.build());
+    }
+    return sampleNumberLists.build();
   }
 }
