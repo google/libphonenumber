@@ -35,8 +35,8 @@ import java.util.List;
  */
 public class MigrationFactory {
 
-  private final static String DEFAULT_RECIPES_FILE = "/recipes.csv";
   // made public for testing purposes
+  public final static String DEFAULT_RECIPES_FILE = "/recipes.csv";
   public final static String METADATA_ZIPFILE ="/metadata.zip";
 
   /**
