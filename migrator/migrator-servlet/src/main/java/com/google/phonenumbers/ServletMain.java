@@ -43,6 +43,16 @@ import java.util.StringTokenizer;
 public class ServletMain extends HttpServlet {
 
   public static final int MAX_UPLOAD_SIZE = 50000;
+  /**
+   * Countries with large valid number ranges cannot be migrated using the web application due to request timeouts. The
+   * command line tool must be used in such cases.
+   */
+  public static final ImmutableSet<String> LARGE_COUNTRY_RANGES = ImmutableSet.of(
+          "1", // US/Canada -- 9.8MB
+          "86", // China -- 16.1MB
+          "55", // Brazil -- 3.4MB
+          "61" // Australia -- 12.8MB
+  );
 
   /**
    * Retrieves the form data for either a single number migration or a file migration from the index.jsp file and calls
@@ -146,6 +156,14 @@ public class ServletMain extends HttpServlet {
       String countryCode,
       String customRecipe)
       throws ServletException, IOException {
+
+    if (customRecipe.isEmpty() && LARGE_COUNTRY_RANGES.contains(countryCode)) {
+      req.setAttribute("numberError", "'+" + countryCode + "' migrations cannot be performed using this web" +
+              " application, please follow the documentation link above to use the command line tool instead.");
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
+      return;
+    }
+
     MigrationJob job;
     try {
       if (!customRecipe.isEmpty()) {
@@ -184,6 +202,14 @@ public class ServletMain extends HttpServlet {
       String customRecipe,
       String fileName)
       throws ServletException, IOException {
+
+    if (customRecipe.isEmpty() && LARGE_COUNTRY_RANGES.contains(countryCode)) {
+      req.setAttribute("fileError", "'+" + countryCode + "' migrations cannot be performed using this web" +
+              " application, please follow the documentation link above to use the command line tool instead.");
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
+      return;
+    }
+
     MigrationJob job;
     try {
       if (!customRecipe.isEmpty()) {
