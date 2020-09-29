@@ -1,6 +1,6 @@
 # Migrator Library
 
-The library takes in E.164 phone numbers with their corresponding BCP-47 country code. If inputted numbers match any of the supported internal renumbering ‘recipes’, which are created from official country documentation, said numbers will undergo a process of migration to convert them into the most up to date, dialable format. A given “recipe” is an internal record which holds data needed to migrate a stale number into one that is valid and dialable. 
+The library takes in E.164 phone numbers with their corresponding [BCP-47 country code](https://countrycode.org/). If inputted numbers match any of the supported internal renumbering ‘recipes’, which are created from official country documentation, said numbers will undergo a process of migration to convert them into the most up to date, dialable format. A given “recipe” is an internal record which holds data needed to migrate a stale number into one that is valid and dialable. 
 
 ## Capabilities
 
@@ -18,7 +18,7 @@ The migrator library can be used as either a [command line tool](#command-line-u
 
 ### Required Parameters
 
-```(-n, --number | -f, --file)``` - either the phone number input or file input for a given migration. The number argument must be a single E.164 phone number. This number can be in strict E.164 format (“+841200000000”) or contain hyphens, spaces and curved brackets (“84 (120) 5555-555”). The file argument must be a path to a text file containing one E.164 phone number per line. For file migrations, the original text file will not be overwritten or stored and instead a new text file will be created containing the migrated version of each phone number or the original phone number when a migration did not take place. Original phone numbers will also be written to file when a given migration on a number is seen as invalid, producing a number not dialable for the given country, unless the --exportInvalidMigrations flag is specified. Note: all phone numbers entered for migration will be sanitized by removing any whitespace, hyphens or curved brackets. If the number after this process is still not in E.164 format, a migration will not be able to be performed on it.
+```(-n, --number | -f, --file)``` - either the phone number input or file input for a given migration. The number argument must be a single E.164 phone number. This number can be in strict E.164 format (“+841200000000”) or contain hyphens, spaces and curved brackets (“84 (120) 5555-555”). The file argument must be a path to a text file containing one E.164 phone number per line. For file migrations, the original text file will not be overwritten or stored and instead a new text file will be created containing the migrated version of each phone number or the original phone number when a migration did not take place. Original phone numbers will also be written to file when a given migration on a number is seen as invalid, producing a number not dialable for the given country, unless the --exportInvalidMigrations (see [Optional Parameters](#optional-parameters)) flag is specified. Note: all phone numbers entered for migration will be sanitized by removing any whitespace, hyphens or curved brackets. If the number after this process is still not in E.164 format, a migration will not be able to be performed on it.
 
 ```-c, --countryCode``` - the BCP-47 country code that corresponds to the given phone number input. Only recipes from this country will be queried to find matching recipes for inputted numbers. (E.g. 44 for United Kingdom, 1 for US, 84 for Vietnam)
 
@@ -265,4 +265,3 @@ When using the ```--customRecipe``` argument, all numbers that match a given rec
 
 ## License
 See [LICENSE file](https://github.com/google/libphonenumber/blob/master/LICENSE) for Terms and Conditions.
-
