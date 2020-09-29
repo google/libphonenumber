@@ -3550,6 +3550,151 @@ function testParseExtensions() {
       phoneUtil.parse('+1 (645) 123 1234 ext. 910#', RegionCode.US)));
 }
 
+function testParseHandlesLongExtensionsWithExplicitLabels() {
+  // Test lower and upper limits of extension lengths for each type of label.
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var nzNumber = new i18n.phonenumbers.PhoneNumber();
+  nzNumber.setCountryCode(64);
+  nzNumber.setNationalNumber(33316005);
+
+  // Firstly, when in RFC format: PhoneNumberUtil.CAPTURING_LONG_EXTN_DIGITS_WHEN_CLEAR
+  nzNumber.setExtension('0');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('tel:+6433316005;ext=0', RegionCode.NZ)));
+  nzNumber.setExtension('01234567890123456789');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('tel:+6433316005;ext=01234567890123456789', RegionCode.NZ)));
+  // Extension too long.
+  try {
+      phoneUtil.parse('tel:+6433316005;ext=012345678901234567890', RegionCode.NZ);
+      fail(
+          'This should not parse as length of extension is higher than allowed: '
+          + 'tel:+6433316005;ext=012345678901234567890');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
+
+  // Explicit extension label: PhoneNumberUtil.CAPTURING_LONG_EXTN_DIGITS_WHEN_CLEAR
+  nzNumber.setExtension('1');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005ext:1', RegionCode.NZ)));
+  nzNumber.setExtension('12345678901234567890');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 xtn:12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 extension\t12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 xtensio:12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 xtensión, 12345678901234567890#', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005extension.12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 доб:12345678901234567890', RegionCode.NZ)));
+  // Extension too long.
+  try {
+    phoneUtil.parse('03 3316005 extension 123456789012345678901', RegionCode.NZ);
+    fail(
+        'This should not parse as length of extension is higher than allowed: '
+        + '03 3316005 extension 123456789012345678901');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.TOO_LONG, e.message);
+  }
+}
+
+function testParseHandlesLongExtensionsWithAutoDiallingLabels() {
+  // Lastly, cases of auto-dialling and other standard extension labels,
+  // PhoneNumberUtil.CAPTURING_DECENT_EXTN_DIGITS
+  var usNumberUserInput = new i18n.phonenumbers.PhoneNumber();
+  usNumberUserInput.setCountryCode(1);
+  usNumberUserInput.setNationalNumber(2679000000);
+  usNumberUserInput.setExtension('123456789012345');
+  assertTrue(usNumberUserInput.equals(
+      phoneUtil.parse('+12679000000,,123456789012345#', RegionCode.US)));
+  assertTrue(usNumberUserInput.equals(
+      phoneUtil.parse('+12679000000;123456789012345#', RegionCode.US)));
+  var ukNumberUserInput = new i18n.phonenumbers.PhoneNumber();
+  ukNumberUserInput.setCountryCode(44);
+  ukNumberUserInput.setNationalNumber(2034000000);
+  ukNumberUserInput.setExtension('123456789');
+  assertTrue(ukNumberUserInput.equals(
+      phoneUtil.parse('+442034000000,,123456789#', RegionCode.GB)));
+  // Extension too long.
+  try {
+    phoneUtil.parse('+12679000000,,1234567890123456#', RegionCode.US);
+    fail(
+        'This should not parse as length of extension is higher than allowed: '
+        + '+12679000000,,1234567890123456#');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
+}
+
+function testParseHandlesShortExtensionsWithAmbiguousChar() {
+  var nzNumber = new i18n.phonenumbers.PhoneNumber();
+  nzNumber.setCountryCode(64);
+  nzNumber.setNationalNumber(33316005);
+
+  // Secondly, for single and non-standard cases:
+  // PhoneNumberUtil.CAPTURING_EXTN_DIGITS_BIT_CONSERVATIVELY
+  nzNumber.setExtension("123456789");
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 x 123456789', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 x. 123456789', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 #123456789#', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 ~ 123456789', RegionCode.NZ)));
+  // Extension too long.
+  try {
+    phoneUtil.parse("03 3316005 ~ 1234567890", RegionCode.NZ);
+    fail(
+        "This should not parse as length of extension is higher than allowed: "
+        + "03 3316005 ~ 1234567890");
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.TOO_LONG, e.message);
+  }
+}
+
+function testParseHandlesShortExtensionsWhenNotSureOfLabel() {
+  // Thirdly, when no explicit extension label present, but denoted by tailing #:
+  // PhoneNumberUtil.CAPTURING_EXTN_DIGITS_MORE_CONSERVATIVELY
+  var usNumber = new i18n.phonenumbers.PhoneNumber();
+  usNumber.setCountryCode(1);
+  usNumber.setNationalNumber(1234567890);
+  usNumber.setExtension('666666');
+  assertTrue(usNumber.equals(
+      phoneUtil.parse('+1123-456-7890 666666#', RegionCode.US)));
+  usNumber.setExtension('6');
+  assertTrue(usNumber.equals(
+      phoneUtil.parse('+11234567890-6#', RegionCode.US)));
+  // Extension too long.
+  try {
+    phoneUtil.parse('+1123-456-7890 7777777#', RegionCode.US);
+    fail(
+        'This should not parse as length of extension is higher than allowed: '
+        + '+1123-456-7890 7777777#');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
+}
+
 function testParseAndKeepRaw() {
   var CCS = i18n.phonenumbers.PhoneNumber.CountryCodeSource;
   /** @type {!i18n.phonenumbers.PhoneNumber} */
@@ -4034,3 +4179,4 @@ function testIsAlphaNumber() {
   assertFalse(phoneUtil.isAlphaNumber('1800 123-1234 extension: 1234'));
   assertFalse(phoneUtil.isAlphaNumber('+800 1234-1234'));
 }
+
