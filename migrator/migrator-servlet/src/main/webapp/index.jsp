@@ -8,7 +8,8 @@
 <%
   final String E164_NUMBERS_LINK = "https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers";
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
-  final String DOCUMENTATION_LINK = "./"; // TODO: use README documentation link when uploaded
+  // TODO: use documentation link from base repository when forked repository has been merged in
+  final String DOCUMENTATION_LINK = "https://github.com/TomiwaOke/libphonenumber/tree/master/migrator/README.md";
   final String BUGANIZER_LINK = "https://b.corp.google.com/issues/new?component=192347&template=829703";
   final String GUIDELINES_LINK = "https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#filing-a-code-issue";
 
@@ -134,7 +135,7 @@
     </ul>
     <p>
       For more information on the capabilities of the migrator as well as instructions on how to install the command line
-      tool, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>. <%-- TODO: use README documentation link when uploaded --%>
+      tool, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>.
     </p>
   </div>
 
