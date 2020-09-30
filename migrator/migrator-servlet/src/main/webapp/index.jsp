@@ -10,7 +10,7 @@
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
   // TODO: use documentation link from base repository when forked repository has been merged in
   final String DOCUMENTATION_LINK = "https://github.com/TomiwaOke/libphonenumber/tree/master/migrator/README.md";
-  final String BUGANIZER_LINK = "https://b.corp.google.com/issues/new?component=192347&template=829703";
+  final String ISSUE_TRACKER_LINK = "https://issuetracker.google.com/issues/new?component=192347";
   final String GUIDELINES_LINK = "https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#filing-a-code-issue";
 
   final Gson gson = new Gson();
@@ -163,7 +163,7 @@
                   " to migrate it. This may be because you have entered a country code which does not correctly correspond" +
                   " to the given phone number or the specified number has never been valid.</p>");
         }
-        out.print("<p style='color: red; font-size: 14px'>Think there's an issue? File one <a href='" + BUGANIZER_LINK +
+        out.print("<p style='color: red; font-size: 14px'>Think there's an issue? File one <a href='" + ISSUE_TRACKER_LINK +
                 "' target='_blank'>here</a> following the given <a href='" + GUIDELINES_LINK + "' target='_blank'>guidelines</a>.</p>");
       } else if (request.getAttribute("fileError") == null && request.getAttribute("fileName") != null) {
         out.print("<h3>'" + request.getAttribute("fileName") + "' Migration Report for Country Code: +" + request.getAttribute("fileCountryCode") + "</h3>");
@@ -239,7 +239,7 @@
       <div class="body">
         <ul id="numbersList" style="padding-left: 1.5rem"></ul>
         <p style="color: red; font-size: 14px">
-          Think there's an issue? File one <a href="<%=BUGANIZER_LINK%>" target="_blank">here</a>
+          Think there's an issue? File one <a href="<%=ISSUE_TRACKER_LINK%>" target="_blank">here</a>
           following the given <a href="<%=GUIDELINES_LINK%>" target="_blank">guidelines</a>.
         </p>
       </div>

@@ -47,6 +47,7 @@ public class ServletMain extends HttpServlet {
    * Countries with large valid number ranges cannot be migrated using the web application due to request timeouts. The
    * command line tool must be used in such cases.
    */
+  // TODO: add loading spinner and longer request timeouts to UI to allow for migrations of given country codes
   public static final ImmutableSet<String> LARGE_COUNTRY_RANGES = ImmutableSet.of(
           "1", // US/Canada -- 9.8MB
           "86", // China -- 16.1MB
