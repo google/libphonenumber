@@ -8,7 +8,10 @@
 <%
   final String E164_NUMBERS_LINK = "https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers";
   final String COUNTRY_CODE_LINK = "https://countrycode.org/";
-  final String DOCUMENTATION_LINK = "./"; // TODO: use README documentation link when uploaded
+  // TODO: use documentation link from base repository when forked repository has been merged in
+  final String DOCUMENTATION_LINK = "https://github.com/TomiwaOke/libphonenumber/tree/master/migrator/README.md";
+  final String ISSUE_TRACKER_LINK = "https://issuetracker.google.com/issues/new?component=192347";
+  final String GUIDELINES_LINK = "https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#filing-a-code-issue";
 
   final Gson gson = new Gson();
   ImmutableList<MigrationResult> validMigrations = (ImmutableList<MigrationResult>) request.getAttribute("validMigrations");
@@ -132,7 +135,7 @@
     </ul>
     <p>
       For more information on the capabilities of the migrator as well as instructions on how to install the command line
-      tool, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>. <%-- TODO: use README documentation link when uploaded --%>
+      tool, please view the <a href="<%=DOCUMENTATION_LINK%>" target="_blank">documentation</a>.
     </p>
   </div>
 
@@ -148,7 +151,6 @@
           out.print("<p>The stale number '" + request.getAttribute("number") + "' was migrated into the phone number:" +
                   " +" + request.getAttribute("invalidMigration") + ". However this was not seen as valid using our internal" +
                   " metadata for country code +" + request.getAttribute("numberCountryCode") + ".</p>");
-          // TODO: add link for users to file bugs
         } else if (request.getAttribute("alreadyValidNumber") != null) {
           out.print("<h3 class='valid'>Already Valid +" + request.getAttribute("numberCountryCode") + " Phone Number!</h3>");
           out.print("<p>The entered phone number was already seen as being in a valid, dialable format based on our" +
@@ -160,8 +162,9 @@
                   " no migration recipe could be found for country code +" + request.getAttribute("numberCountryCode") +
                   " to migrate it. This may be because you have entered a country code which does not correctly correspond" +
                   " to the given phone number or the specified number has never been valid.</p>");
-          // TODO: add link for users to file bugs
         }
+        out.print("<p style='color: red; font-size: 14px'>Think there's an issue? File one <a href='" + ISSUE_TRACKER_LINK +
+                "' target='_blank'>here</a> following the given <a href='" + GUIDELINES_LINK + "' target='_blank'>guidelines</a>.</p>");
       } else if (request.getAttribute("fileError") == null && request.getAttribute("fileName") != null) {
         out.print("<h3>'" + request.getAttribute("fileName") + "' Migration Report for Country Code: +" + request.getAttribute("fileCountryCode") + "</h3>");
         out.print("<p>Below is a chart showing the ratio of numbers from the entered file that were able to be migrated" +
@@ -235,7 +238,10 @@
       <p id="modalDescription" style="color: grey; font-size: 12px"></p>
       <div class="body">
         <ul id="numbersList" style="padding-left: 1.5rem"></ul>
-        <%--TODO: add link for users to file bugs in cases of invalid migrations and invalid numbers--%>
+        <p style="color: red; font-size: 14px">
+          Think there's an issue? File one <a href="<%=ISSUE_TRACKER_LINK%>" target="_blank">here</a>
+          following the given <a href="<%=GUIDELINES_LINK%>" target="_blank">guidelines</a>.
+        </p>
       </div>
       <button id="modalButton" class="button">Close</button>
     </div>
