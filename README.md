@@ -64,9 +64,8 @@ releases and the demo may be at either version.
 ## JavaScript
 
 The [JavaScript
-demo](https://rawgit.com/google/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
-may be run at various tags; this link will take you to `master`. [JS demo link not working as RawGit is deprecated.]
-TODO to host in alternative platform.
+demo](https://htmlpreview.github.io/?https://github.com/google/libphonenumber/blob/master/javascript/i18n/phonenumbers/demo-compiled.html)
+may be run at various tags; this link will take you to `master`.
 
 # Java code
 
