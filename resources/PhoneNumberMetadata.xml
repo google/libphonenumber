@@ -6010,7 +6010,7 @@
     <!-- Cameroon (CM) -->
     <!-- http://www.itu.int/oth/T0202000024/en -->
     <!-- http://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-OB.1063-2014-OAS-PDF-E.pdf -->
-    <territory id="CM" countryCode="237" internationalPrefix="00">
+    <territory id="CM" countryCode="237" internationalPrefix="00" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>88</leadingDigits>
@@ -11834,24 +11834,27 @@
         <exampleNumber>21234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            384[0-5]|
+            2(?:
+              [13-9]\d|
+              2[013-9]
+            )\d|
+            3(?:
+              (?:
+                [1569][0-24-9]|
+                4[0-246-9]|
+                7[0-24-69]
+              )\d|
+              8(?:
+                4[0-6]|
+                5[0-5]|
+                9\d
+              )
+            )|
             58(?:
               0[1-8]|
               1[2-9]
             )
-          )\d{4}|
-          (?:
-            2(?:
-              [13-9]\d|
-              2[013-9]
-            )|
-            3(?:
-              [1569][0-24-9]|
-              4[0-246-9]|
-              7[0-24-69]|
-              89
-            )
-          )\d{5}
+          )\d{4}
         </nationalNumberPattern>
       </fixedLine>
       <!-- Prefixes assigned to 'CMMobile Global Communications Ltd' are on hold as per Ofcom
@@ -11864,16 +11867,24 @@
           (?:
             46(?:
               [01][0-6]|
-              4[0-57-9]
+              4[0-57-9]|
+              5[0-8]|
+              6[0-4]
             )|
             5730|
-            626[01]|
-            707[1-5]|
+            6(?:
+              26[013-7]|
+              66[0-3]
+            )|
+            70(?:
+              7[1-5]|
+              8[0-4]
+            )|
             848[015-9]|
             929[03-9]
           )\d{4}|
           (?:
-            462|
+            46[23]|
             5(?:
               [1-59][0-46-9]|
               6[0-4689]|
@@ -11885,6 +11896,7 @@
               [268][0-57-9]|
               7[0-79]
             )|
+            849|
             9(?:
               0[1-9]|
               1[02-9]|
@@ -12361,7 +12373,7 @@
     <!-- From 2001, very out of date. -->
     <!-- http://www.itu.int/oth/T0202000064/en -->
     <!-- http://en.wikipedia.org/wiki/%2B62 -->
-    <territory id="ID" countryCode="62" internationalPrefix="00[189]" nationalPrefix="0">
+    <territory id="ID" countryCode="62" internationalPrefix="00[89]" nationalPrefix="0">
       <availableFormats>
         <!-- Short UAN numbers -->
         <numberFormat pattern="(\d)(\d{3})(\d{3})">
@@ -12412,6 +12424,12 @@
           <leadingDigits>8</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
+        <!-- 12 digit toll free numbers. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})(\d{3})">
+          <leadingDigits>001</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <!-- Format for 13 digit ITFS numbers. -->
         <numberFormat pattern="(\d{2})(\d{4})(\d{3})(\d{4})">
           <leadingDigits>0</leadingDigits>
@@ -12423,11 +12441,12 @@
         <nationalNumberPattern>
           (?:
             (?:
-              007803|
-              8\d{4}
-            )\d|
+              00[1-9]|
+              8\d
+            )\d{4}|
             [1-36]
           )\d{6}|
+          00\d{10}|
           [1-9]\d{8,10}|
           [2-9]\d{7}
         </nationalNumberPattern>
@@ -12435,8 +12454,9 @@
       <!-- 00798 ITFS numbers can't be dialled internationally. Source:
            https://support.twilio.com/hc/en-us/articles/115007579027-Toll-free-phone-number-restrictions-and-limitations -->
       <noInternationalDialling>
-        <possibleLengths national="10,13"/>
+        <possibleLengths national="10,12,13"/>
         <nationalNumberPattern>
+          001803\d{6,7}|
           (?:
             007803\d|
             8071
@@ -12534,14 +12554,15 @@
         <nationalNumberPattern>8[1-35-9]\d{7,10}</nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="[8-11],13"/>
+        <possibleLengths national="[8-13]"/>
         <exampleNumber>8001234567</exampleNumber>
         <nationalNumberPattern>
-          007803\d{7}|
+          00[17]803\d{7}|
           (?:
             177\d|
             800
-          )\d{5,7}
+          )\d{5,7}|
+          001803\d{6}
         </nationalNumberPattern>
       </tollFree>
       <!-- The information below is provided by an Indonesian -->
@@ -17982,7 +18003,12 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>712345678</exampleNumber>
-        <nationalNumberPattern>7[0-25-8]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          7(?:
+            [0-25-8]\d|
+            4[01]
+          )\d{6}
+        </nationalNumberPattern>
       </mobile>
       <!-- Prefix 1973 is assigned to SriLankan Airlines in various locations. -->
       <uan>
@@ -22220,7 +22246,7 @@
           <format>$1-$2</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{4})">
-          <leadingDigits>6</leadingDigits>
+          <leadingDigits>[68]</leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
@@ -22230,10 +22256,8 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          (?:
-            6|
-            8\d\d
-          )\d{7}|
+          8\d{9}|
+          [68]\d{7}|
           [1-57-9]\d{6}
         </nationalNumberPattern>
       </generalDesc>
@@ -22343,11 +22367,13 @@
         </nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="7,10"/>
+        <possibleLengths national="7,8,10"/>
         <exampleNumber>8001234</exampleNumber>
         <nationalNumberPattern>
           800\d{4}(?:
-            \d{3}
+            \d(?:
+              \d{2}
+            )?
           )?
         </nationalNumberPattern>
       </tollFree>
@@ -23717,12 +23743,12 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          9\d{10}|
+          59\d{4,6}|
+          9\d{5,10}|
           (?:
-            [2-46-9]\d|
+            [2-46-8]\d|
             5[0-8]
-          )\d{7}|
-          [2-9]\d{5,7}
+          )\d{4,7}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -23788,9 +23814,9 @@
         </nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="11"/>
+        <possibleLengths national="[9-11]"/>
         <exampleNumber>98000123456</exampleNumber>
-        <nationalNumberPattern>9800\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>9800\d{5,7}</nationalNumberPattern>
       </tollFree>
       <voip>
         <possibleLengths national="9"/>
@@ -26520,7 +26546,7 @@
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>
-            [0457-9]|
+            [02457-9]|
             11
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -26529,7 +26555,7 @@
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            00|
+            [02]0|
             11|
             [3-57-9]\d
           )\d{7}
@@ -26565,7 +26591,7 @@
         <nationalNumberPattern>
           41[18]\d{6}|
           (?:
-            [04]0|
+            [024]0|
             11|
             5[05]|
             7[07]|
@@ -28165,7 +28191,7 @@
                internationalPrefix="810" nationalPrefix="8">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP $FG">
-          <leadingDigits>[5-9]</leadingDigits>
+          <leadingDigits>[35-9]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -28173,6 +28199,7 @@
         <nationalNumberPattern>
           55501\d{4}|
           (?:
+            33|
             [679]\d|
             88
           )\d{7}
@@ -28269,6 +28296,11 @@
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
           (?:
+            (?:
+              33|
+              88|
+              9[0-57-9]
+            )\d{3}|
             55501|
             6(?:
               1(?:
@@ -28517,11 +28549,7 @@
                   9[07]
                 )
               )
-            )|
-            (?:
-              88|
-              9[0-57-9]
-            )\d{3}
+            )
           )\d{4}
         </nationalNumberPattern>
       </mobile>
