@@ -743,22 +743,11 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
 i18n.phonenumbers.PhoneNumberUtil.DEFAULT_EXTN_PREFIX_ = ' ext. ';
 
 
-/**
- * Regexp of all known extension prefixes used by different regions followed by
- * 1 or more valid digits, for use when parsing.
- *
- * @const
- * @type {!RegExp}
- * @private
- */
-i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
-    new RegExp('(?:' +
-                i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_() +
-               ')$', 'i');
-
-
 /**  Helper method for constructing regular expressions for parsing. Creates
  *   an expression that captures up to max_length digits.
+ *
+ *   @return {string} constructued RegEx pattern to capture extension digits.
+ *   @private
  */
 i18n.phonenumbers.PhoneNumberUtil.extnDigits_ =
     function(maxLength) {
@@ -870,7 +859,21 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
      + onlyCommasExtn;
 
  return extensionPattern;
-};
+}();
+
+
+/**
+ * Regexp of all known extension prefixes used by different regions followed by
+ * 1 or more valid digits, for use when parsing.
+ *
+ * @const
+ * @type {!RegExp}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
+    new RegExp('(?:' +
+                i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ +
+               ')$', 'i');
 
 
 /**
@@ -887,7 +890,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_PATTERN_ =
         i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_PHONE_NUMBER_PATTERN_ +
         '$|' +
         '^' + i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ +
-        '(?:' + i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_() +
+        '(?:' + i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ +
         ')?' + '$', 'i');
 
 
@@ -4011,7 +4014,6 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeStripExtension =
   /** @type {string} */
   var numberStr = number.toString();
   /** @type {number} */
-  // console.log("EXTN_PATTERN_: "+EXTN_PATTERN_);
   var mStart =
       numberStr.search(i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_);
   // If we find a potential extension, and the number preceding this is a viable
@@ -4663,3 +4665,4 @@ i18n.phonenumbers.PhoneNumberUtil.matchesPrefix = function(regex, str) {
   }
   return false;
 };
+
