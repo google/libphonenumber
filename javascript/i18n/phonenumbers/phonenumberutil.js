@@ -764,7 +764,6 @@ i18n.phonenumbers.PhoneNumberUtil.extnDigits_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
     function() {
-
  // We cap the maximum length of an extension based on the ambiguity of the way
  // the extension is prefixed. As per ITU, the officially allowed length for
  // extensions is actually 40, but we don't support this since we haven't seen real
@@ -872,7 +871,7 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
     new RegExp('(?:' +
-                i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ +
+               i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ +
                ')$', 'i');
 
 
@@ -4665,4 +4664,3 @@ i18n.phonenumbers.PhoneNumberUtil.matchesPrefix = function(regex, str) {
   }
   return false;
 };
-
