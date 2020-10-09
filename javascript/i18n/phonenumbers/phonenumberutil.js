@@ -858,7 +858,7 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
      + onlyCommasExtn;
 
  return extensionPattern;
-}();
+};
 
 
 /**
@@ -871,7 +871,7 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERN_ =
     new RegExp('(?:' +
-               i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ +
+               i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_() +
                ')$', 'i');
 
 
@@ -889,7 +889,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_PATTERN_ =
         i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_PHONE_NUMBER_PATTERN_ +
         '$|' +
         '^' + i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ +
-        '(?:' + i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ +
+        '(?:' + i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_() +
         ')?' + '$', 'i');
 
 
