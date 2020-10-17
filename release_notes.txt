@@ -1,3 +1,10 @@
+Oct 07, 2020: v8.12.11
+Metadata changes:
+ - Updated phone metadata for region code(s): CM, HK, ID, LK, PA, PY, TJ, UZ
+ - Updated carrier data for country calling code(s):
+   94 (en), 852 (en, zh), 992 (en), 998 (en)
+ - Updated / refreshed time zone meta data.
+
 Sep 20, 2020: v8.12.10
 Metadata changes:
  - Updated phone metadata for region code(s):

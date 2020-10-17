@@ -32,8 +32,10 @@ If you don't checkout the dependencies next to libphonenumber:
 
 How to compile:
 ===============
-1. Build Closure's compiler.jar:
-  `mvn -DskipTests`
+1. Build the Closure Compiler JAR file by following the directions on the
+   [Closure Compiler README](https://github.com/google/closure-compiler/tree/master/README.md).
+   If this step doesn't work, try updating your local copy of each of the
+   repositories listed above before filing an issue.
 
 2. Compile the demo.js and all its dependencies to one file: `demo-compiled.js`:
   `ant -f javascript/build.xml compile-demo`
