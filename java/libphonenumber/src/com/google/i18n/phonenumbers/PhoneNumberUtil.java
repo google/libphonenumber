@@ -299,19 +299,15 @@ public class PhoneNumberUtil {
 
   // Default extension prefix to use when formatting. This will be put in front of any extension
   // component of the number, after the main national number is formatted. For example, if you wish
-  // the default extension formatting tDo be " extn: 3456", then you should specify " extn: " here
+  // the default extension formatting to be " extn: 3456", then you should specify " extn: " here
   // as the default extension prefix. This can be overridden by region-specific preferences.
   private static final String DEFAULT_EXTN_PREFIX = " ext. ";
 
   // Regexp of all possible ways to write extensions, for use when parsing. This will be run as a
   // case-insensitive regexp match. Wide character versions are also provided after each ASCII
   // version.
-  private static final String EXTN_PATTERNS_FOR_PARSING;
-  static final String EXTN_PATTERNS_FOR_MATCHING;
-  static {
-    EXTN_PATTERNS_FOR_PARSING = createExtnPattern(true);
-    EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(false);
-  }
+  private static final String EXTN_PATTERNS_FOR_PARSING = createExtnPattern(true);
+  static final String EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(false);
   
   /** 
    * Helper method for constructing regular expressions for parsing. Creates an expression that
@@ -390,10 +386,10 @@ public class PhoneNumberUtil {
       String onlyCommasExtn = possibleSeparatorsNumberExtLabelNoComma
         + "(?:,)+" + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar)
         + optionalExtnSuffix;
-      // Here the first pattern is exclusive for extension autodialling formats which are used
+      // Here the first pattern is exclusively for extension autodialling formats which are used
       // when dialling and in this case we accept longer extensions. However, the second pattern
-      // is more liberal on number of commas that acts as extension labels, so we have strict cap on
-      // number of digits in such extensions.
+      // is more liberal on the number of commas that acts as extension labels, so we have a strict
+      // cap on the number of digits in such extensions.
       return extensionPattern + "|"
           + autoDiallingExtn + "|"
           + onlyCommasExtn;

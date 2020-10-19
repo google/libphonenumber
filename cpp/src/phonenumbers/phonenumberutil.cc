@@ -2883,7 +2883,7 @@ bool PhoneNumberUtil::MaybeStripExtension(string* number,  std::string* extensio
   string possible_extension_five;
   string possible_extension_six;
   string number_copy(*number);
-  const std::unique_ptr<RegExpInput> number_copy_as_regexp_input(
+  const scoped_ptr<RegExpInput> number_copy_as_regexp_input(
       reg_exps_->regexp_factory_->CreateInput(number_copy));
   if (reg_exps_->extn_pattern_->Consume(
           number_copy_as_regexp_input.get(), false, &possible_extension_one,
