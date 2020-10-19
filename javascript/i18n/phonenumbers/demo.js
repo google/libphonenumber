@@ -20,6 +20,7 @@
  *
  * @author Nikolaos Trogkanis
  */
+goog.provide('i18n.phonenumbers.demo');
 
 goog.require('goog.dom');
 goog.require('goog.json');
