@@ -849,15 +849,12 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  // formats which are used when dialling and in this case we accept longer extensions.
  // The last one is more liberal on the number of commas that acts as extension labels,
  // so we have a strict cap on the number of digits in such extensions.
- /** @type {string} */
  return rfcExtn + "|"
           + explicitExtn + "|"
           + ambiguousExtn + "|"
           + americanStyleExtnWithSuffix + "|"
           + autoDiallingExtn + "|"
           + onlyCommasExtn;
-
- return extensionPattern;
 };
 
 
