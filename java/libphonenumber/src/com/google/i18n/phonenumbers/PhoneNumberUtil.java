@@ -2705,6 +2705,7 @@ public class PhoneNumberUtil {
   /**
    * Check whether a phone number is a possible number given a number in the form of a string, and
    * the region where the number could be dialed from. It provides a more lenient check than
+   * {@link #isValidNumber}. See {@link #isPossibleNumber(PhoneNumber)} for details.
    *
    * <p>This method first parses the number, then invokes {@link #isPossibleNumber(PhoneNumber)}
    * with the resultant PhoneNumber object.
