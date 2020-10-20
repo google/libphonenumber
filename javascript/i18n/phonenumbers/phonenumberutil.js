@@ -743,11 +743,12 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
 i18n.phonenumbers.PhoneNumberUtil.DEFAULT_EXTN_PREFIX_ = ' ext. ';
 
 
-/**  Helper method for constructing regular expressions for parsing. Creates
- *   an expression that captures up to max_length digits.
+/** 
+ * Helper method for constructing regular expressions for parsing. Creates
+ * an expression that captures up to max_length digits.
  *
- *   @return {string} constructued RegEx pattern to capture extension digits.
- *   @private
+ * @return {string} RegEx pattern to capture extension digits.
+ * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.extnDigits_ =
     function(maxLength) {
@@ -759,7 +760,7 @@ i18n.phonenumbers.PhoneNumberUtil.extnDigits_ =
  * Helper initialiser method to create the regular-expression pattern to match
  * extensions.
  *
- * @return {string} constructued RegEx pattern to capture extensions.
+ * @return {string} RegEx pattern to capture extensions.
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
