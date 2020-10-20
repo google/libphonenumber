@@ -46,75 +46,82 @@ function phoneNumberParser() {
     output.append('****Parsing Result:****\n');
     output.append(goog.json.serialize(new goog.proto2.ObjectSerializer(
         goog.proto2.ObjectSerializer.KeyOption.NAME).serialize(number)));
-    output.append('\n\n****Validation Results:****');
+    output.append('\n\n****Possibility Results:****');
     var isPossible = phoneUtil.isPossibleNumber(number);
     output.append('\nResult from isPossibleNumber(): ');
     output.append(isPossible);
-    if (!isPossible) {
-      output.append('\nResult from isPossibleNumberWithReason(): ');
-      var PNV = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
-      switch (phoneUtil.isPossibleNumberWithReason(number)) {
-        case PNV.INVALID_COUNTRY_CODE:
-          output.append('INVALID_COUNTRY_CODE');
-          break;
-        case PNV.TOO_SHORT:
-          output.append('TOO_SHORT');
-          break;
-        case PNV.TOO_LONG:
-          output.append('TOO_LONG');
-          break;
-      }
-      // IS_POSSIBLE shouldn't happen, since we only call this if _not_
-      // possible.
-      output.append('\nNote: numbers that are not possible have type ' +
-          'UNKNOWN, an unknown region, and are considered invalid.');
-    } else {
-      var isNumberValid = phoneUtil.isValidNumber(number);
-      output.append('\nResult from isValidNumber(): ');
-      output.append(isNumberValid);
-      if (isNumberValid && regionCode && regionCode != 'ZZ') {
-        output.append('\nResult from isValidNumberForRegion(): ');
-        output.append(phoneUtil.isValidNumberForRegion(number, regionCode));
-      }
-      output.append('\nPhone Number region: ');
-      output.append(phoneUtil.getRegionCodeForNumber(number));
-      output.append('\nResult from getNumberType(): ');
-      var PNT = i18n.phonenumbers.PhoneNumberType;
-      switch (phoneUtil.getNumberType(number)) {
-        case PNT.FIXED_LINE:
-          output.append('FIXED_LINE');
-          break;
-        case PNT.MOBILE:
-          output.append('MOBILE');
-          break;
-        case PNT.FIXED_LINE_OR_MOBILE:
-          output.append('FIXED_LINE_OR_MOBILE');
-          break;
-        case PNT.TOLL_FREE:
-          output.append('TOLL_FREE');
-          break;
-        case PNT.PREMIUM_RATE:
-          output.append('PREMIUM_RATE');
-          break;
-        case PNT.SHARED_COST:
-          output.append('SHARED_COST');
-          break;
-        case PNT.VOIP:
-          output.append('VOIP');
-          break;
-        case PNT.PERSONAL_NUMBER:
-          output.append('PERSONAL_NUMBER');
-          break;
-        case PNT.PAGER:
-          output.append('PAGER');
-          break;
-        case PNT.UAN:
-          output.append('UAN');
-          break;
-        case PNT.UNKNOWN:
-          output.append('UNKNOWN');
-          break;
-      }
+    output.append('\nResult from isPossibleNumberWithReason(): ');
+    var PNV = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+    switch (phoneUtil.isPossibleNumberWithReason(number)) {
+      case PNV.INVALID_COUNTRY_CODE:
+        output.append('INVALID_COUNTRY_CODE');
+        break;
+      case PNV.TOO_SHORT:
+        output.append('TOO_SHORT');
+        break;
+      case PNV.TOO_LONG:
+        output.append('TOO_LONG');
+        break;
+      case PNV.IS_POSSIBLE:
+        output.append('IS_POSSIBLE');
+        break;
+      case PNV.IS_POSSIBLE_LOCAL_ONLY:
+        output.append('IS_POSSIBLE_LOCAL_ONLY');
+        break;
+      case PNV.INVALID_LENGTH:
+        output.append('INVALID_LENGTH');
+        break;
+    }
+    output.append('\nNote: numbers that are not possible have type ' +
+        'UNKNOWN, an unknown region, and are considered invalid.');
+    output.append('\nAlso please check APIs docs for description ' +
+        'about responses.');
+    output.append('\n\n****Validation Results:****');
+    var isNumberValid = phoneUtil.isValidNumber(number);
+    output.append('\nResult from isValidNumber(): ');
+    output.append(isNumberValid);
+    if (isNumberValid && regionCode && regionCode != 'ZZ') {
+      output.append('\nResult from isValidNumberForRegion(): ');
+      output.append(phoneUtil.isValidNumberForRegion(number, regionCode));
+    }
+    output.append('\nPhone Number region: ');
+    output.append(phoneUtil.getRegionCodeForNumber(number));
+    output.append('\nResult from getNumberType(): ');
+    var PNT = i18n.phonenumbers.PhoneNumberType;
+    switch (phoneUtil.getNumberType(number)) {
+      case PNT.FIXED_LINE:
+        output.append('FIXED_LINE');
+        break;
+      case PNT.MOBILE:
+        output.append('MOBILE');
+        break;
+      case PNT.FIXED_LINE_OR_MOBILE:
+        output.append('FIXED_LINE_OR_MOBILE');
+        break;
+      case PNT.TOLL_FREE:
+        output.append('TOLL_FREE');
+        break;
+      case PNT.PREMIUM_RATE:
+        output.append('PREMIUM_RATE');
+        break;
+      case PNT.SHARED_COST:
+        output.append('SHARED_COST');
+        break;
+      case PNT.VOIP:
+        output.append('VOIP');
+        break;
+      case PNT.PERSONAL_NUMBER:
+        output.append('PERSONAL_NUMBER');
+        break;
+      case PNT.PAGER:
+        output.append('PAGER');
+        break;
+      case PNT.UAN:
+        output.append('UAN');
+        break;
+      case PNT.UNKNOWN:
+        output.append('UNKNOWN');
+        break;
     }
     var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
     output.append('\n\n****ShortNumberInfo Results:****');
