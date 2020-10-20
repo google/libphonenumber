@@ -274,7 +274,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
-      output.append("<TR><TD colspan=2>Possibility Checks</TD></TR>");
+      output.append("<TR><TD colspan=2>Possibility Results</TD></TR>");
       appendLine("Result from isPossibleNumber()", Boolean.toString(isPossible), output);
       appendLine("Result from isPossibleNumberWithReason()",
                  phoneUtil.isPossibleNumberWithReason(number).toString(), output);
