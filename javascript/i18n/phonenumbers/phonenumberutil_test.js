@@ -3559,7 +3559,7 @@ function testParseHandlesLongExtensionsWithExplicitLabels() {
   nzNumber.setCountryCode(64);
   nzNumber.setNationalNumber(33316005);
 
-  // Firstly, when in RFC format: PhoneNumberUtil.CAPTURING_LONG_EXTN_DIGITS_WHEN_CLEAR
+  // Firstly, when in RFC format: PhoneNumberUtil.extLimitAfterExplicitLabel
   nzNumber.setExtension('0');
   assertTrue(nzNumber.equals(
       phoneUtil.parse('tel:+6433316005;ext=0', RegionCode.NZ)));
@@ -3579,7 +3579,7 @@ function testParseHandlesLongExtensionsWithExplicitLabels() {
         i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
   }
 
-  // Explicit extension label: PhoneNumberUtil.CAPTURING_LONG_EXTN_DIGITS_WHEN_CLEAR
+  // Explicit extension label: PhoneNumberUtil.extLimitAfterExplicitLabel
   nzNumber.setExtension('1');
   assertTrue(nzNumber.equals(
       phoneUtil.parse('03 3316005ext:1', RegionCode.NZ)));
@@ -3612,7 +3612,7 @@ function testParseHandlesLongExtensionsWithExplicitLabels() {
 
 function testParseHandlesLongExtensionsWithAutoDiallingLabels() {
   // Lastly, cases of auto-dialling and other standard extension labels,
-  // PhoneNumberUtil.CAPTURING_DECENT_EXTN_DIGITS
+  // PhoneNumberUtil.extLimitAfterLikelyLabel
   var usNumberUserInput = new i18n.phonenumbers.PhoneNumber();
   usNumberUserInput.setCountryCode(1);
   usNumberUserInput.setNationalNumber(2679000000);
@@ -3647,7 +3647,7 @@ function testParseHandlesShortExtensionsWithAmbiguousChar() {
   nzNumber.setNationalNumber(33316005);
 
   // Secondly, for single and non-standard cases:
-  // PhoneNumberUtil.CAPTURING_EXTN_DIGITS_BIT_CONSERVATIVELY
+  // PhoneNumberUtil.extLimitAfterAmbiguousChar
   nzNumber.setExtension("123456789");
   assertTrue(nzNumber.equals(
       phoneUtil.parse('03 3316005 x 123456789', RegionCode.NZ)));
@@ -3673,7 +3673,7 @@ function testParseHandlesShortExtensionsWithAmbiguousChar() {
 
 function testParseHandlesShortExtensionsWhenNotSureOfLabel() {
   // Thirdly, when no explicit extension label present, but denoted by tailing #:
-  // PhoneNumberUtil.CAPTURING_EXTN_DIGITS_MORE_CONSERVATIVELY
+  // PhoneNumberUtil.extLimitWhenNotSure
   var usNumber = new i18n.phonenumbers.PhoneNumber();
   usNumber.setCountryCode(1);
   usNumber.setNationalNumber(1234567890);

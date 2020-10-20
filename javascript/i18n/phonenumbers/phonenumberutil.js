@@ -783,6 +783,9 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  // Optional full stop (.) or colon, followed by zero or more spaces/tabs/commas.
  /** @type {string} */
  var possibleCharsAfterExtLabel = "[:\\.\uFF0E]?[ \u00A0\\t,-]*";
+ /** @type {string} */
+ var optionalExtnSuffix = "#?";
+
  // Here the extension is called out in more explicit way, i.e mentioning it obvious
  // patterns like "ext.".
  /** @type {string} */
@@ -795,14 +798,16 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  // When extension is not separated clearly.
  /** @type {string} */
  var ambiguousSeparator = "[- ]+";
+ // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching
+ // comma as extension label may have it.
+ /** @type {string} */
+ var possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
  // ",," is commonly used for auto dialling the extension when connected. First
  // comma is matched through possibleSeparatorsBetweenNumberAndExtLabel, so we do
  // not repeat it here. Semi-colon works in Iphone and Android also to pop up a
  // button with the extension number following.
  /** @type {string} */
  var autoDiallingAndExtLabelsFound = "(?:,{2}|;)";
- /** @type {string} */
- var optionalExtnSuffix = "#?";
 
  /** @type {string} */
  var rfcExtn = i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_
@@ -820,10 +825,6 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  /** @type {string} */
  var americanStyleExtnWithSuffix = ambiguousSeparator
 	+ i18n.phonenumbers.PhoneNumberUtil.extnDigits_(extLimitWhenNotSure) + "#";
- // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching
- // comma as extension label may have it.
- /** @type {string} */
- var possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
 
  /** @type {string} */
  var autoDiallingExtn = possibleSeparatorsNumberExtLabelNoComma
@@ -836,28 +837,24 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
        + i18n.phonenumbers.PhoneNumberUtil.extnDigits_(extLimitAfterAmbiguousChar)
        + optionalExtnSuffix;
 
- // The first covers RFC 3966 format, where the extension is added using ";ext=".
- // The second more generic where extension is mentioned with explicit labels like
- // "ext:". In both the above cases we allow more numbers in extension than any
- // other extension labels. The third one captures when single character extension
+ // The first regular expression covers RFC 3966 format, where the extension is added
+ // using ";ext=". The second more generic where extension is mentioned with explicit
+ // labels like "ext:". In both the above cases we allow more numbers in extension than
+ // any other extension labels. The third one captures when single character extension
  // labels or less commonly used labels are used. In such cases we capture fewer
  // extension digits in order to reduce the chance of falsely interpreting two
  // numbers beside each other as a number + extension. The fourth one covers the
  // special case of American numbers where the extension is written with a hash
- // at the end, such as "- 503#". The fifth one exclusive for extension autodialling
+ // at the end, such as "- 503#". The fifth one exclusively for extension autodialling
  // formats which are used when dialling and in this case we accept longer extensions.
- // The last one is more liberal on number of commas that acts as extension labels,
- // so we have strict cap on number of digits in such extensions.
- /** @type {string} */
- var extensionPattern =
-     rfcExtn + "|"
-     + explicitExtn + "|"
-     + ambiguousExtn + "|"
-     + americanStyleExtnWithSuffix + "|"
-     + autoDiallingExtn + "|"
-     + onlyCommasExtn;
-
- return extensionPattern;
+ // The last one is more liberal on the number of commas that acts as extension labels,
+ // so we have a strict cap on the number of digits in such extensions.
+ return rfcExtn + "|"
+          + explicitExtn + "|"
+          + ambiguousExtn + "|"
+          + americanStyleExtnWithSuffix + "|"
+          + autoDiallingExtn + "|"
+          + onlyCommasExtn;
 };
 
 
