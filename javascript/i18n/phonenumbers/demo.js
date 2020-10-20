@@ -50,31 +50,32 @@ function phoneNumberParser() {
     var isPossible = phoneUtil.isPossibleNumber(number);
     output.append('\nResult from isPossibleNumber(): ');
     output.append(isPossible);
-    var PNV = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
+    var validationResult = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
     var isPossibleReason = phoneUtil.isPossibleNumberWithReason(number)
     if (!isPossible) {
       output.append('\nResult from isPossibleNumberWithReason(): ');
       switch (isPossibleReason) {
-        case PNV.INVALID_COUNTRY_CODE:
+        case validationResult.INVALID_COUNTRY_CODE:
           output.append('INVALID_COUNTRY_CODE');
           break;
-        case PNV.TOO_SHORT:
+        case validationResult.TOO_SHORT:
           output.append('TOO_SHORT');
           break;
-        case PNV.TOO_LONG:
+        case validationResult.TOO_LONG:
           output.append('TOO_LONG');
           break;
-        case PNV.INVALID_LENGTH:
+        case validationResult.INVALID_LENGTH:
           output.append('INVALID_LENGTH');
           break;
       }
       // IS_POSSIBLE shouldn't happen, since we only call this if _not_
       // possible.
-      output.append('\nNote: numbers that are not possible have type ' +
-          'UNKNOWN, an unknown region, and are considered invalid.');
+      output.append('\nNote: Numbers that are not possible or possible ' +
+           'local only have type UNKNOWN, an unknown region, and are ' +
+           'considered invalid.');
     } else {
       // Checking as isValid() fails if possible local only.
-      if (isPossibleReason == PNV.IS_POSSIBLE_LOCAL_ONLY) {
+      if (isPossibleReason == validationResult.IS_POSSIBLE_LOCAL_ONLY) {
         output.append('\nResult from isPossibleNumberWithReason(): ');
         output.append('IS_POSSIBLE_LOCAL_ONLY');
         output.append('\nNumber is considered as invalid as it is ' +
@@ -90,39 +91,39 @@ function phoneNumberParser() {
         output.append('\nPhone Number region: ');
         output.append(phoneUtil.getRegionCodeForNumber(number));
         output.append('\nResult from getNumberType(): ');
-        var PNT = i18n.phonenumbers.PhoneNumberType;
+        var phoneNumberType = i18n.phonenumbers.PhoneNumberType;
         switch (phoneUtil.getNumberType(number)) {
-          case PNT.FIXED_LINE:
+          case phoneNumberType.FIXED_LINE:
             output.append('FIXED_LINE');
             break;
-          case PNT.MOBILE:
+          case phoneNumberType.MOBILE:
             output.append('MOBILE');
             break;
-          case PNT.FIXED_LINE_OR_MOBILE:
+          case phoneNumberType.FIXED_LINE_OR_MOBILE:
             output.append('FIXED_LINE_OR_MOBILE');
             break;
-          case PNT.TOLL_FREE:
+          case phoneNumberType.TOLL_FREE:
             output.append('TOLL_FREE');
             break;
-          case PNT.PREMIUM_RATE:
+          case phoneNumberType.PREMIUM_RATE:
             output.append('PREMIUM_RATE');
             break;
-          case PNT.SHARED_COST:
+          case phoneNumberType.SHARED_COST:
             output.append('SHARED_COST');
             break;
-          case PNT.VOIP:
+          case phoneNumberType.VOIP:
             output.append('VOIP');
             break;
-          case PNT.PERSONAL_NUMBER:
+          case phoneNumberType.PERSONAL_NUMBER:
             output.append('PERSONAL_NUMBER');
             break;
-          case PNT.PAGER:
+          case phoneNumberType.PAGER:
             output.append('PAGER');
             break;
-          case PNT.UAN:
+          case phoneNumberType.UAN:
             output.append('UAN');
             break;
-          case PNT.UNKNOWN:
+          case phoneNumberType.UNKNOWN:
             output.append('UNKNOWN');
             break;
         }
