@@ -743,7 +743,7 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
 i18n.phonenumbers.PhoneNumberUtil.DEFAULT_EXTN_PREFIX_ = ' ext. ';
 
 
-/** 
+/**
  * Helper method for constructing regular expressions for parsing. Creates
  * an expression that captures up to max_length digits.
  *
