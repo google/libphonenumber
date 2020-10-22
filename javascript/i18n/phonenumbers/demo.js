@@ -34,6 +34,19 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 goog.require('i18n.phonenumbers.ShortNumberInfo');
 
 
+/**
+ * @const
+ * @private
+ */
+var phoneNumberType = i18n.phonenumbers.PhoneNumberType;
+
+/**
+ * @const
+ * @type {!i18n.phonenumbers.PhoneNumberUtil}
+ * @private
+ */
+var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+
 function phoneNumberParser() {
   var $ = goog.dom.getElement;
   var phoneNumber = $('phoneNumber').value;
@@ -41,7 +54,6 @@ function phoneNumberParser() {
   var carrierCode = $('carrierCode').value;
   var output = new goog.string.StringBuffer();
   try {
-    var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
     var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
     output.append('****Parsing Result:****\n');
     output.append(goog.json.serialize(new goog.proto2.ObjectSerializer(
@@ -52,7 +64,29 @@ function phoneNumberParser() {
     output.append(isPossible);
     var validationResult = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
     var isPossibleReason = phoneUtil.isPossibleNumberWithReason(number)
-    if (!isPossible) {
+    if (isPossible) {
+      // Checking as isValid() fails if possible local only.
+      if (isPossibleReason == validationResult.IS_POSSIBLE_LOCAL_ONLY) {
+        output.append('\nResult from isPossibleNumberWithReason(): ');
+        output.append('IS_POSSIBLE_LOCAL_ONLY');
+        output.append(
+            '\nNumber is considered invalid as it is ' +
+            'not a possible national number.');
+      } else {
+        var isNumberValid = phoneUtil.isValidNumber(number);
+        output.append('\nResult from isValidNumber(): ');
+        output.append(isNumberValid);
+        if (isNumberValid && regionCode && regionCode != 'ZZ') {
+          output.append('\nResult from isValidNumberForRegion(): ');
+          output.append(phoneUtil.isValidNumberForRegion(number, regionCode));
+        }
+        output.append('\nPhone Number region: ');
+        output.append(phoneUtil.getRegionCodeForNumber(number));
+        output.append('\nResult from getNumberType(): ');
+        output.append(getNumberTypeString(number));
+      }
+    }
+    else {
       output.append('\nResult from isPossibleNumberWithReason(): ');
       switch (isPossibleReason) {
         case validationResult.INVALID_COUNTRY_CODE:
@@ -70,64 +104,10 @@ function phoneNumberParser() {
       }
       // IS_POSSIBLE shouldn't happen, since we only call this if _not_
       // possible.
-      output.append('\nNote: Numbers that are not possible or possible ' +
-           'local only have type UNKNOWN, an unknown region, and are ' +
-           'considered invalid.');
-    } else {
-      // Checking as isValid() fails if possible local only.
-      if (isPossibleReason == validationResult.IS_POSSIBLE_LOCAL_ONLY) {
-        output.append('\nResult from isPossibleNumberWithReason(): ');
-        output.append('IS_POSSIBLE_LOCAL_ONLY');
-        output.append('\nNumber is considered as invalid as it is ' +
-          'not a possible national number.');
-      } else {
-        var isNumberValid = phoneUtil.isValidNumber(number);
-        output.append('\nResult from isValidNumber(): ');
-        output.append(isNumberValid);
-        if (isNumberValid && regionCode && regionCode != 'ZZ') {
-        output.append('\nResult from isValidNumberForRegion(): ');
-        output.append(phoneUtil.isValidNumberForRegion(number, regionCode));
-        }
-        output.append('\nPhone Number region: ');
-        output.append(phoneUtil.getRegionCodeForNumber(number));
-        output.append('\nResult from getNumberType(): ');
-        var phoneNumberType = i18n.phonenumbers.PhoneNumberType;
-        switch (phoneUtil.getNumberType(number)) {
-          case phoneNumberType.FIXED_LINE:
-            output.append('FIXED_LINE');
-            break;
-          case phoneNumberType.MOBILE:
-            output.append('MOBILE');
-            break;
-          case phoneNumberType.FIXED_LINE_OR_MOBILE:
-            output.append('FIXED_LINE_OR_MOBILE');
-            break;
-          case phoneNumberType.TOLL_FREE:
-            output.append('TOLL_FREE');
-            break;
-          case phoneNumberType.PREMIUM_RATE:
-            output.append('PREMIUM_RATE');
-            break;
-          case phoneNumberType.SHARED_COST:
-            output.append('SHARED_COST');
-            break;
-          case phoneNumberType.VOIP:
-            output.append('VOIP');
-            break;
-          case phoneNumberType.PERSONAL_NUMBER:
-            output.append('PERSONAL_NUMBER');
-            break;
-          case phoneNumberType.PAGER:
-            output.append('PAGER');
-            break;
-          case phoneNumberType.UAN:
-            output.append('UAN');
-            break;
-          case phoneNumberType.UNKNOWN:
-            output.append('UNKNOWN');
-            break;
-        }
-      }
+      output.append(
+          '\nNote: Numbers that are not possible or possible ' +
+          'local only have type UNKNOWN, an unknown region, and are ' +
+          'considered invalid.');
     }
     var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
     output.append('\n\n****ShortNumberInfo Results:****');
@@ -184,4 +164,31 @@ function phoneNumberParser() {
   return false;
 }
 
+function getNumberTypeString(number) {
+  switch (phoneUtil.getNumberType(number)) {
+    case phoneNumberType.FIXED_LINE:
+      return 'FIXED_LINE';
+    case phoneNumberType.MOBILE:
+      return 'MOBILE'
+      case phoneNumberType.FIXED_LINE_OR_MOBILE: return 'FIXED_LINE_OR_MOBILE';
+    case phoneNumberType.TOLL_FREE:
+      return 'TOLL_FREE';
+    case phoneNumberType.PREMIUM_RATE:
+      return 'PREMIUM_RATE';
+    case phoneNumberType.SHARED_COST:
+      return 'SHARED_COST';
+    case phoneNumberType.VOIP:
+      return 'VOIP';
+    case phoneNumberType.PERSONAL_NUMBER:
+      return 'PERSONAL_NUMBER';
+    case phoneNumberType.PAGER:
+      return 'PAGER';
+    case phoneNumberType.UAN:
+      return 'UAN';
+    case phoneNumberType.UNKNOWN:
+      return 'UNKNOWN';
+  }
+}
+
 goog.exportSymbol('phoneNumberParser', phoneNumberParser);
+
