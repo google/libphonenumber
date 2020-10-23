@@ -118,6 +118,15 @@ const char kDefaultExtnPrefix[] = " ext. ";
 const char kSingleExtnSymbolsForMatching[] =
     "x\xEF\xBD\x98#\xEF\xBC\x83~\xEF\xBD\x9E";
 
+const char kPossibleSeparatorsBetweenNumberAndExtLabel[] =
+    "[ \xC2\xA0\\t,]*";
+
+// Optional full stop (.) or colon, followed by zero or more
+// spaces/tabs/commas.
+const char kPossibleCharsAfterExtLabel[] =
+    "[:\\.\xEF\xBC\x8E]?[ \xC2\xA0\\t,-]*";
+const char kOptionalExtSuffix[] = "#?";
+
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
     LOG(ERROR) << "Could not parse binary data.";
@@ -202,35 +211,109 @@ char32 ToUnicodeCodepoint(const char* unicode_char) {
   return codepoint;
 }
 
+// Helper method for constructing regular expressions for parsing. Creates an
+// expression that captures up to max_length digits.
+std::string ExtnDigits(int max_length) {
+  return StrCat("([", kDigits, "]{1,", max_length, "})");
+}
+
 // Helper initialiser method to create the regular-expression pattern to match
-// extensions, allowing the one-codepoint extension symbols provided by
-// single_extn_symbols.
-// Note that there are currently three capturing groups for the extension itself
-// - if this number is changed, MaybeStripExtension needs to be updated.
-string CreateExtnPattern(const string& single_extn_symbols) {
-  static const string capturing_extn_digits = StrCat("([", kDigits, "]{1,7})");
-  // The first regular expression covers RFC 3966 format, where the extension is
-  // added using ";ext=". The second more generic one starts with optional white
-  // space and ends with an optional full stop (.), followed by zero or more
-  // spaces/tabs/commas and then the numbers themselves. The third one covers
-  // the special case of American numbers where the extension is written with a
-  // hash at the end, such as "- 503#".
-  // Note that the only capturing groups should be around the digits that you
-  // want to capture as part of the extension, or else parsing will fail!
+// extensions. Note that:
+// - There are currently six capturing groups for the extension itself. If this
+// number is changed, MaybeStripExtension needs to be updated.
+// - The only capturing groups should be around the digits that you want to
+// capture as part of the extension, or else parsing will fail!
+std::string CreateExtnPattern(bool for_parsing) {
+  // We cap the maximum length of an extension based on the ambiguity of the
+  // way the extension is prefixed. As per ITU, the officially allowed
+  // length for extensions is actually 40, but we don't support this since we
+  // haven't seen real examples and this introduces many false interpretations
+  // as the extension labels are not standardized.
+  int ext_limit_after_explicit_label = 20;
+  int ext_limit_after_likely_label = 15;
+  int ext_limit_after_ambiguous_char = 9;
+  int ext_limit_when_not_sure = 6;
+
   // Canonical-equivalence doesn't seem to be an option with RE2, so we allow
-  // two options for representing the ó - the character itself, and one in the
-  // unicode decomposed form with the combining acute accent.
-  return (StrCat(
-      kRfc3966ExtnPrefix, capturing_extn_digits, "|"
-       /* "[  \\t,]*(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|single_extn_symbols|"
-          "int|ｉｎｔ|anexo)"
-          "[:\\.．]?[  \\t,-]*", capturing_extn_digits, "#?|" */
-      "[ \xC2\xA0\\t,]*(?:e?xt(?:ensi(?:o\xCC\x81?|\xC3\xB3))?n?|"
-      "(?:\xEF\xBD\x85)?\xEF\xBD\x98\xEF\xBD\x94(?:\xEF\xBD\x8E)?|"
-      "\xD0\xB4\xD0\xBE\xD0\xB1|[", single_extn_symbols, "]|int|"
-      "\xEF\xBD\x89\xEF\xBD\x8E\xEF\xBD\x94|anexo)"
-      "[:\\.\xEF\xBC\x8E]?[ \xC2\xA0\\t,-]*", capturing_extn_digits,
-      "#?|[- ]+([", kDigits, "]{1,5})#"));
+  // two options for representing any non-ASCII character like ó - the character
+  // itself, and one in the unicode decomposed form with the combining acute
+  // accent.
+
+  // Here the extension is called out in a more explicit way, i.e mentioning it
+  // obvious patterns like "ext.".
+  string explicit_ext_labels =
+      "(?:e?xt(?:ensi(?:o\xCC\x81?|\xC3\xB3))?n?|(?:\xEF\xBD\x85)?"
+      "\xEF\xBD\x98\xEF\xBD\x94(?:\xEF\xBD\x8E)?|\xD0\xB4\xD0\xBE\xD0\xB1|"
+      "anexo)";
+  // One-character symbols that can be used to indicate an extension, and less
+  // commonly used or more ambiguous extension labels.
+  string ambiguous_ext_labels =
+      "(?:[x\xEF\xBD\x98#\xEF\xBC\x83~\xEF\xBD\x9E]|int|"
+      "\xEF\xBD\x89\xEF\xBD\x8E\xEF\xBD\x94)";
+  // When extension is not separated clearly.
+  string ambiguous_separator = "[- ]+";
+
+  string rfc_extn = StrCat(kRfc3966ExtnPrefix,
+                           ExtnDigits(ext_limit_after_explicit_label));
+  string explicit_extn = StrCat(
+      kPossibleSeparatorsBetweenNumberAndExtLabel,
+      explicit_ext_labels, kPossibleCharsAfterExtLabel,
+      ExtnDigits(ext_limit_after_explicit_label),
+      kOptionalExtSuffix);
+  string ambiguous_extn = StrCat(
+      kPossibleSeparatorsBetweenNumberAndExtLabel,
+      ambiguous_ext_labels, kPossibleCharsAfterExtLabel,
+      ExtnDigits(ext_limit_after_ambiguous_char),
+      kOptionalExtSuffix);
+  string american_style_extn_with_suffix = StrCat(
+      ambiguous_separator, ExtnDigits(ext_limit_when_not_sure), "#");
+
+  // The first regular expression covers RFC 3966 format, where the extension is
+  // added using ";ext=". The second more generic where extension is mentioned
+  // with explicit labels like "ext:". In both the above cases we allow more
+  // numbers in extension than any other extension labels. The third one
+  // captures when single character extension labels or less commonly used
+  // labels are present. In such cases we capture fewer extension digits in
+  // order to reduce the chance of falsely interpreting two numbers beside each
+  // other as a number + extension. The fourth one covers the special case of
+  // American numbers where the extension is written with a hash at the end,
+  // such as "- 503#".
+  string extension_pattern = StrCat(
+      rfc_extn, "|",
+      explicit_extn, "|",
+      ambiguous_extn, "|",
+      american_style_extn_with_suffix);
+  // Additional pattern that is supported when parsing extensions, not when
+  // matching.
+  if (for_parsing) {
+    // ",," is commonly used for auto dialling the extension when connected.
+    // Semi-colon works in Iphone and also in Android to pop up a button with
+    // the extension number following.
+    string auto_dialling_and_ext_labels_found = "(?:,{2}|;)";
+    // This is same as kPossibleSeparatorsBetweenNumberAndExtLabel, but not
+    // matching comma as extension label may have it.
+    string possible_separators_number_extLabel_no_comma = "[ \xC2\xA0\\t]*";
+
+    string auto_dialling_extn = StrCat(
+      possible_separators_number_extLabel_no_comma,
+      auto_dialling_and_ext_labels_found, kPossibleCharsAfterExtLabel,
+      ExtnDigits(ext_limit_after_likely_label),
+      kOptionalExtSuffix);
+    string only_commas_extn = StrCat(
+      possible_separators_number_extLabel_no_comma,
+      "(?:,)+", kPossibleCharsAfterExtLabel,
+      ExtnDigits(ext_limit_after_ambiguous_char),
+      kOptionalExtSuffix);
+    // Here the first pattern is exclusive for extension autodialling formats
+    // which are used when dialling and in this case we accept longer
+    // extensions. However, the second pattern is more liberal on number of
+    // commas that acts as extension labels, so we have strict cap on number of
+    // digits in such extensions.
+    return StrCat(extension_pattern, "|",
+                  auto_dialling_extn, "|",
+                  only_commas_extn);
+  }
+  return extension_pattern;
 }
 
 // Normalizes a string of characters representing a phone number by replacing
@@ -683,8 +766,7 @@ class PhoneNumberRegExpsAndMappings {
                    PhoneNumberUtil::kValidPunctuation, kStarSign, "]*",
                    kDigits, "){3,}[", PhoneNumberUtil::kValidPunctuation,
                    kStarSign, kValidAlpha, kDigits, "]*")),
-        extn_patterns_for_parsing_(
-            CreateExtnPattern(StrCat(",;", kSingleExtnSymbolsForMatching))),
+        extn_patterns_for_parsing_(CreateExtnPattern(/* for_parsing= */ true)),
         regexp_factory_(new RegExpFactory()),
         regexp_cache_(new RegExpCache(*regexp_factory_.get(), 128)),
         diallable_char_mappings_(),
@@ -710,11 +792,10 @@ class PhoneNumberRegExpsAndMappings {
                 PhoneNumberUtil::kCaptureUpToSecondNumberStart)),
         unwanted_end_char_pattern_(
             regexp_factory_->CreateRegExp("[^\\p{N}\\p{L}#]")),
-        separator_pattern_(
-            regexp_factory_->CreateRegExp(
-                StrCat("[", PhoneNumberUtil::kValidPunctuation, "]+"))),
+        separator_pattern_(regexp_factory_->CreateRegExp(
+            StrCat("[", PhoneNumberUtil::kValidPunctuation, "]+"))),
         extn_patterns_for_matching_(
-            CreateExtnPattern(kSingleExtnSymbolsForMatching)),
+        CreateExtnPattern(/* for_parsing= */ false)),
         extn_pattern_(regexp_factory_->CreateRegExp(
             StrCat("(?i)(?:", extn_patterns_for_parsing_, ")$"))),
         valid_phone_number_pattern_(regexp_factory_->CreateRegExp(
@@ -730,9 +811,8 @@ class PhoneNumberRegExpsAndMappings {
         first_group_capturing_pattern_(
             regexp_factory_->CreateRegExp("(\\$\\d)")),
         carrier_code_pattern_(regexp_factory_->CreateRegExp("\\$CC")),
-        plus_chars_pattern_(
-            regexp_factory_->CreateRegExp(
-                StrCat("[", PhoneNumberUtil::kPlusChars, "]+"))) {
+        plus_chars_pattern_(regexp_factory_->CreateRegExp(
+            StrCat("[", PhoneNumberUtil::kPlusChars, "]+"))) {
     InitializeMapsAndSets();
   }
 
@@ -2791,28 +2871,33 @@ bool PhoneNumberUtil::MaybeStripNationalPrefixAndCarrierCode(
 // Strips any extension (as in, the part of the number dialled after the call is
 // connected, usually indicated with extn, ext, x or similar) from the end of
 // the number, and returns it. The number passed in should be non-normalized.
-bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension)
+bool PhoneNumberUtil::MaybeStripExtension(string* number,  std::string* extension)
     const {
   DCHECK(number);
   DCHECK(extension);
-  // There are three extension capturing groups in the regular expression.
+  // There are six extension capturing groups in the regular expression.
   string possible_extension_one;
   string possible_extension_two;
   string possible_extension_three;
+  string possible_extension_four;
+  string possible_extension_five;
+  string possible_extension_six;
   string number_copy(*number);
   const scoped_ptr<RegExpInput> number_copy_as_regexp_input(
       reg_exps_->regexp_factory_->CreateInput(number_copy));
-  if (reg_exps_->extn_pattern_->Consume(number_copy_as_regexp_input.get(),
-                            false,
-                            &possible_extension_one,
-                            &possible_extension_two,
-                            &possible_extension_three)) {
+  if (reg_exps_->extn_pattern_->Consume(
+          number_copy_as_regexp_input.get(), false, &possible_extension_one,
+          &possible_extension_two, &possible_extension_three,
+          &possible_extension_four, &possible_extension_five,
+          &possible_extension_six)) {
     // Replace the extensions in the original string here.
     reg_exps_->extn_pattern_->Replace(&number_copy, "");
     // If we find a potential extension, and the number preceding this is a
     // viable number, we assume it is an extension.
     if ((!possible_extension_one.empty() || !possible_extension_two.empty() ||
-         !possible_extension_three.empty()) &&
+         !possible_extension_three.empty() ||
+         !possible_extension_four.empty() || !possible_extension_five.empty() ||
+         !possible_extension_six.empty()) &&
         IsViablePhoneNumber(number_copy)) {
       number->assign(number_copy);
       if (!possible_extension_one.empty()) {
@@ -2821,6 +2906,12 @@ bool PhoneNumberUtil::MaybeStripExtension(string* number, string* extension)
         extension->assign(possible_extension_two);
       } else if (!possible_extension_three.empty()) {
         extension->assign(possible_extension_three);
+      } else if (!possible_extension_four.empty()) {
+        extension->assign(possible_extension_four);
+      } else if (!possible_extension_five.empty()) {
+        extension->assign(possible_extension_five);
+      } else if (!possible_extension_six.empty()) {
+        extension->assign(possible_extension_six);
       }
       return true;
     }

@@ -120,7 +120,10 @@ class IcuRegExp : public RegExp {
                        bool anchor_at_start,
                        string* matched_string1,
                        string* matched_string2,
-                       string* matched_string3) const {
+                       string* matched_string3,
+                       string* matched_string4,
+                       string* matched_string5,
+                       string* matched_string6) const {
     DCHECK(input_string);
     if (!utf8_regexp_.get()) {
       return false;
@@ -135,9 +138,9 @@ class IcuRegExp : public RegExp {
     if (!match_succeeded || U_FAILURE(status)) {
       return false;
     }
-    string* const matched_strings[] = {
-      matched_string1, matched_string2, matched_string3
-    };
+    string* const matched_strings[] = {matched_string1, matched_string2,
+                                       matched_string3, matched_string4,
+                                       matched_string5, matched_string6};
     // If less matches than expected - fail.
     for (size_t i = 0; i < arraysize(matched_strings); ++i) {
       if (matched_strings[i]) {
