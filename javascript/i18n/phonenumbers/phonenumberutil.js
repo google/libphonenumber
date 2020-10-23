@@ -799,7 +799,7 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  // When extension is not separated clearly.
  /** @type {string} */
  var ambiguousSeparator = "[- ]+";
- // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching
+ // This is the same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching
  // comma as extension label may have it.
  /** @type {string} */
  var possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
@@ -846,10 +846,10 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
  // extension digits in order to reduce the chance of falsely interpreting two
  // numbers beside each other as a number + extension. The fourth one covers the
  // special case of American numbers where the extension is written with a hash
- // at the end, such as "- 503#". The fifth one exclusively for extension autodialling
- // formats which are used when dialling and in this case we accept longer extensions.
- // The last one is more liberal on the number of commas that acts as extension labels,
- // so we have a strict cap on the number of digits in such extensions.
+ // at the end, such as "- 503#". The fifth one is exclusively for extension
+ // autodialling formats which are used when dialling and in this case we accept longer
+ // extensions. The last one is more liberal on the number of commas that acts as
+ // extension labels, so we have a strict cap on the number of digits in such extensions.
  return rfcExtn + "|"
           + explicitExtn + "|"
           + ambiguousExtn + "|"
