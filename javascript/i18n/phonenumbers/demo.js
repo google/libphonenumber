@@ -45,7 +45,7 @@ var phoneNumberType = i18n.phonenumbers.PhoneNumberType;
  * @type {!i18n.phonenumbers.PhoneNumberUtil}
  * @private
  */
-var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+var phoneUtil_ = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 
 function phoneNumberParser() {
   var $ = goog.dom.getElement;
@@ -54,16 +54,16 @@ function phoneNumberParser() {
   var carrierCode = $('carrierCode').value;
   var output = new goog.string.StringBuffer();
   try {
-    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
+    var number = phoneUtil_.parseAndKeepRawInput(phoneNumber, regionCode);
     output.append('****Parsing Result:****\n');
     output.append(goog.json.serialize(new goog.proto2.ObjectSerializer(
         goog.proto2.ObjectSerializer.KeyOption.NAME).serialize(number)));
     output.append('\n\n****Validation Results:****');
-    var isPossible = phoneUtil.isPossibleNumber(number);
+    var isPossible = phoneUtil_.isPossibleNumber(number);
     output.append('\nResult from isPossibleNumber(): ');
     output.append(isPossible);
     var validationResult = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
-    var isPossibleReason = phoneUtil.isPossibleNumberWithReason(number)
+    var isPossibleReason = phoneUtil_.isPossibleNumberWithReason(number)
     if (isPossible) {
       // Checking as isValid() fails if possible local only.
       if (isPossibleReason == validationResult.IS_POSSIBLE_LOCAL_ONLY) {
@@ -73,15 +73,15 @@ function phoneNumberParser() {
             '\nNumber is considered invalid as it is ' +
             'not a possible national number.');
       } else {
-        var isNumberValid = phoneUtil.isValidNumber(number);
+        var isNumberValid = phoneUtil_.isValidNumber(number);
         output.append('\nResult from isValidNumber(): ');
         output.append(isNumberValid);
         if (isNumberValid && regionCode && regionCode != 'ZZ') {
           output.append('\nResult from isValidNumberForRegion(): ');
-          output.append(phoneUtil.isValidNumberForRegion(number, regionCode));
+          output.append(phoneUtil_.isValidNumberForRegion(number, regionCode));
         }
         output.append('\nPhone Number region: ');
-        output.append(phoneUtil.getRegionCodeForNumber(number));
+        output.append(phoneUtil_.getRegionCodeForNumber(number));
         output.append('\nResult from getNumberType(): ');
         output.append(getNumberTypeString(number));
       }
@@ -105,9 +105,8 @@ function phoneNumberParser() {
       // IS_POSSIBLE shouldn't happen, since we only call this if _not_
       // possible.
       output.append(
-          '\nNote: Numbers that are not possible or possible ' +
-          'local only have type UNKNOWN, an unknown region, and are ' +
-          'considered invalid.');
+          '\nNote: Numbers that are not possible have type UNKNOWN,' +
+          ' an unknown region, and are considered invalid.');
     }
     var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
     output.append('\n\n****ShortNumberInfo Results:****');
@@ -123,29 +122,30 @@ function phoneNumberParser() {
     var PNF = i18n.phonenumbers.PhoneNumberFormat;
     output.append('\n\n****Formatting Results:**** ');
     output.append('\nE164 format: ');
-    output.append(isNumberValid ?
-                  phoneUtil.format(number, PNF.E164) :
-                  'invalid');
+    output.append(
+        isNumberValid ? phoneUtil_.format(number, PNF.E164) : 'invalid');
     output.append('\nOriginal format: ');
-    output.append(phoneUtil.formatInOriginalFormat(number, regionCode));
+    output.append(phoneUtil_.formatInOriginalFormat(number, regionCode));
     output.append('\nNational format: ');
-    output.append(phoneUtil.format(number, PNF.NATIONAL));
+    output.append(phoneUtil_.format(number, PNF.NATIONAL));
     output.append('\nInternational format: ');
-    output.append(isNumberValid ?
-                  phoneUtil.format(number, PNF.INTERNATIONAL) :
-                  'invalid');
+    output.append(
+        isNumberValid ? phoneUtil_.format(number, PNF.INTERNATIONAL) :
+                        'invalid');
     output.append('\nOut-of-country format from US: ');
-    output.append(isNumberValid ?
-                  phoneUtil.formatOutOfCountryCallingNumber(number, 'US') :
-                  'invalid');
+    output.append(
+        isNumberValid ?
+            phoneUtil_.formatOutOfCountryCallingNumber(number, 'US') :
+            'invalid');
     output.append('\nOut-of-country format from Switzerland: ');
-    output.append(isNumberValid ?
-                  phoneUtil.formatOutOfCountryCallingNumber(number, 'CH') :
-                  'invalid');
+    output.append(
+        isNumberValid ?
+            phoneUtil_.formatOutOfCountryCallingNumber(number, 'CH') :
+            'invalid');
     if (carrierCode.length > 0) {
       output.append('\nNational format with carrier code: ');
-      output.append(phoneUtil.formatNationalNumberWithCarrierCode(number,
-                                                                  carrierCode));
+      output.append(
+          phoneUtil_.formatNationalNumberWithCarrierCode(number, carrierCode));
     }
     output.append('\n\n****AsYouTypeFormatter Results****');
     var formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
@@ -165,13 +165,12 @@ function phoneNumberParser() {
 }
 
 function getNumberTypeString(number) {
-  switch (phoneUtil.getNumberType(number)) {
+  switch (phoneUtil_.getNumberType(number)) {
     case phoneNumberType.FIXED_LINE:
       return 'FIXED_LINE';
     case phoneNumberType.MOBILE:
       return 'MOBILE'
-    case phoneNumberType.FIXED_LINE_OR_MOBILE:
-      return 'FIXED_LINE_OR_MOBILE';
+      case phoneNumberType.FIXED_LINE_OR_MOBILE: return 'FIXED_LINE_OR_MOBILE';
     case phoneNumberType.TOLL_FREE:
       return 'TOLL_FREE';
     case phoneNumberType.PREMIUM_RATE:
@@ -192,4 +191,3 @@ function getNumberTypeString(number) {
 }
 
 goog.exportSymbol('phoneNumberParser', phoneNumberParser);
-
