@@ -170,7 +170,8 @@ function getNumberTypeString(number) {
       return 'FIXED_LINE';
     case phoneNumberType.MOBILE:
       return 'MOBILE'
-      case phoneNumberType.FIXED_LINE_OR_MOBILE: return 'FIXED_LINE_OR_MOBILE';
+    case phoneNumberType.FIXED_LINE_OR_MOBILE:
+      return 'FIXED_LINE_OR_MOBILE';
     case phoneNumberType.TOLL_FREE:
       return 'TOLL_FREE';
     case phoneNumberType.PREMIUM_RATE:
