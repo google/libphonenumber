@@ -4399,6 +4399,169 @@ TEST_F(PhoneNumberUtilTest, ParseExtensions) {
   EXPECT_EQ(us_with_extension, test_number);
 }
 
+TEST_F(PhoneNumberUtilTest, TestParseHandlesLongExtensionsWithExplicitLabels) {
+  // Test lower and upper limits of extension lengths for each type of label.
+  PhoneNumber nz_number;
+  nz_number.set_country_code(64);
+  nz_number.set_national_number(33316005ULL);
+  PhoneNumber test_number;
+
+  // Firstly, when in RFC format: ext_limit_after_explicit_label
+  nz_number.set_extension("0");
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:+6433316005;ext=0", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  nz_number.set_extension("01234567890123456789");
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:+6433316005;ext=01234567890123456789",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  // Extension too long.
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("tel:+6433316005;ext=012345678901234567890",
+                              RegionCode::NZ(), &test_number));
+
+  // Explicit extension label: ext_limit_after_explicit_label
+  nz_number.set_extension("1");
+  EXPECT_EQ(
+      PhoneNumberUtil::NO_PARSING_ERROR,
+      phone_util_.Parse("03 3316005ext:1", RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  nz_number.set_extension("12345678901234567890");
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 xtn:12345678901234567890",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 extension\t12345678901234567890",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 xtensio:12345678901234567890",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 xtensión, 12345678901234567890#",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005extension.12345678901234567890",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 доб:12345678901234567890",
+                              RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  // Extension too long.
+  EXPECT_EQ(PhoneNumberUtil::TOO_LONG_NSN,
+            phone_util_.Parse("03 3316005 extension 123456789012345678901",
+                              RegionCode::NZ(), &test_number));
+}
+
+TEST_F(PhoneNumberUtilTest,
+       TestParseHandlesLongExtensionsWithAutoDiallingLabels) {
+  // Secondly, cases of auto-dialling and other standard extension labels:
+  // ext_limit_after_likely_label
+  PhoneNumber us_number_user_input;
+  us_number_user_input.set_country_code(1);
+  us_number_user_input.set_national_number(2679000000ULL);
+  PhoneNumber test_number;
+  us_number_user_input.set_extension("123456789012345");
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+12679000000,,123456789012345#",
+                              RegionCode::US(), &test_number));
+  EXPECT_EQ(us_number_user_input, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+12679000000;123456789012345#", RegionCode::US(),
+                              &test_number));
+  EXPECT_EQ(us_number_user_input, test_number);
+
+  PhoneNumber uk_number_user_input;
+  uk_number_user_input.set_country_code(44);
+  uk_number_user_input.set_national_number(2034000000ULL);
+  uk_number_user_input.set_extension("123456789");
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+442034000000,,123456789#", RegionCode::GB(),
+                              &test_number));
+
+  // Extension too long.
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("+12679000000,,1234567890123456#",
+                              RegionCode::US(), &test_number));
+}
+
+TEST_F(PhoneNumberUtilTest, TestParseHandlesShortExtensionsWithAmbiguousChar) {
+  // Thirdly, for single and non-standard cases: ext_limit_after_ambiguous_char
+  PhoneNumber nz_number;
+  nz_number.set_country_code(64);
+  nz_number.set_national_number(33316005ULL);
+  PhoneNumber test_number;
+  nz_number.set_extension("123456789");// 
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 x 123456789", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 x. 123456789", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 #123456789#", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("03 3316005 ~ 123456789", RegionCode::NZ(),
+                              &test_number));
+  EXPECT_EQ(nz_number, test_number);
+
+  EXPECT_EQ(PhoneNumberUtil::TOO_LONG_NSN,
+            phone_util_.Parse("03 3316005 ~ 1234567890", RegionCode::NZ(),
+                              &test_number));
+}
+
+TEST_F(PhoneNumberUtilTest, TestParseHandlesShortExtensionsWhenNotSureOfLabel) {
+  // Thirdly, when no explicit extension label present, but denoted by
+  // tailing #: ext_limit_when_not_sure
+  PhoneNumber us_number;
+  us_number.set_country_code(1);
+  us_number.set_national_number(1234567890ULL);
+  PhoneNumber test_number;
+  us_number.set_extension("666666");
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("+1123-456-7890 666666#", RegionCode::US(),
+                              &test_number));
+  EXPECT_EQ(us_number, test_number);
+
+  us_number.set_extension("6");
+  EXPECT_EQ(
+      PhoneNumberUtil::NO_PARSING_ERROR,
+      phone_util_.Parse("+11234567890-6#", RegionCode::US(), &test_number));
+  EXPECT_EQ(us_number, test_number);
+
+  // Extension too long.
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse("+1123-456-7890 7777777#", RegionCode::US(),
+                              &test_number));
+}
+
 TEST_F(PhoneNumberUtilTest, ParseAndKeepRaw) {
   PhoneNumber alpha_numeric_number;
   alpha_numeric_number.set_country_code(1);

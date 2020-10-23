@@ -303,46 +303,98 @@ public class PhoneNumberUtil {
   // as the default extension prefix. This can be overridden by region-specific preferences.
   private static final String DEFAULT_EXTN_PREFIX = " ext. ";
 
-  // Pattern to capture digits used in an extension. Places a maximum length of "7" for an
-  // extension.
-  private static final String CAPTURING_EXTN_DIGITS = "(" + DIGITS + "{1,7})";
   // Regexp of all possible ways to write extensions, for use when parsing. This will be run as a
   // case-insensitive regexp match. Wide character versions are also provided after each ASCII
   // version.
-  private static final String EXTN_PATTERNS_FOR_PARSING;
-  static final String EXTN_PATTERNS_FOR_MATCHING;
-  static {
-    // One-character symbols that can be used to indicate an extension.
-    String singleExtnSymbolsForMatching = "x\uFF58#\uFF03~\uFF5E";
-    // For parsing, we are slightly more lenient in our interpretation than for matching. Here we
-    // allow "comma" and "semicolon" as possible extension indicators. When matching, these are
-    // hardly ever used to indicate this.
-    String singleExtnSymbolsForParsing = ",;" + singleExtnSymbolsForMatching;
-
-    EXTN_PATTERNS_FOR_PARSING = createExtnPattern(singleExtnSymbolsForParsing);
-    EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(singleExtnSymbolsForMatching);
+  private static final String EXTN_PATTERNS_FOR_PARSING = createExtnPattern(true);
+  static final String EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(false);
+  
+  /** 
+   * Helper method for constructing regular expressions for parsing. Creates an expression that
+   * captures up to maxLength digits.
+   */
+  private static String extnDigits(int maxLength) {
+    return "(" + DIGITS + "{1," + maxLength + "})";
   }
 
   /**
-   * Helper initialiser method to create the regular-expression pattern to match extensions,
-   * allowing the one-char extension symbols provided by {@code singleExtnSymbols}.
+   * Helper initialiser method to create the regular-expression pattern to match extensions.
+   * Note that there are currently six capturing groups for the extension itself. If this number is
+   * changed, MaybeStripExtension needs to be updated.
    */
-  private static String createExtnPattern(String singleExtnSymbols) {
-    // There are three regular expressions here. The first covers RFC 3966 format, where the
-    // extension is added using ";ext=". The second more generic one starts with optional white
-    // space and ends with an optional full stop (.), followed by zero or more spaces/tabs/commas
-    // and then the numbers themselves. The other one covers the special case of American numbers
-    // where the extension is written with a hash at the end, such as "- 503#"
-    // Note that the only capturing groups should be around the digits that you want to capture as
-    // part of the extension, or else parsing will fail!
-    // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
-    // for representing the accented o - the character itself, and one in the unicode decomposed
-    // form with the combining acute accent.
-    return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*"
-        + "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|"
-        + "\u0434\u043E\u0431|" + "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)"
-        + "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|"
-        + "[- ]+(" + DIGITS + "{1,5})#");
+  private static String createExtnPattern(boolean forParsing) {
+    // We cap the maximum length of an extension based on the ambiguity of the way the extension is
+    // prefixed. As per ITU, the officially allowed length for extensions is actually 40, but we
+    // don't support this since we haven't seen real examples and this introduces many false
+    // interpretations as the extension labels are not standardized.
+    int extLimitAfterExplicitLabel = 20;
+    int extLimitAfterLikelyLabel = 15;
+    int extLimitAfterAmbiguousChar = 9;
+    int extLimitWhenNotSure = 6;
+
+    String possibleSeparatorsBetweenNumberAndExtLabel = "[ \u00A0\\t,]*";
+    // Optional full stop (.) or colon, followed by zero or more spaces/tabs/commas.
+    String possibleCharsAfterExtLabel = "[:\\.\uFF0E]?[ \u00A0\\t,-]*";
+    String optionalExtnSuffix = "#?";
+
+    // Here the extension is called out in more explicit way, i.e mentioning it obvious patterns
+    // like "ext.". Canonical-equivalence doesn't seem to be an option with Android java, so we
+    // allow two options for representing the accented o - the character itself, and one in the
+    // unicode decomposed form with the combining acute accent.
+    String explicitExtLabels =
+        "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|\u0434\u043E\u0431|anexo)";
+    // One-character symbols that can be used to indicate an extension, and less commonly used
+    // or more ambiguous extension labels.
+    String ambiguousExtLabels = "(?:[x\uFF58#\uFF03~\uFF5E]|int|\uFF49\uFF4E\uFF54)";
+    // When extension is not separated clearly.
+    String ambiguousSeparator = "[- ]+";
+
+    String rfcExtn = RFC3966_EXTN_PREFIX + extnDigits(extLimitAfterExplicitLabel);
+    String explicitExtn = possibleSeparatorsBetweenNumberAndExtLabel + explicitExtLabels
+        + possibleCharsAfterExtLabel + extnDigits(extLimitAfterExplicitLabel)
+        + optionalExtnSuffix;
+    String ambiguousExtn = possibleSeparatorsBetweenNumberAndExtLabel + ambiguousExtLabels
+        + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar) + optionalExtnSuffix;
+    String americanStyleExtnWithSuffix = ambiguousSeparator + extnDigits(extLimitWhenNotSure) + "#";
+
+    // The first regular expression covers RFC 3966 format, where the extension is added using
+    // ";ext=". The second more generic where extension is mentioned with explicit labels like
+    // "ext:". In both the above cases we allow more numbers in extension than any other extension
+    // labels. The third one captures when single character extension labels or less commonly used
+    // labels are used. In such cases we capture fewer extension digits in order to reduce the
+    // chance of falsely interpreting two numbers beside each other as a number + extension. The
+    // fourth one covers the special case of American numbers where the extension is written with a
+    // hash at the end, such as "- 503#".
+    String extensionPattern =
+        rfcExtn + "|"
+        + explicitExtn + "|"
+        + ambiguousExtn + "|"
+        + americanStyleExtnWithSuffix;
+    // Additional pattern that is supported when parsing extensions, not when matching.
+    if (forParsing) {
+      // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching comma as
+      // extension label may have it.
+      String possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
+      // ",," is commonly used for auto dialling the extension when connected. First comma is matched
+      // through possibleSeparatorsBetweenNumberAndExtLabel, so we do not repeat it here. Semi-colon
+      // works in Iphone and Android also to pop up a button with the extension number following.
+      String autoDiallingAndExtLabelsFound = "(?:,{2}|;)";
+
+      String autoDiallingExtn = possibleSeparatorsNumberExtLabelNoComma
+          + autoDiallingAndExtLabelsFound + possibleCharsAfterExtLabel
+          + extnDigits(extLimitAfterLikelyLabel) +  optionalExtnSuffix;
+      String onlyCommasExtn = possibleSeparatorsNumberExtLabelNoComma
+        + "(?:,)+" + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar)
+        + optionalExtnSuffix;
+      // Here the first pattern is exclusively for extension autodialling formats which are used
+      // when dialling and in this case we accept longer extensions. However, the second pattern
+      // is more liberal on the number of commas that acts as extension labels, so we have a strict
+      // cap on the number of digits in such extensions.
+      return extensionPattern + "|"
+          + autoDiallingExtn + "|"
+          + onlyCommasExtn;
+    }
+    return extensionPattern;
   }
 
   // Regexp of all known extension prefixes used by different regions followed by 1 or more valid
