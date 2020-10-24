@@ -36,12 +36,6 @@ goog.require('i18n.phonenumbers.ShortNumberInfo');
 
 /**
  * @const
- * @private
- */
-var phoneNumberType = i18n.phonenumbers.PhoneNumberType;
-
-/**
- * @const
  * @type {!i18n.phonenumbers.PhoneNumberUtil}
  * @private
  */
@@ -64,6 +58,7 @@ function phoneNumberParser() {
     output.append(isPossible);
     var validationResult = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
     var isPossibleReason = phoneUtil_.isPossibleNumberWithReason(number)
+    var hasRegionCode = regionCode && regionCode != 'ZZ';
     if (isPossible) {
       // Checking as isValid() fails if possible local only.
       if (isPossibleReason == validationResult.IS_POSSIBLE_LOCAL_ONLY) {
@@ -76,7 +71,7 @@ function phoneNumberParser() {
         var isNumberValid = phoneUtil_.isValidNumber(number);
         output.append('\nResult from isValidNumber(): ');
         output.append(isNumberValid);
-        if (isNumberValid && regionCode && regionCode != 'ZZ') {
+        if (isNumberValid && hasRegionCode) {
           output.append('\nResult from isValidNumberForRegion(): ');
           output.append(phoneUtil_.isValidNumberForRegion(number, regionCode));
         }
@@ -85,8 +80,7 @@ function phoneNumberParser() {
         output.append('\nResult from getNumberType(): ');
         output.append(getNumberTypeString(number));
       }
-    }
-    else {
+    } else {
       output.append('\nResult from isPossibleNumberWithReason(): ');
       switch (isPossibleReason) {
         case validationResult.INVALID_COUNTRY_CODE:
@@ -108,16 +102,22 @@ function phoneNumberParser() {
           '\nNote: Numbers that are not possible have type UNKNOWN,' +
           ' an unknown region, and are considered invalid.');
     }
-    var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
-    output.append('\n\n****ShortNumberInfo Results:****');
-    output.append('\nResult from isPossibleShortNumber: ');
-    output.append(shortInfo.isPossibleShortNumber(number));
-    output.append('\nResult from isValidShortNumber: ');
-    output.append(shortInfo.isValidShortNumber(number));
-    output.append('\nResult from isPossibleShortNumberForRegion: ');
-    output.append(shortInfo.isPossibleShortNumberForRegion(number, regionCode));
-    output.append('\nResult from isValidShortNumberForRegion: ');
-    output.append(shortInfo.isValidShortNumberForRegion(number, regionCode));
+    if (!isNumberValid) {
+      var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
+      output.append('\n\n****ShortNumberInfo Results:****');
+      output.append('\nResult from isPossibleShortNumber: ');
+      output.append(shortInfo.isPossibleShortNumber(number));
+      output.append('\nResult from isValidShortNumber: ');
+      output.append(shortInfo.isValidShortNumber(number));
+      if (hasRegionCode) {
+        output.append('\nResult from isPossibleShortNumberForRegion: ');
+        output.append(
+            shortInfo.isPossibleShortNumberForRegion(number, regionCode));
+        output.append('\nResult from isValidShortNumberForRegion: ');
+        output.append(
+            shortInfo.isValidShortNumberForRegion(number, regionCode));
+      }
+    }
 
     var PNF = i18n.phonenumbers.PhoneNumberFormat;
     output.append('\n\n****Formatting Results:**** ');
@@ -166,26 +166,27 @@ function phoneNumberParser() {
 
 function getNumberTypeString(number) {
   switch (phoneUtil_.getNumberType(number)) {
-    case phoneNumberType.FIXED_LINE:
+    case i18n.phonenumbers.PhoneNumberType.FIXED_LINE:
       return 'FIXED_LINE';
-    case phoneNumberType.MOBILE:
+    case i18n.phonenumbers.PhoneNumberType.MOBILE:
       return 'MOBILE'
-      case phoneNumberType.FIXED_LINE_OR_MOBILE: return 'FIXED_LINE_OR_MOBILE';
-    case phoneNumberType.TOLL_FREE:
+    case i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE:
+      return 'FIXED_LINE_OR_MOBILE';
+    case i18n.phonenumbers.PhoneNumberType.TOLL_FREE:
       return 'TOLL_FREE';
-    case phoneNumberType.PREMIUM_RATE:
+    case i18n.phonenumbers.PhoneNumberType.PREMIUM_RATE:
       return 'PREMIUM_RATE';
-    case phoneNumberType.SHARED_COST:
+    case i18n.phonenumbers.PhoneNumberType.SHARED_COST:
       return 'SHARED_COST';
-    case phoneNumberType.VOIP:
+    case i18n.phonenumbers.PhoneNumberType.VOIP:
       return 'VOIP';
-    case phoneNumberType.PERSONAL_NUMBER:
+    case i18n.phonenumbers.PhoneNumberType.PERSONAL_NUMBER:
       return 'PERSONAL_NUMBER';
-    case phoneNumberType.PAGER:
+    case i18n.phonenumbers.PhoneNumberType.PAGER:
       return 'PAGER';
-    case phoneNumberType.UAN:
+    case i18n.phonenumbers.PhoneNumberType.UAN:
       return 'UAN';
-    case phoneNumberType.UNKNOWN:
+    case i18n.phonenumbers.PhoneNumberType.UNKNOWN:
       return 'UNKNOWN';
   }
 }

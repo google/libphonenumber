@@ -276,6 +276,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
       boolean isPossible = phoneUtil.isPossibleNumber(number);
       boolean isNumberValid = phoneUtil.isValidNumber(number);
       PhoneNumberType numberType = phoneUtil.getNumberType(number);
+      boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
@@ -290,7 +291,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
                   + "not a possible national number.</TD></TR>");
         } else {
           appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
-          if (isNumberValid && !defaultCountry.isEmpty() && defaultCountry != "ZZ") {
+          if (isNumberValid && hasDefaultCountry) {
               appendLine(
                   "Result from isValidNumberForRegion()",
                   Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
@@ -324,7 +325,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
               "Result from isValidShortNumber()",
               Boolean.toString(shortInfo.isValidShortNumber(number)),
               output);
-          if (!defaultCountry.isEmpty() && defaultCountry != "ZZ") {
+          if (hasDefaultCountry) {
             boolean isPossibleShortForRegion =
                 shortInfo.isPossibleShortNumberForRegion(number, defaultCountry);
             appendLine(
