@@ -263,5 +263,9 @@ For standard migrations using internal recipes, it is possible for E.164 phone n
 
 When using the ```--customRecipe``` argument, all numbers that match a given recipe from the number input will be migrated. These migrations will not be checked for validity based on internal metadata of valid phone number ranges. This means that for custom recipe migrations, there is no perception of invalid migrations. 
 
+## About metadata.zip:
+
+It contains canonical metadata for the libphonenumber project, intended for use by libphonenumber tools - like Migrator tool in this case. CSV schemas are not promised to be stable.
+
 ## License
 See [LICENSE file](https://github.com/google/libphonenumber/blob/master/LICENSE) for Terms and Conditions.
