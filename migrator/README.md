@@ -265,7 +265,7 @@ When using the ```--customRecipe``` argument, all numbers that match a given rec
 
 ## About metadata.zip:
 
-It contains canonical metadata for the libphonenumber project, intended for use by libphonenumber tools - like Migrator tool in this case. CSV schemas are not promised to be stable.
+It contains canonical metadata for the libphonenumber project, intended for use by libphonenumber tools. CSV schemas are not promised to be stable.
 
 ## License
 See [LICENSE file](https://github.com/google/libphonenumber/blob/master/LICENSE) for Terms and Conditions.
