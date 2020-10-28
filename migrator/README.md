@@ -251,6 +251,10 @@ E.g. no digits need to be added because a removal took place. A 5 digit number h
 
 Please [click here](https://phone-number-migrator.uc.r.appspot.com/) to view the web application version of the migrator tool.
 
+## About validation of phone numbers:
+
+APIs and data in [libphonenumber/metadata/](https://github.com/google/libphonenumber/tree/master/metadata/) are used for validating phone numbers. More details in [metadata/README](https://github.com/google/libphonenumber/tree/master/metadata/README).
+
 ## Privacy
 
 Both web application and command line versions of the migrator tool require an input of either a single string E.164 phone number or a text file containing one E.164 phone number per line. After the tool has completed the migration process, this data, along with any resulting data, is never written to any records or stored for later use.

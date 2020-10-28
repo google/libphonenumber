@@ -11,6 +11,11 @@ generating the XML files will be released here, at which time the CSV files will
 become the source of truth for libphonenumber and the XML-based metadata and
 other mapping files will be automatically derived from it.
 
+## About metadata.zip
+
+It contains canonical metadata for the libphonenumber project, intended for use
+by libphonenumber tools. CSV schemas are not promised to be stable.
+
 ### Support and Api Stability
 
 **These libraries are not currently supported and do not provide a stable API;
