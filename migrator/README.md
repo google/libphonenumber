@@ -251,6 +251,10 @@ E.g. no digits need to be added because a removal took place. A 5 digit number h
 
 Please [click here](https://phone-number-migrator.uc.r.appspot.com/) to view the web application version of the migrator tool.
 
+## About validation of phone numbers:
+
+APIs and data in [libphonenumber/metadata/](https://github.com/google/libphonenumber/tree/master/metadata/) are used for validating phone numbers. More details in [metadata/README](https://github.com/google/libphonenumber/tree/master/metadata/README).
+
 ## Privacy
 
 Both web application and command line versions of the migrator tool require an input of either a single string E.164 phone number or a text file containing one E.164 phone number per line. After the tool has completed the migration process, this data, along with any resulting data, is never written to any records or stored for later use.
@@ -262,10 +266,6 @@ The migration library is designed to only migrate E.164 phone numbers using inte
 For standard migrations using internal recipes, it is possible for E.164 phone numbers to be migrated to a format which the library deems as being invalid. The validity of phone numbers is checked using metadata containing valid number ranges for all countries. As a result, a phone number migration will be seen as invalid if either the metadata of valid number ranges does not reflect the given format correctly or if there is an error with the used recipe internally. In either case, please [file a new issue](https://b.corp.google.com/issues/new?component=192347&template=829703) following the guidance of how to create one [here](https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#filing-a-code-issue) in order to resolve the issue. For ```--file``` number inputs, invalid migrations by default will not be written to the created text file containing the updated phone numbers and instead, the original number which correlates to the migration will be used. If you would like to include invalid migration results in the newly created text file, specify this by using the ```--exportInvalidMigrations``` command line flag.
 
 When using the ```--customRecipe``` argument, all numbers that match a given recipe from the number input will be migrated. These migrations will not be checked for validity based on internal metadata of valid phone number ranges. This means that for custom recipe migrations, there is no perception of invalid migrations. 
-
-## About metadata.zip:
-
-It contains canonical metadata for the libphonenumber project, intended for use by libphonenumber tools. CSV schemas are not promised to be stable.
 
 ## License
 See [LICENSE file](https://github.com/google/libphonenumber/blob/master/LICENSE) for Terms and Conditions.

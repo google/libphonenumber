@@ -33,6 +33,12 @@
         </plugins>
         <resources>
             <resource>
+                <directory>../metadata</directory>
+                <includes>
+                    <include>metadata.zip</include>
+                </includes>
+            </resource>
+            <resource>
                 <directory>src/data</directory>
             </resource>
         </resources>
