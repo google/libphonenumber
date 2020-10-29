@@ -1,3 +1,15 @@
+Oct 29, 2020: v8.12.12
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BM, BS, CA, CI, DM, DO, GB, GD, GG, GU, IR, JE, JM, JP, KE,
+   KN, KY, LC, MP, MS, NP, PK, PR, SA, SX, TC, TT, US, VC, VG, VI, VN, WS
+ - Updated short number metadata for region code(s): JP
+ - Updated geocoding data for country calling code(s): 81 (en, ja)
+ - New carrier data for country calling code(s): 81 (en)
+ - Updated carrier data for country calling code(s):
+   44 (en), 98 (en, fa), 225 (en), 685 (en), 966 (en)
+ - Updated / refreshed time zone meta data.
+
 Oct 07, 2020: v8.12.11
 Metadata changes:
  - Updated phone metadata for region code(s): CM, HK, ID, LK, PA, PY, TJ, UZ
