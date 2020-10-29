@@ -63,21 +63,16 @@
 #  - Limitless Mobile Ltd: Limitless
 #  - Lleida.net Serveis Telematics Limited: Lleida.net
 #  - Lycamobile UK Limited: Lycamobile
-#  - M P Tanner Limited t/a FIO Telecom: FIO Telecom
 #  - MOBIWEB TELECOM LIMITED: Mobiweb
 #  - Magrathea Telecommunications Limited: Magrathea
 #  - Manx Telecom Trading Limited: Manx Telecom
 #  - Marathon Telecom Limited: Marathon Telecom
 #  - Mars Communications Limited: Mars
-#  - Media Telecom Ltd: Media
 #  - Nationwide Telephone Assistance Ltd: Nationwide Telephone
 #  - Nodemax Limited: Nodemax
-#  - PageOne Communications Ltd: PageOne
-#  - Plus Telecom Limited: Plus
 #  - Premium O Limited: Premium O
 #  - Premium Routing GmbH: Premium Routing
 #  - QX Telecom Ltd: QX Telecom
-#  - Relax Telecom Limited: Relax
 #  - Resilient Plc: Resilient
 #  - Simwood eSMS Limited: Simwood
 #  - Sky UK Limited: Sky
@@ -89,7 +84,6 @@
 #  - Sure (Jersey) Limited: Sure
 #  - Swiftnet Ltd: Swiftnet
 #  - Synectiv Ltd: Synectiv
-#  - Syntec Limited: Syntec
 #  - TGL Services (UK) Ltd: TGL
 #  - TalkTalk Communications Limited: TalkTalk
 #  - TeleWare PLC: TeleWare
@@ -100,7 +94,6 @@
 #  - Teleena UK Limited: Teleena
 #  - Telefonica UK Limited: O2
 #  - Telesign Mobile Limited: Telesign
-#  - Telsis Systems Ltd: Telsis
 #  - Test2date B.V: Test2date
 #  - Tismi BV: Tismi
 #  - Truphone Ltd: Truphone
@@ -460,77 +453,10 @@
 4475897|Vectone Mobile
 4475898|Test2date
 44759|O2
-4476000|Mediatel
-4476002|PageOne
-4476006|24 Seven
-4476007|Relax
-4476020|O2
-4476022|Relax
-447623|PageOne
 447624|Manx Telecom
 4476242|Sure
 44762450|BlueWave Communications
 44762456|Sure
-447625|O2
-447626|O2
-4476400|Core Telecom
-4476401|Telecom2
-4476402|FIO Telecom
-4476403|PageOne
-4476404|PageOne
-4476406|PageOne
-4476407|PageOne
-4476411|Orange
-4476433|Yim Siam
-4476440|O2
-4476441|O2
-4476446|Media
-4476542|PageOne
-4476543|PageOne
-4476545|PageOne
-4476546|PageOne
-4476591|Vodafone
-4476592|PageOne
-4476593|Vodafone
-4476594|Vodafone
-4476595|Vodafone
-4476596|Vodafone
-4476598|Vodafone
-4476599|PageOne
-4476600|Plus
-4476601|PageOne
-4476602|PageOne
-4476603|PageOne
-4476604|PageOne
-4476605|PageOne
-4476606|24 Seven
-4476607|Premium O
-4476608|Premium O
-4476609|Premium O
-447661|PageOne
-4476620|Premium O
-4476633|Syntec
-4476636|Relax
-4476637|Vodafone
-447666|Vodafone
-4476660|24 Seven
-4476669|FIO Telecom
-4476690|O2
-4476691|O2
-4476692|O2
-4476693|Confabulate
-4476696|Cheers
-4476698|O2
-4476699|O2
-4476770|24 Seven
-4476772|Relax
-4476776|Telsis
-4476778|Core Telecom
-4476810|PageOne
-4476814|PageOne
-4476818|PageOne
-447693|O2
-447699|Vodafone
 44770|O2
 4477000|Cloud9
 4477001|Nationwide Telephone
