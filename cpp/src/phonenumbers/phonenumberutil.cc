@@ -114,10 +114,6 @@ const char kValidAlpha[] = "a-z";
 // prefix. This can be overridden by region-specific preferences.
 const char kDefaultExtnPrefix[] = " ext. ";
 
-// One-character symbols that can be used to indicate an extension.
-const char kSingleExtnSymbolsForMatching[] =
-    "x\xEF\xBD\x98#\xEF\xBC\x83~\xEF\xBD\x9E";
-
 const char kPossibleSeparatorsBetweenNumberAndExtLabel[] =
     "[ \xC2\xA0\\t,]*";
 
@@ -795,7 +791,7 @@ class PhoneNumberRegExpsAndMappings {
         separator_pattern_(regexp_factory_->CreateRegExp(
             StrCat("[", PhoneNumberUtil::kValidPunctuation, "]+"))),
         extn_patterns_for_matching_(
-        CreateExtnPattern(/* for_parsing= */ false)),
+            CreateExtnPattern(/* for_parsing= */ false)),
         extn_pattern_(regexp_factory_->CreateRegExp(
             StrCat("(?i)(?:", extn_patterns_for_parsing_, ")$"))),
         valid_phone_number_pattern_(regexp_factory_->CreateRegExp(
