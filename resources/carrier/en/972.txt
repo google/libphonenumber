@@ -24,7 +24,8 @@
 9725522|Home Cellular
 9725523|Home Cellular
 972553|Free Telecom
-972554|Cellran Cellular Communications
+9725543|Maskyoo
+9725544|Cellran Cellular Communications
 9725550|Annatel
 9725551|Annatel
 9725555|Rami Levy

@@ -69,15 +69,10 @@
 33609|SFR
 3361|SFR
 3362|SFR
-33630|Orange France
-33631|Orange France
-33632|Orange France
-33633|Orange France
+3363|Orange France
 33634|SFR
 33635|SFR
 33636|Euroinformation Telecom
-33637|Orange France
-33638|Orange France
 3363800|Globalstar Europe
 3363801|Prixtel
 3363802|Prixtel
@@ -175,9 +170,6 @@
 3366|Bouygues
 3367|Orange France
 3368|Orange France
-33692|Bouygues
-33693|Bouygues
-33696|Bouygues
 33698|Bouygues
 33699|Bouygues
 33700000|Orange France
