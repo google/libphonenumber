@@ -15,6 +15,8 @@
 # Prefixes from http://www.itu.int/oth/T0202000088/en
 
 230525|Cellplus
+230526|Cellplus
+230527|MTML
 230528|MTML
 230529|MTML
 23054|Emtel

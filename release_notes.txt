@@ -1,3 +1,11 @@
+Nov 12, 2020: v8.12.13
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CL, DE, FR, GQ, IL, IR, KG, KW, MU, NG, PW, SN, TZ
+ - Updated carrier data for country calling code(s):
+   7 (en), 33 (en), 221 (en), 230 (en), 234 (en), 240 (en), 255 (en), 680 (en),
+   886 (en), 972 (en)
+
 Oct 29, 2020: v8.12.12
 Metadata changes:
  - Updated phone metadata for region code(s):
