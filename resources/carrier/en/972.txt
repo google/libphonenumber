@@ -23,7 +23,10 @@
 972552|Telzar
 9725522|Home Cellular
 9725523|Home Cellular
-972553|Free Telecom
+9725530|Telzar
+9725531|Telzar
+9725532|Free Telecom
+9725533|Free Telecom
 9725543|Maskyoo
 9725544|Cellran Cellular Communications
 9725550|Annatel

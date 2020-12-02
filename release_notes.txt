@@ -1,3 +1,12 @@
+Dec 02, 2020: v8.12.14
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BA, BW, CG, CO, EH, FO, HN, IL, KE, MA, NZ, SN, TJ, UY
+ - Updated geocoding data for country calling code(s): 57 (en), 504 (en)
+ - Updated carrier data for country calling code(s):
+   46 (en), 212 (en), 221 (en), 242 (en), 254 (en), 298 (en), 972 (en),
+   992 (en)
+
 Nov 12, 2020: v8.12.13
 Metadata changes:
  - Updated phone metadata for region code(s):
