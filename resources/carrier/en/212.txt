@@ -89,11 +89,6 @@
 212697|Maroc Telecom
 212698|Inwi
 212699|Inwi
-212700|Inwi
-212702|Inwi
-212703|Inwi
-212706|Inwi
-212707|Inwi
-212708|Inwi
+21270|Inwi
 21276|Maroc Telecom
 21277|Méditel
