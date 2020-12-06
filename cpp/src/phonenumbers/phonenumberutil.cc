@@ -328,7 +328,7 @@ void NormalizeHelper(const std::map<char32, char>& normalization_replacements,
                      string* number) {
   DCHECK(number);
   UnicodeText number_as_unicode;
-  number_as_unicode.PointToUTF8(number->data(), number->size());
+  number_as_unicode.PointToUTF8(number->data(), static_cast<int>(number->size()));
   string normalized_number;
   char unicode_char[5];
   for (UnicodeText::const_iterator it = number_as_unicode.begin();
@@ -450,7 +450,7 @@ PhoneNumberUtil::ValidationResult TestNumberLength(
     return PhoneNumberUtil::INVALID_LENGTH;
   }
 
-  int actual_length = number.length();
+  int actual_length = static_cast<int>(number.length());
   // This is safe because there is never an overlap beween the possible lengths
   // and the local-only lengths; this is checked at build time.
   if (std::find(local_lengths.begin(), local_lengths.end(), actual_length) !=
@@ -970,7 +970,7 @@ bool PhoneNumberUtil::ContainsOnlyValidDigits(const string& s) const {
 void PhoneNumberUtil::TrimUnwantedEndChars(string* number) const {
   DCHECK(number);
   UnicodeText number_as_unicode;
-  number_as_unicode.PointToUTF8(number->data(), number->size());
+  number_as_unicode.PointToUTF8(number->data(), static_cast<int>(number->size()));
   char current_char[5];
   int len;
   UnicodeText::const_reverse_iterator reverse_it(number_as_unicode.end());
@@ -2142,7 +2142,7 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
     // case, we append everything from the beginning.
     size_t index_of_rfc_prefix = number_to_parse.find(kRfc3966Prefix);
     int index_of_national_number = (index_of_rfc_prefix != string::npos) ?
-        index_of_rfc_prefix + strlen(kRfc3966Prefix) : 0;
+        static_cast<int>(index_of_rfc_prefix + strlen(kRfc3966Prefix)) : 0;
     StrAppend(
         national_number,
         number_to_parse.substr(
@@ -2302,7 +2302,7 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
   DCHECK(extracted_number);
 
   UnicodeText number_as_unicode;
-  number_as_unicode.PointToUTF8(number.data(), number.size());
+  number_as_unicode.PointToUTF8(number.data(), static_cast<int>(number.size()));
   char current_char[5];
   int len;
   UnicodeText::const_iterator it;
@@ -2470,7 +2470,7 @@ void PhoneNumberUtil::SetItalianLeadingZerosForPhoneNumber(
       number_of_leading_zeros++;
     }
     if (number_of_leading_zeros != 1) {
-      phone_number->set_number_of_leading_zeros(number_of_leading_zeros);
+      phone_number->set_number_of_leading_zeros(static_cast<int32_t>(number_of_leading_zeros));
     }
   }
 }
@@ -2481,7 +2481,7 @@ bool PhoneNumberUtil::IsNumberMatchingDesc(
   // avoid checking the validation pattern if they don't match. If they are
   // absent, this means they match the general description, which we have
   // already checked before checking a specific number type.
-  int actual_length = national_number.length();
+  int actual_length = static_cast<int>(national_number.length());
   if (number_desc.possible_length_size() > 0 &&
       std::find(number_desc.possible_length().begin(),
                 number_desc.possible_length().end(),
@@ -2639,10 +2639,10 @@ int PhoneNumberUtil::GetLengthOfNationalDestinationCode(
     string mobile_token;
     GetCountryMobileToken(number.country_code(), &mobile_token);
     if (!mobile_token.empty()) {
-      return third_group.size() + mobile_token.size();
+      return static_cast<int>(third_group.size() + mobile_token.size());
     }
   }
-  return ndc.size();
+  return static_cast<int>(ndc.size());
 }
 
 void PhoneNumberUtil::GetCountryMobileToken(int country_calling_code,
