@@ -2677,6 +2677,137 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Retry with the same number in a slightly different format.
     assertEquals(usWithExtension, phoneUtil.parse("+1 (645) 123 1234 ext. 910#", RegionCode.US));
   }
+  
+  public void testParseHandlesLongExtensionsWithExplicitLabels() throws Exception {
+    // Test lower and upper limits of extension lengths for each type of label.
+    PhoneNumber nzNumber = new PhoneNumber();
+    nzNumber.setCountryCode(64).setNationalNumber(33316005L);
+
+    // Firstly, when in RFC format: PhoneNumberUtil.extLimitAfterExplicitLabel
+    nzNumber.setExtension("0");
+    assertEquals(nzNumber, phoneUtil.parse("tel:+6433316005;ext=0", RegionCode.NZ));
+    nzNumber.setExtension("01234567890123456789");
+    assertEquals(
+        nzNumber, phoneUtil.parse("tel:+6433316005;ext=01234567890123456789", RegionCode.NZ));
+    // Extension too long.
+    try {
+      phoneUtil.parse("tel:+6433316005;ext=012345678901234567890", RegionCode.NZ);
+      fail(
+          "This should not parse as length of extension is higher than allowed: "
+              + "tel:+6433316005;ext=012345678901234567890");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals(
+          "Wrong error type stored in exception.",
+          NumberParseException.ErrorType.NOT_A_NUMBER,
+          e.getErrorType());
+    }
+
+    // Explicit extension label: PhoneNumberUtil.extLimitAfterExplicitLabel
+    nzNumber.setExtension("1");
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005ext:1", RegionCode.NZ));
+    nzNumber.setExtension("12345678901234567890");
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 xtn:12345678901234567890", RegionCode.NZ));
+    assertEquals(
+        nzNumber, phoneUtil.parse("03 3316005 extension\t12345678901234567890", RegionCode.NZ));
+    assertEquals(
+        nzNumber, phoneUtil.parse("03 3316005 xtensio:12345678901234567890", RegionCode.NZ));
+    assertEquals(
+        nzNumber, phoneUtil.parse("03 3316005 xtensi\u00F3n, 12345678901234567890#", RegionCode.NZ));
+    assertEquals(
+        nzNumber, phoneUtil.parse("03 3316005extension.12345678901234567890", RegionCode.NZ));
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 \u0434\u043E\u0431:12345678901234567890", RegionCode.NZ));
+    // Extension too long.
+    try {
+      phoneUtil.parse("03 3316005 extension 123456789012345678901", RegionCode.NZ);
+      fail(
+          "This should not parse as length of extension is higher than allowed: "
+              + "03 3316005 extension 123456789012345678901");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals(
+          "Wrong error type stored in exception.",
+          NumberParseException.ErrorType.TOO_LONG,
+          e.getErrorType());
+    }
+  }
+
+  public void testParseHandlesLongExtensionsWithAutoDiallingLabels() throws Exception {
+    // Secondly, cases of auto-dialling and other standard extension labels,
+    // PhoneNumberUtil.extLimitAfterLikelyLabel
+    PhoneNumber usNumberUserInput = new PhoneNumber();
+    usNumberUserInput.setCountryCode(1).setNationalNumber(2679000000L);
+    usNumberUserInput.setExtension("123456789012345");
+    assertEquals(
+        usNumberUserInput, phoneUtil.parse("+12679000000,,123456789012345#", RegionCode.US));
+    assertEquals(
+        usNumberUserInput, phoneUtil.parse("+12679000000;123456789012345#", RegionCode.US));
+    PhoneNumber ukNumberUserInput = new PhoneNumber();
+    ukNumberUserInput.setCountryCode(44).setNationalNumber(2034000000L).setExtension("123456789");
+    assertEquals(ukNumberUserInput, phoneUtil.parse("+442034000000,,123456789#", RegionCode.GB));
+    // Extension too long.
+    try {
+      phoneUtil.parse("+12679000000,,1234567890123456#", RegionCode.US);
+      fail(
+          "This should not parse as length of extension is higher than allowed: "
+              + "+12679000000,,1234567890123456#");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals(
+          "Wrong error type stored in exception.",
+          NumberParseException.ErrorType.NOT_A_NUMBER,
+          e.getErrorType());
+    }
+  }
+
+  public void testParseHandlesShortExtensionsWithAmbiguousChar() throws Exception {
+    PhoneNumber nzNumber = new PhoneNumber();
+    nzNumber.setCountryCode(64).setNationalNumber(33316005L);
+
+    // Thirdly, for single and non-standard cases:
+    // PhoneNumberUtil.extLimitAfterAmbiguousChar
+    nzNumber.setExtension("123456789");
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 x 123456789", RegionCode.NZ));
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 x. 123456789", RegionCode.NZ));
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 #123456789#", RegionCode.NZ));
+    assertEquals(nzNumber, phoneUtil.parse("03 3316005 ~ 123456789", RegionCode.NZ));
+    // Extension too long.
+    try {
+      phoneUtil.parse("03 3316005 ~ 1234567890", RegionCode.NZ);
+      fail(
+          "This should not parse as length of extension is higher than allowed: "
+              + "03 3316005 ~ 1234567890");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals(
+          "Wrong error type stored in exception.",
+          NumberParseException.ErrorType.TOO_LONG,
+          e.getErrorType());
+    }
+  }
+
+  public void testParseHandlesShortExtensionsWhenNotSureOfLabel() throws Exception {
+    // Lastly, when no explicit extension label present, but denoted by tailing #:
+    // PhoneNumberUtil.extLimitWhenNotSure
+    PhoneNumber usNumber = new PhoneNumber();
+    usNumber.setCountryCode(1).setNationalNumber(1234567890L).setExtension("666666");
+    assertEquals(usNumber, phoneUtil.parse("+1123-456-7890 666666#", RegionCode.US));
+    usNumber.setExtension("6");
+    assertEquals(usNumber, phoneUtil.parse("+11234567890-6#", RegionCode.US));
+    // Extension too long.
+    try {
+      phoneUtil.parse("+1123-456-7890 7777777#", RegionCode.US);
+      fail(
+          "This should not parse as length of extension is higher than allowed: "
+              + "+1123-456-7890 7777777#");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+      assertEquals(
+          "Wrong error type stored in exception.",
+          NumberParseException.ErrorType.NOT_A_NUMBER,
+          e.getErrorType());
+    }
+  }
 
   public void testParseAndKeepRaw() throws Exception {
     PhoneNumber alphaNumericNumber = new PhoneNumber().mergeFrom(ALPHA_NUMERIC_NUMBER).

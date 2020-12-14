@@ -56,14 +56,47 @@ class RegExp {
   // input_string - string to be searched.
   // anchor_at_start - if true, match would be successful only if it appears at
   // the beginning of the tested region of the string.
-  // matched_string1 - the first string extracted from the match. Can be NULL.
-  // matched_string2 - the second string extracted from the match. Can be NULL.
-  // matched_string3 - the third string extracted from the match. Can be NULL.
+  // matched_string1..6 - string extracted from the match in sequential order.
+  // Can be NULL.
   virtual bool Consume(RegExpInput* input_string,
                        bool anchor_at_start,
                        string* matched_string1,
                        string* matched_string2,
-                       string* matched_string3) const = 0;
+                       string* matched_string3,
+                       string* matched_string4,
+                       string* matched_string5,
+                       string* matched_string6) const = 0;
+                       
+  // Helper methods calling the Consume method that assume the match must start
+  // at the beginning.
+  inline bool Consume(RegExpInput* input_string, string* matched_string1,
+                      string* matched_string2,
+                      string* matched_string3,
+                      string* matched_string4,
+                      string* matched_string5,
+                      string* matched_string6) const {
+    return Consume(input_string, true, matched_string1, matched_string2,
+                   matched_string3, matched_string4, matched_string5,
+                   matched_string6);
+  }
+
+  inline bool Consume(RegExpInput* input_string, string* matched_string1,
+                      string* matched_string2,
+                      string* matched_string3,
+                      string* matched_string4,
+                      string* matched_string5) const {
+    return Consume(input_string, true, matched_string1, matched_string2,
+                   matched_string3, matched_string4, matched_string5, NULL);
+  }
+
+  inline bool Consume(RegExpInput* input_string, string* matched_string1,
+                      string* matched_string2,
+                      string* matched_string3,
+                      string* matched_string4) const {
+    return Consume(input_string, true, matched_string1, matched_string2,
+                   matched_string3, matched_string4, NULL, NULL);
+  }
+
 
   // Helper methods calling the Consume method that assume the match must start
   // at the beginning.
@@ -72,28 +105,31 @@ class RegExp {
                       string* matched_string2,
                       string* matched_string3) const {
     return Consume(input_string, true, matched_string1, matched_string2,
-                   matched_string3);
+                   matched_string3, NULL, NULL, NULL);
   }
 
   inline bool Consume(RegExpInput* input_string,
                       string* matched_string1,
                       string* matched_string2) const {
-    return Consume(input_string, true, matched_string1, matched_string2, NULL);
+    return Consume(input_string, true, matched_string1, matched_string2, NULL,
+    		   NULL, NULL, NULL);
   }
 
   inline bool Consume(RegExpInput* input_string, string* matched_string) const {
-    return Consume(input_string, true, matched_string, NULL, NULL);
+    return Consume(input_string, true, matched_string, NULL, NULL, NULL, NULL,
+    	   	   NULL);
   }
 
   inline bool Consume(RegExpInput* input_string) const {
-    return Consume(input_string, true, NULL, NULL, NULL);
+    return Consume(input_string, true, NULL, NULL, NULL, NULL, NULL, NULL);
   }
 
   // Helper method calling the Consume method that assumes the match can start
   // at any place in the string.
   inline bool FindAndConsume(RegExpInput* input_string,
                              string* matched_string) const {
-    return Consume(input_string, false, matched_string, NULL, NULL);
+    return Consume(input_string, false, matched_string, NULL, NULL, NULL, NULL,
+    	           NULL);
   }
 
   // Matches string to regular expression, returns true if the expression was

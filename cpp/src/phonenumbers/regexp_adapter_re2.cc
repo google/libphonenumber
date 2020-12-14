@@ -60,10 +60,15 @@ bool DispatchRE2Call(Function regex_function,
                      const RE2& regexp,
                      string* out1,
                      string* out2,
-                     string* out3) {
-  const RE2::Arg outs[] = { out1, out2, out3, };
-  const RE2::Arg* const args[] = { &outs[0], &outs[1], &outs[2], };
-  const int argc = out3 ? 3 : out2 ? 2 : out1 ? 1 : 0;
+                     string* out3,
+                     string* out4,
+                     string* out5,
+                     string* out6) {
+  const RE2::Arg outs[] = { out1, out2, out3, out4, out5, out6};
+  const RE2::Arg* const args[] = {&outs[0], &outs[1], &outs[2], 
+                                  &outs[3], &outs[4], &outs[5]};
+  const int argc =
+      out6 ? 6 : out5 ? 5 : out4 ? 4 : out3 ? 3 : out2 ? 2 : out1 ? 1 : 0;
   return regex_function(input, regexp, args, argc);
 }
 
@@ -94,7 +99,10 @@ class RE2RegExp : public RegExp {
                        bool anchor_at_start,
                        string* matched_string1,
                        string* matched_string2,
-                       string* matched_string3) const {
+                       string* matched_string3,
+                       string* matched_string4,
+                       string* matched_string5,
+                       string* matched_string6) const {
     DCHECK(input_string);
     StringPiece* utf8_input =
         static_cast<RE2RegExpInput*>(input_string)->Data();
@@ -102,11 +110,13 @@ class RE2RegExp : public RegExp {
     if (anchor_at_start) {
       return DispatchRE2Call(RE2::ConsumeN, utf8_input, utf8_regexp_,
                              matched_string1, matched_string2,
-                             matched_string3);
+                             matched_string3, matched_string4,
+                             matched_string5, matched_string6);
     } else {
       return DispatchRE2Call(RE2::FindAndConsumeN, utf8_input, utf8_regexp_,
                              matched_string1, matched_string2,
-                             matched_string3);
+                             matched_string3, matched_string4,
+                             matched_string5, matched_string6);
     }
   }
 
@@ -115,10 +125,10 @@ class RE2RegExp : public RegExp {
                      string* matched_string) const {
     if (full_match) {
       return DispatchRE2Call(RE2::FullMatchN, input_string, utf8_regexp_,
-                             matched_string, NULL, NULL);
+                             matched_string, NULL, NULL, NULL, NULL, NULL);
     } else {
       return DispatchRE2Call(RE2::PartialMatchN, input_string, utf8_regexp_,
-                             matched_string, NULL, NULL);
+                             matched_string, NULL, NULL), NULL, NULL, NULL);
     }
   }
 
