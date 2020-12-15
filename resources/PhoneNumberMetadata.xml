@@ -11243,7 +11243,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>601123456</exampleNumber>
-        <nationalNumberPattern>6[02356]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>6[0-356]\d{7}</nationalNumberPattern>
       </mobile>
       <!-- Gamma concept network is being listed as VoIP as per
            http://www.gammaconcept.com/internet%20sat.html -->
@@ -16404,7 +16404,7 @@
             1(?:
               0[0-6]|
               1[0-5]|
-              20
+              2[014]
             )|
             7\d\d
           )\d{6}
@@ -20486,6 +20486,7 @@
           5(?:
             2[5-9]|
             4[3-589]|
+            5[1-9]|
             7\d|
             8[0-689]|
             9[0-8]
@@ -25264,14 +25265,13 @@
           (?:
             8(?:
               0(?:
-                1[0-8]|
+                1\d|
                 2[7-9]|
                 3[01]
               )|
               [1-8]\d\d|
               9(?:
-                [0-24]\d|
-                3[0-489]|
+                [0-4]\d|
                 5[0-2]
               )
             )|

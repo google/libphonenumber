@@ -1,3 +1,9 @@
+Dec 15, 2020: v8.12.15
+Metadata changes:
+ - Updated phone metadata for region code(s): GN, KE, MU, SG
+ - Updated carrier data for country calling code(s):
+   65 (en), 224 (en), 230 (en), 254 (en)
+
 Dec 02, 2020: v8.12.14
 Metadata changes:
  - Updated phone metadata for region code(s):
