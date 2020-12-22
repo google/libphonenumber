@@ -264,7 +264,7 @@ public class CsvTableTest {
   }
 
   private static String join(String... lines) {
-    return String.join("\n", lines) + "\n";
+    return String.join(getNewLineChar(), lines) + getNewLineChar();
   }
 
   private static RangeKey key(String spec, Integer... lengths) {
@@ -272,4 +272,12 @@ public class CsvTableTest {
         spec.isEmpty() ? RangeSpecification.empty() : RangeSpecification.parse(spec);
     return RangeKey.create(prefix, ImmutableSet.copyOf(lengths));
   }
+
+  private static String getNewLineChar() {
+    Optional<String> newLineChar = Optional.ofNullable(System.getProperty("line.separator"));
+    // If not present, we would like to fall-back to Unix's line-end character as that is more
+    // common.
+    return newLineChar.isPresent() ? newLineChar.get() : "\n";
+  }
 }
+

@@ -17,7 +17,6 @@ package com.google.i18n.phonenumbers.metadata.model;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -26,6 +25,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -98,14 +98,23 @@ public class AltFormatsSchemaTest {
     try (StringWriter out = new StringWriter()) {
       AltFormatsSchema.exportCsv(out, Arrays.asList(altFormats));
       // Ignore trailing empty lines.
-      return Splitter.on('\n').splitToList(CharMatcher.is('\n').trimTrailingFrom(out.toString()));
+      return Splitter.on(getNewLineChar()).splitToList(out.toString().trim());
     }
   }
 
   private static ImmutableList<AltFormatSpec> importCsv(String... lines)
       throws IOException {
     // Add a trailing newline, since that's what we expect in the real CSV files.
-    StringReader file = new StringReader(Joiner.on('\n').join(lines) + "\n");
+    StringReader file =
+        new StringReader(Joiner.on(getNewLineChar()).join(lines) + getNewLineChar());
     return AltFormatsSchema.importAltFormats(file);
   }
+
+  private static String getNewLineChar() {
+    Optional<String> newLineChar = Optional.ofNullable(System.getProperty("line.separator"));
+    // If not present, we would like to fall-back to Unix's line-end character as that is more
+    // common.
+    return newLineChar.isPresent() ? newLineChar.get() : "\n";
+  }
 }
+
