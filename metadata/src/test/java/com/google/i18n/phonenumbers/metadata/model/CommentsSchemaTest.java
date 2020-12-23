@@ -38,6 +38,9 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class CommentsSchemaTest {
+
+  private static final String NEW_LINE_CHAR = getNewLineChar();
+
   private static final PhoneRegion REGION_US = PhoneRegion.of("US");
   private static final PhoneRegion REGION_CA = PhoneRegion.of("CA");
 
@@ -143,23 +146,22 @@ public class CommentsSchemaTest {
     try (StringWriter out = new StringWriter()) {
       CommentsSchema.exportCsv(out, Arrays.asList(comments));
       // Ignore trailing empty lines.
-      return Splitter.on(getNewLineChar()).splitToList(out.toString().trim());
+      return Splitter.on(NEW_LINE_CHAR).splitToList(out.toString().trim());
     }
   }
 
   private static ImmutableList<Comment> importCsv(String... lines)
       throws IOException {
     // Add a trailing newline, since that's what we expect in the real CSV files.
-    StringReader file =
-        new StringReader(Joiner.on(getNewLineChar()).join(lines) + getNewLineChar());
+    StringReader file = new StringReader(Joiner.on(NEW_LINE_CHAR).join(lines) + NEW_LINE_CHAR);
     return CommentsSchema.importComments(file);
   }
 
   private static String getNewLineChar() {
-    Optional<String> newLineChar = Optional.ofNullable(System.getProperty("line.separator"));
+    Optional<String> newLineChar = Optional.ofNullable(LINE_SEPARATOR.value());
     // If not present, we would like to fall-back to Unix's line-end character as that is more
     // common.
-    return newLineChar.isPresent() ? newLineChar.get() : "\n";
+    return newLineChar.orElse("\n");
   }
 }
 

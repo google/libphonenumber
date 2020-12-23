@@ -64,6 +64,8 @@ public class CsvTableTest {
   private static final Column<Boolean> REGION_CA = REGIONS.getColumn(PhoneRegion.of("CA"));
   private static final Column<Boolean> REGION_US = REGIONS.getColumn(PhoneRegion.of("US"));
 
+  private static final String NEW_LINE_CHAR = getNewLineChar();
+
   @Test
   public void testRangeTableExport() throws IOException {
     ImmutableList<Column<?>> columns =
@@ -264,7 +266,7 @@ public class CsvTableTest {
   }
 
   private static String join(String... lines) {
-    return String.join(getNewLineChar(), lines) + getNewLineChar();
+    return String.join(NEW_LINE_CHAR, lines) + NEW_LINE_CHAR;
   }
 
   private static RangeKey key(String spec, Integer... lengths) {
@@ -274,10 +276,10 @@ public class CsvTableTest {
   }
 
   private static String getNewLineChar() {
-    Optional<String> newLineChar = Optional.ofNullable(System.getProperty("line.separator"));
+    Optional<String> newLineChar = Optional.ofNullable(LINE_SEPARATOR.value());
     // If not present, we would like to fall-back to Unix's line-end character as that is more
     // common.
-    return newLineChar.isPresent() ? newLineChar.get() : "\n";
+    return newLineChar.orElse("\n");
   }
 }
 
