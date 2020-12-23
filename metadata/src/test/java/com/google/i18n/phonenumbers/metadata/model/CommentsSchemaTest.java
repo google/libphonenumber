@@ -15,6 +15,7 @@
  */
 package com.google.i18n.phonenumbers.metadata.model;
 
+import static com.google.common.base.StandardSystemProperty.LINE_SEPARATOR;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.model.NumberingScheme.Comment.anchor;
 import static com.google.i18n.phonenumbers.metadata.proto.Types.XmlNumberType.XML_FIXED_LINE;

@@ -16,6 +16,7 @@
 package com.google.i18n.phonenumbers.metadata.table;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.StandardSystemProperty.LINE_SEPARATOR;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.model.RangesTableSchema.AREA_CODE_LENGTH;
 import static com.google.i18n.phonenumbers.metadata.model.RangesTableSchema.COMMENT;
