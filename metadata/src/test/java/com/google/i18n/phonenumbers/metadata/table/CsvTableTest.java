@@ -65,7 +65,7 @@ public class CsvTableTest {
   private static final Column<Boolean> REGION_CA = REGIONS.getColumn(PhoneRegion.of("CA"));
   private static final Column<Boolean> REGION_US = REGIONS.getColumn(PhoneRegion.of("US"));
 
-  private static final String NEW_LINE_CHAR = getNewLineChar();
+  private static final String NEW_LINE = LINE_SEPARATOR.value();
 
   @Test
   public void testRangeTableExport() throws IOException {
@@ -94,7 +94,6 @@ public class CsvTableTest {
     table.put(PhoneRegion.of("US"), ValidNumberType.PREMIUM_RATE, DigitSequence.of("945123456"));
     table.put(PhoneRegion.of("CA"), ValidNumberType.MOBILE, DigitSequence.of("555123456"));
     // Ordering is well defined in the CSV output.
-    // TODO: Consider making columns able to identify if their values need CSV escaping.
     CsvTable<ExampleNumberKey> csv = ExamplesTableSchema.toCsv(table);
     assertCsv(csv,
         "Region ; Type         ; Number",
@@ -267,20 +266,13 @@ public class CsvTableTest {
   }
 
   private static String join(String... lines) {
-    return String.join(NEW_LINE_CHAR, lines) + NEW_LINE_CHAR;
+    return String.join(NEW_LINE, lines) + NEW_LINE;
   }
 
   private static RangeKey key(String spec, Integer... lengths) {
     RangeSpecification prefix =
         spec.isEmpty() ? RangeSpecification.empty() : RangeSpecification.parse(spec);
     return RangeKey.create(prefix, ImmutableSet.copyOf(lengths));
-  }
-
-  private static String getNewLineChar() {
-    Optional<String> newLineChar = Optional.ofNullable(LINE_SEPARATOR.value());
-    // If not present, we would like to fall-back to Unix's line-end character as that is more
-    // common.
-    return newLineChar.orElse("\n");
   }
 }
 
