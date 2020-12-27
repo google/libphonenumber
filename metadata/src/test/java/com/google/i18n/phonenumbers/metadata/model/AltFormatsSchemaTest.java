@@ -15,9 +15,9 @@
  */
 package com.google.i18n.phonenumbers.metadata.model;
 
+import static com.google.common.base.StandardSystemProperty.LINE_SEPARATOR;
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -32,6 +32,8 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class AltFormatsSchemaTest {
+
+  private static final String NEW_LINE = LINE_SEPARATOR.value();
 
   @Test
   public void testSimple_export() throws IOException {
@@ -98,14 +100,15 @@ public class AltFormatsSchemaTest {
     try (StringWriter out = new StringWriter()) {
       AltFormatsSchema.exportCsv(out, Arrays.asList(altFormats));
       // Ignore trailing empty lines.
-      return Splitter.on('\n').splitToList(CharMatcher.is('\n').trimTrailingFrom(out.toString()));
+      return Splitter.on(NEW_LINE).omitEmptyStrings().splitToList(out.toString());
     }
   }
 
   private static ImmutableList<AltFormatSpec> importCsv(String... lines)
       throws IOException {
     // Add a trailing newline, since that's what we expect in the real CSV files.
-    StringReader file = new StringReader(Joiner.on('\n').join(lines) + "\n");
+    StringReader file = new StringReader(Joiner.on(NEW_LINE).join(lines) + NEW_LINE);
     return AltFormatsSchema.importAltFormats(file);
   }
 }
+
