@@ -16,6 +16,7 @@
 # some cases the carrier's own home page.
 
 852460|中国联通
+8524607|Multibyte
 8524610|新移动通讯
 8524611|新移动通讯
 8524612|新移动通讯

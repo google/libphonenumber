@@ -320,7 +320,7 @@
 46730|TeliaSonera
 467301|Maingate (Sierra Wireless)
 467310|Telenor Sverige
-467311|Maingate (Sierra Wireless)
+467311|TeliaSonera
 4673120|Telavox AB
 46731214|Voice Integrate
 46731215|COOLTEL APS
