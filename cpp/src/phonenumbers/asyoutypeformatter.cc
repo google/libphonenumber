@@ -200,7 +200,7 @@ void AsYouTypeFormatter::GetAvailableFormats(const string& leading_digits) {
 void AsYouTypeFormatter::NarrowDownPossibleFormats(
     const string& leading_digits) {
   const int index_of_leading_digits_pattern =
-      leading_digits.length() - kMinLeadingDigitsLength;
+      static_cast<int>(leading_digits.length() - kMinLeadingDigitsLength);
 
   for (list<const NumberFormat*>::iterator it = possible_formats_.begin();
        it != possible_formats_.end(); ) {
@@ -453,8 +453,8 @@ bool AsYouTypeFormatter::AbleToExtractLongerNdd() {
     // Remove the previously extracted NDD from prefixBeforeNationalNumber. We
     // cannot simply set it to empty string because people sometimes incorrectly
     // enter national prefix after the country code, e.g. +44 (0)20-1234-5678.
-    int index_of_previous_ndd =
-        prefix_before_national_number_.find_last_of(extracted_national_prefix_);
+    int index_of_previous_ndd = static_cast<int>(
+        prefix_before_national_number_.find_last_of(extracted_national_prefix_));
     prefix_before_national_number_.resize(index_of_previous_ndd);
   }
   string new_national_prefix;
@@ -525,7 +525,7 @@ int AsYouTypeFormatter::GetRememberedPosition() const {
 void AsYouTypeFormatter::AppendNationalNumber(const string& national_number,
                                               string* phone_number) const {
   int prefix_before_national_number_length =
-      prefix_before_national_number_.size();
+      static_cast<int>(prefix_before_national_number_.size());
   if (should_add_space_after_national_prefix_ &&
       prefix_before_national_number_length > 0 &&
       prefix_before_national_number_.at(
@@ -571,7 +571,7 @@ void AsYouTypeFormatter::AttemptToChooseFormattingPattern(
 
 void AsYouTypeFormatter::InputAccruedNationalNumber(string* number) {
   DCHECK(number);
-  int length_of_national_number = national_number_.length();
+  int length_of_national_number = static_cast<int>(national_number_.length());
 
   if (length_of_national_number > 0) {
     string temp_national_number;
@@ -621,8 +621,8 @@ void AsYouTypeFormatter::RemoveNationalPrefixFromNationalNumber(
     // Since some national prefix patterns are entirely optional, check that a
     // national prefix could actually be extracted.
     if (pattern.Consume(consumed_input.get())) {
-      start_of_national_number =
-          national_number_.length() - consumed_input->ToString().length();
+      start_of_national_number = static_cast<int>(
+          national_number_.length() - consumed_input->ToString().length());
       if (start_of_national_number > 0) {
         // When the national prefix is detected, we use international formatting
         // rules instead of national ones, because national formatting rules
@@ -650,9 +650,9 @@ bool AsYouTypeFormatter::AttemptToExtractIdd() {
 
   if (international_prefix.Consume(consumed_input.get())) {
     is_complete_number_ = true;
-    const int start_of_country_code =
+    const int start_of_country_code = static_cast<int>(
         accrued_input_without_formatting_.length() -
-        consumed_input->ToString().length();
+        consumed_input->ToString().length());
 
     national_number_.clear();
     accrued_input_without_formatting_.tempSubString(start_of_country_code)
@@ -758,7 +758,7 @@ int AsYouTypeFormatter::ConvertUnicodeStringPosition(const UnicodeString& s,
   }
   string substring;
   s.tempSubString(0, pos).toUTF8String(substring);
-  return substring.length();
+  return static_cast<int>(substring.length());
 }
 
 }  // namespace phonenumbers
