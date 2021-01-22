@@ -439,7 +439,7 @@ inline UnicodeText UTF8ToUnicodeText(const char* utf8_buf, int len,
 }
 
 inline UnicodeText UTF8ToUnicodeText(const string& utf_string, bool do_copy) {
-  return UTF8ToUnicodeText(utf_string.data(), utf_string.size(), do_copy);
+  return UTF8ToUnicodeText(utf_string.data(), static_cast<int>(utf_string.size()), do_copy);
 }
 
 inline UnicodeText UTF8ToUnicodeText(const char* utf8_buf, int len) {

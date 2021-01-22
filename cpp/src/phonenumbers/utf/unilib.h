@@ -79,7 +79,7 @@ inline bool IsTrailByte(char x) {
 //  interchange valid UTF-8
 int SpanInterchangeValid(const char* src, int byte_length);
 inline int SpanInterchangeValid(const std::string& src) {
-  return SpanInterchangeValid(src.data(), src.size());
+  return SpanInterchangeValid(src.data(), static_cast<int>(src.size()));
 }
 
 // Returns true if the source is all interchange valid UTF-8
@@ -89,7 +89,7 @@ inline bool IsInterchangeValid(const char* src, int byte_length) {
   return (byte_length == SpanInterchangeValid(src, byte_length));
 }
 inline bool IsInterchangeValid(const std::string& src) {
-  return IsInterchangeValid(src.data(), src.size());
+  return IsInterchangeValid(src.data(), static_cast<int>(src.size()));
 }
 
 }  // namespace UniLib

@@ -55,7 +55,7 @@ string UnicodeStringToUtf8String(const UnicodeString& source) {
 UnicodeString Utf8StringToUnicodeString(const string& source) {
   // Note that we don't use icu::StringPiece(const string&).
   return UnicodeString::fromUTF8(
-      icu::StringPiece(source.c_str(), source.size()));
+      icu::StringPiece(source.c_str(), static_cast<int>(source.size())));
 }
 
 }  // namespace
@@ -145,7 +145,7 @@ class IcuRegExp : public RegExp {
     for (size_t i = 0; i < arraysize(matched_strings); ++i) {
       if (matched_strings[i]) {
         // Groups are counted from 1 rather than 0.
-        const int group_index = i + 1;
+        const int group_index = static_cast<int>(i + 1);
         if (group_index > matcher->groupCount()) {
           return false;
         }
