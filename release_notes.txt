@@ -1,3 +1,9 @@
+Jan 27, 2021: v8.12.17
+Metadata changes:
+ - Updated phone metadata for region code(s): CI, GR, MO, TR, VU
+ - Updated geocoding data for country calling code(s): 225 (en)
+ - Updated carrier data for country calling code(s): 853 (en)
+
 Jan 12, 2021: v8.12.16
 Metadata changes:
  - Updated phone metadata for region code(s):
