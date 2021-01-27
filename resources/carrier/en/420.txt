@@ -169,7 +169,14 @@
 42079260|SIA Net Balt
 4207927|O2
 42079390|T-Mobile
-4207940|Vectone Distribution Czech Republic s.r.o(Mundio)
+4207940|O2
+4207941|O2
+4207942|O2
+4207943|O2
+4207944|O2
+4207945|O2
+4207946|O2
+4207947|O2
 4207950|Vectone Distribution Czech Republic s.r.o(Mundio)
 42079750|Dial Telecom
 4207976|T-Mobile

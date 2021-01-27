@@ -1,3 +1,21 @@
+Jan 27, 2021: v8.12.17
+Metadata changes:
+ - Updated phone metadata for region code(s): CI, GR, MO, TR, VU
+ - Updated geocoding data for country calling code(s): 225 (en)
+ - Updated carrier data for country calling code(s): 853 (en)
+
+Jan 12, 2021: v8.12.16
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   870, AL, AR, BA, BW, CO, DE, DM, DO, GB, GI, HK, KW, MK, MO, MY, OM, SG, SL,
+   TH
+ - Updated short number metadata for region code(s): AR
+ - Updated geocoding data for country calling code(s): 44 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 46 (en), 57 (en), 60 (en), 61 (en), 65 (en), 66 (en), 227 (en),
+   232 (en), 267 (en), 350 (en), 351 (en), 356 (en), 389 (en), 420 (en),
+   852 (en, zh), 853 (en)
+
 Dec 15, 2020: v8.12.15
 Metadata changes:
  - Updated phone metadata for region code(s): GN, KE, MU, SG

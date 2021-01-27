@@ -18,7 +18,7 @@
 22780|Orange
 22781|Orange
 22782|Orange
-22783|SahelCom
+22783|Niger Telecoms
 22784|Moov
 22785|Moov
 22786|Airtel
@@ -28,7 +28,7 @@
 22790|Orange
 22791|Orange
 22792|Orange
-22793|SahelCom
+22793|Niger Telecoms
 22794|Moov
 22795|Moov
 22796|Airtel

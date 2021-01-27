@@ -228,6 +228,7 @@
 573233|Claro
 573234|Claro
 573235|Claro
+57324|Tigo
 57330|Movistar
 5733300|Setroc Mobile
 5733301|Setroc Mobile

@@ -81,6 +81,7 @@ endfunction (find_required_program)
 option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
 option ("REGENERATE_METADATA" "Regenerate metadata instead of using it from the source tree" "ON")
 option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
+option ("USE_PROTOBUF_LITE" "Link to protobuf-lite" "OFF")
 option ("USE_BOOST" "Use Boost" "ON")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
@@ -126,9 +127,15 @@ if (${USE_RE2} STREQUAL "ON")
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
 endif ()
 
-find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
-                       "Google Protocol Buffers")
-check_library_version (PC_PROTOBUF protobuf>=2.4)
+if (${USE_PROTOBUF_LITE} STREQUAL "ON")
+  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf-lite
+                         "Google Protocol Buffers")
+  check_library_version (PC_PROTOBUF protobuf-lite>=2.4)
+else ()
+  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
+                         "Google Protocol Buffers")
+  check_library_version (PC_PROTOBUF protobuf>=2.4)
+endif ()
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
 check_library_version (PC_ICU_UC icu-uc>=4.4)
