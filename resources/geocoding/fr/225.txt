@@ -31,18 +31,18 @@
 225234|Banco, Abidjan
 225235|Banco, Abidjan
 22524|Abobo, Abidjan
-2252520|Plateau, Abidjan
-2252521|Abidjan (southeast)
-2252522|Cocody, Abidjan
-2252523|Banco, Abidjan
-2252524|Abobo, Abidjan
-2252530|Yamoussoukro
-2252531|Bouaké
-2252532|Daloa
-2252533|Man
-2252534|San-Pédro
-2252535|Abengourou
-2252536|Korhogo
+22525200|Plateau, Abidjan
+22525210|Abidjan (southeast)
+22525220|Cocody, Abidjan
+22525230|Banco, Abidjan
+22525240|Abobo, Abidjan
+22525300|Yamoussoukro
+22525310|Bouaké
+22525320|Daloa
+22525330|Man
+22525340|San-Pédro
+22525350|Abengourou
+22525360|Korhogo
 2252720|Plateau, Abidjan
 2252721|Abidjan (southeast)
 2252722|Cocody, Abidjan

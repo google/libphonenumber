@@ -1,3 +1,11 @@
+Feb 08, 2021: v8.12.18
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 676
+ - Updated phone metadata for region code(s): CI, IR, SG, TO
+ - Updated geocoding data for country calling code(s): 225 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 225 (en), 676 (en)
+
 Jan 27, 2021: v8.12.17
 Metadata changes:
  - Updated phone metadata for region code(s): CI, GR, MO, TR, VU
