@@ -3388,7 +3388,7 @@
       <availableFormats>
         <!-- Mobile numbers -->
         <numberFormat pattern="(\d{2})(\d{5})">
-          <leadingDigits>[5-8]</leadingDigits>
+          <leadingDigits>[5-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
