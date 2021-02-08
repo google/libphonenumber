@@ -5753,7 +5753,20 @@
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
             [03-9]|
-            2[0-4]
+            2(?:
+              [02-4]|
+              1[023578]
+            )
+          </leadingDigits>
+          <leadingDigits>
+            [03-9]|
+            2(?:
+              [02-4]|
+              1(?:
+                [02357]|
+                80
+              )
+            )
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -5779,13 +5792,7 @@
           (?:
             2(?:
               0[023]|
-              12[0-3]8|
-              [23][045]|
-              4[03-5]|
-              5(?:
-                2[0-4]|
-                3[0-6]
-              )0|
+              [15]\d{3}|
               7(?:
                 2(?:
                   0[23]|
@@ -5808,7 +5815,11 @@
               6[08]
             )
           )\d{5}|
-          21[02357]\d{5}
+          2(?:
+            1[02357]|
+            [23][045]|
+            4[03-5]
+          )\d{5}
         </nationalNumberPattern>
       </fixedLine>
       <!-- Added the prefixes 4[0-2] (Moov), 5[7-9] and 61 because SMS messages have been
@@ -5823,11 +5834,7 @@
           (?:
             (?:
               0(?:
-                1(?:
-                  0[1-3]|
-                  [457][0-3]
-                )|
-                5[04-9][4-6]|
+                [15]\d\d|
                 7(?:
                   [04-8][7-9]|
                   9[78]
@@ -14585,7 +14592,7 @@
             9(?:
               [0-2]\d|
               3[01]|
-              4[45]|
+              4[0145]|
               81|
               9[19]
             )
@@ -25369,7 +25376,7 @@
               0(?:
                 1\d|
                 2[0147-9]|
-                3[013-5]
+                3[013-7]
               )|
               [1-8]\d\d|
               9(?:
@@ -27166,7 +27173,7 @@
         </numberFormat>
         <!-- Format for mobile and premium rate numbers. -->
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[5-8]</leadingDigits>
+          <leadingDigits>[5-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
@@ -27174,7 +27181,10 @@
         <nationalNumberPattern>
           (?:
             0800|
-            [5-8]\d{3}
+            (?:
+              [5-8]\d\d|
+              999
+            )\d
           )\d{3}|
           [2-8]\d{4}
         </nationalNumberPattern>
@@ -27200,15 +27210,18 @@
         <possibleLengths national="7"/>
         <exampleNumber>7715123</exampleNumber>
         <nationalNumberPattern>
-          6(?:
-            3[02]|
-            8[5-9]
-          )\d{4}|
           (?:
-            6[09]|
-            7\d|
-            8[46-9]
-          )\d{5}
+            6(?:
+              [09]\d|
+              3[02]|
+              8[15-9]
+            )|
+            (?:
+              7\d|
+              8[46-9]
+            )\d|
+            999
+          )\d{4}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
