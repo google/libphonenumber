@@ -238,7 +238,9 @@ Alternatives to our own versions:
     If you don't want to do this, check out the port at
     https://github.com/MichaelRocks/libphonenumber-android, which does repackage
     the metadata and use `AssetManager#open()`, and may be depended on without
-    needing those specific loading optimizations from clients.
+    needing those specific loading optimizations from clients. You should also check
+    out the port at https://github.com/lionscribe/libphonenumber-android which also
+    supports geocoding, and only requires a one line code change.
 *   Javascript: If you don't want to use our version, which depends on Closure,
     there are several other options, including
     https://github.com/catamphetamine/libphonenumber-js - a stripped-down
