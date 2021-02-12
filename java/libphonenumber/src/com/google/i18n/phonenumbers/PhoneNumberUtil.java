@@ -2277,7 +2277,7 @@ public class PhoneNumberUtil {
    * Returns the metadata for the given region code or {@code null} if the region code is invalid
    * or unknown.
    */
-  PhoneMetadata getMetadataForRegion(String regionCode) {
+  public PhoneMetadata getMetadataForRegion(String regionCode) {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
