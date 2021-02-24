@@ -188,9 +188,9 @@ Not all regions support mobile number portability. For those that don't, we retu
 
 ### What about M2M (machine to machine) numbers?
 
-libphonenumber does not support M2M numbers at the moment, but might in the future.
+libphonenumber currently does not support M2M numbers, but might in the future.
 
-Some of the reasons why libphonenumber doesn't support M2M is lack of standardization and its demand for new Util API:
+The reason for Libphonenumber to not provide M2M support is related to the lack of standardization and the need for a new Util API (not in radar for the time being):
 
 - We understand that use cases for M2M are diverse. We don't require that a number to be supported by the library has a human at the other end since we already accept premium rate services and they might go to an automated system instead. But to date we only accept ranges that a human migh call or send an SMS to.
 
@@ -200,9 +200,9 @@ Some of the reasons why libphonenumber doesn't support M2M is lack of standardiz
 a different country, for working out what kind of cost might be associated with  a number in an advert, etc. We don't think the lack of M2M support hinders any
 of those use-case, but we might be wrong.
 
-- Usually M2M numbers are atleast 2-5 digits longer than the usual phone numbers in respective region. Accepting them under known categories will make isPossible() test even more linient and allow more false postives in greater degree. So we would like to introduce it as separate Util like PhoneNumberUtil and ShortNumberInfo.
+- Usually M2M numbers are at least 2-5 digits longer than the usual phone numbers in the respective regions. Accepting them under known categories will make isPossible() test even more lenient increasing the number of false positives. We would like to introduce it as separate Util like PhoneNumberUtil and ShortNumberInfo.
 
-Conclusion: **Unfortunately we will be not able commit for any deadline for support of M2M numbers.** So till the library support the M2M ranges, we recommed users to have workarounds in their client code itself. Please engage with the developer community at [Support M2M numbers](https://issuetracker.google.com/issues/74493346) with further information.
+Conclusion: **Unfortunately we will not be able to commit for any deadline to support M2M numbers.** We recommend users to implement workarounds in their client code itself. Please engage with the developer community at [Support M2M numbers](https://issuetracker.google.com/issues/74493346) with further information.
 
 ### What about numbers that are only valid for a set of subscribers?
 
