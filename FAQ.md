@@ -188,41 +188,21 @@ Not all regions support mobile number portability. For those that don't, we retu
 
 ### What about M2M (machine to machine) numbers?
 
-libphonenumber does not support M2M numbers at the moment, but might in the
-future.
+libphonenumber currently does not support M2M numbers, but might in the future.
 
-One of the reasons libphonenumber doesn't support M2M so far is because no one
-could explain their use to us sufficiently.
+The reason for Libphonenumber to not provide M2M support is related to the lack of standardization and the need for a new Util API (not in radar for the time being):
 
-We don't require that a number to be supported by the library has a human at the
-other end since we already accept premium rate services and they might go to an
-automated system instead. But to date we only accept ranges that a human might
-call or send an SMS to.
+- We understand that use cases for M2M are diverse. We don't require that a number to be supported by the library has a human at the other end since we already accept premium rate services and they might go to an automated system instead. But to date we only accept ranges that a human migh call or send an SMS to.
 
-M2M numbers would violate this assumption and we'd have to evaluate the
-consequences for existing APIs and clients if M2M numbers would be considered
-valid by the library. Clients of libphonenumber expect `mobile` and `fixed-line`
-numbers to have certain affordances, such as: Reachable for voice calls
-(and for mobile also SMS) as well as assuming standard cost. This expectation
-is broken by the lack of M2M standardization today.
+- M2M numbers would violate this assumption and we'd have to evaluate the consequences for existing APIs and clients if M2M numbers would be considered valid by the library. Clients of libphonenumber expect `mobile` and `fixed-line` numbers to have certain affordances, such as: Reachable for voice calls (and for mobile also SMS) as well as assuming standard cost. This expectation is broken by the lack of M2M standardization today.
 
-Many people use this library for formatting the numbers of their contacts, for
-allowing people to sign up for services, for working out how to dial someone in
-a different country, for working out what kind of cost might be associated with
-a number in an advert, etc. We don't think the lack of M2M support hinders any
+- Many people use this library for formatting the numbers of their contacts, for allowing people to sign up for services, for working out how to dial someone in
+a different country, for working out what kind of cost might be associated with  a number in an advert, etc. We don't think the lack of M2M support hinders any
 of those use-case, but we might be wrong.
 
-If you would like libphonenumber to support M2M numbers, please engage with the
-developer community at [Support M2M numbers](
-https://issuetracker.google.com/issues/74493346) with further
-information to address our questions and concerns such as:
+- Usually M2M numbers are at least 2-5 digits longer than the usual phone numbers in the respective regions. Accepting them under known categories will make isPossible() test even more lenient increasing the number of false positives. We would like to introduce it as separate Util like PhoneNumberUtil and ShortNumberInfo.
 
-*   **How to implement support?** e.g. new category, new library or method
-    to call - along with pros and cons, and impact on existing APIs
-*   **Authoritative and specific documentation** such as government sources since
-    we currently have less than a dozen sources, which have varied definitions
-
-More information and collabortation on this issue would be very welcomed!
+Conclusion: **Unfortunately we will not be able to commit for any deadline to support M2M numbers.** We recommend users to implement workarounds in their client code itself. Please engage with the developer community at [Support M2M numbers](https://issuetracker.google.com/issues/74493346) with further information.
 
 ### What about numbers that are only valid for a set of subscribers?
 
