@@ -484,9 +484,8 @@
 180997|Orange
 180998|Orange
 180999|Tricom
-1868263|Digicel
-1868264|Digicel
-1868265|Digicel
+186825|Digicel
+186826|Digicel
 1868266|bmobile
 1868267|bmobile
 1868268|bmobile
@@ -495,7 +494,11 @@
 186828|bmobile
 186829|bmobile
 18683|Digicel
-18684|bmobile
+186843|Digicel
+186846|bmobile
+186847|bmobile
+186848|bmobile
+186849|bmobile
 1868620|bmobile
 1868678|bmobile
 186868|bmobile
