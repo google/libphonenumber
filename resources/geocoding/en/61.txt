@@ -42456,7 +42456,7 @@
 61851086|Wyndham
 61851087|Broome
 61851088|Christmas Island
-61851089|Cocos (Keeling) Island
+61851089|Cocos Island
 61851090|Dampier
 61851091|De Grey
 61851092|Derby
@@ -42542,6 +42542,7 @@
 61851173|Wyndham
 61851174|Broome
 61851175|Christmas Island
+61851176|Cocos Island
 61851177|Dampier
 61851178|De Grey
 61851179|Derby
@@ -42573,10 +42574,31 @@
 61851205|Port Hedland
 61851206|Dampier
 61851207|De Grey
+61851209|Mitchell
+61851211|Mount Bruce
+61851213|Newman
+61851215|Onslow
+61851217|Ord
+61851219|Pannawonica
+61851221|Paraburdoo
+61851222|Christmas Island
+61851223|Cocos Island
+61851224|Dampier
+61851225|De Grey
+61851226|Derby
+61851227|Fitzroy Crossing
+61851228|Great Sandy
+61851229|Hall's Creek
+61851230|Karratha
+61851231|Kununurra
 61851232|Port Hedland
 61851233|Port Hedland
 61851234|Broome
 61851235|Christmas Island
+61851236|Leopold
+61851237|Marble Bar
+61851238|Millstream
+61851239|Mitchell
 6185124|Karratha
 61851250|Newman
 61851251|Onslow
@@ -42594,6 +42616,19 @@
 61851263|Whaleback
 61851264|Wittenoom
 61851265|Wyndham
+61851267|Roebuck
+61851269|Sandfire
+6185127|Port Hedland
+61851281|Telfer
+61851283|Tom Price
+61851285|Whaleback
+61851287|Wittenoom
+61851289|Wyndham
+61851290|Telfer
+61851291|Tom Price
+61851292|Whaleback
+61851293|Wittenoom
+61851294|Wyndham
 61860000|Kalgoorlie
 61860001|Burracoppin
 61860002|Burracoppin
@@ -55932,6 +55967,7 @@
 61891700|Christmas Island
 61891701|Christmas Island
 61891702|Cocos Island
+61891703|Cocos Island
 61891704|Fitzroy Crossing
 61891705|Fitzroy Crossing
 61891706|Great Sandy
@@ -56063,14 +56099,8 @@
 61891938|Broome
 61891939|Derby
 6189194|Broome
-61891950|Broome
-61891951|Broome
-61891952|Broome
-61891953|Broome
-61891954|Broome
-61891955|Broome
-61891956|Broome
-61891957|Broome
+6189195|Broome
+61891958|Christmas Island
 61891959|Cocos Island
 61891960|Broome
 61891961|Derby
