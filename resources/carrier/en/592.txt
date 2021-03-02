@@ -22,6 +22,9 @@
 59261|Guyana Telephone and Telegraph Company
 59262|Guyana Telephone and Telegraph Company
 592630|Digicel Guyana
+592632|Digicel Guyana
+592636|Digicel Guyana
+592637|Digicel Guyana
 592638|Guyana Telephone and Telegraph Company
 592639|Guyana Telephone and Telegraph Company
 59264|Guyana Telephone and Telegraph Company
