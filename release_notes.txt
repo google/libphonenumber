@@ -1,3 +1,29 @@
+Mar 01, 2021: v8.12.19
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   882, AU, BJ, BW, CC, CX, EH, KZ, MA, MQ, MU, NO, RE, SG, SJ, SL, TJ, TT, US,
+   YT
+ - New geocoding data for country calling code(s): 1945 (en)
+ - Updated geocoding data for country calling code(s): 61 (en), 267 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en), 41 (en), 65 (en), 221 (en), 229 (en), 230 (en), 232 (en), 262 (en),
+   592 (en), 596 (en), 882 (en), 992 (en), 1868 (en)
+ - Updated / refreshed time zone meta data.
+
+Feb 08, 2021: v8.12.18
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 676
+ - Updated phone metadata for region code(s): CI, IR, SG, TO
+ - Updated geocoding data for country calling code(s): 225 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 225 (en), 676 (en)
+
+Jan 27, 2021: v8.12.17
+Metadata changes:
+ - Updated phone metadata for region code(s): CI, GR, MO, TR, VU
+ - Updated geocoding data for country calling code(s): 225 (en)
+ - Updated carrier data for country calling code(s): 853 (en)
+
 Jan 12, 2021: v8.12.16
 Metadata changes:
  - Updated phone metadata for region code(s):
