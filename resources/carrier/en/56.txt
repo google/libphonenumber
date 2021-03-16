@@ -500,7 +500,17 @@
 5623330|Claro
 5623331|Linksat Comunicaciones Spa.
 5623332|Linksat Comunicaciones Spa.
+5623333|Entel
+5623334|Claro
+5623335|Claro
+5623336|Claro
+5623337|Claro
+5623338|Claro
 562334|Entel
+5623348|Claro
+5623349|Claro
+562335|Claro
+56236|Entel
 56322162|Entel
 56322163|Entel
 56322164|Entel

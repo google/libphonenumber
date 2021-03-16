@@ -916,12 +916,14 @@
 1442|America/Los_Angeles
 1443|America/New_York
 1445|America/New_York
+1447|America/Chicago
 1450|America/Toronto
 1458|America/Los_Angeles
 1463|America/New_York
 1469|America/Chicago
 1470|America/New_York
 1473|America/Grenada
+1474|America/Winnipeg
 1475|America/New_York
 1478|America/New_York
 1479|America/Chicago
@@ -1609,6 +1611,7 @@
 1832|America/Chicago
 1838|America/New_York
 1839|America/New_York
+1840|America/Los_Angeles
 1843|America/New_York
 1845|America/New_York
 1847|America/Chicago
@@ -2867,7 +2870,7 @@
 565|America/Santiago
 566|America/Santiago
 567|America/Santiago
-56800|America/Santiago
+568|America/Santiago
 569|America/Santiago
 57|America/Bogota
 58|America/Caracas
