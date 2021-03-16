@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2021 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,34 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-843|Viettel Mobile
-8452|Vietnamobile
-8455|Reddi
-8456|Vietnamobile
-8458|Vietnamobile
-8459|G-Mobile
-847|MobiFone
-8481|Vinaphone
-8482|Vinaphone
-8483|Vinaphone
-8484|Vinaphone
-8485|Vinaphone
-8486|Viettel Mobile
-8487|Vinaphone
-8488|Vinaphone
-8489|MobiFone
-8490|MobiFone
-8491|Vinaphone
-8492|Vietnamobile
-8493|MobiFone
-8494|Vinaphone
-8496|Viettel
-8497|Viettel
-8498|Viettel
-84993|G-Mobile
-84994|G-Mobile
-84995|G-Mobile
-84996|G-Mobile
-84997|G-Mobile
-84998|Indochina Telecom
-84999|Indochina Telecom
+# https://www.itu.int/oth/T0202000077/en
+
+96121|Beirut
+96124|Metn
+96125|Chouf
+96126|North Lebanon
+96127|South Lebanon
+96128|Bekaa
+96129|Jbeil & Keserwan

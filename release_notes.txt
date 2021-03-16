@@ -1,3 +1,14 @@
+Mar 16, 2021: v8.12.20
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, CA, CL, CM, EH, IM, JP, LB, MA, MC, MY, SG, US
+ - New geocoding data for country calling code(s):
+   961 (en), 1447 (en), 1474 (en), 1840 (en)
+ - Updated geocoding data for country calling code(s): 1854 (en)
+ - Updated carrier data for country calling code(s):
+   56 (en), 60 (en), 65 (en), 84 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 01, 2021: v8.12.19
 Metadata changes:
  - Updated phone metadata for region code(s):
