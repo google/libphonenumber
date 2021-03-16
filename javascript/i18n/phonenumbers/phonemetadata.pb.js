@@ -27,6 +27,7 @@ goog.provide('i18n.phonenumbers.PhoneMetadata');
 goog.provide('i18n.phonenumbers.PhoneMetadataCollection');
 
 goog.require('goog.proto2.Message');
+goog.require('goog.proto2.Descriptor');
 
 
 

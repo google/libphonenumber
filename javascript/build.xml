@@ -47,7 +47,7 @@
         <arg line='-f "--jscomp_error=misplacedTypeAnnotation"' />
         <arg line='-f "--jscomp_error=missingProperties"' />
         <arg line='-f "--jscomp_error=missingRequire"' />
-        <arg line='-f "--jscomp_error=strictMissingRequire"' />
+        <arg line='-f "--jscomp_error=missingRequire"' />
         <arg line='-f "--jscomp_error=nonStandardJsDocs"' />
         <arg line='-f "--jscomp_error=strictModuleDepCheck"' />
         <arg line='-f "--jscomp_error=suspiciousCode"' />
