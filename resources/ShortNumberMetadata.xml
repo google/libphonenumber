@@ -3403,13 +3403,7 @@
         <nationalNumberPattern>
           11(?:
             [025]|
-            6(?:
-              00[06]|
-              1(?:
-                1[167]|
-                23
-              )
-            )
+            6\d{3}
           )
         </nationalNumberPattern>
       </shortCode>
