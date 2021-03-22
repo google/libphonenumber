@@ -581,7 +581,7 @@
 493328|Teltow
 493329|Stahnsdorf
 493331|Angermünde
-493332|Schwedt/Oder
+493332|Schwedt an der Oder
 4933331|Casekow
 4933332|Gartz Oder
 4933333|Tantow
@@ -589,7 +589,7 @@
 4933335|Pinnow Kreis Uckermark
 4933336|Passow Kreis Uckermark
 4933337|Altkünkendorf
-4933338|Stolpe/Oder
+4933338|Stolpe an der Oder
 493334|Eberswalde
 493335|Finowfurt
 4933361|Joachimsthal
@@ -622,7 +622,7 @@
 493344|Bad Freienwalde
 4933451|Heckelberg
 4933452|Neulewin
-4933454|Wölsickendorf/Wollenberg
+4933454|Wölsickendorf bei Wollenberg
 4933456|Wriezen
 4933457|Altreetz
 4933458|Falkenberg Mark
@@ -775,7 +775,7 @@
 4933984|Blumenthal bei Pritzwalk
 4933986|Falkenhagen Kreis Prignitz
 4933989|Sadenbeck
-49340|Dessau Anh
+49340|Dessau Anhalt
 49341|Leipzig
 4934202|Delitzsch
 4934203|Zwenkau
@@ -1160,9 +1160,9 @@
 4936021|Schlotheim
 4936022|Grossengottern
 4936023|Horsmar
-4936024|Diedorf bei Mühlhausen
+4936024|Diedorf bei Mühlhausen Thüringen
 4936025|Körner
-4936026|Struth bei Mühlhausen
+4936026|Struth bei Mühlhausen Thüringen
 4936027|Lengenfeld Unterm Stein
 4936028|Kammerforst Thüringen
 4936029|Menteroda
@@ -1199,7 +1199,7 @@
 493622|Waltershausen Thüringen
 493623|Friedrichroda
 493624|Ohrdruf
-4936252|Tambach-Dietharz
+4936252|Tambach-Dietharz Thüringer Wald
 4936253|Georgenthal Thüringer Wald
 4936254|Friedrichswerth
 4936255|Goldbach bei Gotha
@@ -1465,7 +1465,7 @@
 4937468|Treuen Vogtland
 49375|Zwickau
 4937600|Neumark Sachsen
-4937601|Mülsen Skt Jacob
+4937601|Mülsen Sankt Jacob
 4937602|Kirchberg Sachsen
 4937603|Wildenfels
 4937604|Mosel
@@ -1502,7 +1502,7 @@
 4938220|Wustrow Ostseebad
 4938221|Marlow
 4938222|Semlow
-4938223|Saal Vorpom
+4938223|Saal Vorpommern
 4938224|Gresenhorst
 4938225|Trinwillershagen
 4938226|Dierhagen Ostseebad
@@ -1512,7 +1512,7 @@
 4938231|Barth
 4938232|Zingst Ostseebad
 4938233|Prerow Ostseebad
-4938234|Born Darß
+4938234|Born am Darß
 4938292|Kröpelin
 4938293|Kühlungsborn Ostseebad
 4938294|Neubukow
@@ -1537,7 +1537,7 @@
 4938324|Velgast
 4938325|Rolofshagen
 4938326|Grimmen
-4938327|Elmenhorst Vorpom
+4938327|Elmenhorst Vorpommern
 4938328|Miltzow
 4938331|Rakow Vorpom
 4938332|Gross Bisdorf
@@ -1648,7 +1648,7 @@
 4938788|Gross Warnow
 4938789|Wolfshagen bei Perleberg
 4938791|Bad Wilsnack
-4938792|Lenzen (Elbe)
+4938792|Lenzen Elbe
 4938793|Dergenthin
 4938794|Cumlosen
 4938796|Viesecke
@@ -1697,7 +1697,7 @@
 4939008|Kunrau
 4939009|Badel
 493901|Salzwedel
-493902|Diesdorf Altm
+493902|Diesdorf Altmark
 4939030|Brunau
 4939031|Dähre
 4939032|Mahlsdorf bei Salzwedel
@@ -1757,11 +1757,11 @@
 4939243|Nedlitz bei Zerbst
 4939244|Steutz
 4939245|Loburg
-4939246|Lindau Anh
+4939246|Lindau Anhalt
 4939247|Güterglück
 4939248|Dobritz
 493925|Stassfurt
-4939262|Güsten Anh
+4939262|Güsten Anhalt
 4939263|Unseburg
 4939264|Kroppenstedt
 4939265|Löderburg
@@ -1810,7 +1810,7 @@
 4939384|Arendsee Altmark
 4939386|Seehausen Altmark
 4939387|Havelberg
-4939388|Goldbeck Altm
+4939388|Goldbeck Altmark
 4939389|Schollene
 4939390|Iden
 4939391|Lückstedt
@@ -1904,7 +1904,7 @@
 4939751|Penkun
 4939752|Blumenhagen bei Strasburg
 4939753|Strasburg
-4939754|Löcknitz Vorpom
+4939754|Löcknitz Vorpommern
 493976|Torgelow bei Ueckermünde
 4939771|Ueckermünde
 4939772|Rothemühl
@@ -2002,7 +2002,7 @@
 494106|Quickborn Kreis Pinneberg
 494107|Siek Kreis Stormarn
 494108|Rosengarten Kreis Harburg
-494109|Tangstedt Bz Hamburg
+494109|Tangstedt Bezirk Hamburg
 494120|Ellerhoop
 494121|Elmshorn
 494122|Uetersen
@@ -2880,7 +2880,7 @@
 495534|Eschershausen an der Lenne
 495535|Polle
 495536|Holzminden-Neuhaus
-495541|Hann. Münden
+495541|Hannoversch Münden
 495542|Witzenhausen
 495543|Staufenberg Niedersachsen
 495544|Reinhardshagen
@@ -3081,7 +3081,7 @@
 495907|Geeste
 495908|Wietmarschen-Lohne
 495909|Wettrup
-49591|Lingen (Ems)
+49591|Lingen Ems
 495921|Nordhorn
 495922|Bad Bentheim
 495923|Schüttorf
@@ -3279,7 +3279,7 @@
 496241|Worms
 496242|Osthofen
 496243|Monsheim
-496244|Westhofen Rheinhessenen
+496244|Westhofen Rheinhessen
 496245|Biblis
 496246|Eich Rheinhessen
 496247|Worms-Pfeddersheim
@@ -3619,7 +3619,7 @@
 496735|Eppelsheim
 496736|Bechenheim
 496737|Köngernheim
-496741|St Goar
+496741|Sankt Goar
 496742|Boppard
 496743|Bacharach
 496744|Oberwesel
@@ -3640,7 +3640,7 @@
 496764|Rheinböllen
 496765|Gemünden Hunsrück
 496766|Kisselbach
-496771|St Goarshausen
+496771|Sankt Goarshausen
 496772|Nastätten
 496773|Kamp-Bornhofen
 496774|Kaub
@@ -3681,12 +3681,12 @@
 496844|Blieskastel-Altheim
 496848|Homburg-Einöd
 496849|Kirkel
-496851|St Wendel
+496851|Sankt Wendel
 496852|Nohfelden
 496853|Marpingen
 496854|Oberthal Saar
 496855|Freisen
-496856|St Wendel-Niederkirchen
+496856|Sankt Wendel-Niederkirchen
 496857|Namborn
 496858|Ottweiler-Fürth
 496861|Merzig
@@ -3706,7 +3706,7 @@
 496887|Schmelz Saar
 496888|Lebach-Steinbach
 496893|Saarbrücken-Ensheim
-496894|St Ingbert
+496894|Sankt Ingbert
 496897|Sulzbach Saar
 496898|Völklingen
 4969|Frankfurt am Main
@@ -3745,9 +3745,9 @@
 497085|Enzklösterle
 49711|Stuttgart
 497121|Reutlingen
-497122|St Johann Württemberg
+497122|Sankt Johann Württemberg
 497123|Metzingen Württemberg
-497124|Trochtelfingen Hohenz
+497124|Trochtelfingen Hohenzollern
 497125|Bad Urach
 497126|Burladingen-Melchingen
 497127|Neckartenzlingen
@@ -4070,7 +4070,7 @@
 497655|Feldberg-Altglashütten
 497656|Schluchsee
 497657|Eisenbach Hochschwarzwald
-497660|St Peter Schwarzwald
+497660|Sankt Peter Schwarzwald
 497661|Kirchzarten
 497662|Vogtsburg im Kaiserstuhl
 497663|Eichstetten
@@ -4079,9 +4079,9 @@
 497666|Denzlingen
 497667|Breisach am Rhein
 497668|Ihringen
-497669|St Märgen
+497669|Sankt Märgen
 497671|Todtnau
-497672|St Blasien
+497672|Sankt Blasien
 497673|Schönau im Schwarzwald
 497674|Todtmoos
 497675|Bernau Baden
@@ -4094,7 +4094,7 @@
 497702|Blumberg Baden
 497703|Bonndorf im Schwarzwald
 497704|Geisingen Baden
-497705|Wolterdingen Schwarzw
+497705|Wolterdingen Schwarzwald
 497706|Oberbaldingen
 497707|Bräunlingen
 497708|Geisingen-Leipferdingen
@@ -4104,7 +4104,7 @@
 497721|Villingen im Schwarzwald
 497722|Triberg im Schwarzwald
 497723|Furtwangen im Schwarzwald
-497724|St Georgen im Schwarzwald
+497724|Sankt Georgen im Schwarzwald
 497725|Königsfeld im Schwarzwald
 497726|Bad Dürrheim
 497727|Vöhrenbach
@@ -4701,14 +4701,14 @@
 499122|Schwabach
 499123|Lauf an der Pegnitz
 499126|Eckental
-499127|Rosstal Mittelfrankenanken
+499127|Rosstal Mittelfranken
 499128|Feucht
 499129|Wendelstein
 499131|Erlangen
 499132|Herzogenaurach
-499133|Baiersdorf Mittelfrankenanken
+499133|Baiersdorf Mittelfranken
 499134|Neunkirchen am Brand
-499135|Heßdorf Mittelfrankenanken
+499135|Heßdorf Mittelfranken
 499141|Weißenburg in Bayern
 499142|Treuchtlingen
 499143|Pappenheim Mittelfranken
@@ -5195,7 +5195,7 @@
 499944|Miltach
 499945|Arnbruck
 499946|Hohenwarth bei Kötzing
-499947|Neukirchen bei Hl Blut
+499947|Neukirchen bei Heiligen Blut
 499948|Eschlkam
 499951|Landau an der Isar
 499952|Eichendorf
