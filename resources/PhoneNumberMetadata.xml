@@ -4049,7 +4049,10 @@
         <nationalNumberPattern>
           (?:
             590|
-            69\d|
+            (?:
+              69|
+              80
+            )\d|
             976
           )\d{6}
         </nationalNumberPattern>
@@ -4084,6 +4087,13 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>976012345</exampleNumber>
@@ -9211,6 +9221,7 @@
             )|
             7(?:
               0\d|
+              10|
               6[1267]|
               7[0-57]
             )
@@ -10274,7 +10285,8 @@
                 )|
                 4(?:
                   [0-5]\d\d|
-                  69[7-9]
+                  69[7-9]|
+                  70[059]
                 )|
                 (?:
                   5[0-26-9]|
@@ -10912,11 +10924,16 @@
           <leadingDigits>[569]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
             [56]94|
+            80\d|
             976
           )\d{6}
         </nationalNumberPattern>
@@ -10948,6 +10965,13 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as
+           Toll-free numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>976012345</exampleNumber>
@@ -11393,12 +11417,19 @@
           <leadingDigits>[569]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
             590|
-            69\d|
+            (?:
+              69|
+              80
+            )\d|
             976
           )\d{6}
         </nationalNumberPattern>
@@ -11439,6 +11470,13 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>976012345</exampleNumber>
@@ -18906,6 +18944,7 @@
             )|
             7(?:
               0\d|
+              10|
               6[1267]|
               7[0-57]
             )
@@ -19222,7 +19261,10 @@
         <nationalNumberPattern>
           (?:
             590|
-            69\d|
+            (?:
+              69|
+              80
+            )\d|
             976
           )\d{6}
         </nationalNumberPattern>
@@ -19260,6 +19302,13 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>976012345</exampleNumber>
@@ -20261,10 +20310,17 @@
           <leadingDigits>[569]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          69\d{7}|
+          (?:
+            69|
+            80
+          )\d{7}|
           (?:
             59|
             97
@@ -20301,6 +20357,13 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voip>
         <possibleLengths national="9"/>
         <exampleNumber>976612345</exampleNumber>
@@ -22826,14 +22889,23 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[48]</leadingDigits>
+          <leadingDigits>
+            4|
+            8[7-9]
+          </leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>8</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [48]\d{7}|
-          4\d{5}
+          4\d{5}(?:
+            \d{2}
+          )?|
+          8\d{7,8}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
@@ -22856,6 +22928,13 @@
         <exampleNumber>87123456</exampleNumber>
         <nationalNumberPattern>8[7-9]\d{6}</nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voip>
         <possibleLengths national="8"/>
         <exampleNumber>49901234</exampleNumber>
@@ -23617,9 +23696,18 @@
           <leadingDigits>[45]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[45]\d{5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [45]|
+            80\d\d
+          )\d{5}
+        </nationalNumberPattern>
       </generalDesc>
       <!-- Fixed-line and mobile numbers do not include any main prefix (like country code)
            before subscriber number unlike other French territories as they can be dialled
@@ -23648,6 +23736,13 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
     </territory>
 
     <!-- Puerto Rico (PR) -->
@@ -25402,25 +25497,23 @@
           )\d{5}
         </nationalNumberPattern>
       </fixedLine>
+      <!-- 8023 is added based on user report.  -->
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
+          8(?:
+            02[013-9]|
+            95[0-2]
+          )\d{4}|
           (?:
             8(?:
-              0(?:
-                1\d|
-                2[014-9]|
-                3[0-7]
-              )|
-              [1-8]\d\d|
-              9(?:
-                [0-4]\d|
-                5[0-2]
-              )
+              0[13]|
+              [1-8]\d|
+              9[0-4]
             )|
-            9[0-8]\d\d
-          )\d{4}
+            9[0-8]\d
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -26230,7 +26323,7 @@
         <nationalNumberPattern>
           (?:
             12|
-            9[12579]
+            9[1257-9]
           )\d{7}
         </nationalNumberPattern>
       </mobile>
@@ -29764,45 +29857,49 @@
     <territory id="WF" countryCode="681" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[4-8]</leadingDigits>
+          <leadingDigits>[478]</leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>8</leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            [45]0|
-            68|
-            72|
-            8\d
-          )\d{4}
+            40|
+            72
+          )\d{4}|
+          8\d{5}(?:
+            \d{3}
+          )?
         </nationalNumberPattern>
       </generalDesc>
       <!-- Web searching only finds examples with the 72 prefix but the ITU document states that
            50 and 68 are possible, so they are included here. -->
       <fixedLine>
         <possibleLengths national="6"/>
-        <exampleNumber>501234</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            50|
-            68|
-            72
-          )\d{4}
-        </nationalNumberPattern>
+        <exampleNumber>721234</exampleNumber>
+        <nationalNumberPattern>72\d{4}</nationalNumberPattern>
       </fixedLine>
       <mobile>
         <possibleLengths national="6"/>
-        <exampleNumber>501234</exampleNumber>
+        <exampleNumber>821234</exampleNumber>
         <nationalNumberPattern>
           (?:
-            50|
-            68|
             72|
             8[23]
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free
+           numbers. -->
+      <tollFree>
+        <possibleLengths national="9"/>
+        <exampleNumber>800012345</exampleNumber>
+        <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
+      </tollFree>
       <voicemail>
         <possibleLengths national="6"/>
         <exampleNumber>401234</exampleNumber>
