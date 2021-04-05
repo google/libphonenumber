@@ -1,3 +1,12 @@
+Apr 05, 2021: v8.12.21
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, EH, GB, GF, GP, MA, MF, MQ, PF, PM, SG, SS, WF
+ - Updated short number metadata for region code(s): DE
+ - Updated carrier data for country calling code(s):
+   65 (en), 211 (en), 212 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 16, 2021: v8.12.20
 Metadata changes:
  - Updated phone metadata for region code(s):

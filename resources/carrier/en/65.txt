@@ -27,14 +27,11 @@
 658027|SingTel
 658028|SingTel
 658029|SingTel
-658030|SingTel
-658031|SingTel
+65803|SingTel
 658032|Changi Travel Services Pte Ltd
 658033|TPG
 658034|TPG
 658035|TPG
-658036|SingTel
-658037|SingTel
 6581|StarHub
 65810|M1
 65812|SingTel
