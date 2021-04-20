@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-96650|Mofawtar (STC)
-9665153|Mofawtar (STC)
-9665154|Mofawtar (STC)
-96653|Mofawtar (STC)
+96650|STC/Al Jawal
+9665153|STC/Al Jawal
+9665154|STC/Al Jawal
+96653|STC/Al Jawal
 96654|Mobily
-96655|Mofawtar (STC)
+96655|STC/Al Jawal
 96656|Mobily
-966570|Virgin
-966571|Virgin
-966572|Virgin
-966573|Virgin
-966576|Lebara
-966577|Lebara
+966570|Virgin Mobile
+966571|Virgin Mobile
+966572|Virgin Mobile
+966573|Virgin Mobile
+966576|Lebara Mobile
+966577|Lebara Mobile
 966578|Lebara
 966579|Mobily
 96658|Zain
