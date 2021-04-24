@@ -5120,7 +5120,6 @@
             2[59]|
               33|
               44
-            )
           )\d{7}
         </nationalNumberPattern>
       </mobile>
