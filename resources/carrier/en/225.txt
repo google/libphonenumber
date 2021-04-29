@@ -26,10 +26,6 @@
 22507|Orange
 22508|Orange
 22509|Orange
-225208|Moov
-2252180|Moov
-225228|Moov
-225238|Moov
 22540|Moov
 22541|Moov
 22542|Moov
