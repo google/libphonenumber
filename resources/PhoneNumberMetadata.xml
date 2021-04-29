@@ -4081,7 +4081,7 @@
           69(?:
             0\d\d|
             1(?:
-              2[29]|
+              2[2-9]|
               3[0-5]
             )
           )\d{4}
@@ -5243,7 +5243,7 @@
             3(?:
               06|
               43|
-              6[57]
+              6[578]
             )|
             4(?:
               03|
@@ -5295,7 +5295,7 @@
             3(?:
               06|
               43|
-              6[57]
+              6[578]
             )|
             4(?:
               03|
@@ -5583,7 +5583,7 @@
         <nationalNumberPattern>
           88\d{5}|
           (?:
-            8[0-2459]|
+            8[0-59]|
             9[017-9]
           )\d{7}
         </nationalNumberPattern>
@@ -5791,16 +5791,6 @@
               1[023578]
             )
           </leadingDigits>
-          <leadingDigits>
-            [03-9]|
-            2(?:
-              [02-4]|
-              1(?:
-                [02357]|
-                80
-              )
-            )
-          </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d)(\d{5})">
@@ -5824,7 +5814,7 @@
         <nationalNumberPattern>
           (?:
             2(?:
-              0[023]|
+              0[0238]|
               [15]\d{3}|
               7(?:
                 2(?:
@@ -5849,8 +5839,8 @@
             )
           )\d{5}|
           2(?:
-            1[02357]|
-            [23][045]|
+            1[023578]|
+            [23][0458]|
             4[03-5]
           )\d{5}
         </nationalNumberPattern>
@@ -5865,21 +5855,18 @@
         <exampleNumber>01234567</exampleNumber>
         <nationalNumberPattern>
           (?:
-            (?:
-              0(?:
-                [15]\d\d|
-                7(?:
-                  [04-8][7-9]|
-                  9[78]
-                )
-              )|
-              [457]\d|
-              6[014-9]|
-              8[4-9]|
-              9[4-8]
-            )\d\d|
-            2[0-3]80
-          )\d{4}|
+            0(?:
+              [15]\d\d|
+              7(?:
+                [04-8][7-9]|
+                9[78]
+              )
+            )|
+            [457]\d|
+            6[014-9]|
+            8[4-9]|
+            9[4-8]
+          )\d{6}|
           0[1-9]\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -11464,7 +11451,7 @@
           69(?:
             0\d\d|
             1(?:
-              2[29]|
+              2[2-9]|
               3[0-5]
             )
           )\d{4}
@@ -14652,7 +14639,7 @@
           )\d{5}|
           9(?:
             0(?:
-              [1-35]\d|
+              [0-35]\d|
               4[4-6]
             )|
             (?:
@@ -16322,6 +16309,7 @@
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{2})(\d{3,4})">
           <leadingDigits>007</leadingDigits>
+          <leadingDigits>0077</leadingDigits>
           <format>$1-$2-$3</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
@@ -16385,7 +16373,8 @@
           )\d\d|
           00(?:
             37|
-            66
+            66|
+            78
           )\d{6,13}
         </nationalNumberPattern>
       </noInternationalDialling>
@@ -16460,26 +16449,25 @@
         <possibleLengths national="[8-17]"/>
         <exampleNumber>120123456</exampleNumber>
         <nationalNumberPattern>
-          00(?:
-            (?:
-              37|
-              66
-            )\d{6,13}|
-            (?:
-              777(?:
-                [01]|
-                (?:
-                  5|
-                  8\d
-                )\d
-              )|
-              882[1245]\d\d
-            )\d\d
-          )|
+          00777(?:
+            [01]|
+            5\d
+          )\d\d|
           (?:
-            120|
-            800\d
-          )\d{6}
+            00(?:
+              7778|
+              882[1245]
+            )|
+            (?:
+              120|
+              800\d
+            )\d\d
+          )\d{4}|
+          00(?:
+            37|
+            66|
+            78
+          )\d{6,13}
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -18173,14 +18161,13 @@
           (?:
             6(?:
               4(?:
-                79|
-                [89]\d
+                69|
+                [7-9]\d
               )|
               5[0-4]\d|
               6(?:
-                0\d|
-                10|
-                2[0-26-9]|
+                [024]\d|
+                [17]0|
                 3[7-9]
               )
             )\d|
@@ -19296,7 +19283,7 @@
           69(?:
             0\d\d|
             1(?:
-              2[29]|
+              2[2-9]|
               3[0-5]
             )
           )\d{4}
@@ -21277,6 +21264,7 @@
         <exampleNumber>123456789</exampleNumber>
         <nationalNumberPattern>
           1(?:
+            1888[69]|
             4400|
             8(?:
               47|
@@ -23201,13 +23189,11 @@
             9(?:
               0[5-9]|
               1[0-24-9]|
-              2[0-35-9]|
-              [35]\d|
-              4[235-9]|
-              6[0-35-8]|
-              7[1-9]|
+              [2357]\d|
+              4[2-9]|
+              6[0-35-9]|
               8[189]|
-              9[4-9]
+              9[1-9]
             )
           )\d{7}
         </nationalNumberPattern>
@@ -23915,12 +23901,16 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>[236-9]</leadingDigits>
+          <leadingDigits>
+            16|
+            [236-9]
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          1693\d{5}|
           (?:
             [26-9]\d|
             30
@@ -23946,9 +23936,15 @@
         <possibleLengths national="9"/>
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
-          6[356]9230\d{3}|
+          6[0356]92(?:
+            30|
+            9\d
+          )\d{3}|
           (?:
-            6[036]93|
+            (?:
+              16|
+              6[0356]
+            )93|
             9(?:
               [1-36]\d\d|
               480
@@ -24362,13 +24358,12 @@
             69(?:
               2\d\d|
               3(?:
-                0[0-46]|
+                [06][0-46]|
                 1[013]|
                 2[0-2]|
                 3[0-39]|
                 4\d|
                 5[0-5]|
-                6[0-36]|
                 7[0-27]|
                 8[0-8]|
                 9[0-479]
