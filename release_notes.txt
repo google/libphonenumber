@@ -1,3 +1,15 @@
+Apr 29, 2021: v8.12.22
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, CA, CD, CI, GP, IR, JP, LI, MF, MY, PH, PT, RE
+ - Updated short number metadata for region code(s): FI, PS
+ - New geocoding data for country calling code(s): 1368 (en)
+ - Updated geocoding data for country calling code(s): 49 (de, en), 52 (es)
+ - Updated carrier data for country calling code(s):
+   46 (en), 60 (en), 63 (en), 225 (en), 229 (en), 243 (en), 252 (en), 262 (en),
+   351 (en), 423 (en), 590 (en)
+ - Updated / refreshed time zone meta data.
+
 Apr 05, 2021: v8.12.21
 Metadata changes:
  - Updated phone metadata for region code(s):

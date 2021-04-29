@@ -15,7 +15,7 @@
 # Generated from:
 # Internal statistics data (2018-06-12).
 
-1|America/Adak&America/Anchorage&America/Anguilla&America/Antigua&America/Barbados&America/Boise&America/Cayman&America/Chicago&America/Denver&America/Dominica&America/Edmonton&America/Fort_Nelson&America/Grand_Turk&America/Grenada&America/Halifax&America/Jamaica&America/Juneau&America/Los_Angeles&America/Lower_Princes&America/Montserrat&America/Nassau&America/New_York&America/North_Dakota/Center&America/Phoenix&America/Port_of_Spain&America/Puerto_Rico&America/Santo_Domingo&America/St_Johns&America/St_Kitts&America/St_Lucia&America/St_Thomas&America/St_Vincent&America/Toronto&America/Tortola&America/Vancouver&America/Winnipeg&Atlantic/Bermuda&Pacific/Guam&Pacific/Honolulu&Pacific/Pago_Pago&Pacific/Saipan
+1|America/Adak&America/Anchorage&America/Anguilla&America/Antigua&America/Barbados&America/Boise&America/Cayman&America/Chicago&America/Denver&America/Dominica&America/Edmonton&America/Fort_Nelson&America/Grand_Turk&America/Grenada&America/Halifax&America/Jamaica&America/Juneau&America/Los_Angeles&America/Lower_Princes&America/Montserrat&America/Nassau&America/New_York&America/North_Dakota/Center&America/Phoenix&America/Port_of_Spain&America/Puerto_Rico&America/Regina&America/Santo_Domingo&America/St_Johns&America/St_Kitts&America/St_Lucia&America/St_Thomas&America/St_Vincent&America/Toronto&America/Tortola&America/Vancouver&America/Winnipeg&Atlantic/Bermuda&Pacific/Guam&Pacific/Honolulu&Pacific/Pago_Pago&Pacific/Saipan
 1201|America/New_York
 1202|America/New_York
 1203|America/New_York
@@ -641,7 +641,7 @@
 1303|America/Denver
 1304|America/New_York
 1305|America/New_York
-1306|America/Winnipeg
+1306|America/Regina
 1307|America/Denver
 1308|America/Chicago
 1308235|America/Denver
@@ -702,6 +702,7 @@
 1364|America/New_York
 1365|America/Toronto
 1367|America/Toronto
+1368|America/Edmonton
 1380|America/New_York
 1385|America/Denver
 1386|America/New_York
@@ -2101,6 +2102,7 @@
 34928|Atlantic/Canary
 350|Europe/Gibraltar
 351|Atlantic/Azores&Europe/Lisbon
+3511|Atlantic/Azores&Europe/Lisbon
 3512|Europe/Lisbon
 351292|Atlantic/Azores
 351295|Atlantic/Azores
