@@ -4480,7 +4480,10 @@
         <nationalNumberPattern>
           11(?:
             2|
-            611[17]
+            6(?:
+              00[06]|
+              11[17]
+            )
           )|
           75[12]\d\d
         </nationalNumberPattern>
@@ -10737,14 +10740,15 @@
     <!-- http://www.paltel.ps/ -->
     <territory id="PS">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0[0-2]|
+            122|
             44|
             66|
             99
@@ -10761,6 +10765,12 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <!-- 1122 is Jawwal's customer service number -->
+      <carrierSpecific>
+        <possibleLengths national="4"/>
+        <exampleNumber>1120</exampleNumber>
+        <nationalNumberPattern>112\d</nationalNumberPattern>
+      </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
