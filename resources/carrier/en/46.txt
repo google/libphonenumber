@@ -159,6 +159,7 @@
 4672083|Tele2 Sverige
 4672084|Tele2 Sverige
 4672085|Tele2 Sverige
+4672087|Telenor Sverige
 4672088|Telenor Sverige
 46720902|Telavox AB
 46720908|Telavox AB
@@ -210,9 +211,14 @@
 46723449|Beepsend
 4672345|42 Telecom AB
 46723460|Beepsend
+46723461|Telenor Sverige
+46723464|Telenor Sverige
+46723466|Telenor Sverige
+46723468|Telenor Sverige
 4672347|Benemen Oy
 4672348|Benemen Oy
 46723490|Beepsend
+46723491|Telenor Sverige
 46723499|Beepsend
 467235|Telenor Sverige
 467236|Telenor Sverige
@@ -296,6 +302,7 @@
 467276|Lycamobile Sweden
 467277|Lycamobile Sweden
 467278|Lycamobile Sweden
+467279|Telenor Sverige
 46728100|Voice Integrate
 46728101|Beepsend
 46728198|Telavox AB
@@ -319,7 +326,7 @@
 46730|TeliaSonera
 467301|Maingate (Sierra Wireless)
 467310|Telenor Sverige
-467311|Maingate (Sierra Wireless)
+467311|TeliaSonera
 4673120|Telavox AB
 46731214|Voice Integrate
 46731215|COOLTEL APS

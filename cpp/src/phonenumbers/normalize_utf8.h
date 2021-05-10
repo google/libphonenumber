@@ -26,7 +26,7 @@ struct NormalizeUTF8 {
   static string NormalizeDecimalDigits(const string& number) {
     string normalized;
     UnicodeText number_as_unicode;
-    number_as_unicode.PointToUTF8(number.data(), number.size());
+    number_as_unicode.PointToUTF8(number.data(), static_cast<int>(number.size()));
     for (UnicodeText::const_iterator it = number_as_unicode.begin();
          it != number_as_unicode.end();
          ++it) {

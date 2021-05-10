@@ -29,6 +29,7 @@
 #include <stddef.h>
 #include <limits>
 #include <map>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -572,8 +573,8 @@ bool PhoneNumberMatcher::ExtractInnerMatch(const string& candidate, int offset,
     string group;
     while ((*regex)->FindAndConsume(candidate_input.get(), &group) &&
            max_tries_ > 0) {
-      int group_start_index = candidate.length() -
-          candidate_input->ToString().length() - group.length();
+      int group_start_index = static_cast<int>(candidate.length() -
+          candidate_input->ToString().length() - group.length());
       if (is_first_match) {
         // We should handle any group before this one too.
         string first_group_only = candidate.substr(0, group_start_index);
@@ -660,7 +661,7 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
   string candidate;
   while ((max_tries_ > 0) &&
          reg_exps_->pattern_->FindAndConsume(text.get(), &candidate)) {
-    int start = text_.length() - text->ToString().length() - candidate.length();
+    int start = static_cast<int>(text_.length() - text->ToString().length() - candidate.length());
     // Check for extra numbers at the end.
     reg_exps_->capture_up_to_second_number_start_pattern_->
         PartialMatch(candidate, &candidate);
@@ -668,7 +669,7 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
       return true;
     }
 
-    index = start + candidate.length();
+    index = static_cast<int>(start + candidate.length());
     --max_tries_;
   }
   return false;
@@ -822,9 +823,9 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
   }
 
   // Set this to the last group, skipping it if the number has an extension.
-  int candidate_number_group_index =
+  int candidate_number_group_index = static_cast<int>(
       phone_number.has_extension() ? candidate_groups.size() - 2
-                                   : candidate_groups.size() - 1;
+                                   : candidate_groups.size() - 1);
   // First we check if the national significant number is formatted as a block.
   // We use find and not equals, since the national significant number may be
   // present with a prefix such as a national number prefix, or the country code
@@ -840,7 +841,7 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
   // Starting from the end, go through in reverse, excluding the first group,
   // and check the candidate and number groups are the same.
   for (int formatted_number_group_index =
-           (formatted_number_groups.size() - 1);
+           static_cast<int>(formatted_number_groups.size() - 1);
        formatted_number_group_index > 0 &&
        candidate_number_group_index >= 0;
        --formatted_number_group_index, --candidate_number_group_index) {

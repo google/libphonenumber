@@ -17,6 +17,21 @@
 # https://en.wikipedia.org/wiki/Circles.Life#Singapore
 
 65801|TPG
+658018|SingTel
+658019|SingTel
+658020|SingTel
+658021|SingTel
+658024|TPG
+658025|M1
+658026|M1
+658027|SingTel
+658028|SingTel
+658029|SingTel
+65803|SingTel
+658032|Changi Travel Services Pte Ltd
+658033|TPG
+658034|TPG
+658035|TPG
 6581|StarHub
 65810|M1
 65812|SingTel
@@ -326,6 +341,9 @@
 658932|TPG
 658933|TPG
 658934|TPG
+658935|M1
+658936|M1
+658937|M1
 658938|SingTel
 658939|SingTel
 658940|SingTel

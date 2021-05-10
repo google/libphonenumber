@@ -163,7 +163,7 @@ int GlobalReplaceSubstring(const string& substring,
   int pos = 0;
   for (size_t match_pos = s->find(substring.data(), pos, substring.length());
        match_pos != string::npos;
-       pos = match_pos + substring.length(),
+       pos = static_cast<int>(match_pos + substring.length()),
           match_pos = s->find(substring.data(), pos, substring.length())) {
     ++num_replacements;
     // Append the original content before the match.

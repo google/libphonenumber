@@ -14,7 +14,7 @@ libphonenumber library directly.
 
 Installing the binary packages:
   - Use this if you just need to use or link against the library:
-    $ sudo apt-get install libphonenumber6 libphonenumber6-dev
+    $ sudo apt-get install libphonenumber8 libphonenumber-dev
 
 Installing the source package:
   - Use this if you wish to develop or debug the library:

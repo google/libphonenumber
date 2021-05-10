@@ -15,5 +15,4 @@
 # Source: https://www.itu.int/oth/T0202000041/en and Muni's IR.21 doc.
 
 2402|GETESA
-240550|Muni
-240551|HiTS
+2405|Muni

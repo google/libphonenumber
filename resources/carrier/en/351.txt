@@ -15,6 +15,7 @@
 # Source: https://www.anacom.pt/pnn/pesquisa.do
 # Results of mobile ranges: https://anacom.pt/pnn/pnnSearch.do?channel=&jscript=on&languageId=0&ssl=false&dataInicioDia=dd&dataInicioMes=mm&dataInicioAno=yyyy&dataFimDia=dd&dataFimMes=mm&dataFimAno=yyyy&assunto=&estado=NON&css=143&css=144&css=145&css=150
 
+3511|NOS
 351609|NOS
 35163|NOS
 35165|NOS
@@ -35,11 +36,7 @@
 3519232|NOS
 3519233|NOS
 3519234|NOS
-3519240|MEO
-3519241|MEO
-3519242|MEO
-3519243|MEO
-3519244|MEO
+351924|MEO
 351925|MEO
 351926|MEO
 351927|MEO
