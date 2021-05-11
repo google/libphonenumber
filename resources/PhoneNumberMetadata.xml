@@ -3687,7 +3687,7 @@
         <exampleNumber>70123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            0[127]|
+            0[1267]|
             5[1-8]|
             [67]\d
           )\d{6}
@@ -5782,17 +5782,6 @@
     <!-- http://fr.wikipedia.org/wiki/Liste_des_indicatifs_téléphoniques_en_Côte_d’Ivoire -->
     <territory id="CI" countryCode="225" internationalPrefix="00">
       <availableFormats>
-        <!-- Using format from online yellow pages over format implied in national numbering plan. -->
-        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>
-            [03-9]|
-            2(?:
-              [02-4]|
-              1[023578]
-            )
-          </leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d)(\d{5})">
           <leadingDigits>2</leadingDigits>
           <format>$1 $2 $3 $4</format>
@@ -5803,45 +5792,27 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>
-          [02]\d{9}|
-          [02-9]\d{7}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[02]\d{9}</nationalNumberPattern>
       </generalDesc>
       <fixedLine>
-        <possibleLengths national="8,10"/>
-        <exampleNumber>21234567</exampleNumber>
+        <possibleLengths national="10"/>
+        <exampleNumber>2123456789</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            2(?:
-              0[0238]|
-              [15]\d{3}|
-              7(?:
-                2(?:
-                  0[23]|
-                  1[2357]|
-                  [23][45]|
-                  4[3-5]
-                )|
-                3(?:
-                  06|
-                  1[69]|
-                  [2-6]7
-                )
-              )
-            )|
-            3(?:
-              0[06]|
-              1[069]|
-              [2-4][07]|
-              5[09]|
-              6[08]
-            )
-          )\d{5}|
           2(?:
-            1[023578]|
-            [23][0458]|
-            4[03-5]
+            [15]\d{3}|
+            7(?:
+              2(?:
+                0[23]|
+                1[2357]|
+                [23][45]|
+                4[3-5]
+              )|
+              3(?:
+                06|
+                1[69]|
+                [2-6]7
+              )
+            )
           )\d{5}
         </nationalNumberPattern>
       </fixedLine>
@@ -5851,23 +5822,16 @@
            50 has been removed since Warid seems to have stopped operation in Côte d'Ivoire.
            Prefix 73 and 97[0-3] are added based on user reports. -->
       <mobile>
-        <possibleLengths national="8,10"/>
-        <exampleNumber>01234567</exampleNumber>
+        <possibleLengths national="10"/>
+        <exampleNumber>0123456789</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            0(?:
-              [15]\d\d|
-              7(?:
-                [04-8][7-9]|
-                9[78]
-              )
-            )|
-            [457]\d|
-            6[014-9]|
-            8[4-9]|
-            9[4-8]
-          )\d{6}|
-          0[1-9]\d{6}
+          0(?:
+            [15]\d\d|
+            7(?:
+              [04-8][7-9]|
+              9[78]
+            )
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
     </territory>
@@ -24853,7 +24817,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>720123456</exampleNumber>
-        <nationalNumberPattern>7[238]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>7[2389]\d{7}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="9"/>
@@ -25449,7 +25413,7 @@
           <leadingDigits>
             [369]|
             8(?:
-              0[1-3]|
+              0[1-4]|
               [1-9]
             )
           </leadingDigits>
@@ -25497,18 +25461,21 @@
         <possibleLengths national="8"/>
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
-          8(?:
-            02[013-9]|
-            95[0-2]
-          )\d{4}|
           (?:
             8(?:
-              0[13]|
-              [1-8]\d|
-              9[0-4]
+              0(?:
+                [13]\d|
+                2[013-9]|
+                40
+              )|
+              [1-8]\d\d|
+              9(?:
+                [0-4]\d|
+                5[0-2]
+              )
             )|
-            9[0-8]\d
-          )\d{5}
+            9[0-8]\d\d
+          )\d{4}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -28270,7 +28237,7 @@
           7260\d{5}|
           7(?:
             [0157-9]\d|
-            20|
+            [26]0|
             36|
             4[0-4]
           )\d{6}
@@ -28363,7 +28330,7 @@
               4[01]|
               5[19]|
               6[1-47]|
-              7[013-5]|
+              7[0-5]|
               8[056]
             )|
             6(?:
@@ -28455,7 +28422,7 @@
               4[01]|
               5[19]|
               6[1-47]|
-              7[013-5]|
+              7[0-5]|
               8[056]
             )|
             6(?:
@@ -28657,9 +28624,9 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          55501\d{4}|
           (?:
             33|
+            55|
             [679]\d|
             88
           )\d{7}
@@ -28750,7 +28717,8 @@
       </fixedLine>
       <!-- Adding 9[45] as suggested by http://www.ucell.uz/en/for_subscribers/how_to_call.html
            Adding other prefixes from http://www.weltvorwahlen.de/99861353.html, and any other
-           prefixes Tyntec has a carrier mapped to. Adding 55501 based on user report. -->
+           prefixes Tyntec has a carrier mapped to. Adding 55501 based on user report. Adding
+           5590 based on user report. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>912345678</exampleNumber>
@@ -28761,7 +28729,10 @@
               88|
               9[0-57-9]
             )\d{3}|
-            55501|
+            55(?:
+              501|
+              90\d
+            )|
             6(?:
               1(?:
                 2(?:

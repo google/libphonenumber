@@ -969,6 +969,7 @@
 1567|America/New_York
 1570|America/New_York
 1571|America/New_York
+1572|America/Chicago
 1573|America/Chicago
 1574|America/New_York
 1574772|America/Chicago
@@ -1168,7 +1169,7 @@
 1630|America/Chicago
 1631|America/New_York
 1636|America/Chicago
-1639|America/Winnipeg
+1639|America/Regina
 1640|America/New_York
 1641|America/Chicago
 1646|America/New_York
