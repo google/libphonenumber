@@ -1,3 +1,13 @@
+May 11, 2021: v8.12.23
+Metadata changes:
+ - Updated phone metadata for region code(s): BF, CI, RW, SG, UG, US, UZ
+ - Updated short number metadata for region code(s): DZ
+ - New geocoding data for country calling code(s): 1572 (en)
+ - Updated geocoding data for country calling code(s): 225 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 225 (en), 226 (en), 250 (en), 256 (en), 998 (en)
+ - Updated / refreshed time zone meta data.
+
 Apr 29, 2021: v8.12.22
 Metadata changes:
  - Updated phone metadata for region code(s):
