@@ -26,13 +26,18 @@ import java.util.regex.Pattern;
  * @author Shaopeng Jia
  */
 public class RegexCache {
-  private LRUCache<String, Pattern> cache;
+  private ThreadLocal<LRUCache<String, Pattern>> cache;
 
-  public RegexCache(int size) {
-    cache = new LRUCache<String, Pattern>(size);
+  public RegexCache(final int size) {
+    cache = new ThreadLocal<LRUCache<String, Pattern>>() {
+      @Override protected LRUCache<String, Pattern> initialValue() {
+          return new LRUCache<String, Pattern>(size);
+      }
+    };
   }
 
   public Pattern getPatternForRegex(String regex) {
+    LRUCache<String, Pattern> cache = this.cache.get();
     Pattern pattern = cache.get(regex);
     if (pattern == null) {
       pattern = Pattern.compile(regex);
@@ -43,6 +48,7 @@ public class RegexCache {
 
   // @VisibleForTesting
   boolean containsRegex(String regex) {
+    LRUCache<String, Pattern> cache = this.cache.get();
     return cache.containsKey(regex);
   }
 
@@ -63,15 +69,15 @@ public class RegexCache {
       };
     }
 
-    public synchronized V get(K key) {
+    public V get(K key) {
       return map.get(key);
     }
 
-    public synchronized void put(K key, V value) {
+    public void put(K key, V value) {
       map.put(key, value);
     }
 
-    public synchronized boolean containsKey(K key) {
+    public boolean containsKey(K key) {
       return map.containsKey(key);
     }
   }
