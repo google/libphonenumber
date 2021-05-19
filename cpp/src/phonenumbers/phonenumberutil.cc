@@ -1384,13 +1384,18 @@ void PhoneNumberUtil::FormatOutOfCountryCallingNumber(
   const string& international_prefix =
       metadata_calling_from->international_prefix();
 
-  // For regions that have multiple international prefixes, the international
-  // format of the number is returned, unless there is a preferred international
-  // prefix.
-  const string international_prefix_for_formatting(
-      reg_exps_->single_international_prefix_->FullMatch(international_prefix)
-      ? international_prefix
-      : metadata_calling_from->preferred_international_prefix());
+  // In general, if there is a preferred international prefix, use that.
+  // Otherwise, for regions that have multiple international prefixes, the
+  // international format of the number is returned since we would not know
+  // which one to use.
+  std::string international_prefix_for_formatting;
+  if (metadata_calling_from->has_preferred_international_prefix()) {
+    international_prefix_for_formatting =
+        metadata_calling_from->preferred_international_prefix();
+  } else if (reg_exps_->single_international_prefix_->FullMatch(
+                 international_prefix)) {
+    international_prefix_for_formatting = international_prefix;
+  }
 
   string region_code;
   GetRegionCodeForCountryCode(country_code, &region_code);

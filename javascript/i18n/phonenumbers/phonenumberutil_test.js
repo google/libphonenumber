@@ -901,6 +901,12 @@ function testFormatOutOfCountryWithPreferredIntlPrefix() {
   assertEquals(
       '0011 39 02 3661 8300',
       phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
+      
+  // Testing preferred international prefixes with ~ are supported (designates
+  // waiting).
+  assertEquals(
+      '8~10 39 02 3661 8300',
+      phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.UZ))
 }
 
 function testFormatOutOfCountryKeepingAlphaChars() {

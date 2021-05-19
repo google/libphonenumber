@@ -2144,13 +2144,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatOutOfCountryCallingNumber =
   // prefix.
   /** @type {string} */
   var internationalPrefixForFormatting = '';
-  if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(
-      i18n.phonenumbers.PhoneNumberUtil.SINGLE_INTERNATIONAL_PREFIX_,
-      internationalPrefix)) {
-    internationalPrefixForFormatting = internationalPrefix;
-  } else if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
+  if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
     internationalPrefixForFormatting =
         metadataForRegionCallingFrom.getPreferredInternationalPrefixOrDefault();
+  }  else if (i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(
+      i18n.phonenumbers.PhoneNumberUtil.SINGLE_INTERNATIONAL_PREFIX_,
+      internationalPrefix)) {
+      internationalPrefixForFormatting = internationalPrefix;
   }
 
   /** @type {string} */
