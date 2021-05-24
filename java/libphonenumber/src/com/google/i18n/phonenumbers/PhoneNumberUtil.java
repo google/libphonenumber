@@ -830,6 +830,19 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * Returns true if the supplied region is using a national prefix
+   *
+   * @param regionCode the region for which we want to know if national prefix is used
+   */
+  public boolean isRegionUsingNationalPrefix(String regionCode) {
+    PhoneMetadata metadata = getMetadataForRegion(regionCode);
+    if (metadata == null) {
+      return false;
+    }
+    return metadata.hasNationalPrefix();
+  }
+
+  /**
    * Gets the length of the geographical area code from the
    * PhoneNumber object passed in, so that clients could use it
    * to split a national significant number into geographical area code and subscriber number. It
@@ -871,13 +884,9 @@ public class PhoneNumberUtil {
    *     passed in
    */
   public int getLengthOfGeographicalAreaCode(PhoneNumber number) {
-    PhoneMetadata metadata = getMetadataForRegion(getRegionCodeForNumber(number));
-    if (metadata == null) {
-      return 0;
-    }
     // If a country doesn't use a national prefix, and this number doesn't have an Italian leading
     // zero, we assume it is a closed dialling plan with no area codes.
-    if (!metadata.hasNationalPrefix() && !number.isItalianLeadingZero()) {
+    if (!this.isRegionUsingNationalPrefix(getRegionCodeForNumber(number)) && !number.isItalianLeadingZero()) {
       return 0;
     }
 
