@@ -5117,10 +5117,10 @@
         <exampleNumber>294911911</exampleNumber>
         <nationalNumberPattern>
           (?:
-            2[59]|
-              33|
-              44
-          )\d{7}
+            2[59]\d|
+            33[369]|
+            44[457]
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
       <!-- Putting Interactive Polling Service (free) here too. -->
