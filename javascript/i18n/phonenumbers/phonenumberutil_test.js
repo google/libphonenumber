@@ -35,6 +35,8 @@ goog.require('i18n.phonenumbers.NumberFormat');
 goog.require('i18n.phonenumbers.PhoneMetadata');
 goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
+goog.require('i18n.phonenumbers.PhoneNumberFormat');
+goog.require('i18n.phonenumbers.PhoneNumberType');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.RegionCode');
 
@@ -899,6 +901,12 @@ function testFormatOutOfCountryWithPreferredIntlPrefix() {
   assertEquals(
       '0011 39 02 3661 8300',
       phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
+      
+  // Testing preferred international prefixes with ~ are supported (designates
+  // waiting).
+  assertEquals(
+      '8~10 39 02 3661 8300',
+      phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.UZ))
 }
 
 function testFormatOutOfCountryKeepingAlphaChars() {

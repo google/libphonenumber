@@ -7721,6 +7721,7 @@
 1364|Kentucky
 1365|Ontario
 1367|Quebec
+1368|Alberta
 1380|Ohio
 1385|Utah
 1386|Florida
@@ -14969,6 +14970,7 @@
 1571292|Manassas, VA
 1571379|Manassas, VA
 1571434|Sterling, VA
+1572|Oklahoma
 1573|Missouri
 1573204|Jackson, MO
 1573214|Columbia, MO

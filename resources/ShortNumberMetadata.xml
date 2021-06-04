@@ -3598,20 +3598,31 @@
     <!-- www.arpt.dz -->
     <territory id="DZ">
       <generalDesc>
-        <nationalNumberPattern>[17]\d\d?</nationalNumberPattern>
+        <nationalNumberPattern>[17]\d{1,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2,3"/>
+        <possibleLengths national="[2-4]"/>
         <exampleNumber>14</exampleNumber>
         <nationalNumberPattern>
-          1[47]|
+          1(?:
+            055|
+            12|
+            [47]|
+            548
+          )|
           730
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2"/>
+        <possibleLengths national="[2-4]"/>
         <exampleNumber>14</exampleNumber>
-        <nationalNumberPattern>1[47]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            [47]|
+            54\d
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -3620,10 +3631,25 @@
         <nationalNumberPattern>730</nationalNumberPattern>
       </carrierSpecific>
       <emergency>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,3"/>
         <exampleNumber>14</exampleNumber>
-        <nationalNumberPattern>1[47]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            [47]
+          )
+        </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="4"/>
+        <exampleNumber>1050</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            05|
+            54
+          )\d
+        </nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -4480,7 +4506,10 @@
         <nationalNumberPattern>
           11(?:
             2|
-            611[17]
+            6(?:
+              00[06]|
+              11[17]
+            )
           )|
           75[12]\d\d
         </nationalNumberPattern>
@@ -10737,14 +10766,15 @@
     <!-- http://www.paltel.ps/ -->
     <territory id="PS">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0[0-2]|
+            122|
             44|
             66|
             99
@@ -10761,6 +10791,12 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <!-- 1122 is Jawwal's customer service number -->
+      <carrierSpecific>
+        <possibleLengths national="4"/>
+        <exampleNumber>1120</exampleNumber>
+        <nationalNumberPattern>112\d</nationalNumberPattern>
+      </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
