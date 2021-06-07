@@ -298,6 +298,11 @@
 3375758|Euroinformation Telecom
 3375763|Euroinformation Telecom
 3375767|Euroinformation Telecom
+3375770|SFR
+3375771|SFR
+3375772|SFR
+3375773|SFR
+3375774|SFR
 3375777|Euroinformation Telecom
 3375779|Halys
 3375787|Euroinformation Telecom
