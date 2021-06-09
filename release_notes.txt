@@ -1,3 +1,13 @@
+Jun 09, 2021: v8.12.25
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BZ, GB, GH, HN, JM, LU, TJ, US, VU
+ - New geocoding data for country calling code(s): 1448 (en)
+ - Updated geocoding data for country calling code(s): 678 (en)
+ - Updated carrier data for country calling code(s):
+   233 (en), 678 (en), 1876 (en)
+ - Updated / refreshed time zone meta data.
+
 May 26, 2021: v8.12.24
 Code changes:
  - Changes formatOutOfCountryCallingNumber to always use preferred intl prefix if present, not just for numbers with a non-unique IDD. This means we will output "8~10" as the prefix if calling formatOutOfCountryCallingNumber instead of "810" for some regions that have this tilde in their prefix [designates that the user should wait before continuing to dial].
