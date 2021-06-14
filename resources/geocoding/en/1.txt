@@ -7721,6 +7721,7 @@
 1364|Kentucky
 1365|Ontario
 1367|Quebec
+1368|Alberta
 1380|Ohio
 1385|Utah
 1386|Florida
@@ -10931,6 +10932,7 @@
 1443977|Baltimore, MD
 1445|Philadelphia
 1447|Illinois
+1448|Florida
 1450|Quebec
 1450218|Vaudreuil-Dorion, QC
 1450224|Prévost, QC
@@ -14969,6 +14971,7 @@
 1571292|Manassas, VA
 1571379|Manassas, VA
 1571434|Sterling, VA
+1572|Oklahoma
 1573|Missouri
 1573204|Jackson, MO
 1573214|Columbia, MO

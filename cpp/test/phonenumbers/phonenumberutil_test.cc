@@ -845,6 +845,12 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryWithPreferredIntlPrefix) {
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::AU(),
                                               &formatted_number);
   EXPECT_EQ("0011 39 02 3661 8300", formatted_number);
+  
+  // Testing preferred international prefixes with ~ are supported (designates
+  // waiting).
+  phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::UZ(),
+                                              &formatted_number);
+  EXPECT_EQ("8~10 39 02 3661 8300", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatOutOfCountryKeepingAlphaChars) {
