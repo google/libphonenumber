@@ -3146,16 +3146,6 @@
       </availableFormats>
     </territory>
 
-    <!-- Philippines (PH) -->
-    <territory countryCode="63">
-      <availableFormats>
-        <numberFormat pattern="(\d{4})(\d{4})">
-          <leadingDigits>2</leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
-      </availableFormats>
-    </territory>
-
     <!-- Portugal (PT) -->
     <territory countryCode="351">
       <availableFormats>

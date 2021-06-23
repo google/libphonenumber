@@ -1,3 +1,8 @@
+Jun 23, 2021: v8.12.26
+Metadata changes:
+ - Updated phone metadata for region code(s): DZ, EH, GB, MA, PH, QA
+ - Updated geocoding data for country calling code(s): 212 (en)
+
 Jun 09, 2021: v8.12.25
 Metadata changes:
  - Updated phone metadata for region code(s):
