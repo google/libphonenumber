@@ -24447,7 +24447,7 @@
             1[01]|
             [2-7]\d|
             8[03-8]|
-            9[09]
+            9[019]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
