@@ -284,4 +284,4 @@ cd java/libphonenumber
 mvn deploy
 ```
 
-> Note: considerate to update the version at the pom.xml before deploy lib
+> Note: consider updating the version at the pom.xml before deploying lib
