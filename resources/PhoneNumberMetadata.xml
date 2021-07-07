@@ -4920,12 +4920,10 @@
         <possibleLengths national="8"/>
         <exampleNumber>71123456</exampleNumber>
         <nationalNumberPattern>
-          77200\d{3}|
           (?:
             321|
             7(?:
-              [1-6]\d|
-              7[013-9]|
+              [1-7]\d|
               8[01]
             )
           )\d{5}
@@ -19320,7 +19318,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>321234567</exampleNumber>
-        <nationalNumberPattern>3[2-49]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>3[2-489]\d{7}</nationalNumberPattern>
       </mobile>
       <!-- Putting VSAT numbers here. -->
       <voip>
@@ -20787,15 +20785,13 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          1\d{6}(?:
-            \d{2}
-          )?|
           (?:
+            [19]\d|
             [23]1|
             77|
-            88|
-            99
-          )\d{7}
+            88
+          )\d{7}|
+          1\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <!-- 14 is no longer mentioned in the plan as a prefix, but plenty of online numbers have
@@ -20820,7 +20816,7 @@
             31|
             77|
             88|
-            99
+            9[89]
           )\d{7}
         </nationalNumberPattern>
       </mobile>
@@ -23528,6 +23524,7 @@
              (70 numbers are formatted as per mobile numbers, based on information from some Polish people). -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
+            21|
             39|
             45|
             5[0137]|
@@ -23605,6 +23602,10 @@
         <possibleLengths national="9"/>
         <exampleNumber>512345678</exampleNumber>
         <nationalNumberPattern>
+          211(?:
+            1\d|
+            3[1-5]
+          )\d{4}|
           (?:
             45|
             5[0137]|
@@ -24447,7 +24448,7 @@
             1[01]|
             [2-7]\d|
             8[03-8]|
-            9[09]
+            9[019]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -27311,6 +27312,7 @@
         <exampleNumber>7715123</exampleNumber>
         <nationalNumberPattern>
           (?:
+            55[56]|
             6(?:
               [09]\d|
               3[02]|
@@ -27334,6 +27336,11 @@
         <exampleNumber>5501234</exampleNumber>
         <nationalNumberPattern>55[04]\d{4}</nationalNumberPattern>
       </premiumRate>
+      <voip>
+        <possibleLengths national="7"/>
+        <exampleNumber>5510123</exampleNumber>
+        <nationalNumberPattern>55[1-37-9]\d{4}</nationalNumberPattern>
+      </voip>
     </territory>
 
     <!-- Turkey (TR) -->
@@ -30680,8 +30687,8 @@
         <exampleNumber>712345678</exampleNumber>
         <nationalNumberPattern>
           7(?:
-            [17]\d|
-            [38][1-9]
+            [178]\d|
+            3[1-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
