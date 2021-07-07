@@ -91,6 +91,11 @@ option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
 option ("USE_STDMUTEX" "Use C++ 2011 std::mutex for multi-threading" "OFF")
 option ("USE_POSIX_THREAD" "Use Posix api for multi-threading" "OFF")
 
+if (NOT DEFINED GENERATE_GEOCODING_DATA_BIN)
+  # transparently build target when not defined
+  set (GENERATE_GEOCODING_DATA_BIN generate_geocoding_data)
+endif ()
+
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
 endif ()
@@ -210,7 +215,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   )
 
   add_custom_command (
-    COMMAND generate_geocoding_data "${GEOCODING_DIR}"
+    COMMAND ${GENERATE_GEOCODING_DATA_BIN} "${GEOCODING_DIR}"
       "${GEOCODING_DATA_OUTPUT}"
 
     OUTPUT ${GEOCODING_DATA_OUTPUT}
@@ -508,7 +513,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   )
 
   add_custom_command (
-    COMMAND generate_geocoding_data "${GEOCODING_TEST_DIR}"
+    COMMAND ${GENERATE_GEOCODING_DATA_BIN} "${GEOCODING_TEST_DIR}"
       "${GEOCODING_TEST_DATA_OUTPUT}" "_test"
 
     OUTPUT ${GEOCODING_TEST_DATA_OUTPUT}
@@ -657,6 +662,11 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
   install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
            DESTINATION ${LIBDIR})
+endif ()
+
+# tooling for cross compilation
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  install (TARGETS generate_geocoding_data DESTINATION bin COMPONENT generate_geocoding_data)
 endif ()
 
 # Build an example program using geocoding, mainly to make sure that both
