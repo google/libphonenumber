@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libphonenumber
+Description: Parse, format, store and validate international phone numbers
+URL: https://github.com/google/libphonenumber
+Version: @CMAKE_PROJECT_VERSION@
+Libs: -L${libdir} -lphonenumber
