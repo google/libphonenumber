@@ -28145,6 +28145,7 @@
         <exampleNumber>501234567</exampleNumber>
         <nationalNumberPattern>
           (?:
+            39|
             50|
             6[36-8]|
             7[1-3]|
