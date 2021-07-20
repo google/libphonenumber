@@ -378,6 +378,7 @@
 52986|Yucatán
 52987|Cozumel, QRO
 52988|Yucatán
+52990|Merida
 52991|Yucatán
 52992|Chiapas
 52993|Tabasco
