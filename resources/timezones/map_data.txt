@@ -918,6 +918,7 @@
 1443|America/New_York
 1445|America/New_York
 1447|America/Chicago
+1448|America/New_York
 1450|America/Toronto
 1458|America/Los_Angeles
 1463|America/New_York
@@ -3203,6 +3204,7 @@
 7808|Asia/Almaty&Asia/Aqtobe&Europe/Moscow
 7809|Asia/Almaty&Asia/Aqtobe&Europe/Moscow
 781|Europe/Moscow
+7810|Asia/Almaty&Asia/Aqtobe&Europe/Moscow
 782|Europe/Moscow
 783|Europe/Moscow
 7840|Europe/Bucharest&Europe/Moscow

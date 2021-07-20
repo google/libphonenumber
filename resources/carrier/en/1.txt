@@ -520,6 +520,7 @@
 1869764|Digicel
 1869765|Digicel
 1869766|Digicel
+187620|Cable & Wireless
 1876210|Cable & Wireless
 187622|Cable & Wireless
 187623|Cable & Wireless
@@ -569,14 +570,10 @@
 187647|Digicel
 187648|Digicel
 187649|Digicel
+187650|Digicel
 1876501|Cable & Wireless
-1876503|Digicel
-1876504|Digicel
-1876505|Digicel
-1876506|Digicel
-1876507|Digicel
-1876508|Digicel
-1876509|Digicel
+1876502|C&W
+187651|C&W
 1876515|Cable & Wireless
 1876517|Cable & Wireless
 1876519|Cable & Wireless
@@ -592,15 +589,8 @@
 1876557|Digicel
 1876558|Digicel
 1876559|Digicel
-1876560|Digicel
-1876561|Digicel
-1876562|Digicel
-1876564|Digicel
-1876565|Digicel
-1876566|Digicel
-1876567|Digicel
-1876568|Digicel
-1876569|Digicel
+187656|Digicel
+1876563|C&W
 187657|Digicel
 187658|Digicel
 187659|Digicel
