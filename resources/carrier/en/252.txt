@@ -18,6 +18,7 @@
 25239|AirSom
 25248|AirSom
 25249|AirSom
+25261|Hormuud
 25262|Somtel
 25263|Telesom
 25264|Somali Networks
