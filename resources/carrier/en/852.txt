@@ -60,6 +60,8 @@
 8524657|HKT
 8524658|HKT
 852466|China Mobile
+852467|China Mobile
+852468|China Mobile
 852510|China Mobile
 852511|Sun Mobile
 852512|China Mobile
@@ -280,6 +282,7 @@
 852699|China Mobile
 852707|SmarTone
 852708|HKT
+852840|China Mobile
 8528480|Handy
 8528481|Sun Mobile
 8528485|SmarTone

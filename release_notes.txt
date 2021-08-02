@@ -1,3 +1,20 @@
+Jul 20, 2021: v8.12.28
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CO, EH, GF, HK, KZ, MA, MO, MU, MX, NG, OM, PH, RU, SG, TO, UG
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   34 (en), 57 (en), 63 (en), 65 (en), 229 (en), 234 (en), 676 (en),
+   852 (en, zh), 968 (en)
+ - Updated / refreshed time zone meta data.
+
+Jul 07, 2021: v8.12.27
+Metadata changes:
+ - Updated phone metadata for region code(s): BW, MG, MW, PL, RO, TO, ZW
+ - Updated short number metadata for region code(s): BW, HU
+ - Updated carrier data for country calling code(s):
+   36 (en), 48 (en), 261 (en), 263 (en), 676 (en)
+
 Jun 23, 2021: v8.12.26
 Metadata changes:
  - Updated phone metadata for region code(s): DZ, EH, GB, MA, PH, QA
