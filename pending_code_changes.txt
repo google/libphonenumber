@@ -1,1 +1,2 @@
-
+Code changes:
+ - Updated code that proactively ensures no formatting is applied, where a format is chosen that would otherwise have led to some digits being dropped. Else, it is adding additional country code to user input.
