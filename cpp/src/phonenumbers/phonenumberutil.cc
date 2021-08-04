@@ -993,10 +993,13 @@ bool PhoneNumberUtil::IsFormatEligibleForAsYouTypeFormatter(
   // the format element under numberFormat contains groups of the dollar sign
   // followed by a single digit, separated by valid phone number punctuation.
   // This prevents invalid punctuation (such as the star sign in Israeli star
-  // numbers) getting into the output of the AYTF.
+  // numbers) getting into the output of the AYTF. We require that the first
+  // group is present in the output pattern to ensure no data is lost while
+  // formatting; when we format as you type, this should always be the case.
   const RegExp& eligible_format_pattern = reg_exps_->regexp_cache_->GetRegExp(
-      StrCat("[", kValidPunctuation, "]*", "(\\$\\d", "[",
-             kValidPunctuation, "]*)+"));
+      StrCat("[", kValidPunctuation, "]*", "\\$1",
+             "[", kValidPunctuation, "]*", "(\\$\\d",
+             "[", kValidPunctuation, "]*)*"));
   return eligible_format_pattern.FullMatch(format);
 }
 

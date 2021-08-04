@@ -212,14 +212,17 @@ i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_
  * under numberFormat contains groups of the dollar sign followed by a single
  * digit, separated by valid phone number punctuation. This prevents invalid
  * punctuation (such as the star sign in Israeli star numbers) getting into the
- * output of the AYTF.
+ * output of the AYTF. We require that the first group is present in the output
+ * pattern to ensure no data is lost while formatting; when we format as you
+ * type, this should always be the case.
  * @const
  * @type {RegExp}
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_ = new RegExp(
-    '^[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*' +
-    '(\\$\\d[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*)+$');
+    '^[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*' + '\\$1'
+    + '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*(\\$\\d'
+    + '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*)*$');
 
 
 /**

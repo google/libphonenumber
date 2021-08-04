@@ -698,6 +698,21 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
   EXPECT_EQ("+52 800 123 45", formatter_->InputDigit('5', &result_));
   EXPECT_EQ("+52 800 123 456", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
+  
+  // +529011234567, proactively ensuring that no formatting is applied,
+  // where a format is chosen that would otherwise have led to some digits
+  // being dropped.
+  formatter_->Clear();
+  EXPECT_EQ("9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("90", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("901", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("9011", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("90112", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("901123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("9011234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("90112345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("901123456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("9011234567", formatter_->InputDigit('7', &result_));
 
   // +52 55 1234 5678
   formatter_->Clear();
