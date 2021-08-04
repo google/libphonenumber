@@ -1,2 +1,2 @@
 Code changes:
- - Updated code that proactively ensures no formatting is applied, where a format is chosen that would otherwise have led to some digits being dropped. Else, it is adding additional country code to user input.
+ - Updated As-You-Type-Formatter to exclude patterns where some digits would be dropped in the output. This also fixes the bug where an extra country code is added in some cases to the user's output. b/183053929
