@@ -58,6 +58,7 @@
 324687|Premium Routing GmbH
 324688|Premium Routing GmbH
 324689|Febo Telecom
+32469|Telenet
 3247|Proximus
 324805|Voyacom SPRL
 324807|MessageBird BV
