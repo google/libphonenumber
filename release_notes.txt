@@ -1,3 +1,13 @@
+Aug 06, 2021: v8.12.29
+Code changes:
+ - Updated As-You-Type-Formatter to exclude patterns where some digits would be dropped in the output. This also fixes the bug where an extra country code is added in some cases to the user's output. b/183053929
+Metadata changes:
+ - Updated phone metadata for region code(s): BE, GE, IR, MO, MX, QA, SN
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   32 (en), 221 (en), 995 (en)
+ - Updated / refreshed time zone meta data.
+
 Jul 20, 2021: v8.12.28
 Metadata changes:
  - Updated phone metadata for region code(s):
