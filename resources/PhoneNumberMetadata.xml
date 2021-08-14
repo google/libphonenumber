@@ -3654,6 +3654,10 @@
           <leadingDigits>[025-7]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
+          <leadingDigits>0</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[025-7]\d{7}</nationalNumberPattern>
@@ -3690,6 +3694,8 @@
           (?:
             0[1267]|
             5[1-8]|
+            [06]\d|
+            [07]\d|
             [67]\d
           )\d{6}
         </nationalNumberPattern>
