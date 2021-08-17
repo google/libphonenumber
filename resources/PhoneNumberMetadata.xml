@@ -759,7 +759,7 @@
             4[02-9]|
             5[0-46-9]|
             [6-8]\d|
-            90
+            9[01]
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -11224,7 +11224,7 @@
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
             19|
-            [2-689]
+            [2-9]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -11233,7 +11233,8 @@
         <nationalNumberPattern>
           (?:
             19|
-            [2-689]\d
+            [2-689]\d|
+            70
           )\d{4}
         </nationalNumberPattern>
       </generalDesc>
@@ -11246,6 +11247,7 @@
             19|
             3[1-7]|
             6[14689]|
+            70|
             8[14-79]|
             9\d
           )\d{4}
@@ -17418,6 +17420,10 @@
               2(?:
                 22|
                 5[25]
+              )|
+              7(?:
+                55|
+                77
               )|
               88[58]
             )|
@@ -25530,7 +25536,7 @@
           )\d{5}
         </nationalNumberPattern>
       </fixedLine>
-      <!-- 8023 and 8041 are added based on user report.  -->
+      <!-- 8023 and 804[167] are added based on user report.  -->
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>81234567</exampleNumber>
@@ -25540,7 +25546,7 @@
               0(?:
                 [13]\d|
                 2[013-9]|
-                4[015]
+                4[015-7]
               )|
               [1-8]\d\d|
               9(?:
@@ -26215,7 +26221,10 @@
           <leadingDigits>
             1|
             28|
-            6[1-35-9]|
+            6(?:
+              0[5-7]|
+              [1-35-9]
+            )|
             9[2-9]
           </leadingDigits>
           <format>$1 $2</format>
@@ -26259,25 +26268,32 @@
         <possibleLengths national="[7-9]"/>
         <exampleNumber>71123456</exampleNumber>
         <nationalNumberPattern>
-          28\d{5}|
           (?:
-            6[1-9]|
-            79
-          )\d{6,7}|
-          (?:
-            15|
-            24|
             (?:
-              3[59]|
-              4[89]|
-              8[08]
+              15|
+              (?:
+                3[59]|
+                4[89]|
+                79|
+                8[08]
+              )\d|
+              6(?:
+                0[5-7]|
+                [1-9]\d
+              )|
+              9(?:
+                0\d|
+                [2-9]
+              )
             )\d|
-            60|
-            7[1-8]|
-            9(?:
-              0\d|
-              [2-9]
+            2(?:
+              4\d|
+              8
             )
+          )\d{5}|
+          (?:
+            6\d|
+            7[1-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -26644,8 +26660,7 @@
         <nationalNumberPattern>
           9(?:
             22|
-            [3-589]\d|
-            6[02-9]
+            [3-689]\d
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -30793,17 +30808,29 @@
     <territory id="001" countryCode="800">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
-          <leadingDigits>[1-9]</leadingDigits>
+          <leadingDigits>\d</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            005|
+            [1-9]\d\d
+          )\d{5}
+        </nationalNumberPattern>
       </generalDesc>
+      <!-- SN number starting with '0' is added based on number mentioned in
+           https://www.lectra.com/en/contact and it is diallable from France (Orange network) -->
       <tollFree>
         <possibleLengths national="8"/>
         <exampleNumber>12345678</exampleNumber>
-        <nationalNumberPattern>[1-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            005|
+            [1-9]\d\d
+          )\d{5}
+        </nationalNumberPattern>
       </tollFree>
     </territory>
 
