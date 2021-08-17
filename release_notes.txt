@@ -1,3 +1,10 @@
+Aug 17, 2021: v8.12.30
+Metadata changes:
+ - Updated phone metadata for region code(s): 800, AM, GL, KW, SG, SO, SY
+ - Updated carrier data for country calling code(s):
+   55 (en), 65 (en), 252 (en), 263 (en), 963 (en)
+ - Updated / refreshed time zone meta data.
+
 Aug 06, 2021: v8.12.29
 Code changes:
  - Updated As-You-Type-Formatter to exclude patterns where some digits would be dropped in the output. This also fixes the bug where an extra country code is added in some cases to the user's output. b/183053929
