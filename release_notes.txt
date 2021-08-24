@@ -1,3 +1,12 @@
+Aug 24, 2021: v8.12.31
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, EE, GB, PH, US
+ - New geocoding data for country calling code(s): 1771 (en)
+ - Updated geocoding data for country calling code(s): 57 (en), 225 (en)
+ - Updated carrier data for country calling code(s):
+   63 (en), 252 (en), 372 (en), 389 (en)
+ - Updated / refreshed time zone meta data.
+
 Aug 17, 2021: v8.12.30
 Metadata changes:
  - Updated phone metadata for region code(s): 800, AM, GL, KW, SG, SO, SY

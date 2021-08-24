@@ -7221,9 +7221,14 @@
         <numberFormat pattern="(\d)(\d{7})" nationalPrefixFormattingRule="($FG)"
                       carrierCodeFormattingRule="$NP$CC $FG">
           <leadingDigits>
-            [14][2-9]|
-            [25-8]
+            [146][2-9]|
+            [2578]
           </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)"
+                      carrierCodeFormattingRule="$NP$CC $FG">
+          <leadingDigits>6</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{7})" carrierCodeFormattingRule="$NP$CC $FG">
@@ -7241,7 +7246,7 @@
           (?:
             (?:
               1\d|
-              3
+              [36]
             )\d{3}|
             9101
           )\d{6}|
@@ -7249,9 +7254,12 @@
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
-        <possibleLengths national="8" localOnly="7"/>
+        <possibleLengths national="8,10" localOnly="7"/>
         <exampleNumber>12345678</exampleNumber>
-        <nationalNumberPattern>[124-8][2-9]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          60[124-8][2-9]\d{6}|
+          [124-8][2-9]\d{6}
+        </nationalNumberPattern>
       </fixedLine>
       <!-- Added prefix 323 based on user report and online evidences. -->
       <mobile>
@@ -9032,12 +9040,15 @@
               (?:
                 (?:
                   [124-6]\d|
-                  3[5-9]|
-                  8[2-4]
+                  3[5-9]
                 )\d|
                 7(?:
                   [679]\d|
                   8[13-9]
+                )|
+                8(?:
+                  [2-6]\d|
+                  7[01]
                 )
               )\d
             )|
@@ -10249,12 +10260,12 @@
               1(?:
                 3(?:
                   [0-58]\d\d|
-                  73[023]
+                  73[0235]
                 )|
                 4(?:
                   [0-5]\d\d|
                   69[7-9]|
-                  70[059]
+                  70[0359]
                 )|
                 (?:
                   5[0-26-9]|
@@ -10262,7 +10273,7 @@
                 )\d\d|
                 6(?:
                   [0-4]\d\d|
-                  50[259]
+                  50[02459]
                 )
               )|
               2(?:
@@ -10280,7 +10291,7 @@
                   [0-7]\d\d|
                   8(?:
                     [02]\d|
-                    1[278]
+                    1[0-278]
                   )
                 )
               )|
@@ -23206,7 +23217,7 @@
               [2357]\d|
               4[2-9]|
               6[0-35-9]|
-              8[136-9]|
+              8[135-9]|
               9[1-9]
             )
           )\d{7}
@@ -28450,7 +28461,7 @@
               4[037]|
               5[47]|
               6[02359]|
-              7[02-59]|
+              7[0-59]|
               8[156]
             )|
             8(?:
@@ -28542,7 +28553,7 @@
               4[037]|
               5[47]|
               6[02359]|
-              7[02-59]|
+              7[0-59]|
               8[156]
             )|
             8(?:
