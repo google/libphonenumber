@@ -1,6 +1,0 @@
-# Maven output directory.
-target/
-
-# IntelliJ project files.
-.idea/
-*.iml
