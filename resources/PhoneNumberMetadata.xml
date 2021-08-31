@@ -24503,7 +24503,7 @@
         <possibleLengths national="9"/>
         <exampleNumber>712034567</exampleNumber>
         <nationalNumberPattern>
-          7[01]20\d{5}|
+          7[01]2[0-9]\d{5}|
           7(?:
             0[013-9]|
             1[01]|
