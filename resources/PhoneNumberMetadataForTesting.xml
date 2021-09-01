@@ -791,6 +791,13 @@
           <leadingDigits>[89]00</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- This formatting pattern is added to test that the AYTF should return unformatted
+             results when the first group is dropped in the output. -->
+        <numberFormat pattern="(\d{3})(\d{2})(\d{5})">
+          <leadingDigits>901</leadingDigits>
+          <format>$2 $3</format>
+          <intlFormat>$2 $3</intlFormat>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>33|55|81</leadingDigits>
           <format>$1 $2 $3</format>
