@@ -15,5 +15,4 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
     - name: Build with Ant
-      run: ant clean -f java/build.xml && ant jar -f java/build.xml
-           ant junit -f java/build.xml
+      run: ant clean -f java/build.xml && ant jar -f java/build.xml && ant junit -f java/build.xml
