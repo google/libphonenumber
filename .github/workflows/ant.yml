@@ -14,5 +14,12 @@ jobs:
       with:
         java-version: '8'
         distribution: 'adopt'
-    - name: Build with Ant
+# Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
+# files. This is configured not to build the "cpp-build" module.
+# The "mvn install" command will run by default during the "install" phase by
+# Travis, without the profile flag. Here we customize the install phase to use
+# the relevant profile.
+    - name: Test Build Tools with Maven
+      run: mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V && mvn -P travis test
+    - name: Test Java API with Ant
       run: ant clean -f java/build.xml && ant jar -f java/build.xml && ant junit -f java/build.xml
