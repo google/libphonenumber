@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 7 and Maven
+    - name: Set up JDK 8 and Maven
       uses: actions/setup-java@v2
       with:
-        java-version: '7'
+        java-version: '8'
         distribution: 'adopt'
 # Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
@@ -31,9 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    # - name: Setup Node.js environment
-    #  uses: actions/setup-node@v2.4.0
-    - name: Check whether .js api files are ascii. dafe or not.
+    - name: Install ascii-safe-cli
+      run: npm install -g is-ascii-safe-cli
+    - name: Check whether .js api files are ascii safe or not.
       run: find . -name '*.js' ! -name '*_test.js' | xargs is-ascii-safe
-      # run: npm install -g is-ascii-safe-cli
-
