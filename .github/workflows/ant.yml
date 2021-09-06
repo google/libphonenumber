@@ -1,25 +1,39 @@
-# This workflow will build a Java project with Ant
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-ant
+# This workflow builds and unit tests both main Java API and also build/data tools for metadata generation.
 
-name: Java CI
-on:
-  push:
+name: Testing Java API
+on: [push, pull_request]
 jobs:
-  build:
+  java-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 8
+    - name: Set up JDK 7 and Maven
       uses: actions/setup-java@v2
       with:
-        java-version: '8'
+        java-version: '7'
         distribution: 'adopt'
 # Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
 # The "mvn install" command will run by default during the "install" phase by
 # Travis, without the profile flag. Here we customize the install phase to use
-# the relevant profile.
+# the relevant profile. If we want to build "cpp-build" with Travis CI it's safe
+# to remove the first line entirely.
     - name: Test Build Tools with Maven
-      run: mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V && mvn -P travis test
+      run: |
+        mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        mvn -P travis test
     - name: Test Java API with Ant
-      run: ant clean -f java/build.xml && ant jar -f java/build.xml && ant junit -f java/build.xml
+      run: |
+        ant clean -f java/build.xml
+        ant jar -f java/build.xml
+        ant junit -f java/build.xml
+  js-files-ascii-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # - name: Setup Node.js environment
+    #  uses: actions/setup-node@v2.4.0
+    - name: Check whether .js api files are ascii. dafe or not.
+      run: find . -name '*.js' ! -name '*_test.js' | xargs is-ascii-safe
+      # run: npm install -g is-ascii-safe-cli
+
