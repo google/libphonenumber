@@ -1,7 +1,10 @@
 # This workflow builds and unit tests both main Java API and also build/data tools for metadata generation.
 
 name: Testing Java API
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    types: [opened]
 jobs:
   java-test:
     runs-on: ubuntu-latest
