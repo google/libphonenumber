@@ -1,3 +1,61 @@
+Aug 24, 2021: v8.12.31
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, EE, GB, PH, US
+ - New geocoding data for country calling code(s): 1771 (en)
+ - Updated geocoding data for country calling code(s): 57 (en), 225 (en)
+ - Updated carrier data for country calling code(s):
+   63 (en), 252 (en), 372 (en), 389 (en)
+ - Updated / refreshed time zone meta data.
+
+Aug 17, 2021: v8.12.30
+Metadata changes:
+ - Updated phone metadata for region code(s): 800, AM, GL, KW, SG, SO, SY
+ - Updated carrier data for country calling code(s):
+   55 (en), 65 (en), 252 (en), 263 (en), 963 (en)
+ - Updated / refreshed time zone meta data.
+
+Aug 06, 2021: v8.12.29
+Code changes:
+ - Updated As-You-Type-Formatter to exclude patterns where some digits would be dropped in the output. This also fixes the bug where an extra country code is added in some cases to the user's output. b/183053929
+Metadata changes:
+ - Updated phone metadata for region code(s): BE, GE, IR, MO, MX, QA, SN
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   32 (en), 221 (en), 995 (en)
+ - Updated / refreshed time zone meta data.
+
+Jul 20, 2021: v8.12.28
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CO, EH, GF, HK, KZ, MA, MO, MU, MX, NG, OM, PH, RU, SG, TO, UG
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   34 (en), 57 (en), 63 (en), 65 (en), 229 (en), 234 (en), 676 (en),
+   852 (en, zh), 968 (en)
+ - Updated / refreshed time zone meta data.
+
+Jul 07, 2021: v8.12.27
+Metadata changes:
+ - Updated phone metadata for region code(s): BW, MG, MW, PL, RO, TO, ZW
+ - Updated short number metadata for region code(s): BW, HU
+ - Updated carrier data for country calling code(s):
+   36 (en), 48 (en), 261 (en), 263 (en), 676 (en)
+
+Jun 23, 2021: v8.12.26
+Metadata changes:
+ - Updated phone metadata for region code(s): DZ, EH, GB, MA, PH, QA
+ - Updated geocoding data for country calling code(s): 212 (en)
+
+Jun 09, 2021: v8.12.25
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BZ, GB, GH, HN, JM, LU, TJ, US, VU
+ - New geocoding data for country calling code(s): 1448 (en)
+ - Updated geocoding data for country calling code(s): 678 (en)
+ - Updated carrier data for country calling code(s):
+   233 (en), 678 (en), 1876 (en)
+ - Updated / refreshed time zone meta data.
+
 May 26, 2021: v8.12.24
 Code changes:
  - Changes formatOutOfCountryCallingNumber to always use preferred intl prefix if present, not just for numbers with a non-unique IDD. This means we will output "8~10" as the prefix if calling formatOutOfCountryCallingNumber instead of "810" for some regions that have this tilde in their prefix [designates that the user should wait before continuing to dial].

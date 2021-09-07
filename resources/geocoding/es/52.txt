@@ -223,6 +223,7 @@
 52652|Chihuahua
 52653|Luis B. Sánchez/San Luis Río Colorado, SON
 52656|Chihuahua
+52657|Chihuahua
 52658|Baja California
 52659|Chihuahua
 52661|Primo Tapia/Rosarito, BCN
@@ -378,6 +379,7 @@
 52986|Yucatán
 52987|Cozumel, QRO
 52988|Yucatán
+52990|Merida
 52991|Yucatán
 52992|Chiapas
 52993|Tabasco
