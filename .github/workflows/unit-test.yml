@@ -19,7 +19,6 @@ jobs:
 # files. This is configured not to build the "cpp-build" module.
 # The "mvn install" command will run by default during the "install" phase by
 # Travis, without the profile flag. Here we customize the install phase to use
-# the relevant profile. If we want to build "cpp-build" with Travis CI it's safe
     - name: Test Build Tools with Maven
       run: |
         mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V
