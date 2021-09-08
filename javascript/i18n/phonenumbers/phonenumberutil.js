@@ -33,7 +33,6 @@ goog.provide('i18n.phonenumbers.PhoneNumberUtil');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil.MatchType');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
-goog.require('goog.array');
 goog.require('goog.object');
 goog.require('goog.proto2.PbLiteSerializer');
 goog.require('goog.string');
@@ -1406,9 +1405,8 @@ i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
  *     region the library supports.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
-  return goog.array.filter(
-      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
-      function(regionCode) {
+  return Object.keys(i18n.phonenumbers.metadata.countryToMetadata)
+      .filter(function(regionCode) {
         return isNaN(regionCode);
       });
 };
@@ -1420,17 +1418,16 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
  * @return {!Array.<number>} the country calling codes for every
  *     non-geographical entity the library supports.
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.
-    getSupportedGlobalNetworkCallingCodes = function() {
-  var callingCodesAsStrings = goog.array.filter(
-      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
-      function(regionCode) {
-        return !isNaN(regionCode);
-      });
-  return goog.array.map(callingCodesAsStrings,
-      function(callingCode) {
-        return parseInt(callingCode, 10);
-      });
+i18n.phonenumbers.PhoneNumberUtil.prototype
+    .getSupportedGlobalNetworkCallingCodes = function() {
+  var callingCodesAsStrings =
+      Object.keys(i18n.phonenumbers.metadata.countryToMetadata)
+          .filter(function(regionCode) {
+            return !isNaN(regionCode);
+          });
+  return callingCodesAsStrings.map(function(callingCode) {
+    return parseInt(callingCode, 10);
+  });
 };
 
 
@@ -1447,12 +1444,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedCallingCodes =
     function() {
   var countryCodesAsStrings =
       Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap);
-  return goog.array.join(
-      this.getSupportedGlobalNetworkCallingCodes(),
-      goog.array.map(countryCodesAsStrings,
-      function(callingCode) {
-        return parseInt(callingCode, 10);
-      }));
+  return [
+    ...this.getSupportedGlobalNetworkCallingCodes(),
+    ...countryCodesAsStrings.map(function(callingCode) {
+      return parseInt(callingCode, 10);
+    })
+  ];
 };
 
 
@@ -1645,9 +1642,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
 
   return numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
       numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
-      (goog.array.contains(
-          i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_,
-          phoneNumber.getCountryCodeOrDefault()) &&
+      (i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_.includes(
+           phoneNumber.getCountryCodeOrDefault()) &&
        numberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
 };
 
@@ -2793,16 +2789,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForNonGeoEntity =
   var metadata =
       this.getMetadataForNonGeographicalRegion(countryCallingCode);
   if (metadata != null) {
-    /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-    var numberTypeWithExampleNumber = goog.array.find(
-        [metadata.getMobile(), metadata.getTollFree(),
-         metadata.getSharedCost(), metadata.getVoip(),
-         metadata.getVoicemail(), metadata.getUan(),
-         metadata.getPremiumRate()],
-        function(desc, index) {
-          return (desc.hasExampleNumber());
-        });
-    if (numberTypeWithExampleNumber != null) {
+    /** @type {!i18n.phonenumbers.PhoneNumberDesc|undefined} */
+    var numberTypeWithExampleNumber = [
+      metadata.getMobile(), metadata.getTollFree(), metadata.getSharedCost(),
+      metadata.getVoip(), metadata.getVoicemail(), metadata.getUan(),
+      metadata.getPremiumRate()
+    ].find(function(desc, index) {
+      return desc.hasExampleNumber();
+    });
+    if (numberTypeWithExampleNumber !== undefined) {
       try {
         return this.parse('+' + countryCallingCode +
             numberTypeWithExampleNumber.getExampleNumber(), 'ZZ');
@@ -3031,8 +3026,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
   // already checked before a specific number type.
   var actualLength = nationalNumber.length;
   if (numberDesc.possibleLengthCount() > 0 &&
-      goog.array.indexOf(numberDesc.possibleLengthArray(),
-          actualLength) == -1) {
+      numberDesc.possibleLengthArray().indexOf(actualLength) == -1) {
     return false;
   }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(
@@ -3304,13 +3298,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
  * @param {?string} regionCode the CLDR two-letter region code.
  * @return {boolean} true if regionCode is one of the regions under NANPA.
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
-    function(regionCode) {
-
-  return regionCode != null && goog.array.contains(
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[
-          i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_],
-      regionCode.toUpperCase());
+i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry = function(
+    regionCode) {
+  return regionCode != null &&
+      i18n.phonenumbers.metadata
+          .countryCodeToRegionCodeMap[i18n.phonenumbers.PhoneNumberUtil
+                                          .NANPA_COUNTRY_CODE_]
+          .includes(regionCode.toUpperCase());
 };
 
 
@@ -3462,14 +3456,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
         // The current list is sorted; we need to merge in the new list and
         // re-sort (duplicates are okay). Sorting isn't so expensive because the
         // lists are very small.
-        goog.array.sort(possibleLengths);
+        possibleLengths.sort();
 
         if (localLengths.length == 0) {
           localLengths = mobileDesc.possibleLengthLocalOnlyArray();
         } else {
           localLengths = localLengths.concat(
               mobileDesc.possibleLengthLocalOnlyArray());
-          goog.array.sort(localLengths);
+          localLengths.sort();
         }
       }
     }
@@ -3483,7 +3477,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
   var actualLength = number.length;
   // This is safe because there is never an overlap beween the possible lengths
   // and the local-only lengths; this is checked at build time.
-  if (goog.array.indexOf(localLengths, actualLength) > -1) {
+  if (localLengths.indexOf(actualLength) > -1) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult
         .IS_POSSIBLE_LOCAL_ONLY;
   }
@@ -3496,7 +3490,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
   }
   // We skip the first element since we've already checked it.
-  return (goog.array.indexOf(possibleLengths, actualLength, 1) > -1) ?
+  return (possibleLengths.indexOf(actualLength, 1) > -1) ?
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH;
 };
