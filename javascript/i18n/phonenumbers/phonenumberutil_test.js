@@ -455,8 +455,7 @@ function testGetSupportedRegions() {
 
 function testGetSupportedGlobalNetworkCallingCodes() {
   assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().length > 0);
-  assertFalse(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(
-      RegionCode.US));
+  assertFalse(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(1));
   assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(800));
   phoneUtil.getSupportedGlobalNetworkCallingCodes().forEach(function(
       countryCallingCode) {
