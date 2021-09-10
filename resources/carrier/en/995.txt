@@ -45,7 +45,10 @@
 995571|Veon
 995574|Veon
 9955750|Asanet
-9955757|MagtiCom
+9955755|Silknet
+99557575|Silknet
+99557577|MagtiCom
+99557578|MagtiCom
 995577|Geocell
 995579|Veon
 995580|Silknet

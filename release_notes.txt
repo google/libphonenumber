@@ -1,3 +1,11 @@
+Sep 09, 2021: v8.12.32
+Metadata changes:
+ - Updated phone metadata for region code(s): CI, GE, RO, SG, US, YT
+ - New geocoding data for country calling code(s): 1582 (en)
+ - Updated carrier data for country calling code(s):
+   40 (en), 65 (en), 262 (en), 356 (en), 503 (en), 995 (en)
+ - Updated / refreshed time zone meta data.
+
 Aug 24, 2021: v8.12.31
 Metadata changes:
  - Updated phone metadata for region code(s): CO, EE, GB, PH, US
