@@ -226,6 +226,7 @@ maintenance processes.
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
+*   Elixir: https://github.com/marinakr/libphonenumber_elixir
 *   Clojure: https://github.com/randomseed-io/phone-number
 *   R: https://github.com/socialresearchcentre/dialr/
 
