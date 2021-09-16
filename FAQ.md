@@ -534,3 +534,10 @@ This means we sometimes have numbers that do connect to a real person.
 If we by chance have actually listed your real number and would like it removed,
 please report this through Google's new [Issue Tracker](http://issuetracker.google.com/issues/new?component=192347).
 Only our internal team will have access to your identity (whereas GitHub usernames are public).
+
+### Why can the smallest digits of parsed numbers that are very long be incorrect when parsing in Javascript?
+
+Eg: National number of 900184080594493**87**, ```region: JP``` is parsed as
+900184080594493**90**. Reason: When the provided number is more than the max
+limit of JavaScript ```Number``` type - 2^53, JS starts rounding the value.
+libphonenumber cannot do anything better here. More details mentioned [in this issue](https://issuetracker.google.com/issues/198423548).
