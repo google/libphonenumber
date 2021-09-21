@@ -620,7 +620,7 @@ public abstract class FormatSpec {
     @Override
     public final String toString() {
       String group =
-          "X".repeat(minLength()) + "*".Strings.repeat(maxLength() - minLength());
+          "X".repeat(minLength()) + "*".repeat(maxLength() - minLength());
       return replacement().map(r -> String.format("{%s>%s}", group, r)).orElse(group);
     }
   }
