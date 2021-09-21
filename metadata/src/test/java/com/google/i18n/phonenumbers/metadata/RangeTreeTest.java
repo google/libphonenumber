@@ -18,12 +18,11 @@ package com.google.i18n.phonenumbers.metadata;
 import static com.google.common.collect.ImmutableList.toImmutableList;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.DigitSequence.domain;
+import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 import static com.google.i18n.phonenumbers.metadata.testing.RangeTreeSubject.assertThat;
 import static java.util.Arrays.asList;
-import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
 
 import com.google.auto.value.AutoValue;
-import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableRangeSet;
 import com.google.common.collect.Range;
 import com.google.common.collect.RangeSet;
@@ -505,7 +504,7 @@ public class RangeTreeTest {
     RangeTree combined = new ForkJoinPool(numThreads)
         .submit(() -> ranges.parallelStream().reduce(RangeTree.empty(), RangeTree::union))
         .get();
-    assertThat(combined).isEqualTo(ranges(Strings.repeat("x", numDigits)));
+    assertThat(combined).isEqualTo(ranges("x".repeat(numDigits)));
   }
 
   @AutoValue
