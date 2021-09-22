@@ -1,3 +1,11 @@
+Sep 22, 2021: v8.12.33
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CG, CZ, GE, GF, GR, KR, MT, PA, TH, UG, UZ
+ - Updated geocoding data for country calling code(s): 420 (en)
+ - Updated carrier data for country calling code(s):
+   46 (en), 420 (en), 966 (en)
+
 Sep 09, 2021: v8.12.32
 Metadata changes:
  - Updated phone metadata for region code(s): CI, GE, RO, SG, US, YT
