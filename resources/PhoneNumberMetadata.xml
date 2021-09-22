@@ -5638,10 +5638,6 @@
     <!-- http://www.itu.int/oth/T020200002E/en -->
     <territory id="CG" countryCode="242" internationalPrefix="00">
       <availableFormats>
-        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>801</leadingDigits>
-          <format>$1 $2 $3 $4</format>
-        </numberFormat>
         <numberFormat pattern="(\d)(\d{4})(\d{4})">
           <leadingDigits>8</leadingDigits>
           <format>$1 $2 $3</format>
@@ -5653,11 +5649,11 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          222\d{6}|
           (?:
-            0\d|
-            80
-          )\d{7}
+            0\d\d|
+            222|
+            800
+          )\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -5688,12 +5684,7 @@
       <premiumRate>
         <possibleLengths national="9"/>
         <exampleNumber>800123456</exampleNumber>
-        <nationalNumberPattern>
-          80(?:
-            0\d\d|
-            11[0-4]
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>800\d{6}</nationalNumberPattern>
       </premiumRate>
     </territory>
 
@@ -7816,6 +7807,10 @@
             9[015-7]
           </leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{3})(\d{2})">
+          <leadingDigits>96</leadingDigits>
+          <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})(\d{3})">
           <leadingDigits>9</leadingDigits>
@@ -10835,7 +10830,10 @@
         <exampleNumber>555123456</exampleNumber>
         <nationalNumberPattern>
           5(?:
-            0555[5-9]|
+            (?:
+              0555|
+              1177
+            )[5-9]|
             757(?:
               7[7-9]|
               8[01]
@@ -10843,8 +10841,11 @@
           )\d{3}|
           5(?:
             0070|
-            [25]222|
-            3333
+            (?:
+              11|
+              33
+            )33|
+            [25]222
           )[0-4]\d{3}|
           5(?:
             00(?:
@@ -10852,6 +10853,7 @@
               50
             )|
             11(?:
+              00|
               1\d|
               2[0-4]
             )|
@@ -10940,7 +10942,7 @@
             5[6-9]|
             6[0-3]|
             80|
-            9[0-24]
+            9[0-4]
           )\d{4}
         </nationalNumberPattern>
       </fixedLine>
@@ -11571,7 +11573,7 @@
           <leadingDigits>[2689]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{5})">
+        <numberFormat pattern="(\d{3})(\d{3,4})(\d{5})">
           <leadingDigits>8</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -11579,7 +11581,7 @@
       <generalDesc>
         <nationalNumberPattern>
           5005000\d{3}|
-          8\d{9,10}|
+          8\d{9,11}|
           (?:
             [269]\d|
             70
@@ -11663,9 +11665,9 @@
         </nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="10,11"/>
+        <possibleLengths national="[10-12]"/>
         <exampleNumber>8001234567</exampleNumber>
-        <nationalNumberPattern>800\d{7,8}</nationalNumberPattern>
+        <nationalNumberPattern>800\d{7,9}</nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="10"/>
@@ -17351,6 +17353,7 @@
           1(?:
             5(?:
               22|
+              33|
               44|
               66|
               77|
@@ -20551,14 +20554,15 @@
         <possibleLengths national="8"/>
         <exampleNumber>21001234</exampleNumber>
         <nationalNumberPattern>
+          20(?:
+            3[1-4]|
+            6[059]
+          )\d{4}|
           2(?:
-            0(?:
-              [19]\d|
-              3[1-4]|
-              6[059]
-            )|
-            [1-357]\d\d
-          )\d{4}
+            0[19]|
+            [1-357]\d|
+            60
+          )\d{5}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
@@ -22663,13 +22667,16 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          8\d{9}|
+          (?:
+            00800|
+            8\d{3}
+          )\d{6}|
           [68]\d{7}|
           [1-57-9]\d{6}
         </nationalNumberPattern>
       </generalDesc>
-      <!-- Note that numbers starting with 101, 106, 131, 151, 156 and 168 have not been assigned to
-           any rule below since we are not sure what the "servicios 102/103" refer to here. -->
+      <!-- Note that numbers starting with 101, 106, 131, 151, 156 and 168 have not been assigned
+           to any rule below since we are not sure what the "servicios 102/103" refer to here. -->
       <!-- Note that "servicios 101/104" in the plan refer to "Local Basic Communications Service"
            and "Public and Semipublic Terminal Service", represented here as fixed-line. -->
       <!-- The range 194-XXXX has been added since a number was found online with this prefix and
@@ -22773,15 +22780,17 @@
           )\d{4}
         </nationalNumberPattern>
       </mobile>
+      <!-- Prefix 800 and 00800 of length 9-digit and 11-digit is added based on user
+           report.  -->
       <tollFree>
-        <possibleLengths national="7,8,10"/>
+        <possibleLengths national="7,8,10,11"/>
         <exampleNumber>8001234</exampleNumber>
         <nationalNumberPattern>
-          800\d{4}(?:
-            \d(?:
-              \d{2}
-            )?
-          )?
+          800\d{4,5}|
+          (?:
+            00800|
+            800\d
+          )\d{6}
         </nationalNumberPattern>
       </tollFree>
       <!-- Value-added services are represented as "400" in the plan. -->
@@ -26981,9 +26990,12 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          1\d{9}|
-          [1689]\d{8}|
-          [1-57]\d{7}
+          (?:
+            001800|
+            [2-57]|
+            [689]\d
+          )\d{7}|
+          1\d{7,9}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Numbers online have been found that start with 20, despite the ITU doc not covering
@@ -27018,11 +27030,17 @@
           )\d{7}
         </nationalNumberPattern>
       </mobile>
-      <!-- http://en.wikipedia.org/wiki/Toll-free_telephone_number -->
+      <!-- http://en.wikipedia.org/wiki/Toll-free_telephone_number. Prefix 001800 of length
+           13-digit is added based on user report. -->
       <tollFree>
-        <possibleLengths national="10"/>
+        <possibleLengths national="10,13"/>
         <exampleNumber>1800123456</exampleNumber>
-        <nationalNumberPattern>1800\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            001800\d|
+            1800
+          )\d{6}
+        </nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="10"/>
@@ -28349,7 +28367,7 @@
         <possibleLengths national="9"/>
         <exampleNumber>712345678</exampleNumber>
         <nationalNumberPattern>
-          7260\d{5}|
+          726[01]\d{5}|
           7(?:
             [0157-9]\d|
             20|
@@ -28920,7 +28938,7 @@
       </fixedLine>
       <!-- Adding 9[45] as suggested by http://www.ucell.uz/en/for_subscribers/how_to_call.html
            Adding other prefixes from http://www.weltvorwahlen.de/99861353.html, and any other
-           prefixes Tyntec has a carrier mapped to. Adding 5550[13] & 5590 based on user report. -->
+           prefixes Tyntec has a carrier mapped to. Adding 5550[013] & 5590 based on user report. -->
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>912345678</exampleNumber>
@@ -28932,7 +28950,7 @@
               9[0-57-9]
             )\d{3}|
             55(?:
-              50[13]|
+              50[013]|
               90\d
             )|
             6(?:
