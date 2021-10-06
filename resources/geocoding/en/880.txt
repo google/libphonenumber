@@ -15,7 +15,11 @@
 # Generated from:
 # https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000120001MSWE.doc
 
-8802|Dhaka
+88024|Dhaka
+88025|Dhaka
+88027|Dhaka
+88028|Dhaka
+88029|Dhaka
 8803020|Banskhali
 8803022|Fatikchari
 8803023|Hathazari
@@ -30,6 +34,7 @@
 8803034|Lohagara
 8803035|Potia/Potiya
 8803036|Satkania/Satkhania
+880313|Bagerhat
 880316|Chittagong
 880317|Chittagong
 880318|Chittagong
@@ -52,7 +57,7 @@
 8803427|Ukhiya
 880351|Rangamati
 880352|Kaptai
-88036|Bandarban
+880361|Bandarban
 880371|Khagrachari
 880381|Laximpur/Ramganj
 8803822|Raipura
@@ -100,7 +105,7 @@
 8804625|Mothbaria
 8804626|Nazirpur
 8804627|Swarupkhati
-8804652|Bagerhat
+88046528|Bagerhat
 8804653|Fakirhat
 8804654|Kachua
 8804655|Mollarhat
@@ -229,6 +234,7 @@
 88079|Meherpur
 880802|Chauddagram/Chandina/Chandiana/Daudkandi/Debidwar/Homna/Muradnagar/Brahmanpara/Barura/Burichang
 88081|Homna/Comilla
+8808214|Dianjpur
 8808217|Sylhet MEA
 8808218|Sylhet
 8808220|Kanaighat
@@ -264,4 +270,5 @@
 880941|Kishoreganj/Tarail
 880942|Bajitpur/Bhairabbazar/Itna/Kotiadhi
 88095|Netrokona
-88098|Jamalpur/Islampur/Dewanganj
+880981|Jamalpur/Islampur/Dewanganj
+880982|Brahmanbaria

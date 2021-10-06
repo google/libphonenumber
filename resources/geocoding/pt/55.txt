@@ -2738,7 +2738,7 @@
 55213642|Teresópolis - RJ
 55213643|Teresópolis - RJ
 55213644|Teresópolis - RJ
-55213660|Barra Mansa - RJ
+55213660|Magé - RJ
 55213664|Belford Roxo - RJ
 55213665|Queimados - RJ
 55213667|Duque de Caxias - RJ
