@@ -1,3 +1,9 @@
+Oct 06, 2021: v8.12.34
+Metadata changes:
+ - Updated phone metadata for region code(s): AR, BD, DE, MX, VI
+ - Updated geocoding data for country calling code(s):
+   55 (en), 420 (en), 880 (en), 1340 (en)
+
 Sep 22, 2021: v8.12.33
 Metadata changes:
  - Updated phone metadata for region code(s):
