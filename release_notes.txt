@@ -1,3 +1,8 @@
+Oct 12, 2021: v8.12.35
+Metadata changes:
+ - Updated phone metadata for region code(s): AU, AZ, CC, CO, CX, EH, HN, MA
+ - Updated carrier data for country calling code(s): 994 (en)
+
 Oct 06, 2021: v8.12.34
 Metadata changes:
  - Updated phone metadata for region code(s): AR, BD, DE, MX, VI

@@ -2492,7 +2492,7 @@
         <nationalNumberPattern>
           4(?:
             83[0-38]|
-            93[0-4]
+            93[0-6]
           )\d{5}|
           4(?:
             [0-3]\d|
@@ -2811,15 +2811,13 @@
         <possibleLengths national="9"/>
         <exampleNumber>401234567</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            36554|
-            99[2-9]\d\d
-          )\d{4}|
+          36554\d{4}|
           (?:
             [16]0|
             4[04]|
             5[015]|
-            7[07]
+            7[07]|
+            99
           )\d{7}
         </nationalNumberPattern>
       </mobile>
@@ -5566,7 +5564,7 @@
         <nationalNumberPattern>
           4(?:
             83[0-38]|
-            93[0-4]
+            93[0-6]
           )\d{5}|
           4(?:
             [0-3]\d|
@@ -7295,8 +7293,7 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)"
-                      carrierCodeFormattingRule="$NP$CC $FG">
+        <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)">
           <leadingDigits>6</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -7754,7 +7751,7 @@
         <nationalNumberPattern>
           4(?:
             83[0-38]|
-            93[0-4]
+            93[0-6]
           )\d{5}|
           4(?:
             [0-3]\d|
@@ -9274,7 +9271,7 @@
             )|
             7(?:
               0\d|
-              1[0-3]|
+              1[0-5]|
               6[1267]|
               7[0-57]
             )
@@ -12371,7 +12368,7 @@
         <nationalNumberPattern>8002\d{7}</nationalNumberPattern>
       </noInternationalDialling>
       <!-- Extra prefixes 2244, 226[24], 227[0135689], 228X, 2292, 2407, 250[78], 2516, 2540,
-           256[014], 2580, 260X, 2617, 262[07], 263[04], 2780 and 2791 were added from numbers
+           256[014], 2580, 260X, 2617, 262[067], 263[04], 2780 and 2791 were added from numbers
            found online and user reports. -->
       <fixedLine>
         <possibleLengths national="8"/>
@@ -12408,7 +12405,7 @@
             6(?:
               [056]\d|
               17|
-              2[07]|
+              2[067]|
               3[04]|
               4[0-378]|
               [78][0-8]|
@@ -19020,7 +19017,7 @@
             )|
             7(?:
               0\d|
-              1[0-3]|
+              1[0-5]|
               6[1267]|
               7[0-57]
             )
