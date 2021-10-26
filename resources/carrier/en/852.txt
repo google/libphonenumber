@@ -156,7 +156,7 @@
 8525718|Lycamobile
 8525719|Lycamobile
 852572|SmarTone
-852573|Tai Tung
+852573|China Mobile
 8525740|SmarTone
 8525741|SmarTone
 8525742|SmarTone

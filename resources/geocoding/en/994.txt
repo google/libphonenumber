@@ -36,7 +36,7 @@
 9942126|Neftchala
 9942127|Agjabadi
 9942128|Saatli
-99421428|Hajigabul
+994214|Hajigabul
 9942220|Goygol
 9942221|Dashkasan
 9942222|Agstafa
@@ -51,7 +51,7 @@
 9942232|Gadabay
 9942233|Yevlakh
 9942235|Naftalan
-99422428|Agstafa/Ganja/Yevlakh
+994224|Agstafa/Ganja/Yevlakh
 9942330|Siyazan
 9942331|Khizi
 9942332|Khachmaz
