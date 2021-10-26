@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+9654|Virgin mobile
 9655|VIVA
 9656|Ooredoo
 9659|Zain
