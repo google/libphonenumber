@@ -1,3 +1,10 @@
+Oct 26, 2021: v8.12.36
+Metadata changes:
+ - Updated phone metadata for region code(s): AZ, GA, HK, JM, KW, RO, TJ, UY
+ - Updated geocoding data for country calling code(s): 994 (en)
+ - Updated carrier data for country calling code(s):
+   40 (en), 41 (en), 252 (en), 852 (en, zh), 965 (en)
+
 Oct 12, 2021: v8.12.35
 Metadata changes:
  - Updated phone metadata for region code(s): AU, AZ, CC, CO, CX, EH, HN, MA
