@@ -13,6 +13,7 @@
 # limitations under the License.
 
 24380|Orange
+24385|Orange
 24381|Vodacom
 24382|Vodacom
 24383|Vodacom
