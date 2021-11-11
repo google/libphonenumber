@@ -331,7 +331,7 @@ We rely on these additional and explicit context such as a mobile prefix to
 correctly identify the phone number type (rather than returning [`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile)
 in ambiguous cases).
 
-Moreover, Argentina have different possible lengths for area codes and
+Moreover, Argentina has different possible lengths for area codes and
 subscriber numbers depending on the city, which further complicate matters (e.g.
 Buenos Aires is 11 followed by eight digits, but Río Gallegos is 2966 followed
 by six digits).
@@ -364,11 +364,11 @@ right thing if the phone number object is as intended.
 @Mexico,
 Mexico used to have such additional prefixes (1, 02, 045, ...) for dialling
 mobile numbers internatioanlly, fixed-line to mobile nationally.. As these
-dialling patterns were deprecated, we have continued maintain mobile and
+dialling patterns were deprecated, we have continued to maintain mobile and
 fixed-line ranges at higher level, returning type as [`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile)
 
 ### Why Mexico (MX) numbers in older dialling formats are accepted as valid ones?
-Though library have stopped supporting below older dialling codes in the canonical
+Though library has stopped supporting below older dialling codes in the canonical
 form and formatting results, we are lenient in parsing the number, i.e removing
 all older codes.
 - 1 -> in E.164 international diallings
