@@ -1,3 +1,11 @@
+Nov 11, 2021: v8.12.37
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BD, CC, CX, GB, IT, LI, MQ, SG, US, VA
+ - Updated geocoding data for country calling code(s): 880 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 81 (en), 356 (en), 423 (en)
+
 Oct 26, 2021: v8.12.36
 Metadata changes:
  - Updated phone metadata for region code(s): AZ, GA, HK, JM, KW, RO, TJ, UY
