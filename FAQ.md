@@ -312,24 +312,26 @@ We'd love to consume machine-readable numbering plan data (assigned ranges,
 carrier & geo mappings). If you can connect us with partners in the industry
 to achieve this, please do so. Thanks!
 
-### Why is this number from Argentina (AR) or Mexico (MX) not identified as the right number type?
+### Why is number from Argentina (AR) or Mexico (MX) not identified as the right number type?
 
-Certain countries' mobile and/or fixed line ranges may overlap, which may make
-accurate identification impossible without additional and explicit context such
-as a mobile prefix. We rely on this prefix being present to correctly identify
-the phone number type (rather than returning
-[`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile) in ambiguous cases) until our
-metadata can be fine-grained enough to detect when a user has omitted it.
+Certain countries' mobile and/or fixed line ranges may overlap or too granular,
+which may make accurate identification impossible. Eg: Argentina and Mexico.
+We tried incorporating such granular data (prefix of 7 digit for a 10 digit
+number). However, due to very high maintainance to keep the data fresh and
+also leading to significant increase in metadata size, we are supporting
+ranges/prefixes only at higher level. More details in [Argentina](https://issuetracker.google.com/issues/78443410) and
+[Mexico](https://issuetracker.google.com/issues/74517266) triaged issues.
 
-For example, when calling a mobile line from a fixed line in Argentina, you need
+@Argentina,
+When calling a mobile line from a fixed line in Argentina, you need
 to dial 15 before the subscriber number, or 9 if you're calling from another
 country. Without these additional digits, your call may not connect at all!
 
-Similarly, Mexico has different mobile prefixes needed when calling from a fixed
-line such as 044 when calling locally, 045 when calling from another state, and
-1 when dialing from another country.
+We rely on these additional and explicit context such as a mobile prefix to
+correctly identify the phone number type (rather than returning [`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile)
+in ambiguous cases).
 
-Moreover, these countries have different possible lengths for area codes and
+Moreover, Argentina has different possible lengths for area codes and
 subscriber numbers depending on the city, which further complicate matters (e.g.
 Buenos Aires is 11 followed by eight digits, but Río Gallegos is 2966 followed
 by six digits).
@@ -342,24 +344,39 @@ prefix, the user may not supply the mobile prefix.
 We are aware of these issues but fixing them is not trivial. In the meantime, we
 recommend the following workarounds to support affected users.
 
-*   If you know an Argentina or Mexico number is mobile (e.g. if you're doing
-    signups with device numbers or will send them an SMS verification code),
-    follow these steps:
+*   If you know an Argentina number is mobile (e.g. if you're doing signups with
+    device numbers or will send them an SMS verification code), follow these steps:
     *   For raw input strings:
         *   Parse a raw input string into a `PhoneNumber` and follow the next
             instructions for `PhoneNumber` objects.
     *   For `PhoneNumber` objects:
         *   Check that the library validates a `PhoneNumber` as mobile, by
             calling `getNumberType`;
-        *   If not, format it in national format and prepend a `9` for Argentina
-            or a `1` for Mexico;
+        *   If not, format it in national format and prepend a `9`
         *   Parse the modified string and if the library validates it as mobile,
             accept the resulting `PhoneNumber` as canonical.
 *   Consider prompting for type (mobile or not) in the phone number input UI.
 
-IMPORTANT: Do not add a leading 1 or 9 for displaying or formatting the numbers.
+IMPORTANT: Do not add a leading 9 for displaying or formatting the numbers.
 Depending on the use case, other tokens may be needed. The library will do the
 right thing if the phone number object is as intended.
+
+@Mexico,
+Mexico used to have such additional prefixes (1, 02, 045, ...) for dialling
+mobile numbers internatioanlly, fixed-line to mobile nationally.. As these
+dialling patterns were deprecated, we have continued to maintain mobile and
+fixed-line ranges at higher level, returning type as [`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile)
+
+### Why Mexico (MX) numbers in older dialling formats are accepted as valid ones?
+Though library has stopped supporting below older dialling codes in the canonical
+form and formatting results, we are lenient in parsing the number, i.e removing
+all older codes.
+- 1 -> in E.164 international diallings
+- 01, 02, 044 and 045 -> for local/national diallings
+
+This is because we found the older dialling codes supported even after deprecation
+period, so we decided to support them for longer time. However, we will stop this as
+part of [this issue](https://issuetracker.google.com/issues/205606725). More details there.
 
 ### Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?
 
