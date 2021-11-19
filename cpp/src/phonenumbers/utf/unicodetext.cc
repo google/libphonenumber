@@ -19,6 +19,7 @@
 #include <cassert>
 #include <cstdio>
 
+#include "phonenumbers/default_logger.h"
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/stringpiece.h"
 #include "phonenumbers/utf/utf.h"
@@ -231,7 +232,7 @@ UnicodeText& UnicodeText::Copy(const UnicodeText& src) {
 UnicodeText& UnicodeText::CopyUTF8(const char* buffer, int byte_length) {
   repr_.Copy(buffer, byte_length);
   if (!UniLib:: IsInterchangeValid(buffer, byte_length)) {
-    fprintf(stderr, "UTF-8 buffer is not interchange-valid.\n");
+    LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
   return *this;
@@ -250,7 +251,7 @@ UnicodeText& UnicodeText::TakeOwnershipOfUTF8(char* buffer,
                                               int byte_capacity) {
   repr_.TakeOwnershipOf(buffer, byte_length, byte_capacity);
   if (!UniLib:: IsInterchangeValid(buffer, byte_length)) {
-    fprintf(stderr, "UTF-8 buffer is not interchange-valid.\n");
+    LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
   return *this;
@@ -269,7 +270,7 @@ UnicodeText& UnicodeText::PointToUTF8(const char* buffer, int byte_length) {
   if (UniLib:: IsInterchangeValid(buffer, byte_length)) {
     repr_.PointTo(buffer, byte_length);
   } else {
-    fprintf(stderr, "UTF-8 buffer is not interchange-valid.");
+    LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.Copy(buffer, byte_length);
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
