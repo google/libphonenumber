@@ -231,7 +231,8 @@ UnicodeText& UnicodeText::Copy(const UnicodeText& src) {
 
 UnicodeText& UnicodeText::CopyUTF8(const char* buffer, int byte_length) {
   repr_.Copy(buffer, byte_length);
-  if (!UniLib:: IsInterchangeValid(buffer, byte_length)) {
+  repr_.utf8_was_valid_ = UniLib:: IsInterchangeValid(buffer, byte_length);
+  if (!repr_.utf8_was_valid_) {
     LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
@@ -250,7 +251,8 @@ UnicodeText& UnicodeText::TakeOwnershipOfUTF8(char* buffer,
                                               int byte_length,
                                               int byte_capacity) {
   repr_.TakeOwnershipOf(buffer, byte_length, byte_capacity);
-  if (!UniLib:: IsInterchangeValid(buffer, byte_length)) {
+  repr_.utf8_was_valid_ = UniLib:: IsInterchangeValid(buffer, byte_length);
+  if (!repr_.utf8_was_valid_) {
     LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
@@ -267,7 +269,8 @@ UnicodeText& UnicodeText::UnsafeTakeOwnershipOfUTF8(char* buffer,
 // ----- PointTo -----
 
 UnicodeText& UnicodeText::PointToUTF8(const char* buffer, int byte_length) {
-  if (UniLib:: IsInterchangeValid(buffer, byte_length)) {
+  repr_.utf8_was_valid_ = UniLib:: IsInterchangeValid(buffer, byte_length);
+  if (repr_.utf8_was_valid_) {
     repr_.PointTo(buffer, byte_length);
   } else {
     LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
