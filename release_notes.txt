@@ -1,3 +1,12 @@
+Nov 25, 2021: v8.12.38
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   883, AT, BI, BW, CG, EE, EH, HN, HU, LI, LK, MA, PA, PH, SG, TH, TJ
+ - Updated geocoding data for country calling code(s): 61 (en), 504 (en)
+ - Updated carrier data for country calling code(s):
+   51 (en), 65 (en), 370 (en), 992 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 11, 2021: v8.12.37
 Metadata changes:
  - Updated phone metadata for region code(s):
