@@ -30660,10 +30660,6 @@
 61731871|Dunwich
 61731872|Kooringal
 61731873|Russell Island
-61731874|Bribie Island
-61731876|Dayboro
-61731877|Dunwich
-61731878|Kooringal
 6173190|Brisbane
 6173191|Brisbane
 6173192|Brisbane
