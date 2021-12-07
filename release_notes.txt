@@ -1,3 +1,9 @@
+Dec 07, 2021: v8.12.39
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, EH, HK, MA, MU, ZM
+ - Updated carrier data for country calling code(s):
+   57 (en), 81 (en), 852 (en, zh)
+
 Nov 25, 2021: v8.12.38
 Metadata changes:
  - Updated phone metadata for region code(s):
