@@ -64,8 +64,7 @@ endif ()
 include_directories ("src")
 
 add_executable (generate_geocoding_data ${SOURCES})
-target_link_libraries (generate_geocoding_data absl::strings)
-target_link_libraries (generate_geocoding_data absl::btree)
+target_link_libraries (generate_geocoding_data absl::strings absl::btree)
 
 set (TEST_SOURCES
   "src/cpp-build/generate_geocoding_data.cc"
@@ -82,4 +81,4 @@ endif ()
 # Build the testing binary.
 include_directories ("test")
 add_executable (generate_geocoding_data_test ${TEST_SOURCES})
-target_link_libraries (generate_geocoding_data_test ${TEST_LIBS})
+target_link_libraries (generate_geocoding_data_test absl::btree ${TEST_LIBS})
