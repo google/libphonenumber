@@ -27,6 +27,8 @@
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/stl_util.h"
 
+#include "absl/synchronization/mutex.h"
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -75,6 +77,7 @@ void PhoneNumberOfflineGeocoder::Init(
 }
 
 PhoneNumberOfflineGeocoder::~PhoneNumberOfflineGeocoder() {
+  absl::MutexLock l(&mu_);
   gtl::STLDeleteContainerPairSecondPointers(
       available_maps_.begin(), available_maps_.end());
 }
@@ -195,6 +198,7 @@ const char* PhoneNumberOfflineGeocoder::GetAreaDescription(
   const int country_calling_code = number.country_code();
   // NANPA area is not split in C++ code.
   const int phone_prefix = country_calling_code;
+  absl::MutexLock l(&mu_);
   const AreaCodeMap* const descriptions = GetPhonePrefixDescriptions(
       phone_prefix, lang, script, region);
   const char* description = descriptions ? descriptions->Lookup(number) : NULL;

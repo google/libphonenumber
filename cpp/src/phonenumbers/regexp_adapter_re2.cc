@@ -27,6 +27,8 @@
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/stringutil.h"
 
+#include "absl/strings/str_replace.h"
+#include "absl/strings/string_view.h"
 namespace i18n {
 namespace phonenumbers {
 
@@ -76,14 +78,14 @@ bool DispatchRE2Call(Function regex_function,
 // when they escape dollar-signs.
 string TransformRegularExpressionToRE2Syntax(const string& regex) {
   string re2_regex(regex);
-  if (GlobalReplaceSubstring("$", "\\", &re2_regex) == 0) {
+  if (absl::StrReplaceAll({{"$", "\\"}}, &re2_regex) == 0) {
     return regex;
   }
   // If we replaced a dollar sign with a backslash and there are now two
   // backslashes in the string, we assume that the dollar-sign was previously
   // escaped and that we need to retain it. To do this, we replace pairs of
   // backslashes with a dollar sign.
-  GlobalReplaceSubstring("\\\\", "$", &re2_regex);
+  absl::StrReplaceAll({{"\\\\", "$"}}, &re2_regex);
   return re2_regex;
 }
 
