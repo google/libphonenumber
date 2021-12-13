@@ -1,4 +1,3 @@
-// Copyright (C) 2011 The Libphonenumber Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -628,6 +627,7 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
 bool PhoneNumberMatcher::HasNext() {
   if (state_ == NOT_READY) {
     PhoneNumberMatch temp_match;
+    try {
     if (!Find(search_index_, &temp_match)) {
       state_ = DONE;
     } else {
@@ -637,6 +637,11 @@ bool PhoneNumberMatcher::HasNext() {
       search_index_ = last_match_->end();
       state_ = READY;
     }
+    } catch (const std::out_of_range& oor) {
+    LOG(ERROR) << "Out of Range error: " << oor.what() << "\n";
+    state_ = DONE;
+    return false;
+  }
   }
   return state_ == READY;
 }
