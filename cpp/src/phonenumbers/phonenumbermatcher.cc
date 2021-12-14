@@ -627,7 +627,6 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
 bool PhoneNumberMatcher::HasNext() {
   if (state_ == NOT_READY) {
     PhoneNumberMatch temp_match;
-    try {
     if (!Find(search_index_, &temp_match)) {
       state_ = DONE;
     } else {
@@ -637,11 +636,6 @@ bool PhoneNumberMatcher::HasNext() {
       search_index_ = last_match_->end();
       state_ = READY;
     }
-    } catch (const std::out_of_range& oor) {
-    LOG(ERROR) << "Out of Range error: " << oor.what() << "\n";
-    state_ = DONE;
-    return false;
-  }
   }
   return state_ == READY;
 }
@@ -661,6 +655,10 @@ bool PhoneNumberMatcher::Next(PhoneNumberMatch* match) {
 bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
   DCHECK(match);
 
+  // Check whether index is within the range or not.
+  if (0 < index || (unsigned)index >= text_.size()) {
+    return false;
+  }
   scoped_ptr<RegExpInput> text(
       reg_exps_->regexp_factory_for_pattern_->CreateInput(text_.substr(index)));
   string candidate;
