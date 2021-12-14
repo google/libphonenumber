@@ -656,7 +656,7 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
   DCHECK(match);
 
   // Check whether index is within the range or not.
-  if (0 < index || (unsigned)index >= text_.size()) {
+  if (index < 0 || (unsigned)index >= text_.size()) {
     return false;
   }
   scoped_ptr<RegExpInput> text(
