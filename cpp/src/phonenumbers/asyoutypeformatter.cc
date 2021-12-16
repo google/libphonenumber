@@ -29,6 +29,9 @@
 #include "phonenumbers/stringutil.h"
 #include "phonenumbers/unicodestring.h"
 
+#include "absl/strings/str_cat.h"
+#include "absl/strings/str_replace.h"
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -273,7 +276,7 @@ void AsYouTypeFormatter::GetFormattingTemplate(
   regexp_cache_.GetRegExp(number_pattern).GlobalReplace(
       &a_phone_number, number_format);
   // Replaces each digit with character kDigitPlaceholder.
-  GlobalReplaceSubstring("9", kDigitPlaceholder, &a_phone_number);
+  absl::StrReplaceAll({{"9", kDigitPlaceholder}}, &a_phone_number);
   formatting_template->setTo(a_phone_number.c_str(), a_phone_number.size());
 }
 

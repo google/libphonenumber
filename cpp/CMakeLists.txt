@@ -14,7 +14,12 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 2.8.5)
+cmake_minimum_required (VERSION 3.11)
+
+# Pick the C++ standard to compile with.
+# Abseil currently supports C++11, C++14, and C++17.
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
@@ -468,6 +473,12 @@ if (${USE_POSIX_THREAD} STREQUAL "ON" OR ((APPLE OR UNIX) AND ${USE_BOOST} STREQ
     list (APPEND LIBRARY_DEPS ${CMAKE_THREAD_LIBS_INIT})
   endif()
 endif ()
+
+# Safeguarding against any potential link errors as mentioned in
+# https://github.com/abseil/abseil-cpp/issues/225
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+list (APPEND LIBRARY_DEPS absl::strings)
+list (APPEND COMMON_DEPS absl::synchronization)
 
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
