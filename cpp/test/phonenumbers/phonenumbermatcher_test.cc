@@ -1085,7 +1085,7 @@ TEST_F(PhoneNumberMatcherTest, NoErrorWithSpecialCharacters) {
       "i18n_phonenumbers_Pho\356eNumberMatcher_Leniency_VALID_1"
       "\nfuzzvar1159: 20316 info:%415-666-7777 123 fake str79ee\nt";
   string Numbers;
-  for (int i = 0; i < 25; ++i)
+  for (int i = 0; i < 100; ++i)
     Numbers.append(stringWithSpecialCharacters);
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency(Numbers, RegionCode::US(),

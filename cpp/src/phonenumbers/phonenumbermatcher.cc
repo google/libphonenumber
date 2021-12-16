@@ -51,6 +51,7 @@
 #include "phonenumbers/regexp_adapter_icu.h"
 #include "phonenumbers/regexp_cache.h"
 #include "phonenumbers/stringutil.h"
+#include "phonenumbers/utf/unicodetext.h"
 
 #ifdef I18N_PHONENUMBERS_USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"
@@ -655,6 +656,12 @@ bool PhoneNumberMatcher::Next(PhoneNumberMatch* match) {
 bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
   DCHECK(match);
 
+  // Input should should contain only UTF-8 characters.
+  UnicodeText number_as_unicode;
+  number_as_unicode.PointToUTF8(text_.c_str(), text_.size());
+  if (!number_as_unicode.UTF8WasValid()) {
+    return false;
+  }
   // Check whether index is within the range or not.
   if (index < 0 || (unsigned)index >= text_.size()) {
     return false;
