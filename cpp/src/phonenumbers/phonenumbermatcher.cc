@@ -32,7 +32,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-
 #include <unicode/uchar.h>
 
 #include "phonenumbers/alternate_format.h"
@@ -407,7 +406,10 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
       max_tries_(max_tries),
       state_(NOT_READY),
       last_match_(NULL),
-      search_index_(0) {
+      search_index_(0),
+      isInputInCleanUTF8_(true)
+{
+  isInputInCleanUTF8_ = CheckInputUTF8OrNot(); 
 }
 
 PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
@@ -421,10 +423,25 @@ PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
       max_tries_(numeric_limits<int>::max()),
       state_(NOT_READY),
       last_match_(NULL),
-      search_index_(0) {
+      search_index_(0),
+      isInputInCleanUTF8_(true)
+{
+  isInputInCleanUTF8_ =  CheckInputUTF8OrNot();
 }
 
+
 PhoneNumberMatcher::~PhoneNumberMatcher() {
+}
+
+// static
+bool PhoneNumberMatcher::CheckInputUTF8OrNot() {
+  // Input should contain only UTF-8 characters.
+  UnicodeText number_as_unicode;
+  number_as_unicode.PointToUTF8(text_.c_str(), text_.size());
+  if (number_as_unicode.UTF8WasValid()) {
+    return true;
+  }
+  return false;
 }
 
 // static
@@ -626,6 +643,10 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
 }
 
 bool PhoneNumberMatcher::HasNext() {
+  if (!isInputInCleanUTF8_) {
+    state_ = DONE;
+    return false;
+  }
   if (state_ == NOT_READY) {
     PhoneNumberMatch temp_match;
     if (!Find(search_index_, &temp_match)) {
@@ -656,16 +677,6 @@ bool PhoneNumberMatcher::Next(PhoneNumberMatch* match) {
 bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
   DCHECK(match);
 
-  // Input should should contain only UTF-8 characters.
-  UnicodeText number_as_unicode;
-  number_as_unicode.PointToUTF8(text_.c_str(), text_.size());
-  if (!number_as_unicode.UTF8WasValid()) {
-    return false;
-  }
-  // Check whether index is within the range or not.
-  if (index < 0 || (unsigned)index >= text_.size()) {
-    return false;
-  }
   scoped_ptr<RegExpInput> text(
       reg_exps_->regexp_factory_for_pattern_->CreateInput(text_.substr(index)));
   string candidate;

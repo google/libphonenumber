@@ -101,6 +101,9 @@ class PhoneNumberMatcher {
     DONE,
   };
 
+  // API to check if the provided text_ is in UTF-8 or not.
+  bool CheckInputUTF8OrNot();
+
   // Attempts to extract a match from a candidate string. Returns true if a
   // match is found, otherwise returns false. The value "offset" refers to the
   // start index of the candidate string within the overall text.
@@ -201,6 +204,9 @@ class PhoneNumberMatcher {
 
   // The next index to start searching at. Undefined in State.DONE.
   int search_index_;
+
+  // Flag to set or check if input text is in UTF-8 or not.
+  bool isInputInCleanUTF8_;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatcher);
 };
