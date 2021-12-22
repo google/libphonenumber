@@ -1090,15 +1090,9 @@ TEST_F(PhoneNumberMatcherTest, NoErrorWithSpecialCharacters) {
   scoped_ptr<PhoneNumberMatcher> matcher(
       GetMatcherWithLeniency(Numbers, RegionCode::US(),
                              PhoneNumberMatcher::POSSIBLE));
-  int tries = 0;
-  while (matcher->HasNext()) {
-    PhoneNumberMatch match;
-        matcher->Next(&match);
-    tries++;
-  }
   // As the input text do contain non UTF-8 chars, we block matching
   // tries.
-  EXPECT_EQ(tries, 0);
+  EXPECT_FALSE(matcher->HasNext());
 }
 
 TEST_F(PhoneNumberMatcherTest, Sequences) {
