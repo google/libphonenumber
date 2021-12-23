@@ -87,7 +87,8 @@ class PhoneNumberMatcher {
 
   ~PhoneNumberMatcher();
 
-  // Returns true if the text sequence has another match.
+  // Returns true if the text sequence has another match. Return false if not.
+  // Always returns false when input contains non UTF-8 characters.
   bool HasNext();
 
   // Gets next match from text sequence.

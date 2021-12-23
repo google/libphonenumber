@@ -407,8 +407,7 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
       state_(NOT_READY),
       last_match_(NULL),
       search_index_(0),
-      isInputInCleanUTF8_(true)
-{
+      isInputInCleanUTF8_(true) {
   isInputInCleanUTF8_ = CheckInputUTF8OrNot(); 
 }
 
@@ -424,8 +423,7 @@ PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
       state_(NOT_READY),
       last_match_(NULL),
       search_index_(0),
-      isInputInCleanUTF8_(true)
-{
+      isInputInCleanUTF8_(true) {
   isInputInCleanUTF8_ =  CheckInputUTF8OrNot();
 }
 
