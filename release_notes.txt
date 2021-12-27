@@ -1,3 +1,9 @@
+Dec 23, 2021: v8.12.40
+Metadata changes:
+ - Updated phone metadata for region code(s): GP, GY, MK, VU
+ - Updated geocoding data for country calling code(s): 389 (en)
+ - Updated carrier data for country calling code(s): 60 (en), 592 (en)
+
 Dec 07, 2021: v8.12.39
 Metadata changes:
  - Updated phone metadata for region code(s): CO, EH, HK, MA, MU, ZM
