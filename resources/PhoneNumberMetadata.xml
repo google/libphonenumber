@@ -9210,7 +9210,7 @@
         <exampleNumber>650123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            6(?:
+            6|7(?:
               [0-79]\d|
               8[0-247-9]
             )|
@@ -19013,7 +19013,7 @@
         <exampleNumber>650123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            6(?:
+            6|7(?:
               [0-79]\d|
               8[0-247-9]
             )|
