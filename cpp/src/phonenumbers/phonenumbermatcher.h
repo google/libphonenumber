@@ -102,7 +102,7 @@ class PhoneNumberMatcher {
     DONE,
   };
 
-  // API to check if the provided text_ is in UTF-8 or not.
+  // Checks if the to check if the provided text_ is in UTF-8 or not.
   bool IsInputUtf8();
 
   // Attempts to extract a match from a candidate string. Returns true if a
