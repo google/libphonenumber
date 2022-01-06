@@ -103,7 +103,7 @@ class PhoneNumberMatcher {
   };
 
   // API to check if the provided text_ is in UTF-8 or not.
-  bool CheckInputUTF8OrNot();
+  bool IsInputUtf8();
 
   // Attempts to extract a match from a candidate string. Returns true if a
   // match is found, otherwise returns false. The value "offset" refers to the
@@ -207,7 +207,7 @@ class PhoneNumberMatcher {
   int search_index_;
 
   // Flag to set or check if input text is in UTF-8 or not.
-  bool isInputInCleanUTF8_;
+  bool is_input_valid_utf8_;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatcher);
 };

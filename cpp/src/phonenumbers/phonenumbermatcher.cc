@@ -1,3 +1,4 @@
+// Copyright (C) 2011 The Libphonenumber Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -407,8 +408,8 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
       state_(NOT_READY),
       last_match_(NULL),
       search_index_(0),
-      isInputInCleanUTF8_(true) {
-  isInputInCleanUTF8_ = CheckInputUTF8OrNot(); 
+      is_input_valid_utf8_(true) {
+  is_input_valid_utf8_ = IsInputUtf8(); 
 }
 
 PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
@@ -423,23 +424,17 @@ PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
       state_(NOT_READY),
       last_match_(NULL),
       search_index_(0),
-      isInputInCleanUTF8_(true) {
-  isInputInCleanUTF8_ =  CheckInputUTF8OrNot();
+      is_input_valid_utf8_(true) {
+  is_input_valid_utf8_ =  IsInputUtf8();
 }
-
 
 PhoneNumberMatcher::~PhoneNumberMatcher() {
 }
 
-// static
-bool PhoneNumberMatcher::CheckInputUTF8OrNot() {
-  // Input should contain only UTF-8 characters.
+bool PhoneNumberMatcher::IsInputUtf8() {
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(text_.c_str(), text_.size());
-  if (number_as_unicode.UTF8WasValid()) {
-    return true;
-  }
-  return false;
+  return number_as_unicode.UTF8WasValid();
 }
 
 // static
@@ -641,7 +636,8 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
 }
 
 bool PhoneNumberMatcher::HasNext() {
-  if (!isInputInCleanUTF8_) {
+  // Input should contain only UTF-8 characters.
+  if (!is_input_valid_utf8_) {
     state_ = DONE;
     return false;
   }
