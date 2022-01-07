@@ -331,6 +331,11 @@ void NormalizeHelper(const std::map<char32, char>& normalization_replacements,
   DCHECK(number);
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(number->data(), static_cast<int>(number->size()));
+  if (!number_as_unicode.UTF8WasValid()) {
+    // The input wasn't valid UTF-8. Produce an empty string to indicate an error.
+    number->clear();
+    return;
+  }
   string normalized_number;
   char unicode_char[5];
   for (UnicodeText::const_iterator it = number_as_unicode.begin();
@@ -973,6 +978,11 @@ void PhoneNumberUtil::TrimUnwantedEndChars(string* number) const {
   DCHECK(number);
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(number->data(), static_cast<int>(number->size()));
+  if (!number_as_unicode.UTF8WasValid()) {
+    // The input wasn't valid UTF-8. Produce an empty string to indicate an error.
+    number->clear();
+    return;
+  }
   char current_char[5];
   int len;
   UnicodeText::const_reverse_iterator reverse_it(number_as_unicode.end());
@@ -2312,6 +2322,11 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
 
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(number.data(), static_cast<int>(number.size()));
+  if (!number_as_unicode.UTF8WasValid()) {
+    // The input wasn't valid UTF-8. Produce an empty string to indicate an error.
+    extracted_number->clear();
+    return;
+  }
   char current_char[5];
   int len;
   UnicodeText::const_iterator it;
@@ -2326,7 +2341,7 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
   if (it == number_as_unicode.end()) {
     // No valid start character was found. extracted_number should be set to
     // empty string.
-    extracted_number->assign("");
+    extracted_number->clear();
     return;
   }
 
