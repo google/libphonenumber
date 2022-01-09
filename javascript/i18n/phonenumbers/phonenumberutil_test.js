@@ -27,7 +27,6 @@
 goog.provide('i18n.phonenumbers.PhoneNumberUtilTest');
 goog.setTestOnly();
 
-goog.require('goog.array');
 goog.require('goog.string.StringBuffer');
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.Error');
@@ -449,63 +448,55 @@ function testGetCountryMobileToken() {
 
 function testGetSupportedRegions() {
   assertTrue(phoneUtil.getSupportedRegions().length > 0);
-  assertTrue(
-      goog.array.contains(phoneUtil.getSupportedRegions(), RegionCode.US));
-  assertFalse(
-      goog.array.contains(phoneUtil.getSupportedRegions(), RegionCode.UN001));
-  assertFalse(goog.array.contains(phoneUtil.getSupportedRegions(), '800'));
+  assertTrue(phoneUtil.getSupportedRegions().includes(RegionCode.US));
+  assertFalse(phoneUtil.getSupportedRegions().includes(RegionCode.UN001));
+  assertFalse(phoneUtil.getSupportedRegions().includes('800'));
 }
 
 function testGetSupportedGlobalNetworkCallingCodes() {
   assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().length > 0);
-  assertFalse(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), RegionCode.US));
-  assertTrue(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 800));
-  goog.array.forEach(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(),
-      function(countryCallingCode) {
-        assertEquals(
-            RegionCode.UN001,
-            phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
-      });
+  assertFalse(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(1));
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(800));
+  phoneUtil.getSupportedGlobalNetworkCallingCodes().forEach(function(
+      countryCallingCode) {
+    assertEquals(
+        RegionCode.UN001,
+        phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
+  });
 }
 
 function testGetSupportedCallingCodes() {
   assertTrue(phoneUtil.getSupportedCallingCodes().length > 0);
-  goog.array.forEach(
-      phoneUtil.getSupportedCallingCodes(), function(callingCode) {
-        assertTrue(callingCode > 0);
-        assertFalse(
-            phoneUtil.getRegionCodeForCountryCode(callingCode) ==
-            RegionCode.ZZ);
-      });
+  phoneUtil.getSupportedCallingCodes().forEach(function(callingCode) {
+    assertTrue(callingCode > 0);
+    assertFalse(
+        phoneUtil.getRegionCodeForCountryCode(callingCode) == RegionCode.ZZ);
+  });
   // There should be more than just the global network calling codes in this
   // set.
   assertTrue(
       phoneUtil.getSupportedCallingCodes().length >
       phoneUtil.getSupportedGlobalNetworkCallingCodes().length);
   // But they should be included. Testing one of them.
-  assertTrue(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 979));
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(979));
 }
 
 function testGetSupportedTypesForRegion() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   var types = phoneUtil.getSupportedTypesForRegion(RegionCode.BR);
-  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  assertTrue(types.includes(PNT.FIXED_LINE));
   // Our test data has no mobile numbers for Brazil.
-  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(types.includes(PNT.MOBILE));
   // UNKNOWN should never be returned.
-  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+  assertFalse(types.includes(PNT.UNKNOWN));
 
   // In the US, many numbers are classified as FIXED_LINE_OR_MOBILE; but we
   // don't want to expose this as a supported type, instead we say FIXED_LINE
   // and MOBILE are both present.
   types = phoneUtil.getSupportedTypesForRegion(RegionCode.US);
-  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
-  assertTrue(goog.array.contains(types, PNT.MOBILE));
-  assertFalse(goog.array.contains(types, PNT.FIXED_LINE_OR_MOBILE));
+  assertTrue(types.includes(PNT.FIXED_LINE));
+  assertTrue(types.includes(PNT.MOBILE));
+  assertFalse(types.includes(PNT.FIXED_LINE_OR_MOBILE));
 
   types = phoneUtil.getSupportedTypesForRegion(RegionCode.ZZ);
   assertTrue(types.length == 0);
@@ -518,11 +509,11 @@ function testGetSupportedTypesForNonGeoEntity() {
   assertTrue(types.length == 0);
 
   types = phoneUtil.getSupportedTypesForNonGeoEntity(979);
-  assertTrue(goog.array.contains(types, PNT.PREMIUM_RATE));
+  assertTrue(types.includes(PNT.PREMIUM_RATE));
   // Our test data has no mobile numbers for Brazil.
-  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(types.includes(PNT.MOBILE));
   // UNKNOWN should never be returned.
-  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+  assertFalse(types.includes(PNT.UNKNOWN));
 }
 
 function testGetNationalSignificantNumber() {
@@ -1833,16 +1824,16 @@ function testGetRegionCodeForNumber() {
 function testGetRegionCodesForCountryCode() {
   /** @type {!Array.<string>} */
   var regionCodesForNANPA = phoneUtil.getRegionCodesForCountryCode(1);
-  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.US));
-  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.BS));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(44), RegionCode.GB));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(49), RegionCode.DE));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(800), RegionCode.UN001));
+  assertTrue(regionCodesForNANPA.includes(RegionCode.US));
+  assertTrue(regionCodesForNANPA.includes(RegionCode.BS));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(44).includes(RegionCode.GB));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(49).includes(RegionCode.DE));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(800).includes(RegionCode.UN001));
   // Test with invalid country calling code.
-  assertTrue(goog.array.isEmpty(phoneUtil.getRegionCodesForCountryCode(-1)));
+  assertTrue((phoneUtil.getRegionCodesForCountryCode(-1).length === 0));
 }
 
 function testGetCountryCodeForRegion() {

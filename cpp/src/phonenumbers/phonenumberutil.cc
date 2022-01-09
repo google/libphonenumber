@@ -47,6 +47,8 @@
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/utf.h"
 
+#include "absl/strings/str_replace.h"
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -329,6 +331,11 @@ void NormalizeHelper(const std::map<char32, char>& normalization_replacements,
   DCHECK(number);
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(number->data(), static_cast<int>(number->size()));
+  if (!number_as_unicode.UTF8WasValid()) {
+    // The input wasn't valid UTF-8. Produce an empty string to indicate an error.
+    number->clear();
+    return;
+  }
   string normalized_number;
   char unicode_char[5];
   for (UnicodeText::const_iterator it = number_as_unicode.begin();
@@ -971,6 +978,11 @@ void PhoneNumberUtil::TrimUnwantedEndChars(string* number) const {
   DCHECK(number);
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(number->data(), static_cast<int>(number->size()));
+  if (!number_as_unicode.UTF8WasValid()) {
+    // The input wasn't valid UTF-8. Produce an empty string to indicate an error.
+    number->clear();
+    return;
+  }
   char current_char[5];
   int len;
   UnicodeText::const_reverse_iterator reverse_it(number_as_unicode.end());
@@ -993,10 +1005,13 @@ bool PhoneNumberUtil::IsFormatEligibleForAsYouTypeFormatter(
   // the format element under numberFormat contains groups of the dollar sign
   // followed by a single digit, separated by valid phone number punctuation.
   // This prevents invalid punctuation (such as the star sign in Israeli star
-  // numbers) getting into the output of the AYTF.
+  // numbers) getting into the output of the AYTF. We require that the first
+  // group is present in the output pattern to ensure no data is lost while
+  // formatting; when we format as you type, this should always be the case.
   const RegExp& eligible_format_pattern = reg_exps_->regexp_cache_->GetRegExp(
-      StrCat("[", kValidPunctuation, "]*", "(\\$\\d", "[",
-             kValidPunctuation, "]*)+"));
+      StrCat("[", kValidPunctuation, "]*", "\\$1",
+             "[", kValidPunctuation, "]*", "(\\$\\d",
+             "[", kValidPunctuation, "]*)*"));
   return eligible_format_pattern.FullMatch(format);
 }
 
@@ -1160,10 +1175,9 @@ void PhoneNumberUtil::FormatByPattern(
       const string& national_prefix = metadata->national_prefix();
       if (!national_prefix.empty()) {
         // Replace $NP with national prefix and $FG with the first group ($1).
-        GlobalReplaceSubstring("$NP", national_prefix,
-                               &national_prefix_formatting_rule);
-        GlobalReplaceSubstring("$FG", "$1",
-                               &national_prefix_formatting_rule);
+        absl::StrReplaceAll({{"$NP", national_prefix}},
+                            &national_prefix_formatting_rule);
+        absl::StrReplaceAll({{"$FG", "$1"}}, &national_prefix_formatting_rule);
         num_format_copy.set_national_prefix_formatting_rule(
             national_prefix_formatting_rule);
       } else {
@@ -2308,6 +2322,11 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
 
   UnicodeText number_as_unicode;
   number_as_unicode.PointToUTF8(number.data(), static_cast<int>(number.size()));
+  if (!number_as_unicode.UTF8WasValid()) {
+    // The input wasn't valid UTF-8. Produce an empty string to indicate an error.
+    extracted_number->clear();
+    return;
+  }
   char current_char[5];
   int len;
   UnicodeText::const_iterator it;
@@ -2322,7 +2341,7 @@ void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
   if (it == number_as_unicode.end()) {
     // No valid start character was found. extracted_number should be set to
     // empty string.
-    extracted_number->assign("");
+    extracted_number->clear();
     return;
   }
 

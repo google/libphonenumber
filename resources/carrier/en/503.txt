@@ -42,6 +42,8 @@
 503642|Movistar
 5036430|Movistar
 5036431|Movistar
+503644|Tigo
+503645|Tigo
 5036611|Movistar
 503700|Claro
 503701|Claro
@@ -68,6 +70,7 @@
 50370715|Tigo
 50370716|Movistar
 50370717|Claro
+50370718|Tigo
 50370719|Tigo
 5037072|Digicel
 50370730|Digicel
