@@ -116,7 +116,7 @@ class PhoneNumberOfflineGeocoder {
             int prefix_language_code_pairs_size,
             prefix_descriptions_getter get_prefix_descriptions);
 
-  AreaCodeMaps::const_iterator LoadAreaCodeMapFromFile(
+  const AreaCodeMap* LoadAreaCodeMapFromFile(
       const string& filename) const ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
   const AreaCodeMap* GetPhonePrefixDescriptions(
