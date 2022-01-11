@@ -9215,9 +9215,8 @@
               8[0-247-9]
             )|
             7(?:
-              [01]\d|
-              6[0-367]|
-              7[0-57]
+              [017]\d|
+              6[0-367]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -13207,7 +13206,7 @@
           1(?:
             200|
             9(?:
-              0[01]|
+              0[0-2]|
               19
             )
           )\d{6}
@@ -16626,7 +16625,7 @@
       <tollFree>
         <possibleLengths national="9,10"/>
         <exampleNumber>800223456</exampleNumber>
-        <nationalNumberPattern>800[24-8]\d{5,6}</nationalNumberPattern>
+        <nationalNumberPattern>800[2-8]\d{5,6}</nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="9"/>
@@ -17937,7 +17936,8 @@
             20(?:
               [239]\d|
               5[24-9]|
-              7[6-8]
+              7[6-8]|
+              88
             )|
             302\d
           )\d{6}
@@ -19018,9 +19018,8 @@
               8[0-247-9]
             )|
             7(?:
-              [01]\d|
-              6[0-367]|
-              7[0-57]
+              [017]\d|
+              6[0-367]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -22715,7 +22714,7 @@
           (?:
             7(?:
               [1289]\d|
-              70
+              7[0-4]
             )|
             9(?:
               0[1-9]|
@@ -25621,7 +25620,7 @@
           <leadingDigits>
             [369]|
             8(?:
-              0[1-4]|
+              0[1-5]|
               [1-9]
             )
           </leadingDigits>
@@ -25669,7 +25668,10 @@
         <possibleLengths national="8"/>
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
-          895[0-2]\d{4}|
+          8(?:
+            051|
+            95[0-2]
+          )\d{4}|
           (?:
             8(?:
               0[1-4]|
