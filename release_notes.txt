@@ -1,3 +1,11 @@
+Jan 11, 2022: v8.12.41
+Metadata changes:
+ - Updated phone metadata for region code(s): EH, IL, KE, LA, MA, OM, SG
+ - Updated short number metadata for region code(s): PY
+ - Updated carrier data for country calling code(s):
+   33 (en), 65 (en), 358 (en), 383 (en), 420 (en), 502 (en), 856 (en), 966 (en),
+   968 (en), 974 (en)
+
 Dec 23, 2021: v8.12.40
 Metadata changes:
  - Updated phone metadata for region code(s): GP, GY, MK, VU
