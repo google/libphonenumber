@@ -10956,7 +10956,7 @@
         <possibleLengths national="3"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          1[1-4]\d|
+          1[1-9]\d|
           911
         </nationalNumberPattern>
       </shortCode>
