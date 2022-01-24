@@ -168,6 +168,7 @@
 576015|Bogotá
 576016|Bogotá
 576017|Bogotá
+57601820|Madrid
 57601821|Funza
 57601822|Funza
 576018230|Subachoque
@@ -228,6 +229,8 @@
 576018437|Facatativa
 576018438|Facatativa
 576018439|Facatativa
+576018440|Facatativa
+576018441|Viani
 576018442|Cachipay
 576018443|Cachipay
 576018444|Villeta
