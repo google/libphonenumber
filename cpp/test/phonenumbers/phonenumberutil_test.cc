@@ -29,8 +29,10 @@
 #include <string>
 
 #include <gtest/gtest.h>
+#include <unicode/uchar.h>
 
 #include "phonenumbers/default_logger.h"
+#include "phonenumbers/normalize_utf8.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
@@ -122,6 +124,32 @@ TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
   EXPECT_TRUE(ContainsOnlyValidDigits("\xEF\xBC\x96" /* "６" */));
   EXPECT_FALSE(ContainsOnlyValidDigits("a"));
   EXPECT_FALSE(ContainsOnlyValidDigits("2a"));
+}
+
+TEST_F(PhoneNumberUtilTest, InterchangeInvalidCodepoints) {
+  PhoneNumber phone_number;
+
+  std::vector<string> valid_inputs = {
+    "+44" "\xE2\x80\x93" "2087654321", // U+2013, EN DASH
+  };
+  for (auto input : valid_inputs) {
+    EXPECT_EQ(input, NormalizeUTF8::NormalizeDecimalDigits(input));
+    EXPECT_TRUE(IsViablePhoneNumber(input));
+    EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+              phone_util_.Parse(input, RegionCode::GB(), &phone_number));
+  }
+
+  std::vector<string> invalid_inputs = {
+    "+44" "\x96"         "2087654321", // Invalid sequence
+    "+44" "\xC2\x96"     "2087654321", // U+0096
+    "+44" "\xEF\xBF\xBE" "2087654321", // U+FFFE
+  };
+  for (auto input : invalid_inputs) {
+    EXPECT_TRUE(NormalizeUTF8::NormalizeDecimalDigits(input).empty());
+    EXPECT_FALSE(IsViablePhoneNumber(input));
+    EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+              phone_util_.Parse(input, RegionCode::GB(), &phone_number));
+  }
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
