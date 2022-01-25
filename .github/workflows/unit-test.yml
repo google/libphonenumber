@@ -12,16 +12,16 @@ jobs:
       with:
         java-version: '8'
         distribution: 'adopt'
-# Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
+# Invoke the "github-actions" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
 # The "mvn install" command will run by default during the "install" phase by
-# Travis, without the profile flag. Here we customize the install phase to use
-# the relevant profile. If we want to build "cpp-build" with Travis CI it's safe
-# to remove the first line entirely.
+# Github Actions, without the profile flag. Here we customize the install phase to
+# use the relevant profile. If we want to build "cpp-build" with Github Action CI
+# it's safe to remove the first line entirely.
     - name: Test Build Tools with Maven
       run: |
-        mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-        mvn -P travis test
+        mvn install -P github-actions -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        mvn -P github-actions test
     - name: Test Java API with Ant
       run: |
         ant clean -f java/build.xml
