@@ -33,7 +33,7 @@
       </modules>
     </profile>
     <profile>
-      <id>travis</id>
+      <id>github-actions</id>
       <modules>
         <module>common</module>
         <!-- TODO: Add cpp-build once the protoc dependency or the generated Phonemetadata.java is
