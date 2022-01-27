@@ -63,6 +63,7 @@
 8524659|China Mobile
 852466|China Mobile
 852467|China Mobile
+8524678|Sun Mobile
 852468|China Mobile
 852510|China Mobile
 852511|Sun Mobile
@@ -319,6 +320,7 @@
 852928|3
 852929|China Unicom
 8529290|Multibyte
+8529291|Sun Mobile
 852930|HKT
 852931|SmarTone
 852932|3
