@@ -39,6 +39,7 @@
 421918|Orange
 421919|Orange
 421940|Telefonica O2
+4219430|BSG Estonia
 42194312|Alternet, s.r.o.
 42194333|IPfon, s.r.o.
 421944|Telefonica O2

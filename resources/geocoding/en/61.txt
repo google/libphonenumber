@@ -267,7 +267,7 @@
 61240034|Cessnock
 61240035|Clarence Town
 61240036|Dungog
-61240037|East Gresford
+61240037|Newcastle
 61240038|Eccleston
 61240039|Karuah
 61240040|Laguna
