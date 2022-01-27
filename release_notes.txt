@@ -1,3 +1,15 @@
+Jan 27, 2022: v8.12.42
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BG, BI, CF, DZ, GF, GP, HK, IR, MA, MQ, MW, PK, PL, PM, QA, TJ
+ - Updated short number metadata for region code(s):
+   AG, AI, AS, BB, BM, BS, CA, DM, DO, GD, GU, JM, KN, KY, LC, MP, MS, PR, SX,
+   TC, TT, US, VC, VG, VI
+ - Updated geocoding data for country calling code(s): 61 (en), 213 (en)
+ - Updated carrier data for country calling code(s):
+   45 (en), 48 (en), 57 (en), 98 (en, fa), 236 (en), 243 (en), 257 (en),
+   420 (en), 421 (en), 508 (en), 675 (en), 852 (en, zh), 974 (en), 992 (en)
+
 Jan 11, 2022: v8.12.41
 Metadata changes:
  - Updated phone metadata for region code(s): EH, IL, KE, LA, MA, OM, SG

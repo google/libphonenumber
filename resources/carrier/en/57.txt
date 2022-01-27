@@ -39,6 +39,14 @@
 5730249|Partners Telecom Colombia
 573025|Partners Telecom Colombia
 573026|Partners Telecom Colombia
+573027|Partners Telecom Colombia
+5730280|Partners Telecom Colombia
+5730281|Partners Telecom Colombia
+5730282|Partners Telecom Colombia
+5730283|Partners Telecom Colombia
+5730284|Partners Telecom Colombia
+5730285|Partners Telecom Colombia
+5730286|Partners Telecom Colombia
 57303|Uff!
 5730410|Tigo
 5730411|Tigo
@@ -239,6 +247,10 @@
 5733302|Setroc Mobile
 5733303|Setroc Mobile
 5733304|Setroc Mobile
+5733305|Tigo
+5733306|Tigo
+5733307|Tigo
+5733308|Tigo
 5733310|Libre Tecnologias
 5733311|Libre Tecnologias
 5733312|Libre Tecnologias
