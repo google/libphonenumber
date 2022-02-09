@@ -9492,12 +9492,13 @@
     <!-- http://www.itu.int/oth/T020200008F/en -->
     <territory id="MS">
       <generalDesc>
-        <nationalNumberPattern>9\d\d</nationalNumberPattern>
+        <nationalNumberPattern>[29]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>211</exampleNumber>
         <nationalNumberPattern>
+          211|
           9(?:
             11|
             88|
