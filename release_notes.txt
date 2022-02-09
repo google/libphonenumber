@@ -1,3 +1,12 @@
+Feb 09, 2022: v8.12.43
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BJ, CL, GA, IS, KR, KW, LI, PA, SG, SL
+ - Updated short number metadata for region code(s): MS
+ - Updated geocoding data for country calling code(s): 56 (en, es)
+ - Updated carrier data for country calling code(s):
+   32 (en), 229 (en), 354 (en), 502 (en), 507 (en)
+
 Jan 27, 2022: v8.12.42
 Metadata changes:
  - Updated phone metadata for region code(s):
