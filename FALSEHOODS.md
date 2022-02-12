@@ -120,7 +120,7 @@ surprising how many false assumptions programmers continue to make about them.
     after the country code (54) needs to be removed. This transforms +54 9 2982
     123456 into 02982 15 123456.
 
-1.  **No prefix of a valid phone number can be a valid phone number**
+1.  **No suffix of a valid phone number can be a valid phone number**
 
     In some countries, it's possible to connect to a different endpoint by
     dialing more digits after a number. So "12345678" may not reach the same
