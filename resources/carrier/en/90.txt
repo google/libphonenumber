@@ -28,3 +28,4 @@
 9054288|KKTC Telsim
 9055|Turk Telekom
 9056|Turkcell
+9051022|Netgsm Mobil
