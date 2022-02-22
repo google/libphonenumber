@@ -16,29 +16,23 @@
 
 package com.google.i18n.phonenumbers.metadata.source;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-import org.junit.Test;
+import junit.framework.TestCase;
 import org.junit.function.ThrowingRunnable;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
-public final class MultiFileModeFileNameProviderTest {
+public final class MultiFileModeFileNameProviderTest extends TestCase {
 
   private final PhoneMetadataFileNameProvider metadataFileNameProvider =
       new MultiFileModeFileNameProvider("some/file");
 
-  @Test
-  public void getFor_shouldAppendKeyToTheBase() {
+  public void test_getFor_shouldAppendKeyToTheBase() {
     String metadataFileName = metadataFileNameProvider.getFor("key1");
 
     assertEquals("some/file_key1", metadataFileName);
   }
 
-  @Test
-  public void getFor_shouldThrowExceptionForNonAlphanumericKey() {
+  public void test_getFor_shouldThrowExceptionForNonAlphanumericKey() {
     assertThrows(
         IllegalArgumentException.class,
         new ThrowingRunnable() {

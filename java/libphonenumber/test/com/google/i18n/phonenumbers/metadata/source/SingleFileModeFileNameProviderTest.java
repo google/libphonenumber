@@ -16,20 +16,14 @@
 
 package com.google.i18n.phonenumbers.metadata.source;
 
-import static org.junit.Assert.assertEquals;
+import junit.framework.TestCase;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
-@RunWith(JUnit4.class)
-public final class SingleFileModeFileNameProviderTest {
+public final class SingleFileModeFileNameProviderTest extends TestCase {
 
   private final PhoneMetadataFileNameProvider metadataFileNameProvider =
       new SingleFileModeFileNameProvider("some/file");
 
-  @Test
-  public void getFor_shouldReturnTheFileNameBase() {
+  public void test_getFor_shouldReturnTheFileNameBase() {
     String metadataFileName = metadataFileNameProvider.getFor("key1");
 
     assertEquals("some/file", metadataFileName);

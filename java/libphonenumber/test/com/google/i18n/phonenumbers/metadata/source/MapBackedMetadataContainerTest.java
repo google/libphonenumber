@@ -16,34 +16,25 @@
 
 package com.google.i18n.phonenumbers.metadata.source;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import junit.framework.TestCase;
 
-@RunWith(JUnit4.class)
-public class MapBackedMetadataContainerTest {
+public class MapBackedMetadataContainerTest extends TestCase {
 
   private static final String REGION_CODE = "US";
   private static final Integer COUNTRY_CODE = 41;
   private static final PhoneMetadata PHONE_METADATA =
       PhoneMetadata.newBuilder().setId(REGION_CODE).setCountryCode(COUNTRY_CODE);
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForNullRegionCode() {
+  public void test_getMetadataBy_shouldReturnNullForNullRegionCode() {
     assertNull(MapBackedMetadataContainer.byRegionCode().getMetadataBy(null));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForNonExistingRegionCode() {
+  public void test_getMetadataBy_shouldReturnNullForNonExistingRegionCode() {
     assertNull(MapBackedMetadataContainer.byRegionCode().getMetadataBy(REGION_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnMetadataForExistingRegionCode() {
+  public void test_getMetadataBy_shouldReturnMetadataForExistingRegionCode() {
     MapBackedMetadataContainer<String> metadataContainer =
         MapBackedMetadataContainer.byRegionCode();
 
@@ -52,18 +43,15 @@ public class MapBackedMetadataContainerTest {
     assertSame(PHONE_METADATA, metadataContainer.getMetadataBy(REGION_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForNullCountryCode() {
+  public void test_getMetadataBy_shouldReturnNullForNullCountryCode() {
     assertNull(MapBackedMetadataContainer.byCountryCallingCode().getMetadataBy(null));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForNonExistingCountryCode() {
+  public void test_getMetadataBy_shouldReturnNullForNonExistingCountryCode() {
     assertNull(MapBackedMetadataContainer.byCountryCallingCode().getMetadataBy(COUNTRY_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnMetadataForExistingCountryCode() {
+  public void test_getMetadataBy_shouldReturnMetadataForExistingCountryCode() {
     MapBackedMetadataContainer<Integer> metadataContainer =
         MapBackedMetadataContainer.byCountryCallingCode();
 

@@ -16,18 +16,11 @@
 
 package com.google.i18n.phonenumbers.metadata.source;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.internal.GeoEntityUtility;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import junit.framework.TestCase;
 
-@RunWith(JUnit4.class)
-public class CompositeMetadataContainerTest {
+public class CompositeMetadataContainerTest extends TestCase {
 
   private static final String REGION_CODE = "US";
   private static final Integer COUNTRY_CODE = 1;
@@ -40,37 +33,32 @@ public class CompositeMetadataContainerTest {
 
   private CompositeMetadataContainer metadataContainer;
 
-  @Before
+  @Override
   public void setUp() {
     metadataContainer = new CompositeMetadataContainer();
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForNonExistingRegionCode() {
+  public void test_getMetadataBy_shouldReturnNullForNonExistingRegionCode() {
     assertNull(metadataContainer.getMetadataBy(REGION_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnMetadataForExistingRegionCode() {
+  public void test_getMetadataBy_shouldReturnMetadataForExistingRegionCode() {
     metadataContainer.accept(PHONE_METADATA_WITH_REGION_CODE);
 
     assertSame(PHONE_METADATA_WITH_REGION_CODE, metadataContainer.getMetadataBy(REGION_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForNonExistingCountryCode() {
+  public void test_getMetadataBy_shouldReturnNullForNonExistingCountryCode() {
     assertNull(metadataContainer.getMetadataBy(COUNTRY_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnMetadataForExistingCountryCode() {
+  public void test_getMetadataBy_shouldReturnMetadataForExistingCountryCode() {
     metadataContainer.accept(PHONE_METADATA_WITH_COUNTRY_CODE);
 
     assertSame(PHONE_METADATA_WITH_COUNTRY_CODE, metadataContainer.getMetadataBy(COUNTRY_CODE));
   }
 
-  @Test
-  public void getMetadataBy_shouldReturnNullForExistingCountryCodeOfGeoRegion() {
+  public void test_getMetadataBy_shouldReturnNullForExistingCountryCodeOfGeoRegion() {
     metadataContainer.accept(PHONE_METADATA_WITH_REGION_CODE);
 
     assertNull(metadataContainer.getMetadataBy(COUNTRY_CODE));

@@ -17,8 +17,6 @@
 package com.google.i18n.phonenumbers.metadata.source;
 
 import static org.junit.Assert.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,32 +32,24 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import junit.framework.TestCase;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
 import org.junit.function.ThrowingRunnable;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import org.mockito.Mockito;
 
-@RunWith(JUnit4.class)
-public class BlockingMetadataBootstrappingGuardTest {
+public class BlockingMetadataBootstrappingGuardTest extends TestCase {
 
   private static final String PHONE_METADATA_FILE = "some metadata file";
   private static final PhoneMetadataCollection PHONE_METADATA =
       PhoneMetadataCollection.newBuilder()
           .addMetadata(PhoneMetadata.newBuilder().setId("id").build());
 
-  @Rule public final MockitoRule mockito = MockitoJUnit.rule();
-  @Mock private MetadataLoader metadataLoader;
-  @Mock private MetadataContainer metadataContainer;
+  private final MetadataLoader metadataLoader = Mockito.mock(MetadataLoader.class);
+  private final MetadataContainer metadataContainer = Mockito.mock(MetadataContainer.class);
 
   private BlockingMetadataBootstrappingGuard<MetadataContainer> bootstrappingGuard;
 
-  @Before
+  @Override
   public void setUp() throws IOException {
     when(metadataLoader.loadMetadata(PHONE_METADATA_FILE))
         .thenReturn(PhoneMetadataCollectionUtil.toInputStream(PHONE_METADATA));
@@ -68,17 +58,14 @@ public class BlockingMetadataBootstrappingGuardTest {
             metadataLoader, MetadataParser.newStrictParser(), metadataContainer);
   }
 
-  @Test
-  public void getOrBootstrap_shouldInvokeBootstrappingOnlyOnce() {
+  public void test_getOrBootstrap_shouldInvokeBootstrappingOnlyOnce() {
     bootstrappingGuard.getOrBootstrap(PHONE_METADATA_FILE);
     bootstrappingGuard.getOrBootstrap(PHONE_METADATA_FILE);
 
     verify(metadataLoader, times(1)).loadMetadata(PHONE_METADATA_FILE);
-    verify(metadataContainer, only()).accept(any(PhoneMetadata.class));
   }
 
-  @Test
-  public void getOrBootstrap_shouldIncludeFileNameInExceptionOnFailure() {
+  public void test_getOrBootstrap_shouldIncludeFileNameInExceptionOnFailure() {
     when(metadataLoader.loadMetadata(PHONE_METADATA_FILE)).thenReturn(null);
 
     ThrowingRunnable throwingRunnable =
@@ -93,8 +80,7 @@ public class BlockingMetadataBootstrappingGuardTest {
     Assert.assertTrue(exception.getMessage().contains(PHONE_METADATA_FILE));
   }
 
-  @Test
-  public void getOrBootstrap_shouldInvokeBootstrappingOnlyOnceWhenThreadsCallItAtTheSameTime()
+  public void test_getOrBootstrap_shouldInvokeBootstrappingOnlyOnceWhenThreadsCallItAtTheSameTime()
       throws InterruptedException {
     ExecutorService executorService = Executors.newFixedThreadPool(2);
 
@@ -104,7 +90,6 @@ public class BlockingMetadataBootstrappingGuardTest {
     executorService.invokeAll(runnables);
 
     verify(metadataLoader, times(1)).loadMetadata(PHONE_METADATA_FILE);
-    verify(metadataContainer, only()).accept(any(PhoneMetadata.class));
   }
 
   private class BootstrappingRunnable implements Callable<MetadataContainer> {

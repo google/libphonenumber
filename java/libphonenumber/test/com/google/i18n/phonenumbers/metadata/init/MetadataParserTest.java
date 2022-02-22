@@ -17,9 +17,7 @@
 package com.google.i18n.phonenumbers.metadata.init;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadataCollection;
@@ -28,18 +26,14 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
-import org.junit.Test;
+import junit.framework.TestCase;
 import org.junit.function.ThrowingRunnable;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
-public final class MetadataParserTest {
+public final class MetadataParserTest extends TestCase {
 
   private static final MetadataParser metadataParser = MetadataParser.newStrictParser();
 
-  @Test
-  public void parse_shouldThrowExceptionForNullInput() {
+  public void test_parse_shouldThrowExceptionForNullInput() {
     assertThrows(
         IllegalArgumentException.class,
         new ThrowingRunnable() {
@@ -50,8 +44,7 @@ public final class MetadataParserTest {
         });
   }
 
-  @Test
-  public void parse_shouldThrowExceptionForEmptyInput() {
+  public void test_parse_shouldThrowExceptionForEmptyInput() {
     final InputStream emptyInput = new ByteArrayInputStream(new byte[0]);
 
     assertThrows(
@@ -64,8 +57,7 @@ public final class MetadataParserTest {
         });
   }
 
-  @Test
-  public void parse_shouldThrowExceptionForInvalidInput() {
+  public void test_parse_shouldThrowExceptionForInvalidInput() {
     final InputStream invalidInput = new ByteArrayInputStream("Some random input".getBytes(UTF_8));
 
     assertThrows(
@@ -78,8 +70,7 @@ public final class MetadataParserTest {
         });
   }
 
-  @Test
-  public void parse_shouldParseValidInput() throws IOException {
+  public void test_parse_shouldParseValidInput() throws IOException {
     InputStream input = PhoneMetadataCollectionUtil.toInputStream(
         PhoneMetadataCollection.newBuilder()
             .addMetadata(PhoneMetadata.newBuilder().setId("id").build()));
@@ -89,8 +80,7 @@ public final class MetadataParserTest {
     assertEquals(1, actual.size());
   }
 
-  @Test
-  public void parse_shouldReturnEmptyCollectionForNullInput() {
+  public void test_parse_shouldReturnEmptyCollectionForNullInput() {
     Collection<PhoneMetadata> actual = MetadataParser.newLenientParser().parse(null);
 
     assertTrue(actual.isEmpty());

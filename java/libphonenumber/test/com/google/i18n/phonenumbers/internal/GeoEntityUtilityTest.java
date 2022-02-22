@@ -16,38 +16,27 @@
 
 package com.google.i18n.phonenumbers.internal;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+public class GeoEntityUtilityTest extends TestCase {
 
-@RunWith(JUnit4.class)
-public class GeoEntityUtilityTest {
-
-  @Test
-  public void isGeoEntity_shouldReturnTrueForCountryRegionCode() {
+  public void test_isGeoEntity_shouldReturnTrueForCountryRegionCode() {
     assertTrue(GeoEntityUtility.isGeoEntity("DE"));
   }
 
-  @Test
-  public void isGeoEntity_shouldReturnFalseForWorldRegionCode() {
+  public void test_isGeoEntity_shouldReturnFalseForWorldRegionCode() {
     assertFalse(GeoEntityUtility.isGeoEntity("001"));
   }
 
-  @Test
-  public void isGeoEntity_shouldReturnTrueForCountryCallingCode() {
+  public void test_isGeoEntity_shouldReturnTrueForCountryCallingCode() {
     assertTrue(GeoEntityUtility.isGeoEntity(41));
   }
 
-  @Test
-  public void isGeoEntity_shouldReturnFalseForInternationalSharedCostServiceCallingCode() {
+  public void test_isGeoEntity_shouldReturnFalseForInternationalSharedCostServiceCallingCode() {
     assertFalse(GeoEntityUtility.isGeoEntity(808));
   }
 
-  @Test
-  public void isGeoEntity_shouldReturnFalseForNonExistingCountryCallingCode() {
+  public void test_isGeoEntity_shouldReturnFalseForNonExistingCountryCallingCode() {
     assertFalse(GeoEntityUtility.isGeoEntity(111111111));
   }
 }
