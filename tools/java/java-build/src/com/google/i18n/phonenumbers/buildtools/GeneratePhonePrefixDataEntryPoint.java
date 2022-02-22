@@ -42,18 +42,18 @@ public class GeneratePhonePrefixDataEntryPoint extends Command {
   public boolean start() {
     String[] args = getArgs();
 
-    if (args.length < 2 || args.length > 3) {
+    if (args.length < 3 || args.length > 4) {
       logger.log(Level.SEVERE, USAGE_DESCRIPTION);
       return false;
     }
     try {
-      File inputPath = new File(args[0]);
-      File outputPath = new File(args[1]);
+      File inputPath = new File(args[1]);
+      File outputPath = new File(args[2]);
       AbstractPhonePrefixDataIOHandler ioHandler =
-          args.length == 2
+          args.length == 3
               ? new PhonePrefixDataIOHandler(outputPath)
               : new JarPhonePrefixDataIOHandler(
-                  outputPath, args[2], GeneratePhonePrefixData.class.getPackage());
+                  outputPath, args[3], GeneratePhonePrefixData.class.getPackage());
       GeneratePhonePrefixData dataGenerator = new GeneratePhonePrefixData(inputPath, ioHandler);
       dataGenerator.run();
     } catch (IOException e) {
