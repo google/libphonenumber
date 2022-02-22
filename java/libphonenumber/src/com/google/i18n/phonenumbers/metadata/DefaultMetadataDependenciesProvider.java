@@ -23,9 +23,10 @@ import com.google.i18n.phonenumbers.metadata.source.FormattingMetadataSource;
 import com.google.i18n.phonenumbers.metadata.source.FormattingMetadataSourceImpl;
 import com.google.i18n.phonenumbers.metadata.source.MetadataSource;
 import com.google.i18n.phonenumbers.metadata.source.MetadataSourceImpl;
+import com.google.i18n.phonenumbers.metadata.source.MultiFileModeFileNameProvider;
+import com.google.i18n.phonenumbers.metadata.source.PhoneMetadataFileNameProvider;
 import com.google.i18n.phonenumbers.metadata.source.RegionMetadataSource;
 import com.google.i18n.phonenumbers.metadata.source.RegionMetadataSourceImpl;
-import com.google.i18n.phonenumbers.metadata.source.SingleFileModeFileNameProvider;
 
 /**
  * Provides metadata init & source dependencies when metadata is stored in multi-file mode and
@@ -39,26 +40,36 @@ public final class DefaultMetadataDependenciesProvider {
     return INSTANCE;
   }
 
-  private DefaultMetadataDependenciesProvider() {}
+  private DefaultMetadataDependenciesProvider() {
+  }
 
-  private final MetadataParser metadataParser = MetadataParser.newStrictParser();
+  private final MetadataParser metadataParser = MetadataParser.newLenientParser();
   private final MetadataLoader metadataLoader = new ClassPathResourceMetadataLoader();
+
+  private final PhoneMetadataFileNameProvider phoneNumberMetadataFileNameProvider =
+      new MultiFileModeFileNameProvider(
+          "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto");
   private final MetadataSource phoneNumberMetadataSource =
       new MetadataSourceImpl(
-          new SingleFileModeFileNameProvider(
-              "/com/google/i18n/phonenumbers/buildtools/PhoneNumberMetadataProto"),
+          phoneNumberMetadataFileNameProvider,
           metadataLoader,
           metadataParser);
+
+  private final PhoneMetadataFileNameProvider shortNumberMetadataFileNameProvider =
+      new MultiFileModeFileNameProvider(
+          "/com/google/i18n/phonenumbers/data/ShortNumberMetadataProto");
   private final RegionMetadataSource shortNumberMetadataSource =
       new RegionMetadataSourceImpl(
-          new SingleFileModeFileNameProvider(
-              "/com/google/i18n/phonenumbers/buildtools/ShortNumberMetadataProto"),
+          shortNumberMetadataFileNameProvider,
           metadataLoader,
           metadataParser);
+
+  private final PhoneMetadataFileNameProvider alternateFormatsMetadataFileNameProvider =
+      new MultiFileModeFileNameProvider(
+          "/com/google/i18n/phonenumbers/data/PhoneNumberAlternateFormatsProto");
   private final FormattingMetadataSource alternateFormatsMetadataSource =
       new FormattingMetadataSourceImpl(
-          new SingleFileModeFileNameProvider(
-              "/com/google/i18n/phonenumbers/buildtools/PhoneNumberAlternateFormatsProto"),
+          alternateFormatsMetadataFileNameProvider,
           metadataLoader,
           metadataParser);
 
@@ -70,12 +81,24 @@ public final class DefaultMetadataDependenciesProvider {
     return metadataLoader;
   }
 
+  public PhoneMetadataFileNameProvider getPhoneNumberMetadataFileNameProvider() {
+    return phoneNumberMetadataFileNameProvider;
+  }
+
   public MetadataSource getPhoneNumberMetadataSource() {
     return phoneNumberMetadataSource;
   }
 
+  public PhoneMetadataFileNameProvider getShortNumberMetadataFileNameProvider() {
+    return shortNumberMetadataFileNameProvider;
+  }
+
   public RegionMetadataSource getShortNumberMetadataSource() {
     return shortNumberMetadataSource;
+  }
+
+  public PhoneMetadataFileNameProvider getAlternateFormatsMetadataFileNameProvider() {
+    return alternateFormatsMetadataFileNameProvider;
   }
 
   public FormattingMetadataSource getAlternateFormatsMetadataSource() {
