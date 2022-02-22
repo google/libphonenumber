@@ -29,7 +29,7 @@ import com.google.i18n.phonenumbers.metadata.source.RegionMetadataSource;
 import com.google.i18n.phonenumbers.metadata.source.RegionMetadataSourceImpl;
 
 /**
- * Provides metadata init & source dependencies when metadata is stored in multi-file mode and
+ * Provides metadata init and source dependencies when metadata is stored in multi-file mode and
  * loaded as a classpath resource.
  */
 public final class DefaultMetadataDependenciesProvider {
