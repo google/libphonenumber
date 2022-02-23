@@ -4483,7 +4483,7 @@
 61255616|Telegraph Point
 61255617|Toorooka
 61255618|Widden Valley
-61255619|Baerami
+61255619|Taree
 61255620|Bowraville
 61255621|Broke
 61255622|Bunnan
@@ -31589,7 +31589,7 @@
 61740636|Euramo
 61740637|Euramo
 61740638|Georgetown
-61740639|Gordonvale
+61740639|Mareeba
 6174064|South Johnstone
 61740649|Herberton
 6174065|Silkwood
@@ -31651,7 +31651,7 @@
 61740741|Mutchilba
 61740742|Peninsula
 61740743|Ravenshoe
-61740744|Silkwood
+61740744|Ravenshoe
 61740745|South Johnstone
 61740746|Thursday Island
 61740747|Torres
@@ -33782,7 +33782,7 @@
 61743480|Boondooma
 61743481|Booyal
 61743482|Brooklands
-61743483|Brooweena
+61743483|Bundaberg
 61743484|Bundaberg
 61743485|Bunker
 61743486|Burnett
@@ -40464,7 +40464,7 @@
 61752290|Imbil
 61752291|Jimna
 61752292|Kalbar
-61752293|Kenilworth
+61752293|Laidley
 61752294|Kia Ora
 61752295|Kilcoy
 61752296|Kilkivan
