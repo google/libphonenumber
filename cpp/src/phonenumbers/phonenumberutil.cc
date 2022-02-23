@@ -47,8 +47,6 @@
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/utf.h"
 
-#include "absl/strings/str_replace.h"
-
 namespace i18n {
 namespace phonenumbers {
 
@@ -830,10 +828,10 @@ PhoneNumberUtil::PhoneNumberUtil()
       reg_exps_(new PhoneNumberRegExpsAndMappings),
       country_calling_code_to_region_code_map_(
           new std::vector<IntRegionsPair>()),
-      nanpa_regions_(new std::set<string>()),
-      region_to_metadata_map_(new std::map<string, PhoneMetadata>()),
+      nanpa_regions_(new absl::node_hash_set<string>()),
+      region_to_metadata_map_(new absl::node_hash_map<string, PhoneMetadata>()),
       country_code_to_non_geographical_metadata_map_(
-          new std::map<int, PhoneMetadata>) {
+          new absl::node_hash_map<int, PhoneMetadata>) {
   Logger::set_logger_impl(logger_.get());
   // TODO: Update the java version to put the contents of the init
   // method inside the constructor as well to keep both in sync.
@@ -896,9 +894,10 @@ PhoneNumberUtil::~PhoneNumberUtil() {
       country_calling_code_to_region_code_map_->end());
 }
 
-void PhoneNumberUtil::GetSupportedRegions(std::set<string>* regions) const {
+void PhoneNumberUtil::GetSupportedRegions(std::set<string>* regions)
+    const {
   DCHECK(regions);
-  for (std::map<string, PhoneMetadata>::const_iterator it =
+  for (absl::node_hash_map<string, PhoneMetadata>::const_iterator it =
        region_to_metadata_map_->begin(); it != region_to_metadata_map_->end();
        ++it) {
     regions->insert(it->first);
@@ -908,7 +907,7 @@ void PhoneNumberUtil::GetSupportedRegions(std::set<string>* regions) const {
 void PhoneNumberUtil::GetSupportedGlobalNetworkCallingCodes(
     std::set<int>* calling_codes) const {
   DCHECK(calling_codes);
-  for (std::map<int, PhoneMetadata>::const_iterator it =
+  for (absl::node_hash_map<int, PhoneMetadata>::const_iterator it =
            country_code_to_non_geographical_metadata_map_->begin();
        it != country_code_to_non_geographical_metadata_map_->end(); ++it) {
     calling_codes->insert(it->first);
@@ -1065,7 +1064,7 @@ bool PhoneNumberUtil::HasValidCountryCallingCode(
 // if the region code is invalid or unknown.
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
     const string& region_code) const {
-  std::map<string, PhoneMetadata>::const_iterator it =
+  absl::node_hash_map<string, PhoneMetadata>::const_iterator it =
       region_to_metadata_map_->find(region_code);
   if (it != region_to_metadata_map_->end()) {
     return &it->second;
@@ -1075,7 +1074,7 @@ const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
 
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForNonGeographicalRegion(
     int country_calling_code) const {
-  std::map<int, PhoneMetadata>::const_iterator it =
+  absl::node_hash_map<int, PhoneMetadata>::const_iterator it =
       country_code_to_non_geographical_metadata_map_->find(
           country_calling_code);
   if (it != country_code_to_non_geographical_metadata_map_->end()) {
@@ -1175,9 +1174,9 @@ void PhoneNumberUtil::FormatByPattern(
       const string& national_prefix = metadata->national_prefix();
       if (!national_prefix.empty()) {
         // Replace $NP with national prefix and $FG with the first group ($1).
-        absl::StrReplaceAll({{"$NP", national_prefix}},
+        GlobalReplaceSubstring("$NP", national_prefix,
                             &national_prefix_formatting_rule);
-        absl::StrReplaceAll({{"$FG", "$1"}}, &national_prefix_formatting_rule);
+        GlobalReplaceSubstring("$FG", "$1", &national_prefix_formatting_rule);
         num_format_copy.set_national_prefix_formatting_rule(
             national_prefix_formatting_rule);
       } else {
@@ -2026,9 +2025,8 @@ bool PhoneNumberUtil::GetExampleNumberForType(
   DCHECK(number);
   std::set<string> regions;
   GetSupportedRegions(&regions);
-  for (std::set<string>::const_iterator it = regions.begin();
-       it != regions.end(); ++it) {
-    if (GetExampleNumberForType(*it, type, number)) {
+  for (string region_code : regions) {
+    if (GetExampleNumberForType(region_code, type, number)) {
       return true;
     }
   }
@@ -2096,7 +2094,7 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
   return false;
 }
 
-PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
+PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(absl::string_view number_to_parse,
                                                   const string& default_region,
                                                   PhoneNumber* number) const {
   DCHECK(number);
@@ -2104,7 +2102,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
 }
 
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseAndKeepRawInput(
-    const string& number_to_parse,
+    absl::string_view number_to_parse,
     const string& default_region,
     PhoneNumber* number) const {
   DCHECK(number);
@@ -2132,7 +2130,7 @@ bool PhoneNumberUtil::CheckRegionForParsing(
 // national_number if it is written in RFC3966; otherwise extract a possible
 // number out of it and write to national_number.
 void PhoneNumberUtil::BuildNationalNumberForParsing(
-    const string& number_to_parse, string* national_number) const {
+    absl::string_view number_to_parse, string* national_number) const {
   size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
   if (index_of_phone_context != string::npos) {
     size_t phone_context_start =
@@ -2191,7 +2189,7 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
 // in, even when keepRawInput is false, it should also be handled in the
 // CopyCoreFieldsOnly() method.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
-    const string& number_to_parse,
+    absl::string_view number_to_parse,
     const string& default_region,
     bool keep_raw_input,
     bool check_region,
@@ -2213,7 +2211,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   }
   PhoneNumber temp_number;
   if (keep_raw_input) {
-    temp_number.set_raw_input(number_to_parse);
+    temp_number.set_raw_input(std::string(number_to_parse));
   }
   // Attempt to parse extension first, since it doesn't require country-specific
   // data and we want to have the non-normalised number here.
@@ -2316,7 +2314,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
 // second extension here makes this actually two phone numbers, (530) 583-6985
 // x302 and (530) 583-6985 x2303. We remove the second extension so that the
 // first number is parsed correctly.
-void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
+void PhoneNumberUtil::ExtractPossibleNumber(absl::string_view number,
                                             string* extracted_number) const {
   DCHECK(extracted_number);
 

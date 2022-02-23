@@ -30,6 +30,10 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
+#include "absl/strings/string_view.h"
+#include "absl/container/node_hash_set.h"
+#include "absl/container/node_hash_map.h"
+
 class TelephoneNumber;
 
 namespace i18n {
@@ -690,14 +694,14 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // number (e.g.too few or too many digits) or if no default region was
   // supplied and the number is not in international format (does not start with
   // +).
-  ErrorType Parse(const string& number_to_parse,
+  ErrorType Parse(absl::string_view number_to_parse,
                   const string& default_region,
                   PhoneNumber* number) const;
   // Parses a string and returns it in proto buffer format. This method differs
   // from Parse() in that it always populates the raw_input field of the
   // protocol buffer with number_to_parse as well as the country_code_source
   // field.
-  ErrorType ParseAndKeepRawInput(const string& number_to_parse,
+  ErrorType ParseAndKeepRawInput(absl::string_view number_to_parse,
                                  const string& default_region,
                                  PhoneNumber* number) const;
 
@@ -805,17 +809,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       country_calling_code_to_region_code_map_;
 
   // The set of regions that share country calling code 1.
-  scoped_ptr<std::set<string> > nanpa_regions_;
+  scoped_ptr<absl::node_hash_set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  scoped_ptr<std::map<string, PhoneMetadata> > region_to_metadata_map_;
+  scoped_ptr<absl::node_hash_map<string, PhoneMetadata> > region_to_metadata_map_;
 
   // A mapping from a country calling code for a non-geographical entity to the
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
-  scoped_ptr<std::map<int, PhoneMetadata> >
+  scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();
@@ -931,7 +935,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       string* number,
       string* carrier_code) const;
 
-  void ExtractPossibleNumber(const string& number,
+  void ExtractPossibleNumber(absl::string_view number,
                              string* extracted_number) const;
 
   bool IsViablePhoneNumber(const string& number) const;
@@ -949,13 +953,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& number_to_parse,
       const string& default_region) const;
 
-  ErrorType ParseHelper(const string& number_to_parse,
+  ErrorType ParseHelper(absl::string_view number_to_parse,
                         const string& default_region,
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
-  void BuildNationalNumberForParsing(const string& number_to_parse,
+  void BuildNationalNumberForParsing(absl::string_view number_to_parse,
                                      string* national_number) const;
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,

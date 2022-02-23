@@ -21,6 +21,10 @@
 
 #include "phonenumbers/stringutil.h"
 
+#include "absl/strings/str_replace.h"
+#include "absl/strings/substitute.h"
+#include "absl/strings/match.h"
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -61,8 +65,7 @@ string SimpleItoa(int64 n) {
 }
 
 bool HasPrefixString(const string& s, const string& prefix) {
-  return s.size() >= prefix.size() &&
-      equal(s.begin(), s.begin() + prefix.size(), prefix.begin());
+  return absl::StartsWith(s, prefix);
 }
 
 size_t FindNth(const string& s, char c, int n) {
@@ -116,10 +119,7 @@ bool TryStripPrefixString(const string& in, const string& prefix, string* out) {
 }
 
 bool HasSuffixString(const string& s, const string& suffix) {
-  if (s.length() < suffix.length()) {
-    return false;
-  }
-  return s.compare(s.length() - suffix.length(), suffix.length(), suffix) == 0;
+  return absl::EndsWith(s, suffix);
 }
 
 template <typename T>
@@ -155,26 +155,7 @@ void strrmm(string* s, const string& chars) {
 int GlobalReplaceSubstring(const string& substring,
                            const string& replacement,
                            string* s) {
-  assert(s != NULL);
-  if (s->empty() || substring.empty())
-    return 0;
-  string tmp;
-  int num_replacements = 0;
-  int pos = 0;
-  for (size_t match_pos = s->find(substring.data(), pos, substring.length());
-       match_pos != string::npos;
-       pos = static_cast<int>(match_pos + substring.length()),
-          match_pos = s->find(substring.data(), pos, substring.length())) {
-    ++num_replacements;
-    // Append the original content before the match.
-    tmp.append(*s, pos, match_pos - pos);
-    // Append the replacement for the match.
-    tmp.append(replacement.begin(), replacement.end());
-  }
-  // Append the content after the last match.
-  tmp.append(*s, pos, s->length() - pos);
-  s->swap(tmp);
-  return num_replacements;
+  return absl::StrReplaceAll({{substring, replacement}}, s);;
 }
 
 // StringHolder class
@@ -215,357 +196,57 @@ string& operator+=(string& lhs, const StringHolder& rhs) {
   return lhs;
 }
 
-string StrCat(const StringHolder& s1, const StringHolder& s2) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + 1);
-
-  result += s1;
-  result += s2;
-
-  return result;
+string StrCat(absl::string_view s1, absl::string_view s2) {
+  return absl::StrCat(s1, s2);
 }
 
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + 1);
-
-  result += s1;
-  result += s2;
-  result += s3;
-
-  return result;
+string StrCat(absl::string_view s1, absl::string_view s2,
+              absl::string_view s3) {
+  return absl::StrCat(s1, s2, s3);
 }
 
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() + 1);
-
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-
-  return result;
+string StrCat(absl::string_view s1, absl::string_view s2,
+              absl::string_view s3, absl::string_view s4) {
+  return absl::StrCat(s1, s2, s3, s4);
 }
 
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
-                 s5.Length() + 1);
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-
-  return result;
+string StrCat(absl::string_view s1, absl::string_view s2,
+              absl::string_view s3, absl::string_view s4,
+              absl::string_view s5) {
+  return absl::StrCat(s1, s2, s3, s4, s5);
 }
 
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length() + 1);
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length() + s7.Length() + 1);
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length() + s7.Length() + s8.Length() + 1);
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9) {
-  string result;
-  result.reserve(s1.Length() + s2.Length() + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length() + s7.Length() + s8.Length() +
-                 s9.Length() + 1);
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11) {
-  string result;
-  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
-                 s9.Length() + s10.Length() + s11.Length());
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-  result += s10;
-  result += s11;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12) {
-  string result;
-  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
-                 s9.Length() + s10.Length() + s11.Length() + s12.Length());
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-  result += s10;
-  result += s11;
-  result += s12;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13) {
-  string result;
-  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
-                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
-                 s13.Length());
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-  result += s10;
-  result += s11;
-  result += s12;
-  result += s13;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13, const StringHolder& s14) {
-  string result;
-  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
-                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
-                 s13.Length() + s14.Length());
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-  result += s10;
-  result += s11;
-  result += s12;
-  result += s13;
-  result += s14;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13, const StringHolder& s14,
-              const StringHolder& s15) {
-  string result;
-  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
-                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
-                 s13.Length() + s14.Length() + s15.Length());
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-  result += s10;
-  result += s11;
-  result += s12;
-  result += s13;
-  result += s14;
-  result += s15;
-
-  return result;
-}
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13, const StringHolder& s14,
-              const StringHolder& s15, const StringHolder& s16) {
-  string result;
-  result.reserve(s1.Length() + s2.Length()  + s3.Length() + s4.Length() +
-                 s5.Length() + s6.Length()  + s7.Length() + s8.Length() +
-                 s9.Length() + s10.Length() + s11.Length() + s12.Length() +
-                 s13.Length() + s14.Length() + s15.Length() + s16.Length());
-  result += s1;
-  result += s2;
-  result += s3;
-  result += s4;
-  result += s5;
-  result += s6;
-  result += s7;
-  result += s8;
-  result += s9;
-  result += s10;
-  result += s11;
-  result += s12;
-  result += s13;
-  result += s14;
-  result += s15;
-  result += s16;
-
-  return result;
+template<typename... args>
+string StrCat(absl::string_view s1, absl::string_view s2,
+              absl::string_view s3, absl::string_view s4,
+              absl::string_view s5, args... s6) {
+  return absl::StrCat(s1, s2, s3, s4, s5, s6...);
 }
 
 // StrAppend
 
-void StrAppend(string* dest, const StringHolder& s1) {
-  assert(dest);
-
-  dest->reserve(dest->length() + s1.Length() + 1);
-  *dest += s1;
+void StrAppend(string* dest, absl::string_view s1) {
+  absl::StrAppend(dest, s1);
 }
 
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2) {
-  assert(dest);
-
-  dest->reserve(dest->length() + s1.Length() + s2.Length() + 1);
-  *dest += s1;
-  *dest += s2;
+void StrAppend(string* dest, absl::string_view s1, absl::string_view s2) {
+  absl::StrAppend(dest, s1, s2);
 }
 
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
-               const StringHolder& s3) {
-  assert(dest);
-
-  dest->reserve(dest->length() + s1.Length() + s2.Length() + s3.Length() + 1);
-  *dest += s1;
-  *dest += s2;
-  *dest += s3;
+void StrAppend(string* dest, absl::string_view s1, absl::string_view s2,
+               absl::string_view s3) {
+  absl::StrAppend(dest, s1, s2, s3);
 }
 
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
-               const StringHolder& s3, const StringHolder& s4) {
-  assert(dest);
-
-  dest->reserve(dest->length() + s1.Length() + s2.Length() + s3.Length() +
-      s4.Length() + 1);
-  *dest += s1;
-  *dest += s2;
-  *dest += s3;
-  *dest += s4;
+void StrAppend(string* dest, absl::string_view s1, absl::string_view s2,
+               absl::string_view s3, absl::string_view s4) {
+  absl::StrAppend(dest, s1, s2, s3, s4);
 }
 
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
-               const StringHolder& s3, const StringHolder& s4,
-               const StringHolder& s5) {
-  assert(dest);
-
-  dest->reserve(dest->length() + s1.Length() + s2.Length() + s3.Length() +
-      s4.Length() + s5.Length() + 1);
-  *dest += s1;
-  *dest += s2;
-  *dest += s3;
-  *dest += s4;
-  *dest += s5;
+void StrAppend(string* dest, absl::string_view s1, absl::string_view s2,
+               absl::string_view s3, absl::string_view s4,
+               absl::string_view s5) {
+  absl::StrAppend(dest, s1, s2, s3, s4, s5);
 }
 
 }  // namespace phonenumbers
