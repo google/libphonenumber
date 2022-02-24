@@ -1207,7 +1207,7 @@
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[0-25-8]|
+            0[0-35-8]|
             1[02]|
             7(?:
               12|
@@ -1256,11 +1256,14 @@
       <!-- http://www.childfocus.be/fr/accueil/ lists this as being an emergency number. -->
       <expandedEmergency>
         <possibleLengths national="3,6"/>
-        <exampleNumber>110</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
-          11(?:
-            0|
-            60\d\d
+          1(?:
+            0[235-8]|
+            1(?:
+              0|
+              60\d\d
+            )
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -2486,7 +2489,7 @@
         <possibleLengths national="3,4,6"/>
         <exampleNumber>140</exampleNumber>
         <nationalNumberPattern>
-          14[035]|
+          14[0357]|
           1(?:
             161\d|
             41
@@ -11110,7 +11113,7 @@
         <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11[25]|
+          11[257]|
           1(?:
             16\d\d|
             5[1589]|
@@ -11124,9 +11127,14 @@
         <nationalNumberPattern>11[25]</nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="3,6"/>
+        <exampleNumber>117</exampleNumber>
+        <nationalNumberPattern>
+          11(?:
+            6\d{3}|
+            7
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
     </territory>
 
@@ -11610,13 +11618,12 @@
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0\d|
-            1[027]|
+            [06]\d|
+            1[0-2467]|
             2[0-8]|
             3[13]|
             4[0-2]|
             [59][15]|
-            6[1-9]|
             7[124-6]|
             8[158]
           )|
@@ -11628,14 +11635,30 @@
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>999</exampleNumber>
-        <nationalNumberPattern>999</nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[146]|
+            60
+          )|
+          999
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
         <nationalNumberPattern>999</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[146]|
+            60
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Sudan (SD) -->
@@ -11721,14 +11744,19 @@
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3,5,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          112|
-          (?:
-            116\d|
-            900
-          )\d\d
+          11(?:
+            2|
+            (?:
+              3|
+              6\d
+            )\d\d|
+            414|
+            77
+          )|
+          900\d\d
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -11771,15 +11799,20 @@
         </nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
+        <possibleLengths national="[4-6]"/>
+        <exampleNumber>1177</exampleNumber>
         <nationalNumberPattern>
-          116(?:
-            000|
-            1(?:
-              11|
-              2\d
-            )
+          11(?:
+            3\d\d|
+            414|
+            6(?:
+              000|
+              1(?:
+                11|
+                2\d
+              )
+            )|
+            77
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -13507,6 +13540,7 @@
           [2-8]11|
           9(?:
             11|
+            33|
             88
           )
         </nationalNumberPattern>
@@ -13516,8 +13550,12 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           112|
-          988|
-          [69]11
+          611|
+          9(?:
+            11|
+            33|
+            88
+          )
         </nationalNumberPattern>
       </tollFree>
       <!-- 29002 is standard rate as per test results. -->
@@ -13660,8 +13698,13 @@
       </emergency>
       <expandedEmergency>
         <possibleLengths national="3"/>
-        <exampleNumber>988</exampleNumber>
-        <nationalNumberPattern>988</nationalNumberPattern>
+        <exampleNumber>933</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            33|
+            88
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
         <possibleLengths national="5,6"/>
