@@ -2282,21 +2282,53 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Returns the metadata for the given region code or {@code null} if the region code is invalid
-   * or unknown.
+   * Returns the metadata for the given region code or {@code null} if the region code is invalid or
+   * unknown.
+   *
+   * @throws MissingMetadataException if the region code is valid, but metadata cannot be found.
    */
   PhoneMetadata getMetadataForRegion(String regionCode) {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    return metadataSource.getMetadataForRegion(regionCode);
+    try {
+      PhoneMetadata phoneMetadata = metadataSource.getMetadataForRegion(regionCode);
+      ensureMetadataIsNonNull(phoneMetadata, "Missing metadata for region code " + regionCode);
+      return phoneMetadata;
+    } catch (IllegalArgumentException e) {
+      // To respect the contract of the method, we return null for invalid (i.e. non-geo) region
+      // codes
+      return null;
+    }
   }
 
+  /**
+   * Returns the metadata for the given country calling code or {@code null} if the country calling
+   * code is invalid or unknown.
+   *
+   * @throws MissingMetadataException if the country calling code is valid, but metadata cannot be
+   *     found.
+   */
   PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
     if (!countryCallingCodeToRegionCodeMap.containsKey(countryCallingCode)) {
       return null;
     }
-    return metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
+    try {
+      PhoneMetadata phoneMetadata =
+          metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
+      ensureMetadataIsNonNull(
+          phoneMetadata, "Missing metadata for country code " + countryCallingCode);
+      return phoneMetadata;
+    } catch (IllegalArgumentException e) {
+      // To respect the contract of the method, we return null for invalid country calling codes
+      return null;
+    }
+  }
+
+  private static void ensureMetadataIsNonNull(PhoneMetadata phoneMetadata, String message) {
+    if (phoneMetadata == null) {
+      throw new MissingMetadataException(message);
+    }
   }
 
   boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {

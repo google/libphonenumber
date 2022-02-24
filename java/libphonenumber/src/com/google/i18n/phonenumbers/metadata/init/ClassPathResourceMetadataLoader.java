@@ -18,6 +18,8 @@ package com.google.i18n.phonenumbers.metadata.init;
 
 import com.google.i18n.phonenumbers.MetadataLoader;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A {@link MetadataLoader} implementation that reads phone number metadata files as classpath
@@ -25,8 +27,16 @@ import java.io.InputStream;
  */
 public final class ClassPathResourceMetadataLoader implements MetadataLoader {
 
+  private static final Logger logger =
+      Logger.getLogger(ClassPathResourceMetadataLoader.class.getName());
+
   @Override
   public InputStream loadMetadata(String metadataFileName) {
-    return ClassPathResourceMetadataLoader.class.getResourceAsStream(metadataFileName);
+    InputStream inputStream =
+        ClassPathResourceMetadataLoader.class.getResourceAsStream(metadataFileName);
+    if (inputStream == null) {
+      logger.log(Level.WARNING, String.format("File %s not found", metadataFileName));
+    }
+    return inputStream;
   }
 }

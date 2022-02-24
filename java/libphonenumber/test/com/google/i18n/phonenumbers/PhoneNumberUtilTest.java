@@ -25,9 +25,13 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
+import com.google.i18n.phonenumbers.metadata.source.MetadataSource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.junit.Assert;
+import org.junit.function.ThrowingRunnable;
+import org.mockito.Mockito;
 
 /**
  * Unit tests for PhoneNumberUtil.java
@@ -118,6 +122,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(979).setNationalNumber(123456789L);
   private static final PhoneNumber UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT =
       new PhoneNumber().setCountryCode(2).setNationalNumber(12345L);
+
+  private final MetadataSource mockedMetadataSource = Mockito.mock(MetadataSource.class);
+  private final PhoneNumberUtil phoneNumberUtilWithMissingMetadata =
+      new PhoneNumberUtil(mockedMetadataSource,
+          CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
 
   public void testGetSupportedRegions() {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
@@ -3159,5 +3168,27 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isMobileNumberPortableRegion(RegionCode.GB));
     assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.AE));
     assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.BS));
+  }
+
+  public void testGetMetadataForRegionForMissingMetadata() {
+    Assert.assertThrows(
+        MissingMetadataException.class,
+        new ThrowingRunnable() {
+          @Override
+          public void run() {
+            phoneNumberUtilWithMissingMetadata.getMetadataForRegion(RegionCode.US);
+          }
+        });
+  }
+
+  public void testGetMetadataForNonGeographicalRegionForMissingMetadata() {
+    Assert.assertThrows(
+        MissingMetadataException.class,
+        new ThrowingRunnable() {
+          @Override
+          public void run() {
+            phoneNumberUtilWithMissingMetadata.getMetadataForNonGeographicalRegion(800);
+          }
+        });
   }
 }
