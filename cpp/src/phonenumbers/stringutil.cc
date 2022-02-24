@@ -21,6 +21,9 @@
 
 #include "phonenumbers/stringutil.h"
 
+#include "absl/strings/str_cat.h"
+
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -28,36 +31,21 @@ using std::equal;
 using std::stringstream;
 
 string operator+(const string& s, int n) {  // NOLINT(runtime/string)
-  stringstream stream;
-
-  stream << s << n;
   string result;
-  stream >> result;
-
-  return result;
-}
-
-template <typename T>
-string GenericSimpleItoa(const T& n) {
-  stringstream stream;
-
-  stream << n;
-  string result;
-  stream >> result;
-
+  absl::StrAppend(&result,s,n);
   return result;
 }
 
 string SimpleItoa(int n) {
-  return GenericSimpleItoa(n);
+  return absl::StrCat(n);
 }
 
 string SimpleItoa(uint64 n) {
-  return GenericSimpleItoa(n);
+  return absl::StrCat(n);
 }
 
 string SimpleItoa(int64 n) {
-  return GenericSimpleItoa(n);
+  return absl::StrCat(n);
 }
 
 bool HasPrefixString(const string& s, const string& prefix) {

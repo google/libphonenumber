@@ -1,3 +1,13 @@
+Feb 23, 2022: v8.12.44
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BM, BS, CA, CV, DM, DO, GD, GU, JM, KN, KY, LC, MP, MS, PR,
+   SC, SX, TC, TT, US, VC, VG, VI
+ - Updated short number metadata for region code(s): BE, PT, SC, SE, US
+ - Updated geocoding data for country calling code(s):
+   61 (en), 238 (en), 1345 (en)
+ - Updated carrier data for country calling code(s): 238 (en), 248 (en)
+
 Feb 09, 2022: v8.12.43
 Metadata changes:
  - Updated phone metadata for region code(s):
