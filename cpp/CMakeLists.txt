@@ -479,6 +479,9 @@ endif ()
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 list (APPEND LIBRARY_DEPS absl::strings)
 list (APPEND COMMON_DEPS absl::synchronization)
+# list (APPEND COMMON_DEPS absl::container)
+# list (APPEND COMMON_DEPS absl::hash)
+# list (APPEND COMMON_DEPS absl::hashtablez_sampler)
 
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
@@ -570,7 +573,7 @@ if (NOT WIN32)
   list (APPEND TEST_LIBS pthread)
 endif ()
 
-target_link_libraries (libphonenumber_test ${TEST_LIBS})
+target_link_libraries (libphonenumber_test ${TEST_LIBS} absl::hash absl::btree)
 
 # Unfortunately add_custom_target() can't accept a single command provided as a
 # list of commands.

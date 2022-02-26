@@ -69,30 +69,9 @@ size_t FindNth(const string& s, char c, int n) {
 void SplitStringUsing(const string& s, const string& delimiter,
                       vector<string>* result) {
   assert(result);
-  size_t start_pos = 0;
-  size_t find_pos = string::npos;
-  if (delimiter.empty()) {
-    return;
-  }
-  while ((find_pos = s.find(delimiter, start_pos)) != string::npos) {
-    const string substring = s.substr(start_pos, find_pos - start_pos);
-    if (!substring.empty()) {
-      result->push_back(substring);
-    }
-    start_pos = find_pos + delimiter.length();
-  }
-  if (start_pos != s.length()) {
-    result->push_back(s.substr(start_pos));
-  }
-}
-
-void StripString(string* s, const char* remove, char replacewith) {
-  const char* str_start = s->c_str();
-  const char* str = str_start;
-  for (str = strpbrk(str, remove);
-       str != NULL;
-       str = strpbrk(str + 1, remove)) {
-    (*s)[str - str_start] = replacewith;
+  for (absl::string_view split_piece : absl::StrSplit(
+           s, absl::ByChar('-'), absl::SkipEmpty())) {
+    result->push_back(std::string(split_piece));
   }
 }
 
@@ -110,9 +89,7 @@ bool HasSuffixString(const string& s, const string& suffix) {
 
 template <typename T>
 void GenericAtoi(const string& s, T* out) {
-  stringstream stream;
-  stream << s;
-  stream >> *out;
+  absl::SimpleAtoi(s, out);
 }
 
 void safe_strto32(const string& s, int32 *n) {
@@ -145,24 +122,16 @@ int GlobalReplaceSubstring(const string& substring,
 }
 
 // StringHolder class
-
 StringHolder::StringHolder(const string& s)
-  : string_(&s),
-    cstring_(NULL),
-    len_(s.size())
+  : absl::string_view(s)
 {}
 
 StringHolder::StringHolder(const char* s)
-  : string_(NULL),
-    cstring_(s),
-    len_(std::strlen(s))
+  : absl::string_view(s)
 {}
 
 StringHolder::StringHolder(uint64 n)
-  : converted_string_(SimpleItoa(n)),
-    string_(&converted_string_),
-    cstring_(NULL),
-    len_(converted_string_.length())
+  : absl::string_view(std::to_string(n))
 {}
 
 StringHolder::~StringHolder() {}
@@ -171,7 +140,7 @@ StringHolder::~StringHolder() {}
 
 // Implements s += sh; (s: string, sh: StringHolder)
 string& operator+=(string& lhs, const StringHolder& rhs) {
-  const string* const s = rhs.GetString();
+  const string* const s = rhs.GetString();;
   if (s) {
     lhs += *s;
   } else {
@@ -182,56 +151,57 @@ string& operator+=(string& lhs, const StringHolder& rhs) {
   return lhs;
 }
 
-string StrCat(absl::string_view s1, absl::string_view s2) {
+string StrCat(const StringHolder& s1, const StringHolder& s2) {
   return absl::StrCat(s1, s2);
 }
 
-string StrCat(absl::string_view s1, absl::string_view s2,
-              absl::string_view s3) {
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3) {
   return absl::StrCat(s1, s2, s3);
 }
 
-string StrCat(absl::string_view s1, absl::string_view s2,
-              absl::string_view s3, absl::string_view s4) {
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4) {
   return absl::StrCat(s1, s2, s3, s4);
 }
 
-string StrCat(absl::string_view s1, absl::string_view s2,
-              absl::string_view s3, absl::string_view s4,
-              absl::string_view s5) {
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5) {
   return absl::StrCat(s1, s2, s3, s4, s5);
 }
 
-template<typename... args>
-string StrCat(absl::string_view s1, absl::string_view s2,
-              absl::string_view s3, absl::string_view s4,
-              absl::string_view s5, args... s6) {
-  return absl::StrCat(s1, s2, s3, s4, s5, s6...);
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,...) {
+  return absl::StrCat(s1, s2, s3, s4, s5, s6);
 }
 
 // StrAppend
 
-void StrAppend(string* dest, absl::string_view s1) {
+void StrAppend(string* dest, const StringHolder& s1) {
   absl::StrAppend(dest, s1);
 }
 
-void StrAppend(string* dest, absl::string_view s1, absl::string_view s2) {
+void StrAppend(string* dest, const StringHolder& s1,
+	       const StringHolder& s2) {
   absl::StrAppend(dest, s1, s2);
 }
 
-void StrAppend(string* dest, absl::string_view s1, absl::string_view s2,
-               absl::string_view s3) {
+void StrAppend(string* dest, const StringHolder& s1,
+               const StringHolder& s2, const StringHolder& s3) {
   absl::StrAppend(dest, s1, s2, s3);
 }
 
-void StrAppend(string* dest, absl::string_view s1, absl::string_view s2,
-               absl::string_view s3, absl::string_view s4) {
+void StrAppend(string* dest, const StringHolder& s1,
+	       const StringHolder& s2, const StringHolder& s3,
+	       const StringHolder& s4) {
   absl::StrAppend(dest, s1, s2, s3, s4);
 }
 
-void StrAppend(string* dest, absl::string_view s1, absl::string_view s2,
-               absl::string_view s3, absl::string_view s4,
-               absl::string_view s5) {
+void StrAppend(string* dest, const StringHolder& s1,
+               const StringHolder& s2, const StringHolder& s3,
+               const StringHolder& s4, const StringHolder& s5) {
   absl::StrAppend(dest, s1, s2, s3, s4, s5);
 }
 
