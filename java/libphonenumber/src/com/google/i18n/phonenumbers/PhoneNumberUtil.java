@@ -2291,15 +2291,9 @@ public class PhoneNumberUtil {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    try {
-      PhoneMetadata phoneMetadata = metadataSource.getMetadataForRegion(regionCode);
-      ensureMetadataIsNonNull(phoneMetadata, "Missing metadata for region code " + regionCode);
-      return phoneMetadata;
-    } catch (IllegalArgumentException e) {
-      // To respect the contract of the method, we return null for invalid (i.e. non-geo) region
-      // codes
-      return null;
-    }
+    PhoneMetadata phoneMetadata = metadataSource.getMetadataForRegion(regionCode);
+    ensureMetadataIsNonNull(phoneMetadata, "Missing metadata for region code " + regionCode);
+    return phoneMetadata;
   }
 
   /**
@@ -2310,19 +2304,14 @@ public class PhoneNumberUtil {
    *     found.
    */
   PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
-    if (!countryCallingCodeToRegionCodeMap.containsKey(countryCallingCode)) {
+    if (!countryCodesForNonGeographicalRegion.contains(countryCallingCode)) {
       return null;
     }
-    try {
-      PhoneMetadata phoneMetadata =
-          metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
-      ensureMetadataIsNonNull(
-          phoneMetadata, "Missing metadata for country code " + countryCallingCode);
-      return phoneMetadata;
-    } catch (IllegalArgumentException e) {
-      // To respect the contract of the method, we return null for invalid country calling codes
-      return null;
-    }
+    PhoneMetadata phoneMetadata = metadataSource.getMetadataForNonGeographicalRegion(
+        countryCallingCode);
+    ensureMetadataIsNonNull(phoneMetadata,
+        "Missing metadata for country code " + countryCallingCode);
+    return phoneMetadata;
   }
 
   private static void ensureMetadataIsNonNull(PhoneMetadata phoneMetadata, String message) {

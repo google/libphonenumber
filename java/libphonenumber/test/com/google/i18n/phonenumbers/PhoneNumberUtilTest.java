@@ -16,6 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
+import static org.junit.Assert.assertThrows;
+
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
@@ -3170,8 +3172,20 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.BS));
   }
 
+  public void testGetMetadataForRegionForNonGeoEntity_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForRegion(RegionCode.UN001));
+  }
+
+  public void testGetMetadataForRegionForUnknownRegion_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForRegion(RegionCode.ZZ));
+  }
+
+  public void testGetMetadataForNonGeographicalRegionForGeoRegion_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForNonGeographicalRegion(/* countryCallingCode = */ 1));
+  }
+
   public void testGetMetadataForRegionForMissingMetadata() {
-    Assert.assertThrows(
+    assertThrows(
         MissingMetadataException.class,
         new ThrowingRunnable() {
           @Override
@@ -3182,7 +3196,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testGetMetadataForNonGeographicalRegionForMissingMetadata() {
-    Assert.assertThrows(
+    assertThrows(
         MissingMetadataException.class,
         new ThrowingRunnable() {
           @Override
