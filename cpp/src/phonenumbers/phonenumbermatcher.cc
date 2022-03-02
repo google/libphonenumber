@@ -756,7 +756,7 @@ void PhoneNumberMatcher::GetNationalNumberGroups(
   size_t start_index = rfc3966_format.find('-') + 1;
   SplitStringUsing(rfc3966_format.substr(start_index,
                                          end_index - start_index),
-                   "-", digit_blocks);
+                   '-', digit_blocks);
 }
 
 void PhoneNumberMatcher::GetNationalNumberGroupsForPattern(
@@ -772,7 +772,7 @@ void PhoneNumberMatcher::GetNationalNumberGroupsForPattern(
                                     *formatting_pattern,
                                     PhoneNumberUtil::RFC3966,
                                     &rfc3966_format);
-  SplitStringUsing(rfc3966_format, "-", digit_blocks);
+  SplitStringUsing(rfc3966_format, '-', digit_blocks);
 }
 
 bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(

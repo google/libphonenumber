@@ -23,6 +23,7 @@
 
 #include "phonenumbers/base/basictypes.h"
 #include "absl/strings/string_view.h"
+#include "absl/strings/str_cat.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -47,7 +48,7 @@ size_t FindNth(const string& s, char c, int n);
 
 // Splits a string using a character delimiter. Appends the components to the
 // provided vector. Note that empty tokens are ignored.
-void SplitStringUsing(const string& s, const string& delimiter,
+void SplitStringUsing(const string& s, char delimiter,
                       vector<string>* result);
 
 // Returns true if 'in' starts with 'prefix' and writes 'in' minus 'prefix' into
@@ -76,7 +77,7 @@ int GlobalReplaceSubstring(const string& substring, const string& replacement,
 
 // Abstracted to make absl::string_view type parameters to be compatible with
 // unsupported types (like int), and for some wrapper apis.
-class StringHolder: public absl::string_view {
+class StringHolder: public absl::AlphaNum {
  public:
   // Don't make the constructors explicit to make the StrCat usage convenient.
   StringHolder(const string& s);  // NOLINT(runtime/explicit)
@@ -84,10 +85,8 @@ class StringHolder: public absl::string_view {
   StringHolder(uint64 n);         // NOLINT(runtime/explicit)
   ~StringHolder();
 
-  const string* GetString() const {
-    string str(data(), length());
-    string *s = &str;
-    return s;
+  const absl::string_view GetString() const {
+    return Piece();
   }
 
   const char* GetCString() const {
@@ -95,13 +94,14 @@ class StringHolder: public absl::string_view {
   }
 
   size_t Length() const {
-    return length();
+    return size();
   }
 };
 
 string& operator+=(string& lhs, const StringHolder& rhs);
 
 // Efficient string concatenation.
+
 string StrCat(const StringHolder& s1, const StringHolder& s2);
 
 string StrCat(const StringHolder& s1, const StringHolder& s2,
@@ -116,23 +116,85 @@ string StrCat(const StringHolder& s1, const StringHolder& s2,
 
 string StrCat(const StringHolder& s1, const StringHolder& s2,
               const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,...);
+              const StringHolder& s5, const StringHolder& s6);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14,
+              const StringHolder& s15);
+
+string StrCat(const StringHolder& s1, const StringHolder& s2,
+              const StringHolder& s3, const StringHolder& s4,
+              const StringHolder& s5, const StringHolder& s6,
+              const StringHolder& s7, const StringHolder& s8,
+              const StringHolder& s9, const StringHolder& s10,
+              const StringHolder& s11, const StringHolder& s12,
+              const StringHolder& s13, const StringHolder& s14,
+              const StringHolder& s15, const StringHolder& s16);
 
 void StrAppend(string* dest, const StringHolder& s1);
 
-void StrAppend(string* dest, const StringHolder& s1,
-               const StringHolder& s2);
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2);
 
-void StrAppend(string* dest, const StringHolder& s1,
-               const StringHolder& s2, const StringHolder& s3);
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3);
 
-void StrAppend(string* dest, const StringHolder& s1,
-	       const StringHolder& s2, const StringHolder& s3,
-	       const StringHolder& s4);
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3, const StringHolder& s4);
 
-void StrAppend(string* dest, const StringHolder& s1,
-               const StringHolder& s2, const StringHolder& s3,
-               const StringHolder& s4, const StringHolder& s5);
+void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
+               const StringHolder& s3, const StringHolder& s4,
+               const StringHolder& s5);
 
 }  // namespace phonenumbers
 }  // namespace i18n

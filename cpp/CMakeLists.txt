@@ -479,9 +479,6 @@ endif ()
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 list (APPEND LIBRARY_DEPS absl::strings)
 list (APPEND COMMON_DEPS absl::synchronization)
-# list (APPEND COMMON_DEPS absl::container)
-# list (APPEND COMMON_DEPS absl::hash)
-# list (APPEND COMMON_DEPS absl::hashtablez_sampler)
 
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
@@ -572,9 +569,6 @@ set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
 if (NOT WIN32)
   list (APPEND TEST_LIBS pthread)
 endif ()
-
-#absl::container_common
-#absl::strings
 
 target_link_libraries (libphonenumber_test ${TEST_LIBS} absl::node_hash_set)
 
