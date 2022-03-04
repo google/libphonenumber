@@ -75,8 +75,8 @@ void strrmm(string* s, const string& chars);
 int GlobalReplaceSubstring(const string& substring, const string& replacement,
                            string* s);
 
-// Abstracted to make absl::string_view type parameters to be compatible with
-// unsupported types (like int), and for some wrapper apis.
+// An abstract to absl::AlphaNum type; AlphaNum has more accomidating
+// constructors for more types.
 class StringHolder: public absl::AlphaNum {
  public:
   // Don't make the constructors explicit to make the StrCat usage convenient.

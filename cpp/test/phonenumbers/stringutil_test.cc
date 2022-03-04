@@ -189,10 +189,8 @@ TEST(StringUtilTest, StringHolder) {
   static const char cstring[] = "aaa";
   StringHolder sh1(cstring);
   EXPECT_EQ(cstring, sh1.GetCString());
-  
-  // As the returned type is absl::string_view,
-  // fetching and then comparing with existing
-  // value type.
+
+  // Test with absl::string_view.
   string s = "aaa";
   StringHolder sh2(s);
   EXPECT_EQ(cstring, sh2.GetString());

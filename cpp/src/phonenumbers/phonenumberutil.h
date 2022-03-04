@@ -30,7 +30,6 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
-#include "absl/strings/string_view.h"
 #include "absl/container/node_hash_set.h"
 #include "absl/container/node_hash_map.h"
 
@@ -694,14 +693,14 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // number (e.g.too few or too many digits) or if no default region was
   // supplied and the number is not in international format (does not start with
   // +).
-  ErrorType Parse(absl::string_view number_to_parse,
+  ErrorType Parse(const string& number_to_parse,
                   const string& default_region,
                   PhoneNumber* number) const;
   // Parses a string and returns it in proto buffer format. This method differs
   // from Parse() in that it always populates the raw_input field of the
   // protocol buffer with number_to_parse as well as the country_code_source
   // field.
-  ErrorType ParseAndKeepRawInput(absl::string_view number_to_parse,
+  ErrorType ParseAndKeepRawInput(const string& number_to_parse,
                                  const string& default_region,
                                  PhoneNumber* number) const;
 
@@ -935,7 +934,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       string* number,
       string* carrier_code) const;
 
-  void ExtractPossibleNumber(absl::string_view number,
+  void ExtractPossibleNumber(const string& number,
                              string* extracted_number) const;
 
   bool IsViablePhoneNumber(const string& number) const;
@@ -953,13 +952,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& number_to_parse,
       const string& default_region) const;
 
-  ErrorType ParseHelper(absl::string_view number_to_parse,
+  ErrorType ParseHelper(const string& number_to_parse,
                         const string& default_region,
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
-  void BuildNationalNumberForParsing(absl::string_view number_to_parse,
+  void BuildNationalNumberForParsing(const string& number_to_parse,
                                      string* national_number) const;
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,

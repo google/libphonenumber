@@ -2025,7 +2025,7 @@ bool PhoneNumberUtil::GetExampleNumberForType(
   DCHECK(number);
   std::set<string> regions;
   GetSupportedRegions(&regions);
-  for (string region_code : regions) {
+  for (const string& region_code : regions) {
     if (GetExampleNumberForType(region_code, type, number)) {
       return true;
     }
@@ -2094,7 +2094,7 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
   return false;
 }
 
-PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(absl::string_view number_to_parse,
+PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
                                                   const string& default_region,
                                                   PhoneNumber* number) const {
   DCHECK(number);
@@ -2102,7 +2102,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(absl::string_view number_to_pa
 }
 
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseAndKeepRawInput(
-    absl::string_view number_to_parse,
+    const string& number_to_parse,
     const string& default_region,
     PhoneNumber* number) const {
   DCHECK(number);
@@ -2130,7 +2130,7 @@ bool PhoneNumberUtil::CheckRegionForParsing(
 // national_number if it is written in RFC3966; otherwise extract a possible
 // number out of it and write to national_number.
 void PhoneNumberUtil::BuildNationalNumberForParsing(
-    absl::string_view number_to_parse, string* national_number) const {
+    const string& number_to_parse, string* national_number) const {
   size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
   if (index_of_phone_context != string::npos) {
     size_t phone_context_start =
@@ -2189,7 +2189,7 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
 // in, even when keepRawInput is false, it should also be handled in the
 // CopyCoreFieldsOnly() method.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
-    absl::string_view number_to_parse,
+    const string& number_to_parse,
     const string& default_region,
     bool keep_raw_input,
     bool check_region,
@@ -2211,7 +2211,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   }
   PhoneNumber temp_number;
   if (keep_raw_input) {
-    temp_number.set_raw_input(std::string(number_to_parse));
+    temp_number.set_raw_input(number_to_parse);
   }
   // Attempt to parse extension first, since it doesn't require country-specific
   // data and we want to have the non-normalised number here.
@@ -2314,7 +2314,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
 // second extension here makes this actually two phone numbers, (530) 583-6985
 // x302 and (530) 583-6985 x2303. We remove the second extension so that the
 // first number is parsed correctly.
-void PhoneNumberUtil::ExtractPossibleNumber(absl::string_view number,
+void PhoneNumberUtil::ExtractPossibleNumber(const string& number,
                                             string* extracted_number) const {
   DCHECK(extracted_number);
 
