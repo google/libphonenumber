@@ -396,7 +396,9 @@
 441592|Kirkcaldy
 441593|Lybster
 441594|Lydney
-441595|Lerwick, Foula & Fair Isle
+441595|Lerwick
+44159575|Foula
+44159576|Fair Isle
 441597|Llandrindod Wells
 441598|Lynton
 441599|Kyle
