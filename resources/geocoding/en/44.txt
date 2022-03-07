@@ -760,7 +760,7 @@
 44239|Portsmouth
 44241|Coventry
 44247|Coventry
-44281|Northern Ireland
+4428|Northern Ireland
 442820|Ballycastle
 442821|Martinstown
 442825|Ballymena
@@ -780,6 +780,7 @@
 442868|Kesh
 442870|Coleraine
 442871|Londonderry
+442872|Londonderry
 442877|Limavady
 442879|Magherafelt
 442880|Carrickmore
