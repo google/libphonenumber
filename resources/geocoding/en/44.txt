@@ -293,12 +293,6 @@
 441477|Holmes Chapel
 441478|Isle of Skye - Portree
 441479|Grantown-on-Spey
-44147981|Aviemore
-44147982|Nethy Bridge
-44147983|Boat of Garten
-44147984|Carrbridge
-44147985|Dulnain Bridge
-44147986|Cairngorm
 441480|Huntingdon
 441481|Guernsey
 441482|Kingston-upon-Hull
