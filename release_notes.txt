@@ -1,3 +1,12 @@
+Mar 10, 2022: v8.12.45
+Metadata changes:
+ - Updated phone metadata for region code(s): BF, EE, JM, RE, SE, US
+ - New geocoding data for country calling code(s): 1464 (en)
+ - Updated carrier data for country calling code(s):
+   46 (en), 55 (en), 226 (en), 262 (en), 353 (en), 372 (en), 373 (en),
+   1345 (en)
+ - Updated / refreshed time zone meta data.
+
 Feb 23, 2022: v8.12.44
 Metadata changes:
  - Updated phone metadata for region code(s):

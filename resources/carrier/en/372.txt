@@ -51,6 +51,7 @@
 3728111|Elisa
 37282|Elisa
 3728200|Telia Eesti AS
+3728203|Telia Eesti AS
 3728204|Tele 2
 37282056|Tele 2
 37282057|Tele 2
