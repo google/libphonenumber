@@ -88,7 +88,7 @@ bool HasSuffixString(const string& s, const string& suffix) {
 
 template <typename T>
 void GenericAtoi(const string& s, T* out) {
-  absl::SimpleAtoi(s, out);
+  (void)absl::SimpleAtoi(s, out);
 }
 
 void safe_strto32(const string& s, int32 *n) {
