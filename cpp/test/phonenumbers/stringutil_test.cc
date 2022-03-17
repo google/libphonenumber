@@ -135,7 +135,7 @@ TEST(StringUtilTest, safe_strtou64) {
   safe_strtou64("16", &n);
   EXPECT_EQ(16U, n);
 
-  safe_strtou64("18446744073709551615UL", &n);
+  safe_strtou64("18446744073709551615", &n);
   EXPECT_EQ(18446744073709551615ULL, n);
 }
 
