@@ -10020,14 +10020,10 @@
         <exampleNumber>612345678</exampleNumber>
         <nationalNumberPattern>
           (?:
-            6(?:
+            6|7(?:
               [0-24-8]\d|
               3[0-8]|
               9[589]
-            )|
-            7(?:
-              00|
-              [3-9]\d
             )
           )\d{6}
         </nationalNumberPattern>
