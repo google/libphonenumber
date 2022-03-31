@@ -4009,12 +4009,17 @@
     <territory id="BJ" countryCode="229" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[25689]</leadingDigits>
+          <leadingDigits>[24-689]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[25689]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [25689]\d|
+            40
+          )\d{6}
+        </nationalNumberPattern>
       </generalDesc>
       <!-- These come from the national numbering plan, but have been widened to include other
            prefixes found in the yellow pages - specifically 21 0. -->
@@ -4039,6 +4044,7 @@
         <exampleNumber>90011234</exampleNumber>
         <nationalNumberPattern>
           (?:
+            40|
             5[1-8]|
             6\d|
             9[013-9]
@@ -15376,7 +15382,7 @@
               52[35]|
               6(?:
                 0[1-3579]|
-                1[0237-9]|
+                1[02357-9]|
                 [23]\d|
                 40|
                 5[06]|
@@ -24242,7 +24248,10 @@
         <exampleNumber>6201234</exampleNumber>
         <nationalNumberPattern>
           (?:
-            46[0-5]|
+            (?:
+              46|
+              83
+            )[0-5]|
             6[2-4689]0
           )\d{4}|
           (?:
@@ -25120,7 +25129,7 @@
           579[01]\d{5}|
           5(?:
             [013-689]\d|
-            7[0-36-8]
+            7[0-35-8]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
