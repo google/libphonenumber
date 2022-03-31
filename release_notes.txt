@@ -1,3 +1,10 @@
+Mar 31, 2022: v8.12.46
+Metadata changes:
+ - Updated phone metadata for region code(s): BJ, JM, PW, SA
+ - Updated short number metadata for region code(s): HU
+ - Updated carrier data for country calling code(s):
+   36 (en), 51 (en), 61 (en), 90 (en), 229 (en), 254 (en), 680 (en), 966 (en)
+
 Mar 10, 2022: v8.12.45
 Metadata changes:
  - Updated phone metadata for region code(s): BF, EE, JM, RE, SE, US
