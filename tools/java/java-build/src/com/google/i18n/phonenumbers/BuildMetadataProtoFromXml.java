@@ -254,7 +254,7 @@ public class BuildMetadataProtoFromXml extends Command {
     writer.addToImports("java.util.List");
     writer.addToImports("java.util.Map");
 
-    writer.addToBody("  static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {\n");
+    writer.addToBody("  public static Map<Integer, List<String>> getCountryCodeToRegionCodeMap() {\n");
     writer.formatToBody(CAPACITY_COMMENT, capacity, countryCodeToRegionCodeMap.size());
     writer.addToBody("    Map<Integer, List<String>> countryCodeToRegionCodeMap =\n");
     writer.addToBody("        new HashMap<Integer, List<String>>(" + capacity + ");\n");
@@ -286,7 +286,7 @@ public class BuildMetadataProtoFromXml extends Command {
     writer.addToImports("java.util.HashSet");
     writer.addToImports("java.util.Set");
 
-    writer.addToBody("  static Set<String> getRegionCodeSet() {\n");
+    writer.addToBody("  public static Set<String> getRegionCodeSet() {\n");
     writer.formatToBody(CAPACITY_COMMENT, capacity, regionCodeList.size());
     writer.addToBody("    Set<String> regionCodeSet = new HashSet<String>(" + capacity + ");\n");
     writer.addToBody("\n");
@@ -307,7 +307,7 @@ public class BuildMetadataProtoFromXml extends Command {
     writer.addToImports("java.util.HashSet");
     writer.addToImports("java.util.Set");
 
-    writer.addToBody("  static Set<Integer> getCountryCodeSet() {\n");
+    writer.addToBody("  public static Set<Integer> getCountryCodeSet() {\n");
     writer.formatToBody(CAPACITY_COMMENT, capacity, countryCodeSet.size());
     writer.addToBody("    Set<Integer> countryCodeSet = new HashSet<Integer>(" + capacity + ");\n");
     writer.addToBody("\n");

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The Libphonenumber Authors
+ * Copyright (C) 2022 The Libphonenumber Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,19 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.metadata.source;
 
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 
 /**
- * A source for phone metadata for all regions.
+ * A container for {@link PhoneMetadata}
  */
-interface MetadataSource {
+interface MetadataContainer {
 
   /**
-   * Gets phone metadata for a region.
-   * @param regionCode the region code.
-   * @return the phone metadata for that region, or null if there is none.
+   * Adds {@link PhoneMetadata} to the container. It depends on the implementation of the interface
+   * what this means, for example {@link MapBackedMetadataContainer} simply adds the provided
+   * metadata into the backing map. Implementing classes should ensure thread-safety.
    */
-  PhoneMetadata getMetadataForRegion(String regionCode);
-
-  /**
-   * Gets phone metadata for a non-geographical region.
-   * @param countryCallingCode the country calling code.
-   * @return the phone metadata for that region, or null if there is none.
-   */
-  PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode);
+  void accept(PhoneMetadata phoneMetadata);
 }
