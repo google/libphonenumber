@@ -45,8 +45,8 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
 ShortNumberInfo::ShortNumberInfo()
     : phone_util_(*PhoneNumberUtil::GetInstance()),
       matcher_api_(new RegexBasedMatcher()),
-      region_to_short_metadata_map_(new map<string, PhoneMetadata>()),
-      regions_where_emergency_numbers_must_be_exact_(new set<string>()) {
+      region_to_short_metadata_map_(new absl::flat_hash_map<string, PhoneMetadata>()),
+      regions_where_emergency_numbers_must_be_exact_(new absl::flat_hash_set<string>()) {
   PhoneMetadataCollection metadata_collection;
   if (!LoadCompiledInMetadata(&metadata_collection)) {
     LOG(DFATAL) << "Could not parse compiled-in metadata.";
@@ -71,7 +71,7 @@ const PhoneMetadata* ShortNumberInfo::GetMetadataForRegion(
   if (it != region_to_short_metadata_map_->end()) {
     return &it->second;
   }
-  return NULL;
+  return nullptr;
 }
 
 namespace {
@@ -273,7 +273,7 @@ void ShortNumberInfo::GetRegionCodeForShortNumberFromRegionList(
   phone_util_.GetNationalSignificantNumber(number, &national_number);
   for (const auto& region_code_it : region_codes) {
     const PhoneMetadata* phone_metadata = GetMetadataForRegion(region_code_it);
-    if (phone_metadata != NULL &&
+    if (phone_metadata != nullptr &&
         MatchesPossibleNumberAndNationalNumber(*matcher_api_, national_number,
                                                phone_metadata->short_code())) {
       // The number is valid for this region.
@@ -302,7 +302,7 @@ string ShortNumberInfo::GetExampleShortNumberForCost(const string& region_code,
   if (!phone_metadata) {
     return "";
   }
-  const PhoneNumberDesc* desc = NULL;
+  const PhoneNumberDesc* desc = nullptr;
   switch (cost) {
     case TOLL_FREE:
       desc = &(phone_metadata->toll_free());
@@ -318,7 +318,7 @@ string ShortNumberInfo::GetExampleShortNumberForCost(const string& region_code,
       // the other cost categories.
       break;
   }
-  if (desc != NULL && desc->has_example_number()) {
+  if (desc != nullptr && desc->has_example_number()) {
     return desc->example_number();
   }
   return "";
