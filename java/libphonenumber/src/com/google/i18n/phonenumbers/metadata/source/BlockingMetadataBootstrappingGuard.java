@@ -21,8 +21,8 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 import com.google.i18n.phonenumbers.metadata.init.MetadataParser;
 import java.io.InputStream;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A blocking implementation of {@link MetadataBootstrappingGuard}. Can be used for both single-file
@@ -36,19 +36,19 @@ final class BlockingMetadataBootstrappingGuard<T extends MetadataContainer>
   private final MetadataLoader metadataLoader;
   private final MetadataParser metadataParser;
   private final T metadataContainer;
-  private final Set<String> loadedFiles;
+  private final Map<String, String> loadedFiles; // identity map
 
   BlockingMetadataBootstrappingGuard(
       MetadataLoader metadataLoader, MetadataParser metadataParser, T metadataContainer) {
     this.metadataLoader = metadataLoader;
     this.metadataParser = metadataParser;
     this.metadataContainer = metadataContainer;
-    this.loadedFiles = new HashSet<>();
+    this.loadedFiles = new ConcurrentHashMap<>();
   }
 
   @Override
   public T getOrBootstrap(String phoneMetadataFile) {
-    if (!loadedFiles.contains(phoneMetadataFile)) {
+    if (!loadedFiles.containsKey(phoneMetadataFile)) {
       bootstrapMetadata(phoneMetadataFile);
     }
     return metadataContainer;
@@ -57,14 +57,14 @@ final class BlockingMetadataBootstrappingGuard<T extends MetadataContainer>
   private synchronized void bootstrapMetadata(String phoneMetadataFile) {
     // Additional check is needed because multiple threads could pass the first check when calling
     // getOrBootstrap() at the same time for unloaded metadata file
-    if (loadedFiles.contains(phoneMetadataFile)) {
+    if (loadedFiles.containsKey(phoneMetadataFile)) {
       return;
     }
     Collection<PhoneMetadata> phoneMetadata = read(phoneMetadataFile);
     for (PhoneMetadata metadata : phoneMetadata) {
       metadataContainer.accept(metadata);
     }
-    loadedFiles.add(phoneMetadataFile);
+    loadedFiles.put(phoneMetadataFile, phoneMetadataFile);
   }
 
   private Collection<PhoneMetadata> read(String phoneMetadataFile) {
