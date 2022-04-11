@@ -570,7 +570,7 @@ if (NOT WIN32)
   list (APPEND TEST_LIBS pthread)
 endif ()
 
-target_link_libraries (libphonenumber_test ${TEST_LIBS} absl::node_hash_set)
+target_link_libraries (libphonenumber_test ${TEST_LIBS})
 
 # Unfortunately add_custom_target() can't accept a single command provided as a
 # list of commands.
@@ -677,7 +677,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
     geocoding_test_program
     "test/phonenumbers/geocoding/geocoding_test_program.cc"
   )
-  target_link_libraries (geocoding_test_program geocoding phonenumber absl::node_hash_set)
+  target_link_libraries (geocoding_test_program geocoding phonenumber)
 endif ()
 
 # Build an RPM
