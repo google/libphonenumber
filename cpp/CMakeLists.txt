@@ -477,8 +477,7 @@ endif ()
 # Safeguarding against any potential link errors as mentioned in
 # https://github.com/abseil/abseil-cpp/issues/225
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-list (APPEND LIBRARY_DEPS absl::node_hash_set absl::strings)
-list (APPEND COMMON_DEPS absl::synchronization)
+list (APPEND LIBRARY_DEPS absl::node_hash_set absl::strings absl::synchronization)
 
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
