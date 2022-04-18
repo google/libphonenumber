@@ -22442,7 +22442,7 @@
         <nationalNumberPattern>
           9(?:
             6[0-3]|
-            7[245]|
+            7[2456]|
             8[0-24-68]
           )\d{7}
         </nationalNumberPattern>
