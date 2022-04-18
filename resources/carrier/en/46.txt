@@ -272,6 +272,7 @@
 4672669|Nortech
 467267|TeliaSonera
 467268|TeliaSonera
+4672695|Telenor Sverige
 4672698|SWEDFONENET AB
 46726990|Gotalandsnatet
 46726991|Fast Communication
