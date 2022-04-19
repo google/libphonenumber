@@ -1,10 +1,3 @@
-Apr 14, 2022: v8.12.47
-Metadata changes:
- - Updated phone metadata for region code(s):
-   FR, GB, GE, GG, HR, JE, MT, NC, PA, SE
- - Updated carrier data for country calling code(s):
-   33 (en), 41 (en), 46 (en), 351 (en), 385 (en), 420 (en), 974 (en), 995 (en)
-
 Mar 31, 2022: v8.12.46
 Metadata changes:
  - Updated phone metadata for region code(s): BJ, JM, PW, SA
