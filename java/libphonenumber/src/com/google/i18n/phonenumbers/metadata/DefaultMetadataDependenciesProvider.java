@@ -106,10 +106,10 @@ public final class DefaultMetadataDependenciesProvider {
   }
 
   public String getCarrierDataDirectory() {
-    return "/com/google/i18n/phonenumbers/buildtools/carrier_data/";
+    return "/com/google/i18n/phonenumbers/carrier/data/";
   }
 
   public String getGeocodingDataDirectory() {
-    return "/com/google/i18n/phonenumbers/buildtools/geocoding_data/";
+    return "/com/google/i18n/phonenumbers/geocoding/data/";
   }
 }
