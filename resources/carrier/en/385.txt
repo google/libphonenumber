@@ -20,7 +20,8 @@
 38592|A1 Telekom
 38595|Tele2
 385970|Hrvatski Telekom
-385975|Telefocus
+3859751|Telefocus
+3859759|Altavox
 385976|Hrvatski Telekom
 385977|Hrvatski Telekom
 385979|Hrvatski Telekom
