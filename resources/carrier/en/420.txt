@@ -182,6 +182,7 @@
 4207947|O2
 4207948|O2
 4207950|Vectone Distribution Czech Republic s.r.o(Mundio)
+4207951|Vectone Distribution Czech Republic s.r.o(Mundio)
 42079750|Dial Telecom
 4207976|T-Mobile
 42079770|T-Mobile
