@@ -68,7 +68,20 @@
 1246259|Digicel
 124626|Digicel
 124628|Cable & Wireless
+124635|LIME
+1246360|LIME
+1246361|LIME
+1246362|LIME
+1246363|LIME
+1246364|LIME
+1246365|LIME
+1246366|LIME
+1246446|Neptune Communications
 124645|Sunbeach Communications
+12465211|Digicel
+12465214|LIME
+12465217|KW Telecommunications
+1246522|Ozone
 124669|Ozone
 12468|Digicel
 1264469|Cable & Wireless
@@ -123,7 +136,7 @@
 134554|Digicel
 134555|Digicel
 1345649|Digicel
-134582|Logic
+134582|Logic Communications
 1345919|Cable & Wireless
 1345930|LIME
 1345936|Cable & Wireless
