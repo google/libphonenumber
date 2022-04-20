@@ -270,6 +270,8 @@
 3375632|Euroinformation Telecom
 3375633|Euroinformation Telecom
 3375634|Euroinformation Telecom
+3375644|SFR
+3375645|SFR
 337565|Transatel
 337566|Transatel
 337567|Transatel
