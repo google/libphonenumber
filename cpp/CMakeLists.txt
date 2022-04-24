@@ -356,7 +356,7 @@ add_metadata_gen_target (
   ${TEST_METADATA_TARGET}
   "${RESOURCES_DIR}/PhoneNumberMetadataForTesting.xml"
   "test_metadata"
-  "metadata"
+  "test_metadata"
 )
 list (APPEND TESTING_LIBRARY_SOURCES "src/phonenumbers/test_metadata.cc")
 
