@@ -269,14 +269,16 @@ public class PhoneNumberParserServlet extends HttpServlet {
       appendLine("extension", number.getExtension(), output);
       appendLine("country_code_source", number.getCountryCodeSource().toString(), output);
       appendLine("italian_leading_zero", Boolean.toString(number.isItalianLeadingZero()), output);
+      appendLine("number_of_leading_zeros", Integer.toString(number.getNumberOfLeadingZeros()), output);
       appendLine("raw_input", number.getRawInput(), output);
+      appendLine("preferred_domestic_carrier_code", number.getPreferredDomesticCarrierCode(), output);
       output.append("</TABLE>");
       output.append("</DIV>");
 
       boolean isPossible = phoneUtil.isPossibleNumber(number);
       boolean isNumberValid = phoneUtil.isValidNumber(number);
       PhoneNumberType numberType = phoneUtil.getNumberType(number);
-      boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
+      boolean hasDefaultCountry = !defaultCountry.isEmpty() && !defaultCountry.equals("ZZ");
 
       output.append("<DIV>");
       output.append("<TABLE border=1>");
@@ -365,6 +367,14 @@ public class PhoneNumberParserServlet extends HttpServlet {
       appendLine(
           "Out-of-country format from CH",
           isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid",
+          output);
+      appendLine(
+          "Format for mobile dialing (calling from US)",
+          isNumberValid ? phoneUtil.formatNumberForMobileDialing(number, "US", true) : "invalid",
+          output);
+      appendLine(
+          "Format for national dialing with preferred carrier code and empty fallback carrier code",
+          isNumberValid ? phoneUtil.formatNationalNumberWithPreferredCarrierCode(number, "") : "invalid",
           output);
       output.append("</TABLE>");
       output.append("</DIV>");
