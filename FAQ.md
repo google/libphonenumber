@@ -188,21 +188,24 @@ Not all regions support mobile number portability. For those that don't, we retu
 
 ### What about M2M (machine to machine) numbers?
 
-libphonenumber currently does not support M2M numbers, but might in the future.
+libphonenumber does not support M2M numbers in general, but only in one exception case where in Netherlands 097X M2M numbers are used as regular mobile phone numbers.
 
-The reason for Libphonenumber to not provide M2M support is related to the lack of standardization and the need for a new Util API (not in radar for the time being):
+The reason for Libphonenumber to not provide M2M support is related to the lack of standardization and the need for a new Util API (not in radar for the time being).
 
-- We understand that use cases for M2M are diverse. We don't require that a number to be supported by the library has a human at the other end since we already accept premium rate services and they might go to an automated system instead. But to date we only accept ranges that a human migh call or send an SMS to.
+We don't require that a number to be supported by the library has a human at the other end since we already accept premium rate services and they might go to an automated system instead. But to date we only accept ranges that a human might call or send an SMS to.
 
-- M2M numbers would violate this assumption and we'd have to evaluate the consequences for existing APIs and clients if M2M numbers would be considered valid by the library. Clients of libphonenumber expect `mobile` and `fixed-line` numbers to have certain affordances, such as: Reachable for voice calls (and for mobile also SMS) as well as assuming standard cost. This expectation is broken by the lack of M2M standardization today.
+M2M numbers would violate this assumption and we'd have to evaluate the consequences for existing APIs and clients if M2M numbers would be considered  valid by the library. Clients of libphonenumber expect mobile and fixed-line numbers to have certain affordances, such as: Reachable for voice calls (and for mobile also SMS) as well as assuming standard cost. This expectation is broken by the lack of M2M standardization today.
 
-- Many people use this library for formatting the numbers of their contacts, for allowing people to sign up for services, for working out how to dial someone in
-a different country, for working out what kind of cost might be associated with  a number in an advert, etc. We don't think the lack of M2M support hinders any
-of those use-case, but we might be wrong.
+Many people use this library for formatting the numbers of their contacts, for allowing people to sign up for services, for working out how to dial someone in a different country, for working out what kind of cost might be associated with a number in an advert, etc. We don't think the lack of M2M support hinders any of those use-case, but we might be wrong.
 
-- Usually M2M numbers are at least 2-5 digits longer than the usual phone numbers in the respective regions. Accepting them under known categories will make isPossible() test even more lenient increasing the number of false positives. We would like to introduce it as separate Util like PhoneNumberUtil and ShortNumberInfo.
+At the moment Libphonenumber can only support phone numbers that can be dialled by us, not by machines. If you found any humanly diallable M2M numbers that library is not supporting, please raise an [issue here](http://issuetracker.google.com/issues/new?component=192347) with all authoritative and specific documentation such as government sources, which have varied definitions.
 
-Conclusion: **Unfortunately we will not be able to commit for any deadline to support M2M numbers.** We recommend users to implement workarounds in their client code itself. Please engage with the developer community at [Support M2M numbers](https://issuetracker.google.com/issues/74493346) with further information.
+### Why supporting only NL M2M numbers?; Are we sure all 097X numbers are MOBILE?
+
+Official authority has [explicitly stated](https://www.acm.nl/en/publications/information-about-dutch-097-numbers-non-dutch-providers) that this range “should be made accessible, just like other, regular number series from the Netherlands” and that “you can set up a voice and SMS connection towards prefix +31-97 in the same way as you have done already with the +31-6 series.[...] you should enable your systems for voice telephony for the numbers
+in the +31-97 series”. This means, however, that there might be cases where the library would categorise a number as a valid mobile number, but in reality, the particular number is used as pure M2M, is not SMS or voice-enabled. There is not much we can do from our side about this, since we always follow official guidelines.
+
+Therefore, clients should be aware that there is possibility of false positives in NL MOBILE category. The library will continue to not support M2M numbers in general.
 
 ### What about numbers that are only valid for a set of subscribers?
 
