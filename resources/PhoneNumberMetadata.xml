@@ -25609,9 +25609,9 @@
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
-        <possibleLengths national="9"/>
+        <possibleLengths national="9,13"/>
         <exampleNumber>701234567</exampleNumber>
-        <nationalNumberPattern>7[02369]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>7[012369]\d{7,11}</nationalNumberPattern>
       </mobile>
       <pager>
         <possibleLengths national="9"/>
