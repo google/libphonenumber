@@ -45,6 +45,14 @@
 503644|Tigo
 503645|Tigo
 5036611|Movistar
+503692|Tigo
+503693|Tigo
+503694|Tigo
+503695|Tigo
+503696|Tigo
+503697|Claro
+503698|Claro
+503699|Claro
 503700|Claro
 503701|Claro
 503702|Claro

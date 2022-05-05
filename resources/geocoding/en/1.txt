@@ -3567,6 +3567,7 @@
 1262948|Kenosha, WI
 1262965|Dousman, WI
 1262970|Waukesha, WI
+1263|Montreal, QC
 1267|Pennsylvania
 1267292|Philadelphia, PA
 1267297|Philadelphia, PA
@@ -11104,6 +11105,7 @@
 1458|Oregon
 1463|Indiana
 1464|Illinois
+1468|Quebec
 1469|Texas
 1469232|Dallas, TX
 1469241|Plano, TX
@@ -15356,6 +15358,7 @@
 1580994|Mooreland, OK
 1581|Quebec
 1582|Pennsylvania
+1584|Manitoba
 1585|New York
 1585218|Pittsford, NY
 1585223|Fairport, NY
@@ -18608,6 +18611,7 @@
 1651917|Saint Paul, MN
 1651923|Goodhue, MN
 1651999|Saint Paul, MN
+1656|Florida
 1657|California
 1659|Alabama
 1659200|Lincoln, AL
@@ -30640,6 +30644,7 @@
 1941979|Port Charlotte, FL
 1945|Texas
 1947|Michigan
+1948|Virginia
 1949|California
 1949221|Irvine, CA
 1949249|Laguna Niguel, CA
