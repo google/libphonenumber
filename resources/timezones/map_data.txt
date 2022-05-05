@@ -501,6 +501,7 @@
 1256|America/Chicago
 1260|America/New_York
 1262|America/Chicago
+1263|America/Toronto
 1264|America/Anguilla
 1267|America/New_York
 1268|America/Antigua
@@ -923,6 +924,7 @@
 1458|America/Los_Angeles
 1463|America/New_York
 1464|America/Chicago
+1468|America/Toronto
 1469|America/Chicago
 1470|America/New_York
 1473|America/Grenada
@@ -981,6 +983,7 @@
 1580|America/Chicago
 1581|America/Toronto
 1582|America/New_York
+1584|America/Winnipeg
 1585|America/New_York
 1586|America/New_York
 1587|America/Edmonton
@@ -1180,6 +1183,7 @@
 1649|America/Grand_Turk
 1650|America/Los_Angeles
 1651|America/Chicago
+1656|America/New_York
 1657|America/Los_Angeles
 1658|America/Jamaica
 1659|America/Chicago
@@ -1983,6 +1987,7 @@
 1941|America/New_York
 1945|America/Chicago
 1947|America/New_York
+1948|America/New_York
 1949|America/Los_Angeles
 1951|America/Los_Angeles
 1952|America/Chicago

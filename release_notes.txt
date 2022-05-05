@@ -1,3 +1,14 @@
+May 05, 2022: v8.12.48
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BM, BR, BS, CA, DM, DO, EE, GD, GF, GP, GU, IS, JM, KN, KY,
+   LC, MN, MP, MS, NL, NP, PM, PR, SI, SX, SY, TC, TT, UG, US, VC, VG, VI, YT
+ - New geocoding data for country calling code(s):
+   1263 (en), 1468 (en), 1584 (en), 1656 (en), 1948 (en)
+ - Updated carrier data for country calling code(s):
+   354 (en), 370 (en), 372 (en), 503 (en), 963 (en), 977 (en)
+ - Updated / refreshed time zone meta data.
+
 Apr 19, 2022: v8.12.47
 Metadata changes:
  - Updated phone metadata for region code(s):
