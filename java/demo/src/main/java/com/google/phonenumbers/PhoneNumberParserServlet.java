@@ -38,6 +38,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Locale;
 import java.util.StringTokenizer;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,10 +57,12 @@ import org.apache.commons.lang.StringEscapeUtils;
  * number to be from.
  */
 @SuppressWarnings("serial")
+//@WebServlet(name = "PhoneNumberParserServlet", value = "/phonenumberparser")
 public class PhoneNumberParserServlet extends HttpServlet {
   private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   private ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
 
+  @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
     String defaultCountry = null;
@@ -113,6 +116,7 @@ public class PhoneNumberParserServlet extends HttpServlet {
   }
 
   /** Handle the get request to get information about a number based on query parameters. */
+  @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = req.getParameter("number");
     if (phoneNumber == null) {
