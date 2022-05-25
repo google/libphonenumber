@@ -1,3 +1,12 @@
+May 25, 2022: v8.12.49
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, CM, GB, IL, JM, JP, MA, MV, PG, US
+ - Updated geocoding data for country calling code(s):
+   33 (en), 44 (en), 212 (en, fr), 1310 (en)
+ - Updated carrier data for country calling code(s): 237 (en), 675 (en)
+ - Updated / refreshed time zone meta data.
+
 May 05, 2022: v8.12.48
 Metadata changes:
  - Updated phone metadata for region code(s):
