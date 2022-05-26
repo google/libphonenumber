@@ -669,7 +669,14 @@
 1308874|America/Denver
 1308882|America/Denver
 1309|America/Chicago
-1310|America/Los_Angeles
+13102|America/Los_Angeles
+13103|America/Los_Angeles
+13104|America/Los_Angeles
+13105|America/Los_Angeles
+13106|America/Los_Angeles
+13107|America/Los_Angeles
+13108|America/Los_Angeles
+13109|America/Los_Angeles
 1312|America/Chicago
 1313|America/New_York
 1314|America/Chicago

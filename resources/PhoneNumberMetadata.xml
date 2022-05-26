@@ -5283,7 +5283,8 @@
           (?:
             [2-8]\d|
             90
-          )\d{8}
+          )\d{8}|
+          3\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -5467,6 +5468,12 @@
         <exampleNumber>6002012345</exampleNumber>
         <nationalNumberPattern>600[2-9]\d{6}</nationalNumberPattern>
       </voip>
+      <!-- Prefix 310 (7 digit) is added based on user report and online documents. -->
+      <uan>
+        <possibleLengths national="7"/>
+        <exampleNumber>3101234</exampleNumber>
+        <nationalNumberPattern>310\d{4}</nationalNumberPattern>
+      </uan>
     </territory>
 
     <!-- Cocos (Keeling) Islands (CC) -->
@@ -6242,7 +6249,7 @@
         <nationalNumberPattern>
           (?:
             24[23]|
-            6[5-9]\d
+            6[25-9]\d
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -10334,7 +10341,7 @@
                 4(?:
                   [0-5]\d\d|
                   69[7-9]|
-                  70[0359]
+                  70[01359]
                 )|
                 (?:
                   5[0-26-9]|
@@ -10342,7 +10349,7 @@
                 )\d\d|
                 6(?:
                   [0-4]\d\d|
-                  50[0-24-69]
+                  50[0-79]
                 )
               )|
               2(?:
@@ -13277,10 +13284,10 @@
             2[23]|
             3[237]|
             47|
-            6[58]|
+            6[258]|
             7\d|
             82|
-            9[235-9]
+            9[2-9]
           )\d{6}
         </nationalNumberPattern>
       </voip>
@@ -15437,10 +15444,9 @@
             658295|
             876(?:
               2(?:
-                0[2-9]|
-                [14-9]\d|
-                2[013-9]|
-                3[3-9]
+                0[1-9]|
+                [13-9]\d|
+                2[013-9]
               )|
               [348]\d\d|
               5(?:
@@ -15757,7 +15763,6 @@
               63
             )|
             9(?:
-              49|
               80|
               9[16]
             )
@@ -15797,7 +15802,6 @@
               636
             )|
             9(?:
-              496|
               802|
               9(?:
                 1[23]|
@@ -15844,7 +15848,6 @@
               636[457-9]
             )|
             9(?:
-              496|
               802|
               9(?:
                 1[23]|
@@ -18957,15 +18960,15 @@
           </leadingDigits>
           <leadingDigits>
             5(?:
-              29|
-              38
-            )[89]
+              29[89]|
+              389
+            )
           </leadingDigits>
           <leadingDigits>
             5(?:
-              29|
-              38
-            )[89]0
+              29[89]|
+              389
+            )0
           </leadingDigits>
           <format>$1-$2</format>
         </numberFormat>
@@ -19019,10 +19022,7 @@
               2[29]|
               3[01]
             )|
-            38(?:
-              8[057]|
-              9[05]
-            )
+            389[05]
           )\d{4}|
           5(?:
             2(?:
@@ -19036,7 +19036,7 @@
               [0-47]\d|
               5[02-9]|
               6[02-8]|
-              80|
+              8[08]|
               9[3-9]
             )|
             (?:
@@ -20953,7 +20953,12 @@
       <uan>
         <possibleLengths national="7"/>
         <exampleNumber>4001234</exampleNumber>
-        <nationalNumberPattern>4[05]0\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          4(?:
+            0[01]|
+            50
+          )\d{4}
+        </nationalNumberPattern>
       </uan>
     </territory>
 
@@ -23206,7 +23211,7 @@
         <nationalNumberPattern>
           (?:
             7\d|
-            8[18]
+            8[128]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -28573,8 +28578,19 @@
     <territory id="US" mainCountryForCode="true" countryCode="1" internationalPrefix="011"
                nationalPrefix="1" mobileNumberPortableRegion="true">
       <availableFormats>
+        <!-- 310-xxxx (7 digit) UAN numbers . -->
+        <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
+          <leadingDigits>310</leadingDigits>
+          <format>$1-$2</format>
+        </numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[2-9]</leadingDigits>
+          <leadingDigits>
+            [24-9]|
+            3(?:
+              [02-9]|
+              1[1-9]
+            )
+          </leadingDigits>
           <format>$1-$2</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
@@ -28587,7 +28603,10 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[2-9]\d{9}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [2-9]\d{9}|
+          3\d{6}
+        </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="10" localOnly="7"/>
