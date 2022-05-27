@@ -23,7 +23,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Writer;
@@ -161,7 +160,7 @@ public class BuildMetadataProtoFromXml extends Command {
       return false;
     }
 
-    final String filePrefix = new File(outputDir, dataPrefix).getPath();
+    String filePrefix = new File(outputDir, dataPrefix).getPath();
 
     try {
       PhoneMetadataCollection metadataCollection =
