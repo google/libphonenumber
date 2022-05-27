@@ -23,6 +23,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Writer;
@@ -160,7 +161,7 @@ public class BuildMetadataProtoFromXml extends Command {
       return false;
     }
 
-    String filePrefix = new File(outputDir, dataPrefix).getPath();
+    final String filePrefix = new File(outputDir, dataPrefix).getPath();
 
     try {
       PhoneMetadataCollection metadataCollection =
@@ -172,6 +173,7 @@ public class BuildMetadataProtoFromXml extends Command {
         metadataCollection.writeExternal(out);
         out.close();
       } else {
+        deleteAllFilesForPrefix(filePrefix);
         for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
           String regionCode = metadata.getId();
           // For non-geographical country calling codes (e.g. +800), or for alternate formats, use the
@@ -186,6 +188,7 @@ public class BuildMetadataProtoFromXml extends Command {
           outMetadataCollection.writeExternal(out);
           out.close();
         }
+        System.out.println("Generated " + metadataCollection.getMetadataCount() + " new files");
       }
 
       Map<Integer, List<String>> countryCodeToRegionCodeMap =
@@ -197,8 +200,24 @@ public class BuildMetadataProtoFromXml extends Command {
       e.printStackTrace();
       return false;
     }
-    System.out.println("Metadata code successfully generated.");
+    System.out.println("Metadata code successfully created.");
     return true;
+  }
+
+  private void deleteAllFilesForPrefix(String filePrefix) {
+    File[] allFiles = new File(filePrefix).getParentFile().listFiles();
+    if (allFiles == null) {
+      allFiles = new File[0];
+    }
+    int counter = 0;
+    for (File file: allFiles) {
+      if (file.getAbsolutePath().contains(filePrefix)) {
+        if (file.delete()) {
+          counter++;
+        }
+      }
+    }
+    System.out.println("Deleted " + counter + " old files");
   }
 
   private static final String MAP_COMMENT =
