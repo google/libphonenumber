@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+VE     ; FIXED_LINE   ; "2121234567"
+VE     ; MOBILE       ; "4121234567"
+VE     ; TOLL_FREE    ; "8001234567"
+VE     ; PREMIUM_RATE ; "9001234567"
+VE     ; UAN          ; "5010123456"

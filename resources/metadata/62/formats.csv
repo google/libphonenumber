@@ -1,0 +1,12 @@
+Id               ; National           ; International    ; Comment
+fixed_2/5-9      ; "(#XX) XXXXX****"  ; "XX XXXXX****"   ; "Fixed line 2-digit area codes"
+fixed_3/5-8      ; "(#XXX) XXXXX***"  ; "XXX XXXXX***"   ; "Fixed line 3-digit area codes"
+mobile_3/3-4/3   ; "#XXX-XXX*-XXX"    ; "XXX-XXX*-XXX"   ; "9-10 digit mobile numbers"
+mobile_3/4/4-5   ; "#XXX-XXXX-XXXX*"  ; "XXX-XXXX-XXXX*" ; "11-12 digit mobile numbers"
+sharedcost_3/3/4 ; "#XXX XXX XXXX"    ; "XXX XXX XXXX"   ; "Shared cost numbers"
+tollfree_2/4/3/4 ; "XX XXXX XXX XXXX" ;                  ; "Format for 13 digit ITFS numbers."
+tollfree_3/3/3/3 ; "XXX XXX XXX XXX"  ;                  ; "12 digit toll free numbers."
+tollfree_3/5-7   ; "#XXX XXXXX**"     ; "XXX XXXXX**"    ; "http://en.wikipedia.org/wiki/Toll-free_telephone_number, and examples on the web show\nthat sometimes they are followed by fewer digits."
+tollfree_3/6-8   ; "#XXX XXXXXX**"    ; "XXX XXXXXX**"   ; "Toll free numbers"
+uan_1/3/3        ; "X XXX XXX"        ; "X XXX XXX"      ; "Short UAN numbers"
+varcost_3/1/3/3  ; "#XXX X XXX XXX"   ; "XXX X XXX XXX"  ; "UAN and premium rate numbers"

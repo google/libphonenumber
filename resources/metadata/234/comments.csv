@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+NG     ; SC                  ; "http://www.itu.int/oth/T020200009C/en"
+NG     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+NG     ; SC_SMS_SERVICES     ; "https://support.google.com/plus/answer/1304917"
+NG     ; XML                 ; "http://www.itu.int/oth/T020200009C/en"
+NG     ; XML                 ; "https://www.ncc.gov.ng/technology/standards/numbering"
+NG     ; XML_MOBILE          ; "Added 906 and 907 mobile prefixes based on reports. Prefix 707 is withdrawn as per few\nwebsites, however 707[0-3] is added based on bug report and online search."
+NG     ; XML_TOLL_FREE       ; "Info on these numbers from http://www.alphatechnologieslimited.com."

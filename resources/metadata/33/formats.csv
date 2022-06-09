@@ -1,0 +1,5 @@
+Id              ; National         ; International   ; Comment
+fmt_1/2/2/2/2   ; "#X XX XX XX XX" ; "X XX XX XX XX" ; "General format (fixed, mobile, voip)"
+shortcode_3/3   ; "XXX XXX"        ;                 ; "6-digit shortcodes."
+shortcode_4     ; "XXXX"           ;                 ; "4-digit shortcodes."
+varcost_3/2/2/2 ; "# XXX XX XX XX" ; "XXX XX XX XX"  ; "Variable cost (toll free, premium rate etc.)"

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+BO     ; FIXED_LINE ; "22123456"
+BO     ; MOBILE     ; "71234567"
+BO     ; TOLL_FREE  ; "800171234"

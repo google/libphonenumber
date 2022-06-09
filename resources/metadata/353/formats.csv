@@ -1,0 +1,11 @@
+Id                ; National          ; International   ; Comment
+fixed_1/3-4/4     ; "(#X) XXX* XXXX"  ; "X XXX* XXXX"
+fixed_2/3/3-4     ; "(#XX) XXX XXX*"  ; "XX XXX XXX*"
+fixed_2/4/4       ; "(#XX) XXXX XXXX" ; "XX XXXX XXXX"
+fixed_2/5         ; "(#XX) XXXXX"     ; "XX XXXXX"
+fixed_3/5         ; "(#XXX) XXXXX"    ; "XXX XXXXX"
+fmt10_4/3/3       ; "XXXX XXX XXX"    ; "XXXX XXX XXX"
+fmt_2/3/4         ; "#XX XXX XXXX"    ; "XX XXX XXXX"
+personal_3/3/3    ; "#XXX XXX XXX"    ; "XXX XXX XXX"
+uan_3/3/3         ; "(#XXX) XXX XXX"  ; "XXX XXX XXX"
+voicemail_2/1/3/4 ; "#XX X XXX XXXX"  ; "XX X XXX XXXX" ; "Voicemail numbers: same as mobile prefixes but the third digit is always 5. Formatting\ndone like this to differentiate from mobile numbers (which are shorter), and based on\na couple of examples found online."

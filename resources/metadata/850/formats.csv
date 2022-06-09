@@ -1,0 +1,4 @@
+Id           ; National        ; International
+fixed_1/3/4  ; "#X XXX XXXX"   ; "X XXX XXXX"
+fixed_2/3/3  ; "#XX XXX XXX"   ; "XX XXX XXX"
+mobile_3/3/4 ; "#XXX XXX XXXX" ; "XXX XXX XXXX"

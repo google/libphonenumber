@@ -1,0 +1,6 @@
+Id             ; National        ; International  ; Comment
+fixed_2/3/4    ; "#XX XXX XXXX"  ; "XX XXX XXXX"
+mobile_2/3/4   ; "#XX XXX XXXX"  ; "XX XXX XXXX"
+tollfree_3/3/4 ; "XXX XXX XXXX"  ; "XXX XXX XXXX"
+uan_3/3/3-4    ; "#XXX XXX XXX*" ; "XXX XXX XXX*"
+varcost_4/5    ; "XXXX XXXXX"    ; "XXXX XXXXX"   ; "It seems that the trunk prefix is not used for these numbers, based on wikipedia and on\nthe fact that no numbers of this form found online have a trunk prefix added."

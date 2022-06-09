@@ -1,0 +1,7 @@
+Region ; Type            ; Number
+HR     ; FIXED_LINE      ; "12345678"
+HR     ; MOBILE          ; "921234567"
+HR     ; TOLL_FREE       ; "800123456"
+HR     ; PREMIUM_RATE    ; "611234"
+HR     ; PERSONAL_NUMBER ; "74123456"
+HR     ; UAN             ; "62123456"

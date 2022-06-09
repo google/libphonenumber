@@ -1,0 +1,6 @@
+Region ; Type       ; Number
+PY     ; FIXED_LINE ; "212345678"
+PY     ; MOBILE     ; "961456789"
+PY     ; TOLL_FREE  ; "98000123456"
+PY     ; VOIP       ; "870012345"
+PY     ; UAN        ; "201234567"

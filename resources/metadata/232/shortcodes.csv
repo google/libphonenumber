@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+SL     ; 019    ; 3      ; EMERGENCY  ; TOLL_FREE
+SL     ; 60400  ; 5      ; COMMERCIAL ;           ; true ; true
+SL     ; 999    ; 3      ; EMERGENCY  ; TOLL_FREE

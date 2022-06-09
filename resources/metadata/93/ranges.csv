@@ -1,0 +1,44 @@
+Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator         ; Format      ; Regions ; Geocode:en  ; Geocode:fa ; Provenance ; Comment
+20[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Kabul"     ; "کابل"     ; TELECOMS
+21[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Parwan"    ; "پروان"    ; TELECOMS
+22[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Kapisa"    ; "کاپیسا"   ; TELECOMS
+23[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Bamian"    ; "بامیان"   ; TELECOMS
+24[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Wardak"    ; "وردک"     ; TELECOMS
+25[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Logar"     ; "لوگر"     ; TELECOMS
+26[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Dorkondi"  ; "دایکندی"  ; TELECOMS
+27[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Khost"     ; "خوست"     ; TELECOMS
+28[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Panjshar"  ; "پنجشیر"   ; TELECOMS
+30[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Kandahar"  ; "قندهار"   ; TELECOMS
+31[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Ghazni"    ; "غزنی"     ; TELECOMS
+32[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Uruzgan"   ; "ارزگان"   ; TELECOMS
+33[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Zabol"     ; "زابل"     ; TELECOMS
+34[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Helmand"   ; "هلمند"    ; TELECOMS
+40[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Heart"     ; "هرات"     ; TELECOMS
+41[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Badghis"   ; "بادغیس"   ; TELECOMS
+42[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Ghowr"     ; "غور"      ; TELECOMS
+43[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Farah"     ; "فراه"     ; TELECOMS
+44[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Nimruz"    ; "نیمروز"   ; TELECOMS
+50[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Balkh"     ; "بلخ"      ; TELECOMS
+51[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Kunduz"    ; "قندوز"    ; TELECOMS
+52[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Badkhshan" ; "بدخشان"   ; TELECOMS
+53[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Takhar"    ; "تخار"     ; TELECOMS
+54[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Jowzjan"   ; "جوزجان"   ; TELECOMS
+55[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Samangan"  ; "سمنگان"   ; TELECOMS
+56[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Sar-E Pol" ; "سر پل"    ; TELECOMS
+57[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Faryab"    ; "فاریاب"   ; TELECOMS
+58[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Baghlan"   ; "بغلان"    ; TELECOMS
+60[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Nangarhar" ; "ننگرهار"  ; TELECOMS
+61[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Nurestan"  ; "نورستان"  ; TELECOMS
+62[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Kunarha"   ; "کنرها"    ; TELECOMS
+63[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Laghman"   ; "لغمان"    ; TELECOMS
+64[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Paktia"    ; "پکتیا"    ; TELECOMS
+65[2-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"    ; "Paktika"   ; "پکتیکا"   ; TELECOMS
+7[01]     ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "awcc"           ; "fmt_2/3/4" ; "AF"    ;             ;            ; IR21       ; "IR21 10/12/2017"
+7[29]     ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "roshan"         ; "fmt_2/3/4" ; "AF"    ;             ;            ; IR21       ; "IR21 02/14/2019"
+7[38]     ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "etisalat"       ; "fmt_2/3/4" ; "AF"    ;             ;            ; IR21       ; "IR21 12/22/2016"
+74[0-356] ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"
+74[47-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "afghan_telecom" ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
+75        ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "afghan_telecom" ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
+76[0-389] ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "mtn"            ; "fmt_2/3/4" ; "AF"
+76[4-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "mtn"            ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
+77        ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "mtn"            ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"

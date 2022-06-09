@@ -1,0 +1,36 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator    ; Format       ; Timezone             ; Regions ; Geocode:en      ; Provenance
+318[023]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "St. Eustatius" ; ITU
+318[14-8]  ; 7      ; MOBILE     ; STANDARD_RATE ; "telcell"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+319[14578] ; 7      ; MOBILE     ; STANDARD_RATE ; "wic"       ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+416[023]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Saba"          ; ITU
+4161       ; 7      ; MOBILE     ; STANDARD_RATE ; "telcell"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+416[4-8]   ; 7      ; MOBILE     ; STANDARD_RATE ; "wic"       ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+4169       ; 7      ; MOBILE     ; STANDARD_RATE ; "satel"     ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; ITU
+4170       ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Saba"          ; ITU
+60[0-2]    ; 7      ; FIXED_LINE ; SHARED_COST   ;             ; "fmt1_3/4"   ; "America/Curacao"    ; "CW"
+70[01]     ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+71[578]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Bonaire"       ; ITU
+72[05]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Bonaire"       ; ITU
+750        ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Bonaire"       ; ITU
+77[07]     ; 7      ; MOBILE     ; STANDARD_RATE ; "kla"       ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+78         ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+79[056]    ; 7      ; MOBILE     ; STANDARD_RATE ; "chippie"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+943[0-5]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+944[14]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+946        ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+950        ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+95[1246]   ; 8      ; MOBILE     ; STANDARD_RATE ; "chippie"   ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; IR21
+953[01]    ; 8      ; MOBILE     ; STANDARD_RATE ; "chippie"   ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; IR21
+955        ; 8      ; PAGER      ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"
+957        ; 8      ; MOBILE     ; STANDARD_RATE ; "antelecom" ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+96[5-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"   ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; IR21
+972[014]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+973[02-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+974[4-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+976[357]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+9777       ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+978[7-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+983[39]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+98[46]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+987[01]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
+988[57-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt2_1/3/4" ; "America/Curacao"    ; "CW"    ;                 ; ITU
